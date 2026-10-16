@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> BoardSearch(Expression<Func<string>> q = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             return new DeferredBodyAction<Node[]>(() =>
             {
                 var apiCallPath = "/board";
@@ -29,12 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction BoardCreate(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytemplateId = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/board";
@@ -72,8 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Board> Board(Expression<Func<string>> boardId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<Board>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -86,12 +81,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<NodeSummary[]> Cards(Expression<Func<string>> boardId, Expression<Func<typeInput>> type = null, Expression<Func<string>> q = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             return new DeferredBodyAction<NodeSummary[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board/{0}/cards", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -108,12 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Member[]> BoardMembers(Expression<Func<string>> boardId, Expression<Func<bool>> expand = null, Expression<Func<string>> q = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             return new DeferredBodyAction<Member[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -130,8 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Board[]> BoardMy(Expression<Func<bool>> template = null)
         {
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: false);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: false);
             return new DeferredBodyAction<Board[]>(() =>
             {
                 var apiCallPath = "/board/my";
@@ -146,16 +134,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction NodeCreate(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyboard = null, Expression<Func<string>> bodyparent = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyboard = bodyboard == null ? null : WorkflowExpression.Compile(bodyboard);
-            WorkflowExpression.Validate(__workflow_bodyboard, nameof(bodyboard), required: false);
-            var __workflow_bodyparent = bodyparent == null ? null : WorkflowExpression.Compile(bodyparent);
-            WorkflowExpression.Validate(__workflow_bodyparent, nameof(bodyparent), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyboard = WorkflowExpression.Compile(bodyboard, nameof(bodyboard), required: false);
+            var __workflow_bodyparent = WorkflowExpression.Compile(bodyparent, nameof(bodyparent), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/node";
@@ -205,8 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node> Node(Expression<Func<string>> nodeId)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredBodyAction<Node>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -219,10 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction Assign(Expression<Func<string>> nodeId, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/assign", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -248,8 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> Children(Expression<Func<string>> nodeId)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredBodyAction<Node[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -262,8 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> Comments(Expression<Func<string>> nodeId)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredBodyAction<Node[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -276,10 +254,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction CreateAComment(Expression<Func<string>> nodeId, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -305,8 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction IncompleteTask(Expression<Func<string>> nodeId)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -319,8 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction CompleteTask(Expression<Func<string>> nodeId)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -333,14 +307,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IWorkflowAction NodeDate(Expression<Func<string>> nodeId, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodydue = null, Expression<Func<string>> bodyend = null)
         {
-            var __workflow_nodeId = nodeId == null ? null : WorkflowExpression.Compile(nodeId);
-            WorkflowExpression.Validate(__workflow_nodeId, nameof(nodeId), required: true);
-            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
-            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
-            var __workflow_bodydue = bodydue == null ? null : WorkflowExpression.Compile(bodydue);
-            WorkflowExpression.Validate(__workflow_bodydue, nameof(bodydue), required: false);
-            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
-            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
+            var __workflow_nodeId = WorkflowExpression.Compile(nodeId, nameof(nodeId), required: true);
+            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
+            var __workflow_bodydue = WorkflowExpression.Compile(bodydue, nameof(bodydue), required: false);
+            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/node/{0}/dates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nodeId, 1));
@@ -378,10 +348,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<Node[]> FindTask(Expression<Func<string>> q = null, Expression<Func<bool>> completed = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_completed = completed == null ? null : WorkflowExpression.Compile(completed);
-            WorkflowExpression.Validate(__workflow_completed, nameof(completed), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_completed = WorkflowExpression.Compile(completed, nameof(completed), required: false);
             return new DeferredBodyAction<Node[]>(() =>
             {
                 var apiCallPath = "/todo/assigned";
@@ -398,8 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddoboards")]
         public IBodyWorkflowAction<User[]> User(Expression<Func<string>> q)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyAction<User[]>(() =>
             {
                 var apiCallPath = "/user";
@@ -458,8 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         public IBodyWorkflowTrigger<NodeSummary> BoardTaskCompleted(Expression<Func<string>> boardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyTrigger<NodeSummary>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/board-task-completed/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -480,8 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
         public IBodyWorkflowTrigger<NodeSummary> CreatedNode(Expression<Func<string>> boardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyTrigger<NodeSummary>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/created-node/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));

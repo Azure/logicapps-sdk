@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
         public IBodyWorkflowAction<QueueMessageMetadata> SendMessageToQueue(Expression<Func<int>> sendMessageOperationInputmessageVisibilityDelayInSeconds = null, Expression<Func<string>> sendMessageOperationInputmessageContent = null)
         {
-            var __workflow_sendMessageOperationInputmessageVisibilityDelayInSeconds = sendMessageOperationInputmessageVisibilityDelayInSeconds == null ? null : WorkflowExpression.Compile(sendMessageOperationInputmessageVisibilityDelayInSeconds);
-            WorkflowExpression.Validate(__workflow_sendMessageOperationInputmessageVisibilityDelayInSeconds, nameof(sendMessageOperationInputmessageVisibilityDelayInSeconds), required: false);
-            var __workflow_sendMessageOperationInputmessageContent = sendMessageOperationInputmessageContent == null ? null : WorkflowExpression.Compile(sendMessageOperationInputmessageContent);
-            WorkflowExpression.Validate(__workflow_sendMessageOperationInputmessageContent, nameof(sendMessageOperationInputmessageContent), required: false);
+            var __workflow_sendMessageOperationInputmessageVisibilityDelayInSeconds = WorkflowExpression.Compile(sendMessageOperationInputmessageVisibilityDelayInSeconds, nameof(sendMessageOperationInputmessageVisibilityDelayInSeconds), required: false);
+            var __workflow_sendMessageOperationInputmessageContent = WorkflowExpression.Compile(sendMessageOperationInputmessageContent, nameof(sendMessageOperationInputmessageContent), required: false);
             return new DeferredBodyAction<QueueMessageMetadata>(() =>
             {
                 var apiCallPath = "/message";
@@ -48,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazonsqs")]
         public IWorkflowAction DeleteMessageFromQueue(Expression<Func<string>> messageReceiptHandle)
         {
-            var __workflow_messageReceiptHandle = messageReceiptHandle == null ? null : WorkflowExpression.Compile(messageReceiptHandle);
-            WorkflowExpression.Validate(__workflow_messageReceiptHandle, nameof(messageReceiptHandle), required: true);
+            var __workflow_messageReceiptHandle = WorkflowExpression.Compile(messageReceiptHandle, nameof(messageReceiptHandle), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/message";
@@ -65,12 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
     {
         public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue(Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_messageVisibilityTimeoutSeconds = messageVisibilityTimeoutSeconds == null ? null : WorkflowExpression.Compile(messageVisibilityTimeoutSeconds);
-            WorkflowExpression.Validate(__workflow_messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
-            var __workflow_requestWaitTimeoutSeconds = requestWaitTimeoutSeconds == null ? null : WorkflowExpression.Compile(requestWaitTimeoutSeconds);
-            WorkflowExpression.Validate(__workflow_requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
-            var __workflow_messageAttributeNames = messageAttributeNames == null ? null : WorkflowExpression.Compile(messageAttributeNames);
-            WorkflowExpression.Validate(__workflow_messageAttributeNames, nameof(messageAttributeNames), required: false);
+            var __workflow_messageVisibilityTimeoutSeconds = WorkflowExpression.Compile(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
+            var __workflow_requestWaitTimeoutSeconds = WorkflowExpression.Compile(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
+            var __workflow_messageAttributeNames = WorkflowExpression.Compile(messageAttributeNames, nameof(messageAttributeNames), required: false);
             return new DeferredBodyTrigger<QueueMessage>(() =>
             {
                 var apiCallPath = "/message";
@@ -89,14 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
 
         public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue(Expression<Func<int>> maximumNumberOfMessages = null, Expression<Func<int>> messageVisibilityTimeoutSeconds = null, Expression<Func<int>> requestWaitTimeoutSeconds = null, Expression<Func<string>> messageAttributeNames = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_maximumNumberOfMessages = maximumNumberOfMessages == null ? null : WorkflowExpression.Compile(maximumNumberOfMessages);
-            WorkflowExpression.Validate(__workflow_maximumNumberOfMessages, nameof(maximumNumberOfMessages), required: false);
-            var __workflow_messageVisibilityTimeoutSeconds = messageVisibilityTimeoutSeconds == null ? null : WorkflowExpression.Compile(messageVisibilityTimeoutSeconds);
-            WorkflowExpression.Validate(__workflow_messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
-            var __workflow_requestWaitTimeoutSeconds = requestWaitTimeoutSeconds == null ? null : WorkflowExpression.Compile(requestWaitTimeoutSeconds);
-            WorkflowExpression.Validate(__workflow_requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
-            var __workflow_messageAttributeNames = messageAttributeNames == null ? null : WorkflowExpression.Compile(messageAttributeNames);
-            WorkflowExpression.Validate(__workflow_messageAttributeNames, nameof(messageAttributeNames), required: false);
+            var __workflow_maximumNumberOfMessages = WorkflowExpression.Compile(maximumNumberOfMessages, nameof(maximumNumberOfMessages), required: false);
+            var __workflow_messageVisibilityTimeoutSeconds = WorkflowExpression.Compile(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
+            var __workflow_requestWaitTimeoutSeconds = WorkflowExpression.Compile(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
+            var __workflow_messageAttributeNames = WorkflowExpression.Compile(messageAttributeNames, nameof(messageAttributeNames), required: false);
             return new DeferredBodyTrigger<QueueMessage[]>(() =>
             {
                 var apiCallPath = "/messages";

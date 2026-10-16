@@ -23,20 +23,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smarp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smarp")]
         public IWorkflowAction SmarpCreate(Expression<Func<string[]>> bodychannelList, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<bool>> bodyproposed = null, Expression<Func<bool>> bodyshareable = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyurl = null)
         {
-            var __workflow_bodychannelList = bodychannelList == null ? null : WorkflowExpression.Compile(bodychannelList);
-            WorkflowExpression.Validate(__workflow_bodychannelList, nameof(bodychannelList), required: true);
-            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
-            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
-            var __workflow_bodyimageUrl = bodyimageUrl == null ? null : WorkflowExpression.Compile(bodyimageUrl);
-            WorkflowExpression.Validate(__workflow_bodyimageUrl, nameof(bodyimageUrl), required: false);
-            var __workflow_bodyproposed = bodyproposed == null ? null : WorkflowExpression.Compile(bodyproposed);
-            WorkflowExpression.Validate(__workflow_bodyproposed, nameof(bodyproposed), required: false);
-            var __workflow_bodyshareable = bodyshareable == null ? null : WorkflowExpression.Compile(bodyshareable);
-            WorkflowExpression.Validate(__workflow_bodyshareable, nameof(bodyshareable), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodychannelList = WorkflowExpression.Compile(bodychannelList, nameof(bodychannelList), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
+            var __workflow_bodyimageUrl = WorkflowExpression.Compile(bodyimageUrl, nameof(bodyimageUrl), required: false);
+            var __workflow_bodyproposed = WorkflowExpression.Compile(bodyproposed, nameof(bodyproposed), required: false);
+            var __workflow_bodyshareable = WorkflowExpression.Compile(bodyshareable, nameof(bodyshareable), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/publicapi/post";

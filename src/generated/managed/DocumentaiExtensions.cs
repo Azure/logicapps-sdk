@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<DocumentPolicyResult> ApplyRules(Expression<Func<string>> bodyinputFile = null, Expression<Func<PolicyRule[]>> bodyrules = null, Expression<Func<string>> bodyrecognitionMode = null)
         {
-            var __workflow_bodyinputFile = bodyinputFile == null ? null : WorkflowExpression.Compile(bodyinputFile);
-            WorkflowExpression.Validate(__workflow_bodyinputFile, nameof(bodyinputFile), required: false);
-            var __workflow_bodyrules = bodyrules == null ? null : WorkflowExpression.Compile(bodyrules);
-            WorkflowExpression.Validate(__workflow_bodyrules, nameof(bodyrules), required: false);
-            var __workflow_bodyrecognitionMode = bodyrecognitionMode == null ? null : WorkflowExpression.Compile(bodyrecognitionMode);
-            WorkflowExpression.Validate(__workflow_bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
+            var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
+            var __workflow_bodyrules = WorkflowExpression.Compile(bodyrules, nameof(bodyrules), required: false);
+            var __workflow_bodyrecognitionMode = WorkflowExpression.Compile(bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
             return new DeferredBodyAction<DocumentPolicyResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/analyze/enforce-policy";
@@ -56,16 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<DocumentQuestionAnswersResult> AnswerQuestions(Expression<Func<string>> bodyinputFile = null, Expression<Func<DocumentQuestionBoolean[]>> bodyquestionsYesNo = null, Expression<Func<DocumentQuestionMultipleChoice[]>> bodyquestionsMultipleChoice = null, Expression<Func<DocumentQuestionFreeResponse[]>> bodyquestionsFreeResponse = null, Expression<Func<string>> bodyrecognitionMode = null)
         {
-            var __workflow_bodyinputFile = bodyinputFile == null ? null : WorkflowExpression.Compile(bodyinputFile);
-            WorkflowExpression.Validate(__workflow_bodyinputFile, nameof(bodyinputFile), required: false);
-            var __workflow_bodyquestionsYesNo = bodyquestionsYesNo == null ? null : WorkflowExpression.Compile(bodyquestionsYesNo);
-            WorkflowExpression.Validate(__workflow_bodyquestionsYesNo, nameof(bodyquestionsYesNo), required: false);
-            var __workflow_bodyquestionsMultipleChoice = bodyquestionsMultipleChoice == null ? null : WorkflowExpression.Compile(bodyquestionsMultipleChoice);
-            WorkflowExpression.Validate(__workflow_bodyquestionsMultipleChoice, nameof(bodyquestionsMultipleChoice), required: false);
-            var __workflow_bodyquestionsFreeResponse = bodyquestionsFreeResponse == null ? null : WorkflowExpression.Compile(bodyquestionsFreeResponse);
-            WorkflowExpression.Validate(__workflow_bodyquestionsFreeResponse, nameof(bodyquestionsFreeResponse), required: false);
-            var __workflow_bodyrecognitionMode = bodyrecognitionMode == null ? null : WorkflowExpression.Compile(bodyrecognitionMode);
-            WorkflowExpression.Validate(__workflow_bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
+            var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
+            var __workflow_bodyquestionsYesNo = WorkflowExpression.Compile(bodyquestionsYesNo, nameof(bodyquestionsYesNo), required: false);
+            var __workflow_bodyquestionsMultipleChoice = WorkflowExpression.Compile(bodyquestionsMultipleChoice, nameof(bodyquestionsMultipleChoice), required: false);
+            var __workflow_bodyquestionsFreeResponse = WorkflowExpression.Compile(bodyquestionsFreeResponse, nameof(bodyquestionsFreeResponse), required: false);
+            var __workflow_bodyrecognitionMode = WorkflowExpression.Compile(bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
             return new DeferredBodyAction<DocumentQuestionAnswersResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/analyze/answer-questions";
@@ -115,10 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractTextResponse> ExtractText(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractTextResponse>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/text";
@@ -133,12 +123,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractFieldsResponse> ExtractFields(Expression<Func<string>> fieldNames = null, Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_fieldNames = fieldNames == null ? null : WorkflowExpression.Compile(fieldNames);
-            WorkflowExpression.Validate(__workflow_fieldNames, nameof(fieldNames), required: false);
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_fieldNames = WorkflowExpression.Compile(fieldNames, nameof(fieldNames), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractFieldsResponse>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/fields";
@@ -155,20 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractFieldsAdvancedResponse> ExtractFieldsAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_bodyinputFile = bodyinputFile == null ? null : WorkflowExpression.Compile(bodyinputFile);
-            WorkflowExpression.Validate(__workflow_bodyinputFile, nameof(bodyinputFile), required: false);
-            var __workflow_bodyfieldsToExtract = bodyfieldsToExtract == null ? null : WorkflowExpression.Compile(bodyfieldsToExtract);
-            WorkflowExpression.Validate(__workflow_bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
-            var __workflow_bodymaximumPagesProcessed = bodymaximumPagesProcessed == null ? null : WorkflowExpression.Compile(bodymaximumPagesProcessed);
-            WorkflowExpression.Validate(__workflow_bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
-            var __workflow_bodypreprocessing = bodypreprocessing == null ? null : WorkflowExpression.Compile(bodypreprocessing);
-            WorkflowExpression.Validate(__workflow_bodypreprocessing, nameof(bodypreprocessing), required: false);
-            var __workflow_bodyresultCrossCheck = bodyresultCrossCheck == null ? null : WorkflowExpression.Compile(bodyresultCrossCheck);
-            WorkflowExpression.Validate(__workflow_bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
-            var __workflow_bodyrotateImageDegrees = bodyrotateImageDegrees == null ? null : WorkflowExpression.Compile(bodyrotateImageDegrees);
-            WorkflowExpression.Validate(__workflow_bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
+            var __workflow_bodyfieldsToExtract = WorkflowExpression.Compile(bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
+            var __workflow_bodymaximumPagesProcessed = WorkflowExpression.Compile(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
+            var __workflow_bodypreprocessing = WorkflowExpression.Compile(bodypreprocessing, nameof(bodypreprocessing), required: false);
+            var __workflow_bodyresultCrossCheck = WorkflowExpression.Compile(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
+            var __workflow_bodyrotateImageDegrees = WorkflowExpression.Compile(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
             return new DeferredBodyAction<ExtractFieldsAdvancedResponse>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/fields/advanced";
@@ -226,10 +206,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractTablesResponse> ExtractTables(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractTablesResponse>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/tables";
@@ -244,10 +222,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractBarcodesAiResponse> ExtractBarcodes(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractBarcodesAiResponse>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/barcodes";
@@ -262,12 +238,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractFieldsAndTablesResponse> ExtractAllFieldsAndTables(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> preprocessing = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_preprocessing = preprocessing == null ? null : WorkflowExpression.Compile(preprocessing);
-            WorkflowExpression.Validate(__workflow_preprocessing, nameof(preprocessing), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_preprocessing = WorkflowExpression.Compile(preprocessing, nameof(preprocessing), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractFieldsAndTablesResponse>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/all";
@@ -284,12 +257,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<DocumentClassificationResult> ExtractClassification(Expression<Func<string>> categories = null, Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<DocumentClassificationResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/classify";
@@ -306,20 +276,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<DocumentAdvancedClassificationResult> ExtractClassificationAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> bodyinputFile = null, Expression<Func<DocumentCategories[]>> bodycategories = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<double>> bodyrotateImageDegrees = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_bodyinputFile = bodyinputFile == null ? null : WorkflowExpression.Compile(bodyinputFile);
-            WorkflowExpression.Validate(__workflow_bodyinputFile, nameof(bodyinputFile), required: false);
-            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
-            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodypreprocessing = bodypreprocessing == null ? null : WorkflowExpression.Compile(bodypreprocessing);
-            WorkflowExpression.Validate(__workflow_bodypreprocessing, nameof(bodypreprocessing), required: false);
-            var __workflow_bodyresultCrossCheck = bodyresultCrossCheck == null ? null : WorkflowExpression.Compile(bodyresultCrossCheck);
-            WorkflowExpression.Validate(__workflow_bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
-            var __workflow_bodymaximumPagesProcessed = bodymaximumPagesProcessed == null ? null : WorkflowExpression.Compile(bodymaximumPagesProcessed);
-            WorkflowExpression.Validate(__workflow_bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
-            var __workflow_bodyrotateImageDegrees = bodyrotateImageDegrees == null ? null : WorkflowExpression.Compile(bodyrotateImageDegrees);
-            WorkflowExpression.Validate(__workflow_bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodypreprocessing = WorkflowExpression.Compile(bodypreprocessing, nameof(bodypreprocessing), required: false);
+            var __workflow_bodyresultCrossCheck = WorkflowExpression.Compile(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
+            var __workflow_bodymaximumPagesProcessed = WorkflowExpression.Compile(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
+            var __workflow_bodyrotateImageDegrees = WorkflowExpression.Compile(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
             return new DeferredBodyAction<DocumentAdvancedClassificationResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/classify/advanced";
@@ -377,10 +340,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<SummarizeDocumentResponse> ExtractSummary(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<SummarizeDocumentResponse>(() =>
             {
                 var apiCallPath = "/document-ai/document/extract/summary";
@@ -395,10 +356,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractTextFromDocumentBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractDocumentBatchJobResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/batch-job/extract/text";
@@ -413,20 +372,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractFieldsFromDocumentAdvancedBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_bodyinputFile = bodyinputFile == null ? null : WorkflowExpression.Compile(bodyinputFile);
-            WorkflowExpression.Validate(__workflow_bodyinputFile, nameof(bodyinputFile), required: false);
-            var __workflow_bodyfieldsToExtract = bodyfieldsToExtract == null ? null : WorkflowExpression.Compile(bodyfieldsToExtract);
-            WorkflowExpression.Validate(__workflow_bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
-            var __workflow_bodymaximumPagesProcessed = bodymaximumPagesProcessed == null ? null : WorkflowExpression.Compile(bodymaximumPagesProcessed);
-            WorkflowExpression.Validate(__workflow_bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
-            var __workflow_bodypreprocessing = bodypreprocessing == null ? null : WorkflowExpression.Compile(bodypreprocessing);
-            WorkflowExpression.Validate(__workflow_bodypreprocessing, nameof(bodypreprocessing), required: false);
-            var __workflow_bodyresultCrossCheck = bodyresultCrossCheck == null ? null : WorkflowExpression.Compile(bodyresultCrossCheck);
-            WorkflowExpression.Validate(__workflow_bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
-            var __workflow_bodyrotateImageDegrees = bodyrotateImageDegrees == null ? null : WorkflowExpression.Compile(bodyrotateImageDegrees);
-            WorkflowExpression.Validate(__workflow_bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_bodyinputFile = WorkflowExpression.Compile(bodyinputFile, nameof(bodyinputFile), required: false);
+            var __workflow_bodyfieldsToExtract = WorkflowExpression.Compile(bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
+            var __workflow_bodymaximumPagesProcessed = WorkflowExpression.Compile(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
+            var __workflow_bodypreprocessing = WorkflowExpression.Compile(bodypreprocessing, nameof(bodypreprocessing), required: false);
+            var __workflow_bodyresultCrossCheck = WorkflowExpression.Compile(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
+            var __workflow_bodyrotateImageDegrees = WorkflowExpression.Compile(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
             return new DeferredBodyAction<ExtractDocumentBatchJobResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/batch-job/extract/fields/advanced";
@@ -484,10 +436,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractAllFieldsAndTablesFromDocumentBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractDocumentBatchJobResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/batch-job/extract/all";
@@ -502,12 +452,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractClassificationFromDocumentBatchJob(Expression<Func<string>> categories = null, Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
         {
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
-            var __workflow_recognitionMode = recognitionMode == null ? null : WorkflowExpression.Compile(recognitionMode);
-            WorkflowExpression.Validate(__workflow_recognitionMode, nameof(recognitionMode), required: false);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            var __workflow_recognitionMode = WorkflowExpression.Compile(recognitionMode, nameof(recognitionMode), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
             return new DeferredBodyAction<ExtractDocumentBatchJobResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/batch-job/extract/classify";
@@ -524,8 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
         public IBodyWorkflowAction<ExtractDocumentJobStatusResult> GetAsyncJobStatus(Expression<Func<string>> asyncJobID = null)
         {
-            var __workflow_asyncJobID = asyncJobID == null ? null : WorkflowExpression.Compile(asyncJobID);
-            WorkflowExpression.Validate(__workflow_asyncJobID, nameof(asyncJobID), required: false);
+            var __workflow_asyncJobID = WorkflowExpression.Compile(asyncJobID, nameof(asyncJobID), required: false);
             return new DeferredBodyAction<ExtractDocumentJobStatusResult>(() =>
             {
                 var apiCallPath = "/document-ai/document/batch-job/batch-job/status";

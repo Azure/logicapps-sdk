@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments(Expression<Func<statusInput>> status = null, Expression<Func<sortInput>> sort = null, Expression<Func<string>> limit = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_modifiedAfter = modifiedAfter == null ? null : WorkflowExpression.Compile(modifiedAfter);
-            WorkflowExpression.Validate(__workflow_modifiedAfter, nameof(modifiedAfter), required: false);
-            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
-            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_modifiedAfter = WorkflowExpression.Compile(modifiedAfter, nameof(modifiedAfter), required: false);
+            var __workflow_modifiedBefore = WorkflowExpression.Compile(modifiedBefore, nameof(modifiedBefore), required: false);
             return new DeferredBodyAction<ListDocumentsResponseItem[]>(() =>
             {
                 var apiCallPath = "/document-processes";
@@ -45,16 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<DocumentProcessParticipantsResponse> DocumentProcessParticipants(Expression<Func<string>> documentProcessId, Expression<Func<bodyparticipantTypeInput>> bodyparticipantType, Expression<Func<bodyroleTypeInput>> bodyroleType = null, Expression<Func<string>> bodysignatureType = null, Expression<Func<object>> bodyparticipantData = null)
         {
-            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
-            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_bodyparticipantType = bodyparticipantType == null ? null : WorkflowExpression.Compile(bodyparticipantType);
-            WorkflowExpression.Validate(__workflow_bodyparticipantType, nameof(bodyparticipantType), required: true);
-            var __workflow_bodyroleType = bodyroleType == null ? null : WorkflowExpression.Compile(bodyroleType);
-            WorkflowExpression.Validate(__workflow_bodyroleType, nameof(bodyroleType), required: false);
-            var __workflow_bodysignatureType = bodysignatureType == null ? null : WorkflowExpression.Compile(bodysignatureType);
-            WorkflowExpression.Validate(__workflow_bodysignatureType, nameof(bodysignatureType), required: false);
-            var __workflow_bodyparticipantData = bodyparticipantData == null ? null : WorkflowExpression.Compile(bodyparticipantData);
-            WorkflowExpression.Validate(__workflow_bodyparticipantData, nameof(bodyparticipantData), required: false);
+            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_bodyparticipantType = WorkflowExpression.Compile(bodyparticipantType, nameof(bodyparticipantType), required: true);
+            var __workflow_bodyroleType = WorkflowExpression.Compile(bodyroleType, nameof(bodyroleType), required: false);
+            var __workflow_bodysignatureType = WorkflowExpression.Compile(bodysignatureType, nameof(bodysignatureType), required: false);
+            var __workflow_bodyparticipantData = WorkflowExpression.Compile(bodyparticipantData, nameof(bodyparticipantData), required: false);
             return new DeferredBodyAction<DocumentProcessParticipantsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/parties", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
@@ -94,10 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<AddFileResponse> AddFile(Expression<Func<string>> documentProcessId, Expression<Func<object>> file)
         {
-            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
-            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredBodyAction<AddFileResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
@@ -110,10 +98,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<GetFilesInfoResponse> GetFilesInfo(Expression<Func<string>> documentProcessId, Expression<Func<filePurposeInput>> filePurpose = null)
         {
-            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
-            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_filePurpose = filePurpose == null ? null : WorkflowExpression.Compile(filePurpose);
-            WorkflowExpression.Validate(__workflow_filePurpose, nameof(filePurpose), required: false);
+            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_filePurpose = WorkflowExpression.Compile(filePurpose, nameof(filePurpose), required: false);
             return new DeferredBodyAction<GetFilesInfoResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
@@ -129,10 +115,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<ActionsAvailabilityResponse> ActionsAvailability(Expression<Func<string>> documentProcessId, Expression<Func<bodyeventTypeInput>> bodyeventType)
         {
-            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
-            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
-            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
             return new DeferredBodyAction<ActionsAvailabilityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
@@ -154,8 +138,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IBodyWorkflowAction<GetByIdResponse> GetById(Expression<Func<string>> documentProcessId)
         {
-            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
-            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
             return new DeferredBodyAction<GetByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
@@ -168,10 +151,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IWorkflowAction DownloadFile(Expression<Func<string>> documentProcessId, Expression<Func<string>> fileId)
         {
-            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
-            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -184,10 +165,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autentiesignaturewor")]
         public IWorkflowAction AddTag(Expression<Func<string>> documentProcessId, Expression<Func<string>> bodyid = null)
         {
-            var __workflow_documentProcessId = documentProcessId == null ? null : WorkflowExpression.Compile(documentProcessId);
-            WorkflowExpression.Validate(__workflow_documentProcessId, nameof(documentProcessId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
+            var __workflow_documentProcessId = WorkflowExpression.Compile(documentProcessId, nameof(documentProcessId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document-processes/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentProcessId, 1));
@@ -215,10 +194,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
     {
         public IWorkflowTrigger DocumentChange(Expression<Func<string>> bodycallbackAdapterId, Expression<Func<string>> responseVariant = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycallbackAdapterId = bodycallbackAdapterId == null ? null : WorkflowExpression.Compile(bodycallbackAdapterId);
-            WorkflowExpression.Validate(__workflow_bodycallbackAdapterId, nameof(bodycallbackAdapterId), required: true);
-            var __workflow_responseVariant = responseVariant == null ? null : WorkflowExpression.Compile(responseVariant);
-            WorkflowExpression.Validate(__workflow_responseVariant, nameof(responseVariant), required: false);
+            var __workflow_bodycallbackAdapterId = WorkflowExpression.Compile(bodycallbackAdapterId, nameof(bodycallbackAdapterId), required: true);
+            var __workflow_responseVariant = WorkflowExpression.Compile(responseVariant, nameof(responseVariant), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/applications/callbacks";

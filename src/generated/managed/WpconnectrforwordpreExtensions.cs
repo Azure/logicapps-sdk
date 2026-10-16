@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> GetResourceById(Expression<Func<string>> resource, Expression<Func<string>> id)
         {
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -29,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> DeleteResource(Expression<Func<string>> resource, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -48,12 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> UpdateResource(Expression<Func<string>> id, Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -67,10 +59,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken[]> GetItemsByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1));
@@ -84,8 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> UploadMedia(Expression<Func<object>> file)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/resources/media";
@@ -98,10 +87,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> CreateResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1));
@@ -115,10 +102,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
         public IBodyWorkflowAction<JToken> GetItemByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
         {
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/{0}/fetch", ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1));
@@ -134,10 +119,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
     {
         public IWorkflowTrigger CreateTrigger(Expression<Func<string>> bodyresourceType, Expression<Func<string>> bodytriggerEvent, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyresourceType = bodyresourceType == null ? null : WorkflowExpression.Compile(bodyresourceType);
-            WorkflowExpression.Validate(__workflow_bodyresourceType, nameof(bodyresourceType), required: true);
-            var __workflow_bodytriggerEvent = bodytriggerEvent == null ? null : WorkflowExpression.Compile(bodytriggerEvent);
-            WorkflowExpression.Validate(__workflow_bodytriggerEvent, nameof(bodytriggerEvent), required: true);
+            var __workflow_bodyresourceType = WorkflowExpression.Compile(bodyresourceType, nameof(bodyresourceType), required: true);
+            var __workflow_bodytriggerEvent = WorkflowExpression.Compile(bodytriggerEvent, nameof(bodytriggerEvent), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/triggers";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Forcamforcebridge
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "forcamforcebridge")]
         public IBodyWorkflowAction<TicketClassList> TicketClasses(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<TicketClassList>(() =>
             {
                 var apiCallPath = "/tickets/classes";

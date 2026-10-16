@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workiqonedrive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workiqonedrive")]
         public IWorkflowAction McpOneDriveRemoteServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
         {
-            var __workflow_mcpSessionId = mcpSessionId == null ? null : WorkflowExpression.Compile(mcpSessionId);
-            WorkflowExpression.Validate(__workflow_mcpSessionId, nameof(mcpSessionId), required: false);
-            var __workflow_queryRequestjsonrpc = queryRequestjsonrpc == null ? null : WorkflowExpression.Compile(queryRequestjsonrpc);
-            WorkflowExpression.Validate(__workflow_queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = queryRequestid == null ? null : WorkflowExpression.Compile(queryRequestid);
-            WorkflowExpression.Validate(__workflow_queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = queryRequestmethod == null ? null : WorkflowExpression.Compile(queryRequestmethod);
-            WorkflowExpression.Validate(__workflow_queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_mcpSessionId = WorkflowExpression.Compile(mcpSessionId, nameof(mcpSessionId), required: false);
+            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
+            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/servers/mcp_OneDriveRemoteServer";

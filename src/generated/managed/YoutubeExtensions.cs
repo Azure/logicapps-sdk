@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
     {
         public IBodyWorkflowTrigger<VideoList> OnNewVideoInChannel(Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
         {
-            var __workflow_channelId = channelId == null ? null : WorkflowExpression.Compile(channelId);
-            WorkflowExpression.Validate(__workflow_channelId, nameof(channelId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyTrigger<VideoList>(() =>
             {
                 var apiCallPath = "/trigger/activities";
@@ -38,8 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 
         public IBodyWorkflowTrigger<VideoList> OnNewVideoMatchingSearch(Expression<Func<string>> q, FlowRecurrence recurrence = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyTrigger<VideoList>(() =>
             {
                 var apiCallPath = "/trigger/search";

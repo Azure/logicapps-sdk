@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Numlookupapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "numlookupapiip")]
         public IBodyWorkflowAction<NumberGetResponse> NumberGet(Expression<Func<string>> phoneNumber, Expression<Func<string>> countryCode = null)
         {
-            var __workflow_phoneNumber = phoneNumber == null ? null : WorkflowExpression.Compile(phoneNumber);
-            WorkflowExpression.Validate(__workflow_phoneNumber, nameof(phoneNumber), required: true);
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
+            var __workflow_phoneNumber = WorkflowExpression.Compile(phoneNumber, nameof(phoneNumber), required: true);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<NumberGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/validate/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_phoneNumber, 1));

@@ -31,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ListPostResponse> List(Expression<Func<string>> bodyname)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ListPostResponse>(() =>
             {
                 var apiCallPath = "/lists";
@@ -54,8 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             return new DeferredBodyAction<ListGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -68,10 +66,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ListContactDeleteResponse> ListContactDelete(Expression<Func<string>> listId, Expression<Func<string>> contactId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<ListContactDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -93,14 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ContactPostResponse> Contact(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string[]>> bodylists = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodylists = bodylists == null ? null : WorkflowExpression.Compile(bodylists);
-            WorkflowExpression.Validate(__workflow_bodylists, nameof(bodylists), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodylists = WorkflowExpression.Compile(bodylists, nameof(bodylists), required: false);
             return new DeferredBodyAction<ContactPostResponse>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -144,8 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> contactId)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<ContactGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -158,8 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<UnsubscribePatchResponse> UnsubscribePatch(Expression<Func<string>> bodyemail)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<UnsubscribePatchResponse>(() =>
             {
                 var apiCallPath = "/unsubscribe";
@@ -190,8 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendfoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendfoxip")]
         public IBodyWorkflowAction<CampaignGetResponse> CampaignGet(Expression<Func<string>> campaignId)
         {
-            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
-            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
+            var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             return new DeferredBodyAction<CampaignGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));

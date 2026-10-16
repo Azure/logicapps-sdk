@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
         public IWorkflowAction ApiAnalyze(Expression<Func<string>> analysisRequestfile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
         {
-            var __workflow_analysisRequestfile = analysisRequestfile == null ? null : WorkflowExpression.Compile(analysisRequestfile);
-            WorkflowExpression.Validate(__workflow_analysisRequestfile, nameof(analysisRequestfile), required: true);
-            var __workflow_analysisRequestfileName = analysisRequestfileName == null ? null : WorkflowExpression.Compile(analysisRequestfileName);
-            WorkflowExpression.Validate(__workflow_analysisRequestfileName, nameof(analysisRequestfileName), required: true);
-            var __workflow_analysisRequestlicense = analysisRequestlicense == null ? null : WorkflowExpression.Compile(analysisRequestlicense);
-            WorkflowExpression.Validate(__workflow_analysisRequestlicense, nameof(analysisRequestlicense), required: false);
+            var __workflow_analysisRequestfile = WorkflowExpression.Compile(analysisRequestfile, nameof(analysisRequestfile), required: true);
+            var __workflow_analysisRequestfileName = WorkflowExpression.Compile(analysisRequestfileName, nameof(analysisRequestfileName), required: true);
+            var __workflow_analysisRequestlicense = WorkflowExpression.Compile(analysisRequestlicense, nameof(analysisRequestlicense), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/analyze";

@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageSendPostResponse> MessageSend(Expression<Func<string>> idempotency, Expression<Func<string>> bodymessagecontenttitle = null, Expression<Func<string>> bodymessagecontentbody = null, Expression<Func<string>> bodymessagetouserId = null, Expression<Func<string>> bodymessagetolistId = null, Expression<Func<string>> bodymessagetoaudienceId = null, Expression<Func<string>> bodymessagetoemail = null, Expression<Func<string>> bodymessagetophoneNumber = null, Expression<Func<string>> bodymessagetolocale = null)
         {
-            var __workflow_idempotency = idempotency == null ? null : WorkflowExpression.Compile(idempotency);
-            WorkflowExpression.Validate(__workflow_idempotency, nameof(idempotency), required: true);
-            var __workflow_bodymessagecontenttitle = bodymessagecontenttitle == null ? null : WorkflowExpression.Compile(bodymessagecontenttitle);
-            WorkflowExpression.Validate(__workflow_bodymessagecontenttitle, nameof(bodymessagecontenttitle), required: false);
-            var __workflow_bodymessagecontentbody = bodymessagecontentbody == null ? null : WorkflowExpression.Compile(bodymessagecontentbody);
-            WorkflowExpression.Validate(__workflow_bodymessagecontentbody, nameof(bodymessagecontentbody), required: false);
-            var __workflow_bodymessagetouserId = bodymessagetouserId == null ? null : WorkflowExpression.Compile(bodymessagetouserId);
-            WorkflowExpression.Validate(__workflow_bodymessagetouserId, nameof(bodymessagetouserId), required: false);
-            var __workflow_bodymessagetolistId = bodymessagetolistId == null ? null : WorkflowExpression.Compile(bodymessagetolistId);
-            WorkflowExpression.Validate(__workflow_bodymessagetolistId, nameof(bodymessagetolistId), required: false);
-            var __workflow_bodymessagetoaudienceId = bodymessagetoaudienceId == null ? null : WorkflowExpression.Compile(bodymessagetoaudienceId);
-            WorkflowExpression.Validate(__workflow_bodymessagetoaudienceId, nameof(bodymessagetoaudienceId), required: false);
-            var __workflow_bodymessagetoemail = bodymessagetoemail == null ? null : WorkflowExpression.Compile(bodymessagetoemail);
-            WorkflowExpression.Validate(__workflow_bodymessagetoemail, nameof(bodymessagetoemail), required: false);
-            var __workflow_bodymessagetophoneNumber = bodymessagetophoneNumber == null ? null : WorkflowExpression.Compile(bodymessagetophoneNumber);
-            WorkflowExpression.Validate(__workflow_bodymessagetophoneNumber, nameof(bodymessagetophoneNumber), required: false);
-            var __workflow_bodymessagetolocale = bodymessagetolocale == null ? null : WorkflowExpression.Compile(bodymessagetolocale);
-            WorkflowExpression.Validate(__workflow_bodymessagetolocale, nameof(bodymessagetolocale), required: false);
+            var __workflow_idempotency = WorkflowExpression.Compile(idempotency, nameof(idempotency), required: true);
+            var __workflow_bodymessagecontenttitle = WorkflowExpression.Compile(bodymessagecontenttitle, nameof(bodymessagecontenttitle), required: false);
+            var __workflow_bodymessagecontentbody = WorkflowExpression.Compile(bodymessagecontentbody, nameof(bodymessagecontentbody), required: false);
+            var __workflow_bodymessagetouserId = WorkflowExpression.Compile(bodymessagetouserId, nameof(bodymessagetouserId), required: false);
+            var __workflow_bodymessagetolistId = WorkflowExpression.Compile(bodymessagetolistId, nameof(bodymessagetolistId), required: false);
+            var __workflow_bodymessagetoaudienceId = WorkflowExpression.Compile(bodymessagetoaudienceId, nameof(bodymessagetoaudienceId), required: false);
+            var __workflow_bodymessagetoemail = WorkflowExpression.Compile(bodymessagetoemail, nameof(bodymessagetoemail), required: false);
+            var __workflow_bodymessagetophoneNumber = WorkflowExpression.Compile(bodymessagetophoneNumber, nameof(bodymessagetophoneNumber), required: false);
+            var __workflow_bodymessagetolocale = WorkflowExpression.Compile(bodymessagetolocale, nameof(bodymessagetolocale), required: false);
             return new DeferredBodyAction<MessageSendPostResponse>(() =>
             {
                 var apiCallPath = "/send";
@@ -139,8 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudienceGetResponse> AudienceGet(Expression<Func<string>> audienceId)
         {
-            var __workflow_audienceId = audienceId == null ? null : WorkflowExpression.Compile(audienceId);
-            WorkflowExpression.Validate(__workflow_audienceId, nameof(audienceId), required: true);
+            var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
             return new DeferredBodyAction<AudienceGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audiences/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_audienceId, 1));
@@ -153,8 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> AudienceDelete(Expression<Func<string>> audienceId)
         {
-            var __workflow_audienceId = audienceId == null ? null : WorkflowExpression.Compile(audienceId);
-            WorkflowExpression.Validate(__workflow_audienceId, nameof(audienceId), required: true);
+            var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audiences/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_audienceId, 1));
@@ -167,18 +156,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudiencePutResponse> AudiencePut(Expression<Func<string>> audienceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfilterpath = null, Expression<Func<string>> bodyfilterOperator = null, Expression<Func<string>> bodyfiltervalue = null, Expression<Func<bodyfilterfiltersInputItem[]>> bodyfilterfilters = null)
         {
-            var __workflow_audienceId = audienceId == null ? null : WorkflowExpression.Compile(audienceId);
-            WorkflowExpression.Validate(__workflow_audienceId, nameof(audienceId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyfilterpath = bodyfilterpath == null ? null : WorkflowExpression.Compile(bodyfilterpath);
-            WorkflowExpression.Validate(__workflow_bodyfilterpath, nameof(bodyfilterpath), required: false);
-            var __workflow_bodyfilterOperator = bodyfilterOperator == null ? null : WorkflowExpression.Compile(bodyfilterOperator);
-            WorkflowExpression.Validate(__workflow_bodyfilterOperator, nameof(bodyfilterOperator), required: false);
-            var __workflow_bodyfiltervalue = bodyfiltervalue == null ? null : WorkflowExpression.Compile(bodyfiltervalue);
-            WorkflowExpression.Validate(__workflow_bodyfiltervalue, nameof(bodyfiltervalue), required: false);
-            var __workflow_bodyfilterfilters = bodyfilterfilters == null ? null : WorkflowExpression.Compile(bodyfilterfilters);
-            WorkflowExpression.Validate(__workflow_bodyfilterfilters, nameof(bodyfilterfilters), required: false);
+            var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyfilterpath = WorkflowExpression.Compile(bodyfilterpath, nameof(bodyfilterpath), required: false);
+            var __workflow_bodyfilterOperator = WorkflowExpression.Compile(bodyfilterOperator, nameof(bodyfilterOperator), required: false);
+            var __workflow_bodyfiltervalue = WorkflowExpression.Compile(bodyfiltervalue, nameof(bodyfiltervalue), required: false);
+            var __workflow_bodyfilterfilters = WorkflowExpression.Compile(bodyfilterfilters, nameof(bodyfilterfilters), required: false);
             return new DeferredBodyAction<AudiencePutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audiences/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_audienceId, 1));
@@ -236,10 +219,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudienceMembersGetResponse> AudienceMembersGet(Expression<Func<string>> audienceId, Expression<Func<string>> cursor = null)
         {
-            var __workflow_audienceId = audienceId == null ? null : WorkflowExpression.Compile(audienceId);
-            WorkflowExpression.Validate(__workflow_audienceId, nameof(audienceId), required: true);
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
+            var __workflow_audienceId = WorkflowExpression.Compile(audienceId, nameof(audienceId), required: true);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             return new DeferredBodyAction<AudienceMembersGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audiences/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_audienceId, 1));
@@ -254,8 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AudiencesGetResponse> AudiencesGet(Expression<Func<string>> cursor = null)
         {
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             return new DeferredBodyAction<AudiencesGetResponse>(() =>
             {
                 var apiCallPath = "/audiences";
@@ -270,8 +250,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AuditEventsGetResponse> AuditEventsGet(Expression<Func<string>> cursor = null)
         {
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             return new DeferredBodyAction<AuditEventsGetResponse>(() =>
             {
                 var apiCallPath = "/audit-events";
@@ -286,8 +265,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AuditEventGetResponse> AuditEventGet(Expression<Func<string>> auditEventId)
         {
-            var __workflow_auditEventId = auditEventId == null ? null : WorkflowExpression.Compile(auditEventId);
-            WorkflowExpression.Validate(__workflow_auditEventId, nameof(auditEventId), required: true);
+            var __workflow_auditEventId = WorkflowExpression.Compile(auditEventId, nameof(auditEventId), required: true);
             return new DeferredBodyAction<AuditEventGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audit-events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditEventId, 1));
@@ -300,14 +278,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AutomationTemplatedPostResponse> AutomationTemplated(Expression<Func<string>> templateId, Expression<Func<string>> bodybrand = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyrecipient = null)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_bodybrand = bodybrand == null ? null : WorkflowExpression.Compile(bodybrand);
-            WorkflowExpression.Validate(__workflow_bodybrand, nameof(bodybrand), required: false);
-            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
-            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: false);
-            var __workflow_bodyrecipient = bodyrecipient == null ? null : WorkflowExpression.Compile(bodyrecipient);
-            WorkflowExpression.Validate(__workflow_bodyrecipient, nameof(bodyrecipient), required: false);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_bodybrand = WorkflowExpression.Compile(bodybrand, nameof(bodybrand), required: false);
+            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: false);
+            var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: false);
             return new DeferredBodyAction<AutomationTemplatedPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/automations/{0}/invoke", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -361,16 +335,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<AutomationAdHocPostResponse> AutomationAdHoc(Expression<Func<JToken[]>> bodyautomationsteps = null, Expression<Func<string>> bodyautomationcancelationToken = null, Expression<Func<string>> bodybrand = null, Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyrecipient = null)
         {
-            var __workflow_bodyautomationsteps = bodyautomationsteps == null ? null : WorkflowExpression.Compile(bodyautomationsteps);
-            WorkflowExpression.Validate(__workflow_bodyautomationsteps, nameof(bodyautomationsteps), required: false);
-            var __workflow_bodyautomationcancelationToken = bodyautomationcancelationToken == null ? null : WorkflowExpression.Compile(bodyautomationcancelationToken);
-            WorkflowExpression.Validate(__workflow_bodyautomationcancelationToken, nameof(bodyautomationcancelationToken), required: false);
-            var __workflow_bodybrand = bodybrand == null ? null : WorkflowExpression.Compile(bodybrand);
-            WorkflowExpression.Validate(__workflow_bodybrand, nameof(bodybrand), required: false);
-            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
-            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: false);
-            var __workflow_bodyrecipient = bodyrecipient == null ? null : WorkflowExpression.Compile(bodyrecipient);
-            WorkflowExpression.Validate(__workflow_bodyrecipient, nameof(bodyrecipient), required: false);
+            var __workflow_bodyautomationsteps = WorkflowExpression.Compile(bodyautomationsteps, nameof(bodyautomationsteps), required: false);
+            var __workflow_bodyautomationcancelationToken = WorkflowExpression.Compile(bodyautomationcancelationToken, nameof(bodyautomationcancelationToken), required: false);
+            var __workflow_bodybrand = WorkflowExpression.Compile(bodybrand, nameof(bodybrand), required: false);
+            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: false);
+            var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: false);
             return new DeferredBodyAction<AutomationAdHocPostResponse>(() =>
             {
                 var apiCallPath = "/automations/invoke";
@@ -444,8 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BrandsGetResponse> BrandsGet(Expression<Func<string>> cursor = null)
         {
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             return new DeferredBodyAction<BrandsGetResponse>(() =>
             {
                 var apiCallPath = "/brands";
@@ -460,40 +428,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> Brand(Expression<Func<string>> bodyname, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodysettingscolorsprimary = null, Expression<Func<string>> bodysettingscolorssecondary = null, Expression<Func<string>> bodysettingscolorstertiary = null, Expression<Func<string>> bodysettingsemailheaderbarColor = null, Expression<Func<string>> bodysettingsemailheaderlogohref = null, Expression<Func<string>> bodysettingsemailheaderlogoimage = null, Expression<Func<string>> bodysettingsemailfootermarkdown = null, Expression<Func<string>> bodysettingsemailfootersocialfacebookurl = null, Expression<Func<string>> bodysettingsemailfootersocialinstagramurl = null, Expression<Func<string>> bodysettingsemailfootersociallinkedinurl = null, Expression<Func<string>> bodysettingsemailfootersocialmediumurl = null, Expression<Func<string>> bodysettingsemailfootersocialtwitterurl = null, Expression<Func<bool>> bodysettingsinappdisableMessageIcon = null, Expression<Func<string>> bodysettingsinappplacement = null, Expression<Func<string[]>> bodysnippetsitems = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodysettingscolorsprimary = bodysettingscolorsprimary == null ? null : WorkflowExpression.Compile(bodysettingscolorsprimary);
-            WorkflowExpression.Validate(__workflow_bodysettingscolorsprimary, nameof(bodysettingscolorsprimary), required: false);
-            var __workflow_bodysettingscolorssecondary = bodysettingscolorssecondary == null ? null : WorkflowExpression.Compile(bodysettingscolorssecondary);
-            WorkflowExpression.Validate(__workflow_bodysettingscolorssecondary, nameof(bodysettingscolorssecondary), required: false);
-            var __workflow_bodysettingscolorstertiary = bodysettingscolorstertiary == null ? null : WorkflowExpression.Compile(bodysettingscolorstertiary);
-            WorkflowExpression.Validate(__workflow_bodysettingscolorstertiary, nameof(bodysettingscolorstertiary), required: false);
-            var __workflow_bodysettingsemailheaderbarColor = bodysettingsemailheaderbarColor == null ? null : WorkflowExpression.Compile(bodysettingsemailheaderbarColor);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailheaderbarColor, nameof(bodysettingsemailheaderbarColor), required: false);
-            var __workflow_bodysettingsemailheaderlogohref = bodysettingsemailheaderlogohref == null ? null : WorkflowExpression.Compile(bodysettingsemailheaderlogohref);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailheaderlogohref, nameof(bodysettingsemailheaderlogohref), required: false);
-            var __workflow_bodysettingsemailheaderlogoimage = bodysettingsemailheaderlogoimage == null ? null : WorkflowExpression.Compile(bodysettingsemailheaderlogoimage);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailheaderlogoimage, nameof(bodysettingsemailheaderlogoimage), required: false);
-            var __workflow_bodysettingsemailfootermarkdown = bodysettingsemailfootermarkdown == null ? null : WorkflowExpression.Compile(bodysettingsemailfootermarkdown);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailfootermarkdown, nameof(bodysettingsemailfootermarkdown), required: false);
-            var __workflow_bodysettingsemailfootersocialfacebookurl = bodysettingsemailfootersocialfacebookurl == null ? null : WorkflowExpression.Compile(bodysettingsemailfootersocialfacebookurl);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailfootersocialfacebookurl, nameof(bodysettingsemailfootersocialfacebookurl), required: false);
-            var __workflow_bodysettingsemailfootersocialinstagramurl = bodysettingsemailfootersocialinstagramurl == null ? null : WorkflowExpression.Compile(bodysettingsemailfootersocialinstagramurl);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailfootersocialinstagramurl, nameof(bodysettingsemailfootersocialinstagramurl), required: false);
-            var __workflow_bodysettingsemailfootersociallinkedinurl = bodysettingsemailfootersociallinkedinurl == null ? null : WorkflowExpression.Compile(bodysettingsemailfootersociallinkedinurl);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailfootersociallinkedinurl, nameof(bodysettingsemailfootersociallinkedinurl), required: false);
-            var __workflow_bodysettingsemailfootersocialmediumurl = bodysettingsemailfootersocialmediumurl == null ? null : WorkflowExpression.Compile(bodysettingsemailfootersocialmediumurl);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailfootersocialmediumurl, nameof(bodysettingsemailfootersocialmediumurl), required: false);
-            var __workflow_bodysettingsemailfootersocialtwitterurl = bodysettingsemailfootersocialtwitterurl == null ? null : WorkflowExpression.Compile(bodysettingsemailfootersocialtwitterurl);
-            WorkflowExpression.Validate(__workflow_bodysettingsemailfootersocialtwitterurl, nameof(bodysettingsemailfootersocialtwitterurl), required: false);
-            var __workflow_bodysettingsinappdisableMessageIcon = bodysettingsinappdisableMessageIcon == null ? null : WorkflowExpression.Compile(bodysettingsinappdisableMessageIcon);
-            WorkflowExpression.Validate(__workflow_bodysettingsinappdisableMessageIcon, nameof(bodysettingsinappdisableMessageIcon), required: false);
-            var __workflow_bodysettingsinappplacement = bodysettingsinappplacement == null ? null : WorkflowExpression.Compile(bodysettingsinappplacement);
-            WorkflowExpression.Validate(__workflow_bodysettingsinappplacement, nameof(bodysettingsinappplacement), required: false);
-            var __workflow_bodysnippetsitems = bodysnippetsitems == null ? null : WorkflowExpression.Compile(bodysnippetsitems);
-            WorkflowExpression.Validate(__workflow_bodysnippetsitems, nameof(bodysnippetsitems), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodysettingscolorsprimary = WorkflowExpression.Compile(bodysettingscolorsprimary, nameof(bodysettingscolorsprimary), required: false);
+            var __workflow_bodysettingscolorssecondary = WorkflowExpression.Compile(bodysettingscolorssecondary, nameof(bodysettingscolorssecondary), required: false);
+            var __workflow_bodysettingscolorstertiary = WorkflowExpression.Compile(bodysettingscolorstertiary, nameof(bodysettingscolorstertiary), required: false);
+            var __workflow_bodysettingsemailheaderbarColor = WorkflowExpression.Compile(bodysettingsemailheaderbarColor, nameof(bodysettingsemailheaderbarColor), required: false);
+            var __workflow_bodysettingsemailheaderlogohref = WorkflowExpression.Compile(bodysettingsemailheaderlogohref, nameof(bodysettingsemailheaderlogohref), required: false);
+            var __workflow_bodysettingsemailheaderlogoimage = WorkflowExpression.Compile(bodysettingsemailheaderlogoimage, nameof(bodysettingsemailheaderlogoimage), required: false);
+            var __workflow_bodysettingsemailfootermarkdown = WorkflowExpression.Compile(bodysettingsemailfootermarkdown, nameof(bodysettingsemailfootermarkdown), required: false);
+            var __workflow_bodysettingsemailfootersocialfacebookurl = WorkflowExpression.Compile(bodysettingsemailfootersocialfacebookurl, nameof(bodysettingsemailfootersocialfacebookurl), required: false);
+            var __workflow_bodysettingsemailfootersocialinstagramurl = WorkflowExpression.Compile(bodysettingsemailfootersocialinstagramurl, nameof(bodysettingsemailfootersocialinstagramurl), required: false);
+            var __workflow_bodysettingsemailfootersociallinkedinurl = WorkflowExpression.Compile(bodysettingsemailfootersociallinkedinurl, nameof(bodysettingsemailfootersociallinkedinurl), required: false);
+            var __workflow_bodysettingsemailfootersocialmediumurl = WorkflowExpression.Compile(bodysettingsemailfootersocialmediumurl, nameof(bodysettingsemailfootersocialmediumurl), required: false);
+            var __workflow_bodysettingsemailfootersocialtwitterurl = WorkflowExpression.Compile(bodysettingsemailfootersocialtwitterurl, nameof(bodysettingsemailfootersocialtwitterurl), required: false);
+            var __workflow_bodysettingsinappdisableMessageIcon = WorkflowExpression.Compile(bodysettingsinappdisableMessageIcon, nameof(bodysettingsinappdisableMessageIcon), required: false);
+            var __workflow_bodysettingsinappplacement = WorkflowExpression.Compile(bodysettingsinappplacement, nameof(bodysettingsinappplacement), required: false);
+            var __workflow_bodysnippetsitems = WorkflowExpression.Compile(bodysnippetsitems, nameof(bodysnippetsitems), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/brands";
@@ -731,8 +682,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BrandGetResponse> BrandGet(Expression<Func<string>> brandId)
         {
-            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
-            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: true);
+            var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
             return new DeferredBodyAction<BrandGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/brands/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_brandId, 1));
@@ -745,34 +695,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobPostResponse> BulkJob(Expression<Func<string>> bodymessageEvent = null, Expression<Func<string>> bodymessagebrand = null, Expression<Func<string>> bodymessagetemplate = null, Expression<Func<string>> bodymessagebrandId = null, Expression<Func<string>> bodymessageroutingmethod = null, Expression<Func<string[]>> bodymessageroutingchannels = null, Expression<Func<string>> bodymessagemetadataEvent = null, Expression<Func<string[]>> bodymessagemetadatatags = null, Expression<Func<string>> bodymessagemetadatatraceId = null, Expression<Func<string>> bodymessagemetadatautmcampaign = null, Expression<Func<string>> bodymessagemetadatautmcontent = null, Expression<Func<string>> bodymessagemetadatautmmedium = null, Expression<Func<string>> bodymessagemetadatautmsource = null, Expression<Func<string>> bodymessagemetadatautmterm = null)
         {
-            var __workflow_bodymessageEvent = bodymessageEvent == null ? null : WorkflowExpression.Compile(bodymessageEvent);
-            WorkflowExpression.Validate(__workflow_bodymessageEvent, nameof(bodymessageEvent), required: false);
-            var __workflow_bodymessagebrand = bodymessagebrand == null ? null : WorkflowExpression.Compile(bodymessagebrand);
-            WorkflowExpression.Validate(__workflow_bodymessagebrand, nameof(bodymessagebrand), required: false);
-            var __workflow_bodymessagetemplate = bodymessagetemplate == null ? null : WorkflowExpression.Compile(bodymessagetemplate);
-            WorkflowExpression.Validate(__workflow_bodymessagetemplate, nameof(bodymessagetemplate), required: false);
-            var __workflow_bodymessagebrandId = bodymessagebrandId == null ? null : WorkflowExpression.Compile(bodymessagebrandId);
-            WorkflowExpression.Validate(__workflow_bodymessagebrandId, nameof(bodymessagebrandId), required: false);
-            var __workflow_bodymessageroutingmethod = bodymessageroutingmethod == null ? null : WorkflowExpression.Compile(bodymessageroutingmethod);
-            WorkflowExpression.Validate(__workflow_bodymessageroutingmethod, nameof(bodymessageroutingmethod), required: false);
-            var __workflow_bodymessageroutingchannels = bodymessageroutingchannels == null ? null : WorkflowExpression.Compile(bodymessageroutingchannels);
-            WorkflowExpression.Validate(__workflow_bodymessageroutingchannels, nameof(bodymessageroutingchannels), required: false);
-            var __workflow_bodymessagemetadataEvent = bodymessagemetadataEvent == null ? null : WorkflowExpression.Compile(bodymessagemetadataEvent);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadataEvent, nameof(bodymessagemetadataEvent), required: false);
-            var __workflow_bodymessagemetadatatags = bodymessagemetadatatags == null ? null : WorkflowExpression.Compile(bodymessagemetadatatags);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadatatags, nameof(bodymessagemetadatatags), required: false);
-            var __workflow_bodymessagemetadatatraceId = bodymessagemetadatatraceId == null ? null : WorkflowExpression.Compile(bodymessagemetadatatraceId);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadatatraceId, nameof(bodymessagemetadatatraceId), required: false);
-            var __workflow_bodymessagemetadatautmcampaign = bodymessagemetadatautmcampaign == null ? null : WorkflowExpression.Compile(bodymessagemetadatautmcampaign);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadatautmcampaign, nameof(bodymessagemetadatautmcampaign), required: false);
-            var __workflow_bodymessagemetadatautmcontent = bodymessagemetadatautmcontent == null ? null : WorkflowExpression.Compile(bodymessagemetadatautmcontent);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadatautmcontent, nameof(bodymessagemetadatautmcontent), required: false);
-            var __workflow_bodymessagemetadatautmmedium = bodymessagemetadatautmmedium == null ? null : WorkflowExpression.Compile(bodymessagemetadatautmmedium);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadatautmmedium, nameof(bodymessagemetadatautmmedium), required: false);
-            var __workflow_bodymessagemetadatautmsource = bodymessagemetadatautmsource == null ? null : WorkflowExpression.Compile(bodymessagemetadatautmsource);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadatautmsource, nameof(bodymessagemetadatautmsource), required: false);
-            var __workflow_bodymessagemetadatautmterm = bodymessagemetadatautmterm == null ? null : WorkflowExpression.Compile(bodymessagemetadatautmterm);
-            WorkflowExpression.Validate(__workflow_bodymessagemetadatautmterm, nameof(bodymessagemetadatautmterm), required: false);
+            var __workflow_bodymessageEvent = WorkflowExpression.Compile(bodymessageEvent, nameof(bodymessageEvent), required: false);
+            var __workflow_bodymessagebrand = WorkflowExpression.Compile(bodymessagebrand, nameof(bodymessagebrand), required: false);
+            var __workflow_bodymessagetemplate = WorkflowExpression.Compile(bodymessagetemplate, nameof(bodymessagetemplate), required: false);
+            var __workflow_bodymessagebrandId = WorkflowExpression.Compile(bodymessagebrandId, nameof(bodymessagebrandId), required: false);
+            var __workflow_bodymessageroutingmethod = WorkflowExpression.Compile(bodymessageroutingmethod, nameof(bodymessageroutingmethod), required: false);
+            var __workflow_bodymessageroutingchannels = WorkflowExpression.Compile(bodymessageroutingchannels, nameof(bodymessageroutingchannels), required: false);
+            var __workflow_bodymessagemetadataEvent = WorkflowExpression.Compile(bodymessagemetadataEvent, nameof(bodymessagemetadataEvent), required: false);
+            var __workflow_bodymessagemetadatatags = WorkflowExpression.Compile(bodymessagemetadatatags, nameof(bodymessagemetadatatags), required: false);
+            var __workflow_bodymessagemetadatatraceId = WorkflowExpression.Compile(bodymessagemetadatatraceId, nameof(bodymessagemetadatatraceId), required: false);
+            var __workflow_bodymessagemetadatautmcampaign = WorkflowExpression.Compile(bodymessagemetadatautmcampaign, nameof(bodymessagemetadatautmcampaign), required: false);
+            var __workflow_bodymessagemetadatautmcontent = WorkflowExpression.Compile(bodymessagemetadatautmcontent, nameof(bodymessagemetadatautmcontent), required: false);
+            var __workflow_bodymessagemetadatautmmedium = WorkflowExpression.Compile(bodymessagemetadatautmmedium, nameof(bodymessagemetadatautmmedium), required: false);
+            var __workflow_bodymessagemetadatautmsource = WorkflowExpression.Compile(bodymessagemetadatautmsource, nameof(bodymessagemetadatautmsource), required: false);
+            var __workflow_bodymessagemetadatautmterm = WorkflowExpression.Compile(bodymessagemetadatautmterm, nameof(bodymessagemetadatautmterm), required: false);
             return new DeferredBodyAction<BulkJobPostResponse>(() =>
             {
                 var apiCallPath = "/bulk";
@@ -940,8 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobGetResponse> BulkJobGet(Expression<Func<string>> jobId)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<BulkJobGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bulk/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -954,10 +889,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> BulkJobUsers(Expression<Func<string>> jobId, Expression<Func<bodyusersInputItem[]>> bodyusers = null)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bulk/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -983,8 +916,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<JToken> BulkJobRun(Expression<Func<string>> jobId)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bulk/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -997,8 +929,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<BulkJobUsersGetResponse> BulkJobUsersGet(Expression<Func<string>> jobId)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<BulkJobUsersGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bulk/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -1020,8 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ListGetResponse> ListGet(Expression<Func<string>> listId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             return new DeferredBodyAction<ListGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -1034,8 +964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListDelete(Expression<Func<string>> listId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -1048,10 +977,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListPut(Expression<Func<string>> listId, Expression<Func<string>> bodyname = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -1101,8 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListRestorePut(Expression<Func<string>> listId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -1115,10 +1041,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ListSubscriptionsGetResponse> ListSubscriptionsGet(Expression<Func<string>> listId, Expression<Func<string>> cursor = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             return new DeferredBodyAction<ListSubscriptionsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -1133,10 +1057,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListSubscribers(Expression<Func<string>> listId, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -1162,10 +1084,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> ListSubscribeDelete(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -1178,24 +1098,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessagesGetResponse> MessagesGet(Expression<Func<bool>> archived = null, Expression<Func<string>> cursor = null, Expression<Func<string>> @event = null, Expression<Func<string>> list = null, Expression<Func<string>> messageId = null, Expression<Func<string>> notification = null, Expression<Func<string>> recipient = null, Expression<Func<string>> status = null, Expression<Func<string>> tags = null)
         {
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
-            var __workflow_event = @event == null ? null : WorkflowExpression.Compile(@event);
-            WorkflowExpression.Validate(__workflow_event, nameof(@event), required: false);
-            var __workflow_list = list == null ? null : WorkflowExpression.Compile(list);
-            WorkflowExpression.Validate(__workflow_list, nameof(list), required: false);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: false);
-            var __workflow_notification = notification == null ? null : WorkflowExpression.Compile(notification);
-            WorkflowExpression.Validate(__workflow_notification, nameof(notification), required: false);
-            var __workflow_recipient = recipient == null ? null : WorkflowExpression.Compile(recipient);
-            WorkflowExpression.Validate(__workflow_recipient, nameof(recipient), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_tags = tags == null ? null : WorkflowExpression.Compile(tags);
-            WorkflowExpression.Validate(__workflow_tags, nameof(tags), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
+            var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: false);
+            var __workflow_list = WorkflowExpression.Compile(list, nameof(list), required: false);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: false);
+            var __workflow_notification = WorkflowExpression.Compile(notification, nameof(notification), required: false);
+            var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_tags = WorkflowExpression.Compile(tags, nameof(tags), required: false);
             return new DeferredBodyAction<MessagesGetResponse>(() =>
             {
                 var apiCallPath = "/messages";
@@ -1226,8 +1137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageGetResponse> MessageGet(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -1240,10 +1150,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageHistoryGetResponse> MessageHistoryGet(Expression<Func<string>> messageId, Expression<Func<string>> type = null)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<MessageHistoryGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -1258,8 +1166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<MessageContentGetResponse> MessageContentGet(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageContentGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/{0}/output", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -1272,8 +1179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> MessagePut(Expression<Func<string>> requestId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/archive", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -1286,8 +1192,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<NotificationsGetResponse> NotificationsGet(Expression<Func<string>> cursor = null)
         {
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
             return new DeferredBodyAction<NotificationsGetResponse>(() =>
             {
                 var apiCallPath = "/notifications";
@@ -1302,8 +1207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfileGetResponse> ProfileGet(Expression<Func<string>> recipientId)
         {
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<ProfileGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -1316,8 +1220,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfileDeleteResponse> ProfileDelete(Expression<Func<string>> recipientId)
         {
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<ProfileDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -1330,112 +1233,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<string> Profile(Expression<Func<string>> recipientId, Expression<Func<string>> bodyprofileemail = null, Expression<Func<string>> bodyprofilephoneNumber = null, Expression<Func<string>> bodyprofileaddressformatted = null, Expression<Func<string>> bodyprofileaddressstreetAddress = null, Expression<Func<string>> bodyprofileaddresslocality = null, Expression<Func<string>> bodyprofileaddressregion = null, Expression<Func<string>> bodyprofileaddresspostalCode = null, Expression<Func<string>> bodyprofileaddresscountry = null, Expression<Func<string>> bodyprofilebirthdate = null, Expression<Func<bool>> bodyprofileemailVerified = null, Expression<Func<bool>> bodyprofilephoneNumberVerified = null, Expression<Func<string>> bodyprofilegivenName = null, Expression<Func<string>> bodyprofilemiddleName = null, Expression<Func<string>> bodyprofilefamilyName = null, Expression<Func<string>> bodyprofilepreferredName = null, Expression<Func<string>> bodyprofilegender = null, Expression<Func<string>> bodyprofilelocale = null, Expression<Func<string>> bodyprofilepicture = null, Expression<Func<string>> bodyprofileprofile = null, Expression<Func<string>> bodyprofilesub = null, Expression<Func<string>> bodyprofileupdatedAt = null, Expression<Func<string>> bodyprofilewebsite = null, Expression<Func<string>> bodyprofilezoneinfo = null, Expression<Func<string>> bodyprofileairshipaudiencenamedUser = null, Expression<Func<string[]>> bodyprofileairshipdeviceTypes = null, Expression<Func<string>> bodyprofileairshipapn = null, Expression<Func<string>> bodyprofileairshiptargetArn = null, Expression<Func<string>> bodyprofileairshipdiscordchannelId = null, Expression<Func<string>> bodyprofileairshipdiscorduserId = null, Expression<Func<string>> bodyprofileairshipexpotoken = null, Expression<Func<string[]>> bodyprofileairshipexpotokens = null, Expression<Func<string>> bodyprofileairshipfacebookPSID = null, Expression<Func<string>> bodyprofileairshipfirebaseToken = null, Expression<Func<string>> bodyprofileairshipintercomfrom = null, Expression<Func<string>> bodyprofileairshipintercomtoid = null, Expression<Func<string>> bodyprofileairshipmsTeamsuserId = null, Expression<Func<string>> bodyprofileairshipmsTeamsconversationId = null, Expression<Func<string>> bodyprofileairshipmsTeamstenantId = null, Expression<Func<string>> bodyprofileairshipmsTeamsserviceUrl = null, Expression<Func<string>> bodyprofileairshiponeSignalPlayerID = null, Expression<Func<string>> bodyprofileairshipslackaccessToken = null, Expression<Func<string>> bodyprofileairshipslackchannel = null, Expression<Func<string>> bodyprofileairshipslackemail = null, Expression<Func<string>> bodyprofileairshipslackuserId = null, Expression<Func<string>> bodyprofileairshipslackincomingWebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookurl = null, Expression<Func<string>> bodyprofileairshipwebhookmethod = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationmode = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationusername = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationpassword = null, Expression<Func<string>> bodyprofileairshipwebhookauthenticationtoken = null, Expression<Func<string>> bodyprofileairshipwebhookprofile = null)
         {
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
-            var __workflow_bodyprofileemail = bodyprofileemail == null ? null : WorkflowExpression.Compile(bodyprofileemail);
-            WorkflowExpression.Validate(__workflow_bodyprofileemail, nameof(bodyprofileemail), required: false);
-            var __workflow_bodyprofilephoneNumber = bodyprofilephoneNumber == null ? null : WorkflowExpression.Compile(bodyprofilephoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyprofilephoneNumber, nameof(bodyprofilephoneNumber), required: false);
-            var __workflow_bodyprofileaddressformatted = bodyprofileaddressformatted == null ? null : WorkflowExpression.Compile(bodyprofileaddressformatted);
-            WorkflowExpression.Validate(__workflow_bodyprofileaddressformatted, nameof(bodyprofileaddressformatted), required: false);
-            var __workflow_bodyprofileaddressstreetAddress = bodyprofileaddressstreetAddress == null ? null : WorkflowExpression.Compile(bodyprofileaddressstreetAddress);
-            WorkflowExpression.Validate(__workflow_bodyprofileaddressstreetAddress, nameof(bodyprofileaddressstreetAddress), required: false);
-            var __workflow_bodyprofileaddresslocality = bodyprofileaddresslocality == null ? null : WorkflowExpression.Compile(bodyprofileaddresslocality);
-            WorkflowExpression.Validate(__workflow_bodyprofileaddresslocality, nameof(bodyprofileaddresslocality), required: false);
-            var __workflow_bodyprofileaddressregion = bodyprofileaddressregion == null ? null : WorkflowExpression.Compile(bodyprofileaddressregion);
-            WorkflowExpression.Validate(__workflow_bodyprofileaddressregion, nameof(bodyprofileaddressregion), required: false);
-            var __workflow_bodyprofileaddresspostalCode = bodyprofileaddresspostalCode == null ? null : WorkflowExpression.Compile(bodyprofileaddresspostalCode);
-            WorkflowExpression.Validate(__workflow_bodyprofileaddresspostalCode, nameof(bodyprofileaddresspostalCode), required: false);
-            var __workflow_bodyprofileaddresscountry = bodyprofileaddresscountry == null ? null : WorkflowExpression.Compile(bodyprofileaddresscountry);
-            WorkflowExpression.Validate(__workflow_bodyprofileaddresscountry, nameof(bodyprofileaddresscountry), required: false);
-            var __workflow_bodyprofilebirthdate = bodyprofilebirthdate == null ? null : WorkflowExpression.Compile(bodyprofilebirthdate);
-            WorkflowExpression.Validate(__workflow_bodyprofilebirthdate, nameof(bodyprofilebirthdate), required: false);
-            var __workflow_bodyprofileemailVerified = bodyprofileemailVerified == null ? null : WorkflowExpression.Compile(bodyprofileemailVerified);
-            WorkflowExpression.Validate(__workflow_bodyprofileemailVerified, nameof(bodyprofileemailVerified), required: false);
-            var __workflow_bodyprofilephoneNumberVerified = bodyprofilephoneNumberVerified == null ? null : WorkflowExpression.Compile(bodyprofilephoneNumberVerified);
-            WorkflowExpression.Validate(__workflow_bodyprofilephoneNumberVerified, nameof(bodyprofilephoneNumberVerified), required: false);
-            var __workflow_bodyprofilegivenName = bodyprofilegivenName == null ? null : WorkflowExpression.Compile(bodyprofilegivenName);
-            WorkflowExpression.Validate(__workflow_bodyprofilegivenName, nameof(bodyprofilegivenName), required: false);
-            var __workflow_bodyprofilemiddleName = bodyprofilemiddleName == null ? null : WorkflowExpression.Compile(bodyprofilemiddleName);
-            WorkflowExpression.Validate(__workflow_bodyprofilemiddleName, nameof(bodyprofilemiddleName), required: false);
-            var __workflow_bodyprofilefamilyName = bodyprofilefamilyName == null ? null : WorkflowExpression.Compile(bodyprofilefamilyName);
-            WorkflowExpression.Validate(__workflow_bodyprofilefamilyName, nameof(bodyprofilefamilyName), required: false);
-            var __workflow_bodyprofilepreferredName = bodyprofilepreferredName == null ? null : WorkflowExpression.Compile(bodyprofilepreferredName);
-            WorkflowExpression.Validate(__workflow_bodyprofilepreferredName, nameof(bodyprofilepreferredName), required: false);
-            var __workflow_bodyprofilegender = bodyprofilegender == null ? null : WorkflowExpression.Compile(bodyprofilegender);
-            WorkflowExpression.Validate(__workflow_bodyprofilegender, nameof(bodyprofilegender), required: false);
-            var __workflow_bodyprofilelocale = bodyprofilelocale == null ? null : WorkflowExpression.Compile(bodyprofilelocale);
-            WorkflowExpression.Validate(__workflow_bodyprofilelocale, nameof(bodyprofilelocale), required: false);
-            var __workflow_bodyprofilepicture = bodyprofilepicture == null ? null : WorkflowExpression.Compile(bodyprofilepicture);
-            WorkflowExpression.Validate(__workflow_bodyprofilepicture, nameof(bodyprofilepicture), required: false);
-            var __workflow_bodyprofileprofile = bodyprofileprofile == null ? null : WorkflowExpression.Compile(bodyprofileprofile);
-            WorkflowExpression.Validate(__workflow_bodyprofileprofile, nameof(bodyprofileprofile), required: false);
-            var __workflow_bodyprofilesub = bodyprofilesub == null ? null : WorkflowExpression.Compile(bodyprofilesub);
-            WorkflowExpression.Validate(__workflow_bodyprofilesub, nameof(bodyprofilesub), required: false);
-            var __workflow_bodyprofileupdatedAt = bodyprofileupdatedAt == null ? null : WorkflowExpression.Compile(bodyprofileupdatedAt);
-            WorkflowExpression.Validate(__workflow_bodyprofileupdatedAt, nameof(bodyprofileupdatedAt), required: false);
-            var __workflow_bodyprofilewebsite = bodyprofilewebsite == null ? null : WorkflowExpression.Compile(bodyprofilewebsite);
-            WorkflowExpression.Validate(__workflow_bodyprofilewebsite, nameof(bodyprofilewebsite), required: false);
-            var __workflow_bodyprofilezoneinfo = bodyprofilezoneinfo == null ? null : WorkflowExpression.Compile(bodyprofilezoneinfo);
-            WorkflowExpression.Validate(__workflow_bodyprofilezoneinfo, nameof(bodyprofilezoneinfo), required: false);
-            var __workflow_bodyprofileairshipaudiencenamedUser = bodyprofileairshipaudiencenamedUser == null ? null : WorkflowExpression.Compile(bodyprofileairshipaudiencenamedUser);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipaudiencenamedUser, nameof(bodyprofileairshipaudiencenamedUser), required: false);
-            var __workflow_bodyprofileairshipdeviceTypes = bodyprofileairshipdeviceTypes == null ? null : WorkflowExpression.Compile(bodyprofileairshipdeviceTypes);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipdeviceTypes, nameof(bodyprofileairshipdeviceTypes), required: false);
-            var __workflow_bodyprofileairshipapn = bodyprofileairshipapn == null ? null : WorkflowExpression.Compile(bodyprofileairshipapn);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipapn, nameof(bodyprofileairshipapn), required: false);
-            var __workflow_bodyprofileairshiptargetArn = bodyprofileairshiptargetArn == null ? null : WorkflowExpression.Compile(bodyprofileairshiptargetArn);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshiptargetArn, nameof(bodyprofileairshiptargetArn), required: false);
-            var __workflow_bodyprofileairshipdiscordchannelId = bodyprofileairshipdiscordchannelId == null ? null : WorkflowExpression.Compile(bodyprofileairshipdiscordchannelId);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipdiscordchannelId, nameof(bodyprofileairshipdiscordchannelId), required: false);
-            var __workflow_bodyprofileairshipdiscorduserId = bodyprofileairshipdiscorduserId == null ? null : WorkflowExpression.Compile(bodyprofileairshipdiscorduserId);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipdiscorduserId, nameof(bodyprofileairshipdiscorduserId), required: false);
-            var __workflow_bodyprofileairshipexpotoken = bodyprofileairshipexpotoken == null ? null : WorkflowExpression.Compile(bodyprofileairshipexpotoken);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipexpotoken, nameof(bodyprofileairshipexpotoken), required: false);
-            var __workflow_bodyprofileairshipexpotokens = bodyprofileairshipexpotokens == null ? null : WorkflowExpression.Compile(bodyprofileairshipexpotokens);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipexpotokens, nameof(bodyprofileairshipexpotokens), required: false);
-            var __workflow_bodyprofileairshipfacebookPSID = bodyprofileairshipfacebookPSID == null ? null : WorkflowExpression.Compile(bodyprofileairshipfacebookPSID);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipfacebookPSID, nameof(bodyprofileairshipfacebookPSID), required: false);
-            var __workflow_bodyprofileairshipfirebaseToken = bodyprofileairshipfirebaseToken == null ? null : WorkflowExpression.Compile(bodyprofileairshipfirebaseToken);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipfirebaseToken, nameof(bodyprofileairshipfirebaseToken), required: false);
-            var __workflow_bodyprofileairshipintercomfrom = bodyprofileairshipintercomfrom == null ? null : WorkflowExpression.Compile(bodyprofileairshipintercomfrom);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipintercomfrom, nameof(bodyprofileairshipintercomfrom), required: false);
-            var __workflow_bodyprofileairshipintercomtoid = bodyprofileairshipintercomtoid == null ? null : WorkflowExpression.Compile(bodyprofileairshipintercomtoid);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipintercomtoid, nameof(bodyprofileairshipintercomtoid), required: false);
-            var __workflow_bodyprofileairshipmsTeamsuserId = bodyprofileairshipmsTeamsuserId == null ? null : WorkflowExpression.Compile(bodyprofileairshipmsTeamsuserId);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipmsTeamsuserId, nameof(bodyprofileairshipmsTeamsuserId), required: false);
-            var __workflow_bodyprofileairshipmsTeamsconversationId = bodyprofileairshipmsTeamsconversationId == null ? null : WorkflowExpression.Compile(bodyprofileairshipmsTeamsconversationId);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipmsTeamsconversationId, nameof(bodyprofileairshipmsTeamsconversationId), required: false);
-            var __workflow_bodyprofileairshipmsTeamstenantId = bodyprofileairshipmsTeamstenantId == null ? null : WorkflowExpression.Compile(bodyprofileairshipmsTeamstenantId);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipmsTeamstenantId, nameof(bodyprofileairshipmsTeamstenantId), required: false);
-            var __workflow_bodyprofileairshipmsTeamsserviceUrl = bodyprofileairshipmsTeamsserviceUrl == null ? null : WorkflowExpression.Compile(bodyprofileairshipmsTeamsserviceUrl);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipmsTeamsserviceUrl, nameof(bodyprofileairshipmsTeamsserviceUrl), required: false);
-            var __workflow_bodyprofileairshiponeSignalPlayerID = bodyprofileairshiponeSignalPlayerID == null ? null : WorkflowExpression.Compile(bodyprofileairshiponeSignalPlayerID);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshiponeSignalPlayerID, nameof(bodyprofileairshiponeSignalPlayerID), required: false);
-            var __workflow_bodyprofileairshipslackaccessToken = bodyprofileairshipslackaccessToken == null ? null : WorkflowExpression.Compile(bodyprofileairshipslackaccessToken);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipslackaccessToken, nameof(bodyprofileairshipslackaccessToken), required: false);
-            var __workflow_bodyprofileairshipslackchannel = bodyprofileairshipslackchannel == null ? null : WorkflowExpression.Compile(bodyprofileairshipslackchannel);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipslackchannel, nameof(bodyprofileairshipslackchannel), required: false);
-            var __workflow_bodyprofileairshipslackemail = bodyprofileairshipslackemail == null ? null : WorkflowExpression.Compile(bodyprofileairshipslackemail);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipslackemail, nameof(bodyprofileairshipslackemail), required: false);
-            var __workflow_bodyprofileairshipslackuserId = bodyprofileairshipslackuserId == null ? null : WorkflowExpression.Compile(bodyprofileairshipslackuserId);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipslackuserId, nameof(bodyprofileairshipslackuserId), required: false);
-            var __workflow_bodyprofileairshipslackincomingWebhookurl = bodyprofileairshipslackincomingWebhookurl == null ? null : WorkflowExpression.Compile(bodyprofileairshipslackincomingWebhookurl);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipslackincomingWebhookurl, nameof(bodyprofileairshipslackincomingWebhookurl), required: false);
-            var __workflow_bodyprofileairshipwebhookurl = bodyprofileairshipwebhookurl == null ? null : WorkflowExpression.Compile(bodyprofileairshipwebhookurl);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipwebhookurl, nameof(bodyprofileairshipwebhookurl), required: false);
-            var __workflow_bodyprofileairshipwebhookmethod = bodyprofileairshipwebhookmethod == null ? null : WorkflowExpression.Compile(bodyprofileairshipwebhookmethod);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipwebhookmethod, nameof(bodyprofileairshipwebhookmethod), required: false);
-            var __workflow_bodyprofileairshipwebhookauthenticationmode = bodyprofileairshipwebhookauthenticationmode == null ? null : WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationmode);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipwebhookauthenticationmode, nameof(bodyprofileairshipwebhookauthenticationmode), required: false);
-            var __workflow_bodyprofileairshipwebhookauthenticationusername = bodyprofileairshipwebhookauthenticationusername == null ? null : WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationusername);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipwebhookauthenticationusername, nameof(bodyprofileairshipwebhookauthenticationusername), required: false);
-            var __workflow_bodyprofileairshipwebhookauthenticationpassword = bodyprofileairshipwebhookauthenticationpassword == null ? null : WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationpassword);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipwebhookauthenticationpassword, nameof(bodyprofileairshipwebhookauthenticationpassword), required: false);
-            var __workflow_bodyprofileairshipwebhookauthenticationtoken = bodyprofileairshipwebhookauthenticationtoken == null ? null : WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationtoken);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipwebhookauthenticationtoken, nameof(bodyprofileairshipwebhookauthenticationtoken), required: false);
-            var __workflow_bodyprofileairshipwebhookprofile = bodyprofileairshipwebhookprofile == null ? null : WorkflowExpression.Compile(bodyprofileairshipwebhookprofile);
-            WorkflowExpression.Validate(__workflow_bodyprofileairshipwebhookprofile, nameof(bodyprofileairshipwebhookprofile), required: false);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
+            var __workflow_bodyprofileemail = WorkflowExpression.Compile(bodyprofileemail, nameof(bodyprofileemail), required: false);
+            var __workflow_bodyprofilephoneNumber = WorkflowExpression.Compile(bodyprofilephoneNumber, nameof(bodyprofilephoneNumber), required: false);
+            var __workflow_bodyprofileaddressformatted = WorkflowExpression.Compile(bodyprofileaddressformatted, nameof(bodyprofileaddressformatted), required: false);
+            var __workflow_bodyprofileaddressstreetAddress = WorkflowExpression.Compile(bodyprofileaddressstreetAddress, nameof(bodyprofileaddressstreetAddress), required: false);
+            var __workflow_bodyprofileaddresslocality = WorkflowExpression.Compile(bodyprofileaddresslocality, nameof(bodyprofileaddresslocality), required: false);
+            var __workflow_bodyprofileaddressregion = WorkflowExpression.Compile(bodyprofileaddressregion, nameof(bodyprofileaddressregion), required: false);
+            var __workflow_bodyprofileaddresspostalCode = WorkflowExpression.Compile(bodyprofileaddresspostalCode, nameof(bodyprofileaddresspostalCode), required: false);
+            var __workflow_bodyprofileaddresscountry = WorkflowExpression.Compile(bodyprofileaddresscountry, nameof(bodyprofileaddresscountry), required: false);
+            var __workflow_bodyprofilebirthdate = WorkflowExpression.Compile(bodyprofilebirthdate, nameof(bodyprofilebirthdate), required: false);
+            var __workflow_bodyprofileemailVerified = WorkflowExpression.Compile(bodyprofileemailVerified, nameof(bodyprofileemailVerified), required: false);
+            var __workflow_bodyprofilephoneNumberVerified = WorkflowExpression.Compile(bodyprofilephoneNumberVerified, nameof(bodyprofilephoneNumberVerified), required: false);
+            var __workflow_bodyprofilegivenName = WorkflowExpression.Compile(bodyprofilegivenName, nameof(bodyprofilegivenName), required: false);
+            var __workflow_bodyprofilemiddleName = WorkflowExpression.Compile(bodyprofilemiddleName, nameof(bodyprofilemiddleName), required: false);
+            var __workflow_bodyprofilefamilyName = WorkflowExpression.Compile(bodyprofilefamilyName, nameof(bodyprofilefamilyName), required: false);
+            var __workflow_bodyprofilepreferredName = WorkflowExpression.Compile(bodyprofilepreferredName, nameof(bodyprofilepreferredName), required: false);
+            var __workflow_bodyprofilegender = WorkflowExpression.Compile(bodyprofilegender, nameof(bodyprofilegender), required: false);
+            var __workflow_bodyprofilelocale = WorkflowExpression.Compile(bodyprofilelocale, nameof(bodyprofilelocale), required: false);
+            var __workflow_bodyprofilepicture = WorkflowExpression.Compile(bodyprofilepicture, nameof(bodyprofilepicture), required: false);
+            var __workflow_bodyprofileprofile = WorkflowExpression.Compile(bodyprofileprofile, nameof(bodyprofileprofile), required: false);
+            var __workflow_bodyprofilesub = WorkflowExpression.Compile(bodyprofilesub, nameof(bodyprofilesub), required: false);
+            var __workflow_bodyprofileupdatedAt = WorkflowExpression.Compile(bodyprofileupdatedAt, nameof(bodyprofileupdatedAt), required: false);
+            var __workflow_bodyprofilewebsite = WorkflowExpression.Compile(bodyprofilewebsite, nameof(bodyprofilewebsite), required: false);
+            var __workflow_bodyprofilezoneinfo = WorkflowExpression.Compile(bodyprofilezoneinfo, nameof(bodyprofilezoneinfo), required: false);
+            var __workflow_bodyprofileairshipaudiencenamedUser = WorkflowExpression.Compile(bodyprofileairshipaudiencenamedUser, nameof(bodyprofileairshipaudiencenamedUser), required: false);
+            var __workflow_bodyprofileairshipdeviceTypes = WorkflowExpression.Compile(bodyprofileairshipdeviceTypes, nameof(bodyprofileairshipdeviceTypes), required: false);
+            var __workflow_bodyprofileairshipapn = WorkflowExpression.Compile(bodyprofileairshipapn, nameof(bodyprofileairshipapn), required: false);
+            var __workflow_bodyprofileairshiptargetArn = WorkflowExpression.Compile(bodyprofileairshiptargetArn, nameof(bodyprofileairshiptargetArn), required: false);
+            var __workflow_bodyprofileairshipdiscordchannelId = WorkflowExpression.Compile(bodyprofileairshipdiscordchannelId, nameof(bodyprofileairshipdiscordchannelId), required: false);
+            var __workflow_bodyprofileairshipdiscorduserId = WorkflowExpression.Compile(bodyprofileairshipdiscorduserId, nameof(bodyprofileairshipdiscorduserId), required: false);
+            var __workflow_bodyprofileairshipexpotoken = WorkflowExpression.Compile(bodyprofileairshipexpotoken, nameof(bodyprofileairshipexpotoken), required: false);
+            var __workflow_bodyprofileairshipexpotokens = WorkflowExpression.Compile(bodyprofileairshipexpotokens, nameof(bodyprofileairshipexpotokens), required: false);
+            var __workflow_bodyprofileairshipfacebookPSID = WorkflowExpression.Compile(bodyprofileairshipfacebookPSID, nameof(bodyprofileairshipfacebookPSID), required: false);
+            var __workflow_bodyprofileairshipfirebaseToken = WorkflowExpression.Compile(bodyprofileairshipfirebaseToken, nameof(bodyprofileairshipfirebaseToken), required: false);
+            var __workflow_bodyprofileairshipintercomfrom = WorkflowExpression.Compile(bodyprofileairshipintercomfrom, nameof(bodyprofileairshipintercomfrom), required: false);
+            var __workflow_bodyprofileairshipintercomtoid = WorkflowExpression.Compile(bodyprofileairshipintercomtoid, nameof(bodyprofileairshipintercomtoid), required: false);
+            var __workflow_bodyprofileairshipmsTeamsuserId = WorkflowExpression.Compile(bodyprofileairshipmsTeamsuserId, nameof(bodyprofileairshipmsTeamsuserId), required: false);
+            var __workflow_bodyprofileairshipmsTeamsconversationId = WorkflowExpression.Compile(bodyprofileairshipmsTeamsconversationId, nameof(bodyprofileairshipmsTeamsconversationId), required: false);
+            var __workflow_bodyprofileairshipmsTeamstenantId = WorkflowExpression.Compile(bodyprofileairshipmsTeamstenantId, nameof(bodyprofileairshipmsTeamstenantId), required: false);
+            var __workflow_bodyprofileairshipmsTeamsserviceUrl = WorkflowExpression.Compile(bodyprofileairshipmsTeamsserviceUrl, nameof(bodyprofileairshipmsTeamsserviceUrl), required: false);
+            var __workflow_bodyprofileairshiponeSignalPlayerID = WorkflowExpression.Compile(bodyprofileairshiponeSignalPlayerID, nameof(bodyprofileairshiponeSignalPlayerID), required: false);
+            var __workflow_bodyprofileairshipslackaccessToken = WorkflowExpression.Compile(bodyprofileairshipslackaccessToken, nameof(bodyprofileairshipslackaccessToken), required: false);
+            var __workflow_bodyprofileairshipslackchannel = WorkflowExpression.Compile(bodyprofileairshipslackchannel, nameof(bodyprofileairshipslackchannel), required: false);
+            var __workflow_bodyprofileairshipslackemail = WorkflowExpression.Compile(bodyprofileairshipslackemail, nameof(bodyprofileairshipslackemail), required: false);
+            var __workflow_bodyprofileairshipslackuserId = WorkflowExpression.Compile(bodyprofileairshipslackuserId, nameof(bodyprofileairshipslackuserId), required: false);
+            var __workflow_bodyprofileairshipslackincomingWebhookurl = WorkflowExpression.Compile(bodyprofileairshipslackincomingWebhookurl, nameof(bodyprofileairshipslackincomingWebhookurl), required: false);
+            var __workflow_bodyprofileairshipwebhookurl = WorkflowExpression.Compile(bodyprofileairshipwebhookurl, nameof(bodyprofileairshipwebhookurl), required: false);
+            var __workflow_bodyprofileairshipwebhookmethod = WorkflowExpression.Compile(bodyprofileairshipwebhookmethod, nameof(bodyprofileairshipwebhookmethod), required: false);
+            var __workflow_bodyprofileairshipwebhookauthenticationmode = WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationmode, nameof(bodyprofileairshipwebhookauthenticationmode), required: false);
+            var __workflow_bodyprofileairshipwebhookauthenticationusername = WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationusername, nameof(bodyprofileairshipwebhookauthenticationusername), required: false);
+            var __workflow_bodyprofileairshipwebhookauthenticationpassword = WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationpassword, nameof(bodyprofileairshipwebhookauthenticationpassword), required: false);
+            var __workflow_bodyprofileairshipwebhookauthenticationtoken = WorkflowExpression.Compile(bodyprofileairshipwebhookauthenticationtoken, nameof(bodyprofileairshipwebhookauthenticationtoken), required: false);
+            var __workflow_bodyprofileairshipwebhookprofile = WorkflowExpression.Compile(bodyprofileairshipwebhookprofile, nameof(bodyprofileairshipwebhookprofile), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -1887,10 +1737,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Courierip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "courierip")]
         public IBodyWorkflowAction<ProfilePatchResponse> ProfilePatch(Expression<Func<string>> recipientId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ProfilePatchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));

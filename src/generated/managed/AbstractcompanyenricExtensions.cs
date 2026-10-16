@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractcompanyenric
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractcompanyenric")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> domain)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v1/";

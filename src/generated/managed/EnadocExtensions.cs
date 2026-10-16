@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enadoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enadoc")]
         public IBodyWorkflowAction<SuccessResponse> SendToMyWorkspace(Expression<Func<string>> document, Expression<Func<string>> name)
         {
-            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
-            WorkflowExpression.Validate(__workflow_document, nameof(document), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<SuccessResponse>(() =>
             {
                 var apiCallPath = "/api/v3/workspace";

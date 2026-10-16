@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction MoveEffect(Expression<Func<string>> lights, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypowerOn = null)
         {
-            var __workflow_lights = lights == null ? null : WorkflowExpression.Compile(lights);
-            WorkflowExpression.Validate(__workflow_lights, nameof(lights), required: true);
-            var __workflow_bodydirection = bodydirection == null ? null : WorkflowExpression.Compile(bodydirection);
-            WorkflowExpression.Validate(__workflow_bodydirection, nameof(bodydirection), required: false);
-            var __workflow_bodyperiod = bodyperiod == null ? null : WorkflowExpression.Compile(bodyperiod);
-            WorkflowExpression.Validate(__workflow_bodyperiod, nameof(bodyperiod), required: false);
-            var __workflow_bodycycles = bodycycles == null ? null : WorkflowExpression.Compile(bodycycles);
-            WorkflowExpression.Validate(__workflow_bodycycles, nameof(bodycycles), required: false);
-            var __workflow_bodypowerOn = bodypowerOn == null ? null : WorkflowExpression.Compile(bodypowerOn);
-            WorkflowExpression.Validate(__workflow_bodypowerOn, nameof(bodypowerOn), required: false);
+            var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
+            var __workflow_bodydirection = WorkflowExpression.Compile(bodydirection, nameof(bodydirection), required: false);
+            var __workflow_bodyperiod = WorkflowExpression.Compile(bodyperiod, nameof(bodyperiod), required: false);
+            var __workflow_bodycycles = WorkflowExpression.Compile(bodycycles, nameof(bodycycles), required: false);
+            var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/move", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
@@ -86,20 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction PulseEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null)
         {
-            var __workflow_lights = lights == null ? null : WorkflowExpression.Compile(lights);
-            WorkflowExpression.Validate(__workflow_lights, nameof(lights), required: true);
-            var __workflow_bodycolor = bodycolor == null ? null : WorkflowExpression.Compile(bodycolor);
-            WorkflowExpression.Validate(__workflow_bodycolor, nameof(bodycolor), required: true);
-            var __workflow_bodyfromColor = bodyfromColor == null ? null : WorkflowExpression.Compile(bodyfromColor);
-            WorkflowExpression.Validate(__workflow_bodyfromColor, nameof(bodyfromColor), required: false);
-            var __workflow_bodyperiod = bodyperiod == null ? null : WorkflowExpression.Compile(bodyperiod);
-            WorkflowExpression.Validate(__workflow_bodyperiod, nameof(bodyperiod), required: false);
-            var __workflow_bodycycles = bodycycles == null ? null : WorkflowExpression.Compile(bodycycles);
-            WorkflowExpression.Validate(__workflow_bodycycles, nameof(bodycycles), required: false);
-            var __workflow_bodypersist = bodypersist == null ? null : WorkflowExpression.Compile(bodypersist);
-            WorkflowExpression.Validate(__workflow_bodypersist, nameof(bodypersist), required: false);
-            var __workflow_bodypowerOn = bodypowerOn == null ? null : WorkflowExpression.Compile(bodypowerOn);
-            WorkflowExpression.Validate(__workflow_bodypowerOn, nameof(bodypowerOn), required: false);
+            var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
+            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: true);
+            var __workflow_bodyfromColor = WorkflowExpression.Compile(bodyfromColor, nameof(bodyfromColor), required: false);
+            var __workflow_bodyperiod = WorkflowExpression.Compile(bodyperiod, nameof(bodyperiod), required: false);
+            var __workflow_bodycycles = WorkflowExpression.Compile(bodycycles, nameof(bodycycles), required: false);
+            var __workflow_bodypersist = WorkflowExpression.Compile(bodypersist, nameof(bodypersist), required: false);
+            var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/pulse", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
@@ -181,10 +169,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction ActivateScene(Expression<Func<string>> scene, Expression<Func<int>> bodyduration = null)
         {
-            var __workflow_scene = scene == null ? null : WorkflowExpression.Compile(scene);
-            WorkflowExpression.Validate(__workflow_scene, nameof(scene), required: true);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
+            var __workflow_scene = WorkflowExpression.Compile(scene, nameof(scene), required: true);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/scenes/{0}/activate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scene, 1));
@@ -220,18 +206,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IBodyWorkflowAction<SetStateResponse> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
         {
-            var __workflow_lights = lights == null ? null : WorkflowExpression.Compile(lights);
-            WorkflowExpression.Validate(__workflow_lights, nameof(lights), required: true);
-            var __workflow_bodypower = bodypower == null ? null : WorkflowExpression.Compile(bodypower);
-            WorkflowExpression.Validate(__workflow_bodypower, nameof(bodypower), required: false);
-            var __workflow_bodycolor = bodycolor == null ? null : WorkflowExpression.Compile(bodycolor);
-            WorkflowExpression.Validate(__workflow_bodycolor, nameof(bodycolor), required: false);
-            var __workflow_bodybrightness = bodybrightness == null ? null : WorkflowExpression.Compile(bodybrightness);
-            WorkflowExpression.Validate(__workflow_bodybrightness, nameof(bodybrightness), required: false);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodyinfrared = bodyinfrared == null ? null : WorkflowExpression.Compile(bodyinfrared);
-            WorkflowExpression.Validate(__workflow_bodyinfrared, nameof(bodyinfrared), required: false);
+            var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
+            var __workflow_bodypower = WorkflowExpression.Compile(bodypower, nameof(bodypower), required: false);
+            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
+            var __workflow_bodybrightness = WorkflowExpression.Compile(bodybrightness, nameof(bodybrightness), required: false);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodyinfrared = WorkflowExpression.Compile(bodyinfrared, nameof(bodyinfrared), required: false);
             return new DeferredBodyAction<SetStateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/state", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
@@ -301,10 +281,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction EffectsOff(Expression<Func<string>> lights, Expression<Func<bool>> bodypowerOff = null)
         {
-            var __workflow_lights = lights == null ? null : WorkflowExpression.Compile(lights);
-            WorkflowExpression.Validate(__workflow_lights, nameof(lights), required: true);
-            var __workflow_bodypowerOff = bodypowerOff == null ? null : WorkflowExpression.Compile(bodypowerOff);
-            WorkflowExpression.Validate(__workflow_bodypowerOff, nameof(bodypowerOff), required: false);
+            var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
+            var __workflow_bodypowerOff = WorkflowExpression.Compile(bodypowerOff, nameof(bodypowerOff), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/off", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
@@ -330,18 +308,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction SetStates(Expression<Func<bodystatesInputItem[]>> bodystates, Expression<Func<bodydefaultspowerInput>> bodydefaultspower = null, Expression<Func<bodydefaultscolorInput>> bodydefaultscolor = null, Expression<Func<double>> bodydefaultsbrightness = null, Expression<Func<double>> bodydefaultsduration = null, Expression<Func<double>> bodydefaultsinfrared = null)
         {
-            var __workflow_bodystates = bodystates == null ? null : WorkflowExpression.Compile(bodystates);
-            WorkflowExpression.Validate(__workflow_bodystates, nameof(bodystates), required: true);
-            var __workflow_bodydefaultspower = bodydefaultspower == null ? null : WorkflowExpression.Compile(bodydefaultspower);
-            WorkflowExpression.Validate(__workflow_bodydefaultspower, nameof(bodydefaultspower), required: false);
-            var __workflow_bodydefaultscolor = bodydefaultscolor == null ? null : WorkflowExpression.Compile(bodydefaultscolor);
-            WorkflowExpression.Validate(__workflow_bodydefaultscolor, nameof(bodydefaultscolor), required: false);
-            var __workflow_bodydefaultsbrightness = bodydefaultsbrightness == null ? null : WorkflowExpression.Compile(bodydefaultsbrightness);
-            WorkflowExpression.Validate(__workflow_bodydefaultsbrightness, nameof(bodydefaultsbrightness), required: false);
-            var __workflow_bodydefaultsduration = bodydefaultsduration == null ? null : WorkflowExpression.Compile(bodydefaultsduration);
-            WorkflowExpression.Validate(__workflow_bodydefaultsduration, nameof(bodydefaultsduration), required: false);
-            var __workflow_bodydefaultsinfrared = bodydefaultsinfrared == null ? null : WorkflowExpression.Compile(bodydefaultsinfrared);
-            WorkflowExpression.Validate(__workflow_bodydefaultsinfrared, nameof(bodydefaultsinfrared), required: false);
+            var __workflow_bodystates = WorkflowExpression.Compile(bodystates, nameof(bodystates), required: true);
+            var __workflow_bodydefaultspower = WorkflowExpression.Compile(bodydefaultspower, nameof(bodydefaultspower), required: false);
+            var __workflow_bodydefaultscolor = WorkflowExpression.Compile(bodydefaultscolor, nameof(bodydefaultscolor), required: false);
+            var __workflow_bodydefaultsbrightness = WorkflowExpression.Compile(bodydefaultsbrightness, nameof(bodydefaultsbrightness), required: false);
+            var __workflow_bodydefaultsduration = WorkflowExpression.Compile(bodydefaultsduration, nameof(bodydefaultsduration), required: false);
+            var __workflow_bodydefaultsinfrared = WorkflowExpression.Compile(bodydefaultsinfrared, nameof(bodydefaultsinfrared), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/lights/states";
@@ -421,10 +393,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction TogglePower(Expression<Func<string>> lights, Expression<Func<double>> bodyduration = null)
         {
-            var __workflow_lights = lights == null ? null : WorkflowExpression.Compile(lights);
-            WorkflowExpression.Validate(__workflow_lights, nameof(lights), required: true);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
+            var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/toggle", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
@@ -460,22 +430,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
         {
-            var __workflow_lights = lights == null ? null : WorkflowExpression.Compile(lights);
-            WorkflowExpression.Validate(__workflow_lights, nameof(lights), required: true);
-            var __workflow_bodycolor = bodycolor == null ? null : WorkflowExpression.Compile(bodycolor);
-            WorkflowExpression.Validate(__workflow_bodycolor, nameof(bodycolor), required: true);
-            var __workflow_bodyfromColor = bodyfromColor == null ? null : WorkflowExpression.Compile(bodyfromColor);
-            WorkflowExpression.Validate(__workflow_bodyfromColor, nameof(bodyfromColor), required: false);
-            var __workflow_bodyperiod = bodyperiod == null ? null : WorkflowExpression.Compile(bodyperiod);
-            WorkflowExpression.Validate(__workflow_bodyperiod, nameof(bodyperiod), required: false);
-            var __workflow_bodycycles = bodycycles == null ? null : WorkflowExpression.Compile(bodycycles);
-            WorkflowExpression.Validate(__workflow_bodycycles, nameof(bodycycles), required: false);
-            var __workflow_bodypersist = bodypersist == null ? null : WorkflowExpression.Compile(bodypersist);
-            WorkflowExpression.Validate(__workflow_bodypersist, nameof(bodypersist), required: false);
-            var __workflow_bodypowerOn = bodypowerOn == null ? null : WorkflowExpression.Compile(bodypowerOn);
-            WorkflowExpression.Validate(__workflow_bodypowerOn, nameof(bodypowerOn), required: false);
-            var __workflow_bodypeak = bodypeak == null ? null : WorkflowExpression.Compile(bodypeak);
-            WorkflowExpression.Validate(__workflow_bodypeak, nameof(bodypeak), required: false);
+            var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
+            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: true);
+            var __workflow_bodyfromColor = WorkflowExpression.Compile(bodyfromColor, nameof(bodyfromColor), required: false);
+            var __workflow_bodyperiod = WorkflowExpression.Compile(bodyperiod, nameof(bodyperiod), required: false);
+            var __workflow_bodycycles = WorkflowExpression.Compile(bodycycles, nameof(bodycycles), required: false);
+            var __workflow_bodypersist = WorkflowExpression.Compile(bodypersist, nameof(bodypersist), required: false);
+            var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
+            var __workflow_bodypeak = WorkflowExpression.Compile(bodypeak, nameof(bodypeak), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/breathe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));
@@ -573,16 +535,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
         public IWorkflowAction MorphEffect(Expression<Func<string>> lights, Expression<Func<int>> bodyperiod = null, Expression<Func<int>> bodyduration = null, Expression<Func<string[]>> bodypalette = null, Expression<Func<bool>> bodypowerOn = null)
         {
-            var __workflow_lights = lights == null ? null : WorkflowExpression.Compile(lights);
-            WorkflowExpression.Validate(__workflow_lights, nameof(lights), required: true);
-            var __workflow_bodyperiod = bodyperiod == null ? null : WorkflowExpression.Compile(bodyperiod);
-            WorkflowExpression.Validate(__workflow_bodyperiod, nameof(bodyperiod), required: false);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodypalette = bodypalette == null ? null : WorkflowExpression.Compile(bodypalette);
-            WorkflowExpression.Validate(__workflow_bodypalette, nameof(bodypalette), required: false);
-            var __workflow_bodypowerOn = bodypowerOn == null ? null : WorkflowExpression.Compile(bodypowerOn);
-            WorkflowExpression.Validate(__workflow_bodypowerOn, nameof(bodypowerOn), required: false);
+            var __workflow_lights = WorkflowExpression.Compile(lights, nameof(lights), required: true);
+            var __workflow_bodyperiod = WorkflowExpression.Compile(bodyperiod, nameof(bodyperiod), required: false);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodypalette = WorkflowExpression.Compile(bodypalette, nameof(bodypalette), required: false);
+            var __workflow_bodypowerOn = WorkflowExpression.Compile(bodypowerOn, nameof(bodypowerOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/morph", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lights, 1));

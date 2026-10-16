@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
         public IBodyWorkflowAction<GenerateAnswerResponse> GenerateAnswer(Expression<Func<string>> knowledgeBaseId, Expression<Func<string>> serviceHost, Expression<Func<string>> endpointKey, Expression<Func<string>> bodyquestion, Expression<Func<int>> bodytop = null)
         {
-            var __workflow_knowledgeBaseId = knowledgeBaseId == null ? null : WorkflowExpression.Compile(knowledgeBaseId);
-            WorkflowExpression.Validate(__workflow_knowledgeBaseId, nameof(knowledgeBaseId), required: true);
-            var __workflow_serviceHost = serviceHost == null ? null : WorkflowExpression.Compile(serviceHost);
-            WorkflowExpression.Validate(__workflow_serviceHost, nameof(serviceHost), required: true);
-            var __workflow_endpointKey = endpointKey == null ? null : WorkflowExpression.Compile(endpointKey);
-            WorkflowExpression.Validate(__workflow_endpointKey, nameof(endpointKey), required: true);
-            var __workflow_bodyquestion = bodyquestion == null ? null : WorkflowExpression.Compile(bodyquestion);
-            WorkflowExpression.Validate(__workflow_bodyquestion, nameof(bodyquestion), required: true);
-            var __workflow_bodytop = bodytop == null ? null : WorkflowExpression.Compile(bodytop);
-            WorkflowExpression.Validate(__workflow_bodytop, nameof(bodytop), required: false);
+            var __workflow_knowledgeBaseId = WorkflowExpression.Compile(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
+            var __workflow_serviceHost = WorkflowExpression.Compile(serviceHost, nameof(serviceHost), required: true);
+            var __workflow_endpointKey = WorkflowExpression.Compile(endpointKey, nameof(endpointKey), required: true);
+            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: true);
+            var __workflow_bodytop = WorkflowExpression.Compile(bodytop, nameof(bodytop), required: false);
             return new DeferredBodyAction<GenerateAnswerResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/knowledgebases/{0}/generateAnswer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeBaseId, 1));
@@ -62,8 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicesqnamaker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicesqnamaker")]
         public IBodyWorkflowAction<DownloadKnowledgeBaseResponse> DownloadKnowledgeBaseOld(Expression<Func<string>> knowledgeBaseId)
         {
-            var __workflow_knowledgeBaseId = knowledgeBaseId == null ? null : WorkflowExpression.Compile(knowledgeBaseId);
-            WorkflowExpression.Validate(__workflow_knowledgeBaseId, nameof(knowledgeBaseId), required: true);
+            var __workflow_knowledgeBaseId = WorkflowExpression.Compile(knowledgeBaseId, nameof(knowledgeBaseId), required: true);
             return new DeferredBodyAction<DownloadKnowledgeBaseResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/qnamaker/v4.0/knowledgebases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeBaseId, 1));

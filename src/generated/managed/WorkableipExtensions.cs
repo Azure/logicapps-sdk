@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<CandidatesIdResponse> CandidatesId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CandidatesIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -54,8 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<JobShortCodeResponse> JobShortCode(Expression<Func<string>> shortcode)
         {
-            var __workflow_shortcode = shortcode == null ? null : WorkflowExpression.Compile(shortcode);
-            WorkflowExpression.Validate(__workflow_shortcode, nameof(shortcode), required: true);
+            var __workflow_shortcode = WorkflowExpression.Compile(shortcode, nameof(shortcode), required: true);
             return new DeferredBodyAction<JobShortCodeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_shortcode, 1));
@@ -86,8 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<JobActivitiesResponse> JobActivities(Expression<Func<string>> shortcode)
         {
-            var __workflow_shortcode = shortcode == null ? null : WorkflowExpression.Compile(shortcode);
-            WorkflowExpression.Validate(__workflow_shortcode, nameof(shortcode), required: true);
+            var __workflow_shortcode = WorkflowExpression.Compile(shortcode, nameof(shortcode), required: true);
             return new DeferredBodyAction<JobActivitiesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/jobs/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_shortcode, 1));
@@ -109,8 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<EventsIdResponse> EventsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<EventsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -132,14 +128,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<PostSubscriptionResponse> PostSubscription(Expression<Func<string>> bodytarget = null, Expression<Func<string>> bodyEvent = null, Expression<Func<string>> bodyargsaccountId = null, Expression<Func<string>> bodyargsstageSlug = null)
         {
-            var __workflow_bodytarget = bodytarget == null ? null : WorkflowExpression.Compile(bodytarget);
-            WorkflowExpression.Validate(__workflow_bodytarget, nameof(bodytarget), required: false);
-            var __workflow_bodyEvent = bodyEvent == null ? null : WorkflowExpression.Compile(bodyEvent);
-            WorkflowExpression.Validate(__workflow_bodyEvent, nameof(bodyEvent), required: false);
-            var __workflow_bodyargsaccountId = bodyargsaccountId == null ? null : WorkflowExpression.Compile(bodyargsaccountId);
-            WorkflowExpression.Validate(__workflow_bodyargsaccountId, nameof(bodyargsaccountId), required: false);
-            var __workflow_bodyargsstageSlug = bodyargsstageSlug == null ? null : WorkflowExpression.Compile(bodyargsstageSlug);
-            WorkflowExpression.Validate(__workflow_bodyargsstageSlug, nameof(bodyargsstageSlug), required: false);
+            var __workflow_bodytarget = WorkflowExpression.Compile(bodytarget, nameof(bodytarget), required: false);
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: false);
+            var __workflow_bodyargsaccountId = WorkflowExpression.Compile(bodyargsaccountId, nameof(bodyargsaccountId), required: false);
+            var __workflow_bodyargsstageSlug = WorkflowExpression.Compile(bodyargsstageSlug, nameof(bodyargsstageSlug), required: false);
             return new DeferredBodyAction<PostSubscriptionResponse>(() =>
             {
                 var apiCallPath = "/spi/v3/subscriptions";
@@ -210,8 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workableip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workableip")]
         public IBodyWorkflowAction<OfferResponse> Offer(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<OfferResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/spi/v3/candidates/{0}/offer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

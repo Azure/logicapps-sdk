@@ -13,80 +13,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction Shipments(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyfromname = null, Expression<Func<string>> bodyfromaddress = null, Expression<Func<string>> bodyfromcity = null, Expression<Func<string>> bodyfromzipCode = null, Expression<Func<string>> bodyfromcountryCode = null, Expression<Func<string>> bodyfromidNumber = null, Expression<Func<string>> bodyfromstateCode = null, Expression<Func<string>> bodyfromphone = null, Expression<Func<string>> bodyfromemail = null, Expression<Func<string>> bodyfromdistributionCenterId = null, Expression<Func<string>> bodytoname = null, Expression<Func<string>> bodytoaddress = null, Expression<Func<string>> bodytocity = null, Expression<Func<string>> bodytozipCode = null, Expression<Func<string>> bodytocountryCode = null, Expression<Func<string>> bodytoidNumber = null, Expression<Func<string>> bodytostateCode = null, Expression<Func<string>> bodytoobservations = null, Expression<Func<string>> bodytophone = null, Expression<Func<string>> bodytoemail = null, Expression<Func<string>> bodytodistributionCenterId = null, Expression<Func<string>> bodycostCenterCode = null, Expression<Func<string>> bodyclientAdditionalInfocategory = null, Expression<Func<string>> bodyserviceAttributescashOnDelivery = null, Expression<Func<string>> bodyserviceCode = null, Expression<Func<string>> bodydistributionCenterId = null, Expression<Func<string>> bodycarrierCode = null, Expression<Func<string>> bodyclientReference = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytotalAmount = null, Expression<Func<string>> bodycustomsinvoiceId = null, Expression<Func<string>> bodybatchreference = null, Expression<Func<string>> bodyestimatedDate = null, Expression<Func<bodyparcelsInputItem[]>> bodyparcels = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyfromname = bodyfromname == null ? null : WorkflowExpression.Compile(bodyfromname);
-            WorkflowExpression.Validate(__workflow_bodyfromname, nameof(bodyfromname), required: false);
-            var __workflow_bodyfromaddress = bodyfromaddress == null ? null : WorkflowExpression.Compile(bodyfromaddress);
-            WorkflowExpression.Validate(__workflow_bodyfromaddress, nameof(bodyfromaddress), required: false);
-            var __workflow_bodyfromcity = bodyfromcity == null ? null : WorkflowExpression.Compile(bodyfromcity);
-            WorkflowExpression.Validate(__workflow_bodyfromcity, nameof(bodyfromcity), required: false);
-            var __workflow_bodyfromzipCode = bodyfromzipCode == null ? null : WorkflowExpression.Compile(bodyfromzipCode);
-            WorkflowExpression.Validate(__workflow_bodyfromzipCode, nameof(bodyfromzipCode), required: false);
-            var __workflow_bodyfromcountryCode = bodyfromcountryCode == null ? null : WorkflowExpression.Compile(bodyfromcountryCode);
-            WorkflowExpression.Validate(__workflow_bodyfromcountryCode, nameof(bodyfromcountryCode), required: false);
-            var __workflow_bodyfromidNumber = bodyfromidNumber == null ? null : WorkflowExpression.Compile(bodyfromidNumber);
-            WorkflowExpression.Validate(__workflow_bodyfromidNumber, nameof(bodyfromidNumber), required: false);
-            var __workflow_bodyfromstateCode = bodyfromstateCode == null ? null : WorkflowExpression.Compile(bodyfromstateCode);
-            WorkflowExpression.Validate(__workflow_bodyfromstateCode, nameof(bodyfromstateCode), required: false);
-            var __workflow_bodyfromphone = bodyfromphone == null ? null : WorkflowExpression.Compile(bodyfromphone);
-            WorkflowExpression.Validate(__workflow_bodyfromphone, nameof(bodyfromphone), required: false);
-            var __workflow_bodyfromemail = bodyfromemail == null ? null : WorkflowExpression.Compile(bodyfromemail);
-            WorkflowExpression.Validate(__workflow_bodyfromemail, nameof(bodyfromemail), required: false);
-            var __workflow_bodyfromdistributionCenterId = bodyfromdistributionCenterId == null ? null : WorkflowExpression.Compile(bodyfromdistributionCenterId);
-            WorkflowExpression.Validate(__workflow_bodyfromdistributionCenterId, nameof(bodyfromdistributionCenterId), required: false);
-            var __workflow_bodytoname = bodytoname == null ? null : WorkflowExpression.Compile(bodytoname);
-            WorkflowExpression.Validate(__workflow_bodytoname, nameof(bodytoname), required: false);
-            var __workflow_bodytoaddress = bodytoaddress == null ? null : WorkflowExpression.Compile(bodytoaddress);
-            WorkflowExpression.Validate(__workflow_bodytoaddress, nameof(bodytoaddress), required: false);
-            var __workflow_bodytocity = bodytocity == null ? null : WorkflowExpression.Compile(bodytocity);
-            WorkflowExpression.Validate(__workflow_bodytocity, nameof(bodytocity), required: false);
-            var __workflow_bodytozipCode = bodytozipCode == null ? null : WorkflowExpression.Compile(bodytozipCode);
-            WorkflowExpression.Validate(__workflow_bodytozipCode, nameof(bodytozipCode), required: false);
-            var __workflow_bodytocountryCode = bodytocountryCode == null ? null : WorkflowExpression.Compile(bodytocountryCode);
-            WorkflowExpression.Validate(__workflow_bodytocountryCode, nameof(bodytocountryCode), required: false);
-            var __workflow_bodytoidNumber = bodytoidNumber == null ? null : WorkflowExpression.Compile(bodytoidNumber);
-            WorkflowExpression.Validate(__workflow_bodytoidNumber, nameof(bodytoidNumber), required: false);
-            var __workflow_bodytostateCode = bodytostateCode == null ? null : WorkflowExpression.Compile(bodytostateCode);
-            WorkflowExpression.Validate(__workflow_bodytostateCode, nameof(bodytostateCode), required: false);
-            var __workflow_bodytoobservations = bodytoobservations == null ? null : WorkflowExpression.Compile(bodytoobservations);
-            WorkflowExpression.Validate(__workflow_bodytoobservations, nameof(bodytoobservations), required: false);
-            var __workflow_bodytophone = bodytophone == null ? null : WorkflowExpression.Compile(bodytophone);
-            WorkflowExpression.Validate(__workflow_bodytophone, nameof(bodytophone), required: false);
-            var __workflow_bodytoemail = bodytoemail == null ? null : WorkflowExpression.Compile(bodytoemail);
-            WorkflowExpression.Validate(__workflow_bodytoemail, nameof(bodytoemail), required: false);
-            var __workflow_bodytodistributionCenterId = bodytodistributionCenterId == null ? null : WorkflowExpression.Compile(bodytodistributionCenterId);
-            WorkflowExpression.Validate(__workflow_bodytodistributionCenterId, nameof(bodytodistributionCenterId), required: false);
-            var __workflow_bodycostCenterCode = bodycostCenterCode == null ? null : WorkflowExpression.Compile(bodycostCenterCode);
-            WorkflowExpression.Validate(__workflow_bodycostCenterCode, nameof(bodycostCenterCode), required: false);
-            var __workflow_bodyclientAdditionalInfocategory = bodyclientAdditionalInfocategory == null ? null : WorkflowExpression.Compile(bodyclientAdditionalInfocategory);
-            WorkflowExpression.Validate(__workflow_bodyclientAdditionalInfocategory, nameof(bodyclientAdditionalInfocategory), required: false);
-            var __workflow_bodyserviceAttributescashOnDelivery = bodyserviceAttributescashOnDelivery == null ? null : WorkflowExpression.Compile(bodyserviceAttributescashOnDelivery);
-            WorkflowExpression.Validate(__workflow_bodyserviceAttributescashOnDelivery, nameof(bodyserviceAttributescashOnDelivery), required: false);
-            var __workflow_bodyserviceCode = bodyserviceCode == null ? null : WorkflowExpression.Compile(bodyserviceCode);
-            WorkflowExpression.Validate(__workflow_bodyserviceCode, nameof(bodyserviceCode), required: false);
-            var __workflow_bodydistributionCenterId = bodydistributionCenterId == null ? null : WorkflowExpression.Compile(bodydistributionCenterId);
-            WorkflowExpression.Validate(__workflow_bodydistributionCenterId, nameof(bodydistributionCenterId), required: false);
-            var __workflow_bodycarrierCode = bodycarrierCode == null ? null : WorkflowExpression.Compile(bodycarrierCode);
-            WorkflowExpression.Validate(__workflow_bodycarrierCode, nameof(bodycarrierCode), required: false);
-            var __workflow_bodyclientReference = bodyclientReference == null ? null : WorkflowExpression.Compile(bodyclientReference);
-            WorkflowExpression.Validate(__workflow_bodyclientReference, nameof(bodyclientReference), required: false);
-            var __workflow_bodyshippingDate = bodyshippingDate == null ? null : WorkflowExpression.Compile(bodyshippingDate);
-            WorkflowExpression.Validate(__workflow_bodyshippingDate, nameof(bodyshippingDate), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytotalAmount = bodytotalAmount == null ? null : WorkflowExpression.Compile(bodytotalAmount);
-            WorkflowExpression.Validate(__workflow_bodytotalAmount, nameof(bodytotalAmount), required: false);
-            var __workflow_bodycustomsinvoiceId = bodycustomsinvoiceId == null ? null : WorkflowExpression.Compile(bodycustomsinvoiceId);
-            WorkflowExpression.Validate(__workflow_bodycustomsinvoiceId, nameof(bodycustomsinvoiceId), required: false);
-            var __workflow_bodybatchreference = bodybatchreference == null ? null : WorkflowExpression.Compile(bodybatchreference);
-            WorkflowExpression.Validate(__workflow_bodybatchreference, nameof(bodybatchreference), required: false);
-            var __workflow_bodyestimatedDate = bodyestimatedDate == null ? null : WorkflowExpression.Compile(bodyestimatedDate);
-            WorkflowExpression.Validate(__workflow_bodyestimatedDate, nameof(bodyestimatedDate), required: false);
-            var __workflow_bodyparcels = bodyparcels == null ? null : WorkflowExpression.Compile(bodyparcels);
-            WorkflowExpression.Validate(__workflow_bodyparcels, nameof(bodyparcels), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyfromname = WorkflowExpression.Compile(bodyfromname, nameof(bodyfromname), required: false);
+            var __workflow_bodyfromaddress = WorkflowExpression.Compile(bodyfromaddress, nameof(bodyfromaddress), required: false);
+            var __workflow_bodyfromcity = WorkflowExpression.Compile(bodyfromcity, nameof(bodyfromcity), required: false);
+            var __workflow_bodyfromzipCode = WorkflowExpression.Compile(bodyfromzipCode, nameof(bodyfromzipCode), required: false);
+            var __workflow_bodyfromcountryCode = WorkflowExpression.Compile(bodyfromcountryCode, nameof(bodyfromcountryCode), required: false);
+            var __workflow_bodyfromidNumber = WorkflowExpression.Compile(bodyfromidNumber, nameof(bodyfromidNumber), required: false);
+            var __workflow_bodyfromstateCode = WorkflowExpression.Compile(bodyfromstateCode, nameof(bodyfromstateCode), required: false);
+            var __workflow_bodyfromphone = WorkflowExpression.Compile(bodyfromphone, nameof(bodyfromphone), required: false);
+            var __workflow_bodyfromemail = WorkflowExpression.Compile(bodyfromemail, nameof(bodyfromemail), required: false);
+            var __workflow_bodyfromdistributionCenterId = WorkflowExpression.Compile(bodyfromdistributionCenterId, nameof(bodyfromdistributionCenterId), required: false);
+            var __workflow_bodytoname = WorkflowExpression.Compile(bodytoname, nameof(bodytoname), required: false);
+            var __workflow_bodytoaddress = WorkflowExpression.Compile(bodytoaddress, nameof(bodytoaddress), required: false);
+            var __workflow_bodytocity = WorkflowExpression.Compile(bodytocity, nameof(bodytocity), required: false);
+            var __workflow_bodytozipCode = WorkflowExpression.Compile(bodytozipCode, nameof(bodytozipCode), required: false);
+            var __workflow_bodytocountryCode = WorkflowExpression.Compile(bodytocountryCode, nameof(bodytocountryCode), required: false);
+            var __workflow_bodytoidNumber = WorkflowExpression.Compile(bodytoidNumber, nameof(bodytoidNumber), required: false);
+            var __workflow_bodytostateCode = WorkflowExpression.Compile(bodytostateCode, nameof(bodytostateCode), required: false);
+            var __workflow_bodytoobservations = WorkflowExpression.Compile(bodytoobservations, nameof(bodytoobservations), required: false);
+            var __workflow_bodytophone = WorkflowExpression.Compile(bodytophone, nameof(bodytophone), required: false);
+            var __workflow_bodytoemail = WorkflowExpression.Compile(bodytoemail, nameof(bodytoemail), required: false);
+            var __workflow_bodytodistributionCenterId = WorkflowExpression.Compile(bodytodistributionCenterId, nameof(bodytodistributionCenterId), required: false);
+            var __workflow_bodycostCenterCode = WorkflowExpression.Compile(bodycostCenterCode, nameof(bodycostCenterCode), required: false);
+            var __workflow_bodyclientAdditionalInfocategory = WorkflowExpression.Compile(bodyclientAdditionalInfocategory, nameof(bodyclientAdditionalInfocategory), required: false);
+            var __workflow_bodyserviceAttributescashOnDelivery = WorkflowExpression.Compile(bodyserviceAttributescashOnDelivery, nameof(bodyserviceAttributescashOnDelivery), required: false);
+            var __workflow_bodyserviceCode = WorkflowExpression.Compile(bodyserviceCode, nameof(bodyserviceCode), required: false);
+            var __workflow_bodydistributionCenterId = WorkflowExpression.Compile(bodydistributionCenterId, nameof(bodydistributionCenterId), required: false);
+            var __workflow_bodycarrierCode = WorkflowExpression.Compile(bodycarrierCode, nameof(bodycarrierCode), required: false);
+            var __workflow_bodyclientReference = WorkflowExpression.Compile(bodyclientReference, nameof(bodyclientReference), required: false);
+            var __workflow_bodyshippingDate = WorkflowExpression.Compile(bodyshippingDate, nameof(bodyshippingDate), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodytotalAmount = WorkflowExpression.Compile(bodytotalAmount, nameof(bodytotalAmount), required: false);
+            var __workflow_bodycustomsinvoiceId = WorkflowExpression.Compile(bodycustomsinvoiceId, nameof(bodycustomsinvoiceId), required: false);
+            var __workflow_bodybatchreference = WorkflowExpression.Compile(bodybatchreference, nameof(bodybatchreference), required: false);
+            var __workflow_bodyestimatedDate = WorkflowExpression.Compile(bodyestimatedDate, nameof(bodyestimatedDate), required: false);
+            var __workflow_bodyparcels = WorkflowExpression.Compile(bodyparcels, nameof(bodyparcels), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/shipments";
@@ -366,12 +329,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction Label(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
-            var __workflow_delivereaReference = delivereaReference == null ? null : WorkflowExpression.Compile(delivereaReference);
-            WorkflowExpression.Validate(__workflow_delivereaReference, nameof(delivereaReference), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_delivereaReference = WorkflowExpression.Compile(delivereaReference, nameof(delivereaReference), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/shipments/{0}/label", ExpressionConverter.ConvertWithUrlEncoding(__workflow_delivereaReference, 1));
@@ -386,10 +346,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IBodyWorkflowAction<DistributionCentersResponse> DistributionCenters(Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<DistributionCentersResponse>(() =>
             {
                 var apiCallPath = "/distribution-centers";
@@ -404,12 +362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IBodyWorkflowAction<CarriersInDistributionCenterResponse> CarriersInDistributionCenter(Expression<Func<string>> distributionCenter, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
-            var __workflow_distributionCenter = distributionCenter == null ? null : WorkflowExpression.Compile(distributionCenter);
-            WorkflowExpression.Validate(__workflow_distributionCenter, nameof(distributionCenter), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_distributionCenter = WorkflowExpression.Compile(distributionCenter, nameof(distributionCenter), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<CarriersInDistributionCenterResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/distribution-centers/{0}/carriers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_distributionCenter, 1));
@@ -424,12 +379,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deliverea
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deliverea")]
         public IWorkflowAction CancelShipment(Expression<Func<string>> delivereaReference, Expression<Func<string>> contentType, Expression<Func<string>> accept)
         {
-            var __workflow_delivereaReference = delivereaReference == null ? null : WorkflowExpression.Compile(delivereaReference);
-            WorkflowExpression.Validate(__workflow_delivereaReference, nameof(delivereaReference), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_delivereaReference = WorkflowExpression.Compile(delivereaReference, nameof(delivereaReference), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/shipments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_delivereaReference, 1));

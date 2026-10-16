@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IWorkflowAction Sendcampaign(Expression<Func<string>> campaignId)
         {
-            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
-            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: true);
+            var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/actions/send", ExpressionConverter.ConvertWithUrlEncoding(__workflow_campaignId, 1));
@@ -36,10 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<GetListsResponseModel> GetLists(Expression<Func<int>> count = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<GetListsResponseModel>(() =>
             {
                 var apiCallPath = "/lists";
@@ -58,44 +55,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<CreateNewListResponseModel> Newlist(Expression<Func<string>> newListRequestlistName, Expression<Func<string>> newListRequestcontactcompanyName, Expression<Func<string>> newListRequestcontactaddressLine1, Expression<Func<string>> newListRequestcontactcity, Expression<Func<string>> newListRequestcontactstate, Expression<Func<string>> newListRequestcontactpostalCode, Expression<Func<string>> newListRequestcontactcountryCode, Expression<Func<string>> newListRequestcontactphoneNumber, Expression<Func<string>> newListRequestpermissionReminder, Expression<Func<string>> newListRequestcampaignDefaultssenderSName, Expression<Func<string>> newListRequestcampaignDefaultssenderSEmailAddress, Expression<Func<string>> newListRequestcampaignDefaultssubject, Expression<Func<newListRequestcampaignDefaultslanguageInput>> newListRequestcampaignDefaultslanguage, Expression<Func<bool>> newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, Expression<Func<string>> newListRequestcontactaddressLine2 = null, Expression<Func<bool>> newListRequestuseArchiveBar = null, Expression<Func<string>> newListRequestnotifyOnSubscribe = null, Expression<Func<string>> newListRequestnotifyOnUnsubscribe = null, Expression<Func<newListRequestvisibilityInput>> newListRequestvisibility = null)
         {
-            var __workflow_newListRequestlistName = newListRequestlistName == null ? null : WorkflowExpression.Compile(newListRequestlistName);
-            WorkflowExpression.Validate(__workflow_newListRequestlistName, nameof(newListRequestlistName), required: true);
-            var __workflow_newListRequestcontactcompanyName = newListRequestcontactcompanyName == null ? null : WorkflowExpression.Compile(newListRequestcontactcompanyName);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactcompanyName, nameof(newListRequestcontactcompanyName), required: true);
-            var __workflow_newListRequestcontactaddressLine1 = newListRequestcontactaddressLine1 == null ? null : WorkflowExpression.Compile(newListRequestcontactaddressLine1);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactaddressLine1, nameof(newListRequestcontactaddressLine1), required: true);
-            var __workflow_newListRequestcontactcity = newListRequestcontactcity == null ? null : WorkflowExpression.Compile(newListRequestcontactcity);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactcity, nameof(newListRequestcontactcity), required: true);
-            var __workflow_newListRequestcontactstate = newListRequestcontactstate == null ? null : WorkflowExpression.Compile(newListRequestcontactstate);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactstate, nameof(newListRequestcontactstate), required: true);
-            var __workflow_newListRequestcontactpostalCode = newListRequestcontactpostalCode == null ? null : WorkflowExpression.Compile(newListRequestcontactpostalCode);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactpostalCode, nameof(newListRequestcontactpostalCode), required: true);
-            var __workflow_newListRequestcontactcountryCode = newListRequestcontactcountryCode == null ? null : WorkflowExpression.Compile(newListRequestcontactcountryCode);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactcountryCode, nameof(newListRequestcontactcountryCode), required: true);
-            var __workflow_newListRequestcontactphoneNumber = newListRequestcontactphoneNumber == null ? null : WorkflowExpression.Compile(newListRequestcontactphoneNumber);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactphoneNumber, nameof(newListRequestcontactphoneNumber), required: true);
-            var __workflow_newListRequestpermissionReminder = newListRequestpermissionReminder == null ? null : WorkflowExpression.Compile(newListRequestpermissionReminder);
-            WorkflowExpression.Validate(__workflow_newListRequestpermissionReminder, nameof(newListRequestpermissionReminder), required: true);
-            var __workflow_newListRequestcampaignDefaultssenderSName = newListRequestcampaignDefaultssenderSName == null ? null : WorkflowExpression.Compile(newListRequestcampaignDefaultssenderSName);
-            WorkflowExpression.Validate(__workflow_newListRequestcampaignDefaultssenderSName, nameof(newListRequestcampaignDefaultssenderSName), required: true);
-            var __workflow_newListRequestcampaignDefaultssenderSEmailAddress = newListRequestcampaignDefaultssenderSEmailAddress == null ? null : WorkflowExpression.Compile(newListRequestcampaignDefaultssenderSEmailAddress);
-            WorkflowExpression.Validate(__workflow_newListRequestcampaignDefaultssenderSEmailAddress, nameof(newListRequestcampaignDefaultssenderSEmailAddress), required: true);
-            var __workflow_newListRequestcampaignDefaultssubject = newListRequestcampaignDefaultssubject == null ? null : WorkflowExpression.Compile(newListRequestcampaignDefaultssubject);
-            WorkflowExpression.Validate(__workflow_newListRequestcampaignDefaultssubject, nameof(newListRequestcampaignDefaultssubject), required: true);
-            var __workflow_newListRequestcampaignDefaultslanguage = newListRequestcampaignDefaultslanguage == null ? null : WorkflowExpression.Compile(newListRequestcampaignDefaultslanguage);
-            WorkflowExpression.Validate(__workflow_newListRequestcampaignDefaultslanguage, nameof(newListRequestcampaignDefaultslanguage), required: true);
-            var __workflow_newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse = newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse == null ? null : WorkflowExpression.Compile(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse);
-            WorkflowExpression.Validate(__workflow_newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, nameof(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse), required: true);
-            var __workflow_newListRequestcontactaddressLine2 = newListRequestcontactaddressLine2 == null ? null : WorkflowExpression.Compile(newListRequestcontactaddressLine2);
-            WorkflowExpression.Validate(__workflow_newListRequestcontactaddressLine2, nameof(newListRequestcontactaddressLine2), required: false);
-            var __workflow_newListRequestuseArchiveBar = newListRequestuseArchiveBar == null ? null : WorkflowExpression.Compile(newListRequestuseArchiveBar);
-            WorkflowExpression.Validate(__workflow_newListRequestuseArchiveBar, nameof(newListRequestuseArchiveBar), required: false);
-            var __workflow_newListRequestnotifyOnSubscribe = newListRequestnotifyOnSubscribe == null ? null : WorkflowExpression.Compile(newListRequestnotifyOnSubscribe);
-            WorkflowExpression.Validate(__workflow_newListRequestnotifyOnSubscribe, nameof(newListRequestnotifyOnSubscribe), required: false);
-            var __workflow_newListRequestnotifyOnUnsubscribe = newListRequestnotifyOnUnsubscribe == null ? null : WorkflowExpression.Compile(newListRequestnotifyOnUnsubscribe);
-            WorkflowExpression.Validate(__workflow_newListRequestnotifyOnUnsubscribe, nameof(newListRequestnotifyOnUnsubscribe), required: false);
-            var __workflow_newListRequestvisibility = newListRequestvisibility == null ? null : WorkflowExpression.Compile(newListRequestvisibility);
-            WorkflowExpression.Validate(__workflow_newListRequestvisibility, nameof(newListRequestvisibility), required: false);
+            var __workflow_newListRequestlistName = WorkflowExpression.Compile(newListRequestlistName, nameof(newListRequestlistName), required: true);
+            var __workflow_newListRequestcontactcompanyName = WorkflowExpression.Compile(newListRequestcontactcompanyName, nameof(newListRequestcontactcompanyName), required: true);
+            var __workflow_newListRequestcontactaddressLine1 = WorkflowExpression.Compile(newListRequestcontactaddressLine1, nameof(newListRequestcontactaddressLine1), required: true);
+            var __workflow_newListRequestcontactcity = WorkflowExpression.Compile(newListRequestcontactcity, nameof(newListRequestcontactcity), required: true);
+            var __workflow_newListRequestcontactstate = WorkflowExpression.Compile(newListRequestcontactstate, nameof(newListRequestcontactstate), required: true);
+            var __workflow_newListRequestcontactpostalCode = WorkflowExpression.Compile(newListRequestcontactpostalCode, nameof(newListRequestcontactpostalCode), required: true);
+            var __workflow_newListRequestcontactcountryCode = WorkflowExpression.Compile(newListRequestcontactcountryCode, nameof(newListRequestcontactcountryCode), required: true);
+            var __workflow_newListRequestcontactphoneNumber = WorkflowExpression.Compile(newListRequestcontactphoneNumber, nameof(newListRequestcontactphoneNumber), required: true);
+            var __workflow_newListRequestpermissionReminder = WorkflowExpression.Compile(newListRequestpermissionReminder, nameof(newListRequestpermissionReminder), required: true);
+            var __workflow_newListRequestcampaignDefaultssenderSName = WorkflowExpression.Compile(newListRequestcampaignDefaultssenderSName, nameof(newListRequestcampaignDefaultssenderSName), required: true);
+            var __workflow_newListRequestcampaignDefaultssenderSEmailAddress = WorkflowExpression.Compile(newListRequestcampaignDefaultssenderSEmailAddress, nameof(newListRequestcampaignDefaultssenderSEmailAddress), required: true);
+            var __workflow_newListRequestcampaignDefaultssubject = WorkflowExpression.Compile(newListRequestcampaignDefaultssubject, nameof(newListRequestcampaignDefaultssubject), required: true);
+            var __workflow_newListRequestcampaignDefaultslanguage = WorkflowExpression.Compile(newListRequestcampaignDefaultslanguage, nameof(newListRequestcampaignDefaultslanguage), required: true);
+            var __workflow_newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse = WorkflowExpression.Compile(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse, nameof(newListRequestallowUsersToChooseBetweenHTMLAndPlainTextTrueFalse), required: true);
+            var __workflow_newListRequestcontactaddressLine2 = WorkflowExpression.Compile(newListRequestcontactaddressLine2, nameof(newListRequestcontactaddressLine2), required: false);
+            var __workflow_newListRequestuseArchiveBar = WorkflowExpression.Compile(newListRequestuseArchiveBar, nameof(newListRequestuseArchiveBar), required: false);
+            var __workflow_newListRequestnotifyOnSubscribe = WorkflowExpression.Compile(newListRequestnotifyOnSubscribe, nameof(newListRequestnotifyOnSubscribe), required: false);
+            var __workflow_newListRequestnotifyOnUnsubscribe = WorkflowExpression.Compile(newListRequestnotifyOnUnsubscribe, nameof(newListRequestnotifyOnUnsubscribe), required: false);
+            var __workflow_newListRequestvisibility = WorkflowExpression.Compile(newListRequestvisibility, nameof(newListRequestvisibility), required: false);
             return new DeferredBodyAction<CreateNewListResponseModel>(() =>
             {
                 var apiCallPath = "/lists";
@@ -189,16 +167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<GetAddMembersBatchResponseModel> AddMembers(Expression<Func<string>> listId, Expression<Func<NewMemberInListRequest[]>> bodymembers, Expression<Func<bool>> skipMergeValidation = null, Expression<Func<bool>> skipDuplicateCheck = null, Expression<Func<bool>> bodyupdateExisting = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
-            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: true);
-            var __workflow_skipMergeValidation = skipMergeValidation == null ? null : WorkflowExpression.Compile(skipMergeValidation);
-            WorkflowExpression.Validate(__workflow_skipMergeValidation, nameof(skipMergeValidation), required: false);
-            var __workflow_skipDuplicateCheck = skipDuplicateCheck == null ? null : WorkflowExpression.Compile(skipDuplicateCheck);
-            WorkflowExpression.Validate(__workflow_skipDuplicateCheck, nameof(skipDuplicateCheck), required: false);
-            var __workflow_bodyupdateExisting = bodyupdateExisting == null ? null : WorkflowExpression.Compile(bodyupdateExisting);
-            WorkflowExpression.Validate(__workflow_bodyupdateExisting, nameof(bodyupdateExisting), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: true);
+            var __workflow_skipMergeValidation = WorkflowExpression.Compile(skipMergeValidation, nameof(skipMergeValidation), required: false);
+            var __workflow_skipDuplicateCheck = WorkflowExpression.Compile(skipDuplicateCheck, nameof(skipDuplicateCheck), required: false);
+            var __workflow_bodyupdateExisting = WorkflowExpression.Compile(bodyupdateExisting, nameof(bodyupdateExisting), required: false);
             return new DeferredBodyAction<GetAddMembersBatchResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -230,12 +203,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<GetAllMembersResponseModel> GetListMembers(Expression<Func<string>> listId, Expression<Func<int>> count = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<GetAllMembersResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -254,26 +224,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<MemberResponseModel> Addmember(Expression<Func<string>> listId, Expression<Func<newMemberInListstatusInput>> newMemberInListstatus, Expression<Func<string>> newMemberInListemailAddress, Expression<Func<newMemberInListemailTypeInput>> newMemberInListemailType = null, Expression<Func<string>> newMemberInListmergeFieldsfirstName = null, Expression<Func<string>> newMemberInListmergeFieldslastName = null, Expression<Func<string>> newMemberInListlanguage = null, Expression<Func<bool>> newMemberInListvIP = null, Expression<Func<double>> newMemberInListlocationlatitude = null, Expression<Func<double>> newMemberInListlocationlongitude = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_newMemberInListstatus = newMemberInListstatus == null ? null : WorkflowExpression.Compile(newMemberInListstatus);
-            WorkflowExpression.Validate(__workflow_newMemberInListstatus, nameof(newMemberInListstatus), required: true);
-            var __workflow_newMemberInListemailAddress = newMemberInListemailAddress == null ? null : WorkflowExpression.Compile(newMemberInListemailAddress);
-            WorkflowExpression.Validate(__workflow_newMemberInListemailAddress, nameof(newMemberInListemailAddress), required: true);
-            var __workflow_newMemberInListemailType = newMemberInListemailType == null ? null : WorkflowExpression.Compile(newMemberInListemailType);
-            WorkflowExpression.Validate(__workflow_newMemberInListemailType, nameof(newMemberInListemailType), required: false);
-            var __workflow_newMemberInListmergeFieldsfirstName = newMemberInListmergeFieldsfirstName == null ? null : WorkflowExpression.Compile(newMemberInListmergeFieldsfirstName);
-            WorkflowExpression.Validate(__workflow_newMemberInListmergeFieldsfirstName, nameof(newMemberInListmergeFieldsfirstName), required: false);
-            var __workflow_newMemberInListmergeFieldslastName = newMemberInListmergeFieldslastName == null ? null : WorkflowExpression.Compile(newMemberInListmergeFieldslastName);
-            WorkflowExpression.Validate(__workflow_newMemberInListmergeFieldslastName, nameof(newMemberInListmergeFieldslastName), required: false);
-            var __workflow_newMemberInListlanguage = newMemberInListlanguage == null ? null : WorkflowExpression.Compile(newMemberInListlanguage);
-            WorkflowExpression.Validate(__workflow_newMemberInListlanguage, nameof(newMemberInListlanguage), required: false);
-            var __workflow_newMemberInListvIP = newMemberInListvIP == null ? null : WorkflowExpression.Compile(newMemberInListvIP);
-            WorkflowExpression.Validate(__workflow_newMemberInListvIP, nameof(newMemberInListvIP), required: false);
-            var __workflow_newMemberInListlocationlatitude = newMemberInListlocationlatitude == null ? null : WorkflowExpression.Compile(newMemberInListlocationlatitude);
-            WorkflowExpression.Validate(__workflow_newMemberInListlocationlatitude, nameof(newMemberInListlocationlatitude), required: false);
-            var __workflow_newMemberInListlocationlongitude = newMemberInListlocationlongitude == null ? null : WorkflowExpression.Compile(newMemberInListlocationlongitude);
-            WorkflowExpression.Validate(__workflow_newMemberInListlocationlongitude, nameof(newMemberInListlocationlongitude), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_newMemberInListstatus = WorkflowExpression.Compile(newMemberInListstatus, nameof(newMemberInListstatus), required: true);
+            var __workflow_newMemberInListemailAddress = WorkflowExpression.Compile(newMemberInListemailAddress, nameof(newMemberInListemailAddress), required: true);
+            var __workflow_newMemberInListemailType = WorkflowExpression.Compile(newMemberInListemailType, nameof(newMemberInListemailType), required: false);
+            var __workflow_newMemberInListmergeFieldsfirstName = WorkflowExpression.Compile(newMemberInListmergeFieldsfirstName, nameof(newMemberInListmergeFieldsfirstName), required: false);
+            var __workflow_newMemberInListmergeFieldslastName = WorkflowExpression.Compile(newMemberInListmergeFieldslastName, nameof(newMemberInListmergeFieldslastName), required: false);
+            var __workflow_newMemberInListlanguage = WorkflowExpression.Compile(newMemberInListlanguage, nameof(newMemberInListlanguage), required: false);
+            var __workflow_newMemberInListvIP = WorkflowExpression.Compile(newMemberInListvIP, nameof(newMemberInListvIP), required: false);
+            var __workflow_newMemberInListlocationlatitude = WorkflowExpression.Compile(newMemberInListlocationlatitude, nameof(newMemberInListlocationlatitude), required: false);
+            var __workflow_newMemberInListlocationlongitude = WorkflowExpression.Compile(newMemberInListlocationlongitude, nameof(newMemberInListlocationlongitude), required: false);
             return new DeferredBodyAction<MemberResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -365,110 +325,58 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<CampaignResponseModel> Newcampaign(Expression<Func<newCampaignRequestcampaignTypeInput>> newCampaignRequestcampaignType, Expression<Func<string>> newCampaignRequestrecipientslistId, Expression<Func<string>> newCampaignRequestsettingscampaignSubjectLine, Expression<Func<string>> newCampaignRequestsettingsfromName, Expression<Func<string>> newCampaignRequestsettingsreplyToAddress, Expression<Func<int>> newCampaignRequestrecipientssegmentOptssavedSegmentID = null, Expression<Func<string>> newCampaignRequestrecipientssegmentOptsmatchType = null, Expression<Func<string>> newCampaignRequestsettingstitle = null, Expression<Func<bool>> newCampaignRequestsettingsconversation = null, Expression<Func<string>> newCampaignRequestsettingstoName = null, Expression<Func<string>> newCampaignRequestsettingsfolderID = null, Expression<Func<bool>> newCampaignRequestsettingsauthentication = null, Expression<Func<bool>> newCampaignRequestsettingsautoFooter = null, Expression<Func<bool>> newCampaignRequestsettingsinlineCSS = null, Expression<Func<bool>> newCampaignRequestsettingsautoTweet = null, Expression<Func<int[]>> newCampaignRequestsettingsautoPostToFacebook = null, Expression<Func<bool>> newCampaignRequestsettingsfacebookComments = null, Expression<Func<string>> newCampaignRequestvariateSettingswinningCriteria = null, Expression<Func<int>> newCampaignRequestvariateSettingswaitTime = null, Expression<Func<int>> newCampaignRequestvariateSettingstestSize = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssubjectLines = null, Expression<Func<string[]>> newCampaignRequestvariateSettingssendTimes = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsfromNames = null, Expression<Func<string[]>> newCampaignRequestvariateSettingsreplyToAddresses = null, Expression<Func<bool>> newCampaignRequesttrackingopens = null, Expression<Func<bool>> newCampaignRequesttrackinghTMLClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingplainTextClickTracking = null, Expression<Func<bool>> newCampaignRequesttrackingmailChimpGoalTracking = null, Expression<Func<bool>> newCampaignRequesttrackingeCommerce360Tracking = null, Expression<Func<string>> newCampaignRequesttrackinggoogleAnalyticsTracking = null, Expression<Func<string>> newCampaignRequesttrackingclickTaleAnalyticsTracking = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceCampaign = null, Expression<Func<bool>> newCampaignRequesttrackingsalesforcesalesforceNote = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseCampaign = null, Expression<Func<bool>> newCampaignRequesttrackinghighrisehighriseNote = null, Expression<Func<bool>> newCampaignRequesttrackingcapsulecapsuleNote = null, Expression<Func<string>> newCampaignRequestrssOptsfeedURL = null, Expression<Func<newCampaignRequestrssOptsfrequencyInput>> newCampaignRequestrssOptsfrequency = null, Expression<Func<string>> newCampaignRequestrssOptsconstrainRSSImages = null, Expression<Func<int>> newCampaignRequestrssOptsschedulesendingHour = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsunday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendmonday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendtuesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendwednesday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendthursday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendfriday = null, Expression<Func<bool>> newCampaignRequestrssOptsscheduledailySendsaturday = null, Expression<Func<newCampaignRequestrssOptsscheduleweeklySendingDayInput>> newCampaignRequestrssOptsscheduleweeklySendingDay = null, Expression<Func<double>> newCampaignRequestrssOptsschedulemonthlySendingDay = null, Expression<Func<string>> newCampaignRequestsocialCardimageURL = null, Expression<Func<string>> newCampaignRequestsocialCardcampaignDescription = null, Expression<Func<string>> newCampaignRequestsocialCardtitle = null)
         {
-            var __workflow_newCampaignRequestcampaignType = newCampaignRequestcampaignType == null ? null : WorkflowExpression.Compile(newCampaignRequestcampaignType);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestcampaignType, nameof(newCampaignRequestcampaignType), required: true);
-            var __workflow_newCampaignRequestrecipientslistId = newCampaignRequestrecipientslistId == null ? null : WorkflowExpression.Compile(newCampaignRequestrecipientslistId);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrecipientslistId, nameof(newCampaignRequestrecipientslistId), required: true);
-            var __workflow_newCampaignRequestsettingscampaignSubjectLine = newCampaignRequestsettingscampaignSubjectLine == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingscampaignSubjectLine);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingscampaignSubjectLine, nameof(newCampaignRequestsettingscampaignSubjectLine), required: true);
-            var __workflow_newCampaignRequestsettingsfromName = newCampaignRequestsettingsfromName == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsfromName);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsfromName, nameof(newCampaignRequestsettingsfromName), required: true);
-            var __workflow_newCampaignRequestsettingsreplyToAddress = newCampaignRequestsettingsreplyToAddress == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsreplyToAddress);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsreplyToAddress, nameof(newCampaignRequestsettingsreplyToAddress), required: true);
-            var __workflow_newCampaignRequestrecipientssegmentOptssavedSegmentID = newCampaignRequestrecipientssegmentOptssavedSegmentID == null ? null : WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptssavedSegmentID);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrecipientssegmentOptssavedSegmentID, nameof(newCampaignRequestrecipientssegmentOptssavedSegmentID), required: false);
-            var __workflow_newCampaignRequestrecipientssegmentOptsmatchType = newCampaignRequestrecipientssegmentOptsmatchType == null ? null : WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptsmatchType);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrecipientssegmentOptsmatchType, nameof(newCampaignRequestrecipientssegmentOptsmatchType), required: false);
-            var __workflow_newCampaignRequestsettingstitle = newCampaignRequestsettingstitle == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingstitle);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingstitle, nameof(newCampaignRequestsettingstitle), required: false);
-            var __workflow_newCampaignRequestsettingsconversation = newCampaignRequestsettingsconversation == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsconversation);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsconversation, nameof(newCampaignRequestsettingsconversation), required: false);
-            var __workflow_newCampaignRequestsettingstoName = newCampaignRequestsettingstoName == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingstoName);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingstoName, nameof(newCampaignRequestsettingstoName), required: false);
-            var __workflow_newCampaignRequestsettingsfolderID = newCampaignRequestsettingsfolderID == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsfolderID);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsfolderID, nameof(newCampaignRequestsettingsfolderID), required: false);
-            var __workflow_newCampaignRequestsettingsauthentication = newCampaignRequestsettingsauthentication == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsauthentication);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsauthentication, nameof(newCampaignRequestsettingsauthentication), required: false);
-            var __workflow_newCampaignRequestsettingsautoFooter = newCampaignRequestsettingsautoFooter == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsautoFooter);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsautoFooter, nameof(newCampaignRequestsettingsautoFooter), required: false);
-            var __workflow_newCampaignRequestsettingsinlineCSS = newCampaignRequestsettingsinlineCSS == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsinlineCSS);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsinlineCSS, nameof(newCampaignRequestsettingsinlineCSS), required: false);
-            var __workflow_newCampaignRequestsettingsautoTweet = newCampaignRequestsettingsautoTweet == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsautoTweet);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsautoTweet, nameof(newCampaignRequestsettingsautoTweet), required: false);
-            var __workflow_newCampaignRequestsettingsautoPostToFacebook = newCampaignRequestsettingsautoPostToFacebook == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsautoPostToFacebook);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsautoPostToFacebook, nameof(newCampaignRequestsettingsautoPostToFacebook), required: false);
-            var __workflow_newCampaignRequestsettingsfacebookComments = newCampaignRequestsettingsfacebookComments == null ? null : WorkflowExpression.Compile(newCampaignRequestsettingsfacebookComments);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsettingsfacebookComments, nameof(newCampaignRequestsettingsfacebookComments), required: false);
-            var __workflow_newCampaignRequestvariateSettingswinningCriteria = newCampaignRequestvariateSettingswinningCriteria == null ? null : WorkflowExpression.Compile(newCampaignRequestvariateSettingswinningCriteria);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestvariateSettingswinningCriteria, nameof(newCampaignRequestvariateSettingswinningCriteria), required: false);
-            var __workflow_newCampaignRequestvariateSettingswaitTime = newCampaignRequestvariateSettingswaitTime == null ? null : WorkflowExpression.Compile(newCampaignRequestvariateSettingswaitTime);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestvariateSettingswaitTime, nameof(newCampaignRequestvariateSettingswaitTime), required: false);
-            var __workflow_newCampaignRequestvariateSettingstestSize = newCampaignRequestvariateSettingstestSize == null ? null : WorkflowExpression.Compile(newCampaignRequestvariateSettingstestSize);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestvariateSettingstestSize, nameof(newCampaignRequestvariateSettingstestSize), required: false);
-            var __workflow_newCampaignRequestvariateSettingssubjectLines = newCampaignRequestvariateSettingssubjectLines == null ? null : WorkflowExpression.Compile(newCampaignRequestvariateSettingssubjectLines);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestvariateSettingssubjectLines, nameof(newCampaignRequestvariateSettingssubjectLines), required: false);
-            var __workflow_newCampaignRequestvariateSettingssendTimes = newCampaignRequestvariateSettingssendTimes == null ? null : WorkflowExpression.Compile(newCampaignRequestvariateSettingssendTimes);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestvariateSettingssendTimes, nameof(newCampaignRequestvariateSettingssendTimes), required: false);
-            var __workflow_newCampaignRequestvariateSettingsfromNames = newCampaignRequestvariateSettingsfromNames == null ? null : WorkflowExpression.Compile(newCampaignRequestvariateSettingsfromNames);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestvariateSettingsfromNames, nameof(newCampaignRequestvariateSettingsfromNames), required: false);
-            var __workflow_newCampaignRequestvariateSettingsreplyToAddresses = newCampaignRequestvariateSettingsreplyToAddresses == null ? null : WorkflowExpression.Compile(newCampaignRequestvariateSettingsreplyToAddresses);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestvariateSettingsreplyToAddresses, nameof(newCampaignRequestvariateSettingsreplyToAddresses), required: false);
-            var __workflow_newCampaignRequesttrackingopens = newCampaignRequesttrackingopens == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingopens);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingopens, nameof(newCampaignRequesttrackingopens), required: false);
-            var __workflow_newCampaignRequesttrackinghTMLClickTracking = newCampaignRequesttrackinghTMLClickTracking == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackinghTMLClickTracking);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackinghTMLClickTracking, nameof(newCampaignRequesttrackinghTMLClickTracking), required: false);
-            var __workflow_newCampaignRequesttrackingplainTextClickTracking = newCampaignRequesttrackingplainTextClickTracking == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingplainTextClickTracking);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingplainTextClickTracking, nameof(newCampaignRequesttrackingplainTextClickTracking), required: false);
-            var __workflow_newCampaignRequesttrackingmailChimpGoalTracking = newCampaignRequesttrackingmailChimpGoalTracking == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingmailChimpGoalTracking);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingmailChimpGoalTracking, nameof(newCampaignRequesttrackingmailChimpGoalTracking), required: false);
-            var __workflow_newCampaignRequesttrackingeCommerce360Tracking = newCampaignRequesttrackingeCommerce360Tracking == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingeCommerce360Tracking);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingeCommerce360Tracking, nameof(newCampaignRequesttrackingeCommerce360Tracking), required: false);
-            var __workflow_newCampaignRequesttrackinggoogleAnalyticsTracking = newCampaignRequesttrackinggoogleAnalyticsTracking == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackinggoogleAnalyticsTracking);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackinggoogleAnalyticsTracking, nameof(newCampaignRequesttrackinggoogleAnalyticsTracking), required: false);
-            var __workflow_newCampaignRequesttrackingclickTaleAnalyticsTracking = newCampaignRequesttrackingclickTaleAnalyticsTracking == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingclickTaleAnalyticsTracking);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingclickTaleAnalyticsTracking, nameof(newCampaignRequesttrackingclickTaleAnalyticsTracking), required: false);
-            var __workflow_newCampaignRequesttrackingsalesforcesalesforceCampaign = newCampaignRequesttrackingsalesforcesalesforceCampaign == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingsalesforcesalesforceCampaign);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingsalesforcesalesforceCampaign, nameof(newCampaignRequesttrackingsalesforcesalesforceCampaign), required: false);
-            var __workflow_newCampaignRequesttrackingsalesforcesalesforceNote = newCampaignRequesttrackingsalesforcesalesforceNote == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingsalesforcesalesforceNote);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingsalesforcesalesforceNote, nameof(newCampaignRequesttrackingsalesforcesalesforceNote), required: false);
-            var __workflow_newCampaignRequesttrackinghighrisehighriseCampaign = newCampaignRequesttrackinghighrisehighriseCampaign == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackinghighrisehighriseCampaign);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackinghighrisehighriseCampaign, nameof(newCampaignRequesttrackinghighrisehighriseCampaign), required: false);
-            var __workflow_newCampaignRequesttrackinghighrisehighriseNote = newCampaignRequesttrackinghighrisehighriseNote == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackinghighrisehighriseNote);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackinghighrisehighriseNote, nameof(newCampaignRequesttrackinghighrisehighriseNote), required: false);
-            var __workflow_newCampaignRequesttrackingcapsulecapsuleNote = newCampaignRequesttrackingcapsulecapsuleNote == null ? null : WorkflowExpression.Compile(newCampaignRequesttrackingcapsulecapsuleNote);
-            WorkflowExpression.Validate(__workflow_newCampaignRequesttrackingcapsulecapsuleNote, nameof(newCampaignRequesttrackingcapsulecapsuleNote), required: false);
-            var __workflow_newCampaignRequestrssOptsfeedURL = newCampaignRequestrssOptsfeedURL == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsfeedURL);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsfeedURL, nameof(newCampaignRequestrssOptsfeedURL), required: false);
-            var __workflow_newCampaignRequestrssOptsfrequency = newCampaignRequestrssOptsfrequency == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsfrequency);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsfrequency, nameof(newCampaignRequestrssOptsfrequency), required: false);
-            var __workflow_newCampaignRequestrssOptsconstrainRSSImages = newCampaignRequestrssOptsconstrainRSSImages == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsconstrainRSSImages);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsconstrainRSSImages, nameof(newCampaignRequestrssOptsconstrainRSSImages), required: false);
-            var __workflow_newCampaignRequestrssOptsschedulesendingHour = newCampaignRequestrssOptsschedulesendingHour == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsschedulesendingHour);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsschedulesendingHour, nameof(newCampaignRequestrssOptsschedulesendingHour), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendsunday = newCampaignRequestrssOptsscheduledailySendsunday == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendsunday);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduledailySendsunday, nameof(newCampaignRequestrssOptsscheduledailySendsunday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendmonday = newCampaignRequestrssOptsscheduledailySendmonday == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendmonday);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduledailySendmonday, nameof(newCampaignRequestrssOptsscheduledailySendmonday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendtuesday = newCampaignRequestrssOptsscheduledailySendtuesday == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendtuesday);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduledailySendtuesday, nameof(newCampaignRequestrssOptsscheduledailySendtuesday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendwednesday = newCampaignRequestrssOptsscheduledailySendwednesday == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendwednesday);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduledailySendwednesday, nameof(newCampaignRequestrssOptsscheduledailySendwednesday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendthursday = newCampaignRequestrssOptsscheduledailySendthursday == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendthursday);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduledailySendthursday, nameof(newCampaignRequestrssOptsscheduledailySendthursday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendfriday = newCampaignRequestrssOptsscheduledailySendfriday == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendfriday);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduledailySendfriday, nameof(newCampaignRequestrssOptsscheduledailySendfriday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduledailySendsaturday = newCampaignRequestrssOptsscheduledailySendsaturday == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendsaturday);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduledailySendsaturday, nameof(newCampaignRequestrssOptsscheduledailySendsaturday), required: false);
-            var __workflow_newCampaignRequestrssOptsscheduleweeklySendingDay = newCampaignRequestrssOptsscheduleweeklySendingDay == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsscheduleweeklySendingDay);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsscheduleweeklySendingDay, nameof(newCampaignRequestrssOptsscheduleweeklySendingDay), required: false);
-            var __workflow_newCampaignRequestrssOptsschedulemonthlySendingDay = newCampaignRequestrssOptsschedulemonthlySendingDay == null ? null : WorkflowExpression.Compile(newCampaignRequestrssOptsschedulemonthlySendingDay);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestrssOptsschedulemonthlySendingDay, nameof(newCampaignRequestrssOptsschedulemonthlySendingDay), required: false);
-            var __workflow_newCampaignRequestsocialCardimageURL = newCampaignRequestsocialCardimageURL == null ? null : WorkflowExpression.Compile(newCampaignRequestsocialCardimageURL);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsocialCardimageURL, nameof(newCampaignRequestsocialCardimageURL), required: false);
-            var __workflow_newCampaignRequestsocialCardcampaignDescription = newCampaignRequestsocialCardcampaignDescription == null ? null : WorkflowExpression.Compile(newCampaignRequestsocialCardcampaignDescription);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsocialCardcampaignDescription, nameof(newCampaignRequestsocialCardcampaignDescription), required: false);
-            var __workflow_newCampaignRequestsocialCardtitle = newCampaignRequestsocialCardtitle == null ? null : WorkflowExpression.Compile(newCampaignRequestsocialCardtitle);
-            WorkflowExpression.Validate(__workflow_newCampaignRequestsocialCardtitle, nameof(newCampaignRequestsocialCardtitle), required: false);
+            var __workflow_newCampaignRequestcampaignType = WorkflowExpression.Compile(newCampaignRequestcampaignType, nameof(newCampaignRequestcampaignType), required: true);
+            var __workflow_newCampaignRequestrecipientslistId = WorkflowExpression.Compile(newCampaignRequestrecipientslistId, nameof(newCampaignRequestrecipientslistId), required: true);
+            var __workflow_newCampaignRequestsettingscampaignSubjectLine = WorkflowExpression.Compile(newCampaignRequestsettingscampaignSubjectLine, nameof(newCampaignRequestsettingscampaignSubjectLine), required: true);
+            var __workflow_newCampaignRequestsettingsfromName = WorkflowExpression.Compile(newCampaignRequestsettingsfromName, nameof(newCampaignRequestsettingsfromName), required: true);
+            var __workflow_newCampaignRequestsettingsreplyToAddress = WorkflowExpression.Compile(newCampaignRequestsettingsreplyToAddress, nameof(newCampaignRequestsettingsreplyToAddress), required: true);
+            var __workflow_newCampaignRequestrecipientssegmentOptssavedSegmentID = WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptssavedSegmentID, nameof(newCampaignRequestrecipientssegmentOptssavedSegmentID), required: false);
+            var __workflow_newCampaignRequestrecipientssegmentOptsmatchType = WorkflowExpression.Compile(newCampaignRequestrecipientssegmentOptsmatchType, nameof(newCampaignRequestrecipientssegmentOptsmatchType), required: false);
+            var __workflow_newCampaignRequestsettingstitle = WorkflowExpression.Compile(newCampaignRequestsettingstitle, nameof(newCampaignRequestsettingstitle), required: false);
+            var __workflow_newCampaignRequestsettingsconversation = WorkflowExpression.Compile(newCampaignRequestsettingsconversation, nameof(newCampaignRequestsettingsconversation), required: false);
+            var __workflow_newCampaignRequestsettingstoName = WorkflowExpression.Compile(newCampaignRequestsettingstoName, nameof(newCampaignRequestsettingstoName), required: false);
+            var __workflow_newCampaignRequestsettingsfolderID = WorkflowExpression.Compile(newCampaignRequestsettingsfolderID, nameof(newCampaignRequestsettingsfolderID), required: false);
+            var __workflow_newCampaignRequestsettingsauthentication = WorkflowExpression.Compile(newCampaignRequestsettingsauthentication, nameof(newCampaignRequestsettingsauthentication), required: false);
+            var __workflow_newCampaignRequestsettingsautoFooter = WorkflowExpression.Compile(newCampaignRequestsettingsautoFooter, nameof(newCampaignRequestsettingsautoFooter), required: false);
+            var __workflow_newCampaignRequestsettingsinlineCSS = WorkflowExpression.Compile(newCampaignRequestsettingsinlineCSS, nameof(newCampaignRequestsettingsinlineCSS), required: false);
+            var __workflow_newCampaignRequestsettingsautoTweet = WorkflowExpression.Compile(newCampaignRequestsettingsautoTweet, nameof(newCampaignRequestsettingsautoTweet), required: false);
+            var __workflow_newCampaignRequestsettingsautoPostToFacebook = WorkflowExpression.Compile(newCampaignRequestsettingsautoPostToFacebook, nameof(newCampaignRequestsettingsautoPostToFacebook), required: false);
+            var __workflow_newCampaignRequestsettingsfacebookComments = WorkflowExpression.Compile(newCampaignRequestsettingsfacebookComments, nameof(newCampaignRequestsettingsfacebookComments), required: false);
+            var __workflow_newCampaignRequestvariateSettingswinningCriteria = WorkflowExpression.Compile(newCampaignRequestvariateSettingswinningCriteria, nameof(newCampaignRequestvariateSettingswinningCriteria), required: false);
+            var __workflow_newCampaignRequestvariateSettingswaitTime = WorkflowExpression.Compile(newCampaignRequestvariateSettingswaitTime, nameof(newCampaignRequestvariateSettingswaitTime), required: false);
+            var __workflow_newCampaignRequestvariateSettingstestSize = WorkflowExpression.Compile(newCampaignRequestvariateSettingstestSize, nameof(newCampaignRequestvariateSettingstestSize), required: false);
+            var __workflow_newCampaignRequestvariateSettingssubjectLines = WorkflowExpression.Compile(newCampaignRequestvariateSettingssubjectLines, nameof(newCampaignRequestvariateSettingssubjectLines), required: false);
+            var __workflow_newCampaignRequestvariateSettingssendTimes = WorkflowExpression.Compile(newCampaignRequestvariateSettingssendTimes, nameof(newCampaignRequestvariateSettingssendTimes), required: false);
+            var __workflow_newCampaignRequestvariateSettingsfromNames = WorkflowExpression.Compile(newCampaignRequestvariateSettingsfromNames, nameof(newCampaignRequestvariateSettingsfromNames), required: false);
+            var __workflow_newCampaignRequestvariateSettingsreplyToAddresses = WorkflowExpression.Compile(newCampaignRequestvariateSettingsreplyToAddresses, nameof(newCampaignRequestvariateSettingsreplyToAddresses), required: false);
+            var __workflow_newCampaignRequesttrackingopens = WorkflowExpression.Compile(newCampaignRequesttrackingopens, nameof(newCampaignRequesttrackingopens), required: false);
+            var __workflow_newCampaignRequesttrackinghTMLClickTracking = WorkflowExpression.Compile(newCampaignRequesttrackinghTMLClickTracking, nameof(newCampaignRequesttrackinghTMLClickTracking), required: false);
+            var __workflow_newCampaignRequesttrackingplainTextClickTracking = WorkflowExpression.Compile(newCampaignRequesttrackingplainTextClickTracking, nameof(newCampaignRequesttrackingplainTextClickTracking), required: false);
+            var __workflow_newCampaignRequesttrackingmailChimpGoalTracking = WorkflowExpression.Compile(newCampaignRequesttrackingmailChimpGoalTracking, nameof(newCampaignRequesttrackingmailChimpGoalTracking), required: false);
+            var __workflow_newCampaignRequesttrackingeCommerce360Tracking = WorkflowExpression.Compile(newCampaignRequesttrackingeCommerce360Tracking, nameof(newCampaignRequesttrackingeCommerce360Tracking), required: false);
+            var __workflow_newCampaignRequesttrackinggoogleAnalyticsTracking = WorkflowExpression.Compile(newCampaignRequesttrackinggoogleAnalyticsTracking, nameof(newCampaignRequesttrackinggoogleAnalyticsTracking), required: false);
+            var __workflow_newCampaignRequesttrackingclickTaleAnalyticsTracking = WorkflowExpression.Compile(newCampaignRequesttrackingclickTaleAnalyticsTracking, nameof(newCampaignRequesttrackingclickTaleAnalyticsTracking), required: false);
+            var __workflow_newCampaignRequesttrackingsalesforcesalesforceCampaign = WorkflowExpression.Compile(newCampaignRequesttrackingsalesforcesalesforceCampaign, nameof(newCampaignRequesttrackingsalesforcesalesforceCampaign), required: false);
+            var __workflow_newCampaignRequesttrackingsalesforcesalesforceNote = WorkflowExpression.Compile(newCampaignRequesttrackingsalesforcesalesforceNote, nameof(newCampaignRequesttrackingsalesforcesalesforceNote), required: false);
+            var __workflow_newCampaignRequesttrackinghighrisehighriseCampaign = WorkflowExpression.Compile(newCampaignRequesttrackinghighrisehighriseCampaign, nameof(newCampaignRequesttrackinghighrisehighriseCampaign), required: false);
+            var __workflow_newCampaignRequesttrackinghighrisehighriseNote = WorkflowExpression.Compile(newCampaignRequesttrackinghighrisehighriseNote, nameof(newCampaignRequesttrackinghighrisehighriseNote), required: false);
+            var __workflow_newCampaignRequesttrackingcapsulecapsuleNote = WorkflowExpression.Compile(newCampaignRequesttrackingcapsulecapsuleNote, nameof(newCampaignRequesttrackingcapsulecapsuleNote), required: false);
+            var __workflow_newCampaignRequestrssOptsfeedURL = WorkflowExpression.Compile(newCampaignRequestrssOptsfeedURL, nameof(newCampaignRequestrssOptsfeedURL), required: false);
+            var __workflow_newCampaignRequestrssOptsfrequency = WorkflowExpression.Compile(newCampaignRequestrssOptsfrequency, nameof(newCampaignRequestrssOptsfrequency), required: false);
+            var __workflow_newCampaignRequestrssOptsconstrainRSSImages = WorkflowExpression.Compile(newCampaignRequestrssOptsconstrainRSSImages, nameof(newCampaignRequestrssOptsconstrainRSSImages), required: false);
+            var __workflow_newCampaignRequestrssOptsschedulesendingHour = WorkflowExpression.Compile(newCampaignRequestrssOptsschedulesendingHour, nameof(newCampaignRequestrssOptsschedulesendingHour), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduledailySendsunday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendsunday, nameof(newCampaignRequestrssOptsscheduledailySendsunday), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduledailySendmonday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendmonday, nameof(newCampaignRequestrssOptsscheduledailySendmonday), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduledailySendtuesday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendtuesday, nameof(newCampaignRequestrssOptsscheduledailySendtuesday), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduledailySendwednesday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendwednesday, nameof(newCampaignRequestrssOptsscheduledailySendwednesday), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduledailySendthursday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendthursday, nameof(newCampaignRequestrssOptsscheduledailySendthursday), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduledailySendfriday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendfriday, nameof(newCampaignRequestrssOptsscheduledailySendfriday), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduledailySendsaturday = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduledailySendsaturday, nameof(newCampaignRequestrssOptsscheduledailySendsaturday), required: false);
+            var __workflow_newCampaignRequestrssOptsscheduleweeklySendingDay = WorkflowExpression.Compile(newCampaignRequestrssOptsscheduleweeklySendingDay, nameof(newCampaignRequestrssOptsscheduleweeklySendingDay), required: false);
+            var __workflow_newCampaignRequestrssOptsschedulemonthlySendingDay = WorkflowExpression.Compile(newCampaignRequestrssOptsschedulemonthlySendingDay, nameof(newCampaignRequestrssOptsschedulemonthlySendingDay), required: false);
+            var __workflow_newCampaignRequestsocialCardimageURL = WorkflowExpression.Compile(newCampaignRequestsocialCardimageURL, nameof(newCampaignRequestsocialCardimageURL), required: false);
+            var __workflow_newCampaignRequestsocialCardcampaignDescription = WorkflowExpression.Compile(newCampaignRequestsocialCardcampaignDescription, nameof(newCampaignRequestsocialCardcampaignDescription), required: false);
+            var __workflow_newCampaignRequestsocialCardtitle = WorkflowExpression.Compile(newCampaignRequestsocialCardtitle, nameof(newCampaignRequestsocialCardtitle), required: false);
             return new DeferredBodyAction<CampaignResponseModel>(() =>
             {
                 var apiCallPath = "/v2/campaigns";
@@ -876,10 +784,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IWorkflowAction Removemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_memberEmail = memberEmail == null ? null : WorkflowExpression.Compile(memberEmail);
-            WorkflowExpression.Validate(__workflow_memberEmail, nameof(memberEmail), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_memberEmail = WorkflowExpression.Compile(memberEmail, nameof(memberEmail), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -893,26 +799,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailchimp")]
         public IBodyWorkflowAction<MemberResponseModel> Updatemember(Expression<Func<string>> listId, Expression<Func<string>> memberEmail, Expression<Func<updateMemberInListRequeststatusInput>> updateMemberInListRequeststatus, Expression<Func<updateMemberInListRequestemailTypeInput>> updateMemberInListRequestemailType = null, Expression<Func<string>> updateMemberInListRequestmergeFieldsfirstName = null, Expression<Func<string>> updateMemberInListRequestmergeFieldslastName = null, Expression<Func<string>> updateMemberInListRequestlanguage = null, Expression<Func<bool>> updateMemberInListRequestvIP = null, Expression<Func<double>> updateMemberInListRequestlocationlatitude = null, Expression<Func<double>> updateMemberInListRequestlocationlongitude = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_memberEmail = memberEmail == null ? null : WorkflowExpression.Compile(memberEmail);
-            WorkflowExpression.Validate(__workflow_memberEmail, nameof(memberEmail), required: true);
-            var __workflow_updateMemberInListRequeststatus = updateMemberInListRequeststatus == null ? null : WorkflowExpression.Compile(updateMemberInListRequeststatus);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequeststatus, nameof(updateMemberInListRequeststatus), required: true);
-            var __workflow_updateMemberInListRequestemailType = updateMemberInListRequestemailType == null ? null : WorkflowExpression.Compile(updateMemberInListRequestemailType);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequestemailType, nameof(updateMemberInListRequestemailType), required: false);
-            var __workflow_updateMemberInListRequestmergeFieldsfirstName = updateMemberInListRequestmergeFieldsfirstName == null ? null : WorkflowExpression.Compile(updateMemberInListRequestmergeFieldsfirstName);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequestmergeFieldsfirstName, nameof(updateMemberInListRequestmergeFieldsfirstName), required: false);
-            var __workflow_updateMemberInListRequestmergeFieldslastName = updateMemberInListRequestmergeFieldslastName == null ? null : WorkflowExpression.Compile(updateMemberInListRequestmergeFieldslastName);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequestmergeFieldslastName, nameof(updateMemberInListRequestmergeFieldslastName), required: false);
-            var __workflow_updateMemberInListRequestlanguage = updateMemberInListRequestlanguage == null ? null : WorkflowExpression.Compile(updateMemberInListRequestlanguage);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequestlanguage, nameof(updateMemberInListRequestlanguage), required: false);
-            var __workflow_updateMemberInListRequestvIP = updateMemberInListRequestvIP == null ? null : WorkflowExpression.Compile(updateMemberInListRequestvIP);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequestvIP, nameof(updateMemberInListRequestvIP), required: false);
-            var __workflow_updateMemberInListRequestlocationlatitude = updateMemberInListRequestlocationlatitude == null ? null : WorkflowExpression.Compile(updateMemberInListRequestlocationlatitude);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequestlocationlatitude, nameof(updateMemberInListRequestlocationlatitude), required: false);
-            var __workflow_updateMemberInListRequestlocationlongitude = updateMemberInListRequestlocationlongitude == null ? null : WorkflowExpression.Compile(updateMemberInListRequestlocationlongitude);
-            WorkflowExpression.Validate(__workflow_updateMemberInListRequestlocationlongitude, nameof(updateMemberInListRequestlocationlongitude), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_memberEmail = WorkflowExpression.Compile(memberEmail, nameof(memberEmail), required: true);
+            var __workflow_updateMemberInListRequeststatus = WorkflowExpression.Compile(updateMemberInListRequeststatus, nameof(updateMemberInListRequeststatus), required: true);
+            var __workflow_updateMemberInListRequestemailType = WorkflowExpression.Compile(updateMemberInListRequestemailType, nameof(updateMemberInListRequestemailType), required: false);
+            var __workflow_updateMemberInListRequestmergeFieldsfirstName = WorkflowExpression.Compile(updateMemberInListRequestmergeFieldsfirstName, nameof(updateMemberInListRequestmergeFieldsfirstName), required: false);
+            var __workflow_updateMemberInListRequestmergeFieldslastName = WorkflowExpression.Compile(updateMemberInListRequestmergeFieldslastName, nameof(updateMemberInListRequestmergeFieldslastName), required: false);
+            var __workflow_updateMemberInListRequestlanguage = WorkflowExpression.Compile(updateMemberInListRequestlanguage, nameof(updateMemberInListRequestlanguage), required: false);
+            var __workflow_updateMemberInListRequestvIP = WorkflowExpression.Compile(updateMemberInListRequestvIP, nameof(updateMemberInListRequestvIP), required: false);
+            var __workflow_updateMemberInListRequestlocationlatitude = WorkflowExpression.Compile(updateMemberInListRequestlocationlatitude, nameof(updateMemberInListRequestlocationlatitude), required: false);
+            var __workflow_updateMemberInListRequestlocationlongitude = WorkflowExpression.Compile(updateMemberInListRequestlocationlongitude, nameof(updateMemberInListRequestlocationlongitude), required: false);
             return new DeferredBodyAction<MemberResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/replacemailwithhash/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -1005,8 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     {
         public IBodyWorkflowTrigger<GetMembersResponseModel> OnMemberSubscribed(Expression<Func<string>> listId, FlowRecurrence recurrence = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             return new DeferredBodyTrigger<GetMembersResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));

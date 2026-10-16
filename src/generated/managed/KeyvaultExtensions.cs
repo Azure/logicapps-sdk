@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions(Expression<Func<string>> keyName)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             return new DeferredBodyAction<KeyMetadataCollection>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata(Expression<Func<string>> keyName)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             return new DeferredBodyAction<KeyMetadata>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
@@ -50,10 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_keyVersion = keyVersion == null ? null : WorkflowExpression.Compile(keyVersion);
-            WorkflowExpression.Validate(__workflow_keyVersion, nameof(keyVersion), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
             return new DeferredBodyAction<KeyMetadata>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyVersion, 1));
@@ -66,12 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyEncryptOutput> EncryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_operationInputalgorithm = operationInputalgorithm == null ? null : WorkflowExpression.Compile(operationInputalgorithm);
-            WorkflowExpression.Validate(__workflow_operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputrawData = operationInputrawData == null ? null : WorkflowExpression.Compile(operationInputrawData);
-            WorkflowExpression.Validate(__workflow_operationInputrawData, nameof(operationInputrawData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
             return new DeferredBodyAction<KeyEncryptOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
@@ -95,14 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_keyVersion = keyVersion == null ? null : WorkflowExpression.Compile(keyVersion);
-            WorkflowExpression.Validate(__workflow_keyVersion, nameof(keyVersion), required: true);
-            var __workflow_operationInputalgorithm = operationInputalgorithm == null ? null : WorkflowExpression.Compile(operationInputalgorithm);
-            WorkflowExpression.Validate(__workflow_operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputrawData = operationInputrawData == null ? null : WorkflowExpression.Compile(operationInputrawData);
-            WorkflowExpression.Validate(__workflow_operationInputrawData, nameof(operationInputrawData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
+            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            var __workflow_operationInputrawData = WorkflowExpression.Compile(operationInputrawData, nameof(operationInputrawData), required: true);
             return new DeferredBodyAction<KeyEncryptOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyVersion, 1));
@@ -126,12 +115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyDecryptOutput> DecryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_operationInputalgorithm = operationInputalgorithm == null ? null : WorkflowExpression.Compile(operationInputalgorithm);
-            WorkflowExpression.Validate(__workflow_operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputencryptedData = operationInputencryptedData == null ? null : WorkflowExpression.Compile(operationInputencryptedData);
-            WorkflowExpression.Validate(__workflow_operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
             return new DeferredBodyAction<KeyDecryptOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1));
@@ -155,14 +141,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_keyVersion = keyVersion == null ? null : WorkflowExpression.Compile(keyVersion);
-            WorkflowExpression.Validate(__workflow_keyVersion, nameof(keyVersion), required: true);
-            var __workflow_operationInputalgorithm = operationInputalgorithm == null ? null : WorkflowExpression.Compile(operationInputalgorithm);
-            WorkflowExpression.Validate(__workflow_operationInputalgorithm, nameof(operationInputalgorithm), required: true);
-            var __workflow_operationInputencryptedData = operationInputencryptedData == null ? null : WorkflowExpression.Compile(operationInputencryptedData);
-            WorkflowExpression.Validate(__workflow_operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_keyVersion = WorkflowExpression.Compile(keyVersion, nameof(keyVersion), required: true);
+            var __workflow_operationInputalgorithm = WorkflowExpression.Compile(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            var __workflow_operationInputencryptedData = WorkflowExpression.Compile(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
             return new DeferredBodyAction<KeyDecryptOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_keyVersion, 1));
@@ -195,8 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions(Expression<Func<string>> secretName)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<SecretMetadataCollection>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1));
@@ -209,8 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata(Expression<Func<string>> secretName)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<SecretMetadata>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1));
@@ -223,10 +203,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
-            var __workflow_secretVersion = secretVersion == null ? null : WorkflowExpression.Compile(secretVersion);
-            WorkflowExpression.Validate(__workflow_secretVersion, nameof(secretVersion), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
+            var __workflow_secretVersion = WorkflowExpression.Compile(secretVersion, nameof(secretVersion), required: true);
             return new DeferredBodyAction<SecretMetadata>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretVersion, 1));
@@ -239,8 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<Secret> GetSecret(Expression<Func<string>> secretName)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<Secret>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1));
@@ -253,10 +230,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<Secret> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
-            var __workflow_secretVersion = secretVersion == null ? null : WorkflowExpression.Compile(secretVersion);
-            WorkflowExpression.Validate(__workflow_secretVersion, nameof(secretVersion), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
+            var __workflow_secretVersion = WorkflowExpression.Compile(secretVersion, nameof(secretVersion), required: true);
             return new DeferredBodyAction<Secret>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_secretVersion, 1));

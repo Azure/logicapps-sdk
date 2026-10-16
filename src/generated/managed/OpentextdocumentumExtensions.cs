@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/document/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<DocumentRead> GetDocument(Expression<Func<string>> id, Expression<Func<string>> configurationSet)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationSet = configurationSet == null ? null : WorkflowExpression.Compile(configurationSet);
-            WorkflowExpression.Validate(__workflow_configurationSet, nameof(configurationSet), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
             return new DeferredBodyAction<DocumentRead>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/document/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationSet, 1));
@@ -43,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<File> GetDocumentContent(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<File>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/document/get-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -57,10 +53,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<DocumentMetadataRead> GetDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationSet)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationSet = configurationSet == null ? null : WorkflowExpression.Compile(configurationSet);
-            WorkflowExpression.Validate(__workflow_configurationSet, nameof(configurationSet), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
             return new DeferredBodyAction<DocumentMetadataRead>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/document/get-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationSet, 1));
@@ -73,12 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<string>> fileDtofileName, Expression<Func<string>> fileDtofileContent)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fileDtofileName = fileDtofileName == null ? null : WorkflowExpression.Compile(fileDtofileName);
-            WorkflowExpression.Validate(__workflow_fileDtofileName, nameof(fileDtofileName), required: true);
-            var __workflow_fileDtofileContent = fileDtofileContent == null ? null : WorkflowExpression.Compile(fileDtofileContent);
-            WorkflowExpression.Validate(__workflow_fileDtofileContent, nameof(fileDtofileContent), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fileDtofileName = WorkflowExpression.Compile(fileDtofileName, nameof(fileDtofileName), required: true);
+            var __workflow_fileDtofileContent = WorkflowExpression.Compile(fileDtofileContent, nameof(fileDtofileContent), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/document/update-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -102,20 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IBodyWorkflowAction<string> CreateDocument(Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtoparentID, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
         {
-            var __workflow_configurationSet = configurationSet == null ? null : WorkflowExpression.Compile(configurationSet);
-            WorkflowExpression.Validate(__workflow_configurationSet, nameof(configurationSet), required: true);
-            var __workflow_documentDtoparentID = documentDtoparentID == null ? null : WorkflowExpression.Compile(documentDtoparentID);
-            WorkflowExpression.Validate(__workflow_documentDtoparentID, nameof(documentDtoparentID), required: true);
-            var __workflow_documentDtofilefileName = documentDtofilefileName == null ? null : WorkflowExpression.Compile(documentDtofilefileName);
-            WorkflowExpression.Validate(__workflow_documentDtofilefileName, nameof(documentDtofilefileName), required: true);
-            var __workflow_documentDtofilefileContent = documentDtofilefileContent == null ? null : WorkflowExpression.Compile(documentDtofilefileContent);
-            WorkflowExpression.Validate(__workflow_documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
-            var __workflow_documentDtometadatadisplayName = documentDtometadatadisplayName == null ? null : WorkflowExpression.Compile(documentDtometadatadisplayName);
-            WorkflowExpression.Validate(__workflow_documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
-            var __workflow_documentDtometadatafields = documentDtometadatafields == null ? null : WorkflowExpression.Compile(documentDtometadatafields);
-            WorkflowExpression.Validate(__workflow_documentDtometadatafields, nameof(documentDtometadatafields), required: true);
-            var __workflow_documentDtometadatadescription = documentDtometadatadescription == null ? null : WorkflowExpression.Compile(documentDtometadatadescription);
-            WorkflowExpression.Validate(__workflow_documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
+            var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
+            var __workflow_documentDtoparentID = WorkflowExpression.Compile(documentDtoparentID, nameof(documentDtoparentID), required: true);
+            var __workflow_documentDtofilefileName = WorkflowExpression.Compile(documentDtofilefileName, nameof(documentDtofilefileName), required: true);
+            var __workflow_documentDtofilefileContent = WorkflowExpression.Compile(documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
+            var __workflow_documentDtometadatadisplayName = WorkflowExpression.Compile(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
+            var __workflow_documentDtometadatafields = WorkflowExpression.Compile(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
+            var __workflow_documentDtometadatadescription = WorkflowExpression.Compile(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/document/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationSet, 1));
@@ -167,20 +151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> documentDtofilefileName, Expression<Func<string>> documentDtofilefileContent, Expression<Func<string>> documentDtometadatadisplayName, Expression<Func<object>> documentDtometadatafields, Expression<Func<string>> documentDtometadatadescription = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationSet = configurationSet == null ? null : WorkflowExpression.Compile(configurationSet);
-            WorkflowExpression.Validate(__workflow_configurationSet, nameof(configurationSet), required: true);
-            var __workflow_documentDtofilefileName = documentDtofilefileName == null ? null : WorkflowExpression.Compile(documentDtofilefileName);
-            WorkflowExpression.Validate(__workflow_documentDtofilefileName, nameof(documentDtofilefileName), required: true);
-            var __workflow_documentDtofilefileContent = documentDtofilefileContent == null ? null : WorkflowExpression.Compile(documentDtofilefileContent);
-            WorkflowExpression.Validate(__workflow_documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
-            var __workflow_documentDtometadatadisplayName = documentDtometadatadisplayName == null ? null : WorkflowExpression.Compile(documentDtometadatadisplayName);
-            WorkflowExpression.Validate(__workflow_documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
-            var __workflow_documentDtometadatafields = documentDtometadatafields == null ? null : WorkflowExpression.Compile(documentDtometadatafields);
-            WorkflowExpression.Validate(__workflow_documentDtometadatafields, nameof(documentDtometadatafields), required: true);
-            var __workflow_documentDtometadatadescription = documentDtometadatadescription == null ? null : WorkflowExpression.Compile(documentDtometadatadescription);
-            WorkflowExpression.Validate(__workflow_documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
+            var __workflow_documentDtofilefileName = WorkflowExpression.Compile(documentDtofilefileName, nameof(documentDtofilefileName), required: true);
+            var __workflow_documentDtofilefileContent = WorkflowExpression.Compile(documentDtofilefileContent, nameof(documentDtofilefileContent), required: true);
+            var __workflow_documentDtometadatadisplayName = WorkflowExpression.Compile(documentDtometadatadisplayName, nameof(documentDtometadatadisplayName), required: true);
+            var __workflow_documentDtometadatafields = WorkflowExpression.Compile(documentDtometadatafields, nameof(documentDtometadatafields), required: true);
+            var __workflow_documentDtometadatadescription = WorkflowExpression.Compile(documentDtometadatadescription, nameof(documentDtometadatadescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/document/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationSet, 1));
@@ -230,16 +207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextdocumentum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextdocumentum")]
         public IWorkflowAction UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationSet, Expression<Func<string>> metadataDtodisplayName, Expression<Func<object>> metadataDtofields, Expression<Func<string>> metadataDtodescription = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationSet = configurationSet == null ? null : WorkflowExpression.Compile(configurationSet);
-            WorkflowExpression.Validate(__workflow_configurationSet, nameof(configurationSet), required: true);
-            var __workflow_metadataDtodisplayName = metadataDtodisplayName == null ? null : WorkflowExpression.Compile(metadataDtodisplayName);
-            WorkflowExpression.Validate(__workflow_metadataDtodisplayName, nameof(metadataDtodisplayName), required: true);
-            var __workflow_metadataDtofields = metadataDtofields == null ? null : WorkflowExpression.Compile(metadataDtofields);
-            WorkflowExpression.Validate(__workflow_metadataDtofields, nameof(metadataDtofields), required: true);
-            var __workflow_metadataDtodescription = metadataDtodescription == null ? null : WorkflowExpression.Compile(metadataDtodescription);
-            WorkflowExpression.Validate(__workflow_metadataDtodescription, nameof(metadataDtodescription), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationSet = WorkflowExpression.Compile(configurationSet, nameof(configurationSet), required: true);
+            var __workflow_metadataDtodisplayName = WorkflowExpression.Compile(metadataDtodisplayName, nameof(metadataDtodisplayName), required: true);
+            var __workflow_metadataDtofields = WorkflowExpression.Compile(metadataDtofields, nameof(metadataDtofields), required: true);
+            var __workflow_metadataDtodescription = WorkflowExpression.Compile(metadataDtodescription, nameof(metadataDtodescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/document/update-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationSet, 1));

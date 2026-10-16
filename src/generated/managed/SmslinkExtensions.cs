@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smslink")]
         public IBodyWorkflowAction<SMSLinkSendSMSResponse> SMSLinkSendSMS(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage)
         {
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             return new DeferredBodyAction<SMSLinkSendSMSResponse>(() =>
             {
                 var apiCallPath = "/sms/gateway/integration/powerautomate.php";

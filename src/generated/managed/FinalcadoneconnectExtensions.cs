@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
         public IBodyWorkflowAction<GetOrganizationsResponseItem[]> GetOrganizations(Expression<Func<string>> acceptLanguage = null, Expression<Func<string>> xTimeZone = null)
         {
-            var __workflow_acceptLanguage = acceptLanguage == null ? null : WorkflowExpression.Compile(acceptLanguage);
-            WorkflowExpression.Validate(__workflow_acceptLanguage, nameof(acceptLanguage), required: false);
-            var __workflow_xTimeZone = xTimeZone == null ? null : WorkflowExpression.Compile(xTimeZone);
-            WorkflowExpression.Validate(__workflow_xTimeZone, nameof(xTimeZone), required: false);
+            var __workflow_acceptLanguage = WorkflowExpression.Compile(acceptLanguage, nameof(acceptLanguage), required: false);
+            var __workflow_xTimeZone = WorkflowExpression.Compile(xTimeZone, nameof(xTimeZone), required: false);
             return new DeferredBodyAction<GetOrganizationsResponseItem[]>(() =>
             {
                 var apiCallPath = "/organizations";
@@ -35,10 +33,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
         public IBodyWorkflowAction<InitParametersResponse> InitParameters(Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytheUserSTimeZoneInIANAFormat = null)
         {
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytheUserSTimeZoneInIANAFormat = bodytheUserSTimeZoneInIANAFormat == null ? null : WorkflowExpression.Compile(bodytheUserSTimeZoneInIANAFormat);
-            WorkflowExpression.Validate(__workflow_bodytheUserSTimeZoneInIANAFormat, nameof(bodytheUserSTimeZoneInIANAFormat), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytheUserSTimeZoneInIANAFormat = WorkflowExpression.Compile(bodytheUserSTimeZoneInIANAFormat, nameof(bodytheUserSTimeZoneInIANAFormat), required: false);
             return new DeferredBodyAction<InitParametersResponse>(() =>
             {
                 var apiCallPath = "/InitParameters";
@@ -80,10 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
         public IBodyWorkflowAction<InitResponse> Init(Expression<Func<string>> bodyorganizationID = null, Expression<Func<string>> bodyprojectID = null)
         {
-            var __workflow_bodyorganizationID = bodyorganizationID == null ? null : WorkflowExpression.Compile(bodyorganizationID);
-            WorkflowExpression.Validate(__workflow_bodyorganizationID, nameof(bodyorganizationID), required: false);
-            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
-            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: false);
+            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: false);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: false);
             return new DeferredBodyAction<InitResponse>(() =>
             {
                 var apiCallPath = "/init";
@@ -117,10 +111,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
     {
         public IWorkflowTrigger ThenObsCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = bodyorganizationID == null ? null : WorkflowExpression.Compile(bodyorganizationID);
-            WorkflowExpression.Validate(__workflow_bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
-            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhooks/ev/201";
@@ -145,10 +137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
         public IWorkflowTrigger ThenObsUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = bodyorganizationID == null ? null : WorkflowExpression.Compile(bodyorganizationID);
-            WorkflowExpression.Validate(__workflow_bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
-            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhooks/ev/202";
@@ -173,10 +163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
         public IWorkflowTrigger ThenFormCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = bodyorganizationID == null ? null : WorkflowExpression.Compile(bodyorganizationID);
-            WorkflowExpression.Validate(__workflow_bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
-            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhooks/ev/301";
@@ -201,10 +189,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
         public IWorkflowTrigger ThenFormUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = bodyorganizationID == null ? null : WorkflowExpression.Compile(bodyorganizationID);
-            WorkflowExpression.Validate(__workflow_bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
-            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhooks/ev/302";
@@ -229,10 +215,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
         public IWorkflowTrigger ThenDocumentCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyorganizationID = bodyorganizationID == null ? null : WorkflowExpression.Compile(bodyorganizationID);
-            WorkflowExpression.Validate(__workflow_bodyorganizationID, nameof(bodyorganizationID), required: true);
-            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
-            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: true);
+            var __workflow_bodyorganizationID = WorkflowExpression.Compile(bodyorganizationID, nameof(bodyorganizationID), required: true);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhooks/ev/401";

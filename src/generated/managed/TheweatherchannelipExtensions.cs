@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetConditions(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
-            var __workflow_geocode = geocode == null ? null : WorkflowExpression.Compile(geocode);
-            WorkflowExpression.Validate(__workflow_geocode, nameof(geocode), required: true);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<SuccessSchema>(() =>
             {
                 var apiCallPath = "/wx/observations/current";
@@ -37,14 +33,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
-            var __workflow_geocode = geocode == null ? null : WorkflowExpression.Compile(geocode);
-            WorkflowExpression.Validate(__workflow_geocode, nameof(geocode), required: true);
-            var __workflow_acceptHeader = acceptHeader == null ? null : WorkflowExpression.Compile(acceptHeader);
-            WorkflowExpression.Validate(__workflow_acceptHeader, nameof(acceptHeader), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
+            var __workflow_acceptHeader = WorkflowExpression.Compile(acceptHeader, nameof(acceptHeader), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<SuccessSchema>(() =>
             {
                 var apiCallPath = "/alerts/headlines";
@@ -61,14 +53,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
         public IBodyWorkflowAction<SuccessSchema> GetHistory(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
         {
-            var __workflow_geocode = geocode == null ? null : WorkflowExpression.Compile(geocode);
-            WorkflowExpression.Validate(__workflow_geocode, nameof(geocode), required: true);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_geocode = WorkflowExpression.Compile(geocode, nameof(geocode), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<SuccessSchema>(() =>
             {
                 var apiCallPath = "/wx/conditions/historical/dailysummary/30day";

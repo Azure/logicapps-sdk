@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllGoalsResponse> GetAllGoals(Expression<Func<string>> instance)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetAllGoalsResponse>(() =>
             {
                 var apiCallPath = "/goals";
@@ -28,46 +27,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateGoalResponse> CreateGoal(Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<bodygoalisPrivateInput>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodygoalroleId = bodygoalroleId == null ? null : WorkflowExpression.Compile(bodygoalroleId);
-            WorkflowExpression.Validate(__workflow_bodygoalroleId, nameof(bodygoalroleId), required: false);
-            var __workflow_bodygoalcreatorId = bodygoalcreatorId == null ? null : WorkflowExpression.Compile(bodygoalcreatorId);
-            WorkflowExpression.Validate(__workflow_bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
-            var __workflow_bodygoalstatus = bodygoalstatus == null ? null : WorkflowExpression.Compile(bodygoalstatus);
-            WorkflowExpression.Validate(__workflow_bodygoalstatus, nameof(bodygoalstatus), required: false);
-            var __workflow_bodygoalcompletionCriteria = bodygoalcompletionCriteria == null ? null : WorkflowExpression.Compile(bodygoalcompletionCriteria);
-            WorkflowExpression.Validate(__workflow_bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
-            var __workflow_bodygoaltargetFlow = bodygoaltargetFlow == null ? null : WorkflowExpression.Compile(bodygoaltargetFlow);
-            WorkflowExpression.Validate(__workflow_bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
-            var __workflow_bodygoalaction = bodygoalaction == null ? null : WorkflowExpression.Compile(bodygoalaction);
-            WorkflowExpression.Validate(__workflow_bodygoalaction, nameof(bodygoalaction), required: false);
-            var __workflow_bodygoaldetails = bodygoaldetails == null ? null : WorkflowExpression.Compile(bodygoaldetails);
-            WorkflowExpression.Validate(__workflow_bodygoaldetails, nameof(bodygoaldetails), required: false);
-            var __workflow_bodygoalinitial = bodygoalinitial == null ? null : WorkflowExpression.Compile(bodygoalinitial);
-            WorkflowExpression.Validate(__workflow_bodygoalinitial, nameof(bodygoalinitial), required: false);
-            var __workflow_bodygoalprogress = bodygoalprogress == null ? null : WorkflowExpression.Compile(bodygoalprogress);
-            WorkflowExpression.Validate(__workflow_bodygoalprogress, nameof(bodygoalprogress), required: false);
-            var __workflow_bodygoaltarget = bodygoaltarget == null ? null : WorkflowExpression.Compile(bodygoaltarget);
-            WorkflowExpression.Validate(__workflow_bodygoaltarget, nameof(bodygoaltarget), required: false);
-            var __workflow_bodygoalstartTime = bodygoalstartTime == null ? null : WorkflowExpression.Compile(bodygoalstartTime);
-            WorkflowExpression.Validate(__workflow_bodygoalstartTime, nameof(bodygoalstartTime), required: false);
-            var __workflow_bodygoalendTime = bodygoalendTime == null ? null : WorkflowExpression.Compile(bodygoalendTime);
-            WorkflowExpression.Validate(__workflow_bodygoalendTime, nameof(bodygoalendTime), required: false);
-            var __workflow_bodygoalweightId = bodygoalweightId == null ? null : WorkflowExpression.Compile(bodygoalweightId);
-            WorkflowExpression.Validate(__workflow_bodygoalweightId, nameof(bodygoalweightId), required: false);
-            var __workflow_bodygoalisPrivate = bodygoalisPrivate == null ? null : WorkflowExpression.Compile(bodygoalisPrivate);
-            WorkflowExpression.Validate(__workflow_bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
-            var __workflow_bodygoaltrackingType = bodygoaltrackingType == null ? null : WorkflowExpression.Compile(bodygoaltrackingType);
-            WorkflowExpression.Validate(__workflow_bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
-            var __workflow_bodygoalentityTemplateId = bodygoalentityTemplateId == null ? null : WorkflowExpression.Compile(bodygoalentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
-            var __workflow_bodygoaldirectFocusAreaIds = bodygoaldirectFocusAreaIds == null ? null : WorkflowExpression.Compile(bodygoaldirectFocusAreaIds);
-            WorkflowExpression.Validate(__workflow_bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
-            var __workflow_bodygoalalignedFromIds = bodygoalalignedFromIds == null ? null : WorkflowExpression.Compile(bodygoalalignedFromIds);
-            WorkflowExpression.Validate(__workflow_bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
-            var __workflow_bodygoalalignedToIds = bodygoalalignedToIds == null ? null : WorkflowExpression.Compile(bodygoalalignedToIds);
-            WorkflowExpression.Validate(__workflow_bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodygoalroleId = WorkflowExpression.Compile(bodygoalroleId, nameof(bodygoalroleId), required: false);
+            var __workflow_bodygoalcreatorId = WorkflowExpression.Compile(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
+            var __workflow_bodygoalstatus = WorkflowExpression.Compile(bodygoalstatus, nameof(bodygoalstatus), required: false);
+            var __workflow_bodygoalcompletionCriteria = WorkflowExpression.Compile(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
+            var __workflow_bodygoaltargetFlow = WorkflowExpression.Compile(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
+            var __workflow_bodygoalaction = WorkflowExpression.Compile(bodygoalaction, nameof(bodygoalaction), required: false);
+            var __workflow_bodygoaldetails = WorkflowExpression.Compile(bodygoaldetails, nameof(bodygoaldetails), required: false);
+            var __workflow_bodygoalinitial = WorkflowExpression.Compile(bodygoalinitial, nameof(bodygoalinitial), required: false);
+            var __workflow_bodygoalprogress = WorkflowExpression.Compile(bodygoalprogress, nameof(bodygoalprogress), required: false);
+            var __workflow_bodygoaltarget = WorkflowExpression.Compile(bodygoaltarget, nameof(bodygoaltarget), required: false);
+            var __workflow_bodygoalstartTime = WorkflowExpression.Compile(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
+            var __workflow_bodygoalendTime = WorkflowExpression.Compile(bodygoalendTime, nameof(bodygoalendTime), required: false);
+            var __workflow_bodygoalweightId = WorkflowExpression.Compile(bodygoalweightId, nameof(bodygoalweightId), required: false);
+            var __workflow_bodygoalisPrivate = WorkflowExpression.Compile(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
+            var __workflow_bodygoaltrackingType = WorkflowExpression.Compile(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
+            var __workflow_bodygoalentityTemplateId = WorkflowExpression.Compile(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
+            var __workflow_bodygoaldirectFocusAreaIds = WorkflowExpression.Compile(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
+            var __workflow_bodygoalalignedFromIds = WorkflowExpression.Compile(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
+            var __workflow_bodygoalalignedToIds = WorkflowExpression.Compile(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
             return new DeferredBodyAction<CreateGoalResponse>(() =>
             {
                 var apiCallPath = "/goals";
@@ -211,10 +190,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleGoalResponse> GetSingleGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetSingleGoalResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -228,10 +205,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteGoalResponse> DeleteGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<DeleteGoalResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -245,50 +220,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateGoalResponse> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<int>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalinheritedFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodygoalroleId = bodygoalroleId == null ? null : WorkflowExpression.Compile(bodygoalroleId);
-            WorkflowExpression.Validate(__workflow_bodygoalroleId, nameof(bodygoalroleId), required: false);
-            var __workflow_bodygoalcreatorId = bodygoalcreatorId == null ? null : WorkflowExpression.Compile(bodygoalcreatorId);
-            WorkflowExpression.Validate(__workflow_bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
-            var __workflow_bodygoalstatus = bodygoalstatus == null ? null : WorkflowExpression.Compile(bodygoalstatus);
-            WorkflowExpression.Validate(__workflow_bodygoalstatus, nameof(bodygoalstatus), required: false);
-            var __workflow_bodygoalcompletionCriteria = bodygoalcompletionCriteria == null ? null : WorkflowExpression.Compile(bodygoalcompletionCriteria);
-            WorkflowExpression.Validate(__workflow_bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
-            var __workflow_bodygoaltargetFlow = bodygoaltargetFlow == null ? null : WorkflowExpression.Compile(bodygoaltargetFlow);
-            WorkflowExpression.Validate(__workflow_bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
-            var __workflow_bodygoalaction = bodygoalaction == null ? null : WorkflowExpression.Compile(bodygoalaction);
-            WorkflowExpression.Validate(__workflow_bodygoalaction, nameof(bodygoalaction), required: false);
-            var __workflow_bodygoaldetails = bodygoaldetails == null ? null : WorkflowExpression.Compile(bodygoaldetails);
-            WorkflowExpression.Validate(__workflow_bodygoaldetails, nameof(bodygoaldetails), required: false);
-            var __workflow_bodygoalinitial = bodygoalinitial == null ? null : WorkflowExpression.Compile(bodygoalinitial);
-            WorkflowExpression.Validate(__workflow_bodygoalinitial, nameof(bodygoalinitial), required: false);
-            var __workflow_bodygoalprogress = bodygoalprogress == null ? null : WorkflowExpression.Compile(bodygoalprogress);
-            WorkflowExpression.Validate(__workflow_bodygoalprogress, nameof(bodygoalprogress), required: false);
-            var __workflow_bodygoaltarget = bodygoaltarget == null ? null : WorkflowExpression.Compile(bodygoaltarget);
-            WorkflowExpression.Validate(__workflow_bodygoaltarget, nameof(bodygoaltarget), required: false);
-            var __workflow_bodygoalstartTime = bodygoalstartTime == null ? null : WorkflowExpression.Compile(bodygoalstartTime);
-            WorkflowExpression.Validate(__workflow_bodygoalstartTime, nameof(bodygoalstartTime), required: false);
-            var __workflow_bodygoalendTime = bodygoalendTime == null ? null : WorkflowExpression.Compile(bodygoalendTime);
-            WorkflowExpression.Validate(__workflow_bodygoalendTime, nameof(bodygoalendTime), required: false);
-            var __workflow_bodygoalweightId = bodygoalweightId == null ? null : WorkflowExpression.Compile(bodygoalweightId);
-            WorkflowExpression.Validate(__workflow_bodygoalweightId, nameof(bodygoalweightId), required: false);
-            var __workflow_bodygoalisPrivate = bodygoalisPrivate == null ? null : WorkflowExpression.Compile(bodygoalisPrivate);
-            WorkflowExpression.Validate(__workflow_bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
-            var __workflow_bodygoaltrackingType = bodygoaltrackingType == null ? null : WorkflowExpression.Compile(bodygoaltrackingType);
-            WorkflowExpression.Validate(__workflow_bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
-            var __workflow_bodygoalentityTemplateId = bodygoalentityTemplateId == null ? null : WorkflowExpression.Compile(bodygoalentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
-            var __workflow_bodygoaldirectFocusAreaIds = bodygoaldirectFocusAreaIds == null ? null : WorkflowExpression.Compile(bodygoaldirectFocusAreaIds);
-            WorkflowExpression.Validate(__workflow_bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
-            var __workflow_bodygoalinheritedFocusAreaIds = bodygoalinheritedFocusAreaIds == null ? null : WorkflowExpression.Compile(bodygoalinheritedFocusAreaIds);
-            WorkflowExpression.Validate(__workflow_bodygoalinheritedFocusAreaIds, nameof(bodygoalinheritedFocusAreaIds), required: false);
-            var __workflow_bodygoalalignedFromIds = bodygoalalignedFromIds == null ? null : WorkflowExpression.Compile(bodygoalalignedFromIds);
-            WorkflowExpression.Validate(__workflow_bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
-            var __workflow_bodygoalalignedToIds = bodygoalalignedToIds == null ? null : WorkflowExpression.Compile(bodygoalalignedToIds);
-            WorkflowExpression.Validate(__workflow_bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodygoalroleId = WorkflowExpression.Compile(bodygoalroleId, nameof(bodygoalroleId), required: false);
+            var __workflow_bodygoalcreatorId = WorkflowExpression.Compile(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
+            var __workflow_bodygoalstatus = WorkflowExpression.Compile(bodygoalstatus, nameof(bodygoalstatus), required: false);
+            var __workflow_bodygoalcompletionCriteria = WorkflowExpression.Compile(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
+            var __workflow_bodygoaltargetFlow = WorkflowExpression.Compile(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
+            var __workflow_bodygoalaction = WorkflowExpression.Compile(bodygoalaction, nameof(bodygoalaction), required: false);
+            var __workflow_bodygoaldetails = WorkflowExpression.Compile(bodygoaldetails, nameof(bodygoaldetails), required: false);
+            var __workflow_bodygoalinitial = WorkflowExpression.Compile(bodygoalinitial, nameof(bodygoalinitial), required: false);
+            var __workflow_bodygoalprogress = WorkflowExpression.Compile(bodygoalprogress, nameof(bodygoalprogress), required: false);
+            var __workflow_bodygoaltarget = WorkflowExpression.Compile(bodygoaltarget, nameof(bodygoaltarget), required: false);
+            var __workflow_bodygoalstartTime = WorkflowExpression.Compile(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
+            var __workflow_bodygoalendTime = WorkflowExpression.Compile(bodygoalendTime, nameof(bodygoalendTime), required: false);
+            var __workflow_bodygoalweightId = WorkflowExpression.Compile(bodygoalweightId, nameof(bodygoalweightId), required: false);
+            var __workflow_bodygoalisPrivate = WorkflowExpression.Compile(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
+            var __workflow_bodygoaltrackingType = WorkflowExpression.Compile(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
+            var __workflow_bodygoalentityTemplateId = WorkflowExpression.Compile(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
+            var __workflow_bodygoaldirectFocusAreaIds = WorkflowExpression.Compile(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
+            var __workflow_bodygoalinheritedFocusAreaIds = WorkflowExpression.Compile(bodygoalinheritedFocusAreaIds, nameof(bodygoalinheritedFocusAreaIds), required: false);
+            var __workflow_bodygoalalignedFromIds = WorkflowExpression.Compile(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
+            var __workflow_bodygoalalignedToIds = WorkflowExpression.Compile(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
             return new DeferredBodyAction<UpdateGoalResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/goals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -438,8 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllRisksResponse> GetAllRisks(Expression<Func<string>> instance)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetAllRisksResponse>(() =>
             {
                 var apiCallPath = "/issues";
@@ -453,26 +405,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateRiskResponse> CreateRisk(Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<int>> bodyissuegoalId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodyissueissue = bodyissueissue == null ? null : WorkflowExpression.Compile(bodyissueissue);
-            WorkflowExpression.Validate(__workflow_bodyissueissue, nameof(bodyissueissue), required: false);
-            var __workflow_bodyissueisCritical = bodyissueisCritical == null ? null : WorkflowExpression.Compile(bodyissueisCritical);
-            WorkflowExpression.Validate(__workflow_bodyissueisCritical, nameof(bodyissueisCritical), required: false);
-            var __workflow_bodyissueisResolved = bodyissueisResolved == null ? null : WorkflowExpression.Compile(bodyissueisResolved);
-            WorkflowExpression.Validate(__workflow_bodyissueisResolved, nameof(bodyissueisResolved), required: false);
-            var __workflow_bodyissueroleId = bodyissueroleId == null ? null : WorkflowExpression.Compile(bodyissueroleId);
-            WorkflowExpression.Validate(__workflow_bodyissueroleId, nameof(bodyissueroleId), required: false);
-            var __workflow_bodyissuegoalId = bodyissuegoalId == null ? null : WorkflowExpression.Compile(bodyissuegoalId);
-            WorkflowExpression.Validate(__workflow_bodyissuegoalId, nameof(bodyissuegoalId), required: false);
-            var __workflow_bodyissuedueDate = bodyissuedueDate == null ? null : WorkflowExpression.Compile(bodyissuedueDate);
-            WorkflowExpression.Validate(__workflow_bodyissuedueDate, nameof(bodyissuedueDate), required: false);
-            var __workflow_bodyissueentityTemplateId = bodyissueentityTemplateId == null ? null : WorkflowExpression.Compile(bodyissueentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011281053 = bodyissuecustomAttributescA1573011281053 == null ? null : WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053);
-            WorkflowExpression.Validate(__workflow_bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011296755 = bodyissuecustomAttributescA1573011296755 == null ? null : WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755);
-            WorkflowExpression.Validate(__workflow_bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodyissueissue = WorkflowExpression.Compile(bodyissueissue, nameof(bodyissueissue), required: false);
+            var __workflow_bodyissueisCritical = WorkflowExpression.Compile(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
+            var __workflow_bodyissueisResolved = WorkflowExpression.Compile(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
+            var __workflow_bodyissueroleId = WorkflowExpression.Compile(bodyissueroleId, nameof(bodyissueroleId), required: false);
+            var __workflow_bodyissuegoalId = WorkflowExpression.Compile(bodyissuegoalId, nameof(bodyissuegoalId), required: false);
+            var __workflow_bodyissuedueDate = WorkflowExpression.Compile(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
+            var __workflow_bodyissueentityTemplateId = WorkflowExpression.Compile(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
+            var __workflow_bodyissuecustomAttributescA1573011281053 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
+            var __workflow_bodyissuecustomAttributescA1573011296755 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
             return new DeferredBodyAction<CreateRiskResponse>(() =>
             {
                 var apiCallPath = "/issues";
@@ -564,10 +506,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleRiskResponse> GetSingleRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetSingleRiskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -581,10 +521,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteRiskResponse> DeleteRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<DeleteRiskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -598,26 +536,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateRiskResponse> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodyissueissue = bodyissueissue == null ? null : WorkflowExpression.Compile(bodyissueissue);
-            WorkflowExpression.Validate(__workflow_bodyissueissue, nameof(bodyissueissue), required: false);
-            var __workflow_bodyissueisCritical = bodyissueisCritical == null ? null : WorkflowExpression.Compile(bodyissueisCritical);
-            WorkflowExpression.Validate(__workflow_bodyissueisCritical, nameof(bodyissueisCritical), required: false);
-            var __workflow_bodyissueisResolved = bodyissueisResolved == null ? null : WorkflowExpression.Compile(bodyissueisResolved);
-            WorkflowExpression.Validate(__workflow_bodyissueisResolved, nameof(bodyissueisResolved), required: false);
-            var __workflow_bodyissueroleId = bodyissueroleId == null ? null : WorkflowExpression.Compile(bodyissueroleId);
-            WorkflowExpression.Validate(__workflow_bodyissueroleId, nameof(bodyissueroleId), required: false);
-            var __workflow_bodyissuedueDate = bodyissuedueDate == null ? null : WorkflowExpression.Compile(bodyissuedueDate);
-            WorkflowExpression.Validate(__workflow_bodyissuedueDate, nameof(bodyissuedueDate), required: false);
-            var __workflow_bodyissueentityTemplateId = bodyissueentityTemplateId == null ? null : WorkflowExpression.Compile(bodyissueentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011281053 = bodyissuecustomAttributescA1573011281053 == null ? null : WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053);
-            WorkflowExpression.Validate(__workflow_bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
-            var __workflow_bodyissuecustomAttributescA1573011296755 = bodyissuecustomAttributescA1573011296755 == null ? null : WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755);
-            WorkflowExpression.Validate(__workflow_bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodyissueissue = WorkflowExpression.Compile(bodyissueissue, nameof(bodyissueissue), required: false);
+            var __workflow_bodyissueisCritical = WorkflowExpression.Compile(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
+            var __workflow_bodyissueisResolved = WorkflowExpression.Compile(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
+            var __workflow_bodyissueroleId = WorkflowExpression.Compile(bodyissueroleId, nameof(bodyissueroleId), required: false);
+            var __workflow_bodyissuedueDate = WorkflowExpression.Compile(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
+            var __workflow_bodyissueentityTemplateId = WorkflowExpression.Compile(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
+            var __workflow_bodyissuecustomAttributescA1573011281053 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
+            var __workflow_bodyissuecustomAttributescA1573011296755 = WorkflowExpression.Compile(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
             return new DeferredBodyAction<UpdateRiskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -703,8 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllTasksResponse> GetAllTasks(Expression<Func<string>> instance)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetAllTasksResponse>(() =>
             {
                 var apiCallPath = "/tasks";
@@ -718,26 +645,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodytasktask = bodytasktask == null ? null : WorkflowExpression.Compile(bodytasktask);
-            WorkflowExpression.Validate(__workflow_bodytasktask, nameof(bodytasktask), required: false);
-            var __workflow_bodytaskcomment = bodytaskcomment == null ? null : WorkflowExpression.Compile(bodytaskcomment);
-            WorkflowExpression.Validate(__workflow_bodytaskcomment, nameof(bodytaskcomment), required: false);
-            var __workflow_bodytaskisComplete = bodytaskisComplete == null ? null : WorkflowExpression.Compile(bodytaskisComplete);
-            WorkflowExpression.Validate(__workflow_bodytaskisComplete, nameof(bodytaskisComplete), required: false);
-            var __workflow_bodytaskroleId = bodytaskroleId == null ? null : WorkflowExpression.Compile(bodytaskroleId);
-            WorkflowExpression.Validate(__workflow_bodytaskroleId, nameof(bodytaskroleId), required: false);
-            var __workflow_bodytaskgoalId = bodytaskgoalId == null ? null : WorkflowExpression.Compile(bodytaskgoalId);
-            WorkflowExpression.Validate(__workflow_bodytaskgoalId, nameof(bodytaskgoalId), required: false);
-            var __workflow_bodytaskstartDate = bodytaskstartDate == null ? null : WorkflowExpression.Compile(bodytaskstartDate);
-            WorkflowExpression.Validate(__workflow_bodytaskstartDate, nameof(bodytaskstartDate), required: false);
-            var __workflow_bodytaskdueDate = bodytaskdueDate == null ? null : WorkflowExpression.Compile(bodytaskdueDate);
-            WorkflowExpression.Validate(__workflow_bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            var __workflow_bodytaskweightId = bodytaskweightId == null ? null : WorkflowExpression.Compile(bodytaskweightId);
-            WorkflowExpression.Validate(__workflow_bodytaskweightId, nameof(bodytaskweightId), required: false);
-            var __workflow_bodytaskentityTemplateId = bodytaskentityTemplateId == null ? null : WorkflowExpression.Compile(bodytaskentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodytasktask = WorkflowExpression.Compile(bodytasktask, nameof(bodytasktask), required: false);
+            var __workflow_bodytaskcomment = WorkflowExpression.Compile(bodytaskcomment, nameof(bodytaskcomment), required: false);
+            var __workflow_bodytaskisComplete = WorkflowExpression.Compile(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
+            var __workflow_bodytaskroleId = WorkflowExpression.Compile(bodytaskroleId, nameof(bodytaskroleId), required: false);
+            var __workflow_bodytaskgoalId = WorkflowExpression.Compile(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
+            var __workflow_bodytaskstartDate = WorkflowExpression.Compile(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
+            var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
+            var __workflow_bodytaskweightId = WorkflowExpression.Compile(bodytaskweightId, nameof(bodytaskweightId), required: false);
+            var __workflow_bodytaskentityTemplateId = WorkflowExpression.Compile(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
                 var apiCallPath = "/tasks";
@@ -821,10 +738,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleTaskResponse> GetSingleTask(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetSingleTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -838,10 +753,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<DeleteTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -855,28 +768,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodytasktask = bodytasktask == null ? null : WorkflowExpression.Compile(bodytasktask);
-            WorkflowExpression.Validate(__workflow_bodytasktask, nameof(bodytasktask), required: false);
-            var __workflow_bodytaskcomment = bodytaskcomment == null ? null : WorkflowExpression.Compile(bodytaskcomment);
-            WorkflowExpression.Validate(__workflow_bodytaskcomment, nameof(bodytaskcomment), required: false);
-            var __workflow_bodytaskisComplete = bodytaskisComplete == null ? null : WorkflowExpression.Compile(bodytaskisComplete);
-            WorkflowExpression.Validate(__workflow_bodytaskisComplete, nameof(bodytaskisComplete), required: false);
-            var __workflow_bodytaskroleId = bodytaskroleId == null ? null : WorkflowExpression.Compile(bodytaskroleId);
-            WorkflowExpression.Validate(__workflow_bodytaskroleId, nameof(bodytaskroleId), required: false);
-            var __workflow_bodytaskgoalId = bodytaskgoalId == null ? null : WorkflowExpression.Compile(bodytaskgoalId);
-            WorkflowExpression.Validate(__workflow_bodytaskgoalId, nameof(bodytaskgoalId), required: false);
-            var __workflow_bodytaskstartDate = bodytaskstartDate == null ? null : WorkflowExpression.Compile(bodytaskstartDate);
-            WorkflowExpression.Validate(__workflow_bodytaskstartDate, nameof(bodytaskstartDate), required: false);
-            var __workflow_bodytaskdueDate = bodytaskdueDate == null ? null : WorkflowExpression.Compile(bodytaskdueDate);
-            WorkflowExpression.Validate(__workflow_bodytaskdueDate, nameof(bodytaskdueDate), required: false);
-            var __workflow_bodytaskweightId = bodytaskweightId == null ? null : WorkflowExpression.Compile(bodytaskweightId);
-            WorkflowExpression.Validate(__workflow_bodytaskweightId, nameof(bodytaskweightId), required: false);
-            var __workflow_bodytaskentityTemplateId = bodytaskentityTemplateId == null ? null : WorkflowExpression.Compile(bodytaskentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodytasktask = WorkflowExpression.Compile(bodytasktask, nameof(bodytasktask), required: false);
+            var __workflow_bodytaskcomment = WorkflowExpression.Compile(bodytaskcomment, nameof(bodytaskcomment), required: false);
+            var __workflow_bodytaskisComplete = WorkflowExpression.Compile(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
+            var __workflow_bodytaskroleId = WorkflowExpression.Compile(bodytaskroleId, nameof(bodytaskroleId), required: false);
+            var __workflow_bodytaskgoalId = WorkflowExpression.Compile(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
+            var __workflow_bodytaskstartDate = WorkflowExpression.Compile(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
+            var __workflow_bodytaskdueDate = WorkflowExpression.Compile(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
+            var __workflow_bodytaskweightId = WorkflowExpression.Compile(bodytaskweightId, nameof(bodytaskweightId), required: false);
+            var __workflow_bodytaskentityTemplateId = WorkflowExpression.Compile(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
             return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -960,8 +862,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetAllUpdatesResponse> GetAllUpdates(Expression<Func<string>> instance)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetAllUpdatesResponse>(() =>
             {
                 var apiCallPath = "/updates";
@@ -975,14 +876,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
         {
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodyupdatecomment = bodyupdatecomment == null ? null : WorkflowExpression.Compile(bodyupdatecomment);
-            WorkflowExpression.Validate(__workflow_bodyupdatecomment, nameof(bodyupdatecomment), required: false);
-            var __workflow_bodyupdategoalId = bodyupdategoalId == null ? null : WorkflowExpression.Compile(bodyupdategoalId);
-            WorkflowExpression.Validate(__workflow_bodyupdategoalId, nameof(bodyupdategoalId), required: false);
-            var __workflow_bodyupdateentityTemplateId = bodyupdateentityTemplateId == null ? null : WorkflowExpression.Compile(bodyupdateentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodyupdatecomment = WorkflowExpression.Compile(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
+            var __workflow_bodyupdategoalId = WorkflowExpression.Compile(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
+            var __workflow_bodyupdateentityTemplateId = WorkflowExpression.Compile(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
             return new DeferredBodyAction<CreateUpdateResponse>(() =>
             {
                 var apiCallPath = "/updates";
@@ -1030,10 +927,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<GetSingleUpdateResponse> GetSingleUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<GetSingleUpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1047,10 +942,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<DeleteUpdateResponse> DeleteUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
             return new DeferredBodyAction<DeleteUpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1064,22 +957,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
         public IBodyWorkflowAction<UpdateUpdateResponse> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<string>> bodyupdatecreatedAt = null, Expression<Func<string>> bodyupdateupdatedAt = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdatedeleted = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_instance = instance == null ? null : WorkflowExpression.Compile(instance);
-            WorkflowExpression.Validate(__workflow_instance, nameof(instance), required: true);
-            var __workflow_bodyupdatecomment = bodyupdatecomment == null ? null : WorkflowExpression.Compile(bodyupdatecomment);
-            WorkflowExpression.Validate(__workflow_bodyupdatecomment, nameof(bodyupdatecomment), required: false);
-            var __workflow_bodyupdatecreatedAt = bodyupdatecreatedAt == null ? null : WorkflowExpression.Compile(bodyupdatecreatedAt);
-            WorkflowExpression.Validate(__workflow_bodyupdatecreatedAt, nameof(bodyupdatecreatedAt), required: false);
-            var __workflow_bodyupdateupdatedAt = bodyupdateupdatedAt == null ? null : WorkflowExpression.Compile(bodyupdateupdatedAt);
-            WorkflowExpression.Validate(__workflow_bodyupdateupdatedAt, nameof(bodyupdateupdatedAt), required: false);
-            var __workflow_bodyupdategoalId = bodyupdategoalId == null ? null : WorkflowExpression.Compile(bodyupdategoalId);
-            WorkflowExpression.Validate(__workflow_bodyupdategoalId, nameof(bodyupdategoalId), required: false);
-            var __workflow_bodyupdatedeleted = bodyupdatedeleted == null ? null : WorkflowExpression.Compile(bodyupdatedeleted);
-            WorkflowExpression.Validate(__workflow_bodyupdatedeleted, nameof(bodyupdatedeleted), required: false);
-            var __workflow_bodyupdateentityTemplateId = bodyupdateentityTemplateId == null ? null : WorkflowExpression.Compile(bodyupdateentityTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_instance = WorkflowExpression.Compile(instance, nameof(instance), required: true);
+            var __workflow_bodyupdatecomment = WorkflowExpression.Compile(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
+            var __workflow_bodyupdatecreatedAt = WorkflowExpression.Compile(bodyupdatecreatedAt, nameof(bodyupdatecreatedAt), required: false);
+            var __workflow_bodyupdateupdatedAt = WorkflowExpression.Compile(bodyupdateupdatedAt, nameof(bodyupdateupdatedAt), required: false);
+            var __workflow_bodyupdategoalId = WorkflowExpression.Compile(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
+            var __workflow_bodyupdatedeleted = WorkflowExpression.Compile(bodyupdatedeleted, nameof(bodyupdatedeleted), required: false);
+            var __workflow_bodyupdateentityTemplateId = WorkflowExpression.Compile(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
             return new DeferredBodyAction<UpdateUpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

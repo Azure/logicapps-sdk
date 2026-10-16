@@ -36,8 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "falseBranch">A factory that builds the false branch action graph and returns any node in the chain.</param>
         public IWorkflowAction Condition(Expression<Func<bool>> expression, Func<IChainableNode> trueBranch, Func<IChainableNode> falseBranch)
         {
-            var descriptor = expression == null ? null : WorkflowExpression.Compile(expression);
-            WorkflowExpression.Validate(descriptor, nameof(expression), required: true);
+            var descriptor = WorkflowExpression.Compile(expression, nameof(expression), required: true);
 
             var resolvedTrueBranch = trueBranch?.Invoke();
             var resolvedFalseBranch = falseBranch?.Invoke();
@@ -56,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "actions">A factory that takes the current item token and builds the action graph, returning any node in the chain.</param>
         public IWorkflowAction ForEach(Expression<Func<object>> items, Func<JToken, IChainableNode> actions)
         {
-            var descriptor = items == null ? null : WorkflowExpression.Compile(items);
-            WorkflowExpression.Validate(descriptor, nameof(items), required: true);
+            var descriptor = WorkflowExpression.Compile(items, nameof(items), required: true);
 
             if (actions == null)
             {
@@ -76,8 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "actions">A factory that builds the action graph to repeat and returns any node in the chain.</param>
         public IWorkflowAction Until(Expression<Func<bool>> expression, Func<IChainableNode> actions)
         {
-            var descriptor = expression == null ? null : WorkflowExpression.Compile(expression);
-            WorkflowExpression.Validate(descriptor, nameof(expression), required: true);
+            var descriptor = WorkflowExpression.Compile(expression, nameof(expression), required: true);
 
             if (actions == null)
             {
@@ -96,8 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "defaultCase">A factory that builds the default case action graph and returns any node in the chain (optional).</param>
         public IWorkflowAction Switch(Expression<Func<JToken>> on, Func<Dictionary<string, SwitchCase>> cases, Func<IChainableNode> defaultCase = null)
         {
-            var descriptor = on == null ? null : WorkflowExpression.Compile(on);
-            WorkflowExpression.Validate(descriptor, nameof(on), required: true);
+            var descriptor = WorkflowExpression.Compile(on, nameof(on), required: true);
 
             if (cases == null)
             {
@@ -116,10 +112,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "message">An expression for the termination message (optional).</param>
         public IWorkflowAction Terminate(Expression<Func<FlowStatus>> status, Expression<Func<string>> message = null)
         {
-            var statusDescriptor = status == null ? null : WorkflowExpression.Compile(status);
-            var messageDescriptor = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(statusDescriptor, nameof(status), required: true);
-            WorkflowExpression.Validate(messageDescriptor, nameof(message), required: false);
+            var statusDescriptor = WorkflowExpression.Compile(status, nameof(status), required: true);
+            var messageDescriptor = WorkflowExpression.Compile(message, nameof(message), required: false);
 
             return new DeferredWorkflowAction(() => new TerminateAction(ExpressionConverter.Convert(statusDescriptor), ExpressionConverter.Convert(messageDescriptor)));
         }

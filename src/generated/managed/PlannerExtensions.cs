@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IWorkflowAction DeleteTask(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UnassignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyremoveAssignedUsers)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyremoveAssignedUsers = bodyremoveAssignedUsers == null ? null : WorkflowExpression.Compile(bodyremoveAssignedUsers);
-            WorkflowExpression.Validate(__workflow_bodyremoveAssignedUsers, nameof(bodyremoveAssignedUsers), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyremoveAssignedUsers = WorkflowExpression.Compile(bodyremoveAssignedUsers, nameof(bodyremoveAssignedUsers), required: true);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/unassignusers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -53,10 +50,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> AssignUsers(Expression<Func<string>> id, Expression<Func<string>> bodyassignedUserIds)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyassignedUserIds = bodyassignedUserIds == null ? null : WorkflowExpression.Compile(bodyassignedUserIds);
-            WorkflowExpression.Validate(__workflow_bodyassignedUserIds, nameof(bodyassignedUserIds), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyassignedUserIds = WorkflowExpression.Compile(bodyassignedUserIds, nameof(bodyassignedUserIds), required: true);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/assignusers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -79,8 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListMyPlansResponse> ListGroupPlans(Expression<Func<string>> groupId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<ListMyPlansResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/planner/plans", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -93,12 +87,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<CreateBucketResponse> CreateBucket(Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
-            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
             return new DeferredBodyAction<CreateBucketResponse>(() =>
             {
                 var apiCallPath = "/v2/v1.0/planner/buckets";
@@ -124,72 +115,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV3> CreateTask(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyplanId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodybucketId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodyassignedUserIds = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null, Expression<Func<int>> bodypriority = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
-            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodybucketId = bodybucketId == null ? null : WorkflowExpression.Compile(bodybucketId);
-            WorkflowExpression.Validate(__workflow_bodybucketId, nameof(bodybucketId), required: false);
-            var __workflow_bodystartDateTime = bodystartDateTime == null ? null : WorkflowExpression.Compile(bodystartDateTime);
-            WorkflowExpression.Validate(__workflow_bodystartDateTime, nameof(bodystartDateTime), required: false);
-            var __workflow_bodydueDateTime = bodydueDateTime == null ? null : WorkflowExpression.Compile(bodydueDateTime);
-            WorkflowExpression.Validate(__workflow_bodydueDateTime, nameof(bodydueDateTime), required: false);
-            var __workflow_bodyassignedUserIds = bodyassignedUserIds == null ? null : WorkflowExpression.Compile(bodyassignedUserIds);
-            WorkflowExpression.Validate(__workflow_bodyassignedUserIds, nameof(bodyassignedUserIds), required: false);
-            var __workflow_bodyappliedCategoriespink = bodyappliedCategoriespink == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespink);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
-            var __workflow_bodyappliedCategoriesred = bodyappliedCategoriesred == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesred);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
-            var __workflow_bodyappliedCategoriesyellow = bodyappliedCategoriesyellow == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesyellow);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
-            var __workflow_bodyappliedCategoriesgreen = bodyappliedCategoriesgreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgreen);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
-            var __workflow_bodyappliedCategoriesblue = bodyappliedCategoriesblue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesblue);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
-            var __workflow_bodyappliedCategoriespurple = bodyappliedCategoriespurple == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespurple);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
-            var __workflow_bodyappliedCategoriesbronze = bodyappliedCategoriesbronze == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbronze);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
-            var __workflow_bodyappliedCategorieslime = bodyappliedCategorieslime == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslime);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
-            var __workflow_bodyappliedCategoriesaqua = bodyappliedCategoriesaqua == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesaqua);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
-            var __workflow_bodyappliedCategoriesgray = bodyappliedCategoriesgray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgray);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
-            var __workflow_bodyappliedCategoriessilver = bodyappliedCategoriessilver == null ? null : WorkflowExpression.Compile(bodyappliedCategoriessilver);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
-            var __workflow_bodyappliedCategoriesbrown = bodyappliedCategoriesbrown == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbrown);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
-            var __workflow_bodyappliedCategoriescranberry = bodyappliedCategoriescranberry == null ? null : WorkflowExpression.Compile(bodyappliedCategoriescranberry);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
-            var __workflow_bodyappliedCategoriesorange = bodyappliedCategoriesorange == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesorange);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
-            var __workflow_bodyappliedCategoriespeach = bodyappliedCategoriespeach == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespeach);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
-            var __workflow_bodyappliedCategoriesmarigold = bodyappliedCategoriesmarigold == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesmarigold);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
-            var __workflow_bodyappliedCategorieslightGreen = bodyappliedCategorieslightGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGreen);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
-            var __workflow_bodyappliedCategoriesdarkGreen = bodyappliedCategoriesdarkGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
-            var __workflow_bodyappliedCategoriesteal = bodyappliedCategoriesteal == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesteal);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
-            var __workflow_bodyappliedCategorieslightBlue = bodyappliedCategorieslightBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightBlue);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
-            var __workflow_bodyappliedCategoriesdarkBlue = bodyappliedCategoriesdarkBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
-            var __workflow_bodyappliedCategorieslavender = bodyappliedCategorieslavender == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslavender);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
-            var __workflow_bodyappliedCategoriesplum = bodyappliedCategoriesplum == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesplum);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
-            var __workflow_bodyappliedCategorieslightGray = bodyappliedCategorieslightGray == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGray);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
-            var __workflow_bodyappliedCategoriesdarkGray = bodyappliedCategoriesdarkGray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGray);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodybucketId = WorkflowExpression.Compile(bodybucketId, nameof(bodybucketId), required: false);
+            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodydueDateTime = WorkflowExpression.Compile(bodydueDateTime, nameof(bodydueDateTime), required: false);
+            var __workflow_bodyassignedUserIds = WorkflowExpression.Compile(bodyassignedUserIds, nameof(bodyassignedUserIds), required: false);
+            var __workflow_bodyappliedCategoriespink = WorkflowExpression.Compile(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
+            var __workflow_bodyappliedCategoriesred = WorkflowExpression.Compile(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
+            var __workflow_bodyappliedCategoriesyellow = WorkflowExpression.Compile(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
+            var __workflow_bodyappliedCategoriesgreen = WorkflowExpression.Compile(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
+            var __workflow_bodyappliedCategoriesblue = WorkflowExpression.Compile(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
+            var __workflow_bodyappliedCategoriespurple = WorkflowExpression.Compile(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
+            var __workflow_bodyappliedCategoriesbronze = WorkflowExpression.Compile(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
+            var __workflow_bodyappliedCategorieslime = WorkflowExpression.Compile(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
+            var __workflow_bodyappliedCategoriesaqua = WorkflowExpression.Compile(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
+            var __workflow_bodyappliedCategoriesgray = WorkflowExpression.Compile(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
+            var __workflow_bodyappliedCategoriessilver = WorkflowExpression.Compile(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
+            var __workflow_bodyappliedCategoriesbrown = WorkflowExpression.Compile(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
+            var __workflow_bodyappliedCategoriescranberry = WorkflowExpression.Compile(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
+            var __workflow_bodyappliedCategoriesorange = WorkflowExpression.Compile(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
+            var __workflow_bodyappliedCategoriespeach = WorkflowExpression.Compile(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
+            var __workflow_bodyappliedCategoriesmarigold = WorkflowExpression.Compile(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
+            var __workflow_bodyappliedCategorieslightGreen = WorkflowExpression.Compile(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
+            var __workflow_bodyappliedCategoriesdarkGreen = WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
+            var __workflow_bodyappliedCategoriesteal = WorkflowExpression.Compile(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
+            var __workflow_bodyappliedCategorieslightBlue = WorkflowExpression.Compile(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
+            var __workflow_bodyappliedCategoriesdarkBlue = WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
+            var __workflow_bodyappliedCategorieslavender = WorkflowExpression.Compile(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
+            var __workflow_bodyappliedCategoriesplum = WorkflowExpression.Compile(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
+            var __workflow_bodyappliedCategorieslightGray = WorkflowExpression.Compile(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
+            var __workflow_bodyappliedCategoriesdarkGray = WorkflowExpression.Compile(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
             return new DeferredBodyAction<GetTaskResponseV3>(() =>
             {
                 var apiCallPath = "/v2/beta/planner/tasks";
@@ -404,8 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> GetTask(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -418,8 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> GetTaskDetails(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -432,10 +388,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListBucketsResponse> ListBuckets(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ListBucketsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/buckets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -458,10 +412,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<ListTasksResponseV2> ListTasks(Expression<Func<string>> groupId, Expression<Func<string>> id)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ListTasksResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -475,68 +427,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskResponseV2> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydueDateTime = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<int>> bodypercentComplete = null, Expression<Func<string>> bodybucketId = null, Expression<Func<bool>> bodyappliedCategoriespink = null, Expression<Func<bool>> bodyappliedCategoriesred = null, Expression<Func<bool>> bodyappliedCategoriesyellow = null, Expression<Func<bool>> bodyappliedCategoriesgreen = null, Expression<Func<bool>> bodyappliedCategoriesblue = null, Expression<Func<bool>> bodyappliedCategoriespurple = null, Expression<Func<bool>> bodyappliedCategoriesbronze = null, Expression<Func<bool>> bodyappliedCategorieslime = null, Expression<Func<bool>> bodyappliedCategoriesaqua = null, Expression<Func<bool>> bodyappliedCategoriesgray = null, Expression<Func<bool>> bodyappliedCategoriessilver = null, Expression<Func<bool>> bodyappliedCategoriesbrown = null, Expression<Func<bool>> bodyappliedCategoriescranberry = null, Expression<Func<bool>> bodyappliedCategoriesorange = null, Expression<Func<bool>> bodyappliedCategoriespeach = null, Expression<Func<bool>> bodyappliedCategoriesmarigold = null, Expression<Func<bool>> bodyappliedCategorieslightGreen = null, Expression<Func<bool>> bodyappliedCategoriesdarkGreen = null, Expression<Func<bool>> bodyappliedCategoriesteal = null, Expression<Func<bool>> bodyappliedCategorieslightBlue = null, Expression<Func<bool>> bodyappliedCategoriesdarkBlue = null, Expression<Func<bool>> bodyappliedCategorieslavender = null, Expression<Func<bool>> bodyappliedCategoriesplum = null, Expression<Func<bool>> bodyappliedCategorieslightGray = null, Expression<Func<bool>> bodyappliedCategoriesdarkGray = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydueDateTime = bodydueDateTime == null ? null : WorkflowExpression.Compile(bodydueDateTime);
-            WorkflowExpression.Validate(__workflow_bodydueDateTime, nameof(bodydueDateTime), required: false);
-            var __workflow_bodystartDateTime = bodystartDateTime == null ? null : WorkflowExpression.Compile(bodystartDateTime);
-            WorkflowExpression.Validate(__workflow_bodystartDateTime, nameof(bodystartDateTime), required: false);
-            var __workflow_bodypercentComplete = bodypercentComplete == null ? null : WorkflowExpression.Compile(bodypercentComplete);
-            WorkflowExpression.Validate(__workflow_bodypercentComplete, nameof(bodypercentComplete), required: false);
-            var __workflow_bodybucketId = bodybucketId == null ? null : WorkflowExpression.Compile(bodybucketId);
-            WorkflowExpression.Validate(__workflow_bodybucketId, nameof(bodybucketId), required: false);
-            var __workflow_bodyappliedCategoriespink = bodyappliedCategoriespink == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespink);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
-            var __workflow_bodyappliedCategoriesred = bodyappliedCategoriesred == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesred);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
-            var __workflow_bodyappliedCategoriesyellow = bodyappliedCategoriesyellow == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesyellow);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
-            var __workflow_bodyappliedCategoriesgreen = bodyappliedCategoriesgreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgreen);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
-            var __workflow_bodyappliedCategoriesblue = bodyappliedCategoriesblue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesblue);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
-            var __workflow_bodyappliedCategoriespurple = bodyappliedCategoriespurple == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespurple);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
-            var __workflow_bodyappliedCategoriesbronze = bodyappliedCategoriesbronze == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbronze);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
-            var __workflow_bodyappliedCategorieslime = bodyappliedCategorieslime == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslime);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
-            var __workflow_bodyappliedCategoriesaqua = bodyappliedCategoriesaqua == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesaqua);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
-            var __workflow_bodyappliedCategoriesgray = bodyappliedCategoriesgray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesgray);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
-            var __workflow_bodyappliedCategoriessilver = bodyappliedCategoriessilver == null ? null : WorkflowExpression.Compile(bodyappliedCategoriessilver);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
-            var __workflow_bodyappliedCategoriesbrown = bodyappliedCategoriesbrown == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesbrown);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
-            var __workflow_bodyappliedCategoriescranberry = bodyappliedCategoriescranberry == null ? null : WorkflowExpression.Compile(bodyappliedCategoriescranberry);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
-            var __workflow_bodyappliedCategoriesorange = bodyappliedCategoriesorange == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesorange);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
-            var __workflow_bodyappliedCategoriespeach = bodyappliedCategoriespeach == null ? null : WorkflowExpression.Compile(bodyappliedCategoriespeach);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
-            var __workflow_bodyappliedCategoriesmarigold = bodyappliedCategoriesmarigold == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesmarigold);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
-            var __workflow_bodyappliedCategorieslightGreen = bodyappliedCategorieslightGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGreen);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
-            var __workflow_bodyappliedCategoriesdarkGreen = bodyappliedCategoriesdarkGreen == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
-            var __workflow_bodyappliedCategoriesteal = bodyappliedCategoriesteal == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesteal);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
-            var __workflow_bodyappliedCategorieslightBlue = bodyappliedCategorieslightBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightBlue);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
-            var __workflow_bodyappliedCategoriesdarkBlue = bodyappliedCategoriesdarkBlue == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
-            var __workflow_bodyappliedCategorieslavender = bodyappliedCategorieslavender == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslavender);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
-            var __workflow_bodyappliedCategoriesplum = bodyappliedCategoriesplum == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesplum);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
-            var __workflow_bodyappliedCategorieslightGray = bodyappliedCategorieslightGray == null ? null : WorkflowExpression.Compile(bodyappliedCategorieslightGray);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
-            var __workflow_bodyappliedCategoriesdarkGray = bodyappliedCategoriesdarkGray == null ? null : WorkflowExpression.Compile(bodyappliedCategoriesdarkGray);
-            WorkflowExpression.Validate(__workflow_bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydueDateTime = WorkflowExpression.Compile(bodydueDateTime, nameof(bodydueDateTime), required: false);
+            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodypercentComplete = WorkflowExpression.Compile(bodypercentComplete, nameof(bodypercentComplete), required: false);
+            var __workflow_bodybucketId = WorkflowExpression.Compile(bodybucketId, nameof(bodybucketId), required: false);
+            var __workflow_bodyappliedCategoriespink = WorkflowExpression.Compile(bodyappliedCategoriespink, nameof(bodyappliedCategoriespink), required: false);
+            var __workflow_bodyappliedCategoriesred = WorkflowExpression.Compile(bodyappliedCategoriesred, nameof(bodyappliedCategoriesred), required: false);
+            var __workflow_bodyappliedCategoriesyellow = WorkflowExpression.Compile(bodyappliedCategoriesyellow, nameof(bodyappliedCategoriesyellow), required: false);
+            var __workflow_bodyappliedCategoriesgreen = WorkflowExpression.Compile(bodyappliedCategoriesgreen, nameof(bodyappliedCategoriesgreen), required: false);
+            var __workflow_bodyappliedCategoriesblue = WorkflowExpression.Compile(bodyappliedCategoriesblue, nameof(bodyappliedCategoriesblue), required: false);
+            var __workflow_bodyappliedCategoriespurple = WorkflowExpression.Compile(bodyappliedCategoriespurple, nameof(bodyappliedCategoriespurple), required: false);
+            var __workflow_bodyappliedCategoriesbronze = WorkflowExpression.Compile(bodyappliedCategoriesbronze, nameof(bodyappliedCategoriesbronze), required: false);
+            var __workflow_bodyappliedCategorieslime = WorkflowExpression.Compile(bodyappliedCategorieslime, nameof(bodyappliedCategorieslime), required: false);
+            var __workflow_bodyappliedCategoriesaqua = WorkflowExpression.Compile(bodyappliedCategoriesaqua, nameof(bodyappliedCategoriesaqua), required: false);
+            var __workflow_bodyappliedCategoriesgray = WorkflowExpression.Compile(bodyappliedCategoriesgray, nameof(bodyappliedCategoriesgray), required: false);
+            var __workflow_bodyappliedCategoriessilver = WorkflowExpression.Compile(bodyappliedCategoriessilver, nameof(bodyappliedCategoriessilver), required: false);
+            var __workflow_bodyappliedCategoriesbrown = WorkflowExpression.Compile(bodyappliedCategoriesbrown, nameof(bodyappliedCategoriesbrown), required: false);
+            var __workflow_bodyappliedCategoriescranberry = WorkflowExpression.Compile(bodyappliedCategoriescranberry, nameof(bodyappliedCategoriescranberry), required: false);
+            var __workflow_bodyappliedCategoriesorange = WorkflowExpression.Compile(bodyappliedCategoriesorange, nameof(bodyappliedCategoriesorange), required: false);
+            var __workflow_bodyappliedCategoriespeach = WorkflowExpression.Compile(bodyappliedCategoriespeach, nameof(bodyappliedCategoriespeach), required: false);
+            var __workflow_bodyappliedCategoriesmarigold = WorkflowExpression.Compile(bodyappliedCategoriesmarigold, nameof(bodyappliedCategoriesmarigold), required: false);
+            var __workflow_bodyappliedCategorieslightGreen = WorkflowExpression.Compile(bodyappliedCategorieslightGreen, nameof(bodyappliedCategorieslightGreen), required: false);
+            var __workflow_bodyappliedCategoriesdarkGreen = WorkflowExpression.Compile(bodyappliedCategoriesdarkGreen, nameof(bodyappliedCategoriesdarkGreen), required: false);
+            var __workflow_bodyappliedCategoriesteal = WorkflowExpression.Compile(bodyappliedCategoriesteal, nameof(bodyappliedCategoriesteal), required: false);
+            var __workflow_bodyappliedCategorieslightBlue = WorkflowExpression.Compile(bodyappliedCategorieslightBlue, nameof(bodyappliedCategorieslightBlue), required: false);
+            var __workflow_bodyappliedCategoriesdarkBlue = WorkflowExpression.Compile(bodyappliedCategoriesdarkBlue, nameof(bodyappliedCategoriesdarkBlue), required: false);
+            var __workflow_bodyappliedCategorieslavender = WorkflowExpression.Compile(bodyappliedCategorieslavender, nameof(bodyappliedCategorieslavender), required: false);
+            var __workflow_bodyappliedCategoriesplum = WorkflowExpression.Compile(bodyappliedCategoriesplum, nameof(bodyappliedCategoriesplum), required: false);
+            var __workflow_bodyappliedCategorieslightGray = WorkflowExpression.Compile(bodyappliedCategorieslightGray, nameof(bodyappliedCategorieslightGray), required: false);
+            var __workflow_bodyappliedCategoriesdarkGray = WorkflowExpression.Compile(bodyappliedCategoriesdarkGray, nameof(bodyappliedCategoriesdarkGray), required: false);
             return new DeferredBodyAction<GetTaskResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -745,14 +666,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planner")]
         public IBodyWorkflowAction<GetTaskDetailsResponse> UpdateTaskDetails(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<bodyreferencesInputItem[]>> bodyreferences = null, Expression<Func<bodychecklistInputItem[]>> bodychecklist = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyreferences = bodyreferences == null ? null : WorkflowExpression.Compile(bodyreferences);
-            WorkflowExpression.Validate(__workflow_bodyreferences, nameof(bodyreferences), required: false);
-            var __workflow_bodychecklist = bodychecklist == null ? null : WorkflowExpression.Compile(bodychecklist);
-            WorkflowExpression.Validate(__workflow_bodychecklist, nameof(bodychecklist), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyreferences = WorkflowExpression.Compile(bodyreferences, nameof(bodyreferences), required: false);
+            var __workflow_bodychecklist = WorkflowExpression.Compile(bodychecklist, nameof(bodychecklist), required: false);
             return new DeferredBodyAction<GetTaskDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/planner/tasks/{0}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -793,10 +710,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
     {
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/oncompletetask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -809,10 +724,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask(Expression<Func<string>> groupId, Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/planner/onnewtask_trigger/plans/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

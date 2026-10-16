@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enlyftforcopilot")]
         public IBodyWorkflowAction<ExportContactFromEnlyftResponse> ExportContactFromEnlyft(Expression<Func<string>> personId = null, Expression<Func<string>> userEmail = null)
         {
-            var __workflow_personId = personId == null ? null : WorkflowExpression.Compile(personId);
-            WorkflowExpression.Validate(__workflow_personId, nameof(personId), required: false);
-            var __workflow_userEmail = userEmail == null ? null : WorkflowExpression.Compile(userEmail);
-            WorkflowExpression.Validate(__workflow_userEmail, nameof(userEmail), required: false);
+            var __workflow_personId = WorkflowExpression.Compile(personId, nameof(personId), required: false);
+            var __workflow_userEmail = WorkflowExpression.Compile(userEmail, nameof(userEmail), required: false);
             return new DeferredBodyAction<ExportContactFromEnlyftResponse>(() =>
             {
                 var apiCallPath = "/export-contact";

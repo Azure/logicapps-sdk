@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<CompanyByNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ListPscResponse> ListPsc(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ListPscResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -41,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ListStatementsPscResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -55,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
-            var __workflow_pCSId = pCSId == null ? null : WorkflowExpression.Compile(pCSId);
-            WorkflowExpression.Validate(__workflow_pCSId, nameof(pCSId), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_pCSId = WorkflowExpression.Compile(pCSId, nameof(pCSId), required: true);
             return new DeferredBodyAction<IndividualPscResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pCSId, 1));
@@ -71,8 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<UKEstablishmentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -85,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
         {
-            var __workflow_officerId = officerId == null ? null : WorkflowExpression.Compile(officerId);
-            WorkflowExpression.Validate(__workflow_officerId, nameof(officerId), required: true);
+            var __workflow_officerId = WorkflowExpression.Compile(officerId, nameof(officerId), required: true);
             return new DeferredBodyAction<OfficerAppointmentByOfficerIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_officerId, 1));
@@ -99,10 +92,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<FilingHistoryByNumberAndIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
@@ -115,8 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<ChargesByNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -129,10 +119,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
-            var __workflow_chargeId = chargeId == null ? null : WorkflowExpression.Compile(chargeId);
-            WorkflowExpression.Validate(__workflow_chargeId, nameof(chargeId), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_chargeId = WorkflowExpression.Compile(chargeId, nameof(chargeId), required: true);
             return new DeferredBodyAction<ChargesByNumberAndChargeIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_chargeId, 1));
@@ -145,8 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<AddressByNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -159,8 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<CompanyOfficersByNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -173,10 +159,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
-            var __workflow_appointmentId = appointmentId == null ? null : WorkflowExpression.Compile(appointmentId);
-            WorkflowExpression.Validate(__workflow_appointmentId, nameof(appointmentId), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_appointmentId = WorkflowExpression.Compile(appointmentId, nameof(appointmentId), required: true);
             return new DeferredBodyAction<CompanyOfficersByNumberAndAppointmentIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appointmentId, 1));
@@ -189,8 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
         public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
         {
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<FilingHistoryByCompNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));

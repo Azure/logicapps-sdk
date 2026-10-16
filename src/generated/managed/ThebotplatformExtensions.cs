@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage(Expression<Func<bodydataattributesmessagesInputItem[]>> bodydataattributesmessages = null, Expression<Func<string>> bodydataattributesrecipient = null)
         {
-            var __workflow_bodydataattributesmessages = bodydataattributesmessages == null ? null : WorkflowExpression.Compile(bodydataattributesmessages);
-            WorkflowExpression.Validate(__workflow_bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
-            var __workflow_bodydataattributesrecipient = bodydataattributesrecipient == null ? null : WorkflowExpression.Compile(bodydataattributesrecipient);
-            WorkflowExpression.Validate(__workflow_bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
+            var __workflow_bodydataattributesmessages = WorkflowExpression.Compile(bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
+            var __workflow_bodydataattributesrecipient = WorkflowExpression.Compile(bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
             return new DeferredBodyAction<SimpleTextMessageResponse>(() =>
             {
                 var apiCallPath = "/v1.0/activity/external";
@@ -66,10 +64,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute(Expression<Func<string>> bodydataattributesname = null, Expression<Func<bodydataattributesisPiiInput>> bodydataattributesisPii = null)
         {
-            var __workflow_bodydataattributesname = bodydataattributesname == null ? null : WorkflowExpression.Compile(bodydataattributesname);
-            WorkflowExpression.Validate(__workflow_bodydataattributesname, nameof(bodydataattributesname), required: false);
-            var __workflow_bodydataattributesisPii = bodydataattributesisPii == null ? null : WorkflowExpression.Compile(bodydataattributesisPii);
-            WorkflowExpression.Validate(__workflow_bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
+            var __workflow_bodydataattributesname = WorkflowExpression.Compile(bodydataattributesname, nameof(bodydataattributesname), required: false);
+            var __workflow_bodydataattributesisPii = WorkflowExpression.Compile(bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
             return new DeferredBodyAction<CreateUserAttributeResponse>(() =>
             {
                 var apiCallPath = "/v1.0/userattributes";
@@ -119,10 +115,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
         public IWorkflowAction SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<bodydataattributesstateInputItem[]>> bodydataattributesstate)
         {
-            var __workflow_emailaddress = emailaddress == null ? null : WorkflowExpression.Compile(emailaddress);
-            WorkflowExpression.Validate(__workflow_emailaddress, nameof(emailaddress), required: true);
-            var __workflow_bodydataattributesstate = bodydataattributesstate == null ? null : WorkflowExpression.Compile(bodydataattributesstate);
-            WorkflowExpression.Validate(__workflow_bodydataattributesstate, nameof(bodydataattributesstate), required: true);
+            var __workflow_emailaddress = WorkflowExpression.Compile(emailaddress, nameof(emailaddress), required: true);
+            var __workflow_bodydataattributesstate = WorkflowExpression.Compile(bodydataattributesstate, nameof(bodydataattributesstate), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_emailaddress, 1));

@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfCicsCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfCicsCobol";
@@ -34,12 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfCtgCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfCtgCobol";
@@ -55,12 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfImsCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfImsCobol";
@@ -76,12 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfNatural(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfNatural";
@@ -97,12 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfVsamCics(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfVsamCics";
@@ -118,12 +103,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> Mf3270Screens(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-Mf3270Screens";
@@ -139,12 +121,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
         public IBodyWorkflowAction<JToken> MfMq(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-MfMq";

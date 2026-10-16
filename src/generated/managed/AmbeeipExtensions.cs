@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityGeoResponse> AirQualityGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             return new DeferredBodyAction<AirQualityGeoResponse>(() =>
             {
                 var apiCallPath = "/latest/by-lat-lng";
@@ -33,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityPostalResponse> AirQualityPostal(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null)
         {
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<AirQualityPostalResponse>(() =>
             {
                 var apiCallPath = "/latest/by-postal-code";
@@ -53,8 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityCityResponse> AirQualityCity(Expression<Func<string>> city = null)
         {
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
             return new DeferredBodyAction<AirQualityCityResponse>(() =>
             {
                 var apiCallPath = "/latest/by-city";
@@ -69,8 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityCountryResponse> AirQualityCountry(Expression<Func<string>> countryCode = null)
         {
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<AirQualityCountryResponse>(() =>
             {
                 var apiCallPath = "/latest/by-country-code";
@@ -85,14 +79,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityGeoHistoryResponse> AirQualityGeoHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             return new DeferredBodyAction<AirQualityGeoHistoryResponse>(() =>
             {
                 var apiCallPath = "/history/by-lat-lng";
@@ -113,14 +103,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityPostalHistoryResponse> AirQualityPostalHistory(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             return new DeferredBodyAction<AirQualityPostalHistoryResponse>(() =>
             {
                 var apiCallPath = "/history/by-postal-code";
@@ -159,10 +145,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WeatherCurrentResponse> WeatherCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             return new DeferredBodyAction<WeatherCurrentResponse>(() =>
             {
                 var apiCallPath = "/weather/latest/by-lat-lng";
@@ -179,14 +163,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WeatherHistoryResponse> WeatherHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             return new DeferredBodyAction<WeatherHistoryResponse>(() =>
             {
                 var apiCallPath = "/weather/history/by-lat-lng";
@@ -207,12 +187,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WeatherForecastResponse> WeatherForecast(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> filter = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<WeatherForecastResponse>(() =>
             {
                 var apiCallPath = "/weather/forecast/by-lat-lng";
@@ -231,10 +208,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenLatestGeoResponse> PollenLatestGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             return new DeferredBodyAction<PollenLatestGeoResponse>(() =>
             {
                 var apiCallPath = "/latest/pollen/by-lat-lng";
@@ -251,8 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenLatestPlaceResponse> PollenLatestPlace(Expression<Func<string>> place = null)
         {
-            var __workflow_place = place == null ? null : WorkflowExpression.Compile(place);
-            WorkflowExpression.Validate(__workflow_place, nameof(place), required: false);
+            var __workflow_place = WorkflowExpression.Compile(place, nameof(place), required: false);
             return new DeferredBodyAction<PollenLatestPlaceResponse>(() =>
             {
                 var apiCallPath = "/latest/pollen/by-place";
@@ -267,14 +241,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenHistoryGeoResponse> PollenHistoryGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             return new DeferredBodyAction<PollenHistoryGeoResponse>(() =>
             {
                 var apiCallPath = "/history/pollen/by-lat-lng";
@@ -295,12 +265,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollenHistoryPlaceResponse> PollenHistoryPlace(Expression<Func<string>> place = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var __workflow_place = place == null ? null : WorkflowExpression.Compile(place);
-            WorkflowExpression.Validate(__workflow_place, nameof(place), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
+            var __workflow_place = WorkflowExpression.Compile(place, nameof(place), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             return new DeferredBodyAction<PollenHistoryPlaceResponse>(() =>
             {
                 var apiCallPath = "/history/pollen/by-place";
@@ -319,10 +286,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<PollForecastGeoResponse> PollForecastGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             return new DeferredBodyAction<PollForecastGeoResponse>(() =>
             {
                 var apiCallPath = "/forecast/pollen/by-lat-lng";
@@ -339,10 +304,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<FireCurrentResponse> FireCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             return new DeferredBodyAction<FireCurrentResponse>(() =>
             {
                 var apiCallPath = "/latest/fire";
@@ -359,10 +322,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<SoilCurrentResponse> SoilCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             return new DeferredBodyAction<SoilCurrentResponse>(() =>
             {
                 var apiCallPath = "/soil/latest/by-lat-lng";
@@ -379,14 +340,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<SoilHistoryResponse> SoilHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             return new DeferredBodyAction<SoilHistoryResponse>(() =>
             {
                 var apiCallPath = "/soil/history/by-lat-lng";
@@ -407,10 +364,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WaterVaporCurrentResponse> WaterVaporCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
             return new DeferredBodyAction<WaterVaporCurrentResponse>(() =>
             {
                 var apiCallPath = "/waterVapor/latest/by-lat-lng";
@@ -427,14 +382,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<WaterVaporGeoResponse> WaterVaporGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
             return new DeferredBodyAction<WaterVaporGeoResponse>(() =>
             {
                 var apiCallPath = "/waterVapor/history/by-lat-lng";

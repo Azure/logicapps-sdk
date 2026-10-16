@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody = null)
         {
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
-            var __workflow_requestBody = requestBody == null ? null : WorkflowExpression.Compile(requestBody);
-            WorkflowExpression.Validate(__workflow_requestBody, nameof(requestBody), required: false);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));
@@ -32,14 +29,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
         public IBodyWorkflowAction<string> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> reportInstanceName, Expression<Func<string>> requestBody = null)
         {
-            var __workflow_accountName = accountName == null ? null : WorkflowExpression.Compile(accountName);
-            WorkflowExpression.Validate(__workflow_accountName, nameof(accountName), required: true);
-            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
-            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: true);
-            var __workflow_reportInstanceName = reportInstanceName == null ? null : WorkflowExpression.Compile(reportInstanceName);
-            WorkflowExpression.Validate(__workflow_reportInstanceName, nameof(reportInstanceName), required: true);
-            var __workflow_requestBody = requestBody == null ? null : WorkflowExpression.Compile(requestBody);
-            WorkflowExpression.Validate(__workflow_requestBody, nameof(requestBody), required: false);
+            var __workflow_accountName = WorkflowExpression.Compile(accountName, nameof(accountName), required: true);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_reportInstanceName = WorkflowExpression.Compile(reportInstanceName, nameof(reportInstanceName), required: true);
+            var __workflow_requestBody = WorkflowExpression.Compile(requestBody, nameof(requestBody), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportInstanceName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));

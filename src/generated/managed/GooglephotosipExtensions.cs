@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
         public IWorkflowAction CreateAlbum(Expression<Func<string>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/albums";
@@ -46,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
         public IWorkflowAction CreateItems(Expression<Func<string>> mediaItemIds)
         {
-            var __workflow_mediaItemIds = mediaItemIds == null ? null : WorkflowExpression.Compile(mediaItemIds);
-            WorkflowExpression.Validate(__workflow_mediaItemIds, nameof(mediaItemIds), required: true);
+            var __workflow_mediaItemIds = WorkflowExpression.Compile(mediaItemIds, nameof(mediaItemIds), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/mediaItems:batchGet";

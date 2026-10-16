@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tractionguest")]
         public IWorkflowAction DeleteWebhook(Expression<Func<string>> hookId)
         {
-            var __workflow_hookId = hookId == null ? null : WorkflowExpression.Compile(hookId);
-            WorkflowExpression.Validate(__workflow_hookId, nameof(hookId), required: true);
+            var __workflow_hookId = WorkflowExpression.Compile(hookId, nameof(hookId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hookId, 1));

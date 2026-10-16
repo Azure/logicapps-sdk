@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> GetDocJson(Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getdocumentjson";
@@ -37,8 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> GetDocStatus(Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/getdocumentstatus";
@@ -61,10 +59,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> GetPartyStatus(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodypartyId = bodypartyId == null ? null : WorkflowExpression.Compile(bodypartyId);
-            WorkflowExpression.Validate(__workflow_bodypartyId, nameof(bodypartyId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypartyId = WorkflowExpression.Compile(bodypartyId, nameof(bodypartyId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/getpartystatus";
@@ -89,12 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> UpdatePartyEmail(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyId, Expression<Func<string>> bodypartyEmail)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodypartyId = bodypartyId == null ? null : WorkflowExpression.Compile(bodypartyId);
-            WorkflowExpression.Validate(__workflow_bodypartyId, nameof(bodypartyId), required: true);
-            var __workflow_bodypartyEmail = bodypartyEmail == null ? null : WorkflowExpression.Compile(bodypartyEmail);
-            WorkflowExpression.Validate(__workflow_bodypartyEmail, nameof(bodypartyEmail), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypartyId = WorkflowExpression.Compile(bodypartyId, nameof(bodypartyId), required: true);
+            var __workflow_bodypartyEmail = WorkflowExpression.Compile(bodypartyEmail, nameof(bodypartyEmail), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updatepartyemail";
@@ -121,8 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> SendReminder(Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/sendreminder";
@@ -145,8 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> GetDocumentPdfContent(Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/getdocumentpdfcontent";
@@ -169,8 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> NewDocumentFromTemplate(Expression<Func<string>> templateIdDynamic)
         {
-            var __workflow_templateIdDynamic = templateIdDynamic == null ? null : WorkflowExpression.Compile(templateIdDynamic);
-            WorkflowExpression.Validate(__workflow_templateIdDynamic, nameof(templateIdDynamic), required: true);
+            var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/newfromtemplate/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIdDynamic, 1));
@@ -183,8 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> StartSigning(Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/startsigning";
@@ -207,10 +196,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdateDocJson(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentJson)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodydocumentJson = bodydocumentJson == null ? null : WorkflowExpression.Compile(bodydocumentJson);
-            WorkflowExpression.Validate(__workflow_bodydocumentJson, nameof(bodydocumentJson), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentJson = WorkflowExpression.Compile(bodydocumentJson, nameof(bodydocumentJson), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/updatedocumentjson";
@@ -235,10 +222,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdatePartiesFields(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateSchema = null)
         {
-            var __workflow_templateIDDynamic = templateIDDynamic == null ? null : WorkflowExpression.Compile(templateIDDynamic);
-            WorkflowExpression.Validate(__workflow_templateIDDynamic, nameof(templateIDDynamic), required: true);
-            var __workflow_dynamicTemplateSchema = dynamicTemplateSchema == null ? null : WorkflowExpression.Compile(dynamicTemplateSchema);
-            WorkflowExpression.Validate(__workflow_dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
+            var __workflow_templateIDDynamic = WorkflowExpression.Compile(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            var __workflow_dynamicTemplateSchema = WorkflowExpression.Compile(dynamicTemplateSchema, nameof(dynamicTemplateSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesfields/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIDDynamic, 1));
@@ -252,10 +237,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction UpdatePartiesProperties(Expression<Func<string>> templateIDDynamic, Expression<Func<object>> dynamicTemplateMetaSchema = null)
         {
-            var __workflow_templateIDDynamic = templateIDDynamic == null ? null : WorkflowExpression.Compile(templateIDDynamic);
-            WorkflowExpression.Validate(__workflow_templateIDDynamic, nameof(templateIDDynamic), required: true);
-            var __workflow_dynamicTemplateMetaSchema = dynamicTemplateMetaSchema == null ? null : WorkflowExpression.Compile(dynamicTemplateMetaSchema);
-            WorkflowExpression.Validate(__workflow_dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
+            var __workflow_templateIDDynamic = WorkflowExpression.Compile(templateIDDynamic, nameof(templateIDDynamic), required: true);
+            var __workflow_dynamicTemplateMetaSchema = WorkflowExpression.Compile(dynamicTemplateMetaSchema, nameof(dynamicTemplateMetaSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updatepartiesproperties/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIDDynamic, 1));
@@ -269,10 +252,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<JToken> SetFile(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypdfContent)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
-            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/setfile";
@@ -297,10 +278,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IBodyWorkflowAction<string> NewFromPdf(Expression<Func<string>> bodypdfContent, Expression<Func<bodyauthorRoleInput>> bodyauthorRole)
         {
-            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
-            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: true);
-            var __workflow_bodyauthorRole = bodyauthorRole == null ? null : WorkflowExpression.Compile(bodyauthorRole);
-            WorkflowExpression.Validate(__workflow_bodyauthorRole, nameof(bodyauthorRole), required: true);
+            var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: true);
+            var __workflow_bodyauthorRole = WorkflowExpression.Compile(bodyauthorRole, nameof(bodyauthorRole), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/newfrompdf";
@@ -325,10 +304,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction AppendFile(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypdfContent)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
-            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/appendfile";
@@ -353,8 +330,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction Cancel(Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/cancel";
@@ -377,34 +353,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction AddParty(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodypartyEmail, Expression<Func<bodypartyRoleInput>> bodypartyRole, Expression<Func<string>> bodyfirstname = null, Expression<Func<string>> bodylastname = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodymobile = null, Expression<Func<string>> bodypersonalNumber = null, Expression<Func<double>> bodysignOrder = null, Expression<Func<bodydeliveryMethodInput>> bodydeliveryMethod = null, Expression<Func<bodyauthenticationToViewInput>> bodyauthenticationToView = null, Expression<Func<bodyauthenticationToViewArchivedInput>> bodyauthenticationToViewArchived = null, Expression<Func<bodyauthenticationToSignInput>> bodyauthenticationToSign = null, Expression<Func<bodyconfirmationInput>> bodyconfirmation = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodypartyEmail = bodypartyEmail == null ? null : WorkflowExpression.Compile(bodypartyEmail);
-            WorkflowExpression.Validate(__workflow_bodypartyEmail, nameof(bodypartyEmail), required: true);
-            var __workflow_bodypartyRole = bodypartyRole == null ? null : WorkflowExpression.Compile(bodypartyRole);
-            WorkflowExpression.Validate(__workflow_bodypartyRole, nameof(bodypartyRole), required: true);
-            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
-            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: false);
-            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
-            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: false);
-            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
-            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodymobile = bodymobile == null ? null : WorkflowExpression.Compile(bodymobile);
-            WorkflowExpression.Validate(__workflow_bodymobile, nameof(bodymobile), required: false);
-            var __workflow_bodypersonalNumber = bodypersonalNumber == null ? null : WorkflowExpression.Compile(bodypersonalNumber);
-            WorkflowExpression.Validate(__workflow_bodypersonalNumber, nameof(bodypersonalNumber), required: false);
-            var __workflow_bodysignOrder = bodysignOrder == null ? null : WorkflowExpression.Compile(bodysignOrder);
-            WorkflowExpression.Validate(__workflow_bodysignOrder, nameof(bodysignOrder), required: false);
-            var __workflow_bodydeliveryMethod = bodydeliveryMethod == null ? null : WorkflowExpression.Compile(bodydeliveryMethod);
-            WorkflowExpression.Validate(__workflow_bodydeliveryMethod, nameof(bodydeliveryMethod), required: false);
-            var __workflow_bodyauthenticationToView = bodyauthenticationToView == null ? null : WorkflowExpression.Compile(bodyauthenticationToView);
-            WorkflowExpression.Validate(__workflow_bodyauthenticationToView, nameof(bodyauthenticationToView), required: false);
-            var __workflow_bodyauthenticationToViewArchived = bodyauthenticationToViewArchived == null ? null : WorkflowExpression.Compile(bodyauthenticationToViewArchived);
-            WorkflowExpression.Validate(__workflow_bodyauthenticationToViewArchived, nameof(bodyauthenticationToViewArchived), required: false);
-            var __workflow_bodyauthenticationToSign = bodyauthenticationToSign == null ? null : WorkflowExpression.Compile(bodyauthenticationToSign);
-            WorkflowExpression.Validate(__workflow_bodyauthenticationToSign, nameof(bodyauthenticationToSign), required: false);
-            var __workflow_bodyconfirmation = bodyconfirmation == null ? null : WorkflowExpression.Compile(bodyconfirmation);
-            WorkflowExpression.Validate(__workflow_bodyconfirmation, nameof(bodyconfirmation), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodypartyEmail = WorkflowExpression.Compile(bodypartyEmail, nameof(bodypartyEmail), required: true);
+            var __workflow_bodypartyRole = WorkflowExpression.Compile(bodypartyRole, nameof(bodypartyRole), required: true);
+            var __workflow_bodyfirstname = WorkflowExpression.Compile(bodyfirstname, nameof(bodyfirstname), required: false);
+            var __workflow_bodylastname = WorkflowExpression.Compile(bodylastname, nameof(bodylastname), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodymobile = WorkflowExpression.Compile(bodymobile, nameof(bodymobile), required: false);
+            var __workflow_bodypersonalNumber = WorkflowExpression.Compile(bodypersonalNumber, nameof(bodypersonalNumber), required: false);
+            var __workflow_bodysignOrder = WorkflowExpression.Compile(bodysignOrder, nameof(bodysignOrder), required: false);
+            var __workflow_bodydeliveryMethod = WorkflowExpression.Compile(bodydeliveryMethod, nameof(bodydeliveryMethod), required: false);
+            var __workflow_bodyauthenticationToView = WorkflowExpression.Compile(bodyauthenticationToView, nameof(bodyauthenticationToView), required: false);
+            var __workflow_bodyauthenticationToViewArchived = WorkflowExpression.Compile(bodyauthenticationToViewArchived, nameof(bodyauthenticationToViewArchived), required: false);
+            var __workflow_bodyauthenticationToSign = WorkflowExpression.Compile(bodyauthenticationToSign, nameof(bodyauthenticationToSign), required: false);
+            var __workflow_bodyconfirmation = WorkflowExpression.Compile(bodyconfirmation, nameof(bodyconfirmation), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/addparty";
@@ -547,18 +509,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scriveesign")]
         public IWorkflowAction SetAuthorAttachment(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyattachmentName, Expression<Func<bodyrequiredInput>> bodyrequired, Expression<Func<bodyaddToSealedFileInput>> bodyaddToSealedFile, Expression<Func<string>> bodyfileId = null, Expression<Func<string>> bodypdfContent = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyattachmentName = bodyattachmentName == null ? null : WorkflowExpression.Compile(bodyattachmentName);
-            WorkflowExpression.Validate(__workflow_bodyattachmentName, nameof(bodyattachmentName), required: true);
-            var __workflow_bodyrequired = bodyrequired == null ? null : WorkflowExpression.Compile(bodyrequired);
-            WorkflowExpression.Validate(__workflow_bodyrequired, nameof(bodyrequired), required: true);
-            var __workflow_bodyaddToSealedFile = bodyaddToSealedFile == null ? null : WorkflowExpression.Compile(bodyaddToSealedFile);
-            WorkflowExpression.Validate(__workflow_bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
-            var __workflow_bodyfileId = bodyfileId == null ? null : WorkflowExpression.Compile(bodyfileId);
-            WorkflowExpression.Validate(__workflow_bodyfileId, nameof(bodyfileId), required: false);
-            var __workflow_bodypdfContent = bodypdfContent == null ? null : WorkflowExpression.Compile(bodypdfContent);
-            WorkflowExpression.Validate(__workflow_bodypdfContent, nameof(bodypdfContent), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyattachmentName = WorkflowExpression.Compile(bodyattachmentName, nameof(bodyattachmentName), required: true);
+            var __workflow_bodyrequired = WorkflowExpression.Compile(bodyrequired, nameof(bodyrequired), required: true);
+            var __workflow_bodyaddToSealedFile = WorkflowExpression.Compile(bodyaddToSealedFile, nameof(bodyaddToSealedFile), required: true);
+            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: false);
+            var __workflow_bodypdfContent = WorkflowExpression.Compile(bodypdfContent, nameof(bodypdfContent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/setattachment";
@@ -600,8 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     {
         public IBodyWorkflowTrigger<string> StartAndOnDocumentSign(Expression<Func<string>> bodydocumentId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = "/webhooks/signed/createandstart";
@@ -624,8 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
 
         public IBodyWorkflowTrigger<string> WebhookFromTemplateSign(Expression<Func<string>> templateIdDynamic, FlowRecurrence recurrence = null)
         {
-            var __workflow_templateIdDynamic = templateIdDynamic == null ? null : WorkflowExpression.Compile(templateIdDynamic);
-            WorkflowExpression.Validate(__workflow_templateIdDynamic, nameof(templateIdDynamic), required: true);
+            var __workflow_templateIdDynamic = WorkflowExpression.Compile(templateIdDynamic, nameof(templateIdDynamic), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/signedfromtemplate/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateIdDynamic, 1));

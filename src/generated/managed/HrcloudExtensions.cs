@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetEmployeeResponseItem[]> GetEmployee(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetEmployeeResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -30,38 +29,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IWorkflowAction AddEmployee(Expression<Func<string>> bodyxEmail, Expression<Func<string>> bodyxFirstName, Expression<Func<string>> bodyxLastName, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
         {
-            var __workflow_bodyxEmail = bodyxEmail == null ? null : WorkflowExpression.Compile(bodyxEmail);
-            WorkflowExpression.Validate(__workflow_bodyxEmail, nameof(bodyxEmail), required: true);
-            var __workflow_bodyxFirstName = bodyxFirstName == null ? null : WorkflowExpression.Compile(bodyxFirstName);
-            WorkflowExpression.Validate(__workflow_bodyxFirstName, nameof(bodyxFirstName), required: true);
-            var __workflow_bodyxLastName = bodyxLastName == null ? null : WorkflowExpression.Compile(bodyxLastName);
-            WorkflowExpression.Validate(__workflow_bodyxLastName, nameof(bodyxLastName), required: true);
-            var __workflow_bodyxAddress1 = bodyxAddress1 == null ? null : WorkflowExpression.Compile(bodyxAddress1);
-            WorkflowExpression.Validate(__workflow_bodyxAddress1, nameof(bodyxAddress1), required: false);
-            var __workflow_bodyxCity = bodyxCity == null ? null : WorkflowExpression.Compile(bodyxCity);
-            WorkflowExpression.Validate(__workflow_bodyxCity, nameof(bodyxCity), required: false);
-            var __workflow_bodyxPersonalEmail = bodyxPersonalEmail == null ? null : WorkflowExpression.Compile(bodyxPersonalEmail);
-            WorkflowExpression.Validate(__workflow_bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
-            var __workflow_bodyxRecordStatus = bodyxRecordStatus == null ? null : WorkflowExpression.Compile(bodyxRecordStatus);
-            WorkflowExpression.Validate(__workflow_bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
-            var __workflow_bodyxStartDate = bodyxStartDate == null ? null : WorkflowExpression.Compile(bodyxStartDate);
-            WorkflowExpression.Validate(__workflow_bodyxStartDate, nameof(bodyxStartDate), required: false);
-            var __workflow_bodyxState = bodyxState == null ? null : WorkflowExpression.Compile(bodyxState);
-            WorkflowExpression.Validate(__workflow_bodyxState, nameof(bodyxState), required: false);
-            var __workflow_bodyxZipCode = bodyxZipCode == null ? null : WorkflowExpression.Compile(bodyxZipCode);
-            WorkflowExpression.Validate(__workflow_bodyxZipCode, nameof(bodyxZipCode), required: false);
-            var __workflow_bodyxEmployeeNumber = bodyxEmployeeNumber == null ? null : WorkflowExpression.Compile(bodyxEmployeeNumber);
-            WorkflowExpression.Validate(__workflow_bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
-            var __workflow_bodyxEmploymentStatusLookup = bodyxEmploymentStatusLookup == null ? null : WorkflowExpression.Compile(bodyxEmploymentStatusLookup);
-            WorkflowExpression.Validate(__workflow_bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
-            var __workflow_bodyxLocationLookup = bodyxLocationLookup == null ? null : WorkflowExpression.Compile(bodyxLocationLookup);
-            WorkflowExpression.Validate(__workflow_bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
-            var __workflow_bodyxPositionLookup = bodyxPositionLookup == null ? null : WorkflowExpression.Compile(bodyxPositionLookup);
-            WorkflowExpression.Validate(__workflow_bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
-            var __workflow_bodyxDivisionLookup = bodyxDivisionLookup == null ? null : WorkflowExpression.Compile(bodyxDivisionLookup);
-            WorkflowExpression.Validate(__workflow_bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
-            var __workflow_bodyxDepartmentLookup = bodyxDepartmentLookup == null ? null : WorkflowExpression.Compile(bodyxDepartmentLookup);
-            WorkflowExpression.Validate(__workflow_bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
+            var __workflow_bodyxEmail = WorkflowExpression.Compile(bodyxEmail, nameof(bodyxEmail), required: true);
+            var __workflow_bodyxFirstName = WorkflowExpression.Compile(bodyxFirstName, nameof(bodyxFirstName), required: true);
+            var __workflow_bodyxLastName = WorkflowExpression.Compile(bodyxLastName, nameof(bodyxLastName), required: true);
+            var __workflow_bodyxAddress1 = WorkflowExpression.Compile(bodyxAddress1, nameof(bodyxAddress1), required: false);
+            var __workflow_bodyxCity = WorkflowExpression.Compile(bodyxCity, nameof(bodyxCity), required: false);
+            var __workflow_bodyxPersonalEmail = WorkflowExpression.Compile(bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
+            var __workflow_bodyxRecordStatus = WorkflowExpression.Compile(bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
+            var __workflow_bodyxStartDate = WorkflowExpression.Compile(bodyxStartDate, nameof(bodyxStartDate), required: false);
+            var __workflow_bodyxState = WorkflowExpression.Compile(bodyxState, nameof(bodyxState), required: false);
+            var __workflow_bodyxZipCode = WorkflowExpression.Compile(bodyxZipCode, nameof(bodyxZipCode), required: false);
+            var __workflow_bodyxEmployeeNumber = WorkflowExpression.Compile(bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
+            var __workflow_bodyxEmploymentStatusLookup = WorkflowExpression.Compile(bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
+            var __workflow_bodyxLocationLookup = WorkflowExpression.Compile(bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
+            var __workflow_bodyxPositionLookup = WorkflowExpression.Compile(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
+            var __workflow_bodyxDivisionLookup = WorkflowExpression.Compile(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
+            var __workflow_bodyxDepartmentLookup = WorkflowExpression.Compile(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -175,40 +158,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IWorkflowAction UpdateEmployee(Expression<Func<string>> bodyid, Expression<Func<string>> bodyxAddress1 = null, Expression<Func<string>> bodyxCity = null, Expression<Func<string>> bodyxEmail = null, Expression<Func<string>> bodyxFirstName = null, Expression<Func<string>> bodyxLastName = null, Expression<Func<string>> bodyxPersonalEmail = null, Expression<Func<string>> bodyxRecordStatus = null, Expression<Func<string>> bodyxStartDate = null, Expression<Func<string>> bodyxState = null, Expression<Func<string>> bodyxZipCode = null, Expression<Func<string>> bodyxEmployeeNumber = null, Expression<Func<string>> bodyxEmploymentStatusLookup = null, Expression<Func<string>> bodyxLocationLookup = null, Expression<Func<string>> bodyxPositionLookup = null, Expression<Func<string>> bodyxDivisionLookup = null, Expression<Func<string>> bodyxDepartmentLookup = null)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyxAddress1 = bodyxAddress1 == null ? null : WorkflowExpression.Compile(bodyxAddress1);
-            WorkflowExpression.Validate(__workflow_bodyxAddress1, nameof(bodyxAddress1), required: false);
-            var __workflow_bodyxCity = bodyxCity == null ? null : WorkflowExpression.Compile(bodyxCity);
-            WorkflowExpression.Validate(__workflow_bodyxCity, nameof(bodyxCity), required: false);
-            var __workflow_bodyxEmail = bodyxEmail == null ? null : WorkflowExpression.Compile(bodyxEmail);
-            WorkflowExpression.Validate(__workflow_bodyxEmail, nameof(bodyxEmail), required: false);
-            var __workflow_bodyxFirstName = bodyxFirstName == null ? null : WorkflowExpression.Compile(bodyxFirstName);
-            WorkflowExpression.Validate(__workflow_bodyxFirstName, nameof(bodyxFirstName), required: false);
-            var __workflow_bodyxLastName = bodyxLastName == null ? null : WorkflowExpression.Compile(bodyxLastName);
-            WorkflowExpression.Validate(__workflow_bodyxLastName, nameof(bodyxLastName), required: false);
-            var __workflow_bodyxPersonalEmail = bodyxPersonalEmail == null ? null : WorkflowExpression.Compile(bodyxPersonalEmail);
-            WorkflowExpression.Validate(__workflow_bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
-            var __workflow_bodyxRecordStatus = bodyxRecordStatus == null ? null : WorkflowExpression.Compile(bodyxRecordStatus);
-            WorkflowExpression.Validate(__workflow_bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
-            var __workflow_bodyxStartDate = bodyxStartDate == null ? null : WorkflowExpression.Compile(bodyxStartDate);
-            WorkflowExpression.Validate(__workflow_bodyxStartDate, nameof(bodyxStartDate), required: false);
-            var __workflow_bodyxState = bodyxState == null ? null : WorkflowExpression.Compile(bodyxState);
-            WorkflowExpression.Validate(__workflow_bodyxState, nameof(bodyxState), required: false);
-            var __workflow_bodyxZipCode = bodyxZipCode == null ? null : WorkflowExpression.Compile(bodyxZipCode);
-            WorkflowExpression.Validate(__workflow_bodyxZipCode, nameof(bodyxZipCode), required: false);
-            var __workflow_bodyxEmployeeNumber = bodyxEmployeeNumber == null ? null : WorkflowExpression.Compile(bodyxEmployeeNumber);
-            WorkflowExpression.Validate(__workflow_bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
-            var __workflow_bodyxEmploymentStatusLookup = bodyxEmploymentStatusLookup == null ? null : WorkflowExpression.Compile(bodyxEmploymentStatusLookup);
-            WorkflowExpression.Validate(__workflow_bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
-            var __workflow_bodyxLocationLookup = bodyxLocationLookup == null ? null : WorkflowExpression.Compile(bodyxLocationLookup);
-            WorkflowExpression.Validate(__workflow_bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
-            var __workflow_bodyxPositionLookup = bodyxPositionLookup == null ? null : WorkflowExpression.Compile(bodyxPositionLookup);
-            WorkflowExpression.Validate(__workflow_bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
-            var __workflow_bodyxDivisionLookup = bodyxDivisionLookup == null ? null : WorkflowExpression.Compile(bodyxDivisionLookup);
-            WorkflowExpression.Validate(__workflow_bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
-            var __workflow_bodyxDepartmentLookup = bodyxDepartmentLookup == null ? null : WorkflowExpression.Compile(bodyxDepartmentLookup);
-            WorkflowExpression.Validate(__workflow_bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyxAddress1 = WorkflowExpression.Compile(bodyxAddress1, nameof(bodyxAddress1), required: false);
+            var __workflow_bodyxCity = WorkflowExpression.Compile(bodyxCity, nameof(bodyxCity), required: false);
+            var __workflow_bodyxEmail = WorkflowExpression.Compile(bodyxEmail, nameof(bodyxEmail), required: false);
+            var __workflow_bodyxFirstName = WorkflowExpression.Compile(bodyxFirstName, nameof(bodyxFirstName), required: false);
+            var __workflow_bodyxLastName = WorkflowExpression.Compile(bodyxLastName, nameof(bodyxLastName), required: false);
+            var __workflow_bodyxPersonalEmail = WorkflowExpression.Compile(bodyxPersonalEmail, nameof(bodyxPersonalEmail), required: false);
+            var __workflow_bodyxRecordStatus = WorkflowExpression.Compile(bodyxRecordStatus, nameof(bodyxRecordStatus), required: false);
+            var __workflow_bodyxStartDate = WorkflowExpression.Compile(bodyxStartDate, nameof(bodyxStartDate), required: false);
+            var __workflow_bodyxState = WorkflowExpression.Compile(bodyxState, nameof(bodyxState), required: false);
+            var __workflow_bodyxZipCode = WorkflowExpression.Compile(bodyxZipCode, nameof(bodyxZipCode), required: false);
+            var __workflow_bodyxEmployeeNumber = WorkflowExpression.Compile(bodyxEmployeeNumber, nameof(bodyxEmployeeNumber), required: false);
+            var __workflow_bodyxEmploymentStatusLookup = WorkflowExpression.Compile(bodyxEmploymentStatusLookup, nameof(bodyxEmploymentStatusLookup), required: false);
+            var __workflow_bodyxLocationLookup = WorkflowExpression.Compile(bodyxLocationLookup, nameof(bodyxLocationLookup), required: false);
+            var __workflow_bodyxPositionLookup = WorkflowExpression.Compile(bodyxPositionLookup, nameof(bodyxPositionLookup), required: false);
+            var __workflow_bodyxDivisionLookup = WorkflowExpression.Compile(bodyxDivisionLookup, nameof(bodyxDivisionLookup), required: false);
+            var __workflow_bodyxDepartmentLookup = WorkflowExpression.Compile(bodyxDepartmentLookup, nameof(bodyxDepartmentLookup), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmployee";
@@ -326,8 +292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetDepartmentResponseItem[]> GetDepartment(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetDepartmentResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xDepartment";
@@ -343,8 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetLocationResponseItem[]> GetLocation(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetLocationResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xLocation";
@@ -360,8 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetPositionResponseItem[]> GetPosition(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetPositionResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xPosition";
@@ -377,8 +340,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetDivisionResponseItem[]> GetDivision(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetDivisionResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xDivision";
@@ -394,8 +356,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hrcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hrcloud")]
         public IBodyWorkflowAction<GetEmploymentStatusResponseItem[]> GetEmploymentStatus(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetEmploymentStatusResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/cloud/xEmploymentStatus";

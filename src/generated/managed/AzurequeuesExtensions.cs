@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IWorkflowAction DeleteMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> messageId, Expression<Func<string>> popreceipt)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_popreceipt = popreceipt == null ? null : WorkflowExpression.Compile(popreceipt);
-            WorkflowExpression.Validate(__workflow_popreceipt, nameof(popreceipt), required: true);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_popreceipt = WorkflowExpression.Compile(popreceipt, nameof(popreceipt), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -34,14 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<Messages> GetMessages(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> numofmessages = null, Expression<Func<string>> visibilitytimeout = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_numofmessages = numofmessages == null ? null : WorkflowExpression.Compile(numofmessages);
-            WorkflowExpression.Validate(__workflow_numofmessages, nameof(numofmessages), required: false);
-            var __workflow_visibilitytimeout = visibilitytimeout == null ? null : WorkflowExpression.Compile(visibilitytimeout);
-            WorkflowExpression.Validate(__workflow_visibilitytimeout, nameof(visibilitytimeout), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_numofmessages = WorkflowExpression.Compile(numofmessages, nameof(numofmessages), required: false);
+            var __workflow_visibilitytimeout = WorkflowExpression.Compile(visibilitytimeout, nameof(visibilitytimeout), required: false);
             return new DeferredBodyAction<Messages>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
@@ -58,8 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IBodyWorkflowAction<Queue[]> ListQueues(Expression<Func<string>> storageAccountName)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
             return new DeferredBodyAction<Queue[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2));
@@ -72,12 +63,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurequeues")]
         public IWorkflowAction PutMessage(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> message = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(__workflow_message, nameof(message), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
@@ -93,12 +81,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
     {
         public IBodyWorkflowTrigger<Messages> OnMessages(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<string>> visibilitytimeout = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_visibilitytimeout = visibilitytimeout == null ? null : WorkflowExpression.Compile(visibilitytimeout);
-            WorkflowExpression.Validate(__workflow_visibilitytimeout, nameof(visibilitytimeout), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_visibilitytimeout = WorkflowExpression.Compile(visibilitytimeout, nameof(visibilitytimeout), required: false);
             return new DeferredBodyTrigger<Messages>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/message_trigger", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));
@@ -112,12 +97,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
 
         public IBodyWorkflowTrigger<string> OnMessageThresholdReached(Expression<Func<string>> storageAccountName, Expression<Func<string>> queueName, Expression<Func<int>> threshold, FlowRecurrence recurrence = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_threshold = threshold == null ? null : WorkflowExpression.Compile(threshold);
-            WorkflowExpression.Validate(__workflow_threshold, nameof(threshold), required: true);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/queues/{1}/count_trigger", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queueName, 1));

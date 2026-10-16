@@ -15,8 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretOutput> GetSecret(Expression<Func<string>> secretName)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<GetSecretOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -33,10 +32,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretVersionOutput> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> version)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             return new DeferredBodyAction<GetSecretVersionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -64,8 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretMetadataOutput> GetSecretMetadata(Expression<Func<string>> secretName)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<GetSecretMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -82,10 +78,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetSecretVersionMetadataOutput> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> version)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             return new DeferredBodyAction<GetSecretVersionMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -103,8 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListSecretVersionMetadataOutputItem[]> ListSecretVersionMetadata(Expression<Func<string>> secretName)
         {
-            var __workflow_secretName = secretName == null ? null : WorkflowExpression.Compile(secretName);
-            WorkflowExpression.Validate(__workflow_secretName, nameof(secretName), required: true);
+            var __workflow_secretName = WorkflowExpression.Compile(secretName, nameof(secretName), required: true);
             return new DeferredBodyAction<ListSecretVersionMetadataOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -121,8 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetKeyMetadataOutput> GetKeyMetadata(Expression<Func<string>> keyName)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             return new DeferredBodyAction<GetKeyMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -149,10 +141,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<GetKeyVersionMetadataOutput> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> version)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             return new DeferredBodyAction<GetKeyVersionMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -170,8 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListKeyVersionMetadataOutputItem[]> ListKeyVersionMetadata(Expression<Func<string>> keyName)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
             return new DeferredBodyAction<ListKeyVersionMetadataOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -188,12 +177,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<DecryptDataWithKeyOutput> DecryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<DecryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_algorithm = algorithm == null ? null : WorkflowExpression.Compile(algorithm);
-            WorkflowExpression.Validate(__workflow_algorithm, nameof(algorithm), required: true);
-            var __workflow_encryptedData = encryptedData == null ? null : WorkflowExpression.Compile(encryptedData);
-            WorkflowExpression.Validate(__workflow_encryptedData, nameof(encryptedData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
+            var __workflow_encryptedData = WorkflowExpression.Compile(encryptedData, nameof(encryptedData), required: true);
             return new DeferredBodyAction<DecryptDataWithKeyOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -212,14 +198,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<DecryptDataWithKeyVersionOutput> DecryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<DecryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
-            var __workflow_algorithm = algorithm == null ? null : WorkflowExpression.Compile(algorithm);
-            WorkflowExpression.Validate(__workflow_algorithm, nameof(algorithm), required: true);
-            var __workflow_encryptedData = encryptedData == null ? null : WorkflowExpression.Compile(encryptedData);
-            WorkflowExpression.Validate(__workflow_encryptedData, nameof(encryptedData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
+            var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
+            var __workflow_encryptedData = WorkflowExpression.Compile(encryptedData, nameof(encryptedData), required: true);
             return new DeferredBodyAction<DecryptDataWithKeyVersionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -239,12 +221,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<EncryptDataWithKeyOutput> EncryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<EncryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_algorithm = algorithm == null ? null : WorkflowExpression.Compile(algorithm);
-            WorkflowExpression.Validate(__workflow_algorithm, nameof(algorithm), required: true);
-            var __workflow_rawData = rawData == null ? null : WorkflowExpression.Compile(rawData);
-            WorkflowExpression.Validate(__workflow_rawData, nameof(rawData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
+            var __workflow_rawData = WorkflowExpression.Compile(rawData, nameof(rawData), required: true);
             return new DeferredBodyAction<EncryptDataWithKeyOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -263,14 +242,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<EncryptDataWithKeyVersionOutput> EncryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<EncryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
         {
-            var __workflow_keyName = keyName == null ? null : WorkflowExpression.Compile(keyName);
-            WorkflowExpression.Validate(__workflow_keyName, nameof(keyName), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
-            var __workflow_algorithm = algorithm == null ? null : WorkflowExpression.Compile(algorithm);
-            WorkflowExpression.Validate(__workflow_algorithm, nameof(algorithm), required: true);
-            var __workflow_rawData = rawData == null ? null : WorkflowExpression.Compile(rawData);
-            WorkflowExpression.Validate(__workflow_rawData, nameof(rawData), required: true);
+            var __workflow_keyName = WorkflowExpression.Compile(keyName, nameof(keyName), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
+            var __workflow_algorithm = WorkflowExpression.Compile(algorithm, nameof(algorithm), required: true);
+            var __workflow_rawData = WorkflowExpression.Compile(rawData, nameof(rawData), required: true);
             return new DeferredBodyAction<EncryptDataWithKeyVersionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

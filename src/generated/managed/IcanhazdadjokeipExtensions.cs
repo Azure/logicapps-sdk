@@ -23,12 +23,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
         public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<string>> term = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
-            WorkflowExpression.Validate(__workflow_term, nameof(term), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: false);
             return new DeferredBodyAction<SearchForDadJokesResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -48,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
         public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke(Expression<Func<string>> jokeid)
         {
-            var __workflow_jokeid = jokeid == null ? null : WorkflowExpression.Compile(jokeid);
-            WorkflowExpression.Validate(__workflow_jokeid, nameof(jokeid), required: true);
+            var __workflow_jokeid = WorkflowExpression.Compile(jokeid, nameof(jokeid), required: true);
             return new DeferredBodyAction<FetchaDadJokeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jokeid, 1));

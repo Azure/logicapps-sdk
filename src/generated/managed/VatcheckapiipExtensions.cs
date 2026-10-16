@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<int>> vatNumber = null, Expression<Func<string>> countryCode = null)
         {
-            var __workflow_vatNumber = vatNumber == null ? null : WorkflowExpression.Compile(vatNumber);
-            WorkflowExpression.Validate(__workflow_vatNumber, nameof(vatNumber), required: false);
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
+            var __workflow_vatNumber = WorkflowExpression.Compile(vatNumber, nameof(vatNumber), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v2/check";

@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Users> UserGet(Expression<Func<string>> username, Expression<Func<int>> w = null, Expression<Func<int>> h = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_w = w == null ? null : WorkflowExpression.Compile(w);
-            WorkflowExpression.Validate(__workflow_w, nameof(w), required: false);
-            var __workflow_h = h == null ? null : WorkflowExpression.Compile(h);
-            WorkflowExpression.Validate(__workflow_h, nameof(h), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_w = WorkflowExpression.Compile(w, nameof(w), required: false);
+            var __workflow_h = WorkflowExpression.Compile(h, nameof(h), required: false);
             return new DeferredBodyAction<Users>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
@@ -35,14 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> UserGetPhotos(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/photos", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
@@ -61,14 +54,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> UserGetLiked(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/likes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
@@ -87,12 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Collections[]> UserGetCollections(Expression<Func<string>> username, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<Collections[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/collections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
@@ -109,12 +95,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> PhotoGetPage(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<string>> orderBy = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<Photos[]>(() =>
             {
                 var apiCallPath = "/photos";
@@ -133,10 +116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photos[]> PhotoSearch(Expression<Func<string>> query, Expression<Func<string>> category)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             return new DeferredBodyAction<Photos[]>(() =>
             {
                 var apiCallPath = "/photos/search";
@@ -151,8 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photo> PhotoGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Photo>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/photos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -165,18 +145,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unsplaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unsplaship")]
         public IBodyWorkflowAction<Photo> PhotoGetRandom(Expression<Func<string>> collections = null, Expression<Func<string>> topics = null, Expression<Func<string>> username = null, Expression<Func<string>> query = null, Expression<Func<orientationInput>> orientation = null, Expression<Func<contentFilterInput>> contentFilter = null)
         {
-            var __workflow_collections = collections == null ? null : WorkflowExpression.Compile(collections);
-            WorkflowExpression.Validate(__workflow_collections, nameof(collections), required: false);
-            var __workflow_topics = topics == null ? null : WorkflowExpression.Compile(topics);
-            WorkflowExpression.Validate(__workflow_topics, nameof(topics), required: false);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: false);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_orientation = orientation == null ? null : WorkflowExpression.Compile(orientation);
-            WorkflowExpression.Validate(__workflow_orientation, nameof(orientation), required: false);
-            var __workflow_contentFilter = contentFilter == null ? null : WorkflowExpression.Compile(contentFilter);
-            WorkflowExpression.Validate(__workflow_contentFilter, nameof(contentFilter), required: false);
+            var __workflow_collections = WorkflowExpression.Compile(collections, nameof(collections), required: false);
+            var __workflow_topics = WorkflowExpression.Compile(topics, nameof(topics), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_orientation = WorkflowExpression.Compile(orientation, nameof(orientation), required: false);
+            var __workflow_contentFilter = WorkflowExpression.Compile(contentFilter, nameof(contentFilter), required: false);
             return new DeferredBodyAction<Photo>(() =>
             {
                 var apiCallPath = "/photos/random";

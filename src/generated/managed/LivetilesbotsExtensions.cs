@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptString(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/String";
@@ -45,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptNumber(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/Number";
@@ -77,14 +73,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptForm(Expression<Func<string>> resumptionToken, Expression<Func<bodyformFieldsInputItem[]>> bodyformFields, Expression<Func<string>> bodyprompt = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
-            var __workflow_bodyformFields = bodyformFields == null ? null : WorkflowExpression.Compile(bodyformFields);
-            WorkflowExpression.Validate(__workflow_bodyformFields, nameof(bodyformFields), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_bodyformFields = WorkflowExpression.Compile(bodyformFields, nameof(bodyformFields), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/Form";
@@ -121,10 +113,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptBoolean(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/Bool";
@@ -153,12 +143,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptChoice(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyoptionsInputItem[]>> bodyoptions = null)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
-            var __workflow_bodyoptions = bodyoptions == null ? null : WorkflowExpression.Compile(bodyoptions);
-            WorkflowExpression.Validate(__workflow_bodyoptions, nameof(bodyoptions), required: false);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_bodyoptions = WorkflowExpression.Compile(bodyoptions, nameof(bodyoptions), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/Choice";
@@ -193,12 +180,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PromptFile(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<string[]>> bodycontentTypes = null)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
-            var __workflow_bodycontentTypes = bodycontentTypes == null ? null : WorkflowExpression.Compile(bodycontentTypes);
-            WorkflowExpression.Validate(__workflow_bodycontentTypes, nameof(bodycontentTypes), required: false);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_bodycontentTypes = WorkflowExpression.Compile(bodycontentTypes, nameof(bodycontentTypes), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/File";
@@ -233,12 +217,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction PostMessage(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodymessage = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodyattachments = bodyattachments == null ? null : WorkflowExpression.Compile(bodyattachments);
-            WorkflowExpression.Validate(__workflow_bodyattachments, nameof(bodyattachments), required: false);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/Message";
@@ -271,8 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
         public IWorkflowAction FlowComplete(Expression<Func<string>> resumptionToken)
         {
-            var __workflow_resumptionToken = resumptionToken == null ? null : WorkflowExpression.Compile(resumptionToken);
-            WorkflowExpression.Validate(__workflow_resumptionToken, nameof(resumptionToken), required: true);
+            var __workflow_resumptionToken = WorkflowExpression.Compile(resumptionToken, nameof(resumptionToken), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flowCallback/Done";
@@ -288,10 +268,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
     {
         public IWorkflowTrigger IntentRecognized(Expression<Func<string>> subscriptionbot, Expression<Func<string>> subscriptionflow, FlowRecurrence recurrence = null)
         {
-            var __workflow_subscriptionbot = subscriptionbot == null ? null : WorkflowExpression.Compile(subscriptionbot);
-            WorkflowExpression.Validate(__workflow_subscriptionbot, nameof(subscriptionbot), required: true);
-            var __workflow_subscriptionflow = subscriptionflow == null ? null : WorkflowExpression.Compile(subscriptionflow);
-            WorkflowExpression.Validate(__workflow_subscriptionflow, nameof(subscriptionflow), required: true);
+            var __workflow_subscriptionbot = WorkflowExpression.Compile(subscriptionbot, nameof(subscriptionbot), required: true);
+            var __workflow_subscriptionflow = WorkflowExpression.Compile(subscriptionflow, nameof(subscriptionflow), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/flows/subscribe";

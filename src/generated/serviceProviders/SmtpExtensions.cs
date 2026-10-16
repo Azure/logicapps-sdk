@@ -15,28 +15,17 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Smtp")]
         public IOutputWorkflowAction<SendEmailOutput> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
         {
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: true);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: true);
-            var __workflow_cc = cc == null ? null : WorkflowExpression.Compile(cc);
-            WorkflowExpression.Validate(__workflow_cc, nameof(cc), required: false);
-            var __workflow_subject = subject == null ? null : WorkflowExpression.Compile(subject);
-            WorkflowExpression.Validate(__workflow_subject, nameof(subject), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
-            var __workflow_isHTML = isHTML == null ? null : WorkflowExpression.Compile(isHTML);
-            WorkflowExpression.Validate(__workflow_isHTML, nameof(isHTML), required: false);
-            var __workflow_bcc = bcc == null ? null : WorkflowExpression.Compile(bcc);
-            WorkflowExpression.Validate(__workflow_bcc, nameof(bcc), required: false);
-            var __workflow_importance = importance == null ? null : WorkflowExpression.Compile(importance);
-            WorkflowExpression.Validate(__workflow_importance, nameof(importance), required: false);
-            var __workflow_readReceipt = readReceipt == null ? null : WorkflowExpression.Compile(readReceipt);
-            WorkflowExpression.Validate(__workflow_readReceipt, nameof(readReceipt), required: false);
-            var __workflow_deliveryReceipt = deliveryReceipt == null ? null : WorkflowExpression.Compile(deliveryReceipt);
-            WorkflowExpression.Validate(__workflow_deliveryReceipt, nameof(deliveryReceipt), required: false);
-            var __workflow_attachment = attachment == null ? null : WorkflowExpression.Compile(attachment);
-            WorkflowExpression.Validate(__workflow_attachment, nameof(attachment), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: true);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_isHTML = WorkflowExpression.Compile(isHTML, nameof(isHTML), required: false);
+            var __workflow_bcc = WorkflowExpression.Compile(bcc, nameof(bcc), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_readReceipt = WorkflowExpression.Compile(readReceipt, nameof(readReceipt), required: false);
+            var __workflow_deliveryReceipt = WorkflowExpression.Compile(deliveryReceipt, nameof(deliveryReceipt), required: false);
+            var __workflow_attachment = WorkflowExpression.Compile(attachment, nameof(attachment), required: false);
             return new DeferredOutputAction<SendEmailOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

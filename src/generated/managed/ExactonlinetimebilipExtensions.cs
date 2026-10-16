@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<DivisionsResponse> GetDivisions(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<DivisionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/hrm/Divisions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -43,16 +38,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<EmploymentInternalRatesResponse> GetEmploymentInternalRates(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<EmploymentInternalRatesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/EmploymentInternalRates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -73,16 +63,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourCostTypesResponse> GetHourCostTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourCostTypesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourCostTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -103,18 +88,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourEntryActivitiesByProjectResponse> GetHourEntryActivitiesByProject(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryActivitiesByProjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryActivitiesByProject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -136,16 +115,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourEntryRecentAccountsResponse> GetHourEntryRecentAccounts(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentAccountsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccounts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -166,18 +140,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourEntryRecentAccountsByProjectResponse> GetHourEntryRecentAccountsByProject(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentAccountsByProjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccountsByProject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -199,16 +167,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourEntryRecentHourTypesResponse> GetHourEntryRecentHourTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentHourTypesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -229,18 +192,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourEntryRecentHourTypesByProjectResponse> GetHourEntryRecentHourTypesByProject(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentHourTypesByProjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypesByProject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -262,16 +219,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourEntryRecentProjectsResponse> GetHourEntryRecentProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourEntryRecentProjectsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -292,18 +244,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HoursByDateResponse> GetHoursByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_checkDate = checkDate == null ? null : WorkflowExpression.Compile(checkDate);
-            WorkflowExpression.Validate(__workflow_checkDate, nameof(checkDate), required: true);
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_checkDate = WorkflowExpression.Compile(checkDate, nameof(checkDate), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HoursByDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -325,18 +271,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HoursByIdResponse> GetHoursById(Expression<Func<string>> division, Expression<Func<string>> entryId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_entryId = entryId == null ? null : WorkflowExpression.Compile(entryId);
-            WorkflowExpression.Validate(__workflow_entryId, nameof(entryId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_entryId = WorkflowExpression.Compile(entryId, nameof(entryId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HoursByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursById", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -358,16 +298,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourTypesResponse> GetHourTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourTypesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -388,18 +323,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourTypesByDateResponse> GetHourTypesByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_checkDate = checkDate == null ? null : WorkflowExpression.Compile(checkDate);
-            WorkflowExpression.Validate(__workflow_checkDate, nameof(checkDate), required: true);
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_checkDate = WorkflowExpression.Compile(checkDate, nameof(checkDate), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourTypesByDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -421,18 +350,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<HourTypesByProjectAndDateResponse> GetHourTypesByProjectAndDate(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<HourTypesByProjectAndDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByProjectAndDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -454,16 +377,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> GetProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -484,38 +402,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> iD, Expression<Func<string>> projectRestrictionRebillingscostTypeRebill, Expression<Func<string>> projectRestrictionRebillingsproject, Expression<Func<string>> projectRestrictionRebillingsiD = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillCode = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillDescription = null, Expression<Func<string>> projectRestrictionRebillingscreated = null, Expression<Func<string>> projectRestrictionRebillingscreator = null, Expression<Func<string>> projectRestrictionRebillingscreatorFullName = null, Expression<Func<int>> projectRestrictionRebillingsdivision = null, Expression<Func<string>> projectRestrictionRebillingsmodified = null, Expression<Func<string>> projectRestrictionRebillingsmodifier = null, Expression<Func<string>> projectRestrictionRebillingsmodifierFullName = null, Expression<Func<string>> projectRestrictionRebillingsprojectCode = null, Expression<Func<string>> projectRestrictionRebillingsprojectDescription = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
-            var __workflow_projectRestrictionRebillingscostTypeRebill = projectRestrictionRebillingscostTypeRebill == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebill);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
-            var __workflow_projectRestrictionRebillingsproject = projectRestrictionRebillingsproject == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsproject);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
-            var __workflow_projectRestrictionRebillingsiD = projectRestrictionRebillingsiD == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsiD);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillCode = projectRestrictionRebillingscostTypeRebillCode == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillCode);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillDescription = projectRestrictionRebillingscostTypeRebillDescription == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillDescription);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
-            var __workflow_projectRestrictionRebillingscreated = projectRestrictionRebillingscreated == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscreated);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
-            var __workflow_projectRestrictionRebillingscreator = projectRestrictionRebillingscreator == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscreator);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
-            var __workflow_projectRestrictionRebillingscreatorFullName = projectRestrictionRebillingscreatorFullName == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscreatorFullName);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
-            var __workflow_projectRestrictionRebillingsdivision = projectRestrictionRebillingsdivision == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsdivision);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
-            var __workflow_projectRestrictionRebillingsmodified = projectRestrictionRebillingsmodified == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsmodified);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
-            var __workflow_projectRestrictionRebillingsmodifier = projectRestrictionRebillingsmodifier == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsmodifier);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
-            var __workflow_projectRestrictionRebillingsmodifierFullName = projectRestrictionRebillingsmodifierFullName == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsmodifierFullName);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
-            var __workflow_projectRestrictionRebillingsprojectCode = projectRestrictionRebillingsprojectCode == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsprojectCode);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
-            var __workflow_projectRestrictionRebillingsprojectDescription = projectRestrictionRebillingsprojectDescription == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
+            var __workflow_projectRestrictionRebillingscostTypeRebill = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
+            var __workflow_projectRestrictionRebillingsproject = WorkflowExpression.Compile(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
+            var __workflow_projectRestrictionRebillingsiD = WorkflowExpression.Compile(projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
+            var __workflow_projectRestrictionRebillingscostTypeRebillCode = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
+            var __workflow_projectRestrictionRebillingscostTypeRebillDescription = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
+            var __workflow_projectRestrictionRebillingscreated = WorkflowExpression.Compile(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
+            var __workflow_projectRestrictionRebillingscreator = WorkflowExpression.Compile(projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
+            var __workflow_projectRestrictionRebillingscreatorFullName = WorkflowExpression.Compile(projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
+            var __workflow_projectRestrictionRebillingsdivision = WorkflowExpression.Compile(projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
+            var __workflow_projectRestrictionRebillingsmodified = WorkflowExpression.Compile(projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
+            var __workflow_projectRestrictionRebillingsmodifier = WorkflowExpression.Compile(projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
+            var __workflow_projectRestrictionRebillingsmodifierFullName = WorkflowExpression.Compile(projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
+            var __workflow_projectRestrictionRebillingsprojectCode = WorkflowExpression.Compile(projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
+            var __workflow_projectRestrictionRebillingsprojectDescription = WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -612,36 +514,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> projectRestrictionRebillingscostTypeRebill, Expression<Func<string>> projectRestrictionRebillingsproject, Expression<Func<string>> projectRestrictionRebillingsiD = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillCode = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillDescription = null, Expression<Func<string>> projectRestrictionRebillingscreated = null, Expression<Func<string>> projectRestrictionRebillingscreator = null, Expression<Func<string>> projectRestrictionRebillingscreatorFullName = null, Expression<Func<int>> projectRestrictionRebillingsdivision = null, Expression<Func<string>> projectRestrictionRebillingsmodified = null, Expression<Func<string>> projectRestrictionRebillingsmodifier = null, Expression<Func<string>> projectRestrictionRebillingsmodifierFullName = null, Expression<Func<string>> projectRestrictionRebillingsprojectCode = null, Expression<Func<string>> projectRestrictionRebillingsprojectDescription = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_projectRestrictionRebillingscostTypeRebill = projectRestrictionRebillingscostTypeRebill == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebill);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
-            var __workflow_projectRestrictionRebillingsproject = projectRestrictionRebillingsproject == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsproject);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
-            var __workflow_projectRestrictionRebillingsiD = projectRestrictionRebillingsiD == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsiD);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillCode = projectRestrictionRebillingscostTypeRebillCode == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillCode);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
-            var __workflow_projectRestrictionRebillingscostTypeRebillDescription = projectRestrictionRebillingscostTypeRebillDescription == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillDescription);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
-            var __workflow_projectRestrictionRebillingscreated = projectRestrictionRebillingscreated == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscreated);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
-            var __workflow_projectRestrictionRebillingscreator = projectRestrictionRebillingscreator == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscreator);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
-            var __workflow_projectRestrictionRebillingscreatorFullName = projectRestrictionRebillingscreatorFullName == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingscreatorFullName);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
-            var __workflow_projectRestrictionRebillingsdivision = projectRestrictionRebillingsdivision == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsdivision);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
-            var __workflow_projectRestrictionRebillingsmodified = projectRestrictionRebillingsmodified == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsmodified);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
-            var __workflow_projectRestrictionRebillingsmodifier = projectRestrictionRebillingsmodifier == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsmodifier);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
-            var __workflow_projectRestrictionRebillingsmodifierFullName = projectRestrictionRebillingsmodifierFullName == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsmodifierFullName);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
-            var __workflow_projectRestrictionRebillingsprojectCode = projectRestrictionRebillingsprojectCode == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsprojectCode);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
-            var __workflow_projectRestrictionRebillingsprojectDescription = projectRestrictionRebillingsprojectDescription == null ? null : WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription);
-            WorkflowExpression.Validate(__workflow_projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_projectRestrictionRebillingscostTypeRebill = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
+            var __workflow_projectRestrictionRebillingsproject = WorkflowExpression.Compile(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
+            var __workflow_projectRestrictionRebillingsiD = WorkflowExpression.Compile(projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
+            var __workflow_projectRestrictionRebillingscostTypeRebillCode = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
+            var __workflow_projectRestrictionRebillingscostTypeRebillDescription = WorkflowExpression.Compile(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
+            var __workflow_projectRestrictionRebillingscreated = WorkflowExpression.Compile(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
+            var __workflow_projectRestrictionRebillingscreator = WorkflowExpression.Compile(projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
+            var __workflow_projectRestrictionRebillingscreatorFullName = WorkflowExpression.Compile(projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
+            var __workflow_projectRestrictionRebillingsdivision = WorkflowExpression.Compile(projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
+            var __workflow_projectRestrictionRebillingsmodified = WorkflowExpression.Compile(projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
+            var __workflow_projectRestrictionRebillingsmodifier = WorkflowExpression.Compile(projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
+            var __workflow_projectRestrictionRebillingsmodifierFullName = WorkflowExpression.Compile(projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
+            var __workflow_projectRestrictionRebillingsprojectCode = WorkflowExpression.Compile(projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
+            var __workflow_projectRestrictionRebillingsprojectDescription = WorkflowExpression.Compile(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -737,10 +624,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> DeleteProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> iD)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<ProjectRestrictionRebillingsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -754,18 +639,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<RecentCostsByNumberOfWeeksResponse> GetRecentCostsByNumberOfWeeks(Expression<Func<string>> division, Expression<Func<int>> numberOfWeeks, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_numberOfWeeks = numberOfWeeks == null ? null : WorkflowExpression.Compile(numberOfWeeks);
-            WorkflowExpression.Validate(__workflow_numberOfWeeks, nameof(numberOfWeeks), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_numberOfWeeks = WorkflowExpression.Compile(numberOfWeeks, nameof(numberOfWeeks), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<RecentCostsByNumberOfWeeksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentCostsByNumberOfWeeks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -787,16 +666,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<RecentHoursResponse> GetRecentHours(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<RecentHoursResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHours", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -817,18 +691,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<RecentHoursByNumberOfWeeksResponse> GetRecentHoursByNumberOfWeeks(Expression<Func<string>> division, Expression<Func<int>> numberOfWeeks, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_numberOfWeeks = numberOfWeeks == null ? null : WorkflowExpression.Compile(numberOfWeeks);
-            WorkflowExpression.Validate(__workflow_numberOfWeeks, nameof(numberOfWeeks), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_numberOfWeeks = WorkflowExpression.Compile(numberOfWeeks, nameof(numberOfWeeks), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<RecentHoursByNumberOfWeeksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHoursByNumberOfWeeks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -850,16 +718,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingAccountDetailsResponse> GetTimeAndBillingAccountDetails(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingAccountDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -880,18 +743,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingAccountDetailsByIDResponse> GetTimeAndBillingAccountDetailsByID(Expression<Func<string>> accountId, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingAccountDetailsByIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetailsByID", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -913,16 +770,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingActivitiesAndExpensesResponse> GetTimeAndBillingActivitiesAndExpenses(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingActivitiesAndExpensesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingActivitiesAndExpenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -943,16 +795,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryAccountsResponse> GetTimeAndBillingEntryAccounts(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryAccountsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccounts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -973,18 +820,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryAccountsByDateResponse> GetTimeAndBillingEntryAccountsByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_checkDate = checkDate == null ? null : WorkflowExpression.Compile(checkDate);
-            WorkflowExpression.Validate(__workflow_checkDate, nameof(checkDate), required: true);
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_checkDate = WorkflowExpression.Compile(checkDate, nameof(checkDate), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryAccountsByDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1006,18 +847,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryAccountsByProjectAndDateResponse> GetTimeAndBillingEntryAccountsByProjectAndDate(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryAccountsByProjectAndDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByProjectAndDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1039,16 +874,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryProjectsResponse> GetTimeAndBillingEntryProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryProjectsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1069,18 +899,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryProjectsByAccountAndDateResponse> GetTimeAndBillingEntryProjectsByAccountAndDate(Expression<Func<string>> accountId, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryProjectsByAccountAndDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByAccountAndDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1102,18 +926,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryProjectsByDateResponse> GetTimeAndBillingEntryProjectsByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_checkDate = checkDate == null ? null : WorkflowExpression.Compile(checkDate);
-            WorkflowExpression.Validate(__workflow_checkDate, nameof(checkDate), required: true);
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_checkDate = WorkflowExpression.Compile(checkDate, nameof(checkDate), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryProjectsByDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByDate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1135,16 +953,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentAccountsResponse> GetTimeAndBillingEntryRecentAccounts(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentAccountsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentAccounts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1165,16 +978,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse> GetTimeAndBillingEntryRecentActivitiesAndExpenses(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentActivitiesAndExpenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1195,16 +1003,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentHourCostTypesResponse> GetTimeAndBillingEntryRecentHourCostTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentHourCostTypesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentHourCostTypes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1225,16 +1028,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingEntryRecentProjectsResponse> GetTimeAndBillingEntryRecentProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingEntryRecentProjectsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1255,16 +1053,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingItemDetailsResponse> GetTimeAndBillingItemDetails(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingItemDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1285,18 +1078,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingItemDetailsByIDResponse> GetTimeAndBillingItemDetailsByID(Expression<Func<string>> division, Expression<Func<string>> itemId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingItemDetailsByIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetailsByID", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1318,16 +1105,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingProjectDetailsResponse> GetTimeAndBillingProjectDetails(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingProjectDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1348,18 +1130,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingProjectDetailsByIDResponse> GetTimeAndBillingProjectDetailsByID(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingProjectDetailsByIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetailsByID", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1381,16 +1157,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeAndBillingRecentProjectsResponse> GetTimeAndBillingRecentProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeAndBillingRecentProjectsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingRecentProjects", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1411,16 +1182,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeCorrectionsResponse> GetTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1441,32 +1207,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeCorrectionsResponse> PutTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> iD, Expression<Func<string>> timeCorrectionsiD = null, Expression<Func<string>> timeCorrectionscreated = null, Expression<Func<string>> timeCorrectionscreator = null, Expression<Func<string>> timeCorrectionscreatorFullName = null, Expression<Func<int>> timeCorrectionsdivision = null, Expression<Func<string>> timeCorrectionsmodified = null, Expression<Func<string>> timeCorrectionsmodifier = null, Expression<Func<string>> timeCorrectionsmodifierFullName = null, Expression<Func<string>> timeCorrectionsnotes = null, Expression<Func<string>> timeCorrectionsoriginalEntryId = null, Expression<Func<double>> timeCorrectionsquantity = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
-            var __workflow_timeCorrectionsiD = timeCorrectionsiD == null ? null : WorkflowExpression.Compile(timeCorrectionsiD);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
-            var __workflow_timeCorrectionscreated = timeCorrectionscreated == null ? null : WorkflowExpression.Compile(timeCorrectionscreated);
-            WorkflowExpression.Validate(__workflow_timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
-            var __workflow_timeCorrectionscreator = timeCorrectionscreator == null ? null : WorkflowExpression.Compile(timeCorrectionscreator);
-            WorkflowExpression.Validate(__workflow_timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
-            var __workflow_timeCorrectionscreatorFullName = timeCorrectionscreatorFullName == null ? null : WorkflowExpression.Compile(timeCorrectionscreatorFullName);
-            WorkflowExpression.Validate(__workflow_timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
-            var __workflow_timeCorrectionsdivision = timeCorrectionsdivision == null ? null : WorkflowExpression.Compile(timeCorrectionsdivision);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
-            var __workflow_timeCorrectionsmodified = timeCorrectionsmodified == null ? null : WorkflowExpression.Compile(timeCorrectionsmodified);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
-            var __workflow_timeCorrectionsmodifier = timeCorrectionsmodifier == null ? null : WorkflowExpression.Compile(timeCorrectionsmodifier);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
-            var __workflow_timeCorrectionsmodifierFullName = timeCorrectionsmodifierFullName == null ? null : WorkflowExpression.Compile(timeCorrectionsmodifierFullName);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
-            var __workflow_timeCorrectionsnotes = timeCorrectionsnotes == null ? null : WorkflowExpression.Compile(timeCorrectionsnotes);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
-            var __workflow_timeCorrectionsoriginalEntryId = timeCorrectionsoriginalEntryId == null ? null : WorkflowExpression.Compile(timeCorrectionsoriginalEntryId);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
-            var __workflow_timeCorrectionsquantity = timeCorrectionsquantity == null ? null : WorkflowExpression.Compile(timeCorrectionsquantity);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
+            var __workflow_timeCorrectionsiD = WorkflowExpression.Compile(timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
+            var __workflow_timeCorrectionscreated = WorkflowExpression.Compile(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
+            var __workflow_timeCorrectionscreator = WorkflowExpression.Compile(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
+            var __workflow_timeCorrectionscreatorFullName = WorkflowExpression.Compile(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
+            var __workflow_timeCorrectionsdivision = WorkflowExpression.Compile(timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
+            var __workflow_timeCorrectionsmodified = WorkflowExpression.Compile(timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
+            var __workflow_timeCorrectionsmodifier = WorkflowExpression.Compile(timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
+            var __workflow_timeCorrectionsmodifierFullName = WorkflowExpression.Compile(timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
+            var __workflow_timeCorrectionsnotes = WorkflowExpression.Compile(timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
+            var __workflow_timeCorrectionsoriginalEntryId = WorkflowExpression.Compile(timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
+            var __workflow_timeCorrectionsquantity = WorkflowExpression.Compile(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1553,30 +1306,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeCorrectionsResponse> PostTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> timeCorrectionsiD = null, Expression<Func<string>> timeCorrectionscreated = null, Expression<Func<string>> timeCorrectionscreator = null, Expression<Func<string>> timeCorrectionscreatorFullName = null, Expression<Func<int>> timeCorrectionsdivision = null, Expression<Func<string>> timeCorrectionsmodified = null, Expression<Func<string>> timeCorrectionsmodifier = null, Expression<Func<string>> timeCorrectionsmodifierFullName = null, Expression<Func<string>> timeCorrectionsnotes = null, Expression<Func<string>> timeCorrectionsoriginalEntryId = null, Expression<Func<double>> timeCorrectionsquantity = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_timeCorrectionsiD = timeCorrectionsiD == null ? null : WorkflowExpression.Compile(timeCorrectionsiD);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
-            var __workflow_timeCorrectionscreated = timeCorrectionscreated == null ? null : WorkflowExpression.Compile(timeCorrectionscreated);
-            WorkflowExpression.Validate(__workflow_timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
-            var __workflow_timeCorrectionscreator = timeCorrectionscreator == null ? null : WorkflowExpression.Compile(timeCorrectionscreator);
-            WorkflowExpression.Validate(__workflow_timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
-            var __workflow_timeCorrectionscreatorFullName = timeCorrectionscreatorFullName == null ? null : WorkflowExpression.Compile(timeCorrectionscreatorFullName);
-            WorkflowExpression.Validate(__workflow_timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
-            var __workflow_timeCorrectionsdivision = timeCorrectionsdivision == null ? null : WorkflowExpression.Compile(timeCorrectionsdivision);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
-            var __workflow_timeCorrectionsmodified = timeCorrectionsmodified == null ? null : WorkflowExpression.Compile(timeCorrectionsmodified);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
-            var __workflow_timeCorrectionsmodifier = timeCorrectionsmodifier == null ? null : WorkflowExpression.Compile(timeCorrectionsmodifier);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
-            var __workflow_timeCorrectionsmodifierFullName = timeCorrectionsmodifierFullName == null ? null : WorkflowExpression.Compile(timeCorrectionsmodifierFullName);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
-            var __workflow_timeCorrectionsnotes = timeCorrectionsnotes == null ? null : WorkflowExpression.Compile(timeCorrectionsnotes);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
-            var __workflow_timeCorrectionsoriginalEntryId = timeCorrectionsoriginalEntryId == null ? null : WorkflowExpression.Compile(timeCorrectionsoriginalEntryId);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
-            var __workflow_timeCorrectionsquantity = timeCorrectionsquantity == null ? null : WorkflowExpression.Compile(timeCorrectionsquantity);
-            WorkflowExpression.Validate(__workflow_timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_timeCorrectionsiD = WorkflowExpression.Compile(timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
+            var __workflow_timeCorrectionscreated = WorkflowExpression.Compile(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
+            var __workflow_timeCorrectionscreator = WorkflowExpression.Compile(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
+            var __workflow_timeCorrectionscreatorFullName = WorkflowExpression.Compile(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
+            var __workflow_timeCorrectionsdivision = WorkflowExpression.Compile(timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
+            var __workflow_timeCorrectionsmodified = WorkflowExpression.Compile(timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
+            var __workflow_timeCorrectionsmodifier = WorkflowExpression.Compile(timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
+            var __workflow_timeCorrectionsmodifierFullName = WorkflowExpression.Compile(timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
+            var __workflow_timeCorrectionsnotes = WorkflowExpression.Compile(timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
+            var __workflow_timeCorrectionsoriginalEntryId = WorkflowExpression.Compile(timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
+            var __workflow_timeCorrectionsquantity = WorkflowExpression.Compile(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1662,10 +1403,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeCorrectionsResponse> DeleteTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> iD)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<TimeCorrectionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1679,16 +1418,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeTransactionsResponse> GetTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -1709,100 +1443,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeTransactionsResponse> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> iD, Expression<Func<string>> timeTransactionsitem, Expression<Func<string>> timeTransactionsproject, Expression<Func<double>> timeTransactionsquantity, Expression<Func<string>> timeTransactionsiD = null, Expression<Func<string>> timeTransactionsaccount = null, Expression<Func<string>> timeTransactionsaccountName = null, Expression<Func<string>> timeTransactionsactivity = null, Expression<Func<string>> timeTransactionsactivityDescription = null, Expression<Func<double>> timeTransactionsamount = null, Expression<Func<double>> timeTransactionsamountFC = null, Expression<Func<string>> timeTransactionsattachment = null, Expression<Func<string>> timeTransactionscreated = null, Expression<Func<string>> timeTransactionscreator = null, Expression<Func<string>> timeTransactionscreatorFullName = null, Expression<Func<string>> timeTransactionscurrency = null, Expression<Func<string>> timeTransactionsdate = null, Expression<Func<int>> timeTransactionsdivision = null, Expression<Func<string>> timeTransactionsdivisionDescription = null, Expression<Func<string>> timeTransactionsemployee = null, Expression<Func<string>> timeTransactionsendTime = null, Expression<Func<int>> timeTransactionsentryNumber = null, Expression<Func<string>> timeTransactionserrorText = null, Expression<Func<double>> timeTransactionshourStatus = null, Expression<Func<string>> timeTransactionsitemDescription = null, Expression<Func<bool>> timeTransactionsitemDivisable = null, Expression<Func<string>> timeTransactionsmodified = null, Expression<Func<string>> timeTransactionsmodifier = null, Expression<Func<string>> timeTransactionsmodifierFullName = null, Expression<Func<string>> timeTransactionsnotes = null, Expression<Func<double>> timeTransactionsprice = null, Expression<Func<double>> timeTransactionspriceFC = null, Expression<Func<string>> timeTransactionsprojectAccount = null, Expression<Func<string>> timeTransactionsprojectAccountCode = null, Expression<Func<string>> timeTransactionsprojectAccountName = null, Expression<Func<string>> timeTransactionsprojectCode = null, Expression<Func<string>> timeTransactionsprojectDescription = null, Expression<Func<bool>> timeTransactionsskipValidation = null, Expression<Func<string>> timeTransactionsstartTime = null, Expression<Func<string>> timeTransactionssubscription = null, Expression<Func<string>> timeTransactionssubscriptionAccount = null, Expression<Func<string>> timeTransactionssubscriptionAccountCode = null, Expression<Func<string>> timeTransactionssubscriptionAccountName = null, Expression<Func<string>> timeTransactionssubscriptionDescription = null, Expression<Func<int>> timeTransactionssubscriptionNumber = null, Expression<Func<double>> timeTransactionstype = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
-            var __workflow_timeTransactionsitem = timeTransactionsitem == null ? null : WorkflowExpression.Compile(timeTransactionsitem);
-            WorkflowExpression.Validate(__workflow_timeTransactionsitem, nameof(timeTransactionsitem), required: true);
-            var __workflow_timeTransactionsproject = timeTransactionsproject == null ? null : WorkflowExpression.Compile(timeTransactionsproject);
-            WorkflowExpression.Validate(__workflow_timeTransactionsproject, nameof(timeTransactionsproject), required: true);
-            var __workflow_timeTransactionsquantity = timeTransactionsquantity == null ? null : WorkflowExpression.Compile(timeTransactionsquantity);
-            WorkflowExpression.Validate(__workflow_timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
-            var __workflow_timeTransactionsiD = timeTransactionsiD == null ? null : WorkflowExpression.Compile(timeTransactionsiD);
-            WorkflowExpression.Validate(__workflow_timeTransactionsiD, nameof(timeTransactionsiD), required: false);
-            var __workflow_timeTransactionsaccount = timeTransactionsaccount == null ? null : WorkflowExpression.Compile(timeTransactionsaccount);
-            WorkflowExpression.Validate(__workflow_timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
-            var __workflow_timeTransactionsaccountName = timeTransactionsaccountName == null ? null : WorkflowExpression.Compile(timeTransactionsaccountName);
-            WorkflowExpression.Validate(__workflow_timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
-            var __workflow_timeTransactionsactivity = timeTransactionsactivity == null ? null : WorkflowExpression.Compile(timeTransactionsactivity);
-            WorkflowExpression.Validate(__workflow_timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
-            var __workflow_timeTransactionsactivityDescription = timeTransactionsactivityDescription == null ? null : WorkflowExpression.Compile(timeTransactionsactivityDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
-            var __workflow_timeTransactionsamount = timeTransactionsamount == null ? null : WorkflowExpression.Compile(timeTransactionsamount);
-            WorkflowExpression.Validate(__workflow_timeTransactionsamount, nameof(timeTransactionsamount), required: false);
-            var __workflow_timeTransactionsamountFC = timeTransactionsamountFC == null ? null : WorkflowExpression.Compile(timeTransactionsamountFC);
-            WorkflowExpression.Validate(__workflow_timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
-            var __workflow_timeTransactionsattachment = timeTransactionsattachment == null ? null : WorkflowExpression.Compile(timeTransactionsattachment);
-            WorkflowExpression.Validate(__workflow_timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
-            var __workflow_timeTransactionscreated = timeTransactionscreated == null ? null : WorkflowExpression.Compile(timeTransactionscreated);
-            WorkflowExpression.Validate(__workflow_timeTransactionscreated, nameof(timeTransactionscreated), required: false);
-            var __workflow_timeTransactionscreator = timeTransactionscreator == null ? null : WorkflowExpression.Compile(timeTransactionscreator);
-            WorkflowExpression.Validate(__workflow_timeTransactionscreator, nameof(timeTransactionscreator), required: false);
-            var __workflow_timeTransactionscreatorFullName = timeTransactionscreatorFullName == null ? null : WorkflowExpression.Compile(timeTransactionscreatorFullName);
-            WorkflowExpression.Validate(__workflow_timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
-            var __workflow_timeTransactionscurrency = timeTransactionscurrency == null ? null : WorkflowExpression.Compile(timeTransactionscurrency);
-            WorkflowExpression.Validate(__workflow_timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
-            var __workflow_timeTransactionsdate = timeTransactionsdate == null ? null : WorkflowExpression.Compile(timeTransactionsdate);
-            WorkflowExpression.Validate(__workflow_timeTransactionsdate, nameof(timeTransactionsdate), required: false);
-            var __workflow_timeTransactionsdivision = timeTransactionsdivision == null ? null : WorkflowExpression.Compile(timeTransactionsdivision);
-            WorkflowExpression.Validate(__workflow_timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
-            var __workflow_timeTransactionsdivisionDescription = timeTransactionsdivisionDescription == null ? null : WorkflowExpression.Compile(timeTransactionsdivisionDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
-            var __workflow_timeTransactionsemployee = timeTransactionsemployee == null ? null : WorkflowExpression.Compile(timeTransactionsemployee);
-            WorkflowExpression.Validate(__workflow_timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
-            var __workflow_timeTransactionsendTime = timeTransactionsendTime == null ? null : WorkflowExpression.Compile(timeTransactionsendTime);
-            WorkflowExpression.Validate(__workflow_timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
-            var __workflow_timeTransactionsentryNumber = timeTransactionsentryNumber == null ? null : WorkflowExpression.Compile(timeTransactionsentryNumber);
-            WorkflowExpression.Validate(__workflow_timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
-            var __workflow_timeTransactionserrorText = timeTransactionserrorText == null ? null : WorkflowExpression.Compile(timeTransactionserrorText);
-            WorkflowExpression.Validate(__workflow_timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
-            var __workflow_timeTransactionshourStatus = timeTransactionshourStatus == null ? null : WorkflowExpression.Compile(timeTransactionshourStatus);
-            WorkflowExpression.Validate(__workflow_timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
-            var __workflow_timeTransactionsitemDescription = timeTransactionsitemDescription == null ? null : WorkflowExpression.Compile(timeTransactionsitemDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
-            var __workflow_timeTransactionsitemDivisable = timeTransactionsitemDivisable == null ? null : WorkflowExpression.Compile(timeTransactionsitemDivisable);
-            WorkflowExpression.Validate(__workflow_timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
-            var __workflow_timeTransactionsmodified = timeTransactionsmodified == null ? null : WorkflowExpression.Compile(timeTransactionsmodified);
-            WorkflowExpression.Validate(__workflow_timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
-            var __workflow_timeTransactionsmodifier = timeTransactionsmodifier == null ? null : WorkflowExpression.Compile(timeTransactionsmodifier);
-            WorkflowExpression.Validate(__workflow_timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
-            var __workflow_timeTransactionsmodifierFullName = timeTransactionsmodifierFullName == null ? null : WorkflowExpression.Compile(timeTransactionsmodifierFullName);
-            WorkflowExpression.Validate(__workflow_timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
-            var __workflow_timeTransactionsnotes = timeTransactionsnotes == null ? null : WorkflowExpression.Compile(timeTransactionsnotes);
-            WorkflowExpression.Validate(__workflow_timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
-            var __workflow_timeTransactionsprice = timeTransactionsprice == null ? null : WorkflowExpression.Compile(timeTransactionsprice);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprice, nameof(timeTransactionsprice), required: false);
-            var __workflow_timeTransactionspriceFC = timeTransactionspriceFC == null ? null : WorkflowExpression.Compile(timeTransactionspriceFC);
-            WorkflowExpression.Validate(__workflow_timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
-            var __workflow_timeTransactionsprojectAccount = timeTransactionsprojectAccount == null ? null : WorkflowExpression.Compile(timeTransactionsprojectAccount);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
-            var __workflow_timeTransactionsprojectAccountCode = timeTransactionsprojectAccountCode == null ? null : WorkflowExpression.Compile(timeTransactionsprojectAccountCode);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
-            var __workflow_timeTransactionsprojectAccountName = timeTransactionsprojectAccountName == null ? null : WorkflowExpression.Compile(timeTransactionsprojectAccountName);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
-            var __workflow_timeTransactionsprojectCode = timeTransactionsprojectCode == null ? null : WorkflowExpression.Compile(timeTransactionsprojectCode);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
-            var __workflow_timeTransactionsprojectDescription = timeTransactionsprojectDescription == null ? null : WorkflowExpression.Compile(timeTransactionsprojectDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
-            var __workflow_timeTransactionsskipValidation = timeTransactionsskipValidation == null ? null : WorkflowExpression.Compile(timeTransactionsskipValidation);
-            WorkflowExpression.Validate(__workflow_timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
-            var __workflow_timeTransactionsstartTime = timeTransactionsstartTime == null ? null : WorkflowExpression.Compile(timeTransactionsstartTime);
-            WorkflowExpression.Validate(__workflow_timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
-            var __workflow_timeTransactionssubscription = timeTransactionssubscription == null ? null : WorkflowExpression.Compile(timeTransactionssubscription);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
-            var __workflow_timeTransactionssubscriptionAccount = timeTransactionssubscriptionAccount == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionAccount);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
-            var __workflow_timeTransactionssubscriptionAccountCode = timeTransactionssubscriptionAccountCode == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionAccountCode);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
-            var __workflow_timeTransactionssubscriptionAccountName = timeTransactionssubscriptionAccountName == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionAccountName);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
-            var __workflow_timeTransactionssubscriptionDescription = timeTransactionssubscriptionDescription == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
-            var __workflow_timeTransactionssubscriptionNumber = timeTransactionssubscriptionNumber == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionNumber);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
-            var __workflow_timeTransactionstype = timeTransactionstype == null ? null : WorkflowExpression.Compile(timeTransactionstype);
-            WorkflowExpression.Validate(__workflow_timeTransactionstype, nameof(timeTransactionstype), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
+            var __workflow_timeTransactionsitem = WorkflowExpression.Compile(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
+            var __workflow_timeTransactionsproject = WorkflowExpression.Compile(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
+            var __workflow_timeTransactionsquantity = WorkflowExpression.Compile(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
+            var __workflow_timeTransactionsiD = WorkflowExpression.Compile(timeTransactionsiD, nameof(timeTransactionsiD), required: false);
+            var __workflow_timeTransactionsaccount = WorkflowExpression.Compile(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
+            var __workflow_timeTransactionsaccountName = WorkflowExpression.Compile(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
+            var __workflow_timeTransactionsactivity = WorkflowExpression.Compile(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
+            var __workflow_timeTransactionsactivityDescription = WorkflowExpression.Compile(timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
+            var __workflow_timeTransactionsamount = WorkflowExpression.Compile(timeTransactionsamount, nameof(timeTransactionsamount), required: false);
+            var __workflow_timeTransactionsamountFC = WorkflowExpression.Compile(timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
+            var __workflow_timeTransactionsattachment = WorkflowExpression.Compile(timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
+            var __workflow_timeTransactionscreated = WorkflowExpression.Compile(timeTransactionscreated, nameof(timeTransactionscreated), required: false);
+            var __workflow_timeTransactionscreator = WorkflowExpression.Compile(timeTransactionscreator, nameof(timeTransactionscreator), required: false);
+            var __workflow_timeTransactionscreatorFullName = WorkflowExpression.Compile(timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
+            var __workflow_timeTransactionscurrency = WorkflowExpression.Compile(timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
+            var __workflow_timeTransactionsdate = WorkflowExpression.Compile(timeTransactionsdate, nameof(timeTransactionsdate), required: false);
+            var __workflow_timeTransactionsdivision = WorkflowExpression.Compile(timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
+            var __workflow_timeTransactionsdivisionDescription = WorkflowExpression.Compile(timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
+            var __workflow_timeTransactionsemployee = WorkflowExpression.Compile(timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
+            var __workflow_timeTransactionsendTime = WorkflowExpression.Compile(timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
+            var __workflow_timeTransactionsentryNumber = WorkflowExpression.Compile(timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
+            var __workflow_timeTransactionserrorText = WorkflowExpression.Compile(timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
+            var __workflow_timeTransactionshourStatus = WorkflowExpression.Compile(timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
+            var __workflow_timeTransactionsitemDescription = WorkflowExpression.Compile(timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
+            var __workflow_timeTransactionsitemDivisable = WorkflowExpression.Compile(timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
+            var __workflow_timeTransactionsmodified = WorkflowExpression.Compile(timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
+            var __workflow_timeTransactionsmodifier = WorkflowExpression.Compile(timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
+            var __workflow_timeTransactionsmodifierFullName = WorkflowExpression.Compile(timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
+            var __workflow_timeTransactionsnotes = WorkflowExpression.Compile(timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
+            var __workflow_timeTransactionsprice = WorkflowExpression.Compile(timeTransactionsprice, nameof(timeTransactionsprice), required: false);
+            var __workflow_timeTransactionspriceFC = WorkflowExpression.Compile(timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
+            var __workflow_timeTransactionsprojectAccount = WorkflowExpression.Compile(timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
+            var __workflow_timeTransactionsprojectAccountCode = WorkflowExpression.Compile(timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
+            var __workflow_timeTransactionsprojectAccountName = WorkflowExpression.Compile(timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
+            var __workflow_timeTransactionsprojectCode = WorkflowExpression.Compile(timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
+            var __workflow_timeTransactionsprojectDescription = WorkflowExpression.Compile(timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
+            var __workflow_timeTransactionsskipValidation = WorkflowExpression.Compile(timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
+            var __workflow_timeTransactionsstartTime = WorkflowExpression.Compile(timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
+            var __workflow_timeTransactionssubscription = WorkflowExpression.Compile(timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
+            var __workflow_timeTransactionssubscriptionAccount = WorkflowExpression.Compile(timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
+            var __workflow_timeTransactionssubscriptionAccountCode = WorkflowExpression.Compile(timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
+            var __workflow_timeTransactionssubscriptionAccountName = WorkflowExpression.Compile(timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
+            var __workflow_timeTransactionssubscriptionDescription = WorkflowExpression.Compile(timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
+            var __workflow_timeTransactionssubscriptionNumber = WorkflowExpression.Compile(timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
+            var __workflow_timeTransactionstype = WorkflowExpression.Compile(timeTransactionstype, nameof(timeTransactionstype), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -2081,98 +1768,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeTransactionsResponse> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> timeTransactionsitem, Expression<Func<string>> timeTransactionsproject, Expression<Func<double>> timeTransactionsquantity, Expression<Func<string>> timeTransactionsiD = null, Expression<Func<string>> timeTransactionsaccount = null, Expression<Func<string>> timeTransactionsaccountName = null, Expression<Func<string>> timeTransactionsactivity = null, Expression<Func<string>> timeTransactionsactivityDescription = null, Expression<Func<double>> timeTransactionsamount = null, Expression<Func<double>> timeTransactionsamountFC = null, Expression<Func<string>> timeTransactionsattachment = null, Expression<Func<string>> timeTransactionscreated = null, Expression<Func<string>> timeTransactionscreator = null, Expression<Func<string>> timeTransactionscreatorFullName = null, Expression<Func<string>> timeTransactionscurrency = null, Expression<Func<string>> timeTransactionsdate = null, Expression<Func<int>> timeTransactionsdivision = null, Expression<Func<string>> timeTransactionsdivisionDescription = null, Expression<Func<string>> timeTransactionsemployee = null, Expression<Func<string>> timeTransactionsendTime = null, Expression<Func<int>> timeTransactionsentryNumber = null, Expression<Func<string>> timeTransactionserrorText = null, Expression<Func<double>> timeTransactionshourStatus = null, Expression<Func<string>> timeTransactionsitemDescription = null, Expression<Func<bool>> timeTransactionsitemDivisable = null, Expression<Func<string>> timeTransactionsmodified = null, Expression<Func<string>> timeTransactionsmodifier = null, Expression<Func<string>> timeTransactionsmodifierFullName = null, Expression<Func<string>> timeTransactionsnotes = null, Expression<Func<double>> timeTransactionsprice = null, Expression<Func<double>> timeTransactionspriceFC = null, Expression<Func<string>> timeTransactionsprojectAccount = null, Expression<Func<string>> timeTransactionsprojectAccountCode = null, Expression<Func<string>> timeTransactionsprojectAccountName = null, Expression<Func<string>> timeTransactionsprojectCode = null, Expression<Func<string>> timeTransactionsprojectDescription = null, Expression<Func<bool>> timeTransactionsskipValidation = null, Expression<Func<string>> timeTransactionsstartTime = null, Expression<Func<string>> timeTransactionssubscription = null, Expression<Func<string>> timeTransactionssubscriptionAccount = null, Expression<Func<string>> timeTransactionssubscriptionAccountCode = null, Expression<Func<string>> timeTransactionssubscriptionAccountName = null, Expression<Func<string>> timeTransactionssubscriptionDescription = null, Expression<Func<int>> timeTransactionssubscriptionNumber = null, Expression<Func<double>> timeTransactionstype = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_timeTransactionsitem = timeTransactionsitem == null ? null : WorkflowExpression.Compile(timeTransactionsitem);
-            WorkflowExpression.Validate(__workflow_timeTransactionsitem, nameof(timeTransactionsitem), required: true);
-            var __workflow_timeTransactionsproject = timeTransactionsproject == null ? null : WorkflowExpression.Compile(timeTransactionsproject);
-            WorkflowExpression.Validate(__workflow_timeTransactionsproject, nameof(timeTransactionsproject), required: true);
-            var __workflow_timeTransactionsquantity = timeTransactionsquantity == null ? null : WorkflowExpression.Compile(timeTransactionsquantity);
-            WorkflowExpression.Validate(__workflow_timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
-            var __workflow_timeTransactionsiD = timeTransactionsiD == null ? null : WorkflowExpression.Compile(timeTransactionsiD);
-            WorkflowExpression.Validate(__workflow_timeTransactionsiD, nameof(timeTransactionsiD), required: false);
-            var __workflow_timeTransactionsaccount = timeTransactionsaccount == null ? null : WorkflowExpression.Compile(timeTransactionsaccount);
-            WorkflowExpression.Validate(__workflow_timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
-            var __workflow_timeTransactionsaccountName = timeTransactionsaccountName == null ? null : WorkflowExpression.Compile(timeTransactionsaccountName);
-            WorkflowExpression.Validate(__workflow_timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
-            var __workflow_timeTransactionsactivity = timeTransactionsactivity == null ? null : WorkflowExpression.Compile(timeTransactionsactivity);
-            WorkflowExpression.Validate(__workflow_timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
-            var __workflow_timeTransactionsactivityDescription = timeTransactionsactivityDescription == null ? null : WorkflowExpression.Compile(timeTransactionsactivityDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
-            var __workflow_timeTransactionsamount = timeTransactionsamount == null ? null : WorkflowExpression.Compile(timeTransactionsamount);
-            WorkflowExpression.Validate(__workflow_timeTransactionsamount, nameof(timeTransactionsamount), required: false);
-            var __workflow_timeTransactionsamountFC = timeTransactionsamountFC == null ? null : WorkflowExpression.Compile(timeTransactionsamountFC);
-            WorkflowExpression.Validate(__workflow_timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
-            var __workflow_timeTransactionsattachment = timeTransactionsattachment == null ? null : WorkflowExpression.Compile(timeTransactionsattachment);
-            WorkflowExpression.Validate(__workflow_timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
-            var __workflow_timeTransactionscreated = timeTransactionscreated == null ? null : WorkflowExpression.Compile(timeTransactionscreated);
-            WorkflowExpression.Validate(__workflow_timeTransactionscreated, nameof(timeTransactionscreated), required: false);
-            var __workflow_timeTransactionscreator = timeTransactionscreator == null ? null : WorkflowExpression.Compile(timeTransactionscreator);
-            WorkflowExpression.Validate(__workflow_timeTransactionscreator, nameof(timeTransactionscreator), required: false);
-            var __workflow_timeTransactionscreatorFullName = timeTransactionscreatorFullName == null ? null : WorkflowExpression.Compile(timeTransactionscreatorFullName);
-            WorkflowExpression.Validate(__workflow_timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
-            var __workflow_timeTransactionscurrency = timeTransactionscurrency == null ? null : WorkflowExpression.Compile(timeTransactionscurrency);
-            WorkflowExpression.Validate(__workflow_timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
-            var __workflow_timeTransactionsdate = timeTransactionsdate == null ? null : WorkflowExpression.Compile(timeTransactionsdate);
-            WorkflowExpression.Validate(__workflow_timeTransactionsdate, nameof(timeTransactionsdate), required: false);
-            var __workflow_timeTransactionsdivision = timeTransactionsdivision == null ? null : WorkflowExpression.Compile(timeTransactionsdivision);
-            WorkflowExpression.Validate(__workflow_timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
-            var __workflow_timeTransactionsdivisionDescription = timeTransactionsdivisionDescription == null ? null : WorkflowExpression.Compile(timeTransactionsdivisionDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
-            var __workflow_timeTransactionsemployee = timeTransactionsemployee == null ? null : WorkflowExpression.Compile(timeTransactionsemployee);
-            WorkflowExpression.Validate(__workflow_timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
-            var __workflow_timeTransactionsendTime = timeTransactionsendTime == null ? null : WorkflowExpression.Compile(timeTransactionsendTime);
-            WorkflowExpression.Validate(__workflow_timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
-            var __workflow_timeTransactionsentryNumber = timeTransactionsentryNumber == null ? null : WorkflowExpression.Compile(timeTransactionsentryNumber);
-            WorkflowExpression.Validate(__workflow_timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
-            var __workflow_timeTransactionserrorText = timeTransactionserrorText == null ? null : WorkflowExpression.Compile(timeTransactionserrorText);
-            WorkflowExpression.Validate(__workflow_timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
-            var __workflow_timeTransactionshourStatus = timeTransactionshourStatus == null ? null : WorkflowExpression.Compile(timeTransactionshourStatus);
-            WorkflowExpression.Validate(__workflow_timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
-            var __workflow_timeTransactionsitemDescription = timeTransactionsitemDescription == null ? null : WorkflowExpression.Compile(timeTransactionsitemDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
-            var __workflow_timeTransactionsitemDivisable = timeTransactionsitemDivisable == null ? null : WorkflowExpression.Compile(timeTransactionsitemDivisable);
-            WorkflowExpression.Validate(__workflow_timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
-            var __workflow_timeTransactionsmodified = timeTransactionsmodified == null ? null : WorkflowExpression.Compile(timeTransactionsmodified);
-            WorkflowExpression.Validate(__workflow_timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
-            var __workflow_timeTransactionsmodifier = timeTransactionsmodifier == null ? null : WorkflowExpression.Compile(timeTransactionsmodifier);
-            WorkflowExpression.Validate(__workflow_timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
-            var __workflow_timeTransactionsmodifierFullName = timeTransactionsmodifierFullName == null ? null : WorkflowExpression.Compile(timeTransactionsmodifierFullName);
-            WorkflowExpression.Validate(__workflow_timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
-            var __workflow_timeTransactionsnotes = timeTransactionsnotes == null ? null : WorkflowExpression.Compile(timeTransactionsnotes);
-            WorkflowExpression.Validate(__workflow_timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
-            var __workflow_timeTransactionsprice = timeTransactionsprice == null ? null : WorkflowExpression.Compile(timeTransactionsprice);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprice, nameof(timeTransactionsprice), required: false);
-            var __workflow_timeTransactionspriceFC = timeTransactionspriceFC == null ? null : WorkflowExpression.Compile(timeTransactionspriceFC);
-            WorkflowExpression.Validate(__workflow_timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
-            var __workflow_timeTransactionsprojectAccount = timeTransactionsprojectAccount == null ? null : WorkflowExpression.Compile(timeTransactionsprojectAccount);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
-            var __workflow_timeTransactionsprojectAccountCode = timeTransactionsprojectAccountCode == null ? null : WorkflowExpression.Compile(timeTransactionsprojectAccountCode);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
-            var __workflow_timeTransactionsprojectAccountName = timeTransactionsprojectAccountName == null ? null : WorkflowExpression.Compile(timeTransactionsprojectAccountName);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
-            var __workflow_timeTransactionsprojectCode = timeTransactionsprojectCode == null ? null : WorkflowExpression.Compile(timeTransactionsprojectCode);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
-            var __workflow_timeTransactionsprojectDescription = timeTransactionsprojectDescription == null ? null : WorkflowExpression.Compile(timeTransactionsprojectDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
-            var __workflow_timeTransactionsskipValidation = timeTransactionsskipValidation == null ? null : WorkflowExpression.Compile(timeTransactionsskipValidation);
-            WorkflowExpression.Validate(__workflow_timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
-            var __workflow_timeTransactionsstartTime = timeTransactionsstartTime == null ? null : WorkflowExpression.Compile(timeTransactionsstartTime);
-            WorkflowExpression.Validate(__workflow_timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
-            var __workflow_timeTransactionssubscription = timeTransactionssubscription == null ? null : WorkflowExpression.Compile(timeTransactionssubscription);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
-            var __workflow_timeTransactionssubscriptionAccount = timeTransactionssubscriptionAccount == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionAccount);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
-            var __workflow_timeTransactionssubscriptionAccountCode = timeTransactionssubscriptionAccountCode == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionAccountCode);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
-            var __workflow_timeTransactionssubscriptionAccountName = timeTransactionssubscriptionAccountName == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionAccountName);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
-            var __workflow_timeTransactionssubscriptionDescription = timeTransactionssubscriptionDescription == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionDescription);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
-            var __workflow_timeTransactionssubscriptionNumber = timeTransactionssubscriptionNumber == null ? null : WorkflowExpression.Compile(timeTransactionssubscriptionNumber);
-            WorkflowExpression.Validate(__workflow_timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
-            var __workflow_timeTransactionstype = timeTransactionstype == null ? null : WorkflowExpression.Compile(timeTransactionstype);
-            WorkflowExpression.Validate(__workflow_timeTransactionstype, nameof(timeTransactionstype), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_timeTransactionsitem = WorkflowExpression.Compile(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
+            var __workflow_timeTransactionsproject = WorkflowExpression.Compile(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
+            var __workflow_timeTransactionsquantity = WorkflowExpression.Compile(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
+            var __workflow_timeTransactionsiD = WorkflowExpression.Compile(timeTransactionsiD, nameof(timeTransactionsiD), required: false);
+            var __workflow_timeTransactionsaccount = WorkflowExpression.Compile(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
+            var __workflow_timeTransactionsaccountName = WorkflowExpression.Compile(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
+            var __workflow_timeTransactionsactivity = WorkflowExpression.Compile(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
+            var __workflow_timeTransactionsactivityDescription = WorkflowExpression.Compile(timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
+            var __workflow_timeTransactionsamount = WorkflowExpression.Compile(timeTransactionsamount, nameof(timeTransactionsamount), required: false);
+            var __workflow_timeTransactionsamountFC = WorkflowExpression.Compile(timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
+            var __workflow_timeTransactionsattachment = WorkflowExpression.Compile(timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
+            var __workflow_timeTransactionscreated = WorkflowExpression.Compile(timeTransactionscreated, nameof(timeTransactionscreated), required: false);
+            var __workflow_timeTransactionscreator = WorkflowExpression.Compile(timeTransactionscreator, nameof(timeTransactionscreator), required: false);
+            var __workflow_timeTransactionscreatorFullName = WorkflowExpression.Compile(timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
+            var __workflow_timeTransactionscurrency = WorkflowExpression.Compile(timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
+            var __workflow_timeTransactionsdate = WorkflowExpression.Compile(timeTransactionsdate, nameof(timeTransactionsdate), required: false);
+            var __workflow_timeTransactionsdivision = WorkflowExpression.Compile(timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
+            var __workflow_timeTransactionsdivisionDescription = WorkflowExpression.Compile(timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
+            var __workflow_timeTransactionsemployee = WorkflowExpression.Compile(timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
+            var __workflow_timeTransactionsendTime = WorkflowExpression.Compile(timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
+            var __workflow_timeTransactionsentryNumber = WorkflowExpression.Compile(timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
+            var __workflow_timeTransactionserrorText = WorkflowExpression.Compile(timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
+            var __workflow_timeTransactionshourStatus = WorkflowExpression.Compile(timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
+            var __workflow_timeTransactionsitemDescription = WorkflowExpression.Compile(timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
+            var __workflow_timeTransactionsitemDivisable = WorkflowExpression.Compile(timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
+            var __workflow_timeTransactionsmodified = WorkflowExpression.Compile(timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
+            var __workflow_timeTransactionsmodifier = WorkflowExpression.Compile(timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
+            var __workflow_timeTransactionsmodifierFullName = WorkflowExpression.Compile(timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
+            var __workflow_timeTransactionsnotes = WorkflowExpression.Compile(timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
+            var __workflow_timeTransactionsprice = WorkflowExpression.Compile(timeTransactionsprice, nameof(timeTransactionsprice), required: false);
+            var __workflow_timeTransactionspriceFC = WorkflowExpression.Compile(timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
+            var __workflow_timeTransactionsprojectAccount = WorkflowExpression.Compile(timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
+            var __workflow_timeTransactionsprojectAccountCode = WorkflowExpression.Compile(timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
+            var __workflow_timeTransactionsprojectAccountName = WorkflowExpression.Compile(timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
+            var __workflow_timeTransactionsprojectCode = WorkflowExpression.Compile(timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
+            var __workflow_timeTransactionsprojectDescription = WorkflowExpression.Compile(timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
+            var __workflow_timeTransactionsskipValidation = WorkflowExpression.Compile(timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
+            var __workflow_timeTransactionsstartTime = WorkflowExpression.Compile(timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
+            var __workflow_timeTransactionssubscription = WorkflowExpression.Compile(timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
+            var __workflow_timeTransactionssubscriptionAccount = WorkflowExpression.Compile(timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
+            var __workflow_timeTransactionssubscriptionAccountCode = WorkflowExpression.Compile(timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
+            var __workflow_timeTransactionssubscriptionAccountName = WorkflowExpression.Compile(timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
+            var __workflow_timeTransactionssubscriptionDescription = WorkflowExpression.Compile(timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
+            var __workflow_timeTransactionssubscriptionNumber = WorkflowExpression.Compile(timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
+            var __workflow_timeTransactionstype = WorkflowExpression.Compile(timeTransactionstype, nameof(timeTransactionstype), required: false);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -2450,10 +2091,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<TimeTransactionsResponse> DeleteTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> iD)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<TimeTransactionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -2467,16 +2106,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<ProjectTimeCostTransactionsResponse> GetProjectTimeCostTransactions(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_division = division == null ? null : WorkflowExpression.Compile(division);
-            WorkflowExpression.Validate(__workflow_division, nameof(division), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_division = WorkflowExpression.Compile(division, nameof(division), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ProjectTimeCostTransactionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/sync/Project/TimeCostTransactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_division, 1));
@@ -2497,14 +2131,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
         public IBodyWorkflowAction<MeResponse> GetMe(Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<MeResponse>(() =>
             {
                 var apiCallPath = "/current/Me";

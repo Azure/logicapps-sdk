@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecsms")]
         public IBodyWorkflowAction<SendSMSv3Response> SendSMSv3(Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycontenttext = null)
         {
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
-            var __workflow_bodycontenttext = bodycontenttext == null ? null : WorkflowExpression.Compile(bodycontenttext);
-            WorkflowExpression.Validate(__workflow_bodycontenttext, nameof(bodycontenttext), required: false);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycontenttext = WorkflowExpression.Compile(bodycontenttext, nameof(bodycontenttext), required: false);
             return new DeferredBodyAction<SendSMSv3Response>(() =>
             {
                 var apiCallPath = "/conversations/v3/power-automate/messages/sms/text";
@@ -68,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecsms")]
         public IBodyWorkflowAction<StatusCheckV3Response> StatusCheck(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<StatusCheckV3Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/messages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -84,8 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecsms
     {
         public IWorkflowTrigger Incoming(Expression<Func<string>> smsSender, FlowRecurrence recurrence = null)
         {
-            var __workflow_smsSender = smsSender == null ? null : WorkflowExpression.Compile(smsSender);
-            WorkflowExpression.Validate(__workflow_smsSender, nameof(smsSender), required: true);
+            var __workflow_smsSender = WorkflowExpression.Compile(smsSender, nameof(smsSender), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/power-automate/webhooks/channels/sms/phone-numbers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_smsSender, 1));

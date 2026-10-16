@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<UrlResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<FilesReport> VirusTotalAnalyesFile(Expression<Func<object>> file)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredBodyAction<FilesReport>(() =>
             {
                 var apiCallPath = "/api/v3/files";
@@ -41,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport(Expression<Func<string>> domain)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             return new DeferredBodyAction<DomainResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
@@ -55,8 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurl(Expression<Func<string>> url)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredBodyAction<UrlReport>(() =>
             {
                 var apiCallPath = "/api/v3/urls";
@@ -69,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3(Expression<Func<string>> ip)
         {
-            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
-            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
             return new DeferredBodyAction<Ip>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/ip_addresses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ip, 1));
@@ -83,8 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Analyses>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/analyses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -97,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
         public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<File>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/files/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

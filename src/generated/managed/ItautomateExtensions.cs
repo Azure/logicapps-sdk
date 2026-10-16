@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itautomate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itautomate")]
         public IBodyWorkflowAction<JToken> RunCommand(Expression<Func<int>> id, Expression<Func<object>> commandInput = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_commandInput = commandInput == null ? null : WorkflowExpression.Compile(commandInput);
-            WorkflowExpression.Validate(__workflow_commandInput, nameof(commandInput), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_commandInput = WorkflowExpression.Compile(commandInput, nameof(commandInput), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/RunCommand";

@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateItemResponse> CreateItem(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<object>> bodycolumnValues = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyitemName = bodyitemName == null ? null : WorkflowExpression.Compile(bodyitemName);
-            WorkflowExpression.Validate(__workflow_bodyitemName, nameof(bodyitemName), required: true);
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: false);
-            var __workflow_bodycolumnValues = bodycolumnValues == null ? null : WorkflowExpression.Compile(bodycolumnValues);
-            WorkflowExpression.Validate(__workflow_bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
             return new DeferredBodyAction<CreateItemResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateItem";
@@ -64,20 +59,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<DuplicateBoardResponse> DuplicateBoard(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceBoardId, Expression<Func<bodyduplicationTypeInput>> bodyduplicationType, Expression<Func<bool>> bodykeepBoardSubscribers, Expression<Func<string>> bodyduplicatedBoardName = null, Expression<Func<string>> bodydestinationWorkspaceId = null, Expression<Func<string>> bodydestinationFolder = null)
         {
-            var __workflow_bodysourceWorkspaceId = bodysourceWorkspaceId == null ? null : WorkflowExpression.Compile(bodysourceWorkspaceId);
-            WorkflowExpression.Validate(__workflow_bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
-            var __workflow_bodysourceBoardId = bodysourceBoardId == null ? null : WorkflowExpression.Compile(bodysourceBoardId);
-            WorkflowExpression.Validate(__workflow_bodysourceBoardId, nameof(bodysourceBoardId), required: true);
-            var __workflow_bodyduplicationType = bodyduplicationType == null ? null : WorkflowExpression.Compile(bodyduplicationType);
-            WorkflowExpression.Validate(__workflow_bodyduplicationType, nameof(bodyduplicationType), required: true);
-            var __workflow_bodykeepBoardSubscribers = bodykeepBoardSubscribers == null ? null : WorkflowExpression.Compile(bodykeepBoardSubscribers);
-            WorkflowExpression.Validate(__workflow_bodykeepBoardSubscribers, nameof(bodykeepBoardSubscribers), required: true);
-            var __workflow_bodyduplicatedBoardName = bodyduplicatedBoardName == null ? null : WorkflowExpression.Compile(bodyduplicatedBoardName);
-            WorkflowExpression.Validate(__workflow_bodyduplicatedBoardName, nameof(bodyduplicatedBoardName), required: false);
-            var __workflow_bodydestinationWorkspaceId = bodydestinationWorkspaceId == null ? null : WorkflowExpression.Compile(bodydestinationWorkspaceId);
-            WorkflowExpression.Validate(__workflow_bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: false);
-            var __workflow_bodydestinationFolder = bodydestinationFolder == null ? null : WorkflowExpression.Compile(bodydestinationFolder);
-            WorkflowExpression.Validate(__workflow_bodydestinationFolder, nameof(bodydestinationFolder), required: false);
+            var __workflow_bodysourceWorkspaceId = WorkflowExpression.Compile(bodysourceWorkspaceId, nameof(bodysourceWorkspaceId), required: true);
+            var __workflow_bodysourceBoardId = WorkflowExpression.Compile(bodysourceBoardId, nameof(bodysourceBoardId), required: true);
+            var __workflow_bodyduplicationType = WorkflowExpression.Compile(bodyduplicationType, nameof(bodyduplicationType), required: true);
+            var __workflow_bodykeepBoardSubscribers = WorkflowExpression.Compile(bodykeepBoardSubscribers, nameof(bodykeepBoardSubscribers), required: true);
+            var __workflow_bodyduplicatedBoardName = WorkflowExpression.Compile(bodyduplicatedBoardName, nameof(bodyduplicatedBoardName), required: false);
+            var __workflow_bodydestinationWorkspaceId = WorkflowExpression.Compile(bodydestinationWorkspaceId, nameof(bodydestinationWorkspaceId), required: false);
+            var __workflow_bodydestinationFolder = WorkflowExpression.Compile(bodydestinationFolder, nameof(bodydestinationFolder), required: false);
             return new DeferredBodyAction<DuplicateBoardResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/DuplicateBoard";
@@ -123,10 +111,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateBoardResponse> CreateBoard(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardName)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardName = bodyboardName == null ? null : WorkflowExpression.Compile(bodyboardName);
-            WorkflowExpression.Validate(__workflow_bodyboardName, nameof(bodyboardName), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardName = WorkflowExpression.Compile(bodyboardName, nameof(bodyboardName), required: true);
             return new DeferredBodyAction<CreateBoardResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateBoard";
@@ -150,16 +136,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateColumnResponse> CreateColumn(Expression<Func<string>> bodytitle, Expression<Func<bodycolumnTypeInput>> bodycolumnType, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodycolumnType = bodycolumnType == null ? null : WorkflowExpression.Compile(bodycolumnType);
-            WorkflowExpression.Validate(__workflow_bodycolumnType, nameof(bodycolumnType), required: true);
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodycolumnType = WorkflowExpression.Compile(bodycolumnType, nameof(bodycolumnType), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<CreateColumnResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateColumn";
@@ -201,12 +182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
         {
-            var __workflow_bodygroupName = bodygroupName == null ? null : WorkflowExpression.Compile(bodygroupName);
-            WorkflowExpression.Validate(__workflow_bodygroupName, nameof(bodygroupName), required: true);
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
             return new DeferredBodyAction<CreateGroupResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateGroup";
@@ -240,16 +218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<UpdateItemColumnResponse> UpdateItemColumn(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycolumnId = null, Expression<Func<object>> bodycolumnValues = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyitemId = bodyitemId == null ? null : WorkflowExpression.Compile(bodyitemId);
-            WorkflowExpression.Validate(__workflow_bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodycolumnId = bodycolumnId == null ? null : WorkflowExpression.Compile(bodycolumnId);
-            WorkflowExpression.Validate(__workflow_bodycolumnId, nameof(bodycolumnId), required: false);
-            var __workflow_bodycolumnValues = bodycolumnValues == null ? null : WorkflowExpression.Compile(bodycolumnValues);
-            WorkflowExpression.Validate(__workflow_bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
+            var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: false);
+            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
             return new DeferredBodyAction<UpdateItemColumnResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateItemColumn";
@@ -287,16 +260,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<UpdateMultipleItemColumnsResponse> UpdateMultipleItemColumns(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyitemName = null, Expression<Func<object>> bodycolumnValues = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyitemId = bodyitemId == null ? null : WorkflowExpression.Compile(bodyitemId);
-            WorkflowExpression.Validate(__workflow_bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodyitemName = bodyitemName == null ? null : WorkflowExpression.Compile(bodyitemName);
-            WorkflowExpression.Validate(__workflow_bodyitemName, nameof(bodyitemName), required: false);
-            var __workflow_bodycolumnValues = bodycolumnValues == null ? null : WorkflowExpression.Compile(bodycolumnValues);
-            WorkflowExpression.Validate(__workflow_bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
+            var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: false);
+            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
             return new DeferredBodyAction<UpdateMultipleItemColumnsResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/UpdateMultipleItemColumns";
@@ -334,14 +302,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<MoveItemToGroupResponse> MoveItemToGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyitemId = bodyitemId == null ? null : WorkflowExpression.Compile(bodyitemId);
-            WorkflowExpression.Validate(__workflow_bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
             return new DeferredBodyAction<MoveItemToGroupResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/MoveItemToGroup";
@@ -377,12 +341,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateNotificationResponse> CreateNotification(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodytargetId, Expression<Func<string>> bodytext)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodytargetId = bodytargetId == null ? null : WorkflowExpression.Compile(bodytargetId);
-            WorkflowExpression.Validate(__workflow_bodytargetId, nameof(bodytargetId), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodytargetId = WorkflowExpression.Compile(bodytargetId, nameof(bodytargetId), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<CreateNotificationResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateNotification";
@@ -408,16 +369,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateSubitemResponse> CreateSubitem(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodyparentItemId, Expression<Func<string>> bodyitemName, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<object>> bodycolumnValues = null)
         {
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyparentItemId = bodyparentItemId == null ? null : WorkflowExpression.Compile(bodyparentItemId);
-            WorkflowExpression.Validate(__workflow_bodyparentItemId, nameof(bodyparentItemId), required: true);
-            var __workflow_bodyitemName = bodyitemName == null ? null : WorkflowExpression.Compile(bodyitemName);
-            WorkflowExpression.Validate(__workflow_bodyitemName, nameof(bodyitemName), required: true);
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodycolumnValues = bodycolumnValues == null ? null : WorkflowExpression.Compile(bodycolumnValues);
-            WorkflowExpression.Validate(__workflow_bodycolumnValues, nameof(bodycolumnValues), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyparentItemId = WorkflowExpression.Compile(bodyparentItemId, nameof(bodyparentItemId), required: true);
+            var __workflow_bodyitemName = WorkflowExpression.Compile(bodyitemName, nameof(bodyitemName), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodycolumnValues = WorkflowExpression.Compile(bodycolumnValues, nameof(bodycolumnValues), required: false);
             return new DeferredBodyAction<CreateSubitemResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateSubitem";
@@ -455,12 +411,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<JToken> GetSubitems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> itemId)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getData/getSubitems";
@@ -476,16 +429,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodyitemId, Expression<Func<string>> bodybody, Expression<Func<string>> bodyworkspaceId = null, Expression<Func<string>> bodyboardId = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodyitemId = bodyitemId == null ? null : WorkflowExpression.Compile(bodyitemId);
-            WorkflowExpression.Validate(__workflow_bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
-            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: true);
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: false);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
             return new DeferredBodyAction<CreateUpdateResponse>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateUpdate";
@@ -523,12 +471,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<JToken> GetItemById(Expression<Func<string>> itemId, Expression<Func<string>> workspaceId, Expression<Func<string>> boardId)
         {
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getData/getItemById";
@@ -544,10 +489,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<CreateWorkspaceV2Response> CreateWorkspace(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<CreateWorkspaceV2Response>(() =>
             {
                 var apiCallPath = "/executePowerAutomateAction/CreateWorkspaceV2";
@@ -575,36 +518,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monday")]
         public IBodyWorkflowAction<JToken> GetItems(Expression<Func<string>> workspaceId, Expression<Func<string>> boardId, Expression<Func<string>> groupId, Expression<Func<string>> filter1Column = null, Expression<Func<string>> filter1Operator = null, Expression<Func<string>> filter1Value = null, Expression<Func<string>> filter2Column = null, Expression<Func<string>> filter2Operator = null, Expression<Func<string>> filter2Value = null, Expression<Func<string>> filter3Column = null, Expression<Func<string>> filter3Operator = null, Expression<Func<string>> filter3Value = null, Expression<Func<string>> filter4Column = null, Expression<Func<string>> filter4Operator = null, Expression<Func<string>> filter4Value = null)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_filter1Column = filter1Column == null ? null : WorkflowExpression.Compile(filter1Column);
-            WorkflowExpression.Validate(__workflow_filter1Column, nameof(filter1Column), required: false);
-            var __workflow_filter1Operator = filter1Operator == null ? null : WorkflowExpression.Compile(filter1Operator);
-            WorkflowExpression.Validate(__workflow_filter1Operator, nameof(filter1Operator), required: false);
-            var __workflow_filter1Value = filter1Value == null ? null : WorkflowExpression.Compile(filter1Value);
-            WorkflowExpression.Validate(__workflow_filter1Value, nameof(filter1Value), required: false);
-            var __workflow_filter2Column = filter2Column == null ? null : WorkflowExpression.Compile(filter2Column);
-            WorkflowExpression.Validate(__workflow_filter2Column, nameof(filter2Column), required: false);
-            var __workflow_filter2Operator = filter2Operator == null ? null : WorkflowExpression.Compile(filter2Operator);
-            WorkflowExpression.Validate(__workflow_filter2Operator, nameof(filter2Operator), required: false);
-            var __workflow_filter2Value = filter2Value == null ? null : WorkflowExpression.Compile(filter2Value);
-            WorkflowExpression.Validate(__workflow_filter2Value, nameof(filter2Value), required: false);
-            var __workflow_filter3Column = filter3Column == null ? null : WorkflowExpression.Compile(filter3Column);
-            WorkflowExpression.Validate(__workflow_filter3Column, nameof(filter3Column), required: false);
-            var __workflow_filter3Operator = filter3Operator == null ? null : WorkflowExpression.Compile(filter3Operator);
-            WorkflowExpression.Validate(__workflow_filter3Operator, nameof(filter3Operator), required: false);
-            var __workflow_filter3Value = filter3Value == null ? null : WorkflowExpression.Compile(filter3Value);
-            WorkflowExpression.Validate(__workflow_filter3Value, nameof(filter3Value), required: false);
-            var __workflow_filter4Column = filter4Column == null ? null : WorkflowExpression.Compile(filter4Column);
-            WorkflowExpression.Validate(__workflow_filter4Column, nameof(filter4Column), required: false);
-            var __workflow_filter4Operator = filter4Operator == null ? null : WorkflowExpression.Compile(filter4Operator);
-            WorkflowExpression.Validate(__workflow_filter4Operator, nameof(filter4Operator), required: false);
-            var __workflow_filter4Value = filter4Value == null ? null : WorkflowExpression.Compile(filter4Value);
-            WorkflowExpression.Validate(__workflow_filter4Value, nameof(filter4Value), required: false);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_filter1Column = WorkflowExpression.Compile(filter1Column, nameof(filter1Column), required: false);
+            var __workflow_filter1Operator = WorkflowExpression.Compile(filter1Operator, nameof(filter1Operator), required: false);
+            var __workflow_filter1Value = WorkflowExpression.Compile(filter1Value, nameof(filter1Value), required: false);
+            var __workflow_filter2Column = WorkflowExpression.Compile(filter2Column, nameof(filter2Column), required: false);
+            var __workflow_filter2Operator = WorkflowExpression.Compile(filter2Operator, nameof(filter2Operator), required: false);
+            var __workflow_filter2Value = WorkflowExpression.Compile(filter2Value, nameof(filter2Value), required: false);
+            var __workflow_filter3Column = WorkflowExpression.Compile(filter3Column, nameof(filter3Column), required: false);
+            var __workflow_filter3Operator = WorkflowExpression.Compile(filter3Operator, nameof(filter3Operator), required: false);
+            var __workflow_filter3Value = WorkflowExpression.Compile(filter3Value, nameof(filter3Value), required: false);
+            var __workflow_filter4Column = WorkflowExpression.Compile(filter4Column, nameof(filter4Column), required: false);
+            var __workflow_filter4Operator = WorkflowExpression.Compile(filter4Operator, nameof(filter4Operator), required: false);
+            var __workflow_filter4Value = WorkflowExpression.Compile(filter4Value, nameof(filter4Value), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getData/getItemsV2";
@@ -664,10 +592,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     {
         public IBodyWorkflowTrigger<JToken> WebhookCreateItem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateItem";
@@ -692,10 +618,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookCreateUpdate(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateUpdate";
@@ -720,10 +644,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookChangeName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/ChangeName";
@@ -748,10 +670,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookChangeSubitemName(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/ChangeSubitemName";
@@ -776,10 +696,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookCreateSubitem(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/CreateSubitem";
@@ -804,12 +722,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, Expression<Func<string>> bodycolumnId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodycolumnId = bodycolumnId == null ? null : WorkflowExpression.Compile(bodycolumnId);
-            WorkflowExpression.Validate(__workflow_bodycolumnId, nameof(bodycolumnId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodycolumnId = WorkflowExpression.Compile(bodycolumnId, nameof(bodycolumnId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/ColumnChanges";
@@ -836,10 +751,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookAnyColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/AnyColumnChanges";
@@ -864,10 +777,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
 
         public IBodyWorkflowTrigger<JToken> WebhookSubitemColumnChanges(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyboardId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/registerWebhook/SubitemColumnChanges";

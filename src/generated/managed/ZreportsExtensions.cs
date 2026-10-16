@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
         public IWorkflowAction UploadDocument(Expression<Func<string>> brandId, Expression<Func<string>> storeId, Expression<Func<object>> document)
         {
-            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
-            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: true);
-            var __workflow_storeId = storeId == null ? null : WorkflowExpression.Compile(storeId);
-            WorkflowExpression.Validate(__workflow_storeId, nameof(storeId), required: true);
-            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
-            WorkflowExpression.Validate(__workflow_document, nameof(document), required: true);
+            var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
+            var __workflow_storeId = WorkflowExpression.Compile(storeId, nameof(storeId), required: true);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_brandId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_storeId, 1));
@@ -42,10 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
     {
         public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
-            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: true);
-            var __workflow_bodystoreIds = bodystoreIds == null ? null : WorkflowExpression.Compile(bodystoreIds);
-            WorkflowExpression.Validate(__workflow_bodystoreIds, nameof(bodystoreIds), required: false);
+            var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
+            var __workflow_bodystoreIds = WorkflowExpression.Compile(bodystoreIds, nameof(bodystoreIds), required: false);
             return new DeferredBodyTrigger<CreateWebhookResponseBody>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/despatch-advice-hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_brandId, 1));
@@ -72,10 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
 
         public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
-            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: true);
-            var __workflow_bodystoreIds = bodystoreIds == null ? null : WorkflowExpression.Compile(bodystoreIds);
-            WorkflowExpression.Validate(__workflow_bodystoreIds, nameof(bodystoreIds), required: false);
+            var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: true);
+            var __workflow_bodystoreIds = WorkflowExpression.Compile(bodystoreIds, nameof(bodystoreIds), required: false);
             return new DeferredBodyTrigger<CreateWebhookResponseBody>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/invoice-hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_brandId, 1));

@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobsGetResponseItem[]> JobsGet(Expression<Func<int>> limit = null, Expression<Func<statusInput>> status = null, Expression<Func<whenInput>> when = null, Expression<Func<string>> timestampMs = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<directionInput>> direction = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_when = when == null ? null : WorkflowExpression.Compile(when);
-            WorkflowExpression.Validate(__workflow_when, nameof(when), required: false);
-            var __workflow_timestampMs = timestampMs == null ? null : WorkflowExpression.Compile(timestampMs);
-            WorkflowExpression.Validate(__workflow_timestampMs, nameof(timestampMs), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_direction = direction == null ? null : WorkflowExpression.Compile(direction);
-            WorkflowExpression.Validate(__workflow_direction, nameof(direction), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_when = WorkflowExpression.Compile(when, nameof(when), required: false);
+            var __workflow_timestampMs = WorkflowExpression.Compile(timestampMs, nameof(timestampMs), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: false);
             return new DeferredBodyAction<JobsGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/batch/jobs";
@@ -49,38 +43,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobPostResponse> Job(Expression<Func<double>> bodymodelsfacefpsPred = null, Expression<Func<double>> bodymodelsfaceprobThreshold = null, Expression<Func<bool>> bodymodelsfaceidentifyFaces = null, Expression<Func<int>> bodymodelsfaceminFaceSize = null, Expression<Func<bool>> bodymodelsfacesaveFaces = null, Expression<Func<string>> bodymodelsprosodygranularity = null, Expression<Func<bool>> bodymodelsprosodyidentifySpeakers = null, Expression<Func<int>> bodymodelsprosodywindowlength = null, Expression<Func<int>> bodymodelsprosodywindowstep = null, Expression<Func<string>> bodymodelslanguagegranularity = null, Expression<Func<bool>> bodymodelslanguageidentifySpeakers = null, Expression<Func<bool>> bodymodelsneridentifySpeakers = null, Expression<Func<string>> bodytranscriptionlanguage = null, Expression<Func<string[]>> bodyurls = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bool>> bodynotify = null)
         {
-            var __workflow_bodymodelsfacefpsPred = bodymodelsfacefpsPred == null ? null : WorkflowExpression.Compile(bodymodelsfacefpsPred);
-            WorkflowExpression.Validate(__workflow_bodymodelsfacefpsPred, nameof(bodymodelsfacefpsPred), required: false);
-            var __workflow_bodymodelsfaceprobThreshold = bodymodelsfaceprobThreshold == null ? null : WorkflowExpression.Compile(bodymodelsfaceprobThreshold);
-            WorkflowExpression.Validate(__workflow_bodymodelsfaceprobThreshold, nameof(bodymodelsfaceprobThreshold), required: false);
-            var __workflow_bodymodelsfaceidentifyFaces = bodymodelsfaceidentifyFaces == null ? null : WorkflowExpression.Compile(bodymodelsfaceidentifyFaces);
-            WorkflowExpression.Validate(__workflow_bodymodelsfaceidentifyFaces, nameof(bodymodelsfaceidentifyFaces), required: false);
-            var __workflow_bodymodelsfaceminFaceSize = bodymodelsfaceminFaceSize == null ? null : WorkflowExpression.Compile(bodymodelsfaceminFaceSize);
-            WorkflowExpression.Validate(__workflow_bodymodelsfaceminFaceSize, nameof(bodymodelsfaceminFaceSize), required: false);
-            var __workflow_bodymodelsfacesaveFaces = bodymodelsfacesaveFaces == null ? null : WorkflowExpression.Compile(bodymodelsfacesaveFaces);
-            WorkflowExpression.Validate(__workflow_bodymodelsfacesaveFaces, nameof(bodymodelsfacesaveFaces), required: false);
-            var __workflow_bodymodelsprosodygranularity = bodymodelsprosodygranularity == null ? null : WorkflowExpression.Compile(bodymodelsprosodygranularity);
-            WorkflowExpression.Validate(__workflow_bodymodelsprosodygranularity, nameof(bodymodelsprosodygranularity), required: false);
-            var __workflow_bodymodelsprosodyidentifySpeakers = bodymodelsprosodyidentifySpeakers == null ? null : WorkflowExpression.Compile(bodymodelsprosodyidentifySpeakers);
-            WorkflowExpression.Validate(__workflow_bodymodelsprosodyidentifySpeakers, nameof(bodymodelsprosodyidentifySpeakers), required: false);
-            var __workflow_bodymodelsprosodywindowlength = bodymodelsprosodywindowlength == null ? null : WorkflowExpression.Compile(bodymodelsprosodywindowlength);
-            WorkflowExpression.Validate(__workflow_bodymodelsprosodywindowlength, nameof(bodymodelsprosodywindowlength), required: false);
-            var __workflow_bodymodelsprosodywindowstep = bodymodelsprosodywindowstep == null ? null : WorkflowExpression.Compile(bodymodelsprosodywindowstep);
-            WorkflowExpression.Validate(__workflow_bodymodelsprosodywindowstep, nameof(bodymodelsprosodywindowstep), required: false);
-            var __workflow_bodymodelslanguagegranularity = bodymodelslanguagegranularity == null ? null : WorkflowExpression.Compile(bodymodelslanguagegranularity);
-            WorkflowExpression.Validate(__workflow_bodymodelslanguagegranularity, nameof(bodymodelslanguagegranularity), required: false);
-            var __workflow_bodymodelslanguageidentifySpeakers = bodymodelslanguageidentifySpeakers == null ? null : WorkflowExpression.Compile(bodymodelslanguageidentifySpeakers);
-            WorkflowExpression.Validate(__workflow_bodymodelslanguageidentifySpeakers, nameof(bodymodelslanguageidentifySpeakers), required: false);
-            var __workflow_bodymodelsneridentifySpeakers = bodymodelsneridentifySpeakers == null ? null : WorkflowExpression.Compile(bodymodelsneridentifySpeakers);
-            WorkflowExpression.Validate(__workflow_bodymodelsneridentifySpeakers, nameof(bodymodelsneridentifySpeakers), required: false);
-            var __workflow_bodytranscriptionlanguage = bodytranscriptionlanguage == null ? null : WorkflowExpression.Compile(bodytranscriptionlanguage);
-            WorkflowExpression.Validate(__workflow_bodytranscriptionlanguage, nameof(bodytranscriptionlanguage), required: false);
-            var __workflow_bodyurls = bodyurls == null ? null : WorkflowExpression.Compile(bodyurls);
-            WorkflowExpression.Validate(__workflow_bodyurls, nameof(bodyurls), required: false);
-            var __workflow_bodycallbackUrl = bodycallbackUrl == null ? null : WorkflowExpression.Compile(bodycallbackUrl);
-            WorkflowExpression.Validate(__workflow_bodycallbackUrl, nameof(bodycallbackUrl), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodymodelsfacefpsPred = WorkflowExpression.Compile(bodymodelsfacefpsPred, nameof(bodymodelsfacefpsPred), required: false);
+            var __workflow_bodymodelsfaceprobThreshold = WorkflowExpression.Compile(bodymodelsfaceprobThreshold, nameof(bodymodelsfaceprobThreshold), required: false);
+            var __workflow_bodymodelsfaceidentifyFaces = WorkflowExpression.Compile(bodymodelsfaceidentifyFaces, nameof(bodymodelsfaceidentifyFaces), required: false);
+            var __workflow_bodymodelsfaceminFaceSize = WorkflowExpression.Compile(bodymodelsfaceminFaceSize, nameof(bodymodelsfaceminFaceSize), required: false);
+            var __workflow_bodymodelsfacesaveFaces = WorkflowExpression.Compile(bodymodelsfacesaveFaces, nameof(bodymodelsfacesaveFaces), required: false);
+            var __workflow_bodymodelsprosodygranularity = WorkflowExpression.Compile(bodymodelsprosodygranularity, nameof(bodymodelsprosodygranularity), required: false);
+            var __workflow_bodymodelsprosodyidentifySpeakers = WorkflowExpression.Compile(bodymodelsprosodyidentifySpeakers, nameof(bodymodelsprosodyidentifySpeakers), required: false);
+            var __workflow_bodymodelsprosodywindowlength = WorkflowExpression.Compile(bodymodelsprosodywindowlength, nameof(bodymodelsprosodywindowlength), required: false);
+            var __workflow_bodymodelsprosodywindowstep = WorkflowExpression.Compile(bodymodelsprosodywindowstep, nameof(bodymodelsprosodywindowstep), required: false);
+            var __workflow_bodymodelslanguagegranularity = WorkflowExpression.Compile(bodymodelslanguagegranularity, nameof(bodymodelslanguagegranularity), required: false);
+            var __workflow_bodymodelslanguageidentifySpeakers = WorkflowExpression.Compile(bodymodelslanguageidentifySpeakers, nameof(bodymodelslanguageidentifySpeakers), required: false);
+            var __workflow_bodymodelsneridentifySpeakers = WorkflowExpression.Compile(bodymodelsneridentifySpeakers, nameof(bodymodelsneridentifySpeakers), required: false);
+            var __workflow_bodytranscriptionlanguage = WorkflowExpression.Compile(bodytranscriptionlanguage, nameof(bodytranscriptionlanguage), required: false);
+            var __workflow_bodyurls = WorkflowExpression.Compile(bodyurls, nameof(bodyurls), required: false);
+            var __workflow_bodycallbackUrl = WorkflowExpression.Compile(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
             return new DeferredBodyAction<JobPostResponse>(() =>
             {
                 var apiCallPath = "/batch/jobs";
@@ -252,8 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobPredictionsGetResponseItem[]> JobPredictionsGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<JobPredictionsGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/predictions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -266,8 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<string> JobArtifactsGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/artifacts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -281,8 +257,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
         public IBodyWorkflowAction<JobDetailsGetResponse> JobDetailsGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<JobDetailsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

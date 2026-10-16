@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         public IBodyWorkflowAction<CreateFileResponse> CreateFile(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdocumentNumber = null, Expression<Func<int>> bodyparameterdocumentRecno = null, Expression<Func<string>> bodyparameterformat = null, Expression<Func<string>> bodyparameterbase64Data = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
         {
-            var __workflow_hosturl = hosturl == null ? null : WorkflowExpression.Compile(hosturl);
-            WorkflowExpression.Validate(__workflow_hosturl, nameof(hosturl), required: true);
-            var __workflow_bodyparametertitle = bodyparametertitle == null ? null : WorkflowExpression.Compile(bodyparametertitle);
-            WorkflowExpression.Validate(__workflow_bodyparametertitle, nameof(bodyparametertitle), required: false);
-            var __workflow_bodyparameterdocumentNumber = bodyparameterdocumentNumber == null ? null : WorkflowExpression.Compile(bodyparameterdocumentNumber);
-            WorkflowExpression.Validate(__workflow_bodyparameterdocumentNumber, nameof(bodyparameterdocumentNumber), required: false);
-            var __workflow_bodyparameterdocumentRecno = bodyparameterdocumentRecno == null ? null : WorkflowExpression.Compile(bodyparameterdocumentRecno);
-            WorkflowExpression.Validate(__workflow_bodyparameterdocumentRecno, nameof(bodyparameterdocumentRecno), required: false);
-            var __workflow_bodyparameterformat = bodyparameterformat == null ? null : WorkflowExpression.Compile(bodyparameterformat);
-            WorkflowExpression.Validate(__workflow_bodyparameterformat, nameof(bodyparameterformat), required: false);
-            var __workflow_bodyparameterbase64Data = bodyparameterbase64Data == null ? null : WorkflowExpression.Compile(bodyparameterbase64Data);
-            WorkflowExpression.Validate(__workflow_bodyparameterbase64Data, nameof(bodyparameterbase64Data), required: false);
-            var __workflow_bodyparameteradditionalFields = bodyparameteradditionalFields == null ? null : WorkflowExpression.Compile(bodyparameteradditionalFields);
-            WorkflowExpression.Validate(__workflow_bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
+            var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
+            var __workflow_bodyparametertitle = WorkflowExpression.Compile(bodyparametertitle, nameof(bodyparametertitle), required: false);
+            var __workflow_bodyparameterdocumentNumber = WorkflowExpression.Compile(bodyparameterdocumentNumber, nameof(bodyparameterdocumentNumber), required: false);
+            var __workflow_bodyparameterdocumentRecno = WorkflowExpression.Compile(bodyparameterdocumentRecno, nameof(bodyparameterdocumentRecno), required: false);
+            var __workflow_bodyparameterformat = WorkflowExpression.Compile(bodyparameterformat, nameof(bodyparameterformat), required: false);
+            var __workflow_bodyparameterbase64Data = WorkflowExpression.Compile(bodyparameterbase64Data, nameof(bodyparameterbase64Data), required: false);
+            var __workflow_bodyparameteradditionalFields = WorkflowExpression.Compile(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
             return new DeferredBodyAction<CreateFileResponse>(() =>
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/FileService/CreateFile";
@@ -91,30 +84,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparametercaseNumber = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparametercategory = null, Expression<Func<string>> bodyparameterstatus = null, Expression<Func<string>> bodyparameterarchive = null, Expression<Func<string>> bodyparameternotes = null, Expression<Func<bodyparametercontactsInputItem[]>> bodyparametercontacts = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
         {
-            var __workflow_hosturl = hosturl == null ? null : WorkflowExpression.Compile(hosturl);
-            WorkflowExpression.Validate(__workflow_hosturl, nameof(hosturl), required: true);
-            var __workflow_bodyparametertitle = bodyparametertitle == null ? null : WorkflowExpression.Compile(bodyparametertitle);
-            WorkflowExpression.Validate(__workflow_bodyparametertitle, nameof(bodyparametertitle), required: false);
-            var __workflow_bodyparametercaseNumber = bodyparametercaseNumber == null ? null : WorkflowExpression.Compile(bodyparametercaseNumber);
-            WorkflowExpression.Validate(__workflow_bodyparametercaseNumber, nameof(bodyparametercaseNumber), required: false);
-            var __workflow_bodyparameterdefaultValueSet = bodyparameterdefaultValueSet == null ? null : WorkflowExpression.Compile(bodyparameterdefaultValueSet);
-            WorkflowExpression.Validate(__workflow_bodyparameterdefaultValueSet, nameof(bodyparameterdefaultValueSet), required: false);
-            var __workflow_bodyparameterunofficialTitle = bodyparameterunofficialTitle == null ? null : WorkflowExpression.Compile(bodyparameterunofficialTitle);
-            WorkflowExpression.Validate(__workflow_bodyparameterunofficialTitle, nameof(bodyparameterunofficialTitle), required: false);
-            var __workflow_bodyparameterresponsiblePersonEmail = bodyparameterresponsiblePersonEmail == null ? null : WorkflowExpression.Compile(bodyparameterresponsiblePersonEmail);
-            WorkflowExpression.Validate(__workflow_bodyparameterresponsiblePersonEmail, nameof(bodyparameterresponsiblePersonEmail), required: false);
-            var __workflow_bodyparametercategory = bodyparametercategory == null ? null : WorkflowExpression.Compile(bodyparametercategory);
-            WorkflowExpression.Validate(__workflow_bodyparametercategory, nameof(bodyparametercategory), required: false);
-            var __workflow_bodyparameterstatus = bodyparameterstatus == null ? null : WorkflowExpression.Compile(bodyparameterstatus);
-            WorkflowExpression.Validate(__workflow_bodyparameterstatus, nameof(bodyparameterstatus), required: false);
-            var __workflow_bodyparameterarchive = bodyparameterarchive == null ? null : WorkflowExpression.Compile(bodyparameterarchive);
-            WorkflowExpression.Validate(__workflow_bodyparameterarchive, nameof(bodyparameterarchive), required: false);
-            var __workflow_bodyparameternotes = bodyparameternotes == null ? null : WorkflowExpression.Compile(bodyparameternotes);
-            WorkflowExpression.Validate(__workflow_bodyparameternotes, nameof(bodyparameternotes), required: false);
-            var __workflow_bodyparametercontacts = bodyparametercontacts == null ? null : WorkflowExpression.Compile(bodyparametercontacts);
-            WorkflowExpression.Validate(__workflow_bodyparametercontacts, nameof(bodyparametercontacts), required: false);
-            var __workflow_bodyparameteradditionalFields = bodyparameteradditionalFields == null ? null : WorkflowExpression.Compile(bodyparameteradditionalFields);
-            WorkflowExpression.Validate(__workflow_bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
+            var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
+            var __workflow_bodyparametertitle = WorkflowExpression.Compile(bodyparametertitle, nameof(bodyparametertitle), required: false);
+            var __workflow_bodyparametercaseNumber = WorkflowExpression.Compile(bodyparametercaseNumber, nameof(bodyparametercaseNumber), required: false);
+            var __workflow_bodyparameterdefaultValueSet = WorkflowExpression.Compile(bodyparameterdefaultValueSet, nameof(bodyparameterdefaultValueSet), required: false);
+            var __workflow_bodyparameterunofficialTitle = WorkflowExpression.Compile(bodyparameterunofficialTitle, nameof(bodyparameterunofficialTitle), required: false);
+            var __workflow_bodyparameterresponsiblePersonEmail = WorkflowExpression.Compile(bodyparameterresponsiblePersonEmail, nameof(bodyparameterresponsiblePersonEmail), required: false);
+            var __workflow_bodyparametercategory = WorkflowExpression.Compile(bodyparametercategory, nameof(bodyparametercategory), required: false);
+            var __workflow_bodyparameterstatus = WorkflowExpression.Compile(bodyparameterstatus, nameof(bodyparameterstatus), required: false);
+            var __workflow_bodyparameterarchive = WorkflowExpression.Compile(bodyparameterarchive, nameof(bodyparameterarchive), required: false);
+            var __workflow_bodyparameternotes = WorkflowExpression.Compile(bodyparameternotes, nameof(bodyparameternotes), required: false);
+            var __workflow_bodyparametercontacts = WorkflowExpression.Compile(bodyparametercontacts, nameof(bodyparametercontacts), required: false);
+            var __workflow_bodyparameteradditionalFields = WorkflowExpression.Compile(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
             return new DeferredBodyAction<CreateDocumentResponse>(() =>
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/DocumentService/CreateDocument";
@@ -209,26 +190,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Public360
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "public360")]
         public IBodyWorkflowAction<CreateCaseResponse> CreateCase(Expression<Func<string>> hosturl, Expression<Func<string>> bodyparametertitle = null, Expression<Func<string>> bodyparameterdefaultValueSet = null, Expression<Func<string>> bodyparameterunofficialTitle = null, Expression<Func<string>> bodyparametercaseType = null, Expression<Func<string>> bodyparameterresponsiblePersonEmail = null, Expression<Func<string>> bodyparameterresponsiblePersonIdNumber = null, Expression<Func<string>> bodyparameterresponsibleEnterpriseNumber = null, Expression<Func<int>> bodyparameterprogressPlanId = null, Expression<Func<bodyparameteradditionalFieldsInputItem[]>> bodyparameteradditionalFields = null)
         {
-            var __workflow_hosturl = hosturl == null ? null : WorkflowExpression.Compile(hosturl);
-            WorkflowExpression.Validate(__workflow_hosturl, nameof(hosturl), required: true);
-            var __workflow_bodyparametertitle = bodyparametertitle == null ? null : WorkflowExpression.Compile(bodyparametertitle);
-            WorkflowExpression.Validate(__workflow_bodyparametertitle, nameof(bodyparametertitle), required: false);
-            var __workflow_bodyparameterdefaultValueSet = bodyparameterdefaultValueSet == null ? null : WorkflowExpression.Compile(bodyparameterdefaultValueSet);
-            WorkflowExpression.Validate(__workflow_bodyparameterdefaultValueSet, nameof(bodyparameterdefaultValueSet), required: false);
-            var __workflow_bodyparameterunofficialTitle = bodyparameterunofficialTitle == null ? null : WorkflowExpression.Compile(bodyparameterunofficialTitle);
-            WorkflowExpression.Validate(__workflow_bodyparameterunofficialTitle, nameof(bodyparameterunofficialTitle), required: false);
-            var __workflow_bodyparametercaseType = bodyparametercaseType == null ? null : WorkflowExpression.Compile(bodyparametercaseType);
-            WorkflowExpression.Validate(__workflow_bodyparametercaseType, nameof(bodyparametercaseType), required: false);
-            var __workflow_bodyparameterresponsiblePersonEmail = bodyparameterresponsiblePersonEmail == null ? null : WorkflowExpression.Compile(bodyparameterresponsiblePersonEmail);
-            WorkflowExpression.Validate(__workflow_bodyparameterresponsiblePersonEmail, nameof(bodyparameterresponsiblePersonEmail), required: false);
-            var __workflow_bodyparameterresponsiblePersonIdNumber = bodyparameterresponsiblePersonIdNumber == null ? null : WorkflowExpression.Compile(bodyparameterresponsiblePersonIdNumber);
-            WorkflowExpression.Validate(__workflow_bodyparameterresponsiblePersonIdNumber, nameof(bodyparameterresponsiblePersonIdNumber), required: false);
-            var __workflow_bodyparameterresponsibleEnterpriseNumber = bodyparameterresponsibleEnterpriseNumber == null ? null : WorkflowExpression.Compile(bodyparameterresponsibleEnterpriseNumber);
-            WorkflowExpression.Validate(__workflow_bodyparameterresponsibleEnterpriseNumber, nameof(bodyparameterresponsibleEnterpriseNumber), required: false);
-            var __workflow_bodyparameterprogressPlanId = bodyparameterprogressPlanId == null ? null : WorkflowExpression.Compile(bodyparameterprogressPlanId);
-            WorkflowExpression.Validate(__workflow_bodyparameterprogressPlanId, nameof(bodyparameterprogressPlanId), required: false);
-            var __workflow_bodyparameteradditionalFields = bodyparameteradditionalFields == null ? null : WorkflowExpression.Compile(bodyparameteradditionalFields);
-            WorkflowExpression.Validate(__workflow_bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
+            var __workflow_hosturl = WorkflowExpression.Compile(hosturl, nameof(hosturl), required: true);
+            var __workflow_bodyparametertitle = WorkflowExpression.Compile(bodyparametertitle, nameof(bodyparametertitle), required: false);
+            var __workflow_bodyparameterdefaultValueSet = WorkflowExpression.Compile(bodyparameterdefaultValueSet, nameof(bodyparameterdefaultValueSet), required: false);
+            var __workflow_bodyparameterunofficialTitle = WorkflowExpression.Compile(bodyparameterunofficialTitle, nameof(bodyparameterunofficialTitle), required: false);
+            var __workflow_bodyparametercaseType = WorkflowExpression.Compile(bodyparametercaseType, nameof(bodyparametercaseType), required: false);
+            var __workflow_bodyparameterresponsiblePersonEmail = WorkflowExpression.Compile(bodyparameterresponsiblePersonEmail, nameof(bodyparameterresponsiblePersonEmail), required: false);
+            var __workflow_bodyparameterresponsiblePersonIdNumber = WorkflowExpression.Compile(bodyparameterresponsiblePersonIdNumber, nameof(bodyparameterresponsiblePersonIdNumber), required: false);
+            var __workflow_bodyparameterresponsibleEnterpriseNumber = WorkflowExpression.Compile(bodyparameterresponsibleEnterpriseNumber, nameof(bodyparameterresponsibleEnterpriseNumber), required: false);
+            var __workflow_bodyparameterprogressPlanId = WorkflowExpression.Compile(bodyparameterprogressPlanId, nameof(bodyparameterprogressPlanId), required: false);
+            var __workflow_bodyparameteradditionalFields = WorkflowExpression.Compile(bodyparameteradditionalFields, nameof(bodyparameteradditionalFields), required: false);
             return new DeferredBodyAction<CreateCaseResponse>(() =>
             {
                 var apiCallPath = "/Biz/v2/api/call/SI.Data.RPC/SI.Data.RPC/CaseService/CreateCase";

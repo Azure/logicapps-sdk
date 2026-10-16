@@ -13,42 +13,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetHeadlinesResponse> GetHeadlines(Expression<Func<string>> createdGt = null, Expression<Func<string>> createdLt = null, Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
-            var __workflow_createdGt = createdGt == null ? null : WorkflowExpression.Compile(createdGt);
-            WorkflowExpression.Validate(__workflow_createdGt, nameof(createdGt), required: false);
-            var __workflow_createdLt = createdLt == null ? null : WorkflowExpression.Compile(createdLt);
-            WorkflowExpression.Validate(__workflow_createdLt, nameof(createdLt), required: false);
-            var __workflow_signalIds = signalIds == null ? null : WorkflowExpression.Compile(signalIds);
-            WorkflowExpression.Validate(__workflow_signalIds, nameof(signalIds), required: false);
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_userRelevanceScoreGt = userRelevanceScoreGt == null ? null : WorkflowExpression.Compile(userRelevanceScoreGt);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
-            var __workflow_userRelevanceScoreLt = userRelevanceScoreLt == null ? null : WorkflowExpression.Compile(userRelevanceScoreLt);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_userRelevanceScoreGte = userRelevanceScoreGte == null ? null : WorkflowExpression.Compile(userRelevanceScoreGte);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
-            var __workflow_userRelevanceScoreLte = userRelevanceScoreLte == null ? null : WorkflowExpression.Compile(userRelevanceScoreLte);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
-            var __workflow_updatedGt = updatedGt == null ? null : WorkflowExpression.Compile(updatedGt);
-            WorkflowExpression.Validate(__workflow_updatedGt, nameof(updatedGt), required: false);
-            var __workflow_updatedLt = updatedLt == null ? null : WorkflowExpression.Compile(updatedLt);
-            WorkflowExpression.Validate(__workflow_updatedLt, nameof(updatedLt), required: false);
-            var __workflow_createdGte = createdGte == null ? null : WorkflowExpression.Compile(createdGte);
-            WorkflowExpression.Validate(__workflow_createdGte, nameof(createdGte), required: false);
-            var __workflow_updatedGte = updatedGte == null ? null : WorkflowExpression.Compile(updatedGte);
-            WorkflowExpression.Validate(__workflow_updatedGte, nameof(updatedGte), required: false);
-            var __workflow_createdLte = createdLte == null ? null : WorkflowExpression.Compile(createdLte);
-            WorkflowExpression.Validate(__workflow_createdLte, nameof(createdLte), required: false);
-            var __workflow_updatedLte = updatedLte == null ? null : WorkflowExpression.Compile(updatedLte);
-            WorkflowExpression.Validate(__workflow_updatedLte, nameof(updatedLte), required: false);
-            var __workflow_portfolios = portfolios == null ? null : WorkflowExpression.Compile(portfolios);
-            WorkflowExpression.Validate(__workflow_portfolios, nameof(portfolios), required: false);
-            var __workflow_themes = themes == null ? null : WorkflowExpression.Compile(themes);
-            WorkflowExpression.Validate(__workflow_themes, nameof(themes), required: false);
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
+            var __workflow_createdGt = WorkflowExpression.Compile(createdGt, nameof(createdGt), required: false);
+            var __workflow_createdLt = WorkflowExpression.Compile(createdLt, nameof(createdLt), required: false);
+            var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_userRelevanceScoreGt = WorkflowExpression.Compile(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            var __workflow_userRelevanceScoreLt = WorkflowExpression.Compile(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_userRelevanceScoreGte = WorkflowExpression.Compile(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            var __workflow_userRelevanceScoreLte = WorkflowExpression.Compile(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
+            var __workflow_updatedLt = WorkflowExpression.Compile(updatedLt, nameof(updatedLt), required: false);
+            var __workflow_createdGte = WorkflowExpression.Compile(createdGte, nameof(createdGte), required: false);
+            var __workflow_updatedGte = WorkflowExpression.Compile(updatedGte, nameof(updatedGte), required: false);
+            var __workflow_createdLte = WorkflowExpression.Compile(createdLte, nameof(createdLte), required: false);
+            var __workflow_updatedLte = WorkflowExpression.Compile(updatedLte, nameof(updatedLte), required: false);
+            var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
+            var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
             return new DeferredBodyAction<GetHeadlinesResponse>(() =>
             {
                 var apiCallPath = "/signals/v2/events/headlines";
@@ -98,38 +80,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
-            var __workflow_signalIds = signalIds == null ? null : WorkflowExpression.Compile(signalIds);
-            WorkflowExpression.Validate(__workflow_signalIds, nameof(signalIds), required: false);
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_userRelevanceScoreGt = userRelevanceScoreGt == null ? null : WorkflowExpression.Compile(userRelevanceScoreGt);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_userRelevanceScoreLt = userRelevanceScoreLt == null ? null : WorkflowExpression.Compile(userRelevanceScoreLt);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
-            var __workflow_userRelevanceScoreLte = userRelevanceScoreLte == null ? null : WorkflowExpression.Compile(userRelevanceScoreLte);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
-            var __workflow_userRelevanceScoreGte = userRelevanceScoreGte == null ? null : WorkflowExpression.Compile(userRelevanceScoreGte);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
-            var __workflow_updatedGt = updatedGt == null ? null : WorkflowExpression.Compile(updatedGt);
-            WorkflowExpression.Validate(__workflow_updatedGt, nameof(updatedGt), required: false);
-            var __workflow_updatedLt = updatedLt == null ? null : WorkflowExpression.Compile(updatedLt);
-            WorkflowExpression.Validate(__workflow_updatedLt, nameof(updatedLt), required: false);
-            var __workflow_createdGte = createdGte == null ? null : WorkflowExpression.Compile(createdGte);
-            WorkflowExpression.Validate(__workflow_createdGte, nameof(createdGte), required: false);
-            var __workflow_updatedGte = updatedGte == null ? null : WorkflowExpression.Compile(updatedGte);
-            WorkflowExpression.Validate(__workflow_updatedGte, nameof(updatedGte), required: false);
-            var __workflow_createdLte = createdLte == null ? null : WorkflowExpression.Compile(createdLte);
-            WorkflowExpression.Validate(__workflow_createdLte, nameof(createdLte), required: false);
-            var __workflow_updatedLte = updatedLte == null ? null : WorkflowExpression.Compile(updatedLte);
-            WorkflowExpression.Validate(__workflow_updatedLte, nameof(updatedLte), required: false);
-            var __workflow_portfolios = portfolios == null ? null : WorkflowExpression.Compile(portfolios);
-            WorkflowExpression.Validate(__workflow_portfolios, nameof(portfolios), required: false);
-            var __workflow_themes = themes == null ? null : WorkflowExpression.Compile(themes);
-            WorkflowExpression.Validate(__workflow_themes, nameof(themes), required: false);
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
+            var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_userRelevanceScoreGt = WorkflowExpression.Compile(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_userRelevanceScoreLt = WorkflowExpression.Compile(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            var __workflow_userRelevanceScoreLte = WorkflowExpression.Compile(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            var __workflow_userRelevanceScoreGte = WorkflowExpression.Compile(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
+            var __workflow_updatedLt = WorkflowExpression.Compile(updatedLt, nameof(updatedLt), required: false);
+            var __workflow_createdGte = WorkflowExpression.Compile(createdGte, nameof(createdGte), required: false);
+            var __workflow_updatedGte = WorkflowExpression.Compile(updatedGte, nameof(updatedGte), required: false);
+            var __workflow_createdLte = WorkflowExpression.Compile(createdLte, nameof(createdLte), required: false);
+            var __workflow_updatedLte = WorkflowExpression.Compile(updatedLte, nameof(updatedLte), required: false);
+            var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
+            var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
             return new DeferredBodyAction<GetDetailsResponse>(() =>
             {
                 var apiCallPath = "/signals/v2/events/details";
@@ -175,38 +141,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetAdaptiveCardResponse> GetAdaptiveCard(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
         {
-            var __workflow_signalIds = signalIds == null ? null : WorkflowExpression.Compile(signalIds);
-            WorkflowExpression.Validate(__workflow_signalIds, nameof(signalIds), required: false);
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_userRelevanceScoreGt = userRelevanceScoreGt == null ? null : WorkflowExpression.Compile(userRelevanceScoreGt);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_userRelevanceScoreLt = userRelevanceScoreLt == null ? null : WorkflowExpression.Compile(userRelevanceScoreLt);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
-            var __workflow_userRelevanceScoreLte = userRelevanceScoreLte == null ? null : WorkflowExpression.Compile(userRelevanceScoreLte);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
-            var __workflow_userRelevanceScoreGte = userRelevanceScoreGte == null ? null : WorkflowExpression.Compile(userRelevanceScoreGte);
-            WorkflowExpression.Validate(__workflow_userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
-            var __workflow_updatedGt = updatedGt == null ? null : WorkflowExpression.Compile(updatedGt);
-            WorkflowExpression.Validate(__workflow_updatedGt, nameof(updatedGt), required: false);
-            var __workflow_updatedLt = updatedLt == null ? null : WorkflowExpression.Compile(updatedLt);
-            WorkflowExpression.Validate(__workflow_updatedLt, nameof(updatedLt), required: false);
-            var __workflow_createdGte = createdGte == null ? null : WorkflowExpression.Compile(createdGte);
-            WorkflowExpression.Validate(__workflow_createdGte, nameof(createdGte), required: false);
-            var __workflow_updatedGte = updatedGte == null ? null : WorkflowExpression.Compile(updatedGte);
-            WorkflowExpression.Validate(__workflow_updatedGte, nameof(updatedGte), required: false);
-            var __workflow_createdLte = createdLte == null ? null : WorkflowExpression.Compile(createdLte);
-            WorkflowExpression.Validate(__workflow_createdLte, nameof(createdLte), required: false);
-            var __workflow_updatedLte = updatedLte == null ? null : WorkflowExpression.Compile(updatedLte);
-            WorkflowExpression.Validate(__workflow_updatedLte, nameof(updatedLte), required: false);
-            var __workflow_portfolios = portfolios == null ? null : WorkflowExpression.Compile(portfolios);
-            WorkflowExpression.Validate(__workflow_portfolios, nameof(portfolios), required: false);
-            var __workflow_themes = themes == null ? null : WorkflowExpression.Compile(themes);
-            WorkflowExpression.Validate(__workflow_themes, nameof(themes), required: false);
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
+            var __workflow_signalIds = WorkflowExpression.Compile(signalIds, nameof(signalIds), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_userRelevanceScoreGt = WorkflowExpression.Compile(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_userRelevanceScoreLt = WorkflowExpression.Compile(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            var __workflow_userRelevanceScoreLte = WorkflowExpression.Compile(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            var __workflow_userRelevanceScoreGte = WorkflowExpression.Compile(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            var __workflow_updatedGt = WorkflowExpression.Compile(updatedGt, nameof(updatedGt), required: false);
+            var __workflow_updatedLt = WorkflowExpression.Compile(updatedLt, nameof(updatedLt), required: false);
+            var __workflow_createdGte = WorkflowExpression.Compile(createdGte, nameof(createdGte), required: false);
+            var __workflow_updatedGte = WorkflowExpression.Compile(updatedGte, nameof(updatedGte), required: false);
+            var __workflow_createdLte = WorkflowExpression.Compile(createdLte, nameof(createdLte), required: false);
+            var __workflow_updatedLte = WorkflowExpression.Compile(updatedLte, nameof(updatedLte), required: false);
+            var __workflow_portfolios = WorkflowExpression.Compile(portfolios, nameof(portfolios), required: false);
+            var __workflow_themes = WorkflowExpression.Compile(themes, nameof(themes), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
             return new DeferredBodyAction<GetAdaptiveCardResponse>(() =>
             {
                 var apiCallPath = "/signals/v2/events/adaptive-cards";
@@ -252,12 +202,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<NEREntitiesResponse> NEREntities(Expression<Func<string>> bodytext, Expression<Func<bool>> bodyfilterEntities = null, Expression<Func<bool>> bodyenableIdLookup = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyfilterEntities = bodyfilterEntities == null ? null : WorkflowExpression.Compile(bodyfilterEntities);
-            WorkflowExpression.Validate(__workflow_bodyfilterEntities, nameof(bodyfilterEntities), required: false);
-            var __workflow_bodyenableIdLookup = bodyenableIdLookup == null ? null : WorkflowExpression.Compile(bodyenableIdLookup);
-            WorkflowExpression.Validate(__workflow_bodyenableIdLookup, nameof(bodyenableIdLookup), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyfilterEntities = WorkflowExpression.Compile(bodyfilterEntities, nameof(bodyfilterEntities), required: false);
+            var __workflow_bodyenableIdLookup = WorkflowExpression.Compile(bodyenableIdLookup, nameof(bodyenableIdLookup), required: false);
             return new DeferredBodyAction<NEREntitiesResponse>(() =>
             {
                 var apiCallPath = "/cognitive/ner/v2/entities";
@@ -329,10 +276,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<CreateBookFromTemplateResponse> CreateBookFromTemplate(Expression<Func<string>> bodyticker = null, Expression<Func<string>> bodytemplateId = null)
         {
-            var __workflow_bodyticker = bodyticker == null ? null : WorkflowExpression.Compile(bodyticker);
-            WorkflowExpression.Validate(__workflow_bodyticker, nameof(bodyticker), required: false);
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyticker = WorkflowExpression.Compile(bodyticker, nameof(bodyticker), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
             return new DeferredBodyAction<CreateBookFromTemplateResponse>(() =>
             {
                 var apiCallPath = "/book-builder-api/v1/create-book-from-template";
@@ -364,8 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<JToken> GetPDF(Expression<Func<string>> bookId)
         {
-            var __workflow_bookId = bookId == null ? null : WorkflowExpression.Compile(bookId);
-            WorkflowExpression.Validate(__workflow_bookId, nameof(bookId), required: true);
+            var __workflow_bookId = WorkflowExpression.Compile(bookId, nameof(bookId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/book-builder-api/v1/download-api-book/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookId, 1));

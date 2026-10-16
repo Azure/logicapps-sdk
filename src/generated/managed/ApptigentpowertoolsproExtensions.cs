@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apptigentpowertoolspro")]
         public IWorkflowAction CompositeImage(Expression<Func<positionInput>> position, Expression<Func<double>> opacity, Expression<Func<object>> background, Expression<Func<object>> foreground, Expression<Func<double>> horizontal = null, Expression<Func<double>> vertical = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_position = position == null ? null : WorkflowExpression.Compile(position);
-            WorkflowExpression.Validate(__workflow_position, nameof(position), required: true);
-            var __workflow_opacity = opacity == null ? null : WorkflowExpression.Compile(opacity);
-            WorkflowExpression.Validate(__workflow_opacity, nameof(opacity), required: true);
-            var __workflow_background = background == null ? null : WorkflowExpression.Compile(background);
-            WorkflowExpression.Validate(__workflow_background, nameof(background), required: true);
-            var __workflow_foreground = foreground == null ? null : WorkflowExpression.Compile(foreground);
-            WorkflowExpression.Validate(__workflow_foreground, nameof(foreground), required: true);
-            var __workflow_horizontal = horizontal == null ? null : WorkflowExpression.Compile(horizontal);
-            WorkflowExpression.Validate(__workflow_horizontal, nameof(horizontal), required: false);
-            var __workflow_vertical = vertical == null ? null : WorkflowExpression.Compile(vertical);
-            WorkflowExpression.Validate(__workflow_vertical, nameof(vertical), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_position = WorkflowExpression.Compile(position, nameof(position), required: true);
+            var __workflow_opacity = WorkflowExpression.Compile(opacity, nameof(opacity), required: true);
+            var __workflow_background = WorkflowExpression.Compile(background, nameof(background), required: true);
+            var __workflow_foreground = WorkflowExpression.Compile(foreground, nameof(foreground), required: true);
+            var __workflow_horizontal = WorkflowExpression.Compile(horizontal, nameof(horizontal), required: false);
+            var __workflow_vertical = WorkflowExpression.Compile(vertical, nameof(vertical), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/CompositeImage";

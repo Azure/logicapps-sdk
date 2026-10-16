@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<JToken> ModelID(Expression<Func<string>> modelId, Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyquery = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
@@ -86,12 +81,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<FillMaskPostResponseItem[]> FillMask(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<FillMaskPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/bert-base-uncased";
@@ -133,28 +125,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<SummarizationPostResponseItem[]> Summarization(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
-            var __workflow_bodyparametersdoSample = bodyparametersdoSample == null ? null : WorkflowExpression.Compile(bodyparametersdoSample);
-            WorkflowExpression.Validate(__workflow_bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            var __workflow_bodyparametersminLength = bodyparametersminLength == null ? null : WorkflowExpression.Compile(bodyparametersminLength);
-            WorkflowExpression.Validate(__workflow_bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            var __workflow_bodyparametersmaxLength = bodyparametersmaxLength == null ? null : WorkflowExpression.Compile(bodyparametersmaxLength);
-            WorkflowExpression.Validate(__workflow_bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            var __workflow_bodyparameterstopK = bodyparameterstopK == null ? null : WorkflowExpression.Compile(bodyparameterstopK);
-            WorkflowExpression.Validate(__workflow_bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            var __workflow_bodyparameterstopP = bodyparameterstopP == null ? null : WorkflowExpression.Compile(bodyparameterstopP);
-            WorkflowExpression.Validate(__workflow_bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            var __workflow_bodyparameterstemperature = bodyparameterstemperature == null ? null : WorkflowExpression.Compile(bodyparameterstemperature);
-            WorkflowExpression.Validate(__workflow_bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            var __workflow_bodyparametersrepetitionPenalty = bodyparametersrepetitionPenalty == null ? null : WorkflowExpression.Compile(bodyparametersrepetitionPenalty);
-            WorkflowExpression.Validate(__workflow_bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            var __workflow_bodyparametersmaxTime = bodyparametersmaxTime == null ? null : WorkflowExpression.Compile(bodyparametersmaxTime);
-            WorkflowExpression.Validate(__workflow_bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyparametersdoSample = WorkflowExpression.Compile(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
+            var __workflow_bodyparametersminLength = WorkflowExpression.Compile(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
+            var __workflow_bodyparametersmaxLength = WorkflowExpression.Compile(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
+            var __workflow_bodyparameterstopK = WorkflowExpression.Compile(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
+            var __workflow_bodyparameterstopP = WorkflowExpression.Compile(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
+            var __workflow_bodyparameterstemperature = WorkflowExpression.Compile(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
+            var __workflow_bodyparametersrepetitionPenalty = WorkflowExpression.Compile(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
+            var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<SummarizationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-cnn";
@@ -256,10 +237,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<AnswerPostResponse> Answer(Expression<Func<string>> bodyinputsquestion = null, Expression<Func<string>> bodyinputscontext = null)
         {
-            var __workflow_bodyinputsquestion = bodyinputsquestion == null ? null : WorkflowExpression.Compile(bodyinputsquestion);
-            WorkflowExpression.Validate(__workflow_bodyinputsquestion, nameof(bodyinputsquestion), required: false);
-            var __workflow_bodyinputscontext = bodyinputscontext == null ? null : WorkflowExpression.Compile(bodyinputscontext);
-            WorkflowExpression.Validate(__workflow_bodyinputscontext, nameof(bodyinputscontext), required: false);
+            var __workflow_bodyinputsquestion = WorkflowExpression.Compile(bodyinputsquestion, nameof(bodyinputsquestion), required: false);
+            var __workflow_bodyinputscontext = WorkflowExpression.Compile(bodyinputscontext, nameof(bodyinputscontext), required: false);
             return new DeferredBodyAction<AnswerPostResponse>(() =>
             {
                 var apiCallPath = "/deepset/roberta-base-squad2";
@@ -299,14 +278,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<double[]> SentenceSimilarity(Expression<Func<string>> bodyinputssourceSentence = null, Expression<Func<string[]>> bodyinputssentences = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputssourceSentence = bodyinputssourceSentence == null ? null : WorkflowExpression.Compile(bodyinputssourceSentence);
-            WorkflowExpression.Validate(__workflow_bodyinputssourceSentence, nameof(bodyinputssourceSentence), required: false);
-            var __workflow_bodyinputssentences = bodyinputssentences == null ? null : WorkflowExpression.Compile(bodyinputssentences);
-            WorkflowExpression.Validate(__workflow_bodyinputssentences, nameof(bodyinputssentences), required: false);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputssourceSentence = WorkflowExpression.Compile(bodyinputssourceSentence, nameof(bodyinputssourceSentence), required: false);
+            var __workflow_bodyinputssentences = WorkflowExpression.Compile(bodyinputssentences, nameof(bodyinputssentences), required: false);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<double[]>(() =>
             {
                 var apiCallPath = "/sentence-transformers/all-MiniLM-L6-v2";
@@ -366,12 +341,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TextClassificationPostResponseItemItem[][]> TextClassification(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TextClassificationPostResponseItemItem[][]>(() =>
             {
                 var apiCallPath = "/distilbert-base-uncased-finetuned-sst-2-english";
@@ -413,28 +385,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TextGenerationPostResponseItem[]> TextGeneration(Expression<Func<string>> bodyinputs = null, Expression<Func<bool>> bodyparametersdoSample = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
-            var __workflow_bodyparametersdoSample = bodyparametersdoSample == null ? null : WorkflowExpression.Compile(bodyparametersdoSample);
-            WorkflowExpression.Validate(__workflow_bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
-            var __workflow_bodyparametersminLength = bodyparametersminLength == null ? null : WorkflowExpression.Compile(bodyparametersminLength);
-            WorkflowExpression.Validate(__workflow_bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            var __workflow_bodyparametersmaxLength = bodyparametersmaxLength == null ? null : WorkflowExpression.Compile(bodyparametersmaxLength);
-            WorkflowExpression.Validate(__workflow_bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            var __workflow_bodyparameterstopK = bodyparameterstopK == null ? null : WorkflowExpression.Compile(bodyparameterstopK);
-            WorkflowExpression.Validate(__workflow_bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            var __workflow_bodyparameterstopP = bodyparameterstopP == null ? null : WorkflowExpression.Compile(bodyparameterstopP);
-            WorkflowExpression.Validate(__workflow_bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            var __workflow_bodyparameterstemperature = bodyparameterstemperature == null ? null : WorkflowExpression.Compile(bodyparameterstemperature);
-            WorkflowExpression.Validate(__workflow_bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            var __workflow_bodyparametersrepetitionPenalty = bodyparametersrepetitionPenalty == null ? null : WorkflowExpression.Compile(bodyparametersrepetitionPenalty);
-            WorkflowExpression.Validate(__workflow_bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            var __workflow_bodyparametersmaxTime = bodyparametersmaxTime == null ? null : WorkflowExpression.Compile(bodyparametersmaxTime);
-            WorkflowExpression.Validate(__workflow_bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyparametersdoSample = WorkflowExpression.Compile(bodyparametersdoSample, nameof(bodyparametersdoSample), required: false);
+            var __workflow_bodyparametersminLength = WorkflowExpression.Compile(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
+            var __workflow_bodyparametersmaxLength = WorkflowExpression.Compile(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
+            var __workflow_bodyparameterstopK = WorkflowExpression.Compile(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
+            var __workflow_bodyparameterstopP = WorkflowExpression.Compile(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
+            var __workflow_bodyparameterstemperature = WorkflowExpression.Compile(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
+            var __workflow_bodyparametersrepetitionPenalty = WorkflowExpression.Compile(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
+            var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TextGenerationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/gpt2";
@@ -536,14 +497,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TokenClassificationPostResponseItem[]> TokenClassification(Expression<Func<string>> bodyinputs, Expression<Func<string>> bodyparametersaggregationStrategy = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyparametersaggregationStrategy = bodyparametersaggregationStrategy == null ? null : WorkflowExpression.Compile(bodyparametersaggregationStrategy);
-            WorkflowExpression.Validate(__workflow_bodyparametersaggregationStrategy, nameof(bodyparametersaggregationStrategy), required: false);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyparametersaggregationStrategy = WorkflowExpression.Compile(bodyparametersaggregationStrategy, nameof(bodyparametersaggregationStrategy), required: false);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TokenClassificationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/dbmdz/bert-large-cased-finetuned-conll03-english";
@@ -599,12 +556,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<TranslationPostResponseItem[]> Translation(Expression<Func<string>> bodyinputs, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: true);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: true);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<TranslationPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/t5-base";
@@ -646,16 +600,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<ZeroShotPostResponse> ZeroShot(Expression<Func<string>> bodyinputs = null, Expression<Func<string[]>> bodyparameterscandidateLabels = null, Expression<Func<bool>> bodyparametersmultiLabel = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
-            var __workflow_bodyparameterscandidateLabels = bodyparameterscandidateLabels == null ? null : WorkflowExpression.Compile(bodyparameterscandidateLabels);
-            WorkflowExpression.Validate(__workflow_bodyparameterscandidateLabels, nameof(bodyparameterscandidateLabels), required: false);
-            var __workflow_bodyparametersmultiLabel = bodyparametersmultiLabel == null ? null : WorkflowExpression.Compile(bodyparametersmultiLabel);
-            WorkflowExpression.Validate(__workflow_bodyparametersmultiLabel, nameof(bodyparametersmultiLabel), required: false);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyparameterscandidateLabels = WorkflowExpression.Compile(bodyparameterscandidateLabels, nameof(bodyparameterscandidateLabels), required: false);
+            var __workflow_bodyparametersmultiLabel = WorkflowExpression.Compile(bodyparametersmultiLabel, nameof(bodyparametersmultiLabel), required: false);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<ZeroShotPostResponse>(() =>
             {
                 var apiCallPath = "/facebook/bart-large-mnli";
@@ -721,30 +670,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huggingfaceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huggingfaceip")]
         public IBodyWorkflowAction<ConversationalPostResponse> Conversational(Expression<Func<string[]>> bodyinputspastUserInputs = null, Expression<Func<string[]>> bodyinputsgeneratedResponses = null, Expression<Func<string>> bodyinputstext = null, Expression<Func<int>> bodyparametersminLength = null, Expression<Func<int>> bodyparametersmaxLength = null, Expression<Func<int>> bodyparameterstopK = null, Expression<Func<int>> bodyparameterstopP = null, Expression<Func<double>> bodyparameterstemperature = null, Expression<Func<double>> bodyparametersrepetitionPenalty = null, Expression<Func<double>> bodyparametersmaxTime = null, Expression<Func<bool>> bodyoptionsuseCache = null, Expression<Func<bool>> bodyoptionswaitForModel = null)
         {
-            var __workflow_bodyinputspastUserInputs = bodyinputspastUserInputs == null ? null : WorkflowExpression.Compile(bodyinputspastUserInputs);
-            WorkflowExpression.Validate(__workflow_bodyinputspastUserInputs, nameof(bodyinputspastUserInputs), required: false);
-            var __workflow_bodyinputsgeneratedResponses = bodyinputsgeneratedResponses == null ? null : WorkflowExpression.Compile(bodyinputsgeneratedResponses);
-            WorkflowExpression.Validate(__workflow_bodyinputsgeneratedResponses, nameof(bodyinputsgeneratedResponses), required: false);
-            var __workflow_bodyinputstext = bodyinputstext == null ? null : WorkflowExpression.Compile(bodyinputstext);
-            WorkflowExpression.Validate(__workflow_bodyinputstext, nameof(bodyinputstext), required: false);
-            var __workflow_bodyparametersminLength = bodyparametersminLength == null ? null : WorkflowExpression.Compile(bodyparametersminLength);
-            WorkflowExpression.Validate(__workflow_bodyparametersminLength, nameof(bodyparametersminLength), required: false);
-            var __workflow_bodyparametersmaxLength = bodyparametersmaxLength == null ? null : WorkflowExpression.Compile(bodyparametersmaxLength);
-            WorkflowExpression.Validate(__workflow_bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
-            var __workflow_bodyparameterstopK = bodyparameterstopK == null ? null : WorkflowExpression.Compile(bodyparameterstopK);
-            WorkflowExpression.Validate(__workflow_bodyparameterstopK, nameof(bodyparameterstopK), required: false);
-            var __workflow_bodyparameterstopP = bodyparameterstopP == null ? null : WorkflowExpression.Compile(bodyparameterstopP);
-            WorkflowExpression.Validate(__workflow_bodyparameterstopP, nameof(bodyparameterstopP), required: false);
-            var __workflow_bodyparameterstemperature = bodyparameterstemperature == null ? null : WorkflowExpression.Compile(bodyparameterstemperature);
-            WorkflowExpression.Validate(__workflow_bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
-            var __workflow_bodyparametersrepetitionPenalty = bodyparametersrepetitionPenalty == null ? null : WorkflowExpression.Compile(bodyparametersrepetitionPenalty);
-            WorkflowExpression.Validate(__workflow_bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
-            var __workflow_bodyparametersmaxTime = bodyparametersmaxTime == null ? null : WorkflowExpression.Compile(bodyparametersmaxTime);
-            WorkflowExpression.Validate(__workflow_bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
-            var __workflow_bodyoptionsuseCache = bodyoptionsuseCache == null ? null : WorkflowExpression.Compile(bodyoptionsuseCache);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
-            var __workflow_bodyoptionswaitForModel = bodyoptionswaitForModel == null ? null : WorkflowExpression.Compile(bodyoptionswaitForModel);
-            WorkflowExpression.Validate(__workflow_bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
+            var __workflow_bodyinputspastUserInputs = WorkflowExpression.Compile(bodyinputspastUserInputs, nameof(bodyinputspastUserInputs), required: false);
+            var __workflow_bodyinputsgeneratedResponses = WorkflowExpression.Compile(bodyinputsgeneratedResponses, nameof(bodyinputsgeneratedResponses), required: false);
+            var __workflow_bodyinputstext = WorkflowExpression.Compile(bodyinputstext, nameof(bodyinputstext), required: false);
+            var __workflow_bodyparametersminLength = WorkflowExpression.Compile(bodyparametersminLength, nameof(bodyparametersminLength), required: false);
+            var __workflow_bodyparametersmaxLength = WorkflowExpression.Compile(bodyparametersmaxLength, nameof(bodyparametersmaxLength), required: false);
+            var __workflow_bodyparameterstopK = WorkflowExpression.Compile(bodyparameterstopK, nameof(bodyparameterstopK), required: false);
+            var __workflow_bodyparameterstopP = WorkflowExpression.Compile(bodyparameterstopP, nameof(bodyparameterstopP), required: false);
+            var __workflow_bodyparameterstemperature = WorkflowExpression.Compile(bodyparameterstemperature, nameof(bodyparameterstemperature), required: false);
+            var __workflow_bodyparametersrepetitionPenalty = WorkflowExpression.Compile(bodyparametersrepetitionPenalty, nameof(bodyparametersrepetitionPenalty), required: false);
+            var __workflow_bodyparametersmaxTime = WorkflowExpression.Compile(bodyparametersmaxTime, nameof(bodyparametersmaxTime), required: false);
+            var __workflow_bodyoptionsuseCache = WorkflowExpression.Compile(bodyoptionsuseCache, nameof(bodyoptionsuseCache), required: false);
+            var __workflow_bodyoptionswaitForModel = WorkflowExpression.Compile(bodyoptionswaitForModel, nameof(bodyoptionswaitForModel), required: false);
             return new DeferredBodyAction<ConversationalPostResponse>(() =>
             {
                 var apiCallPath = "/microsoft/DialoGPT-large";

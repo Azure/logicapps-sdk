@@ -13,40 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
         public IBodyWorkflowAction<JToken> CreateProduct(Expression<Func<string>> bodytREEID, Expression<Func<string>> bodyiD = null, Expression<Func<double>> bodycTYPE = null, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
         {
-            var __workflow_bodytREEID = bodytREEID == null ? null : WorkflowExpression.Compile(bodytREEID);
-            WorkflowExpression.Validate(__workflow_bodytREEID, nameof(bodytREEID), required: true);
-            var __workflow_bodyiD = bodyiD == null ? null : WorkflowExpression.Compile(bodyiD);
-            WorkflowExpression.Validate(__workflow_bodyiD, nameof(bodyiD), required: false);
-            var __workflow_bodycTYPE = bodycTYPE == null ? null : WorkflowExpression.Compile(bodycTYPE);
-            WorkflowExpression.Validate(__workflow_bodycTYPE, nameof(bodycTYPE), required: false);
-            var __workflow_bodydESCR1 = bodydESCR1 == null ? null : WorkflowExpression.Compile(bodydESCR1);
-            WorkflowExpression.Validate(__workflow_bodydESCR1, nameof(bodydESCR1), required: false);
-            var __workflow_bodydESCR2 = bodydESCR2 == null ? null : WorkflowExpression.Compile(bodydESCR2);
-            WorkflowExpression.Validate(__workflow_bodydESCR2, nameof(bodydESCR2), required: false);
-            var __workflow_bodydESCR3 = bodydESCR3 == null ? null : WorkflowExpression.Compile(bodydESCR3);
-            WorkflowExpression.Validate(__workflow_bodydESCR3, nameof(bodydESCR3), required: false);
-            var __workflow_bodytYPE = bodytYPE == null ? null : WorkflowExpression.Compile(bodytYPE);
-            WorkflowExpression.Validate(__workflow_bodytYPE, nameof(bodytYPE), required: false);
-            var __workflow_bodymEMO = bodymEMO == null ? null : WorkflowExpression.Compile(bodymEMO);
-            WorkflowExpression.Validate(__workflow_bodymEMO, nameof(bodymEMO), required: false);
-            var __workflow_bodyuPC = bodyuPC == null ? null : WorkflowExpression.Compile(bodyuPC);
-            WorkflowExpression.Validate(__workflow_bodyuPC, nameof(bodyuPC), required: false);
-            var __workflow_bodymFG = bodymFG == null ? null : WorkflowExpression.Compile(bodymFG);
-            WorkflowExpression.Validate(__workflow_bodymFG, nameof(bodymFG), required: false);
-            var __workflow_bodymFGPART = bodymFGPART == null ? null : WorkflowExpression.Compile(bodymFGPART);
-            WorkflowExpression.Validate(__workflow_bodymFGPART, nameof(bodymFGPART), required: false);
-            var __workflow_bodypRIVENDOR = bodypRIVENDOR == null ? null : WorkflowExpression.Compile(bodypRIVENDOR);
-            WorkflowExpression.Validate(__workflow_bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
-            var __workflow_bodyeACHUNIT = bodyeACHUNIT == null ? null : WorkflowExpression.Compile(bodyeACHUNIT);
-            WorkflowExpression.Validate(__workflow_bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
-            var __workflow_bodywEIGHT = bodywEIGHT == null ? null : WorkflowExpression.Compile(bodywEIGHT);
-            WorkflowExpression.Validate(__workflow_bodywEIGHT, nameof(bodywEIGHT), required: false);
-            var __workflow_bodycOST = bodycOST == null ? null : WorkflowExpression.Compile(bodycOST);
-            WorkflowExpression.Validate(__workflow_bodycOST, nameof(bodycOST), required: false);
-            var __workflow_bodybASE = bodybASE == null ? null : WorkflowExpression.Compile(bodybASE);
-            WorkflowExpression.Validate(__workflow_bodybASE, nameof(bodybASE), required: false);
-            var __workflow_bodyeXTERNALID = bodyeXTERNALID == null ? null : WorkflowExpression.Compile(bodyeXTERNALID);
-            WorkflowExpression.Validate(__workflow_bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
+            var __workflow_bodytREEID = WorkflowExpression.Compile(bodytREEID, nameof(bodytREEID), required: true);
+            var __workflow_bodyiD = WorkflowExpression.Compile(bodyiD, nameof(bodyiD), required: false);
+            var __workflow_bodycTYPE = WorkflowExpression.Compile(bodycTYPE, nameof(bodycTYPE), required: false);
+            var __workflow_bodydESCR1 = WorkflowExpression.Compile(bodydESCR1, nameof(bodydESCR1), required: false);
+            var __workflow_bodydESCR2 = WorkflowExpression.Compile(bodydESCR2, nameof(bodydESCR2), required: false);
+            var __workflow_bodydESCR3 = WorkflowExpression.Compile(bodydESCR3, nameof(bodydESCR3), required: false);
+            var __workflow_bodytYPE = WorkflowExpression.Compile(bodytYPE, nameof(bodytYPE), required: false);
+            var __workflow_bodymEMO = WorkflowExpression.Compile(bodymEMO, nameof(bodymEMO), required: false);
+            var __workflow_bodyuPC = WorkflowExpression.Compile(bodyuPC, nameof(bodyuPC), required: false);
+            var __workflow_bodymFG = WorkflowExpression.Compile(bodymFG, nameof(bodymFG), required: false);
+            var __workflow_bodymFGPART = WorkflowExpression.Compile(bodymFGPART, nameof(bodymFGPART), required: false);
+            var __workflow_bodypRIVENDOR = WorkflowExpression.Compile(bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
+            var __workflow_bodyeACHUNIT = WorkflowExpression.Compile(bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
+            var __workflow_bodywEIGHT = WorkflowExpression.Compile(bodywEIGHT, nameof(bodywEIGHT), required: false);
+            var __workflow_bodycOST = WorkflowExpression.Compile(bodycOST, nameof(bodycOST), required: false);
+            var __workflow_bodybASE = WorkflowExpression.Compile(bodybASE, nameof(bodybASE), required: false);
+            var __workflow_bodyeXTERNALID = WorkflowExpression.Compile(bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/INVENTRY";
@@ -164,36 +147,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ebms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ebms")]
         public IBodyWorkflowAction<JToken> UpdateProduct(Expression<Func<string>> productId, Expression<Func<string>> bodydESCR1 = null, Expression<Func<string>> bodydESCR2 = null, Expression<Func<string>> bodydESCR3 = null, Expression<Func<string>> bodytYPE = null, Expression<Func<string>> bodymEMO = null, Expression<Func<string>> bodyuPC = null, Expression<Func<string>> bodymFG = null, Expression<Func<string>> bodymFGPART = null, Expression<Func<string>> bodypRIVENDOR = null, Expression<Func<string>> bodyeACHUNIT = null, Expression<Func<double>> bodywEIGHT = null, Expression<Func<double>> bodycOST = null, Expression<Func<double>> bodybASE = null, Expression<Func<string>> bodyeXTERNALID = null)
         {
-            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
-            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: true);
-            var __workflow_bodydESCR1 = bodydESCR1 == null ? null : WorkflowExpression.Compile(bodydESCR1);
-            WorkflowExpression.Validate(__workflow_bodydESCR1, nameof(bodydESCR1), required: false);
-            var __workflow_bodydESCR2 = bodydESCR2 == null ? null : WorkflowExpression.Compile(bodydESCR2);
-            WorkflowExpression.Validate(__workflow_bodydESCR2, nameof(bodydESCR2), required: false);
-            var __workflow_bodydESCR3 = bodydESCR3 == null ? null : WorkflowExpression.Compile(bodydESCR3);
-            WorkflowExpression.Validate(__workflow_bodydESCR3, nameof(bodydESCR3), required: false);
-            var __workflow_bodytYPE = bodytYPE == null ? null : WorkflowExpression.Compile(bodytYPE);
-            WorkflowExpression.Validate(__workflow_bodytYPE, nameof(bodytYPE), required: false);
-            var __workflow_bodymEMO = bodymEMO == null ? null : WorkflowExpression.Compile(bodymEMO);
-            WorkflowExpression.Validate(__workflow_bodymEMO, nameof(bodymEMO), required: false);
-            var __workflow_bodyuPC = bodyuPC == null ? null : WorkflowExpression.Compile(bodyuPC);
-            WorkflowExpression.Validate(__workflow_bodyuPC, nameof(bodyuPC), required: false);
-            var __workflow_bodymFG = bodymFG == null ? null : WorkflowExpression.Compile(bodymFG);
-            WorkflowExpression.Validate(__workflow_bodymFG, nameof(bodymFG), required: false);
-            var __workflow_bodymFGPART = bodymFGPART == null ? null : WorkflowExpression.Compile(bodymFGPART);
-            WorkflowExpression.Validate(__workflow_bodymFGPART, nameof(bodymFGPART), required: false);
-            var __workflow_bodypRIVENDOR = bodypRIVENDOR == null ? null : WorkflowExpression.Compile(bodypRIVENDOR);
-            WorkflowExpression.Validate(__workflow_bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
-            var __workflow_bodyeACHUNIT = bodyeACHUNIT == null ? null : WorkflowExpression.Compile(bodyeACHUNIT);
-            WorkflowExpression.Validate(__workflow_bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
-            var __workflow_bodywEIGHT = bodywEIGHT == null ? null : WorkflowExpression.Compile(bodywEIGHT);
-            WorkflowExpression.Validate(__workflow_bodywEIGHT, nameof(bodywEIGHT), required: false);
-            var __workflow_bodycOST = bodycOST == null ? null : WorkflowExpression.Compile(bodycOST);
-            WorkflowExpression.Validate(__workflow_bodycOST, nameof(bodycOST), required: false);
-            var __workflow_bodybASE = bodybASE == null ? null : WorkflowExpression.Compile(bodybASE);
-            WorkflowExpression.Validate(__workflow_bodybASE, nameof(bodybASE), required: false);
-            var __workflow_bodyeXTERNALID = bodyeXTERNALID == null ? null : WorkflowExpression.Compile(bodyeXTERNALID);
-            WorkflowExpression.Validate(__workflow_bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            var __workflow_bodydESCR1 = WorkflowExpression.Compile(bodydESCR1, nameof(bodydESCR1), required: false);
+            var __workflow_bodydESCR2 = WorkflowExpression.Compile(bodydESCR2, nameof(bodydESCR2), required: false);
+            var __workflow_bodydESCR3 = WorkflowExpression.Compile(bodydESCR3, nameof(bodydESCR3), required: false);
+            var __workflow_bodytYPE = WorkflowExpression.Compile(bodytYPE, nameof(bodytYPE), required: false);
+            var __workflow_bodymEMO = WorkflowExpression.Compile(bodymEMO, nameof(bodymEMO), required: false);
+            var __workflow_bodyuPC = WorkflowExpression.Compile(bodyuPC, nameof(bodyuPC), required: false);
+            var __workflow_bodymFG = WorkflowExpression.Compile(bodymFG, nameof(bodymFG), required: false);
+            var __workflow_bodymFGPART = WorkflowExpression.Compile(bodymFGPART, nameof(bodymFGPART), required: false);
+            var __workflow_bodypRIVENDOR = WorkflowExpression.Compile(bodypRIVENDOR, nameof(bodypRIVENDOR), required: false);
+            var __workflow_bodyeACHUNIT = WorkflowExpression.Compile(bodyeACHUNIT, nameof(bodyeACHUNIT), required: false);
+            var __workflow_bodywEIGHT = WorkflowExpression.Compile(bodywEIGHT, nameof(bodywEIGHT), required: false);
+            var __workflow_bodycOST = WorkflowExpression.Compile(bodycOST, nameof(bodycOST), required: false);
+            var __workflow_bodybASE = WorkflowExpression.Compile(bodybASE, nameof(bodybASE), required: false);
+            var __workflow_bodyeXTERNALID = WorkflowExpression.Compile(bodyeXTERNALID, nameof(bodyeXTERNALID), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/INVENTRY(ID='{0}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));

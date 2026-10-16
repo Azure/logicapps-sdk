@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet(Expression<Func<string>> search = null, Expression<Func<string>> activity = null, Expression<Func<string>> campaignId = null, Expression<Func<bool>> campaignsDetail = null, Expression<Func<sortInput>> sort = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_activity = activity == null ? null : WorkflowExpression.Compile(activity);
-            WorkflowExpression.Validate(__workflow_activity, nameof(activity), required: false);
-            var __workflow_campaignId = campaignId == null ? null : WorkflowExpression.Compile(campaignId);
-            WorkflowExpression.Validate(__workflow_campaignId, nameof(campaignId), required: false);
-            var __workflow_campaignsDetail = campaignsDetail == null ? null : WorkflowExpression.Compile(campaignsDetail);
-            WorkflowExpression.Validate(__workflow_campaignsDetail, nameof(campaignsDetail), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_activity = WorkflowExpression.Compile(activity, nameof(activity), required: false);
+            var __workflow_campaignId = WorkflowExpression.Compile(campaignId, nameof(campaignId), required: false);
+            var __workflow_campaignsDetail = WorkflowExpression.Compile(campaignsDetail, nameof(campaignsDetail), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<ProspectsGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/prospects";
@@ -58,10 +50,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<string> ProspectsDelete(Expression<Func<int>> id = null, Expression<Func<int>> campaignsId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_campaignsId = campaignsId == null ? null : WorkflowExpression.Compile(campaignsId);
-            WorkflowExpression.Validate(__workflow_campaignsId, nameof(campaignsId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_campaignsId = WorkflowExpression.Compile(campaignsId, nameof(campaignsId), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/prospects";
@@ -78,12 +68,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<ProspectsPostResponse> Prospects(Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem[]>> bodyprospects = null)
         {
-            var __workflow_bodyupdate = bodyupdate == null ? null : WorkflowExpression.Compile(bodyupdate);
-            WorkflowExpression.Validate(__workflow_bodyupdate, nameof(bodyupdate), required: false);
-            var __workflow_bodyforce = bodyforce == null ? null : WorkflowExpression.Compile(bodyforce);
-            WorkflowExpression.Validate(__workflow_bodyforce, nameof(bodyforce), required: false);
-            var __workflow_bodyprospects = bodyprospects == null ? null : WorkflowExpression.Compile(bodyprospects);
-            WorkflowExpression.Validate(__workflow_bodyprospects, nameof(bodyprospects), required: false);
+            var __workflow_bodyupdate = WorkflowExpression.Compile(bodyupdate, nameof(bodyupdate), required: false);
+            var __workflow_bodyforce = WorkflowExpression.Compile(bodyforce, nameof(bodyforce), required: false);
+            var __workflow_bodyprospects = WorkflowExpression.Compile(bodyprospects, nameof(bodyprospects), required: false);
             return new DeferredBodyAction<ProspectsPostResponse>(() =>
             {
                 var apiCallPath = "/add_prospects_list";
@@ -121,14 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign(Expression<Func<int>> bodycampaigncampaignId = null, Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem2[]>> bodyprospects = null)
         {
-            var __workflow_bodycampaigncampaignId = bodycampaigncampaignId == null ? null : WorkflowExpression.Compile(bodycampaigncampaignId);
-            WorkflowExpression.Validate(__workflow_bodycampaigncampaignId, nameof(bodycampaigncampaignId), required: false);
-            var __workflow_bodyupdate = bodyupdate == null ? null : WorkflowExpression.Compile(bodyupdate);
-            WorkflowExpression.Validate(__workflow_bodyupdate, nameof(bodyupdate), required: false);
-            var __workflow_bodyforce = bodyforce == null ? null : WorkflowExpression.Compile(bodyforce);
-            WorkflowExpression.Validate(__workflow_bodyforce, nameof(bodyforce), required: false);
-            var __workflow_bodyprospects = bodyprospects == null ? null : WorkflowExpression.Compile(bodyprospects);
-            WorkflowExpression.Validate(__workflow_bodyprospects, nameof(bodyprospects), required: false);
+            var __workflow_bodycampaigncampaignId = WorkflowExpression.Compile(bodycampaigncampaignId, nameof(bodycampaigncampaignId), required: false);
+            var __workflow_bodyupdate = WorkflowExpression.Compile(bodyupdate, nameof(bodyupdate), required: false);
+            var __workflow_bodyforce = WorkflowExpression.Compile(bodyforce, nameof(bodyforce), required: false);
+            var __workflow_bodyprospects = WorkflowExpression.Compile(bodyprospects, nameof(bodyprospects), required: false);
             return new DeferredBodyAction<ProspectsCampaignPostResponse>(() =>
             {
                 var apiCallPath = "/add_prospects_campaign";
@@ -180,10 +163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
         public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet(Expression<Func<statusInput>> status = null, Expression<Func<int>> id = null)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             return new DeferredBodyAction<CampaignsGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/campaign_list";

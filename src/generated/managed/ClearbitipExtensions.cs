@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clearbitip")]
         public IBodyWorkflowAction<JToken> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> greyscale = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_greyscale = greyscale == null ? null : WorkflowExpression.Compile(greyscale);
-            WorkflowExpression.Validate(__workflow_greyscale, nameof(greyscale), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_greyscale = WorkflowExpression.Compile(greyscale, nameof(greyscale), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));

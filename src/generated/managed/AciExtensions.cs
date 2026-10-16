@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsList(Expression<Func<string>> subscriptionId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             return new DeferredBodyAction<ContainerGroupListResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
@@ -28,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroupListResult> ContainerGroupsListByResourceGroup(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
             return new DeferredBodyAction<ContainerGroupListResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1));
@@ -45,12 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredBodyAction<ContainerGroup>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
@@ -64,22 +58,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsUpdate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> resourceid = null, Expression<Func<string>> resourcename = null, Expression<Func<string>> resourcetype = null, Expression<Func<string>> resourcelocation = null, Expression<Func<string[]>> resourcezones = null)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
-            var __workflow_resourceid = resourceid == null ? null : WorkflowExpression.Compile(resourceid);
-            WorkflowExpression.Validate(__workflow_resourceid, nameof(resourceid), required: false);
-            var __workflow_resourcename = resourcename == null ? null : WorkflowExpression.Compile(resourcename);
-            WorkflowExpression.Validate(__workflow_resourcename, nameof(resourcename), required: false);
-            var __workflow_resourcetype = resourcetype == null ? null : WorkflowExpression.Compile(resourcetype);
-            WorkflowExpression.Validate(__workflow_resourcetype, nameof(resourcetype), required: false);
-            var __workflow_resourcelocation = resourcelocation == null ? null : WorkflowExpression.Compile(resourcelocation);
-            WorkflowExpression.Validate(__workflow_resourcelocation, nameof(resourcelocation), required: false);
-            var __workflow_resourcezones = resourcezones == null ? null : WorkflowExpression.Compile(resourcezones);
-            WorkflowExpression.Validate(__workflow_resourcezones, nameof(resourcezones), required: false);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_resourceid = WorkflowExpression.Compile(resourceid, nameof(resourceid), required: false);
+            var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: false);
+            var __workflow_resourcetype = WorkflowExpression.Compile(resourcetype, nameof(resourcetype), required: false);
+            var __workflow_resourcelocation = WorkflowExpression.Compile(resourcelocation, nameof(resourcelocation), required: false);
+            var __workflow_resourcezones = WorkflowExpression.Compile(resourcezones, nameof(resourcezones), required: false);
             return new DeferredBodyAction<ContainerGroup>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
@@ -138,12 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerGroup> ContainerGroupsDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredBodyAction<ContainerGroup>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
@@ -157,12 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
@@ -176,12 +156,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStop(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
@@ -195,12 +172,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction ContainerGroupsStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
@@ -214,10 +188,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<UsageListResult> LocationListUsage(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<UsageListResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/usages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -231,16 +203,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<Logs> ContainerLogsList(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<int>> tail = null)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_tail = tail == null ? null : WorkflowExpression.Compile(tail);
-            WorkflowExpression.Validate(__workflow_tail, nameof(tail), required: false);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_tail = WorkflowExpression.Compile(tail, nameof(tail), required: false);
             return new DeferredBodyAction<Logs>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/logs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
@@ -256,20 +223,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerExecResponse> ContainersExecuteCommand(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName, Expression<Func<string>> containerExecRequestcommand = null, Expression<Func<int>> containerExecRequestterminalSizerows = null, Expression<Func<int>> containerExecRequestterminalSizecols = null)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_containerExecRequestcommand = containerExecRequestcommand == null ? null : WorkflowExpression.Compile(containerExecRequestcommand);
-            WorkflowExpression.Validate(__workflow_containerExecRequestcommand, nameof(containerExecRequestcommand), required: false);
-            var __workflow_containerExecRequestterminalSizerows = containerExecRequestterminalSizerows == null ? null : WorkflowExpression.Compile(containerExecRequestterminalSizerows);
-            WorkflowExpression.Validate(__workflow_containerExecRequestterminalSizerows, nameof(containerExecRequestterminalSizerows), required: false);
-            var __workflow_containerExecRequestterminalSizecols = containerExecRequestterminalSizecols == null ? null : WorkflowExpression.Compile(containerExecRequestterminalSizecols);
-            WorkflowExpression.Validate(__workflow_containerExecRequestterminalSizecols, nameof(containerExecRequestterminalSizecols), required: false);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_containerExecRequestcommand = WorkflowExpression.Compile(containerExecRequestcommand, nameof(containerExecRequestcommand), required: false);
+            var __workflow_containerExecRequestterminalSizerows = WorkflowExpression.Compile(containerExecRequestterminalSizerows, nameof(containerExecRequestterminalSizerows), required: false);
+            var __workflow_containerExecRequestterminalSizecols = WorkflowExpression.Compile(containerExecRequestterminalSizecols, nameof(containerExecRequestterminalSizecols), required: false);
             return new DeferredBodyAction<ContainerExecResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/exec", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
@@ -316,14 +276,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<ContainerAttachResponse> ContainersAttach(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName, Expression<Func<string>> containerName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             return new DeferredBodyAction<ContainerAttachResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/containers/{3}/attach", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerName, 1));
@@ -337,10 +293,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CachedImagesListResult> LocationListCachedImages(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<CachedImagesListResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/cachedImages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -354,10 +308,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<CapabilitiesListResult> LocationListCapabilities(Expression<Func<string>> subscriptionId, Expression<Func<string>> location)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<CapabilitiesListResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/providers/Microsoft.ContainerInstance/locations/{1}/capabilities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -371,12 +323,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IBodyWorkflowAction<string[]> ContainerGroupsGetOutboundNetworkDependenciesEndpoints(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> containerGroupName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_containerGroupName = containerGroupName == null ? null : WorkflowExpression.Compile(containerGroupName);
-            WorkflowExpression.Validate(__workflow_containerGroupName, nameof(containerGroupName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_containerGroupName = WorkflowExpression.Compile(containerGroupName, nameof(containerGroupName), required: true);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.ContainerInstance/containerGroups/{2}/outboundNetworkDependenciesEndpoints", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerGroupName, 1));
@@ -390,14 +339,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aci
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aci")]
         public IWorkflowAction SubnetServiceAssociationLinkDelete(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualNetworkName, Expression<Func<string>> subnetName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualNetworkName = virtualNetworkName == null ? null : WorkflowExpression.Compile(virtualNetworkName);
-            WorkflowExpression.Validate(__workflow_virtualNetworkName, nameof(virtualNetworkName), required: true);
-            var __workflow_subnetName = subnetName == null ? null : WorkflowExpression.Compile(subnetName);
-            WorkflowExpression.Validate(__workflow_subnetName, nameof(subnetName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualNetworkName = WorkflowExpression.Compile(virtualNetworkName, nameof(virtualNetworkName), required: true);
+            var __workflow_subnetName = WorkflowExpression.Compile(subnetName, nameof(subnetName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Network/virtualNetworks/{2}/subnets/{3}/providers/Microsoft.ContainerInstance/serviceAssociationLinks/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualNetworkName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subnetName, 1));

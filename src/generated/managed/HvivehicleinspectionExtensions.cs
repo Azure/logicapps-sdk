@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
         public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyvehicleNumber, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate)
         {
-            var __workflow_sv = sv == null ? null : WorkflowExpression.Compile(sv);
-            WorkflowExpression.Validate(__workflow_sv, nameof(sv), required: true);
-            var __workflow_bodymasterEmail = bodymasterEmail == null ? null : WorkflowExpression.Compile(bodymasterEmail);
-            WorkflowExpression.Validate(__workflow_bodymasterEmail, nameof(bodymasterEmail), required: true);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodyvehicleNumber = bodyvehicleNumber == null ? null : WorkflowExpression.Compile(bodyvehicleNumber);
-            WorkflowExpression.Validate(__workflow_bodyvehicleNumber, nameof(bodyvehicleNumber), required: true);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: true);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_sv = WorkflowExpression.Compile(sv, nameof(sv), required: true);
+            var __workflow_bodymasterEmail = WorkflowExpression.Compile(bodymasterEmail, nameof(bodymasterEmail), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyvehicleNumber = WorkflowExpression.Compile(bodyvehicleNumber, nameof(bodyvehicleNumber), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
             return new DeferredBodyAction<InspectionPerVehicleResponseItem[]>(() =>
             {
                 var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetIdeasResponseItem[]> GetIdeas(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
         {
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: false);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
             return new DeferredBodyAction<GetIdeasResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/data/connector/innovate/activity";
@@ -32,10 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetVotesResponseItem[]> GetVotes(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
         {
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: false);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
             return new DeferredBodyAction<GetVotesResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/data/connector/vote/activity";
@@ -51,10 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetExploreResponsesResponseItem[]> GetExploreResponses(Expression<Func<string>> activityId, Expression<Func<string>> networkId = null)
         {
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: false);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
             return new DeferredBodyAction<GetExploreResponsesResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/data/connector/explore/activity";
@@ -79,10 +73,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> GetActivities(Expression<Func<string>> networkId, Expression<Func<activityTypeInput>> activityType)
         {
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: true);
-            var __workflow_activityType = activityType == null ? null : WorkflowExpression.Compile(activityType);
-            WorkflowExpression.Validate(__workflow_activityType, nameof(activityType), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityType = WorkflowExpression.Compile(activityType, nameof(activityType), required: true);
             return new DeferredBodyAction<GetActivitiesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1));
@@ -96,12 +88,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeaResponse> AddIdea(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<string>> bodytext)
         {
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: true);
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<AddIdeaResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
@@ -123,12 +112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vocean")]
         public IBodyWorkflowAction<AddIdeasResponseItem[]> AddIdeas(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: true);
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddIdeasResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/many", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
@@ -144,12 +130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
     {
         public IWorkflowTrigger IdeaTrigger(Expression<Func<string>> networkId, Expression<Func<string>> activityId, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: true);
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
-            var __workflow_bodyeventTypes = bodyeventTypes == null ? null : WorkflowExpression.Compile(bodyeventTypes);
-            WorkflowExpression.Validate(__workflow_bodyeventTypes, nameof(bodyeventTypes), required: false);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: true);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
+            var __workflow_bodyeventTypes = WorkflowExpression.Compile(bodyeventTypes, nameof(bodyeventTypes), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/connector/v2/networks/{0}/activities/{1}/ideas/webhooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_networkId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
@@ -176,10 +159,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
 
         public IWorkflowTrigger UserActivityTrigger(Expression<Func<string>> networkId = null, Expression<Func<bodyeventTypesInputItem[]>> bodyeventTypes = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_networkId = networkId == null ? null : WorkflowExpression.Compile(networkId);
-            WorkflowExpression.Validate(__workflow_networkId, nameof(networkId), required: false);
-            var __workflow_bodyeventTypes = bodyeventTypes == null ? null : WorkflowExpression.Compile(bodyeventTypes);
-            WorkflowExpression.Validate(__workflow_bodyeventTypes, nameof(bodyeventTypes), required: false);
+            var __workflow_networkId = WorkflowExpression.Compile(networkId, nameof(networkId), required: false);
+            var __workflow_bodyeventTypes = WorkflowExpression.Compile(bodyeventTypes, nameof(bodyeventTypes), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/connector/v2/current-user/activities/webhooks";

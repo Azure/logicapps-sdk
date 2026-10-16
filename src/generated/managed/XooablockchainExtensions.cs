@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooablockchain
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooablockchain")]
         public IWorkflowAction Create(Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
         {
-            var __workflow_async = async == null ? null : WorkflowExpression.Compile(async);
-            WorkflowExpression.Validate(__workflow_async, nameof(async), required: false);
-            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
-            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_async = WorkflowExpression.Compile(async, nameof(async), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/xldb/create";

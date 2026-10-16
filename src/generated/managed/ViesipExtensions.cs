@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
         public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity(Expression<Func<bodycountryCodeInput>> bodycountryCode, Expression<Func<string>> bodyvatNumber)
         {
-            var __workflow_bodycountryCode = bodycountryCode == null ? null : WorkflowExpression.Compile(bodycountryCode);
-            WorkflowExpression.Validate(__workflow_bodycountryCode, nameof(bodycountryCode), required: true);
-            var __workflow_bodyvatNumber = bodyvatNumber == null ? null : WorkflowExpression.Compile(bodyvatNumber);
-            WorkflowExpression.Validate(__workflow_bodyvatNumber, nameof(bodyvatNumber), required: true);
+            var __workflow_bodycountryCode = WorkflowExpression.Compile(bodycountryCode, nameof(bodycountryCode), required: true);
+            var __workflow_bodyvatNumber = WorkflowExpression.Compile(bodyvatNumber, nameof(bodyvatNumber), required: true);
             return new DeferredBodyAction<CheckVATValidityResponse>(() =>
             {
                 var apiCallPath = "/taxation_customs/vies/services/checkVatService";

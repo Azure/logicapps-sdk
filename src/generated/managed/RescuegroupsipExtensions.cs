@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedResponse> Breed(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BreedResponse>(() =>
             {
                 var apiCallPath = "/public/animals/breeds/";
@@ -33,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedIDResponse> BreedID(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BreedIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -47,12 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedSpeciesResponse> BreedSpecies(Expression<Func<string>> species, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_species = species == null ? null : WorkflowExpression.Compile(species);
-            WorkflowExpression.Validate(__workflow_species, nameof(species), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_species = WorkflowExpression.Compile(species, nameof(species), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BreedSpeciesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_species, 1));
@@ -69,12 +63,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<BreedSpeciesIDResponse> BreedSpeciesID(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BreedSpeciesIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/species/{0}/breeds/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -91,10 +82,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationResponse> Organization(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<OrganizationResponse>(() =>
             {
                 var apiCallPath = "/public/orgs/";
@@ -111,8 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationIDResponse> OrganizationID(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<OrganizationIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -125,10 +113,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalResponse> Animal(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<AnimalResponse>(() =>
             {
                 var apiCallPath = "/public/animals/";
@@ -145,12 +131,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalStatusResponse> AnimalStatus(Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<AnimalStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_status, 1));
@@ -167,8 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<AnimalIDResponse> AnimalID(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<AnimalIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -181,12 +163,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationAnimalResponse> OrganizationAnimal(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<OrganizationAnimalResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -203,14 +182,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
         public IBodyWorkflowAction<OrganizationAnimalStatusResponse> OrganizationAnimalStatus(Expression<Func<string>> id, Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<OrganizationAnimalStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/search/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_status, 1));

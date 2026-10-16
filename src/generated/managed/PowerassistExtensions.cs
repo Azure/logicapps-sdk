@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArraySortResponse> ArraySort(Expression<Func<JToken[]>> bodyarray)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             return new DeferredBodyAction<ArraySortResponse>(() =>
             {
                 var apiCallPath = "/array/sort";
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse(Expression<Func<JToken[]>> bodyarray)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
             return new DeferredBodyAction<ArrayReverseResponse>(() =>
             {
                 var apiCallPath = "/array/reverse";
@@ -59,12 +57,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bool>> bodydescending)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodypropertyName = bodypropertyName == null ? null : WorkflowExpression.Compile(bodypropertyName);
-            WorkflowExpression.Validate(__workflow_bodypropertyName, nameof(bodypropertyName), required: true);
-            var __workflow_bodydescending = bodydescending == null ? null : WorkflowExpression.Compile(bodydescending);
-            WorkflowExpression.Validate(__workflow_bodydescending, nameof(bodydescending), required: true);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodydescending = WorkflowExpression.Compile(bodydescending, nameof(bodydescending), required: true);
             return new DeferredBodyAction<ArraySortByPropertyResponse>(() =>
             {
                 var apiCallPath = "/array/sortByProperty";
@@ -90,16 +85,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodypropertyName = bodypropertyName == null ? null : WorkflowExpression.Compile(bodypropertyName);
-            WorkflowExpression.Validate(__workflow_bodypropertyName, nameof(bodypropertyName), required: true);
-            var __workflow_bodycomparison = bodycomparison == null ? null : WorkflowExpression.Compile(bodycomparison);
-            WorkflowExpression.Validate(__workflow_bodycomparison, nameof(bodycomparison), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodyvalueType = bodyvalueType == null ? null : WorkflowExpression.Compile(bodyvalueType);
-            WorkflowExpression.Validate(__workflow_bodyvalueType, nameof(bodyvalueType), required: false);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
             return new DeferredBodyAction<ArrayFilterResponse>(() =>
             {
                 var apiCallPath = "/array/filter";
@@ -147,12 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_bodyvalueType = bodyvalueType == null ? null : WorkflowExpression.Compile(bodyvalueType);
-            WorkflowExpression.Validate(__workflow_bodyvalueType, nameof(bodyvalueType), required: false);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
             return new DeferredBodyAction<ArrayPrependResponse>(() =>
             {
                 var apiCallPath = "/array/prepend";
@@ -192,16 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodypropertyName = bodypropertyName == null ? null : WorkflowExpression.Compile(bodypropertyName);
-            WorkflowExpression.Validate(__workflow_bodypropertyName, nameof(bodypropertyName), required: true);
-            var __workflow_bodycomparison = bodycomparison == null ? null : WorkflowExpression.Compile(bodycomparison);
-            WorkflowExpression.Validate(__workflow_bodycomparison, nameof(bodycomparison), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodyvalueType = bodyvalueType == null ? null : WorkflowExpression.Compile(bodyvalueType);
-            WorkflowExpression.Validate(__workflow_bodyvalueType, nameof(bodyvalueType), required: false);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
             return new DeferredBodyAction<ArrayAnyResponse>(() =>
             {
                 var apiCallPath = "/array/any";
@@ -249,16 +231,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodypropertyName = bodypropertyName == null ? null : WorkflowExpression.Compile(bodypropertyName);
-            WorkflowExpression.Validate(__workflow_bodypropertyName, nameof(bodypropertyName), required: true);
-            var __workflow_bodycomparison = bodycomparison == null ? null : WorkflowExpression.Compile(bodycomparison);
-            WorkflowExpression.Validate(__workflow_bodycomparison, nameof(bodycomparison), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodyvalueType = bodyvalueType == null ? null : WorkflowExpression.Compile(bodyvalueType);
-            WorkflowExpression.Validate(__workflow_bodyvalueType, nameof(bodyvalueType), required: false);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
             return new DeferredBodyAction<ArrayEveryResponse>(() =>
             {
                 var apiCallPath = "/array/every";
@@ -306,16 +283,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodypropertyName = bodypropertyName == null ? null : WorkflowExpression.Compile(bodypropertyName);
-            WorkflowExpression.Validate(__workflow_bodypropertyName, nameof(bodypropertyName), required: true);
-            var __workflow_bodycomparison = bodycomparison == null ? null : WorkflowExpression.Compile(bodycomparison);
-            WorkflowExpression.Validate(__workflow_bodycomparison, nameof(bodycomparison), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodyvalueType = bodyvalueType == null ? null : WorkflowExpression.Compile(bodyvalueType);
-            WorkflowExpression.Validate(__workflow_bodyvalueType, nameof(bodyvalueType), required: false);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
             return new DeferredBodyAction<ArrayRemoveFirstResponse>(() =>
             {
                 var apiCallPath = "/array/removeFirst";
@@ -363,10 +335,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName = null)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodypropertyName = bodypropertyName == null ? null : WorkflowExpression.Compile(bodypropertyName);
-            WorkflowExpression.Validate(__workflow_bodypropertyName, nameof(bodypropertyName), required: false);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: false);
             return new DeferredBodyAction<ArrayGroupByResponse>(() =>
             {
                 var apiCallPath = "/array/groupBy";
@@ -394,16 +364,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
         {
-            var __workflow_bodyarray = bodyarray == null ? null : WorkflowExpression.Compile(bodyarray);
-            WorkflowExpression.Validate(__workflow_bodyarray, nameof(bodyarray), required: true);
-            var __workflow_bodypropertyName = bodypropertyName == null ? null : WorkflowExpression.Compile(bodypropertyName);
-            WorkflowExpression.Validate(__workflow_bodypropertyName, nameof(bodypropertyName), required: true);
-            var __workflow_bodycomparison = bodycomparison == null ? null : WorkflowExpression.Compile(bodycomparison);
-            WorkflowExpression.Validate(__workflow_bodycomparison, nameof(bodycomparison), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodyvalueType = bodyvalueType == null ? null : WorkflowExpression.Compile(bodyvalueType);
-            WorkflowExpression.Validate(__workflow_bodyvalueType, nameof(bodyvalueType), required: false);
+            var __workflow_bodyarray = WorkflowExpression.Compile(bodyarray, nameof(bodyarray), required: true);
+            var __workflow_bodypropertyName = WorkflowExpression.Compile(bodypropertyName, nameof(bodypropertyName), required: true);
+            var __workflow_bodycomparison = WorkflowExpression.Compile(bodycomparison, nameof(bodycomparison), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyvalueType = WorkflowExpression.Compile(bodyvalueType, nameof(bodyvalueType), required: false);
             return new DeferredBodyAction<ArrayFindFirstResponse>(() =>
             {
                 var apiCallPath = "/array/findFirst";
@@ -451,8 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<RoundResponse> Round(Expression<Func<double>> bodynumber)
         {
-            var __workflow_bodynumber = bodynumber == null ? null : WorkflowExpression.Compile(bodynumber);
-            WorkflowExpression.Validate(__workflow_bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             return new DeferredBodyAction<RoundResponse>(() =>
             {
                 var apiCallPath = "/math/round";
@@ -474,8 +438,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathCeilResponse> MathCeil(Expression<Func<double>> bodynumber)
         {
-            var __workflow_bodynumber = bodynumber == null ? null : WorkflowExpression.Compile(bodynumber);
-            WorkflowExpression.Validate(__workflow_bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             return new DeferredBodyAction<MathCeilResponse>(() =>
             {
                 var apiCallPath = "/math/ceil";
@@ -497,8 +460,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathFloorResponse> MathFloor(Expression<Func<double>> bodynumber)
         {
-            var __workflow_bodynumber = bodynumber == null ? null : WorkflowExpression.Compile(bodynumber);
-            WorkflowExpression.Validate(__workflow_bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             return new DeferredBodyAction<MathFloorResponse>(() =>
             {
                 var apiCallPath = "/math/floor";
@@ -520,8 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathAverageResponse> MathAverage(Expression<Func<double[]>> bodynumbers)
         {
-            var __workflow_bodynumbers = bodynumbers == null ? null : WorkflowExpression.Compile(bodynumbers);
-            WorkflowExpression.Validate(__workflow_bodynumbers, nameof(bodynumbers), required: true);
+            var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
             return new DeferredBodyAction<MathAverageResponse>(() =>
             {
                 var apiCallPath = "/math/average";
@@ -543,8 +504,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathMedianResponse> MathMedian(Expression<Func<JToken[]>> bodynumbers)
         {
-            var __workflow_bodynumbers = bodynumbers == null ? null : WorkflowExpression.Compile(bodynumbers);
-            WorkflowExpression.Validate(__workflow_bodynumbers, nameof(bodynumbers), required: true);
+            var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
             return new DeferredBodyAction<MathMedianResponse>(() =>
             {
                 var apiCallPath = "/math/median";
@@ -566,8 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathModeResponse> MathMode(Expression<Func<JToken[]>> bodynumbers)
         {
-            var __workflow_bodynumbers = bodynumbers == null ? null : WorkflowExpression.Compile(bodynumbers);
-            WorkflowExpression.Validate(__workflow_bodynumbers, nameof(bodynumbers), required: true);
+            var __workflow_bodynumbers = WorkflowExpression.Compile(bodynumbers, nameof(bodynumbers), required: true);
             return new DeferredBodyAction<MathModeResponse>(() =>
             {
                 var apiCallPath = "/math/mode";
@@ -589,8 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<MathRandomResponse> MathRandom(Expression<Func<int>> bodymaximum)
         {
-            var __workflow_bodymaximum = bodymaximum == null ? null : WorkflowExpression.Compile(bodymaximum);
-            WorkflowExpression.Validate(__workflow_bodymaximum, nameof(bodymaximum), required: true);
+            var __workflow_bodymaximum = WorkflowExpression.Compile(bodymaximum, nameof(bodymaximum), required: true);
             return new DeferredBodyAction<MathRandomResponse>(() =>
             {
                 var apiCallPath = "/math/random";
@@ -612,12 +570,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodysearchValue, Expression<Func<string>> bodyreplaceValue)
         {
-            var __workflow_bodysourceString = bodysourceString == null ? null : WorkflowExpression.Compile(bodysourceString);
-            WorkflowExpression.Validate(__workflow_bodysourceString, nameof(bodysourceString), required: true);
-            var __workflow_bodysearchValue = bodysearchValue == null ? null : WorkflowExpression.Compile(bodysearchValue);
-            WorkflowExpression.Validate(__workflow_bodysearchValue, nameof(bodysearchValue), required: true);
-            var __workflow_bodyreplaceValue = bodyreplaceValue == null ? null : WorkflowExpression.Compile(bodyreplaceValue);
-            WorkflowExpression.Validate(__workflow_bodyreplaceValue, nameof(bodyreplaceValue), required: true);
+            var __workflow_bodysourceString = WorkflowExpression.Compile(bodysourceString, nameof(bodysourceString), required: true);
+            var __workflow_bodysearchValue = WorkflowExpression.Compile(bodysearchValue, nameof(bodysearchValue), required: true);
+            var __workflow_bodyreplaceValue = WorkflowExpression.Compile(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
             return new DeferredBodyAction<StringReplaceAllResponse>(() =>
             {
                 var apiCallPath = "/string/replaceAll";
@@ -643,12 +598,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplaceValue)
         {
-            var __workflow_bodysourceString = bodysourceString == null ? null : WorkflowExpression.Compile(bodysourceString);
-            WorkflowExpression.Validate(__workflow_bodysourceString, nameof(bodysourceString), required: true);
-            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
-            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: true);
-            var __workflow_bodyreplaceValue = bodyreplaceValue == null ? null : WorkflowExpression.Compile(bodyreplaceValue);
-            WorkflowExpression.Validate(__workflow_bodyreplaceValue, nameof(bodyreplaceValue), required: true);
+            var __workflow_bodysourceString = WorkflowExpression.Compile(bodysourceString, nameof(bodysourceString), required: true);
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodyreplaceValue = WorkflowExpression.Compile(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
             return new DeferredBodyAction<StringRegexReplaceResponse>(() =>
             {
                 var apiCallPath = "/string/regexReplace";
@@ -674,8 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize(Expression<Func<string>> bodystring)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             return new DeferredBodyAction<StringCapitalizeResponse>(() =>
             {
                 var apiCallPath = "/string/capitalize";
@@ -697,10 +648,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimResponse> StringTrim(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodycharacters = bodycharacters == null ? null : WorkflowExpression.Compile(bodycharacters);
-            WorkflowExpression.Validate(__workflow_bodycharacters, nameof(bodycharacters), required: false);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
             return new DeferredBodyAction<StringTrimResponse>(() =>
             {
                 var apiCallPath = "/string/trim";
@@ -728,10 +677,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodycharacters = bodycharacters == null ? null : WorkflowExpression.Compile(bodycharacters);
-            WorkflowExpression.Validate(__workflow_bodycharacters, nameof(bodycharacters), required: false);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
             return new DeferredBodyAction<StringTrimStartResponse>(() =>
             {
                 var apiCallPath = "/string/trimStart";
@@ -759,10 +706,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodycharacters = bodycharacters == null ? null : WorkflowExpression.Compile(bodycharacters);
-            WorkflowExpression.Validate(__workflow_bodycharacters, nameof(bodycharacters), required: false);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodycharacters = WorkflowExpression.Compile(bodycharacters, nameof(bodycharacters), required: false);
             return new DeferredBodyAction<StringTrimEndResponse>(() =>
             {
                 var apiCallPath = "/string/trimEnd";
@@ -790,8 +735,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify(Expression<Func<string>> bodystring)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             return new DeferredBodyAction<StringSlugifyResponse>(() =>
             {
                 var apiCallPath = "/string/slugify";
@@ -813,10 +757,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringWordsResponse> StringWords(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodydelimiter = bodydelimiter == null ? null : WorkflowExpression.Compile(bodydelimiter);
-            WorkflowExpression.Validate(__workflow_bodydelimiter, nameof(bodydelimiter), required: false);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
             return new DeferredBodyAction<StringWordsResponse>(() =>
             {
                 var apiCallPath = "/string/words";
@@ -844,10 +786,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringWordCountResponse> StringWordCount(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodydelimiter = bodydelimiter == null ? null : WorkflowExpression.Compile(bodydelimiter);
-            WorkflowExpression.Validate(__workflow_bodydelimiter, nameof(bodydelimiter), required: false);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
             return new DeferredBodyAction<StringWordCountResponse>(() =>
             {
                 var apiCallPath = "/string/wordCount";
@@ -875,8 +815,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml(Expression<Func<string>> bodystring)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             return new DeferredBodyAction<StringStripHtmlResponse>(() =>
             {
                 var apiCallPath = "/string/stripHtml";
@@ -898,8 +837,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCleanResponse> StringClean(Expression<Func<string>> bodystring)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             return new DeferredBodyAction<StringCleanResponse>(() =>
             {
                 var apiCallPath = "/string/clean";
@@ -921,8 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics(Expression<Func<string>> bodystring)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             return new DeferredBodyAction<StringCleanDiacriticsResponse>(() =>
             {
                 var apiCallPath = "/string/cleanDiacritics";
@@ -944,8 +881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml(Expression<Func<string>> bodystring)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             return new DeferredBodyAction<StringEscapeHtmlResponse>(() =>
             {
                 var apiCallPath = "/string/escapeHtml";
@@ -967,8 +903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml(Expression<Func<string>> bodystring)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
             return new DeferredBodyAction<StringUnescapeHtmlResponse>(() =>
             {
                 var apiCallPath = "/string/unescapeHtml";
@@ -990,12 +925,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances(Expression<Func<string>> bodystring, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodysubstring = bodysubstring == null ? null : WorkflowExpression.Compile(bodysubstring);
-            WorkflowExpression.Validate(__workflow_bodysubstring, nameof(bodysubstring), required: true);
-            var __workflow_bodyignoreCase = bodyignoreCase == null ? null : WorkflowExpression.Compile(bodyignoreCase);
-            WorkflowExpression.Validate(__workflow_bodyignoreCase, nameof(bodyignoreCase), required: false);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodysubstring = WorkflowExpression.Compile(bodysubstring, nameof(bodysubstring), required: true);
+            var __workflow_bodyignoreCase = WorkflowExpression.Compile(bodyignoreCase, nameof(bodyignoreCase), required: false);
             return new DeferredBodyAction<StringCountInstancesResponse>(() =>
             {
                 var apiCallPath = "/string/countInstances";
@@ -1035,10 +967,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<StringChopResponse> StringChop(Expression<Func<string>> bodystring, Expression<Func<int>> bodyinterval)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodyinterval = bodyinterval == null ? null : WorkflowExpression.Compile(bodyinterval);
-            WorkflowExpression.Validate(__workflow_bodyinterval, nameof(bodyinterval), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodyinterval = WorkflowExpression.Compile(bodyinterval, nameof(bodyinterval), required: true);
             return new DeferredBodyAction<StringChopResponse>(() =>
             {
                 var apiCallPath = "/string/chop";
@@ -1062,8 +992,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString(Expression<Func<object>> bodyvalue)
         {
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             return new DeferredBodyAction<TypesIsStringResponse>(() =>
             {
                 var apiCallPath = "/types/isString";
@@ -1085,10 +1014,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber(Expression<Func<object>> bodyvalue, Expression<Func<bool>> bodyincludeNumbersInStrings)
         {
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_bodyincludeNumbersInStrings = bodyincludeNumbersInStrings == null ? null : WorkflowExpression.Compile(bodyincludeNumbersInStrings);
-            WorkflowExpression.Validate(__workflow_bodyincludeNumbersInStrings, nameof(bodyincludeNumbersInStrings), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyincludeNumbersInStrings = WorkflowExpression.Compile(bodyincludeNumbersInStrings, nameof(bodyincludeNumbersInStrings), required: true);
             return new DeferredBodyAction<TypesIsNumberResponse>(() =>
             {
                 var apiCallPath = "/types/isNumber";
@@ -1112,8 +1039,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty(Expression<Func<object>> bodyvalue)
         {
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             return new DeferredBodyAction<TypesIsNullOrEmptyResponse>(() =>
             {
                 var apiCallPath = "/types/isNullOrEmpty";
@@ -1135,8 +1061,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray(Expression<Func<object>> bodyvalue)
         {
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             return new DeferredBodyAction<TypesIsArrayResponse>(() =>
             {
                 var apiCallPath = "/types/isArray";
@@ -1158,8 +1083,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject(Expression<Func<object>> bodyvalue)
         {
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
             return new DeferredBodyAction<TypesIsObjectResponse>(() =>
             {
                 var apiCallPath = "/types/isObject";
@@ -1181,8 +1105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> bodyemail)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<ValidateEmailResponse>(() =>
             {
                 var apiCallPath = "/validate/email";
@@ -1204,10 +1127,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
         public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex(Expression<Func<string>> bodystring, Expression<Func<string>> bodypattern)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
-            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
             return new DeferredBodyAction<ValidateRegexResponse>(() =>
             {
                 var apiCallPath = "/validate/regex";

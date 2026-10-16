@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "omdbip")]
         public IBodyWorkflowAction<GetSearchResultsResponse> GetSearchResults(Expression<Func<string>> apikey, Expression<Func<string>> s = null, Expression<Func<string>> i = null, Expression<Func<int>> y = null, Expression<Func<typeInput>> type = null, Expression<Func<int>> page = null)
         {
-            var __workflow_apikey = apikey == null ? null : WorkflowExpression.Compile(apikey);
-            WorkflowExpression.Validate(__workflow_apikey, nameof(apikey), required: true);
-            var __workflow_s = s == null ? null : WorkflowExpression.Compile(s);
-            WorkflowExpression.Validate(__workflow_s, nameof(s), required: false);
-            var __workflow_i = i == null ? null : WorkflowExpression.Compile(i);
-            WorkflowExpression.Validate(__workflow_i, nameof(i), required: false);
-            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
-            WorkflowExpression.Validate(__workflow_y, nameof(y), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_apikey = WorkflowExpression.Compile(apikey, nameof(apikey), required: true);
+            var __workflow_s = WorkflowExpression.Compile(s, nameof(s), required: false);
+            var __workflow_i = WorkflowExpression.Compile(i, nameof(i), required: false);
+            var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetSearchResultsResponse>(() =>
             {
                 var apiCallPath = "/";

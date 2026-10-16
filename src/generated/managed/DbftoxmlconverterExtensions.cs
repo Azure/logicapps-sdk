@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dbftoxmlconverter")]
         public IWorkflowAction Dbf2XmlConvert(Expression<Func<string>> bodycontenType, Expression<Func<bodyencodingInput>> bodyencoding)
         {
-            var __workflow_bodycontenType = bodycontenType == null ? null : WorkflowExpression.Compile(bodycontenType);
-            WorkflowExpression.Validate(__workflow_bodycontenType, nameof(bodycontenType), required: true);
-            var __workflow_bodyencoding = bodyencoding == null ? null : WorkflowExpression.Compile(bodyencoding);
-            WorkflowExpression.Validate(__workflow_bodyencoding, nameof(bodyencoding), required: true);
+            var __workflow_bodycontenType = WorkflowExpression.Compile(bodycontenType, nameof(bodycontenType), required: true);
+            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/DBF2XML";

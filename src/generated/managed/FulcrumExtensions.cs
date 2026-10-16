@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<AttachmentsResponse> GetAllAttachments(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<string>> ownerType = null, Expression<Func<sortInput>> sort = null, Expression<Func<sortDirectionInput>> sortDirection = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: false);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_ownerType = ownerType == null ? null : WorkflowExpression.Compile(ownerType);
-            WorkflowExpression.Validate(__workflow_ownerType, nameof(ownerType), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_sortDirection = sortDirection == null ? null : WorkflowExpression.Compile(sortDirection);
-            WorkflowExpression.Validate(__workflow_sortDirection, nameof(sortDirection), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_ownerType = WorkflowExpression.Compile(ownerType, nameof(ownerType), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
             return new DeferredBodyAction<AttachmentsResponse>(() =>
             {
                 var apiCallPath = "/v2/attachments";
@@ -47,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<Attachment> GetSingleAttachment(Expression<Func<string>> attachmentId)
         {
-            var __workflow_attachmentId = attachmentId == null ? null : WorkflowExpression.Compile(attachmentId);
-            WorkflowExpression.Validate(__workflow_attachmentId, nameof(attachmentId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             return new DeferredBodyAction<Attachment>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/attachments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
@@ -61,22 +55,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<AudiosResponse> AudioGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: false);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_newestFirst = newestFirst == null ? null : WorkflowExpression.Compile(newestFirst);
-            WorkflowExpression.Validate(__workflow_newestFirst, nameof(newestFirst), required: false);
-            var __workflow_processed = processed == null ? null : WorkflowExpression.Compile(processed);
-            WorkflowExpression.Validate(__workflow_processed, nameof(processed), required: false);
-            var __workflow_stored = stored == null ? null : WorkflowExpression.Compile(stored);
-            WorkflowExpression.Validate(__workflow_stored, nameof(stored), required: false);
-            var __workflow_uploaded = uploaded == null ? null : WorkflowExpression.Compile(uploaded);
-            WorkflowExpression.Validate(__workflow_uploaded, nameof(uploaded), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_newestFirst = WorkflowExpression.Compile(newestFirst, nameof(newestFirst), required: false);
+            var __workflow_processed = WorkflowExpression.Compile(processed, nameof(processed), required: false);
+            var __workflow_stored = WorkflowExpression.Compile(stored, nameof(stored), required: false);
+            var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<AudiosResponse>(() =>
             {
                 var apiCallPath = "/v2/audio.json";
@@ -107,8 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> AudioGetOriginalFile(Expression<Func<string>> audioId)
         {
-            var __workflow_audioId = audioId == null ? null : WorkflowExpression.Compile(audioId);
-            WorkflowExpression.Validate(__workflow_audioId, nameof(audioId), required: true);
+            var __workflow_audioId = WorkflowExpression.Compile(audioId, nameof(audioId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/audio/{0}.mp4", ExpressionConverter.ConvertWithUrlEncoding(__workflow_audioId, 1));
@@ -121,22 +106,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<PhotosResponse> PhotosGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: false);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_newestFirst = newestFirst == null ? null : WorkflowExpression.Compile(newestFirst);
-            WorkflowExpression.Validate(__workflow_newestFirst, nameof(newestFirst), required: false);
-            var __workflow_processed = processed == null ? null : WorkflowExpression.Compile(processed);
-            WorkflowExpression.Validate(__workflow_processed, nameof(processed), required: false);
-            var __workflow_stored = stored == null ? null : WorkflowExpression.Compile(stored);
-            WorkflowExpression.Validate(__workflow_stored, nameof(stored), required: false);
-            var __workflow_uploaded = uploaded == null ? null : WorkflowExpression.Compile(uploaded);
-            WorkflowExpression.Validate(__workflow_uploaded, nameof(uploaded), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_newestFirst = WorkflowExpression.Compile(newestFirst, nameof(newestFirst), required: false);
+            var __workflow_processed = WorkflowExpression.Compile(processed, nameof(processed), required: false);
+            var __workflow_stored = WorkflowExpression.Compile(stored, nameof(stored), required: false);
+            var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<PhotosResponse>(() =>
             {
                 var apiCallPath = "/v2/photos.json";
@@ -167,8 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> PhotosGetSingleFile(Expression<Func<string>> photoId)
         {
-            var __workflow_photoId = photoId == null ? null : WorkflowExpression.Compile(photoId);
-            WorkflowExpression.Validate(__workflow_photoId, nameof(photoId), required: true);
+            var __workflow_photoId = WorkflowExpression.Compile(photoId, nameof(photoId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.jpg", ExpressionConverter.ConvertWithUrlEncoding(__workflow_photoId, 1));
@@ -181,8 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SinglePhotoResponse> PhotosGetSingleMetadata(Expression<Func<string>> photoId)
         {
-            var __workflow_photoId = photoId == null ? null : WorkflowExpression.Compile(photoId);
-            WorkflowExpression.Validate(__workflow_photoId, nameof(photoId), required: true);
+            var __workflow_photoId = WorkflowExpression.Compile(photoId, nameof(photoId), required: true);
             return new DeferredBodyAction<SinglePhotoResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_photoId, 1));
@@ -195,16 +170,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IWorkflowAction Query(Expression<Func<string>> bodyq, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodytableName = null)
         {
-            var __workflow_bodyq = bodyq == null ? null : WorkflowExpression.Compile(bodyq);
-            WorkflowExpression.Validate(__workflow_bodyq, nameof(bodyq), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodytableName = bodytableName == null ? null : WorkflowExpression.Compile(bodytableName);
-            WorkflowExpression.Validate(__workflow_bodytableName, nameof(bodytableName), required: false);
+            var __workflow_bodyq = WorkflowExpression.Compile(bodyq, nameof(bodyq), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodytableName = WorkflowExpression.Compile(bodytableName, nameof(bodytableName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/query";
@@ -244,36 +214,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<RecordsResponse> RecordsGetAll(Expression<Func<bool>> newestFirst = null, Expression<Func<string>> boundingBox = null, Expression<Func<string>> changesetId = null, Expression<Func<string>> formId = null, Expression<Func<string>> projectId = null, Expression<Func<string>> clientCreatedBefore = null, Expression<Func<string>> clientCreatedSince = null, Expression<Func<string>> clientUpdatedBefore = null, Expression<Func<string>> clientUpdatedSince = null, Expression<Func<string>> createdBefore = null, Expression<Func<string>> createdSince = null, Expression<Func<string>> updatedBefore = null, Expression<Func<string>> updatedSince = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_newestFirst = newestFirst == null ? null : WorkflowExpression.Compile(newestFirst);
-            WorkflowExpression.Validate(__workflow_newestFirst, nameof(newestFirst), required: false);
-            var __workflow_boundingBox = boundingBox == null ? null : WorkflowExpression.Compile(boundingBox);
-            WorkflowExpression.Validate(__workflow_boundingBox, nameof(boundingBox), required: false);
-            var __workflow_changesetId = changesetId == null ? null : WorkflowExpression.Compile(changesetId);
-            WorkflowExpression.Validate(__workflow_changesetId, nameof(changesetId), required: false);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: false);
-            var __workflow_clientCreatedBefore = clientCreatedBefore == null ? null : WorkflowExpression.Compile(clientCreatedBefore);
-            WorkflowExpression.Validate(__workflow_clientCreatedBefore, nameof(clientCreatedBefore), required: false);
-            var __workflow_clientCreatedSince = clientCreatedSince == null ? null : WorkflowExpression.Compile(clientCreatedSince);
-            WorkflowExpression.Validate(__workflow_clientCreatedSince, nameof(clientCreatedSince), required: false);
-            var __workflow_clientUpdatedBefore = clientUpdatedBefore == null ? null : WorkflowExpression.Compile(clientUpdatedBefore);
-            WorkflowExpression.Validate(__workflow_clientUpdatedBefore, nameof(clientUpdatedBefore), required: false);
-            var __workflow_clientUpdatedSince = clientUpdatedSince == null ? null : WorkflowExpression.Compile(clientUpdatedSince);
-            WorkflowExpression.Validate(__workflow_clientUpdatedSince, nameof(clientUpdatedSince), required: false);
-            var __workflow_createdBefore = createdBefore == null ? null : WorkflowExpression.Compile(createdBefore);
-            WorkflowExpression.Validate(__workflow_createdBefore, nameof(createdBefore), required: false);
-            var __workflow_createdSince = createdSince == null ? null : WorkflowExpression.Compile(createdSince);
-            WorkflowExpression.Validate(__workflow_createdSince, nameof(createdSince), required: false);
-            var __workflow_updatedBefore = updatedBefore == null ? null : WorkflowExpression.Compile(updatedBefore);
-            WorkflowExpression.Validate(__workflow_updatedBefore, nameof(updatedBefore), required: false);
-            var __workflow_updatedSince = updatedSince == null ? null : WorkflowExpression.Compile(updatedSince);
-            WorkflowExpression.Validate(__workflow_updatedSince, nameof(updatedSince), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_newestFirst = WorkflowExpression.Compile(newestFirst, nameof(newestFirst), required: false);
+            var __workflow_boundingBox = WorkflowExpression.Compile(boundingBox, nameof(boundingBox), required: false);
+            var __workflow_changesetId = WorkflowExpression.Compile(changesetId, nameof(changesetId), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_clientCreatedBefore = WorkflowExpression.Compile(clientCreatedBefore, nameof(clientCreatedBefore), required: false);
+            var __workflow_clientCreatedSince = WorkflowExpression.Compile(clientCreatedSince, nameof(clientCreatedSince), required: false);
+            var __workflow_clientUpdatedBefore = WorkflowExpression.Compile(clientUpdatedBefore, nameof(clientUpdatedBefore), required: false);
+            var __workflow_clientUpdatedSince = WorkflowExpression.Compile(clientUpdatedSince, nameof(clientUpdatedSince), required: false);
+            var __workflow_createdBefore = WorkflowExpression.Compile(createdBefore, nameof(createdBefore), required: false);
+            var __workflow_createdSince = WorkflowExpression.Compile(createdSince, nameof(createdSince), required: false);
+            var __workflow_updatedBefore = WorkflowExpression.Compile(updatedBefore, nameof(updatedBefore), required: false);
+            var __workflow_updatedSince = WorkflowExpression.Compile(updatedSince, nameof(updatedSince), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<RecordsResponse>(() =>
             {
                 var apiCallPath = "/v2/records.json";
@@ -318,28 +273,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsCreate(Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
         {
-            var __workflow_bodyrecordgeometrycoordinates = bodyrecordgeometrycoordinates == null ? null : WorkflowExpression.Compile(bodyrecordgeometrycoordinates);
-            WorkflowExpression.Validate(__workflow_bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
-            var __workflow_bodyrecordgeometrytype = bodyrecordgeometrytype == null ? null : WorkflowExpression.Compile(bodyrecordgeometrytype);
-            WorkflowExpression.Validate(__workflow_bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_xSkipWorkflows = xSkipWorkflows == null ? null : WorkflowExpression.Compile(xSkipWorkflows);
-            WorkflowExpression.Validate(__workflow_xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            var __workflow_xSkipWebhooks = xSkipWebhooks == null ? null : WorkflowExpression.Compile(xSkipWebhooks);
-            WorkflowExpression.Validate(__workflow_xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            var __workflow_bodyrecordassignedToId = bodyrecordassignedToId == null ? null : WorkflowExpression.Compile(bodyrecordassignedToId);
-            WorkflowExpression.Validate(__workflow_bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
-            var __workflow_bodyrecordformId = bodyrecordformId == null ? null : WorkflowExpression.Compile(bodyrecordformId);
-            WorkflowExpression.Validate(__workflow_bodyrecordformId, nameof(bodyrecordformId), required: false);
-            var __workflow_bodyrecordlatitude = bodyrecordlatitude == null ? null : WorkflowExpression.Compile(bodyrecordlatitude);
-            WorkflowExpression.Validate(__workflow_bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
-            var __workflow_bodyrecordlongitude = bodyrecordlongitude == null ? null : WorkflowExpression.Compile(bodyrecordlongitude);
-            WorkflowExpression.Validate(__workflow_bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
-            var __workflow_bodyrecordprojectId = bodyrecordprojectId == null ? null : WorkflowExpression.Compile(bodyrecordprojectId);
-            WorkflowExpression.Validate(__workflow_bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
-            var __workflow_bodyrecordstatus = bodyrecordstatus == null ? null : WorkflowExpression.Compile(bodyrecordstatus);
-            WorkflowExpression.Validate(__workflow_bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
+            var __workflow_bodyrecordgeometrytype = WorkflowExpression.Compile(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            var __workflow_bodyrecordassignedToId = WorkflowExpression.Compile(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
+            var __workflow_bodyrecordformId = WorkflowExpression.Compile(bodyrecordformId, nameof(bodyrecordformId), required: false);
+            var __workflow_bodyrecordlatitude = WorkflowExpression.Compile(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
+            var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
+            var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
+            var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
             return new DeferredBodyAction<SingleRecordResponse>(() =>
             {
                 var apiCallPath = "/v2/records.json";
@@ -432,12 +376,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsDelete(Expression<Func<string>> recordId, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_xSkipWorkflows = xSkipWorkflows == null ? null : WorkflowExpression.Compile(xSkipWorkflows);
-            WorkflowExpression.Validate(__workflow_xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            var __workflow_xSkipWebhooks = xSkipWebhooks == null ? null : WorkflowExpression.Compile(xSkipWebhooks);
-            WorkflowExpression.Validate(__workflow_xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
             return new DeferredBodyAction<SingleRecordResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
@@ -456,8 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsGetSingle(Expression<Func<string>> recordId)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<SingleRecordResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
@@ -470,28 +410,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleRecordResponse> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_bodyrecordgeometrycoordinates = bodyrecordgeometrycoordinates == null ? null : WorkflowExpression.Compile(bodyrecordgeometrycoordinates);
-            WorkflowExpression.Validate(__workflow_bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
-            var __workflow_bodyrecordgeometrytype = bodyrecordgeometrytype == null ? null : WorkflowExpression.Compile(bodyrecordgeometrytype);
-            WorkflowExpression.Validate(__workflow_bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_xSkipWorkflows = xSkipWorkflows == null ? null : WorkflowExpression.Compile(xSkipWorkflows);
-            WorkflowExpression.Validate(__workflow_xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            var __workflow_xSkipWebhooks = xSkipWebhooks == null ? null : WorkflowExpression.Compile(xSkipWebhooks);
-            WorkflowExpression.Validate(__workflow_xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            var __workflow_bodyrecordassignedToId = bodyrecordassignedToId == null ? null : WorkflowExpression.Compile(bodyrecordassignedToId);
-            WorkflowExpression.Validate(__workflow_bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
-            var __workflow_bodyrecordlatitude = bodyrecordlatitude == null ? null : WorkflowExpression.Compile(bodyrecordlatitude);
-            WorkflowExpression.Validate(__workflow_bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
-            var __workflow_bodyrecordlongitude = bodyrecordlongitude == null ? null : WorkflowExpression.Compile(bodyrecordlongitude);
-            WorkflowExpression.Validate(__workflow_bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
-            var __workflow_bodyrecordprojectId = bodyrecordprojectId == null ? null : WorkflowExpression.Compile(bodyrecordprojectId);
-            WorkflowExpression.Validate(__workflow_bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
-            var __workflow_bodyrecordstatus = bodyrecordstatus == null ? null : WorkflowExpression.Compile(bodyrecordstatus);
-            WorkflowExpression.Validate(__workflow_bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
+            var __workflow_bodyrecordgeometrytype = WorkflowExpression.Compile(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            var __workflow_bodyrecordassignedToId = WorkflowExpression.Compile(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
+            var __workflow_bodyrecordlatitude = WorkflowExpression.Compile(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
+            var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
+            var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
+            var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
             return new DeferredBodyAction<SingleRecordResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
@@ -578,30 +507,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IWorkflowAction RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_bodyrecordgeometrycoordinates = bodyrecordgeometrycoordinates == null ? null : WorkflowExpression.Compile(bodyrecordgeometrycoordinates);
-            WorkflowExpression.Validate(__workflow_bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
-            var __workflow_bodyrecordgeometrytype = bodyrecordgeometrytype == null ? null : WorkflowExpression.Compile(bodyrecordgeometrytype);
-            WorkflowExpression.Validate(__workflow_bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_xSkipWorkflows = xSkipWorkflows == null ? null : WorkflowExpression.Compile(xSkipWorkflows);
-            WorkflowExpression.Validate(__workflow_xSkipWorkflows, nameof(xSkipWorkflows), required: false);
-            var __workflow_xSkipWebhooks = xSkipWebhooks == null ? null : WorkflowExpression.Compile(xSkipWebhooks);
-            WorkflowExpression.Validate(__workflow_xSkipWebhooks, nameof(xSkipWebhooks), required: false);
-            var __workflow_bodyrecordassignedToId = bodyrecordassignedToId == null ? null : WorkflowExpression.Compile(bodyrecordassignedToId);
-            WorkflowExpression.Validate(__workflow_bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
-            var __workflow_bodyrecordformId = bodyrecordformId == null ? null : WorkflowExpression.Compile(bodyrecordformId);
-            WorkflowExpression.Validate(__workflow_bodyrecordformId, nameof(bodyrecordformId), required: false);
-            var __workflow_bodyrecordlatitude = bodyrecordlatitude == null ? null : WorkflowExpression.Compile(bodyrecordlatitude);
-            WorkflowExpression.Validate(__workflow_bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
-            var __workflow_bodyrecordlongitude = bodyrecordlongitude == null ? null : WorkflowExpression.Compile(bodyrecordlongitude);
-            WorkflowExpression.Validate(__workflow_bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
-            var __workflow_bodyrecordprojectId = bodyrecordprojectId == null ? null : WorkflowExpression.Compile(bodyrecordprojectId);
-            WorkflowExpression.Validate(__workflow_bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
-            var __workflow_bodyrecordstatus = bodyrecordstatus == null ? null : WorkflowExpression.Compile(bodyrecordstatus);
-            WorkflowExpression.Validate(__workflow_bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_bodyrecordgeometrycoordinates = WorkflowExpression.Compile(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
+            var __workflow_bodyrecordgeometrytype = WorkflowExpression.Compile(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_xSkipWorkflows = WorkflowExpression.Compile(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            var __workflow_xSkipWebhooks = WorkflowExpression.Compile(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            var __workflow_bodyrecordassignedToId = WorkflowExpression.Compile(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
+            var __workflow_bodyrecordformId = WorkflowExpression.Compile(bodyrecordformId, nameof(bodyrecordformId), required: false);
+            var __workflow_bodyrecordlatitude = WorkflowExpression.Compile(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
+            var __workflow_bodyrecordlongitude = WorkflowExpression.Compile(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
+            var __workflow_bodyrecordprojectId = WorkflowExpression.Compile(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
+            var __workflow_bodyrecordstatus = WorkflowExpression.Compile(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
@@ -694,8 +611,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<RecordHistoryResponse> RecordsGetHistory(Expression<Func<string>> recordId)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<RecordHistoryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/records/{0}/history.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
@@ -708,10 +624,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<ReportResponse> ReportsCreate(Expression<Func<string>> bodyreportrecordId = null, Expression<Func<string>> bodyreporttemplateId = null)
         {
-            var __workflow_bodyreportrecordId = bodyreportrecordId == null ? null : WorkflowExpression.Compile(bodyreportrecordId);
-            WorkflowExpression.Validate(__workflow_bodyreportrecordId, nameof(bodyreportrecordId), required: false);
-            var __workflow_bodyreporttemplateId = bodyreporttemplateId == null ? null : WorkflowExpression.Compile(bodyreporttemplateId);
-            WorkflowExpression.Validate(__workflow_bodyreporttemplateId, nameof(bodyreporttemplateId), required: false);
+            var __workflow_bodyreportrecordId = WorkflowExpression.Compile(bodyreportrecordId, nameof(bodyreportrecordId), required: false);
+            var __workflow_bodyreporttemplateId = WorkflowExpression.Compile(bodyreporttemplateId, nameof(bodyreporttemplateId), required: false);
             return new DeferredBodyAction<ReportResponse>(() =>
             {
                 var apiCallPath = "/v2/reports.json";
@@ -751,8 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> ReportsFile(Expression<Func<string>> reportId)
         {
-            var __workflow_reportId = reportId == null ? null : WorkflowExpression.Compile(reportId);
-            WorkflowExpression.Validate(__workflow_reportId, nameof(reportId), required: true);
+            var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/reports/{0}.pdf", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
@@ -765,22 +678,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SignaturesResponse> SignaturesGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: false);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_newestFirst = newestFirst == null ? null : WorkflowExpression.Compile(newestFirst);
-            WorkflowExpression.Validate(__workflow_newestFirst, nameof(newestFirst), required: false);
-            var __workflow_processed = processed == null ? null : WorkflowExpression.Compile(processed);
-            WorkflowExpression.Validate(__workflow_processed, nameof(processed), required: false);
-            var __workflow_stored = stored == null ? null : WorkflowExpression.Compile(stored);
-            WorkflowExpression.Validate(__workflow_stored, nameof(stored), required: false);
-            var __workflow_uploaded = uploaded == null ? null : WorkflowExpression.Compile(uploaded);
-            WorkflowExpression.Validate(__workflow_uploaded, nameof(uploaded), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_newestFirst = WorkflowExpression.Compile(newestFirst, nameof(newestFirst), required: false);
+            var __workflow_processed = WorkflowExpression.Compile(processed, nameof(processed), required: false);
+            var __workflow_stored = WorkflowExpression.Compile(stored, nameof(stored), required: false);
+            var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<SignaturesResponse>(() =>
             {
                 var apiCallPath = "/v2/signatures.json";
@@ -811,8 +716,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleSignatureResponse> SignaturesGetSingleMetadata(Expression<Func<string>> signatureId)
         {
-            var __workflow_signatureId = signatureId == null ? null : WorkflowExpression.Compile(signatureId);
-            WorkflowExpression.Validate(__workflow_signatureId, nameof(signatureId), required: true);
+            var __workflow_signatureId = WorkflowExpression.Compile(signatureId, nameof(signatureId), required: true);
             return new DeferredBodyAction<SingleSignatureResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signatureId, 1));
@@ -825,8 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> SignaturesGetSingleFile(Expression<Func<string>> signatureId)
         {
-            var __workflow_signatureId = signatureId == null ? null : WorkflowExpression.Compile(signatureId);
-            WorkflowExpression.Validate(__workflow_signatureId, nameof(signatureId), required: true);
+            var __workflow_signatureId = WorkflowExpression.Compile(signatureId, nameof(signatureId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.png", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signatureId, 1));
@@ -839,22 +742,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SketchesResponse> SketchesGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: false);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_newestFirst = newestFirst == null ? null : WorkflowExpression.Compile(newestFirst);
-            WorkflowExpression.Validate(__workflow_newestFirst, nameof(newestFirst), required: false);
-            var __workflow_processed = processed == null ? null : WorkflowExpression.Compile(processed);
-            WorkflowExpression.Validate(__workflow_processed, nameof(processed), required: false);
-            var __workflow_stored = stored == null ? null : WorkflowExpression.Compile(stored);
-            WorkflowExpression.Validate(__workflow_stored, nameof(stored), required: false);
-            var __workflow_uploaded = uploaded == null ? null : WorkflowExpression.Compile(uploaded);
-            WorkflowExpression.Validate(__workflow_uploaded, nameof(uploaded), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_newestFirst = WorkflowExpression.Compile(newestFirst, nameof(newestFirst), required: false);
+            var __workflow_processed = WorkflowExpression.Compile(processed, nameof(processed), required: false);
+            var __workflow_stored = WorkflowExpression.Compile(stored, nameof(stored), required: false);
+            var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<SketchesResponse>(() =>
             {
                 var apiCallPath = "/v2/sketches.json";
@@ -885,8 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> SketchesGetSingleFile(Expression<Func<string>> sketchId)
         {
-            var __workflow_sketchId = sketchId == null ? null : WorkflowExpression.Compile(sketchId);
-            WorkflowExpression.Validate(__workflow_sketchId, nameof(sketchId), required: true);
+            var __workflow_sketchId = WorkflowExpression.Compile(sketchId, nameof(sketchId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.jpg", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sketchId, 1));
@@ -899,8 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<SingleSketchResponse> SketchesGetSingleMetadata(Expression<Func<string>> sketchId)
         {
-            var __workflow_sketchId = sketchId == null ? null : WorkflowExpression.Compile(sketchId);
-            WorkflowExpression.Validate(__workflow_sketchId, nameof(sketchId), required: true);
+            var __workflow_sketchId = WorkflowExpression.Compile(sketchId, nameof(sketchId), required: true);
             return new DeferredBodyAction<SingleSketchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sketchId, 1));
@@ -913,22 +806,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<VideosResponse> VideosGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: false);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_newestFirst = newestFirst == null ? null : WorkflowExpression.Compile(newestFirst);
-            WorkflowExpression.Validate(__workflow_newestFirst, nameof(newestFirst), required: false);
-            var __workflow_processed = processed == null ? null : WorkflowExpression.Compile(processed);
-            WorkflowExpression.Validate(__workflow_processed, nameof(processed), required: false);
-            var __workflow_stored = stored == null ? null : WorkflowExpression.Compile(stored);
-            WorkflowExpression.Validate(__workflow_stored, nameof(stored), required: false);
-            var __workflow_uploaded = uploaded == null ? null : WorkflowExpression.Compile(uploaded);
-            WorkflowExpression.Validate(__workflow_uploaded, nameof(uploaded), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_newestFirst = WorkflowExpression.Compile(newestFirst, nameof(newestFirst), required: false);
+            var __workflow_processed = WorkflowExpression.Compile(processed, nameof(processed), required: false);
+            var __workflow_stored = WorkflowExpression.Compile(stored, nameof(stored), required: false);
+            var __workflow_uploaded = WorkflowExpression.Compile(uploaded, nameof(uploaded), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<VideosResponse>(() =>
             {
                 var apiCallPath = "/v2/videos.json";
@@ -959,8 +844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
         public IBodyWorkflowAction<string> VideosGetOriginalFile(Expression<Func<string>> videoId)
         {
-            var __workflow_videoId = videoId == null ? null : WorkflowExpression.Compile(videoId);
-            WorkflowExpression.Validate(__workflow_videoId, nameof(videoId), required: true);
+            var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/videos/{0}.mp4", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
@@ -975,14 +859,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     {
         public IBodyWorkflowTrigger<OnFulcrumEventResponse> OnFulcrumEvent(Expression<Func<string>> contentType = null, Expression<Func<bool>> bodywebhookactive = null, Expression<Func<string>> bodywebhookwebhookName = null, Expression<Func<bool>> bodywebhookrunForBulkActions = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_bodywebhookactive = bodywebhookactive == null ? null : WorkflowExpression.Compile(bodywebhookactive);
-            WorkflowExpression.Validate(__workflow_bodywebhookactive, nameof(bodywebhookactive), required: false);
-            var __workflow_bodywebhookwebhookName = bodywebhookwebhookName == null ? null : WorkflowExpression.Compile(bodywebhookwebhookName);
-            WorkflowExpression.Validate(__workflow_bodywebhookwebhookName, nameof(bodywebhookwebhookName), required: false);
-            var __workflow_bodywebhookrunForBulkActions = bodywebhookrunForBulkActions == null ? null : WorkflowExpression.Compile(bodywebhookrunForBulkActions);
-            WorkflowExpression.Validate(__workflow_bodywebhookrunForBulkActions, nameof(bodywebhookrunForBulkActions), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodywebhookactive = WorkflowExpression.Compile(bodywebhookactive, nameof(bodywebhookactive), required: false);
+            var __workflow_bodywebhookwebhookName = WorkflowExpression.Compile(bodywebhookwebhookName, nameof(bodywebhookwebhookName), required: false);
+            var __workflow_bodywebhookrunForBulkActions = WorkflowExpression.Compile(bodywebhookrunForBulkActions, nameof(bodywebhookrunForBulkActions), required: false);
             return new DeferredBodyTrigger<OnFulcrumEventResponse>(() =>
             {
                 var apiCallPath = "/v2/webhooks.json";

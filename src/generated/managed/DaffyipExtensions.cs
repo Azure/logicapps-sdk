@@ -31,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<CausesGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/causes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -49,8 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet(Expression<Func<int>> page = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<ContributionsGetResponse>(() =>
             {
                 var apiCallPath = "/contributions";
@@ -65,10 +62,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<DonationsGetResponse> DonationsGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<DonationsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -83,8 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<GiftsGetResponse> GiftsGet(Expression<Func<int>> page = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GiftsGetResponse>(() =>
             {
                 var apiCallPath = "/gifts";
@@ -99,8 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
         public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet(Expression<Func<string>> ein)
         {
-            var __workflow_ein = ein == null ? null : WorkflowExpression.Compile(ein);
-            WorkflowExpression.Validate(__workflow_ein, nameof(ein), required: true);
+            var __workflow_ein = WorkflowExpression.Compile(ein, nameof(ein), required: true);
             return new DeferredBodyAction<NonProfitGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/non_profits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ein, 1));

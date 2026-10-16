@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
         public IBodyWorkflowAction<ListNewsResponse> ListNews(Expression<Func<string>> sources = null, Expression<Func<string>> categories = null, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> keywords = null, Expression<Func<string>> date = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_sources = sources == null ? null : WorkflowExpression.Compile(sources);
-            WorkflowExpression.Validate(__workflow_sources, nameof(sources), required: false);
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
-            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
-            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
-            var __workflow_languages = languages == null ? null : WorkflowExpression.Compile(languages);
-            WorkflowExpression.Validate(__workflow_languages, nameof(languages), required: false);
-            var __workflow_keywords = keywords == null ? null : WorkflowExpression.Compile(keywords);
-            WorkflowExpression.Validate(__workflow_keywords, nameof(keywords), required: false);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_sources = WorkflowExpression.Compile(sources, nameof(sources), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            var __workflow_countries = WorkflowExpression.Compile(countries, nameof(countries), required: false);
+            var __workflow_languages = WorkflowExpression.Compile(languages, nameof(languages), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListNewsResponse>(() =>
             {
                 var apiCallPath = "/v1/news";
@@ -64,18 +55,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mediastack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mediastack")]
         public IBodyWorkflowAction<ListSourcesResponse> ListSources(Expression<Func<string>> search, Expression<Func<string>> countries = null, Expression<Func<string>> languages = null, Expression<Func<string>> categories = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: true);
-            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
-            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
-            var __workflow_languages = languages == null ? null : WorkflowExpression.Compile(languages);
-            WorkflowExpression.Validate(__workflow_languages, nameof(languages), required: false);
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: true);
+            var __workflow_countries = WorkflowExpression.Compile(countries, nameof(countries), required: false);
+            var __workflow_languages = WorkflowExpression.Compile(languages, nameof(languages), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListSourcesResponse>(() =>
             {
                 var apiCallPath = "/v1/sources";

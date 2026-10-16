@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemGetResponse> GetWorkItem(Expression<Func<string>> workItemId)
         {
-            var __workflow_workItemId = workItemId == null ? null : WorkflowExpression.Compile(workItemId);
-            WorkflowExpression.Validate(__workflow_workItemId, nameof(workItemId), required: true);
+            var __workflow_workItemId = WorkflowExpression.Compile(workItemId, nameof(workItemId), required: true);
             return new DeferredBodyAction<WorkItemGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workItemId, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<DeleteWorkItemResponse> DeleteWorkItem(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DeleteWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -41,28 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateIncident(Expression<Func<string>> bodyclassification, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodyimpact, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_bodyclassification = bodyclassification == null ? null : WorkflowExpression.Compile(bodyclassification);
-            WorkflowExpression.Validate(__workflow_bodyclassification, nameof(bodyclassification), required: true);
-            var __workflow_bodyurgency = bodyurgency == null ? null : WorkflowExpression.Compile(bodyurgency);
-            WorkflowExpression.Validate(__workflow_bodyurgency, nameof(bodyurgency), required: true);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: true);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysupportGroup = bodysupportGroup == null ? null : WorkflowExpression.Compile(bodysupportGroup);
-            WorkflowExpression.Validate(__workflow_bodysupportGroup, nameof(bodysupportGroup), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyaffectedUser = bodyaffectedUser == null ? null : WorkflowExpression.Compile(bodyaffectedUser);
-            WorkflowExpression.Validate(__workflow_bodyaffectedUser, nameof(bodyaffectedUser), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_bodyclassification = WorkflowExpression.Compile(bodyclassification, nameof(bodyclassification), required: true);
+            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: true);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: true);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodysupportGroup = WorkflowExpression.Compile(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyaffectedUser = WorkflowExpression.Compile(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
                 var apiCallPath = "/api/CloudConnector/Incident";
@@ -132,30 +119,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyclassification = bodyclassification == null ? null : WorkflowExpression.Compile(bodyclassification);
-            WorkflowExpression.Validate(__workflow_bodyclassification, nameof(bodyclassification), required: false);
-            var __workflow_bodyurgency = bodyurgency == null ? null : WorkflowExpression.Compile(bodyurgency);
-            WorkflowExpression.Validate(__workflow_bodyurgency, nameof(bodyurgency), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
-            var __workflow_bodysupportGroup = bodysupportGroup == null ? null : WorkflowExpression.Compile(bodysupportGroup);
-            WorkflowExpression.Validate(__workflow_bodysupportGroup, nameof(bodysupportGroup), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyaffectedUser = bodyaffectedUser == null ? null : WorkflowExpression.Compile(bodyaffectedUser);
-            WorkflowExpression.Validate(__workflow_bodyaffectedUser, nameof(bodyaffectedUser), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyclassification = WorkflowExpression.Compile(bodyclassification, nameof(bodyclassification), required: false);
+            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_bodysupportGroup = WorkflowExpression.Compile(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyaffectedUser = WorkflowExpression.Compile(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Incident/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -241,26 +216,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateServiceRequest(Expression<Func<string>> bodyarea, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_bodyarea = bodyarea == null ? null : WorkflowExpression.Compile(bodyarea);
-            WorkflowExpression.Validate(__workflow_bodyarea, nameof(bodyarea), required: true);
-            var __workflow_bodyurgency = bodyurgency == null ? null : WorkflowExpression.Compile(bodyurgency);
-            WorkflowExpression.Validate(__workflow_bodyurgency, nameof(bodyurgency), required: true);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysupportGroup = bodysupportGroup == null ? null : WorkflowExpression.Compile(bodysupportGroup);
-            WorkflowExpression.Validate(__workflow_bodysupportGroup, nameof(bodysupportGroup), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyaffectedUser = bodyaffectedUser == null ? null : WorkflowExpression.Compile(bodyaffectedUser);
-            WorkflowExpression.Validate(__workflow_bodyaffectedUser, nameof(bodyaffectedUser), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_bodyarea = WorkflowExpression.Compile(bodyarea, nameof(bodyarea), required: true);
+            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: true);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodysupportGroup = WorkflowExpression.Compile(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyaffectedUser = WorkflowExpression.Compile(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
                 var apiCallPath = "/api/CloudConnector/ServiceRequest";
@@ -328,30 +293,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyclassification = bodyclassification == null ? null : WorkflowExpression.Compile(bodyclassification);
-            WorkflowExpression.Validate(__workflow_bodyclassification, nameof(bodyclassification), required: false);
-            var __workflow_bodyurgency = bodyurgency == null ? null : WorkflowExpression.Compile(bodyurgency);
-            WorkflowExpression.Validate(__workflow_bodyurgency, nameof(bodyurgency), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
-            var __workflow_bodysupportGroup = bodysupportGroup == null ? null : WorkflowExpression.Compile(bodysupportGroup);
-            WorkflowExpression.Validate(__workflow_bodysupportGroup, nameof(bodysupportGroup), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyaffectedUser = bodyaffectedUser == null ? null : WorkflowExpression.Compile(bodyaffectedUser);
-            WorkflowExpression.Validate(__workflow_bodyaffectedUser, nameof(bodyaffectedUser), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyclassification = WorkflowExpression.Compile(bodyclassification, nameof(bodyclassification), required: false);
+            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_bodysupportGroup = WorkflowExpression.Compile(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyaffectedUser = WorkflowExpression.Compile(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -437,22 +390,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateChangeRequest(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyarea = bodyarea == null ? null : WorkflowExpression.Compile(bodyarea);
-            WorkflowExpression.Validate(__workflow_bodyarea, nameof(bodyarea), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodyrisk = bodyrisk == null ? null : WorkflowExpression.Compile(bodyrisk);
-            WorkflowExpression.Validate(__workflow_bodyrisk, nameof(bodyrisk), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyarea = WorkflowExpression.Compile(bodyarea, nameof(bodyarea), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodyrisk = WorkflowExpression.Compile(bodyrisk, nameof(bodyrisk), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
                 var apiCallPath = "/api/CloudConnector/ChangeRequest";
@@ -520,24 +465,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyarea = bodyarea == null ? null : WorkflowExpression.Compile(bodyarea);
-            WorkflowExpression.Validate(__workflow_bodyarea, nameof(bodyarea), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodyrisk = bodyrisk == null ? null : WorkflowExpression.Compile(bodyrisk);
-            WorkflowExpression.Validate(__workflow_bodyrisk, nameof(bodyrisk), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyarea = WorkflowExpression.Compile(bodyarea, nameof(bodyarea), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodyrisk = WorkflowExpression.Compile(bodyrisk, nameof(bodyrisk), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ChangeRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -605,24 +541,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateProblem(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodyurgency = bodyurgency == null ? null : WorkflowExpression.Compile(bodyurgency);
-            WorkflowExpression.Validate(__workflow_bodyurgency, nameof(bodyurgency), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
                 var apiCallPath = "/api/CloudConnector/Problem";
@@ -696,26 +623,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodyurgency = bodyurgency == null ? null : WorkflowExpression.Compile(bodyurgency);
-            WorkflowExpression.Validate(__workflow_bodyurgency, nameof(bodyurgency), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodyurgency = WorkflowExpression.Compile(bodyurgency, nameof(bodyurgency), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Problem/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -789,24 +706,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateReleaseRecord(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodyrisk = bodyrisk == null ? null : WorkflowExpression.Compile(bodyrisk);
-            WorkflowExpression.Validate(__workflow_bodyrisk, nameof(bodyrisk), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodyrisk = WorkflowExpression.Compile(bodyrisk, nameof(bodyrisk), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
                 var apiCallPath = "/api/CloudConnector/ReleaseRecord";
@@ -880,26 +788,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyimpact = bodyimpact == null ? null : WorkflowExpression.Compile(bodyimpact);
-            WorkflowExpression.Validate(__workflow_bodyimpact, nameof(bodyimpact), required: false);
-            var __workflow_bodyrisk = bodyrisk == null ? null : WorkflowExpression.Compile(bodyrisk);
-            WorkflowExpression.Validate(__workflow_bodyrisk, nameof(bodyrisk), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyassignedUser = bodyassignedUser == null ? null : WorkflowExpression.Compile(bodyassignedUser);
-            WorkflowExpression.Validate(__workflow_bodyassignedUser, nameof(bodyassignedUser), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodyimpact = WorkflowExpression.Compile(bodyimpact, nameof(bodyimpact), required: false);
+            var __workflow_bodyrisk = WorkflowExpression.Compile(bodyrisk, nameof(bodyrisk), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyassignedUser = WorkflowExpression.Compile(bodyassignedUser, nameof(bodyassignedUser), required: false);
             return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ReleaseRecord/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -973,16 +871,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
         public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyenteredBy = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyenteredBy = bodyenteredBy == null ? null : WorkflowExpression.Compile(bodyenteredBy);
-            WorkflowExpression.Validate(__workflow_bodyenteredBy, nameof(bodyenteredBy), required: false);
-            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
-            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: false);
-            var __workflow_bodyactionType = bodyactionType == null ? null : WorkflowExpression.Compile(bodyactionType);
-            WorkflowExpression.Validate(__workflow_bodyactionType, nameof(bodyactionType), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyenteredBy = WorkflowExpression.Compile(bodyenteredBy, nameof(bodyenteredBy), required: false);
+            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
+            var __workflow_bodyactionType = WorkflowExpression.Compile(bodyactionType, nameof(bodyactionType), required: false);
             return new DeferredBodyAction<WorkItemActionLogResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/cloudconnector/workItems/{0}/ActionLogComment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1028,8 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
     {
         public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodywebhookSettingsworkItemClassType = bodywebhookSettingsworkItemClassType == null ? null : WorkflowExpression.Compile(bodywebhookSettingsworkItemClassType);
-            WorkflowExpression.Validate(__workflow_bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
+            var __workflow_bodywebhookSettingsworkItemClassType = WorkflowExpression.Compile(bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
             return new DeferredBodyTrigger<WebhookSettings>(() =>
             {
                 var apiCallPath = "/platform/api/CreateWebhooks";
@@ -1075,8 +967,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 
         public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodywebhookSettingsworkItemClassType = bodywebhookSettingsworkItemClassType == null ? null : WorkflowExpression.Compile(bodywebhookSettingsworkItemClassType);
-            WorkflowExpression.Validate(__workflow_bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
+            var __workflow_bodywebhookSettingsworkItemClassType = WorkflowExpression.Compile(bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
             return new DeferredBodyTrigger<WebhookSettings>(() =>
             {
                 var apiCallPath = "/platform/api/CreateActionLogWebhooks";

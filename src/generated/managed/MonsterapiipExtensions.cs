@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<TextImageAddPostResponse> TextImageAdd(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasamples = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<string>> bodydataaspectRatio = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<int>> bodydataseed = null)
         {
-            var __workflow_bodydataprompt = bodydataprompt == null ? null : WorkflowExpression.Compile(bodydataprompt);
-            WorkflowExpression.Validate(__workflow_bodydataprompt, nameof(bodydataprompt), required: false);
-            var __workflow_bodydatanegprompt = bodydatanegprompt == null ? null : WorkflowExpression.Compile(bodydatanegprompt);
-            WorkflowExpression.Validate(__workflow_bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            var __workflow_bodydatasamples = bodydatasamples == null ? null : WorkflowExpression.Compile(bodydatasamples);
-            WorkflowExpression.Validate(__workflow_bodydatasamples, nameof(bodydatasamples), required: false);
-            var __workflow_bodydatasteps = bodydatasteps == null ? null : WorkflowExpression.Compile(bodydatasteps);
-            WorkflowExpression.Validate(__workflow_bodydatasteps, nameof(bodydatasteps), required: false);
-            var __workflow_bodydataaspectRatio = bodydataaspectRatio == null ? null : WorkflowExpression.Compile(bodydataaspectRatio);
-            WorkflowExpression.Validate(__workflow_bodydataaspectRatio, nameof(bodydataaspectRatio), required: false);
-            var __workflow_bodydataguidanceScale = bodydataguidanceScale == null ? null : WorkflowExpression.Compile(bodydataguidanceScale);
-            WorkflowExpression.Validate(__workflow_bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            var __workflow_bodydataseed = bodydataseed == null ? null : WorkflowExpression.Compile(bodydataseed);
-            WorkflowExpression.Validate(__workflow_bodydataseed, nameof(bodydataseed), required: false);
+            var __workflow_bodydataprompt = WorkflowExpression.Compile(bodydataprompt, nameof(bodydataprompt), required: false);
+            var __workflow_bodydatanegprompt = WorkflowExpression.Compile(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
+            var __workflow_bodydatasamples = WorkflowExpression.Compile(bodydatasamples, nameof(bodydatasamples), required: false);
+            var __workflow_bodydatasteps = WorkflowExpression.Compile(bodydatasteps, nameof(bodydatasteps), required: false);
+            var __workflow_bodydataaspectRatio = WorkflowExpression.Compile(bodydataaspectRatio, nameof(bodydataaspectRatio), required: false);
+            var __workflow_bodydataguidanceScale = WorkflowExpression.Compile(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
+            var __workflow_bodydataseed = WorkflowExpression.Compile(bodydataseed, nameof(bodydataseed), required: false);
             return new DeferredBodyAction<TextImageAddPostResponse>(() =>
             {
                 var apiCallPath = "/add-text-task";
@@ -98,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<TextImageStatusPostResponse> TextImageStatus(Expression<Func<string>> bodyprocessId)
         {
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<TextImageStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-text-status";
@@ -121,20 +113,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageImageAddPostResponse> ImageImageAdd(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<string>> bodydatainitImageUrl = null, Expression<Func<double>> bodydatastrength = null, Expression<Func<int>> bodydataseed = null)
         {
-            var __workflow_bodydataprompt = bodydataprompt == null ? null : WorkflowExpression.Compile(bodydataprompt);
-            WorkflowExpression.Validate(__workflow_bodydataprompt, nameof(bodydataprompt), required: false);
-            var __workflow_bodydatanegprompt = bodydatanegprompt == null ? null : WorkflowExpression.Compile(bodydatanegprompt);
-            WorkflowExpression.Validate(__workflow_bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            var __workflow_bodydatasteps = bodydatasteps == null ? null : WorkflowExpression.Compile(bodydatasteps);
-            WorkflowExpression.Validate(__workflow_bodydatasteps, nameof(bodydatasteps), required: false);
-            var __workflow_bodydataguidanceScale = bodydataguidanceScale == null ? null : WorkflowExpression.Compile(bodydataguidanceScale);
-            WorkflowExpression.Validate(__workflow_bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            var __workflow_bodydatainitImageUrl = bodydatainitImageUrl == null ? null : WorkflowExpression.Compile(bodydatainitImageUrl);
-            WorkflowExpression.Validate(__workflow_bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
-            var __workflow_bodydatastrength = bodydatastrength == null ? null : WorkflowExpression.Compile(bodydatastrength);
-            WorkflowExpression.Validate(__workflow_bodydatastrength, nameof(bodydatastrength), required: false);
-            var __workflow_bodydataseed = bodydataseed == null ? null : WorkflowExpression.Compile(bodydataseed);
-            WorkflowExpression.Validate(__workflow_bodydataseed, nameof(bodydataseed), required: false);
+            var __workflow_bodydataprompt = WorkflowExpression.Compile(bodydataprompt, nameof(bodydataprompt), required: false);
+            var __workflow_bodydatanegprompt = WorkflowExpression.Compile(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
+            var __workflow_bodydatasteps = WorkflowExpression.Compile(bodydatasteps, nameof(bodydatasteps), required: false);
+            var __workflow_bodydataguidanceScale = WorkflowExpression.Compile(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
+            var __workflow_bodydatainitImageUrl = WorkflowExpression.Compile(bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
+            var __workflow_bodydatastrength = WorkflowExpression.Compile(bodydatastrength, nameof(bodydatastrength), required: false);
+            var __workflow_bodydataseed = WorkflowExpression.Compile(bodydataseed, nameof(bodydataseed), required: false);
             return new DeferredBodyAction<ImageImageAddPostResponse>(() =>
             {
                 var apiCallPath = "/add-image-task";
@@ -206,8 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageImageStatusPostResponse> ImageImageStatus(Expression<Func<string>> bodyprocessId)
         {
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<ImageImageStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-image-status";
@@ -229,20 +213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<string>> bodydatainitImageUrl = null, Expression<Func<double>> bodydataimageGuidanceScale = null, Expression<Func<int>> bodydataseed = null)
         {
-            var __workflow_bodydataprompt = bodydataprompt == null ? null : WorkflowExpression.Compile(bodydataprompt);
-            WorkflowExpression.Validate(__workflow_bodydataprompt, nameof(bodydataprompt), required: false);
-            var __workflow_bodydatanegprompt = bodydatanegprompt == null ? null : WorkflowExpression.Compile(bodydatanegprompt);
-            WorkflowExpression.Validate(__workflow_bodydatanegprompt, nameof(bodydatanegprompt), required: false);
-            var __workflow_bodydatasteps = bodydatasteps == null ? null : WorkflowExpression.Compile(bodydatasteps);
-            WorkflowExpression.Validate(__workflow_bodydatasteps, nameof(bodydatasteps), required: false);
-            var __workflow_bodydataguidanceScale = bodydataguidanceScale == null ? null : WorkflowExpression.Compile(bodydataguidanceScale);
-            WorkflowExpression.Validate(__workflow_bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
-            var __workflow_bodydatainitImageUrl = bodydatainitImageUrl == null ? null : WorkflowExpression.Compile(bodydatainitImageUrl);
-            WorkflowExpression.Validate(__workflow_bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
-            var __workflow_bodydataimageGuidanceScale = bodydataimageGuidanceScale == null ? null : WorkflowExpression.Compile(bodydataimageGuidanceScale);
-            WorkflowExpression.Validate(__workflow_bodydataimageGuidanceScale, nameof(bodydataimageGuidanceScale), required: false);
-            var __workflow_bodydataseed = bodydataseed == null ? null : WorkflowExpression.Compile(bodydataseed);
-            WorkflowExpression.Validate(__workflow_bodydataseed, nameof(bodydataseed), required: false);
+            var __workflow_bodydataprompt = WorkflowExpression.Compile(bodydataprompt, nameof(bodydataprompt), required: false);
+            var __workflow_bodydatanegprompt = WorkflowExpression.Compile(bodydatanegprompt, nameof(bodydatanegprompt), required: false);
+            var __workflow_bodydatasteps = WorkflowExpression.Compile(bodydatasteps, nameof(bodydatasteps), required: false);
+            var __workflow_bodydataguidanceScale = WorkflowExpression.Compile(bodydataguidanceScale, nameof(bodydataguidanceScale), required: false);
+            var __workflow_bodydatainitImageUrl = WorkflowExpression.Compile(bodydatainitImageUrl, nameof(bodydatainitImageUrl), required: false);
+            var __workflow_bodydataimageGuidanceScale = WorkflowExpression.Compile(bodydataimageGuidanceScale, nameof(bodydataimageGuidanceScale), required: false);
+            var __workflow_bodydataseed = WorkflowExpression.Compile(bodydataseed, nameof(bodydataseed), required: false);
             return new DeferredBodyAction<ImageEditPostResponse>(() =>
             {
                 var apiCallPath = "/add-edit-task";
@@ -314,8 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<ImageEditStatusPostResponse> ImageEditStatus(Expression<Func<string>> bodyprocessId)
         {
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<ImageEditStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-edit-status";
@@ -337,10 +313,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<AudioPostResponse> Audio(Expression<Func<string>> bodydatafile = null, Expression<Func<bodydatatranscriptionFormatInput>> bodydatatranscriptionFormat = null)
         {
-            var __workflow_bodydatafile = bodydatafile == null ? null : WorkflowExpression.Compile(bodydatafile);
-            WorkflowExpression.Validate(__workflow_bodydatafile, nameof(bodydatafile), required: false);
-            var __workflow_bodydatatranscriptionFormat = bodydatatranscriptionFormat == null ? null : WorkflowExpression.Compile(bodydatatranscriptionFormat);
-            WorkflowExpression.Validate(__workflow_bodydatatranscriptionFormat, nameof(bodydatatranscriptionFormat), required: false);
+            var __workflow_bodydatafile = WorkflowExpression.Compile(bodydatafile, nameof(bodydatafile), required: false);
+            var __workflow_bodydatatranscriptionFormat = WorkflowExpression.Compile(bodydatatranscriptionFormat, nameof(bodydatatranscriptionFormat), required: false);
             return new DeferredBodyAction<AudioPostResponse>(() =>
             {
                 var apiCallPath = "/add-audio-task";
@@ -392,8 +366,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
         public IBodyWorkflowAction<AudioStatusPostResponse> AudioStatus(Expression<Func<string>> bodyprocessId)
         {
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<AudioStatusPostResponse>(() =>
             {
                 var apiCallPath = "/task-audio-status";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordCreateInstanceResponse> MSWordCreateInstance(Expression<Func<string>> mSWordCreateInstanceworkflow, Expression<Func<bool>> mSWordCreateInstanceshowWord = null)
         {
-            var __workflow_mSWordCreateInstanceworkflow = mSWordCreateInstanceworkflow == null ? null : WorkflowExpression.Compile(mSWordCreateInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordCreateInstanceworkflow, nameof(mSWordCreateInstanceworkflow), required: true);
-            var __workflow_mSWordCreateInstanceshowWord = mSWordCreateInstanceshowWord == null ? null : WorkflowExpression.Compile(mSWordCreateInstanceshowWord);
-            WorkflowExpression.Validate(__workflow_mSWordCreateInstanceshowWord, nameof(mSWordCreateInstanceshowWord), required: false);
+            var __workflow_mSWordCreateInstanceworkflow = WorkflowExpression.Compile(mSWordCreateInstanceworkflow, nameof(mSWordCreateInstanceworkflow), required: true);
+            var __workflow_mSWordCreateInstanceshowWord = WorkflowExpression.Compile(mSWordCreateInstanceshowWord, nameof(mSWordCreateInstanceshowWord), required: false);
             return new DeferredBodyAction<MSWordCreateInstanceResponse>(() =>
             {
                 var apiCallPath = "/MSWord/CreateInstance";
@@ -54,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordCloseInstance(Expression<Func<string>> mSWordCloseInstanceworkflow, Expression<Func<int>> mSWordCloseInstancehandle = null)
         {
-            var __workflow_mSWordCloseInstanceworkflow = mSWordCloseInstanceworkflow == null ? null : WorkflowExpression.Compile(mSWordCloseInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordCloseInstanceworkflow, nameof(mSWordCloseInstanceworkflow), required: true);
-            var __workflow_mSWordCloseInstancehandle = mSWordCloseInstancehandle == null ? null : WorkflowExpression.Compile(mSWordCloseInstancehandle);
-            WorkflowExpression.Validate(__workflow_mSWordCloseInstancehandle, nameof(mSWordCloseInstancehandle), required: false);
+            var __workflow_mSWordCloseInstanceworkflow = WorkflowExpression.Compile(mSWordCloseInstanceworkflow, nameof(mSWordCloseInstanceworkflow), required: true);
+            var __workflow_mSWordCloseInstancehandle = WorkflowExpression.Compile(mSWordCloseInstancehandle, nameof(mSWordCloseInstancehandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/CloseInstance";
@@ -95,10 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordDetachFromInstance(Expression<Func<string>> mSWordDetachFromInstanceworkflow, Expression<Func<int>> mSWordDetachFromInstancehandle = null)
         {
-            var __workflow_mSWordDetachFromInstanceworkflow = mSWordDetachFromInstanceworkflow == null ? null : WorkflowExpression.Compile(mSWordDetachFromInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordDetachFromInstanceworkflow, nameof(mSWordDetachFromInstanceworkflow), required: true);
-            var __workflow_mSWordDetachFromInstancehandle = mSWordDetachFromInstancehandle == null ? null : WorkflowExpression.Compile(mSWordDetachFromInstancehandle);
-            WorkflowExpression.Validate(__workflow_mSWordDetachFromInstancehandle, nameof(mSWordDetachFromInstancehandle), required: false);
+            var __workflow_mSWordDetachFromInstanceworkflow = WorkflowExpression.Compile(mSWordDetachFromInstanceworkflow, nameof(mSWordDetachFromInstanceworkflow), required: true);
+            var __workflow_mSWordDetachFromInstancehandle = WorkflowExpression.Compile(mSWordDetachFromInstancehandle, nameof(mSWordDetachFromInstancehandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/DetachFromInstance";
@@ -136,16 +130,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordAttachToExistingInstanceResponse> MSWordAttachToExistingInstance(Expression<Func<string>> mSWordAttachToExistingInstanceworkflow, Expression<Func<string>> mSWordAttachToExistingInstancefilename = null, Expression<Func<bool>> mSWordAttachToExistingInstancetoggleWindow = null, Expression<Func<bool>> mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSWordAttachToExistingInstancetoggleDelay = null)
         {
-            var __workflow_mSWordAttachToExistingInstanceworkflow = mSWordAttachToExistingInstanceworkflow == null ? null : WorkflowExpression.Compile(mSWordAttachToExistingInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordAttachToExistingInstanceworkflow, nameof(mSWordAttachToExistingInstanceworkflow), required: true);
-            var __workflow_mSWordAttachToExistingInstancefilename = mSWordAttachToExistingInstancefilename == null ? null : WorkflowExpression.Compile(mSWordAttachToExistingInstancefilename);
-            WorkflowExpression.Validate(__workflow_mSWordAttachToExistingInstancefilename, nameof(mSWordAttachToExistingInstancefilename), required: false);
-            var __workflow_mSWordAttachToExistingInstancetoggleWindow = mSWordAttachToExistingInstancetoggleWindow == null ? null : WorkflowExpression.Compile(mSWordAttachToExistingInstancetoggleWindow);
-            WorkflowExpression.Validate(__workflow_mSWordAttachToExistingInstancetoggleWindow, nameof(mSWordAttachToExistingInstancetoggleWindow), required: false);
-            var __workflow_mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_mSWordAttachToExistingInstancetoggleDelay = mSWordAttachToExistingInstancetoggleDelay == null ? null : WorkflowExpression.Compile(mSWordAttachToExistingInstancetoggleDelay);
-            WorkflowExpression.Validate(__workflow_mSWordAttachToExistingInstancetoggleDelay, nameof(mSWordAttachToExistingInstancetoggleDelay), required: false);
+            var __workflow_mSWordAttachToExistingInstanceworkflow = WorkflowExpression.Compile(mSWordAttachToExistingInstanceworkflow, nameof(mSWordAttachToExistingInstanceworkflow), required: true);
+            var __workflow_mSWordAttachToExistingInstancefilename = WorkflowExpression.Compile(mSWordAttachToExistingInstancefilename, nameof(mSWordAttachToExistingInstancefilename), required: false);
+            var __workflow_mSWordAttachToExistingInstancetoggleWindow = WorkflowExpression.Compile(mSWordAttachToExistingInstancetoggleWindow, nameof(mSWordAttachToExistingInstancetoggleWindow), required: false);
+            var __workflow_mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSWordAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_mSWordAttachToExistingInstancetoggleDelay = WorkflowExpression.Compile(mSWordAttachToExistingInstancetoggleDelay, nameof(mSWordAttachToExistingInstancetoggleDelay), required: false);
             return new DeferredBodyAction<MSWordAttachToExistingInstanceResponse>(() =>
             {
                 var apiCallPath = "/MSWord/AttachToExistingInstance";
@@ -221,10 +210,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordShowWord(Expression<Func<string>> mSWordShowWordworkflow, Expression<Func<int>> mSWordShowWordhandle = null)
         {
-            var __workflow_mSWordShowWordworkflow = mSWordShowWordworkflow == null ? null : WorkflowExpression.Compile(mSWordShowWordworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordShowWordworkflow, nameof(mSWordShowWordworkflow), required: true);
-            var __workflow_mSWordShowWordhandle = mSWordShowWordhandle == null ? null : WorkflowExpression.Compile(mSWordShowWordhandle);
-            WorkflowExpression.Validate(__workflow_mSWordShowWordhandle, nameof(mSWordShowWordhandle), required: false);
+            var __workflow_mSWordShowWordworkflow = WorkflowExpression.Compile(mSWordShowWordworkflow, nameof(mSWordShowWordworkflow), required: true);
+            var __workflow_mSWordShowWordhandle = WorkflowExpression.Compile(mSWordShowWordhandle, nameof(mSWordShowWordhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/ShowWord";
@@ -262,10 +249,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordHideWord(Expression<Func<string>> mSWordHideWordworkflow, Expression<Func<int>> mSWordHideWordhandle = null)
         {
-            var __workflow_mSWordHideWordworkflow = mSWordHideWordworkflow == null ? null : WorkflowExpression.Compile(mSWordHideWordworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordHideWordworkflow, nameof(mSWordHideWordworkflow), required: true);
-            var __workflow_mSWordHideWordhandle = mSWordHideWordhandle == null ? null : WorkflowExpression.Compile(mSWordHideWordhandle);
-            WorkflowExpression.Validate(__workflow_mSWordHideWordhandle, nameof(mSWordHideWordhandle), required: false);
+            var __workflow_mSWordHideWordworkflow = WorkflowExpression.Compile(mSWordHideWordworkflow, nameof(mSWordHideWordworkflow), required: true);
+            var __workflow_mSWordHideWordhandle = WorkflowExpression.Compile(mSWordHideWordhandle, nameof(mSWordHideWordhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/HideWord";
@@ -303,10 +288,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordCreateDocumentResponse> MSWordCreateDocument(Expression<Func<string>> mSWordCreateDocumentworkflow, Expression<Func<int>> mSWordCreateDocumenthandle = null)
         {
-            var __workflow_mSWordCreateDocumentworkflow = mSWordCreateDocumentworkflow == null ? null : WorkflowExpression.Compile(mSWordCreateDocumentworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordCreateDocumentworkflow, nameof(mSWordCreateDocumentworkflow), required: true);
-            var __workflow_mSWordCreateDocumenthandle = mSWordCreateDocumenthandle == null ? null : WorkflowExpression.Compile(mSWordCreateDocumenthandle);
-            WorkflowExpression.Validate(__workflow_mSWordCreateDocumenthandle, nameof(mSWordCreateDocumenthandle), required: false);
+            var __workflow_mSWordCreateDocumentworkflow = WorkflowExpression.Compile(mSWordCreateDocumentworkflow, nameof(mSWordCreateDocumentworkflow), required: true);
+            var __workflow_mSWordCreateDocumenthandle = WorkflowExpression.Compile(mSWordCreateDocumenthandle, nameof(mSWordCreateDocumenthandle), required: false);
             return new DeferredBodyAction<MSWordCreateDocumentResponse>(() =>
             {
                 var apiCallPath = "/MSWord/CreateDocument";
@@ -344,20 +327,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordOpenDocumentResponse> MSWordOpenDocument(Expression<Func<string>> mSWordOpenDocumentfilename, Expression<Func<string>> mSWordOpenDocumentworkflow, Expression<Func<int>> mSWordOpenDocumenthandle = null, Expression<Func<bool>> mSWordOpenDocumentopenReadOnly = null, Expression<Func<bool>> mSWordOpenDocumentaddToRecentFiles = null, Expression<Func<string>> mSWordOpenDocumentpassword = null, Expression<Func<bool>> mSWordOpenDocumentopenAndRepair = null)
         {
-            var __workflow_mSWordOpenDocumentfilename = mSWordOpenDocumentfilename == null ? null : WorkflowExpression.Compile(mSWordOpenDocumentfilename);
-            WorkflowExpression.Validate(__workflow_mSWordOpenDocumentfilename, nameof(mSWordOpenDocumentfilename), required: true);
-            var __workflow_mSWordOpenDocumentworkflow = mSWordOpenDocumentworkflow == null ? null : WorkflowExpression.Compile(mSWordOpenDocumentworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordOpenDocumentworkflow, nameof(mSWordOpenDocumentworkflow), required: true);
-            var __workflow_mSWordOpenDocumenthandle = mSWordOpenDocumenthandle == null ? null : WorkflowExpression.Compile(mSWordOpenDocumenthandle);
-            WorkflowExpression.Validate(__workflow_mSWordOpenDocumenthandle, nameof(mSWordOpenDocumenthandle), required: false);
-            var __workflow_mSWordOpenDocumentopenReadOnly = mSWordOpenDocumentopenReadOnly == null ? null : WorkflowExpression.Compile(mSWordOpenDocumentopenReadOnly);
-            WorkflowExpression.Validate(__workflow_mSWordOpenDocumentopenReadOnly, nameof(mSWordOpenDocumentopenReadOnly), required: false);
-            var __workflow_mSWordOpenDocumentaddToRecentFiles = mSWordOpenDocumentaddToRecentFiles == null ? null : WorkflowExpression.Compile(mSWordOpenDocumentaddToRecentFiles);
-            WorkflowExpression.Validate(__workflow_mSWordOpenDocumentaddToRecentFiles, nameof(mSWordOpenDocumentaddToRecentFiles), required: false);
-            var __workflow_mSWordOpenDocumentpassword = mSWordOpenDocumentpassword == null ? null : WorkflowExpression.Compile(mSWordOpenDocumentpassword);
-            WorkflowExpression.Validate(__workflow_mSWordOpenDocumentpassword, nameof(mSWordOpenDocumentpassword), required: false);
-            var __workflow_mSWordOpenDocumentopenAndRepair = mSWordOpenDocumentopenAndRepair == null ? null : WorkflowExpression.Compile(mSWordOpenDocumentopenAndRepair);
-            WorkflowExpression.Validate(__workflow_mSWordOpenDocumentopenAndRepair, nameof(mSWordOpenDocumentopenAndRepair), required: false);
+            var __workflow_mSWordOpenDocumentfilename = WorkflowExpression.Compile(mSWordOpenDocumentfilename, nameof(mSWordOpenDocumentfilename), required: true);
+            var __workflow_mSWordOpenDocumentworkflow = WorkflowExpression.Compile(mSWordOpenDocumentworkflow, nameof(mSWordOpenDocumentworkflow), required: true);
+            var __workflow_mSWordOpenDocumenthandle = WorkflowExpression.Compile(mSWordOpenDocumenthandle, nameof(mSWordOpenDocumenthandle), required: false);
+            var __workflow_mSWordOpenDocumentopenReadOnly = WorkflowExpression.Compile(mSWordOpenDocumentopenReadOnly, nameof(mSWordOpenDocumentopenReadOnly), required: false);
+            var __workflow_mSWordOpenDocumentaddToRecentFiles = WorkflowExpression.Compile(mSWordOpenDocumentaddToRecentFiles, nameof(mSWordOpenDocumentaddToRecentFiles), required: false);
+            var __workflow_mSWordOpenDocumentpassword = WorkflowExpression.Compile(mSWordOpenDocumentpassword, nameof(mSWordOpenDocumentpassword), required: false);
+            var __workflow_mSWordOpenDocumentopenAndRepair = WorkflowExpression.Compile(mSWordOpenDocumentopenAndRepair, nameof(mSWordOpenDocumentopenAndRepair), required: false);
             return new DeferredBodyAction<MSWordOpenDocumentResponse>(() =>
             {
                 var apiCallPath = "/MSWord/OpenDocument";
@@ -451,12 +427,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSaveDocument(Expression<Func<string>> mSWordSaveDocumentworkflow, Expression<Func<int>> mSWordSaveDocumenthandle = null, Expression<Func<string>> mSWordSaveDocumentdocumentName = null)
         {
-            var __workflow_mSWordSaveDocumentworkflow = mSWordSaveDocumentworkflow == null ? null : WorkflowExpression.Compile(mSWordSaveDocumentworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSaveDocumentworkflow, nameof(mSWordSaveDocumentworkflow), required: true);
-            var __workflow_mSWordSaveDocumenthandle = mSWordSaveDocumenthandle == null ? null : WorkflowExpression.Compile(mSWordSaveDocumenthandle);
-            WorkflowExpression.Validate(__workflow_mSWordSaveDocumenthandle, nameof(mSWordSaveDocumenthandle), required: false);
-            var __workflow_mSWordSaveDocumentdocumentName = mSWordSaveDocumentdocumentName == null ? null : WorkflowExpression.Compile(mSWordSaveDocumentdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSaveDocumentdocumentName, nameof(mSWordSaveDocumentdocumentName), required: false);
+            var __workflow_mSWordSaveDocumentworkflow = WorkflowExpression.Compile(mSWordSaveDocumentworkflow, nameof(mSWordSaveDocumentworkflow), required: true);
+            var __workflow_mSWordSaveDocumenthandle = WorkflowExpression.Compile(mSWordSaveDocumenthandle, nameof(mSWordSaveDocumenthandle), required: false);
+            var __workflow_mSWordSaveDocumentdocumentName = WorkflowExpression.Compile(mSWordSaveDocumentdocumentName, nameof(mSWordSaveDocumentdocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/Save";
@@ -500,14 +473,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordSaveAsDocumentResponse> MSWordSaveAsDocument(Expression<Func<string>> mSWordSaveAsDocumentsaveFilename, Expression<Func<string>> mSWordSaveAsDocumentworkflow, Expression<Func<int>> mSWordSaveAsDocumenthandle = null, Expression<Func<string>> mSWordSaveAsDocumentdocumentName = null)
         {
-            var __workflow_mSWordSaveAsDocumentsaveFilename = mSWordSaveAsDocumentsaveFilename == null ? null : WorkflowExpression.Compile(mSWordSaveAsDocumentsaveFilename);
-            WorkflowExpression.Validate(__workflow_mSWordSaveAsDocumentsaveFilename, nameof(mSWordSaveAsDocumentsaveFilename), required: true);
-            var __workflow_mSWordSaveAsDocumentworkflow = mSWordSaveAsDocumentworkflow == null ? null : WorkflowExpression.Compile(mSWordSaveAsDocumentworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSaveAsDocumentworkflow, nameof(mSWordSaveAsDocumentworkflow), required: true);
-            var __workflow_mSWordSaveAsDocumenthandle = mSWordSaveAsDocumenthandle == null ? null : WorkflowExpression.Compile(mSWordSaveAsDocumenthandle);
-            WorkflowExpression.Validate(__workflow_mSWordSaveAsDocumenthandle, nameof(mSWordSaveAsDocumenthandle), required: false);
-            var __workflow_mSWordSaveAsDocumentdocumentName = mSWordSaveAsDocumentdocumentName == null ? null : WorkflowExpression.Compile(mSWordSaveAsDocumentdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSaveAsDocumentdocumentName, nameof(mSWordSaveAsDocumentdocumentName), required: false);
+            var __workflow_mSWordSaveAsDocumentsaveFilename = WorkflowExpression.Compile(mSWordSaveAsDocumentsaveFilename, nameof(mSWordSaveAsDocumentsaveFilename), required: true);
+            var __workflow_mSWordSaveAsDocumentworkflow = WorkflowExpression.Compile(mSWordSaveAsDocumentworkflow, nameof(mSWordSaveAsDocumentworkflow), required: true);
+            var __workflow_mSWordSaveAsDocumenthandle = WorkflowExpression.Compile(mSWordSaveAsDocumenthandle, nameof(mSWordSaveAsDocumenthandle), required: false);
+            var __workflow_mSWordSaveAsDocumentdocumentName = WorkflowExpression.Compile(mSWordSaveAsDocumentdocumentName, nameof(mSWordSaveAsDocumentdocumentName), required: false);
             return new DeferredBodyAction<MSWordSaveAsDocumentResponse>(() =>
             {
                 var apiCallPath = "/MSWord/SaveAs";
@@ -553,12 +522,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordCloseDocument(Expression<Func<string>> mSWordCloseDocumentworkflow, Expression<Func<int>> mSWordCloseDocumenthandle = null, Expression<Func<string>> mSWordCloseDocumentdocumentName = null)
         {
-            var __workflow_mSWordCloseDocumentworkflow = mSWordCloseDocumentworkflow == null ? null : WorkflowExpression.Compile(mSWordCloseDocumentworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordCloseDocumentworkflow, nameof(mSWordCloseDocumentworkflow), required: true);
-            var __workflow_mSWordCloseDocumenthandle = mSWordCloseDocumenthandle == null ? null : WorkflowExpression.Compile(mSWordCloseDocumenthandle);
-            WorkflowExpression.Validate(__workflow_mSWordCloseDocumenthandle, nameof(mSWordCloseDocumenthandle), required: false);
-            var __workflow_mSWordCloseDocumentdocumentName = mSWordCloseDocumentdocumentName == null ? null : WorkflowExpression.Compile(mSWordCloseDocumentdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordCloseDocumentdocumentName, nameof(mSWordCloseDocumentdocumentName), required: false);
+            var __workflow_mSWordCloseDocumentworkflow = WorkflowExpression.Compile(mSWordCloseDocumentworkflow, nameof(mSWordCloseDocumentworkflow), required: true);
+            var __workflow_mSWordCloseDocumenthandle = WorkflowExpression.Compile(mSWordCloseDocumenthandle, nameof(mSWordCloseDocumenthandle), required: false);
+            var __workflow_mSWordCloseDocumentdocumentName = WorkflowExpression.Compile(mSWordCloseDocumentdocumentName, nameof(mSWordCloseDocumentdocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/CloseDocument";
@@ -602,12 +568,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordTypeText(Expression<Func<string>> mSWordTypeTexttext, Expression<Func<string>> mSWordTypeTextworkflow, Expression<Func<int>> mSWordTypeTexthandle = null)
         {
-            var __workflow_mSWordTypeTexttext = mSWordTypeTexttext == null ? null : WorkflowExpression.Compile(mSWordTypeTexttext);
-            WorkflowExpression.Validate(__workflow_mSWordTypeTexttext, nameof(mSWordTypeTexttext), required: true);
-            var __workflow_mSWordTypeTextworkflow = mSWordTypeTextworkflow == null ? null : WorkflowExpression.Compile(mSWordTypeTextworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordTypeTextworkflow, nameof(mSWordTypeTextworkflow), required: true);
-            var __workflow_mSWordTypeTexthandle = mSWordTypeTexthandle == null ? null : WorkflowExpression.Compile(mSWordTypeTexthandle);
-            WorkflowExpression.Validate(__workflow_mSWordTypeTexthandle, nameof(mSWordTypeTexthandle), required: false);
+            var __workflow_mSWordTypeTexttext = WorkflowExpression.Compile(mSWordTypeTexttext, nameof(mSWordTypeTexttext), required: true);
+            var __workflow_mSWordTypeTextworkflow = WorkflowExpression.Compile(mSWordTypeTextworkflow, nameof(mSWordTypeTextworkflow), required: true);
+            var __workflow_mSWordTypeTexthandle = WorkflowExpression.Compile(mSWordTypeTexthandle, nameof(mSWordTypeTexthandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/TypeText";
@@ -647,12 +610,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectAll(Expression<Func<string>> mSWordSelectAllworkflow, Expression<Func<int>> mSWordSelectAllhandle = null, Expression<Func<string>> mSWordSelectAlldocumentName = null)
         {
-            var __workflow_mSWordSelectAllworkflow = mSWordSelectAllworkflow == null ? null : WorkflowExpression.Compile(mSWordSelectAllworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSelectAllworkflow, nameof(mSWordSelectAllworkflow), required: true);
-            var __workflow_mSWordSelectAllhandle = mSWordSelectAllhandle == null ? null : WorkflowExpression.Compile(mSWordSelectAllhandle);
-            WorkflowExpression.Validate(__workflow_mSWordSelectAllhandle, nameof(mSWordSelectAllhandle), required: false);
-            var __workflow_mSWordSelectAlldocumentName = mSWordSelectAlldocumentName == null ? null : WorkflowExpression.Compile(mSWordSelectAlldocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSelectAlldocumentName, nameof(mSWordSelectAlldocumentName), required: false);
+            var __workflow_mSWordSelectAllworkflow = WorkflowExpression.Compile(mSWordSelectAllworkflow, nameof(mSWordSelectAllworkflow), required: true);
+            var __workflow_mSWordSelectAllhandle = WorkflowExpression.Compile(mSWordSelectAllhandle, nameof(mSWordSelectAllhandle), required: false);
+            var __workflow_mSWordSelectAlldocumentName = WorkflowExpression.Compile(mSWordSelectAlldocumentName, nameof(mSWordSelectAlldocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/SelectAll";
@@ -696,16 +656,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectRange(Expression<Func<int>> mSWordSelectRangestart, Expression<Func<int>> mSWordSelectRangefinish, Expression<Func<string>> mSWordSelectRangeworkflow, Expression<Func<int>> mSWordSelectRangehandle = null, Expression<Func<string>> mSWordSelectRangedocumentName = null)
         {
-            var __workflow_mSWordSelectRangestart = mSWordSelectRangestart == null ? null : WorkflowExpression.Compile(mSWordSelectRangestart);
-            WorkflowExpression.Validate(__workflow_mSWordSelectRangestart, nameof(mSWordSelectRangestart), required: true);
-            var __workflow_mSWordSelectRangefinish = mSWordSelectRangefinish == null ? null : WorkflowExpression.Compile(mSWordSelectRangefinish);
-            WorkflowExpression.Validate(__workflow_mSWordSelectRangefinish, nameof(mSWordSelectRangefinish), required: true);
-            var __workflow_mSWordSelectRangeworkflow = mSWordSelectRangeworkflow == null ? null : WorkflowExpression.Compile(mSWordSelectRangeworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSelectRangeworkflow, nameof(mSWordSelectRangeworkflow), required: true);
-            var __workflow_mSWordSelectRangehandle = mSWordSelectRangehandle == null ? null : WorkflowExpression.Compile(mSWordSelectRangehandle);
-            WorkflowExpression.Validate(__workflow_mSWordSelectRangehandle, nameof(mSWordSelectRangehandle), required: false);
-            var __workflow_mSWordSelectRangedocumentName = mSWordSelectRangedocumentName == null ? null : WorkflowExpression.Compile(mSWordSelectRangedocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSelectRangedocumentName, nameof(mSWordSelectRangedocumentName), required: false);
+            var __workflow_mSWordSelectRangestart = WorkflowExpression.Compile(mSWordSelectRangestart, nameof(mSWordSelectRangestart), required: true);
+            var __workflow_mSWordSelectRangefinish = WorkflowExpression.Compile(mSWordSelectRangefinish, nameof(mSWordSelectRangefinish), required: true);
+            var __workflow_mSWordSelectRangeworkflow = WorkflowExpression.Compile(mSWordSelectRangeworkflow, nameof(mSWordSelectRangeworkflow), required: true);
+            var __workflow_mSWordSelectRangehandle = WorkflowExpression.Compile(mSWordSelectRangehandle, nameof(mSWordSelectRangehandle), required: false);
+            var __workflow_mSWordSelectRangedocumentName = WorkflowExpression.Compile(mSWordSelectRangedocumentName, nameof(mSWordSelectRangedocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/SelectRange";
@@ -753,10 +708,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordCopyToClipboard(Expression<Func<string>> mSWordCopyToClipboardworkflow, Expression<Func<int>> mSWordCopyToClipboardhandle = null)
         {
-            var __workflow_mSWordCopyToClipboardworkflow = mSWordCopyToClipboardworkflow == null ? null : WorkflowExpression.Compile(mSWordCopyToClipboardworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordCopyToClipboardworkflow, nameof(mSWordCopyToClipboardworkflow), required: true);
-            var __workflow_mSWordCopyToClipboardhandle = mSWordCopyToClipboardhandle == null ? null : WorkflowExpression.Compile(mSWordCopyToClipboardhandle);
-            WorkflowExpression.Validate(__workflow_mSWordCopyToClipboardhandle, nameof(mSWordCopyToClipboardhandle), required: false);
+            var __workflow_mSWordCopyToClipboardworkflow = WorkflowExpression.Compile(mSWordCopyToClipboardworkflow, nameof(mSWordCopyToClipboardworkflow), required: true);
+            var __workflow_mSWordCopyToClipboardhandle = WorkflowExpression.Compile(mSWordCopyToClipboardhandle, nameof(mSWordCopyToClipboardhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/CopyToClipboard";
@@ -794,10 +747,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordPasteFromClipboard(Expression<Func<string>> mSWordPasteFromClipboardworkflow, Expression<Func<int>> mSWordPasteFromClipboardhandle = null)
         {
-            var __workflow_mSWordPasteFromClipboardworkflow = mSWordPasteFromClipboardworkflow == null ? null : WorkflowExpression.Compile(mSWordPasteFromClipboardworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordPasteFromClipboardworkflow, nameof(mSWordPasteFromClipboardworkflow), required: true);
-            var __workflow_mSWordPasteFromClipboardhandle = mSWordPasteFromClipboardhandle == null ? null : WorkflowExpression.Compile(mSWordPasteFromClipboardhandle);
-            WorkflowExpression.Validate(__workflow_mSWordPasteFromClipboardhandle, nameof(mSWordPasteFromClipboardhandle), required: false);
+            var __workflow_mSWordPasteFromClipboardworkflow = WorkflowExpression.Compile(mSWordPasteFromClipboardworkflow, nameof(mSWordPasteFromClipboardworkflow), required: true);
+            var __workflow_mSWordPasteFromClipboardhandle = WorkflowExpression.Compile(mSWordPasteFromClipboardhandle, nameof(mSWordPasteFromClipboardhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/PasteFromClipboard";
@@ -835,8 +786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordClearClipboard(Expression<Func<string>> mSWordClearClipboardworkflow)
         {
-            var __workflow_mSWordClearClipboardworkflow = mSWordClearClipboardworkflow == null ? null : WorkflowExpression.Compile(mSWordClearClipboardworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordClearClipboardworkflow, nameof(mSWordClearClipboardworkflow), required: true);
+            var __workflow_mSWordClearClipboardworkflow = WorkflowExpression.Compile(mSWordClearClipboardworkflow, nameof(mSWordClearClipboardworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/ClearClipboard";
@@ -858,16 +808,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetDocumentBodyTextResponse> MSWordGetDocumentBodyText(Expression<Func<int>> mSWordGetDocumentBodyTextstart, Expression<Func<int>> mSWordGetDocumentBodyTextfinish, Expression<Func<string>> mSWordGetDocumentBodyTextworkflow, Expression<Func<int>> mSWordGetDocumentBodyTexthandle = null, Expression<Func<string>> mSWordGetDocumentBodyTextdocumentName = null)
         {
-            var __workflow_mSWordGetDocumentBodyTextstart = mSWordGetDocumentBodyTextstart == null ? null : WorkflowExpression.Compile(mSWordGetDocumentBodyTextstart);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentBodyTextstart, nameof(mSWordGetDocumentBodyTextstart), required: true);
-            var __workflow_mSWordGetDocumentBodyTextfinish = mSWordGetDocumentBodyTextfinish == null ? null : WorkflowExpression.Compile(mSWordGetDocumentBodyTextfinish);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentBodyTextfinish, nameof(mSWordGetDocumentBodyTextfinish), required: true);
-            var __workflow_mSWordGetDocumentBodyTextworkflow = mSWordGetDocumentBodyTextworkflow == null ? null : WorkflowExpression.Compile(mSWordGetDocumentBodyTextworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentBodyTextworkflow, nameof(mSWordGetDocumentBodyTextworkflow), required: true);
-            var __workflow_mSWordGetDocumentBodyTexthandle = mSWordGetDocumentBodyTexthandle == null ? null : WorkflowExpression.Compile(mSWordGetDocumentBodyTexthandle);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentBodyTexthandle, nameof(mSWordGetDocumentBodyTexthandle), required: false);
-            var __workflow_mSWordGetDocumentBodyTextdocumentName = mSWordGetDocumentBodyTextdocumentName == null ? null : WorkflowExpression.Compile(mSWordGetDocumentBodyTextdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentBodyTextdocumentName, nameof(mSWordGetDocumentBodyTextdocumentName), required: false);
+            var __workflow_mSWordGetDocumentBodyTextstart = WorkflowExpression.Compile(mSWordGetDocumentBodyTextstart, nameof(mSWordGetDocumentBodyTextstart), required: true);
+            var __workflow_mSWordGetDocumentBodyTextfinish = WorkflowExpression.Compile(mSWordGetDocumentBodyTextfinish, nameof(mSWordGetDocumentBodyTextfinish), required: true);
+            var __workflow_mSWordGetDocumentBodyTextworkflow = WorkflowExpression.Compile(mSWordGetDocumentBodyTextworkflow, nameof(mSWordGetDocumentBodyTextworkflow), required: true);
+            var __workflow_mSWordGetDocumentBodyTexthandle = WorkflowExpression.Compile(mSWordGetDocumentBodyTexthandle, nameof(mSWordGetDocumentBodyTexthandle), required: false);
+            var __workflow_mSWordGetDocumentBodyTextdocumentName = WorkflowExpression.Compile(mSWordGetDocumentBodyTextdocumentName, nameof(mSWordGetDocumentBodyTextdocumentName), required: false);
             return new DeferredBodyAction<MSWordGetDocumentBodyTextResponse>(() =>
             {
                 var apiCallPath = "/MSWord/GetDocumentBodyText";
@@ -915,12 +860,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetNumberOfTablesInDocumentResponse> MSWordGetNumberOfTablesInDocument(Expression<Func<string>> mSWordGetNumberOfTablesInDocumentworkflow, Expression<Func<int>> mSWordGetNumberOfTablesInDocumenthandle = null, Expression<Func<string>> mSWordGetNumberOfTablesInDocumentdocumentName = null)
         {
-            var __workflow_mSWordGetNumberOfTablesInDocumentworkflow = mSWordGetNumberOfTablesInDocumentworkflow == null ? null : WorkflowExpression.Compile(mSWordGetNumberOfTablesInDocumentworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordGetNumberOfTablesInDocumentworkflow, nameof(mSWordGetNumberOfTablesInDocumentworkflow), required: true);
-            var __workflow_mSWordGetNumberOfTablesInDocumenthandle = mSWordGetNumberOfTablesInDocumenthandle == null ? null : WorkflowExpression.Compile(mSWordGetNumberOfTablesInDocumenthandle);
-            WorkflowExpression.Validate(__workflow_mSWordGetNumberOfTablesInDocumenthandle, nameof(mSWordGetNumberOfTablesInDocumenthandle), required: false);
-            var __workflow_mSWordGetNumberOfTablesInDocumentdocumentName = mSWordGetNumberOfTablesInDocumentdocumentName == null ? null : WorkflowExpression.Compile(mSWordGetNumberOfTablesInDocumentdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordGetNumberOfTablesInDocumentdocumentName, nameof(mSWordGetNumberOfTablesInDocumentdocumentName), required: false);
+            var __workflow_mSWordGetNumberOfTablesInDocumentworkflow = WorkflowExpression.Compile(mSWordGetNumberOfTablesInDocumentworkflow, nameof(mSWordGetNumberOfTablesInDocumentworkflow), required: true);
+            var __workflow_mSWordGetNumberOfTablesInDocumenthandle = WorkflowExpression.Compile(mSWordGetNumberOfTablesInDocumenthandle, nameof(mSWordGetNumberOfTablesInDocumenthandle), required: false);
+            var __workflow_mSWordGetNumberOfTablesInDocumentdocumentName = WorkflowExpression.Compile(mSWordGetNumberOfTablesInDocumentdocumentName, nameof(mSWordGetNumberOfTablesInDocumentdocumentName), required: false);
             return new DeferredBodyAction<MSWordGetNumberOfTablesInDocumentResponse>(() =>
             {
                 var apiCallPath = "/MSWord/GetNumberOfTablesInDocument";
@@ -964,16 +906,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordUpdateBookmark(Expression<Func<string>> mSWordUpdateBookmarkbookmarkName, Expression<Func<string>> mSWordUpdateBookmarkworkflow, Expression<Func<int>> mSWordUpdateBookmarkhandle = null, Expression<Func<string>> mSWordUpdateBookmarkdocumentName = null, Expression<Func<string>> mSWordUpdateBookmarknewValue = null)
         {
-            var __workflow_mSWordUpdateBookmarkbookmarkName = mSWordUpdateBookmarkbookmarkName == null ? null : WorkflowExpression.Compile(mSWordUpdateBookmarkbookmarkName);
-            WorkflowExpression.Validate(__workflow_mSWordUpdateBookmarkbookmarkName, nameof(mSWordUpdateBookmarkbookmarkName), required: true);
-            var __workflow_mSWordUpdateBookmarkworkflow = mSWordUpdateBookmarkworkflow == null ? null : WorkflowExpression.Compile(mSWordUpdateBookmarkworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordUpdateBookmarkworkflow, nameof(mSWordUpdateBookmarkworkflow), required: true);
-            var __workflow_mSWordUpdateBookmarkhandle = mSWordUpdateBookmarkhandle == null ? null : WorkflowExpression.Compile(mSWordUpdateBookmarkhandle);
-            WorkflowExpression.Validate(__workflow_mSWordUpdateBookmarkhandle, nameof(mSWordUpdateBookmarkhandle), required: false);
-            var __workflow_mSWordUpdateBookmarkdocumentName = mSWordUpdateBookmarkdocumentName == null ? null : WorkflowExpression.Compile(mSWordUpdateBookmarkdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordUpdateBookmarkdocumentName, nameof(mSWordUpdateBookmarkdocumentName), required: false);
-            var __workflow_mSWordUpdateBookmarknewValue = mSWordUpdateBookmarknewValue == null ? null : WorkflowExpression.Compile(mSWordUpdateBookmarknewValue);
-            WorkflowExpression.Validate(__workflow_mSWordUpdateBookmarknewValue, nameof(mSWordUpdateBookmarknewValue), required: false);
+            var __workflow_mSWordUpdateBookmarkbookmarkName = WorkflowExpression.Compile(mSWordUpdateBookmarkbookmarkName, nameof(mSWordUpdateBookmarkbookmarkName), required: true);
+            var __workflow_mSWordUpdateBookmarkworkflow = WorkflowExpression.Compile(mSWordUpdateBookmarkworkflow, nameof(mSWordUpdateBookmarkworkflow), required: true);
+            var __workflow_mSWordUpdateBookmarkhandle = WorkflowExpression.Compile(mSWordUpdateBookmarkhandle, nameof(mSWordUpdateBookmarkhandle), required: false);
+            var __workflow_mSWordUpdateBookmarkdocumentName = WorkflowExpression.Compile(mSWordUpdateBookmarkdocumentName, nameof(mSWordUpdateBookmarkdocumentName), required: false);
+            var __workflow_mSWordUpdateBookmarknewValue = WorkflowExpression.Compile(mSWordUpdateBookmarknewValue, nameof(mSWordUpdateBookmarknewValue), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/UpdateBookmark";
@@ -1025,14 +962,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectTable(Expression<Func<int>> mSWordSelectTabletableIndex, Expression<Func<string>> mSWordSelectTableworkflow, Expression<Func<int>> mSWordSelectTablehandle = null, Expression<Func<string>> mSWordSelectTabledocumentName = null)
         {
-            var __workflow_mSWordSelectTabletableIndex = mSWordSelectTabletableIndex == null ? null : WorkflowExpression.Compile(mSWordSelectTabletableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTabletableIndex, nameof(mSWordSelectTabletableIndex), required: true);
-            var __workflow_mSWordSelectTableworkflow = mSWordSelectTableworkflow == null ? null : WorkflowExpression.Compile(mSWordSelectTableworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTableworkflow, nameof(mSWordSelectTableworkflow), required: true);
-            var __workflow_mSWordSelectTablehandle = mSWordSelectTablehandle == null ? null : WorkflowExpression.Compile(mSWordSelectTablehandle);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTablehandle, nameof(mSWordSelectTablehandle), required: false);
-            var __workflow_mSWordSelectTabledocumentName = mSWordSelectTabledocumentName == null ? null : WorkflowExpression.Compile(mSWordSelectTabledocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTabledocumentName, nameof(mSWordSelectTabledocumentName), required: false);
+            var __workflow_mSWordSelectTabletableIndex = WorkflowExpression.Compile(mSWordSelectTabletableIndex, nameof(mSWordSelectTabletableIndex), required: true);
+            var __workflow_mSWordSelectTableworkflow = WorkflowExpression.Compile(mSWordSelectTableworkflow, nameof(mSWordSelectTableworkflow), required: true);
+            var __workflow_mSWordSelectTablehandle = WorkflowExpression.Compile(mSWordSelectTablehandle, nameof(mSWordSelectTablehandle), required: false);
+            var __workflow_mSWordSelectTabledocumentName = WorkflowExpression.Compile(mSWordSelectTabledocumentName, nameof(mSWordSelectTabledocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/SelectTable";
@@ -1078,14 +1011,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetTableBoundsResponse> MSWordGetTableBounds(Expression<Func<int>> mSWordGetTableBoundstableIndex, Expression<Func<string>> mSWordGetTableBoundsworkflow, Expression<Func<int>> mSWordGetTableBoundshandle = null, Expression<Func<string>> mSWordGetTableBoundsdocumentName = null)
         {
-            var __workflow_mSWordGetTableBoundstableIndex = mSWordGetTableBoundstableIndex == null ? null : WorkflowExpression.Compile(mSWordGetTableBoundstableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableBoundstableIndex, nameof(mSWordGetTableBoundstableIndex), required: true);
-            var __workflow_mSWordGetTableBoundsworkflow = mSWordGetTableBoundsworkflow == null ? null : WorkflowExpression.Compile(mSWordGetTableBoundsworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableBoundsworkflow, nameof(mSWordGetTableBoundsworkflow), required: true);
-            var __workflow_mSWordGetTableBoundshandle = mSWordGetTableBoundshandle == null ? null : WorkflowExpression.Compile(mSWordGetTableBoundshandle);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableBoundshandle, nameof(mSWordGetTableBoundshandle), required: false);
-            var __workflow_mSWordGetTableBoundsdocumentName = mSWordGetTableBoundsdocumentName == null ? null : WorkflowExpression.Compile(mSWordGetTableBoundsdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableBoundsdocumentName, nameof(mSWordGetTableBoundsdocumentName), required: false);
+            var __workflow_mSWordGetTableBoundstableIndex = WorkflowExpression.Compile(mSWordGetTableBoundstableIndex, nameof(mSWordGetTableBoundstableIndex), required: true);
+            var __workflow_mSWordGetTableBoundsworkflow = WorkflowExpression.Compile(mSWordGetTableBoundsworkflow, nameof(mSWordGetTableBoundsworkflow), required: true);
+            var __workflow_mSWordGetTableBoundshandle = WorkflowExpression.Compile(mSWordGetTableBoundshandle, nameof(mSWordGetTableBoundshandle), required: false);
+            var __workflow_mSWordGetTableBoundsdocumentName = WorkflowExpression.Compile(mSWordGetTableBoundsdocumentName, nameof(mSWordGetTableBoundsdocumentName), required: false);
             return new DeferredBodyAction<MSWordGetTableBoundsResponse>(() =>
             {
                 var apiCallPath = "/MSWord/GetTableBounds";
@@ -1131,18 +1060,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSelectTableCell(Expression<Func<int>> mSWordSelectTableCelltableIndex, Expression<Func<int>> mSWordSelectTableCellrowIndex, Expression<Func<int>> mSWordSelectTableCellcolumnIndex, Expression<Func<string>> mSWordSelectTableCellworkflow, Expression<Func<int>> mSWordSelectTableCellhandle = null, Expression<Func<string>> mSWordSelectTableCelldocumentName = null)
         {
-            var __workflow_mSWordSelectTableCelltableIndex = mSWordSelectTableCelltableIndex == null ? null : WorkflowExpression.Compile(mSWordSelectTableCelltableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTableCelltableIndex, nameof(mSWordSelectTableCelltableIndex), required: true);
-            var __workflow_mSWordSelectTableCellrowIndex = mSWordSelectTableCellrowIndex == null ? null : WorkflowExpression.Compile(mSWordSelectTableCellrowIndex);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTableCellrowIndex, nameof(mSWordSelectTableCellrowIndex), required: true);
-            var __workflow_mSWordSelectTableCellcolumnIndex = mSWordSelectTableCellcolumnIndex == null ? null : WorkflowExpression.Compile(mSWordSelectTableCellcolumnIndex);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTableCellcolumnIndex, nameof(mSWordSelectTableCellcolumnIndex), required: true);
-            var __workflow_mSWordSelectTableCellworkflow = mSWordSelectTableCellworkflow == null ? null : WorkflowExpression.Compile(mSWordSelectTableCellworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTableCellworkflow, nameof(mSWordSelectTableCellworkflow), required: true);
-            var __workflow_mSWordSelectTableCellhandle = mSWordSelectTableCellhandle == null ? null : WorkflowExpression.Compile(mSWordSelectTableCellhandle);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTableCellhandle, nameof(mSWordSelectTableCellhandle), required: false);
-            var __workflow_mSWordSelectTableCelldocumentName = mSWordSelectTableCelldocumentName == null ? null : WorkflowExpression.Compile(mSWordSelectTableCelldocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSelectTableCelldocumentName, nameof(mSWordSelectTableCelldocumentName), required: false);
+            var __workflow_mSWordSelectTableCelltableIndex = WorkflowExpression.Compile(mSWordSelectTableCelltableIndex, nameof(mSWordSelectTableCelltableIndex), required: true);
+            var __workflow_mSWordSelectTableCellrowIndex = WorkflowExpression.Compile(mSWordSelectTableCellrowIndex, nameof(mSWordSelectTableCellrowIndex), required: true);
+            var __workflow_mSWordSelectTableCellcolumnIndex = WorkflowExpression.Compile(mSWordSelectTableCellcolumnIndex, nameof(mSWordSelectTableCellcolumnIndex), required: true);
+            var __workflow_mSWordSelectTableCellworkflow = WorkflowExpression.Compile(mSWordSelectTableCellworkflow, nameof(mSWordSelectTableCellworkflow), required: true);
+            var __workflow_mSWordSelectTableCellhandle = WorkflowExpression.Compile(mSWordSelectTableCellhandle, nameof(mSWordSelectTableCellhandle), required: false);
+            var __workflow_mSWordSelectTableCelldocumentName = WorkflowExpression.Compile(mSWordSelectTableCelldocumentName, nameof(mSWordSelectTableCelldocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/SelectTableCell";
@@ -1192,18 +1115,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetTableCellTextValueResponse> MSWordGetTableCellTextValue(Expression<Func<int>> mSWordGetTableCellTextValuetableIndex, Expression<Func<int>> mSWordGetTableCellTextValuerowIndex, Expression<Func<int>> mSWordGetTableCellTextValuecolumnIndex, Expression<Func<string>> mSWordGetTableCellTextValueworkflow, Expression<Func<int>> mSWordGetTableCellTextValuehandle = null, Expression<Func<string>> mSWordGetTableCellTextValuedocumentName = null)
         {
-            var __workflow_mSWordGetTableCellTextValuetableIndex = mSWordGetTableCellTextValuetableIndex == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValuetableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValuetableIndex, nameof(mSWordGetTableCellTextValuetableIndex), required: true);
-            var __workflow_mSWordGetTableCellTextValuerowIndex = mSWordGetTableCellTextValuerowIndex == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValuerowIndex);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValuerowIndex, nameof(mSWordGetTableCellTextValuerowIndex), required: true);
-            var __workflow_mSWordGetTableCellTextValuecolumnIndex = mSWordGetTableCellTextValuecolumnIndex == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValuecolumnIndex);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValuecolumnIndex, nameof(mSWordGetTableCellTextValuecolumnIndex), required: true);
-            var __workflow_mSWordGetTableCellTextValueworkflow = mSWordGetTableCellTextValueworkflow == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValueworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValueworkflow, nameof(mSWordGetTableCellTextValueworkflow), required: true);
-            var __workflow_mSWordGetTableCellTextValuehandle = mSWordGetTableCellTextValuehandle == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValuehandle);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValuehandle, nameof(mSWordGetTableCellTextValuehandle), required: false);
-            var __workflow_mSWordGetTableCellTextValuedocumentName = mSWordGetTableCellTextValuedocumentName == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValuedocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValuedocumentName, nameof(mSWordGetTableCellTextValuedocumentName), required: false);
+            var __workflow_mSWordGetTableCellTextValuetableIndex = WorkflowExpression.Compile(mSWordGetTableCellTextValuetableIndex, nameof(mSWordGetTableCellTextValuetableIndex), required: true);
+            var __workflow_mSWordGetTableCellTextValuerowIndex = WorkflowExpression.Compile(mSWordGetTableCellTextValuerowIndex, nameof(mSWordGetTableCellTextValuerowIndex), required: true);
+            var __workflow_mSWordGetTableCellTextValuecolumnIndex = WorkflowExpression.Compile(mSWordGetTableCellTextValuecolumnIndex, nameof(mSWordGetTableCellTextValuecolumnIndex), required: true);
+            var __workflow_mSWordGetTableCellTextValueworkflow = WorkflowExpression.Compile(mSWordGetTableCellTextValueworkflow, nameof(mSWordGetTableCellTextValueworkflow), required: true);
+            var __workflow_mSWordGetTableCellTextValuehandle = WorkflowExpression.Compile(mSWordGetTableCellTextValuehandle, nameof(mSWordGetTableCellTextValuehandle), required: false);
+            var __workflow_mSWordGetTableCellTextValuedocumentName = WorkflowExpression.Compile(mSWordGetTableCellTextValuedocumentName, nameof(mSWordGetTableCellTextValuedocumentName), required: false);
             return new DeferredBodyAction<MSWordGetTableCellTextValueResponse>(() =>
             {
                 var apiCallPath = "/MSWord/GetTableCellTextValue";
@@ -1253,18 +1170,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetTableCellTextValueTrimmedResponse> MSWordGetTableCellTextValueTrimmed(Expression<Func<int>> mSWordGetTableCellTextValueTrimmedtableIndex, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedrowIndex, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedcolumnIndex, Expression<Func<string>> mSWordGetTableCellTextValueTrimmedworkflow, Expression<Func<int>> mSWordGetTableCellTextValueTrimmedhandle = null, Expression<Func<string>> mSWordGetTableCellTextValueTrimmeddocumentName = null)
         {
-            var __workflow_mSWordGetTableCellTextValueTrimmedtableIndex = mSWordGetTableCellTextValueTrimmedtableIndex == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedtableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValueTrimmedtableIndex, nameof(mSWordGetTableCellTextValueTrimmedtableIndex), required: true);
-            var __workflow_mSWordGetTableCellTextValueTrimmedrowIndex = mSWordGetTableCellTextValueTrimmedrowIndex == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedrowIndex);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValueTrimmedrowIndex, nameof(mSWordGetTableCellTextValueTrimmedrowIndex), required: true);
-            var __workflow_mSWordGetTableCellTextValueTrimmedcolumnIndex = mSWordGetTableCellTextValueTrimmedcolumnIndex == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedcolumnIndex);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValueTrimmedcolumnIndex, nameof(mSWordGetTableCellTextValueTrimmedcolumnIndex), required: true);
-            var __workflow_mSWordGetTableCellTextValueTrimmedworkflow = mSWordGetTableCellTextValueTrimmedworkflow == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValueTrimmedworkflow, nameof(mSWordGetTableCellTextValueTrimmedworkflow), required: true);
-            var __workflow_mSWordGetTableCellTextValueTrimmedhandle = mSWordGetTableCellTextValueTrimmedhandle == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedhandle);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValueTrimmedhandle, nameof(mSWordGetTableCellTextValueTrimmedhandle), required: false);
-            var __workflow_mSWordGetTableCellTextValueTrimmeddocumentName = mSWordGetTableCellTextValueTrimmeddocumentName == null ? null : WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmeddocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordGetTableCellTextValueTrimmeddocumentName, nameof(mSWordGetTableCellTextValueTrimmeddocumentName), required: false);
+            var __workflow_mSWordGetTableCellTextValueTrimmedtableIndex = WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedtableIndex, nameof(mSWordGetTableCellTextValueTrimmedtableIndex), required: true);
+            var __workflow_mSWordGetTableCellTextValueTrimmedrowIndex = WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedrowIndex, nameof(mSWordGetTableCellTextValueTrimmedrowIndex), required: true);
+            var __workflow_mSWordGetTableCellTextValueTrimmedcolumnIndex = WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedcolumnIndex, nameof(mSWordGetTableCellTextValueTrimmedcolumnIndex), required: true);
+            var __workflow_mSWordGetTableCellTextValueTrimmedworkflow = WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedworkflow, nameof(mSWordGetTableCellTextValueTrimmedworkflow), required: true);
+            var __workflow_mSWordGetTableCellTextValueTrimmedhandle = WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmedhandle, nameof(mSWordGetTableCellTextValueTrimmedhandle), required: false);
+            var __workflow_mSWordGetTableCellTextValueTrimmeddocumentName = WorkflowExpression.Compile(mSWordGetTableCellTextValueTrimmeddocumentName, nameof(mSWordGetTableCellTextValueTrimmeddocumentName), required: false);
             return new DeferredBodyAction<MSWordGetTableCellTextValueTrimmedResponse>(() =>
             {
                 var apiCallPath = "/MSWord/GetTableCellTextValueTrimmed";
@@ -1314,20 +1225,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordSetTableCellTextValue(Expression<Func<int>> mSWordSetTableCellTextValuetableIndex, Expression<Func<int>> mSWordSetTableCellTextValuerowIndex, Expression<Func<int>> mSWordSetTableCellTextValuecolumnIndex, Expression<Func<string>> mSWordSetTableCellTextValueworkflow, Expression<Func<int>> mSWordSetTableCellTextValuehandle = null, Expression<Func<string>> mSWordSetTableCellTextValuedocumentName = null, Expression<Func<string>> mSWordSetTableCellTextValuenewCellText = null)
         {
-            var __workflow_mSWordSetTableCellTextValuetableIndex = mSWordSetTableCellTextValuetableIndex == null ? null : WorkflowExpression.Compile(mSWordSetTableCellTextValuetableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordSetTableCellTextValuetableIndex, nameof(mSWordSetTableCellTextValuetableIndex), required: true);
-            var __workflow_mSWordSetTableCellTextValuerowIndex = mSWordSetTableCellTextValuerowIndex == null ? null : WorkflowExpression.Compile(mSWordSetTableCellTextValuerowIndex);
-            WorkflowExpression.Validate(__workflow_mSWordSetTableCellTextValuerowIndex, nameof(mSWordSetTableCellTextValuerowIndex), required: true);
-            var __workflow_mSWordSetTableCellTextValuecolumnIndex = mSWordSetTableCellTextValuecolumnIndex == null ? null : WorkflowExpression.Compile(mSWordSetTableCellTextValuecolumnIndex);
-            WorkflowExpression.Validate(__workflow_mSWordSetTableCellTextValuecolumnIndex, nameof(mSWordSetTableCellTextValuecolumnIndex), required: true);
-            var __workflow_mSWordSetTableCellTextValueworkflow = mSWordSetTableCellTextValueworkflow == null ? null : WorkflowExpression.Compile(mSWordSetTableCellTextValueworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSetTableCellTextValueworkflow, nameof(mSWordSetTableCellTextValueworkflow), required: true);
-            var __workflow_mSWordSetTableCellTextValuehandle = mSWordSetTableCellTextValuehandle == null ? null : WorkflowExpression.Compile(mSWordSetTableCellTextValuehandle);
-            WorkflowExpression.Validate(__workflow_mSWordSetTableCellTextValuehandle, nameof(mSWordSetTableCellTextValuehandle), required: false);
-            var __workflow_mSWordSetTableCellTextValuedocumentName = mSWordSetTableCellTextValuedocumentName == null ? null : WorkflowExpression.Compile(mSWordSetTableCellTextValuedocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSetTableCellTextValuedocumentName, nameof(mSWordSetTableCellTextValuedocumentName), required: false);
-            var __workflow_mSWordSetTableCellTextValuenewCellText = mSWordSetTableCellTextValuenewCellText == null ? null : WorkflowExpression.Compile(mSWordSetTableCellTextValuenewCellText);
-            WorkflowExpression.Validate(__workflow_mSWordSetTableCellTextValuenewCellText, nameof(mSWordSetTableCellTextValuenewCellText), required: false);
+            var __workflow_mSWordSetTableCellTextValuetableIndex = WorkflowExpression.Compile(mSWordSetTableCellTextValuetableIndex, nameof(mSWordSetTableCellTextValuetableIndex), required: true);
+            var __workflow_mSWordSetTableCellTextValuerowIndex = WorkflowExpression.Compile(mSWordSetTableCellTextValuerowIndex, nameof(mSWordSetTableCellTextValuerowIndex), required: true);
+            var __workflow_mSWordSetTableCellTextValuecolumnIndex = WorkflowExpression.Compile(mSWordSetTableCellTextValuecolumnIndex, nameof(mSWordSetTableCellTextValuecolumnIndex), required: true);
+            var __workflow_mSWordSetTableCellTextValueworkflow = WorkflowExpression.Compile(mSWordSetTableCellTextValueworkflow, nameof(mSWordSetTableCellTextValueworkflow), required: true);
+            var __workflow_mSWordSetTableCellTextValuehandle = WorkflowExpression.Compile(mSWordSetTableCellTextValuehandle, nameof(mSWordSetTableCellTextValuehandle), required: false);
+            var __workflow_mSWordSetTableCellTextValuedocumentName = WorkflowExpression.Compile(mSWordSetTableCellTextValuedocumentName, nameof(mSWordSetTableCellTextValuedocumentName), required: false);
+            var __workflow_mSWordSetTableCellTextValuenewCellText = WorkflowExpression.Compile(mSWordSetTableCellTextValuenewCellText, nameof(mSWordSetTableCellTextValuenewCellText), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/SetTableCellTextValue";
@@ -1383,14 +1287,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordExportDocumentAsPDF(Expression<Func<string>> mSWordExportDocumentAsPDFsaveFileName, Expression<Func<string>> mSWordExportDocumentAsPDFworkflow, Expression<Func<int>> mSWordExportDocumentAsPDFhandle = null, Expression<Func<string>> mSWordExportDocumentAsPDFdocumentName = null)
         {
-            var __workflow_mSWordExportDocumentAsPDFsaveFileName = mSWordExportDocumentAsPDFsaveFileName == null ? null : WorkflowExpression.Compile(mSWordExportDocumentAsPDFsaveFileName);
-            WorkflowExpression.Validate(__workflow_mSWordExportDocumentAsPDFsaveFileName, nameof(mSWordExportDocumentAsPDFsaveFileName), required: true);
-            var __workflow_mSWordExportDocumentAsPDFworkflow = mSWordExportDocumentAsPDFworkflow == null ? null : WorkflowExpression.Compile(mSWordExportDocumentAsPDFworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordExportDocumentAsPDFworkflow, nameof(mSWordExportDocumentAsPDFworkflow), required: true);
-            var __workflow_mSWordExportDocumentAsPDFhandle = mSWordExportDocumentAsPDFhandle == null ? null : WorkflowExpression.Compile(mSWordExportDocumentAsPDFhandle);
-            WorkflowExpression.Validate(__workflow_mSWordExportDocumentAsPDFhandle, nameof(mSWordExportDocumentAsPDFhandle), required: false);
-            var __workflow_mSWordExportDocumentAsPDFdocumentName = mSWordExportDocumentAsPDFdocumentName == null ? null : WorkflowExpression.Compile(mSWordExportDocumentAsPDFdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordExportDocumentAsPDFdocumentName, nameof(mSWordExportDocumentAsPDFdocumentName), required: false);
+            var __workflow_mSWordExportDocumentAsPDFsaveFileName = WorkflowExpression.Compile(mSWordExportDocumentAsPDFsaveFileName, nameof(mSWordExportDocumentAsPDFsaveFileName), required: true);
+            var __workflow_mSWordExportDocumentAsPDFworkflow = WorkflowExpression.Compile(mSWordExportDocumentAsPDFworkflow, nameof(mSWordExportDocumentAsPDFworkflow), required: true);
+            var __workflow_mSWordExportDocumentAsPDFhandle = WorkflowExpression.Compile(mSWordExportDocumentAsPDFhandle, nameof(mSWordExportDocumentAsPDFhandle), required: false);
+            var __workflow_mSWordExportDocumentAsPDFdocumentName = WorkflowExpression.Compile(mSWordExportDocumentAsPDFdocumentName, nameof(mSWordExportDocumentAsPDFdocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/ExportDocumentAsPDF";
@@ -1436,18 +1336,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordAddTable(Expression<Func<int>> mSWordAddTablenumberOfRows, Expression<Func<int>> mSWordAddTablenumberOfColumns, Expression<Func<string>> mSWordAddTableworkflow, Expression<Func<int>> mSWordAddTablehandle = null, Expression<Func<string>> mSWordAddTabledocumentName = null, Expression<Func<int>> mSWordAddTableautoFitBehaviour = null)
         {
-            var __workflow_mSWordAddTablenumberOfRows = mSWordAddTablenumberOfRows == null ? null : WorkflowExpression.Compile(mSWordAddTablenumberOfRows);
-            WorkflowExpression.Validate(__workflow_mSWordAddTablenumberOfRows, nameof(mSWordAddTablenumberOfRows), required: true);
-            var __workflow_mSWordAddTablenumberOfColumns = mSWordAddTablenumberOfColumns == null ? null : WorkflowExpression.Compile(mSWordAddTablenumberOfColumns);
-            WorkflowExpression.Validate(__workflow_mSWordAddTablenumberOfColumns, nameof(mSWordAddTablenumberOfColumns), required: true);
-            var __workflow_mSWordAddTableworkflow = mSWordAddTableworkflow == null ? null : WorkflowExpression.Compile(mSWordAddTableworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableworkflow, nameof(mSWordAddTableworkflow), required: true);
-            var __workflow_mSWordAddTablehandle = mSWordAddTablehandle == null ? null : WorkflowExpression.Compile(mSWordAddTablehandle);
-            WorkflowExpression.Validate(__workflow_mSWordAddTablehandle, nameof(mSWordAddTablehandle), required: false);
-            var __workflow_mSWordAddTabledocumentName = mSWordAddTabledocumentName == null ? null : WorkflowExpression.Compile(mSWordAddTabledocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordAddTabledocumentName, nameof(mSWordAddTabledocumentName), required: false);
-            var __workflow_mSWordAddTableautoFitBehaviour = mSWordAddTableautoFitBehaviour == null ? null : WorkflowExpression.Compile(mSWordAddTableautoFitBehaviour);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableautoFitBehaviour, nameof(mSWordAddTableautoFitBehaviour), required: false);
+            var __workflow_mSWordAddTablenumberOfRows = WorkflowExpression.Compile(mSWordAddTablenumberOfRows, nameof(mSWordAddTablenumberOfRows), required: true);
+            var __workflow_mSWordAddTablenumberOfColumns = WorkflowExpression.Compile(mSWordAddTablenumberOfColumns, nameof(mSWordAddTablenumberOfColumns), required: true);
+            var __workflow_mSWordAddTableworkflow = WorkflowExpression.Compile(mSWordAddTableworkflow, nameof(mSWordAddTableworkflow), required: true);
+            var __workflow_mSWordAddTablehandle = WorkflowExpression.Compile(mSWordAddTablehandle, nameof(mSWordAddTablehandle), required: false);
+            var __workflow_mSWordAddTabledocumentName = WorkflowExpression.Compile(mSWordAddTabledocumentName, nameof(mSWordAddTabledocumentName), required: false);
+            var __workflow_mSWordAddTableautoFitBehaviour = WorkflowExpression.Compile(mSWordAddTableautoFitBehaviour, nameof(mSWordAddTableautoFitBehaviour), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/AddTable";
@@ -1511,14 +1405,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordAddTableRow(Expression<Func<int>> mSWordAddTableRowtableIndex, Expression<Func<string>> mSWordAddTableRowworkflow, Expression<Func<int>> mSWordAddTableRowhandle = null, Expression<Func<string>> mSWordAddTableRowdocumentName = null)
         {
-            var __workflow_mSWordAddTableRowtableIndex = mSWordAddTableRowtableIndex == null ? null : WorkflowExpression.Compile(mSWordAddTableRowtableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableRowtableIndex, nameof(mSWordAddTableRowtableIndex), required: true);
-            var __workflow_mSWordAddTableRowworkflow = mSWordAddTableRowworkflow == null ? null : WorkflowExpression.Compile(mSWordAddTableRowworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableRowworkflow, nameof(mSWordAddTableRowworkflow), required: true);
-            var __workflow_mSWordAddTableRowhandle = mSWordAddTableRowhandle == null ? null : WorkflowExpression.Compile(mSWordAddTableRowhandle);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableRowhandle, nameof(mSWordAddTableRowhandle), required: false);
-            var __workflow_mSWordAddTableRowdocumentName = mSWordAddTableRowdocumentName == null ? null : WorkflowExpression.Compile(mSWordAddTableRowdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableRowdocumentName, nameof(mSWordAddTableRowdocumentName), required: false);
+            var __workflow_mSWordAddTableRowtableIndex = WorkflowExpression.Compile(mSWordAddTableRowtableIndex, nameof(mSWordAddTableRowtableIndex), required: true);
+            var __workflow_mSWordAddTableRowworkflow = WorkflowExpression.Compile(mSWordAddTableRowworkflow, nameof(mSWordAddTableRowworkflow), required: true);
+            var __workflow_mSWordAddTableRowhandle = WorkflowExpression.Compile(mSWordAddTableRowhandle, nameof(mSWordAddTableRowhandle), required: false);
+            var __workflow_mSWordAddTableRowdocumentName = WorkflowExpression.Compile(mSWordAddTableRowdocumentName, nameof(mSWordAddTableRowdocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/AddTableRow";
@@ -1564,14 +1454,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSWordAddTableColumn(Expression<Func<int>> mSWordAddTableColumntableIndex, Expression<Func<string>> mSWordAddTableColumnworkflow, Expression<Func<int>> mSWordAddTableColumnhandle = null, Expression<Func<string>> mSWordAddTableColumndocumentName = null)
         {
-            var __workflow_mSWordAddTableColumntableIndex = mSWordAddTableColumntableIndex == null ? null : WorkflowExpression.Compile(mSWordAddTableColumntableIndex);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableColumntableIndex, nameof(mSWordAddTableColumntableIndex), required: true);
-            var __workflow_mSWordAddTableColumnworkflow = mSWordAddTableColumnworkflow == null ? null : WorkflowExpression.Compile(mSWordAddTableColumnworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableColumnworkflow, nameof(mSWordAddTableColumnworkflow), required: true);
-            var __workflow_mSWordAddTableColumnhandle = mSWordAddTableColumnhandle == null ? null : WorkflowExpression.Compile(mSWordAddTableColumnhandle);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableColumnhandle, nameof(mSWordAddTableColumnhandle), required: false);
-            var __workflow_mSWordAddTableColumndocumentName = mSWordAddTableColumndocumentName == null ? null : WorkflowExpression.Compile(mSWordAddTableColumndocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordAddTableColumndocumentName, nameof(mSWordAddTableColumndocumentName), required: false);
+            var __workflow_mSWordAddTableColumntableIndex = WorkflowExpression.Compile(mSWordAddTableColumntableIndex, nameof(mSWordAddTableColumntableIndex), required: true);
+            var __workflow_mSWordAddTableColumnworkflow = WorkflowExpression.Compile(mSWordAddTableColumnworkflow, nameof(mSWordAddTableColumnworkflow), required: true);
+            var __workflow_mSWordAddTableColumnhandle = WorkflowExpression.Compile(mSWordAddTableColumnhandle, nameof(mSWordAddTableColumnhandle), required: false);
+            var __workflow_mSWordAddTableColumndocumentName = WorkflowExpression.Compile(mSWordAddTableColumndocumentName, nameof(mSWordAddTableColumndocumentName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSWord/AddTableColumn";
@@ -1617,12 +1503,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetHighlightedTextResponse> MSWordGetHighlightedText(Expression<Func<string>> mSWordGetHighlightedTextworkflow, Expression<Func<int>> mSWordGetHighlightedTexthandle = null, Expression<Func<string>> mSWordGetHighlightedTextdocumentName = null)
         {
-            var __workflow_mSWordGetHighlightedTextworkflow = mSWordGetHighlightedTextworkflow == null ? null : WorkflowExpression.Compile(mSWordGetHighlightedTextworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordGetHighlightedTextworkflow, nameof(mSWordGetHighlightedTextworkflow), required: true);
-            var __workflow_mSWordGetHighlightedTexthandle = mSWordGetHighlightedTexthandle == null ? null : WorkflowExpression.Compile(mSWordGetHighlightedTexthandle);
-            WorkflowExpression.Validate(__workflow_mSWordGetHighlightedTexthandle, nameof(mSWordGetHighlightedTexthandle), required: false);
-            var __workflow_mSWordGetHighlightedTextdocumentName = mSWordGetHighlightedTextdocumentName == null ? null : WorkflowExpression.Compile(mSWordGetHighlightedTextdocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordGetHighlightedTextdocumentName, nameof(mSWordGetHighlightedTextdocumentName), required: false);
+            var __workflow_mSWordGetHighlightedTextworkflow = WorkflowExpression.Compile(mSWordGetHighlightedTextworkflow, nameof(mSWordGetHighlightedTextworkflow), required: true);
+            var __workflow_mSWordGetHighlightedTexthandle = WorkflowExpression.Compile(mSWordGetHighlightedTexthandle, nameof(mSWordGetHighlightedTexthandle), required: false);
+            var __workflow_mSWordGetHighlightedTextdocumentName = WorkflowExpression.Compile(mSWordGetHighlightedTextdocumentName, nameof(mSWordGetHighlightedTextdocumentName), required: false);
             return new DeferredBodyAction<MSWordGetHighlightedTextResponse>(() =>
             {
                 var apiCallPath = "/MSWord/GetHighlightedText";
@@ -1666,14 +1549,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordExecuteCommandBarObjectResponse> MSWordExecuteCommandBarObject(Expression<Func<string>> mSWordExecuteCommandBarObjectobjectId, Expression<Func<string>> mSWordExecuteCommandBarObjectworkflow, Expression<Func<int>> mSWordExecuteCommandBarObjecthandle = null, Expression<Func<bool>> mSWordExecuteCommandBarObjectrunInBackground = null)
         {
-            var __workflow_mSWordExecuteCommandBarObjectobjectId = mSWordExecuteCommandBarObjectobjectId == null ? null : WorkflowExpression.Compile(mSWordExecuteCommandBarObjectobjectId);
-            WorkflowExpression.Validate(__workflow_mSWordExecuteCommandBarObjectobjectId, nameof(mSWordExecuteCommandBarObjectobjectId), required: true);
-            var __workflow_mSWordExecuteCommandBarObjectworkflow = mSWordExecuteCommandBarObjectworkflow == null ? null : WorkflowExpression.Compile(mSWordExecuteCommandBarObjectworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordExecuteCommandBarObjectworkflow, nameof(mSWordExecuteCommandBarObjectworkflow), required: true);
-            var __workflow_mSWordExecuteCommandBarObjecthandle = mSWordExecuteCommandBarObjecthandle == null ? null : WorkflowExpression.Compile(mSWordExecuteCommandBarObjecthandle);
-            WorkflowExpression.Validate(__workflow_mSWordExecuteCommandBarObjecthandle, nameof(mSWordExecuteCommandBarObjecthandle), required: false);
-            var __workflow_mSWordExecuteCommandBarObjectrunInBackground = mSWordExecuteCommandBarObjectrunInBackground == null ? null : WorkflowExpression.Compile(mSWordExecuteCommandBarObjectrunInBackground);
-            WorkflowExpression.Validate(__workflow_mSWordExecuteCommandBarObjectrunInBackground, nameof(mSWordExecuteCommandBarObjectrunInBackground), required: false);
+            var __workflow_mSWordExecuteCommandBarObjectobjectId = WorkflowExpression.Compile(mSWordExecuteCommandBarObjectobjectId, nameof(mSWordExecuteCommandBarObjectobjectId), required: true);
+            var __workflow_mSWordExecuteCommandBarObjectworkflow = WorkflowExpression.Compile(mSWordExecuteCommandBarObjectworkflow, nameof(mSWordExecuteCommandBarObjectworkflow), required: true);
+            var __workflow_mSWordExecuteCommandBarObjecthandle = WorkflowExpression.Compile(mSWordExecuteCommandBarObjecthandle, nameof(mSWordExecuteCommandBarObjecthandle), required: false);
+            var __workflow_mSWordExecuteCommandBarObjectrunInBackground = WorkflowExpression.Compile(mSWordExecuteCommandBarObjectrunInBackground, nameof(mSWordExecuteCommandBarObjectrunInBackground), required: false);
             return new DeferredBodyAction<MSWordExecuteCommandBarObjectResponse>(() =>
             {
                 var apiCallPath = "/MSWord/ExecuteCommandBarObject";
@@ -1729,22 +1608,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordSetDocumentSensitivityLabelResponse> MSWordSetDocumentSensitivityLabel(Expression<Func<mSWordSetDocumentSensitivityLabelassignmentMethodInput>> mSWordSetDocumentSensitivityLabelassignmentMethod, Expression<Func<string>> mSWordSetDocumentSensitivityLabellabelId, Expression<Func<string>> mSWordSetDocumentSensitivityLabelworkflow, Expression<Func<int>> mSWordSetDocumentSensitivityLabelhandle = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabeldocumentName = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabellabelName = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabelsiteId = null, Expression<Func<string>> mSWordSetDocumentSensitivityLabeljustification = null)
         {
-            var __workflow_mSWordSetDocumentSensitivityLabelassignmentMethod = mSWordSetDocumentSensitivityLabelassignmentMethod == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelassignmentMethod);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabelassignmentMethod, nameof(mSWordSetDocumentSensitivityLabelassignmentMethod), required: true);
-            var __workflow_mSWordSetDocumentSensitivityLabellabelId = mSWordSetDocumentSensitivityLabellabelId == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabellabelId);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabellabelId, nameof(mSWordSetDocumentSensitivityLabellabelId), required: true);
-            var __workflow_mSWordSetDocumentSensitivityLabelworkflow = mSWordSetDocumentSensitivityLabelworkflow == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabelworkflow, nameof(mSWordSetDocumentSensitivityLabelworkflow), required: true);
-            var __workflow_mSWordSetDocumentSensitivityLabelhandle = mSWordSetDocumentSensitivityLabelhandle == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelhandle);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabelhandle, nameof(mSWordSetDocumentSensitivityLabelhandle), required: false);
-            var __workflow_mSWordSetDocumentSensitivityLabeldocumentName = mSWordSetDocumentSensitivityLabeldocumentName == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabeldocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabeldocumentName, nameof(mSWordSetDocumentSensitivityLabeldocumentName), required: false);
-            var __workflow_mSWordSetDocumentSensitivityLabellabelName = mSWordSetDocumentSensitivityLabellabelName == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabellabelName);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabellabelName, nameof(mSWordSetDocumentSensitivityLabellabelName), required: false);
-            var __workflow_mSWordSetDocumentSensitivityLabelsiteId = mSWordSetDocumentSensitivityLabelsiteId == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelsiteId);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabelsiteId, nameof(mSWordSetDocumentSensitivityLabelsiteId), required: false);
-            var __workflow_mSWordSetDocumentSensitivityLabeljustification = mSWordSetDocumentSensitivityLabeljustification == null ? null : WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabeljustification);
-            WorkflowExpression.Validate(__workflow_mSWordSetDocumentSensitivityLabeljustification, nameof(mSWordSetDocumentSensitivityLabeljustification), required: false);
+            var __workflow_mSWordSetDocumentSensitivityLabelassignmentMethod = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelassignmentMethod, nameof(mSWordSetDocumentSensitivityLabelassignmentMethod), required: true);
+            var __workflow_mSWordSetDocumentSensitivityLabellabelId = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabellabelId, nameof(mSWordSetDocumentSensitivityLabellabelId), required: true);
+            var __workflow_mSWordSetDocumentSensitivityLabelworkflow = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelworkflow, nameof(mSWordSetDocumentSensitivityLabelworkflow), required: true);
+            var __workflow_mSWordSetDocumentSensitivityLabelhandle = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelhandle, nameof(mSWordSetDocumentSensitivityLabelhandle), required: false);
+            var __workflow_mSWordSetDocumentSensitivityLabeldocumentName = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabeldocumentName, nameof(mSWordSetDocumentSensitivityLabeldocumentName), required: false);
+            var __workflow_mSWordSetDocumentSensitivityLabellabelName = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabellabelName, nameof(mSWordSetDocumentSensitivityLabellabelName), required: false);
+            var __workflow_mSWordSetDocumentSensitivityLabelsiteId = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabelsiteId, nameof(mSWordSetDocumentSensitivityLabelsiteId), required: false);
+            var __workflow_mSWordSetDocumentSensitivityLabeljustification = WorkflowExpression.Compile(mSWordSetDocumentSensitivityLabeljustification, nameof(mSWordSetDocumentSensitivityLabeljustification), required: false);
             return new DeferredBodyAction<MSWordSetDocumentSensitivityLabelResponse>(() =>
             {
                 var apiCallPath = "/MSWord/MSWordSetDocumentSensitivityLabel";
@@ -1810,12 +1681,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSWordGetDocumentSensitivityLabelResponse> MSWordGetDocumentSensitivityLabel(Expression<Func<string>> mSWordGetDocumentSensitivityLabelworkflow, Expression<Func<int>> mSWordGetDocumentSensitivityLabelhandle = null, Expression<Func<string>> mSWordGetDocumentSensitivityLabeldocumentName = null)
         {
-            var __workflow_mSWordGetDocumentSensitivityLabelworkflow = mSWordGetDocumentSensitivityLabelworkflow == null ? null : WorkflowExpression.Compile(mSWordGetDocumentSensitivityLabelworkflow);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentSensitivityLabelworkflow, nameof(mSWordGetDocumentSensitivityLabelworkflow), required: true);
-            var __workflow_mSWordGetDocumentSensitivityLabelhandle = mSWordGetDocumentSensitivityLabelhandle == null ? null : WorkflowExpression.Compile(mSWordGetDocumentSensitivityLabelhandle);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentSensitivityLabelhandle, nameof(mSWordGetDocumentSensitivityLabelhandle), required: false);
-            var __workflow_mSWordGetDocumentSensitivityLabeldocumentName = mSWordGetDocumentSensitivityLabeldocumentName == null ? null : WorkflowExpression.Compile(mSWordGetDocumentSensitivityLabeldocumentName);
-            WorkflowExpression.Validate(__workflow_mSWordGetDocumentSensitivityLabeldocumentName, nameof(mSWordGetDocumentSensitivityLabeldocumentName), required: false);
+            var __workflow_mSWordGetDocumentSensitivityLabelworkflow = WorkflowExpression.Compile(mSWordGetDocumentSensitivityLabelworkflow, nameof(mSWordGetDocumentSensitivityLabelworkflow), required: true);
+            var __workflow_mSWordGetDocumentSensitivityLabelhandle = WorkflowExpression.Compile(mSWordGetDocumentSensitivityLabelhandle, nameof(mSWordGetDocumentSensitivityLabelhandle), required: false);
+            var __workflow_mSWordGetDocumentSensitivityLabeldocumentName = WorkflowExpression.Compile(mSWordGetDocumentSensitivityLabeldocumentName, nameof(mSWordGetDocumentSensitivityLabeldocumentName), required: false);
             return new DeferredBodyAction<MSWordGetDocumentSensitivityLabelResponse>(() =>
             {
                 var apiCallPath = "/MSWord/MSWordGetDocumentSensitivityLabel";
@@ -1859,12 +1727,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCreateInstanceResponse> MSExcelCreateInstance(Expression<Func<string>> mSExcelCreateInstanceworkflow, Expression<Func<bool>> mSExcelCreateInstanceenableEvents = null, Expression<Func<bool>> mSExcelCreateInstanceshowExcel = null)
         {
-            var __workflow_mSExcelCreateInstanceworkflow = mSExcelCreateInstanceworkflow == null ? null : WorkflowExpression.Compile(mSExcelCreateInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateInstanceworkflow, nameof(mSExcelCreateInstanceworkflow), required: true);
-            var __workflow_mSExcelCreateInstanceenableEvents = mSExcelCreateInstanceenableEvents == null ? null : WorkflowExpression.Compile(mSExcelCreateInstanceenableEvents);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateInstanceenableEvents, nameof(mSExcelCreateInstanceenableEvents), required: false);
-            var __workflow_mSExcelCreateInstanceshowExcel = mSExcelCreateInstanceshowExcel == null ? null : WorkflowExpression.Compile(mSExcelCreateInstanceshowExcel);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateInstanceshowExcel, nameof(mSExcelCreateInstanceshowExcel), required: false);
+            var __workflow_mSExcelCreateInstanceworkflow = WorkflowExpression.Compile(mSExcelCreateInstanceworkflow, nameof(mSExcelCreateInstanceworkflow), required: true);
+            var __workflow_mSExcelCreateInstanceenableEvents = WorkflowExpression.Compile(mSExcelCreateInstanceenableEvents, nameof(mSExcelCreateInstanceenableEvents), required: false);
+            var __workflow_mSExcelCreateInstanceshowExcel = WorkflowExpression.Compile(mSExcelCreateInstanceshowExcel, nameof(mSExcelCreateInstanceshowExcel), required: false);
             return new DeferredBodyAction<MSExcelCreateInstanceResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/CreateInstance";
@@ -1918,10 +1783,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCloseInstance(Expression<Func<string>> mSExcelCloseInstanceworkflow, Expression<Func<int>> mSExcelCloseInstancehandle = null)
         {
-            var __workflow_mSExcelCloseInstanceworkflow = mSExcelCloseInstanceworkflow == null ? null : WorkflowExpression.Compile(mSExcelCloseInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseInstanceworkflow, nameof(mSExcelCloseInstanceworkflow), required: true);
-            var __workflow_mSExcelCloseInstancehandle = mSExcelCloseInstancehandle == null ? null : WorkflowExpression.Compile(mSExcelCloseInstancehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseInstancehandle, nameof(mSExcelCloseInstancehandle), required: false);
+            var __workflow_mSExcelCloseInstanceworkflow = WorkflowExpression.Compile(mSExcelCloseInstanceworkflow, nameof(mSExcelCloseInstanceworkflow), required: true);
+            var __workflow_mSExcelCloseInstancehandle = WorkflowExpression.Compile(mSExcelCloseInstancehandle, nameof(mSExcelCloseInstancehandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/CloseInstance";
@@ -1959,16 +1822,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelAttachToExistingInstanceResponse> MSExcelAttachToExistingInstance(Expression<Func<string>> mSExcelAttachToExistingInstanceworkflow, Expression<Func<string>> mSExcelAttachToExistingInstancefilename = null, Expression<Func<bool>> mSExcelAttachToExistingInstancetoggleWindow = null, Expression<Func<bool>> mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSExcelAttachToExistingInstancetoggleDelay = null)
         {
-            var __workflow_mSExcelAttachToExistingInstanceworkflow = mSExcelAttachToExistingInstanceworkflow == null ? null : WorkflowExpression.Compile(mSExcelAttachToExistingInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelAttachToExistingInstanceworkflow, nameof(mSExcelAttachToExistingInstanceworkflow), required: true);
-            var __workflow_mSExcelAttachToExistingInstancefilename = mSExcelAttachToExistingInstancefilename == null ? null : WorkflowExpression.Compile(mSExcelAttachToExistingInstancefilename);
-            WorkflowExpression.Validate(__workflow_mSExcelAttachToExistingInstancefilename, nameof(mSExcelAttachToExistingInstancefilename), required: false);
-            var __workflow_mSExcelAttachToExistingInstancetoggleWindow = mSExcelAttachToExistingInstancetoggleWindow == null ? null : WorkflowExpression.Compile(mSExcelAttachToExistingInstancetoggleWindow);
-            WorkflowExpression.Validate(__workflow_mSExcelAttachToExistingInstancetoggleWindow, nameof(mSExcelAttachToExistingInstancetoggleWindow), required: false);
-            var __workflow_mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_mSExcelAttachToExistingInstancetoggleDelay = mSExcelAttachToExistingInstancetoggleDelay == null ? null : WorkflowExpression.Compile(mSExcelAttachToExistingInstancetoggleDelay);
-            WorkflowExpression.Validate(__workflow_mSExcelAttachToExistingInstancetoggleDelay, nameof(mSExcelAttachToExistingInstancetoggleDelay), required: false);
+            var __workflow_mSExcelAttachToExistingInstanceworkflow = WorkflowExpression.Compile(mSExcelAttachToExistingInstanceworkflow, nameof(mSExcelAttachToExistingInstanceworkflow), required: true);
+            var __workflow_mSExcelAttachToExistingInstancefilename = WorkflowExpression.Compile(mSExcelAttachToExistingInstancefilename, nameof(mSExcelAttachToExistingInstancefilename), required: false);
+            var __workflow_mSExcelAttachToExistingInstancetoggleWindow = WorkflowExpression.Compile(mSExcelAttachToExistingInstancetoggleWindow, nameof(mSExcelAttachToExistingInstancetoggleWindow), required: false);
+            var __workflow_mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSExcelAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_mSExcelAttachToExistingInstancetoggleDelay = WorkflowExpression.Compile(mSExcelAttachToExistingInstancetoggleDelay, nameof(mSExcelAttachToExistingInstancetoggleDelay), required: false);
             return new DeferredBodyAction<MSExcelAttachToExistingInstanceResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/MSExcelAttachToExistingInstance";
@@ -2044,10 +1902,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelShowExcel(Expression<Func<string>> mSExcelShowExcelworkflow, Expression<Func<int>> mSExcelShowExcelhandle = null)
         {
-            var __workflow_mSExcelShowExcelworkflow = mSExcelShowExcelworkflow == null ? null : WorkflowExpression.Compile(mSExcelShowExcelworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelShowExcelworkflow, nameof(mSExcelShowExcelworkflow), required: true);
-            var __workflow_mSExcelShowExcelhandle = mSExcelShowExcelhandle == null ? null : WorkflowExpression.Compile(mSExcelShowExcelhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelShowExcelhandle, nameof(mSExcelShowExcelhandle), required: false);
+            var __workflow_mSExcelShowExcelworkflow = WorkflowExpression.Compile(mSExcelShowExcelworkflow, nameof(mSExcelShowExcelworkflow), required: true);
+            var __workflow_mSExcelShowExcelhandle = WorkflowExpression.Compile(mSExcelShowExcelhandle, nameof(mSExcelShowExcelhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/ShowExcel";
@@ -2085,10 +1941,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelHideExcel(Expression<Func<string>> mSExcelHideExcelworkflow, Expression<Func<int>> mSExcelHideExcelhandle = null)
         {
-            var __workflow_mSExcelHideExcelworkflow = mSExcelHideExcelworkflow == null ? null : WorkflowExpression.Compile(mSExcelHideExcelworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelHideExcelworkflow, nameof(mSExcelHideExcelworkflow), required: true);
-            var __workflow_mSExcelHideExcelhandle = mSExcelHideExcelhandle == null ? null : WorkflowExpression.Compile(mSExcelHideExcelhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelHideExcelhandle, nameof(mSExcelHideExcelhandle), required: false);
+            var __workflow_mSExcelHideExcelworkflow = WorkflowExpression.Compile(mSExcelHideExcelworkflow, nameof(mSExcelHideExcelworkflow), required: true);
+            var __workflow_mSExcelHideExcelhandle = WorkflowExpression.Compile(mSExcelHideExcelhandle, nameof(mSExcelHideExcelhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/HideExcel";
@@ -2126,24 +1980,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelOpenWorkbookResponse> MSExcelOpenWorkbook(Expression<Func<string>> mSExcelOpenWorkbookworkflow, Expression<Func<int>> mSExcelOpenWorkbookhandle = null, Expression<Func<string>> mSExcelOpenWorkbookfilename = null, Expression<Func<bool>> mSExcelOpenWorkbookreadOnly = null, Expression<Func<bool>> mSExcelOpenWorkbookupdateLinks = null, Expression<Func<string>> mSExcelOpenWorkbookpassword = null, Expression<Func<bool>> mSExcelOpenWorkbookenableEvents = null, Expression<Func<bool>> mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode = null, Expression<Func<bool>> mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode = null)
         {
-            var __workflow_mSExcelOpenWorkbookworkflow = mSExcelOpenWorkbookworkflow == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookworkflow, nameof(mSExcelOpenWorkbookworkflow), required: true);
-            var __workflow_mSExcelOpenWorkbookhandle = mSExcelOpenWorkbookhandle == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookhandle, nameof(mSExcelOpenWorkbookhandle), required: false);
-            var __workflow_mSExcelOpenWorkbookfilename = mSExcelOpenWorkbookfilename == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookfilename);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookfilename, nameof(mSExcelOpenWorkbookfilename), required: false);
-            var __workflow_mSExcelOpenWorkbookreadOnly = mSExcelOpenWorkbookreadOnly == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookreadOnly);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookreadOnly, nameof(mSExcelOpenWorkbookreadOnly), required: false);
-            var __workflow_mSExcelOpenWorkbookupdateLinks = mSExcelOpenWorkbookupdateLinks == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookupdateLinks);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookupdateLinks, nameof(mSExcelOpenWorkbookupdateLinks), required: false);
-            var __workflow_mSExcelOpenWorkbookpassword = mSExcelOpenWorkbookpassword == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookpassword);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookpassword, nameof(mSExcelOpenWorkbookpassword), required: false);
-            var __workflow_mSExcelOpenWorkbookenableEvents = mSExcelOpenWorkbookenableEvents == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookenableEvents);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookenableEvents, nameof(mSExcelOpenWorkbookenableEvents), required: false);
-            var __workflow_mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode = mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode, nameof(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode), required: false);
-            var __workflow_mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode = mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode == null ? null : WorkflowExpression.Compile(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode);
-            WorkflowExpression.Validate(__workflow_mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode, nameof(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode), required: false);
+            var __workflow_mSExcelOpenWorkbookworkflow = WorkflowExpression.Compile(mSExcelOpenWorkbookworkflow, nameof(mSExcelOpenWorkbookworkflow), required: true);
+            var __workflow_mSExcelOpenWorkbookhandle = WorkflowExpression.Compile(mSExcelOpenWorkbookhandle, nameof(mSExcelOpenWorkbookhandle), required: false);
+            var __workflow_mSExcelOpenWorkbookfilename = WorkflowExpression.Compile(mSExcelOpenWorkbookfilename, nameof(mSExcelOpenWorkbookfilename), required: false);
+            var __workflow_mSExcelOpenWorkbookreadOnly = WorkflowExpression.Compile(mSExcelOpenWorkbookreadOnly, nameof(mSExcelOpenWorkbookreadOnly), required: false);
+            var __workflow_mSExcelOpenWorkbookupdateLinks = WorkflowExpression.Compile(mSExcelOpenWorkbookupdateLinks, nameof(mSExcelOpenWorkbookupdateLinks), required: false);
+            var __workflow_mSExcelOpenWorkbookpassword = WorkflowExpression.Compile(mSExcelOpenWorkbookpassword, nameof(mSExcelOpenWorkbookpassword), required: false);
+            var __workflow_mSExcelOpenWorkbookenableEvents = WorkflowExpression.Compile(mSExcelOpenWorkbookenableEvents, nameof(mSExcelOpenWorkbookenableEvents), required: false);
+            var __workflow_mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode = WorkflowExpression.Compile(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode, nameof(mSExcelOpenWorkbookputHTTPWorkbooksIntoEditMode), required: false);
+            var __workflow_mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode = WorkflowExpression.Compile(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode, nameof(mSExcelOpenWorkbookputFilePathWorkbooksIntoEditMode), required: false);
             return new DeferredBodyAction<MSExcelOpenWorkbookResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/OpenWorkbook";
@@ -2273,14 +2118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelPutWorkbookInEditModeResponse> MSExcelPutWorkbookInEditMode(Expression<Func<string>> mSExcelPutWorkbookInEditModeworkflow, Expression<Func<int>> mSExcelPutWorkbookInEditModehandle = null, Expression<Func<string>> mSExcelPutWorkbookInEditModeworkbookName = null, Expression<Func<bool>> mSExcelPutWorkbookInEditModeforce = null)
         {
-            var __workflow_mSExcelPutWorkbookInEditModeworkflow = mSExcelPutWorkbookInEditModeworkflow == null ? null : WorkflowExpression.Compile(mSExcelPutWorkbookInEditModeworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelPutWorkbookInEditModeworkflow, nameof(mSExcelPutWorkbookInEditModeworkflow), required: true);
-            var __workflow_mSExcelPutWorkbookInEditModehandle = mSExcelPutWorkbookInEditModehandle == null ? null : WorkflowExpression.Compile(mSExcelPutWorkbookInEditModehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelPutWorkbookInEditModehandle, nameof(mSExcelPutWorkbookInEditModehandle), required: false);
-            var __workflow_mSExcelPutWorkbookInEditModeworkbookName = mSExcelPutWorkbookInEditModeworkbookName == null ? null : WorkflowExpression.Compile(mSExcelPutWorkbookInEditModeworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelPutWorkbookInEditModeworkbookName, nameof(mSExcelPutWorkbookInEditModeworkbookName), required: false);
-            var __workflow_mSExcelPutWorkbookInEditModeforce = mSExcelPutWorkbookInEditModeforce == null ? null : WorkflowExpression.Compile(mSExcelPutWorkbookInEditModeforce);
-            WorkflowExpression.Validate(__workflow_mSExcelPutWorkbookInEditModeforce, nameof(mSExcelPutWorkbookInEditModeforce), required: false);
+            var __workflow_mSExcelPutWorkbookInEditModeworkflow = WorkflowExpression.Compile(mSExcelPutWorkbookInEditModeworkflow, nameof(mSExcelPutWorkbookInEditModeworkflow), required: true);
+            var __workflow_mSExcelPutWorkbookInEditModehandle = WorkflowExpression.Compile(mSExcelPutWorkbookInEditModehandle, nameof(mSExcelPutWorkbookInEditModehandle), required: false);
+            var __workflow_mSExcelPutWorkbookInEditModeworkbookName = WorkflowExpression.Compile(mSExcelPutWorkbookInEditModeworkbookName, nameof(mSExcelPutWorkbookInEditModeworkbookName), required: false);
+            var __workflow_mSExcelPutWorkbookInEditModeforce = WorkflowExpression.Compile(mSExcelPutWorkbookInEditModeforce, nameof(mSExcelPutWorkbookInEditModeforce), required: false);
             return new DeferredBodyAction<MSExcelPutWorkbookInEditModeResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/PutWorkbookInEditMode";
@@ -2340,10 +2181,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCreateWorkbookResponse> MSExcelCreateWorkbook(Expression<Func<string>> mSExcelCreateWorkbookworkflow, Expression<Func<int>> mSExcelCreateWorkbookhandle = null)
         {
-            var __workflow_mSExcelCreateWorkbookworkflow = mSExcelCreateWorkbookworkflow == null ? null : WorkflowExpression.Compile(mSExcelCreateWorkbookworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateWorkbookworkflow, nameof(mSExcelCreateWorkbookworkflow), required: true);
-            var __workflow_mSExcelCreateWorkbookhandle = mSExcelCreateWorkbookhandle == null ? null : WorkflowExpression.Compile(mSExcelCreateWorkbookhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateWorkbookhandle, nameof(mSExcelCreateWorkbookhandle), required: false);
+            var __workflow_mSExcelCreateWorkbookworkflow = WorkflowExpression.Compile(mSExcelCreateWorkbookworkflow, nameof(mSExcelCreateWorkbookworkflow), required: true);
+            var __workflow_mSExcelCreateWorkbookhandle = WorkflowExpression.Compile(mSExcelCreateWorkbookhandle, nameof(mSExcelCreateWorkbookhandle), required: false);
             return new DeferredBodyAction<MSExcelCreateWorkbookResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/CreateWorkbook";
@@ -2381,14 +2220,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCloseWorkbook(Expression<Func<string>> mSExcelCloseWorkbookworkflow, Expression<Func<int>> mSExcelCloseWorkbookhandle = null, Expression<Func<string>> mSExcelCloseWorkbookworkbookName = null, Expression<Func<bool>> mSExcelCloseWorkbooksaveData = null)
         {
-            var __workflow_mSExcelCloseWorkbookworkflow = mSExcelCloseWorkbookworkflow == null ? null : WorkflowExpression.Compile(mSExcelCloseWorkbookworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseWorkbookworkflow, nameof(mSExcelCloseWorkbookworkflow), required: true);
-            var __workflow_mSExcelCloseWorkbookhandle = mSExcelCloseWorkbookhandle == null ? null : WorkflowExpression.Compile(mSExcelCloseWorkbookhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseWorkbookhandle, nameof(mSExcelCloseWorkbookhandle), required: false);
-            var __workflow_mSExcelCloseWorkbookworkbookName = mSExcelCloseWorkbookworkbookName == null ? null : WorkflowExpression.Compile(mSExcelCloseWorkbookworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseWorkbookworkbookName, nameof(mSExcelCloseWorkbookworkbookName), required: false);
-            var __workflow_mSExcelCloseWorkbooksaveData = mSExcelCloseWorkbooksaveData == null ? null : WorkflowExpression.Compile(mSExcelCloseWorkbooksaveData);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseWorkbooksaveData, nameof(mSExcelCloseWorkbooksaveData), required: false);
+            var __workflow_mSExcelCloseWorkbookworkflow = WorkflowExpression.Compile(mSExcelCloseWorkbookworkflow, nameof(mSExcelCloseWorkbookworkflow), required: true);
+            var __workflow_mSExcelCloseWorkbookhandle = WorkflowExpression.Compile(mSExcelCloseWorkbookhandle, nameof(mSExcelCloseWorkbookhandle), required: false);
+            var __workflow_mSExcelCloseWorkbookworkbookName = WorkflowExpression.Compile(mSExcelCloseWorkbookworkbookName, nameof(mSExcelCloseWorkbookworkbookName), required: false);
+            var __workflow_mSExcelCloseWorkbooksaveData = WorkflowExpression.Compile(mSExcelCloseWorkbooksaveData, nameof(mSExcelCloseWorkbooksaveData), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/CloseWorkbook";
@@ -2448,10 +2283,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCloseCurrentWorkbook(Expression<Func<string>> mSExcelCloseCurrentWorkbookworkflow, Expression<Func<int>> mSExcelCloseCurrentWorkbookhandle = null)
         {
-            var __workflow_mSExcelCloseCurrentWorkbookworkflow = mSExcelCloseCurrentWorkbookworkflow == null ? null : WorkflowExpression.Compile(mSExcelCloseCurrentWorkbookworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseCurrentWorkbookworkflow, nameof(mSExcelCloseCurrentWorkbookworkflow), required: true);
-            var __workflow_mSExcelCloseCurrentWorkbookhandle = mSExcelCloseCurrentWorkbookhandle == null ? null : WorkflowExpression.Compile(mSExcelCloseCurrentWorkbookhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCloseCurrentWorkbookhandle, nameof(mSExcelCloseCurrentWorkbookhandle), required: false);
+            var __workflow_mSExcelCloseCurrentWorkbookworkflow = WorkflowExpression.Compile(mSExcelCloseCurrentWorkbookworkflow, nameof(mSExcelCloseCurrentWorkbookworkflow), required: true);
+            var __workflow_mSExcelCloseCurrentWorkbookhandle = WorkflowExpression.Compile(mSExcelCloseCurrentWorkbookhandle, nameof(mSExcelCloseCurrentWorkbookhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/CloseCurrentWorkbook";
@@ -2489,16 +2322,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelGoToCell(Expression<Func<string>> mSExcelGoToCellcellReference, Expression<Func<string>> mSExcelGoToCellworkflow, Expression<Func<int>> mSExcelGoToCellhandle = null, Expression<Func<string>> mSExcelGoToCellworkbookName = null, Expression<Func<string>> mSExcelGoToCellworksheetName = null)
         {
-            var __workflow_mSExcelGoToCellcellReference = mSExcelGoToCellcellReference == null ? null : WorkflowExpression.Compile(mSExcelGoToCellcellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGoToCellcellReference, nameof(mSExcelGoToCellcellReference), required: true);
-            var __workflow_mSExcelGoToCellworkflow = mSExcelGoToCellworkflow == null ? null : WorkflowExpression.Compile(mSExcelGoToCellworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGoToCellworkflow, nameof(mSExcelGoToCellworkflow), required: true);
-            var __workflow_mSExcelGoToCellhandle = mSExcelGoToCellhandle == null ? null : WorkflowExpression.Compile(mSExcelGoToCellhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGoToCellhandle, nameof(mSExcelGoToCellhandle), required: false);
-            var __workflow_mSExcelGoToCellworkbookName = mSExcelGoToCellworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGoToCellworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGoToCellworkbookName, nameof(mSExcelGoToCellworkbookName), required: false);
-            var __workflow_mSExcelGoToCellworksheetName = mSExcelGoToCellworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGoToCellworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGoToCellworksheetName, nameof(mSExcelGoToCellworksheetName), required: false);
+            var __workflow_mSExcelGoToCellcellReference = WorkflowExpression.Compile(mSExcelGoToCellcellReference, nameof(mSExcelGoToCellcellReference), required: true);
+            var __workflow_mSExcelGoToCellworkflow = WorkflowExpression.Compile(mSExcelGoToCellworkflow, nameof(mSExcelGoToCellworkflow), required: true);
+            var __workflow_mSExcelGoToCellhandle = WorkflowExpression.Compile(mSExcelGoToCellhandle, nameof(mSExcelGoToCellhandle), required: false);
+            var __workflow_mSExcelGoToCellworkbookName = WorkflowExpression.Compile(mSExcelGoToCellworkbookName, nameof(mSExcelGoToCellworkbookName), required: false);
+            var __workflow_mSExcelGoToCellworksheetName = WorkflowExpression.Compile(mSExcelGoToCellworksheetName, nameof(mSExcelGoToCellworksheetName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/GoToCell";
@@ -2550,16 +2378,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellValueResponse> MSExcelGetCellValue(Expression<Func<string>> mSExcelGetCellValuecellReference, Expression<Func<string>> mSExcelGetCellValueworkflow, Expression<Func<int>> mSExcelGetCellValuehandle = null, Expression<Func<string>> mSExcelGetCellValueworkbookName = null, Expression<Func<string>> mSExcelGetCellValueworksheetName = null)
         {
-            var __workflow_mSExcelGetCellValuecellReference = mSExcelGetCellValuecellReference == null ? null : WorkflowExpression.Compile(mSExcelGetCellValuecellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValuecellReference, nameof(mSExcelGetCellValuecellReference), required: true);
-            var __workflow_mSExcelGetCellValueworkflow = mSExcelGetCellValueworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetCellValueworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValueworkflow, nameof(mSExcelGetCellValueworkflow), required: true);
-            var __workflow_mSExcelGetCellValuehandle = mSExcelGetCellValuehandle == null ? null : WorkflowExpression.Compile(mSExcelGetCellValuehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValuehandle, nameof(mSExcelGetCellValuehandle), required: false);
-            var __workflow_mSExcelGetCellValueworkbookName = mSExcelGetCellValueworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetCellValueworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValueworkbookName, nameof(mSExcelGetCellValueworkbookName), required: false);
-            var __workflow_mSExcelGetCellValueworksheetName = mSExcelGetCellValueworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetCellValueworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValueworksheetName, nameof(mSExcelGetCellValueworksheetName), required: false);
+            var __workflow_mSExcelGetCellValuecellReference = WorkflowExpression.Compile(mSExcelGetCellValuecellReference, nameof(mSExcelGetCellValuecellReference), required: true);
+            var __workflow_mSExcelGetCellValueworkflow = WorkflowExpression.Compile(mSExcelGetCellValueworkflow, nameof(mSExcelGetCellValueworkflow), required: true);
+            var __workflow_mSExcelGetCellValuehandle = WorkflowExpression.Compile(mSExcelGetCellValuehandle, nameof(mSExcelGetCellValuehandle), required: false);
+            var __workflow_mSExcelGetCellValueworkbookName = WorkflowExpression.Compile(mSExcelGetCellValueworkbookName, nameof(mSExcelGetCellValueworkbookName), required: false);
+            var __workflow_mSExcelGetCellValueworksheetName = WorkflowExpression.Compile(mSExcelGetCellValueworksheetName, nameof(mSExcelGetCellValueworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetCellValueResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetCellValue";
@@ -2611,16 +2434,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellValue2Response> MSExcelGetCellValue2(Expression<Func<string>> mSExcelGetCellValue2cellReference, Expression<Func<string>> mSExcelGetCellValue2workflow, Expression<Func<int>> mSExcelGetCellValue2handle = null, Expression<Func<string>> mSExcelGetCellValue2workbookName = null, Expression<Func<string>> mSExcelGetCellValue2worksheetName = null)
         {
-            var __workflow_mSExcelGetCellValue2cellReference = mSExcelGetCellValue2cellReference == null ? null : WorkflowExpression.Compile(mSExcelGetCellValue2cellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValue2cellReference, nameof(mSExcelGetCellValue2cellReference), required: true);
-            var __workflow_mSExcelGetCellValue2workflow = mSExcelGetCellValue2workflow == null ? null : WorkflowExpression.Compile(mSExcelGetCellValue2workflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValue2workflow, nameof(mSExcelGetCellValue2workflow), required: true);
-            var __workflow_mSExcelGetCellValue2handle = mSExcelGetCellValue2handle == null ? null : WorkflowExpression.Compile(mSExcelGetCellValue2handle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValue2handle, nameof(mSExcelGetCellValue2handle), required: false);
-            var __workflow_mSExcelGetCellValue2workbookName = mSExcelGetCellValue2workbookName == null ? null : WorkflowExpression.Compile(mSExcelGetCellValue2workbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValue2workbookName, nameof(mSExcelGetCellValue2workbookName), required: false);
-            var __workflow_mSExcelGetCellValue2worksheetName = mSExcelGetCellValue2worksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetCellValue2worksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellValue2worksheetName, nameof(mSExcelGetCellValue2worksheetName), required: false);
+            var __workflow_mSExcelGetCellValue2cellReference = WorkflowExpression.Compile(mSExcelGetCellValue2cellReference, nameof(mSExcelGetCellValue2cellReference), required: true);
+            var __workflow_mSExcelGetCellValue2workflow = WorkflowExpression.Compile(mSExcelGetCellValue2workflow, nameof(mSExcelGetCellValue2workflow), required: true);
+            var __workflow_mSExcelGetCellValue2handle = WorkflowExpression.Compile(mSExcelGetCellValue2handle, nameof(mSExcelGetCellValue2handle), required: false);
+            var __workflow_mSExcelGetCellValue2workbookName = WorkflowExpression.Compile(mSExcelGetCellValue2workbookName, nameof(mSExcelGetCellValue2workbookName), required: false);
+            var __workflow_mSExcelGetCellValue2worksheetName = WorkflowExpression.Compile(mSExcelGetCellValue2worksheetName, nameof(mSExcelGetCellValue2worksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetCellValue2Response>(() =>
             {
                 var apiCallPath = "/MSExcel/GetCellValue2";
@@ -2672,16 +2490,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellTextResponse> MSExcelGetCellText(Expression<Func<string>> mSExcelGetCellTextcellReference, Expression<Func<string>> mSExcelGetCellTextworkflow, Expression<Func<int>> mSExcelGetCellTexthandle = null, Expression<Func<string>> mSExcelGetCellTextworkbookName = null, Expression<Func<string>> mSExcelGetCellTextworksheetName = null)
         {
-            var __workflow_mSExcelGetCellTextcellReference = mSExcelGetCellTextcellReference == null ? null : WorkflowExpression.Compile(mSExcelGetCellTextcellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellTextcellReference, nameof(mSExcelGetCellTextcellReference), required: true);
-            var __workflow_mSExcelGetCellTextworkflow = mSExcelGetCellTextworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetCellTextworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellTextworkflow, nameof(mSExcelGetCellTextworkflow), required: true);
-            var __workflow_mSExcelGetCellTexthandle = mSExcelGetCellTexthandle == null ? null : WorkflowExpression.Compile(mSExcelGetCellTexthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellTexthandle, nameof(mSExcelGetCellTexthandle), required: false);
-            var __workflow_mSExcelGetCellTextworkbookName = mSExcelGetCellTextworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetCellTextworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellTextworkbookName, nameof(mSExcelGetCellTextworkbookName), required: false);
-            var __workflow_mSExcelGetCellTextworksheetName = mSExcelGetCellTextworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetCellTextworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellTextworksheetName, nameof(mSExcelGetCellTextworksheetName), required: false);
+            var __workflow_mSExcelGetCellTextcellReference = WorkflowExpression.Compile(mSExcelGetCellTextcellReference, nameof(mSExcelGetCellTextcellReference), required: true);
+            var __workflow_mSExcelGetCellTextworkflow = WorkflowExpression.Compile(mSExcelGetCellTextworkflow, nameof(mSExcelGetCellTextworkflow), required: true);
+            var __workflow_mSExcelGetCellTexthandle = WorkflowExpression.Compile(mSExcelGetCellTexthandle, nameof(mSExcelGetCellTexthandle), required: false);
+            var __workflow_mSExcelGetCellTextworkbookName = WorkflowExpression.Compile(mSExcelGetCellTextworkbookName, nameof(mSExcelGetCellTextworkbookName), required: false);
+            var __workflow_mSExcelGetCellTextworksheetName = WorkflowExpression.Compile(mSExcelGetCellTextworksheetName, nameof(mSExcelGetCellTextworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetCellTextResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetCellText";
@@ -2733,20 +2546,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelSetCellValue(Expression<Func<string>> mSExcelSetCellValuecellReference, Expression<Func<string>> mSExcelSetCellValueworkflow, Expression<Func<int>> mSExcelSetCellValuehandle = null, Expression<Func<string>> mSExcelSetCellValueworkbookName = null, Expression<Func<string>> mSExcelSetCellValueworksheetName = null, Expression<Func<string>> mSExcelSetCellValuecellValue = null, Expression<Func<bool>> mSExcelSetCellValuecellValueContainsStoredPassword = null)
         {
-            var __workflow_mSExcelSetCellValuecellReference = mSExcelSetCellValuecellReference == null ? null : WorkflowExpression.Compile(mSExcelSetCellValuecellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellValuecellReference, nameof(mSExcelSetCellValuecellReference), required: true);
-            var __workflow_mSExcelSetCellValueworkflow = mSExcelSetCellValueworkflow == null ? null : WorkflowExpression.Compile(mSExcelSetCellValueworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellValueworkflow, nameof(mSExcelSetCellValueworkflow), required: true);
-            var __workflow_mSExcelSetCellValuehandle = mSExcelSetCellValuehandle == null ? null : WorkflowExpression.Compile(mSExcelSetCellValuehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellValuehandle, nameof(mSExcelSetCellValuehandle), required: false);
-            var __workflow_mSExcelSetCellValueworkbookName = mSExcelSetCellValueworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSetCellValueworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellValueworkbookName, nameof(mSExcelSetCellValueworkbookName), required: false);
-            var __workflow_mSExcelSetCellValueworksheetName = mSExcelSetCellValueworksheetName == null ? null : WorkflowExpression.Compile(mSExcelSetCellValueworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellValueworksheetName, nameof(mSExcelSetCellValueworksheetName), required: false);
-            var __workflow_mSExcelSetCellValuecellValue = mSExcelSetCellValuecellValue == null ? null : WorkflowExpression.Compile(mSExcelSetCellValuecellValue);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellValuecellValue, nameof(mSExcelSetCellValuecellValue), required: false);
-            var __workflow_mSExcelSetCellValuecellValueContainsStoredPassword = mSExcelSetCellValuecellValueContainsStoredPassword == null ? null : WorkflowExpression.Compile(mSExcelSetCellValuecellValueContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellValuecellValueContainsStoredPassword, nameof(mSExcelSetCellValuecellValueContainsStoredPassword), required: false);
+            var __workflow_mSExcelSetCellValuecellReference = WorkflowExpression.Compile(mSExcelSetCellValuecellReference, nameof(mSExcelSetCellValuecellReference), required: true);
+            var __workflow_mSExcelSetCellValueworkflow = WorkflowExpression.Compile(mSExcelSetCellValueworkflow, nameof(mSExcelSetCellValueworkflow), required: true);
+            var __workflow_mSExcelSetCellValuehandle = WorkflowExpression.Compile(mSExcelSetCellValuehandle, nameof(mSExcelSetCellValuehandle), required: false);
+            var __workflow_mSExcelSetCellValueworkbookName = WorkflowExpression.Compile(mSExcelSetCellValueworkbookName, nameof(mSExcelSetCellValueworkbookName), required: false);
+            var __workflow_mSExcelSetCellValueworksheetName = WorkflowExpression.Compile(mSExcelSetCellValueworksheetName, nameof(mSExcelSetCellValueworksheetName), required: false);
+            var __workflow_mSExcelSetCellValuecellValue = WorkflowExpression.Compile(mSExcelSetCellValuecellValue, nameof(mSExcelSetCellValuecellValue), required: false);
+            var __workflow_mSExcelSetCellValuecellValueContainsStoredPassword = WorkflowExpression.Compile(mSExcelSetCellValuecellValueContainsStoredPassword, nameof(mSExcelSetCellValuecellValueContainsStoredPassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/SetCellValue";
@@ -2820,26 +2626,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelFindNextCellWithValueResponse> MSExcelFindNextCellWithValue(Expression<Func<mSExcelFindNextCellWithValuedirectionInput>> mSExcelFindNextCellWithValuedirection, Expression<Func<string>> mSExcelFindNextCellWithValuesearchValue, Expression<Func<string>> mSExcelFindNextCellWithValueworkflow, Expression<Func<int>> mSExcelFindNextCellWithValuehandle = null, Expression<Func<string>> mSExcelFindNextCellWithValueworkbookName = null, Expression<Func<string>> mSExcelFindNextCellWithValueworksheetName = null, Expression<Func<bool>> mSExcelFindNextCellWithValuecaseSensitive = null, Expression<Func<mSExcelFindNextCellWithValuecomparisonTypeInput>> mSExcelFindNextCellWithValuecomparisonType = null, Expression<Func<int>> mSExcelFindNextCellWithValuemaxCellsToSearch = null, Expression<Func<bool>> mSExcelFindNextCellWithValueactivateCell = null)
         {
-            var __workflow_mSExcelFindNextCellWithValuedirection = mSExcelFindNextCellWithValuedirection == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValuedirection);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValuedirection, nameof(mSExcelFindNextCellWithValuedirection), required: true);
-            var __workflow_mSExcelFindNextCellWithValuesearchValue = mSExcelFindNextCellWithValuesearchValue == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValuesearchValue);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValuesearchValue, nameof(mSExcelFindNextCellWithValuesearchValue), required: true);
-            var __workflow_mSExcelFindNextCellWithValueworkflow = mSExcelFindNextCellWithValueworkflow == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValueworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValueworkflow, nameof(mSExcelFindNextCellWithValueworkflow), required: true);
-            var __workflow_mSExcelFindNextCellWithValuehandle = mSExcelFindNextCellWithValuehandle == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValuehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValuehandle, nameof(mSExcelFindNextCellWithValuehandle), required: false);
-            var __workflow_mSExcelFindNextCellWithValueworkbookName = mSExcelFindNextCellWithValueworkbookName == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValueworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValueworkbookName, nameof(mSExcelFindNextCellWithValueworkbookName), required: false);
-            var __workflow_mSExcelFindNextCellWithValueworksheetName = mSExcelFindNextCellWithValueworksheetName == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValueworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValueworksheetName, nameof(mSExcelFindNextCellWithValueworksheetName), required: false);
-            var __workflow_mSExcelFindNextCellWithValuecaseSensitive = mSExcelFindNextCellWithValuecaseSensitive == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValuecaseSensitive);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValuecaseSensitive, nameof(mSExcelFindNextCellWithValuecaseSensitive), required: false);
-            var __workflow_mSExcelFindNextCellWithValuecomparisonType = mSExcelFindNextCellWithValuecomparisonType == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValuecomparisonType);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValuecomparisonType, nameof(mSExcelFindNextCellWithValuecomparisonType), required: false);
-            var __workflow_mSExcelFindNextCellWithValuemaxCellsToSearch = mSExcelFindNextCellWithValuemaxCellsToSearch == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValuemaxCellsToSearch);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValuemaxCellsToSearch, nameof(mSExcelFindNextCellWithValuemaxCellsToSearch), required: false);
-            var __workflow_mSExcelFindNextCellWithValueactivateCell = mSExcelFindNextCellWithValueactivateCell == null ? null : WorkflowExpression.Compile(mSExcelFindNextCellWithValueactivateCell);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextCellWithValueactivateCell, nameof(mSExcelFindNextCellWithValueactivateCell), required: false);
+            var __workflow_mSExcelFindNextCellWithValuedirection = WorkflowExpression.Compile(mSExcelFindNextCellWithValuedirection, nameof(mSExcelFindNextCellWithValuedirection), required: true);
+            var __workflow_mSExcelFindNextCellWithValuesearchValue = WorkflowExpression.Compile(mSExcelFindNextCellWithValuesearchValue, nameof(mSExcelFindNextCellWithValuesearchValue), required: true);
+            var __workflow_mSExcelFindNextCellWithValueworkflow = WorkflowExpression.Compile(mSExcelFindNextCellWithValueworkflow, nameof(mSExcelFindNextCellWithValueworkflow), required: true);
+            var __workflow_mSExcelFindNextCellWithValuehandle = WorkflowExpression.Compile(mSExcelFindNextCellWithValuehandle, nameof(mSExcelFindNextCellWithValuehandle), required: false);
+            var __workflow_mSExcelFindNextCellWithValueworkbookName = WorkflowExpression.Compile(mSExcelFindNextCellWithValueworkbookName, nameof(mSExcelFindNextCellWithValueworkbookName), required: false);
+            var __workflow_mSExcelFindNextCellWithValueworksheetName = WorkflowExpression.Compile(mSExcelFindNextCellWithValueworksheetName, nameof(mSExcelFindNextCellWithValueworksheetName), required: false);
+            var __workflow_mSExcelFindNextCellWithValuecaseSensitive = WorkflowExpression.Compile(mSExcelFindNextCellWithValuecaseSensitive, nameof(mSExcelFindNextCellWithValuecaseSensitive), required: false);
+            var __workflow_mSExcelFindNextCellWithValuecomparisonType = WorkflowExpression.Compile(mSExcelFindNextCellWithValuecomparisonType, nameof(mSExcelFindNextCellWithValuecomparisonType), required: false);
+            var __workflow_mSExcelFindNextCellWithValuemaxCellsToSearch = WorkflowExpression.Compile(mSExcelFindNextCellWithValuemaxCellsToSearch, nameof(mSExcelFindNextCellWithValuemaxCellsToSearch), required: false);
+            var __workflow_mSExcelFindNextCellWithValueactivateCell = WorkflowExpression.Compile(mSExcelFindNextCellWithValueactivateCell, nameof(mSExcelFindNextCellWithValueactivateCell), required: false);
             return new DeferredBodyAction<MSExcelFindNextCellWithValueResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/FindNextCellWithValue";
@@ -2937,18 +2733,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelFindNextEmptyCellResponse> MSExcelFindNextEmptyCell(Expression<Func<mSExcelFindNextEmptyCelldirectionInput>> mSExcelFindNextEmptyCelldirection, Expression<Func<string>> mSExcelFindNextEmptyCellworkflow, Expression<Func<int>> mSExcelFindNextEmptyCellhandle = null, Expression<Func<string>> mSExcelFindNextEmptyCellworkbookName = null, Expression<Func<string>> mSExcelFindNextEmptyCellworksheetName = null, Expression<Func<bool>> mSExcelFindNextEmptyCellactivateCell = null)
         {
-            var __workflow_mSExcelFindNextEmptyCelldirection = mSExcelFindNextEmptyCelldirection == null ? null : WorkflowExpression.Compile(mSExcelFindNextEmptyCelldirection);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextEmptyCelldirection, nameof(mSExcelFindNextEmptyCelldirection), required: true);
-            var __workflow_mSExcelFindNextEmptyCellworkflow = mSExcelFindNextEmptyCellworkflow == null ? null : WorkflowExpression.Compile(mSExcelFindNextEmptyCellworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextEmptyCellworkflow, nameof(mSExcelFindNextEmptyCellworkflow), required: true);
-            var __workflow_mSExcelFindNextEmptyCellhandle = mSExcelFindNextEmptyCellhandle == null ? null : WorkflowExpression.Compile(mSExcelFindNextEmptyCellhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextEmptyCellhandle, nameof(mSExcelFindNextEmptyCellhandle), required: false);
-            var __workflow_mSExcelFindNextEmptyCellworkbookName = mSExcelFindNextEmptyCellworkbookName == null ? null : WorkflowExpression.Compile(mSExcelFindNextEmptyCellworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextEmptyCellworkbookName, nameof(mSExcelFindNextEmptyCellworkbookName), required: false);
-            var __workflow_mSExcelFindNextEmptyCellworksheetName = mSExcelFindNextEmptyCellworksheetName == null ? null : WorkflowExpression.Compile(mSExcelFindNextEmptyCellworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextEmptyCellworksheetName, nameof(mSExcelFindNextEmptyCellworksheetName), required: false);
-            var __workflow_mSExcelFindNextEmptyCellactivateCell = mSExcelFindNextEmptyCellactivateCell == null ? null : WorkflowExpression.Compile(mSExcelFindNextEmptyCellactivateCell);
-            WorkflowExpression.Validate(__workflow_mSExcelFindNextEmptyCellactivateCell, nameof(mSExcelFindNextEmptyCellactivateCell), required: false);
+            var __workflow_mSExcelFindNextEmptyCelldirection = WorkflowExpression.Compile(mSExcelFindNextEmptyCelldirection, nameof(mSExcelFindNextEmptyCelldirection), required: true);
+            var __workflow_mSExcelFindNextEmptyCellworkflow = WorkflowExpression.Compile(mSExcelFindNextEmptyCellworkflow, nameof(mSExcelFindNextEmptyCellworkflow), required: true);
+            var __workflow_mSExcelFindNextEmptyCellhandle = WorkflowExpression.Compile(mSExcelFindNextEmptyCellhandle, nameof(mSExcelFindNextEmptyCellhandle), required: false);
+            var __workflow_mSExcelFindNextEmptyCellworkbookName = WorkflowExpression.Compile(mSExcelFindNextEmptyCellworkbookName, nameof(mSExcelFindNextEmptyCellworkbookName), required: false);
+            var __workflow_mSExcelFindNextEmptyCellworksheetName = WorkflowExpression.Compile(mSExcelFindNextEmptyCellworksheetName, nameof(mSExcelFindNextEmptyCellworksheetName), required: false);
+            var __workflow_mSExcelFindNextEmptyCellactivateCell = WorkflowExpression.Compile(mSExcelFindNextEmptyCellactivateCell, nameof(mSExcelFindNextEmptyCellactivateCell), required: false);
             return new DeferredBodyAction<MSExcelFindNextEmptyCellResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/FindNextEmptyCell";
@@ -3016,14 +2806,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellLeftResponse> MSExcelGotoNextEmptyCellLeft(Expression<Func<string>> mSExcelGotoNextEmptyCellLeftworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellLefthandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellLeftworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellLeftworksheetName = null)
         {
-            var __workflow_mSExcelGotoNextEmptyCellLeftworkflow = mSExcelGotoNextEmptyCellLeftworkflow == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLeftworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellLeftworkflow, nameof(mSExcelGotoNextEmptyCellLeftworkflow), required: true);
-            var __workflow_mSExcelGotoNextEmptyCellLefthandle = mSExcelGotoNextEmptyCellLefthandle == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLefthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellLefthandle, nameof(mSExcelGotoNextEmptyCellLefthandle), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellLeftworkbookName = mSExcelGotoNextEmptyCellLeftworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLeftworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellLeftworkbookName, nameof(mSExcelGotoNextEmptyCellLeftworkbookName), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellLeftworksheetName = mSExcelGotoNextEmptyCellLeftworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLeftworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellLeftworksheetName, nameof(mSExcelGotoNextEmptyCellLeftworksheetName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellLeftworkflow = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLeftworkflow, nameof(mSExcelGotoNextEmptyCellLeftworkflow), required: true);
+            var __workflow_mSExcelGotoNextEmptyCellLefthandle = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLefthandle, nameof(mSExcelGotoNextEmptyCellLefthandle), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellLeftworkbookName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLeftworkbookName, nameof(mSExcelGotoNextEmptyCellLeftworkbookName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellLeftworksheetName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellLeftworksheetName, nameof(mSExcelGotoNextEmptyCellLeftworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGotoNextEmptyCellLeftResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellLeft";
@@ -3073,14 +2859,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellRightResponse> MSExcelGotoNextEmptyCellRight(Expression<Func<string>> mSExcelGotoNextEmptyCellRightworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellRighthandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellRightworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellRightworksheetName = null)
         {
-            var __workflow_mSExcelGotoNextEmptyCellRightworkflow = mSExcelGotoNextEmptyCellRightworkflow == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRightworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellRightworkflow, nameof(mSExcelGotoNextEmptyCellRightworkflow), required: true);
-            var __workflow_mSExcelGotoNextEmptyCellRighthandle = mSExcelGotoNextEmptyCellRighthandle == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRighthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellRighthandle, nameof(mSExcelGotoNextEmptyCellRighthandle), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellRightworkbookName = mSExcelGotoNextEmptyCellRightworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRightworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellRightworkbookName, nameof(mSExcelGotoNextEmptyCellRightworkbookName), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellRightworksheetName = mSExcelGotoNextEmptyCellRightworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRightworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellRightworksheetName, nameof(mSExcelGotoNextEmptyCellRightworksheetName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellRightworkflow = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRightworkflow, nameof(mSExcelGotoNextEmptyCellRightworkflow), required: true);
+            var __workflow_mSExcelGotoNextEmptyCellRighthandle = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRighthandle, nameof(mSExcelGotoNextEmptyCellRighthandle), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellRightworkbookName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRightworkbookName, nameof(mSExcelGotoNextEmptyCellRightworkbookName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellRightworksheetName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellRightworksheetName, nameof(mSExcelGotoNextEmptyCellRightworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGotoNextEmptyCellRightResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellRight";
@@ -3130,14 +2912,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellUpResponse> MSExcelGotoNextEmptyCellUp(Expression<Func<string>> mSExcelGotoNextEmptyCellUpworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellUphandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellUpworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellUpworksheetName = null)
         {
-            var __workflow_mSExcelGotoNextEmptyCellUpworkflow = mSExcelGotoNextEmptyCellUpworkflow == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUpworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellUpworkflow, nameof(mSExcelGotoNextEmptyCellUpworkflow), required: true);
-            var __workflow_mSExcelGotoNextEmptyCellUphandle = mSExcelGotoNextEmptyCellUphandle == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUphandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellUphandle, nameof(mSExcelGotoNextEmptyCellUphandle), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellUpworkbookName = mSExcelGotoNextEmptyCellUpworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUpworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellUpworkbookName, nameof(mSExcelGotoNextEmptyCellUpworkbookName), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellUpworksheetName = mSExcelGotoNextEmptyCellUpworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUpworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellUpworksheetName, nameof(mSExcelGotoNextEmptyCellUpworksheetName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellUpworkflow = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUpworkflow, nameof(mSExcelGotoNextEmptyCellUpworkflow), required: true);
+            var __workflow_mSExcelGotoNextEmptyCellUphandle = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUphandle, nameof(mSExcelGotoNextEmptyCellUphandle), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellUpworkbookName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUpworkbookName, nameof(mSExcelGotoNextEmptyCellUpworkbookName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellUpworksheetName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellUpworksheetName, nameof(mSExcelGotoNextEmptyCellUpworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGotoNextEmptyCellUpResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellUp";
@@ -3187,14 +2965,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGotoNextEmptyCellDownResponse> MSExcelGotoNextEmptyCellDown(Expression<Func<string>> mSExcelGotoNextEmptyCellDownworkflow, Expression<Func<int>> mSExcelGotoNextEmptyCellDownhandle = null, Expression<Func<string>> mSExcelGotoNextEmptyCellDownworkbookName = null, Expression<Func<string>> mSExcelGotoNextEmptyCellDownworksheetName = null)
         {
-            var __workflow_mSExcelGotoNextEmptyCellDownworkflow = mSExcelGotoNextEmptyCellDownworkflow == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellDownworkflow, nameof(mSExcelGotoNextEmptyCellDownworkflow), required: true);
-            var __workflow_mSExcelGotoNextEmptyCellDownhandle = mSExcelGotoNextEmptyCellDownhandle == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellDownhandle, nameof(mSExcelGotoNextEmptyCellDownhandle), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellDownworkbookName = mSExcelGotoNextEmptyCellDownworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellDownworkbookName, nameof(mSExcelGotoNextEmptyCellDownworkbookName), required: false);
-            var __workflow_mSExcelGotoNextEmptyCellDownworksheetName = mSExcelGotoNextEmptyCellDownworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGotoNextEmptyCellDownworksheetName, nameof(mSExcelGotoNextEmptyCellDownworksheetName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellDownworkflow = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownworkflow, nameof(mSExcelGotoNextEmptyCellDownworkflow), required: true);
+            var __workflow_mSExcelGotoNextEmptyCellDownhandle = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownhandle, nameof(mSExcelGotoNextEmptyCellDownhandle), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellDownworkbookName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownworkbookName, nameof(mSExcelGotoNextEmptyCellDownworkbookName), required: false);
+            var __workflow_mSExcelGotoNextEmptyCellDownworksheetName = WorkflowExpression.Compile(mSExcelGotoNextEmptyCellDownworksheetName, nameof(mSExcelGotoNextEmptyCellDownworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGotoNextEmptyCellDownResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GotoNextEmptyCellDown";
@@ -3244,12 +3018,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookResponse> MSExcelSaveWorkbook(Expression<Func<string>> mSExcelSaveWorkbookworkflow, Expression<Func<int>> mSExcelSaveWorkbookhandle = null, Expression<Func<string>> mSExcelSaveWorkbookworkbookName = null)
         {
-            var __workflow_mSExcelSaveWorkbookworkflow = mSExcelSaveWorkbookworkflow == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookworkflow, nameof(mSExcelSaveWorkbookworkflow), required: true);
-            var __workflow_mSExcelSaveWorkbookhandle = mSExcelSaveWorkbookhandle == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookhandle, nameof(mSExcelSaveWorkbookhandle), required: false);
-            var __workflow_mSExcelSaveWorkbookworkbookName = mSExcelSaveWorkbookworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookworkbookName, nameof(mSExcelSaveWorkbookworkbookName), required: false);
+            var __workflow_mSExcelSaveWorkbookworkflow = WorkflowExpression.Compile(mSExcelSaveWorkbookworkflow, nameof(mSExcelSaveWorkbookworkflow), required: true);
+            var __workflow_mSExcelSaveWorkbookhandle = WorkflowExpression.Compile(mSExcelSaveWorkbookhandle, nameof(mSExcelSaveWorkbookhandle), required: false);
+            var __workflow_mSExcelSaveWorkbookworkbookName = WorkflowExpression.Compile(mSExcelSaveWorkbookworkbookName, nameof(mSExcelSaveWorkbookworkbookName), required: false);
             return new DeferredBodyAction<MSExcelSaveWorkbookResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SaveWorkbook";
@@ -3293,18 +3064,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsResponse> MSExcelSaveWorkbookAs(Expression<Func<string>> mSExcelSaveWorkbookAssaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsworkflow, Expression<Func<int>> mSExcelSaveWorkbookAshandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsworkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsdeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveWorkbookAsexcelFileFormatInput>> mSExcelSaveWorkbookAsexcelFileFormat = null)
         {
-            var __workflow_mSExcelSaveWorkbookAssaveFilename = mSExcelSaveWorkbookAssaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAssaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAssaveFilename, nameof(mSExcelSaveWorkbookAssaveFilename), required: true);
-            var __workflow_mSExcelSaveWorkbookAsworkflow = mSExcelSaveWorkbookAsworkflow == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsworkflow, nameof(mSExcelSaveWorkbookAsworkflow), required: true);
-            var __workflow_mSExcelSaveWorkbookAshandle = mSExcelSaveWorkbookAshandle == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAshandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAshandle, nameof(mSExcelSaveWorkbookAshandle), required: false);
-            var __workflow_mSExcelSaveWorkbookAsworkbookName = mSExcelSaveWorkbookAsworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsworkbookName, nameof(mSExcelSaveWorkbookAsworkbookName), required: false);
-            var __workflow_mSExcelSaveWorkbookAsdeleteExistingSaveFilename = mSExcelSaveWorkbookAsdeleteExistingSaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsdeleteExistingSaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsdeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsdeleteExistingSaveFilename), required: false);
-            var __workflow_mSExcelSaveWorkbookAsexcelFileFormat = mSExcelSaveWorkbookAsexcelFileFormat == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsexcelFileFormat);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsexcelFileFormat, nameof(mSExcelSaveWorkbookAsexcelFileFormat), required: false);
+            var __workflow_mSExcelSaveWorkbookAssaveFilename = WorkflowExpression.Compile(mSExcelSaveWorkbookAssaveFilename, nameof(mSExcelSaveWorkbookAssaveFilename), required: true);
+            var __workflow_mSExcelSaveWorkbookAsworkflow = WorkflowExpression.Compile(mSExcelSaveWorkbookAsworkflow, nameof(mSExcelSaveWorkbookAsworkflow), required: true);
+            var __workflow_mSExcelSaveWorkbookAshandle = WorkflowExpression.Compile(mSExcelSaveWorkbookAshandle, nameof(mSExcelSaveWorkbookAshandle), required: false);
+            var __workflow_mSExcelSaveWorkbookAsworkbookName = WorkflowExpression.Compile(mSExcelSaveWorkbookAsworkbookName, nameof(mSExcelSaveWorkbookAsworkbookName), required: false);
+            var __workflow_mSExcelSaveWorkbookAsdeleteExistingSaveFilename = WorkflowExpression.Compile(mSExcelSaveWorkbookAsdeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsdeleteExistingSaveFilename), required: false);
+            var __workflow_mSExcelSaveWorkbookAsexcelFileFormat = WorkflowExpression.Compile(mSExcelSaveWorkbookAsexcelFileFormat, nameof(mSExcelSaveWorkbookAsexcelFileFormat), required: false);
             return new DeferredBodyAction<MSExcelSaveWorkbookAsResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SaveWorkbookAs";
@@ -3382,16 +3147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsCSVResponse> MSExcelSaveWorkbookAsCSV(Expression<Func<string>> mSExcelSaveWorkbookAsCSVsaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsCSVworkflow, Expression<Func<int>> mSExcelSaveWorkbookAsCSVhandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsCSVworkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
-            var __workflow_mSExcelSaveWorkbookAsCSVsaveFilename = mSExcelSaveWorkbookAsCSVsaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVsaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsCSVsaveFilename, nameof(mSExcelSaveWorkbookAsCSVsaveFilename), required: true);
-            var __workflow_mSExcelSaveWorkbookAsCSVworkflow = mSExcelSaveWorkbookAsCSVworkflow == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsCSVworkflow, nameof(mSExcelSaveWorkbookAsCSVworkflow), required: true);
-            var __workflow_mSExcelSaveWorkbookAsCSVhandle = mSExcelSaveWorkbookAsCSVhandle == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsCSVhandle, nameof(mSExcelSaveWorkbookAsCSVhandle), required: false);
-            var __workflow_mSExcelSaveWorkbookAsCSVworkbookName = mSExcelSaveWorkbookAsCSVworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsCSVworkbookName, nameof(mSExcelSaveWorkbookAsCSVworkbookName), required: false);
-            var __workflow_mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename = mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename), required: false);
+            var __workflow_mSExcelSaveWorkbookAsCSVsaveFilename = WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVsaveFilename, nameof(mSExcelSaveWorkbookAsCSVsaveFilename), required: true);
+            var __workflow_mSExcelSaveWorkbookAsCSVworkflow = WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVworkflow, nameof(mSExcelSaveWorkbookAsCSVworkflow), required: true);
+            var __workflow_mSExcelSaveWorkbookAsCSVhandle = WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVhandle, nameof(mSExcelSaveWorkbookAsCSVhandle), required: false);
+            var __workflow_mSExcelSaveWorkbookAsCSVworkbookName = WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVworkbookName, nameof(mSExcelSaveWorkbookAsCSVworkbookName), required: false);
+            var __workflow_mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename = WorkflowExpression.Compile(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsCSVdeleteExistingSaveFilename), required: false);
             return new DeferredBodyAction<MSExcelSaveWorkbookAsCSVResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SaveWorkbookAsCSV";
@@ -3453,20 +3213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveWorkbookAsWithPasswordResponse> MSExcelSaveWorkbookAsWithPassword(Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordsaveFilename, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordpassword, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordworkflow, Expression<Func<int>> mSExcelSaveWorkbookAsWithPasswordhandle = null, Expression<Func<string>> mSExcelSaveWorkbookAsWithPasswordworkbookName = null, Expression<Func<bool>> mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveWorkbookAsWithPasswordexcelFileFormatInput>> mSExcelSaveWorkbookAsWithPasswordexcelFileFormat = null)
         {
-            var __workflow_mSExcelSaveWorkbookAsWithPasswordsaveFilename = mSExcelSaveWorkbookAsWithPasswordsaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordsaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsWithPasswordsaveFilename, nameof(mSExcelSaveWorkbookAsWithPasswordsaveFilename), required: true);
-            var __workflow_mSExcelSaveWorkbookAsWithPasswordpassword = mSExcelSaveWorkbookAsWithPasswordpassword == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordpassword);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsWithPasswordpassword, nameof(mSExcelSaveWorkbookAsWithPasswordpassword), required: true);
-            var __workflow_mSExcelSaveWorkbookAsWithPasswordworkflow = mSExcelSaveWorkbookAsWithPasswordworkflow == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsWithPasswordworkflow, nameof(mSExcelSaveWorkbookAsWithPasswordworkflow), required: true);
-            var __workflow_mSExcelSaveWorkbookAsWithPasswordhandle = mSExcelSaveWorkbookAsWithPasswordhandle == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsWithPasswordhandle, nameof(mSExcelSaveWorkbookAsWithPasswordhandle), required: false);
-            var __workflow_mSExcelSaveWorkbookAsWithPasswordworkbookName = mSExcelSaveWorkbookAsWithPasswordworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsWithPasswordworkbookName, nameof(mSExcelSaveWorkbookAsWithPasswordworkbookName), required: false);
-            var __workflow_mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename = mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename), required: false);
-            var __workflow_mSExcelSaveWorkbookAsWithPasswordexcelFileFormat = mSExcelSaveWorkbookAsWithPasswordexcelFileFormat == null ? null : WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveWorkbookAsWithPasswordexcelFileFormat, nameof(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat), required: false);
+            var __workflow_mSExcelSaveWorkbookAsWithPasswordsaveFilename = WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordsaveFilename, nameof(mSExcelSaveWorkbookAsWithPasswordsaveFilename), required: true);
+            var __workflow_mSExcelSaveWorkbookAsWithPasswordpassword = WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordpassword, nameof(mSExcelSaveWorkbookAsWithPasswordpassword), required: true);
+            var __workflow_mSExcelSaveWorkbookAsWithPasswordworkflow = WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordworkflow, nameof(mSExcelSaveWorkbookAsWithPasswordworkflow), required: true);
+            var __workflow_mSExcelSaveWorkbookAsWithPasswordhandle = WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordhandle, nameof(mSExcelSaveWorkbookAsWithPasswordhandle), required: false);
+            var __workflow_mSExcelSaveWorkbookAsWithPasswordworkbookName = WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordworkbookName, nameof(mSExcelSaveWorkbookAsWithPasswordworkbookName), required: false);
+            var __workflow_mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename = WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename, nameof(mSExcelSaveWorkbookAsWithPassworddeleteExistingSaveFilename), required: false);
+            var __workflow_mSExcelSaveWorkbookAsWithPasswordexcelFileFormat = WorkflowExpression.Compile(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat, nameof(mSExcelSaveWorkbookAsWithPasswordexcelFileFormat), required: false);
             return new DeferredBodyAction<MSExcelSaveWorkbookAsWithPasswordResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SaveWorkbookAsWithPassword";
@@ -3546,10 +3299,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookResponse> MSExcelSaveCurrentWorkbook(Expression<Func<string>> mSExcelSaveCurrentWorkbookworkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookhandle = null)
         {
-            var __workflow_mSExcelSaveCurrentWorkbookworkflow = mSExcelSaveCurrentWorkbookworkflow == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookworkflow, nameof(mSExcelSaveCurrentWorkbookworkflow), required: true);
-            var __workflow_mSExcelSaveCurrentWorkbookhandle = mSExcelSaveCurrentWorkbookhandle == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookhandle, nameof(mSExcelSaveCurrentWorkbookhandle), required: false);
+            var __workflow_mSExcelSaveCurrentWorkbookworkflow = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookworkflow, nameof(mSExcelSaveCurrentWorkbookworkflow), required: true);
+            var __workflow_mSExcelSaveCurrentWorkbookhandle = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookhandle, nameof(mSExcelSaveCurrentWorkbookhandle), required: false);
             return new DeferredBodyAction<MSExcelSaveCurrentWorkbookResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SaveCurrentWorkbook";
@@ -3587,16 +3338,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsResponse> MSExcelSaveCurrentWorkbookAs(Expression<Func<string>> mSExcelSaveCurrentWorkbookAsworkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookAshandle = null, Expression<Func<string>> mSExcelSaveCurrentWorkbookAssaveFilename = null, Expression<Func<bool>> mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename = null, Expression<Func<mSExcelSaveCurrentWorkbookAsexcelFileFormatInput>> mSExcelSaveCurrentWorkbookAsexcelFileFormat = null)
         {
-            var __workflow_mSExcelSaveCurrentWorkbookAsworkflow = mSExcelSaveCurrentWorkbookAsworkflow == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAsworkflow, nameof(mSExcelSaveCurrentWorkbookAsworkflow), required: true);
-            var __workflow_mSExcelSaveCurrentWorkbookAshandle = mSExcelSaveCurrentWorkbookAshandle == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAshandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAshandle, nameof(mSExcelSaveCurrentWorkbookAshandle), required: false);
-            var __workflow_mSExcelSaveCurrentWorkbookAssaveFilename = mSExcelSaveCurrentWorkbookAssaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAssaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAssaveFilename, nameof(mSExcelSaveCurrentWorkbookAssaveFilename), required: false);
-            var __workflow_mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename = mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename, nameof(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename), required: false);
-            var __workflow_mSExcelSaveCurrentWorkbookAsexcelFileFormat = mSExcelSaveCurrentWorkbookAsexcelFileFormat == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsexcelFileFormat);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAsexcelFileFormat, nameof(mSExcelSaveCurrentWorkbookAsexcelFileFormat), required: false);
+            var __workflow_mSExcelSaveCurrentWorkbookAsworkflow = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsworkflow, nameof(mSExcelSaveCurrentWorkbookAsworkflow), required: true);
+            var __workflow_mSExcelSaveCurrentWorkbookAshandle = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAshandle, nameof(mSExcelSaveCurrentWorkbookAshandle), required: false);
+            var __workflow_mSExcelSaveCurrentWorkbookAssaveFilename = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAssaveFilename, nameof(mSExcelSaveCurrentWorkbookAssaveFilename), required: false);
+            var __workflow_mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename, nameof(mSExcelSaveCurrentWorkbookAsdeleteExistingSaveFilename), required: false);
+            var __workflow_mSExcelSaveCurrentWorkbookAsexcelFileFormat = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsexcelFileFormat, nameof(mSExcelSaveCurrentWorkbookAsexcelFileFormat), required: false);
             return new DeferredBodyAction<MSExcelSaveCurrentWorkbookAsResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SaveCurrentWorkbookAs";
@@ -3672,14 +3418,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSaveCurrentWorkbookAsCSVResponse> MSExcelSaveCurrentWorkbookAsCSV(Expression<Func<string>> mSExcelSaveCurrentWorkbookAsCSVsaveFilename, Expression<Func<string>> mSExcelSaveCurrentWorkbookAsCSVworkflow, Expression<Func<int>> mSExcelSaveCurrentWorkbookAsCSVhandle = null, Expression<Func<bool>> mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename = null)
         {
-            var __workflow_mSExcelSaveCurrentWorkbookAsCSVsaveFilename = mSExcelSaveCurrentWorkbookAsCSVsaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVsaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAsCSVsaveFilename, nameof(mSExcelSaveCurrentWorkbookAsCSVsaveFilename), required: true);
-            var __workflow_mSExcelSaveCurrentWorkbookAsCSVworkflow = mSExcelSaveCurrentWorkbookAsCSVworkflow == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAsCSVworkflow, nameof(mSExcelSaveCurrentWorkbookAsCSVworkflow), required: true);
-            var __workflow_mSExcelSaveCurrentWorkbookAsCSVhandle = mSExcelSaveCurrentWorkbookAsCSVhandle == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAsCSVhandle, nameof(mSExcelSaveCurrentWorkbookAsCSVhandle), required: false);
-            var __workflow_mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename = mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename == null ? null : WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename);
-            WorkflowExpression.Validate(__workflow_mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename, nameof(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename), required: false);
+            var __workflow_mSExcelSaveCurrentWorkbookAsCSVsaveFilename = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVsaveFilename, nameof(mSExcelSaveCurrentWorkbookAsCSVsaveFilename), required: true);
+            var __workflow_mSExcelSaveCurrentWorkbookAsCSVworkflow = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVworkflow, nameof(mSExcelSaveCurrentWorkbookAsCSVworkflow), required: true);
+            var __workflow_mSExcelSaveCurrentWorkbookAsCSVhandle = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVhandle, nameof(mSExcelSaveCurrentWorkbookAsCSVhandle), required: false);
+            var __workflow_mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename = WorkflowExpression.Compile(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename, nameof(mSExcelSaveCurrentWorkbookAsCSVdeleteExistingSaveFilename), required: false);
             return new DeferredBodyAction<MSExcelSaveCurrentWorkbookAsCSVResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SaveCurrentWorkbookAsCSV";
@@ -3735,12 +3477,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetNamesResponse> MSExcelGetWorksheetNames(Expression<Func<string>> mSExcelGetWorksheetNamesworkflow, Expression<Func<int>> mSExcelGetWorksheetNameshandle = null, Expression<Func<string>> mSExcelGetWorksheetNamesworkbookName = null)
         {
-            var __workflow_mSExcelGetWorksheetNamesworkflow = mSExcelGetWorksheetNamesworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetNamesworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetNamesworkflow, nameof(mSExcelGetWorksheetNamesworkflow), required: true);
-            var __workflow_mSExcelGetWorksheetNameshandle = mSExcelGetWorksheetNameshandle == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetNameshandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetNameshandle, nameof(mSExcelGetWorksheetNameshandle), required: false);
-            var __workflow_mSExcelGetWorksheetNamesworkbookName = mSExcelGetWorksheetNamesworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetNamesworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetNamesworkbookName, nameof(mSExcelGetWorksheetNamesworkbookName), required: false);
+            var __workflow_mSExcelGetWorksheetNamesworkflow = WorkflowExpression.Compile(mSExcelGetWorksheetNamesworkflow, nameof(mSExcelGetWorksheetNamesworkflow), required: true);
+            var __workflow_mSExcelGetWorksheetNameshandle = WorkflowExpression.Compile(mSExcelGetWorksheetNameshandle, nameof(mSExcelGetWorksheetNameshandle), required: false);
+            var __workflow_mSExcelGetWorksheetNamesworkbookName = WorkflowExpression.Compile(mSExcelGetWorksheetNamesworkbookName, nameof(mSExcelGetWorksheetNamesworkbookName), required: false);
             return new DeferredBodyAction<MSExcelGetWorksheetNamesResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetWorksheetNames";
@@ -3784,14 +3523,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetNameResponse> MSExcelGetWorksheetName(Expression<Func<string>> mSExcelGetWorksheetNameworkflow, Expression<Func<int>> mSExcelGetWorksheetNamehandle = null, Expression<Func<string>> mSExcelGetWorksheetNameworkbookName = null, Expression<Func<int>> mSExcelGetWorksheetNameposition = null)
         {
-            var __workflow_mSExcelGetWorksheetNameworkflow = mSExcelGetWorksheetNameworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetNameworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetNameworkflow, nameof(mSExcelGetWorksheetNameworkflow), required: true);
-            var __workflow_mSExcelGetWorksheetNamehandle = mSExcelGetWorksheetNamehandle == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetNamehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetNamehandle, nameof(mSExcelGetWorksheetNamehandle), required: false);
-            var __workflow_mSExcelGetWorksheetNameworkbookName = mSExcelGetWorksheetNameworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetNameworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetNameworkbookName, nameof(mSExcelGetWorksheetNameworkbookName), required: false);
-            var __workflow_mSExcelGetWorksheetNameposition = mSExcelGetWorksheetNameposition == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetNameposition);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetNameposition, nameof(mSExcelGetWorksheetNameposition), required: false);
+            var __workflow_mSExcelGetWorksheetNameworkflow = WorkflowExpression.Compile(mSExcelGetWorksheetNameworkflow, nameof(mSExcelGetWorksheetNameworkflow), required: true);
+            var __workflow_mSExcelGetWorksheetNamehandle = WorkflowExpression.Compile(mSExcelGetWorksheetNamehandle, nameof(mSExcelGetWorksheetNamehandle), required: false);
+            var __workflow_mSExcelGetWorksheetNameworkbookName = WorkflowExpression.Compile(mSExcelGetWorksheetNameworkbookName, nameof(mSExcelGetWorksheetNameworkbookName), required: false);
+            var __workflow_mSExcelGetWorksheetNameposition = WorkflowExpression.Compile(mSExcelGetWorksheetNameposition, nameof(mSExcelGetWorksheetNameposition), required: false);
             return new DeferredBodyAction<MSExcelGetWorksheetNameResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetWorksheetName";
@@ -3841,16 +3576,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelActivateWorksheet(Expression<Func<string>> mSExcelActivateWorksheetworkflow, Expression<Func<int>> mSExcelActivateWorksheethandle = null, Expression<Func<string>> mSExcelActivateWorksheetworkbookName = null, Expression<Func<string>> mSExcelActivateWorksheetworksheetName = null, Expression<Func<bool>> mSExcelActivateWorksheetcreateIfMissing = null)
         {
-            var __workflow_mSExcelActivateWorksheetworkflow = mSExcelActivateWorksheetworkflow == null ? null : WorkflowExpression.Compile(mSExcelActivateWorksheetworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelActivateWorksheetworkflow, nameof(mSExcelActivateWorksheetworkflow), required: true);
-            var __workflow_mSExcelActivateWorksheethandle = mSExcelActivateWorksheethandle == null ? null : WorkflowExpression.Compile(mSExcelActivateWorksheethandle);
-            WorkflowExpression.Validate(__workflow_mSExcelActivateWorksheethandle, nameof(mSExcelActivateWorksheethandle), required: false);
-            var __workflow_mSExcelActivateWorksheetworkbookName = mSExcelActivateWorksheetworkbookName == null ? null : WorkflowExpression.Compile(mSExcelActivateWorksheetworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelActivateWorksheetworkbookName, nameof(mSExcelActivateWorksheetworkbookName), required: false);
-            var __workflow_mSExcelActivateWorksheetworksheetName = mSExcelActivateWorksheetworksheetName == null ? null : WorkflowExpression.Compile(mSExcelActivateWorksheetworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelActivateWorksheetworksheetName, nameof(mSExcelActivateWorksheetworksheetName), required: false);
-            var __workflow_mSExcelActivateWorksheetcreateIfMissing = mSExcelActivateWorksheetcreateIfMissing == null ? null : WorkflowExpression.Compile(mSExcelActivateWorksheetcreateIfMissing);
-            WorkflowExpression.Validate(__workflow_mSExcelActivateWorksheetcreateIfMissing, nameof(mSExcelActivateWorksheetcreateIfMissing), required: false);
+            var __workflow_mSExcelActivateWorksheetworkflow = WorkflowExpression.Compile(mSExcelActivateWorksheetworkflow, nameof(mSExcelActivateWorksheetworkflow), required: true);
+            var __workflow_mSExcelActivateWorksheethandle = WorkflowExpression.Compile(mSExcelActivateWorksheethandle, nameof(mSExcelActivateWorksheethandle), required: false);
+            var __workflow_mSExcelActivateWorksheetworkbookName = WorkflowExpression.Compile(mSExcelActivateWorksheetworkbookName, nameof(mSExcelActivateWorksheetworkbookName), required: false);
+            var __workflow_mSExcelActivateWorksheetworksheetName = WorkflowExpression.Compile(mSExcelActivateWorksheetworksheetName, nameof(mSExcelActivateWorksheetworksheetName), required: false);
+            var __workflow_mSExcelActivateWorksheetcreateIfMissing = WorkflowExpression.Compile(mSExcelActivateWorksheetcreateIfMissing, nameof(mSExcelActivateWorksheetcreateIfMissing), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/ActivateWorksheet";
@@ -3916,14 +3646,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCreateWorksheet(Expression<Func<string>> mSExcelCreateWorksheetworkflow, Expression<Func<int>> mSExcelCreateWorksheethandle = null, Expression<Func<string>> mSExcelCreateWorksheetworkbookName = null, Expression<Func<string>> mSExcelCreateWorksheetworksheetName = null)
         {
-            var __workflow_mSExcelCreateWorksheetworkflow = mSExcelCreateWorksheetworkflow == null ? null : WorkflowExpression.Compile(mSExcelCreateWorksheetworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateWorksheetworkflow, nameof(mSExcelCreateWorksheetworkflow), required: true);
-            var __workflow_mSExcelCreateWorksheethandle = mSExcelCreateWorksheethandle == null ? null : WorkflowExpression.Compile(mSExcelCreateWorksheethandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateWorksheethandle, nameof(mSExcelCreateWorksheethandle), required: false);
-            var __workflow_mSExcelCreateWorksheetworkbookName = mSExcelCreateWorksheetworkbookName == null ? null : WorkflowExpression.Compile(mSExcelCreateWorksheetworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateWorksheetworkbookName, nameof(mSExcelCreateWorksheetworkbookName), required: false);
-            var __workflow_mSExcelCreateWorksheetworksheetName = mSExcelCreateWorksheetworksheetName == null ? null : WorkflowExpression.Compile(mSExcelCreateWorksheetworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCreateWorksheetworksheetName, nameof(mSExcelCreateWorksheetworksheetName), required: false);
+            var __workflow_mSExcelCreateWorksheetworkflow = WorkflowExpression.Compile(mSExcelCreateWorksheetworkflow, nameof(mSExcelCreateWorksheetworkflow), required: true);
+            var __workflow_mSExcelCreateWorksheethandle = WorkflowExpression.Compile(mSExcelCreateWorksheethandle, nameof(mSExcelCreateWorksheethandle), required: false);
+            var __workflow_mSExcelCreateWorksheetworkbookName = WorkflowExpression.Compile(mSExcelCreateWorksheetworkbookName, nameof(mSExcelCreateWorksheetworkbookName), required: false);
+            var __workflow_mSExcelCreateWorksheetworksheetName = WorkflowExpression.Compile(mSExcelCreateWorksheetworksheetName, nameof(mSExcelCreateWorksheetworksheetName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/CreateWorksheet";
@@ -3973,14 +3699,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelDeleteWorksheet(Expression<Func<string>> mSExcelDeleteWorksheetworkflow, Expression<Func<int>> mSExcelDeleteWorksheethandle = null, Expression<Func<string>> mSExcelDeleteWorksheetworkbookName = null, Expression<Func<string>> mSExcelDeleteWorksheetworksheetName = null)
         {
-            var __workflow_mSExcelDeleteWorksheetworkflow = mSExcelDeleteWorksheetworkflow == null ? null : WorkflowExpression.Compile(mSExcelDeleteWorksheetworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteWorksheetworkflow, nameof(mSExcelDeleteWorksheetworkflow), required: true);
-            var __workflow_mSExcelDeleteWorksheethandle = mSExcelDeleteWorksheethandle == null ? null : WorkflowExpression.Compile(mSExcelDeleteWorksheethandle);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteWorksheethandle, nameof(mSExcelDeleteWorksheethandle), required: false);
-            var __workflow_mSExcelDeleteWorksheetworkbookName = mSExcelDeleteWorksheetworkbookName == null ? null : WorkflowExpression.Compile(mSExcelDeleteWorksheetworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteWorksheetworkbookName, nameof(mSExcelDeleteWorksheetworkbookName), required: false);
-            var __workflow_mSExcelDeleteWorksheetworksheetName = mSExcelDeleteWorksheetworksheetName == null ? null : WorkflowExpression.Compile(mSExcelDeleteWorksheetworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteWorksheetworksheetName, nameof(mSExcelDeleteWorksheetworksheetName), required: false);
+            var __workflow_mSExcelDeleteWorksheetworkflow = WorkflowExpression.Compile(mSExcelDeleteWorksheetworkflow, nameof(mSExcelDeleteWorksheetworkflow), required: true);
+            var __workflow_mSExcelDeleteWorksheethandle = WorkflowExpression.Compile(mSExcelDeleteWorksheethandle, nameof(mSExcelDeleteWorksheethandle), required: false);
+            var __workflow_mSExcelDeleteWorksheetworkbookName = WorkflowExpression.Compile(mSExcelDeleteWorksheetworkbookName, nameof(mSExcelDeleteWorksheetworkbookName), required: false);
+            var __workflow_mSExcelDeleteWorksheetworksheetName = WorkflowExpression.Compile(mSExcelDeleteWorksheetworksheetName, nameof(mSExcelDeleteWorksheetworksheetName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/DeleteWorksheet";
@@ -4030,36 +3752,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetAsCollectionEnhancedResponse> MSExcelGetWorksheetAsCollectionEnhanced(Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedworkflow, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedhandle = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedworkbookName = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedworksheetName = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhanceduseHeader = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedstartCell = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader = null, Expression<Func<string>> mSExcelGetWorksheetAsCollectionEnhancedkeyColumn = null, Expression<Func<bool>> mSExcelGetWorksheetAsCollectionEnhancedgetRawData = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn = null, Expression<Func<int>> mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn = null)
         {
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedworkflow = mSExcelGetWorksheetAsCollectionEnhancedworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedworkflow, nameof(mSExcelGetWorksheetAsCollectionEnhancedworkflow), required: true);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedhandle = mSExcelGetWorksheetAsCollectionEnhancedhandle == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedhandle, nameof(mSExcelGetWorksheetAsCollectionEnhancedhandle), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedworkbookName = mSExcelGetWorksheetAsCollectionEnhancedworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedworkbookName, nameof(mSExcelGetWorksheetAsCollectionEnhancedworkbookName), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedworksheetName = mSExcelGetWorksheetAsCollectionEnhancedworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedworksheetName, nameof(mSExcelGetWorksheetAsCollectionEnhancedworksheetName), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhanceduseHeader = mSExcelGetWorksheetAsCollectionEnhanceduseHeader == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhanceduseHeader);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhanceduseHeader, nameof(mSExcelGetWorksheetAsCollectionEnhanceduseHeader), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedstartCell = mSExcelGetWorksheetAsCollectionEnhancedstartCell == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedstartCell);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedstartCell, nameof(mSExcelGetWorksheetAsCollectionEnhancedstartCell), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber = mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows = mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows, nameof(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader = mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader, nameof(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedkeyColumn = mSExcelGetWorksheetAsCollectionEnhancedkeyColumn == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedkeyColumn, nameof(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedgetRawData = mSExcelGetWorksheetAsCollectionEnhancedgetRawData == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedgetRawData);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedgetRawData, nameof(mSExcelGetWorksheetAsCollectionEnhancedgetRawData), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount = mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount, nameof(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows = mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn = mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn, nameof(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn), required: false);
-            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn = mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedworkflow = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedworkflow, nameof(mSExcelGetWorksheetAsCollectionEnhancedworkflow), required: true);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedhandle = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedhandle, nameof(mSExcelGetWorksheetAsCollectionEnhancedhandle), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedworkbookName = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedworkbookName, nameof(mSExcelGetWorksheetAsCollectionEnhancedworkbookName), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedworksheetName = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedworksheetName, nameof(mSExcelGetWorksheetAsCollectionEnhancedworksheetName), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhanceduseHeader = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhanceduseHeader, nameof(mSExcelGetWorksheetAsCollectionEnhanceduseHeader), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedstartCell = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedstartCell, nameof(mSExcelGetWorksheetAsCollectionEnhancedstartCell), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaximumColumnNumber), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows, nameof(mSExcelGetWorksheetAsCollectionEnhancedskipBlankRows), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader, nameof(mSExcelGetWorksheetAsCollectionEnhancedskipColumnsWithNoHeader), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedkeyColumn = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn, nameof(mSExcelGetWorksheetAsCollectionEnhancedkeyColumn), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedgetRawData = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedgetRawData, nameof(mSExcelGetWorksheetAsCollectionEnhancedgetRawData), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount, nameof(mSExcelGetWorksheetAsCollectionEnhancedignoreRowsWithLowCellCount), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaxConcurrentBlankRows), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn, nameof(mSExcelGetWorksheetAsCollectionEnhancedfirstDataRowToReturn), required: false);
+            var __workflow_mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn = WorkflowExpression.Compile(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn, nameof(mSExcelGetWorksheetAsCollectionEnhancedmaxNumberOfDataRowsToReturn), required: false);
             return new DeferredBodyAction<MSExcelGetWorksheetAsCollectionEnhancedResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetWorksheetAsCollectionEnhanced";
@@ -4265,14 +3972,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetNumberOfRowsResponse> MSExcelGetNumberOfRows(Expression<Func<string>> mSExcelGetNumberOfRowsworkflow, Expression<Func<int>> mSExcelGetNumberOfRowshandle = null, Expression<Func<string>> mSExcelGetNumberOfRowsworkbookName = null, Expression<Func<string>> mSExcelGetNumberOfRowsworksheetName = null)
         {
-            var __workflow_mSExcelGetNumberOfRowsworkflow = mSExcelGetNumberOfRowsworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetNumberOfRowsworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetNumberOfRowsworkflow, nameof(mSExcelGetNumberOfRowsworkflow), required: true);
-            var __workflow_mSExcelGetNumberOfRowshandle = mSExcelGetNumberOfRowshandle == null ? null : WorkflowExpression.Compile(mSExcelGetNumberOfRowshandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetNumberOfRowshandle, nameof(mSExcelGetNumberOfRowshandle), required: false);
-            var __workflow_mSExcelGetNumberOfRowsworkbookName = mSExcelGetNumberOfRowsworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetNumberOfRowsworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetNumberOfRowsworkbookName, nameof(mSExcelGetNumberOfRowsworkbookName), required: false);
-            var __workflow_mSExcelGetNumberOfRowsworksheetName = mSExcelGetNumberOfRowsworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetNumberOfRowsworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetNumberOfRowsworksheetName, nameof(mSExcelGetNumberOfRowsworksheetName), required: false);
+            var __workflow_mSExcelGetNumberOfRowsworkflow = WorkflowExpression.Compile(mSExcelGetNumberOfRowsworkflow, nameof(mSExcelGetNumberOfRowsworkflow), required: true);
+            var __workflow_mSExcelGetNumberOfRowshandle = WorkflowExpression.Compile(mSExcelGetNumberOfRowshandle, nameof(mSExcelGetNumberOfRowshandle), required: false);
+            var __workflow_mSExcelGetNumberOfRowsworkbookName = WorkflowExpression.Compile(mSExcelGetNumberOfRowsworkbookName, nameof(mSExcelGetNumberOfRowsworkbookName), required: false);
+            var __workflow_mSExcelGetNumberOfRowsworksheetName = WorkflowExpression.Compile(mSExcelGetNumberOfRowsworksheetName, nameof(mSExcelGetNumberOfRowsworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetNumberOfRowsResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetNumberOfRows";
@@ -4322,12 +4025,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelEvaluateExpressionResponse> MSExcelEvaluateExpression(Expression<Func<string>> mSExcelEvaluateExpressionexpression, Expression<Func<string>> mSExcelEvaluateExpressionworkflow, Expression<Func<int>> mSExcelEvaluateExpressionhandle = null)
         {
-            var __workflow_mSExcelEvaluateExpressionexpression = mSExcelEvaluateExpressionexpression == null ? null : WorkflowExpression.Compile(mSExcelEvaluateExpressionexpression);
-            WorkflowExpression.Validate(__workflow_mSExcelEvaluateExpressionexpression, nameof(mSExcelEvaluateExpressionexpression), required: true);
-            var __workflow_mSExcelEvaluateExpressionworkflow = mSExcelEvaluateExpressionworkflow == null ? null : WorkflowExpression.Compile(mSExcelEvaluateExpressionworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelEvaluateExpressionworkflow, nameof(mSExcelEvaluateExpressionworkflow), required: true);
-            var __workflow_mSExcelEvaluateExpressionhandle = mSExcelEvaluateExpressionhandle == null ? null : WorkflowExpression.Compile(mSExcelEvaluateExpressionhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelEvaluateExpressionhandle, nameof(mSExcelEvaluateExpressionhandle), required: false);
+            var __workflow_mSExcelEvaluateExpressionexpression = WorkflowExpression.Compile(mSExcelEvaluateExpressionexpression, nameof(mSExcelEvaluateExpressionexpression), required: true);
+            var __workflow_mSExcelEvaluateExpressionworkflow = WorkflowExpression.Compile(mSExcelEvaluateExpressionworkflow, nameof(mSExcelEvaluateExpressionworkflow), required: true);
+            var __workflow_mSExcelEvaluateExpressionhandle = WorkflowExpression.Compile(mSExcelEvaluateExpressionhandle, nameof(mSExcelEvaluateExpressionhandle), required: false);
             return new DeferredBodyAction<MSExcelEvaluateExpressionResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/EvaluateExpression";
@@ -4367,14 +4067,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetUsedRangeResponse> MSExcelGetWorksheetUsedRange(Expression<Func<string>> mSExcelGetWorksheetUsedRangeworkflow, Expression<Func<int>> mSExcelGetWorksheetUsedRangehandle = null, Expression<Func<string>> mSExcelGetWorksheetUsedRangeworkbookName = null, Expression<Func<string>> mSExcelGetWorksheetUsedRangeworksheetName = null)
         {
-            var __workflow_mSExcelGetWorksheetUsedRangeworkflow = mSExcelGetWorksheetUsedRangeworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangeworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetUsedRangeworkflow, nameof(mSExcelGetWorksheetUsedRangeworkflow), required: true);
-            var __workflow_mSExcelGetWorksheetUsedRangehandle = mSExcelGetWorksheetUsedRangehandle == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetUsedRangehandle, nameof(mSExcelGetWorksheetUsedRangehandle), required: false);
-            var __workflow_mSExcelGetWorksheetUsedRangeworkbookName = mSExcelGetWorksheetUsedRangeworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangeworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetUsedRangeworkbookName, nameof(mSExcelGetWorksheetUsedRangeworkbookName), required: false);
-            var __workflow_mSExcelGetWorksheetUsedRangeworksheetName = mSExcelGetWorksheetUsedRangeworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangeworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetUsedRangeworksheetName, nameof(mSExcelGetWorksheetUsedRangeworksheetName), required: false);
+            var __workflow_mSExcelGetWorksheetUsedRangeworkflow = WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangeworkflow, nameof(mSExcelGetWorksheetUsedRangeworkflow), required: true);
+            var __workflow_mSExcelGetWorksheetUsedRangehandle = WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangehandle, nameof(mSExcelGetWorksheetUsedRangehandle), required: false);
+            var __workflow_mSExcelGetWorksheetUsedRangeworkbookName = WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangeworkbookName, nameof(mSExcelGetWorksheetUsedRangeworkbookName), required: false);
+            var __workflow_mSExcelGetWorksheetUsedRangeworksheetName = WorkflowExpression.Compile(mSExcelGetWorksheetUsedRangeworksheetName, nameof(mSExcelGetWorksheetUsedRangeworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetWorksheetUsedRangeResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetWorksheetUsedRange";
@@ -4424,10 +4120,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCountrySettingResponse> MSExcelGetCountrySetting(Expression<Func<string>> mSExcelGetCountrySettingworkflow, Expression<Func<int>> mSExcelGetCountrySettinghandle = null)
         {
-            var __workflow_mSExcelGetCountrySettingworkflow = mSExcelGetCountrySettingworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetCountrySettingworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCountrySettingworkflow, nameof(mSExcelGetCountrySettingworkflow), required: true);
-            var __workflow_mSExcelGetCountrySettinghandle = mSExcelGetCountrySettinghandle == null ? null : WorkflowExpression.Compile(mSExcelGetCountrySettinghandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCountrySettinghandle, nameof(mSExcelGetCountrySettinghandle), required: false);
+            var __workflow_mSExcelGetCountrySettingworkflow = WorkflowExpression.Compile(mSExcelGetCountrySettingworkflow, nameof(mSExcelGetCountrySettingworkflow), required: true);
+            var __workflow_mSExcelGetCountrySettinghandle = WorkflowExpression.Compile(mSExcelGetCountrySettinghandle, nameof(mSExcelGetCountrySettinghandle), required: false);
             return new DeferredBodyAction<MSExcelGetCountrySettingResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetCountrySetting";
@@ -4465,20 +4159,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelWriteCollection(Expression<Func<string>> mSExcelWriteCollectioncellReference, Expression<Func<string>> mSExcelWriteCollectioncollectionToWriteJSON, Expression<Func<string>> mSExcelWriteCollectionworkflow, Expression<Func<int>> mSExcelWriteCollectionhandle = null, Expression<Func<string>> mSExcelWriteCollectionworkbookName = null, Expression<Func<string>> mSExcelWriteCollectionworksheetName = null, Expression<Func<bool>> mSExcelWriteCollectionincludeColumnNames = null)
         {
-            var __workflow_mSExcelWriteCollectioncellReference = mSExcelWriteCollectioncellReference == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectioncellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectioncellReference, nameof(mSExcelWriteCollectioncellReference), required: true);
-            var __workflow_mSExcelWriteCollectioncollectionToWriteJSON = mSExcelWriteCollectioncollectionToWriteJSON == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectioncollectionToWriteJSON);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectioncollectionToWriteJSON, nameof(mSExcelWriteCollectioncollectionToWriteJSON), required: true);
-            var __workflow_mSExcelWriteCollectionworkflow = mSExcelWriteCollectionworkflow == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionworkflow, nameof(mSExcelWriteCollectionworkflow), required: true);
-            var __workflow_mSExcelWriteCollectionhandle = mSExcelWriteCollectionhandle == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionhandle, nameof(mSExcelWriteCollectionhandle), required: false);
-            var __workflow_mSExcelWriteCollectionworkbookName = mSExcelWriteCollectionworkbookName == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionworkbookName, nameof(mSExcelWriteCollectionworkbookName), required: false);
-            var __workflow_mSExcelWriteCollectionworksheetName = mSExcelWriteCollectionworksheetName == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionworksheetName, nameof(mSExcelWriteCollectionworksheetName), required: false);
-            var __workflow_mSExcelWriteCollectionincludeColumnNames = mSExcelWriteCollectionincludeColumnNames == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionincludeColumnNames);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionincludeColumnNames, nameof(mSExcelWriteCollectionincludeColumnNames), required: false);
+            var __workflow_mSExcelWriteCollectioncellReference = WorkflowExpression.Compile(mSExcelWriteCollectioncellReference, nameof(mSExcelWriteCollectioncellReference), required: true);
+            var __workflow_mSExcelWriteCollectioncollectionToWriteJSON = WorkflowExpression.Compile(mSExcelWriteCollectioncollectionToWriteJSON, nameof(mSExcelWriteCollectioncollectionToWriteJSON), required: true);
+            var __workflow_mSExcelWriteCollectionworkflow = WorkflowExpression.Compile(mSExcelWriteCollectionworkflow, nameof(mSExcelWriteCollectionworkflow), required: true);
+            var __workflow_mSExcelWriteCollectionhandle = WorkflowExpression.Compile(mSExcelWriteCollectionhandle, nameof(mSExcelWriteCollectionhandle), required: false);
+            var __workflow_mSExcelWriteCollectionworkbookName = WorkflowExpression.Compile(mSExcelWriteCollectionworkbookName, nameof(mSExcelWriteCollectionworkbookName), required: false);
+            var __workflow_mSExcelWriteCollectionworksheetName = WorkflowExpression.Compile(mSExcelWriteCollectionworksheetName, nameof(mSExcelWriteCollectionworksheetName), required: false);
+            var __workflow_mSExcelWriteCollectionincludeColumnNames = WorkflowExpression.Compile(mSExcelWriteCollectionincludeColumnNames, nameof(mSExcelWriteCollectionincludeColumnNames), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/WriteCollection";
@@ -4548,24 +4235,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelWriteCollectionWithDates(Expression<Func<string>> mSExcelWriteCollectionWithDatescellReference, Expression<Func<string>> mSExcelWriteCollectionWithDatescollectionToWriteJSON, Expression<Func<string>> mSExcelWriteCollectionWithDatesworkflow, Expression<Func<int>> mSExcelWriteCollectionWithDateshandle = null, Expression<Func<string>> mSExcelWriteCollectionWithDatesworkbookName = null, Expression<Func<string>> mSExcelWriteCollectionWithDatesworksheetName = null, Expression<Func<bool>> mSExcelWriteCollectionWithDatesincludeColumnNames = null, Expression<Func<bool>> mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate = null, Expression<Func<string>> mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON = null)
         {
-            var __workflow_mSExcelWriteCollectionWithDatescellReference = mSExcelWriteCollectionWithDatescellReference == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatescellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatescellReference, nameof(mSExcelWriteCollectionWithDatescellReference), required: true);
-            var __workflow_mSExcelWriteCollectionWithDatescollectionToWriteJSON = mSExcelWriteCollectionWithDatescollectionToWriteJSON == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatescollectionToWriteJSON);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatescollectionToWriteJSON, nameof(mSExcelWriteCollectionWithDatescollectionToWriteJSON), required: true);
-            var __workflow_mSExcelWriteCollectionWithDatesworkflow = mSExcelWriteCollectionWithDatesworkflow == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatesworkflow, nameof(mSExcelWriteCollectionWithDatesworkflow), required: true);
-            var __workflow_mSExcelWriteCollectionWithDateshandle = mSExcelWriteCollectionWithDateshandle == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDateshandle);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDateshandle, nameof(mSExcelWriteCollectionWithDateshandle), required: false);
-            var __workflow_mSExcelWriteCollectionWithDatesworkbookName = mSExcelWriteCollectionWithDatesworkbookName == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatesworkbookName, nameof(mSExcelWriteCollectionWithDatesworkbookName), required: false);
-            var __workflow_mSExcelWriteCollectionWithDatesworksheetName = mSExcelWriteCollectionWithDatesworksheetName == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatesworksheetName, nameof(mSExcelWriteCollectionWithDatesworksheetName), required: false);
-            var __workflow_mSExcelWriteCollectionWithDatesincludeColumnNames = mSExcelWriteCollectionWithDatesincludeColumnNames == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesincludeColumnNames);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatesincludeColumnNames, nameof(mSExcelWriteCollectionWithDatesincludeColumnNames), required: false);
-            var __workflow_mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate = mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate, nameof(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate), required: false);
-            var __workflow_mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON = mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON == null ? null : WorkflowExpression.Compile(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON, nameof(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON), required: false);
+            var __workflow_mSExcelWriteCollectionWithDatescellReference = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatescellReference, nameof(mSExcelWriteCollectionWithDatescellReference), required: true);
+            var __workflow_mSExcelWriteCollectionWithDatescollectionToWriteJSON = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatescollectionToWriteJSON, nameof(mSExcelWriteCollectionWithDatescollectionToWriteJSON), required: true);
+            var __workflow_mSExcelWriteCollectionWithDatesworkflow = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesworkflow, nameof(mSExcelWriteCollectionWithDatesworkflow), required: true);
+            var __workflow_mSExcelWriteCollectionWithDateshandle = WorkflowExpression.Compile(mSExcelWriteCollectionWithDateshandle, nameof(mSExcelWriteCollectionWithDateshandle), required: false);
+            var __workflow_mSExcelWriteCollectionWithDatesworkbookName = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesworkbookName, nameof(mSExcelWriteCollectionWithDatesworkbookName), required: false);
+            var __workflow_mSExcelWriteCollectionWithDatesworksheetName = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesworksheetName, nameof(mSExcelWriteCollectionWithDatesworksheetName), required: false);
+            var __workflow_mSExcelWriteCollectionWithDatesincludeColumnNames = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatesincludeColumnNames, nameof(mSExcelWriteCollectionWithDatesincludeColumnNames), required: false);
+            var __workflow_mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate, nameof(mSExcelWriteCollectionWithDatestryToConvertAllFieldsToDate), required: false);
+            var __workflow_mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON = WorkflowExpression.Compile(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON, nameof(mSExcelWriteCollectionWithDatescolumnsToConvertToDateJSON), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/WriteCollectionWithDates";
@@ -4657,10 +4335,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetActiveCellResponse> MSExcelGetActiveCell(Expression<Func<string>> mSExcelGetActiveCellworkflow, Expression<Func<int>> mSExcelGetActiveCellhandle = null)
         {
-            var __workflow_mSExcelGetActiveCellworkflow = mSExcelGetActiveCellworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetActiveCellworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetActiveCellworkflow, nameof(mSExcelGetActiveCellworkflow), required: true);
-            var __workflow_mSExcelGetActiveCellhandle = mSExcelGetActiveCellhandle == null ? null : WorkflowExpression.Compile(mSExcelGetActiveCellhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetActiveCellhandle, nameof(mSExcelGetActiveCellhandle), required: false);
+            var __workflow_mSExcelGetActiveCellworkflow = WorkflowExpression.Compile(mSExcelGetActiveCellworkflow, nameof(mSExcelGetActiveCellworkflow), required: true);
+            var __workflow_mSExcelGetActiveCellhandle = WorkflowExpression.Compile(mSExcelGetActiveCellhandle, nameof(mSExcelGetActiveCellhandle), required: false);
             return new DeferredBodyAction<MSExcelGetActiveCellResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetActiveCell";
@@ -4698,18 +4374,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelFormatCell(Expression<Func<string>> mSExcelFormatCellcellReference, Expression<Func<string>> mSExcelFormatCellcellFormat, Expression<Func<string>> mSExcelFormatCellworkflow, Expression<Func<int>> mSExcelFormatCellhandle = null, Expression<Func<string>> mSExcelFormatCellworkbookName = null, Expression<Func<string>> mSExcelFormatCellworksheetName = null)
         {
-            var __workflow_mSExcelFormatCellcellReference = mSExcelFormatCellcellReference == null ? null : WorkflowExpression.Compile(mSExcelFormatCellcellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCellcellReference, nameof(mSExcelFormatCellcellReference), required: true);
-            var __workflow_mSExcelFormatCellcellFormat = mSExcelFormatCellcellFormat == null ? null : WorkflowExpression.Compile(mSExcelFormatCellcellFormat);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCellcellFormat, nameof(mSExcelFormatCellcellFormat), required: true);
-            var __workflow_mSExcelFormatCellworkflow = mSExcelFormatCellworkflow == null ? null : WorkflowExpression.Compile(mSExcelFormatCellworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCellworkflow, nameof(mSExcelFormatCellworkflow), required: true);
-            var __workflow_mSExcelFormatCellhandle = mSExcelFormatCellhandle == null ? null : WorkflowExpression.Compile(mSExcelFormatCellhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCellhandle, nameof(mSExcelFormatCellhandle), required: false);
-            var __workflow_mSExcelFormatCellworkbookName = mSExcelFormatCellworkbookName == null ? null : WorkflowExpression.Compile(mSExcelFormatCellworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCellworkbookName, nameof(mSExcelFormatCellworkbookName), required: false);
-            var __workflow_mSExcelFormatCellworksheetName = mSExcelFormatCellworksheetName == null ? null : WorkflowExpression.Compile(mSExcelFormatCellworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCellworksheetName, nameof(mSExcelFormatCellworksheetName), required: false);
+            var __workflow_mSExcelFormatCellcellReference = WorkflowExpression.Compile(mSExcelFormatCellcellReference, nameof(mSExcelFormatCellcellReference), required: true);
+            var __workflow_mSExcelFormatCellcellFormat = WorkflowExpression.Compile(mSExcelFormatCellcellFormat, nameof(mSExcelFormatCellcellFormat), required: true);
+            var __workflow_mSExcelFormatCellworkflow = WorkflowExpression.Compile(mSExcelFormatCellworkflow, nameof(mSExcelFormatCellworkflow), required: true);
+            var __workflow_mSExcelFormatCellhandle = WorkflowExpression.Compile(mSExcelFormatCellhandle, nameof(mSExcelFormatCellhandle), required: false);
+            var __workflow_mSExcelFormatCellworkbookName = WorkflowExpression.Compile(mSExcelFormatCellworkbookName, nameof(mSExcelFormatCellworkbookName), required: false);
+            var __workflow_mSExcelFormatCellworksheetName = WorkflowExpression.Compile(mSExcelFormatCellworksheetName, nameof(mSExcelFormatCellworksheetName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/FormatCell";
@@ -4763,12 +4433,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelFormatCurrentCell(Expression<Func<string>> mSExcelFormatCurrentCellcellFormat, Expression<Func<string>> mSExcelFormatCurrentCellworkflow, Expression<Func<int>> mSExcelFormatCurrentCellhandle = null)
         {
-            var __workflow_mSExcelFormatCurrentCellcellFormat = mSExcelFormatCurrentCellcellFormat == null ? null : WorkflowExpression.Compile(mSExcelFormatCurrentCellcellFormat);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCurrentCellcellFormat, nameof(mSExcelFormatCurrentCellcellFormat), required: true);
-            var __workflow_mSExcelFormatCurrentCellworkflow = mSExcelFormatCurrentCellworkflow == null ? null : WorkflowExpression.Compile(mSExcelFormatCurrentCellworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCurrentCellworkflow, nameof(mSExcelFormatCurrentCellworkflow), required: true);
-            var __workflow_mSExcelFormatCurrentCellhandle = mSExcelFormatCurrentCellhandle == null ? null : WorkflowExpression.Compile(mSExcelFormatCurrentCellhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelFormatCurrentCellhandle, nameof(mSExcelFormatCurrentCellhandle), required: false);
+            var __workflow_mSExcelFormatCurrentCellcellFormat = WorkflowExpression.Compile(mSExcelFormatCurrentCellcellFormat, nameof(mSExcelFormatCurrentCellcellFormat), required: true);
+            var __workflow_mSExcelFormatCurrentCellworkflow = WorkflowExpression.Compile(mSExcelFormatCurrentCellworkflow, nameof(mSExcelFormatCurrentCellworkflow), required: true);
+            var __workflow_mSExcelFormatCurrentCellhandle = WorkflowExpression.Compile(mSExcelFormatCurrentCellhandle, nameof(mSExcelFormatCurrentCellhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/FormatCurrentCell";
@@ -4808,20 +4475,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelSelectCellRange(Expression<Func<string>> mSExcelSelectCellRangecellReference, Expression<Func<string>> mSExcelSelectCellRangeworkflow, Expression<Func<int>> mSExcelSelectCellRangehandle = null, Expression<Func<string>> mSExcelSelectCellRangeworkbookName = null, Expression<Func<string>> mSExcelSelectCellRangeworksheetName = null, Expression<Func<bool>> mSExcelSelectCellRangeentireRow = null, Expression<Func<bool>> mSExcelSelectCellRangeentireColumn = null)
         {
-            var __workflow_mSExcelSelectCellRangecellReference = mSExcelSelectCellRangecellReference == null ? null : WorkflowExpression.Compile(mSExcelSelectCellRangecellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelSelectCellRangecellReference, nameof(mSExcelSelectCellRangecellReference), required: true);
-            var __workflow_mSExcelSelectCellRangeworkflow = mSExcelSelectCellRangeworkflow == null ? null : WorkflowExpression.Compile(mSExcelSelectCellRangeworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSelectCellRangeworkflow, nameof(mSExcelSelectCellRangeworkflow), required: true);
-            var __workflow_mSExcelSelectCellRangehandle = mSExcelSelectCellRangehandle == null ? null : WorkflowExpression.Compile(mSExcelSelectCellRangehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSelectCellRangehandle, nameof(mSExcelSelectCellRangehandle), required: false);
-            var __workflow_mSExcelSelectCellRangeworkbookName = mSExcelSelectCellRangeworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSelectCellRangeworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSelectCellRangeworkbookName, nameof(mSExcelSelectCellRangeworkbookName), required: false);
-            var __workflow_mSExcelSelectCellRangeworksheetName = mSExcelSelectCellRangeworksheetName == null ? null : WorkflowExpression.Compile(mSExcelSelectCellRangeworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelSelectCellRangeworksheetName, nameof(mSExcelSelectCellRangeworksheetName), required: false);
-            var __workflow_mSExcelSelectCellRangeentireRow = mSExcelSelectCellRangeentireRow == null ? null : WorkflowExpression.Compile(mSExcelSelectCellRangeentireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelSelectCellRangeentireRow, nameof(mSExcelSelectCellRangeentireRow), required: false);
-            var __workflow_mSExcelSelectCellRangeentireColumn = mSExcelSelectCellRangeentireColumn == null ? null : WorkflowExpression.Compile(mSExcelSelectCellRangeentireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelSelectCellRangeentireColumn, nameof(mSExcelSelectCellRangeentireColumn), required: false);
+            var __workflow_mSExcelSelectCellRangecellReference = WorkflowExpression.Compile(mSExcelSelectCellRangecellReference, nameof(mSExcelSelectCellRangecellReference), required: true);
+            var __workflow_mSExcelSelectCellRangeworkflow = WorkflowExpression.Compile(mSExcelSelectCellRangeworkflow, nameof(mSExcelSelectCellRangeworkflow), required: true);
+            var __workflow_mSExcelSelectCellRangehandle = WorkflowExpression.Compile(mSExcelSelectCellRangehandle, nameof(mSExcelSelectCellRangehandle), required: false);
+            var __workflow_mSExcelSelectCellRangeworkbookName = WorkflowExpression.Compile(mSExcelSelectCellRangeworkbookName, nameof(mSExcelSelectCellRangeworkbookName), required: false);
+            var __workflow_mSExcelSelectCellRangeworksheetName = WorkflowExpression.Compile(mSExcelSelectCellRangeworksheetName, nameof(mSExcelSelectCellRangeworksheetName), required: false);
+            var __workflow_mSExcelSelectCellRangeentireRow = WorkflowExpression.Compile(mSExcelSelectCellRangeentireRow, nameof(mSExcelSelectCellRangeentireRow), required: false);
+            var __workflow_mSExcelSelectCellRangeentireColumn = WorkflowExpression.Compile(mSExcelSelectCellRangeentireColumn, nameof(mSExcelSelectCellRangeentireColumn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/SelectCellRange";
@@ -4905,20 +4565,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCopySelection(Expression<Func<string>> mSExcelCopySelectionworkflow, Expression<Func<int>> mSExcelCopySelectionhandle = null, Expression<Func<string>> mSExcelCopySelectionworkbookName = null, Expression<Func<string>> mSExcelCopySelectionworksheetName = null, Expression<Func<string>> mSExcelCopySelectioncellReference = null, Expression<Func<bool>> mSExcelCopySelectionentireRow = null, Expression<Func<bool>> mSExcelCopySelectionentireColumn = null)
         {
-            var __workflow_mSExcelCopySelectionworkflow = mSExcelCopySelectionworkflow == null ? null : WorkflowExpression.Compile(mSExcelCopySelectionworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCopySelectionworkflow, nameof(mSExcelCopySelectionworkflow), required: true);
-            var __workflow_mSExcelCopySelectionhandle = mSExcelCopySelectionhandle == null ? null : WorkflowExpression.Compile(mSExcelCopySelectionhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCopySelectionhandle, nameof(mSExcelCopySelectionhandle), required: false);
-            var __workflow_mSExcelCopySelectionworkbookName = mSExcelCopySelectionworkbookName == null ? null : WorkflowExpression.Compile(mSExcelCopySelectionworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCopySelectionworkbookName, nameof(mSExcelCopySelectionworkbookName), required: false);
-            var __workflow_mSExcelCopySelectionworksheetName = mSExcelCopySelectionworksheetName == null ? null : WorkflowExpression.Compile(mSExcelCopySelectionworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCopySelectionworksheetName, nameof(mSExcelCopySelectionworksheetName), required: false);
-            var __workflow_mSExcelCopySelectioncellReference = mSExcelCopySelectioncellReference == null ? null : WorkflowExpression.Compile(mSExcelCopySelectioncellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelCopySelectioncellReference, nameof(mSExcelCopySelectioncellReference), required: false);
-            var __workflow_mSExcelCopySelectionentireRow = mSExcelCopySelectionentireRow == null ? null : WorkflowExpression.Compile(mSExcelCopySelectionentireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelCopySelectionentireRow, nameof(mSExcelCopySelectionentireRow), required: false);
-            var __workflow_mSExcelCopySelectionentireColumn = mSExcelCopySelectionentireColumn == null ? null : WorkflowExpression.Compile(mSExcelCopySelectionentireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelCopySelectionentireColumn, nameof(mSExcelCopySelectionentireColumn), required: false);
+            var __workflow_mSExcelCopySelectionworkflow = WorkflowExpression.Compile(mSExcelCopySelectionworkflow, nameof(mSExcelCopySelectionworkflow), required: true);
+            var __workflow_mSExcelCopySelectionhandle = WorkflowExpression.Compile(mSExcelCopySelectionhandle, nameof(mSExcelCopySelectionhandle), required: false);
+            var __workflow_mSExcelCopySelectionworkbookName = WorkflowExpression.Compile(mSExcelCopySelectionworkbookName, nameof(mSExcelCopySelectionworkbookName), required: false);
+            var __workflow_mSExcelCopySelectionworksheetName = WorkflowExpression.Compile(mSExcelCopySelectionworksheetName, nameof(mSExcelCopySelectionworksheetName), required: false);
+            var __workflow_mSExcelCopySelectioncellReference = WorkflowExpression.Compile(mSExcelCopySelectioncellReference, nameof(mSExcelCopySelectioncellReference), required: false);
+            var __workflow_mSExcelCopySelectionentireRow = WorkflowExpression.Compile(mSExcelCopySelectionentireRow, nameof(mSExcelCopySelectionentireRow), required: false);
+            var __workflow_mSExcelCopySelectionentireColumn = WorkflowExpression.Compile(mSExcelCopySelectionentireColumn, nameof(mSExcelCopySelectionentireColumn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/CopySelection";
@@ -5006,20 +4659,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelCutSelection(Expression<Func<string>> mSExcelCutSelectionworkflow, Expression<Func<int>> mSExcelCutSelectionhandle = null, Expression<Func<string>> mSExcelCutSelectionworkbookName = null, Expression<Func<string>> mSExcelCutSelectionworksheetName = null, Expression<Func<string>> mSExcelCutSelectioncellReference = null, Expression<Func<bool>> mSExcelCutSelectionentireRow = null, Expression<Func<bool>> mSExcelCutSelectionentireColumn = null)
         {
-            var __workflow_mSExcelCutSelectionworkflow = mSExcelCutSelectionworkflow == null ? null : WorkflowExpression.Compile(mSExcelCutSelectionworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCutSelectionworkflow, nameof(mSExcelCutSelectionworkflow), required: true);
-            var __workflow_mSExcelCutSelectionhandle = mSExcelCutSelectionhandle == null ? null : WorkflowExpression.Compile(mSExcelCutSelectionhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCutSelectionhandle, nameof(mSExcelCutSelectionhandle), required: false);
-            var __workflow_mSExcelCutSelectionworkbookName = mSExcelCutSelectionworkbookName == null ? null : WorkflowExpression.Compile(mSExcelCutSelectionworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCutSelectionworkbookName, nameof(mSExcelCutSelectionworkbookName), required: false);
-            var __workflow_mSExcelCutSelectionworksheetName = mSExcelCutSelectionworksheetName == null ? null : WorkflowExpression.Compile(mSExcelCutSelectionworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCutSelectionworksheetName, nameof(mSExcelCutSelectionworksheetName), required: false);
-            var __workflow_mSExcelCutSelectioncellReference = mSExcelCutSelectioncellReference == null ? null : WorkflowExpression.Compile(mSExcelCutSelectioncellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelCutSelectioncellReference, nameof(mSExcelCutSelectioncellReference), required: false);
-            var __workflow_mSExcelCutSelectionentireRow = mSExcelCutSelectionentireRow == null ? null : WorkflowExpression.Compile(mSExcelCutSelectionentireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelCutSelectionentireRow, nameof(mSExcelCutSelectionentireRow), required: false);
-            var __workflow_mSExcelCutSelectionentireColumn = mSExcelCutSelectionentireColumn == null ? null : WorkflowExpression.Compile(mSExcelCutSelectionentireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelCutSelectionentireColumn, nameof(mSExcelCutSelectionentireColumn), required: false);
+            var __workflow_mSExcelCutSelectionworkflow = WorkflowExpression.Compile(mSExcelCutSelectionworkflow, nameof(mSExcelCutSelectionworkflow), required: true);
+            var __workflow_mSExcelCutSelectionhandle = WorkflowExpression.Compile(mSExcelCutSelectionhandle, nameof(mSExcelCutSelectionhandle), required: false);
+            var __workflow_mSExcelCutSelectionworkbookName = WorkflowExpression.Compile(mSExcelCutSelectionworkbookName, nameof(mSExcelCutSelectionworkbookName), required: false);
+            var __workflow_mSExcelCutSelectionworksheetName = WorkflowExpression.Compile(mSExcelCutSelectionworksheetName, nameof(mSExcelCutSelectionworksheetName), required: false);
+            var __workflow_mSExcelCutSelectioncellReference = WorkflowExpression.Compile(mSExcelCutSelectioncellReference, nameof(mSExcelCutSelectioncellReference), required: false);
+            var __workflow_mSExcelCutSelectionentireRow = WorkflowExpression.Compile(mSExcelCutSelectionentireRow, nameof(mSExcelCutSelectionentireRow), required: false);
+            var __workflow_mSExcelCutSelectionentireColumn = WorkflowExpression.Compile(mSExcelCutSelectionentireColumn, nameof(mSExcelCutSelectionentireColumn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/CutSelection";
@@ -5107,24 +4753,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelPasteIntoSelection(Expression<Func<string>> mSExcelPasteIntoSelectionworkflow, Expression<Func<int>> mSExcelPasteIntoSelectionhandle = null, Expression<Func<string>> mSExcelPasteIntoSelectionworkbookName = null, Expression<Func<string>> mSExcelPasteIntoSelectionworksheetName = null, Expression<Func<bool>> mSExcelPasteIntoSelectionvaluesOnly = null, Expression<Func<bool>> mSExcelPasteIntoSelectionsimplePasteOnly = null, Expression<Func<string>> mSExcelPasteIntoSelectioncellReference = null, Expression<Func<bool>> mSExcelPasteIntoSelectionentireRow = null, Expression<Func<bool>> mSExcelPasteIntoSelectionentireColumn = null)
         {
-            var __workflow_mSExcelPasteIntoSelectionworkflow = mSExcelPasteIntoSelectionworkflow == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionworkflow, nameof(mSExcelPasteIntoSelectionworkflow), required: true);
-            var __workflow_mSExcelPasteIntoSelectionhandle = mSExcelPasteIntoSelectionhandle == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionhandle, nameof(mSExcelPasteIntoSelectionhandle), required: false);
-            var __workflow_mSExcelPasteIntoSelectionworkbookName = mSExcelPasteIntoSelectionworkbookName == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionworkbookName, nameof(mSExcelPasteIntoSelectionworkbookName), required: false);
-            var __workflow_mSExcelPasteIntoSelectionworksheetName = mSExcelPasteIntoSelectionworksheetName == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionworksheetName, nameof(mSExcelPasteIntoSelectionworksheetName), required: false);
-            var __workflow_mSExcelPasteIntoSelectionvaluesOnly = mSExcelPasteIntoSelectionvaluesOnly == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionvaluesOnly);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionvaluesOnly, nameof(mSExcelPasteIntoSelectionvaluesOnly), required: false);
-            var __workflow_mSExcelPasteIntoSelectionsimplePasteOnly = mSExcelPasteIntoSelectionsimplePasteOnly == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionsimplePasteOnly);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionsimplePasteOnly, nameof(mSExcelPasteIntoSelectionsimplePasteOnly), required: false);
-            var __workflow_mSExcelPasteIntoSelectioncellReference = mSExcelPasteIntoSelectioncellReference == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectioncellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectioncellReference, nameof(mSExcelPasteIntoSelectioncellReference), required: false);
-            var __workflow_mSExcelPasteIntoSelectionentireRow = mSExcelPasteIntoSelectionentireRow == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionentireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionentireRow, nameof(mSExcelPasteIntoSelectionentireRow), required: false);
-            var __workflow_mSExcelPasteIntoSelectionentireColumn = mSExcelPasteIntoSelectionentireColumn == null ? null : WorkflowExpression.Compile(mSExcelPasteIntoSelectionentireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelPasteIntoSelectionentireColumn, nameof(mSExcelPasteIntoSelectionentireColumn), required: false);
+            var __workflow_mSExcelPasteIntoSelectionworkflow = WorkflowExpression.Compile(mSExcelPasteIntoSelectionworkflow, nameof(mSExcelPasteIntoSelectionworkflow), required: true);
+            var __workflow_mSExcelPasteIntoSelectionhandle = WorkflowExpression.Compile(mSExcelPasteIntoSelectionhandle, nameof(mSExcelPasteIntoSelectionhandle), required: false);
+            var __workflow_mSExcelPasteIntoSelectionworkbookName = WorkflowExpression.Compile(mSExcelPasteIntoSelectionworkbookName, nameof(mSExcelPasteIntoSelectionworkbookName), required: false);
+            var __workflow_mSExcelPasteIntoSelectionworksheetName = WorkflowExpression.Compile(mSExcelPasteIntoSelectionworksheetName, nameof(mSExcelPasteIntoSelectionworksheetName), required: false);
+            var __workflow_mSExcelPasteIntoSelectionvaluesOnly = WorkflowExpression.Compile(mSExcelPasteIntoSelectionvaluesOnly, nameof(mSExcelPasteIntoSelectionvaluesOnly), required: false);
+            var __workflow_mSExcelPasteIntoSelectionsimplePasteOnly = WorkflowExpression.Compile(mSExcelPasteIntoSelectionsimplePasteOnly, nameof(mSExcelPasteIntoSelectionsimplePasteOnly), required: false);
+            var __workflow_mSExcelPasteIntoSelectioncellReference = WorkflowExpression.Compile(mSExcelPasteIntoSelectioncellReference, nameof(mSExcelPasteIntoSelectioncellReference), required: false);
+            var __workflow_mSExcelPasteIntoSelectionentireRow = WorkflowExpression.Compile(mSExcelPasteIntoSelectionentireRow, nameof(mSExcelPasteIntoSelectionentireRow), required: false);
+            var __workflow_mSExcelPasteIntoSelectionentireColumn = WorkflowExpression.Compile(mSExcelPasteIntoSelectionentireColumn, nameof(mSExcelPasteIntoSelectionentireColumn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/PasteIntoSelection";
@@ -5244,22 +4881,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelInsertOnSelection(Expression<Func<string>> mSExcelInsertOnSelectionworkflow, Expression<Func<int>> mSExcelInsertOnSelectionhandle = null, Expression<Func<string>> mSExcelInsertOnSelectionworkbookName = null, Expression<Func<string>> mSExcelInsertOnSelectionworksheetName = null, Expression<Func<string>> mSExcelInsertOnSelectioncellReference = null, Expression<Func<bool>> mSExcelInsertOnSelectionentireRow = null, Expression<Func<bool>> mSExcelInsertOnSelectionentireColumn = null, Expression<Func<mSExcelInsertOnSelectionshiftInput>> mSExcelInsertOnSelectionshift = null)
         {
-            var __workflow_mSExcelInsertOnSelectionworkflow = mSExcelInsertOnSelectionworkflow == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectionworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectionworkflow, nameof(mSExcelInsertOnSelectionworkflow), required: true);
-            var __workflow_mSExcelInsertOnSelectionhandle = mSExcelInsertOnSelectionhandle == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectionhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectionhandle, nameof(mSExcelInsertOnSelectionhandle), required: false);
-            var __workflow_mSExcelInsertOnSelectionworkbookName = mSExcelInsertOnSelectionworkbookName == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectionworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectionworkbookName, nameof(mSExcelInsertOnSelectionworkbookName), required: false);
-            var __workflow_mSExcelInsertOnSelectionworksheetName = mSExcelInsertOnSelectionworksheetName == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectionworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectionworksheetName, nameof(mSExcelInsertOnSelectionworksheetName), required: false);
-            var __workflow_mSExcelInsertOnSelectioncellReference = mSExcelInsertOnSelectioncellReference == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectioncellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectioncellReference, nameof(mSExcelInsertOnSelectioncellReference), required: false);
-            var __workflow_mSExcelInsertOnSelectionentireRow = mSExcelInsertOnSelectionentireRow == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectionentireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectionentireRow, nameof(mSExcelInsertOnSelectionentireRow), required: false);
-            var __workflow_mSExcelInsertOnSelectionentireColumn = mSExcelInsertOnSelectionentireColumn == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectionentireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectionentireColumn, nameof(mSExcelInsertOnSelectionentireColumn), required: false);
-            var __workflow_mSExcelInsertOnSelectionshift = mSExcelInsertOnSelectionshift == null ? null : WorkflowExpression.Compile(mSExcelInsertOnSelectionshift);
-            WorkflowExpression.Validate(__workflow_mSExcelInsertOnSelectionshift, nameof(mSExcelInsertOnSelectionshift), required: false);
+            var __workflow_mSExcelInsertOnSelectionworkflow = WorkflowExpression.Compile(mSExcelInsertOnSelectionworkflow, nameof(mSExcelInsertOnSelectionworkflow), required: true);
+            var __workflow_mSExcelInsertOnSelectionhandle = WorkflowExpression.Compile(mSExcelInsertOnSelectionhandle, nameof(mSExcelInsertOnSelectionhandle), required: false);
+            var __workflow_mSExcelInsertOnSelectionworkbookName = WorkflowExpression.Compile(mSExcelInsertOnSelectionworkbookName, nameof(mSExcelInsertOnSelectionworkbookName), required: false);
+            var __workflow_mSExcelInsertOnSelectionworksheetName = WorkflowExpression.Compile(mSExcelInsertOnSelectionworksheetName, nameof(mSExcelInsertOnSelectionworksheetName), required: false);
+            var __workflow_mSExcelInsertOnSelectioncellReference = WorkflowExpression.Compile(mSExcelInsertOnSelectioncellReference, nameof(mSExcelInsertOnSelectioncellReference), required: false);
+            var __workflow_mSExcelInsertOnSelectionentireRow = WorkflowExpression.Compile(mSExcelInsertOnSelectionentireRow, nameof(mSExcelInsertOnSelectionentireRow), required: false);
+            var __workflow_mSExcelInsertOnSelectionentireColumn = WorkflowExpression.Compile(mSExcelInsertOnSelectionentireColumn, nameof(mSExcelInsertOnSelectionentireColumn), required: false);
+            var __workflow_mSExcelInsertOnSelectionshift = WorkflowExpression.Compile(mSExcelInsertOnSelectionshift, nameof(mSExcelInsertOnSelectionshift), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/InsertOnSelection";
@@ -5353,22 +4982,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelDeleteSelection(Expression<Func<string>> mSExcelDeleteSelectionworkflow, Expression<Func<int>> mSExcelDeleteSelectionhandle = null, Expression<Func<string>> mSExcelDeleteSelectionworkbookName = null, Expression<Func<string>> mSExcelDeleteSelectionworksheetName = null, Expression<Func<string>> mSExcelDeleteSelectioncellReference = null, Expression<Func<bool>> mSExcelDeleteSelectionentireRow = null, Expression<Func<bool>> mSExcelDeleteSelectionentireColumn = null, Expression<Func<mSExcelDeleteSelectionshiftInput>> mSExcelDeleteSelectionshift = null)
         {
-            var __workflow_mSExcelDeleteSelectionworkflow = mSExcelDeleteSelectionworkflow == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectionworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectionworkflow, nameof(mSExcelDeleteSelectionworkflow), required: true);
-            var __workflow_mSExcelDeleteSelectionhandle = mSExcelDeleteSelectionhandle == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectionhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectionhandle, nameof(mSExcelDeleteSelectionhandle), required: false);
-            var __workflow_mSExcelDeleteSelectionworkbookName = mSExcelDeleteSelectionworkbookName == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectionworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectionworkbookName, nameof(mSExcelDeleteSelectionworkbookName), required: false);
-            var __workflow_mSExcelDeleteSelectionworksheetName = mSExcelDeleteSelectionworksheetName == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectionworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectionworksheetName, nameof(mSExcelDeleteSelectionworksheetName), required: false);
-            var __workflow_mSExcelDeleteSelectioncellReference = mSExcelDeleteSelectioncellReference == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectioncellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectioncellReference, nameof(mSExcelDeleteSelectioncellReference), required: false);
-            var __workflow_mSExcelDeleteSelectionentireRow = mSExcelDeleteSelectionentireRow == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectionentireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectionentireRow, nameof(mSExcelDeleteSelectionentireRow), required: false);
-            var __workflow_mSExcelDeleteSelectionentireColumn = mSExcelDeleteSelectionentireColumn == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectionentireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectionentireColumn, nameof(mSExcelDeleteSelectionentireColumn), required: false);
-            var __workflow_mSExcelDeleteSelectionshift = mSExcelDeleteSelectionshift == null ? null : WorkflowExpression.Compile(mSExcelDeleteSelectionshift);
-            WorkflowExpression.Validate(__workflow_mSExcelDeleteSelectionshift, nameof(mSExcelDeleteSelectionshift), required: false);
+            var __workflow_mSExcelDeleteSelectionworkflow = WorkflowExpression.Compile(mSExcelDeleteSelectionworkflow, nameof(mSExcelDeleteSelectionworkflow), required: true);
+            var __workflow_mSExcelDeleteSelectionhandle = WorkflowExpression.Compile(mSExcelDeleteSelectionhandle, nameof(mSExcelDeleteSelectionhandle), required: false);
+            var __workflow_mSExcelDeleteSelectionworkbookName = WorkflowExpression.Compile(mSExcelDeleteSelectionworkbookName, nameof(mSExcelDeleteSelectionworkbookName), required: false);
+            var __workflow_mSExcelDeleteSelectionworksheetName = WorkflowExpression.Compile(mSExcelDeleteSelectionworksheetName, nameof(mSExcelDeleteSelectionworksheetName), required: false);
+            var __workflow_mSExcelDeleteSelectioncellReference = WorkflowExpression.Compile(mSExcelDeleteSelectioncellReference, nameof(mSExcelDeleteSelectioncellReference), required: false);
+            var __workflow_mSExcelDeleteSelectionentireRow = WorkflowExpression.Compile(mSExcelDeleteSelectionentireRow, nameof(mSExcelDeleteSelectionentireRow), required: false);
+            var __workflow_mSExcelDeleteSelectionentireColumn = WorkflowExpression.Compile(mSExcelDeleteSelectionentireColumn, nameof(mSExcelDeleteSelectionentireColumn), required: false);
+            var __workflow_mSExcelDeleteSelectionshift = WorkflowExpression.Compile(mSExcelDeleteSelectionshift, nameof(mSExcelDeleteSelectionshift), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/DeleteSelection";
@@ -5462,10 +5083,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelClearExcelClipboard(Expression<Func<string>> mSExcelClearExcelClipboardworkflow, Expression<Func<int>> mSExcelClearExcelClipboardhandle = null)
         {
-            var __workflow_mSExcelClearExcelClipboardworkflow = mSExcelClearExcelClipboardworkflow == null ? null : WorkflowExpression.Compile(mSExcelClearExcelClipboardworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelClearExcelClipboardworkflow, nameof(mSExcelClearExcelClipboardworkflow), required: true);
-            var __workflow_mSExcelClearExcelClipboardhandle = mSExcelClearExcelClipboardhandle == null ? null : WorkflowExpression.Compile(mSExcelClearExcelClipboardhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelClearExcelClipboardhandle, nameof(mSExcelClearExcelClipboardhandle), required: false);
+            var __workflow_mSExcelClearExcelClipboardworkflow = WorkflowExpression.Compile(mSExcelClearExcelClipboardworkflow, nameof(mSExcelClearExcelClipboardworkflow), required: true);
+            var __workflow_mSExcelClearExcelClipboardhandle = WorkflowExpression.Compile(mSExcelClearExcelClipboardhandle, nameof(mSExcelClearExcelClipboardhandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/ClearExcelClipboard";
@@ -5503,36 +5122,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelRunMacroResponse> MSExcelRunMacro(Expression<Func<string>> mSExcelRunMacromacroName, Expression<Func<string>> mSExcelRunMacroworkflow, Expression<Func<int>> mSExcelRunMacrohandle = null, Expression<Func<int>> mSExcelRunMacronumberOfArguments = null, Expression<Func<string>> mSExcelRunMacroargument1 = null, Expression<Func<string>> mSExcelRunMacroargument2 = null, Expression<Func<string>> mSExcelRunMacroargument3 = null, Expression<Func<string>> mSExcelRunMacroargument4 = null, Expression<Func<string>> mSExcelRunMacroargument5 = null, Expression<Func<string>> mSExcelRunMacroargument6 = null, Expression<Func<string>> mSExcelRunMacroargument7 = null, Expression<Func<string>> mSExcelRunMacroargument8 = null, Expression<Func<string>> mSExcelRunMacroargument9 = null, Expression<Func<string>> mSExcelRunMacroargument10 = null, Expression<Func<bool>> mSExcelRunMacrorunInBackground = null)
         {
-            var __workflow_mSExcelRunMacromacroName = mSExcelRunMacromacroName == null ? null : WorkflowExpression.Compile(mSExcelRunMacromacroName);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacromacroName, nameof(mSExcelRunMacromacroName), required: true);
-            var __workflow_mSExcelRunMacroworkflow = mSExcelRunMacroworkflow == null ? null : WorkflowExpression.Compile(mSExcelRunMacroworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroworkflow, nameof(mSExcelRunMacroworkflow), required: true);
-            var __workflow_mSExcelRunMacrohandle = mSExcelRunMacrohandle == null ? null : WorkflowExpression.Compile(mSExcelRunMacrohandle);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacrohandle, nameof(mSExcelRunMacrohandle), required: false);
-            var __workflow_mSExcelRunMacronumberOfArguments = mSExcelRunMacronumberOfArguments == null ? null : WorkflowExpression.Compile(mSExcelRunMacronumberOfArguments);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacronumberOfArguments, nameof(mSExcelRunMacronumberOfArguments), required: false);
-            var __workflow_mSExcelRunMacroargument1 = mSExcelRunMacroargument1 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument1);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument1, nameof(mSExcelRunMacroargument1), required: false);
-            var __workflow_mSExcelRunMacroargument2 = mSExcelRunMacroargument2 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument2);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument2, nameof(mSExcelRunMacroargument2), required: false);
-            var __workflow_mSExcelRunMacroargument3 = mSExcelRunMacroargument3 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument3);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument3, nameof(mSExcelRunMacroargument3), required: false);
-            var __workflow_mSExcelRunMacroargument4 = mSExcelRunMacroargument4 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument4);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument4, nameof(mSExcelRunMacroargument4), required: false);
-            var __workflow_mSExcelRunMacroargument5 = mSExcelRunMacroargument5 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument5);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument5, nameof(mSExcelRunMacroargument5), required: false);
-            var __workflow_mSExcelRunMacroargument6 = mSExcelRunMacroargument6 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument6);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument6, nameof(mSExcelRunMacroargument6), required: false);
-            var __workflow_mSExcelRunMacroargument7 = mSExcelRunMacroargument7 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument7);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument7, nameof(mSExcelRunMacroargument7), required: false);
-            var __workflow_mSExcelRunMacroargument8 = mSExcelRunMacroargument8 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument8);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument8, nameof(mSExcelRunMacroargument8), required: false);
-            var __workflow_mSExcelRunMacroargument9 = mSExcelRunMacroargument9 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument9);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument9, nameof(mSExcelRunMacroargument9), required: false);
-            var __workflow_mSExcelRunMacroargument10 = mSExcelRunMacroargument10 == null ? null : WorkflowExpression.Compile(mSExcelRunMacroargument10);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacroargument10, nameof(mSExcelRunMacroargument10), required: false);
-            var __workflow_mSExcelRunMacrorunInBackground = mSExcelRunMacrorunInBackground == null ? null : WorkflowExpression.Compile(mSExcelRunMacrorunInBackground);
-            WorkflowExpression.Validate(__workflow_mSExcelRunMacrorunInBackground, nameof(mSExcelRunMacrorunInBackground), required: false);
+            var __workflow_mSExcelRunMacromacroName = WorkflowExpression.Compile(mSExcelRunMacromacroName, nameof(mSExcelRunMacromacroName), required: true);
+            var __workflow_mSExcelRunMacroworkflow = WorkflowExpression.Compile(mSExcelRunMacroworkflow, nameof(mSExcelRunMacroworkflow), required: true);
+            var __workflow_mSExcelRunMacrohandle = WorkflowExpression.Compile(mSExcelRunMacrohandle, nameof(mSExcelRunMacrohandle), required: false);
+            var __workflow_mSExcelRunMacronumberOfArguments = WorkflowExpression.Compile(mSExcelRunMacronumberOfArguments, nameof(mSExcelRunMacronumberOfArguments), required: false);
+            var __workflow_mSExcelRunMacroargument1 = WorkflowExpression.Compile(mSExcelRunMacroargument1, nameof(mSExcelRunMacroargument1), required: false);
+            var __workflow_mSExcelRunMacroargument2 = WorkflowExpression.Compile(mSExcelRunMacroargument2, nameof(mSExcelRunMacroargument2), required: false);
+            var __workflow_mSExcelRunMacroargument3 = WorkflowExpression.Compile(mSExcelRunMacroargument3, nameof(mSExcelRunMacroargument3), required: false);
+            var __workflow_mSExcelRunMacroargument4 = WorkflowExpression.Compile(mSExcelRunMacroargument4, nameof(mSExcelRunMacroargument4), required: false);
+            var __workflow_mSExcelRunMacroargument5 = WorkflowExpression.Compile(mSExcelRunMacroargument5, nameof(mSExcelRunMacroargument5), required: false);
+            var __workflow_mSExcelRunMacroargument6 = WorkflowExpression.Compile(mSExcelRunMacroargument6, nameof(mSExcelRunMacroargument6), required: false);
+            var __workflow_mSExcelRunMacroargument7 = WorkflowExpression.Compile(mSExcelRunMacroargument7, nameof(mSExcelRunMacroargument7), required: false);
+            var __workflow_mSExcelRunMacroargument8 = WorkflowExpression.Compile(mSExcelRunMacroargument8, nameof(mSExcelRunMacroargument8), required: false);
+            var __workflow_mSExcelRunMacroargument9 = WorkflowExpression.Compile(mSExcelRunMacroargument9, nameof(mSExcelRunMacroargument9), required: false);
+            var __workflow_mSExcelRunMacroargument10 = WorkflowExpression.Compile(mSExcelRunMacroargument10, nameof(mSExcelRunMacroargument10), required: false);
+            var __workflow_mSExcelRunMacrorunInBackground = WorkflowExpression.Compile(mSExcelRunMacrorunInBackground, nameof(mSExcelRunMacrorunInBackground), required: false);
             return new DeferredBodyAction<MSExcelRunMacroResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/RunMacro";
@@ -5654,14 +5258,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelAddMacroToWorkbook(Expression<Func<string>> mSExcelAddMacroToWorkbookmacroCode, Expression<Func<string>> mSExcelAddMacroToWorkbookworkflow, Expression<Func<int>> mSExcelAddMacroToWorkbookhandle = null, Expression<Func<string>> mSExcelAddMacroToWorkbookworkbookName = null)
         {
-            var __workflow_mSExcelAddMacroToWorkbookmacroCode = mSExcelAddMacroToWorkbookmacroCode == null ? null : WorkflowExpression.Compile(mSExcelAddMacroToWorkbookmacroCode);
-            WorkflowExpression.Validate(__workflow_mSExcelAddMacroToWorkbookmacroCode, nameof(mSExcelAddMacroToWorkbookmacroCode), required: true);
-            var __workflow_mSExcelAddMacroToWorkbookworkflow = mSExcelAddMacroToWorkbookworkflow == null ? null : WorkflowExpression.Compile(mSExcelAddMacroToWorkbookworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelAddMacroToWorkbookworkflow, nameof(mSExcelAddMacroToWorkbookworkflow), required: true);
-            var __workflow_mSExcelAddMacroToWorkbookhandle = mSExcelAddMacroToWorkbookhandle == null ? null : WorkflowExpression.Compile(mSExcelAddMacroToWorkbookhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelAddMacroToWorkbookhandle, nameof(mSExcelAddMacroToWorkbookhandle), required: false);
-            var __workflow_mSExcelAddMacroToWorkbookworkbookName = mSExcelAddMacroToWorkbookworkbookName == null ? null : WorkflowExpression.Compile(mSExcelAddMacroToWorkbookworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelAddMacroToWorkbookworkbookName, nameof(mSExcelAddMacroToWorkbookworkbookName), required: false);
+            var __workflow_mSExcelAddMacroToWorkbookmacroCode = WorkflowExpression.Compile(mSExcelAddMacroToWorkbookmacroCode, nameof(mSExcelAddMacroToWorkbookmacroCode), required: true);
+            var __workflow_mSExcelAddMacroToWorkbookworkflow = WorkflowExpression.Compile(mSExcelAddMacroToWorkbookworkflow, nameof(mSExcelAddMacroToWorkbookworkflow), required: true);
+            var __workflow_mSExcelAddMacroToWorkbookhandle = WorkflowExpression.Compile(mSExcelAddMacroToWorkbookhandle, nameof(mSExcelAddMacroToWorkbookhandle), required: false);
+            var __workflow_mSExcelAddMacroToWorkbookworkbookName = WorkflowExpression.Compile(mSExcelAddMacroToWorkbookworkbookName, nameof(mSExcelAddMacroToWorkbookworkbookName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/AddMacroToWorkbook";
@@ -5707,12 +5307,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelTrustVBOMInRegistry(Expression<Func<string>> mSExcelTrustVBOMInRegistryworkflow, Expression<Func<int>> mSExcelTrustVBOMInRegistryexcelVersion = null, Expression<Func<bool>> mSExcelTrustVBOMInRegistrytrustVBOM = null)
         {
-            var __workflow_mSExcelTrustVBOMInRegistryworkflow = mSExcelTrustVBOMInRegistryworkflow == null ? null : WorkflowExpression.Compile(mSExcelTrustVBOMInRegistryworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelTrustVBOMInRegistryworkflow, nameof(mSExcelTrustVBOMInRegistryworkflow), required: true);
-            var __workflow_mSExcelTrustVBOMInRegistryexcelVersion = mSExcelTrustVBOMInRegistryexcelVersion == null ? null : WorkflowExpression.Compile(mSExcelTrustVBOMInRegistryexcelVersion);
-            WorkflowExpression.Validate(__workflow_mSExcelTrustVBOMInRegistryexcelVersion, nameof(mSExcelTrustVBOMInRegistryexcelVersion), required: false);
-            var __workflow_mSExcelTrustVBOMInRegistrytrustVBOM = mSExcelTrustVBOMInRegistrytrustVBOM == null ? null : WorkflowExpression.Compile(mSExcelTrustVBOMInRegistrytrustVBOM);
-            WorkflowExpression.Validate(__workflow_mSExcelTrustVBOMInRegistrytrustVBOM, nameof(mSExcelTrustVBOMInRegistrytrustVBOM), required: false);
+            var __workflow_mSExcelTrustVBOMInRegistryworkflow = WorkflowExpression.Compile(mSExcelTrustVBOMInRegistryworkflow, nameof(mSExcelTrustVBOMInRegistryworkflow), required: true);
+            var __workflow_mSExcelTrustVBOMInRegistryexcelVersion = WorkflowExpression.Compile(mSExcelTrustVBOMInRegistryexcelVersion, nameof(mSExcelTrustVBOMInRegistryexcelVersion), required: false);
+            var __workflow_mSExcelTrustVBOMInRegistrytrustVBOM = WorkflowExpression.Compile(mSExcelTrustVBOMInRegistrytrustVBOM, nameof(mSExcelTrustVBOMInRegistrytrustVBOM), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/TrustVBOMInRegistry";
@@ -5756,12 +5353,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelSetCalculationMode(Expression<Func<int>> mSExcelSetCalculationModecalculationMode, Expression<Func<string>> mSExcelSetCalculationModeworkflow, Expression<Func<int>> mSExcelSetCalculationModehandle = null)
         {
-            var __workflow_mSExcelSetCalculationModecalculationMode = mSExcelSetCalculationModecalculationMode == null ? null : WorkflowExpression.Compile(mSExcelSetCalculationModecalculationMode);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCalculationModecalculationMode, nameof(mSExcelSetCalculationModecalculationMode), required: true);
-            var __workflow_mSExcelSetCalculationModeworkflow = mSExcelSetCalculationModeworkflow == null ? null : WorkflowExpression.Compile(mSExcelSetCalculationModeworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCalculationModeworkflow, nameof(mSExcelSetCalculationModeworkflow), required: true);
-            var __workflow_mSExcelSetCalculationModehandle = mSExcelSetCalculationModehandle == null ? null : WorkflowExpression.Compile(mSExcelSetCalculationModehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCalculationModehandle, nameof(mSExcelSetCalculationModehandle), required: false);
+            var __workflow_mSExcelSetCalculationModecalculationMode = WorkflowExpression.Compile(mSExcelSetCalculationModecalculationMode, nameof(mSExcelSetCalculationModecalculationMode), required: true);
+            var __workflow_mSExcelSetCalculationModeworkflow = WorkflowExpression.Compile(mSExcelSetCalculationModeworkflow, nameof(mSExcelSetCalculationModeworkflow), required: true);
+            var __workflow_mSExcelSetCalculationModehandle = WorkflowExpression.Compile(mSExcelSetCalculationModehandle, nameof(mSExcelSetCalculationModehandle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/SetCalculationMode";
@@ -5801,14 +5395,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSExcelExecuteCommandBarObject(Expression<Func<string>> mSExcelExecuteCommandBarObjectobjectId, Expression<Func<string>> mSExcelExecuteCommandBarObjectworkflow, Expression<Func<int>> mSExcelExecuteCommandBarObjecthandle = null, Expression<Func<bool>> mSExcelExecuteCommandBarObjectrunInBackground = null)
         {
-            var __workflow_mSExcelExecuteCommandBarObjectobjectId = mSExcelExecuteCommandBarObjectobjectId == null ? null : WorkflowExpression.Compile(mSExcelExecuteCommandBarObjectobjectId);
-            WorkflowExpression.Validate(__workflow_mSExcelExecuteCommandBarObjectobjectId, nameof(mSExcelExecuteCommandBarObjectobjectId), required: true);
-            var __workflow_mSExcelExecuteCommandBarObjectworkflow = mSExcelExecuteCommandBarObjectworkflow == null ? null : WorkflowExpression.Compile(mSExcelExecuteCommandBarObjectworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelExecuteCommandBarObjectworkflow, nameof(mSExcelExecuteCommandBarObjectworkflow), required: true);
-            var __workflow_mSExcelExecuteCommandBarObjecthandle = mSExcelExecuteCommandBarObjecthandle == null ? null : WorkflowExpression.Compile(mSExcelExecuteCommandBarObjecthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelExecuteCommandBarObjecthandle, nameof(mSExcelExecuteCommandBarObjecthandle), required: false);
-            var __workflow_mSExcelExecuteCommandBarObjectrunInBackground = mSExcelExecuteCommandBarObjectrunInBackground == null ? null : WorkflowExpression.Compile(mSExcelExecuteCommandBarObjectrunInBackground);
-            WorkflowExpression.Validate(__workflow_mSExcelExecuteCommandBarObjectrunInBackground, nameof(mSExcelExecuteCommandBarObjectrunInBackground), required: false);
+            var __workflow_mSExcelExecuteCommandBarObjectobjectId = WorkflowExpression.Compile(mSExcelExecuteCommandBarObjectobjectId, nameof(mSExcelExecuteCommandBarObjectobjectId), required: true);
+            var __workflow_mSExcelExecuteCommandBarObjectworkflow = WorkflowExpression.Compile(mSExcelExecuteCommandBarObjectworkflow, nameof(mSExcelExecuteCommandBarObjectworkflow), required: true);
+            var __workflow_mSExcelExecuteCommandBarObjecthandle = WorkflowExpression.Compile(mSExcelExecuteCommandBarObjecthandle, nameof(mSExcelExecuteCommandBarObjecthandle), required: false);
+            var __workflow_mSExcelExecuteCommandBarObjectrunInBackground = WorkflowExpression.Compile(mSExcelExecuteCommandBarObjectrunInBackground, nameof(mSExcelExecuteCommandBarObjectrunInBackground), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSExcel/ExecuteCommandBarObject";
@@ -5864,36 +5454,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCopyBetweenCellsResponse> MSExcelCopyBetweenCells(Expression<Func<string>> mSExcelCopyBetweenCellssourceCellReference, Expression<Func<string>> mSExcelCopyBetweenCellstargetCellReference, Expression<Func<string>> mSExcelCopyBetweenCellsworkflow, Expression<Func<int>> mSExcelCopyBetweenCellssourceHandle = null, Expression<Func<string>> mSExcelCopyBetweenCellssourceWorkbookName = null, Expression<Func<string>> mSExcelCopyBetweenCellssourceWorksheetName = null, Expression<Func<bool>> mSExcelCopyBetweenCellssourceEntireRow = null, Expression<Func<bool>> mSExcelCopyBetweenCellssourceEntireColumn = null, Expression<Func<int>> mSExcelCopyBetweenCellstargetHandle = null, Expression<Func<string>> mSExcelCopyBetweenCellstargetWorkbookName = null, Expression<Func<string>> mSExcelCopyBetweenCellstargetWorksheetName = null, Expression<Func<bool>> mSExcelCopyBetweenCellstargetEntireRow = null, Expression<Func<bool>> mSExcelCopyBetweenCellstargetEntireColumn = null, Expression<Func<bool>> mSExcelCopyBetweenCellsvaluesOnly = null, Expression<Func<bool>> mSExcelCopyBetweenCellssimplePasteOnly = null)
         {
-            var __workflow_mSExcelCopyBetweenCellssourceCellReference = mSExcelCopyBetweenCellssourceCellReference == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellssourceCellReference, nameof(mSExcelCopyBetweenCellssourceCellReference), required: true);
-            var __workflow_mSExcelCopyBetweenCellstargetCellReference = mSExcelCopyBetweenCellstargetCellReference == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellstargetCellReference, nameof(mSExcelCopyBetweenCellstargetCellReference), required: true);
-            var __workflow_mSExcelCopyBetweenCellsworkflow = mSExcelCopyBetweenCellsworkflow == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellsworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellsworkflow, nameof(mSExcelCopyBetweenCellsworkflow), required: true);
-            var __workflow_mSExcelCopyBetweenCellssourceHandle = mSExcelCopyBetweenCellssourceHandle == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellssourceHandle, nameof(mSExcelCopyBetweenCellssourceHandle), required: false);
-            var __workflow_mSExcelCopyBetweenCellssourceWorkbookName = mSExcelCopyBetweenCellssourceWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellssourceWorkbookName, nameof(mSExcelCopyBetweenCellssourceWorkbookName), required: false);
-            var __workflow_mSExcelCopyBetweenCellssourceWorksheetName = mSExcelCopyBetweenCellssourceWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellssourceWorksheetName, nameof(mSExcelCopyBetweenCellssourceWorksheetName), required: false);
-            var __workflow_mSExcelCopyBetweenCellssourceEntireRow = mSExcelCopyBetweenCellssourceEntireRow == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceEntireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellssourceEntireRow, nameof(mSExcelCopyBetweenCellssourceEntireRow), required: false);
-            var __workflow_mSExcelCopyBetweenCellssourceEntireColumn = mSExcelCopyBetweenCellssourceEntireColumn == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceEntireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellssourceEntireColumn, nameof(mSExcelCopyBetweenCellssourceEntireColumn), required: false);
-            var __workflow_mSExcelCopyBetweenCellstargetHandle = mSExcelCopyBetweenCellstargetHandle == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellstargetHandle, nameof(mSExcelCopyBetweenCellstargetHandle), required: false);
-            var __workflow_mSExcelCopyBetweenCellstargetWorkbookName = mSExcelCopyBetweenCellstargetWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellstargetWorkbookName, nameof(mSExcelCopyBetweenCellstargetWorkbookName), required: false);
-            var __workflow_mSExcelCopyBetweenCellstargetWorksheetName = mSExcelCopyBetweenCellstargetWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellstargetWorksheetName, nameof(mSExcelCopyBetweenCellstargetWorksheetName), required: false);
-            var __workflow_mSExcelCopyBetweenCellstargetEntireRow = mSExcelCopyBetweenCellstargetEntireRow == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetEntireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellstargetEntireRow, nameof(mSExcelCopyBetweenCellstargetEntireRow), required: false);
-            var __workflow_mSExcelCopyBetweenCellstargetEntireColumn = mSExcelCopyBetweenCellstargetEntireColumn == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetEntireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellstargetEntireColumn, nameof(mSExcelCopyBetweenCellstargetEntireColumn), required: false);
-            var __workflow_mSExcelCopyBetweenCellsvaluesOnly = mSExcelCopyBetweenCellsvaluesOnly == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellsvaluesOnly);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellsvaluesOnly, nameof(mSExcelCopyBetweenCellsvaluesOnly), required: false);
-            var __workflow_mSExcelCopyBetweenCellssimplePasteOnly = mSExcelCopyBetweenCellssimplePasteOnly == null ? null : WorkflowExpression.Compile(mSExcelCopyBetweenCellssimplePasteOnly);
-            WorkflowExpression.Validate(__workflow_mSExcelCopyBetweenCellssimplePasteOnly, nameof(mSExcelCopyBetweenCellssimplePasteOnly), required: false);
+            var __workflow_mSExcelCopyBetweenCellssourceCellReference = WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceCellReference, nameof(mSExcelCopyBetweenCellssourceCellReference), required: true);
+            var __workflow_mSExcelCopyBetweenCellstargetCellReference = WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetCellReference, nameof(mSExcelCopyBetweenCellstargetCellReference), required: true);
+            var __workflow_mSExcelCopyBetweenCellsworkflow = WorkflowExpression.Compile(mSExcelCopyBetweenCellsworkflow, nameof(mSExcelCopyBetweenCellsworkflow), required: true);
+            var __workflow_mSExcelCopyBetweenCellssourceHandle = WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceHandle, nameof(mSExcelCopyBetweenCellssourceHandle), required: false);
+            var __workflow_mSExcelCopyBetweenCellssourceWorkbookName = WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceWorkbookName, nameof(mSExcelCopyBetweenCellssourceWorkbookName), required: false);
+            var __workflow_mSExcelCopyBetweenCellssourceWorksheetName = WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceWorksheetName, nameof(mSExcelCopyBetweenCellssourceWorksheetName), required: false);
+            var __workflow_mSExcelCopyBetweenCellssourceEntireRow = WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceEntireRow, nameof(mSExcelCopyBetweenCellssourceEntireRow), required: false);
+            var __workflow_mSExcelCopyBetweenCellssourceEntireColumn = WorkflowExpression.Compile(mSExcelCopyBetweenCellssourceEntireColumn, nameof(mSExcelCopyBetweenCellssourceEntireColumn), required: false);
+            var __workflow_mSExcelCopyBetweenCellstargetHandle = WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetHandle, nameof(mSExcelCopyBetweenCellstargetHandle), required: false);
+            var __workflow_mSExcelCopyBetweenCellstargetWorkbookName = WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetWorkbookName, nameof(mSExcelCopyBetweenCellstargetWorkbookName), required: false);
+            var __workflow_mSExcelCopyBetweenCellstargetWorksheetName = WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetWorksheetName, nameof(mSExcelCopyBetweenCellstargetWorksheetName), required: false);
+            var __workflow_mSExcelCopyBetweenCellstargetEntireRow = WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetEntireRow, nameof(mSExcelCopyBetweenCellstargetEntireRow), required: false);
+            var __workflow_mSExcelCopyBetweenCellstargetEntireColumn = WorkflowExpression.Compile(mSExcelCopyBetweenCellstargetEntireColumn, nameof(mSExcelCopyBetweenCellstargetEntireColumn), required: false);
+            var __workflow_mSExcelCopyBetweenCellsvaluesOnly = WorkflowExpression.Compile(mSExcelCopyBetweenCellsvaluesOnly, nameof(mSExcelCopyBetweenCellsvaluesOnly), required: false);
+            var __workflow_mSExcelCopyBetweenCellssimplePasteOnly = WorkflowExpression.Compile(mSExcelCopyBetweenCellssimplePasteOnly, nameof(mSExcelCopyBetweenCellssimplePasteOnly), required: false);
             return new DeferredBodyAction<MSExcelCopyBetweenCellsResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/CopyBetweenCells";
@@ -6071,34 +5646,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCutBetweenCellsResponse> MSExcelCutBetweenCells(Expression<Func<string>> mSExcelCutBetweenCellssourceCellReference, Expression<Func<string>> mSExcelCutBetweenCellstargetCellReference, Expression<Func<string>> mSExcelCutBetweenCellsworkflow, Expression<Func<int>> mSExcelCutBetweenCellssourceHandle = null, Expression<Func<string>> mSExcelCutBetweenCellssourceWorkbookName = null, Expression<Func<string>> mSExcelCutBetweenCellssourceWorksheetName = null, Expression<Func<bool>> mSExcelCutBetweenCellssourceEntireRow = null, Expression<Func<bool>> mSExcelCutBetweenCellssourceEntireColumn = null, Expression<Func<int>> mSExcelCutBetweenCellstargetHandle = null, Expression<Func<string>> mSExcelCutBetweenCellstargetWorkbookName = null, Expression<Func<string>> mSExcelCutBetweenCellstargetWorksheetName = null, Expression<Func<bool>> mSExcelCutBetweenCellstargetEntireRow = null, Expression<Func<bool>> mSExcelCutBetweenCellstargetEntireColumn = null, Expression<Func<bool>> mSExcelCutBetweenCellsvaluesOnly = null)
         {
-            var __workflow_mSExcelCutBetweenCellssourceCellReference = mSExcelCutBetweenCellssourceCellReference == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellssourceCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellssourceCellReference, nameof(mSExcelCutBetweenCellssourceCellReference), required: true);
-            var __workflow_mSExcelCutBetweenCellstargetCellReference = mSExcelCutBetweenCellstargetCellReference == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellstargetCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellstargetCellReference, nameof(mSExcelCutBetweenCellstargetCellReference), required: true);
-            var __workflow_mSExcelCutBetweenCellsworkflow = mSExcelCutBetweenCellsworkflow == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellsworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellsworkflow, nameof(mSExcelCutBetweenCellsworkflow), required: true);
-            var __workflow_mSExcelCutBetweenCellssourceHandle = mSExcelCutBetweenCellssourceHandle == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellssourceHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellssourceHandle, nameof(mSExcelCutBetweenCellssourceHandle), required: false);
-            var __workflow_mSExcelCutBetweenCellssourceWorkbookName = mSExcelCutBetweenCellssourceWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellssourceWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellssourceWorkbookName, nameof(mSExcelCutBetweenCellssourceWorkbookName), required: false);
-            var __workflow_mSExcelCutBetweenCellssourceWorksheetName = mSExcelCutBetweenCellssourceWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellssourceWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellssourceWorksheetName, nameof(mSExcelCutBetweenCellssourceWorksheetName), required: false);
-            var __workflow_mSExcelCutBetweenCellssourceEntireRow = mSExcelCutBetweenCellssourceEntireRow == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellssourceEntireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellssourceEntireRow, nameof(mSExcelCutBetweenCellssourceEntireRow), required: false);
-            var __workflow_mSExcelCutBetweenCellssourceEntireColumn = mSExcelCutBetweenCellssourceEntireColumn == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellssourceEntireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellssourceEntireColumn, nameof(mSExcelCutBetweenCellssourceEntireColumn), required: false);
-            var __workflow_mSExcelCutBetweenCellstargetHandle = mSExcelCutBetweenCellstargetHandle == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellstargetHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellstargetHandle, nameof(mSExcelCutBetweenCellstargetHandle), required: false);
-            var __workflow_mSExcelCutBetweenCellstargetWorkbookName = mSExcelCutBetweenCellstargetWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellstargetWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellstargetWorkbookName, nameof(mSExcelCutBetweenCellstargetWorkbookName), required: false);
-            var __workflow_mSExcelCutBetweenCellstargetWorksheetName = mSExcelCutBetweenCellstargetWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellstargetWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellstargetWorksheetName, nameof(mSExcelCutBetweenCellstargetWorksheetName), required: false);
-            var __workflow_mSExcelCutBetweenCellstargetEntireRow = mSExcelCutBetweenCellstargetEntireRow == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellstargetEntireRow);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellstargetEntireRow, nameof(mSExcelCutBetweenCellstargetEntireRow), required: false);
-            var __workflow_mSExcelCutBetweenCellstargetEntireColumn = mSExcelCutBetweenCellstargetEntireColumn == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellstargetEntireColumn);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellstargetEntireColumn, nameof(mSExcelCutBetweenCellstargetEntireColumn), required: false);
-            var __workflow_mSExcelCutBetweenCellsvaluesOnly = mSExcelCutBetweenCellsvaluesOnly == null ? null : WorkflowExpression.Compile(mSExcelCutBetweenCellsvaluesOnly);
-            WorkflowExpression.Validate(__workflow_mSExcelCutBetweenCellsvaluesOnly, nameof(mSExcelCutBetweenCellsvaluesOnly), required: false);
+            var __workflow_mSExcelCutBetweenCellssourceCellReference = WorkflowExpression.Compile(mSExcelCutBetweenCellssourceCellReference, nameof(mSExcelCutBetweenCellssourceCellReference), required: true);
+            var __workflow_mSExcelCutBetweenCellstargetCellReference = WorkflowExpression.Compile(mSExcelCutBetweenCellstargetCellReference, nameof(mSExcelCutBetweenCellstargetCellReference), required: true);
+            var __workflow_mSExcelCutBetweenCellsworkflow = WorkflowExpression.Compile(mSExcelCutBetweenCellsworkflow, nameof(mSExcelCutBetweenCellsworkflow), required: true);
+            var __workflow_mSExcelCutBetweenCellssourceHandle = WorkflowExpression.Compile(mSExcelCutBetweenCellssourceHandle, nameof(mSExcelCutBetweenCellssourceHandle), required: false);
+            var __workflow_mSExcelCutBetweenCellssourceWorkbookName = WorkflowExpression.Compile(mSExcelCutBetweenCellssourceWorkbookName, nameof(mSExcelCutBetweenCellssourceWorkbookName), required: false);
+            var __workflow_mSExcelCutBetweenCellssourceWorksheetName = WorkflowExpression.Compile(mSExcelCutBetweenCellssourceWorksheetName, nameof(mSExcelCutBetweenCellssourceWorksheetName), required: false);
+            var __workflow_mSExcelCutBetweenCellssourceEntireRow = WorkflowExpression.Compile(mSExcelCutBetweenCellssourceEntireRow, nameof(mSExcelCutBetweenCellssourceEntireRow), required: false);
+            var __workflow_mSExcelCutBetweenCellssourceEntireColumn = WorkflowExpression.Compile(mSExcelCutBetweenCellssourceEntireColumn, nameof(mSExcelCutBetweenCellssourceEntireColumn), required: false);
+            var __workflow_mSExcelCutBetweenCellstargetHandle = WorkflowExpression.Compile(mSExcelCutBetweenCellstargetHandle, nameof(mSExcelCutBetweenCellstargetHandle), required: false);
+            var __workflow_mSExcelCutBetweenCellstargetWorkbookName = WorkflowExpression.Compile(mSExcelCutBetweenCellstargetWorkbookName, nameof(mSExcelCutBetweenCellstargetWorkbookName), required: false);
+            var __workflow_mSExcelCutBetweenCellstargetWorksheetName = WorkflowExpression.Compile(mSExcelCutBetweenCellstargetWorksheetName, nameof(mSExcelCutBetweenCellstargetWorksheetName), required: false);
+            var __workflow_mSExcelCutBetweenCellstargetEntireRow = WorkflowExpression.Compile(mSExcelCutBetweenCellstargetEntireRow, nameof(mSExcelCutBetweenCellstargetEntireRow), required: false);
+            var __workflow_mSExcelCutBetweenCellstargetEntireColumn = WorkflowExpression.Compile(mSExcelCutBetweenCellstargetEntireColumn, nameof(mSExcelCutBetweenCellstargetEntireColumn), required: false);
+            var __workflow_mSExcelCutBetweenCellsvaluesOnly = WorkflowExpression.Compile(mSExcelCutBetweenCellsvaluesOnly, nameof(mSExcelCutBetweenCellsvaluesOnly), required: false);
             return new DeferredBodyAction<MSExcelCutBetweenCellsResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/CutBetweenCells";
@@ -6260,10 +5821,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelMinimiseWindowResponse> MSExcelMinimiseWindow(Expression<Func<string>> mSExcelMinimiseWindowworkflow, Expression<Func<int>> mSExcelMinimiseWindowhandle = null)
         {
-            var __workflow_mSExcelMinimiseWindowworkflow = mSExcelMinimiseWindowworkflow == null ? null : WorkflowExpression.Compile(mSExcelMinimiseWindowworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelMinimiseWindowworkflow, nameof(mSExcelMinimiseWindowworkflow), required: true);
-            var __workflow_mSExcelMinimiseWindowhandle = mSExcelMinimiseWindowhandle == null ? null : WorkflowExpression.Compile(mSExcelMinimiseWindowhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelMinimiseWindowhandle, nameof(mSExcelMinimiseWindowhandle), required: false);
+            var __workflow_mSExcelMinimiseWindowworkflow = WorkflowExpression.Compile(mSExcelMinimiseWindowworkflow, nameof(mSExcelMinimiseWindowworkflow), required: true);
+            var __workflow_mSExcelMinimiseWindowhandle = WorkflowExpression.Compile(mSExcelMinimiseWindowhandle, nameof(mSExcelMinimiseWindowhandle), required: false);
             return new DeferredBodyAction<MSExcelMinimiseWindowResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/MinimiseWindow";
@@ -6301,10 +5860,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelMaximiseWindowResponse> MSExcelMaximiseWindow(Expression<Func<string>> mSExcelMaximiseWindowworkflow, Expression<Func<int>> mSExcelMaximiseWindowhandle = null)
         {
-            var __workflow_mSExcelMaximiseWindowworkflow = mSExcelMaximiseWindowworkflow == null ? null : WorkflowExpression.Compile(mSExcelMaximiseWindowworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelMaximiseWindowworkflow, nameof(mSExcelMaximiseWindowworkflow), required: true);
-            var __workflow_mSExcelMaximiseWindowhandle = mSExcelMaximiseWindowhandle == null ? null : WorkflowExpression.Compile(mSExcelMaximiseWindowhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelMaximiseWindowhandle, nameof(mSExcelMaximiseWindowhandle), required: false);
+            var __workflow_mSExcelMaximiseWindowworkflow = WorkflowExpression.Compile(mSExcelMaximiseWindowworkflow, nameof(mSExcelMaximiseWindowworkflow), required: true);
+            var __workflow_mSExcelMaximiseWindowhandle = WorkflowExpression.Compile(mSExcelMaximiseWindowhandle, nameof(mSExcelMaximiseWindowhandle), required: false);
             return new DeferredBodyAction<MSExcelMaximiseWindowResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/MaximiseWindow";
@@ -6342,10 +5899,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelNormaliseWindowResponse> MSExcelNormaliseWindow(Expression<Func<string>> mSExcelNormaliseWindowworkflow, Expression<Func<int>> mSExcelNormaliseWindowhandle = null)
         {
-            var __workflow_mSExcelNormaliseWindowworkflow = mSExcelNormaliseWindowworkflow == null ? null : WorkflowExpression.Compile(mSExcelNormaliseWindowworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelNormaliseWindowworkflow, nameof(mSExcelNormaliseWindowworkflow), required: true);
-            var __workflow_mSExcelNormaliseWindowhandle = mSExcelNormaliseWindowhandle == null ? null : WorkflowExpression.Compile(mSExcelNormaliseWindowhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelNormaliseWindowhandle, nameof(mSExcelNormaliseWindowhandle), required: false);
+            var __workflow_mSExcelNormaliseWindowworkflow = WorkflowExpression.Compile(mSExcelNormaliseWindowworkflow, nameof(mSExcelNormaliseWindowworkflow), required: true);
+            var __workflow_mSExcelNormaliseWindowhandle = WorkflowExpression.Compile(mSExcelNormaliseWindowhandle, nameof(mSExcelNormaliseWindowhandle), required: false);
             return new DeferredBodyAction<MSExcelNormaliseWindowResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/NormaliseWindow";
@@ -6383,24 +5938,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetAndSetCellValueResponse> MSExcelGetAndSetCellValue(Expression<Func<string>> mSExcelGetAndSetCellValuesourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellValuetargetCellReference, Expression<Func<string>> mSExcelGetAndSetCellValueworkflow, Expression<Func<int>> mSExcelGetAndSetCellValuesourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValuesourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValuesourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellValuetargetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValuetargetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValuetargetWorksheetName = null)
         {
-            var __workflow_mSExcelGetAndSetCellValuesourceCellReference = mSExcelGetAndSetCellValuesourceCellReference == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuesourceCellReference, nameof(mSExcelGetAndSetCellValuesourceCellReference), required: true);
-            var __workflow_mSExcelGetAndSetCellValuetargetCellReference = mSExcelGetAndSetCellValuetargetCellReference == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuetargetCellReference, nameof(mSExcelGetAndSetCellValuetargetCellReference), required: true);
-            var __workflow_mSExcelGetAndSetCellValueworkflow = mSExcelGetAndSetCellValueworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValueworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValueworkflow, nameof(mSExcelGetAndSetCellValueworkflow), required: true);
-            var __workflow_mSExcelGetAndSetCellValuesourceHandle = mSExcelGetAndSetCellValuesourceHandle == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuesourceHandle, nameof(mSExcelGetAndSetCellValuesourceHandle), required: false);
-            var __workflow_mSExcelGetAndSetCellValuesourceWorkbookName = mSExcelGetAndSetCellValuesourceWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuesourceWorkbookName, nameof(mSExcelGetAndSetCellValuesourceWorkbookName), required: false);
-            var __workflow_mSExcelGetAndSetCellValuesourceWorksheetName = mSExcelGetAndSetCellValuesourceWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuesourceWorksheetName, nameof(mSExcelGetAndSetCellValuesourceWorksheetName), required: false);
-            var __workflow_mSExcelGetAndSetCellValuetargetHandle = mSExcelGetAndSetCellValuetargetHandle == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuetargetHandle, nameof(mSExcelGetAndSetCellValuetargetHandle), required: false);
-            var __workflow_mSExcelGetAndSetCellValuetargetWorkbookName = mSExcelGetAndSetCellValuetargetWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuetargetWorkbookName, nameof(mSExcelGetAndSetCellValuetargetWorkbookName), required: false);
-            var __workflow_mSExcelGetAndSetCellValuetargetWorksheetName = mSExcelGetAndSetCellValuetargetWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValuetargetWorksheetName, nameof(mSExcelGetAndSetCellValuetargetWorksheetName), required: false);
+            var __workflow_mSExcelGetAndSetCellValuesourceCellReference = WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceCellReference, nameof(mSExcelGetAndSetCellValuesourceCellReference), required: true);
+            var __workflow_mSExcelGetAndSetCellValuetargetCellReference = WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetCellReference, nameof(mSExcelGetAndSetCellValuetargetCellReference), required: true);
+            var __workflow_mSExcelGetAndSetCellValueworkflow = WorkflowExpression.Compile(mSExcelGetAndSetCellValueworkflow, nameof(mSExcelGetAndSetCellValueworkflow), required: true);
+            var __workflow_mSExcelGetAndSetCellValuesourceHandle = WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceHandle, nameof(mSExcelGetAndSetCellValuesourceHandle), required: false);
+            var __workflow_mSExcelGetAndSetCellValuesourceWorkbookName = WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceWorkbookName, nameof(mSExcelGetAndSetCellValuesourceWorkbookName), required: false);
+            var __workflow_mSExcelGetAndSetCellValuesourceWorksheetName = WorkflowExpression.Compile(mSExcelGetAndSetCellValuesourceWorksheetName, nameof(mSExcelGetAndSetCellValuesourceWorksheetName), required: false);
+            var __workflow_mSExcelGetAndSetCellValuetargetHandle = WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetHandle, nameof(mSExcelGetAndSetCellValuetargetHandle), required: false);
+            var __workflow_mSExcelGetAndSetCellValuetargetWorkbookName = WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetWorkbookName, nameof(mSExcelGetAndSetCellValuetargetWorkbookName), required: false);
+            var __workflow_mSExcelGetAndSetCellValuetargetWorksheetName = WorkflowExpression.Compile(mSExcelGetAndSetCellValuetargetWorksheetName, nameof(mSExcelGetAndSetCellValuetargetWorksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetAndSetCellValueResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetAndSetCellValue";
@@ -6482,24 +6028,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetAndSetCellValue2Response> MSExcelGetAndSetCellValue2(Expression<Func<string>> mSExcelGetAndSetCellValue2sourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellValue2targetCellReference, Expression<Func<string>> mSExcelGetAndSetCellValue2workflow, Expression<Func<int>> mSExcelGetAndSetCellValue2sourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValue2sourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValue2sourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellValue2targetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellValue2targetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellValue2targetWorksheetName = null)
         {
-            var __workflow_mSExcelGetAndSetCellValue2sourceCellReference = mSExcelGetAndSetCellValue2sourceCellReference == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2sourceCellReference, nameof(mSExcelGetAndSetCellValue2sourceCellReference), required: true);
-            var __workflow_mSExcelGetAndSetCellValue2targetCellReference = mSExcelGetAndSetCellValue2targetCellReference == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2targetCellReference, nameof(mSExcelGetAndSetCellValue2targetCellReference), required: true);
-            var __workflow_mSExcelGetAndSetCellValue2workflow = mSExcelGetAndSetCellValue2workflow == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2workflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2workflow, nameof(mSExcelGetAndSetCellValue2workflow), required: true);
-            var __workflow_mSExcelGetAndSetCellValue2sourceHandle = mSExcelGetAndSetCellValue2sourceHandle == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2sourceHandle, nameof(mSExcelGetAndSetCellValue2sourceHandle), required: false);
-            var __workflow_mSExcelGetAndSetCellValue2sourceWorkbookName = mSExcelGetAndSetCellValue2sourceWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2sourceWorkbookName, nameof(mSExcelGetAndSetCellValue2sourceWorkbookName), required: false);
-            var __workflow_mSExcelGetAndSetCellValue2sourceWorksheetName = mSExcelGetAndSetCellValue2sourceWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2sourceWorksheetName, nameof(mSExcelGetAndSetCellValue2sourceWorksheetName), required: false);
-            var __workflow_mSExcelGetAndSetCellValue2targetHandle = mSExcelGetAndSetCellValue2targetHandle == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2targetHandle, nameof(mSExcelGetAndSetCellValue2targetHandle), required: false);
-            var __workflow_mSExcelGetAndSetCellValue2targetWorkbookName = mSExcelGetAndSetCellValue2targetWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2targetWorkbookName, nameof(mSExcelGetAndSetCellValue2targetWorkbookName), required: false);
-            var __workflow_mSExcelGetAndSetCellValue2targetWorksheetName = mSExcelGetAndSetCellValue2targetWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellValue2targetWorksheetName, nameof(mSExcelGetAndSetCellValue2targetWorksheetName), required: false);
+            var __workflow_mSExcelGetAndSetCellValue2sourceCellReference = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceCellReference, nameof(mSExcelGetAndSetCellValue2sourceCellReference), required: true);
+            var __workflow_mSExcelGetAndSetCellValue2targetCellReference = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetCellReference, nameof(mSExcelGetAndSetCellValue2targetCellReference), required: true);
+            var __workflow_mSExcelGetAndSetCellValue2workflow = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2workflow, nameof(mSExcelGetAndSetCellValue2workflow), required: true);
+            var __workflow_mSExcelGetAndSetCellValue2sourceHandle = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceHandle, nameof(mSExcelGetAndSetCellValue2sourceHandle), required: false);
+            var __workflow_mSExcelGetAndSetCellValue2sourceWorkbookName = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceWorkbookName, nameof(mSExcelGetAndSetCellValue2sourceWorkbookName), required: false);
+            var __workflow_mSExcelGetAndSetCellValue2sourceWorksheetName = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2sourceWorksheetName, nameof(mSExcelGetAndSetCellValue2sourceWorksheetName), required: false);
+            var __workflow_mSExcelGetAndSetCellValue2targetHandle = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetHandle, nameof(mSExcelGetAndSetCellValue2targetHandle), required: false);
+            var __workflow_mSExcelGetAndSetCellValue2targetWorkbookName = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetWorkbookName, nameof(mSExcelGetAndSetCellValue2targetWorkbookName), required: false);
+            var __workflow_mSExcelGetAndSetCellValue2targetWorksheetName = WorkflowExpression.Compile(mSExcelGetAndSetCellValue2targetWorksheetName, nameof(mSExcelGetAndSetCellValue2targetWorksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetAndSetCellValue2Response>(() =>
             {
                 var apiCallPath = "/MSExcel/GetAndSetCellValue2";
@@ -6581,24 +6118,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetAndSetCellTextResponse> MSExcelGetAndSetCellText(Expression<Func<string>> mSExcelGetAndSetCellTextsourceCellReference, Expression<Func<string>> mSExcelGetAndSetCellTexttargetCellReference, Expression<Func<string>> mSExcelGetAndSetCellTextworkflow, Expression<Func<int>> mSExcelGetAndSetCellTextsourceHandle = null, Expression<Func<string>> mSExcelGetAndSetCellTextsourceWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellTextsourceWorksheetName = null, Expression<Func<int>> mSExcelGetAndSetCellTexttargetHandle = null, Expression<Func<string>> mSExcelGetAndSetCellTexttargetWorkbookName = null, Expression<Func<string>> mSExcelGetAndSetCellTexttargetWorksheetName = null)
         {
-            var __workflow_mSExcelGetAndSetCellTextsourceCellReference = mSExcelGetAndSetCellTextsourceCellReference == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTextsourceCellReference, nameof(mSExcelGetAndSetCellTextsourceCellReference), required: true);
-            var __workflow_mSExcelGetAndSetCellTexttargetCellReference = mSExcelGetAndSetCellTexttargetCellReference == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetCellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTexttargetCellReference, nameof(mSExcelGetAndSetCellTexttargetCellReference), required: true);
-            var __workflow_mSExcelGetAndSetCellTextworkflow = mSExcelGetAndSetCellTextworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTextworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTextworkflow, nameof(mSExcelGetAndSetCellTextworkflow), required: true);
-            var __workflow_mSExcelGetAndSetCellTextsourceHandle = mSExcelGetAndSetCellTextsourceHandle == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTextsourceHandle, nameof(mSExcelGetAndSetCellTextsourceHandle), required: false);
-            var __workflow_mSExcelGetAndSetCellTextsourceWorkbookName = mSExcelGetAndSetCellTextsourceWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTextsourceWorkbookName, nameof(mSExcelGetAndSetCellTextsourceWorkbookName), required: false);
-            var __workflow_mSExcelGetAndSetCellTextsourceWorksheetName = mSExcelGetAndSetCellTextsourceWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTextsourceWorksheetName, nameof(mSExcelGetAndSetCellTextsourceWorksheetName), required: false);
-            var __workflow_mSExcelGetAndSetCellTexttargetHandle = mSExcelGetAndSetCellTexttargetHandle == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetHandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTexttargetHandle, nameof(mSExcelGetAndSetCellTexttargetHandle), required: false);
-            var __workflow_mSExcelGetAndSetCellTexttargetWorkbookName = mSExcelGetAndSetCellTexttargetWorkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetWorkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTexttargetWorkbookName, nameof(mSExcelGetAndSetCellTexttargetWorkbookName), required: false);
-            var __workflow_mSExcelGetAndSetCellTexttargetWorksheetName = mSExcelGetAndSetCellTexttargetWorksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetWorksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetAndSetCellTexttargetWorksheetName, nameof(mSExcelGetAndSetCellTexttargetWorksheetName), required: false);
+            var __workflow_mSExcelGetAndSetCellTextsourceCellReference = WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceCellReference, nameof(mSExcelGetAndSetCellTextsourceCellReference), required: true);
+            var __workflow_mSExcelGetAndSetCellTexttargetCellReference = WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetCellReference, nameof(mSExcelGetAndSetCellTexttargetCellReference), required: true);
+            var __workflow_mSExcelGetAndSetCellTextworkflow = WorkflowExpression.Compile(mSExcelGetAndSetCellTextworkflow, nameof(mSExcelGetAndSetCellTextworkflow), required: true);
+            var __workflow_mSExcelGetAndSetCellTextsourceHandle = WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceHandle, nameof(mSExcelGetAndSetCellTextsourceHandle), required: false);
+            var __workflow_mSExcelGetAndSetCellTextsourceWorkbookName = WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceWorkbookName, nameof(mSExcelGetAndSetCellTextsourceWorkbookName), required: false);
+            var __workflow_mSExcelGetAndSetCellTextsourceWorksheetName = WorkflowExpression.Compile(mSExcelGetAndSetCellTextsourceWorksheetName, nameof(mSExcelGetAndSetCellTextsourceWorksheetName), required: false);
+            var __workflow_mSExcelGetAndSetCellTexttargetHandle = WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetHandle, nameof(mSExcelGetAndSetCellTexttargetHandle), required: false);
+            var __workflow_mSExcelGetAndSetCellTexttargetWorkbookName = WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetWorkbookName, nameof(mSExcelGetAndSetCellTexttargetWorkbookName), required: false);
+            var __workflow_mSExcelGetAndSetCellTexttargetWorksheetName = WorkflowExpression.Compile(mSExcelGetAndSetCellTexttargetWorksheetName, nameof(mSExcelGetAndSetCellTexttargetWorksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetAndSetCellTextResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetAndSetCellText";
@@ -6680,20 +6208,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelCheckOLEObjectResponse> MSExcelCheckOLEObject(Expression<Func<string>> mSExcelCheckOLEObjectoLEObjectName, Expression<Func<string>> mSExcelCheckOLEObjectworkflow, Expression<Func<int>> mSExcelCheckOLEObjecthandle = null, Expression<Func<string>> mSExcelCheckOLEObjectworkbookName = null, Expression<Func<string>> mSExcelCheckOLEObjectworksheetName = null, Expression<Func<bool>> mSExcelCheckOLEObjectchecked = null, Expression<Func<bool>> mSExcelCheckOLEObjectrunInBackground = null)
         {
-            var __workflow_mSExcelCheckOLEObjectoLEObjectName = mSExcelCheckOLEObjectoLEObjectName == null ? null : WorkflowExpression.Compile(mSExcelCheckOLEObjectoLEObjectName);
-            WorkflowExpression.Validate(__workflow_mSExcelCheckOLEObjectoLEObjectName, nameof(mSExcelCheckOLEObjectoLEObjectName), required: true);
-            var __workflow_mSExcelCheckOLEObjectworkflow = mSExcelCheckOLEObjectworkflow == null ? null : WorkflowExpression.Compile(mSExcelCheckOLEObjectworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelCheckOLEObjectworkflow, nameof(mSExcelCheckOLEObjectworkflow), required: true);
-            var __workflow_mSExcelCheckOLEObjecthandle = mSExcelCheckOLEObjecthandle == null ? null : WorkflowExpression.Compile(mSExcelCheckOLEObjecthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelCheckOLEObjecthandle, nameof(mSExcelCheckOLEObjecthandle), required: false);
-            var __workflow_mSExcelCheckOLEObjectworkbookName = mSExcelCheckOLEObjectworkbookName == null ? null : WorkflowExpression.Compile(mSExcelCheckOLEObjectworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelCheckOLEObjectworkbookName, nameof(mSExcelCheckOLEObjectworkbookName), required: false);
-            var __workflow_mSExcelCheckOLEObjectworksheetName = mSExcelCheckOLEObjectworksheetName == null ? null : WorkflowExpression.Compile(mSExcelCheckOLEObjectworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelCheckOLEObjectworksheetName, nameof(mSExcelCheckOLEObjectworksheetName), required: false);
-            var __workflow_mSExcelCheckOLEObjectchecked = mSExcelCheckOLEObjectchecked == null ? null : WorkflowExpression.Compile(mSExcelCheckOLEObjectchecked);
-            WorkflowExpression.Validate(__workflow_mSExcelCheckOLEObjectchecked, nameof(mSExcelCheckOLEObjectchecked), required: false);
-            var __workflow_mSExcelCheckOLEObjectrunInBackground = mSExcelCheckOLEObjectrunInBackground == null ? null : WorkflowExpression.Compile(mSExcelCheckOLEObjectrunInBackground);
-            WorkflowExpression.Validate(__workflow_mSExcelCheckOLEObjectrunInBackground, nameof(mSExcelCheckOLEObjectrunInBackground), required: false);
+            var __workflow_mSExcelCheckOLEObjectoLEObjectName = WorkflowExpression.Compile(mSExcelCheckOLEObjectoLEObjectName, nameof(mSExcelCheckOLEObjectoLEObjectName), required: true);
+            var __workflow_mSExcelCheckOLEObjectworkflow = WorkflowExpression.Compile(mSExcelCheckOLEObjectworkflow, nameof(mSExcelCheckOLEObjectworkflow), required: true);
+            var __workflow_mSExcelCheckOLEObjecthandle = WorkflowExpression.Compile(mSExcelCheckOLEObjecthandle, nameof(mSExcelCheckOLEObjecthandle), required: false);
+            var __workflow_mSExcelCheckOLEObjectworkbookName = WorkflowExpression.Compile(mSExcelCheckOLEObjectworkbookName, nameof(mSExcelCheckOLEObjectworkbookName), required: false);
+            var __workflow_mSExcelCheckOLEObjectworksheetName = WorkflowExpression.Compile(mSExcelCheckOLEObjectworksheetName, nameof(mSExcelCheckOLEObjectworksheetName), required: false);
+            var __workflow_mSExcelCheckOLEObjectchecked = WorkflowExpression.Compile(mSExcelCheckOLEObjectchecked, nameof(mSExcelCheckOLEObjectchecked), required: false);
+            var __workflow_mSExcelCheckOLEObjectrunInBackground = WorkflowExpression.Compile(mSExcelCheckOLEObjectrunInBackground, nameof(mSExcelCheckOLEObjectrunInBackground), required: false);
             return new DeferredBodyAction<MSExcelCheckOLEObjectResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/CheckOLEObject";
@@ -6777,20 +6298,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelInputTextIntoOLEObjectResponse> MSExcelInputTextIntoOLEObject(Expression<Func<string>> mSExcelInputTextIntoOLEObjectoLEObjectName, Expression<Func<string>> mSExcelInputTextIntoOLEObjectworkflow, Expression<Func<int>> mSExcelInputTextIntoOLEObjecthandle = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjectworkbookName = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjectworksheetName = null, Expression<Func<string>> mSExcelInputTextIntoOLEObjecttextToInput = null, Expression<Func<bool>> mSExcelInputTextIntoOLEObjectrunInBackground = null)
         {
-            var __workflow_mSExcelInputTextIntoOLEObjectoLEObjectName = mSExcelInputTextIntoOLEObjectoLEObjectName == null ? null : WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectoLEObjectName);
-            WorkflowExpression.Validate(__workflow_mSExcelInputTextIntoOLEObjectoLEObjectName, nameof(mSExcelInputTextIntoOLEObjectoLEObjectName), required: true);
-            var __workflow_mSExcelInputTextIntoOLEObjectworkflow = mSExcelInputTextIntoOLEObjectworkflow == null ? null : WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelInputTextIntoOLEObjectworkflow, nameof(mSExcelInputTextIntoOLEObjectworkflow), required: true);
-            var __workflow_mSExcelInputTextIntoOLEObjecthandle = mSExcelInputTextIntoOLEObjecthandle == null ? null : WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjecthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelInputTextIntoOLEObjecthandle, nameof(mSExcelInputTextIntoOLEObjecthandle), required: false);
-            var __workflow_mSExcelInputTextIntoOLEObjectworkbookName = mSExcelInputTextIntoOLEObjectworkbookName == null ? null : WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelInputTextIntoOLEObjectworkbookName, nameof(mSExcelInputTextIntoOLEObjectworkbookName), required: false);
-            var __workflow_mSExcelInputTextIntoOLEObjectworksheetName = mSExcelInputTextIntoOLEObjectworksheetName == null ? null : WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelInputTextIntoOLEObjectworksheetName, nameof(mSExcelInputTextIntoOLEObjectworksheetName), required: false);
-            var __workflow_mSExcelInputTextIntoOLEObjecttextToInput = mSExcelInputTextIntoOLEObjecttextToInput == null ? null : WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjecttextToInput);
-            WorkflowExpression.Validate(__workflow_mSExcelInputTextIntoOLEObjecttextToInput, nameof(mSExcelInputTextIntoOLEObjecttextToInput), required: false);
-            var __workflow_mSExcelInputTextIntoOLEObjectrunInBackground = mSExcelInputTextIntoOLEObjectrunInBackground == null ? null : WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectrunInBackground);
-            WorkflowExpression.Validate(__workflow_mSExcelInputTextIntoOLEObjectrunInBackground, nameof(mSExcelInputTextIntoOLEObjectrunInBackground), required: false);
+            var __workflow_mSExcelInputTextIntoOLEObjectoLEObjectName = WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectoLEObjectName, nameof(mSExcelInputTextIntoOLEObjectoLEObjectName), required: true);
+            var __workflow_mSExcelInputTextIntoOLEObjectworkflow = WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectworkflow, nameof(mSExcelInputTextIntoOLEObjectworkflow), required: true);
+            var __workflow_mSExcelInputTextIntoOLEObjecthandle = WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjecthandle, nameof(mSExcelInputTextIntoOLEObjecthandle), required: false);
+            var __workflow_mSExcelInputTextIntoOLEObjectworkbookName = WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectworkbookName, nameof(mSExcelInputTextIntoOLEObjectworkbookName), required: false);
+            var __workflow_mSExcelInputTextIntoOLEObjectworksheetName = WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectworksheetName, nameof(mSExcelInputTextIntoOLEObjectworksheetName), required: false);
+            var __workflow_mSExcelInputTextIntoOLEObjecttextToInput = WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjecttextToInput, nameof(mSExcelInputTextIntoOLEObjecttextToInput), required: false);
+            var __workflow_mSExcelInputTextIntoOLEObjectrunInBackground = WorkflowExpression.Compile(mSExcelInputTextIntoOLEObjectrunInBackground, nameof(mSExcelInputTextIntoOLEObjectrunInBackground), required: false);
             return new DeferredBodyAction<MSExcelInputTextIntoOLEObjectResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/InputTextIntoOLEObject";
@@ -6864,18 +6378,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSetCellBackgroundColourResponse> MSExcelSetCellBackgroundColour(Expression<Func<string>> mSExcelSetCellBackgroundColourcellReference, Expression<Func<int>> mSExcelSetCellBackgroundColourcolourIndex, Expression<Func<string>> mSExcelSetCellBackgroundColourworkflow, Expression<Func<int>> mSExcelSetCellBackgroundColourhandle = null, Expression<Func<string>> mSExcelSetCellBackgroundColourworkbookName = null, Expression<Func<string>> mSExcelSetCellBackgroundColourworksheetName = null)
         {
-            var __workflow_mSExcelSetCellBackgroundColourcellReference = mSExcelSetCellBackgroundColourcellReference == null ? null : WorkflowExpression.Compile(mSExcelSetCellBackgroundColourcellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellBackgroundColourcellReference, nameof(mSExcelSetCellBackgroundColourcellReference), required: true);
-            var __workflow_mSExcelSetCellBackgroundColourcolourIndex = mSExcelSetCellBackgroundColourcolourIndex == null ? null : WorkflowExpression.Compile(mSExcelSetCellBackgroundColourcolourIndex);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellBackgroundColourcolourIndex, nameof(mSExcelSetCellBackgroundColourcolourIndex), required: true);
-            var __workflow_mSExcelSetCellBackgroundColourworkflow = mSExcelSetCellBackgroundColourworkflow == null ? null : WorkflowExpression.Compile(mSExcelSetCellBackgroundColourworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellBackgroundColourworkflow, nameof(mSExcelSetCellBackgroundColourworkflow), required: true);
-            var __workflow_mSExcelSetCellBackgroundColourhandle = mSExcelSetCellBackgroundColourhandle == null ? null : WorkflowExpression.Compile(mSExcelSetCellBackgroundColourhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellBackgroundColourhandle, nameof(mSExcelSetCellBackgroundColourhandle), required: false);
-            var __workflow_mSExcelSetCellBackgroundColourworkbookName = mSExcelSetCellBackgroundColourworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSetCellBackgroundColourworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellBackgroundColourworkbookName, nameof(mSExcelSetCellBackgroundColourworkbookName), required: false);
-            var __workflow_mSExcelSetCellBackgroundColourworksheetName = mSExcelSetCellBackgroundColourworksheetName == null ? null : WorkflowExpression.Compile(mSExcelSetCellBackgroundColourworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelSetCellBackgroundColourworksheetName, nameof(mSExcelSetCellBackgroundColourworksheetName), required: false);
+            var __workflow_mSExcelSetCellBackgroundColourcellReference = WorkflowExpression.Compile(mSExcelSetCellBackgroundColourcellReference, nameof(mSExcelSetCellBackgroundColourcellReference), required: true);
+            var __workflow_mSExcelSetCellBackgroundColourcolourIndex = WorkflowExpression.Compile(mSExcelSetCellBackgroundColourcolourIndex, nameof(mSExcelSetCellBackgroundColourcolourIndex), required: true);
+            var __workflow_mSExcelSetCellBackgroundColourworkflow = WorkflowExpression.Compile(mSExcelSetCellBackgroundColourworkflow, nameof(mSExcelSetCellBackgroundColourworkflow), required: true);
+            var __workflow_mSExcelSetCellBackgroundColourhandle = WorkflowExpression.Compile(mSExcelSetCellBackgroundColourhandle, nameof(mSExcelSetCellBackgroundColourhandle), required: false);
+            var __workflow_mSExcelSetCellBackgroundColourworkbookName = WorkflowExpression.Compile(mSExcelSetCellBackgroundColourworkbookName, nameof(mSExcelSetCellBackgroundColourworkbookName), required: false);
+            var __workflow_mSExcelSetCellBackgroundColourworksheetName = WorkflowExpression.Compile(mSExcelSetCellBackgroundColourworksheetName, nameof(mSExcelSetCellBackgroundColourworksheetName), required: false);
             return new DeferredBodyAction<MSExcelSetCellBackgroundColourResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SetCellBackgroundColour";
@@ -6929,16 +6437,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetCellBackgroundColourResponse> MSExcelGetCellBackgroundColour(Expression<Func<string>> mSExcelGetCellBackgroundColourcellReference, Expression<Func<string>> mSExcelGetCellBackgroundColourworkflow, Expression<Func<int>> mSExcelGetCellBackgroundColourhandle = null, Expression<Func<string>> mSExcelGetCellBackgroundColourworkbookName = null, Expression<Func<string>> mSExcelGetCellBackgroundColourworksheetName = null)
         {
-            var __workflow_mSExcelGetCellBackgroundColourcellReference = mSExcelGetCellBackgroundColourcellReference == null ? null : WorkflowExpression.Compile(mSExcelGetCellBackgroundColourcellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellBackgroundColourcellReference, nameof(mSExcelGetCellBackgroundColourcellReference), required: true);
-            var __workflow_mSExcelGetCellBackgroundColourworkflow = mSExcelGetCellBackgroundColourworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetCellBackgroundColourworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellBackgroundColourworkflow, nameof(mSExcelGetCellBackgroundColourworkflow), required: true);
-            var __workflow_mSExcelGetCellBackgroundColourhandle = mSExcelGetCellBackgroundColourhandle == null ? null : WorkflowExpression.Compile(mSExcelGetCellBackgroundColourhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellBackgroundColourhandle, nameof(mSExcelGetCellBackgroundColourhandle), required: false);
-            var __workflow_mSExcelGetCellBackgroundColourworkbookName = mSExcelGetCellBackgroundColourworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetCellBackgroundColourworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellBackgroundColourworkbookName, nameof(mSExcelGetCellBackgroundColourworkbookName), required: false);
-            var __workflow_mSExcelGetCellBackgroundColourworksheetName = mSExcelGetCellBackgroundColourworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetCellBackgroundColourworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetCellBackgroundColourworksheetName, nameof(mSExcelGetCellBackgroundColourworksheetName), required: false);
+            var __workflow_mSExcelGetCellBackgroundColourcellReference = WorkflowExpression.Compile(mSExcelGetCellBackgroundColourcellReference, nameof(mSExcelGetCellBackgroundColourcellReference), required: true);
+            var __workflow_mSExcelGetCellBackgroundColourworkflow = WorkflowExpression.Compile(mSExcelGetCellBackgroundColourworkflow, nameof(mSExcelGetCellBackgroundColourworkflow), required: true);
+            var __workflow_mSExcelGetCellBackgroundColourhandle = WorkflowExpression.Compile(mSExcelGetCellBackgroundColourhandle, nameof(mSExcelGetCellBackgroundColourhandle), required: false);
+            var __workflow_mSExcelGetCellBackgroundColourworkbookName = WorkflowExpression.Compile(mSExcelGetCellBackgroundColourworkbookName, nameof(mSExcelGetCellBackgroundColourworkbookName), required: false);
+            var __workflow_mSExcelGetCellBackgroundColourworksheetName = WorkflowExpression.Compile(mSExcelGetCellBackgroundColourworksheetName, nameof(mSExcelGetCellBackgroundColourworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetCellBackgroundColourResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetCellBackgroundColour";
@@ -6990,16 +6493,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetOLEObjectValueResponse> MSExcelGetOLEObjectValue(Expression<Func<string>> mSExcelGetOLEObjectValueoLEObjectName, Expression<Func<string>> mSExcelGetOLEObjectValueworkflow, Expression<Func<int>> mSExcelGetOLEObjectValuehandle = null, Expression<Func<string>> mSExcelGetOLEObjectValueworkbookName = null, Expression<Func<string>> mSExcelGetOLEObjectValueworksheetName = null)
         {
-            var __workflow_mSExcelGetOLEObjectValueoLEObjectName = mSExcelGetOLEObjectValueoLEObjectName == null ? null : WorkflowExpression.Compile(mSExcelGetOLEObjectValueoLEObjectName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetOLEObjectValueoLEObjectName, nameof(mSExcelGetOLEObjectValueoLEObjectName), required: true);
-            var __workflow_mSExcelGetOLEObjectValueworkflow = mSExcelGetOLEObjectValueworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetOLEObjectValueworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetOLEObjectValueworkflow, nameof(mSExcelGetOLEObjectValueworkflow), required: true);
-            var __workflow_mSExcelGetOLEObjectValuehandle = mSExcelGetOLEObjectValuehandle == null ? null : WorkflowExpression.Compile(mSExcelGetOLEObjectValuehandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetOLEObjectValuehandle, nameof(mSExcelGetOLEObjectValuehandle), required: false);
-            var __workflow_mSExcelGetOLEObjectValueworkbookName = mSExcelGetOLEObjectValueworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetOLEObjectValueworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetOLEObjectValueworkbookName, nameof(mSExcelGetOLEObjectValueworkbookName), required: false);
-            var __workflow_mSExcelGetOLEObjectValueworksheetName = mSExcelGetOLEObjectValueworksheetName == null ? null : WorkflowExpression.Compile(mSExcelGetOLEObjectValueworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetOLEObjectValueworksheetName, nameof(mSExcelGetOLEObjectValueworksheetName), required: false);
+            var __workflow_mSExcelGetOLEObjectValueoLEObjectName = WorkflowExpression.Compile(mSExcelGetOLEObjectValueoLEObjectName, nameof(mSExcelGetOLEObjectValueoLEObjectName), required: true);
+            var __workflow_mSExcelGetOLEObjectValueworkflow = WorkflowExpression.Compile(mSExcelGetOLEObjectValueworkflow, nameof(mSExcelGetOLEObjectValueworkflow), required: true);
+            var __workflow_mSExcelGetOLEObjectValuehandle = WorkflowExpression.Compile(mSExcelGetOLEObjectValuehandle, nameof(mSExcelGetOLEObjectValuehandle), required: false);
+            var __workflow_mSExcelGetOLEObjectValueworkbookName = WorkflowExpression.Compile(mSExcelGetOLEObjectValueworkbookName, nameof(mSExcelGetOLEObjectValueworkbookName), required: false);
+            var __workflow_mSExcelGetOLEObjectValueworksheetName = WorkflowExpression.Compile(mSExcelGetOLEObjectValueworksheetName, nameof(mSExcelGetOLEObjectValueworksheetName), required: false);
             return new DeferredBodyAction<MSExcelGetOLEObjectValueResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetOLEObjectValue";
@@ -7051,16 +6549,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelDoesOLEObjectExistResponse> MSExcelDoesOLEObjectExist(Expression<Func<string>> mSExcelDoesOLEObjectExistoLEObjectName, Expression<Func<string>> mSExcelDoesOLEObjectExistworkflow, Expression<Func<int>> mSExcelDoesOLEObjectExisthandle = null, Expression<Func<string>> mSExcelDoesOLEObjectExistworkbookName = null, Expression<Func<string>> mSExcelDoesOLEObjectExistworksheetName = null)
         {
-            var __workflow_mSExcelDoesOLEObjectExistoLEObjectName = mSExcelDoesOLEObjectExistoLEObjectName == null ? null : WorkflowExpression.Compile(mSExcelDoesOLEObjectExistoLEObjectName);
-            WorkflowExpression.Validate(__workflow_mSExcelDoesOLEObjectExistoLEObjectName, nameof(mSExcelDoesOLEObjectExistoLEObjectName), required: true);
-            var __workflow_mSExcelDoesOLEObjectExistworkflow = mSExcelDoesOLEObjectExistworkflow == null ? null : WorkflowExpression.Compile(mSExcelDoesOLEObjectExistworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelDoesOLEObjectExistworkflow, nameof(mSExcelDoesOLEObjectExistworkflow), required: true);
-            var __workflow_mSExcelDoesOLEObjectExisthandle = mSExcelDoesOLEObjectExisthandle == null ? null : WorkflowExpression.Compile(mSExcelDoesOLEObjectExisthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelDoesOLEObjectExisthandle, nameof(mSExcelDoesOLEObjectExisthandle), required: false);
-            var __workflow_mSExcelDoesOLEObjectExistworkbookName = mSExcelDoesOLEObjectExistworkbookName == null ? null : WorkflowExpression.Compile(mSExcelDoesOLEObjectExistworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelDoesOLEObjectExistworkbookName, nameof(mSExcelDoesOLEObjectExistworkbookName), required: false);
-            var __workflow_mSExcelDoesOLEObjectExistworksheetName = mSExcelDoesOLEObjectExistworksheetName == null ? null : WorkflowExpression.Compile(mSExcelDoesOLEObjectExistworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelDoesOLEObjectExistworksheetName, nameof(mSExcelDoesOLEObjectExistworksheetName), required: false);
+            var __workflow_mSExcelDoesOLEObjectExistoLEObjectName = WorkflowExpression.Compile(mSExcelDoesOLEObjectExistoLEObjectName, nameof(mSExcelDoesOLEObjectExistoLEObjectName), required: true);
+            var __workflow_mSExcelDoesOLEObjectExistworkflow = WorkflowExpression.Compile(mSExcelDoesOLEObjectExistworkflow, nameof(mSExcelDoesOLEObjectExistworkflow), required: true);
+            var __workflow_mSExcelDoesOLEObjectExisthandle = WorkflowExpression.Compile(mSExcelDoesOLEObjectExisthandle, nameof(mSExcelDoesOLEObjectExisthandle), required: false);
+            var __workflow_mSExcelDoesOLEObjectExistworkbookName = WorkflowExpression.Compile(mSExcelDoesOLEObjectExistworkbookName, nameof(mSExcelDoesOLEObjectExistworkbookName), required: false);
+            var __workflow_mSExcelDoesOLEObjectExistworksheetName = WorkflowExpression.Compile(mSExcelDoesOLEObjectExistworksheetName, nameof(mSExcelDoesOLEObjectExistworksheetName), required: false);
             return new DeferredBodyAction<MSExcelDoesOLEObjectExistResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/DoesOLEObjectExist";
@@ -7112,18 +6605,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelPressOLEObjectResponse> MSExcelPressOLEObject(Expression<Func<string>> mSExcelPressOLEObjectoLEObjectName, Expression<Func<string>> mSExcelPressOLEObjectworkflow, Expression<Func<int>> mSExcelPressOLEObjecthandle = null, Expression<Func<string>> mSExcelPressOLEObjectworkbookName = null, Expression<Func<string>> mSExcelPressOLEObjectworksheetName = null, Expression<Func<bool>> mSExcelPressOLEObjectrunInBackground = null)
         {
-            var __workflow_mSExcelPressOLEObjectoLEObjectName = mSExcelPressOLEObjectoLEObjectName == null ? null : WorkflowExpression.Compile(mSExcelPressOLEObjectoLEObjectName);
-            WorkflowExpression.Validate(__workflow_mSExcelPressOLEObjectoLEObjectName, nameof(mSExcelPressOLEObjectoLEObjectName), required: true);
-            var __workflow_mSExcelPressOLEObjectworkflow = mSExcelPressOLEObjectworkflow == null ? null : WorkflowExpression.Compile(mSExcelPressOLEObjectworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelPressOLEObjectworkflow, nameof(mSExcelPressOLEObjectworkflow), required: true);
-            var __workflow_mSExcelPressOLEObjecthandle = mSExcelPressOLEObjecthandle == null ? null : WorkflowExpression.Compile(mSExcelPressOLEObjecthandle);
-            WorkflowExpression.Validate(__workflow_mSExcelPressOLEObjecthandle, nameof(mSExcelPressOLEObjecthandle), required: false);
-            var __workflow_mSExcelPressOLEObjectworkbookName = mSExcelPressOLEObjectworkbookName == null ? null : WorkflowExpression.Compile(mSExcelPressOLEObjectworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelPressOLEObjectworkbookName, nameof(mSExcelPressOLEObjectworkbookName), required: false);
-            var __workflow_mSExcelPressOLEObjectworksheetName = mSExcelPressOLEObjectworksheetName == null ? null : WorkflowExpression.Compile(mSExcelPressOLEObjectworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelPressOLEObjectworksheetName, nameof(mSExcelPressOLEObjectworksheetName), required: false);
-            var __workflow_mSExcelPressOLEObjectrunInBackground = mSExcelPressOLEObjectrunInBackground == null ? null : WorkflowExpression.Compile(mSExcelPressOLEObjectrunInBackground);
-            WorkflowExpression.Validate(__workflow_mSExcelPressOLEObjectrunInBackground, nameof(mSExcelPressOLEObjectrunInBackground), required: false);
+            var __workflow_mSExcelPressOLEObjectoLEObjectName = WorkflowExpression.Compile(mSExcelPressOLEObjectoLEObjectName, nameof(mSExcelPressOLEObjectoLEObjectName), required: true);
+            var __workflow_mSExcelPressOLEObjectworkflow = WorkflowExpression.Compile(mSExcelPressOLEObjectworkflow, nameof(mSExcelPressOLEObjectworkflow), required: true);
+            var __workflow_mSExcelPressOLEObjecthandle = WorkflowExpression.Compile(mSExcelPressOLEObjecthandle, nameof(mSExcelPressOLEObjecthandle), required: false);
+            var __workflow_mSExcelPressOLEObjectworkbookName = WorkflowExpression.Compile(mSExcelPressOLEObjectworkbookName, nameof(mSExcelPressOLEObjectworkbookName), required: false);
+            var __workflow_mSExcelPressOLEObjectworksheetName = WorkflowExpression.Compile(mSExcelPressOLEObjectworksheetName, nameof(mSExcelPressOLEObjectworksheetName), required: false);
+            var __workflow_mSExcelPressOLEObjectrunInBackground = WorkflowExpression.Compile(mSExcelPressOLEObjectrunInBackground, nameof(mSExcelPressOLEObjectrunInBackground), required: false);
             return new DeferredBodyAction<MSExcelPressOLEObjectResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/PressOLEObject";
@@ -7191,22 +6678,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelSetWorksheetSensitivityLabelResponse> MSExcelSetWorksheetSensitivityLabel(Expression<Func<mSExcelSetWorksheetSensitivityLabelassignmentMethodInput>> mSExcelSetWorksheetSensitivityLabelassignmentMethod, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabellabelId, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelworkflow, Expression<Func<int>> mSExcelSetWorksheetSensitivityLabelhandle = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelworkbookName = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabellabelName = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabelsiteId = null, Expression<Func<string>> mSExcelSetWorksheetSensitivityLabeljustification = null)
         {
-            var __workflow_mSExcelSetWorksheetSensitivityLabelassignmentMethod = mSExcelSetWorksheetSensitivityLabelassignmentMethod == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelassignmentMethod);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabelassignmentMethod, nameof(mSExcelSetWorksheetSensitivityLabelassignmentMethod), required: true);
-            var __workflow_mSExcelSetWorksheetSensitivityLabellabelId = mSExcelSetWorksheetSensitivityLabellabelId == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabellabelId);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabellabelId, nameof(mSExcelSetWorksheetSensitivityLabellabelId), required: true);
-            var __workflow_mSExcelSetWorksheetSensitivityLabelworkflow = mSExcelSetWorksheetSensitivityLabelworkflow == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabelworkflow, nameof(mSExcelSetWorksheetSensitivityLabelworkflow), required: true);
-            var __workflow_mSExcelSetWorksheetSensitivityLabelhandle = mSExcelSetWorksheetSensitivityLabelhandle == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabelhandle, nameof(mSExcelSetWorksheetSensitivityLabelhandle), required: false);
-            var __workflow_mSExcelSetWorksheetSensitivityLabelworkbookName = mSExcelSetWorksheetSensitivityLabelworkbookName == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabelworkbookName, nameof(mSExcelSetWorksheetSensitivityLabelworkbookName), required: false);
-            var __workflow_mSExcelSetWorksheetSensitivityLabellabelName = mSExcelSetWorksheetSensitivityLabellabelName == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabellabelName);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabellabelName, nameof(mSExcelSetWorksheetSensitivityLabellabelName), required: false);
-            var __workflow_mSExcelSetWorksheetSensitivityLabelsiteId = mSExcelSetWorksheetSensitivityLabelsiteId == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelsiteId);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabelsiteId, nameof(mSExcelSetWorksheetSensitivityLabelsiteId), required: false);
-            var __workflow_mSExcelSetWorksheetSensitivityLabeljustification = mSExcelSetWorksheetSensitivityLabeljustification == null ? null : WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabeljustification);
-            WorkflowExpression.Validate(__workflow_mSExcelSetWorksheetSensitivityLabeljustification, nameof(mSExcelSetWorksheetSensitivityLabeljustification), required: false);
+            var __workflow_mSExcelSetWorksheetSensitivityLabelassignmentMethod = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelassignmentMethod, nameof(mSExcelSetWorksheetSensitivityLabelassignmentMethod), required: true);
+            var __workflow_mSExcelSetWorksheetSensitivityLabellabelId = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabellabelId, nameof(mSExcelSetWorksheetSensitivityLabellabelId), required: true);
+            var __workflow_mSExcelSetWorksheetSensitivityLabelworkflow = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelworkflow, nameof(mSExcelSetWorksheetSensitivityLabelworkflow), required: true);
+            var __workflow_mSExcelSetWorksheetSensitivityLabelhandle = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelhandle, nameof(mSExcelSetWorksheetSensitivityLabelhandle), required: false);
+            var __workflow_mSExcelSetWorksheetSensitivityLabelworkbookName = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelworkbookName, nameof(mSExcelSetWorksheetSensitivityLabelworkbookName), required: false);
+            var __workflow_mSExcelSetWorksheetSensitivityLabellabelName = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabellabelName, nameof(mSExcelSetWorksheetSensitivityLabellabelName), required: false);
+            var __workflow_mSExcelSetWorksheetSensitivityLabelsiteId = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabelsiteId, nameof(mSExcelSetWorksheetSensitivityLabelsiteId), required: false);
+            var __workflow_mSExcelSetWorksheetSensitivityLabeljustification = WorkflowExpression.Compile(mSExcelSetWorksheetSensitivityLabeljustification, nameof(mSExcelSetWorksheetSensitivityLabeljustification), required: false);
             return new DeferredBodyAction<MSExcelSetWorksheetSensitivityLabelResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/SetWorksheetSensitivityLabel";
@@ -7272,12 +6751,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelGetWorksheetSensitivityLabelResponse> MSExcelGetWorksheetSensitivityLabel(Expression<Func<string>> mSExcelGetWorksheetSensitivityLabelworkflow, Expression<Func<int>> mSExcelGetWorksheetSensitivityLabelhandle = null, Expression<Func<string>> mSExcelGetWorksheetSensitivityLabelworkbookName = null)
         {
-            var __workflow_mSExcelGetWorksheetSensitivityLabelworkflow = mSExcelGetWorksheetSensitivityLabelworkflow == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetSensitivityLabelworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetSensitivityLabelworkflow, nameof(mSExcelGetWorksheetSensitivityLabelworkflow), required: true);
-            var __workflow_mSExcelGetWorksheetSensitivityLabelhandle = mSExcelGetWorksheetSensitivityLabelhandle == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetSensitivityLabelhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetSensitivityLabelhandle, nameof(mSExcelGetWorksheetSensitivityLabelhandle), required: false);
-            var __workflow_mSExcelGetWorksheetSensitivityLabelworkbookName = mSExcelGetWorksheetSensitivityLabelworkbookName == null ? null : WorkflowExpression.Compile(mSExcelGetWorksheetSensitivityLabelworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelGetWorksheetSensitivityLabelworkbookName, nameof(mSExcelGetWorksheetSensitivityLabelworkbookName), required: false);
+            var __workflow_mSExcelGetWorksheetSensitivityLabelworkflow = WorkflowExpression.Compile(mSExcelGetWorksheetSensitivityLabelworkflow, nameof(mSExcelGetWorksheetSensitivityLabelworkflow), required: true);
+            var __workflow_mSExcelGetWorksheetSensitivityLabelhandle = WorkflowExpression.Compile(mSExcelGetWorksheetSensitivityLabelhandle, nameof(mSExcelGetWorksheetSensitivityLabelhandle), required: false);
+            var __workflow_mSExcelGetWorksheetSensitivityLabelworkbookName = WorkflowExpression.Compile(mSExcelGetWorksheetSensitivityLabelworkbookName, nameof(mSExcelGetWorksheetSensitivityLabelworkbookName), required: false);
             return new DeferredBodyAction<MSExcelGetWorksheetSensitivityLabelResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/GetWorksheetSensitivityLabel";
@@ -7321,20 +6797,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSExcelWriteArrayResponse> MSExcelWriteArray(Expression<Func<string>> mSExcelWriteArraycellReference, Expression<Func<string>> mSExcelWriteArrayarrayToWriteJSON, Expression<Func<mSExcelWriteArraydirectionInput>> mSExcelWriteArraydirection, Expression<Func<string>> mSExcelWriteArrayworkflow, Expression<Func<int>> mSExcelWriteArrayhandle = null, Expression<Func<string>> mSExcelWriteArrayworkbookName = null, Expression<Func<string>> mSExcelWriteArrayworksheetName = null)
         {
-            var __workflow_mSExcelWriteArraycellReference = mSExcelWriteArraycellReference == null ? null : WorkflowExpression.Compile(mSExcelWriteArraycellReference);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteArraycellReference, nameof(mSExcelWriteArraycellReference), required: true);
-            var __workflow_mSExcelWriteArrayarrayToWriteJSON = mSExcelWriteArrayarrayToWriteJSON == null ? null : WorkflowExpression.Compile(mSExcelWriteArrayarrayToWriteJSON);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteArrayarrayToWriteJSON, nameof(mSExcelWriteArrayarrayToWriteJSON), required: true);
-            var __workflow_mSExcelWriteArraydirection = mSExcelWriteArraydirection == null ? null : WorkflowExpression.Compile(mSExcelWriteArraydirection);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteArraydirection, nameof(mSExcelWriteArraydirection), required: true);
-            var __workflow_mSExcelWriteArrayworkflow = mSExcelWriteArrayworkflow == null ? null : WorkflowExpression.Compile(mSExcelWriteArrayworkflow);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteArrayworkflow, nameof(mSExcelWriteArrayworkflow), required: true);
-            var __workflow_mSExcelWriteArrayhandle = mSExcelWriteArrayhandle == null ? null : WorkflowExpression.Compile(mSExcelWriteArrayhandle);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteArrayhandle, nameof(mSExcelWriteArrayhandle), required: false);
-            var __workflow_mSExcelWriteArrayworkbookName = mSExcelWriteArrayworkbookName == null ? null : WorkflowExpression.Compile(mSExcelWriteArrayworkbookName);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteArrayworkbookName, nameof(mSExcelWriteArrayworkbookName), required: false);
-            var __workflow_mSExcelWriteArrayworksheetName = mSExcelWriteArrayworksheetName == null ? null : WorkflowExpression.Compile(mSExcelWriteArrayworksheetName);
-            WorkflowExpression.Validate(__workflow_mSExcelWriteArrayworksheetName, nameof(mSExcelWriteArrayworksheetName), required: false);
+            var __workflow_mSExcelWriteArraycellReference = WorkflowExpression.Compile(mSExcelWriteArraycellReference, nameof(mSExcelWriteArraycellReference), required: true);
+            var __workflow_mSExcelWriteArrayarrayToWriteJSON = WorkflowExpression.Compile(mSExcelWriteArrayarrayToWriteJSON, nameof(mSExcelWriteArrayarrayToWriteJSON), required: true);
+            var __workflow_mSExcelWriteArraydirection = WorkflowExpression.Compile(mSExcelWriteArraydirection, nameof(mSExcelWriteArraydirection), required: true);
+            var __workflow_mSExcelWriteArrayworkflow = WorkflowExpression.Compile(mSExcelWriteArrayworkflow, nameof(mSExcelWriteArrayworkflow), required: true);
+            var __workflow_mSExcelWriteArrayhandle = WorkflowExpression.Compile(mSExcelWriteArrayhandle, nameof(mSExcelWriteArrayhandle), required: false);
+            var __workflow_mSExcelWriteArrayworkbookName = WorkflowExpression.Compile(mSExcelWriteArrayworkbookName, nameof(mSExcelWriteArrayworkbookName), required: false);
+            var __workflow_mSExcelWriteArrayworksheetName = WorkflowExpression.Compile(mSExcelWriteArrayworksheetName, nameof(mSExcelWriteArrayworksheetName), required: false);
             return new DeferredBodyAction<MSExcelWriteArrayResponse>(() =>
             {
                 var apiCallPath = "/MSExcel/WriteArray";
@@ -7390,12 +6859,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookCreateInstanceResponse> MSOutlookCreateInstance(Expression<Func<string>> mSOutlookCreateInstanceworkflow, Expression<Func<string>> mSOutlookCreateInstanceprofileName = null, Expression<Func<bool>> mSOutlookCreateInstanceshowOutlook = null)
         {
-            var __workflow_mSOutlookCreateInstanceworkflow = mSOutlookCreateInstanceworkflow == null ? null : WorkflowExpression.Compile(mSOutlookCreateInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookCreateInstanceworkflow, nameof(mSOutlookCreateInstanceworkflow), required: true);
-            var __workflow_mSOutlookCreateInstanceprofileName = mSOutlookCreateInstanceprofileName == null ? null : WorkflowExpression.Compile(mSOutlookCreateInstanceprofileName);
-            WorkflowExpression.Validate(__workflow_mSOutlookCreateInstanceprofileName, nameof(mSOutlookCreateInstanceprofileName), required: false);
-            var __workflow_mSOutlookCreateInstanceshowOutlook = mSOutlookCreateInstanceshowOutlook == null ? null : WorkflowExpression.Compile(mSOutlookCreateInstanceshowOutlook);
-            WorkflowExpression.Validate(__workflow_mSOutlookCreateInstanceshowOutlook, nameof(mSOutlookCreateInstanceshowOutlook), required: false);
+            var __workflow_mSOutlookCreateInstanceworkflow = WorkflowExpression.Compile(mSOutlookCreateInstanceworkflow, nameof(mSOutlookCreateInstanceworkflow), required: true);
+            var __workflow_mSOutlookCreateInstanceprofileName = WorkflowExpression.Compile(mSOutlookCreateInstanceprofileName, nameof(mSOutlookCreateInstanceprofileName), required: false);
+            var __workflow_mSOutlookCreateInstanceshowOutlook = WorkflowExpression.Compile(mSOutlookCreateInstanceshowOutlook, nameof(mSOutlookCreateInstanceshowOutlook), required: false);
             return new DeferredBodyAction<MSOutlookCreateInstanceResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/CreateInstance";
@@ -7439,10 +6905,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookCloseInstance(Expression<Func<string>> mSOutlookCloseInstanceworkflow, Expression<Func<int>> mSOutlookCloseInstancesecondsToWaitForProcessToClose = null)
         {
-            var __workflow_mSOutlookCloseInstanceworkflow = mSOutlookCloseInstanceworkflow == null ? null : WorkflowExpression.Compile(mSOutlookCloseInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookCloseInstanceworkflow, nameof(mSOutlookCloseInstanceworkflow), required: true);
-            var __workflow_mSOutlookCloseInstancesecondsToWaitForProcessToClose = mSOutlookCloseInstancesecondsToWaitForProcessToClose == null ? null : WorkflowExpression.Compile(mSOutlookCloseInstancesecondsToWaitForProcessToClose);
-            WorkflowExpression.Validate(__workflow_mSOutlookCloseInstancesecondsToWaitForProcessToClose, nameof(mSOutlookCloseInstancesecondsToWaitForProcessToClose), required: false);
+            var __workflow_mSOutlookCloseInstanceworkflow = WorkflowExpression.Compile(mSOutlookCloseInstanceworkflow, nameof(mSOutlookCloseInstanceworkflow), required: true);
+            var __workflow_mSOutlookCloseInstancesecondsToWaitForProcessToClose = WorkflowExpression.Compile(mSOutlookCloseInstancesecondsToWaitForProcessToClose, nameof(mSOutlookCloseInstancesecondsToWaitForProcessToClose), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/CloseInstance";
@@ -7480,14 +6944,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookCloseInstanceUsingWindow(Expression<Func<string>> mSOutlookCloseInstanceUsingWindowworkflow, Expression<Func<bool>> mSOutlookCloseInstanceUsingWindowuseNativeWindow = null, Expression<Func<bool>> mSOutlookCloseInstanceUsingWindowuseUIA = null, Expression<Func<int>> mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose = null)
         {
-            var __workflow_mSOutlookCloseInstanceUsingWindowworkflow = mSOutlookCloseInstanceUsingWindowworkflow == null ? null : WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookCloseInstanceUsingWindowworkflow, nameof(mSOutlookCloseInstanceUsingWindowworkflow), required: true);
-            var __workflow_mSOutlookCloseInstanceUsingWindowuseNativeWindow = mSOutlookCloseInstanceUsingWindowuseNativeWindow == null ? null : WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowuseNativeWindow);
-            WorkflowExpression.Validate(__workflow_mSOutlookCloseInstanceUsingWindowuseNativeWindow, nameof(mSOutlookCloseInstanceUsingWindowuseNativeWindow), required: false);
-            var __workflow_mSOutlookCloseInstanceUsingWindowuseUIA = mSOutlookCloseInstanceUsingWindowuseUIA == null ? null : WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowuseUIA);
-            WorkflowExpression.Validate(__workflow_mSOutlookCloseInstanceUsingWindowuseUIA, nameof(mSOutlookCloseInstanceUsingWindowuseUIA), required: false);
-            var __workflow_mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose = mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose == null ? null : WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose);
-            WorkflowExpression.Validate(__workflow_mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose, nameof(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose), required: false);
+            var __workflow_mSOutlookCloseInstanceUsingWindowworkflow = WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowworkflow, nameof(mSOutlookCloseInstanceUsingWindowworkflow), required: true);
+            var __workflow_mSOutlookCloseInstanceUsingWindowuseNativeWindow = WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowuseNativeWindow, nameof(mSOutlookCloseInstanceUsingWindowuseNativeWindow), required: false);
+            var __workflow_mSOutlookCloseInstanceUsingWindowuseUIA = WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowuseUIA, nameof(mSOutlookCloseInstanceUsingWindowuseUIA), required: false);
+            var __workflow_mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose = WorkflowExpression.Compile(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose, nameof(mSOutlookCloseInstanceUsingWindowsecondsToWaitForProcessToClose), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/CloseInstanceUsingWindow";
@@ -7557,14 +7017,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookAttachToExistingInstanceResponse> MSOutlookAttachToExistingInstance(Expression<Func<string>> mSOutlookAttachToExistingInstanceworkflow, Expression<Func<bool>> mSOutlookAttachToExistingInstancetoggleWindow = null, Expression<Func<bool>> mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> mSOutlookAttachToExistingInstancetoggleDelay = null)
         {
-            var __workflow_mSOutlookAttachToExistingInstanceworkflow = mSOutlookAttachToExistingInstanceworkflow == null ? null : WorkflowExpression.Compile(mSOutlookAttachToExistingInstanceworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookAttachToExistingInstanceworkflow, nameof(mSOutlookAttachToExistingInstanceworkflow), required: true);
-            var __workflow_mSOutlookAttachToExistingInstancetoggleWindow = mSOutlookAttachToExistingInstancetoggleWindow == null ? null : WorkflowExpression.Compile(mSOutlookAttachToExistingInstancetoggleWindow);
-            WorkflowExpression.Validate(__workflow_mSOutlookAttachToExistingInstancetoggleWindow, nameof(mSOutlookAttachToExistingInstancetoggleWindow), required: false);
-            var __workflow_mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_mSOutlookAttachToExistingInstancetoggleDelay = mSOutlookAttachToExistingInstancetoggleDelay == null ? null : WorkflowExpression.Compile(mSOutlookAttachToExistingInstancetoggleDelay);
-            WorkflowExpression.Validate(__workflow_mSOutlookAttachToExistingInstancetoggleDelay, nameof(mSOutlookAttachToExistingInstancetoggleDelay), required: false);
+            var __workflow_mSOutlookAttachToExistingInstanceworkflow = WorkflowExpression.Compile(mSOutlookAttachToExistingInstanceworkflow, nameof(mSOutlookAttachToExistingInstanceworkflow), required: true);
+            var __workflow_mSOutlookAttachToExistingInstancetoggleWindow = WorkflowExpression.Compile(mSOutlookAttachToExistingInstancetoggleWindow, nameof(mSOutlookAttachToExistingInstancetoggleWindow), required: false);
+            var __workflow_mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent, nameof(mSOutlookAttachToExistingInstancetoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_mSOutlookAttachToExistingInstancetoggleDelay = WorkflowExpression.Compile(mSOutlookAttachToExistingInstancetoggleDelay, nameof(mSOutlookAttachToExistingInstancetoggleDelay), required: false);
             return new DeferredBodyAction<MSOutlookAttachToExistingInstanceResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/MSOutlookAttachToExistingInstance";
@@ -7634,8 +7090,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookIsConnectedResponse> MSOutlookIsConnected(Expression<Func<string>> mSOutlookIsConnectedworkflow)
         {
-            var __workflow_mSOutlookIsConnectedworkflow = mSOutlookIsConnectedworkflow == null ? null : WorkflowExpression.Compile(mSOutlookIsConnectedworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookIsConnectedworkflow, nameof(mSOutlookIsConnectedworkflow), required: true);
+            var __workflow_mSOutlookIsConnectedworkflow = WorkflowExpression.Compile(mSOutlookIsConnectedworkflow, nameof(mSOutlookIsConnectedworkflow), required: true);
             return new DeferredBodyAction<MSOutlookIsConnectedResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/IsOutlookConnected";
@@ -7657,8 +7112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookShow(Expression<Func<string>> mSOutlookShowworkflow)
         {
-            var __workflow_mSOutlookShowworkflow = mSOutlookShowworkflow == null ? null : WorkflowExpression.Compile(mSOutlookShowworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookShowworkflow, nameof(mSOutlookShowworkflow), required: true);
+            var __workflow_mSOutlookShowworkflow = WorkflowExpression.Compile(mSOutlookShowworkflow, nameof(mSOutlookShowworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/ShowOutlook";
@@ -7680,8 +7134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetNameSpaceInformationResponse> MSOutlookGetNameSpaceInformation(Expression<Func<string>> mSOutlookGetNameSpaceInformationworkflow)
         {
-            var __workflow_mSOutlookGetNameSpaceInformationworkflow = mSOutlookGetNameSpaceInformationworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetNameSpaceInformationworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNameSpaceInformationworkflow, nameof(mSOutlookGetNameSpaceInformationworkflow), required: true);
+            var __workflow_mSOutlookGetNameSpaceInformationworkflow = WorkflowExpression.Compile(mSOutlookGetNameSpaceInformationworkflow, nameof(mSOutlookGetNameSpaceInformationworkflow), required: true);
             return new DeferredBodyAction<MSOutlookGetNameSpaceInformationResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetNameSpaceInformation";
@@ -7703,12 +7156,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetMailFoldersResponse> MSOutlookGetMailFolders(Expression<Func<string>> mSOutlookGetMailFoldersworkflow, Expression<Func<string>> mSOutlookGetMailFoldersfolderPath = null, Expression<Func<bool>> mSOutlookGetMailFolderssubFolders = null)
         {
-            var __workflow_mSOutlookGetMailFoldersworkflow = mSOutlookGetMailFoldersworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetMailFoldersworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetMailFoldersworkflow, nameof(mSOutlookGetMailFoldersworkflow), required: true);
-            var __workflow_mSOutlookGetMailFoldersfolderPath = mSOutlookGetMailFoldersfolderPath == null ? null : WorkflowExpression.Compile(mSOutlookGetMailFoldersfolderPath);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetMailFoldersfolderPath, nameof(mSOutlookGetMailFoldersfolderPath), required: false);
-            var __workflow_mSOutlookGetMailFolderssubFolders = mSOutlookGetMailFolderssubFolders == null ? null : WorkflowExpression.Compile(mSOutlookGetMailFolderssubFolders);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetMailFolderssubFolders, nameof(mSOutlookGetMailFolderssubFolders), required: false);
+            var __workflow_mSOutlookGetMailFoldersworkflow = WorkflowExpression.Compile(mSOutlookGetMailFoldersworkflow, nameof(mSOutlookGetMailFoldersworkflow), required: true);
+            var __workflow_mSOutlookGetMailFoldersfolderPath = WorkflowExpression.Compile(mSOutlookGetMailFoldersfolderPath, nameof(mSOutlookGetMailFoldersfolderPath), required: false);
+            var __workflow_mSOutlookGetMailFolderssubFolders = WorkflowExpression.Compile(mSOutlookGetMailFolderssubFolders, nameof(mSOutlookGetMailFolderssubFolders), required: false);
             return new DeferredBodyAction<MSOutlookGetMailFoldersResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetMailFolders";
@@ -7752,12 +7202,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookMarkEmailAsRead(Expression<Func<string>> mSOutlookMarkEmailAsReadentryID, Expression<Func<string>> mSOutlookMarkEmailAsReadworkflow, Expression<Func<bool>> mSOutlookMarkEmailAsReadread = null)
         {
-            var __workflow_mSOutlookMarkEmailAsReadentryID = mSOutlookMarkEmailAsReadentryID == null ? null : WorkflowExpression.Compile(mSOutlookMarkEmailAsReadentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookMarkEmailAsReadentryID, nameof(mSOutlookMarkEmailAsReadentryID), required: true);
-            var __workflow_mSOutlookMarkEmailAsReadworkflow = mSOutlookMarkEmailAsReadworkflow == null ? null : WorkflowExpression.Compile(mSOutlookMarkEmailAsReadworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookMarkEmailAsReadworkflow, nameof(mSOutlookMarkEmailAsReadworkflow), required: true);
-            var __workflow_mSOutlookMarkEmailAsReadread = mSOutlookMarkEmailAsReadread == null ? null : WorkflowExpression.Compile(mSOutlookMarkEmailAsReadread);
-            WorkflowExpression.Validate(__workflow_mSOutlookMarkEmailAsReadread, nameof(mSOutlookMarkEmailAsReadread), required: false);
+            var __workflow_mSOutlookMarkEmailAsReadentryID = WorkflowExpression.Compile(mSOutlookMarkEmailAsReadentryID, nameof(mSOutlookMarkEmailAsReadentryID), required: true);
+            var __workflow_mSOutlookMarkEmailAsReadworkflow = WorkflowExpression.Compile(mSOutlookMarkEmailAsReadworkflow, nameof(mSOutlookMarkEmailAsReadworkflow), required: true);
+            var __workflow_mSOutlookMarkEmailAsReadread = WorkflowExpression.Compile(mSOutlookMarkEmailAsReadread, nameof(mSOutlookMarkEmailAsReadread), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/MarkEmailAsRead";
@@ -7797,12 +7244,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetEmailBodyResponse> MSOutlookGetEmailBody(Expression<Func<string>> mSOutlookGetEmailBodyentryID, Expression<Func<string>> mSOutlookGetEmailBodyworkflow, Expression<Func<bool>> mSOutlookGetEmailBodyclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookGetEmailBodyentryID = mSOutlookGetEmailBodyentryID == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailBodyentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailBodyentryID, nameof(mSOutlookGetEmailBodyentryID), required: true);
-            var __workflow_mSOutlookGetEmailBodyworkflow = mSOutlookGetEmailBodyworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailBodyworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailBodyworkflow, nameof(mSOutlookGetEmailBodyworkflow), required: true);
-            var __workflow_mSOutlookGetEmailBodyclickAllowButtonIfRequired = mSOutlookGetEmailBodyclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailBodyclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailBodyclickAllowButtonIfRequired, nameof(mSOutlookGetEmailBodyclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookGetEmailBodyentryID = WorkflowExpression.Compile(mSOutlookGetEmailBodyentryID, nameof(mSOutlookGetEmailBodyentryID), required: true);
+            var __workflow_mSOutlookGetEmailBodyworkflow = WorkflowExpression.Compile(mSOutlookGetEmailBodyworkflow, nameof(mSOutlookGetEmailBodyworkflow), required: true);
+            var __workflow_mSOutlookGetEmailBodyclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookGetEmailBodyclickAllowButtonIfRequired, nameof(mSOutlookGetEmailBodyclickAllowButtonIfRequired), required: false);
             return new DeferredBodyAction<MSOutlookGetEmailBodyResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetEmailBody";
@@ -7842,12 +7286,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetEmailAttachmentFilenamesResponse> MSOutlookGetEmailAttachmentFilenames(Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesentryID, Expression<Func<string>> mSOutlookGetEmailAttachmentFilenamesworkflow, Expression<Func<bool>> mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookGetEmailAttachmentFilenamesentryID = mSOutlookGetEmailAttachmentFilenamesentryID == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailAttachmentFilenamesentryID, nameof(mSOutlookGetEmailAttachmentFilenamesentryID), required: true);
-            var __workflow_mSOutlookGetEmailAttachmentFilenamesworkflow = mSOutlookGetEmailAttachmentFilenamesworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailAttachmentFilenamesworkflow, nameof(mSOutlookGetEmailAttachmentFilenamesworkflow), required: true);
-            var __workflow_mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired, nameof(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookGetEmailAttachmentFilenamesentryID = WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesentryID, nameof(mSOutlookGetEmailAttachmentFilenamesentryID), required: true);
+            var __workflow_mSOutlookGetEmailAttachmentFilenamesworkflow = WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesworkflow, nameof(mSOutlookGetEmailAttachmentFilenamesworkflow), required: true);
+            var __workflow_mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired, nameof(mSOutlookGetEmailAttachmentFilenamesclickAllowButtonIfRequired), required: false);
             return new DeferredBodyAction<MSOutlookGetEmailAttachmentFilenamesResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetEmailAttachmentFilenames";
@@ -7887,20 +7328,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookSaveEmailAttachmentsAsFileResponse> MSOutlookSaveEmailAttachmentsAsFile(Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileentryID, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileworkflow, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilecreateFolder = null, Expression<Func<string>> mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = null, Expression<Func<bool>> mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFileentryID = mSOutlookSaveEmailAttachmentsAsFileentryID == null ? null : WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookSaveEmailAttachmentsAsFileentryID, nameof(mSOutlookSaveEmailAttachmentsAsFileentryID), required: true);
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFileworkflow = mSOutlookSaveEmailAttachmentsAsFileworkflow == null ? null : WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookSaveEmailAttachmentsAsFileworkflow, nameof(mSOutlookSaveEmailAttachmentsAsFileworkflow), required: true);
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath == null ? null : WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath);
-            WorkflowExpression.Validate(__workflow_mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath, nameof(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath), required: false);
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFilecreateFolder = mSOutlookSaveEmailAttachmentsAsFilecreateFolder == null ? null : WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilecreateFolder);
-            WorkflowExpression.Validate(__workflow_mSOutlookSaveEmailAttachmentsAsFilecreateFolder, nameof(mSOutlookSaveEmailAttachmentsAsFilecreateFolder), required: false);
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard == null ? null : WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard);
-            WorkflowExpression.Validate(__workflow_mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard, nameof(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard), required: false);
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments == null ? null : WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments);
-            WorkflowExpression.Validate(__workflow_mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments, nameof(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments), required: false);
-            var __workflow_mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired, nameof(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFileentryID = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileentryID, nameof(mSOutlookSaveEmailAttachmentsAsFileentryID), required: true);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFileworkflow = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileworkflow, nameof(mSOutlookSaveEmailAttachmentsAsFileworkflow), required: true);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath, nameof(mSOutlookSaveEmailAttachmentsAsFilesaveFolderPath), required: false);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFilecreateFolder = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilecreateFolder, nameof(mSOutlookSaveEmailAttachmentsAsFilecreateFolder), required: false);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard, nameof(mSOutlookSaveEmailAttachmentsAsFileonlySaveAttachmentsMatchingWildcard), required: false);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments, nameof(mSOutlookSaveEmailAttachmentsAsFilesaveHiddenAttachments), required: false);
+            var __workflow_mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired, nameof(mSOutlookSaveEmailAttachmentsAsFileclickAllowButtonIfRequired), required: false);
             return new DeferredBodyAction<MSOutlookSaveEmailAttachmentsAsFileResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/SaveEmailAttachmentsAsFile";
@@ -7984,10 +7418,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookDeleteEmail(Expression<Func<string>> mSOutlookDeleteEmailentryID, Expression<Func<string>> mSOutlookDeleteEmailworkflow)
         {
-            var __workflow_mSOutlookDeleteEmailentryID = mSOutlookDeleteEmailentryID == null ? null : WorkflowExpression.Compile(mSOutlookDeleteEmailentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookDeleteEmailentryID, nameof(mSOutlookDeleteEmailentryID), required: true);
-            var __workflow_mSOutlookDeleteEmailworkflow = mSOutlookDeleteEmailworkflow == null ? null : WorkflowExpression.Compile(mSOutlookDeleteEmailworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookDeleteEmailworkflow, nameof(mSOutlookDeleteEmailworkflow), required: true);
+            var __workflow_mSOutlookDeleteEmailentryID = WorkflowExpression.Compile(mSOutlookDeleteEmailentryID, nameof(mSOutlookDeleteEmailentryID), required: true);
+            var __workflow_mSOutlookDeleteEmailworkflow = WorkflowExpression.Compile(mSOutlookDeleteEmailworkflow, nameof(mSOutlookDeleteEmailworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/DeleteEmail";
@@ -8011,12 +7443,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookMoveEmail(Expression<Func<string>> mSOutlookMoveEmailentryID, Expression<Func<string>> mSOutlookMoveEmailworkflow, Expression<Func<string>> mSOutlookMoveEmaildestinationFolder = null)
         {
-            var __workflow_mSOutlookMoveEmailentryID = mSOutlookMoveEmailentryID == null ? null : WorkflowExpression.Compile(mSOutlookMoveEmailentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookMoveEmailentryID, nameof(mSOutlookMoveEmailentryID), required: true);
-            var __workflow_mSOutlookMoveEmailworkflow = mSOutlookMoveEmailworkflow == null ? null : WorkflowExpression.Compile(mSOutlookMoveEmailworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookMoveEmailworkflow, nameof(mSOutlookMoveEmailworkflow), required: true);
-            var __workflow_mSOutlookMoveEmaildestinationFolder = mSOutlookMoveEmaildestinationFolder == null ? null : WorkflowExpression.Compile(mSOutlookMoveEmaildestinationFolder);
-            WorkflowExpression.Validate(__workflow_mSOutlookMoveEmaildestinationFolder, nameof(mSOutlookMoveEmaildestinationFolder), required: false);
+            var __workflow_mSOutlookMoveEmailentryID = WorkflowExpression.Compile(mSOutlookMoveEmailentryID, nameof(mSOutlookMoveEmailentryID), required: true);
+            var __workflow_mSOutlookMoveEmailworkflow = WorkflowExpression.Compile(mSOutlookMoveEmailworkflow, nameof(mSOutlookMoveEmailworkflow), required: true);
+            var __workflow_mSOutlookMoveEmaildestinationFolder = WorkflowExpression.Compile(mSOutlookMoveEmaildestinationFolder, nameof(mSOutlookMoveEmaildestinationFolder), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/MoveEmail";
@@ -8046,36 +7475,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookSendEmail(Expression<Func<string>> mSOutlookSendEmailworkflow, Expression<Func<string>> mSOutlookSendEmailto = null, Expression<Func<string>> mSOutlookSendEmailcC = null, Expression<Func<string>> mSOutlookSendEmailbCC = null, Expression<Func<string>> mSOutlookSendEmailsubject = null, Expression<Func<mSOutlookSendEmailbodyFormatInput>> mSOutlookSendEmailbodyFormat = null, Expression<Func<string>> mSOutlookSendEmailbody = null, Expression<Func<string>> mSOutlookSendEmailhTMLBody = null, Expression<Func<string>> mSOutlookSendEmailrTFBody = null, Expression<Func<string>> mSOutlookSendEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookSendEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookSendEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookSendEmailvotingOptions = null, Expression<Func<string>> mSOutlookSendEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookSendEmailbodyContainsStoredPassword = null)
         {
-            var __workflow_mSOutlookSendEmailworkflow = mSOutlookSendEmailworkflow == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailworkflow, nameof(mSOutlookSendEmailworkflow), required: true);
-            var __workflow_mSOutlookSendEmailto = mSOutlookSendEmailto == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailto);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailto, nameof(mSOutlookSendEmailto), required: false);
-            var __workflow_mSOutlookSendEmailcC = mSOutlookSendEmailcC == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailcC);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailcC, nameof(mSOutlookSendEmailcC), required: false);
-            var __workflow_mSOutlookSendEmailbCC = mSOutlookSendEmailbCC == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailbCC);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailbCC, nameof(mSOutlookSendEmailbCC), required: false);
-            var __workflow_mSOutlookSendEmailsubject = mSOutlookSendEmailsubject == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailsubject);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailsubject, nameof(mSOutlookSendEmailsubject), required: false);
-            var __workflow_mSOutlookSendEmailbodyFormat = mSOutlookSendEmailbodyFormat == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailbodyFormat);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailbodyFormat, nameof(mSOutlookSendEmailbodyFormat), required: false);
-            var __workflow_mSOutlookSendEmailbody = mSOutlookSendEmailbody == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailbody);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailbody, nameof(mSOutlookSendEmailbody), required: false);
-            var __workflow_mSOutlookSendEmailhTMLBody = mSOutlookSendEmailhTMLBody == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailhTMLBody);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailhTMLBody, nameof(mSOutlookSendEmailhTMLBody), required: false);
-            var __workflow_mSOutlookSendEmailrTFBody = mSOutlookSendEmailrTFBody == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailrTFBody);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailrTFBody, nameof(mSOutlookSendEmailrTFBody), required: false);
-            var __workflow_mSOutlookSendEmailattachmentFilenamesJSON = mSOutlookSendEmailattachmentFilenamesJSON == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailattachmentFilenamesJSON);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailattachmentFilenamesJSON, nameof(mSOutlookSendEmailattachmentFilenamesJSON), required: false);
-            var __workflow_mSOutlookSendEmaildontSendIfAttachmentFilenameMissing = mSOutlookSendEmaildontSendIfAttachmentFilenameMissing == null ? null : WorkflowExpression.Compile(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing), required: false);
-            var __workflow_mSOutlookSendEmailclickAllowButtonIfRequired = mSOutlookSendEmailclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailclickAllowButtonIfRequired, nameof(mSOutlookSendEmailclickAllowButtonIfRequired), required: false);
-            var __workflow_mSOutlookSendEmailvotingOptions = mSOutlookSendEmailvotingOptions == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailvotingOptions);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailvotingOptions, nameof(mSOutlookSendEmailvotingOptions), required: false);
-            var __workflow_mSOutlookSendEmailsendAsSMTPAddress = mSOutlookSendEmailsendAsSMTPAddress == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailsendAsSMTPAddress);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailsendAsSMTPAddress, nameof(mSOutlookSendEmailsendAsSMTPAddress), required: false);
-            var __workflow_mSOutlookSendEmailbodyContainsStoredPassword = mSOutlookSendEmailbodyContainsStoredPassword == null ? null : WorkflowExpression.Compile(mSOutlookSendEmailbodyContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_mSOutlookSendEmailbodyContainsStoredPassword, nameof(mSOutlookSendEmailbodyContainsStoredPassword), required: false);
+            var __workflow_mSOutlookSendEmailworkflow = WorkflowExpression.Compile(mSOutlookSendEmailworkflow, nameof(mSOutlookSendEmailworkflow), required: true);
+            var __workflow_mSOutlookSendEmailto = WorkflowExpression.Compile(mSOutlookSendEmailto, nameof(mSOutlookSendEmailto), required: false);
+            var __workflow_mSOutlookSendEmailcC = WorkflowExpression.Compile(mSOutlookSendEmailcC, nameof(mSOutlookSendEmailcC), required: false);
+            var __workflow_mSOutlookSendEmailbCC = WorkflowExpression.Compile(mSOutlookSendEmailbCC, nameof(mSOutlookSendEmailbCC), required: false);
+            var __workflow_mSOutlookSendEmailsubject = WorkflowExpression.Compile(mSOutlookSendEmailsubject, nameof(mSOutlookSendEmailsubject), required: false);
+            var __workflow_mSOutlookSendEmailbodyFormat = WorkflowExpression.Compile(mSOutlookSendEmailbodyFormat, nameof(mSOutlookSendEmailbodyFormat), required: false);
+            var __workflow_mSOutlookSendEmailbody = WorkflowExpression.Compile(mSOutlookSendEmailbody, nameof(mSOutlookSendEmailbody), required: false);
+            var __workflow_mSOutlookSendEmailhTMLBody = WorkflowExpression.Compile(mSOutlookSendEmailhTMLBody, nameof(mSOutlookSendEmailhTMLBody), required: false);
+            var __workflow_mSOutlookSendEmailrTFBody = WorkflowExpression.Compile(mSOutlookSendEmailrTFBody, nameof(mSOutlookSendEmailrTFBody), required: false);
+            var __workflow_mSOutlookSendEmailattachmentFilenamesJSON = WorkflowExpression.Compile(mSOutlookSendEmailattachmentFilenamesJSON, nameof(mSOutlookSendEmailattachmentFilenamesJSON), required: false);
+            var __workflow_mSOutlookSendEmaildontSendIfAttachmentFilenameMissing = WorkflowExpression.Compile(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookSendEmaildontSendIfAttachmentFilenameMissing), required: false);
+            var __workflow_mSOutlookSendEmailclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookSendEmailclickAllowButtonIfRequired, nameof(mSOutlookSendEmailclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookSendEmailvotingOptions = WorkflowExpression.Compile(mSOutlookSendEmailvotingOptions, nameof(mSOutlookSendEmailvotingOptions), required: false);
+            var __workflow_mSOutlookSendEmailsendAsSMTPAddress = WorkflowExpression.Compile(mSOutlookSendEmailsendAsSMTPAddress, nameof(mSOutlookSendEmailsendAsSMTPAddress), required: false);
+            var __workflow_mSOutlookSendEmailbodyContainsStoredPassword = WorkflowExpression.Compile(mSOutlookSendEmailbodyContainsStoredPassword, nameof(mSOutlookSendEmailbodyContainsStoredPassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/SendEmail";
@@ -8211,12 +7625,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookCreateMailFolder(Expression<Func<string>> mSOutlookCreateMailFolderworkflow, Expression<Func<string>> mSOutlookCreateMailFolderparentFolderPath = null, Expression<Func<string>> mSOutlookCreateMailFoldernewFolderName = null)
         {
-            var __workflow_mSOutlookCreateMailFolderworkflow = mSOutlookCreateMailFolderworkflow == null ? null : WorkflowExpression.Compile(mSOutlookCreateMailFolderworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookCreateMailFolderworkflow, nameof(mSOutlookCreateMailFolderworkflow), required: true);
-            var __workflow_mSOutlookCreateMailFolderparentFolderPath = mSOutlookCreateMailFolderparentFolderPath == null ? null : WorkflowExpression.Compile(mSOutlookCreateMailFolderparentFolderPath);
-            WorkflowExpression.Validate(__workflow_mSOutlookCreateMailFolderparentFolderPath, nameof(mSOutlookCreateMailFolderparentFolderPath), required: false);
-            var __workflow_mSOutlookCreateMailFoldernewFolderName = mSOutlookCreateMailFoldernewFolderName == null ? null : WorkflowExpression.Compile(mSOutlookCreateMailFoldernewFolderName);
-            WorkflowExpression.Validate(__workflow_mSOutlookCreateMailFoldernewFolderName, nameof(mSOutlookCreateMailFoldernewFolderName), required: false);
+            var __workflow_mSOutlookCreateMailFolderworkflow = WorkflowExpression.Compile(mSOutlookCreateMailFolderworkflow, nameof(mSOutlookCreateMailFolderworkflow), required: true);
+            var __workflow_mSOutlookCreateMailFolderparentFolderPath = WorkflowExpression.Compile(mSOutlookCreateMailFolderparentFolderPath, nameof(mSOutlookCreateMailFolderparentFolderPath), required: false);
+            var __workflow_mSOutlookCreateMailFoldernewFolderName = WorkflowExpression.Compile(mSOutlookCreateMailFoldernewFolderName, nameof(mSOutlookCreateMailFoldernewFolderName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/CreateMailFolder";
@@ -8250,32 +7661,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookReplyToEmail(Expression<Func<string>> mSOutlookReplyToEmailentryID, Expression<Func<string>> mSOutlookReplyToEmailworkflow, Expression<Func<bool>> mSOutlookReplyToEmailreplyToAll = null, Expression<Func<mSOutlookReplyToEmailbodyFormatInput>> mSOutlookReplyToEmailbodyFormat = null, Expression<Func<string>> mSOutlookReplyToEmailbody = null, Expression<Func<string>> mSOutlookReplyToEmailhTMLBody = null, Expression<Func<string>> mSOutlookReplyToEmailrTFBody = null, Expression<Func<string>> mSOutlookReplyToEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookReplyToEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookReplyToEmailvotingOptions = null, Expression<Func<string>> mSOutlookReplyToEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookReplyToEmailbodyContainsStoredPassword = null)
         {
-            var __workflow_mSOutlookReplyToEmailentryID = mSOutlookReplyToEmailentryID == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailentryID, nameof(mSOutlookReplyToEmailentryID), required: true);
-            var __workflow_mSOutlookReplyToEmailworkflow = mSOutlookReplyToEmailworkflow == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailworkflow, nameof(mSOutlookReplyToEmailworkflow), required: true);
-            var __workflow_mSOutlookReplyToEmailreplyToAll = mSOutlookReplyToEmailreplyToAll == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailreplyToAll);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailreplyToAll, nameof(mSOutlookReplyToEmailreplyToAll), required: false);
-            var __workflow_mSOutlookReplyToEmailbodyFormat = mSOutlookReplyToEmailbodyFormat == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailbodyFormat);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailbodyFormat, nameof(mSOutlookReplyToEmailbodyFormat), required: false);
-            var __workflow_mSOutlookReplyToEmailbody = mSOutlookReplyToEmailbody == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailbody);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailbody, nameof(mSOutlookReplyToEmailbody), required: false);
-            var __workflow_mSOutlookReplyToEmailhTMLBody = mSOutlookReplyToEmailhTMLBody == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailhTMLBody);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailhTMLBody, nameof(mSOutlookReplyToEmailhTMLBody), required: false);
-            var __workflow_mSOutlookReplyToEmailrTFBody = mSOutlookReplyToEmailrTFBody == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailrTFBody);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailrTFBody, nameof(mSOutlookReplyToEmailrTFBody), required: false);
-            var __workflow_mSOutlookReplyToEmailattachmentFilenamesJSON = mSOutlookReplyToEmailattachmentFilenamesJSON == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailattachmentFilenamesJSON);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailattachmentFilenamesJSON, nameof(mSOutlookReplyToEmailattachmentFilenamesJSON), required: false);
-            var __workflow_mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing), required: false);
-            var __workflow_mSOutlookReplyToEmailclickAllowButtonIfRequired = mSOutlookReplyToEmailclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailclickAllowButtonIfRequired, nameof(mSOutlookReplyToEmailclickAllowButtonIfRequired), required: false);
-            var __workflow_mSOutlookReplyToEmailvotingOptions = mSOutlookReplyToEmailvotingOptions == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailvotingOptions);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailvotingOptions, nameof(mSOutlookReplyToEmailvotingOptions), required: false);
-            var __workflow_mSOutlookReplyToEmailsendAsSMTPAddress = mSOutlookReplyToEmailsendAsSMTPAddress == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailsendAsSMTPAddress);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailsendAsSMTPAddress, nameof(mSOutlookReplyToEmailsendAsSMTPAddress), required: false);
-            var __workflow_mSOutlookReplyToEmailbodyContainsStoredPassword = mSOutlookReplyToEmailbodyContainsStoredPassword == null ? null : WorkflowExpression.Compile(mSOutlookReplyToEmailbodyContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_mSOutlookReplyToEmailbodyContainsStoredPassword, nameof(mSOutlookReplyToEmailbodyContainsStoredPassword), required: false);
+            var __workflow_mSOutlookReplyToEmailentryID = WorkflowExpression.Compile(mSOutlookReplyToEmailentryID, nameof(mSOutlookReplyToEmailentryID), required: true);
+            var __workflow_mSOutlookReplyToEmailworkflow = WorkflowExpression.Compile(mSOutlookReplyToEmailworkflow, nameof(mSOutlookReplyToEmailworkflow), required: true);
+            var __workflow_mSOutlookReplyToEmailreplyToAll = WorkflowExpression.Compile(mSOutlookReplyToEmailreplyToAll, nameof(mSOutlookReplyToEmailreplyToAll), required: false);
+            var __workflow_mSOutlookReplyToEmailbodyFormat = WorkflowExpression.Compile(mSOutlookReplyToEmailbodyFormat, nameof(mSOutlookReplyToEmailbodyFormat), required: false);
+            var __workflow_mSOutlookReplyToEmailbody = WorkflowExpression.Compile(mSOutlookReplyToEmailbody, nameof(mSOutlookReplyToEmailbody), required: false);
+            var __workflow_mSOutlookReplyToEmailhTMLBody = WorkflowExpression.Compile(mSOutlookReplyToEmailhTMLBody, nameof(mSOutlookReplyToEmailhTMLBody), required: false);
+            var __workflow_mSOutlookReplyToEmailrTFBody = WorkflowExpression.Compile(mSOutlookReplyToEmailrTFBody, nameof(mSOutlookReplyToEmailrTFBody), required: false);
+            var __workflow_mSOutlookReplyToEmailattachmentFilenamesJSON = WorkflowExpression.Compile(mSOutlookReplyToEmailattachmentFilenamesJSON, nameof(mSOutlookReplyToEmailattachmentFilenamesJSON), required: false);
+            var __workflow_mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing = WorkflowExpression.Compile(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookReplyToEmaildontSendIfAttachmentFilenameMissing), required: false);
+            var __workflow_mSOutlookReplyToEmailclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookReplyToEmailclickAllowButtonIfRequired, nameof(mSOutlookReplyToEmailclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookReplyToEmailvotingOptions = WorkflowExpression.Compile(mSOutlookReplyToEmailvotingOptions, nameof(mSOutlookReplyToEmailvotingOptions), required: false);
+            var __workflow_mSOutlookReplyToEmailsendAsSMTPAddress = WorkflowExpression.Compile(mSOutlookReplyToEmailsendAsSMTPAddress, nameof(mSOutlookReplyToEmailsendAsSMTPAddress), required: false);
+            var __workflow_mSOutlookReplyToEmailbodyContainsStoredPassword = WorkflowExpression.Compile(mSOutlookReplyToEmailbodyContainsStoredPassword, nameof(mSOutlookReplyToEmailbodyContainsStoredPassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/ReplyToEmail";
@@ -8405,46 +7803,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookForwardEmail(Expression<Func<string>> mSOutlookForwardEmailentryID, Expression<Func<string>> mSOutlookForwardEmailworkflow, Expression<Func<string>> mSOutlookForwardEmailto = null, Expression<Func<string>> mSOutlookForwardEmailcC = null, Expression<Func<string>> mSOutlookForwardEmailbCC = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideSubject = null, Expression<Func<string>> mSOutlookForwardEmailsubject = null, Expression<Func<bool>> mSOutlookForwardEmailoverrideBody = null, Expression<Func<mSOutlookForwardEmailbodyFormatInput>> mSOutlookForwardEmailbodyFormat = null, Expression<Func<string>> mSOutlookForwardEmailbody = null, Expression<Func<string>> mSOutlookForwardEmailhTMLBody = null, Expression<Func<string>> mSOutlookForwardEmailrTFBody = null, Expression<Func<bool>> mSOutlookForwardEmailclickAllowButtonIfRequired = null, Expression<Func<string>> mSOutlookForwardEmailvotingOptions = null, Expression<Func<string>> mSOutlookForwardEmailsendAsSMTPAddress = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingHiddenAttachments = null, Expression<Func<bool>> mSOutlookForwardEmailincludeExistingVisibleAttachments = null, Expression<Func<string>> mSOutlookForwardEmailattachmentFilenamesJSON = null, Expression<Func<bool>> mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = null, Expression<Func<bool>> mSOutlookForwardEmailbodyContainsStoredPassword = null)
         {
-            var __workflow_mSOutlookForwardEmailentryID = mSOutlookForwardEmailentryID == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailentryID);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailentryID, nameof(mSOutlookForwardEmailentryID), required: true);
-            var __workflow_mSOutlookForwardEmailworkflow = mSOutlookForwardEmailworkflow == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailworkflow, nameof(mSOutlookForwardEmailworkflow), required: true);
-            var __workflow_mSOutlookForwardEmailto = mSOutlookForwardEmailto == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailto);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailto, nameof(mSOutlookForwardEmailto), required: false);
-            var __workflow_mSOutlookForwardEmailcC = mSOutlookForwardEmailcC == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailcC);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailcC, nameof(mSOutlookForwardEmailcC), required: false);
-            var __workflow_mSOutlookForwardEmailbCC = mSOutlookForwardEmailbCC == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailbCC);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailbCC, nameof(mSOutlookForwardEmailbCC), required: false);
-            var __workflow_mSOutlookForwardEmailoverrideSubject = mSOutlookForwardEmailoverrideSubject == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailoverrideSubject);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailoverrideSubject, nameof(mSOutlookForwardEmailoverrideSubject), required: false);
-            var __workflow_mSOutlookForwardEmailsubject = mSOutlookForwardEmailsubject == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailsubject);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailsubject, nameof(mSOutlookForwardEmailsubject), required: false);
-            var __workflow_mSOutlookForwardEmailoverrideBody = mSOutlookForwardEmailoverrideBody == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailoverrideBody);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailoverrideBody, nameof(mSOutlookForwardEmailoverrideBody), required: false);
-            var __workflow_mSOutlookForwardEmailbodyFormat = mSOutlookForwardEmailbodyFormat == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailbodyFormat);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailbodyFormat, nameof(mSOutlookForwardEmailbodyFormat), required: false);
-            var __workflow_mSOutlookForwardEmailbody = mSOutlookForwardEmailbody == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailbody);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailbody, nameof(mSOutlookForwardEmailbody), required: false);
-            var __workflow_mSOutlookForwardEmailhTMLBody = mSOutlookForwardEmailhTMLBody == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailhTMLBody);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailhTMLBody, nameof(mSOutlookForwardEmailhTMLBody), required: false);
-            var __workflow_mSOutlookForwardEmailrTFBody = mSOutlookForwardEmailrTFBody == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailrTFBody);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailrTFBody, nameof(mSOutlookForwardEmailrTFBody), required: false);
-            var __workflow_mSOutlookForwardEmailclickAllowButtonIfRequired = mSOutlookForwardEmailclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailclickAllowButtonIfRequired, nameof(mSOutlookForwardEmailclickAllowButtonIfRequired), required: false);
-            var __workflow_mSOutlookForwardEmailvotingOptions = mSOutlookForwardEmailvotingOptions == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailvotingOptions);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailvotingOptions, nameof(mSOutlookForwardEmailvotingOptions), required: false);
-            var __workflow_mSOutlookForwardEmailsendAsSMTPAddress = mSOutlookForwardEmailsendAsSMTPAddress == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailsendAsSMTPAddress);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailsendAsSMTPAddress, nameof(mSOutlookForwardEmailsendAsSMTPAddress), required: false);
-            var __workflow_mSOutlookForwardEmailincludeExistingHiddenAttachments = mSOutlookForwardEmailincludeExistingHiddenAttachments == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailincludeExistingHiddenAttachments);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailincludeExistingHiddenAttachments, nameof(mSOutlookForwardEmailincludeExistingHiddenAttachments), required: false);
-            var __workflow_mSOutlookForwardEmailincludeExistingVisibleAttachments = mSOutlookForwardEmailincludeExistingVisibleAttachments == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailincludeExistingVisibleAttachments);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailincludeExistingVisibleAttachments, nameof(mSOutlookForwardEmailincludeExistingVisibleAttachments), required: false);
-            var __workflow_mSOutlookForwardEmailattachmentFilenamesJSON = mSOutlookForwardEmailattachmentFilenamesJSON == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailattachmentFilenamesJSON);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailattachmentFilenamesJSON, nameof(mSOutlookForwardEmailattachmentFilenamesJSON), required: false);
-            var __workflow_mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing), required: false);
-            var __workflow_mSOutlookForwardEmailbodyContainsStoredPassword = mSOutlookForwardEmailbodyContainsStoredPassword == null ? null : WorkflowExpression.Compile(mSOutlookForwardEmailbodyContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_mSOutlookForwardEmailbodyContainsStoredPassword, nameof(mSOutlookForwardEmailbodyContainsStoredPassword), required: false);
+            var __workflow_mSOutlookForwardEmailentryID = WorkflowExpression.Compile(mSOutlookForwardEmailentryID, nameof(mSOutlookForwardEmailentryID), required: true);
+            var __workflow_mSOutlookForwardEmailworkflow = WorkflowExpression.Compile(mSOutlookForwardEmailworkflow, nameof(mSOutlookForwardEmailworkflow), required: true);
+            var __workflow_mSOutlookForwardEmailto = WorkflowExpression.Compile(mSOutlookForwardEmailto, nameof(mSOutlookForwardEmailto), required: false);
+            var __workflow_mSOutlookForwardEmailcC = WorkflowExpression.Compile(mSOutlookForwardEmailcC, nameof(mSOutlookForwardEmailcC), required: false);
+            var __workflow_mSOutlookForwardEmailbCC = WorkflowExpression.Compile(mSOutlookForwardEmailbCC, nameof(mSOutlookForwardEmailbCC), required: false);
+            var __workflow_mSOutlookForwardEmailoverrideSubject = WorkflowExpression.Compile(mSOutlookForwardEmailoverrideSubject, nameof(mSOutlookForwardEmailoverrideSubject), required: false);
+            var __workflow_mSOutlookForwardEmailsubject = WorkflowExpression.Compile(mSOutlookForwardEmailsubject, nameof(mSOutlookForwardEmailsubject), required: false);
+            var __workflow_mSOutlookForwardEmailoverrideBody = WorkflowExpression.Compile(mSOutlookForwardEmailoverrideBody, nameof(mSOutlookForwardEmailoverrideBody), required: false);
+            var __workflow_mSOutlookForwardEmailbodyFormat = WorkflowExpression.Compile(mSOutlookForwardEmailbodyFormat, nameof(mSOutlookForwardEmailbodyFormat), required: false);
+            var __workflow_mSOutlookForwardEmailbody = WorkflowExpression.Compile(mSOutlookForwardEmailbody, nameof(mSOutlookForwardEmailbody), required: false);
+            var __workflow_mSOutlookForwardEmailhTMLBody = WorkflowExpression.Compile(mSOutlookForwardEmailhTMLBody, nameof(mSOutlookForwardEmailhTMLBody), required: false);
+            var __workflow_mSOutlookForwardEmailrTFBody = WorkflowExpression.Compile(mSOutlookForwardEmailrTFBody, nameof(mSOutlookForwardEmailrTFBody), required: false);
+            var __workflow_mSOutlookForwardEmailclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookForwardEmailclickAllowButtonIfRequired, nameof(mSOutlookForwardEmailclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookForwardEmailvotingOptions = WorkflowExpression.Compile(mSOutlookForwardEmailvotingOptions, nameof(mSOutlookForwardEmailvotingOptions), required: false);
+            var __workflow_mSOutlookForwardEmailsendAsSMTPAddress = WorkflowExpression.Compile(mSOutlookForwardEmailsendAsSMTPAddress, nameof(mSOutlookForwardEmailsendAsSMTPAddress), required: false);
+            var __workflow_mSOutlookForwardEmailincludeExistingHiddenAttachments = WorkflowExpression.Compile(mSOutlookForwardEmailincludeExistingHiddenAttachments, nameof(mSOutlookForwardEmailincludeExistingHiddenAttachments), required: false);
+            var __workflow_mSOutlookForwardEmailincludeExistingVisibleAttachments = WorkflowExpression.Compile(mSOutlookForwardEmailincludeExistingVisibleAttachments, nameof(mSOutlookForwardEmailincludeExistingVisibleAttachments), required: false);
+            var __workflow_mSOutlookForwardEmailattachmentFilenamesJSON = WorkflowExpression.Compile(mSOutlookForwardEmailattachmentFilenamesJSON, nameof(mSOutlookForwardEmailattachmentFilenamesJSON), required: false);
+            var __workflow_mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing = WorkflowExpression.Compile(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing, nameof(mSOutlookForwardEmaildontSendIfAttachmentFilenameMissing), required: false);
+            var __workflow_mSOutlookForwardEmailbodyContainsStoredPassword = WorkflowExpression.Compile(mSOutlookForwardEmailbodyContainsStoredPassword, nameof(mSOutlookForwardEmailbodyContainsStoredPassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/MSOutlookForwardEmail";
@@ -8646,8 +8024,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetMAPIProfilesResponse> MSOutlookGetMAPIProfiles(Expression<Func<string>> mSOutlookGetMAPIProfilesworkflow)
         {
-            var __workflow_mSOutlookGetMAPIProfilesworkflow = mSOutlookGetMAPIProfilesworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetMAPIProfilesworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetMAPIProfilesworkflow, nameof(mSOutlookGetMAPIProfilesworkflow), required: true);
+            var __workflow_mSOutlookGetMAPIProfilesworkflow = WorkflowExpression.Compile(mSOutlookGetMAPIProfilesworkflow, nameof(mSOutlookGetMAPIProfilesworkflow), required: true);
             return new DeferredBodyAction<MSOutlookGetMAPIProfilesResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetMAPIProfiles";
@@ -8669,8 +8046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetOutlookProcessIdResponse> MSOutlookGetOutlookProcessId(Expression<Func<string>> mSOutlookGetOutlookProcessIdworkflow)
         {
-            var __workflow_mSOutlookGetOutlookProcessIdworkflow = mSOutlookGetOutlookProcessIdworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetOutlookProcessIdworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetOutlookProcessIdworkflow, nameof(mSOutlookGetOutlookProcessIdworkflow), required: true);
+            var __workflow_mSOutlookGetOutlookProcessIdworkflow = WorkflowExpression.Compile(mSOutlookGetOutlookProcessIdworkflow, nameof(mSOutlookGetOutlookProcessIdworkflow), required: true);
             return new DeferredBodyAction<MSOutlookGetOutlookProcessIdResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetOutlookProcessId";
@@ -8692,16 +8068,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookBackgroundMonitorForAllowPopup(Expression<Func<string>> mSOutlookBackgroundMonitorForAllowPopupworkflow, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog = null, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton = null, Expression<Func<int>> mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled = null, Expression<Func<string>> mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName = null)
         {
-            var __workflow_mSOutlookBackgroundMonitorForAllowPopupworkflow = mSOutlookBackgroundMonitorForAllowPopupworkflow == null ? null : WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookBackgroundMonitorForAllowPopupworkflow, nameof(mSOutlookBackgroundMonitorForAllowPopupworkflow), required: true);
-            var __workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog = mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog == null ? null : WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog);
-            WorkflowExpression.Validate(__workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog), required: false);
-            var __workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton = mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton == null ? null : WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton);
-            WorkflowExpression.Validate(__workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton), required: false);
-            var __workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled = mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled == null ? null : WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled);
-            WorkflowExpression.Validate(__workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled), required: false);
-            var __workflow_mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName = mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName == null ? null : WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName);
-            WorkflowExpression.Validate(__workflow_mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName, nameof(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName), required: false);
+            var __workflow_mSOutlookBackgroundMonitorForAllowPopupworkflow = WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupworkflow, nameof(mSOutlookBackgroundMonitorForAllowPopupworkflow), required: true);
+            var __workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog = WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForDialog), required: false);
+            var __workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton = WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButton), required: false);
+            var __workflow_mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled = WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled, nameof(mSOutlookBackgroundMonitorForAllowPopupsecondsToWaitForAllowButtonToBeEnabled), required: false);
+            var __workflow_mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName = WorkflowExpression.Compile(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName, nameof(mSOutlookBackgroundMonitorForAllowPopupoutlookAllowButtonName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/BackgroundMonitorForAllowPopup";
@@ -8787,14 +8158,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IWorkflowAction MSOutlookSetAllowPopupDetails(Expression<Func<string>> mSOutlookSetAllowPopupDetailsworkflow, Expression<Func<string>> mSOutlookSetAllowPopupDetailsoutlookAllowButtonName = null, Expression<Func<string>> mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId = null, Expression<Func<string>> mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId = null)
         {
-            var __workflow_mSOutlookSetAllowPopupDetailsworkflow = mSOutlookSetAllowPopupDetailsworkflow == null ? null : WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookSetAllowPopupDetailsworkflow, nameof(mSOutlookSetAllowPopupDetailsworkflow), required: true);
-            var __workflow_mSOutlookSetAllowPopupDetailsoutlookAllowButtonName = mSOutlookSetAllowPopupDetailsoutlookAllowButtonName == null ? null : WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName);
-            WorkflowExpression.Validate(__workflow_mSOutlookSetAllowPopupDetailsoutlookAllowButtonName, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName), required: false);
-            var __workflow_mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId = mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId == null ? null : WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId);
-            WorkflowExpression.Validate(__workflow_mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId), required: false);
-            var __workflow_mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId = mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId == null ? null : WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId);
-            WorkflowExpression.Validate(__workflow_mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId), required: false);
+            var __workflow_mSOutlookSetAllowPopupDetailsworkflow = WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsworkflow, nameof(mSOutlookSetAllowPopupDetailsworkflow), required: true);
+            var __workflow_mSOutlookSetAllowPopupDetailsoutlookAllowButtonName = WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowButtonName), required: false);
+            var __workflow_mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId = WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowButtonAutomationId), required: false);
+            var __workflow_mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId = WorkflowExpression.Compile(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId, nameof(mSOutlookSetAllowPopupDetailsoutlookAllowCheckboxAutomationId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/MSOutlook/MSOutlookSetAllowPopupDetails";
@@ -8864,12 +8231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookExecuteCommandBarObjectResponse> MSOutlookExecuteCommandBarObject(Expression<Func<string>> mSOutlookExecuteCommandBarObjectobjectId, Expression<Func<string>> mSOutlookExecuteCommandBarObjectworkflow, Expression<Func<bool>> mSOutlookExecuteCommandBarObjectrunInBackground = null)
         {
-            var __workflow_mSOutlookExecuteCommandBarObjectobjectId = mSOutlookExecuteCommandBarObjectobjectId == null ? null : WorkflowExpression.Compile(mSOutlookExecuteCommandBarObjectobjectId);
-            WorkflowExpression.Validate(__workflow_mSOutlookExecuteCommandBarObjectobjectId, nameof(mSOutlookExecuteCommandBarObjectobjectId), required: true);
-            var __workflow_mSOutlookExecuteCommandBarObjectworkflow = mSOutlookExecuteCommandBarObjectworkflow == null ? null : WorkflowExpression.Compile(mSOutlookExecuteCommandBarObjectworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookExecuteCommandBarObjectworkflow, nameof(mSOutlookExecuteCommandBarObjectworkflow), required: true);
-            var __workflow_mSOutlookExecuteCommandBarObjectrunInBackground = mSOutlookExecuteCommandBarObjectrunInBackground == null ? null : WorkflowExpression.Compile(mSOutlookExecuteCommandBarObjectrunInBackground);
-            WorkflowExpression.Validate(__workflow_mSOutlookExecuteCommandBarObjectrunInBackground, nameof(mSOutlookExecuteCommandBarObjectrunInBackground), required: false);
+            var __workflow_mSOutlookExecuteCommandBarObjectobjectId = WorkflowExpression.Compile(mSOutlookExecuteCommandBarObjectobjectId, nameof(mSOutlookExecuteCommandBarObjectobjectId), required: true);
+            var __workflow_mSOutlookExecuteCommandBarObjectworkflow = WorkflowExpression.Compile(mSOutlookExecuteCommandBarObjectworkflow, nameof(mSOutlookExecuteCommandBarObjectworkflow), required: true);
+            var __workflow_mSOutlookExecuteCommandBarObjectrunInBackground = WorkflowExpression.Compile(mSOutlookExecuteCommandBarObjectrunInBackground, nameof(mSOutlookExecuteCommandBarObjectrunInBackground), required: false);
             return new DeferredBodyAction<MSOutlookExecuteCommandBarObjectResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/MSOutlookExecuteCommandBarObject";
@@ -8909,32 +8273,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetEmailsResponse> MSOutlookGetEmails(Expression<Func<string>> mSOutlookGetEmailsworkflow, Expression<Func<string>> mSOutlookGetEmailsfolderPath = null, Expression<Func<bool>> mSOutlookGetEmailssearchRead = null, Expression<Func<bool>> mSOutlookGetEmailssearchUnread = null, Expression<Func<string>> mSOutlookGetEmailssearchSubject = null, Expression<Func<string>> mSOutlookGetEmailssearchFromSMTP = null, Expression<Func<string>> mSOutlookGetEmailssearchFromName = null, Expression<Func<string>> mSOutlookGetEmailssearchQuery = null, Expression<Func<int>> mSOutlookGetEmailssearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetEmailssearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetEmailssearchEndDateTimeAsString = null, Expression<Func<int>> mSOutlookGetEmailsmaxResultsToReturn = null, Expression<Func<bool>> mSOutlookGetEmailsclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookGetEmailsworkflow = mSOutlookGetEmailsworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailsworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailsworkflow, nameof(mSOutlookGetEmailsworkflow), required: true);
-            var __workflow_mSOutlookGetEmailsfolderPath = mSOutlookGetEmailsfolderPath == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailsfolderPath);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailsfolderPath, nameof(mSOutlookGetEmailsfolderPath), required: false);
-            var __workflow_mSOutlookGetEmailssearchRead = mSOutlookGetEmailssearchRead == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchRead);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchRead, nameof(mSOutlookGetEmailssearchRead), required: false);
-            var __workflow_mSOutlookGetEmailssearchUnread = mSOutlookGetEmailssearchUnread == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchUnread);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchUnread, nameof(mSOutlookGetEmailssearchUnread), required: false);
-            var __workflow_mSOutlookGetEmailssearchSubject = mSOutlookGetEmailssearchSubject == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchSubject);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchSubject, nameof(mSOutlookGetEmailssearchSubject), required: false);
-            var __workflow_mSOutlookGetEmailssearchFromSMTP = mSOutlookGetEmailssearchFromSMTP == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchFromSMTP);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchFromSMTP, nameof(mSOutlookGetEmailssearchFromSMTP), required: false);
-            var __workflow_mSOutlookGetEmailssearchFromName = mSOutlookGetEmailssearchFromName == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchFromName);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchFromName, nameof(mSOutlookGetEmailssearchFromName), required: false);
-            var __workflow_mSOutlookGetEmailssearchQuery = mSOutlookGetEmailssearchQuery == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchQuery);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchQuery, nameof(mSOutlookGetEmailssearchQuery), required: false);
-            var __workflow_mSOutlookGetEmailssearchMaxAgeInDays = mSOutlookGetEmailssearchMaxAgeInDays == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchMaxAgeInDays);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchMaxAgeInDays, nameof(mSOutlookGetEmailssearchMaxAgeInDays), required: false);
-            var __workflow_mSOutlookGetEmailssearchStartDateTimeAsString = mSOutlookGetEmailssearchStartDateTimeAsString == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchStartDateTimeAsString);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchStartDateTimeAsString, nameof(mSOutlookGetEmailssearchStartDateTimeAsString), required: false);
-            var __workflow_mSOutlookGetEmailssearchEndDateTimeAsString = mSOutlookGetEmailssearchEndDateTimeAsString == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailssearchEndDateTimeAsString);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailssearchEndDateTimeAsString, nameof(mSOutlookGetEmailssearchEndDateTimeAsString), required: false);
-            var __workflow_mSOutlookGetEmailsmaxResultsToReturn = mSOutlookGetEmailsmaxResultsToReturn == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailsmaxResultsToReturn);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailsmaxResultsToReturn, nameof(mSOutlookGetEmailsmaxResultsToReturn), required: false);
-            var __workflow_mSOutlookGetEmailsclickAllowButtonIfRequired = mSOutlookGetEmailsclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookGetEmailsclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetEmailsclickAllowButtonIfRequired, nameof(mSOutlookGetEmailsclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookGetEmailsworkflow = WorkflowExpression.Compile(mSOutlookGetEmailsworkflow, nameof(mSOutlookGetEmailsworkflow), required: true);
+            var __workflow_mSOutlookGetEmailsfolderPath = WorkflowExpression.Compile(mSOutlookGetEmailsfolderPath, nameof(mSOutlookGetEmailsfolderPath), required: false);
+            var __workflow_mSOutlookGetEmailssearchRead = WorkflowExpression.Compile(mSOutlookGetEmailssearchRead, nameof(mSOutlookGetEmailssearchRead), required: false);
+            var __workflow_mSOutlookGetEmailssearchUnread = WorkflowExpression.Compile(mSOutlookGetEmailssearchUnread, nameof(mSOutlookGetEmailssearchUnread), required: false);
+            var __workflow_mSOutlookGetEmailssearchSubject = WorkflowExpression.Compile(mSOutlookGetEmailssearchSubject, nameof(mSOutlookGetEmailssearchSubject), required: false);
+            var __workflow_mSOutlookGetEmailssearchFromSMTP = WorkflowExpression.Compile(mSOutlookGetEmailssearchFromSMTP, nameof(mSOutlookGetEmailssearchFromSMTP), required: false);
+            var __workflow_mSOutlookGetEmailssearchFromName = WorkflowExpression.Compile(mSOutlookGetEmailssearchFromName, nameof(mSOutlookGetEmailssearchFromName), required: false);
+            var __workflow_mSOutlookGetEmailssearchQuery = WorkflowExpression.Compile(mSOutlookGetEmailssearchQuery, nameof(mSOutlookGetEmailssearchQuery), required: false);
+            var __workflow_mSOutlookGetEmailssearchMaxAgeInDays = WorkflowExpression.Compile(mSOutlookGetEmailssearchMaxAgeInDays, nameof(mSOutlookGetEmailssearchMaxAgeInDays), required: false);
+            var __workflow_mSOutlookGetEmailssearchStartDateTimeAsString = WorkflowExpression.Compile(mSOutlookGetEmailssearchStartDateTimeAsString, nameof(mSOutlookGetEmailssearchStartDateTimeAsString), required: false);
+            var __workflow_mSOutlookGetEmailssearchEndDateTimeAsString = WorkflowExpression.Compile(mSOutlookGetEmailssearchEndDateTimeAsString, nameof(mSOutlookGetEmailssearchEndDateTimeAsString), required: false);
+            var __workflow_mSOutlookGetEmailsmaxResultsToReturn = WorkflowExpression.Compile(mSOutlookGetEmailsmaxResultsToReturn, nameof(mSOutlookGetEmailsmaxResultsToReturn), required: false);
+            var __workflow_mSOutlookGetEmailsclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookGetEmailsclickAllowButtonIfRequired, nameof(mSOutlookGetEmailsclickAllowButtonIfRequired), required: false);
             return new DeferredBodyAction<MSOutlookGetEmailsResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetEmails";
@@ -9078,30 +8429,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetFirstEmailResponse> MSOutlookGetFirstEmail(Expression<Func<string>> mSOutlookGetFirstEmailworkflow, Expression<Func<string>> mSOutlookGetFirstEmailfolderPath = null, Expression<Func<bool>> mSOutlookGetFirstEmailsearchRead = null, Expression<Func<bool>> mSOutlookGetFirstEmailsearchUnread = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchSubject = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchFromSMTP = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchFromName = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchQuery = null, Expression<Func<int>> mSOutlookGetFirstEmailsearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetFirstEmailsearchEndDateTimeAsString = null, Expression<Func<bool>> mSOutlookGetFirstEmailclickAllowButtonIfRequired = null)
         {
-            var __workflow_mSOutlookGetFirstEmailworkflow = mSOutlookGetFirstEmailworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailworkflow, nameof(mSOutlookGetFirstEmailworkflow), required: true);
-            var __workflow_mSOutlookGetFirstEmailfolderPath = mSOutlookGetFirstEmailfolderPath == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailfolderPath);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailfolderPath, nameof(mSOutlookGetFirstEmailfolderPath), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchRead = mSOutlookGetFirstEmailsearchRead == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchRead);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchRead, nameof(mSOutlookGetFirstEmailsearchRead), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchUnread = mSOutlookGetFirstEmailsearchUnread == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchUnread);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchUnread, nameof(mSOutlookGetFirstEmailsearchUnread), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchSubject = mSOutlookGetFirstEmailsearchSubject == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchSubject);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchSubject, nameof(mSOutlookGetFirstEmailsearchSubject), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchFromSMTP = mSOutlookGetFirstEmailsearchFromSMTP == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchFromSMTP);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchFromSMTP, nameof(mSOutlookGetFirstEmailsearchFromSMTP), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchFromName = mSOutlookGetFirstEmailsearchFromName == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchFromName);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchFromName, nameof(mSOutlookGetFirstEmailsearchFromName), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchQuery = mSOutlookGetFirstEmailsearchQuery == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchQuery);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchQuery, nameof(mSOutlookGetFirstEmailsearchQuery), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchMaxAgeInDays = mSOutlookGetFirstEmailsearchMaxAgeInDays == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchMaxAgeInDays);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchMaxAgeInDays, nameof(mSOutlookGetFirstEmailsearchMaxAgeInDays), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchStartDateTimeAsString = mSOutlookGetFirstEmailsearchStartDateTimeAsString == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchStartDateTimeAsString);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchStartDateTimeAsString, nameof(mSOutlookGetFirstEmailsearchStartDateTimeAsString), required: false);
-            var __workflow_mSOutlookGetFirstEmailsearchEndDateTimeAsString = mSOutlookGetFirstEmailsearchEndDateTimeAsString == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchEndDateTimeAsString);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailsearchEndDateTimeAsString, nameof(mSOutlookGetFirstEmailsearchEndDateTimeAsString), required: false);
-            var __workflow_mSOutlookGetFirstEmailclickAllowButtonIfRequired = mSOutlookGetFirstEmailclickAllowButtonIfRequired == null ? null : WorkflowExpression.Compile(mSOutlookGetFirstEmailclickAllowButtonIfRequired);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetFirstEmailclickAllowButtonIfRequired, nameof(mSOutlookGetFirstEmailclickAllowButtonIfRequired), required: false);
+            var __workflow_mSOutlookGetFirstEmailworkflow = WorkflowExpression.Compile(mSOutlookGetFirstEmailworkflow, nameof(mSOutlookGetFirstEmailworkflow), required: true);
+            var __workflow_mSOutlookGetFirstEmailfolderPath = WorkflowExpression.Compile(mSOutlookGetFirstEmailfolderPath, nameof(mSOutlookGetFirstEmailfolderPath), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchRead = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchRead, nameof(mSOutlookGetFirstEmailsearchRead), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchUnread = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchUnread, nameof(mSOutlookGetFirstEmailsearchUnread), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchSubject = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchSubject, nameof(mSOutlookGetFirstEmailsearchSubject), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchFromSMTP = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchFromSMTP, nameof(mSOutlookGetFirstEmailsearchFromSMTP), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchFromName = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchFromName, nameof(mSOutlookGetFirstEmailsearchFromName), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchQuery = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchQuery, nameof(mSOutlookGetFirstEmailsearchQuery), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchMaxAgeInDays = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchMaxAgeInDays, nameof(mSOutlookGetFirstEmailsearchMaxAgeInDays), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchStartDateTimeAsString = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchStartDateTimeAsString, nameof(mSOutlookGetFirstEmailsearchStartDateTimeAsString), required: false);
+            var __workflow_mSOutlookGetFirstEmailsearchEndDateTimeAsString = WorkflowExpression.Compile(mSOutlookGetFirstEmailsearchEndDateTimeAsString, nameof(mSOutlookGetFirstEmailsearchEndDateTimeAsString), required: false);
+            var __workflow_mSOutlookGetFirstEmailclickAllowButtonIfRequired = WorkflowExpression.Compile(mSOutlookGetFirstEmailclickAllowButtonIfRequired, nameof(mSOutlookGetFirstEmailclickAllowButtonIfRequired), required: false);
             return new DeferredBodyAction<MSOutlookGetFirstEmailResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetFirstEmail";
@@ -9229,28 +8568,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmsoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmsoffice")]
         public IBodyWorkflowAction<MSOutlookGetNumberOfEmailsResponse> MSOutlookGetNumberOfEmails(Expression<Func<string>> mSOutlookGetNumberOfEmailsworkflow, Expression<Func<string>> mSOutlookGetNumberOfEmailsfolderPath = null, Expression<Func<bool>> mSOutlookGetNumberOfEmailssearchRead = null, Expression<Func<bool>> mSOutlookGetNumberOfEmailssearchUnread = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchSubject = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchFromSMTP = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchFromName = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchQuery = null, Expression<Func<int>> mSOutlookGetNumberOfEmailssearchMaxAgeInDays = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchStartDateTimeAsString = null, Expression<Func<string>> mSOutlookGetNumberOfEmailssearchEndDateTimeAsString = null)
         {
-            var __workflow_mSOutlookGetNumberOfEmailsworkflow = mSOutlookGetNumberOfEmailsworkflow == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailsworkflow);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailsworkflow, nameof(mSOutlookGetNumberOfEmailsworkflow), required: true);
-            var __workflow_mSOutlookGetNumberOfEmailsfolderPath = mSOutlookGetNumberOfEmailsfolderPath == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailsfolderPath);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailsfolderPath, nameof(mSOutlookGetNumberOfEmailsfolderPath), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchRead = mSOutlookGetNumberOfEmailssearchRead == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchRead);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchRead, nameof(mSOutlookGetNumberOfEmailssearchRead), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchUnread = mSOutlookGetNumberOfEmailssearchUnread == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchUnread);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchUnread, nameof(mSOutlookGetNumberOfEmailssearchUnread), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchSubject = mSOutlookGetNumberOfEmailssearchSubject == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchSubject);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchSubject, nameof(mSOutlookGetNumberOfEmailssearchSubject), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchFromSMTP = mSOutlookGetNumberOfEmailssearchFromSMTP == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchFromSMTP);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchFromSMTP, nameof(mSOutlookGetNumberOfEmailssearchFromSMTP), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchFromName = mSOutlookGetNumberOfEmailssearchFromName == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchFromName);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchFromName, nameof(mSOutlookGetNumberOfEmailssearchFromName), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchQuery = mSOutlookGetNumberOfEmailssearchQuery == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchQuery);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchQuery, nameof(mSOutlookGetNumberOfEmailssearchQuery), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchMaxAgeInDays = mSOutlookGetNumberOfEmailssearchMaxAgeInDays == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchMaxAgeInDays);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchMaxAgeInDays, nameof(mSOutlookGetNumberOfEmailssearchMaxAgeInDays), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchStartDateTimeAsString = mSOutlookGetNumberOfEmailssearchStartDateTimeAsString == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchStartDateTimeAsString, nameof(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString), required: false);
-            var __workflow_mSOutlookGetNumberOfEmailssearchEndDateTimeAsString = mSOutlookGetNumberOfEmailssearchEndDateTimeAsString == null ? null : WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString);
-            WorkflowExpression.Validate(__workflow_mSOutlookGetNumberOfEmailssearchEndDateTimeAsString, nameof(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailsworkflow = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailsworkflow, nameof(mSOutlookGetNumberOfEmailsworkflow), required: true);
+            var __workflow_mSOutlookGetNumberOfEmailsfolderPath = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailsfolderPath, nameof(mSOutlookGetNumberOfEmailsfolderPath), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchRead = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchRead, nameof(mSOutlookGetNumberOfEmailssearchRead), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchUnread = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchUnread, nameof(mSOutlookGetNumberOfEmailssearchUnread), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchSubject = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchSubject, nameof(mSOutlookGetNumberOfEmailssearchSubject), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchFromSMTP = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchFromSMTP, nameof(mSOutlookGetNumberOfEmailssearchFromSMTP), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchFromName = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchFromName, nameof(mSOutlookGetNumberOfEmailssearchFromName), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchQuery = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchQuery, nameof(mSOutlookGetNumberOfEmailssearchQuery), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchMaxAgeInDays = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchMaxAgeInDays, nameof(mSOutlookGetNumberOfEmailssearchMaxAgeInDays), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchStartDateTimeAsString = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString, nameof(mSOutlookGetNumberOfEmailssearchStartDateTimeAsString), required: false);
+            var __workflow_mSOutlookGetNumberOfEmailssearchEndDateTimeAsString = WorkflowExpression.Compile(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString, nameof(mSOutlookGetNumberOfEmailssearchEndDateTimeAsString), required: false);
             return new DeferredBodyAction<MSOutlookGetNumberOfEmailsResponse>(() =>
             {
                 var apiCallPath = "/MSOutlook/GetNumberOfEmails";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> GetContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
         {
-            var __workflow_contactListId = contactListId == null ? null : WorkflowExpression.Compile(contactListId);
-            WorkflowExpression.Validate(__workflow_contactListId, nameof(contactListId), required: true);
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<Contact>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactListId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -29,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IWorkflowAction DeleteContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId)
         {
-            var __workflow_contactListId = contactListId == null ? null : WorkflowExpression.Compile(contactListId);
-            WorkflowExpression.Validate(__workflow_contactListId, nameof(contactListId), required: true);
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactListId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -45,42 +41,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> UpdateContact(Expression<Func<string>> contactListId, Expression<Func<string>> contactId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
         {
-            var __workflow_contactListId = contactListId == null ? null : WorkflowExpression.Compile(contactListId);
-            WorkflowExpression.Validate(__workflow_contactListId, nameof(contactListId), required: true);
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyjobTitle = bodyjobTitle == null ? null : WorkflowExpression.Compile(bodyjobTitle);
-            WorkflowExpression.Validate(__workflow_bodyjobTitle, nameof(bodyjobTitle), required: false);
-            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
-            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodydepartment = bodydepartment == null ? null : WorkflowExpression.Compile(bodydepartment);
-            WorkflowExpression.Validate(__workflow_bodydepartment, nameof(bodydepartment), required: false);
-            var __workflow_bodyinternetemail = bodyinternetemail == null ? null : WorkflowExpression.Compile(bodyinternetemail);
-            WorkflowExpression.Validate(__workflow_bodyinternetemail, nameof(bodyinternetemail), required: false);
-            var __workflow_bodyinternetwebsite = bodyinternetwebsite == null ? null : WorkflowExpression.Compile(bodyinternetwebsite);
-            WorkflowExpression.Validate(__workflow_bodyinternetwebsite, nameof(bodyinternetwebsite), required: false);
-            var __workflow_bodyinternetlinkedin = bodyinternetlinkedin == null ? null : WorkflowExpression.Compile(bodyinternetlinkedin);
-            WorkflowExpression.Validate(__workflow_bodyinternetlinkedin, nameof(bodyinternetlinkedin), required: false);
-            var __workflow_bodyinternetfacebook = bodyinternetfacebook == null ? null : WorkflowExpression.Compile(bodyinternetfacebook);
-            WorkflowExpression.Validate(__workflow_bodyinternetfacebook, nameof(bodyinternetfacebook), required: false);
-            var __workflow_bodyinternettwitter = bodyinternettwitter == null ? null : WorkflowExpression.Compile(bodyinternettwitter);
-            WorkflowExpression.Validate(__workflow_bodyinternettwitter, nameof(bodyinternettwitter), required: false);
-            var __workflow_bodyphonesbusinessPhone = bodyphonesbusinessPhone == null ? null : WorkflowExpression.Compile(bodyphonesbusinessPhone);
-            WorkflowExpression.Validate(__workflow_bodyphonesbusinessPhone, nameof(bodyphonesbusinessPhone), required: false);
-            var __workflow_bodyphonesmobile = bodyphonesmobile == null ? null : WorkflowExpression.Compile(bodyphonesmobile);
-            WorkflowExpression.Validate(__workflow_bodyphonesmobile, nameof(bodyphonesmobile), required: false);
-            var __workflow_bodyphoneshome = bodyphoneshome == null ? null : WorkflowExpression.Compile(bodyphoneshome);
-            WorkflowExpression.Validate(__workflow_bodyphoneshome, nameof(bodyphoneshome), required: false);
-            var __workflow_bodyphonesbusinessFax = bodyphonesbusinessFax == null ? null : WorkflowExpression.Compile(bodyphonesbusinessFax);
-            WorkflowExpression.Validate(__workflow_bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
-            var __workflow_bodyaddresses = bodyaddresses == null ? null : WorkflowExpression.Compile(bodyaddresses);
-            WorkflowExpression.Validate(__workflow_bodyaddresses, nameof(bodyaddresses), required: false);
-            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
-            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodydepartment = WorkflowExpression.Compile(bodydepartment, nameof(bodydepartment), required: false);
+            var __workflow_bodyinternetemail = WorkflowExpression.Compile(bodyinternetemail, nameof(bodyinternetemail), required: false);
+            var __workflow_bodyinternetwebsite = WorkflowExpression.Compile(bodyinternetwebsite, nameof(bodyinternetwebsite), required: false);
+            var __workflow_bodyinternetlinkedin = WorkflowExpression.Compile(bodyinternetlinkedin, nameof(bodyinternetlinkedin), required: false);
+            var __workflow_bodyinternetfacebook = WorkflowExpression.Compile(bodyinternetfacebook, nameof(bodyinternetfacebook), required: false);
+            var __workflow_bodyinternettwitter = WorkflowExpression.Compile(bodyinternettwitter, nameof(bodyinternettwitter), required: false);
+            var __workflow_bodyphonesbusinessPhone = WorkflowExpression.Compile(bodyphonesbusinessPhone, nameof(bodyphonesbusinessPhone), required: false);
+            var __workflow_bodyphonesmobile = WorkflowExpression.Compile(bodyphonesmobile, nameof(bodyphonesmobile), required: false);
+            var __workflow_bodyphoneshome = WorkflowExpression.Compile(bodyphoneshome, nameof(bodyphoneshome), required: false);
+            var __workflow_bodyphonesbusinessFax = WorkflowExpression.Compile(bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
+            var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
+            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
             return new DeferredBodyAction<Contact>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contacts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactListId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -208,8 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact[]> GetAllContacts(Expression<Func<string>> contactListId)
         {
-            var __workflow_contactListId = contactListId == null ? null : WorkflowExpression.Compile(contactListId);
-            WorkflowExpression.Validate(__workflow_contactListId, nameof(contactListId), required: true);
+            var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
             return new DeferredBodyAction<Contact[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contacts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactListId, 1));
@@ -222,40 +199,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Contactspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "contactspro")]
         public IBodyWorkflowAction<Contact> CreateContact(Expression<Func<string>> contactListId, Expression<Func<string>> bodyname, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodyinternetemail = null, Expression<Func<string>> bodyinternetwebsite = null, Expression<Func<string>> bodyinternetlinkedin = null, Expression<Func<string>> bodyinternetfacebook = null, Expression<Func<string>> bodyinternettwitter = null, Expression<Func<string>> bodyphonesbusinessPhone = null, Expression<Func<string>> bodyphonesmobile = null, Expression<Func<string>> bodyphoneshome = null, Expression<Func<string>> bodyphonesbusinessFax = null, Expression<Func<Address[]>> bodyaddresses = null, Expression<Func<string>> bodynotes = null)
         {
-            var __workflow_contactListId = contactListId == null ? null : WorkflowExpression.Compile(contactListId);
-            WorkflowExpression.Validate(__workflow_contactListId, nameof(contactListId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyjobTitle = bodyjobTitle == null ? null : WorkflowExpression.Compile(bodyjobTitle);
-            WorkflowExpression.Validate(__workflow_bodyjobTitle, nameof(bodyjobTitle), required: false);
-            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
-            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodydepartment = bodydepartment == null ? null : WorkflowExpression.Compile(bodydepartment);
-            WorkflowExpression.Validate(__workflow_bodydepartment, nameof(bodydepartment), required: false);
-            var __workflow_bodyinternetemail = bodyinternetemail == null ? null : WorkflowExpression.Compile(bodyinternetemail);
-            WorkflowExpression.Validate(__workflow_bodyinternetemail, nameof(bodyinternetemail), required: false);
-            var __workflow_bodyinternetwebsite = bodyinternetwebsite == null ? null : WorkflowExpression.Compile(bodyinternetwebsite);
-            WorkflowExpression.Validate(__workflow_bodyinternetwebsite, nameof(bodyinternetwebsite), required: false);
-            var __workflow_bodyinternetlinkedin = bodyinternetlinkedin == null ? null : WorkflowExpression.Compile(bodyinternetlinkedin);
-            WorkflowExpression.Validate(__workflow_bodyinternetlinkedin, nameof(bodyinternetlinkedin), required: false);
-            var __workflow_bodyinternetfacebook = bodyinternetfacebook == null ? null : WorkflowExpression.Compile(bodyinternetfacebook);
-            WorkflowExpression.Validate(__workflow_bodyinternetfacebook, nameof(bodyinternetfacebook), required: false);
-            var __workflow_bodyinternettwitter = bodyinternettwitter == null ? null : WorkflowExpression.Compile(bodyinternettwitter);
-            WorkflowExpression.Validate(__workflow_bodyinternettwitter, nameof(bodyinternettwitter), required: false);
-            var __workflow_bodyphonesbusinessPhone = bodyphonesbusinessPhone == null ? null : WorkflowExpression.Compile(bodyphonesbusinessPhone);
-            WorkflowExpression.Validate(__workflow_bodyphonesbusinessPhone, nameof(bodyphonesbusinessPhone), required: false);
-            var __workflow_bodyphonesmobile = bodyphonesmobile == null ? null : WorkflowExpression.Compile(bodyphonesmobile);
-            WorkflowExpression.Validate(__workflow_bodyphonesmobile, nameof(bodyphonesmobile), required: false);
-            var __workflow_bodyphoneshome = bodyphoneshome == null ? null : WorkflowExpression.Compile(bodyphoneshome);
-            WorkflowExpression.Validate(__workflow_bodyphoneshome, nameof(bodyphoneshome), required: false);
-            var __workflow_bodyphonesbusinessFax = bodyphonesbusinessFax == null ? null : WorkflowExpression.Compile(bodyphonesbusinessFax);
-            WorkflowExpression.Validate(__workflow_bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
-            var __workflow_bodyaddresses = bodyaddresses == null ? null : WorkflowExpression.Compile(bodyaddresses);
-            WorkflowExpression.Validate(__workflow_bodyaddresses, nameof(bodyaddresses), required: false);
-            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
-            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
+            var __workflow_contactListId = WorkflowExpression.Compile(contactListId, nameof(contactListId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodydepartment = WorkflowExpression.Compile(bodydepartment, nameof(bodydepartment), required: false);
+            var __workflow_bodyinternetemail = WorkflowExpression.Compile(bodyinternetemail, nameof(bodyinternetemail), required: false);
+            var __workflow_bodyinternetwebsite = WorkflowExpression.Compile(bodyinternetwebsite, nameof(bodyinternetwebsite), required: false);
+            var __workflow_bodyinternetlinkedin = WorkflowExpression.Compile(bodyinternetlinkedin, nameof(bodyinternetlinkedin), required: false);
+            var __workflow_bodyinternetfacebook = WorkflowExpression.Compile(bodyinternetfacebook, nameof(bodyinternetfacebook), required: false);
+            var __workflow_bodyinternettwitter = WorkflowExpression.Compile(bodyinternettwitter, nameof(bodyinternettwitter), required: false);
+            var __workflow_bodyphonesbusinessPhone = WorkflowExpression.Compile(bodyphonesbusinessPhone, nameof(bodyphonesbusinessPhone), required: false);
+            var __workflow_bodyphonesmobile = WorkflowExpression.Compile(bodyphonesmobile, nameof(bodyphonesmobile), required: false);
+            var __workflow_bodyphoneshome = WorkflowExpression.Compile(bodyphoneshome, nameof(bodyphoneshome), required: false);
+            var __workflow_bodyphonesbusinessFax = WorkflowExpression.Compile(bodyphonesbusinessFax, nameof(bodyphonesbusinessFax), required: false);
+            var __workflow_bodyaddresses = WorkflowExpression.Compile(bodyaddresses, nameof(bodyaddresses), required: false);
+            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
             return new DeferredBodyAction<Contact>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contacts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactListId, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
         public IBodyWorkflowAction<TranslatePostResponse> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
         {
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<TranslatePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1));

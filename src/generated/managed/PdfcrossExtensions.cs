@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> MergePDF(Expression<Func<string[]>> filesfileContent)
         {
-            var __workflow_filesfileContent = filesfileContent == null ? null : WorkflowExpression.Compile(filesfileContent);
-            WorkflowExpression.Validate(__workflow_filesfileContent, nameof(filesfileContent), required: true);
+            var __workflow_filesfileContent = WorkflowExpression.Compile(filesfileContent, nameof(filesfileContent), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/merge";
@@ -36,10 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> AddWatermarkText(Expression<Func<string>> filefileContent, Expression<Func<string>> filewatermarkText)
         {
-            var __workflow_filefileContent = filefileContent == null ? null : WorkflowExpression.Compile(filefileContent);
-            WorkflowExpression.Validate(__workflow_filefileContent, nameof(filefileContent), required: true);
-            var __workflow_filewatermarkText = filewatermarkText == null ? null : WorkflowExpression.Compile(filewatermarkText);
-            WorkflowExpression.Validate(__workflow_filewatermarkText, nameof(filewatermarkText), required: true);
+            var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
+            var __workflow_filewatermarkText = WorkflowExpression.Compile(filewatermarkText, nameof(filewatermarkText), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/watermark_text";
@@ -63,10 +60,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> AddPassword(Expression<Func<string>> filefileContent, Expression<Func<string>> filepassword)
         {
-            var __workflow_filefileContent = filefileContent == null ? null : WorkflowExpression.Compile(filefileContent);
-            WorkflowExpression.Validate(__workflow_filefileContent, nameof(filefileContent), required: true);
-            var __workflow_filepassword = filepassword == null ? null : WorkflowExpression.Compile(filepassword);
-            WorkflowExpression.Validate(__workflow_filepassword, nameof(filepassword), required: true);
+            var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
+            var __workflow_filepassword = WorkflowExpression.Compile(filepassword, nameof(filepassword), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/password";
@@ -90,20 +85,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfcross
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfcross")]
         public IBodyWorkflowAction<string> AddImage(Expression<Func<string>> filefileContent, Expression<Func<string>> fileimageContent, Expression<Func<double>> filepositionX, Expression<Func<double>> filepositionY, Expression<Func<string>> fileaddType, Expression<Func<double>> filefromPage = null, Expression<Func<double>> filetoPage = null)
         {
-            var __workflow_filefileContent = filefileContent == null ? null : WorkflowExpression.Compile(filefileContent);
-            WorkflowExpression.Validate(__workflow_filefileContent, nameof(filefileContent), required: true);
-            var __workflow_fileimageContent = fileimageContent == null ? null : WorkflowExpression.Compile(fileimageContent);
-            WorkflowExpression.Validate(__workflow_fileimageContent, nameof(fileimageContent), required: true);
-            var __workflow_filepositionX = filepositionX == null ? null : WorkflowExpression.Compile(filepositionX);
-            WorkflowExpression.Validate(__workflow_filepositionX, nameof(filepositionX), required: true);
-            var __workflow_filepositionY = filepositionY == null ? null : WorkflowExpression.Compile(filepositionY);
-            WorkflowExpression.Validate(__workflow_filepositionY, nameof(filepositionY), required: true);
-            var __workflow_fileaddType = fileaddType == null ? null : WorkflowExpression.Compile(fileaddType);
-            WorkflowExpression.Validate(__workflow_fileaddType, nameof(fileaddType), required: true);
-            var __workflow_filefromPage = filefromPage == null ? null : WorkflowExpression.Compile(filefromPage);
-            WorkflowExpression.Validate(__workflow_filefromPage, nameof(filefromPage), required: false);
-            var __workflow_filetoPage = filetoPage == null ? null : WorkflowExpression.Compile(filetoPage);
-            WorkflowExpression.Validate(__workflow_filetoPage, nameof(filetoPage), required: false);
+            var __workflow_filefileContent = WorkflowExpression.Compile(filefileContent, nameof(filefileContent), required: true);
+            var __workflow_fileimageContent = WorkflowExpression.Compile(fileimageContent, nameof(fileimageContent), required: true);
+            var __workflow_filepositionX = WorkflowExpression.Compile(filepositionX, nameof(filepositionX), required: true);
+            var __workflow_filepositionY = WorkflowExpression.Compile(filepositionY, nameof(filepositionY), required: true);
+            var __workflow_fileaddType = WorkflowExpression.Compile(fileaddType, nameof(fileaddType), required: true);
+            var __workflow_filefromPage = WorkflowExpression.Compile(filefromPage, nameof(filefromPage), required: false);
+            var __workflow_filetoPage = WorkflowExpression.Compile(filetoPage, nameof(filetoPage), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/image";

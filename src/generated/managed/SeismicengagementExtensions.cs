@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> GetListOfDeliveryOptions(Expression<Func<bool>> enabled = null)
         {
-            var __workflow_enabled = enabled == null ? null : WorkflowExpression.Compile(enabled);
-            WorkflowExpression.Validate(__workflow_enabled, nameof(enabled), required: false);
+            var __workflow_enabled = WorkflowExpression.Compile(enabled, nameof(enabled), required: false);
             return new DeferredBodyAction<SeismicDeliveryDeliveryOption[]>(() =>
             {
                 var apiCallPath = "/delivery";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs(Expression<Func<string>> deliveryOptionId)
         {
-            var __workflow_deliveryOptionId = deliveryOptionId == null ? null : WorkflowExpression.Compile(deliveryOptionId);
-            WorkflowExpression.Validate(__workflow_deliveryOptionId, nameof(deliveryOptionId), required: true);
+            var __workflow_deliveryOptionId = WorkflowExpression.Compile(deliveryOptionId, nameof(deliveryOptionId), required: true);
             return new DeferredBodyAction<SeismicDeliveryDeliveryFormInputs>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/customDelivery/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deliveryOptionId, 1));
@@ -43,14 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IWorkflowAction DeliverViaCustomDelivery(Expression<Func<string>> bodydeliveryOption = null, Expression<Func<string>> bodydeliveryOptionId = null, Expression<Func<SeismicDeliveryCustomDeliveryAdHocInput[]>> bodyadHocInput = null, Expression<Func<SeismicDeliveryCustomDeliveryContent[]>> bodycontent = null)
         {
-            var __workflow_bodydeliveryOption = bodydeliveryOption == null ? null : WorkflowExpression.Compile(bodydeliveryOption);
-            WorkflowExpression.Validate(__workflow_bodydeliveryOption, nameof(bodydeliveryOption), required: false);
-            var __workflow_bodydeliveryOptionId = bodydeliveryOptionId == null ? null : WorkflowExpression.Compile(bodydeliveryOptionId);
-            WorkflowExpression.Validate(__workflow_bodydeliveryOptionId, nameof(bodydeliveryOptionId), required: false);
-            var __workflow_bodyadHocInput = bodyadHocInput == null ? null : WorkflowExpression.Compile(bodyadHocInput);
-            WorkflowExpression.Validate(__workflow_bodyadHocInput, nameof(bodyadHocInput), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodydeliveryOption = WorkflowExpression.Compile(bodydeliveryOption, nameof(bodydeliveryOption), required: false);
+            var __workflow_bodydeliveryOptionId = WorkflowExpression.Compile(bodydeliveryOptionId, nameof(bodydeliveryOptionId), required: false);
+            var __workflow_bodyadHocInput = WorkflowExpression.Compile(bodyadHocInput, nameof(bodyadHocInput), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/customDelivery";
@@ -94,10 +88,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> SaveToWorkspace(Expression<Func<string>> bodyworkspaceOptionsworkspaceFolderId = null, Expression<Func<SeismicDeliveryCustomDelContent[]>> bodycontent = null)
         {
-            var __workflow_bodyworkspaceOptionsworkspaceFolderId = bodyworkspaceOptionsworkspaceFolderId == null ? null : WorkflowExpression.Compile(bodyworkspaceOptionsworkspaceFolderId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceOptionsworkspaceFolderId, nameof(bodyworkspaceOptionsworkspaceFolderId), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyworkspaceOptionsworkspaceFolderId = WorkflowExpression.Compile(bodyworkspaceOptionsworkspaceFolderId, nameof(bodyworkspaceOptionsworkspaceFolderId), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             return new DeferredBodyAction<SeismicWorkSpaceContentManagerWsItemResp>(() =>
             {
                 var apiCallPath = "/saveToWorkspace";
@@ -137,20 +129,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> CreateLiveSendLink(Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodysettingsexpiresAt = null, Expression<Func<string>> bodysettingspassword = null, Expression<Func<bool>> bodysettingsallowDownload = null, Expression<Func<string>> bodysettingsnotificationType = null, Expression<Func<bool>> bodysettingssingleView = null, Expression<Func<SeismicLiveSendLiveSendLinkContent[]>> bodycontent = null)
         {
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodysettingsexpiresAt = bodysettingsexpiresAt == null ? null : WorkflowExpression.Compile(bodysettingsexpiresAt);
-            WorkflowExpression.Validate(__workflow_bodysettingsexpiresAt, nameof(bodysettingsexpiresAt), required: false);
-            var __workflow_bodysettingspassword = bodysettingspassword == null ? null : WorkflowExpression.Compile(bodysettingspassword);
-            WorkflowExpression.Validate(__workflow_bodysettingspassword, nameof(bodysettingspassword), required: false);
-            var __workflow_bodysettingsallowDownload = bodysettingsallowDownload == null ? null : WorkflowExpression.Compile(bodysettingsallowDownload);
-            WorkflowExpression.Validate(__workflow_bodysettingsallowDownload, nameof(bodysettingsallowDownload), required: false);
-            var __workflow_bodysettingsnotificationType = bodysettingsnotificationType == null ? null : WorkflowExpression.Compile(bodysettingsnotificationType);
-            WorkflowExpression.Validate(__workflow_bodysettingsnotificationType, nameof(bodysettingsnotificationType), required: false);
-            var __workflow_bodysettingssingleView = bodysettingssingleView == null ? null : WorkflowExpression.Compile(bodysettingssingleView);
-            WorkflowExpression.Validate(__workflow_bodysettingssingleView, nameof(bodysettingssingleView), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodysettingsexpiresAt = WorkflowExpression.Compile(bodysettingsexpiresAt, nameof(bodysettingsexpiresAt), required: false);
+            var __workflow_bodysettingspassword = WorkflowExpression.Compile(bodysettingspassword, nameof(bodysettingspassword), required: false);
+            var __workflow_bodysettingsallowDownload = WorkflowExpression.Compile(bodysettingsallowDownload, nameof(bodysettingsallowDownload), required: false);
+            var __workflow_bodysettingsnotificationType = WorkflowExpression.Compile(bodysettingsnotificationType, nameof(bodysettingsnotificationType), required: false);
+            var __workflow_bodysettingssingleView = WorkflowExpression.Compile(bodysettingssingleView, nameof(bodysettingssingleView), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             return new DeferredBodyAction<SeismicLiveSendLiveSendLinkResponse>(() =>
             {
                 var apiCallPath = "/liveSend/links";

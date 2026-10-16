@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<List> GetList(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<List>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Export> GetExport(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Export>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/exports/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -50,8 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Export> StartExport(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Export>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/exports/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -109,14 +106,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Subscriber> AddSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydoubleOptIn = bodydoubleOptIn == null ? null : WorkflowExpression.Compile(bodydoubleOptIn);
-            WorkflowExpression.Validate(__workflow_bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
             return new DeferredBodyAction<Subscriber>(() =>
             {
                 var apiCallPath = "/subscribers";
@@ -156,14 +149,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Subscriber> UpdateSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydoubleOptIn = bodydoubleOptIn == null ? null : WorkflowExpression.Compile(bodydoubleOptIn);
-            WorkflowExpression.Validate(__workflow_bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
             return new DeferredBodyAction<Subscriber>(() =>
             {
                 var apiCallPath = "/subscribers";
@@ -212,14 +201,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Subscriber> UnsubscribeSubscriber(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydoubleOptIn = bodydoubleOptIn == null ? null : WorkflowExpression.Compile(bodydoubleOptIn);
-            WorkflowExpression.Validate(__workflow_bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodydoubleOptIn = WorkflowExpression.Compile(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
             return new DeferredBodyAction<Subscriber>(() =>
             {
                 var apiCallPath = "/subscribers/unsubscribe";

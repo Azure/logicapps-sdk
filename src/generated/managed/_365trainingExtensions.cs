@@ -22,18 +22,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<CourseSummaryResponse> ListCourses(Expression<Func<string>> publishedFrom = null, Expression<Func<string>> publishedTo = null, Expression<Func<double>> priceFrom = null, Expression<Func<double>> priceTo = null, Expression<Func<bool>> isNew = null, Expression<Func<string>> moreToken = null)
         {
-            var __workflow_publishedFrom = publishedFrom == null ? null : WorkflowExpression.Compile(publishedFrom);
-            WorkflowExpression.Validate(__workflow_publishedFrom, nameof(publishedFrom), required: false);
-            var __workflow_publishedTo = publishedTo == null ? null : WorkflowExpression.Compile(publishedTo);
-            WorkflowExpression.Validate(__workflow_publishedTo, nameof(publishedTo), required: false);
-            var __workflow_priceFrom = priceFrom == null ? null : WorkflowExpression.Compile(priceFrom);
-            WorkflowExpression.Validate(__workflow_priceFrom, nameof(priceFrom), required: false);
-            var __workflow_priceTo = priceTo == null ? null : WorkflowExpression.Compile(priceTo);
-            WorkflowExpression.Validate(__workflow_priceTo, nameof(priceTo), required: false);
-            var __workflow_isNew = isNew == null ? null : WorkflowExpression.Compile(isNew);
-            WorkflowExpression.Validate(__workflow_isNew, nameof(isNew), required: false);
-            var __workflow_moreToken = moreToken == null ? null : WorkflowExpression.Compile(moreToken);
-            WorkflowExpression.Validate(__workflow_moreToken, nameof(moreToken), required: false);
+            var __workflow_publishedFrom = WorkflowExpression.Compile(publishedFrom, nameof(publishedFrom), required: false);
+            var __workflow_publishedTo = WorkflowExpression.Compile(publishedTo, nameof(publishedTo), required: false);
+            var __workflow_priceFrom = WorkflowExpression.Compile(priceFrom, nameof(priceFrom), required: false);
+            var __workflow_priceTo = WorkflowExpression.Compile(priceTo, nameof(priceTo), required: false);
+            var __workflow_isNew = WorkflowExpression.Compile(isNew, nameof(isNew), required: false);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
             return new DeferredBodyAction<CourseSummaryResponse>(() =>
             {
                 var apiCallPath = "/ListCourses";
@@ -58,8 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<InstructorSummaryResponse> ListInstructors(Expression<Func<string>> moreToken = null)
         {
-            var __workflow_moreToken = moreToken == null ? null : WorkflowExpression.Compile(moreToken);
-            WorkflowExpression.Validate(__workflow_moreToken, nameof(moreToken), required: false);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
             return new DeferredBodyAction<InstructorSummaryResponse>(() =>
             {
                 var apiCallPath = "/ListInstructors";
@@ -74,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<MyCoursesResponse> ListMyCourses(Expression<Func<string>> moreToken = null)
         {
-            var __workflow_moreToken = moreToken == null ? null : WorkflowExpression.Compile(moreToken);
-            WorkflowExpression.Validate(__workflow_moreToken, nameof(moreToken), required: false);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
             return new DeferredBodyAction<MyCoursesResponse>(() =>
             {
                 var apiCallPath = "/ListMyCourses";
@@ -90,8 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<IdeaSummaryResponse> ListIdeas(Expression<Func<string>> moreToken = null)
         {
-            var __workflow_moreToken = moreToken == null ? null : WorkflowExpression.Compile(moreToken);
-            WorkflowExpression.Validate(__workflow_moreToken, nameof(moreToken), required: false);
+            var __workflow_moreToken = WorkflowExpression.Compile(moreToken, nameof(moreToken), required: false);
             return new DeferredBodyAction<IdeaSummaryResponse>(() =>
             {
                 var apiCallPath = "/ListIdeas";
@@ -106,8 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<CourseDetail> GetCourse(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CourseDetail>(() =>
             {
                 var apiCallPath = "/GetCourse";
@@ -121,8 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IWorkflowAction AddIdeaVote(Expression<Func<string>> ideaID)
         {
-            var __workflow_ideaID = ideaID == null ? null : WorkflowExpression.Compile(ideaID);
-            WorkflowExpression.Validate(__workflow_ideaID, nameof(ideaID), required: true);
+            var __workflow_ideaID = WorkflowExpression.Compile(ideaID, nameof(ideaID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/AddIdeaVote";
@@ -136,8 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<InstructorDetail> GetInstructor(Expression<Func<string>> id = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             return new DeferredBodyAction<InstructorDetail>(() =>
             {
                 var apiCallPath = "/GetInstructor";
@@ -152,8 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/Search";

@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<ETLJob> ETLUpload(Expression<Func<string>> modelIdPath, Expression<Func<string>> templateId, Expression<Func<string>> fileName, Expression<Func<string>> file, Expression<Func<fileTypeInput>> fileType, Expression<Func<fileEncodingInput>> fileEncoding = null)
         {
-            var __workflow_modelIdPath = modelIdPath == null ? null : WorkflowExpression.Compile(modelIdPath);
-            WorkflowExpression.Validate(__workflow_modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_fileType = fileType == null ? null : WorkflowExpression.Compile(fileType);
-            WorkflowExpression.Validate(__workflow_fileType, nameof(fileType), required: true);
-            var __workflow_fileEncoding = fileEncoding == null ? null : WorkflowExpression.Compile(fileEncoding);
-            WorkflowExpression.Validate(__workflow_fileEncoding, nameof(fileEncoding), required: false);
+            var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_fileType = WorkflowExpression.Compile(fileType, nameof(fileType), required: true);
+            var __workflow_fileEncoding = WorkflowExpression.Compile(fileEncoding, nameof(fileEncoding), required: false);
             return new DeferredBodyAction<ETLJob>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/templates/{1}/upload", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -42,16 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
         {
-            var __workflow_modelIdPath = modelIdPath == null ? null : WorkflowExpression.Compile(modelIdPath);
-            WorkflowExpression.Validate(__workflow_modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_lidsBodyshowHeader = lidsBodyshowHeader == null ? null : WorkflowExpression.Compile(lidsBodyshowHeader);
-            WorkflowExpression.Validate(__workflow_lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
-            var __workflow_lidsBodymQLQueryString = lidsBodymQLQueryString == null ? null : WorkflowExpression.Compile(lidsBodymQLQueryString);
-            WorkflowExpression.Validate(__workflow_lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
-            var __workflow_lidsBodyfileFormat = lidsBodyfileFormat == null ? null : WorkflowExpression.Compile(lidsBodyfileFormat);
-            WorkflowExpression.Validate(__workflow_lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
-            var __workflow_lidsBodyfileEncoding = lidsBodyfileEncoding == null ? null : WorkflowExpression.Compile(lidsBodyfileEncoding);
-            WorkflowExpression.Validate(__workflow_lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
+            var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
+            var __workflow_lidsBodyshowHeader = WorkflowExpression.Compile(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
+            var __workflow_lidsBodymQLQueryString = WorkflowExpression.Compile(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
+            var __workflow_lidsBodyfileFormat = WorkflowExpression.Compile(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
+            var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/attributes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));
@@ -127,18 +116,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<bool>> hierarchiesBodyshowHeader = null, Expression<Func<string>> hierarchiesBodymQLQueryString = null, Expression<Func<hierarchiesBodyfileFormatInput>> hierarchiesBodyfileFormat = null, Expression<Func<hierarchiesBodyfileEncodingInput>> hierarchiesBodyfileEncoding = null, Expression<Func<bool>> hierarchiesBodyexportMemberIDs = null)
         {
-            var __workflow_modelIdPath = modelIdPath == null ? null : WorkflowExpression.Compile(modelIdPath);
-            WorkflowExpression.Validate(__workflow_modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_hierarchiesBodyshowHeader = hierarchiesBodyshowHeader == null ? null : WorkflowExpression.Compile(hierarchiesBodyshowHeader);
-            WorkflowExpression.Validate(__workflow_hierarchiesBodyshowHeader, nameof(hierarchiesBodyshowHeader), required: false);
-            var __workflow_hierarchiesBodymQLQueryString = hierarchiesBodymQLQueryString == null ? null : WorkflowExpression.Compile(hierarchiesBodymQLQueryString);
-            WorkflowExpression.Validate(__workflow_hierarchiesBodymQLQueryString, nameof(hierarchiesBodymQLQueryString), required: false);
-            var __workflow_hierarchiesBodyfileFormat = hierarchiesBodyfileFormat == null ? null : WorkflowExpression.Compile(hierarchiesBodyfileFormat);
-            WorkflowExpression.Validate(__workflow_hierarchiesBodyfileFormat, nameof(hierarchiesBodyfileFormat), required: false);
-            var __workflow_hierarchiesBodyfileEncoding = hierarchiesBodyfileEncoding == null ? null : WorkflowExpression.Compile(hierarchiesBodyfileEncoding);
-            WorkflowExpression.Validate(__workflow_hierarchiesBodyfileEncoding, nameof(hierarchiesBodyfileEncoding), required: false);
-            var __workflow_hierarchiesBodyexportMemberIDs = hierarchiesBodyexportMemberIDs == null ? null : WorkflowExpression.Compile(hierarchiesBodyexportMemberIDs);
-            WorkflowExpression.Validate(__workflow_hierarchiesBodyexportMemberIDs, nameof(hierarchiesBodyexportMemberIDs), required: false);
+            var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
+            var __workflow_hierarchiesBodyshowHeader = WorkflowExpression.Compile(hierarchiesBodyshowHeader, nameof(hierarchiesBodyshowHeader), required: false);
+            var __workflow_hierarchiesBodymQLQueryString = WorkflowExpression.Compile(hierarchiesBodymQLQueryString, nameof(hierarchiesBodymQLQueryString), required: false);
+            var __workflow_hierarchiesBodyfileFormat = WorkflowExpression.Compile(hierarchiesBodyfileFormat, nameof(hierarchiesBodyfileFormat), required: false);
+            var __workflow_hierarchiesBodyfileEncoding = WorkflowExpression.Compile(hierarchiesBodyfileEncoding, nameof(hierarchiesBodyfileEncoding), required: false);
+            var __workflow_hierarchiesBodyexportMemberIDs = WorkflowExpression.Compile(hierarchiesBodyexportMemberIDs, nameof(hierarchiesBodyexportMemberIDs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/hierarchies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));
@@ -230,20 +213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<bool>> valuesBodyshowHeader = null, Expression<Func<string>> valuesBodymQLQueryString = null, Expression<Func<valuesBodyfileFormatInput>> valuesBodyfileFormat = null, Expression<Func<valuesBodyfileEncodingInput>> valuesBodyfileEncoding = null, Expression<Func<bool>> valuesBodyincludeExternalIDs = null, Expression<Func<bool>> valuesBodynamedDimensions = null)
         {
-            var __workflow_modelIdPath = modelIdPath == null ? null : WorkflowExpression.Compile(modelIdPath);
-            WorkflowExpression.Validate(__workflow_modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_valuesBodyshowHeader = valuesBodyshowHeader == null ? null : WorkflowExpression.Compile(valuesBodyshowHeader);
-            WorkflowExpression.Validate(__workflow_valuesBodyshowHeader, nameof(valuesBodyshowHeader), required: false);
-            var __workflow_valuesBodymQLQueryString = valuesBodymQLQueryString == null ? null : WorkflowExpression.Compile(valuesBodymQLQueryString);
-            WorkflowExpression.Validate(__workflow_valuesBodymQLQueryString, nameof(valuesBodymQLQueryString), required: false);
-            var __workflow_valuesBodyfileFormat = valuesBodyfileFormat == null ? null : WorkflowExpression.Compile(valuesBodyfileFormat);
-            WorkflowExpression.Validate(__workflow_valuesBodyfileFormat, nameof(valuesBodyfileFormat), required: false);
-            var __workflow_valuesBodyfileEncoding = valuesBodyfileEncoding == null ? null : WorkflowExpression.Compile(valuesBodyfileEncoding);
-            WorkflowExpression.Validate(__workflow_valuesBodyfileEncoding, nameof(valuesBodyfileEncoding), required: false);
-            var __workflow_valuesBodyincludeExternalIDs = valuesBodyincludeExternalIDs == null ? null : WorkflowExpression.Compile(valuesBodyincludeExternalIDs);
-            WorkflowExpression.Validate(__workflow_valuesBodyincludeExternalIDs, nameof(valuesBodyincludeExternalIDs), required: false);
-            var __workflow_valuesBodynamedDimensions = valuesBodynamedDimensions == null ? null : WorkflowExpression.Compile(valuesBodynamedDimensions);
-            WorkflowExpression.Validate(__workflow_valuesBodynamedDimensions, nameof(valuesBodynamedDimensions), required: false);
+            var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
+            var __workflow_valuesBodyshowHeader = WorkflowExpression.Compile(valuesBodyshowHeader, nameof(valuesBodyshowHeader), required: false);
+            var __workflow_valuesBodymQLQueryString = WorkflowExpression.Compile(valuesBodymQLQueryString, nameof(valuesBodymQLQueryString), required: false);
+            var __workflow_valuesBodyfileFormat = WorkflowExpression.Compile(valuesBodyfileFormat, nameof(valuesBodyfileFormat), required: false);
+            var __workflow_valuesBodyfileEncoding = WorkflowExpression.Compile(valuesBodyfileEncoding, nameof(valuesBodyfileEncoding), required: false);
+            var __workflow_valuesBodyincludeExternalIDs = WorkflowExpression.Compile(valuesBodyincludeExternalIDs, nameof(valuesBodyincludeExternalIDs), required: false);
+            var __workflow_valuesBodynamedDimensions = WorkflowExpression.Compile(valuesBodynamedDimensions, nameof(valuesBodynamedDimensions), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/intersections2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));
@@ -351,16 +327,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
         public IBodyWorkflowAction<string> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
         {
-            var __workflow_modelIdPath = modelIdPath == null ? null : WorkflowExpression.Compile(modelIdPath);
-            WorkflowExpression.Validate(__workflow_modelIdPath, nameof(modelIdPath), required: true);
-            var __workflow_lidsBodyshowHeader = lidsBodyshowHeader == null ? null : WorkflowExpression.Compile(lidsBodyshowHeader);
-            WorkflowExpression.Validate(__workflow_lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
-            var __workflow_lidsBodymQLQueryString = lidsBodymQLQueryString == null ? null : WorkflowExpression.Compile(lidsBodymQLQueryString);
-            WorkflowExpression.Validate(__workflow_lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
-            var __workflow_lidsBodyfileFormat = lidsBodyfileFormat == null ? null : WorkflowExpression.Compile(lidsBodyfileFormat);
-            WorkflowExpression.Validate(__workflow_lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
-            var __workflow_lidsBodyfileEncoding = lidsBodyfileEncoding == null ? null : WorkflowExpression.Compile(lidsBodyfileEncoding);
-            WorkflowExpression.Validate(__workflow_lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
+            var __workflow_modelIdPath = WorkflowExpression.Compile(modelIdPath, nameof(modelIdPath), required: true);
+            var __workflow_lidsBodyshowHeader = WorkflowExpression.Compile(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
+            var __workflow_lidsBodymQLQueryString = WorkflowExpression.Compile(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
+            var __workflow_lidsBodyfileFormat = WorkflowExpression.Compile(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
+            var __workflow_lidsBodyfileEncoding = WorkflowExpression.Compile(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/lids2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelIdPath, 1));

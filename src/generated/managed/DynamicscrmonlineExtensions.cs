@@ -16,10 +16,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicscrmonline
     {
         public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0}/tables/{1}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));

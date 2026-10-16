@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice(Expression<Func<string>> symbol = null)
         {
-            var __workflow_symbol = symbol == null ? null : WorkflowExpression.Compile(symbol);
-            WorkflowExpression.Validate(__workflow_symbol, nameof(symbol), required: false);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: false);
             return new DeferredBodyAction<GetLiveTickerPriceResponse>(() =>
             {
                 var apiCallPath = "/ticker/price";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation(Expression<Func<string>> symbol = null)
         {
-            var __workflow_symbol = symbol == null ? null : WorkflowExpression.Compile(symbol);
-            WorkflowExpression.Validate(__workflow_symbol, nameof(symbol), required: false);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: false);
             return new DeferredBodyAction<GetExchangeInfoResponse>(() =>
             {
                 var apiCallPath = "/exchangeInfo";
@@ -45,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
         public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades(Expression<Func<string>> symbol, Expression<Func<int>> limit = null)
         {
-            var __workflow_symbol = symbol == null ? null : WorkflowExpression.Compile(symbol);
-            WorkflowExpression.Validate(__workflow_symbol, nameof(symbol), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetRecentTradesResponse>(() =>
             {
                 var apiCallPath = "/trades";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<string> GetExpenseImage(Expression<Func<string>> expenseId)
         {
-            var __workflow_expenseId = expenseId == null ? null : WorkflowExpression.Compile(expenseId);
-            WorkflowExpression.Validate(__workflow_expenseId, nameof(expenseId), required: true);
+            var __workflow_expenseId = WorkflowExpression.Compile(expenseId, nameof(expenseId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/expense/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_expenseId, 1));
@@ -27,50 +26,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultExportResponse> ExportExpenses(Expression<Func<string>> exportId, Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> expenseStates = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMail = null, Expression<Func<string>> reportIds = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> reportName = null, Expression<Func<string>> reportIdShort = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> payId = null, Expression<Func<string>> payId2 = null, Expression<Func<string>> payId3 = null, Expression<Func<string>> accountingPeriod = null, Expression<Func<bool>> includeReceipts = null, Expression<Func<int>> expenseUseTypes = null, Expression<Func<string>> archiveExpenses = null)
         {
-            var __workflow_exportId = exportId == null ? null : WorkflowExpression.Compile(exportId);
-            WorkflowExpression.Validate(__workflow_exportId, nameof(exportId), required: true);
-            var __workflow_reportId = reportId == null ? null : WorkflowExpression.Compile(reportId);
-            WorkflowExpression.Validate(__workflow_reportId, nameof(reportId), required: false);
-            var __workflow_categoryId = categoryId == null ? null : WorkflowExpression.Compile(categoryId);
-            WorkflowExpression.Validate(__workflow_categoryId, nameof(categoryId), required: false);
-            var __workflow_expenseName = expenseName == null ? null : WorkflowExpression.Compile(expenseName);
-            WorkflowExpression.Validate(__workflow_expenseName, nameof(expenseName), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_expenseStates = expenseStates == null ? null : WorkflowExpression.Compile(expenseStates);
-            WorkflowExpression.Validate(__workflow_expenseStates, nameof(expenseStates), required: false);
-            var __workflow_reportStates = reportStates == null ? null : WorkflowExpression.Compile(reportStates);
-            WorkflowExpression.Validate(__workflow_reportStates, nameof(reportStates), required: false);
-            var __workflow_userIds = userIds == null ? null : WorkflowExpression.Compile(userIds);
-            WorkflowExpression.Validate(__workflow_userIds, nameof(userIds), required: false);
-            var __workflow_userMail = userMail == null ? null : WorkflowExpression.Compile(userMail);
-            WorkflowExpression.Validate(__workflow_userMail, nameof(userMail), required: false);
-            var __workflow_reportIds = reportIds == null ? null : WorkflowExpression.Compile(reportIds);
-            WorkflowExpression.Validate(__workflow_reportIds, nameof(reportIds), required: false);
-            var __workflow_expenseIds = expenseIds == null ? null : WorkflowExpression.Compile(expenseIds);
-            WorkflowExpression.Validate(__workflow_expenseIds, nameof(expenseIds), required: false);
-            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
-            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: false);
-            var __workflow_reportIdShort = reportIdShort == null ? null : WorkflowExpression.Compile(reportIdShort);
-            WorkflowExpression.Validate(__workflow_reportIdShort, nameof(reportIdShort), required: false);
-            var __workflow_dateFilterType = dateFilterType == null ? null : WorkflowExpression.Compile(dateFilterType);
-            WorkflowExpression.Validate(__workflow_dateFilterType, nameof(dateFilterType), required: false);
-            var __workflow_payId = payId == null ? null : WorkflowExpression.Compile(payId);
-            WorkflowExpression.Validate(__workflow_payId, nameof(payId), required: false);
-            var __workflow_payId2 = payId2 == null ? null : WorkflowExpression.Compile(payId2);
-            WorkflowExpression.Validate(__workflow_payId2, nameof(payId2), required: false);
-            var __workflow_payId3 = payId3 == null ? null : WorkflowExpression.Compile(payId3);
-            WorkflowExpression.Validate(__workflow_payId3, nameof(payId3), required: false);
-            var __workflow_accountingPeriod = accountingPeriod == null ? null : WorkflowExpression.Compile(accountingPeriod);
-            WorkflowExpression.Validate(__workflow_accountingPeriod, nameof(accountingPeriod), required: false);
-            var __workflow_includeReceipts = includeReceipts == null ? null : WorkflowExpression.Compile(includeReceipts);
-            WorkflowExpression.Validate(__workflow_includeReceipts, nameof(includeReceipts), required: false);
-            var __workflow_expenseUseTypes = expenseUseTypes == null ? null : WorkflowExpression.Compile(expenseUseTypes);
-            WorkflowExpression.Validate(__workflow_expenseUseTypes, nameof(expenseUseTypes), required: false);
-            var __workflow_archiveExpenses = archiveExpenses == null ? null : WorkflowExpression.Compile(archiveExpenses);
-            WorkflowExpression.Validate(__workflow_archiveExpenses, nameof(archiveExpenses), required: false);
+            var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
+            var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: false);
+            var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: false);
+            var __workflow_expenseName = WorkflowExpression.Compile(expenseName, nameof(expenseName), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_expenseStates = WorkflowExpression.Compile(expenseStates, nameof(expenseStates), required: false);
+            var __workflow_reportStates = WorkflowExpression.Compile(reportStates, nameof(reportStates), required: false);
+            var __workflow_userIds = WorkflowExpression.Compile(userIds, nameof(userIds), required: false);
+            var __workflow_userMail = WorkflowExpression.Compile(userMail, nameof(userMail), required: false);
+            var __workflow_reportIds = WorkflowExpression.Compile(reportIds, nameof(reportIds), required: false);
+            var __workflow_expenseIds = WorkflowExpression.Compile(expenseIds, nameof(expenseIds), required: false);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: false);
+            var __workflow_reportIdShort = WorkflowExpression.Compile(reportIdShort, nameof(reportIdShort), required: false);
+            var __workflow_dateFilterType = WorkflowExpression.Compile(dateFilterType, nameof(dateFilterType), required: false);
+            var __workflow_payId = WorkflowExpression.Compile(payId, nameof(payId), required: false);
+            var __workflow_payId2 = WorkflowExpression.Compile(payId2, nameof(payId2), required: false);
+            var __workflow_payId3 = WorkflowExpression.Compile(payId3, nameof(payId3), required: false);
+            var __workflow_accountingPeriod = WorkflowExpression.Compile(accountingPeriod, nameof(accountingPeriod), required: false);
+            var __workflow_includeReceipts = WorkflowExpression.Compile(includeReceipts, nameof(includeReceipts), required: false);
+            var __workflow_expenseUseTypes = WorkflowExpression.Compile(expenseUseTypes, nameof(expenseUseTypes), required: false);
+            var __workflow_archiveExpenses = WorkflowExpression.Compile(archiveExpenses, nameof(archiveExpenses), required: false);
             return new DeferredBodyAction<BaseResultExportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/export/expenses/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));
@@ -125,8 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultExportResponse> PrintMission(Expression<Func<string>> reportId)
         {
-            var __workflow_reportId = reportId == null ? null : WorkflowExpression.Compile(reportId);
-            WorkflowExpression.Validate(__workflow_reportId, nameof(reportId), required: true);
+            var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             return new DeferredBodyAction<BaseResultExportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/export/report/{0}/pdf/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
@@ -139,10 +115,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultListExportFormatResponse> ExportFormats(Expression<Func<bool>> isForExpenses = null, Expression<Func<int>> exportType = null)
         {
-            var __workflow_isForExpenses = isForExpenses == null ? null : WorkflowExpression.Compile(isForExpenses);
-            WorkflowExpression.Validate(__workflow_isForExpenses, nameof(isForExpenses), required: false);
-            var __workflow_exportType = exportType == null ? null : WorkflowExpression.Compile(exportType);
-            WorkflowExpression.Validate(__workflow_exportType, nameof(exportType), required: false);
+            var __workflow_isForExpenses = WorkflowExpression.Compile(isForExpenses, nameof(isForExpenses), required: false);
+            var __workflow_exportType = WorkflowExpression.Compile(exportType, nameof(exportType), required: false);
             return new DeferredBodyAction<BaseResultListExportFormatResponse>(() =>
             {
                 var apiCallPath = "/api/exports/";
@@ -159,8 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> AddProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
         {
-            var __workflow_addOrUpdateProjectInputArray = addOrUpdateProjectInputArray == null ? null : WorkflowExpression.Compile(addOrUpdateProjectInputArray);
-            WorkflowExpression.Validate(__workflow_addOrUpdateProjectInputArray, nameof(addOrUpdateProjectInputArray), required: false);
+            var __workflow_addOrUpdateProjectInputArray = WorkflowExpression.Compile(addOrUpdateProjectInputArray, nameof(addOrUpdateProjectInputArray), required: false);
             return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult>(() =>
             {
                 var apiCallPath = "/api/projects/";
@@ -174,8 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjects(Expression<Func<AddOrUpdateProjectInput[]>> addOrUpdateProjectInputArray = null)
         {
-            var __workflow_addOrUpdateProjectInputArray = addOrUpdateProjectInputArray == null ? null : WorkflowExpression.Compile(addOrUpdateProjectInputArray);
-            WorkflowExpression.Validate(__workflow_addOrUpdateProjectInputArray, nameof(addOrUpdateProjectInputArray), required: false);
+            var __workflow_addOrUpdateProjectInputArray = WorkflowExpression.Compile(addOrUpdateProjectInputArray, nameof(addOrUpdateProjectInputArray), required: false);
             return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult>(() =>
             {
                 var apiCallPath = "/api/projects/";
@@ -189,12 +161,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> AddReciept(Expression<Func<string>> addReceiptInputuserId, Expression<Func<string>> addReceiptInputreceiptContent, Expression<Func<string>> addReceiptInputreceiptName)
         {
-            var __workflow_addReceiptInputuserId = addReceiptInputuserId == null ? null : WorkflowExpression.Compile(addReceiptInputuserId);
-            WorkflowExpression.Validate(__workflow_addReceiptInputuserId, nameof(addReceiptInputuserId), required: true);
-            var __workflow_addReceiptInputreceiptContent = addReceiptInputreceiptContent == null ? null : WorkflowExpression.Compile(addReceiptInputreceiptContent);
-            WorkflowExpression.Validate(__workflow_addReceiptInputreceiptContent, nameof(addReceiptInputreceiptContent), required: true);
-            var __workflow_addReceiptInputreceiptName = addReceiptInputreceiptName == null ? null : WorkflowExpression.Compile(addReceiptInputreceiptName);
-            WorkflowExpression.Validate(__workflow_addReceiptInputreceiptName, nameof(addReceiptInputreceiptName), required: true);
+            var __workflow_addReceiptInputuserId = WorkflowExpression.Compile(addReceiptInputuserId, nameof(addReceiptInputuserId), required: true);
+            var __workflow_addReceiptInputreceiptContent = WorkflowExpression.Compile(addReceiptInputreceiptContent, nameof(addReceiptInputreceiptContent), required: true);
+            var __workflow_addReceiptInputreceiptName = WorkflowExpression.Compile(addReceiptInputreceiptName, nameof(addReceiptInputreceiptName), required: true);
             return new DeferredBodyAction<BaseResult>(() =>
             {
                 var apiCallPath = "/api/receipt/";
@@ -229,34 +198,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> ValidatorReports(Expression<Func<string>> validatorMail, Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
         {
-            var __workflow_validatorMail = validatorMail == null ? null : WorkflowExpression.Compile(validatorMail);
-            WorkflowExpression.Validate(__workflow_validatorMail, nameof(validatorMail), required: true);
-            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
-            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: false);
-            var __workflow_reportStartDate = reportStartDate == null ? null : WorkflowExpression.Compile(reportStartDate);
-            WorkflowExpression.Validate(__workflow_reportStartDate, nameof(reportStartDate), required: false);
-            var __workflow_reportEndDate = reportEndDate == null ? null : WorkflowExpression.Compile(reportEndDate);
-            WorkflowExpression.Validate(__workflow_reportEndDate, nameof(reportEndDate), required: false);
-            var __workflow_reportStates = reportStates == null ? null : WorkflowExpression.Compile(reportStates);
-            WorkflowExpression.Validate(__workflow_reportStates, nameof(reportStates), required: false);
-            var __workflow_reportIdShort = reportIdShort == null ? null : WorkflowExpression.Compile(reportIdShort);
-            WorkflowExpression.Validate(__workflow_reportIdShort, nameof(reportIdShort), required: false);
-            var __workflow_ownerId = ownerId == null ? null : WorkflowExpression.Compile(ownerId);
-            WorkflowExpression.Validate(__workflow_ownerId, nameof(ownerId), required: false);
-            var __workflow_ownerPayId2 = ownerPayId2 == null ? null : WorkflowExpression.Compile(ownerPayId2);
-            WorkflowExpression.Validate(__workflow_ownerPayId2, nameof(ownerPayId2), required: false);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: false);
-            var __workflow_dateFilterType = dateFilterType == null ? null : WorkflowExpression.Compile(dateFilterType);
-            WorkflowExpression.Validate(__workflow_dateFilterType, nameof(dateFilterType), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_isDesc = isDesc == null ? null : WorkflowExpression.Compile(isDesc);
-            WorkflowExpression.Validate(__workflow_isDesc, nameof(isDesc), required: false);
+            var __workflow_validatorMail = WorkflowExpression.Compile(validatorMail, nameof(validatorMail), required: true);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: false);
+            var __workflow_reportStartDate = WorkflowExpression.Compile(reportStartDate, nameof(reportStartDate), required: false);
+            var __workflow_reportEndDate = WorkflowExpression.Compile(reportEndDate, nameof(reportEndDate), required: false);
+            var __workflow_reportStates = WorkflowExpression.Compile(reportStates, nameof(reportStates), required: false);
+            var __workflow_reportIdShort = WorkflowExpression.Compile(reportIdShort, nameof(reportIdShort), required: false);
+            var __workflow_ownerId = WorkflowExpression.Compile(ownerId, nameof(ownerId), required: false);
+            var __workflow_ownerPayId2 = WorkflowExpression.Compile(ownerPayId2, nameof(ownerPayId2), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_dateFilterType = WorkflowExpression.Compile(dateFilterType, nameof(dateFilterType), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
             return new DeferredBodyAction<ListAndPagesCountResultReportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/reports/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_validatorMail, 1));
@@ -295,16 +250,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> UpdateReportStatus(Expression<Func<string>> reportId, Expression<Func<reportUpdateStatusInputoperationInput>> reportUpdateStatusInputoperation, Expression<Func<string>> reportUpdateStatusInputmessage, Expression<Func<string[]>> reportUpdateStatusInputinvoiceIdsToReject = null, Expression<Func<string>> reportUpdateStatusInputaccountingPeriod = null)
         {
-            var __workflow_reportId = reportId == null ? null : WorkflowExpression.Compile(reportId);
-            WorkflowExpression.Validate(__workflow_reportId, nameof(reportId), required: true);
-            var __workflow_reportUpdateStatusInputoperation = reportUpdateStatusInputoperation == null ? null : WorkflowExpression.Compile(reportUpdateStatusInputoperation);
-            WorkflowExpression.Validate(__workflow_reportUpdateStatusInputoperation, nameof(reportUpdateStatusInputoperation), required: true);
-            var __workflow_reportUpdateStatusInputmessage = reportUpdateStatusInputmessage == null ? null : WorkflowExpression.Compile(reportUpdateStatusInputmessage);
-            WorkflowExpression.Validate(__workflow_reportUpdateStatusInputmessage, nameof(reportUpdateStatusInputmessage), required: true);
-            var __workflow_reportUpdateStatusInputinvoiceIdsToReject = reportUpdateStatusInputinvoiceIdsToReject == null ? null : WorkflowExpression.Compile(reportUpdateStatusInputinvoiceIdsToReject);
-            WorkflowExpression.Validate(__workflow_reportUpdateStatusInputinvoiceIdsToReject, nameof(reportUpdateStatusInputinvoiceIdsToReject), required: false);
-            var __workflow_reportUpdateStatusInputaccountingPeriod = reportUpdateStatusInputaccountingPeriod == null ? null : WorkflowExpression.Compile(reportUpdateStatusInputaccountingPeriod);
-            WorkflowExpression.Validate(__workflow_reportUpdateStatusInputaccountingPeriod, nameof(reportUpdateStatusInputaccountingPeriod), required: false);
+            var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
+            var __workflow_reportUpdateStatusInputoperation = WorkflowExpression.Compile(reportUpdateStatusInputoperation, nameof(reportUpdateStatusInputoperation), required: true);
+            var __workflow_reportUpdateStatusInputmessage = WorkflowExpression.Compile(reportUpdateStatusInputmessage, nameof(reportUpdateStatusInputmessage), required: true);
+            var __workflow_reportUpdateStatusInputinvoiceIdsToReject = WorkflowExpression.Compile(reportUpdateStatusInputinvoiceIdsToReject, nameof(reportUpdateStatusInputinvoiceIdsToReject), required: false);
+            var __workflow_reportUpdateStatusInputaccountingPeriod = WorkflowExpression.Compile(reportUpdateStatusInputaccountingPeriod, nameof(reportUpdateStatusInputaccountingPeriod), required: false);
             return new DeferredBodyAction<BaseResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/report/{0}/updateStatus/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
@@ -340,34 +290,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<ListAndPagesCountResultReportResponse> CompanyReports(Expression<Func<string>> reportName = null, Expression<Func<string>> reportStartDate = null, Expression<Func<string>> reportEndDate = null, Expression<Func<string>> reportStates = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> projectId = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> dateFilterType = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
         {
-            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
-            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: false);
-            var __workflow_reportStartDate = reportStartDate == null ? null : WorkflowExpression.Compile(reportStartDate);
-            WorkflowExpression.Validate(__workflow_reportStartDate, nameof(reportStartDate), required: false);
-            var __workflow_reportEndDate = reportEndDate == null ? null : WorkflowExpression.Compile(reportEndDate);
-            WorkflowExpression.Validate(__workflow_reportEndDate, nameof(reportEndDate), required: false);
-            var __workflow_reportStates = reportStates == null ? null : WorkflowExpression.Compile(reportStates);
-            WorkflowExpression.Validate(__workflow_reportStates, nameof(reportStates), required: false);
-            var __workflow_reportIdShort = reportIdShort == null ? null : WorkflowExpression.Compile(reportIdShort);
-            WorkflowExpression.Validate(__workflow_reportIdShort, nameof(reportIdShort), required: false);
-            var __workflow_ownerId = ownerId == null ? null : WorkflowExpression.Compile(ownerId);
-            WorkflowExpression.Validate(__workflow_ownerId, nameof(ownerId), required: false);
-            var __workflow_ownerPayId2 = ownerPayId2 == null ? null : WorkflowExpression.Compile(ownerPayId2);
-            WorkflowExpression.Validate(__workflow_ownerPayId2, nameof(ownerPayId2), required: false);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: false);
-            var __workflow_tagsNames = tagsNames == null ? null : WorkflowExpression.Compile(tagsNames);
-            WorkflowExpression.Validate(__workflow_tagsNames, nameof(tagsNames), required: false);
-            var __workflow_dateFilterType = dateFilterType == null ? null : WorkflowExpression.Compile(dateFilterType);
-            WorkflowExpression.Validate(__workflow_dateFilterType, nameof(dateFilterType), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_isDesc = isDesc == null ? null : WorkflowExpression.Compile(isDesc);
-            WorkflowExpression.Validate(__workflow_isDesc, nameof(isDesc), required: false);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: false);
+            var __workflow_reportStartDate = WorkflowExpression.Compile(reportStartDate, nameof(reportStartDate), required: false);
+            var __workflow_reportEndDate = WorkflowExpression.Compile(reportEndDate, nameof(reportEndDate), required: false);
+            var __workflow_reportStates = WorkflowExpression.Compile(reportStates, nameof(reportStates), required: false);
+            var __workflow_reportIdShort = WorkflowExpression.Compile(reportIdShort, nameof(reportIdShort), required: false);
+            var __workflow_ownerId = WorkflowExpression.Compile(ownerId, nameof(ownerId), required: false);
+            var __workflow_ownerPayId2 = WorkflowExpression.Compile(ownerPayId2, nameof(ownerPayId2), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_tagsNames = WorkflowExpression.Compile(tagsNames, nameof(tagsNames), required: false);
+            var __workflow_dateFilterType = WorkflowExpression.Compile(dateFilterType, nameof(dateFilterType), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
             return new DeferredBodyAction<ListAndPagesCountResultReportResponse>(() =>
             {
                 var apiCallPath = "/api/v2/reports/";
@@ -408,46 +344,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<ListAndPagesCountResultUserResponse> CompanyUsers(Expression<Func<string>> id = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> mail = null, Expression<Func<string>> payId = null, Expression<Func<string>> mailOrNameOrPayId = null, Expression<Func<int>> type = null, Expression<Func<int>> state = null, Expression<Func<string>> reviewerId = null, Expression<Func<string>> reviewerName = null, Expression<Func<string>> managerId = null, Expression<Func<string>> managerName = null, Expression<Func<string>> userIds = null, Expression<Func<string>> userMails = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> simpleTagsNames = null, Expression<Func<int>> sortBy = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<bool>> isDesc = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_firstName = firstName == null ? null : WorkflowExpression.Compile(firstName);
-            WorkflowExpression.Validate(__workflow_firstName, nameof(firstName), required: false);
-            var __workflow_lastName = lastName == null ? null : WorkflowExpression.Compile(lastName);
-            WorkflowExpression.Validate(__workflow_lastName, nameof(lastName), required: false);
-            var __workflow_mail = mail == null ? null : WorkflowExpression.Compile(mail);
-            WorkflowExpression.Validate(__workflow_mail, nameof(mail), required: false);
-            var __workflow_payId = payId == null ? null : WorkflowExpression.Compile(payId);
-            WorkflowExpression.Validate(__workflow_payId, nameof(payId), required: false);
-            var __workflow_mailOrNameOrPayId = mailOrNameOrPayId == null ? null : WorkflowExpression.Compile(mailOrNameOrPayId);
-            WorkflowExpression.Validate(__workflow_mailOrNameOrPayId, nameof(mailOrNameOrPayId), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_reviewerId = reviewerId == null ? null : WorkflowExpression.Compile(reviewerId);
-            WorkflowExpression.Validate(__workflow_reviewerId, nameof(reviewerId), required: false);
-            var __workflow_reviewerName = reviewerName == null ? null : WorkflowExpression.Compile(reviewerName);
-            WorkflowExpression.Validate(__workflow_reviewerName, nameof(reviewerName), required: false);
-            var __workflow_managerId = managerId == null ? null : WorkflowExpression.Compile(managerId);
-            WorkflowExpression.Validate(__workflow_managerId, nameof(managerId), required: false);
-            var __workflow_managerName = managerName == null ? null : WorkflowExpression.Compile(managerName);
-            WorkflowExpression.Validate(__workflow_managerName, nameof(managerName), required: false);
-            var __workflow_userIds = userIds == null ? null : WorkflowExpression.Compile(userIds);
-            WorkflowExpression.Validate(__workflow_userIds, nameof(userIds), required: false);
-            var __workflow_userMails = userMails == null ? null : WorkflowExpression.Compile(userMails);
-            WorkflowExpression.Validate(__workflow_userMails, nameof(userMails), required: false);
-            var __workflow_tagsNames = tagsNames == null ? null : WorkflowExpression.Compile(tagsNames);
-            WorkflowExpression.Validate(__workflow_tagsNames, nameof(tagsNames), required: false);
-            var __workflow_simpleTagsNames = simpleTagsNames == null ? null : WorkflowExpression.Compile(simpleTagsNames);
-            WorkflowExpression.Validate(__workflow_simpleTagsNames, nameof(simpleTagsNames), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_isDesc = isDesc == null ? null : WorkflowExpression.Compile(isDesc);
-            WorkflowExpression.Validate(__workflow_isDesc, nameof(isDesc), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
+            var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
+            var __workflow_mail = WorkflowExpression.Compile(mail, nameof(mail), required: false);
+            var __workflow_payId = WorkflowExpression.Compile(payId, nameof(payId), required: false);
+            var __workflow_mailOrNameOrPayId = WorkflowExpression.Compile(mailOrNameOrPayId, nameof(mailOrNameOrPayId), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_reviewerId = WorkflowExpression.Compile(reviewerId, nameof(reviewerId), required: false);
+            var __workflow_reviewerName = WorkflowExpression.Compile(reviewerName, nameof(reviewerName), required: false);
+            var __workflow_managerId = WorkflowExpression.Compile(managerId, nameof(managerId), required: false);
+            var __workflow_managerName = WorkflowExpression.Compile(managerName, nameof(managerName), required: false);
+            var __workflow_userIds = WorkflowExpression.Compile(userIds, nameof(userIds), required: false);
+            var __workflow_userMails = WorkflowExpression.Compile(userMails, nameof(userMails), required: false);
+            var __workflow_tagsNames = WorkflowExpression.Compile(tagsNames, nameof(tagsNames), required: false);
+            var __workflow_simpleTagsNames = WorkflowExpression.Compile(simpleTagsNames, nameof(simpleTagsNames), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
             return new DeferredBodyAction<ListAndPagesCountResultUserResponse>(() =>
             {
                 var apiCallPath = "/api/v2/users/";
@@ -500,42 +416,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> AddQuickExpense(Expression<Func<string>> userId, Expression<Func<string>> quickExpenseInputfileToSend, Expression<Func<string>> quickExpenseInputtitle = null, Expression<Func<double>> quickExpenseInputtransactionAmount = null, Expression<Func<string>> quickExpenseInputvatRates = null, Expression<Func<string>> quickExpenseInputvatAmounts = null, Expression<Func<string>> quickExpenseInputcurrencyCode = null, Expression<Func<string>> quickExpenseInputtransactionDate = null, Expression<Func<string>> quickExpenseInputmerchantName = null, Expression<Func<string>> quickExpenseInputlocationCountry = null, Expression<Func<string>> quickExpenseInputlocationCity = null, Expression<Func<string>> quickExpenseInputcomment = null, Expression<Func<string>> quickExpenseInputmerchantExpenseId = null, Expression<Func<bool>> quickExpenseInputisEncrypted = null, Expression<Func<quickExpenseInputexpenseUseTypeInput>> quickExpenseInputexpenseUseType = null, Expression<Func<string>> quickExpenseInputpaymentTypeCode = null, Expression<Func<string>> quickExpenseInputexpenseTypeCode = null, Expression<Func<string>> quickExpenseInputfileType = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_quickExpenseInputfileToSend = quickExpenseInputfileToSend == null ? null : WorkflowExpression.Compile(quickExpenseInputfileToSend);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputfileToSend, nameof(quickExpenseInputfileToSend), required: true);
-            var __workflow_quickExpenseInputtitle = quickExpenseInputtitle == null ? null : WorkflowExpression.Compile(quickExpenseInputtitle);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputtitle, nameof(quickExpenseInputtitle), required: false);
-            var __workflow_quickExpenseInputtransactionAmount = quickExpenseInputtransactionAmount == null ? null : WorkflowExpression.Compile(quickExpenseInputtransactionAmount);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputtransactionAmount, nameof(quickExpenseInputtransactionAmount), required: false);
-            var __workflow_quickExpenseInputvatRates = quickExpenseInputvatRates == null ? null : WorkflowExpression.Compile(quickExpenseInputvatRates);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputvatRates, nameof(quickExpenseInputvatRates), required: false);
-            var __workflow_quickExpenseInputvatAmounts = quickExpenseInputvatAmounts == null ? null : WorkflowExpression.Compile(quickExpenseInputvatAmounts);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputvatAmounts, nameof(quickExpenseInputvatAmounts), required: false);
-            var __workflow_quickExpenseInputcurrencyCode = quickExpenseInputcurrencyCode == null ? null : WorkflowExpression.Compile(quickExpenseInputcurrencyCode);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputcurrencyCode, nameof(quickExpenseInputcurrencyCode), required: false);
-            var __workflow_quickExpenseInputtransactionDate = quickExpenseInputtransactionDate == null ? null : WorkflowExpression.Compile(quickExpenseInputtransactionDate);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputtransactionDate, nameof(quickExpenseInputtransactionDate), required: false);
-            var __workflow_quickExpenseInputmerchantName = quickExpenseInputmerchantName == null ? null : WorkflowExpression.Compile(quickExpenseInputmerchantName);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputmerchantName, nameof(quickExpenseInputmerchantName), required: false);
-            var __workflow_quickExpenseInputlocationCountry = quickExpenseInputlocationCountry == null ? null : WorkflowExpression.Compile(quickExpenseInputlocationCountry);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputlocationCountry, nameof(quickExpenseInputlocationCountry), required: false);
-            var __workflow_quickExpenseInputlocationCity = quickExpenseInputlocationCity == null ? null : WorkflowExpression.Compile(quickExpenseInputlocationCity);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputlocationCity, nameof(quickExpenseInputlocationCity), required: false);
-            var __workflow_quickExpenseInputcomment = quickExpenseInputcomment == null ? null : WorkflowExpression.Compile(quickExpenseInputcomment);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputcomment, nameof(quickExpenseInputcomment), required: false);
-            var __workflow_quickExpenseInputmerchantExpenseId = quickExpenseInputmerchantExpenseId == null ? null : WorkflowExpression.Compile(quickExpenseInputmerchantExpenseId);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputmerchantExpenseId, nameof(quickExpenseInputmerchantExpenseId), required: false);
-            var __workflow_quickExpenseInputisEncrypted = quickExpenseInputisEncrypted == null ? null : WorkflowExpression.Compile(quickExpenseInputisEncrypted);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputisEncrypted, nameof(quickExpenseInputisEncrypted), required: false);
-            var __workflow_quickExpenseInputexpenseUseType = quickExpenseInputexpenseUseType == null ? null : WorkflowExpression.Compile(quickExpenseInputexpenseUseType);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputexpenseUseType, nameof(quickExpenseInputexpenseUseType), required: false);
-            var __workflow_quickExpenseInputpaymentTypeCode = quickExpenseInputpaymentTypeCode == null ? null : WorkflowExpression.Compile(quickExpenseInputpaymentTypeCode);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputpaymentTypeCode, nameof(quickExpenseInputpaymentTypeCode), required: false);
-            var __workflow_quickExpenseInputexpenseTypeCode = quickExpenseInputexpenseTypeCode == null ? null : WorkflowExpression.Compile(quickExpenseInputexpenseTypeCode);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputexpenseTypeCode, nameof(quickExpenseInputexpenseTypeCode), required: false);
-            var __workflow_quickExpenseInputfileType = quickExpenseInputfileType == null ? null : WorkflowExpression.Compile(quickExpenseInputfileType);
-            WorkflowExpression.Validate(__workflow_quickExpenseInputfileType, nameof(quickExpenseInputfileType), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_quickExpenseInputfileToSend = WorkflowExpression.Compile(quickExpenseInputfileToSend, nameof(quickExpenseInputfileToSend), required: true);
+            var __workflow_quickExpenseInputtitle = WorkflowExpression.Compile(quickExpenseInputtitle, nameof(quickExpenseInputtitle), required: false);
+            var __workflow_quickExpenseInputtransactionAmount = WorkflowExpression.Compile(quickExpenseInputtransactionAmount, nameof(quickExpenseInputtransactionAmount), required: false);
+            var __workflow_quickExpenseInputvatRates = WorkflowExpression.Compile(quickExpenseInputvatRates, nameof(quickExpenseInputvatRates), required: false);
+            var __workflow_quickExpenseInputvatAmounts = WorkflowExpression.Compile(quickExpenseInputvatAmounts, nameof(quickExpenseInputvatAmounts), required: false);
+            var __workflow_quickExpenseInputcurrencyCode = WorkflowExpression.Compile(quickExpenseInputcurrencyCode, nameof(quickExpenseInputcurrencyCode), required: false);
+            var __workflow_quickExpenseInputtransactionDate = WorkflowExpression.Compile(quickExpenseInputtransactionDate, nameof(quickExpenseInputtransactionDate), required: false);
+            var __workflow_quickExpenseInputmerchantName = WorkflowExpression.Compile(quickExpenseInputmerchantName, nameof(quickExpenseInputmerchantName), required: false);
+            var __workflow_quickExpenseInputlocationCountry = WorkflowExpression.Compile(quickExpenseInputlocationCountry, nameof(quickExpenseInputlocationCountry), required: false);
+            var __workflow_quickExpenseInputlocationCity = WorkflowExpression.Compile(quickExpenseInputlocationCity, nameof(quickExpenseInputlocationCity), required: false);
+            var __workflow_quickExpenseInputcomment = WorkflowExpression.Compile(quickExpenseInputcomment, nameof(quickExpenseInputcomment), required: false);
+            var __workflow_quickExpenseInputmerchantExpenseId = WorkflowExpression.Compile(quickExpenseInputmerchantExpenseId, nameof(quickExpenseInputmerchantExpenseId), required: false);
+            var __workflow_quickExpenseInputisEncrypted = WorkflowExpression.Compile(quickExpenseInputisEncrypted, nameof(quickExpenseInputisEncrypted), required: false);
+            var __workflow_quickExpenseInputexpenseUseType = WorkflowExpression.Compile(quickExpenseInputexpenseUseType, nameof(quickExpenseInputexpenseUseType), required: false);
+            var __workflow_quickExpenseInputpaymentTypeCode = WorkflowExpression.Compile(quickExpenseInputpaymentTypeCode, nameof(quickExpenseInputpaymentTypeCode), required: false);
+            var __workflow_quickExpenseInputexpenseTypeCode = WorkflowExpression.Compile(quickExpenseInputexpenseTypeCode, nameof(quickExpenseInputexpenseTypeCode), required: false);
+            var __workflow_quickExpenseInputfileType = WorkflowExpression.Compile(quickExpenseInputfileType, nameof(quickExpenseInputfileType), required: false);
             return new DeferredBodyAction<BaseResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/quickexpense/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -653,26 +551,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<ListAndPagesCountResultCategoryResponse> GetCategories(Expression<Func<string>> id = null, Expression<Func<string>> categoryName = null, Expression<Func<string>> costAccount = null, Expression<Func<string>> vatAccount = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_categoryName = categoryName == null ? null : WorkflowExpression.Compile(categoryName);
-            WorkflowExpression.Validate(__workflow_categoryName, nameof(categoryName), required: false);
-            var __workflow_costAccount = costAccount == null ? null : WorkflowExpression.Compile(costAccount);
-            WorkflowExpression.Validate(__workflow_costAccount, nameof(costAccount), required: false);
-            var __workflow_vatAccount = vatAccount == null ? null : WorkflowExpression.Compile(vatAccount);
-            WorkflowExpression.Validate(__workflow_vatAccount, nameof(vatAccount), required: false);
-            var __workflow_isActive = isActive == null ? null : WorkflowExpression.Compile(isActive);
-            WorkflowExpression.Validate(__workflow_isActive, nameof(isActive), required: false);
-            var __workflow_tagsNames = tagsNames == null ? null : WorkflowExpression.Compile(tagsNames);
-            WorkflowExpression.Validate(__workflow_tagsNames, nameof(tagsNames), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_isDesc = isDesc == null ? null : WorkflowExpression.Compile(isDesc);
-            WorkflowExpression.Validate(__workflow_isDesc, nameof(isDesc), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: false);
+            var __workflow_costAccount = WorkflowExpression.Compile(costAccount, nameof(costAccount), required: false);
+            var __workflow_vatAccount = WorkflowExpression.Compile(vatAccount, nameof(vatAccount), required: false);
+            var __workflow_isActive = WorkflowExpression.Compile(isActive, nameof(isActive), required: false);
+            var __workflow_tagsNames = WorkflowExpression.Compile(tagsNames, nameof(tagsNames), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
             return new DeferredBodyAction<ListAndPagesCountResultCategoryResponse>(() =>
             {
                 var apiCallPath = "/api/v2/categories/";
@@ -705,84 +593,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<ListAndPagesCountResultExpenseResponse> GetExpensesWithPaging(Expression<Func<string>> reportId = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> expenseName = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> reportState = null, Expression<Func<string>> expenseStates = null, Expression<Func<bool>> isReimbusable = null, Expression<Func<double>> valueInCurrency = null, Expression<Func<string>> ownerId = null, Expression<Func<string>> ownerMail = null, Expression<Func<string>> ownerPayId = null, Expression<Func<string>> ownerPayId2 = null, Expression<Func<string>> ownerPayId3 = null, Expression<Func<string>> ownerPayId4 = null, Expression<Func<string>> ownerPayId5 = null, Expression<Func<string>> ownerPayId6 = null, Expression<Func<string>> projectId = null, Expression<Func<bool>> isBillable = null, Expression<Func<int>> dateFilterType = null, Expression<Func<string>> merchantCountries = null, Expression<Func<string>> currencies = null, Expression<Func<string>> fileType = null, Expression<Func<string>> reportIdShort = null, Expression<Func<string>> expenseUseTypes = null, Expression<Func<string>> supplierId = null, Expression<Func<string>> expenseIds = null, Expression<Func<string>> merchantName = null, Expression<Func<string>> vatCode = null, Expression<Func<double>> valueHTInExpenseCurrency = null, Expression<Func<double>> vatRate = null, Expression<Func<double>> vatValue = null, Expression<Func<string>> reportsIds = null, Expression<Func<int>> dateTimeOffset = null, Expression<Func<string>> tagsNames = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
         {
-            var __workflow_reportId = reportId == null ? null : WorkflowExpression.Compile(reportId);
-            WorkflowExpression.Validate(__workflow_reportId, nameof(reportId), required: false);
-            var __workflow_categoryId = categoryId == null ? null : WorkflowExpression.Compile(categoryId);
-            WorkflowExpression.Validate(__workflow_categoryId, nameof(categoryId), required: false);
-            var __workflow_expenseName = expenseName == null ? null : WorkflowExpression.Compile(expenseName);
-            WorkflowExpression.Validate(__workflow_expenseName, nameof(expenseName), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_reportState = reportState == null ? null : WorkflowExpression.Compile(reportState);
-            WorkflowExpression.Validate(__workflow_reportState, nameof(reportState), required: false);
-            var __workflow_expenseStates = expenseStates == null ? null : WorkflowExpression.Compile(expenseStates);
-            WorkflowExpression.Validate(__workflow_expenseStates, nameof(expenseStates), required: false);
-            var __workflow_isReimbusable = isReimbusable == null ? null : WorkflowExpression.Compile(isReimbusable);
-            WorkflowExpression.Validate(__workflow_isReimbusable, nameof(isReimbusable), required: false);
-            var __workflow_valueInCurrency = valueInCurrency == null ? null : WorkflowExpression.Compile(valueInCurrency);
-            WorkflowExpression.Validate(__workflow_valueInCurrency, nameof(valueInCurrency), required: false);
-            var __workflow_ownerId = ownerId == null ? null : WorkflowExpression.Compile(ownerId);
-            WorkflowExpression.Validate(__workflow_ownerId, nameof(ownerId), required: false);
-            var __workflow_ownerMail = ownerMail == null ? null : WorkflowExpression.Compile(ownerMail);
-            WorkflowExpression.Validate(__workflow_ownerMail, nameof(ownerMail), required: false);
-            var __workflow_ownerPayId = ownerPayId == null ? null : WorkflowExpression.Compile(ownerPayId);
-            WorkflowExpression.Validate(__workflow_ownerPayId, nameof(ownerPayId), required: false);
-            var __workflow_ownerPayId2 = ownerPayId2 == null ? null : WorkflowExpression.Compile(ownerPayId2);
-            WorkflowExpression.Validate(__workflow_ownerPayId2, nameof(ownerPayId2), required: false);
-            var __workflow_ownerPayId3 = ownerPayId3 == null ? null : WorkflowExpression.Compile(ownerPayId3);
-            WorkflowExpression.Validate(__workflow_ownerPayId3, nameof(ownerPayId3), required: false);
-            var __workflow_ownerPayId4 = ownerPayId4 == null ? null : WorkflowExpression.Compile(ownerPayId4);
-            WorkflowExpression.Validate(__workflow_ownerPayId4, nameof(ownerPayId4), required: false);
-            var __workflow_ownerPayId5 = ownerPayId5 == null ? null : WorkflowExpression.Compile(ownerPayId5);
-            WorkflowExpression.Validate(__workflow_ownerPayId5, nameof(ownerPayId5), required: false);
-            var __workflow_ownerPayId6 = ownerPayId6 == null ? null : WorkflowExpression.Compile(ownerPayId6);
-            WorkflowExpression.Validate(__workflow_ownerPayId6, nameof(ownerPayId6), required: false);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: false);
-            var __workflow_isBillable = isBillable == null ? null : WorkflowExpression.Compile(isBillable);
-            WorkflowExpression.Validate(__workflow_isBillable, nameof(isBillable), required: false);
-            var __workflow_dateFilterType = dateFilterType == null ? null : WorkflowExpression.Compile(dateFilterType);
-            WorkflowExpression.Validate(__workflow_dateFilterType, nameof(dateFilterType), required: false);
-            var __workflow_merchantCountries = merchantCountries == null ? null : WorkflowExpression.Compile(merchantCountries);
-            WorkflowExpression.Validate(__workflow_merchantCountries, nameof(merchantCountries), required: false);
-            var __workflow_currencies = currencies == null ? null : WorkflowExpression.Compile(currencies);
-            WorkflowExpression.Validate(__workflow_currencies, nameof(currencies), required: false);
-            var __workflow_fileType = fileType == null ? null : WorkflowExpression.Compile(fileType);
-            WorkflowExpression.Validate(__workflow_fileType, nameof(fileType), required: false);
-            var __workflow_reportIdShort = reportIdShort == null ? null : WorkflowExpression.Compile(reportIdShort);
-            WorkflowExpression.Validate(__workflow_reportIdShort, nameof(reportIdShort), required: false);
-            var __workflow_expenseUseTypes = expenseUseTypes == null ? null : WorkflowExpression.Compile(expenseUseTypes);
-            WorkflowExpression.Validate(__workflow_expenseUseTypes, nameof(expenseUseTypes), required: false);
-            var __workflow_supplierId = supplierId == null ? null : WorkflowExpression.Compile(supplierId);
-            WorkflowExpression.Validate(__workflow_supplierId, nameof(supplierId), required: false);
-            var __workflow_expenseIds = expenseIds == null ? null : WorkflowExpression.Compile(expenseIds);
-            WorkflowExpression.Validate(__workflow_expenseIds, nameof(expenseIds), required: false);
-            var __workflow_merchantName = merchantName == null ? null : WorkflowExpression.Compile(merchantName);
-            WorkflowExpression.Validate(__workflow_merchantName, nameof(merchantName), required: false);
-            var __workflow_vatCode = vatCode == null ? null : WorkflowExpression.Compile(vatCode);
-            WorkflowExpression.Validate(__workflow_vatCode, nameof(vatCode), required: false);
-            var __workflow_valueHTInExpenseCurrency = valueHTInExpenseCurrency == null ? null : WorkflowExpression.Compile(valueHTInExpenseCurrency);
-            WorkflowExpression.Validate(__workflow_valueHTInExpenseCurrency, nameof(valueHTInExpenseCurrency), required: false);
-            var __workflow_vatRate = vatRate == null ? null : WorkflowExpression.Compile(vatRate);
-            WorkflowExpression.Validate(__workflow_vatRate, nameof(vatRate), required: false);
-            var __workflow_vatValue = vatValue == null ? null : WorkflowExpression.Compile(vatValue);
-            WorkflowExpression.Validate(__workflow_vatValue, nameof(vatValue), required: false);
-            var __workflow_reportsIds = reportsIds == null ? null : WorkflowExpression.Compile(reportsIds);
-            WorkflowExpression.Validate(__workflow_reportsIds, nameof(reportsIds), required: false);
-            var __workflow_dateTimeOffset = dateTimeOffset == null ? null : WorkflowExpression.Compile(dateTimeOffset);
-            WorkflowExpression.Validate(__workflow_dateTimeOffset, nameof(dateTimeOffset), required: false);
-            var __workflow_tagsNames = tagsNames == null ? null : WorkflowExpression.Compile(tagsNames);
-            WorkflowExpression.Validate(__workflow_tagsNames, nameof(tagsNames), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_isDesc = isDesc == null ? null : WorkflowExpression.Compile(isDesc);
-            WorkflowExpression.Validate(__workflow_isDesc, nameof(isDesc), required: false);
+            var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: false);
+            var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: false);
+            var __workflow_expenseName = WorkflowExpression.Compile(expenseName, nameof(expenseName), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_reportState = WorkflowExpression.Compile(reportState, nameof(reportState), required: false);
+            var __workflow_expenseStates = WorkflowExpression.Compile(expenseStates, nameof(expenseStates), required: false);
+            var __workflow_isReimbusable = WorkflowExpression.Compile(isReimbusable, nameof(isReimbusable), required: false);
+            var __workflow_valueInCurrency = WorkflowExpression.Compile(valueInCurrency, nameof(valueInCurrency), required: false);
+            var __workflow_ownerId = WorkflowExpression.Compile(ownerId, nameof(ownerId), required: false);
+            var __workflow_ownerMail = WorkflowExpression.Compile(ownerMail, nameof(ownerMail), required: false);
+            var __workflow_ownerPayId = WorkflowExpression.Compile(ownerPayId, nameof(ownerPayId), required: false);
+            var __workflow_ownerPayId2 = WorkflowExpression.Compile(ownerPayId2, nameof(ownerPayId2), required: false);
+            var __workflow_ownerPayId3 = WorkflowExpression.Compile(ownerPayId3, nameof(ownerPayId3), required: false);
+            var __workflow_ownerPayId4 = WorkflowExpression.Compile(ownerPayId4, nameof(ownerPayId4), required: false);
+            var __workflow_ownerPayId5 = WorkflowExpression.Compile(ownerPayId5, nameof(ownerPayId5), required: false);
+            var __workflow_ownerPayId6 = WorkflowExpression.Compile(ownerPayId6, nameof(ownerPayId6), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: false);
+            var __workflow_isBillable = WorkflowExpression.Compile(isBillable, nameof(isBillable), required: false);
+            var __workflow_dateFilterType = WorkflowExpression.Compile(dateFilterType, nameof(dateFilterType), required: false);
+            var __workflow_merchantCountries = WorkflowExpression.Compile(merchantCountries, nameof(merchantCountries), required: false);
+            var __workflow_currencies = WorkflowExpression.Compile(currencies, nameof(currencies), required: false);
+            var __workflow_fileType = WorkflowExpression.Compile(fileType, nameof(fileType), required: false);
+            var __workflow_reportIdShort = WorkflowExpression.Compile(reportIdShort, nameof(reportIdShort), required: false);
+            var __workflow_expenseUseTypes = WorkflowExpression.Compile(expenseUseTypes, nameof(expenseUseTypes), required: false);
+            var __workflow_supplierId = WorkflowExpression.Compile(supplierId, nameof(supplierId), required: false);
+            var __workflow_expenseIds = WorkflowExpression.Compile(expenseIds, nameof(expenseIds), required: false);
+            var __workflow_merchantName = WorkflowExpression.Compile(merchantName, nameof(merchantName), required: false);
+            var __workflow_vatCode = WorkflowExpression.Compile(vatCode, nameof(vatCode), required: false);
+            var __workflow_valueHTInExpenseCurrency = WorkflowExpression.Compile(valueHTInExpenseCurrency, nameof(valueHTInExpenseCurrency), required: false);
+            var __workflow_vatRate = WorkflowExpression.Compile(vatRate, nameof(vatRate), required: false);
+            var __workflow_vatValue = WorkflowExpression.Compile(vatValue, nameof(vatValue), required: false);
+            var __workflow_reportsIds = WorkflowExpression.Compile(reportsIds, nameof(reportsIds), required: false);
+            var __workflow_dateTimeOffset = WorkflowExpression.Compile(dateTimeOffset, nameof(dateTimeOffset), required: false);
+            var __workflow_tagsNames = WorkflowExpression.Compile(tagsNames, nameof(tagsNames), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
             return new DeferredBodyAction<ListAndPagesCountResultExpenseResponse>(() =>
             {
                 var apiCallPath = "/api/v2/expenses/";
@@ -873,8 +722,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultProjectResponse> GetProjectDetails(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<BaseResultProjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/project/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -887,36 +735,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<ListAndPagesCountResultProjectResponse> GetProjects(Expression<Func<string>> projectName = null, Expression<Func<string>> projectIds = null, Expression<Func<string>> validatorName = null, Expression<Func<string>> projectReferenceOrExternalId = null, Expression<Func<bool>> bringAllProjects = null, Expression<Func<int>> projectUseType = null, Expression<Func<bool>> isActive = null, Expression<Func<string>> tagsNames = null, Expression<Func<string>> customFieldsIds = null, Expression<Func<string>> expenseDate = null, Expression<Func<string>> userId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> sortBy = null, Expression<Func<bool>> isDesc = null)
         {
-            var __workflow_projectName = projectName == null ? null : WorkflowExpression.Compile(projectName);
-            WorkflowExpression.Validate(__workflow_projectName, nameof(projectName), required: false);
-            var __workflow_projectIds = projectIds == null ? null : WorkflowExpression.Compile(projectIds);
-            WorkflowExpression.Validate(__workflow_projectIds, nameof(projectIds), required: false);
-            var __workflow_validatorName = validatorName == null ? null : WorkflowExpression.Compile(validatorName);
-            WorkflowExpression.Validate(__workflow_validatorName, nameof(validatorName), required: false);
-            var __workflow_projectReferenceOrExternalId = projectReferenceOrExternalId == null ? null : WorkflowExpression.Compile(projectReferenceOrExternalId);
-            WorkflowExpression.Validate(__workflow_projectReferenceOrExternalId, nameof(projectReferenceOrExternalId), required: false);
-            var __workflow_bringAllProjects = bringAllProjects == null ? null : WorkflowExpression.Compile(bringAllProjects);
-            WorkflowExpression.Validate(__workflow_bringAllProjects, nameof(bringAllProjects), required: false);
-            var __workflow_projectUseType = projectUseType == null ? null : WorkflowExpression.Compile(projectUseType);
-            WorkflowExpression.Validate(__workflow_projectUseType, nameof(projectUseType), required: false);
-            var __workflow_isActive = isActive == null ? null : WorkflowExpression.Compile(isActive);
-            WorkflowExpression.Validate(__workflow_isActive, nameof(isActive), required: false);
-            var __workflow_tagsNames = tagsNames == null ? null : WorkflowExpression.Compile(tagsNames);
-            WorkflowExpression.Validate(__workflow_tagsNames, nameof(tagsNames), required: false);
-            var __workflow_customFieldsIds = customFieldsIds == null ? null : WorkflowExpression.Compile(customFieldsIds);
-            WorkflowExpression.Validate(__workflow_customFieldsIds, nameof(customFieldsIds), required: false);
-            var __workflow_expenseDate = expenseDate == null ? null : WorkflowExpression.Compile(expenseDate);
-            WorkflowExpression.Validate(__workflow_expenseDate, nameof(expenseDate), required: false);
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_isDesc = isDesc == null ? null : WorkflowExpression.Compile(isDesc);
-            WorkflowExpression.Validate(__workflow_isDesc, nameof(isDesc), required: false);
+            var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: false);
+            var __workflow_projectIds = WorkflowExpression.Compile(projectIds, nameof(projectIds), required: false);
+            var __workflow_validatorName = WorkflowExpression.Compile(validatorName, nameof(validatorName), required: false);
+            var __workflow_projectReferenceOrExternalId = WorkflowExpression.Compile(projectReferenceOrExternalId, nameof(projectReferenceOrExternalId), required: false);
+            var __workflow_bringAllProjects = WorkflowExpression.Compile(bringAllProjects, nameof(bringAllProjects), required: false);
+            var __workflow_projectUseType = WorkflowExpression.Compile(projectUseType, nameof(projectUseType), required: false);
+            var __workflow_isActive = WorkflowExpression.Compile(isActive, nameof(isActive), required: false);
+            var __workflow_tagsNames = WorkflowExpression.Compile(tagsNames, nameof(tagsNames), required: false);
+            var __workflow_customFieldsIds = WorkflowExpression.Compile(customFieldsIds, nameof(customFieldsIds), required: false);
+            var __workflow_expenseDate = WorkflowExpression.Compile(expenseDate, nameof(expenseDate), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_isDesc = WorkflowExpression.Compile(isDesc, nameof(isDesc), required: false);
             return new DeferredBodyAction<ListAndPagesCountResultProjectResponse>(() =>
             {
                 var apiCallPath = "/api/v2/projects/";
@@ -959,8 +792,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultListEventResponse> GetReportHistory(Expression<Func<string>> reportId)
         {
-            var __workflow_reportId = reportId == null ? null : WorkflowExpression.Compile(reportId);
-            WorkflowExpression.Validate(__workflow_reportId, nameof(reportId), required: true);
+            var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
             return new DeferredBodyAction<BaseResultListEventResponse>(() =>
             {
                 var apiCallPath = "/api/v2/report/history/";
@@ -974,50 +806,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> InviteUser(Expression<Func<string>> userInviteInputlastName, Expression<Func<string>> userInviteInputfirstName, Expression<Func<string>> userInviteInputmail, Expression<Func<string>> userInviteInputlanguage, Expression<Func<userInviteInputuserTypeInput>> userInviteInputuserType, Expression<Func<userInviteInputuserRoleInput>> userInviteInputuserRole, Expression<Func<string>> userInviteInputmailAlias = null, Expression<Func<string>> userInviteInputpayId = null, Expression<Func<string>> userInviteInputpayId2 = null, Expression<Func<string>> userInviteInputpayId3 = null, Expression<Func<string>> userInviteInputpayId4 = null, Expression<Func<string>> userInviteInputpayId5 = null, Expression<Func<string>> userInviteInputpayId6 = null, Expression<Func<string>> userInviteInputlocalCurrency = null, Expression<Func<string>> userInviteInputlocalCountry = null, Expression<Func<string>> userInviteInputmanagerId = null, Expression<Func<string>> userInviteInputreviewerId = null, Expression<Func<string>> userInviteInputvendor = null, Expression<Func<string>> userInviteInputdefaultProjectId = null, Expression<Func<string>> userInviteInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userInviteInputadditionalValidators = null, Expression<Func<string[]>> userInviteInputtagsToAssign = null)
         {
-            var __workflow_userInviteInputlastName = userInviteInputlastName == null ? null : WorkflowExpression.Compile(userInviteInputlastName);
-            WorkflowExpression.Validate(__workflow_userInviteInputlastName, nameof(userInviteInputlastName), required: true);
-            var __workflow_userInviteInputfirstName = userInviteInputfirstName == null ? null : WorkflowExpression.Compile(userInviteInputfirstName);
-            WorkflowExpression.Validate(__workflow_userInviteInputfirstName, nameof(userInviteInputfirstName), required: true);
-            var __workflow_userInviteInputmail = userInviteInputmail == null ? null : WorkflowExpression.Compile(userInviteInputmail);
-            WorkflowExpression.Validate(__workflow_userInviteInputmail, nameof(userInviteInputmail), required: true);
-            var __workflow_userInviteInputlanguage = userInviteInputlanguage == null ? null : WorkflowExpression.Compile(userInviteInputlanguage);
-            WorkflowExpression.Validate(__workflow_userInviteInputlanguage, nameof(userInviteInputlanguage), required: true);
-            var __workflow_userInviteInputuserType = userInviteInputuserType == null ? null : WorkflowExpression.Compile(userInviteInputuserType);
-            WorkflowExpression.Validate(__workflow_userInviteInputuserType, nameof(userInviteInputuserType), required: true);
-            var __workflow_userInviteInputuserRole = userInviteInputuserRole == null ? null : WorkflowExpression.Compile(userInviteInputuserRole);
-            WorkflowExpression.Validate(__workflow_userInviteInputuserRole, nameof(userInviteInputuserRole), required: true);
-            var __workflow_userInviteInputmailAlias = userInviteInputmailAlias == null ? null : WorkflowExpression.Compile(userInviteInputmailAlias);
-            WorkflowExpression.Validate(__workflow_userInviteInputmailAlias, nameof(userInviteInputmailAlias), required: false);
-            var __workflow_userInviteInputpayId = userInviteInputpayId == null ? null : WorkflowExpression.Compile(userInviteInputpayId);
-            WorkflowExpression.Validate(__workflow_userInviteInputpayId, nameof(userInviteInputpayId), required: false);
-            var __workflow_userInviteInputpayId2 = userInviteInputpayId2 == null ? null : WorkflowExpression.Compile(userInviteInputpayId2);
-            WorkflowExpression.Validate(__workflow_userInviteInputpayId2, nameof(userInviteInputpayId2), required: false);
-            var __workflow_userInviteInputpayId3 = userInviteInputpayId3 == null ? null : WorkflowExpression.Compile(userInviteInputpayId3);
-            WorkflowExpression.Validate(__workflow_userInviteInputpayId3, nameof(userInviteInputpayId3), required: false);
-            var __workflow_userInviteInputpayId4 = userInviteInputpayId4 == null ? null : WorkflowExpression.Compile(userInviteInputpayId4);
-            WorkflowExpression.Validate(__workflow_userInviteInputpayId4, nameof(userInviteInputpayId4), required: false);
-            var __workflow_userInviteInputpayId5 = userInviteInputpayId5 == null ? null : WorkflowExpression.Compile(userInviteInputpayId5);
-            WorkflowExpression.Validate(__workflow_userInviteInputpayId5, nameof(userInviteInputpayId5), required: false);
-            var __workflow_userInviteInputpayId6 = userInviteInputpayId6 == null ? null : WorkflowExpression.Compile(userInviteInputpayId6);
-            WorkflowExpression.Validate(__workflow_userInviteInputpayId6, nameof(userInviteInputpayId6), required: false);
-            var __workflow_userInviteInputlocalCurrency = userInviteInputlocalCurrency == null ? null : WorkflowExpression.Compile(userInviteInputlocalCurrency);
-            WorkflowExpression.Validate(__workflow_userInviteInputlocalCurrency, nameof(userInviteInputlocalCurrency), required: false);
-            var __workflow_userInviteInputlocalCountry = userInviteInputlocalCountry == null ? null : WorkflowExpression.Compile(userInviteInputlocalCountry);
-            WorkflowExpression.Validate(__workflow_userInviteInputlocalCountry, nameof(userInviteInputlocalCountry), required: false);
-            var __workflow_userInviteInputmanagerId = userInviteInputmanagerId == null ? null : WorkflowExpression.Compile(userInviteInputmanagerId);
-            WorkflowExpression.Validate(__workflow_userInviteInputmanagerId, nameof(userInviteInputmanagerId), required: false);
-            var __workflow_userInviteInputreviewerId = userInviteInputreviewerId == null ? null : WorkflowExpression.Compile(userInviteInputreviewerId);
-            WorkflowExpression.Validate(__workflow_userInviteInputreviewerId, nameof(userInviteInputreviewerId), required: false);
-            var __workflow_userInviteInputvendor = userInviteInputvendor == null ? null : WorkflowExpression.Compile(userInviteInputvendor);
-            WorkflowExpression.Validate(__workflow_userInviteInputvendor, nameof(userInviteInputvendor), required: false);
-            var __workflow_userInviteInputdefaultProjectId = userInviteInputdefaultProjectId == null ? null : WorkflowExpression.Compile(userInviteInputdefaultProjectId);
-            WorkflowExpression.Validate(__workflow_userInviteInputdefaultProjectId, nameof(userInviteInputdefaultProjectId), required: false);
-            var __workflow_userInviteInputiKRatesId = userInviteInputiKRatesId == null ? null : WorkflowExpression.Compile(userInviteInputiKRatesId);
-            WorkflowExpression.Validate(__workflow_userInviteInputiKRatesId, nameof(userInviteInputiKRatesId), required: false);
-            var __workflow_userInviteInputadditionalValidators = userInviteInputadditionalValidators == null ? null : WorkflowExpression.Compile(userInviteInputadditionalValidators);
-            WorkflowExpression.Validate(__workflow_userInviteInputadditionalValidators, nameof(userInviteInputadditionalValidators), required: false);
-            var __workflow_userInviteInputtagsToAssign = userInviteInputtagsToAssign == null ? null : WorkflowExpression.Compile(userInviteInputtagsToAssign);
-            WorkflowExpression.Validate(__workflow_userInviteInputtagsToAssign, nameof(userInviteInputtagsToAssign), required: false);
+            var __workflow_userInviteInputlastName = WorkflowExpression.Compile(userInviteInputlastName, nameof(userInviteInputlastName), required: true);
+            var __workflow_userInviteInputfirstName = WorkflowExpression.Compile(userInviteInputfirstName, nameof(userInviteInputfirstName), required: true);
+            var __workflow_userInviteInputmail = WorkflowExpression.Compile(userInviteInputmail, nameof(userInviteInputmail), required: true);
+            var __workflow_userInviteInputlanguage = WorkflowExpression.Compile(userInviteInputlanguage, nameof(userInviteInputlanguage), required: true);
+            var __workflow_userInviteInputuserType = WorkflowExpression.Compile(userInviteInputuserType, nameof(userInviteInputuserType), required: true);
+            var __workflow_userInviteInputuserRole = WorkflowExpression.Compile(userInviteInputuserRole, nameof(userInviteInputuserRole), required: true);
+            var __workflow_userInviteInputmailAlias = WorkflowExpression.Compile(userInviteInputmailAlias, nameof(userInviteInputmailAlias), required: false);
+            var __workflow_userInviteInputpayId = WorkflowExpression.Compile(userInviteInputpayId, nameof(userInviteInputpayId), required: false);
+            var __workflow_userInviteInputpayId2 = WorkflowExpression.Compile(userInviteInputpayId2, nameof(userInviteInputpayId2), required: false);
+            var __workflow_userInviteInputpayId3 = WorkflowExpression.Compile(userInviteInputpayId3, nameof(userInviteInputpayId3), required: false);
+            var __workflow_userInviteInputpayId4 = WorkflowExpression.Compile(userInviteInputpayId4, nameof(userInviteInputpayId4), required: false);
+            var __workflow_userInviteInputpayId5 = WorkflowExpression.Compile(userInviteInputpayId5, nameof(userInviteInputpayId5), required: false);
+            var __workflow_userInviteInputpayId6 = WorkflowExpression.Compile(userInviteInputpayId6, nameof(userInviteInputpayId6), required: false);
+            var __workflow_userInviteInputlocalCurrency = WorkflowExpression.Compile(userInviteInputlocalCurrency, nameof(userInviteInputlocalCurrency), required: false);
+            var __workflow_userInviteInputlocalCountry = WorkflowExpression.Compile(userInviteInputlocalCountry, nameof(userInviteInputlocalCountry), required: false);
+            var __workflow_userInviteInputmanagerId = WorkflowExpression.Compile(userInviteInputmanagerId, nameof(userInviteInputmanagerId), required: false);
+            var __workflow_userInviteInputreviewerId = WorkflowExpression.Compile(userInviteInputreviewerId, nameof(userInviteInputreviewerId), required: false);
+            var __workflow_userInviteInputvendor = WorkflowExpression.Compile(userInviteInputvendor, nameof(userInviteInputvendor), required: false);
+            var __workflow_userInviteInputdefaultProjectId = WorkflowExpression.Compile(userInviteInputdefaultProjectId, nameof(userInviteInputdefaultProjectId), required: false);
+            var __workflow_userInviteInputiKRatesId = WorkflowExpression.Compile(userInviteInputiKRatesId, nameof(userInviteInputiKRatesId), required: false);
+            var __workflow_userInviteInputadditionalValidators = WorkflowExpression.Compile(userInviteInputadditionalValidators, nameof(userInviteInputadditionalValidators), required: false);
+            var __workflow_userInviteInputtagsToAssign = WorkflowExpression.Compile(userInviteInputtagsToAssign, nameof(userInviteInputtagsToAssign), required: false);
             return new DeferredBodyAction<BaseResult>(() =>
             {
                 var apiCallPath = "/api/v2/user/";
@@ -1154,60 +964,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResult> UpateUser(Expression<Func<string>> userId, Expression<Func<bool>> shouldUpdateValidators, Expression<Func<string>> userUpdateInputlastName = null, Expression<Func<string>> userUpdateInputfirstName = null, Expression<Func<string>> userUpdateInputmail = null, Expression<Func<string>> userUpdateInputmailAlias = null, Expression<Func<string>> userUpdateInputpayId = null, Expression<Func<string>> userUpdateInputpayId2 = null, Expression<Func<string>> userUpdateInputpayId3 = null, Expression<Func<string>> userUpdateInputpayId4 = null, Expression<Func<string>> userUpdateInputpayId5 = null, Expression<Func<string>> userUpdateInputpayId6 = null, Expression<Func<string>> userUpdateInputlanguage = null, Expression<Func<string>> userUpdateInputlocalCurrency = null, Expression<Func<string>> userUpdateInputlocalCountry = null, Expression<Func<string>> userUpdateInputmanagerId = null, Expression<Func<string>> userUpdateInputreviewerId = null, Expression<Func<userUpdateInputuserTypeInput>> userUpdateInputuserType = null, Expression<Func<string>> userUpdateInputvendor = null, Expression<Func<userUpdateInputuserRoleInput>> userUpdateInputuserRole = null, Expression<Func<string>> userUpdateInputjobTitle = null, Expression<Func<bool>> userUpdateInputcanAddPurchase = null, Expression<Func<string>> userUpdateInputdefaultProjectId = null, Expression<Func<string>> userUpdateInputiKRatesId = null, Expression<Func<ValidatorInput[]>> userUpdateInputadditionalValidators = null, Expression<Func<string[]>> userUpdateInputtagsToAssign = null, Expression<Func<string[]>> userUpdateInputtagsToUnassign = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_shouldUpdateValidators = shouldUpdateValidators == null ? null : WorkflowExpression.Compile(shouldUpdateValidators);
-            WorkflowExpression.Validate(__workflow_shouldUpdateValidators, nameof(shouldUpdateValidators), required: true);
-            var __workflow_userUpdateInputlastName = userUpdateInputlastName == null ? null : WorkflowExpression.Compile(userUpdateInputlastName);
-            WorkflowExpression.Validate(__workflow_userUpdateInputlastName, nameof(userUpdateInputlastName), required: false);
-            var __workflow_userUpdateInputfirstName = userUpdateInputfirstName == null ? null : WorkflowExpression.Compile(userUpdateInputfirstName);
-            WorkflowExpression.Validate(__workflow_userUpdateInputfirstName, nameof(userUpdateInputfirstName), required: false);
-            var __workflow_userUpdateInputmail = userUpdateInputmail == null ? null : WorkflowExpression.Compile(userUpdateInputmail);
-            WorkflowExpression.Validate(__workflow_userUpdateInputmail, nameof(userUpdateInputmail), required: false);
-            var __workflow_userUpdateInputmailAlias = userUpdateInputmailAlias == null ? null : WorkflowExpression.Compile(userUpdateInputmailAlias);
-            WorkflowExpression.Validate(__workflow_userUpdateInputmailAlias, nameof(userUpdateInputmailAlias), required: false);
-            var __workflow_userUpdateInputpayId = userUpdateInputpayId == null ? null : WorkflowExpression.Compile(userUpdateInputpayId);
-            WorkflowExpression.Validate(__workflow_userUpdateInputpayId, nameof(userUpdateInputpayId), required: false);
-            var __workflow_userUpdateInputpayId2 = userUpdateInputpayId2 == null ? null : WorkflowExpression.Compile(userUpdateInputpayId2);
-            WorkflowExpression.Validate(__workflow_userUpdateInputpayId2, nameof(userUpdateInputpayId2), required: false);
-            var __workflow_userUpdateInputpayId3 = userUpdateInputpayId3 == null ? null : WorkflowExpression.Compile(userUpdateInputpayId3);
-            WorkflowExpression.Validate(__workflow_userUpdateInputpayId3, nameof(userUpdateInputpayId3), required: false);
-            var __workflow_userUpdateInputpayId4 = userUpdateInputpayId4 == null ? null : WorkflowExpression.Compile(userUpdateInputpayId4);
-            WorkflowExpression.Validate(__workflow_userUpdateInputpayId4, nameof(userUpdateInputpayId4), required: false);
-            var __workflow_userUpdateInputpayId5 = userUpdateInputpayId5 == null ? null : WorkflowExpression.Compile(userUpdateInputpayId5);
-            WorkflowExpression.Validate(__workflow_userUpdateInputpayId5, nameof(userUpdateInputpayId5), required: false);
-            var __workflow_userUpdateInputpayId6 = userUpdateInputpayId6 == null ? null : WorkflowExpression.Compile(userUpdateInputpayId6);
-            WorkflowExpression.Validate(__workflow_userUpdateInputpayId6, nameof(userUpdateInputpayId6), required: false);
-            var __workflow_userUpdateInputlanguage = userUpdateInputlanguage == null ? null : WorkflowExpression.Compile(userUpdateInputlanguage);
-            WorkflowExpression.Validate(__workflow_userUpdateInputlanguage, nameof(userUpdateInputlanguage), required: false);
-            var __workflow_userUpdateInputlocalCurrency = userUpdateInputlocalCurrency == null ? null : WorkflowExpression.Compile(userUpdateInputlocalCurrency);
-            WorkflowExpression.Validate(__workflow_userUpdateInputlocalCurrency, nameof(userUpdateInputlocalCurrency), required: false);
-            var __workflow_userUpdateInputlocalCountry = userUpdateInputlocalCountry == null ? null : WorkflowExpression.Compile(userUpdateInputlocalCountry);
-            WorkflowExpression.Validate(__workflow_userUpdateInputlocalCountry, nameof(userUpdateInputlocalCountry), required: false);
-            var __workflow_userUpdateInputmanagerId = userUpdateInputmanagerId == null ? null : WorkflowExpression.Compile(userUpdateInputmanagerId);
-            WorkflowExpression.Validate(__workflow_userUpdateInputmanagerId, nameof(userUpdateInputmanagerId), required: false);
-            var __workflow_userUpdateInputreviewerId = userUpdateInputreviewerId == null ? null : WorkflowExpression.Compile(userUpdateInputreviewerId);
-            WorkflowExpression.Validate(__workflow_userUpdateInputreviewerId, nameof(userUpdateInputreviewerId), required: false);
-            var __workflow_userUpdateInputuserType = userUpdateInputuserType == null ? null : WorkflowExpression.Compile(userUpdateInputuserType);
-            WorkflowExpression.Validate(__workflow_userUpdateInputuserType, nameof(userUpdateInputuserType), required: false);
-            var __workflow_userUpdateInputvendor = userUpdateInputvendor == null ? null : WorkflowExpression.Compile(userUpdateInputvendor);
-            WorkflowExpression.Validate(__workflow_userUpdateInputvendor, nameof(userUpdateInputvendor), required: false);
-            var __workflow_userUpdateInputuserRole = userUpdateInputuserRole == null ? null : WorkflowExpression.Compile(userUpdateInputuserRole);
-            WorkflowExpression.Validate(__workflow_userUpdateInputuserRole, nameof(userUpdateInputuserRole), required: false);
-            var __workflow_userUpdateInputjobTitle = userUpdateInputjobTitle == null ? null : WorkflowExpression.Compile(userUpdateInputjobTitle);
-            WorkflowExpression.Validate(__workflow_userUpdateInputjobTitle, nameof(userUpdateInputjobTitle), required: false);
-            var __workflow_userUpdateInputcanAddPurchase = userUpdateInputcanAddPurchase == null ? null : WorkflowExpression.Compile(userUpdateInputcanAddPurchase);
-            WorkflowExpression.Validate(__workflow_userUpdateInputcanAddPurchase, nameof(userUpdateInputcanAddPurchase), required: false);
-            var __workflow_userUpdateInputdefaultProjectId = userUpdateInputdefaultProjectId == null ? null : WorkflowExpression.Compile(userUpdateInputdefaultProjectId);
-            WorkflowExpression.Validate(__workflow_userUpdateInputdefaultProjectId, nameof(userUpdateInputdefaultProjectId), required: false);
-            var __workflow_userUpdateInputiKRatesId = userUpdateInputiKRatesId == null ? null : WorkflowExpression.Compile(userUpdateInputiKRatesId);
-            WorkflowExpression.Validate(__workflow_userUpdateInputiKRatesId, nameof(userUpdateInputiKRatesId), required: false);
-            var __workflow_userUpdateInputadditionalValidators = userUpdateInputadditionalValidators == null ? null : WorkflowExpression.Compile(userUpdateInputadditionalValidators);
-            WorkflowExpression.Validate(__workflow_userUpdateInputadditionalValidators, nameof(userUpdateInputadditionalValidators), required: false);
-            var __workflow_userUpdateInputtagsToAssign = userUpdateInputtagsToAssign == null ? null : WorkflowExpression.Compile(userUpdateInputtagsToAssign);
-            WorkflowExpression.Validate(__workflow_userUpdateInputtagsToAssign, nameof(userUpdateInputtagsToAssign), required: false);
-            var __workflow_userUpdateInputtagsToUnassign = userUpdateInputtagsToUnassign == null ? null : WorkflowExpression.Compile(userUpdateInputtagsToUnassign);
-            WorkflowExpression.Validate(__workflow_userUpdateInputtagsToUnassign, nameof(userUpdateInputtagsToUnassign), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_shouldUpdateValidators = WorkflowExpression.Compile(shouldUpdateValidators, nameof(shouldUpdateValidators), required: true);
+            var __workflow_userUpdateInputlastName = WorkflowExpression.Compile(userUpdateInputlastName, nameof(userUpdateInputlastName), required: false);
+            var __workflow_userUpdateInputfirstName = WorkflowExpression.Compile(userUpdateInputfirstName, nameof(userUpdateInputfirstName), required: false);
+            var __workflow_userUpdateInputmail = WorkflowExpression.Compile(userUpdateInputmail, nameof(userUpdateInputmail), required: false);
+            var __workflow_userUpdateInputmailAlias = WorkflowExpression.Compile(userUpdateInputmailAlias, nameof(userUpdateInputmailAlias), required: false);
+            var __workflow_userUpdateInputpayId = WorkflowExpression.Compile(userUpdateInputpayId, nameof(userUpdateInputpayId), required: false);
+            var __workflow_userUpdateInputpayId2 = WorkflowExpression.Compile(userUpdateInputpayId2, nameof(userUpdateInputpayId2), required: false);
+            var __workflow_userUpdateInputpayId3 = WorkflowExpression.Compile(userUpdateInputpayId3, nameof(userUpdateInputpayId3), required: false);
+            var __workflow_userUpdateInputpayId4 = WorkflowExpression.Compile(userUpdateInputpayId4, nameof(userUpdateInputpayId4), required: false);
+            var __workflow_userUpdateInputpayId5 = WorkflowExpression.Compile(userUpdateInputpayId5, nameof(userUpdateInputpayId5), required: false);
+            var __workflow_userUpdateInputpayId6 = WorkflowExpression.Compile(userUpdateInputpayId6, nameof(userUpdateInputpayId6), required: false);
+            var __workflow_userUpdateInputlanguage = WorkflowExpression.Compile(userUpdateInputlanguage, nameof(userUpdateInputlanguage), required: false);
+            var __workflow_userUpdateInputlocalCurrency = WorkflowExpression.Compile(userUpdateInputlocalCurrency, nameof(userUpdateInputlocalCurrency), required: false);
+            var __workflow_userUpdateInputlocalCountry = WorkflowExpression.Compile(userUpdateInputlocalCountry, nameof(userUpdateInputlocalCountry), required: false);
+            var __workflow_userUpdateInputmanagerId = WorkflowExpression.Compile(userUpdateInputmanagerId, nameof(userUpdateInputmanagerId), required: false);
+            var __workflow_userUpdateInputreviewerId = WorkflowExpression.Compile(userUpdateInputreviewerId, nameof(userUpdateInputreviewerId), required: false);
+            var __workflow_userUpdateInputuserType = WorkflowExpression.Compile(userUpdateInputuserType, nameof(userUpdateInputuserType), required: false);
+            var __workflow_userUpdateInputvendor = WorkflowExpression.Compile(userUpdateInputvendor, nameof(userUpdateInputvendor), required: false);
+            var __workflow_userUpdateInputuserRole = WorkflowExpression.Compile(userUpdateInputuserRole, nameof(userUpdateInputuserRole), required: false);
+            var __workflow_userUpdateInputjobTitle = WorkflowExpression.Compile(userUpdateInputjobTitle, nameof(userUpdateInputjobTitle), required: false);
+            var __workflow_userUpdateInputcanAddPurchase = WorkflowExpression.Compile(userUpdateInputcanAddPurchase, nameof(userUpdateInputcanAddPurchase), required: false);
+            var __workflow_userUpdateInputdefaultProjectId = WorkflowExpression.Compile(userUpdateInputdefaultProjectId, nameof(userUpdateInputdefaultProjectId), required: false);
+            var __workflow_userUpdateInputiKRatesId = WorkflowExpression.Compile(userUpdateInputiKRatesId, nameof(userUpdateInputiKRatesId), required: false);
+            var __workflow_userUpdateInputadditionalValidators = WorkflowExpression.Compile(userUpdateInputadditionalValidators, nameof(userUpdateInputadditionalValidators), required: false);
+            var __workflow_userUpdateInputtagsToAssign = WorkflowExpression.Compile(userUpdateInputtagsToAssign, nameof(userUpdateInputtagsToAssign), required: false);
+            var __workflow_userUpdateInputtagsToUnassign = WorkflowExpression.Compile(userUpdateInputtagsToUnassign, nameof(userUpdateInputtagsToUnassign), required: false);
             return new DeferredBodyAction<BaseResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/user/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -1378,10 +1161,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultListAddOrUpdateEntityResult> UpdateProjectState(Expression<Func<string[]>> updateProjectStateInputitemIds, Expression<Func<bool>> updateProjectStateInputprojectState)
         {
-            var __workflow_updateProjectStateInputitemIds = updateProjectStateInputitemIds == null ? null : WorkflowExpression.Compile(updateProjectStateInputitemIds);
-            WorkflowExpression.Validate(__workflow_updateProjectStateInputitemIds, nameof(updateProjectStateInputitemIds), required: true);
-            var __workflow_updateProjectStateInputprojectState = updateProjectStateInputprojectState == null ? null : WorkflowExpression.Compile(updateProjectStateInputprojectState);
-            WorkflowExpression.Validate(__workflow_updateProjectStateInputprojectState, nameof(updateProjectStateInputprojectState), required: true);
+            var __workflow_updateProjectStateInputitemIds = WorkflowExpression.Compile(updateProjectStateInputitemIds, nameof(updateProjectStateInputitemIds), required: true);
+            var __workflow_updateProjectStateInputprojectState = WorkflowExpression.Compile(updateProjectStateInputprojectState, nameof(updateProjectStateInputprojectState), required: true);
             return new DeferredBodyAction<BaseResultListAddOrUpdateEntityResult>(() =>
             {
                 var apiCallPath = "/api/v2/projects/states/";
@@ -1405,8 +1186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expensya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expensya")]
         public IBodyWorkflowAction<BaseResultListUpdateUserResult> UpdateUsersState(Expression<Func<UpdateUserStateInput[]>> updateUserStateInputArray = null)
         {
-            var __workflow_updateUserStateInputArray = updateUserStateInputArray == null ? null : WorkflowExpression.Compile(updateUserStateInputArray);
-            WorkflowExpression.Validate(__workflow_updateUserStateInputArray, nameof(updateUserStateInputArray), required: false);
+            var __workflow_updateUserStateInputArray = WorkflowExpression.Compile(updateUserStateInputArray, nameof(updateUserStateInputArray), required: false);
             return new DeferredBodyAction<BaseResultListUpdateUserResult>(() =>
             {
                 var apiCallPath = "/api/v2/users/state/";

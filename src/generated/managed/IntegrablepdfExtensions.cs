@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> LockPdf(Expression<Func<string>> lockPdfInputfileContent, Expression<Func<string>> lockPdfInputpermissionsPassword, Expression<Func<bool>> lockPdfInputallowAccessibility = null, Expression<Func<bool>> lockPdfInputallowCopy = null, Expression<Func<bool>> lockPdfInputallowDocumentAssembly = null, Expression<Func<bool>> lockPdfInputallowEdit = null, Expression<Func<bool>> lockPdfInputallowFormFilling = null, Expression<Func<bool>> lockPdfInputallowPrint = null, Expression<Func<bool>> lockPdfInputallowUpdateAnnotationsAndFields = null, Expression<Func<string>> lockPdfInputdocumentOpenPassword = null)
         {
-            var __workflow_lockPdfInputfileContent = lockPdfInputfileContent == null ? null : WorkflowExpression.Compile(lockPdfInputfileContent);
-            WorkflowExpression.Validate(__workflow_lockPdfInputfileContent, nameof(lockPdfInputfileContent), required: true);
-            var __workflow_lockPdfInputpermissionsPassword = lockPdfInputpermissionsPassword == null ? null : WorkflowExpression.Compile(lockPdfInputpermissionsPassword);
-            WorkflowExpression.Validate(__workflow_lockPdfInputpermissionsPassword, nameof(lockPdfInputpermissionsPassword), required: true);
-            var __workflow_lockPdfInputallowAccessibility = lockPdfInputallowAccessibility == null ? null : WorkflowExpression.Compile(lockPdfInputallowAccessibility);
-            WorkflowExpression.Validate(__workflow_lockPdfInputallowAccessibility, nameof(lockPdfInputallowAccessibility), required: false);
-            var __workflow_lockPdfInputallowCopy = lockPdfInputallowCopy == null ? null : WorkflowExpression.Compile(lockPdfInputallowCopy);
-            WorkflowExpression.Validate(__workflow_lockPdfInputallowCopy, nameof(lockPdfInputallowCopy), required: false);
-            var __workflow_lockPdfInputallowDocumentAssembly = lockPdfInputallowDocumentAssembly == null ? null : WorkflowExpression.Compile(lockPdfInputallowDocumentAssembly);
-            WorkflowExpression.Validate(__workflow_lockPdfInputallowDocumentAssembly, nameof(lockPdfInputallowDocumentAssembly), required: false);
-            var __workflow_lockPdfInputallowEdit = lockPdfInputallowEdit == null ? null : WorkflowExpression.Compile(lockPdfInputallowEdit);
-            WorkflowExpression.Validate(__workflow_lockPdfInputallowEdit, nameof(lockPdfInputallowEdit), required: false);
-            var __workflow_lockPdfInputallowFormFilling = lockPdfInputallowFormFilling == null ? null : WorkflowExpression.Compile(lockPdfInputallowFormFilling);
-            WorkflowExpression.Validate(__workflow_lockPdfInputallowFormFilling, nameof(lockPdfInputallowFormFilling), required: false);
-            var __workflow_lockPdfInputallowPrint = lockPdfInputallowPrint == null ? null : WorkflowExpression.Compile(lockPdfInputallowPrint);
-            WorkflowExpression.Validate(__workflow_lockPdfInputallowPrint, nameof(lockPdfInputallowPrint), required: false);
-            var __workflow_lockPdfInputallowUpdateAnnotationsAndFields = lockPdfInputallowUpdateAnnotationsAndFields == null ? null : WorkflowExpression.Compile(lockPdfInputallowUpdateAnnotationsAndFields);
-            WorkflowExpression.Validate(__workflow_lockPdfInputallowUpdateAnnotationsAndFields, nameof(lockPdfInputallowUpdateAnnotationsAndFields), required: false);
-            var __workflow_lockPdfInputdocumentOpenPassword = lockPdfInputdocumentOpenPassword == null ? null : WorkflowExpression.Compile(lockPdfInputdocumentOpenPassword);
-            WorkflowExpression.Validate(__workflow_lockPdfInputdocumentOpenPassword, nameof(lockPdfInputdocumentOpenPassword), required: false);
+            var __workflow_lockPdfInputfileContent = WorkflowExpression.Compile(lockPdfInputfileContent, nameof(lockPdfInputfileContent), required: true);
+            var __workflow_lockPdfInputpermissionsPassword = WorkflowExpression.Compile(lockPdfInputpermissionsPassword, nameof(lockPdfInputpermissionsPassword), required: true);
+            var __workflow_lockPdfInputallowAccessibility = WorkflowExpression.Compile(lockPdfInputallowAccessibility, nameof(lockPdfInputallowAccessibility), required: false);
+            var __workflow_lockPdfInputallowCopy = WorkflowExpression.Compile(lockPdfInputallowCopy, nameof(lockPdfInputallowCopy), required: false);
+            var __workflow_lockPdfInputallowDocumentAssembly = WorkflowExpression.Compile(lockPdfInputallowDocumentAssembly, nameof(lockPdfInputallowDocumentAssembly), required: false);
+            var __workflow_lockPdfInputallowEdit = WorkflowExpression.Compile(lockPdfInputallowEdit, nameof(lockPdfInputallowEdit), required: false);
+            var __workflow_lockPdfInputallowFormFilling = WorkflowExpression.Compile(lockPdfInputallowFormFilling, nameof(lockPdfInputallowFormFilling), required: false);
+            var __workflow_lockPdfInputallowPrint = WorkflowExpression.Compile(lockPdfInputallowPrint, nameof(lockPdfInputallowPrint), required: false);
+            var __workflow_lockPdfInputallowUpdateAnnotationsAndFields = WorkflowExpression.Compile(lockPdfInputallowUpdateAnnotationsAndFields, nameof(lockPdfInputallowUpdateAnnotationsAndFields), required: false);
+            var __workflow_lockPdfInputdocumentOpenPassword = WorkflowExpression.Compile(lockPdfInputdocumentOpenPassword, nameof(lockPdfInputdocumentOpenPassword), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/lock";
@@ -105,14 +95,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> MergePdf(Expression<Func<string>> mergePdfInput1stFileContent, Expression<Func<string>> mergePdfInput2ndFileContent, Expression<Func<string>> mergePdfInput3rdFileContent = null, Expression<Func<string>> mergePdfInput4thFileContent = null)
         {
-            var __workflow_mergePdfInput1stFileContent = mergePdfInput1stFileContent == null ? null : WorkflowExpression.Compile(mergePdfInput1stFileContent);
-            WorkflowExpression.Validate(__workflow_mergePdfInput1stFileContent, nameof(mergePdfInput1stFileContent), required: true);
-            var __workflow_mergePdfInput2ndFileContent = mergePdfInput2ndFileContent == null ? null : WorkflowExpression.Compile(mergePdfInput2ndFileContent);
-            WorkflowExpression.Validate(__workflow_mergePdfInput2ndFileContent, nameof(mergePdfInput2ndFileContent), required: true);
-            var __workflow_mergePdfInput3rdFileContent = mergePdfInput3rdFileContent == null ? null : WorkflowExpression.Compile(mergePdfInput3rdFileContent);
-            WorkflowExpression.Validate(__workflow_mergePdfInput3rdFileContent, nameof(mergePdfInput3rdFileContent), required: false);
-            var __workflow_mergePdfInput4thFileContent = mergePdfInput4thFileContent == null ? null : WorkflowExpression.Compile(mergePdfInput4thFileContent);
-            WorkflowExpression.Validate(__workflow_mergePdfInput4thFileContent, nameof(mergePdfInput4thFileContent), required: false);
+            var __workflow_mergePdfInput1stFileContent = WorkflowExpression.Compile(mergePdfInput1stFileContent, nameof(mergePdfInput1stFileContent), required: true);
+            var __workflow_mergePdfInput2ndFileContent = WorkflowExpression.Compile(mergePdfInput2ndFileContent, nameof(mergePdfInput2ndFileContent), required: true);
+            var __workflow_mergePdfInput3rdFileContent = WorkflowExpression.Compile(mergePdfInput3rdFileContent, nameof(mergePdfInput3rdFileContent), required: false);
+            var __workflow_mergePdfInput4thFileContent = WorkflowExpression.Compile(mergePdfInput4thFileContent, nameof(mergePdfInput4thFileContent), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/merge";
@@ -149,10 +135,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> PasswordProtectPdf(Expression<Func<string>> passwordProtectPdfInputfileContent, Expression<Func<string>> passwordProtectPdfInputpassword)
         {
-            var __workflow_passwordProtectPdfInputfileContent = passwordProtectPdfInputfileContent == null ? null : WorkflowExpression.Compile(passwordProtectPdfInputfileContent);
-            WorkflowExpression.Validate(__workflow_passwordProtectPdfInputfileContent, nameof(passwordProtectPdfInputfileContent), required: true);
-            var __workflow_passwordProtectPdfInputpassword = passwordProtectPdfInputpassword == null ? null : WorkflowExpression.Compile(passwordProtectPdfInputpassword);
-            WorkflowExpression.Validate(__workflow_passwordProtectPdfInputpassword, nameof(passwordProtectPdfInputpassword), required: true);
+            var __workflow_passwordProtectPdfInputfileContent = WorkflowExpression.Compile(passwordProtectPdfInputfileContent, nameof(passwordProtectPdfInputfileContent), required: true);
+            var __workflow_passwordProtectPdfInputpassword = WorkflowExpression.Compile(passwordProtectPdfInputpassword, nameof(passwordProtectPdfInputpassword), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/password_protect";
@@ -177,12 +161,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> SplitPdf(Expression<Func<string>> splitPdfInputfileContent, Expression<Func<int>> splitPdfInputfirstPage = null, Expression<Func<int>> splitPdfInputlastPage = null)
         {
-            var __workflow_splitPdfInputfileContent = splitPdfInputfileContent == null ? null : WorkflowExpression.Compile(splitPdfInputfileContent);
-            WorkflowExpression.Validate(__workflow_splitPdfInputfileContent, nameof(splitPdfInputfileContent), required: true);
-            var __workflow_splitPdfInputfirstPage = splitPdfInputfirstPage == null ? null : WorkflowExpression.Compile(splitPdfInputfirstPage);
-            WorkflowExpression.Validate(__workflow_splitPdfInputfirstPage, nameof(splitPdfInputfirstPage), required: false);
-            var __workflow_splitPdfInputlastPage = splitPdfInputlastPage == null ? null : WorkflowExpression.Compile(splitPdfInputlastPage);
-            WorkflowExpression.Validate(__workflow_splitPdfInputlastPage, nameof(splitPdfInputlastPage), required: false);
+            var __workflow_splitPdfInputfileContent = WorkflowExpression.Compile(splitPdfInputfileContent, nameof(splitPdfInputfileContent), required: true);
+            var __workflow_splitPdfInputfirstPage = WorkflowExpression.Compile(splitPdfInputfirstPage, nameof(splitPdfInputfirstPage), required: false);
+            var __workflow_splitPdfInputlastPage = WorkflowExpression.Compile(splitPdfInputlastPage, nameof(splitPdfInputlastPage), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/split";
@@ -217,10 +198,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> UnlockPdf(Expression<Func<string>> unlockPdfInputfileContent, Expression<Func<string>> unlockPdfInputpassword)
         {
-            var __workflow_unlockPdfInputfileContent = unlockPdfInputfileContent == null ? null : WorkflowExpression.Compile(unlockPdfInputfileContent);
-            WorkflowExpression.Validate(__workflow_unlockPdfInputfileContent, nameof(unlockPdfInputfileContent), required: true);
-            var __workflow_unlockPdfInputpassword = unlockPdfInputpassword == null ? null : WorkflowExpression.Compile(unlockPdfInputpassword);
-            WorkflowExpression.Validate(__workflow_unlockPdfInputpassword, nameof(unlockPdfInputpassword), required: true);
+            var __workflow_unlockPdfInputfileContent = WorkflowExpression.Compile(unlockPdfInputfileContent, nameof(unlockPdfInputfileContent), required: true);
+            var __workflow_unlockPdfInputpassword = WorkflowExpression.Compile(unlockPdfInputpassword, nameof(unlockPdfInputpassword), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/unlock";
@@ -245,24 +224,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> WatermarkPdfBackground(Expression<Func<string>> watermarkPdfBackgroundInputfileContent, Expression<Func<string>> watermarkPdfBackgroundInput1stLine, Expression<Func<watermarkPdfBackgroundInputcolorInput>> watermarkPdfBackgroundInputcolor = null, Expression<Func<string>> watermarkPdfBackgroundInput2ndLine = null, Expression<Func<string>> watermarkPdfBackgroundInput3rdLine = null, Expression<Func<double>> watermarkPdfBackgroundInputmargin = null, Expression<Func<watermarkPdfBackgroundInputorientationInput>> watermarkPdfBackgroundInputorientation = null, Expression<Func<watermarkPdfBackgroundInputstyleInput>> watermarkPdfBackgroundInputstyle = null, Expression<Func<double>> watermarkPdfBackgroundInputtransparency = null)
         {
-            var __workflow_watermarkPdfBackgroundInputfileContent = watermarkPdfBackgroundInputfileContent == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInputfileContent);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInputfileContent, nameof(watermarkPdfBackgroundInputfileContent), required: true);
-            var __workflow_watermarkPdfBackgroundInput1stLine = watermarkPdfBackgroundInput1stLine == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInput1stLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInput1stLine, nameof(watermarkPdfBackgroundInput1stLine), required: true);
-            var __workflow_watermarkPdfBackgroundInputcolor = watermarkPdfBackgroundInputcolor == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInputcolor);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInputcolor, nameof(watermarkPdfBackgroundInputcolor), required: false);
-            var __workflow_watermarkPdfBackgroundInput2ndLine = watermarkPdfBackgroundInput2ndLine == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInput2ndLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInput2ndLine, nameof(watermarkPdfBackgroundInput2ndLine), required: false);
-            var __workflow_watermarkPdfBackgroundInput3rdLine = watermarkPdfBackgroundInput3rdLine == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInput3rdLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInput3rdLine, nameof(watermarkPdfBackgroundInput3rdLine), required: false);
-            var __workflow_watermarkPdfBackgroundInputmargin = watermarkPdfBackgroundInputmargin == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInputmargin);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInputmargin, nameof(watermarkPdfBackgroundInputmargin), required: false);
-            var __workflow_watermarkPdfBackgroundInputorientation = watermarkPdfBackgroundInputorientation == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInputorientation);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInputorientation, nameof(watermarkPdfBackgroundInputorientation), required: false);
-            var __workflow_watermarkPdfBackgroundInputstyle = watermarkPdfBackgroundInputstyle == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInputstyle);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInputstyle, nameof(watermarkPdfBackgroundInputstyle), required: false);
-            var __workflow_watermarkPdfBackgroundInputtransparency = watermarkPdfBackgroundInputtransparency == null ? null : WorkflowExpression.Compile(watermarkPdfBackgroundInputtransparency);
-            WorkflowExpression.Validate(__workflow_watermarkPdfBackgroundInputtransparency, nameof(watermarkPdfBackgroundInputtransparency), required: false);
+            var __workflow_watermarkPdfBackgroundInputfileContent = WorkflowExpression.Compile(watermarkPdfBackgroundInputfileContent, nameof(watermarkPdfBackgroundInputfileContent), required: true);
+            var __workflow_watermarkPdfBackgroundInput1stLine = WorkflowExpression.Compile(watermarkPdfBackgroundInput1stLine, nameof(watermarkPdfBackgroundInput1stLine), required: true);
+            var __workflow_watermarkPdfBackgroundInputcolor = WorkflowExpression.Compile(watermarkPdfBackgroundInputcolor, nameof(watermarkPdfBackgroundInputcolor), required: false);
+            var __workflow_watermarkPdfBackgroundInput2ndLine = WorkflowExpression.Compile(watermarkPdfBackgroundInput2ndLine, nameof(watermarkPdfBackgroundInput2ndLine), required: false);
+            var __workflow_watermarkPdfBackgroundInput3rdLine = WorkflowExpression.Compile(watermarkPdfBackgroundInput3rdLine, nameof(watermarkPdfBackgroundInput3rdLine), required: false);
+            var __workflow_watermarkPdfBackgroundInputmargin = WorkflowExpression.Compile(watermarkPdfBackgroundInputmargin, nameof(watermarkPdfBackgroundInputmargin), required: false);
+            var __workflow_watermarkPdfBackgroundInputorientation = WorkflowExpression.Compile(watermarkPdfBackgroundInputorientation, nameof(watermarkPdfBackgroundInputorientation), required: false);
+            var __workflow_watermarkPdfBackgroundInputstyle = WorkflowExpression.Compile(watermarkPdfBackgroundInputstyle, nameof(watermarkPdfBackgroundInputstyle), required: false);
+            var __workflow_watermarkPdfBackgroundInputtransparency = WorkflowExpression.Compile(watermarkPdfBackgroundInputtransparency, nameof(watermarkPdfBackgroundInputtransparency), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/watermark/background";
@@ -329,20 +299,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> WatermarkPdfCustom(Expression<Func<string>> watermarkPdfCustomInputfileContent, Expression<Func<string>> watermarkPdfCustomInputtemplateId, Expression<Func<string>> watermarkPdfCustomInput1stLine = null, Expression<Func<string>> watermarkPdfCustomInput2ndLine = null, Expression<Func<string>> watermarkPdfCustomInput3rdLine = null, Expression<Func<string>> watermarkPdfCustomInput4thLine = null, Expression<Func<string>> watermarkPdfCustomInput5thLine = null)
         {
-            var __workflow_watermarkPdfCustomInputfileContent = watermarkPdfCustomInputfileContent == null ? null : WorkflowExpression.Compile(watermarkPdfCustomInputfileContent);
-            WorkflowExpression.Validate(__workflow_watermarkPdfCustomInputfileContent, nameof(watermarkPdfCustomInputfileContent), required: true);
-            var __workflow_watermarkPdfCustomInputtemplateId = watermarkPdfCustomInputtemplateId == null ? null : WorkflowExpression.Compile(watermarkPdfCustomInputtemplateId);
-            WorkflowExpression.Validate(__workflow_watermarkPdfCustomInputtemplateId, nameof(watermarkPdfCustomInputtemplateId), required: true);
-            var __workflow_watermarkPdfCustomInput1stLine = watermarkPdfCustomInput1stLine == null ? null : WorkflowExpression.Compile(watermarkPdfCustomInput1stLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfCustomInput1stLine, nameof(watermarkPdfCustomInput1stLine), required: false);
-            var __workflow_watermarkPdfCustomInput2ndLine = watermarkPdfCustomInput2ndLine == null ? null : WorkflowExpression.Compile(watermarkPdfCustomInput2ndLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfCustomInput2ndLine, nameof(watermarkPdfCustomInput2ndLine), required: false);
-            var __workflow_watermarkPdfCustomInput3rdLine = watermarkPdfCustomInput3rdLine == null ? null : WorkflowExpression.Compile(watermarkPdfCustomInput3rdLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfCustomInput3rdLine, nameof(watermarkPdfCustomInput3rdLine), required: false);
-            var __workflow_watermarkPdfCustomInput4thLine = watermarkPdfCustomInput4thLine == null ? null : WorkflowExpression.Compile(watermarkPdfCustomInput4thLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfCustomInput4thLine, nameof(watermarkPdfCustomInput4thLine), required: false);
-            var __workflow_watermarkPdfCustomInput5thLine = watermarkPdfCustomInput5thLine == null ? null : WorkflowExpression.Compile(watermarkPdfCustomInput5thLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfCustomInput5thLine, nameof(watermarkPdfCustomInput5thLine), required: false);
+            var __workflow_watermarkPdfCustomInputfileContent = WorkflowExpression.Compile(watermarkPdfCustomInputfileContent, nameof(watermarkPdfCustomInputfileContent), required: true);
+            var __workflow_watermarkPdfCustomInputtemplateId = WorkflowExpression.Compile(watermarkPdfCustomInputtemplateId, nameof(watermarkPdfCustomInputtemplateId), required: true);
+            var __workflow_watermarkPdfCustomInput1stLine = WorkflowExpression.Compile(watermarkPdfCustomInput1stLine, nameof(watermarkPdfCustomInput1stLine), required: false);
+            var __workflow_watermarkPdfCustomInput2ndLine = WorkflowExpression.Compile(watermarkPdfCustomInput2ndLine, nameof(watermarkPdfCustomInput2ndLine), required: false);
+            var __workflow_watermarkPdfCustomInput3rdLine = WorkflowExpression.Compile(watermarkPdfCustomInput3rdLine, nameof(watermarkPdfCustomInput3rdLine), required: false);
+            var __workflow_watermarkPdfCustomInput4thLine = WorkflowExpression.Compile(watermarkPdfCustomInput4thLine, nameof(watermarkPdfCustomInput4thLine), required: false);
+            var __workflow_watermarkPdfCustomInput5thLine = WorkflowExpression.Compile(watermarkPdfCustomInput5thLine, nameof(watermarkPdfCustomInput5thLine), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/watermark/custom";
@@ -397,24 +360,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
         public IBodyWorkflowAction<string> WatermarkPdfOverlay(Expression<Func<string>> watermarkPdfOverlayInputfileContent, Expression<Func<string>> watermarkPdfOverlayInput1stLine, Expression<Func<watermarkPdfOverlayInputcolorInput>> watermarkPdfOverlayInputcolor = null, Expression<Func<string>> watermarkPdfOverlayInput2ndLine = null, Expression<Func<string>> watermarkPdfOverlayInput3rdLine = null, Expression<Func<double>> watermarkPdfOverlayInputmargin = null, Expression<Func<watermarkPdfOverlayInputorientationInput>> watermarkPdfOverlayInputorientation = null, Expression<Func<watermarkPdfOverlayInputstyleInput>> watermarkPdfOverlayInputstyle = null, Expression<Func<double>> watermarkPdfOverlayInputtransparency = null)
         {
-            var __workflow_watermarkPdfOverlayInputfileContent = watermarkPdfOverlayInputfileContent == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInputfileContent);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInputfileContent, nameof(watermarkPdfOverlayInputfileContent), required: true);
-            var __workflow_watermarkPdfOverlayInput1stLine = watermarkPdfOverlayInput1stLine == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInput1stLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInput1stLine, nameof(watermarkPdfOverlayInput1stLine), required: true);
-            var __workflow_watermarkPdfOverlayInputcolor = watermarkPdfOverlayInputcolor == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInputcolor);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInputcolor, nameof(watermarkPdfOverlayInputcolor), required: false);
-            var __workflow_watermarkPdfOverlayInput2ndLine = watermarkPdfOverlayInput2ndLine == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInput2ndLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInput2ndLine, nameof(watermarkPdfOverlayInput2ndLine), required: false);
-            var __workflow_watermarkPdfOverlayInput3rdLine = watermarkPdfOverlayInput3rdLine == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInput3rdLine);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInput3rdLine, nameof(watermarkPdfOverlayInput3rdLine), required: false);
-            var __workflow_watermarkPdfOverlayInputmargin = watermarkPdfOverlayInputmargin == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInputmargin);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInputmargin, nameof(watermarkPdfOverlayInputmargin), required: false);
-            var __workflow_watermarkPdfOverlayInputorientation = watermarkPdfOverlayInputorientation == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInputorientation);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInputorientation, nameof(watermarkPdfOverlayInputorientation), required: false);
-            var __workflow_watermarkPdfOverlayInputstyle = watermarkPdfOverlayInputstyle == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInputstyle);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInputstyle, nameof(watermarkPdfOverlayInputstyle), required: false);
-            var __workflow_watermarkPdfOverlayInputtransparency = watermarkPdfOverlayInputtransparency == null ? null : WorkflowExpression.Compile(watermarkPdfOverlayInputtransparency);
-            WorkflowExpression.Validate(__workflow_watermarkPdfOverlayInputtransparency, nameof(watermarkPdfOverlayInputtransparency), required: false);
+            var __workflow_watermarkPdfOverlayInputfileContent = WorkflowExpression.Compile(watermarkPdfOverlayInputfileContent, nameof(watermarkPdfOverlayInputfileContent), required: true);
+            var __workflow_watermarkPdfOverlayInput1stLine = WorkflowExpression.Compile(watermarkPdfOverlayInput1stLine, nameof(watermarkPdfOverlayInput1stLine), required: true);
+            var __workflow_watermarkPdfOverlayInputcolor = WorkflowExpression.Compile(watermarkPdfOverlayInputcolor, nameof(watermarkPdfOverlayInputcolor), required: false);
+            var __workflow_watermarkPdfOverlayInput2ndLine = WorkflowExpression.Compile(watermarkPdfOverlayInput2ndLine, nameof(watermarkPdfOverlayInput2ndLine), required: false);
+            var __workflow_watermarkPdfOverlayInput3rdLine = WorkflowExpression.Compile(watermarkPdfOverlayInput3rdLine, nameof(watermarkPdfOverlayInput3rdLine), required: false);
+            var __workflow_watermarkPdfOverlayInputmargin = WorkflowExpression.Compile(watermarkPdfOverlayInputmargin, nameof(watermarkPdfOverlayInputmargin), required: false);
+            var __workflow_watermarkPdfOverlayInputorientation = WorkflowExpression.Compile(watermarkPdfOverlayInputorientation, nameof(watermarkPdfOverlayInputorientation), required: false);
+            var __workflow_watermarkPdfOverlayInputstyle = WorkflowExpression.Compile(watermarkPdfOverlayInputstyle, nameof(watermarkPdfOverlayInputstyle), required: false);
+            var __workflow_watermarkPdfOverlayInputtransparency = WorkflowExpression.Compile(watermarkPdfOverlayInputtransparency, nameof(watermarkPdfOverlayInputtransparency), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf/watermark/overlay";

@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<EventsResponse> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_days = days == null ? null : WorkflowExpression.Compile(days);
-            WorkflowExpression.Validate(__workflow_days, nameof(days), required: false);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_magID = magID == null ? null : WorkflowExpression.Compile(magID);
-            WorkflowExpression.Validate(__workflow_magID, nameof(magID), required: false);
-            var __workflow_magMin = magMin == null ? null : WorkflowExpression.Compile(magMin);
-            WorkflowExpression.Validate(__workflow_magMin, nameof(magMin), required: false);
-            var __workflow_magMax = magMax == null ? null : WorkflowExpression.Compile(magMax);
-            WorkflowExpression.Validate(__workflow_magMax, nameof(magMax), required: false);
-            var __workflow_bbox = bbox == null ? null : WorkflowExpression.Compile(bbox);
-            WorkflowExpression.Validate(__workflow_bbox, nameof(bbox), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_days = WorkflowExpression.Compile(days, nameof(days), required: false);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_magID = WorkflowExpression.Compile(magID, nameof(magID), required: false);
+            var __workflow_magMin = WorkflowExpression.Compile(magMin, nameof(magMin), required: false);
+            var __workflow_magMax = WorkflowExpression.Compile(magMax, nameof(magMax), required: false);
+            var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: false);
             return new DeferredBodyAction<EventsResponse>(() =>
             {
                 var apiCallPath = "/events";
@@ -70,28 +59,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<EventsGeoJSONResponse> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_days = days == null ? null : WorkflowExpression.Compile(days);
-            WorkflowExpression.Validate(__workflow_days, nameof(days), required: false);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_magID = magID == null ? null : WorkflowExpression.Compile(magID);
-            WorkflowExpression.Validate(__workflow_magID, nameof(magID), required: false);
-            var __workflow_magMin = magMin == null ? null : WorkflowExpression.Compile(magMin);
-            WorkflowExpression.Validate(__workflow_magMin, nameof(magMin), required: false);
-            var __workflow_magMax = magMax == null ? null : WorkflowExpression.Compile(magMax);
-            WorkflowExpression.Validate(__workflow_magMax, nameof(magMax), required: false);
-            var __workflow_bbox = bbox == null ? null : WorkflowExpression.Compile(bbox);
-            WorkflowExpression.Validate(__workflow_bbox, nameof(bbox), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_days = WorkflowExpression.Compile(days, nameof(days), required: false);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_magID = WorkflowExpression.Compile(magID, nameof(magID), required: false);
+            var __workflow_magMin = WorkflowExpression.Compile(magMin, nameof(magMin), required: false);
+            var __workflow_magMax = WorkflowExpression.Compile(magMax, nameof(magMax), required: false);
+            var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: false);
             return new DeferredBodyAction<EventsGeoJSONResponse>(() =>
             {
                 var apiCallPath = "/events/geojson";
@@ -127,20 +105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<EventCategoriesResponse> EventCategories(Expression<Func<string>> category, Expression<Func<string>> source = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_days = days == null ? null : WorkflowExpression.Compile(days);
-            WorkflowExpression.Validate(__workflow_days, nameof(days), required: false);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_days = WorkflowExpression.Compile(days, nameof(days), required: false);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             return new DeferredBodyAction<EventCategoriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_category, 1));
@@ -174,8 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<LayersResponse> Layers(Expression<Func<string>> category)
         {
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             return new DeferredBodyAction<LayersResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/layers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_category, 1));

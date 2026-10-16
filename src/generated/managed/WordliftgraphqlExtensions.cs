@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordliftgraphql")]
         public IWorkflowAction ExecuteGraphQL(Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/";

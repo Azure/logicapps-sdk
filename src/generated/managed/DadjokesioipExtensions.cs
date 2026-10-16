@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<RandomResponse> Random(Expression<Func<int>> count = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             return new DeferredBodyAction<RandomResponse>(() =>
             {
                 var apiCallPath = "/random/joke";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeIDResponse> JokeID(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<JokeIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/joke/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -43,10 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeTypeResponse> JokeType(Expression<Func<string>> type, Expression<Func<int>> limit = null)
         {
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<JokeTypeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/joke/type/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1));
@@ -61,8 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokesioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokesioip")]
         public IBodyWorkflowAction<JokeSearchResponse> JokeSearch(Expression<Func<string>> term = null)
         {
-            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
-            WorkflowExpression.Validate(__workflow_term, nameof(term), required: false);
+            var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: false);
             return new DeferredBodyAction<JokeSearchResponse>(() =>
             {
                 var apiCallPath = "/joke/search";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadata(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> UpdateFile(Expression<Func<string>> id, Expression<Func<string>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -45,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IWorkflowAction DeleteFile(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -60,8 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> GetFileMetadataByPath(Expression<Func<string>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
                 var apiCallPath = "/datasets/default/GetFileByPath";
@@ -76,10 +71,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<string> GetFileContentByPath(Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/datasets/default/GetFileContentByPath";
@@ -97,10 +90,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -116,12 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
                 var apiCallPath = "/datasets/default/files";
@@ -139,12 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata> CopyFile(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
-            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
-            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
                 var apiCallPath = "/datasets/default/copyFile";
@@ -164,12 +149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
-            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
-            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
             return new DeferredBodyAction<BlobMetadata[]>(() =>
             {
                 var apiCallPath = "/datasets/default/extractFolderV2";
@@ -188,8 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurefile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurefile")]
         public IBodyWorkflowAction<BlobMetadataPage> ListFolder(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BlobMetadataPage>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/foldersV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));

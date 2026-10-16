@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<CurrentWeather> CurrentWeather(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
         {
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyAction<CurrentWeather>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/current/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -30,10 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<WeatherForecast> TodaysForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
         {
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyAction<WeatherForecast>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forecast/today/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -47,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
         public IBodyWorkflowAction<WeatherForecast> TomorrowsForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
         {
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyAction<WeatherForecast>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forecast/tomorrow/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -66,16 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     {
         public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, FlowRecurrence recurrence = null)
         {
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_measure = measure == null ? null : WorkflowExpression.Compile(measure);
-            WorkflowExpression.Validate(__workflow_measure, nameof(measure), required: true);
-            var __workflow_when = when == null ? null : WorkflowExpression.Compile(when);
-            WorkflowExpression.Validate(__workflow_when, nameof(when), required: true);
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_measure = WorkflowExpression.Compile(measure, nameof(measure), required: true);
+            var __workflow_when = WorkflowExpression.Compile(when, nameof(when), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyTrigger<CurrentWeather>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/current/weather/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -91,10 +80,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
 
         public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, FlowRecurrence recurrence = null)
         {
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: true);
             return new DeferredBodyTrigger<CurrentWeather>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/current/conditions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));

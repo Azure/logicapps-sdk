@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction Raw(Expression<Func<string>> bodyuserID, Expression<Func<string>> bodypath, Expression<Func<string>> bodypayload = null, Expression<Func<acceptInput>> accept = null)
         {
-            var __workflow_bodyuserID = bodyuserID == null ? null : WorkflowExpression.Compile(bodyuserID);
-            WorkflowExpression.Validate(__workflow_bodyuserID, nameof(bodyuserID), required: true);
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodypayload = bodypayload == null ? null : WorkflowExpression.Compile(bodypayload);
-            WorkflowExpression.Validate(__workflow_bodypayload, nameof(bodypayload), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
+            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypayload = WorkflowExpression.Compile(bodypayload, nameof(bodypayload), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/XSI-Action";
@@ -53,8 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IBodyWorkflowAction<UserCallsResponseItem[]> UserCalls(Expression<Func<string>> bodyuserId)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             return new DeferredBodyAction<UserCallsResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/User-Calls";
@@ -78,8 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IBodyWorkflowAction<UserProfileResponse> UserProfile(Expression<Func<string>> bodyuserId)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             return new DeferredBodyAction<UserProfileResponse>(() =>
             {
                 var apiCallPath = "/api/User-Profile";
@@ -101,12 +95,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IBodyWorkflowAction<JToken> CallRecording(Expression<Func<string>> bodyaction, Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId)
         {
-            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
-            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: true);
-            var __workflow_bodycallId = bodycallId == null ? null : WorkflowExpression.Compile(bodycallId);
-            WorkflowExpression.Validate(__workflow_bodycallId, nameof(bodycallId), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: true);
+            var __workflow_bodycallId = WorkflowExpression.Compile(bodycallId, nameof(bodycallId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/Toogle-Call-Recording";
@@ -132,10 +123,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction ToggleAgentACDState(Expression<Func<string>> bodyagentACDState, Expression<Func<string>> bodyuserID = null)
         {
-            var __workflow_bodyagentACDState = bodyagentACDState == null ? null : WorkflowExpression.Compile(bodyagentACDState);
-            WorkflowExpression.Validate(__workflow_bodyagentACDState, nameof(bodyagentACDState), required: true);
-            var __workflow_bodyuserID = bodyuserID == null ? null : WorkflowExpression.Compile(bodyuserID);
-            WorkflowExpression.Validate(__workflow_bodyuserID, nameof(bodyuserID), required: false);
+            var __workflow_bodyagentACDState = WorkflowExpression.Compile(bodyagentACDState, nameof(bodyagentACDState), required: true);
+            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/ACD-Toggle";
@@ -164,10 +153,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallNew(Expression<Func<string>> bodyaddress, Expression<Func<string>> bodyuserID = null)
         {
-            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
-            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: true);
-            var __workflow_bodyuserID = bodyuserID == null ? null : WorkflowExpression.Compile(bodyuserID);
-            WorkflowExpression.Validate(__workflow_bodyuserID, nameof(bodyuserID), required: false);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodyuserID = WorkflowExpression.Compile(bodyuserID, nameof(bodyuserID), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Call-New";
@@ -195,10 +182,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallHold(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_bodycallId = bodycallId == null ? null : WorkflowExpression.Compile(bodycallId);
-            WorkflowExpression.Validate(__workflow_bodycallId, nameof(bodycallId), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycallId = WorkflowExpression.Compile(bodycallId, nameof(bodycallId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Call-Hold";
@@ -226,10 +211,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallEnd(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_bodycallId = bodycallId == null ? null : WorkflowExpression.Compile(bodycallId);
-            WorkflowExpression.Validate(__workflow_bodycallId, nameof(bodycallId), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycallId = WorkflowExpression.Compile(bodycallId, nameof(bodycallId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Call-End";
@@ -257,10 +240,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallTransfertoVoicemail(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_bodycallId = bodycallId == null ? null : WorkflowExpression.Compile(bodycallId);
-            WorkflowExpression.Validate(__workflow_bodycallId, nameof(bodycallId), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycallId = WorkflowExpression.Compile(bodycallId, nameof(bodycallId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Call-Transfer-to-Voicemail";
@@ -288,12 +269,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallTransfer(Expression<Func<string>> bodycallId, Expression<Func<string>> bodyaddress, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_bodycallId = bodycallId == null ? null : WorkflowExpression.Compile(bodycallId);
-            WorkflowExpression.Validate(__workflow_bodycallId, nameof(bodycallId), required: true);
-            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
-            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycallId = WorkflowExpression.Compile(bodycallId, nameof(bodycallId), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Call-Transfer-to-Another-User";
@@ -323,10 +301,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telephonyxtendedsrv")]
         public IWorkflowAction CallAnswer(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodycallId = null)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodycallId = bodycallId == null ? null : WorkflowExpression.Compile(bodycallId);
-            WorkflowExpression.Validate(__workflow_bodycallId, nameof(bodycallId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycallId = WorkflowExpression.Compile(bodycallId, nameof(bodycallId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Call-Answer";
@@ -360,16 +336,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     {
         public IWorkflowTrigger Events(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyEvent = bodyEvent == null ? null : WorkflowExpression.Compile(bodyEvent);
-            WorkflowExpression.Validate(__workflow_bodyEvent, nameof(bodyEvent), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Events-Subscribe";
@@ -417,12 +388,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsDoNotDisturb(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Events-Subscribe-Do-Not-Disturb";
@@ -463,10 +431,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCallCenterMonitoring(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Events-Subscribe-Call-Center-Monitoring";
@@ -501,10 +467,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCallCenterQueue(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Events-Subscribe-Call-Center-Queue";
@@ -539,12 +503,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCallCenterAgent(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Events-Subscribe-Call-Center-Agent";
@@ -585,12 +546,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsVoicemail(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Events-Subscribe-Voicemail";
@@ -631,14 +589,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
         public IWorkflowTrigger EventsCall(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodytype = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Events-Subscribe-Calls";

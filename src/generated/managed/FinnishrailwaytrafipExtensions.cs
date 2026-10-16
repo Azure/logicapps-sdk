@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules(Expression<Func<string>> departureStation, Expression<Func<string>> arrivalStation, Expression<Func<string>> departureDate = null)
         {
-            var __workflow_departureStation = departureStation == null ? null : WorkflowExpression.Compile(departureStation);
-            WorkflowExpression.Validate(__workflow_departureStation, nameof(departureStation), required: true);
-            var __workflow_arrivalStation = arrivalStation == null ? null : WorkflowExpression.Compile(arrivalStation);
-            WorkflowExpression.Validate(__workflow_arrivalStation, nameof(arrivalStation), required: true);
-            var __workflow_departureDate = departureDate == null ? null : WorkflowExpression.Compile(departureDate);
-            WorkflowExpression.Validate(__workflow_departureDate, nameof(departureDate), required: false);
+            var __workflow_departureStation = WorkflowExpression.Compile(departureStation, nameof(departureStation), required: true);
+            var __workflow_arrivalStation = WorkflowExpression.Compile(arrivalStation, nameof(arrivalStation), required: true);
+            var __workflow_departureDate = WorkflowExpression.Compile(departureDate, nameof(departureDate), required: false);
             return new DeferredBodyAction<GetSchedulesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_departureStation, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_arrivalStation, 1));
@@ -42,12 +39,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures(Expression<Func<string>> trainStation, Expression<Func<int>> arrivingTrains = null, Expression<Func<int>> departingTrains = null)
         {
-            var __workflow_trainStation = trainStation == null ? null : WorkflowExpression.Compile(trainStation);
-            WorkflowExpression.Validate(__workflow_trainStation, nameof(trainStation), required: true);
-            var __workflow_arrivingTrains = arrivingTrains == null ? null : WorkflowExpression.Compile(arrivingTrains);
-            WorkflowExpression.Validate(__workflow_arrivingTrains, nameof(arrivingTrains), required: false);
-            var __workflow_departingTrains = departingTrains == null ? null : WorkflowExpression.Compile(departingTrains);
-            WorkflowExpression.Validate(__workflow_departingTrains, nameof(departingTrains), required: false);
+            var __workflow_trainStation = WorkflowExpression.Compile(trainStation, nameof(trainStation), required: true);
+            var __workflow_arrivingTrains = WorkflowExpression.Compile(arrivingTrains, nameof(arrivingTrains), required: false);
+            var __workflow_departingTrains = WorkflowExpression.Compile(departingTrains, nameof(departingTrains), required: false);
             return new DeferredBodyAction<GetArrivalsAndDeparturesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainStation, 1));

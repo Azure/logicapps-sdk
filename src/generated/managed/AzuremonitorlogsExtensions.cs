@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
         public IBodyWorkflowAction<Table> QueryData(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> timerange, Expression<Func<string>> query = null)
         {
-            var __workflow_subscriptions = subscriptions == null ? null : WorkflowExpression.Compile(subscriptions);
-            WorkflowExpression.Validate(__workflow_subscriptions, nameof(subscriptions), required: true);
-            var __workflow_resourcegroups = resourcegroups == null ? null : WorkflowExpression.Compile(resourcegroups);
-            WorkflowExpression.Validate(__workflow_resourcegroups, nameof(resourcegroups), required: true);
-            var __workflow_resourcetype = resourcetype == null ? null : WorkflowExpression.Compile(resourcetype);
-            WorkflowExpression.Validate(__workflow_resourcetype, nameof(resourcetype), required: true);
-            var __workflow_resourcename = resourcename == null ? null : WorkflowExpression.Compile(resourcename);
-            WorkflowExpression.Validate(__workflow_resourcename, nameof(resourcename), required: true);
-            var __workflow_timerange = timerange == null ? null : WorkflowExpression.Compile(timerange);
-            WorkflowExpression.Validate(__workflow_timerange, nameof(timerange), required: true);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
+            var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
+            var __workflow_resourcetype = WorkflowExpression.Compile(resourcetype, nameof(resourcetype), required: true);
+            var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: true);
+            var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<Table>(() =>
             {
                 var apiCallPath = "/queryData";
@@ -43,20 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuremonitorlogs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuremonitorlogs")]
         public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<string>> subscriptions, Expression<Func<string>> resourcegroups, Expression<Func<resourcetypeInput>> resourcetype, Expression<Func<string>> resourcename, Expression<Func<string>> timerange, Expression<Func<visTypeInput>> visType, Expression<Func<string>> query = null)
         {
-            var __workflow_subscriptions = subscriptions == null ? null : WorkflowExpression.Compile(subscriptions);
-            WorkflowExpression.Validate(__workflow_subscriptions, nameof(subscriptions), required: true);
-            var __workflow_resourcegroups = resourcegroups == null ? null : WorkflowExpression.Compile(resourcegroups);
-            WorkflowExpression.Validate(__workflow_resourcegroups, nameof(resourcegroups), required: true);
-            var __workflow_resourcetype = resourcetype == null ? null : WorkflowExpression.Compile(resourcetype);
-            WorkflowExpression.Validate(__workflow_resourcetype, nameof(resourcetype), required: true);
-            var __workflow_resourcename = resourcename == null ? null : WorkflowExpression.Compile(resourcename);
-            WorkflowExpression.Validate(__workflow_resourcename, nameof(resourcename), required: true);
-            var __workflow_timerange = timerange == null ? null : WorkflowExpression.Compile(timerange);
-            WorkflowExpression.Validate(__workflow_timerange, nameof(timerange), required: true);
-            var __workflow_visType = visType == null ? null : WorkflowExpression.Compile(visType);
-            WorkflowExpression.Validate(__workflow_visType, nameof(visType), required: true);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_subscriptions = WorkflowExpression.Compile(subscriptions, nameof(subscriptions), required: true);
+            var __workflow_resourcegroups = WorkflowExpression.Compile(resourcegroups, nameof(resourcegroups), required: true);
+            var __workflow_resourcetype = WorkflowExpression.Compile(resourcetype, nameof(resourcetype), required: true);
+            var __workflow_resourcename = WorkflowExpression.Compile(resourcename, nameof(resourcename), required: true);
+            var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: true);
+            var __workflow_visType = WorkflowExpression.Compile(visType, nameof(visType), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<VisualizeResults>(() =>
             {
                 var apiCallPath = "/visualizeQuery";

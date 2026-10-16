@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractemailvalidat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractemailvalidat")]
         public IBodyWorkflowAction<ValidationResponse> Validation(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = "/v1/";

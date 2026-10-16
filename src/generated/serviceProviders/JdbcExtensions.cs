@@ -25,10 +25,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         public IBodyWorkflowAction<JToken[]> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_queryParameters = queryParameters == null ? null : WorkflowExpression.Compile(queryParameters);
-            WorkflowExpression.Validate(__workflow_queryParameters, nameof(queryParameters), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -50,8 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema(Expression<Func<string>> tableName)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             return new DeferredBodyAction<GetSchemaOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();

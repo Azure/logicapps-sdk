@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfStampImage> PdfStampImage(Expression<Func<string>> reqPdfStampImagepDF, Expression<Func<string>> reqPdfStampImageimage, Expression<Func<double>> reqPdfStampImageoptionsopacity = null, Expression<Func<double>> reqPdfStampImageoptionsscale = null, Expression<Func<int>> reqPdfStampImageoptionsrotate = null, Expression<Func<int>> reqPdfStampImageoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampImageoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampImageoptionspositionxOffset = null)
         {
-            var __workflow_reqPdfStampImagepDF = reqPdfStampImagepDF == null ? null : WorkflowExpression.Compile(reqPdfStampImagepDF);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImagepDF, nameof(reqPdfStampImagepDF), required: true);
-            var __workflow_reqPdfStampImageimage = reqPdfStampImageimage == null ? null : WorkflowExpression.Compile(reqPdfStampImageimage);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImageimage, nameof(reqPdfStampImageimage), required: true);
-            var __workflow_reqPdfStampImageoptionsopacity = reqPdfStampImageoptionsopacity == null ? null : WorkflowExpression.Compile(reqPdfStampImageoptionsopacity);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImageoptionsopacity, nameof(reqPdfStampImageoptionsopacity), required: false);
-            var __workflow_reqPdfStampImageoptionsscale = reqPdfStampImageoptionsscale == null ? null : WorkflowExpression.Compile(reqPdfStampImageoptionsscale);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImageoptionsscale, nameof(reqPdfStampImageoptionsscale), required: false);
-            var __workflow_reqPdfStampImageoptionsrotate = reqPdfStampImageoptionsrotate == null ? null : WorkflowExpression.Compile(reqPdfStampImageoptionsrotate);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImageoptionsrotate, nameof(reqPdfStampImageoptionsrotate), required: false);
-            var __workflow_reqPdfStampImageoptionspositionyOffset = reqPdfStampImageoptionspositionyOffset == null ? null : WorkflowExpression.Compile(reqPdfStampImageoptionspositionyOffset);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImageoptionspositionyOffset, nameof(reqPdfStampImageoptionspositionyOffset), required: false);
-            var __workflow_reqPdfStampImageoptionspositionstartOfYOffset = reqPdfStampImageoptionspositionstartOfYOffset == null ? null : WorkflowExpression.Compile(reqPdfStampImageoptionspositionstartOfYOffset);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImageoptionspositionstartOfYOffset, nameof(reqPdfStampImageoptionspositionstartOfYOffset), required: false);
-            var __workflow_reqPdfStampImageoptionspositionxOffset = reqPdfStampImageoptionspositionxOffset == null ? null : WorkflowExpression.Compile(reqPdfStampImageoptionspositionxOffset);
-            WorkflowExpression.Validate(__workflow_reqPdfStampImageoptionspositionxOffset, nameof(reqPdfStampImageoptionspositionxOffset), required: false);
+            var __workflow_reqPdfStampImagepDF = WorkflowExpression.Compile(reqPdfStampImagepDF, nameof(reqPdfStampImagepDF), required: true);
+            var __workflow_reqPdfStampImageimage = WorkflowExpression.Compile(reqPdfStampImageimage, nameof(reqPdfStampImageimage), required: true);
+            var __workflow_reqPdfStampImageoptionsopacity = WorkflowExpression.Compile(reqPdfStampImageoptionsopacity, nameof(reqPdfStampImageoptionsopacity), required: false);
+            var __workflow_reqPdfStampImageoptionsscale = WorkflowExpression.Compile(reqPdfStampImageoptionsscale, nameof(reqPdfStampImageoptionsscale), required: false);
+            var __workflow_reqPdfStampImageoptionsrotate = WorkflowExpression.Compile(reqPdfStampImageoptionsrotate, nameof(reqPdfStampImageoptionsrotate), required: false);
+            var __workflow_reqPdfStampImageoptionspositionyOffset = WorkflowExpression.Compile(reqPdfStampImageoptionspositionyOffset, nameof(reqPdfStampImageoptionspositionyOffset), required: false);
+            var __workflow_reqPdfStampImageoptionspositionstartOfYOffset = WorkflowExpression.Compile(reqPdfStampImageoptionspositionstartOfYOffset, nameof(reqPdfStampImageoptionspositionstartOfYOffset), required: false);
+            var __workflow_reqPdfStampImageoptionspositionxOffset = WorkflowExpression.Compile(reqPdfStampImageoptionspositionxOffset, nameof(reqPdfStampImageoptionspositionxOffset), required: false);
             return new DeferredBodyAction<Resp200PdfStampImage>(() =>
             {
                 var apiCallPath = "/pdf/stamp/image";
@@ -164,12 +156,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ExcelSheetAddRows> ExcelSheetAddRows(Expression<Func<string>> reqExcelSheetAddrowssheetname, Expression<Func<string>> reqExcelSheetAddrowsexcel, Expression<Func<JToken[]>> reqExcelSheetAddrowsdata = null)
         {
-            var __workflow_reqExcelSheetAddrowssheetname = reqExcelSheetAddrowssheetname == null ? null : WorkflowExpression.Compile(reqExcelSheetAddrowssheetname);
-            WorkflowExpression.Validate(__workflow_reqExcelSheetAddrowssheetname, nameof(reqExcelSheetAddrowssheetname), required: true);
-            var __workflow_reqExcelSheetAddrowsexcel = reqExcelSheetAddrowsexcel == null ? null : WorkflowExpression.Compile(reqExcelSheetAddrowsexcel);
-            WorkflowExpression.Validate(__workflow_reqExcelSheetAddrowsexcel, nameof(reqExcelSheetAddrowsexcel), required: true);
-            var __workflow_reqExcelSheetAddrowsdata = reqExcelSheetAddrowsdata == null ? null : WorkflowExpression.Compile(reqExcelSheetAddrowsdata);
-            WorkflowExpression.Validate(__workflow_reqExcelSheetAddrowsdata, nameof(reqExcelSheetAddrowsdata), required: false);
+            var __workflow_reqExcelSheetAddrowssheetname = WorkflowExpression.Compile(reqExcelSheetAddrowssheetname, nameof(reqExcelSheetAddrowssheetname), required: true);
+            var __workflow_reqExcelSheetAddrowsexcel = WorkflowExpression.Compile(reqExcelSheetAddrowsexcel, nameof(reqExcelSheetAddrowsexcel), required: true);
+            var __workflow_reqExcelSheetAddrowsdata = WorkflowExpression.Compile(reqExcelSheetAddrowsdata, nameof(reqExcelSheetAddrowsdata), required: false);
             return new DeferredBodyAction<Resp200ExcelSheetAddRows>(() =>
             {
                 var apiCallPath = "/excel/sheet/add-rows";
@@ -199,22 +188,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfCreateByHtml> PdfCreateByHtml(Expression<Func<string>> reqPdfCreateByHtmlhTML, Expression<Func<string>> reqPdfCreateByHtmloptionsmediaType = null, Expression<Func<string>> reqPdfCreateByHtmloptionspageFormat = null, Expression<Func<bool>> reqPdfCreateByHtmloptionslandscape = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginLeft = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginRight = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginTop = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginBottom = null)
         {
-            var __workflow_reqPdfCreateByHtmlhTML = reqPdfCreateByHtmlhTML == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmlhTML);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmlhTML, nameof(reqPdfCreateByHtmlhTML), required: true);
-            var __workflow_reqPdfCreateByHtmloptionsmediaType = reqPdfCreateByHtmloptionsmediaType == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmediaType);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmloptionsmediaType, nameof(reqPdfCreateByHtmloptionsmediaType), required: false);
-            var __workflow_reqPdfCreateByHtmloptionspageFormat = reqPdfCreateByHtmloptionspageFormat == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmloptionspageFormat);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmloptionspageFormat, nameof(reqPdfCreateByHtmloptionspageFormat), required: false);
-            var __workflow_reqPdfCreateByHtmloptionslandscape = reqPdfCreateByHtmloptionslandscape == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmloptionslandscape);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmloptionslandscape, nameof(reqPdfCreateByHtmloptionslandscape), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginLeft = reqPdfCreateByHtmloptionsmarginmarginLeft == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginLeft);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmloptionsmarginmarginLeft, nameof(reqPdfCreateByHtmloptionsmarginmarginLeft), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginRight = reqPdfCreateByHtmloptionsmarginmarginRight == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginRight);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmloptionsmarginmarginRight, nameof(reqPdfCreateByHtmloptionsmarginmarginRight), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginTop = reqPdfCreateByHtmloptionsmarginmarginTop == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginTop);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmloptionsmarginmarginTop, nameof(reqPdfCreateByHtmloptionsmarginmarginTop), required: false);
-            var __workflow_reqPdfCreateByHtmloptionsmarginmarginBottom = reqPdfCreateByHtmloptionsmarginmarginBottom == null ? null : WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginBottom);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByHtmloptionsmarginmarginBottom, nameof(reqPdfCreateByHtmloptionsmarginmarginBottom), required: false);
+            var __workflow_reqPdfCreateByHtmlhTML = WorkflowExpression.Compile(reqPdfCreateByHtmlhTML, nameof(reqPdfCreateByHtmlhTML), required: true);
+            var __workflow_reqPdfCreateByHtmloptionsmediaType = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmediaType, nameof(reqPdfCreateByHtmloptionsmediaType), required: false);
+            var __workflow_reqPdfCreateByHtmloptionspageFormat = WorkflowExpression.Compile(reqPdfCreateByHtmloptionspageFormat, nameof(reqPdfCreateByHtmloptionspageFormat), required: false);
+            var __workflow_reqPdfCreateByHtmloptionslandscape = WorkflowExpression.Compile(reqPdfCreateByHtmloptionslandscape, nameof(reqPdfCreateByHtmloptionslandscape), required: false);
+            var __workflow_reqPdfCreateByHtmloptionsmarginmarginLeft = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginLeft, nameof(reqPdfCreateByHtmloptionsmarginmarginLeft), required: false);
+            var __workflow_reqPdfCreateByHtmloptionsmarginmarginRight = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginRight, nameof(reqPdfCreateByHtmloptionsmarginmarginRight), required: false);
+            var __workflow_reqPdfCreateByHtmloptionsmarginmarginTop = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginTop, nameof(reqPdfCreateByHtmloptionsmarginmarginTop), required: false);
+            var __workflow_reqPdfCreateByHtmloptionsmarginmarginBottom = WorkflowExpression.Compile(reqPdfCreateByHtmloptionsmarginmarginBottom, nameof(reqPdfCreateByHtmloptionsmarginmarginBottom), required: false);
             return new DeferredBodyAction<Resp200PdfCreateByHtml>(() =>
             {
                 var apiCallPath = "/pdf/create/by-html";
@@ -372,10 +353,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageMergeDrawing> ImageMergeDrawing(Expression<Func<string>> reqImageMergeDrawingbackground, Expression<Func<string>> reqImageMergeDrawingdrawing)
         {
-            var __workflow_reqImageMergeDrawingbackground = reqImageMergeDrawingbackground == null ? null : WorkflowExpression.Compile(reqImageMergeDrawingbackground);
-            WorkflowExpression.Validate(__workflow_reqImageMergeDrawingbackground, nameof(reqImageMergeDrawingbackground), required: true);
-            var __workflow_reqImageMergeDrawingdrawing = reqImageMergeDrawingdrawing == null ? null : WorkflowExpression.Compile(reqImageMergeDrawingdrawing);
-            WorkflowExpression.Validate(__workflow_reqImageMergeDrawingdrawing, nameof(reqImageMergeDrawingdrawing), required: true);
+            var __workflow_reqImageMergeDrawingbackground = WorkflowExpression.Compile(reqImageMergeDrawingbackground, nameof(reqImageMergeDrawingbackground), required: true);
+            var __workflow_reqImageMergeDrawingdrawing = WorkflowExpression.Compile(reqImageMergeDrawingdrawing, nameof(reqImageMergeDrawingdrawing), required: true);
             return new DeferredBodyAction<Resp200ImageMergeDrawing>(() =>
             {
                 var apiCallPath = "/image/merge/drawing";
@@ -399,22 +378,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfStampText> PdfStampText(Expression<Func<string>> reqPdfStampTextpDF, Expression<Func<string>> reqPdfStampTexttext, Expression<Func<string>> reqPdfStampTextoptionsfontColor = null, Expression<Func<int>> reqPdfStampTextoptionsfontSize = null, Expression<Func<int>> reqPdfStampTextoptionsrotate = null, Expression<Func<int>> reqPdfStampTextoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampTextoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampTextoptionspositionxOffset = null)
         {
-            var __workflow_reqPdfStampTextpDF = reqPdfStampTextpDF == null ? null : WorkflowExpression.Compile(reqPdfStampTextpDF);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTextpDF, nameof(reqPdfStampTextpDF), required: true);
-            var __workflow_reqPdfStampTexttext = reqPdfStampTexttext == null ? null : WorkflowExpression.Compile(reqPdfStampTexttext);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTexttext, nameof(reqPdfStampTexttext), required: true);
-            var __workflow_reqPdfStampTextoptionsfontColor = reqPdfStampTextoptionsfontColor == null ? null : WorkflowExpression.Compile(reqPdfStampTextoptionsfontColor);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTextoptionsfontColor, nameof(reqPdfStampTextoptionsfontColor), required: false);
-            var __workflow_reqPdfStampTextoptionsfontSize = reqPdfStampTextoptionsfontSize == null ? null : WorkflowExpression.Compile(reqPdfStampTextoptionsfontSize);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTextoptionsfontSize, nameof(reqPdfStampTextoptionsfontSize), required: false);
-            var __workflow_reqPdfStampTextoptionsrotate = reqPdfStampTextoptionsrotate == null ? null : WorkflowExpression.Compile(reqPdfStampTextoptionsrotate);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTextoptionsrotate, nameof(reqPdfStampTextoptionsrotate), required: false);
-            var __workflow_reqPdfStampTextoptionspositionyOffset = reqPdfStampTextoptionspositionyOffset == null ? null : WorkflowExpression.Compile(reqPdfStampTextoptionspositionyOffset);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTextoptionspositionyOffset, nameof(reqPdfStampTextoptionspositionyOffset), required: false);
-            var __workflow_reqPdfStampTextoptionspositionstartOfYOffset = reqPdfStampTextoptionspositionstartOfYOffset == null ? null : WorkflowExpression.Compile(reqPdfStampTextoptionspositionstartOfYOffset);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTextoptionspositionstartOfYOffset, nameof(reqPdfStampTextoptionspositionstartOfYOffset), required: false);
-            var __workflow_reqPdfStampTextoptionspositionxOffset = reqPdfStampTextoptionspositionxOffset == null ? null : WorkflowExpression.Compile(reqPdfStampTextoptionspositionxOffset);
-            WorkflowExpression.Validate(__workflow_reqPdfStampTextoptionspositionxOffset, nameof(reqPdfStampTextoptionspositionxOffset), required: false);
+            var __workflow_reqPdfStampTextpDF = WorkflowExpression.Compile(reqPdfStampTextpDF, nameof(reqPdfStampTextpDF), required: true);
+            var __workflow_reqPdfStampTexttext = WorkflowExpression.Compile(reqPdfStampTexttext, nameof(reqPdfStampTexttext), required: true);
+            var __workflow_reqPdfStampTextoptionsfontColor = WorkflowExpression.Compile(reqPdfStampTextoptionsfontColor, nameof(reqPdfStampTextoptionsfontColor), required: false);
+            var __workflow_reqPdfStampTextoptionsfontSize = WorkflowExpression.Compile(reqPdfStampTextoptionsfontSize, nameof(reqPdfStampTextoptionsfontSize), required: false);
+            var __workflow_reqPdfStampTextoptionsrotate = WorkflowExpression.Compile(reqPdfStampTextoptionsrotate, nameof(reqPdfStampTextoptionsrotate), required: false);
+            var __workflow_reqPdfStampTextoptionspositionyOffset = WorkflowExpression.Compile(reqPdfStampTextoptionspositionyOffset, nameof(reqPdfStampTextoptionspositionyOffset), required: false);
+            var __workflow_reqPdfStampTextoptionspositionstartOfYOffset = WorkflowExpression.Compile(reqPdfStampTextoptionspositionstartOfYOffset, nameof(reqPdfStampTextoptionspositionstartOfYOffset), required: false);
+            var __workflow_reqPdfStampTextoptionspositionxOffset = WorkflowExpression.Compile(reqPdfStampTextoptionspositionxOffset, nameof(reqPdfStampTextoptionspositionxOffset), required: false);
             return new DeferredBodyAction<Resp200PdfStampText>(() =>
             {
                 var apiCallPath = "/pdf/stamp/text";
@@ -550,12 +521,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200CsvToJson> CsvToJson(Expression<Func<string>> reqCsvToJsoncSV, Expression<Func<bool>> reqCsvToJsonoptionshasHeaders = null, Expression<Func<string>> reqCsvToJsonoptionsdelimiter = null)
         {
-            var __workflow_reqCsvToJsoncSV = reqCsvToJsoncSV == null ? null : WorkflowExpression.Compile(reqCsvToJsoncSV);
-            WorkflowExpression.Validate(__workflow_reqCsvToJsoncSV, nameof(reqCsvToJsoncSV), required: true);
-            var __workflow_reqCsvToJsonoptionshasHeaders = reqCsvToJsonoptionshasHeaders == null ? null : WorkflowExpression.Compile(reqCsvToJsonoptionshasHeaders);
-            WorkflowExpression.Validate(__workflow_reqCsvToJsonoptionshasHeaders, nameof(reqCsvToJsonoptionshasHeaders), required: false);
-            var __workflow_reqCsvToJsonoptionsdelimiter = reqCsvToJsonoptionsdelimiter == null ? null : WorkflowExpression.Compile(reqCsvToJsonoptionsdelimiter);
-            WorkflowExpression.Validate(__workflow_reqCsvToJsonoptionsdelimiter, nameof(reqCsvToJsonoptionsdelimiter), required: false);
+            var __workflow_reqCsvToJsoncSV = WorkflowExpression.Compile(reqCsvToJsoncSV, nameof(reqCsvToJsoncSV), required: true);
+            var __workflow_reqCsvToJsonoptionshasHeaders = WorkflowExpression.Compile(reqCsvToJsonoptionshasHeaders, nameof(reqCsvToJsonoptionshasHeaders), required: false);
+            var __workflow_reqCsvToJsonoptionsdelimiter = WorkflowExpression.Compile(reqCsvToJsonoptionsdelimiter, nameof(reqCsvToJsonoptionsdelimiter), required: false);
             return new DeferredBodyAction<Resp200CsvToJson>(() =>
             {
                 var apiCallPath = "/csv/to-json";
@@ -617,22 +585,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfCreateByUrl> PdfCreateByUrl(Expression<Func<string>> reqPdfCreateByUrlhTML, Expression<Func<string>> reqPdfCreateByUrloptionsmediaType = null, Expression<Func<string>> reqPdfCreateByUrloptionspageFormat = null, Expression<Func<bool>> reqPdfCreateByUrloptionslandscape = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginLeft = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginRight = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginTop = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginBottom = null)
         {
-            var __workflow_reqPdfCreateByUrlhTML = reqPdfCreateByUrlhTML == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrlhTML);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrlhTML, nameof(reqPdfCreateByUrlhTML), required: true);
-            var __workflow_reqPdfCreateByUrloptionsmediaType = reqPdfCreateByUrloptionsmediaType == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrloptionsmediaType);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrloptionsmediaType, nameof(reqPdfCreateByUrloptionsmediaType), required: false);
-            var __workflow_reqPdfCreateByUrloptionspageFormat = reqPdfCreateByUrloptionspageFormat == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrloptionspageFormat);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrloptionspageFormat, nameof(reqPdfCreateByUrloptionspageFormat), required: false);
-            var __workflow_reqPdfCreateByUrloptionslandscape = reqPdfCreateByUrloptionslandscape == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrloptionslandscape);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrloptionslandscape, nameof(reqPdfCreateByUrloptionslandscape), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginLeft = reqPdfCreateByUrloptionsmarginmarginLeft == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginLeft);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrloptionsmarginmarginLeft, nameof(reqPdfCreateByUrloptionsmarginmarginLeft), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginRight = reqPdfCreateByUrloptionsmarginmarginRight == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginRight);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrloptionsmarginmarginRight, nameof(reqPdfCreateByUrloptionsmarginmarginRight), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginTop = reqPdfCreateByUrloptionsmarginmarginTop == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginTop);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrloptionsmarginmarginTop, nameof(reqPdfCreateByUrloptionsmarginmarginTop), required: false);
-            var __workflow_reqPdfCreateByUrloptionsmarginmarginBottom = reqPdfCreateByUrloptionsmarginmarginBottom == null ? null : WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginBottom);
-            WorkflowExpression.Validate(__workflow_reqPdfCreateByUrloptionsmarginmarginBottom, nameof(reqPdfCreateByUrloptionsmarginmarginBottom), required: false);
+            var __workflow_reqPdfCreateByUrlhTML = WorkflowExpression.Compile(reqPdfCreateByUrlhTML, nameof(reqPdfCreateByUrlhTML), required: true);
+            var __workflow_reqPdfCreateByUrloptionsmediaType = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmediaType, nameof(reqPdfCreateByUrloptionsmediaType), required: false);
+            var __workflow_reqPdfCreateByUrloptionspageFormat = WorkflowExpression.Compile(reqPdfCreateByUrloptionspageFormat, nameof(reqPdfCreateByUrloptionspageFormat), required: false);
+            var __workflow_reqPdfCreateByUrloptionslandscape = WorkflowExpression.Compile(reqPdfCreateByUrloptionslandscape, nameof(reqPdfCreateByUrloptionslandscape), required: false);
+            var __workflow_reqPdfCreateByUrloptionsmarginmarginLeft = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginLeft, nameof(reqPdfCreateByUrloptionsmarginmarginLeft), required: false);
+            var __workflow_reqPdfCreateByUrloptionsmarginmarginRight = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginRight, nameof(reqPdfCreateByUrloptionsmarginmarginRight), required: false);
+            var __workflow_reqPdfCreateByUrloptionsmarginmarginTop = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginTop, nameof(reqPdfCreateByUrloptionsmarginmarginTop), required: false);
+            var __workflow_reqPdfCreateByUrloptionsmarginmarginBottom = WorkflowExpression.Compile(reqPdfCreateByUrloptionsmarginmarginBottom, nameof(reqPdfCreateByUrloptionsmarginmarginBottom), required: false);
             return new DeferredBodyAction<Resp200PdfCreateByUrl>(() =>
             {
                 var apiCallPath = "/pdf/create/by-url";
@@ -782,16 +742,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageStampText> ImageStampText(Expression<Func<string>> reqImageStampTextimage = null, Expression<Func<string>> reqImageStampTexttextToStamp = null, Expression<Func<string>> reqImageStampTextoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampTextoptionsfontcolor = null, Expression<Func<int>> reqImageStampTextoptionsfontsize = null)
         {
-            var __workflow_reqImageStampTextimage = reqImageStampTextimage == null ? null : WorkflowExpression.Compile(reqImageStampTextimage);
-            WorkflowExpression.Validate(__workflow_reqImageStampTextimage, nameof(reqImageStampTextimage), required: false);
-            var __workflow_reqImageStampTexttextToStamp = reqImageStampTexttextToStamp == null ? null : WorkflowExpression.Compile(reqImageStampTexttextToStamp);
-            WorkflowExpression.Validate(__workflow_reqImageStampTexttextToStamp, nameof(reqImageStampTexttextToStamp), required: false);
-            var __workflow_reqImageStampTextoptionslocationOfTheStamp = reqImageStampTextoptionslocationOfTheStamp == null ? null : WorkflowExpression.Compile(reqImageStampTextoptionslocationOfTheStamp);
-            WorkflowExpression.Validate(__workflow_reqImageStampTextoptionslocationOfTheStamp, nameof(reqImageStampTextoptionslocationOfTheStamp), required: false);
-            var __workflow_reqImageStampTextoptionsfontcolor = reqImageStampTextoptionsfontcolor == null ? null : WorkflowExpression.Compile(reqImageStampTextoptionsfontcolor);
-            WorkflowExpression.Validate(__workflow_reqImageStampTextoptionsfontcolor, nameof(reqImageStampTextoptionsfontcolor), required: false);
-            var __workflow_reqImageStampTextoptionsfontsize = reqImageStampTextoptionsfontsize == null ? null : WorkflowExpression.Compile(reqImageStampTextoptionsfontsize);
-            WorkflowExpression.Validate(__workflow_reqImageStampTextoptionsfontsize, nameof(reqImageStampTextoptionsfontsize), required: false);
+            var __workflow_reqImageStampTextimage = WorkflowExpression.Compile(reqImageStampTextimage, nameof(reqImageStampTextimage), required: false);
+            var __workflow_reqImageStampTexttextToStamp = WorkflowExpression.Compile(reqImageStampTexttextToStamp, nameof(reqImageStampTexttextToStamp), required: false);
+            var __workflow_reqImageStampTextoptionslocationOfTheStamp = WorkflowExpression.Compile(reqImageStampTextoptionslocationOfTheStamp, nameof(reqImageStampTextoptionslocationOfTheStamp), required: false);
+            var __workflow_reqImageStampTextoptionsfontcolor = WorkflowExpression.Compile(reqImageStampTextoptionsfontcolor, nameof(reqImageStampTextoptionsfontcolor), required: false);
+            var __workflow_reqImageStampTextoptionsfontsize = WorkflowExpression.Compile(reqImageStampTextoptionsfontsize, nameof(reqImageStampTextoptionsfontsize), required: false);
             return new DeferredBodyAction<Resp200ImageStampText>(() =>
             {
                 var apiCallPath = "/image/stamp/text";
@@ -879,14 +834,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageResize> ImageResize(Expression<Func<string>> reqImageResizeimage = null, Expression<Func<int>> reqImageResizewidth = null, Expression<Func<int>> reqImageResizeheight = null, Expression<Func<bool>> reqImageResizeoptionsignoreTheAspectRation = null)
         {
-            var __workflow_reqImageResizeimage = reqImageResizeimage == null ? null : WorkflowExpression.Compile(reqImageResizeimage);
-            WorkflowExpression.Validate(__workflow_reqImageResizeimage, nameof(reqImageResizeimage), required: false);
-            var __workflow_reqImageResizewidth = reqImageResizewidth == null ? null : WorkflowExpression.Compile(reqImageResizewidth);
-            WorkflowExpression.Validate(__workflow_reqImageResizewidth, nameof(reqImageResizewidth), required: false);
-            var __workflow_reqImageResizeheight = reqImageResizeheight == null ? null : WorkflowExpression.Compile(reqImageResizeheight);
-            WorkflowExpression.Validate(__workflow_reqImageResizeheight, nameof(reqImageResizeheight), required: false);
-            var __workflow_reqImageResizeoptionsignoreTheAspectRation = reqImageResizeoptionsignoreTheAspectRation == null ? null : WorkflowExpression.Compile(reqImageResizeoptionsignoreTheAspectRation);
-            WorkflowExpression.Validate(__workflow_reqImageResizeoptionsignoreTheAspectRation, nameof(reqImageResizeoptionsignoreTheAspectRation), required: false);
+            var __workflow_reqImageResizeimage = WorkflowExpression.Compile(reqImageResizeimage, nameof(reqImageResizeimage), required: false);
+            var __workflow_reqImageResizewidth = WorkflowExpression.Compile(reqImageResizewidth, nameof(reqImageResizewidth), required: false);
+            var __workflow_reqImageResizeheight = WorkflowExpression.Compile(reqImageResizeheight, nameof(reqImageResizeheight), required: false);
+            var __workflow_reqImageResizeoptionsignoreTheAspectRation = WorkflowExpression.Compile(reqImageResizeoptionsignoreTheAspectRation, nameof(reqImageResizeoptionsignoreTheAspectRation), required: false);
             return new DeferredBodyAction<Resp200ImageResize>(() =>
             {
                 var apiCallPath = "/image/resize";
@@ -948,10 +899,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfSplitByPage> PdfSplitByPage(Expression<Func<string>> reqPdfSplitByPagepDFFile = null, Expression<Func<double>> reqPdfSplitByPageoptionsnumberOfPages = null)
         {
-            var __workflow_reqPdfSplitByPagepDFFile = reqPdfSplitByPagepDFFile == null ? null : WorkflowExpression.Compile(reqPdfSplitByPagepDFFile);
-            WorkflowExpression.Validate(__workflow_reqPdfSplitByPagepDFFile, nameof(reqPdfSplitByPagepDFFile), required: false);
-            var __workflow_reqPdfSplitByPageoptionsnumberOfPages = reqPdfSplitByPageoptionsnumberOfPages == null ? null : WorkflowExpression.Compile(reqPdfSplitByPageoptionsnumberOfPages);
-            WorkflowExpression.Validate(__workflow_reqPdfSplitByPageoptionsnumberOfPages, nameof(reqPdfSplitByPageoptionsnumberOfPages), required: false);
+            var __workflow_reqPdfSplitByPagepDFFile = WorkflowExpression.Compile(reqPdfSplitByPagepDFFile, nameof(reqPdfSplitByPagepDFFile), required: false);
+            var __workflow_reqPdfSplitByPageoptionsnumberOfPages = WorkflowExpression.Compile(reqPdfSplitByPageoptionsnumberOfPages, nameof(reqPdfSplitByPageoptionsnumberOfPages), required: false);
             return new DeferredBodyAction<Resp200PdfSplitByPage>(() =>
             {
                 var apiCallPath = "/pdf/split/by-page";
@@ -1001,18 +950,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200ImageStampExif> ImageStampExif(Expression<Func<string>> reqImageStampExifimage = null, Expression<Func<string[]>> reqImageStampExifoptionstags = null, Expression<Func<string>> reqImageStampExifoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampExifoptionsfontcolor = null, Expression<Func<int>> reqImageStampExifoptionsfontsize = null, Expression<Func<bool>> reqImageStampExifoptionsprintTagName = null)
         {
-            var __workflow_reqImageStampExifimage = reqImageStampExifimage == null ? null : WorkflowExpression.Compile(reqImageStampExifimage);
-            WorkflowExpression.Validate(__workflow_reqImageStampExifimage, nameof(reqImageStampExifimage), required: false);
-            var __workflow_reqImageStampExifoptionstags = reqImageStampExifoptionstags == null ? null : WorkflowExpression.Compile(reqImageStampExifoptionstags);
-            WorkflowExpression.Validate(__workflow_reqImageStampExifoptionstags, nameof(reqImageStampExifoptionstags), required: false);
-            var __workflow_reqImageStampExifoptionslocationOfTheStamp = reqImageStampExifoptionslocationOfTheStamp == null ? null : WorkflowExpression.Compile(reqImageStampExifoptionslocationOfTheStamp);
-            WorkflowExpression.Validate(__workflow_reqImageStampExifoptionslocationOfTheStamp, nameof(reqImageStampExifoptionslocationOfTheStamp), required: false);
-            var __workflow_reqImageStampExifoptionsfontcolor = reqImageStampExifoptionsfontcolor == null ? null : WorkflowExpression.Compile(reqImageStampExifoptionsfontcolor);
-            WorkflowExpression.Validate(__workflow_reqImageStampExifoptionsfontcolor, nameof(reqImageStampExifoptionsfontcolor), required: false);
-            var __workflow_reqImageStampExifoptionsfontsize = reqImageStampExifoptionsfontsize == null ? null : WorkflowExpression.Compile(reqImageStampExifoptionsfontsize);
-            WorkflowExpression.Validate(__workflow_reqImageStampExifoptionsfontsize, nameof(reqImageStampExifoptionsfontsize), required: false);
-            var __workflow_reqImageStampExifoptionsprintTagName = reqImageStampExifoptionsprintTagName == null ? null : WorkflowExpression.Compile(reqImageStampExifoptionsprintTagName);
-            WorkflowExpression.Validate(__workflow_reqImageStampExifoptionsprintTagName, nameof(reqImageStampExifoptionsprintTagName), required: false);
+            var __workflow_reqImageStampExifimage = WorkflowExpression.Compile(reqImageStampExifimage, nameof(reqImageStampExifimage), required: false);
+            var __workflow_reqImageStampExifoptionstags = WorkflowExpression.Compile(reqImageStampExifoptionstags, nameof(reqImageStampExifoptionstags), required: false);
+            var __workflow_reqImageStampExifoptionslocationOfTheStamp = WorkflowExpression.Compile(reqImageStampExifoptionslocationOfTheStamp, nameof(reqImageStampExifoptionslocationOfTheStamp), required: false);
+            var __workflow_reqImageStampExifoptionsfontcolor = WorkflowExpression.Compile(reqImageStampExifoptionsfontcolor, nameof(reqImageStampExifoptionsfontcolor), required: false);
+            var __workflow_reqImageStampExifoptionsfontsize = WorkflowExpression.Compile(reqImageStampExifoptionsfontsize, nameof(reqImageStampExifoptionsfontsize), required: false);
+            var __workflow_reqImageStampExifoptionsprintTagName = WorkflowExpression.Compile(reqImageStampExifoptionsprintTagName, nameof(reqImageStampExifoptionsprintTagName), required: false);
             return new DeferredBodyAction<Resp200ImageStampExif>(() =>
             {
                 var apiCallPath = "/image/stamp/exif";
@@ -1116,8 +1059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfFillForm> PdfFillForm(Expression<Func<string>> reqPdfFillFormpDFFile = null)
         {
-            var __workflow_reqPdfFillFormpDFFile = reqPdfFillFormpDFFile == null ? null : WorkflowExpression.Compile(reqPdfFillFormpDFFile);
-            WorkflowExpression.Validate(__workflow_reqPdfFillFormpDFFile, nameof(reqPdfFillFormpDFFile), required: false);
+            var __workflow_reqPdfFillFormpDFFile = WorkflowExpression.Compile(reqPdfFillFormpDFFile, nameof(reqPdfFillFormpDFFile), required: false);
             return new DeferredBodyAction<Resp200PdfFillForm>(() =>
             {
                 var apiCallPath = "/form/fill";
@@ -1151,8 +1093,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfGetFormData> PdfGetFormData(Expression<Func<string>> reqPdfGetFormDatapDFFile = null)
         {
-            var __workflow_reqPdfGetFormDatapDFFile = reqPdfGetFormDatapDFFile == null ? null : WorkflowExpression.Compile(reqPdfGetFormDatapDFFile);
-            WorkflowExpression.Validate(__workflow_reqPdfGetFormDatapDFFile, nameof(reqPdfGetFormDatapDFFile), required: false);
+            var __workflow_reqPdfGetFormDatapDFFile = WorkflowExpression.Compile(reqPdfGetFormDatapDFFile, nameof(reqPdfGetFormDatapDFFile), required: false);
             return new DeferredBodyAction<Resp200PdfGetFormData>(() =>
             {
                 var apiCallPath = "/form/getdata";
@@ -1178,8 +1119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
         public IBodyWorkflowAction<Resp200PdfMergeSimple> PdfMergeSimple(Expression<Func<string[]>> reqPdfMergeSimplepDFFile = null)
         {
-            var __workflow_reqPdfMergeSimplepDFFile = reqPdfMergeSimplepDFFile == null ? null : WorkflowExpression.Compile(reqPdfMergeSimplepDFFile);
-            WorkflowExpression.Validate(__workflow_reqPdfMergeSimplepDFFile, nameof(reqPdfMergeSimplepDFFile), required: false);
+            var __workflow_reqPdfMergeSimplepDFFile = WorkflowExpression.Compile(reqPdfMergeSimplepDFFile, nameof(reqPdfMergeSimplepDFFile), required: false);
             return new DeferredBodyAction<Resp200PdfMergeSimple>(() =>
             {
                 var apiCallPath = "/pdf/merge/simple";

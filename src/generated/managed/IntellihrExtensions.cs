@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
         public IBodyWorkflowAction<SingleJob> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: true);
-            var __workflow_bodyturnoverType = bodyturnoverType == null ? null : WorkflowExpression.Compile(bodyturnoverType);
-            WorkflowExpression.Validate(__workflow_bodyturnoverType, nameof(bodyturnoverType), required: true);
-            var __workflow_bodyturnoverReason = bodyturnoverReason == null ? null : WorkflowExpression.Compile(bodyturnoverReason);
-            WorkflowExpression.Validate(__workflow_bodyturnoverReason, nameof(bodyturnoverReason), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_bodyturnoverType = WorkflowExpression.Compile(bodyturnoverType, nameof(bodyturnoverType), required: true);
+            var __workflow_bodyturnoverReason = WorkflowExpression.Compile(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
             return new DeferredBodyAction<SingleJob>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

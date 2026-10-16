@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perplexityai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perplexityai")]
         public IBodyWorkflowAction<CompletionPostResponse> Completion(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<double>> bodytopK = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodytopK = bodytopK == null ? null : WorkflowExpression.Compile(bodytopK);
-            WorkflowExpression.Validate(__workflow_bodytopK, nameof(bodytopK), required: false);
-            var __workflow_bodypresencePenalty = bodypresencePenalty == null ? null : WorkflowExpression.Compile(bodypresencePenalty);
-            WorkflowExpression.Validate(__workflow_bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            var __workflow_bodyfrequencyPenalty = bodyfrequencyPenalty == null ? null : WorkflowExpression.Compile(bodyfrequencyPenalty);
-            WorkflowExpression.Validate(__workflow_bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
             return new DeferredBodyAction<CompletionPostResponse>(() =>
             {
                 var apiCallPath = "/chat/completions";

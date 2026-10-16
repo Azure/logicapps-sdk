@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<InsertEntityResponse> CreateEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<InsertEntityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
@@ -40,12 +37,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTableResponse> CreateTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName = null, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: false);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: false);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<GetTableResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2));
@@ -61,18 +55,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction DeleteEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> ifMatch = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
-            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
-            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
@@ -89,12 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction DeleteTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
@@ -109,16 +94,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetEntitiesResponse> GetEntities(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetEntitiesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
@@ -137,18 +117,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> select = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetEntityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
@@ -165,12 +139,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTableResponse> GetTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<GetTableResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1));
@@ -185,10 +156,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IBodyWorkflowAction<GetTablesResponse> GetTables(Expression<Func<string>> storageAccountName, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredBodyAction<GetTablesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2));
@@ -203,16 +172,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction InsertMergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
@@ -234,16 +198,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction InsertReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
@@ -265,18 +224,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction MergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
-            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));
@@ -299,18 +252,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
         public IWorkflowAction ReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
         {
-            var __workflow_storageAccountName = storageAccountName == null ? null : WorkflowExpression.Compile(storageAccountName);
-            WorkflowExpression.Validate(__workflow_storageAccountName, nameof(storageAccountName), required: true);
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
-            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: true);
-            var __workflow_xMsClientRequestId = xMsClientRequestId == null ? null : WorkflowExpression.Compile(xMsClientRequestId);
-            WorkflowExpression.Validate(__workflow_xMsClientRequestId, nameof(xMsClientRequestId), required: false);
+            var __workflow_storageAccountName = WorkflowExpression.Compile(storageAccountName, nameof(storageAccountName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: true);
+            var __workflow_xMsClientRequestId = WorkflowExpression.Compile(xMsClientRequestId, nameof(xMsClientRequestId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowKey, 1));

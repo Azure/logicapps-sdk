@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
     {
         public IWorkflowTrigger DataIn(Expression<Func<int>> bodygroupId, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/key/subscribe";

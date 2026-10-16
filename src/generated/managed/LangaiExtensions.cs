@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<string>> bodytext, Expression<Func<string>> bodyprojectId)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             return new DeferredBodyAction<AnalyzeResponse>(() =>
             {
                 var apiCallPath = "/api/v1/analyze";
@@ -41,14 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         public IBodyWorkflowAction<DocumentsResponse> Documents(Expression<Func<string>> bodytext, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodydate = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
-            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             return new DeferredBodyAction<DocumentsResponse>(() =>
             {
                 var apiCallPath = "/api/v1/documents";
@@ -103,8 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         public IBodyWorkflowAction<TagsResponse> Tags(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<TagsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));

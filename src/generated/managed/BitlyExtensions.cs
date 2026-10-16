@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitly")]
         public IBodyWorkflowAction<BitlinkV2> CreateBitlink(Expression<Func<string>> bodyuRL)
         {
-            var __workflow_bodyuRL = bodyuRL == null ? null : WorkflowExpression.Compile(bodyuRL);
-            WorkflowExpression.Validate(__workflow_bodyuRL, nameof(bodyuRL), required: true);
+            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: true);
             return new DeferredBodyAction<BitlinkV2>(() =>
             {
                 var apiCallPath = "/shorten";
@@ -38,8 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     {
         public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyTrigger<OnBitlinkCreatedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

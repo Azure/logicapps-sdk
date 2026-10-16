@@ -13,32 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<EntityGetResponse> EntityGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null, Expression<Func<int>> topEntities = null, Expression<Func<int>> minConfidence = null, Expression<Func<int>> minLength = null, Expression<Func<bool>> socialHashtag = null, Expression<Func<bool>> socialMention = null, Expression<Func<string>> include = null, Expression<Func<string>> extraTypes = null, Expression<Func<string>> country = null, Expression<Func<double>> epsilon = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
-            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
-            WorkflowExpression.Validate(__workflow_html, nameof(html), required: false);
-            var __workflow_htmlFragment = htmlFragment == null ? null : WorkflowExpression.Compile(htmlFragment);
-            WorkflowExpression.Validate(__workflow_htmlFragment, nameof(htmlFragment), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
-            var __workflow_topEntities = topEntities == null ? null : WorkflowExpression.Compile(topEntities);
-            WorkflowExpression.Validate(__workflow_topEntities, nameof(topEntities), required: false);
-            var __workflow_minConfidence = minConfidence == null ? null : WorkflowExpression.Compile(minConfidence);
-            WorkflowExpression.Validate(__workflow_minConfidence, nameof(minConfidence), required: false);
-            var __workflow_minLength = minLength == null ? null : WorkflowExpression.Compile(minLength);
-            WorkflowExpression.Validate(__workflow_minLength, nameof(minLength), required: false);
-            var __workflow_socialHashtag = socialHashtag == null ? null : WorkflowExpression.Compile(socialHashtag);
-            WorkflowExpression.Validate(__workflow_socialHashtag, nameof(socialHashtag), required: false);
-            var __workflow_socialMention = socialMention == null ? null : WorkflowExpression.Compile(socialMention);
-            WorkflowExpression.Validate(__workflow_socialMention, nameof(socialMention), required: false);
-            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
-            WorkflowExpression.Validate(__workflow_include, nameof(include), required: false);
-            var __workflow_extraTypes = extraTypes == null ? null : WorkflowExpression.Compile(extraTypes);
-            WorkflowExpression.Validate(__workflow_extraTypes, nameof(extraTypes), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_epsilon = epsilon == null ? null : WorkflowExpression.Compile(epsilon);
-            WorkflowExpression.Validate(__workflow_epsilon, nameof(epsilon), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: false);
+            var __workflow_htmlFragment = WorkflowExpression.Compile(htmlFragment, nameof(htmlFragment), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            var __workflow_topEntities = WorkflowExpression.Compile(topEntities, nameof(topEntities), required: false);
+            var __workflow_minConfidence = WorkflowExpression.Compile(minConfidence, nameof(minConfidence), required: false);
+            var __workflow_minLength = WorkflowExpression.Compile(minLength, nameof(minLength), required: false);
+            var __workflow_socialHashtag = WorkflowExpression.Compile(socialHashtag, nameof(socialHashtag), required: false);
+            var __workflow_socialMention = WorkflowExpression.Compile(socialMention, nameof(socialMention), required: false);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: false);
+            var __workflow_extraTypes = WorkflowExpression.Compile(extraTypes, nameof(extraTypes), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_epsilon = WorkflowExpression.Compile(epsilon, nameof(epsilon), required: false);
             return new DeferredBodyAction<EntityGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/nex/v1";
@@ -77,22 +64,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<SimilarityGetResponse> SimilarityGet(Expression<Func<string>> text1 = null, Expression<Func<string>> html1 = null, Expression<Func<string>> htmlFragment1 = null, Expression<Func<string>> text2 = null, Expression<Func<string>> html2 = null, Expression<Func<string>> htmlFragment2 = null, Expression<Func<string>> lang = null, Expression<Func<bowInput>> bow = null)
         {
-            var __workflow_text1 = text1 == null ? null : WorkflowExpression.Compile(text1);
-            WorkflowExpression.Validate(__workflow_text1, nameof(text1), required: false);
-            var __workflow_html1 = html1 == null ? null : WorkflowExpression.Compile(html1);
-            WorkflowExpression.Validate(__workflow_html1, nameof(html1), required: false);
-            var __workflow_htmlFragment1 = htmlFragment1 == null ? null : WorkflowExpression.Compile(htmlFragment1);
-            WorkflowExpression.Validate(__workflow_htmlFragment1, nameof(htmlFragment1), required: false);
-            var __workflow_text2 = text2 == null ? null : WorkflowExpression.Compile(text2);
-            WorkflowExpression.Validate(__workflow_text2, nameof(text2), required: false);
-            var __workflow_html2 = html2 == null ? null : WorkflowExpression.Compile(html2);
-            WorkflowExpression.Validate(__workflow_html2, nameof(html2), required: false);
-            var __workflow_htmlFragment2 = htmlFragment2 == null ? null : WorkflowExpression.Compile(htmlFragment2);
-            WorkflowExpression.Validate(__workflow_htmlFragment2, nameof(htmlFragment2), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
-            var __workflow_bow = bow == null ? null : WorkflowExpression.Compile(bow);
-            WorkflowExpression.Validate(__workflow_bow, nameof(bow), required: false);
+            var __workflow_text1 = WorkflowExpression.Compile(text1, nameof(text1), required: false);
+            var __workflow_html1 = WorkflowExpression.Compile(html1, nameof(html1), required: false);
+            var __workflow_htmlFragment1 = WorkflowExpression.Compile(htmlFragment1, nameof(htmlFragment1), required: false);
+            var __workflow_text2 = WorkflowExpression.Compile(text2, nameof(text2), required: false);
+            var __workflow_html2 = WorkflowExpression.Compile(html2, nameof(html2), required: false);
+            var __workflow_htmlFragment2 = WorkflowExpression.Compile(htmlFragment2, nameof(htmlFragment2), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            var __workflow_bow = WorkflowExpression.Compile(bow, nameof(bow), required: false);
             return new DeferredBodyAction<SimilarityGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/sim/v1";
@@ -121,14 +100,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<LanguageGetResponse> LanguageGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<bool>> clean = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
-            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
-            WorkflowExpression.Validate(__workflow_html, nameof(html), required: false);
-            var __workflow_htmlFragment = htmlFragment == null ? null : WorkflowExpression.Compile(htmlFragment);
-            WorkflowExpression.Validate(__workflow_htmlFragment, nameof(htmlFragment), required: false);
-            var __workflow_clean = clean == null ? null : WorkflowExpression.Compile(clean);
-            WorkflowExpression.Validate(__workflow_clean, nameof(clean), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: false);
+            var __workflow_htmlFragment = WorkflowExpression.Compile(htmlFragment, nameof(htmlFragment), required: false);
+            var __workflow_clean = WorkflowExpression.Compile(clean, nameof(clean), required: false);
             return new DeferredBodyAction<LanguageGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/li/v1";
@@ -149,14 +124,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<SentimentGetResponse> SentimentGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
-            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
-            WorkflowExpression.Validate(__workflow_html, nameof(html), required: false);
-            var __workflow_htmlFragment = htmlFragment == null ? null : WorkflowExpression.Compile(htmlFragment);
-            WorkflowExpression.Validate(__workflow_htmlFragment, nameof(htmlFragment), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: false);
+            var __workflow_htmlFragment = WorkflowExpression.Compile(htmlFragment, nameof(htmlFragment), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             return new DeferredBodyAction<SentimentGetResponse>(() =>
             {
                 var apiCallPath = "/datatxt/sent/v1";
@@ -177,18 +148,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
         public IBodyWorkflowAction<WikipediaGetResponse> WikipediaGet(Expression<Func<string>> text, Expression<Func<langInput>> lang, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<queryInput>> query = null, Expression<Func<string>> include = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
-            WorkflowExpression.Validate(__workflow_include, nameof(include), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: false);
             return new DeferredBodyAction<WikipediaGetResponse>(() =>
             {
                 var apiCallPath = "/datagraph/wikisearch/v1";

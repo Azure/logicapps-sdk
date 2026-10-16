@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantsGetResponse> AssistantsGet(Expression<Func<string>> openAIBeta)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
             return new DeferredBodyAction<AssistantsGetResponse>(() =>
             {
                 var apiCallPath = "/assistants";
@@ -37,20 +36,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantPostResponse> Assistant(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyinstructions = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<string[]>> bodyfileIds = null)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
-            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
-            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
-            var __workflow_bodyfileIds = bodyfileIds == null ? null : WorkflowExpression.Compile(bodyfileIds);
-            WorkflowExpression.Validate(__workflow_bodyfileIds, nameof(bodyfileIds), required: false);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
+            var __workflow_bodyfileIds = WorkflowExpression.Compile(bodyfileIds, nameof(bodyfileIds), required: false);
             return new DeferredBodyAction<AssistantPostResponse>(() =>
             {
                 var apiCallPath = "/assistants";
@@ -111,10 +103,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantGetResponse> AssistantGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_assistantId = assistantId == null ? null : WorkflowExpression.Compile(assistantId);
-            WorkflowExpression.Validate(__workflow_assistantId, nameof(assistantId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_assistantId = WorkflowExpression.Compile(assistantId, nameof(assistantId), required: true);
             return new DeferredBodyAction<AssistantGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/assistants/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_assistantId, 1));
@@ -128,10 +118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<AssistantDeleteResponse> AssistantDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_assistantId = assistantId == null ? null : WorkflowExpression.Compile(assistantId);
-            WorkflowExpression.Validate(__workflow_assistantId, nameof(assistantId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_assistantId = WorkflowExpression.Compile(assistantId, nameof(assistantId), required: true);
             return new DeferredBodyAction<AssistantDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/assistants/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_assistantId, 1));
@@ -145,10 +133,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FilesGetResponse> FilesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_assistantId = assistantId == null ? null : WorkflowExpression.Compile(assistantId);
-            WorkflowExpression.Validate(__workflow_assistantId, nameof(assistantId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_assistantId = WorkflowExpression.Compile(assistantId, nameof(assistantId), required: true);
             return new DeferredBodyAction<FilesGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_assistantId, 1));
@@ -162,12 +148,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> bodyfileId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_assistantId = assistantId == null ? null : WorkflowExpression.Compile(assistantId);
-            WorkflowExpression.Validate(__workflow_assistantId, nameof(assistantId), required: true);
-            var __workflow_bodyfileId = bodyfileId == null ? null : WorkflowExpression.Compile(bodyfileId);
-            WorkflowExpression.Validate(__workflow_bodyfileId, nameof(bodyfileId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_assistantId = WorkflowExpression.Compile(assistantId, nameof(assistantId), required: true);
+            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: true);
             return new DeferredBodyAction<FilePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_assistantId, 1));
@@ -190,12 +173,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FileGetResponse> FileGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> fileId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_assistantId = assistantId == null ? null : WorkflowExpression.Compile(assistantId);
-            WorkflowExpression.Validate(__workflow_assistantId, nameof(assistantId), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_assistantId = WorkflowExpression.Compile(assistantId, nameof(assistantId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<FileGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_assistantId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -209,12 +189,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> assistantId, Expression<Func<string>> fileId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_assistantId = assistantId == null ? null : WorkflowExpression.Compile(assistantId);
-            WorkflowExpression.Validate(__workflow_assistantId, nameof(assistantId), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_assistantId = WorkflowExpression.Compile(assistantId, nameof(assistantId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<FileDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/assistants/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_assistantId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -228,10 +205,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> openAIBeta, Expression<Func<bodymessagesInputItem[]>> bodymessages)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
             return new DeferredBodyAction<ThreadPostResponse>(() =>
             {
                 var apiCallPath = "/threads";
@@ -254,10 +229,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadGetResponse> ThreadGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ThreadGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -271,10 +244,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ThreadDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -288,10 +259,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadModifyPostResponse> ThreadModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ThreadModifyPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -320,18 +289,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessagesGetResponse> MessagesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<MessagesGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -353,10 +316,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -370,12 +331,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageModifyPostResponse> MessageModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageModifyPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -404,14 +362,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageFileGetResponse> MessageFileGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> fileId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<MessageFileGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}/files/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -425,12 +379,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<MessageFilesGetResponse> MessageFilesGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> messageId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageFilesGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -444,18 +395,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunsGetResponse> RunsGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<RunsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -477,18 +422,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunPostResponse> Run(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyassistantId = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodyassistantId = bodyassistantId == null ? null : WorkflowExpression.Compile(bodyassistantId);
-            WorkflowExpression.Validate(__workflow_bodyassistantId, nameof(bodyassistantId), required: false);
-            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
-            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: false);
-            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
-            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyassistantId = WorkflowExpression.Compile(bodyassistantId, nameof(bodyassistantId), required: false);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
             return new DeferredBodyAction<RunPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -537,12 +476,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunGetResponse> RunGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
             return new DeferredBodyAction<RunGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
@@ -556,12 +492,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunModifyPostResponse> RunModify(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
             return new DeferredBodyAction<RunModifyPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
@@ -590,14 +523,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunToolOutputsPostResponse> RunToolOutputs(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<bodytoolOutputsInputItem[]>> bodytoolOutputs = null)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
-            var __workflow_bodytoolOutputs = bodytoolOutputs == null ? null : WorkflowExpression.Compile(bodytoolOutputs);
-            WorkflowExpression.Validate(__workflow_bodytoolOutputs, nameof(bodytoolOutputs), required: false);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
+            var __workflow_bodytoolOutputs = WorkflowExpression.Compile(bodytoolOutputs, nameof(bodytoolOutputs), required: false);
             return new DeferredBodyAction<RunToolOutputsPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/submit_tool_outputs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
@@ -624,12 +553,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunCancelPostResponse> RunCancel(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
             return new DeferredBodyAction<RunCancelPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
@@ -643,18 +569,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<ThreadRunPostResponse> ThreadRun(Expression<Func<string>> openAIBeta, Expression<Func<string>> bodyassistantId = null, Expression<Func<bodythreadmessagesInputItem[]>> bodythreadmessages = null, Expression<Func<string>> bodymodel = null, Expression<Func<string>> bodyinstructions = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_bodyassistantId = bodyassistantId == null ? null : WorkflowExpression.Compile(bodyassistantId);
-            WorkflowExpression.Validate(__workflow_bodyassistantId, nameof(bodyassistantId), required: false);
-            var __workflow_bodythreadmessages = bodythreadmessages == null ? null : WorkflowExpression.Compile(bodythreadmessages);
-            WorkflowExpression.Validate(__workflow_bodythreadmessages, nameof(bodythreadmessages), required: false);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
-            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
-            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: false);
-            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
-            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_bodyassistantId = WorkflowExpression.Compile(bodyassistantId, nameof(bodyassistantId), required: false);
+            var __workflow_bodythreadmessages = WorkflowExpression.Compile(bodythreadmessages, nameof(bodythreadmessages), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
             return new DeferredBodyAction<ThreadRunPostResponse>(() =>
             {
                 var apiCallPath = "/threads/runs";
@@ -721,14 +641,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunStepGetResponse> RunStepGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<string>> stepId)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
-            var __workflow_stepId = stepId == null ? null : WorkflowExpression.Compile(stepId);
-            WorkflowExpression.Validate(__workflow_stepId, nameof(stepId), required: true);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
+            var __workflow_stepId = WorkflowExpression.Compile(stepId, nameof(stepId), required: true);
             return new DeferredBodyAction<RunStepGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/steps/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_stepId, 1));
@@ -742,20 +658,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiassistants
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiassistants")]
         public IBodyWorkflowAction<RunStepsGetResponse> RunStepsGet(Expression<Func<string>> openAIBeta, Expression<Func<string>> threadId, Expression<Func<string>> runId, Expression<Func<int>> limit = null, Expression<Func<string>> order = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var __workflow_openAIBeta = openAIBeta == null ? null : WorkflowExpression.Compile(openAIBeta);
-            WorkflowExpression.Validate(__workflow_openAIBeta, nameof(openAIBeta), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_openAIBeta = WorkflowExpression.Compile(openAIBeta, nameof(openAIBeta), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<RunStepsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}/steps", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));

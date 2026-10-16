@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<string> PostMarkdown(Expression<Func<string>> bodytext, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<string>> bodycontext = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_xGitHubApiVersion = xGitHubApiVersion == null ? null : WorkflowExpression.Compile(xGitHubApiVersion);
-            WorkflowExpression.Validate(__workflow_xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
-            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: false);
-            var __workflow_bodycontext = bodycontext == null ? null : WorkflowExpression.Compile(bodycontext);
-            WorkflowExpression.Validate(__workflow_bodycontext, nameof(bodycontext), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
+            var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/markdown";
@@ -68,12 +64,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<string> PostMarkdownRaw(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> xGitHubApiVersion = null, Expression<Func<string>> body = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_xGitHubApiVersion = xGitHubApiVersion == null ? null : WorkflowExpression.Compile(xGitHubApiVersion);
-            WorkflowExpression.Validate(__workflow_xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/markdown/raw";
@@ -102,8 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<string> GetZen(Expression<Func<string>> xGitHubApiVersion = null)
         {
-            var __workflow_xGitHubApiVersion = xGitHubApiVersion == null ? null : WorkflowExpression.Compile(xGitHubApiVersion);
-            WorkflowExpression.Validate(__workflow_xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
+            var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/zen";
@@ -120,14 +112,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<License[]> GetLicenses(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<bool>> featured = null, Expression<Func<string>> xGitHubApiVersion = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_featured = featured == null ? null : WorkflowExpression.Compile(featured);
-            WorkflowExpression.Validate(__workflow_featured, nameof(featured), required: false);
-            var __workflow_xGitHubApiVersion = xGitHubApiVersion == null ? null : WorkflowExpression.Compile(xGitHubApiVersion);
-            WorkflowExpression.Validate(__workflow_xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_featured = WorkflowExpression.Compile(featured, nameof(featured), required: false);
+            var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             return new DeferredBodyAction<License[]>(() =>
             {
                 var apiCallPath = "/licenses";
@@ -152,10 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<LicenseAdvanced> GetLicense(Expression<Func<string>> license, Expression<Func<string>> xGitHubApiVersion = null)
         {
-            var __workflow_license = license == null ? null : WorkflowExpression.Compile(license);
-            WorkflowExpression.Validate(__workflow_license, nameof(license), required: true);
-            var __workflow_xGitHubApiVersion = xGitHubApiVersion == null ? null : WorkflowExpression.Compile(xGitHubApiVersion);
-            WorkflowExpression.Validate(__workflow_xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
+            var __workflow_license = WorkflowExpression.Compile(license, nameof(license), required: true);
+            var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             return new DeferredBodyAction<LicenseAdvanced>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licenses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_license, 1));
@@ -172,8 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<CodeOfConduct[]> GetCodesOfConduct(Expression<Func<string>> xGitHubApiVersion = null)
         {
-            var __workflow_xGitHubApiVersion = xGitHubApiVersion == null ? null : WorkflowExpression.Compile(xGitHubApiVersion);
-            WorkflowExpression.Validate(__workflow_xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
+            var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             return new DeferredBodyAction<CodeOfConduct[]>(() =>
             {
                 var apiCallPath = "/codes_of_conduct";
@@ -190,10 +175,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubutilsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubutilsip")]
         public IBodyWorkflowAction<CodeOfConduct> GetCodeOfConduct(Expression<Func<string>> codeOfConduct, Expression<Func<string>> xGitHubApiVersion = null)
         {
-            var __workflow_codeOfConduct = codeOfConduct == null ? null : WorkflowExpression.Compile(codeOfConduct);
-            WorkflowExpression.Validate(__workflow_codeOfConduct, nameof(codeOfConduct), required: true);
-            var __workflow_xGitHubApiVersion = xGitHubApiVersion == null ? null : WorkflowExpression.Compile(xGitHubApiVersion);
-            WorkflowExpression.Validate(__workflow_xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
+            var __workflow_codeOfConduct = WorkflowExpression.Compile(codeOfConduct, nameof(codeOfConduct), required: true);
+            var __workflow_xGitHubApiVersion = WorkflowExpression.Compile(xGitHubApiVersion, nameof(xGitHubApiVersion), required: false);
             return new DeferredBodyAction<CodeOfConduct>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codes_of_conduct/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_codeOfConduct, 1));

@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<LocationBundle> GetLocation(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var __workflow_Id = Id == null ? null : WorkflowExpression.Compile(Id);
-            WorkflowExpression.Validate(__workflow_Id, nameof(Id), required: false);
-            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
-            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: false);
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
-            var __workflow_addressCity = addressCity == null ? null : WorkflowExpression.Compile(addressCity);
-            WorkflowExpression.Validate(__workflow_addressCity, nameof(addressCity), required: false);
-            var __workflow_addressState = addressState == null ? null : WorkflowExpression.Compile(addressState);
-            WorkflowExpression.Validate(__workflow_addressState, nameof(addressState), required: false);
-            var __workflow_addressPostalcode = addressPostalcode == null ? null : WorkflowExpression.Compile(addressPostalcode);
-            WorkflowExpression.Validate(__workflow_addressPostalcode, nameof(addressPostalcode), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_LastUpdated = LastUpdated == null ? null : WorkflowExpression.Compile(LastUpdated);
-            WorkflowExpression.Validate(__workflow_LastUpdated, nameof(LastUpdated), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_Count = Count == null ? null : WorkflowExpression.Compile(Count);
-            WorkflowExpression.Validate(__workflow_Count, nameof(Count), required: false);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
+            var __workflow_addressCity = WorkflowExpression.Compile(addressCity, nameof(addressCity), required: false);
+            var __workflow_addressState = WorkflowExpression.Compile(addressState, nameof(addressState), required: false);
+            var __workflow_addressPostalcode = WorkflowExpression.Compile(addressPostalcode, nameof(addressPostalcode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             return new DeferredBodyAction<LocationBundle>(() =>
             {
                 var apiCallPath = "/Location";
@@ -65,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Location> GetLocationById(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Location>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Location/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -79,26 +68,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<OrganizationBundle> ListOrganizations(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var __workflow_Id = Id == null ? null : WorkflowExpression.Compile(Id);
-            WorkflowExpression.Validate(__workflow_Id, nameof(Id), required: false);
-            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
-            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: false);
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
-            var __workflow_addressCity = addressCity == null ? null : WorkflowExpression.Compile(addressCity);
-            WorkflowExpression.Validate(__workflow_addressCity, nameof(addressCity), required: false);
-            var __workflow_addressState = addressState == null ? null : WorkflowExpression.Compile(addressState);
-            WorkflowExpression.Validate(__workflow_addressState, nameof(addressState), required: false);
-            var __workflow_addressPostalcode = addressPostalcode == null ? null : WorkflowExpression.Compile(addressPostalcode);
-            WorkflowExpression.Validate(__workflow_addressPostalcode, nameof(addressPostalcode), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_LastUpdated = LastUpdated == null ? null : WorkflowExpression.Compile(LastUpdated);
-            WorkflowExpression.Validate(__workflow_LastUpdated, nameof(LastUpdated), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_Count = Count == null ? null : WorkflowExpression.Compile(Count);
-            WorkflowExpression.Validate(__workflow_Count, nameof(Count), required: false);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
+            var __workflow_addressCity = WorkflowExpression.Compile(addressCity, nameof(addressCity), required: false);
+            var __workflow_addressState = WorkflowExpression.Compile(addressState, nameof(addressState), required: false);
+            var __workflow_addressPostalcode = WorkflowExpression.Compile(addressPostalcode, nameof(addressPostalcode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             return new DeferredBodyAction<OrganizationBundle>(() =>
             {
                 var apiCallPath = "/Organization";
@@ -131,8 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Organization> GetOrganizationById(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Organization>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Organization/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -145,22 +123,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerBundle> ListPractitioners(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> family = null, Expression<Func<string>> given = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var __workflow_Id = Id == null ? null : WorkflowExpression.Compile(Id);
-            WorkflowExpression.Validate(__workflow_Id, nameof(Id), required: false);
-            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
-            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: false);
-            var __workflow_family = family == null ? null : WorkflowExpression.Compile(family);
-            WorkflowExpression.Validate(__workflow_family, nameof(family), required: false);
-            var __workflow_given = given == null ? null : WorkflowExpression.Compile(given);
-            WorkflowExpression.Validate(__workflow_given, nameof(given), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_LastUpdated = LastUpdated == null ? null : WorkflowExpression.Compile(LastUpdated);
-            WorkflowExpression.Validate(__workflow_LastUpdated, nameof(LastUpdated), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_Count = Count == null ? null : WorkflowExpression.Compile(Count);
-            WorkflowExpression.Validate(__workflow_Count, nameof(Count), required: false);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: false);
+            var __workflow_family = WorkflowExpression.Compile(family, nameof(family), required: false);
+            var __workflow_given = WorkflowExpression.Compile(given, nameof(given), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             return new DeferredBodyAction<PractitionerBundle>(() =>
             {
                 var apiCallPath = "/Practitioner";
@@ -189,8 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<Practitioner> GetPractitionerById(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Practitioner>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -203,18 +172,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles(Expression<Func<string>> Id = null, Expression<Func<string>> practitionerIdentifier = null, Expression<Func<string>> practitionerName = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
         {
-            var __workflow_Id = Id == null ? null : WorkflowExpression.Compile(Id);
-            WorkflowExpression.Validate(__workflow_Id, nameof(Id), required: false);
-            var __workflow_practitionerIdentifier = practitionerIdentifier == null ? null : WorkflowExpression.Compile(practitionerIdentifier);
-            WorkflowExpression.Validate(__workflow_practitionerIdentifier, nameof(practitionerIdentifier), required: false);
-            var __workflow_practitionerName = practitionerName == null ? null : WorkflowExpression.Compile(practitionerName);
-            WorkflowExpression.Validate(__workflow_practitionerName, nameof(practitionerName), required: false);
-            var __workflow_LastUpdated = LastUpdated == null ? null : WorkflowExpression.Compile(LastUpdated);
-            WorkflowExpression.Validate(__workflow_LastUpdated, nameof(LastUpdated), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_Count = Count == null ? null : WorkflowExpression.Compile(Count);
-            WorkflowExpression.Validate(__workflow_Count, nameof(Count), required: false);
+            var __workflow_Id = WorkflowExpression.Compile(Id, nameof(Id), required: false);
+            var __workflow_practitionerIdentifier = WorkflowExpression.Compile(practitionerIdentifier, nameof(practitionerIdentifier), required: false);
+            var __workflow_practitionerName = WorkflowExpression.Compile(practitionerName, nameof(practitionerName), required: false);
+            var __workflow_LastUpdated = WorkflowExpression.Compile(LastUpdated, nameof(LastUpdated), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_Count = WorkflowExpression.Compile(Count, nameof(Count), required: false);
             return new DeferredBodyAction<PractitionerRoleBundle>(() =>
             {
                 var apiCallPath = "/PractitionerRole";
@@ -239,8 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
         public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PractitionerRole>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PractitionerRole/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

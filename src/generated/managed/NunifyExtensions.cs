@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
         public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydesignation = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyticketTypeId = null)
         {
-            var __workflow_platformId = platformId == null ? null : WorkflowExpression.Compile(platformId);
-            WorkflowExpression.Validate(__workflow_platformId, nameof(platformId), required: true);
-            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
-            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodydesignation = bodydesignation == null ? null : WorkflowExpression.Compile(bodydesignation);
-            WorkflowExpression.Validate(__workflow_bodydesignation, nameof(bodydesignation), required: false);
-            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
-            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodyticketTypeId = bodyticketTypeId == null ? null : WorkflowExpression.Compile(bodyticketTypeId);
-            WorkflowExpression.Validate(__workflow_bodyticketTypeId, nameof(bodyticketTypeId), required: false);
+            var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodydesignation = WorkflowExpression.Compile(bodydesignation, nameof(bodydesignation), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyticketTypeId = WorkflowExpression.Compile(bodyticketTypeId, nameof(bodyticketTypeId), required: false);
             return new DeferredBodyAction<ADDREGISTRANTResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
@@ -101,12 +92,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
     {
         public IWorkflowTrigger NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
         {
-            var __workflow_platformId = platformId == null ? null : WorkflowExpression.Compile(platformId);
-            WorkflowExpression.Validate(__workflow_platformId, nameof(platformId), required: true);
-            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
-            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
+            var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
@@ -131,12 +119,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 
         public IWorkflowTrigger NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, FlowRecurrence recurrence = null)
         {
-            var __workflow_platformId = platformId == null ? null : WorkflowExpression.Compile(platformId);
-            WorkflowExpression.Validate(__workflow_platformId, nameof(platformId), required: true);
-            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
-            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
+            var __workflow_platformId = WorkflowExpression.Compile(platformId, nameof(platformId), required: true);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));

@@ -16,12 +16,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
     {
         public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyselectALanguage = bodyselectALanguage == null ? null : WorkflowExpression.Compile(bodyselectALanguage);
-            WorkflowExpression.Validate(__workflow_bodyselectALanguage, nameof(bodyselectALanguage), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: true);
-            var __workflow_operationName = operationName == null ? null : WorkflowExpression.Compile(operationName);
-            WorkflowExpression.Validate(__workflow_operationName, nameof(operationName), required: true);
+            var __workflow_bodyselectALanguage = WorkflowExpression.Compile(bodyselectALanguage, nameof(bodyselectALanguage), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
+            var __workflow_operationName = WorkflowExpression.Compile(operationName, nameof(operationName), required: true);
             return new DeferredBodyTrigger<WebHookDetail>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_item, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationName, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
         {
-            var __workflow_bodyuserIdentityToken = bodyuserIdentityToken == null ? null : WorkflowExpression.Compile(bodyuserIdentityToken);
-            WorkflowExpression.Validate(__workflow_bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
-            var __workflow_bodyapplicationID = bodyapplicationID == null ? null : WorkflowExpression.Compile(bodyapplicationID);
-            WorkflowExpression.Validate(__workflow_bodyapplicationID, nameof(bodyapplicationID), required: true);
+            var __workflow_bodyuserIdentityToken = WorkflowExpression.Compile(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
+            var __workflow_bodyapplicationID = WorkflowExpression.Compile(bodyapplicationID, nameof(bodyapplicationID), required: true);
             return new DeferredBodyAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(() =>
             {
                 var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
@@ -40,12 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
         public IWorkflowAction SendHttpRequest(Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyrelativePath, Expression<Func<string>> bodybody = null)
         {
-            var __workflow_bodymethod = bodymethod == null ? null : WorkflowExpression.Compile(bodymethod);
-            WorkflowExpression.Validate(__workflow_bodymethod, nameof(bodymethod), required: true);
-            var __workflow_bodyrelativePath = bodyrelativePath == null ? null : WorkflowExpression.Compile(bodyrelativePath);
-            WorkflowExpression.Validate(__workflow_bodyrelativePath, nameof(bodyrelativePath), required: true);
-            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
-            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodymethod = WorkflowExpression.Compile(bodymethod, nameof(bodymethod), required: true);
+            var __workflow_bodyrelativePath = WorkflowExpression.Compile(bodyrelativePath, nameof(bodyrelativePath), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/virtual/httprequest";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> GeneratePowerpointDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
         {
-            var __workflow_generationInfodataMap = generationInfodataMap == null ? null : WorkflowExpression.Compile(generationInfodataMap);
-            WorkflowExpression.Validate(__workflow_generationInfodataMap, nameof(generationInfodataMap), required: true);
-            var __workflow_generationInfofile = generationInfofile == null ? null : WorkflowExpression.Compile(generationInfofile);
-            WorkflowExpression.Validate(__workflow_generationInfofile, nameof(generationInfofile), required: false);
+            var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
+            var __workflow_generationInfofile = WorkflowExpression.Compile(generationInfofile, nameof(generationInfofile), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Powerpoint";
@@ -44,10 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> GenerateWordDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
         {
-            var __workflow_generationInfodataMap = generationInfodataMap == null ? null : WorkflowExpression.Compile(generationInfodataMap);
-            WorkflowExpression.Validate(__workflow_generationInfodataMap, nameof(generationInfodataMap), required: true);
-            var __workflow_generationInfofile = generationInfofile == null ? null : WorkflowExpression.Compile(generationInfofile);
-            WorkflowExpression.Validate(__workflow_generationInfofile, nameof(generationInfofile), required: false);
+            var __workflow_generationInfodataMap = WorkflowExpression.Compile(generationInfodataMap, nameof(generationInfodataMap), required: true);
+            var __workflow_generationInfofile = WorkflowExpression.Compile(generationInfofile, nameof(generationInfofile), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Word";
@@ -75,8 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> MergePowerpointDocuments(Expression<Func<string[]>> documents = null)
         {
-            var __workflow_documents = documents == null ? null : WorkflowExpression.Compile(documents);
-            WorkflowExpression.Validate(__workflow_documents, nameof(documents), required: false);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Powerpoint/Merge";
@@ -90,8 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
         public IBodyWorkflowAction<string> MergeWordDocuments(Expression<Func<string[]>> documents = null)
         {
-            var __workflow_documents = documents == null ? null : WorkflowExpression.Compile(documents);
-            WorkflowExpression.Validate(__workflow_documents, nameof(documents), required: false);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Word/Merge";

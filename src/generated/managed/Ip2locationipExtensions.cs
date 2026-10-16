@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2locationip")]
         public IBodyWorkflowAction<LookupIpResponse> LookupIp(Expression<Func<string>> ip)
         {
-            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
-            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
             return new DeferredBodyAction<LookupIpResponse>(() =>
             {
                 var apiCallPath = "/";

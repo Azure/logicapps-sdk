@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<SingleEntity> SingleEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
-            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_oDataQuery = WorkflowExpression.Compile(oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<SingleEntity>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1));
@@ -40,16 +35,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<SingleEntity> SingleEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
-            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_oDataQuery = WorkflowExpression.Compile(oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<SingleEntity>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -65,16 +55,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<ListEntity> ListEntity(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id = null, Expression<Func<string>> oDataQuery = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
-            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_oDataQuery = WorkflowExpression.Compile(oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<ListEntity>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1));
@@ -92,16 +77,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intentionaldatasources
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intentionaldatasources")]
         public IBodyWorkflowAction<ListEntity> ListEntityById(Expression<Func<string>> token, Expression<Func<string>> service, Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> oDataQuery = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_oDataQuery = oDataQuery == null ? null : WorkflowExpression.Compile(oDataQuery);
-            WorkflowExpression.Validate(__workflow_oDataQuery, nameof(oDataQuery), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_oDataQuery = WorkflowExpression.Compile(oDataQuery, nameof(oDataQuery), required: false);
             return new DeferredBodyAction<ListEntity>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

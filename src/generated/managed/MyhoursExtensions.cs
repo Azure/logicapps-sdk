@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Client> CreateClient(Expression<Func<string>> bodyname)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<Client>(() =>
             {
                 var apiCallPath = "/api/clients/zapier";
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Client[]> FindClient(Expression<Func<string>> clientName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             return new DeferredBodyAction<Client[]>(() =>
             {
                 var apiCallPath = "/api/clients/getByName";
@@ -51,14 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Project> CreateProject(Expression<Func<string>> bodyname, Expression<Func<int>> bodyclientId = null, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyautoAssignUserId = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyclientId = bodyclientId == null ? null : WorkflowExpression.Compile(bodyclientId);
-            WorkflowExpression.Validate(__workflow_bodyclientId, nameof(bodyclientId), required: false);
-            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
-            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyautoAssignUserId = bodyautoAssignUserId == null ? null : WorkflowExpression.Compile(bodyautoAssignUserId);
-            WorkflowExpression.Validate(__workflow_bodyautoAssignUserId, nameof(bodyautoAssignUserId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: false);
+            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodyautoAssignUserId = WorkflowExpression.Compile(bodyautoAssignUserId, nameof(bodyautoAssignUserId), required: false);
             return new DeferredBodyAction<Project>(() =>
             {
                 var apiCallPath = "/api/Projects";
@@ -100,8 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Project> FindProject(Expression<Func<string>> projectName)
         {
-            var __workflow_projectName = projectName == null ? null : WorkflowExpression.Compile(projectName);
-            WorkflowExpression.Validate(__workflow_projectName, nameof(projectName), required: true);
+            var __workflow_projectName = WorkflowExpression.Compile(projectName, nameof(projectName), required: true);
             return new DeferredBodyAction<Project>(() =>
             {
                 var apiCallPath = "/api/Projects/getByNameForPA";
@@ -115,14 +108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<ProjectTask> CreateProjectTask(Expression<Func<int>> projectId, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistName = null, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodylistName = bodylistName == null ? null : WorkflowExpression.Compile(bodylistName);
-            WorkflowExpression.Validate(__workflow_bodylistName, nameof(bodylistName), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodylistName = WorkflowExpression.Compile(bodylistName, nameof(bodylistName), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<ProjectTask>(() =>
             {
                 var apiCallPath = "/api/Projects/taskForPA";
@@ -167,10 +156,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<ProjectTask> FindTask(Expression<Func<string>> projectTaskName, Expression<Func<int>> projectId)
         {
-            var __workflow_projectTaskName = projectTaskName == null ? null : WorkflowExpression.Compile(projectTaskName);
-            WorkflowExpression.Validate(__workflow_projectTaskName, nameof(projectTaskName), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectTaskName = WorkflowExpression.Compile(projectTaskName, nameof(projectTaskName), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ProjectTask>(() =>
             {
                 var apiCallPath = "/api/Projects/getProjectTaskByNamePowerAutomate";
@@ -185,10 +172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Tag> CreateTag(Expression<Func<string>> bodyname, Expression<Func<string>> bodyhexColor)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyhexColor = bodyhexColor == null ? null : WorkflowExpression.Compile(bodyhexColor);
-            WorkflowExpression.Validate(__workflow_bodyhexColor, nameof(bodyhexColor), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyhexColor = WorkflowExpression.Compile(bodyhexColor, nameof(bodyhexColor), required: true);
             return new DeferredBodyAction<Tag>(() =>
             {
                 var apiCallPath = "/api/tags";
@@ -212,8 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<Tag> FindTag(Expression<Func<string>> tagName)
         {
-            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
-            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: true);
+            var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: true);
             return new DeferredBodyAction<Tag>(() =>
             {
                 var apiCallPath = "/api/tags/getByNamePowerAutomate";
@@ -227,22 +211,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<TimeLog> CreateLog(Expression<Func<string>> bodydate, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodyduration = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodytaskId = null, Expression<Func<int>> bodytagId = null)
         {
-            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
-            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: true);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
-            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
-            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
-            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: false);
-            var __workflow_bodytagId = bodytagId == null ? null : WorkflowExpression.Compile(bodytagId);
-            WorkflowExpression.Validate(__workflow_bodytagId, nameof(bodytagId), required: false);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
+            var __workflow_bodytagId = WorkflowExpression.Compile(bodytagId, nameof(bodytagId), required: false);
             return new DeferredBodyAction<TimeLog>(() =>
             {
                 var apiCallPath = "/api/logs/powerautomate";
@@ -306,10 +282,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myhours")]
         public IBodyWorkflowAction<ActivityReportResponse> GetTimeLogs(Expression<Func<string>> dateFrom, Expression<Func<string>> dateTo)
         {
-            var __workflow_dateFrom = dateFrom == null ? null : WorkflowExpression.Compile(dateFrom);
-            WorkflowExpression.Validate(__workflow_dateFrom, nameof(dateFrom), required: true);
-            var __workflow_dateTo = dateTo == null ? null : WorkflowExpression.Compile(dateTo);
-            WorkflowExpression.Validate(__workflow_dateTo, nameof(dateTo), required: true);
+            var __workflow_dateFrom = WorkflowExpression.Compile(dateFrom, nameof(dateFrom), required: true);
+            var __workflow_dateTo = WorkflowExpression.Compile(dateTo, nameof(dateTo), required: true);
             return new DeferredBodyAction<ActivityReportResponse>(() =>
             {
                 var apiCallPath = "/api/reports/activityPowerAutomate";

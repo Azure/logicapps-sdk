@@ -31,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<GroupMemberResponse> GroupMember(Expression<Func<string>> groupID)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
             return new DeferredBodyAction<GroupMemberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/members/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -45,10 +44,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<GroupMemberDetailResponse> GroupMemberDetail(Expression<Func<string>> groupID, Expression<Func<string>> memberID)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_memberID = memberID == null ? null : WorkflowExpression.Compile(memberID);
-            WorkflowExpression.Validate(__workflow_memberID, nameof(memberID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_memberID = WorkflowExpression.Compile(memberID, nameof(memberID), required: true);
             return new DeferredBodyAction<GroupMemberDetailResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/members/{1}/details/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberID, 1));
@@ -61,14 +58,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<GroupUserAddResponse> GroupUserAdd(Expression<Func<string>> groupID, Expression<Func<string>> bodyemailaddress, Expression<Func<string>> bodyfirstname, Expression<Func<string>> bodylastname)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_bodyemailaddress = bodyemailaddress == null ? null : WorkflowExpression.Compile(bodyemailaddress);
-            WorkflowExpression.Validate(__workflow_bodyemailaddress, nameof(bodyemailaddress), required: true);
-            var __workflow_bodyfirstname = bodyfirstname == null ? null : WorkflowExpression.Compile(bodyfirstname);
-            WorkflowExpression.Validate(__workflow_bodyfirstname, nameof(bodyfirstname), required: true);
-            var __workflow_bodylastname = bodylastname == null ? null : WorkflowExpression.Compile(bodylastname);
-            WorkflowExpression.Validate(__workflow_bodylastname, nameof(bodylastname), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyemailaddress = WorkflowExpression.Compile(bodyemailaddress, nameof(bodyemailaddress), required: true);
+            var __workflow_bodyfirstname = WorkflowExpression.Compile(bodyfirstname, nameof(bodyfirstname), required: true);
+            var __workflow_bodylastname = WorkflowExpression.Compile(bodylastname, nameof(bodylastname), required: true);
             return new DeferredBodyAction<GroupUserAddResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/members/create/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -139,8 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<ReportSignUpResponse> ReportSignUp(Expression<Func<string>> signUpID)
         {
-            var __workflow_signUpID = signUpID == null ? null : WorkflowExpression.Compile(signUpID);
-            WorkflowExpression.Validate(__workflow_signUpID, nameof(signUpID), required: true);
+            var __workflow_signUpID = WorkflowExpression.Compile(signUpID, nameof(signUpID), required: true);
             return new DeferredBodyAction<ReportSignUpResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signups/report/all/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signUpID, 1));
@@ -153,8 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<ReportSignUpSlotResponse> ReportSignUpSlot(Expression<Func<string>> signUpID)
         {
-            var __workflow_signUpID = signUpID == null ? null : WorkflowExpression.Compile(signUpID);
-            WorkflowExpression.Validate(__workflow_signUpID, nameof(signUpID), required: true);
+            var __workflow_signUpID = WorkflowExpression.Compile(signUpID, nameof(signUpID), required: true);
             return new DeferredBodyAction<ReportSignUpSlotResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signups/report/available/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signUpID, 1));
@@ -167,8 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
         public IBodyWorkflowAction<ReportSignupFilledResponse> ReportSignupFilled(Expression<Func<string>> signUpID)
         {
-            var __workflow_signUpID = signUpID == null ? null : WorkflowExpression.Compile(signUpID);
-            WorkflowExpression.Validate(__workflow_signUpID, nameof(signUpID), required: true);
+            var __workflow_signUpID = WorkflowExpression.Compile(signUpID, nameof(signUpID), required: true);
             return new DeferredBodyAction<ReportSignupFilledResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signups/report/filled/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_signUpID, 1));

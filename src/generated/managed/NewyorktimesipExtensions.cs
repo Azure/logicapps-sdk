@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_beginDate = beginDate == null ? null : WorkflowExpression.Compile(beginDate);
-            WorkflowExpression.Validate(__workflow_beginDate, nameof(beginDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_beginDate = WorkflowExpression.Compile(beginDate, nameof(beginDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             return new DeferredBodyAction<ArticleSearchResponse>(() =>
             {
                 var apiCallPath = "/search/v2/articlesearch.json";
@@ -36,8 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
         {
-            var __workflow_section = section == null ? null : WorkflowExpression.Compile(section);
-            WorkflowExpression.Validate(__workflow_section, nameof(section), required: true);
+            var __workflow_section = WorkflowExpression.Compile(section, nameof(section), required: true);
             return new DeferredBodyAction<TopStoriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_section, 1));
@@ -50,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
         public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
         {
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<MostViewedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));

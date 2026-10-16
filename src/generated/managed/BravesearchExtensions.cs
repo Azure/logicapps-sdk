@@ -13,56 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<WebSearchGetResponse> WebSearchGet(Expression<Func<string>> q, Expression<Func<cacheControlInput>> cacheControl = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> xLocLat = null, Expression<Func<string>> xLocLong = null, Expression<Func<string>> xLocTimezone = null, Expression<Func<string>> xLocCity = null, Expression<Func<string>> xLocState = null, Expression<Func<string>> xLocStateName = null, Expression<Func<string>> xLocCountry = null, Expression<Func<string>> xLocPostalCode = null, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<uiLangInput>> uiLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<string>> freshness = null, Expression<Func<bool>> textDecorations = null, Expression<Func<bool>> spellcheck = null, Expression<Func<string>> resultFilter = null, Expression<Func<string>> gogglesId = null, Expression<Func<string>> units = null, Expression<Func<bool>> extraSnippets = null, Expression<Func<bool>> summary = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_cacheControl = cacheControl == null ? null : WorkflowExpression.Compile(cacheControl);
-            WorkflowExpression.Validate(__workflow_cacheControl, nameof(cacheControl), required: false);
-            var __workflow_userAgent = userAgent == null ? null : WorkflowExpression.Compile(userAgent);
-            WorkflowExpression.Validate(__workflow_userAgent, nameof(userAgent), required: false);
-            var __workflow_xLocLat = xLocLat == null ? null : WorkflowExpression.Compile(xLocLat);
-            WorkflowExpression.Validate(__workflow_xLocLat, nameof(xLocLat), required: false);
-            var __workflow_xLocLong = xLocLong == null ? null : WorkflowExpression.Compile(xLocLong);
-            WorkflowExpression.Validate(__workflow_xLocLong, nameof(xLocLong), required: false);
-            var __workflow_xLocTimezone = xLocTimezone == null ? null : WorkflowExpression.Compile(xLocTimezone);
-            WorkflowExpression.Validate(__workflow_xLocTimezone, nameof(xLocTimezone), required: false);
-            var __workflow_xLocCity = xLocCity == null ? null : WorkflowExpression.Compile(xLocCity);
-            WorkflowExpression.Validate(__workflow_xLocCity, nameof(xLocCity), required: false);
-            var __workflow_xLocState = xLocState == null ? null : WorkflowExpression.Compile(xLocState);
-            WorkflowExpression.Validate(__workflow_xLocState, nameof(xLocState), required: false);
-            var __workflow_xLocStateName = xLocStateName == null ? null : WorkflowExpression.Compile(xLocStateName);
-            WorkflowExpression.Validate(__workflow_xLocStateName, nameof(xLocStateName), required: false);
-            var __workflow_xLocCountry = xLocCountry == null ? null : WorkflowExpression.Compile(xLocCountry);
-            WorkflowExpression.Validate(__workflow_xLocCountry, nameof(xLocCountry), required: false);
-            var __workflow_xLocPostalCode = xLocPostalCode == null ? null : WorkflowExpression.Compile(xLocPostalCode);
-            WorkflowExpression.Validate(__workflow_xLocPostalCode, nameof(xLocPostalCode), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
-            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
-            var __workflow_uiLang = uiLang == null ? null : WorkflowExpression.Compile(uiLang);
-            WorkflowExpression.Validate(__workflow_uiLang, nameof(uiLang), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
-            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
-            var __workflow_freshness = freshness == null ? null : WorkflowExpression.Compile(freshness);
-            WorkflowExpression.Validate(__workflow_freshness, nameof(freshness), required: false);
-            var __workflow_textDecorations = textDecorations == null ? null : WorkflowExpression.Compile(textDecorations);
-            WorkflowExpression.Validate(__workflow_textDecorations, nameof(textDecorations), required: false);
-            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
-            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
-            var __workflow_resultFilter = resultFilter == null ? null : WorkflowExpression.Compile(resultFilter);
-            WorkflowExpression.Validate(__workflow_resultFilter, nameof(resultFilter), required: false);
-            var __workflow_gogglesId = gogglesId == null ? null : WorkflowExpression.Compile(gogglesId);
-            WorkflowExpression.Validate(__workflow_gogglesId, nameof(gogglesId), required: false);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: false);
-            var __workflow_extraSnippets = extraSnippets == null ? null : WorkflowExpression.Compile(extraSnippets);
-            WorkflowExpression.Validate(__workflow_extraSnippets, nameof(extraSnippets), required: false);
-            var __workflow_summary = summary == null ? null : WorkflowExpression.Compile(summary);
-            WorkflowExpression.Validate(__workflow_summary, nameof(summary), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_cacheControl = WorkflowExpression.Compile(cacheControl, nameof(cacheControl), required: false);
+            var __workflow_userAgent = WorkflowExpression.Compile(userAgent, nameof(userAgent), required: false);
+            var __workflow_xLocLat = WorkflowExpression.Compile(xLocLat, nameof(xLocLat), required: false);
+            var __workflow_xLocLong = WorkflowExpression.Compile(xLocLong, nameof(xLocLong), required: false);
+            var __workflow_xLocTimezone = WorkflowExpression.Compile(xLocTimezone, nameof(xLocTimezone), required: false);
+            var __workflow_xLocCity = WorkflowExpression.Compile(xLocCity, nameof(xLocCity), required: false);
+            var __workflow_xLocState = WorkflowExpression.Compile(xLocState, nameof(xLocState), required: false);
+            var __workflow_xLocStateName = WorkflowExpression.Compile(xLocStateName, nameof(xLocStateName), required: false);
+            var __workflow_xLocCountry = WorkflowExpression.Compile(xLocCountry, nameof(xLocCountry), required: false);
+            var __workflow_xLocPostalCode = WorkflowExpression.Compile(xLocPostalCode, nameof(xLocPostalCode), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_searchLang = WorkflowExpression.Compile(searchLang, nameof(searchLang), required: false);
+            var __workflow_uiLang = WorkflowExpression.Compile(uiLang, nameof(uiLang), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_safesearch = WorkflowExpression.Compile(safesearch, nameof(safesearch), required: false);
+            var __workflow_freshness = WorkflowExpression.Compile(freshness, nameof(freshness), required: false);
+            var __workflow_textDecorations = WorkflowExpression.Compile(textDecorations, nameof(textDecorations), required: false);
+            var __workflow_spellcheck = WorkflowExpression.Compile(spellcheck, nameof(spellcheck), required: false);
+            var __workflow_resultFilter = WorkflowExpression.Compile(resultFilter, nameof(resultFilter), required: false);
+            var __workflow_gogglesId = WorkflowExpression.Compile(gogglesId, nameof(gogglesId), required: false);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: false);
+            var __workflow_extraSnippets = WorkflowExpression.Compile(extraSnippets, nameof(extraSnippets), required: false);
+            var __workflow_summary = WorkflowExpression.Compile(summary, nameof(summary), required: false);
             return new DeferredBodyAction<WebSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/web/search";
@@ -130,18 +105,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<ImageSearchGetResponse> ImageSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
-            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
-            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
-            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
-            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_searchLang = WorkflowExpression.Compile(searchLang, nameof(searchLang), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_safesearch = WorkflowExpression.Compile(safesearch, nameof(safesearch), required: false);
+            var __workflow_spellcheck = WorkflowExpression.Compile(spellcheck, nameof(spellcheck), required: false);
             return new DeferredBodyAction<ImageSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/images/search";
@@ -170,18 +139,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<VideoSearchGetResponse> VideoSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
-            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
-            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
-            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
-            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_searchLang = WorkflowExpression.Compile(searchLang, nameof(searchLang), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_safesearch = WorkflowExpression.Compile(safesearch, nameof(safesearch), required: false);
+            var __workflow_spellcheck = WorkflowExpression.Compile(spellcheck, nameof(spellcheck), required: false);
             return new DeferredBodyAction<VideoSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/videos/search";
@@ -210,24 +173,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<NewsSearchGetResponse> NewsSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null, Expression<Func<freshnessInput>> freshness = null, Expression<Func<bool>> extraSnippets = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_searchLang = searchLang == null ? null : WorkflowExpression.Compile(searchLang);
-            WorkflowExpression.Validate(__workflow_searchLang, nameof(searchLang), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_safesearch = safesearch == null ? null : WorkflowExpression.Compile(safesearch);
-            WorkflowExpression.Validate(__workflow_safesearch, nameof(safesearch), required: false);
-            var __workflow_spellcheck = spellcheck == null ? null : WorkflowExpression.Compile(spellcheck);
-            WorkflowExpression.Validate(__workflow_spellcheck, nameof(spellcheck), required: false);
-            var __workflow_freshness = freshness == null ? null : WorkflowExpression.Compile(freshness);
-            WorkflowExpression.Validate(__workflow_freshness, nameof(freshness), required: false);
-            var __workflow_extraSnippets = extraSnippets == null ? null : WorkflowExpression.Compile(extraSnippets);
-            WorkflowExpression.Validate(__workflow_extraSnippets, nameof(extraSnippets), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_searchLang = WorkflowExpression.Compile(searchLang, nameof(searchLang), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_safesearch = WorkflowExpression.Compile(safesearch, nameof(safesearch), required: false);
+            var __workflow_spellcheck = WorkflowExpression.Compile(spellcheck, nameof(spellcheck), required: false);
+            var __workflow_freshness = WorkflowExpression.Compile(freshness, nameof(freshness), required: false);
+            var __workflow_extraSnippets = WorkflowExpression.Compile(extraSnippets, nameof(extraSnippets), required: false);
             return new DeferredBodyAction<NewsSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/news/search";
@@ -262,16 +216,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<SuggestionSearchGetResponse> SuggestionSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null, Expression<Func<int>> count = null, Expression<Func<bool>> rich = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_rich = rich == null ? null : WorkflowExpression.Compile(rich);
-            WorkflowExpression.Validate(__workflow_rich, nameof(rich), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_rich = WorkflowExpression.Compile(rich, nameof(rich), required: false);
             return new DeferredBodyAction<SuggestionSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/suggest/search";
@@ -296,12 +245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
         public IBodyWorkflowAction<SpellcheckSearchGetResponse> SpellcheckSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             return new DeferredBodyAction<SpellcheckSearchGetResponse>(() =>
             {
                 var apiCallPath = "/res/v1/spellcheck/search";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> bodydisplayName, Expression<Func<bodymembersInputItem[]>> bodymembers = null)
         {
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
-            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: false);
             return new DeferredBodyAction<CreateGroupResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CreateGroup";
@@ -44,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<GroupInfoByIdResponse> GroupInfoById(Expression<Func<string>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<GroupInfoByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/GroupInfoById";
@@ -67,12 +64,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ListGroupsResponse> ListGroups(Expression<Func<int>> bodystartIndex = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfilter = null)
         {
-            var __workflow_bodystartIndex = bodystartIndex == null ? null : WorkflowExpression.Compile(bodystartIndex);
-            WorkflowExpression.Validate(__workflow_bodystartIndex, nameof(bodystartIndex), required: false);
-            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
-            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodystartIndex = WorkflowExpression.Compile(bodystartIndex, nameof(bodystartIndex), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
             return new DeferredBodyAction<ListGroupsResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/ListGroups";
@@ -110,8 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UserInfoResponse> GetUser(Expression<Func<int>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<UserInfoResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/GetUser";
@@ -133,12 +126,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UserListResponse> GetUserList(Expression<Func<int>> bodystartIndex = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfilter = null)
         {
-            var __workflow_bodystartIndex = bodystartIndex == null ? null : WorkflowExpression.Compile(bodystartIndex);
-            WorkflowExpression.Validate(__workflow_bodystartIndex, nameof(bodystartIndex), required: false);
-            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
-            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodystartIndex = WorkflowExpression.Compile(bodystartIndex, nameof(bodystartIndex), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
             return new DeferredBodyAction<UserListResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/GetUserList";
@@ -176,30 +166,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UpdateUserResponse> UpdateUser(Expression<Func<int>> bodyid, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodynamegivenName = null, Expression<Func<string>> bodynamefamilyName = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bool>> bodysendInvite = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodyauthTypeInput>> bodyauthType = null, Expression<Func<bodyuserTypeInput>> bodyuserType = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodyidpUserId = null, Expression<Func<string>> bodyuserPrincipalName = null)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodynamegivenName = bodynamegivenName == null ? null : WorkflowExpression.Compile(bodynamegivenName);
-            WorkflowExpression.Validate(__workflow_bodynamegivenName, nameof(bodynamegivenName), required: false);
-            var __workflow_bodynamefamilyName = bodynamefamilyName == null ? null : WorkflowExpression.Compile(bodynamefamilyName);
-            WorkflowExpression.Validate(__workflow_bodynamefamilyName, nameof(bodynamefamilyName), required: false);
-            var __workflow_bodyactive = bodyactive == null ? null : WorkflowExpression.Compile(bodyactive);
-            WorkflowExpression.Validate(__workflow_bodyactive, nameof(bodyactive), required: false);
-            var __workflow_bodysendInvite = bodysendInvite == null ? null : WorkflowExpression.Compile(bodysendInvite);
-            WorkflowExpression.Validate(__workflow_bodysendInvite, nameof(bodysendInvite), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyauthType = bodyauthType == null ? null : WorkflowExpression.Compile(bodyauthType);
-            WorkflowExpression.Validate(__workflow_bodyauthType, nameof(bodyauthType), required: false);
-            var __workflow_bodyuserType = bodyuserType == null ? null : WorkflowExpression.Compile(bodyuserType);
-            WorkflowExpression.Validate(__workflow_bodyuserType, nameof(bodyuserType), required: false);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: false);
-            var __workflow_bodyidpUserId = bodyidpUserId == null ? null : WorkflowExpression.Compile(bodyidpUserId);
-            WorkflowExpression.Validate(__workflow_bodyidpUserId, nameof(bodyidpUserId), required: false);
-            var __workflow_bodyuserPrincipalName = bodyuserPrincipalName == null ? null : WorkflowExpression.Compile(bodyuserPrincipalName);
-            WorkflowExpression.Validate(__workflow_bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodynamegivenName = WorkflowExpression.Compile(bodynamegivenName, nameof(bodynamegivenName), required: false);
+            var __workflow_bodynamefamilyName = WorkflowExpression.Compile(bodynamefamilyName, nameof(bodynamefamilyName), required: false);
+            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
+            var __workflow_bodysendInvite = WorkflowExpression.Compile(bodysendInvite, nameof(bodysendInvite), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyauthType = WorkflowExpression.Compile(bodyauthType, nameof(bodyauthType), required: false);
+            var __workflow_bodyuserType = WorkflowExpression.Compile(bodyuserType, nameof(bodyuserType), required: false);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
+            var __workflow_bodyidpUserId = WorkflowExpression.Compile(bodyidpUserId, nameof(bodyidpUserId), required: false);
+            var __workflow_bodyuserPrincipalName = WorkflowExpression.Compile(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
             return new DeferredBodyAction<UpdateUserResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/UpdateUser";
@@ -295,34 +273,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyuserName, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyactive, Expression<Func<bodyuserTypeInput>> bodyuserType, Expression<Func<bodyauthTypeInput>> bodyauthType, Expression<Func<string>> bodynamegivenName = null, Expression<Func<string>> bodynamefamilyName = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodysendInvite = null, Expression<Func<bool>> bodyisServiceAccount = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodyidpUserId = null, Expression<Func<string>> bodyuserPrincipalName = null)
         {
-            var __workflow_bodyuserName = bodyuserName == null ? null : WorkflowExpression.Compile(bodyuserName);
-            WorkflowExpression.Validate(__workflow_bodyuserName, nameof(bodyuserName), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyactive = bodyactive == null ? null : WorkflowExpression.Compile(bodyactive);
-            WorkflowExpression.Validate(__workflow_bodyactive, nameof(bodyactive), required: true);
-            var __workflow_bodyuserType = bodyuserType == null ? null : WorkflowExpression.Compile(bodyuserType);
-            WorkflowExpression.Validate(__workflow_bodyuserType, nameof(bodyuserType), required: true);
-            var __workflow_bodyauthType = bodyauthType == null ? null : WorkflowExpression.Compile(bodyauthType);
-            WorkflowExpression.Validate(__workflow_bodyauthType, nameof(bodyauthType), required: true);
-            var __workflow_bodynamegivenName = bodynamegivenName == null ? null : WorkflowExpression.Compile(bodynamegivenName);
-            WorkflowExpression.Validate(__workflow_bodynamegivenName, nameof(bodynamegivenName), required: false);
-            var __workflow_bodynamefamilyName = bodynamefamilyName == null ? null : WorkflowExpression.Compile(bodynamefamilyName);
-            WorkflowExpression.Validate(__workflow_bodynamefamilyName, nameof(bodynamefamilyName), required: false);
-            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
-            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
-            var __workflow_bodysendInvite = bodysendInvite == null ? null : WorkflowExpression.Compile(bodysendInvite);
-            WorkflowExpression.Validate(__workflow_bodysendInvite, nameof(bodysendInvite), required: false);
-            var __workflow_bodyisServiceAccount = bodyisServiceAccount == null ? null : WorkflowExpression.Compile(bodyisServiceAccount);
-            WorkflowExpression.Validate(__workflow_bodyisServiceAccount, nameof(bodyisServiceAccount), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: false);
-            var __workflow_bodyidpUserId = bodyidpUserId == null ? null : WorkflowExpression.Compile(bodyidpUserId);
-            WorkflowExpression.Validate(__workflow_bodyidpUserId, nameof(bodyidpUserId), required: false);
-            var __workflow_bodyuserPrincipalName = bodyuserPrincipalName == null ? null : WorkflowExpression.Compile(bodyuserPrincipalName);
-            WorkflowExpression.Validate(__workflow_bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            var __workflow_bodyuserName = WorkflowExpression.Compile(bodyuserName, nameof(bodyuserName), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: true);
+            var __workflow_bodyuserType = WorkflowExpression.Compile(bodyuserType, nameof(bodyuserType), required: true);
+            var __workflow_bodyauthType = WorkflowExpression.Compile(bodyauthType, nameof(bodyauthType), required: true);
+            var __workflow_bodynamegivenName = WorkflowExpression.Compile(bodynamegivenName, nameof(bodynamegivenName), required: false);
+            var __workflow_bodynamefamilyName = WorkflowExpression.Compile(bodynamefamilyName, nameof(bodynamefamilyName), required: false);
+            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodysendInvite = WorkflowExpression.Compile(bodysendInvite, nameof(bodysendInvite), required: false);
+            var __workflow_bodyisServiceAccount = WorkflowExpression.Compile(bodyisServiceAccount, nameof(bodyisServiceAccount), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
+            var __workflow_bodyidpUserId = WorkflowExpression.Compile(bodyidpUserId, nameof(bodyidpUserId), required: false);
+            var __workflow_bodyuserPrincipalName = WorkflowExpression.Compile(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
             return new DeferredBodyAction<CreateUserResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CreateUser";
@@ -414,8 +378,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteUser(Expression<Func<int>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteUser";
@@ -437,8 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateFolderResponse> CreateFolder(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<CreateFolderResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CreateFolder";
@@ -460,8 +422,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFileByPathResponse> DeleteFileByPath(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<DeleteFileByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteFileByPath";
@@ -483,8 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFolderByPathResponse> DeleteFolderByPath(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<DeleteFolderByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteFolderByPath";
@@ -506,8 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFolderByIdResponse> DeleteFolderById(Expression<Func<string>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<DeleteFolderByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteFolderById";
@@ -529,8 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeleteFileByIdResponse> DeleteFileById(Expression<Func<string>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<DeleteFileByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteFileById";
@@ -552,10 +510,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFileByPathResponse> CopyFileByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<CopyFileByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CopyFileByPath";
@@ -579,10 +535,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFolderByPathResponse> CopyFolderByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<CopyFolderByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CopyFolderByPath";
@@ -606,12 +560,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FullGroupUpdateResponse> FullGroupUpdate(Expression<Func<string>> bodyid, Expression<Func<string>> bodydisplayName, Expression<Func<bodymembersInputItem2[]>> bodymembers = null)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
-            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: false);
             return new DeferredBodyAction<FullGroupUpdateResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/FullGroupUpdate";
@@ -641,12 +592,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<PartialGroupUpdateResponse> PartialGroupUpdate(Expression<Func<string>> bodyid, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodymembersInputItem22[]>> bodymembers = null)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
-            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: false);
             return new DeferredBodyAction<PartialGroupUpdateResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/PartialGroupUpdate";
@@ -680,8 +628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteGroup(Expression<Func<string>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteGroup";
@@ -703,10 +650,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFileByIdResponse> CopyFileById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<CopyFileByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CopyFileById";
@@ -730,10 +675,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CopyFolderByIdResponse> CopyFolderById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<CopyFolderByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CopyFolderById";
@@ -757,10 +700,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFileByPathResponse> MoveFileByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<MoveFileByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/MoveFileByPath";
@@ -784,10 +725,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFolderByPathResponse> MoveFolderByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<MoveFolderByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/MoveFolderByPath";
@@ -811,10 +750,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFileByIdResponse> MoveFileById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<MoveFileByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/MoveFileById";
@@ -838,10 +775,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MoveFolderByIdResponse> MoveFolderById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodydestinationPath = bodydestinationPath == null ? null : WorkflowExpression.Compile(bodydestinationPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationPath, nameof(bodydestinationPath), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodydestinationPath = WorkflowExpression.Compile(bodydestinationPath, nameof(bodydestinationPath), required: true);
             return new DeferredBodyAction<MoveFolderByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/MoveFolderById";
@@ -865,8 +800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ShareFileResponse> ShareFile(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<ShareFileResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/ShareFile";
@@ -888,8 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ShareFolderResponse> ShareFolder(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<ShareFolderResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/ShareFolder";
@@ -911,8 +844,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FileInfoResponse> FileInfoByPath(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<FileInfoResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/FileInfoByPath";
@@ -934,8 +866,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FolderInfoResponse> FolderInfoByPath(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<FolderInfoResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/FolderInfoByPath";
@@ -957,20 +888,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ModifyFolderOptionsResponse> ModifyFolderOptions(Expression<Func<string>> bodypath, Expression<Func<string>> bodyfolderDescription = null, Expression<Func<bool>> bodyallowLinks = null, Expression<Func<bodypublicLinksInput>> bodypublicLinks = null, Expression<Func<bool>> bodyrestrictMoveDelete = null, Expression<Func<bool>> bodyemailPreferencescontentUpdates = null, Expression<Func<bool>> bodyemailPreferencescontentAccessed = null)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyfolderDescription = bodyfolderDescription == null ? null : WorkflowExpression.Compile(bodyfolderDescription);
-            WorkflowExpression.Validate(__workflow_bodyfolderDescription, nameof(bodyfolderDescription), required: false);
-            var __workflow_bodyallowLinks = bodyallowLinks == null ? null : WorkflowExpression.Compile(bodyallowLinks);
-            WorkflowExpression.Validate(__workflow_bodyallowLinks, nameof(bodyallowLinks), required: false);
-            var __workflow_bodypublicLinks = bodypublicLinks == null ? null : WorkflowExpression.Compile(bodypublicLinks);
-            WorkflowExpression.Validate(__workflow_bodypublicLinks, nameof(bodypublicLinks), required: false);
-            var __workflow_bodyrestrictMoveDelete = bodyrestrictMoveDelete == null ? null : WorkflowExpression.Compile(bodyrestrictMoveDelete);
-            WorkflowExpression.Validate(__workflow_bodyrestrictMoveDelete, nameof(bodyrestrictMoveDelete), required: false);
-            var __workflow_bodyemailPreferencescontentUpdates = bodyemailPreferencescontentUpdates == null ? null : WorkflowExpression.Compile(bodyemailPreferencescontentUpdates);
-            WorkflowExpression.Validate(__workflow_bodyemailPreferencescontentUpdates, nameof(bodyemailPreferencescontentUpdates), required: false);
-            var __workflow_bodyemailPreferencescontentAccessed = bodyemailPreferencescontentAccessed == null ? null : WorkflowExpression.Compile(bodyemailPreferencescontentAccessed);
-            WorkflowExpression.Validate(__workflow_bodyemailPreferencescontentAccessed, nameof(bodyemailPreferencescontentAccessed), required: false);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodyfolderDescription = WorkflowExpression.Compile(bodyfolderDescription, nameof(bodyfolderDescription), required: false);
+            var __workflow_bodyallowLinks = WorkflowExpression.Compile(bodyallowLinks, nameof(bodyallowLinks), required: false);
+            var __workflow_bodypublicLinks = WorkflowExpression.Compile(bodypublicLinks, nameof(bodypublicLinks), required: false);
+            var __workflow_bodyrestrictMoveDelete = WorkflowExpression.Compile(bodyrestrictMoveDelete, nameof(bodyrestrictMoveDelete), required: false);
+            var __workflow_bodyemailPreferencescontentUpdates = WorkflowExpression.Compile(bodyemailPreferencescontentUpdates, nameof(bodyemailPreferencescontentUpdates), required: false);
+            var __workflow_bodyemailPreferencescontentAccessed = WorkflowExpression.Compile(bodyemailPreferencescontentAccessed, nameof(bodyemailPreferencescontentAccessed), required: false);
             return new DeferredBodyAction<ModifyFolderOptionsResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/ModifyFolderOptions";
@@ -1036,8 +960,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FileInfoResponse> FileInfoById(Expression<Func<string>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<FileInfoResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/FileInfoById";
@@ -1059,8 +982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<FolderInfoResponse> FolderInfoById(Expression<Func<string>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<FolderInfoResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/FolderInfoById";
@@ -1082,8 +1004,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<LockFileByPathResponse> LockFileByPath(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<LockFileByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/LockFileByPath";
@@ -1105,10 +1026,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction UnlockFileByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodylockToken)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodylockToken = bodylockToken == null ? null : WorkflowExpression.Compile(bodylockToken);
-            WorkflowExpression.Validate(__workflow_bodylockToken, nameof(bodylockToken), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodylockToken = WorkflowExpression.Compile(bodylockToken, nameof(bodylockToken), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/UnlockFileByPath";
@@ -1132,8 +1051,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<LockFileByIdResponse> LockFileById(Expression<Func<string>> bodyid)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<LockFileByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/LockFileById";
@@ -1155,10 +1073,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction UnlockFileById(Expression<Func<string>> bodyid, Expression<Func<string>> bodylockToken)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodylockToken = bodylockToken == null ? null : WorkflowExpression.Compile(bodylockToken);
-            WorkflowExpression.Validate(__workflow_bodylockToken, nameof(bodylockToken), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodylockToken = WorkflowExpression.Compile(bodylockToken, nameof(bodylockToken), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/UnlockFileById";
@@ -1182,8 +1098,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetFileContentByPath(Expression<Func<string>> bodyfilePath)
         {
-            var __workflow_bodyfilePath = bodyfilePath == null ? null : WorkflowExpression.Compile(bodyfilePath);
-            WorkflowExpression.Validate(__workflow_bodyfilePath, nameof(bodyfilePath), required: true);
+            var __workflow_bodyfilePath = WorkflowExpression.Compile(bodyfilePath, nameof(bodyfilePath), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/DownloadFileByPath";
@@ -1205,8 +1120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetFileContentById(Expression<Func<string>> bodyfileId)
         {
-            var __workflow_bodyfileId = bodyfileId == null ? null : WorkflowExpression.Compile(bodyfileId);
-            WorkflowExpression.Validate(__workflow_bodyfileId, nameof(bodyfileId), required: true);
+            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/DownloadFileById";
@@ -1228,12 +1142,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateFileResponse> CreateFile(Expression<Func<string>> name, Expression<Func<string>> path, Expression<Func<string>> body = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreateFileResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/UploadFile";
@@ -1249,14 +1160,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SetMetadataByFileId(Expression<Func<string>> bodyfileId, Expression<Func<string>> bodynamespaceName, Expression<Func<string>> bodymetadataName, Expression<Func<string>> bodymetadataValue = null)
         {
-            var __workflow_bodyfileId = bodyfileId == null ? null : WorkflowExpression.Compile(bodyfileId);
-            WorkflowExpression.Validate(__workflow_bodyfileId, nameof(bodyfileId), required: true);
-            var __workflow_bodynamespaceName = bodynamespaceName == null ? null : WorkflowExpression.Compile(bodynamespaceName);
-            WorkflowExpression.Validate(__workflow_bodynamespaceName, nameof(bodynamespaceName), required: true);
-            var __workflow_bodymetadataName = bodymetadataName == null ? null : WorkflowExpression.Compile(bodymetadataName);
-            WorkflowExpression.Validate(__workflow_bodymetadataName, nameof(bodymetadataName), required: true);
-            var __workflow_bodymetadataValue = bodymetadataValue == null ? null : WorkflowExpression.Compile(bodymetadataValue);
-            WorkflowExpression.Validate(__workflow_bodymetadataValue, nameof(bodymetadataValue), required: false);
+            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: true);
+            var __workflow_bodynamespaceName = WorkflowExpression.Compile(bodynamespaceName, nameof(bodynamespaceName), required: true);
+            var __workflow_bodymetadataName = WorkflowExpression.Compile(bodymetadataName, nameof(bodymetadataName), required: true);
+            var __workflow_bodymetadataValue = WorkflowExpression.Compile(bodymetadataValue, nameof(bodymetadataValue), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/SetMetadataByFileId";
@@ -1288,14 +1195,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SetMetadataByFolderId(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodynamespaceName, Expression<Func<string>> bodymetadataName, Expression<Func<string>> bodymetadataValue)
         {
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodynamespaceName = bodynamespaceName == null ? null : WorkflowExpression.Compile(bodynamespaceName);
-            WorkflowExpression.Validate(__workflow_bodynamespaceName, nameof(bodynamespaceName), required: true);
-            var __workflow_bodymetadataName = bodymetadataName == null ? null : WorkflowExpression.Compile(bodymetadataName);
-            WorkflowExpression.Validate(__workflow_bodymetadataName, nameof(bodymetadataName), required: true);
-            var __workflow_bodymetadataValue = bodymetadataValue == null ? null : WorkflowExpression.Compile(bodymetadataValue);
-            WorkflowExpression.Validate(__workflow_bodymetadataValue, nameof(bodymetadataValue), required: true);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodynamespaceName = WorkflowExpression.Compile(bodynamespaceName, nameof(bodynamespaceName), required: true);
+            var __workflow_bodymetadataName = WorkflowExpression.Compile(bodymetadataName, nameof(bodymetadataName), required: true);
+            var __workflow_bodymetadataValue = WorkflowExpression.Compile(bodymetadataValue, nameof(bodymetadataValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/SetMetadataByFolderId";
@@ -1332,14 +1235,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction CreateNamespace(Expression<Func<string>> bodyname, Expression<Func<bodyscopeInput>> bodyscope, Expression<Func<bodykeysInputItem[]>> bodykeys, Expression<Func<string>> bodydisplayName = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
-            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: true);
-            var __workflow_bodykeys = bodykeys == null ? null : WorkflowExpression.Compile(bodykeys);
-            WorkflowExpression.Validate(__workflow_bodykeys, nameof(bodykeys), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: true);
+            var __workflow_bodykeys = WorkflowExpression.Compile(bodykeys, nameof(bodykeys), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/CreateNamespace";
@@ -1371,10 +1270,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<NamespaceItem> UpdateNamespaceAttributes(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodydisplayName = null)
         {
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             return new DeferredBodyAction<NamespaceItem>(() =>
             {
                 var apiCallPath = "/api-proxy/UpdateNamespaceAttributes";
@@ -1410,20 +1307,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<UpdateNamespaceKeysResponse> UpdateNamespaceKeys(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyhelpText = null)
         {
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
-            var __workflow_bodyhelpText = bodyhelpText == null ? null : WorkflowExpression.Compile(bodyhelpText);
-            WorkflowExpression.Validate(__workflow_bodyhelpText, nameof(bodyhelpText), required: false);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyhelpText = WorkflowExpression.Compile(bodyhelpText, nameof(bodyhelpText), required: false);
             return new DeferredBodyAction<UpdateNamespaceKeysResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/UpdateNamespaceKeys";
@@ -1477,8 +1367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<NamespaceItem> GetNamespace(Expression<Func<string>> bodyNamespace)
         {
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
             return new DeferredBodyAction<NamespaceItem>(() =>
             {
                 var apiCallPath = "/api-proxy/GetNamespace";
@@ -1500,10 +1389,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteNamespace(Expression<Func<string>> bodyNamespace, Expression<Func<bool>> bodyforce = null)
         {
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
-            var __workflow_bodyforce = bodyforce == null ? null : WorkflowExpression.Compile(bodyforce);
-            WorkflowExpression.Validate(__workflow_bodyforce, nameof(bodyforce), required: false);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodyforce = WorkflowExpression.Compile(bodyforce, nameof(bodyforce), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteNamespace";
@@ -1540,18 +1427,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<MarkFolderAsProjectResponse> MarkFolderAsProject(Expression<Func<string>> bodyrootFolderId, Expression<Func<string>> bodyname, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodycompletionDate = null)
         {
-            var __workflow_bodyrootFolderId = bodyrootFolderId == null ? null : WorkflowExpression.Compile(bodyrootFolderId);
-            WorkflowExpression.Validate(__workflow_bodyrootFolderId, nameof(bodyrootFolderId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodycompletionDate = bodycompletionDate == null ? null : WorkflowExpression.Compile(bodycompletionDate);
-            WorkflowExpression.Validate(__workflow_bodycompletionDate, nameof(bodycompletionDate), required: false);
+            var __workflow_bodyrootFolderId = WorkflowExpression.Compile(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodycompletionDate = WorkflowExpression.Compile(bodycompletionDate, nameof(bodycompletionDate), required: false);
             return new DeferredBodyAction<MarkFolderAsProjectResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/MarkFolderAsProject";
@@ -1595,38 +1476,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateProjectFromTemplateResponse> CreateProjectFromTemplate(Expression<Func<string>> bodyparentFolderId, Expression<Func<string>> bodytemplateFolderId, Expression<Func<string>> bodyfolderName, Expression<Func<string>> bodyname, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodycustomerName = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodycompletionDate = null, Expression<Func<string>> bodylocationstreetAddress1 = null, Expression<Func<string>> bodylocationstreetAddress2 = null, Expression<Func<string>> bodylocationcity = null, Expression<Func<string>> bodylocationstate = null, Expression<Func<string>> bodylocationcountry = null, Expression<Func<string>> bodylocationpostalCode = null)
         {
-            var __workflow_bodyparentFolderId = bodyparentFolderId == null ? null : WorkflowExpression.Compile(bodyparentFolderId);
-            WorkflowExpression.Validate(__workflow_bodyparentFolderId, nameof(bodyparentFolderId), required: true);
-            var __workflow_bodytemplateFolderId = bodytemplateFolderId == null ? null : WorkflowExpression.Compile(bodytemplateFolderId);
-            WorkflowExpression.Validate(__workflow_bodytemplateFolderId, nameof(bodytemplateFolderId), required: true);
-            var __workflow_bodyfolderName = bodyfolderName == null ? null : WorkflowExpression.Compile(bodyfolderName);
-            WorkflowExpression.Validate(__workflow_bodyfolderName, nameof(bodyfolderName), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodycustomerName = bodycustomerName == null ? null : WorkflowExpression.Compile(bodycustomerName);
-            WorkflowExpression.Validate(__workflow_bodycustomerName, nameof(bodycustomerName), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodycompletionDate = bodycompletionDate == null ? null : WorkflowExpression.Compile(bodycompletionDate);
-            WorkflowExpression.Validate(__workflow_bodycompletionDate, nameof(bodycompletionDate), required: false);
-            var __workflow_bodylocationstreetAddress1 = bodylocationstreetAddress1 == null ? null : WorkflowExpression.Compile(bodylocationstreetAddress1);
-            WorkflowExpression.Validate(__workflow_bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
-            var __workflow_bodylocationstreetAddress2 = bodylocationstreetAddress2 == null ? null : WorkflowExpression.Compile(bodylocationstreetAddress2);
-            WorkflowExpression.Validate(__workflow_bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
-            var __workflow_bodylocationcity = bodylocationcity == null ? null : WorkflowExpression.Compile(bodylocationcity);
-            WorkflowExpression.Validate(__workflow_bodylocationcity, nameof(bodylocationcity), required: false);
-            var __workflow_bodylocationstate = bodylocationstate == null ? null : WorkflowExpression.Compile(bodylocationstate);
-            WorkflowExpression.Validate(__workflow_bodylocationstate, nameof(bodylocationstate), required: false);
-            var __workflow_bodylocationcountry = bodylocationcountry == null ? null : WorkflowExpression.Compile(bodylocationcountry);
-            WorkflowExpression.Validate(__workflow_bodylocationcountry, nameof(bodylocationcountry), required: false);
-            var __workflow_bodylocationpostalCode = bodylocationpostalCode == null ? null : WorkflowExpression.Compile(bodylocationpostalCode);
-            WorkflowExpression.Validate(__workflow_bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
+            var __workflow_bodyparentFolderId = WorkflowExpression.Compile(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
+            var __workflow_bodytemplateFolderId = WorkflowExpression.Compile(bodytemplateFolderId, nameof(bodytemplateFolderId), required: true);
+            var __workflow_bodyfolderName = WorkflowExpression.Compile(bodyfolderName, nameof(bodyfolderName), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodycustomerName = WorkflowExpression.Compile(bodycustomerName, nameof(bodycustomerName), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodycompletionDate = WorkflowExpression.Compile(bodycompletionDate, nameof(bodycompletionDate), required: false);
+            var __workflow_bodylocationstreetAddress1 = WorkflowExpression.Compile(bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
+            var __workflow_bodylocationstreetAddress2 = WorkflowExpression.Compile(bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
+            var __workflow_bodylocationcity = WorkflowExpression.Compile(bodylocationcity, nameof(bodylocationcity), required: false);
+            var __workflow_bodylocationstate = WorkflowExpression.Compile(bodylocationstate, nameof(bodylocationstate), required: false);
+            var __workflow_bodylocationcountry = WorkflowExpression.Compile(bodylocationcountry, nameof(bodylocationcountry), required: false);
+            var __workflow_bodylocationpostalCode = WorkflowExpression.Compile(bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
             return new DeferredBodyAction<CreateProjectFromTemplateResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CreateProjectFromTemplate";
@@ -1730,8 +1595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ProjectItem> GetProjectById(Expression<Func<string>> bodyprojectId)
         {
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
             return new DeferredBodyAction<ProjectItem>(() =>
             {
                 var apiCallPath = "/api-proxy/GetProjectById";
@@ -1753,34 +1617,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction UpdateProjectById(Expression<Func<string>> bodyname, Expression<Func<string>> bodyprojectId, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycustomProjectId = null, Expression<Func<string>> bodycustomerName = null, Expression<Func<string>> bodylocationstreetAddress1 = null, Expression<Func<string>> bodylocationstreetAddress2 = null, Expression<Func<string>> bodylocationcity = null, Expression<Func<string>> bodylocationstate = null, Expression<Func<string>> bodylocationpostalCode = null, Expression<Func<string>> bodylocationcountry = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodycompletionDate = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodycustomProjectId = bodycustomProjectId == null ? null : WorkflowExpression.Compile(bodycustomProjectId);
-            WorkflowExpression.Validate(__workflow_bodycustomProjectId, nameof(bodycustomProjectId), required: false);
-            var __workflow_bodycustomerName = bodycustomerName == null ? null : WorkflowExpression.Compile(bodycustomerName);
-            WorkflowExpression.Validate(__workflow_bodycustomerName, nameof(bodycustomerName), required: false);
-            var __workflow_bodylocationstreetAddress1 = bodylocationstreetAddress1 == null ? null : WorkflowExpression.Compile(bodylocationstreetAddress1);
-            WorkflowExpression.Validate(__workflow_bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
-            var __workflow_bodylocationstreetAddress2 = bodylocationstreetAddress2 == null ? null : WorkflowExpression.Compile(bodylocationstreetAddress2);
-            WorkflowExpression.Validate(__workflow_bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
-            var __workflow_bodylocationcity = bodylocationcity == null ? null : WorkflowExpression.Compile(bodylocationcity);
-            WorkflowExpression.Validate(__workflow_bodylocationcity, nameof(bodylocationcity), required: false);
-            var __workflow_bodylocationstate = bodylocationstate == null ? null : WorkflowExpression.Compile(bodylocationstate);
-            WorkflowExpression.Validate(__workflow_bodylocationstate, nameof(bodylocationstate), required: false);
-            var __workflow_bodylocationpostalCode = bodylocationpostalCode == null ? null : WorkflowExpression.Compile(bodylocationpostalCode);
-            WorkflowExpression.Validate(__workflow_bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
-            var __workflow_bodylocationcountry = bodylocationcountry == null ? null : WorkflowExpression.Compile(bodylocationcountry);
-            WorkflowExpression.Validate(__workflow_bodylocationcountry, nameof(bodylocationcountry), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodycompletionDate = bodycompletionDate == null ? null : WorkflowExpression.Compile(bodycompletionDate);
-            WorkflowExpression.Validate(__workflow_bodycompletionDate, nameof(bodycompletionDate), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodycustomProjectId = WorkflowExpression.Compile(bodycustomProjectId, nameof(bodycustomProjectId), required: false);
+            var __workflow_bodycustomerName = WorkflowExpression.Compile(bodycustomerName, nameof(bodycustomerName), required: false);
+            var __workflow_bodylocationstreetAddress1 = WorkflowExpression.Compile(bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
+            var __workflow_bodylocationstreetAddress2 = WorkflowExpression.Compile(bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
+            var __workflow_bodylocationcity = WorkflowExpression.Compile(bodylocationcity, nameof(bodylocationcity), required: false);
+            var __workflow_bodylocationstate = WorkflowExpression.Compile(bodylocationstate, nameof(bodylocationstate), required: false);
+            var __workflow_bodylocationpostalCode = WorkflowExpression.Compile(bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
+            var __workflow_bodylocationcountry = WorkflowExpression.Compile(bodylocationcountry, nameof(bodylocationcountry), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodycompletionDate = WorkflowExpression.Compile(bodycompletionDate, nameof(bodycompletionDate), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/UpdateProjectById";
@@ -1880,8 +1730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteProjectById(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api-proxy/DeleteProjectById/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -1894,8 +1743,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ProjectItem> GetProjectByRootFolderId(Expression<Func<string>> bodyrootFolderId)
         {
-            var __workflow_bodyrootFolderId = bodyrootFolderId == null ? null : WorkflowExpression.Compile(bodyrootFolderId);
-            WorkflowExpression.Validate(__workflow_bodyrootFolderId, nameof(bodyrootFolderId), required: true);
+            var __workflow_bodyrootFolderId = WorkflowExpression.Compile(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
             return new DeferredBodyAction<ProjectItem>(() =>
             {
                 var apiCallPath = "/api-proxy/GetProjectByRootFolderId";
@@ -1917,14 +1765,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CleanupProjectResponse> CleanupProject(Expression<Func<string>> bodyprojectId, Expression<Func<bool>> bodydeleteLinks, Expression<Func<int[]>> bodyusersToDelete = null, Expression<Func<int[]>> bodyusersToDisable = null)
         {
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
-            var __workflow_bodydeleteLinks = bodydeleteLinks == null ? null : WorkflowExpression.Compile(bodydeleteLinks);
-            WorkflowExpression.Validate(__workflow_bodydeleteLinks, nameof(bodydeleteLinks), required: true);
-            var __workflow_bodyusersToDelete = bodyusersToDelete == null ? null : WorkflowExpression.Compile(bodyusersToDelete);
-            WorkflowExpression.Validate(__workflow_bodyusersToDelete, nameof(bodyusersToDelete), required: false);
-            var __workflow_bodyusersToDisable = bodyusersToDisable == null ? null : WorkflowExpression.Compile(bodyusersToDisable);
-            WorkflowExpression.Validate(__workflow_bodyusersToDisable, nameof(bodyusersToDisable), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodydeleteLinks = WorkflowExpression.Compile(bodydeleteLinks, nameof(bodydeleteLinks), required: true);
+            var __workflow_bodyusersToDelete = WorkflowExpression.Compile(bodyusersToDelete, nameof(bodyusersToDelete), required: false);
+            var __workflow_bodyusersToDisable = WorkflowExpression.Compile(bodyusersToDisable, nameof(bodyusersToDisable), required: false);
             return new DeferredBodyAction<CleanupProjectResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CleanupProject";
@@ -1960,20 +1804,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction CreateMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydisplayName = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodyhelpText = null, Expression<Func<string[]>> bodydata = null)
         {
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyhelpText = bodyhelpText == null ? null : WorkflowExpression.Compile(bodyhelpText);
-            WorkflowExpression.Validate(__workflow_bodyhelpText, nameof(bodyhelpText), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyhelpText = WorkflowExpression.Compile(bodyhelpText, nameof(bodyhelpText), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/CreateMetadataKey";
@@ -2023,12 +1860,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bool>> bodyforce = null)
         {
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
-            var __workflow_bodyforce = bodyforce == null ? null : WorkflowExpression.Compile(bodyforce);
-            WorkflowExpression.Validate(__workflow_bodyforce, nameof(bodyforce), required: false);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyforce = WorkflowExpression.Compile(bodyforce, nameof(bodyforce), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteMetadataKey";
@@ -2058,10 +1892,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetMetadataByFileId(Expression<Func<string>> bodyfileId, Expression<Func<string>> bodyNamespace)
         {
-            var __workflow_bodyfileId = bodyfileId == null ? null : WorkflowExpression.Compile(bodyfileId);
-            WorkflowExpression.Validate(__workflow_bodyfileId, nameof(bodyfileId), required: true);
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodyfileId = WorkflowExpression.Compile(bodyfileId, nameof(bodyfileId), required: true);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/GetMetadataByFileId";
@@ -2085,10 +1917,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction GetMetadataByFolderId(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyNamespace)
         {
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyNamespace = bodyNamespace == null ? null : WorkflowExpression.Compile(bodyNamespace);
-            WorkflowExpression.Validate(__workflow_bodyNamespace, nameof(bodyNamespace), required: true);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodyNamespace = WorkflowExpression.Compile(bodyNamespace, nameof(bodyNamespace), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/GetMetadataByFolderId";
@@ -2112,12 +1942,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SearchMetadata(Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyhasKeyInputItem[]>> bodyhasKey = null, Expression<Func<bodykeyWithValueInputItem[]>> bodykeyWithValue = null)
         {
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyhasKey = bodyhasKey == null ? null : WorkflowExpression.Compile(bodyhasKey);
-            WorkflowExpression.Validate(__workflow_bodyhasKey, nameof(bodyhasKey), required: false);
-            var __workflow_bodykeyWithValue = bodykeyWithValue == null ? null : WorkflowExpression.Compile(bodykeyWithValue);
-            WorkflowExpression.Validate(__workflow_bodykeyWithValue, nameof(bodykeyWithValue), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyhasKey = WorkflowExpression.Compile(bodyhasKey, nameof(bodyhasKey), required: false);
+            var __workflow_bodykeyWithValue = WorkflowExpression.Compile(bodykeyWithValue, nameof(bodykeyWithValue), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/SearchMetadata";
@@ -2155,10 +1982,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<GetEffectivePermissionsResponse> GetEffectivePermissions(Expression<Func<string>> bodypath, Expression<Func<string>> bodyusername)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
             return new DeferredBodyAction<GetEffectivePermissionsResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/GetEffectivePermissions";
@@ -2182,12 +2007,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction SetFolderPermissions(Expression<Func<string>> bodypath, Expression<Func<bool>> bodyinheritsPermissions = null, Expression<Func<bool>> bodykeepParentPermissions = null)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodyinheritsPermissions = bodyinheritsPermissions == null ? null : WorkflowExpression.Compile(bodyinheritsPermissions);
-            WorkflowExpression.Validate(__workflow_bodyinheritsPermissions, nameof(bodyinheritsPermissions), required: false);
-            var __workflow_bodykeepParentPermissions = bodykeepParentPermissions == null ? null : WorkflowExpression.Compile(bodykeepParentPermissions);
-            WorkflowExpression.Validate(__workflow_bodykeepParentPermissions, nameof(bodykeepParentPermissions), required: false);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodyinheritsPermissions = WorkflowExpression.Compile(bodyinheritsPermissions, nameof(bodyinheritsPermissions), required: false);
+            var __workflow_bodykeepParentPermissions = WorkflowExpression.Compile(bodykeepParentPermissions, nameof(bodykeepParentPermissions), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/SetFolderPermissions";
@@ -2237,8 +2059,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<GetFolderPermissionsResponse> GetFolderPermissions(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<GetFolderPermissionsResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/GetFolderPermissions";
@@ -2260,10 +2081,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeepLinksByIdResponse> DeepLinksById(Expression<Func<string>> bodyid, Expression<Func<bodytypeInput>> bodytype)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             return new DeferredBodyAction<DeepLinksByIdResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/DeepLinksById";
@@ -2287,8 +2106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<DeepLinksByPathResponse> DeepLinksByPath(Expression<Func<string>> bodypath)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
             return new DeferredBodyAction<DeepLinksByPathResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/DeepLinksByPath";
@@ -2310,22 +2128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ListLinksResponse> ListLinks(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodycreatedBefore = null, Expression<Func<string>> bodycreatedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodycount = null)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodycreatedBefore = bodycreatedBefore == null ? null : WorkflowExpression.Compile(bodycreatedBefore);
-            WorkflowExpression.Validate(__workflow_bodycreatedBefore, nameof(bodycreatedBefore), required: false);
-            var __workflow_bodycreatedAfter = bodycreatedAfter == null ? null : WorkflowExpression.Compile(bodycreatedAfter);
-            WorkflowExpression.Validate(__workflow_bodycreatedAfter, nameof(bodycreatedAfter), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyaccessibility = bodyaccessibility == null ? null : WorkflowExpression.Compile(bodyaccessibility);
-            WorkflowExpression.Validate(__workflow_bodyaccessibility, nameof(bodyaccessibility), required: false);
-            var __workflow_bodyoffset = bodyoffset == null ? null : WorkflowExpression.Compile(bodyoffset);
-            WorkflowExpression.Validate(__workflow_bodyoffset, nameof(bodyoffset), required: false);
-            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
-            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodycreatedBefore = WorkflowExpression.Compile(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            var __workflow_bodycreatedAfter = WorkflowExpression.Compile(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyaccessibility = WorkflowExpression.Compile(bodyaccessibility, nameof(bodyaccessibility), required: false);
+            var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
             return new DeferredBodyAction<ListLinksResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/ListLinks";
@@ -2393,8 +2203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<ShowLinkDetailsResponse> ShowLinkDetails(Expression<Func<string>> bodylinkId)
         {
-            var __workflow_bodylinkId = bodylinkId == null ? null : WorkflowExpression.Compile(bodylinkId);
-            WorkflowExpression.Validate(__workflow_bodylinkId, nameof(bodylinkId), required: true);
+            var __workflow_bodylinkId = WorkflowExpression.Compile(bodylinkId, nameof(bodylinkId), required: true);
             return new DeferredBodyAction<ShowLinkDetailsResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/ShowLinkDetails";
@@ -2416,38 +2225,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<CreateLinkResponse> CreateLink(Expression<Func<string>> bodypath, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bool>> bodyuseDefaultSettings, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string[]>> bodyrecipients = null, Expression<Func<string>> bodymessage = null, Expression<Func<bool>> bodycopyMe = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bool>> bodylinkToCurrent = null, Expression<Func<string>> bodyexpiryDate = null, Expression<Func<double>> bodyexpiryClicks = null, Expression<Func<bool>> bodyaddFileName = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyprotectionInput>> bodyprotection = null, Expression<Func<bool>> bodyfolderPerRecipient = null)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyuseDefaultSettings = bodyuseDefaultSettings == null ? null : WorkflowExpression.Compile(bodyuseDefaultSettings);
-            WorkflowExpression.Validate(__workflow_bodyuseDefaultSettings, nameof(bodyuseDefaultSettings), required: true);
-            var __workflow_bodyaccessibility = bodyaccessibility == null ? null : WorkflowExpression.Compile(bodyaccessibility);
-            WorkflowExpression.Validate(__workflow_bodyaccessibility, nameof(bodyaccessibility), required: false);
-            var __workflow_bodysendEmail = bodysendEmail == null ? null : WorkflowExpression.Compile(bodysendEmail);
-            WorkflowExpression.Validate(__workflow_bodysendEmail, nameof(bodysendEmail), required: false);
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycopyMe = bodycopyMe == null ? null : WorkflowExpression.Compile(bodycopyMe);
-            WorkflowExpression.Validate(__workflow_bodycopyMe, nameof(bodycopyMe), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodylinkToCurrent = bodylinkToCurrent == null ? null : WorkflowExpression.Compile(bodylinkToCurrent);
-            WorkflowExpression.Validate(__workflow_bodylinkToCurrent, nameof(bodylinkToCurrent), required: false);
-            var __workflow_bodyexpiryDate = bodyexpiryDate == null ? null : WorkflowExpression.Compile(bodyexpiryDate);
-            WorkflowExpression.Validate(__workflow_bodyexpiryDate, nameof(bodyexpiryDate), required: false);
-            var __workflow_bodyexpiryClicks = bodyexpiryClicks == null ? null : WorkflowExpression.Compile(bodyexpiryClicks);
-            WorkflowExpression.Validate(__workflow_bodyexpiryClicks, nameof(bodyexpiryClicks), required: false);
-            var __workflow_bodyaddFileName = bodyaddFileName == null ? null : WorkflowExpression.Compile(bodyaddFileName);
-            WorkflowExpression.Validate(__workflow_bodyaddFileName, nameof(bodyaddFileName), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyprotection = bodyprotection == null ? null : WorkflowExpression.Compile(bodyprotection);
-            WorkflowExpression.Validate(__workflow_bodyprotection, nameof(bodyprotection), required: false);
-            var __workflow_bodyfolderPerRecipient = bodyfolderPerRecipient == null ? null : WorkflowExpression.Compile(bodyfolderPerRecipient);
-            WorkflowExpression.Validate(__workflow_bodyfolderPerRecipient, nameof(bodyfolderPerRecipient), required: false);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyuseDefaultSettings = WorkflowExpression.Compile(bodyuseDefaultSettings, nameof(bodyuseDefaultSettings), required: true);
+            var __workflow_bodyaccessibility = WorkflowExpression.Compile(bodyaccessibility, nameof(bodyaccessibility), required: false);
+            var __workflow_bodysendEmail = WorkflowExpression.Compile(bodysendEmail, nameof(bodysendEmail), required: false);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycopyMe = WorkflowExpression.Compile(bodycopyMe, nameof(bodycopyMe), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodylinkToCurrent = WorkflowExpression.Compile(bodylinkToCurrent, nameof(bodylinkToCurrent), required: false);
+            var __workflow_bodyexpiryDate = WorkflowExpression.Compile(bodyexpiryDate, nameof(bodyexpiryDate), required: false);
+            var __workflow_bodyexpiryClicks = WorkflowExpression.Compile(bodyexpiryClicks, nameof(bodyexpiryClicks), required: false);
+            var __workflow_bodyaddFileName = WorkflowExpression.Compile(bodyaddFileName, nameof(bodyaddFileName), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyprotection = WorkflowExpression.Compile(bodyprotection, nameof(bodyprotection), required: false);
+            var __workflow_bodyfolderPerRecipient = WorkflowExpression.Compile(bodyfolderPerRecipient, nameof(bodyfolderPerRecipient), required: false);
             return new DeferredBodyAction<CreateLinkResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CreateLink";
@@ -2551,8 +2344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IWorkflowAction DeleteLink(Expression<Func<string>> bodylinkId)
         {
-            var __workflow_bodylinkId = bodylinkId == null ? null : WorkflowExpression.Compile(bodylinkId);
-            WorkflowExpression.Validate(__workflow_bodylinkId, nameof(bodylinkId), required: true);
+            var __workflow_bodylinkId = WorkflowExpression.Compile(bodylinkId, nameof(bodylinkId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-proxy/DeleteLink";
@@ -2574,14 +2366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AIQuestionResponse> AskDocumentQuestion(Expression<Func<string>> bodyentryId = null, Expression<Func<string>> bodyquestion = null, Expression<Func<bool>> bodyincludeCitations = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null)
         {
-            var __workflow_bodyentryId = bodyentryId == null ? null : WorkflowExpression.Compile(bodyentryId);
-            WorkflowExpression.Validate(__workflow_bodyentryId, nameof(bodyentryId), required: false);
-            var __workflow_bodyquestion = bodyquestion == null ? null : WorkflowExpression.Compile(bodyquestion);
-            WorkflowExpression.Validate(__workflow_bodyquestion, nameof(bodyquestion), required: false);
-            var __workflow_bodyincludeCitations = bodyincludeCitations == null ? null : WorkflowExpression.Compile(bodyincludeCitations);
-            WorkflowExpression.Validate(__workflow_bodyincludeCitations, nameof(bodyincludeCitations), required: false);
-            var __workflow_bodychatHistorymessages = bodychatHistorymessages == null ? null : WorkflowExpression.Compile(bodychatHistorymessages);
-            WorkflowExpression.Validate(__workflow_bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            var __workflow_bodyentryId = WorkflowExpression.Compile(bodyentryId, nameof(bodyentryId), required: false);
+            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: false);
+            var __workflow_bodyincludeCitations = WorkflowExpression.Compile(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
+            var __workflow_bodychatHistorymessages = WorkflowExpression.Compile(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
             return new DeferredBodyAction<AIQuestionResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/AskDocumentQuestion";
@@ -2643,10 +2431,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AISummaryResponse> SummarizeDocument(Expression<Func<string>> bodyentryId = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null)
         {
-            var __workflow_bodyentryId = bodyentryId == null ? null : WorkflowExpression.Compile(bodyentryId);
-            WorkflowExpression.Validate(__workflow_bodyentryId, nameof(bodyentryId), required: false);
-            var __workflow_bodychatHistorymessages = bodychatHistorymessages == null ? null : WorkflowExpression.Compile(bodychatHistorymessages);
-            WorkflowExpression.Validate(__workflow_bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            var __workflow_bodyentryId = WorkflowExpression.Compile(bodyentryId, nameof(bodyentryId), required: false);
+            var __workflow_bodychatHistorymessages = WorkflowExpression.Compile(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
             return new DeferredBodyAction<AISummaryResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/SummarizeDocument";
@@ -2686,16 +2472,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<AICopilotResponse> CopilotAsk(Expression<Func<string>> bodyquestion = null, Expression<Func<bodyselectedItemsfoldersInputItem[]>> bodyselectedItemsfolders = null, Expression<Func<bodyselectedItemsfilesInputItem[]>> bodyselectedItemsfiles = null, Expression<Func<bool>> bodyincludeCitations = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null)
         {
-            var __workflow_bodyquestion = bodyquestion == null ? null : WorkflowExpression.Compile(bodyquestion);
-            WorkflowExpression.Validate(__workflow_bodyquestion, nameof(bodyquestion), required: false);
-            var __workflow_bodyselectedItemsfolders = bodyselectedItemsfolders == null ? null : WorkflowExpression.Compile(bodyselectedItemsfolders);
-            WorkflowExpression.Validate(__workflow_bodyselectedItemsfolders, nameof(bodyselectedItemsfolders), required: false);
-            var __workflow_bodyselectedItemsfiles = bodyselectedItemsfiles == null ? null : WorkflowExpression.Compile(bodyselectedItemsfiles);
-            WorkflowExpression.Validate(__workflow_bodyselectedItemsfiles, nameof(bodyselectedItemsfiles), required: false);
-            var __workflow_bodyincludeCitations = bodyincludeCitations == null ? null : WorkflowExpression.Compile(bodyincludeCitations);
-            WorkflowExpression.Validate(__workflow_bodyincludeCitations, nameof(bodyincludeCitations), required: false);
-            var __workflow_bodychatHistorymessages = bodychatHistorymessages == null ? null : WorkflowExpression.Compile(bodychatHistorymessages);
-            WorkflowExpression.Validate(__workflow_bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            var __workflow_bodyquestion = WorkflowExpression.Compile(bodyquestion, nameof(bodyquestion), required: false);
+            var __workflow_bodyselectedItemsfolders = WorkflowExpression.Compile(bodyselectedItemsfolders, nameof(bodyselectedItemsfolders), required: false);
+            var __workflow_bodyselectedItemsfiles = WorkflowExpression.Compile(bodyselectedItemsfiles, nameof(bodyselectedItemsfiles), required: false);
+            var __workflow_bodyincludeCitations = WorkflowExpression.Compile(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
+            var __workflow_bodychatHistorymessages = WorkflowExpression.Compile(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
             return new DeferredBodyAction<AICopilotResponse>(() =>
             {
                 var apiCallPath = "/api-proxy/CopilotAsk";
@@ -2771,40 +2552,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
         public IBodyWorkflowAction<SearchV2Response> Search(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
         {
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodyoffset = bodyoffset == null ? null : WorkflowExpression.Compile(bodyoffset);
-            WorkflowExpression.Validate(__workflow_bodyoffset, nameof(bodyoffset), required: false);
-            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
-            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
-            var __workflow_bodyfolder = bodyfolder == null ? null : WorkflowExpression.Compile(bodyfolder);
-            WorkflowExpression.Validate(__workflow_bodyfolder, nameof(bodyfolder), required: false);
-            var __workflow_bodymodifiedBefore = bodymodifiedBefore == null ? null : WorkflowExpression.Compile(bodymodifiedBefore);
-            WorkflowExpression.Validate(__workflow_bodymodifiedBefore, nameof(bodymodifiedBefore), required: false);
-            var __workflow_bodymodifiedAfter = bodymodifiedAfter == null ? null : WorkflowExpression.Compile(bodymodifiedAfter);
-            WorkflowExpression.Validate(__workflow_bodymodifiedAfter, nameof(bodymodifiedAfter), required: false);
-            var __workflow_bodyuploadedBefore = bodyuploadedBefore == null ? null : WorkflowExpression.Compile(bodyuploadedBefore);
-            WorkflowExpression.Validate(__workflow_bodyuploadedBefore, nameof(bodyuploadedBefore), required: false);
-            var __workflow_bodyuploadedAfter = bodyuploadedAfter == null ? null : WorkflowExpression.Compile(bodyuploadedAfter);
-            WorkflowExpression.Validate(__workflow_bodyuploadedAfter, nameof(bodyuploadedAfter), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodysnippetRequested = bodysnippetRequested == null ? null : WorkflowExpression.Compile(bodysnippetRequested);
-            WorkflowExpression.Validate(__workflow_bodysnippetRequested, nameof(bodysnippetRequested), required: false);
-            var __workflow_bodysortBy = bodysortBy == null ? null : WorkflowExpression.Compile(bodysortBy);
-            WorkflowExpression.Validate(__workflow_bodysortBy, nameof(bodysortBy), required: false);
-            var __workflow_bodysortDirection = bodysortDirection == null ? null : WorkflowExpression.Compile(bodysortDirection);
-            WorkflowExpression.Validate(__workflow_bodysortDirection, nameof(bodysortDirection), required: false);
-            var __workflow_bodyfileQueryFields = bodyfileQueryFields == null ? null : WorkflowExpression.Compile(bodyfileQueryFields);
-            WorkflowExpression.Validate(__workflow_bodyfileQueryFields, nameof(bodyfileQueryFields), required: false);
-            var __workflow_bodyfolderQueryFields = bodyfolderQueryFields == null ? null : WorkflowExpression.Compile(bodyfolderQueryFields);
-            WorkflowExpression.Validate(__workflow_bodyfolderQueryFields, nameof(bodyfolderQueryFields), required: false);
-            var __workflow_bodyqueryOperator = bodyqueryOperator == null ? null : WorkflowExpression.Compile(bodyqueryOperator);
-            WorkflowExpression.Validate(__workflow_bodyqueryOperator, nameof(bodyqueryOperator), required: false);
-            var __workflow_bodymlt = bodymlt == null ? null : WorkflowExpression.Compile(bodymlt);
-            WorkflowExpression.Validate(__workflow_bodymlt, nameof(bodymlt), required: false);
-            var __workflow_bodymltt = bodymltt == null ? null : WorkflowExpression.Compile(bodymltt);
-            WorkflowExpression.Validate(__workflow_bodymltt, nameof(bodymltt), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            var __workflow_bodyfolder = WorkflowExpression.Compile(bodyfolder, nameof(bodyfolder), required: false);
+            var __workflow_bodymodifiedBefore = WorkflowExpression.Compile(bodymodifiedBefore, nameof(bodymodifiedBefore), required: false);
+            var __workflow_bodymodifiedAfter = WorkflowExpression.Compile(bodymodifiedAfter, nameof(bodymodifiedAfter), required: false);
+            var __workflow_bodyuploadedBefore = WorkflowExpression.Compile(bodyuploadedBefore, nameof(bodyuploadedBefore), required: false);
+            var __workflow_bodyuploadedAfter = WorkflowExpression.Compile(bodyuploadedAfter, nameof(bodyuploadedAfter), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodysnippetRequested = WorkflowExpression.Compile(bodysnippetRequested, nameof(bodysnippetRequested), required: false);
+            var __workflow_bodysortBy = WorkflowExpression.Compile(bodysortBy, nameof(bodysortBy), required: false);
+            var __workflow_bodysortDirection = WorkflowExpression.Compile(bodysortDirection, nameof(bodysortDirection), required: false);
+            var __workflow_bodyfileQueryFields = WorkflowExpression.Compile(bodyfileQueryFields, nameof(bodyfileQueryFields), required: false);
+            var __workflow_bodyfolderQueryFields = WorkflowExpression.Compile(bodyfolderQueryFields, nameof(bodyfolderQueryFields), required: false);
+            var __workflow_bodyqueryOperator = WorkflowExpression.Compile(bodyqueryOperator, nameof(bodyqueryOperator), required: false);
+            var __workflow_bodymlt = WorkflowExpression.Compile(bodymlt, nameof(bodymlt), required: false);
+            var __workflow_bodymltt = WorkflowExpression.Compile(bodymltt, nameof(bodymltt), required: false);
             return new DeferredBodyAction<SearchV2Response>(() =>
             {
                 var apiCallPath = "/api-proxy/SearchV2";
@@ -2934,8 +2698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     {
         public IWorkflowTrigger FileLocked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FileLocked";
@@ -2957,8 +2720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileUnlocked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FileUnlocked";
@@ -2980,8 +2742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FileUpdated";
@@ -3003,8 +2764,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FileCreated";
@@ -3026,8 +2786,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger ShareLinkCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/ShareLinkCreated";
@@ -3049,8 +2808,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger ShareLinkDeleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/ShareLinkDeleted";
@@ -3072,8 +2830,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileOrFolderPermissionChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FileOrFolderPermissionChange";
@@ -3095,8 +2852,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FileOrFolderMetadataChange(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FileOrFolderMetadataChange";
@@ -3118,8 +2874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FolderProjectAdded(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FolderProjectAdded";
@@ -3141,8 +2896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FolderProjectUnmarked(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FolderProjectUnmarked";
@@ -3164,8 +2918,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger FolderProjectUpdated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/FolderProjectUpdated";
@@ -3187,8 +2940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowCreated(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/WorkflowCreated";
@@ -3210,8 +2962,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowCompleted(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/WorkflowCompleted";
@@ -3233,8 +2984,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/WorkflowApprovalTaskApproved";
@@ -3256,8 +3006,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IWorkflowTrigger WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook/WorkflowApprovalTaskRejected";
@@ -3330,8 +3079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCreatedFilesResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/created-files";
@@ -3344,8 +3092,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCreatedFoldersResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/created-folders";
@@ -3358,8 +3105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollDeletedFilesResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/deleted-files";
@@ -3372,8 +3118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollDeletedFoldersResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/deleted-folders";
@@ -3386,8 +3131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollRenamedFilesResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/renamed-files";
@@ -3400,8 +3144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollRenamedFoldersResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/renamed-folders";
@@ -3414,8 +3157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollMovedFilesResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/moved-files";
@@ -3428,8 +3170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollMovedFoldersResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/moved-folders";
@@ -3442,8 +3183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCopiedFilesResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/copied-files";
@@ -3456,8 +3196,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 
         public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders(Expression<Func<string>> folderPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCopiedFoldersResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/polling/copied-folders";

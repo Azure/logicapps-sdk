@@ -15,22 +15,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> CallRfc(Expression<Func<CallRfcInputInputBodyTypeType>> inputBodyType = null, Expression<Func<string>> rfcName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null, Expression<Func<bool>> safeType = null, Expression<Func<CallRfcInputOutputBodyTypeType>> outputBodyType = null)
         {
-            var __workflow_inputBodyType = inputBodyType == null ? null : WorkflowExpression.Compile(inputBodyType);
-            WorkflowExpression.Validate(__workflow_inputBodyType, nameof(inputBodyType), required: false);
-            var __workflow_rfcName = rfcName == null ? null : WorkflowExpression.Compile(rfcName);
-            WorkflowExpression.Validate(__workflow_rfcName, nameof(rfcName), required: false);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: false);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
-            var __workflow_autoCommit = autoCommit == null ? null : WorkflowExpression.Compile(autoCommit);
-            WorkflowExpression.Validate(__workflow_autoCommit, nameof(autoCommit), required: false);
-            var __workflow_safeType = safeType == null ? null : WorkflowExpression.Compile(safeType);
-            WorkflowExpression.Validate(__workflow_safeType, nameof(safeType), required: false);
-            var __workflow_outputBodyType = outputBodyType == null ? null : WorkflowExpression.Compile(outputBodyType);
-            WorkflowExpression.Validate(__workflow_outputBodyType, nameof(outputBodyType), required: false);
+            var __workflow_inputBodyType = WorkflowExpression.Compile(inputBodyType, nameof(inputBodyType), required: false);
+            var __workflow_rfcName = WorkflowExpression.Compile(rfcName, nameof(rfcName), required: false);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
+            var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: false);
+            var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
+            var __workflow_outputBodyType = WorkflowExpression.Compile(outputBodyType, nameof(outputBodyType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -94,10 +86,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<CreateRfcTransactionOutput> CreateRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
             return new DeferredBodyAction<CreateRfcTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -119,10 +109,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetRfcTransactionOutput> GetRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
             return new DeferredBodyAction<GetRfcTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -144,14 +132,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<AddRfcToTransactionOutput> AddRfcToTransaction(Expression<Func<object>> body, Expression<Func<string>> tId, Expression<Func<string>> queueName = null, Expression<Func<bool>> autoCommit = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
-            var __workflow_autoCommit = autoCommit == null ? null : WorkflowExpression.Compile(autoCommit);
-            WorkflowExpression.Validate(__workflow_autoCommit, nameof(autoCommit), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
+            var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: false);
             return new DeferredBodyAction<AddRfcToTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -179,10 +163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<CommitRfcTransactionOutput> CommitRfcTransaction(Expression<Func<string>> tId, Expression<Func<string>> queueName = null)
         {
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: false);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: false);
             return new DeferredBodyAction<CommitRfcTransactionOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -204,8 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction ConfirmTransactionId(Expression<Func<string>> tId)
         {
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -222,14 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<SendIDocOutput> SendIDoc(Expression<Func<SendIDocInputIdocFormatType>> idocFormat, Expression<Func<bool>> confirmTid, Expression<Func<string>> tId = null, Expression<Func<bool>> allowUnreleasedSegmentV2 = null)
         {
-            var __workflow_idocFormat = idocFormat == null ? null : WorkflowExpression.Compile(idocFormat);
-            WorkflowExpression.Validate(__workflow_idocFormat, nameof(idocFormat), required: true);
-            var __workflow_confirmTid = confirmTid == null ? null : WorkflowExpression.Compile(confirmTid);
-            WorkflowExpression.Validate(__workflow_confirmTid, nameof(confirmTid), required: true);
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: false);
-            var __workflow_allowUnreleasedSegmentV2 = allowUnreleasedSegmentV2 == null ? null : WorkflowExpression.Compile(allowUnreleasedSegmentV2);
-            WorkflowExpression.Validate(__workflow_allowUnreleasedSegmentV2, nameof(allowUnreleasedSegmentV2), required: false);
+            var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: true);
+            var __workflow_confirmTid = WorkflowExpression.Compile(confirmTid, nameof(confirmTid), required: true);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: false);
+            var __workflow_allowUnreleasedSegmentV2 = WorkflowExpression.Compile(allowUnreleasedSegmentV2, nameof(allowUnreleasedSegmentV2), required: false);
             return new DeferredBodyAction<SendIDocOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -261,18 +238,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiCallMethodOutput> BapiCallMethod(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit, Expression<Func<object>> body, Expression<Func<string>> sessionId = null, Expression<Func<bool>> safeType = null)
         {
-            var __workflow_businessObject = businessObject == null ? null : WorkflowExpression.Compile(businessObject);
-            WorkflowExpression.Validate(__workflow_businessObject, nameof(businessObject), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_autoCommit = autoCommit == null ? null : WorkflowExpression.Compile(autoCommit);
-            WorkflowExpression.Validate(__workflow_autoCommit, nameof(autoCommit), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
-            var __workflow_safeType = safeType == null ? null : WorkflowExpression.Compile(safeType);
-            WorkflowExpression.Validate(__workflow_safeType, nameof(safeType), required: false);
+            var __workflow_businessObject = WorkflowExpression.Compile(businessObject, nameof(businessObject), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_autoCommit = WorkflowExpression.Compile(autoCommit, nameof(autoCommit), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
             return new DeferredBodyAction<BapiCallMethodOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -312,8 +283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction CloseSession(Expression<Func<string>> sessionId)
         {
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -330,12 +300,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiCommitOutput> BapiCommit(Expression<Func<string>> sessionId, Expression<Func<bool>> wait, Expression<Func<bool>> closeSession)
         {
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
-            var __workflow_wait = wait == null ? null : WorkflowExpression.Compile(wait);
-            WorkflowExpression.Validate(__workflow_wait, nameof(wait), required: true);
-            var __workflow_closeSession = closeSession == null ? null : WorkflowExpression.Compile(closeSession);
-            WorkflowExpression.Validate(__workflow_closeSession, nameof(closeSession), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: true);
+            var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: true);
             return new DeferredBodyAction<BapiCommitOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -354,10 +321,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<BapiRollbackOutput> BapiRollback(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession)
         {
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
-            var __workflow_closeSession = closeSession == null ? null : WorkflowExpression.Compile(closeSession);
-            WorkflowExpression.Validate(__workflow_closeSession, nameof(closeSession), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
+            var __workflow_closeSession = WorkflowExpression.Compile(closeSession, nameof(closeSession), required: true);
             return new DeferredBodyAction<BapiRollbackOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -375,20 +340,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<ReadTableOutput> ReadTable(Expression<Func<string>> tableName, Expression<Func<string[]>> fieldNames = null, Expression<Func<string[]>> whereFilters = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> numberOfRowsToRead = null, Expression<Func<string>> delimiter = null, Expression<Func<ReadTableInputReturnFormatType>> returnFormat = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_fieldNames = fieldNames == null ? null : WorkflowExpression.Compile(fieldNames);
-            WorkflowExpression.Validate(__workflow_fieldNames, nameof(fieldNames), required: false);
-            var __workflow_whereFilters = whereFilters == null ? null : WorkflowExpression.Compile(whereFilters);
-            WorkflowExpression.Validate(__workflow_whereFilters, nameof(whereFilters), required: false);
-            var __workflow_startIndex = startIndex == null ? null : WorkflowExpression.Compile(startIndex);
-            WorkflowExpression.Validate(__workflow_startIndex, nameof(startIndex), required: false);
-            var __workflow_numberOfRowsToRead = numberOfRowsToRead == null ? null : WorkflowExpression.Compile(numberOfRowsToRead);
-            WorkflowExpression.Validate(__workflow_numberOfRowsToRead, nameof(numberOfRowsToRead), required: false);
-            var __workflow_delimiter = delimiter == null ? null : WorkflowExpression.Compile(delimiter);
-            WorkflowExpression.Validate(__workflow_delimiter, nameof(delimiter), required: false);
-            var __workflow_returnFormat = returnFormat == null ? null : WorkflowExpression.Compile(returnFormat);
-            WorkflowExpression.Validate(__workflow_returnFormat, nameof(returnFormat), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_fieldNames = WorkflowExpression.Compile(fieldNames, nameof(fieldNames), required: false);
+            var __workflow_whereFilters = WorkflowExpression.Compile(whereFilters, nameof(whereFilters), required: false);
+            var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
+            var __workflow_numberOfRowsToRead = WorkflowExpression.Compile(numberOfRowsToRead, nameof(numberOfRowsToRead), required: false);
+            var __workflow_delimiter = WorkflowExpression.Compile(delimiter, nameof(delimiter), required: false);
+            var __workflow_returnFormat = WorkflowExpression.Compile(returnFormat, nameof(returnFormat), required: false);
             return new DeferredBodyAction<ReadTableOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -439,10 +397,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> GetSchemaV2(Expression<Func<GetSchemaV2InputOperationTypeType>> operationType, Expression<Func<string>> fileNamePrefix = null)
         {
-            var __workflow_operationType = operationType == null ? null : WorkflowExpression.Compile(operationType);
-            WorkflowExpression.Validate(__workflow_operationType, nameof(operationType), required: true);
-            var __workflow_fileNamePrefix = fileNamePrefix == null ? null : WorkflowExpression.Compile(fileNamePrefix);
-            WorkflowExpression.Validate(__workflow_fileNamePrefix, nameof(fileNamePrefix), required: false);
+            var __workflow_operationType = WorkflowExpression.Compile(operationType, nameof(operationType), required: true);
+            var __workflow_fileNamePrefix = WorkflowExpression.Compile(fileNamePrefix, nameof(fileNamePrefix), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -464,10 +420,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetIDocListOutput> GetIDocList(Expression<Func<GetIDocListInputDirectionType>> direction, Expression<Func<string>> tId)
         {
-            var __workflow_direction = direction == null ? null : WorkflowExpression.Compile(direction);
-            WorkflowExpression.Validate(__workflow_direction, nameof(direction), required: true);
-            var __workflow_tId = tId == null ? null : WorkflowExpression.Compile(tId);
-            WorkflowExpression.Validate(__workflow_tId, nameof(tId), required: true);
+            var __workflow_direction = WorkflowExpression.Compile(direction, nameof(direction), required: true);
+            var __workflow_tId = WorkflowExpression.Compile(tId, nameof(tId), required: true);
             return new DeferredBodyAction<GetIDocListOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -485,8 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<GetIDocStatusOutput> GetIDocStatus(Expression<Func<int>> iDocNumber)
         {
-            var __workflow_iDocNumber = iDocNumber == null ? null : WorkflowExpression.Compile(iDocNumber);
-            WorkflowExpression.Validate(__workflow_iDocNumber, nameof(iDocNumber), required: true);
+            var __workflow_iDocNumber = WorkflowExpression.Compile(iDocNumber, nameof(iDocNumber), required: true);
             return new DeferredBodyAction<GetIDocStatusOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -503,10 +456,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction RespondToSapServer(Expression<Func<string>> body, Expression<Func<bool>> safeType = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: true);
-            var __workflow_safeType = safeType == null ? null : WorkflowExpression.Compile(safeType);
-            WorkflowExpression.Validate(__workflow_safeType, nameof(safeType), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: true);
+            var __workflow_safeType = WorkflowExpression.Compile(safeType, nameof(safeType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -528,18 +479,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IWorkflowAction SendExceptionToSapServer(Expression<Func<string>> sendExceptionToSapServerErrorMessage, Expression<Func<string>> sendExceptionToSapServerExceptionName = null, Expression<Func<string>> sendExceptionToSapServerMessageType = null, Expression<Func<string>> sendExceptionToSapServerMessageClass = null, Expression<Func<string>> sendExceptionToSapServerMessageNumber = null, Expression<Func<bool>> sendExceptionToSapServerIsAbapMessage = null)
         {
-            var __workflow_sendExceptionToSapServerErrorMessage = sendExceptionToSapServerErrorMessage == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerErrorMessage);
-            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerErrorMessage, nameof(sendExceptionToSapServerErrorMessage), required: true);
-            var __workflow_sendExceptionToSapServerExceptionName = sendExceptionToSapServerExceptionName == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerExceptionName);
-            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerExceptionName, nameof(sendExceptionToSapServerExceptionName), required: false);
-            var __workflow_sendExceptionToSapServerMessageType = sendExceptionToSapServerMessageType == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerMessageType);
-            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerMessageType, nameof(sendExceptionToSapServerMessageType), required: false);
-            var __workflow_sendExceptionToSapServerMessageClass = sendExceptionToSapServerMessageClass == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerMessageClass);
-            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerMessageClass, nameof(sendExceptionToSapServerMessageClass), required: false);
-            var __workflow_sendExceptionToSapServerMessageNumber = sendExceptionToSapServerMessageNumber == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerMessageNumber);
-            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerMessageNumber, nameof(sendExceptionToSapServerMessageNumber), required: false);
-            var __workflow_sendExceptionToSapServerIsAbapMessage = sendExceptionToSapServerIsAbapMessage == null ? null : WorkflowExpression.Compile(sendExceptionToSapServerIsAbapMessage);
-            WorkflowExpression.Validate(__workflow_sendExceptionToSapServerIsAbapMessage, nameof(sendExceptionToSapServerIsAbapMessage), required: false);
+            var __workflow_sendExceptionToSapServerErrorMessage = WorkflowExpression.Compile(sendExceptionToSapServerErrorMessage, nameof(sendExceptionToSapServerErrorMessage), required: true);
+            var __workflow_sendExceptionToSapServerExceptionName = WorkflowExpression.Compile(sendExceptionToSapServerExceptionName, nameof(sendExceptionToSapServerExceptionName), required: false);
+            var __workflow_sendExceptionToSapServerMessageType = WorkflowExpression.Compile(sendExceptionToSapServerMessageType, nameof(sendExceptionToSapServerMessageType), required: false);
+            var __workflow_sendExceptionToSapServerMessageClass = WorkflowExpression.Compile(sendExceptionToSapServerMessageClass, nameof(sendExceptionToSapServerMessageClass), required: false);
+            var __workflow_sendExceptionToSapServerMessageNumber = WorkflowExpression.Compile(sendExceptionToSapServerMessageNumber, nameof(sendExceptionToSapServerMessageNumber), required: false);
+            var __workflow_sendExceptionToSapServerIsAbapMessage = WorkflowExpression.Compile(sendExceptionToSapServerIsAbapMessage, nameof(sendExceptionToSapServerIsAbapMessage), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -581,8 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "sap")]
         public IBodyWorkflowAction<JToken> RunDiagnostics(Expression<Func<RunDiagnosticsInputOperationTypeType>> operationType)
         {
-            var __workflow_operationType = operationType == null ? null : WorkflowExpression.Compile(operationType);
-            WorkflowExpression.Validate(__workflow_operationType, nameof(operationType), required: true);
+            var __workflow_operationType = WorkflowExpression.Compile(operationType, nameof(operationType), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -601,26 +545,16 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
     {
         public IBodyWorkflowTrigger<SapTriggerOutput> SapTrigger(Expression<Func<SapTriggerInputIdocFormatType>> idocFormat, Expression<Func<int>> degreeOfParallelism, Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string>> sncPartnerNames = null, Expression<Func<bool>> receiveIDocsWithUnreleasedSegmentsV2 = null, Expression<Func<string>> defaultIDocRelease = null, Expression<Func<string>> receivedIDocTypeReleaseMapping = null, Expression<Func<bool>> gatewayWithoutWorkProcess = null)
         {
-            var __workflow_idocFormat = idocFormat == null ? null : WorkflowExpression.Compile(idocFormat);
-            WorkflowExpression.Validate(__workflow_idocFormat, nameof(idocFormat), required: true);
-            var __workflow_degreeOfParallelism = degreeOfParallelism == null ? null : WorkflowExpression.Compile(degreeOfParallelism);
-            WorkflowExpression.Validate(__workflow_degreeOfParallelism, nameof(degreeOfParallelism), required: true);
-            var __workflow_gatewayHost = gatewayHost == null ? null : WorkflowExpression.Compile(gatewayHost);
-            WorkflowExpression.Validate(__workflow_gatewayHost, nameof(gatewayHost), required: true);
-            var __workflow_gatewayService = gatewayService == null ? null : WorkflowExpression.Compile(gatewayService);
-            WorkflowExpression.Validate(__workflow_gatewayService, nameof(gatewayService), required: true);
-            var __workflow_programId = programId == null ? null : WorkflowExpression.Compile(programId);
-            WorkflowExpression.Validate(__workflow_programId, nameof(programId), required: true);
-            var __workflow_sncPartnerNames = sncPartnerNames == null ? null : WorkflowExpression.Compile(sncPartnerNames);
-            WorkflowExpression.Validate(__workflow_sncPartnerNames, nameof(sncPartnerNames), required: false);
-            var __workflow_receiveIDocsWithUnreleasedSegmentsV2 = receiveIDocsWithUnreleasedSegmentsV2 == null ? null : WorkflowExpression.Compile(receiveIDocsWithUnreleasedSegmentsV2);
-            WorkflowExpression.Validate(__workflow_receiveIDocsWithUnreleasedSegmentsV2, nameof(receiveIDocsWithUnreleasedSegmentsV2), required: false);
-            var __workflow_defaultIDocRelease = defaultIDocRelease == null ? null : WorkflowExpression.Compile(defaultIDocRelease);
-            WorkflowExpression.Validate(__workflow_defaultIDocRelease, nameof(defaultIDocRelease), required: false);
-            var __workflow_receivedIDocTypeReleaseMapping = receivedIDocTypeReleaseMapping == null ? null : WorkflowExpression.Compile(receivedIDocTypeReleaseMapping);
-            WorkflowExpression.Validate(__workflow_receivedIDocTypeReleaseMapping, nameof(receivedIDocTypeReleaseMapping), required: false);
-            var __workflow_gatewayWithoutWorkProcess = gatewayWithoutWorkProcess == null ? null : WorkflowExpression.Compile(gatewayWithoutWorkProcess);
-            WorkflowExpression.Validate(__workflow_gatewayWithoutWorkProcess, nameof(gatewayWithoutWorkProcess), required: false);
+            var __workflow_idocFormat = WorkflowExpression.Compile(idocFormat, nameof(idocFormat), required: true);
+            var __workflow_degreeOfParallelism = WorkflowExpression.Compile(degreeOfParallelism, nameof(degreeOfParallelism), required: true);
+            var __workflow_gatewayHost = WorkflowExpression.Compile(gatewayHost, nameof(gatewayHost), required: true);
+            var __workflow_gatewayService = WorkflowExpression.Compile(gatewayService, nameof(gatewayService), required: true);
+            var __workflow_programId = WorkflowExpression.Compile(programId, nameof(programId), required: true);
+            var __workflow_sncPartnerNames = WorkflowExpression.Compile(sncPartnerNames, nameof(sncPartnerNames), required: false);
+            var __workflow_receiveIDocsWithUnreleasedSegmentsV2 = WorkflowExpression.Compile(receiveIDocsWithUnreleasedSegmentsV2, nameof(receiveIDocsWithUnreleasedSegmentsV2), required: false);
+            var __workflow_defaultIDocRelease = WorkflowExpression.Compile(defaultIDocRelease, nameof(defaultIDocRelease), required: false);
+            var __workflow_receivedIDocTypeReleaseMapping = WorkflowExpression.Compile(receivedIDocTypeReleaseMapping, nameof(receivedIDocTypeReleaseMapping), required: false);
+            var __workflow_gatewayWithoutWorkProcess = WorkflowExpression.Compile(gatewayWithoutWorkProcess, nameof(gatewayWithoutWorkProcess), required: false);
             return new DeferredBodyTrigger<SapTriggerOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

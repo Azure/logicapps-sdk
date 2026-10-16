@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CandidateSearchResponse> CandidateSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<CandidateSearchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/search.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CandidateGetResponse> CandidateGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CandidateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -47,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CandidateTopFinancialResponse> CandidateTopFinancial(Expression<Func<string>> cycle, Expression<Func<categoryInput>> category)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             return new DeferredBodyAction<CandidateTopFinancialResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/leaders/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_category, 1));
@@ -63,10 +57,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CandidateStateResponse> CandidateState(Expression<Func<string>> cycle, Expression<Func<string>> state)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
             return new DeferredBodyAction<CandidateStateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/races/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1));
@@ -79,8 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CandidateRecentResponse> CandidateRecent(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CandidateRecentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/new.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -93,8 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ContributionLateRecentResponse> ContributionLateRecent(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<ContributionLateRecentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contributions/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -107,10 +97,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ContributionLateCandidateResponse> ContributionLateCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ContributionLateCandidateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -123,10 +111,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ContributionLateCommitteeResponse> ContributionLateCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ContributionLateCommitteeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -139,14 +125,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ContributionLateDateResponse> ContributionLateDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<ContributionLateDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/contributions/48hour/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
@@ -159,10 +141,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommitteeSearchResponse> CommitteeSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<CommitteeSearchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/search.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -177,10 +157,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommitteeGetResponse> CommitteeGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CommitteeGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -193,8 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommitteeRecentResponse> CommitteeRecent(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommitteeRecentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/new.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -207,8 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommitteeRecentPACsResponse> CommitteeRecentPACs(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommitteeRecentPACsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/superpacs.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -221,10 +197,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommitteeFilingResponse> CommitteeFiling(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CommitteeFilingResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/filings.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -237,8 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommitteeLeadershipResponse> CommitteeLeadership(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommitteeLeadershipResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/leadership.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -251,8 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<FilingSearchResponse> FilingSearch(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<FilingSearchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/search.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -265,14 +237,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<FilingDateResponse> FilingDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<FilingDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
@@ -285,8 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<FilingFormTypeResponse> FilingFormType(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<FilingFormTypeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/types.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -299,10 +266,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<FilingTypeResponse> FilingType(Expression<Func<string>> cycle, Expression<Func<string>> formTypeId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_formTypeId = formTypeId == null ? null : WorkflowExpression.Compile(formTypeId);
-            WorkflowExpression.Validate(__workflow_formTypeId, nameof(formTypeId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_formTypeId = WorkflowExpression.Compile(formTypeId, nameof(formTypeId), required: true);
             return new DeferredBodyAction<FilingTypeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/types/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_formTypeId, 1));
@@ -315,10 +280,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<FilingSummaryResponse> FilingSummary(Expression<Func<string>> cycle, Expression<Func<string>> filingId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_filingId = filingId == null ? null : WorkflowExpression.Compile(filingId);
-            WorkflowExpression.Validate(__workflow_filingId, nameof(filingId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_filingId = WorkflowExpression.Compile(filingId, nameof(filingId), required: true);
             return new DeferredBodyAction<FilingSummaryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/filings/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_filingId, 1));
@@ -331,8 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ExpenditureRecentResponse> ExpenditureRecent(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<ExpenditureRecentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -345,14 +307,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ExpenditureDateResponse> ExpenditureDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<ExpenditureDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
@@ -365,10 +323,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ExpenditureCommitteeResponse> ExpenditureCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ExpenditureCommitteeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -381,10 +337,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ExpenditureCandidateResponse> ExpenditureCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ExpenditureCandidateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/candidates/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -397,8 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ExpenditurePresResponse> ExpenditurePres(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<ExpenditurePresResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/president/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -411,10 +364,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ExpenditureOfficeResponse> ExpenditureOffice(Expression<Func<string>> cycle, Expression<Func<string>> office)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_office = office == null ? null : WorkflowExpression.Compile(office);
-            WorkflowExpression.Validate(__workflow_office, nameof(office), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_office = WorkflowExpression.Compile(office, nameof(office), required: true);
             return new DeferredBodyAction<ExpenditureOfficeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/independent_expenditures/race_totals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_office, 1));
@@ -427,10 +378,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> ExpenditureRaceCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<ExpenditureRaceCommitteeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/independent_expenditures/races.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -443,8 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommunicationRecentResponse> CommunicationRecent(Expression<Func<string>> cycle)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
             return new DeferredBodyAction<CommunicationRecentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1));
@@ -457,10 +405,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommunicationCommitteeResponse> CommunicationCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<CommunicationCommitteeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));
@@ -473,14 +419,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<CommunicationDateResponse> CommunicationDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<CommunicationDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/electioneering_communications/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
@@ -493,10 +435,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
         public IBodyWorkflowAction<BundlerCommitteeResponse> BundlerCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
         {
-            var __workflow_cycle = cycle == null ? null : WorkflowExpression.Compile(cycle);
-            WorkflowExpression.Validate(__workflow_cycle, nameof(cycle), required: true);
-            var __workflow_fecId = fecId == null ? null : WorkflowExpression.Compile(fecId);
-            WorkflowExpression.Validate(__workflow_fecId, nameof(fecId), required: true);
+            var __workflow_cycle = WorkflowExpression.Compile(cycle, nameof(cycle), required: true);
+            var __workflow_fecId = WorkflowExpression.Compile(fecId, nameof(fecId), required: true);
             return new DeferredBodyAction<BundlerCommitteeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/committees/{1}/lobbyist_bundlers.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fecId, 1));

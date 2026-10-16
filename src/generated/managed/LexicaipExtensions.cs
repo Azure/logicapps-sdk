@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexicaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexicaip")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search";

@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
         public IBodyWorkflowAction<PartnerProfileResponse> PartnerProfile(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<PartnerProfileResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -36,10 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Focusmateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "focusmateip")]
         public IBodyWorkflowAction<GetSessionsResponse> GetSessions(Expression<Func<string>> start, Expression<Func<string>> end)
         {
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: true);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: true);
             return new DeferredBodyAction<GetSessionsResponse>(() =>
             {
                 var apiCallPath = "/v1/sessions";

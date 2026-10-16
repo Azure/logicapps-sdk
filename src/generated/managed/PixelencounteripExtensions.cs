@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<MonsterResponse> GetMonsterJson(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<MonsterResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -36,12 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<ListMonstersResponse> ListMonsters(Expression<Func<int>> page = null, Expression<Func<int>> startRange = null, Expression<Func<int>> endRange = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_startRange = startRange == null ? null : WorkflowExpression.Compile(startRange);
-            WorkflowExpression.Validate(__workflow_startRange, nameof(startRange), required: false);
-            var __workflow_endRange = endRange == null ? null : WorkflowExpression.Compile(endRange);
-            WorkflowExpression.Validate(__workflow_endRange, nameof(endRange), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_startRange = WorkflowExpression.Compile(startRange, nameof(startRange), required: false);
+            var __workflow_endRange = WorkflowExpression.Compile(endRange, nameof(endRange), required: false);
             return new DeferredBodyAction<ListMonstersResponse>(() =>
             {
                 var apiCallPath = "/basic/monsters";
@@ -60,14 +56,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster(Expression<Func<string>> primaryColor = null, Expression<Func<fillTypeInput>> fillType = null, Expression<Func<string>> backgroundColor = null, Expression<Func<string>> secondaryColor = null)
         {
-            var __workflow_primaryColor = primaryColor == null ? null : WorkflowExpression.Compile(primaryColor);
-            WorkflowExpression.Validate(__workflow_primaryColor, nameof(primaryColor), required: false);
-            var __workflow_fillType = fillType == null ? null : WorkflowExpression.Compile(fillType);
-            WorkflowExpression.Validate(__workflow_fillType, nameof(fillType), required: false);
-            var __workflow_backgroundColor = backgroundColor == null ? null : WorkflowExpression.Compile(backgroundColor);
-            WorkflowExpression.Validate(__workflow_backgroundColor, nameof(backgroundColor), required: false);
-            var __workflow_secondaryColor = secondaryColor == null ? null : WorkflowExpression.Compile(secondaryColor);
-            WorkflowExpression.Validate(__workflow_secondaryColor, nameof(secondaryColor), required: false);
+            var __workflow_primaryColor = WorkflowExpression.Compile(primaryColor, nameof(primaryColor), required: false);
+            var __workflow_fillType = WorkflowExpression.Compile(fillType, nameof(fillType), required: false);
+            var __workflow_backgroundColor = WorkflowExpression.Compile(backgroundColor, nameof(backgroundColor), required: false);
+            var __workflow_secondaryColor = WorkflowExpression.Compile(secondaryColor, nameof(secondaryColor), required: false);
             return new DeferredBodyAction<MonsterResponse>(() =>
             {
                 var apiCallPath = "/basic/svgmonsters/json";

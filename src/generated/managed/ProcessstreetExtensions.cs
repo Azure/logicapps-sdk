@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<CreateWorkflowRunResponse> CreateWorkflowRun(Expression<Func<string>> bodyworkflowID, Expression<Func<string>> bodyname, Expression<Func<string>> bodydueDate = null)
         {
-            var __workflow_bodyworkflowID = bodyworkflowID == null ? null : WorkflowExpression.Compile(bodyworkflowID);
-            WorkflowExpression.Validate(__workflow_bodyworkflowID, nameof(bodyworkflowID), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyworkflowID = WorkflowExpression.Compile(bodyworkflowID, nameof(bodyworkflowID), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
             return new DeferredBodyAction<CreateWorkflowRunResponse>(() =>
             {
                 var apiCallPath = "/workflow-runs";
@@ -48,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<SimpleUser> GetUser(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<SimpleUser>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -62,16 +58,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<WorkflowRunResponse> UpdateWorkflowRun(Expression<Func<string>> workflowRunId, Expression<Func<string>> bodyname, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydueDate, Expression<Func<bool>> bodyshared)
         {
-            var __workflow_workflowRunId = workflowRunId == null ? null : WorkflowExpression.Compile(workflowRunId);
-            WorkflowExpression.Validate(__workflow_workflowRunId, nameof(workflowRunId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: true);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: true);
-            var __workflow_bodyshared = bodyshared == null ? null : WorkflowExpression.Compile(bodyshared);
-            WorkflowExpression.Validate(__workflow_bodyshared, nameof(bodyshared), required: true);
+            var __workflow_workflowRunId = WorkflowExpression.Compile(workflowRunId, nameof(workflowRunId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: true);
+            var __workflow_bodyshared = WorkflowExpression.Compile(bodyshared, nameof(bodyshared), required: true);
             return new DeferredBodyAction<WorkflowRunResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowRunId, 1));
@@ -99,14 +90,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<FindWorkflowRunsResponse> FindWorkflowRuns(Expression<Func<string>> workflowId, Expression<Func<string>> bodyname = null, Expression<Func<string[]>> bodyassignees = null, Expression<Func<object>> bodyformFields = null)
         {
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyassignees = bodyassignees == null ? null : WorkflowExpression.Compile(bodyassignees);
-            WorkflowExpression.Validate(__workflow_bodyassignees, nameof(bodyassignees), required: false);
-            var __workflow_bodyformFields = bodyformFields == null ? null : WorkflowExpression.Compile(bodyformFields);
-            WorkflowExpression.Validate(__workflow_bodyformFields, nameof(bodyformFields), required: false);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
+            var __workflow_bodyformFields = WorkflowExpression.Compile(bodyformFields, nameof(bodyformFields), required: false);
             return new DeferredBodyAction<FindWorkflowRunsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
@@ -144,12 +131,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<JToken> ListFormFieldValues(Expression<Func<string>> workflowRunId, Expression<Func<string>> workflowId, Expression<Func<string>> taskId = null)
         {
-            var __workflow_workflowRunId = workflowRunId == null ? null : WorkflowExpression.Compile(workflowRunId);
-            WorkflowExpression.Validate(__workflow_workflowRunId, nameof(workflowRunId), required: true);
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: false);
+            var __workflow_workflowRunId = WorkflowExpression.Compile(workflowRunId, nameof(workflowRunId), required: true);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow-runs/{0}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowRunId, 1));
@@ -165,12 +149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "processstreet")]
         public IBodyWorkflowAction<UpdateMultipleFormFieldValuesResponse> UpdateFormFieldValuesWithWorkflowId(Expression<Func<string>> workflowId, Expression<Func<string>> workflowRunId, Expression<Func<object>> body = null)
         {
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
-            var __workflow_workflowRunId = workflowRunId == null ? null : WorkflowExpression.Compile(workflowRunId);
-            WorkflowExpression.Validate(__workflow_workflowRunId, nameof(workflowRunId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_workflowRunId = WorkflowExpression.Compile(workflowRunId, nameof(workflowRunId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UpdateMultipleFormFieldValuesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/{0}/workflow-runs/{1}/form-fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowRunId, 1));
@@ -186,12 +167,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
     {
         public IWorkflowTrigger CreateTaskStateChangedTrigger(Expression<Func<bodytaskStateInput>> bodytaskState, Expression<Func<string>> bodyworkflowID = null, Expression<Func<string>> bodytaskID = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytaskState = bodytaskState == null ? null : WorkflowExpression.Compile(bodytaskState);
-            WorkflowExpression.Validate(__workflow_bodytaskState, nameof(bodytaskState), required: true);
-            var __workflow_bodyworkflowID = bodyworkflowID == null ? null : WorkflowExpression.Compile(bodyworkflowID);
-            WorkflowExpression.Validate(__workflow_bodyworkflowID, nameof(bodyworkflowID), required: false);
-            var __workflow_bodytaskID = bodytaskID == null ? null : WorkflowExpression.Compile(bodytaskID);
-            WorkflowExpression.Validate(__workflow_bodytaskID, nameof(bodytaskID), required: false);
+            var __workflow_bodytaskState = WorkflowExpression.Compile(bodytaskState, nameof(bodytaskState), required: true);
+            var __workflow_bodyworkflowID = WorkflowExpression.Compile(bodyworkflowID, nameof(bodyworkflowID), required: false);
+            var __workflow_bodytaskID = WorkflowExpression.Compile(bodytaskID, nameof(bodytaskID), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/triggers/task-state-changed";
@@ -226,8 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
         public IWorkflowTrigger CreateWorkflowRunCreatedTrigger(Expression<Func<string>> bodyworkflowID = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkflowID = bodyworkflowID == null ? null : WorkflowExpression.Compile(bodyworkflowID);
-            WorkflowExpression.Validate(__workflow_bodyworkflowID, nameof(bodyworkflowID), required: false);
+            var __workflow_bodyworkflowID = WorkflowExpression.Compile(bodyworkflowID, nameof(bodyworkflowID), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/triggers/workflow-run-created";
@@ -254,8 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
 
         public IWorkflowTrigger CreateWorkflowRunCompletedTrigger(Expression<Func<string>> bodyworkflowID = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkflowID = bodyworkflowID == null ? null : WorkflowExpression.Compile(bodyworkflowID);
-            WorkflowExpression.Validate(__workflow_bodyworkflowID, nameof(bodyworkflowID), required: false);
+            var __workflow_bodyworkflowID = WorkflowExpression.Compile(bodyworkflowID, nameof(bodyworkflowID), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/triggers/workflow-run-completed";

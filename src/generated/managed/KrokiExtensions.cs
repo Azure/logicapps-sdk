@@ -13,40 +13,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kroki
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kroki")]
         public IBodyWorkflowAction<DiagramPostResponse> Diagram(Expression<Func<libraryInput>> library, Expression<Func<string>> output, Expression<Func<string>> bodydiagramSource, Expression<Func<string>> bodydiagramOptionskey = null, Expression<Func<string>> bodydiagramOptionsantialias = null, Expression<Func<string>> bodydiagramOptionsnoTransparency = null, Expression<Func<string>> bodydiagramOptionssize = null, Expression<Func<string>> bodydiagramOptionsnoDoctype = null, Expression<Func<string>> bodydiagramOptionstheme = null, Expression<Func<string>> bodydiagramOptionssketch = null, Expression<Func<string>> bodydiagramOptionslayout = null, Expression<Func<int>> bodydiagramOptionsscale = null, Expression<Func<string>> bodydiagramOptionsviewKey = null, Expression<Func<string>> bodydiagramOptionsbackground = null, Expression<Func<string>> bodydiagramOptionsfontFamily = null, Expression<Func<int>> bodydiagramOptionsfontSize = null, Expression<Func<int>> bodydiagramOptionsstrokeWidth = null)
         {
-            var __workflow_library = library == null ? null : WorkflowExpression.Compile(library);
-            WorkflowExpression.Validate(__workflow_library, nameof(library), required: true);
-            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
-            WorkflowExpression.Validate(__workflow_output, nameof(output), required: true);
-            var __workflow_bodydiagramSource = bodydiagramSource == null ? null : WorkflowExpression.Compile(bodydiagramSource);
-            WorkflowExpression.Validate(__workflow_bodydiagramSource, nameof(bodydiagramSource), required: true);
-            var __workflow_bodydiagramOptionskey = bodydiagramOptionskey == null ? null : WorkflowExpression.Compile(bodydiagramOptionskey);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionskey, nameof(bodydiagramOptionskey), required: false);
-            var __workflow_bodydiagramOptionsantialias = bodydiagramOptionsantialias == null ? null : WorkflowExpression.Compile(bodydiagramOptionsantialias);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsantialias, nameof(bodydiagramOptionsantialias), required: false);
-            var __workflow_bodydiagramOptionsnoTransparency = bodydiagramOptionsnoTransparency == null ? null : WorkflowExpression.Compile(bodydiagramOptionsnoTransparency);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsnoTransparency, nameof(bodydiagramOptionsnoTransparency), required: false);
-            var __workflow_bodydiagramOptionssize = bodydiagramOptionssize == null ? null : WorkflowExpression.Compile(bodydiagramOptionssize);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionssize, nameof(bodydiagramOptionssize), required: false);
-            var __workflow_bodydiagramOptionsnoDoctype = bodydiagramOptionsnoDoctype == null ? null : WorkflowExpression.Compile(bodydiagramOptionsnoDoctype);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsnoDoctype, nameof(bodydiagramOptionsnoDoctype), required: false);
-            var __workflow_bodydiagramOptionstheme = bodydiagramOptionstheme == null ? null : WorkflowExpression.Compile(bodydiagramOptionstheme);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionstheme, nameof(bodydiagramOptionstheme), required: false);
-            var __workflow_bodydiagramOptionssketch = bodydiagramOptionssketch == null ? null : WorkflowExpression.Compile(bodydiagramOptionssketch);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionssketch, nameof(bodydiagramOptionssketch), required: false);
-            var __workflow_bodydiagramOptionslayout = bodydiagramOptionslayout == null ? null : WorkflowExpression.Compile(bodydiagramOptionslayout);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionslayout, nameof(bodydiagramOptionslayout), required: false);
-            var __workflow_bodydiagramOptionsscale = bodydiagramOptionsscale == null ? null : WorkflowExpression.Compile(bodydiagramOptionsscale);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsscale, nameof(bodydiagramOptionsscale), required: false);
-            var __workflow_bodydiagramOptionsviewKey = bodydiagramOptionsviewKey == null ? null : WorkflowExpression.Compile(bodydiagramOptionsviewKey);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsviewKey, nameof(bodydiagramOptionsviewKey), required: false);
-            var __workflow_bodydiagramOptionsbackground = bodydiagramOptionsbackground == null ? null : WorkflowExpression.Compile(bodydiagramOptionsbackground);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsbackground, nameof(bodydiagramOptionsbackground), required: false);
-            var __workflow_bodydiagramOptionsfontFamily = bodydiagramOptionsfontFamily == null ? null : WorkflowExpression.Compile(bodydiagramOptionsfontFamily);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsfontFamily, nameof(bodydiagramOptionsfontFamily), required: false);
-            var __workflow_bodydiagramOptionsfontSize = bodydiagramOptionsfontSize == null ? null : WorkflowExpression.Compile(bodydiagramOptionsfontSize);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsfontSize, nameof(bodydiagramOptionsfontSize), required: false);
-            var __workflow_bodydiagramOptionsstrokeWidth = bodydiagramOptionsstrokeWidth == null ? null : WorkflowExpression.Compile(bodydiagramOptionsstrokeWidth);
-            WorkflowExpression.Validate(__workflow_bodydiagramOptionsstrokeWidth, nameof(bodydiagramOptionsstrokeWidth), required: false);
+            var __workflow_library = WorkflowExpression.Compile(library, nameof(library), required: true);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: true);
+            var __workflow_bodydiagramSource = WorkflowExpression.Compile(bodydiagramSource, nameof(bodydiagramSource), required: true);
+            var __workflow_bodydiagramOptionskey = WorkflowExpression.Compile(bodydiagramOptionskey, nameof(bodydiagramOptionskey), required: false);
+            var __workflow_bodydiagramOptionsantialias = WorkflowExpression.Compile(bodydiagramOptionsantialias, nameof(bodydiagramOptionsantialias), required: false);
+            var __workflow_bodydiagramOptionsnoTransparency = WorkflowExpression.Compile(bodydiagramOptionsnoTransparency, nameof(bodydiagramOptionsnoTransparency), required: false);
+            var __workflow_bodydiagramOptionssize = WorkflowExpression.Compile(bodydiagramOptionssize, nameof(bodydiagramOptionssize), required: false);
+            var __workflow_bodydiagramOptionsnoDoctype = WorkflowExpression.Compile(bodydiagramOptionsnoDoctype, nameof(bodydiagramOptionsnoDoctype), required: false);
+            var __workflow_bodydiagramOptionstheme = WorkflowExpression.Compile(bodydiagramOptionstheme, nameof(bodydiagramOptionstheme), required: false);
+            var __workflow_bodydiagramOptionssketch = WorkflowExpression.Compile(bodydiagramOptionssketch, nameof(bodydiagramOptionssketch), required: false);
+            var __workflow_bodydiagramOptionslayout = WorkflowExpression.Compile(bodydiagramOptionslayout, nameof(bodydiagramOptionslayout), required: false);
+            var __workflow_bodydiagramOptionsscale = WorkflowExpression.Compile(bodydiagramOptionsscale, nameof(bodydiagramOptionsscale), required: false);
+            var __workflow_bodydiagramOptionsviewKey = WorkflowExpression.Compile(bodydiagramOptionsviewKey, nameof(bodydiagramOptionsviewKey), required: false);
+            var __workflow_bodydiagramOptionsbackground = WorkflowExpression.Compile(bodydiagramOptionsbackground, nameof(bodydiagramOptionsbackground), required: false);
+            var __workflow_bodydiagramOptionsfontFamily = WorkflowExpression.Compile(bodydiagramOptionsfontFamily, nameof(bodydiagramOptionsfontFamily), required: false);
+            var __workflow_bodydiagramOptionsfontSize = WorkflowExpression.Compile(bodydiagramOptionsfontSize, nameof(bodydiagramOptionsfontSize), required: false);
+            var __workflow_bodydiagramOptionsstrokeWidth = WorkflowExpression.Compile(bodydiagramOptionsstrokeWidth, nameof(bodydiagramOptionsstrokeWidth), required: false);
             return new DeferredBodyAction<DiagramPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_library, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_output, 1));

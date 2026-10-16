@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsdocsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsdocsip")]
         public IBodyWorkflowAction<CompileTemplateResponse> CompileTemplate(Expression<Func<string>> templateToken, Expression<Func<string>> docDeliveryType = null, Expression<Func<int>> docUrlExpiresIn = null, Expression<Func<string>> latexCompiler = null, Expression<Func<int>> latexRuns = null, Expression<Func<string>> mainFileName = null, Expression<Func<string>> docFileName = null, Expression<Func<string>> encryptType = null)
         {
-            var __workflow_templateToken = templateToken == null ? null : WorkflowExpression.Compile(templateToken);
-            WorkflowExpression.Validate(__workflow_templateToken, nameof(templateToken), required: true);
-            var __workflow_docDeliveryType = docDeliveryType == null ? null : WorkflowExpression.Compile(docDeliveryType);
-            WorkflowExpression.Validate(__workflow_docDeliveryType, nameof(docDeliveryType), required: false);
-            var __workflow_docUrlExpiresIn = docUrlExpiresIn == null ? null : WorkflowExpression.Compile(docUrlExpiresIn);
-            WorkflowExpression.Validate(__workflow_docUrlExpiresIn, nameof(docUrlExpiresIn), required: false);
-            var __workflow_latexCompiler = latexCompiler == null ? null : WorkflowExpression.Compile(latexCompiler);
-            WorkflowExpression.Validate(__workflow_latexCompiler, nameof(latexCompiler), required: false);
-            var __workflow_latexRuns = latexRuns == null ? null : WorkflowExpression.Compile(latexRuns);
-            WorkflowExpression.Validate(__workflow_latexRuns, nameof(latexRuns), required: false);
-            var __workflow_mainFileName = mainFileName == null ? null : WorkflowExpression.Compile(mainFileName);
-            WorkflowExpression.Validate(__workflow_mainFileName, nameof(mainFileName), required: false);
-            var __workflow_docFileName = docFileName == null ? null : WorkflowExpression.Compile(docFileName);
-            WorkflowExpression.Validate(__workflow_docFileName, nameof(docFileName), required: false);
-            var __workflow_encryptType = encryptType == null ? null : WorkflowExpression.Compile(encryptType);
-            WorkflowExpression.Validate(__workflow_encryptType, nameof(encryptType), required: false);
+            var __workflow_templateToken = WorkflowExpression.Compile(templateToken, nameof(templateToken), required: true);
+            var __workflow_docDeliveryType = WorkflowExpression.Compile(docDeliveryType, nameof(docDeliveryType), required: false);
+            var __workflow_docUrlExpiresIn = WorkflowExpression.Compile(docUrlExpiresIn, nameof(docUrlExpiresIn), required: false);
+            var __workflow_latexCompiler = WorkflowExpression.Compile(latexCompiler, nameof(latexCompiler), required: false);
+            var __workflow_latexRuns = WorkflowExpression.Compile(latexRuns, nameof(latexRuns), required: false);
+            var __workflow_mainFileName = WorkflowExpression.Compile(mainFileName, nameof(mainFileName), required: false);
+            var __workflow_docFileName = WorkflowExpression.Compile(docFileName, nameof(docFileName), required: false);
+            var __workflow_encryptType = WorkflowExpression.Compile(encryptType, nameof(encryptType), required: false);
             return new DeferredBodyAction<CompileTemplateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/compile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateToken, 1));

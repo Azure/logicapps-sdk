@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
         public IBodyWorkflowAction<InlineResponse200> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodylink = bodylink == null ? null : WorkflowExpression.Compile(bodylink);
-            WorkflowExpression.Validate(__workflow_bodylink, nameof(bodylink), required: true);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: true);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
             return new DeferredBodyAction<InlineResponse200>(() =>
             {
                 var apiCallPath = "/lnk/add";

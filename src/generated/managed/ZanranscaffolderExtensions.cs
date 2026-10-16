@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<string> UploadDocument(Expression<Func<object>> file, Expression<Func<int>> startPage = null, Expression<Func<int>> endPage = null, Expression<Func<string>> coords = null)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_startPage = startPage == null ? null : WorkflowExpression.Compile(startPage);
-            WorkflowExpression.Validate(__workflow_startPage, nameof(startPage), required: false);
-            var __workflow_endPage = endPage == null ? null : WorkflowExpression.Compile(endPage);
-            WorkflowExpression.Validate(__workflow_endPage, nameof(endPage), required: false);
-            var __workflow_coords = coords == null ? null : WorkflowExpression.Compile(coords);
-            WorkflowExpression.Validate(__workflow_coords, nameof(coords), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_startPage = WorkflowExpression.Compile(startPage, nameof(startPage), required: false);
+            var __workflow_endPage = WorkflowExpression.Compile(endPage, nameof(endPage), required: false);
+            var __workflow_coords = WorkflowExpression.Compile(coords, nameof(coords), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Upload/UploadFile";
@@ -33,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<string> GetStatus(Expression<Func<string>> docname)
         {
-            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
-            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
+            var __workflow_docname = WorkflowExpression.Compile(docname, nameof(docname), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/DocSearch/GetStatus";
@@ -47,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileXlsx(Expression<Func<string>> docname)
         {
-            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
-            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
+            var __workflow_docname = WorkflowExpression.Compile(docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
@@ -61,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileAllXml(Expression<Func<string>> docname)
         {
-            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
-            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
+            var __workflow_docname = WorkflowExpression.Compile(docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));
@@ -75,8 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
         public IBodyWorkflowAction<object> DownloadFileZnr(Expression<Func<string>> docname)
         {
-            var __workflow_docname = docname == null ? null : WorkflowExpression.Compile(docname);
-            WorkflowExpression.Validate(__workflow_docname, nameof(docname), required: true);
+            var __workflow_docname = WorkflowExpression.Compile(docname, nameof(docname), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docname, 1));

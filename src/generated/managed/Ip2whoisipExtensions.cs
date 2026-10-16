@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2whoisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2whoisip")]
         public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             return new DeferredBodyAction<CheckDomainResponse>(() =>
             {
                 var apiCallPath = "/v2";

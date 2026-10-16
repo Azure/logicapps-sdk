@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
         public IBodyWorkflowAction<Table> RunQuery(Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_timerange = timerange == null ? null : WorkflowExpression.Compile(timerange);
-            WorkflowExpression.Validate(__workflow_timerange, nameof(timerange), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: false);
             return new DeferredBodyAction<Table>(() =>
             {
                 var apiCallPath = "/api/QueryDraft";
@@ -34,12 +32,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
         public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<chartTypeInput>> chartType, Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
         {
-            var __workflow_chartType = chartType == null ? null : WorkflowExpression.Compile(chartType);
-            WorkflowExpression.Validate(__workflow_chartType, nameof(chartType), required: true);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_timerange = timerange == null ? null : WorkflowExpression.Compile(timerange);
-            WorkflowExpression.Validate(__workflow_timerange, nameof(timerange), required: false);
+            var __workflow_chartType = WorkflowExpression.Compile(chartType, nameof(chartType), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_timerange = WorkflowExpression.Compile(timerange, nameof(timerange), required: false);
             return new DeferredBodyAction<VisualizeResults>(() =>
             {
                 var apiCallPath = "/api/VisualizeQueryDraft";

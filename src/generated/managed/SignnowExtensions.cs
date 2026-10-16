@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IWorkflowAction DeleteDocGroupEmbeddedInvites(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,14 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInvitesResponse> CreateDocGroupEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem[]>> inviteinvites = null, Expression<Func<inviteadvancedInputItem[]>> inviteadvanced = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inviteinvites = inviteinvites == null ? null : WorkflowExpression.Compile(inviteinvites);
-            WorkflowExpression.Validate(__workflow_inviteinvites, nameof(inviteinvites), required: false);
-            var __workflow_inviteadvanced = inviteadvanced == null ? null : WorkflowExpression.Compile(inviteadvanced);
-            WorkflowExpression.Validate(__workflow_inviteadvanced, nameof(inviteadvanced), required: false);
-            var __workflow_inviteqESSignature = inviteqESSignature == null ? null : WorkflowExpression.Compile(inviteqESSignature);
-            WorkflowExpression.Validate(__workflow_inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inviteinvites = WorkflowExpression.Compile(inviteinvites, nameof(inviteinvites), required: false);
+            var __workflow_inviteadvanced = WorkflowExpression.Compile(inviteadvanced, nameof(inviteadvanced), required: false);
+            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<CreateDocGroupEmbeddedInvitesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -72,16 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<GenerateDocGroupEmbeddedInviteLinkResponse> GenerateDocGroupEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> inviteemail, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inviteId = inviteId == null ? null : WorkflowExpression.Compile(inviteId);
-            WorkflowExpression.Validate(__workflow_inviteId, nameof(inviteId), required: true);
-            var __workflow_inviteemail = inviteemail == null ? null : WorkflowExpression.Compile(inviteemail);
-            WorkflowExpression.Validate(__workflow_inviteemail, nameof(inviteemail), required: true);
-            var __workflow_invitelinkExpiration = invitelinkExpiration == null ? null : WorkflowExpression.Compile(invitelinkExpiration);
-            WorkflowExpression.Validate(__workflow_invitelinkExpiration, nameof(invitelinkExpiration), required: false);
-            var __workflow_invitesessionExpiration = invitesessionExpiration == null ? null : WorkflowExpression.Compile(invitesessionExpiration);
-            WorkflowExpression.Validate(__workflow_invitesessionExpiration, nameof(invitesessionExpiration), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
+            var __workflow_inviteemail = WorkflowExpression.Compile(inviteemail, nameof(inviteemail), required: true);
+            var __workflow_invitelinkExpiration = WorkflowExpression.Compile(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
+            var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
             return new DeferredBodyAction<GenerateDocGroupEmbeddedInviteLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-invites/{1}/link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inviteId, 1));
@@ -115,8 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IWorkflowAction DeleteEmbeddedInvites(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -129,16 +118,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateEmbeddedInvitesResponse> CreateEmbeddedInvites(Expression<Func<string>> id, Expression<Func<inviteinvitesInputItem2[]>> inviteinvites = null, Expression<Func<string>> invitenameFormula = null, Expression<Func<inviteinviteAdvancedParametersInputItem[]>> inviteinviteAdvancedParameters = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inviteinvites = inviteinvites == null ? null : WorkflowExpression.Compile(inviteinvites);
-            WorkflowExpression.Validate(__workflow_inviteinvites, nameof(inviteinvites), required: false);
-            var __workflow_invitenameFormula = invitenameFormula == null ? null : WorkflowExpression.Compile(invitenameFormula);
-            WorkflowExpression.Validate(__workflow_invitenameFormula, nameof(invitenameFormula), required: false);
-            var __workflow_inviteinviteAdvancedParameters = inviteinviteAdvancedParameters == null ? null : WorkflowExpression.Compile(inviteinviteAdvancedParameters);
-            WorkflowExpression.Validate(__workflow_inviteinviteAdvancedParameters, nameof(inviteinviteAdvancedParameters), required: false);
-            var __workflow_inviteqESSignature = inviteqESSignature == null ? null : WorkflowExpression.Compile(inviteqESSignature);
-            WorkflowExpression.Validate(__workflow_inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inviteinvites = WorkflowExpression.Compile(inviteinvites, nameof(inviteinvites), required: false);
+            var __workflow_invitenameFormula = WorkflowExpression.Compile(invitenameFormula, nameof(invitenameFormula), required: false);
+            var __workflow_inviteinviteAdvancedParameters = WorkflowExpression.Compile(inviteinviteAdvancedParameters, nameof(inviteinviteAdvancedParameters), required: false);
+            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<CreateEmbeddedInvitesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -182,14 +166,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<GenerateEmbeddedInviteLinkResponse> GenerateEmbeddedInviteLink(Expression<Func<string>> id, Expression<Func<string>> fieldInviteId, Expression<Func<int>> invitelinkExpiration = null, Expression<Func<int>> invitesessionExpiration = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fieldInviteId = fieldInviteId == null ? null : WorkflowExpression.Compile(fieldInviteId);
-            WorkflowExpression.Validate(__workflow_fieldInviteId, nameof(fieldInviteId), required: true);
-            var __workflow_invitelinkExpiration = invitelinkExpiration == null ? null : WorkflowExpression.Compile(invitelinkExpiration);
-            WorkflowExpression.Validate(__workflow_invitelinkExpiration, nameof(invitelinkExpiration), required: false);
-            var __workflow_invitesessionExpiration = invitesessionExpiration == null ? null : WorkflowExpression.Compile(invitesessionExpiration);
-            WorkflowExpression.Validate(__workflow_invitesessionExpiration, nameof(invitesessionExpiration), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fieldInviteId = WorkflowExpression.Compile(fieldInviteId, nameof(fieldInviteId), required: true);
+            var __workflow_invitelinkExpiration = WorkflowExpression.Compile(invitelinkExpiration, nameof(invitelinkExpiration), required: false);
+            var __workflow_invitesessionExpiration = WorkflowExpression.Compile(invitesessionExpiration, nameof(invitesessionExpiration), required: false);
             return new DeferredBodyAction<GenerateEmbeddedInviteLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-invites/{1}/link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fieldInviteId, 1));
@@ -221,12 +201,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<DocumentGroupsResponse> GetListDocGroups(Expression<Func<bool>> template, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<DocumentGroupsResponse>(() =>
             {
                 var apiCallPath = "/documentgroups";
@@ -244,10 +221,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateDocumentGroupFromFilesResponse> CreateDocGroupFromFiles(Expression<Func<string>> bodydocumentGroupName, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
         {
-            var __workflow_bodydocumentGroupName = bodydocumentGroupName == null ? null : WorkflowExpression.Compile(bodydocumentGroupName);
-            WorkflowExpression.Validate(__workflow_bodydocumentGroupName, nameof(bodydocumentGroupName), required: true);
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodydocumentGroupName = WorkflowExpression.Compile(bodydocumentGroupName, nameof(bodydocumentGroupName), required: true);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<CreateDocumentGroupFromFilesResponse>(() =>
             {
                 var apiCallPath = "/documentgroups";
@@ -275,10 +250,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<DocumentGroupProperties> GetDocumentGroup(Expression<Func<string>> docGroupId, Expression<Func<bool>> template)
         {
-            var __workflow_docGroupId = docGroupId == null ? null : WorkflowExpression.Compile(docGroupId);
-            WorkflowExpression.Validate(__workflow_docGroupId, nameof(docGroupId), required: true);
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
+            var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             return new DeferredBodyAction<DocumentGroupProperties>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
@@ -292,10 +265,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateFromTemplateGroupResponse> CreateFromTemplateGroup(Expression<Func<string>> docGroupId, Expression<Func<string>> bodydocumentGroupName = null)
         {
-            var __workflow_docGroupId = docGroupId == null ? null : WorkflowExpression.Compile(docGroupId);
-            WorkflowExpression.Validate(__workflow_docGroupId, nameof(docGroupId), required: true);
-            var __workflow_bodydocumentGroupName = bodydocumentGroupName == null ? null : WorkflowExpression.Compile(bodydocumentGroupName);
-            WorkflowExpression.Validate(__workflow_bodydocumentGroupName, nameof(bodydocumentGroupName), required: false);
+            var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
+            var __workflow_bodydocumentGroupName = WorkflowExpression.Compile(bodydocumentGroupName, nameof(bodydocumentGroupName), required: false);
             return new DeferredBodyAction<CreateFromTemplateGroupResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
@@ -321,12 +292,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<UpdateGroupFieldValuesResponse> UpdateGroupFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
         {
-            var __workflow_templateGroupId = templateGroupId == null ? null : WorkflowExpression.Compile(templateGroupId);
-            WorkflowExpression.Validate(__workflow_templateGroupId, nameof(templateGroupId), required: true);
-            var __workflow_docGroupId = docGroupId == null ? null : WorkflowExpression.Compile(docGroupId);
-            WorkflowExpression.Validate(__workflow_docGroupId, nameof(docGroupId), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_templateGroupId = WorkflowExpression.Compile(templateGroupId, nameof(templateGroupId), required: true);
+            var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<UpdateGroupFieldValuesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
@@ -341,12 +309,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<UpdateGroupSmartFieldValuesResponse> UpdateGroupSmartFieldValues(Expression<Func<string>> templateGroupId, Expression<Func<string>> docGroupId, Expression<Func<object>> fields = null)
         {
-            var __workflow_templateGroupId = templateGroupId == null ? null : WorkflowExpression.Compile(templateGroupId);
-            WorkflowExpression.Validate(__workflow_templateGroupId, nameof(templateGroupId), required: true);
-            var __workflow_docGroupId = docGroupId == null ? null : WorkflowExpression.Compile(docGroupId);
-            WorkflowExpression.Validate(__workflow_docGroupId, nameof(docGroupId), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_templateGroupId = WorkflowExpression.Compile(templateGroupId, nameof(templateGroupId), required: true);
+            var __workflow_docGroupId = WorkflowExpression.Compile(docGroupId, nameof(docGroupId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<UpdateGroupSmartFieldValuesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/smartfields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docGroupId, 1));
@@ -361,10 +326,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<DocumentProperties[]> GetListDoc(Expression<Func<bool>> template = null, Expression<Func<bool>> includeDefaultTemplate = null)
         {
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: false);
-            var __workflow_includeDefaultTemplate = includeDefaultTemplate == null ? null : WorkflowExpression.Compile(includeDefaultTemplate);
-            WorkflowExpression.Validate(__workflow_includeDefaultTemplate, nameof(includeDefaultTemplate), required: false);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: false);
+            var __workflow_includeDefaultTemplate = WorkflowExpression.Compile(includeDefaultTemplate, nameof(includeDefaultTemplate), required: false);
             return new DeferredBodyAction<DocumentProperties[]>(() =>
             {
                 var apiCallPath = "/document";
@@ -382,8 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<object>> file)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredBodyAction<UploadDocumentResponse>(() =>
             {
                 var apiCallPath = "/document";
@@ -396,10 +358,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<DocumentProperties> GetDoc(Expression<Func<bool>> template, Expression<Func<string>> docId)
         {
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<DocumentProperties>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -413,8 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<DeleteDocResponse> DeleteDoc(Expression<Func<string>> docId)
         {
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<DeleteDocResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -427,10 +386,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateFromTemplateResponse> CreateFromTemplate(Expression<Func<string>> docId, Expression<Func<string>> bodydocumentName = null)
         {
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
-            var __workflow_bodydocumentName = bodydocumentName == null ? null : WorkflowExpression.Compile(bodydocumentName);
-            WorkflowExpression.Validate(__workflow_bodydocumentName, nameof(bodydocumentName), required: false);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
+            var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
             return new DeferredBodyAction<CreateFromTemplateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -456,10 +413,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateSigningLinkResponse> CreateSigningLink(Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<CreateSigningLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -473,12 +428,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<JToken> SendInvite(Expression<Func<bool>> template, Expression<Func<string>> templateId, Expression<Func<object>> body = null)
         {
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -493,12 +445,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<JToken> SendGroupInvite(Expression<Func<bool>> template, Expression<Func<string>> templateGroupId, Expression<Func<object>> body = null)
         {
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
-            var __workflow_templateGroupId = templateGroupId == null ? null : WorkflowExpression.Compile(templateGroupId);
-            WorkflowExpression.Validate(__workflow_templateGroupId, nameof(templateGroupId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
+            var __workflow_templateGroupId = WorkflowExpression.Compile(templateGroupId, nameof(templateGroupId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateGroupId, 1));
@@ -513,18 +462,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<JToken> SendUserDefinedInvite(Expression<Func<string>> docId, Expression<Func<bodyroleInputItem[]>> bodyrole = null, Expression<Func<string>> bodycC = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyemailAllPartiesOnCompletion = null)
         {
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: false);
-            var __workflow_bodycC = bodycC == null ? null : WorkflowExpression.Compile(bodycC);
-            WorkflowExpression.Validate(__workflow_bodycC, nameof(bodycC), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodyemailAllPartiesOnCompletion = bodyemailAllPartiesOnCompletion == null ? null : WorkflowExpression.Compile(bodyemailAllPartiesOnCompletion);
-            WorkflowExpression.Validate(__workflow_bodyemailAllPartiesOnCompletion, nameof(bodyemailAllPartiesOnCompletion), required: false);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: false);
+            var __workflow_bodycC = WorkflowExpression.Compile(bodycC, nameof(bodycC), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyemailAllPartiesOnCompletion = WorkflowExpression.Compile(bodyemailAllPartiesOnCompletion, nameof(bodyemailAllPartiesOnCompletion), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-user-defined-schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -574,8 +517,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<JToken> CancelInvite(Expression<Func<string>> docId)
         {
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -588,10 +530,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> docId, Expression<Func<string>> mode = null)
         {
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
-            var __workflow_mode = mode == null ? null : WorkflowExpression.Compile(mode);
-            WorkflowExpression.Validate(__workflow_mode, nameof(mode), required: false);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
+            var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -607,12 +547,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IWorkflowAction PrefillSmartFields(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/smartfields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -627,8 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<GetInviteStatusResponse> GetInviteStatus(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetInviteStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -641,8 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<GetDocumentGroupInviteStatusResponse> GetDocumentGroupInviteStatus(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetDocumentGroupInviteStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroups/{0}/invite-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -655,12 +590,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentInviteResponse> ReplaceRecipientsInDocumentInvite(Expression<Func<string>> id, Expression<Func<replaceToreplaceToInputItem[]>> replaceToreplaceTo = null, Expression<Func<replaceToadvancedParametersInputItem[]>> replaceToadvancedParameters = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_replaceToreplaceTo = replaceToreplaceTo == null ? null : WorkflowExpression.Compile(replaceToreplaceTo);
-            WorkflowExpression.Validate(__workflow_replaceToreplaceTo, nameof(replaceToreplaceTo), required: false);
-            var __workflow_replaceToadvancedParameters = replaceToadvancedParameters == null ? null : WorkflowExpression.Compile(replaceToadvancedParameters);
-            WorkflowExpression.Validate(__workflow_replaceToadvancedParameters, nameof(replaceToadvancedParameters), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_replaceToreplaceTo = WorkflowExpression.Compile(replaceToreplaceTo, nameof(replaceToreplaceTo), required: false);
+            var __workflow_replaceToadvancedParameters = WorkflowExpression.Compile(replaceToadvancedParameters, nameof(replaceToadvancedParameters), required: false);
             return new DeferredBodyAction<ReplaceRecipientsInDocumentInviteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/replace-recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -692,22 +624,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<ReplaceRecipientsInDocumentGroupInviteResponse> ReplaceRecipientsInDocumentGroupInvite(Expression<Func<string>> id, Expression<Func<string>> inviteId, Expression<Func<string>> replaceTostepID = null, Expression<Func<string>> replaceTorecipientToReplace = null, Expression<Func<string>> replaceTonewRecipient = null, Expression<Func<int>> replaceToexpirationDays = null, Expression<Func<int>> replaceToreminder = null, Expression<Func<replaceToinviteActionAttributesInputItem[]>> replaceToinviteActionAttributes = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inviteId = inviteId == null ? null : WorkflowExpression.Compile(inviteId);
-            WorkflowExpression.Validate(__workflow_inviteId, nameof(inviteId), required: true);
-            var __workflow_replaceTostepID = replaceTostepID == null ? null : WorkflowExpression.Compile(replaceTostepID);
-            WorkflowExpression.Validate(__workflow_replaceTostepID, nameof(replaceTostepID), required: false);
-            var __workflow_replaceTorecipientToReplace = replaceTorecipientToReplace == null ? null : WorkflowExpression.Compile(replaceTorecipientToReplace);
-            WorkflowExpression.Validate(__workflow_replaceTorecipientToReplace, nameof(replaceTorecipientToReplace), required: false);
-            var __workflow_replaceTonewRecipient = replaceTonewRecipient == null ? null : WorkflowExpression.Compile(replaceTonewRecipient);
-            WorkflowExpression.Validate(__workflow_replaceTonewRecipient, nameof(replaceTonewRecipient), required: false);
-            var __workflow_replaceToexpirationDays = replaceToexpirationDays == null ? null : WorkflowExpression.Compile(replaceToexpirationDays);
-            WorkflowExpression.Validate(__workflow_replaceToexpirationDays, nameof(replaceToexpirationDays), required: false);
-            var __workflow_replaceToreminder = replaceToreminder == null ? null : WorkflowExpression.Compile(replaceToreminder);
-            WorkflowExpression.Validate(__workflow_replaceToreminder, nameof(replaceToreminder), required: false);
-            var __workflow_replaceToinviteActionAttributes = replaceToinviteActionAttributes == null ? null : WorkflowExpression.Compile(replaceToinviteActionAttributes);
-            WorkflowExpression.Validate(__workflow_replaceToinviteActionAttributes, nameof(replaceToinviteActionAttributes), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inviteId = WorkflowExpression.Compile(inviteId, nameof(inviteId), required: true);
+            var __workflow_replaceTostepID = WorkflowExpression.Compile(replaceTostepID, nameof(replaceTostepID), required: false);
+            var __workflow_replaceTorecipientToReplace = WorkflowExpression.Compile(replaceTorecipientToReplace, nameof(replaceTorecipientToReplace), required: false);
+            var __workflow_replaceTonewRecipient = WorkflowExpression.Compile(replaceTonewRecipient, nameof(replaceTonewRecipient), required: false);
+            var __workflow_replaceToexpirationDays = WorkflowExpression.Compile(replaceToexpirationDays, nameof(replaceToexpirationDays), required: false);
+            var __workflow_replaceToreminder = WorkflowExpression.Compile(replaceToreminder, nameof(replaceToreminder), required: false);
+            var __workflow_replaceToinviteActionAttributes = WorkflowExpression.Compile(replaceToinviteActionAttributes, nameof(replaceToinviteActionAttributes), required: false);
             return new DeferredBodyAction<ReplaceRecipientsInDocumentGroupInviteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite/{1}/replace-recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inviteId, 1));
@@ -773,16 +697,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateEmbeddedInviteSettingsLinkResponse> CreateEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inviteSettingstype = inviteSettingstype == null ? null : WorkflowExpression.Compile(inviteSettingstype);
-            WorkflowExpression.Validate(__workflow_inviteSettingstype, nameof(inviteSettingstype), required: false);
-            var __workflow_inviteSettingsredirectUri = inviteSettingsredirectUri == null ? null : WorkflowExpression.Compile(inviteSettingsredirectUri);
-            WorkflowExpression.Validate(__workflow_inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
-            var __workflow_inviteSettingslinkExpiration = inviteSettingslinkExpiration == null ? null : WorkflowExpression.Compile(inviteSettingslinkExpiration);
-            WorkflowExpression.Validate(__workflow_inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
-            var __workflow_inviteSettingsredirectTarget = inviteSettingsredirectTarget == null ? null : WorkflowExpression.Compile(inviteSettingsredirectTarget);
-            WorkflowExpression.Validate(__workflow_inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inviteSettingstype = WorkflowExpression.Compile(inviteSettingstype, nameof(inviteSettingstype), required: false);
+            var __workflow_inviteSettingsredirectUri = WorkflowExpression.Compile(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
+            var __workflow_inviteSettingslinkExpiration = WorkflowExpression.Compile(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
+            var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
             return new DeferredBodyAction<CreateEmbeddedInviteSettingsLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/documents/{0}/embedded-sending", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -836,16 +755,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse> CreateDocGroupEmbeddedInviteSettingsLink(Expression<Func<string>> id, Expression<Func<inviteSettingstypeInput>> inviteSettingstype = null, Expression<Func<string>> inviteSettingsredirectUri = null, Expression<Func<int>> inviteSettingslinkExpiration = null, Expression<Func<inviteSettingsredirectTargetInput>> inviteSettingsredirectTarget = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inviteSettingstype = inviteSettingstype == null ? null : WorkflowExpression.Compile(inviteSettingstype);
-            WorkflowExpression.Validate(__workflow_inviteSettingstype, nameof(inviteSettingstype), required: false);
-            var __workflow_inviteSettingsredirectUri = inviteSettingsredirectUri == null ? null : WorkflowExpression.Compile(inviteSettingsredirectUri);
-            WorkflowExpression.Validate(__workflow_inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
-            var __workflow_inviteSettingslinkExpiration = inviteSettingslinkExpiration == null ? null : WorkflowExpression.Compile(inviteSettingslinkExpiration);
-            WorkflowExpression.Validate(__workflow_inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
-            var __workflow_inviteSettingsredirectTarget = inviteSettingsredirectTarget == null ? null : WorkflowExpression.Compile(inviteSettingsredirectTarget);
-            WorkflowExpression.Validate(__workflow_inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inviteSettingstype = WorkflowExpression.Compile(inviteSettingstype, nameof(inviteSettingstype), required: false);
+            var __workflow_inviteSettingsredirectUri = WorkflowExpression.Compile(inviteSettingsredirectUri, nameof(inviteSettingsredirectUri), required: false);
+            var __workflow_inviteSettingslinkExpiration = WorkflowExpression.Compile(inviteSettingslinkExpiration, nameof(inviteSettingslinkExpiration), required: false);
+            var __workflow_inviteSettingsredirectTarget = WorkflowExpression.Compile(inviteSettingsredirectTarget, nameof(inviteSettingsredirectTarget), required: false);
             return new DeferredBodyAction<CreateDocGroupEmbeddedInviteSettingsLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/embedded-sending", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -909,38 +823,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<InviteToSignAllOptionsResponse> InviteToSignAllOptions(Expression<Func<string>> id, Expression<Func<invitesignersInputItem[]>> invitesigners = null, Expression<Func<invitesignerAdvancedPropertiesInputItem[]>> invitesignerAdvancedProperties = null, Expression<Func<inviteviewersInputItem[]>> inviteviewers = null, Expression<Func<inviteviewerAdvancedPropertiesInputItem[]>> inviteviewerAdvancedProperties = null, Expression<Func<inviteapproversInputItem[]>> inviteapprovers = null, Expression<Func<inviteapproverAdvancedPropertiesInputItem[]>> inviteapproverAdvancedProperties = null, Expression<Func<string>> invitefrom = null, Expression<Func<inviteemailGroupsInputItem[]>> inviteemailGroups = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<invitecCStepsInputItem[]>> invitecCSteps = null, Expression<Func<string>> invitesubject = null, Expression<Func<string>> invitemessage = null, Expression<Func<string>> invitecCSubject = null, Expression<Func<string>> invitecCMessage = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_invitesigners = invitesigners == null ? null : WorkflowExpression.Compile(invitesigners);
-            WorkflowExpression.Validate(__workflow_invitesigners, nameof(invitesigners), required: false);
-            var __workflow_invitesignerAdvancedProperties = invitesignerAdvancedProperties == null ? null : WorkflowExpression.Compile(invitesignerAdvancedProperties);
-            WorkflowExpression.Validate(__workflow_invitesignerAdvancedProperties, nameof(invitesignerAdvancedProperties), required: false);
-            var __workflow_inviteviewers = inviteviewers == null ? null : WorkflowExpression.Compile(inviteviewers);
-            WorkflowExpression.Validate(__workflow_inviteviewers, nameof(inviteviewers), required: false);
-            var __workflow_inviteviewerAdvancedProperties = inviteviewerAdvancedProperties == null ? null : WorkflowExpression.Compile(inviteviewerAdvancedProperties);
-            WorkflowExpression.Validate(__workflow_inviteviewerAdvancedProperties, nameof(inviteviewerAdvancedProperties), required: false);
-            var __workflow_inviteapprovers = inviteapprovers == null ? null : WorkflowExpression.Compile(inviteapprovers);
-            WorkflowExpression.Validate(__workflow_inviteapprovers, nameof(inviteapprovers), required: false);
-            var __workflow_inviteapproverAdvancedProperties = inviteapproverAdvancedProperties == null ? null : WorkflowExpression.Compile(inviteapproverAdvancedProperties);
-            WorkflowExpression.Validate(__workflow_inviteapproverAdvancedProperties, nameof(inviteapproverAdvancedProperties), required: false);
-            var __workflow_invitefrom = invitefrom == null ? null : WorkflowExpression.Compile(invitefrom);
-            WorkflowExpression.Validate(__workflow_invitefrom, nameof(invitefrom), required: false);
-            var __workflow_inviteemailGroups = inviteemailGroups == null ? null : WorkflowExpression.Compile(inviteemailGroups);
-            WorkflowExpression.Validate(__workflow_inviteemailGroups, nameof(inviteemailGroups), required: false);
-            var __workflow_invitecC = invitecC == null ? null : WorkflowExpression.Compile(invitecC);
-            WorkflowExpression.Validate(__workflow_invitecC, nameof(invitecC), required: false);
-            var __workflow_invitecCSteps = invitecCSteps == null ? null : WorkflowExpression.Compile(invitecCSteps);
-            WorkflowExpression.Validate(__workflow_invitecCSteps, nameof(invitecCSteps), required: false);
-            var __workflow_invitesubject = invitesubject == null ? null : WorkflowExpression.Compile(invitesubject);
-            WorkflowExpression.Validate(__workflow_invitesubject, nameof(invitesubject), required: false);
-            var __workflow_invitemessage = invitemessage == null ? null : WorkflowExpression.Compile(invitemessage);
-            WorkflowExpression.Validate(__workflow_invitemessage, nameof(invitemessage), required: false);
-            var __workflow_invitecCSubject = invitecCSubject == null ? null : WorkflowExpression.Compile(invitecCSubject);
-            WorkflowExpression.Validate(__workflow_invitecCSubject, nameof(invitecCSubject), required: false);
-            var __workflow_invitecCMessage = invitecCMessage == null ? null : WorkflowExpression.Compile(invitecCMessage);
-            WorkflowExpression.Validate(__workflow_invitecCMessage, nameof(invitecCMessage), required: false);
-            var __workflow_inviteqESSignature = inviteqESSignature == null ? null : WorkflowExpression.Compile(inviteqESSignature);
-            WorkflowExpression.Validate(__workflow_inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_invitesigners = WorkflowExpression.Compile(invitesigners, nameof(invitesigners), required: false);
+            var __workflow_invitesignerAdvancedProperties = WorkflowExpression.Compile(invitesignerAdvancedProperties, nameof(invitesignerAdvancedProperties), required: false);
+            var __workflow_inviteviewers = WorkflowExpression.Compile(inviteviewers, nameof(inviteviewers), required: false);
+            var __workflow_inviteviewerAdvancedProperties = WorkflowExpression.Compile(inviteviewerAdvancedProperties, nameof(inviteviewerAdvancedProperties), required: false);
+            var __workflow_inviteapprovers = WorkflowExpression.Compile(inviteapprovers, nameof(inviteapprovers), required: false);
+            var __workflow_inviteapproverAdvancedProperties = WorkflowExpression.Compile(inviteapproverAdvancedProperties, nameof(inviteapproverAdvancedProperties), required: false);
+            var __workflow_invitefrom = WorkflowExpression.Compile(invitefrom, nameof(invitefrom), required: false);
+            var __workflow_inviteemailGroups = WorkflowExpression.Compile(inviteemailGroups, nameof(inviteemailGroups), required: false);
+            var __workflow_invitecC = WorkflowExpression.Compile(invitecC, nameof(invitecC), required: false);
+            var __workflow_invitecCSteps = WorkflowExpression.Compile(invitecCSteps, nameof(invitecCSteps), required: false);
+            var __workflow_invitesubject = WorkflowExpression.Compile(invitesubject, nameof(invitesubject), required: false);
+            var __workflow_invitemessage = WorkflowExpression.Compile(invitemessage, nameof(invitemessage), required: false);
+            var __workflow_invitecCSubject = WorkflowExpression.Compile(invitecCSubject, nameof(invitecCSubject), required: false);
+            var __workflow_invitecCMessage = WorkflowExpression.Compile(invitecCMessage, nameof(invitecCMessage), required: false);
+            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<InviteToSignAllOptionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}/invite-all-options", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1050,24 +948,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<InviteToSignDocGroupAllOptionsResponse> InviteToSignDocGroupAllOptions(Expression<Func<string>> id, Expression<Func<inviteinviteStepsInputItem[]>> inviteinviteSteps = null, Expression<Func<inviteinviteEmailsInputItem[]>> inviteinviteEmails = null, Expression<Func<inviteemailGroupsInputItem2[]>> inviteemailGroups = null, Expression<Func<invitecompletionEmailsInputItem[]>> invitecompletionEmails = null, Expression<Func<bool>> invitesignAsMerged = null, Expression<Func<int>> inviteclientTimestamp = null, Expression<Func<invitecCInputItem[]>> invitecC = null, Expression<Func<inviteqESSignatureInput>> inviteqESSignature = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inviteinviteSteps = inviteinviteSteps == null ? null : WorkflowExpression.Compile(inviteinviteSteps);
-            WorkflowExpression.Validate(__workflow_inviteinviteSteps, nameof(inviteinviteSteps), required: false);
-            var __workflow_inviteinviteEmails = inviteinviteEmails == null ? null : WorkflowExpression.Compile(inviteinviteEmails);
-            WorkflowExpression.Validate(__workflow_inviteinviteEmails, nameof(inviteinviteEmails), required: false);
-            var __workflow_inviteemailGroups = inviteemailGroups == null ? null : WorkflowExpression.Compile(inviteemailGroups);
-            WorkflowExpression.Validate(__workflow_inviteemailGroups, nameof(inviteemailGroups), required: false);
-            var __workflow_invitecompletionEmails = invitecompletionEmails == null ? null : WorkflowExpression.Compile(invitecompletionEmails);
-            WorkflowExpression.Validate(__workflow_invitecompletionEmails, nameof(invitecompletionEmails), required: false);
-            var __workflow_invitesignAsMerged = invitesignAsMerged == null ? null : WorkflowExpression.Compile(invitesignAsMerged);
-            WorkflowExpression.Validate(__workflow_invitesignAsMerged, nameof(invitesignAsMerged), required: false);
-            var __workflow_inviteclientTimestamp = inviteclientTimestamp == null ? null : WorkflowExpression.Compile(inviteclientTimestamp);
-            WorkflowExpression.Validate(__workflow_inviteclientTimestamp, nameof(inviteclientTimestamp), required: false);
-            var __workflow_invitecC = invitecC == null ? null : WorkflowExpression.Compile(invitecC);
-            WorkflowExpression.Validate(__workflow_invitecC, nameof(invitecC), required: false);
-            var __workflow_inviteqESSignature = inviteqESSignature == null ? null : WorkflowExpression.Compile(inviteqESSignature);
-            WorkflowExpression.Validate(__workflow_inviteqESSignature, nameof(inviteqESSignature), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inviteinviteSteps = WorkflowExpression.Compile(inviteinviteSteps, nameof(inviteinviteSteps), required: false);
+            var __workflow_inviteinviteEmails = WorkflowExpression.Compile(inviteinviteEmails, nameof(inviteinviteEmails), required: false);
+            var __workflow_inviteemailGroups = WorkflowExpression.Compile(inviteemailGroups, nameof(inviteemailGroups), required: false);
+            var __workflow_invitecompletionEmails = WorkflowExpression.Compile(invitecompletionEmails, nameof(invitecompletionEmails), required: false);
+            var __workflow_invitesignAsMerged = WorkflowExpression.Compile(invitesignAsMerged, nameof(invitesignAsMerged), required: false);
+            var __workflow_inviteclientTimestamp = WorkflowExpression.Compile(inviteclientTimestamp, nameof(inviteclientTimestamp), required: false);
+            var __workflow_invitecC = WorkflowExpression.Compile(invitecC, nameof(invitecC), required: false);
+            var __workflow_inviteqESSignature = WorkflowExpression.Compile(inviteqESSignature, nameof(inviteqESSignature), required: false);
             return new DeferredBodyAction<InviteToSignDocGroupAllOptionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentgroup/{0}/invite-all-options", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1135,10 +1024,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<JToken> GetDocFields(Expression<Func<string>> templateId, Expression<Func<string>> docId)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -1152,12 +1039,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signnow")]
         public IBodyWorkflowAction<UpdateFieldValuesV2Response> UpdateFieldValues(Expression<Func<string>> templateId, Expression<Func<string>> docId, Expression<Func<object>> fields = null)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_docId = docId == null ? null : WorkflowExpression.Compile(docId);
-            WorkflowExpression.Validate(__workflow_docId, nameof(docId), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_docId = WorkflowExpression.Compile(docId, nameof(docId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<UpdateFieldValuesV2Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_docId, 1));
@@ -1174,8 +1058,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     {
         public IBodyWorkflowTrigger<TriggersV2Response> Triggers(Expression<Func<string>> bodyevent, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevent = bodyevent == null ? null : WorkflowExpression.Compile(bodyevent);
-            WorkflowExpression.Validate(__workflow_bodyevent, nameof(bodyevent), required: true);
+            var __workflow_bodyevent = WorkflowExpression.Compile(bodyevent, nameof(bodyevent), required: true);
             return new DeferredBodyTrigger<TriggersV2Response>(() =>
             {
                 var apiCallPath = "/multievent";

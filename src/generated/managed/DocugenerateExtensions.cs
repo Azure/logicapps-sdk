@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IBodyWorkflowAction<GetTemplateResponse> GetTemplate(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetTemplateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IWorkflowAction DeleteTemplate(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -50,8 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments(Expression<Func<string>> templateId)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<ListDocumentsResponseItem[]>(() =>
             {
                 var apiCallPath = "/document";
@@ -65,14 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodydata, Expression<Func<string>> bodyname = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null)
         {
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyoutputFormat = bodyoutputFormat == null ? null : WorkflowExpression.Compile(bodyoutputFormat);
-            WorkflowExpression.Validate(__workflow_bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyoutputFormat = WorkflowExpression.Compile(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
             return new DeferredBodyAction<GenerateDocumentResponse>(() =>
             {
                 var apiCallPath = "/document";
@@ -118,8 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -132,8 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -146,10 +137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyname = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<UpdateDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

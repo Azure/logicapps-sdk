@@ -13,34 +13,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<deviceInput>> device = null, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> lr = null, Expression<Func<string>> cr = null, Expression<Func<nfprInput>> nfpr = null, Expression<Func<filterInput>> filter = null, Expression<Func<safeInput>> safe = null, Expression<Func<int>> num = null, Expression<Func<int>> page = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_device = device == null ? null : WorkflowExpression.Compile(device);
-            WorkflowExpression.Validate(__workflow_device, nameof(device), required: false);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
-            var __workflow_uule = uule == null ? null : WorkflowExpression.Compile(uule);
-            WorkflowExpression.Validate(__workflow_uule, nameof(uule), required: false);
-            var __workflow_googleDomain = googleDomain == null ? null : WorkflowExpression.Compile(googleDomain);
-            WorkflowExpression.Validate(__workflow_googleDomain, nameof(googleDomain), required: false);
-            var __workflow_gl = gl == null ? null : WorkflowExpression.Compile(gl);
-            WorkflowExpression.Validate(__workflow_gl, nameof(gl), required: false);
-            var __workflow_hl = hl == null ? null : WorkflowExpression.Compile(hl);
-            WorkflowExpression.Validate(__workflow_hl, nameof(hl), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_cr = cr == null ? null : WorkflowExpression.Compile(cr);
-            WorkflowExpression.Validate(__workflow_cr, nameof(cr), required: false);
-            var __workflow_nfpr = nfpr == null ? null : WorkflowExpression.Compile(nfpr);
-            WorkflowExpression.Validate(__workflow_nfpr, nameof(nfpr), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_safe = safe == null ? null : WorkflowExpression.Compile(safe);
-            WorkflowExpression.Validate(__workflow_safe, nameof(safe), required: false);
-            var __workflow_num = num == null ? null : WorkflowExpression.Compile(num);
-            WorkflowExpression.Validate(__workflow_num, nameof(num), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
+            var __workflow_uule = WorkflowExpression.Compile(uule, nameof(uule), required: false);
+            var __workflow_googleDomain = WorkflowExpression.Compile(googleDomain, nameof(googleDomain), required: false);
+            var __workflow_gl = WorkflowExpression.Compile(gl, nameof(gl), required: false);
+            var __workflow_hl = WorkflowExpression.Compile(hl, nameof(hl), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_cr = WorkflowExpression.Compile(cr, nameof(cr), required: false);
+            var __workflow_nfpr = WorkflowExpression.Compile(nfpr, nameof(nfpr), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_safe = WorkflowExpression.Compile(safe, nameof(safe), required: false);
+            var __workflow_num = WorkflowExpression.Compile(num, nameof(num), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<SearchGetResponse>(() =>
             {
                 var apiCallPath = "/search";

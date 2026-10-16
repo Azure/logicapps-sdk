@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mergeshuttleservice")]
         public IWorkflowAction PostFixedRoute(Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/shuttle/fixedrouteschedule";

@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsapi")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodygroup = null, Expression<Func<int>> bodyfast = null)
         {
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodygroup = bodygroup == null ? null : WorkflowExpression.Compile(bodygroup);
-            WorkflowExpression.Validate(__workflow_bodygroup, nameof(bodygroup), required: false);
-            var __workflow_bodyfast = bodyfast == null ? null : WorkflowExpression.Compile(bodyfast);
-            WorkflowExpression.Validate(__workflow_bodyfast, nameof(bodyfast), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
+            var __workflow_bodyfast = WorkflowExpression.Compile(bodyfast, nameof(bodyfast), required: false);
             return new DeferredBodyAction<SendSmsResponse>(() =>
             {
                 var apiCallPath = "/sms.do";

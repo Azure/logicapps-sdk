@@ -13,32 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
         public IBodyWorkflowAction<ComplaintsAllResponse> ComplaintsAll(Expression<Func<string>> createdDate = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> violationDate = null, Expression<Func<string>> violationDateFrom = null, Expression<Func<string>> violationDateTo = null, Expression<Func<string>> state = null, Expression<Func<string>> city = null, Expression<Func<int>> areaCode = null, Expression<Func<bool>> isRobocall = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<int>> itemsPerPage = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_createdDate = createdDate == null ? null : WorkflowExpression.Compile(createdDate);
-            WorkflowExpression.Validate(__workflow_createdDate, nameof(createdDate), required: false);
-            var __workflow_createdDateFrom = createdDateFrom == null ? null : WorkflowExpression.Compile(createdDateFrom);
-            WorkflowExpression.Validate(__workflow_createdDateFrom, nameof(createdDateFrom), required: false);
-            var __workflow_createdDateTo = createdDateTo == null ? null : WorkflowExpression.Compile(createdDateTo);
-            WorkflowExpression.Validate(__workflow_createdDateTo, nameof(createdDateTo), required: false);
-            var __workflow_violationDate = violationDate == null ? null : WorkflowExpression.Compile(violationDate);
-            WorkflowExpression.Validate(__workflow_violationDate, nameof(violationDate), required: false);
-            var __workflow_violationDateFrom = violationDateFrom == null ? null : WorkflowExpression.Compile(violationDateFrom);
-            WorkflowExpression.Validate(__workflow_violationDateFrom, nameof(violationDateFrom), required: false);
-            var __workflow_violationDateTo = violationDateTo == null ? null : WorkflowExpression.Compile(violationDateTo);
-            WorkflowExpression.Validate(__workflow_violationDateTo, nameof(violationDateTo), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
-            var __workflow_areaCode = areaCode == null ? null : WorkflowExpression.Compile(areaCode);
-            WorkflowExpression.Validate(__workflow_areaCode, nameof(areaCode), required: false);
-            var __workflow_isRobocall = isRobocall == null ? null : WorkflowExpression.Compile(isRobocall);
-            WorkflowExpression.Validate(__workflow_isRobocall, nameof(isRobocall), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_itemsPerPage = itemsPerPage == null ? null : WorkflowExpression.Compile(itemsPerPage);
-            WorkflowExpression.Validate(__workflow_itemsPerPage, nameof(itemsPerPage), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_createdDate = WorkflowExpression.Compile(createdDate, nameof(createdDate), required: false);
+            var __workflow_createdDateFrom = WorkflowExpression.Compile(createdDateFrom, nameof(createdDateFrom), required: false);
+            var __workflow_createdDateTo = WorkflowExpression.Compile(createdDateTo, nameof(createdDateTo), required: false);
+            var __workflow_violationDate = WorkflowExpression.Compile(violationDate, nameof(violationDate), required: false);
+            var __workflow_violationDateFrom = WorkflowExpression.Compile(violationDateFrom, nameof(violationDateFrom), required: false);
+            var __workflow_violationDateTo = WorkflowExpression.Compile(violationDateTo, nameof(violationDateTo), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_areaCode = WorkflowExpression.Compile(areaCode, nameof(areaCode), required: false);
+            var __workflow_isRobocall = WorkflowExpression.Compile(isRobocall, nameof(isRobocall), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_itemsPerPage = WorkflowExpression.Compile(itemsPerPage, nameof(itemsPerPage), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ComplaintsAllResponse>(() =>
             {
                 var apiCallPath = "/dnc-complaints";
@@ -78,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Donotcallreportcallsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "donotcallreportcallsip")]
         public IBodyWorkflowAction<ComplaintIDResponse> ComplaintID(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ComplaintIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/dnc-complaints/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

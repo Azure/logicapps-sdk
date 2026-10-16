@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetsGetResponse> DatasetsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_datatypeid = datatypeid == null ? null : WorkflowExpression.Compile(datatypeid);
-            WorkflowExpression.Validate(__workflow_datatypeid, nameof(datatypeid), required: false);
-            var __workflow_locationid = locationid == null ? null : WorkflowExpression.Compile(locationid);
-            WorkflowExpression.Validate(__workflow_locationid, nameof(locationid), required: false);
-            var __workflow_stationid = stationid == null ? null : WorkflowExpression.Compile(stationid);
-            WorkflowExpression.Validate(__workflow_stationid, nameof(stationid), required: false);
-            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
-            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
-            var __workflow_sortfield = sortfield == null ? null : WorkflowExpression.Compile(sortfield);
-            WorkflowExpression.Validate(__workflow_sortfield, nameof(sortfield), required: false);
-            var __workflow_sortorder = sortorder == null ? null : WorkflowExpression.Compile(sortorder);
-            WorkflowExpression.Validate(__workflow_sortorder, nameof(sortorder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<DatasetsGetResponse>(() =>
             {
                 var apiCallPath = "/cdo-web/api/v2/datasets";
@@ -63,8 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetGetResponse> DatasetGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DatasetGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datasets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -77,24 +67,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<CatagoriesGetResponse> CatagoriesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_datatsetid = datatsetid == null ? null : WorkflowExpression.Compile(datatsetid);
-            WorkflowExpression.Validate(__workflow_datatsetid, nameof(datatsetid), required: false);
-            var __workflow_locationid = locationid == null ? null : WorkflowExpression.Compile(locationid);
-            WorkflowExpression.Validate(__workflow_locationid, nameof(locationid), required: false);
-            var __workflow_stationid = stationid == null ? null : WorkflowExpression.Compile(stationid);
-            WorkflowExpression.Validate(__workflow_stationid, nameof(stationid), required: false);
-            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
-            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
-            var __workflow_sortfield = sortfield == null ? null : WorkflowExpression.Compile(sortfield);
-            WorkflowExpression.Validate(__workflow_sortfield, nameof(sortfield), required: false);
-            var __workflow_sortorder = sortorder == null ? null : WorkflowExpression.Compile(sortorder);
-            WorkflowExpression.Validate(__workflow_sortorder, nameof(sortorder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_datatsetid = WorkflowExpression.Compile(datatsetid, nameof(datatsetid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<CatagoriesGetResponse>(() =>
             {
                 var apiCallPath = "/cdo-web/api/v2/datacategories";
@@ -127,8 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datacategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -141,26 +121,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<TypesGetResponse> TypesGet(Expression<Func<string>> datatsetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_datatsetid = datatsetid == null ? null : WorkflowExpression.Compile(datatsetid);
-            WorkflowExpression.Validate(__workflow_datatsetid, nameof(datatsetid), required: false);
-            var __workflow_locationid = locationid == null ? null : WorkflowExpression.Compile(locationid);
-            WorkflowExpression.Validate(__workflow_locationid, nameof(locationid), required: false);
-            var __workflow_stationid = stationid == null ? null : WorkflowExpression.Compile(stationid);
-            WorkflowExpression.Validate(__workflow_stationid, nameof(stationid), required: false);
-            var __workflow_datacategoryid = datacategoryid == null ? null : WorkflowExpression.Compile(datacategoryid);
-            WorkflowExpression.Validate(__workflow_datacategoryid, nameof(datacategoryid), required: false);
-            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
-            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
-            var __workflow_sortfield = sortfield == null ? null : WorkflowExpression.Compile(sortfield);
-            WorkflowExpression.Validate(__workflow_sortfield, nameof(sortfield), required: false);
-            var __workflow_sortorder = sortorder == null ? null : WorkflowExpression.Compile(sortorder);
-            WorkflowExpression.Validate(__workflow_sortorder, nameof(sortorder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_datatsetid = WorkflowExpression.Compile(datatsetid, nameof(datatsetid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_datacategoryid = WorkflowExpression.Compile(datacategoryid, nameof(datacategoryid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<TypesGetResponse>(() =>
             {
                 var apiCallPath = "/cdo-web/api/v2/datatypes";
@@ -195,8 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<TypeGetResponse> TypeGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TypeGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/datatypes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -209,20 +178,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationCategoriesGetResponse> LocationCategoriesGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_datasetid = datasetid == null ? null : WorkflowExpression.Compile(datasetid);
-            WorkflowExpression.Validate(__workflow_datasetid, nameof(datasetid), required: false);
-            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
-            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
-            var __workflow_sortfield = sortfield == null ? null : WorkflowExpression.Compile(sortfield);
-            WorkflowExpression.Validate(__workflow_sortfield, nameof(sortfield), required: false);
-            var __workflow_sortorder = sortorder == null ? null : WorkflowExpression.Compile(sortorder);
-            WorkflowExpression.Validate(__workflow_sortorder, nameof(sortorder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<LocationCategoriesGetResponse>(() =>
             {
                 var apiCallPath = "/cdo-web/api/v2/locationcategories";
@@ -251,8 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationCategoryGetResponse> LocationCategoryGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<LocationCategoryGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/locationcategories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -265,24 +226,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationsGetResponse> LocationsGet(Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationcategoryid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_datatypeid = datatypeid == null ? null : WorkflowExpression.Compile(datatypeid);
-            WorkflowExpression.Validate(__workflow_datatypeid, nameof(datatypeid), required: false);
-            var __workflow_locationcategoryid = locationcategoryid == null ? null : WorkflowExpression.Compile(locationcategoryid);
-            WorkflowExpression.Validate(__workflow_locationcategoryid, nameof(locationcategoryid), required: false);
-            var __workflow_datacategoryid = datacategoryid == null ? null : WorkflowExpression.Compile(datacategoryid);
-            WorkflowExpression.Validate(__workflow_datacategoryid, nameof(datacategoryid), required: false);
-            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
-            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
-            var __workflow_sortfield = sortfield == null ? null : WorkflowExpression.Compile(sortfield);
-            WorkflowExpression.Validate(__workflow_sortfield, nameof(sortfield), required: false);
-            var __workflow_sortorder = sortorder == null ? null : WorkflowExpression.Compile(sortorder);
-            WorkflowExpression.Validate(__workflow_sortorder, nameof(sortorder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_locationcategoryid = WorkflowExpression.Compile(locationcategoryid, nameof(locationcategoryid), required: false);
+            var __workflow_datacategoryid = WorkflowExpression.Compile(datacategoryid, nameof(datacategoryid), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<LocationsGetResponse>(() =>
             {
                 var apiCallPath = "/cdo-web/api/v2/locations";
@@ -315,8 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<LocationGetResponse> LocationGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<LocationGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -329,28 +280,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationsGetResponse> StationsGet(Expression<Func<string>> datasetid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> datacategoryid = null, Expression<Func<string>> datatypeid = null, Expression<Func<string>> extent = null, Expression<Func<string>> startdate = null, Expression<Func<string>> enddate = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_datasetid = datasetid == null ? null : WorkflowExpression.Compile(datasetid);
-            WorkflowExpression.Validate(__workflow_datasetid, nameof(datasetid), required: false);
-            var __workflow_locationid = locationid == null ? null : WorkflowExpression.Compile(locationid);
-            WorkflowExpression.Validate(__workflow_locationid, nameof(locationid), required: false);
-            var __workflow_datacategoryid = datacategoryid == null ? null : WorkflowExpression.Compile(datacategoryid);
-            WorkflowExpression.Validate(__workflow_datacategoryid, nameof(datacategoryid), required: false);
-            var __workflow_datatypeid = datatypeid == null ? null : WorkflowExpression.Compile(datatypeid);
-            WorkflowExpression.Validate(__workflow_datatypeid, nameof(datatypeid), required: false);
-            var __workflow_extent = extent == null ? null : WorkflowExpression.Compile(extent);
-            WorkflowExpression.Validate(__workflow_extent, nameof(extent), required: false);
-            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
-            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
-            var __workflow_sortfield = sortfield == null ? null : WorkflowExpression.Compile(sortfield);
-            WorkflowExpression.Validate(__workflow_sortfield, nameof(sortfield), required: false);
-            var __workflow_sortorder = sortorder == null ? null : WorkflowExpression.Compile(sortorder);
-            WorkflowExpression.Validate(__workflow_sortorder, nameof(sortorder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_datacategoryid = WorkflowExpression.Compile(datacategoryid, nameof(datacategoryid), required: false);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_extent = WorkflowExpression.Compile(extent, nameof(extent), required: false);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<StationsGetResponse>(() =>
             {
                 var apiCallPath = "/cdo-web/api/v2/stations";
@@ -387,8 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationGetResponse> StationGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<StationGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdo-web/api/v2/stations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -401,30 +340,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DataGetResponse> DataGet(Expression<Func<string>> datasetid, Expression<Func<string>> startdate, Expression<Func<string>> enddate, Expression<Func<string>> datatypeid = null, Expression<Func<string>> locationid = null, Expression<Func<string>> stationid = null, Expression<Func<unitsInput>> units = null, Expression<Func<sortfieldInput>> sortfield = null, Expression<Func<sortorderInput>> sortorder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> includemetadata = null)
         {
-            var __workflow_datasetid = datasetid == null ? null : WorkflowExpression.Compile(datasetid);
-            WorkflowExpression.Validate(__workflow_datasetid, nameof(datasetid), required: true);
-            var __workflow_startdate = startdate == null ? null : WorkflowExpression.Compile(startdate);
-            WorkflowExpression.Validate(__workflow_startdate, nameof(startdate), required: true);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: true);
-            var __workflow_datatypeid = datatypeid == null ? null : WorkflowExpression.Compile(datatypeid);
-            WorkflowExpression.Validate(__workflow_datatypeid, nameof(datatypeid), required: false);
-            var __workflow_locationid = locationid == null ? null : WorkflowExpression.Compile(locationid);
-            WorkflowExpression.Validate(__workflow_locationid, nameof(locationid), required: false);
-            var __workflow_stationid = stationid == null ? null : WorkflowExpression.Compile(stationid);
-            WorkflowExpression.Validate(__workflow_stationid, nameof(stationid), required: false);
-            var __workflow_units = units == null ? null : WorkflowExpression.Compile(units);
-            WorkflowExpression.Validate(__workflow_units, nameof(units), required: false);
-            var __workflow_sortfield = sortfield == null ? null : WorkflowExpression.Compile(sortfield);
-            WorkflowExpression.Validate(__workflow_sortfield, nameof(sortfield), required: false);
-            var __workflow_sortorder = sortorder == null ? null : WorkflowExpression.Compile(sortorder);
-            WorkflowExpression.Validate(__workflow_sortorder, nameof(sortorder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_includemetadata = includemetadata == null ? null : WorkflowExpression.Compile(includemetadata);
-            WorkflowExpression.Validate(__workflow_includemetadata, nameof(includemetadata), required: false);
+            var __workflow_datasetid = WorkflowExpression.Compile(datasetid, nameof(datasetid), required: true);
+            var __workflow_startdate = WorkflowExpression.Compile(startdate, nameof(startdate), required: true);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: true);
+            var __workflow_datatypeid = WorkflowExpression.Compile(datatypeid, nameof(datatypeid), required: false);
+            var __workflow_locationid = WorkflowExpression.Compile(locationid, nameof(locationid), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: false);
+            var __workflow_units = WorkflowExpression.Compile(units, nameof(units), required: false);
+            var __workflow_sortfield = WorkflowExpression.Compile(sortfield, nameof(sortfield), required: false);
+            var __workflow_sortorder = WorkflowExpression.Compile(sortorder, nameof(sortorder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_includemetadata = WorkflowExpression.Compile(includemetadata, nameof(includemetadata), required: false);
             return new DeferredBodyAction<DataGetResponse>(() =>
             {
                 var apiCallPath = "/cdo-web/api/v2/data";
@@ -461,28 +388,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<DatasetsSearchGetResponse> DatasetsSearchGet(Expression<Func<string>> dataset = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> boundingBox = null, Expression<Func<string>> keywords = null, Expression<Func<string>> text = null, Expression<Func<string>> dataTypes = null, Expression<Func<string>> stations = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<bool>> available = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_boundingBox = boundingBox == null ? null : WorkflowExpression.Compile(boundingBox);
-            WorkflowExpression.Validate(__workflow_boundingBox, nameof(boundingBox), required: false);
-            var __workflow_keywords = keywords == null ? null : WorkflowExpression.Compile(keywords);
-            WorkflowExpression.Validate(__workflow_keywords, nameof(keywords), required: false);
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
-            var __workflow_dataTypes = dataTypes == null ? null : WorkflowExpression.Compile(dataTypes);
-            WorkflowExpression.Validate(__workflow_dataTypes, nameof(dataTypes), required: false);
-            var __workflow_stations = stations == null ? null : WorkflowExpression.Compile(stations);
-            WorkflowExpression.Validate(__workflow_stations, nameof(stations), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_available = available == null ? null : WorkflowExpression.Compile(available);
-            WorkflowExpression.Validate(__workflow_available, nameof(available), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_boundingBox = WorkflowExpression.Compile(boundingBox, nameof(boundingBox), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_dataTypes = WorkflowExpression.Compile(dataTypes, nameof(dataTypes), required: false);
+            var __workflow_stations = WorkflowExpression.Compile(stations, nameof(stations), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_available = WorkflowExpression.Compile(available, nameof(available), required: false);
             return new DeferredBodyAction<DatasetsSearchGetResponse>(() =>
             {
                 var apiCallPath = "/access/services/search/v1/data";
@@ -517,14 +433,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationHistoricalGetResponse> StationHistoricalGet(Expression<Func<string>> stationid, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null)
         {
-            var __workflow_stationid = stationid == null ? null : WorkflowExpression.Compile(stationid);
-            WorkflowExpression.Validate(__workflow_stationid, nameof(stationid), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
-            var __workflow_begindate = begindate == null ? null : WorkflowExpression.Compile(begindate);
-            WorkflowExpression.Validate(__workflow_begindate, nameof(begindate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
+            var __workflow_stationid = WorkflowExpression.Compile(stationid, nameof(stationid), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_begindate = WorkflowExpression.Compile(begindate, nameof(begindate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
             return new DeferredBodyAction<StationHistoricalGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/access/homr/services/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationid, 1));
@@ -544,38 +456,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nceiclimatedata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nceiclimatedata")]
         public IBodyWorkflowAction<StationHistoricSearchGetResponse> StationHistoricSearchGet(Expression<Func<string>> qid = null, Expression<Func<string>> qidMod = null, Expression<Func<string>> state = null, Expression<Func<string>> county = null, Expression<Func<string>> country = null, Expression<Func<string>> name = null, Expression<Func<string>> nameMod = null, Expression<Func<string>> platform = null, Expression<Func<string>> date = null, Expression<Func<string>> begindate = null, Expression<Func<string>> enddate = null, Expression<Func<statusInput>> status = null, Expression<Func<bool>> current = null, Expression<Func<string>> headersOnly = null, Expression<Func<bool>> phrData = null, Expression<Func<bool>> definitions = null)
         {
-            var __workflow_qid = qid == null ? null : WorkflowExpression.Compile(qid);
-            WorkflowExpression.Validate(__workflow_qid, nameof(qid), required: false);
-            var __workflow_qidMod = qidMod == null ? null : WorkflowExpression.Compile(qidMod);
-            WorkflowExpression.Validate(__workflow_qidMod, nameof(qidMod), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_county = county == null ? null : WorkflowExpression.Compile(county);
-            WorkflowExpression.Validate(__workflow_county, nameof(county), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_nameMod = nameMod == null ? null : WorkflowExpression.Compile(nameMod);
-            WorkflowExpression.Validate(__workflow_nameMod, nameof(nameMod), required: false);
-            var __workflow_platform = platform == null ? null : WorkflowExpression.Compile(platform);
-            WorkflowExpression.Validate(__workflow_platform, nameof(platform), required: false);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
-            var __workflow_begindate = begindate == null ? null : WorkflowExpression.Compile(begindate);
-            WorkflowExpression.Validate(__workflow_begindate, nameof(begindate), required: false);
-            var __workflow_enddate = enddate == null ? null : WorkflowExpression.Compile(enddate);
-            WorkflowExpression.Validate(__workflow_enddate, nameof(enddate), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_current = current == null ? null : WorkflowExpression.Compile(current);
-            WorkflowExpression.Validate(__workflow_current, nameof(current), required: false);
-            var __workflow_headersOnly = headersOnly == null ? null : WorkflowExpression.Compile(headersOnly);
-            WorkflowExpression.Validate(__workflow_headersOnly, nameof(headersOnly), required: false);
-            var __workflow_phrData = phrData == null ? null : WorkflowExpression.Compile(phrData);
-            WorkflowExpression.Validate(__workflow_phrData, nameof(phrData), required: false);
-            var __workflow_definitions = definitions == null ? null : WorkflowExpression.Compile(definitions);
-            WorkflowExpression.Validate(__workflow_definitions, nameof(definitions), required: false);
+            var __workflow_qid = WorkflowExpression.Compile(qid, nameof(qid), required: false);
+            var __workflow_qidMod = WorkflowExpression.Compile(qidMod, nameof(qidMod), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_county = WorkflowExpression.Compile(county, nameof(county), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_nameMod = WorkflowExpression.Compile(nameMod, nameof(nameMod), required: false);
+            var __workflow_platform = WorkflowExpression.Compile(platform, nameof(platform), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_begindate = WorkflowExpression.Compile(begindate, nameof(begindate), required: false);
+            var __workflow_enddate = WorkflowExpression.Compile(enddate, nameof(enddate), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_current = WorkflowExpression.Compile(current, nameof(current), required: false);
+            var __workflow_headersOnly = WorkflowExpression.Compile(headersOnly, nameof(headersOnly), required: false);
+            var __workflow_phrData = WorkflowExpression.Compile(phrData, nameof(phrData), required: false);
+            var __workflow_definitions = WorkflowExpression.Compile(definitions, nameof(definitions), required: false);
             return new DeferredBodyAction<StationHistoricSearchGetResponse>(() =>
             {
                 var apiCallPath = "/access/homr/services/station/search";

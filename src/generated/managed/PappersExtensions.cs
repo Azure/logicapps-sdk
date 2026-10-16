@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
         public IBodyWorkflowAction<CompanyFormat> CompanyGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> companyNumber, Expression<Func<fieldsInput>> fields = null)
         {
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<CompanyFormat>(() =>
             {
                 var apiCallPath = "/company";
@@ -35,14 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
         public IBodyWorkflowAction<SearchResponse> SearchGet(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> q, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -63,8 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pappers
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pappers")]
         public IBodyWorkflowAction<DocumentGetResponse> DocumentGet(Expression<Func<string>> token)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             return new DeferredBodyAction<DocumentGetResponse>(() =>
             {
                 var apiCallPath = "/download-file";

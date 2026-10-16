@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_publishedName = publishedName == null ? null : WorkflowExpression.Compile(publishedName);
-            WorkflowExpression.Validate(__workflow_publishedName, nameof(publishedName), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));
@@ -32,12 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_publishedName = publishedName == null ? null : WorkflowExpression.Compile(publishedName);
-            WorkflowExpression.Validate(__workflow_publishedName, nameof(publishedName), required: true);
-            var __workflow_bodyimageURL = bodyimageURL == null ? null : WorkflowExpression.Compile(bodyimageURL);
-            WorkflowExpression.Validate(__workflow_bodyimageURL, nameof(bodyimageURL), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
+            var __workflow_bodyimageURL = WorkflowExpression.Compile(bodyimageURL, nameof(bodyimageURL), required: true);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/url", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));
@@ -59,12 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         public IBodyWorkflowAction<PredictImageResponseV3> DetectImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_publishedName = publishedName == null ? null : WorkflowExpression.Compile(publishedName);
-            WorkflowExpression.Validate(__workflow_publishedName, nameof(publishedName), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));
@@ -78,12 +69,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
         public IBodyWorkflowAction<PredictImageResponseV3> DetectImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_publishedName = publishedName == null ? null : WorkflowExpression.Compile(publishedName);
-            WorkflowExpression.Validate(__workflow_publishedName, nameof(publishedName), required: true);
-            var __workflow_bodyimageURL = bodyimageURL == null ? null : WorkflowExpression.Compile(bodyimageURL);
-            WorkflowExpression.Validate(__workflow_bodyimageURL, nameof(bodyimageURL), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_publishedName = WorkflowExpression.Compile(publishedName, nameof(publishedName), required: true);
+            var __workflow_bodyimageURL = WorkflowExpression.Compile(bodyimageURL, nameof(bodyimageURL), required: true);
             return new DeferredBodyAction<PredictImageResponseV3>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/url", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_publishedName, 1));

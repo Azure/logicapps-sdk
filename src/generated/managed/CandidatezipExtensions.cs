@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeStandardViaFileContentResponse> ParseResumeStandardViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseResumeStandardViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseResumeBinary-Standard";
@@ -40,10 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeDetailViaFileContentResponse> ParseResumeDetailViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseResumeDetailViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseResumeBinary";
@@ -67,10 +63,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeDetailViaUrlResponse> ParseResumeDetailViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseResumeDetailViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseResume";
@@ -94,10 +88,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseJDViaFileContentResponse> ParseJDViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseJDViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseJDBinary";
@@ -121,10 +113,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeStandardViaUrlResponse> ParseResumeStandardViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseResumeStandardViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseResume-Standard";
@@ -148,10 +138,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseJDViaUrlResponse> ParseJDViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseJDViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseJD";
@@ -175,10 +163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeBasicViaFileContentResponse> ParseResumeBasicViaFileContent(Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredBodyAction<ParseResumeBasicViaFileContentResponse>(() =>
             {
                 var apiCallPath = "/ParseResumeBinary-Basic";
@@ -202,10 +188,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Candidatezip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "candidatezip")]
         public IBodyWorkflowAction<ParseResumeBasicViaUrlResponse> ParseResumeBasicViaUrl(Expression<Func<string>> bodyurl, Expression<Func<string>> bodyfileName)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<ParseResumeBasicViaUrlResponse>(() =>
             {
                 var apiCallPath = "/ParseResume-Basic";

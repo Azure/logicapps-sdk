@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
     {
         public IBodyWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition(Expression<Func<string>> reportDefinitionId, FlowRecurrence recurrence = null)
         {
-            var __workflow_reportDefinitionId = reportDefinitionId == null ? null : WorkflowExpression.Compile(reportDefinitionId);
-            WorkflowExpression.Validate(__workflow_reportDefinitionId, nameof(reportDefinitionId), required: true);
+            var __workflow_reportDefinitionId = WorkflowExpression.Compile(reportDefinitionId, nameof(reportDefinitionId), required: true);
             return new DeferredBodyTrigger<JToken[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connector/powerautomate/triggers/{0}/reports", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportDefinitionId, 1));

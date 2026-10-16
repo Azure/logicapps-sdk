@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         public IBodyWorkflowAction<HaltesHits> SearchStops(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: true);
-            var __workflow_huidigePositie = huidigePositie == null ? null : WorkflowExpression.Compile(huidigePositie);
-            WorkflowExpression.Validate(__workflow_huidigePositie, nameof(huidigePositie), required: false);
-            var __workflow_startIndex = startIndex == null ? null : WorkflowExpression.Compile(startIndex);
-            WorkflowExpression.Validate(__workflow_startIndex, nameof(startIndex), required: false);
-            var __workflow_maxAantalHits = maxAantalHits == null ? null : WorkflowExpression.Compile(maxAantalHits);
-            WorkflowExpression.Validate(__workflow_maxAantalHits, nameof(maxAantalHits), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
+            var __workflow_huidigePositie = WorkflowExpression.Compile(huidigePositie, nameof(huidigePositie), required: false);
+            var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
+            var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
             return new DeferredBodyAction<HaltesHits>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/haltes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_searchTerm, 1));
@@ -41,14 +37,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         public IBodyWorkflowAction<LijnRichtingHits> SearchLines(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: true);
-            var __workflow_huidigePositie = huidigePositie == null ? null : WorkflowExpression.Compile(huidigePositie);
-            WorkflowExpression.Validate(__workflow_huidigePositie, nameof(huidigePositie), required: false);
-            var __workflow_startIndex = startIndex == null ? null : WorkflowExpression.Compile(startIndex);
-            WorkflowExpression.Validate(__workflow_startIndex, nameof(startIndex), required: false);
-            var __workflow_maxAantalHits = maxAantalHits == null ? null : WorkflowExpression.Compile(maxAantalHits);
-            WorkflowExpression.Validate(__workflow_maxAantalHits, nameof(maxAantalHits), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
+            var __workflow_huidigePositie = WorkflowExpression.Compile(huidigePositie, nameof(huidigePositie), required: false);
+            var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
+            var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
             return new DeferredBodyAction<LijnRichtingHits>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/lijnrichtingen/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_searchTerm, 1));
@@ -69,14 +61,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
         public IBodyWorkflowAction<LocatiesHits> SearchLocations(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
         {
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: true);
-            var __workflow_huidigePositie = huidigePositie == null ? null : WorkflowExpression.Compile(huidigePositie);
-            WorkflowExpression.Validate(__workflow_huidigePositie, nameof(huidigePositie), required: false);
-            var __workflow_startIndex = startIndex == null ? null : WorkflowExpression.Compile(startIndex);
-            WorkflowExpression.Validate(__workflow_startIndex, nameof(startIndex), required: false);
-            var __workflow_maxAantalHits = maxAantalHits == null ? null : WorkflowExpression.Compile(maxAantalHits);
-            WorkflowExpression.Validate(__workflow_maxAantalHits, nameof(maxAantalHits), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
+            var __workflow_huidigePositie = WorkflowExpression.Compile(huidigePositie, nameof(huidigePositie), required: false);
+            var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
+            var __workflow_maxAantalHits = WorkflowExpression.Compile(maxAantalHits, nameof(maxAantalHits), required: false);
             return new DeferredBodyAction<LocatiesHits>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/locaties/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_searchTerm, 1));

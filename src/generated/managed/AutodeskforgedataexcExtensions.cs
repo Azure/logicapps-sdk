@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<ExchangeData> GetExchanges(Expression<Func<regionInput>> region, Expression<Func<string>> fileId)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<ExchangeData>(() =>
             {
                 var apiCallPath = "/exchange/v1/exchanges";
@@ -31,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<URLExchangeData> GetExchangesUsinglink(Expression<Func<string>> fileId)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<URLExchangeData>(() =>
             {
                 var apiCallPath = "/exchange/fake/exchanges";
@@ -46,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<AECData> GetAECDesigns(Expression<Func<regionInput>> region, Expression<Func<string>> fileId)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<AECData>(() =>
             {
                 var apiCallPath = "/design/v1/designs";
@@ -64,8 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<AECData> GetAECDesignsUsinglink(Expression<Func<string>> fileId)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<AECData>(() =>
             {
                 var apiCallPath = "/design/v2/designs";
@@ -79,22 +73,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponse> GetFilteredPropertiesCodeBehind(Expression<Func<regionInput>> region, Expression<Func<string>> fileId, Expression<Func<getlatestInput>> getlatest, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_getlatest = getlatest == null ? null : WorkflowExpression.Compile(getlatest);
-            WorkflowExpression.Validate(__workflow_getlatest, nameof(getlatest), required: true);
-            var __workflow_filterBy = filterBy == null ? null : WorkflowExpression.Compile(filterBy);
-            WorkflowExpression.Validate(__workflow_filterBy, nameof(filterBy), required: true);
-            var __workflow_filterValue = filterValue == null ? null : WorkflowExpression.Compile(filterValue);
-            WorkflowExpression.Validate(__workflow_filterValue, nameof(filterValue), required: false);
-            var __workflow_parameterfilterValue = parameterfilterValue == null ? null : WorkflowExpression.Compile(parameterfilterValue);
-            WorkflowExpression.Validate(__workflow_parameterfilterValue, nameof(parameterfilterValue), required: false);
-            var __workflow_selectedUnitType = selectedUnitType == null ? null : WorkflowExpression.Compile(selectedUnitType);
-            WorkflowExpression.Validate(__workflow_selectedUnitType, nameof(selectedUnitType), required: false);
-            var __workflow_selectedUnit = selectedUnit == null ? null : WorkflowExpression.Compile(selectedUnit);
-            WorkflowExpression.Validate(__workflow_selectedUnit, nameof(selectedUnit), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_getlatest = WorkflowExpression.Compile(getlatest, nameof(getlatest), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
             return new DeferredBodyAction<GraphQLParametersResponse>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/GetFilteredParameters";
@@ -120,18 +106,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponse> GetFilteredPropertiesUsingLink(Expression<Func<string>> fileId, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_filterBy = filterBy == null ? null : WorkflowExpression.Compile(filterBy);
-            WorkflowExpression.Validate(__workflow_filterBy, nameof(filterBy), required: true);
-            var __workflow_filterValue = filterValue == null ? null : WorkflowExpression.Compile(filterValue);
-            WorkflowExpression.Validate(__workflow_filterValue, nameof(filterValue), required: false);
-            var __workflow_parameterfilterValue = parameterfilterValue == null ? null : WorkflowExpression.Compile(parameterfilterValue);
-            WorkflowExpression.Validate(__workflow_parameterfilterValue, nameof(parameterfilterValue), required: false);
-            var __workflow_selectedUnitType = selectedUnitType == null ? null : WorkflowExpression.Compile(selectedUnitType);
-            WorkflowExpression.Validate(__workflow_selectedUnitType, nameof(selectedUnitType), required: false);
-            var __workflow_selectedUnit = selectedUnit == null ? null : WorkflowExpression.Compile(selectedUnit);
-            WorkflowExpression.Validate(__workflow_selectedUnit, nameof(selectedUnit), required: false);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
             return new DeferredBodyAction<GraphQLParametersResponse>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/url/GetFilteredParameters";
@@ -155,20 +135,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> GetFilteredPropertiesCodeBehindAEC(Expression<Func<regionInput>> region, Expression<Func<string>> fileId, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_filterBy = filterBy == null ? null : WorkflowExpression.Compile(filterBy);
-            WorkflowExpression.Validate(__workflow_filterBy, nameof(filterBy), required: true);
-            var __workflow_filterValue = filterValue == null ? null : WorkflowExpression.Compile(filterValue);
-            WorkflowExpression.Validate(__workflow_filterValue, nameof(filterValue), required: false);
-            var __workflow_parameterfilterValue = parameterfilterValue == null ? null : WorkflowExpression.Compile(parameterfilterValue);
-            WorkflowExpression.Validate(__workflow_parameterfilterValue, nameof(parameterfilterValue), required: false);
-            var __workflow_selectedUnitType = selectedUnitType == null ? null : WorkflowExpression.Compile(selectedUnitType);
-            WorkflowExpression.Validate(__workflow_selectedUnitType, nameof(selectedUnitType), required: false);
-            var __workflow_selectedUnit = selectedUnit == null ? null : WorkflowExpression.Compile(selectedUnit);
-            WorkflowExpression.Validate(__workflow_selectedUnit, nameof(selectedUnit), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
             return new DeferredBodyAction<GraphQLParametersResponseAEC>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/GetFilteredParametersAEC";
@@ -193,18 +166,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<GraphQLParametersResponseAEC> GetFilteredPropertiesAECUsingLink(Expression<Func<string>> fileId, Expression<Func<filterByInput>> filterBy, Expression<Func<string>> filterValue = null, Expression<Func<string>> parameterfilterValue = null, Expression<Func<selectedUnitTypeInput>> selectedUnitType = null, Expression<Func<string>> selectedUnit = null)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_filterBy = filterBy == null ? null : WorkflowExpression.Compile(filterBy);
-            WorkflowExpression.Validate(__workflow_filterBy, nameof(filterBy), required: true);
-            var __workflow_filterValue = filterValue == null ? null : WorkflowExpression.Compile(filterValue);
-            WorkflowExpression.Validate(__workflow_filterValue, nameof(filterValue), required: false);
-            var __workflow_parameterfilterValue = parameterfilterValue == null ? null : WorkflowExpression.Compile(parameterfilterValue);
-            WorkflowExpression.Validate(__workflow_parameterfilterValue, nameof(parameterfilterValue), required: false);
-            var __workflow_selectedUnitType = selectedUnitType == null ? null : WorkflowExpression.Compile(selectedUnitType);
-            WorkflowExpression.Validate(__workflow_selectedUnitType, nameof(selectedUnitType), required: false);
-            var __workflow_selectedUnit = selectedUnit == null ? null : WorkflowExpression.Compile(selectedUnit);
-            WorkflowExpression.Validate(__workflow_selectedUnit, nameof(selectedUnit), required: false);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: true);
+            var __workflow_filterValue = WorkflowExpression.Compile(filterValue, nameof(filterValue), required: false);
+            var __workflow_parameterfilterValue = WorkflowExpression.Compile(parameterfilterValue, nameof(parameterfilterValue), required: false);
+            var __workflow_selectedUnitType = WorkflowExpression.Compile(selectedUnitType, nameof(selectedUnitType), required: false);
+            var __workflow_selectedUnit = WorkflowExpression.Compile(selectedUnit, nameof(selectedUnit), required: false);
             return new DeferredBodyAction<GraphQLParametersResponseAEC>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/URL/GetFilteredParametersAEC";
@@ -228,8 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> GetAECpropertyDefinitionsUsingLink(Expression<Func<string>> fileId)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<PropertyDefinitionsResponse>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/url/GetAECProperties";
@@ -243,8 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autodeskforgedataexc")]
         public IBodyWorkflowAction<PropertyDefinitionsResponse> GetDXpropertyDefinitionsUsingLink(Expression<Func<string>> fileId)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<PropertyDefinitionsResponse>(() =>
             {
                 var apiCallPath = "/fakeGraphQL/url/GetDXProperties";
@@ -260,14 +225,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
     {
         public IWorkflowTrigger RegisterWebhookExchangeModified(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_hubId = hubId == null ? null : WorkflowExpression.Compile(hubId);
-            WorkflowExpression.Validate(__workflow_hubId, nameof(hubId), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_hubId = WorkflowExpression.Compile(hubId, nameof(hubId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/connector/webhook";
@@ -292,14 +253,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
 
         public IWorkflowTrigger RegisterWebhookExchangeAdded(Expression<Func<regionInput>> region, Expression<Func<string>> hubId, Expression<Func<string>> projectId, Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_hubId = hubId == null ? null : WorkflowExpression.Compile(hubId);
-            WorkflowExpression.Validate(__workflow_hubId, nameof(hubId), required: true);
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_hubId = WorkflowExpression.Compile(hubId, nameof(hubId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/connector/webhookModified";
@@ -324,8 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
 
         public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl(Expression<Func<string>> fileId, FlowRecurrence recurrence = null)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/connector/webhookModifiedByUrl";

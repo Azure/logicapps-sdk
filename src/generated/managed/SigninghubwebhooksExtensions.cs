@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signinghubwebhooks")]
         public IWorkflowAction UnsubscribeWebhook(Expression<Func<string>> subscriptionId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
     {
         public IWorkflowTrigger WebhookSubscribeTrigger(Expression<Func<bodyeventTypeInput>> bodyeventType, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
-            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/powerautomate/webhook/subscribe";

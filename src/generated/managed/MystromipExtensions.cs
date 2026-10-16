@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<ExecuteSceneResponse> ExecuteScene(Expression<Func<string>> sceneID, Expression<Func<string>> authToken)
         {
-            var __workflow_sceneID = sceneID == null ? null : WorkflowExpression.Compile(sceneID);
-            WorkflowExpression.Validate(__workflow_sceneID, nameof(sceneID), required: true);
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
+            var __workflow_sceneID = WorkflowExpression.Compile(sceneID, nameof(sceneID), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<ExecuteSceneResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sceneID, 1));
@@ -30,10 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<GetWebhookResponse> GetWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> authToken)
         {
-            var __workflow_deviceID = deviceID == null ? null : WorkflowExpression.Compile(deviceID);
-            WorkflowExpression.Validate(__workflow_deviceID, nameof(deviceID), required: true);
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
+            var __workflow_deviceID = WorkflowExpression.Compile(deviceID, nameof(deviceID), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<GetWebhookResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceID, 1));
@@ -47,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<DeleteWebhookResponse> DeleteWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> authToken)
         {
-            var __workflow_deviceID = deviceID == null ? null : WorkflowExpression.Compile(deviceID);
-            WorkflowExpression.Validate(__workflow_deviceID, nameof(deviceID), required: true);
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
+            var __workflow_deviceID = WorkflowExpression.Compile(deviceID, nameof(deviceID), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<DeleteWebhookResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceID, 1));
@@ -64,12 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mystromip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mystromip")]
         public IBodyWorkflowAction<CreateWebhookResponse> CreateWebhook(Expression<Func<string>> deviceID, Expression<Func<string>> webhook, Expression<Func<string>> authToken)
         {
-            var __workflow_deviceID = deviceID == null ? null : WorkflowExpression.Compile(deviceID);
-            WorkflowExpression.Validate(__workflow_deviceID, nameof(deviceID), required: true);
-            var __workflow_webhook = webhook == null ? null : WorkflowExpression.Compile(webhook);
-            WorkflowExpression.Validate(__workflow_webhook, nameof(webhook), required: true);
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
+            var __workflow_deviceID = WorkflowExpression.Compile(deviceID, nameof(deviceID), required: true);
+            var __workflow_webhook = WorkflowExpression.Compile(webhook, nameof(webhook), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<CreateWebhookResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceID, 1));

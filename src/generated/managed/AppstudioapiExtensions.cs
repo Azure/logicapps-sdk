@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
     {
         public IWorkflowTrigger ApiHooksSubscribePost(Expression<Func<string>> solutionId, FlowRecurrence recurrence = null)
         {
-            var __workflow_solutionId = solutionId == null ? null : WorkflowExpression.Compile(solutionId);
-            WorkflowExpression.Validate(__workflow_solutionId, nameof(solutionId), required: true);
+            var __workflow_solutionId = WorkflowExpression.Compile(solutionId, nameof(solutionId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/Hooks/subscribe";

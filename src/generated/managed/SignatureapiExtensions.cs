@@ -13,32 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<CreateEnvelopeOutput> CreateEnvelope(Expression<Func<string>> bodyenvelopeTitle = null, Expression<Func<string>> bodyenvelopeLabel = null, Expression<Func<string>> bodyenvelopeMessage = null, Expression<Func<bodyenvelopeModeInput>> bodyenvelopeMode = null, Expression<Func<bodyenvelopeRoutingInput>> bodyenvelopeRouting = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodytimestampFormat = null, Expression<Func<bodyenvelopeAttestationInput>> bodyenvelopeAttestation = null, Expression<Func<string>> bodysendername = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string[]>> bodyenvelopeTopics = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_bodyenvelopeTitle = bodyenvelopeTitle == null ? null : WorkflowExpression.Compile(bodyenvelopeTitle);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeTitle, nameof(bodyenvelopeTitle), required: false);
-            var __workflow_bodyenvelopeLabel = bodyenvelopeLabel == null ? null : WorkflowExpression.Compile(bodyenvelopeLabel);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeLabel, nameof(bodyenvelopeLabel), required: false);
-            var __workflow_bodyenvelopeMessage = bodyenvelopeMessage == null ? null : WorkflowExpression.Compile(bodyenvelopeMessage);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeMessage, nameof(bodyenvelopeMessage), required: false);
-            var __workflow_bodyenvelopeMode = bodyenvelopeMode == null ? null : WorkflowExpression.Compile(bodyenvelopeMode);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeMode, nameof(bodyenvelopeMode), required: false);
-            var __workflow_bodyenvelopeRouting = bodyenvelopeRouting == null ? null : WorkflowExpression.Compile(bodyenvelopeRouting);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeRouting, nameof(bodyenvelopeRouting), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
-            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: false);
-            var __workflow_bodytimestampFormat = bodytimestampFormat == null ? null : WorkflowExpression.Compile(bodytimestampFormat);
-            WorkflowExpression.Validate(__workflow_bodytimestampFormat, nameof(bodytimestampFormat), required: false);
-            var __workflow_bodyenvelopeAttestation = bodyenvelopeAttestation == null ? null : WorkflowExpression.Compile(bodyenvelopeAttestation);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeAttestation, nameof(bodyenvelopeAttestation), required: false);
-            var __workflow_bodysendername = bodysendername == null ? null : WorkflowExpression.Compile(bodysendername);
-            WorkflowExpression.Validate(__workflow_bodysendername, nameof(bodysendername), required: false);
-            var __workflow_bodysenderemail = bodysenderemail == null ? null : WorkflowExpression.Compile(bodysenderemail);
-            WorkflowExpression.Validate(__workflow_bodysenderemail, nameof(bodysenderemail), required: false);
-            var __workflow_bodyenvelopeTopics = bodyenvelopeTopics == null ? null : WorkflowExpression.Compile(bodyenvelopeTopics);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeTopics, nameof(bodyenvelopeTopics), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_bodyenvelopeTitle = WorkflowExpression.Compile(bodyenvelopeTitle, nameof(bodyenvelopeTitle), required: false);
+            var __workflow_bodyenvelopeLabel = WorkflowExpression.Compile(bodyenvelopeLabel, nameof(bodyenvelopeLabel), required: false);
+            var __workflow_bodyenvelopeMessage = WorkflowExpression.Compile(bodyenvelopeMessage, nameof(bodyenvelopeMessage), required: false);
+            var __workflow_bodyenvelopeMode = WorkflowExpression.Compile(bodyenvelopeMode, nameof(bodyenvelopeMode), required: false);
+            var __workflow_bodyenvelopeRouting = WorkflowExpression.Compile(bodyenvelopeRouting, nameof(bodyenvelopeRouting), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
+            var __workflow_bodytimestampFormat = WorkflowExpression.Compile(bodytimestampFormat, nameof(bodytimestampFormat), required: false);
+            var __workflow_bodyenvelopeAttestation = WorkflowExpression.Compile(bodyenvelopeAttestation, nameof(bodyenvelopeAttestation), required: false);
+            var __workflow_bodysendername = WorkflowExpression.Compile(bodysendername, nameof(bodysendername), required: false);
+            var __workflow_bodysenderemail = WorkflowExpression.Compile(bodysenderemail, nameof(bodysenderemail), required: false);
+            var __workflow_bodyenvelopeTopics = WorkflowExpression.Compile(bodyenvelopeTopics, nameof(bodyenvelopeTopics), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<CreateEnvelopeOutput>(() =>
             {
                 var apiCallPath = "/envelopes";
@@ -146,8 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction DeleteEnvelope(Expression<Func<string>> envelopeId)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -160,8 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Envelope> GetEnvelope(Expression<Func<string>> envelopeId)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             return new DeferredBodyAction<Envelope>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -174,10 +159,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Capture> GetCapture(Expression<Func<string>> envelopeId, Expression<Func<string>> captureKey)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_captureKey = captureKey == null ? null : WorkflowExpression.Compile(captureKey);
-            WorkflowExpression.Validate(__workflow_captureKey, nameof(captureKey), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_captureKey = WorkflowExpression.Compile(captureKey, nameof(captureKey), required: true);
             return new DeferredBodyAction<Capture>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}+alias1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -191,8 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<StartEnvelopeOutput> StartEnvelope(Expression<Func<string>> envelopeId)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             return new DeferredBodyAction<StartEnvelopeOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -205,14 +187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
-            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddDocumentOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -252,14 +230,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
-            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddDocumentOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -299,16 +273,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddDocumentOutput> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string[]>> bodytemplateData = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
-            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodytemplateData = bodytemplateData == null ? null : WorkflowExpression.Compile(bodytemplateData);
-            WorkflowExpression.Validate(__workflow_bodytemplateData, nameof(bodytemplateData), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodytemplateData = WorkflowExpression.Compile(bodytemplateData, nameof(bodytemplateData), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddDocumentOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -354,12 +323,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddTemplateData(Expression<Func<string>> documentId, Expression<Func<string>> bodyfieldName = null, Expression<Func<string>> bodyvalue = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyfieldName = bodyfieldName == null ? null : WorkflowExpression.Compile(bodyfieldName);
-            WorkflowExpression.Validate(__workflow_bodyfieldName, nameof(bodyfieldName), required: false);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyfieldName = WorkflowExpression.Compile(bodyfieldName, nameof(bodyfieldName), required: false);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -391,22 +357,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceSignature(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
-            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
-            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
-            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            var __workflow_bodyplaceHeight = bodyplaceHeight == null ? null : WorkflowExpression.Compile(bodyplaceHeight);
-            WorkflowExpression.Validate(__workflow_bodyplaceHeight, nameof(bodyplaceHeight), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = WorkflowExpression.Compile(bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = WorkflowExpression.Compile(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodyplaceHeight = WorkflowExpression.Compile(bodyplaceHeight, nameof(bodyplaceHeight), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = WorkflowExpression.Compile(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = WorkflowExpression.Compile(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-signature-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -470,22 +428,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceInitials(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
-            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
-            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
-            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            var __workflow_bodyplaceHeight = bodyplaceHeight == null ? null : WorkflowExpression.Compile(bodyplaceHeight);
-            WorkflowExpression.Validate(__workflow_bodyplaceHeight, nameof(bodyplaceHeight), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = WorkflowExpression.Compile(bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = WorkflowExpression.Compile(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodyplaceHeight = WorkflowExpression.Compile(bodyplaceHeight, nameof(bodyplaceHeight), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = WorkflowExpression.Compile(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = WorkflowExpression.Compile(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-initials-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -549,32 +499,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceTextInput(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodycaptureAs = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyrequirementInput>> bodyrequirement = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodyformatMessage = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
-            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
-            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
-            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            var __workflow_bodycaptureAs = bodycaptureAs == null ? null : WorkflowExpression.Compile(bodycaptureAs);
-            WorkflowExpression.Validate(__workflow_bodycaptureAs, nameof(bodycaptureAs), required: false);
-            var __workflow_bodyhint = bodyhint == null ? null : WorkflowExpression.Compile(bodyhint);
-            WorkflowExpression.Validate(__workflow_bodyhint, nameof(bodyhint), required: false);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
-            var __workflow_bodyrequirement = bodyrequirement == null ? null : WorkflowExpression.Compile(bodyrequirement);
-            WorkflowExpression.Validate(__workflow_bodyrequirement, nameof(bodyrequirement), required: false);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodyformatMessage = bodyformatMessage == null ? null : WorkflowExpression.Compile(bodyformatMessage);
-            WorkflowExpression.Validate(__workflow_bodyformatMessage, nameof(bodyformatMessage), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = WorkflowExpression.Compile(bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = WorkflowExpression.Compile(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodycaptureAs = WorkflowExpression.Compile(bodycaptureAs, nameof(bodycaptureAs), required: false);
+            var __workflow_bodyhint = WorkflowExpression.Compile(bodyhint, nameof(bodyhint), required: false);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_bodyrequirement = WorkflowExpression.Compile(bodyrequirement, nameof(bodyrequirement), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyformatMessage = WorkflowExpression.Compile(bodyformatMessage, nameof(bodyformatMessage), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = WorkflowExpression.Compile(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = WorkflowExpression.Compile(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-input-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -678,24 +615,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceText(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyvalue = null, Expression<Func<double>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
-            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
-            var __workflow_bodyfontSize = bodyfontSize == null ? null : WorkflowExpression.Compile(bodyfontSize);
-            WorkflowExpression.Validate(__workflow_bodyfontSize, nameof(bodyfontSize), required: false);
-            var __workflow_bodyfontColor = bodyfontColor == null ? null : WorkflowExpression.Compile(bodyfontColor);
-            WorkflowExpression.Validate(__workflow_bodyfontColor, nameof(bodyfontColor), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = WorkflowExpression.Compile(bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_bodyfontSize = WorkflowExpression.Compile(bodyfontSize, nameof(bodyfontSize), required: false);
+            var __workflow_bodyfontColor = WorkflowExpression.Compile(bodyfontColor, nameof(bodyfontColor), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = WorkflowExpression.Compile(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = WorkflowExpression.Compile(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -765,22 +693,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceRecipientCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
-            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
-            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
-            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            var __workflow_bodydateFormat = bodydateFormat == null ? null : WorkflowExpression.Compile(bodydateFormat);
-            WorkflowExpression.Validate(__workflow_bodydateFormat, nameof(bodydateFormat), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = WorkflowExpression.Compile(bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodyrecipientKey = WorkflowExpression.Compile(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodydateFormat = WorkflowExpression.Compile(bodydateFormat, nameof(bodydateFormat), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = WorkflowExpression.Compile(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = WorkflowExpression.Compile(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -844,20 +764,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IWorkflowAction AddPlaceEnvelopeCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyplaceKey = bodyplaceKey == null ? null : WorkflowExpression.Compile(bodyplaceKey);
-            WorkflowExpression.Validate(__workflow_bodyplaceKey, nameof(bodyplaceKey), required: false);
-            var __workflow_bodydateFormat = bodydateFormat == null ? null : WorkflowExpression.Compile(bodydateFormat);
-            WorkflowExpression.Validate(__workflow_bodydateFormat, nameof(bodydateFormat), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodydistanceFromTop = bodydistanceFromTop == null ? null : WorkflowExpression.Compile(bodydistanceFromTop);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
-            var __workflow_bodydistanceFromLeft = bodydistanceFromLeft == null ? null : WorkflowExpression.Compile(bodydistanceFromLeft);
-            WorkflowExpression.Validate(__workflow_bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyplaceKey = WorkflowExpression.Compile(bodyplaceKey, nameof(bodyplaceKey), required: false);
+            var __workflow_bodydateFormat = WorkflowExpression.Compile(bodydateFormat, nameof(bodydateFormat), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodydistanceFromTop = WorkflowExpression.Compile(bodydistanceFromTop, nameof(bodydistanceFromTop), required: false);
+            var __workflow_bodydistanceFromLeft = WorkflowExpression.Compile(bodydistanceFromLeft, nameof(bodydistanceFromLeft), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -915,20 +828,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<AddRecipientSignerOutput> AddRecipient(Expression<Func<string>> envelopeId, Expression<Func<string>> bodyrecipientName = null, Expression<Func<string>> bodyrecipientEmail = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<bodyrecipientCeremonyCreationInput>> bodyrecipientCeremonyCreation = null, Expression<Func<bodyrecipientDeliveryTypeInput>> bodyrecipientDeliveryType = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodyrecipientName = bodyrecipientName == null ? null : WorkflowExpression.Compile(bodyrecipientName);
-            WorkflowExpression.Validate(__workflow_bodyrecipientName, nameof(bodyrecipientName), required: false);
-            var __workflow_bodyrecipientEmail = bodyrecipientEmail == null ? null : WorkflowExpression.Compile(bodyrecipientEmail);
-            WorkflowExpression.Validate(__workflow_bodyrecipientEmail, nameof(bodyrecipientEmail), required: false);
-            var __workflow_bodyrecipientKey = bodyrecipientKey == null ? null : WorkflowExpression.Compile(bodyrecipientKey);
-            WorkflowExpression.Validate(__workflow_bodyrecipientKey, nameof(bodyrecipientKey), required: false);
-            var __workflow_bodyrecipientCeremonyCreation = bodyrecipientCeremonyCreation == null ? null : WorkflowExpression.Compile(bodyrecipientCeremonyCreation);
-            WorkflowExpression.Validate(__workflow_bodyrecipientCeremonyCreation, nameof(bodyrecipientCeremonyCreation), required: false);
-            var __workflow_bodyrecipientDeliveryType = bodyrecipientDeliveryType == null ? null : WorkflowExpression.Compile(bodyrecipientDeliveryType);
-            WorkflowExpression.Validate(__workflow_bodyrecipientDeliveryType, nameof(bodyrecipientDeliveryType), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodyrecipientName = WorkflowExpression.Compile(bodyrecipientName, nameof(bodyrecipientName), required: false);
+            var __workflow_bodyrecipientEmail = WorkflowExpression.Compile(bodyrecipientEmail, nameof(bodyrecipientEmail), required: false);
+            var __workflow_bodyrecipientKey = WorkflowExpression.Compile(bodyrecipientKey, nameof(bodyrecipientKey), required: false);
+            var __workflow_bodyrecipientCeremonyCreation = WorkflowExpression.Compile(bodyrecipientCeremonyCreation, nameof(bodyrecipientCeremonyCreation), required: false);
+            var __workflow_bodyrecipientDeliveryType = WorkflowExpression.Compile(bodyrecipientDeliveryType, nameof(bodyrecipientDeliveryType), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<AddRecipientSignerOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -986,8 +892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Recipient> GetRecipient(Expression<Func<string>> recipientId)
         {
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<Recipient>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -1000,12 +905,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink(Expression<Func<string>> recipientId, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
-            var __workflow_bodyredirectURL = bodyredirectURL == null ? null : WorkflowExpression.Compile(bodyredirectURL);
-            WorkflowExpression.Validate(__workflow_bodyredirectURL, nameof(bodyredirectURL), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
+            var __workflow_bodyredirectURL = WorkflowExpression.Compile(bodyredirectURL, nameof(bodyredirectURL), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -1047,16 +949,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom(Expression<Func<string>> recipientId, Expression<Func<string>> bodyauthenticationauthenticationProvider = null, Expression<Func<string[]>> bodyauthenticationauthenticationData = null, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
         {
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
-            var __workflow_bodyauthenticationauthenticationProvider = bodyauthenticationauthenticationProvider == null ? null : WorkflowExpression.Compile(bodyauthenticationauthenticationProvider);
-            WorkflowExpression.Validate(__workflow_bodyauthenticationauthenticationProvider, nameof(bodyauthenticationauthenticationProvider), required: false);
-            var __workflow_bodyauthenticationauthenticationData = bodyauthenticationauthenticationData == null ? null : WorkflowExpression.Compile(bodyauthenticationauthenticationData);
-            WorkflowExpression.Validate(__workflow_bodyauthenticationauthenticationData, nameof(bodyauthenticationauthenticationData), required: false);
-            var __workflow_bodyredirectURL = bodyredirectURL == null ? null : WorkflowExpression.Compile(bodyredirectURL);
-            WorkflowExpression.Validate(__workflow_bodyredirectURL, nameof(bodyredirectURL), required: false);
-            var __workflow_bodyextraProperties = bodyextraProperties == null ? null : WorkflowExpression.Compile(bodyextraProperties);
-            WorkflowExpression.Validate(__workflow_bodyextraProperties, nameof(bodyextraProperties), required: false);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
+            var __workflow_bodyauthenticationauthenticationProvider = WorkflowExpression.Compile(bodyauthenticationauthenticationProvider, nameof(bodyauthenticationauthenticationProvider), required: false);
+            var __workflow_bodyauthenticationauthenticationData = WorkflowExpression.Compile(bodyauthenticationauthenticationData, nameof(bodyauthenticationauthenticationData), required: false);
+            var __workflow_bodyredirectURL = WorkflowExpression.Compile(bodyredirectURL, nameof(bodyredirectURL), required: false);
+            var __workflow_bodyextraProperties = WorkflowExpression.Compile(bodyextraProperties, nameof(bodyextraProperties), required: false);
             return new DeferredBodyAction<CreateCeremonyCustomOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony+alias1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -1110,8 +1007,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Envelope> WaitEnvelope(Expression<Func<string>> envelopeId)
         {
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
             return new DeferredBodyAction<Envelope>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/envelopes/{0}/wait", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -1124,8 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
         public IBodyWorkflowAction<Deliverable> GetDeliverable(Expression<Func<string>> deliverableId)
         {
-            var __workflow_deliverableId = deliverableId == null ? null : WorkflowExpression.Compile(deliverableId);
-            WorkflowExpression.Validate(__workflow_deliverableId, nameof(deliverableId), required: true);
+            var __workflow_deliverableId = WorkflowExpression.Compile(deliverableId, nameof(deliverableId), required: true);
             return new DeferredBodyAction<Deliverable>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deliverables/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deliverableId, 1));
@@ -1140,8 +1035,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     {
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.created";
@@ -1168,8 +1062,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.started";
@@ -1196,8 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.completed";
@@ -1224,8 +1116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.failed";
@@ -1252,8 +1143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/envelope.canceled";
@@ -1280,8 +1170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.released";
@@ -1308,8 +1197,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.sent";
@@ -1336,8 +1224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.completed";
@@ -1364,8 +1251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.rejected";
@@ -1392,8 +1278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.bounced";
@@ -1420,8 +1305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.failed";
@@ -1448,8 +1332,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.replaced";
@@ -1476,8 +1359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/recipient.resent";
@@ -1504,8 +1386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.generated";
@@ -1532,8 +1413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
 
         public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed(Expression<Func<string[]>> bodytopics = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytopics = bodytopics == null ? null : WorkflowExpression.Compile(bodytopics);
-            WorkflowExpression.Validate(__workflow_bodytopics, nameof(bodytopics), required: false);
+            var __workflow_bodytopics = WorkflowExpression.Compile(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/integrations/power-platform/webhooks/deliverable.failed";

@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goqr")]
         public IBodyWorkflowAction<string> Create(Expression<Func<string>> data, Expression<Func<string>> size = null, Expression<Func<charsetSourceInput>> charsetSource = null, Expression<Func<charsetTargetInput>> charsetTarget = null, Expression<Func<string>> ecc = null, Expression<Func<string>> color = null, Expression<Func<string>> bgcolor = null, Expression<Func<int>> margin = null, Expression<Func<int>> qzone = null, Expression<Func<formatInput>> format = null)
         {
-            var __workflow_data = data == null ? null : WorkflowExpression.Compile(data);
-            WorkflowExpression.Validate(__workflow_data, nameof(data), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_charsetSource = charsetSource == null ? null : WorkflowExpression.Compile(charsetSource);
-            WorkflowExpression.Validate(__workflow_charsetSource, nameof(charsetSource), required: false);
-            var __workflow_charsetTarget = charsetTarget == null ? null : WorkflowExpression.Compile(charsetTarget);
-            WorkflowExpression.Validate(__workflow_charsetTarget, nameof(charsetTarget), required: false);
-            var __workflow_ecc = ecc == null ? null : WorkflowExpression.Compile(ecc);
-            WorkflowExpression.Validate(__workflow_ecc, nameof(ecc), required: false);
-            var __workflow_color = color == null ? null : WorkflowExpression.Compile(color);
-            WorkflowExpression.Validate(__workflow_color, nameof(color), required: false);
-            var __workflow_bgcolor = bgcolor == null ? null : WorkflowExpression.Compile(bgcolor);
-            WorkflowExpression.Validate(__workflow_bgcolor, nameof(bgcolor), required: false);
-            var __workflow_margin = margin == null ? null : WorkflowExpression.Compile(margin);
-            WorkflowExpression.Validate(__workflow_margin, nameof(margin), required: false);
-            var __workflow_qzone = qzone == null ? null : WorkflowExpression.Compile(qzone);
-            WorkflowExpression.Validate(__workflow_qzone, nameof(qzone), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_charsetSource = WorkflowExpression.Compile(charsetSource, nameof(charsetSource), required: false);
+            var __workflow_charsetTarget = WorkflowExpression.Compile(charsetTarget, nameof(charsetTarget), required: false);
+            var __workflow_ecc = WorkflowExpression.Compile(ecc, nameof(ecc), required: false);
+            var __workflow_color = WorkflowExpression.Compile(color, nameof(color), required: false);
+            var __workflow_bgcolor = WorkflowExpression.Compile(bgcolor, nameof(bgcolor), required: false);
+            var __workflow_margin = WorkflowExpression.Compile(margin, nameof(margin), required: false);
+            var __workflow_qzone = WorkflowExpression.Compile(qzone, nameof(qzone), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/create-qr-code/";

@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints(Expression<Func<string>> author, Expression<Func<string>> slug)
         {
-            var __workflow_author = author == null ? null : WorkflowExpression.Compile(author);
-            WorkflowExpression.Validate(__workflow_author, nameof(author), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredBodyAction<ListModelEndpointsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(__workflow_author, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -47,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<GetGenerationResponse> GetGeneration(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetGenerationResponse>(() =>
             {
                 var apiCallPath = "/v1/generation";
@@ -62,10 +59,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
             return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -89,10 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<CompletionResponse> Completion(Expression<Func<string>> bodymodel, Expression<Func<string>> bodyprompt)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
             return new DeferredBodyAction<CompletionResponse>(() =>
             {
                 var apiCallPath = "/v1/completions";

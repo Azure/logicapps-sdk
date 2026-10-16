@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mtarget")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> msisdn, Expression<Func<string>> msg, Expression<Func<string>> sender = null, Expression<Func<int>> serviceid = null, Expression<Func<string>> timetosend = null, Expression<Func<string>> remoteid = null)
         {
-            var __workflow_msisdn = msisdn == null ? null : WorkflowExpression.Compile(msisdn);
-            WorkflowExpression.Validate(__workflow_msisdn, nameof(msisdn), required: true);
-            var __workflow_msg = msg == null ? null : WorkflowExpression.Compile(msg);
-            WorkflowExpression.Validate(__workflow_msg, nameof(msg), required: true);
-            var __workflow_sender = sender == null ? null : WorkflowExpression.Compile(sender);
-            WorkflowExpression.Validate(__workflow_sender, nameof(sender), required: false);
-            var __workflow_serviceid = serviceid == null ? null : WorkflowExpression.Compile(serviceid);
-            WorkflowExpression.Validate(__workflow_serviceid, nameof(serviceid), required: false);
-            var __workflow_timetosend = timetosend == null ? null : WorkflowExpression.Compile(timetosend);
-            WorkflowExpression.Validate(__workflow_timetosend, nameof(timetosend), required: false);
-            var __workflow_remoteid = remoteid == null ? null : WorkflowExpression.Compile(remoteid);
-            WorkflowExpression.Validate(__workflow_remoteid, nameof(remoteid), required: false);
+            var __workflow_msisdn = WorkflowExpression.Compile(msisdn, nameof(msisdn), required: true);
+            var __workflow_msg = WorkflowExpression.Compile(msg, nameof(msg), required: true);
+            var __workflow_sender = WorkflowExpression.Compile(sender, nameof(sender), required: false);
+            var __workflow_serviceid = WorkflowExpression.Compile(serviceid, nameof(serviceid), required: false);
+            var __workflow_timetosend = WorkflowExpression.Compile(timetosend, nameof(timetosend), required: false);
+            var __workflow_remoteid = WorkflowExpression.Compile(remoteid, nameof(remoteid), required: false);
             return new DeferredBodyAction<SendSmsResponse>(() =>
             {
                 var apiCallPath = "/flow.php";

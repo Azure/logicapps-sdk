@@ -15,10 +15,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
         public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
-            var __workflow_modelIdInputs = modelIdInputs == null ? null : WorkflowExpression.Compile(modelIdInputs);
-            WorkflowExpression.Validate(__workflow_modelIdInputs, nameof(modelIdInputs), required: false);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_modelIdInputs = WorkflowExpression.Compile(modelIdInputs, nameof(modelIdInputs), required: false);
             return new DeferredBodyAction<AnalyzeDocumentOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<IssueResponse> CreateIssue(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> bodyissueTitle, Expression<Func<bodyissueTypeInput>> bodyissueType, Expression<Func<bodypriorityInput>> bodypriority, Expression<Func<string>> bodycontentdescription = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodycomponentcomponent = null, Expression<Func<string>> bodymilestonemilestone = null, Expression<Func<string>> bodyversionversion = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_bodyissueTitle = bodyissueTitle == null ? null : WorkflowExpression.Compile(bodyissueTitle);
-            WorkflowExpression.Validate(__workflow_bodyissueTitle, nameof(bodyissueTitle), required: true);
-            var __workflow_bodyissueType = bodyissueType == null ? null : WorkflowExpression.Compile(bodyissueType);
-            WorkflowExpression.Validate(__workflow_bodyissueType, nameof(bodyissueType), required: true);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: true);
-            var __workflow_bodycontentdescription = bodycontentdescription == null ? null : WorkflowExpression.Compile(bodycontentdescription);
-            WorkflowExpression.Validate(__workflow_bodycontentdescription, nameof(bodycontentdescription), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodycomponentcomponent = bodycomponentcomponent == null ? null : WorkflowExpression.Compile(bodycomponentcomponent);
-            WorkflowExpression.Validate(__workflow_bodycomponentcomponent, nameof(bodycomponentcomponent), required: false);
-            var __workflow_bodymilestonemilestone = bodymilestonemilestone == null ? null : WorkflowExpression.Compile(bodymilestonemilestone);
-            WorkflowExpression.Validate(__workflow_bodymilestonemilestone, nameof(bodymilestonemilestone), required: false);
-            var __workflow_bodyversionversion = bodyversionversion == null ? null : WorkflowExpression.Compile(bodyversionversion);
-            WorkflowExpression.Validate(__workflow_bodyversionversion, nameof(bodyversionversion), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_bodyissueTitle = WorkflowExpression.Compile(bodyissueTitle, nameof(bodyissueTitle), required: true);
+            var __workflow_bodyissueType = WorkflowExpression.Compile(bodyissueType, nameof(bodyissueType), required: true);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: true);
+            var __workflow_bodycontentdescription = WorkflowExpression.Compile(bodycontentdescription, nameof(bodycontentdescription), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodycomponentcomponent = WorkflowExpression.Compile(bodycomponentcomponent, nameof(bodycomponentcomponent), required: false);
+            var __workflow_bodymilestonemilestone = WorkflowExpression.Compile(bodymilestonemilestone, nameof(bodymilestonemilestone), required: false);
+            var __workflow_bodyversionversion = WorkflowExpression.Compile(bodyversionversion, nameof(bodyversionversion), required: false);
             return new DeferredBodyAction<IssueResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -120,12 +110,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<IssueResponse> GetIssueById(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> issueId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_issueId = issueId == null ? null : WorkflowExpression.Compile(issueId);
-            WorkflowExpression.Validate(__workflow_issueId, nameof(issueId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
             return new DeferredBodyAction<IssueResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/issues/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_issueId, 1));
@@ -138,12 +125,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<ApprovePullRequestResponse> ApprovePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_pullrequestId = pullrequestId == null ? null : WorkflowExpression.Compile(pullrequestId);
-            WorkflowExpression.Validate(__workflow_pullrequestId, nameof(pullrequestId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_pullrequestId = WorkflowExpression.Compile(pullrequestId, nameof(pullrequestId), required: true);
             return new DeferredBodyAction<ApprovePullRequestResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/approve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pullrequestId, 1));
@@ -156,12 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> DeclinePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_pullrequestId = pullrequestId == null ? null : WorkflowExpression.Compile(pullrequestId);
-            WorkflowExpression.Validate(__workflow_pullrequestId, nameof(pullrequestId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_pullrequestId = WorkflowExpression.Compile(pullrequestId, nameof(pullrequestId), required: true);
             return new DeferredBodyAction<DeclineOrMergePullRequestResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/decline", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pullrequestId, 1));
@@ -174,12 +155,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<DeclineOrMergePullRequestResponse> MergePullRequest(Expression<Func<string>> account, Expression<Func<string>> slug, Expression<Func<string>> pullrequestId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_pullrequestId = pullrequestId == null ? null : WorkflowExpression.Compile(pullrequestId);
-            WorkflowExpression.Validate(__workflow_pullrequestId, nameof(pullrequestId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_pullrequestId = WorkflowExpression.Compile(pullrequestId, nameof(pullrequestId), required: true);
             return new DeferredBodyAction<DeclineOrMergePullRequestResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/repositories/{0}/{1}/pullrequests/{2}/merge", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pullrequestId, 1));
@@ -192,8 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitbucket")]
         public IBodyWorkflowAction<UserResponse> GetUserById(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -208,8 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     {
         public IBodyWorkflowTrigger<ListRepositoriesResponse> OnNewRepo(Expression<Func<string>> account, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyTrigger<ListRepositoriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/repository_created_trigger/2.0/repositories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -221,10 +197,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookIssueCreated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issue_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -245,10 +219,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookIssueUpdated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issue_updated_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -269,10 +241,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestApproved(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_approved_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -293,10 +263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestCreated(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_created_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -317,10 +285,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestDeclined(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_declined_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -341,10 +307,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookPullRequestMerged(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pullrequest_merged_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));
@@ -365,10 +329,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
 
         public IWorkflowTrigger CreateHookRepositoryPush(Expression<Func<string>> account, Expression<Func<string>> slug, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/repository_push_webhook/2.0/repositories/{0}/{1}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1));

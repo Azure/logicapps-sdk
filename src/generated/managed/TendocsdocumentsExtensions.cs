@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<AiCompareResponse> AiCompare(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
         {
-            var __workflow_requestsourceDocumentfirstFile = requestsourceDocumentfirstFile == null ? null : WorkflowExpression.Compile(requestsourceDocumentfirstFile);
-            WorkflowExpression.Validate(__workflow_requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
-            var __workflow_requestcomparisonDocumentsecondFile = requestcomparisonDocumentsecondFile == null ? null : WorkflowExpression.Compile(requestcomparisonDocumentsecondFile);
-            WorkflowExpression.Validate(__workflow_requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
-            var __workflow_requestconfigurationprofession = requestconfigurationprofession == null ? null : WorkflowExpression.Compile(requestconfigurationprofession);
-            WorkflowExpression.Validate(__workflow_requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
+            var __workflow_requestsourceDocumentfirstFile = WorkflowExpression.Compile(requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
+            var __workflow_requestcomparisonDocumentsecondFile = WorkflowExpression.Compile(requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
+            var __workflow_requestconfigurationprofession = WorkflowExpression.Compile(requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
             return new DeferredBodyAction<AiCompareResponse>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/compare";
@@ -88,10 +85,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<AiSummaryResponse> AiSummary(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
         {
-            var __workflow_requestdocumentfile = requestdocumentfile == null ? null : WorkflowExpression.Compile(requestdocumentfile);
-            WorkflowExpression.Validate(__workflow_requestdocumentfile, nameof(requestdocumentfile), required: false);
-            var __workflow_requestconfigurationtargetWordCount = requestconfigurationtargetWordCount == null ? null : WorkflowExpression.Compile(requestconfigurationtargetWordCount);
-            WorkflowExpression.Validate(__workflow_requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
+            var __workflow_requestdocumentfile = WorkflowExpression.Compile(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            var __workflow_requestconfigurationtargetWordCount = WorkflowExpression.Compile(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
             return new DeferredBodyAction<AiSummaryResponse>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/summary";
@@ -147,8 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder(Expression<Func<string>> requestdescribeTheDocument1000Chars)
         {
-            var __workflow_requestdescribeTheDocument1000Chars = requestdescribeTheDocument1000Chars == null ? null : WorkflowExpression.Compile(requestdescribeTheDocument1000Chars);
-            WorkflowExpression.Validate(__workflow_requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
+            var __workflow_requestdescribeTheDocument1000Chars = WorkflowExpression.Compile(requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
             return new DeferredBodyAction<AiTemplateBuilderResponse>(() =>
             {
                 var apiCallPath = "/ai/v1/tasks/templateBuilder";
@@ -186,10 +180,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<string> ConversionConvert(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
-            var __workflow_requestdocumentfile = requestdocumentfile == null ? null : WorkflowExpression.Compile(requestdocumentfile);
-            WorkflowExpression.Validate(__workflow_requestdocumentfile, nameof(requestdocumentfile), required: false);
-            var __workflow_requestconfigurationdocumentFormat = requestconfigurationdocumentFormat == null ? null : WorkflowExpression.Compile(requestconfigurationdocumentFormat);
-            WorkflowExpression.Validate(__workflow_requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_requestdocumentfile = WorkflowExpression.Compile(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/conversion/v1/convert";
@@ -245,10 +237,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<string> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
-            var __workflow_requesttemplatetemplateFile = requesttemplatetemplateFile == null ? null : WorkflowExpression.Compile(requesttemplatetemplateFile);
-            WorkflowExpression.Validate(__workflow_requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            var __workflow_requestconfigurationdocumentFormat = requestconfigurationdocumentFormat == null ? null : WorkflowExpression.Compile(requestconfigurationdocumentFormat);
-            WorkflowExpression.Validate(__workflow_requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
+            var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/documents/v1/jsonTemplate";
@@ -312,16 +302,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<string> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
         {
-            var __workflow_requesttemplatetemplateFile = requesttemplatetemplateFile == null ? null : WorkflowExpression.Compile(requesttemplatetemplateFile);
-            WorkflowExpression.Validate(__workflow_requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
-            var __workflow_requestimage = requestimage == null ? null : WorkflowExpression.Compile(requestimage);
-            WorkflowExpression.Validate(__workflow_requestimage, nameof(requestimage), required: false);
-            var __workflow_requestdocument = requestdocument == null ? null : WorkflowExpression.Compile(requestdocument);
-            WorkflowExpression.Validate(__workflow_requestdocument, nameof(requestdocument), required: false);
-            var __workflow_requesttable = requesttable == null ? null : WorkflowExpression.Compile(requesttable);
-            WorkflowExpression.Validate(__workflow_requesttable, nameof(requesttable), required: false);
-            var __workflow_requestconfigurationdocumentFormat = requestconfigurationdocumentFormat == null ? null : WorkflowExpression.Compile(requestconfigurationdocumentFormat);
-            WorkflowExpression.Validate(__workflow_requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            var __workflow_requesttemplatetemplateFile = WorkflowExpression.Compile(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
+            var __workflow_requestimage = WorkflowExpression.Compile(requestimage, nameof(requestimage), required: false);
+            var __workflow_requestdocument = WorkflowExpression.Compile(requestdocument, nameof(requestdocument), required: false);
+            var __workflow_requesttable = WorkflowExpression.Compile(requesttable, nameof(requesttable), required: false);
+            var __workflow_requestconfigurationdocumentFormat = WorkflowExpression.Compile(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/documents/v1/template";
@@ -403,48 +388,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
         public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
         {
-            var __workflow_requestdocumentTitle = requestdocumentTitle == null ? null : WorkflowExpression.Compile(requestdocumentTitle);
-            WorkflowExpression.Validate(__workflow_requestdocumentTitle, nameof(requestdocumentTitle), required: true);
-            var __workflow_requestdocumentIntroduction = requestdocumentIntroduction == null ? null : WorkflowExpression.Compile(requestdocumentIntroduction);
-            WorkflowExpression.Validate(__workflow_requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
-            var __workflow_requestrecipientEmail = requestrecipientEmail == null ? null : WorkflowExpression.Compile(requestrecipientEmail);
-            WorkflowExpression.Validate(__workflow_requestrecipientEmail, nameof(requestrecipientEmail), required: true);
-            var __workflow_requestrecipientFirstName = requestrecipientFirstName == null ? null : WorkflowExpression.Compile(requestrecipientFirstName);
-            WorkflowExpression.Validate(__workflow_requestrecipientFirstName, nameof(requestrecipientFirstName), required: true);
-            var __workflow_requestrecipientLastName = requestrecipientLastName == null ? null : WorkflowExpression.Compile(requestrecipientLastName);
-            WorkflowExpression.Validate(__workflow_requestrecipientLastName, nameof(requestrecipientLastName), required: true);
-            var __workflow_requestexpiryDate = requestexpiryDate == null ? null : WorkflowExpression.Compile(requestexpiryDate);
-            WorkflowExpression.Validate(__workflow_requestexpiryDate, nameof(requestexpiryDate), required: true);
-            var __workflow_requestsignatureRequired = requestsignatureRequired == null ? null : WorkflowExpression.Compile(requestsignatureRequired);
-            WorkflowExpression.Validate(__workflow_requestsignatureRequired, nameof(requestsignatureRequired), required: true);
-            var __workflow_requestorgansiationTitle = requestorgansiationTitle == null ? null : WorkflowExpression.Compile(requestorgansiationTitle);
-            WorkflowExpression.Validate(__workflow_requestorgansiationTitle, nameof(requestorgansiationTitle), required: true);
-            var __workflow_requestorganisationEmail = requestorganisationEmail == null ? null : WorkflowExpression.Compile(requestorganisationEmail);
-            WorkflowExpression.Validate(__workflow_requestorganisationEmail, nameof(requestorganisationEmail), required: true);
-            var __workflow_requestorganisationOwner = requestorganisationOwner == null ? null : WorkflowExpression.Compile(requestorganisationOwner);
-            WorkflowExpression.Validate(__workflow_requestorganisationOwner, nameof(requestorganisationOwner), required: true);
-            var __workflow_requestdocumentpDFDocument = requestdocumentpDFDocument == null ? null : WorkflowExpression.Compile(requestdocumentpDFDocument);
-            WorkflowExpression.Validate(__workflow_requestdocumentpDFDocument, nameof(requestdocumentpDFDocument), required: false);
-            var __workflow_requestdocumentLogo = requestdocumentLogo == null ? null : WorkflowExpression.Compile(requestdocumentLogo);
-            WorkflowExpression.Validate(__workflow_requestdocumentLogo, nameof(requestdocumentLogo), required: false);
-            var __workflow_requestcheckbox = requestcheckbox == null ? null : WorkflowExpression.Compile(requestcheckbox);
-            WorkflowExpression.Validate(__workflow_requestcheckbox, nameof(requestcheckbox), required: false);
-            var __workflow_requestorganisationWebsite = requestorganisationWebsite == null ? null : WorkflowExpression.Compile(requestorganisationWebsite);
-            WorkflowExpression.Validate(__workflow_requestorganisationWebsite, nameof(requestorganisationWebsite), required: false);
-            var __workflow_requestorganisationPhone = requestorganisationPhone == null ? null : WorkflowExpression.Compile(requestorganisationPhone);
-            WorkflowExpression.Validate(__workflow_requestorganisationPhone, nameof(requestorganisationPhone), required: false);
-            var __workflow_requestoragnisationOwnerTitle = requestoragnisationOwnerTitle == null ? null : WorkflowExpression.Compile(requestoragnisationOwnerTitle);
-            WorkflowExpression.Validate(__workflow_requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
-            var __workflow_requestcomments = requestcomments == null ? null : WorkflowExpression.Compile(requestcomments);
-            WorkflowExpression.Validate(__workflow_requestcomments, nameof(requestcomments), required: false);
-            var __workflow_requestprojectID = requestprojectID == null ? null : WorkflowExpression.Compile(requestprojectID);
-            WorkflowExpression.Validate(__workflow_requestprojectID, nameof(requestprojectID), required: false);
-            var __workflow_requestcompleteButtonLabel = requestcompleteButtonLabel == null ? null : WorkflowExpression.Compile(requestcompleteButtonLabel);
-            WorkflowExpression.Validate(__workflow_requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
-            var __workflow_requestcompleteDocumentLabel = requestcompleteDocumentLabel == null ? null : WorkflowExpression.Compile(requestcompleteDocumentLabel);
-            WorkflowExpression.Validate(__workflow_requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
-            var __workflow_requestincompleteDocumentLabel = requestincompleteDocumentLabel == null ? null : WorkflowExpression.Compile(requestincompleteDocumentLabel);
-            WorkflowExpression.Validate(__workflow_requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
+            var __workflow_requestdocumentTitle = WorkflowExpression.Compile(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
+            var __workflow_requestdocumentIntroduction = WorkflowExpression.Compile(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
+            var __workflow_requestrecipientEmail = WorkflowExpression.Compile(requestrecipientEmail, nameof(requestrecipientEmail), required: true);
+            var __workflow_requestrecipientFirstName = WorkflowExpression.Compile(requestrecipientFirstName, nameof(requestrecipientFirstName), required: true);
+            var __workflow_requestrecipientLastName = WorkflowExpression.Compile(requestrecipientLastName, nameof(requestrecipientLastName), required: true);
+            var __workflow_requestexpiryDate = WorkflowExpression.Compile(requestexpiryDate, nameof(requestexpiryDate), required: true);
+            var __workflow_requestsignatureRequired = WorkflowExpression.Compile(requestsignatureRequired, nameof(requestsignatureRequired), required: true);
+            var __workflow_requestorgansiationTitle = WorkflowExpression.Compile(requestorgansiationTitle, nameof(requestorgansiationTitle), required: true);
+            var __workflow_requestorganisationEmail = WorkflowExpression.Compile(requestorganisationEmail, nameof(requestorganisationEmail), required: true);
+            var __workflow_requestorganisationOwner = WorkflowExpression.Compile(requestorganisationOwner, nameof(requestorganisationOwner), required: true);
+            var __workflow_requestdocumentpDFDocument = WorkflowExpression.Compile(requestdocumentpDFDocument, nameof(requestdocumentpDFDocument), required: false);
+            var __workflow_requestdocumentLogo = WorkflowExpression.Compile(requestdocumentLogo, nameof(requestdocumentLogo), required: false);
+            var __workflow_requestcheckbox = WorkflowExpression.Compile(requestcheckbox, nameof(requestcheckbox), required: false);
+            var __workflow_requestorganisationWebsite = WorkflowExpression.Compile(requestorganisationWebsite, nameof(requestorganisationWebsite), required: false);
+            var __workflow_requestorganisationPhone = WorkflowExpression.Compile(requestorganisationPhone, nameof(requestorganisationPhone), required: false);
+            var __workflow_requestoragnisationOwnerTitle = WorkflowExpression.Compile(requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
+            var __workflow_requestcomments = WorkflowExpression.Compile(requestcomments, nameof(requestcomments), required: false);
+            var __workflow_requestprojectID = WorkflowExpression.Compile(requestprojectID, nameof(requestprojectID), required: false);
+            var __workflow_requestcompleteButtonLabel = WorkflowExpression.Compile(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
+            var __workflow_requestcompleteDocumentLabel = WorkflowExpression.Compile(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
+            var __workflow_requestincompleteDocumentLabel = WorkflowExpression.Compile(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
             return new DeferredBodyAction<InstancesResponse>(() =>
             {
                 var apiCallPath = "/envelopes/v1/instances";

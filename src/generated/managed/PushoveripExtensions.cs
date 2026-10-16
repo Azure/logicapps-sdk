@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyuser, Expression<Func<string>> bodymessage, Expression<Func<string>> bodydevice = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodyhtmlInput>> bodyhtml = null, Expression<Func<string>> bodysound = null, Expression<Func<string>> bodytimestamp = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodyurlTitle = null)
         {
-            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
-            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodydevice = bodydevice == null ? null : WorkflowExpression.Compile(bodydevice);
-            WorkflowExpression.Validate(__workflow_bodydevice, nameof(bodydevice), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
-            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: false);
-            var __workflow_bodysound = bodysound == null ? null : WorkflowExpression.Compile(bodysound);
-            WorkflowExpression.Validate(__workflow_bodysound, nameof(bodysound), required: false);
-            var __workflow_bodytimestamp = bodytimestamp == null ? null : WorkflowExpression.Compile(bodytimestamp);
-            WorkflowExpression.Validate(__workflow_bodytimestamp, nameof(bodytimestamp), required: false);
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodyurlTitle = bodyurlTitle == null ? null : WorkflowExpression.Compile(bodyurlTitle);
-            WorkflowExpression.Validate(__workflow_bodyurlTitle, nameof(bodyurlTitle), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodydevice = WorkflowExpression.Compile(bodydevice, nameof(bodydevice), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: false);
+            var __workflow_bodysound = WorkflowExpression.Compile(bodysound, nameof(bodysound), required: false);
+            var __workflow_bodytimestamp = WorkflowExpression.Compile(bodytimestamp, nameof(bodytimestamp), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodyurlTitle = WorkflowExpression.Compile(bodyurlTitle, nameof(bodyurlTitle), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/1/messages.json";
@@ -113,10 +103,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushoverip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushoverip")]
         public IBodyWorkflowAction<ValidateKeyResponse> ValidateKey(Expression<Func<string>> bodyuser, Expression<Func<string>> bodydevice = null)
         {
-            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
-            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: true);
-            var __workflow_bodydevice = bodydevice == null ? null : WorkflowExpression.Compile(bodydevice);
-            WorkflowExpression.Validate(__workflow_bodydevice, nameof(bodydevice), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: true);
+            var __workflow_bodydevice = WorkflowExpression.Compile(bodydevice, nameof(bodydevice), required: false);
             return new DeferredBodyAction<ValidateKeyResponse>(() =>
             {
                 var apiCallPath = "/1/users/validate.json";

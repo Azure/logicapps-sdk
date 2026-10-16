@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<DetectCourierResponse> DetectCourier(Expression<Func<string>> bodytrackingtrackingNumber = null)
         {
-            var __workflow_bodytrackingtrackingNumber = bodytrackingtrackingNumber == null ? null : WorkflowExpression.Compile(bodytrackingtrackingNumber);
-            WorkflowExpression.Validate(__workflow_bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
+            var __workflow_bodytrackingtrackingNumber = WorkflowExpression.Compile(bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
             return new DeferredBodyAction<DetectCourierResponse>(() =>
             {
                 var apiCallPath = "/couriers/detect";
@@ -79,34 +78,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<CreateTrackingResponse> CreateTracking(Expression<Func<string>> bodytrackingslug = null, Expression<Func<string>> bodytrackingtrackingNumber = null, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<JToken[]>> bodytrackingsmses = null, Expression<Func<JToken[]>> bodytrackingemails = null, Expression<Func<string>> bodytrackingorderId = null, Expression<Func<string>> bodytrackingorderIdPath = null, Expression<Func<string>> bodytrackingcustomFieldsproductName = null, Expression<Func<string>> bodytrackingcustomFieldsproductPrice = null, Expression<Func<string>> bodytrackinglanguage = null, Expression<Func<string>> bodytrackingorderPromisedDeliveryDate = null, Expression<Func<string>> bodytrackingdeliveryType = null, Expression<Func<string>> bodytrackingpickupLocation = null, Expression<Func<string>> bodytrackingpickupNote = null)
         {
-            var __workflow_bodytrackingslug = bodytrackingslug == null ? null : WorkflowExpression.Compile(bodytrackingslug);
-            WorkflowExpression.Validate(__workflow_bodytrackingslug, nameof(bodytrackingslug), required: false);
-            var __workflow_bodytrackingtrackingNumber = bodytrackingtrackingNumber == null ? null : WorkflowExpression.Compile(bodytrackingtrackingNumber);
-            WorkflowExpression.Validate(__workflow_bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
-            var __workflow_bodytrackingtitle = bodytrackingtitle == null ? null : WorkflowExpression.Compile(bodytrackingtitle);
-            WorkflowExpression.Validate(__workflow_bodytrackingtitle, nameof(bodytrackingtitle), required: false);
-            var __workflow_bodytrackingsmses = bodytrackingsmses == null ? null : WorkflowExpression.Compile(bodytrackingsmses);
-            WorkflowExpression.Validate(__workflow_bodytrackingsmses, nameof(bodytrackingsmses), required: false);
-            var __workflow_bodytrackingemails = bodytrackingemails == null ? null : WorkflowExpression.Compile(bodytrackingemails);
-            WorkflowExpression.Validate(__workflow_bodytrackingemails, nameof(bodytrackingemails), required: false);
-            var __workflow_bodytrackingorderId = bodytrackingorderId == null ? null : WorkflowExpression.Compile(bodytrackingorderId);
-            WorkflowExpression.Validate(__workflow_bodytrackingorderId, nameof(bodytrackingorderId), required: false);
-            var __workflow_bodytrackingorderIdPath = bodytrackingorderIdPath == null ? null : WorkflowExpression.Compile(bodytrackingorderIdPath);
-            WorkflowExpression.Validate(__workflow_bodytrackingorderIdPath, nameof(bodytrackingorderIdPath), required: false);
-            var __workflow_bodytrackingcustomFieldsproductName = bodytrackingcustomFieldsproductName == null ? null : WorkflowExpression.Compile(bodytrackingcustomFieldsproductName);
-            WorkflowExpression.Validate(__workflow_bodytrackingcustomFieldsproductName, nameof(bodytrackingcustomFieldsproductName), required: false);
-            var __workflow_bodytrackingcustomFieldsproductPrice = bodytrackingcustomFieldsproductPrice == null ? null : WorkflowExpression.Compile(bodytrackingcustomFieldsproductPrice);
-            WorkflowExpression.Validate(__workflow_bodytrackingcustomFieldsproductPrice, nameof(bodytrackingcustomFieldsproductPrice), required: false);
-            var __workflow_bodytrackinglanguage = bodytrackinglanguage == null ? null : WorkflowExpression.Compile(bodytrackinglanguage);
-            WorkflowExpression.Validate(__workflow_bodytrackinglanguage, nameof(bodytrackinglanguage), required: false);
-            var __workflow_bodytrackingorderPromisedDeliveryDate = bodytrackingorderPromisedDeliveryDate == null ? null : WorkflowExpression.Compile(bodytrackingorderPromisedDeliveryDate);
-            WorkflowExpression.Validate(__workflow_bodytrackingorderPromisedDeliveryDate, nameof(bodytrackingorderPromisedDeliveryDate), required: false);
-            var __workflow_bodytrackingdeliveryType = bodytrackingdeliveryType == null ? null : WorkflowExpression.Compile(bodytrackingdeliveryType);
-            WorkflowExpression.Validate(__workflow_bodytrackingdeliveryType, nameof(bodytrackingdeliveryType), required: false);
-            var __workflow_bodytrackingpickupLocation = bodytrackingpickupLocation == null ? null : WorkflowExpression.Compile(bodytrackingpickupLocation);
-            WorkflowExpression.Validate(__workflow_bodytrackingpickupLocation, nameof(bodytrackingpickupLocation), required: false);
-            var __workflow_bodytrackingpickupNote = bodytrackingpickupNote == null ? null : WorkflowExpression.Compile(bodytrackingpickupNote);
-            WorkflowExpression.Validate(__workflow_bodytrackingpickupNote, nameof(bodytrackingpickupNote), required: false);
+            var __workflow_bodytrackingslug = WorkflowExpression.Compile(bodytrackingslug, nameof(bodytrackingslug), required: false);
+            var __workflow_bodytrackingtrackingNumber = WorkflowExpression.Compile(bodytrackingtrackingNumber, nameof(bodytrackingtrackingNumber), required: false);
+            var __workflow_bodytrackingtitle = WorkflowExpression.Compile(bodytrackingtitle, nameof(bodytrackingtitle), required: false);
+            var __workflow_bodytrackingsmses = WorkflowExpression.Compile(bodytrackingsmses, nameof(bodytrackingsmses), required: false);
+            var __workflow_bodytrackingemails = WorkflowExpression.Compile(bodytrackingemails, nameof(bodytrackingemails), required: false);
+            var __workflow_bodytrackingorderId = WorkflowExpression.Compile(bodytrackingorderId, nameof(bodytrackingorderId), required: false);
+            var __workflow_bodytrackingorderIdPath = WorkflowExpression.Compile(bodytrackingorderIdPath, nameof(bodytrackingorderIdPath), required: false);
+            var __workflow_bodytrackingcustomFieldsproductName = WorkflowExpression.Compile(bodytrackingcustomFieldsproductName, nameof(bodytrackingcustomFieldsproductName), required: false);
+            var __workflow_bodytrackingcustomFieldsproductPrice = WorkflowExpression.Compile(bodytrackingcustomFieldsproductPrice, nameof(bodytrackingcustomFieldsproductPrice), required: false);
+            var __workflow_bodytrackinglanguage = WorkflowExpression.Compile(bodytrackinglanguage, nameof(bodytrackinglanguage), required: false);
+            var __workflow_bodytrackingorderPromisedDeliveryDate = WorkflowExpression.Compile(bodytrackingorderPromisedDeliveryDate, nameof(bodytrackingorderPromisedDeliveryDate), required: false);
+            var __workflow_bodytrackingdeliveryType = WorkflowExpression.Compile(bodytrackingdeliveryType, nameof(bodytrackingdeliveryType), required: false);
+            var __workflow_bodytrackingpickupLocation = WorkflowExpression.Compile(bodytrackingpickupLocation, nameof(bodytrackingpickupLocation), required: false);
+            var __workflow_bodytrackingpickupNote = WorkflowExpression.Compile(bodytrackingpickupNote, nameof(bodytrackingpickupNote), required: false);
             return new DeferredBodyAction<CreateTrackingResponse>(() =>
             {
                 var apiCallPath = "/trackings";
@@ -227,10 +212,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetATrackingResponse> GetATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<GetATrackingResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -244,10 +227,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<DeleteATrackingResponse> DeleteATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<DeleteATrackingResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -261,14 +242,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<UpdateATrackingResponse> UpdateATracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<string>> bodytrackingtitle = null, Expression<Func<string>> bodytrackingnote = null)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
-            var __workflow_bodytrackingtitle = bodytrackingtitle == null ? null : WorkflowExpression.Compile(bodytrackingtitle);
-            WorkflowExpression.Validate(__workflow_bodytrackingtitle, nameof(bodytrackingtitle), required: false);
-            var __workflow_bodytrackingnote = bodytrackingnote == null ? null : WorkflowExpression.Compile(bodytrackingnote);
-            WorkflowExpression.Validate(__workflow_bodytrackingnote, nameof(bodytrackingnote), required: false);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_bodytrackingtitle = WorkflowExpression.Compile(bodytrackingtitle, nameof(bodytrackingtitle), required: false);
+            var __workflow_bodytrackingnote = WorkflowExpression.Compile(bodytrackingnote, nameof(bodytrackingnote), required: false);
             return new DeferredBodyAction<UpdateATrackingResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -309,10 +286,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<RetrackAnExpiredTrackingResponse> RetrackAnExpiredTracking(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<RetrackAnExpiredTrackingResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/retrack", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -326,12 +301,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<MarkTrackingAsCompletedResponse> MarkTrackingAsCompleted(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber, Expression<Func<bodyreasonInput>> bodyreason = null)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
-            var __workflow_bodyreason = bodyreason == null ? null : WorkflowExpression.Compile(bodyreason);
-            WorkflowExpression.Validate(__workflow_bodyreason, nameof(bodyreason), required: false);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<MarkTrackingAsCompletedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trackings/{0}/{1}/mark-as-completed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -358,10 +330,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetTrackingNotificationResponse> GetTrackingNotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<GetTrackingNotificationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -375,10 +345,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<AddANotificationResponse> AddANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<AddANotificationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -423,10 +391,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<RemoveANotificationResponse> RemoveANotification(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<RemoveANotificationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}/{1}/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));
@@ -471,10 +437,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aftershipip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aftershipip")]
         public IBodyWorkflowAction<GetLastCheckpointResponse> GetLastCheckpoint(Expression<Func<string>> slug, Expression<Func<string>> trackingNumber)
         {
-            var __workflow_slug = slug == null ? null : WorkflowExpression.Compile(slug);
-            WorkflowExpression.Validate(__workflow_slug, nameof(slug), required: true);
-            var __workflow_trackingNumber = trackingNumber == null ? null : WorkflowExpression.Compile(trackingNumber);
-            WorkflowExpression.Validate(__workflow_trackingNumber, nameof(trackingNumber), required: true);
+            var __workflow_slug = WorkflowExpression.Compile(slug, nameof(slug), required: true);
+            var __workflow_trackingNumber = WorkflowExpression.Compile(trackingNumber, nameof(trackingNumber), required: true);
             return new DeferredBodyAction<GetLastCheckpointResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/last_checkpoint/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackingNumber, 1));

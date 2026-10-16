@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepGoalResponse> GetSleepGoal(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetSleepGoalResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/goal.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepLogbyDateResponse> GetSleepLogbyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<GetSleepLogbyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
@@ -43,12 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> GetSleepLogbyDateRange(Expression<Func<string>> userId, Expression<Func<string>> startDate, Expression<Func<string>> endDate)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
             return new DeferredBodyAction<GetSleepLogbyDateRangeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_startDate, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_endDate, 1));
@@ -61,16 +55,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetSleepLogListResponse> GetSleepLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_afterDate = afterDate == null ? null : WorkflowExpression.Compile(afterDate);
-            WorkflowExpression.Validate(__workflow_afterDate, nameof(afterDate), required: false);
-            var __workflow_beforeDate = beforeDate == null ? null : WorkflowExpression.Compile(beforeDate);
-            WorkflowExpression.Validate(__workflow_beforeDate, nameof(beforeDate), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_afterDate = WorkflowExpression.Compile(afterDate, nameof(afterDate), required: false);
+            var __workflow_beforeDate = WorkflowExpression.Compile(beforeDate, nameof(beforeDate), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetSleepLogListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/list.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -93,10 +82,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetActivityGoalsResponse> GetActivityGoals(Expression<Func<string>> userId, Expression<Func<periodInput>> period)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<GetActivityGoalsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/goals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
@@ -109,16 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetActivityLogListResponse> GetActivityLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_afterDate = afterDate == null ? null : WorkflowExpression.Compile(afterDate);
-            WorkflowExpression.Validate(__workflow_afterDate, nameof(afterDate), required: false);
-            var __workflow_beforeDate = beforeDate == null ? null : WorkflowExpression.Compile(beforeDate);
-            WorkflowExpression.Validate(__workflow_beforeDate, nameof(beforeDate), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_afterDate = WorkflowExpression.Compile(afterDate, nameof(afterDate), required: false);
+            var __workflow_beforeDate = WorkflowExpression.Compile(beforeDate, nameof(beforeDate), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetActivityLogListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/list.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -141,12 +123,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IWorkflowAction GetActivityTCX(Expression<Func<string>> userId, Expression<Func<string>> logId, Expression<Func<bool>> includePartialTCX = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_logId = logId == null ? null : WorkflowExpression.Compile(logId);
-            WorkflowExpression.Validate(__workflow_logId, nameof(logId), required: true);
-            var __workflow_includePartialTCX = includePartialTCX == null ? null : WorkflowExpression.Compile(includePartialTCX);
-            WorkflowExpression.Validate(__workflow_includePartialTCX, nameof(includePartialTCX), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_logId = WorkflowExpression.Compile(logId, nameof(logId), required: true);
+            var __workflow_includePartialTCX = WorkflowExpression.Compile(includePartialTCX, nameof(includePartialTCX), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.tcx", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_logId, 1));
@@ -161,10 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetAcitivityTypeResponse> GetAcitivityType(Expression<Func<string>> userId, Expression<Func<string>> activityId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: true);
             return new DeferredBodyAction<GetAcitivityTypeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_activityId, 1));
@@ -186,10 +163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetDailyActivitySummaryResponse> GetDailyActivitySummary(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<GetDailyActivitySummaryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
@@ -202,8 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> GetFavoriteActivities(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetFavoriteActivitiesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/favorite.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -216,8 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> GetFrequentActivities(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetFrequentActivitiesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}activities/frequent.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -230,8 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetLifetimeStatsResponse> GetLifetimeStats(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetLifetimeStatsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -244,8 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> GetRecentActivityTypes(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetRecentActivityTypesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/recent.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -258,14 +229,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> GetActivityTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput>> resource, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<GetActivityTimeSeriesbyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}/date/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
@@ -278,10 +245,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyGoalsResponse> GetBodyGoals(Expression<Func<string>> userId, Expression<Func<goalTypeInput>> goalType)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_goalType = goalType == null ? null : WorkflowExpression.Compile(goalType);
-            WorkflowExpression.Validate(__workflow_goalType, nameof(goalType), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_goalType = WorkflowExpression.Compile(goalType, nameof(goalType), required: true);
             return new DeferredBodyAction<GetBodyGoalsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/{1}/goal.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalType, 1));
@@ -294,10 +259,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyFattLogResponse> GetBodyFattLog(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<GetBodyFattLogResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
@@ -310,10 +273,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetWeightLogResponse> GetWeightLog(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<GetWeightLogResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
@@ -326,14 +287,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> GetBodyTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput>> resource, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_resource = resource == null ? null : WorkflowExpression.Compile(resource);
-            WorkflowExpression.Validate(__workflow_resource, nameof(resource), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_resource = WorkflowExpression.Compile(resource, nameof(resource), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<GetBodyTimeSeriesbyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/{1}/date/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resource, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
@@ -346,12 +303,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> GetBodyFatTimerSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<GetBodyFatTimerSeriesbyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
@@ -364,12 +318,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> GetWeightTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput>> period)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<GetWeightTimeSeriesbyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
@@ -382,10 +333,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> GetBreathingRateSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<GetBreathingRateSummarybyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/br/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
@@ -398,10 +347,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> GetVO2MaxSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<GetVO2MaxSummarybyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/cardioscore/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
@@ -414,8 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetDevicesResponseItem[]> GetDevices(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetDevicesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -428,10 +374,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetAlarmsResponse> GetAlarms(Expression<Func<string>> userId, Expression<Func<string>> trackerId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_trackerId = trackerId == null ? null : WorkflowExpression.Compile(trackerId);
-            WorkflowExpression.Validate(__workflow_trackerId, nameof(trackerId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_trackerId = WorkflowExpression.Compile(trackerId, nameof(trackerId), required: true);
             return new DeferredBodyAction<GetAlarmsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices/tracker/{1}/alarms.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_trackerId, 1));
@@ -444,8 +388,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetFriendsLeaderboardResponse> GetFriendsLeaderboard(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetFriendsLeaderboardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/user/{0}/leaderboard/friends.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -458,10 +401,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetHRVSummarybyDateResponse> GetHRVSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<GetHRVSummarybyDateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/hrv/date/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1));
@@ -474,8 +415,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetBadgesResponse> GetBadges(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetBadgesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/badges.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -488,8 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetProfileResponse> GetProfile(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetProfileResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/user/{0}/profile.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));

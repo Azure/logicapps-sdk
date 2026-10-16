@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<Survey> GetSurvey(Expression<Func<string>> surveyId)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyAction<Survey>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/surveys/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
@@ -27,14 +26,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<SurveyMessageResponse> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<string>> bodyscheduledDate = null)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
-            var __workflow_collectorId = collectorId == null ? null : WorkflowExpression.Compile(collectorId);
-            WorkflowExpression.Validate(__workflow_collectorId, nameof(collectorId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_bodyscheduledDate = bodyscheduledDate == null ? null : WorkflowExpression.Compile(bodyscheduledDate);
-            WorkflowExpression.Validate(__workflow_bodyscheduledDate, nameof(bodyscheduledDate), required: false);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
+            var __workflow_collectorId = WorkflowExpression.Compile(collectorId, nameof(collectorId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_bodyscheduledDate = WorkflowExpression.Compile(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
             return new DeferredBodyAction<SurveyMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectorId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -61,12 +56,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
-            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
-            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
-            var __workflow_questionIds = questionIds == null ? null : WorkflowExpression.Compile(questionIds);
-            WorkflowExpression.Validate(__workflow_questionIds, nameof(questionIds), required: false);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            var __workflow_questionIds = WorkflowExpression.Compile(questionIds, nameof(questionIds), required: false);
             return new DeferredBodyAction<GetResponseDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_responseId, 1));
@@ -82,12 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkey")]
         public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
-            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
-            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
-            var __workflow_questionIds = questionIds == null ? null : WorkflowExpression.Compile(questionIds);
-            WorkflowExpression.Validate(__workflow_questionIds, nameof(questionIds), required: false);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
+            var __workflow_questionIds = WorkflowExpression.Compile(questionIds, nameof(questionIds), required: false);
             return new DeferredBodyAction<GetResponseDetailsNoPagesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_responseId, 1));
@@ -113,8 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<NewCollectorsItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
@@ -126,10 +114,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, FlowRecurrence recurrence = null)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
-            var __workflow_collectorId = collectorId == null ? null : WorkflowExpression.Compile(collectorId);
-            WorkflowExpression.Validate(__workflow_collectorId, nameof(collectorId), required: true);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
+            var __workflow_collectorId = WorkflowExpression.Compile(collectorId, nameof(collectorId), required: true);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectorId, 1));
@@ -142,8 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId, FlowRecurrence recurrence = null)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));
@@ -155,12 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
         public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
-            var __workflow_pageIds = pageIds == null ? null : WorkflowExpression.Compile(pageIds);
-            WorkflowExpression.Validate(__workflow_pageIds, nameof(pageIds), required: false);
-            var __workflow_questionIds = questionIds == null ? null : WorkflowExpression.Compile(questionIds);
-            WorkflowExpression.Validate(__workflow_questionIds, nameof(questionIds), required: false);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
+            var __workflow_pageIds = WorkflowExpression.Compile(pageIds, nameof(pageIds), required: false);
+            var __workflow_questionIds = WorkflowExpression.Compile(questionIds, nameof(questionIds), required: false);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(__workflow_surveyId, 1));

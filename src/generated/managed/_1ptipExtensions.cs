@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1ptip")]
         public IBodyWorkflowAction<URLGetResponse> URLGet(Expression<Func<string>> @long, Expression<Func<string>> @short = null)
         {
-            var __workflow_long = @long == null ? null : WorkflowExpression.Compile(@long);
-            WorkflowExpression.Validate(__workflow_long, nameof(@long), required: true);
-            var __workflow_short = @short == null ? null : WorkflowExpression.Compile(@short);
-            WorkflowExpression.Validate(__workflow_short, nameof(@short), required: false);
+            var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
+            var __workflow_short = WorkflowExpression.Compile(@short, nameof(@short), required: false);
             return new DeferredBodyAction<URLGetResponse>(() =>
             {
                 var apiCallPath = "/addURL";

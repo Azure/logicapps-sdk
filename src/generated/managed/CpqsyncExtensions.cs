@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
     {
         public IWorkflowTrigger ProductUpdated(Expression<Func<string>> tenantId, FlowRecurrence recurrence = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1));
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 
         public IWorkflowTrigger ProductCreated(Expression<Func<string>> tenantId, FlowRecurrence recurrence = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/master-data/tenants/{0}/web-hooks/PricedItemCreated", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1));

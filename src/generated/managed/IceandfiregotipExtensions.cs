@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<BookGetResponseItem[]> BookGet(Expression<Func<string>> name = null, Expression<Func<string>> fromReleaseDate = null, Expression<Func<string>> toReleaseDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_fromReleaseDate = fromReleaseDate == null ? null : WorkflowExpression.Compile(fromReleaseDate);
-            WorkflowExpression.Validate(__workflow_fromReleaseDate, nameof(fromReleaseDate), required: false);
-            var __workflow_toReleaseDate = toReleaseDate == null ? null : WorkflowExpression.Compile(toReleaseDate);
-            WorkflowExpression.Validate(__workflow_toReleaseDate, nameof(toReleaseDate), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_fromReleaseDate = WorkflowExpression.Compile(fromReleaseDate, nameof(fromReleaseDate), required: false);
+            var __workflow_toReleaseDate = WorkflowExpression.Compile(toReleaseDate, nameof(toReleaseDate), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<BookGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/books";
@@ -46,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<BookGetAResponse> BookGetA(Expression<Func<string>> number)
         {
-            var __workflow_number = number == null ? null : WorkflowExpression.Compile(number);
-            WorkflowExpression.Validate(__workflow_number, nameof(number), required: true);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
             return new DeferredBodyAction<BookGetAResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/books/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_number, 1));
@@ -60,22 +54,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<CharacterGetResponseItem[]> CharacterGet(Expression<Func<string>> name = null, Expression<Func<string>> gender = null, Expression<Func<string>> culture = null, Expression<Func<string>> born = null, Expression<Func<string>> died = null, Expression<Func<bool>> isAlive = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_gender = gender == null ? null : WorkflowExpression.Compile(gender);
-            WorkflowExpression.Validate(__workflow_gender, nameof(gender), required: false);
-            var __workflow_culture = culture == null ? null : WorkflowExpression.Compile(culture);
-            WorkflowExpression.Validate(__workflow_culture, nameof(culture), required: false);
-            var __workflow_born = born == null ? null : WorkflowExpression.Compile(born);
-            WorkflowExpression.Validate(__workflow_born, nameof(born), required: false);
-            var __workflow_died = died == null ? null : WorkflowExpression.Compile(died);
-            WorkflowExpression.Validate(__workflow_died, nameof(died), required: false);
-            var __workflow_isAlive = isAlive == null ? null : WorkflowExpression.Compile(isAlive);
-            WorkflowExpression.Validate(__workflow_isAlive, nameof(isAlive), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_gender = WorkflowExpression.Compile(gender, nameof(gender), required: false);
+            var __workflow_culture = WorkflowExpression.Compile(culture, nameof(culture), required: false);
+            var __workflow_born = WorkflowExpression.Compile(born, nameof(born), required: false);
+            var __workflow_died = WorkflowExpression.Compile(died, nameof(died), required: false);
+            var __workflow_isAlive = WorkflowExpression.Compile(isAlive, nameof(isAlive), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<CharacterGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/characters";
@@ -106,8 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<CharacterGetAResponse> CharacterGetA(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CharacterGetAResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/characters/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -120,26 +105,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<HouseGetResponseItem[]> HouseGet(Expression<Func<string>> name = null, Expression<Func<string>> region = null, Expression<Func<string>> words = null, Expression<Func<bool>> hasWords = null, Expression<Func<bool>> hasTitles = null, Expression<Func<bool>> hasSeats = null, Expression<Func<bool>> hasDiedOut = null, Expression<Func<bool>> hasAncestralWeapons = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_words = words == null ? null : WorkflowExpression.Compile(words);
-            WorkflowExpression.Validate(__workflow_words, nameof(words), required: false);
-            var __workflow_hasWords = hasWords == null ? null : WorkflowExpression.Compile(hasWords);
-            WorkflowExpression.Validate(__workflow_hasWords, nameof(hasWords), required: false);
-            var __workflow_hasTitles = hasTitles == null ? null : WorkflowExpression.Compile(hasTitles);
-            WorkflowExpression.Validate(__workflow_hasTitles, nameof(hasTitles), required: false);
-            var __workflow_hasSeats = hasSeats == null ? null : WorkflowExpression.Compile(hasSeats);
-            WorkflowExpression.Validate(__workflow_hasSeats, nameof(hasSeats), required: false);
-            var __workflow_hasDiedOut = hasDiedOut == null ? null : WorkflowExpression.Compile(hasDiedOut);
-            WorkflowExpression.Validate(__workflow_hasDiedOut, nameof(hasDiedOut), required: false);
-            var __workflow_hasAncestralWeapons = hasAncestralWeapons == null ? null : WorkflowExpression.Compile(hasAncestralWeapons);
-            WorkflowExpression.Validate(__workflow_hasAncestralWeapons, nameof(hasAncestralWeapons), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_words = WorkflowExpression.Compile(words, nameof(words), required: false);
+            var __workflow_hasWords = WorkflowExpression.Compile(hasWords, nameof(hasWords), required: false);
+            var __workflow_hasTitles = WorkflowExpression.Compile(hasTitles, nameof(hasTitles), required: false);
+            var __workflow_hasSeats = WorkflowExpression.Compile(hasSeats, nameof(hasSeats), required: false);
+            var __workflow_hasDiedOut = WorkflowExpression.Compile(hasDiedOut, nameof(hasDiedOut), required: false);
+            var __workflow_hasAncestralWeapons = WorkflowExpression.Compile(hasAncestralWeapons, nameof(hasAncestralWeapons), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<HouseGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/houses";
@@ -173,8 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
         public IBodyWorkflowAction<HouseGetAResponse> HouseGetA(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<HouseGetAResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/houses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

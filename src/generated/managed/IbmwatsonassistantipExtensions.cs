@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IBodyWorkflowAction<CreateSessionResponse> CreateSession(Expression<Func<string>> version)
         {
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
             return new DeferredBodyAction<CreateSessionResponse>(() =>
             {
                 var apiCallPath = "/sessions";
@@ -28,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IWorkflowAction DeleteSession(Expression<Func<string>> session, Expression<Func<string>> version = null)
         {
-            var __workflow_session = session == null ? null : WorkflowExpression.Compile(session);
-            WorkflowExpression.Validate(__workflow_session, nameof(session), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
+            var __workflow_session = WorkflowExpression.Compile(session, nameof(session), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_session, 1));
@@ -47,12 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage(Expression<Func<string>> session, Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
         {
-            var __workflow_session = session == null ? null : WorkflowExpression.Compile(session);
-            WorkflowExpression.Validate(__workflow_session, nameof(session), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
-            var __workflow_bodyinputtext = bodyinputtext == null ? null : WorkflowExpression.Compile(bodyinputtext);
-            WorkflowExpression.Validate(__workflow_bodyinputtext, nameof(bodyinputtext), required: false);
+            var __workflow_session = WorkflowExpression.Compile(session, nameof(session), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
+            var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
             return new DeferredBodyAction<StatefulMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_session, 1));
@@ -89,10 +83,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
         public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage(Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
         {
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
-            var __workflow_bodyinputtext = bodyinputtext == null ? null : WorkflowExpression.Compile(bodyinputtext);
-            WorkflowExpression.Validate(__workflow_bodyinputtext, nameof(bodyinputtext), required: false);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
+            var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
             return new DeferredBodyAction<StatelessMessageResponse>(() =>
             {
                 var apiCallPath = "/message";

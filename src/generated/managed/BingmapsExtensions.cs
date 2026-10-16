@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<GetLocationResponse> GetLocationByPoint(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> includeEntityTypes = null, Expression<Func<bool>> includeNeighborhood = null, Expression<Func<bool>> include = null)
         {
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_includeEntityTypes = includeEntityTypes == null ? null : WorkflowExpression.Compile(includeEntityTypes);
-            WorkflowExpression.Validate(__workflow_includeEntityTypes, nameof(includeEntityTypes), required: false);
-            var __workflow_includeNeighborhood = includeNeighborhood == null ? null : WorkflowExpression.Compile(includeNeighborhood);
-            WorkflowExpression.Validate(__workflow_includeNeighborhood, nameof(includeNeighborhood), required: false);
-            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
-            WorkflowExpression.Validate(__workflow_include, nameof(include), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_includeEntityTypes = WorkflowExpression.Compile(includeEntityTypes, nameof(includeEntityTypes), required: false);
+            var __workflow_includeNeighborhood = WorkflowExpression.Compile(includeNeighborhood, nameof(includeNeighborhood), required: false);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: false);
             return new DeferredBodyAction<GetLocationResponse>(() =>
             {
                 var apiCallPath = "/REST/v1/Locations/pointPlaceHolder";
@@ -45,16 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<GetLocationResponse> GetLocationByAddress(Expression<Func<string>> addressLine = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminDistrict = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> countryRegion = null)
         {
-            var __workflow_addressLine = addressLine == null ? null : WorkflowExpression.Compile(addressLine);
-            WorkflowExpression.Validate(__workflow_addressLine, nameof(addressLine), required: false);
-            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
-            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
-            var __workflow_adminDistrict = adminDistrict == null ? null : WorkflowExpression.Compile(adminDistrict);
-            WorkflowExpression.Validate(__workflow_adminDistrict, nameof(adminDistrict), required: false);
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_countryRegion = countryRegion == null ? null : WorkflowExpression.Compile(countryRegion);
-            WorkflowExpression.Validate(__workflow_countryRegion, nameof(countryRegion), required: false);
+            var __workflow_addressLine = WorkflowExpression.Compile(addressLine, nameof(addressLine), required: false);
+            var __workflow_locality = WorkflowExpression.Compile(locality, nameof(locality), required: false);
+            var __workflow_adminDistrict = WorkflowExpression.Compile(adminDistrict, nameof(adminDistrict), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_countryRegion = WorkflowExpression.Compile(countryRegion, nameof(countryRegion), required: false);
             return new DeferredBodyAction<GetLocationResponse>(() =>
             {
                 var apiCallPath = "/REST/v1/Locations";
@@ -77,26 +67,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<string> GetMap(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<imagerySetInput>> imagerySet, Expression<Func<string>> zoomLevel, Expression<Func<formatInput>> format = null, Expression<Func<string>> mapSize = null, Expression<Func<double>> pushpinLatitude = null, Expression<Func<double>> pushpinLongitude = null, Expression<Func<int>> pushpinIconStyle = null, Expression<Func<string>> pushpinLabel = null)
         {
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_imagerySet = imagerySet == null ? null : WorkflowExpression.Compile(imagerySet);
-            WorkflowExpression.Validate(__workflow_imagerySet, nameof(imagerySet), required: true);
-            var __workflow_zoomLevel = zoomLevel == null ? null : WorkflowExpression.Compile(zoomLevel);
-            WorkflowExpression.Validate(__workflow_zoomLevel, nameof(zoomLevel), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_mapSize = mapSize == null ? null : WorkflowExpression.Compile(mapSize);
-            WorkflowExpression.Validate(__workflow_mapSize, nameof(mapSize), required: false);
-            var __workflow_pushpinLatitude = pushpinLatitude == null ? null : WorkflowExpression.Compile(pushpinLatitude);
-            WorkflowExpression.Validate(__workflow_pushpinLatitude, nameof(pushpinLatitude), required: false);
-            var __workflow_pushpinLongitude = pushpinLongitude == null ? null : WorkflowExpression.Compile(pushpinLongitude);
-            WorkflowExpression.Validate(__workflow_pushpinLongitude, nameof(pushpinLongitude), required: false);
-            var __workflow_pushpinIconStyle = pushpinIconStyle == null ? null : WorkflowExpression.Compile(pushpinIconStyle);
-            WorkflowExpression.Validate(__workflow_pushpinIconStyle, nameof(pushpinIconStyle), required: false);
-            var __workflow_pushpinLabel = pushpinLabel == null ? null : WorkflowExpression.Compile(pushpinLabel);
-            WorkflowExpression.Validate(__workflow_pushpinLabel, nameof(pushpinLabel), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_imagerySet = WorkflowExpression.Compile(imagerySet, nameof(imagerySet), required: true);
+            var __workflow_zoomLevel = WorkflowExpression.Compile(zoomLevel, nameof(zoomLevel), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_mapSize = WorkflowExpression.Compile(mapSize, nameof(mapSize), required: false);
+            var __workflow_pushpinLatitude = WorkflowExpression.Compile(pushpinLatitude, nameof(pushpinLatitude), required: false);
+            var __workflow_pushpinLongitude = WorkflowExpression.Compile(pushpinLongitude, nameof(pushpinLongitude), required: false);
+            var __workflow_pushpinIconStyle = WorkflowExpression.Compile(pushpinIconStyle, nameof(pushpinIconStyle), required: false);
+            var __workflow_pushpinLabel = WorkflowExpression.Compile(pushpinLabel, nameof(pushpinLabel), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/V2/REST/v1/Imagery/Map/{0}/pointPlaceHolder/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_imagerySet, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_zoomLevel, 1));
@@ -123,32 +103,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingmaps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingmaps")]
         public IBodyWorkflowAction<GetRouteResponse> GetRoute(Expression<Func<string>> wp0, Expression<Func<string>> wp1, Expression<Func<travelModeInput>> travelMode, Expression<Func<bool>> avoidHighways = null, Expression<Func<bool>> avoidTolls = null, Expression<Func<bool>> avoidFerry = null, Expression<Func<bool>> avoidMinimizeHighways = null, Expression<Func<bool>> avoidMinimizeTolls = null, Expression<Func<bool>> avoidBorderCrossing = null, Expression<Func<optimizeInput>> optimize = null, Expression<Func<distanceUnitInput>> distanceUnit = null, Expression<Func<string>> dateTime = null, Expression<Func<timeTypeInput>> timeType = null)
         {
-            var __workflow_wp0 = wp0 == null ? null : WorkflowExpression.Compile(wp0);
-            WorkflowExpression.Validate(__workflow_wp0, nameof(wp0), required: true);
-            var __workflow_wp1 = wp1 == null ? null : WorkflowExpression.Compile(wp1);
-            WorkflowExpression.Validate(__workflow_wp1, nameof(wp1), required: true);
-            var __workflow_travelMode = travelMode == null ? null : WorkflowExpression.Compile(travelMode);
-            WorkflowExpression.Validate(__workflow_travelMode, nameof(travelMode), required: true);
-            var __workflow_avoidHighways = avoidHighways == null ? null : WorkflowExpression.Compile(avoidHighways);
-            WorkflowExpression.Validate(__workflow_avoidHighways, nameof(avoidHighways), required: false);
-            var __workflow_avoidTolls = avoidTolls == null ? null : WorkflowExpression.Compile(avoidTolls);
-            WorkflowExpression.Validate(__workflow_avoidTolls, nameof(avoidTolls), required: false);
-            var __workflow_avoidFerry = avoidFerry == null ? null : WorkflowExpression.Compile(avoidFerry);
-            WorkflowExpression.Validate(__workflow_avoidFerry, nameof(avoidFerry), required: false);
-            var __workflow_avoidMinimizeHighways = avoidMinimizeHighways == null ? null : WorkflowExpression.Compile(avoidMinimizeHighways);
-            WorkflowExpression.Validate(__workflow_avoidMinimizeHighways, nameof(avoidMinimizeHighways), required: false);
-            var __workflow_avoidMinimizeTolls = avoidMinimizeTolls == null ? null : WorkflowExpression.Compile(avoidMinimizeTolls);
-            WorkflowExpression.Validate(__workflow_avoidMinimizeTolls, nameof(avoidMinimizeTolls), required: false);
-            var __workflow_avoidBorderCrossing = avoidBorderCrossing == null ? null : WorkflowExpression.Compile(avoidBorderCrossing);
-            WorkflowExpression.Validate(__workflow_avoidBorderCrossing, nameof(avoidBorderCrossing), required: false);
-            var __workflow_optimize = optimize == null ? null : WorkflowExpression.Compile(optimize);
-            WorkflowExpression.Validate(__workflow_optimize, nameof(optimize), required: false);
-            var __workflow_distanceUnit = distanceUnit == null ? null : WorkflowExpression.Compile(distanceUnit);
-            WorkflowExpression.Validate(__workflow_distanceUnit, nameof(distanceUnit), required: false);
-            var __workflow_dateTime = dateTime == null ? null : WorkflowExpression.Compile(dateTime);
-            WorkflowExpression.Validate(__workflow_dateTime, nameof(dateTime), required: false);
-            var __workflow_timeType = timeType == null ? null : WorkflowExpression.Compile(timeType);
-            WorkflowExpression.Validate(__workflow_timeType, nameof(timeType), required: false);
+            var __workflow_wp0 = WorkflowExpression.Compile(wp0, nameof(wp0), required: true);
+            var __workflow_wp1 = WorkflowExpression.Compile(wp1, nameof(wp1), required: true);
+            var __workflow_travelMode = WorkflowExpression.Compile(travelMode, nameof(travelMode), required: true);
+            var __workflow_avoidHighways = WorkflowExpression.Compile(avoidHighways, nameof(avoidHighways), required: false);
+            var __workflow_avoidTolls = WorkflowExpression.Compile(avoidTolls, nameof(avoidTolls), required: false);
+            var __workflow_avoidFerry = WorkflowExpression.Compile(avoidFerry, nameof(avoidFerry), required: false);
+            var __workflow_avoidMinimizeHighways = WorkflowExpression.Compile(avoidMinimizeHighways, nameof(avoidMinimizeHighways), required: false);
+            var __workflow_avoidMinimizeTolls = WorkflowExpression.Compile(avoidMinimizeTolls, nameof(avoidMinimizeTolls), required: false);
+            var __workflow_avoidBorderCrossing = WorkflowExpression.Compile(avoidBorderCrossing, nameof(avoidBorderCrossing), required: false);
+            var __workflow_optimize = WorkflowExpression.Compile(optimize, nameof(optimize), required: false);
+            var __workflow_distanceUnit = WorkflowExpression.Compile(distanceUnit, nameof(distanceUnit), required: false);
+            var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
+            var __workflow_timeType = WorkflowExpression.Compile(timeType, nameof(timeType), required: false);
             return new DeferredBodyAction<GetRouteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/V3/REST/V1/Routes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_travelMode, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CreateBoardResponse> CreateBoard(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<CreateBoardResponse>(() =>
             {
                 var apiCallPath = "/io/board";
@@ -44,38 +42,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CreateCardResponse> CreateCard(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodytype, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<string>> bodyplannedFinishDate = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
         {
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodylaneId = bodylaneId == null ? null : WorkflowExpression.Compile(bodylaneId);
-            WorkflowExpression.Validate(__workflow_bodylaneId, nameof(bodylaneId), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
-            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodyplannedStartDate = bodyplannedStartDate == null ? null : WorkflowExpression.Compile(bodyplannedStartDate);
-            WorkflowExpression.Validate(__workflow_bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
-            var __workflow_bodyplannedFinishDate = bodyplannedFinishDate == null ? null : WorkflowExpression.Compile(bodyplannedFinishDate);
-            WorkflowExpression.Validate(__workflow_bodyplannedFinishDate, nameof(bodyplannedFinishDate), required: false);
-            var __workflow_bodycardId = bodycardId == null ? null : WorkflowExpression.Compile(bodycardId);
-            WorkflowExpression.Validate(__workflow_bodycardId, nameof(bodycardId), required: false);
-            var __workflow_bodyisBlocked = bodyisBlocked == null ? null : WorkflowExpression.Compile(bodyisBlocked);
-            WorkflowExpression.Validate(__workflow_bodyisBlocked, nameof(bodyisBlocked), required: false);
-            var __workflow_bodyblockReason = bodyblockReason == null ? null : WorkflowExpression.Compile(bodyblockReason);
-            WorkflowExpression.Validate(__workflow_bodyblockReason, nameof(bodyblockReason), required: false);
-            var __workflow_bodyexternalLinkexternalLinkLabel = bodyexternalLinkexternalLinkLabel == null ? null : WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel);
-            WorkflowExpression.Validate(__workflow_bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
-            var __workflow_bodyexternalLinkexternalLinkURL = bodyexternalLinkexternalLinkURL == null ? null : WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL);
-            WorkflowExpression.Validate(__workflow_bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
-            var __workflow_bodyassignees = bodyassignees == null ? null : WorkflowExpression.Compile(bodyassignees);
-            WorkflowExpression.Validate(__workflow_bodyassignees, nameof(bodyassignees), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodylaneId = WorkflowExpression.Compile(bodylaneId, nameof(bodylaneId), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodyplannedStartDate = WorkflowExpression.Compile(bodyplannedStartDate, nameof(bodyplannedStartDate), required: false);
+            var __workflow_bodyplannedFinishDate = WorkflowExpression.Compile(bodyplannedFinishDate, nameof(bodyplannedFinishDate), required: false);
+            var __workflow_bodycardId = WorkflowExpression.Compile(bodycardId, nameof(bodycardId), required: false);
+            var __workflow_bodyisBlocked = WorkflowExpression.Compile(bodyisBlocked, nameof(bodyisBlocked), required: false);
+            var __workflow_bodyblockReason = WorkflowExpression.Compile(bodyblockReason, nameof(bodyblockReason), required: false);
+            var __workflow_bodyexternalLinkexternalLinkLabel = WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
+            var __workflow_bodyexternalLinkexternalLinkURL = WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
+            var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
             return new DeferredBodyAction<CreateCardResponse>(() =>
             {
                 var apiCallPath = "/io/card";
@@ -187,8 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CardResponse> GetCard(Expression<Func<string>> cardId)
         {
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<CardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -201,38 +182,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CardResponse> UpdateCard(Expression<Func<string>> cardId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDateTime = null, Expression<Func<string>> bodyplannedFinishDateTime = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
         {
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodylaneId = bodylaneId == null ? null : WorkflowExpression.Compile(bodylaneId);
-            WorkflowExpression.Validate(__workflow_bodylaneId, nameof(bodylaneId), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
-            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodyplannedStartDateTime = bodyplannedStartDateTime == null ? null : WorkflowExpression.Compile(bodyplannedStartDateTime);
-            WorkflowExpression.Validate(__workflow_bodyplannedStartDateTime, nameof(bodyplannedStartDateTime), required: false);
-            var __workflow_bodyplannedFinishDateTime = bodyplannedFinishDateTime == null ? null : WorkflowExpression.Compile(bodyplannedFinishDateTime);
-            WorkflowExpression.Validate(__workflow_bodyplannedFinishDateTime, nameof(bodyplannedFinishDateTime), required: false);
-            var __workflow_bodycardId = bodycardId == null ? null : WorkflowExpression.Compile(bodycardId);
-            WorkflowExpression.Validate(__workflow_bodycardId, nameof(bodycardId), required: false);
-            var __workflow_bodyisBlocked = bodyisBlocked == null ? null : WorkflowExpression.Compile(bodyisBlocked);
-            WorkflowExpression.Validate(__workflow_bodyisBlocked, nameof(bodyisBlocked), required: false);
-            var __workflow_bodyblockReason = bodyblockReason == null ? null : WorkflowExpression.Compile(bodyblockReason);
-            WorkflowExpression.Validate(__workflow_bodyblockReason, nameof(bodyblockReason), required: false);
-            var __workflow_bodyexternalLinkexternalLinkLabel = bodyexternalLinkexternalLinkLabel == null ? null : WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel);
-            WorkflowExpression.Validate(__workflow_bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
-            var __workflow_bodyexternalLinkexternalLinkURL = bodyexternalLinkexternalLinkURL == null ? null : WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL);
-            WorkflowExpression.Validate(__workflow_bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
-            var __workflow_bodyassignees = bodyassignees == null ? null : WorkflowExpression.Compile(bodyassignees);
-            WorkflowExpression.Validate(__workflow_bodyassignees, nameof(bodyassignees), required: false);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodylaneId = WorkflowExpression.Compile(bodylaneId, nameof(bodylaneId), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodyplannedStartDateTime = WorkflowExpression.Compile(bodyplannedStartDateTime, nameof(bodyplannedStartDateTime), required: false);
+            var __workflow_bodyplannedFinishDateTime = WorkflowExpression.Compile(bodyplannedFinishDateTime, nameof(bodyplannedFinishDateTime), required: false);
+            var __workflow_bodycardId = WorkflowExpression.Compile(bodycardId, nameof(bodycardId), required: false);
+            var __workflow_bodyisBlocked = WorkflowExpression.Compile(bodyisBlocked, nameof(bodyisBlocked), required: false);
+            var __workflow_bodyblockReason = WorkflowExpression.Compile(bodyblockReason, nameof(bodyblockReason), required: false);
+            var __workflow_bodyexternalLinkexternalLinkLabel = WorkflowExpression.Compile(bodyexternalLinkexternalLinkLabel, nameof(bodyexternalLinkexternalLinkLabel), required: false);
+            var __workflow_bodyexternalLinkexternalLinkURL = WorkflowExpression.Compile(bodyexternalLinkexternalLinkURL, nameof(bodyexternalLinkexternalLinkURL), required: false);
+            var __workflow_bodyassignees = WorkflowExpression.Compile(bodyassignees, nameof(bodyassignees), required: false);
             return new DeferredBodyAction<CardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -350,8 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<CardResponse> DeleteCard(Expression<Func<string>> cardId)
         {
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<CardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -364,10 +328,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
         public IBodyWorkflowAction<AddCommentResponse> AddComment(Expression<Func<string>> cardId, Expression<Func<string>> bodycomment)
         {
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: true);
             return new DeferredBodyAction<AddCommentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/io/card/{0}/comment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -391,10 +353,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
     {
         public IBodyWorkflowTrigger<CardResponse[]> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
         {
-            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
-            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
-            var __workflow_lane = lane == null ? null : WorkflowExpression.Compile(lane);
-            WorkflowExpression.Validate(__workflow_lane, nameof(lane), required: true);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
+            var __workflow_lane = WorkflowExpression.Compile(lane, nameof(lane), required: true);
             return new DeferredBodyTrigger<CardResponse[]>(() =>
             {
                 var apiCallPath = "/add_card_trigger/io/card";
@@ -408,10 +368,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
 
         public IBodyWorkflowTrigger<CardResponse[]> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane, FlowRecurrence recurrence = null)
         {
-            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
-            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
-            var __workflow_lane = lane == null ? null : WorkflowExpression.Compile(lane);
-            WorkflowExpression.Validate(__workflow_lane, nameof(lane), required: true);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
+            var __workflow_lane = WorkflowExpression.Compile(lane, nameof(lane), required: true);
             return new DeferredBodyTrigger<CardResponse[]>(() =>
             {
                 var apiCallPath = "/update_card_trigger/io/card";

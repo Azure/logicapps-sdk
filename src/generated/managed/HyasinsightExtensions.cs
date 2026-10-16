@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<DeviceGeoItem[]> MobileGeolocation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<DeviceGeoItem[]>(() =>
             {
                 var apiCallPath = "/device_geo";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SinkholeItem[]> Sinkhole(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<SinkholeItem[]>(() =>
             {
                 var apiCallPath = "/sinkhole";
@@ -49,10 +45,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<PassivednsItem[]> PassiveDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<PassivednsItem[]>(() =>
             {
                 var apiCallPath = "/passivedns";
@@ -67,10 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<DynamicdnsItem[]> DynamicDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<DynamicdnsItem[]>(() =>
             {
                 var apiCallPath = "/dynamicdns";
@@ -85,10 +77,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<PassivehashItem[]> PassiveHash(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<PassivehashItem[]>(() =>
             {
                 var apiCallPath = "/passivehash";
@@ -103,10 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<Sslcertificate> SSLCertificate(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<Sslcertificate>(() =>
             {
                 var apiCallPath = "/ssl_certificate";
@@ -121,10 +109,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<WhoisItem[]> Whois(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<WhoisItem[]>(() =>
             {
                 var apiCallPath = "/whois";
@@ -139,10 +125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<C2attributionItem[]> C2Attribution(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<C2attributionItem[]>(() =>
             {
                 var apiCallPath = "/c2attribution";
@@ -157,10 +141,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SampleInformation> SampleInformation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<SampleInformation>(() =>
             {
                 var apiCallPath = "/sample/information";
@@ -175,10 +157,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<SampleItem[]> Sample(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<SampleItem[]>(() =>
             {
                 var apiCallPath = "/sample";
@@ -193,10 +173,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<OsIndicatorsItem[]> OpenSourceIndicators(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
         {
-            var __workflow_indicatorType = indicatorType == null ? null : WorkflowExpression.Compile(indicatorType);
-            WorkflowExpression.Validate(__workflow_indicatorType, nameof(indicatorType), required: true);
-            var __workflow_indicatorValue = indicatorValue == null ? null : WorkflowExpression.Compile(indicatorValue);
-            WorkflowExpression.Validate(__workflow_indicatorValue, nameof(indicatorValue), required: true);
+            var __workflow_indicatorType = WorkflowExpression.Compile(indicatorType, nameof(indicatorType), required: true);
+            var __workflow_indicatorValue = WorkflowExpression.Compile(indicatorValue, nameof(indicatorValue), required: true);
             return new DeferredBodyAction<OsIndicatorsItem[]>(() =>
             {
                 var apiCallPath = "/os_indicators";
@@ -211,8 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
         public IBodyWorkflowAction<WhoisCurrent> CurrentWhois(Expression<Func<string>> bodyappliedFiltersdomain = null)
         {
-            var __workflow_bodyappliedFiltersdomain = bodyappliedFiltersdomain == null ? null : WorkflowExpression.Compile(bodyappliedFiltersdomain);
-            WorkflowExpression.Validate(__workflow_bodyappliedFiltersdomain, nameof(bodyappliedFiltersdomain), required: false);
+            var __workflow_bodyappliedFiltersdomain = WorkflowExpression.Compile(bodyappliedFiltersdomain, nameof(bodyappliedFiltersdomain), required: false);
             return new DeferredBodyAction<WhoisCurrent>(() =>
             {
                 var apiCallPath = "/whois/v1";

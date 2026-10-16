@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Document> UploadDocument(Expression<Func<object>> data, Expression<Func<object>> file)
         {
-            var __workflow_data = data == null ? null : WorkflowExpression.Compile(data);
-            WorkflowExpression.Validate(__workflow_data, nameof(data), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredBodyAction<Document>(() =>
             {
                 var apiCallPath = "/api/v1/documents/file";
@@ -29,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Document> GetDocumentDetails(Expression<Func<string>> documentId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<Document>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -43,16 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Observer> AddObserver(Expression<Func<string>> documentId, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodylanguage = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyisAdmin = bodyisAdmin == null ? null : WorkflowExpression.Compile(bodyisAdmin);
-            WorkflowExpression.Validate(__workflow_bodyisAdmin, nameof(bodyisAdmin), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyisAdmin = WorkflowExpression.Compile(bodyisAdmin, nameof(bodyisAdmin), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
             return new DeferredBodyAction<Observer>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -96,10 +88,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction RemoveObserver(Expression<Func<string>> documentId, Expression<Func<string>> observerId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_observerId = observerId == null ? null : WorkflowExpression.Compile(observerId);
-            WorkflowExpression.Validate(__workflow_observerId, nameof(observerId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_observerId = WorkflowExpression.Compile(observerId, nameof(observerId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/observers/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_observerId, 1));
@@ -112,8 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee[]> GetSignees(Expression<Func<string>> documentId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<Signee[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -126,28 +115,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> AddSignee(Expression<Func<string>> documentId, Expression<Func<double>> bodyautographPositionheight = null, Expression<Func<int>> bodyautographPositionpageNumber = null, Expression<Func<double>> bodyautographPositionwidth = null, Expression<Func<double>> bodyautographPositionx = null, Expression<Func<double>> bodyautographPositiony = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysignFieldName = null, Expression<Func<int>> bodysignOrder = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyautographPositionheight = bodyautographPositionheight == null ? null : WorkflowExpression.Compile(bodyautographPositionheight);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionheight, nameof(bodyautographPositionheight), required: false);
-            var __workflow_bodyautographPositionpageNumber = bodyautographPositionpageNumber == null ? null : WorkflowExpression.Compile(bodyautographPositionpageNumber);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionpageNumber, nameof(bodyautographPositionpageNumber), required: false);
-            var __workflow_bodyautographPositionwidth = bodyautographPositionwidth == null ? null : WorkflowExpression.Compile(bodyautographPositionwidth);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionwidth, nameof(bodyautographPositionwidth), required: false);
-            var __workflow_bodyautographPositionx = bodyautographPositionx == null ? null : WorkflowExpression.Compile(bodyautographPositionx);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionx, nameof(bodyautographPositionx), required: false);
-            var __workflow_bodyautographPositiony = bodyautographPositiony == null ? null : WorkflowExpression.Compile(bodyautographPositiony);
-            WorkflowExpression.Validate(__workflow_bodyautographPositiony, nameof(bodyautographPositiony), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodysignFieldName = bodysignFieldName == null ? null : WorkflowExpression.Compile(bodysignFieldName);
-            WorkflowExpression.Validate(__workflow_bodysignFieldName, nameof(bodysignFieldName), required: false);
-            var __workflow_bodysignOrder = bodysignOrder == null ? null : WorkflowExpression.Compile(bodysignOrder);
-            WorkflowExpression.Validate(__workflow_bodysignOrder, nameof(bodysignOrder), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyautographPositionheight = WorkflowExpression.Compile(bodyautographPositionheight, nameof(bodyautographPositionheight), required: false);
+            var __workflow_bodyautographPositionpageNumber = WorkflowExpression.Compile(bodyautographPositionpageNumber, nameof(bodyautographPositionpageNumber), required: false);
+            var __workflow_bodyautographPositionwidth = WorkflowExpression.Compile(bodyautographPositionwidth, nameof(bodyautographPositionwidth), required: false);
+            var __workflow_bodyautographPositionx = WorkflowExpression.Compile(bodyautographPositionx, nameof(bodyautographPositionx), required: false);
+            var __workflow_bodyautographPositiony = WorkflowExpression.Compile(bodyautographPositiony, nameof(bodyautographPositiony), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodysignFieldName = WorkflowExpression.Compile(bodysignFieldName, nameof(bodysignFieldName), required: false);
+            var __workflow_bodysignOrder = WorkflowExpression.Compile(bodysignOrder, nameof(bodysignOrder), required: false);
             return new DeferredBodyAction<Signee>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -235,10 +213,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> GetSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_signeeId = signeeId == null ? null : WorkflowExpression.Compile(signeeId);
-            WorkflowExpression.Validate(__workflow_signeeId, nameof(signeeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
             return new DeferredBodyAction<Signee>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
@@ -251,10 +227,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction RemoveSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_signeeId = signeeId == null ? null : WorkflowExpression.Compile(signeeId);
-            WorkflowExpression.Validate(__workflow_signeeId, nameof(signeeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
@@ -267,28 +241,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IBodyWorkflowAction<Signee> UpdateSignee(Expression<Func<string>> documentId, Expression<Func<string>> signeeId, Expression<Func<double>> bodyautographPositionheight = null, Expression<Func<int>> bodyautographPositionpageNumber = null, Expression<Func<double>> bodyautographPositionwidth = null, Expression<Func<double>> bodyautographPositionx = null, Expression<Func<double>> bodyautographPositiony = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<int>> bodysignOrder = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_signeeId = signeeId == null ? null : WorkflowExpression.Compile(signeeId);
-            WorkflowExpression.Validate(__workflow_signeeId, nameof(signeeId), required: true);
-            var __workflow_bodyautographPositionheight = bodyautographPositionheight == null ? null : WorkflowExpression.Compile(bodyautographPositionheight);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionheight, nameof(bodyautographPositionheight), required: false);
-            var __workflow_bodyautographPositionpageNumber = bodyautographPositionpageNumber == null ? null : WorkflowExpression.Compile(bodyautographPositionpageNumber);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionpageNumber, nameof(bodyautographPositionpageNumber), required: false);
-            var __workflow_bodyautographPositionwidth = bodyautographPositionwidth == null ? null : WorkflowExpression.Compile(bodyautographPositionwidth);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionwidth, nameof(bodyautographPositionwidth), required: false);
-            var __workflow_bodyautographPositionx = bodyautographPositionx == null ? null : WorkflowExpression.Compile(bodyautographPositionx);
-            WorkflowExpression.Validate(__workflow_bodyautographPositionx, nameof(bodyautographPositionx), required: false);
-            var __workflow_bodyautographPositiony = bodyautographPositiony == null ? null : WorkflowExpression.Compile(bodyautographPositiony);
-            WorkflowExpression.Validate(__workflow_bodyautographPositiony, nameof(bodyautographPositiony), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodysignOrder = bodysignOrder == null ? null : WorkflowExpression.Compile(bodysignOrder);
-            WorkflowExpression.Validate(__workflow_bodysignOrder, nameof(bodysignOrder), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
+            var __workflow_bodyautographPositionheight = WorkflowExpression.Compile(bodyautographPositionheight, nameof(bodyautographPositionheight), required: false);
+            var __workflow_bodyautographPositionpageNumber = WorkflowExpression.Compile(bodyautographPositionpageNumber, nameof(bodyautographPositionpageNumber), required: false);
+            var __workflow_bodyautographPositionwidth = WorkflowExpression.Compile(bodyautographPositionwidth, nameof(bodyautographPositionwidth), required: false);
+            var __workflow_bodyautographPositionx = WorkflowExpression.Compile(bodyautographPositionx, nameof(bodyautographPositionx), required: false);
+            var __workflow_bodyautographPositiony = WorkflowExpression.Compile(bodyautographPositiony, nameof(bodyautographPositiony), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodysignOrder = WorkflowExpression.Compile(bodysignOrder, nameof(bodysignOrder), required: false);
             return new DeferredBodyAction<Signee>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
@@ -370,10 +333,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction ResendInvitation(Expression<Func<string>> documentId, Expression<Func<string>> signeeId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_signeeId = signeeId == null ? null : WorkflowExpression.Compile(signeeId);
-            WorkflowExpression.Validate(__workflow_signeeId, nameof(signeeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_signeeId = WorkflowExpression.Compile(signeeId, nameof(signeeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/signees/{1}/resend-invitation", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_signeeId, 1));
@@ -386,8 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepboxsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepboxsign")]
         public IWorkflowAction StartSignatureProcess(Expression<Func<string>> documentId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));

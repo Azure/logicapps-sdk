@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
         public IBodyWorkflowAction<CertificationOutput> CertifyFile(Expression<Func<string>> bodyfileContent = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
         {
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodycertificateLanguage = bodycertificateLanguage == null ? null : WorkflowExpression.Compile(bodycertificateLanguage);
-            WorkflowExpression.Validate(__workflow_bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            var __workflow_bodytimeZoneOffset = bodytimeZoneOffset == null ? null : WorkflowExpression.Compile(bodytimeZoneOffset);
-            WorkflowExpression.Validate(__workflow_bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            var __workflow_bodyreference = bodyreference == null ? null : WorkflowExpression.Compile(bodyreference);
-            WorkflowExpression.Validate(__workflow_bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodysandboxMode = bodysandboxMode == null ? null : WorkflowExpression.Compile(bodysandboxMode);
-            WorkflowExpression.Validate(__workflow_bodysandboxMode, nameof(bodysandboxMode), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodycertificateLanguage = WorkflowExpression.Compile(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            var __workflow_bodytimeZoneOffset = WorkflowExpression.Compile(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
+            var __workflow_bodysandboxMode = WorkflowExpression.Compile(bodysandboxMode, nameof(bodysandboxMode), required: false);
             return new DeferredBodyAction<CertificationOutput>(() =>
             {
                 var apiCallPath = "/certify_file";
@@ -82,16 +77,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
         public IBodyWorkflowAction<CertificationOutput> CertifyHash(Expression<Func<string>> bodyhash = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
         {
-            var __workflow_bodyhash = bodyhash == null ? null : WorkflowExpression.Compile(bodyhash);
-            WorkflowExpression.Validate(__workflow_bodyhash, nameof(bodyhash), required: false);
-            var __workflow_bodycertificateLanguage = bodycertificateLanguage == null ? null : WorkflowExpression.Compile(bodycertificateLanguage);
-            WorkflowExpression.Validate(__workflow_bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
-            var __workflow_bodytimeZoneOffset = bodytimeZoneOffset == null ? null : WorkflowExpression.Compile(bodytimeZoneOffset);
-            WorkflowExpression.Validate(__workflow_bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
-            var __workflow_bodyreference = bodyreference == null ? null : WorkflowExpression.Compile(bodyreference);
-            WorkflowExpression.Validate(__workflow_bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodysandboxMode = bodysandboxMode == null ? null : WorkflowExpression.Compile(bodysandboxMode);
-            WorkflowExpression.Validate(__workflow_bodysandboxMode, nameof(bodysandboxMode), required: false);
+            var __workflow_bodyhash = WorkflowExpression.Compile(bodyhash, nameof(bodyhash), required: false);
+            var __workflow_bodycertificateLanguage = WorkflowExpression.Compile(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            var __workflow_bodytimeZoneOffset = WorkflowExpression.Compile(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
+            var __workflow_bodysandboxMode = WorkflowExpression.Compile(bodysandboxMode, nameof(bodysandboxMode), required: false);
             return new DeferredBodyAction<CertificationOutput>(() =>
             {
                 var apiCallPath = "/certify_hash";

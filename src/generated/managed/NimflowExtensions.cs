@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
         public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction(Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandreference, Expression<Func<string>> commandaction, Expression<Func<string>> commandsubject = null)
         {
-            var __workflow_commandcontextTypeName = commandcontextTypeName == null ? null : WorkflowExpression.Compile(commandcontextTypeName);
-            WorkflowExpression.Validate(__workflow_commandcontextTypeName, nameof(commandcontextTypeName), required: true);
-            var __workflow_commandreference = commandreference == null ? null : WorkflowExpression.Compile(commandreference);
-            WorkflowExpression.Validate(__workflow_commandreference, nameof(commandreference), required: true);
-            var __workflow_commandaction = commandaction == null ? null : WorkflowExpression.Compile(commandaction);
-            WorkflowExpression.Validate(__workflow_commandaction, nameof(commandaction), required: true);
-            var __workflow_commandsubject = commandsubject == null ? null : WorkflowExpression.Compile(commandsubject);
-            WorkflowExpression.Validate(__workflow_commandsubject, nameof(commandsubject), required: false);
+            var __workflow_commandcontextTypeName = WorkflowExpression.Compile(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            var __workflow_commandreference = WorkflowExpression.Compile(commandreference, nameof(commandreference), required: true);
+            var __workflow_commandaction = WorkflowExpression.Compile(commandaction, nameof(commandaction), required: true);
+            var __workflow_commandsubject = WorkflowExpression.Compile(commandsubject, nameof(commandsubject), required: false);
             return new DeferredBodyAction<DispatchContextActionResult>(() =>
             {
                 var apiCallPath = "/Contexts/DispatchAction";
@@ -60,24 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
         public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse(Expression<Func<string>> commandcontextReference, Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandtaskTypeName, Expression<Func<string>> commandresponseTypeName, Expression<Func<string>> commandsentBy = null, Expression<Func<string>> commandstartedOn = null, Expression<Func<string>> commandsentOn = null, Expression<Func<string>> commandsubject = null, Expression<Func<string>> commanditemKey = null)
         {
-            var __workflow_commandcontextReference = commandcontextReference == null ? null : WorkflowExpression.Compile(commandcontextReference);
-            WorkflowExpression.Validate(__workflow_commandcontextReference, nameof(commandcontextReference), required: true);
-            var __workflow_commandcontextTypeName = commandcontextTypeName == null ? null : WorkflowExpression.Compile(commandcontextTypeName);
-            WorkflowExpression.Validate(__workflow_commandcontextTypeName, nameof(commandcontextTypeName), required: true);
-            var __workflow_commandtaskTypeName = commandtaskTypeName == null ? null : WorkflowExpression.Compile(commandtaskTypeName);
-            WorkflowExpression.Validate(__workflow_commandtaskTypeName, nameof(commandtaskTypeName), required: true);
-            var __workflow_commandresponseTypeName = commandresponseTypeName == null ? null : WorkflowExpression.Compile(commandresponseTypeName);
-            WorkflowExpression.Validate(__workflow_commandresponseTypeName, nameof(commandresponseTypeName), required: true);
-            var __workflow_commandsentBy = commandsentBy == null ? null : WorkflowExpression.Compile(commandsentBy);
-            WorkflowExpression.Validate(__workflow_commandsentBy, nameof(commandsentBy), required: false);
-            var __workflow_commandstartedOn = commandstartedOn == null ? null : WorkflowExpression.Compile(commandstartedOn);
-            WorkflowExpression.Validate(__workflow_commandstartedOn, nameof(commandstartedOn), required: false);
-            var __workflow_commandsentOn = commandsentOn == null ? null : WorkflowExpression.Compile(commandsentOn);
-            WorkflowExpression.Validate(__workflow_commandsentOn, nameof(commandsentOn), required: false);
-            var __workflow_commandsubject = commandsubject == null ? null : WorkflowExpression.Compile(commandsubject);
-            WorkflowExpression.Validate(__workflow_commandsubject, nameof(commandsubject), required: false);
-            var __workflow_commanditemKey = commanditemKey == null ? null : WorkflowExpression.Compile(commanditemKey);
-            WorkflowExpression.Validate(__workflow_commanditemKey, nameof(commanditemKey), required: false);
+            var __workflow_commandcontextReference = WorkflowExpression.Compile(commandcontextReference, nameof(commandcontextReference), required: true);
+            var __workflow_commandcontextTypeName = WorkflowExpression.Compile(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            var __workflow_commandtaskTypeName = WorkflowExpression.Compile(commandtaskTypeName, nameof(commandtaskTypeName), required: true);
+            var __workflow_commandresponseTypeName = WorkflowExpression.Compile(commandresponseTypeName, nameof(commandresponseTypeName), required: true);
+            var __workflow_commandsentBy = WorkflowExpression.Compile(commandsentBy, nameof(commandsentBy), required: false);
+            var __workflow_commandstartedOn = WorkflowExpression.Compile(commandstartedOn, nameof(commandstartedOn), required: false);
+            var __workflow_commandsentOn = WorkflowExpression.Compile(commandsentOn, nameof(commandsentOn), required: false);
+            var __workflow_commandsubject = WorkflowExpression.Compile(commandsubject, nameof(commandsubject), required: false);
+            var __workflow_commanditemKey = WorkflowExpression.Compile(commanditemKey, nameof(commanditemKey), required: false);
             return new DeferredBodyAction<AddTaskResponseResult>(() =>
             {
                 var apiCallPath = "/Tasks/AddResponse";
@@ -145,10 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
     {
         public IWorkflowTrigger WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
-            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            var __workflow_requesttaskTypeName = requesttaskTypeName == null ? null : WorkflowExpression.Compile(requesttaskTypeName);
-            WorkflowExpression.Validate(__workflow_requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requesttaskTypeName = WorkflowExpression.Compile(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenTaskCreated";
@@ -181,10 +166,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
-            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            var __workflow_requesttaskTypeName = requesttaskTypeName == null ? null : WorkflowExpression.Compile(requesttaskTypeName);
-            WorkflowExpression.Validate(__workflow_requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requesttaskTypeName = WorkflowExpression.Compile(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenTaskUpdated";
@@ -217,10 +200,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
-            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            var __workflow_requesttaskTypeName = requesttaskTypeName == null ? null : WorkflowExpression.Compile(requesttaskTypeName);
-            WorkflowExpression.Validate(__workflow_requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requesttaskTypeName = WorkflowExpression.Compile(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenTaskArchived";
@@ -253,10 +234,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
-            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            var __workflow_requestmilestoneName = requestmilestoneName == null ? null : WorkflowExpression.Compile(requestmilestoneName);
-            WorkflowExpression.Validate(__workflow_requestmilestoneName, nameof(requestmilestoneName), required: false);
+            var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requestmilestoneName = WorkflowExpression.Compile(requestmilestoneName, nameof(requestmilestoneName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenMilestoneReached";
@@ -289,10 +268,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
 
         public IWorkflowTrigger WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestcontextTypeName = requestcontextTypeName == null ? null : WorkflowExpression.Compile(requestcontextTypeName);
-            WorkflowExpression.Validate(__workflow_requestcontextTypeName, nameof(requestcontextTypeName), required: false);
-            var __workflow_requestmilestoneName = requestmilestoneName == null ? null : WorkflowExpression.Compile(requestmilestoneName);
-            WorkflowExpression.Validate(__workflow_requestmilestoneName, nameof(requestmilestoneName), required: false);
+            var __workflow_requestcontextTypeName = WorkflowExpression.Compile(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            var __workflow_requestmilestoneName = WorkflowExpression.Compile(requestmilestoneName, nameof(requestmilestoneName), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/WhenMilestoneCleared";

@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiApplicantCreateResponse> ApiApplicantCreate(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodynameFirst = null, Expression<Func<string>> bodynameLast = null, Expression<Func<string>> bodyflowName = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
-            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodynameFirst = bodynameFirst == null ? null : WorkflowExpression.Compile(bodynameFirst);
-            WorkflowExpression.Validate(__workflow_bodynameFirst, nameof(bodynameFirst), required: false);
-            var __workflow_bodynameLast = bodynameLast == null ? null : WorkflowExpression.Compile(bodynameLast);
-            WorkflowExpression.Validate(__workflow_bodynameLast, nameof(bodynameLast), required: false);
-            var __workflow_bodyflowName = bodyflowName == null ? null : WorkflowExpression.Compile(bodyflowName);
-            WorkflowExpression.Validate(__workflow_bodyflowName, nameof(bodyflowName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodynameFirst = WorkflowExpression.Compile(bodynameFirst, nameof(bodynameFirst), required: false);
+            var __workflow_bodynameLast = WorkflowExpression.Compile(bodynameLast, nameof(bodynameLast), required: false);
+            var __workflow_bodyflowName = WorkflowExpression.Compile(bodyflowName, nameof(bodyflowName), required: false);
             return new DeferredBodyAction<ApiApplicantCreateResponse>(() =>
             {
                 var apiCallPath = "/api-applicant-create";
@@ -72,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiVerificationlinkCreateResponse> ApiVerificationlinkCreate(Expression<Func<string>> bodyapplicant = null)
         {
-            var __workflow_bodyapplicant = bodyapplicant == null ? null : WorkflowExpression.Compile(bodyapplicant);
-            WorkflowExpression.Validate(__workflow_bodyapplicant, nameof(bodyapplicant), required: false);
+            var __workflow_bodyapplicant = WorkflowExpression.Compile(bodyapplicant, nameof(bodyapplicant), required: false);
             return new DeferredBodyAction<ApiVerificationlinkCreateResponse>(() =>
             {
                 var apiCallPath = "/api-verificationlink-create";
@@ -99,18 +93,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IWorkflowAction ApiDocumentUpload(Expression<Func<string>> bodyapplicantId = null, Expression<Func<string>> bodydocType = null, Expression<Func<string>> bodydocSubType = null, Expression<Func<string>> bodydocCountryISO = null, Expression<Func<string>> bodydocFilefilename = null, Expression<Func<string>> bodydocFilecontents = null)
         {
-            var __workflow_bodyapplicantId = bodyapplicantId == null ? null : WorkflowExpression.Compile(bodyapplicantId);
-            WorkflowExpression.Validate(__workflow_bodyapplicantId, nameof(bodyapplicantId), required: false);
-            var __workflow_bodydocType = bodydocType == null ? null : WorkflowExpression.Compile(bodydocType);
-            WorkflowExpression.Validate(__workflow_bodydocType, nameof(bodydocType), required: false);
-            var __workflow_bodydocSubType = bodydocSubType == null ? null : WorkflowExpression.Compile(bodydocSubType);
-            WorkflowExpression.Validate(__workflow_bodydocSubType, nameof(bodydocSubType), required: false);
-            var __workflow_bodydocCountryISO = bodydocCountryISO == null ? null : WorkflowExpression.Compile(bodydocCountryISO);
-            WorkflowExpression.Validate(__workflow_bodydocCountryISO, nameof(bodydocCountryISO), required: false);
-            var __workflow_bodydocFilefilename = bodydocFilefilename == null ? null : WorkflowExpression.Compile(bodydocFilefilename);
-            WorkflowExpression.Validate(__workflow_bodydocFilefilename, nameof(bodydocFilefilename), required: false);
-            var __workflow_bodydocFilecontents = bodydocFilecontents == null ? null : WorkflowExpression.Compile(bodydocFilecontents);
-            WorkflowExpression.Validate(__workflow_bodydocFilecontents, nameof(bodydocFilecontents), required: false);
+            var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
+            var __workflow_bodydocType = WorkflowExpression.Compile(bodydocType, nameof(bodydocType), required: false);
+            var __workflow_bodydocSubType = WorkflowExpression.Compile(bodydocSubType, nameof(bodydocSubType), required: false);
+            var __workflow_bodydocCountryISO = WorkflowExpression.Compile(bodydocCountryISO, nameof(bodydocCountryISO), required: false);
+            var __workflow_bodydocFilefilename = WorkflowExpression.Compile(bodydocFilefilename, nameof(bodydocFilefilename), required: false);
+            var __workflow_bodydocFilecontents = WorkflowExpression.Compile(bodydocFilecontents, nameof(bodydocFilecontents), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-document-upload";
@@ -174,8 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiApplicantStatusResponse> ApiApplicantStatus(Expression<Func<string>> bodyapplicantId = null)
         {
-            var __workflow_bodyapplicantId = bodyapplicantId == null ? null : WorkflowExpression.Compile(bodyapplicantId);
-            WorkflowExpression.Validate(__workflow_bodyapplicantId, nameof(bodyapplicantId), required: false);
+            var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
             return new DeferredBodyAction<ApiApplicantStatusResponse>(() =>
             {
                 var apiCallPath = "/api-applicant-status";
@@ -201,8 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IBodyWorkflowAction<ApiApplicantDetailsResponse> ApiApplicantDetails(Expression<Func<string>> bodyapplicantId = null)
         {
-            var __workflow_bodyapplicantId = bodyapplicantId == null ? null : WorkflowExpression.Compile(bodyapplicantId);
-            WorkflowExpression.Validate(__workflow_bodyapplicantId, nameof(bodyapplicantId), required: false);
+            var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
             return new DeferredBodyAction<ApiApplicantDetailsResponse>(() =>
             {
                 var apiCallPath = "/api-applicant-details";
@@ -228,8 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Personr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "personr")]
         public IWorkflowAction ApiRequestApplicantCheck(Expression<Func<string>> bodyapplicantId = null)
         {
-            var __workflow_bodyapplicantId = bodyapplicantId == null ? null : WorkflowExpression.Compile(bodyapplicantId);
-            WorkflowExpression.Validate(__workflow_bodyapplicantId, nameof(bodyapplicantId), required: false);
+            var __workflow_bodyapplicantId = WorkflowExpression.Compile(bodyapplicantId, nameof(bodyapplicantId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api-request-applicant-check";

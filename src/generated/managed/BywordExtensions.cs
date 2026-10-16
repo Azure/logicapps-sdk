@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticlePostResponse> Article(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
         {
-            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
-            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: true);
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodysubheadings = bodysubheadings == null ? null : WorkflowExpression.Compile(bodysubheadings);
-            WorkflowExpression.Validate(__workflow_bodysubheadings, nameof(bodysubheadings), required: false);
-            var __workflow_bodyundetectable = bodyundetectable == null ? null : WorkflowExpression.Compile(bodyundetectable);
-            WorkflowExpression.Validate(__workflow_bodyundetectable, nameof(bodyundetectable), required: false);
-            var __workflow_bodytone = bodytone == null ? null : WorkflowExpression.Compile(bodytone);
-            WorkflowExpression.Validate(__workflow_bodytone, nameof(bodytone), required: false);
-            var __workflow_bodylength = bodylength == null ? null : WorkflowExpression.Compile(bodylength);
-            WorkflowExpression.Validate(__workflow_bodylength, nameof(bodylength), required: false);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodysubheadings = WorkflowExpression.Compile(bodysubheadings, nameof(bodysubheadings), required: false);
+            var __workflow_bodyundetectable = WorkflowExpression.Compile(bodyundetectable, nameof(bodyundetectable), required: false);
+            var __workflow_bodytone = WorkflowExpression.Compile(bodytone, nameof(bodytone), required: false);
+            var __workflow_bodylength = WorkflowExpression.Compile(bodylength, nameof(bodylength), required: false);
             return new DeferredBodyAction<ArticlePostResponse>(() =>
             {
                 var apiCallPath = "/create_article";
@@ -80,8 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet(Expression<Func<string>> bodyarticleID = null)
         {
-            var __workflow_bodyarticleID = bodyarticleID == null ? null : WorkflowExpression.Compile(bodyarticleID);
-            WorkflowExpression.Validate(__workflow_bodyarticleID, nameof(bodyarticleID), required: false);
+            var __workflow_bodyarticleID = WorkflowExpression.Compile(bodyarticleID, nameof(bodyarticleID), required: false);
             return new DeferredBodyAction<ArticleGetPostResponse>(() =>
             {
                 var apiCallPath = "/get_article";
@@ -107,8 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
         public IBodyWorkflowAction<ArticlesPostResponseItem[]> Articles(Expression<Func<int>> bodycursor = null)
         {
-            var __workflow_bodycursor = bodycursor == null ? null : WorkflowExpression.Compile(bodycursor);
-            WorkflowExpression.Validate(__workflow_bodycursor, nameof(bodycursor), required: false);
+            var __workflow_bodycursor = WorkflowExpression.Compile(bodycursor, nameof(bodycursor), required: false);
             return new DeferredBodyAction<ArticlesPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/list_articles";

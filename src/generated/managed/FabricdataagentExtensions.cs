@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fabricdataagent
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fabricdataagent")]
         public IBodyWorkflowAction<QueryResponse> InvokeMCP(Expression<Func<string>> workspaceId, Expression<Func<string>> artifactId, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_artifactId = artifactId == null ? null : WorkflowExpression.Compile(artifactId);
-            WorkflowExpression.Validate(__workflow_artifactId, nameof(artifactId), required: true);
-            var __workflow_queryRequestjsonrpc = queryRequestjsonrpc == null ? null : WorkflowExpression.Compile(queryRequestjsonrpc);
-            WorkflowExpression.Validate(__workflow_queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = queryRequestid == null ? null : WorkflowExpression.Compile(queryRequestid);
-            WorkflowExpression.Validate(__workflow_queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = queryRequestmethod == null ? null : WorkflowExpression.Compile(queryRequestmethod);
-            WorkflowExpression.Validate(__workflow_queryRequestmethod, nameof(queryRequestmethod), required: false);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_artifactId = WorkflowExpression.Compile(artifactId, nameof(artifactId), required: true);
+            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
+            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<QueryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/dataagents/{1}/__private/modelcontextprotocol/invoke", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_artifactId, 1));

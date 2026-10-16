@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DetectResponse> DetectObjects(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<DetectResponse>(() =>
             {
                 var apiCallPath = "/vision/v2.0/detect";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<AreaOfInterestResponse>(() =>
             {
                 var apiCallPath = "/vision/v2.0/areaOfInterest";
@@ -49,14 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<AnalyzeResponse> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<AnalyzeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/analyze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
@@ -74,16 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_maxCandidates = maxCandidates == null ? null : WorkflowExpression.Compile(maxCandidates);
-            WorkflowExpression.Validate(__workflow_maxCandidates, nameof(maxCandidates), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<DescribeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
@@ -102,14 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImageContent(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_maxCandidates = maxCandidates == null ? null : WorkflowExpression.Compile(maxCandidates);
-            WorkflowExpression.Validate(__workflow_maxCandidates, nameof(maxCandidates), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<DescribeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
@@ -127,14 +110,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DescribeResponse> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> imageURLimageURL = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_maxCandidates = maxCandidates == null ? null : WorkflowExpression.Compile(maxCandidates);
-            WorkflowExpression.Validate(__workflow_maxCandidates, nameof(maxCandidates), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_imageURLimageURL = imageURLimageURL == null ? null : WorkflowExpression.Compile(imageURLimageURL);
-            WorkflowExpression.Validate(__workflow_imageURLimageURL, nameof(imageURLimageURL), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_maxCandidates = WorkflowExpression.Compile(maxCandidates, nameof(maxCandidates), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_imageURLimageURL = WorkflowExpression.Compile(imageURLimageURL, nameof(imageURLimageURL), required: false);
             return new DeferredBodyAction<DescribeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageURL", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
@@ -164,18 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<string> GetThumbnail(Expression<Func<string>> subdomainName, Expression<Func<double>> width, Expression<Func<double>> height, Expression<Func<formatInput>> format, Expression<Func<bool>> smartCropping = null, Expression<Func<object>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
-            WorkflowExpression.Validate(__workflow_width, nameof(width), required: true);
-            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
-            WorkflowExpression.Validate(__workflow_height, nameof(height), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_smartCropping = smartCropping == null ? null : WorkflowExpression.Compile(smartCropping);
-            WorkflowExpression.Validate(__workflow_smartCropping, nameof(smartCropping), required: false);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: true);
+            var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_smartCropping = WorkflowExpression.Compile(smartCropping, nameof(smartCropping), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
@@ -195,12 +168,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<OCRJsonResponse> OCR(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<OCRJsonResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
@@ -217,12 +187,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<OCRTextResponse> OCRText(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<OCRTextResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));
@@ -239,14 +206,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<DomainModelResponse> RecognizeDomainSpecificContent(Expression<Func<string>> subdomainName, Expression<Func<modelInput>> model, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<DomainModelResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
@@ -261,12 +224,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervisi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
         public IBodyWorkflowAction<TagResponse> TagImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
         {
-            var __workflow_subdomainName = subdomainName == null ? null : WorkflowExpression.Compile(subdomainName);
-            WorkflowExpression.Validate(__workflow_subdomainName, nameof(subdomainName), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
+            var __workflow_subdomainName = WorkflowExpression.Compile(subdomainName, nameof(subdomainName), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
             return new DeferredBodyAction<TagResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/tag", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subdomainName, 2));

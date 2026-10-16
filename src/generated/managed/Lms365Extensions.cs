@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction ApproveEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Approve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -31,14 +29,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<EnrollUserToCourseResponse> EnrollUserToCourse(Expression<Func<string>> courseId, Expression<Func<string>> bodyuserLoginName, Expression<Func<string>> bodycourseSessionId = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_courseId = courseId == null ? null : WorkflowExpression.Compile(courseId);
-            WorkflowExpression.Validate(__workflow_courseId, nameof(courseId), required: true);
-            var __workflow_bodyuserLoginName = bodyuserLoginName == null ? null : WorkflowExpression.Compile(bodyuserLoginName);
-            WorkflowExpression.Validate(__workflow_bodyuserLoginName, nameof(bodyuserLoginName), required: true);
-            var __workflow_bodycourseSessionId = bodycourseSessionId == null ? null : WorkflowExpression.Compile(bodycourseSessionId);
-            WorkflowExpression.Validate(__workflow_bodycourseSessionId, nameof(bodycourseSessionId), required: false);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
+            var __workflow_bodyuserLoginName = WorkflowExpression.Compile(bodyuserLoginName, nameof(bodyuserLoginName), required: true);
+            var __workflow_bodycourseSessionId = WorkflowExpression.Compile(bodycourseSessionId, nameof(bodycourseSessionId), required: false);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredBodyAction<EnrollUserToCourseResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/Enroll", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
@@ -68,12 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction RejectEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> bodymessage = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Reject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -101,8 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseCategoriesResponse> GetCourseCategories(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetCourseCategoriesResponse>(() =>
             {
                 var apiCallPath = "/odata/v2/CourseCategories";
@@ -117,12 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<CreateCourseCategoryResponse> CreateCourseCategory(Expression<Func<string>> bodycategoryName, Expression<Func<string>> bodycourseCatalogId, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_bodycategoryName = bodycategoryName == null ? null : WorkflowExpression.Compile(bodycategoryName);
-            WorkflowExpression.Validate(__workflow_bodycategoryName, nameof(bodycategoryName), required: true);
-            var __workflow_bodycourseCatalogId = bodycourseCatalogId == null ? null : WorkflowExpression.Compile(bodycourseCatalogId);
-            WorkflowExpression.Validate(__workflow_bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_bodycategoryName = WorkflowExpression.Compile(bodycategoryName, nameof(bodycategoryName), required: true);
+            var __workflow_bodycourseCatalogId = WorkflowExpression.Compile(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredBodyAction<CreateCourseCategoryResponse>(() =>
             {
                 var apiCallPath = "/odata/v2/CourseCategories";
@@ -148,78 +135,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<CreateCourseResponse> CreateCourse(Expression<Func<string>> bodycourseCatalogId, Expression<Func<bodycoursetypeInput>> bodycoursetype, Expression<Func<string>> bodytrainingTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodyculture, Expression<Func<string>> bodyuICulture, Expression<Func<string>> bodyurl, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null, Expression<Func<bodytagsInputItem[]>> bodytags = null, Expression<Func<bodyenrollmentFlowInput>> bodyenrollmentFlow = null, Expression<Func<string>> bodysiteTemplate = null, Expression<Func<string[]>> bodylearningModules = null, Expression<Func<string[]>> bodyquizzes = null, Expression<Func<bool>> bodyautoResolveUrlConflict = null, Expression<Func<string>> bodycourseLayoutId = null, Expression<Func<bodycourseSessionEnrollmentTypeInput>> bodycourseSessionEnrollmentType = null, Expression<Func<string[]>> bodyteacherLogins = null, Expression<Func<string[]>> bodytrainerLogins = null, Expression<Func<string>> bodycertificateTemplateId = null, Expression<Func<string>> bodycourseID = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodylongDescription = null, Expression<Func<bool>> bodypublishingSettingsisEnabled = null, Expression<Func<string>> bodypublishingSettingsstartDate = null, Expression<Func<string>> bodypublishingSettingsendDate = null, Expression<Func<bool>> bodyexpirySettingsisEnabled = null, Expression<Func<string>> bodyexpirySettingsfixedDate = null, Expression<Func<string>> bodyexpirySettingsdaysAfterCompletion = null, Expression<Func<bool>> bodydueDateSettingsisEnabled = null, Expression<Func<string>> bodydueDateSettingsfixedDate = null, Expression<Func<string>> bodydueDateSettingsdaysAfterEnrollment = null, Expression<Func<bool>> bodyshowInCatalog = null, Expression<Func<double>> bodycontinuingEducationUnits = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> bodyfailedCourseId = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_bodycourseCatalogId = bodycourseCatalogId == null ? null : WorkflowExpression.Compile(bodycourseCatalogId);
-            WorkflowExpression.Validate(__workflow_bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
-            var __workflow_bodycoursetype = bodycoursetype == null ? null : WorkflowExpression.Compile(bodycoursetype);
-            WorkflowExpression.Validate(__workflow_bodycoursetype, nameof(bodycoursetype), required: true);
-            var __workflow_bodytrainingTitle = bodytrainingTitle == null ? null : WorkflowExpression.Compile(bodytrainingTitle);
-            WorkflowExpression.Validate(__workflow_bodytrainingTitle, nameof(bodytrainingTitle), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: true);
-            var __workflow_bodyuICulture = bodyuICulture == null ? null : WorkflowExpression.Compile(bodyuICulture);
-            WorkflowExpression.Validate(__workflow_bodyuICulture, nameof(bodyuICulture), required: true);
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
-            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodyenrollmentFlow = bodyenrollmentFlow == null ? null : WorkflowExpression.Compile(bodyenrollmentFlow);
-            WorkflowExpression.Validate(__workflow_bodyenrollmentFlow, nameof(bodyenrollmentFlow), required: false);
-            var __workflow_bodysiteTemplate = bodysiteTemplate == null ? null : WorkflowExpression.Compile(bodysiteTemplate);
-            WorkflowExpression.Validate(__workflow_bodysiteTemplate, nameof(bodysiteTemplate), required: false);
-            var __workflow_bodylearningModules = bodylearningModules == null ? null : WorkflowExpression.Compile(bodylearningModules);
-            WorkflowExpression.Validate(__workflow_bodylearningModules, nameof(bodylearningModules), required: false);
-            var __workflow_bodyquizzes = bodyquizzes == null ? null : WorkflowExpression.Compile(bodyquizzes);
-            WorkflowExpression.Validate(__workflow_bodyquizzes, nameof(bodyquizzes), required: false);
-            var __workflow_bodyautoResolveUrlConflict = bodyautoResolveUrlConflict == null ? null : WorkflowExpression.Compile(bodyautoResolveUrlConflict);
-            WorkflowExpression.Validate(__workflow_bodyautoResolveUrlConflict, nameof(bodyautoResolveUrlConflict), required: false);
-            var __workflow_bodycourseLayoutId = bodycourseLayoutId == null ? null : WorkflowExpression.Compile(bodycourseLayoutId);
-            WorkflowExpression.Validate(__workflow_bodycourseLayoutId, nameof(bodycourseLayoutId), required: false);
-            var __workflow_bodycourseSessionEnrollmentType = bodycourseSessionEnrollmentType == null ? null : WorkflowExpression.Compile(bodycourseSessionEnrollmentType);
-            WorkflowExpression.Validate(__workflow_bodycourseSessionEnrollmentType, nameof(bodycourseSessionEnrollmentType), required: false);
-            var __workflow_bodyteacherLogins = bodyteacherLogins == null ? null : WorkflowExpression.Compile(bodyteacherLogins);
-            WorkflowExpression.Validate(__workflow_bodyteacherLogins, nameof(bodyteacherLogins), required: false);
-            var __workflow_bodytrainerLogins = bodytrainerLogins == null ? null : WorkflowExpression.Compile(bodytrainerLogins);
-            WorkflowExpression.Validate(__workflow_bodytrainerLogins, nameof(bodytrainerLogins), required: false);
-            var __workflow_bodycertificateTemplateId = bodycertificateTemplateId == null ? null : WorkflowExpression.Compile(bodycertificateTemplateId);
-            WorkflowExpression.Validate(__workflow_bodycertificateTemplateId, nameof(bodycertificateTemplateId), required: false);
-            var __workflow_bodycourseID = bodycourseID == null ? null : WorkflowExpression.Compile(bodycourseID);
-            WorkflowExpression.Validate(__workflow_bodycourseID, nameof(bodycourseID), required: false);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodylongDescription = bodylongDescription == null ? null : WorkflowExpression.Compile(bodylongDescription);
-            WorkflowExpression.Validate(__workflow_bodylongDescription, nameof(bodylongDescription), required: false);
-            var __workflow_bodypublishingSettingsisEnabled = bodypublishingSettingsisEnabled == null ? null : WorkflowExpression.Compile(bodypublishingSettingsisEnabled);
-            WorkflowExpression.Validate(__workflow_bodypublishingSettingsisEnabled, nameof(bodypublishingSettingsisEnabled), required: false);
-            var __workflow_bodypublishingSettingsstartDate = bodypublishingSettingsstartDate == null ? null : WorkflowExpression.Compile(bodypublishingSettingsstartDate);
-            WorkflowExpression.Validate(__workflow_bodypublishingSettingsstartDate, nameof(bodypublishingSettingsstartDate), required: false);
-            var __workflow_bodypublishingSettingsendDate = bodypublishingSettingsendDate == null ? null : WorkflowExpression.Compile(bodypublishingSettingsendDate);
-            WorkflowExpression.Validate(__workflow_bodypublishingSettingsendDate, nameof(bodypublishingSettingsendDate), required: false);
-            var __workflow_bodyexpirySettingsisEnabled = bodyexpirySettingsisEnabled == null ? null : WorkflowExpression.Compile(bodyexpirySettingsisEnabled);
-            WorkflowExpression.Validate(__workflow_bodyexpirySettingsisEnabled, nameof(bodyexpirySettingsisEnabled), required: false);
-            var __workflow_bodyexpirySettingsfixedDate = bodyexpirySettingsfixedDate == null ? null : WorkflowExpression.Compile(bodyexpirySettingsfixedDate);
-            WorkflowExpression.Validate(__workflow_bodyexpirySettingsfixedDate, nameof(bodyexpirySettingsfixedDate), required: false);
-            var __workflow_bodyexpirySettingsdaysAfterCompletion = bodyexpirySettingsdaysAfterCompletion == null ? null : WorkflowExpression.Compile(bodyexpirySettingsdaysAfterCompletion);
-            WorkflowExpression.Validate(__workflow_bodyexpirySettingsdaysAfterCompletion, nameof(bodyexpirySettingsdaysAfterCompletion), required: false);
-            var __workflow_bodydueDateSettingsisEnabled = bodydueDateSettingsisEnabled == null ? null : WorkflowExpression.Compile(bodydueDateSettingsisEnabled);
-            WorkflowExpression.Validate(__workflow_bodydueDateSettingsisEnabled, nameof(bodydueDateSettingsisEnabled), required: false);
-            var __workflow_bodydueDateSettingsfixedDate = bodydueDateSettingsfixedDate == null ? null : WorkflowExpression.Compile(bodydueDateSettingsfixedDate);
-            WorkflowExpression.Validate(__workflow_bodydueDateSettingsfixedDate, nameof(bodydueDateSettingsfixedDate), required: false);
-            var __workflow_bodydueDateSettingsdaysAfterEnrollment = bodydueDateSettingsdaysAfterEnrollment == null ? null : WorkflowExpression.Compile(bodydueDateSettingsdaysAfterEnrollment);
-            WorkflowExpression.Validate(__workflow_bodydueDateSettingsdaysAfterEnrollment, nameof(bodydueDateSettingsdaysAfterEnrollment), required: false);
-            var __workflow_bodyshowInCatalog = bodyshowInCatalog == null ? null : WorkflowExpression.Compile(bodyshowInCatalog);
-            WorkflowExpression.Validate(__workflow_bodyshowInCatalog, nameof(bodyshowInCatalog), required: false);
-            var __workflow_bodycontinuingEducationUnits = bodycontinuingEducationUnits == null ? null : WorkflowExpression.Compile(bodycontinuingEducationUnits);
-            WorkflowExpression.Validate(__workflow_bodycontinuingEducationUnits, nameof(bodycontinuingEducationUnits), required: false);
-            var __workflow_bodyimageUrl = bodyimageUrl == null ? null : WorkflowExpression.Compile(bodyimageUrl);
-            WorkflowExpression.Validate(__workflow_bodyimageUrl, nameof(bodyimageUrl), required: false);
-            var __workflow_bodyfailedCourseId = bodyfailedCourseId == null ? null : WorkflowExpression.Compile(bodyfailedCourseId);
-            WorkflowExpression.Validate(__workflow_bodyfailedCourseId, nameof(bodyfailedCourseId), required: false);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_bodycourseCatalogId = WorkflowExpression.Compile(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
+            var __workflow_bodycoursetype = WorkflowExpression.Compile(bodycoursetype, nameof(bodycoursetype), required: true);
+            var __workflow_bodytrainingTitle = WorkflowExpression.Compile(bodytrainingTitle, nameof(bodytrainingTitle), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: true);
+            var __workflow_bodyuICulture = WorkflowExpression.Compile(bodyuICulture, nameof(bodyuICulture), required: true);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodyenrollmentFlow = WorkflowExpression.Compile(bodyenrollmentFlow, nameof(bodyenrollmentFlow), required: false);
+            var __workflow_bodysiteTemplate = WorkflowExpression.Compile(bodysiteTemplate, nameof(bodysiteTemplate), required: false);
+            var __workflow_bodylearningModules = WorkflowExpression.Compile(bodylearningModules, nameof(bodylearningModules), required: false);
+            var __workflow_bodyquizzes = WorkflowExpression.Compile(bodyquizzes, nameof(bodyquizzes), required: false);
+            var __workflow_bodyautoResolveUrlConflict = WorkflowExpression.Compile(bodyautoResolveUrlConflict, nameof(bodyautoResolveUrlConflict), required: false);
+            var __workflow_bodycourseLayoutId = WorkflowExpression.Compile(bodycourseLayoutId, nameof(bodycourseLayoutId), required: false);
+            var __workflow_bodycourseSessionEnrollmentType = WorkflowExpression.Compile(bodycourseSessionEnrollmentType, nameof(bodycourseSessionEnrollmentType), required: false);
+            var __workflow_bodyteacherLogins = WorkflowExpression.Compile(bodyteacherLogins, nameof(bodyteacherLogins), required: false);
+            var __workflow_bodytrainerLogins = WorkflowExpression.Compile(bodytrainerLogins, nameof(bodytrainerLogins), required: false);
+            var __workflow_bodycertificateTemplateId = WorkflowExpression.Compile(bodycertificateTemplateId, nameof(bodycertificateTemplateId), required: false);
+            var __workflow_bodycourseID = WorkflowExpression.Compile(bodycourseID, nameof(bodycourseID), required: false);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodylongDescription = WorkflowExpression.Compile(bodylongDescription, nameof(bodylongDescription), required: false);
+            var __workflow_bodypublishingSettingsisEnabled = WorkflowExpression.Compile(bodypublishingSettingsisEnabled, nameof(bodypublishingSettingsisEnabled), required: false);
+            var __workflow_bodypublishingSettingsstartDate = WorkflowExpression.Compile(bodypublishingSettingsstartDate, nameof(bodypublishingSettingsstartDate), required: false);
+            var __workflow_bodypublishingSettingsendDate = WorkflowExpression.Compile(bodypublishingSettingsendDate, nameof(bodypublishingSettingsendDate), required: false);
+            var __workflow_bodyexpirySettingsisEnabled = WorkflowExpression.Compile(bodyexpirySettingsisEnabled, nameof(bodyexpirySettingsisEnabled), required: false);
+            var __workflow_bodyexpirySettingsfixedDate = WorkflowExpression.Compile(bodyexpirySettingsfixedDate, nameof(bodyexpirySettingsfixedDate), required: false);
+            var __workflow_bodyexpirySettingsdaysAfterCompletion = WorkflowExpression.Compile(bodyexpirySettingsdaysAfterCompletion, nameof(bodyexpirySettingsdaysAfterCompletion), required: false);
+            var __workflow_bodydueDateSettingsisEnabled = WorkflowExpression.Compile(bodydueDateSettingsisEnabled, nameof(bodydueDateSettingsisEnabled), required: false);
+            var __workflow_bodydueDateSettingsfixedDate = WorkflowExpression.Compile(bodydueDateSettingsfixedDate, nameof(bodydueDateSettingsfixedDate), required: false);
+            var __workflow_bodydueDateSettingsdaysAfterEnrollment = WorkflowExpression.Compile(bodydueDateSettingsdaysAfterEnrollment, nameof(bodydueDateSettingsdaysAfterEnrollment), required: false);
+            var __workflow_bodyshowInCatalog = WorkflowExpression.Compile(bodyshowInCatalog, nameof(bodyshowInCatalog), required: false);
+            var __workflow_bodycontinuingEducationUnits = WorkflowExpression.Compile(bodycontinuingEducationUnits, nameof(bodycontinuingEducationUnits), required: false);
+            var __workflow_bodyimageUrl = WorkflowExpression.Compile(bodyimageUrl, nameof(bodyimageUrl), required: false);
+            var __workflow_bodyfailedCourseId = WorkflowExpression.Compile(bodyfailedCourseId, nameof(bodyfailedCourseId), required: false);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredBodyAction<CreateCourseResponse>(() =>
             {
                 var apiCallPath = "/odata/v2/Courses";
@@ -457,10 +408,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseInfoResponse> GetCourseInfo(Expression<Func<string>> courseId, Expression<Func<string>> expand = null)
         {
-            var __workflow_courseId = courseId == null ? null : WorkflowExpression.Compile(courseId);
-            WorkflowExpression.Validate(__workflow_courseId, nameof(courseId), required: true);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<GetCourseInfoResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
@@ -476,10 +425,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CompleteEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -494,12 +441,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction RetakeEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> bodycourseSessionId = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodycourseSessionId = bodycourseSessionId == null ? null : WorkflowExpression.Compile(bodycourseSessionId);
-            WorkflowExpression.Validate(__workflow_bodycourseSessionId, nameof(bodycourseSessionId), required: false);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodycourseSessionId = WorkflowExpression.Compile(bodycourseSessionId, nameof(bodycourseSessionId), required: false);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Retake", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -527,8 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseTagsResponse> GetCourseTags(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetCourseTagsResponse>(() =>
             {
                 var apiCallPath = "/odata/v2/CourseTags";
@@ -543,12 +486,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<CreateCourseTagResponse> CreateCourseTag(Expression<Func<string>> bodyname, Expression<Func<string>> bodycourseCatalogId, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodycourseCatalogId = bodycourseCatalogId == null ? null : WorkflowExpression.Compile(bodycourseCatalogId);
-            WorkflowExpression.Validate(__workflow_bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodycourseCatalogId = WorkflowExpression.Compile(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredBodyAction<CreateCourseTagResponse>(() =>
             {
                 var apiCallPath = "/odata/v2/CourseTags";
@@ -574,12 +514,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCourseProvisioningStatusResponse> GetCourseProvisioningStatus(Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
         {
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetCourseProvisioningStatusResponse>(() =>
             {
                 var apiCallPath = "/odata/v2/Courses/IncludeNotCreated";
@@ -600,10 +537,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetCoursesFromCatalogResponse> GetCoursesFromCatalog(Expression<Func<string>> courseCatalogId, Expression<Func<string>> expand = null)
         {
-            var __workflow_courseCatalogId = courseCatalogId == null ? null : WorkflowExpression.Compile(courseCatalogId);
-            WorkflowExpression.Validate(__workflow_courseCatalogId, nameof(courseCatalogId), required: true);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_courseCatalogId = WorkflowExpression.Compile(courseCatalogId, nameof(courseCatalogId), required: true);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<GetCoursesFromCatalogResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/CourseCatalogs({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseCatalogId, 1));
@@ -619,8 +554,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetEnrollmentByIdResponse> GetEnrollmentById(Expression<Func<string>> enrollmentId)
         {
-            var __workflow_enrollmentId = enrollmentId == null ? null : WorkflowExpression.Compile(enrollmentId);
-            WorkflowExpression.Validate(__workflow_enrollmentId, nameof(enrollmentId), required: true);
+            var __workflow_enrollmentId = WorkflowExpression.Compile(enrollmentId, nameof(enrollmentId), required: true);
             return new DeferredBodyAction<GetEnrollmentByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_enrollmentId, 1));
@@ -633,12 +567,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CancelEnrollment(Expression<Func<string>> enrollmentId, Expression<Func<string>> bodycancellationMessage = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_enrollmentId = enrollmentId == null ? null : WorkflowExpression.Compile(enrollmentId);
-            WorkflowExpression.Validate(__workflow_enrollmentId, nameof(enrollmentId), required: true);
-            var __workflow_bodycancellationMessage = bodycancellationMessage == null ? null : WorkflowExpression.Compile(bodycancellationMessage);
-            WorkflowExpression.Validate(__workflow_bodycancellationMessage, nameof(bodycancellationMessage), required: false);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_enrollmentId = WorkflowExpression.Compile(enrollmentId, nameof(enrollmentId), required: true);
+            var __workflow_bodycancellationMessage = WorkflowExpression.Compile(bodycancellationMessage, nameof(bodycancellationMessage), required: false);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_enrollmentId, 1));
@@ -666,8 +597,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> filter = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetUsersResponse>(() =>
             {
                 var apiCallPath = "/odata/v2/Users";
@@ -683,32 +613,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodytimeZoneInput>> bodytimeZone, Expression<Func<string>> bodyenrollmentDeadline = null, Expression<Func<string>> bodyroomemailAddress = null, Expression<Func<string>> bodyroomtitle = null, Expression<Func<string>> bodyroomlocation = null, Expression<Func<bodyroomsourceInput>> bodyroomsource = null, Expression<Func<string>> bodymeetingUrl = null, Expression<Func<string>> bodymaxAttendees = null, Expression<Func<string>> lMS365UserId = null)
         {
-            var __workflow_courseId = courseId == null ? null : WorkflowExpression.Compile(courseId);
-            WorkflowExpression.Validate(__workflow_courseId, nameof(courseId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: true);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: true);
-            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
-            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: true);
-            var __workflow_bodyenrollmentDeadline = bodyenrollmentDeadline == null ? null : WorkflowExpression.Compile(bodyenrollmentDeadline);
-            WorkflowExpression.Validate(__workflow_bodyenrollmentDeadline, nameof(bodyenrollmentDeadline), required: false);
-            var __workflow_bodyroomemailAddress = bodyroomemailAddress == null ? null : WorkflowExpression.Compile(bodyroomemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyroomemailAddress, nameof(bodyroomemailAddress), required: false);
-            var __workflow_bodyroomtitle = bodyroomtitle == null ? null : WorkflowExpression.Compile(bodyroomtitle);
-            WorkflowExpression.Validate(__workflow_bodyroomtitle, nameof(bodyroomtitle), required: false);
-            var __workflow_bodyroomlocation = bodyroomlocation == null ? null : WorkflowExpression.Compile(bodyroomlocation);
-            WorkflowExpression.Validate(__workflow_bodyroomlocation, nameof(bodyroomlocation), required: false);
-            var __workflow_bodyroomsource = bodyroomsource == null ? null : WorkflowExpression.Compile(bodyroomsource);
-            WorkflowExpression.Validate(__workflow_bodyroomsource, nameof(bodyroomsource), required: false);
-            var __workflow_bodymeetingUrl = bodymeetingUrl == null ? null : WorkflowExpression.Compile(bodymeetingUrl);
-            WorkflowExpression.Validate(__workflow_bodymeetingUrl, nameof(bodymeetingUrl), required: false);
-            var __workflow_bodymaxAttendees = bodymaxAttendees == null ? null : WorkflowExpression.Compile(bodymaxAttendees);
-            WorkflowExpression.Validate(__workflow_bodymaxAttendees, nameof(bodymaxAttendees), required: false);
-            var __workflow_lMS365UserId = lMS365UserId == null ? null : WorkflowExpression.Compile(lMS365UserId);
-            WorkflowExpression.Validate(__workflow_lMS365UserId, nameof(lMS365UserId), required: false);
+            var __workflow_courseId = WorkflowExpression.Compile(courseId, nameof(courseId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: true);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: true);
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: true);
+            var __workflow_bodyenrollmentDeadline = WorkflowExpression.Compile(bodyenrollmentDeadline, nameof(bodyenrollmentDeadline), required: false);
+            var __workflow_bodyroomemailAddress = WorkflowExpression.Compile(bodyroomemailAddress, nameof(bodyroomemailAddress), required: false);
+            var __workflow_bodyroomtitle = WorkflowExpression.Compile(bodyroomtitle, nameof(bodyroomtitle), required: false);
+            var __workflow_bodyroomlocation = WorkflowExpression.Compile(bodyroomlocation, nameof(bodyroomlocation), required: false);
+            var __workflow_bodyroomsource = WorkflowExpression.Compile(bodyroomsource, nameof(bodyroomsource), required: false);
+            var __workflow_bodymeetingUrl = WorkflowExpression.Compile(bodymeetingUrl, nameof(bodymeetingUrl), required: false);
+            var __workflow_bodymaxAttendees = WorkflowExpression.Compile(bodymaxAttendees, nameof(bodymaxAttendees), required: false);
+            var __workflow_lMS365UserId = WorkflowExpression.Compile(lMS365UserId, nameof(lMS365UserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/CourseSessions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_courseId, 1));
@@ -798,10 +715,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction FileUpload(Expression<Func<string>> fileUploadUrl, Expression<Func<object>> file)
         {
-            var __workflow_fileUploadUrl = fileUploadUrl == null ? null : WorkflowExpression.Compile(fileUploadUrl);
-            WorkflowExpression.Validate(__workflow_fileUploadUrl, nameof(fileUploadUrl), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_fileUploadUrl = WorkflowExpression.Compile(fileUploadUrl, nameof(fileUploadUrl), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileUploadUrl, 1));
@@ -814,12 +729,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
         public IWorkflowAction HttpRequest(Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
         {
-            var __workflow_parametersmethod = parametersmethod == null ? null : WorkflowExpression.Compile(parametersmethod);
-            WorkflowExpression.Validate(__workflow_parametersmethod, nameof(parametersmethod), required: true);
-            var __workflow_parametersuri = parametersuri == null ? null : WorkflowExpression.Compile(parametersuri);
-            WorkflowExpression.Validate(__workflow_parametersuri, nameof(parametersuri), required: true);
-            var __workflow_parametersbody = parametersbody == null ? null : WorkflowExpression.Compile(parametersbody);
-            WorkflowExpression.Validate(__workflow_parametersbody, nameof(parametersbody), required: false);
+            var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
+            var __workflow_parametersuri = WorkflowExpression.Compile(parametersuri, nameof(parametersuri), required: true);
+            var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/httprequest";

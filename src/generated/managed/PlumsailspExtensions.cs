@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateSiteFromTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestleafURL, Expression<Func<string>> requestdescription = null, Expression<Func<int>> requestlcid = null, Expression<Func<bool>> requestinheritPermissions = null, Expression<Func<bool>> requestinheritNavigation = null, Expression<Func<bool>> requestonTopNavigation = null, Expression<Func<bool>> requestonQuickLaunch = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: true);
-            var __workflow_requesttemplate = requesttemplate == null ? null : WorkflowExpression.Compile(requesttemplate);
-            WorkflowExpression.Validate(__workflow_requesttemplate, nameof(requesttemplate), required: true);
-            var __workflow_requestleafURL = requestleafURL == null ? null : WorkflowExpression.Compile(requestleafURL);
-            WorkflowExpression.Validate(__workflow_requestleafURL, nameof(requestleafURL), required: true);
-            var __workflow_requestdescription = requestdescription == null ? null : WorkflowExpression.Compile(requestdescription);
-            WorkflowExpression.Validate(__workflow_requestdescription, nameof(requestdescription), required: false);
-            var __workflow_requestlcid = requestlcid == null ? null : WorkflowExpression.Compile(requestlcid);
-            WorkflowExpression.Validate(__workflow_requestlcid, nameof(requestlcid), required: false);
-            var __workflow_requestinheritPermissions = requestinheritPermissions == null ? null : WorkflowExpression.Compile(requestinheritPermissions);
-            WorkflowExpression.Validate(__workflow_requestinheritPermissions, nameof(requestinheritPermissions), required: false);
-            var __workflow_requestinheritNavigation = requestinheritNavigation == null ? null : WorkflowExpression.Compile(requestinheritNavigation);
-            WorkflowExpression.Validate(__workflow_requestinheritNavigation, nameof(requestinheritNavigation), required: false);
-            var __workflow_requestonTopNavigation = requestonTopNavigation == null ? null : WorkflowExpression.Compile(requestonTopNavigation);
-            WorkflowExpression.Validate(__workflow_requestonTopNavigation, nameof(requestonTopNavigation), required: false);
-            var __workflow_requestonQuickLaunch = requestonQuickLaunch == null ? null : WorkflowExpression.Compile(requestonQuickLaunch);
-            WorkflowExpression.Validate(__workflow_requestonQuickLaunch, nameof(requestonQuickLaunch), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
+            var __workflow_requesttemplate = WorkflowExpression.Compile(requesttemplate, nameof(requesttemplate), required: true);
+            var __workflow_requestleafURL = WorkflowExpression.Compile(requestleafURL, nameof(requestleafURL), required: true);
+            var __workflow_requestdescription = WorkflowExpression.Compile(requestdescription, nameof(requestdescription), required: false);
+            var __workflow_requestlcid = WorkflowExpression.Compile(requestlcid, nameof(requestlcid), required: false);
+            var __workflow_requestinheritPermissions = WorkflowExpression.Compile(requestinheritPermissions, nameof(requestinheritPermissions), required: false);
+            var __workflow_requestinheritNavigation = WorkflowExpression.Compile(requestinheritNavigation, nameof(requestinheritNavigation), required: false);
+            var __workflow_requestonTopNavigation = WorkflowExpression.Compile(requestonTopNavigation, nameof(requestonTopNavigation), required: false);
+            var __workflow_requestonQuickLaunch = WorkflowExpression.Compile(requestonQuickLaunch, nameof(requestonQuickLaunch), required: false);
             return new DeferredBodyAction<WebUrlResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSiteFromTemplate";
@@ -96,12 +86,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsChangePermissions(Expression<Func<actionTypeInput>> actionType, Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
         {
-            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
-            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: true);
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
-            var __workflow_request = request == null ? null : WorkflowExpression.Compile(request);
-            WorkflowExpression.Validate(__workflow_request, nameof(request), required: false);
+            var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/ChangePermissions";
@@ -117,12 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsActivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestfeatureID = requestfeatureID == null ? null : WorkflowExpression.Compile(requestfeatureID);
-            WorkflowExpression.Validate(__workflow_requestfeatureID, nameof(requestfeatureID), required: true);
-            var __workflow_requestforce = requestforce == null ? null : WorkflowExpression.Compile(requestforce);
-            WorkflowExpression.Validate(__workflow_requestforce, nameof(requestforce), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestfeatureID = WorkflowExpression.Compile(requestfeatureID, nameof(requestfeatureID), required: true);
+            var __workflow_requestforce = WorkflowExpression.Compile(requestforce, nameof(requestforce), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/ActivateFeature";
@@ -152,12 +136,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsDeactivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestfeatureID = requestfeatureID == null ? null : WorkflowExpression.Compile(requestfeatureID);
-            WorkflowExpression.Validate(__workflow_requestfeatureID, nameof(requestfeatureID), required: true);
-            var __workflow_requestforce = requestforce == null ? null : WorkflowExpression.Compile(requestforce);
-            WorkflowExpression.Validate(__workflow_requestforce, nameof(requestforce), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestfeatureID = WorkflowExpression.Compile(requestfeatureID, nameof(requestfeatureID), required: true);
+            var __workflow_requestforce = WorkflowExpression.Compile(requestforce, nameof(requestforce), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeactivateFeature";
@@ -187,18 +168,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsCreateListOrLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestpartialURL = null, Expression<Func<string>> requestdescription = null, Expression<Func<bool>> requestonQuickLaunch = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: true);
-            var __workflow_requesttemplate = requesttemplate == null ? null : WorkflowExpression.Compile(requesttemplate);
-            WorkflowExpression.Validate(__workflow_requesttemplate, nameof(requesttemplate), required: true);
-            var __workflow_requestpartialURL = requestpartialURL == null ? null : WorkflowExpression.Compile(requestpartialURL);
-            WorkflowExpression.Validate(__workflow_requestpartialURL, nameof(requestpartialURL), required: false);
-            var __workflow_requestdescription = requestdescription == null ? null : WorkflowExpression.Compile(requestdescription);
-            WorkflowExpression.Validate(__workflow_requestdescription, nameof(requestdescription), required: false);
-            var __workflow_requestonQuickLaunch = requestonQuickLaunch == null ? null : WorkflowExpression.Compile(requestonQuickLaunch);
-            WorkflowExpression.Validate(__workflow_requestonQuickLaunch, nameof(requestonQuickLaunch), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
+            var __workflow_requesttemplate = WorkflowExpression.Compile(requesttemplate, nameof(requesttemplate), required: true);
+            var __workflow_requestpartialURL = WorkflowExpression.Compile(requestpartialURL, nameof(requestpartialURL), required: false);
+            var __workflow_requestdescription = WorkflowExpression.Compile(requestdescription, nameof(requestdescription), required: false);
+            var __workflow_requestonQuickLaunch = WorkflowExpression.Compile(requestonQuickLaunch, nameof(requestonQuickLaunch), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateListOrLibrary";
@@ -242,12 +217,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsSetDefaultSiteGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestgroupTypeInput>> requestgroupType, Expression<Func<string>> requestgroupName)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupType = requestgroupType == null ? null : WorkflowExpression.Compile(requestgroupType);
-            WorkflowExpression.Validate(__workflow_requestgroupType, nameof(requestgroupType), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupType = WorkflowExpression.Compile(requestgroupType, nameof(requestgroupType), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/SetDefaultSiteGroup";
@@ -273,12 +245,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCopyDocumentFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestsourceURL = requestsourceURL == null ? null : WorkflowExpression.Compile(requestsourceURL);
-            WorkflowExpression.Validate(__workflow_requestsourceURL, nameof(requestsourceURL), required: true);
-            var __workflow_requestdestinationURL = requestdestinationURL == null ? null : WorkflowExpression.Compile(requestdestinationURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationURL, nameof(requestdestinationURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsourceURL = WorkflowExpression.Compile(requestsourceURL, nameof(requestsourceURL), required: true);
+            var __workflow_requestdestinationURL = WorkflowExpression.Compile(requestdestinationURL, nameof(requestdestinationURL), required: true);
             return new DeferredBodyAction<DocumentInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentFromLibrary";
@@ -304,12 +273,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsMoveDocumentFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestsourceURL = requestsourceURL == null ? null : WorkflowExpression.Compile(requestsourceURL);
-            WorkflowExpression.Validate(__workflow_requestsourceURL, nameof(requestsourceURL), required: true);
-            var __workflow_requestdestinationURL = requestdestinationURL == null ? null : WorkflowExpression.Compile(requestdestinationURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationURL, nameof(requestdestinationURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsourceURL = WorkflowExpression.Compile(requestsourceURL, nameof(requestsourceURL), required: true);
+            var __workflow_requestdestinationURL = WorkflowExpression.Compile(requestdestinationURL, nameof(requestdestinationURL), required: true);
             return new DeferredBodyAction<DocumentInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentFromLibrary";
@@ -335,10 +301,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsRemoveDocumentByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestdocumentURL = requestdocumentURL == null ? null : WorkflowExpression.Compile(requestdocumentURL);
-            WorkflowExpression.Validate(__workflow_requestdocumentURL, nameof(requestdocumentURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestdocumentURL = WorkflowExpression.Compile(requestdocumentURL, nameof(requestdocumentURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveDocumentByUrl";
@@ -362,14 +326,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCreateDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentSetName, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestcontentType = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestdocumentSetName = requestdocumentSetName == null ? null : WorkflowExpression.Compile(requestdocumentSetName);
-            WorkflowExpression.Validate(__workflow_requestdocumentSetName, nameof(requestdocumentSetName), required: true);
-            var __workflow_requesttargetList = requesttargetList == null ? null : WorkflowExpression.Compile(requesttargetList);
-            WorkflowExpression.Validate(__workflow_requesttargetList, nameof(requesttargetList), required: true);
-            var __workflow_requestcontentType = requestcontentType == null ? null : WorkflowExpression.Compile(requestcontentType);
-            WorkflowExpression.Validate(__workflow_requestcontentType, nameof(requestcontentType), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestdocumentSetName = WorkflowExpression.Compile(requestdocumentSetName, nameof(requestdocumentSetName), required: true);
+            var __workflow_requesttargetList = WorkflowExpression.Compile(requesttargetList, nameof(requesttargetList), required: true);
+            var __workflow_requestcontentType = WorkflowExpression.Compile(requestcontentType, nameof(requestcontentType), required: false);
             return new DeferredBodyAction<DocumentSetInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateDocumentSet";
@@ -401,12 +361,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCopyDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestsourceURL = requestsourceURL == null ? null : WorkflowExpression.Compile(requestsourceURL);
-            WorkflowExpression.Validate(__workflow_requestsourceURL, nameof(requestsourceURL), required: true);
-            var __workflow_requestdestinationURL = requestdestinationURL == null ? null : WorkflowExpression.Compile(requestdestinationURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationURL, nameof(requestdestinationURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsourceURL = WorkflowExpression.Compile(requestsourceURL, nameof(requestsourceURL), required: true);
+            var __workflow_requestdestinationURL = WorkflowExpression.Compile(requestdestinationURL, nameof(requestdestinationURL), required: true);
             return new DeferredBodyAction<DocumentSetInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentSet";
@@ -432,12 +389,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsMoveDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestsourceURL = requestsourceURL == null ? null : WorkflowExpression.Compile(requestsourceURL);
-            WorkflowExpression.Validate(__workflow_requestsourceURL, nameof(requestsourceURL), required: true);
-            var __workflow_requestdestinationURL = requestdestinationURL == null ? null : WorkflowExpression.Compile(requestdestinationURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationURL, nameof(requestdestinationURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsourceURL = WorkflowExpression.Compile(requestsourceURL, nameof(requestsourceURL), required: true);
+            var __workflow_requestdestinationURL = WorkflowExpression.Compile(requestdestinationURL, nameof(requestdestinationURL), required: true);
             return new DeferredBodyAction<DocumentSetInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentSet";
@@ -463,10 +417,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestfolderURL = requestfolderURL == null ? null : WorkflowExpression.Compile(requestfolderURL);
-            WorkflowExpression.Validate(__workflow_requestfolderURL, nameof(requestfolderURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestfolderURL = WorkflowExpression.Compile(requestfolderURL, nameof(requestfolderURL), required: true);
             return new DeferredBodyAction<FolderInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderByUrl";
@@ -490,12 +442,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderInList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestfolderPath)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requesttargetList = requesttargetList == null ? null : WorkflowExpression.Compile(requesttargetList);
-            WorkflowExpression.Validate(__workflow_requesttargetList, nameof(requesttargetList), required: true);
-            var __workflow_requestfolderPath = requestfolderPath == null ? null : WorkflowExpression.Compile(requestfolderPath);
-            WorkflowExpression.Validate(__workflow_requestfolderPath, nameof(requestfolderPath), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requesttargetList = WorkflowExpression.Compile(requesttargetList, nameof(requesttargetList), required: true);
+            var __workflow_requestfolderPath = WorkflowExpression.Compile(requestfolderPath, nameof(requestfolderPath), required: true);
             return new DeferredBodyAction<FolderInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderInList";
@@ -521,10 +470,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsRemoveFolderByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestfolderURL = requestfolderURL == null ? null : WorkflowExpression.Compile(requestfolderURL);
-            WorkflowExpression.Validate(__workflow_requestfolderURL, nameof(requestfolderURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestfolderURL = WorkflowExpression.Compile(requestfolderURL, nameof(requestfolderURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveFolderByUrl";
@@ -548,12 +495,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCopyFolderFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestsourceURL = requestsourceURL == null ? null : WorkflowExpression.Compile(requestsourceURL);
-            WorkflowExpression.Validate(__workflow_requestsourceURL, nameof(requestsourceURL), required: true);
-            var __workflow_requestdestinationURL = requestdestinationURL == null ? null : WorkflowExpression.Compile(requestdestinationURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationURL, nameof(requestdestinationURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsourceURL = WorkflowExpression.Compile(requestsourceURL, nameof(requestsourceURL), required: true);
+            var __workflow_requestdestinationURL = WorkflowExpression.Compile(requestdestinationURL, nameof(requestdestinationURL), required: true);
             return new DeferredBodyAction<FolderInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyFolderFromLibrary";
@@ -579,12 +523,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsMoveFolderFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestsourceURL = requestsourceURL == null ? null : WorkflowExpression.Compile(requestsourceURL);
-            WorkflowExpression.Validate(__workflow_requestsourceURL, nameof(requestsourceURL), required: true);
-            var __workflow_requestdestinationURL = requestdestinationURL == null ? null : WorkflowExpression.Compile(requestdestinationURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationURL, nameof(requestdestinationURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsourceURL = WorkflowExpression.Compile(requestsourceURL, nameof(requestsourceURL), required: true);
+            var __workflow_requestdestinationURL = WorkflowExpression.Compile(requestdestinationURL, nameof(requestdestinationURL), required: true);
             return new DeferredBodyAction<FolderInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveFolderFromLibrary";
@@ -610,12 +551,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckInDocument(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL, Expression<Func<string>> requestcomment = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestdocumentURL = requestdocumentURL == null ? null : WorkflowExpression.Compile(requestdocumentURL);
-            WorkflowExpression.Validate(__workflow_requestdocumentURL, nameof(requestdocumentURL), required: true);
-            var __workflow_requestcomment = requestcomment == null ? null : WorkflowExpression.Compile(requestcomment);
-            WorkflowExpression.Validate(__workflow_requestcomment, nameof(requestcomment), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestdocumentURL = WorkflowExpression.Compile(requestdocumentURL, nameof(requestdocumentURL), required: true);
+            var __workflow_requestcomment = WorkflowExpression.Compile(requestcomment, nameof(requestcomment), required: false);
             return new DeferredBodyAction<DocumentInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckInDocument";
@@ -645,10 +583,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckOutDocument(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestdocumentURL = requestdocumentURL == null ? null : WorkflowExpression.Compile(requestdocumentURL);
-            WorkflowExpression.Validate(__workflow_requestdocumentURL, nameof(requestdocumentURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestdocumentURL = WorkflowExpression.Compile(requestdocumentURL, nameof(requestdocumentURL), required: true);
             return new DeferredBodyAction<DocumentInfoResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckOutDocument";
@@ -672,10 +608,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateModernSite(Expression<Func<siteTypeInput>> siteType, Expression<Func<object>> request = null)
         {
-            var __workflow_siteType = siteType == null ? null : WorkflowExpression.Compile(siteType);
-            WorkflowExpression.Validate(__workflow_siteType, nameof(siteType), required: true);
-            var __workflow_request = request == null ? null : WorkflowExpression.Compile(request);
-            WorkflowExpression.Validate(__workflow_request, nameof(request), required: false);
+            var __workflow_siteType = WorkflowExpression.Compile(siteType, nameof(siteType), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: false);
             return new DeferredBodyAction<WebUrlResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateModernSite";
@@ -690,10 +624,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsApplySiteDesign(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsiteDesign)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestsiteDesign = requestsiteDesign == null ? null : WorkflowExpression.Compile(requestsiteDesign);
-            WorkflowExpression.Validate(__workflow_requestsiteDesign, nameof(requestsiteDesign), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsiteDesign = WorkflowExpression.Compile(requestsiteDesign, nameof(requestsiteDesign), required: true);
             return new DeferredBodyAction<WebUrlResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/ApplySiteDesign";
@@ -717,14 +649,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsCreateSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestgroupDescription = null, Expression<Func<string>> requestgroupOwner = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
-            var __workflow_requestgroupDescription = requestgroupDescription == null ? null : WorkflowExpression.Compile(requestgroupDescription);
-            WorkflowExpression.Validate(__workflow_requestgroupDescription, nameof(requestgroupDescription), required: false);
-            var __workflow_requestgroupOwner = requestgroupOwner == null ? null : WorkflowExpression.Compile(requestgroupOwner);
-            WorkflowExpression.Validate(__workflow_requestgroupOwner, nameof(requestgroupOwner), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestgroupDescription = WorkflowExpression.Compile(requestgroupDescription, nameof(requestgroupDescription), required: false);
+            var __workflow_requestgroupOwner = WorkflowExpression.Compile(requestgroupOwner, nameof(requestgroupOwner), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSharePointGroup";
@@ -760,10 +688,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsRemoveSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSharePointGroup";
@@ -787,26 +713,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointGroupProperties(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<string>> requestpropertiesowner = null, Expression<Func<bool>> requestpropertiesallowMembersEditMembership = null, Expression<Func<bool>> requestpropertiesallowRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesautoAcceptRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesonlyAllowMembersViewMembership = null, Expression<Func<string>> requestpropertiesrequestToJoinLeaveEmailSetting = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
-            var __workflow_requestpropertiestitle = requestpropertiestitle == null ? null : WorkflowExpression.Compile(requestpropertiestitle);
-            WorkflowExpression.Validate(__workflow_requestpropertiestitle, nameof(requestpropertiestitle), required: false);
-            var __workflow_requestpropertiesdescription = requestpropertiesdescription == null ? null : WorkflowExpression.Compile(requestpropertiesdescription);
-            WorkflowExpression.Validate(__workflow_requestpropertiesdescription, nameof(requestpropertiesdescription), required: false);
-            var __workflow_requestpropertiesowner = requestpropertiesowner == null ? null : WorkflowExpression.Compile(requestpropertiesowner);
-            WorkflowExpression.Validate(__workflow_requestpropertiesowner, nameof(requestpropertiesowner), required: false);
-            var __workflow_requestpropertiesallowMembersEditMembership = requestpropertiesallowMembersEditMembership == null ? null : WorkflowExpression.Compile(requestpropertiesallowMembersEditMembership);
-            WorkflowExpression.Validate(__workflow_requestpropertiesallowMembersEditMembership, nameof(requestpropertiesallowMembersEditMembership), required: false);
-            var __workflow_requestpropertiesallowRequestToJoinLeave = requestpropertiesallowRequestToJoinLeave == null ? null : WorkflowExpression.Compile(requestpropertiesallowRequestToJoinLeave);
-            WorkflowExpression.Validate(__workflow_requestpropertiesallowRequestToJoinLeave, nameof(requestpropertiesallowRequestToJoinLeave), required: false);
-            var __workflow_requestpropertiesautoAcceptRequestToJoinLeave = requestpropertiesautoAcceptRequestToJoinLeave == null ? null : WorkflowExpression.Compile(requestpropertiesautoAcceptRequestToJoinLeave);
-            WorkflowExpression.Validate(__workflow_requestpropertiesautoAcceptRequestToJoinLeave, nameof(requestpropertiesautoAcceptRequestToJoinLeave), required: false);
-            var __workflow_requestpropertiesonlyAllowMembersViewMembership = requestpropertiesonlyAllowMembersViewMembership == null ? null : WorkflowExpression.Compile(requestpropertiesonlyAllowMembersViewMembership);
-            WorkflowExpression.Validate(__workflow_requestpropertiesonlyAllowMembersViewMembership, nameof(requestpropertiesonlyAllowMembersViewMembership), required: false);
-            var __workflow_requestpropertiesrequestToJoinLeaveEmailSetting = requestpropertiesrequestToJoinLeaveEmailSetting == null ? null : WorkflowExpression.Compile(requestpropertiesrequestToJoinLeaveEmailSetting);
-            WorkflowExpression.Validate(__workflow_requestpropertiesrequestToJoinLeaveEmailSetting, nameof(requestpropertiesrequestToJoinLeaveEmailSetting), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestpropertiestitle = WorkflowExpression.Compile(requestpropertiestitle, nameof(requestpropertiestitle), required: false);
+            var __workflow_requestpropertiesdescription = WorkflowExpression.Compile(requestpropertiesdescription, nameof(requestpropertiesdescription), required: false);
+            var __workflow_requestpropertiesowner = WorkflowExpression.Compile(requestpropertiesowner, nameof(requestpropertiesowner), required: false);
+            var __workflow_requestpropertiesallowMembersEditMembership = WorkflowExpression.Compile(requestpropertiesallowMembersEditMembership, nameof(requestpropertiesallowMembersEditMembership), required: false);
+            var __workflow_requestpropertiesallowRequestToJoinLeave = WorkflowExpression.Compile(requestpropertiesallowRequestToJoinLeave, nameof(requestpropertiesallowRequestToJoinLeave), required: false);
+            var __workflow_requestpropertiesautoAcceptRequestToJoinLeave = WorkflowExpression.Compile(requestpropertiesautoAcceptRequestToJoinLeave, nameof(requestpropertiesautoAcceptRequestToJoinLeave), required: false);
+            var __workflow_requestpropertiesonlyAllowMembersViewMembership = WorkflowExpression.Compile(requestpropertiesonlyAllowMembersViewMembership, nameof(requestpropertiesonlyAllowMembersViewMembership), required: false);
+            var __workflow_requestpropertiesrequestToJoinLeaveEmailSetting = WorkflowExpression.Compile(requestpropertiesrequestToJoinLeaveEmailSetting, nameof(requestpropertiesrequestToJoinLeaveEmailSetting), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointGroupProperties";
@@ -886,10 +802,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<GroupExistResponse> FlowV1SharePointFlowJobsCheckSharePointGroupExists(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
             return new DeferredBodyAction<GroupExistResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckSharePointGroupExists";
@@ -913,14 +827,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsAddUserToSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser, Expression<Func<bool>> requestsendEmail = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
-            var __workflow_requestuser = requestuser == null ? null : WorkflowExpression.Compile(requestuser);
-            WorkflowExpression.Validate(__workflow_requestuser, nameof(requestuser), required: true);
-            var __workflow_requestsendEmail = requestsendEmail == null ? null : WorkflowExpression.Compile(requestsendEmail);
-            WorkflowExpression.Validate(__workflow_requestsendEmail, nameof(requestsendEmail), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestuser = WorkflowExpression.Compile(requestuser, nameof(requestuser), required: true);
+            var __workflow_requestsendEmail = WorkflowExpression.Compile(requestsendEmail, nameof(requestsendEmail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddUserToSharePointGroup";
@@ -952,12 +862,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsRemoveUserFromSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
-            var __workflow_requestuser = requestuser == null ? null : WorkflowExpression.Compile(requestuser);
-            WorkflowExpression.Validate(__workflow_requestuser, nameof(requestuser), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestuser = WorkflowExpression.Compile(requestuser, nameof(requestuser), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveUserFromSharePointGroup";
@@ -983,10 +890,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<GetSPGroupMembersResponse> FlowV1SharePointFlowJobsGetSharePointGroupMembers(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
             return new DeferredBodyAction<GetSPGroupMembersResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointGroupMembers";
@@ -1010,12 +915,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<UserExistsResponse> FlowV1SharePointFlowJobsUserExistInSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
-            var __workflow_requestuser = requestuser == null ? null : WorkflowExpression.Compile(requestuser);
-            WorkflowExpression.Validate(__workflow_requestuser, nameof(requestuser), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestuser = WorkflowExpression.Compile(requestuser, nameof(requestuser), required: true);
             return new DeferredBodyAction<UserExistsResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/UserExistInSharePointGroup";
@@ -1041,52 +943,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointSiteProperties(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<bool>> requestpropertiesquickLaunchEnabled = null, Expression<Func<bool>> requestpropertiestreeViewEnabled = null, Expression<Func<string>> requestpropertiessiteLogoURL = null, Expression<Func<string>> requestpropertiesalternateCssURL = null, Expression<Func<string>> requestpropertiesassociatedMemberGroup = null, Expression<Func<string>> requestpropertiesassociatedOwnerGroup = null, Expression<Func<string>> requestpropertiesassociatedVisitorGroup = null, Expression<Func<bool>> requestpropertiescontainsConfidentialInfo = null, Expression<Func<string>> requestpropertiescustomMasterURL = null, Expression<Func<bool>> requestpropertiesenableMinimalDownload = null, Expression<Func<bool>> requestpropertiesisMultilingual = null, Expression<Func<string>> requestpropertiesmasterURL = null, Expression<Func<bool>> requestpropertiesmembersCanShare = null, Expression<Func<bool>> requestpropertiesnoCrawl = null, Expression<Func<bool>> requestpropertiesoverwriteTranslationsOnChange = null, Expression<Func<string>> requestpropertiesrequestAccessEmail = null, Expression<Func<bool>> requestpropertiessaveSiteAsTemplateEnabled = null, Expression<Func<string>> requestpropertiesserverRelativeURL = null, Expression<Func<bool>> requestpropertiessyndicationEnabled = null, Expression<Func<int>> requestpropertiesuIVersion = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestpropertiestitle = requestpropertiestitle == null ? null : WorkflowExpression.Compile(requestpropertiestitle);
-            WorkflowExpression.Validate(__workflow_requestpropertiestitle, nameof(requestpropertiestitle), required: false);
-            var __workflow_requestpropertiesdescription = requestpropertiesdescription == null ? null : WorkflowExpression.Compile(requestpropertiesdescription);
-            WorkflowExpression.Validate(__workflow_requestpropertiesdescription, nameof(requestpropertiesdescription), required: false);
-            var __workflow_requestpropertiesquickLaunchEnabled = requestpropertiesquickLaunchEnabled == null ? null : WorkflowExpression.Compile(requestpropertiesquickLaunchEnabled);
-            WorkflowExpression.Validate(__workflow_requestpropertiesquickLaunchEnabled, nameof(requestpropertiesquickLaunchEnabled), required: false);
-            var __workflow_requestpropertiestreeViewEnabled = requestpropertiestreeViewEnabled == null ? null : WorkflowExpression.Compile(requestpropertiestreeViewEnabled);
-            WorkflowExpression.Validate(__workflow_requestpropertiestreeViewEnabled, nameof(requestpropertiestreeViewEnabled), required: false);
-            var __workflow_requestpropertiessiteLogoURL = requestpropertiessiteLogoURL == null ? null : WorkflowExpression.Compile(requestpropertiessiteLogoURL);
-            WorkflowExpression.Validate(__workflow_requestpropertiessiteLogoURL, nameof(requestpropertiessiteLogoURL), required: false);
-            var __workflow_requestpropertiesalternateCssURL = requestpropertiesalternateCssURL == null ? null : WorkflowExpression.Compile(requestpropertiesalternateCssURL);
-            WorkflowExpression.Validate(__workflow_requestpropertiesalternateCssURL, nameof(requestpropertiesalternateCssURL), required: false);
-            var __workflow_requestpropertiesassociatedMemberGroup = requestpropertiesassociatedMemberGroup == null ? null : WorkflowExpression.Compile(requestpropertiesassociatedMemberGroup);
-            WorkflowExpression.Validate(__workflow_requestpropertiesassociatedMemberGroup, nameof(requestpropertiesassociatedMemberGroup), required: false);
-            var __workflow_requestpropertiesassociatedOwnerGroup = requestpropertiesassociatedOwnerGroup == null ? null : WorkflowExpression.Compile(requestpropertiesassociatedOwnerGroup);
-            WorkflowExpression.Validate(__workflow_requestpropertiesassociatedOwnerGroup, nameof(requestpropertiesassociatedOwnerGroup), required: false);
-            var __workflow_requestpropertiesassociatedVisitorGroup = requestpropertiesassociatedVisitorGroup == null ? null : WorkflowExpression.Compile(requestpropertiesassociatedVisitorGroup);
-            WorkflowExpression.Validate(__workflow_requestpropertiesassociatedVisitorGroup, nameof(requestpropertiesassociatedVisitorGroup), required: false);
-            var __workflow_requestpropertiescontainsConfidentialInfo = requestpropertiescontainsConfidentialInfo == null ? null : WorkflowExpression.Compile(requestpropertiescontainsConfidentialInfo);
-            WorkflowExpression.Validate(__workflow_requestpropertiescontainsConfidentialInfo, nameof(requestpropertiescontainsConfidentialInfo), required: false);
-            var __workflow_requestpropertiescustomMasterURL = requestpropertiescustomMasterURL == null ? null : WorkflowExpression.Compile(requestpropertiescustomMasterURL);
-            WorkflowExpression.Validate(__workflow_requestpropertiescustomMasterURL, nameof(requestpropertiescustomMasterURL), required: false);
-            var __workflow_requestpropertiesenableMinimalDownload = requestpropertiesenableMinimalDownload == null ? null : WorkflowExpression.Compile(requestpropertiesenableMinimalDownload);
-            WorkflowExpression.Validate(__workflow_requestpropertiesenableMinimalDownload, nameof(requestpropertiesenableMinimalDownload), required: false);
-            var __workflow_requestpropertiesisMultilingual = requestpropertiesisMultilingual == null ? null : WorkflowExpression.Compile(requestpropertiesisMultilingual);
-            WorkflowExpression.Validate(__workflow_requestpropertiesisMultilingual, nameof(requestpropertiesisMultilingual), required: false);
-            var __workflow_requestpropertiesmasterURL = requestpropertiesmasterURL == null ? null : WorkflowExpression.Compile(requestpropertiesmasterURL);
-            WorkflowExpression.Validate(__workflow_requestpropertiesmasterURL, nameof(requestpropertiesmasterURL), required: false);
-            var __workflow_requestpropertiesmembersCanShare = requestpropertiesmembersCanShare == null ? null : WorkflowExpression.Compile(requestpropertiesmembersCanShare);
-            WorkflowExpression.Validate(__workflow_requestpropertiesmembersCanShare, nameof(requestpropertiesmembersCanShare), required: false);
-            var __workflow_requestpropertiesnoCrawl = requestpropertiesnoCrawl == null ? null : WorkflowExpression.Compile(requestpropertiesnoCrawl);
-            WorkflowExpression.Validate(__workflow_requestpropertiesnoCrawl, nameof(requestpropertiesnoCrawl), required: false);
-            var __workflow_requestpropertiesoverwriteTranslationsOnChange = requestpropertiesoverwriteTranslationsOnChange == null ? null : WorkflowExpression.Compile(requestpropertiesoverwriteTranslationsOnChange);
-            WorkflowExpression.Validate(__workflow_requestpropertiesoverwriteTranslationsOnChange, nameof(requestpropertiesoverwriteTranslationsOnChange), required: false);
-            var __workflow_requestpropertiesrequestAccessEmail = requestpropertiesrequestAccessEmail == null ? null : WorkflowExpression.Compile(requestpropertiesrequestAccessEmail);
-            WorkflowExpression.Validate(__workflow_requestpropertiesrequestAccessEmail, nameof(requestpropertiesrequestAccessEmail), required: false);
-            var __workflow_requestpropertiessaveSiteAsTemplateEnabled = requestpropertiessaveSiteAsTemplateEnabled == null ? null : WorkflowExpression.Compile(requestpropertiessaveSiteAsTemplateEnabled);
-            WorkflowExpression.Validate(__workflow_requestpropertiessaveSiteAsTemplateEnabled, nameof(requestpropertiessaveSiteAsTemplateEnabled), required: false);
-            var __workflow_requestpropertiesserverRelativeURL = requestpropertiesserverRelativeURL == null ? null : WorkflowExpression.Compile(requestpropertiesserverRelativeURL);
-            WorkflowExpression.Validate(__workflow_requestpropertiesserverRelativeURL, nameof(requestpropertiesserverRelativeURL), required: false);
-            var __workflow_requestpropertiessyndicationEnabled = requestpropertiessyndicationEnabled == null ? null : WorkflowExpression.Compile(requestpropertiessyndicationEnabled);
-            WorkflowExpression.Validate(__workflow_requestpropertiessyndicationEnabled, nameof(requestpropertiessyndicationEnabled), required: false);
-            var __workflow_requestpropertiesuIVersion = requestpropertiesuIVersion == null ? null : WorkflowExpression.Compile(requestpropertiesuIVersion);
-            WorkflowExpression.Validate(__workflow_requestpropertiesuIVersion, nameof(requestpropertiesuIVersion), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestpropertiestitle = WorkflowExpression.Compile(requestpropertiestitle, nameof(requestpropertiestitle), required: false);
+            var __workflow_requestpropertiesdescription = WorkflowExpression.Compile(requestpropertiesdescription, nameof(requestpropertiesdescription), required: false);
+            var __workflow_requestpropertiesquickLaunchEnabled = WorkflowExpression.Compile(requestpropertiesquickLaunchEnabled, nameof(requestpropertiesquickLaunchEnabled), required: false);
+            var __workflow_requestpropertiestreeViewEnabled = WorkflowExpression.Compile(requestpropertiestreeViewEnabled, nameof(requestpropertiestreeViewEnabled), required: false);
+            var __workflow_requestpropertiessiteLogoURL = WorkflowExpression.Compile(requestpropertiessiteLogoURL, nameof(requestpropertiessiteLogoURL), required: false);
+            var __workflow_requestpropertiesalternateCssURL = WorkflowExpression.Compile(requestpropertiesalternateCssURL, nameof(requestpropertiesalternateCssURL), required: false);
+            var __workflow_requestpropertiesassociatedMemberGroup = WorkflowExpression.Compile(requestpropertiesassociatedMemberGroup, nameof(requestpropertiesassociatedMemberGroup), required: false);
+            var __workflow_requestpropertiesassociatedOwnerGroup = WorkflowExpression.Compile(requestpropertiesassociatedOwnerGroup, nameof(requestpropertiesassociatedOwnerGroup), required: false);
+            var __workflow_requestpropertiesassociatedVisitorGroup = WorkflowExpression.Compile(requestpropertiesassociatedVisitorGroup, nameof(requestpropertiesassociatedVisitorGroup), required: false);
+            var __workflow_requestpropertiescontainsConfidentialInfo = WorkflowExpression.Compile(requestpropertiescontainsConfidentialInfo, nameof(requestpropertiescontainsConfidentialInfo), required: false);
+            var __workflow_requestpropertiescustomMasterURL = WorkflowExpression.Compile(requestpropertiescustomMasterURL, nameof(requestpropertiescustomMasterURL), required: false);
+            var __workflow_requestpropertiesenableMinimalDownload = WorkflowExpression.Compile(requestpropertiesenableMinimalDownload, nameof(requestpropertiesenableMinimalDownload), required: false);
+            var __workflow_requestpropertiesisMultilingual = WorkflowExpression.Compile(requestpropertiesisMultilingual, nameof(requestpropertiesisMultilingual), required: false);
+            var __workflow_requestpropertiesmasterURL = WorkflowExpression.Compile(requestpropertiesmasterURL, nameof(requestpropertiesmasterURL), required: false);
+            var __workflow_requestpropertiesmembersCanShare = WorkflowExpression.Compile(requestpropertiesmembersCanShare, nameof(requestpropertiesmembersCanShare), required: false);
+            var __workflow_requestpropertiesnoCrawl = WorkflowExpression.Compile(requestpropertiesnoCrawl, nameof(requestpropertiesnoCrawl), required: false);
+            var __workflow_requestpropertiesoverwriteTranslationsOnChange = WorkflowExpression.Compile(requestpropertiesoverwriteTranslationsOnChange, nameof(requestpropertiesoverwriteTranslationsOnChange), required: false);
+            var __workflow_requestpropertiesrequestAccessEmail = WorkflowExpression.Compile(requestpropertiesrequestAccessEmail, nameof(requestpropertiesrequestAccessEmail), required: false);
+            var __workflow_requestpropertiessaveSiteAsTemplateEnabled = WorkflowExpression.Compile(requestpropertiessaveSiteAsTemplateEnabled, nameof(requestpropertiessaveSiteAsTemplateEnabled), required: false);
+            var __workflow_requestpropertiesserverRelativeURL = WorkflowExpression.Compile(requestpropertiesserverRelativeURL, nameof(requestpropertiesserverRelativeURL), required: false);
+            var __workflow_requestpropertiessyndicationEnabled = WorkflowExpression.Compile(requestpropertiessyndicationEnabled, nameof(requestpropertiessyndicationEnabled), required: false);
+            var __workflow_requestpropertiesuIVersion = WorkflowExpression.Compile(requestpropertiesuIVersion, nameof(requestpropertiesuIVersion), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointSiteProperties";
@@ -1248,8 +1127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsDeleteSharePointSite(Expression<Func<string>> requestsharePointSiteURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeleteSharePointSite";
@@ -1271,10 +1149,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<SPSiteOptionValueResponse> FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsString(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestoptionName)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestoptionName = requestoptionName == null ? null : WorkflowExpression.Compile(requestoptionName);
-            WorkflowExpression.Validate(__workflow_requestoptionName, nameof(requestoptionName), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestoptionName = WorkflowExpression.Compile(requestoptionName, nameof(requestoptionName), required: true);
             return new DeferredBodyAction<SPSiteOptionValueResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointSiteOptionValueAsString";
@@ -1298,10 +1174,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
         {
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
-            var __workflow_request = request == null ? null : WorkflowExpression.Compile(request);
-            WorkflowExpression.Validate(__workflow_request, nameof(request), required: false);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/InviteExternalUserToSharePoint";
@@ -1316,16 +1190,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsCopyAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = requestitemID == null ? null : WorkflowExpression.Compile(requestitemID);
-            WorkflowExpression.Validate(__workflow_requestitemID, nameof(requestitemID), required: true);
-            var __workflow_requestdestinationFolderURL = requestdestinationFolderURL == null ? null : WorkflowExpression.Compile(requestdestinationFolderURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationFolderURL, nameof(requestdestinationFolderURL), required: true);
-            var __workflow_requestoverwrite = requestoverwrite == null ? null : WorkflowExpression.Compile(requestoverwrite);
-            WorkflowExpression.Validate(__workflow_requestoverwrite, nameof(requestoverwrite), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestdestinationFolderURL = WorkflowExpression.Compile(requestdestinationFolderURL, nameof(requestdestinationFolderURL), required: true);
+            var __workflow_requestoverwrite = WorkflowExpression.Compile(requestoverwrite, nameof(requestoverwrite), required: false);
             return new DeferredBodyAction<ListFileUrlsResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyAttachmentsToUrl";
@@ -1359,16 +1228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsMoveAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = requestitemID == null ? null : WorkflowExpression.Compile(requestitemID);
-            WorkflowExpression.Validate(__workflow_requestitemID, nameof(requestitemID), required: true);
-            var __workflow_requestdestinationFolderURL = requestdestinationFolderURL == null ? null : WorkflowExpression.Compile(requestdestinationFolderURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationFolderURL, nameof(requestdestinationFolderURL), required: true);
-            var __workflow_requestoverwrite = requestoverwrite == null ? null : WorkflowExpression.Compile(requestoverwrite);
-            WorkflowExpression.Validate(__workflow_requestoverwrite, nameof(requestoverwrite), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestdestinationFolderURL = WorkflowExpression.Compile(requestdestinationFolderURL, nameof(requestdestinationFolderURL), required: true);
+            var __workflow_requestoverwrite = WorkflowExpression.Compile(requestoverwrite, nameof(requestoverwrite), required: false);
             return new DeferredBodyAction<ListFileUrlsResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveAttachmentsToUrl";
@@ -1402,14 +1266,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsAddContentTypeToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcontentTypeName, Expression<Func<bool>> requestmakeItDefault = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestcontentTypeName = requestcontentTypeName == null ? null : WorkflowExpression.Compile(requestcontentTypeName);
-            WorkflowExpression.Validate(__workflow_requestcontentTypeName, nameof(requestcontentTypeName), required: true);
-            var __workflow_requestmakeItDefault = requestmakeItDefault == null ? null : WorkflowExpression.Compile(requestmakeItDefault);
-            WorkflowExpression.Validate(__workflow_requestmakeItDefault, nameof(requestmakeItDefault), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestcontentTypeName = WorkflowExpression.Compile(requestcontentTypeName, nameof(requestcontentTypeName), required: true);
+            var __workflow_requestmakeItDefault = WorkflowExpression.Compile(requestmakeItDefault, nameof(requestmakeItDefault), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddContentTypeToSharePointList";
@@ -1441,16 +1301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsCopyListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestcopyAttachments = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = requestitemID == null ? null : WorkflowExpression.Compile(requestitemID);
-            WorkflowExpression.Validate(__workflow_requestitemID, nameof(requestitemID), required: true);
-            var __workflow_requestdestinationListURL = requestdestinationListURL == null ? null : WorkflowExpression.Compile(requestdestinationListURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationListURL, nameof(requestdestinationListURL), required: true);
-            var __workflow_requestcopyAttachments = requestcopyAttachments == null ? null : WorkflowExpression.Compile(requestcopyAttachments);
-            WorkflowExpression.Validate(__workflow_requestcopyAttachments, nameof(requestcopyAttachments), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestdestinationListURL = WorkflowExpression.Compile(requestdestinationListURL, nameof(requestdestinationListURL), required: true);
+            var __workflow_requestcopyAttachments = WorkflowExpression.Compile(requestcopyAttachments, nameof(requestcopyAttachments), required: false);
             return new DeferredBodyAction<ListItemIdResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyListItemToSharePointList";
@@ -1484,16 +1339,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsMoveListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestmoveAttachments = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = requestitemID == null ? null : WorkflowExpression.Compile(requestitemID);
-            WorkflowExpression.Validate(__workflow_requestitemID, nameof(requestitemID), required: true);
-            var __workflow_requestdestinationListURL = requestdestinationListURL == null ? null : WorkflowExpression.Compile(requestdestinationListURL);
-            WorkflowExpression.Validate(__workflow_requestdestinationListURL, nameof(requestdestinationListURL), required: true);
-            var __workflow_requestmoveAttachments = requestmoveAttachments == null ? null : WorkflowExpression.Compile(requestmoveAttachments);
-            WorkflowExpression.Validate(__workflow_requestmoveAttachments, nameof(requestmoveAttachments), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestdestinationListURL = WorkflowExpression.Compile(requestdestinationListURL, nameof(requestdestinationListURL), required: true);
+            var __workflow_requestmoveAttachments = WorkflowExpression.Compile(requestmoveAttachments, nameof(requestmoveAttachments), required: false);
             return new DeferredBodyAction<ListItemIdResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveListItemToSharePointList";
@@ -1527,14 +1377,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartListWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestworkflowName = requestworkflowName == null ? null : WorkflowExpression.Compile(requestworkflowName);
-            WorkflowExpression.Validate(__workflow_requestworkflowName, nameof(requestworkflowName), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = requestitemID == null ? null : WorkflowExpression.Compile(requestitemID);
-            WorkflowExpression.Validate(__workflow_requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestworkflowName = WorkflowExpression.Compile(requestworkflowName, nameof(requestworkflowName), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
             return new DeferredBodyAction<WorkflowGuidResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartListWorkflow";
@@ -1570,10 +1416,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartSiteWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestworkflowName = requestworkflowName == null ? null : WorkflowExpression.Compile(requestworkflowName);
-            WorkflowExpression.Validate(__workflow_requestworkflowName, nameof(requestworkflowName), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestworkflowName = WorkflowExpression.Compile(requestworkflowName, nameof(requestworkflowName), required: true);
             return new DeferredBodyAction<WorkflowGuidResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartSiteWorkflow";
@@ -1605,14 +1449,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsGetItemsByCamlQuery(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcAMLQuery, Expression<Func<string>> requestfolderURL = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestcAMLQuery = requestcAMLQuery == null ? null : WorkflowExpression.Compile(requestcAMLQuery);
-            WorkflowExpression.Validate(__workflow_requestcAMLQuery, nameof(requestcAMLQuery), required: true);
-            var __workflow_requestfolderURL = requestfolderURL == null ? null : WorkflowExpression.Compile(requestfolderURL);
-            WorkflowExpression.Validate(__workflow_requestfolderURL, nameof(requestfolderURL), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestcAMLQuery = WorkflowExpression.Compile(requestcAMLQuery, nameof(requestcAMLQuery), required: true);
+            var __workflow_requestfolderURL = WorkflowExpression.Compile(requestfolderURL, nameof(requestfolderURL), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetItemsByCamlQuery";
@@ -1644,14 +1484,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<VersionsHistoryResponse> FlowV1SharePointFlowJobsGetVersionsHistory(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestfieldName)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistURL = requestlistURL == null ? null : WorkflowExpression.Compile(requestlistURL);
-            WorkflowExpression.Validate(__workflow_requestlistURL, nameof(requestlistURL), required: true);
-            var __workflow_requestitemID = requestitemID == null ? null : WorkflowExpression.Compile(requestitemID);
-            WorkflowExpression.Validate(__workflow_requestitemID, nameof(requestitemID), required: true);
-            var __workflow_requestfieldName = requestfieldName == null ? null : WorkflowExpression.Compile(requestfieldName);
-            WorkflowExpression.Validate(__workflow_requestfieldName, nameof(requestfieldName), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistURL = WorkflowExpression.Compile(requestlistURL, nameof(requestlistURL), required: true);
+            var __workflow_requestitemID = WorkflowExpression.Compile(requestitemID, nameof(requestitemID), required: true);
+            var __workflow_requestfieldName = WorkflowExpression.Compile(requestfieldName, nameof(requestfieldName), required: true);
             return new DeferredBodyAction<VersionsHistoryResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetVersionsHistory";
@@ -1679,26 +1515,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requesttemplateContent = requesttemplateContent == null ? null : WorkflowExpression.Compile(requesttemplateContent);
-            WorkflowExpression.Validate(__workflow_requesttemplateContent, nameof(requesttemplateContent), required: true);
-            var __workflow_requestoverwriteSystemPropertyBagValues = requestoverwriteSystemPropertyBagValues == null ? null : WorkflowExpression.Compile(requestoverwriteSystemPropertyBagValues);
-            WorkflowExpression.Validate(__workflow_requestoverwriteSystemPropertyBagValues, nameof(requestoverwriteSystemPropertyBagValues), required: false);
-            var __workflow_requestignoreDuplicateDataRowErrors = requestignoreDuplicateDataRowErrors == null ? null : WorkflowExpression.Compile(requestignoreDuplicateDataRowErrors);
-            WorkflowExpression.Validate(__workflow_requestignoreDuplicateDataRowErrors, nameof(requestignoreDuplicateDataRowErrors), required: false);
-            var __workflow_requestclearNavigation = requestclearNavigation == null ? null : WorkflowExpression.Compile(requestclearNavigation);
-            WorkflowExpression.Validate(__workflow_requestclearNavigation, nameof(requestclearNavigation), required: false);
-            var __workflow_requestprovisionContentTypesToSubWebs = requestprovisionContentTypesToSubWebs == null ? null : WorkflowExpression.Compile(requestprovisionContentTypesToSubWebs);
-            WorkflowExpression.Validate(__workflow_requestprovisionContentTypesToSubWebs, nameof(requestprovisionContentTypesToSubWebs), required: false);
-            var __workflow_requestprovisionFieldsToSubWebs = requestprovisionFieldsToSubWebs == null ? null : WorkflowExpression.Compile(requestprovisionFieldsToSubWebs);
-            WorkflowExpression.Validate(__workflow_requestprovisionFieldsToSubWebs, nameof(requestprovisionFieldsToSubWebs), required: false);
-            var __workflow_requesthandlers = requesthandlers == null ? null : WorkflowExpression.Compile(requesthandlers);
-            WorkflowExpression.Validate(__workflow_requesthandlers, nameof(requesthandlers), required: false);
-            var __workflow_requestexcludeHandlers = requestexcludeHandlers == null ? null : WorkflowExpression.Compile(requestexcludeHandlers);
-            WorkflowExpression.Validate(__workflow_requestexcludeHandlers, nameof(requestexcludeHandlers), required: false);
-            var __workflow_requestparameters = requestparameters == null ? null : WorkflowExpression.Compile(requestparameters);
-            WorkflowExpression.Validate(__workflow_requestparameters, nameof(requestparameters), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requesttemplateContent = WorkflowExpression.Compile(requesttemplateContent, nameof(requesttemplateContent), required: true);
+            var __workflow_requestoverwriteSystemPropertyBagValues = WorkflowExpression.Compile(requestoverwriteSystemPropertyBagValues, nameof(requestoverwriteSystemPropertyBagValues), required: false);
+            var __workflow_requestignoreDuplicateDataRowErrors = WorkflowExpression.Compile(requestignoreDuplicateDataRowErrors, nameof(requestignoreDuplicateDataRowErrors), required: false);
+            var __workflow_requestclearNavigation = WorkflowExpression.Compile(requestclearNavigation, nameof(requestclearNavigation), required: false);
+            var __workflow_requestprovisionContentTypesToSubWebs = WorkflowExpression.Compile(requestprovisionContentTypesToSubWebs, nameof(requestprovisionContentTypesToSubWebs), required: false);
+            var __workflow_requestprovisionFieldsToSubWebs = WorkflowExpression.Compile(requestprovisionFieldsToSubWebs, nameof(requestprovisionFieldsToSubWebs), required: false);
+            var __workflow_requesthandlers = WorkflowExpression.Compile(requesthandlers, nameof(requesthandlers), required: false);
+            var __workflow_requestexcludeHandlers = WorkflowExpression.Compile(requestexcludeHandlers, nameof(requestexcludeHandlers), required: false);
+            var __workflow_requestparameters = WorkflowExpression.Compile(requestparameters, nameof(requestparameters), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTemplate";
@@ -1770,26 +1596,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTenantTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requesttemplateContent = requesttemplateContent == null ? null : WorkflowExpression.Compile(requesttemplateContent);
-            WorkflowExpression.Validate(__workflow_requesttemplateContent, nameof(requesttemplateContent), required: true);
-            var __workflow_requestoverwriteSystemPropertyBagValues = requestoverwriteSystemPropertyBagValues == null ? null : WorkflowExpression.Compile(requestoverwriteSystemPropertyBagValues);
-            WorkflowExpression.Validate(__workflow_requestoverwriteSystemPropertyBagValues, nameof(requestoverwriteSystemPropertyBagValues), required: false);
-            var __workflow_requestignoreDuplicateDataRowErrors = requestignoreDuplicateDataRowErrors == null ? null : WorkflowExpression.Compile(requestignoreDuplicateDataRowErrors);
-            WorkflowExpression.Validate(__workflow_requestignoreDuplicateDataRowErrors, nameof(requestignoreDuplicateDataRowErrors), required: false);
-            var __workflow_requestclearNavigation = requestclearNavigation == null ? null : WorkflowExpression.Compile(requestclearNavigation);
-            WorkflowExpression.Validate(__workflow_requestclearNavigation, nameof(requestclearNavigation), required: false);
-            var __workflow_requestprovisionContentTypesToSubWebs = requestprovisionContentTypesToSubWebs == null ? null : WorkflowExpression.Compile(requestprovisionContentTypesToSubWebs);
-            WorkflowExpression.Validate(__workflow_requestprovisionContentTypesToSubWebs, nameof(requestprovisionContentTypesToSubWebs), required: false);
-            var __workflow_requestprovisionFieldsToSubWebs = requestprovisionFieldsToSubWebs == null ? null : WorkflowExpression.Compile(requestprovisionFieldsToSubWebs);
-            WorkflowExpression.Validate(__workflow_requestprovisionFieldsToSubWebs, nameof(requestprovisionFieldsToSubWebs), required: false);
-            var __workflow_requesthandlers = requesthandlers == null ? null : WorkflowExpression.Compile(requesthandlers);
-            WorkflowExpression.Validate(__workflow_requesthandlers, nameof(requesthandlers), required: false);
-            var __workflow_requestexcludeHandlers = requestexcludeHandlers == null ? null : WorkflowExpression.Compile(requestexcludeHandlers);
-            WorkflowExpression.Validate(__workflow_requestexcludeHandlers, nameof(requestexcludeHandlers), required: false);
-            var __workflow_requestparameters = requestparameters == null ? null : WorkflowExpression.Compile(requestparameters);
-            WorkflowExpression.Validate(__workflow_requestparameters, nameof(requestparameters), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requesttemplateContent = WorkflowExpression.Compile(requesttemplateContent, nameof(requesttemplateContent), required: true);
+            var __workflow_requestoverwriteSystemPropertyBagValues = WorkflowExpression.Compile(requestoverwriteSystemPropertyBagValues, nameof(requestoverwriteSystemPropertyBagValues), required: false);
+            var __workflow_requestignoreDuplicateDataRowErrors = WorkflowExpression.Compile(requestignoreDuplicateDataRowErrors, nameof(requestignoreDuplicateDataRowErrors), required: false);
+            var __workflow_requestclearNavigation = WorkflowExpression.Compile(requestclearNavigation, nameof(requestclearNavigation), required: false);
+            var __workflow_requestprovisionContentTypesToSubWebs = WorkflowExpression.Compile(requestprovisionContentTypesToSubWebs, nameof(requestprovisionContentTypesToSubWebs), required: false);
+            var __workflow_requestprovisionFieldsToSubWebs = WorkflowExpression.Compile(requestprovisionFieldsToSubWebs, nameof(requestprovisionFieldsToSubWebs), required: false);
+            var __workflow_requesthandlers = WorkflowExpression.Compile(requesthandlers, nameof(requesthandlers), required: false);
+            var __workflow_requestexcludeHandlers = WorkflowExpression.Compile(requestexcludeHandlers, nameof(requestexcludeHandlers), required: false);
+            var __workflow_requestparameters = WorkflowExpression.Compile(requestparameters, nameof(requestparameters), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTenantTemplate";
@@ -1861,18 +1677,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsAddSiteNavigation(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null, Expression<Func<string>> requesturl = null, Expression<Func<bool>> requestprepend = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlocation = requestlocation == null ? null : WorkflowExpression.Compile(requestlocation);
-            WorkflowExpression.Validate(__workflow_requestlocation, nameof(requestlocation), required: true);
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: true);
-            var __workflow_requestparent = requestparent == null ? null : WorkflowExpression.Compile(requestparent);
-            WorkflowExpression.Validate(__workflow_requestparent, nameof(requestparent), required: false);
-            var __workflow_requesturl = requesturl == null ? null : WorkflowExpression.Compile(requesturl);
-            WorkflowExpression.Validate(__workflow_requesturl, nameof(requesturl), required: false);
-            var __workflow_requestprepend = requestprepend == null ? null : WorkflowExpression.Compile(requestprepend);
-            WorkflowExpression.Validate(__workflow_requestprepend, nameof(requestprepend), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlocation = WorkflowExpression.Compile(requestlocation, nameof(requestlocation), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
+            var __workflow_requestparent = WorkflowExpression.Compile(requestparent, nameof(requestparent), required: false);
+            var __workflow_requesturl = WorkflowExpression.Compile(requesturl, nameof(requesturl), required: false);
+            var __workflow_requestprepend = WorkflowExpression.Compile(requestprepend, nameof(requestprepend), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddSiteNavigation";
@@ -1916,14 +1726,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsRemoveSiteNavigation(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlocation = requestlocation == null ? null : WorkflowExpression.Compile(requestlocation);
-            WorkflowExpression.Validate(__workflow_requestlocation, nameof(requestlocation), required: true);
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: true);
-            var __workflow_requestparent = requestparent == null ? null : WorkflowExpression.Compile(requestparent);
-            WorkflowExpression.Validate(__workflow_requestparent, nameof(requestparent), required: false);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlocation = WorkflowExpression.Compile(requestlocation, nameof(requestlocation), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
+            var __workflow_requestparent = WorkflowExpression.Compile(requestparent, nameof(requestparent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSiteNavigation";
@@ -1955,12 +1761,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsUpdateListItem(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistName = requestlistName == null ? null : WorkflowExpression.Compile(requestlistName);
-            WorkflowExpression.Validate(__workflow_requestlistName, nameof(requestlistName), required: true);
-            var __workflow_requestitemIDOrURL = requestitemIDOrURL == null ? null : WorkflowExpression.Compile(requestitemIDOrURL);
-            WorkflowExpression.Validate(__workflow_requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistName = WorkflowExpression.Compile(requestlistName, nameof(requestlistName), required: true);
+            var __workflow_requestitemIDOrURL = WorkflowExpression.Compile(requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateListItem";
@@ -1994,12 +1797,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsDeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistName = requestlistName == null ? null : WorkflowExpression.Compile(requestlistName);
-            WorkflowExpression.Validate(__workflow_requestlistName, nameof(requestlistName), required: true);
-            var __workflow_requestitemIDOrURL = requestitemIDOrURL == null ? null : WorkflowExpression.Compile(requestitemIDOrURL);
-            WorkflowExpression.Validate(__workflow_requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistName = WorkflowExpression.Compile(requestlistName, nameof(requestlistName), required: true);
+            var __workflow_requestitemIDOrURL = WorkflowExpression.Compile(requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeclareDocumentAsRecord";
@@ -2025,12 +1825,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IWorkflowAction FlowV1SharePointFlowJobsUndeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
         {
-            var __workflow_requestsharePointSiteURL = requestsharePointSiteURL == null ? null : WorkflowExpression.Compile(requestsharePointSiteURL);
-            WorkflowExpression.Validate(__workflow_requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
-            var __workflow_requestlistName = requestlistName == null ? null : WorkflowExpression.Compile(requestlistName);
-            WorkflowExpression.Validate(__workflow_requestlistName, nameof(requestlistName), required: true);
-            var __workflow_requestitemIDOrURL = requestitemIDOrURL == null ? null : WorkflowExpression.Compile(requestitemIDOrURL);
-            WorkflowExpression.Validate(__workflow_requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
+            var __workflow_requestsharePointSiteURL = WorkflowExpression.Compile(requestsharePointSiteURL, nameof(requestsharePointSiteURL), required: true);
+            var __workflow_requestlistName = WorkflowExpression.Compile(requestlistName, nameof(requestlistName), required: true);
+            var __workflow_requestitemIDOrURL = WorkflowExpression.Compile(requestitemIDOrURL, nameof(requestitemIDOrURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/UndeclareDocumentAsRecord";
@@ -2056,18 +1853,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsParseCsv(Expression<Func<string>> requestcontentOfCSVDocument, Expression<Func<string>> requestheaders, Expression<Func<requestdelimiterInput>> requestdelimiter = null, Expression<Func<requestlocaleInput>> requestlocale = null, Expression<Func<int>> requestlimit = null, Expression<Func<bool>> requestskipFirstLine = null)
         {
-            var __workflow_requestcontentOfCSVDocument = requestcontentOfCSVDocument == null ? null : WorkflowExpression.Compile(requestcontentOfCSVDocument);
-            WorkflowExpression.Validate(__workflow_requestcontentOfCSVDocument, nameof(requestcontentOfCSVDocument), required: true);
-            var __workflow_requestheaders = requestheaders == null ? null : WorkflowExpression.Compile(requestheaders);
-            WorkflowExpression.Validate(__workflow_requestheaders, nameof(requestheaders), required: true);
-            var __workflow_requestdelimiter = requestdelimiter == null ? null : WorkflowExpression.Compile(requestdelimiter);
-            WorkflowExpression.Validate(__workflow_requestdelimiter, nameof(requestdelimiter), required: false);
-            var __workflow_requestlocale = requestlocale == null ? null : WorkflowExpression.Compile(requestlocale);
-            WorkflowExpression.Validate(__workflow_requestlocale, nameof(requestlocale), required: false);
-            var __workflow_requestlimit = requestlimit == null ? null : WorkflowExpression.Compile(requestlimit);
-            WorkflowExpression.Validate(__workflow_requestlimit, nameof(requestlimit), required: false);
-            var __workflow_requestskipFirstLine = requestskipFirstLine == null ? null : WorkflowExpression.Compile(requestskipFirstLine);
-            WorkflowExpression.Validate(__workflow_requestskipFirstLine, nameof(requestskipFirstLine), required: false);
+            var __workflow_requestcontentOfCSVDocument = WorkflowExpression.Compile(requestcontentOfCSVDocument, nameof(requestcontentOfCSVDocument), required: true);
+            var __workflow_requestheaders = WorkflowExpression.Compile(requestheaders, nameof(requestheaders), required: true);
+            var __workflow_requestdelimiter = WorkflowExpression.Compile(requestdelimiter, nameof(requestdelimiter), required: false);
+            var __workflow_requestlocale = WorkflowExpression.Compile(requestlocale, nameof(requestlocale), required: false);
+            var __workflow_requestlimit = WorkflowExpression.Compile(requestlimit, nameof(requestlimit), required: false);
+            var __workflow_requestskipFirstLine = WorkflowExpression.Compile(requestskipFirstLine, nameof(requestskipFirstLine), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/ParseCsv";
@@ -2125,10 +1916,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsRegExpMatch(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
         {
-            var __workflow_requestpattern = requestpattern == null ? null : WorkflowExpression.Compile(requestpattern);
-            WorkflowExpression.Validate(__workflow_requestpattern, nameof(requestpattern), required: true);
-            var __workflow_requesttext = requesttext == null ? null : WorkflowExpression.Compile(requesttext);
-            WorkflowExpression.Validate(__workflow_requesttext, nameof(requesttext), required: true);
+            var __workflow_requestpattern = WorkflowExpression.Compile(requestpattern, nameof(requestpattern), required: true);
+            var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpMatch";
@@ -2152,12 +1941,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<StringResultResponse> FlowV1SharePointFlowJobsRegExpReplace(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext, Expression<Func<string>> requestreplacement = null)
         {
-            var __workflow_requestpattern = requestpattern == null ? null : WorkflowExpression.Compile(requestpattern);
-            WorkflowExpression.Validate(__workflow_requestpattern, nameof(requestpattern), required: true);
-            var __workflow_requesttext = requesttext == null ? null : WorkflowExpression.Compile(requesttext);
-            WorkflowExpression.Validate(__workflow_requesttext, nameof(requesttext), required: true);
-            var __workflow_requestreplacement = requestreplacement == null ? null : WorkflowExpression.Compile(requestreplacement);
-            WorkflowExpression.Validate(__workflow_requestreplacement, nameof(requestreplacement), required: false);
+            var __workflow_requestpattern = WorkflowExpression.Compile(requestpattern, nameof(requestpattern), required: true);
+            var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
+            var __workflow_requestreplacement = WorkflowExpression.Compile(requestreplacement, nameof(requestreplacement), required: false);
             return new DeferredBodyAction<StringResultResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpReplace";
@@ -2187,10 +1973,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
         public IBodyWorkflowAction<BooleanResultResponse> FlowV1SharePointFlowJobsRegExpTest(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
         {
-            var __workflow_requestpattern = requestpattern == null ? null : WorkflowExpression.Compile(requestpattern);
-            WorkflowExpression.Validate(__workflow_requestpattern, nameof(requestpattern), required: true);
-            var __workflow_requesttext = requesttext == null ? null : WorkflowExpression.Compile(requesttext);
-            WorkflowExpression.Validate(__workflow_requesttext, nameof(requesttext), required: true);
+            var __workflow_requestpattern = WorkflowExpression.Compile(requestpattern, nameof(requestpattern), required: true);
+            var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
             return new DeferredBodyAction<BooleanResultResponse>(() =>
             {
                 var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpTest";

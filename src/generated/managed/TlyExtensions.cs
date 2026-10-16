@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelPostResponse> Pixel(Expression<Func<string>> bodyname, Expression<Func<string>> bodypixelId, Expression<Func<string>> bodypixelType)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodypixelId = bodypixelId == null ? null : WorkflowExpression.Compile(bodypixelId);
-            WorkflowExpression.Validate(__workflow_bodypixelId, nameof(bodypixelId), required: true);
-            var __workflow_bodypixelType = bodypixelType == null ? null : WorkflowExpression.Compile(bodypixelType);
-            WorkflowExpression.Validate(__workflow_bodypixelType, nameof(bodypixelType), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodypixelId = WorkflowExpression.Compile(bodypixelId, nameof(bodypixelId), required: true);
+            var __workflow_bodypixelType = WorkflowExpression.Compile(bodypixelType, nameof(bodypixelType), required: true);
             return new DeferredBodyAction<PixelPostResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link/pixel";
@@ -53,8 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelGetResponse> PixelGet(Expression<Func<string>> pixelId)
         {
-            var __workflow_pixelId = pixelId == null ? null : WorkflowExpression.Compile(pixelId);
-            WorkflowExpression.Validate(__workflow_pixelId, nameof(pixelId), required: true);
+            var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
             return new DeferredBodyAction<PixelGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pixelId, 1));
@@ -67,8 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> PixelDelete(Expression<Func<string>> pixelId)
         {
-            var __workflow_pixelId = pixelId == null ? null : WorkflowExpression.Compile(pixelId);
-            WorkflowExpression.Validate(__workflow_pixelId, nameof(pixelId), required: true);
+            var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pixelId, 1));
@@ -81,16 +76,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelPutResponse> PixelPut(Expression<Func<string>> pixelId, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypixelId = null, Expression<Func<string>> bodypixelType = null)
         {
-            var __workflow_pixelId = pixelId == null ? null : WorkflowExpression.Compile(pixelId);
-            WorkflowExpression.Validate(__workflow_pixelId, nameof(pixelId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodypixelId = bodypixelId == null ? null : WorkflowExpression.Compile(bodypixelId);
-            WorkflowExpression.Validate(__workflow_bodypixelId, nameof(bodypixelId), required: false);
-            var __workflow_bodypixelType = bodypixelType == null ? null : WorkflowExpression.Compile(bodypixelType);
-            WorkflowExpression.Validate(__workflow_bodypixelType, nameof(bodypixelType), required: false);
+            var __workflow_pixelId = WorkflowExpression.Compile(pixelId, nameof(pixelId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodypixelId = WorkflowExpression.Compile(bodypixelId, nameof(bodypixelId), required: false);
+            var __workflow_bodypixelType = WorkflowExpression.Compile(bodypixelType, nameof(bodypixelType), required: false);
             return new DeferredBodyAction<PixelPutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pixelId, 1));
@@ -134,18 +124,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodylongUrl, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<bodymetasmartUrlsInputItem[]>> bodymetasmartUrls = null)
         {
-            var __workflow_bodylongUrl = bodylongUrl == null ? null : WorkflowExpression.Compile(bodylongUrl);
-            WorkflowExpression.Validate(__workflow_bodylongUrl, nameof(bodylongUrl), required: true);
-            var __workflow_bodydomain = bodydomain == null ? null : WorkflowExpression.Compile(bodydomain);
-            WorkflowExpression.Validate(__workflow_bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodyexpireAtDatetime = bodyexpireAtDatetime == null ? null : WorkflowExpression.Compile(bodyexpireAtDatetime);
-            WorkflowExpression.Validate(__workflow_bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodypublicStats = bodypublicStats == null ? null : WorkflowExpression.Compile(bodypublicStats);
-            WorkflowExpression.Validate(__workflow_bodypublicStats, nameof(bodypublicStats), required: false);
-            var __workflow_bodymetasmartUrls = bodymetasmartUrls == null ? null : WorkflowExpression.Compile(bodymetasmartUrls);
-            WorkflowExpression.Validate(__workflow_bodymetasmartUrls, nameof(bodymetasmartUrls), required: false);
+            var __workflow_bodylongUrl = WorkflowExpression.Compile(bodylongUrl, nameof(bodylongUrl), required: true);
+            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
+            var __workflow_bodyexpireAtDatetime = WorkflowExpression.Compile(bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodypublicStats = WorkflowExpression.Compile(bodypublicStats, nameof(bodypublicStats), required: false);
+            var __workflow_bodymetasmartUrls = WorkflowExpression.Compile(bodymetasmartUrls, nameof(bodymetasmartUrls), required: false);
             return new DeferredBodyAction<LinkPostResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link/shorten";
@@ -205,8 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkGetResponse> LinkGet(Expression<Func<string>> shortUrl = null)
         {
-            var __workflow_shortUrl = shortUrl == null ? null : WorkflowExpression.Compile(shortUrl);
-            WorkflowExpression.Validate(__workflow_shortUrl, nameof(shortUrl), required: false);
+            var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: false);
             return new DeferredBodyAction<LinkGetResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link";
@@ -221,8 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> LinkDelete(Expression<Func<string>> bodyshortUrl = null)
         {
-            var __workflow_bodyshortUrl = bodyshortUrl == null ? null : WorkflowExpression.Compile(bodyshortUrl);
-            WorkflowExpression.Validate(__workflow_bodyshortUrl, nameof(bodyshortUrl), required: false);
+            var __workflow_bodyshortUrl = WorkflowExpression.Compile(bodyshortUrl, nameof(bodyshortUrl), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/v1/link";
@@ -248,28 +230,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkPutResponse> LinkPut(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodylongUrl = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyshortId = null, Expression<Func<string>> bodyexpireAtViews = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<string>> bodyqrCodeUrl = null, Expression<Func<string>> bodyqrCodeBase64 = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
         {
-            var __workflow_bodyshortUrl = bodyshortUrl == null ? null : WorkflowExpression.Compile(bodyshortUrl);
-            WorkflowExpression.Validate(__workflow_bodyshortUrl, nameof(bodyshortUrl), required: false);
-            var __workflow_bodylongUrl = bodylongUrl == null ? null : WorkflowExpression.Compile(bodylongUrl);
-            WorkflowExpression.Validate(__workflow_bodylongUrl, nameof(bodylongUrl), required: false);
-            var __workflow_bodydomain = bodydomain == null ? null : WorkflowExpression.Compile(bodydomain);
-            WorkflowExpression.Validate(__workflow_bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodyshortId = bodyshortId == null ? null : WorkflowExpression.Compile(bodyshortId);
-            WorkflowExpression.Validate(__workflow_bodyshortId, nameof(bodyshortId), required: false);
-            var __workflow_bodyexpireAtViews = bodyexpireAtViews == null ? null : WorkflowExpression.Compile(bodyexpireAtViews);
-            WorkflowExpression.Validate(__workflow_bodyexpireAtViews, nameof(bodyexpireAtViews), required: false);
-            var __workflow_bodyexpireAtDatetime = bodyexpireAtDatetime == null ? null : WorkflowExpression.Compile(bodyexpireAtDatetime);
-            WorkflowExpression.Validate(__workflow_bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
-            var __workflow_bodypublicStats = bodypublicStats == null ? null : WorkflowExpression.Compile(bodypublicStats);
-            WorkflowExpression.Validate(__workflow_bodypublicStats, nameof(bodypublicStats), required: false);
-            var __workflow_bodyqrCodeUrl = bodyqrCodeUrl == null ? null : WorkflowExpression.Compile(bodyqrCodeUrl);
-            WorkflowExpression.Validate(__workflow_bodyqrCodeUrl, nameof(bodyqrCodeUrl), required: false);
-            var __workflow_bodyqrCodeBase64 = bodyqrCodeBase64 == null ? null : WorkflowExpression.Compile(bodyqrCodeBase64);
-            WorkflowExpression.Validate(__workflow_bodyqrCodeBase64, nameof(bodyqrCodeBase64), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodypixels = bodypixels == null ? null : WorkflowExpression.Compile(bodypixels);
-            WorkflowExpression.Validate(__workflow_bodypixels, nameof(bodypixels), required: false);
+            var __workflow_bodyshortUrl = WorkflowExpression.Compile(bodyshortUrl, nameof(bodyshortUrl), required: false);
+            var __workflow_bodylongUrl = WorkflowExpression.Compile(bodylongUrl, nameof(bodylongUrl), required: false);
+            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
+            var __workflow_bodyshortId = WorkflowExpression.Compile(bodyshortId, nameof(bodyshortId), required: false);
+            var __workflow_bodyexpireAtViews = WorkflowExpression.Compile(bodyexpireAtViews, nameof(bodyexpireAtViews), required: false);
+            var __workflow_bodyexpireAtDatetime = WorkflowExpression.Compile(bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
+            var __workflow_bodypublicStats = WorkflowExpression.Compile(bodypublicStats, nameof(bodypublicStats), required: false);
+            var __workflow_bodyqrCodeUrl = WorkflowExpression.Compile(bodyqrCodeUrl, nameof(bodyqrCodeUrl), required: false);
+            var __workflow_bodyqrCodeBase64 = WorkflowExpression.Compile(bodyqrCodeBase64, nameof(bodyqrCodeBase64), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodypixels = WorkflowExpression.Compile(bodypixels, nameof(bodypixels), required: false);
             return new DeferredBodyAction<LinkPutResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link";
@@ -355,10 +326,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinkExpandPostResponse> LinkExpand(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodypassword = null)
         {
-            var __workflow_bodyshortUrl = bodyshortUrl == null ? null : WorkflowExpression.Compile(bodyshortUrl);
-            WorkflowExpression.Validate(__workflow_bodyshortUrl, nameof(bodyshortUrl), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyshortUrl = WorkflowExpression.Compile(bodyshortUrl, nameof(bodyshortUrl), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
             return new DeferredBodyAction<LinkExpandPostResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link/expand";
@@ -390,18 +359,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<LinksGetResponse> LinksGet(Expression<Func<string>> search = null, Expression<Func<string>> tagIds = null, Expression<Func<string>> pixelIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> domains = null)
         {
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_tagIds = tagIds == null ? null : WorkflowExpression.Compile(tagIds);
-            WorkflowExpression.Validate(__workflow_tagIds, nameof(tagIds), required: false);
-            var __workflow_pixelIds = pixelIds == null ? null : WorkflowExpression.Compile(pixelIds);
-            WorkflowExpression.Validate(__workflow_pixelIds, nameof(pixelIds), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_domains = domains == null ? null : WorkflowExpression.Compile(domains);
-            WorkflowExpression.Validate(__workflow_domains, nameof(domains), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_tagIds = WorkflowExpression.Compile(tagIds, nameof(tagIds), required: false);
+            var __workflow_pixelIds = WorkflowExpression.Compile(pixelIds, nameof(pixelIds), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_domains = WorkflowExpression.Compile(domains, nameof(domains), required: false);
             return new DeferredBodyAction<LinksGetResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link/list";
@@ -426,14 +389,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> LinkBulk(Expression<Func<string>> bodydomain = null, Expression<Func<bodylinksInputItem[]>> bodylinks = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
         {
-            var __workflow_bodydomain = bodydomain == null ? null : WorkflowExpression.Compile(bodydomain);
-            WorkflowExpression.Validate(__workflow_bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodylinks = bodylinks == null ? null : WorkflowExpression.Compile(bodylinks);
-            WorkflowExpression.Validate(__workflow_bodylinks, nameof(bodylinks), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodypixels = bodypixels == null ? null : WorkflowExpression.Compile(bodypixels);
-            WorkflowExpression.Validate(__workflow_bodypixels, nameof(bodypixels), required: false);
+            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
+            var __workflow_bodylinks = WorkflowExpression.Compile(bodylinks, nameof(bodylinks), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodypixels = WorkflowExpression.Compile(bodypixels, nameof(bodypixels), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/v1/link/bulk";
@@ -477,8 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<StatGetResponse> StatGet(Expression<Func<string>> shortLink)
         {
-            var __workflow_shortLink = shortLink == null ? null : WorkflowExpression.Compile(shortLink);
-            WorkflowExpression.Validate(__workflow_shortLink, nameof(shortLink), required: true);
+            var __workflow_shortLink = WorkflowExpression.Compile(shortLink, nameof(shortLink), required: true);
             return new DeferredBodyAction<StatGetResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link/stats";
@@ -501,8 +459,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagPostResponse> Tag(Expression<Func<string>> bodytag)
         {
-            var __workflow_bodytag = bodytag == null ? null : WorkflowExpression.Compile(bodytag);
-            WorkflowExpression.Validate(__workflow_bodytag, nameof(bodytag), required: true);
+            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
             return new DeferredBodyAction<TagPostResponse>(() =>
             {
                 var apiCallPath = "/api/v1/link/tag";
@@ -524,8 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tagId)
         {
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<TagGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
@@ -538,8 +494,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<string> TagDelete(Expression<Func<string>> tagId)
         {
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
@@ -552,10 +507,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagPutResponse> TagPut(Expression<Func<string>> tagId, Expression<Func<string>> bodytag)
         {
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
-            var __workflow_bodytag = bodytag == null ? null : WorkflowExpression.Compile(bodytag);
-            WorkflowExpression.Validate(__workflow_bodytag, nameof(bodytag), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            var __workflow_bodytag = WorkflowExpression.Compile(bodytag, nameof(bodytag), required: true);
             return new DeferredBodyAction<TagPutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));

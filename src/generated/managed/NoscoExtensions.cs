@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         public IBodyWorkflowAction<GetIdeaResponse> GetIdea(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetIdeaResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v1/ideas/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -36,22 +35,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         public IBodyWorkflowAction<IdeasResponse> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_publishedAfter = publishedAfter == null ? null : WorkflowExpression.Compile(publishedAfter);
-            WorkflowExpression.Validate(__workflow_publishedAfter, nameof(publishedAfter), required: false);
-            var __workflow_lastStageChangeAfter = lastStageChangeAfter == null ? null : WorkflowExpression.Compile(lastStageChangeAfter);
-            WorkflowExpression.Validate(__workflow_lastStageChangeAfter, nameof(lastStageChangeAfter), required: false);
-            var __workflow_ideaboxId = ideaboxId == null ? null : WorkflowExpression.Compile(ideaboxId);
-            WorkflowExpression.Validate(__workflow_ideaboxId, nameof(ideaboxId), required: false);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: false);
-            var __workflow_sortField = sortField == null ? null : WorkflowExpression.Compile(sortField);
-            WorkflowExpression.Validate(__workflow_sortField, nameof(sortField), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_afterCursor = afterCursor == null ? null : WorkflowExpression.Compile(afterCursor);
-            WorkflowExpression.Validate(__workflow_afterCursor, nameof(afterCursor), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_publishedAfter = WorkflowExpression.Compile(publishedAfter, nameof(publishedAfter), required: false);
+            var __workflow_lastStageChangeAfter = WorkflowExpression.Compile(lastStageChangeAfter, nameof(lastStageChangeAfter), required: false);
+            var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
+            var __workflow_sortField = WorkflowExpression.Compile(sortField, nameof(sortField), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_afterCursor = WorkflowExpression.Compile(afterCursor, nameof(afterCursor), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<IdeasResponse>(() =>
             {
                 var apiCallPath = "/integration/v1/ideas";
@@ -85,10 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     {
         public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId, FlowRecurrence recurrence = null)
         {
-            var __workflow_ideaboxId = ideaboxId == null ? null : WorkflowExpression.Compile(ideaboxId);
-            WorkflowExpression.Validate(__workflow_ideaboxId, nameof(ideaboxId), required: true);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: true);
+            var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: true);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: true);
             return new DeferredBodyTrigger<IdeaReachedStageTriggerResponse>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
@@ -102,12 +91,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
         public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_ideaboxId = ideaboxId == null ? null : WorkflowExpression.Compile(ideaboxId);
-            WorkflowExpression.Validate(__workflow_ideaboxId, nameof(ideaboxId), required: false);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: false);
-            var __workflow_statusId = statusId == null ? null : WorkflowExpression.Compile(statusId);
-            WorkflowExpression.Validate(__workflow_statusId, nameof(statusId), required: false);
+            var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
+            var __workflow_statusId = WorkflowExpression.Compile(statusId, nameof(statusId), required: false);
             return new DeferredBodyTrigger<IdeaStatusChangedTriggerResponse>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
@@ -125,10 +111,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
         public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_ideaboxId = ideaboxId == null ? null : WorkflowExpression.Compile(ideaboxId);
-            WorkflowExpression.Validate(__workflow_ideaboxId, nameof(ideaboxId), required: false);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: false);
+            var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
             return new DeferredBodyTrigger<IdeaPublishedTriggerResponse>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
@@ -144,10 +128,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
         public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_ideaboxId = ideaboxId == null ? null : WorkflowExpression.Compile(ideaboxId);
-            WorkflowExpression.Validate(__workflow_ideaboxId, nameof(ideaboxId), required: false);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: false);
+            var __workflow_ideaboxId = WorkflowExpression.Compile(ideaboxId, nameof(ideaboxId), required: false);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
             return new DeferredBodyTrigger<IdeaEditedTriggerResponse>(() =>
             {
                 var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";

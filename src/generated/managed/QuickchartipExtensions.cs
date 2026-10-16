@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<ChartPostResponse> Chart(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
         {
-            var __workflow_bodychart = bodychart == null ? null : WorkflowExpression.Compile(bodychart);
-            WorkflowExpression.Validate(__workflow_bodychart, nameof(bodychart), required: true);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodydevicePixelRatio = bodydevicePixelRatio == null ? null : WorkflowExpression.Compile(bodydevicePixelRatio);
-            WorkflowExpression.Validate(__workflow_bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
-            var __workflow_bodybackgroundColor = bodybackgroundColor == null ? null : WorkflowExpression.Compile(bodybackgroundColor);
-            WorkflowExpression.Validate(__workflow_bodybackgroundColor, nameof(bodybackgroundColor), required: false);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodyencoding = bodyencoding == null ? null : WorkflowExpression.Compile(bodyencoding);
-            WorkflowExpression.Validate(__workflow_bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyversion = bodyversion == null ? null : WorkflowExpression.Compile(bodyversion);
-            WorkflowExpression.Validate(__workflow_bodyversion, nameof(bodyversion), required: false);
+            var __workflow_bodychart = WorkflowExpression.Compile(bodychart, nameof(bodychart), required: true);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodydevicePixelRatio = WorkflowExpression.Compile(bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
+            var __workflow_bodybackgroundColor = WorkflowExpression.Compile(bodybackgroundColor, nameof(bodybackgroundColor), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
+            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
             return new DeferredBodyAction<ChartPostResponse>(() =>
             {
                 var apiCallPath = "/chart";
@@ -112,22 +104,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<ChartURLResponse> ChartURL(Expression<Func<string>> bodychart, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<string>> bodydevicePixelRatio = null, Expression<Func<string>> bodybackgroundColor = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyversion = null)
         {
-            var __workflow_bodychart = bodychart == null ? null : WorkflowExpression.Compile(bodychart);
-            WorkflowExpression.Validate(__workflow_bodychart, nameof(bodychart), required: true);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodydevicePixelRatio = bodydevicePixelRatio == null ? null : WorkflowExpression.Compile(bodydevicePixelRatio);
-            WorkflowExpression.Validate(__workflow_bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
-            var __workflow_bodybackgroundColor = bodybackgroundColor == null ? null : WorkflowExpression.Compile(bodybackgroundColor);
-            WorkflowExpression.Validate(__workflow_bodybackgroundColor, nameof(bodybackgroundColor), required: false);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodyencoding = bodyencoding == null ? null : WorkflowExpression.Compile(bodyencoding);
-            WorkflowExpression.Validate(__workflow_bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyversion = bodyversion == null ? null : WorkflowExpression.Compile(bodyversion);
-            WorkflowExpression.Validate(__workflow_bodyversion, nameof(bodyversion), required: false);
+            var __workflow_bodychart = WorkflowExpression.Compile(bodychart, nameof(bodychart), required: true);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodydevicePixelRatio = WorkflowExpression.Compile(bodydevicePixelRatio, nameof(bodydevicePixelRatio), required: false);
+            var __workflow_bodybackgroundColor = WorkflowExpression.Compile(bodybackgroundColor, nameof(bodybackgroundColor), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
+            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
             return new DeferredBodyAction<ChartURLResponse>(() =>
             {
                 var apiCallPath = "/chart/create";
@@ -211,16 +195,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<ChartTemplateResponse> ChartTemplate(Expression<Func<string>> chartId, Expression<Func<string>> title = null, Expression<Func<string>> labels = null, Expression<Func<string>> data1 = null, Expression<Func<string>> data2 = null)
         {
-            var __workflow_chartId = chartId == null ? null : WorkflowExpression.Compile(chartId);
-            WorkflowExpression.Validate(__workflow_chartId, nameof(chartId), required: true);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_labels = labels == null ? null : WorkflowExpression.Compile(labels);
-            WorkflowExpression.Validate(__workflow_labels, nameof(labels), required: false);
-            var __workflow_data1 = data1 == null ? null : WorkflowExpression.Compile(data1);
-            WorkflowExpression.Validate(__workflow_data1, nameof(data1), required: false);
-            var __workflow_data2 = data2 == null ? null : WorkflowExpression.Compile(data2);
-            WorkflowExpression.Validate(__workflow_data2, nameof(data2), required: false);
+            var __workflow_chartId = WorkflowExpression.Compile(chartId, nameof(chartId), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_labels = WorkflowExpression.Compile(labels, nameof(labels), required: false);
+            var __workflow_data1 = WorkflowExpression.Compile(data1, nameof(data1), required: false);
+            var __workflow_data2 = WorkflowExpression.Compile(data2, nameof(data2), required: false);
             return new DeferredBodyAction<ChartTemplateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/chart/render/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_chartId, 1));
@@ -241,28 +220,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<QRCodeResponse> QRCode(Expression<Func<string>> text = null, Expression<Func<int>> margin = null, Expression<Func<int>> size = null, Expression<Func<string>> dark = null, Expression<Func<string>> light = null, Expression<Func<ecLevelInput>> ecLevel = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> centerImageUrl = null, Expression<Func<double>> centerImageSizeRatio = null, Expression<Func<int>> centerImageWidth = null, Expression<Func<int>> centerImageHeight = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
-            var __workflow_margin = margin == null ? null : WorkflowExpression.Compile(margin);
-            WorkflowExpression.Validate(__workflow_margin, nameof(margin), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_dark = dark == null ? null : WorkflowExpression.Compile(dark);
-            WorkflowExpression.Validate(__workflow_dark, nameof(dark), required: false);
-            var __workflow_light = light == null ? null : WorkflowExpression.Compile(light);
-            WorkflowExpression.Validate(__workflow_light, nameof(light), required: false);
-            var __workflow_ecLevel = ecLevel == null ? null : WorkflowExpression.Compile(ecLevel);
-            WorkflowExpression.Validate(__workflow_ecLevel, nameof(ecLevel), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_centerImageUrl = centerImageUrl == null ? null : WorkflowExpression.Compile(centerImageUrl);
-            WorkflowExpression.Validate(__workflow_centerImageUrl, nameof(centerImageUrl), required: false);
-            var __workflow_centerImageSizeRatio = centerImageSizeRatio == null ? null : WorkflowExpression.Compile(centerImageSizeRatio);
-            WorkflowExpression.Validate(__workflow_centerImageSizeRatio, nameof(centerImageSizeRatio), required: false);
-            var __workflow_centerImageWidth = centerImageWidth == null ? null : WorkflowExpression.Compile(centerImageWidth);
-            WorkflowExpression.Validate(__workflow_centerImageWidth, nameof(centerImageWidth), required: false);
-            var __workflow_centerImageHeight = centerImageHeight == null ? null : WorkflowExpression.Compile(centerImageHeight);
-            WorkflowExpression.Validate(__workflow_centerImageHeight, nameof(centerImageHeight), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_margin = WorkflowExpression.Compile(margin, nameof(margin), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_dark = WorkflowExpression.Compile(dark, nameof(dark), required: false);
+            var __workflow_light = WorkflowExpression.Compile(light, nameof(light), required: false);
+            var __workflow_ecLevel = WorkflowExpression.Compile(ecLevel, nameof(ecLevel), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_centerImageUrl = WorkflowExpression.Compile(centerImageUrl, nameof(centerImageUrl), required: false);
+            var __workflow_centerImageSizeRatio = WorkflowExpression.Compile(centerImageSizeRatio, nameof(centerImageSizeRatio), required: false);
+            var __workflow_centerImageWidth = WorkflowExpression.Compile(centerImageWidth, nameof(centerImageWidth), required: false);
+            var __workflow_centerImageHeight = WorkflowExpression.Compile(centerImageHeight, nameof(centerImageHeight), required: false);
             return new DeferredBodyAction<QRCodeResponse>(() =>
             {
                 var apiCallPath = "/qr";
@@ -303,16 +271,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<GraphVizResponse> GraphViz(Expression<Func<string>> bodygraph, Expression<Func<bodylayoutInput>> bodylayout = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
-            var __workflow_bodygraph = bodygraph == null ? null : WorkflowExpression.Compile(bodygraph);
-            WorkflowExpression.Validate(__workflow_bodygraph, nameof(bodygraph), required: true);
-            var __workflow_bodylayout = bodylayout == null ? null : WorkflowExpression.Compile(bodylayout);
-            WorkflowExpression.Validate(__workflow_bodylayout, nameof(bodylayout), required: false);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodygraph = WorkflowExpression.Compile(bodygraph, nameof(bodygraph), required: true);
+            var __workflow_bodylayout = WorkflowExpression.Compile(bodylayout, nameof(bodylayout), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
             return new DeferredBodyAction<GraphVizResponse>(() =>
             {
                 var apiCallPath = "/graphviz";
@@ -378,42 +341,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Quickchartip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "quickchartip")]
         public IBodyWorkflowAction<WordCloudResponse> WordCloud(Expression<Func<string>> text = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> backgroundColor = null, Expression<Func<formatInput>> format = null, Expression<Func<string>> fontFamily = null, Expression<Func<string>> loadGoogleFonts = null, Expression<Func<int>> fontScale = null, Expression<Func<scaleInput>> scale = null, Expression<Func<int>> padding = null, Expression<Func<int>> rotation = null, Expression<Func<int>> maxNumWords = null, Expression<Func<int>> minWordLength = null, Expression<Func<@caseInput>> @case = null, Expression<Func<string>> colors = null, Expression<Func<bool>> removeStopwords = null, Expression<Func<string>> language = null, Expression<Func<bool>> useWordList = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
-            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
-            WorkflowExpression.Validate(__workflow_width, nameof(width), required: false);
-            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
-            WorkflowExpression.Validate(__workflow_height, nameof(height), required: false);
-            var __workflow_backgroundColor = backgroundColor == null ? null : WorkflowExpression.Compile(backgroundColor);
-            WorkflowExpression.Validate(__workflow_backgroundColor, nameof(backgroundColor), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_fontFamily = fontFamily == null ? null : WorkflowExpression.Compile(fontFamily);
-            WorkflowExpression.Validate(__workflow_fontFamily, nameof(fontFamily), required: false);
-            var __workflow_loadGoogleFonts = loadGoogleFonts == null ? null : WorkflowExpression.Compile(loadGoogleFonts);
-            WorkflowExpression.Validate(__workflow_loadGoogleFonts, nameof(loadGoogleFonts), required: false);
-            var __workflow_fontScale = fontScale == null ? null : WorkflowExpression.Compile(fontScale);
-            WorkflowExpression.Validate(__workflow_fontScale, nameof(fontScale), required: false);
-            var __workflow_scale = scale == null ? null : WorkflowExpression.Compile(scale);
-            WorkflowExpression.Validate(__workflow_scale, nameof(scale), required: false);
-            var __workflow_padding = padding == null ? null : WorkflowExpression.Compile(padding);
-            WorkflowExpression.Validate(__workflow_padding, nameof(padding), required: false);
-            var __workflow_rotation = rotation == null ? null : WorkflowExpression.Compile(rotation);
-            WorkflowExpression.Validate(__workflow_rotation, nameof(rotation), required: false);
-            var __workflow_maxNumWords = maxNumWords == null ? null : WorkflowExpression.Compile(maxNumWords);
-            WorkflowExpression.Validate(__workflow_maxNumWords, nameof(maxNumWords), required: false);
-            var __workflow_minWordLength = minWordLength == null ? null : WorkflowExpression.Compile(minWordLength);
-            WorkflowExpression.Validate(__workflow_minWordLength, nameof(minWordLength), required: false);
-            var __workflow_case = @case == null ? null : WorkflowExpression.Compile(@case);
-            WorkflowExpression.Validate(__workflow_case, nameof(@case), required: false);
-            var __workflow_colors = colors == null ? null : WorkflowExpression.Compile(colors);
-            WorkflowExpression.Validate(__workflow_colors, nameof(colors), required: false);
-            var __workflow_removeStopwords = removeStopwords == null ? null : WorkflowExpression.Compile(removeStopwords);
-            WorkflowExpression.Validate(__workflow_removeStopwords, nameof(removeStopwords), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_useWordList = useWordList == null ? null : WorkflowExpression.Compile(useWordList);
-            WorkflowExpression.Validate(__workflow_useWordList, nameof(useWordList), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: false);
+            var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: false);
+            var __workflow_backgroundColor = WorkflowExpression.Compile(backgroundColor, nameof(backgroundColor), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_fontFamily = WorkflowExpression.Compile(fontFamily, nameof(fontFamily), required: false);
+            var __workflow_loadGoogleFonts = WorkflowExpression.Compile(loadGoogleFonts, nameof(loadGoogleFonts), required: false);
+            var __workflow_fontScale = WorkflowExpression.Compile(fontScale, nameof(fontScale), required: false);
+            var __workflow_scale = WorkflowExpression.Compile(scale, nameof(scale), required: false);
+            var __workflow_padding = WorkflowExpression.Compile(padding, nameof(padding), required: false);
+            var __workflow_rotation = WorkflowExpression.Compile(rotation, nameof(rotation), required: false);
+            var __workflow_maxNumWords = WorkflowExpression.Compile(maxNumWords, nameof(maxNumWords), required: false);
+            var __workflow_minWordLength = WorkflowExpression.Compile(minWordLength, nameof(minWordLength), required: false);
+            var __workflow_case = WorkflowExpression.Compile(@case, nameof(@case), required: false);
+            var __workflow_colors = WorkflowExpression.Compile(colors, nameof(colors), required: false);
+            var __workflow_removeStopwords = WorkflowExpression.Compile(removeStopwords, nameof(removeStopwords), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_useWordList = WorkflowExpression.Compile(useWordList, nameof(useWordList), required: false);
             return new DeferredBodyAction<WordCloudResponse>(() =>
             {
                 var apiCallPath = "/wordcloud";

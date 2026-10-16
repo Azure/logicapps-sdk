@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ListWantedResponse> ListWanted(Expression<Func<posterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<fieldOfficesInput>> fieldOffices = null, Expression<Func<personClassificationInput>> personClassification = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
         {
-            var __workflow_posterClassification = posterClassification == null ? null : WorkflowExpression.Compile(posterClassification);
-            WorkflowExpression.Validate(__workflow_posterClassification, nameof(posterClassification), required: false);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_fieldOffices = fieldOffices == null ? null : WorkflowExpression.Compile(fieldOffices);
-            WorkflowExpression.Validate(__workflow_fieldOffices, nameof(fieldOffices), required: false);
-            var __workflow_personClassification = personClassification == null ? null : WorkflowExpression.Compile(personClassification);
-            WorkflowExpression.Validate(__workflow_personClassification, nameof(personClassification), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_sortOn = sortOn == null ? null : WorkflowExpression.Compile(sortOn);
-            WorkflowExpression.Validate(__workflow_sortOn, nameof(sortOn), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
+            var __workflow_posterClassification = WorkflowExpression.Compile(posterClassification, nameof(posterClassification), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_fieldOffices = WorkflowExpression.Compile(fieldOffices, nameof(fieldOffices), required: false);
+            var __workflow_personClassification = WorkflowExpression.Compile(personClassification, nameof(personClassification), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sortOn = WorkflowExpression.Compile(sortOn, nameof(sortOn), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
             return new DeferredBodyAction<ListWantedResponse>(() =>
             {
                 var apiCallPath = "/@wanted";
@@ -61,8 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<WantedPerson> GetWantedPerson(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<WantedPerson>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/@wanted-person/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -75,22 +65,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
         {
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_crimeCategory = crimeCategory == null ? null : WorkflowExpression.Compile(crimeCategory);
-            WorkflowExpression.Validate(__workflow_crimeCategory, nameof(crimeCategory), required: false);
-            var __workflow_maker = maker == null ? null : WorkflowExpression.Compile(maker);
-            WorkflowExpression.Validate(__workflow_maker, nameof(maker), required: false);
-            var __workflow_referenceNumber = referenceNumber == null ? null : WorkflowExpression.Compile(referenceNumber);
-            WorkflowExpression.Validate(__workflow_referenceNumber, nameof(referenceNumber), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_sortOn = sortOn == null ? null : WorkflowExpression.Compile(sortOn);
-            WorkflowExpression.Validate(__workflow_sortOn, nameof(sortOn), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_crimeCategory = WorkflowExpression.Compile(crimeCategory, nameof(crimeCategory), required: false);
+            var __workflow_maker = WorkflowExpression.Compile(maker, nameof(maker), required: false);
+            var __workflow_referenceNumber = WorkflowExpression.Compile(referenceNumber, nameof(referenceNumber), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sortOn = WorkflowExpression.Compile(sortOn, nameof(sortOn), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
             return new DeferredBodyAction<ListArtCrimesResponse>(() =>
             {
                 var apiCallPath = "/@artcrimes";
@@ -119,8 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
         public IBodyWorkflowAction<ArtCrime> GetArtCrime(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ArtCrime>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/@artcrimes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

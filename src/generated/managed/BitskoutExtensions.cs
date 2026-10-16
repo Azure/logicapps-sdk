@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<RunPluginForFileResponse> RunPluginForFile(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyplugin = bodyplugin == null ? null : WorkflowExpression.Compile(bodyplugin);
-            WorkflowExpression.Validate(__workflow_bodyplugin, nameof(bodyplugin), required: false);
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyplugin = WorkflowExpression.Compile(bodyplugin, nameof(bodyplugin), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<RunPluginForFileResponse>(() =>
             {
                 var apiCallPath = "/powerauto/run_file";
@@ -57,10 +55,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<RunPluginTextResponse> RunPluginText(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodytext = null)
         {
-            var __workflow_bodyplugin = bodyplugin == null ? null : WorkflowExpression.Compile(bodyplugin);
-            WorkflowExpression.Validate(__workflow_bodyplugin, nameof(bodyplugin), required: false);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyplugin = WorkflowExpression.Compile(bodyplugin, nameof(bodyplugin), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<RunPluginTextResponse>(() =>
             {
                 var apiCallPath = "/powerauto/run_text";
@@ -92,8 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> ExtractDataFromInvoice(Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ExtractDataFromInvoiceResponse>(() =>
             {
                 var apiCallPath = "/actions/invoices";
@@ -119,8 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> ExtractDataPurchaseOrders(Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ExtractDataPurchaseOrdersResponse>(() =>
             {
                 var apiCallPath = "/actions/purchase_order";
@@ -146,8 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataBillofLadingResponse> ExtractDataBillofLading(Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ExtractDataBillofLadingResponse>(() =>
             {
                 var apiCallPath = "/actions/bill_of_lading";
@@ -173,8 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataCVResponse> ExtractDataCV(Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ExtractDataCVResponse>(() =>
             {
                 var apiCallPath = "/actions/cv";
@@ -200,10 +192,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_doctype = doctype == null ? null : WorkflowExpression.Compile(doctype);
-            WorkflowExpression.Validate(__workflow_doctype, nameof(doctype), required: true);
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_doctype = WorkflowExpression.Compile(doctype, nameof(doctype), required: true);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<DetectDocumentTypeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/doctype_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doctype, 1));
@@ -229,8 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> ExtractDataBusinessCards(Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ExtractDataBusinessCardsResponse>(() =>
             {
                 var apiCallPath = "/actions/business_cards";
@@ -256,8 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractQRCodeResponse> ExtractQRCode(Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ExtractQRCodeResponse>(() =>
             {
                 var apiCallPath = "/actions/qrcodes";
@@ -283,8 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> ExtractBarcodeFromFile(Expression<Func<string>> bodyfileUrl = null)
         {
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
             return new DeferredBodyAction<ExtractBarcodeFromFileResponse>(() =>
             {
                 var apiCallPath = "/actions/barcodes";
@@ -310,8 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<DetectResponseColdEmailResponse> DetectResponseColdEmail(Expression<Func<string>> bodytext = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<DetectResponseColdEmailResponse>(() =>
             {
                 var apiCallPath = "/actions/cold_response";
@@ -337,8 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
         public IBodyWorkflowAction<ExtractDataHAROResponse> ExtractDataHARO(Expression<Func<string>> bodytext = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
             return new DeferredBodyAction<ExtractDataHAROResponse>(() =>
             {
                 var apiCallPath = "/actions/haro";

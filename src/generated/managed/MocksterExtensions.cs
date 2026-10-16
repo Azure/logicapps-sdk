@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetAirlinesResponseItem[]>(() =>
             {
                 var apiCallPath = "/airlines";
@@ -33,12 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetAnimalsResponseItem[]>(() =>
             {
                 var apiCallPath = "/animals";
@@ -57,12 +52,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetColorsResponseItem[]>(() =>
             {
                 var apiCallPath = "/colors";
@@ -81,12 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetCompaniesResponseItem[]>(() =>
             {
                 var apiCallPath = "/companies";
@@ -105,10 +94,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetDatabasesResponseItem[]>(() =>
             {
                 var apiCallPath = "/databases";
@@ -125,12 +112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetDatesResponseItem[]>(() =>
             {
                 var apiCallPath = "/dates";
@@ -149,12 +133,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetFinancesResponseItem[]>(() =>
             {
                 var apiCallPath = "/finances";
@@ -173,12 +154,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetGitsResponseItem[]>(() =>
             {
                 var apiCallPath = "/gits";
@@ -197,12 +175,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetHackersResponseItem[]>(() =>
             {
                 var apiCallPath = "/hackers";
@@ -221,14 +196,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages(Expression<Func<int>> count = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<categoryInput>> category = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
-            WorkflowExpression.Validate(__workflow_width, nameof(width), required: false);
-            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
-            WorkflowExpression.Validate(__workflow_height, nameof(height), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: false);
+            var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
             return new DeferredBodyAction<GetRandomImagesResponseItem[]>(() =>
             {
                 var apiCallPath = "/images";
@@ -249,10 +220,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetInternetResponseItem[]>(() =>
             {
                 var apiCallPath = "/internets";
@@ -269,12 +238,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetLocationsResponseItem[]>(() =>
             {
                 var apiCallPath = "/locations";
@@ -293,10 +259,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetLoremsResponseItem[]>(() =>
             {
                 var apiCallPath = "/lorems";
@@ -313,12 +277,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetMusicsResponseItem[]>(() =>
             {
                 var apiCallPath = "/musics";
@@ -337,10 +298,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetNumbersResponseItem[]>(() =>
             {
                 var apiCallPath = "/numbers";
@@ -357,12 +316,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetPeopleResponseItem[]>(() =>
             {
                 var apiCallPath = "/persons";
@@ -381,12 +337,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetPhonesResponseItem[]>(() =>
             {
                 var apiCallPath = "/phones";
@@ -405,12 +358,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetProductsResponseItem[]>(() =>
             {
                 var apiCallPath = "/products";
@@ -429,10 +379,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetSciencesResponseItem[]>(() =>
             {
                 var apiCallPath = "/sciences";
@@ -449,10 +397,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetStringsResponseItem[]>(() =>
             {
                 var apiCallPath = "/strings";
@@ -469,10 +415,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetSystemsResponseItem[]>(() =>
             {
                 var apiCallPath = "/systems";
@@ -489,12 +433,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetVehiclesResponseItem[]>(() =>
             {
                 var apiCallPath = "/vehicles";
@@ -513,12 +454,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
         public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
         {
-            var __workflow_availableLocales = availableLocales == null ? null : WorkflowExpression.Compile(availableLocales);
-            WorkflowExpression.Validate(__workflow_availableLocales, nameof(availableLocales), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_seed = seed == null ? null : WorkflowExpression.Compile(seed);
-            WorkflowExpression.Validate(__workflow_seed, nameof(seed), required: false);
+            var __workflow_availableLocales = WorkflowExpression.Compile(availableLocales, nameof(availableLocales), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_seed = WorkflowExpression.Compile(seed, nameof(seed), required: false);
             return new DeferredBodyAction<GetWordsResponseItem[]>(() =>
             {
                 var apiCallPath = "/words";

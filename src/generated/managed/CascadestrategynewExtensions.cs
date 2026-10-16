@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateMeasure2Response> UpdateMeasure2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodymeasureValue, Expression<Func<string>> measureId)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
-            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
-            var __workflow_bodymeasureValue = bodymeasureValue == null ? null : WorkflowExpression.Compile(bodymeasureValue);
-            WorkflowExpression.Validate(__workflow_bodymeasureValue, nameof(bodymeasureValue), required: true);
-            var __workflow_measureId = measureId == null ? null : WorkflowExpression.Compile(measureId);
-            WorkflowExpression.Validate(__workflow_measureId, nameof(measureId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodymeasureValue = WorkflowExpression.Compile(bodymeasureValue, nameof(bodymeasureValue), required: true);
+            var __workflow_measureId = WorkflowExpression.Compile(measureId, nameof(measureId), required: true);
             return new DeferredBodyAction<UpdateMeasure2Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_measureId, 1));
@@ -46,14 +42,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateMeasureHistoricalValue2Response> UpdateMeasureHistoricalValue2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<string>> measureId, Expression<Func<bodyhistoricalDataInputItem[]>> bodyhistoricalData = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
-            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
-            var __workflow_measureId = measureId == null ? null : WorkflowExpression.Compile(measureId);
-            WorkflowExpression.Validate(__workflow_measureId, nameof(measureId), required: true);
-            var __workflow_bodyhistoricalData = bodyhistoricalData == null ? null : WorkflowExpression.Compile(bodyhistoricalData);
-            WorkflowExpression.Validate(__workflow_bodyhistoricalData, nameof(bodyhistoricalData), required: false);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_measureId = WorkflowExpression.Compile(measureId, nameof(measureId), required: true);
+            var __workflow_bodyhistoricalData = WorkflowExpression.Compile(bodyhistoricalData, nameof(bodyhistoricalData), required: false);
             return new DeferredBodyAction<UpdateMeasureHistoricalValue2Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/measures/historical/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_measureId, 1));
@@ -83,14 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascadestrategynew
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascadestrategynew")]
         public IBodyWorkflowAction<UpdateAction2Response> UpdateAction2(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodyplanId, Expression<Func<double>> bodyactionValue, Expression<Func<string>> actionId)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyplanId = bodyplanId == null ? null : WorkflowExpression.Compile(bodyplanId);
-            WorkflowExpression.Validate(__workflow_bodyplanId, nameof(bodyplanId), required: true);
-            var __workflow_bodyactionValue = bodyactionValue == null ? null : WorkflowExpression.Compile(bodyactionValue);
-            WorkflowExpression.Validate(__workflow_bodyactionValue, nameof(bodyactionValue), required: true);
-            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
-            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyplanId = WorkflowExpression.Compile(bodyplanId, nameof(bodyplanId), required: true);
+            var __workflow_bodyactionValue = WorkflowExpression.Compile(bodyactionValue, nameof(bodyactionValue), required: true);
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<UpdateAction2Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));

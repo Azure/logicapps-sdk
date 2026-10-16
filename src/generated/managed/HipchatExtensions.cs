@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<UserList> ListUsers(Expression<Func<string>> roomId)
         {
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyAction<UserList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<UserResponse> GetUserByID(Expression<Func<string>> userid)
         {
-            var __workflow_userid = userid == null ? null : WorkflowExpression.Compile(userid);
-            WorkflowExpression.Validate(__workflow_userid, nameof(userid), required: true);
+            var __workflow_userid = WorkflowExpression.Compile(userid, nameof(userid), required: true);
             return new DeferredBodyAction<UserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userid, 1));
@@ -41,10 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<NewMessage> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
         {
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             return new DeferredBodyAction<NewMessage>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
@@ -66,10 +62,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
         public IBodyWorkflowAction<string> AddUserToRoom(Expression<Func<string>> roomId, Expression<Func<string>> memberid)
         {
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
-            var __workflow_memberid = memberid == null ? null : WorkflowExpression.Compile(memberid);
-            WorkflowExpression.Validate(__workflow_memberid, nameof(memberid), required: true);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
+            var __workflow_memberid = WorkflowExpression.Compile(memberid, nameof(memberid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberid, 1));
@@ -84,8 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
     {
         public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
         {
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
@@ -97,8 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
 
         public IBodyWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId, FlowRecurrence recurrence = null)
         {
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));

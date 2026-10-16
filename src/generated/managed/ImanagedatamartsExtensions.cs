@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
         public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType)
         {
-            var __workflow_itemType = itemType == null ? null : WorkflowExpression.Compile(itemType);
-            WorkflowExpression.Validate(__workflow_itemType, nameof(itemType), required: true);
+            var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
             return new DeferredBodyAction<ItemBatchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemType, 1));
@@ -34,8 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
         public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType)
         {
-            var __workflow_itemType = itemType == null ? null : WorkflowExpression.Compile(itemType);
-            WorkflowExpression.Validate(__workflow_itemType, nameof(itemType), required: true);
+            var __workflow_itemType = WorkflowExpression.Compile(itemType, nameof(itemType), required: true);
             return new DeferredBodyAction<ItemBatchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemType, 1));

@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction PagesList(Expression<Func<int>> limit = null, Expression<Func<bool>> archived = null, Expression<Func<string>> id = null, Expression<Func<string>> name = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/pages";
@@ -43,36 +39,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction PagesCreate(Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodyfooterHtml = null, Expression<Func<string>> bodyheadHtml = null, Expression<Func<string>> bodyisDraft = null, Expression<Func<string>> bodymetaDescription = null, Expression<Func<string>> bodymetaKeywords = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodypublishDate = null, Expression<Func<string>> bodypublishImmediately = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodywidgetContainers = null, Expression<Func<string>> bodywidgets = null)
         {
-            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
-            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
-            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
-            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
-            var __workflow_bodyfooterHtml = bodyfooterHtml == null ? null : WorkflowExpression.Compile(bodyfooterHtml);
-            WorkflowExpression.Validate(__workflow_bodyfooterHtml, nameof(bodyfooterHtml), required: false);
-            var __workflow_bodyheadHtml = bodyheadHtml == null ? null : WorkflowExpression.Compile(bodyheadHtml);
-            WorkflowExpression.Validate(__workflow_bodyheadHtml, nameof(bodyheadHtml), required: false);
-            var __workflow_bodyisDraft = bodyisDraft == null ? null : WorkflowExpression.Compile(bodyisDraft);
-            WorkflowExpression.Validate(__workflow_bodyisDraft, nameof(bodyisDraft), required: false);
-            var __workflow_bodymetaDescription = bodymetaDescription == null ? null : WorkflowExpression.Compile(bodymetaDescription);
-            WorkflowExpression.Validate(__workflow_bodymetaDescription, nameof(bodymetaDescription), required: false);
-            var __workflow_bodymetaKeywords = bodymetaKeywords == null ? null : WorkflowExpression.Compile(bodymetaKeywords);
-            WorkflowExpression.Validate(__workflow_bodymetaKeywords, nameof(bodymetaKeywords), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodypublishDate = bodypublishDate == null ? null : WorkflowExpression.Compile(bodypublishDate);
-            WorkflowExpression.Validate(__workflow_bodypublishDate, nameof(bodypublishDate), required: false);
-            var __workflow_bodypublishImmediately = bodypublishImmediately == null ? null : WorkflowExpression.Compile(bodypublishImmediately);
-            WorkflowExpression.Validate(__workflow_bodypublishImmediately, nameof(bodypublishImmediately), required: false);
-            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
-            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodysubcategory = bodysubcategory == null ? null : WorkflowExpression.Compile(bodysubcategory);
-            WorkflowExpression.Validate(__workflow_bodysubcategory, nameof(bodysubcategory), required: false);
-            var __workflow_bodywidgetContainers = bodywidgetContainers == null ? null : WorkflowExpression.Compile(bodywidgetContainers);
-            WorkflowExpression.Validate(__workflow_bodywidgetContainers, nameof(bodywidgetContainers), required: false);
-            var __workflow_bodywidgets = bodywidgets == null ? null : WorkflowExpression.Compile(bodywidgets);
-            WorkflowExpression.Validate(__workflow_bodywidgets, nameof(bodywidgets), required: false);
+            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: false);
+            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: false);
+            var __workflow_bodyisDraft = WorkflowExpression.Compile(bodyisDraft, nameof(bodyisDraft), required: false);
+            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: false);
+            var __workflow_bodymetaKeywords = WorkflowExpression.Compile(bodymetaKeywords, nameof(bodymetaKeywords), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: false);
+            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: false);
+            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodysubcategory = WorkflowExpression.Compile(bodysubcategory, nameof(bodysubcategory), required: false);
+            var __workflow_bodywidgetContainers = WorkflowExpression.Compile(bodywidgetContainers, nameof(bodywidgetContainers), required: false);
+            var __workflow_bodywidgets = WorkflowExpression.Compile(bodywidgets, nameof(bodywidgets), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/pages";
@@ -182,8 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction PagesArchive(Expression<Func<string>> pageId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -196,38 +176,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction PagesUpdate(Expression<Func<string>> pageId, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodyfooterHtml = null, Expression<Func<string>> bodyheadHtml = null, Expression<Func<string>> bodyisDraft = null, Expression<Func<string>> bodymetaDescription = null, Expression<Func<string>> bodymetaKeywords = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodypublishDate = null, Expression<Func<string>> bodypublishImmediately = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodywidgetContainers = null, Expression<Func<string>> bodywidgets = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodycampaign = bodycampaign == null ? null : WorkflowExpression.Compile(bodycampaign);
-            WorkflowExpression.Validate(__workflow_bodycampaign, nameof(bodycampaign), required: false);
-            var __workflow_bodycampaignName = bodycampaignName == null ? null : WorkflowExpression.Compile(bodycampaignName);
-            WorkflowExpression.Validate(__workflow_bodycampaignName, nameof(bodycampaignName), required: false);
-            var __workflow_bodyfooterHtml = bodyfooterHtml == null ? null : WorkflowExpression.Compile(bodyfooterHtml);
-            WorkflowExpression.Validate(__workflow_bodyfooterHtml, nameof(bodyfooterHtml), required: false);
-            var __workflow_bodyheadHtml = bodyheadHtml == null ? null : WorkflowExpression.Compile(bodyheadHtml);
-            WorkflowExpression.Validate(__workflow_bodyheadHtml, nameof(bodyheadHtml), required: false);
-            var __workflow_bodyisDraft = bodyisDraft == null ? null : WorkflowExpression.Compile(bodyisDraft);
-            WorkflowExpression.Validate(__workflow_bodyisDraft, nameof(bodyisDraft), required: false);
-            var __workflow_bodymetaDescription = bodymetaDescription == null ? null : WorkflowExpression.Compile(bodymetaDescription);
-            WorkflowExpression.Validate(__workflow_bodymetaDescription, nameof(bodymetaDescription), required: false);
-            var __workflow_bodymetaKeywords = bodymetaKeywords == null ? null : WorkflowExpression.Compile(bodymetaKeywords);
-            WorkflowExpression.Validate(__workflow_bodymetaKeywords, nameof(bodymetaKeywords), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodypublishDate = bodypublishDate == null ? null : WorkflowExpression.Compile(bodypublishDate);
-            WorkflowExpression.Validate(__workflow_bodypublishDate, nameof(bodypublishDate), required: false);
-            var __workflow_bodypublishImmediately = bodypublishImmediately == null ? null : WorkflowExpression.Compile(bodypublishImmediately);
-            WorkflowExpression.Validate(__workflow_bodypublishImmediately, nameof(bodypublishImmediately), required: false);
-            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
-            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodysubcategory = bodysubcategory == null ? null : WorkflowExpression.Compile(bodysubcategory);
-            WorkflowExpression.Validate(__workflow_bodysubcategory, nameof(bodysubcategory), required: false);
-            var __workflow_bodywidgetContainers = bodywidgetContainers == null ? null : WorkflowExpression.Compile(bodywidgetContainers);
-            WorkflowExpression.Validate(__workflow_bodywidgetContainers, nameof(bodywidgetContainers), required: false);
-            var __workflow_bodywidgets = bodywidgets == null ? null : WorkflowExpression.Compile(bodywidgets);
-            WorkflowExpression.Validate(__workflow_bodywidgets, nameof(bodywidgets), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodycampaign = WorkflowExpression.Compile(bodycampaign, nameof(bodycampaign), required: false);
+            var __workflow_bodycampaignName = WorkflowExpression.Compile(bodycampaignName, nameof(bodycampaignName), required: false);
+            var __workflow_bodyfooterHtml = WorkflowExpression.Compile(bodyfooterHtml, nameof(bodyfooterHtml), required: false);
+            var __workflow_bodyheadHtml = WorkflowExpression.Compile(bodyheadHtml, nameof(bodyheadHtml), required: false);
+            var __workflow_bodyisDraft = WorkflowExpression.Compile(bodyisDraft, nameof(bodyisDraft), required: false);
+            var __workflow_bodymetaDescription = WorkflowExpression.Compile(bodymetaDescription, nameof(bodymetaDescription), required: false);
+            var __workflow_bodymetaKeywords = WorkflowExpression.Compile(bodymetaKeywords, nameof(bodymetaKeywords), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodypublishDate = WorkflowExpression.Compile(bodypublishDate, nameof(bodypublishDate), required: false);
+            var __workflow_bodypublishImmediately = WorkflowExpression.Compile(bodypublishImmediately, nameof(bodypublishImmediately), required: false);
+            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodysubcategory = WorkflowExpression.Compile(bodysubcategory, nameof(bodysubcategory), required: false);
+            var __workflow_bodywidgetContainers = WorkflowExpression.Compile(bodywidgetContainers, nameof(bodywidgetContainers), required: false);
+            var __workflow_bodywidgets = WorkflowExpression.Compile(bodywidgets, nameof(bodywidgets), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -337,10 +301,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction PagesPublish(Expression<Func<string>> pageId, Expression<Func<bodyactionInput>> bodyaction)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
-            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}/publish-action", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -362,10 +324,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction TemplatesList(Expression<Func<int>> limit = null, Expression<Func<string>> id = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/templates";
@@ -383,18 +343,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction TemplatesCreate(Expression<Func<bodycategoryIdInput>> bodycategoryId = null, Expression<Func<string>> bodyfolder = null, Expression<Func<bool>> bodyisAvailableForNewContent = null, Expression<Func<bodytemplateTypeInput>> bodytemplateType = null, Expression<Func<string>> bodypath = null, Expression<Func<string>> bodysource = null)
         {
-            var __workflow_bodycategoryId = bodycategoryId == null ? null : WorkflowExpression.Compile(bodycategoryId);
-            WorkflowExpression.Validate(__workflow_bodycategoryId, nameof(bodycategoryId), required: false);
-            var __workflow_bodyfolder = bodyfolder == null ? null : WorkflowExpression.Compile(bodyfolder);
-            WorkflowExpression.Validate(__workflow_bodyfolder, nameof(bodyfolder), required: false);
-            var __workflow_bodyisAvailableForNewContent = bodyisAvailableForNewContent == null ? null : WorkflowExpression.Compile(bodyisAvailableForNewContent);
-            WorkflowExpression.Validate(__workflow_bodyisAvailableForNewContent, nameof(bodyisAvailableForNewContent), required: false);
-            var __workflow_bodytemplateType = bodytemplateType == null ? null : WorkflowExpression.Compile(bodytemplateType);
-            WorkflowExpression.Validate(__workflow_bodytemplateType, nameof(bodytemplateType), required: false);
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
+            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
+            var __workflow_bodyfolder = WorkflowExpression.Compile(bodyfolder, nameof(bodyfolder), required: false);
+            var __workflow_bodyisAvailableForNewContent = WorkflowExpression.Compile(bodyisAvailableForNewContent, nameof(bodyisAvailableForNewContent), required: false);
+            var __workflow_bodytemplateType = WorkflowExpression.Compile(bodytemplateType, nameof(bodytemplateType), required: false);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/content/api/v2/templates";
@@ -460,8 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction TemplatesArchive(Expression<Func<string>> templateId)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -474,10 +427,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
         public IWorkflowAction TemplatesUpdate(Expression<Func<string>> templateId, Expression<Func<string>> bodysource)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));

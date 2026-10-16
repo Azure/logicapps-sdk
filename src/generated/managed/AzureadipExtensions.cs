@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetRiskUserResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IWorkflowAction ConfirmRiskUser(Expression<Func<string[]>> bodyuserIds = null)
         {
-            var __workflow_bodyuserIds = bodyuserIds == null ? null : WorkflowExpression.Compile(bodyuserIds);
-            WorkflowExpression.Validate(__workflow_bodyuserIds, nameof(bodyuserIds), required: false);
+            var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/beta/riskyUsers/confirmCompromised";
@@ -54,8 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskDetection> RiskDetections(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetRiskDetection>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/riskDetections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -68,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IWorkflowAction DismissRiskUser(Expression<Func<string[]>> bodyuserIds = null)
         {
-            var __workflow_bodyuserIds = bodyuserIds == null ? null : WorkflowExpression.Compile(bodyuserIds);
-            WorkflowExpression.Validate(__workflow_bodyuserIds, nameof(bodyuserIds), required: false);
+            var __workflow_bodyuserIds = WorkflowExpression.Compile(bodyuserIds, nameof(bodyuserIds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/beta/riskyUsers/dismiss";
@@ -95,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
         public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetRiskHistory>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

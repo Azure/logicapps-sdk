@@ -13,30 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentmerge
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentmerge")]
         public IBodyWorkflowAction<ValuesDocumentMergeResponse> ValuesDocumentMerge(Expression<Func<string>> linkToItem, Expression<Func<string>> preConfigTemplate = null, Expression<Func<string>> source = null, Expression<Func<string>> destination = null, Expression<Func<bool>> saveAsPDF = null, Expression<Func<bool>> saveAsPDFOnly = null, Expression<Func<bool>> saveAsPDFA = null, Expression<Func<bool>> displayImage = null, Expression<Func<string>> outputFileName = null, Expression<Func<bool>> overWrite = null, Expression<Func<bool>> sendMail = null, Expression<Func<string>> mailTemplate = null)
         {
-            var __workflow_linkToItem = linkToItem == null ? null : WorkflowExpression.Compile(linkToItem);
-            WorkflowExpression.Validate(__workflow_linkToItem, nameof(linkToItem), required: true);
-            var __workflow_preConfigTemplate = preConfigTemplate == null ? null : WorkflowExpression.Compile(preConfigTemplate);
-            WorkflowExpression.Validate(__workflow_preConfigTemplate, nameof(preConfigTemplate), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: false);
-            var __workflow_saveAsPDF = saveAsPDF == null ? null : WorkflowExpression.Compile(saveAsPDF);
-            WorkflowExpression.Validate(__workflow_saveAsPDF, nameof(saveAsPDF), required: false);
-            var __workflow_saveAsPDFOnly = saveAsPDFOnly == null ? null : WorkflowExpression.Compile(saveAsPDFOnly);
-            WorkflowExpression.Validate(__workflow_saveAsPDFOnly, nameof(saveAsPDFOnly), required: false);
-            var __workflow_saveAsPDFA = saveAsPDFA == null ? null : WorkflowExpression.Compile(saveAsPDFA);
-            WorkflowExpression.Validate(__workflow_saveAsPDFA, nameof(saveAsPDFA), required: false);
-            var __workflow_displayImage = displayImage == null ? null : WorkflowExpression.Compile(displayImage);
-            WorkflowExpression.Validate(__workflow_displayImage, nameof(displayImage), required: false);
-            var __workflow_outputFileName = outputFileName == null ? null : WorkflowExpression.Compile(outputFileName);
-            WorkflowExpression.Validate(__workflow_outputFileName, nameof(outputFileName), required: false);
-            var __workflow_overWrite = overWrite == null ? null : WorkflowExpression.Compile(overWrite);
-            WorkflowExpression.Validate(__workflow_overWrite, nameof(overWrite), required: false);
-            var __workflow_sendMail = sendMail == null ? null : WorkflowExpression.Compile(sendMail);
-            WorkflowExpression.Validate(__workflow_sendMail, nameof(sendMail), required: false);
-            var __workflow_mailTemplate = mailTemplate == null ? null : WorkflowExpression.Compile(mailTemplate);
-            WorkflowExpression.Validate(__workflow_mailTemplate, nameof(mailTemplate), required: false);
+            var __workflow_linkToItem = WorkflowExpression.Compile(linkToItem, nameof(linkToItem), required: true);
+            var __workflow_preConfigTemplate = WorkflowExpression.Compile(preConfigTemplate, nameof(preConfigTemplate), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: false);
+            var __workflow_saveAsPDF = WorkflowExpression.Compile(saveAsPDF, nameof(saveAsPDF), required: false);
+            var __workflow_saveAsPDFOnly = WorkflowExpression.Compile(saveAsPDFOnly, nameof(saveAsPDFOnly), required: false);
+            var __workflow_saveAsPDFA = WorkflowExpression.Compile(saveAsPDFA, nameof(saveAsPDFA), required: false);
+            var __workflow_displayImage = WorkflowExpression.Compile(displayImage, nameof(displayImage), required: false);
+            var __workflow_outputFileName = WorkflowExpression.Compile(outputFileName, nameof(outputFileName), required: false);
+            var __workflow_overWrite = WorkflowExpression.Compile(overWrite, nameof(overWrite), required: false);
+            var __workflow_sendMail = WorkflowExpression.Compile(sendMail, nameof(sendMail), required: false);
+            var __workflow_mailTemplate = WorkflowExpression.Compile(mailTemplate, nameof(mailTemplate), required: false);
             return new DeferredBodyAction<ValuesDocumentMergeResponse>(() =>
             {
                 var apiCallPath = "/api/Values";

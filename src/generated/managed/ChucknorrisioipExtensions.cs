@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
         public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact(Expression<Func<string>> category = null)
         {
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
             return new DeferredBodyAction<GetRandomChuckNorrisFactResponse>(() =>
             {
                 var apiCallPath = "/random";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
         public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts(Expression<Func<string>> query)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<SearchChuckNorrisFactsResponse>(() =>
             {
                 var apiCallPath = "/search";

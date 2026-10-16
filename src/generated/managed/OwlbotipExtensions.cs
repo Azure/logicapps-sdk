@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Owlbotip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "owlbotip")]
         public IBodyWorkflowAction<DefResponse> Def(Expression<Func<string>> word)
         {
-            var __workflow_word = word == null ? null : WorkflowExpression.Compile(word);
-            WorkflowExpression.Validate(__workflow_word, nameof(word), required: true);
+            var __workflow_word = WorkflowExpression.Compile(word, nameof(word), required: true);
             return new DeferredBodyAction<DefResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_word, 1));

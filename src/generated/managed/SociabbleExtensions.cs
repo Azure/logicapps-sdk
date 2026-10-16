@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction SendAlertRequest(Expression<Func<string>> bodyalertText, Expression<Func<string>> bodyalertTitle, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodyusername = null, Expression<Func<bool>> bodyisMandatory = null, Expression<Func<bool>> bodysendSMS = null)
         {
-            var __workflow_bodyalertText = bodyalertText == null ? null : WorkflowExpression.Compile(bodyalertText);
-            WorkflowExpression.Validate(__workflow_bodyalertText, nameof(bodyalertText), required: true);
-            var __workflow_bodyalertTitle = bodyalertTitle == null ? null : WorkflowExpression.Compile(bodyalertTitle);
-            WorkflowExpression.Validate(__workflow_bodyalertTitle, nameof(bodyalertTitle), required: true);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyaudienceId = bodyaudienceId == null ? null : WorkflowExpression.Compile(bodyaudienceId);
-            WorkflowExpression.Validate(__workflow_bodyaudienceId, nameof(bodyaudienceId), required: false);
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodyisMandatory = bodyisMandatory == null ? null : WorkflowExpression.Compile(bodyisMandatory);
-            WorkflowExpression.Validate(__workflow_bodyisMandatory, nameof(bodyisMandatory), required: false);
-            var __workflow_bodysendSMS = bodysendSMS == null ? null : WorkflowExpression.Compile(bodysendSMS);
-            WorkflowExpression.Validate(__workflow_bodysendSMS, nameof(bodysendSMS), required: false);
+            var __workflow_bodyalertText = WorkflowExpression.Compile(bodyalertText, nameof(bodyalertText), required: true);
+            var __workflow_bodyalertTitle = WorkflowExpression.Compile(bodyalertTitle, nameof(bodyalertTitle), required: true);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyaudienceId = WorkflowExpression.Compile(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodyisMandatory = WorkflowExpression.Compile(bodyisMandatory, nameof(bodyisMandatory), required: false);
+            var __workflow_bodysendSMS = WorkflowExpression.Compile(bodysendSMS, nameof(bodysendSMS), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/alerts/";
@@ -115,38 +107,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<InternalContent> CreateInternalNews(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedInternalContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
         {
-            var __workflow_bodychannelIds = bodychannelIds == null ? null : WorkflowExpression.Compile(bodychannelIds);
-            WorkflowExpression.Validate(__workflow_bodychannelIds, nameof(bodychannelIds), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: true);
-            var __workflow_bodycategoryIds = bodycategoryIds == null ? null : WorkflowExpression.Compile(bodycategoryIds);
-            WorkflowExpression.Validate(__workflow_bodycategoryIds, nameof(bodycategoryIds), required: false);
-            var __workflow_bodyaudienceId = bodyaudienceId == null ? null : WorkflowExpression.Compile(bodyaudienceId);
-            WorkflowExpression.Validate(__workflow_bodyaudienceId, nameof(bodyaudienceId), required: false);
-            var __workflow_bodypublicationStartDate = bodypublicationStartDate == null ? null : WorkflowExpression.Compile(bodypublicationStartDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            var __workflow_bodypublicationEndDate = bodypublicationEndDate == null ? null : WorkflowExpression.Compile(bodypublicationEndDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            var __workflow_bodymyNewsDisplay = bodymyNewsDisplay == null ? null : WorkflowExpression.Compile(bodymyNewsDisplay);
-            WorkflowExpression.Validate(__workflow_bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            var __workflow_bodyshouldPinTopOfMyNews = bodyshouldPinTopOfMyNews == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfMyNews);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            var __workflow_bodypinOfMyNewsStartDate = bodypinOfMyNewsStartDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            var __workflow_bodypinOfMyNewsEndDate = bodypinOfMyNewsEndDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            var __workflow_bodyshouldPinTopOfSelectedChannels = bodyshouldPinTopOfSelectedChannels == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsStartDate = bodypinTopOfSelectedChannelsStartDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsEndDate = bodypinTopOfSelectedChannelsEndDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            var __workflow_bodyareCommentsAuthorized = bodyareCommentsAuthorized == null ? null : WorkflowExpression.Compile(bodyareCommentsAuthorized);
-            WorkflowExpression.Validate(__workflow_bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
-            var __workflow_bodyshouldNotifyUsers = bodyshouldNotifyUsers == null ? null : WorkflowExpression.Compile(bodyshouldNotifyUsers);
-            WorkflowExpression.Validate(__workflow_bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
-            var __workflow_bodyisMustReadContent = bodyisMustReadContent == null ? null : WorkflowExpression.Compile(bodyisMustReadContent);
-            WorkflowExpression.Validate(__workflow_bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
+            var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
+            var __workflow_bodycategoryIds = WorkflowExpression.Compile(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            var __workflow_bodyaudienceId = WorkflowExpression.Compile(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            var __workflow_bodypublicationStartDate = WorkflowExpression.Compile(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            var __workflow_bodypublicationEndDate = WorkflowExpression.Compile(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            var __workflow_bodymyNewsDisplay = WorkflowExpression.Compile(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            var __workflow_bodyshouldPinTopOfMyNews = WorkflowExpression.Compile(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            var __workflow_bodypinOfMyNewsStartDate = WorkflowExpression.Compile(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            var __workflow_bodypinOfMyNewsEndDate = WorkflowExpression.Compile(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            var __workflow_bodyareCommentsAuthorized = WorkflowExpression.Compile(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
+            var __workflow_bodyshouldNotifyUsers = WorkflowExpression.Compile(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
+            var __workflow_bodyisMustReadContent = WorkflowExpression.Compile(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
             return new DeferredBodyAction<InternalContent>(() =>
             {
                 var apiCallPath = "/content/internalnews";
@@ -254,44 +230,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<ExternalContent> CreateExternalContent(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedExternalContentCreation[]>> bodycontents, Expression<Func<string>> bodycontentUrl, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null, Expression<Func<bool>> bodyisShareable = null, Expression<Func<bool>> bodyisOfficialContent = null, Expression<Func<bool>> bodyareCommentsAuthorized = null, Expression<Func<bool>> bodyshouldNotifyUsers = null, Expression<Func<bool>> bodyisMustReadContent = null)
         {
-            var __workflow_bodychannelIds = bodychannelIds == null ? null : WorkflowExpression.Compile(bodychannelIds);
-            WorkflowExpression.Validate(__workflow_bodychannelIds, nameof(bodychannelIds), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: true);
-            var __workflow_bodycontentUrl = bodycontentUrl == null ? null : WorkflowExpression.Compile(bodycontentUrl);
-            WorkflowExpression.Validate(__workflow_bodycontentUrl, nameof(bodycontentUrl), required: true);
-            var __workflow_bodycategoryIds = bodycategoryIds == null ? null : WorkflowExpression.Compile(bodycategoryIds);
-            WorkflowExpression.Validate(__workflow_bodycategoryIds, nameof(bodycategoryIds), required: false);
-            var __workflow_bodyaudienceId = bodyaudienceId == null ? null : WorkflowExpression.Compile(bodyaudienceId);
-            WorkflowExpression.Validate(__workflow_bodyaudienceId, nameof(bodyaudienceId), required: false);
-            var __workflow_bodypublicationStartDate = bodypublicationStartDate == null ? null : WorkflowExpression.Compile(bodypublicationStartDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            var __workflow_bodypublicationEndDate = bodypublicationEndDate == null ? null : WorkflowExpression.Compile(bodypublicationEndDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            var __workflow_bodymyNewsDisplay = bodymyNewsDisplay == null ? null : WorkflowExpression.Compile(bodymyNewsDisplay);
-            WorkflowExpression.Validate(__workflow_bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            var __workflow_bodyshouldPinTopOfMyNews = bodyshouldPinTopOfMyNews == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfMyNews);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            var __workflow_bodypinOfMyNewsStartDate = bodypinOfMyNewsStartDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            var __workflow_bodypinOfMyNewsEndDate = bodypinOfMyNewsEndDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            var __workflow_bodyshouldPinTopOfSelectedChannels = bodyshouldPinTopOfSelectedChannels == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsStartDate = bodypinTopOfSelectedChannelsStartDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsEndDate = bodypinTopOfSelectedChannelsEndDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
-            var __workflow_bodyisShareable = bodyisShareable == null ? null : WorkflowExpression.Compile(bodyisShareable);
-            WorkflowExpression.Validate(__workflow_bodyisShareable, nameof(bodyisShareable), required: false);
-            var __workflow_bodyisOfficialContent = bodyisOfficialContent == null ? null : WorkflowExpression.Compile(bodyisOfficialContent);
-            WorkflowExpression.Validate(__workflow_bodyisOfficialContent, nameof(bodyisOfficialContent), required: false);
-            var __workflow_bodyareCommentsAuthorized = bodyareCommentsAuthorized == null ? null : WorkflowExpression.Compile(bodyareCommentsAuthorized);
-            WorkflowExpression.Validate(__workflow_bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
-            var __workflow_bodyshouldNotifyUsers = bodyshouldNotifyUsers == null ? null : WorkflowExpression.Compile(bodyshouldNotifyUsers);
-            WorkflowExpression.Validate(__workflow_bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
-            var __workflow_bodyisMustReadContent = bodyisMustReadContent == null ? null : WorkflowExpression.Compile(bodyisMustReadContent);
-            WorkflowExpression.Validate(__workflow_bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
+            var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
+            var __workflow_bodycontentUrl = WorkflowExpression.Compile(bodycontentUrl, nameof(bodycontentUrl), required: true);
+            var __workflow_bodycategoryIds = WorkflowExpression.Compile(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            var __workflow_bodyaudienceId = WorkflowExpression.Compile(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            var __workflow_bodypublicationStartDate = WorkflowExpression.Compile(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            var __workflow_bodypublicationEndDate = WorkflowExpression.Compile(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            var __workflow_bodymyNewsDisplay = WorkflowExpression.Compile(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            var __workflow_bodyshouldPinTopOfMyNews = WorkflowExpression.Compile(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            var __workflow_bodypinOfMyNewsStartDate = WorkflowExpression.Compile(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            var __workflow_bodypinOfMyNewsEndDate = WorkflowExpression.Compile(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            var __workflow_bodyisShareable = WorkflowExpression.Compile(bodyisShareable, nameof(bodyisShareable), required: false);
+            var __workflow_bodyisOfficialContent = WorkflowExpression.Compile(bodyisOfficialContent, nameof(bodyisOfficialContent), required: false);
+            var __workflow_bodyareCommentsAuthorized = WorkflowExpression.Compile(bodyareCommentsAuthorized, nameof(bodyareCommentsAuthorized), required: false);
+            var __workflow_bodyshouldNotifyUsers = WorkflowExpression.Compile(bodyshouldNotifyUsers, nameof(bodyshouldNotifyUsers), required: false);
+            var __workflow_bodyisMustReadContent = WorkflowExpression.Compile(bodyisMustReadContent, nameof(bodyisMustReadContent), required: false);
             return new DeferredBodyAction<ExternalContent>(() =>
             {
                 var apiCallPath = "/content/external";
@@ -413,32 +370,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaSuggestContent> CtaSuggestContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var __workflow_bodychannelIds = bodychannelIds == null ? null : WorkflowExpression.Compile(bodychannelIds);
-            WorkflowExpression.Validate(__workflow_bodychannelIds, nameof(bodychannelIds), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: true);
-            var __workflow_bodycategoryIds = bodycategoryIds == null ? null : WorkflowExpression.Compile(bodycategoryIds);
-            WorkflowExpression.Validate(__workflow_bodycategoryIds, nameof(bodycategoryIds), required: false);
-            var __workflow_bodyaudienceId = bodyaudienceId == null ? null : WorkflowExpression.Compile(bodyaudienceId);
-            WorkflowExpression.Validate(__workflow_bodyaudienceId, nameof(bodyaudienceId), required: false);
-            var __workflow_bodypublicationStartDate = bodypublicationStartDate == null ? null : WorkflowExpression.Compile(bodypublicationStartDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            var __workflow_bodypublicationEndDate = bodypublicationEndDate == null ? null : WorkflowExpression.Compile(bodypublicationEndDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            var __workflow_bodymyNewsDisplay = bodymyNewsDisplay == null ? null : WorkflowExpression.Compile(bodymyNewsDisplay);
-            WorkflowExpression.Validate(__workflow_bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            var __workflow_bodyshouldPinTopOfMyNews = bodyshouldPinTopOfMyNews == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfMyNews);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            var __workflow_bodypinOfMyNewsStartDate = bodypinOfMyNewsStartDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            var __workflow_bodypinOfMyNewsEndDate = bodypinOfMyNewsEndDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            var __workflow_bodyshouldPinTopOfSelectedChannels = bodyshouldPinTopOfSelectedChannels == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsStartDate = bodypinTopOfSelectedChannelsStartDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsEndDate = bodypinTopOfSelectedChannelsEndDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
+            var __workflow_bodycategoryIds = WorkflowExpression.Compile(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            var __workflow_bodyaudienceId = WorkflowExpression.Compile(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            var __workflow_bodypublicationStartDate = WorkflowExpression.Compile(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            var __workflow_bodypublicationEndDate = WorkflowExpression.Compile(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            var __workflow_bodymyNewsDisplay = WorkflowExpression.Compile(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            var __workflow_bodyshouldPinTopOfMyNews = WorkflowExpression.Compile(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            var __workflow_bodypinOfMyNewsStartDate = WorkflowExpression.Compile(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            var __workflow_bodypinOfMyNewsEndDate = WorkflowExpression.Compile(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             return new DeferredBodyAction<CtaSuggestContent>(() =>
             {
                 var apiCallPath = "/content/Cta/Suggest";
@@ -532,32 +476,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaInvitationContent> CtaInvitationContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var __workflow_bodychannelIds = bodychannelIds == null ? null : WorkflowExpression.Compile(bodychannelIds);
-            WorkflowExpression.Validate(__workflow_bodychannelIds, nameof(bodychannelIds), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: true);
-            var __workflow_bodycategoryIds = bodycategoryIds == null ? null : WorkflowExpression.Compile(bodycategoryIds);
-            WorkflowExpression.Validate(__workflow_bodycategoryIds, nameof(bodycategoryIds), required: false);
-            var __workflow_bodyaudienceId = bodyaudienceId == null ? null : WorkflowExpression.Compile(bodyaudienceId);
-            WorkflowExpression.Validate(__workflow_bodyaudienceId, nameof(bodyaudienceId), required: false);
-            var __workflow_bodypublicationStartDate = bodypublicationStartDate == null ? null : WorkflowExpression.Compile(bodypublicationStartDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            var __workflow_bodypublicationEndDate = bodypublicationEndDate == null ? null : WorkflowExpression.Compile(bodypublicationEndDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            var __workflow_bodymyNewsDisplay = bodymyNewsDisplay == null ? null : WorkflowExpression.Compile(bodymyNewsDisplay);
-            WorkflowExpression.Validate(__workflow_bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            var __workflow_bodyshouldPinTopOfMyNews = bodyshouldPinTopOfMyNews == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfMyNews);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            var __workflow_bodypinOfMyNewsStartDate = bodypinOfMyNewsStartDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            var __workflow_bodypinOfMyNewsEndDate = bodypinOfMyNewsEndDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            var __workflow_bodyshouldPinTopOfSelectedChannels = bodyshouldPinTopOfSelectedChannels == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsStartDate = bodypinTopOfSelectedChannelsStartDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsEndDate = bodypinTopOfSelectedChannelsEndDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
+            var __workflow_bodycategoryIds = WorkflowExpression.Compile(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            var __workflow_bodyaudienceId = WorkflowExpression.Compile(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            var __workflow_bodypublicationStartDate = WorkflowExpression.Compile(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            var __workflow_bodypublicationEndDate = WorkflowExpression.Compile(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            var __workflow_bodymyNewsDisplay = WorkflowExpression.Compile(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            var __workflow_bodyshouldPinTopOfMyNews = WorkflowExpression.Compile(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            var __workflow_bodypinOfMyNewsStartDate = WorkflowExpression.Compile(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            var __workflow_bodypinOfMyNewsEndDate = WorkflowExpression.Compile(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             return new DeferredBodyAction<CtaInvitationContent>(() =>
             {
                 var apiCallPath = "/content/Cta/Invitation";
@@ -651,32 +582,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaMobileContent> CtaMobileContentCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedBaseCtaContentCreation[]>> bodycontents, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var __workflow_bodychannelIds = bodychannelIds == null ? null : WorkflowExpression.Compile(bodychannelIds);
-            WorkflowExpression.Validate(__workflow_bodychannelIds, nameof(bodychannelIds), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: true);
-            var __workflow_bodycategoryIds = bodycategoryIds == null ? null : WorkflowExpression.Compile(bodycategoryIds);
-            WorkflowExpression.Validate(__workflow_bodycategoryIds, nameof(bodycategoryIds), required: false);
-            var __workflow_bodyaudienceId = bodyaudienceId == null ? null : WorkflowExpression.Compile(bodyaudienceId);
-            WorkflowExpression.Validate(__workflow_bodyaudienceId, nameof(bodyaudienceId), required: false);
-            var __workflow_bodypublicationStartDate = bodypublicationStartDate == null ? null : WorkflowExpression.Compile(bodypublicationStartDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            var __workflow_bodypublicationEndDate = bodypublicationEndDate == null ? null : WorkflowExpression.Compile(bodypublicationEndDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            var __workflow_bodymyNewsDisplay = bodymyNewsDisplay == null ? null : WorkflowExpression.Compile(bodymyNewsDisplay);
-            WorkflowExpression.Validate(__workflow_bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            var __workflow_bodyshouldPinTopOfMyNews = bodyshouldPinTopOfMyNews == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfMyNews);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            var __workflow_bodypinOfMyNewsStartDate = bodypinOfMyNewsStartDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            var __workflow_bodypinOfMyNewsEndDate = bodypinOfMyNewsEndDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            var __workflow_bodyshouldPinTopOfSelectedChannels = bodyshouldPinTopOfSelectedChannels == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsStartDate = bodypinTopOfSelectedChannelsStartDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsEndDate = bodypinTopOfSelectedChannelsEndDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
+            var __workflow_bodycategoryIds = WorkflowExpression.Compile(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            var __workflow_bodyaudienceId = WorkflowExpression.Compile(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            var __workflow_bodypublicationStartDate = WorkflowExpression.Compile(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            var __workflow_bodypublicationEndDate = WorkflowExpression.Compile(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            var __workflow_bodymyNewsDisplay = WorkflowExpression.Compile(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            var __workflow_bodyshouldPinTopOfMyNews = WorkflowExpression.Compile(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            var __workflow_bodypinOfMyNewsStartDate = WorkflowExpression.Compile(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            var __workflow_bodypinOfMyNewsEndDate = WorkflowExpression.Compile(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             return new DeferredBodyAction<CtaMobileContent>(() =>
             {
                 var apiCallPath = "/content/Cta/Mobile";
@@ -770,40 +688,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<CtaEventContent> CtaEventCreation(Expression<Func<string[]>> bodychannelIds, Expression<Func<LocalizedCtaEventContentCreation[]>> bodycontents, Expression<Func<string>> bodyaudienceId = null, Expression<Func<string[]>> bodycategoryIds = null, Expression<Func<string>> bodylink = null, Expression<Func<int>> bodyawardedBonus = null, Expression<Func<bool>> bodyshouldDisplayTitle = null, Expression<Func<bool>> bodyshouldDisplayButton = null, Expression<Func<string>> bodypublicationStartDate = null, Expression<Func<string>> bodypublicationEndDate = null, Expression<Func<bodymyNewsDisplayInput>> bodymyNewsDisplay = null, Expression<Func<bool>> bodyshouldPinTopOfMyNews = null, Expression<Func<string>> bodypinOfMyNewsStartDate = null, Expression<Func<string>> bodypinOfMyNewsEndDate = null, Expression<Func<bool>> bodyshouldPinTopOfSelectedChannels = null, Expression<Func<string>> bodypinTopOfSelectedChannelsStartDate = null, Expression<Func<string>> bodypinTopOfSelectedChannelsEndDate = null)
         {
-            var __workflow_bodychannelIds = bodychannelIds == null ? null : WorkflowExpression.Compile(bodychannelIds);
-            WorkflowExpression.Validate(__workflow_bodychannelIds, nameof(bodychannelIds), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: true);
-            var __workflow_bodyaudienceId = bodyaudienceId == null ? null : WorkflowExpression.Compile(bodyaudienceId);
-            WorkflowExpression.Validate(__workflow_bodyaudienceId, nameof(bodyaudienceId), required: false);
-            var __workflow_bodycategoryIds = bodycategoryIds == null ? null : WorkflowExpression.Compile(bodycategoryIds);
-            WorkflowExpression.Validate(__workflow_bodycategoryIds, nameof(bodycategoryIds), required: false);
-            var __workflow_bodylink = bodylink == null ? null : WorkflowExpression.Compile(bodylink);
-            WorkflowExpression.Validate(__workflow_bodylink, nameof(bodylink), required: false);
-            var __workflow_bodyawardedBonus = bodyawardedBonus == null ? null : WorkflowExpression.Compile(bodyawardedBonus);
-            WorkflowExpression.Validate(__workflow_bodyawardedBonus, nameof(bodyawardedBonus), required: false);
-            var __workflow_bodyshouldDisplayTitle = bodyshouldDisplayTitle == null ? null : WorkflowExpression.Compile(bodyshouldDisplayTitle);
-            WorkflowExpression.Validate(__workflow_bodyshouldDisplayTitle, nameof(bodyshouldDisplayTitle), required: false);
-            var __workflow_bodyshouldDisplayButton = bodyshouldDisplayButton == null ? null : WorkflowExpression.Compile(bodyshouldDisplayButton);
-            WorkflowExpression.Validate(__workflow_bodyshouldDisplayButton, nameof(bodyshouldDisplayButton), required: false);
-            var __workflow_bodypublicationStartDate = bodypublicationStartDate == null ? null : WorkflowExpression.Compile(bodypublicationStartDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
-            var __workflow_bodypublicationEndDate = bodypublicationEndDate == null ? null : WorkflowExpression.Compile(bodypublicationEndDate);
-            WorkflowExpression.Validate(__workflow_bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
-            var __workflow_bodymyNewsDisplay = bodymyNewsDisplay == null ? null : WorkflowExpression.Compile(bodymyNewsDisplay);
-            WorkflowExpression.Validate(__workflow_bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
-            var __workflow_bodyshouldPinTopOfMyNews = bodyshouldPinTopOfMyNews == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfMyNews);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
-            var __workflow_bodypinOfMyNewsStartDate = bodypinOfMyNewsStartDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
-            var __workflow_bodypinOfMyNewsEndDate = bodypinOfMyNewsEndDate == null ? null : WorkflowExpression.Compile(bodypinOfMyNewsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
-            var __workflow_bodyshouldPinTopOfSelectedChannels = bodyshouldPinTopOfSelectedChannels == null ? null : WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels);
-            WorkflowExpression.Validate(__workflow_bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsStartDate = bodypinTopOfSelectedChannelsStartDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
-            var __workflow_bodypinTopOfSelectedChannelsEndDate = bodypinTopOfSelectedChannelsEndDate == null ? null : WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate);
-            WorkflowExpression.Validate(__workflow_bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
+            var __workflow_bodychannelIds = WorkflowExpression.Compile(bodychannelIds, nameof(bodychannelIds), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
+            var __workflow_bodyaudienceId = WorkflowExpression.Compile(bodyaudienceId, nameof(bodyaudienceId), required: false);
+            var __workflow_bodycategoryIds = WorkflowExpression.Compile(bodycategoryIds, nameof(bodycategoryIds), required: false);
+            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
+            var __workflow_bodyawardedBonus = WorkflowExpression.Compile(bodyawardedBonus, nameof(bodyawardedBonus), required: false);
+            var __workflow_bodyshouldDisplayTitle = WorkflowExpression.Compile(bodyshouldDisplayTitle, nameof(bodyshouldDisplayTitle), required: false);
+            var __workflow_bodyshouldDisplayButton = WorkflowExpression.Compile(bodyshouldDisplayButton, nameof(bodyshouldDisplayButton), required: false);
+            var __workflow_bodypublicationStartDate = WorkflowExpression.Compile(bodypublicationStartDate, nameof(bodypublicationStartDate), required: false);
+            var __workflow_bodypublicationEndDate = WorkflowExpression.Compile(bodypublicationEndDate, nameof(bodypublicationEndDate), required: false);
+            var __workflow_bodymyNewsDisplay = WorkflowExpression.Compile(bodymyNewsDisplay, nameof(bodymyNewsDisplay), required: false);
+            var __workflow_bodyshouldPinTopOfMyNews = WorkflowExpression.Compile(bodyshouldPinTopOfMyNews, nameof(bodyshouldPinTopOfMyNews), required: false);
+            var __workflow_bodypinOfMyNewsStartDate = WorkflowExpression.Compile(bodypinOfMyNewsStartDate, nameof(bodypinOfMyNewsStartDate), required: false);
+            var __workflow_bodypinOfMyNewsEndDate = WorkflowExpression.Compile(bodypinOfMyNewsEndDate, nameof(bodypinOfMyNewsEndDate), required: false);
+            var __workflow_bodyshouldPinTopOfSelectedChannels = WorkflowExpression.Compile(bodyshouldPinTopOfSelectedChannels, nameof(bodyshouldPinTopOfSelectedChannels), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsStartDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsStartDate, nameof(bodypinTopOfSelectedChannelsStartDate), required: false);
+            var __workflow_bodypinTopOfSelectedChannelsEndDate = WorkflowExpression.Compile(bodypinTopOfSelectedChannelsEndDate, nameof(bodypinTopOfSelectedChannelsEndDate), required: false);
             return new DeferredBodyAction<CtaEventContent>(() =>
             {
                 var apiCallPath = "/content/Cta/Event";
@@ -921,12 +822,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction AssignBadgeToUser(Expression<Func<string>> username, Expression<Func<string>> bodybadgeId, Expression<Func<int>> bodylevel)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_bodybadgeId = bodybadgeId == null ? null : WorkflowExpression.Compile(bodybadgeId);
-            WorkflowExpression.Validate(__workflow_bodybadgeId, nameof(bodybadgeId), required: true);
-            var __workflow_bodylevel = bodylevel == null ? null : WorkflowExpression.Compile(bodylevel);
-            WorkflowExpression.Validate(__workflow_bodylevel, nameof(bodylevel), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_bodybadgeId = WorkflowExpression.Compile(bodybadgeId, nameof(bodybadgeId), required: true);
+            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/badges/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
@@ -950,16 +848,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IWorkflowAction AssignCustomActionToUser(Expression<Func<string>> username, Expression<Func<bodycontentsInputItem[]>> bodycontents, Expression<Func<bool>> bodyisEngaging = null, Expression<Func<bool>> bodyisInternal = null, Expression<Func<int>> bodypoints = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: true);
-            var __workflow_bodyisEngaging = bodyisEngaging == null ? null : WorkflowExpression.Compile(bodyisEngaging);
-            WorkflowExpression.Validate(__workflow_bodyisEngaging, nameof(bodyisEngaging), required: false);
-            var __workflow_bodyisInternal = bodyisInternal == null ? null : WorkflowExpression.Compile(bodyisInternal);
-            WorkflowExpression.Validate(__workflow_bodyisInternal, nameof(bodyisInternal), required: false);
-            var __workflow_bodypoints = bodypoints == null ? null : WorkflowExpression.Compile(bodypoints);
-            WorkflowExpression.Validate(__workflow_bodypoints, nameof(bodypoints), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: true);
+            var __workflow_bodyisEngaging = WorkflowExpression.Compile(bodyisEngaging, nameof(bodyisEngaging), required: false);
+            var __workflow_bodyisInternal = WorkflowExpression.Compile(bodyisInternal, nameof(bodyisInternal), required: false);
+            var __workflow_bodypoints = WorkflowExpression.Compile(bodypoints, nameof(bodypoints), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/customactions/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
@@ -1008,8 +901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetBadgeLevelsResponseItem[]> GetBadgeLevels(Expression<Func<string>> badgeId)
         {
-            var __workflow_badgeId = badgeId == null ? null : WorkflowExpression.Compile(badgeId);
-            WorkflowExpression.Validate(__workflow_badgeId, nameof(badgeId), required: true);
+            var __workflow_badgeId = WorkflowExpression.Compile(badgeId, nameof(badgeId), required: true);
             return new DeferredBodyAction<GetBadgeLevelsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/badges/{0}/levels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_badgeId, 1));
@@ -1022,10 +914,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStream(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<object>> media)
         {
-            var __workflow_mediaVisibility = mediaVisibility == null ? null : WorkflowExpression.Compile(mediaVisibility);
-            WorkflowExpression.Validate(__workflow_mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_media = media == null ? null : WorkflowExpression.Compile(media);
-            WorkflowExpression.Validate(__workflow_media, nameof(media), required: true);
+            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
+            var __workflow_media = WorkflowExpression.Compile(media, nameof(media), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/medias/ByStream";
@@ -1038,10 +928,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrl(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> mediaUrl)
         {
-            var __workflow_mediaVisibility = mediaVisibility == null ? null : WorkflowExpression.Compile(mediaVisibility);
-            WorkflowExpression.Validate(__workflow_mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_mediaUrl = mediaUrl == null ? null : WorkflowExpression.Compile(mediaUrl);
-            WorkflowExpression.Validate(__workflow_mediaUrl, nameof(mediaUrl), required: true);
+            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
+            var __workflow_mediaUrl = WorkflowExpression.Compile(mediaUrl, nameof(mediaUrl), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/medias/ByUrl";
@@ -1054,12 +942,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByStreamByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<object>> media)
         {
-            var __workflow_mediaVisibility = mediaVisibility == null ? null : WorkflowExpression.Compile(mediaVisibility);
-            WorkflowExpression.Validate(__workflow_mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_media = media == null ? null : WorkflowExpression.Compile(media);
-            WorkflowExpression.Validate(__workflow_media, nameof(media), required: true);
+            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_media = WorkflowExpression.Compile(media, nameof(media), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/medias/ByStreamByFolder";
@@ -1072,12 +957,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaByUrlByFolder(Expression<Func<mediaVisibilityInput>> mediaVisibility, Expression<Func<string>> folderId, Expression<Func<string>> mediaUrl)
         {
-            var __workflow_mediaVisibility = mediaVisibility == null ? null : WorkflowExpression.Compile(mediaVisibility);
-            WorkflowExpression.Validate(__workflow_mediaVisibility, nameof(mediaVisibility), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_mediaUrl = mediaUrl == null ? null : WorkflowExpression.Compile(mediaUrl);
-            WorkflowExpression.Validate(__workflow_mediaUrl, nameof(mediaUrl), required: true);
+            var __workflow_mediaVisibility = WorkflowExpression.Compile(mediaVisibility, nameof(mediaVisibility), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_mediaUrl = WorkflowExpression.Compile(mediaUrl, nameof(mediaUrl), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/medias/ByUrlByFolder";
@@ -1090,8 +972,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sociabble
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sociabble")]
         public IBodyWorkflowAction<GetFoldersResponse> GetMediaDriveFolders(Expression<Func<string>> culture = null)
         {
-            var __workflow_culture = culture == null ? null : WorkflowExpression.Compile(culture);
-            WorkflowExpression.Validate(__workflow_culture, nameof(culture), required: false);
+            var __workflow_culture = WorkflowExpression.Compile(culture, nameof(culture), required: false);
             return new DeferredBodyAction<GetFoldersResponse>(() =>
             {
                 var apiCallPath = "/mediadrive";

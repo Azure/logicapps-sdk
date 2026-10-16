@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<string> GetJobOutput(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_automationAccount = automationAccount == null ? null : WorkflowExpression.Compile(automationAccount);
-            WorkflowExpression.Validate(__workflow_automationAccount, nameof(automationAccount), required: true);
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}/output", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -34,14 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> GetStatusOfJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> jobId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_automationAccount = automationAccount == null ? null : WorkflowExpression.Compile(automationAccount);
-            WorkflowExpression.Validate(__workflow_automationAccount, nameof(automationAccount), required: true);
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<CreateJobResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_automationAccount, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -55,20 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureautomation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureautomation")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> automationAccount, Expression<Func<string>> runbookName = null, Expression<Func<object>> bodypropertiesrunbookParameters = null, Expression<Func<string>> bodypropertieshybridAutomationWorkerGroup = null, Expression<Func<bool>> wait = null)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_automationAccount = automationAccount == null ? null : WorkflowExpression.Compile(automationAccount);
-            WorkflowExpression.Validate(__workflow_automationAccount, nameof(automationAccount), required: true);
-            var __workflow_runbookName = runbookName == null ? null : WorkflowExpression.Compile(runbookName);
-            WorkflowExpression.Validate(__workflow_runbookName, nameof(runbookName), required: false);
-            var __workflow_bodypropertiesrunbookParameters = bodypropertiesrunbookParameters == null ? null : WorkflowExpression.Compile(bodypropertiesrunbookParameters);
-            WorkflowExpression.Validate(__workflow_bodypropertiesrunbookParameters, nameof(bodypropertiesrunbookParameters), required: false);
-            var __workflow_bodypropertieshybridAutomationWorkerGroup = bodypropertieshybridAutomationWorkerGroup == null ? null : WorkflowExpression.Compile(bodypropertieshybridAutomationWorkerGroup);
-            WorkflowExpression.Validate(__workflow_bodypropertieshybridAutomationWorkerGroup, nameof(bodypropertieshybridAutomationWorkerGroup), required: false);
-            var __workflow_wait = wait == null ? null : WorkflowExpression.Compile(wait);
-            WorkflowExpression.Validate(__workflow_wait, nameof(wait), required: false);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_runbookName = WorkflowExpression.Compile(runbookName, nameof(runbookName), required: false);
+            var __workflow_bodypropertiesrunbookParameters = WorkflowExpression.Compile(bodypropertiesrunbookParameters, nameof(bodypropertiesrunbookParameters), required: false);
+            var __workflow_bodypropertieshybridAutomationWorkerGroup = WorkflowExpression.Compile(bodypropertieshybridAutomationWorkerGroup, nameof(bodypropertieshybridAutomationWorkerGroup), required: false);
+            var __workflow_wait = WorkflowExpression.Compile(wait, nameof(wait), required: false);
             return new DeferredBodyAction<CreateJobResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Automation/automationAccounts/{2}/jobs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_automationAccount, 1));

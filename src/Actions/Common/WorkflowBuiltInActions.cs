@@ -44,12 +44,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "headers">The request headers to include in the workflow call (optional).</param>
         public IBodyWorkflowAction<JToken> NestedWorkflow(Expression<Func<string>> workflowReferenceName, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> headers = null)
         {
-            var workflowReferenceNameDescriptor = workflowReferenceName == null ? null : WorkflowExpression.Compile(workflowReferenceName);
-            var requestBodyDescriptor = requestBody == null ? null : WorkflowExpression.Compile(requestBody);
-            var headersDescriptor = headers == null ? null : WorkflowExpression.Compile(headers);
-            WorkflowExpression.Validate(workflowReferenceNameDescriptor, nameof(workflowReferenceName), required: true);
-            WorkflowExpression.Validate(requestBodyDescriptor, nameof(requestBody), required: false);
-            WorkflowExpression.Validate(headersDescriptor, nameof(headers), required: false);
+            var workflowReferenceNameDescriptor = WorkflowExpression.Compile(
+                workflowReferenceName, nameof(workflowReferenceName), required: true);
+            var requestBodyDescriptor = WorkflowExpression.Compile(
+                requestBody, nameof(requestBody), required: false);
+            var headersDescriptor = WorkflowExpression.Compile(
+                headers, nameof(headers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 return new NestedWorkflowAction<JToken>(
@@ -65,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "inputs">The inputs to compose.</param>
         public IOutputWorkflowAction<JToken> Compose(Expression<Func<string>> inputs)
         {
-            var descriptor = inputs == null ? null : WorkflowExpression.Compile(inputs);
-            WorkflowExpression.Validate(descriptor, nameof(inputs), required: true);
+            var descriptor = WorkflowExpression.Compile(inputs, nameof(inputs), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 return new ComposeAction<JToken>(ExpressionConverter.Convert(descriptor));
@@ -80,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name = "T">The type of the composed output.</typeparam>
         public IOutputWorkflowAction<T> Compose<T>(Expression<Func<T>> input)
         {
-            var descriptor = input == null ? null : WorkflowExpression.Compile(input);
-            WorkflowExpression.Validate(descriptor, nameof(input), required: true);
+            var descriptor = WorkflowExpression.Compile(input, nameof(input), required: true);
             return new DeferredOutputAction<T>(() =>
             {
                 var jt = ExpressionConverter.ConvertO<T>(descriptor);
@@ -112,16 +110,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "headers">An expression for the request headers (optional).</param>
         public IBodyWorkflowAction<JToken> HttpAction(Expression<Func<Uri>> uri, Expression<Func<HttpMethod>> method, Expression<Func<object>> requestBody = null, Expression<Func<Dictionary<string, string>>> queries = null, Expression<Func<Dictionary<string, string>>> headers = null)
         {
-            var uriDescriptor = uri == null ? null : WorkflowExpression.Compile(uri);
-            var methodDescriptor = method == null ? null : WorkflowExpression.Compile(method);
-            var requestBodyDescriptor = requestBody == null ? null : WorkflowExpression.Compile(requestBody);
-            var queriesDescriptor = queries == null ? null : WorkflowExpression.Compile(queries);
-            var headersDescriptor = headers == null ? null : WorkflowExpression.Compile(headers);
-            WorkflowExpression.Validate(uriDescriptor, nameof(uri), required: true);
-            WorkflowExpression.Validate(methodDescriptor, nameof(method), required: true);
-            WorkflowExpression.Validate(requestBodyDescriptor, nameof(requestBody), required: false);
-            WorkflowExpression.Validate(queriesDescriptor, nameof(queries), required: false);
-            WorkflowExpression.Validate(headersDescriptor, nameof(headers), required: false);
+            var uriDescriptor = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var methodDescriptor = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var requestBodyDescriptor = WorkflowExpression.Compile(
+                requestBody, nameof(requestBody), required: false);
+            var queriesDescriptor = WorkflowExpression.Compile(queries, nameof(queries), required: false);
+            var headersDescriptor = WorkflowExpression.Compile(headers, nameof(headers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 return new HttpAction<JToken>(
@@ -142,14 +136,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "schema">An expression for the response schema (optional).</param>
         public IBodyWorkflowAction<JToken> Response(Expression<Func<HttpStatusCode>> statusCode = null, Expression<Func<object>> responseBody = null, Expression<Func<Dictionary<string, string>>> headers = null, Expression<Func<JToken>> schema = null)
         {
-            var statusCodeDescriptor = statusCode == null ? null : WorkflowExpression.Compile(statusCode);
-            var responseBodyDescriptor = responseBody == null ? null : WorkflowExpression.Compile(responseBody);
-            var headersDescriptor = headers == null ? null : WorkflowExpression.Compile(headers);
-            var schemaDescriptor = schema == null ? null : WorkflowExpression.Compile(schema);
-            WorkflowExpression.Validate(statusCodeDescriptor, nameof(statusCode), required: false);
-            WorkflowExpression.Validate(responseBodyDescriptor, nameof(responseBody), required: false);
-            WorkflowExpression.Validate(headersDescriptor, nameof(headers), required: false);
-            WorkflowExpression.Validate(schemaDescriptor, nameof(schema), required: false);
+            var statusCodeDescriptor = WorkflowExpression.Compile(
+                statusCode, nameof(statusCode), required: false);
+            var responseBodyDescriptor = WorkflowExpression.Compile(
+                responseBody, nameof(responseBody), required: false);
+            var headersDescriptor = WorkflowExpression.Compile(headers, nameof(headers), required: false);
+            var schemaDescriptor = WorkflowExpression.Compile(schema, nameof(schema), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 return new ResponseAction<JToken>(
@@ -162,8 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public IAgentWorkflowAction Agent(AgentModelType agentModelType, string deploymentId, AgentModelSettings agentModelSettings, string connectionName, Expression<Func<AgentPromptMessage[]>> messages)
         {
-            var messagesDescriptor = messages == null ? null : WorkflowExpression.Compile(messages);
-            WorkflowExpression.Validate(messagesDescriptor, nameof(messages), required: true);
+            var messagesDescriptor = WorkflowExpression.Compile(messages, nameof(messages), required: true);
             return new DeferredAgentAction(() =>
                 new AgentAction(
                     agentModelType,

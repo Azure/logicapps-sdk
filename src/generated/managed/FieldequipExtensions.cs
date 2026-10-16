@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/customer/create";
@@ -38,14 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateCustomer(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/customer/update";
@@ -63,14 +55,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem2[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v3/workorder/create";
@@ -88,14 +76,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateWorkOrders(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem2[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v3/workorder/update";
@@ -113,14 +97,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem22[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/item/create";
@@ -138,14 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateItems(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<bodyInputItem22[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/item/update";
@@ -163,16 +139,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateInventory(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<bodyInputItem222[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_warehouseRefNum = warehouseRefNum == null ? null : WorkflowExpression.Compile(warehouseRefNum);
-            WorkflowExpression.Validate(__workflow_warehouseRefNum, nameof(warehouseRefNum), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_warehouseRefNum = WorkflowExpression.Compile(warehouseRefNum, nameof(warehouseRefNum), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/warehouse/inventory";
@@ -192,16 +163,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateItemAdjustment(Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> companyId = null, Expression<Func<string>> warehouseRefNum = null, Expression<Func<bodyInputItem2222[]>> body = null)
         {
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: false);
-            var __workflow_warehouseRefNum = warehouseRefNum == null ? null : WorkflowExpression.Compile(warehouseRefNum);
-            WorkflowExpression.Validate(__workflow_warehouseRefNum, nameof(warehouseRefNum), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: false);
+            var __workflow_warehouseRefNum = WorkflowExpression.Compile(warehouseRefNum, nameof(warehouseRefNum), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/warehouse/inventory/adjustment";
@@ -221,14 +187,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem22222[]>> body = null)
         {
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/location/create";
@@ -245,14 +207,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateLocations(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem22222[]>> body = null)
         {
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/location/update";
@@ -269,14 +227,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction CreateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<bodyInputItem222222[]>> body = null)
         {
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/user/create";
@@ -293,38 +247,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fieldequip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fieldequip")]
         public IWorkflowAction UpdateUsers(Expression<Func<string>> companyId, Expression<Func<string>> xApiKey, Expression<Func<string>> xOrigin, Expression<Func<string>> bodycompanyId = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodybusinessUnitCode = null, Expression<Func<string>> bodydepartmentCode = null, Expression<Func<string>> bodypayrollCode = null, Expression<Func<string>> bodyplantId = null, Expression<Func<string>> bodyempId = null, Expression<Func<string>> bodymobileNumber = null, Expression<Func<string>> bodyreportingManager = null, Expression<Func<string>> bodyempType = null, Expression<Func<string>> bodystateCode = null)
         {
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: true);
-            var __workflow_xOrigin = xOrigin == null ? null : WorkflowExpression.Compile(xOrigin);
-            WorkflowExpression.Validate(__workflow_xOrigin, nameof(xOrigin), required: true);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodybusinessUnitCode = bodybusinessUnitCode == null ? null : WorkflowExpression.Compile(bodybusinessUnitCode);
-            WorkflowExpression.Validate(__workflow_bodybusinessUnitCode, nameof(bodybusinessUnitCode), required: false);
-            var __workflow_bodydepartmentCode = bodydepartmentCode == null ? null : WorkflowExpression.Compile(bodydepartmentCode);
-            WorkflowExpression.Validate(__workflow_bodydepartmentCode, nameof(bodydepartmentCode), required: false);
-            var __workflow_bodypayrollCode = bodypayrollCode == null ? null : WorkflowExpression.Compile(bodypayrollCode);
-            WorkflowExpression.Validate(__workflow_bodypayrollCode, nameof(bodypayrollCode), required: false);
-            var __workflow_bodyplantId = bodyplantId == null ? null : WorkflowExpression.Compile(bodyplantId);
-            WorkflowExpression.Validate(__workflow_bodyplantId, nameof(bodyplantId), required: false);
-            var __workflow_bodyempId = bodyempId == null ? null : WorkflowExpression.Compile(bodyempId);
-            WorkflowExpression.Validate(__workflow_bodyempId, nameof(bodyempId), required: false);
-            var __workflow_bodymobileNumber = bodymobileNumber == null ? null : WorkflowExpression.Compile(bodymobileNumber);
-            WorkflowExpression.Validate(__workflow_bodymobileNumber, nameof(bodymobileNumber), required: false);
-            var __workflow_bodyreportingManager = bodyreportingManager == null ? null : WorkflowExpression.Compile(bodyreportingManager);
-            WorkflowExpression.Validate(__workflow_bodyreportingManager, nameof(bodyreportingManager), required: false);
-            var __workflow_bodyempType = bodyempType == null ? null : WorkflowExpression.Compile(bodyempType);
-            WorkflowExpression.Validate(__workflow_bodyempType, nameof(bodyempType), required: false);
-            var __workflow_bodystateCode = bodystateCode == null ? null : WorkflowExpression.Compile(bodystateCode);
-            WorkflowExpression.Validate(__workflow_bodystateCode, nameof(bodystateCode), required: false);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: true);
+            var __workflow_xOrigin = WorkflowExpression.Compile(xOrigin, nameof(xOrigin), required: true);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodybusinessUnitCode = WorkflowExpression.Compile(bodybusinessUnitCode, nameof(bodybusinessUnitCode), required: false);
+            var __workflow_bodydepartmentCode = WorkflowExpression.Compile(bodydepartmentCode, nameof(bodydepartmentCode), required: false);
+            var __workflow_bodypayrollCode = WorkflowExpression.Compile(bodypayrollCode, nameof(bodypayrollCode), required: false);
+            var __workflow_bodyplantId = WorkflowExpression.Compile(bodyplantId, nameof(bodyplantId), required: false);
+            var __workflow_bodyempId = WorkflowExpression.Compile(bodyempId, nameof(bodyempId), required: false);
+            var __workflow_bodymobileNumber = WorkflowExpression.Compile(bodymobileNumber, nameof(bodymobileNumber), required: false);
+            var __workflow_bodyreportingManager = WorkflowExpression.Compile(bodyreportingManager, nameof(bodyreportingManager), required: false);
+            var __workflow_bodyempType = WorkflowExpression.Compile(bodyempType, nameof(bodyempType), required: false);
+            var __workflow_bodystateCode = WorkflowExpression.Compile(bodystateCode, nameof(bodystateCode), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/user/update";

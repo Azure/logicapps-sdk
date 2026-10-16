@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Htmltopdfconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "htmltopdfconverter")]
         public IWorkflowAction ConvertHTMLToPDF(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyhtmlBody = null, Expression<Func<string>> bodycipher = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_bodyhtmlBody = bodyhtmlBody == null ? null : WorkflowExpression.Compile(bodyhtmlBody);
-            WorkflowExpression.Validate(__workflow_bodyhtmlBody, nameof(bodyhtmlBody), required: false);
-            var __workflow_bodycipher = bodycipher == null ? null : WorkflowExpression.Compile(bodycipher);
-            WorkflowExpression.Validate(__workflow_bodycipher, nameof(bodycipher), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodyhtmlBody = WorkflowExpression.Compile(bodyhtmlBody, nameof(bodyhtmlBody), required: false);
+            var __workflow_bodycipher = WorkflowExpression.Compile(bodycipher, nameof(bodycipher), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/";

@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<AuditSearchResponse> SearchAudits(Expression<Func<orderInput>> order = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> template = null, Expression<Func<archivedInput>> archived = null, Expression<Func<completedInput>> completed = null, Expression<Func<ownerInput>> owner = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_modifiedAfter = modifiedAfter == null ? null : WorkflowExpression.Compile(modifiedAfter);
-            WorkflowExpression.Validate(__workflow_modifiedAfter, nameof(modifiedAfter), required: false);
-            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
-            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_completed = completed == null ? null : WorkflowExpression.Compile(completed);
-            WorkflowExpression.Validate(__workflow_completed, nameof(completed), required: false);
-            var __workflow_owner = owner == null ? null : WorkflowExpression.Compile(owner);
-            WorkflowExpression.Validate(__workflow_owner, nameof(owner), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_modifiedAfter = WorkflowExpression.Compile(modifiedAfter, nameof(modifiedAfter), required: false);
+            var __workflow_modifiedBefore = WorkflowExpression.Compile(modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_completed = WorkflowExpression.Compile(completed, nameof(completed), required: false);
+            var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<AuditSearchResponse>(() =>
             {
                 var apiCallPath = "/audits/search";
@@ -62,8 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById(Expression<Func<string>> auditId)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             return new DeferredBodyAction<GetAuditByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
@@ -76,10 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<bool>> bodyarchived = null)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
-            var __workflow_bodyarchived = bodyarchived == null ? null : WorkflowExpression.Compile(bodyarchived);
-            WorkflowExpression.Validate(__workflow_bodyarchived, nameof(bodyarchived), required: false);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
+            var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
             return new DeferredBodyAction<GetAuditByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
@@ -105,14 +94,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<formatInput>> format, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_timezone = timezone == null ? null : WorkflowExpression.Compile(timezone);
-            WorkflowExpression.Validate(__workflow_timezone, nameof(timezone), required: false);
-            var __workflow_exportProfile = exportProfile == null ? null : WorkflowExpression.Compile(exportProfile);
-            WorkflowExpression.Validate(__workflow_exportProfile, nameof(exportProfile), required: false);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_timezone = WorkflowExpression.Compile(timezone, nameof(timezone), required: false);
+            var __workflow_exportProfile = WorkflowExpression.Compile(exportProfile, nameof(exportProfile), required: false);
             return new DeferredBodyAction<InitExportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
@@ -131,10 +116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
-            var __workflow_exportId = exportId == null ? null : WorkflowExpression.Compile(exportId);
-            WorkflowExpression.Validate(__workflow_exportId, nameof(exportId), required: true);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
+            var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
             return new DeferredBodyAction<ExportStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));
@@ -147,12 +130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<string> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> filename)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
-            var __workflow_exportId = exportId == null ? null : WorkflowExpression.Compile(exportId);
-            WorkflowExpression.Validate(__workflow_exportId, nameof(exportId), required: true);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: true);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
+            var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_filename, 1));
@@ -165,8 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink(Expression<Func<string>> auditId)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             return new DeferredBodyAction<GetAuditLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
@@ -179,8 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IWorkflowAction DeleteWebReportLink(Expression<Func<string>> auditId)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
@@ -193,22 +171,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<ActionsSearchResponse> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIDS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
         {
-            var __workflow_searchActionsBodyauditIDS = searchActionsBodyauditIDS == null ? null : WorkflowExpression.Compile(searchActionsBodyauditIDS);
-            WorkflowExpression.Validate(__workflow_searchActionsBodyauditIDS, nameof(searchActionsBodyauditIDS), required: false);
-            var __workflow_searchActionsBodyassignees = searchActionsBodyassignees == null ? null : WorkflowExpression.Compile(searchActionsBodyassignees);
-            WorkflowExpression.Validate(__workflow_searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
-            var __workflow_searchActionsBodycreatedafterDate = searchActionsBodycreatedafterDate == null ? null : WorkflowExpression.Compile(searchActionsBodycreatedafterDate);
-            WorkflowExpression.Validate(__workflow_searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
-            var __workflow_searchActionsBodycreatedbeforeDate = searchActionsBodycreatedbeforeDate == null ? null : WorkflowExpression.Compile(searchActionsBodycreatedbeforeDate);
-            WorkflowExpression.Validate(__workflow_searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
-            var __workflow_searchActionsBodymodifiedafterDate = searchActionsBodymodifiedafterDate == null ? null : WorkflowExpression.Compile(searchActionsBodymodifiedafterDate);
-            WorkflowExpression.Validate(__workflow_searchActionsBodymodifiedafterDate, nameof(searchActionsBodymodifiedafterDate), required: false);
-            var __workflow_searchActionsBodymodifiedbeforeDate = searchActionsBodymodifiedbeforeDate == null ? null : WorkflowExpression.Compile(searchActionsBodymodifiedbeforeDate);
-            WorkflowExpression.Validate(__workflow_searchActionsBodymodifiedbeforeDate, nameof(searchActionsBodymodifiedbeforeDate), required: false);
-            var __workflow_searchActionsBodydueafterDate = searchActionsBodydueafterDate == null ? null : WorkflowExpression.Compile(searchActionsBodydueafterDate);
-            WorkflowExpression.Validate(__workflow_searchActionsBodydueafterDate, nameof(searchActionsBodydueafterDate), required: false);
-            var __workflow_searchActionsBodyduebeforeDate = searchActionsBodyduebeforeDate == null ? null : WorkflowExpression.Compile(searchActionsBodyduebeforeDate);
-            WorkflowExpression.Validate(__workflow_searchActionsBodyduebeforeDate, nameof(searchActionsBodyduebeforeDate), required: false);
+            var __workflow_searchActionsBodyauditIDS = WorkflowExpression.Compile(searchActionsBodyauditIDS, nameof(searchActionsBodyauditIDS), required: false);
+            var __workflow_searchActionsBodyassignees = WorkflowExpression.Compile(searchActionsBodyassignees, nameof(searchActionsBodyassignees), required: false);
+            var __workflow_searchActionsBodycreatedafterDate = WorkflowExpression.Compile(searchActionsBodycreatedafterDate, nameof(searchActionsBodycreatedafterDate), required: false);
+            var __workflow_searchActionsBodycreatedbeforeDate = WorkflowExpression.Compile(searchActionsBodycreatedbeforeDate, nameof(searchActionsBodycreatedbeforeDate), required: false);
+            var __workflow_searchActionsBodymodifiedafterDate = WorkflowExpression.Compile(searchActionsBodymodifiedafterDate, nameof(searchActionsBodymodifiedafterDate), required: false);
+            var __workflow_searchActionsBodymodifiedbeforeDate = WorkflowExpression.Compile(searchActionsBodymodifiedbeforeDate, nameof(searchActionsBodymodifiedbeforeDate), required: false);
+            var __workflow_searchActionsBodydueafterDate = WorkflowExpression.Compile(searchActionsBodydueafterDate, nameof(searchActionsBodydueafterDate), required: false);
+            var __workflow_searchActionsBodyduebeforeDate = WorkflowExpression.Compile(searchActionsBodyduebeforeDate, nameof(searchActionsBodyduebeforeDate), required: false);
             return new DeferredBodyAction<ActionsSearchResponse>(() =>
             {
                 var apiCallPath = "/actions/search";
@@ -300,22 +270,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<Action> CreateAction(Expression<Func<string>> createActionBodyauditID = null, Expression<Func<string>> createActionBodyitemID = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
         {
-            var __workflow_createActionBodyauditID = createActionBodyauditID == null ? null : WorkflowExpression.Compile(createActionBodyauditID);
-            WorkflowExpression.Validate(__workflow_createActionBodyauditID, nameof(createActionBodyauditID), required: false);
-            var __workflow_createActionBodyitemID = createActionBodyitemID == null ? null : WorkflowExpression.Compile(createActionBodyitemID);
-            WorkflowExpression.Validate(__workflow_createActionBodyitemID, nameof(createActionBodyitemID), required: false);
-            var __workflow_createActionBodytitle = createActionBodytitle == null ? null : WorkflowExpression.Compile(createActionBodytitle);
-            WorkflowExpression.Validate(__workflow_createActionBodytitle, nameof(createActionBodytitle), required: false);
-            var __workflow_createActionBodydescription = createActionBodydescription == null ? null : WorkflowExpression.Compile(createActionBodydescription);
-            WorkflowExpression.Validate(__workflow_createActionBodydescription, nameof(createActionBodydescription), required: false);
-            var __workflow_createActionBodypriority = createActionBodypriority == null ? null : WorkflowExpression.Compile(createActionBodypriority);
-            WorkflowExpression.Validate(__workflow_createActionBodypriority, nameof(createActionBodypriority), required: false);
-            var __workflow_createActionBodystatus = createActionBodystatus == null ? null : WorkflowExpression.Compile(createActionBodystatus);
-            WorkflowExpression.Validate(__workflow_createActionBodystatus, nameof(createActionBodystatus), required: false);
-            var __workflow_createActionBodydueAt = createActionBodydueAt == null ? null : WorkflowExpression.Compile(createActionBodydueAt);
-            WorkflowExpression.Validate(__workflow_createActionBodydueAt, nameof(createActionBodydueAt), required: false);
-            var __workflow_createActionBodyassignees = createActionBodyassignees == null ? null : WorkflowExpression.Compile(createActionBodyassignees);
-            WorkflowExpression.Validate(__workflow_createActionBodyassignees, nameof(createActionBodyassignees), required: false);
+            var __workflow_createActionBodyauditID = WorkflowExpression.Compile(createActionBodyauditID, nameof(createActionBodyauditID), required: false);
+            var __workflow_createActionBodyitemID = WorkflowExpression.Compile(createActionBodyitemID, nameof(createActionBodyitemID), required: false);
+            var __workflow_createActionBodytitle = WorkflowExpression.Compile(createActionBodytitle, nameof(createActionBodytitle), required: false);
+            var __workflow_createActionBodydescription = WorkflowExpression.Compile(createActionBodydescription, nameof(createActionBodydescription), required: false);
+            var __workflow_createActionBodypriority = WorkflowExpression.Compile(createActionBodypriority, nameof(createActionBodypriority), required: false);
+            var __workflow_createActionBodystatus = WorkflowExpression.Compile(createActionBodystatus, nameof(createActionBodystatus), required: false);
+            var __workflow_createActionBodydueAt = WorkflowExpression.Compile(createActionBodydueAt, nameof(createActionBodydueAt), required: false);
+            var __workflow_createActionBodyassignees = WorkflowExpression.Compile(createActionBodyassignees, nameof(createActionBodyassignees), required: false);
             return new DeferredBodyAction<Action>(() =>
             {
                 var apiCallPath = "/actions";
@@ -383,8 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<DeleteActionResponse> DeleteAction(Expression<Func<string>> actionId)
         {
-            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
-            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyAction<DeleteActionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
@@ -397,20 +358,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<Action> UpdateAction(Expression<Func<string>> actionId, Expression<Func<string>> updateActionBodytitle = null, Expression<Func<string>> updateActionBodydescription = null, Expression<Func<updateActionBodypriorityInput>> updateActionBodypriority = null, Expression<Func<updateActionBodystatusInput>> updateActionBodystatus = null, Expression<Func<string>> updateActionBodydueAt = null, Expression<Func<updateActionBodyassigneesInputItem[]>> updateActionBodyassignees = null)
         {
-            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
-            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
-            var __workflow_updateActionBodytitle = updateActionBodytitle == null ? null : WorkflowExpression.Compile(updateActionBodytitle);
-            WorkflowExpression.Validate(__workflow_updateActionBodytitle, nameof(updateActionBodytitle), required: false);
-            var __workflow_updateActionBodydescription = updateActionBodydescription == null ? null : WorkflowExpression.Compile(updateActionBodydescription);
-            WorkflowExpression.Validate(__workflow_updateActionBodydescription, nameof(updateActionBodydescription), required: false);
-            var __workflow_updateActionBodypriority = updateActionBodypriority == null ? null : WorkflowExpression.Compile(updateActionBodypriority);
-            WorkflowExpression.Validate(__workflow_updateActionBodypriority, nameof(updateActionBodypriority), required: false);
-            var __workflow_updateActionBodystatus = updateActionBodystatus == null ? null : WorkflowExpression.Compile(updateActionBodystatus);
-            WorkflowExpression.Validate(__workflow_updateActionBodystatus, nameof(updateActionBodystatus), required: false);
-            var __workflow_updateActionBodydueAt = updateActionBodydueAt == null ? null : WorkflowExpression.Compile(updateActionBodydueAt);
-            WorkflowExpression.Validate(__workflow_updateActionBodydueAt, nameof(updateActionBodydueAt), required: false);
-            var __workflow_updateActionBodyassignees = updateActionBodyassignees == null ? null : WorkflowExpression.Compile(updateActionBodyassignees);
-            WorkflowExpression.Validate(__workflow_updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
+            var __workflow_updateActionBodytitle = WorkflowExpression.Compile(updateActionBodytitle, nameof(updateActionBodytitle), required: false);
+            var __workflow_updateActionBodydescription = WorkflowExpression.Compile(updateActionBodydescription, nameof(updateActionBodydescription), required: false);
+            var __workflow_updateActionBodypriority = WorkflowExpression.Compile(updateActionBodypriority, nameof(updateActionBodypriority), required: false);
+            var __workflow_updateActionBodystatus = WorkflowExpression.Compile(updateActionBodystatus, nameof(updateActionBodystatus), required: false);
+            var __workflow_updateActionBodydueAt = WorkflowExpression.Compile(updateActionBodydueAt, nameof(updateActionBodydueAt), required: false);
+            var __workflow_updateActionBodyassignees = WorkflowExpression.Compile(updateActionBodyassignees, nameof(updateActionBodyassignees), required: false);
             return new DeferredBodyAction<Action>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));
@@ -466,10 +420,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<string> GetMedia(Expression<Func<string>> auditId, Expression<Func<string>> mediaId)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
-            var __workflow_mediaId = mediaId == null ? null : WorkflowExpression.Compile(mediaId);
-            WorkflowExpression.Validate(__workflow_mediaId, nameof(mediaId), required: true);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
+            var __workflow_mediaId = WorkflowExpression.Compile(mediaId, nameof(mediaId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/media/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_mediaId, 1));
@@ -482,12 +434,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceID = null)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
-            var __workflow_formatexportFormat = formatexportFormat == null ? null : WorkflowExpression.Compile(formatexportFormat);
-            WorkflowExpression.Validate(__workflow_formatexportFormat, nameof(formatexportFormat), required: false);
-            var __workflow_formatpreferenceID = formatpreferenceID == null ? null : WorkflowExpression.Compile(formatpreferenceID);
-            WorkflowExpression.Validate(__workflow_formatpreferenceID, nameof(formatpreferenceID), required: false);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
+            var __workflow_formatexportFormat = WorkflowExpression.Compile(formatexportFormat, nameof(formatexportFormat), required: false);
+            var __workflow_formatpreferenceID = WorkflowExpression.Compile(formatpreferenceID, nameof(formatpreferenceID), required: false);
             return new DeferredBodyAction<InitInspectionExportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1));
@@ -529,10 +478,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
         public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
         {
-            var __workflow_auditId = auditId == null ? null : WorkflowExpression.Compile(auditId);
-            WorkflowExpression.Validate(__workflow_auditId, nameof(auditId), required: true);
-            var __workflow_exportId = exportId == null ? null : WorkflowExpression.Compile(exportId);
-            WorkflowExpression.Validate(__workflow_exportId, nameof(exportId), required: true);
+            var __workflow_auditId = WorkflowExpression.Compile(auditId, nameof(auditId), required: true);
+            var __workflow_exportId = WorkflowExpression.Compile(exportId, nameof(exportId), required: true);
             return new DeferredBodyAction<InspectionExportStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/audits/{0}/report/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_exportId, 1));

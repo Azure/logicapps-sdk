@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<AskQuestionResponse> AskQuestion(Expression<Func<string>> requestBodyquestion, Expression<Func<int>> requestBodyscoreThreshold = null, Expression<Func<string>> requestBodyuserEmail = null)
         {
-            var __workflow_requestBodyquestion = requestBodyquestion == null ? null : WorkflowExpression.Compile(requestBodyquestion);
-            WorkflowExpression.Validate(__workflow_requestBodyquestion, nameof(requestBodyquestion), required: true);
-            var __workflow_requestBodyscoreThreshold = requestBodyscoreThreshold == null ? null : WorkflowExpression.Compile(requestBodyscoreThreshold);
-            WorkflowExpression.Validate(__workflow_requestBodyscoreThreshold, nameof(requestBodyscoreThreshold), required: false);
-            var __workflow_requestBodyuserEmail = requestBodyuserEmail == null ? null : WorkflowExpression.Compile(requestBodyuserEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
+            var __workflow_requestBodyquestion = WorkflowExpression.Compile(requestBodyquestion, nameof(requestBodyquestion), required: true);
+            var __workflow_requestBodyscoreThreshold = WorkflowExpression.Compile(requestBodyscoreThreshold, nameof(requestBodyscoreThreshold), required: false);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
             return new DeferredBodyAction<AskQuestionResponse>(() =>
             {
                 var apiCallPath = "/ask";
@@ -61,10 +58,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<ParseTextResponse> ParseText(Expression<Func<string>> requestBodyinputText, Expression<Func<requestBodyoutputFormatInput>> requestBodyoutputFormat)
         {
-            var __workflow_requestBodyinputText = requestBodyinputText == null ? null : WorkflowExpression.Compile(requestBodyinputText);
-            WorkflowExpression.Validate(__workflow_requestBodyinputText, nameof(requestBodyinputText), required: true);
-            var __workflow_requestBodyoutputFormat = requestBodyoutputFormat == null ? null : WorkflowExpression.Compile(requestBodyoutputFormat);
-            WorkflowExpression.Validate(__workflow_requestBodyoutputFormat, nameof(requestBodyoutputFormat), required: true);
+            var __workflow_requestBodyinputText = WorkflowExpression.Compile(requestBodyinputText, nameof(requestBodyinputText), required: true);
+            var __workflow_requestBodyoutputFormat = WorkflowExpression.Compile(requestBodyoutputFormat, nameof(requestBodyoutputFormat), required: true);
             return new DeferredBodyAction<ParseTextResponse>(() =>
             {
                 var apiCallPath = "/parse";
@@ -88,10 +83,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<TranslateResponse> Translate(Expression<Func<string>> requestBodytargetLanguageCode, Expression<Func<string>> requestBodyinputText)
         {
-            var __workflow_requestBodytargetLanguageCode = requestBodytargetLanguageCode == null ? null : WorkflowExpression.Compile(requestBodytargetLanguageCode);
-            WorkflowExpression.Validate(__workflow_requestBodytargetLanguageCode, nameof(requestBodytargetLanguageCode), required: true);
-            var __workflow_requestBodyinputText = requestBodyinputText == null ? null : WorkflowExpression.Compile(requestBodyinputText);
-            WorkflowExpression.Validate(__workflow_requestBodyinputText, nameof(requestBodyinputText), required: true);
+            var __workflow_requestBodytargetLanguageCode = WorkflowExpression.Compile(requestBodytargetLanguageCode, nameof(requestBodytargetLanguageCode), required: true);
+            var __workflow_requestBodyinputText = WorkflowExpression.Compile(requestBodyinputText, nameof(requestBodyinputText), required: true);
             return new DeferredBodyAction<TranslateResponse>(() =>
             {
                 var apiCallPath = "/translate";
@@ -115,8 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetAllTopicsResponse> GetAllTopics(Expression<Func<string>> filterByExpert = null)
         {
-            var __workflow_filterByExpert = filterByExpert == null ? null : WorkflowExpression.Compile(filterByExpert);
-            WorkflowExpression.Validate(__workflow_filterByExpert, nameof(filterByExpert), required: false);
+            var __workflow_filterByExpert = WorkflowExpression.Compile(filterByExpert, nameof(filterByExpert), required: false);
             return new DeferredBodyAction<GetAllTopicsResponse>(() =>
             {
                 var apiCallPath = "/get-all-topics";
@@ -131,8 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetTopicResponse> GetTopic(Expression<Func<string>> topicName)
         {
-            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
-            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
+            var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
             return new DeferredBodyAction<GetTopicResponse>(() =>
             {
                 var apiCallPath = "/get-topic";
@@ -146,14 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetAllAnswersResponse> GetAllAnswers(Expression<Func<string>> filterByTopic = null, Expression<Func<string>> filterByShortDescription = null, Expression<Func<string>> filterByQuestionText = null, Expression<Func<string>> filterByAnswerText = null)
         {
-            var __workflow_filterByTopic = filterByTopic == null ? null : WorkflowExpression.Compile(filterByTopic);
-            WorkflowExpression.Validate(__workflow_filterByTopic, nameof(filterByTopic), required: false);
-            var __workflow_filterByShortDescription = filterByShortDescription == null ? null : WorkflowExpression.Compile(filterByShortDescription);
-            WorkflowExpression.Validate(__workflow_filterByShortDescription, nameof(filterByShortDescription), required: false);
-            var __workflow_filterByQuestionText = filterByQuestionText == null ? null : WorkflowExpression.Compile(filterByQuestionText);
-            WorkflowExpression.Validate(__workflow_filterByQuestionText, nameof(filterByQuestionText), required: false);
-            var __workflow_filterByAnswerText = filterByAnswerText == null ? null : WorkflowExpression.Compile(filterByAnswerText);
-            WorkflowExpression.Validate(__workflow_filterByAnswerText, nameof(filterByAnswerText), required: false);
+            var __workflow_filterByTopic = WorkflowExpression.Compile(filterByTopic, nameof(filterByTopic), required: false);
+            var __workflow_filterByShortDescription = WorkflowExpression.Compile(filterByShortDescription, nameof(filterByShortDescription), required: false);
+            var __workflow_filterByQuestionText = WorkflowExpression.Compile(filterByQuestionText, nameof(filterByQuestionText), required: false);
+            var __workflow_filterByAnswerText = WorkflowExpression.Compile(filterByAnswerText, nameof(filterByAnswerText), required: false);
             return new DeferredBodyAction<GetAllAnswersResponse>(() =>
             {
                 var apiCallPath = "/get-all-answers";
@@ -174,8 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetExpertsResponse> GetExperts(Expression<Func<string>> topic)
         {
-            var __workflow_topic = topic == null ? null : WorkflowExpression.Compile(topic);
-            WorkflowExpression.Validate(__workflow_topic, nameof(topic), required: true);
+            var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: true);
             return new DeferredBodyAction<GetExpertsResponse>(() =>
             {
                 var apiCallPath = "/get-experts";
@@ -189,10 +175,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddExpert(Expression<Func<string>> requestBodytopic, Expression<Func<string>> requestBodyexpertEmail)
         {
-            var __workflow_requestBodytopic = requestBodytopic == null ? null : WorkflowExpression.Compile(requestBodytopic);
-            WorkflowExpression.Validate(__workflow_requestBodytopic, nameof(requestBodytopic), required: true);
-            var __workflow_requestBodyexpertEmail = requestBodyexpertEmail == null ? null : WorkflowExpression.Compile(requestBodyexpertEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: true);
+            var __workflow_requestBodyexpertEmail = WorkflowExpression.Compile(requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/add-expert";
@@ -216,10 +200,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction RemoveExpert(Expression<Func<string>> requestBodyexpertEmail, Expression<Func<string>> requestBodytopic = null)
         {
-            var __workflow_requestBodyexpertEmail = requestBodyexpertEmail == null ? null : WorkflowExpression.Compile(requestBodyexpertEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
-            var __workflow_requestBodytopic = requestBodytopic == null ? null : WorkflowExpression.Compile(requestBodytopic);
-            WorkflowExpression.Validate(__workflow_requestBodytopic, nameof(requestBodytopic), required: false);
+            var __workflow_requestBodyexpertEmail = WorkflowExpression.Compile(requestBodyexpertEmail, nameof(requestBodyexpertEmail), required: true);
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/remove-expert";
@@ -247,12 +229,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddTopic(Expression<Func<string>> requestBodyname, Expression<Func<string>> requestBodydescription, Expression<Func<string[]>> requestBodyexpertEmails)
         {
-            var __workflow_requestBodyname = requestBodyname == null ? null : WorkflowExpression.Compile(requestBodyname);
-            WorkflowExpression.Validate(__workflow_requestBodyname, nameof(requestBodyname), required: true);
-            var __workflow_requestBodydescription = requestBodydescription == null ? null : WorkflowExpression.Compile(requestBodydescription);
-            WorkflowExpression.Validate(__workflow_requestBodydescription, nameof(requestBodydescription), required: true);
-            var __workflow_requestBodyexpertEmails = requestBodyexpertEmails == null ? null : WorkflowExpression.Compile(requestBodyexpertEmails);
-            WorkflowExpression.Validate(__workflow_requestBodyexpertEmails, nameof(requestBodyexpertEmails), required: true);
+            var __workflow_requestBodyname = WorkflowExpression.Compile(requestBodyname, nameof(requestBodyname), required: true);
+            var __workflow_requestBodydescription = WorkflowExpression.Compile(requestBodydescription, nameof(requestBodydescription), required: true);
+            var __workflow_requestBodyexpertEmails = WorkflowExpression.Compile(requestBodyexpertEmails, nameof(requestBodyexpertEmails), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/add-topic";
@@ -278,10 +257,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction RenameTopic(Expression<Func<string>> requestBodyname, Expression<Func<string>> requestBodynewName)
         {
-            var __workflow_requestBodyname = requestBodyname == null ? null : WorkflowExpression.Compile(requestBodyname);
-            WorkflowExpression.Validate(__workflow_requestBodyname, nameof(requestBodyname), required: true);
-            var __workflow_requestBodynewName = requestBodynewName == null ? null : WorkflowExpression.Compile(requestBodynewName);
-            WorkflowExpression.Validate(__workflow_requestBodynewName, nameof(requestBodynewName), required: true);
+            var __workflow_requestBodyname = WorkflowExpression.Compile(requestBodyname, nameof(requestBodyname), required: true);
+            var __workflow_requestBodynewName = WorkflowExpression.Compile(requestBodynewName, nameof(requestBodynewName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/rename-topic";
@@ -305,16 +282,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddAnswer(Expression<Func<string>> requestBodytopic, Expression<Func<string>> requestBodyshortDescription, Expression<Func<string[]>> requestBodyquestions, Expression<Func<string>> requestBodyanswerText, Expression<Func<string>> requestBodyuserEmail = null)
         {
-            var __workflow_requestBodytopic = requestBodytopic == null ? null : WorkflowExpression.Compile(requestBodytopic);
-            WorkflowExpression.Validate(__workflow_requestBodytopic, nameof(requestBodytopic), required: true);
-            var __workflow_requestBodyshortDescription = requestBodyshortDescription == null ? null : WorkflowExpression.Compile(requestBodyshortDescription);
-            WorkflowExpression.Validate(__workflow_requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
-            var __workflow_requestBodyquestions = requestBodyquestions == null ? null : WorkflowExpression.Compile(requestBodyquestions);
-            WorkflowExpression.Validate(__workflow_requestBodyquestions, nameof(requestBodyquestions), required: true);
-            var __workflow_requestBodyanswerText = requestBodyanswerText == null ? null : WorkflowExpression.Compile(requestBodyanswerText);
-            WorkflowExpression.Validate(__workflow_requestBodyanswerText, nameof(requestBodyanswerText), required: true);
-            var __workflow_requestBodyuserEmail = requestBodyuserEmail == null ? null : WorkflowExpression.Compile(requestBodyuserEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: true);
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            var __workflow_requestBodyquestions = WorkflowExpression.Compile(requestBodyquestions, nameof(requestBodyquestions), required: true);
+            var __workflow_requestBodyanswerText = WorkflowExpression.Compile(requestBodyanswerText, nameof(requestBodyanswerText), required: true);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/add-answer";
@@ -348,18 +320,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction EditAnswer(Expression<Func<string>> requestBodyshortDescription, Expression<Func<string>> requestBodynewTopic = null, Expression<Func<string>> requestBodynewShortDescription = null, Expression<Func<string[]>> requestBodynewQuestions = null, Expression<Func<string>> requestBodynewAnswerText = null, Expression<Func<string>> requestBodyuserEmail = null)
         {
-            var __workflow_requestBodyshortDescription = requestBodyshortDescription == null ? null : WorkflowExpression.Compile(requestBodyshortDescription);
-            WorkflowExpression.Validate(__workflow_requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
-            var __workflow_requestBodynewTopic = requestBodynewTopic == null ? null : WorkflowExpression.Compile(requestBodynewTopic);
-            WorkflowExpression.Validate(__workflow_requestBodynewTopic, nameof(requestBodynewTopic), required: false);
-            var __workflow_requestBodynewShortDescription = requestBodynewShortDescription == null ? null : WorkflowExpression.Compile(requestBodynewShortDescription);
-            WorkflowExpression.Validate(__workflow_requestBodynewShortDescription, nameof(requestBodynewShortDescription), required: false);
-            var __workflow_requestBodynewQuestions = requestBodynewQuestions == null ? null : WorkflowExpression.Compile(requestBodynewQuestions);
-            WorkflowExpression.Validate(__workflow_requestBodynewQuestions, nameof(requestBodynewQuestions), required: false);
-            var __workflow_requestBodynewAnswerText = requestBodynewAnswerText == null ? null : WorkflowExpression.Compile(requestBodynewAnswerText);
-            WorkflowExpression.Validate(__workflow_requestBodynewAnswerText, nameof(requestBodynewAnswerText), required: false);
-            var __workflow_requestBodyuserEmail = requestBodyuserEmail == null ? null : WorkflowExpression.Compile(requestBodyuserEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            var __workflow_requestBodynewTopic = WorkflowExpression.Compile(requestBodynewTopic, nameof(requestBodynewTopic), required: false);
+            var __workflow_requestBodynewShortDescription = WorkflowExpression.Compile(requestBodynewShortDescription, nameof(requestBodynewShortDescription), required: false);
+            var __workflow_requestBodynewQuestions = WorkflowExpression.Compile(requestBodynewQuestions, nameof(requestBodynewQuestions), required: false);
+            var __workflow_requestBodynewAnswerText = WorkflowExpression.Compile(requestBodynewAnswerText, nameof(requestBodynewAnswerText), required: false);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/edit-answer";
@@ -411,8 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction DeleteAnswer(Expression<Func<string>> requestBodyshortDescription)
         {
-            var __workflow_requestBodyshortDescription = requestBodyshortDescription == null ? null : WorkflowExpression.Compile(requestBodyshortDescription);
-            WorkflowExpression.Validate(__workflow_requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/delete-answer";
@@ -434,14 +399,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction AddSubAnswer(Expression<Func<string>> requestBodyshortDescription, Expression<Func<string>> requestBodysubShortDescription, Expression<Func<string[]>> requestBodysubQuestions, Expression<Func<string>> requestBodysubAnswerText)
         {
-            var __workflow_requestBodyshortDescription = requestBodyshortDescription == null ? null : WorkflowExpression.Compile(requestBodyshortDescription);
-            WorkflowExpression.Validate(__workflow_requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
-            var __workflow_requestBodysubShortDescription = requestBodysubShortDescription == null ? null : WorkflowExpression.Compile(requestBodysubShortDescription);
-            WorkflowExpression.Validate(__workflow_requestBodysubShortDescription, nameof(requestBodysubShortDescription), required: true);
-            var __workflow_requestBodysubQuestions = requestBodysubQuestions == null ? null : WorkflowExpression.Compile(requestBodysubQuestions);
-            WorkflowExpression.Validate(__workflow_requestBodysubQuestions, nameof(requestBodysubQuestions), required: true);
-            var __workflow_requestBodysubAnswerText = requestBodysubAnswerText == null ? null : WorkflowExpression.Compile(requestBodysubAnswerText);
-            WorkflowExpression.Validate(__workflow_requestBodysubAnswerText, nameof(requestBodysubAnswerText), required: true);
+            var __workflow_requestBodyshortDescription = WorkflowExpression.Compile(requestBodyshortDescription, nameof(requestBodyshortDescription), required: true);
+            var __workflow_requestBodysubShortDescription = WorkflowExpression.Compile(requestBodysubShortDescription, nameof(requestBodysubShortDescription), required: true);
+            var __workflow_requestBodysubQuestions = WorkflowExpression.Compile(requestBodysubQuestions, nameof(requestBodysubQuestions), required: true);
+            var __workflow_requestBodysubAnswerText = WorkflowExpression.Compile(requestBodysubAnswerText, nameof(requestBodysubAnswerText), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/add-subanswer";
@@ -469,14 +430,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<GetOpenTicketsResponse> GetOpenTickets(Expression<Func<int>> filterByHoursSinceOpened = null, Expression<Func<int>> filterByHoursSinceOpenedMax = null, Expression<Func<string>> filterByTopic = null, Expression<Func<string>> filterByExpertEmail = null)
         {
-            var __workflow_filterByHoursSinceOpened = filterByHoursSinceOpened == null ? null : WorkflowExpression.Compile(filterByHoursSinceOpened);
-            WorkflowExpression.Validate(__workflow_filterByHoursSinceOpened, nameof(filterByHoursSinceOpened), required: false);
-            var __workflow_filterByHoursSinceOpenedMax = filterByHoursSinceOpenedMax == null ? null : WorkflowExpression.Compile(filterByHoursSinceOpenedMax);
-            WorkflowExpression.Validate(__workflow_filterByHoursSinceOpenedMax, nameof(filterByHoursSinceOpenedMax), required: false);
-            var __workflow_filterByTopic = filterByTopic == null ? null : WorkflowExpression.Compile(filterByTopic);
-            WorkflowExpression.Validate(__workflow_filterByTopic, nameof(filterByTopic), required: false);
-            var __workflow_filterByExpertEmail = filterByExpertEmail == null ? null : WorkflowExpression.Compile(filterByExpertEmail);
-            WorkflowExpression.Validate(__workflow_filterByExpertEmail, nameof(filterByExpertEmail), required: false);
+            var __workflow_filterByHoursSinceOpened = WorkflowExpression.Compile(filterByHoursSinceOpened, nameof(filterByHoursSinceOpened), required: false);
+            var __workflow_filterByHoursSinceOpenedMax = WorkflowExpression.Compile(filterByHoursSinceOpenedMax, nameof(filterByHoursSinceOpenedMax), required: false);
+            var __workflow_filterByTopic = WorkflowExpression.Compile(filterByTopic, nameof(filterByTopic), required: false);
+            var __workflow_filterByExpertEmail = WorkflowExpression.Compile(filterByExpertEmail, nameof(filterByExpertEmail), required: false);
             return new DeferredBodyAction<GetOpenTicketsResponse>(() =>
             {
                 var apiCallPath = "/get-tickets";
@@ -497,12 +454,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<OpenTicketQuestionResponse> OpenTicketQuestion(Expression<Func<string>> requestBodyuserEmail, Expression<Func<string>> requestBodyqueryText, Expression<Func<string>> requestBodytopic = null)
         {
-            var __workflow_requestBodyuserEmail = requestBodyuserEmail == null ? null : WorkflowExpression.Compile(requestBodyuserEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
-            var __workflow_requestBodyqueryText = requestBodyqueryText == null ? null : WorkflowExpression.Compile(requestBodyqueryText);
-            WorkflowExpression.Validate(__workflow_requestBodyqueryText, nameof(requestBodyqueryText), required: true);
-            var __workflow_requestBodytopic = requestBodytopic == null ? null : WorkflowExpression.Compile(requestBodytopic);
-            WorkflowExpression.Validate(__workflow_requestBodytopic, nameof(requestBodytopic), required: false);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
+            var __workflow_requestBodyqueryText = WorkflowExpression.Compile(requestBodyqueryText, nameof(requestBodyqueryText), required: true);
+            var __workflow_requestBodytopic = WorkflowExpression.Compile(requestBodytopic, nameof(requestBodytopic), required: false);
             return new DeferredBodyAction<OpenTicketQuestionResponse>(() =>
             {
                 var apiCallPath = "/open-ticket-question";
@@ -532,14 +486,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IBodyWorkflowAction<OpenTicketFeedbackResponse> OpenTicketFeedback(Expression<Func<string>> requestBodyuserEmail, Expression<Func<string>> requestBodyqueryText, Expression<Func<string>> requestBodyanswerShortDescription, Expression<Func<string>> requestBodyfeedbackText)
         {
-            var __workflow_requestBodyuserEmail = requestBodyuserEmail == null ? null : WorkflowExpression.Compile(requestBodyuserEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
-            var __workflow_requestBodyqueryText = requestBodyqueryText == null ? null : WorkflowExpression.Compile(requestBodyqueryText);
-            WorkflowExpression.Validate(__workflow_requestBodyqueryText, nameof(requestBodyqueryText), required: true);
-            var __workflow_requestBodyanswerShortDescription = requestBodyanswerShortDescription == null ? null : WorkflowExpression.Compile(requestBodyanswerShortDescription);
-            WorkflowExpression.Validate(__workflow_requestBodyanswerShortDescription, nameof(requestBodyanswerShortDescription), required: true);
-            var __workflow_requestBodyfeedbackText = requestBodyfeedbackText == null ? null : WorkflowExpression.Compile(requestBodyfeedbackText);
-            WorkflowExpression.Validate(__workflow_requestBodyfeedbackText, nameof(requestBodyfeedbackText), required: true);
+            var __workflow_requestBodyuserEmail = WorkflowExpression.Compile(requestBodyuserEmail, nameof(requestBodyuserEmail), required: true);
+            var __workflow_requestBodyqueryText = WorkflowExpression.Compile(requestBodyqueryText, nameof(requestBodyqueryText), required: true);
+            var __workflow_requestBodyanswerShortDescription = WorkflowExpression.Compile(requestBodyanswerShortDescription, nameof(requestBodyanswerShortDescription), required: true);
+            var __workflow_requestBodyfeedbackText = WorkflowExpression.Compile(requestBodyfeedbackText, nameof(requestBodyfeedbackText), required: true);
             return new DeferredBodyAction<OpenTicketFeedbackResponse>(() =>
             {
                 var apiCallPath = "/open-ticket-feedback";
@@ -567,12 +517,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cosmobot")]
         public IWorkflowAction CloseTicket(Expression<Func<string>> requestBodyticketId, Expression<Func<string>> requestBodyeditorEmail, Expression<Func<string>> requestBodyeditorComment)
         {
-            var __workflow_requestBodyticketId = requestBodyticketId == null ? null : WorkflowExpression.Compile(requestBodyticketId);
-            WorkflowExpression.Validate(__workflow_requestBodyticketId, nameof(requestBodyticketId), required: true);
-            var __workflow_requestBodyeditorEmail = requestBodyeditorEmail == null ? null : WorkflowExpression.Compile(requestBodyeditorEmail);
-            WorkflowExpression.Validate(__workflow_requestBodyeditorEmail, nameof(requestBodyeditorEmail), required: true);
-            var __workflow_requestBodyeditorComment = requestBodyeditorComment == null ? null : WorkflowExpression.Compile(requestBodyeditorComment);
-            WorkflowExpression.Validate(__workflow_requestBodyeditorComment, nameof(requestBodyeditorComment), required: true);
+            var __workflow_requestBodyticketId = WorkflowExpression.Compile(requestBodyticketId, nameof(requestBodyticketId), required: true);
+            var __workflow_requestBodyeditorEmail = WorkflowExpression.Compile(requestBodyeditorEmail, nameof(requestBodyeditorEmail), required: true);
+            var __workflow_requestBodyeditorComment = WorkflowExpression.Compile(requestBodyeditorComment, nameof(requestBodyeditorComment), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/close-ticket";

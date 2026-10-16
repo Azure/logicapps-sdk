@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileListResponse> FileList(Expression<Func<string>> search = null, Expression<Func<string>> sort = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<FileListResponse>(() =>
             {
                 var apiCallPath = "/";
@@ -41,14 +37,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileUploadResponse> FileUpload(Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
         {
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
-            var __workflow_bodyexpires = bodyexpires == null ? null : WorkflowExpression.Compile(bodyexpires);
-            WorkflowExpression.Validate(__workflow_bodyexpires, nameof(bodyexpires), required: false);
-            var __workflow_bodymaxDownloads = bodymaxDownloads == null ? null : WorkflowExpression.Compile(bodymaxDownloads);
-            WorkflowExpression.Validate(__workflow_bodymaxDownloads, nameof(bodymaxDownloads), required: false);
-            var __workflow_bodyautoDelete = bodyautoDelete == null ? null : WorkflowExpression.Compile(bodyautoDelete);
-            WorkflowExpression.Validate(__workflow_bodyautoDelete, nameof(bodyautoDelete), required: false);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
+            var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
             return new DeferredBodyAction<FileUploadResponse>(() =>
             {
                 var apiCallPath = "/";
@@ -92,16 +84,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileUpdateResponse> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
-            var __workflow_bodyexpires = bodyexpires == null ? null : WorkflowExpression.Compile(bodyexpires);
-            WorkflowExpression.Validate(__workflow_bodyexpires, nameof(bodyexpires), required: false);
-            var __workflow_bodymaxDownloads = bodymaxDownloads == null ? null : WorkflowExpression.Compile(bodymaxDownloads);
-            WorkflowExpression.Validate(__workflow_bodymaxDownloads, nameof(bodymaxDownloads), required: false);
-            var __workflow_bodyautoDelete = bodyautoDelete == null ? null : WorkflowExpression.Compile(bodyautoDelete);
-            WorkflowExpression.Validate(__workflow_bodyautoDelete, nameof(bodyautoDelete), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyexpires = WorkflowExpression.Compile(bodyexpires, nameof(bodyexpires), required: false);
+            var __workflow_bodymaxDownloads = WorkflowExpression.Compile(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            var __workflow_bodyautoDelete = WorkflowExpression.Compile(bodyautoDelete, nameof(bodyautoDelete), required: false);
             return new DeferredBodyAction<FileUpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -145,8 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> key)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<FileDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));

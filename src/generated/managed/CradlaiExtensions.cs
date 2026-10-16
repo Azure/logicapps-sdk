@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<CreateDocumentDeprecatedResponse> CreateDocumentDeprecated(Expression<Func<string>> name, Expression<Func<string>> fileContent = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
-            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
             return new DeferredBodyAction<CreateDocumentDeprecatedResponse>(() =>
             {
                 var apiCallPath = "/documents";
@@ -31,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata(Expression<Func<string>> documentId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<GetDocumentMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/metadata/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -45,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<string> GetDocument(Expression<Func<string>> documentId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -59,20 +55,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> ParseDocumentDeprecated(Expression<Func<string>> requestmodel, Expression<Func<string>> requestdocumentID, Expression<Func<requestpostprocessingtheOutputFormatInput>> requestpostprocessingtheOutputFormat = null, Expression<Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput>> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, Expression<Func<bool>> requestpreprocessingautoRotate = null, Expression<Func<int>> requestpreprocessingmaxPages = null, Expression<Func<string>> requestpreprocessingimageQuality = null)
         {
-            var __workflow_requestmodel = requestmodel == null ? null : WorkflowExpression.Compile(requestmodel);
-            WorkflowExpression.Validate(__workflow_requestmodel, nameof(requestmodel), required: true);
-            var __workflow_requestdocumentID = requestdocumentID == null ? null : WorkflowExpression.Compile(requestdocumentID);
-            WorkflowExpression.Validate(__workflow_requestdocumentID, nameof(requestdocumentID), required: true);
-            var __workflow_requestpostprocessingtheOutputFormat = requestpostprocessingtheOutputFormat == null ? null : WorkflowExpression.Compile(requestpostprocessingtheOutputFormat);
-            WorkflowExpression.Validate(__workflow_requestpostprocessingtheOutputFormat, nameof(requestpostprocessingtheOutputFormat), required: false);
-            var __workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions = requestpostprocessingtheStrategyUsedForAggregatingPredictions == null ? null : WorkflowExpression.Compile(requestpostprocessingtheStrategyUsedForAggregatingPredictions);
-            WorkflowExpression.Validate(__workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions, nameof(requestpostprocessingtheStrategyUsedForAggregatingPredictions), required: false);
-            var __workflow_requestpreprocessingautoRotate = requestpreprocessingautoRotate == null ? null : WorkflowExpression.Compile(requestpreprocessingautoRotate);
-            WorkflowExpression.Validate(__workflow_requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
-            var __workflow_requestpreprocessingmaxPages = requestpreprocessingmaxPages == null ? null : WorkflowExpression.Compile(requestpreprocessingmaxPages);
-            WorkflowExpression.Validate(__workflow_requestpreprocessingmaxPages, nameof(requestpreprocessingmaxPages), required: false);
-            var __workflow_requestpreprocessingimageQuality = requestpreprocessingimageQuality == null ? null : WorkflowExpression.Compile(requestpreprocessingimageQuality);
-            WorkflowExpression.Validate(__workflow_requestpreprocessingimageQuality, nameof(requestpreprocessingimageQuality), required: false);
+            var __workflow_requestmodel = WorkflowExpression.Compile(requestmodel, nameof(requestmodel), required: true);
+            var __workflow_requestdocumentID = WorkflowExpression.Compile(requestdocumentID, nameof(requestdocumentID), required: true);
+            var __workflow_requestpostprocessingtheOutputFormat = WorkflowExpression.Compile(requestpostprocessingtheOutputFormat, nameof(requestpostprocessingtheOutputFormat), required: false);
+            var __workflow_requestpostprocessingtheStrategyUsedForAggregatingPredictions = WorkflowExpression.Compile(requestpostprocessingtheStrategyUsedForAggregatingPredictions, nameof(requestpostprocessingtheStrategyUsedForAggregatingPredictions), required: false);
+            var __workflow_requestpreprocessingautoRotate = WorkflowExpression.Compile(requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
+            var __workflow_requestpreprocessingmaxPages = WorkflowExpression.Compile(requestpreprocessingmaxPages, nameof(requestpreprocessingmaxPages), required: false);
+            var __workflow_requestpreprocessingimageQuality = WorkflowExpression.Compile(requestpreprocessingimageQuality, nameof(requestpreprocessingimageQuality), required: false);
             return new DeferredBodyAction<ParseDocumentDeprecatedResponse>(() =>
             {
                 var apiCallPath = "/predictions";
@@ -162,14 +151,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> variables = null, Expression<Func<string>> title = null, Expression<Func<string>> document = null)
         {
-            var __workflow_agentId = agentId == null ? null : WorkflowExpression.Compile(agentId);
-            WorkflowExpression.Validate(__workflow_agentId, nameof(agentId), required: true);
-            var __workflow_variables = variables == null ? null : WorkflowExpression.Compile(variables);
-            WorkflowExpression.Validate(__workflow_variables, nameof(variables), required: false);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
-            WorkflowExpression.Validate(__workflow_document, nameof(document), required: false);
+            var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
+            var __workflow_variables = WorkflowExpression.Compile(variables, nameof(variables), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: false);
             return new DeferredBodyAction<CreateRunResponse>(() =>
             {
                 var apiCallPath = "/agents";
@@ -188,10 +173,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IWorkflowAction Validate(Expression<Func<string>> actionId, Expression<Func<string>> xCradlSharedSecret)
         {
-            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
-            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
-            var __workflow_xCradlSharedSecret = xCradlSharedSecret == null ? null : WorkflowExpression.Compile(xCradlSharedSecret);
-            WorkflowExpression.Validate(__workflow_xCradlSharedSecret, nameof(xCradlSharedSecret), required: true);
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
+            var __workflow_xCradlSharedSecret = WorkflowExpression.Compile(xCradlSharedSecret, nameof(xCradlSharedSecret), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/validate";
@@ -206,12 +189,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
         public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<string>> requestinputdocumentID, Expression<Func<string>> requestinputtitle = null)
         {
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
-            var __workflow_requestinputdocumentID = requestinputdocumentID == null ? null : WorkflowExpression.Compile(requestinputdocumentID);
-            WorkflowExpression.Validate(__workflow_requestinputdocumentID, nameof(requestinputdocumentID), required: true);
-            var __workflow_requestinputtitle = requestinputtitle == null ? null : WorkflowExpression.Compile(requestinputtitle);
-            WorkflowExpression.Validate(__workflow_requestinputtitle, nameof(requestinputtitle), required: false);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_requestinputdocumentID = WorkflowExpression.Compile(requestinputdocumentID, nameof(requestinputdocumentID), required: true);
+            var __workflow_requestinputtitle = WorkflowExpression.Compile(requestinputtitle, nameof(requestinputtitle), required: false);
             return new DeferredBodyAction<CreateExecutionDeprecatedResponse>(() =>
             {
                 var apiCallPath = "/workflows";
@@ -258,8 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     {
         public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted(Expression<Func<string>> actionId, FlowRecurrence recurrence = null)
         {
-            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
-            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
             return new DeferredBodyTrigger<RunCompletedResponse>(() =>
             {
                 var apiCallPath = "/actions";

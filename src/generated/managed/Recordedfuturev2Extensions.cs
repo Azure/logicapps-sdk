@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<IPEResponse> IPE(Expression<Func<string>> ip, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
-            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
-            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
-            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
-            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
-            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = WorkflowExpression.Compile(intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<IPEResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ip, 1));
@@ -39,14 +35,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<DEResponse> DE(Expression<Func<string>> domain, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
-            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
-            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
-            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
-            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = WorkflowExpression.Compile(intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<DEResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/domain/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
@@ -65,14 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<UEResponse> UE(Expression<Func<string>> url, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
-            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
-            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
-            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
-            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = WorkflowExpression.Compile(intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<UEResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/url/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_url, 1));
@@ -91,14 +79,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<HEResponse> HE(Expression<Func<string>> hash, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var __workflow_hash = hash == null ? null : WorkflowExpression.Compile(hash);
-            WorkflowExpression.Validate(__workflow_hash, nameof(hash), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
-            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
-            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
-            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
-            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_hash = WorkflowExpression.Compile(hash, nameof(hash), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = WorkflowExpression.Compile(intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<HEResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/hash/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hash, 1));
@@ -117,14 +101,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<VulnEResponse> VulnE(Expression<Func<string>> id, Expression<Func<string>> fields, Expression<Func<bool>> intelligenceCloud = null, Expression<Func<bool>> htmlresponse = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
-            var __workflow_intelligenceCloud = intelligenceCloud == null ? null : WorkflowExpression.Compile(intelligenceCloud);
-            WorkflowExpression.Validate(__workflow_intelligenceCloud, nameof(intelligenceCloud), required: false);
-            var __workflow_htmlresponse = htmlresponse == null ? null : WorkflowExpression.Compile(htmlresponse);
-            WorkflowExpression.Validate(__workflow_htmlresponse, nameof(htmlresponse), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: true);
+            var __workflow_intelligenceCloud = WorkflowExpression.Compile(intelligenceCloud, nameof(intelligenceCloud), required: false);
+            var __workflow_htmlresponse = WorkflowExpression.Compile(htmlresponse, nameof(htmlresponse), required: false);
             return new DeferredBodyAction<VulnEResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lookup/vulnerability/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -143,10 +123,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertRulesSearchResponse> AlertRulesSearch(Expression<Func<string>> freetext = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_freetext = freetext == null ? null : WorkflowExpression.Compile(freetext);
-            WorkflowExpression.Validate(__workflow_freetext, nameof(freetext), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_freetext = WorkflowExpression.Compile(freetext, nameof(freetext), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<AlertRulesSearchResponse>(() =>
             {
                 var apiCallPath = "/alert/rules";
@@ -164,14 +142,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertSearch> AlertNotSearch(Expression<Func<string>> alertRule, Expression<Func<string>> triggered = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null)
         {
-            var __workflow_alertRule = alertRule == null ? null : WorkflowExpression.Compile(alertRule);
-            WorkflowExpression.Validate(__workflow_alertRule, nameof(alertRule), required: true);
-            var __workflow_triggered = triggered == null ? null : WorkflowExpression.Compile(triggered);
-            WorkflowExpression.Validate(__workflow_triggered, nameof(triggered), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_alertRule = WorkflowExpression.Compile(alertRule, nameof(alertRule), required: true);
+            var __workflow_triggered = WorkflowExpression.Compile(triggered, nameof(triggered), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             return new DeferredBodyAction<AlertSearch>(() =>
             {
                 var apiCallPath = "/alert/search";
@@ -192,8 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertLookup> AlertNotLookup(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<AlertLookup>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -206,24 +179,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<PlaybookAlertSearchItem[]> PlaybookAlertSearch(Expression<Func<string>> bodylimit = null, Expression<Func<bodyentitiesInputItem[]>> bodyentities = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null, Expression<Func<bodyprioritiesInputItem[]>> bodypriorities = null, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null, Expression<Func<bodycreatedFromRelativeInput>> bodycreatedFromRelative = null, Expression<Func<bodycreatedUntilRelativeInput>> bodycreatedUntilRelative = null, Expression<Func<bodyupdatedFromRelativeInput>> bodyupdatedFromRelative = null, Expression<Func<bodyupdatedUntilRelativeInput>> bodyupdatedUntilRelative = null)
         {
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyentities = bodyentities == null ? null : WorkflowExpression.Compile(bodyentities);
-            WorkflowExpression.Validate(__workflow_bodyentities, nameof(bodyentities), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
-            var __workflow_bodypriorities = bodypriorities == null ? null : WorkflowExpression.Compile(bodypriorities);
-            WorkflowExpression.Validate(__workflow_bodypriorities, nameof(bodypriorities), required: false);
-            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
-            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodycreatedFromRelative = bodycreatedFromRelative == null ? null : WorkflowExpression.Compile(bodycreatedFromRelative);
-            WorkflowExpression.Validate(__workflow_bodycreatedFromRelative, nameof(bodycreatedFromRelative), required: false);
-            var __workflow_bodycreatedUntilRelative = bodycreatedUntilRelative == null ? null : WorkflowExpression.Compile(bodycreatedUntilRelative);
-            WorkflowExpression.Validate(__workflow_bodycreatedUntilRelative, nameof(bodycreatedUntilRelative), required: false);
-            var __workflow_bodyupdatedFromRelative = bodyupdatedFromRelative == null ? null : WorkflowExpression.Compile(bodyupdatedFromRelative);
-            WorkflowExpression.Validate(__workflow_bodyupdatedFromRelative, nameof(bodyupdatedFromRelative), required: false);
-            var __workflow_bodyupdatedUntilRelative = bodyupdatedUntilRelative == null ? null : WorkflowExpression.Compile(bodyupdatedUntilRelative);
-            WorkflowExpression.Validate(__workflow_bodyupdatedUntilRelative, nameof(bodyupdatedUntilRelative), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyentities = WorkflowExpression.Compile(bodyentities, nameof(bodyentities), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_bodypriorities = WorkflowExpression.Compile(bodypriorities, nameof(bodypriorities), required: false);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodycreatedFromRelative = WorkflowExpression.Compile(bodycreatedFromRelative, nameof(bodycreatedFromRelative), required: false);
+            var __workflow_bodycreatedUntilRelative = WorkflowExpression.Compile(bodycreatedUntilRelative, nameof(bodycreatedUntilRelative), required: false);
+            var __workflow_bodyupdatedFromRelative = WorkflowExpression.Compile(bodyupdatedFromRelative, nameof(bodyupdatedFromRelative), required: false);
+            var __workflow_bodyupdatedUntilRelative = WorkflowExpression.Compile(bodyupdatedUntilRelative, nameof(bodyupdatedUntilRelative), required: false);
             return new DeferredBodyAction<PlaybookAlertSearchItem[]>(() =>
             {
                 var apiCallPath = "/playbook-alert/search";
@@ -297,8 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<PlaybookAlertLookup> PlaybookAlertLookup(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PlaybookAlertLookup>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/playbook-alert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -311,16 +274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<DetectionRuleSearchResponse> DetectionRuleSearch(Expression<Func<bodytypesInputItem[]>> bodytypes = null, Expression<Func<bodyentitiesInputItem[]>> bodyentities = null, Expression<Func<string>> bodycreatedbefore = null, Expression<Func<string>> bodycreatedafter = null, Expression<Func<bodylimitInput>> bodylimit = null)
         {
-            var __workflow_bodytypes = bodytypes == null ? null : WorkflowExpression.Compile(bodytypes);
-            WorkflowExpression.Validate(__workflow_bodytypes, nameof(bodytypes), required: false);
-            var __workflow_bodyentities = bodyentities == null ? null : WorkflowExpression.Compile(bodyentities);
-            WorkflowExpression.Validate(__workflow_bodyentities, nameof(bodyentities), required: false);
-            var __workflow_bodycreatedbefore = bodycreatedbefore == null ? null : WorkflowExpression.Compile(bodycreatedbefore);
-            WorkflowExpression.Validate(__workflow_bodycreatedbefore, nameof(bodycreatedbefore), required: false);
-            var __workflow_bodycreatedafter = bodycreatedafter == null ? null : WorkflowExpression.Compile(bodycreatedafter);
-            WorkflowExpression.Validate(__workflow_bodycreatedafter, nameof(bodycreatedafter), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodytypes = WorkflowExpression.Compile(bodytypes, nameof(bodytypes), required: false);
+            var __workflow_bodyentities = WorkflowExpression.Compile(bodyentities, nameof(bodyentities), required: false);
+            var __workflow_bodycreatedbefore = WorkflowExpression.Compile(bodycreatedbefore, nameof(bodycreatedbefore), required: false);
+            var __workflow_bodycreatedafter = WorkflowExpression.Compile(bodycreatedafter, nameof(bodycreatedafter), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
             return new DeferredBodyAction<DetectionRuleSearchResponse>(() =>
             {
                 var apiCallPath = "/detection-rules/search";
@@ -378,8 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<RListDResponseItem[]> RListD(Expression<Func<pathInput>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<RListDResponseItem[]>(() =>
             {
                 var apiCallPath = "/fusion/files";
@@ -393,16 +350,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<SoarBulkLookupResponse> SoarBulkLookup(Expression<Func<string[]>> bodyip = null, Expression<Func<string[]>> bodyurl = null, Expression<Func<string[]>> bodydomain = null, Expression<Func<string[]>> bodyhash = null, Expression<Func<string[]>> bodyvulnerability = null)
         {
-            var __workflow_bodyip = bodyip == null ? null : WorkflowExpression.Compile(bodyip);
-            WorkflowExpression.Validate(__workflow_bodyip, nameof(bodyip), required: false);
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodydomain = bodydomain == null ? null : WorkflowExpression.Compile(bodydomain);
-            WorkflowExpression.Validate(__workflow_bodydomain, nameof(bodydomain), required: false);
-            var __workflow_bodyhash = bodyhash == null ? null : WorkflowExpression.Compile(bodyhash);
-            WorkflowExpression.Validate(__workflow_bodyhash, nameof(bodyhash), required: false);
-            var __workflow_bodyvulnerability = bodyvulnerability == null ? null : WorkflowExpression.Compile(bodyvulnerability);
-            WorkflowExpression.Validate(__workflow_bodyvulnerability, nameof(bodyvulnerability), required: false);
+            var __workflow_bodyip = WorkflowExpression.Compile(bodyip, nameof(bodyip), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodydomain = WorkflowExpression.Compile(bodydomain, nameof(bodydomain), required: false);
+            var __workflow_bodyhash = WorkflowExpression.Compile(bodyhash, nameof(bodyhash), required: false);
+            var __workflow_bodyvulnerability = WorkflowExpression.Compile(bodyvulnerability, nameof(bodyvulnerability), required: false);
             return new DeferredBodyAction<SoarBulkLookupResponse>(() =>
             {
                 var apiCallPath = "/soar/lookup";
@@ -452,12 +404,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<ThreatMapActorsResponse> ThreatMapActors(Expression<Func<string[]>> bodyactors, Expression<Func<string[]>> bodycategories, Expression<Func<string[]>> bodywatchlists)
         {
-            var __workflow_bodyactors = bodyactors == null ? null : WorkflowExpression.Compile(bodyactors);
-            WorkflowExpression.Validate(__workflow_bodyactors, nameof(bodyactors), required: true);
-            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
-            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: true);
-            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
-            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: true);
+            var __workflow_bodyactors = WorkflowExpression.Compile(bodyactors, nameof(bodyactors), required: true);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: true);
+            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: true);
             return new DeferredBodyAction<ThreatMapActorsResponse>(() =>
             {
                 var apiCallPath = "/threat/map/actors";
@@ -483,12 +432,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<ThreatMapMalwareResponse> ThreatMapMalware(Expression<Func<string[]>> bodymalware, Expression<Func<string[]>> bodycategories, Expression<Func<string[]>> bodywatchlists)
         {
-            var __workflow_bodymalware = bodymalware == null ? null : WorkflowExpression.Compile(bodymalware);
-            WorkflowExpression.Validate(__workflow_bodymalware, nameof(bodymalware), required: true);
-            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
-            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: true);
-            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
-            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: true);
+            var __workflow_bodymalware = WorkflowExpression.Compile(bodymalware, nameof(bodymalware), required: true);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: true);
+            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: true);
             return new DeferredBodyAction<ThreatMapMalwareResponse>(() =>
             {
                 var apiCallPath = "/threat/map/malware";
@@ -514,24 +460,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<STIXIndicatorsResponse> STIXIndicators(Expression<Func<string[]>> bodyactors = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<string[]>> bodywatchlists = null, Expression<Func<int>> bodytriggerScoreIp = null, Expression<Func<int>> bodytriggerScoreUrl = null, Expression<Func<int>> bodytriggerScoreDomain = null, Expression<Func<int>> bodytriggerScoreHash = null, Expression<Func<int>> bodyvalidUntilDeltaHours = null, Expression<Func<string>> bodythreatHuntDescription = null)
         {
-            var __workflow_bodyactors = bodyactors == null ? null : WorkflowExpression.Compile(bodyactors);
-            WorkflowExpression.Validate(__workflow_bodyactors, nameof(bodyactors), required: false);
-            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
-            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
-            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: false);
-            var __workflow_bodytriggerScoreIp = bodytriggerScoreIp == null ? null : WorkflowExpression.Compile(bodytriggerScoreIp);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            var __workflow_bodytriggerScoreUrl = bodytriggerScoreUrl == null ? null : WorkflowExpression.Compile(bodytriggerScoreUrl);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            var __workflow_bodytriggerScoreDomain = bodytriggerScoreDomain == null ? null : WorkflowExpression.Compile(bodytriggerScoreDomain);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            var __workflow_bodytriggerScoreHash = bodytriggerScoreHash == null ? null : WorkflowExpression.Compile(bodytriggerScoreHash);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            var __workflow_bodyvalidUntilDeltaHours = bodyvalidUntilDeltaHours == null ? null : WorkflowExpression.Compile(bodyvalidUntilDeltaHours);
-            WorkflowExpression.Validate(__workflow_bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            var __workflow_bodythreatHuntDescription = bodythreatHuntDescription == null ? null : WorkflowExpression.Compile(bodythreatHuntDescription);
-            WorkflowExpression.Validate(__workflow_bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
+            var __workflow_bodyactors = WorkflowExpression.Compile(bodyactors, nameof(bodyactors), required: false);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: false);
+            var __workflow_bodytriggerScoreIp = WorkflowExpression.Compile(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
+            var __workflow_bodytriggerScoreUrl = WorkflowExpression.Compile(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
+            var __workflow_bodytriggerScoreDomain = WorkflowExpression.Compile(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
+            var __workflow_bodytriggerScoreHash = WorkflowExpression.Compile(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
+            var __workflow_bodyvalidUntilDeltaHours = WorkflowExpression.Compile(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
+            var __workflow_bodythreatHuntDescription = WorkflowExpression.Compile(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
             return new DeferredBodyAction<STIXIndicatorsResponse>(() =>
             {
                 var apiCallPath = "/threat/indicators/actors";
@@ -605,24 +542,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<STIXMalwareIndicatorsResponse> STIXMalwareIndicators(Expression<Func<string[]>> bodymalware = null, Expression<Func<string[]>> bodycategories = null, Expression<Func<string[]>> bodywatchlists = null, Expression<Func<int>> bodytriggerScoreIp = null, Expression<Func<int>> bodytriggerScoreUrl = null, Expression<Func<int>> bodytriggerScoreDomain = null, Expression<Func<int>> bodytriggerScoreHash = null, Expression<Func<int>> bodyvalidUntilDeltaHours = null, Expression<Func<string>> bodythreatHuntDescription = null)
         {
-            var __workflow_bodymalware = bodymalware == null ? null : WorkflowExpression.Compile(bodymalware);
-            WorkflowExpression.Validate(__workflow_bodymalware, nameof(bodymalware), required: false);
-            var __workflow_bodycategories = bodycategories == null ? null : WorkflowExpression.Compile(bodycategories);
-            WorkflowExpression.Validate(__workflow_bodycategories, nameof(bodycategories), required: false);
-            var __workflow_bodywatchlists = bodywatchlists == null ? null : WorkflowExpression.Compile(bodywatchlists);
-            WorkflowExpression.Validate(__workflow_bodywatchlists, nameof(bodywatchlists), required: false);
-            var __workflow_bodytriggerScoreIp = bodytriggerScoreIp == null ? null : WorkflowExpression.Compile(bodytriggerScoreIp);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
-            var __workflow_bodytriggerScoreUrl = bodytriggerScoreUrl == null ? null : WorkflowExpression.Compile(bodytriggerScoreUrl);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
-            var __workflow_bodytriggerScoreDomain = bodytriggerScoreDomain == null ? null : WorkflowExpression.Compile(bodytriggerScoreDomain);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
-            var __workflow_bodytriggerScoreHash = bodytriggerScoreHash == null ? null : WorkflowExpression.Compile(bodytriggerScoreHash);
-            WorkflowExpression.Validate(__workflow_bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
-            var __workflow_bodyvalidUntilDeltaHours = bodyvalidUntilDeltaHours == null ? null : WorkflowExpression.Compile(bodyvalidUntilDeltaHours);
-            WorkflowExpression.Validate(__workflow_bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
-            var __workflow_bodythreatHuntDescription = bodythreatHuntDescription == null ? null : WorkflowExpression.Compile(bodythreatHuntDescription);
-            WorkflowExpression.Validate(__workflow_bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
+            var __workflow_bodymalware = WorkflowExpression.Compile(bodymalware, nameof(bodymalware), required: false);
+            var __workflow_bodycategories = WorkflowExpression.Compile(bodycategories, nameof(bodycategories), required: false);
+            var __workflow_bodywatchlists = WorkflowExpression.Compile(bodywatchlists, nameof(bodywatchlists), required: false);
+            var __workflow_bodytriggerScoreIp = WorkflowExpression.Compile(bodytriggerScoreIp, nameof(bodytriggerScoreIp), required: false);
+            var __workflow_bodytriggerScoreUrl = WorkflowExpression.Compile(bodytriggerScoreUrl, nameof(bodytriggerScoreUrl), required: false);
+            var __workflow_bodytriggerScoreDomain = WorkflowExpression.Compile(bodytriggerScoreDomain, nameof(bodytriggerScoreDomain), required: false);
+            var __workflow_bodytriggerScoreHash = WorkflowExpression.Compile(bodytriggerScoreHash, nameof(bodytriggerScoreHash), required: false);
+            var __workflow_bodyvalidUntilDeltaHours = WorkflowExpression.Compile(bodyvalidUntilDeltaHours, nameof(bodyvalidUntilDeltaHours), required: false);
+            var __workflow_bodythreatHuntDescription = WorkflowExpression.Compile(bodythreatHuntDescription, nameof(bodythreatHuntDescription), required: false);
             return new DeferredBodyAction<STIXMalwareIndicatorsResponse>(() =>
             {
                 var apiCallPath = "/threat/indicators/malware";
@@ -696,16 +624,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertSearchV2Response> AlertSearch(Expression<Func<string>> triggered = null, Expression<Func<string>> alertRule = null, Expression<Func<int>> limit = null, Expression<Func<int>> from = null, Expression<Func<fieldsInput>> fields = null)
         {
-            var __workflow_triggered = triggered == null ? null : WorkflowExpression.Compile(triggered);
-            WorkflowExpression.Validate(__workflow_triggered, nameof(triggered), required: false);
-            var __workflow_alertRule = alertRule == null ? null : WorkflowExpression.Compile(alertRule);
-            WorkflowExpression.Validate(__workflow_alertRule, nameof(alertRule), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_triggered = WorkflowExpression.Compile(triggered, nameof(triggered), required: false);
+            var __workflow_alertRule = WorkflowExpression.Compile(alertRule, nameof(alertRule), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<AlertSearchV2Response>(() =>
             {
                 var apiCallPath = "/v2/alerts";
@@ -728,10 +651,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturev2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturev2")]
         public IBodyWorkflowAction<AlertSearchIdV2Response> AlertSearchId(Expression<Func<string>> id, Expression<Func<fieldsInput>> fields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<AlertSearchIdV2Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

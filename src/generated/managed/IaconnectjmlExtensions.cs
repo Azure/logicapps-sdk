@@ -13,38 +13,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<RunActiveDirectoryPowerShellAutomationScriptResponse> RunActiveDirectoryPowerShellAutomationScript(Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptworkflow, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters = null)
         {
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptworkflow = runActiveDirectoryPowerShellAutomationScriptworkflow == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptworkflow);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptworkflow, nameof(runActiveDirectoryPowerShellAutomationScriptworkflow), required: true);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents = runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents, nameof(runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptisNoResultAnError = runActiveDirectoryPowerShellAutomationScriptisNoResultAnError == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptisNoResultAnError);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptisNoResultAnError, nameof(runActiveDirectoryPowerShellAutomationScriptisNoResultAnError), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes = runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes, nameof(runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean = runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal = runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal, nameof(runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate = runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate, nameof(runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread = runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread, nameof(runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId = runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread = runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread, nameof(runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword = runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword, nameof(runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput = runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput, nameof(runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON = runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON = runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
-            var __workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters = runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters == null ? null : WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters);
-            WorkflowExpression.Validate(__workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters, nameof(runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptworkflow, nameof(runActiveDirectoryPowerShellAutomationScriptworkflow), required: true);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents, nameof(runActiveDirectoryPowerShellAutomationScriptpowerShellScriptContents), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptisNoResultAnError = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptisNoResultAnError, nameof(runActiveDirectoryPowerShellAutomationScriptisNoResultAnError), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes, nameof(runActiveDirectoryPowerShellAutomationScriptreturnComplexTypes), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runActiveDirectoryPowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal, nameof(runActiveDirectoryPowerShellAutomationScriptreturnNumericAsDecimal), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate, nameof(runActiveDirectoryPowerShellAutomationScriptreturnDateAsDate), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread, nameof(runActiveDirectoryPowerShellAutomationScriptrunScriptAsThread), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runActiveDirectoryPowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread, nameof(runActiveDirectoryPowerShellAutomationScriptsecondsToWaitForThread), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword, nameof(runActiveDirectoryPowerShellAutomationScriptscriptContainsStoredPassword), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput, nameof(runActiveDirectoryPowerShellAutomationScriptlogVerboseOutput), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runActiveDirectoryPowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
+            var __workflow_runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters, nameof(runActiveDirectoryPowerShellAutomationScriptpowerShellCommandParameters), required: false);
             return new DeferredBodyAction<RunActiveDirectoryPowerShellAutomationScriptResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunActiveDirectoryPowerShellAutomationScript";
@@ -246,18 +230,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse> OpenActiveDirectoryPowerShellRunspaceWithCredentials(Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsusername, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialspassword, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow, Expression<Func<string>> openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer = null, Expression<Func<bool>> openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL = null, Expression<Func<int>> openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort = null)
         {
-            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsusername = openActiveDirectoryPowerShellRunspaceWithCredentialsusername == null ? null : WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsusername);
-            WorkflowExpression.Validate(__workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsusername, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsusername), required: true);
-            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialspassword = openActiveDirectoryPowerShellRunspaceWithCredentialspassword == null ? null : WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialspassword);
-            WorkflowExpression.Validate(__workflow_openActiveDirectoryPowerShellRunspaceWithCredentialspassword, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialspassword), required: true);
-            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow = openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow == null ? null : WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow);
-            WorkflowExpression.Validate(__workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow), required: true);
-            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer = openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer == null ? null : WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer);
-            WorkflowExpression.Validate(__workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer), required: false);
-            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL = openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL == null ? null : WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL);
-            WorkflowExpression.Validate(__workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL), required: false);
-            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort = openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort == null ? null : WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort);
-            WorkflowExpression.Validate(__workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort), required: false);
+            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsusername = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsusername, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsusername), required: true);
+            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialspassword = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialspassword, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialspassword), required: true);
+            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsworkflow), required: true);
+            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsremoteComputer), required: false);
+            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsuseSSL), required: false);
+            var __workflow_openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort = WorkflowExpression.Compile(openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort, nameof(openActiveDirectoryPowerShellRunspaceWithCredentialsalternativeTCPPort), required: false);
             return new DeferredBodyAction<OpenActiveDirectoryPowerShellRunspaceWithCredentialsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenActiveDirectoryPowerShellRunspaceWithCredentials";
@@ -311,8 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<CloseActiveDirectoryPowerShellRunspaceResponse> CloseActiveDirectoryPowerShellRunspace(Expression<Func<string>> closeActiveDirectoryPowerShellRunspaceworkflow)
         {
-            var __workflow_closeActiveDirectoryPowerShellRunspaceworkflow = closeActiveDirectoryPowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(closeActiveDirectoryPowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_closeActiveDirectoryPowerShellRunspaceworkflow, nameof(closeActiveDirectoryPowerShellRunspaceworkflow), required: true);
+            var __workflow_closeActiveDirectoryPowerShellRunspaceworkflow = WorkflowExpression.Compile(closeActiveDirectoryPowerShellRunspaceworkflow, nameof(closeActiveDirectoryPowerShellRunspaceworkflow), required: true);
             return new DeferredBodyAction<CloseActiveDirectoryPowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/CloseActiveDirectoryPowerShellRunspace";
@@ -334,8 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<IsActiveDirectoryPowerShellRunspaceOpenResponse> IsActiveDirectoryPowerShellRunspaceOpen(Expression<Func<string>> isActiveDirectoryPowerShellRunspaceOpenworkflow)
         {
-            var __workflow_isActiveDirectoryPowerShellRunspaceOpenworkflow = isActiveDirectoryPowerShellRunspaceOpenworkflow == null ? null : WorkflowExpression.Compile(isActiveDirectoryPowerShellRunspaceOpenworkflow);
-            WorkflowExpression.Validate(__workflow_isActiveDirectoryPowerShellRunspaceOpenworkflow, nameof(isActiveDirectoryPowerShellRunspaceOpenworkflow), required: true);
+            var __workflow_isActiveDirectoryPowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isActiveDirectoryPowerShellRunspaceOpenworkflow, nameof(isActiveDirectoryPowerShellRunspaceOpenworkflow), required: true);
             return new DeferredBodyAction<IsActiveDirectoryPowerShellRunspaceOpenResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsActiveDirectoryPowerShellRunspaceOpen";
@@ -357,8 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse> OpenLocalPassthroughActiveDirectoryPowerShellRunspace(Expression<Func<string>> openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow)
         {
-            var __workflow_openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow = openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow, nameof(openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow), required: true);
+            var __workflow_openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow = WorkflowExpression.Compile(openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow, nameof(openLocalPassthroughActiveDirectoryPowerShellRunspaceworkflow), required: true);
             return new DeferredBodyAction<OpenLocalPassthroughActiveDirectoryPowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenLocalPassthroughActiveDirectoryPowerShellRunspace";
@@ -380,38 +355,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryAddADUserResponse> ActiveDirectoryAddADUser(Expression<Func<string>> activeDirectoryAddADUsername, Expression<Func<string>> activeDirectoryAddADUserworkflow, Expression<Func<string>> activeDirectoryAddADUseruserPrincipalName = null, Expression<Func<string>> activeDirectoryAddADUsersamAccountName = null, Expression<Func<string>> activeDirectoryAddADUsergivenName = null, Expression<Func<string>> activeDirectoryAddADUsersurName = null, Expression<Func<string>> activeDirectoryAddADUserpath = null, Expression<Func<string>> activeDirectoryAddADUserdescription = null, Expression<Func<string>> activeDirectoryAddADUserdisplayName = null, Expression<Func<string>> activeDirectoryAddADUseraccountPassword = null, Expression<Func<bool>> activeDirectoryAddADUseraccountPasswordIsStoredPassword = null, Expression<Func<bool>> activeDirectoryAddADUserenabled = null, Expression<Func<bool>> activeDirectoryAddADUserchangePasswordAtLogon = null, Expression<Func<bool>> activeDirectoryAddADUsercannotChangePassword = null, Expression<Func<bool>> activeDirectoryAddADUserpasswordNeverExpires = null, Expression<Func<string>> activeDirectoryAddADUseraDServer = null)
         {
-            var __workflow_activeDirectoryAddADUsername = activeDirectoryAddADUsername == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUsername);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUsername, nameof(activeDirectoryAddADUsername), required: true);
-            var __workflow_activeDirectoryAddADUserworkflow = activeDirectoryAddADUserworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserworkflow, nameof(activeDirectoryAddADUserworkflow), required: true);
-            var __workflow_activeDirectoryAddADUseruserPrincipalName = activeDirectoryAddADUseruserPrincipalName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUseruserPrincipalName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUseruserPrincipalName, nameof(activeDirectoryAddADUseruserPrincipalName), required: false);
-            var __workflow_activeDirectoryAddADUsersamAccountName = activeDirectoryAddADUsersamAccountName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUsersamAccountName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUsersamAccountName, nameof(activeDirectoryAddADUsersamAccountName), required: false);
-            var __workflow_activeDirectoryAddADUsergivenName = activeDirectoryAddADUsergivenName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUsergivenName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUsergivenName, nameof(activeDirectoryAddADUsergivenName), required: false);
-            var __workflow_activeDirectoryAddADUsersurName = activeDirectoryAddADUsersurName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUsersurName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUsersurName, nameof(activeDirectoryAddADUsersurName), required: false);
-            var __workflow_activeDirectoryAddADUserpath = activeDirectoryAddADUserpath == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserpath);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserpath, nameof(activeDirectoryAddADUserpath), required: false);
-            var __workflow_activeDirectoryAddADUserdescription = activeDirectoryAddADUserdescription == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserdescription);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserdescription, nameof(activeDirectoryAddADUserdescription), required: false);
-            var __workflow_activeDirectoryAddADUserdisplayName = activeDirectoryAddADUserdisplayName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserdisplayName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserdisplayName, nameof(activeDirectoryAddADUserdisplayName), required: false);
-            var __workflow_activeDirectoryAddADUseraccountPassword = activeDirectoryAddADUseraccountPassword == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUseraccountPassword);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUseraccountPassword, nameof(activeDirectoryAddADUseraccountPassword), required: false);
-            var __workflow_activeDirectoryAddADUseraccountPasswordIsStoredPassword = activeDirectoryAddADUseraccountPasswordIsStoredPassword == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUseraccountPasswordIsStoredPassword);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUseraccountPasswordIsStoredPassword, nameof(activeDirectoryAddADUseraccountPasswordIsStoredPassword), required: false);
-            var __workflow_activeDirectoryAddADUserenabled = activeDirectoryAddADUserenabled == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserenabled);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserenabled, nameof(activeDirectoryAddADUserenabled), required: false);
-            var __workflow_activeDirectoryAddADUserchangePasswordAtLogon = activeDirectoryAddADUserchangePasswordAtLogon == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserchangePasswordAtLogon);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserchangePasswordAtLogon, nameof(activeDirectoryAddADUserchangePasswordAtLogon), required: false);
-            var __workflow_activeDirectoryAddADUsercannotChangePassword = activeDirectoryAddADUsercannotChangePassword == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUsercannotChangePassword);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUsercannotChangePassword, nameof(activeDirectoryAddADUsercannotChangePassword), required: false);
-            var __workflow_activeDirectoryAddADUserpasswordNeverExpires = activeDirectoryAddADUserpasswordNeverExpires == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserpasswordNeverExpires);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserpasswordNeverExpires, nameof(activeDirectoryAddADUserpasswordNeverExpires), required: false);
-            var __workflow_activeDirectoryAddADUseraDServer = activeDirectoryAddADUseraDServer == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUseraDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUseraDServer, nameof(activeDirectoryAddADUseraDServer), required: false);
+            var __workflow_activeDirectoryAddADUsername = WorkflowExpression.Compile(activeDirectoryAddADUsername, nameof(activeDirectoryAddADUsername), required: true);
+            var __workflow_activeDirectoryAddADUserworkflow = WorkflowExpression.Compile(activeDirectoryAddADUserworkflow, nameof(activeDirectoryAddADUserworkflow), required: true);
+            var __workflow_activeDirectoryAddADUseruserPrincipalName = WorkflowExpression.Compile(activeDirectoryAddADUseruserPrincipalName, nameof(activeDirectoryAddADUseruserPrincipalName), required: false);
+            var __workflow_activeDirectoryAddADUsersamAccountName = WorkflowExpression.Compile(activeDirectoryAddADUsersamAccountName, nameof(activeDirectoryAddADUsersamAccountName), required: false);
+            var __workflow_activeDirectoryAddADUsergivenName = WorkflowExpression.Compile(activeDirectoryAddADUsergivenName, nameof(activeDirectoryAddADUsergivenName), required: false);
+            var __workflow_activeDirectoryAddADUsersurName = WorkflowExpression.Compile(activeDirectoryAddADUsersurName, nameof(activeDirectoryAddADUsersurName), required: false);
+            var __workflow_activeDirectoryAddADUserpath = WorkflowExpression.Compile(activeDirectoryAddADUserpath, nameof(activeDirectoryAddADUserpath), required: false);
+            var __workflow_activeDirectoryAddADUserdescription = WorkflowExpression.Compile(activeDirectoryAddADUserdescription, nameof(activeDirectoryAddADUserdescription), required: false);
+            var __workflow_activeDirectoryAddADUserdisplayName = WorkflowExpression.Compile(activeDirectoryAddADUserdisplayName, nameof(activeDirectoryAddADUserdisplayName), required: false);
+            var __workflow_activeDirectoryAddADUseraccountPassword = WorkflowExpression.Compile(activeDirectoryAddADUseraccountPassword, nameof(activeDirectoryAddADUseraccountPassword), required: false);
+            var __workflow_activeDirectoryAddADUseraccountPasswordIsStoredPassword = WorkflowExpression.Compile(activeDirectoryAddADUseraccountPasswordIsStoredPassword, nameof(activeDirectoryAddADUseraccountPasswordIsStoredPassword), required: false);
+            var __workflow_activeDirectoryAddADUserenabled = WorkflowExpression.Compile(activeDirectoryAddADUserenabled, nameof(activeDirectoryAddADUserenabled), required: false);
+            var __workflow_activeDirectoryAddADUserchangePasswordAtLogon = WorkflowExpression.Compile(activeDirectoryAddADUserchangePasswordAtLogon, nameof(activeDirectoryAddADUserchangePasswordAtLogon), required: false);
+            var __workflow_activeDirectoryAddADUsercannotChangePassword = WorkflowExpression.Compile(activeDirectoryAddADUsercannotChangePassword, nameof(activeDirectoryAddADUsercannotChangePassword), required: false);
+            var __workflow_activeDirectoryAddADUserpasswordNeverExpires = WorkflowExpression.Compile(activeDirectoryAddADUserpasswordNeverExpires, nameof(activeDirectoryAddADUserpasswordNeverExpires), required: false);
+            var __workflow_activeDirectoryAddADUseraDServer = WorkflowExpression.Compile(activeDirectoryAddADUseraDServer, nameof(activeDirectoryAddADUseraDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryAddADUserResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADUser";
@@ -569,30 +528,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryGetADUserByIdentityResponse> ActiveDirectoryGetADUserByIdentity(Expression<Func<string>> activeDirectoryGetADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryGetADUserByIdentityidentity = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityfilterPropertyName = null, Expression<Func<activeDirectoryGetADUserByIdentityfilterPropertyComparisonInput>> activeDirectoryGetADUserByIdentityfilterPropertyComparison = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityfilterPropertyValue = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitysearchOUBase = null, Expression<Func<bool>> activeDirectoryGetADUserByIdentitysearchOUBaseSubtree = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityproperties = null, Expression<Func<string>> activeDirectoryGetADUserByIdentityaDServer = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON = null, Expression<Func<string>> activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON = null)
         {
-            var __workflow_activeDirectoryGetADUserByIdentityworkflow = activeDirectoryGetADUserByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentityworkflow, nameof(activeDirectoryGetADUserByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryGetADUserByIdentityidentity = activeDirectoryGetADUserByIdentityidentity == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityidentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentityidentity, nameof(activeDirectoryGetADUserByIdentityidentity), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentityfilterPropertyName = activeDirectoryGetADUserByIdentityfilterPropertyName == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentityfilterPropertyName, nameof(activeDirectoryGetADUserByIdentityfilterPropertyName), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentityfilterPropertyComparison = activeDirectoryGetADUserByIdentityfilterPropertyComparison == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentityfilterPropertyComparison, nameof(activeDirectoryGetADUserByIdentityfilterPropertyComparison), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentityfilterPropertyValue = activeDirectoryGetADUserByIdentityfilterPropertyValue == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentityfilterPropertyValue, nameof(activeDirectoryGetADUserByIdentityfilterPropertyValue), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentitysearchOUBase = activeDirectoryGetADUserByIdentitysearchOUBase == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitysearchOUBase);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentitysearchOUBase, nameof(activeDirectoryGetADUserByIdentitysearchOUBase), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentitysearchOUBaseSubtree = activeDirectoryGetADUserByIdentitysearchOUBaseSubtree == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitysearchOUBaseSubtree);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentitysearchOUBaseSubtree, nameof(activeDirectoryGetADUserByIdentitysearchOUBaseSubtree), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentityproperties = activeDirectoryGetADUserByIdentityproperties == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityproperties);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentityproperties, nameof(activeDirectoryGetADUserByIdentityproperties), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentityaDServer = activeDirectoryGetADUserByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentityaDServer, nameof(activeDirectoryGetADUserByIdentityaDServer), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON = activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON, nameof(activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON = activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON, nameof(activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON), required: false);
-            var __workflow_activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON = activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON, nameof(activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityworkflow, nameof(activeDirectoryGetADUserByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryGetADUserByIdentityidentity = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityidentity, nameof(activeDirectoryGetADUserByIdentityidentity), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentityfilterPropertyName = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityfilterPropertyName, nameof(activeDirectoryGetADUserByIdentityfilterPropertyName), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentityfilterPropertyComparison = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityfilterPropertyComparison, nameof(activeDirectoryGetADUserByIdentityfilterPropertyComparison), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentityfilterPropertyValue = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityfilterPropertyValue, nameof(activeDirectoryGetADUserByIdentityfilterPropertyValue), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentitysearchOUBase = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitysearchOUBase, nameof(activeDirectoryGetADUserByIdentitysearchOUBase), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentitysearchOUBaseSubtree = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitysearchOUBaseSubtree, nameof(activeDirectoryGetADUserByIdentitysearchOUBaseSubtree), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentityproperties = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityproperties, nameof(activeDirectoryGetADUserByIdentityproperties), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentityaDServer, nameof(activeDirectoryGetADUserByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON, nameof(activeDirectoryGetADUserByIdentitypropertiesToReturnAsCollectionJSON), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON, nameof(activeDirectoryGetADUserByIdentitypropertyNamesToSerializeJSON), required: false);
+            var __workflow_activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON = WorkflowExpression.Compile(activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON, nameof(activeDirectoryGetADUserByIdentitypropertyTypesToSerializeJSON), required: false);
             return new DeferredBodyAction<ActiveDirectoryGetADUserByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADUserByIdentity";
@@ -700,10 +647,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryGetOUFromUserDNResponse> ActiveDirectoryGetOUFromUserDN(Expression<Func<string>> activeDirectoryGetOUFromUserDNuserDN, Expression<Func<string>> activeDirectoryGetOUFromUserDNworkflow)
         {
-            var __workflow_activeDirectoryGetOUFromUserDNuserDN = activeDirectoryGetOUFromUserDNuserDN == null ? null : WorkflowExpression.Compile(activeDirectoryGetOUFromUserDNuserDN);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetOUFromUserDNuserDN, nameof(activeDirectoryGetOUFromUserDNuserDN), required: true);
-            var __workflow_activeDirectoryGetOUFromUserDNworkflow = activeDirectoryGetOUFromUserDNworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryGetOUFromUserDNworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetOUFromUserDNworkflow, nameof(activeDirectoryGetOUFromUserDNworkflow), required: true);
+            var __workflow_activeDirectoryGetOUFromUserDNuserDN = WorkflowExpression.Compile(activeDirectoryGetOUFromUserDNuserDN, nameof(activeDirectoryGetOUFromUserDNuserDN), required: true);
+            var __workflow_activeDirectoryGetOUFromUserDNworkflow = WorkflowExpression.Compile(activeDirectoryGetOUFromUserDNworkflow, nameof(activeDirectoryGetOUFromUserDNworkflow), required: true);
             return new DeferredBodyAction<ActiveDirectoryGetOUFromUserDNResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetOUFromUserDN";
@@ -727,10 +672,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryGetDomainFQDNFromDNResponse> ActiveDirectoryGetDomainFQDNFromDN(Expression<Func<string>> activeDirectoryGetDomainFQDNFromDNdN, Expression<Func<string>> activeDirectoryGetDomainFQDNFromDNworkflow)
         {
-            var __workflow_activeDirectoryGetDomainFQDNFromDNdN = activeDirectoryGetDomainFQDNFromDNdN == null ? null : WorkflowExpression.Compile(activeDirectoryGetDomainFQDNFromDNdN);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetDomainFQDNFromDNdN, nameof(activeDirectoryGetDomainFQDNFromDNdN), required: true);
-            var __workflow_activeDirectoryGetDomainFQDNFromDNworkflow = activeDirectoryGetDomainFQDNFromDNworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryGetDomainFQDNFromDNworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetDomainFQDNFromDNworkflow, nameof(activeDirectoryGetDomainFQDNFromDNworkflow), required: true);
+            var __workflow_activeDirectoryGetDomainFQDNFromDNdN = WorkflowExpression.Compile(activeDirectoryGetDomainFQDNFromDNdN, nameof(activeDirectoryGetDomainFQDNFromDNdN), required: true);
+            var __workflow_activeDirectoryGetDomainFQDNFromDNworkflow = WorkflowExpression.Compile(activeDirectoryGetDomainFQDNFromDNworkflow, nameof(activeDirectoryGetDomainFQDNFromDNworkflow), required: true);
             return new DeferredBodyAction<ActiveDirectoryGetDomainFQDNFromDNResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetDomainFQDNFromDN";
@@ -754,24 +697,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryGetADGroupByIdentityResponse> ActiveDirectoryGetADGroupByIdentity(Expression<Func<string>> activeDirectoryGetADGroupByIdentityworkflow, Expression<Func<string>> activeDirectoryGetADGroupByIdentityidentity = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityfilterPropertyName = null, Expression<Func<activeDirectoryGetADGroupByIdentityfilterPropertyComparisonInput>> activeDirectoryGetADGroupByIdentityfilterPropertyComparison = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityfilterPropertyValue = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentitysearchOUBase = null, Expression<Func<bool>> activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree = null, Expression<Func<bool>> activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryGetADGroupByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryGetADGroupByIdentityworkflow = activeDirectoryGetADGroupByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentityworkflow, nameof(activeDirectoryGetADGroupByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryGetADGroupByIdentityidentity = activeDirectoryGetADGroupByIdentityidentity == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityidentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentityidentity, nameof(activeDirectoryGetADGroupByIdentityidentity), required: false);
-            var __workflow_activeDirectoryGetADGroupByIdentityfilterPropertyName = activeDirectoryGetADGroupByIdentityfilterPropertyName == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentityfilterPropertyName, nameof(activeDirectoryGetADGroupByIdentityfilterPropertyName), required: false);
-            var __workflow_activeDirectoryGetADGroupByIdentityfilterPropertyComparison = activeDirectoryGetADGroupByIdentityfilterPropertyComparison == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentityfilterPropertyComparison, nameof(activeDirectoryGetADGroupByIdentityfilterPropertyComparison), required: false);
-            var __workflow_activeDirectoryGetADGroupByIdentityfilterPropertyValue = activeDirectoryGetADGroupByIdentityfilterPropertyValue == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentityfilterPropertyValue, nameof(activeDirectoryGetADGroupByIdentityfilterPropertyValue), required: false);
-            var __workflow_activeDirectoryGetADGroupByIdentitysearchOUBase = activeDirectoryGetADGroupByIdentitysearchOUBase == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentitysearchOUBase);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentitysearchOUBase, nameof(activeDirectoryGetADGroupByIdentitysearchOUBase), required: false);
-            var __workflow_activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree = activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree, nameof(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree), required: false);
-            var __workflow_activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist = activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist, nameof(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist), required: false);
-            var __workflow_activeDirectoryGetADGroupByIdentityaDServer = activeDirectoryGetADGroupByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupByIdentityaDServer, nameof(activeDirectoryGetADGroupByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityworkflow, nameof(activeDirectoryGetADGroupByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryGetADGroupByIdentityidentity = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityidentity, nameof(activeDirectoryGetADGroupByIdentityidentity), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentityfilterPropertyName = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityfilterPropertyName, nameof(activeDirectoryGetADGroupByIdentityfilterPropertyName), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentityfilterPropertyComparison = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityfilterPropertyComparison, nameof(activeDirectoryGetADGroupByIdentityfilterPropertyComparison), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentityfilterPropertyValue = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityfilterPropertyValue, nameof(activeDirectoryGetADGroupByIdentityfilterPropertyValue), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentitysearchOUBase = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentitysearchOUBase, nameof(activeDirectoryGetADGroupByIdentitysearchOUBase), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree, nameof(activeDirectoryGetADGroupByIdentitysearchOUBaseSubtree), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist, nameof(activeDirectoryGetADGroupByIdentityraiseExceptionIfGroupDoesNotExist), required: false);
+            var __workflow_activeDirectoryGetADGroupByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryGetADGroupByIdentityaDServer, nameof(activeDirectoryGetADGroupByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryGetADGroupByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADGroupByIdentity";
@@ -871,16 +805,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryAddADGroupMemberByIdentityResponse> ActiveDirectoryAddADGroupMemberByIdentity(Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityuserIdentity, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityworkflow, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentitygroupName = null, Expression<Func<string>> activeDirectoryAddADGroupMemberByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryAddADGroupMemberByIdentityuserIdentity = activeDirectoryAddADGroupMemberByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupMemberByIdentityuserIdentity, nameof(activeDirectoryAddADGroupMemberByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryAddADGroupMemberByIdentityworkflow = activeDirectoryAddADGroupMemberByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupMemberByIdentityworkflow, nameof(activeDirectoryAddADGroupMemberByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryAddADGroupMemberByIdentitygroupIdentity = activeDirectoryAddADGroupMemberByIdentitygroupIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentitygroupIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupMemberByIdentitygroupIdentity, nameof(activeDirectoryAddADGroupMemberByIdentitygroupIdentity), required: false);
-            var __workflow_activeDirectoryAddADGroupMemberByIdentitygroupName = activeDirectoryAddADGroupMemberByIdentitygroupName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentitygroupName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupMemberByIdentitygroupName, nameof(activeDirectoryAddADGroupMemberByIdentitygroupName), required: false);
-            var __workflow_activeDirectoryAddADGroupMemberByIdentityaDServer = activeDirectoryAddADGroupMemberByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupMemberByIdentityaDServer, nameof(activeDirectoryAddADGroupMemberByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryAddADGroupMemberByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityuserIdentity, nameof(activeDirectoryAddADGroupMemberByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryAddADGroupMemberByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityworkflow, nameof(activeDirectoryAddADGroupMemberByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryAddADGroupMemberByIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentitygroupIdentity, nameof(activeDirectoryAddADGroupMemberByIdentitygroupIdentity), required: false);
+            var __workflow_activeDirectoryAddADGroupMemberByIdentitygroupName = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentitygroupName, nameof(activeDirectoryAddADGroupMemberByIdentitygroupName), required: false);
+            var __workflow_activeDirectoryAddADGroupMemberByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryAddADGroupMemberByIdentityaDServer, nameof(activeDirectoryAddADGroupMemberByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryAddADGroupMemberByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADGroupMemberByIdentity";
@@ -922,20 +851,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse> ActiveDirectoryAddMultipleADGroupMembersByIdentity(Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentityworkflow, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd = null, Expression<Func<bool>> activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall = null, Expression<Func<string>> activeDirectoryAddMultipleADGroupMembersByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityworkflow = activeDirectoryAddMultipleADGroupMembersByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddMultipleADGroupMembersByIdentityworkflow, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity = activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity, nameof(activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity), required: false);
-            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON = activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON == null ? null : WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON, nameof(activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON), required: false);
-            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd = activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd == null ? null : WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd), required: false);
-            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd = activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd == null ? null : WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd), required: false);
-            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall = activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall == null ? null : WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall), required: false);
-            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaDServer = activeDirectoryAddMultipleADGroupMembersByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaDServer, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityworkflow, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity, nameof(activeDirectoryAddMultipleADGroupMembersByIdentitygroupIdentity), required: false);
+            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON, nameof(activeDirectoryAddMultipleADGroupMembersByIdentitygroupMembersJSON), required: false);
+            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToAdd), required: false);
+            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToAdd), required: false);
+            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityaddAllMembersInASingleCall), required: false);
+            var __workflow_activeDirectoryAddMultipleADGroupMembersByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryAddMultipleADGroupMembersByIdentityaDServer, nameof(activeDirectoryAddMultipleADGroupMembersByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryAddMultipleADGroupMembersByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddMultipleADGroupMembersByIdentity";
@@ -1023,20 +945,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse> ActiveDirectoryAddADUserToMultipleADGroupsByName(Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameworkflow, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON = null, Expression<Func<bool>> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd = null, Expression<Func<bool>> activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd = null, Expression<Func<string>> activeDirectoryAddADUserToMultipleADGroupsByNameaDServer = null, Expression<Func<int>> activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall = null)
         {
-            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity = activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity), required: true);
-            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameworkflow = activeDirectoryAddADUserToMultipleADGroupsByNameworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserToMultipleADGroupsByNameworkflow, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameworkflow), required: true);
-            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON = activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON, nameof(activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON), required: false);
-            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd = activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd), required: false);
-            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd = activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd), required: false);
-            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameaDServer = activeDirectoryAddADUserToMultipleADGroupsByNameaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserToMultipleADGroupsByNameaDServer, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameaDServer), required: false);
-            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall = activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall == null ? null : WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall, nameof(activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall), required: false);
+            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameuserIdentity), required: true);
+            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameworkflow = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameworkflow, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameworkflow), required: true);
+            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON, nameof(activeDirectoryAddADUserToMultipleADGroupsByNamegroupNamesJSON), required: false);
+            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAnyGroupsFailToAdd), required: false);
+            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameexceptionIfAllGroupsFailToAdd), required: false);
+            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNameaDServer = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNameaDServer, nameof(activeDirectoryAddADUserToMultipleADGroupsByNameaDServer), required: false);
+            var __workflow_activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall = WorkflowExpression.Compile(activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall, nameof(activeDirectoryAddADUserToMultipleADGroupsByNamemaxGroupsPerCall), required: false);
             return new DeferredBodyAction<ActiveDirectoryAddADUserToMultipleADGroupsByNameResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADUserToMultipleADGroupsByName";
@@ -1110,12 +1025,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryGetADUserGroupMembershipResponse> ActiveDirectoryGetADUserGroupMembership(Expression<Func<string>> activeDirectoryGetADUserGroupMembershipuserIdentity, Expression<Func<string>> activeDirectoryGetADUserGroupMembershipworkflow, Expression<Func<string>> activeDirectoryGetADUserGroupMembershipaDServer = null)
         {
-            var __workflow_activeDirectoryGetADUserGroupMembershipuserIdentity = activeDirectoryGetADUserGroupMembershipuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserGroupMembershipuserIdentity, nameof(activeDirectoryGetADUserGroupMembershipuserIdentity), required: true);
-            var __workflow_activeDirectoryGetADUserGroupMembershipworkflow = activeDirectoryGetADUserGroupMembershipworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserGroupMembershipworkflow, nameof(activeDirectoryGetADUserGroupMembershipworkflow), required: true);
-            var __workflow_activeDirectoryGetADUserGroupMembershipaDServer = activeDirectoryGetADUserGroupMembershipaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADUserGroupMembershipaDServer, nameof(activeDirectoryGetADUserGroupMembershipaDServer), required: false);
+            var __workflow_activeDirectoryGetADUserGroupMembershipuserIdentity = WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipuserIdentity, nameof(activeDirectoryGetADUserGroupMembershipuserIdentity), required: true);
+            var __workflow_activeDirectoryGetADUserGroupMembershipworkflow = WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipworkflow, nameof(activeDirectoryGetADUserGroupMembershipworkflow), required: true);
+            var __workflow_activeDirectoryGetADUserGroupMembershipaDServer = WorkflowExpression.Compile(activeDirectoryGetADUserGroupMembershipaDServer, nameof(activeDirectoryGetADUserGroupMembershipaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryGetADUserGroupMembershipResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADUserGroupMembership";
@@ -1145,16 +1057,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse> ActiveDirectoryModifyADUserStringPropertyByIdentity(Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityworkflow, Expression<Func<activeDirectoryModifyADUserStringPropertyByIdentitypropertiesListInputItem[]>> activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList = null, Expression<Func<string>> activeDirectoryModifyADUserStringPropertyByIdentityaDServer = null, Expression<Func<bool>> activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue = null)
         {
-            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity = activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity, nameof(activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityworkflow = activeDirectoryModifyADUserStringPropertyByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserStringPropertyByIdentityworkflow, nameof(activeDirectoryModifyADUserStringPropertyByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList = activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList, nameof(activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList), required: false);
-            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityaDServer = activeDirectoryModifyADUserStringPropertyByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserStringPropertyByIdentityaDServer, nameof(activeDirectoryModifyADUserStringPropertyByIdentityaDServer), required: false);
-            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue = activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue, nameof(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue), required: false);
+            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity, nameof(activeDirectoryModifyADUserStringPropertyByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityworkflow, nameof(activeDirectoryModifyADUserStringPropertyByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList, nameof(activeDirectoryModifyADUserStringPropertyByIdentitypropertiesList), required: false);
+            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityaDServer, nameof(activeDirectoryModifyADUserStringPropertyByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue = WorkflowExpression.Compile(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue, nameof(activeDirectoryModifyADUserStringPropertyByIdentityreplaceValue), required: false);
             return new DeferredBodyAction<ActiveDirectoryModifyADUserStringPropertyByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryModifyADUserStringPropertyByIdentity";
@@ -1206,16 +1113,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse> ActiveDirectoryModifyADUserBooleanPropertyByIdentity(Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow, Expression<Func<bool>> activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue = null, Expression<Func<string>> activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity = activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName = activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName), required: true);
-            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow = activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue = activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue), required: false);
-            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer = activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyName), required: true);
+            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentitypropertyValue), required: false);
+            var __workflow_activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer, nameof(activeDirectoryModifyADUserBooleanPropertyByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryModifyADUserBooleanPropertyByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryModifyADUserBooleanPropertyByIdentity";
@@ -1263,62 +1165,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryModifyADUserPropertiesResponse> ActiveDirectoryModifyADUserProperties(Expression<Func<string>> activeDirectoryModifyADUserPropertiesuserIdentity, Expression<Func<string>> activeDirectoryModifyADUserPropertiesworkflow, Expression<Func<string>> activeDirectoryModifyADUserPropertiescity = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescompany = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountry = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountryString = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiescountryISO3166 = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdepartment = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdescription = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesdisplayName = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesemailAddress = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesgivenName = null, Expression<Func<string>> activeDirectoryModifyADUserPropertieshomePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesinitials = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesiPPhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesmanager = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesmobilePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesnotes = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesoffice = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesofficePhone = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiespostalCode = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesprofilePath = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesscriptPath = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesstate = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesstreetAddress = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiessurname = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiestitle = null, Expression<Func<string>> activeDirectoryModifyADUserPropertiesaDServer = null)
         {
-            var __workflow_activeDirectoryModifyADUserPropertiesuserIdentity = activeDirectoryModifyADUserPropertiesuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesuserIdentity, nameof(activeDirectoryModifyADUserPropertiesuserIdentity), required: true);
-            var __workflow_activeDirectoryModifyADUserPropertiesworkflow = activeDirectoryModifyADUserPropertiesworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesworkflow, nameof(activeDirectoryModifyADUserPropertiesworkflow), required: true);
-            var __workflow_activeDirectoryModifyADUserPropertiescity = activeDirectoryModifyADUserPropertiescity == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiescity, nameof(activeDirectoryModifyADUserPropertiescity), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiescompany = activeDirectoryModifyADUserPropertiescompany == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescompany);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiescompany, nameof(activeDirectoryModifyADUserPropertiescompany), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiescountry = activeDirectoryModifyADUserPropertiescountry == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescountry);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiescountry, nameof(activeDirectoryModifyADUserPropertiescountry), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiescountryString = activeDirectoryModifyADUserPropertiescountryString == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescountryString);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiescountryString, nameof(activeDirectoryModifyADUserPropertiescountryString), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiescountryISO3166 = activeDirectoryModifyADUserPropertiescountryISO3166 == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescountryISO3166);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiescountryISO3166, nameof(activeDirectoryModifyADUserPropertiescountryISO3166), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesdepartment = activeDirectoryModifyADUserPropertiesdepartment == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesdepartment);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesdepartment, nameof(activeDirectoryModifyADUserPropertiesdepartment), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesdescription = activeDirectoryModifyADUserPropertiesdescription == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesdescription);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesdescription, nameof(activeDirectoryModifyADUserPropertiesdescription), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesdisplayName = activeDirectoryModifyADUserPropertiesdisplayName == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesdisplayName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesdisplayName, nameof(activeDirectoryModifyADUserPropertiesdisplayName), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesemailAddress = activeDirectoryModifyADUserPropertiesemailAddress == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesemailAddress);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesemailAddress, nameof(activeDirectoryModifyADUserPropertiesemailAddress), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesgivenName = activeDirectoryModifyADUserPropertiesgivenName == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesgivenName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesgivenName, nameof(activeDirectoryModifyADUserPropertiesgivenName), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertieshomePhone = activeDirectoryModifyADUserPropertieshomePhone == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertieshomePhone);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertieshomePhone, nameof(activeDirectoryModifyADUserPropertieshomePhone), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesinitials = activeDirectoryModifyADUserPropertiesinitials == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesinitials);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesinitials, nameof(activeDirectoryModifyADUserPropertiesinitials), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesiPPhone = activeDirectoryModifyADUserPropertiesiPPhone == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesiPPhone);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesiPPhone, nameof(activeDirectoryModifyADUserPropertiesiPPhone), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesmanager = activeDirectoryModifyADUserPropertiesmanager == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesmanager);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesmanager, nameof(activeDirectoryModifyADUserPropertiesmanager), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesmobilePhone = activeDirectoryModifyADUserPropertiesmobilePhone == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesmobilePhone);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesmobilePhone, nameof(activeDirectoryModifyADUserPropertiesmobilePhone), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesnotes = activeDirectoryModifyADUserPropertiesnotes == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesnotes);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesnotes, nameof(activeDirectoryModifyADUserPropertiesnotes), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesoffice = activeDirectoryModifyADUserPropertiesoffice == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesoffice);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesoffice, nameof(activeDirectoryModifyADUserPropertiesoffice), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesofficePhone = activeDirectoryModifyADUserPropertiesofficePhone == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesofficePhone);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesofficePhone, nameof(activeDirectoryModifyADUserPropertiesofficePhone), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiespostalCode = activeDirectoryModifyADUserPropertiespostalCode == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiespostalCode);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiespostalCode, nameof(activeDirectoryModifyADUserPropertiespostalCode), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesprofilePath = activeDirectoryModifyADUserPropertiesprofilePath == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesprofilePath);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesprofilePath, nameof(activeDirectoryModifyADUserPropertiesprofilePath), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesscriptPath = activeDirectoryModifyADUserPropertiesscriptPath == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesscriptPath);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesscriptPath, nameof(activeDirectoryModifyADUserPropertiesscriptPath), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesstate = activeDirectoryModifyADUserPropertiesstate == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesstate);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesstate, nameof(activeDirectoryModifyADUserPropertiesstate), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesstreetAddress = activeDirectoryModifyADUserPropertiesstreetAddress == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesstreetAddress);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesstreetAddress, nameof(activeDirectoryModifyADUserPropertiesstreetAddress), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiessurname = activeDirectoryModifyADUserPropertiessurname == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiessurname);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiessurname, nameof(activeDirectoryModifyADUserPropertiessurname), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiestitle = activeDirectoryModifyADUserPropertiestitle == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiestitle);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiestitle, nameof(activeDirectoryModifyADUserPropertiestitle), required: false);
-            var __workflow_activeDirectoryModifyADUserPropertiesaDServer = activeDirectoryModifyADUserPropertiesaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryModifyADUserPropertiesaDServer, nameof(activeDirectoryModifyADUserPropertiesaDServer), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesuserIdentity = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesuserIdentity, nameof(activeDirectoryModifyADUserPropertiesuserIdentity), required: true);
+            var __workflow_activeDirectoryModifyADUserPropertiesworkflow = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesworkflow, nameof(activeDirectoryModifyADUserPropertiesworkflow), required: true);
+            var __workflow_activeDirectoryModifyADUserPropertiescity = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescity, nameof(activeDirectoryModifyADUserPropertiescity), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiescompany = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescompany, nameof(activeDirectoryModifyADUserPropertiescompany), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiescountry = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescountry, nameof(activeDirectoryModifyADUserPropertiescountry), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiescountryString = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescountryString, nameof(activeDirectoryModifyADUserPropertiescountryString), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiescountryISO3166 = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiescountryISO3166, nameof(activeDirectoryModifyADUserPropertiescountryISO3166), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesdepartment = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesdepartment, nameof(activeDirectoryModifyADUserPropertiesdepartment), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesdescription = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesdescription, nameof(activeDirectoryModifyADUserPropertiesdescription), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesdisplayName = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesdisplayName, nameof(activeDirectoryModifyADUserPropertiesdisplayName), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesemailAddress = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesemailAddress, nameof(activeDirectoryModifyADUserPropertiesemailAddress), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesgivenName = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesgivenName, nameof(activeDirectoryModifyADUserPropertiesgivenName), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertieshomePhone = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertieshomePhone, nameof(activeDirectoryModifyADUserPropertieshomePhone), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesinitials = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesinitials, nameof(activeDirectoryModifyADUserPropertiesinitials), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesiPPhone = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesiPPhone, nameof(activeDirectoryModifyADUserPropertiesiPPhone), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesmanager = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesmanager, nameof(activeDirectoryModifyADUserPropertiesmanager), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesmobilePhone = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesmobilePhone, nameof(activeDirectoryModifyADUserPropertiesmobilePhone), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesnotes = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesnotes, nameof(activeDirectoryModifyADUserPropertiesnotes), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesoffice = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesoffice, nameof(activeDirectoryModifyADUserPropertiesoffice), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesofficePhone = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesofficePhone, nameof(activeDirectoryModifyADUserPropertiesofficePhone), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiespostalCode = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiespostalCode, nameof(activeDirectoryModifyADUserPropertiespostalCode), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesprofilePath = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesprofilePath, nameof(activeDirectoryModifyADUserPropertiesprofilePath), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesscriptPath = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesscriptPath, nameof(activeDirectoryModifyADUserPropertiesscriptPath), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesstate = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesstate, nameof(activeDirectoryModifyADUserPropertiesstate), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesstreetAddress = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesstreetAddress, nameof(activeDirectoryModifyADUserPropertiesstreetAddress), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiessurname = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiessurname, nameof(activeDirectoryModifyADUserPropertiessurname), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiestitle = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiestitle, nameof(activeDirectoryModifyADUserPropertiestitle), required: false);
+            var __workflow_activeDirectoryModifyADUserPropertiesaDServer = WorkflowExpression.Compile(activeDirectoryModifyADUserPropertiesaDServer, nameof(activeDirectoryModifyADUserPropertiesaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryModifyADUserPropertiesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryModifyADUserProperties";
@@ -1498,14 +1372,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryMoveADUserToOUByIdentityResponse> ActiveDirectoryMoveADUserToOUByIdentity(Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityuserIdentity, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentitytargetPath, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityworkflow, Expression<Func<string>> activeDirectoryMoveADUserToOUByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryMoveADUserToOUByIdentityuserIdentity = activeDirectoryMoveADUserToOUByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryMoveADUserToOUByIdentityuserIdentity, nameof(activeDirectoryMoveADUserToOUByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryMoveADUserToOUByIdentitytargetPath = activeDirectoryMoveADUserToOUByIdentitytargetPath == null ? null : WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentitytargetPath);
-            WorkflowExpression.Validate(__workflow_activeDirectoryMoveADUserToOUByIdentitytargetPath, nameof(activeDirectoryMoveADUserToOUByIdentitytargetPath), required: true);
-            var __workflow_activeDirectoryMoveADUserToOUByIdentityworkflow = activeDirectoryMoveADUserToOUByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryMoveADUserToOUByIdentityworkflow, nameof(activeDirectoryMoveADUserToOUByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryMoveADUserToOUByIdentityaDServer = activeDirectoryMoveADUserToOUByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryMoveADUserToOUByIdentityaDServer, nameof(activeDirectoryMoveADUserToOUByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryMoveADUserToOUByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityuserIdentity, nameof(activeDirectoryMoveADUserToOUByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryMoveADUserToOUByIdentitytargetPath = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentitytargetPath, nameof(activeDirectoryMoveADUserToOUByIdentitytargetPath), required: true);
+            var __workflow_activeDirectoryMoveADUserToOUByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityworkflow, nameof(activeDirectoryMoveADUserToOUByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryMoveADUserToOUByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryMoveADUserToOUByIdentityaDServer, nameof(activeDirectoryMoveADUserToOUByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryMoveADUserToOUByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryMoveADUserToOUByIdentity";
@@ -1537,12 +1407,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryClearADUserAccountExpirationResponse> ActiveDirectoryClearADUserAccountExpiration(Expression<Func<string>> activeDirectoryClearADUserAccountExpirationuserIdentity, Expression<Func<string>> activeDirectoryClearADUserAccountExpirationworkflow, Expression<Func<string>> activeDirectoryClearADUserAccountExpirationaDServer = null)
         {
-            var __workflow_activeDirectoryClearADUserAccountExpirationuserIdentity = activeDirectoryClearADUserAccountExpirationuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryClearADUserAccountExpirationuserIdentity, nameof(activeDirectoryClearADUserAccountExpirationuserIdentity), required: true);
-            var __workflow_activeDirectoryClearADUserAccountExpirationworkflow = activeDirectoryClearADUserAccountExpirationworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryClearADUserAccountExpirationworkflow, nameof(activeDirectoryClearADUserAccountExpirationworkflow), required: true);
-            var __workflow_activeDirectoryClearADUserAccountExpirationaDServer = activeDirectoryClearADUserAccountExpirationaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryClearADUserAccountExpirationaDServer, nameof(activeDirectoryClearADUserAccountExpirationaDServer), required: false);
+            var __workflow_activeDirectoryClearADUserAccountExpirationuserIdentity = WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationuserIdentity, nameof(activeDirectoryClearADUserAccountExpirationuserIdentity), required: true);
+            var __workflow_activeDirectoryClearADUserAccountExpirationworkflow = WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationworkflow, nameof(activeDirectoryClearADUserAccountExpirationworkflow), required: true);
+            var __workflow_activeDirectoryClearADUserAccountExpirationaDServer = WorkflowExpression.Compile(activeDirectoryClearADUserAccountExpirationaDServer, nameof(activeDirectoryClearADUserAccountExpirationaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryClearADUserAccountExpirationResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryClearADUserAccountExpiration";
@@ -1572,16 +1439,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryDirSyncResponse> ActiveDirectoryDirSync(Expression<Func<string>> activeDirectoryDirSyncworkflow, Expression<Func<activeDirectoryDirSyncpolicyTypeInput>> activeDirectoryDirSyncpolicyType = null, Expression<Func<string>> activeDirectoryDirSynccomputerName = null, Expression<Func<int>> activeDirectoryDirSyncmaxRetryAttempts = null, Expression<Func<int>> activeDirectoryDirSyncsecondsBetweenRetries = null)
         {
-            var __workflow_activeDirectoryDirSyncworkflow = activeDirectoryDirSyncworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryDirSyncworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDirSyncworkflow, nameof(activeDirectoryDirSyncworkflow), required: true);
-            var __workflow_activeDirectoryDirSyncpolicyType = activeDirectoryDirSyncpolicyType == null ? null : WorkflowExpression.Compile(activeDirectoryDirSyncpolicyType);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDirSyncpolicyType, nameof(activeDirectoryDirSyncpolicyType), required: false);
-            var __workflow_activeDirectoryDirSynccomputerName = activeDirectoryDirSynccomputerName == null ? null : WorkflowExpression.Compile(activeDirectoryDirSynccomputerName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDirSynccomputerName, nameof(activeDirectoryDirSynccomputerName), required: false);
-            var __workflow_activeDirectoryDirSyncmaxRetryAttempts = activeDirectoryDirSyncmaxRetryAttempts == null ? null : WorkflowExpression.Compile(activeDirectoryDirSyncmaxRetryAttempts);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDirSyncmaxRetryAttempts, nameof(activeDirectoryDirSyncmaxRetryAttempts), required: false);
-            var __workflow_activeDirectoryDirSyncsecondsBetweenRetries = activeDirectoryDirSyncsecondsBetweenRetries == null ? null : WorkflowExpression.Compile(activeDirectoryDirSyncsecondsBetweenRetries);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDirSyncsecondsBetweenRetries, nameof(activeDirectoryDirSyncsecondsBetweenRetries), required: false);
+            var __workflow_activeDirectoryDirSyncworkflow = WorkflowExpression.Compile(activeDirectoryDirSyncworkflow, nameof(activeDirectoryDirSyncworkflow), required: true);
+            var __workflow_activeDirectoryDirSyncpolicyType = WorkflowExpression.Compile(activeDirectoryDirSyncpolicyType, nameof(activeDirectoryDirSyncpolicyType), required: false);
+            var __workflow_activeDirectoryDirSynccomputerName = WorkflowExpression.Compile(activeDirectoryDirSynccomputerName, nameof(activeDirectoryDirSynccomputerName), required: false);
+            var __workflow_activeDirectoryDirSyncmaxRetryAttempts = WorkflowExpression.Compile(activeDirectoryDirSyncmaxRetryAttempts, nameof(activeDirectoryDirSyncmaxRetryAttempts), required: false);
+            var __workflow_activeDirectoryDirSyncsecondsBetweenRetries = WorkflowExpression.Compile(activeDirectoryDirSyncsecondsBetweenRetries, nameof(activeDirectoryDirSyncsecondsBetweenRetries), required: false);
             return new DeferredBodyAction<ActiveDirectoryDirSyncResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryDirSync";
@@ -1647,18 +1509,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADUserByIdentityResponse> ActiveDirectoryRemoveADUserByIdentity(Expression<Func<string>> activeDirectoryRemoveADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryRemoveADUserByIdentityworkflow, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion = null, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects = null, Expression<Func<bool>> activeDirectoryRemoveADUserByIdentityforceDeleteRecursive = null, Expression<Func<string>> activeDirectoryRemoveADUserByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryRemoveADUserByIdentityuserIdentity = activeDirectoryRemoveADUserByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserByIdentityuserIdentity, nameof(activeDirectoryRemoveADUserByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryRemoveADUserByIdentityworkflow = activeDirectoryRemoveADUserByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserByIdentityworkflow, nameof(activeDirectoryRemoveADUserByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion = activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion, nameof(activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion), required: false);
-            var __workflow_activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects = activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects, nameof(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects), required: false);
-            var __workflow_activeDirectoryRemoveADUserByIdentityforceDeleteRecursive = activeDirectoryRemoveADUserByIdentityforceDeleteRecursive == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserByIdentityforceDeleteRecursive, nameof(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive), required: false);
-            var __workflow_activeDirectoryRemoveADUserByIdentityaDServer = activeDirectoryRemoveADUserByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserByIdentityaDServer, nameof(activeDirectoryRemoveADUserByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryRemoveADUserByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityuserIdentity, nameof(activeDirectoryRemoveADUserByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryRemoveADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityworkflow, nameof(activeDirectoryRemoveADUserByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion, nameof(activeDirectoryRemoveADUserByIdentityremoveProtectionFromAccidentalDeletion), required: false);
+            var __workflow_activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects, nameof(activeDirectoryRemoveADUserByIdentitydeleteEvenIfUserHasSubObjects), required: false);
+            var __workflow_activeDirectoryRemoveADUserByIdentityforceDeleteRecursive = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive, nameof(activeDirectoryRemoveADUserByIdentityforceDeleteRecursive), required: false);
+            var __workflow_activeDirectoryRemoveADUserByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADUserByIdentityaDServer, nameof(activeDirectoryRemoveADUserByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryRemoveADUserByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADUserByIdentity";
@@ -1736,26 +1592,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryResetADUserPasswordByIdentityResponse> ActiveDirectoryResetADUserPasswordByIdentity(Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityuserIdentity, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentitynewPassword, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityworkflow, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitycannotChangePassword = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires = null, Expression<Func<bool>> activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice = null, Expression<Func<string>> activeDirectoryResetADUserPasswordByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryResetADUserPasswordByIdentityuserIdentity = activeDirectoryResetADUserPasswordByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentityuserIdentity, nameof(activeDirectoryResetADUserPasswordByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentitynewPassword = activeDirectoryResetADUserPasswordByIdentitynewPassword == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitynewPassword);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentitynewPassword, nameof(activeDirectoryResetADUserPasswordByIdentitynewPassword), required: true);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentityworkflow = activeDirectoryResetADUserPasswordByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentityworkflow, nameof(activeDirectoryResetADUserPasswordByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword = activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword, nameof(activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword), required: false);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties = activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties, nameof(activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties), required: false);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon = activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon, nameof(activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon), required: false);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentitycannotChangePassword = activeDirectoryResetADUserPasswordByIdentitycannotChangePassword == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitycannotChangePassword);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentitycannotChangePassword, nameof(activeDirectoryResetADUserPasswordByIdentitycannotChangePassword), required: false);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires = activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires, nameof(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires), required: false);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice = activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice, nameof(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice), required: false);
-            var __workflow_activeDirectoryResetADUserPasswordByIdentityaDServer = activeDirectoryResetADUserPasswordByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryResetADUserPasswordByIdentityaDServer, nameof(activeDirectoryResetADUserPasswordByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityuserIdentity, nameof(activeDirectoryResetADUserPasswordByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentitynewPassword = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitynewPassword, nameof(activeDirectoryResetADUserPasswordByIdentitynewPassword), required: true);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityworkflow, nameof(activeDirectoryResetADUserPasswordByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword, nameof(activeDirectoryResetADUserPasswordByIdentityaccountPasswordIsStoredPassword), required: false);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties, nameof(activeDirectoryResetADUserPasswordByIdentitysetUserPasswordProperties), required: false);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon, nameof(activeDirectoryResetADUserPasswordByIdentitychangePasswordAtLogon), required: false);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentitycannotChangePassword = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitycannotChangePassword, nameof(activeDirectoryResetADUserPasswordByIdentitycannotChangePassword), required: false);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires, nameof(activeDirectoryResetADUserPasswordByIdentitypasswordNeverExpires), required: false);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice, nameof(activeDirectoryResetADUserPasswordByIdentityresetPasswordTwice), required: false);
+            var __workflow_activeDirectoryResetADUserPasswordByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryResetADUserPasswordByIdentityaDServer, nameof(activeDirectoryResetADUserPasswordByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryResetADUserPasswordByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryResetADUserPasswordByIdentity";
@@ -1883,14 +1729,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse> ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentity(Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity, Expression<Func<bool>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion, Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow, Expression<Func<string>> activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer = null)
         {
-            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity = activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion = activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion), required: true);
-            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow = activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow), required: true);
-            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer = activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer), required: false);
+            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityprotectedFromAccidentalDeletion), required: true);
+            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityworkflow), required: true);
+            var __workflow_activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer = WorkflowExpression.Compile(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer, nameof(activeDirectorySetADUserProtectedFromAccidentalDeletionByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADUserProtectedFromAccidentalDeletionByIdentity";
@@ -1922,12 +1764,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryDisableADUserByIdentityResponse> ActiveDirectoryDisableADUserByIdentity(Expression<Func<string>> activeDirectoryDisableADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryDisableADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryDisableADUserByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryDisableADUserByIdentityuserIdentity = activeDirectoryDisableADUserByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDisableADUserByIdentityuserIdentity, nameof(activeDirectoryDisableADUserByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryDisableADUserByIdentityworkflow = activeDirectoryDisableADUserByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDisableADUserByIdentityworkflow, nameof(activeDirectoryDisableADUserByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryDisableADUserByIdentityaDServer = activeDirectoryDisableADUserByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDisableADUserByIdentityaDServer, nameof(activeDirectoryDisableADUserByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryDisableADUserByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityuserIdentity, nameof(activeDirectoryDisableADUserByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryDisableADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityworkflow, nameof(activeDirectoryDisableADUserByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryDisableADUserByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryDisableADUserByIdentityaDServer, nameof(activeDirectoryDisableADUserByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryDisableADUserByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryDisableADUserByIdentity";
@@ -1957,12 +1796,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryEnableADUserByIdentityResponse> ActiveDirectoryEnableADUserByIdentity(Expression<Func<string>> activeDirectoryEnableADUserByIdentityuserIdentity, Expression<Func<string>> activeDirectoryEnableADUserByIdentityworkflow, Expression<Func<string>> activeDirectoryEnableADUserByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryEnableADUserByIdentityuserIdentity = activeDirectoryEnableADUserByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryEnableADUserByIdentityuserIdentity, nameof(activeDirectoryEnableADUserByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryEnableADUserByIdentityworkflow = activeDirectoryEnableADUserByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryEnableADUserByIdentityworkflow, nameof(activeDirectoryEnableADUserByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryEnableADUserByIdentityaDServer = activeDirectoryEnableADUserByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryEnableADUserByIdentityaDServer, nameof(activeDirectoryEnableADUserByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryEnableADUserByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityuserIdentity, nameof(activeDirectoryEnableADUserByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryEnableADUserByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityworkflow, nameof(activeDirectoryEnableADUserByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryEnableADUserByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryEnableADUserByIdentityaDServer, nameof(activeDirectoryEnableADUserByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryEnableADUserByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryEnableADUserByIdentity";
@@ -1992,18 +1828,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse> ActiveDirectorySetADUserHomeFolderByIdentity(Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityuserIdentity, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityworkflow, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityhomeDrive = null, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityhomeDirectory = null, Expression<Func<bool>> activeDirectorySetADUserHomeFolderByIdentitycreateFolder = null, Expression<Func<string>> activeDirectorySetADUserHomeFolderByIdentityaDServer = null)
         {
-            var __workflow_activeDirectorySetADUserHomeFolderByIdentityuserIdentity = activeDirectorySetADUserHomeFolderByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserHomeFolderByIdentityuserIdentity, nameof(activeDirectorySetADUserHomeFolderByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectorySetADUserHomeFolderByIdentityworkflow = activeDirectorySetADUserHomeFolderByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserHomeFolderByIdentityworkflow, nameof(activeDirectorySetADUserHomeFolderByIdentityworkflow), required: true);
-            var __workflow_activeDirectorySetADUserHomeFolderByIdentityhomeDrive = activeDirectorySetADUserHomeFolderByIdentityhomeDrive == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityhomeDrive);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserHomeFolderByIdentityhomeDrive, nameof(activeDirectorySetADUserHomeFolderByIdentityhomeDrive), required: false);
-            var __workflow_activeDirectorySetADUserHomeFolderByIdentityhomeDirectory = activeDirectorySetADUserHomeFolderByIdentityhomeDirectory == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityhomeDirectory);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserHomeFolderByIdentityhomeDirectory, nameof(activeDirectorySetADUserHomeFolderByIdentityhomeDirectory), required: false);
-            var __workflow_activeDirectorySetADUserHomeFolderByIdentitycreateFolder = activeDirectorySetADUserHomeFolderByIdentitycreateFolder == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentitycreateFolder);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserHomeFolderByIdentitycreateFolder, nameof(activeDirectorySetADUserHomeFolderByIdentitycreateFolder), required: false);
-            var __workflow_activeDirectorySetADUserHomeFolderByIdentityaDServer = activeDirectorySetADUserHomeFolderByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserHomeFolderByIdentityaDServer, nameof(activeDirectorySetADUserHomeFolderByIdentityaDServer), required: false);
+            var __workflow_activeDirectorySetADUserHomeFolderByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityuserIdentity, nameof(activeDirectorySetADUserHomeFolderByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectorySetADUserHomeFolderByIdentityworkflow = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityworkflow, nameof(activeDirectorySetADUserHomeFolderByIdentityworkflow), required: true);
+            var __workflow_activeDirectorySetADUserHomeFolderByIdentityhomeDrive = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityhomeDrive, nameof(activeDirectorySetADUserHomeFolderByIdentityhomeDrive), required: false);
+            var __workflow_activeDirectorySetADUserHomeFolderByIdentityhomeDirectory = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityhomeDirectory, nameof(activeDirectorySetADUserHomeFolderByIdentityhomeDirectory), required: false);
+            var __workflow_activeDirectorySetADUserHomeFolderByIdentitycreateFolder = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentitycreateFolder, nameof(activeDirectorySetADUserHomeFolderByIdentitycreateFolder), required: false);
+            var __workflow_activeDirectorySetADUserHomeFolderByIdentityaDServer = WorkflowExpression.Compile(activeDirectorySetADUserHomeFolderByIdentityaDServer, nameof(activeDirectorySetADUserHomeFolderByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectorySetADUserHomeFolderByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADUserHomeFolderByIdentity";
@@ -2061,14 +1891,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryCloneADUserGroupsResponse> ActiveDirectoryCloneADUserGroups(Expression<Func<string>> activeDirectoryCloneADUserGroupssourceUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserGroupsdestinationUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserGroupsworkflow, Expression<Func<string>> activeDirectoryCloneADUserGroupsaDServer = null)
         {
-            var __workflow_activeDirectoryCloneADUserGroupssourceUserIdentity = activeDirectoryCloneADUserGroupssourceUserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserGroupssourceUserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserGroupssourceUserIdentity, nameof(activeDirectoryCloneADUserGroupssourceUserIdentity), required: true);
-            var __workflow_activeDirectoryCloneADUserGroupsdestinationUserIdentity = activeDirectoryCloneADUserGroupsdestinationUserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsdestinationUserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserGroupsdestinationUserIdentity, nameof(activeDirectoryCloneADUserGroupsdestinationUserIdentity), required: true);
-            var __workflow_activeDirectoryCloneADUserGroupsworkflow = activeDirectoryCloneADUserGroupsworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserGroupsworkflow, nameof(activeDirectoryCloneADUserGroupsworkflow), required: true);
-            var __workflow_activeDirectoryCloneADUserGroupsaDServer = activeDirectoryCloneADUserGroupsaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserGroupsaDServer, nameof(activeDirectoryCloneADUserGroupsaDServer), required: false);
+            var __workflow_activeDirectoryCloneADUserGroupssourceUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupssourceUserIdentity, nameof(activeDirectoryCloneADUserGroupssourceUserIdentity), required: true);
+            var __workflow_activeDirectoryCloneADUserGroupsdestinationUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsdestinationUserIdentity, nameof(activeDirectoryCloneADUserGroupsdestinationUserIdentity), required: true);
+            var __workflow_activeDirectoryCloneADUserGroupsworkflow = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsworkflow, nameof(activeDirectoryCloneADUserGroupsworkflow), required: true);
+            var __workflow_activeDirectoryCloneADUserGroupsaDServer = WorkflowExpression.Compile(activeDirectoryCloneADUserGroupsaDServer, nameof(activeDirectoryCloneADUserGroupsaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryCloneADUserGroupsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryCloneADUserGroups";
@@ -2100,16 +1926,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryCloneADUserPropertiesResponse> ActiveDirectoryCloneADUserProperties(Expression<Func<string>> activeDirectoryCloneADUserPropertiessourceUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserPropertiesdestinationUserIdentity, Expression<Func<string>> activeDirectoryCloneADUserPropertiespropertiesToClone, Expression<Func<string>> activeDirectoryCloneADUserPropertiesworkflow, Expression<Func<string>> activeDirectoryCloneADUserPropertiesaDServer = null)
         {
-            var __workflow_activeDirectoryCloneADUserPropertiessourceUserIdentity = activeDirectoryCloneADUserPropertiessourceUserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiessourceUserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserPropertiessourceUserIdentity, nameof(activeDirectoryCloneADUserPropertiessourceUserIdentity), required: true);
-            var __workflow_activeDirectoryCloneADUserPropertiesdestinationUserIdentity = activeDirectoryCloneADUserPropertiesdestinationUserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesdestinationUserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserPropertiesdestinationUserIdentity, nameof(activeDirectoryCloneADUserPropertiesdestinationUserIdentity), required: true);
-            var __workflow_activeDirectoryCloneADUserPropertiespropertiesToClone = activeDirectoryCloneADUserPropertiespropertiesToClone == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiespropertiesToClone);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserPropertiespropertiesToClone, nameof(activeDirectoryCloneADUserPropertiespropertiesToClone), required: true);
-            var __workflow_activeDirectoryCloneADUserPropertiesworkflow = activeDirectoryCloneADUserPropertiesworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserPropertiesworkflow, nameof(activeDirectoryCloneADUserPropertiesworkflow), required: true);
-            var __workflow_activeDirectoryCloneADUserPropertiesaDServer = activeDirectoryCloneADUserPropertiesaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCloneADUserPropertiesaDServer, nameof(activeDirectoryCloneADUserPropertiesaDServer), required: false);
+            var __workflow_activeDirectoryCloneADUserPropertiessourceUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiessourceUserIdentity, nameof(activeDirectoryCloneADUserPropertiessourceUserIdentity), required: true);
+            var __workflow_activeDirectoryCloneADUserPropertiesdestinationUserIdentity = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesdestinationUserIdentity, nameof(activeDirectoryCloneADUserPropertiesdestinationUserIdentity), required: true);
+            var __workflow_activeDirectoryCloneADUserPropertiespropertiesToClone = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiespropertiesToClone, nameof(activeDirectoryCloneADUserPropertiespropertiesToClone), required: true);
+            var __workflow_activeDirectoryCloneADUserPropertiesworkflow = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesworkflow, nameof(activeDirectoryCloneADUserPropertiesworkflow), required: true);
+            var __workflow_activeDirectoryCloneADUserPropertiesaDServer = WorkflowExpression.Compile(activeDirectoryCloneADUserPropertiesaDServer, nameof(activeDirectoryCloneADUserPropertiesaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryCloneADUserPropertiesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryCloneADUserProperties";
@@ -2143,20 +1964,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse> ActiveDirectoryRemoveADUserFromMultipleADGroupsByName(Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove = null, Expression<Func<string>> activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer = null, Expression<Func<int>> activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall = null)
         {
-            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity = activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity), required: true);
-            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow = activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow), required: true);
-            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON = activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove = activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove = activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer = activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall = activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameuserIdentity), required: true);
+            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameworkflow), required: true);
+            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNamegroupNamesJSON), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAnyGroupsFailToRemove), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameexceptionIfAllGroupsFailToRemove), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNameaDServer), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall, nameof(activeDirectoryRemoveADUserFromMultipleADGroupsByNamemaxGroupsPerCall), required: false);
             return new DeferredBodyAction<ActiveDirectoryRemoveADUserFromMultipleADGroupsByNameResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADUserFromMultipleADGroupsByName";
@@ -2230,22 +2044,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse> ActiveDirectoryRemoveADUserFromAllGroups(Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsworkflow, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsuserIdentity = null, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveADUserFromAllGroupsaDServer = null, Expression<Func<bool>> activeDirectoryRemoveADUserFromAllGroupsrunAsThread = null, Expression<Func<int>> activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId = null, Expression<Func<int>> activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread = null)
         {
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupsworkflow = activeDirectoryRemoveADUserFromAllGroupsworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupsworkflow, nameof(activeDirectoryRemoveADUserFromAllGroupsworkflow), required: true);
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupsuserIdentity = activeDirectoryRemoveADUserFromAllGroupsuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupsuserIdentity, nameof(activeDirectoryRemoveADUserFromAllGroupsuserIdentity), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON = activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON, nameof(activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist = activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist, nameof(activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupsaDServer = activeDirectoryRemoveADUserFromAllGroupsaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupsaDServer, nameof(activeDirectoryRemoveADUserFromAllGroupsaDServer), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupsrunAsThread = activeDirectoryRemoveADUserFromAllGroupsrunAsThread == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsrunAsThread);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupsrunAsThread, nameof(activeDirectoryRemoveADUserFromAllGroupsrunAsThread), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId = activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId, nameof(activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId), required: false);
-            var __workflow_activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread = activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread, nameof(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupsworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsworkflow, nameof(activeDirectoryRemoveADUserFromAllGroupsworkflow), required: true);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupsuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsuserIdentity, nameof(activeDirectoryRemoveADUserFromAllGroupsuserIdentity), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON, nameof(activeDirectoryRemoveADUserFromAllGroupsgroupsToExcludeJSON), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist, nameof(activeDirectoryRemoveADUserFromAllGroupsexceptionIfExcludedGroupDoesNotExist), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupsaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsaDServer, nameof(activeDirectoryRemoveADUserFromAllGroupsaDServer), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupsrunAsThread = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsrunAsThread, nameof(activeDirectoryRemoveADUserFromAllGroupsrunAsThread), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId, nameof(activeDirectoryRemoveADUserFromAllGroupsretrieveOutputDataFromThreadId), required: false);
+            var __workflow_activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread = WorkflowExpression.Compile(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread, nameof(activeDirectoryRemoveADUserFromAllGroupssecondsToWaitForThread), required: false);
             return new DeferredBodyAction<ActiveDirectoryRemoveADUserFromAllGroupsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADUserFromAllGroups";
@@ -2339,12 +2145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryCheckOUExistsResponse> ActiveDirectoryCheckOUExists(Expression<Func<string>> activeDirectoryCheckOUExistsoUIdentity, Expression<Func<string>> activeDirectoryCheckOUExistsworkflow, Expression<Func<string>> activeDirectoryCheckOUExistsaDServer = null)
         {
-            var __workflow_activeDirectoryCheckOUExistsoUIdentity = activeDirectoryCheckOUExistsoUIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryCheckOUExistsoUIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCheckOUExistsoUIdentity, nameof(activeDirectoryCheckOUExistsoUIdentity), required: true);
-            var __workflow_activeDirectoryCheckOUExistsworkflow = activeDirectoryCheckOUExistsworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryCheckOUExistsworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCheckOUExistsworkflow, nameof(activeDirectoryCheckOUExistsworkflow), required: true);
-            var __workflow_activeDirectoryCheckOUExistsaDServer = activeDirectoryCheckOUExistsaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryCheckOUExistsaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryCheckOUExistsaDServer, nameof(activeDirectoryCheckOUExistsaDServer), required: false);
+            var __workflow_activeDirectoryCheckOUExistsoUIdentity = WorkflowExpression.Compile(activeDirectoryCheckOUExistsoUIdentity, nameof(activeDirectoryCheckOUExistsoUIdentity), required: true);
+            var __workflow_activeDirectoryCheckOUExistsworkflow = WorkflowExpression.Compile(activeDirectoryCheckOUExistsworkflow, nameof(activeDirectoryCheckOUExistsworkflow), required: true);
+            var __workflow_activeDirectoryCheckOUExistsaDServer = WorkflowExpression.Compile(activeDirectoryCheckOUExistsaDServer, nameof(activeDirectoryCheckOUExistsaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryCheckOUExistsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryCheckOUExists";
@@ -2374,16 +2177,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse> ActiveDirectoryRemoveADGroupMemberByGroupIdentity(Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName = null, Expression<Func<string>> activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity = activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow = activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow), required: true);
-            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity = activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity), required: false);
-            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName = activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName), required: false);
-            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer = activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer), required: false);
+            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityworkflow), required: true);
+            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupIdentity), required: false);
+            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentitygroupName), required: false);
+            var __workflow_activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer, nameof(activeDirectoryRemoveADGroupMemberByGroupIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryRemoveADGroupMemberByGroupIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADGroupMemberByGroupIdentity";
@@ -2425,20 +2223,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse> ActiveDirectoryRemoveMultipleADGroupMembersByIdentity(Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity = null, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove = null, Expression<Func<bool>> activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall = null, Expression<Func<string>> activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow = activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity = activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity), required: false);
-            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON = activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON), required: false);
-            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove = activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove), required: false);
-            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove = activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove), required: false);
-            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall = activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall), required: false);
-            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer = activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupIdentity), required: false);
+            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentitygroupMembersJSON), required: false);
+            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAnyMembersFailToRemove), required: false);
+            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityexceptionIfAllMembersFailToRemove), required: false);
+            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityremoveAllMembersInASingleCall), required: false);
+            var __workflow_activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer, nameof(activeDirectoryRemoveMultipleADGroupMembersByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryRemoveMultipleADGroupMembersByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveMultipleADGroupMembersByIdentity";
@@ -2526,12 +2317,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryUnlockADAccountByIdentityResponse> ActiveDirectoryUnlockADAccountByIdentity(Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityuserIdentity, Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityworkflow, Expression<Func<string>> activeDirectoryUnlockADAccountByIdentityaDServer = null)
         {
-            var __workflow_activeDirectoryUnlockADAccountByIdentityuserIdentity = activeDirectoryUnlockADAccountByIdentityuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryUnlockADAccountByIdentityuserIdentity, nameof(activeDirectoryUnlockADAccountByIdentityuserIdentity), required: true);
-            var __workflow_activeDirectoryUnlockADAccountByIdentityworkflow = activeDirectoryUnlockADAccountByIdentityworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryUnlockADAccountByIdentityworkflow, nameof(activeDirectoryUnlockADAccountByIdentityworkflow), required: true);
-            var __workflow_activeDirectoryUnlockADAccountByIdentityaDServer = activeDirectoryUnlockADAccountByIdentityaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryUnlockADAccountByIdentityaDServer, nameof(activeDirectoryUnlockADAccountByIdentityaDServer), required: false);
+            var __workflow_activeDirectoryUnlockADAccountByIdentityuserIdentity = WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityuserIdentity, nameof(activeDirectoryUnlockADAccountByIdentityuserIdentity), required: true);
+            var __workflow_activeDirectoryUnlockADAccountByIdentityworkflow = WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityworkflow, nameof(activeDirectoryUnlockADAccountByIdentityworkflow), required: true);
+            var __workflow_activeDirectoryUnlockADAccountByIdentityaDServer = WorkflowExpression.Compile(activeDirectoryUnlockADAccountByIdentityaDServer, nameof(activeDirectoryUnlockADAccountByIdentityaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryUnlockADAccountByIdentityResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryUnlockADAccountByIdentity";
@@ -2561,12 +2349,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectorySetADServerResponse> ActiveDirectorySetADServer(Expression<Func<string>> activeDirectorySetADServerworkflow, Expression<Func<activeDirectorySetADServerpredefinedADServerChoiceInput>> activeDirectorySetADServerpredefinedADServerChoice = null, Expression<Func<string>> activeDirectorySetADServeraDServer = null)
         {
-            var __workflow_activeDirectorySetADServerworkflow = activeDirectorySetADServerworkflow == null ? null : WorkflowExpression.Compile(activeDirectorySetADServerworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADServerworkflow, nameof(activeDirectorySetADServerworkflow), required: true);
-            var __workflow_activeDirectorySetADServerpredefinedADServerChoice = activeDirectorySetADServerpredefinedADServerChoice == null ? null : WorkflowExpression.Compile(activeDirectorySetADServerpredefinedADServerChoice);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADServerpredefinedADServerChoice, nameof(activeDirectorySetADServerpredefinedADServerChoice), required: false);
-            var __workflow_activeDirectorySetADServeraDServer = activeDirectorySetADServeraDServer == null ? null : WorkflowExpression.Compile(activeDirectorySetADServeraDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADServeraDServer, nameof(activeDirectorySetADServeraDServer), required: false);
+            var __workflow_activeDirectorySetADServerworkflow = WorkflowExpression.Compile(activeDirectorySetADServerworkflow, nameof(activeDirectorySetADServerworkflow), required: true);
+            var __workflow_activeDirectorySetADServerpredefinedADServerChoice = WorkflowExpression.Compile(activeDirectorySetADServerpredefinedADServerChoice, nameof(activeDirectorySetADServerpredefinedADServerChoice), required: false);
+            var __workflow_activeDirectorySetADServeraDServer = WorkflowExpression.Compile(activeDirectorySetADServeraDServer, nameof(activeDirectorySetADServeraDServer), required: false);
             return new DeferredBodyAction<ActiveDirectorySetADServerResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADServer";
@@ -2610,14 +2395,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryGetDomainInfoResponse> ActiveDirectoryGetDomainInfo(Expression<Func<string>> activeDirectoryGetDomainInfoworkflow, Expression<Func<string>> activeDirectoryGetDomainInfoaDServer = null, Expression<Func<activeDirectoryGetDomainInfopredefinedIdentityInput>> activeDirectoryGetDomainInfopredefinedIdentity = null, Expression<Func<string>> activeDirectoryGetDomainInfoidentity = null)
         {
-            var __workflow_activeDirectoryGetDomainInfoworkflow = activeDirectoryGetDomainInfoworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryGetDomainInfoworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetDomainInfoworkflow, nameof(activeDirectoryGetDomainInfoworkflow), required: true);
-            var __workflow_activeDirectoryGetDomainInfoaDServer = activeDirectoryGetDomainInfoaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryGetDomainInfoaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetDomainInfoaDServer, nameof(activeDirectoryGetDomainInfoaDServer), required: false);
-            var __workflow_activeDirectoryGetDomainInfopredefinedIdentity = activeDirectoryGetDomainInfopredefinedIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryGetDomainInfopredefinedIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetDomainInfopredefinedIdentity, nameof(activeDirectoryGetDomainInfopredefinedIdentity), required: false);
-            var __workflow_activeDirectoryGetDomainInfoidentity = activeDirectoryGetDomainInfoidentity == null ? null : WorkflowExpression.Compile(activeDirectoryGetDomainInfoidentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetDomainInfoidentity, nameof(activeDirectoryGetDomainInfoidentity), required: false);
+            var __workflow_activeDirectoryGetDomainInfoworkflow = WorkflowExpression.Compile(activeDirectoryGetDomainInfoworkflow, nameof(activeDirectoryGetDomainInfoworkflow), required: true);
+            var __workflow_activeDirectoryGetDomainInfoaDServer = WorkflowExpression.Compile(activeDirectoryGetDomainInfoaDServer, nameof(activeDirectoryGetDomainInfoaDServer), required: false);
+            var __workflow_activeDirectoryGetDomainInfopredefinedIdentity = WorkflowExpression.Compile(activeDirectoryGetDomainInfopredefinedIdentity, nameof(activeDirectoryGetDomainInfopredefinedIdentity), required: false);
+            var __workflow_activeDirectoryGetDomainInfoidentity = WorkflowExpression.Compile(activeDirectoryGetDomainInfoidentity, nameof(activeDirectoryGetDomainInfoidentity), required: false);
             return new DeferredBodyAction<ActiveDirectoryGetDomainInfoResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetDomainInfo";
@@ -2667,32 +2448,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryAddADGroupResponse> ActiveDirectoryAddADGroup(Expression<Func<string>> activeDirectoryAddADGroupname, Expression<Func<activeDirectoryAddADGroupgroupCategoryInput>> activeDirectoryAddADGroupgroupCategory, Expression<Func<activeDirectoryAddADGroupgroupScopeInput>> activeDirectoryAddADGroupgroupScope, Expression<Func<string>> activeDirectoryAddADGroupworkflow, Expression<Func<string>> activeDirectoryAddADGroupsamAccountName = null, Expression<Func<string>> activeDirectoryAddADGrouppath = null, Expression<Func<string>> activeDirectoryAddADGroupdescription = null, Expression<Func<string>> activeDirectoryAddADGroupnotes = null, Expression<Func<string>> activeDirectoryAddADGroupdisplayName = null, Expression<Func<string>> activeDirectoryAddADGrouphomePage = null, Expression<Func<string>> activeDirectoryAddADGroupmanagedBy = null, Expression<Func<bool>> activeDirectoryAddADGroupprotectedFromAccidentalDeletion = null, Expression<Func<string>> activeDirectoryAddADGroupaDServer = null)
         {
-            var __workflow_activeDirectoryAddADGroupname = activeDirectoryAddADGroupname == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupname);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupname, nameof(activeDirectoryAddADGroupname), required: true);
-            var __workflow_activeDirectoryAddADGroupgroupCategory = activeDirectoryAddADGroupgroupCategory == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupgroupCategory);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupgroupCategory, nameof(activeDirectoryAddADGroupgroupCategory), required: true);
-            var __workflow_activeDirectoryAddADGroupgroupScope = activeDirectoryAddADGroupgroupScope == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupgroupScope);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupgroupScope, nameof(activeDirectoryAddADGroupgroupScope), required: true);
-            var __workflow_activeDirectoryAddADGroupworkflow = activeDirectoryAddADGroupworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupworkflow, nameof(activeDirectoryAddADGroupworkflow), required: true);
-            var __workflow_activeDirectoryAddADGroupsamAccountName = activeDirectoryAddADGroupsamAccountName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupsamAccountName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupsamAccountName, nameof(activeDirectoryAddADGroupsamAccountName), required: false);
-            var __workflow_activeDirectoryAddADGrouppath = activeDirectoryAddADGrouppath == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGrouppath);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGrouppath, nameof(activeDirectoryAddADGrouppath), required: false);
-            var __workflow_activeDirectoryAddADGroupdescription = activeDirectoryAddADGroupdescription == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupdescription);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupdescription, nameof(activeDirectoryAddADGroupdescription), required: false);
-            var __workflow_activeDirectoryAddADGroupnotes = activeDirectoryAddADGroupnotes == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupnotes);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupnotes, nameof(activeDirectoryAddADGroupnotes), required: false);
-            var __workflow_activeDirectoryAddADGroupdisplayName = activeDirectoryAddADGroupdisplayName == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupdisplayName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupdisplayName, nameof(activeDirectoryAddADGroupdisplayName), required: false);
-            var __workflow_activeDirectoryAddADGrouphomePage = activeDirectoryAddADGrouphomePage == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGrouphomePage);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGrouphomePage, nameof(activeDirectoryAddADGrouphomePage), required: false);
-            var __workflow_activeDirectoryAddADGroupmanagedBy = activeDirectoryAddADGroupmanagedBy == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupmanagedBy);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupmanagedBy, nameof(activeDirectoryAddADGroupmanagedBy), required: false);
-            var __workflow_activeDirectoryAddADGroupprotectedFromAccidentalDeletion = activeDirectoryAddADGroupprotectedFromAccidentalDeletion == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupprotectedFromAccidentalDeletion);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupprotectedFromAccidentalDeletion, nameof(activeDirectoryAddADGroupprotectedFromAccidentalDeletion), required: false);
-            var __workflow_activeDirectoryAddADGroupaDServer = activeDirectoryAddADGroupaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryAddADGroupaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddADGroupaDServer, nameof(activeDirectoryAddADGroupaDServer), required: false);
+            var __workflow_activeDirectoryAddADGroupname = WorkflowExpression.Compile(activeDirectoryAddADGroupname, nameof(activeDirectoryAddADGroupname), required: true);
+            var __workflow_activeDirectoryAddADGroupgroupCategory = WorkflowExpression.Compile(activeDirectoryAddADGroupgroupCategory, nameof(activeDirectoryAddADGroupgroupCategory), required: true);
+            var __workflow_activeDirectoryAddADGroupgroupScope = WorkflowExpression.Compile(activeDirectoryAddADGroupgroupScope, nameof(activeDirectoryAddADGroupgroupScope), required: true);
+            var __workflow_activeDirectoryAddADGroupworkflow = WorkflowExpression.Compile(activeDirectoryAddADGroupworkflow, nameof(activeDirectoryAddADGroupworkflow), required: true);
+            var __workflow_activeDirectoryAddADGroupsamAccountName = WorkflowExpression.Compile(activeDirectoryAddADGroupsamAccountName, nameof(activeDirectoryAddADGroupsamAccountName), required: false);
+            var __workflow_activeDirectoryAddADGrouppath = WorkflowExpression.Compile(activeDirectoryAddADGrouppath, nameof(activeDirectoryAddADGrouppath), required: false);
+            var __workflow_activeDirectoryAddADGroupdescription = WorkflowExpression.Compile(activeDirectoryAddADGroupdescription, nameof(activeDirectoryAddADGroupdescription), required: false);
+            var __workflow_activeDirectoryAddADGroupnotes = WorkflowExpression.Compile(activeDirectoryAddADGroupnotes, nameof(activeDirectoryAddADGroupnotes), required: false);
+            var __workflow_activeDirectoryAddADGroupdisplayName = WorkflowExpression.Compile(activeDirectoryAddADGroupdisplayName, nameof(activeDirectoryAddADGroupdisplayName), required: false);
+            var __workflow_activeDirectoryAddADGrouphomePage = WorkflowExpression.Compile(activeDirectoryAddADGrouphomePage, nameof(activeDirectoryAddADGrouphomePage), required: false);
+            var __workflow_activeDirectoryAddADGroupmanagedBy = WorkflowExpression.Compile(activeDirectoryAddADGroupmanagedBy, nameof(activeDirectoryAddADGroupmanagedBy), required: false);
+            var __workflow_activeDirectoryAddADGroupprotectedFromAccidentalDeletion = WorkflowExpression.Compile(activeDirectoryAddADGroupprotectedFromAccidentalDeletion, nameof(activeDirectoryAddADGroupprotectedFromAccidentalDeletion), required: false);
+            var __workflow_activeDirectoryAddADGroupaDServer = WorkflowExpression.Compile(activeDirectoryAddADGroupaDServer, nameof(activeDirectoryAddADGroupaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryAddADGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddADGroup";
@@ -2784,12 +2552,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryDoesADGroupExistResponse> ActiveDirectoryDoesADGroupExist(Expression<Func<string>> activeDirectoryDoesADGroupExistgroupIdentity, Expression<Func<string>> activeDirectoryDoesADGroupExistworkflow, Expression<Func<string>> activeDirectoryDoesADGroupExistaDServer = null)
         {
-            var __workflow_activeDirectoryDoesADGroupExistgroupIdentity = activeDirectoryDoesADGroupExistgroupIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryDoesADGroupExistgroupIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDoesADGroupExistgroupIdentity, nameof(activeDirectoryDoesADGroupExistgroupIdentity), required: true);
-            var __workflow_activeDirectoryDoesADGroupExistworkflow = activeDirectoryDoesADGroupExistworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryDoesADGroupExistworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDoesADGroupExistworkflow, nameof(activeDirectoryDoesADGroupExistworkflow), required: true);
-            var __workflow_activeDirectoryDoesADGroupExistaDServer = activeDirectoryDoesADGroupExistaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryDoesADGroupExistaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryDoesADGroupExistaDServer, nameof(activeDirectoryDoesADGroupExistaDServer), required: false);
+            var __workflow_activeDirectoryDoesADGroupExistgroupIdentity = WorkflowExpression.Compile(activeDirectoryDoesADGroupExistgroupIdentity, nameof(activeDirectoryDoesADGroupExistgroupIdentity), required: true);
+            var __workflow_activeDirectoryDoesADGroupExistworkflow = WorkflowExpression.Compile(activeDirectoryDoesADGroupExistworkflow, nameof(activeDirectoryDoesADGroupExistworkflow), required: true);
+            var __workflow_activeDirectoryDoesADGroupExistaDServer = WorkflowExpression.Compile(activeDirectoryDoesADGroupExistaDServer, nameof(activeDirectoryDoesADGroupExistaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryDoesADGroupExistResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryDoesADGroupExist";
@@ -2819,16 +2584,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryRemoveADGroupResponse> ActiveDirectoryRemoveADGroup(Expression<Func<string>> activeDirectoryRemoveADGroupgroupIdentity, Expression<Func<string>> activeDirectoryRemoveADGroupworkflow, Expression<Func<bool>> activeDirectoryRemoveADGroupdeleteEvenIfProtected = null, Expression<Func<bool>> activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveADGroupaDServer = null)
         {
-            var __workflow_activeDirectoryRemoveADGroupgroupIdentity = activeDirectoryRemoveADGroupgroupIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupgroupIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupgroupIdentity, nameof(activeDirectoryRemoveADGroupgroupIdentity), required: true);
-            var __workflow_activeDirectoryRemoveADGroupworkflow = activeDirectoryRemoveADGroupworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupworkflow, nameof(activeDirectoryRemoveADGroupworkflow), required: true);
-            var __workflow_activeDirectoryRemoveADGroupdeleteEvenIfProtected = activeDirectoryRemoveADGroupdeleteEvenIfProtected == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupdeleteEvenIfProtected);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupdeleteEvenIfProtected, nameof(activeDirectoryRemoveADGroupdeleteEvenIfProtected), required: false);
-            var __workflow_activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist = activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist, nameof(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist), required: false);
-            var __workflow_activeDirectoryRemoveADGroupaDServer = activeDirectoryRemoveADGroupaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveADGroupaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveADGroupaDServer, nameof(activeDirectoryRemoveADGroupaDServer), required: false);
+            var __workflow_activeDirectoryRemoveADGroupgroupIdentity = WorkflowExpression.Compile(activeDirectoryRemoveADGroupgroupIdentity, nameof(activeDirectoryRemoveADGroupgroupIdentity), required: true);
+            var __workflow_activeDirectoryRemoveADGroupworkflow = WorkflowExpression.Compile(activeDirectoryRemoveADGroupworkflow, nameof(activeDirectoryRemoveADGroupworkflow), required: true);
+            var __workflow_activeDirectoryRemoveADGroupdeleteEvenIfProtected = WorkflowExpression.Compile(activeDirectoryRemoveADGroupdeleteEvenIfProtected, nameof(activeDirectoryRemoveADGroupdeleteEvenIfProtected), required: false);
+            var __workflow_activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist = WorkflowExpression.Compile(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist, nameof(activeDirectoryRemoveADGroupraiseExceptionIfGroupDoesNotExist), required: false);
+            var __workflow_activeDirectoryRemoveADGroupaDServer = WorkflowExpression.Compile(activeDirectoryRemoveADGroupaDServer, nameof(activeDirectoryRemoveADGroupaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryRemoveADGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveADGroup";
@@ -2890,30 +2650,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryAddOUResponse> ActiveDirectoryAddOU(Expression<Func<string>> activeDirectoryAddOUname, Expression<Func<string>> activeDirectoryAddOUworkflow, Expression<Func<string>> activeDirectoryAddOUpath = null, Expression<Func<string>> activeDirectoryAddOUdescription = null, Expression<Func<string>> activeDirectoryAddOUdisplayName = null, Expression<Func<string>> activeDirectoryAddOUmanagedBy = null, Expression<Func<bool>> activeDirectoryAddOUprotectedFromAccidentalDeletion = null, Expression<Func<string>> activeDirectoryAddOUstreetAddress = null, Expression<Func<string>> activeDirectoryAddOUcity = null, Expression<Func<string>> activeDirectoryAddOUstate = null, Expression<Func<string>> activeDirectoryAddOUpostalCode = null, Expression<Func<string>> activeDirectoryAddOUaDServer = null)
         {
-            var __workflow_activeDirectoryAddOUname = activeDirectoryAddOUname == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUname);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUname, nameof(activeDirectoryAddOUname), required: true);
-            var __workflow_activeDirectoryAddOUworkflow = activeDirectoryAddOUworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUworkflow, nameof(activeDirectoryAddOUworkflow), required: true);
-            var __workflow_activeDirectoryAddOUpath = activeDirectoryAddOUpath == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUpath);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUpath, nameof(activeDirectoryAddOUpath), required: false);
-            var __workflow_activeDirectoryAddOUdescription = activeDirectoryAddOUdescription == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUdescription);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUdescription, nameof(activeDirectoryAddOUdescription), required: false);
-            var __workflow_activeDirectoryAddOUdisplayName = activeDirectoryAddOUdisplayName == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUdisplayName);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUdisplayName, nameof(activeDirectoryAddOUdisplayName), required: false);
-            var __workflow_activeDirectoryAddOUmanagedBy = activeDirectoryAddOUmanagedBy == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUmanagedBy);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUmanagedBy, nameof(activeDirectoryAddOUmanagedBy), required: false);
-            var __workflow_activeDirectoryAddOUprotectedFromAccidentalDeletion = activeDirectoryAddOUprotectedFromAccidentalDeletion == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUprotectedFromAccidentalDeletion);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUprotectedFromAccidentalDeletion, nameof(activeDirectoryAddOUprotectedFromAccidentalDeletion), required: false);
-            var __workflow_activeDirectoryAddOUstreetAddress = activeDirectoryAddOUstreetAddress == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUstreetAddress);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUstreetAddress, nameof(activeDirectoryAddOUstreetAddress), required: false);
-            var __workflow_activeDirectoryAddOUcity = activeDirectoryAddOUcity == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUcity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUcity, nameof(activeDirectoryAddOUcity), required: false);
-            var __workflow_activeDirectoryAddOUstate = activeDirectoryAddOUstate == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUstate);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUstate, nameof(activeDirectoryAddOUstate), required: false);
-            var __workflow_activeDirectoryAddOUpostalCode = activeDirectoryAddOUpostalCode == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUpostalCode);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUpostalCode, nameof(activeDirectoryAddOUpostalCode), required: false);
-            var __workflow_activeDirectoryAddOUaDServer = activeDirectoryAddOUaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryAddOUaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryAddOUaDServer, nameof(activeDirectoryAddOUaDServer), required: false);
+            var __workflow_activeDirectoryAddOUname = WorkflowExpression.Compile(activeDirectoryAddOUname, nameof(activeDirectoryAddOUname), required: true);
+            var __workflow_activeDirectoryAddOUworkflow = WorkflowExpression.Compile(activeDirectoryAddOUworkflow, nameof(activeDirectoryAddOUworkflow), required: true);
+            var __workflow_activeDirectoryAddOUpath = WorkflowExpression.Compile(activeDirectoryAddOUpath, nameof(activeDirectoryAddOUpath), required: false);
+            var __workflow_activeDirectoryAddOUdescription = WorkflowExpression.Compile(activeDirectoryAddOUdescription, nameof(activeDirectoryAddOUdescription), required: false);
+            var __workflow_activeDirectoryAddOUdisplayName = WorkflowExpression.Compile(activeDirectoryAddOUdisplayName, nameof(activeDirectoryAddOUdisplayName), required: false);
+            var __workflow_activeDirectoryAddOUmanagedBy = WorkflowExpression.Compile(activeDirectoryAddOUmanagedBy, nameof(activeDirectoryAddOUmanagedBy), required: false);
+            var __workflow_activeDirectoryAddOUprotectedFromAccidentalDeletion = WorkflowExpression.Compile(activeDirectoryAddOUprotectedFromAccidentalDeletion, nameof(activeDirectoryAddOUprotectedFromAccidentalDeletion), required: false);
+            var __workflow_activeDirectoryAddOUstreetAddress = WorkflowExpression.Compile(activeDirectoryAddOUstreetAddress, nameof(activeDirectoryAddOUstreetAddress), required: false);
+            var __workflow_activeDirectoryAddOUcity = WorkflowExpression.Compile(activeDirectoryAddOUcity, nameof(activeDirectoryAddOUcity), required: false);
+            var __workflow_activeDirectoryAddOUstate = WorkflowExpression.Compile(activeDirectoryAddOUstate, nameof(activeDirectoryAddOUstate), required: false);
+            var __workflow_activeDirectoryAddOUpostalCode = WorkflowExpression.Compile(activeDirectoryAddOUpostalCode, nameof(activeDirectoryAddOUpostalCode), required: false);
+            var __workflow_activeDirectoryAddOUaDServer = WorkflowExpression.Compile(activeDirectoryAddOUaDServer, nameof(activeDirectoryAddOUaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryAddOUResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryAddOU";
@@ -3007,16 +2755,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryRemoveOUResponse> ActiveDirectoryRemoveOU(Expression<Func<string>> activeDirectoryRemoveOUoUIdentity, Expression<Func<string>> activeDirectoryRemoveOUworkflow, Expression<Func<bool>> activeDirectoryRemoveOUdeleteEvenIfProtected = null, Expression<Func<bool>> activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist = null, Expression<Func<string>> activeDirectoryRemoveOUaDServer = null)
         {
-            var __workflow_activeDirectoryRemoveOUoUIdentity = activeDirectoryRemoveOUoUIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveOUoUIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveOUoUIdentity, nameof(activeDirectoryRemoveOUoUIdentity), required: true);
-            var __workflow_activeDirectoryRemoveOUworkflow = activeDirectoryRemoveOUworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveOUworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveOUworkflow, nameof(activeDirectoryRemoveOUworkflow), required: true);
-            var __workflow_activeDirectoryRemoveOUdeleteEvenIfProtected = activeDirectoryRemoveOUdeleteEvenIfProtected == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveOUdeleteEvenIfProtected);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveOUdeleteEvenIfProtected, nameof(activeDirectoryRemoveOUdeleteEvenIfProtected), required: false);
-            var __workflow_activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist = activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist, nameof(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist), required: false);
-            var __workflow_activeDirectoryRemoveOUaDServer = activeDirectoryRemoveOUaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryRemoveOUaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryRemoveOUaDServer, nameof(activeDirectoryRemoveOUaDServer), required: false);
+            var __workflow_activeDirectoryRemoveOUoUIdentity = WorkflowExpression.Compile(activeDirectoryRemoveOUoUIdentity, nameof(activeDirectoryRemoveOUoUIdentity), required: true);
+            var __workflow_activeDirectoryRemoveOUworkflow = WorkflowExpression.Compile(activeDirectoryRemoveOUworkflow, nameof(activeDirectoryRemoveOUworkflow), required: true);
+            var __workflow_activeDirectoryRemoveOUdeleteEvenIfProtected = WorkflowExpression.Compile(activeDirectoryRemoveOUdeleteEvenIfProtected, nameof(activeDirectoryRemoveOUdeleteEvenIfProtected), required: false);
+            var __workflow_activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist = WorkflowExpression.Compile(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist, nameof(activeDirectoryRemoveOUraiseExceptionIfOUDoesNotExist), required: false);
+            var __workflow_activeDirectoryRemoveOUaDServer = WorkflowExpression.Compile(activeDirectoryRemoveOUaDServer, nameof(activeDirectoryRemoveOUaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryRemoveOUResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryRemoveOU";
@@ -3078,18 +2821,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse> ActiveDirectorySetADUserAccountExpirationEndOfDate(Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDateyear, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDatemonth, Expression<Func<int>> activeDirectorySetADUserAccountExpirationEndOfDateday, Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateworkflow, Expression<Func<string>> activeDirectorySetADUserAccountExpirationEndOfDateaDServer = null)
         {
-            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity = activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity, nameof(activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity), required: true);
-            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateyear = activeDirectorySetADUserAccountExpirationEndOfDateyear == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateyear);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserAccountExpirationEndOfDateyear, nameof(activeDirectorySetADUserAccountExpirationEndOfDateyear), required: true);
-            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDatemonth = activeDirectorySetADUserAccountExpirationEndOfDatemonth == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDatemonth);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserAccountExpirationEndOfDatemonth, nameof(activeDirectorySetADUserAccountExpirationEndOfDatemonth), required: true);
-            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateday = activeDirectorySetADUserAccountExpirationEndOfDateday == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateday);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserAccountExpirationEndOfDateday, nameof(activeDirectorySetADUserAccountExpirationEndOfDateday), required: true);
-            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateworkflow = activeDirectorySetADUserAccountExpirationEndOfDateworkflow == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserAccountExpirationEndOfDateworkflow, nameof(activeDirectorySetADUserAccountExpirationEndOfDateworkflow), required: true);
-            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateaDServer = activeDirectorySetADUserAccountExpirationEndOfDateaDServer == null ? null : WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectorySetADUserAccountExpirationEndOfDateaDServer, nameof(activeDirectorySetADUserAccountExpirationEndOfDateaDServer), required: false);
+            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity, nameof(activeDirectorySetADUserAccountExpirationEndOfDateuserIdentity), required: true);
+            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateyear = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateyear, nameof(activeDirectorySetADUserAccountExpirationEndOfDateyear), required: true);
+            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDatemonth = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDatemonth, nameof(activeDirectorySetADUserAccountExpirationEndOfDatemonth), required: true);
+            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateday = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateday, nameof(activeDirectorySetADUserAccountExpirationEndOfDateday), required: true);
+            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateworkflow = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateworkflow, nameof(activeDirectorySetADUserAccountExpirationEndOfDateworkflow), required: true);
+            var __workflow_activeDirectorySetADUserAccountExpirationEndOfDateaDServer = WorkflowExpression.Compile(activeDirectorySetADUserAccountExpirationEndOfDateaDServer, nameof(activeDirectorySetADUserAccountExpirationEndOfDateaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectorySetADUserAccountExpirationEndOfDateResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectorySetADUserAccountExpirationEndOfDate";
@@ -3125,14 +2862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ActiveDirectoryGetADGroupMembersResponse> ActiveDirectoryGetADGroupMembers(Expression<Func<string>> activeDirectoryGetADGroupMembersgroupIdentity, Expression<Func<string>> activeDirectoryGetADGroupMembersworkflow, Expression<Func<bool>> activeDirectoryGetADGroupMembersrecursive = null, Expression<Func<string>> activeDirectoryGetADGroupMembersaDServer = null)
         {
-            var __workflow_activeDirectoryGetADGroupMembersgroupIdentity = activeDirectoryGetADGroupMembersgroupIdentity == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupMembersgroupIdentity);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupMembersgroupIdentity, nameof(activeDirectoryGetADGroupMembersgroupIdentity), required: true);
-            var __workflow_activeDirectoryGetADGroupMembersworkflow = activeDirectoryGetADGroupMembersworkflow == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupMembersworkflow);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupMembersworkflow, nameof(activeDirectoryGetADGroupMembersworkflow), required: true);
-            var __workflow_activeDirectoryGetADGroupMembersrecursive = activeDirectoryGetADGroupMembersrecursive == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupMembersrecursive);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupMembersrecursive, nameof(activeDirectoryGetADGroupMembersrecursive), required: false);
-            var __workflow_activeDirectoryGetADGroupMembersaDServer = activeDirectoryGetADGroupMembersaDServer == null ? null : WorkflowExpression.Compile(activeDirectoryGetADGroupMembersaDServer);
-            WorkflowExpression.Validate(__workflow_activeDirectoryGetADGroupMembersaDServer, nameof(activeDirectoryGetADGroupMembersaDServer), required: false);
+            var __workflow_activeDirectoryGetADGroupMembersgroupIdentity = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersgroupIdentity, nameof(activeDirectoryGetADGroupMembersgroupIdentity), required: true);
+            var __workflow_activeDirectoryGetADGroupMembersworkflow = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersworkflow, nameof(activeDirectoryGetADGroupMembersworkflow), required: true);
+            var __workflow_activeDirectoryGetADGroupMembersrecursive = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersrecursive, nameof(activeDirectoryGetADGroupMembersrecursive), required: false);
+            var __workflow_activeDirectoryGetADGroupMembersaDServer = WorkflowExpression.Compile(activeDirectoryGetADGroupMembersaDServer, nameof(activeDirectoryGetADGroupMembersaDServer), required: false);
             return new DeferredBodyAction<ActiveDirectoryGetADGroupMembersResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ActiveDirectoryGetADGroupMembers";
@@ -3178,26 +2911,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<OpenExchangePowerShellRunspaceResponse> OpenExchangePowerShellRunspace(Expression<Func<string>> openExchangePowerShellRunspaceexchangeServerFQDN, Expression<Func<string>> openExchangePowerShellRunspaceworkflow, Expression<Func<string>> openExchangePowerShellRunspaceusername = null, Expression<Func<string>> openExchangePowerShellRunspacepassword = null, Expression<Func<bool>> openExchangePowerShellRunspaceuseSSL = null, Expression<Func<openExchangePowerShellRunspaceconnectionMethodInput>> openExchangePowerShellRunspaceconnectionMethod = null, Expression<Func<openExchangePowerShellRunspaceauthenticationMechanismInput>> openExchangePowerShellRunspaceauthenticationMechanism = null, Expression<Func<bool>> openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, Expression<Func<openExchangePowerShellRunspacecommandTypesToImportLocallyInput>> openExchangePowerShellRunspacecommandTypesToImportLocally = null, Expression<Func<string>> openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
         {
-            var __workflow_openExchangePowerShellRunspaceexchangeServerFQDN = openExchangePowerShellRunspaceexchangeServerFQDN == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceexchangeServerFQDN);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceexchangeServerFQDN, nameof(openExchangePowerShellRunspaceexchangeServerFQDN), required: true);
-            var __workflow_openExchangePowerShellRunspaceworkflow = openExchangePowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceworkflow, nameof(openExchangePowerShellRunspaceworkflow), required: true);
-            var __workflow_openExchangePowerShellRunspaceusername = openExchangePowerShellRunspaceusername == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceusername);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceusername, nameof(openExchangePowerShellRunspaceusername), required: false);
-            var __workflow_openExchangePowerShellRunspacepassword = openExchangePowerShellRunspacepassword == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspacepassword);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspacepassword, nameof(openExchangePowerShellRunspacepassword), required: false);
-            var __workflow_openExchangePowerShellRunspaceuseSSL = openExchangePowerShellRunspaceuseSSL == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceuseSSL);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceuseSSL, nameof(openExchangePowerShellRunspaceuseSSL), required: false);
-            var __workflow_openExchangePowerShellRunspaceconnectionMethod = openExchangePowerShellRunspaceconnectionMethod == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceconnectionMethod);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceconnectionMethod, nameof(openExchangePowerShellRunspaceconnectionMethod), required: false);
-            var __workflow_openExchangePowerShellRunspaceauthenticationMechanism = openExchangePowerShellRunspaceauthenticationMechanism == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceauthenticationMechanism);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceauthenticationMechanism, nameof(openExchangePowerShellRunspaceauthenticationMechanism), required: false);
-            var __workflow_openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected = openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected, nameof(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected), required: false);
-            var __workflow_openExchangePowerShellRunspacecommandTypesToImportLocally = openExchangePowerShellRunspacecommandTypesToImportLocally == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspacecommandTypesToImportLocally);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspacecommandTypesToImportLocally, nameof(openExchangePowerShellRunspacecommandTypesToImportLocally), required: false);
-            var __workflow_openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV = openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV == null ? null : WorkflowExpression.Compile(openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV);
-            WorkflowExpression.Validate(__workflow_openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV, nameof(openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV), required: false);
+            var __workflow_openExchangePowerShellRunspaceexchangeServerFQDN = WorkflowExpression.Compile(openExchangePowerShellRunspaceexchangeServerFQDN, nameof(openExchangePowerShellRunspaceexchangeServerFQDN), required: true);
+            var __workflow_openExchangePowerShellRunspaceworkflow = WorkflowExpression.Compile(openExchangePowerShellRunspaceworkflow, nameof(openExchangePowerShellRunspaceworkflow), required: true);
+            var __workflow_openExchangePowerShellRunspaceusername = WorkflowExpression.Compile(openExchangePowerShellRunspaceusername, nameof(openExchangePowerShellRunspaceusername), required: false);
+            var __workflow_openExchangePowerShellRunspacepassword = WorkflowExpression.Compile(openExchangePowerShellRunspacepassword, nameof(openExchangePowerShellRunspacepassword), required: false);
+            var __workflow_openExchangePowerShellRunspaceuseSSL = WorkflowExpression.Compile(openExchangePowerShellRunspaceuseSSL, nameof(openExchangePowerShellRunspaceuseSSL), required: false);
+            var __workflow_openExchangePowerShellRunspaceconnectionMethod = WorkflowExpression.Compile(openExchangePowerShellRunspaceconnectionMethod, nameof(openExchangePowerShellRunspaceconnectionMethod), required: false);
+            var __workflow_openExchangePowerShellRunspaceauthenticationMechanism = WorkflowExpression.Compile(openExchangePowerShellRunspaceauthenticationMechanism, nameof(openExchangePowerShellRunspaceauthenticationMechanism), required: false);
+            var __workflow_openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected, nameof(openExchangePowerShellRunspaceonlyConnectIfNotAlreadyConnected), required: false);
+            var __workflow_openExchangePowerShellRunspacecommandTypesToImportLocally = WorkflowExpression.Compile(openExchangePowerShellRunspacecommandTypesToImportLocally, nameof(openExchangePowerShellRunspacecommandTypesToImportLocally), required: false);
+            var __workflow_openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV = WorkflowExpression.Compile(openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV, nameof(openExchangePowerShellRunspaceadditionalCommandsToImportLocallyCSV), required: false);
             return new DeferredBodyAction<OpenExchangePowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenExchangePowerShellRunspace";
@@ -3319,12 +3042,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<IsExchangePowerShellRunspaceOpenResponse> IsExchangePowerShellRunspaceOpen(Expression<Func<string>> isExchangePowerShellRunspaceOpenworkflow, Expression<Func<bool>> isExchangePowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
-            var __workflow_isExchangePowerShellRunspaceOpenworkflow = isExchangePowerShellRunspaceOpenworkflow == null ? null : WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenworkflow);
-            WorkflowExpression.Validate(__workflow_isExchangePowerShellRunspaceOpenworkflow, nameof(isExchangePowerShellRunspaceOpenworkflow), required: true);
-            var __workflow_isExchangePowerShellRunspaceOpentestCommunications = isExchangePowerShellRunspaceOpentestCommunications == null ? null : WorkflowExpression.Compile(isExchangePowerShellRunspaceOpentestCommunications);
-            WorkflowExpression.Validate(__workflow_isExchangePowerShellRunspaceOpentestCommunications, nameof(isExchangePowerShellRunspaceOpentestCommunications), required: false);
-            var __workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID == null ? null : WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID);
-            WorkflowExpression.Validate(__workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
+            var __workflow_isExchangePowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenworkflow, nameof(isExchangePowerShellRunspaceOpenworkflow), required: true);
+            var __workflow_isExchangePowerShellRunspaceOpentestCommunications = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpentestCommunications, nameof(isExchangePowerShellRunspaceOpentestCommunications), required: false);
+            var __workflow_isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isExchangePowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
             return new DeferredBodyAction<IsExchangePowerShellRunspaceOpenResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsExchangePowerShellRunspaceOpen";
@@ -3378,38 +3098,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<RunExchangePowerShellAutomationScriptResponse> RunExchangePowerShellAutomationScript(Expression<Func<string>> runExchangePowerShellAutomationScriptworkflow, Expression<Func<string>> runExchangePowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runExchangePowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runExchangePowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runExchangePowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runExchangePowerShellAutomationScriptpowerShellCommandParameters = null)
         {
-            var __workflow_runExchangePowerShellAutomationScriptworkflow = runExchangePowerShellAutomationScriptworkflow == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptworkflow);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptworkflow, nameof(runExchangePowerShellAutomationScriptworkflow), required: true);
-            var __workflow_runExchangePowerShellAutomationScriptpowerShellScriptContents = runExchangePowerShellAutomationScriptpowerShellScriptContents == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpowerShellScriptContents);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptpowerShellScriptContents, nameof(runExchangePowerShellAutomationScriptpowerShellScriptContents), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptisNoResultAnError = runExchangePowerShellAutomationScriptisNoResultAnError == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptisNoResultAnError);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptisNoResultAnError, nameof(runExchangePowerShellAutomationScriptisNoResultAnError), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptreturnComplexTypes = runExchangePowerShellAutomationScriptreturnComplexTypes == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnComplexTypes);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptreturnComplexTypes, nameof(runExchangePowerShellAutomationScriptreturnComplexTypes), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptreturnBooleanAsBoolean = runExchangePowerShellAutomationScriptreturnBooleanAsBoolean == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnBooleanAsBoolean);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runExchangePowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptreturnNumericAsDecimal = runExchangePowerShellAutomationScriptreturnNumericAsDecimal == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnNumericAsDecimal);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptreturnNumericAsDecimal, nameof(runExchangePowerShellAutomationScriptreturnNumericAsDecimal), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptreturnDateAsDate = runExchangePowerShellAutomationScriptreturnDateAsDate == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnDateAsDate);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptreturnDateAsDate, nameof(runExchangePowerShellAutomationScriptreturnDateAsDate), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptrunScriptAsThread = runExchangePowerShellAutomationScriptrunScriptAsThread == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptrunScriptAsThread);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptrunScriptAsThread, nameof(runExchangePowerShellAutomationScriptrunScriptAsThread), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId = runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptsecondsToWaitForThread = runExchangePowerShellAutomationScriptsecondsToWaitForThread == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptsecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptsecondsToWaitForThread, nameof(runExchangePowerShellAutomationScriptsecondsToWaitForThread), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptscriptContainsStoredPassword = runExchangePowerShellAutomationScriptscriptContainsStoredPassword == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptscriptContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptscriptContainsStoredPassword, nameof(runExchangePowerShellAutomationScriptscriptContainsStoredPassword), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptlogVerboseOutput = runExchangePowerShellAutomationScriptlogVerboseOutput == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptlogVerboseOutput);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptlogVerboseOutput, nameof(runExchangePowerShellAutomationScriptlogVerboseOutput), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON = runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON = runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
-            var __workflow_runExchangePowerShellAutomationScriptpowerShellCommandParameters = runExchangePowerShellAutomationScriptpowerShellCommandParameters == null ? null : WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpowerShellCommandParameters);
-            WorkflowExpression.Validate(__workflow_runExchangePowerShellAutomationScriptpowerShellCommandParameters, nameof(runExchangePowerShellAutomationScriptpowerShellCommandParameters), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptworkflow, nameof(runExchangePowerShellAutomationScriptworkflow), required: true);
+            var __workflow_runExchangePowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpowerShellScriptContents, nameof(runExchangePowerShellAutomationScriptpowerShellScriptContents), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptisNoResultAnError = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptisNoResultAnError, nameof(runExchangePowerShellAutomationScriptisNoResultAnError), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptreturnComplexTypes = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnComplexTypes, nameof(runExchangePowerShellAutomationScriptreturnComplexTypes), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptreturnBooleanAsBoolean = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runExchangePowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptreturnNumericAsDecimal = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnNumericAsDecimal, nameof(runExchangePowerShellAutomationScriptreturnNumericAsDecimal), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptreturnDateAsDate = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptreturnDateAsDate, nameof(runExchangePowerShellAutomationScriptreturnDateAsDate), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runExchangePowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptrunScriptAsThread = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptrunScriptAsThread, nameof(runExchangePowerShellAutomationScriptrunScriptAsThread), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runExchangePowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptsecondsToWaitForThread = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptsecondsToWaitForThread, nameof(runExchangePowerShellAutomationScriptsecondsToWaitForThread), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptscriptContainsStoredPassword = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptscriptContainsStoredPassword, nameof(runExchangePowerShellAutomationScriptscriptContainsStoredPassword), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptlogVerboseOutput = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptlogVerboseOutput, nameof(runExchangePowerShellAutomationScriptlogVerboseOutput), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runExchangePowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runExchangePowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
+            var __workflow_runExchangePowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runExchangePowerShellAutomationScriptpowerShellCommandParameters, nameof(runExchangePowerShellAutomationScriptpowerShellCommandParameters), required: false);
             return new DeferredBodyAction<RunExchangePowerShellAutomationScriptResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunExchangePowerShellAutomationScript";
@@ -3611,8 +3315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<CloseExchangePowerShellRunspaceResponse> CloseExchangePowerShellRunspace(Expression<Func<string>> closeExchangePowerShellRunspaceworkflow)
         {
-            var __workflow_closeExchangePowerShellRunspaceworkflow = closeExchangePowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(closeExchangePowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_closeExchangePowerShellRunspaceworkflow, nameof(closeExchangePowerShellRunspaceworkflow), required: true);
+            var __workflow_closeExchangePowerShellRunspaceworkflow = WorkflowExpression.Compile(closeExchangePowerShellRunspaceworkflow, nameof(closeExchangePowerShellRunspaceworkflow), required: true);
             return new DeferredBodyAction<CloseExchangePowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/CloseExchangePowerShellRunspace";
@@ -3634,20 +3337,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeGetMailboxResponse> ExchangeGetMailbox(Expression<Func<string>> exchangeGetMailboxworkflow, Expression<Func<string>> exchangeGetMailboxidentity = null, Expression<Func<string>> exchangeGetMailboxfilterPropertyName = null, Expression<Func<exchangeGetMailboxfilterPropertyComparisonInput>> exchangeGetMailboxfilterPropertyComparison = null, Expression<Func<string>> exchangeGetMailboxfilterPropertyValue = null, Expression<Func<exchangeGetMailboxrecipientTypeDetailsInput>> exchangeGetMailboxrecipientTypeDetails = null, Expression<Func<bool>> exchangeGetMailboxnoResultIsAnException = null)
         {
-            var __workflow_exchangeGetMailboxworkflow = exchangeGetMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeGetMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxworkflow, nameof(exchangeGetMailboxworkflow), required: true);
-            var __workflow_exchangeGetMailboxidentity = exchangeGetMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeGetMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxidentity, nameof(exchangeGetMailboxidentity), required: false);
-            var __workflow_exchangeGetMailboxfilterPropertyName = exchangeGetMailboxfilterPropertyName == null ? null : WorkflowExpression.Compile(exchangeGetMailboxfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxfilterPropertyName, nameof(exchangeGetMailboxfilterPropertyName), required: false);
-            var __workflow_exchangeGetMailboxfilterPropertyComparison = exchangeGetMailboxfilterPropertyComparison == null ? null : WorkflowExpression.Compile(exchangeGetMailboxfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxfilterPropertyComparison, nameof(exchangeGetMailboxfilterPropertyComparison), required: false);
-            var __workflow_exchangeGetMailboxfilterPropertyValue = exchangeGetMailboxfilterPropertyValue == null ? null : WorkflowExpression.Compile(exchangeGetMailboxfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxfilterPropertyValue, nameof(exchangeGetMailboxfilterPropertyValue), required: false);
-            var __workflow_exchangeGetMailboxrecipientTypeDetails = exchangeGetMailboxrecipientTypeDetails == null ? null : WorkflowExpression.Compile(exchangeGetMailboxrecipientTypeDetails);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxrecipientTypeDetails, nameof(exchangeGetMailboxrecipientTypeDetails), required: false);
-            var __workflow_exchangeGetMailboxnoResultIsAnException = exchangeGetMailboxnoResultIsAnException == null ? null : WorkflowExpression.Compile(exchangeGetMailboxnoResultIsAnException);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxnoResultIsAnException, nameof(exchangeGetMailboxnoResultIsAnException), required: false);
+            var __workflow_exchangeGetMailboxworkflow = WorkflowExpression.Compile(exchangeGetMailboxworkflow, nameof(exchangeGetMailboxworkflow), required: true);
+            var __workflow_exchangeGetMailboxidentity = WorkflowExpression.Compile(exchangeGetMailboxidentity, nameof(exchangeGetMailboxidentity), required: false);
+            var __workflow_exchangeGetMailboxfilterPropertyName = WorkflowExpression.Compile(exchangeGetMailboxfilterPropertyName, nameof(exchangeGetMailboxfilterPropertyName), required: false);
+            var __workflow_exchangeGetMailboxfilterPropertyComparison = WorkflowExpression.Compile(exchangeGetMailboxfilterPropertyComparison, nameof(exchangeGetMailboxfilterPropertyComparison), required: false);
+            var __workflow_exchangeGetMailboxfilterPropertyValue = WorkflowExpression.Compile(exchangeGetMailboxfilterPropertyValue, nameof(exchangeGetMailboxfilterPropertyValue), required: false);
+            var __workflow_exchangeGetMailboxrecipientTypeDetails = WorkflowExpression.Compile(exchangeGetMailboxrecipientTypeDetails, nameof(exchangeGetMailboxrecipientTypeDetails), required: false);
+            var __workflow_exchangeGetMailboxnoResultIsAnException = WorkflowExpression.Compile(exchangeGetMailboxnoResultIsAnException, nameof(exchangeGetMailboxnoResultIsAnException), required: false);
             return new DeferredBodyAction<ExchangeGetMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetMailbox";
@@ -3725,18 +3421,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeDoesMailboxExistResponse> ExchangeDoesMailboxExist(Expression<Func<string>> exchangeDoesMailboxExistworkflow, Expression<Func<string>> exchangeDoesMailboxExistidentity = null, Expression<Func<string>> exchangeDoesMailboxExistfilterPropertyName = null, Expression<Func<exchangeDoesMailboxExistfilterPropertyComparisonInput>> exchangeDoesMailboxExistfilterPropertyComparison = null, Expression<Func<string>> exchangeDoesMailboxExistfilterPropertyValue = null, Expression<Func<exchangeDoesMailboxExistrecipientTypeDetailsInput>> exchangeDoesMailboxExistrecipientTypeDetails = null)
         {
-            var __workflow_exchangeDoesMailboxExistworkflow = exchangeDoesMailboxExistworkflow == null ? null : WorkflowExpression.Compile(exchangeDoesMailboxExistworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeDoesMailboxExistworkflow, nameof(exchangeDoesMailboxExistworkflow), required: true);
-            var __workflow_exchangeDoesMailboxExistidentity = exchangeDoesMailboxExistidentity == null ? null : WorkflowExpression.Compile(exchangeDoesMailboxExistidentity);
-            WorkflowExpression.Validate(__workflow_exchangeDoesMailboxExistidentity, nameof(exchangeDoesMailboxExistidentity), required: false);
-            var __workflow_exchangeDoesMailboxExistfilterPropertyName = exchangeDoesMailboxExistfilterPropertyName == null ? null : WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_exchangeDoesMailboxExistfilterPropertyName, nameof(exchangeDoesMailboxExistfilterPropertyName), required: false);
-            var __workflow_exchangeDoesMailboxExistfilterPropertyComparison = exchangeDoesMailboxExistfilterPropertyComparison == null ? null : WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_exchangeDoesMailboxExistfilterPropertyComparison, nameof(exchangeDoesMailboxExistfilterPropertyComparison), required: false);
-            var __workflow_exchangeDoesMailboxExistfilterPropertyValue = exchangeDoesMailboxExistfilterPropertyValue == null ? null : WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_exchangeDoesMailboxExistfilterPropertyValue, nameof(exchangeDoesMailboxExistfilterPropertyValue), required: false);
-            var __workflow_exchangeDoesMailboxExistrecipientTypeDetails = exchangeDoesMailboxExistrecipientTypeDetails == null ? null : WorkflowExpression.Compile(exchangeDoesMailboxExistrecipientTypeDetails);
-            WorkflowExpression.Validate(__workflow_exchangeDoesMailboxExistrecipientTypeDetails, nameof(exchangeDoesMailboxExistrecipientTypeDetails), required: false);
+            var __workflow_exchangeDoesMailboxExistworkflow = WorkflowExpression.Compile(exchangeDoesMailboxExistworkflow, nameof(exchangeDoesMailboxExistworkflow), required: true);
+            var __workflow_exchangeDoesMailboxExistidentity = WorkflowExpression.Compile(exchangeDoesMailboxExistidentity, nameof(exchangeDoesMailboxExistidentity), required: false);
+            var __workflow_exchangeDoesMailboxExistfilterPropertyName = WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyName, nameof(exchangeDoesMailboxExistfilterPropertyName), required: false);
+            var __workflow_exchangeDoesMailboxExistfilterPropertyComparison = WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyComparison, nameof(exchangeDoesMailboxExistfilterPropertyComparison), required: false);
+            var __workflow_exchangeDoesMailboxExistfilterPropertyValue = WorkflowExpression.Compile(exchangeDoesMailboxExistfilterPropertyValue, nameof(exchangeDoesMailboxExistfilterPropertyValue), required: false);
+            var __workflow_exchangeDoesMailboxExistrecipientTypeDetails = WorkflowExpression.Compile(exchangeDoesMailboxExistrecipientTypeDetails, nameof(exchangeDoesMailboxExistrecipientTypeDetails), required: false);
             return new DeferredBodyAction<ExchangeDoesMailboxExistResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDoesMailboxExist";
@@ -3798,12 +3488,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeAddDistributionGroupMemberResponse> ExchangeAddDistributionGroupMember(Expression<Func<string>> exchangeAddDistributionGroupMemberidentity, Expression<Func<string>> exchangeAddDistributionGroupMembermember, Expression<Func<string>> exchangeAddDistributionGroupMemberworkflow)
         {
-            var __workflow_exchangeAddDistributionGroupMemberidentity = exchangeAddDistributionGroupMemberidentity == null ? null : WorkflowExpression.Compile(exchangeAddDistributionGroupMemberidentity);
-            WorkflowExpression.Validate(__workflow_exchangeAddDistributionGroupMemberidentity, nameof(exchangeAddDistributionGroupMemberidentity), required: true);
-            var __workflow_exchangeAddDistributionGroupMembermember = exchangeAddDistributionGroupMembermember == null ? null : WorkflowExpression.Compile(exchangeAddDistributionGroupMembermember);
-            WorkflowExpression.Validate(__workflow_exchangeAddDistributionGroupMembermember, nameof(exchangeAddDistributionGroupMembermember), required: true);
-            var __workflow_exchangeAddDistributionGroupMemberworkflow = exchangeAddDistributionGroupMemberworkflow == null ? null : WorkflowExpression.Compile(exchangeAddDistributionGroupMemberworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeAddDistributionGroupMemberworkflow, nameof(exchangeAddDistributionGroupMemberworkflow), required: true);
+            var __workflow_exchangeAddDistributionGroupMemberidentity = WorkflowExpression.Compile(exchangeAddDistributionGroupMemberidentity, nameof(exchangeAddDistributionGroupMemberidentity), required: true);
+            var __workflow_exchangeAddDistributionGroupMembermember = WorkflowExpression.Compile(exchangeAddDistributionGroupMembermember, nameof(exchangeAddDistributionGroupMembermember), required: true);
+            var __workflow_exchangeAddDistributionGroupMemberworkflow = WorkflowExpression.Compile(exchangeAddDistributionGroupMemberworkflow, nameof(exchangeAddDistributionGroupMemberworkflow), required: true);
             return new DeferredBodyAction<ExchangeAddDistributionGroupMemberResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeAddDistributionGroupMember";
@@ -3829,14 +3516,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeRemoveDistributionGroupMemberResponse> ExchangeRemoveDistributionGroupMember(Expression<Func<string>> exchangeRemoveDistributionGroupMemberidentity, Expression<Func<string>> exchangeRemoveDistributionGroupMembermember, Expression<Func<string>> exchangeRemoveDistributionGroupMemberworkflow, Expression<Func<bool>> exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
         {
-            var __workflow_exchangeRemoveDistributionGroupMemberidentity = exchangeRemoveDistributionGroupMemberidentity == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberidentity);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGroupMemberidentity, nameof(exchangeRemoveDistributionGroupMemberidentity), required: true);
-            var __workflow_exchangeRemoveDistributionGroupMembermember = exchangeRemoveDistributionGroupMembermember == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGroupMembermember);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGroupMembermember, nameof(exchangeRemoveDistributionGroupMembermember), required: true);
-            var __workflow_exchangeRemoveDistributionGroupMemberworkflow = exchangeRemoveDistributionGroupMemberworkflow == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGroupMemberworkflow, nameof(exchangeRemoveDistributionGroupMemberworkflow), required: true);
-            var __workflow_exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
+            var __workflow_exchangeRemoveDistributionGroupMemberidentity = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberidentity, nameof(exchangeRemoveDistributionGroupMemberidentity), required: true);
+            var __workflow_exchangeRemoveDistributionGroupMembermember = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMembermember, nameof(exchangeRemoveDistributionGroupMembermember), required: true);
+            var __workflow_exchangeRemoveDistributionGroupMemberworkflow = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberworkflow, nameof(exchangeRemoveDistributionGroupMemberworkflow), required: true);
+            var __workflow_exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(exchangeRemoveDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
             return new DeferredBodyAction<ExchangeRemoveDistributionGroupMemberResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeRemoveDistributionGroupMember";
@@ -3878,18 +3561,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeGetDistributionGroupResponse> ExchangeGetDistributionGroup(Expression<Func<string>> exchangeGetDistributionGroupworkflow, Expression<Func<string>> exchangeGetDistributionGroupidentity = null, Expression<Func<string>> exchangeGetDistributionGroupfilterPropertyName = null, Expression<Func<exchangeGetDistributionGroupfilterPropertyComparisonInput>> exchangeGetDistributionGroupfilterPropertyComparison = null, Expression<Func<string>> exchangeGetDistributionGroupfilterPropertyValue = null, Expression<Func<bool>> exchangeGetDistributionGroupnoResultIsAnException = null)
         {
-            var __workflow_exchangeGetDistributionGroupworkflow = exchangeGetDistributionGroupworkflow == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupworkflow, nameof(exchangeGetDistributionGroupworkflow), required: true);
-            var __workflow_exchangeGetDistributionGroupidentity = exchangeGetDistributionGroupidentity == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupidentity);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupidentity, nameof(exchangeGetDistributionGroupidentity), required: false);
-            var __workflow_exchangeGetDistributionGroupfilterPropertyName = exchangeGetDistributionGroupfilterPropertyName == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupfilterPropertyName, nameof(exchangeGetDistributionGroupfilterPropertyName), required: false);
-            var __workflow_exchangeGetDistributionGroupfilterPropertyComparison = exchangeGetDistributionGroupfilterPropertyComparison == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupfilterPropertyComparison, nameof(exchangeGetDistributionGroupfilterPropertyComparison), required: false);
-            var __workflow_exchangeGetDistributionGroupfilterPropertyValue = exchangeGetDistributionGroupfilterPropertyValue == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupfilterPropertyValue, nameof(exchangeGetDistributionGroupfilterPropertyValue), required: false);
-            var __workflow_exchangeGetDistributionGroupnoResultIsAnException = exchangeGetDistributionGroupnoResultIsAnException == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupnoResultIsAnException);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupnoResultIsAnException, nameof(exchangeGetDistributionGroupnoResultIsAnException), required: false);
+            var __workflow_exchangeGetDistributionGroupworkflow = WorkflowExpression.Compile(exchangeGetDistributionGroupworkflow, nameof(exchangeGetDistributionGroupworkflow), required: true);
+            var __workflow_exchangeGetDistributionGroupidentity = WorkflowExpression.Compile(exchangeGetDistributionGroupidentity, nameof(exchangeGetDistributionGroupidentity), required: false);
+            var __workflow_exchangeGetDistributionGroupfilterPropertyName = WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyName, nameof(exchangeGetDistributionGroupfilterPropertyName), required: false);
+            var __workflow_exchangeGetDistributionGroupfilterPropertyComparison = WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyComparison, nameof(exchangeGetDistributionGroupfilterPropertyComparison), required: false);
+            var __workflow_exchangeGetDistributionGroupfilterPropertyValue = WorkflowExpression.Compile(exchangeGetDistributionGroupfilterPropertyValue, nameof(exchangeGetDistributionGroupfilterPropertyValue), required: false);
+            var __workflow_exchangeGetDistributionGroupnoResultIsAnException = WorkflowExpression.Compile(exchangeGetDistributionGroupnoResultIsAnException, nameof(exchangeGetDistributionGroupnoResultIsAnException), required: false);
             return new DeferredBodyAction<ExchangeGetDistributionGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetDistributionGroup";
@@ -3961,10 +3638,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeGetDistributionGroupMembersResponse> ExchangeGetDistributionGroupMembers(Expression<Func<string>> exchangeGetDistributionGroupMembersidentity, Expression<Func<string>> exchangeGetDistributionGroupMembersworkflow)
         {
-            var __workflow_exchangeGetDistributionGroupMembersidentity = exchangeGetDistributionGroupMembersidentity == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupMembersidentity);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupMembersidentity, nameof(exchangeGetDistributionGroupMembersidentity), required: true);
-            var __workflow_exchangeGetDistributionGroupMembersworkflow = exchangeGetDistributionGroupMembersworkflow == null ? null : WorkflowExpression.Compile(exchangeGetDistributionGroupMembersworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeGetDistributionGroupMembersworkflow, nameof(exchangeGetDistributionGroupMembersworkflow), required: true);
+            var __workflow_exchangeGetDistributionGroupMembersidentity = WorkflowExpression.Compile(exchangeGetDistributionGroupMembersidentity, nameof(exchangeGetDistributionGroupMembersidentity), required: true);
+            var __workflow_exchangeGetDistributionGroupMembersworkflow = WorkflowExpression.Compile(exchangeGetDistributionGroupMembersworkflow, nameof(exchangeGetDistributionGroupMembersworkflow), required: true);
             return new DeferredBodyAction<ExchangeGetDistributionGroupMembersResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetDistributionGroupMembers";
@@ -3988,10 +3663,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeGetMailboxDistributionGroupMembershipResponse> ExchangeGetMailboxDistributionGroupMembership(Expression<Func<string>> exchangeGetMailboxDistributionGroupMembershipidentity, Expression<Func<string>> exchangeGetMailboxDistributionGroupMembershipworkflow)
         {
-            var __workflow_exchangeGetMailboxDistributionGroupMembershipidentity = exchangeGetMailboxDistributionGroupMembershipidentity == null ? null : WorkflowExpression.Compile(exchangeGetMailboxDistributionGroupMembershipidentity);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxDistributionGroupMembershipidentity, nameof(exchangeGetMailboxDistributionGroupMembershipidentity), required: true);
-            var __workflow_exchangeGetMailboxDistributionGroupMembershipworkflow = exchangeGetMailboxDistributionGroupMembershipworkflow == null ? null : WorkflowExpression.Compile(exchangeGetMailboxDistributionGroupMembershipworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxDistributionGroupMembershipworkflow, nameof(exchangeGetMailboxDistributionGroupMembershipworkflow), required: true);
+            var __workflow_exchangeGetMailboxDistributionGroupMembershipidentity = WorkflowExpression.Compile(exchangeGetMailboxDistributionGroupMembershipidentity, nameof(exchangeGetMailboxDistributionGroupMembershipidentity), required: true);
+            var __workflow_exchangeGetMailboxDistributionGroupMembershipworkflow = WorkflowExpression.Compile(exchangeGetMailboxDistributionGroupMembershipworkflow, nameof(exchangeGetMailboxDistributionGroupMembershipworkflow), required: true);
             return new DeferredBodyAction<ExchangeGetMailboxDistributionGroupMembershipResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetMailboxDistributionGroupMembership";
@@ -4015,34 +3688,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeNewDistributionGroupResponse> ExchangeNewDistributionGroup(Expression<Func<string>> exchangeNewDistributionGroupname, Expression<Func<string>> exchangeNewDistributionGroupworkflow, Expression<Func<string>> exchangeNewDistributionGroupalias = null, Expression<Func<string>> exchangeNewDistributionGroupdisplayName = null, Expression<Func<string>> exchangeNewDistributionGroupnotes = null, Expression<Func<string>> exchangeNewDistributionGroupmanagedBy = null, Expression<Func<string>> exchangeNewDistributionGroupmembers = null, Expression<Func<string>> exchangeNewDistributionGrouporganizationalUnit = null, Expression<Func<string>> exchangeNewDistributionGroupprimarySmtpAddress = null, Expression<Func<exchangeNewDistributionGroupmemberDepartRestrictionInput>> exchangeNewDistributionGroupmemberDepartRestriction = null, Expression<Func<exchangeNewDistributionGroupmemberJoinRestrictionInput>> exchangeNewDistributionGroupmemberJoinRestriction = null, Expression<Func<bool>> exchangeNewDistributionGrouprequireSenderAuthenticationEnabled = null, Expression<Func<exchangeNewDistributionGrouptypeInput>> exchangeNewDistributionGrouptype = null, Expression<Func<bool>> exchangeNewDistributionGrouperrorIfGroupAlreadyExists = null)
         {
-            var __workflow_exchangeNewDistributionGroupname = exchangeNewDistributionGroupname == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupname);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupname, nameof(exchangeNewDistributionGroupname), required: true);
-            var __workflow_exchangeNewDistributionGroupworkflow = exchangeNewDistributionGroupworkflow == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupworkflow, nameof(exchangeNewDistributionGroupworkflow), required: true);
-            var __workflow_exchangeNewDistributionGroupalias = exchangeNewDistributionGroupalias == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupalias);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupalias, nameof(exchangeNewDistributionGroupalias), required: false);
-            var __workflow_exchangeNewDistributionGroupdisplayName = exchangeNewDistributionGroupdisplayName == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupdisplayName);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupdisplayName, nameof(exchangeNewDistributionGroupdisplayName), required: false);
-            var __workflow_exchangeNewDistributionGroupnotes = exchangeNewDistributionGroupnotes == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupnotes);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupnotes, nameof(exchangeNewDistributionGroupnotes), required: false);
-            var __workflow_exchangeNewDistributionGroupmanagedBy = exchangeNewDistributionGroupmanagedBy == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupmanagedBy);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupmanagedBy, nameof(exchangeNewDistributionGroupmanagedBy), required: false);
-            var __workflow_exchangeNewDistributionGroupmembers = exchangeNewDistributionGroupmembers == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupmembers);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupmembers, nameof(exchangeNewDistributionGroupmembers), required: false);
-            var __workflow_exchangeNewDistributionGrouporganizationalUnit = exchangeNewDistributionGrouporganizationalUnit == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGrouporganizationalUnit);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGrouporganizationalUnit, nameof(exchangeNewDistributionGrouporganizationalUnit), required: false);
-            var __workflow_exchangeNewDistributionGroupprimarySmtpAddress = exchangeNewDistributionGroupprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupprimarySmtpAddress, nameof(exchangeNewDistributionGroupprimarySmtpAddress), required: false);
-            var __workflow_exchangeNewDistributionGroupmemberDepartRestriction = exchangeNewDistributionGroupmemberDepartRestriction == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupmemberDepartRestriction);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupmemberDepartRestriction, nameof(exchangeNewDistributionGroupmemberDepartRestriction), required: false);
-            var __workflow_exchangeNewDistributionGroupmemberJoinRestriction = exchangeNewDistributionGroupmemberJoinRestriction == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGroupmemberJoinRestriction);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGroupmemberJoinRestriction, nameof(exchangeNewDistributionGroupmemberJoinRestriction), required: false);
-            var __workflow_exchangeNewDistributionGrouprequireSenderAuthenticationEnabled = exchangeNewDistributionGrouprequireSenderAuthenticationEnabled == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGrouprequireSenderAuthenticationEnabled, nameof(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled), required: false);
-            var __workflow_exchangeNewDistributionGrouptype = exchangeNewDistributionGrouptype == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGrouptype);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGrouptype, nameof(exchangeNewDistributionGrouptype), required: false);
-            var __workflow_exchangeNewDistributionGrouperrorIfGroupAlreadyExists = exchangeNewDistributionGrouperrorIfGroupAlreadyExists == null ? null : WorkflowExpression.Compile(exchangeNewDistributionGrouperrorIfGroupAlreadyExists);
-            WorkflowExpression.Validate(__workflow_exchangeNewDistributionGrouperrorIfGroupAlreadyExists, nameof(exchangeNewDistributionGrouperrorIfGroupAlreadyExists), required: false);
+            var __workflow_exchangeNewDistributionGroupname = WorkflowExpression.Compile(exchangeNewDistributionGroupname, nameof(exchangeNewDistributionGroupname), required: true);
+            var __workflow_exchangeNewDistributionGroupworkflow = WorkflowExpression.Compile(exchangeNewDistributionGroupworkflow, nameof(exchangeNewDistributionGroupworkflow), required: true);
+            var __workflow_exchangeNewDistributionGroupalias = WorkflowExpression.Compile(exchangeNewDistributionGroupalias, nameof(exchangeNewDistributionGroupalias), required: false);
+            var __workflow_exchangeNewDistributionGroupdisplayName = WorkflowExpression.Compile(exchangeNewDistributionGroupdisplayName, nameof(exchangeNewDistributionGroupdisplayName), required: false);
+            var __workflow_exchangeNewDistributionGroupnotes = WorkflowExpression.Compile(exchangeNewDistributionGroupnotes, nameof(exchangeNewDistributionGroupnotes), required: false);
+            var __workflow_exchangeNewDistributionGroupmanagedBy = WorkflowExpression.Compile(exchangeNewDistributionGroupmanagedBy, nameof(exchangeNewDistributionGroupmanagedBy), required: false);
+            var __workflow_exchangeNewDistributionGroupmembers = WorkflowExpression.Compile(exchangeNewDistributionGroupmembers, nameof(exchangeNewDistributionGroupmembers), required: false);
+            var __workflow_exchangeNewDistributionGrouporganizationalUnit = WorkflowExpression.Compile(exchangeNewDistributionGrouporganizationalUnit, nameof(exchangeNewDistributionGrouporganizationalUnit), required: false);
+            var __workflow_exchangeNewDistributionGroupprimarySmtpAddress = WorkflowExpression.Compile(exchangeNewDistributionGroupprimarySmtpAddress, nameof(exchangeNewDistributionGroupprimarySmtpAddress), required: false);
+            var __workflow_exchangeNewDistributionGroupmemberDepartRestriction = WorkflowExpression.Compile(exchangeNewDistributionGroupmemberDepartRestriction, nameof(exchangeNewDistributionGroupmemberDepartRestriction), required: false);
+            var __workflow_exchangeNewDistributionGroupmemberJoinRestriction = WorkflowExpression.Compile(exchangeNewDistributionGroupmemberJoinRestriction, nameof(exchangeNewDistributionGroupmemberJoinRestriction), required: false);
+            var __workflow_exchangeNewDistributionGrouprequireSenderAuthenticationEnabled = WorkflowExpression.Compile(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled, nameof(exchangeNewDistributionGrouprequireSenderAuthenticationEnabled), required: false);
+            var __workflow_exchangeNewDistributionGrouptype = WorkflowExpression.Compile(exchangeNewDistributionGrouptype, nameof(exchangeNewDistributionGrouptype), required: false);
+            var __workflow_exchangeNewDistributionGrouperrorIfGroupAlreadyExists = WorkflowExpression.Compile(exchangeNewDistributionGrouperrorIfGroupAlreadyExists, nameof(exchangeNewDistributionGrouperrorIfGroupAlreadyExists), required: false);
             return new DeferredBodyAction<ExchangeNewDistributionGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeNewDistributionGroup";
@@ -4188,14 +3847,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeRemoveDistributionGroupResponse> ExchangeRemoveDistributionGroup(Expression<Func<string>> exchangeRemoveDistributionGroupidentity, Expression<Func<string>> exchangeRemoveDistributionGroupworkflow, Expression<Func<bool>> exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist = null)
         {
-            var __workflow_exchangeRemoveDistributionGroupidentity = exchangeRemoveDistributionGroupidentity == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGroupidentity);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGroupidentity, nameof(exchangeRemoveDistributionGroupidentity), required: true);
-            var __workflow_exchangeRemoveDistributionGroupworkflow = exchangeRemoveDistributionGroupworkflow == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGroupworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGroupworkflow, nameof(exchangeRemoveDistributionGroupworkflow), required: true);
-            var __workflow_exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck = exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck, nameof(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck), required: false);
-            var __workflow_exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist = exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist == null ? null : WorkflowExpression.Compile(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist, nameof(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist), required: false);
+            var __workflow_exchangeRemoveDistributionGroupidentity = WorkflowExpression.Compile(exchangeRemoveDistributionGroupidentity, nameof(exchangeRemoveDistributionGroupidentity), required: true);
+            var __workflow_exchangeRemoveDistributionGroupworkflow = WorkflowExpression.Compile(exchangeRemoveDistributionGroupworkflow, nameof(exchangeRemoveDistributionGroupworkflow), required: true);
+            var __workflow_exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck, nameof(exchangeRemoveDistributionGroupbypassSecurityGroupManagerCheck), required: false);
+            var __workflow_exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist = WorkflowExpression.Compile(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist, nameof(exchangeRemoveDistributionGrouperrorIfGroupDoesNotExist), required: false);
             return new DeferredBodyAction<ExchangeRemoveDistributionGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeRemoveDistributionGroup";
@@ -4251,16 +3906,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeAddMailboxPermissionResponse> ExchangeAddMailboxPermission(Expression<Func<string>> exchangeAddMailboxPermissionidentity, Expression<Func<string>> exchangeAddMailboxPermissionuser, Expression<Func<string>> exchangeAddMailboxPermissionaccessRights, Expression<Func<string>> exchangeAddMailboxPermissionworkflow, Expression<Func<bool>> exchangeAddMailboxPermissionautoMapping = null)
         {
-            var __workflow_exchangeAddMailboxPermissionidentity = exchangeAddMailboxPermissionidentity == null ? null : WorkflowExpression.Compile(exchangeAddMailboxPermissionidentity);
-            WorkflowExpression.Validate(__workflow_exchangeAddMailboxPermissionidentity, nameof(exchangeAddMailboxPermissionidentity), required: true);
-            var __workflow_exchangeAddMailboxPermissionuser = exchangeAddMailboxPermissionuser == null ? null : WorkflowExpression.Compile(exchangeAddMailboxPermissionuser);
-            WorkflowExpression.Validate(__workflow_exchangeAddMailboxPermissionuser, nameof(exchangeAddMailboxPermissionuser), required: true);
-            var __workflow_exchangeAddMailboxPermissionaccessRights = exchangeAddMailboxPermissionaccessRights == null ? null : WorkflowExpression.Compile(exchangeAddMailboxPermissionaccessRights);
-            WorkflowExpression.Validate(__workflow_exchangeAddMailboxPermissionaccessRights, nameof(exchangeAddMailboxPermissionaccessRights), required: true);
-            var __workflow_exchangeAddMailboxPermissionworkflow = exchangeAddMailboxPermissionworkflow == null ? null : WorkflowExpression.Compile(exchangeAddMailboxPermissionworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeAddMailboxPermissionworkflow, nameof(exchangeAddMailboxPermissionworkflow), required: true);
-            var __workflow_exchangeAddMailboxPermissionautoMapping = exchangeAddMailboxPermissionautoMapping == null ? null : WorkflowExpression.Compile(exchangeAddMailboxPermissionautoMapping);
-            WorkflowExpression.Validate(__workflow_exchangeAddMailboxPermissionautoMapping, nameof(exchangeAddMailboxPermissionautoMapping), required: false);
+            var __workflow_exchangeAddMailboxPermissionidentity = WorkflowExpression.Compile(exchangeAddMailboxPermissionidentity, nameof(exchangeAddMailboxPermissionidentity), required: true);
+            var __workflow_exchangeAddMailboxPermissionuser = WorkflowExpression.Compile(exchangeAddMailboxPermissionuser, nameof(exchangeAddMailboxPermissionuser), required: true);
+            var __workflow_exchangeAddMailboxPermissionaccessRights = WorkflowExpression.Compile(exchangeAddMailboxPermissionaccessRights, nameof(exchangeAddMailboxPermissionaccessRights), required: true);
+            var __workflow_exchangeAddMailboxPermissionworkflow = WorkflowExpression.Compile(exchangeAddMailboxPermissionworkflow, nameof(exchangeAddMailboxPermissionworkflow), required: true);
+            var __workflow_exchangeAddMailboxPermissionautoMapping = WorkflowExpression.Compile(exchangeAddMailboxPermissionautoMapping, nameof(exchangeAddMailboxPermissionautoMapping), required: false);
             return new DeferredBodyAction<ExchangeAddMailboxPermissionResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeAddMailboxPermission";
@@ -4304,14 +3954,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeRemoveMailboxPermissionResponse> ExchangeRemoveMailboxPermission(Expression<Func<string>> exchangeRemoveMailboxPermissionidentity, Expression<Func<string>> exchangeRemoveMailboxPermissionuser, Expression<Func<string>> exchangeRemoveMailboxPermissionaccessRights, Expression<Func<string>> exchangeRemoveMailboxPermissionworkflow)
         {
-            var __workflow_exchangeRemoveMailboxPermissionidentity = exchangeRemoveMailboxPermissionidentity == null ? null : WorkflowExpression.Compile(exchangeRemoveMailboxPermissionidentity);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveMailboxPermissionidentity, nameof(exchangeRemoveMailboxPermissionidentity), required: true);
-            var __workflow_exchangeRemoveMailboxPermissionuser = exchangeRemoveMailboxPermissionuser == null ? null : WorkflowExpression.Compile(exchangeRemoveMailboxPermissionuser);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveMailboxPermissionuser, nameof(exchangeRemoveMailboxPermissionuser), required: true);
-            var __workflow_exchangeRemoveMailboxPermissionaccessRights = exchangeRemoveMailboxPermissionaccessRights == null ? null : WorkflowExpression.Compile(exchangeRemoveMailboxPermissionaccessRights);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveMailboxPermissionaccessRights, nameof(exchangeRemoveMailboxPermissionaccessRights), required: true);
-            var __workflow_exchangeRemoveMailboxPermissionworkflow = exchangeRemoveMailboxPermissionworkflow == null ? null : WorkflowExpression.Compile(exchangeRemoveMailboxPermissionworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeRemoveMailboxPermissionworkflow, nameof(exchangeRemoveMailboxPermissionworkflow), required: true);
+            var __workflow_exchangeRemoveMailboxPermissionidentity = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionidentity, nameof(exchangeRemoveMailboxPermissionidentity), required: true);
+            var __workflow_exchangeRemoveMailboxPermissionuser = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionuser, nameof(exchangeRemoveMailboxPermissionuser), required: true);
+            var __workflow_exchangeRemoveMailboxPermissionaccessRights = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionaccessRights, nameof(exchangeRemoveMailboxPermissionaccessRights), required: true);
+            var __workflow_exchangeRemoveMailboxPermissionworkflow = WorkflowExpression.Compile(exchangeRemoveMailboxPermissionworkflow, nameof(exchangeRemoveMailboxPermissionworkflow), required: true);
             return new DeferredBodyAction<ExchangeRemoveMailboxPermissionResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeRemoveMailboxPermission";
@@ -4339,10 +3985,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeDisableMailboxResponse> ExchangeDisableMailbox(Expression<Func<string>> exchangeDisableMailboxidentity, Expression<Func<string>> exchangeDisableMailboxworkflow)
         {
-            var __workflow_exchangeDisableMailboxidentity = exchangeDisableMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeDisableMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeDisableMailboxidentity, nameof(exchangeDisableMailboxidentity), required: true);
-            var __workflow_exchangeDisableMailboxworkflow = exchangeDisableMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeDisableMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeDisableMailboxworkflow, nameof(exchangeDisableMailboxworkflow), required: true);
+            var __workflow_exchangeDisableMailboxidentity = WorkflowExpression.Compile(exchangeDisableMailboxidentity, nameof(exchangeDisableMailboxidentity), required: true);
+            var __workflow_exchangeDisableMailboxworkflow = WorkflowExpression.Compile(exchangeDisableMailboxworkflow, nameof(exchangeDisableMailboxworkflow), required: true);
             return new DeferredBodyAction<ExchangeDisableMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDisableMailbox";
@@ -4366,10 +4010,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeDisableRemoteMailboxResponse> ExchangeDisableRemoteMailbox(Expression<Func<string>> exchangeDisableRemoteMailboxidentity, Expression<Func<string>> exchangeDisableRemoteMailboxworkflow)
         {
-            var __workflow_exchangeDisableRemoteMailboxidentity = exchangeDisableRemoteMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeDisableRemoteMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeDisableRemoteMailboxidentity, nameof(exchangeDisableRemoteMailboxidentity), required: true);
-            var __workflow_exchangeDisableRemoteMailboxworkflow = exchangeDisableRemoteMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeDisableRemoteMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeDisableRemoteMailboxworkflow, nameof(exchangeDisableRemoteMailboxworkflow), required: true);
+            var __workflow_exchangeDisableRemoteMailboxidentity = WorkflowExpression.Compile(exchangeDisableRemoteMailboxidentity, nameof(exchangeDisableRemoteMailboxidentity), required: true);
+            var __workflow_exchangeDisableRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeDisableRemoteMailboxworkflow, nameof(exchangeDisableRemoteMailboxworkflow), required: true);
             return new DeferredBodyAction<ExchangeDisableRemoteMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDisableRemoteMailbox";
@@ -4393,24 +4035,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeEnableMailboxResponse> ExchangeEnableMailbox(Expression<Func<string>> exchangeEnableMailboxidentity, Expression<Func<string>> exchangeEnableMailboxworkflow, Expression<Func<string>> exchangeEnableMailboxalias = null, Expression<Func<string>> exchangeEnableMailboxdisplayName = null, Expression<Func<string>> exchangeEnableMailboxlinkedDomainController = null, Expression<Func<string>> exchangeEnableMailboxlinkedMasterAccount = null, Expression<Func<string>> exchangeEnableMailboxdatabase = null, Expression<Func<string>> exchangeEnableMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeEnableMailboxemailAddressPolicyEnabled = null)
         {
-            var __workflow_exchangeEnableMailboxidentity = exchangeEnableMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxidentity, nameof(exchangeEnableMailboxidentity), required: true);
-            var __workflow_exchangeEnableMailboxworkflow = exchangeEnableMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxworkflow, nameof(exchangeEnableMailboxworkflow), required: true);
-            var __workflow_exchangeEnableMailboxalias = exchangeEnableMailboxalias == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxalias);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxalias, nameof(exchangeEnableMailboxalias), required: false);
-            var __workflow_exchangeEnableMailboxdisplayName = exchangeEnableMailboxdisplayName == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxdisplayName, nameof(exchangeEnableMailboxdisplayName), required: false);
-            var __workflow_exchangeEnableMailboxlinkedDomainController = exchangeEnableMailboxlinkedDomainController == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxlinkedDomainController);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxlinkedDomainController, nameof(exchangeEnableMailboxlinkedDomainController), required: false);
-            var __workflow_exchangeEnableMailboxlinkedMasterAccount = exchangeEnableMailboxlinkedMasterAccount == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxlinkedMasterAccount);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxlinkedMasterAccount, nameof(exchangeEnableMailboxlinkedMasterAccount), required: false);
-            var __workflow_exchangeEnableMailboxdatabase = exchangeEnableMailboxdatabase == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxdatabase);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxdatabase, nameof(exchangeEnableMailboxdatabase), required: false);
-            var __workflow_exchangeEnableMailboxprimarySmtpAddress = exchangeEnableMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxprimarySmtpAddress, nameof(exchangeEnableMailboxprimarySmtpAddress), required: false);
-            var __workflow_exchangeEnableMailboxemailAddressPolicyEnabled = exchangeEnableMailboxemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeEnableMailboxemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeEnableMailboxemailAddressPolicyEnabled, nameof(exchangeEnableMailboxemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeEnableMailboxidentity = WorkflowExpression.Compile(exchangeEnableMailboxidentity, nameof(exchangeEnableMailboxidentity), required: true);
+            var __workflow_exchangeEnableMailboxworkflow = WorkflowExpression.Compile(exchangeEnableMailboxworkflow, nameof(exchangeEnableMailboxworkflow), required: true);
+            var __workflow_exchangeEnableMailboxalias = WorkflowExpression.Compile(exchangeEnableMailboxalias, nameof(exchangeEnableMailboxalias), required: false);
+            var __workflow_exchangeEnableMailboxdisplayName = WorkflowExpression.Compile(exchangeEnableMailboxdisplayName, nameof(exchangeEnableMailboxdisplayName), required: false);
+            var __workflow_exchangeEnableMailboxlinkedDomainController = WorkflowExpression.Compile(exchangeEnableMailboxlinkedDomainController, nameof(exchangeEnableMailboxlinkedDomainController), required: false);
+            var __workflow_exchangeEnableMailboxlinkedMasterAccount = WorkflowExpression.Compile(exchangeEnableMailboxlinkedMasterAccount, nameof(exchangeEnableMailboxlinkedMasterAccount), required: false);
+            var __workflow_exchangeEnableMailboxdatabase = WorkflowExpression.Compile(exchangeEnableMailboxdatabase, nameof(exchangeEnableMailboxdatabase), required: false);
+            var __workflow_exchangeEnableMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeEnableMailboxprimarySmtpAddress, nameof(exchangeEnableMailboxprimarySmtpAddress), required: false);
+            var __workflow_exchangeEnableMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeEnableMailboxemailAddressPolicyEnabled, nameof(exchangeEnableMailboxemailAddressPolicyEnabled), required: false);
             return new DeferredBodyAction<ExchangeEnableMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeEnableMailbox";
@@ -4476,22 +4109,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeEnableRemoteMailboxResponse> ExchangeEnableRemoteMailbox(Expression<Func<string>> exchangeEnableRemoteMailboxidentity, Expression<Func<string>> exchangeEnableRemoteMailboxworkflow, Expression<Func<string>> exchangeEnableRemoteMailboxalias = null, Expression<Func<string>> exchangeEnableRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeEnableRemoteMailboxremoteRoutingAddress = null, Expression<Func<string>> exchangeEnableRemoteMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeEnableRemoteMailboxarchive = null, Expression<Func<bool>> exchangeEnableRemoteMailboxemailAddressPolicyEnabled = null)
         {
-            var __workflow_exchangeEnableRemoteMailboxidentity = exchangeEnableRemoteMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxidentity, nameof(exchangeEnableRemoteMailboxidentity), required: true);
-            var __workflow_exchangeEnableRemoteMailboxworkflow = exchangeEnableRemoteMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxworkflow, nameof(exchangeEnableRemoteMailboxworkflow), required: true);
-            var __workflow_exchangeEnableRemoteMailboxalias = exchangeEnableRemoteMailboxalias == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxalias);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxalias, nameof(exchangeEnableRemoteMailboxalias), required: false);
-            var __workflow_exchangeEnableRemoteMailboxdisplayName = exchangeEnableRemoteMailboxdisplayName == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxdisplayName, nameof(exchangeEnableRemoteMailboxdisplayName), required: false);
-            var __workflow_exchangeEnableRemoteMailboxremoteRoutingAddress = exchangeEnableRemoteMailboxremoteRoutingAddress == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxremoteRoutingAddress);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxremoteRoutingAddress, nameof(exchangeEnableRemoteMailboxremoteRoutingAddress), required: false);
-            var __workflow_exchangeEnableRemoteMailboxprimarySmtpAddress = exchangeEnableRemoteMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxprimarySmtpAddress, nameof(exchangeEnableRemoteMailboxprimarySmtpAddress), required: false);
-            var __workflow_exchangeEnableRemoteMailboxarchive = exchangeEnableRemoteMailboxarchive == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxarchive);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxarchive, nameof(exchangeEnableRemoteMailboxarchive), required: false);
-            var __workflow_exchangeEnableRemoteMailboxemailAddressPolicyEnabled = exchangeEnableRemoteMailboxemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeEnableRemoteMailboxemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeEnableRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeEnableRemoteMailboxemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeEnableRemoteMailboxidentity = WorkflowExpression.Compile(exchangeEnableRemoteMailboxidentity, nameof(exchangeEnableRemoteMailboxidentity), required: true);
+            var __workflow_exchangeEnableRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeEnableRemoteMailboxworkflow, nameof(exchangeEnableRemoteMailboxworkflow), required: true);
+            var __workflow_exchangeEnableRemoteMailboxalias = WorkflowExpression.Compile(exchangeEnableRemoteMailboxalias, nameof(exchangeEnableRemoteMailboxalias), required: false);
+            var __workflow_exchangeEnableRemoteMailboxdisplayName = WorkflowExpression.Compile(exchangeEnableRemoteMailboxdisplayName, nameof(exchangeEnableRemoteMailboxdisplayName), required: false);
+            var __workflow_exchangeEnableRemoteMailboxremoteRoutingAddress = WorkflowExpression.Compile(exchangeEnableRemoteMailboxremoteRoutingAddress, nameof(exchangeEnableRemoteMailboxremoteRoutingAddress), required: false);
+            var __workflow_exchangeEnableRemoteMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeEnableRemoteMailboxprimarySmtpAddress, nameof(exchangeEnableRemoteMailboxprimarySmtpAddress), required: false);
+            var __workflow_exchangeEnableRemoteMailboxarchive = WorkflowExpression.Compile(exchangeEnableRemoteMailboxarchive, nameof(exchangeEnableRemoteMailboxarchive), required: false);
+            var __workflow_exchangeEnableRemoteMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeEnableRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeEnableRemoteMailboxemailAddressPolicyEnabled), required: false);
             return new DeferredBodyAction<ExchangeEnableRemoteMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeEnableRemoteMailbox";
@@ -4561,18 +4186,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeGetRemoteMailboxResponse> ExchangeGetRemoteMailbox(Expression<Func<string>> exchangeGetRemoteMailboxworkflow, Expression<Func<string>> exchangeGetRemoteMailboxidentity = null, Expression<Func<string>> exchangeGetRemoteMailboxfilterPropertyName = null, Expression<Func<exchangeGetRemoteMailboxfilterPropertyComparisonInput>> exchangeGetRemoteMailboxfilterPropertyComparison = null, Expression<Func<string>> exchangeGetRemoteMailboxfilterPropertyValue = null, Expression<Func<bool>> exchangeGetRemoteMailboxnoResultIsAnException = null)
         {
-            var __workflow_exchangeGetRemoteMailboxworkflow = exchangeGetRemoteMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxworkflow, nameof(exchangeGetRemoteMailboxworkflow), required: true);
-            var __workflow_exchangeGetRemoteMailboxidentity = exchangeGetRemoteMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxidentity, nameof(exchangeGetRemoteMailboxidentity), required: false);
-            var __workflow_exchangeGetRemoteMailboxfilterPropertyName = exchangeGetRemoteMailboxfilterPropertyName == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxfilterPropertyName, nameof(exchangeGetRemoteMailboxfilterPropertyName), required: false);
-            var __workflow_exchangeGetRemoteMailboxfilterPropertyComparison = exchangeGetRemoteMailboxfilterPropertyComparison == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxfilterPropertyComparison, nameof(exchangeGetRemoteMailboxfilterPropertyComparison), required: false);
-            var __workflow_exchangeGetRemoteMailboxfilterPropertyValue = exchangeGetRemoteMailboxfilterPropertyValue == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxfilterPropertyValue, nameof(exchangeGetRemoteMailboxfilterPropertyValue), required: false);
-            var __workflow_exchangeGetRemoteMailboxnoResultIsAnException = exchangeGetRemoteMailboxnoResultIsAnException == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxnoResultIsAnException);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxnoResultIsAnException, nameof(exchangeGetRemoteMailboxnoResultIsAnException), required: false);
+            var __workflow_exchangeGetRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeGetRemoteMailboxworkflow, nameof(exchangeGetRemoteMailboxworkflow), required: true);
+            var __workflow_exchangeGetRemoteMailboxidentity = WorkflowExpression.Compile(exchangeGetRemoteMailboxidentity, nameof(exchangeGetRemoteMailboxidentity), required: false);
+            var __workflow_exchangeGetRemoteMailboxfilterPropertyName = WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyName, nameof(exchangeGetRemoteMailboxfilterPropertyName), required: false);
+            var __workflow_exchangeGetRemoteMailboxfilterPropertyComparison = WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyComparison, nameof(exchangeGetRemoteMailboxfilterPropertyComparison), required: false);
+            var __workflow_exchangeGetRemoteMailboxfilterPropertyValue = WorkflowExpression.Compile(exchangeGetRemoteMailboxfilterPropertyValue, nameof(exchangeGetRemoteMailboxfilterPropertyValue), required: false);
+            var __workflow_exchangeGetRemoteMailboxnoResultIsAnException = WorkflowExpression.Compile(exchangeGetRemoteMailboxnoResultIsAnException, nameof(exchangeGetRemoteMailboxnoResultIsAnException), required: false);
             return new DeferredBodyAction<ExchangeGetRemoteMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetRemoteMailbox";
@@ -4644,16 +4263,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeDoesRemoteMailboxExistResponse> ExchangeDoesRemoteMailboxExist(Expression<Func<string>> exchangeDoesRemoteMailboxExistworkflow, Expression<Func<string>> exchangeDoesRemoteMailboxExistidentity = null, Expression<Func<string>> exchangeDoesRemoteMailboxExistfilterPropertyName = null, Expression<Func<exchangeDoesRemoteMailboxExistfilterPropertyComparisonInput>> exchangeDoesRemoteMailboxExistfilterPropertyComparison = null, Expression<Func<string>> exchangeDoesRemoteMailboxExistfilterPropertyValue = null)
         {
-            var __workflow_exchangeDoesRemoteMailboxExistworkflow = exchangeDoesRemoteMailboxExistworkflow == null ? null : WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeDoesRemoteMailboxExistworkflow, nameof(exchangeDoesRemoteMailboxExistworkflow), required: true);
-            var __workflow_exchangeDoesRemoteMailboxExistidentity = exchangeDoesRemoteMailboxExistidentity == null ? null : WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistidentity);
-            WorkflowExpression.Validate(__workflow_exchangeDoesRemoteMailboxExistidentity, nameof(exchangeDoesRemoteMailboxExistidentity), required: false);
-            var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyName = exchangeDoesRemoteMailboxExistfilterPropertyName == null ? null : WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_exchangeDoesRemoteMailboxExistfilterPropertyName, nameof(exchangeDoesRemoteMailboxExistfilterPropertyName), required: false);
-            var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyComparison = exchangeDoesRemoteMailboxExistfilterPropertyComparison == null ? null : WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_exchangeDoesRemoteMailboxExistfilterPropertyComparison, nameof(exchangeDoesRemoteMailboxExistfilterPropertyComparison), required: false);
-            var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyValue = exchangeDoesRemoteMailboxExistfilterPropertyValue == null ? null : WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_exchangeDoesRemoteMailboxExistfilterPropertyValue, nameof(exchangeDoesRemoteMailboxExistfilterPropertyValue), required: false);
+            var __workflow_exchangeDoesRemoteMailboxExistworkflow = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistworkflow, nameof(exchangeDoesRemoteMailboxExistworkflow), required: true);
+            var __workflow_exchangeDoesRemoteMailboxExistidentity = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistidentity, nameof(exchangeDoesRemoteMailboxExistidentity), required: false);
+            var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyName = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyName, nameof(exchangeDoesRemoteMailboxExistfilterPropertyName), required: false);
+            var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyComparison = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyComparison, nameof(exchangeDoesRemoteMailboxExistfilterPropertyComparison), required: false);
+            var __workflow_exchangeDoesRemoteMailboxExistfilterPropertyValue = WorkflowExpression.Compile(exchangeDoesRemoteMailboxExistfilterPropertyValue, nameof(exchangeDoesRemoteMailboxExistfilterPropertyValue), required: false);
             return new DeferredBodyAction<ExchangeDoesRemoteMailboxExistResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeDoesRemoteMailboxExist";
@@ -4709,40 +4323,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeNewMailboxResponse> ExchangeNewMailbox(Expression<Func<string>> exchangeNewMailboxname, Expression<Func<string>> exchangeNewMailboxuserPrincipalName, Expression<Func<string>> exchangeNewMailboxworkflow, Expression<Func<string>> exchangeNewMailboxfirstName = null, Expression<Func<string>> exchangeNewMailboxlastName = null, Expression<Func<string>> exchangeNewMailboxorganizationalUnit = null, Expression<Func<string>> exchangeNewMailboxdisplayName = null, Expression<Func<string>> exchangeNewMailboxalias = null, Expression<Func<string>> exchangeNewMailboxprimarySmtpAddress = null, Expression<Func<string>> exchangeNewMailboxsamAccountName = null, Expression<Func<string>> exchangeNewMailboxpassword = null, Expression<Func<bool>> exchangeNewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> exchangeNewMailboxresetPasswordOnNextLogon = null, Expression<Func<string>> exchangeNewMailboxdatabase = null, Expression<Func<bool>> exchangeNewMailboxsharedMailbox = null, Expression<Func<bool>> exchangeNewMailboxemailAddressPolicyEnabled = null, Expression<Func<bool>> exchangeNewMailboxarchive = null)
         {
-            var __workflow_exchangeNewMailboxname = exchangeNewMailboxname == null ? null : WorkflowExpression.Compile(exchangeNewMailboxname);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxname, nameof(exchangeNewMailboxname), required: true);
-            var __workflow_exchangeNewMailboxuserPrincipalName = exchangeNewMailboxuserPrincipalName == null ? null : WorkflowExpression.Compile(exchangeNewMailboxuserPrincipalName);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxuserPrincipalName, nameof(exchangeNewMailboxuserPrincipalName), required: true);
-            var __workflow_exchangeNewMailboxworkflow = exchangeNewMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeNewMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxworkflow, nameof(exchangeNewMailboxworkflow), required: true);
-            var __workflow_exchangeNewMailboxfirstName = exchangeNewMailboxfirstName == null ? null : WorkflowExpression.Compile(exchangeNewMailboxfirstName);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxfirstName, nameof(exchangeNewMailboxfirstName), required: false);
-            var __workflow_exchangeNewMailboxlastName = exchangeNewMailboxlastName == null ? null : WorkflowExpression.Compile(exchangeNewMailboxlastName);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxlastName, nameof(exchangeNewMailboxlastName), required: false);
-            var __workflow_exchangeNewMailboxorganizationalUnit = exchangeNewMailboxorganizationalUnit == null ? null : WorkflowExpression.Compile(exchangeNewMailboxorganizationalUnit);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxorganizationalUnit, nameof(exchangeNewMailboxorganizationalUnit), required: false);
-            var __workflow_exchangeNewMailboxdisplayName = exchangeNewMailboxdisplayName == null ? null : WorkflowExpression.Compile(exchangeNewMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxdisplayName, nameof(exchangeNewMailboxdisplayName), required: false);
-            var __workflow_exchangeNewMailboxalias = exchangeNewMailboxalias == null ? null : WorkflowExpression.Compile(exchangeNewMailboxalias);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxalias, nameof(exchangeNewMailboxalias), required: false);
-            var __workflow_exchangeNewMailboxprimarySmtpAddress = exchangeNewMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeNewMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxprimarySmtpAddress, nameof(exchangeNewMailboxprimarySmtpAddress), required: false);
-            var __workflow_exchangeNewMailboxsamAccountName = exchangeNewMailboxsamAccountName == null ? null : WorkflowExpression.Compile(exchangeNewMailboxsamAccountName);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxsamAccountName, nameof(exchangeNewMailboxsamAccountName), required: false);
-            var __workflow_exchangeNewMailboxpassword = exchangeNewMailboxpassword == null ? null : WorkflowExpression.Compile(exchangeNewMailboxpassword);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxpassword, nameof(exchangeNewMailboxpassword), required: false);
-            var __workflow_exchangeNewMailboxaccountPasswordIsStoredPassword = exchangeNewMailboxaccountPasswordIsStoredPassword == null ? null : WorkflowExpression.Compile(exchangeNewMailboxaccountPasswordIsStoredPassword);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxaccountPasswordIsStoredPassword, nameof(exchangeNewMailboxaccountPasswordIsStoredPassword), required: false);
-            var __workflow_exchangeNewMailboxresetPasswordOnNextLogon = exchangeNewMailboxresetPasswordOnNextLogon == null ? null : WorkflowExpression.Compile(exchangeNewMailboxresetPasswordOnNextLogon);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxresetPasswordOnNextLogon, nameof(exchangeNewMailboxresetPasswordOnNextLogon), required: false);
-            var __workflow_exchangeNewMailboxdatabase = exchangeNewMailboxdatabase == null ? null : WorkflowExpression.Compile(exchangeNewMailboxdatabase);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxdatabase, nameof(exchangeNewMailboxdatabase), required: false);
-            var __workflow_exchangeNewMailboxsharedMailbox = exchangeNewMailboxsharedMailbox == null ? null : WorkflowExpression.Compile(exchangeNewMailboxsharedMailbox);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxsharedMailbox, nameof(exchangeNewMailboxsharedMailbox), required: false);
-            var __workflow_exchangeNewMailboxemailAddressPolicyEnabled = exchangeNewMailboxemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeNewMailboxemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxemailAddressPolicyEnabled, nameof(exchangeNewMailboxemailAddressPolicyEnabled), required: false);
-            var __workflow_exchangeNewMailboxarchive = exchangeNewMailboxarchive == null ? null : WorkflowExpression.Compile(exchangeNewMailboxarchive);
-            WorkflowExpression.Validate(__workflow_exchangeNewMailboxarchive, nameof(exchangeNewMailboxarchive), required: false);
+            var __workflow_exchangeNewMailboxname = WorkflowExpression.Compile(exchangeNewMailboxname, nameof(exchangeNewMailboxname), required: true);
+            var __workflow_exchangeNewMailboxuserPrincipalName = WorkflowExpression.Compile(exchangeNewMailboxuserPrincipalName, nameof(exchangeNewMailboxuserPrincipalName), required: true);
+            var __workflow_exchangeNewMailboxworkflow = WorkflowExpression.Compile(exchangeNewMailboxworkflow, nameof(exchangeNewMailboxworkflow), required: true);
+            var __workflow_exchangeNewMailboxfirstName = WorkflowExpression.Compile(exchangeNewMailboxfirstName, nameof(exchangeNewMailboxfirstName), required: false);
+            var __workflow_exchangeNewMailboxlastName = WorkflowExpression.Compile(exchangeNewMailboxlastName, nameof(exchangeNewMailboxlastName), required: false);
+            var __workflow_exchangeNewMailboxorganizationalUnit = WorkflowExpression.Compile(exchangeNewMailboxorganizationalUnit, nameof(exchangeNewMailboxorganizationalUnit), required: false);
+            var __workflow_exchangeNewMailboxdisplayName = WorkflowExpression.Compile(exchangeNewMailboxdisplayName, nameof(exchangeNewMailboxdisplayName), required: false);
+            var __workflow_exchangeNewMailboxalias = WorkflowExpression.Compile(exchangeNewMailboxalias, nameof(exchangeNewMailboxalias), required: false);
+            var __workflow_exchangeNewMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeNewMailboxprimarySmtpAddress, nameof(exchangeNewMailboxprimarySmtpAddress), required: false);
+            var __workflow_exchangeNewMailboxsamAccountName = WorkflowExpression.Compile(exchangeNewMailboxsamAccountName, nameof(exchangeNewMailboxsamAccountName), required: false);
+            var __workflow_exchangeNewMailboxpassword = WorkflowExpression.Compile(exchangeNewMailboxpassword, nameof(exchangeNewMailboxpassword), required: false);
+            var __workflow_exchangeNewMailboxaccountPasswordIsStoredPassword = WorkflowExpression.Compile(exchangeNewMailboxaccountPasswordIsStoredPassword, nameof(exchangeNewMailboxaccountPasswordIsStoredPassword), required: false);
+            var __workflow_exchangeNewMailboxresetPasswordOnNextLogon = WorkflowExpression.Compile(exchangeNewMailboxresetPasswordOnNextLogon, nameof(exchangeNewMailboxresetPasswordOnNextLogon), required: false);
+            var __workflow_exchangeNewMailboxdatabase = WorkflowExpression.Compile(exchangeNewMailboxdatabase, nameof(exchangeNewMailboxdatabase), required: false);
+            var __workflow_exchangeNewMailboxsharedMailbox = WorkflowExpression.Compile(exchangeNewMailboxsharedMailbox, nameof(exchangeNewMailboxsharedMailbox), required: false);
+            var __workflow_exchangeNewMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeNewMailboxemailAddressPolicyEnabled, nameof(exchangeNewMailboxemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeNewMailboxarchive = WorkflowExpression.Compile(exchangeNewMailboxarchive, nameof(exchangeNewMailboxarchive), required: false);
             return new DeferredBodyAction<ExchangeNewMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeNewMailbox";
@@ -4892,40 +4489,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeNewRemoteMailboxResponse> ExchangeNewRemoteMailbox(Expression<Func<string>> exchangeNewRemoteMailboxname, Expression<Func<string>> exchangeNewRemoteMailboxuserPrincipalName, Expression<Func<string>> exchangeNewRemoteMailboxworkflow, Expression<Func<string>> exchangeNewRemoteMailboxfirstName = null, Expression<Func<string>> exchangeNewRemoteMailboxlastName = null, Expression<Func<string>> exchangeNewRemoteMailboxonPremisesOrganizationalUnit = null, Expression<Func<string>> exchangeNewRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeNewRemoteMailboxremoteRoutingAddress = null, Expression<Func<string>> exchangeNewRemoteMailboxalias = null, Expression<Func<string>> exchangeNewRemoteMailboxprimarySmtpAddress = null, Expression<Func<string>> exchangeNewRemoteMailboxsamAccountName = null, Expression<Func<string>> exchangeNewRemoteMailboxpassword = null, Expression<Func<bool>> exchangeNewRemoteMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> exchangeNewRemoteMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> exchangeNewRemoteMailboxsharedMailbox = null, Expression<Func<bool>> exchangeNewRemoteMailboxemailAddressPolicyEnabled = null, Expression<Func<bool>> exchangeNewRemoteMailboxarchive = null)
         {
-            var __workflow_exchangeNewRemoteMailboxname = exchangeNewRemoteMailboxname == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxname);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxname, nameof(exchangeNewRemoteMailboxname), required: true);
-            var __workflow_exchangeNewRemoteMailboxuserPrincipalName = exchangeNewRemoteMailboxuserPrincipalName == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxuserPrincipalName);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxuserPrincipalName, nameof(exchangeNewRemoteMailboxuserPrincipalName), required: true);
-            var __workflow_exchangeNewRemoteMailboxworkflow = exchangeNewRemoteMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxworkflow, nameof(exchangeNewRemoteMailboxworkflow), required: true);
-            var __workflow_exchangeNewRemoteMailboxfirstName = exchangeNewRemoteMailboxfirstName == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxfirstName);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxfirstName, nameof(exchangeNewRemoteMailboxfirstName), required: false);
-            var __workflow_exchangeNewRemoteMailboxlastName = exchangeNewRemoteMailboxlastName == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxlastName);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxlastName, nameof(exchangeNewRemoteMailboxlastName), required: false);
-            var __workflow_exchangeNewRemoteMailboxonPremisesOrganizationalUnit = exchangeNewRemoteMailboxonPremisesOrganizationalUnit == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxonPremisesOrganizationalUnit);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxonPremisesOrganizationalUnit, nameof(exchangeNewRemoteMailboxonPremisesOrganizationalUnit), required: false);
-            var __workflow_exchangeNewRemoteMailboxdisplayName = exchangeNewRemoteMailboxdisplayName == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxdisplayName, nameof(exchangeNewRemoteMailboxdisplayName), required: false);
-            var __workflow_exchangeNewRemoteMailboxremoteRoutingAddress = exchangeNewRemoteMailboxremoteRoutingAddress == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxremoteRoutingAddress);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxremoteRoutingAddress, nameof(exchangeNewRemoteMailboxremoteRoutingAddress), required: false);
-            var __workflow_exchangeNewRemoteMailboxalias = exchangeNewRemoteMailboxalias == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxalias);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxalias, nameof(exchangeNewRemoteMailboxalias), required: false);
-            var __workflow_exchangeNewRemoteMailboxprimarySmtpAddress = exchangeNewRemoteMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxprimarySmtpAddress, nameof(exchangeNewRemoteMailboxprimarySmtpAddress), required: false);
-            var __workflow_exchangeNewRemoteMailboxsamAccountName = exchangeNewRemoteMailboxsamAccountName == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxsamAccountName);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxsamAccountName, nameof(exchangeNewRemoteMailboxsamAccountName), required: false);
-            var __workflow_exchangeNewRemoteMailboxpassword = exchangeNewRemoteMailboxpassword == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxpassword);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxpassword, nameof(exchangeNewRemoteMailboxpassword), required: false);
-            var __workflow_exchangeNewRemoteMailboxaccountPasswordIsStoredPassword = exchangeNewRemoteMailboxaccountPasswordIsStoredPassword == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxaccountPasswordIsStoredPassword);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxaccountPasswordIsStoredPassword, nameof(exchangeNewRemoteMailboxaccountPasswordIsStoredPassword), required: false);
-            var __workflow_exchangeNewRemoteMailboxresetPasswordOnNextLogon = exchangeNewRemoteMailboxresetPasswordOnNextLogon == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxresetPasswordOnNextLogon);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxresetPasswordOnNextLogon, nameof(exchangeNewRemoteMailboxresetPasswordOnNextLogon), required: false);
-            var __workflow_exchangeNewRemoteMailboxsharedMailbox = exchangeNewRemoteMailboxsharedMailbox == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxsharedMailbox);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxsharedMailbox, nameof(exchangeNewRemoteMailboxsharedMailbox), required: false);
-            var __workflow_exchangeNewRemoteMailboxemailAddressPolicyEnabled = exchangeNewRemoteMailboxemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeNewRemoteMailboxemailAddressPolicyEnabled), required: false);
-            var __workflow_exchangeNewRemoteMailboxarchive = exchangeNewRemoteMailboxarchive == null ? null : WorkflowExpression.Compile(exchangeNewRemoteMailboxarchive);
-            WorkflowExpression.Validate(__workflow_exchangeNewRemoteMailboxarchive, nameof(exchangeNewRemoteMailboxarchive), required: false);
+            var __workflow_exchangeNewRemoteMailboxname = WorkflowExpression.Compile(exchangeNewRemoteMailboxname, nameof(exchangeNewRemoteMailboxname), required: true);
+            var __workflow_exchangeNewRemoteMailboxuserPrincipalName = WorkflowExpression.Compile(exchangeNewRemoteMailboxuserPrincipalName, nameof(exchangeNewRemoteMailboxuserPrincipalName), required: true);
+            var __workflow_exchangeNewRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeNewRemoteMailboxworkflow, nameof(exchangeNewRemoteMailboxworkflow), required: true);
+            var __workflow_exchangeNewRemoteMailboxfirstName = WorkflowExpression.Compile(exchangeNewRemoteMailboxfirstName, nameof(exchangeNewRemoteMailboxfirstName), required: false);
+            var __workflow_exchangeNewRemoteMailboxlastName = WorkflowExpression.Compile(exchangeNewRemoteMailboxlastName, nameof(exchangeNewRemoteMailboxlastName), required: false);
+            var __workflow_exchangeNewRemoteMailboxonPremisesOrganizationalUnit = WorkflowExpression.Compile(exchangeNewRemoteMailboxonPremisesOrganizationalUnit, nameof(exchangeNewRemoteMailboxonPremisesOrganizationalUnit), required: false);
+            var __workflow_exchangeNewRemoteMailboxdisplayName = WorkflowExpression.Compile(exchangeNewRemoteMailboxdisplayName, nameof(exchangeNewRemoteMailboxdisplayName), required: false);
+            var __workflow_exchangeNewRemoteMailboxremoteRoutingAddress = WorkflowExpression.Compile(exchangeNewRemoteMailboxremoteRoutingAddress, nameof(exchangeNewRemoteMailboxremoteRoutingAddress), required: false);
+            var __workflow_exchangeNewRemoteMailboxalias = WorkflowExpression.Compile(exchangeNewRemoteMailboxalias, nameof(exchangeNewRemoteMailboxalias), required: false);
+            var __workflow_exchangeNewRemoteMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeNewRemoteMailboxprimarySmtpAddress, nameof(exchangeNewRemoteMailboxprimarySmtpAddress), required: false);
+            var __workflow_exchangeNewRemoteMailboxsamAccountName = WorkflowExpression.Compile(exchangeNewRemoteMailboxsamAccountName, nameof(exchangeNewRemoteMailboxsamAccountName), required: false);
+            var __workflow_exchangeNewRemoteMailboxpassword = WorkflowExpression.Compile(exchangeNewRemoteMailboxpassword, nameof(exchangeNewRemoteMailboxpassword), required: false);
+            var __workflow_exchangeNewRemoteMailboxaccountPasswordIsStoredPassword = WorkflowExpression.Compile(exchangeNewRemoteMailboxaccountPasswordIsStoredPassword, nameof(exchangeNewRemoteMailboxaccountPasswordIsStoredPassword), required: false);
+            var __workflow_exchangeNewRemoteMailboxresetPasswordOnNextLogon = WorkflowExpression.Compile(exchangeNewRemoteMailboxresetPasswordOnNextLogon, nameof(exchangeNewRemoteMailboxresetPasswordOnNextLogon), required: false);
+            var __workflow_exchangeNewRemoteMailboxsharedMailbox = WorkflowExpression.Compile(exchangeNewRemoteMailboxsharedMailbox, nameof(exchangeNewRemoteMailboxsharedMailbox), required: false);
+            var __workflow_exchangeNewRemoteMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeNewRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeNewRemoteMailboxemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeNewRemoteMailboxarchive = WorkflowExpression.Compile(exchangeNewRemoteMailboxarchive, nameof(exchangeNewRemoteMailboxarchive), required: false);
             return new DeferredBodyAction<ExchangeNewRemoteMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeNewRemoteMailbox";
@@ -5075,10 +4655,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeSetADServerToViewEntireForestResponse> ExchangeSetADServerToViewEntireForest(Expression<Func<bool>> exchangeSetADServerToViewEntireForestviewEntireForest, Expression<Func<string>> exchangeSetADServerToViewEntireForestworkflow)
         {
-            var __workflow_exchangeSetADServerToViewEntireForestviewEntireForest = exchangeSetADServerToViewEntireForestviewEntireForest == null ? null : WorkflowExpression.Compile(exchangeSetADServerToViewEntireForestviewEntireForest);
-            WorkflowExpression.Validate(__workflow_exchangeSetADServerToViewEntireForestviewEntireForest, nameof(exchangeSetADServerToViewEntireForestviewEntireForest), required: true);
-            var __workflow_exchangeSetADServerToViewEntireForestworkflow = exchangeSetADServerToViewEntireForestworkflow == null ? null : WorkflowExpression.Compile(exchangeSetADServerToViewEntireForestworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeSetADServerToViewEntireForestworkflow, nameof(exchangeSetADServerToViewEntireForestworkflow), required: true);
+            var __workflow_exchangeSetADServerToViewEntireForestviewEntireForest = WorkflowExpression.Compile(exchangeSetADServerToViewEntireForestviewEntireForest, nameof(exchangeSetADServerToViewEntireForestviewEntireForest), required: true);
+            var __workflow_exchangeSetADServerToViewEntireForestworkflow = WorkflowExpression.Compile(exchangeSetADServerToViewEntireForestworkflow, nameof(exchangeSetADServerToViewEntireForestworkflow), required: true);
             return new DeferredBodyAction<ExchangeSetADServerToViewEntireForestResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetADServerToViewEntireForest";
@@ -5102,52 +4680,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeSetMailboxResponse> ExchangeSetMailbox(Expression<Func<string>> exchangeSetMailboxidentity, Expression<Func<string>> exchangeSetMailboxworkflow, Expression<Func<bool>> exchangeSetMailboxaccountDisabled = null, Expression<Func<string>> exchangeSetMailboxalias = null, Expression<Func<string>> exchangeSetMailboxdisplayName = null, Expression<Func<string>> exchangeSetMailboxprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetMailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute1 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute2 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute3 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute4 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute5 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute6 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute7 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute8 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute9 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute10 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute11 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute12 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute13 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute14 = null, Expression<Func<string>> exchangeSetMailboxcustomAttribute15 = null, Expression<Func<bool>> exchangeSetMailboxemailAddressPolicyEnabled = null)
         {
-            var __workflow_exchangeSetMailboxidentity = exchangeSetMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeSetMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxidentity, nameof(exchangeSetMailboxidentity), required: true);
-            var __workflow_exchangeSetMailboxworkflow = exchangeSetMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeSetMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxworkflow, nameof(exchangeSetMailboxworkflow), required: true);
-            var __workflow_exchangeSetMailboxaccountDisabled = exchangeSetMailboxaccountDisabled == null ? null : WorkflowExpression.Compile(exchangeSetMailboxaccountDisabled);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxaccountDisabled, nameof(exchangeSetMailboxaccountDisabled), required: false);
-            var __workflow_exchangeSetMailboxalias = exchangeSetMailboxalias == null ? null : WorkflowExpression.Compile(exchangeSetMailboxalias);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxalias, nameof(exchangeSetMailboxalias), required: false);
-            var __workflow_exchangeSetMailboxdisplayName = exchangeSetMailboxdisplayName == null ? null : WorkflowExpression.Compile(exchangeSetMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxdisplayName, nameof(exchangeSetMailboxdisplayName), required: false);
-            var __workflow_exchangeSetMailboxprimarySmtpAddress = exchangeSetMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeSetMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxprimarySmtpAddress, nameof(exchangeSetMailboxprimarySmtpAddress), required: false);
-            var __workflow_exchangeSetMailboxhiddenFromAddressListsEnabled = exchangeSetMailboxhiddenFromAddressListsEnabled == null ? null : WorkflowExpression.Compile(exchangeSetMailboxhiddenFromAddressListsEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxhiddenFromAddressListsEnabled, nameof(exchangeSetMailboxhiddenFromAddressListsEnabled), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute1 = exchangeSetMailboxcustomAttribute1 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute1);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute1, nameof(exchangeSetMailboxcustomAttribute1), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute2 = exchangeSetMailboxcustomAttribute2 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute2);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute2, nameof(exchangeSetMailboxcustomAttribute2), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute3 = exchangeSetMailboxcustomAttribute3 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute3);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute3, nameof(exchangeSetMailboxcustomAttribute3), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute4 = exchangeSetMailboxcustomAttribute4 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute4);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute4, nameof(exchangeSetMailboxcustomAttribute4), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute5 = exchangeSetMailboxcustomAttribute5 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute5);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute5, nameof(exchangeSetMailboxcustomAttribute5), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute6 = exchangeSetMailboxcustomAttribute6 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute6);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute6, nameof(exchangeSetMailboxcustomAttribute6), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute7 = exchangeSetMailboxcustomAttribute7 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute7);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute7, nameof(exchangeSetMailboxcustomAttribute7), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute8 = exchangeSetMailboxcustomAttribute8 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute8);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute8, nameof(exchangeSetMailboxcustomAttribute8), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute9 = exchangeSetMailboxcustomAttribute9 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute9);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute9, nameof(exchangeSetMailboxcustomAttribute9), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute10 = exchangeSetMailboxcustomAttribute10 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute10);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute10, nameof(exchangeSetMailboxcustomAttribute10), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute11 = exchangeSetMailboxcustomAttribute11 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute11);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute11, nameof(exchangeSetMailboxcustomAttribute11), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute12 = exchangeSetMailboxcustomAttribute12 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute12);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute12, nameof(exchangeSetMailboxcustomAttribute12), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute13 = exchangeSetMailboxcustomAttribute13 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute13);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute13, nameof(exchangeSetMailboxcustomAttribute13), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute14 = exchangeSetMailboxcustomAttribute14 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute14);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute14, nameof(exchangeSetMailboxcustomAttribute14), required: false);
-            var __workflow_exchangeSetMailboxcustomAttribute15 = exchangeSetMailboxcustomAttribute15 == null ? null : WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute15);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxcustomAttribute15, nameof(exchangeSetMailboxcustomAttribute15), required: false);
-            var __workflow_exchangeSetMailboxemailAddressPolicyEnabled = exchangeSetMailboxemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeSetMailboxemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxemailAddressPolicyEnabled, nameof(exchangeSetMailboxemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeSetMailboxidentity = WorkflowExpression.Compile(exchangeSetMailboxidentity, nameof(exchangeSetMailboxidentity), required: true);
+            var __workflow_exchangeSetMailboxworkflow = WorkflowExpression.Compile(exchangeSetMailboxworkflow, nameof(exchangeSetMailboxworkflow), required: true);
+            var __workflow_exchangeSetMailboxaccountDisabled = WorkflowExpression.Compile(exchangeSetMailboxaccountDisabled, nameof(exchangeSetMailboxaccountDisabled), required: false);
+            var __workflow_exchangeSetMailboxalias = WorkflowExpression.Compile(exchangeSetMailboxalias, nameof(exchangeSetMailboxalias), required: false);
+            var __workflow_exchangeSetMailboxdisplayName = WorkflowExpression.Compile(exchangeSetMailboxdisplayName, nameof(exchangeSetMailboxdisplayName), required: false);
+            var __workflow_exchangeSetMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeSetMailboxprimarySmtpAddress, nameof(exchangeSetMailboxprimarySmtpAddress), required: false);
+            var __workflow_exchangeSetMailboxhiddenFromAddressListsEnabled = WorkflowExpression.Compile(exchangeSetMailboxhiddenFromAddressListsEnabled, nameof(exchangeSetMailboxhiddenFromAddressListsEnabled), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute1 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute1, nameof(exchangeSetMailboxcustomAttribute1), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute2 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute2, nameof(exchangeSetMailboxcustomAttribute2), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute3 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute3, nameof(exchangeSetMailboxcustomAttribute3), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute4 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute4, nameof(exchangeSetMailboxcustomAttribute4), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute5 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute5, nameof(exchangeSetMailboxcustomAttribute5), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute6 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute6, nameof(exchangeSetMailboxcustomAttribute6), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute7 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute7, nameof(exchangeSetMailboxcustomAttribute7), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute8 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute8, nameof(exchangeSetMailboxcustomAttribute8), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute9 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute9, nameof(exchangeSetMailboxcustomAttribute9), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute10 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute10, nameof(exchangeSetMailboxcustomAttribute10), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute11 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute11, nameof(exchangeSetMailboxcustomAttribute11), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute12 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute12, nameof(exchangeSetMailboxcustomAttribute12), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute13 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute13, nameof(exchangeSetMailboxcustomAttribute13), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute14 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute14, nameof(exchangeSetMailboxcustomAttribute14), required: false);
+            var __workflow_exchangeSetMailboxcustomAttribute15 = WorkflowExpression.Compile(exchangeSetMailboxcustomAttribute15, nameof(exchangeSetMailboxcustomAttribute15), required: false);
+            var __workflow_exchangeSetMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeSetMailboxemailAddressPolicyEnabled, nameof(exchangeSetMailboxemailAddressPolicyEnabled), required: false);
             return new DeferredBodyAction<ExchangeSetMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailbox";
@@ -5297,22 +4852,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeSetMailboxEmailAddressesResponse> ExchangeSetMailboxEmailAddresses(Expression<Func<string>> exchangeSetMailboxEmailAddressesidentity, Expression<Func<string>> exchangeSetMailboxEmailAddressesworkflow, Expression<Func<string>> exchangeSetMailboxEmailAddressesalias = null, Expression<Func<string>> exchangeSetMailboxEmailAddressesprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled = null, Expression<Func<string[]>> exchangeSetMailboxEmailAddressesemailAddressesToAddList = null, Expression<Func<bool>> exchangeSetMailboxEmailAddressesreplaceEmailAddresses = null, Expression<Func<string[]>> exchangeSetMailboxEmailAddressesemailAddressesToRemoveList = null)
         {
-            var __workflow_exchangeSetMailboxEmailAddressesidentity = exchangeSetMailboxEmailAddressesidentity == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesidentity);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesidentity, nameof(exchangeSetMailboxEmailAddressesidentity), required: true);
-            var __workflow_exchangeSetMailboxEmailAddressesworkflow = exchangeSetMailboxEmailAddressesworkflow == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesworkflow, nameof(exchangeSetMailboxEmailAddressesworkflow), required: true);
-            var __workflow_exchangeSetMailboxEmailAddressesalias = exchangeSetMailboxEmailAddressesalias == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesalias);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesalias, nameof(exchangeSetMailboxEmailAddressesalias), required: false);
-            var __workflow_exchangeSetMailboxEmailAddressesprimarySmtpAddress = exchangeSetMailboxEmailAddressesprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesprimarySmtpAddress, nameof(exchangeSetMailboxEmailAddressesprimarySmtpAddress), required: false);
-            var __workflow_exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled = exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled, nameof(exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled), required: false);
-            var __workflow_exchangeSetMailboxEmailAddressesemailAddressesToAddList = exchangeSetMailboxEmailAddressesemailAddressesToAddList == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressesToAddList);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesemailAddressesToAddList, nameof(exchangeSetMailboxEmailAddressesemailAddressesToAddList), required: false);
-            var __workflow_exchangeSetMailboxEmailAddressesreplaceEmailAddresses = exchangeSetMailboxEmailAddressesreplaceEmailAddresses == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesreplaceEmailAddresses);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesreplaceEmailAddresses, nameof(exchangeSetMailboxEmailAddressesreplaceEmailAddresses), required: false);
-            var __workflow_exchangeSetMailboxEmailAddressesemailAddressesToRemoveList = exchangeSetMailboxEmailAddressesemailAddressesToRemoveList == null ? null : WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressesToRemoveList);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxEmailAddressesemailAddressesToRemoveList, nameof(exchangeSetMailboxEmailAddressesemailAddressesToRemoveList), required: false);
+            var __workflow_exchangeSetMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesidentity, nameof(exchangeSetMailboxEmailAddressesidentity), required: true);
+            var __workflow_exchangeSetMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesworkflow, nameof(exchangeSetMailboxEmailAddressesworkflow), required: true);
+            var __workflow_exchangeSetMailboxEmailAddressesalias = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesalias, nameof(exchangeSetMailboxEmailAddressesalias), required: false);
+            var __workflow_exchangeSetMailboxEmailAddressesprimarySmtpAddress = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesprimarySmtpAddress, nameof(exchangeSetMailboxEmailAddressesprimarySmtpAddress), required: false);
+            var __workflow_exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled, nameof(exchangeSetMailboxEmailAddressesemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeSetMailboxEmailAddressesemailAddressesToAddList = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressesToAddList, nameof(exchangeSetMailboxEmailAddressesemailAddressesToAddList), required: false);
+            var __workflow_exchangeSetMailboxEmailAddressesreplaceEmailAddresses = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesreplaceEmailAddresses, nameof(exchangeSetMailboxEmailAddressesreplaceEmailAddresses), required: false);
+            var __workflow_exchangeSetMailboxEmailAddressesemailAddressesToRemoveList = WorkflowExpression.Compile(exchangeSetMailboxEmailAddressesemailAddressesToRemoveList, nameof(exchangeSetMailboxEmailAddressesemailAddressesToRemoveList), required: false);
             return new DeferredBodyAction<ExchangeSetMailboxEmailAddressesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailboxEmailAddresses";
@@ -5382,10 +4929,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeGetMailboxEmailAddressesResponse> ExchangeGetMailboxEmailAddresses(Expression<Func<string>> exchangeGetMailboxEmailAddressesidentity, Expression<Func<string>> exchangeGetMailboxEmailAddressesworkflow)
         {
-            var __workflow_exchangeGetMailboxEmailAddressesidentity = exchangeGetMailboxEmailAddressesidentity == null ? null : WorkflowExpression.Compile(exchangeGetMailboxEmailAddressesidentity);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxEmailAddressesidentity, nameof(exchangeGetMailboxEmailAddressesidentity), required: true);
-            var __workflow_exchangeGetMailboxEmailAddressesworkflow = exchangeGetMailboxEmailAddressesworkflow == null ? null : WorkflowExpression.Compile(exchangeGetMailboxEmailAddressesworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeGetMailboxEmailAddressesworkflow, nameof(exchangeGetMailboxEmailAddressesworkflow), required: true);
+            var __workflow_exchangeGetMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeGetMailboxEmailAddressesidentity, nameof(exchangeGetMailboxEmailAddressesidentity), required: true);
+            var __workflow_exchangeGetMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeGetMailboxEmailAddressesworkflow, nameof(exchangeGetMailboxEmailAddressesworkflow), required: true);
             return new DeferredBodyAction<ExchangeGetMailboxEmailAddressesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetMailboxEmailAddresses";
@@ -5409,22 +4954,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeSetRemoteMailboxEmailAddressesResponse> ExchangeSetRemoteMailboxEmailAddresses(Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesidentity, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesworkflow, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesalias = null, Expression<Func<string>> exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress = null, Expression<Func<bool>> exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled = null, Expression<Func<string[]>> exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList = null, Expression<Func<bool>> exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses = null, Expression<Func<string[]>> exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList = null)
         {
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesidentity = exchangeSetRemoteMailboxEmailAddressesidentity == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesidentity);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesidentity, nameof(exchangeSetRemoteMailboxEmailAddressesidentity), required: true);
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesworkflow = exchangeSetRemoteMailboxEmailAddressesworkflow == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesworkflow, nameof(exchangeSetRemoteMailboxEmailAddressesworkflow), required: true);
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesalias = exchangeSetRemoteMailboxEmailAddressesalias == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesalias);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesalias, nameof(exchangeSetRemoteMailboxEmailAddressesalias), required: false);
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress = exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress, nameof(exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress), required: false);
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled = exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled), required: false);
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList = exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList), required: false);
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses = exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses, nameof(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses), required: false);
-            var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList = exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList), required: false);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesidentity, nameof(exchangeSetRemoteMailboxEmailAddressesidentity), required: true);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesworkflow, nameof(exchangeSetRemoteMailboxEmailAddressesworkflow), required: true);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesalias = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesalias, nameof(exchangeSetRemoteMailboxEmailAddressesalias), required: false);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress, nameof(exchangeSetRemoteMailboxEmailAddressesprimarySmtpAddress), required: false);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressesToAddList), required: false);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses, nameof(exchangeSetRemoteMailboxEmailAddressesreplaceEmailAddresses), required: false);
+            var __workflow_exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList = WorkflowExpression.Compile(exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList, nameof(exchangeSetRemoteMailboxEmailAddressesemailAddressesToRemoveList), required: false);
             return new DeferredBodyAction<ExchangeSetRemoteMailboxEmailAddressesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetRemoteMailboxEmailAddresses";
@@ -5494,10 +5031,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeGetRemoteMailboxEmailAddressesResponse> ExchangeGetRemoteMailboxEmailAddresses(Expression<Func<string>> exchangeGetRemoteMailboxEmailAddressesidentity, Expression<Func<string>> exchangeGetRemoteMailboxEmailAddressesworkflow)
         {
-            var __workflow_exchangeGetRemoteMailboxEmailAddressesidentity = exchangeGetRemoteMailboxEmailAddressesidentity == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxEmailAddressesidentity);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxEmailAddressesidentity, nameof(exchangeGetRemoteMailboxEmailAddressesidentity), required: true);
-            var __workflow_exchangeGetRemoteMailboxEmailAddressesworkflow = exchangeGetRemoteMailboxEmailAddressesworkflow == null ? null : WorkflowExpression.Compile(exchangeGetRemoteMailboxEmailAddressesworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeGetRemoteMailboxEmailAddressesworkflow, nameof(exchangeGetRemoteMailboxEmailAddressesworkflow), required: true);
+            var __workflow_exchangeGetRemoteMailboxEmailAddressesidentity = WorkflowExpression.Compile(exchangeGetRemoteMailboxEmailAddressesidentity, nameof(exchangeGetRemoteMailboxEmailAddressesidentity), required: true);
+            var __workflow_exchangeGetRemoteMailboxEmailAddressesworkflow = WorkflowExpression.Compile(exchangeGetRemoteMailboxEmailAddressesworkflow, nameof(exchangeGetRemoteMailboxEmailAddressesworkflow), required: true);
             return new DeferredBodyAction<ExchangeGetRemoteMailboxEmailAddressesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeGetRemoteMailboxEmailAddresses";
@@ -5521,40 +5056,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeResetMailboxAttributesResponse> ExchangeResetMailboxAttributes(Expression<Func<string>> exchangeResetMailboxAttributesidentity, Expression<Func<string>> exchangeResetMailboxAttributesworkflow, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute1 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute2 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute3 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute4 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute5 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute6 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute7 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute8 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute9 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute10 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute11 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute12 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute13 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute14 = null, Expression<Func<bool>> exchangeResetMailboxAttributesresetCustomAttribute15 = null)
         {
-            var __workflow_exchangeResetMailboxAttributesidentity = exchangeResetMailboxAttributesidentity == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesidentity);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesidentity, nameof(exchangeResetMailboxAttributesidentity), required: true);
-            var __workflow_exchangeResetMailboxAttributesworkflow = exchangeResetMailboxAttributesworkflow == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesworkflow, nameof(exchangeResetMailboxAttributesworkflow), required: true);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute1 = exchangeResetMailboxAttributesresetCustomAttribute1 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute1);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute1, nameof(exchangeResetMailboxAttributesresetCustomAttribute1), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute2 = exchangeResetMailboxAttributesresetCustomAttribute2 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute2);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute2, nameof(exchangeResetMailboxAttributesresetCustomAttribute2), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute3 = exchangeResetMailboxAttributesresetCustomAttribute3 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute3);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute3, nameof(exchangeResetMailboxAttributesresetCustomAttribute3), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute4 = exchangeResetMailboxAttributesresetCustomAttribute4 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute4);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute4, nameof(exchangeResetMailboxAttributesresetCustomAttribute4), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute5 = exchangeResetMailboxAttributesresetCustomAttribute5 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute5);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute5, nameof(exchangeResetMailboxAttributesresetCustomAttribute5), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute6 = exchangeResetMailboxAttributesresetCustomAttribute6 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute6);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute6, nameof(exchangeResetMailboxAttributesresetCustomAttribute6), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute7 = exchangeResetMailboxAttributesresetCustomAttribute7 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute7);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute7, nameof(exchangeResetMailboxAttributesresetCustomAttribute7), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute8 = exchangeResetMailboxAttributesresetCustomAttribute8 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute8);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute8, nameof(exchangeResetMailboxAttributesresetCustomAttribute8), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute9 = exchangeResetMailboxAttributesresetCustomAttribute9 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute9);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute9, nameof(exchangeResetMailboxAttributesresetCustomAttribute9), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute10 = exchangeResetMailboxAttributesresetCustomAttribute10 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute10);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute10, nameof(exchangeResetMailboxAttributesresetCustomAttribute10), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute11 = exchangeResetMailboxAttributesresetCustomAttribute11 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute11);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute11, nameof(exchangeResetMailboxAttributesresetCustomAttribute11), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute12 = exchangeResetMailboxAttributesresetCustomAttribute12 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute12);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute12, nameof(exchangeResetMailboxAttributesresetCustomAttribute12), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute13 = exchangeResetMailboxAttributesresetCustomAttribute13 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute13);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute13, nameof(exchangeResetMailboxAttributesresetCustomAttribute13), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute14 = exchangeResetMailboxAttributesresetCustomAttribute14 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute14);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute14, nameof(exchangeResetMailboxAttributesresetCustomAttribute14), required: false);
-            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute15 = exchangeResetMailboxAttributesresetCustomAttribute15 == null ? null : WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute15);
-            WorkflowExpression.Validate(__workflow_exchangeResetMailboxAttributesresetCustomAttribute15, nameof(exchangeResetMailboxAttributesresetCustomAttribute15), required: false);
+            var __workflow_exchangeResetMailboxAttributesidentity = WorkflowExpression.Compile(exchangeResetMailboxAttributesidentity, nameof(exchangeResetMailboxAttributesidentity), required: true);
+            var __workflow_exchangeResetMailboxAttributesworkflow = WorkflowExpression.Compile(exchangeResetMailboxAttributesworkflow, nameof(exchangeResetMailboxAttributesworkflow), required: true);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute1 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute1, nameof(exchangeResetMailboxAttributesresetCustomAttribute1), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute2 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute2, nameof(exchangeResetMailboxAttributesresetCustomAttribute2), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute3 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute3, nameof(exchangeResetMailboxAttributesresetCustomAttribute3), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute4 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute4, nameof(exchangeResetMailboxAttributesresetCustomAttribute4), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute5 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute5, nameof(exchangeResetMailboxAttributesresetCustomAttribute5), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute6 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute6, nameof(exchangeResetMailboxAttributesresetCustomAttribute6), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute7 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute7, nameof(exchangeResetMailboxAttributesresetCustomAttribute7), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute8 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute8, nameof(exchangeResetMailboxAttributesresetCustomAttribute8), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute9 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute9, nameof(exchangeResetMailboxAttributesresetCustomAttribute9), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute10 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute10, nameof(exchangeResetMailboxAttributesresetCustomAttribute10), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute11 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute11, nameof(exchangeResetMailboxAttributesresetCustomAttribute11), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute12 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute12, nameof(exchangeResetMailboxAttributesresetCustomAttribute12), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute13 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute13, nameof(exchangeResetMailboxAttributesresetCustomAttribute13), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute14 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute14, nameof(exchangeResetMailboxAttributesresetCustomAttribute14), required: false);
+            var __workflow_exchangeResetMailboxAttributesresetCustomAttribute15 = WorkflowExpression.Compile(exchangeResetMailboxAttributesresetCustomAttribute15, nameof(exchangeResetMailboxAttributesresetCustomAttribute15), required: false);
             return new DeferredBodyAction<ExchangeResetMailboxAttributesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeResetMailboxAttributes";
@@ -5818,40 +5336,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeResetRemoteMailboxAttributesResponse> ExchangeResetRemoteMailboxAttributes(Expression<Func<string>> exchangeResetRemoteMailboxAttributesidentity, Expression<Func<string>> exchangeResetRemoteMailboxAttributesworkflow, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute1 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute2 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute3 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute4 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute5 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute6 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute7 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute8 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute9 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute10 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute11 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute12 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute13 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute14 = null, Expression<Func<bool>> exchangeResetRemoteMailboxAttributesresetCustomAttribute15 = null)
         {
-            var __workflow_exchangeResetRemoteMailboxAttributesidentity = exchangeResetRemoteMailboxAttributesidentity == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesidentity);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesidentity, nameof(exchangeResetRemoteMailboxAttributesidentity), required: true);
-            var __workflow_exchangeResetRemoteMailboxAttributesworkflow = exchangeResetRemoteMailboxAttributesworkflow == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesworkflow, nameof(exchangeResetRemoteMailboxAttributesworkflow), required: true);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute1 = exchangeResetRemoteMailboxAttributesresetCustomAttribute1 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute1);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute1, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute1), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute2 = exchangeResetRemoteMailboxAttributesresetCustomAttribute2 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute2);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute2, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute2), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute3 = exchangeResetRemoteMailboxAttributesresetCustomAttribute3 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute3);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute3, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute3), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute4 = exchangeResetRemoteMailboxAttributesresetCustomAttribute4 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute4);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute4, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute4), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute5 = exchangeResetRemoteMailboxAttributesresetCustomAttribute5 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute5);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute5, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute5), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute6 = exchangeResetRemoteMailboxAttributesresetCustomAttribute6 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute6);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute6, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute6), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute7 = exchangeResetRemoteMailboxAttributesresetCustomAttribute7 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute7);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute7, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute7), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute8 = exchangeResetRemoteMailboxAttributesresetCustomAttribute8 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute8);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute8, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute8), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute9 = exchangeResetRemoteMailboxAttributesresetCustomAttribute9 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute9);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute9, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute9), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute10 = exchangeResetRemoteMailboxAttributesresetCustomAttribute10 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute10);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute10, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute10), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute11 = exchangeResetRemoteMailboxAttributesresetCustomAttribute11 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute11);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute11, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute11), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute12 = exchangeResetRemoteMailboxAttributesresetCustomAttribute12 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute12);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute12, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute12), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute13 = exchangeResetRemoteMailboxAttributesresetCustomAttribute13 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute13);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute13, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute13), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute14 = exchangeResetRemoteMailboxAttributesresetCustomAttribute14 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute14);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute14, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute14), required: false);
-            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute15 = exchangeResetRemoteMailboxAttributesresetCustomAttribute15 == null ? null : WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute15);
-            WorkflowExpression.Validate(__workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute15, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute15), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesidentity = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesidentity, nameof(exchangeResetRemoteMailboxAttributesidentity), required: true);
+            var __workflow_exchangeResetRemoteMailboxAttributesworkflow = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesworkflow, nameof(exchangeResetRemoteMailboxAttributesworkflow), required: true);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute1 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute1, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute1), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute2 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute2, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute2), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute3 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute3, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute3), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute4 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute4, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute4), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute5 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute5, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute5), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute6 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute6, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute6), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute7 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute7, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute7), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute8 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute8, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute8), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute9 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute9, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute9), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute10 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute10, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute10), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute11 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute11, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute11), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute12 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute12, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute12), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute13 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute13, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute13), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute14 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute14, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute14), required: false);
+            var __workflow_exchangeResetRemoteMailboxAttributesresetCustomAttribute15 = WorkflowExpression.Compile(exchangeResetRemoteMailboxAttributesresetCustomAttribute15, nameof(exchangeResetRemoteMailboxAttributesresetCustomAttribute15), required: false);
             return new DeferredBodyAction<ExchangeResetRemoteMailboxAttributesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeResetRemoteMailboxAttributes";
@@ -6115,52 +5616,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeSetRemoteMailboxResponse> ExchangeSetRemoteMailbox(Expression<Func<string>> exchangeSetRemoteMailboxidentity, Expression<Func<string>> exchangeSetRemoteMailboxworkflow, Expression<Func<string>> exchangeSetRemoteMailboxalias = null, Expression<Func<string>> exchangeSetRemoteMailboxdisplayName = null, Expression<Func<string>> exchangeSetRemoteMailboxprimarySmtpAddress = null, Expression<Func<exchangeSetRemoteMailboxtypeInput>> exchangeSetRemoteMailboxtype = null, Expression<Func<bool>> exchangeSetRemoteMailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute1 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute2 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute3 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute4 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute5 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute6 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute7 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute8 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute9 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute10 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute11 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute12 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute13 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute14 = null, Expression<Func<string>> exchangeSetRemoteMailboxcustomAttribute15 = null, Expression<Func<bool>> exchangeSetRemoteMailboxemailAddressPolicyEnabled = null)
         {
-            var __workflow_exchangeSetRemoteMailboxidentity = exchangeSetRemoteMailboxidentity == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxidentity);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxidentity, nameof(exchangeSetRemoteMailboxidentity), required: true);
-            var __workflow_exchangeSetRemoteMailboxworkflow = exchangeSetRemoteMailboxworkflow == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxworkflow, nameof(exchangeSetRemoteMailboxworkflow), required: true);
-            var __workflow_exchangeSetRemoteMailboxalias = exchangeSetRemoteMailboxalias == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxalias);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxalias, nameof(exchangeSetRemoteMailboxalias), required: false);
-            var __workflow_exchangeSetRemoteMailboxdisplayName = exchangeSetRemoteMailboxdisplayName == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxdisplayName, nameof(exchangeSetRemoteMailboxdisplayName), required: false);
-            var __workflow_exchangeSetRemoteMailboxprimarySmtpAddress = exchangeSetRemoteMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxprimarySmtpAddress, nameof(exchangeSetRemoteMailboxprimarySmtpAddress), required: false);
-            var __workflow_exchangeSetRemoteMailboxtype = exchangeSetRemoteMailboxtype == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxtype);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxtype, nameof(exchangeSetRemoteMailboxtype), required: false);
-            var __workflow_exchangeSetRemoteMailboxhiddenFromAddressListsEnabled = exchangeSetRemoteMailboxhiddenFromAddressListsEnabled == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxhiddenFromAddressListsEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxhiddenFromAddressListsEnabled, nameof(exchangeSetRemoteMailboxhiddenFromAddressListsEnabled), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute1 = exchangeSetRemoteMailboxcustomAttribute1 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute1);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute1, nameof(exchangeSetRemoteMailboxcustomAttribute1), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute2 = exchangeSetRemoteMailboxcustomAttribute2 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute2);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute2, nameof(exchangeSetRemoteMailboxcustomAttribute2), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute3 = exchangeSetRemoteMailboxcustomAttribute3 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute3);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute3, nameof(exchangeSetRemoteMailboxcustomAttribute3), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute4 = exchangeSetRemoteMailboxcustomAttribute4 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute4);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute4, nameof(exchangeSetRemoteMailboxcustomAttribute4), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute5 = exchangeSetRemoteMailboxcustomAttribute5 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute5);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute5, nameof(exchangeSetRemoteMailboxcustomAttribute5), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute6 = exchangeSetRemoteMailboxcustomAttribute6 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute6);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute6, nameof(exchangeSetRemoteMailboxcustomAttribute6), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute7 = exchangeSetRemoteMailboxcustomAttribute7 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute7);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute7, nameof(exchangeSetRemoteMailboxcustomAttribute7), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute8 = exchangeSetRemoteMailboxcustomAttribute8 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute8);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute8, nameof(exchangeSetRemoteMailboxcustomAttribute8), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute9 = exchangeSetRemoteMailboxcustomAttribute9 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute9);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute9, nameof(exchangeSetRemoteMailboxcustomAttribute9), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute10 = exchangeSetRemoteMailboxcustomAttribute10 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute10);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute10, nameof(exchangeSetRemoteMailboxcustomAttribute10), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute11 = exchangeSetRemoteMailboxcustomAttribute11 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute11);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute11, nameof(exchangeSetRemoteMailboxcustomAttribute11), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute12 = exchangeSetRemoteMailboxcustomAttribute12 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute12);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute12, nameof(exchangeSetRemoteMailboxcustomAttribute12), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute13 = exchangeSetRemoteMailboxcustomAttribute13 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute13);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute13, nameof(exchangeSetRemoteMailboxcustomAttribute13), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute14 = exchangeSetRemoteMailboxcustomAttribute14 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute14);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute14, nameof(exchangeSetRemoteMailboxcustomAttribute14), required: false);
-            var __workflow_exchangeSetRemoteMailboxcustomAttribute15 = exchangeSetRemoteMailboxcustomAttribute15 == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute15);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxcustomAttribute15, nameof(exchangeSetRemoteMailboxcustomAttribute15), required: false);
-            var __workflow_exchangeSetRemoteMailboxemailAddressPolicyEnabled = exchangeSetRemoteMailboxemailAddressPolicyEnabled == null ? null : WorkflowExpression.Compile(exchangeSetRemoteMailboxemailAddressPolicyEnabled);
-            WorkflowExpression.Validate(__workflow_exchangeSetRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeSetRemoteMailboxemailAddressPolicyEnabled), required: false);
+            var __workflow_exchangeSetRemoteMailboxidentity = WorkflowExpression.Compile(exchangeSetRemoteMailboxidentity, nameof(exchangeSetRemoteMailboxidentity), required: true);
+            var __workflow_exchangeSetRemoteMailboxworkflow = WorkflowExpression.Compile(exchangeSetRemoteMailboxworkflow, nameof(exchangeSetRemoteMailboxworkflow), required: true);
+            var __workflow_exchangeSetRemoteMailboxalias = WorkflowExpression.Compile(exchangeSetRemoteMailboxalias, nameof(exchangeSetRemoteMailboxalias), required: false);
+            var __workflow_exchangeSetRemoteMailboxdisplayName = WorkflowExpression.Compile(exchangeSetRemoteMailboxdisplayName, nameof(exchangeSetRemoteMailboxdisplayName), required: false);
+            var __workflow_exchangeSetRemoteMailboxprimarySmtpAddress = WorkflowExpression.Compile(exchangeSetRemoteMailboxprimarySmtpAddress, nameof(exchangeSetRemoteMailboxprimarySmtpAddress), required: false);
+            var __workflow_exchangeSetRemoteMailboxtype = WorkflowExpression.Compile(exchangeSetRemoteMailboxtype, nameof(exchangeSetRemoteMailboxtype), required: false);
+            var __workflow_exchangeSetRemoteMailboxhiddenFromAddressListsEnabled = WorkflowExpression.Compile(exchangeSetRemoteMailboxhiddenFromAddressListsEnabled, nameof(exchangeSetRemoteMailboxhiddenFromAddressListsEnabled), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute1 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute1, nameof(exchangeSetRemoteMailboxcustomAttribute1), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute2 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute2, nameof(exchangeSetRemoteMailboxcustomAttribute2), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute3 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute3, nameof(exchangeSetRemoteMailboxcustomAttribute3), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute4 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute4, nameof(exchangeSetRemoteMailboxcustomAttribute4), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute5 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute5, nameof(exchangeSetRemoteMailboxcustomAttribute5), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute6 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute6, nameof(exchangeSetRemoteMailboxcustomAttribute6), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute7 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute7, nameof(exchangeSetRemoteMailboxcustomAttribute7), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute8 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute8, nameof(exchangeSetRemoteMailboxcustomAttribute8), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute9 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute9, nameof(exchangeSetRemoteMailboxcustomAttribute9), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute10 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute10, nameof(exchangeSetRemoteMailboxcustomAttribute10), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute11 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute11, nameof(exchangeSetRemoteMailboxcustomAttribute11), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute12 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute12, nameof(exchangeSetRemoteMailboxcustomAttribute12), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute13 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute13, nameof(exchangeSetRemoteMailboxcustomAttribute13), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute14 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute14, nameof(exchangeSetRemoteMailboxcustomAttribute14), required: false);
+            var __workflow_exchangeSetRemoteMailboxcustomAttribute15 = WorkflowExpression.Compile(exchangeSetRemoteMailboxcustomAttribute15, nameof(exchangeSetRemoteMailboxcustomAttribute15), required: false);
+            var __workflow_exchangeSetRemoteMailboxemailAddressPolicyEnabled = WorkflowExpression.Compile(exchangeSetRemoteMailboxemailAddressPolicyEnabled, nameof(exchangeSetRemoteMailboxemailAddressPolicyEnabled), required: false);
             return new DeferredBodyAction<ExchangeSetRemoteMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetRemoteMailbox";
@@ -6310,12 +5788,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse> ExchangeSetMailboxSendOnBehalfOfPermission(Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissionidentity, Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo, Expression<Func<string>> exchangeSetMailboxSendOnBehalfOfPermissionworkflow)
         {
-            var __workflow_exchangeSetMailboxSendOnBehalfOfPermissionidentity = exchangeSetMailboxSendOnBehalfOfPermissionidentity == null ? null : WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissionidentity);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxSendOnBehalfOfPermissionidentity, nameof(exchangeSetMailboxSendOnBehalfOfPermissionidentity), required: true);
-            var __workflow_exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo = exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo == null ? null : WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo, nameof(exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo), required: true);
-            var __workflow_exchangeSetMailboxSendOnBehalfOfPermissionworkflow = exchangeSetMailboxSendOnBehalfOfPermissionworkflow == null ? null : WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissionworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxSendOnBehalfOfPermissionworkflow, nameof(exchangeSetMailboxSendOnBehalfOfPermissionworkflow), required: true);
+            var __workflow_exchangeSetMailboxSendOnBehalfOfPermissionidentity = WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissionidentity, nameof(exchangeSetMailboxSendOnBehalfOfPermissionidentity), required: true);
+            var __workflow_exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo = WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo, nameof(exchangeSetMailboxSendOnBehalfOfPermissiongrantSendOnBehalfTo), required: true);
+            var __workflow_exchangeSetMailboxSendOnBehalfOfPermissionworkflow = WorkflowExpression.Compile(exchangeSetMailboxSendOnBehalfOfPermissionworkflow, nameof(exchangeSetMailboxSendOnBehalfOfPermissionworkflow), required: true);
             return new DeferredBodyAction<ExchangeSetMailboxSendOnBehalfOfPermissionResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailboxSendOnBehalfOfPermission";
@@ -6341,16 +5816,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeAddADPermissionResponse> ExchangeAddADPermission(Expression<Func<string>> exchangeAddADPermissionidentity, Expression<Func<string>> exchangeAddADPermissionuser, Expression<Func<string>> exchangeAddADPermissionworkflow, Expression<Func<string>> exchangeAddADPermissionaccessRights = null, Expression<Func<string>> exchangeAddADPermissionextendedRights = null)
         {
-            var __workflow_exchangeAddADPermissionidentity = exchangeAddADPermissionidentity == null ? null : WorkflowExpression.Compile(exchangeAddADPermissionidentity);
-            WorkflowExpression.Validate(__workflow_exchangeAddADPermissionidentity, nameof(exchangeAddADPermissionidentity), required: true);
-            var __workflow_exchangeAddADPermissionuser = exchangeAddADPermissionuser == null ? null : WorkflowExpression.Compile(exchangeAddADPermissionuser);
-            WorkflowExpression.Validate(__workflow_exchangeAddADPermissionuser, nameof(exchangeAddADPermissionuser), required: true);
-            var __workflow_exchangeAddADPermissionworkflow = exchangeAddADPermissionworkflow == null ? null : WorkflowExpression.Compile(exchangeAddADPermissionworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeAddADPermissionworkflow, nameof(exchangeAddADPermissionworkflow), required: true);
-            var __workflow_exchangeAddADPermissionaccessRights = exchangeAddADPermissionaccessRights == null ? null : WorkflowExpression.Compile(exchangeAddADPermissionaccessRights);
-            WorkflowExpression.Validate(__workflow_exchangeAddADPermissionaccessRights, nameof(exchangeAddADPermissionaccessRights), required: false);
-            var __workflow_exchangeAddADPermissionextendedRights = exchangeAddADPermissionextendedRights == null ? null : WorkflowExpression.Compile(exchangeAddADPermissionextendedRights);
-            WorkflowExpression.Validate(__workflow_exchangeAddADPermissionextendedRights, nameof(exchangeAddADPermissionextendedRights), required: false);
+            var __workflow_exchangeAddADPermissionidentity = WorkflowExpression.Compile(exchangeAddADPermissionidentity, nameof(exchangeAddADPermissionidentity), required: true);
+            var __workflow_exchangeAddADPermissionuser = WorkflowExpression.Compile(exchangeAddADPermissionuser, nameof(exchangeAddADPermissionuser), required: true);
+            var __workflow_exchangeAddADPermissionworkflow = WorkflowExpression.Compile(exchangeAddADPermissionworkflow, nameof(exchangeAddADPermissionworkflow), required: true);
+            var __workflow_exchangeAddADPermissionaccessRights = WorkflowExpression.Compile(exchangeAddADPermissionaccessRights, nameof(exchangeAddADPermissionaccessRights), required: false);
+            var __workflow_exchangeAddADPermissionextendedRights = WorkflowExpression.Compile(exchangeAddADPermissionextendedRights, nameof(exchangeAddADPermissionextendedRights), required: false);
             return new DeferredBodyAction<ExchangeAddADPermissionResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeAddADPermission";
@@ -6388,18 +5858,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<ExchangeSetMailboxAutoReplyConfigurationResponse> ExchangeSetMailboxAutoReplyConfiguration(Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationidentity, Expression<Func<exchangeSetMailboxAutoReplyConfigurationautoReplyStateInput>> exchangeSetMailboxAutoReplyConfigurationautoReplyState, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationworkflow, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationinternalMessage = null, Expression<Func<exchangeSetMailboxAutoReplyConfigurationexternalAudienceInput>> exchangeSetMailboxAutoReplyConfigurationexternalAudience = null, Expression<Func<string>> exchangeSetMailboxAutoReplyConfigurationexternalMessage = null)
         {
-            var __workflow_exchangeSetMailboxAutoReplyConfigurationidentity = exchangeSetMailboxAutoReplyConfigurationidentity == null ? null : WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationidentity);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxAutoReplyConfigurationidentity, nameof(exchangeSetMailboxAutoReplyConfigurationidentity), required: true);
-            var __workflow_exchangeSetMailboxAutoReplyConfigurationautoReplyState = exchangeSetMailboxAutoReplyConfigurationautoReplyState == null ? null : WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationautoReplyState);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxAutoReplyConfigurationautoReplyState, nameof(exchangeSetMailboxAutoReplyConfigurationautoReplyState), required: true);
-            var __workflow_exchangeSetMailboxAutoReplyConfigurationworkflow = exchangeSetMailboxAutoReplyConfigurationworkflow == null ? null : WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationworkflow);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxAutoReplyConfigurationworkflow, nameof(exchangeSetMailboxAutoReplyConfigurationworkflow), required: true);
-            var __workflow_exchangeSetMailboxAutoReplyConfigurationinternalMessage = exchangeSetMailboxAutoReplyConfigurationinternalMessage == null ? null : WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationinternalMessage);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxAutoReplyConfigurationinternalMessage, nameof(exchangeSetMailboxAutoReplyConfigurationinternalMessage), required: false);
-            var __workflow_exchangeSetMailboxAutoReplyConfigurationexternalAudience = exchangeSetMailboxAutoReplyConfigurationexternalAudience == null ? null : WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationexternalAudience);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxAutoReplyConfigurationexternalAudience, nameof(exchangeSetMailboxAutoReplyConfigurationexternalAudience), required: false);
-            var __workflow_exchangeSetMailboxAutoReplyConfigurationexternalMessage = exchangeSetMailboxAutoReplyConfigurationexternalMessage == null ? null : WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationexternalMessage);
-            WorkflowExpression.Validate(__workflow_exchangeSetMailboxAutoReplyConfigurationexternalMessage, nameof(exchangeSetMailboxAutoReplyConfigurationexternalMessage), required: false);
+            var __workflow_exchangeSetMailboxAutoReplyConfigurationidentity = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationidentity, nameof(exchangeSetMailboxAutoReplyConfigurationidentity), required: true);
+            var __workflow_exchangeSetMailboxAutoReplyConfigurationautoReplyState = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationautoReplyState, nameof(exchangeSetMailboxAutoReplyConfigurationautoReplyState), required: true);
+            var __workflow_exchangeSetMailboxAutoReplyConfigurationworkflow = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationworkflow, nameof(exchangeSetMailboxAutoReplyConfigurationworkflow), required: true);
+            var __workflow_exchangeSetMailboxAutoReplyConfigurationinternalMessage = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationinternalMessage, nameof(exchangeSetMailboxAutoReplyConfigurationinternalMessage), required: false);
+            var __workflow_exchangeSetMailboxAutoReplyConfigurationexternalAudience = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationexternalAudience, nameof(exchangeSetMailboxAutoReplyConfigurationexternalAudience), required: false);
+            var __workflow_exchangeSetMailboxAutoReplyConfigurationexternalMessage = WorkflowExpression.Compile(exchangeSetMailboxAutoReplyConfigurationexternalMessage, nameof(exchangeSetMailboxAutoReplyConfigurationexternalMessage), required: false);
             return new DeferredBodyAction<ExchangeSetMailboxAutoReplyConfigurationResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/ExchangeSetMailboxAutoReplyConfiguration";
@@ -6453,8 +5917,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<IsAzureADv2PowerShellModuleInstalledResponse> IsAzureADv2PowerShellModuleInstalled(Expression<Func<string>> isAzureADv2PowerShellModuleInstalledworkflow)
         {
-            var __workflow_isAzureADv2PowerShellModuleInstalledworkflow = isAzureADv2PowerShellModuleInstalledworkflow == null ? null : WorkflowExpression.Compile(isAzureADv2PowerShellModuleInstalledworkflow);
-            WorkflowExpression.Validate(__workflow_isAzureADv2PowerShellModuleInstalledworkflow, nameof(isAzureADv2PowerShellModuleInstalledworkflow), required: true);
+            var __workflow_isAzureADv2PowerShellModuleInstalledworkflow = WorkflowExpression.Compile(isAzureADv2PowerShellModuleInstalledworkflow, nameof(isAzureADv2PowerShellModuleInstalledworkflow), required: true);
             return new DeferredBodyAction<IsAzureADv2PowerShellModuleInstalledResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/IsAzureADv2PowerShellModuleInstalled";
@@ -6476,18 +5939,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceResponse> OpenAzureADv2PowerShellRunspace(Expression<Func<string>> openAzureADv2PowerShellRunspaceusername, Expression<Func<string>> openAzureADv2PowerShellRunspacepassword, Expression<Func<string>> openAzureADv2PowerShellRunspaceworkflow, Expression<Func<string>> openAzureADv2PowerShellRunspacetenantId = null, Expression<Func<openAzureADv2PowerShellRunspaceaPIToUseInput>> openAzureADv2PowerShellRunspaceaPIToUse = null, Expression<Func<string>> openAzureADv2PowerShellRunspaceauthenticationScope = null)
         {
-            var __workflow_openAzureADv2PowerShellRunspaceusername = openAzureADv2PowerShellRunspaceusername == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceusername);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceusername, nameof(openAzureADv2PowerShellRunspaceusername), required: true);
-            var __workflow_openAzureADv2PowerShellRunspacepassword = openAzureADv2PowerShellRunspacepassword == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspacepassword);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspacepassword, nameof(openAzureADv2PowerShellRunspacepassword), required: true);
-            var __workflow_openAzureADv2PowerShellRunspaceworkflow = openAzureADv2PowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceworkflow, nameof(openAzureADv2PowerShellRunspaceworkflow), required: true);
-            var __workflow_openAzureADv2PowerShellRunspacetenantId = openAzureADv2PowerShellRunspacetenantId == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspacetenantId);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspacetenantId, nameof(openAzureADv2PowerShellRunspacetenantId), required: false);
-            var __workflow_openAzureADv2PowerShellRunspaceaPIToUse = openAzureADv2PowerShellRunspaceaPIToUse == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceaPIToUse);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceaPIToUse, nameof(openAzureADv2PowerShellRunspaceaPIToUse), required: false);
-            var __workflow_openAzureADv2PowerShellRunspaceauthenticationScope = openAzureADv2PowerShellRunspaceauthenticationScope == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceauthenticationScope);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceauthenticationScope, nameof(openAzureADv2PowerShellRunspaceauthenticationScope), required: false);
+            var __workflow_openAzureADv2PowerShellRunspaceusername = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceusername, nameof(openAzureADv2PowerShellRunspaceusername), required: true);
+            var __workflow_openAzureADv2PowerShellRunspacepassword = WorkflowExpression.Compile(openAzureADv2PowerShellRunspacepassword, nameof(openAzureADv2PowerShellRunspacepassword), required: true);
+            var __workflow_openAzureADv2PowerShellRunspaceworkflow = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceworkflow, nameof(openAzureADv2PowerShellRunspaceworkflow), required: true);
+            var __workflow_openAzureADv2PowerShellRunspacetenantId = WorkflowExpression.Compile(openAzureADv2PowerShellRunspacetenantId, nameof(openAzureADv2PowerShellRunspacetenantId), required: false);
+            var __workflow_openAzureADv2PowerShellRunspaceaPIToUse = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceaPIToUse, nameof(openAzureADv2PowerShellRunspaceaPIToUse), required: false);
+            var __workflow_openAzureADv2PowerShellRunspaceauthenticationScope = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceauthenticationScope, nameof(openAzureADv2PowerShellRunspaceauthenticationScope), required: false);
             return new DeferredBodyAction<OpenAzureADv2PowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/OpenAzureADv2PowerShellRunspace";
@@ -6551,16 +6008,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse> OpenAzureADv2PowerShellRunspaceWithCertificate(Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificateapplicationId, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificatetenantId, Expression<Func<string>> openAzureADv2PowerShellRunspaceWithCertificateworkflow, Expression<Func<openAzureADv2PowerShellRunspaceWithCertificateaPIToUseInput>> openAzureADv2PowerShellRunspaceWithCertificateaPIToUse = null)
         {
-            var __workflow_openAzureADv2PowerShellRunspaceWithCertificateapplicationId = openAzureADv2PowerShellRunspaceWithCertificateapplicationId == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateapplicationId);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceWithCertificateapplicationId, nameof(openAzureADv2PowerShellRunspaceWithCertificateapplicationId), required: true);
-            var __workflow_openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint = openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint, nameof(openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint), required: true);
-            var __workflow_openAzureADv2PowerShellRunspaceWithCertificatetenantId = openAzureADv2PowerShellRunspaceWithCertificatetenantId == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificatetenantId);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceWithCertificatetenantId, nameof(openAzureADv2PowerShellRunspaceWithCertificatetenantId), required: true);
-            var __workflow_openAzureADv2PowerShellRunspaceWithCertificateworkflow = openAzureADv2PowerShellRunspaceWithCertificateworkflow == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateworkflow);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceWithCertificateworkflow, nameof(openAzureADv2PowerShellRunspaceWithCertificateworkflow), required: true);
-            var __workflow_openAzureADv2PowerShellRunspaceWithCertificateaPIToUse = openAzureADv2PowerShellRunspaceWithCertificateaPIToUse == null ? null : WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse);
-            WorkflowExpression.Validate(__workflow_openAzureADv2PowerShellRunspaceWithCertificateaPIToUse, nameof(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse), required: false);
+            var __workflow_openAzureADv2PowerShellRunspaceWithCertificateapplicationId = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateapplicationId, nameof(openAzureADv2PowerShellRunspaceWithCertificateapplicationId), required: true);
+            var __workflow_openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint, nameof(openAzureADv2PowerShellRunspaceWithCertificatecertificateThumbprint), required: true);
+            var __workflow_openAzureADv2PowerShellRunspaceWithCertificatetenantId = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificatetenantId, nameof(openAzureADv2PowerShellRunspaceWithCertificatetenantId), required: true);
+            var __workflow_openAzureADv2PowerShellRunspaceWithCertificateworkflow = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateworkflow, nameof(openAzureADv2PowerShellRunspaceWithCertificateworkflow), required: true);
+            var __workflow_openAzureADv2PowerShellRunspaceWithCertificateaPIToUse = WorkflowExpression.Compile(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse, nameof(openAzureADv2PowerShellRunspaceWithCertificateaPIToUse), required: false);
             return new DeferredBodyAction<OpenAzureADv2PowerShellRunspaceWithCertificateResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/OpenAzureADv2PowerShellRunspaceWithCertificate";
@@ -6604,10 +6056,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<IsAzureADv2PowerShellRunspaceOpenResponse> IsAzureADv2PowerShellRunspaceOpen(Expression<Func<string>> isAzureADv2PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
-            var __workflow_isAzureADv2PowerShellRunspaceOpenworkflow = isAzureADv2PowerShellRunspaceOpenworkflow == null ? null : WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenworkflow);
-            WorkflowExpression.Validate(__workflow_isAzureADv2PowerShellRunspaceOpenworkflow, nameof(isAzureADv2PowerShellRunspaceOpenworkflow), required: true);
-            var __workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID == null ? null : WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
-            WorkflowExpression.Validate(__workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
+            var __workflow_isAzureADv2PowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenworkflow, nameof(isAzureADv2PowerShellRunspaceOpenworkflow), required: true);
+            var __workflow_isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isAzureADv2PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
             return new DeferredBodyAction<IsAzureADv2PowerShellRunspaceOpenResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/IsAzureADv2PowerShellRunspaceOpen";
@@ -6645,38 +6095,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<RunAzureADv2PowerShellAutomationScriptResponse> RunAzureADv2PowerShellAutomationScript(Expression<Func<string>> runAzureADv2PowerShellAutomationScriptworkflow, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runAzureADv2PowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runAzureADv2PowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters = null)
         {
-            var __workflow_runAzureADv2PowerShellAutomationScriptworkflow = runAzureADv2PowerShellAutomationScriptworkflow == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptworkflow);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptworkflow, nameof(runAzureADv2PowerShellAutomationScriptworkflow), required: true);
-            var __workflow_runAzureADv2PowerShellAutomationScriptpowerShellScriptContents = runAzureADv2PowerShellAutomationScriptpowerShellScriptContents == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpowerShellScriptContents);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptpowerShellScriptContents, nameof(runAzureADv2PowerShellAutomationScriptpowerShellScriptContents), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptisNoResultAnError = runAzureADv2PowerShellAutomationScriptisNoResultAnError == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptisNoResultAnError);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptisNoResultAnError, nameof(runAzureADv2PowerShellAutomationScriptisNoResultAnError), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptreturnComplexTypes = runAzureADv2PowerShellAutomationScriptreturnComplexTypes == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnComplexTypes);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptreturnComplexTypes, nameof(runAzureADv2PowerShellAutomationScriptreturnComplexTypes), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean = runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal = runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal, nameof(runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptreturnDateAsDate = runAzureADv2PowerShellAutomationScriptreturnDateAsDate == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnDateAsDate);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptreturnDateAsDate, nameof(runAzureADv2PowerShellAutomationScriptreturnDateAsDate), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptrunScriptAsThread = runAzureADv2PowerShellAutomationScriptrunScriptAsThread == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptrunScriptAsThread);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptrunScriptAsThread, nameof(runAzureADv2PowerShellAutomationScriptrunScriptAsThread), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId = runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread = runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread, nameof(runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword = runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword, nameof(runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptlogVerboseOutput = runAzureADv2PowerShellAutomationScriptlogVerboseOutput == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptlogVerboseOutput);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptlogVerboseOutput, nameof(runAzureADv2PowerShellAutomationScriptlogVerboseOutput), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON = runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON = runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
-            var __workflow_runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters = runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters == null ? null : WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters);
-            WorkflowExpression.Validate(__workflow_runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters, nameof(runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptworkflow, nameof(runAzureADv2PowerShellAutomationScriptworkflow), required: true);
+            var __workflow_runAzureADv2PowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpowerShellScriptContents, nameof(runAzureADv2PowerShellAutomationScriptpowerShellScriptContents), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptisNoResultAnError = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptisNoResultAnError, nameof(runAzureADv2PowerShellAutomationScriptisNoResultAnError), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptreturnComplexTypes = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnComplexTypes, nameof(runAzureADv2PowerShellAutomationScriptreturnComplexTypes), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runAzureADv2PowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal, nameof(runAzureADv2PowerShellAutomationScriptreturnNumericAsDecimal), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptreturnDateAsDate = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptreturnDateAsDate, nameof(runAzureADv2PowerShellAutomationScriptreturnDateAsDate), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptrunScriptAsThread = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptrunScriptAsThread, nameof(runAzureADv2PowerShellAutomationScriptrunScriptAsThread), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runAzureADv2PowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread, nameof(runAzureADv2PowerShellAutomationScriptsecondsToWaitForThread), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword, nameof(runAzureADv2PowerShellAutomationScriptscriptContainsStoredPassword), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptlogVerboseOutput = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptlogVerboseOutput, nameof(runAzureADv2PowerShellAutomationScriptlogVerboseOutput), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runAzureADv2PowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
+            var __workflow_runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters, nameof(runAzureADv2PowerShellAutomationScriptpowerShellCommandParameters), required: false);
             return new DeferredBodyAction<RunAzureADv2PowerShellAutomationScriptResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/RunAzureADv2PowerShellAutomationScript";
@@ -6878,8 +6312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<CloseAzureADv2PowerShellRunspaceResponse> CloseAzureADv2PowerShellRunspace(Expression<Func<string>> closeAzureADv2PowerShellRunspaceworkflow)
         {
-            var __workflow_closeAzureADv2PowerShellRunspaceworkflow = closeAzureADv2PowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(closeAzureADv2PowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_closeAzureADv2PowerShellRunspaceworkflow, nameof(closeAzureADv2PowerShellRunspaceworkflow), required: true);
+            var __workflow_closeAzureADv2PowerShellRunspaceworkflow = WorkflowExpression.Compile(closeAzureADv2PowerShellRunspaceworkflow, nameof(closeAzureADv2PowerShellRunspaceworkflow), required: true);
             return new DeferredBodyAction<CloseAzureADv2PowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/CloseAzureADv2PowerShellRunspace";
@@ -6901,20 +6334,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetAzureADUsersResponse> AzureADv2GetAzureADUsers(Expression<Func<string>> azureADv2GetAzureADUsersworkflow, Expression<Func<string>> azureADv2GetAzureADUsersobjectId = null, Expression<Func<string>> azureADv2GetAzureADUsersfilterPropertyName = null, Expression<Func<azureADv2GetAzureADUsersfilterPropertyComparisonInput>> azureADv2GetAzureADUsersfilterPropertyComparison = null, Expression<Func<string>> azureADv2GetAzureADUsersfilterPropertyValue = null, Expression<Func<bool>> azureADv2GetAzureADUsersnoResultIsAnException = null, Expression<Func<string>> azureADv2GetAzureADUserspropertiesToReturn = null)
         {
-            var __workflow_azureADv2GetAzureADUsersworkflow = azureADv2GetAzureADUsersworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUsersworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUsersworkflow, nameof(azureADv2GetAzureADUsersworkflow), required: true);
-            var __workflow_azureADv2GetAzureADUsersobjectId = azureADv2GetAzureADUsersobjectId == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUsersobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUsersobjectId, nameof(azureADv2GetAzureADUsersobjectId), required: false);
-            var __workflow_azureADv2GetAzureADUsersfilterPropertyName = azureADv2GetAzureADUsersfilterPropertyName == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUsersfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUsersfilterPropertyName, nameof(azureADv2GetAzureADUsersfilterPropertyName), required: false);
-            var __workflow_azureADv2GetAzureADUsersfilterPropertyComparison = azureADv2GetAzureADUsersfilterPropertyComparison == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUsersfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUsersfilterPropertyComparison, nameof(azureADv2GetAzureADUsersfilterPropertyComparison), required: false);
-            var __workflow_azureADv2GetAzureADUsersfilterPropertyValue = azureADv2GetAzureADUsersfilterPropertyValue == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUsersfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUsersfilterPropertyValue, nameof(azureADv2GetAzureADUsersfilterPropertyValue), required: false);
-            var __workflow_azureADv2GetAzureADUsersnoResultIsAnException = azureADv2GetAzureADUsersnoResultIsAnException == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUsersnoResultIsAnException);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUsersnoResultIsAnException, nameof(azureADv2GetAzureADUsersnoResultIsAnException), required: false);
-            var __workflow_azureADv2GetAzureADUserspropertiesToReturn = azureADv2GetAzureADUserspropertiesToReturn == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserspropertiesToReturn);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserspropertiesToReturn, nameof(azureADv2GetAzureADUserspropertiesToReturn), required: false);
+            var __workflow_azureADv2GetAzureADUsersworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUsersworkflow, nameof(azureADv2GetAzureADUsersworkflow), required: true);
+            var __workflow_azureADv2GetAzureADUsersobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUsersobjectId, nameof(azureADv2GetAzureADUsersobjectId), required: false);
+            var __workflow_azureADv2GetAzureADUsersfilterPropertyName = WorkflowExpression.Compile(azureADv2GetAzureADUsersfilterPropertyName, nameof(azureADv2GetAzureADUsersfilterPropertyName), required: false);
+            var __workflow_azureADv2GetAzureADUsersfilterPropertyComparison = WorkflowExpression.Compile(azureADv2GetAzureADUsersfilterPropertyComparison, nameof(azureADv2GetAzureADUsersfilterPropertyComparison), required: false);
+            var __workflow_azureADv2GetAzureADUsersfilterPropertyValue = WorkflowExpression.Compile(azureADv2GetAzureADUsersfilterPropertyValue, nameof(azureADv2GetAzureADUsersfilterPropertyValue), required: false);
+            var __workflow_azureADv2GetAzureADUsersnoResultIsAnException = WorkflowExpression.Compile(azureADv2GetAzureADUsersnoResultIsAnException, nameof(azureADv2GetAzureADUsersnoResultIsAnException), required: false);
+            var __workflow_azureADv2GetAzureADUserspropertiesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADUserspropertiesToReturn, nameof(azureADv2GetAzureADUserspropertiesToReturn), required: false);
             return new DeferredBodyAction<AzureADv2GetAzureADUsersResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUsers";
@@ -6992,64 +6418,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2AddAzureADUserResponse> AzureADv2AddAzureADUser(Expression<Func<string>> azureADv2AddAzureADUseruserPrincipalName, Expression<Func<bool>> azureADv2AddAzureADUseraccountEnabled, Expression<Func<string>> azureADv2AddAzureADUseraccountPassword, Expression<Func<string>> azureADv2AddAzureADUserdisplayName, Expression<Func<string>> azureADv2AddAzureADUsermailNickName, Expression<Func<string>> azureADv2AddAzureADUserworkflow, Expression<Func<bool>> azureADv2AddAzureADUseraccountPasswordIsStoredPassword = null, Expression<Func<string>> azureADv2AddAzureADUserfirstName = null, Expression<Func<string>> azureADv2AddAzureADUserlastName = null, Expression<Func<string>> azureADv2AddAzureADUsercity = null, Expression<Func<string>> azureADv2AddAzureADUsercompanyName = null, Expression<Func<string>> azureADv2AddAzureADUsercountry = null, Expression<Func<string>> azureADv2AddAzureADUserdepartment = null, Expression<Func<string>> azureADv2AddAzureADUserfaxNumber = null, Expression<Func<string>> azureADv2AddAzureADUserjobTitle = null, Expression<Func<string>> azureADv2AddAzureADUsermobilePhone = null, Expression<Func<string>> azureADv2AddAzureADUseroffice = null, Expression<Func<string>> azureADv2AddAzureADUserphoneNumber = null, Expression<Func<string>> azureADv2AddAzureADUserpostalCode = null, Expression<Func<string>> azureADv2AddAzureADUserpreferredLanguage = null, Expression<Func<string>> azureADv2AddAzureADUserstate = null, Expression<Func<string>> azureADv2AddAzureADUserstreetAddress = null, Expression<Func<string>> azureADv2AddAzureADUserusageLocation = null, Expression<Func<azureADv2AddAzureADUserageGroupInput>> azureADv2AddAzureADUserageGroup = null, Expression<Func<azureADv2AddAzureADUserconsentProvidedForMinorInput>> azureADv2AddAzureADUserconsentProvidedForMinor = null, Expression<Func<string>> azureADv2AddAzureADUseremployeeId = null, Expression<Func<bool>> azureADv2AddAzureADUserforceChangePasswordNextLogin = null, Expression<Func<bool>> azureADv2AddAzureADUserenforceChangePasswordPolicy = null, Expression<Func<bool>> azureADv2AddAzureADUserpasswordNeverExpires = null)
         {
-            var __workflow_azureADv2AddAzureADUseruserPrincipalName = azureADv2AddAzureADUseruserPrincipalName == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUseruserPrincipalName);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUseruserPrincipalName, nameof(azureADv2AddAzureADUseruserPrincipalName), required: true);
-            var __workflow_azureADv2AddAzureADUseraccountEnabled = azureADv2AddAzureADUseraccountEnabled == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUseraccountEnabled);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUseraccountEnabled, nameof(azureADv2AddAzureADUseraccountEnabled), required: true);
-            var __workflow_azureADv2AddAzureADUseraccountPassword = azureADv2AddAzureADUseraccountPassword == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUseraccountPassword);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUseraccountPassword, nameof(azureADv2AddAzureADUseraccountPassword), required: true);
-            var __workflow_azureADv2AddAzureADUserdisplayName = azureADv2AddAzureADUserdisplayName == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserdisplayName);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserdisplayName, nameof(azureADv2AddAzureADUserdisplayName), required: true);
-            var __workflow_azureADv2AddAzureADUsermailNickName = azureADv2AddAzureADUsermailNickName == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUsermailNickName);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUsermailNickName, nameof(azureADv2AddAzureADUsermailNickName), required: true);
-            var __workflow_azureADv2AddAzureADUserworkflow = azureADv2AddAzureADUserworkflow == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserworkflow, nameof(azureADv2AddAzureADUserworkflow), required: true);
-            var __workflow_azureADv2AddAzureADUseraccountPasswordIsStoredPassword = azureADv2AddAzureADUseraccountPasswordIsStoredPassword == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUseraccountPasswordIsStoredPassword);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUseraccountPasswordIsStoredPassword, nameof(azureADv2AddAzureADUseraccountPasswordIsStoredPassword), required: false);
-            var __workflow_azureADv2AddAzureADUserfirstName = azureADv2AddAzureADUserfirstName == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserfirstName);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserfirstName, nameof(azureADv2AddAzureADUserfirstName), required: false);
-            var __workflow_azureADv2AddAzureADUserlastName = azureADv2AddAzureADUserlastName == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserlastName);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserlastName, nameof(azureADv2AddAzureADUserlastName), required: false);
-            var __workflow_azureADv2AddAzureADUsercity = azureADv2AddAzureADUsercity == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUsercity);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUsercity, nameof(azureADv2AddAzureADUsercity), required: false);
-            var __workflow_azureADv2AddAzureADUsercompanyName = azureADv2AddAzureADUsercompanyName == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUsercompanyName);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUsercompanyName, nameof(azureADv2AddAzureADUsercompanyName), required: false);
-            var __workflow_azureADv2AddAzureADUsercountry = azureADv2AddAzureADUsercountry == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUsercountry);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUsercountry, nameof(azureADv2AddAzureADUsercountry), required: false);
-            var __workflow_azureADv2AddAzureADUserdepartment = azureADv2AddAzureADUserdepartment == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserdepartment);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserdepartment, nameof(azureADv2AddAzureADUserdepartment), required: false);
-            var __workflow_azureADv2AddAzureADUserfaxNumber = azureADv2AddAzureADUserfaxNumber == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserfaxNumber);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserfaxNumber, nameof(azureADv2AddAzureADUserfaxNumber), required: false);
-            var __workflow_azureADv2AddAzureADUserjobTitle = azureADv2AddAzureADUserjobTitle == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserjobTitle);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserjobTitle, nameof(azureADv2AddAzureADUserjobTitle), required: false);
-            var __workflow_azureADv2AddAzureADUsermobilePhone = azureADv2AddAzureADUsermobilePhone == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUsermobilePhone);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUsermobilePhone, nameof(azureADv2AddAzureADUsermobilePhone), required: false);
-            var __workflow_azureADv2AddAzureADUseroffice = azureADv2AddAzureADUseroffice == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUseroffice);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUseroffice, nameof(azureADv2AddAzureADUseroffice), required: false);
-            var __workflow_azureADv2AddAzureADUserphoneNumber = azureADv2AddAzureADUserphoneNumber == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserphoneNumber);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserphoneNumber, nameof(azureADv2AddAzureADUserphoneNumber), required: false);
-            var __workflow_azureADv2AddAzureADUserpostalCode = azureADv2AddAzureADUserpostalCode == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserpostalCode);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserpostalCode, nameof(azureADv2AddAzureADUserpostalCode), required: false);
-            var __workflow_azureADv2AddAzureADUserpreferredLanguage = azureADv2AddAzureADUserpreferredLanguage == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserpreferredLanguage);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserpreferredLanguage, nameof(azureADv2AddAzureADUserpreferredLanguage), required: false);
-            var __workflow_azureADv2AddAzureADUserstate = azureADv2AddAzureADUserstate == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserstate);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserstate, nameof(azureADv2AddAzureADUserstate), required: false);
-            var __workflow_azureADv2AddAzureADUserstreetAddress = azureADv2AddAzureADUserstreetAddress == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserstreetAddress);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserstreetAddress, nameof(azureADv2AddAzureADUserstreetAddress), required: false);
-            var __workflow_azureADv2AddAzureADUserusageLocation = azureADv2AddAzureADUserusageLocation == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserusageLocation);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserusageLocation, nameof(azureADv2AddAzureADUserusageLocation), required: false);
-            var __workflow_azureADv2AddAzureADUserageGroup = azureADv2AddAzureADUserageGroup == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserageGroup);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserageGroup, nameof(azureADv2AddAzureADUserageGroup), required: false);
-            var __workflow_azureADv2AddAzureADUserconsentProvidedForMinor = azureADv2AddAzureADUserconsentProvidedForMinor == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserconsentProvidedForMinor);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserconsentProvidedForMinor, nameof(azureADv2AddAzureADUserconsentProvidedForMinor), required: false);
-            var __workflow_azureADv2AddAzureADUseremployeeId = azureADv2AddAzureADUseremployeeId == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUseremployeeId);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUseremployeeId, nameof(azureADv2AddAzureADUseremployeeId), required: false);
-            var __workflow_azureADv2AddAzureADUserforceChangePasswordNextLogin = azureADv2AddAzureADUserforceChangePasswordNextLogin == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserforceChangePasswordNextLogin);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserforceChangePasswordNextLogin, nameof(azureADv2AddAzureADUserforceChangePasswordNextLogin), required: false);
-            var __workflow_azureADv2AddAzureADUserenforceChangePasswordPolicy = azureADv2AddAzureADUserenforceChangePasswordPolicy == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserenforceChangePasswordPolicy);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserenforceChangePasswordPolicy, nameof(azureADv2AddAzureADUserenforceChangePasswordPolicy), required: false);
-            var __workflow_azureADv2AddAzureADUserpasswordNeverExpires = azureADv2AddAzureADUserpasswordNeverExpires == null ? null : WorkflowExpression.Compile(azureADv2AddAzureADUserpasswordNeverExpires);
-            WorkflowExpression.Validate(__workflow_azureADv2AddAzureADUserpasswordNeverExpires, nameof(azureADv2AddAzureADUserpasswordNeverExpires), required: false);
+            var __workflow_azureADv2AddAzureADUseruserPrincipalName = WorkflowExpression.Compile(azureADv2AddAzureADUseruserPrincipalName, nameof(azureADv2AddAzureADUseruserPrincipalName), required: true);
+            var __workflow_azureADv2AddAzureADUseraccountEnabled = WorkflowExpression.Compile(azureADv2AddAzureADUseraccountEnabled, nameof(azureADv2AddAzureADUseraccountEnabled), required: true);
+            var __workflow_azureADv2AddAzureADUseraccountPassword = WorkflowExpression.Compile(azureADv2AddAzureADUseraccountPassword, nameof(azureADv2AddAzureADUseraccountPassword), required: true);
+            var __workflow_azureADv2AddAzureADUserdisplayName = WorkflowExpression.Compile(azureADv2AddAzureADUserdisplayName, nameof(azureADv2AddAzureADUserdisplayName), required: true);
+            var __workflow_azureADv2AddAzureADUsermailNickName = WorkflowExpression.Compile(azureADv2AddAzureADUsermailNickName, nameof(azureADv2AddAzureADUsermailNickName), required: true);
+            var __workflow_azureADv2AddAzureADUserworkflow = WorkflowExpression.Compile(azureADv2AddAzureADUserworkflow, nameof(azureADv2AddAzureADUserworkflow), required: true);
+            var __workflow_azureADv2AddAzureADUseraccountPasswordIsStoredPassword = WorkflowExpression.Compile(azureADv2AddAzureADUseraccountPasswordIsStoredPassword, nameof(azureADv2AddAzureADUseraccountPasswordIsStoredPassword), required: false);
+            var __workflow_azureADv2AddAzureADUserfirstName = WorkflowExpression.Compile(azureADv2AddAzureADUserfirstName, nameof(azureADv2AddAzureADUserfirstName), required: false);
+            var __workflow_azureADv2AddAzureADUserlastName = WorkflowExpression.Compile(azureADv2AddAzureADUserlastName, nameof(azureADv2AddAzureADUserlastName), required: false);
+            var __workflow_azureADv2AddAzureADUsercity = WorkflowExpression.Compile(azureADv2AddAzureADUsercity, nameof(azureADv2AddAzureADUsercity), required: false);
+            var __workflow_azureADv2AddAzureADUsercompanyName = WorkflowExpression.Compile(azureADv2AddAzureADUsercompanyName, nameof(azureADv2AddAzureADUsercompanyName), required: false);
+            var __workflow_azureADv2AddAzureADUsercountry = WorkflowExpression.Compile(azureADv2AddAzureADUsercountry, nameof(azureADv2AddAzureADUsercountry), required: false);
+            var __workflow_azureADv2AddAzureADUserdepartment = WorkflowExpression.Compile(azureADv2AddAzureADUserdepartment, nameof(azureADv2AddAzureADUserdepartment), required: false);
+            var __workflow_azureADv2AddAzureADUserfaxNumber = WorkflowExpression.Compile(azureADv2AddAzureADUserfaxNumber, nameof(azureADv2AddAzureADUserfaxNumber), required: false);
+            var __workflow_azureADv2AddAzureADUserjobTitle = WorkflowExpression.Compile(azureADv2AddAzureADUserjobTitle, nameof(azureADv2AddAzureADUserjobTitle), required: false);
+            var __workflow_azureADv2AddAzureADUsermobilePhone = WorkflowExpression.Compile(azureADv2AddAzureADUsermobilePhone, nameof(azureADv2AddAzureADUsermobilePhone), required: false);
+            var __workflow_azureADv2AddAzureADUseroffice = WorkflowExpression.Compile(azureADv2AddAzureADUseroffice, nameof(azureADv2AddAzureADUseroffice), required: false);
+            var __workflow_azureADv2AddAzureADUserphoneNumber = WorkflowExpression.Compile(azureADv2AddAzureADUserphoneNumber, nameof(azureADv2AddAzureADUserphoneNumber), required: false);
+            var __workflow_azureADv2AddAzureADUserpostalCode = WorkflowExpression.Compile(azureADv2AddAzureADUserpostalCode, nameof(azureADv2AddAzureADUserpostalCode), required: false);
+            var __workflow_azureADv2AddAzureADUserpreferredLanguage = WorkflowExpression.Compile(azureADv2AddAzureADUserpreferredLanguage, nameof(azureADv2AddAzureADUserpreferredLanguage), required: false);
+            var __workflow_azureADv2AddAzureADUserstate = WorkflowExpression.Compile(azureADv2AddAzureADUserstate, nameof(azureADv2AddAzureADUserstate), required: false);
+            var __workflow_azureADv2AddAzureADUserstreetAddress = WorkflowExpression.Compile(azureADv2AddAzureADUserstreetAddress, nameof(azureADv2AddAzureADUserstreetAddress), required: false);
+            var __workflow_azureADv2AddAzureADUserusageLocation = WorkflowExpression.Compile(azureADv2AddAzureADUserusageLocation, nameof(azureADv2AddAzureADUserusageLocation), required: false);
+            var __workflow_azureADv2AddAzureADUserageGroup = WorkflowExpression.Compile(azureADv2AddAzureADUserageGroup, nameof(azureADv2AddAzureADUserageGroup), required: false);
+            var __workflow_azureADv2AddAzureADUserconsentProvidedForMinor = WorkflowExpression.Compile(azureADv2AddAzureADUserconsentProvidedForMinor, nameof(azureADv2AddAzureADUserconsentProvidedForMinor), required: false);
+            var __workflow_azureADv2AddAzureADUseremployeeId = WorkflowExpression.Compile(azureADv2AddAzureADUseremployeeId, nameof(azureADv2AddAzureADUseremployeeId), required: false);
+            var __workflow_azureADv2AddAzureADUserforceChangePasswordNextLogin = WorkflowExpression.Compile(azureADv2AddAzureADUserforceChangePasswordNextLogin, nameof(azureADv2AddAzureADUserforceChangePasswordNextLogin), required: false);
+            var __workflow_azureADv2AddAzureADUserenforceChangePasswordPolicy = WorkflowExpression.Compile(azureADv2AddAzureADUserenforceChangePasswordPolicy, nameof(azureADv2AddAzureADUserenforceChangePasswordPolicy), required: false);
+            var __workflow_azureADv2AddAzureADUserpasswordNeverExpires = WorkflowExpression.Compile(azureADv2AddAzureADUserpasswordNeverExpires, nameof(azureADv2AddAzureADUserpasswordNeverExpires), required: false);
             return new DeferredBodyAction<AzureADv2AddAzureADUserResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AddAzureADUser";
@@ -7259,12 +6656,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveAzureADUserResponse> AzureADv2RemoveAzureADUser(Expression<Func<string>> azureADv2RemoveAzureADUserobjectId, Expression<Func<string>> azureADv2RemoveAzureADUserworkflow, Expression<Func<bool>> azureADv2RemoveAzureADUsererrorIfUserDoesNotExist = null)
         {
-            var __workflow_azureADv2RemoveAzureADUserobjectId = azureADv2RemoveAzureADUserobjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveAzureADUserobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveAzureADUserobjectId, nameof(azureADv2RemoveAzureADUserobjectId), required: true);
-            var __workflow_azureADv2RemoveAzureADUserworkflow = azureADv2RemoveAzureADUserworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveAzureADUserworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveAzureADUserworkflow, nameof(azureADv2RemoveAzureADUserworkflow), required: true);
-            var __workflow_azureADv2RemoveAzureADUsererrorIfUserDoesNotExist = azureADv2RemoveAzureADUsererrorIfUserDoesNotExist == null ? null : WorkflowExpression.Compile(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveAzureADUsererrorIfUserDoesNotExist, nameof(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist), required: false);
+            var __workflow_azureADv2RemoveAzureADUserobjectId = WorkflowExpression.Compile(azureADv2RemoveAzureADUserobjectId, nameof(azureADv2RemoveAzureADUserobjectId), required: true);
+            var __workflow_azureADv2RemoveAzureADUserworkflow = WorkflowExpression.Compile(azureADv2RemoveAzureADUserworkflow, nameof(azureADv2RemoveAzureADUserworkflow), required: true);
+            var __workflow_azureADv2RemoveAzureADUsererrorIfUserDoesNotExist = WorkflowExpression.Compile(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist, nameof(azureADv2RemoveAzureADUsererrorIfUserDoesNotExist), required: false);
             return new DeferredBodyAction<AzureADv2RemoveAzureADUserResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveAzureADUser";
@@ -7304,18 +6698,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2ResetAzureADUserPasswordResponse> AzureADv2ResetAzureADUserPassword(Expression<Func<string>> azureADv2ResetAzureADUserPassworduserPrincipalName, Expression<Func<string>> azureADv2ResetAzureADUserPasswordnewPassword, Expression<Func<string>> azureADv2ResetAzureADUserPasswordworkflow, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword = null, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin = null, Expression<Func<bool>> azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy = null)
         {
-            var __workflow_azureADv2ResetAzureADUserPassworduserPrincipalName = azureADv2ResetAzureADUserPassworduserPrincipalName == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPassworduserPrincipalName);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPassworduserPrincipalName, nameof(azureADv2ResetAzureADUserPassworduserPrincipalName), required: true);
-            var __workflow_azureADv2ResetAzureADUserPasswordnewPassword = azureADv2ResetAzureADUserPasswordnewPassword == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordnewPassword);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPasswordnewPassword, nameof(azureADv2ResetAzureADUserPasswordnewPassword), required: true);
-            var __workflow_azureADv2ResetAzureADUserPasswordworkflow = azureADv2ResetAzureADUserPasswordworkflow == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPasswordworkflow, nameof(azureADv2ResetAzureADUserPasswordworkflow), required: true);
-            var __workflow_azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword = azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword, nameof(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword), required: false);
-            var __workflow_azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin = azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin, nameof(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin), required: false);
-            var __workflow_azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy = azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy, nameof(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy), required: false);
+            var __workflow_azureADv2ResetAzureADUserPassworduserPrincipalName = WorkflowExpression.Compile(azureADv2ResetAzureADUserPassworduserPrincipalName, nameof(azureADv2ResetAzureADUserPassworduserPrincipalName), required: true);
+            var __workflow_azureADv2ResetAzureADUserPasswordnewPassword = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordnewPassword, nameof(azureADv2ResetAzureADUserPasswordnewPassword), required: true);
+            var __workflow_azureADv2ResetAzureADUserPasswordworkflow = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordworkflow, nameof(azureADv2ResetAzureADUserPasswordworkflow), required: true);
+            var __workflow_azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword, nameof(azureADv2ResetAzureADUserPasswordaccountPasswordIsStoredPassword), required: false);
+            var __workflow_azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin, nameof(azureADv2ResetAzureADUserPasswordforceChangePasswordNextLogin), required: false);
+            var __workflow_azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy = WorkflowExpression.Compile(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy, nameof(azureADv2ResetAzureADUserPasswordenforceChangePasswordPolicy), required: false);
             return new DeferredBodyAction<AzureADv2ResetAzureADUserPasswordResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2ResetAzureADUserPassword";
@@ -7389,12 +6777,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserGroupMembershipResponse> AzureADv2GetAzureADUserGroupMembership(Expression<Func<string>> azureADv2GetAzureADUserGroupMembershipobjectId, Expression<Func<string>> azureADv2GetAzureADUserGroupMembershipworkflow, Expression<Func<string>> azureADv2GetAzureADUserGroupMembershippropertiesToReturn = null)
         {
-            var __workflow_azureADv2GetAzureADUserGroupMembershipobjectId = azureADv2GetAzureADUserGroupMembershipobjectId == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershipobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserGroupMembershipobjectId, nameof(azureADv2GetAzureADUserGroupMembershipobjectId), required: true);
-            var __workflow_azureADv2GetAzureADUserGroupMembershipworkflow = azureADv2GetAzureADUserGroupMembershipworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershipworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserGroupMembershipworkflow, nameof(azureADv2GetAzureADUserGroupMembershipworkflow), required: true);
-            var __workflow_azureADv2GetAzureADUserGroupMembershippropertiesToReturn = azureADv2GetAzureADUserGroupMembershippropertiesToReturn == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershippropertiesToReturn);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserGroupMembershippropertiesToReturn, nameof(azureADv2GetAzureADUserGroupMembershippropertiesToReturn), required: false);
+            var __workflow_azureADv2GetAzureADUserGroupMembershipobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershipobjectId, nameof(azureADv2GetAzureADUserGroupMembershipobjectId), required: true);
+            var __workflow_azureADv2GetAzureADUserGroupMembershipworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershipworkflow, nameof(azureADv2GetAzureADUserGroupMembershipworkflow), required: true);
+            var __workflow_azureADv2GetAzureADUserGroupMembershippropertiesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADUserGroupMembershippropertiesToReturn, nameof(azureADv2GetAzureADUserGroupMembershippropertiesToReturn), required: false);
             return new DeferredBodyAction<AzureADv2GetAzureADUserGroupMembershipResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserGroupMembership";
@@ -7424,12 +6809,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2IsUserInAzureADUserGroupResponse> AzureADv2IsUserInAzureADUserGroup(Expression<Func<string>> azureADv2IsUserInAzureADUserGroupobjectId, Expression<Func<string>> azureADv2IsUserInAzureADUserGroupgroupObjectId, Expression<Func<string>> azureADv2IsUserInAzureADUserGroupworkflow)
         {
-            var __workflow_azureADv2IsUserInAzureADUserGroupobjectId = azureADv2IsUserInAzureADUserGroupobjectId == null ? null : WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2IsUserInAzureADUserGroupobjectId, nameof(azureADv2IsUserInAzureADUserGroupobjectId), required: true);
-            var __workflow_azureADv2IsUserInAzureADUserGroupgroupObjectId = azureADv2IsUserInAzureADUserGroupgroupObjectId == null ? null : WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupgroupObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2IsUserInAzureADUserGroupgroupObjectId, nameof(azureADv2IsUserInAzureADUserGroupgroupObjectId), required: true);
-            var __workflow_azureADv2IsUserInAzureADUserGroupworkflow = azureADv2IsUserInAzureADUserGroupworkflow == null ? null : WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2IsUserInAzureADUserGroupworkflow, nameof(azureADv2IsUserInAzureADUserGroupworkflow), required: true);
+            var __workflow_azureADv2IsUserInAzureADUserGroupobjectId = WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupobjectId, nameof(azureADv2IsUserInAzureADUserGroupobjectId), required: true);
+            var __workflow_azureADv2IsUserInAzureADUserGroupgroupObjectId = WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupgroupObjectId, nameof(azureADv2IsUserInAzureADUserGroupgroupObjectId), required: true);
+            var __workflow_azureADv2IsUserInAzureADUserGroupworkflow = WorkflowExpression.Compile(azureADv2IsUserInAzureADUserGroupworkflow, nameof(azureADv2IsUserInAzureADUserGroupworkflow), required: true);
             return new DeferredBodyAction<AzureADv2IsUserInAzureADUserGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2IsUserInAzureADUserGroup";
@@ -7455,14 +6837,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2AddUserToGroupResponse> AzureADv2AddUserToGroup(Expression<Func<string>> azureADv2AddUserToGroupuserObjectId, Expression<Func<string>> azureADv2AddUserToGroupgroupObjectId, Expression<Func<string>> azureADv2AddUserToGroupworkflow, Expression<Func<bool>> azureADv2AddUserToGroupcheckUserGroupMembershipsFirst = null)
         {
-            var __workflow_azureADv2AddUserToGroupuserObjectId = azureADv2AddUserToGroupuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2AddUserToGroupuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2AddUserToGroupuserObjectId, nameof(azureADv2AddUserToGroupuserObjectId), required: true);
-            var __workflow_azureADv2AddUserToGroupgroupObjectId = azureADv2AddUserToGroupgroupObjectId == null ? null : WorkflowExpression.Compile(azureADv2AddUserToGroupgroupObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2AddUserToGroupgroupObjectId, nameof(azureADv2AddUserToGroupgroupObjectId), required: true);
-            var __workflow_azureADv2AddUserToGroupworkflow = azureADv2AddUserToGroupworkflow == null ? null : WorkflowExpression.Compile(azureADv2AddUserToGroupworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2AddUserToGroupworkflow, nameof(azureADv2AddUserToGroupworkflow), required: true);
-            var __workflow_azureADv2AddUserToGroupcheckUserGroupMembershipsFirst = azureADv2AddUserToGroupcheckUserGroupMembershipsFirst == null ? null : WorkflowExpression.Compile(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst);
-            WorkflowExpression.Validate(__workflow_azureADv2AddUserToGroupcheckUserGroupMembershipsFirst, nameof(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst), required: false);
+            var __workflow_azureADv2AddUserToGroupuserObjectId = WorkflowExpression.Compile(azureADv2AddUserToGroupuserObjectId, nameof(azureADv2AddUserToGroupuserObjectId), required: true);
+            var __workflow_azureADv2AddUserToGroupgroupObjectId = WorkflowExpression.Compile(azureADv2AddUserToGroupgroupObjectId, nameof(azureADv2AddUserToGroupgroupObjectId), required: true);
+            var __workflow_azureADv2AddUserToGroupworkflow = WorkflowExpression.Compile(azureADv2AddUserToGroupworkflow, nameof(azureADv2AddUserToGroupworkflow), required: true);
+            var __workflow_azureADv2AddUserToGroupcheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst, nameof(azureADv2AddUserToGroupcheckUserGroupMembershipsFirst), required: false);
             return new DeferredBodyAction<AzureADv2AddUserToGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AddUserToGroup";
@@ -7504,14 +6882,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromGroupResponse> AzureADv2RemoveUserFromGroup(Expression<Func<string>> azureADv2RemoveUserFromGroupuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromGroupgroupObjectId, Expression<Func<string>> azureADv2RemoveUserFromGroupworkflow, Expression<Func<bool>> azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst = null)
         {
-            var __workflow_azureADv2RemoveUserFromGroupuserObjectId = azureADv2RemoveUserFromGroupuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromGroupuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromGroupuserObjectId, nameof(azureADv2RemoveUserFromGroupuserObjectId), required: true);
-            var __workflow_azureADv2RemoveUserFromGroupgroupObjectId = azureADv2RemoveUserFromGroupgroupObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromGroupgroupObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromGroupgroupObjectId, nameof(azureADv2RemoveUserFromGroupgroupObjectId), required: true);
-            var __workflow_azureADv2RemoveUserFromGroupworkflow = azureADv2RemoveUserFromGroupworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromGroupworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromGroupworkflow, nameof(azureADv2RemoveUserFromGroupworkflow), required: true);
-            var __workflow_azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst = azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst, nameof(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst), required: false);
+            var __workflow_azureADv2RemoveUserFromGroupuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupuserObjectId, nameof(azureADv2RemoveUserFromGroupuserObjectId), required: true);
+            var __workflow_azureADv2RemoveUserFromGroupgroupObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupgroupObjectId, nameof(azureADv2RemoveUserFromGroupgroupObjectId), required: true);
+            var __workflow_azureADv2RemoveUserFromGroupworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupworkflow, nameof(azureADv2RemoveUserFromGroupworkflow), required: true);
+            var __workflow_azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst, nameof(azureADv2RemoveUserFromGroupcheckUserGroupMembershipsFirst), required: false);
             return new DeferredBodyAction<AzureADv2RemoveUserFromGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromGroup";
@@ -7553,20 +6927,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2AddADUserToMultipleADGroupsResponse> AzureADv2AddADUserToMultipleADGroups(Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsuserObjectId, Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsworkflow, Expression<Func<string>> azureADv2AddADUserToMultipleADGroupsgroupNamesJSON = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd = null, Expression<Func<bool>> azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst = null, Expression<Func<int>> azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall = null)
         {
-            var __workflow_azureADv2AddADUserToMultipleADGroupsuserObjectId = azureADv2AddADUserToMultipleADGroupsuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2AddADUserToMultipleADGroupsuserObjectId, nameof(azureADv2AddADUserToMultipleADGroupsuserObjectId), required: true);
-            var __workflow_azureADv2AddADUserToMultipleADGroupsworkflow = azureADv2AddADUserToMultipleADGroupsworkflow == null ? null : WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2AddADUserToMultipleADGroupsworkflow, nameof(azureADv2AddADUserToMultipleADGroupsworkflow), required: true);
-            var __workflow_azureADv2AddADUserToMultipleADGroupsgroupNamesJSON = azureADv2AddADUserToMultipleADGroupsgroupNamesJSON == null ? null : WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsgroupNamesJSON);
-            WorkflowExpression.Validate(__workflow_azureADv2AddADUserToMultipleADGroupsgroupNamesJSON, nameof(azureADv2AddADUserToMultipleADGroupsgroupNamesJSON), required: false);
-            var __workflow_azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd = azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd == null ? null : WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd);
-            WorkflowExpression.Validate(__workflow_azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd, nameof(azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd), required: false);
-            var __workflow_azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd = azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd == null ? null : WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd);
-            WorkflowExpression.Validate(__workflow_azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd, nameof(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd), required: false);
-            var __workflow_azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst = azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst == null ? null : WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst);
-            WorkflowExpression.Validate(__workflow_azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst, nameof(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst), required: false);
-            var __workflow_azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall = azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall == null ? null : WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall);
-            WorkflowExpression.Validate(__workflow_azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall, nameof(azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall), required: false);
+            var __workflow_azureADv2AddADUserToMultipleADGroupsuserObjectId = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsuserObjectId, nameof(azureADv2AddADUserToMultipleADGroupsuserObjectId), required: true);
+            var __workflow_azureADv2AddADUserToMultipleADGroupsworkflow = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsworkflow, nameof(azureADv2AddADUserToMultipleADGroupsworkflow), required: true);
+            var __workflow_azureADv2AddADUserToMultipleADGroupsgroupNamesJSON = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsgroupNamesJSON, nameof(azureADv2AddADUserToMultipleADGroupsgroupNamesJSON), required: false);
+            var __workflow_azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd, nameof(azureADv2AddADUserToMultipleADGroupsexceptionIfAnyGroupsFailToAdd), required: false);
+            var __workflow_azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd, nameof(azureADv2AddADUserToMultipleADGroupsexceptionIfAllGroupsFailToAdd), required: false);
+            var __workflow_azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst, nameof(azureADv2AddADUserToMultipleADGroupscheckUserGroupMembershipsFirst), required: false);
+            var __workflow_azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall = WorkflowExpression.Compile(azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall, nameof(azureADv2AddADUserToMultipleADGroupsmaxAzureADGroupsPerCall), required: false);
             return new DeferredBodyAction<AzureADv2AddADUserToMultipleADGroupsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AddADUserToMultipleADGroups";
@@ -7650,20 +7017,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse> AzureADv2RemoveADUserFromMultipleADGroups(Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsuserObjectId, Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsworkflow, Expression<Func<string>> azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst = null, Expression<Func<int>> azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall = null)
         {
-            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsuserObjectId = azureADv2RemoveADUserFromMultipleADGroupsuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveADUserFromMultipleADGroupsuserObjectId, nameof(azureADv2RemoveADUserFromMultipleADGroupsuserObjectId), required: true);
-            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsworkflow = azureADv2RemoveADUserFromMultipleADGroupsworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveADUserFromMultipleADGroupsworkflow, nameof(azureADv2RemoveADUserFromMultipleADGroupsworkflow), required: true);
-            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON = azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON == null ? null : WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON, nameof(azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON), required: false);
-            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove = azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove, nameof(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove), required: false);
-            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove = azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove, nameof(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove), required: false);
-            var __workflow_azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst = azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst == null ? null : WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst, nameof(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst), required: false);
-            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall = azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall == null ? null : WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall, nameof(azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall), required: false);
+            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsuserObjectId = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsuserObjectId, nameof(azureADv2RemoveADUserFromMultipleADGroupsuserObjectId), required: true);
+            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsworkflow = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsworkflow, nameof(azureADv2RemoveADUserFromMultipleADGroupsworkflow), required: true);
+            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON, nameof(azureADv2RemoveADUserFromMultipleADGroupsgroupNamesJSON), required: false);
+            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove, nameof(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAnyGroupsFailToRemove), required: false);
+            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove, nameof(azureADv2RemoveADUserFromMultipleADGroupsexceptionIfAllGroupsFailToRemove), required: false);
+            var __workflow_azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst, nameof(azureADv2RemoveADUserFromMultipleADGroupscheckUserGroupMembershipsFirst), required: false);
+            var __workflow_azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall = WorkflowExpression.Compile(azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall, nameof(azureADv2RemoveADUserFromMultipleADGroupsmaxAzureADGroupsPerCall), required: false);
             return new DeferredBodyAction<AzureADv2RemoveADUserFromMultipleADGroupsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveADUserFromMultipleADGroups";
@@ -7747,16 +7107,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromAllGroupsResponse> AzureADv2RemoveUserFromAllGroups(Expression<Func<string>> azureADv2RemoveUserFromAllGroupsuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromAllGroupsworkflow, Expression<Func<bool>> azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<int>> azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall = null)
         {
-            var __workflow_azureADv2RemoveUserFromAllGroupsuserObjectId = azureADv2RemoveUserFromAllGroupsuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllGroupsuserObjectId, nameof(azureADv2RemoveUserFromAllGroupsuserObjectId), required: true);
-            var __workflow_azureADv2RemoveUserFromAllGroupsworkflow = azureADv2RemoveUserFromAllGroupsworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllGroupsworkflow, nameof(azureADv2RemoveUserFromAllGroupsworkflow), required: true);
-            var __workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove = azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove, nameof(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove), required: false);
-            var __workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove = azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove, nameof(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove), required: false);
-            var __workflow_azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall = azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall, nameof(azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall), required: false);
+            var __workflow_azureADv2RemoveUserFromAllGroupsuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsuserObjectId, nameof(azureADv2RemoveUserFromAllGroupsuserObjectId), required: true);
+            var __workflow_azureADv2RemoveUserFromAllGroupsworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsworkflow, nameof(azureADv2RemoveUserFromAllGroupsworkflow), required: true);
+            var __workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove, nameof(azureADv2RemoveUserFromAllGroupsexceptionIfAnyGroupsFailToRemove), required: false);
+            var __workflow_azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove, nameof(azureADv2RemoveUserFromAllGroupsexceptionIfAllGroupsFailToRemove), required: false);
+            var __workflow_azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall = WorkflowExpression.Compile(azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall, nameof(azureADv2RemoveUserFromAllGroupsmaxAzureADGroupsPerCall), required: false);
             return new DeferredBodyAction<AzureADv2RemoveUserFromAllGroupsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromAllGroups";
@@ -7818,10 +7173,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetAzureADLicenseSKUsResponse> AzureADv2GetAzureADLicenseSKUs(Expression<Func<string>> azureADv2GetAzureADLicenseSKUsworkflow, Expression<Func<azureADv2GetAzureADLicenseSKUsexpandPropertyInput>> azureADv2GetAzureADLicenseSKUsexpandProperty = null)
         {
-            var __workflow_azureADv2GetAzureADLicenseSKUsworkflow = azureADv2GetAzureADLicenseSKUsworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADLicenseSKUsworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADLicenseSKUsworkflow, nameof(azureADv2GetAzureADLicenseSKUsworkflow), required: true);
-            var __workflow_azureADv2GetAzureADLicenseSKUsexpandProperty = azureADv2GetAzureADLicenseSKUsexpandProperty == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADLicenseSKUsexpandProperty);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADLicenseSKUsexpandProperty, nameof(azureADv2GetAzureADLicenseSKUsexpandProperty), required: false);
+            var __workflow_azureADv2GetAzureADLicenseSKUsworkflow = WorkflowExpression.Compile(azureADv2GetAzureADLicenseSKUsworkflow, nameof(azureADv2GetAzureADLicenseSKUsworkflow), required: true);
+            var __workflow_azureADv2GetAzureADLicenseSKUsexpandProperty = WorkflowExpression.Compile(azureADv2GetAzureADLicenseSKUsexpandProperty, nameof(azureADv2GetAzureADLicenseSKUsexpandProperty), required: false);
             return new DeferredBodyAction<AzureADv2GetAzureADLicenseSKUsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADLicenseSKUs";
@@ -7859,22 +7212,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2SetAzureADUserLicenseResponse> AzureADv2SetAzureADUserLicense(Expression<Func<string>> azureADv2SetAzureADUserLicenseobjectId, Expression<Func<string>> azureADv2SetAzureADUserLicenseworkflow, Expression<Func<string>> azureADv2SetAzureADUserLicenselicenseToAdd = null, Expression<Func<azureADv2SetAzureADUserLicenselicensePlansChoiceInput>> azureADv2SetAzureADUserLicenselicensePlansChoice = null, Expression<Func<string>> azureADv2SetAzureADUserLicenselicensePlansCSV = null, Expression<Func<string>> azureADv2SetAzureADUserLicenselicensesToRemoveCSV = null, Expression<Func<string>> azureADv2SetAzureADUserLicenseusageLocation = null, Expression<Func<bool>> azureADv2SetAzureADUserLicenselocalScope = null)
         {
-            var __workflow_azureADv2SetAzureADUserLicenseobjectId = azureADv2SetAzureADUserLicenseobjectId == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenseobjectId, nameof(azureADv2SetAzureADUserLicenseobjectId), required: true);
-            var __workflow_azureADv2SetAzureADUserLicenseworkflow = azureADv2SetAzureADUserLicenseworkflow == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenseworkflow, nameof(azureADv2SetAzureADUserLicenseworkflow), required: true);
-            var __workflow_azureADv2SetAzureADUserLicenselicenseToAdd = azureADv2SetAzureADUserLicenselicenseToAdd == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicenseToAdd);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenselicenseToAdd, nameof(azureADv2SetAzureADUserLicenselicenseToAdd), required: false);
-            var __workflow_azureADv2SetAzureADUserLicenselicensePlansChoice = azureADv2SetAzureADUserLicenselicensePlansChoice == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicensePlansChoice);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenselicensePlansChoice, nameof(azureADv2SetAzureADUserLicenselicensePlansChoice), required: false);
-            var __workflow_azureADv2SetAzureADUserLicenselicensePlansCSV = azureADv2SetAzureADUserLicenselicensePlansCSV == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicensePlansCSV);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenselicensePlansCSV, nameof(azureADv2SetAzureADUserLicenselicensePlansCSV), required: false);
-            var __workflow_azureADv2SetAzureADUserLicenselicensesToRemoveCSV = azureADv2SetAzureADUserLicenselicensesToRemoveCSV == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicensesToRemoveCSV);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenselicensesToRemoveCSV, nameof(azureADv2SetAzureADUserLicenselicensesToRemoveCSV), required: false);
-            var __workflow_azureADv2SetAzureADUserLicenseusageLocation = azureADv2SetAzureADUserLicenseusageLocation == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseusageLocation);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenseusageLocation, nameof(azureADv2SetAzureADUserLicenseusageLocation), required: false);
-            var __workflow_azureADv2SetAzureADUserLicenselocalScope = azureADv2SetAzureADUserLicenselocalScope == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselocalScope);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserLicenselocalScope, nameof(azureADv2SetAzureADUserLicenselocalScope), required: false);
+            var __workflow_azureADv2SetAzureADUserLicenseobjectId = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseobjectId, nameof(azureADv2SetAzureADUserLicenseobjectId), required: true);
+            var __workflow_azureADv2SetAzureADUserLicenseworkflow = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseworkflow, nameof(azureADv2SetAzureADUserLicenseworkflow), required: true);
+            var __workflow_azureADv2SetAzureADUserLicenselicenseToAdd = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicenseToAdd, nameof(azureADv2SetAzureADUserLicenselicenseToAdd), required: false);
+            var __workflow_azureADv2SetAzureADUserLicenselicensePlansChoice = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicensePlansChoice, nameof(azureADv2SetAzureADUserLicenselicensePlansChoice), required: false);
+            var __workflow_azureADv2SetAzureADUserLicenselicensePlansCSV = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicensePlansCSV, nameof(azureADv2SetAzureADUserLicenselicensePlansCSV), required: false);
+            var __workflow_azureADv2SetAzureADUserLicenselicensesToRemoveCSV = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselicensesToRemoveCSV, nameof(azureADv2SetAzureADUserLicenselicensesToRemoveCSV), required: false);
+            var __workflow_azureADv2SetAzureADUserLicenseusageLocation = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenseusageLocation, nameof(azureADv2SetAzureADUserLicenseusageLocation), required: false);
+            var __workflow_azureADv2SetAzureADUserLicenselocalScope = WorkflowExpression.Compile(azureADv2SetAzureADUserLicenselocalScope, nameof(azureADv2SetAzureADUserLicenselocalScope), required: false);
             return new DeferredBodyAction<AzureADv2SetAzureADUserLicenseResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2SetAzureADUserLicense";
@@ -7944,10 +7289,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserLicensesResponse> AzureADv2GetAzureADUserLicenses(Expression<Func<string>> azureADv2GetAzureADUserLicensesobjectId, Expression<Func<string>> azureADv2GetAzureADUserLicensesworkflow)
         {
-            var __workflow_azureADv2GetAzureADUserLicensesobjectId = azureADv2GetAzureADUserLicensesobjectId == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserLicensesobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserLicensesobjectId, nameof(azureADv2GetAzureADUserLicensesobjectId), required: true);
-            var __workflow_azureADv2GetAzureADUserLicensesworkflow = azureADv2GetAzureADUserLicensesworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserLicensesworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserLicensesworkflow, nameof(azureADv2GetAzureADUserLicensesworkflow), required: true);
+            var __workflow_azureADv2GetAzureADUserLicensesobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserLicensesobjectId, nameof(azureADv2GetAzureADUserLicensesobjectId), required: true);
+            var __workflow_azureADv2GetAzureADUserLicensesworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserLicensesworkflow, nameof(azureADv2GetAzureADUserLicensesworkflow), required: true);
             return new DeferredBodyAction<AzureADv2GetAzureADUserLicensesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserLicenses";
@@ -7971,12 +7314,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserLicenseServicePlansResponse> AzureADv2GetAzureADUserLicenseServicePlans(Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlansobjectId, Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber, Expression<Func<string>> azureADv2GetAzureADUserLicenseServicePlansworkflow)
         {
-            var __workflow_azureADv2GetAzureADUserLicenseServicePlansobjectId = azureADv2GetAzureADUserLicenseServicePlansobjectId == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlansobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserLicenseServicePlansobjectId, nameof(azureADv2GetAzureADUserLicenseServicePlansobjectId), required: true);
-            var __workflow_azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber = azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber, nameof(azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber), required: true);
-            var __workflow_azureADv2GetAzureADUserLicenseServicePlansworkflow = azureADv2GetAzureADUserLicenseServicePlansworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlansworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserLicenseServicePlansworkflow, nameof(azureADv2GetAzureADUserLicenseServicePlansworkflow), required: true);
+            var __workflow_azureADv2GetAzureADUserLicenseServicePlansobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlansobjectId, nameof(azureADv2GetAzureADUserLicenseServicePlansobjectId), required: true);
+            var __workflow_azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber = WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber, nameof(azureADv2GetAzureADUserLicenseServicePlanslicenseSKUPartNumber), required: true);
+            var __workflow_azureADv2GetAzureADUserLicenseServicePlansworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserLicenseServicePlansworkflow, nameof(azureADv2GetAzureADUserLicenseServicePlansworkflow), required: true);
             return new DeferredBodyAction<AzureADv2GetAzureADUserLicenseServicePlansResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserLicenseServicePlans";
@@ -8002,10 +7342,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveAllAzureADUserLicenseResponse> AzureADv2RemoveAllAzureADUserLicense(Expression<Func<string>> azureADv2RemoveAllAzureADUserLicenseobjectId, Expression<Func<string>> azureADv2RemoveAllAzureADUserLicenseworkflow)
         {
-            var __workflow_azureADv2RemoveAllAzureADUserLicenseobjectId = azureADv2RemoveAllAzureADUserLicenseobjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveAllAzureADUserLicenseobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveAllAzureADUserLicenseobjectId, nameof(azureADv2RemoveAllAzureADUserLicenseobjectId), required: true);
-            var __workflow_azureADv2RemoveAllAzureADUserLicenseworkflow = azureADv2RemoveAllAzureADUserLicenseworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveAllAzureADUserLicenseworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveAllAzureADUserLicenseworkflow, nameof(azureADv2RemoveAllAzureADUserLicenseworkflow), required: true);
+            var __workflow_azureADv2RemoveAllAzureADUserLicenseobjectId = WorkflowExpression.Compile(azureADv2RemoveAllAzureADUserLicenseobjectId, nameof(azureADv2RemoveAllAzureADUserLicenseobjectId), required: true);
+            var __workflow_azureADv2RemoveAllAzureADUserLicenseworkflow = WorkflowExpression.Compile(azureADv2RemoveAllAzureADUserLicenseworkflow, nameof(azureADv2RemoveAllAzureADUserLicenseworkflow), required: true);
             return new DeferredBodyAction<AzureADv2RemoveAllAzureADUserLicenseResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveAllAzureADUserLicense";
@@ -8029,52 +7367,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2SetAzureADUserResponse> AzureADv2SetAzureADUser(Expression<Func<string>> azureADv2SetAzureADUserobjectId, Expression<Func<string>> azureADv2SetAzureADUserworkflow, Expression<Func<string>> azureADv2SetAzureADUserfirstName = null, Expression<Func<string>> azureADv2SetAzureADUserlastName = null, Expression<Func<string>> azureADv2SetAzureADUserdisplayName = null, Expression<Func<string>> azureADv2SetAzureADUsercity = null, Expression<Func<string>> azureADv2SetAzureADUsercompanyName = null, Expression<Func<string>> azureADv2SetAzureADUsercountry = null, Expression<Func<string>> azureADv2SetAzureADUserdepartment = null, Expression<Func<string>> azureADv2SetAzureADUserfaxNumber = null, Expression<Func<string>> azureADv2SetAzureADUserjobTitle = null, Expression<Func<string>> azureADv2SetAzureADUsermobilePhone = null, Expression<Func<string>> azureADv2SetAzureADUseroffice = null, Expression<Func<string>> azureADv2SetAzureADUserphoneNumber = null, Expression<Func<string>> azureADv2SetAzureADUserpostalCode = null, Expression<Func<string>> azureADv2SetAzureADUserpreferredLanguage = null, Expression<Func<string>> azureADv2SetAzureADUserstate = null, Expression<Func<string>> azureADv2SetAzureADUserstreetAddress = null, Expression<Func<string>> azureADv2SetAzureADUserusageLocation = null, Expression<Func<azureADv2SetAzureADUserageGroupInput>> azureADv2SetAzureADUserageGroup = null, Expression<Func<azureADv2SetAzureADUserconsentProvidedForMinorInput>> azureADv2SetAzureADUserconsentProvidedForMinor = null, Expression<Func<string>> azureADv2SetAzureADUsermailNickName = null, Expression<Func<string>> azureADv2SetAzureADUseremployeeId = null)
         {
-            var __workflow_azureADv2SetAzureADUserobjectId = azureADv2SetAzureADUserobjectId == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserobjectId, nameof(azureADv2SetAzureADUserobjectId), required: true);
-            var __workflow_azureADv2SetAzureADUserworkflow = azureADv2SetAzureADUserworkflow == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserworkflow, nameof(azureADv2SetAzureADUserworkflow), required: true);
-            var __workflow_azureADv2SetAzureADUserfirstName = azureADv2SetAzureADUserfirstName == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserfirstName);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserfirstName, nameof(azureADv2SetAzureADUserfirstName), required: false);
-            var __workflow_azureADv2SetAzureADUserlastName = azureADv2SetAzureADUserlastName == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserlastName);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserlastName, nameof(azureADv2SetAzureADUserlastName), required: false);
-            var __workflow_azureADv2SetAzureADUserdisplayName = azureADv2SetAzureADUserdisplayName == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserdisplayName);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserdisplayName, nameof(azureADv2SetAzureADUserdisplayName), required: false);
-            var __workflow_azureADv2SetAzureADUsercity = azureADv2SetAzureADUsercity == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUsercity);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUsercity, nameof(azureADv2SetAzureADUsercity), required: false);
-            var __workflow_azureADv2SetAzureADUsercompanyName = azureADv2SetAzureADUsercompanyName == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUsercompanyName);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUsercompanyName, nameof(azureADv2SetAzureADUsercompanyName), required: false);
-            var __workflow_azureADv2SetAzureADUsercountry = azureADv2SetAzureADUsercountry == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUsercountry);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUsercountry, nameof(azureADv2SetAzureADUsercountry), required: false);
-            var __workflow_azureADv2SetAzureADUserdepartment = azureADv2SetAzureADUserdepartment == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserdepartment);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserdepartment, nameof(azureADv2SetAzureADUserdepartment), required: false);
-            var __workflow_azureADv2SetAzureADUserfaxNumber = azureADv2SetAzureADUserfaxNumber == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserfaxNumber);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserfaxNumber, nameof(azureADv2SetAzureADUserfaxNumber), required: false);
-            var __workflow_azureADv2SetAzureADUserjobTitle = azureADv2SetAzureADUserjobTitle == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserjobTitle);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserjobTitle, nameof(azureADv2SetAzureADUserjobTitle), required: false);
-            var __workflow_azureADv2SetAzureADUsermobilePhone = azureADv2SetAzureADUsermobilePhone == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUsermobilePhone);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUsermobilePhone, nameof(azureADv2SetAzureADUsermobilePhone), required: false);
-            var __workflow_azureADv2SetAzureADUseroffice = azureADv2SetAzureADUseroffice == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUseroffice);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUseroffice, nameof(azureADv2SetAzureADUseroffice), required: false);
-            var __workflow_azureADv2SetAzureADUserphoneNumber = azureADv2SetAzureADUserphoneNumber == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserphoneNumber);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserphoneNumber, nameof(azureADv2SetAzureADUserphoneNumber), required: false);
-            var __workflow_azureADv2SetAzureADUserpostalCode = azureADv2SetAzureADUserpostalCode == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserpostalCode);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserpostalCode, nameof(azureADv2SetAzureADUserpostalCode), required: false);
-            var __workflow_azureADv2SetAzureADUserpreferredLanguage = azureADv2SetAzureADUserpreferredLanguage == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserpreferredLanguage);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserpreferredLanguage, nameof(azureADv2SetAzureADUserpreferredLanguage), required: false);
-            var __workflow_azureADv2SetAzureADUserstate = azureADv2SetAzureADUserstate == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserstate);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserstate, nameof(azureADv2SetAzureADUserstate), required: false);
-            var __workflow_azureADv2SetAzureADUserstreetAddress = azureADv2SetAzureADUserstreetAddress == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserstreetAddress);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserstreetAddress, nameof(azureADv2SetAzureADUserstreetAddress), required: false);
-            var __workflow_azureADv2SetAzureADUserusageLocation = azureADv2SetAzureADUserusageLocation == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserusageLocation);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserusageLocation, nameof(azureADv2SetAzureADUserusageLocation), required: false);
-            var __workflow_azureADv2SetAzureADUserageGroup = azureADv2SetAzureADUserageGroup == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserageGroup);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserageGroup, nameof(azureADv2SetAzureADUserageGroup), required: false);
-            var __workflow_azureADv2SetAzureADUserconsentProvidedForMinor = azureADv2SetAzureADUserconsentProvidedForMinor == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserconsentProvidedForMinor);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserconsentProvidedForMinor, nameof(azureADv2SetAzureADUserconsentProvidedForMinor), required: false);
-            var __workflow_azureADv2SetAzureADUsermailNickName = azureADv2SetAzureADUsermailNickName == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUsermailNickName);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUsermailNickName, nameof(azureADv2SetAzureADUsermailNickName), required: false);
-            var __workflow_azureADv2SetAzureADUseremployeeId = azureADv2SetAzureADUseremployeeId == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUseremployeeId);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUseremployeeId, nameof(azureADv2SetAzureADUseremployeeId), required: false);
+            var __workflow_azureADv2SetAzureADUserobjectId = WorkflowExpression.Compile(azureADv2SetAzureADUserobjectId, nameof(azureADv2SetAzureADUserobjectId), required: true);
+            var __workflow_azureADv2SetAzureADUserworkflow = WorkflowExpression.Compile(azureADv2SetAzureADUserworkflow, nameof(azureADv2SetAzureADUserworkflow), required: true);
+            var __workflow_azureADv2SetAzureADUserfirstName = WorkflowExpression.Compile(azureADv2SetAzureADUserfirstName, nameof(azureADv2SetAzureADUserfirstName), required: false);
+            var __workflow_azureADv2SetAzureADUserlastName = WorkflowExpression.Compile(azureADv2SetAzureADUserlastName, nameof(azureADv2SetAzureADUserlastName), required: false);
+            var __workflow_azureADv2SetAzureADUserdisplayName = WorkflowExpression.Compile(azureADv2SetAzureADUserdisplayName, nameof(azureADv2SetAzureADUserdisplayName), required: false);
+            var __workflow_azureADv2SetAzureADUsercity = WorkflowExpression.Compile(azureADv2SetAzureADUsercity, nameof(azureADv2SetAzureADUsercity), required: false);
+            var __workflow_azureADv2SetAzureADUsercompanyName = WorkflowExpression.Compile(azureADv2SetAzureADUsercompanyName, nameof(azureADv2SetAzureADUsercompanyName), required: false);
+            var __workflow_azureADv2SetAzureADUsercountry = WorkflowExpression.Compile(azureADv2SetAzureADUsercountry, nameof(azureADv2SetAzureADUsercountry), required: false);
+            var __workflow_azureADv2SetAzureADUserdepartment = WorkflowExpression.Compile(azureADv2SetAzureADUserdepartment, nameof(azureADv2SetAzureADUserdepartment), required: false);
+            var __workflow_azureADv2SetAzureADUserfaxNumber = WorkflowExpression.Compile(azureADv2SetAzureADUserfaxNumber, nameof(azureADv2SetAzureADUserfaxNumber), required: false);
+            var __workflow_azureADv2SetAzureADUserjobTitle = WorkflowExpression.Compile(azureADv2SetAzureADUserjobTitle, nameof(azureADv2SetAzureADUserjobTitle), required: false);
+            var __workflow_azureADv2SetAzureADUsermobilePhone = WorkflowExpression.Compile(azureADv2SetAzureADUsermobilePhone, nameof(azureADv2SetAzureADUsermobilePhone), required: false);
+            var __workflow_azureADv2SetAzureADUseroffice = WorkflowExpression.Compile(azureADv2SetAzureADUseroffice, nameof(azureADv2SetAzureADUseroffice), required: false);
+            var __workflow_azureADv2SetAzureADUserphoneNumber = WorkflowExpression.Compile(azureADv2SetAzureADUserphoneNumber, nameof(azureADv2SetAzureADUserphoneNumber), required: false);
+            var __workflow_azureADv2SetAzureADUserpostalCode = WorkflowExpression.Compile(azureADv2SetAzureADUserpostalCode, nameof(azureADv2SetAzureADUserpostalCode), required: false);
+            var __workflow_azureADv2SetAzureADUserpreferredLanguage = WorkflowExpression.Compile(azureADv2SetAzureADUserpreferredLanguage, nameof(azureADv2SetAzureADUserpreferredLanguage), required: false);
+            var __workflow_azureADv2SetAzureADUserstate = WorkflowExpression.Compile(azureADv2SetAzureADUserstate, nameof(azureADv2SetAzureADUserstate), required: false);
+            var __workflow_azureADv2SetAzureADUserstreetAddress = WorkflowExpression.Compile(azureADv2SetAzureADUserstreetAddress, nameof(azureADv2SetAzureADUserstreetAddress), required: false);
+            var __workflow_azureADv2SetAzureADUserusageLocation = WorkflowExpression.Compile(azureADv2SetAzureADUserusageLocation, nameof(azureADv2SetAzureADUserusageLocation), required: false);
+            var __workflow_azureADv2SetAzureADUserageGroup = WorkflowExpression.Compile(azureADv2SetAzureADUserageGroup, nameof(azureADv2SetAzureADUserageGroup), required: false);
+            var __workflow_azureADv2SetAzureADUserconsentProvidedForMinor = WorkflowExpression.Compile(azureADv2SetAzureADUserconsentProvidedForMinor, nameof(azureADv2SetAzureADUserconsentProvidedForMinor), required: false);
+            var __workflow_azureADv2SetAzureADUsermailNickName = WorkflowExpression.Compile(azureADv2SetAzureADUsermailNickName, nameof(azureADv2SetAzureADUsermailNickName), required: false);
+            var __workflow_azureADv2SetAzureADUseremployeeId = WorkflowExpression.Compile(azureADv2SetAzureADUseremployeeId, nameof(azureADv2SetAzureADUseremployeeId), required: false);
             return new DeferredBodyAction<AzureADv2SetAzureADUserResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2SetAzureADUser";
@@ -8224,48 +7539,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2ResetAzureADUserPropertiesResponse> AzureADv2ResetAzureADUserProperties(Expression<Func<string>> azureADv2ResetAzureADUserPropertiesobjectId, Expression<Func<string>> azureADv2ResetAzureADUserPropertiesworkflow, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetFirstName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetLastName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCity = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCompanyName = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetCountry = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetDepartment = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetFaxNumber = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetJobTitle = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetMobilePhone = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetOffice = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPhoneNumber = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPostalCode = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetPreferredLanguage = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetState = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetStreetAddress = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetUsageLocation = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetAgeGroup = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor = null, Expression<Func<bool>> azureADv2ResetAzureADUserPropertiesresetEmployeeId = null)
         {
-            var __workflow_azureADv2ResetAzureADUserPropertiesobjectId = azureADv2ResetAzureADUserPropertiesobjectId == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesobjectId, nameof(azureADv2ResetAzureADUserPropertiesobjectId), required: true);
-            var __workflow_azureADv2ResetAzureADUserPropertiesworkflow = azureADv2ResetAzureADUserPropertiesworkflow == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesworkflow, nameof(azureADv2ResetAzureADUserPropertiesworkflow), required: true);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetFirstName = azureADv2ResetAzureADUserPropertiesresetFirstName == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetFirstName);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetFirstName, nameof(azureADv2ResetAzureADUserPropertiesresetFirstName), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetLastName = azureADv2ResetAzureADUserPropertiesresetLastName == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetLastName);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetLastName, nameof(azureADv2ResetAzureADUserPropertiesresetLastName), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetCity = azureADv2ResetAzureADUserPropertiesresetCity == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetCity);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetCity, nameof(azureADv2ResetAzureADUserPropertiesresetCity), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetCompanyName = azureADv2ResetAzureADUserPropertiesresetCompanyName == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetCompanyName);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetCompanyName, nameof(azureADv2ResetAzureADUserPropertiesresetCompanyName), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetCountry = azureADv2ResetAzureADUserPropertiesresetCountry == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetCountry);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetCountry, nameof(azureADv2ResetAzureADUserPropertiesresetCountry), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetDepartment = azureADv2ResetAzureADUserPropertiesresetDepartment == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetDepartment);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetDepartment, nameof(azureADv2ResetAzureADUserPropertiesresetDepartment), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetFaxNumber = azureADv2ResetAzureADUserPropertiesresetFaxNumber == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetFaxNumber);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetFaxNumber, nameof(azureADv2ResetAzureADUserPropertiesresetFaxNumber), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetJobTitle = azureADv2ResetAzureADUserPropertiesresetJobTitle == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetJobTitle);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetJobTitle, nameof(azureADv2ResetAzureADUserPropertiesresetJobTitle), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetMobilePhone = azureADv2ResetAzureADUserPropertiesresetMobilePhone == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetMobilePhone);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetMobilePhone, nameof(azureADv2ResetAzureADUserPropertiesresetMobilePhone), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetOffice = azureADv2ResetAzureADUserPropertiesresetOffice == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetOffice);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetOffice, nameof(azureADv2ResetAzureADUserPropertiesresetOffice), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetPhoneNumber = azureADv2ResetAzureADUserPropertiesresetPhoneNumber == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetPhoneNumber);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetPhoneNumber, nameof(azureADv2ResetAzureADUserPropertiesresetPhoneNumber), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetPostalCode = azureADv2ResetAzureADUserPropertiesresetPostalCode == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetPostalCode);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetPostalCode, nameof(azureADv2ResetAzureADUserPropertiesresetPostalCode), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetPreferredLanguage = azureADv2ResetAzureADUserPropertiesresetPreferredLanguage == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetPreferredLanguage);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetPreferredLanguage, nameof(azureADv2ResetAzureADUserPropertiesresetPreferredLanguage), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetState = azureADv2ResetAzureADUserPropertiesresetState == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetState);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetState, nameof(azureADv2ResetAzureADUserPropertiesresetState), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetStreetAddress = azureADv2ResetAzureADUserPropertiesresetStreetAddress == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetStreetAddress);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetStreetAddress, nameof(azureADv2ResetAzureADUserPropertiesresetStreetAddress), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetUsageLocation = azureADv2ResetAzureADUserPropertiesresetUsageLocation == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetUsageLocation);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetUsageLocation, nameof(azureADv2ResetAzureADUserPropertiesresetUsageLocation), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetAgeGroup = azureADv2ResetAzureADUserPropertiesresetAgeGroup == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetAgeGroup);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetAgeGroup, nameof(azureADv2ResetAzureADUserPropertiesresetAgeGroup), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor = azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor, nameof(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor), required: false);
-            var __workflow_azureADv2ResetAzureADUserPropertiesresetEmployeeId = azureADv2ResetAzureADUserPropertiesresetEmployeeId == null ? null : WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetEmployeeId);
-            WorkflowExpression.Validate(__workflow_azureADv2ResetAzureADUserPropertiesresetEmployeeId, nameof(azureADv2ResetAzureADUserPropertiesresetEmployeeId), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesobjectId = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesobjectId, nameof(azureADv2ResetAzureADUserPropertiesobjectId), required: true);
+            var __workflow_azureADv2ResetAzureADUserPropertiesworkflow = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesworkflow, nameof(azureADv2ResetAzureADUserPropertiesworkflow), required: true);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetFirstName = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetFirstName, nameof(azureADv2ResetAzureADUserPropertiesresetFirstName), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetLastName = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetLastName, nameof(azureADv2ResetAzureADUserPropertiesresetLastName), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetCity = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetCity, nameof(azureADv2ResetAzureADUserPropertiesresetCity), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetCompanyName = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetCompanyName, nameof(azureADv2ResetAzureADUserPropertiesresetCompanyName), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetCountry = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetCountry, nameof(azureADv2ResetAzureADUserPropertiesresetCountry), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetDepartment = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetDepartment, nameof(azureADv2ResetAzureADUserPropertiesresetDepartment), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetFaxNumber = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetFaxNumber, nameof(azureADv2ResetAzureADUserPropertiesresetFaxNumber), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetJobTitle = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetJobTitle, nameof(azureADv2ResetAzureADUserPropertiesresetJobTitle), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetMobilePhone = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetMobilePhone, nameof(azureADv2ResetAzureADUserPropertiesresetMobilePhone), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetOffice = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetOffice, nameof(azureADv2ResetAzureADUserPropertiesresetOffice), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetPhoneNumber = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetPhoneNumber, nameof(azureADv2ResetAzureADUserPropertiesresetPhoneNumber), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetPostalCode = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetPostalCode, nameof(azureADv2ResetAzureADUserPropertiesresetPostalCode), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetPreferredLanguage = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetPreferredLanguage, nameof(azureADv2ResetAzureADUserPropertiesresetPreferredLanguage), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetState = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetState, nameof(azureADv2ResetAzureADUserPropertiesresetState), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetStreetAddress = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetStreetAddress, nameof(azureADv2ResetAzureADUserPropertiesresetStreetAddress), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetUsageLocation = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetUsageLocation, nameof(azureADv2ResetAzureADUserPropertiesresetUsageLocation), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetAgeGroup = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetAgeGroup, nameof(azureADv2ResetAzureADUserPropertiesresetAgeGroup), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor, nameof(azureADv2ResetAzureADUserPropertiesresetConsentProvidedForMinor), required: false);
+            var __workflow_azureADv2ResetAzureADUserPropertiesresetEmployeeId = WorkflowExpression.Compile(azureADv2ResetAzureADUserPropertiesresetEmployeeId, nameof(azureADv2ResetAzureADUserPropertiesresetEmployeeId), required: false);
             return new DeferredBodyAction<AzureADv2ResetAzureADUserPropertiesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2ResetAzureADUserProperties";
@@ -8593,12 +7887,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2SetAzureADUserManagerResponse> AzureADv2SetAzureADUserManager(Expression<Func<string>> azureADv2SetAzureADUserManagerobjectId, Expression<Func<string>> azureADv2SetAzureADUserManagerworkflow, Expression<Func<string>> azureADv2SetAzureADUserManagermanager = null)
         {
-            var __workflow_azureADv2SetAzureADUserManagerobjectId = azureADv2SetAzureADUserManagerobjectId == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserManagerobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserManagerobjectId, nameof(azureADv2SetAzureADUserManagerobjectId), required: true);
-            var __workflow_azureADv2SetAzureADUserManagerworkflow = azureADv2SetAzureADUserManagerworkflow == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserManagerworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserManagerworkflow, nameof(azureADv2SetAzureADUserManagerworkflow), required: true);
-            var __workflow_azureADv2SetAzureADUserManagermanager = azureADv2SetAzureADUserManagermanager == null ? null : WorkflowExpression.Compile(azureADv2SetAzureADUserManagermanager);
-            WorkflowExpression.Validate(__workflow_azureADv2SetAzureADUserManagermanager, nameof(azureADv2SetAzureADUserManagermanager), required: false);
+            var __workflow_azureADv2SetAzureADUserManagerobjectId = WorkflowExpression.Compile(azureADv2SetAzureADUserManagerobjectId, nameof(azureADv2SetAzureADUserManagerobjectId), required: true);
+            var __workflow_azureADv2SetAzureADUserManagerworkflow = WorkflowExpression.Compile(azureADv2SetAzureADUserManagerworkflow, nameof(azureADv2SetAzureADUserManagerworkflow), required: true);
+            var __workflow_azureADv2SetAzureADUserManagermanager = WorkflowExpression.Compile(azureADv2SetAzureADUserManagermanager, nameof(azureADv2SetAzureADUserManagermanager), required: false);
             return new DeferredBodyAction<AzureADv2SetAzureADUserManagerResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2SetAzureADUserManager";
@@ -8628,14 +7919,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2NewSecurityGroupResponse> AzureADv2NewSecurityGroup(Expression<Func<string>> azureADv2NewSecurityGroupdisplayName, Expression<Func<string>> azureADv2NewSecurityGroupworkflow, Expression<Func<string>> azureADv2NewSecurityGroupdescription = null, Expression<Func<bool>> azureADv2NewSecurityGroupcheckGroupExists = null)
         {
-            var __workflow_azureADv2NewSecurityGroupdisplayName = azureADv2NewSecurityGroupdisplayName == null ? null : WorkflowExpression.Compile(azureADv2NewSecurityGroupdisplayName);
-            WorkflowExpression.Validate(__workflow_azureADv2NewSecurityGroupdisplayName, nameof(azureADv2NewSecurityGroupdisplayName), required: true);
-            var __workflow_azureADv2NewSecurityGroupworkflow = azureADv2NewSecurityGroupworkflow == null ? null : WorkflowExpression.Compile(azureADv2NewSecurityGroupworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2NewSecurityGroupworkflow, nameof(azureADv2NewSecurityGroupworkflow), required: true);
-            var __workflow_azureADv2NewSecurityGroupdescription = azureADv2NewSecurityGroupdescription == null ? null : WorkflowExpression.Compile(azureADv2NewSecurityGroupdescription);
-            WorkflowExpression.Validate(__workflow_azureADv2NewSecurityGroupdescription, nameof(azureADv2NewSecurityGroupdescription), required: false);
-            var __workflow_azureADv2NewSecurityGroupcheckGroupExists = azureADv2NewSecurityGroupcheckGroupExists == null ? null : WorkflowExpression.Compile(azureADv2NewSecurityGroupcheckGroupExists);
-            WorkflowExpression.Validate(__workflow_azureADv2NewSecurityGroupcheckGroupExists, nameof(azureADv2NewSecurityGroupcheckGroupExists), required: false);
+            var __workflow_azureADv2NewSecurityGroupdisplayName = WorkflowExpression.Compile(azureADv2NewSecurityGroupdisplayName, nameof(azureADv2NewSecurityGroupdisplayName), required: true);
+            var __workflow_azureADv2NewSecurityGroupworkflow = WorkflowExpression.Compile(azureADv2NewSecurityGroupworkflow, nameof(azureADv2NewSecurityGroupworkflow), required: true);
+            var __workflow_azureADv2NewSecurityGroupdescription = WorkflowExpression.Compile(azureADv2NewSecurityGroupdescription, nameof(azureADv2NewSecurityGroupdescription), required: false);
+            var __workflow_azureADv2NewSecurityGroupcheckGroupExists = WorkflowExpression.Compile(azureADv2NewSecurityGroupcheckGroupExists, nameof(azureADv2NewSecurityGroupcheckGroupExists), required: false);
             return new DeferredBodyAction<AzureADv2NewSecurityGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2NewSecurityGroup";
@@ -8681,12 +7968,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveSecurityGroupResponse> AzureADv2RemoveSecurityGroup(Expression<Func<string>> azureADv2RemoveSecurityGroupgroupObjectId, Expression<Func<string>> azureADv2RemoveSecurityGroupworkflow, Expression<Func<bool>> azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist = null)
         {
-            var __workflow_azureADv2RemoveSecurityGroupgroupObjectId = azureADv2RemoveSecurityGroupgroupObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveSecurityGroupgroupObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveSecurityGroupgroupObjectId, nameof(azureADv2RemoveSecurityGroupgroupObjectId), required: true);
-            var __workflow_azureADv2RemoveSecurityGroupworkflow = azureADv2RemoveSecurityGroupworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveSecurityGroupworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveSecurityGroupworkflow, nameof(azureADv2RemoveSecurityGroupworkflow), required: true);
-            var __workflow_azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist = azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist == null ? null : WorkflowExpression.Compile(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist, nameof(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist), required: false);
+            var __workflow_azureADv2RemoveSecurityGroupgroupObjectId = WorkflowExpression.Compile(azureADv2RemoveSecurityGroupgroupObjectId, nameof(azureADv2RemoveSecurityGroupgroupObjectId), required: true);
+            var __workflow_azureADv2RemoveSecurityGroupworkflow = WorkflowExpression.Compile(azureADv2RemoveSecurityGroupworkflow, nameof(azureADv2RemoveSecurityGroupworkflow), required: true);
+            var __workflow_azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist = WorkflowExpression.Compile(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist, nameof(azureADv2RemoveSecurityGrouperrorIfGroupDoesNotExist), required: false);
             return new DeferredBodyAction<AzureADv2RemoveSecurityGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveSecurityGroup";
@@ -8726,18 +8010,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2NewMicrosoft365GroupResponse> AzureADv2NewMicrosoft365Group(Expression<Func<string>> azureADv2NewMicrosoft365GroupdisplayName, Expression<Func<string>> azureADv2NewMicrosoft365Groupworkflow, Expression<Func<string>> azureADv2NewMicrosoft365Groupdescription = null, Expression<Func<string>> azureADv2NewMicrosoft365GroupmailNickname = null, Expression<Func<azureADv2NewMicrosoft365GroupgroupVisibilityInput>> azureADv2NewMicrosoft365GroupgroupVisibility = null, Expression<Func<bool>> azureADv2NewMicrosoft365GroupcheckGroupExists = null)
         {
-            var __workflow_azureADv2NewMicrosoft365GroupdisplayName = azureADv2NewMicrosoft365GroupdisplayName == null ? null : WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupdisplayName);
-            WorkflowExpression.Validate(__workflow_azureADv2NewMicrosoft365GroupdisplayName, nameof(azureADv2NewMicrosoft365GroupdisplayName), required: true);
-            var __workflow_azureADv2NewMicrosoft365Groupworkflow = azureADv2NewMicrosoft365Groupworkflow == null ? null : WorkflowExpression.Compile(azureADv2NewMicrosoft365Groupworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2NewMicrosoft365Groupworkflow, nameof(azureADv2NewMicrosoft365Groupworkflow), required: true);
-            var __workflow_azureADv2NewMicrosoft365Groupdescription = azureADv2NewMicrosoft365Groupdescription == null ? null : WorkflowExpression.Compile(azureADv2NewMicrosoft365Groupdescription);
-            WorkflowExpression.Validate(__workflow_azureADv2NewMicrosoft365Groupdescription, nameof(azureADv2NewMicrosoft365Groupdescription), required: false);
-            var __workflow_azureADv2NewMicrosoft365GroupmailNickname = azureADv2NewMicrosoft365GroupmailNickname == null ? null : WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupmailNickname);
-            WorkflowExpression.Validate(__workflow_azureADv2NewMicrosoft365GroupmailNickname, nameof(azureADv2NewMicrosoft365GroupmailNickname), required: false);
-            var __workflow_azureADv2NewMicrosoft365GroupgroupVisibility = azureADv2NewMicrosoft365GroupgroupVisibility == null ? null : WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupgroupVisibility);
-            WorkflowExpression.Validate(__workflow_azureADv2NewMicrosoft365GroupgroupVisibility, nameof(azureADv2NewMicrosoft365GroupgroupVisibility), required: false);
-            var __workflow_azureADv2NewMicrosoft365GroupcheckGroupExists = azureADv2NewMicrosoft365GroupcheckGroupExists == null ? null : WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupcheckGroupExists);
-            WorkflowExpression.Validate(__workflow_azureADv2NewMicrosoft365GroupcheckGroupExists, nameof(azureADv2NewMicrosoft365GroupcheckGroupExists), required: false);
+            var __workflow_azureADv2NewMicrosoft365GroupdisplayName = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupdisplayName, nameof(azureADv2NewMicrosoft365GroupdisplayName), required: true);
+            var __workflow_azureADv2NewMicrosoft365Groupworkflow = WorkflowExpression.Compile(azureADv2NewMicrosoft365Groupworkflow, nameof(azureADv2NewMicrosoft365Groupworkflow), required: true);
+            var __workflow_azureADv2NewMicrosoft365Groupdescription = WorkflowExpression.Compile(azureADv2NewMicrosoft365Groupdescription, nameof(azureADv2NewMicrosoft365Groupdescription), required: false);
+            var __workflow_azureADv2NewMicrosoft365GroupmailNickname = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupmailNickname, nameof(azureADv2NewMicrosoft365GroupmailNickname), required: false);
+            var __workflow_azureADv2NewMicrosoft365GroupgroupVisibility = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupgroupVisibility, nameof(azureADv2NewMicrosoft365GroupgroupVisibility), required: false);
+            var __workflow_azureADv2NewMicrosoft365GroupcheckGroupExists = WorkflowExpression.Compile(azureADv2NewMicrosoft365GroupcheckGroupExists, nameof(azureADv2NewMicrosoft365GroupcheckGroupExists), required: false);
             return new DeferredBodyAction<AzureADv2NewMicrosoft365GroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2NewMicrosoft365Group";
@@ -8805,20 +8083,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetGroupsResponse> AzureADv2GetGroups(Expression<Func<string>> azureADv2GetGroupsworkflow, Expression<Func<string>> azureADv2GetGroupsobjectId = null, Expression<Func<string>> azureADv2GetGroupsfilterPropertyName = null, Expression<Func<azureADv2GetGroupsfilterPropertyComparisonInput>> azureADv2GetGroupsfilterPropertyComparison = null, Expression<Func<string>> azureADv2GetGroupsfilterPropertyValue = null, Expression<Func<bool>> azureADv2GetGroupsnoResultIsAnException = null, Expression<Func<string>> azureADv2GetGroupspropertiesToReturn = null)
         {
-            var __workflow_azureADv2GetGroupsworkflow = azureADv2GetGroupsworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetGroupsworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetGroupsworkflow, nameof(azureADv2GetGroupsworkflow), required: true);
-            var __workflow_azureADv2GetGroupsobjectId = azureADv2GetGroupsobjectId == null ? null : WorkflowExpression.Compile(azureADv2GetGroupsobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2GetGroupsobjectId, nameof(azureADv2GetGroupsobjectId), required: false);
-            var __workflow_azureADv2GetGroupsfilterPropertyName = azureADv2GetGroupsfilterPropertyName == null ? null : WorkflowExpression.Compile(azureADv2GetGroupsfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_azureADv2GetGroupsfilterPropertyName, nameof(azureADv2GetGroupsfilterPropertyName), required: false);
-            var __workflow_azureADv2GetGroupsfilterPropertyComparison = azureADv2GetGroupsfilterPropertyComparison == null ? null : WorkflowExpression.Compile(azureADv2GetGroupsfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_azureADv2GetGroupsfilterPropertyComparison, nameof(azureADv2GetGroupsfilterPropertyComparison), required: false);
-            var __workflow_azureADv2GetGroupsfilterPropertyValue = azureADv2GetGroupsfilterPropertyValue == null ? null : WorkflowExpression.Compile(azureADv2GetGroupsfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_azureADv2GetGroupsfilterPropertyValue, nameof(azureADv2GetGroupsfilterPropertyValue), required: false);
-            var __workflow_azureADv2GetGroupsnoResultIsAnException = azureADv2GetGroupsnoResultIsAnException == null ? null : WorkflowExpression.Compile(azureADv2GetGroupsnoResultIsAnException);
-            WorkflowExpression.Validate(__workflow_azureADv2GetGroupsnoResultIsAnException, nameof(azureADv2GetGroupsnoResultIsAnException), required: false);
-            var __workflow_azureADv2GetGroupspropertiesToReturn = azureADv2GetGroupspropertiesToReturn == null ? null : WorkflowExpression.Compile(azureADv2GetGroupspropertiesToReturn);
-            WorkflowExpression.Validate(__workflow_azureADv2GetGroupspropertiesToReturn, nameof(azureADv2GetGroupspropertiesToReturn), required: false);
+            var __workflow_azureADv2GetGroupsworkflow = WorkflowExpression.Compile(azureADv2GetGroupsworkflow, nameof(azureADv2GetGroupsworkflow), required: true);
+            var __workflow_azureADv2GetGroupsobjectId = WorkflowExpression.Compile(azureADv2GetGroupsobjectId, nameof(azureADv2GetGroupsobjectId), required: false);
+            var __workflow_azureADv2GetGroupsfilterPropertyName = WorkflowExpression.Compile(azureADv2GetGroupsfilterPropertyName, nameof(azureADv2GetGroupsfilterPropertyName), required: false);
+            var __workflow_azureADv2GetGroupsfilterPropertyComparison = WorkflowExpression.Compile(azureADv2GetGroupsfilterPropertyComparison, nameof(azureADv2GetGroupsfilterPropertyComparison), required: false);
+            var __workflow_azureADv2GetGroupsfilterPropertyValue = WorkflowExpression.Compile(azureADv2GetGroupsfilterPropertyValue, nameof(azureADv2GetGroupsfilterPropertyValue), required: false);
+            var __workflow_azureADv2GetGroupsnoResultIsAnException = WorkflowExpression.Compile(azureADv2GetGroupsnoResultIsAnException, nameof(azureADv2GetGroupsnoResultIsAnException), required: false);
+            var __workflow_azureADv2GetGroupspropertiesToReturn = WorkflowExpression.Compile(azureADv2GetGroupspropertiesToReturn, nameof(azureADv2GetGroupspropertiesToReturn), required: false);
             return new DeferredBodyAction<AzureADv2GetGroupsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetGroups";
@@ -8896,10 +8167,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2EnableUserResponse> AzureADv2EnableUser(Expression<Func<string>> azureADv2EnableUseruserObjectId, Expression<Func<string>> azureADv2EnableUserworkflow)
         {
-            var __workflow_azureADv2EnableUseruserObjectId = azureADv2EnableUseruserObjectId == null ? null : WorkflowExpression.Compile(azureADv2EnableUseruserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2EnableUseruserObjectId, nameof(azureADv2EnableUseruserObjectId), required: true);
-            var __workflow_azureADv2EnableUserworkflow = azureADv2EnableUserworkflow == null ? null : WorkflowExpression.Compile(azureADv2EnableUserworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2EnableUserworkflow, nameof(azureADv2EnableUserworkflow), required: true);
+            var __workflow_azureADv2EnableUseruserObjectId = WorkflowExpression.Compile(azureADv2EnableUseruserObjectId, nameof(azureADv2EnableUseruserObjectId), required: true);
+            var __workflow_azureADv2EnableUserworkflow = WorkflowExpression.Compile(azureADv2EnableUserworkflow, nameof(azureADv2EnableUserworkflow), required: true);
             return new DeferredBodyAction<AzureADv2EnableUserResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2EnableUser";
@@ -8923,12 +8192,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2DisableUserResponse> AzureADv2DisableUser(Expression<Func<string>> azureADv2DisableUseruserObjectId, Expression<Func<string>> azureADv2DisableUserworkflow, Expression<Func<bool>> azureADv2DisableUserrevokeUserRefreshTokens = null)
         {
-            var __workflow_azureADv2DisableUseruserObjectId = azureADv2DisableUseruserObjectId == null ? null : WorkflowExpression.Compile(azureADv2DisableUseruserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2DisableUseruserObjectId, nameof(azureADv2DisableUseruserObjectId), required: true);
-            var __workflow_azureADv2DisableUserworkflow = azureADv2DisableUserworkflow == null ? null : WorkflowExpression.Compile(azureADv2DisableUserworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2DisableUserworkflow, nameof(azureADv2DisableUserworkflow), required: true);
-            var __workflow_azureADv2DisableUserrevokeUserRefreshTokens = azureADv2DisableUserrevokeUserRefreshTokens == null ? null : WorkflowExpression.Compile(azureADv2DisableUserrevokeUserRefreshTokens);
-            WorkflowExpression.Validate(__workflow_azureADv2DisableUserrevokeUserRefreshTokens, nameof(azureADv2DisableUserrevokeUserRefreshTokens), required: false);
+            var __workflow_azureADv2DisableUseruserObjectId = WorkflowExpression.Compile(azureADv2DisableUseruserObjectId, nameof(azureADv2DisableUseruserObjectId), required: true);
+            var __workflow_azureADv2DisableUserworkflow = WorkflowExpression.Compile(azureADv2DisableUserworkflow, nameof(azureADv2DisableUserworkflow), required: true);
+            var __workflow_azureADv2DisableUserrevokeUserRefreshTokens = WorkflowExpression.Compile(azureADv2DisableUserrevokeUserRefreshTokens, nameof(azureADv2DisableUserrevokeUserRefreshTokens), required: false);
             return new DeferredBodyAction<AzureADv2DisableUserResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2DisableUser";
@@ -8968,16 +8234,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2AssignUserToRoleResponse> AzureADv2AssignUserToRole(Expression<Func<string>> azureADv2AssignUserToRoleuserObjectId, Expression<Func<string>> azureADv2AssignUserToRoleroleObjectId, Expression<Func<string>> azureADv2AssignUserToRoleworkflow, Expression<Func<string>> azureADv2AssignUserToRoledirectoryScopeId = null, Expression<Func<bool>> azureADv2AssignUserToRolecheckUserRoleMembershipsFirst = null)
         {
-            var __workflow_azureADv2AssignUserToRoleuserObjectId = azureADv2AssignUserToRoleuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToRoleuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToRoleuserObjectId, nameof(azureADv2AssignUserToRoleuserObjectId), required: true);
-            var __workflow_azureADv2AssignUserToRoleroleObjectId = azureADv2AssignUserToRoleroleObjectId == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToRoleroleObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToRoleroleObjectId, nameof(azureADv2AssignUserToRoleroleObjectId), required: true);
-            var __workflow_azureADv2AssignUserToRoleworkflow = azureADv2AssignUserToRoleworkflow == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToRoleworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToRoleworkflow, nameof(azureADv2AssignUserToRoleworkflow), required: true);
-            var __workflow_azureADv2AssignUserToRoledirectoryScopeId = azureADv2AssignUserToRoledirectoryScopeId == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToRoledirectoryScopeId);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToRoledirectoryScopeId, nameof(azureADv2AssignUserToRoledirectoryScopeId), required: false);
-            var __workflow_azureADv2AssignUserToRolecheckUserRoleMembershipsFirst = azureADv2AssignUserToRolecheckUserRoleMembershipsFirst == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToRolecheckUserRoleMembershipsFirst, nameof(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst), required: false);
+            var __workflow_azureADv2AssignUserToRoleuserObjectId = WorkflowExpression.Compile(azureADv2AssignUserToRoleuserObjectId, nameof(azureADv2AssignUserToRoleuserObjectId), required: true);
+            var __workflow_azureADv2AssignUserToRoleroleObjectId = WorkflowExpression.Compile(azureADv2AssignUserToRoleroleObjectId, nameof(azureADv2AssignUserToRoleroleObjectId), required: true);
+            var __workflow_azureADv2AssignUserToRoleworkflow = WorkflowExpression.Compile(azureADv2AssignUserToRoleworkflow, nameof(azureADv2AssignUserToRoleworkflow), required: true);
+            var __workflow_azureADv2AssignUserToRoledirectoryScopeId = WorkflowExpression.Compile(azureADv2AssignUserToRoledirectoryScopeId, nameof(azureADv2AssignUserToRoledirectoryScopeId), required: false);
+            var __workflow_azureADv2AssignUserToRolecheckUserRoleMembershipsFirst = WorkflowExpression.Compile(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst, nameof(azureADv2AssignUserToRolecheckUserRoleMembershipsFirst), required: false);
             return new DeferredBodyAction<AzureADv2AssignUserToRoleResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AssignUserToRole";
@@ -9035,22 +8296,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2AssignUserToMultipleRolesResponse> AzureADv2AssignUserToMultipleRoles(Expression<Func<string>> azureADv2AssignUserToMultipleRolesuserObjectId, Expression<Func<string>> azureADv2AssignUserToMultipleRolesworkflow, Expression<Func<string>> azureADv2AssignUserToMultipleRolesrolesJSON = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign = null, Expression<Func<string>> azureADv2AssignUserToMultipleRolesdirectoryScopeId = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst = null, Expression<Func<bool>> azureADv2AssignUserToMultipleRolescheckRoleIdsExist = null)
         {
-            var __workflow_azureADv2AssignUserToMultipleRolesuserObjectId = azureADv2AssignUserToMultipleRolesuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolesuserObjectId, nameof(azureADv2AssignUserToMultipleRolesuserObjectId), required: true);
-            var __workflow_azureADv2AssignUserToMultipleRolesworkflow = azureADv2AssignUserToMultipleRolesworkflow == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolesworkflow, nameof(azureADv2AssignUserToMultipleRolesworkflow), required: true);
-            var __workflow_azureADv2AssignUserToMultipleRolesrolesJSON = azureADv2AssignUserToMultipleRolesrolesJSON == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesrolesJSON);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolesrolesJSON, nameof(azureADv2AssignUserToMultipleRolesrolesJSON), required: false);
-            var __workflow_azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign = azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign, nameof(azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign), required: false);
-            var __workflow_azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign = azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign, nameof(azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign), required: false);
-            var __workflow_azureADv2AssignUserToMultipleRolesdirectoryScopeId = azureADv2AssignUserToMultipleRolesdirectoryScopeId == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesdirectoryScopeId);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolesdirectoryScopeId, nameof(azureADv2AssignUserToMultipleRolesdirectoryScopeId), required: false);
-            var __workflow_azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst = azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst, nameof(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst), required: false);
-            var __workflow_azureADv2AssignUserToMultipleRolescheckRoleIdsExist = azureADv2AssignUserToMultipleRolescheckRoleIdsExist == null ? null : WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolescheckRoleIdsExist);
-            WorkflowExpression.Validate(__workflow_azureADv2AssignUserToMultipleRolescheckRoleIdsExist, nameof(azureADv2AssignUserToMultipleRolescheckRoleIdsExist), required: false);
+            var __workflow_azureADv2AssignUserToMultipleRolesuserObjectId = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesuserObjectId, nameof(azureADv2AssignUserToMultipleRolesuserObjectId), required: true);
+            var __workflow_azureADv2AssignUserToMultipleRolesworkflow = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesworkflow, nameof(azureADv2AssignUserToMultipleRolesworkflow), required: true);
+            var __workflow_azureADv2AssignUserToMultipleRolesrolesJSON = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesrolesJSON, nameof(azureADv2AssignUserToMultipleRolesrolesJSON), required: false);
+            var __workflow_azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign, nameof(azureADv2AssignUserToMultipleRolesexceptionIfAnyRolesFailToAssign), required: false);
+            var __workflow_azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign, nameof(azureADv2AssignUserToMultipleRolesexceptionIfAllRolesFailToAssign), required: false);
+            var __workflow_azureADv2AssignUserToMultipleRolesdirectoryScopeId = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolesdirectoryScopeId, nameof(azureADv2AssignUserToMultipleRolesdirectoryScopeId), required: false);
+            var __workflow_azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst, nameof(azureADv2AssignUserToMultipleRolescheckUserRoleMembershipsFirst), required: false);
+            var __workflow_azureADv2AssignUserToMultipleRolescheckRoleIdsExist = WorkflowExpression.Compile(azureADv2AssignUserToMultipleRolescheckRoleIdsExist, nameof(azureADv2AssignUserToMultipleRolescheckRoleIdsExist), required: false);
             return new DeferredBodyAction<AzureADv2AssignUserToMultipleRolesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2AssignUserToMultipleRoles";
@@ -9160,20 +8413,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromMultipleRolesResponse> AzureADv2RemoveUserFromMultipleRoles(Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesworkflow, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesrolesJSON = null, Expression<Func<string>> azureADv2RemoveUserFromMultipleRolesdirectoryScopeId = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist = null)
         {
-            var __workflow_azureADv2RemoveUserFromMultipleRolesuserObjectId = azureADv2RemoveUserFromMultipleRolesuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromMultipleRolesuserObjectId, nameof(azureADv2RemoveUserFromMultipleRolesuserObjectId), required: true);
-            var __workflow_azureADv2RemoveUserFromMultipleRolesworkflow = azureADv2RemoveUserFromMultipleRolesworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromMultipleRolesworkflow, nameof(azureADv2RemoveUserFromMultipleRolesworkflow), required: true);
-            var __workflow_azureADv2RemoveUserFromMultipleRolesrolesJSON = azureADv2RemoveUserFromMultipleRolesrolesJSON == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesrolesJSON);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromMultipleRolesrolesJSON, nameof(azureADv2RemoveUserFromMultipleRolesrolesJSON), required: false);
-            var __workflow_azureADv2RemoveUserFromMultipleRolesdirectoryScopeId = azureADv2RemoveUserFromMultipleRolesdirectoryScopeId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesdirectoryScopeId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromMultipleRolesdirectoryScopeId, nameof(azureADv2RemoveUserFromMultipleRolesdirectoryScopeId), required: false);
-            var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove = azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove), required: false);
-            var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove = azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove), required: false);
-            var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist = azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist), required: false);
+            var __workflow_azureADv2RemoveUserFromMultipleRolesuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesuserObjectId, nameof(azureADv2RemoveUserFromMultipleRolesuserObjectId), required: true);
+            var __workflow_azureADv2RemoveUserFromMultipleRolesworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesworkflow, nameof(azureADv2RemoveUserFromMultipleRolesworkflow), required: true);
+            var __workflow_azureADv2RemoveUserFromMultipleRolesrolesJSON = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesrolesJSON, nameof(azureADv2RemoveUserFromMultipleRolesrolesJSON), required: false);
+            var __workflow_azureADv2RemoveUserFromMultipleRolesdirectoryScopeId = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesdirectoryScopeId, nameof(azureADv2RemoveUserFromMultipleRolesdirectoryScopeId), required: false);
+            var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfAnyRolesFailToRemove), required: false);
+            var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfAllRolesFailToRemove), required: false);
+            var __workflow_azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist = WorkflowExpression.Compile(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist, nameof(azureADv2RemoveUserFromMultipleRolesexceptionIfRoleDoesNotExist), required: false);
             return new DeferredBodyAction<AzureADv2RemoveUserFromMultipleRolesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromMultipleRoles";
@@ -9267,12 +8513,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2IsUserInRoleResponse> AzureADv2IsUserInRole(Expression<Func<string>> azureADv2IsUserInRoleuserObjectId, Expression<Func<string>> azureADv2IsUserInRoleroleObjectId, Expression<Func<string>> azureADv2IsUserInRoleworkflow)
         {
-            var __workflow_azureADv2IsUserInRoleuserObjectId = azureADv2IsUserInRoleuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2IsUserInRoleuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2IsUserInRoleuserObjectId, nameof(azureADv2IsUserInRoleuserObjectId), required: true);
-            var __workflow_azureADv2IsUserInRoleroleObjectId = azureADv2IsUserInRoleroleObjectId == null ? null : WorkflowExpression.Compile(azureADv2IsUserInRoleroleObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2IsUserInRoleroleObjectId, nameof(azureADv2IsUserInRoleroleObjectId), required: true);
-            var __workflow_azureADv2IsUserInRoleworkflow = azureADv2IsUserInRoleworkflow == null ? null : WorkflowExpression.Compile(azureADv2IsUserInRoleworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2IsUserInRoleworkflow, nameof(azureADv2IsUserInRoleworkflow), required: true);
+            var __workflow_azureADv2IsUserInRoleuserObjectId = WorkflowExpression.Compile(azureADv2IsUserInRoleuserObjectId, nameof(azureADv2IsUserInRoleuserObjectId), required: true);
+            var __workflow_azureADv2IsUserInRoleroleObjectId = WorkflowExpression.Compile(azureADv2IsUserInRoleroleObjectId, nameof(azureADv2IsUserInRoleroleObjectId), required: true);
+            var __workflow_azureADv2IsUserInRoleworkflow = WorkflowExpression.Compile(azureADv2IsUserInRoleworkflow, nameof(azureADv2IsUserInRoleworkflow), required: true);
             return new DeferredBodyAction<AzureADv2IsUserInRoleResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2IsUserInRole";
@@ -9298,14 +8541,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetAzureADUserRoleAssignmentsResponse> AzureADv2GetAzureADUserRoleAssignments(Expression<Func<string>> azureADv2GetAzureADUserRoleAssignmentsobjectId, Expression<Func<string>> azureADv2GetAzureADUserRoleAssignmentsworkflow, Expression<Func<bool>> azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames = null, Expression<Func<bool>> azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds = null)
         {
-            var __workflow_azureADv2GetAzureADUserRoleAssignmentsobjectId = azureADv2GetAzureADUserRoleAssignmentsobjectId == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsobjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserRoleAssignmentsobjectId, nameof(azureADv2GetAzureADUserRoleAssignmentsobjectId), required: true);
-            var __workflow_azureADv2GetAzureADUserRoleAssignmentsworkflow = azureADv2GetAzureADUserRoleAssignmentsworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserRoleAssignmentsworkflow, nameof(azureADv2GetAzureADUserRoleAssignmentsworkflow), required: true);
-            var __workflow_azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames = azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames, nameof(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames), required: false);
-            var __workflow_azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds = azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds, nameof(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds), required: false);
+            var __workflow_azureADv2GetAzureADUserRoleAssignmentsobjectId = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsobjectId, nameof(azureADv2GetAzureADUserRoleAssignmentsobjectId), required: true);
+            var __workflow_azureADv2GetAzureADUserRoleAssignmentsworkflow = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsworkflow, nameof(azureADv2GetAzureADUserRoleAssignmentsworkflow), required: true);
+            var __workflow_azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames, nameof(azureADv2GetAzureADUserRoleAssignmentsretrieveAdminRoleNames), required: false);
+            var __workflow_azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds = WorkflowExpression.Compile(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds, nameof(azureADv2GetAzureADUserRoleAssignmentsreturnAssignmentIds), required: false);
             return new DeferredBodyAction<AzureADv2GetAzureADUserRoleAssignmentsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADUserRoleAssignments";
@@ -9361,14 +8600,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromRoleResponse> AzureADv2RemoveUserFromRole(Expression<Func<string>> azureADv2RemoveUserFromRoleuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromRoleroleObjectId, Expression<Func<string>> azureADv2RemoveUserFromRoleworkflow, Expression<Func<string>> azureADv2RemoveUserFromRoledirectoryScopeId = null)
         {
-            var __workflow_azureADv2RemoveUserFromRoleuserObjectId = azureADv2RemoveUserFromRoleuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromRoleuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromRoleuserObjectId, nameof(azureADv2RemoveUserFromRoleuserObjectId), required: true);
-            var __workflow_azureADv2RemoveUserFromRoleroleObjectId = azureADv2RemoveUserFromRoleroleObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromRoleroleObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromRoleroleObjectId, nameof(azureADv2RemoveUserFromRoleroleObjectId), required: true);
-            var __workflow_azureADv2RemoveUserFromRoleworkflow = azureADv2RemoveUserFromRoleworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromRoleworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromRoleworkflow, nameof(azureADv2RemoveUserFromRoleworkflow), required: true);
-            var __workflow_azureADv2RemoveUserFromRoledirectoryScopeId = azureADv2RemoveUserFromRoledirectoryScopeId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromRoledirectoryScopeId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromRoledirectoryScopeId, nameof(azureADv2RemoveUserFromRoledirectoryScopeId), required: false);
+            var __workflow_azureADv2RemoveUserFromRoleuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromRoleuserObjectId, nameof(azureADv2RemoveUserFromRoleuserObjectId), required: true);
+            var __workflow_azureADv2RemoveUserFromRoleroleObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromRoleroleObjectId, nameof(azureADv2RemoveUserFromRoleroleObjectId), required: true);
+            var __workflow_azureADv2RemoveUserFromRoleworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromRoleworkflow, nameof(azureADv2RemoveUserFromRoleworkflow), required: true);
+            var __workflow_azureADv2RemoveUserFromRoledirectoryScopeId = WorkflowExpression.Compile(azureADv2RemoveUserFromRoledirectoryScopeId, nameof(azureADv2RemoveUserFromRoledirectoryScopeId), required: false);
             return new DeferredBodyAction<AzureADv2RemoveUserFromRoleResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromRole";
@@ -9410,14 +8645,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2RemoveUserFromAllRolesResponse> AzureADv2RemoveUserFromAllRoles(Expression<Func<string>> azureADv2RemoveUserFromAllRolesuserObjectId, Expression<Func<string>> azureADv2RemoveUserFromAllRolesworkflow, Expression<Func<bool>> azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove = null, Expression<Func<bool>> azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove = null)
         {
-            var __workflow_azureADv2RemoveUserFromAllRolesuserObjectId = azureADv2RemoveUserFromAllRolesuserObjectId == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesuserObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllRolesuserObjectId, nameof(azureADv2RemoveUserFromAllRolesuserObjectId), required: true);
-            var __workflow_azureADv2RemoveUserFromAllRolesworkflow = azureADv2RemoveUserFromAllRolesworkflow == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllRolesworkflow, nameof(azureADv2RemoveUserFromAllRolesworkflow), required: true);
-            var __workflow_azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove = azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove, nameof(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove), required: false);
-            var __workflow_azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove = azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove == null ? null : WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove);
-            WorkflowExpression.Validate(__workflow_azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove, nameof(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove), required: false);
+            var __workflow_azureADv2RemoveUserFromAllRolesuserObjectId = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesuserObjectId, nameof(azureADv2RemoveUserFromAllRolesuserObjectId), required: true);
+            var __workflow_azureADv2RemoveUserFromAllRolesworkflow = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesworkflow, nameof(azureADv2RemoveUserFromAllRolesworkflow), required: true);
+            var __workflow_azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove, nameof(azureADv2RemoveUserFromAllRolesexceptionIfAnyRolesFailToRemove), required: false);
+            var __workflow_azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove = WorkflowExpression.Compile(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove, nameof(azureADv2RemoveUserFromAllRolesexceptionIfAllRolesFailToRemove), required: false);
             return new DeferredBodyAction<AzureADv2RemoveUserFromAllRolesResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2RemoveUserFromAllRoles";
@@ -9473,14 +8704,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<AzureADv2GetAzureADGroupMembersResponse> AzureADv2GetAzureADGroupMembers(Expression<Func<string>> azureADv2GetAzureADGroupMembersgroupObjectId, Expression<Func<string>> azureADv2GetAzureADGroupMembersworkflow, Expression<Func<string>> azureADv2GetAzureADGroupMemberspropertiesToReturn = null, Expression<Func<string>> azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn = null)
         {
-            var __workflow_azureADv2GetAzureADGroupMembersgroupObjectId = azureADv2GetAzureADGroupMembersgroupObjectId == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersgroupObjectId);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADGroupMembersgroupObjectId, nameof(azureADv2GetAzureADGroupMembersgroupObjectId), required: true);
-            var __workflow_azureADv2GetAzureADGroupMembersworkflow = azureADv2GetAzureADGroupMembersworkflow == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersworkflow);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADGroupMembersworkflow, nameof(azureADv2GetAzureADGroupMembersworkflow), required: true);
-            var __workflow_azureADv2GetAzureADGroupMemberspropertiesToReturn = azureADv2GetAzureADGroupMemberspropertiesToReturn == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADGroupMemberspropertiesToReturn);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADGroupMemberspropertiesToReturn, nameof(azureADv2GetAzureADGroupMemberspropertiesToReturn), required: false);
-            var __workflow_azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn = azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn == null ? null : WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn);
-            WorkflowExpression.Validate(__workflow_azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn, nameof(azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn), required: false);
+            var __workflow_azureADv2GetAzureADGroupMembersgroupObjectId = WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersgroupObjectId, nameof(azureADv2GetAzureADGroupMembersgroupObjectId), required: true);
+            var __workflow_azureADv2GetAzureADGroupMembersworkflow = WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersworkflow, nameof(azureADv2GetAzureADGroupMembersworkflow), required: true);
+            var __workflow_azureADv2GetAzureADGroupMemberspropertiesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADGroupMemberspropertiesToReturn, nameof(azureADv2GetAzureADGroupMemberspropertiesToReturn), required: false);
+            var __workflow_azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn = WorkflowExpression.Compile(azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn, nameof(azureADv2GetAzureADGroupMembersmemberObjectTypesToReturn), required: false);
             return new DeferredBodyAction<AzureADv2GetAzureADGroupMembersResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAzureADv2/AzureADv2GetAzureADGroupMembers";
@@ -9516,22 +8743,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<OpenO365PowerShellRunspaceResponse> OpenO365PowerShellRunspace(Expression<Func<string>> openO365PowerShellRunspaceoffice365Username, Expression<Func<string>> openO365PowerShellRunspaceoffice365Password, Expression<Func<string>> openO365PowerShellRunspaceworkflow, Expression<Func<string>> openO365PowerShellRunspaceexchangeURL = null, Expression<Func<openO365PowerShellRunspaceconnectionMethodInput>> openO365PowerShellRunspaceconnectionMethod = null, Expression<Func<bool>> openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected = null, Expression<Func<openO365PowerShellRunspacecommandTypesToImportLocallyInput>> openO365PowerShellRunspacecommandTypesToImportLocally = null, Expression<Func<string>> openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV = null)
         {
-            var __workflow_openO365PowerShellRunspaceoffice365Username = openO365PowerShellRunspaceoffice365Username == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceoffice365Username);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceoffice365Username, nameof(openO365PowerShellRunspaceoffice365Username), required: true);
-            var __workflow_openO365PowerShellRunspaceoffice365Password = openO365PowerShellRunspaceoffice365Password == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceoffice365Password);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceoffice365Password, nameof(openO365PowerShellRunspaceoffice365Password), required: true);
-            var __workflow_openO365PowerShellRunspaceworkflow = openO365PowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceworkflow, nameof(openO365PowerShellRunspaceworkflow), required: true);
-            var __workflow_openO365PowerShellRunspaceexchangeURL = openO365PowerShellRunspaceexchangeURL == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceexchangeURL);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceexchangeURL, nameof(openO365PowerShellRunspaceexchangeURL), required: false);
-            var __workflow_openO365PowerShellRunspaceconnectionMethod = openO365PowerShellRunspaceconnectionMethod == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceconnectionMethod);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceconnectionMethod, nameof(openO365PowerShellRunspaceconnectionMethod), required: false);
-            var __workflow_openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected = openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected, nameof(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected), required: false);
-            var __workflow_openO365PowerShellRunspacecommandTypesToImportLocally = openO365PowerShellRunspacecommandTypesToImportLocally == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspacecommandTypesToImportLocally);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspacecommandTypesToImportLocally, nameof(openO365PowerShellRunspacecommandTypesToImportLocally), required: false);
-            var __workflow_openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV = openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV, nameof(openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV), required: false);
+            var __workflow_openO365PowerShellRunspaceoffice365Username = WorkflowExpression.Compile(openO365PowerShellRunspaceoffice365Username, nameof(openO365PowerShellRunspaceoffice365Username), required: true);
+            var __workflow_openO365PowerShellRunspaceoffice365Password = WorkflowExpression.Compile(openO365PowerShellRunspaceoffice365Password, nameof(openO365PowerShellRunspaceoffice365Password), required: true);
+            var __workflow_openO365PowerShellRunspaceworkflow = WorkflowExpression.Compile(openO365PowerShellRunspaceworkflow, nameof(openO365PowerShellRunspaceworkflow), required: true);
+            var __workflow_openO365PowerShellRunspaceexchangeURL = WorkflowExpression.Compile(openO365PowerShellRunspaceexchangeURL, nameof(openO365PowerShellRunspaceexchangeURL), required: false);
+            var __workflow_openO365PowerShellRunspaceconnectionMethod = WorkflowExpression.Compile(openO365PowerShellRunspaceconnectionMethod, nameof(openO365PowerShellRunspaceconnectionMethod), required: false);
+            var __workflow_openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected, nameof(openO365PowerShellRunspaceonlyConnectIfNotAlreadyConnected), required: false);
+            var __workflow_openO365PowerShellRunspacecommandTypesToImportLocally = WorkflowExpression.Compile(openO365PowerShellRunspacecommandTypesToImportLocally, nameof(openO365PowerShellRunspacecommandTypesToImportLocally), required: false);
+            var __workflow_openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV = WorkflowExpression.Compile(openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV, nameof(openO365PowerShellRunspaceadditionalCommandsToImportLocallyCSV), required: false);
             return new DeferredBodyAction<OpenO365PowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenO365PowerShellRunspace";
@@ -9617,24 +8836,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<OpenO365PowerShellRunspaceWithCertificateResponse> OpenO365PowerShellRunspaceWithCertificate(Expression<Func<string>> openO365PowerShellRunspaceWithCertificateapplicationId, Expression<Func<string>> openO365PowerShellRunspaceWithCertificatecertificateThumbprint, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateorganization, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateworkflow, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateexchangeURL = null, Expression<Func<openO365PowerShellRunspaceWithCertificateconnectionMethodInput>> openO365PowerShellRunspaceWithCertificateconnectionMethod = null, Expression<Func<bool>> openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected = null, Expression<Func<openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocallyInput>> openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally = null, Expression<Func<string>> openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV = null)
         {
-            var __workflow_openO365PowerShellRunspaceWithCertificateapplicationId = openO365PowerShellRunspaceWithCertificateapplicationId == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateapplicationId);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificateapplicationId, nameof(openO365PowerShellRunspaceWithCertificateapplicationId), required: true);
-            var __workflow_openO365PowerShellRunspaceWithCertificatecertificateThumbprint = openO365PowerShellRunspaceWithCertificatecertificateThumbprint == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificatecertificateThumbprint);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificatecertificateThumbprint, nameof(openO365PowerShellRunspaceWithCertificatecertificateThumbprint), required: true);
-            var __workflow_openO365PowerShellRunspaceWithCertificateorganization = openO365PowerShellRunspaceWithCertificateorganization == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateorganization);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificateorganization, nameof(openO365PowerShellRunspaceWithCertificateorganization), required: true);
-            var __workflow_openO365PowerShellRunspaceWithCertificateworkflow = openO365PowerShellRunspaceWithCertificateworkflow == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateworkflow);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificateworkflow, nameof(openO365PowerShellRunspaceWithCertificateworkflow), required: true);
-            var __workflow_openO365PowerShellRunspaceWithCertificateexchangeURL = openO365PowerShellRunspaceWithCertificateexchangeURL == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateexchangeURL);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificateexchangeURL, nameof(openO365PowerShellRunspaceWithCertificateexchangeURL), required: false);
-            var __workflow_openO365PowerShellRunspaceWithCertificateconnectionMethod = openO365PowerShellRunspaceWithCertificateconnectionMethod == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateconnectionMethod);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificateconnectionMethod, nameof(openO365PowerShellRunspaceWithCertificateconnectionMethod), required: false);
-            var __workflow_openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected = openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected, nameof(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected), required: false);
-            var __workflow_openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally = openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally, nameof(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally), required: false);
-            var __workflow_openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV = openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV == null ? null : WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV);
-            WorkflowExpression.Validate(__workflow_openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV, nameof(openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV), required: false);
+            var __workflow_openO365PowerShellRunspaceWithCertificateapplicationId = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateapplicationId, nameof(openO365PowerShellRunspaceWithCertificateapplicationId), required: true);
+            var __workflow_openO365PowerShellRunspaceWithCertificatecertificateThumbprint = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificatecertificateThumbprint, nameof(openO365PowerShellRunspaceWithCertificatecertificateThumbprint), required: true);
+            var __workflow_openO365PowerShellRunspaceWithCertificateorganization = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateorganization, nameof(openO365PowerShellRunspaceWithCertificateorganization), required: true);
+            var __workflow_openO365PowerShellRunspaceWithCertificateworkflow = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateworkflow, nameof(openO365PowerShellRunspaceWithCertificateworkflow), required: true);
+            var __workflow_openO365PowerShellRunspaceWithCertificateexchangeURL = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateexchangeURL, nameof(openO365PowerShellRunspaceWithCertificateexchangeURL), required: false);
+            var __workflow_openO365PowerShellRunspaceWithCertificateconnectionMethod = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateconnectionMethod, nameof(openO365PowerShellRunspaceWithCertificateconnectionMethod), required: false);
+            var __workflow_openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected, nameof(openO365PowerShellRunspaceWithCertificateonlyConnectIfNotAlreadyConnected), required: false);
+            var __workflow_openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally, nameof(openO365PowerShellRunspaceWithCertificatecommandTypesToImportLocally), required: false);
+            var __workflow_openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV = WorkflowExpression.Compile(openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV, nameof(openO365PowerShellRunspaceWithCertificateadditionalCommandsToImportLocallyCSV), required: false);
             return new DeferredBodyAction<OpenO365PowerShellRunspaceWithCertificateResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/OpenO365PowerShellRunspaceWithCertificate";
@@ -9722,12 +8932,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<IsO365PowerShellRunspaceOpenResponse> IsO365PowerShellRunspaceOpen(Expression<Func<string>> isO365PowerShellRunspaceOpenworkflow, Expression<Func<bool>> isO365PowerShellRunspaceOpentestCommunications = null, Expression<Func<bool>> isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = null)
         {
-            var __workflow_isO365PowerShellRunspaceOpenworkflow = isO365PowerShellRunspaceOpenworkflow == null ? null : WorkflowExpression.Compile(isO365PowerShellRunspaceOpenworkflow);
-            WorkflowExpression.Validate(__workflow_isO365PowerShellRunspaceOpenworkflow, nameof(isO365PowerShellRunspaceOpenworkflow), required: true);
-            var __workflow_isO365PowerShellRunspaceOpentestCommunications = isO365PowerShellRunspaceOpentestCommunications == null ? null : WorkflowExpression.Compile(isO365PowerShellRunspaceOpentestCommunications);
-            WorkflowExpression.Validate(__workflow_isO365PowerShellRunspaceOpentestCommunications, nameof(isO365PowerShellRunspaceOpentestCommunications), required: false);
-            var __workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID == null ? null : WorkflowExpression.Compile(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID);
-            WorkflowExpression.Validate(__workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
+            var __workflow_isO365PowerShellRunspaceOpenworkflow = WorkflowExpression.Compile(isO365PowerShellRunspaceOpenworkflow, nameof(isO365PowerShellRunspaceOpenworkflow), required: true);
+            var __workflow_isO365PowerShellRunspaceOpentestCommunications = WorkflowExpression.Compile(isO365PowerShellRunspaceOpentestCommunications, nameof(isO365PowerShellRunspaceOpentestCommunications), required: false);
+            var __workflow_isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID = WorkflowExpression.Compile(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID, nameof(isO365PowerShellRunspaceOpenretrievePowerShellRunSpacePID), required: false);
             return new DeferredBodyAction<IsO365PowerShellRunspaceOpenResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/IsO365PowerShellRunspaceOpen";
@@ -9781,40 +8988,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<RunO365PowerShellAutomationScriptResponse> RunO365PowerShellAutomationScript(Expression<Func<string>> runO365PowerShellAutomationScriptworkflow, Expression<Func<string>> runO365PowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<bool>> runO365PowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runO365PowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<bool>> runO365PowerShellAutomationScriptlocalScope = null, Expression<Func<bool>> runO365PowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runO365PowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runO365PowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runO365PowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runO365PowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runO365PowerShellAutomationScriptpowerShellCommandParameters = null)
         {
-            var __workflow_runO365PowerShellAutomationScriptworkflow = runO365PowerShellAutomationScriptworkflow == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptworkflow);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptworkflow, nameof(runO365PowerShellAutomationScriptworkflow), required: true);
-            var __workflow_runO365PowerShellAutomationScriptpowerShellScriptContents = runO365PowerShellAutomationScriptpowerShellScriptContents == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptpowerShellScriptContents);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptpowerShellScriptContents, nameof(runO365PowerShellAutomationScriptpowerShellScriptContents), required: false);
-            var __workflow_runO365PowerShellAutomationScriptisNoResultAnError = runO365PowerShellAutomationScriptisNoResultAnError == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptisNoResultAnError);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptisNoResultAnError, nameof(runO365PowerShellAutomationScriptisNoResultAnError), required: false);
-            var __workflow_runO365PowerShellAutomationScriptreturnComplexTypes = runO365PowerShellAutomationScriptreturnComplexTypes == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnComplexTypes);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptreturnComplexTypes, nameof(runO365PowerShellAutomationScriptreturnComplexTypes), required: false);
-            var __workflow_runO365PowerShellAutomationScriptreturnBooleanAsBoolean = runO365PowerShellAutomationScriptreturnBooleanAsBoolean == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnBooleanAsBoolean);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runO365PowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
-            var __workflow_runO365PowerShellAutomationScriptreturnNumericAsDecimal = runO365PowerShellAutomationScriptreturnNumericAsDecimal == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnNumericAsDecimal);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptreturnNumericAsDecimal, nameof(runO365PowerShellAutomationScriptreturnNumericAsDecimal), required: false);
-            var __workflow_runO365PowerShellAutomationScriptreturnDateAsDate = runO365PowerShellAutomationScriptreturnDateAsDate == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnDateAsDate);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptreturnDateAsDate, nameof(runO365PowerShellAutomationScriptreturnDateAsDate), required: false);
-            var __workflow_runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
-            var __workflow_runO365PowerShellAutomationScriptlocalScope = runO365PowerShellAutomationScriptlocalScope == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptlocalScope);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptlocalScope, nameof(runO365PowerShellAutomationScriptlocalScope), required: false);
-            var __workflow_runO365PowerShellAutomationScriptrunScriptAsThread = runO365PowerShellAutomationScriptrunScriptAsThread == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptrunScriptAsThread);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptrunScriptAsThread, nameof(runO365PowerShellAutomationScriptrunScriptAsThread), required: false);
-            var __workflow_runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId = runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
-            var __workflow_runO365PowerShellAutomationScriptsecondsToWaitForThread = runO365PowerShellAutomationScriptsecondsToWaitForThread == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptsecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptsecondsToWaitForThread, nameof(runO365PowerShellAutomationScriptsecondsToWaitForThread), required: false);
-            var __workflow_runO365PowerShellAutomationScriptscriptContainsStoredPassword = runO365PowerShellAutomationScriptscriptContainsStoredPassword == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptscriptContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptscriptContainsStoredPassword, nameof(runO365PowerShellAutomationScriptscriptContainsStoredPassword), required: false);
-            var __workflow_runO365PowerShellAutomationScriptlogVerboseOutput = runO365PowerShellAutomationScriptlogVerboseOutput == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptlogVerboseOutput);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptlogVerboseOutput, nameof(runO365PowerShellAutomationScriptlogVerboseOutput), required: false);
-            var __workflow_runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON = runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
-            var __workflow_runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON = runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
-            var __workflow_runO365PowerShellAutomationScriptpowerShellCommandParameters = runO365PowerShellAutomationScriptpowerShellCommandParameters == null ? null : WorkflowExpression.Compile(runO365PowerShellAutomationScriptpowerShellCommandParameters);
-            WorkflowExpression.Validate(__workflow_runO365PowerShellAutomationScriptpowerShellCommandParameters, nameof(runO365PowerShellAutomationScriptpowerShellCommandParameters), required: false);
+            var __workflow_runO365PowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runO365PowerShellAutomationScriptworkflow, nameof(runO365PowerShellAutomationScriptworkflow), required: true);
+            var __workflow_runO365PowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpowerShellScriptContents, nameof(runO365PowerShellAutomationScriptpowerShellScriptContents), required: false);
+            var __workflow_runO365PowerShellAutomationScriptisNoResultAnError = WorkflowExpression.Compile(runO365PowerShellAutomationScriptisNoResultAnError, nameof(runO365PowerShellAutomationScriptisNoResultAnError), required: false);
+            var __workflow_runO365PowerShellAutomationScriptreturnComplexTypes = WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnComplexTypes, nameof(runO365PowerShellAutomationScriptreturnComplexTypes), required: false);
+            var __workflow_runO365PowerShellAutomationScriptreturnBooleanAsBoolean = WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runO365PowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
+            var __workflow_runO365PowerShellAutomationScriptreturnNumericAsDecimal = WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnNumericAsDecimal, nameof(runO365PowerShellAutomationScriptreturnNumericAsDecimal), required: false);
+            var __workflow_runO365PowerShellAutomationScriptreturnDateAsDate = WorkflowExpression.Compile(runO365PowerShellAutomationScriptreturnDateAsDate, nameof(runO365PowerShellAutomationScriptreturnDateAsDate), required: false);
+            var __workflow_runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runO365PowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
+            var __workflow_runO365PowerShellAutomationScriptlocalScope = WorkflowExpression.Compile(runO365PowerShellAutomationScriptlocalScope, nameof(runO365PowerShellAutomationScriptlocalScope), required: false);
+            var __workflow_runO365PowerShellAutomationScriptrunScriptAsThread = WorkflowExpression.Compile(runO365PowerShellAutomationScriptrunScriptAsThread, nameof(runO365PowerShellAutomationScriptrunScriptAsThread), required: false);
+            var __workflow_runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId = WorkflowExpression.Compile(runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runO365PowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
+            var __workflow_runO365PowerShellAutomationScriptsecondsToWaitForThread = WorkflowExpression.Compile(runO365PowerShellAutomationScriptsecondsToWaitForThread, nameof(runO365PowerShellAutomationScriptsecondsToWaitForThread), required: false);
+            var __workflow_runO365PowerShellAutomationScriptscriptContainsStoredPassword = WorkflowExpression.Compile(runO365PowerShellAutomationScriptscriptContainsStoredPassword, nameof(runO365PowerShellAutomationScriptscriptContainsStoredPassword), required: false);
+            var __workflow_runO365PowerShellAutomationScriptlogVerboseOutput = WorkflowExpression.Compile(runO365PowerShellAutomationScriptlogVerboseOutput, nameof(runO365PowerShellAutomationScriptlogVerboseOutput), required: false);
+            var __workflow_runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runO365PowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
+            var __workflow_runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runO365PowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
+            var __workflow_runO365PowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runO365PowerShellAutomationScriptpowerShellCommandParameters, nameof(runO365PowerShellAutomationScriptpowerShellCommandParameters), required: false);
             return new DeferredBodyAction<RunO365PowerShellAutomationScriptResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunO365PowerShellAutomationScript";
@@ -10022,8 +9212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<CloseO365PowerShellRunspaceResponse> CloseO365PowerShellRunspace(Expression<Func<string>> closeO365PowerShellRunspaceworkflow)
         {
-            var __workflow_closeO365PowerShellRunspaceworkflow = closeO365PowerShellRunspaceworkflow == null ? null : WorkflowExpression.Compile(closeO365PowerShellRunspaceworkflow);
-            WorkflowExpression.Validate(__workflow_closeO365PowerShellRunspaceworkflow, nameof(closeO365PowerShellRunspaceworkflow), required: true);
+            var __workflow_closeO365PowerShellRunspaceworkflow = WorkflowExpression.Compile(closeO365PowerShellRunspaceworkflow, nameof(closeO365PowerShellRunspaceworkflow), required: true);
             return new DeferredBodyAction<CloseO365PowerShellRunspaceResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/CloseO365PowerShellRunspace";
@@ -10045,20 +9234,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365GetO365MailboxResponse> O365GetO365Mailbox(Expression<Func<string>> o365GetO365Mailboxworkflow, Expression<Func<string>> o365GetO365Mailboxidentity = null, Expression<Func<string>> o365GetO365MailboxfilterPropertyName = null, Expression<Func<o365GetO365MailboxfilterPropertyComparisonInput>> o365GetO365MailboxfilterPropertyComparison = null, Expression<Func<string>> o365GetO365MailboxfilterPropertyValue = null, Expression<Func<o365GetO365MailboxrecipientTypeDetailsInput>> o365GetO365MailboxrecipientTypeDetails = null, Expression<Func<bool>> o365GetO365MailboxnoResultIsAnException = null)
         {
-            var __workflow_o365GetO365Mailboxworkflow = o365GetO365Mailboxworkflow == null ? null : WorkflowExpression.Compile(o365GetO365Mailboxworkflow);
-            WorkflowExpression.Validate(__workflow_o365GetO365Mailboxworkflow, nameof(o365GetO365Mailboxworkflow), required: true);
-            var __workflow_o365GetO365Mailboxidentity = o365GetO365Mailboxidentity == null ? null : WorkflowExpression.Compile(o365GetO365Mailboxidentity);
-            WorkflowExpression.Validate(__workflow_o365GetO365Mailboxidentity, nameof(o365GetO365Mailboxidentity), required: false);
-            var __workflow_o365GetO365MailboxfilterPropertyName = o365GetO365MailboxfilterPropertyName == null ? null : WorkflowExpression.Compile(o365GetO365MailboxfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_o365GetO365MailboxfilterPropertyName, nameof(o365GetO365MailboxfilterPropertyName), required: false);
-            var __workflow_o365GetO365MailboxfilterPropertyComparison = o365GetO365MailboxfilterPropertyComparison == null ? null : WorkflowExpression.Compile(o365GetO365MailboxfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_o365GetO365MailboxfilterPropertyComparison, nameof(o365GetO365MailboxfilterPropertyComparison), required: false);
-            var __workflow_o365GetO365MailboxfilterPropertyValue = o365GetO365MailboxfilterPropertyValue == null ? null : WorkflowExpression.Compile(o365GetO365MailboxfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_o365GetO365MailboxfilterPropertyValue, nameof(o365GetO365MailboxfilterPropertyValue), required: false);
-            var __workflow_o365GetO365MailboxrecipientTypeDetails = o365GetO365MailboxrecipientTypeDetails == null ? null : WorkflowExpression.Compile(o365GetO365MailboxrecipientTypeDetails);
-            WorkflowExpression.Validate(__workflow_o365GetO365MailboxrecipientTypeDetails, nameof(o365GetO365MailboxrecipientTypeDetails), required: false);
-            var __workflow_o365GetO365MailboxnoResultIsAnException = o365GetO365MailboxnoResultIsAnException == null ? null : WorkflowExpression.Compile(o365GetO365MailboxnoResultIsAnException);
-            WorkflowExpression.Validate(__workflow_o365GetO365MailboxnoResultIsAnException, nameof(o365GetO365MailboxnoResultIsAnException), required: false);
+            var __workflow_o365GetO365Mailboxworkflow = WorkflowExpression.Compile(o365GetO365Mailboxworkflow, nameof(o365GetO365Mailboxworkflow), required: true);
+            var __workflow_o365GetO365Mailboxidentity = WorkflowExpression.Compile(o365GetO365Mailboxidentity, nameof(o365GetO365Mailboxidentity), required: false);
+            var __workflow_o365GetO365MailboxfilterPropertyName = WorkflowExpression.Compile(o365GetO365MailboxfilterPropertyName, nameof(o365GetO365MailboxfilterPropertyName), required: false);
+            var __workflow_o365GetO365MailboxfilterPropertyComparison = WorkflowExpression.Compile(o365GetO365MailboxfilterPropertyComparison, nameof(o365GetO365MailboxfilterPropertyComparison), required: false);
+            var __workflow_o365GetO365MailboxfilterPropertyValue = WorkflowExpression.Compile(o365GetO365MailboxfilterPropertyValue, nameof(o365GetO365MailboxfilterPropertyValue), required: false);
+            var __workflow_o365GetO365MailboxrecipientTypeDetails = WorkflowExpression.Compile(o365GetO365MailboxrecipientTypeDetails, nameof(o365GetO365MailboxrecipientTypeDetails), required: false);
+            var __workflow_o365GetO365MailboxnoResultIsAnException = WorkflowExpression.Compile(o365GetO365MailboxnoResultIsAnException, nameof(o365GetO365MailboxnoResultIsAnException), required: false);
             return new DeferredBodyAction<O365GetO365MailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetO365Mailbox";
@@ -10136,16 +9318,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365AddMailboxPermissionResponse> O365AddMailboxPermission(Expression<Func<string>> o365AddMailboxPermissionidentity, Expression<Func<string>> o365AddMailboxPermissionuser, Expression<Func<string>> o365AddMailboxPermissionaccessRights, Expression<Func<string>> o365AddMailboxPermissionworkflow, Expression<Func<bool>> o365AddMailboxPermissionautoMapping = null)
         {
-            var __workflow_o365AddMailboxPermissionidentity = o365AddMailboxPermissionidentity == null ? null : WorkflowExpression.Compile(o365AddMailboxPermissionidentity);
-            WorkflowExpression.Validate(__workflow_o365AddMailboxPermissionidentity, nameof(o365AddMailboxPermissionidentity), required: true);
-            var __workflow_o365AddMailboxPermissionuser = o365AddMailboxPermissionuser == null ? null : WorkflowExpression.Compile(o365AddMailboxPermissionuser);
-            WorkflowExpression.Validate(__workflow_o365AddMailboxPermissionuser, nameof(o365AddMailboxPermissionuser), required: true);
-            var __workflow_o365AddMailboxPermissionaccessRights = o365AddMailboxPermissionaccessRights == null ? null : WorkflowExpression.Compile(o365AddMailboxPermissionaccessRights);
-            WorkflowExpression.Validate(__workflow_o365AddMailboxPermissionaccessRights, nameof(o365AddMailboxPermissionaccessRights), required: true);
-            var __workflow_o365AddMailboxPermissionworkflow = o365AddMailboxPermissionworkflow == null ? null : WorkflowExpression.Compile(o365AddMailboxPermissionworkflow);
-            WorkflowExpression.Validate(__workflow_o365AddMailboxPermissionworkflow, nameof(o365AddMailboxPermissionworkflow), required: true);
-            var __workflow_o365AddMailboxPermissionautoMapping = o365AddMailboxPermissionautoMapping == null ? null : WorkflowExpression.Compile(o365AddMailboxPermissionautoMapping);
-            WorkflowExpression.Validate(__workflow_o365AddMailboxPermissionautoMapping, nameof(o365AddMailboxPermissionautoMapping), required: false);
+            var __workflow_o365AddMailboxPermissionidentity = WorkflowExpression.Compile(o365AddMailboxPermissionidentity, nameof(o365AddMailboxPermissionidentity), required: true);
+            var __workflow_o365AddMailboxPermissionuser = WorkflowExpression.Compile(o365AddMailboxPermissionuser, nameof(o365AddMailboxPermissionuser), required: true);
+            var __workflow_o365AddMailboxPermissionaccessRights = WorkflowExpression.Compile(o365AddMailboxPermissionaccessRights, nameof(o365AddMailboxPermissionaccessRights), required: true);
+            var __workflow_o365AddMailboxPermissionworkflow = WorkflowExpression.Compile(o365AddMailboxPermissionworkflow, nameof(o365AddMailboxPermissionworkflow), required: true);
+            var __workflow_o365AddMailboxPermissionautoMapping = WorkflowExpression.Compile(o365AddMailboxPermissionautoMapping, nameof(o365AddMailboxPermissionautoMapping), required: false);
             return new DeferredBodyAction<O365AddMailboxPermissionResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365AddMailboxPermission";
@@ -10189,14 +9366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365RemoveMailboxPermissionResponse> O365RemoveMailboxPermission(Expression<Func<string>> o365RemoveMailboxPermissionidentity, Expression<Func<string>> o365RemoveMailboxPermissionuser, Expression<Func<string>> o365RemoveMailboxPermissionaccessRights, Expression<Func<string>> o365RemoveMailboxPermissionworkflow)
         {
-            var __workflow_o365RemoveMailboxPermissionidentity = o365RemoveMailboxPermissionidentity == null ? null : WorkflowExpression.Compile(o365RemoveMailboxPermissionidentity);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxPermissionidentity, nameof(o365RemoveMailboxPermissionidentity), required: true);
-            var __workflow_o365RemoveMailboxPermissionuser = o365RemoveMailboxPermissionuser == null ? null : WorkflowExpression.Compile(o365RemoveMailboxPermissionuser);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxPermissionuser, nameof(o365RemoveMailboxPermissionuser), required: true);
-            var __workflow_o365RemoveMailboxPermissionaccessRights = o365RemoveMailboxPermissionaccessRights == null ? null : WorkflowExpression.Compile(o365RemoveMailboxPermissionaccessRights);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxPermissionaccessRights, nameof(o365RemoveMailboxPermissionaccessRights), required: true);
-            var __workflow_o365RemoveMailboxPermissionworkflow = o365RemoveMailboxPermissionworkflow == null ? null : WorkflowExpression.Compile(o365RemoveMailboxPermissionworkflow);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxPermissionworkflow, nameof(o365RemoveMailboxPermissionworkflow), required: true);
+            var __workflow_o365RemoveMailboxPermissionidentity = WorkflowExpression.Compile(o365RemoveMailboxPermissionidentity, nameof(o365RemoveMailboxPermissionidentity), required: true);
+            var __workflow_o365RemoveMailboxPermissionuser = WorkflowExpression.Compile(o365RemoveMailboxPermissionuser, nameof(o365RemoveMailboxPermissionuser), required: true);
+            var __workflow_o365RemoveMailboxPermissionaccessRights = WorkflowExpression.Compile(o365RemoveMailboxPermissionaccessRights, nameof(o365RemoveMailboxPermissionaccessRights), required: true);
+            var __workflow_o365RemoveMailboxPermissionworkflow = WorkflowExpression.Compile(o365RemoveMailboxPermissionworkflow, nameof(o365RemoveMailboxPermissionworkflow), required: true);
             return new DeferredBodyAction<O365RemoveMailboxPermissionResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveMailboxPermission";
@@ -10224,14 +9397,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365AddDistributionGroupMemberResponse> O365AddDistributionGroupMember(Expression<Func<string>> o365AddDistributionGroupMemberidentity, Expression<Func<string>> o365AddDistributionGroupMembermember, Expression<Func<string>> o365AddDistributionGroupMemberworkflow, Expression<Func<bool>> o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck = null)
         {
-            var __workflow_o365AddDistributionGroupMemberidentity = o365AddDistributionGroupMemberidentity == null ? null : WorkflowExpression.Compile(o365AddDistributionGroupMemberidentity);
-            WorkflowExpression.Validate(__workflow_o365AddDistributionGroupMemberidentity, nameof(o365AddDistributionGroupMemberidentity), required: true);
-            var __workflow_o365AddDistributionGroupMembermember = o365AddDistributionGroupMembermember == null ? null : WorkflowExpression.Compile(o365AddDistributionGroupMembermember);
-            WorkflowExpression.Validate(__workflow_o365AddDistributionGroupMembermember, nameof(o365AddDistributionGroupMembermember), required: true);
-            var __workflow_o365AddDistributionGroupMemberworkflow = o365AddDistributionGroupMemberworkflow == null ? null : WorkflowExpression.Compile(o365AddDistributionGroupMemberworkflow);
-            WorkflowExpression.Validate(__workflow_o365AddDistributionGroupMemberworkflow, nameof(o365AddDistributionGroupMemberworkflow), required: true);
-            var __workflow_o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck = o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck == null ? null : WorkflowExpression.Compile(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck);
-            WorkflowExpression.Validate(__workflow_o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
+            var __workflow_o365AddDistributionGroupMemberidentity = WorkflowExpression.Compile(o365AddDistributionGroupMemberidentity, nameof(o365AddDistributionGroupMemberidentity), required: true);
+            var __workflow_o365AddDistributionGroupMembermember = WorkflowExpression.Compile(o365AddDistributionGroupMembermember, nameof(o365AddDistributionGroupMembermember), required: true);
+            var __workflow_o365AddDistributionGroupMemberworkflow = WorkflowExpression.Compile(o365AddDistributionGroupMemberworkflow, nameof(o365AddDistributionGroupMemberworkflow), required: true);
+            var __workflow_o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(o365AddDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
             return new DeferredBodyAction<O365AddDistributionGroupMemberResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365AddDistributionGroupMember";
@@ -10273,18 +9442,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365GetO365DistributionGroupResponse> O365GetO365DistributionGroup(Expression<Func<string>> o365GetO365DistributionGroupworkflow, Expression<Func<string>> o365GetO365DistributionGroupidentity = null, Expression<Func<string>> o365GetO365DistributionGroupfilterPropertyName = null, Expression<Func<o365GetO365DistributionGroupfilterPropertyComparisonInput>> o365GetO365DistributionGroupfilterPropertyComparison = null, Expression<Func<string>> o365GetO365DistributionGroupfilterPropertyValue = null, Expression<Func<bool>> o365GetO365DistributionGroupnoResultIsAnException = null)
         {
-            var __workflow_o365GetO365DistributionGroupworkflow = o365GetO365DistributionGroupworkflow == null ? null : WorkflowExpression.Compile(o365GetO365DistributionGroupworkflow);
-            WorkflowExpression.Validate(__workflow_o365GetO365DistributionGroupworkflow, nameof(o365GetO365DistributionGroupworkflow), required: true);
-            var __workflow_o365GetO365DistributionGroupidentity = o365GetO365DistributionGroupidentity == null ? null : WorkflowExpression.Compile(o365GetO365DistributionGroupidentity);
-            WorkflowExpression.Validate(__workflow_o365GetO365DistributionGroupidentity, nameof(o365GetO365DistributionGroupidentity), required: false);
-            var __workflow_o365GetO365DistributionGroupfilterPropertyName = o365GetO365DistributionGroupfilterPropertyName == null ? null : WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyName);
-            WorkflowExpression.Validate(__workflow_o365GetO365DistributionGroupfilterPropertyName, nameof(o365GetO365DistributionGroupfilterPropertyName), required: false);
-            var __workflow_o365GetO365DistributionGroupfilterPropertyComparison = o365GetO365DistributionGroupfilterPropertyComparison == null ? null : WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyComparison);
-            WorkflowExpression.Validate(__workflow_o365GetO365DistributionGroupfilterPropertyComparison, nameof(o365GetO365DistributionGroupfilterPropertyComparison), required: false);
-            var __workflow_o365GetO365DistributionGroupfilterPropertyValue = o365GetO365DistributionGroupfilterPropertyValue == null ? null : WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyValue);
-            WorkflowExpression.Validate(__workflow_o365GetO365DistributionGroupfilterPropertyValue, nameof(o365GetO365DistributionGroupfilterPropertyValue), required: false);
-            var __workflow_o365GetO365DistributionGroupnoResultIsAnException = o365GetO365DistributionGroupnoResultIsAnException == null ? null : WorkflowExpression.Compile(o365GetO365DistributionGroupnoResultIsAnException);
-            WorkflowExpression.Validate(__workflow_o365GetO365DistributionGroupnoResultIsAnException, nameof(o365GetO365DistributionGroupnoResultIsAnException), required: false);
+            var __workflow_o365GetO365DistributionGroupworkflow = WorkflowExpression.Compile(o365GetO365DistributionGroupworkflow, nameof(o365GetO365DistributionGroupworkflow), required: true);
+            var __workflow_o365GetO365DistributionGroupidentity = WorkflowExpression.Compile(o365GetO365DistributionGroupidentity, nameof(o365GetO365DistributionGroupidentity), required: false);
+            var __workflow_o365GetO365DistributionGroupfilterPropertyName = WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyName, nameof(o365GetO365DistributionGroupfilterPropertyName), required: false);
+            var __workflow_o365GetO365DistributionGroupfilterPropertyComparison = WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyComparison, nameof(o365GetO365DistributionGroupfilterPropertyComparison), required: false);
+            var __workflow_o365GetO365DistributionGroupfilterPropertyValue = WorkflowExpression.Compile(o365GetO365DistributionGroupfilterPropertyValue, nameof(o365GetO365DistributionGroupfilterPropertyValue), required: false);
+            var __workflow_o365GetO365DistributionGroupnoResultIsAnException = WorkflowExpression.Compile(o365GetO365DistributionGroupnoResultIsAnException, nameof(o365GetO365DistributionGroupnoResultIsAnException), required: false);
             return new DeferredBodyAction<O365GetO365DistributionGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetO365DistributionGroup";
@@ -10356,32 +9519,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365NewO365DistributionGroupResponse> O365NewO365DistributionGroup(Expression<Func<string>> o365NewO365DistributionGroupname, Expression<Func<string>> o365NewO365DistributionGroupworkflow, Expression<Func<string>> o365NewO365DistributionGroupalias = null, Expression<Func<string>> o365NewO365DistributionGroupdisplayName = null, Expression<Func<string>> o365NewO365DistributionGroupnotes = null, Expression<Func<string>> o365NewO365DistributionGroupmanagedBy = null, Expression<Func<string>> o365NewO365DistributionGroupmembers = null, Expression<Func<string>> o365NewO365DistributionGrouporganizationalUnit = null, Expression<Func<string>> o365NewO365DistributionGroupprimarySmtpAddress = null, Expression<Func<o365NewO365DistributionGroupmemberDepartRestrictionInput>> o365NewO365DistributionGroupmemberDepartRestriction = null, Expression<Func<o365NewO365DistributionGroupmemberJoinRestrictionInput>> o365NewO365DistributionGroupmemberJoinRestriction = null, Expression<Func<bool>> o365NewO365DistributionGrouprequireSenderAuthenticationEnabled = null, Expression<Func<o365NewO365DistributionGrouptypeInput>> o365NewO365DistributionGrouptype = null)
         {
-            var __workflow_o365NewO365DistributionGroupname = o365NewO365DistributionGroupname == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupname);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupname, nameof(o365NewO365DistributionGroupname), required: true);
-            var __workflow_o365NewO365DistributionGroupworkflow = o365NewO365DistributionGroupworkflow == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupworkflow);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupworkflow, nameof(o365NewO365DistributionGroupworkflow), required: true);
-            var __workflow_o365NewO365DistributionGroupalias = o365NewO365DistributionGroupalias == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupalias);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupalias, nameof(o365NewO365DistributionGroupalias), required: false);
-            var __workflow_o365NewO365DistributionGroupdisplayName = o365NewO365DistributionGroupdisplayName == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupdisplayName);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupdisplayName, nameof(o365NewO365DistributionGroupdisplayName), required: false);
-            var __workflow_o365NewO365DistributionGroupnotes = o365NewO365DistributionGroupnotes == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupnotes);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupnotes, nameof(o365NewO365DistributionGroupnotes), required: false);
-            var __workflow_o365NewO365DistributionGroupmanagedBy = o365NewO365DistributionGroupmanagedBy == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupmanagedBy);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupmanagedBy, nameof(o365NewO365DistributionGroupmanagedBy), required: false);
-            var __workflow_o365NewO365DistributionGroupmembers = o365NewO365DistributionGroupmembers == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupmembers);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupmembers, nameof(o365NewO365DistributionGroupmembers), required: false);
-            var __workflow_o365NewO365DistributionGrouporganizationalUnit = o365NewO365DistributionGrouporganizationalUnit == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGrouporganizationalUnit);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGrouporganizationalUnit, nameof(o365NewO365DistributionGrouporganizationalUnit), required: false);
-            var __workflow_o365NewO365DistributionGroupprimarySmtpAddress = o365NewO365DistributionGroupprimarySmtpAddress == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupprimarySmtpAddress, nameof(o365NewO365DistributionGroupprimarySmtpAddress), required: false);
-            var __workflow_o365NewO365DistributionGroupmemberDepartRestriction = o365NewO365DistributionGroupmemberDepartRestriction == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupmemberDepartRestriction);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupmemberDepartRestriction, nameof(o365NewO365DistributionGroupmemberDepartRestriction), required: false);
-            var __workflow_o365NewO365DistributionGroupmemberJoinRestriction = o365NewO365DistributionGroupmemberJoinRestriction == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGroupmemberJoinRestriction);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGroupmemberJoinRestriction, nameof(o365NewO365DistributionGroupmemberJoinRestriction), required: false);
-            var __workflow_o365NewO365DistributionGrouprequireSenderAuthenticationEnabled = o365NewO365DistributionGrouprequireSenderAuthenticationEnabled == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGrouprequireSenderAuthenticationEnabled, nameof(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled), required: false);
-            var __workflow_o365NewO365DistributionGrouptype = o365NewO365DistributionGrouptype == null ? null : WorkflowExpression.Compile(o365NewO365DistributionGrouptype);
-            WorkflowExpression.Validate(__workflow_o365NewO365DistributionGrouptype, nameof(o365NewO365DistributionGrouptype), required: false);
+            var __workflow_o365NewO365DistributionGroupname = WorkflowExpression.Compile(o365NewO365DistributionGroupname, nameof(o365NewO365DistributionGroupname), required: true);
+            var __workflow_o365NewO365DistributionGroupworkflow = WorkflowExpression.Compile(o365NewO365DistributionGroupworkflow, nameof(o365NewO365DistributionGroupworkflow), required: true);
+            var __workflow_o365NewO365DistributionGroupalias = WorkflowExpression.Compile(o365NewO365DistributionGroupalias, nameof(o365NewO365DistributionGroupalias), required: false);
+            var __workflow_o365NewO365DistributionGroupdisplayName = WorkflowExpression.Compile(o365NewO365DistributionGroupdisplayName, nameof(o365NewO365DistributionGroupdisplayName), required: false);
+            var __workflow_o365NewO365DistributionGroupnotes = WorkflowExpression.Compile(o365NewO365DistributionGroupnotes, nameof(o365NewO365DistributionGroupnotes), required: false);
+            var __workflow_o365NewO365DistributionGroupmanagedBy = WorkflowExpression.Compile(o365NewO365DistributionGroupmanagedBy, nameof(o365NewO365DistributionGroupmanagedBy), required: false);
+            var __workflow_o365NewO365DistributionGroupmembers = WorkflowExpression.Compile(o365NewO365DistributionGroupmembers, nameof(o365NewO365DistributionGroupmembers), required: false);
+            var __workflow_o365NewO365DistributionGrouporganizationalUnit = WorkflowExpression.Compile(o365NewO365DistributionGrouporganizationalUnit, nameof(o365NewO365DistributionGrouporganizationalUnit), required: false);
+            var __workflow_o365NewO365DistributionGroupprimarySmtpAddress = WorkflowExpression.Compile(o365NewO365DistributionGroupprimarySmtpAddress, nameof(o365NewO365DistributionGroupprimarySmtpAddress), required: false);
+            var __workflow_o365NewO365DistributionGroupmemberDepartRestriction = WorkflowExpression.Compile(o365NewO365DistributionGroupmemberDepartRestriction, nameof(o365NewO365DistributionGroupmemberDepartRestriction), required: false);
+            var __workflow_o365NewO365DistributionGroupmemberJoinRestriction = WorkflowExpression.Compile(o365NewO365DistributionGroupmemberJoinRestriction, nameof(o365NewO365DistributionGroupmemberJoinRestriction), required: false);
+            var __workflow_o365NewO365DistributionGrouprequireSenderAuthenticationEnabled = WorkflowExpression.Compile(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled, nameof(o365NewO365DistributionGrouprequireSenderAuthenticationEnabled), required: false);
+            var __workflow_o365NewO365DistributionGrouptype = WorkflowExpression.Compile(o365NewO365DistributionGrouptype, nameof(o365NewO365DistributionGrouptype), required: false);
             return new DeferredBodyAction<O365NewO365DistributionGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365NewO365DistributionGroup";
@@ -10501,14 +9651,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365RemoveDistributionGroupResponse> O365RemoveDistributionGroup(Expression<Func<string>> o365RemoveDistributionGroupidentity, Expression<Func<string>> o365RemoveDistributionGroupworkflow, Expression<Func<bool>> o365RemoveDistributionGroupbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveDistributionGrouperrorIfGroupDoesNotExist = null)
         {
-            var __workflow_o365RemoveDistributionGroupidentity = o365RemoveDistributionGroupidentity == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupidentity);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupidentity, nameof(o365RemoveDistributionGroupidentity), required: true);
-            var __workflow_o365RemoveDistributionGroupworkflow = o365RemoveDistributionGroupworkflow == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupworkflow);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupworkflow, nameof(o365RemoveDistributionGroupworkflow), required: true);
-            var __workflow_o365RemoveDistributionGroupbypassSecurityGroupManagerCheck = o365RemoveDistributionGroupbypassSecurityGroupManagerCheck == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupbypassSecurityGroupManagerCheck, nameof(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck), required: false);
-            var __workflow_o365RemoveDistributionGrouperrorIfGroupDoesNotExist = o365RemoveDistributionGrouperrorIfGroupDoesNotExist == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGrouperrorIfGroupDoesNotExist);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGrouperrorIfGroupDoesNotExist, nameof(o365RemoveDistributionGrouperrorIfGroupDoesNotExist), required: false);
+            var __workflow_o365RemoveDistributionGroupidentity = WorkflowExpression.Compile(o365RemoveDistributionGroupidentity, nameof(o365RemoveDistributionGroupidentity), required: true);
+            var __workflow_o365RemoveDistributionGroupworkflow = WorkflowExpression.Compile(o365RemoveDistributionGroupworkflow, nameof(o365RemoveDistributionGroupworkflow), required: true);
+            var __workflow_o365RemoveDistributionGroupbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck, nameof(o365RemoveDistributionGroupbypassSecurityGroupManagerCheck), required: false);
+            var __workflow_o365RemoveDistributionGrouperrorIfGroupDoesNotExist = WorkflowExpression.Compile(o365RemoveDistributionGrouperrorIfGroupDoesNotExist, nameof(o365RemoveDistributionGrouperrorIfGroupDoesNotExist), required: false);
             return new DeferredBodyAction<O365RemoveDistributionGroupResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveDistributionGroup";
@@ -10564,28 +9710,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365SetO365MailboxResponse> O365SetO365Mailbox(Expression<Func<string>> o365SetO365Mailboxidentity, Expression<Func<string>> o365SetO365Mailboxworkflow, Expression<Func<bool>> o365SetO365MailboxaccountDisabled = null, Expression<Func<string>> o365SetO365Mailboxalias = null, Expression<Func<string>> o365SetO365MailboxdisplayName = null, Expression<Func<bool>> o365SetO365MailboxhiddenFromAddressListsEnabled = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute1 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute2 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute3 = null, Expression<Func<string>> o365SetO365MailboxcustomAttribute4 = null, Expression<Func<o365SetO365MailboxtypeInput>> o365SetO365Mailboxtype = null)
         {
-            var __workflow_o365SetO365Mailboxidentity = o365SetO365Mailboxidentity == null ? null : WorkflowExpression.Compile(o365SetO365Mailboxidentity);
-            WorkflowExpression.Validate(__workflow_o365SetO365Mailboxidentity, nameof(o365SetO365Mailboxidentity), required: true);
-            var __workflow_o365SetO365Mailboxworkflow = o365SetO365Mailboxworkflow == null ? null : WorkflowExpression.Compile(o365SetO365Mailboxworkflow);
-            WorkflowExpression.Validate(__workflow_o365SetO365Mailboxworkflow, nameof(o365SetO365Mailboxworkflow), required: true);
-            var __workflow_o365SetO365MailboxaccountDisabled = o365SetO365MailboxaccountDisabled == null ? null : WorkflowExpression.Compile(o365SetO365MailboxaccountDisabled);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxaccountDisabled, nameof(o365SetO365MailboxaccountDisabled), required: false);
-            var __workflow_o365SetO365Mailboxalias = o365SetO365Mailboxalias == null ? null : WorkflowExpression.Compile(o365SetO365Mailboxalias);
-            WorkflowExpression.Validate(__workflow_o365SetO365Mailboxalias, nameof(o365SetO365Mailboxalias), required: false);
-            var __workflow_o365SetO365MailboxdisplayName = o365SetO365MailboxdisplayName == null ? null : WorkflowExpression.Compile(o365SetO365MailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxdisplayName, nameof(o365SetO365MailboxdisplayName), required: false);
-            var __workflow_o365SetO365MailboxhiddenFromAddressListsEnabled = o365SetO365MailboxhiddenFromAddressListsEnabled == null ? null : WorkflowExpression.Compile(o365SetO365MailboxhiddenFromAddressListsEnabled);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxhiddenFromAddressListsEnabled, nameof(o365SetO365MailboxhiddenFromAddressListsEnabled), required: false);
-            var __workflow_o365SetO365MailboxcustomAttribute1 = o365SetO365MailboxcustomAttribute1 == null ? null : WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute1);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxcustomAttribute1, nameof(o365SetO365MailboxcustomAttribute1), required: false);
-            var __workflow_o365SetO365MailboxcustomAttribute2 = o365SetO365MailboxcustomAttribute2 == null ? null : WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute2);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxcustomAttribute2, nameof(o365SetO365MailboxcustomAttribute2), required: false);
-            var __workflow_o365SetO365MailboxcustomAttribute3 = o365SetO365MailboxcustomAttribute3 == null ? null : WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute3);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxcustomAttribute3, nameof(o365SetO365MailboxcustomAttribute3), required: false);
-            var __workflow_o365SetO365MailboxcustomAttribute4 = o365SetO365MailboxcustomAttribute4 == null ? null : WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute4);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxcustomAttribute4, nameof(o365SetO365MailboxcustomAttribute4), required: false);
-            var __workflow_o365SetO365Mailboxtype = o365SetO365Mailboxtype == null ? null : WorkflowExpression.Compile(o365SetO365Mailboxtype);
-            WorkflowExpression.Validate(__workflow_o365SetO365Mailboxtype, nameof(o365SetO365Mailboxtype), required: false);
+            var __workflow_o365SetO365Mailboxidentity = WorkflowExpression.Compile(o365SetO365Mailboxidentity, nameof(o365SetO365Mailboxidentity), required: true);
+            var __workflow_o365SetO365Mailboxworkflow = WorkflowExpression.Compile(o365SetO365Mailboxworkflow, nameof(o365SetO365Mailboxworkflow), required: true);
+            var __workflow_o365SetO365MailboxaccountDisabled = WorkflowExpression.Compile(o365SetO365MailboxaccountDisabled, nameof(o365SetO365MailboxaccountDisabled), required: false);
+            var __workflow_o365SetO365Mailboxalias = WorkflowExpression.Compile(o365SetO365Mailboxalias, nameof(o365SetO365Mailboxalias), required: false);
+            var __workflow_o365SetO365MailboxdisplayName = WorkflowExpression.Compile(o365SetO365MailboxdisplayName, nameof(o365SetO365MailboxdisplayName), required: false);
+            var __workflow_o365SetO365MailboxhiddenFromAddressListsEnabled = WorkflowExpression.Compile(o365SetO365MailboxhiddenFromAddressListsEnabled, nameof(o365SetO365MailboxhiddenFromAddressListsEnabled), required: false);
+            var __workflow_o365SetO365MailboxcustomAttribute1 = WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute1, nameof(o365SetO365MailboxcustomAttribute1), required: false);
+            var __workflow_o365SetO365MailboxcustomAttribute2 = WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute2, nameof(o365SetO365MailboxcustomAttribute2), required: false);
+            var __workflow_o365SetO365MailboxcustomAttribute3 = WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute3, nameof(o365SetO365MailboxcustomAttribute3), required: false);
+            var __workflow_o365SetO365MailboxcustomAttribute4 = WorkflowExpression.Compile(o365SetO365MailboxcustomAttribute4, nameof(o365SetO365MailboxcustomAttribute4), required: false);
+            var __workflow_o365SetO365Mailboxtype = WorkflowExpression.Compile(o365SetO365Mailboxtype, nameof(o365SetO365Mailboxtype), required: false);
             return new DeferredBodyAction<O365SetO365MailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365SetO365Mailbox";
@@ -10663,16 +9798,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365WaitForO365MailboxResponse> O365WaitForO365Mailbox(Expression<Func<string>> o365WaitForO365Mailboxidentity, Expression<Func<int>> o365WaitForO365MailboxnumberOfTimesToCheck, Expression<Func<int>> o365WaitForO365MailboxsecondsBetweenTries, Expression<Func<string>> o365WaitForO365Mailboxworkflow, Expression<Func<o365WaitForO365MailboxrecipientTypeDetailsInput>> o365WaitForO365MailboxrecipientTypeDetails = null)
         {
-            var __workflow_o365WaitForO365Mailboxidentity = o365WaitForO365Mailboxidentity == null ? null : WorkflowExpression.Compile(o365WaitForO365Mailboxidentity);
-            WorkflowExpression.Validate(__workflow_o365WaitForO365Mailboxidentity, nameof(o365WaitForO365Mailboxidentity), required: true);
-            var __workflow_o365WaitForO365MailboxnumberOfTimesToCheck = o365WaitForO365MailboxnumberOfTimesToCheck == null ? null : WorkflowExpression.Compile(o365WaitForO365MailboxnumberOfTimesToCheck);
-            WorkflowExpression.Validate(__workflow_o365WaitForO365MailboxnumberOfTimesToCheck, nameof(o365WaitForO365MailboxnumberOfTimesToCheck), required: true);
-            var __workflow_o365WaitForO365MailboxsecondsBetweenTries = o365WaitForO365MailboxsecondsBetweenTries == null ? null : WorkflowExpression.Compile(o365WaitForO365MailboxsecondsBetweenTries);
-            WorkflowExpression.Validate(__workflow_o365WaitForO365MailboxsecondsBetweenTries, nameof(o365WaitForO365MailboxsecondsBetweenTries), required: true);
-            var __workflow_o365WaitForO365Mailboxworkflow = o365WaitForO365Mailboxworkflow == null ? null : WorkflowExpression.Compile(o365WaitForO365Mailboxworkflow);
-            WorkflowExpression.Validate(__workflow_o365WaitForO365Mailboxworkflow, nameof(o365WaitForO365Mailboxworkflow), required: true);
-            var __workflow_o365WaitForO365MailboxrecipientTypeDetails = o365WaitForO365MailboxrecipientTypeDetails == null ? null : WorkflowExpression.Compile(o365WaitForO365MailboxrecipientTypeDetails);
-            WorkflowExpression.Validate(__workflow_o365WaitForO365MailboxrecipientTypeDetails, nameof(o365WaitForO365MailboxrecipientTypeDetails), required: false);
+            var __workflow_o365WaitForO365Mailboxidentity = WorkflowExpression.Compile(o365WaitForO365Mailboxidentity, nameof(o365WaitForO365Mailboxidentity), required: true);
+            var __workflow_o365WaitForO365MailboxnumberOfTimesToCheck = WorkflowExpression.Compile(o365WaitForO365MailboxnumberOfTimesToCheck, nameof(o365WaitForO365MailboxnumberOfTimesToCheck), required: true);
+            var __workflow_o365WaitForO365MailboxsecondsBetweenTries = WorkflowExpression.Compile(o365WaitForO365MailboxsecondsBetweenTries, nameof(o365WaitForO365MailboxsecondsBetweenTries), required: true);
+            var __workflow_o365WaitForO365Mailboxworkflow = WorkflowExpression.Compile(o365WaitForO365Mailboxworkflow, nameof(o365WaitForO365Mailboxworkflow), required: true);
+            var __workflow_o365WaitForO365MailboxrecipientTypeDetails = WorkflowExpression.Compile(o365WaitForO365MailboxrecipientTypeDetails, nameof(o365WaitForO365MailboxrecipientTypeDetails), required: false);
             return new DeferredBodyAction<O365WaitForO365MailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365WaitForO365Mailbox";
@@ -10706,18 +9836,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365SetO365MailboxAutoReplyConfigurationResponse> O365SetO365MailboxAutoReplyConfiguration(Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationidentity, Expression<Func<o365SetO365MailboxAutoReplyConfigurationautoReplyStateInput>> o365SetO365MailboxAutoReplyConfigurationautoReplyState, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationworkflow, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationinternalMessage = null, Expression<Func<o365SetO365MailboxAutoReplyConfigurationexternalAudienceInput>> o365SetO365MailboxAutoReplyConfigurationexternalAudience = null, Expression<Func<string>> o365SetO365MailboxAutoReplyConfigurationexternalMessage = null)
         {
-            var __workflow_o365SetO365MailboxAutoReplyConfigurationidentity = o365SetO365MailboxAutoReplyConfigurationidentity == null ? null : WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationidentity);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxAutoReplyConfigurationidentity, nameof(o365SetO365MailboxAutoReplyConfigurationidentity), required: true);
-            var __workflow_o365SetO365MailboxAutoReplyConfigurationautoReplyState = o365SetO365MailboxAutoReplyConfigurationautoReplyState == null ? null : WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationautoReplyState);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxAutoReplyConfigurationautoReplyState, nameof(o365SetO365MailboxAutoReplyConfigurationautoReplyState), required: true);
-            var __workflow_o365SetO365MailboxAutoReplyConfigurationworkflow = o365SetO365MailboxAutoReplyConfigurationworkflow == null ? null : WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationworkflow);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxAutoReplyConfigurationworkflow, nameof(o365SetO365MailboxAutoReplyConfigurationworkflow), required: true);
-            var __workflow_o365SetO365MailboxAutoReplyConfigurationinternalMessage = o365SetO365MailboxAutoReplyConfigurationinternalMessage == null ? null : WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationinternalMessage);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxAutoReplyConfigurationinternalMessage, nameof(o365SetO365MailboxAutoReplyConfigurationinternalMessage), required: false);
-            var __workflow_o365SetO365MailboxAutoReplyConfigurationexternalAudience = o365SetO365MailboxAutoReplyConfigurationexternalAudience == null ? null : WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationexternalAudience);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxAutoReplyConfigurationexternalAudience, nameof(o365SetO365MailboxAutoReplyConfigurationexternalAudience), required: false);
-            var __workflow_o365SetO365MailboxAutoReplyConfigurationexternalMessage = o365SetO365MailboxAutoReplyConfigurationexternalMessage == null ? null : WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationexternalMessage);
-            WorkflowExpression.Validate(__workflow_o365SetO365MailboxAutoReplyConfigurationexternalMessage, nameof(o365SetO365MailboxAutoReplyConfigurationexternalMessage), required: false);
+            var __workflow_o365SetO365MailboxAutoReplyConfigurationidentity = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationidentity, nameof(o365SetO365MailboxAutoReplyConfigurationidentity), required: true);
+            var __workflow_o365SetO365MailboxAutoReplyConfigurationautoReplyState = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationautoReplyState, nameof(o365SetO365MailboxAutoReplyConfigurationautoReplyState), required: true);
+            var __workflow_o365SetO365MailboxAutoReplyConfigurationworkflow = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationworkflow, nameof(o365SetO365MailboxAutoReplyConfigurationworkflow), required: true);
+            var __workflow_o365SetO365MailboxAutoReplyConfigurationinternalMessage = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationinternalMessage, nameof(o365SetO365MailboxAutoReplyConfigurationinternalMessage), required: false);
+            var __workflow_o365SetO365MailboxAutoReplyConfigurationexternalAudience = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationexternalAudience, nameof(o365SetO365MailboxAutoReplyConfigurationexternalAudience), required: false);
+            var __workflow_o365SetO365MailboxAutoReplyConfigurationexternalMessage = WorkflowExpression.Compile(o365SetO365MailboxAutoReplyConfigurationexternalMessage, nameof(o365SetO365MailboxAutoReplyConfigurationexternalMessage), required: false);
             return new DeferredBodyAction<O365SetO365MailboxAutoReplyConfigurationResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365SetO365MailboxAutoReplyConfiguration";
@@ -10771,16 +9895,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365RemoveDistributionGroupMemberResponse> O365RemoveDistributionGroupMember(Expression<Func<string>> o365RemoveDistributionGroupMembergroupIdentity, Expression<Func<string>> o365RemoveDistributionGroupMembermember, Expression<Func<string>> o365RemoveDistributionGroupMemberworkflow, Expression<Func<bool>> o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup = null)
         {
-            var __workflow_o365RemoveDistributionGroupMembergroupIdentity = o365RemoveDistributionGroupMembergroupIdentity == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupMembergroupIdentity);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupMembergroupIdentity, nameof(o365RemoveDistributionGroupMembergroupIdentity), required: true);
-            var __workflow_o365RemoveDistributionGroupMembermember = o365RemoveDistributionGroupMembermember == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupMembermember);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupMembermember, nameof(o365RemoveDistributionGroupMembermember), required: true);
-            var __workflow_o365RemoveDistributionGroupMemberworkflow = o365RemoveDistributionGroupMemberworkflow == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupMemberworkflow);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupMemberworkflow, nameof(o365RemoveDistributionGroupMemberworkflow), required: true);
-            var __workflow_o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
-            var __workflow_o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup = o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup == null ? null : WorkflowExpression.Compile(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup);
-            WorkflowExpression.Validate(__workflow_o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup, nameof(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup), required: false);
+            var __workflow_o365RemoveDistributionGroupMembergroupIdentity = WorkflowExpression.Compile(o365RemoveDistributionGroupMembergroupIdentity, nameof(o365RemoveDistributionGroupMembergroupIdentity), required: true);
+            var __workflow_o365RemoveDistributionGroupMembermember = WorkflowExpression.Compile(o365RemoveDistributionGroupMembermember, nameof(o365RemoveDistributionGroupMembermember), required: true);
+            var __workflow_o365RemoveDistributionGroupMemberworkflow = WorkflowExpression.Compile(o365RemoveDistributionGroupMemberworkflow, nameof(o365RemoveDistributionGroupMemberworkflow), required: true);
+            var __workflow_o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck, nameof(o365RemoveDistributionGroupMemberbypassSecurityGroupManagerCheck), required: false);
+            var __workflow_o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup = WorkflowExpression.Compile(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup, nameof(o365RemoveDistributionGroupMemberexceptionIfMemberNotInGroup), required: false);
             return new DeferredBodyAction<O365RemoveDistributionGroupMemberResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveDistributionGroupMember";
@@ -10838,12 +9957,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365GetMailboxDistributionGroupMembershipResponse> O365GetMailboxDistributionGroupMembership(Expression<Func<string>> o365GetMailboxDistributionGroupMembershipmailboxIdentity, Expression<Func<string>> o365GetMailboxDistributionGroupMembershipworkflow, Expression<Func<string>> o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON = null)
         {
-            var __workflow_o365GetMailboxDistributionGroupMembershipmailboxIdentity = o365GetMailboxDistributionGroupMembershipmailboxIdentity == null ? null : WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershipmailboxIdentity);
-            WorkflowExpression.Validate(__workflow_o365GetMailboxDistributionGroupMembershipmailboxIdentity, nameof(o365GetMailboxDistributionGroupMembershipmailboxIdentity), required: true);
-            var __workflow_o365GetMailboxDistributionGroupMembershipworkflow = o365GetMailboxDistributionGroupMembershipworkflow == null ? null : WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershipworkflow);
-            WorkflowExpression.Validate(__workflow_o365GetMailboxDistributionGroupMembershipworkflow, nameof(o365GetMailboxDistributionGroupMembershipworkflow), required: true);
-            var __workflow_o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON = o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON == null ? null : WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON);
-            WorkflowExpression.Validate(__workflow_o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON, nameof(o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON), required: false);
+            var __workflow_o365GetMailboxDistributionGroupMembershipmailboxIdentity = WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershipmailboxIdentity, nameof(o365GetMailboxDistributionGroupMembershipmailboxIdentity), required: true);
+            var __workflow_o365GetMailboxDistributionGroupMembershipworkflow = WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershipworkflow, nameof(o365GetMailboxDistributionGroupMembershipworkflow), required: true);
+            var __workflow_o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON = WorkflowExpression.Compile(o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON, nameof(o365GetMailboxDistributionGroupMembershippropertiesToRetrieveJSON), required: false);
             return new DeferredBodyAction<O365GetMailboxDistributionGroupMembershipResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetMailboxDistributionGroupMembership";
@@ -10873,12 +9989,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365GetDistributionGroupMembersResponse> O365GetDistributionGroupMembers(Expression<Func<string>> o365GetDistributionGroupMembersgroupIdentity, Expression<Func<string>> o365GetDistributionGroupMembersworkflow, Expression<Func<string>> o365GetDistributionGroupMemberspropertiesToRetrieveJSON = null)
         {
-            var __workflow_o365GetDistributionGroupMembersgroupIdentity = o365GetDistributionGroupMembersgroupIdentity == null ? null : WorkflowExpression.Compile(o365GetDistributionGroupMembersgroupIdentity);
-            WorkflowExpression.Validate(__workflow_o365GetDistributionGroupMembersgroupIdentity, nameof(o365GetDistributionGroupMembersgroupIdentity), required: true);
-            var __workflow_o365GetDistributionGroupMembersworkflow = o365GetDistributionGroupMembersworkflow == null ? null : WorkflowExpression.Compile(o365GetDistributionGroupMembersworkflow);
-            WorkflowExpression.Validate(__workflow_o365GetDistributionGroupMembersworkflow, nameof(o365GetDistributionGroupMembersworkflow), required: true);
-            var __workflow_o365GetDistributionGroupMemberspropertiesToRetrieveJSON = o365GetDistributionGroupMemberspropertiesToRetrieveJSON == null ? null : WorkflowExpression.Compile(o365GetDistributionGroupMemberspropertiesToRetrieveJSON);
-            WorkflowExpression.Validate(__workflow_o365GetDistributionGroupMemberspropertiesToRetrieveJSON, nameof(o365GetDistributionGroupMemberspropertiesToRetrieveJSON), required: false);
+            var __workflow_o365GetDistributionGroupMembersgroupIdentity = WorkflowExpression.Compile(o365GetDistributionGroupMembersgroupIdentity, nameof(o365GetDistributionGroupMembersgroupIdentity), required: true);
+            var __workflow_o365GetDistributionGroupMembersworkflow = WorkflowExpression.Compile(o365GetDistributionGroupMembersworkflow, nameof(o365GetDistributionGroupMembersworkflow), required: true);
+            var __workflow_o365GetDistributionGroupMemberspropertiesToRetrieveJSON = WorkflowExpression.Compile(o365GetDistributionGroupMemberspropertiesToRetrieveJSON, nameof(o365GetDistributionGroupMemberspropertiesToRetrieveJSON), required: false);
             return new DeferredBodyAction<O365GetDistributionGroupMembersResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365GetDistributionGroupMembers";
@@ -10908,24 +10021,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365RemoveMailboxFromAllDistributionGroupsResponse> O365RemoveMailboxFromAllDistributionGroups(Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsworkflow, Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove = null, Expression<Func<string>> o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON = null, Expression<Func<bool>> o365RemoveMailboxFromAllDistributionGroupsrunAsThread = null, Expression<Func<int>> o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId = null, Expression<Func<int>> o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread = null)
         {
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsworkflow = o365RemoveMailboxFromAllDistributionGroupsworkflow == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsworkflow);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsworkflow, nameof(o365RemoveMailboxFromAllDistributionGroupsworkflow), required: true);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity = o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity, nameof(o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity), required: false);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck = o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck, nameof(o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck), required: false);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove = o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove, nameof(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove), required: false);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove = o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove, nameof(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove), required: false);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON = o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON, nameof(o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON), required: false);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsrunAsThread = o365RemoveMailboxFromAllDistributionGroupsrunAsThread == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsrunAsThread);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsrunAsThread, nameof(o365RemoveMailboxFromAllDistributionGroupsrunAsThread), required: false);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId = o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId, nameof(o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId), required: false);
-            var __workflow_o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread = o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread == null ? null : WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread, nameof(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsworkflow = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsworkflow, nameof(o365RemoveMailboxFromAllDistributionGroupsworkflow), required: true);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity, nameof(o365RemoveMailboxFromAllDistributionGroupsmailboxIdentity), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck, nameof(o365RemoveMailboxFromAllDistributionGroupsbypassSecurityGroupManagerCheck), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove, nameof(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAnyGroupsFailToRemove), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove, nameof(o365RemoveMailboxFromAllDistributionGroupsexceptionIfAllGroupsFailToRemove), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON, nameof(o365RemoveMailboxFromAllDistributionGroupsgroupDNsToExcludeJSON), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsrunAsThread = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsrunAsThread, nameof(o365RemoveMailboxFromAllDistributionGroupsrunAsThread), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId, nameof(o365RemoveMailboxFromAllDistributionGroupsretrieveOutputDataFromThreadId), required: false);
+            var __workflow_o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread = WorkflowExpression.Compile(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread, nameof(o365RemoveMailboxFromAllDistributionGroupssecondsToWaitForThread), required: false);
             return new DeferredBodyAction<O365RemoveMailboxFromAllDistributionGroupsResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365RemoveMailboxFromAllDistributionGroups";
@@ -11045,36 +10149,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365NewMailboxResponse> O365NewMailbox(Expression<Func<string>> o365NewMailboxmicrosoftOnlineServicesID, Expression<Func<string>> o365NewMailboxname, Expression<Func<string>> o365NewMailboxworkflow, Expression<Func<string>> o365NewMailboxfirstName = null, Expression<Func<string>> o365NewMailboxlastName = null, Expression<Func<string>> o365NewMailboxinitials = null, Expression<Func<string>> o365NewMailboxdisplayName = null, Expression<Func<string>> o365NewMailboxalias = null, Expression<Func<string>> o365NewMailboxprimarySmtpAddress = null, Expression<Func<string>> o365NewMailboxpassword = null, Expression<Func<bool>> o365NewMailboxaccountPasswordIsStoredPassword = null, Expression<Func<bool>> o365NewMailboxresetPasswordOnNextLogon = null, Expression<Func<bool>> o365NewMailboxarchive = null, Expression<Func<string>> o365NewMailboxmailboxPlan = null, Expression<Func<string>> o365NewMailboxmailboxRegion = null)
         {
-            var __workflow_o365NewMailboxmicrosoftOnlineServicesID = o365NewMailboxmicrosoftOnlineServicesID == null ? null : WorkflowExpression.Compile(o365NewMailboxmicrosoftOnlineServicesID);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxmicrosoftOnlineServicesID, nameof(o365NewMailboxmicrosoftOnlineServicesID), required: true);
-            var __workflow_o365NewMailboxname = o365NewMailboxname == null ? null : WorkflowExpression.Compile(o365NewMailboxname);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxname, nameof(o365NewMailboxname), required: true);
-            var __workflow_o365NewMailboxworkflow = o365NewMailboxworkflow == null ? null : WorkflowExpression.Compile(o365NewMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxworkflow, nameof(o365NewMailboxworkflow), required: true);
-            var __workflow_o365NewMailboxfirstName = o365NewMailboxfirstName == null ? null : WorkflowExpression.Compile(o365NewMailboxfirstName);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxfirstName, nameof(o365NewMailboxfirstName), required: false);
-            var __workflow_o365NewMailboxlastName = o365NewMailboxlastName == null ? null : WorkflowExpression.Compile(o365NewMailboxlastName);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxlastName, nameof(o365NewMailboxlastName), required: false);
-            var __workflow_o365NewMailboxinitials = o365NewMailboxinitials == null ? null : WorkflowExpression.Compile(o365NewMailboxinitials);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxinitials, nameof(o365NewMailboxinitials), required: false);
-            var __workflow_o365NewMailboxdisplayName = o365NewMailboxdisplayName == null ? null : WorkflowExpression.Compile(o365NewMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxdisplayName, nameof(o365NewMailboxdisplayName), required: false);
-            var __workflow_o365NewMailboxalias = o365NewMailboxalias == null ? null : WorkflowExpression.Compile(o365NewMailboxalias);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxalias, nameof(o365NewMailboxalias), required: false);
-            var __workflow_o365NewMailboxprimarySmtpAddress = o365NewMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(o365NewMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxprimarySmtpAddress, nameof(o365NewMailboxprimarySmtpAddress), required: false);
-            var __workflow_o365NewMailboxpassword = o365NewMailboxpassword == null ? null : WorkflowExpression.Compile(o365NewMailboxpassword);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxpassword, nameof(o365NewMailboxpassword), required: false);
-            var __workflow_o365NewMailboxaccountPasswordIsStoredPassword = o365NewMailboxaccountPasswordIsStoredPassword == null ? null : WorkflowExpression.Compile(o365NewMailboxaccountPasswordIsStoredPassword);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxaccountPasswordIsStoredPassword, nameof(o365NewMailboxaccountPasswordIsStoredPassword), required: false);
-            var __workflow_o365NewMailboxresetPasswordOnNextLogon = o365NewMailboxresetPasswordOnNextLogon == null ? null : WorkflowExpression.Compile(o365NewMailboxresetPasswordOnNextLogon);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxresetPasswordOnNextLogon, nameof(o365NewMailboxresetPasswordOnNextLogon), required: false);
-            var __workflow_o365NewMailboxarchive = o365NewMailboxarchive == null ? null : WorkflowExpression.Compile(o365NewMailboxarchive);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxarchive, nameof(o365NewMailboxarchive), required: false);
-            var __workflow_o365NewMailboxmailboxPlan = o365NewMailboxmailboxPlan == null ? null : WorkflowExpression.Compile(o365NewMailboxmailboxPlan);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxmailboxPlan, nameof(o365NewMailboxmailboxPlan), required: false);
-            var __workflow_o365NewMailboxmailboxRegion = o365NewMailboxmailboxRegion == null ? null : WorkflowExpression.Compile(o365NewMailboxmailboxRegion);
-            WorkflowExpression.Validate(__workflow_o365NewMailboxmailboxRegion, nameof(o365NewMailboxmailboxRegion), required: false);
+            var __workflow_o365NewMailboxmicrosoftOnlineServicesID = WorkflowExpression.Compile(o365NewMailboxmicrosoftOnlineServicesID, nameof(o365NewMailboxmicrosoftOnlineServicesID), required: true);
+            var __workflow_o365NewMailboxname = WorkflowExpression.Compile(o365NewMailboxname, nameof(o365NewMailboxname), required: true);
+            var __workflow_o365NewMailboxworkflow = WorkflowExpression.Compile(o365NewMailboxworkflow, nameof(o365NewMailboxworkflow), required: true);
+            var __workflow_o365NewMailboxfirstName = WorkflowExpression.Compile(o365NewMailboxfirstName, nameof(o365NewMailboxfirstName), required: false);
+            var __workflow_o365NewMailboxlastName = WorkflowExpression.Compile(o365NewMailboxlastName, nameof(o365NewMailboxlastName), required: false);
+            var __workflow_o365NewMailboxinitials = WorkflowExpression.Compile(o365NewMailboxinitials, nameof(o365NewMailboxinitials), required: false);
+            var __workflow_o365NewMailboxdisplayName = WorkflowExpression.Compile(o365NewMailboxdisplayName, nameof(o365NewMailboxdisplayName), required: false);
+            var __workflow_o365NewMailboxalias = WorkflowExpression.Compile(o365NewMailboxalias, nameof(o365NewMailboxalias), required: false);
+            var __workflow_o365NewMailboxprimarySmtpAddress = WorkflowExpression.Compile(o365NewMailboxprimarySmtpAddress, nameof(o365NewMailboxprimarySmtpAddress), required: false);
+            var __workflow_o365NewMailboxpassword = WorkflowExpression.Compile(o365NewMailboxpassword, nameof(o365NewMailboxpassword), required: false);
+            var __workflow_o365NewMailboxaccountPasswordIsStoredPassword = WorkflowExpression.Compile(o365NewMailboxaccountPasswordIsStoredPassword, nameof(o365NewMailboxaccountPasswordIsStoredPassword), required: false);
+            var __workflow_o365NewMailboxresetPasswordOnNextLogon = WorkflowExpression.Compile(o365NewMailboxresetPasswordOnNextLogon, nameof(o365NewMailboxresetPasswordOnNextLogon), required: false);
+            var __workflow_o365NewMailboxarchive = WorkflowExpression.Compile(o365NewMailboxarchive, nameof(o365NewMailboxarchive), required: false);
+            var __workflow_o365NewMailboxmailboxPlan = WorkflowExpression.Compile(o365NewMailboxmailboxPlan, nameof(o365NewMailboxmailboxPlan), required: false);
+            var __workflow_o365NewMailboxmailboxRegion = WorkflowExpression.Compile(o365NewMailboxmailboxRegion, nameof(o365NewMailboxmailboxRegion), required: false);
             return new DeferredBodyAction<O365NewMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365NewMailbox";
@@ -11202,26 +10291,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365NewSharedMailboxResponse> O365NewSharedMailbox(Expression<Func<string>> o365NewSharedMailboxname, Expression<Func<string>> o365NewSharedMailboxworkflow, Expression<Func<string>> o365NewSharedMailboxfirstName = null, Expression<Func<string>> o365NewSharedMailboxlastName = null, Expression<Func<string>> o365NewSharedMailboxinitials = null, Expression<Func<string>> o365NewSharedMailboxdisplayName = null, Expression<Func<string>> o365NewSharedMailboxalias = null, Expression<Func<string>> o365NewSharedMailboxprimarySmtpAddress = null, Expression<Func<bool>> o365NewSharedMailboxarchive = null, Expression<Func<string>> o365NewSharedMailboxmailboxRegion = null)
         {
-            var __workflow_o365NewSharedMailboxname = o365NewSharedMailboxname == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxname);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxname, nameof(o365NewSharedMailboxname), required: true);
-            var __workflow_o365NewSharedMailboxworkflow = o365NewSharedMailboxworkflow == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxworkflow, nameof(o365NewSharedMailboxworkflow), required: true);
-            var __workflow_o365NewSharedMailboxfirstName = o365NewSharedMailboxfirstName == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxfirstName);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxfirstName, nameof(o365NewSharedMailboxfirstName), required: false);
-            var __workflow_o365NewSharedMailboxlastName = o365NewSharedMailboxlastName == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxlastName);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxlastName, nameof(o365NewSharedMailboxlastName), required: false);
-            var __workflow_o365NewSharedMailboxinitials = o365NewSharedMailboxinitials == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxinitials);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxinitials, nameof(o365NewSharedMailboxinitials), required: false);
-            var __workflow_o365NewSharedMailboxdisplayName = o365NewSharedMailboxdisplayName == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxdisplayName);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxdisplayName, nameof(o365NewSharedMailboxdisplayName), required: false);
-            var __workflow_o365NewSharedMailboxalias = o365NewSharedMailboxalias == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxalias);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxalias, nameof(o365NewSharedMailboxalias), required: false);
-            var __workflow_o365NewSharedMailboxprimarySmtpAddress = o365NewSharedMailboxprimarySmtpAddress == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxprimarySmtpAddress);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxprimarySmtpAddress, nameof(o365NewSharedMailboxprimarySmtpAddress), required: false);
-            var __workflow_o365NewSharedMailboxarchive = o365NewSharedMailboxarchive == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxarchive);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxarchive, nameof(o365NewSharedMailboxarchive), required: false);
-            var __workflow_o365NewSharedMailboxmailboxRegion = o365NewSharedMailboxmailboxRegion == null ? null : WorkflowExpression.Compile(o365NewSharedMailboxmailboxRegion);
-            WorkflowExpression.Validate(__workflow_o365NewSharedMailboxmailboxRegion, nameof(o365NewSharedMailboxmailboxRegion), required: false);
+            var __workflow_o365NewSharedMailboxname = WorkflowExpression.Compile(o365NewSharedMailboxname, nameof(o365NewSharedMailboxname), required: true);
+            var __workflow_o365NewSharedMailboxworkflow = WorkflowExpression.Compile(o365NewSharedMailboxworkflow, nameof(o365NewSharedMailboxworkflow), required: true);
+            var __workflow_o365NewSharedMailboxfirstName = WorkflowExpression.Compile(o365NewSharedMailboxfirstName, nameof(o365NewSharedMailboxfirstName), required: false);
+            var __workflow_o365NewSharedMailboxlastName = WorkflowExpression.Compile(o365NewSharedMailboxlastName, nameof(o365NewSharedMailboxlastName), required: false);
+            var __workflow_o365NewSharedMailboxinitials = WorkflowExpression.Compile(o365NewSharedMailboxinitials, nameof(o365NewSharedMailboxinitials), required: false);
+            var __workflow_o365NewSharedMailboxdisplayName = WorkflowExpression.Compile(o365NewSharedMailboxdisplayName, nameof(o365NewSharedMailboxdisplayName), required: false);
+            var __workflow_o365NewSharedMailboxalias = WorkflowExpression.Compile(o365NewSharedMailboxalias, nameof(o365NewSharedMailboxalias), required: false);
+            var __workflow_o365NewSharedMailboxprimarySmtpAddress = WorkflowExpression.Compile(o365NewSharedMailboxprimarySmtpAddress, nameof(o365NewSharedMailboxprimarySmtpAddress), required: false);
+            var __workflow_o365NewSharedMailboxarchive = WorkflowExpression.Compile(o365NewSharedMailboxarchive, nameof(o365NewSharedMailboxarchive), required: false);
+            var __workflow_o365NewSharedMailboxmailboxRegion = WorkflowExpression.Compile(o365NewSharedMailboxmailboxRegion, nameof(o365NewSharedMailboxmailboxRegion), required: false);
             return new DeferredBodyAction<O365NewSharedMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365NewSharedMailbox";
@@ -11303,16 +10382,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365EnableArchiveMailboxResponse> O365EnableArchiveMailbox(Expression<Func<string>> o365EnableArchiveMailboxidentity, Expression<Func<string>> o365EnableArchiveMailboxworkflow, Expression<Func<bool>> o365EnableArchiveMailboxcheckIfArchiveExists = null, Expression<Func<string>> o365EnableArchiveMailboxarchiveName = null, Expression<Func<bool>> o365EnableArchiveMailboxautoExpandingArchive = null)
         {
-            var __workflow_o365EnableArchiveMailboxidentity = o365EnableArchiveMailboxidentity == null ? null : WorkflowExpression.Compile(o365EnableArchiveMailboxidentity);
-            WorkflowExpression.Validate(__workflow_o365EnableArchiveMailboxidentity, nameof(o365EnableArchiveMailboxidentity), required: true);
-            var __workflow_o365EnableArchiveMailboxworkflow = o365EnableArchiveMailboxworkflow == null ? null : WorkflowExpression.Compile(o365EnableArchiveMailboxworkflow);
-            WorkflowExpression.Validate(__workflow_o365EnableArchiveMailboxworkflow, nameof(o365EnableArchiveMailboxworkflow), required: true);
-            var __workflow_o365EnableArchiveMailboxcheckIfArchiveExists = o365EnableArchiveMailboxcheckIfArchiveExists == null ? null : WorkflowExpression.Compile(o365EnableArchiveMailboxcheckIfArchiveExists);
-            WorkflowExpression.Validate(__workflow_o365EnableArchiveMailboxcheckIfArchiveExists, nameof(o365EnableArchiveMailboxcheckIfArchiveExists), required: false);
-            var __workflow_o365EnableArchiveMailboxarchiveName = o365EnableArchiveMailboxarchiveName == null ? null : WorkflowExpression.Compile(o365EnableArchiveMailboxarchiveName);
-            WorkflowExpression.Validate(__workflow_o365EnableArchiveMailboxarchiveName, nameof(o365EnableArchiveMailboxarchiveName), required: false);
-            var __workflow_o365EnableArchiveMailboxautoExpandingArchive = o365EnableArchiveMailboxautoExpandingArchive == null ? null : WorkflowExpression.Compile(o365EnableArchiveMailboxautoExpandingArchive);
-            WorkflowExpression.Validate(__workflow_o365EnableArchiveMailboxautoExpandingArchive, nameof(o365EnableArchiveMailboxautoExpandingArchive), required: false);
+            var __workflow_o365EnableArchiveMailboxidentity = WorkflowExpression.Compile(o365EnableArchiveMailboxidentity, nameof(o365EnableArchiveMailboxidentity), required: true);
+            var __workflow_o365EnableArchiveMailboxworkflow = WorkflowExpression.Compile(o365EnableArchiveMailboxworkflow, nameof(o365EnableArchiveMailboxworkflow), required: true);
+            var __workflow_o365EnableArchiveMailboxcheckIfArchiveExists = WorkflowExpression.Compile(o365EnableArchiveMailboxcheckIfArchiveExists, nameof(o365EnableArchiveMailboxcheckIfArchiveExists), required: false);
+            var __workflow_o365EnableArchiveMailboxarchiveName = WorkflowExpression.Compile(o365EnableArchiveMailboxarchiveName, nameof(o365EnableArchiveMailboxarchiveName), required: false);
+            var __workflow_o365EnableArchiveMailboxautoExpandingArchive = WorkflowExpression.Compile(o365EnableArchiveMailboxautoExpandingArchive, nameof(o365EnableArchiveMailboxautoExpandingArchive), required: false);
             return new DeferredBodyAction<O365EnableArchiveMailboxResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365EnableArchiveMailbox";
@@ -11374,10 +10448,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<O365DoesMailboxHaveAnArchiveResponse> O365DoesMailboxHaveAnArchive(Expression<Func<string>> o365DoesMailboxHaveAnArchiveidentity, Expression<Func<string>> o365DoesMailboxHaveAnArchiveworkflow)
         {
-            var __workflow_o365DoesMailboxHaveAnArchiveidentity = o365DoesMailboxHaveAnArchiveidentity == null ? null : WorkflowExpression.Compile(o365DoesMailboxHaveAnArchiveidentity);
-            WorkflowExpression.Validate(__workflow_o365DoesMailboxHaveAnArchiveidentity, nameof(o365DoesMailboxHaveAnArchiveidentity), required: true);
-            var __workflow_o365DoesMailboxHaveAnArchiveworkflow = o365DoesMailboxHaveAnArchiveworkflow == null ? null : WorkflowExpression.Compile(o365DoesMailboxHaveAnArchiveworkflow);
-            WorkflowExpression.Validate(__workflow_o365DoesMailboxHaveAnArchiveworkflow, nameof(o365DoesMailboxHaveAnArchiveworkflow), required: true);
+            var __workflow_o365DoesMailboxHaveAnArchiveidentity = WorkflowExpression.Compile(o365DoesMailboxHaveAnArchiveidentity, nameof(o365DoesMailboxHaveAnArchiveidentity), required: true);
+            var __workflow_o365DoesMailboxHaveAnArchiveworkflow = WorkflowExpression.Compile(o365DoesMailboxHaveAnArchiveworkflow, nameof(o365DoesMailboxHaveAnArchiveworkflow), required: true);
             return new DeferredBodyAction<O365DoesMailboxHaveAnArchiveResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/O365DoesMailboxHaveAnArchive";
@@ -11401,44 +10473,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<JMLGetNextAvailableAccountNameResponse> JMLGetNextAvailableAccountName(Expression<Func<string>> jMLGetNextAvailableAccountNameworkflow, Expression<Func<string>> jMLGetNextAvailableAccountNamefirstName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamemiddleName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamelastName = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldA = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldB = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldC = null, Expression<Func<string>> jMLGetNextAvailableAccountNamefieldD = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableMStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableNStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamevariableXStartValue = null, Expression<Func<int>> jMLGetNextAvailableAccountNamemaxAttempts = null, Expression<Func<bool>> jMLGetNextAvailableAccountNamefallbackCausesRetest = null, Expression<Func<string>> jMLGetNextAvailableAccountNamenumbersNotToUse = null, Expression<Func<string>> jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs = null, Expression<Func<bool>> jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs = null, Expression<Func<bool>> jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs = null, Expression<Func<string>> jMLGetNextAvailableAccountNamesequenceA1 = null, Expression<Func<jMLGetNextAvailableAccountNamepropertiesToCheckListInputItem[]>> jMLGetNextAvailableAccountNamepropertiesToCheckList = null)
         {
-            var __workflow_jMLGetNextAvailableAccountNameworkflow = jMLGetNextAvailableAccountNameworkflow == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNameworkflow);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNameworkflow, nameof(jMLGetNextAvailableAccountNameworkflow), required: true);
-            var __workflow_jMLGetNextAvailableAccountNamefirstName = jMLGetNextAvailableAccountNamefirstName == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefirstName);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamefirstName, nameof(jMLGetNextAvailableAccountNamefirstName), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamemiddleName = jMLGetNextAvailableAccountNamemiddleName == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamemiddleName);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamemiddleName, nameof(jMLGetNextAvailableAccountNamemiddleName), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamelastName = jMLGetNextAvailableAccountNamelastName == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamelastName);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamelastName, nameof(jMLGetNextAvailableAccountNamelastName), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamefieldA = jMLGetNextAvailableAccountNamefieldA == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldA);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamefieldA, nameof(jMLGetNextAvailableAccountNamefieldA), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamefieldB = jMLGetNextAvailableAccountNamefieldB == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldB);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamefieldB, nameof(jMLGetNextAvailableAccountNamefieldB), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamefieldC = jMLGetNextAvailableAccountNamefieldC == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldC);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamefieldC, nameof(jMLGetNextAvailableAccountNamefieldC), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamefieldD = jMLGetNextAvailableAccountNamefieldD == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldD);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamefieldD, nameof(jMLGetNextAvailableAccountNamefieldD), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamevariableMStartValue = jMLGetNextAvailableAccountNamevariableMStartValue == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamevariableMStartValue);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamevariableMStartValue, nameof(jMLGetNextAvailableAccountNamevariableMStartValue), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamevariableNStartValue = jMLGetNextAvailableAccountNamevariableNStartValue == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamevariableNStartValue);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamevariableNStartValue, nameof(jMLGetNextAvailableAccountNamevariableNStartValue), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamevariableXStartValue = jMLGetNextAvailableAccountNamevariableXStartValue == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamevariableXStartValue);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamevariableXStartValue, nameof(jMLGetNextAvailableAccountNamevariableXStartValue), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamemaxAttempts = jMLGetNextAvailableAccountNamemaxAttempts == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamemaxAttempts);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamemaxAttempts, nameof(jMLGetNextAvailableAccountNamemaxAttempts), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamefallbackCausesRetest = jMLGetNextAvailableAccountNamefallbackCausesRetest == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefallbackCausesRetest);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamefallbackCausesRetest, nameof(jMLGetNextAvailableAccountNamefallbackCausesRetest), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamenumbersNotToUse = jMLGetNextAvailableAccountNamenumbersNotToUse == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamenumbersNotToUse);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamenumbersNotToUse, nameof(jMLGetNextAvailableAccountNamenumbersNotToUse), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs = jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs, nameof(jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs), required: false);
-            var __workflow_jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs = jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs, nameof(jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs), required: false);
-            var __workflow_jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs = jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs, nameof(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamesequenceA1 = jMLGetNextAvailableAccountNamesequenceA1 == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamesequenceA1);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamesequenceA1, nameof(jMLGetNextAvailableAccountNamesequenceA1), required: false);
-            var __workflow_jMLGetNextAvailableAccountNamepropertiesToCheckList = jMLGetNextAvailableAccountNamepropertiesToCheckList == null ? null : WorkflowExpression.Compile(jMLGetNextAvailableAccountNamepropertiesToCheckList);
-            WorkflowExpression.Validate(__workflow_jMLGetNextAvailableAccountNamepropertiesToCheckList, nameof(jMLGetNextAvailableAccountNamepropertiesToCheckList), required: false);
+            var __workflow_jMLGetNextAvailableAccountNameworkflow = WorkflowExpression.Compile(jMLGetNextAvailableAccountNameworkflow, nameof(jMLGetNextAvailableAccountNameworkflow), required: true);
+            var __workflow_jMLGetNextAvailableAccountNamefirstName = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefirstName, nameof(jMLGetNextAvailableAccountNamefirstName), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamemiddleName = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamemiddleName, nameof(jMLGetNextAvailableAccountNamemiddleName), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamelastName = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamelastName, nameof(jMLGetNextAvailableAccountNamelastName), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamefieldA = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldA, nameof(jMLGetNextAvailableAccountNamefieldA), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamefieldB = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldB, nameof(jMLGetNextAvailableAccountNamefieldB), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamefieldC = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldC, nameof(jMLGetNextAvailableAccountNamefieldC), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamefieldD = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefieldD, nameof(jMLGetNextAvailableAccountNamefieldD), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamevariableMStartValue = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamevariableMStartValue, nameof(jMLGetNextAvailableAccountNamevariableMStartValue), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamevariableNStartValue = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamevariableNStartValue, nameof(jMLGetNextAvailableAccountNamevariableNStartValue), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamevariableXStartValue = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamevariableXStartValue, nameof(jMLGetNextAvailableAccountNamevariableXStartValue), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamemaxAttempts = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamemaxAttempts, nameof(jMLGetNextAvailableAccountNamemaxAttempts), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamefallbackCausesRetest = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamefallbackCausesRetest, nameof(jMLGetNextAvailableAccountNamefallbackCausesRetest), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamenumbersNotToUse = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamenumbersNotToUse, nameof(jMLGetNextAvailableAccountNamenumbersNotToUse), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs, nameof(jMLGetNextAvailableAccountNamecharactersToRemoveFromInputs), required: false);
+            var __workflow_jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs = WorkflowExpression.Compile(jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs, nameof(jMLGetNextAvailableAccountNameremoveDiacriticsFromInputs), required: false);
+            var __workflow_jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs = WorkflowExpression.Compile(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs, nameof(jMLGetNextAvailableAccountNameremoveNonAlphaNumericFromInputs), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamesequenceA1 = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamesequenceA1, nameof(jMLGetNextAvailableAccountNamesequenceA1), required: false);
+            var __workflow_jMLGetNextAvailableAccountNamepropertiesToCheckList = WorkflowExpression.Compile(jMLGetNextAvailableAccountNamepropertiesToCheckList, nameof(jMLGetNextAvailableAccountNamepropertiesToCheckList), required: false);
             return new DeferredBodyAction<JMLGetNextAvailableAccountNameResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/JMLGetNextAvailableAccountName";
@@ -11638,12 +10691,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectjml
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectjml")]
         public IBodyWorkflowAction<JMLConnectToJMLEnvironmentResponse> JMLConnectToJMLEnvironment(Expression<Func<string>> jMLConnectToJMLEnvironmentworkflow, Expression<Func<string>> jMLConnectToJMLEnvironmentfriendlyName = null, Expression<Func<bool>> jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected = null)
         {
-            var __workflow_jMLConnectToJMLEnvironmentworkflow = jMLConnectToJMLEnvironmentworkflow == null ? null : WorkflowExpression.Compile(jMLConnectToJMLEnvironmentworkflow);
-            WorkflowExpression.Validate(__workflow_jMLConnectToJMLEnvironmentworkflow, nameof(jMLConnectToJMLEnvironmentworkflow), required: true);
-            var __workflow_jMLConnectToJMLEnvironmentfriendlyName = jMLConnectToJMLEnvironmentfriendlyName == null ? null : WorkflowExpression.Compile(jMLConnectToJMLEnvironmentfriendlyName);
-            WorkflowExpression.Validate(__workflow_jMLConnectToJMLEnvironmentfriendlyName, nameof(jMLConnectToJMLEnvironmentfriendlyName), required: false);
-            var __workflow_jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected = jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected == null ? null : WorkflowExpression.Compile(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected);
-            WorkflowExpression.Validate(__workflow_jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected, nameof(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected), required: false);
+            var __workflow_jMLConnectToJMLEnvironmentworkflow = WorkflowExpression.Compile(jMLConnectToJMLEnvironmentworkflow, nameof(jMLConnectToJMLEnvironmentworkflow), required: true);
+            var __workflow_jMLConnectToJMLEnvironmentfriendlyName = WorkflowExpression.Compile(jMLConnectToJMLEnvironmentfriendlyName, nameof(jMLConnectToJMLEnvironmentfriendlyName), required: false);
+            var __workflow_jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected = WorkflowExpression.Compile(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected, nameof(jMLConnectToJMLEnvironmentonlyConnectIfNotAlreadyConnected), required: false);
             return new DeferredBodyAction<JMLConnectToJMLEnvironmentResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/JMLConnectToJMLEnvironment";

@@ -25,8 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
     {
         public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted(Expression<Func<string>> formlinkname, FlowRecurrence recurrence = null)
         {
-            var __workflow_formlinkname = formlinkname == null ? null : WorkflowExpression.Compile(formlinkname);
-            WorkflowExpression.Validate(__workflow_formlinkname, nameof(formlinkname), required: true);
+            var __workflow_formlinkname = WorkflowExpression.Compile(formlinkname, nameof(formlinkname), required: true);
             return new DeferredBodyTrigger<FormSubmittedResponse>(() =>
             {
                 var apiCallPath = "/api/resthooks";

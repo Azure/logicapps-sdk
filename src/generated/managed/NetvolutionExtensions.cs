@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction GetOrder(Expression<Func<string>> contactId, Expression<Func<string>> since)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
-            var __workflow_since = since == null ? null : WorkflowExpression.Compile(since);
-            WorkflowExpression.Validate(__workflow_since, nameof(since), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -39,10 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction GetContactIDFromSuppressionList(Expression<Func<string>> contactId, Expression<Func<string>> listName)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
-            var __workflow_listName = listName == null ? null : WorkflowExpression.Compile(listName);
-            WorkflowExpression.Validate(__workflow_listName, nameof(listName), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/cdp/suppression/check";
@@ -57,12 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction PutContactIDToSuppresionList(Expression<Func<string>> contactId, Expression<Func<string>> listName, Expression<Func<string>> timeSpan)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
-            var __workflow_listName = listName == null ? null : WorkflowExpression.Compile(listName);
-            WorkflowExpression.Validate(__workflow_listName, nameof(listName), required: true);
-            var __workflow_timeSpan = timeSpan == null ? null : WorkflowExpression.Compile(timeSpan);
-            WorkflowExpression.Validate(__workflow_timeSpan, nameof(timeSpan), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
+            var __workflow_timeSpan = WorkflowExpression.Compile(timeSpan, nameof(timeSpan), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/cdp/suppression/add";
@@ -78,12 +71,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IWorkflowAction SendMail(Expression<Func<string>> cdpContactId = null, Expression<Func<string>> languageId = null, Expression<Func<string>> emailTemplate = null)
         {
-            var __workflow_cdpContactId = cdpContactId == null ? null : WorkflowExpression.Compile(cdpContactId);
-            WorkflowExpression.Validate(__workflow_cdpContactId, nameof(cdpContactId), required: false);
-            var __workflow_languageId = languageId == null ? null : WorkflowExpression.Compile(languageId);
-            WorkflowExpression.Validate(__workflow_languageId, nameof(languageId), required: false);
-            var __workflow_emailTemplate = emailTemplate == null ? null : WorkflowExpression.Compile(emailTemplate);
-            WorkflowExpression.Validate(__workflow_emailTemplate, nameof(emailTemplate), required: false);
+            var __workflow_cdpContactId = WorkflowExpression.Compile(cdpContactId, nameof(cdpContactId), required: false);
+            var __workflow_languageId = WorkflowExpression.Compile(languageId, nameof(languageId), required: false);
+            var __workflow_emailTemplate = WorkflowExpression.Compile(emailTemplate, nameof(emailTemplate), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/cdp/mail/send";
@@ -102,12 +92,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<CheckEventResponse> CheckEvent(Expression<Func<eventNameInput>> eventName = null, Expression<Func<string>> contactId = null, Expression<Func<string>> since = null)
         {
-            var __workflow_eventName = eventName == null ? null : WorkflowExpression.Compile(eventName);
-            WorkflowExpression.Validate(__workflow_eventName, nameof(eventName), required: false);
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: false);
-            var __workflow_since = since == null ? null : WorkflowExpression.Compile(since);
-            WorkflowExpression.Validate(__workflow_since, nameof(since), required: false);
+            var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: false);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: false);
             return new DeferredBodyAction<CheckEventResponse>(() =>
             {
                 var apiCallPath = "/cdp/events/checkevent";
@@ -126,8 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
         public IBodyWorkflowAction<GetWishListResponse> GetWishList(Expression<Func<string>> since)
         {
-            var __workflow_since = since == null ? null : WorkflowExpression.Compile(since);
-            WorkflowExpression.Validate(__workflow_since, nameof(since), required: true);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: true);
             return new DeferredBodyAction<GetWishListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/wishlist/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_since, 1));
@@ -142,8 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     {
         public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent(Expression<Func<eventNameInput>> eventName, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventName = eventName == null ? null : WorkflowExpression.Compile(eventName);
-            WorkflowExpression.Validate(__workflow_eventName, nameof(eventName), required: true);
+            var __workflow_eventName = WorkflowExpression.Compile(eventName, nameof(eventName), required: true);
             return new DeferredBodyTrigger<OnNewEventResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventName, 1));
@@ -155,8 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 
         public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyTrigger<OnNewUserInSegmentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<QueryTagsResponse> GetTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
         {
-            var __workflow_tagID = tagID == null ? null : WorkflowExpression.Compile(tagID);
-            WorkflowExpression.Validate(__workflow_tagID, nameof(tagID), required: false);
-            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
-            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
+            var __workflow_tagID = WorkflowExpression.Compile(tagID, nameof(tagID), required: false);
+            var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
             return new DeferredBodyAction<QueryTagsResponse>(() =>
             {
                 var apiCallPath = "/Tag/v2";
@@ -33,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IWorkflowAction DeleteTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
         {
-            var __workflow_tagID = tagID == null ? null : WorkflowExpression.Compile(tagID);
-            WorkflowExpression.Validate(__workflow_tagID, nameof(tagID), required: false);
-            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
-            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
+            var __workflow_tagID = WorkflowExpression.Compile(tagID, nameof(tagID), required: false);
+            var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Tag/v2";
@@ -53,12 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<QueryTagResponseItem> CreateTag(Expression<Func<string>> tagName = null, Expression<Func<int>> tagType = null, Expression<Func<int>> tagValueType = null)
         {
-            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
-            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
-            var __workflow_tagType = tagType == null ? null : WorkflowExpression.Compile(tagType);
-            WorkflowExpression.Validate(__workflow_tagType, nameof(tagType), required: false);
-            var __workflow_tagValueType = tagValueType == null ? null : WorkflowExpression.Compile(tagValueType);
-            WorkflowExpression.Validate(__workflow_tagValueType, nameof(tagValueType), required: false);
+            var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
+            var __workflow_tagType = WorkflowExpression.Compile(tagType, nameof(tagType), required: false);
+            var __workflow_tagValueType = WorkflowExpression.Compile(tagValueType, nameof(tagValueType), required: false);
             return new DeferredBodyAction<QueryTagResponseItem>(() =>
             {
                 var apiCallPath = "/Tag/v2";
@@ -78,10 +71,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<RecordQueryResponseItem> GetRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
-            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
-            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/Record/v2";
@@ -98,10 +89,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IWorkflowAction DeleteRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
-            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
-            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Record/v2";
@@ -118,20 +107,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<RecordQueryResponseItem> CreateRecord(Expression<Func<object>> file, Expression<Func<string>> name = null, Expression<Func<string>> actor = null, Expression<Func<string>> externalid = null, Expression<Func<string>> externalurl = null, Expression<Func<string>> createdAt = null, Expression<Func<string>> createdBy = null)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_actor = actor == null ? null : WorkflowExpression.Compile(actor);
-            WorkflowExpression.Validate(__workflow_actor, nameof(actor), required: false);
-            var __workflow_externalid = externalid == null ? null : WorkflowExpression.Compile(externalid);
-            WorkflowExpression.Validate(__workflow_externalid, nameof(externalid), required: false);
-            var __workflow_externalurl = externalurl == null ? null : WorkflowExpression.Compile(externalurl);
-            WorkflowExpression.Validate(__workflow_externalurl, nameof(externalurl), required: false);
-            var __workflow_createdAt = createdAt == null ? null : WorkflowExpression.Compile(createdAt);
-            WorkflowExpression.Validate(__workflow_createdAt, nameof(createdAt), required: false);
-            var __workflow_createdBy = createdBy == null ? null : WorkflowExpression.Compile(createdBy);
-            WorkflowExpression.Validate(__workflow_createdBy, nameof(createdBy), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_actor = WorkflowExpression.Compile(actor, nameof(actor), required: false);
+            var __workflow_externalid = WorkflowExpression.Compile(externalid, nameof(externalid), required: false);
+            var __workflow_externalurl = WorkflowExpression.Compile(externalurl, nameof(externalurl), required: false);
+            var __workflow_createdAt = WorkflowExpression.Compile(createdAt, nameof(createdAt), required: false);
+            var __workflow_createdBy = WorkflowExpression.Compile(createdBy, nameof(createdBy), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/Record/v2";
@@ -156,10 +138,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<DownloadUrlMessage> DownloadRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
         {
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
-            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
-            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
             return new DeferredBodyAction<DownloadUrlMessage>(() =>
             {
                 var apiCallPath = "/Record/v2/download";
@@ -176,12 +156,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IWorkflowAction DeleteTagFromRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null)
         {
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
-            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
-            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
-            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
-            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
@@ -200,14 +177,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<RecordQueryResponseItem> AddTagToRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
         {
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
-            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
-            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
-            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
-            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
-            var __workflow_tagValue = tagValue == null ? null : WorkflowExpression.Compile(tagValue);
-            WorkflowExpression.Validate(__workflow_tagValue, nameof(tagValue), required: false);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
+            var __workflow_tagValue = WorkflowExpression.Compile(tagValue, nameof(tagValue), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";
@@ -228,14 +201,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
         public IBodyWorkflowAction<RecordQueryResponseItem> UpdateTagOnRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
         {
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: false);
-            var __workflow_externalRecordID = externalRecordID == null ? null : WorkflowExpression.Compile(externalRecordID);
-            WorkflowExpression.Validate(__workflow_externalRecordID, nameof(externalRecordID), required: false);
-            var __workflow_tagName = tagName == null ? null : WorkflowExpression.Compile(tagName);
-            WorkflowExpression.Validate(__workflow_tagName, nameof(tagName), required: false);
-            var __workflow_tagValue = tagValue == null ? null : WorkflowExpression.Compile(tagValue);
-            WorkflowExpression.Validate(__workflow_tagValue, nameof(tagValue), required: false);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: false);
+            var __workflow_externalRecordID = WorkflowExpression.Compile(externalRecordID, nameof(externalRecordID), required: false);
+            var __workflow_tagName = WorkflowExpression.Compile(tagName, nameof(tagName), required: false);
+            var __workflow_tagValue = WorkflowExpression.Compile(tagValue, nameof(tagValue), required: false);
             return new DeferredBodyAction<RecordQueryResponseItem>(() =>
             {
                 var apiCallPath = "/RecordTagValue/v2";

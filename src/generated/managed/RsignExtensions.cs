@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<GetAuthTokenResponse> GetAuthToken(Expression<Func<string>> bodyreferenceKey, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodypassword)
         {
-            var __workflow_bodyreferenceKey = bodyreferenceKey == null ? null : WorkflowExpression.Compile(bodyreferenceKey);
-            WorkflowExpression.Validate(__workflow_bodyreferenceKey, nameof(bodyreferenceKey), required: true);
-            var __workflow_bodyemailAddress = bodyemailAddress == null ? null : WorkflowExpression.Compile(bodyemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyemailAddress, nameof(bodyemailAddress), required: true);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyreferenceKey = WorkflowExpression.Compile(bodyreferenceKey, nameof(bodyreferenceKey), required: true);
+            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
             return new DeferredBodyAction<GetAuthTokenResponse>(() =>
             {
                 var apiCallPath = "/api/V1/Authentication/AuthenticateUserV2";
@@ -44,14 +41,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse> SendEnvelopeFromTemplate(Expression<Func<string>> authToken, Expression<Func<string>> bodytemplateCode, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping, Expression<Func<string>> bodyappKey = null)
         {
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
-            var __workflow_bodytemplateCode = bodytemplateCode == null ? null : WorkflowExpression.Compile(bodytemplateCode);
-            WorkflowExpression.Validate(__workflow_bodytemplateCode, nameof(bodytemplateCode), required: true);
-            var __workflow_bodytemplateRoleRecipientMapping = bodytemplateRoleRecipientMapping == null ? null : WorkflowExpression.Compile(bodytemplateRoleRecipientMapping);
-            WorkflowExpression.Validate(__workflow_bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
-            var __workflow_bodyappKey = bodyappKey == null ? null : WorkflowExpression.Compile(bodyappKey);
-            WorkflowExpression.Validate(__workflow_bodyappKey, nameof(bodyappKey), required: false);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
+            var __workflow_bodytemplateCode = WorkflowExpression.Compile(bodytemplateCode, nameof(bodytemplateCode), required: true);
+            var __workflow_bodytemplateRoleRecipientMapping = WorkflowExpression.Compile(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
+            var __workflow_bodyappKey = WorkflowExpression.Compile(bodyappKey, nameof(bodyappKey), required: false);
             return new DeferredBodyAction<SendEnvelopeFromTemplateResponse>(() =>
             {
                 var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromTemplate";
@@ -82,14 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<SendEnvelopeFromRuleResponse> SendEnvelopeFromRule(Expression<Func<string>> authToken, Expression<Func<string>> bodyruleCode, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping)
         {
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
-            var __workflow_bodyruleCode = bodyruleCode == null ? null : WorkflowExpression.Compile(bodyruleCode);
-            WorkflowExpression.Validate(__workflow_bodyruleCode, nameof(bodyruleCode), required: true);
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: true);
-            var __workflow_bodytemplateRoleRecipientMapping = bodytemplateRoleRecipientMapping == null ? null : WorkflowExpression.Compile(bodytemplateRoleRecipientMapping);
-            WorkflowExpression.Validate(__workflow_bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
+            var __workflow_bodyruleCode = WorkflowExpression.Compile(bodyruleCode, nameof(bodyruleCode), required: true);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
+            var __workflow_bodytemplateRoleRecipientMapping = WorkflowExpression.Compile(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
             return new DeferredBodyAction<SendEnvelopeFromRuleResponse>(() =>
             {
                 var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromRule";
@@ -116,12 +105,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse> GetEnvelopeStatusInfo(Expression<Func<string>> authToken, Expression<Func<string>> bodyenvelopeCode, Expression<Func<bodydetailOrSummaryInput>> bodydetailOrSummary)
         {
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
-            var __workflow_bodyenvelopeCode = bodyenvelopeCode == null ? null : WorkflowExpression.Compile(bodyenvelopeCode);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeCode, nameof(bodyenvelopeCode), required: true);
-            var __workflow_bodydetailOrSummary = bodydetailOrSummary == null ? null : WorkflowExpression.Compile(bodydetailOrSummary);
-            WorkflowExpression.Validate(__workflow_bodydetailOrSummary, nameof(bodydetailOrSummary), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
+            var __workflow_bodyenvelopeCode = WorkflowExpression.Compile(bodyenvelopeCode, nameof(bodyenvelopeCode), required: true);
+            var __workflow_bodydetailOrSummary = WorkflowExpression.Compile(bodydetailOrSummary, nameof(bodydetailOrSummary), required: true);
             return new DeferredBodyAction<GetEnvelopeStatusInfoResponse>(() =>
             {
                 var apiCallPath = "/api/V1/Envelope/GetEnvelopeStatusInfo";
@@ -146,10 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<GetTemplateInfoResponse> GetTemplateInfo(Expression<Func<string>> templateCode, Expression<Func<string>> authToken)
         {
-            var __workflow_templateCode = templateCode == null ? null : WorkflowExpression.Compile(templateCode);
-            WorkflowExpression.Validate(__workflow_templateCode, nameof(templateCode), required: true);
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
+            var __workflow_templateCode = WorkflowExpression.Compile(templateCode, nameof(templateCode), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<GetTemplateInfoResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/V1/Template/GetTemplateInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateCode, 1));
@@ -163,10 +147,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
         public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> DownloadEnvelopeDocuments(Expression<Func<string>> envelopeCode, Expression<Func<string>> authToken)
         {
-            var __workflow_envelopeCode = envelopeCode == null ? null : WorkflowExpression.Compile(envelopeCode);
-            WorkflowExpression.Validate(__workflow_envelopeCode, nameof(envelopeCode), required: true);
-            var __workflow_authToken = authToken == null ? null : WorkflowExpression.Compile(authToken);
-            WorkflowExpression.Validate(__workflow_authToken, nameof(authToken), required: true);
+            var __workflow_envelopeCode = WorkflowExpression.Compile(envelopeCode, nameof(envelopeCode), required: true);
+            var __workflow_authToken = WorkflowExpression.Compile(authToken, nameof(authToken), required: true);
             return new DeferredBodyAction<DownloadEnvelopeDocumentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeCode, 1));

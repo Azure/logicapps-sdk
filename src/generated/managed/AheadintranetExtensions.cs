@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aheadintranet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aheadintranet")]
         public IWorkflowAction AheadReceiveExternalActivity(Expression<Func<string>> bodytitle, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodymediaUrl = null, Expression<Func<bodysourceInput>> bodysource = null, Expression<Func<string>> bodytargetAudience = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodymediaUrl = bodymediaUrl == null ? null : WorkflowExpression.Compile(bodymediaUrl);
-            WorkflowExpression.Validate(__workflow_bodymediaUrl, nameof(bodymediaUrl), required: false);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
-            var __workflow_bodytargetAudience = bodytargetAudience == null ? null : WorkflowExpression.Compile(bodytargetAudience);
-            WorkflowExpression.Validate(__workflow_bodytargetAudience, nameof(bodytargetAudience), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodymediaUrl = WorkflowExpression.Compile(bodymediaUrl, nameof(bodymediaUrl), required: false);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
+            var __workflow_bodytargetAudience = WorkflowExpression.Compile(bodytargetAudience, nameof(bodytargetAudience), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/ReceiveExternalActivity";

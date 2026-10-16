@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         public IBodyWorkflowAction<NiftiesforUserResponse> NiftiesforUser(Expression<Func<string>> username, Expression<Func<string>> contractAddress = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_contractAddress = contractAddress == null ? null : WorkflowExpression.Compile(contractAddress);
-            WorkflowExpression.Validate(__workflow_contractAddress, nameof(contractAddress), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_contractAddress = WorkflowExpression.Compile(contractAddress, nameof(contractAddress), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<NiftiesforUserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}/nifties/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_username, 1));
@@ -39,12 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Niftygatewayip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "niftygatewayip")]
         public IBodyWorkflowAction<NiftiesforCreatorResponse> NiftiesforCreator(Expression<Func<string>> creatorProfileName, Expression<Func<int>> limit, Expression<Func<int>> offset)
         {
-            var __workflow_creatorProfileName = creatorProfileName == null ? null : WorkflowExpression.Compile(creatorProfileName);
-            WorkflowExpression.Validate(__workflow_creatorProfileName, nameof(creatorProfileName), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: true);
+            var __workflow_creatorProfileName = WorkflowExpression.Compile(creatorProfileName, nameof(creatorProfileName), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: true);
             return new DeferredBodyAction<NiftiesforCreatorResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/creators/{0}/collectors/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_creatorProfileName, 1));

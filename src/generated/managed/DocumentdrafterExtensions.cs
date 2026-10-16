@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateWorkspaceResponse> GetCreateWorkspace(Expression<Func<string>> siteUrl, Expression<Func<string>> workspaceNameRoute, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> masterWorkSpace = null, Expression<Func<bool>> copyStyling = null, Expression<Func<bool>> copyFolders = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_workspaceNameRoute = workspaceNameRoute == null ? null : WorkflowExpression.Compile(workspaceNameRoute);
-            WorkflowExpression.Validate(__workflow_workspaceNameRoute, nameof(workspaceNameRoute), required: true);
-            var __workflow_createIfNotFound = createIfNotFound == null ? null : WorkflowExpression.Compile(createIfNotFound);
-            WorkflowExpression.Validate(__workflow_createIfNotFound, nameof(createIfNotFound), required: true);
-            var __workflow_masterWorkSpace = masterWorkSpace == null ? null : WorkflowExpression.Compile(masterWorkSpace);
-            WorkflowExpression.Validate(__workflow_masterWorkSpace, nameof(masterWorkSpace), required: false);
-            var __workflow_copyStyling = copyStyling == null ? null : WorkflowExpression.Compile(copyStyling);
-            WorkflowExpression.Validate(__workflow_copyStyling, nameof(copyStyling), required: false);
-            var __workflow_copyFolders = copyFolders == null ? null : WorkflowExpression.Compile(copyFolders);
-            WorkflowExpression.Validate(__workflow_copyFolders, nameof(copyFolders), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_workspaceNameRoute = WorkflowExpression.Compile(workspaceNameRoute, nameof(workspaceNameRoute), required: true);
+            var __workflow_createIfNotFound = WorkflowExpression.Compile(createIfNotFound, nameof(createIfNotFound), required: true);
+            var __workflow_masterWorkSpace = WorkflowExpression.Compile(masterWorkSpace, nameof(masterWorkSpace), required: false);
+            var __workflow_copyStyling = WorkflowExpression.Compile(copyStyling, nameof(copyStyling), required: false);
+            var __workflow_copyFolders = WorkflowExpression.Compile(copyFolders, nameof(copyFolders), required: false);
             return new DeferredBodyAction<GetCreateWorkspaceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateWorkspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceNameRoute, 1));
@@ -45,14 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateFolderResponse> GetCreateFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> folderName, Expression<Func<string>> parentId)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_createIfNotFound = createIfNotFound == null ? null : WorkflowExpression.Compile(createIfNotFound);
-            WorkflowExpression.Validate(__workflow_createIfNotFound, nameof(createIfNotFound), required: true);
-            var __workflow_folderName = folderName == null ? null : WorkflowExpression.Compile(folderName);
-            WorkflowExpression.Validate(__workflow_folderName, nameof(folderName), required: true);
-            var __workflow_parentId = parentId == null ? null : WorkflowExpression.Compile(parentId);
-            WorkflowExpression.Validate(__workflow_parentId, nameof(parentId), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_createIfNotFound = WorkflowExpression.Compile(createIfNotFound, nameof(createIfNotFound), required: true);
+            var __workflow_folderName = WorkflowExpression.Compile(folderName, nameof(folderName), required: true);
+            var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
             return new DeferredBodyAction<GetCreateFolderResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderName, 1));
@@ -68,14 +58,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateGroupResponse> GetCreateGroup(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> role = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_createIfNotFound = createIfNotFound == null ? null : WorkflowExpression.Compile(createIfNotFound);
-            WorkflowExpression.Validate(__workflow_createIfNotFound, nameof(createIfNotFound), required: true);
-            var __workflow_groupNamePath = groupNamePath == null ? null : WorkflowExpression.Compile(groupNamePath);
-            WorkflowExpression.Validate(__workflow_groupNamePath, nameof(groupNamePath), required: true);
-            var __workflow_role = role == null ? null : WorkflowExpression.Compile(role);
-            WorkflowExpression.Validate(__workflow_role, nameof(role), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_createIfNotFound = WorkflowExpression.Compile(createIfNotFound, nameof(createIfNotFound), required: true);
+            var __workflow_groupNamePath = WorkflowExpression.Compile(groupNamePath, nameof(groupNamePath), required: true);
+            var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: false);
             return new DeferredBodyAction<GetCreateGroupResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateGroup/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupNamePath, 1));
@@ -92,14 +78,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateAccessFolderResponse> GetCreateAccessFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> folderId)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_createIfNotFound = createIfNotFound == null ? null : WorkflowExpression.Compile(createIfNotFound);
-            WorkflowExpression.Validate(__workflow_createIfNotFound, nameof(createIfNotFound), required: true);
-            var __workflow_groupNamePath = groupNamePath == null ? null : WorkflowExpression.Compile(groupNamePath);
-            WorkflowExpression.Validate(__workflow_groupNamePath, nameof(groupNamePath), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_createIfNotFound = WorkflowExpression.Compile(createIfNotFound, nameof(createIfNotFound), required: true);
+            var __workflow_groupNamePath = WorkflowExpression.Compile(groupNamePath, nameof(groupNamePath), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyAction<GetCreateAccessFolderResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateAccessFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupNamePath, 1));
@@ -115,16 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetCreateUserResponse> GetCreateUser(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupName, Expression<Func<string>> email, Expression<Func<bool>> sendInvite)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_createIfNotFound = createIfNotFound == null ? null : WorkflowExpression.Compile(createIfNotFound);
-            WorkflowExpression.Validate(__workflow_createIfNotFound, nameof(createIfNotFound), required: true);
-            var __workflow_groupName = groupName == null ? null : WorkflowExpression.Compile(groupName);
-            WorkflowExpression.Validate(__workflow_groupName, nameof(groupName), required: true);
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_sendInvite = sendInvite == null ? null : WorkflowExpression.Compile(sendInvite);
-            WorkflowExpression.Validate(__workflow_sendInvite, nameof(sendInvite), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_createIfNotFound = WorkflowExpression.Compile(createIfNotFound, nameof(createIfNotFound), required: true);
+            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_sendInvite = WorkflowExpression.Compile(sendInvite, nameof(sendInvite), required: true);
             return new DeferredBodyAction<GetCreateUserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateUser/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_email, 1));
@@ -141,14 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<SaveStaticFileToFolderResponse> SaveStaticFileToFolder(Expression<Func<string>> siteUrl, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> fileBase64)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_fileBase64 = fileBase64 == null ? null : WorkflowExpression.Compile(fileBase64);
-            WorkflowExpression.Validate(__workflow_fileBase64, nameof(fileBase64), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_fileBase64 = WorkflowExpression.Compile(fileBase64, nameof(fileBase64), required: true);
             return new DeferredBodyAction<SaveStaticFileToFolderResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateSaveStaticFileToFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
@@ -162,16 +135,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<string> GetExternalShareLink(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> scope, Expression<Func<int>> expireDays, Expression<Func<string>> createUser)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_scope = scope == null ? null : WorkflowExpression.Compile(scope);
-            WorkflowExpression.Validate(__workflow_scope, nameof(scope), required: true);
-            var __workflow_expireDays = expireDays == null ? null : WorkflowExpression.Compile(expireDays);
-            WorkflowExpression.Validate(__workflow_expireDays, nameof(expireDays), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_scope = WorkflowExpression.Compile(scope, nameof(scope), required: true);
+            var __workflow_expireDays = WorkflowExpression.Compile(expireDays, nameof(expireDays), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/PowerAutomateCreateMagicLink";
@@ -189,14 +157,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<CreateQuestionnaireResponse> CreateQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_workSpace = workSpace == null ? null : WorkflowExpression.Compile(workSpace);
-            WorkflowExpression.Validate(__workflow_workSpace, nameof(workSpace), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_workSpace = WorkflowExpression.Compile(workSpace, nameof(workSpace), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
             return new DeferredBodyAction<CreateQuestionnaireResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateCreateQuestionnaire/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -212,12 +176,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<JToken> DeleteAllShareLinksOnDocument(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/DeleteAllShareLinksOnDocument";
@@ -233,16 +194,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<JToken> FlowAddShare(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser, Expression<Func<string>> groupOrMail, Expression<Func<bool>> selectedQuestions = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
-            var __workflow_groupOrMail = groupOrMail == null ? null : WorkflowExpression.Compile(groupOrMail);
-            WorkflowExpression.Validate(__workflow_groupOrMail, nameof(groupOrMail), required: true);
-            var __workflow_selectedQuestions = selectedQuestions == null ? null : WorkflowExpression.Compile(selectedQuestions);
-            WorkflowExpression.Validate(__workflow_selectedQuestions, nameof(selectedQuestions), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
+            var __workflow_groupOrMail = WorkflowExpression.Compile(groupOrMail, nameof(groupOrMail), required: true);
+            var __workflow_selectedQuestions = WorkflowExpression.Compile(selectedQuestions, nameof(selectedQuestions), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/AddShare";
@@ -262,16 +218,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<JToken> FlowSetState(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> flowKey, Expression<Func<string>> state, Expression<Func<string>> createUser)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_flowKey = flowKey == null ? null : WorkflowExpression.Compile(flowKey);
-            WorkflowExpression.Validate(__workflow_flowKey, nameof(flowKey), required: true);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_flowKey = WorkflowExpression.Compile(flowKey, nameof(flowKey), required: true);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/FlowSetState";
@@ -289,16 +240,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<JToken> GetVariablesForTemplate(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_workSpace = workSpace == null ? null : WorkflowExpression.Compile(workSpace);
-            WorkflowExpression.Validate(__workflow_workSpace, nameof(workSpace), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_workSpace = WorkflowExpression.Compile(workSpace, nameof(workSpace), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetTagsForDocument/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -315,12 +261,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetTagsForQuestionnaireResponse> GetTagsForQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> createUser, Expression<Func<string>> documentId = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: false);
             return new DeferredBodyAction<GetTagsForQuestionnaireResponse>(() =>
             {
                 var apiCallPath = "/PowerAutomateQuestionsWithTags";
@@ -337,16 +280,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<ProcessJsonResponse> ProcessJson(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser, Expression<Func<string>> jsonData)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_workSpace = workSpace == null ? null : WorkflowExpression.Compile(workSpace);
-            WorkflowExpression.Validate(__workflow_workSpace, nameof(workSpace), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
-            var __workflow_jsonData = jsonData == null ? null : WorkflowExpression.Compile(jsonData);
-            WorkflowExpression.Validate(__workflow_jsonData, nameof(jsonData), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_workSpace = WorkflowExpression.Compile(workSpace, nameof(workSpace), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
+            var __workflow_jsonData = WorkflowExpression.Compile(jsonData, nameof(jsonData), required: true);
             return new DeferredBodyAction<ProcessJsonResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/PowerAutomateDataModelCreateDoc/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -362,10 +300,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<JToken> GetFlowInformation(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl)
         {
-            var __workflow_flowKey = flowKey == null ? null : WorkflowExpression.Compile(flowKey);
-            WorkflowExpression.Validate(__workflow_flowKey, nameof(flowKey), required: true);
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
+            var __workflow_flowKey = WorkflowExpression.Compile(flowKey, nameof(flowKey), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/PowerAutomateGetFlowInformation";
@@ -380,14 +316,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
         public IBodyWorkflowAction<GetDocumentsResponse> GetDocuments(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser, Expression<Func<outputFormatInput>> outputFormat)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_createUser = createUser == null ? null : WorkflowExpression.Compile(createUser);
-            WorkflowExpression.Validate(__workflow_createUser, nameof(createUser), required: true);
-            var __workflow_outputFormat = outputFormat == null ? null : WorkflowExpression.Compile(outputFormat);
-            WorkflowExpression.Validate(__workflow_outputFormat, nameof(outputFormat), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_createUser = WorkflowExpression.Compile(createUser, nameof(createUser), required: true);
+            var __workflow_outputFormat = WorkflowExpression.Compile(outputFormat, nameof(outputFormat), required: true);
             return new DeferredBodyAction<GetDocumentsResponse>(() =>
             {
                 var apiCallPath = "/PowerAutomateGetDocument";
@@ -406,10 +338,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
     {
         public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling(Expression<Func<string>> siteUrl, Expression<Func<string>> scope, FlowRecurrence recurrence = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_scope = scope == null ? null : WorkflowExpression.Compile(scope);
-            WorkflowExpression.Validate(__workflow_scope, nameof(scope), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_scope = WorkflowExpression.Compile(scope, nameof(scope), required: true);
             return new DeferredBodyTrigger<TriggerSubmitPollingResponse>(() =>
             {
                 var apiCallPath = "/FlowWaitForSubmitPolling";
@@ -423,10 +353,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
 
         public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl, FlowRecurrence recurrence = null)
         {
-            var __workflow_flowKey = flowKey == null ? null : WorkflowExpression.Compile(flowKey);
-            WorkflowExpression.Validate(__workflow_flowKey, nameof(flowKey), required: true);
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
+            var __workflow_flowKey = WorkflowExpression.Compile(flowKey, nameof(flowKey), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyTrigger<FlowTriggerPollingResponse>(() =>
             {
                 var apiCallPath = "/FlowTriggerPolling";

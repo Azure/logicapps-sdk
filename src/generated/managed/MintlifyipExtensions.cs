@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
         {
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
-            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: true);
-            var __workflow_bodycommented = bodycommented == null ? null : WorkflowExpression.Compile(bodycommented);
-            WorkflowExpression.Validate(__workflow_bodycommented, nameof(bodycommented), required: false);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodycontext = bodycontext == null ? null : WorkflowExpression.Compile(bodycontext);
-            WorkflowExpression.Validate(__workflow_bodycontext, nameof(bodycontext), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
+            var __workflow_bodycommented = WorkflowExpression.Compile(bodycommented, nameof(bodycommented), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
             return new DeferredBodyAction<DocGenResponse>(() =>
             {
                 var apiCallPath = "/v1/document";

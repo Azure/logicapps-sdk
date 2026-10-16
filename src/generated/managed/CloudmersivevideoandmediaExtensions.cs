@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> AudioConvertToMp3(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_bitRate = bitRate == null ? null : WorkflowExpression.Compile(bitRate);
-            WorkflowExpression.Validate(__workflow_bitRate, nameof(bitRate), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_bitRate = WorkflowExpression.Compile(bitRate, nameof(bitRate), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/mp3";
@@ -35,12 +32,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> AudioConvertToM4a(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_bitRate = bitRate == null ? null : WorkflowExpression.Compile(bitRate);
-            WorkflowExpression.Validate(__workflow_bitRate, nameof(bitRate), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_bitRate = WorkflowExpression.Compile(bitRate, nameof(bitRate), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/m4a";
@@ -57,12 +51,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> AudioConvertToAac(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_bitRate = bitRate == null ? null : WorkflowExpression.Compile(bitRate);
-            WorkflowExpression.Validate(__workflow_bitRate, nameof(bitRate), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_bitRate = WorkflowExpression.Compile(bitRate, nameof(bitRate), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/aac";
@@ -79,12 +70,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> AudioConvertToWav(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<double>> sampleRate = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_sampleRate = sampleRate == null ? null : WorkflowExpression.Compile(sampleRate);
-            WorkflowExpression.Validate(__workflow_sampleRate, nameof(sampleRate), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_sampleRate = WorkflowExpression.Compile(sampleRate, nameof(sampleRate), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/wav";
@@ -101,10 +89,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<MediaInformation> VideoGetInfo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
             return new DeferredBodyAction<MediaInformation>(() =>
             {
                 var apiCallPath = "/video/convert/get-info";
@@ -119,20 +105,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> VideoConvertToWebm(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_maxWidth = maxWidth == null ? null : WorkflowExpression.Compile(maxWidth);
-            WorkflowExpression.Validate(__workflow_maxWidth, nameof(maxWidth), required: false);
-            var __workflow_maxHeight = maxHeight == null ? null : WorkflowExpression.Compile(maxHeight);
-            WorkflowExpression.Validate(__workflow_maxHeight, nameof(maxHeight), required: false);
-            var __workflow_preserveAspectRatio = preserveAspectRatio == null ? null : WorkflowExpression.Compile(preserveAspectRatio);
-            WorkflowExpression.Validate(__workflow_preserveAspectRatio, nameof(preserveAspectRatio), required: false);
-            var __workflow_frameRate = frameRate == null ? null : WorkflowExpression.Compile(frameRate);
-            WorkflowExpression.Validate(__workflow_frameRate, nameof(frameRate), required: false);
-            var __workflow_quality = quality == null ? null : WorkflowExpression.Compile(quality);
-            WorkflowExpression.Validate(__workflow_quality, nameof(quality), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_maxWidth = WorkflowExpression.Compile(maxWidth, nameof(maxWidth), required: false);
+            var __workflow_maxHeight = WorkflowExpression.Compile(maxHeight, nameof(maxHeight), required: false);
+            var __workflow_preserveAspectRatio = WorkflowExpression.Compile(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            var __workflow_frameRate = WorkflowExpression.Compile(frameRate, nameof(frameRate), required: false);
+            var __workflow_quality = WorkflowExpression.Compile(quality, nameof(quality), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/webm";
@@ -157,20 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> VideoConvertToMov(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_maxWidth = maxWidth == null ? null : WorkflowExpression.Compile(maxWidth);
-            WorkflowExpression.Validate(__workflow_maxWidth, nameof(maxWidth), required: false);
-            var __workflow_maxHeight = maxHeight == null ? null : WorkflowExpression.Compile(maxHeight);
-            WorkflowExpression.Validate(__workflow_maxHeight, nameof(maxHeight), required: false);
-            var __workflow_preserveAspectRatio = preserveAspectRatio == null ? null : WorkflowExpression.Compile(preserveAspectRatio);
-            WorkflowExpression.Validate(__workflow_preserveAspectRatio, nameof(preserveAspectRatio), required: false);
-            var __workflow_frameRate = frameRate == null ? null : WorkflowExpression.Compile(frameRate);
-            WorkflowExpression.Validate(__workflow_frameRate, nameof(frameRate), required: false);
-            var __workflow_quality = quality == null ? null : WorkflowExpression.Compile(quality);
-            WorkflowExpression.Validate(__workflow_quality, nameof(quality), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_maxWidth = WorkflowExpression.Compile(maxWidth, nameof(maxWidth), required: false);
+            var __workflow_maxHeight = WorkflowExpression.Compile(maxHeight, nameof(maxHeight), required: false);
+            var __workflow_preserveAspectRatio = WorkflowExpression.Compile(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            var __workflow_frameRate = WorkflowExpression.Compile(frameRate, nameof(frameRate), required: false);
+            var __workflow_quality = WorkflowExpression.Compile(quality, nameof(quality), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/mov";
@@ -195,20 +167,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> VideoConvertToMp4(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_maxWidth = maxWidth == null ? null : WorkflowExpression.Compile(maxWidth);
-            WorkflowExpression.Validate(__workflow_maxWidth, nameof(maxWidth), required: false);
-            var __workflow_maxHeight = maxHeight == null ? null : WorkflowExpression.Compile(maxHeight);
-            WorkflowExpression.Validate(__workflow_maxHeight, nameof(maxHeight), required: false);
-            var __workflow_preserveAspectRatio = preserveAspectRatio == null ? null : WorkflowExpression.Compile(preserveAspectRatio);
-            WorkflowExpression.Validate(__workflow_preserveAspectRatio, nameof(preserveAspectRatio), required: false);
-            var __workflow_frameRate = frameRate == null ? null : WorkflowExpression.Compile(frameRate);
-            WorkflowExpression.Validate(__workflow_frameRate, nameof(frameRate), required: false);
-            var __workflow_quality = quality == null ? null : WorkflowExpression.Compile(quality);
-            WorkflowExpression.Validate(__workflow_quality, nameof(quality), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_maxWidth = WorkflowExpression.Compile(maxWidth, nameof(maxWidth), required: false);
+            var __workflow_maxHeight = WorkflowExpression.Compile(maxHeight, nameof(maxHeight), required: false);
+            var __workflow_preserveAspectRatio = WorkflowExpression.Compile(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            var __workflow_frameRate = WorkflowExpression.Compile(frameRate, nameof(frameRate), required: false);
+            var __workflow_quality = WorkflowExpression.Compile(quality, nameof(quality), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/mp4";
@@ -233,22 +198,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> VideoConvertToGif(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<string>> startTime = null, Expression<Func<string>> timeSpan = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_maxWidth = maxWidth == null ? null : WorkflowExpression.Compile(maxWidth);
-            WorkflowExpression.Validate(__workflow_maxWidth, nameof(maxWidth), required: false);
-            var __workflow_maxHeight = maxHeight == null ? null : WorkflowExpression.Compile(maxHeight);
-            WorkflowExpression.Validate(__workflow_maxHeight, nameof(maxHeight), required: false);
-            var __workflow_preserveAspectRatio = preserveAspectRatio == null ? null : WorkflowExpression.Compile(preserveAspectRatio);
-            WorkflowExpression.Validate(__workflow_preserveAspectRatio, nameof(preserveAspectRatio), required: false);
-            var __workflow_frameRate = frameRate == null ? null : WorkflowExpression.Compile(frameRate);
-            WorkflowExpression.Validate(__workflow_frameRate, nameof(frameRate), required: false);
-            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
-            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: false);
-            var __workflow_timeSpan = timeSpan == null ? null : WorkflowExpression.Compile(timeSpan);
-            WorkflowExpression.Validate(__workflow_timeSpan, nameof(timeSpan), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_maxWidth = WorkflowExpression.Compile(maxWidth, nameof(maxWidth), required: false);
+            var __workflow_maxHeight = WorkflowExpression.Compile(maxHeight, nameof(maxHeight), required: false);
+            var __workflow_preserveAspectRatio = WorkflowExpression.Compile(preserveAspectRatio, nameof(preserveAspectRatio), required: false);
+            var __workflow_frameRate = WorkflowExpression.Compile(frameRate, nameof(frameRate), required: false);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
+            var __workflow_timeSpan = WorkflowExpression.Compile(timeSpan, nameof(timeSpan), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/convert/to/gif";
@@ -275,20 +232,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> VideoResizeVideo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null, Expression<Func<string>> extension = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_maxWidth = maxWidth == null ? null : WorkflowExpression.Compile(maxWidth);
-            WorkflowExpression.Validate(__workflow_maxWidth, nameof(maxWidth), required: false);
-            var __workflow_maxHeight = maxHeight == null ? null : WorkflowExpression.Compile(maxHeight);
-            WorkflowExpression.Validate(__workflow_maxHeight, nameof(maxHeight), required: false);
-            var __workflow_frameRate = frameRate == null ? null : WorkflowExpression.Compile(frameRate);
-            WorkflowExpression.Validate(__workflow_frameRate, nameof(frameRate), required: false);
-            var __workflow_quality = quality == null ? null : WorkflowExpression.Compile(quality);
-            WorkflowExpression.Validate(__workflow_quality, nameof(quality), required: false);
-            var __workflow_extension = extension == null ? null : WorkflowExpression.Compile(extension);
-            WorkflowExpression.Validate(__workflow_extension, nameof(extension), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_maxWidth = WorkflowExpression.Compile(maxWidth, nameof(maxWidth), required: false);
+            var __workflow_maxHeight = WorkflowExpression.Compile(maxHeight, nameof(maxHeight), required: false);
+            var __workflow_frameRate = WorkflowExpression.Compile(frameRate, nameof(frameRate), required: false);
+            var __workflow_quality = WorkflowExpression.Compile(quality, nameof(quality), required: false);
+            var __workflow_extension = WorkflowExpression.Compile(extension, nameof(extension), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/resize/preserveAspectRatio";
@@ -313,20 +263,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> VideoResizeVideoSimple(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null, Expression<Func<string>> extension = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_maxWidth = maxWidth == null ? null : WorkflowExpression.Compile(maxWidth);
-            WorkflowExpression.Validate(__workflow_maxWidth, nameof(maxWidth), required: false);
-            var __workflow_maxHeight = maxHeight == null ? null : WorkflowExpression.Compile(maxHeight);
-            WorkflowExpression.Validate(__workflow_maxHeight, nameof(maxHeight), required: false);
-            var __workflow_frameRate = frameRate == null ? null : WorkflowExpression.Compile(frameRate);
-            WorkflowExpression.Validate(__workflow_frameRate, nameof(frameRate), required: false);
-            var __workflow_quality = quality == null ? null : WorkflowExpression.Compile(quality);
-            WorkflowExpression.Validate(__workflow_quality, nameof(quality), required: false);
-            var __workflow_extension = extension == null ? null : WorkflowExpression.Compile(extension);
-            WorkflowExpression.Validate(__workflow_extension, nameof(extension), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_maxWidth = WorkflowExpression.Compile(maxWidth, nameof(maxWidth), required: false);
+            var __workflow_maxHeight = WorkflowExpression.Compile(maxHeight, nameof(maxHeight), required: false);
+            var __workflow_frameRate = WorkflowExpression.Compile(frameRate, nameof(frameRate), required: false);
+            var __workflow_quality = WorkflowExpression.Compile(quality, nameof(quality), required: false);
+            var __workflow_extension = WorkflowExpression.Compile(extension, nameof(extension), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/resize/target";
@@ -351,14 +294,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<string> VideoCutVideo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<string>> startTime = null, Expression<Func<string>> timeSpan = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
-            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: false);
-            var __workflow_timeSpan = timeSpan == null ? null : WorkflowExpression.Compile(timeSpan);
-            WorkflowExpression.Validate(__workflow_timeSpan, nameof(timeSpan), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
+            var __workflow_timeSpan = WorkflowExpression.Compile(timeSpan, nameof(timeSpan), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/video/cut";
@@ -377,14 +316,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<SplitVideoResult> VideoSplitVideo(Expression<Func<string>> splitTime, Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<string>> timeSpan = null)
         {
-            var __workflow_splitTime = splitTime == null ? null : WorkflowExpression.Compile(splitTime);
-            WorkflowExpression.Validate(__workflow_splitTime, nameof(splitTime), required: true);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_timeSpan = timeSpan == null ? null : WorkflowExpression.Compile(timeSpan);
-            WorkflowExpression.Validate(__workflow_timeSpan, nameof(timeSpan), required: false);
+            var __workflow_splitTime = WorkflowExpression.Compile(splitTime, nameof(splitTime), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_timeSpan = WorkflowExpression.Compile(timeSpan, nameof(timeSpan), required: false);
             return new DeferredBodyAction<SplitVideoResult>(() =>
             {
                 var apiCallPath = "/video/split";
@@ -402,16 +337,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<StillFramesResult> VideoConvertToStillFrames(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<double>> framesPerSecond = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_maxWidth = maxWidth == null ? null : WorkflowExpression.Compile(maxWidth);
-            WorkflowExpression.Validate(__workflow_maxWidth, nameof(maxWidth), required: false);
-            var __workflow_maxHeight = maxHeight == null ? null : WorkflowExpression.Compile(maxHeight);
-            WorkflowExpression.Validate(__workflow_maxHeight, nameof(maxHeight), required: false);
-            var __workflow_framesPerSecond = framesPerSecond == null ? null : WorkflowExpression.Compile(framesPerSecond);
-            WorkflowExpression.Validate(__workflow_framesPerSecond, nameof(framesPerSecond), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_maxWidth = WorkflowExpression.Compile(maxWidth, nameof(maxWidth), required: false);
+            var __workflow_maxHeight = WorkflowExpression.Compile(maxHeight, nameof(maxHeight), required: false);
+            var __workflow_framesPerSecond = WorkflowExpression.Compile(framesPerSecond, nameof(framesPerSecond), required: false);
             return new DeferredBodyAction<StillFramesResult>(() =>
             {
                 var apiCallPath = "/video/convert/to/still-frames";
@@ -432,12 +362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
         public IBodyWorkflowAction<NsfwResult> VideoScanForNsfw(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<double>> framesPerSecond = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: false);
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
-            var __workflow_framesPerSecond = framesPerSecond == null ? null : WorkflowExpression.Compile(framesPerSecond);
-            WorkflowExpression.Validate(__workflow_framesPerSecond, nameof(framesPerSecond), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
+            var __workflow_framesPerSecond = WorkflowExpression.Compile(framesPerSecond, nameof(framesPerSecond), required: false);
             return new DeferredBodyAction<NsfwResult>(() =>
             {
                 var apiCallPath = "/video/scan/nsfw";

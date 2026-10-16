@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> CompositeWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatawatermarkData, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatawatermarkData = inputDatawatermarkData == null ? null : WorkflowExpression.Compile(inputDatawatermarkData);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkData, nameof(inputDatawatermarkData), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatawatermarkData = WorkflowExpression.Compile(inputDatawatermarkData, nameof(inputDatawatermarkData), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/composite_watermark";
@@ -76,60 +72,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> CompressPdf(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<inputPdfDataremoveAnnotationsInput>> inputPdfDataremoveAnnotations = null, Expression<Func<inputPdfDataremoveBlankPagesInput>> inputPdfDataremoveBlankPages = null, Expression<Func<inputPdfDataremoveBookmarksInput>> inputPdfDataremoveBookmarks = null, Expression<Func<inputPdfDataremoveEmbeddedFilesInput>> inputPdfDataremoveEmbeddedFiles = null, Expression<Func<inputPdfDataremoveFormFieldsInput>> inputPdfDataremoveFormFields = null, Expression<Func<inputPdfDataremoveHyperlinksInput>> inputPdfDataremoveHyperlinks = null, Expression<Func<inputPdfDataremoveJavaScriptInput>> inputPdfDataremoveJavaScript = null, Expression<Func<inputPdfDataremoveMetadataInput>> inputPdfDataremoveMetadata = null, Expression<Func<inputPdfDataremovePageThumbnailsInput>> inputPdfDataremovePageThumbnails = null, Expression<Func<inputPdfDatapackFontsInput>> inputPdfDatapackFonts = null, Expression<Func<inputPdfDatapackDocumentInput>> inputPdfDatapackDocument = null, Expression<Func<inputPdfDatarecompressImagesInput>> inputPdfDatarecompressImages = null, Expression<Func<inputPdfDataenableMRCInput>> inputPdfDataenableMRC = null, Expression<Func<int>> inputPdfDatadownscaleResolutionMRC = null, Expression<Func<inputPdfDatapreserveSmoothingInput>> inputPdfDatapreserveSmoothing = null, Expression<Func<inputPdfDataimageQualityInput>> inputPdfDataimageQuality = null, Expression<Func<inputPdfDatadownscaleImagesInput>> inputPdfDatadownscaleImages = null, Expression<Func<int>> inputPdfDatadownscaleResolution = null, Expression<Func<inputPdfDataenableColorDetectionInput>> inputPdfDataenableColorDetection = null, Expression<Func<inputPdfDataenableCharRepairInput>> inputPdfDataenableCharRepair = null, Expression<Func<inputPdfDataenableJPEG2000Input>> inputPdfDataenableJPEG2000 = null, Expression<Func<inputPdfDataenableJBIG2Input>> inputPdfDataenableJBIG2 = null, Expression<Func<int>> inputPdfDatajBIG2PMSThreshold = null, Expression<Func<string>> inputPdfDataoverrideSettings = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
         {
-            var __workflow_inputPdfDatasourceFileName = inputPdfDatasourceFileName == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            var __workflow_inputPdfDatasourceFileContent = inputPdfDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            var __workflow_inputPdfDataremoveAnnotations = inputPdfDataremoveAnnotations == null ? null : WorkflowExpression.Compile(inputPdfDataremoveAnnotations);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveAnnotations, nameof(inputPdfDataremoveAnnotations), required: false);
-            var __workflow_inputPdfDataremoveBlankPages = inputPdfDataremoveBlankPages == null ? null : WorkflowExpression.Compile(inputPdfDataremoveBlankPages);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveBlankPages, nameof(inputPdfDataremoveBlankPages), required: false);
-            var __workflow_inputPdfDataremoveBookmarks = inputPdfDataremoveBookmarks == null ? null : WorkflowExpression.Compile(inputPdfDataremoveBookmarks);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveBookmarks, nameof(inputPdfDataremoveBookmarks), required: false);
-            var __workflow_inputPdfDataremoveEmbeddedFiles = inputPdfDataremoveEmbeddedFiles == null ? null : WorkflowExpression.Compile(inputPdfDataremoveEmbeddedFiles);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveEmbeddedFiles, nameof(inputPdfDataremoveEmbeddedFiles), required: false);
-            var __workflow_inputPdfDataremoveFormFields = inputPdfDataremoveFormFields == null ? null : WorkflowExpression.Compile(inputPdfDataremoveFormFields);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveFormFields, nameof(inputPdfDataremoveFormFields), required: false);
-            var __workflow_inputPdfDataremoveHyperlinks = inputPdfDataremoveHyperlinks == null ? null : WorkflowExpression.Compile(inputPdfDataremoveHyperlinks);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveHyperlinks, nameof(inputPdfDataremoveHyperlinks), required: false);
-            var __workflow_inputPdfDataremoveJavaScript = inputPdfDataremoveJavaScript == null ? null : WorkflowExpression.Compile(inputPdfDataremoveJavaScript);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveJavaScript, nameof(inputPdfDataremoveJavaScript), required: false);
-            var __workflow_inputPdfDataremoveMetadata = inputPdfDataremoveMetadata == null ? null : WorkflowExpression.Compile(inputPdfDataremoveMetadata);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremoveMetadata, nameof(inputPdfDataremoveMetadata), required: false);
-            var __workflow_inputPdfDataremovePageThumbnails = inputPdfDataremovePageThumbnails == null ? null : WorkflowExpression.Compile(inputPdfDataremovePageThumbnails);
-            WorkflowExpression.Validate(__workflow_inputPdfDataremovePageThumbnails, nameof(inputPdfDataremovePageThumbnails), required: false);
-            var __workflow_inputPdfDatapackFonts = inputPdfDatapackFonts == null ? null : WorkflowExpression.Compile(inputPdfDatapackFonts);
-            WorkflowExpression.Validate(__workflow_inputPdfDatapackFonts, nameof(inputPdfDatapackFonts), required: false);
-            var __workflow_inputPdfDatapackDocument = inputPdfDatapackDocument == null ? null : WorkflowExpression.Compile(inputPdfDatapackDocument);
-            WorkflowExpression.Validate(__workflow_inputPdfDatapackDocument, nameof(inputPdfDatapackDocument), required: false);
-            var __workflow_inputPdfDatarecompressImages = inputPdfDatarecompressImages == null ? null : WorkflowExpression.Compile(inputPdfDatarecompressImages);
-            WorkflowExpression.Validate(__workflow_inputPdfDatarecompressImages, nameof(inputPdfDatarecompressImages), required: false);
-            var __workflow_inputPdfDataenableMRC = inputPdfDataenableMRC == null ? null : WorkflowExpression.Compile(inputPdfDataenableMRC);
-            WorkflowExpression.Validate(__workflow_inputPdfDataenableMRC, nameof(inputPdfDataenableMRC), required: false);
-            var __workflow_inputPdfDatadownscaleResolutionMRC = inputPdfDatadownscaleResolutionMRC == null ? null : WorkflowExpression.Compile(inputPdfDatadownscaleResolutionMRC);
-            WorkflowExpression.Validate(__workflow_inputPdfDatadownscaleResolutionMRC, nameof(inputPdfDatadownscaleResolutionMRC), required: false);
-            var __workflow_inputPdfDatapreserveSmoothing = inputPdfDatapreserveSmoothing == null ? null : WorkflowExpression.Compile(inputPdfDatapreserveSmoothing);
-            WorkflowExpression.Validate(__workflow_inputPdfDatapreserveSmoothing, nameof(inputPdfDatapreserveSmoothing), required: false);
-            var __workflow_inputPdfDataimageQuality = inputPdfDataimageQuality == null ? null : WorkflowExpression.Compile(inputPdfDataimageQuality);
-            WorkflowExpression.Validate(__workflow_inputPdfDataimageQuality, nameof(inputPdfDataimageQuality), required: false);
-            var __workflow_inputPdfDatadownscaleImages = inputPdfDatadownscaleImages == null ? null : WorkflowExpression.Compile(inputPdfDatadownscaleImages);
-            WorkflowExpression.Validate(__workflow_inputPdfDatadownscaleImages, nameof(inputPdfDatadownscaleImages), required: false);
-            var __workflow_inputPdfDatadownscaleResolution = inputPdfDatadownscaleResolution == null ? null : WorkflowExpression.Compile(inputPdfDatadownscaleResolution);
-            WorkflowExpression.Validate(__workflow_inputPdfDatadownscaleResolution, nameof(inputPdfDatadownscaleResolution), required: false);
-            var __workflow_inputPdfDataenableColorDetection = inputPdfDataenableColorDetection == null ? null : WorkflowExpression.Compile(inputPdfDataenableColorDetection);
-            WorkflowExpression.Validate(__workflow_inputPdfDataenableColorDetection, nameof(inputPdfDataenableColorDetection), required: false);
-            var __workflow_inputPdfDataenableCharRepair = inputPdfDataenableCharRepair == null ? null : WorkflowExpression.Compile(inputPdfDataenableCharRepair);
-            WorkflowExpression.Validate(__workflow_inputPdfDataenableCharRepair, nameof(inputPdfDataenableCharRepair), required: false);
-            var __workflow_inputPdfDataenableJPEG2000 = inputPdfDataenableJPEG2000 == null ? null : WorkflowExpression.Compile(inputPdfDataenableJPEG2000);
-            WorkflowExpression.Validate(__workflow_inputPdfDataenableJPEG2000, nameof(inputPdfDataenableJPEG2000), required: false);
-            var __workflow_inputPdfDataenableJBIG2 = inputPdfDataenableJBIG2 == null ? null : WorkflowExpression.Compile(inputPdfDataenableJBIG2);
-            WorkflowExpression.Validate(__workflow_inputPdfDataenableJBIG2, nameof(inputPdfDataenableJBIG2), required: false);
-            var __workflow_inputPdfDatajBIG2PMSThreshold = inputPdfDatajBIG2PMSThreshold == null ? null : WorkflowExpression.Compile(inputPdfDatajBIG2PMSThreshold);
-            WorkflowExpression.Validate(__workflow_inputPdfDatajBIG2PMSThreshold, nameof(inputPdfDatajBIG2PMSThreshold), required: false);
-            var __workflow_inputPdfDataoverrideSettings = inputPdfDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputPdfDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
-            var __workflow_inputPdfDatafailOnError = inputPdfDatafailOnError == null ? null : WorkflowExpression.Compile(inputPdfDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            var __workflow_inputPdfDatasourceFileName = WorkflowExpression.Compile(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            var __workflow_inputPdfDatasourceFileContent = WorkflowExpression.Compile(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            var __workflow_inputPdfDataremoveAnnotations = WorkflowExpression.Compile(inputPdfDataremoveAnnotations, nameof(inputPdfDataremoveAnnotations), required: false);
+            var __workflow_inputPdfDataremoveBlankPages = WorkflowExpression.Compile(inputPdfDataremoveBlankPages, nameof(inputPdfDataremoveBlankPages), required: false);
+            var __workflow_inputPdfDataremoveBookmarks = WorkflowExpression.Compile(inputPdfDataremoveBookmarks, nameof(inputPdfDataremoveBookmarks), required: false);
+            var __workflow_inputPdfDataremoveEmbeddedFiles = WorkflowExpression.Compile(inputPdfDataremoveEmbeddedFiles, nameof(inputPdfDataremoveEmbeddedFiles), required: false);
+            var __workflow_inputPdfDataremoveFormFields = WorkflowExpression.Compile(inputPdfDataremoveFormFields, nameof(inputPdfDataremoveFormFields), required: false);
+            var __workflow_inputPdfDataremoveHyperlinks = WorkflowExpression.Compile(inputPdfDataremoveHyperlinks, nameof(inputPdfDataremoveHyperlinks), required: false);
+            var __workflow_inputPdfDataremoveJavaScript = WorkflowExpression.Compile(inputPdfDataremoveJavaScript, nameof(inputPdfDataremoveJavaScript), required: false);
+            var __workflow_inputPdfDataremoveMetadata = WorkflowExpression.Compile(inputPdfDataremoveMetadata, nameof(inputPdfDataremoveMetadata), required: false);
+            var __workflow_inputPdfDataremovePageThumbnails = WorkflowExpression.Compile(inputPdfDataremovePageThumbnails, nameof(inputPdfDataremovePageThumbnails), required: false);
+            var __workflow_inputPdfDatapackFonts = WorkflowExpression.Compile(inputPdfDatapackFonts, nameof(inputPdfDatapackFonts), required: false);
+            var __workflow_inputPdfDatapackDocument = WorkflowExpression.Compile(inputPdfDatapackDocument, nameof(inputPdfDatapackDocument), required: false);
+            var __workflow_inputPdfDatarecompressImages = WorkflowExpression.Compile(inputPdfDatarecompressImages, nameof(inputPdfDatarecompressImages), required: false);
+            var __workflow_inputPdfDataenableMRC = WorkflowExpression.Compile(inputPdfDataenableMRC, nameof(inputPdfDataenableMRC), required: false);
+            var __workflow_inputPdfDatadownscaleResolutionMRC = WorkflowExpression.Compile(inputPdfDatadownscaleResolutionMRC, nameof(inputPdfDatadownscaleResolutionMRC), required: false);
+            var __workflow_inputPdfDatapreserveSmoothing = WorkflowExpression.Compile(inputPdfDatapreserveSmoothing, nameof(inputPdfDatapreserveSmoothing), required: false);
+            var __workflow_inputPdfDataimageQuality = WorkflowExpression.Compile(inputPdfDataimageQuality, nameof(inputPdfDataimageQuality), required: false);
+            var __workflow_inputPdfDatadownscaleImages = WorkflowExpression.Compile(inputPdfDatadownscaleImages, nameof(inputPdfDatadownscaleImages), required: false);
+            var __workflow_inputPdfDatadownscaleResolution = WorkflowExpression.Compile(inputPdfDatadownscaleResolution, nameof(inputPdfDatadownscaleResolution), required: false);
+            var __workflow_inputPdfDataenableColorDetection = WorkflowExpression.Compile(inputPdfDataenableColorDetection, nameof(inputPdfDataenableColorDetection), required: false);
+            var __workflow_inputPdfDataenableCharRepair = WorkflowExpression.Compile(inputPdfDataenableCharRepair, nameof(inputPdfDataenableCharRepair), required: false);
+            var __workflow_inputPdfDataenableJPEG2000 = WorkflowExpression.Compile(inputPdfDataenableJPEG2000, nameof(inputPdfDataenableJPEG2000), required: false);
+            var __workflow_inputPdfDataenableJBIG2 = WorkflowExpression.Compile(inputPdfDataenableJBIG2, nameof(inputPdfDataenableJBIG2), required: false);
+            var __workflow_inputPdfDatajBIG2PMSThreshold = WorkflowExpression.Compile(inputPdfDatajBIG2PMSThreshold, nameof(inputPdfDatajBIG2PMSThreshold), required: false);
+            var __workflow_inputPdfDataoverrideSettings = WorkflowExpression.Compile(inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
+            var __workflow_inputPdfDatafailOnError = WorkflowExpression.Compile(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/compress_pdf";
@@ -553,18 +522,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> Convert(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDataoutputFormatInput>> inputDataoutputFormat, Expression<Func<string>> inputDataoverrideSettings = null, Expression<Func<string>> inputDatatemplateFileContent = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDataoutputFormat = inputDataoutputFormat == null ? null : WorkflowExpression.Compile(inputDataoutputFormat);
-            WorkflowExpression.Validate(__workflow_inputDataoutputFormat, nameof(inputDataoutputFormat), required: true);
-            var __workflow_inputDataoverrideSettings = inputDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
-            var __workflow_inputDatatemplateFileContent = inputDatatemplateFileContent == null ? null : WorkflowExpression.Compile(inputDatatemplateFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatatemplateFileContent, nameof(inputDatatemplateFileContent), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDataoutputFormat = WorkflowExpression.Compile(inputDataoutputFormat, nameof(inputDataoutputFormat), required: true);
+            var __workflow_inputDataoverrideSettings = WorkflowExpression.Compile(inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
+            var __workflow_inputDatatemplateFileContent = WorkflowExpression.Compile(inputDatatemplateFileContent, nameof(inputDatatemplateFileContent), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert";
@@ -630,34 +593,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertCad(Expression<Func<string>> inputCadDatasourceFileName, Expression<Func<string>> inputCadDatasourceFileContent, Expression<Func<inputCadDatapaperSizeInput>> inputCadDatapaperSize = null, Expression<Func<string>> inputCadDatapaperSizeCustom = null, Expression<Func<string>> inputCadDatapageMargins = null, Expression<Func<string>> inputCadDatabackgroundColor = null, Expression<Func<inputCadDataforegroundColorInput>> inputCadDataforegroundColor = null, Expression<Func<string>> inputCadDataforegroundColorCustom = null, Expression<Func<inputCadDataemptyLayoutDetectionInput>> inputCadDataemptyLayoutDetection = null, Expression<Func<inputCadDatalayoutSortOrderInput>> inputCadDatalayoutSortOrder = null, Expression<Func<int>> inputCadDatastartPage = null, Expression<Func<int>> inputCadDataendPage = null, Expression<Func<string>> inputCadDataoverrideSettings = null, Expression<Func<bool>> inputCadDatafailOnError = null)
         {
-            var __workflow_inputCadDatasourceFileName = inputCadDatasourceFileName == null ? null : WorkflowExpression.Compile(inputCadDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputCadDatasourceFileName, nameof(inputCadDatasourceFileName), required: true);
-            var __workflow_inputCadDatasourceFileContent = inputCadDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputCadDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputCadDatasourceFileContent, nameof(inputCadDatasourceFileContent), required: true);
-            var __workflow_inputCadDatapaperSize = inputCadDatapaperSize == null ? null : WorkflowExpression.Compile(inputCadDatapaperSize);
-            WorkflowExpression.Validate(__workflow_inputCadDatapaperSize, nameof(inputCadDatapaperSize), required: false);
-            var __workflow_inputCadDatapaperSizeCustom = inputCadDatapaperSizeCustom == null ? null : WorkflowExpression.Compile(inputCadDatapaperSizeCustom);
-            WorkflowExpression.Validate(__workflow_inputCadDatapaperSizeCustom, nameof(inputCadDatapaperSizeCustom), required: false);
-            var __workflow_inputCadDatapageMargins = inputCadDatapageMargins == null ? null : WorkflowExpression.Compile(inputCadDatapageMargins);
-            WorkflowExpression.Validate(__workflow_inputCadDatapageMargins, nameof(inputCadDatapageMargins), required: false);
-            var __workflow_inputCadDatabackgroundColor = inputCadDatabackgroundColor == null ? null : WorkflowExpression.Compile(inputCadDatabackgroundColor);
-            WorkflowExpression.Validate(__workflow_inputCadDatabackgroundColor, nameof(inputCadDatabackgroundColor), required: false);
-            var __workflow_inputCadDataforegroundColor = inputCadDataforegroundColor == null ? null : WorkflowExpression.Compile(inputCadDataforegroundColor);
-            WorkflowExpression.Validate(__workflow_inputCadDataforegroundColor, nameof(inputCadDataforegroundColor), required: false);
-            var __workflow_inputCadDataforegroundColorCustom = inputCadDataforegroundColorCustom == null ? null : WorkflowExpression.Compile(inputCadDataforegroundColorCustom);
-            WorkflowExpression.Validate(__workflow_inputCadDataforegroundColorCustom, nameof(inputCadDataforegroundColorCustom), required: false);
-            var __workflow_inputCadDataemptyLayoutDetection = inputCadDataemptyLayoutDetection == null ? null : WorkflowExpression.Compile(inputCadDataemptyLayoutDetection);
-            WorkflowExpression.Validate(__workflow_inputCadDataemptyLayoutDetection, nameof(inputCadDataemptyLayoutDetection), required: false);
-            var __workflow_inputCadDatalayoutSortOrder = inputCadDatalayoutSortOrder == null ? null : WorkflowExpression.Compile(inputCadDatalayoutSortOrder);
-            WorkflowExpression.Validate(__workflow_inputCadDatalayoutSortOrder, nameof(inputCadDatalayoutSortOrder), required: false);
-            var __workflow_inputCadDatastartPage = inputCadDatastartPage == null ? null : WorkflowExpression.Compile(inputCadDatastartPage);
-            WorkflowExpression.Validate(__workflow_inputCadDatastartPage, nameof(inputCadDatastartPage), required: false);
-            var __workflow_inputCadDataendPage = inputCadDataendPage == null ? null : WorkflowExpression.Compile(inputCadDataendPage);
-            WorkflowExpression.Validate(__workflow_inputCadDataendPage, nameof(inputCadDataendPage), required: false);
-            var __workflow_inputCadDataoverrideSettings = inputCadDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputCadDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputCadDataoverrideSettings, nameof(inputCadDataoverrideSettings), required: false);
-            var __workflow_inputCadDatafailOnError = inputCadDatafailOnError == null ? null : WorkflowExpression.Compile(inputCadDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputCadDatafailOnError, nameof(inputCadDatafailOnError), required: false);
+            var __workflow_inputCadDatasourceFileName = WorkflowExpression.Compile(inputCadDatasourceFileName, nameof(inputCadDatasourceFileName), required: true);
+            var __workflow_inputCadDatasourceFileContent = WorkflowExpression.Compile(inputCadDatasourceFileContent, nameof(inputCadDatasourceFileContent), required: true);
+            var __workflow_inputCadDatapaperSize = WorkflowExpression.Compile(inputCadDatapaperSize, nameof(inputCadDatapaperSize), required: false);
+            var __workflow_inputCadDatapaperSizeCustom = WorkflowExpression.Compile(inputCadDatapaperSizeCustom, nameof(inputCadDatapaperSizeCustom), required: false);
+            var __workflow_inputCadDatapageMargins = WorkflowExpression.Compile(inputCadDatapageMargins, nameof(inputCadDatapageMargins), required: false);
+            var __workflow_inputCadDatabackgroundColor = WorkflowExpression.Compile(inputCadDatabackgroundColor, nameof(inputCadDatabackgroundColor), required: false);
+            var __workflow_inputCadDataforegroundColor = WorkflowExpression.Compile(inputCadDataforegroundColor, nameof(inputCadDataforegroundColor), required: false);
+            var __workflow_inputCadDataforegroundColorCustom = WorkflowExpression.Compile(inputCadDataforegroundColorCustom, nameof(inputCadDataforegroundColorCustom), required: false);
+            var __workflow_inputCadDataemptyLayoutDetection = WorkflowExpression.Compile(inputCadDataemptyLayoutDetection, nameof(inputCadDataemptyLayoutDetection), required: false);
+            var __workflow_inputCadDatalayoutSortOrder = WorkflowExpression.Compile(inputCadDatalayoutSortOrder, nameof(inputCadDatalayoutSortOrder), required: false);
+            var __workflow_inputCadDatastartPage = WorkflowExpression.Compile(inputCadDatastartPage, nameof(inputCadDatastartPage), required: false);
+            var __workflow_inputCadDataendPage = WorkflowExpression.Compile(inputCadDataendPage, nameof(inputCadDataendPage), required: false);
+            var __workflow_inputCadDataoverrideSettings = WorkflowExpression.Compile(inputCadDataoverrideSettings, nameof(inputCadDataoverrideSettings), required: false);
+            var __workflow_inputCadDatafailOnError = WorkflowExpression.Compile(inputCadDatafailOnError, nameof(inputCadDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_cad";
@@ -835,46 +784,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertEmail(Expression<Func<string>> inputEmailDatasourceFileName, Expression<Func<string>> inputEmailDatasourceFileContent, Expression<Func<bool>> inputEmailDataincludeAttachments = null, Expression<Func<inputEmailDataattachmentActionInput>> inputEmailDataattachmentAction = null, Expression<Func<bool>> inputEmailDataattachmentSummary = null, Expression<Func<inputEmailDataunsupportedAttachmentActionInput>> inputEmailDataunsupportedAttachmentAction = null, Expression<Func<string>> inputEmailDataincludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataexcludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataviewportSize = null, Expression<Func<inputEmailDatapaperSizeInput>> inputEmailDatapaperSize = null, Expression<Func<string>> inputEmailDatapaperSizeCustom = null, Expression<Func<string>> inputEmailDatapageMargins = null, Expression<Func<bool>> inputEmailDataattachmentErrors = null, Expression<Func<int>> inputEmailDataminImageSize = null, Expression<Func<bool>> inputEmailDataofflineMode = null, Expression<Func<int>> inputEmailDatastartPage = null, Expression<Func<int>> inputEmailDataendPage = null, Expression<Func<inputEmailDataconversionQualityInput>> inputEmailDataconversionQuality = null, Expression<Func<string>> inputEmailDataoverrideSettings = null, Expression<Func<bool>> inputEmailDatafailOnError = null)
         {
-            var __workflow_inputEmailDatasourceFileName = inputEmailDatasourceFileName == null ? null : WorkflowExpression.Compile(inputEmailDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputEmailDatasourceFileName, nameof(inputEmailDatasourceFileName), required: true);
-            var __workflow_inputEmailDatasourceFileContent = inputEmailDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputEmailDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputEmailDatasourceFileContent, nameof(inputEmailDatasourceFileContent), required: true);
-            var __workflow_inputEmailDataincludeAttachments = inputEmailDataincludeAttachments == null ? null : WorkflowExpression.Compile(inputEmailDataincludeAttachments);
-            WorkflowExpression.Validate(__workflow_inputEmailDataincludeAttachments, nameof(inputEmailDataincludeAttachments), required: false);
-            var __workflow_inputEmailDataattachmentAction = inputEmailDataattachmentAction == null ? null : WorkflowExpression.Compile(inputEmailDataattachmentAction);
-            WorkflowExpression.Validate(__workflow_inputEmailDataattachmentAction, nameof(inputEmailDataattachmentAction), required: false);
-            var __workflow_inputEmailDataattachmentSummary = inputEmailDataattachmentSummary == null ? null : WorkflowExpression.Compile(inputEmailDataattachmentSummary);
-            WorkflowExpression.Validate(__workflow_inputEmailDataattachmentSummary, nameof(inputEmailDataattachmentSummary), required: false);
-            var __workflow_inputEmailDataunsupportedAttachmentAction = inputEmailDataunsupportedAttachmentAction == null ? null : WorkflowExpression.Compile(inputEmailDataunsupportedAttachmentAction);
-            WorkflowExpression.Validate(__workflow_inputEmailDataunsupportedAttachmentAction, nameof(inputEmailDataunsupportedAttachmentAction), required: false);
-            var __workflow_inputEmailDataincludeAttachmentFilter = inputEmailDataincludeAttachmentFilter == null ? null : WorkflowExpression.Compile(inputEmailDataincludeAttachmentFilter);
-            WorkflowExpression.Validate(__workflow_inputEmailDataincludeAttachmentFilter, nameof(inputEmailDataincludeAttachmentFilter), required: false);
-            var __workflow_inputEmailDataexcludeAttachmentFilter = inputEmailDataexcludeAttachmentFilter == null ? null : WorkflowExpression.Compile(inputEmailDataexcludeAttachmentFilter);
-            WorkflowExpression.Validate(__workflow_inputEmailDataexcludeAttachmentFilter, nameof(inputEmailDataexcludeAttachmentFilter), required: false);
-            var __workflow_inputEmailDataviewportSize = inputEmailDataviewportSize == null ? null : WorkflowExpression.Compile(inputEmailDataviewportSize);
-            WorkflowExpression.Validate(__workflow_inputEmailDataviewportSize, nameof(inputEmailDataviewportSize), required: false);
-            var __workflow_inputEmailDatapaperSize = inputEmailDatapaperSize == null ? null : WorkflowExpression.Compile(inputEmailDatapaperSize);
-            WorkflowExpression.Validate(__workflow_inputEmailDatapaperSize, nameof(inputEmailDatapaperSize), required: false);
-            var __workflow_inputEmailDatapaperSizeCustom = inputEmailDatapaperSizeCustom == null ? null : WorkflowExpression.Compile(inputEmailDatapaperSizeCustom);
-            WorkflowExpression.Validate(__workflow_inputEmailDatapaperSizeCustom, nameof(inputEmailDatapaperSizeCustom), required: false);
-            var __workflow_inputEmailDatapageMargins = inputEmailDatapageMargins == null ? null : WorkflowExpression.Compile(inputEmailDatapageMargins);
-            WorkflowExpression.Validate(__workflow_inputEmailDatapageMargins, nameof(inputEmailDatapageMargins), required: false);
-            var __workflow_inputEmailDataattachmentErrors = inputEmailDataattachmentErrors == null ? null : WorkflowExpression.Compile(inputEmailDataattachmentErrors);
-            WorkflowExpression.Validate(__workflow_inputEmailDataattachmentErrors, nameof(inputEmailDataattachmentErrors), required: false);
-            var __workflow_inputEmailDataminImageSize = inputEmailDataminImageSize == null ? null : WorkflowExpression.Compile(inputEmailDataminImageSize);
-            WorkflowExpression.Validate(__workflow_inputEmailDataminImageSize, nameof(inputEmailDataminImageSize), required: false);
-            var __workflow_inputEmailDataofflineMode = inputEmailDataofflineMode == null ? null : WorkflowExpression.Compile(inputEmailDataofflineMode);
-            WorkflowExpression.Validate(__workflow_inputEmailDataofflineMode, nameof(inputEmailDataofflineMode), required: false);
-            var __workflow_inputEmailDatastartPage = inputEmailDatastartPage == null ? null : WorkflowExpression.Compile(inputEmailDatastartPage);
-            WorkflowExpression.Validate(__workflow_inputEmailDatastartPage, nameof(inputEmailDatastartPage), required: false);
-            var __workflow_inputEmailDataendPage = inputEmailDataendPage == null ? null : WorkflowExpression.Compile(inputEmailDataendPage);
-            WorkflowExpression.Validate(__workflow_inputEmailDataendPage, nameof(inputEmailDataendPage), required: false);
-            var __workflow_inputEmailDataconversionQuality = inputEmailDataconversionQuality == null ? null : WorkflowExpression.Compile(inputEmailDataconversionQuality);
-            WorkflowExpression.Validate(__workflow_inputEmailDataconversionQuality, nameof(inputEmailDataconversionQuality), required: false);
-            var __workflow_inputEmailDataoverrideSettings = inputEmailDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputEmailDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputEmailDataoverrideSettings, nameof(inputEmailDataoverrideSettings), required: false);
-            var __workflow_inputEmailDatafailOnError = inputEmailDatafailOnError == null ? null : WorkflowExpression.Compile(inputEmailDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputEmailDatafailOnError, nameof(inputEmailDatafailOnError), required: false);
+            var __workflow_inputEmailDatasourceFileName = WorkflowExpression.Compile(inputEmailDatasourceFileName, nameof(inputEmailDatasourceFileName), required: true);
+            var __workflow_inputEmailDatasourceFileContent = WorkflowExpression.Compile(inputEmailDatasourceFileContent, nameof(inputEmailDatasourceFileContent), required: true);
+            var __workflow_inputEmailDataincludeAttachments = WorkflowExpression.Compile(inputEmailDataincludeAttachments, nameof(inputEmailDataincludeAttachments), required: false);
+            var __workflow_inputEmailDataattachmentAction = WorkflowExpression.Compile(inputEmailDataattachmentAction, nameof(inputEmailDataattachmentAction), required: false);
+            var __workflow_inputEmailDataattachmentSummary = WorkflowExpression.Compile(inputEmailDataattachmentSummary, nameof(inputEmailDataattachmentSummary), required: false);
+            var __workflow_inputEmailDataunsupportedAttachmentAction = WorkflowExpression.Compile(inputEmailDataunsupportedAttachmentAction, nameof(inputEmailDataunsupportedAttachmentAction), required: false);
+            var __workflow_inputEmailDataincludeAttachmentFilter = WorkflowExpression.Compile(inputEmailDataincludeAttachmentFilter, nameof(inputEmailDataincludeAttachmentFilter), required: false);
+            var __workflow_inputEmailDataexcludeAttachmentFilter = WorkflowExpression.Compile(inputEmailDataexcludeAttachmentFilter, nameof(inputEmailDataexcludeAttachmentFilter), required: false);
+            var __workflow_inputEmailDataviewportSize = WorkflowExpression.Compile(inputEmailDataviewportSize, nameof(inputEmailDataviewportSize), required: false);
+            var __workflow_inputEmailDatapaperSize = WorkflowExpression.Compile(inputEmailDatapaperSize, nameof(inputEmailDatapaperSize), required: false);
+            var __workflow_inputEmailDatapaperSizeCustom = WorkflowExpression.Compile(inputEmailDatapaperSizeCustom, nameof(inputEmailDatapaperSizeCustom), required: false);
+            var __workflow_inputEmailDatapageMargins = WorkflowExpression.Compile(inputEmailDatapageMargins, nameof(inputEmailDatapageMargins), required: false);
+            var __workflow_inputEmailDataattachmentErrors = WorkflowExpression.Compile(inputEmailDataattachmentErrors, nameof(inputEmailDataattachmentErrors), required: false);
+            var __workflow_inputEmailDataminImageSize = WorkflowExpression.Compile(inputEmailDataminImageSize, nameof(inputEmailDataminImageSize), required: false);
+            var __workflow_inputEmailDataofflineMode = WorkflowExpression.Compile(inputEmailDataofflineMode, nameof(inputEmailDataofflineMode), required: false);
+            var __workflow_inputEmailDatastartPage = WorkflowExpression.Compile(inputEmailDatastartPage, nameof(inputEmailDatastartPage), required: false);
+            var __workflow_inputEmailDataendPage = WorkflowExpression.Compile(inputEmailDataendPage, nameof(inputEmailDataendPage), required: false);
+            var __workflow_inputEmailDataconversionQuality = WorkflowExpression.Compile(inputEmailDataconversionQuality, nameof(inputEmailDataconversionQuality), required: false);
+            var __workflow_inputEmailDataoverrideSettings = WorkflowExpression.Compile(inputEmailDataoverrideSettings, nameof(inputEmailDataoverrideSettings), required: false);
+            var __workflow_inputEmailDatafailOnError = WorkflowExpression.Compile(inputEmailDatafailOnError, nameof(inputEmailDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_email";
@@ -1108,32 +1037,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertExcel(Expression<Func<string>> inputExcelDatasourceFileName, Expression<Func<string>> inputExcelDatasourceFileContent, Expression<Func<inputExcelDataoutputFormatInput>> inputExcelDataoutputFormat, Expression<Func<inputExcelDatarangeInput>> inputExcelDatarange = null, Expression<Func<bool>> inputExcelDatarevealHiddenRows = null, Expression<Func<bool>> inputExcelDatarevealHiddenColumns = null, Expression<Func<int>> inputExcelDatafitToPagesWide = null, Expression<Func<int>> inputExcelDatafitToPagesTall = null, Expression<Func<int>> inputExcelDatastartPage = null, Expression<Func<int>> inputExcelDataendPage = null, Expression<Func<inputExcelDataqualityInput>> inputExcelDataquality = null, Expression<Func<string>> inputExcelDataoverrideSettings = null, Expression<Func<bool>> inputExcelDatafailOnError = null)
         {
-            var __workflow_inputExcelDatasourceFileName = inputExcelDatasourceFileName == null ? null : WorkflowExpression.Compile(inputExcelDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputExcelDatasourceFileName, nameof(inputExcelDatasourceFileName), required: true);
-            var __workflow_inputExcelDatasourceFileContent = inputExcelDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputExcelDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputExcelDatasourceFileContent, nameof(inputExcelDatasourceFileContent), required: true);
-            var __workflow_inputExcelDataoutputFormat = inputExcelDataoutputFormat == null ? null : WorkflowExpression.Compile(inputExcelDataoutputFormat);
-            WorkflowExpression.Validate(__workflow_inputExcelDataoutputFormat, nameof(inputExcelDataoutputFormat), required: true);
-            var __workflow_inputExcelDatarange = inputExcelDatarange == null ? null : WorkflowExpression.Compile(inputExcelDatarange);
-            WorkflowExpression.Validate(__workflow_inputExcelDatarange, nameof(inputExcelDatarange), required: false);
-            var __workflow_inputExcelDatarevealHiddenRows = inputExcelDatarevealHiddenRows == null ? null : WorkflowExpression.Compile(inputExcelDatarevealHiddenRows);
-            WorkflowExpression.Validate(__workflow_inputExcelDatarevealHiddenRows, nameof(inputExcelDatarevealHiddenRows), required: false);
-            var __workflow_inputExcelDatarevealHiddenColumns = inputExcelDatarevealHiddenColumns == null ? null : WorkflowExpression.Compile(inputExcelDatarevealHiddenColumns);
-            WorkflowExpression.Validate(__workflow_inputExcelDatarevealHiddenColumns, nameof(inputExcelDatarevealHiddenColumns), required: false);
-            var __workflow_inputExcelDatafitToPagesWide = inputExcelDatafitToPagesWide == null ? null : WorkflowExpression.Compile(inputExcelDatafitToPagesWide);
-            WorkflowExpression.Validate(__workflow_inputExcelDatafitToPagesWide, nameof(inputExcelDatafitToPagesWide), required: false);
-            var __workflow_inputExcelDatafitToPagesTall = inputExcelDatafitToPagesTall == null ? null : WorkflowExpression.Compile(inputExcelDatafitToPagesTall);
-            WorkflowExpression.Validate(__workflow_inputExcelDatafitToPagesTall, nameof(inputExcelDatafitToPagesTall), required: false);
-            var __workflow_inputExcelDatastartPage = inputExcelDatastartPage == null ? null : WorkflowExpression.Compile(inputExcelDatastartPage);
-            WorkflowExpression.Validate(__workflow_inputExcelDatastartPage, nameof(inputExcelDatastartPage), required: false);
-            var __workflow_inputExcelDataendPage = inputExcelDataendPage == null ? null : WorkflowExpression.Compile(inputExcelDataendPage);
-            WorkflowExpression.Validate(__workflow_inputExcelDataendPage, nameof(inputExcelDataendPage), required: false);
-            var __workflow_inputExcelDataquality = inputExcelDataquality == null ? null : WorkflowExpression.Compile(inputExcelDataquality);
-            WorkflowExpression.Validate(__workflow_inputExcelDataquality, nameof(inputExcelDataquality), required: false);
-            var __workflow_inputExcelDataoverrideSettings = inputExcelDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputExcelDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputExcelDataoverrideSettings, nameof(inputExcelDataoverrideSettings), required: false);
-            var __workflow_inputExcelDatafailOnError = inputExcelDatafailOnError == null ? null : WorkflowExpression.Compile(inputExcelDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputExcelDatafailOnError, nameof(inputExcelDatafailOnError), required: false);
+            var __workflow_inputExcelDatasourceFileName = WorkflowExpression.Compile(inputExcelDatasourceFileName, nameof(inputExcelDatasourceFileName), required: true);
+            var __workflow_inputExcelDatasourceFileContent = WorkflowExpression.Compile(inputExcelDatasourceFileContent, nameof(inputExcelDatasourceFileContent), required: true);
+            var __workflow_inputExcelDataoutputFormat = WorkflowExpression.Compile(inputExcelDataoutputFormat, nameof(inputExcelDataoutputFormat), required: true);
+            var __workflow_inputExcelDatarange = WorkflowExpression.Compile(inputExcelDatarange, nameof(inputExcelDatarange), required: false);
+            var __workflow_inputExcelDatarevealHiddenRows = WorkflowExpression.Compile(inputExcelDatarevealHiddenRows, nameof(inputExcelDatarevealHiddenRows), required: false);
+            var __workflow_inputExcelDatarevealHiddenColumns = WorkflowExpression.Compile(inputExcelDatarevealHiddenColumns, nameof(inputExcelDatarevealHiddenColumns), required: false);
+            var __workflow_inputExcelDatafitToPagesWide = WorkflowExpression.Compile(inputExcelDatafitToPagesWide, nameof(inputExcelDatafitToPagesWide), required: false);
+            var __workflow_inputExcelDatafitToPagesTall = WorkflowExpression.Compile(inputExcelDatafitToPagesTall, nameof(inputExcelDatafitToPagesTall), required: false);
+            var __workflow_inputExcelDatastartPage = WorkflowExpression.Compile(inputExcelDatastartPage, nameof(inputExcelDatastartPage), required: false);
+            var __workflow_inputExcelDataendPage = WorkflowExpression.Compile(inputExcelDataendPage, nameof(inputExcelDataendPage), required: false);
+            var __workflow_inputExcelDataquality = WorkflowExpression.Compile(inputExcelDataquality, nameof(inputExcelDataquality), required: false);
+            var __workflow_inputExcelDataoverrideSettings = WorkflowExpression.Compile(inputExcelDataoverrideSettings, nameof(inputExcelDataoverrideSettings), required: false);
+            var __workflow_inputExcelDatafailOnError = WorkflowExpression.Compile(inputExcelDatafailOnError, nameof(inputExcelDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_excel";
@@ -1261,24 +1177,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertHtml(Expression<Func<string>> inputDatasourceURLOrHTML, Expression<Func<inputDatapageOrientationInput>> inputDatapageOrientation = null, Expression<Func<inputDatamediaTypeInput>> inputDatamediaType = null, Expression<Func<inputDataauthenticationTypeInput>> inputDataauthenticationType = null, Expression<Func<string>> inputDatauserName = null, Expression<Func<string>> inputDatapassword = null, Expression<Func<string>> inputDataviewportSize = null, Expression<Func<int>> inputDataconversionDelay = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceURLOrHTML = inputDatasourceURLOrHTML == null ? null : WorkflowExpression.Compile(inputDatasourceURLOrHTML);
-            WorkflowExpression.Validate(__workflow_inputDatasourceURLOrHTML, nameof(inputDatasourceURLOrHTML), required: true);
-            var __workflow_inputDatapageOrientation = inputDatapageOrientation == null ? null : WorkflowExpression.Compile(inputDatapageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatapageOrientation, nameof(inputDatapageOrientation), required: false);
-            var __workflow_inputDatamediaType = inputDatamediaType == null ? null : WorkflowExpression.Compile(inputDatamediaType);
-            WorkflowExpression.Validate(__workflow_inputDatamediaType, nameof(inputDatamediaType), required: false);
-            var __workflow_inputDataauthenticationType = inputDataauthenticationType == null ? null : WorkflowExpression.Compile(inputDataauthenticationType);
-            WorkflowExpression.Validate(__workflow_inputDataauthenticationType, nameof(inputDataauthenticationType), required: false);
-            var __workflow_inputDatauserName = inputDatauserName == null ? null : WorkflowExpression.Compile(inputDatauserName);
-            WorkflowExpression.Validate(__workflow_inputDatauserName, nameof(inputDatauserName), required: false);
-            var __workflow_inputDatapassword = inputDatapassword == null ? null : WorkflowExpression.Compile(inputDatapassword);
-            WorkflowExpression.Validate(__workflow_inputDatapassword, nameof(inputDatapassword), required: false);
-            var __workflow_inputDataviewportSize = inputDataviewportSize == null ? null : WorkflowExpression.Compile(inputDataviewportSize);
-            WorkflowExpression.Validate(__workflow_inputDataviewportSize, nameof(inputDataviewportSize), required: false);
-            var __workflow_inputDataconversionDelay = inputDataconversionDelay == null ? null : WorkflowExpression.Compile(inputDataconversionDelay);
-            WorkflowExpression.Validate(__workflow_inputDataconversionDelay, nameof(inputDataconversionDelay), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceURLOrHTML = WorkflowExpression.Compile(inputDatasourceURLOrHTML, nameof(inputDatasourceURLOrHTML), required: true);
+            var __workflow_inputDatapageOrientation = WorkflowExpression.Compile(inputDatapageOrientation, nameof(inputDatapageOrientation), required: false);
+            var __workflow_inputDatamediaType = WorkflowExpression.Compile(inputDatamediaType, nameof(inputDatamediaType), required: false);
+            var __workflow_inputDataauthenticationType = WorkflowExpression.Compile(inputDataauthenticationType, nameof(inputDataauthenticationType), required: false);
+            var __workflow_inputDatauserName = WorkflowExpression.Compile(inputDatauserName, nameof(inputDatauserName), required: false);
+            var __workflow_inputDatapassword = WorkflowExpression.Compile(inputDatapassword, nameof(inputDatapassword), required: false);
+            var __workflow_inputDataviewportSize = WorkflowExpression.Compile(inputDataviewportSize, nameof(inputDataviewportSize), required: false);
+            var __workflow_inputDataconversionDelay = WorkflowExpression.Compile(inputDataconversionDelay, nameof(inputDataconversionDelay), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_html";
@@ -1390,50 +1297,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertInfopath(Expression<Func<string>> inputInfopathDatasourceFileName, Expression<Func<string>> inputInfopathDatasourceFileContent, Expression<Func<inputInfopathDataoutputFormatInput>> inputInfopathDataoutputFormat, Expression<Func<string>> inputInfopathDatatemplateFileContent = null, Expression<Func<string>> inputInfopathDataviewNames = null, Expression<Func<bool>> inputInfopathDataincludeAttachment = null, Expression<Func<inputInfopathDataattachmentActionInput>> inputInfopathDataattachmentAction = null, Expression<Func<inputInfopathDataunsupportedAttachmentActionInput>> inputInfopathDataunsupportedAttachmentAction = null, Expression<Func<bool>> inputInfopathDatabreakMergeOnError = null, Expression<Func<string>> inputInfopathDataincludeAttachmentFilter = null, Expression<Func<string>> inputInfopathDataexcludeAttachmentFilter = null, Expression<Func<inputInfopathDatadefaultPaperSizeInput>> inputInfopathDatadefaultPaperSize = null, Expression<Func<string>> inputInfopathDatadefaultPaperSizeCustom = null, Expression<Func<inputInfopathDataforcePaperSizeInput>> inputInfopathDataforcePaperSize = null, Expression<Func<string>> inputInfopathDataforcePaperSizeCustom = null, Expression<Func<inputInfopathDatadefaultPageOrientationInput>> inputInfopathDatadefaultPageOrientation = null, Expression<Func<inputInfopathDataforcePageOrientationInput>> inputInfopathDataforcePageOrientation = null, Expression<Func<int>> inputInfopathDatastartPage = null, Expression<Func<int>> inputInfopathDataendPage = null, Expression<Func<inputInfopathDataconversionQualityInput>> inputInfopathDataconversionQuality = null, Expression<Func<string>> inputInfopathDataoverrideSettings = null, Expression<Func<bool>> inputInfopathDatafailOnError = null)
         {
-            var __workflow_inputInfopathDatasourceFileName = inputInfopathDatasourceFileName == null ? null : WorkflowExpression.Compile(inputInfopathDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatasourceFileName, nameof(inputInfopathDatasourceFileName), required: true);
-            var __workflow_inputInfopathDatasourceFileContent = inputInfopathDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputInfopathDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatasourceFileContent, nameof(inputInfopathDatasourceFileContent), required: true);
-            var __workflow_inputInfopathDataoutputFormat = inputInfopathDataoutputFormat == null ? null : WorkflowExpression.Compile(inputInfopathDataoutputFormat);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataoutputFormat, nameof(inputInfopathDataoutputFormat), required: true);
-            var __workflow_inputInfopathDatatemplateFileContent = inputInfopathDatatemplateFileContent == null ? null : WorkflowExpression.Compile(inputInfopathDatatemplateFileContent);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatatemplateFileContent, nameof(inputInfopathDatatemplateFileContent), required: false);
-            var __workflow_inputInfopathDataviewNames = inputInfopathDataviewNames == null ? null : WorkflowExpression.Compile(inputInfopathDataviewNames);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataviewNames, nameof(inputInfopathDataviewNames), required: false);
-            var __workflow_inputInfopathDataincludeAttachment = inputInfopathDataincludeAttachment == null ? null : WorkflowExpression.Compile(inputInfopathDataincludeAttachment);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataincludeAttachment, nameof(inputInfopathDataincludeAttachment), required: false);
-            var __workflow_inputInfopathDataattachmentAction = inputInfopathDataattachmentAction == null ? null : WorkflowExpression.Compile(inputInfopathDataattachmentAction);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataattachmentAction, nameof(inputInfopathDataattachmentAction), required: false);
-            var __workflow_inputInfopathDataunsupportedAttachmentAction = inputInfopathDataunsupportedAttachmentAction == null ? null : WorkflowExpression.Compile(inputInfopathDataunsupportedAttachmentAction);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataunsupportedAttachmentAction, nameof(inputInfopathDataunsupportedAttachmentAction), required: false);
-            var __workflow_inputInfopathDatabreakMergeOnError = inputInfopathDatabreakMergeOnError == null ? null : WorkflowExpression.Compile(inputInfopathDatabreakMergeOnError);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatabreakMergeOnError, nameof(inputInfopathDatabreakMergeOnError), required: false);
-            var __workflow_inputInfopathDataincludeAttachmentFilter = inputInfopathDataincludeAttachmentFilter == null ? null : WorkflowExpression.Compile(inputInfopathDataincludeAttachmentFilter);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataincludeAttachmentFilter, nameof(inputInfopathDataincludeAttachmentFilter), required: false);
-            var __workflow_inputInfopathDataexcludeAttachmentFilter = inputInfopathDataexcludeAttachmentFilter == null ? null : WorkflowExpression.Compile(inputInfopathDataexcludeAttachmentFilter);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataexcludeAttachmentFilter, nameof(inputInfopathDataexcludeAttachmentFilter), required: false);
-            var __workflow_inputInfopathDatadefaultPaperSize = inputInfopathDatadefaultPaperSize == null ? null : WorkflowExpression.Compile(inputInfopathDatadefaultPaperSize);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatadefaultPaperSize, nameof(inputInfopathDatadefaultPaperSize), required: false);
-            var __workflow_inputInfopathDatadefaultPaperSizeCustom = inputInfopathDatadefaultPaperSizeCustom == null ? null : WorkflowExpression.Compile(inputInfopathDatadefaultPaperSizeCustom);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatadefaultPaperSizeCustom, nameof(inputInfopathDatadefaultPaperSizeCustom), required: false);
-            var __workflow_inputInfopathDataforcePaperSize = inputInfopathDataforcePaperSize == null ? null : WorkflowExpression.Compile(inputInfopathDataforcePaperSize);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataforcePaperSize, nameof(inputInfopathDataforcePaperSize), required: false);
-            var __workflow_inputInfopathDataforcePaperSizeCustom = inputInfopathDataforcePaperSizeCustom == null ? null : WorkflowExpression.Compile(inputInfopathDataforcePaperSizeCustom);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataforcePaperSizeCustom, nameof(inputInfopathDataforcePaperSizeCustom), required: false);
-            var __workflow_inputInfopathDatadefaultPageOrientation = inputInfopathDatadefaultPageOrientation == null ? null : WorkflowExpression.Compile(inputInfopathDatadefaultPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatadefaultPageOrientation, nameof(inputInfopathDatadefaultPageOrientation), required: false);
-            var __workflow_inputInfopathDataforcePageOrientation = inputInfopathDataforcePageOrientation == null ? null : WorkflowExpression.Compile(inputInfopathDataforcePageOrientation);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataforcePageOrientation, nameof(inputInfopathDataforcePageOrientation), required: false);
-            var __workflow_inputInfopathDatastartPage = inputInfopathDatastartPage == null ? null : WorkflowExpression.Compile(inputInfopathDatastartPage);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatastartPage, nameof(inputInfopathDatastartPage), required: false);
-            var __workflow_inputInfopathDataendPage = inputInfopathDataendPage == null ? null : WorkflowExpression.Compile(inputInfopathDataendPage);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataendPage, nameof(inputInfopathDataendPage), required: false);
-            var __workflow_inputInfopathDataconversionQuality = inputInfopathDataconversionQuality == null ? null : WorkflowExpression.Compile(inputInfopathDataconversionQuality);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataconversionQuality, nameof(inputInfopathDataconversionQuality), required: false);
-            var __workflow_inputInfopathDataoverrideSettings = inputInfopathDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputInfopathDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputInfopathDataoverrideSettings, nameof(inputInfopathDataoverrideSettings), required: false);
-            var __workflow_inputInfopathDatafailOnError = inputInfopathDatafailOnError == null ? null : WorkflowExpression.Compile(inputInfopathDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputInfopathDatafailOnError, nameof(inputInfopathDatafailOnError), required: false);
+            var __workflow_inputInfopathDatasourceFileName = WorkflowExpression.Compile(inputInfopathDatasourceFileName, nameof(inputInfopathDatasourceFileName), required: true);
+            var __workflow_inputInfopathDatasourceFileContent = WorkflowExpression.Compile(inputInfopathDatasourceFileContent, nameof(inputInfopathDatasourceFileContent), required: true);
+            var __workflow_inputInfopathDataoutputFormat = WorkflowExpression.Compile(inputInfopathDataoutputFormat, nameof(inputInfopathDataoutputFormat), required: true);
+            var __workflow_inputInfopathDatatemplateFileContent = WorkflowExpression.Compile(inputInfopathDatatemplateFileContent, nameof(inputInfopathDatatemplateFileContent), required: false);
+            var __workflow_inputInfopathDataviewNames = WorkflowExpression.Compile(inputInfopathDataviewNames, nameof(inputInfopathDataviewNames), required: false);
+            var __workflow_inputInfopathDataincludeAttachment = WorkflowExpression.Compile(inputInfopathDataincludeAttachment, nameof(inputInfopathDataincludeAttachment), required: false);
+            var __workflow_inputInfopathDataattachmentAction = WorkflowExpression.Compile(inputInfopathDataattachmentAction, nameof(inputInfopathDataattachmentAction), required: false);
+            var __workflow_inputInfopathDataunsupportedAttachmentAction = WorkflowExpression.Compile(inputInfopathDataunsupportedAttachmentAction, nameof(inputInfopathDataunsupportedAttachmentAction), required: false);
+            var __workflow_inputInfopathDatabreakMergeOnError = WorkflowExpression.Compile(inputInfopathDatabreakMergeOnError, nameof(inputInfopathDatabreakMergeOnError), required: false);
+            var __workflow_inputInfopathDataincludeAttachmentFilter = WorkflowExpression.Compile(inputInfopathDataincludeAttachmentFilter, nameof(inputInfopathDataincludeAttachmentFilter), required: false);
+            var __workflow_inputInfopathDataexcludeAttachmentFilter = WorkflowExpression.Compile(inputInfopathDataexcludeAttachmentFilter, nameof(inputInfopathDataexcludeAttachmentFilter), required: false);
+            var __workflow_inputInfopathDatadefaultPaperSize = WorkflowExpression.Compile(inputInfopathDatadefaultPaperSize, nameof(inputInfopathDatadefaultPaperSize), required: false);
+            var __workflow_inputInfopathDatadefaultPaperSizeCustom = WorkflowExpression.Compile(inputInfopathDatadefaultPaperSizeCustom, nameof(inputInfopathDatadefaultPaperSizeCustom), required: false);
+            var __workflow_inputInfopathDataforcePaperSize = WorkflowExpression.Compile(inputInfopathDataforcePaperSize, nameof(inputInfopathDataforcePaperSize), required: false);
+            var __workflow_inputInfopathDataforcePaperSizeCustom = WorkflowExpression.Compile(inputInfopathDataforcePaperSizeCustom, nameof(inputInfopathDataforcePaperSizeCustom), required: false);
+            var __workflow_inputInfopathDatadefaultPageOrientation = WorkflowExpression.Compile(inputInfopathDatadefaultPageOrientation, nameof(inputInfopathDatadefaultPageOrientation), required: false);
+            var __workflow_inputInfopathDataforcePageOrientation = WorkflowExpression.Compile(inputInfopathDataforcePageOrientation, nameof(inputInfopathDataforcePageOrientation), required: false);
+            var __workflow_inputInfopathDatastartPage = WorkflowExpression.Compile(inputInfopathDatastartPage, nameof(inputInfopathDatastartPage), required: false);
+            var __workflow_inputInfopathDataendPage = WorkflowExpression.Compile(inputInfopathDataendPage, nameof(inputInfopathDataendPage), required: false);
+            var __workflow_inputInfopathDataconversionQuality = WorkflowExpression.Compile(inputInfopathDataconversionQuality, nameof(inputInfopathDataconversionQuality), required: false);
+            var __workflow_inputInfopathDataoverrideSettings = WorkflowExpression.Compile(inputInfopathDataoverrideSettings, nameof(inputInfopathDataoverrideSettings), required: false);
+            var __workflow_inputInfopathDatafailOnError = WorkflowExpression.Compile(inputInfopathDatafailOnError, nameof(inputInfopathDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_infopath";
@@ -1615,16 +1500,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertPdfa(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<inputPdfDatapDFProfileInput>> inputPdfDatapDFProfile, Expression<Func<string>> inputPdfDataoverrideSettings = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
         {
-            var __workflow_inputPdfDatasourceFileName = inputPdfDatasourceFileName == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            var __workflow_inputPdfDatasourceFileContent = inputPdfDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            var __workflow_inputPdfDatapDFProfile = inputPdfDatapDFProfile == null ? null : WorkflowExpression.Compile(inputPdfDatapDFProfile);
-            WorkflowExpression.Validate(__workflow_inputPdfDatapDFProfile, nameof(inputPdfDatapDFProfile), required: true);
-            var __workflow_inputPdfDataoverrideSettings = inputPdfDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputPdfDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
-            var __workflow_inputPdfDatafailOnError = inputPdfDatafailOnError == null ? null : WorkflowExpression.Compile(inputPdfDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            var __workflow_inputPdfDatasourceFileName = WorkflowExpression.Compile(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            var __workflow_inputPdfDatasourceFileContent = WorkflowExpression.Compile(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            var __workflow_inputPdfDatapDFProfile = WorkflowExpression.Compile(inputPdfDatapDFProfile, nameof(inputPdfDatapDFProfile), required: true);
+            var __workflow_inputPdfDataoverrideSettings = WorkflowExpression.Compile(inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
+            var __workflow_inputPdfDatafailOnError = WorkflowExpression.Compile(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_pdfa";
@@ -1684,28 +1564,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertPowerpoint(Expression<Func<string>> inputPowerpointDatasourceFileName, Expression<Func<string>> inputPowerpointDatasourceFileContent, Expression<Func<inputPowerpointDataoutputFormatInput>> inputPowerpointDataoutputFormat, Expression<Func<inputPowerpointDatarangeInput>> inputPowerpointDatarange = null, Expression<Func<inputPowerpointDataprintLayoutHandoutsInput>> inputPowerpointDataprintLayoutHandouts = null, Expression<Func<bool>> inputPowerpointDataframeSlides = null, Expression<Func<int>> inputPowerpointDatastartPage = null, Expression<Func<int>> inputPowerpointDataendPage = null, Expression<Func<inputPowerpointDataqualityInput>> inputPowerpointDataquality = null, Expression<Func<string>> inputPowerpointDataoverrideSettings = null, Expression<Func<bool>> inputPowerpointDatafailOnError = null)
         {
-            var __workflow_inputPowerpointDatasourceFileName = inputPowerpointDatasourceFileName == null ? null : WorkflowExpression.Compile(inputPowerpointDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDatasourceFileName, nameof(inputPowerpointDatasourceFileName), required: true);
-            var __workflow_inputPowerpointDatasourceFileContent = inputPowerpointDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputPowerpointDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDatasourceFileContent, nameof(inputPowerpointDatasourceFileContent), required: true);
-            var __workflow_inputPowerpointDataoutputFormat = inputPowerpointDataoutputFormat == null ? null : WorkflowExpression.Compile(inputPowerpointDataoutputFormat);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDataoutputFormat, nameof(inputPowerpointDataoutputFormat), required: true);
-            var __workflow_inputPowerpointDatarange = inputPowerpointDatarange == null ? null : WorkflowExpression.Compile(inputPowerpointDatarange);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDatarange, nameof(inputPowerpointDatarange), required: false);
-            var __workflow_inputPowerpointDataprintLayoutHandouts = inputPowerpointDataprintLayoutHandouts == null ? null : WorkflowExpression.Compile(inputPowerpointDataprintLayoutHandouts);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDataprintLayoutHandouts, nameof(inputPowerpointDataprintLayoutHandouts), required: false);
-            var __workflow_inputPowerpointDataframeSlides = inputPowerpointDataframeSlides == null ? null : WorkflowExpression.Compile(inputPowerpointDataframeSlides);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDataframeSlides, nameof(inputPowerpointDataframeSlides), required: false);
-            var __workflow_inputPowerpointDatastartPage = inputPowerpointDatastartPage == null ? null : WorkflowExpression.Compile(inputPowerpointDatastartPage);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDatastartPage, nameof(inputPowerpointDatastartPage), required: false);
-            var __workflow_inputPowerpointDataendPage = inputPowerpointDataendPage == null ? null : WorkflowExpression.Compile(inputPowerpointDataendPage);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDataendPage, nameof(inputPowerpointDataendPage), required: false);
-            var __workflow_inputPowerpointDataquality = inputPowerpointDataquality == null ? null : WorkflowExpression.Compile(inputPowerpointDataquality);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDataquality, nameof(inputPowerpointDataquality), required: false);
-            var __workflow_inputPowerpointDataoverrideSettings = inputPowerpointDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputPowerpointDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDataoverrideSettings, nameof(inputPowerpointDataoverrideSettings), required: false);
-            var __workflow_inputPowerpointDatafailOnError = inputPowerpointDatafailOnError == null ? null : WorkflowExpression.Compile(inputPowerpointDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputPowerpointDatafailOnError, nameof(inputPowerpointDatafailOnError), required: false);
+            var __workflow_inputPowerpointDatasourceFileName = WorkflowExpression.Compile(inputPowerpointDatasourceFileName, nameof(inputPowerpointDatasourceFileName), required: true);
+            var __workflow_inputPowerpointDatasourceFileContent = WorkflowExpression.Compile(inputPowerpointDatasourceFileContent, nameof(inputPowerpointDatasourceFileContent), required: true);
+            var __workflow_inputPowerpointDataoutputFormat = WorkflowExpression.Compile(inputPowerpointDataoutputFormat, nameof(inputPowerpointDataoutputFormat), required: true);
+            var __workflow_inputPowerpointDatarange = WorkflowExpression.Compile(inputPowerpointDatarange, nameof(inputPowerpointDatarange), required: false);
+            var __workflow_inputPowerpointDataprintLayoutHandouts = WorkflowExpression.Compile(inputPowerpointDataprintLayoutHandouts, nameof(inputPowerpointDataprintLayoutHandouts), required: false);
+            var __workflow_inputPowerpointDataframeSlides = WorkflowExpression.Compile(inputPowerpointDataframeSlides, nameof(inputPowerpointDataframeSlides), required: false);
+            var __workflow_inputPowerpointDatastartPage = WorkflowExpression.Compile(inputPowerpointDatastartPage, nameof(inputPowerpointDatastartPage), required: false);
+            var __workflow_inputPowerpointDataendPage = WorkflowExpression.Compile(inputPowerpointDataendPage, nameof(inputPowerpointDataendPage), required: false);
+            var __workflow_inputPowerpointDataquality = WorkflowExpression.Compile(inputPowerpointDataquality, nameof(inputPowerpointDataquality), required: false);
+            var __workflow_inputPowerpointDataoverrideSettings = WorkflowExpression.Compile(inputPowerpointDataoverrideSettings, nameof(inputPowerpointDataoverrideSettings), required: false);
+            var __workflow_inputPowerpointDatafailOnError = WorkflowExpression.Compile(inputPowerpointDatafailOnError, nameof(inputPowerpointDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_powerpoint";
@@ -1821,24 +1690,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertVisio(Expression<Func<string>> inputVisioDatasourceFileName, Expression<Func<string>> inputVisioDatasourceFileContent, Expression<Func<inputVisioDataoutputFormatInput>> inputVisioDataoutputFormat, Expression<Func<inputVisioDatarangeInput>> inputVisioDatarange = null, Expression<Func<int>> inputVisioDatastartPage = null, Expression<Func<int>> inputVisioDataendPage = null, Expression<Func<inputVisioDataqualityInput>> inputVisioDataquality = null, Expression<Func<string>> inputVisioDataoverrideSettings = null, Expression<Func<bool>> inputVisioDatafailOnError = null)
         {
-            var __workflow_inputVisioDatasourceFileName = inputVisioDatasourceFileName == null ? null : WorkflowExpression.Compile(inputVisioDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputVisioDatasourceFileName, nameof(inputVisioDatasourceFileName), required: true);
-            var __workflow_inputVisioDatasourceFileContent = inputVisioDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputVisioDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputVisioDatasourceFileContent, nameof(inputVisioDatasourceFileContent), required: true);
-            var __workflow_inputVisioDataoutputFormat = inputVisioDataoutputFormat == null ? null : WorkflowExpression.Compile(inputVisioDataoutputFormat);
-            WorkflowExpression.Validate(__workflow_inputVisioDataoutputFormat, nameof(inputVisioDataoutputFormat), required: true);
-            var __workflow_inputVisioDatarange = inputVisioDatarange == null ? null : WorkflowExpression.Compile(inputVisioDatarange);
-            WorkflowExpression.Validate(__workflow_inputVisioDatarange, nameof(inputVisioDatarange), required: false);
-            var __workflow_inputVisioDatastartPage = inputVisioDatastartPage == null ? null : WorkflowExpression.Compile(inputVisioDatastartPage);
-            WorkflowExpression.Validate(__workflow_inputVisioDatastartPage, nameof(inputVisioDatastartPage), required: false);
-            var __workflow_inputVisioDataendPage = inputVisioDataendPage == null ? null : WorkflowExpression.Compile(inputVisioDataendPage);
-            WorkflowExpression.Validate(__workflow_inputVisioDataendPage, nameof(inputVisioDataendPage), required: false);
-            var __workflow_inputVisioDataquality = inputVisioDataquality == null ? null : WorkflowExpression.Compile(inputVisioDataquality);
-            WorkflowExpression.Validate(__workflow_inputVisioDataquality, nameof(inputVisioDataquality), required: false);
-            var __workflow_inputVisioDataoverrideSettings = inputVisioDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputVisioDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputVisioDataoverrideSettings, nameof(inputVisioDataoverrideSettings), required: false);
-            var __workflow_inputVisioDatafailOnError = inputVisioDatafailOnError == null ? null : WorkflowExpression.Compile(inputVisioDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputVisioDatafailOnError, nameof(inputVisioDatafailOnError), required: false);
+            var __workflow_inputVisioDatasourceFileName = WorkflowExpression.Compile(inputVisioDatasourceFileName, nameof(inputVisioDatasourceFileName), required: true);
+            var __workflow_inputVisioDatasourceFileContent = WorkflowExpression.Compile(inputVisioDatasourceFileContent, nameof(inputVisioDatasourceFileContent), required: true);
+            var __workflow_inputVisioDataoutputFormat = WorkflowExpression.Compile(inputVisioDataoutputFormat, nameof(inputVisioDataoutputFormat), required: true);
+            var __workflow_inputVisioDatarange = WorkflowExpression.Compile(inputVisioDatarange, nameof(inputVisioDatarange), required: false);
+            var __workflow_inputVisioDatastartPage = WorkflowExpression.Compile(inputVisioDatastartPage, nameof(inputVisioDatastartPage), required: false);
+            var __workflow_inputVisioDataendPage = WorkflowExpression.Compile(inputVisioDataendPage, nameof(inputVisioDataendPage), required: false);
+            var __workflow_inputVisioDataquality = WorkflowExpression.Compile(inputVisioDataquality, nameof(inputVisioDataquality), required: false);
+            var __workflow_inputVisioDataoverrideSettings = WorkflowExpression.Compile(inputVisioDataoverrideSettings, nameof(inputVisioDataoverrideSettings), required: false);
+            var __workflow_inputVisioDatafailOnError = WorkflowExpression.Compile(inputVisioDatafailOnError, nameof(inputVisioDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_visio";
@@ -1922,28 +1782,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ConvertWord(Expression<Func<string>> inputWordDatasourceFileName, Expression<Func<string>> inputWordDatasourceFileContent, Expression<Func<inputWordDataoutputFormatInput>> inputWordDataoutputFormat, Expression<Func<inputWordDatadisplayForReviewInput>> inputWordDatadisplayForReview = null, Expression<Func<inputWordDatareviewMarkupModeInput>> inputWordDatareviewMarkupMode = null, Expression<Func<inputWordDatagenerateBookmarksInput>> inputWordDatagenerateBookmarks = null, Expression<Func<int>> inputWordDatastartPage = null, Expression<Func<int>> inputWordDataendPage = null, Expression<Func<inputWordDataqualityInput>> inputWordDataquality = null, Expression<Func<string>> inputWordDataoverrideSettings = null, Expression<Func<bool>> inputWordDatafailOnError = null)
         {
-            var __workflow_inputWordDatasourceFileName = inputWordDatasourceFileName == null ? null : WorkflowExpression.Compile(inputWordDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputWordDatasourceFileName, nameof(inputWordDatasourceFileName), required: true);
-            var __workflow_inputWordDatasourceFileContent = inputWordDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputWordDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputWordDatasourceFileContent, nameof(inputWordDatasourceFileContent), required: true);
-            var __workflow_inputWordDataoutputFormat = inputWordDataoutputFormat == null ? null : WorkflowExpression.Compile(inputWordDataoutputFormat);
-            WorkflowExpression.Validate(__workflow_inputWordDataoutputFormat, nameof(inputWordDataoutputFormat), required: true);
-            var __workflow_inputWordDatadisplayForReview = inputWordDatadisplayForReview == null ? null : WorkflowExpression.Compile(inputWordDatadisplayForReview);
-            WorkflowExpression.Validate(__workflow_inputWordDatadisplayForReview, nameof(inputWordDatadisplayForReview), required: false);
-            var __workflow_inputWordDatareviewMarkupMode = inputWordDatareviewMarkupMode == null ? null : WorkflowExpression.Compile(inputWordDatareviewMarkupMode);
-            WorkflowExpression.Validate(__workflow_inputWordDatareviewMarkupMode, nameof(inputWordDatareviewMarkupMode), required: false);
-            var __workflow_inputWordDatagenerateBookmarks = inputWordDatagenerateBookmarks == null ? null : WorkflowExpression.Compile(inputWordDatagenerateBookmarks);
-            WorkflowExpression.Validate(__workflow_inputWordDatagenerateBookmarks, nameof(inputWordDatagenerateBookmarks), required: false);
-            var __workflow_inputWordDatastartPage = inputWordDatastartPage == null ? null : WorkflowExpression.Compile(inputWordDatastartPage);
-            WorkflowExpression.Validate(__workflow_inputWordDatastartPage, nameof(inputWordDatastartPage), required: false);
-            var __workflow_inputWordDataendPage = inputWordDataendPage == null ? null : WorkflowExpression.Compile(inputWordDataendPage);
-            WorkflowExpression.Validate(__workflow_inputWordDataendPage, nameof(inputWordDataendPage), required: false);
-            var __workflow_inputWordDataquality = inputWordDataquality == null ? null : WorkflowExpression.Compile(inputWordDataquality);
-            WorkflowExpression.Validate(__workflow_inputWordDataquality, nameof(inputWordDataquality), required: false);
-            var __workflow_inputWordDataoverrideSettings = inputWordDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputWordDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputWordDataoverrideSettings, nameof(inputWordDataoverrideSettings), required: false);
-            var __workflow_inputWordDatafailOnError = inputWordDatafailOnError == null ? null : WorkflowExpression.Compile(inputWordDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputWordDatafailOnError, nameof(inputWordDatafailOnError), required: false);
+            var __workflow_inputWordDatasourceFileName = WorkflowExpression.Compile(inputWordDatasourceFileName, nameof(inputWordDatasourceFileName), required: true);
+            var __workflow_inputWordDatasourceFileContent = WorkflowExpression.Compile(inputWordDatasourceFileContent, nameof(inputWordDatasourceFileContent), required: true);
+            var __workflow_inputWordDataoutputFormat = WorkflowExpression.Compile(inputWordDataoutputFormat, nameof(inputWordDataoutputFormat), required: true);
+            var __workflow_inputWordDatadisplayForReview = WorkflowExpression.Compile(inputWordDatadisplayForReview, nameof(inputWordDatadisplayForReview), required: false);
+            var __workflow_inputWordDatareviewMarkupMode = WorkflowExpression.Compile(inputWordDatareviewMarkupMode, nameof(inputWordDatareviewMarkupMode), required: false);
+            var __workflow_inputWordDatagenerateBookmarks = WorkflowExpression.Compile(inputWordDatagenerateBookmarks, nameof(inputWordDatagenerateBookmarks), required: false);
+            var __workflow_inputWordDatastartPage = WorkflowExpression.Compile(inputWordDatastartPage, nameof(inputWordDatastartPage), required: false);
+            var __workflow_inputWordDataendPage = WorkflowExpression.Compile(inputWordDataendPage, nameof(inputWordDataendPage), required: false);
+            var __workflow_inputWordDataquality = WorkflowExpression.Compile(inputWordDataquality, nameof(inputWordDataquality), required: false);
+            var __workflow_inputWordDataoverrideSettings = WorkflowExpression.Compile(inputWordDataoverrideSettings, nameof(inputWordDataoverrideSettings), required: false);
+            var __workflow_inputWordDatafailOnError = WorkflowExpression.Compile(inputWordDatafailOnError, nameof(inputWordDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/convert_word";
@@ -2059,22 +1908,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponseCommon> CopyMetadata(Expression<Func<string>> inputDatasiteUrl, Expression<Func<string>> inputDatasourceFileUrl, Expression<Func<string>> inputDatadestinationFilePath, Expression<Func<string>> inputDatauserName = null, Expression<Func<string>> inputDatapassword = null, Expression<Func<string>> inputDatafieldsToCopy = null, Expression<Func<string>> inputDatadestinationContentType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasiteUrl = inputDatasiteUrl == null ? null : WorkflowExpression.Compile(inputDatasiteUrl);
-            WorkflowExpression.Validate(__workflow_inputDatasiteUrl, nameof(inputDatasiteUrl), required: true);
-            var __workflow_inputDatasourceFileUrl = inputDatasourceFileUrl == null ? null : WorkflowExpression.Compile(inputDatasourceFileUrl);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileUrl, nameof(inputDatasourceFileUrl), required: true);
-            var __workflow_inputDatadestinationFilePath = inputDatadestinationFilePath == null ? null : WorkflowExpression.Compile(inputDatadestinationFilePath);
-            WorkflowExpression.Validate(__workflow_inputDatadestinationFilePath, nameof(inputDatadestinationFilePath), required: true);
-            var __workflow_inputDatauserName = inputDatauserName == null ? null : WorkflowExpression.Compile(inputDatauserName);
-            WorkflowExpression.Validate(__workflow_inputDatauserName, nameof(inputDatauserName), required: false);
-            var __workflow_inputDatapassword = inputDatapassword == null ? null : WorkflowExpression.Compile(inputDatapassword);
-            WorkflowExpression.Validate(__workflow_inputDatapassword, nameof(inputDatapassword), required: false);
-            var __workflow_inputDatafieldsToCopy = inputDatafieldsToCopy == null ? null : WorkflowExpression.Compile(inputDatafieldsToCopy);
-            WorkflowExpression.Validate(__workflow_inputDatafieldsToCopy, nameof(inputDatafieldsToCopy), required: false);
-            var __workflow_inputDatadestinationContentType = inputDatadestinationContentType == null ? null : WorkflowExpression.Compile(inputDatadestinationContentType);
-            WorkflowExpression.Validate(__workflow_inputDatadestinationContentType, nameof(inputDatadestinationContentType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasiteUrl = WorkflowExpression.Compile(inputDatasiteUrl, nameof(inputDatasiteUrl), required: true);
+            var __workflow_inputDatasourceFileUrl = WorkflowExpression.Compile(inputDatasourceFileUrl, nameof(inputDatasourceFileUrl), required: true);
+            var __workflow_inputDatadestinationFilePath = WorkflowExpression.Compile(inputDatadestinationFilePath, nameof(inputDatadestinationFilePath), required: true);
+            var __workflow_inputDatauserName = WorkflowExpression.Compile(inputDatauserName, nameof(inputDatauserName), required: false);
+            var __workflow_inputDatapassword = WorkflowExpression.Compile(inputDatapassword, nameof(inputDatapassword), required: false);
+            var __workflow_inputDatafieldsToCopy = WorkflowExpression.Compile(inputDatafieldsToCopy, nameof(inputDatafieldsToCopy), required: false);
+            var __workflow_inputDatadestinationContentType = WorkflowExpression.Compile(inputDatadestinationContentType, nameof(inputDatadestinationContentType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponseCommon>(() =>
             {
                 var apiCallPath = "/v1/operations/copy_metadata";
@@ -2140,50 +1981,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> EllipseWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatafillColor = null, Expression<Func<string>> inputDatalineColor = null, Expression<Func<string>> inputDatalineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatafillColor = inputDatafillColor == null ? null : WorkflowExpression.Compile(inputDatafillColor);
-            WorkflowExpression.Validate(__workflow_inputDatafillColor, nameof(inputDatafillColor), required: false);
-            var __workflow_inputDatalineColor = inputDatalineColor == null ? null : WorkflowExpression.Compile(inputDatalineColor);
-            WorkflowExpression.Validate(__workflow_inputDatalineColor, nameof(inputDatalineColor), required: false);
-            var __workflow_inputDatalineWidth = inputDatalineWidth == null ? null : WorkflowExpression.Compile(inputDatalineWidth);
-            WorkflowExpression.Validate(__workflow_inputDatalineWidth, nameof(inputDatalineWidth), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatafillColor = WorkflowExpression.Compile(inputDatafillColor, nameof(inputDatafillColor), required: false);
+            var __workflow_inputDatalineColor = WorkflowExpression.Compile(inputDatalineColor, nameof(inputDatalineColor), required: false);
+            var __workflow_inputDatalineWidth = WorkflowExpression.Compile(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/ellipse_watermark";
@@ -2379,14 +2198,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ExportFormData(Expression<Func<string>> inputFromPdfDatasourceFileName, Expression<Func<string>> inputFromPdfDatasourceFileContent, Expression<Func<inputFromPdfDataoutputDataFormatInput>> inputFromPdfDataoutputDataFormat, Expression<Func<bool>> inputFromPdfDatafailOnError = null)
         {
-            var __workflow_inputFromPdfDatasourceFileName = inputFromPdfDatasourceFileName == null ? null : WorkflowExpression.Compile(inputFromPdfDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputFromPdfDatasourceFileName, nameof(inputFromPdfDatasourceFileName), required: true);
-            var __workflow_inputFromPdfDatasourceFileContent = inputFromPdfDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputFromPdfDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputFromPdfDatasourceFileContent, nameof(inputFromPdfDatasourceFileContent), required: true);
-            var __workflow_inputFromPdfDataoutputDataFormat = inputFromPdfDataoutputDataFormat == null ? null : WorkflowExpression.Compile(inputFromPdfDataoutputDataFormat);
-            WorkflowExpression.Validate(__workflow_inputFromPdfDataoutputDataFormat, nameof(inputFromPdfDataoutputDataFormat), required: true);
-            var __workflow_inputFromPdfDatafailOnError = inputFromPdfDatafailOnError == null ? null : WorkflowExpression.Compile(inputFromPdfDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputFromPdfDatafailOnError, nameof(inputFromPdfDatafailOnError), required: false);
+            var __workflow_inputFromPdfDatasourceFileName = WorkflowExpression.Compile(inputFromPdfDatasourceFileName, nameof(inputFromPdfDatasourceFileName), required: true);
+            var __workflow_inputFromPdfDatasourceFileContent = WorkflowExpression.Compile(inputFromPdfDatasourceFileContent, nameof(inputFromPdfDatasourceFileContent), required: true);
+            var __workflow_inputFromPdfDataoutputDataFormat = WorkflowExpression.Compile(inputFromPdfDataoutputDataFormat, nameof(inputFromPdfDataoutputDataFormat), required: true);
+            var __workflow_inputFromPdfDatafailOnError = WorkflowExpression.Compile(inputFromPdfDatafailOnError, nameof(inputFromPdfDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/export_form_data";
@@ -2440,14 +2255,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ExtractText(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<string>> inputPdfDatapageRange = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
         {
-            var __workflow_inputPdfDatasourceFileName = inputPdfDatasourceFileName == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            var __workflow_inputPdfDatasourceFileContent = inputPdfDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            var __workflow_inputPdfDatapageRange = inputPdfDatapageRange == null ? null : WorkflowExpression.Compile(inputPdfDatapageRange);
-            WorkflowExpression.Validate(__workflow_inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
-            var __workflow_inputPdfDatafailOnError = inputPdfDatafailOnError == null ? null : WorkflowExpression.Compile(inputPdfDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            var __workflow_inputPdfDatasourceFileName = WorkflowExpression.Compile(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            var __workflow_inputPdfDatasourceFileContent = WorkflowExpression.Compile(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            var __workflow_inputPdfDatapageRange = WorkflowExpression.Compile(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
+            var __workflow_inputPdfDatafailOnError = WorkflowExpression.Compile(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/extract_text";
@@ -2513,52 +2324,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ImageWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDataimage, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkOutlineColor = null, Expression<Func<string>> inputDatawatermarkOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDataimage = inputDataimage == null ? null : WorkflowExpression.Compile(inputDataimage);
-            WorkflowExpression.Validate(__workflow_inputDataimage, nameof(inputDataimage), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatawatermarkBackgroundColor = inputDatawatermarkBackgroundColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkBackgroundColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            var __workflow_inputDatawatermarkOutlineColor = inputDatawatermarkOutlineColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkOutlineColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            var __workflow_inputDatawatermarkOutlineWidth = inputDatawatermarkOutlineWidth == null ? null : WorkflowExpression.Compile(inputDatawatermarkOutlineWidth);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDataimage = WorkflowExpression.Compile(inputDataimage, nameof(inputDataimage), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatawatermarkBackgroundColor = WorkflowExpression.Compile(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            var __workflow_inputDatawatermarkOutlineColor = WorkflowExpression.Compile(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
+            var __workflow_inputDatawatermarkOutlineWidth = WorkflowExpression.Compile(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/image_watermark";
@@ -2756,28 +2544,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ImportFormData(Expression<Func<string>> inputXmlDatasourceFileName, Expression<Func<string>> inputXmlDatasourceFileContent, Expression<Func<string>> inputXmlDatapDFFormFileContent = null, Expression<Func<string>> inputXmlDatapDFFormURL = null, Expression<Func<string>> inputXmlDatausername = null, Expression<Func<string>> inputXmlDatadomain = null, Expression<Func<string>> inputXmlDatapassword = null, Expression<Func<inputXmlDataflattenInput>> inputXmlDataflatten = null, Expression<Func<inputXmlDatareadOnlyInput>> inputXmlDatareadOnly = null, Expression<Func<string>> inputXmlDataoverrideSettings = null, Expression<Func<bool>> inputXmlDatafailOnError = null)
         {
-            var __workflow_inputXmlDatasourceFileName = inputXmlDatasourceFileName == null ? null : WorkflowExpression.Compile(inputXmlDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputXmlDatasourceFileName, nameof(inputXmlDatasourceFileName), required: true);
-            var __workflow_inputXmlDatasourceFileContent = inputXmlDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputXmlDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputXmlDatasourceFileContent, nameof(inputXmlDatasourceFileContent), required: true);
-            var __workflow_inputXmlDatapDFFormFileContent = inputXmlDatapDFFormFileContent == null ? null : WorkflowExpression.Compile(inputXmlDatapDFFormFileContent);
-            WorkflowExpression.Validate(__workflow_inputXmlDatapDFFormFileContent, nameof(inputXmlDatapDFFormFileContent), required: false);
-            var __workflow_inputXmlDatapDFFormURL = inputXmlDatapDFFormURL == null ? null : WorkflowExpression.Compile(inputXmlDatapDFFormURL);
-            WorkflowExpression.Validate(__workflow_inputXmlDatapDFFormURL, nameof(inputXmlDatapDFFormURL), required: false);
-            var __workflow_inputXmlDatausername = inputXmlDatausername == null ? null : WorkflowExpression.Compile(inputXmlDatausername);
-            WorkflowExpression.Validate(__workflow_inputXmlDatausername, nameof(inputXmlDatausername), required: false);
-            var __workflow_inputXmlDatadomain = inputXmlDatadomain == null ? null : WorkflowExpression.Compile(inputXmlDatadomain);
-            WorkflowExpression.Validate(__workflow_inputXmlDatadomain, nameof(inputXmlDatadomain), required: false);
-            var __workflow_inputXmlDatapassword = inputXmlDatapassword == null ? null : WorkflowExpression.Compile(inputXmlDatapassword);
-            WorkflowExpression.Validate(__workflow_inputXmlDatapassword, nameof(inputXmlDatapassword), required: false);
-            var __workflow_inputXmlDataflatten = inputXmlDataflatten == null ? null : WorkflowExpression.Compile(inputXmlDataflatten);
-            WorkflowExpression.Validate(__workflow_inputXmlDataflatten, nameof(inputXmlDataflatten), required: false);
-            var __workflow_inputXmlDatareadOnly = inputXmlDatareadOnly == null ? null : WorkflowExpression.Compile(inputXmlDatareadOnly);
-            WorkflowExpression.Validate(__workflow_inputXmlDatareadOnly, nameof(inputXmlDatareadOnly), required: false);
-            var __workflow_inputXmlDataoverrideSettings = inputXmlDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputXmlDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputXmlDataoverrideSettings, nameof(inputXmlDataoverrideSettings), required: false);
-            var __workflow_inputXmlDatafailOnError = inputXmlDatafailOnError == null ? null : WorkflowExpression.Compile(inputXmlDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputXmlDatafailOnError, nameof(inputXmlDatafailOnError), required: false);
+            var __workflow_inputXmlDatasourceFileName = WorkflowExpression.Compile(inputXmlDatasourceFileName, nameof(inputXmlDatasourceFileName), required: true);
+            var __workflow_inputXmlDatasourceFileContent = WorkflowExpression.Compile(inputXmlDatasourceFileContent, nameof(inputXmlDatasourceFileContent), required: true);
+            var __workflow_inputXmlDatapDFFormFileContent = WorkflowExpression.Compile(inputXmlDatapDFFormFileContent, nameof(inputXmlDatapDFFormFileContent), required: false);
+            var __workflow_inputXmlDatapDFFormURL = WorkflowExpression.Compile(inputXmlDatapDFFormURL, nameof(inputXmlDatapDFFormURL), required: false);
+            var __workflow_inputXmlDatausername = WorkflowExpression.Compile(inputXmlDatausername, nameof(inputXmlDatausername), required: false);
+            var __workflow_inputXmlDatadomain = WorkflowExpression.Compile(inputXmlDatadomain, nameof(inputXmlDatadomain), required: false);
+            var __workflow_inputXmlDatapassword = WorkflowExpression.Compile(inputXmlDatapassword, nameof(inputXmlDatapassword), required: false);
+            var __workflow_inputXmlDataflatten = WorkflowExpression.Compile(inputXmlDataflatten, nameof(inputXmlDataflatten), required: false);
+            var __workflow_inputXmlDatareadOnly = WorkflowExpression.Compile(inputXmlDatareadOnly, nameof(inputXmlDatareadOnly), required: false);
+            var __workflow_inputXmlDataoverrideSettings = WorkflowExpression.Compile(inputXmlDataoverrideSettings, nameof(inputXmlDataoverrideSettings), required: false);
+            var __workflow_inputXmlDatafailOnError = WorkflowExpression.Compile(inputXmlDatafailOnError, nameof(inputXmlDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/import_form_data";
@@ -2897,38 +2674,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> ExtractKeyValuePairs(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<string>> inputPdfDataoCRLanguage = null, Expression<Func<inputPdfDatadPIInput>> inputPdfDatadPI = null, Expression<Func<inputPdfDatakVPOutputFormatInput>> inputPdfDatakVPOutputFormat = null, Expression<Func<string>> inputPdfDatapageRange = null, Expression<Func<inputPdfDataautorotateInput>> inputPdfDataautorotate = null, Expression<Func<inputPdfDatatrimSymbolsInput>> inputPdfDatatrimSymbols = null, Expression<Func<inputPdfDataincludeKeyBoundingBoxInput>> inputPdfDataincludeKeyBoundingBox = null, Expression<Func<inputPdfDataincludeValueBoundingBoxInput>> inputPdfDataincludeValueBoundingBox = null, Expression<Func<inputPdfDataincludePageNumberInput>> inputPdfDataincludePageNumber = null, Expression<Func<inputPdfDataincludeConfidenceInput>> inputPdfDataincludeConfidence = null, Expression<Func<int>> inputPdfDataconfidenceThreshold = null, Expression<Func<inputPdfDataincludeTypeInput>> inputPdfDataincludeType = null, Expression<Func<string>> inputPdfDataexpectedKeys = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
         {
-            var __workflow_inputPdfDatasourceFileName = inputPdfDatasourceFileName == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
-            var __workflow_inputPdfDatasourceFileContent = inputPdfDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputPdfDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
-            var __workflow_inputPdfDataoCRLanguage = inputPdfDataoCRLanguage == null ? null : WorkflowExpression.Compile(inputPdfDataoCRLanguage);
-            WorkflowExpression.Validate(__workflow_inputPdfDataoCRLanguage, nameof(inputPdfDataoCRLanguage), required: false);
-            var __workflow_inputPdfDatadPI = inputPdfDatadPI == null ? null : WorkflowExpression.Compile(inputPdfDatadPI);
-            WorkflowExpression.Validate(__workflow_inputPdfDatadPI, nameof(inputPdfDatadPI), required: false);
-            var __workflow_inputPdfDatakVPOutputFormat = inputPdfDatakVPOutputFormat == null ? null : WorkflowExpression.Compile(inputPdfDatakVPOutputFormat);
-            WorkflowExpression.Validate(__workflow_inputPdfDatakVPOutputFormat, nameof(inputPdfDatakVPOutputFormat), required: false);
-            var __workflow_inputPdfDatapageRange = inputPdfDatapageRange == null ? null : WorkflowExpression.Compile(inputPdfDatapageRange);
-            WorkflowExpression.Validate(__workflow_inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
-            var __workflow_inputPdfDataautorotate = inputPdfDataautorotate == null ? null : WorkflowExpression.Compile(inputPdfDataautorotate);
-            WorkflowExpression.Validate(__workflow_inputPdfDataautorotate, nameof(inputPdfDataautorotate), required: false);
-            var __workflow_inputPdfDatatrimSymbols = inputPdfDatatrimSymbols == null ? null : WorkflowExpression.Compile(inputPdfDatatrimSymbols);
-            WorkflowExpression.Validate(__workflow_inputPdfDatatrimSymbols, nameof(inputPdfDatatrimSymbols), required: false);
-            var __workflow_inputPdfDataincludeKeyBoundingBox = inputPdfDataincludeKeyBoundingBox == null ? null : WorkflowExpression.Compile(inputPdfDataincludeKeyBoundingBox);
-            WorkflowExpression.Validate(__workflow_inputPdfDataincludeKeyBoundingBox, nameof(inputPdfDataincludeKeyBoundingBox), required: false);
-            var __workflow_inputPdfDataincludeValueBoundingBox = inputPdfDataincludeValueBoundingBox == null ? null : WorkflowExpression.Compile(inputPdfDataincludeValueBoundingBox);
-            WorkflowExpression.Validate(__workflow_inputPdfDataincludeValueBoundingBox, nameof(inputPdfDataincludeValueBoundingBox), required: false);
-            var __workflow_inputPdfDataincludePageNumber = inputPdfDataincludePageNumber == null ? null : WorkflowExpression.Compile(inputPdfDataincludePageNumber);
-            WorkflowExpression.Validate(__workflow_inputPdfDataincludePageNumber, nameof(inputPdfDataincludePageNumber), required: false);
-            var __workflow_inputPdfDataincludeConfidence = inputPdfDataincludeConfidence == null ? null : WorkflowExpression.Compile(inputPdfDataincludeConfidence);
-            WorkflowExpression.Validate(__workflow_inputPdfDataincludeConfidence, nameof(inputPdfDataincludeConfidence), required: false);
-            var __workflow_inputPdfDataconfidenceThreshold = inputPdfDataconfidenceThreshold == null ? null : WorkflowExpression.Compile(inputPdfDataconfidenceThreshold);
-            WorkflowExpression.Validate(__workflow_inputPdfDataconfidenceThreshold, nameof(inputPdfDataconfidenceThreshold), required: false);
-            var __workflow_inputPdfDataincludeType = inputPdfDataincludeType == null ? null : WorkflowExpression.Compile(inputPdfDataincludeType);
-            WorkflowExpression.Validate(__workflow_inputPdfDataincludeType, nameof(inputPdfDataincludeType), required: false);
-            var __workflow_inputPdfDataexpectedKeys = inputPdfDataexpectedKeys == null ? null : WorkflowExpression.Compile(inputPdfDataexpectedKeys);
-            WorkflowExpression.Validate(__workflow_inputPdfDataexpectedKeys, nameof(inputPdfDataexpectedKeys), required: false);
-            var __workflow_inputPdfDatafailOnError = inputPdfDatafailOnError == null ? null : WorkflowExpression.Compile(inputPdfDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            var __workflow_inputPdfDatasourceFileName = WorkflowExpression.Compile(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            var __workflow_inputPdfDatasourceFileContent = WorkflowExpression.Compile(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            var __workflow_inputPdfDataoCRLanguage = WorkflowExpression.Compile(inputPdfDataoCRLanguage, nameof(inputPdfDataoCRLanguage), required: false);
+            var __workflow_inputPdfDatadPI = WorkflowExpression.Compile(inputPdfDatadPI, nameof(inputPdfDatadPI), required: false);
+            var __workflow_inputPdfDatakVPOutputFormat = WorkflowExpression.Compile(inputPdfDatakVPOutputFormat, nameof(inputPdfDatakVPOutputFormat), required: false);
+            var __workflow_inputPdfDatapageRange = WorkflowExpression.Compile(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
+            var __workflow_inputPdfDataautorotate = WorkflowExpression.Compile(inputPdfDataautorotate, nameof(inputPdfDataautorotate), required: false);
+            var __workflow_inputPdfDatatrimSymbols = WorkflowExpression.Compile(inputPdfDatatrimSymbols, nameof(inputPdfDatatrimSymbols), required: false);
+            var __workflow_inputPdfDataincludeKeyBoundingBox = WorkflowExpression.Compile(inputPdfDataincludeKeyBoundingBox, nameof(inputPdfDataincludeKeyBoundingBox), required: false);
+            var __workflow_inputPdfDataincludeValueBoundingBox = WorkflowExpression.Compile(inputPdfDataincludeValueBoundingBox, nameof(inputPdfDataincludeValueBoundingBox), required: false);
+            var __workflow_inputPdfDataincludePageNumber = WorkflowExpression.Compile(inputPdfDataincludePageNumber, nameof(inputPdfDataincludePageNumber), required: false);
+            var __workflow_inputPdfDataincludeConfidence = WorkflowExpression.Compile(inputPdfDataincludeConfidence, nameof(inputPdfDataincludeConfidence), required: false);
+            var __workflow_inputPdfDataconfidenceThreshold = WorkflowExpression.Compile(inputPdfDataconfidenceThreshold, nameof(inputPdfDataconfidenceThreshold), required: false);
+            var __workflow_inputPdfDataincludeType = WorkflowExpression.Compile(inputPdfDataincludeType, nameof(inputPdfDataincludeType), required: false);
+            var __workflow_inputPdfDataexpectedKeys = WorkflowExpression.Compile(inputPdfDataexpectedKeys, nameof(inputPdfDataexpectedKeys), required: false);
+            var __workflow_inputPdfDatafailOnError = WorkflowExpression.Compile(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/key_value_pairs";
@@ -3176,48 +2937,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> LineWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDataxCoordinateStart, Expression<Func<string>> inputDatayCoordinateStart, Expression<Func<string>> inputDataxCoordinateEnd, Expression<Func<string>> inputDatayCoordinateEnd, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatalineColor = null, Expression<Func<string>> inputDatalineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDataxCoordinateStart = inputDataxCoordinateStart == null ? null : WorkflowExpression.Compile(inputDataxCoordinateStart);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinateStart, nameof(inputDataxCoordinateStart), required: true);
-            var __workflow_inputDatayCoordinateStart = inputDatayCoordinateStart == null ? null : WorkflowExpression.Compile(inputDatayCoordinateStart);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinateStart, nameof(inputDatayCoordinateStart), required: true);
-            var __workflow_inputDataxCoordinateEnd = inputDataxCoordinateEnd == null ? null : WorkflowExpression.Compile(inputDataxCoordinateEnd);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinateEnd, nameof(inputDataxCoordinateEnd), required: true);
-            var __workflow_inputDatayCoordinateEnd = inputDatayCoordinateEnd == null ? null : WorkflowExpression.Compile(inputDatayCoordinateEnd);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinateEnd, nameof(inputDatayCoordinateEnd), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatalineColor = inputDatalineColor == null ? null : WorkflowExpression.Compile(inputDatalineColor);
-            WorkflowExpression.Validate(__workflow_inputDatalineColor, nameof(inputDatalineColor), required: false);
-            var __workflow_inputDatalineWidth = inputDatalineWidth == null ? null : WorkflowExpression.Compile(inputDatalineWidth);
-            WorkflowExpression.Validate(__workflow_inputDatalineWidth, nameof(inputDatalineWidth), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDataxCoordinateStart = WorkflowExpression.Compile(inputDataxCoordinateStart, nameof(inputDataxCoordinateStart), required: true);
+            var __workflow_inputDatayCoordinateStart = WorkflowExpression.Compile(inputDatayCoordinateStart, nameof(inputDatayCoordinateStart), required: true);
+            var __workflow_inputDataxCoordinateEnd = WorkflowExpression.Compile(inputDataxCoordinateEnd, nameof(inputDataxCoordinateEnd), required: true);
+            var __workflow_inputDatayCoordinateEnd = WorkflowExpression.Compile(inputDatayCoordinateEnd, nameof(inputDatayCoordinateEnd), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatalineColor = WorkflowExpression.Compile(inputDatalineColor, nameof(inputDatalineColor), required: false);
+            var __workflow_inputDatalineWidth = WorkflowExpression.Compile(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/line_watermark";
@@ -3399,68 +3139,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> LinearBarcodeWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatabarcodeContent, Expression<Func<inputDatabarcodeTypeInput>> inputDatabarcodeType, Expression<Func<inputDatadisableCheckDigitInput>> inputDatadisableCheckDigit, Expression<Func<inputDatashowCheckDigitInput>> inputDatashowCheckDigit, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<inputDataomitEncodingOfStartStopSymbolsInput>> inputDataomitEncodingOfStartStopSymbols = null, Expression<Func<string>> inputDatamargin = null, Expression<Func<string>> inputDatafontFamily = null, Expression<Func<string>> inputDatafontSize = null, Expression<Func<string>> inputDatafontStyle = null, Expression<Func<inputDatalabelPlacementInput>> inputDatalabelPlacement = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatabarcodeBackgroundColor = null, Expression<Func<string>> inputDatabarcodeBarColor = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatabarcodeContent = inputDatabarcodeContent == null ? null : WorkflowExpression.Compile(inputDatabarcodeContent);
-            WorkflowExpression.Validate(__workflow_inputDatabarcodeContent, nameof(inputDatabarcodeContent), required: true);
-            var __workflow_inputDatabarcodeType = inputDatabarcodeType == null ? null : WorkflowExpression.Compile(inputDatabarcodeType);
-            WorkflowExpression.Validate(__workflow_inputDatabarcodeType, nameof(inputDatabarcodeType), required: true);
-            var __workflow_inputDatadisableCheckDigit = inputDatadisableCheckDigit == null ? null : WorkflowExpression.Compile(inputDatadisableCheckDigit);
-            WorkflowExpression.Validate(__workflow_inputDatadisableCheckDigit, nameof(inputDatadisableCheckDigit), required: true);
-            var __workflow_inputDatashowCheckDigit = inputDatashowCheckDigit == null ? null : WorkflowExpression.Compile(inputDatashowCheckDigit);
-            WorkflowExpression.Validate(__workflow_inputDatashowCheckDigit, nameof(inputDatashowCheckDigit), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataomitEncodingOfStartStopSymbols = inputDataomitEncodingOfStartStopSymbols == null ? null : WorkflowExpression.Compile(inputDataomitEncodingOfStartStopSymbols);
-            WorkflowExpression.Validate(__workflow_inputDataomitEncodingOfStartStopSymbols, nameof(inputDataomitEncodingOfStartStopSymbols), required: false);
-            var __workflow_inputDatamargin = inputDatamargin == null ? null : WorkflowExpression.Compile(inputDatamargin);
-            WorkflowExpression.Validate(__workflow_inputDatamargin, nameof(inputDatamargin), required: false);
-            var __workflow_inputDatafontFamily = inputDatafontFamily == null ? null : WorkflowExpression.Compile(inputDatafontFamily);
-            WorkflowExpression.Validate(__workflow_inputDatafontFamily, nameof(inputDatafontFamily), required: false);
-            var __workflow_inputDatafontSize = inputDatafontSize == null ? null : WorkflowExpression.Compile(inputDatafontSize);
-            WorkflowExpression.Validate(__workflow_inputDatafontSize, nameof(inputDatafontSize), required: false);
-            var __workflow_inputDatafontStyle = inputDatafontStyle == null ? null : WorkflowExpression.Compile(inputDatafontStyle);
-            WorkflowExpression.Validate(__workflow_inputDatafontStyle, nameof(inputDatafontStyle), required: false);
-            var __workflow_inputDatalabelPlacement = inputDatalabelPlacement == null ? null : WorkflowExpression.Compile(inputDatalabelPlacement);
-            WorkflowExpression.Validate(__workflow_inputDatalabelPlacement, nameof(inputDatalabelPlacement), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatabarcodeBackgroundColor = inputDatabarcodeBackgroundColor == null ? null : WorkflowExpression.Compile(inputDatabarcodeBackgroundColor);
-            WorkflowExpression.Validate(__workflow_inputDatabarcodeBackgroundColor, nameof(inputDatabarcodeBackgroundColor), required: false);
-            var __workflow_inputDatabarcodeBarColor = inputDatabarcodeBarColor == null ? null : WorkflowExpression.Compile(inputDatabarcodeBarColor);
-            WorkflowExpression.Validate(__workflow_inputDatabarcodeBarColor, nameof(inputDatabarcodeBarColor), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatabarcodeContent = WorkflowExpression.Compile(inputDatabarcodeContent, nameof(inputDatabarcodeContent), required: true);
+            var __workflow_inputDatabarcodeType = WorkflowExpression.Compile(inputDatabarcodeType, nameof(inputDatabarcodeType), required: true);
+            var __workflow_inputDatadisableCheckDigit = WorkflowExpression.Compile(inputDatadisableCheckDigit, nameof(inputDatadisableCheckDigit), required: true);
+            var __workflow_inputDatashowCheckDigit = WorkflowExpression.Compile(inputDatashowCheckDigit, nameof(inputDatashowCheckDigit), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataomitEncodingOfStartStopSymbols = WorkflowExpression.Compile(inputDataomitEncodingOfStartStopSymbols, nameof(inputDataomitEncodingOfStartStopSymbols), required: false);
+            var __workflow_inputDatamargin = WorkflowExpression.Compile(inputDatamargin, nameof(inputDatamargin), required: false);
+            var __workflow_inputDatafontFamily = WorkflowExpression.Compile(inputDatafontFamily, nameof(inputDatafontFamily), required: false);
+            var __workflow_inputDatafontSize = WorkflowExpression.Compile(inputDatafontSize, nameof(inputDatafontSize), required: false);
+            var __workflow_inputDatafontStyle = WorkflowExpression.Compile(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
+            var __workflow_inputDatalabelPlacement = WorkflowExpression.Compile(inputDatalabelPlacement, nameof(inputDatalabelPlacement), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatabarcodeBackgroundColor = WorkflowExpression.Compile(inputDatabarcodeBackgroundColor, nameof(inputDatabarcodeBackgroundColor), required: false);
+            var __workflow_inputDatabarcodeBarColor = WorkflowExpression.Compile(inputDatabarcodeBarColor, nameof(inputDatabarcodeBarColor), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/linear_barcode_watermark";
@@ -3714,34 +3423,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> MergeToPdf(Expression<Func<string>> inputDatasourceFileName1 = null, Expression<Func<string>> inputDatasourceFileContent1 = null, Expression<Func<string>> inputDatasourceFileName2 = null, Expression<Func<string>> inputDatasourceFileContent2 = null, Expression<Func<string>> inputDatasourceFileName3 = null, Expression<Func<string>> inputDatasourceFileContent3 = null, Expression<Func<string>> inputDatasourceFileName4 = null, Expression<Func<string>> inputDatasourceFileContent4 = null, Expression<Func<string>> inputDatasourceFileName5 = null, Expression<Func<string>> inputDatasourceFileContent5 = null, Expression<Func<inputDataeachDocumentInput>> inputDataeachDocument = null, Expression<Func<MergeSourceFile[]>> inputDatasourceFiles = null, Expression<Func<string>> inputDataoverrideSettings = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileName1 = inputDatasourceFileName1 == null ? null : WorkflowExpression.Compile(inputDatasourceFileName1);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName1, nameof(inputDatasourceFileName1), required: false);
-            var __workflow_inputDatasourceFileContent1 = inputDatasourceFileContent1 == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent1);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent1, nameof(inputDatasourceFileContent1), required: false);
-            var __workflow_inputDatasourceFileName2 = inputDatasourceFileName2 == null ? null : WorkflowExpression.Compile(inputDatasourceFileName2);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName2, nameof(inputDatasourceFileName2), required: false);
-            var __workflow_inputDatasourceFileContent2 = inputDatasourceFileContent2 == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent2);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent2, nameof(inputDatasourceFileContent2), required: false);
-            var __workflow_inputDatasourceFileName3 = inputDatasourceFileName3 == null ? null : WorkflowExpression.Compile(inputDatasourceFileName3);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName3, nameof(inputDatasourceFileName3), required: false);
-            var __workflow_inputDatasourceFileContent3 = inputDatasourceFileContent3 == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent3);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent3, nameof(inputDatasourceFileContent3), required: false);
-            var __workflow_inputDatasourceFileName4 = inputDatasourceFileName4 == null ? null : WorkflowExpression.Compile(inputDatasourceFileName4);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName4, nameof(inputDatasourceFileName4), required: false);
-            var __workflow_inputDatasourceFileContent4 = inputDatasourceFileContent4 == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent4);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent4, nameof(inputDatasourceFileContent4), required: false);
-            var __workflow_inputDatasourceFileName5 = inputDatasourceFileName5 == null ? null : WorkflowExpression.Compile(inputDatasourceFileName5);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName5, nameof(inputDatasourceFileName5), required: false);
-            var __workflow_inputDatasourceFileContent5 = inputDatasourceFileContent5 == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent5);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent5, nameof(inputDatasourceFileContent5), required: false);
-            var __workflow_inputDataeachDocument = inputDataeachDocument == null ? null : WorkflowExpression.Compile(inputDataeachDocument);
-            WorkflowExpression.Validate(__workflow_inputDataeachDocument, nameof(inputDataeachDocument), required: false);
-            var __workflow_inputDatasourceFiles = inputDatasourceFiles == null ? null : WorkflowExpression.Compile(inputDatasourceFiles);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFiles, nameof(inputDatasourceFiles), required: false);
-            var __workflow_inputDataoverrideSettings = inputDataoverrideSettings == null ? null : WorkflowExpression.Compile(inputDataoverrideSettings);
-            WorkflowExpression.Validate(__workflow_inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileName1 = WorkflowExpression.Compile(inputDatasourceFileName1, nameof(inputDatasourceFileName1), required: false);
+            var __workflow_inputDatasourceFileContent1 = WorkflowExpression.Compile(inputDatasourceFileContent1, nameof(inputDatasourceFileContent1), required: false);
+            var __workflow_inputDatasourceFileName2 = WorkflowExpression.Compile(inputDatasourceFileName2, nameof(inputDatasourceFileName2), required: false);
+            var __workflow_inputDatasourceFileContent2 = WorkflowExpression.Compile(inputDatasourceFileContent2, nameof(inputDatasourceFileContent2), required: false);
+            var __workflow_inputDatasourceFileName3 = WorkflowExpression.Compile(inputDatasourceFileName3, nameof(inputDatasourceFileName3), required: false);
+            var __workflow_inputDatasourceFileContent3 = WorkflowExpression.Compile(inputDatasourceFileContent3, nameof(inputDatasourceFileContent3), required: false);
+            var __workflow_inputDatasourceFileName4 = WorkflowExpression.Compile(inputDatasourceFileName4, nameof(inputDatasourceFileName4), required: false);
+            var __workflow_inputDatasourceFileContent4 = WorkflowExpression.Compile(inputDatasourceFileContent4, nameof(inputDatasourceFileContent4), required: false);
+            var __workflow_inputDatasourceFileName5 = WorkflowExpression.Compile(inputDatasourceFileName5, nameof(inputDatasourceFileName5), required: false);
+            var __workflow_inputDatasourceFileContent5 = WorkflowExpression.Compile(inputDatasourceFileContent5, nameof(inputDatasourceFileContent5), required: false);
+            var __workflow_inputDataeachDocument = WorkflowExpression.Compile(inputDataeachDocument, nameof(inputDataeachDocument), required: false);
+            var __workflow_inputDatasourceFiles = WorkflowExpression.Compile(inputDatasourceFiles, nameof(inputDatasourceFiles), required: false);
+            var __workflow_inputDataoverrideSettings = WorkflowExpression.Compile(inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/merge_to_pdf";
@@ -3875,24 +3570,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> OcrPdf(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<string>> inputDataregions = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatalanguage = inputDatalanguage == null ? null : WorkflowExpression.Compile(inputDatalanguage);
-            WorkflowExpression.Validate(__workflow_inputDatalanguage, nameof(inputDatalanguage), required: false);
-            var __workflow_inputDataperformance = inputDataperformance == null ? null : WorkflowExpression.Compile(inputDataperformance);
-            WorkflowExpression.Validate(__workflow_inputDataperformance, nameof(inputDataperformance), required: false);
-            var __workflow_inputDatablacklistWhitelist = inputDatablacklistWhitelist == null ? null : WorkflowExpression.Compile(inputDatablacklistWhitelist);
-            WorkflowExpression.Validate(__workflow_inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
-            var __workflow_inputDatacharacters = inputDatacharacters == null ? null : WorkflowExpression.Compile(inputDatacharacters);
-            WorkflowExpression.Validate(__workflow_inputDatacharacters, nameof(inputDatacharacters), required: false);
-            var __workflow_inputDatausePagination = inputDatausePagination == null ? null : WorkflowExpression.Compile(inputDatausePagination);
-            WorkflowExpression.Validate(__workflow_inputDatausePagination, nameof(inputDatausePagination), required: false);
-            var __workflow_inputDataregions = inputDataregions == null ? null : WorkflowExpression.Compile(inputDataregions);
-            WorkflowExpression.Validate(__workflow_inputDataregions, nameof(inputDataregions), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatalanguage = WorkflowExpression.Compile(inputDatalanguage, nameof(inputDatalanguage), required: false);
+            var __workflow_inputDataperformance = WorkflowExpression.Compile(inputDataperformance, nameof(inputDataperformance), required: false);
+            var __workflow_inputDatablacklistWhitelist = WorkflowExpression.Compile(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
+            var __workflow_inputDatacharacters = WorkflowExpression.Compile(inputDatacharacters, nameof(inputDatacharacters), required: false);
+            var __workflow_inputDatausePagination = WorkflowExpression.Compile(inputDatausePagination, nameof(inputDatausePagination), required: false);
+            var __workflow_inputDataregions = WorkflowExpression.Compile(inputDataregions, nameof(inputDataregions), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/ocr_pdf";
@@ -4020,32 +3706,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OcrOperationResponse> OcrText(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<string>> inputDatawidth = null, Expression<Func<string>> inputDataheight = null, Expression<Func<string>> inputDatapageNumber = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatalanguage = inputDatalanguage == null ? null : WorkflowExpression.Compile(inputDatalanguage);
-            WorkflowExpression.Validate(__workflow_inputDatalanguage, nameof(inputDatalanguage), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: false);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: false);
-            var __workflow_inputDatapageNumber = inputDatapageNumber == null ? null : WorkflowExpression.Compile(inputDatapageNumber);
-            WorkflowExpression.Validate(__workflow_inputDatapageNumber, nameof(inputDatapageNumber), required: false);
-            var __workflow_inputDataperformance = inputDataperformance == null ? null : WorkflowExpression.Compile(inputDataperformance);
-            WorkflowExpression.Validate(__workflow_inputDataperformance, nameof(inputDataperformance), required: false);
-            var __workflow_inputDatablacklistWhitelist = inputDatablacklistWhitelist == null ? null : WorkflowExpression.Compile(inputDatablacklistWhitelist);
-            WorkflowExpression.Validate(__workflow_inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
-            var __workflow_inputDatacharacters = inputDatacharacters == null ? null : WorkflowExpression.Compile(inputDatacharacters);
-            WorkflowExpression.Validate(__workflow_inputDatacharacters, nameof(inputDatacharacters), required: false);
-            var __workflow_inputDatausePagination = inputDatausePagination == null ? null : WorkflowExpression.Compile(inputDatausePagination);
-            WorkflowExpression.Validate(__workflow_inputDatausePagination, nameof(inputDatausePagination), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatalanguage = WorkflowExpression.Compile(inputDatalanguage, nameof(inputDatalanguage), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: false);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: false);
+            var __workflow_inputDatapageNumber = WorkflowExpression.Compile(inputDatapageNumber, nameof(inputDatapageNumber), required: false);
+            var __workflow_inputDataperformance = WorkflowExpression.Compile(inputDataperformance, nameof(inputDataperformance), required: false);
+            var __workflow_inputDatablacklistWhitelist = WorkflowExpression.Compile(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
+            var __workflow_inputDatacharacters = WorkflowExpression.Compile(inputDatacharacters, nameof(inputDatacharacters), required: false);
+            var __workflow_inputDatausePagination = WorkflowExpression.Compile(inputDatausePagination, nameof(inputDatausePagination), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OcrOperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/ocr_text";
@@ -4205,46 +3878,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> PdfWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatapDFWatermark, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatapDFWatermark = inputDatapDFWatermark == null ? null : WorkflowExpression.Compile(inputDatapDFWatermark);
-            WorkflowExpression.Validate(__workflow_inputDatapDFWatermark, nameof(inputDatapDFWatermark), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatapDFWatermark = WorkflowExpression.Compile(inputDatapDFWatermark, nameof(inputDatapDFWatermark), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/pdf_watermark";
@@ -4424,56 +4077,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> QrCodeWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatacontent, Expression<Func<inputDataversionInput>> inputDataversion, Expression<Func<inputDatainputModeInput>> inputDatainputMode, Expression<Func<inputDataerrorCorrectionLevelInput>> inputDataerrorCorrectionLevel, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkForegroundColor = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatacontent = inputDatacontent == null ? null : WorkflowExpression.Compile(inputDatacontent);
-            WorkflowExpression.Validate(__workflow_inputDatacontent, nameof(inputDatacontent), required: true);
-            var __workflow_inputDataversion = inputDataversion == null ? null : WorkflowExpression.Compile(inputDataversion);
-            WorkflowExpression.Validate(__workflow_inputDataversion, nameof(inputDataversion), required: true);
-            var __workflow_inputDatainputMode = inputDatainputMode == null ? null : WorkflowExpression.Compile(inputDatainputMode);
-            WorkflowExpression.Validate(__workflow_inputDatainputMode, nameof(inputDatainputMode), required: true);
-            var __workflow_inputDataerrorCorrectionLevel = inputDataerrorCorrectionLevel == null ? null : WorkflowExpression.Compile(inputDataerrorCorrectionLevel);
-            WorkflowExpression.Validate(__workflow_inputDataerrorCorrectionLevel, nameof(inputDataerrorCorrectionLevel), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatawatermarkBackgroundColor = inputDatawatermarkBackgroundColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkBackgroundColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            var __workflow_inputDatawatermarkForegroundColor = inputDatawatermarkForegroundColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkForegroundColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkForegroundColor, nameof(inputDatawatermarkForegroundColor), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatacontent = WorkflowExpression.Compile(inputDatacontent, nameof(inputDatacontent), required: true);
+            var __workflow_inputDataversion = WorkflowExpression.Compile(inputDataversion, nameof(inputDataversion), required: true);
+            var __workflow_inputDatainputMode = WorkflowExpression.Compile(inputDatainputMode, nameof(inputDatainputMode), required: true);
+            var __workflow_inputDataerrorCorrectionLevel = WorkflowExpression.Compile(inputDataerrorCorrectionLevel, nameof(inputDataerrorCorrectionLevel), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatawatermarkBackgroundColor = WorkflowExpression.Compile(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            var __workflow_inputDatawatermarkForegroundColor = WorkflowExpression.Compile(inputDatawatermarkForegroundColor, nameof(inputDatawatermarkForegroundColor), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/qr_code_watermark";
@@ -4671,50 +4299,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> RectangleWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkOutlineColor = null, Expression<Func<string>> inputDatawatermarkOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatawatermarkBackgroundColor = inputDatawatermarkBackgroundColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkBackgroundColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            var __workflow_inputDatawatermarkOutlineColor = inputDatawatermarkOutlineColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkOutlineColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            var __workflow_inputDatawatermarkOutlineWidth = inputDatawatermarkOutlineWidth == null ? null : WorkflowExpression.Compile(inputDatawatermarkOutlineWidth);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatawatermarkBackgroundColor = WorkflowExpression.Compile(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            var __workflow_inputDatawatermarkOutlineColor = WorkflowExpression.Compile(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
+            var __workflow_inputDatawatermarkOutlineWidth = WorkflowExpression.Compile(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/rectangle_watermark";
@@ -4910,52 +4516,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> RtfWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatawatermarkContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkOutlineColor = null, Expression<Func<string>> inputDatawatermarkOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatawatermarkContent = inputDatawatermarkContent == null ? null : WorkflowExpression.Compile(inputDatawatermarkContent);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatawatermarkBackgroundColor = inputDatawatermarkBackgroundColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkBackgroundColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
-            var __workflow_inputDatawatermarkOutlineColor = inputDatawatermarkOutlineColor == null ? null : WorkflowExpression.Compile(inputDatawatermarkOutlineColor);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
-            var __workflow_inputDatawatermarkOutlineWidth = inputDatawatermarkOutlineWidth == null ? null : WorkflowExpression.Compile(inputDatawatermarkOutlineWidth);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatawatermarkContent = WorkflowExpression.Compile(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatawatermarkBackgroundColor = WorkflowExpression.Compile(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            var __workflow_inputDatawatermarkOutlineColor = WorkflowExpression.Compile(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
+            var __workflow_inputDatawatermarkOutlineWidth = WorkflowExpression.Compile(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/rtf_watermark";
@@ -5153,18 +4736,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> SecurePdf(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataopenPassword = null, Expression<Func<string>> inputDataownerPassword = null, Expression<Func<string>> inputDatapDFRestrictions = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataopenPassword = inputDataopenPassword == null ? null : WorkflowExpression.Compile(inputDataopenPassword);
-            WorkflowExpression.Validate(__workflow_inputDataopenPassword, nameof(inputDataopenPassword), required: false);
-            var __workflow_inputDataownerPassword = inputDataownerPassword == null ? null : WorkflowExpression.Compile(inputDataownerPassword);
-            WorkflowExpression.Validate(__workflow_inputDataownerPassword, nameof(inputDataownerPassword), required: false);
-            var __workflow_inputDatapDFRestrictions = inputDatapDFRestrictions == null ? null : WorkflowExpression.Compile(inputDatapDFRestrictions);
-            WorkflowExpression.Validate(__workflow_inputDatapDFRestrictions, nameof(inputDatapDFRestrictions), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataopenPassword = WorkflowExpression.Compile(inputDataopenPassword, nameof(inputDataopenPassword), required: false);
+            var __workflow_inputDataownerPassword = WorkflowExpression.Compile(inputDataownerPassword, nameof(inputDataownerPassword), required: false);
+            var __workflow_inputDatapDFRestrictions = WorkflowExpression.Compile(inputDatapDFRestrictions, nameof(inputDatapDFRestrictions), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/secure_pdf";
@@ -5236,18 +4813,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<SplitOperationResponse> SplitPdf(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatasplitByInput>> inputDatasplitBy, Expression<Func<int>> inputDatasplitParameter, Expression<Func<string>> inputDatafileNameTemplate = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatasplitBy = inputDatasplitBy == null ? null : WorkflowExpression.Compile(inputDatasplitBy);
-            WorkflowExpression.Validate(__workflow_inputDatasplitBy, nameof(inputDatasplitBy), required: true);
-            var __workflow_inputDatasplitParameter = inputDatasplitParameter == null ? null : WorkflowExpression.Compile(inputDatasplitParameter);
-            WorkflowExpression.Validate(__workflow_inputDatasplitParameter, nameof(inputDatasplitParameter), required: true);
-            var __workflow_inputDatafileNameTemplate = inputDatafileNameTemplate == null ? null : WorkflowExpression.Compile(inputDatafileNameTemplate);
-            WorkflowExpression.Validate(__workflow_inputDatafileNameTemplate, nameof(inputDatafileNameTemplate), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatasplitBy = WorkflowExpression.Compile(inputDatasplitBy, nameof(inputDatasplitBy), required: true);
+            var __workflow_inputDatasplitParameter = WorkflowExpression.Compile(inputDatasplitParameter, nameof(inputDatasplitParameter), required: true);
+            var __workflow_inputDatafileNameTemplate = WorkflowExpression.Compile(inputDatafileNameTemplate, nameof(inputDatafileNameTemplate), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<SplitOperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/split_pdf";
@@ -5307,62 +4878,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
         public IBodyWorkflowAction<OperationResponse> TextWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatawatermarkContent, Expression<Func<string>> inputDatafontFamilyName, Expression<Func<string>> inputDatafontSize, Expression<Func<string>> inputDatafontColor, Expression<Func<inputDatatextAlignmentInput>> inputDatatextAlignment, Expression<Func<inputDatawordWrapInput>> inputDatawordWrap, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatafontStyle = null, Expression<Func<string>> inputDatafontOutlineColor = null, Expression<Func<string>> inputDatafontOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
         {
-            var __workflow_inputDatasourceFileContent = inputDatasourceFileContent == null ? null : WorkflowExpression.Compile(inputDatasourceFileContent);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
-            var __workflow_inputDatawatermarkContent = inputDatawatermarkContent == null ? null : WorkflowExpression.Compile(inputDatawatermarkContent);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
-            var __workflow_inputDatafontFamilyName = inputDatafontFamilyName == null ? null : WorkflowExpression.Compile(inputDatafontFamilyName);
-            WorkflowExpression.Validate(__workflow_inputDatafontFamilyName, nameof(inputDatafontFamilyName), required: true);
-            var __workflow_inputDatafontSize = inputDatafontSize == null ? null : WorkflowExpression.Compile(inputDatafontSize);
-            WorkflowExpression.Validate(__workflow_inputDatafontSize, nameof(inputDatafontSize), required: true);
-            var __workflow_inputDatafontColor = inputDatafontColor == null ? null : WorkflowExpression.Compile(inputDatafontColor);
-            WorkflowExpression.Validate(__workflow_inputDatafontColor, nameof(inputDatafontColor), required: true);
-            var __workflow_inputDatatextAlignment = inputDatatextAlignment == null ? null : WorkflowExpression.Compile(inputDatatextAlignment);
-            WorkflowExpression.Validate(__workflow_inputDatatextAlignment, nameof(inputDatatextAlignment), required: true);
-            var __workflow_inputDatawordWrap = inputDatawordWrap == null ? null : WorkflowExpression.Compile(inputDatawordWrap);
-            WorkflowExpression.Validate(__workflow_inputDatawordWrap, nameof(inputDatawordWrap), required: true);
-            var __workflow_inputDataposition = inputDataposition == null ? null : WorkflowExpression.Compile(inputDataposition);
-            WorkflowExpression.Validate(__workflow_inputDataposition, nameof(inputDataposition), required: true);
-            var __workflow_inputDatawidth = inputDatawidth == null ? null : WorkflowExpression.Compile(inputDatawidth);
-            WorkflowExpression.Validate(__workflow_inputDatawidth, nameof(inputDatawidth), required: true);
-            var __workflow_inputDataheight = inputDataheight == null ? null : WorkflowExpression.Compile(inputDataheight);
-            WorkflowExpression.Validate(__workflow_inputDataheight, nameof(inputDataheight), required: true);
-            var __workflow_inputDatasourceFileName = inputDatasourceFileName == null ? null : WorkflowExpression.Compile(inputDatasourceFileName);
-            WorkflowExpression.Validate(__workflow_inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
-            var __workflow_inputDataxCoordinate = inputDataxCoordinate == null ? null : WorkflowExpression.Compile(inputDataxCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
-            var __workflow_inputDatayCoordinate = inputDatayCoordinate == null ? null : WorkflowExpression.Compile(inputDatayCoordinate);
-            WorkflowExpression.Validate(__workflow_inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
-            var __workflow_inputDatalayer = inputDatalayer == null ? null : WorkflowExpression.Compile(inputDatalayer);
-            WorkflowExpression.Validate(__workflow_inputDatalayer, nameof(inputDatalayer), required: false);
-            var __workflow_inputDatarotation = inputDatarotation == null ? null : WorkflowExpression.Compile(inputDatarotation);
-            WorkflowExpression.Validate(__workflow_inputDatarotation, nameof(inputDatarotation), required: false);
-            var __workflow_inputDataopacity = inputDataopacity == null ? null : WorkflowExpression.Compile(inputDataopacity);
-            WorkflowExpression.Validate(__workflow_inputDataopacity, nameof(inputDataopacity), required: false);
-            var __workflow_inputDatafontStyle = inputDatafontStyle == null ? null : WorkflowExpression.Compile(inputDatafontStyle);
-            WorkflowExpression.Validate(__workflow_inputDatafontStyle, nameof(inputDatafontStyle), required: false);
-            var __workflow_inputDatafontOutlineColor = inputDatafontOutlineColor == null ? null : WorkflowExpression.Compile(inputDatafontOutlineColor);
-            WorkflowExpression.Validate(__workflow_inputDatafontOutlineColor, nameof(inputDatafontOutlineColor), required: false);
-            var __workflow_inputDatafontOutlineWidth = inputDatafontOutlineWidth == null ? null : WorkflowExpression.Compile(inputDatafontOutlineWidth);
-            WorkflowExpression.Validate(__workflow_inputDatafontOutlineWidth, nameof(inputDatafontOutlineWidth), required: false);
-            var __workflow_inputDatawatermarkStartPage = inputDatawatermarkStartPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
-            var __workflow_inputDatawatermarkEndPage = inputDatawatermarkEndPage == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndPage);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
-            var __workflow_inputDatawatermarkPageInterval = inputDatawatermarkPageInterval == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageInterval);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
-            var __workflow_inputDatawatermarkPageOrientation = inputDatawatermarkPageOrientation == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageOrientation);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
-            var __workflow_inputDataprintOnly = inputDataprintOnly == null ? null : WorkflowExpression.Compile(inputDataprintOnly);
-            WorkflowExpression.Validate(__workflow_inputDataprintOnly, nameof(inputDataprintOnly), required: false);
-            var __workflow_inputDatawatermarkStartSection = inputDatawatermarkStartSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkStartSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
-            var __workflow_inputDatawatermarkEndSection = inputDatawatermarkEndSection == null ? null : WorkflowExpression.Compile(inputDatawatermarkEndSection);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
-            var __workflow_inputDatawatermarkPageType = inputDatawatermarkPageType == null ? null : WorkflowExpression.Compile(inputDatawatermarkPageType);
-            WorkflowExpression.Validate(__workflow_inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
-            var __workflow_inputDatafailOnError = inputDatafailOnError == null ? null : WorkflowExpression.Compile(inputDatafailOnError);
-            WorkflowExpression.Validate(__workflow_inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            var __workflow_inputDatasourceFileContent = WorkflowExpression.Compile(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            var __workflow_inputDatawatermarkContent = WorkflowExpression.Compile(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
+            var __workflow_inputDatafontFamilyName = WorkflowExpression.Compile(inputDatafontFamilyName, nameof(inputDatafontFamilyName), required: true);
+            var __workflow_inputDatafontSize = WorkflowExpression.Compile(inputDatafontSize, nameof(inputDatafontSize), required: true);
+            var __workflow_inputDatafontColor = WorkflowExpression.Compile(inputDatafontColor, nameof(inputDatafontColor), required: true);
+            var __workflow_inputDatatextAlignment = WorkflowExpression.Compile(inputDatatextAlignment, nameof(inputDatatextAlignment), required: true);
+            var __workflow_inputDatawordWrap = WorkflowExpression.Compile(inputDatawordWrap, nameof(inputDatawordWrap), required: true);
+            var __workflow_inputDataposition = WorkflowExpression.Compile(inputDataposition, nameof(inputDataposition), required: true);
+            var __workflow_inputDatawidth = WorkflowExpression.Compile(inputDatawidth, nameof(inputDatawidth), required: true);
+            var __workflow_inputDataheight = WorkflowExpression.Compile(inputDataheight, nameof(inputDataheight), required: true);
+            var __workflow_inputDatasourceFileName = WorkflowExpression.Compile(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            var __workflow_inputDataxCoordinate = WorkflowExpression.Compile(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            var __workflow_inputDatayCoordinate = WorkflowExpression.Compile(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            var __workflow_inputDatalayer = WorkflowExpression.Compile(inputDatalayer, nameof(inputDatalayer), required: false);
+            var __workflow_inputDatarotation = WorkflowExpression.Compile(inputDatarotation, nameof(inputDatarotation), required: false);
+            var __workflow_inputDataopacity = WorkflowExpression.Compile(inputDataopacity, nameof(inputDataopacity), required: false);
+            var __workflow_inputDatafontStyle = WorkflowExpression.Compile(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
+            var __workflow_inputDatafontOutlineColor = WorkflowExpression.Compile(inputDatafontOutlineColor, nameof(inputDatafontOutlineColor), required: false);
+            var __workflow_inputDatafontOutlineWidth = WorkflowExpression.Compile(inputDatafontOutlineWidth, nameof(inputDatafontOutlineWidth), required: false);
+            var __workflow_inputDatawatermarkStartPage = WorkflowExpression.Compile(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            var __workflow_inputDatawatermarkEndPage = WorkflowExpression.Compile(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            var __workflow_inputDatawatermarkPageInterval = WorkflowExpression.Compile(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            var __workflow_inputDatawatermarkPageOrientation = WorkflowExpression.Compile(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            var __workflow_inputDataprintOnly = WorkflowExpression.Compile(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            var __workflow_inputDatawatermarkStartSection = WorkflowExpression.Compile(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            var __workflow_inputDatawatermarkEndSection = WorkflowExpression.Compile(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            var __workflow_inputDatawatermarkPageType = WorkflowExpression.Compile(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            var __workflow_inputDatafailOnError = WorkflowExpression.Compile(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
             return new DeferredBodyAction<OperationResponse>(() =>
             {
                 var apiCallPath = "/v1/operations/text_watermark";

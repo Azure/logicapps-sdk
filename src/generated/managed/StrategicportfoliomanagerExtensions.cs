@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> EntityTypesGetEntityTypes(Expression<Func<string>> siteUrl)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyAction<Item[]>(() =>
             {
                 var apiCallPath = "/EntityTypes/GetEntityTypes";
@@ -28,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesCreateEntityNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityTypeUid, Expression<Func<string>> entityName)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityTypeUid = entityTypeUid == null ? null : WorkflowExpression.Compile(entityTypeUid);
-            WorkflowExpression.Validate(__workflow_entityTypeUid, nameof(entityTypeUid), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityTypeUid = WorkflowExpression.Compile(entityTypeUid, nameof(entityTypeUid), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
             return new DeferredBodyAction<CallResultWithData>(() =>
             {
                 var apiCallPath = "/FinancialEntities/CreateEntityNoRetry";
@@ -49,12 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Entity[]> FinancialEntitiesGetAllEntities(Expression<Func<string>> siteUrl, Expression<Func<string>> filter = null, Expression<Func<string>> selectColumns = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_selectColumns = selectColumns == null ? null : WorkflowExpression.Compile(selectColumns);
-            WorkflowExpression.Validate(__workflow_selectColumns, nameof(selectColumns), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_selectColumns = WorkflowExpression.Compile(selectColumns, nameof(selectColumns), required: false);
             return new DeferredBodyAction<Entity[]>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetAllEntities";
@@ -72,12 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetAllEntitiesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> filter = null, Expression<Func<string>> selectColumns = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_selectColumns = selectColumns == null ? null : WorkflowExpression.Compile(selectColumns);
-            WorkflowExpression.Validate(__workflow_selectColumns, nameof(selectColumns), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_selectColumns = WorkflowExpression.Compile(selectColumns, nameof(selectColumns), required: false);
             return new DeferredBodyAction<CallResultWithData>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetAllEntitiesNoRetry";
@@ -95,12 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Entity> FinancialEntitiesGetEntity(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> selectColumns = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_selectColumns = selectColumns == null ? null : WorkflowExpression.Compile(selectColumns);
-            WorkflowExpression.Validate(__workflow_selectColumns, nameof(selectColumns), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_selectColumns = WorkflowExpression.Compile(selectColumns, nameof(selectColumns), required: false);
             return new DeferredBodyAction<Entity>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntity";
@@ -117,12 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> selectColumns = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_selectColumns = selectColumns == null ? null : WorkflowExpression.Compile(selectColumns);
-            WorkflowExpression.Validate(__workflow_selectColumns, nameof(selectColumns), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_selectColumns = WorkflowExpression.Compile(selectColumns, nameof(selectColumns), required: false);
             return new DeferredBodyAction<CallResultWithData>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntityNoRetry";
@@ -139,10 +123,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> FinancialEntitiesGetEntityFields(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             return new DeferredBodyAction<Item[]>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFields";
@@ -157,12 +139,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityFieldValuesODataNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> filter = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<CallResultWithData>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFieldValuesODataNoRetry";
@@ -179,10 +158,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<FieldValue[]> FinancialEntitiesGetEntityFieldValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             return new DeferredBodyAction<FieldValue[]>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFieldValues";
@@ -197,12 +174,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<FieldValue> FinancialEntitiesGetEntityFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> fieldIdentifier)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_fieldIdentifier = fieldIdentifier == null ? null : WorkflowExpression.Compile(fieldIdentifier);
-            WorkflowExpression.Validate(__workflow_fieldIdentifier, nameof(fieldIdentifier), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_fieldIdentifier = WorkflowExpression.Compile(fieldIdentifier, nameof(fieldIdentifier), required: true);
             return new DeferredBodyAction<FieldValue>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntityFieldValue";
@@ -218,12 +192,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<bool> FinancialEntitiesExecuteStageValidation(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = "/FinancialEntities/ExecuteStageValidation";
@@ -240,14 +211,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldValueNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> fieldIdentifier, Expression<Func<string>> value)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_fieldIdentifier = fieldIdentifier == null ? null : WorkflowExpression.Compile(fieldIdentifier);
-            WorkflowExpression.Validate(__workflow_fieldIdentifier, nameof(fieldIdentifier), required: true);
-            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_fieldIdentifier = WorkflowExpression.Compile(fieldIdentifier, nameof(fieldIdentifier), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredBodyAction<CallResult>(() =>
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldValueNoRetry";
@@ -264,12 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldsValuesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_fieldValues = fieldValues == null ? null : WorkflowExpression.Compile(fieldValues);
-            WorkflowExpression.Validate(__workflow_fieldValues, nameof(fieldValues), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
             return new DeferredBodyAction<CallResult>(() =>
             {
                 var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
@@ -285,20 +249,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CustomFieldValueCreationInformation> FinancialEntitiesGetFinancialCustomFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<string>> fieldIdentifier)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_eftId = eftId == null ? null : WorkflowExpression.Compile(eftId);
-            WorkflowExpression.Validate(__workflow_eftId, nameof(eftId), required: true);
-            var __workflow_fdId = fdId == null ? null : WorkflowExpression.Compile(fdId);
-            WorkflowExpression.Validate(__workflow_fdId, nameof(fdId), required: true);
-            var __workflow_fnId = fnId == null ? null : WorkflowExpression.Compile(fnId);
-            WorkflowExpression.Validate(__workflow_fnId, nameof(fnId), required: true);
-            var __workflow_centerId = centerId == null ? null : WorkflowExpression.Compile(centerId);
-            WorkflowExpression.Validate(__workflow_centerId, nameof(centerId), required: true);
-            var __workflow_fieldIdentifier = fieldIdentifier == null ? null : WorkflowExpression.Compile(fieldIdentifier);
-            WorkflowExpression.Validate(__workflow_fieldIdentifier, nameof(fieldIdentifier), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_eftId = WorkflowExpression.Compile(eftId, nameof(eftId), required: true);
+            var __workflow_fdId = WorkflowExpression.Compile(fdId, nameof(fdId), required: true);
+            var __workflow_fnId = WorkflowExpression.Compile(fnId, nameof(fnId), required: true);
+            var __workflow_centerId = WorkflowExpression.Compile(centerId, nameof(centerId), required: true);
+            var __workflow_fieldIdentifier = WorkflowExpression.Compile(fieldIdentifier, nameof(fieldIdentifier), required: true);
             return new DeferredBodyAction<CustomFieldValueCreationInformation>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetFinancialCustomFieldValue";
@@ -318,22 +275,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<string>> fieldIdentifier, Expression<Func<string>> value)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_eftId = eftId == null ? null : WorkflowExpression.Compile(eftId);
-            WorkflowExpression.Validate(__workflow_eftId, nameof(eftId), required: true);
-            var __workflow_fdId = fdId == null ? null : WorkflowExpression.Compile(fdId);
-            WorkflowExpression.Validate(__workflow_fdId, nameof(fdId), required: true);
-            var __workflow_fnId = fnId == null ? null : WorkflowExpression.Compile(fnId);
-            WorkflowExpression.Validate(__workflow_fnId, nameof(fnId), required: true);
-            var __workflow_centerId = centerId == null ? null : WorkflowExpression.Compile(centerId);
-            WorkflowExpression.Validate(__workflow_centerId, nameof(centerId), required: true);
-            var __workflow_fieldIdentifier = fieldIdentifier == null ? null : WorkflowExpression.Compile(fieldIdentifier);
-            WorkflowExpression.Validate(__workflow_fieldIdentifier, nameof(fieldIdentifier), required: true);
-            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(__workflow_value, nameof(value), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_eftId = WorkflowExpression.Compile(eftId, nameof(eftId), required: true);
+            var __workflow_fdId = WorkflowExpression.Compile(fdId, nameof(fdId), required: true);
+            var __workflow_fnId = WorkflowExpression.Compile(fnId, nameof(fnId), required: true);
+            var __workflow_centerId = WorkflowExpression.Compile(centerId, nameof(centerId), required: true);
+            var __workflow_fieldIdentifier = WorkflowExpression.Compile(fieldIdentifier, nameof(fieldIdentifier), required: true);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldValue";
@@ -354,20 +303,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<FinancialFieldValuePair[]>> fieldValues = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_eftId = eftId == null ? null : WorkflowExpression.Compile(eftId);
-            WorkflowExpression.Validate(__workflow_eftId, nameof(eftId), required: true);
-            var __workflow_fdId = fdId == null ? null : WorkflowExpression.Compile(fdId);
-            WorkflowExpression.Validate(__workflow_fdId, nameof(fdId), required: true);
-            var __workflow_fnId = fnId == null ? null : WorkflowExpression.Compile(fnId);
-            WorkflowExpression.Validate(__workflow_fnId, nameof(fnId), required: true);
-            var __workflow_centerId = centerId == null ? null : WorkflowExpression.Compile(centerId);
-            WorkflowExpression.Validate(__workflow_centerId, nameof(centerId), required: true);
-            var __workflow_fieldValues = fieldValues == null ? null : WorkflowExpression.Compile(fieldValues);
-            WorkflowExpression.Validate(__workflow_fieldValues, nameof(fieldValues), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_eftId = WorkflowExpression.Compile(eftId, nameof(eftId), required: true);
+            var __workflow_fdId = WorkflowExpression.Compile(fdId, nameof(fdId), required: true);
+            var __workflow_fnId = WorkflowExpression.Compile(fnId, nameof(fnId), required: true);
+            var __workflow_centerId = WorkflowExpression.Compile(centerId, nameof(centerId), required: true);
+            var __workflow_fieldValues = WorkflowExpression.Compile(fieldValues, nameof(fieldValues), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
@@ -387,10 +329,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Resource[]> FinancialEntitiesGetEntityResources(Expression<Func<string>> siteUrl, Expression<Func<string>> entityUid)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityUid = entityUid == null ? null : WorkflowExpression.Compile(entityUid);
-            WorkflowExpression.Validate(__workflow_entityUid, nameof(entityUid), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityUid = WorkflowExpression.Compile(entityUid, nameof(entityUid), required: true);
             return new DeferredBodyAction<Resource[]>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntityResources";
@@ -405,12 +345,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<string> FinancialEntitiesAddEntityResource(Expression<Func<string>> siteUrl, Expression<Func<string>> entityUid, Expression<Func<string>> resourceUid)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityUid = entityUid == null ? null : WorkflowExpression.Compile(entityUid);
-            WorkflowExpression.Validate(__workflow_entityUid, nameof(entityUid), required: true);
-            var __workflow_resourceUid = resourceUid == null ? null : WorkflowExpression.Compile(resourceUid);
-            WorkflowExpression.Validate(__workflow_resourceUid, nameof(resourceUid), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityUid = WorkflowExpression.Compile(entityUid, nameof(entityUid), required: true);
+            var __workflow_resourceUid = WorkflowExpression.Compile(resourceUid, nameof(resourceUid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/FinancialEntities/AddEntityResource";
@@ -426,12 +363,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesExecuteStageTransition(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: false);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FinancialEntities/ExecuteStageTransition";
@@ -448,10 +382,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<EntityHistoryEntry[]> FinancialEntitiesGetEntityHistoryEntries(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             return new DeferredBodyAction<EntityHistoryEntry[]>(() =>
             {
                 var apiCallPath = "/FinancialEntities/GetEntityHistoryEntries";
@@ -466,12 +398,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<CallResult> FinancialEntitiesCreateEntityRelationship(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> relatedEntityId)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_relatedEntityId = relatedEntityId == null ? null : WorkflowExpression.Compile(relatedEntityId);
-            WorkflowExpression.Validate(__workflow_relatedEntityId, nameof(relatedEntityId), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_relatedEntityId = WorkflowExpression.Compile(relatedEntityId, nameof(relatedEntityId), required: true);
             return new DeferredBodyAction<CallResult>(() =>
             {
                 var apiCallPath = "/FinancialEntities/CreateEntityRelationship";
@@ -487,18 +416,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IWorkflowAction FinancialEntitiesLogEntityHistoryEntry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> activityType, Expression<Func<string>> activityTypeIcon, Expression<Func<string>> activityDetails, Expression<Func<string>> initiator)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_activityType = activityType == null ? null : WorkflowExpression.Compile(activityType);
-            WorkflowExpression.Validate(__workflow_activityType, nameof(activityType), required: true);
-            var __workflow_activityTypeIcon = activityTypeIcon == null ? null : WorkflowExpression.Compile(activityTypeIcon);
-            WorkflowExpression.Validate(__workflow_activityTypeIcon, nameof(activityTypeIcon), required: true);
-            var __workflow_activityDetails = activityDetails == null ? null : WorkflowExpression.Compile(activityDetails);
-            WorkflowExpression.Validate(__workflow_activityDetails, nameof(activityDetails), required: true);
-            var __workflow_initiator = initiator == null ? null : WorkflowExpression.Compile(initiator);
-            WorkflowExpression.Validate(__workflow_initiator, nameof(initiator), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_activityType = WorkflowExpression.Compile(activityType, nameof(activityType), required: true);
+            var __workflow_activityTypeIcon = WorkflowExpression.Compile(activityTypeIcon, nameof(activityTypeIcon), required: true);
+            var __workflow_activityDetails = WorkflowExpression.Compile(activityDetails, nameof(activityDetails), required: true);
+            var __workflow_initiator = WorkflowExpression.Compile(initiator, nameof(initiator), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FinancialEntities/LogEntityHistoryEntry";
@@ -517,8 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> LookupTableGetLookupTables(Expression<Func<string>> siteUrl)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyAction<Item[]>(() =>
             {
                 var apiCallPath = "/LookupTable/GetLookupTables";
@@ -532,10 +454,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
         public IBodyWorkflowAction<Item[]> LookupTableGetLookupTableValues(Expression<Func<string>> siteUrl, Expression<Func<string>> optionSetUid)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_optionSetUid = optionSetUid == null ? null : WorkflowExpression.Compile(optionSetUid);
-            WorkflowExpression.Validate(__workflow_optionSetUid, nameof(optionSetUid), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_optionSetUid = WorkflowExpression.Compile(optionSetUid, nameof(optionSetUid), required: true);
             return new DeferredBodyAction<Item[]>(() =>
             {
                 var apiCallPath = "/LookupTable/GetLookupTableValues";
@@ -552,8 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
     {
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddFinancialValuesChangedHook";
@@ -576,8 +495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddEntityCreatedHook";
@@ -600,8 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddEntityUpdatedHook";
@@ -624,8 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddEntityDeletedHook";
@@ -648,8 +564,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddStageTransitionHook";
@@ -672,8 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
@@ -696,8 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
@@ -720,8 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestCreatedHook";
@@ -744,8 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
@@ -768,8 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestDeletedHook";
@@ -792,8 +702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
@@ -816,8 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
@@ -840,8 +748,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
@@ -864,8 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
@@ -888,8 +794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneCreatedHook";
@@ -912,8 +817,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneUpdatedHook";
@@ -936,8 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddMilestoneDeletedHook";
@@ -960,8 +863,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipCreatedHook";
@@ -984,8 +886,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipUpdatedHook";
@@ -1008,8 +909,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 
         public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventCreationInformationsiteURL = eventCreationInformationsiteURL == null ? null : WorkflowExpression.Compile(eventCreationInformationsiteURL);
-            WorkflowExpression.Validate(__workflow_eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            var __workflow_eventCreationInformationsiteURL = WorkflowExpression.Compile(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
                 var apiCallPath = "/Events/AddRelationshipDeletedHook";

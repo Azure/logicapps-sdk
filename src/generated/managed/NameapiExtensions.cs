@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
         public IBodyWorkflowAction<ParseNameResponse> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
         {
-            var __workflow_bodyinputPersonpersonNamepersonNames = bodyinputPersonpersonNamepersonNames == null ? null : WorkflowExpression.Compile(bodyinputPersonpersonNamepersonNames);
-            WorkflowExpression.Validate(__workflow_bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
-            var __workflow_bodyinputPersongender = bodyinputPersongender == null ? null : WorkflowExpression.Compile(bodyinputPersongender);
-            WorkflowExpression.Validate(__workflow_bodyinputPersongender, nameof(bodyinputPersongender), required: false);
+            var __workflow_bodyinputPersonpersonNamepersonNames = WorkflowExpression.Compile(bodyinputPersonpersonNamepersonNames, nameof(bodyinputPersonpersonNamepersonNames), required: true);
+            var __workflow_bodyinputPersongender = WorkflowExpression.Compile(bodyinputPersongender, nameof(bodyinputPersongender), required: false);
             return new DeferredBodyAction<ParseNameResponse>(() =>
             {
                 var apiCallPath = "/v5.3/parser/personnameparser";
@@ -62,8 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
         public IBodyWorkflowAction<DetectDeaResponse> DetectDea(Expression<Func<string>> emailAddress)
         {
-            var __workflow_emailAddress = emailAddress == null ? null : WorkflowExpression.Compile(emailAddress);
-            WorkflowExpression.Validate(__workflow_emailAddress, nameof(emailAddress), required: true);
+            var __workflow_emailAddress = WorkflowExpression.Compile(emailAddress, nameof(emailAddress), required: true);
             return new DeferredBodyAction<DetectDeaResponse>(() =>
             {
                 var apiCallPath = "/v5.3/email/disposableemailaddressdetector";

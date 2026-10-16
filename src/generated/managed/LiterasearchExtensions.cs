@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         public IWorkflowAction GetMatterList(Expression<Func<string>> request)
         {
-            var __workflow_request = request == null ? null : WorkflowExpression.Compile(request);
-            WorkflowExpression.Validate(__workflow_request, nameof(request), required: true);
+            var __workflow_request = WorkflowExpression.Compile(request, nameof(request), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/GetMatterList";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         public IWorkflowAction GetMatterNarrative(Expression<Func<string>> matterId)
         {
-            var __workflow_matterId = matterId == null ? null : WorkflowExpression.Compile(matterId);
-            WorkflowExpression.Validate(__workflow_matterId, nameof(matterId), required: true);
+            var __workflow_matterId = WorkflowExpression.Compile(matterId, nameof(matterId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/GetMatterNarrative";
@@ -43,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
         public IWorkflowAction GetMatterDetail(Expression<Func<string>> matterId)
         {
-            var __workflow_matterId = matterId == null ? null : WorkflowExpression.Compile(matterId);
-            WorkflowExpression.Validate(__workflow_matterId, nameof(matterId), required: true);
+            var __workflow_matterId = WorkflowExpression.Compile(matterId, nameof(matterId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/GetMatterDetail";

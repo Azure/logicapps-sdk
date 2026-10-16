@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faanotam")]
         public IBodyWorkflowAction<GetNotamResponse> GetNotam(Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
-            var __workflow_clientId = clientId == null ? null : WorkflowExpression.Compile(clientId);
-            WorkflowExpression.Validate(__workflow_clientId, nameof(clientId), required: true);
-            var __workflow_clientSecret = clientSecret == null ? null : WorkflowExpression.Compile(clientSecret);
-            WorkflowExpression.Validate(__workflow_clientSecret, nameof(clientSecret), required: true);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
+            var __workflow_clientSecret = WorkflowExpression.Compile(clientSecret, nameof(clientSecret), required: true);
             return new DeferredBodyAction<GetNotamResponse>(() =>
             {
                 var apiCallPath = "/notamapi/v1/notams";

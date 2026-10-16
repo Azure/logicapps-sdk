@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
         public IWorkflowAction SendEmail(Expression<Func<string>> emailMessagefrom = null, Expression<Func<string>> emailMessageto = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<string>> emailMessagebcc = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<string>> emailMessagereadReceipt = null, Expression<Func<string>> emailMessagedeliveryReceipt = null, Expression<Func<AttachmentV2[]>> emailMessageattachments = null)
         {
-            var __workflow_emailMessagefrom = emailMessagefrom == null ? null : WorkflowExpression.Compile(emailMessagefrom);
-            WorkflowExpression.Validate(__workflow_emailMessagefrom, nameof(emailMessagefrom), required: false);
-            var __workflow_emailMessageto = emailMessageto == null ? null : WorkflowExpression.Compile(emailMessageto);
-            WorkflowExpression.Validate(__workflow_emailMessageto, nameof(emailMessageto), required: false);
-            var __workflow_emailMessagecC = emailMessagecC == null ? null : WorkflowExpression.Compile(emailMessagecC);
-            WorkflowExpression.Validate(__workflow_emailMessagecC, nameof(emailMessagecC), required: false);
-            var __workflow_emailMessagesubject = emailMessagesubject == null ? null : WorkflowExpression.Compile(emailMessagesubject);
-            WorkflowExpression.Validate(__workflow_emailMessagesubject, nameof(emailMessagesubject), required: false);
-            var __workflow_emailMessagebody = emailMessagebody == null ? null : WorkflowExpression.Compile(emailMessagebody);
-            WorkflowExpression.Validate(__workflow_emailMessagebody, nameof(emailMessagebody), required: false);
-            var __workflow_emailMessagebcc = emailMessagebcc == null ? null : WorkflowExpression.Compile(emailMessagebcc);
-            WorkflowExpression.Validate(__workflow_emailMessagebcc, nameof(emailMessagebcc), required: false);
-            var __workflow_emailMessageimportance = emailMessageimportance == null ? null : WorkflowExpression.Compile(emailMessageimportance);
-            WorkflowExpression.Validate(__workflow_emailMessageimportance, nameof(emailMessageimportance), required: false);
-            var __workflow_emailMessagereadReceipt = emailMessagereadReceipt == null ? null : WorkflowExpression.Compile(emailMessagereadReceipt);
-            WorkflowExpression.Validate(__workflow_emailMessagereadReceipt, nameof(emailMessagereadReceipt), required: false);
-            var __workflow_emailMessagedeliveryReceipt = emailMessagedeliveryReceipt == null ? null : WorkflowExpression.Compile(emailMessagedeliveryReceipt);
-            WorkflowExpression.Validate(__workflow_emailMessagedeliveryReceipt, nameof(emailMessagedeliveryReceipt), required: false);
-            var __workflow_emailMessageattachments = emailMessageattachments == null ? null : WorkflowExpression.Compile(emailMessageattachments);
-            WorkflowExpression.Validate(__workflow_emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessagefrom = WorkflowExpression.Compile(emailMessagefrom, nameof(emailMessagefrom), required: false);
+            var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: false);
+            var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
+            var __workflow_emailMessagesubject = WorkflowExpression.Compile(emailMessagesubject, nameof(emailMessagesubject), required: false);
+            var __workflow_emailMessagebody = WorkflowExpression.Compile(emailMessagebody, nameof(emailMessagebody), required: false);
+            var __workflow_emailMessagebcc = WorkflowExpression.Compile(emailMessagebcc, nameof(emailMessagebcc), required: false);
+            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessagereadReceipt = WorkflowExpression.Compile(emailMessagereadReceipt, nameof(emailMessagereadReceipt), required: false);
+            var __workflow_emailMessagedeliveryReceipt = WorkflowExpression.Compile(emailMessagedeliveryReceipt, nameof(emailMessagedeliveryReceipt), required: false);
+            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SendEmailV3";

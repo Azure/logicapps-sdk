@@ -16,10 +16,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
     {
         public IBodyWorkflowTrigger<JToken> AddRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, FlowRecurrence recurrence = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_bodylabel = bodylabel == null ? null : WorkflowExpression.Compile(bodylabel);
-            WorkflowExpression.Validate(__workflow_bodylabel, nameof(bodylabel), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
@@ -54,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
 
         public IBodyWorkflowTrigger<JToken> EditRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, FlowRecurrence recurrence = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_bodylabel = bodylabel == null ? null : WorkflowExpression.Compile(bodylabel);
-            WorkflowExpression.Validate(__workflow_bodylabel, nameof(bodylabel), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/edit", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
@@ -92,10 +88,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
 
         public IBodyWorkflowTrigger<JToken> DeleteRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, FlowRecurrence recurrence = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_bodylabel = bodylabel == null ? null : WorkflowExpression.Compile(bodylabel);
-            WorkflowExpression.Validate(__workflow_bodylabel, nameof(bodylabel), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));

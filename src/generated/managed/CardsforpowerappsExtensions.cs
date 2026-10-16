@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<CreateCardResult> CreateCardInstance(Expression<Func<string>> cardId, Expression<Func<object>> cardRequestinputs = null)
         {
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
-            var __workflow_cardRequestinputs = cardRequestinputs == null ? null : WorkflowExpression.Compile(cardRequestinputs);
-            WorkflowExpression.Validate(__workflow_cardRequestinputs, nameof(cardRequestinputs), required: false);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
+            var __workflow_cardRequestinputs = WorkflowExpression.Compile(cardRequestinputs, nameof(cardRequestinputs), required: false);
             return new DeferredBodyAction<CreateCardResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -42,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<PowerCardDescription> GetCardDescription(Expression<Func<string>> cardId)
         {
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<PowerCardDescription>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -72,10 +69,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardsforpowerapps
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardsforpowerapps")]
         public IBodyWorkflowAction<GenerateCardResponse> GenerateCard(Expression<Func<CardAction[]>> generateCardRequestactions = null, Expression<Func<string>> generateCardRequestdescription = null)
         {
-            var __workflow_generateCardRequestactions = generateCardRequestactions == null ? null : WorkflowExpression.Compile(generateCardRequestactions);
-            WorkflowExpression.Validate(__workflow_generateCardRequestactions, nameof(generateCardRequestactions), required: false);
-            var __workflow_generateCardRequestdescription = generateCardRequestdescription == null ? null : WorkflowExpression.Compile(generateCardRequestdescription);
-            WorkflowExpression.Validate(__workflow_generateCardRequestdescription, nameof(generateCardRequestdescription), required: false);
+            var __workflow_generateCardRequestactions = WorkflowExpression.Compile(generateCardRequestactions, nameof(generateCardRequestactions), required: false);
+            var __workflow_generateCardRequestdescription = WorkflowExpression.Compile(generateCardRequestdescription, nameof(generateCardRequestdescription), required: false);
             return new DeferredBodyAction<GenerateCardResponse>(() =>
             {
                 var apiCallPath = "/cards/generate/card";

@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IBodyWorkflowAction<SendSecureMessageResponse> SendSecureMessageAsync(Expression<Func<string>> requestfrom, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret, Expression<Func<string[]>> requestto = null, Expression<Func<string[]>> requestcc = null, Expression<Func<string[]>> requestbcc = null, Expression<Func<string>> requestsubject = null, Expression<Func<Attachment[]>> requestattachments = null, Expression<Func<string>> requesthtmlBody = null, Expression<Func<string>> requesttextBody = null)
         {
-            var __workflow_requestfrom = requestfrom == null ? null : WorkflowExpression.Compile(requestfrom);
-            WorkflowExpression.Validate(__workflow_requestfrom, nameof(requestfrom), required: true);
-            var __workflow_v = v == null ? null : WorkflowExpression.Compile(v);
-            WorkflowExpression.Validate(__workflow_v, nameof(v), required: true);
-            var __workflow_xAPIKey = xAPIKey == null ? null : WorkflowExpression.Compile(xAPIKey);
-            WorkflowExpression.Validate(__workflow_xAPIKey, nameof(xAPIKey), required: true);
-            var __workflow_xAPISecret = xAPISecret == null ? null : WorkflowExpression.Compile(xAPISecret);
-            WorkflowExpression.Validate(__workflow_xAPISecret, nameof(xAPISecret), required: true);
-            var __workflow_requestto = requestto == null ? null : WorkflowExpression.Compile(requestto);
-            WorkflowExpression.Validate(__workflow_requestto, nameof(requestto), required: false);
-            var __workflow_requestcc = requestcc == null ? null : WorkflowExpression.Compile(requestcc);
-            WorkflowExpression.Validate(__workflow_requestcc, nameof(requestcc), required: false);
-            var __workflow_requestbcc = requestbcc == null ? null : WorkflowExpression.Compile(requestbcc);
-            WorkflowExpression.Validate(__workflow_requestbcc, nameof(requestbcc), required: false);
-            var __workflow_requestsubject = requestsubject == null ? null : WorkflowExpression.Compile(requestsubject);
-            WorkflowExpression.Validate(__workflow_requestsubject, nameof(requestsubject), required: false);
-            var __workflow_requestattachments = requestattachments == null ? null : WorkflowExpression.Compile(requestattachments);
-            WorkflowExpression.Validate(__workflow_requestattachments, nameof(requestattachments), required: false);
-            var __workflow_requesthtmlBody = requesthtmlBody == null ? null : WorkflowExpression.Compile(requesthtmlBody);
-            WorkflowExpression.Validate(__workflow_requesthtmlBody, nameof(requesthtmlBody), required: false);
-            var __workflow_requesttextBody = requesttextBody == null ? null : WorkflowExpression.Compile(requesttextBody);
-            WorkflowExpression.Validate(__workflow_requesttextBody, nameof(requesttextBody), required: false);
+            var __workflow_requestfrom = WorkflowExpression.Compile(requestfrom, nameof(requestfrom), required: true);
+            var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
+            var __workflow_xAPIKey = WorkflowExpression.Compile(xAPIKey, nameof(xAPIKey), required: true);
+            var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
+            var __workflow_requestto = WorkflowExpression.Compile(requestto, nameof(requestto), required: false);
+            var __workflow_requestcc = WorkflowExpression.Compile(requestcc, nameof(requestcc), required: false);
+            var __workflow_requestbcc = WorkflowExpression.Compile(requestbcc, nameof(requestbcc), required: false);
+            var __workflow_requestsubject = WorkflowExpression.Compile(requestsubject, nameof(requestsubject), required: false);
+            var __workflow_requestattachments = WorkflowExpression.Compile(requestattachments, nameof(requestattachments), required: false);
+            var __workflow_requesthtmlBody = WorkflowExpression.Compile(requesthtmlBody, nameof(requesthtmlBody), required: false);
+            var __workflow_requesttextBody = WorkflowExpression.Compile(requesttextBody, nameof(requesttextBody), required: false);
             return new DeferredBodyAction<SendSecureMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/Email", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1));
@@ -100,14 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IBodyWorkflowAction<TrackMessageResponse> TrackMessageAsync(Expression<Func<string>> transactionId, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
-            var __workflow_v = v == null ? null : WorkflowExpression.Compile(v);
-            WorkflowExpression.Validate(__workflow_v, nameof(v), required: true);
-            var __workflow_xAPIKey = xAPIKey == null ? null : WorkflowExpression.Compile(xAPIKey);
-            WorkflowExpression.Validate(__workflow_xAPIKey, nameof(xAPIKey), required: true);
-            var __workflow_xAPISecret = xAPISecret == null ? null : WorkflowExpression.Compile(xAPISecret);
-            WorkflowExpression.Validate(__workflow_xAPISecret, nameof(xAPISecret), required: true);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
+            var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
+            var __workflow_xAPIKey = WorkflowExpression.Compile(xAPIKey, nameof(xAPIKey), required: true);
+            var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
             return new DeferredBodyAction<TrackMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Track", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
@@ -122,14 +107,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
         public IWorkflowAction RetractMessageAsync(Expression<Func<string>> transactionId, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
-            var __workflow_v = v == null ? null : WorkflowExpression.Compile(v);
-            WorkflowExpression.Validate(__workflow_v, nameof(v), required: true);
-            var __workflow_xAPIKey = xAPIKey == null ? null : WorkflowExpression.Compile(xAPIKey);
-            WorkflowExpression.Validate(__workflow_xAPIKey, nameof(xAPIKey), required: true);
-            var __workflow_xAPISecret = xAPISecret == null ? null : WorkflowExpression.Compile(xAPISecret);
-            WorkflowExpression.Validate(__workflow_xAPISecret, nameof(xAPISecret), required: true);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
+            var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: true);
+            var __workflow_xAPIKey = WorkflowExpression.Compile(xAPIKey, nameof(xAPIKey), required: true);
+            var __workflow_xAPISecret = WorkflowExpression.Compile(xAPISecret, nameof(xAPISecret), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Retract", ExpressionConverter.ConvertWithUrlEncoding(__workflow_v, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));

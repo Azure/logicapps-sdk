@@ -23,8 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> filter)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
             return new DeferredBodyAction<GetUsersResponse>(() =>
             {
                 var apiCallPath = "/directory/v1/users";
@@ -39,10 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetGraphUserResponse> GetGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_microsoftObjectId = microsoftObjectId == null ? null : WorkflowExpression.Compile(microsoftObjectId);
-            WorkflowExpression.Validate(__workflow_microsoftObjectId, nameof(microsoftObjectId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
             return new DeferredBodyAction<GetGraphUserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
@@ -55,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction DeleteGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_microsoftObjectId = microsoftObjectId == null ? null : WorkflowExpression.Compile(microsoftObjectId);
-            WorkflowExpression.Validate(__workflow_microsoftObjectId, nameof(microsoftObjectId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
@@ -71,14 +66,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction PatchGraphUserPassword(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_microsoftObjectId = microsoftObjectId == null ? null : WorkflowExpression.Compile(microsoftObjectId);
-            WorkflowExpression.Validate(__workflow_microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = bodypasswordProfileforceChangePasswordNextSignIn == null ? null : WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn);
-            WorkflowExpression.Validate(__workflow_bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            var __workflow_bodypasswordProfilepassword = bodypasswordProfilepassword == null ? null : WorkflowExpression.Compile(bodypasswordProfilepassword);
-            WorkflowExpression.Validate(__workflow_bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            var __workflow_bodypasswordProfilepassword = WorkflowExpression.Compile(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
@@ -128,20 +119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<PostGraphUserResponse> PostGraphUser(Expression<Func<string>> organizationId, Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_bodyaccountEnabled = bodyaccountEnabled == null ? null : WorkflowExpression.Compile(bodyaccountEnabled);
-            WorkflowExpression.Validate(__workflow_bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodymailNickname = bodymailNickname == null ? null : WorkflowExpression.Compile(bodymailNickname);
-            WorkflowExpression.Validate(__workflow_bodymailNickname, nameof(bodymailNickname), required: false);
-            var __workflow_bodyuserPrincipalName = bodyuserPrincipalName == null ? null : WorkflowExpression.Compile(bodyuserPrincipalName);
-            WorkflowExpression.Validate(__workflow_bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
-            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = bodypasswordProfileforceChangePasswordNextSignIn == null ? null : WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn);
-            WorkflowExpression.Validate(__workflow_bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
-            var __workflow_bodypasswordProfilepassword = bodypasswordProfilepassword == null ? null : WorkflowExpression.Compile(bodypasswordProfilepassword);
-            WorkflowExpression.Validate(__workflow_bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_bodyaccountEnabled = WorkflowExpression.Compile(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodymailNickname = WorkflowExpression.Compile(bodymailNickname, nameof(bodymailNickname), required: false);
+            var __workflow_bodyuserPrincipalName = WorkflowExpression.Compile(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            var __workflow_bodypasswordProfileforceChangePasswordNextSignIn = WorkflowExpression.Compile(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            var __workflow_bodypasswordProfilepassword = WorkflowExpression.Compile(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
             return new DeferredBodyAction<PostGraphUserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
@@ -205,10 +189,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetUserLicenseDetailsResponse> GetUserLicenseDetails(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_microsoftObjectId = microsoftObjectId == null ? null : WorkflowExpression.Compile(microsoftObjectId);
-            WorkflowExpression.Validate(__workflow_microsoftObjectId, nameof(microsoftObjectId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
             return new DeferredBodyAction<GetUserLicenseDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
@@ -221,8 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetsubscribedSkusResponse> GetsubscribedSkus(Expression<Func<string>> organizationId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             return new DeferredBodyAction<GetsubscribedSkusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/subscribedSkus", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
@@ -235,14 +216,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<PostUserLicenseResponse> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<bodyaddLicensesInputItem[]>> bodyaddLicenses = null, Expression<Func<JToken[]>> bodyremoveLicenses = null)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_microsoftObjectId = microsoftObjectId == null ? null : WorkflowExpression.Compile(microsoftObjectId);
-            WorkflowExpression.Validate(__workflow_microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_bodyaddLicenses = bodyaddLicenses == null ? null : WorkflowExpression.Compile(bodyaddLicenses);
-            WorkflowExpression.Validate(__workflow_bodyaddLicenses, nameof(bodyaddLicenses), required: false);
-            var __workflow_bodyremoveLicenses = bodyremoveLicenses == null ? null : WorkflowExpression.Compile(bodyremoveLicenses);
-            WorkflowExpression.Validate(__workflow_bodyremoveLicenses, nameof(bodyremoveLicenses), required: false);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            var __workflow_bodyaddLicenses = WorkflowExpression.Compile(bodyaddLicenses, nameof(bodyaddLicenses), required: false);
+            var __workflow_bodyremoveLicenses = WorkflowExpression.Compile(bodyremoveLicenses, nameof(bodyremoveLicenses), required: false);
             return new DeferredBodyAction<PostUserLicenseResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
@@ -284,10 +261,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<UserGroupMembersResponse> UserGroupMembers(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_userGroupId = userGroupId == null ? null : WorkflowExpression.Compile(userGroupId);
-            WorkflowExpression.Validate(__workflow_userGroupId, nameof(userGroupId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_userGroupId = WorkflowExpression.Compile(userGroupId, nameof(userGroupId), required: true);
             return new DeferredBodyAction<UserGroupMembersResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1));
@@ -301,8 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetADSecurityGroupsResponse> GetADSecurityGroups(Expression<Func<string>> organizationId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             return new DeferredBodyAction<GetADSecurityGroupsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
@@ -316,20 +290,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<PostGraphGroupResponse> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodygroupTypes = null, Expression<Func<bool>> bodymailEnabled = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<bool>> bodysecurityEnabled = null)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodygroupTypes = bodygroupTypes == null ? null : WorkflowExpression.Compile(bodygroupTypes);
-            WorkflowExpression.Validate(__workflow_bodygroupTypes, nameof(bodygroupTypes), required: false);
-            var __workflow_bodymailEnabled = bodymailEnabled == null ? null : WorkflowExpression.Compile(bodymailEnabled);
-            WorkflowExpression.Validate(__workflow_bodymailEnabled, nameof(bodymailEnabled), required: false);
-            var __workflow_bodymailNickname = bodymailNickname == null ? null : WorkflowExpression.Compile(bodymailNickname);
-            WorkflowExpression.Validate(__workflow_bodymailNickname, nameof(bodymailNickname), required: false);
-            var __workflow_bodysecurityEnabled = bodysecurityEnabled == null ? null : WorkflowExpression.Compile(bodysecurityEnabled);
-            WorkflowExpression.Validate(__workflow_bodysecurityEnabled, nameof(bodysecurityEnabled), required: false);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodygroupTypes = WorkflowExpression.Compile(bodygroupTypes, nameof(bodygroupTypes), required: false);
+            var __workflow_bodymailEnabled = WorkflowExpression.Compile(bodymailEnabled, nameof(bodymailEnabled), required: false);
+            var __workflow_bodymailNickname = WorkflowExpression.Compile(bodymailNickname, nameof(bodymailNickname), required: false);
+            var __workflow_bodysecurityEnabled = WorkflowExpression.Compile(bodysecurityEnabled, nameof(bodysecurityEnabled), required: false);
             return new DeferredBodyAction<PostGraphGroupResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
@@ -385,8 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetGraphDomainsResponse> GetGraphDomains(Expression<Func<string>> organizationId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
             return new DeferredBodyAction<GetGraphDomainsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/domains", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1));
@@ -399,10 +365,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction DeleteUserGroup(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_userGroupId = userGroupId == null ? null : WorkflowExpression.Compile(userGroupId);
-            WorkflowExpression.Validate(__workflow_userGroupId, nameof(userGroupId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_userGroupId = WorkflowExpression.Compile(userGroupId, nameof(userGroupId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1));
@@ -415,12 +379,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction DeleteUserGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId, Expression<Func<string>> userId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_userGroupId = userGroupId == null ? null : WorkflowExpression.Compile(userGroupId);
-            WorkflowExpression.Validate(__workflow_userGroupId, nameof(userGroupId), required: true);
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_userGroupId = WorkflowExpression.Compile(userGroupId, nameof(userGroupId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -433,12 +394,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction PostUserGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId, Expression<Func<string>> userId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_userGroupId = userGroupId == null ? null : WorkflowExpression.Compile(userGroupId);
-            WorkflowExpression.Validate(__workflow_userGroupId, nameof(userGroupId), required: true);
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_userGroupId = WorkflowExpression.Compile(userGroupId, nameof(userGroupId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -451,12 +409,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_microsoftObjectId = microsoftObjectId == null ? null : WorkflowExpression.Compile(microsoftObjectId);
-            WorkflowExpression.Validate(__workflow_microsoftObjectId, nameof(microsoftObjectId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_microsoftObjectId = WorkflowExpression.Compile(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_microsoftObjectId, 1));
@@ -478,12 +433,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction RemoveGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> groupMicrosoftObjectId, Expression<Func<string>> userMicrosoftObjectId)
         {
-            var __workflow_organizationId = organizationId == null ? null : WorkflowExpression.Compile(organizationId);
-            WorkflowExpression.Validate(__workflow_organizationId, nameof(organizationId), required: true);
-            var __workflow_groupMicrosoftObjectId = groupMicrosoftObjectId == null ? null : WorkflowExpression.Compile(groupMicrosoftObjectId);
-            WorkflowExpression.Validate(__workflow_groupMicrosoftObjectId, nameof(groupMicrosoftObjectId), required: true);
-            var __workflow_userMicrosoftObjectId = userMicrosoftObjectId == null ? null : WorkflowExpression.Compile(userMicrosoftObjectId);
-            WorkflowExpression.Validate(__workflow_userMicrosoftObjectId, nameof(userMicrosoftObjectId), required: true);
+            var __workflow_organizationId = WorkflowExpression.Compile(organizationId, nameof(organizationId), required: true);
+            var __workflow_groupMicrosoftObjectId = WorkflowExpression.Compile(groupMicrosoftObjectId, nameof(groupMicrosoftObjectId), required: true);
+            var __workflow_userMicrosoftObjectId = WorkflowExpression.Compile(userMicrosoftObjectId, nameof(userMicrosoftObjectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupMicrosoftObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userMicrosoftObjectId, 1));
@@ -496,12 +448,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetSubscriptionsResponse> GetSubscriptions(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId)
         {
-            var __workflow_partnerId = partnerId == null ? null : WorkflowExpression.Compile(partnerId);
-            WorkflowExpression.Validate(__workflow_partnerId, nameof(partnerId), required: true);
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
+            var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             return new DeferredBodyAction<GetSubscriptionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1));
@@ -514,16 +463,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IWorkflowAction PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<int>> bodyquantity = null)
         {
-            var __workflow_partnerId = partnerId == null ? null : WorkflowExpression.Compile(partnerId);
-            WorkflowExpression.Validate(__workflow_partnerId, nameof(partnerId), required: true);
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_bodyquantity = bodyquantity == null ? null : WorkflowExpression.Compile(bodyquantity);
-            WorkflowExpression.Validate(__workflow_bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_partnerId = WorkflowExpression.Compile(partnerId, nameof(partnerId), required: true);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));

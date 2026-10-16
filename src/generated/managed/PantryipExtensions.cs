@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> pantryID)
         {
-            var __workflow_pantryID = pantryID == null ? null : WorkflowExpression.Compile(pantryID);
-            WorkflowExpression.Validate(__workflow_pantryID, nameof(pantryID), required: true);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
             return new DeferredBodyAction<GetDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<GetContentsResponse> GetContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var __workflow_pantryID = pantryID == null ? null : WorkflowExpression.Compile(pantryID);
-            WorkflowExpression.Validate(__workflow_pantryID, nameof(pantryID), required: true);
-            var __workflow_basketName = basketName == null ? null : WorkflowExpression.Compile(basketName);
-            WorkflowExpression.Validate(__workflow_basketName, nameof(basketName), required: true);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<GetContentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
@@ -43,10 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<string> Delete(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var __workflow_pantryID = pantryID == null ? null : WorkflowExpression.Compile(pantryID);
-            WorkflowExpression.Validate(__workflow_pantryID, nameof(pantryID), required: true);
-            var __workflow_basketName = basketName == null ? null : WorkflowExpression.Compile(basketName);
-            WorkflowExpression.Validate(__workflow_basketName, nameof(basketName), required: true);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
@@ -59,10 +54,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<string> CreateAndOrReplace(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var __workflow_pantryID = pantryID == null ? null : WorkflowExpression.Compile(pantryID);
-            WorkflowExpression.Validate(__workflow_pantryID, nameof(pantryID), required: true);
-            var __workflow_basketName = basketName == null ? null : WorkflowExpression.Compile(basketName);
-            WorkflowExpression.Validate(__workflow_basketName, nameof(basketName), required: true);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));
@@ -75,10 +68,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
         public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
         {
-            var __workflow_pantryID = pantryID == null ? null : WorkflowExpression.Compile(pantryID);
-            WorkflowExpression.Validate(__workflow_pantryID, nameof(pantryID), required: true);
-            var __workflow_basketName = basketName == null ? null : WorkflowExpression.Compile(basketName);
-            WorkflowExpression.Validate(__workflow_basketName, nameof(basketName), required: true);
+            var __workflow_pantryID = WorkflowExpression.Compile(pantryID, nameof(pantryID), required: true);
+            var __workflow_basketName = WorkflowExpression.Compile(basketName, nameof(basketName), required: true);
             return new DeferredBodyAction<UpdateContentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_basketName, 1));

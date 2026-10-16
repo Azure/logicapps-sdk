@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
         public IBodyWorkflowAction<ErrorResponse> CreateSeal(Expression<Func<string>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<string>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
         {
-            var __workflow_requestcontent = requestcontent == null ? null : WorkflowExpression.Compile(requestcontent);
-            WorkflowExpression.Validate(__workflow_requestcontent, nameof(requestcontent), required: true);
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: false);
-            var __workflow_requestsealForSealing = requestsealForSealing == null ? null : WorkflowExpression.Compile(requestsealForSealing);
-            WorkflowExpression.Validate(__workflow_requestsealForSealing, nameof(requestsealForSealing), required: false);
-            var __workflow_requestvisualSignatureformField = requestvisualSignatureformField == null ? null : WorkflowExpression.Compile(requestvisualSignatureformField);
-            WorkflowExpression.Validate(__workflow_requestvisualSignatureformField, nameof(requestvisualSignatureformField), required: false);
-            var __workflow_requestvisualSignatureimagecontent = requestvisualSignatureimagecontent == null ? null : WorkflowExpression.Compile(requestvisualSignatureimagecontent);
-            WorkflowExpression.Validate(__workflow_requestvisualSignatureimagecontent, nameof(requestvisualSignatureimagecontent), required: false);
-            var __workflow_requestvisualSignatureimagecontentType = requestvisualSignatureimagecontentType == null ? null : WorkflowExpression.Compile(requestvisualSignatureimagecontentType);
-            WorkflowExpression.Validate(__workflow_requestvisualSignatureimagecontentType, nameof(requestvisualSignatureimagecontentType), required: false);
-            var __workflow_requestvisualSignaturepositions = requestvisualSignaturepositions == null ? null : WorkflowExpression.Compile(requestvisualSignaturepositions);
-            WorkflowExpression.Validate(__workflow_requestvisualSignaturepositions, nameof(requestvisualSignaturepositions), required: false);
+            var __workflow_requestcontent = WorkflowExpression.Compile(requestcontent, nameof(requestcontent), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: false);
+            var __workflow_requestsealForSealing = WorkflowExpression.Compile(requestsealForSealing, nameof(requestsealForSealing), required: false);
+            var __workflow_requestvisualSignatureformField = WorkflowExpression.Compile(requestvisualSignatureformField, nameof(requestvisualSignatureformField), required: false);
+            var __workflow_requestvisualSignatureimagecontent = WorkflowExpression.Compile(requestvisualSignatureimagecontent, nameof(requestvisualSignatureimagecontent), required: false);
+            var __workflow_requestvisualSignatureimagecontentType = WorkflowExpression.Compile(requestvisualSignatureimagecontentType, nameof(requestvisualSignatureimagecontentType), required: false);
+            var __workflow_requestvisualSignaturepositions = WorkflowExpression.Compile(requestvisualSignaturepositions, nameof(requestvisualSignaturepositions), required: false);
             return new DeferredBodyAction<ErrorResponse>(() =>
             {
                 var apiCallPath = "/seal";

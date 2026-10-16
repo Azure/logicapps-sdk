@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
     {
         public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, FlowRecurrence recurrence = null)
         {
-            var __workflow_webhookform = webhookform == null ? null : WorkflowExpression.Compile(webhookform);
-            WorkflowExpression.Validate(__workflow_webhookform, nameof(webhookform), required: true);
+            var __workflow_webhookform = WorkflowExpression.Compile(webhookform, nameof(webhookform), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhooks";

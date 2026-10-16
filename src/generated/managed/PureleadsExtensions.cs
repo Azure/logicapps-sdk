@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
         public IWorkflowAction NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodymobileNo = bodymobileNo == null ? null : WorkflowExpression.Compile(bodymobileNo);
-            WorkflowExpression.Validate(__workflow_bodymobileNo, nameof(bodymobileNo), required: false);
-            var __workflow_bodysecondaryEmail = bodysecondaryEmail == null ? null : WorkflowExpression.Compile(bodysecondaryEmail);
-            WorkflowExpression.Validate(__workflow_bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
-            var __workflow_bodylifecycleStageName = bodylifecycleStageName == null ? null : WorkflowExpression.Compile(bodylifecycleStageName);
-            WorkflowExpression.Validate(__workflow_bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodymobileNo = WorkflowExpression.Compile(bodymobileNo, nameof(bodymobileNo), required: false);
+            var __workflow_bodysecondaryEmail = WorkflowExpression.Compile(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
+            var __workflow_bodylifecycleStageName = WorkflowExpression.Compile(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/contacts";

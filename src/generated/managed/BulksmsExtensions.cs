@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
         public IWorkflowAction SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<int>> bodylongMessageMaxParts, Expression<Func<string>> bodyfrom = null)
         {
-            var __workflow_autoUnicode = autoUnicode == null ? null : WorkflowExpression.Compile(autoUnicode);
-            WorkflowExpression.Validate(__workflow_autoUnicode, nameof(autoUnicode), required: true);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
-            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
-            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: true);
-            var __workflow_bodylongMessageMaxParts = bodylongMessageMaxParts == null ? null : WorkflowExpression.Compile(bodylongMessageMaxParts);
-            WorkflowExpression.Validate(__workflow_bodylongMessageMaxParts, nameof(bodylongMessageMaxParts), required: true);
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_autoUnicode = WorkflowExpression.Compile(autoUnicode, nameof(autoUnicode), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
+            var __workflow_bodylongMessageMaxParts = WorkflowExpression.Compile(bodylongMessageMaxParts, nameof(bodylongMessageMaxParts), required: true);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/messages";

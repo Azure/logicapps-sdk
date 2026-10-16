@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<FindResponse> Find(Expression<Func<string>> query, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<double>> minmatch = null, Expression<Func<int>> matchprecision = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_maxresults = maxresults == null ? null : WorkflowExpression.Compile(maxresults);
-            WorkflowExpression.Validate(__workflow_maxresults, nameof(maxresults), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_minmatch = minmatch == null ? null : WorkflowExpression.Compile(minmatch);
-            WorkflowExpression.Validate(__workflow_minmatch, nameof(minmatch), required: false);
-            var __workflow_matchprecision = matchprecision == null ? null : WorkflowExpression.Compile(matchprecision);
-            WorkflowExpression.Validate(__workflow_matchprecision, nameof(matchprecision), required: false);
-            var __workflow_fq = fq == null ? null : WorkflowExpression.Compile(fq);
-            WorkflowExpression.Validate(__workflow_fq, nameof(fq), required: false);
-            var __workflow_outputSrs = outputSrs == null ? null : WorkflowExpression.Compile(outputSrs);
-            WorkflowExpression.Validate(__workflow_outputSrs, nameof(outputSrs), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_minmatch = WorkflowExpression.Compile(minmatch, nameof(minmatch), required: false);
+            var __workflow_matchprecision = WorkflowExpression.Compile(matchprecision, nameof(matchprecision), required: false);
+            var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
+            var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
             return new DeferredBodyAction<FindResponse>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/find";
@@ -65,22 +55,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<PostcodeResponse> Postcode(Expression<Func<string>> postcode, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
         {
-            var __workflow_postcode = postcode == null ? null : WorkflowExpression.Compile(postcode);
-            WorkflowExpression.Validate(__workflow_postcode, nameof(postcode), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_maxresults = maxresults == null ? null : WorkflowExpression.Compile(maxresults);
-            WorkflowExpression.Validate(__workflow_maxresults, nameof(maxresults), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_fq = fq == null ? null : WorkflowExpression.Compile(fq);
-            WorkflowExpression.Validate(__workflow_fq, nameof(fq), required: false);
-            var __workflow_outputSrs = outputSrs == null ? null : WorkflowExpression.Compile(outputSrs);
-            WorkflowExpression.Validate(__workflow_outputSrs, nameof(outputSrs), required: false);
+            var __workflow_postcode = WorkflowExpression.Compile(postcode, nameof(postcode), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
+            var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
             return new DeferredBodyAction<PostcodeResponse>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/postcode";
@@ -108,18 +90,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<UPRNResponse> UPRN(Expression<Func<int>> uprn, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
         {
-            var __workflow_uprn = uprn == null ? null : WorkflowExpression.Compile(uprn);
-            WorkflowExpression.Validate(__workflow_uprn, nameof(uprn), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_fq = fq == null ? null : WorkflowExpression.Compile(fq);
-            WorkflowExpression.Validate(__workflow_fq, nameof(fq), required: false);
-            var __workflow_outputSrs = outputSrs == null ? null : WorkflowExpression.Compile(outputSrs);
-            WorkflowExpression.Validate(__workflow_outputSrs, nameof(outputSrs), required: false);
+            var __workflow_uprn = WorkflowExpression.Compile(uprn, nameof(uprn), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
+            var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
             return new DeferredBodyAction<UPRNResponse>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/uprn";
@@ -143,22 +119,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<NearestResponse> Nearest(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
-            var __workflow_point = point == null ? null : WorkflowExpression.Compile(point);
-            WorkflowExpression.Validate(__workflow_point, nameof(point), required: true);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_fq = fq == null ? null : WorkflowExpression.Compile(fq);
-            WorkflowExpression.Validate(__workflow_fq, nameof(fq), required: false);
-            var __workflow_outputSrs = outputSrs == null ? null : WorkflowExpression.Compile(outputSrs);
-            WorkflowExpression.Validate(__workflow_outputSrs, nameof(outputSrs), required: false);
-            var __workflow_srs = srs == null ? null : WorkflowExpression.Compile(srs);
-            WorkflowExpression.Validate(__workflow_srs, nameof(srs), required: false);
+            var __workflow_point = WorkflowExpression.Compile(point, nameof(point), required: true);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
+            var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
+            var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
             return new DeferredBodyAction<NearestResponse>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/nearest";
@@ -186,24 +154,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<BBoxResponse> BBox(Expression<Func<string>> bbox, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
-            var __workflow_bbox = bbox == null ? null : WorkflowExpression.Compile(bbox);
-            WorkflowExpression.Validate(__workflow_bbox, nameof(bbox), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_maxresults = maxresults == null ? null : WorkflowExpression.Compile(maxresults);
-            WorkflowExpression.Validate(__workflow_maxresults, nameof(maxresults), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_fq = fq == null ? null : WorkflowExpression.Compile(fq);
-            WorkflowExpression.Validate(__workflow_fq, nameof(fq), required: false);
-            var __workflow_outputSrs = outputSrs == null ? null : WorkflowExpression.Compile(outputSrs);
-            WorkflowExpression.Validate(__workflow_outputSrs, nameof(outputSrs), required: false);
-            var __workflow_srs = srs == null ? null : WorkflowExpression.Compile(srs);
-            WorkflowExpression.Validate(__workflow_srs, nameof(srs), required: false);
+            var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
+            var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
+            var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
             return new DeferredBodyAction<BBoxResponse>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/bbox";
@@ -233,26 +192,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<RadiusResponse> Radius(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
-            var __workflow_point = point == null ? null : WorkflowExpression.Compile(point);
-            WorkflowExpression.Validate(__workflow_point, nameof(point), required: true);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_maxresults = maxresults == null ? null : WorkflowExpression.Compile(maxresults);
-            WorkflowExpression.Validate(__workflow_maxresults, nameof(maxresults), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_fq = fq == null ? null : WorkflowExpression.Compile(fq);
-            WorkflowExpression.Validate(__workflow_fq, nameof(fq), required: false);
-            var __workflow_outputSrs = outputSrs == null ? null : WorkflowExpression.Compile(outputSrs);
-            WorkflowExpression.Validate(__workflow_outputSrs, nameof(outputSrs), required: false);
-            var __workflow_srs = srs == null ? null : WorkflowExpression.Compile(srs);
-            WorkflowExpression.Validate(__workflow_srs, nameof(srs), required: false);
+            var __workflow_point = WorkflowExpression.Compile(point, nameof(point), required: true);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
+            var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
+            var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
             return new DeferredBodyAction<RadiusResponse>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/radius";
@@ -285,28 +234,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
         public IBodyWorkflowAction<PolygonResponse> Polygon(Expression<Func<string>> contentType, Expression<Func<string>> bodytype, Expression<Func<string>> bodygeometry, Expression<Func<int>> referencepoint = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> dataset = null, Expression<Func<int>> offset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodygeometry = bodygeometry == null ? null : WorkflowExpression.Compile(bodygeometry);
-            WorkflowExpression.Validate(__workflow_bodygeometry, nameof(bodygeometry), required: true);
-            var __workflow_referencepoint = referencepoint == null ? null : WorkflowExpression.Compile(referencepoint);
-            WorkflowExpression.Validate(__workflow_referencepoint, nameof(referencepoint), required: false);
-            var __workflow_maxresults = maxresults == null ? null : WorkflowExpression.Compile(maxresults);
-            WorkflowExpression.Validate(__workflow_maxresults, nameof(maxresults), required: false);
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_lr = lr == null ? null : WorkflowExpression.Compile(lr);
-            WorkflowExpression.Validate(__workflow_lr, nameof(lr), required: false);
-            var __workflow_fq = fq == null ? null : WorkflowExpression.Compile(fq);
-            WorkflowExpression.Validate(__workflow_fq, nameof(fq), required: false);
-            var __workflow_outputSrs = outputSrs == null ? null : WorkflowExpression.Compile(outputSrs);
-            WorkflowExpression.Validate(__workflow_outputSrs, nameof(outputSrs), required: false);
-            var __workflow_srs = srs == null ? null : WorkflowExpression.Compile(srs);
-            WorkflowExpression.Validate(__workflow_srs, nameof(srs), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodygeometry = WorkflowExpression.Compile(bodygeometry, nameof(bodygeometry), required: true);
+            var __workflow_referencepoint = WorkflowExpression.Compile(referencepoint, nameof(referencepoint), required: false);
+            var __workflow_maxresults = WorkflowExpression.Compile(maxresults, nameof(maxresults), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_lr = WorkflowExpression.Compile(lr, nameof(lr), required: false);
+            var __workflow_fq = WorkflowExpression.Compile(fq, nameof(fq), required: false);
+            var __workflow_outputSrs = WorkflowExpression.Compile(outputSrs, nameof(outputSrs), required: false);
+            var __workflow_srs = WorkflowExpression.Compile(srs, nameof(srs), required: false);
             return new DeferredBodyAction<PolygonResponse>(() =>
             {
                 var apiCallPath = "/places/v1/addresses/polygon";

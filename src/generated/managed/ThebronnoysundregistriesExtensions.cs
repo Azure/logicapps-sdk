@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetAllSearchResponse> GetAllSearch(Expression<Func<string>> navn = null, Expression<Func<string>> fraRegistreringsdatoEnhetsregisteret = null, Expression<Func<string>> tilRegistreringsdatoEnhetsregisteret = null, Expression<Func<bool>> konkurs = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_navn = navn == null ? null : WorkflowExpression.Compile(navn);
-            WorkflowExpression.Validate(__workflow_navn, nameof(navn), required: false);
-            var __workflow_fraRegistreringsdatoEnhetsregisteret = fraRegistreringsdatoEnhetsregisteret == null ? null : WorkflowExpression.Compile(fraRegistreringsdatoEnhetsregisteret);
-            WorkflowExpression.Validate(__workflow_fraRegistreringsdatoEnhetsregisteret, nameof(fraRegistreringsdatoEnhetsregisteret), required: false);
-            var __workflow_tilRegistreringsdatoEnhetsregisteret = tilRegistreringsdatoEnhetsregisteret == null ? null : WorkflowExpression.Compile(tilRegistreringsdatoEnhetsregisteret);
-            WorkflowExpression.Validate(__workflow_tilRegistreringsdatoEnhetsregisteret, nameof(tilRegistreringsdatoEnhetsregisteret), required: false);
-            var __workflow_konkurs = konkurs == null ? null : WorkflowExpression.Compile(konkurs);
-            WorkflowExpression.Validate(__workflow_konkurs, nameof(konkurs), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_navn = WorkflowExpression.Compile(navn, nameof(navn), required: false);
+            var __workflow_fraRegistreringsdatoEnhetsregisteret = WorkflowExpression.Compile(fraRegistreringsdatoEnhetsregisteret, nameof(fraRegistreringsdatoEnhetsregisteret), required: false);
+            var __workflow_tilRegistreringsdatoEnhetsregisteret = WorkflowExpression.Compile(tilRegistreringsdatoEnhetsregisteret, nameof(tilRegistreringsdatoEnhetsregisteret), required: false);
+            var __workflow_konkurs = WorkflowExpression.Compile(konkurs, nameof(konkurs), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetAllSearchResponse>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/enheter";
@@ -45,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetByOrganizationNumberResponse> GetByOrganizationNumber(Expression<Func<string>> orgnr)
         {
-            var __workflow_orgnr = orgnr == null ? null : WorkflowExpression.Compile(orgnr);
-            WorkflowExpression.Validate(__workflow_orgnr, nameof(orgnr), required: true);
+            var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
             return new DeferredBodyAction<GetByOrganizationNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orgnr, 1));
@@ -59,8 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetEntityRolesResponse> GetEntityRoles(Expression<Func<string>> orgnr)
         {
-            var __workflow_orgnr = orgnr == null ? null : WorkflowExpression.Compile(orgnr);
-            WorkflowExpression.Validate(__workflow_orgnr, nameof(orgnr), required: true);
+            var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
             return new DeferredBodyAction<GetEntityRolesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/enheter/{0}/roller", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orgnr, 1));
@@ -74,10 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetAllSearchSubResponse> GetAllSearchSub(Expression<Func<string>> navn = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_navn = navn == null ? null : WorkflowExpression.Compile(navn);
-            WorkflowExpression.Validate(__workflow_navn, nameof(navn), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_navn = WorkflowExpression.Compile(navn, nameof(navn), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetAllSearchSubResponse>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/underenheter";
@@ -94,8 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetSubByOrganizationNumberResponse> GetSubByOrganizationNumber(Expression<Func<string>> orgnr)
         {
-            var __workflow_orgnr = orgnr == null ? null : WorkflowExpression.Compile(orgnr);
-            WorkflowExpression.Validate(__workflow_orgnr, nameof(orgnr), required: true);
+            var __workflow_orgnr = WorkflowExpression.Compile(orgnr, nameof(orgnr), required: true);
             return new DeferredBodyAction<GetSubByOrganizationNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enhetsregisteret/api/underenheter/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orgnr, 1));
@@ -108,10 +98,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetEntitiesUpdatesResponse> GetEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
         {
-            var __workflow_dato = dato == null ? null : WorkflowExpression.Compile(dato);
-            WorkflowExpression.Validate(__workflow_dato, nameof(dato), required: false);
-            var __workflow_oppdateringsid = oppdateringsid == null ? null : WorkflowExpression.Compile(oppdateringsid);
-            WorkflowExpression.Validate(__workflow_oppdateringsid, nameof(oppdateringsid), required: false);
+            var __workflow_dato = WorkflowExpression.Compile(dato, nameof(dato), required: false);
+            var __workflow_oppdateringsid = WorkflowExpression.Compile(oppdateringsid, nameof(oppdateringsid), required: false);
             return new DeferredBodyAction<GetEntitiesUpdatesResponse>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/oppdateringer/enheter";
@@ -128,10 +116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebronnoysundregistries
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebronnoysundregistries")]
         public IBodyWorkflowAction<GetSubEntitiesUpdatesResponse> GetSubEntitiesUpdates(Expression<Func<string>> dato = null, Expression<Func<int>> oppdateringsid = null)
         {
-            var __workflow_dato = dato == null ? null : WorkflowExpression.Compile(dato);
-            WorkflowExpression.Validate(__workflow_dato, nameof(dato), required: false);
-            var __workflow_oppdateringsid = oppdateringsid == null ? null : WorkflowExpression.Compile(oppdateringsid);
-            WorkflowExpression.Validate(__workflow_oppdateringsid, nameof(oppdateringsid), required: false);
+            var __workflow_dato = WorkflowExpression.Compile(dato, nameof(dato), required: false);
+            var __workflow_oppdateringsid = WorkflowExpression.Compile(oppdateringsid, nameof(oppdateringsid), required: false);
             return new DeferredBodyAction<GetSubEntitiesUpdatesResponse>(() =>
             {
                 var apiCallPath = "/enhetsregisteret/api/oppdateringer/underenheter";

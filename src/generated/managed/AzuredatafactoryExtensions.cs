@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
         public IBodyWorkflowAction<CreatePipelineRunResponse> CreatePipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineName, Expression<Func<string>> referencePipelineRunId = null)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_dataFactoryName = dataFactoryName == null ? null : WorkflowExpression.Compile(dataFactoryName);
-            WorkflowExpression.Validate(__workflow_dataFactoryName, nameof(dataFactoryName), required: true);
-            var __workflow_pipelineName = pipelineName == null ? null : WorkflowExpression.Compile(pipelineName);
-            WorkflowExpression.Validate(__workflow_pipelineName, nameof(pipelineName), required: true);
-            var __workflow_referencePipelineRunId = referencePipelineRunId == null ? null : WorkflowExpression.Compile(referencePipelineRunId);
-            WorkflowExpression.Validate(__workflow_referencePipelineRunId, nameof(referencePipelineRunId), required: false);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_dataFactoryName = WorkflowExpression.Compile(dataFactoryName, nameof(dataFactoryName), required: true);
+            var __workflow_pipelineName = WorkflowExpression.Compile(pipelineName, nameof(pipelineName), required: true);
+            var __workflow_referencePipelineRunId = WorkflowExpression.Compile(referencePipelineRunId, nameof(referencePipelineRunId), required: false);
             return new DeferredBodyAction<CreatePipelineRunResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelines/{3}/CreateRun", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineName, 1));
@@ -45,14 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
         public IWorkflowAction CancelPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_dataFactoryName = dataFactoryName == null ? null : WorkflowExpression.Compile(dataFactoryName);
-            WorkflowExpression.Validate(__workflow_dataFactoryName, nameof(dataFactoryName), required: true);
-            var __workflow_pipelineRunName = pipelineRunName == null ? null : WorkflowExpression.Compile(pipelineRunName);
-            WorkflowExpression.Validate(__workflow_pipelineRunName, nameof(pipelineRunName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_dataFactoryName = WorkflowExpression.Compile(dataFactoryName, nameof(dataFactoryName), required: true);
+            var __workflow_pipelineRunName = WorkflowExpression.Compile(pipelineRunName, nameof(pipelineRunName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/cancelpipelineRun/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineRunName, 1));
@@ -66,14 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatafactory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatafactory")]
         public IBodyWorkflowAction<PipelineRun> GetPipelineRun(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> dataFactoryName, Expression<Func<string>> pipelineRunName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_dataFactoryName = dataFactoryName == null ? null : WorkflowExpression.Compile(dataFactoryName);
-            WorkflowExpression.Validate(__workflow_dataFactoryName, nameof(dataFactoryName), required: true);
-            var __workflow_pipelineRunName = pipelineRunName == null ? null : WorkflowExpression.Compile(pipelineRunName);
-            WorkflowExpression.Validate(__workflow_pipelineRunName, nameof(pipelineRunName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_dataFactoryName = WorkflowExpression.Compile(dataFactoryName, nameof(dataFactoryName), required: true);
+            var __workflow_pipelineRunName = WorkflowExpression.Compile(pipelineRunName, nameof(pipelineRunName), required: true);
             return new DeferredBodyAction<PipelineRun>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.DataFactory/factories/{2}/pipelineRuns/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataFactoryName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineRunName, 1));

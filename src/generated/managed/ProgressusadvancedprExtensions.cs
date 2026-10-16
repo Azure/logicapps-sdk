@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
         public IWorkflowAction Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_tenantID = tenantID == null ? null : WorkflowExpression.Compile(tenantID);
-            WorkflowExpression.Validate(__workflow_tenantID, nameof(tenantID), required: true);
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_aPIName = aPIName == null ? null : WorkflowExpression.Compile(aPIName);
-            WorkflowExpression.Validate(__workflow_aPIName, nameof(aPIName), required: true);
-            var __workflow_aPIVersion2 = aPIVersion2 == null ? null : WorkflowExpression.Compile(aPIVersion2);
-            WorkflowExpression.Validate(__workflow_aPIVersion2, nameof(aPIVersion2), required: true);
-            var __workflow_companyID = companyID == null ? null : WorkflowExpression.Compile(companyID);
-            WorkflowExpression.Validate(__workflow_companyID, nameof(companyID), required: true);
-            var __workflow_pluralAPIName = pluralAPIName == null ? null : WorkflowExpression.Compile(pluralAPIName);
-            WorkflowExpression.Validate(__workflow_pluralAPIName, nameof(pluralAPIName), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_tenantID = WorkflowExpression.Compile(tenantID, nameof(tenantID), required: true);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_aPIName = WorkflowExpression.Compile(aPIName, nameof(aPIName), required: true);
+            var __workflow_aPIVersion2 = WorkflowExpression.Compile(aPIVersion2, nameof(aPIVersion2), required: true);
+            var __workflow_companyID = WorkflowExpression.Compile(companyID, nameof(companyID), required: true);
+            var __workflow_pluralAPIName = WorkflowExpression.Compile(pluralAPIName, nameof(pluralAPIName), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pluralAPIName, 1));

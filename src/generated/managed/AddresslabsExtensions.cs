@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
         public IBodyWorkflowAction<ParseAddressResponse> ParseAddress(Expression<Func<string>> bodyaddress)
         {
-            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
-            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
             return new DeferredBodyAction<ParseAddressResponse>(() =>
             {
                 var apiCallPath = "/parsed-address";

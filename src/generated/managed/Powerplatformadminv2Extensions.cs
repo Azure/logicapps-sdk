@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorActionResponse> ExecuteRecommendationAction(Expression<Func<string>> bodyrecommendationName, Expression<Func<object>> bodyparameters, Expression<Func<string>> actionName, Expression<Func<string>> apiVersion)
         {
-            var __workflow_bodyrecommendationName = bodyrecommendationName == null ? null : WorkflowExpression.Compile(bodyrecommendationName);
-            WorkflowExpression.Validate(__workflow_bodyrecommendationName, nameof(bodyrecommendationName), required: true);
-            var __workflow_bodyparameters = bodyparameters == null ? null : WorkflowExpression.Compile(bodyparameters);
-            WorkflowExpression.Validate(__workflow_bodyparameters, nameof(bodyparameters), required: true);
-            var __workflow_actionName = actionName == null ? null : WorkflowExpression.Compile(actionName);
-            WorkflowExpression.Validate(__workflow_actionName, nameof(actionName), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyrecommendationName = WorkflowExpression.Compile(bodyrecommendationName, nameof(bodyrecommendationName), required: true);
+            var __workflow_bodyparameters = WorkflowExpression.Compile(bodyparameters, nameof(bodyparameters), required: true);
+            var __workflow_actionName = WorkflowExpression.Compile(actionName, nameof(actionName), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<AdvisorActionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analytics/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionName, 1));
@@ -45,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorRecommendationIEnumerableResponseWithContinuation> GetRecommendations(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<AdvisorRecommendationIEnumerableResponseWithContinuation>(() =>
             {
                 var apiCallPath = "/analytics/advisorRecommendations";
@@ -60,10 +55,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation> GetRecommendationResources(Expression<Func<string>> scenario, Expression<Func<string>> apiVersion)
         {
-            var __workflow_scenario = scenario == null ? null : WorkflowExpression.Compile(scenario);
-            WorkflowExpression.Validate(__workflow_scenario, nameof(scenario), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_scenario = WorkflowExpression.Compile(scenario, nameof(scenario), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<AdvisorRecommendationResourceIEnumerableResponseWithContinuation>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analytics/advisorRecommendations/{0}/resources", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scenario, 1));
@@ -77,8 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantApplicationPackageContinuationResponse> GetTenantApplicationPackage(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<TenantApplicationPackageContinuationResponse>(() =>
             {
                 var apiCallPath = "/appmanagement/applicationPackages";
@@ -92,14 +84,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ApplicationPackageContinuationResponse> GetEnvironmentApplicationPackage(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<appInstallStateInput>> appInstallState = null, Expression<Func<string>> lcid = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_appInstallState = appInstallState == null ? null : WorkflowExpression.Compile(appInstallState);
-            WorkflowExpression.Validate(__workflow_appInstallState, nameof(appInstallState), required: false);
-            var __workflow_lcid = lcid == null ? null : WorkflowExpression.Compile(lcid);
-            WorkflowExpression.Validate(__workflow_lcid, nameof(lcid), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_appInstallState = WorkflowExpression.Compile(appInstallState, nameof(appInstallState), required: false);
+            var __workflow_lcid = WorkflowExpression.Compile(lcid, nameof(lcid), required: false);
             return new DeferredBodyAction<ApplicationPackageContinuationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -117,14 +105,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<InstancePackage> InstallApplicationPackage(Expression<Func<string>> environmentId, Expression<Func<string>> uniqueName, Expression<Func<string>> apiVersion, Expression<Func<string>> bodypayloadValue = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_uniqueName = uniqueName == null ? null : WorkflowExpression.Compile(uniqueName);
-            WorkflowExpression.Validate(__workflow_uniqueName, nameof(uniqueName), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodypayloadValue = bodypayloadValue == null ? null : WorkflowExpression.Compile(bodypayloadValue);
-            WorkflowExpression.Validate(__workflow_bodypayloadValue, nameof(bodypayloadValue), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_uniqueName = WorkflowExpression.Compile(uniqueName, nameof(uniqueName), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodypayloadValue = WorkflowExpression.Compile(bodypayloadValue, nameof(bodypayloadValue), required: false);
             return new DeferredBodyAction<InstancePackage>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/applicationPackages/{1}/install", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_uniqueName, 1));
@@ -151,12 +135,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<InstancePackageOperationPollingResponse> GetApplicationPackageInstallStatus(Expression<Func<string>> environmentId, Expression<Func<string>> operationId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_operationId = operationId == null ? null : WorkflowExpression.Compile(operationId);
-            WorkflowExpression.Validate(__workflow_operationId, nameof(operationId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_operationId = WorkflowExpression.Compile(operationId, nameof(operationId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<InstancePackageOperationPollingResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/appmanagement/environments/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
@@ -170,8 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> ListRoleAssignments(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RoleAssignmentResponse>(() =>
             {
                 var apiCallPath = "/authorization/roleAssignments";
@@ -185,16 +165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleAssignmentResponse> CreateRoleAssignment(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyprincipalObjectId = null, Expression<Func<string>> bodyroleDefinitionId = null, Expression<Func<string>> bodyscope = null, Expression<Func<string>> bodyprincipalType = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyprincipalObjectId = bodyprincipalObjectId == null ? null : WorkflowExpression.Compile(bodyprincipalObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
-            var __workflow_bodyroleDefinitionId = bodyroleDefinitionId == null ? null : WorkflowExpression.Compile(bodyroleDefinitionId);
-            WorkflowExpression.Validate(__workflow_bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
-            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
-            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
-            var __workflow_bodyprincipalType = bodyprincipalType == null ? null : WorkflowExpression.Compile(bodyprincipalType);
-            WorkflowExpression.Validate(__workflow_bodyprincipalType, nameof(bodyprincipalType), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyprincipalObjectId = WorkflowExpression.Compile(bodyprincipalObjectId, nameof(bodyprincipalObjectId), required: false);
+            var __workflow_bodyroleDefinitionId = WorkflowExpression.Compile(bodyroleDefinitionId, nameof(bodyroleDefinitionId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodyprincipalType = WorkflowExpression.Compile(bodyprincipalType, nameof(bodyprincipalType), required: false);
             return new DeferredBodyAction<RoleAssignmentResponse>(() =>
             {
                 var apiCallPath = "/authorization/roleAssignments";
@@ -239,10 +214,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteRoleAssignment(Expression<Func<string>> roleAssignmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_roleAssignmentId = roleAssignmentId == null ? null : WorkflowExpression.Compile(roleAssignmentId);
-            WorkflowExpression.Validate(__workflow_roleAssignmentId, nameof(roleAssignmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_roleAssignmentId = WorkflowExpression.Compile(roleAssignmentId, nameof(roleAssignmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/authorization/roleAssignments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roleAssignmentId, 1));
@@ -256,8 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RoleDefinitionResponse> ListRoleDefinitions(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RoleDefinitionResponse>(() =>
             {
                 var apiCallPath = "/authorization/roleDefinitions";
@@ -271,12 +243,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ListConnectorsResponse> ListConnectors(Expression<Func<string>> environmentId, Expression<Func<string>> filter, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ListConnectorsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -291,14 +260,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<GetConnectorByIdResponse> GetConnectorById(Expression<Func<string>> environmentId, Expression<Func<string>> connectorId, Expression<Func<string>> filter, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_connectorId = connectorId == null ? null : WorkflowExpression.Compile(connectorId);
-            WorkflowExpression.Validate(__workflow_connectorId, nameof(connectorId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_connectorId = WorkflowExpression.Compile(connectorId, nameof(connectorId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<GetConnectorByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connectivity/environments/{0}/connectors/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_connectorId, 1));
@@ -313,12 +278,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BotQuarantineStatus> GetBotQuarantineStatus(Expression<Func<string>> environmentId, Expression<Func<string>> botId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
-            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BotQuarantineStatus>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
@@ -332,12 +294,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsQuarantined(Expression<Func<string>> environmentId, Expression<Func<string>> botId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
-            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BotQuarantineStatus>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsQuarantined", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
@@ -351,12 +310,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BotQuarantineStatus> SetBotAsUnquarantined(Expression<Func<string>> environmentId, Expression<Func<string>> botId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_botId = botId == null ? null : WorkflowExpression.Compile(botId);
-            WorkflowExpression.Validate(__workflow_botId, nameof(botId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_botId = WorkflowExpression.Compile(botId, nameof(botId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BotQuarantineStatus>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/copilotstudio/environments/{0}/bots/{1}/api/botQuarantine/SetAsUnquarantined", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_botId, 1));
@@ -370,12 +326,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentBackup(Expression<Func<string>> environmentId, Expression<Func<string>> backupId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_backupId = backupId == null ? null : WorkflowExpression.Compile(backupId);
-            WorkflowExpression.Validate(__workflow_backupId, nameof(backupId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_backupId = WorkflowExpression.Compile(backupId, nameof(backupId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/backups/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_backupId, 1));
@@ -389,16 +342,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ValidationResponse> DisableEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<string>> bodyreason = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
-            var __workflow_bodyreason = bodyreason == null ? null : WorkflowExpression.Compile(bodyreason);
-            WorkflowExpression.Validate(__workflow_bodyreason, nameof(bodyreason), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
+            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Disable", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -429,14 +377,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<OperationExecutionResult> DisableDisasterRecovery(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -454,14 +398,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<OperationExecutionResult> PerformDRDrill(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/disasterRecoveryDrill", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -479,16 +419,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ValidationResponse> EnableEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<string>> bodyreason = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
-            var __workflow_bodyreason = bodyreason == null ? null : WorkflowExpression.Compile(bodyreason);
-            WorkflowExpression.Validate(__workflow_bodyreason, nameof(bodyreason), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
+            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Enable", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -519,14 +454,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<OperationExecutionResult> EnableDisasterRecovery(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/enableDisasterRecovery", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -544,16 +475,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<OperationExecutionResult> PerformForceFailover(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodylastSyncTime, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodylastSyncTime = bodylastSyncTime == null ? null : WorkflowExpression.Compile(bodylastSyncTime);
-            WorkflowExpression.Validate(__workflow_bodylastSyncTime, nameof(bodylastSyncTime), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodylastSyncTime = WorkflowExpression.Compile(bodylastSyncTime, nameof(bodylastSyncTime), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<OperationExecutionResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/forceFailover", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -580,14 +506,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ValidationResponse> RecoverEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/recover", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -605,26 +527,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ValidationResponse> CopyEnvironment(Expression<Func<string>> targetEnvironmentId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodysourceEnvironmentId, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<bodycopyTypeInput>> bodycopyType = null, Expression<Func<string>> bodycopyOptionsenvironmentNameToOverride = null, Expression<Func<string>> bodycopyOptionssecurityGroupIdToOverride = null, Expression<Func<bool>> bodycopyOptionsskipAuditData = null, Expression<Func<bool>> bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = null)
         {
-            var __workflow_targetEnvironmentId = targetEnvironmentId == null ? null : WorkflowExpression.Compile(targetEnvironmentId);
-            WorkflowExpression.Validate(__workflow_targetEnvironmentId, nameof(targetEnvironmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodysourceEnvironmentId = bodysourceEnvironmentId == null ? null : WorkflowExpression.Compile(bodysourceEnvironmentId);
-            WorkflowExpression.Validate(__workflow_bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
-            var __workflow_bodycopyType = bodycopyType == null ? null : WorkflowExpression.Compile(bodycopyType);
-            WorkflowExpression.Validate(__workflow_bodycopyType, nameof(bodycopyType), required: false);
-            var __workflow_bodycopyOptionsenvironmentNameToOverride = bodycopyOptionsenvironmentNameToOverride == null ? null : WorkflowExpression.Compile(bodycopyOptionsenvironmentNameToOverride);
-            WorkflowExpression.Validate(__workflow_bodycopyOptionsenvironmentNameToOverride, nameof(bodycopyOptionsenvironmentNameToOverride), required: false);
-            var __workflow_bodycopyOptionssecurityGroupIdToOverride = bodycopyOptionssecurityGroupIdToOverride == null ? null : WorkflowExpression.Compile(bodycopyOptionssecurityGroupIdToOverride);
-            WorkflowExpression.Validate(__workflow_bodycopyOptionssecurityGroupIdToOverride, nameof(bodycopyOptionssecurityGroupIdToOverride), required: false);
-            var __workflow_bodycopyOptionsskipAuditData = bodycopyOptionsskipAuditData == null ? null : WorkflowExpression.Compile(bodycopyOptionsskipAuditData);
-            WorkflowExpression.Validate(__workflow_bodycopyOptionsskipAuditData, nameof(bodycopyOptionsskipAuditData), required: false);
-            var __workflow_bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations == null ? null : WorkflowExpression.Compile(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations);
-            WorkflowExpression.Validate(__workflow_bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations, nameof(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations), required: false);
+            var __workflow_targetEnvironmentId = WorkflowExpression.Compile(targetEnvironmentId, nameof(targetEnvironmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodysourceEnvironmentId = WorkflowExpression.Compile(bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
+            var __workflow_bodycopyType = WorkflowExpression.Compile(bodycopyType, nameof(bodycopyType), required: false);
+            var __workflow_bodycopyOptionsenvironmentNameToOverride = WorkflowExpression.Compile(bodycopyOptionsenvironmentNameToOverride, nameof(bodycopyOptionsenvironmentNameToOverride), required: false);
+            var __workflow_bodycopyOptionssecurityGroupIdToOverride = WorkflowExpression.Compile(bodycopyOptionssecurityGroupIdToOverride, nameof(bodycopyOptionssecurityGroupIdToOverride), required: false);
+            var __workflow_bodycopyOptionsskipAuditData = WorkflowExpression.Compile(bodycopyOptionsskipAuditData, nameof(bodycopyOptionsskipAuditData), required: false);
+            var __workflow_bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations = WorkflowExpression.Compile(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations, nameof(bodycopyOptionsexecuteAdvancedCopyForFinanceAndOperations), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/copy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetEnvironmentId, 1));
@@ -689,20 +601,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ValidationResponse> RestoreEnvironment(Expression<Func<string>> targetEnvironmentId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyrestorePointDateTime, Expression<Func<string>> bodysourceEnvironmentId, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null, Expression<Func<bool>> bodyskipAuditData = null)
         {
-            var __workflow_targetEnvironmentId = targetEnvironmentId == null ? null : WorkflowExpression.Compile(targetEnvironmentId);
-            WorkflowExpression.Validate(__workflow_targetEnvironmentId, nameof(targetEnvironmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyrestorePointDateTime = bodyrestorePointDateTime == null ? null : WorkflowExpression.Compile(bodyrestorePointDateTime);
-            WorkflowExpression.Validate(__workflow_bodyrestorePointDateTime, nameof(bodyrestorePointDateTime), required: true);
-            var __workflow_bodysourceEnvironmentId = bodysourceEnvironmentId == null ? null : WorkflowExpression.Compile(bodysourceEnvironmentId);
-            WorkflowExpression.Validate(__workflow_bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
-            var __workflow_bodyskipAuditData = bodyskipAuditData == null ? null : WorkflowExpression.Compile(bodyskipAuditData);
-            WorkflowExpression.Validate(__workflow_bodyskipAuditData, nameof(bodyskipAuditData), required: false);
+            var __workflow_targetEnvironmentId = WorkflowExpression.Compile(targetEnvironmentId, nameof(targetEnvironmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyrestorePointDateTime = WorkflowExpression.Compile(bodyrestorePointDateTime, nameof(bodyrestorePointDateTime), required: true);
+            var __workflow_bodysourceEnvironmentId = WorkflowExpression.Compile(bodysourceEnvironmentId, nameof(bodysourceEnvironmentId), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
+            var __workflow_bodyskipAuditData = WorkflowExpression.Compile(bodyskipAuditData, nameof(bodyskipAuditData), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}/Restore", ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetEnvironmentId, 1));
@@ -737,10 +642,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> GetEnvironmentGroupOperation(Expression<Func<string>> operationId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_operationId = operationId == null ? null : WorkflowExpression.Compile(operationId);
-            WorkflowExpression.Validate(__workflow_operationId, nameof(operationId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_operationId = WorkflowExpression.Compile(operationId, nameof(operationId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroupOperations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operationId, 1));
@@ -754,10 +657,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> DeleteEnvironmentGroup(Expression<Func<string>> groupId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -771,12 +672,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> AddEnvironmentToGroup(Expression<Func<string>> groupId, Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/addEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -790,12 +688,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ProblemDetails> RemoveEnvironmentFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environmentGroups/{0}/removeEnvironment/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -809,8 +704,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<EnvironmentList> ListEnvironmentsForUser(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<EnvironmentList>(() =>
             {
                 var apiCallPath = "/environmentmanagement/environments";
@@ -824,10 +718,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<EnvironmentResponse> GetEnvironmentByIdForUser(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<EnvironmentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -841,14 +733,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ValidationResponse> DeleteEnvironmentByID(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<bool>> validateOnly = null, Expression<Func<string>> validateProperties = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_validateOnly = validateOnly == null ? null : WorkflowExpression.Compile(validateOnly);
-            WorkflowExpression.Validate(__workflow_validateOnly, nameof(validateOnly), required: false);
-            var __workflow_validateProperties = validateProperties == null ? null : WorkflowExpression.Compile(validateProperties);
-            WorkflowExpression.Validate(__workflow_validateProperties, nameof(validateProperties), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_validateOnly = WorkflowExpression.Compile(validateOnly, nameof(validateOnly), required: false);
+            var __workflow_validateProperties = WorkflowExpression.Compile(validateProperties, nameof(validateProperties), required: false);
             return new DeferredBodyAction<ValidationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environmentmanagement/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -866,12 +754,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<Policy> CreateRuleBasedPolicy(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<RuleSet[]>> bodyruleSets = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyruleSets = bodyruleSets == null ? null : WorkflowExpression.Compile(bodyruleSets);
-            WorkflowExpression.Validate(__workflow_bodyruleSets, nameof(bodyruleSets), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyruleSets = WorkflowExpression.Compile(bodyruleSets, nameof(bodyruleSets), required: false);
             return new DeferredBodyAction<Policy>(() =>
             {
                 var apiCallPath = "/governance/ruleBasedPolicies";
@@ -904,8 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ListPolicyResponse> ListRuleBasedPolicies(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ListPolicyResponse>(() =>
             {
                 var apiCallPath = "/governance/ruleBasedPolicies";
@@ -919,10 +803,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<Policy> GetRuleBasedPolicyByID(Expression<Func<string>> policyId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_policyId = policyId == null ? null : WorkflowExpression.Compile(policyId);
-            WorkflowExpression.Validate(__workflow_policyId, nameof(policyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_policyId = WorkflowExpression.Compile(policyId, nameof(policyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<Policy>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_policyId, 1));
@@ -936,14 +818,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignment> UpdateRuleBasedPolicyByID(Expression<Func<string>> policyId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<RuleSet[]>> bodyruleSets = null)
         {
-            var __workflow_policyId = policyId == null ? null : WorkflowExpression.Compile(policyId);
-            WorkflowExpression.Validate(__workflow_policyId, nameof(policyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyruleSets = bodyruleSets == null ? null : WorkflowExpression.Compile(bodyruleSets);
-            WorkflowExpression.Validate(__workflow_bodyruleSets, nameof(bodyruleSets), required: false);
+            var __workflow_policyId = WorkflowExpression.Compile(policyId, nameof(policyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyruleSets = WorkflowExpression.Compile(bodyruleSets, nameof(bodyruleSets), required: false);
             return new DeferredBodyAction<RuleAssignment>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_policyId, 1));
@@ -976,12 +854,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByPolicyId(Expression<Func<string>> policyId, Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
         {
-            var __workflow_policyId = policyId == null ? null : WorkflowExpression.Compile(policyId);
-            WorkflowExpression.Validate(__workflow_policyId, nameof(policyId), required: true);
-            var __workflow_includeRuleSetCounts = includeRuleSetCounts == null ? null : WorkflowExpression.Compile(includeRuleSetCounts);
-            WorkflowExpression.Validate(__workflow_includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_policyId = WorkflowExpression.Compile(policyId, nameof(policyId), required: true);
+            var __workflow_includeRuleSetCounts = WorkflowExpression.Compile(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_policyId, 1));
@@ -996,10 +871,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignments(Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
         {
-            var __workflow_includeRuleSetCounts = includeRuleSetCounts == null ? null : WorkflowExpression.Compile(includeRuleSetCounts);
-            WorkflowExpression.Validate(__workflow_includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_includeRuleSetCounts = WorkflowExpression.Compile(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
             {
                 var apiCallPath = "/governance/ruleBasedPolicies/assignments";
@@ -1014,12 +887,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentGroupId(Expression<Func<string>> environmentGroupId, Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentGroupId = environmentGroupId == null ? null : WorkflowExpression.Compile(environmentGroupId);
-            WorkflowExpression.Validate(__workflow_environmentGroupId, nameof(environmentGroupId), required: true);
-            var __workflow_includeRuleSetCounts = includeRuleSetCounts == null ? null : WorkflowExpression.Compile(includeRuleSetCounts);
-            WorkflowExpression.Validate(__workflow_includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentGroupId = WorkflowExpression.Compile(environmentGroupId, nameof(environmentGroupId), required: true);
+            var __workflow_includeRuleSetCounts = WorkflowExpression.Compile(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environmentGroups/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentGroupId, 1));
@@ -1034,12 +904,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<RuleAssignmentsResponse> ListRuleAssignmentsByEnvironmentId(Expression<Func<string>> environmentId, Expression<Func<bool>> includeRuleSetCounts, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_includeRuleSetCounts = includeRuleSetCounts == null ? null : WorkflowExpression.Compile(includeRuleSetCounts);
-            WorkflowExpression.Validate(__workflow_includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_includeRuleSetCounts = WorkflowExpression.Compile(includeRuleSetCounts, nameof(includeRuleSetCounts), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<RuleAssignmentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/ruleBasedPolicies/environments/{0}/assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -1054,8 +921,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<CrossTenantConnectionReportsResponseWithOdataContinuation> ListCrossTenantConnectionReports(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<CrossTenantConnectionReportsResponseWithOdataContinuation>(() =>
             {
                 var apiCallPath = "/governance/crossTenantConnectionReports";
@@ -1069,10 +935,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<CrossTenantConnectionReport> GetCrossTenantConnectionReport(Expression<Func<string>> reportId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_reportId = reportId == null ? null : WorkflowExpression.Compile(reportId);
-            WorkflowExpression.Validate(__workflow_reportId, nameof(reportId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_reportId = WorkflowExpression.Compile(reportId, nameof(reportId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<CrossTenantConnectionReport>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/governance/crossTenantConnectionReports/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportId, 1));
@@ -1086,18 +950,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ResourceQueryResponse> QueryResources(Expression<Func<string>> apiVersion, Expression<Func<string>> bodytableName, Expression<Func<Clause[]>> bodyclauses, Expression<Func<int>> bodyoptionstop = null, Expression<Func<int>> bodyoptionsskip = null, Expression<Func<string>> bodyoptionsskipToken = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodytableName = bodytableName == null ? null : WorkflowExpression.Compile(bodytableName);
-            WorkflowExpression.Validate(__workflow_bodytableName, nameof(bodytableName), required: true);
-            var __workflow_bodyclauses = bodyclauses == null ? null : WorkflowExpression.Compile(bodyclauses);
-            WorkflowExpression.Validate(__workflow_bodyclauses, nameof(bodyclauses), required: true);
-            var __workflow_bodyoptionstop = bodyoptionstop == null ? null : WorkflowExpression.Compile(bodyoptionstop);
-            WorkflowExpression.Validate(__workflow_bodyoptionstop, nameof(bodyoptionstop), required: false);
-            var __workflow_bodyoptionsskip = bodyoptionsskip == null ? null : WorkflowExpression.Compile(bodyoptionsskip);
-            WorkflowExpression.Validate(__workflow_bodyoptionsskip, nameof(bodyoptionsskip), required: false);
-            var __workflow_bodyoptionsskipToken = bodyoptionsskipToken == null ? null : WorkflowExpression.Compile(bodyoptionsskipToken);
-            WorkflowExpression.Validate(__workflow_bodyoptionsskipToken, nameof(bodyoptionsskipToken), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodytableName = WorkflowExpression.Compile(bodytableName, nameof(bodytableName), required: true);
+            var __workflow_bodyclauses = WorkflowExpression.Compile(bodyclauses, nameof(bodyclauses), required: true);
+            var __workflow_bodyoptionstop = WorkflowExpression.Compile(bodyoptionstop, nameof(bodyoptionstop), required: false);
+            var __workflow_bodyoptionsskip = WorkflowExpression.Compile(bodyoptionsskip, nameof(bodyoptionsskip), required: false);
+            var __workflow_bodyoptionsskipToken = WorkflowExpression.Compile(bodyoptionsskipToken, nameof(bodyoptionsskipToken), required: false);
             return new DeferredBodyAction<ResourceQueryResponse>(() =>
             {
                 var apiCallPath = "/resourcequery/resources/query";
@@ -1148,10 +1006,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModelResponseWithOdataContinuation> ListBillingPolicies(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<BillingPolicyResponseModelResponseWithOdataContinuation>(() =>
             {
                 var apiCallPath = "/licensing/billingPolicies";
@@ -1167,20 +1023,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> CreateBillingPolicy(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodybillingInstrumentsubscriptionId = null, Expression<Func<string>> bodybillingInstrumentresourceGroup = null, Expression<Func<string>> bodybillingInstrumentid = null, Expression<Func<bodystatusInput>> bodystatus = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodylocation = bodylocation == null ? null : WorkflowExpression.Compile(bodylocation);
-            WorkflowExpression.Validate(__workflow_bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodybillingInstrumentsubscriptionId = bodybillingInstrumentsubscriptionId == null ? null : WorkflowExpression.Compile(bodybillingInstrumentsubscriptionId);
-            WorkflowExpression.Validate(__workflow_bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
-            var __workflow_bodybillingInstrumentresourceGroup = bodybillingInstrumentresourceGroup == null ? null : WorkflowExpression.Compile(bodybillingInstrumentresourceGroup);
-            WorkflowExpression.Validate(__workflow_bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
-            var __workflow_bodybillingInstrumentid = bodybillingInstrumentid == null ? null : WorkflowExpression.Compile(bodybillingInstrumentid);
-            WorkflowExpression.Validate(__workflow_bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
+            var __workflow_bodybillingInstrumentsubscriptionId = WorkflowExpression.Compile(bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
+            var __workflow_bodybillingInstrumentresourceGroup = WorkflowExpression.Compile(bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
+            var __workflow_bodybillingInstrumentid = WorkflowExpression.Compile(bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
                 var apiCallPath = "/licensing/billingPolicies";
@@ -1245,10 +1094,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> GetBillingPolicy(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
@@ -1262,14 +1109,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> UpdateBillingPolicy(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<bodystatusInput>> bodystatus = null)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
@@ -1302,10 +1145,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteBillingPolicy(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
@@ -1319,10 +1160,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation> ListBillingPolicyEnvironments(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1ResponseWithOdataContinuation>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
@@ -1336,12 +1175,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyEnvironmentResponseModelV1> GetBillingPolicyEnvironment(Expression<Func<string>> billingPolicyId, Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyEnvironmentResponseModelV1>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -1355,12 +1191,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction AddBillingPolicyEnvironment(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion, Expression<Func<string[]>> bodyenvironmentIds = null)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyenvironmentIds = bodyenvironmentIds == null ? null : WorkflowExpression.Compile(bodyenvironmentIds);
-            WorkflowExpression.Validate(__workflow_bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyenvironmentIds = WorkflowExpression.Compile(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
@@ -1387,12 +1220,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction RemoveBillingPolicyEnvironment(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion, Expression<Func<string[]>> bodyenvironmentIds = null)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyenvironmentIds = bodyenvironmentIds == null ? null : WorkflowExpression.Compile(bodyenvironmentIds);
-            WorkflowExpression.Validate(__workflow_bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyenvironmentIds = WorkflowExpression.Compile(bodyenvironmentIds, nameof(bodyenvironmentIds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/environments/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
@@ -1419,10 +1249,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> RefreshProvisioningStatus(Expression<Func<string>> billingPolicyId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_billingPolicyId = billingPolicyId == null ? null : WorkflowExpression.Compile(billingPolicyId);
-            WorkflowExpression.Validate(__workflow_billingPolicyId, nameof(billingPolicyId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_billingPolicyId = WorkflowExpression.Compile(billingPolicyId, nameof(billingPolicyId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/billingPolicies/{0}/refreshProvisioningStatus", ExpressionConverter.ConvertWithUrlEncoding(__workflow_billingPolicyId, 1));
@@ -1436,10 +1264,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> GetCurrencyAllocationByEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<AllocationsByEnvironmentResponseModelV1>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -1453,12 +1279,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<AllocationsByEnvironmentResponseModelV1> PatchCurrencyAllocationByEnvironment(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<CurrencyAllocationRequestModelV1[]>> bodycurrencyAllocations = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodycurrencyAllocations = bodycurrencyAllocations == null ? null : WorkflowExpression.Compile(bodycurrencyAllocations);
-            WorkflowExpression.Validate(__workflow_bodycurrencyAllocations, nameof(bodycurrencyAllocations), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodycurrencyAllocations = WorkflowExpression.Compile(bodycurrencyAllocations, nameof(bodycurrencyAllocations), required: false);
             return new DeferredBodyAction<AllocationsByEnvironmentResponseModelV1>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/allocations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -1485,10 +1308,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<BillingPolicyResponseModel> GetEnvironmentBillingPolicy(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<BillingPolicyResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/environments/{0}/billingPolicy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -1502,10 +1323,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModelResponseWithOdataContinuation> ListISVContracts(Expression<Func<string>> apiVersion, Expression<Func<string>> top = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<IsvContractResponseModelResponseWithOdataContinuation>(() =>
             {
                 var apiCallPath = "/licensing/isvContracts";
@@ -1521,32 +1340,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModel> CreateISVContract(Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname, Expression<Func<string>> bodygeo, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodyconsumertenantId = null, Expression<Func<bool>> bodyconditionsapiFilterallowOtherPremiumConnectors = null, Expression<Func<BillingPolicyConditionsApiModel[]>> bodyconditionsapiFilterrequiredApis = null, Expression<Func<string>> bodybillingInstrumentsubscriptionId = null, Expression<Func<string>> bodybillingInstrumentresourceGroup = null, Expression<Func<string>> bodybillingInstrumentid = null, Expression<Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput>> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodygeo = bodygeo == null ? null : WorkflowExpression.Compile(bodygeo);
-            WorkflowExpression.Validate(__workflow_bodygeo, nameof(bodygeo), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyconsumertenantId = bodyconsumertenantId == null ? null : WorkflowExpression.Compile(bodyconsumertenantId);
-            WorkflowExpression.Validate(__workflow_bodyconsumertenantId, nameof(bodyconsumertenantId), required: false);
-            var __workflow_bodyconditionsapiFilterallowOtherPremiumConnectors = bodyconditionsapiFilterallowOtherPremiumConnectors == null ? null : WorkflowExpression.Compile(bodyconditionsapiFilterallowOtherPremiumConnectors);
-            WorkflowExpression.Validate(__workflow_bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
-            var __workflow_bodyconditionsapiFilterrequiredApis = bodyconditionsapiFilterrequiredApis == null ? null : WorkflowExpression.Compile(bodyconditionsapiFilterrequiredApis);
-            WorkflowExpression.Validate(__workflow_bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
-            var __workflow_bodybillingInstrumentsubscriptionId = bodybillingInstrumentsubscriptionId == null ? null : WorkflowExpression.Compile(bodybillingInstrumentsubscriptionId);
-            WorkflowExpression.Validate(__workflow_bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
-            var __workflow_bodybillingInstrumentresourceGroup = bodybillingInstrumentresourceGroup == null ? null : WorkflowExpression.Compile(bodybillingInstrumentresourceGroup);
-            WorkflowExpression.Validate(__workflow_bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
-            var __workflow_bodybillingInstrumentid = bodybillingInstrumentid == null ? null : WorkflowExpression.Compile(bodybillingInstrumentid);
-            WorkflowExpression.Validate(__workflow_bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
-            var __workflow_bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState == null ? null : WorkflowExpression.Compile(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState);
-            WorkflowExpression.Validate(__workflow_bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
-            var __workflow_bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState == null ? null : WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState);
-            WorkflowExpression.Validate(__workflow_bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
-            var __workflow_bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState == null ? null : WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState);
-            WorkflowExpression.Validate(__workflow_bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodygeo = WorkflowExpression.Compile(bodygeo, nameof(bodygeo), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyconsumertenantId = WorkflowExpression.Compile(bodyconsumertenantId, nameof(bodyconsumertenantId), required: false);
+            var __workflow_bodyconditionsapiFilterallowOtherPremiumConnectors = WorkflowExpression.Compile(bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
+            var __workflow_bodyconditionsapiFilterrequiredApis = WorkflowExpression.Compile(bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
+            var __workflow_bodybillingInstrumentsubscriptionId = WorkflowExpression.Compile(bodybillingInstrumentsubscriptionId, nameof(bodybillingInstrumentsubscriptionId), required: false);
+            var __workflow_bodybillingInstrumentresourceGroup = WorkflowExpression.Compile(bodybillingInstrumentresourceGroup, nameof(bodybillingInstrumentresourceGroup), required: false);
+            var __workflow_bodybillingInstrumentid = WorkflowExpression.Compile(bodybillingInstrumentid, nameof(bodybillingInstrumentid), required: false);
+            var __workflow_bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = WorkflowExpression.Compile(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
+            var __workflow_bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
+            var __workflow_bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
             return new DeferredBodyAction<IsvContractResponseModel>(() =>
             {
                 var apiCallPath = "/licensing/isvContracts";
@@ -1671,10 +1477,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModel> GetISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_isvContractId = isvContractId == null ? null : WorkflowExpression.Compile(isvContractId);
-            WorkflowExpression.Validate(__workflow_isvContractId, nameof(isvContractId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_isvContractId = WorkflowExpression.Compile(isvContractId, nameof(isvContractId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<IsvContractResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_isvContractId, 1));
@@ -1688,24 +1492,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<IsvContractResponseModel> UpdateISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion, Expression<Func<string>> bodyname = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<bool>> bodyconditionsapiFilterallowOtherPremiumConnectors = null, Expression<Func<BillingPolicyConditionsApiModel[]>> bodyconditionsapiFilterrequiredApis = null, Expression<Func<bodypowerAutomatePolicycloudFlowRunsPayAsYouGoStateInput>> bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = null, Expression<Func<bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoStateInput>> bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = null)
         {
-            var __workflow_isvContractId = isvContractId == null ? null : WorkflowExpression.Compile(isvContractId);
-            WorkflowExpression.Validate(__workflow_isvContractId, nameof(isvContractId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyconditionsapiFilterallowOtherPremiumConnectors = bodyconditionsapiFilterallowOtherPremiumConnectors == null ? null : WorkflowExpression.Compile(bodyconditionsapiFilterallowOtherPremiumConnectors);
-            WorkflowExpression.Validate(__workflow_bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
-            var __workflow_bodyconditionsapiFilterrequiredApis = bodyconditionsapiFilterrequiredApis == null ? null : WorkflowExpression.Compile(bodyconditionsapiFilterrequiredApis);
-            WorkflowExpression.Validate(__workflow_bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
-            var __workflow_bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState == null ? null : WorkflowExpression.Compile(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState);
-            WorkflowExpression.Validate(__workflow_bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
-            var __workflow_bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState == null ? null : WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState);
-            WorkflowExpression.Validate(__workflow_bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
-            var __workflow_bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState == null ? null : WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState);
-            WorkflowExpression.Validate(__workflow_bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
+            var __workflow_isvContractId = WorkflowExpression.Compile(isvContractId, nameof(isvContractId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyconditionsapiFilterallowOtherPremiumConnectors = WorkflowExpression.Compile(bodyconditionsapiFilterallowOtherPremiumConnectors, nameof(bodyconditionsapiFilterallowOtherPremiumConnectors), required: false);
+            var __workflow_bodyconditionsapiFilterrequiredApis = WorkflowExpression.Compile(bodyconditionsapiFilterrequiredApis, nameof(bodyconditionsapiFilterrequiredApis), required: false);
+            var __workflow_bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState = WorkflowExpression.Compile(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState, nameof(bodypowerAutomatePolicycloudFlowRunsPayAsYouGoState), required: false);
+            var __workflow_bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState = WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowUnattendedRunsPayAsYouGoState), required: false);
+            var __workflow_bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState = WorkflowExpression.Compile(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState, nameof(bodypowerAutomatePolicydesktopFlowAttendedRunsPayAsYouGoState), required: false);
             return new DeferredBodyAction<IsvContractResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_isvContractId, 1));
@@ -1792,10 +1587,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction DeleteISVContract(Expression<Func<string>> isvContractId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_isvContractId = isvContractId == null ? null : WorkflowExpression.Compile(isvContractId);
-            WorkflowExpression.Validate(__workflow_isvContractId, nameof(isvContractId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_isvContractId = WorkflowExpression.Compile(isvContractId, nameof(isvContractId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/licensing/isvContracts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_isvContractId, 1));
@@ -1809,8 +1602,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<TenantCapacityDetailsModel> GetTenantCapacityDetails(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<TenantCapacityDetailsModel>(() =>
             {
                 var apiCallPath = "/licensing/tenantCapacity";
@@ -1824,12 +1616,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<CurrencyReportV2[]> ListCurrencyReports(Expression<Func<string>> apiVersion, Expression<Func<bool>> includeAllocations = null, Expression<Func<bool>> includeConsumptions = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_includeAllocations = includeAllocations == null ? null : WorkflowExpression.Compile(includeAllocations);
-            WorkflowExpression.Validate(__workflow_includeAllocations, nameof(includeAllocations), required: false);
-            var __workflow_includeConsumptions = includeConsumptions == null ? null : WorkflowExpression.Compile(includeConsumptions);
-            WorkflowExpression.Validate(__workflow_includeConsumptions, nameof(includeConsumptions), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_includeAllocations = WorkflowExpression.Compile(includeAllocations, nameof(includeAllocations), required: false);
+            var __workflow_includeConsumptions = WorkflowExpression.Compile(includeConsumptions, nameof(includeConsumptions), required: false);
             return new DeferredBodyAction<CurrencyReportV2[]>(() =>
             {
                 var apiCallPath = "/licensing/tenantCapacity/currencyReports";
@@ -1849,14 +1638,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<ResourceArrayPowerApp> GetAdminApps(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredBodyAction<ResourceArrayPowerApp>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -1875,12 +1660,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<PowerApp> GetAdminApp(Expression<Func<string>> environmentId, Expression<Func<string>> app, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_app = app == null ? null : WorkflowExpression.Compile(app);
-            WorkflowExpression.Validate(__workflow_app, nameof(app), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_app = WorkflowExpression.Compile(app, nameof(app), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<PowerApp>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerapps/environments/{0}/apps/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_app, 1));
@@ -1894,10 +1676,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IWorkflowAction ApplyAdminRole(Expression<Func<string>> environmentId, Expression<Func<string>> apiVersion)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/usermanagement/environments/{0}/user/applyAdminRole", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -1911,14 +1691,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerplatformadminv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerplatformadminv2")]
         public IBodyWorkflowAction<MCPQueryResponse> McpEnvironmentManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_queryRequestjsonrpc = queryRequestjsonrpc == null ? null : WorkflowExpression.Compile(queryRequestjsonrpc);
-            WorkflowExpression.Validate(__workflow_queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = queryRequestid == null ? null : WorkflowExpression.Compile(queryRequestid);
-            WorkflowExpression.Validate(__workflow_queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = queryRequestmethod == null ? null : WorkflowExpression.Compile(queryRequestmethod);
-            WorkflowExpression.Validate(__workflow_queryRequestmethod, nameof(queryRequestmethod), required: false);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
+            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<MCPQueryResponse>(() =>
             {
                 var apiCallPath = "/mcp/EnvironmentManagement";

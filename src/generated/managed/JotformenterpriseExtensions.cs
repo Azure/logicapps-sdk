@@ -16,10 +16,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
     {
         public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
-            var __workflow_workspaceID = workspaceID == null ? null : WorkflowExpression.Compile(workspaceID);
-            WorkflowExpression.Validate(__workflow_workspaceID, nameof(workspaceID), required: true);
-            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
-            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
+            var __workflow_workspaceID = WorkflowExpression.Compile(workspaceID, nameof(workspaceID), required: true);
+            var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));

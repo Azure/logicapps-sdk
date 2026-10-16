@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSIP(Expression<Func<string>> ip, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
-            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
-            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
-            var __workflow_lastSeenAfter = lastSeenAfter == null ? null : WorkflowExpression.Compile(lastSeenAfter);
-            WorkflowExpression.Validate(__workflow_lastSeenAfter, nameof(lastSeenAfter), required: false);
-            var __workflow_firstSeenBefore = firstSeenBefore == null ? null : WorkflowExpression.Compile(firstSeenBefore);
-            WorkflowExpression.Validate(__workflow_firstSeenBefore, nameof(firstSeenBefore), required: false);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
+            var __workflow_lastSeenAfter = WorkflowExpression.Compile(lastSeenAfter, nameof(lastSeenAfter), required: false);
+            var __workflow_firstSeenBefore = WorkflowExpression.Compile(firstSeenBefore, nameof(firstSeenBefore), required: false);
             return new DeferredBodyAction<RRSets>(() =>
             {
                 var apiCallPath = "/v0/pdns/data/ip";
@@ -40,16 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSRESOURCEDATA(Expression<Func<string>> name, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
-            var __workflow_lastSeenAfter = lastSeenAfter == null ? null : WorkflowExpression.Compile(lastSeenAfter);
-            WorkflowExpression.Validate(__workflow_lastSeenAfter, nameof(lastSeenAfter), required: false);
-            var __workflow_firstSeenBefore = firstSeenBefore == null ? null : WorkflowExpression.Compile(firstSeenBefore);
-            WorkflowExpression.Validate(__workflow_firstSeenBefore, nameof(firstSeenBefore), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
+            var __workflow_lastSeenAfter = WorkflowExpression.Compile(lastSeenAfter, nameof(lastSeenAfter), required: false);
+            var __workflow_firstSeenBefore = WorkflowExpression.Compile(firstSeenBefore, nameof(firstSeenBefore), required: false);
             return new DeferredBodyAction<RRSets>(() =>
             {
                 var apiCallPath = "/v0/pdns/data/name";
@@ -71,16 +62,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSRESOURCEDATAHEX(Expression<Func<string>> hex, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
-            var __workflow_hex = hex == null ? null : WorkflowExpression.Compile(hex);
-            WorkflowExpression.Validate(__workflow_hex, nameof(hex), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
-            var __workflow_lastSeenAfter = lastSeenAfter == null ? null : WorkflowExpression.Compile(lastSeenAfter);
-            WorkflowExpression.Validate(__workflow_lastSeenAfter, nameof(lastSeenAfter), required: false);
-            var __workflow_firstSeenBefore = firstSeenBefore == null ? null : WorkflowExpression.Compile(firstSeenBefore);
-            WorkflowExpression.Validate(__workflow_firstSeenBefore, nameof(firstSeenBefore), required: false);
+            var __workflow_hex = WorkflowExpression.Compile(hex, nameof(hex), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
+            var __workflow_lastSeenAfter = WorkflowExpression.Compile(lastSeenAfter, nameof(lastSeenAfter), required: false);
+            var __workflow_firstSeenBefore = WorkflowExpression.Compile(firstSeenBefore, nameof(firstSeenBefore), required: false);
             return new DeferredBodyAction<RRSets>(() =>
             {
                 var apiCallPath = "/v0/pdns/data/raw";
@@ -102,16 +88,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<RRSets> PDNSNAME(Expression<Func<string>> name, Expression<Func<string>> type = null, Expression<Func<string>> max = null, Expression<Func<string>> lastSeenAfter = null, Expression<Func<string>> firstSeenBefore = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
-            var __workflow_lastSeenAfter = lastSeenAfter == null ? null : WorkflowExpression.Compile(lastSeenAfter);
-            WorkflowExpression.Validate(__workflow_lastSeenAfter, nameof(lastSeenAfter), required: false);
-            var __workflow_firstSeenBefore = firstSeenBefore == null ? null : WorkflowExpression.Compile(firstSeenBefore);
-            WorkflowExpression.Validate(__workflow_firstSeenBefore, nameof(firstSeenBefore), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
+            var __workflow_lastSeenAfter = WorkflowExpression.Compile(lastSeenAfter, nameof(lastSeenAfter), required: false);
+            var __workflow_firstSeenBefore = WorkflowExpression.Compile(firstSeenBefore, nameof(firstSeenBefore), required: false);
             return new DeferredBodyAction<RRSets>(() =>
             {
                 var apiCallPath = "/v0/pdns/name";
@@ -133,8 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertWithHostPage> SSLBYHOST(Expression<Func<string>> host)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: true);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
             return new DeferredBodyAction<SslCertWithHostPage>(() =>
             {
                 var apiCallPath = "/v1/ssl/cert/host";
@@ -148,8 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertPage> SSLBYSERIAL(Expression<Func<string>> serial)
         {
-            var __workflow_serial = serial == null ? null : WorkflowExpression.Compile(serial);
-            WorkflowExpression.Validate(__workflow_serial, nameof(serial), required: true);
+            var __workflow_serial = WorkflowExpression.Compile(serial, nameof(serial), required: true);
             return new DeferredBodyAction<SslCertPage>(() =>
             {
                 var apiCallPath = "/v1/ssl/cert/serial";
@@ -163,8 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCert> SSLBYSHA1(Expression<Func<string>> sha1)
         {
-            var __workflow_sha1 = sha1 == null ? null : WorkflowExpression.Compile(sha1);
-            WorkflowExpression.Validate(__workflow_sha1, nameof(sha1), required: true);
+            var __workflow_sha1 = WorkflowExpression.Compile(sha1, nameof(sha1), required: true);
             return new DeferredBodyAction<SslCert>(() =>
             {
                 var apiCallPath = "/v1/ssl/cert/sha1";
@@ -178,8 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertHostPage> HOSTSBYSSLSHA1(Expression<Func<string>> certSha1)
         {
-            var __workflow_certSha1 = certSha1 == null ? null : WorkflowExpression.Compile(certSha1);
-            WorkflowExpression.Validate(__workflow_certSha1, nameof(certSha1), required: true);
+            var __workflow_certSha1 = WorkflowExpression.Compile(certSha1, nameof(certSha1), required: true);
             return new DeferredBodyAction<SslCertHostPage>(() =>
             {
                 var apiCallPath = "/v1/ssl/host";
@@ -193,8 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<SslCertPage> SSLBYNAME(Expression<Func<string>> name)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<SslCertPage>(() =>
             {
                 var apiCallPath = "/v1/ssl/cert/name";
@@ -208,12 +184,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISIP(Expression<Func<string>> address, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: true);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<WhoisResult>(() =>
             {
                 var apiCallPath = "/v0/whois/address";
@@ -231,12 +204,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISDOMAIN(Expression<Func<string>> domain, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<WhoisResult>(() =>
             {
                 var apiCallPath = "/v0/whois/domain";
@@ -254,12 +224,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYEMAIL(Expression<Func<string>> email, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<WhoisResult>(() =>
             {
                 var apiCallPath = "/v0/whois/email";
@@ -277,12 +244,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYNAME(Expression<Func<string>> name, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<WhoisResult>(() =>
             {
                 var apiCallPath = "/v0/whois/name";
@@ -300,12 +264,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYNAMESERVER(Expression<Func<string>> nameserver, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
-            var __workflow_nameserver = nameserver == null ? null : WorkflowExpression.Compile(nameserver);
-            WorkflowExpression.Validate(__workflow_nameserver, nameof(nameserver), required: true);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_nameserver = WorkflowExpression.Compile(nameserver, nameof(nameserver), required: true);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<WhoisResult>(() =>
             {
                 var apiCallPath = "/v0/whois/nameserver";
@@ -323,12 +284,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYORGANIZATION(Expression<Func<string>> org, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
-            var __workflow_org = org == null ? null : WorkflowExpression.Compile(org);
-            WorkflowExpression.Validate(__workflow_org, nameof(org), required: true);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_org = WorkflowExpression.Compile(org, nameof(org), required: true);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<WhoisResult>(() =>
             {
                 var apiCallPath = "/v0/whois/org";
@@ -346,12 +304,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<WhoisResult> WHOISBYPHONE(Expression<Func<string>> phone, Expression<Func<string>> exact = null, Expression<Func<string>> maxResults = null)
         {
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<WhoisResult>(() =>
             {
                 var apiCallPath = "/v0/whois/phone";
@@ -369,22 +324,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostAttributeResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
@@ -411,22 +358,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSDOMAIN(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostAttributeResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
@@ -453,22 +392,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostAttributeResult> TRACKERSIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostAttributeResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/trackers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_address, 1));
@@ -495,22 +426,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostPairsResult> HOSTPAIRSCHILD(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostPairsResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/children/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
@@ -537,22 +460,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostPairsResult> HOSTPAIRSPARENT(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostPairsResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/trackers/parents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
@@ -579,22 +494,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostComponentsResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
@@ -621,22 +528,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTSDOMAIN(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostComponentsResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/domains/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));
@@ -663,22 +562,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostComponentsResult> WEBCOMPONENTSIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostComponentsResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/components/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_address, 1));
@@ -705,22 +596,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostCookieResult> COOKIESHOST(Expression<Func<string>> host, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostCookieResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/hosts/cookies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
@@ -747,22 +630,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<HostCookieResult> COOKIESIP(Expression<Func<string>> address, Expression<Func<int>> size = null, Expression<Func<int>> page = null, Expression<Func<int>> before = null, Expression<Func<int>> after = null, Expression<Func<int>> beforeDay = null, Expression<Func<int>> afterDay = null, Expression<Func<string>> exact = null)
         {
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_beforeDay = beforeDay == null ? null : WorkflowExpression.Compile(beforeDay);
-            WorkflowExpression.Validate(__workflow_beforeDay, nameof(beforeDay), required: false);
-            var __workflow_afterDay = afterDay == null ? null : WorkflowExpression.Compile(afterDay);
-            WorkflowExpression.Validate(__workflow_afterDay, nameof(afterDay), required: false);
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_beforeDay = WorkflowExpression.Compile(beforeDay, nameof(beforeDay), required: false);
+            var __workflow_afterDay = WorkflowExpression.Compile(afterDay, nameof(afterDay), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
             return new DeferredBodyAction<HostCookieResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/hostattributes/addresses/cookies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_address, 1));
@@ -789,24 +664,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<JToken> ENRICHMENTHOST(Expression<Func<string>> host, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> ipDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> recentPDNS = null, Expression<Func<bool>> subDomainPDNS = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: true);
-            var __workflow_whois = whois == null ? null : WorkflowExpression.Compile(whois);
-            WorkflowExpression.Validate(__workflow_whois, nameof(whois), required: false);
-            var __workflow_hostDetails = hostDetails == null ? null : WorkflowExpression.Compile(hostDetails);
-            WorkflowExpression.Validate(__workflow_hostDetails, nameof(hostDetails), required: false);
-            var __workflow_ipDetails = ipDetails == null ? null : WorkflowExpression.Compile(ipDetails);
-            WorkflowExpression.Validate(__workflow_ipDetails, nameof(ipDetails), required: false);
-            var __workflow_linkedAssetCounts = linkedAssetCounts == null ? null : WorkflowExpression.Compile(linkedAssetCounts);
-            WorkflowExpression.Validate(__workflow_linkedAssetCounts, nameof(linkedAssetCounts), required: false);
-            var __workflow_recentPDNS = recentPDNS == null ? null : WorkflowExpression.Compile(recentPDNS);
-            WorkflowExpression.Validate(__workflow_recentPDNS, nameof(recentPDNS), required: false);
-            var __workflow_subDomainPDNS = subDomainPDNS == null ? null : WorkflowExpression.Compile(subDomainPDNS);
-            WorkflowExpression.Validate(__workflow_subDomainPDNS, nameof(subDomainPDNS), required: false);
-            var __workflow_openPorts = openPorts == null ? null : WorkflowExpression.Compile(openPorts);
-            WorkflowExpression.Validate(__workflow_openPorts, nameof(openPorts), required: false);
-            var __workflow_certificates = certificates == null ? null : WorkflowExpression.Compile(certificates);
-            WorkflowExpression.Validate(__workflow_certificates, nameof(certificates), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: true);
+            var __workflow_whois = WorkflowExpression.Compile(whois, nameof(whois), required: false);
+            var __workflow_hostDetails = WorkflowExpression.Compile(hostDetails, nameof(hostDetails), required: false);
+            var __workflow_ipDetails = WorkflowExpression.Compile(ipDetails, nameof(ipDetails), required: false);
+            var __workflow_linkedAssetCounts = WorkflowExpression.Compile(linkedAssetCounts, nameof(linkedAssetCounts), required: false);
+            var __workflow_recentPDNS = WorkflowExpression.Compile(recentPDNS, nameof(recentPDNS), required: false);
+            var __workflow_subDomainPDNS = WorkflowExpression.Compile(subDomainPDNS, nameof(subDomainPDNS), required: false);
+            var __workflow_openPorts = WorkflowExpression.Compile(openPorts, nameof(openPorts), required: false);
+            var __workflow_certificates = WorkflowExpression.Compile(certificates, nameof(certificates), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/enrich/host/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_host, 1));
@@ -843,18 +709,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Riskiqintelligence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "riskiqintelligence")]
         public IBodyWorkflowAction<JToken> ENRICHMENTIP(Expression<Func<string>> ip, Expression<Func<bool>> whois = null, Expression<Func<bool>> hostDetails = null, Expression<Func<bool>> linkedAssetCounts = null, Expression<Func<bool>> openPorts = null, Expression<Func<bool>> certificates = null)
         {
-            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
-            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
-            var __workflow_whois = whois == null ? null : WorkflowExpression.Compile(whois);
-            WorkflowExpression.Validate(__workflow_whois, nameof(whois), required: false);
-            var __workflow_hostDetails = hostDetails == null ? null : WorkflowExpression.Compile(hostDetails);
-            WorkflowExpression.Validate(__workflow_hostDetails, nameof(hostDetails), required: false);
-            var __workflow_linkedAssetCounts = linkedAssetCounts == null ? null : WorkflowExpression.Compile(linkedAssetCounts);
-            WorkflowExpression.Validate(__workflow_linkedAssetCounts, nameof(linkedAssetCounts), required: false);
-            var __workflow_openPorts = openPorts == null ? null : WorkflowExpression.Compile(openPorts);
-            WorkflowExpression.Validate(__workflow_openPorts, nameof(openPorts), required: false);
-            var __workflow_certificates = certificates == null ? null : WorkflowExpression.Compile(certificates);
-            WorkflowExpression.Validate(__workflow_certificates, nameof(certificates), required: false);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
+            var __workflow_whois = WorkflowExpression.Compile(whois, nameof(whois), required: false);
+            var __workflow_hostDetails = WorkflowExpression.Compile(hostDetails, nameof(hostDetails), required: false);
+            var __workflow_linkedAssetCounts = WorkflowExpression.Compile(linkedAssetCounts, nameof(linkedAssetCounts), required: false);
+            var __workflow_openPorts = WorkflowExpression.Compile(openPorts, nameof(openPorts), required: false);
+            var __workflow_certificates = WorkflowExpression.Compile(certificates, nameof(certificates), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v0/enrich/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ip, 1));

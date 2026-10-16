@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
         public IWorkflowAction Transform(Expression<Func<string>> bodybase64Content, Expression<Func<string>> bodyconfigId)
         {
-            var __workflow_bodybase64Content = bodybase64Content == null ? null : WorkflowExpression.Compile(bodybase64Content);
-            WorkflowExpression.Validate(__workflow_bodybase64Content, nameof(bodybase64Content), required: true);
-            var __workflow_bodyconfigId = bodyconfigId == null ? null : WorkflowExpression.Compile(bodyconfigId);
-            WorkflowExpression.Validate(__workflow_bodyconfigId, nameof(bodyconfigId), required: true);
+            var __workflow_bodybase64Content = WorkflowExpression.Compile(bodybase64Content, nameof(bodybase64Content), required: true);
+            var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/1.0/translate";

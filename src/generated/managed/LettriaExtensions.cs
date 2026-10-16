@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
         public IBodyWorkflowAction<ComprehendPostResponseItem[]> Comprehend(Expression<Func<string[]>> bodydocuments = null)
         {
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<ComprehendPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lettria
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lettria")]
         public IBodyWorkflowAction<ClassifyPostResponseItem[]> Classify(Expression<Func<string[]>> bodydocuments = null)
         {
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<ClassifyPostResponseItem[]>(() =>
             {
                 var apiCallPath = "/nls/classification";

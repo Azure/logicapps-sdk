@@ -22,14 +22,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<GetQuestionResponse> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<difficultyInput>> difficulty = null, Expression<Func<typeInput>> type = null)
         {
-            var __workflow_amount = amount == null ? null : WorkflowExpression.Compile(amount);
-            WorkflowExpression.Validate(__workflow_amount, nameof(amount), required: true);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_difficulty = difficulty == null ? null : WorkflowExpression.Compile(difficulty);
-            WorkflowExpression.Validate(__workflow_difficulty, nameof(difficulty), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_difficulty = WorkflowExpression.Compile(difficulty, nameof(difficulty), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<GetQuestionResponse>(() =>
             {
                 var apiCallPath = "/api.php";
@@ -49,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
         public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup(Expression<Func<int>> category)
         {
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
             return new DeferredBodyAction<QuestionCountLookupResponse>(() =>
             {
                 var apiCallPath = "/api_count.php";

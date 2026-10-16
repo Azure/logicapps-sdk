@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<HashtagsSimilarGetResponse> HashtagsSimilarGet(Expression<Func<string>> keyword)
         {
-            var __workflow_keyword = keyword == null ? null : WorkflowExpression.Compile(keyword);
-            WorkflowExpression.Validate(__workflow_keyword, nameof(keyword), required: true);
+            var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: true);
             return new DeferredBodyAction<HashtagsSimilarGetResponse>(() =>
             {
                 var apiCallPath = "/tag/predict";
@@ -46,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<PostCountGetResponse> PostCountGet(Expression<Func<string>> tag)
         {
-            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
-            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: true);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
             return new DeferredBodyAction<PostCountGetResponse>(() =>
             {
                 var apiCallPath = "/tag/count";
@@ -61,8 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<ImageHashtagsPostResponse> ImageHashtags(Expression<Func<string>> bodyimage)
         {
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: true);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: true);
             return new DeferredBodyAction<ImageHashtagsPostResponse>(() =>
             {
                 var apiCallPath = "/tag/generate";
@@ -93,8 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CategoryGetResponse> CategoryGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -107,8 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CategoryTagsGetResponse> CategoryTagsGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CategoryTagsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/categories/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -130,8 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashtagapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashtagapiip")]
         public IBodyWorkflowAction<CountryTagsGetResponse> CountryTagsGet(Expression<Func<string>> countryName)
         {
-            var __workflow_countryName = countryName == null ? null : WorkflowExpression.Compile(countryName);
-            WorkflowExpression.Validate(__workflow_countryName, nameof(countryName), required: true);
+            var __workflow_countryName = WorkflowExpression.Compile(countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<CountryTagsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trending/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));

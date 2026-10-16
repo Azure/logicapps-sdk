@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<ListTimeSeriesResponse> ListTimeSeries(Expression<Func<string>> project, Expression<Func<int>> limit = null, Expression<Func<bool>> includeMetadata = null, Expression<Func<string>> cursor = null, Expression<Func<string>> partition = null, Expression<Func<string>> assetIds = null, Expression<Func<string>> rootAssetIds = null, Expression<Func<string>> externalIdPrefix = null, Expression<Func<string>> accept = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_includeMetadata = includeMetadata == null ? null : WorkflowExpression.Compile(includeMetadata);
-            WorkflowExpression.Validate(__workflow_includeMetadata, nameof(includeMetadata), required: false);
-            var __workflow_cursor = cursor == null ? null : WorkflowExpression.Compile(cursor);
-            WorkflowExpression.Validate(__workflow_cursor, nameof(cursor), required: false);
-            var __workflow_partition = partition == null ? null : WorkflowExpression.Compile(partition);
-            WorkflowExpression.Validate(__workflow_partition, nameof(partition), required: false);
-            var __workflow_assetIds = assetIds == null ? null : WorkflowExpression.Compile(assetIds);
-            WorkflowExpression.Validate(__workflow_assetIds, nameof(assetIds), required: false);
-            var __workflow_rootAssetIds = rootAssetIds == null ? null : WorkflowExpression.Compile(rootAssetIds);
-            WorkflowExpression.Validate(__workflow_rootAssetIds, nameof(rootAssetIds), required: false);
-            var __workflow_externalIdPrefix = externalIdPrefix == null ? null : WorkflowExpression.Compile(externalIdPrefix);
-            WorkflowExpression.Validate(__workflow_externalIdPrefix, nameof(externalIdPrefix), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_includeMetadata = WorkflowExpression.Compile(includeMetadata, nameof(includeMetadata), required: false);
+            var __workflow_cursor = WorkflowExpression.Compile(cursor, nameof(cursor), required: false);
+            var __workflow_partition = WorkflowExpression.Compile(partition, nameof(partition), required: false);
+            var __workflow_assetIds = WorkflowExpression.Compile(assetIds, nameof(assetIds), required: false);
+            var __workflow_rootAssetIds = WorkflowExpression.Compile(rootAssetIds, nameof(rootAssetIds), required: false);
+            var __workflow_externalIdPrefix = WorkflowExpression.Compile(externalIdPrefix, nameof(externalIdPrefix), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             return new DeferredBodyAction<ListTimeSeriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -62,48 +53,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<FilterTimeSeriesResponse> FilterTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<int>> bodylimit = null, Expression<Func<string>> bodycursor = null, Expression<Func<string>> bodypartition = null, Expression<Func<bodysortInputItem[]>> bodysort = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyfiltername = bodyfiltername == null ? null : WorkflowExpression.Compile(bodyfiltername);
-            WorkflowExpression.Validate(__workflow_bodyfiltername, nameof(bodyfiltername), required: false);
-            var __workflow_bodyfilterunit = bodyfilterunit == null ? null : WorkflowExpression.Compile(bodyfilterunit);
-            WorkflowExpression.Validate(__workflow_bodyfilterunit, nameof(bodyfilterunit), required: false);
-            var __workflow_bodyfilterisString = bodyfilterisString == null ? null : WorkflowExpression.Compile(bodyfilterisString);
-            WorkflowExpression.Validate(__workflow_bodyfilterisString, nameof(bodyfilterisString), required: false);
-            var __workflow_bodyfilterisStep = bodyfilterisStep == null ? null : WorkflowExpression.Compile(bodyfilterisStep);
-            WorkflowExpression.Validate(__workflow_bodyfilterisStep, nameof(bodyfilterisStep), required: false);
-            var __workflow_bodyfilterassetIds = bodyfilterassetIds == null ? null : WorkflowExpression.Compile(bodyfilterassetIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterassetIds, nameof(bodyfilterassetIds), required: false);
-            var __workflow_bodyfilterassetExternalIds = bodyfilterassetExternalIds == null ? null : WorkflowExpression.Compile(bodyfilterassetExternalIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterassetExternalIds, nameof(bodyfilterassetExternalIds), required: false);
-            var __workflow_bodyfilterrootAssetIds = bodyfilterrootAssetIds == null ? null : WorkflowExpression.Compile(bodyfilterrootAssetIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterrootAssetIds, nameof(bodyfilterrootAssetIds), required: false);
-            var __workflow_bodyfilterassetSubtreeIds = bodyfilterassetSubtreeIds == null ? null : WorkflowExpression.Compile(bodyfilterassetSubtreeIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterassetSubtreeIds, nameof(bodyfilterassetSubtreeIds), required: false);
-            var __workflow_bodyfilterdataSetIds = bodyfilterdataSetIds == null ? null : WorkflowExpression.Compile(bodyfilterdataSetIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterdataSetIds, nameof(bodyfilterdataSetIds), required: false);
-            var __workflow_bodyfilterexternalIdPrefix = bodyfilterexternalIdPrefix == null ? null : WorkflowExpression.Compile(bodyfilterexternalIdPrefix);
-            WorkflowExpression.Validate(__workflow_bodyfilterexternalIdPrefix, nameof(bodyfilterexternalIdPrefix), required: false);
-            var __workflow_bodyfiltercreatedTimemax = bodyfiltercreatedTimemax == null ? null : WorkflowExpression.Compile(bodyfiltercreatedTimemax);
-            WorkflowExpression.Validate(__workflow_bodyfiltercreatedTimemax, nameof(bodyfiltercreatedTimemax), required: false);
-            var __workflow_bodyfiltercreatedTimemin = bodyfiltercreatedTimemin == null ? null : WorkflowExpression.Compile(bodyfiltercreatedTimemin);
-            WorkflowExpression.Validate(__workflow_bodyfiltercreatedTimemin, nameof(bodyfiltercreatedTimemin), required: false);
-            var __workflow_bodyfilterlastUpdatedTimemax = bodyfilterlastUpdatedTimemax == null ? null : WorkflowExpression.Compile(bodyfilterlastUpdatedTimemax);
-            WorkflowExpression.Validate(__workflow_bodyfilterlastUpdatedTimemax, nameof(bodyfilterlastUpdatedTimemax), required: false);
-            var __workflow_bodyfilterlastUpdatedTimemin = bodyfilterlastUpdatedTimemin == null ? null : WorkflowExpression.Compile(bodyfilterlastUpdatedTimemin);
-            WorkflowExpression.Validate(__workflow_bodyfilterlastUpdatedTimemin, nameof(bodyfilterlastUpdatedTimemin), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodycursor = bodycursor == null ? null : WorkflowExpression.Compile(bodycursor);
-            WorkflowExpression.Validate(__workflow_bodycursor, nameof(bodycursor), required: false);
-            var __workflow_bodypartition = bodypartition == null ? null : WorkflowExpression.Compile(bodypartition);
-            WorkflowExpression.Validate(__workflow_bodypartition, nameof(bodypartition), required: false);
-            var __workflow_bodysort = bodysort == null ? null : WorkflowExpression.Compile(bodysort);
-            WorkflowExpression.Validate(__workflow_bodysort, nameof(bodysort), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyfiltername = WorkflowExpression.Compile(bodyfiltername, nameof(bodyfiltername), required: false);
+            var __workflow_bodyfilterunit = WorkflowExpression.Compile(bodyfilterunit, nameof(bodyfilterunit), required: false);
+            var __workflow_bodyfilterisString = WorkflowExpression.Compile(bodyfilterisString, nameof(bodyfilterisString), required: false);
+            var __workflow_bodyfilterisStep = WorkflowExpression.Compile(bodyfilterisStep, nameof(bodyfilterisStep), required: false);
+            var __workflow_bodyfilterassetIds = WorkflowExpression.Compile(bodyfilterassetIds, nameof(bodyfilterassetIds), required: false);
+            var __workflow_bodyfilterassetExternalIds = WorkflowExpression.Compile(bodyfilterassetExternalIds, nameof(bodyfilterassetExternalIds), required: false);
+            var __workflow_bodyfilterrootAssetIds = WorkflowExpression.Compile(bodyfilterrootAssetIds, nameof(bodyfilterrootAssetIds), required: false);
+            var __workflow_bodyfilterassetSubtreeIds = WorkflowExpression.Compile(bodyfilterassetSubtreeIds, nameof(bodyfilterassetSubtreeIds), required: false);
+            var __workflow_bodyfilterdataSetIds = WorkflowExpression.Compile(bodyfilterdataSetIds, nameof(bodyfilterdataSetIds), required: false);
+            var __workflow_bodyfilterexternalIdPrefix = WorkflowExpression.Compile(bodyfilterexternalIdPrefix, nameof(bodyfilterexternalIdPrefix), required: false);
+            var __workflow_bodyfiltercreatedTimemax = WorkflowExpression.Compile(bodyfiltercreatedTimemax, nameof(bodyfiltercreatedTimemax), required: false);
+            var __workflow_bodyfiltercreatedTimemin = WorkflowExpression.Compile(bodyfiltercreatedTimemin, nameof(bodyfiltercreatedTimemin), required: false);
+            var __workflow_bodyfilterlastUpdatedTimemax = WorkflowExpression.Compile(bodyfilterlastUpdatedTimemax, nameof(bodyfilterlastUpdatedTimemax), required: false);
+            var __workflow_bodyfilterlastUpdatedTimemin = WorkflowExpression.Compile(bodyfilterlastUpdatedTimemin, nameof(bodyfilterlastUpdatedTimemin), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodycursor = WorkflowExpression.Compile(bodycursor, nameof(bodycursor), required: false);
+            var __workflow_bodypartition = WorkflowExpression.Compile(bodypartition, nameof(bodypartition), required: false);
+            var __workflow_bodysort = WorkflowExpression.Compile(bodysort, nameof(bodysort), required: false);
             return new DeferredBodyAction<FilterTimeSeriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -287,48 +257,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IBodyWorkflowAction<SearchTimeSeriesResponse> SearchTimeSeries(Expression<Func<string>> project, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyfiltername = null, Expression<Func<string>> bodyfilterunit = null, Expression<Func<bool>> bodyfilterisString = null, Expression<Func<bool>> bodyfilterisStep = null, Expression<Func<int[]>> bodyfilterassetIds = null, Expression<Func<string[]>> bodyfilterassetExternalIds = null, Expression<Func<int[]>> bodyfilterrootAssetIds = null, Expression<Func<bodyfilterassetSubtreeIdsInputItem[]>> bodyfilterassetSubtreeIds = null, Expression<Func<bodyfilterdataSetIdsInputItem[]>> bodyfilterdataSetIds = null, Expression<Func<string>> bodyfilterexternalIdPrefix = null, Expression<Func<int>> bodyfiltercreatedTimemax = null, Expression<Func<int>> bodyfiltercreatedTimemin = null, Expression<Func<int>> bodyfilterlastUpdatedTimemax = null, Expression<Func<int>> bodyfilterlastUpdatedTimemin = null, Expression<Func<string>> bodysearchname = null, Expression<Func<string>> bodysearchdescription = null, Expression<Func<string>> bodysearchquery = null, Expression<Func<int>> bodylimit = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyfiltername = bodyfiltername == null ? null : WorkflowExpression.Compile(bodyfiltername);
-            WorkflowExpression.Validate(__workflow_bodyfiltername, nameof(bodyfiltername), required: false);
-            var __workflow_bodyfilterunit = bodyfilterunit == null ? null : WorkflowExpression.Compile(bodyfilterunit);
-            WorkflowExpression.Validate(__workflow_bodyfilterunit, nameof(bodyfilterunit), required: false);
-            var __workflow_bodyfilterisString = bodyfilterisString == null ? null : WorkflowExpression.Compile(bodyfilterisString);
-            WorkflowExpression.Validate(__workflow_bodyfilterisString, nameof(bodyfilterisString), required: false);
-            var __workflow_bodyfilterisStep = bodyfilterisStep == null ? null : WorkflowExpression.Compile(bodyfilterisStep);
-            WorkflowExpression.Validate(__workflow_bodyfilterisStep, nameof(bodyfilterisStep), required: false);
-            var __workflow_bodyfilterassetIds = bodyfilterassetIds == null ? null : WorkflowExpression.Compile(bodyfilterassetIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterassetIds, nameof(bodyfilterassetIds), required: false);
-            var __workflow_bodyfilterassetExternalIds = bodyfilterassetExternalIds == null ? null : WorkflowExpression.Compile(bodyfilterassetExternalIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterassetExternalIds, nameof(bodyfilterassetExternalIds), required: false);
-            var __workflow_bodyfilterrootAssetIds = bodyfilterrootAssetIds == null ? null : WorkflowExpression.Compile(bodyfilterrootAssetIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterrootAssetIds, nameof(bodyfilterrootAssetIds), required: false);
-            var __workflow_bodyfilterassetSubtreeIds = bodyfilterassetSubtreeIds == null ? null : WorkflowExpression.Compile(bodyfilterassetSubtreeIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterassetSubtreeIds, nameof(bodyfilterassetSubtreeIds), required: false);
-            var __workflow_bodyfilterdataSetIds = bodyfilterdataSetIds == null ? null : WorkflowExpression.Compile(bodyfilterdataSetIds);
-            WorkflowExpression.Validate(__workflow_bodyfilterdataSetIds, nameof(bodyfilterdataSetIds), required: false);
-            var __workflow_bodyfilterexternalIdPrefix = bodyfilterexternalIdPrefix == null ? null : WorkflowExpression.Compile(bodyfilterexternalIdPrefix);
-            WorkflowExpression.Validate(__workflow_bodyfilterexternalIdPrefix, nameof(bodyfilterexternalIdPrefix), required: false);
-            var __workflow_bodyfiltercreatedTimemax = bodyfiltercreatedTimemax == null ? null : WorkflowExpression.Compile(bodyfiltercreatedTimemax);
-            WorkflowExpression.Validate(__workflow_bodyfiltercreatedTimemax, nameof(bodyfiltercreatedTimemax), required: false);
-            var __workflow_bodyfiltercreatedTimemin = bodyfiltercreatedTimemin == null ? null : WorkflowExpression.Compile(bodyfiltercreatedTimemin);
-            WorkflowExpression.Validate(__workflow_bodyfiltercreatedTimemin, nameof(bodyfiltercreatedTimemin), required: false);
-            var __workflow_bodyfilterlastUpdatedTimemax = bodyfilterlastUpdatedTimemax == null ? null : WorkflowExpression.Compile(bodyfilterlastUpdatedTimemax);
-            WorkflowExpression.Validate(__workflow_bodyfilterlastUpdatedTimemax, nameof(bodyfilterlastUpdatedTimemax), required: false);
-            var __workflow_bodyfilterlastUpdatedTimemin = bodyfilterlastUpdatedTimemin == null ? null : WorkflowExpression.Compile(bodyfilterlastUpdatedTimemin);
-            WorkflowExpression.Validate(__workflow_bodyfilterlastUpdatedTimemin, nameof(bodyfilterlastUpdatedTimemin), required: false);
-            var __workflow_bodysearchname = bodysearchname == null ? null : WorkflowExpression.Compile(bodysearchname);
-            WorkflowExpression.Validate(__workflow_bodysearchname, nameof(bodysearchname), required: false);
-            var __workflow_bodysearchdescription = bodysearchdescription == null ? null : WorkflowExpression.Compile(bodysearchdescription);
-            WorkflowExpression.Validate(__workflow_bodysearchdescription, nameof(bodysearchdescription), required: false);
-            var __workflow_bodysearchquery = bodysearchquery == null ? null : WorkflowExpression.Compile(bodysearchquery);
-            WorkflowExpression.Validate(__workflow_bodysearchquery, nameof(bodysearchquery), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyfiltername = WorkflowExpression.Compile(bodyfiltername, nameof(bodyfiltername), required: false);
+            var __workflow_bodyfilterunit = WorkflowExpression.Compile(bodyfilterunit, nameof(bodyfilterunit), required: false);
+            var __workflow_bodyfilterisString = WorkflowExpression.Compile(bodyfilterisString, nameof(bodyfilterisString), required: false);
+            var __workflow_bodyfilterisStep = WorkflowExpression.Compile(bodyfilterisStep, nameof(bodyfilterisStep), required: false);
+            var __workflow_bodyfilterassetIds = WorkflowExpression.Compile(bodyfilterassetIds, nameof(bodyfilterassetIds), required: false);
+            var __workflow_bodyfilterassetExternalIds = WorkflowExpression.Compile(bodyfilterassetExternalIds, nameof(bodyfilterassetExternalIds), required: false);
+            var __workflow_bodyfilterrootAssetIds = WorkflowExpression.Compile(bodyfilterrootAssetIds, nameof(bodyfilterrootAssetIds), required: false);
+            var __workflow_bodyfilterassetSubtreeIds = WorkflowExpression.Compile(bodyfilterassetSubtreeIds, nameof(bodyfilterassetSubtreeIds), required: false);
+            var __workflow_bodyfilterdataSetIds = WorkflowExpression.Compile(bodyfilterdataSetIds, nameof(bodyfilterdataSetIds), required: false);
+            var __workflow_bodyfilterexternalIdPrefix = WorkflowExpression.Compile(bodyfilterexternalIdPrefix, nameof(bodyfilterexternalIdPrefix), required: false);
+            var __workflow_bodyfiltercreatedTimemax = WorkflowExpression.Compile(bodyfiltercreatedTimemax, nameof(bodyfiltercreatedTimemax), required: false);
+            var __workflow_bodyfiltercreatedTimemin = WorkflowExpression.Compile(bodyfiltercreatedTimemin, nameof(bodyfiltercreatedTimemin), required: false);
+            var __workflow_bodyfilterlastUpdatedTimemax = WorkflowExpression.Compile(bodyfilterlastUpdatedTimemax, nameof(bodyfilterlastUpdatedTimemax), required: false);
+            var __workflow_bodyfilterlastUpdatedTimemin = WorkflowExpression.Compile(bodyfilterlastUpdatedTimemin, nameof(bodyfilterlastUpdatedTimemin), required: false);
+            var __workflow_bodysearchname = WorkflowExpression.Compile(bodysearchname, nameof(bodysearchname), required: false);
+            var __workflow_bodysearchdescription = WorkflowExpression.Compile(bodysearchdescription, nameof(bodysearchdescription), required: false);
+            var __workflow_bodysearchquery = WorkflowExpression.Compile(bodysearchquery, nameof(bodysearchquery), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
             return new DeferredBodyAction<SearchTimeSeriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/timeseries/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -512,20 +461,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitedatafusionblu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitedatafusionblu")]
         public IWorkflowAction QueryGraphQL(Expression<Func<string>> project, Expression<Func<string>> space, Expression<Func<string>> datamodel, Expression<Func<string>> version, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_space = space == null ? null : WorkflowExpression.Compile(space);
-            WorkflowExpression.Validate(__workflow_space, nameof(space), required: true);
-            var __workflow_datamodel = datamodel == null ? null : WorkflowExpression.Compile(datamodel);
-            WorkflowExpression.Validate(__workflow_datamodel, nameof(datamodel), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_space = WorkflowExpression.Compile(space, nameof(space), required: true);
+            var __workflow_datamodel = WorkflowExpression.Compile(datamodel, nameof(datamodel), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}/userapis/spaces/{1}/datamodels/{2}/versions/{3}/graphql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_space, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_datamodel, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));

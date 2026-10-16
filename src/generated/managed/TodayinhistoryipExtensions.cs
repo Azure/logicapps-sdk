@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
         public IBodyWorkflowAction<DayGetResponse> DayGet(Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<DayGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/date/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));

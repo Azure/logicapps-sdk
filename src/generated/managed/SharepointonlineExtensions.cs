@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<TablesList> GetAllTables(Expression<Func<string>> dataset)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             return new DeferredBodyAction<TablesList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/alltables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<ApproveHubSiteJoinResponse> ApproveHubSiteJoin(Expression<Func<string>> dataset, Expression<Func<string>> joiningSiteId)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_joiningSiteId = joiningSiteId == null ? null : WorkflowExpression.Compile(joiningSiteId);
-            WorkflowExpression.Validate(__workflow_joiningSiteId, nameof(joiningSiteId), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_joiningSiteId = WorkflowExpression.Compile(joiningSiteId, nameof(joiningSiteId), required: true);
             return new DeferredBodyAction<ApproveHubSiteJoinResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/approvehubsitejoin", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -44,10 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction CancelHubSiteJoinApproval(Expression<Func<string>> dataset, Expression<Func<string>> approvalCorrelationId = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_approvalCorrelationId = approvalCorrelationId == null ? null : WorkflowExpression.Compile(approvalCorrelationId);
-            WorkflowExpression.Validate(__workflow_approvalCorrelationId, nameof(approvalCorrelationId), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_approvalCorrelationId = WorkflowExpression.Compile(approvalCorrelationId, nameof(approvalCorrelationId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/cancelhubsitejoinapproval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -62,18 +57,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SharingLinkPermission> CreateSharingLink(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> permissionlinkType, Expression<Func<string>> permissionlinkScope, Expression<Func<string>> permissionlinkExpiration = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_permissionlinkType = permissionlinkType == null ? null : WorkflowExpression.Compile(permissionlinkType);
-            WorkflowExpression.Validate(__workflow_permissionlinkType, nameof(permissionlinkType), required: true);
-            var __workflow_permissionlinkScope = permissionlinkScope == null ? null : WorkflowExpression.Compile(permissionlinkScope);
-            WorkflowExpression.Validate(__workflow_permissionlinkScope, nameof(permissionlinkScope), required: true);
-            var __workflow_permissionlinkExpiration = permissionlinkExpiration == null ? null : WorkflowExpression.Compile(permissionlinkExpiration);
-            WorkflowExpression.Validate(__workflow_permissionlinkExpiration, nameof(permissionlinkExpiration), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_permissionlinkType = WorkflowExpression.Compile(permissionlinkType, nameof(permissionlinkType), required: true);
+            var __workflow_permissionlinkScope = WorkflowExpression.Compile(permissionlinkScope, nameof(permissionlinkScope), required: true);
+            var __workflow_permissionlinkExpiration = WorkflowExpression.Compile(permissionlinkExpiration, nameof(permissionlinkExpiration), required: false);
             return new DeferredBodyAction<SharingLinkPermission>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/codeless/_api/v2.0/sites/root/lists/{1}/items/{2}/driveItem/createLink", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -103,14 +92,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<BlobMetadata> CopyFile(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
-            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
-            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
             return new DeferredBodyAction<BlobMetadata>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -129,16 +114,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> CopyFileAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfileToCopy, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFileIsAlreadyThere)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_parametersfileToCopy = parametersfileToCopy == null ? null : WorkflowExpression.Compile(parametersfileToCopy);
-            WorkflowExpression.Validate(__workflow_parametersfileToCopy, nameof(parametersfileToCopy), required: true);
-            var __workflow_parametersdestinationSiteAddress = parametersdestinationSiteAddress == null ? null : WorkflowExpression.Compile(parametersdestinationSiteAddress);
-            WorkflowExpression.Validate(__workflow_parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = parametersdestinationFolder == null ? null : WorkflowExpression.Compile(parametersdestinationFolder);
-            WorkflowExpression.Validate(__workflow_parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFileIsAlreadyThere = parametersifAnotherFileIsAlreadyThere == null ? null : WorkflowExpression.Compile(parametersifAnotherFileIsAlreadyThere);
-            WorkflowExpression.Validate(__workflow_parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_parametersfileToCopy = WorkflowExpression.Compile(parametersfileToCopy, nameof(parametersfileToCopy), required: true);
+            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            var __workflow_parametersifAnotherFileIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFileAsync", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -166,16 +146,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> CopyFolderAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfolderToCopy, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFolderIsAlreadyThere)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_parametersfolderToCopy = parametersfolderToCopy == null ? null : WorkflowExpression.Compile(parametersfolderToCopy);
-            WorkflowExpression.Validate(__workflow_parametersfolderToCopy, nameof(parametersfolderToCopy), required: true);
-            var __workflow_parametersdestinationSiteAddress = parametersdestinationSiteAddress == null ? null : WorkflowExpression.Compile(parametersdestinationSiteAddress);
-            WorkflowExpression.Validate(__workflow_parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = parametersdestinationFolder == null ? null : WorkflowExpression.Compile(parametersdestinationFolder);
-            WorkflowExpression.Validate(__workflow_parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFolderIsAlreadyThere = parametersifAnotherFolderIsAlreadyThere == null ? null : WorkflowExpression.Compile(parametersifAnotherFolderIsAlreadyThere);
-            WorkflowExpression.Validate(__workflow_parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_parametersfolderToCopy = WorkflowExpression.Compile(parametersfolderToCopy, nameof(parametersfolderToCopy), required: true);
+            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            var __workflow_parametersifAnotherFolderIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFolderAsync", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -203,14 +178,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -227,10 +198,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> GetFileMetadata(Expression<Func<string>> dataset, Expression<Func<string>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -243,12 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<BlobMetadataResponse> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<BlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -262,10 +228,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction DeleteFile(Expression<Func<string>> dataset, Expression<Func<string>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -278,12 +242,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -299,8 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<BlobMetadata[]> ListRootFolder(Expression<Func<string>> dataset)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             return new DeferredBodyAction<BlobMetadata[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -313,10 +273,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<BlobMetadata[]> ListFolder(Expression<Func<string>> dataset, Expression<Func<string>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BlobMetadata[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/folders/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -329,10 +287,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> GetFileMetadataByPath(Expression<Func<string>> dataset, Expression<Func<string>> path)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFileByPath", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -347,12 +303,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<string> GetFileContentByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFileContentByPath", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -370,10 +323,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> GetFolderMetadata(Expression<Func<string>> dataset, Expression<Func<string>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFolder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -387,10 +338,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> GetFolderMetadataByPath(Expression<Func<string>> dataset, Expression<Func<string>> path)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFolderByPath", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -405,14 +354,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction HttpRequest(Expression<Func<string>> dataset, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_parametersmethod = parametersmethod == null ? null : WorkflowExpression.Compile(parametersmethod);
-            WorkflowExpression.Validate(__workflow_parametersmethod, nameof(parametersmethod), required: true);
-            var __workflow_parametersuri = parametersuri == null ? null : WorkflowExpression.Compile(parametersuri);
-            WorkflowExpression.Validate(__workflow_parametersuri, nameof(parametersuri), required: true);
-            var __workflow_parametersbody = parametersbody == null ? null : WorkflowExpression.Compile(parametersbody);
-            WorkflowExpression.Validate(__workflow_parametersbody, nameof(parametersbody), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
+            var __workflow_parametersuri = WorkflowExpression.Compile(parametersuri, nameof(parametersuri), required: true);
+            var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/httprequest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -450,14 +395,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction JoinHubSite(Expression<Func<string>> dataset, Expression<Func<string>> hubSiteId, Expression<Func<string>> approvalToken = null, Expression<Func<string>> approvalCorrelationId = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_hubSiteId = hubSiteId == null ? null : WorkflowExpression.Compile(hubSiteId);
-            WorkflowExpression.Validate(__workflow_hubSiteId, nameof(hubSiteId), required: true);
-            var __workflow_approvalToken = approvalToken == null ? null : WorkflowExpression.Compile(approvalToken);
-            WorkflowExpression.Validate(__workflow_approvalToken, nameof(approvalToken), required: false);
-            var __workflow_approvalCorrelationId = approvalCorrelationId == null ? null : WorkflowExpression.Compile(approvalCorrelationId);
-            WorkflowExpression.Validate(__workflow_approvalCorrelationId, nameof(approvalCorrelationId), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_hubSiteId = WorkflowExpression.Compile(hubSiteId, nameof(hubSiteId), required: true);
+            var __workflow_approvalToken = WorkflowExpression.Compile(approvalToken, nameof(approvalToken), required: false);
+            var __workflow_approvalCorrelationId = WorkflowExpression.Compile(approvalCorrelationId, nameof(approvalCorrelationId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/joinhubsite", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -475,16 +416,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> MoveFileAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfileToMove, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFileIsAlreadyThere)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_parametersfileToMove = parametersfileToMove == null ? null : WorkflowExpression.Compile(parametersfileToMove);
-            WorkflowExpression.Validate(__workflow_parametersfileToMove, nameof(parametersfileToMove), required: true);
-            var __workflow_parametersdestinationSiteAddress = parametersdestinationSiteAddress == null ? null : WorkflowExpression.Compile(parametersdestinationSiteAddress);
-            WorkflowExpression.Validate(__workflow_parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = parametersdestinationFolder == null ? null : WorkflowExpression.Compile(parametersdestinationFolder);
-            WorkflowExpression.Validate(__workflow_parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFileIsAlreadyThere = parametersifAnotherFileIsAlreadyThere == null ? null : WorkflowExpression.Compile(parametersifAnotherFileIsAlreadyThere);
-            WorkflowExpression.Validate(__workflow_parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_parametersfileToMove = WorkflowExpression.Compile(parametersfileToMove, nameof(parametersfileToMove), required: true);
+            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            var __workflow_parametersifAnotherFileIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/moveFileAsync", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -512,16 +448,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> MoveFolderAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfolderToMove, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFolderIsAlreadyThere)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_parametersfolderToMove = parametersfolderToMove == null ? null : WorkflowExpression.Compile(parametersfolderToMove);
-            WorkflowExpression.Validate(__workflow_parametersfolderToMove, nameof(parametersfolderToMove), required: true);
-            var __workflow_parametersdestinationSiteAddress = parametersdestinationSiteAddress == null ? null : WorkflowExpression.Compile(parametersdestinationSiteAddress);
-            WorkflowExpression.Validate(__workflow_parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
-            var __workflow_parametersdestinationFolder = parametersdestinationFolder == null ? null : WorkflowExpression.Compile(parametersdestinationFolder);
-            WorkflowExpression.Validate(__workflow_parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
-            var __workflow_parametersifAnotherFolderIsAlreadyThere = parametersifAnotherFolderIsAlreadyThere == null ? null : WorkflowExpression.Compile(parametersifAnotherFolderIsAlreadyThere);
-            WorkflowExpression.Validate(__workflow_parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_parametersfolderToMove = WorkflowExpression.Compile(parametersfolderToMove, nameof(parametersfolderToMove), required: true);
+            var __workflow_parametersdestinationSiteAddress = WorkflowExpression.Compile(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            var __workflow_parametersdestinationFolder = WorkflowExpression.Compile(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            var __workflow_parametersifAnotherFolderIsAlreadyThere = WorkflowExpression.Compile(parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/moveFolderAsync", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -549,10 +480,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction NotifyHubSiteJoinApprovalStarted(Expression<Func<string>> dataset, Expression<Func<string>> approvalCorrelationId = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_approvalCorrelationId = approvalCorrelationId == null ? null : WorkflowExpression.Compile(approvalCorrelationId);
-            WorkflowExpression.Validate(__workflow_approvalCorrelationId, nameof(approvalCorrelationId), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_approvalCorrelationId = WorkflowExpression.Compile(approvalCorrelationId, nameof(approvalCorrelationId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/notifyhubsitejoinapprovalstarted", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -567,8 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> dataset)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
             return new DeferredBodyAction<TablesList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -581,16 +509,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<JToken> CreateNewDocumentSet(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> parametersdocumentSetPath, Expression<Func<string>> parameterscontentTypeId, Expression<Func<object>> parametersdynamicProperties = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_parametersdocumentSetPath = parametersdocumentSetPath == null ? null : WorkflowExpression.Compile(parametersdocumentSetPath);
-            WorkflowExpression.Validate(__workflow_parametersdocumentSetPath, nameof(parametersdocumentSetPath), required: true);
-            var __workflow_parameterscontentTypeId = parameterscontentTypeId == null ? null : WorkflowExpression.Compile(parameterscontentTypeId);
-            WorkflowExpression.Validate(__workflow_parameterscontentTypeId, nameof(parameterscontentTypeId), required: true);
-            var __workflow_parametersdynamicProperties = parametersdynamicProperties == null ? null : WorkflowExpression.Compile(parametersdynamicProperties);
-            WorkflowExpression.Validate(__workflow_parametersdynamicProperties, nameof(parametersdynamicProperties), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_parametersdocumentSetPath = WorkflowExpression.Compile(parametersdocumentSetPath, nameof(parametersdocumentSetPath), required: true);
+            var __workflow_parameterscontentTypeId = WorkflowExpression.Compile(parameterscontentTypeId, nameof(parameterscontentTypeId), required: true);
+            var __workflow_parametersdynamicProperties = WorkflowExpression.Compile(parametersdynamicProperties, nameof(parametersdynamicProperties), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/createnewdocumentset", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -620,14 +543,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<JToken> CreateNewFolder(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> parametersfolderPath, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_parametersfolderPath = parametersfolderPath == null ? null : WorkflowExpression.Compile(parametersfolderPath);
-            WorkflowExpression.Validate(__workflow_parametersfolderPath, nameof(parametersfolderPath), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_parametersfolderPath = WorkflowExpression.Compile(parametersfolderPath, nameof(parametersfolderPath), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/createnewfolder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -651,16 +570,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPListExpandedUser> SearchForUser(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> entityId, Expression<Func<string>> searchValue, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
-            var __workflow_searchValue = searchValue == null ? null : WorkflowExpression.Compile(searchValue);
-            WorkflowExpression.Validate(__workflow_searchValue, nameof(searchValue), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
+            var __workflow_searchValue = WorkflowExpression.Compile(searchValue, nameof(searchValue), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<SPListExpandedUser>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/entities/{2}/searchforuser", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityId, 2));
@@ -676,22 +590,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<ItemsList> GetFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<string>> folderPath = null, Expression<Func<string>> viewScopeOption = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_viewScopeOption = viewScopeOption == null ? null : WorkflowExpression.Compile(viewScopeOption);
-            WorkflowExpression.Validate(__workflow_viewScopeOption, nameof(viewScopeOption), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_viewScopeOption = WorkflowExpression.Compile(viewScopeOption, nameof(viewScopeOption), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/getfileitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -716,22 +622,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<string>> folderPath = null, Expression<Func<string>> viewScopeOption = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_viewScopeOption = viewScopeOption == null ? null : WorkflowExpression.Compile(viewScopeOption);
-            WorkflowExpression.Validate(__workflow_viewScopeOption, nameof(viewScopeOption), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_viewScopeOption = WorkflowExpression.Compile(viewScopeOption, nameof(viewScopeOption), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -756,14 +654,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -779,14 +673,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -801,12 +691,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction DeleteItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -819,16 +706,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -844,16 +726,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<ApprovalData> CreateApprovalRequest(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<int>> approvalType, Expression<Func<object>> approvalSchema = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_approvalType = approvalType == null ? null : WorkflowExpression.Compile(approvalType);
-            WorkflowExpression.Validate(__workflow_approvalType, nameof(approvalType), required: true);
-            var __workflow_approvalSchema = approvalSchema == null ? null : WorkflowExpression.Compile(approvalSchema);
-            WorkflowExpression.Validate(__workflow_approvalSchema, nameof(approvalSchema), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_approvalType = WorkflowExpression.Compile(approvalType, nameof(approvalType), required: true);
+            var __workflow_approvalSchema = WorkflowExpression.Compile(approvalSchema, nameof(approvalSchema), required: false);
             return new DeferredBodyAction<ApprovalData>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/approval", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -868,20 +745,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<JToken> GetItemChanges(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> since, Expression<Func<string>> until = null, Expression<Func<bool>> includeDrafts = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_since = since == null ? null : WorkflowExpression.Compile(since);
-            WorkflowExpression.Validate(__workflow_since, nameof(since), required: true);
-            var __workflow_until = until == null ? null : WorkflowExpression.Compile(until);
-            WorkflowExpression.Validate(__workflow_until, nameof(until), required: false);
-            var __workflow_includeDrafts = includeDrafts == null ? null : WorkflowExpression.Compile(includeDrafts);
-            WorkflowExpression.Validate(__workflow_includeDrafts, nameof(includeDrafts), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: true);
+            var __workflow_until = WorkflowExpression.Compile(until, nameof(until), required: false);
+            var __workflow_includeDrafts = WorkflowExpression.Compile(includeDrafts, nameof(includeDrafts), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/changes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -902,16 +772,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction CheckInFile(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parametercomments, Expression<Func<int>> parametercheckInType)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_parametercomments = parametercomments == null ? null : WorkflowExpression.Compile(parametercomments);
-            WorkflowExpression.Validate(__workflow_parametercomments, nameof(parametercomments), required: true);
-            var __workflow_parametercheckInType = parametercheckInType == null ? null : WorkflowExpression.Compile(parametercheckInType);
-            WorkflowExpression.Validate(__workflow_parametercheckInType, nameof(parametercheckInType), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_parametercomments = WorkflowExpression.Compile(parametercomments, nameof(parametercomments), required: true);
+            var __workflow_parametercheckInType = WorkflowExpression.Compile(parametercheckInType, nameof(parametercheckInType), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/checkinfile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -935,12 +800,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction CheckOutFile(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/checkoutfile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -953,12 +815,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction DiscardFileCheckOut(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/discardfilecheckout", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -971,14 +830,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<Item> GetFileItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<Item>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/getfileitem", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -993,20 +848,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction GrantAccess(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parameterrecipients, Expression<Func<string>> parameterroles, Expression<Func<string>> parametermessage = null, Expression<Func<bool>> parameternotifyRecipients = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_parameterrecipients = parameterrecipients == null ? null : WorkflowExpression.Compile(parameterrecipients);
-            WorkflowExpression.Validate(__workflow_parameterrecipients, nameof(parameterrecipients), required: true);
-            var __workflow_parameterroles = parameterroles == null ? null : WorkflowExpression.Compile(parameterroles);
-            WorkflowExpression.Validate(__workflow_parameterroles, nameof(parameterroles), required: true);
-            var __workflow_parametermessage = parametermessage == null ? null : WorkflowExpression.Compile(parametermessage);
-            WorkflowExpression.Validate(__workflow_parametermessage, nameof(parametermessage), required: false);
-            var __workflow_parameternotifyRecipients = parameternotifyRecipients == null ? null : WorkflowExpression.Compile(parameternotifyRecipients);
-            WorkflowExpression.Validate(__workflow_parameternotifyRecipients, nameof(parameternotifyRecipients), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_parameterrecipients = WorkflowExpression.Compile(parameterrecipients, nameof(parameterrecipients), required: true);
+            var __workflow_parameterroles = WorkflowExpression.Compile(parameterroles, nameof(parameterroles), required: true);
+            var __workflow_parametermessage = WorkflowExpression.Compile(parametermessage, nameof(parametermessage), required: false);
+            var __workflow_parameternotifyRecipients = WorkflowExpression.Compile(parameternotifyRecipients, nameof(parameternotifyRecipients), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/grantaccess", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -1042,16 +890,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<JToken> PatchFileItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/patchfileitem", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1067,16 +910,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<Item> PatchFileItemWithPredictedValues(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parametersmodelId = null, Expression<Func<string>> parameterspredictResult = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_parametersmodelId = parametersmodelId == null ? null : WorkflowExpression.Compile(parametersmodelId);
-            WorkflowExpression.Validate(__workflow_parametersmodelId, nameof(parametersmodelId), required: false);
-            var __workflow_parameterspredictResult = parameterspredictResult == null ? null : WorkflowExpression.Compile(parameterspredictResult);
-            WorkflowExpression.Validate(__workflow_parameterspredictResult, nameof(parameterspredictResult), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_parametersmodelId = WorkflowExpression.Compile(parametersmodelId, nameof(parametersmodelId), required: false);
+            var __workflow_parameterspredictResult = WorkflowExpression.Compile(parameterspredictResult, nameof(parameterspredictResult), required: false);
             return new DeferredBodyAction<Item>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/patchfileitemwithpredictedvalues", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1108,18 +946,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SetApprovalStatusOutput> SetApprovalStatus(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<approvalActionInput>> approvalAction, Expression<Func<string>> comments = null, Expression<Func<string>> entityTag = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_approvalAction = approvalAction == null ? null : WorkflowExpression.Compile(approvalAction);
-            WorkflowExpression.Validate(__workflow_approvalAction, nameof(approvalAction), required: true);
-            var __workflow_comments = comments == null ? null : WorkflowExpression.Compile(comments);
-            WorkflowExpression.Validate(__workflow_comments, nameof(comments), required: false);
-            var __workflow_entityTag = entityTag == null ? null : WorkflowExpression.Compile(entityTag);
-            WorkflowExpression.Validate(__workflow_entityTag, nameof(entityTag), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_approvalAction = WorkflowExpression.Compile(approvalAction, nameof(approvalAction), required: true);
+            var __workflow_comments = WorkflowExpression.Compile(comments, nameof(comments), required: false);
+            var __workflow_entityTag = WorkflowExpression.Compile(entityTag, nameof(entityTag), required: false);
             return new DeferredBodyAction<SetApprovalStatusOutput>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/setapprovalstatus", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -1139,12 +971,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction UnshareItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/unshare", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -1157,12 +986,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPListItemAttachment[]> GetItemAttachments(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> itemId)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
             return new DeferredBodyAction<SPListItemAttachment[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemId, 2));
@@ -1175,16 +1001,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPListItemAttachment> CreateAttachment(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> displayName, Expression<Func<string>> body = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_displayName = displayName == null ? null : WorkflowExpression.Compile(displayName);
-            WorkflowExpression.Validate(__workflow_displayName, nameof(displayName), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_displayName = WorkflowExpression.Compile(displayName, nameof(displayName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<SPListItemAttachment>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemId, 2));
@@ -1199,14 +1020,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IWorkflowAction DeleteAttachment(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> attachmentId)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_attachmentId = attachmentId == null ? null : WorkflowExpression.Compile(attachmentId);
-            WorkflowExpression.Validate(__workflow_attachmentId, nameof(attachmentId), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
@@ -1219,14 +1036,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<string> GetAttachmentContent(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> attachmentId)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_attachmentId = attachmentId == null ? null : WorkflowExpression.Compile(attachmentId);
-            WorkflowExpression.Validate(__workflow_attachmentId, nameof(attachmentId), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments/{3}/$value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
@@ -1239,20 +1052,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> CreateContentAssemblyDocument(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> folderPath = null, Expression<Func<string>> fileName = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/templates/{2}/createnewdocument", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_template, 2));
@@ -1272,10 +1078,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<Table[]> GetTableViews(Expression<Func<string>> dataset, Expression<Func<string>> table)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyAction<Table[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/views", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1288,18 +1092,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<SPBlobMetadataResponse> CreateAgreementsSolutionDocument(Expression<Func<string>> dataset, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> documentName = null, Expression<Func<string>> table = null, Expression<Func<string>> view = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
-            var __workflow_documentName = documentName == null ? null : WorkflowExpression.Compile(documentName);
-            WorkflowExpression.Validate(__workflow_documentName, nameof(documentName), required: false);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_documentName = WorkflowExpression.Compile(documentName, nameof(documentName), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyAction<SPBlobMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/agreements/templates/{1}/createnewdocument", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_template, 2));
@@ -1319,14 +1117,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
         public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
-            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
-            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
             return new DeferredBodyAction<BlobMetadata[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/extractFolderV2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -1347,14 +1141,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     {
         public IBodyWorkflowTrigger<ItemsList> OnChangedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onchangeditems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1370,12 +1160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<DeletedItemList> OnDeletedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
             return new DeferredBodyTrigger<DeletedItemList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/ondeletedfileitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1389,10 +1176,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<DeletedItemList> OnDeletedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyTrigger<DeletedItemList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/ondeleteditems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1404,14 +1189,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<ItemsList> OnNewFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onnewfileitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1427,12 +1208,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1446,14 +1224,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileclassifiedtimes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1469,14 +1243,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1492,12 +1262,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1511,12 +1278,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<string> OnNewFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/triggers/onnewfile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));
@@ -1533,12 +1297,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
 
         public IBodyWorkflowTrigger<string> OnUpdatedFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_dataset = dataset == null ? null : WorkflowExpression.Compile(dataset);
-            WorkflowExpression.Validate(__workflow_dataset, nameof(dataset), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_dataset = WorkflowExpression.Compile(dataset, nameof(dataset), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/triggers/onupdatedfile", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataset, 2));

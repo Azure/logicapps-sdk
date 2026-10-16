@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
         public IBodyWorkflowAction<NewMeetingResponse> NewMeeting(Expression<Func<string>> bodytopic, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyattendees = null, Expression<Func<string>> bodyagenda = null)
         {
-            var __workflow_bodytopic = bodytopic == null ? null : WorkflowExpression.Compile(bodytopic);
-            WorkflowExpression.Validate(__workflow_bodytopic, nameof(bodytopic), required: true);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: true);
-            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
-            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: true);
-            var __workflow_bodyattendees = bodyattendees == null ? null : WorkflowExpression.Compile(bodyattendees);
-            WorkflowExpression.Validate(__workflow_bodyattendees, nameof(bodyattendees), required: false);
-            var __workflow_bodyagenda = bodyagenda == null ? null : WorkflowExpression.Compile(bodyagenda);
-            WorkflowExpression.Validate(__workflow_bodyagenda, nameof(bodyagenda), required: false);
+            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: true);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: true);
+            var __workflow_bodyattendees = WorkflowExpression.Compile(bodyattendees, nameof(bodyattendees), required: false);
+            var __workflow_bodyagenda = WorkflowExpression.Compile(bodyagenda, nameof(bodyagenda), required: false);
             return new DeferredBodyAction<NewMeetingResponse>(() =>
             {
                 var apiCallPath = "/workflow/meetings/create";

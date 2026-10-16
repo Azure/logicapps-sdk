@@ -13,38 +13,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfutureidenti")]
         public IBodyWorkflowAction<LookupResponse> CredentialLookup(Expression<Func<string[]>> bodyfilterauthorizationProtocols = null, Expression<Func<string[]>> bodyfilterauthorizationTechnologies = null, Expression<Func<string>> bodyfilterbreachPropertiesdate = null, Expression<Func<string>> bodyfilterbreachPropertiesname = null, Expression<Func<string>> bodyfilterdumpPropertiesdate = null, Expression<Func<string>> bodyfilterdumpPropertiesname = null, Expression<Func<string>> bodyfilterexfiltrationDateGte = null, Expression<Func<string>> bodyfilterfirstDownloadedGte = null, Expression<Func<string>> bodyfilterlatestDownloadedGte = null, Expression<Func<string[]>> bodyfiltermalwareFamilies = null, Expression<Func<bodyfilterpropertiesInputItem[]>> bodyfilterproperties = null, Expression<Func<bodyfilterusernamePropertiesInputItem[]>> bodyfilterusernameProperties = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string[]>> bodysubjects = null, Expression<Func<DomainLogin[]>> bodysubjectsLogin = null, Expression<Func<string[]>> bodysubjectsSha1 = null)
         {
-            var __workflow_bodyfilterauthorizationProtocols = bodyfilterauthorizationProtocols == null ? null : WorkflowExpression.Compile(bodyfilterauthorizationProtocols);
-            WorkflowExpression.Validate(__workflow_bodyfilterauthorizationProtocols, nameof(bodyfilterauthorizationProtocols), required: false);
-            var __workflow_bodyfilterauthorizationTechnologies = bodyfilterauthorizationTechnologies == null ? null : WorkflowExpression.Compile(bodyfilterauthorizationTechnologies);
-            WorkflowExpression.Validate(__workflow_bodyfilterauthorizationTechnologies, nameof(bodyfilterauthorizationTechnologies), required: false);
-            var __workflow_bodyfilterbreachPropertiesdate = bodyfilterbreachPropertiesdate == null ? null : WorkflowExpression.Compile(bodyfilterbreachPropertiesdate);
-            WorkflowExpression.Validate(__workflow_bodyfilterbreachPropertiesdate, nameof(bodyfilterbreachPropertiesdate), required: false);
-            var __workflow_bodyfilterbreachPropertiesname = bodyfilterbreachPropertiesname == null ? null : WorkflowExpression.Compile(bodyfilterbreachPropertiesname);
-            WorkflowExpression.Validate(__workflow_bodyfilterbreachPropertiesname, nameof(bodyfilterbreachPropertiesname), required: false);
-            var __workflow_bodyfilterdumpPropertiesdate = bodyfilterdumpPropertiesdate == null ? null : WorkflowExpression.Compile(bodyfilterdumpPropertiesdate);
-            WorkflowExpression.Validate(__workflow_bodyfilterdumpPropertiesdate, nameof(bodyfilterdumpPropertiesdate), required: false);
-            var __workflow_bodyfilterdumpPropertiesname = bodyfilterdumpPropertiesname == null ? null : WorkflowExpression.Compile(bodyfilterdumpPropertiesname);
-            WorkflowExpression.Validate(__workflow_bodyfilterdumpPropertiesname, nameof(bodyfilterdumpPropertiesname), required: false);
-            var __workflow_bodyfilterexfiltrationDateGte = bodyfilterexfiltrationDateGte == null ? null : WorkflowExpression.Compile(bodyfilterexfiltrationDateGte);
-            WorkflowExpression.Validate(__workflow_bodyfilterexfiltrationDateGte, nameof(bodyfilterexfiltrationDateGte), required: false);
-            var __workflow_bodyfilterfirstDownloadedGte = bodyfilterfirstDownloadedGte == null ? null : WorkflowExpression.Compile(bodyfilterfirstDownloadedGte);
-            WorkflowExpression.Validate(__workflow_bodyfilterfirstDownloadedGte, nameof(bodyfilterfirstDownloadedGte), required: false);
-            var __workflow_bodyfilterlatestDownloadedGte = bodyfilterlatestDownloadedGte == null ? null : WorkflowExpression.Compile(bodyfilterlatestDownloadedGte);
-            WorkflowExpression.Validate(__workflow_bodyfilterlatestDownloadedGte, nameof(bodyfilterlatestDownloadedGte), required: false);
-            var __workflow_bodyfiltermalwareFamilies = bodyfiltermalwareFamilies == null ? null : WorkflowExpression.Compile(bodyfiltermalwareFamilies);
-            WorkflowExpression.Validate(__workflow_bodyfiltermalwareFamilies, nameof(bodyfiltermalwareFamilies), required: false);
-            var __workflow_bodyfilterproperties = bodyfilterproperties == null ? null : WorkflowExpression.Compile(bodyfilterproperties);
-            WorkflowExpression.Validate(__workflow_bodyfilterproperties, nameof(bodyfilterproperties), required: false);
-            var __workflow_bodyfilterusernameProperties = bodyfilterusernameProperties == null ? null : WorkflowExpression.Compile(bodyfilterusernameProperties);
-            WorkflowExpression.Validate(__workflow_bodyfilterusernameProperties, nameof(bodyfilterusernameProperties), required: false);
-            var __workflow_bodyorganizationId = bodyorganizationId == null ? null : WorkflowExpression.Compile(bodyorganizationId);
-            WorkflowExpression.Validate(__workflow_bodyorganizationId, nameof(bodyorganizationId), required: false);
-            var __workflow_bodysubjects = bodysubjects == null ? null : WorkflowExpression.Compile(bodysubjects);
-            WorkflowExpression.Validate(__workflow_bodysubjects, nameof(bodysubjects), required: false);
-            var __workflow_bodysubjectsLogin = bodysubjectsLogin == null ? null : WorkflowExpression.Compile(bodysubjectsLogin);
-            WorkflowExpression.Validate(__workflow_bodysubjectsLogin, nameof(bodysubjectsLogin), required: false);
-            var __workflow_bodysubjectsSha1 = bodysubjectsSha1 == null ? null : WorkflowExpression.Compile(bodysubjectsSha1);
-            WorkflowExpression.Validate(__workflow_bodysubjectsSha1, nameof(bodysubjectsSha1), required: false);
+            var __workflow_bodyfilterauthorizationProtocols = WorkflowExpression.Compile(bodyfilterauthorizationProtocols, nameof(bodyfilterauthorizationProtocols), required: false);
+            var __workflow_bodyfilterauthorizationTechnologies = WorkflowExpression.Compile(bodyfilterauthorizationTechnologies, nameof(bodyfilterauthorizationTechnologies), required: false);
+            var __workflow_bodyfilterbreachPropertiesdate = WorkflowExpression.Compile(bodyfilterbreachPropertiesdate, nameof(bodyfilterbreachPropertiesdate), required: false);
+            var __workflow_bodyfilterbreachPropertiesname = WorkflowExpression.Compile(bodyfilterbreachPropertiesname, nameof(bodyfilterbreachPropertiesname), required: false);
+            var __workflow_bodyfilterdumpPropertiesdate = WorkflowExpression.Compile(bodyfilterdumpPropertiesdate, nameof(bodyfilterdumpPropertiesdate), required: false);
+            var __workflow_bodyfilterdumpPropertiesname = WorkflowExpression.Compile(bodyfilterdumpPropertiesname, nameof(bodyfilterdumpPropertiesname), required: false);
+            var __workflow_bodyfilterexfiltrationDateGte = WorkflowExpression.Compile(bodyfilterexfiltrationDateGte, nameof(bodyfilterexfiltrationDateGte), required: false);
+            var __workflow_bodyfilterfirstDownloadedGte = WorkflowExpression.Compile(bodyfilterfirstDownloadedGte, nameof(bodyfilterfirstDownloadedGte), required: false);
+            var __workflow_bodyfilterlatestDownloadedGte = WorkflowExpression.Compile(bodyfilterlatestDownloadedGte, nameof(bodyfilterlatestDownloadedGte), required: false);
+            var __workflow_bodyfiltermalwareFamilies = WorkflowExpression.Compile(bodyfiltermalwareFamilies, nameof(bodyfiltermalwareFamilies), required: false);
+            var __workflow_bodyfilterproperties = WorkflowExpression.Compile(bodyfilterproperties, nameof(bodyfilterproperties), required: false);
+            var __workflow_bodyfilterusernameProperties = WorkflowExpression.Compile(bodyfilterusernameProperties, nameof(bodyfilterusernameProperties), required: false);
+            var __workflow_bodyorganizationId = WorkflowExpression.Compile(bodyorganizationId, nameof(bodyorganizationId), required: false);
+            var __workflow_bodysubjects = WorkflowExpression.Compile(bodysubjects, nameof(bodysubjects), required: false);
+            var __workflow_bodysubjectsLogin = WorkflowExpression.Compile(bodysubjectsLogin, nameof(bodysubjectsLogin), required: false);
+            var __workflow_bodysubjectsSha1 = WorkflowExpression.Compile(bodysubjectsSha1, nameof(bodysubjectsSha1), required: false);
             return new DeferredBodyAction<LookupResponse>(() =>
             {
                 var apiCallPath = "/v2/credentials/lookup";

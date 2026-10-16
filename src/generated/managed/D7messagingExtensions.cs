@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<NumberLookupResponse> NumberLookup(Expression<Func<string>> bodyrecipient)
         {
-            var __workflow_bodyrecipient = bodyrecipient == null ? null : WorkflowExpression.Compile(bodyrecipient);
-            WorkflowExpression.Validate(__workflow_bodyrecipient, nameof(bodyrecipient), required: true);
+            var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: true);
             return new DeferredBodyAction<NumberLookupResponse>(() =>
             {
                 var apiCallPath = "/hlr/v1/lookup";
@@ -45,28 +44,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<OTPSendOTPResponse> OTPSendOTP(Expression<Func<string>> bodyoriginator, Expression<Func<string>> bodyrecipient, Expression<Func<string>> bodycontent, Expression<Func<bodydataCodingInput>> bodydataCoding, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodyretryDelay = null, Expression<Func<string>> bodyretryCount = null, Expression<Func<string>> bodyotpCodeLength = null, Expression<Func<bodyotpTypeInput>> bodyotpType = null, Expression<Func<string>> bodysuccessUrl = null, Expression<Func<string>> bodyfailureUrl = null)
         {
-            var __workflow_bodyoriginator = bodyoriginator == null ? null : WorkflowExpression.Compile(bodyoriginator);
-            WorkflowExpression.Validate(__workflow_bodyoriginator, nameof(bodyoriginator), required: true);
-            var __workflow_bodyrecipient = bodyrecipient == null ? null : WorkflowExpression.Compile(bodyrecipient);
-            WorkflowExpression.Validate(__workflow_bodyrecipient, nameof(bodyrecipient), required: true);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodydataCoding = bodydataCoding == null ? null : WorkflowExpression.Compile(bodydataCoding);
-            WorkflowExpression.Validate(__workflow_bodydataCoding, nameof(bodydataCoding), required: true);
-            var __workflow_bodyexpiry = bodyexpiry == null ? null : WorkflowExpression.Compile(bodyexpiry);
-            WorkflowExpression.Validate(__workflow_bodyexpiry, nameof(bodyexpiry), required: false);
-            var __workflow_bodyretryDelay = bodyretryDelay == null ? null : WorkflowExpression.Compile(bodyretryDelay);
-            WorkflowExpression.Validate(__workflow_bodyretryDelay, nameof(bodyretryDelay), required: false);
-            var __workflow_bodyretryCount = bodyretryCount == null ? null : WorkflowExpression.Compile(bodyretryCount);
-            WorkflowExpression.Validate(__workflow_bodyretryCount, nameof(bodyretryCount), required: false);
-            var __workflow_bodyotpCodeLength = bodyotpCodeLength == null ? null : WorkflowExpression.Compile(bodyotpCodeLength);
-            WorkflowExpression.Validate(__workflow_bodyotpCodeLength, nameof(bodyotpCodeLength), required: false);
-            var __workflow_bodyotpType = bodyotpType == null ? null : WorkflowExpression.Compile(bodyotpType);
-            WorkflowExpression.Validate(__workflow_bodyotpType, nameof(bodyotpType), required: false);
-            var __workflow_bodysuccessUrl = bodysuccessUrl == null ? null : WorkflowExpression.Compile(bodysuccessUrl);
-            WorkflowExpression.Validate(__workflow_bodysuccessUrl, nameof(bodysuccessUrl), required: false);
-            var __workflow_bodyfailureUrl = bodyfailureUrl == null ? null : WorkflowExpression.Compile(bodyfailureUrl);
-            WorkflowExpression.Validate(__workflow_bodyfailureUrl, nameof(bodyfailureUrl), required: false);
+            var __workflow_bodyoriginator = WorkflowExpression.Compile(bodyoriginator, nameof(bodyoriginator), required: true);
+            var __workflow_bodyrecipient = WorkflowExpression.Compile(bodyrecipient, nameof(bodyrecipient), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodydataCoding = WorkflowExpression.Compile(bodydataCoding, nameof(bodydataCoding), required: true);
+            var __workflow_bodyexpiry = WorkflowExpression.Compile(bodyexpiry, nameof(bodyexpiry), required: false);
+            var __workflow_bodyretryDelay = WorkflowExpression.Compile(bodyretryDelay, nameof(bodyretryDelay), required: false);
+            var __workflow_bodyretryCount = WorkflowExpression.Compile(bodyretryCount, nameof(bodyretryCount), required: false);
+            var __workflow_bodyotpCodeLength = WorkflowExpression.Compile(bodyotpCodeLength, nameof(bodyotpCodeLength), required: false);
+            var __workflow_bodyotpType = WorkflowExpression.Compile(bodyotpType, nameof(bodyotpType), required: false);
+            var __workflow_bodysuccessUrl = WorkflowExpression.Compile(bodysuccessUrl, nameof(bodysuccessUrl), required: false);
+            var __workflow_bodyfailureUrl = WorkflowExpression.Compile(bodyfailureUrl, nameof(bodyfailureUrl), required: false);
             return new DeferredBodyAction<OTPSendOTPResponse>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/send-otp";
@@ -136,8 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<OTPResendOTPResponse> OTPResendOTP(Expression<Func<string>> bodyotpId)
         {
-            var __workflow_bodyotpId = bodyotpId == null ? null : WorkflowExpression.Compile(bodyotpId);
-            WorkflowExpression.Validate(__workflow_bodyotpId, nameof(bodyotpId), required: true);
+            var __workflow_bodyotpId = WorkflowExpression.Compile(bodyotpId, nameof(bodyotpId), required: true);
             return new DeferredBodyAction<OTPResendOTPResponse>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/resend-otp";
@@ -159,10 +146,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7messaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7messaging")]
         public IBodyWorkflowAction<OTPVerifyOTPResponse> OTPVerifyOTP(Expression<Func<string>> bodyotpCode, Expression<Func<string>> bodyotpId = null)
         {
-            var __workflow_bodyotpCode = bodyotpCode == null ? null : WorkflowExpression.Compile(bodyotpCode);
-            WorkflowExpression.Validate(__workflow_bodyotpCode, nameof(bodyotpCode), required: true);
-            var __workflow_bodyotpId = bodyotpId == null ? null : WorkflowExpression.Compile(bodyotpId);
-            WorkflowExpression.Validate(__workflow_bodyotpId, nameof(bodyotpId), required: false);
+            var __workflow_bodyotpCode = WorkflowExpression.Compile(bodyotpCode, nameof(bodyotpCode), required: true);
+            var __workflow_bodyotpId = WorkflowExpression.Compile(bodyotpId, nameof(bodyotpId), required: false);
             return new DeferredBodyAction<OTPVerifyOTPResponse>(() =>
             {
                 var apiCallPath = "/verify/v1/otp/verify-otp";

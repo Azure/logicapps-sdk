@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
         public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch(Expression<Func<string>> bodyprompt = null)
         {
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: false);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
             {
                 var apiCallPath = "/api/orchestrator/connector";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
         public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
         {
-            var __workflow_bodyskillId = bodyskillId == null ? null : WorkflowExpression.Compile(bodyskillId);
-            WorkflowExpression.Validate(__workflow_bodyskillId, nameof(bodyskillId), required: false);
+            var __workflow_bodyskillId = WorkflowExpression.Compile(bodyskillId, nameof(bodyskillId), required: false);
             return new DeferredBodyAction<OrchestratorConnectorResponse>(() =>
             {
                 var apiCallPath = "/api/orchestrator/executeSkill";

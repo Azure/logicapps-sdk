@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts(Expression<Func<string>> filter = null, Expression<Func<double>> top = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<GetContactsResponse>(() =>
             {
                 var apiCallPath = "/Contact";
@@ -33,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetProjectsResponse> GetProjects(Expression<Func<string>> filter = null, Expression<Func<double>> top = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<GetProjectsResponse>(() =>
             {
                 var apiCallPath = "/Project";
@@ -53,42 +49,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<ApiProject> PostProjects(Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyisArchived = null, Expression<Func<bool>> bodyisRecycled = null, Expression<Func<int>> bodylockMode = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodynumberIncremential = null, Expression<Func<string>> bodynumberPrefix = null, Expression<Func<string>> bodynumberSuffix = null, Expression<Func<string>> bodyportfolioId = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyprojectStatusId = null, Expression<Func<int>> bodyriskScore = null, Expression<Func<int>> bodysizeScore = null, Expression<Func<string>> bodystartDate = null, Expression<Func<int>> bodyvalueScore = null)
         {
-            var __workflow_bodyclientId = bodyclientId == null ? null : WorkflowExpression.Compile(bodyclientId);
-            WorkflowExpression.Validate(__workflow_bodyclientId, nameof(bodyclientId), required: false);
-            var __workflow_bodydescriptionHTML = bodydescriptionHTML == null ? null : WorkflowExpression.Compile(bodydescriptionHTML);
-            WorkflowExpression.Validate(__workflow_bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            var __workflow_bodydivisionId = bodydivisionId == null ? null : WorkflowExpression.Compile(bodydivisionId);
-            WorkflowExpression.Validate(__workflow_bodydivisionId, nameof(bodydivisionId), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyisArchived = bodyisArchived == null ? null : WorkflowExpression.Compile(bodyisArchived);
-            WorkflowExpression.Validate(__workflow_bodyisArchived, nameof(bodyisArchived), required: false);
-            var __workflow_bodyisRecycled = bodyisRecycled == null ? null : WorkflowExpression.Compile(bodyisRecycled);
-            WorkflowExpression.Validate(__workflow_bodyisRecycled, nameof(bodyisRecycled), required: false);
-            var __workflow_bodylockMode = bodylockMode == null ? null : WorkflowExpression.Compile(bodylockMode);
-            WorkflowExpression.Validate(__workflow_bodylockMode, nameof(bodylockMode), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynumberIncremential = bodynumberIncremential == null ? null : WorkflowExpression.Compile(bodynumberIncremential);
-            WorkflowExpression.Validate(__workflow_bodynumberIncremential, nameof(bodynumberIncremential), required: false);
-            var __workflow_bodynumberPrefix = bodynumberPrefix == null ? null : WorkflowExpression.Compile(bodynumberPrefix);
-            WorkflowExpression.Validate(__workflow_bodynumberPrefix, nameof(bodynumberPrefix), required: false);
-            var __workflow_bodynumberSuffix = bodynumberSuffix == null ? null : WorkflowExpression.Compile(bodynumberSuffix);
-            WorkflowExpression.Validate(__workflow_bodynumberSuffix, nameof(bodynumberSuffix), required: false);
-            var __workflow_bodyportfolioId = bodyportfolioId == null ? null : WorkflowExpression.Compile(bodyportfolioId);
-            WorkflowExpression.Validate(__workflow_bodyportfolioId, nameof(bodyportfolioId), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyprojectStatusId = bodyprojectStatusId == null ? null : WorkflowExpression.Compile(bodyprojectStatusId);
-            WorkflowExpression.Validate(__workflow_bodyprojectStatusId, nameof(bodyprojectStatusId), required: false);
-            var __workflow_bodyriskScore = bodyriskScore == null ? null : WorkflowExpression.Compile(bodyriskScore);
-            WorkflowExpression.Validate(__workflow_bodyriskScore, nameof(bodyriskScore), required: false);
-            var __workflow_bodysizeScore = bodysizeScore == null ? null : WorkflowExpression.Compile(bodysizeScore);
-            WorkflowExpression.Validate(__workflow_bodysizeScore, nameof(bodysizeScore), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyvalueScore = bodyvalueScore == null ? null : WorkflowExpression.Compile(bodyvalueScore);
-            WorkflowExpression.Validate(__workflow_bodyvalueScore, nameof(bodyvalueScore), required: false);
+            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: false);
+            var __workflow_bodydescriptionHTML = WorkflowExpression.Compile(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
+            var __workflow_bodydivisionId = WorkflowExpression.Compile(bodydivisionId, nameof(bodydivisionId), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyisArchived = WorkflowExpression.Compile(bodyisArchived, nameof(bodyisArchived), required: false);
+            var __workflow_bodyisRecycled = WorkflowExpression.Compile(bodyisRecycled, nameof(bodyisRecycled), required: false);
+            var __workflow_bodylockMode = WorkflowExpression.Compile(bodylockMode, nameof(bodylockMode), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodynumberIncremential = WorkflowExpression.Compile(bodynumberIncremential, nameof(bodynumberIncremential), required: false);
+            var __workflow_bodynumberPrefix = WorkflowExpression.Compile(bodynumberPrefix, nameof(bodynumberPrefix), required: false);
+            var __workflow_bodynumberSuffix = WorkflowExpression.Compile(bodynumberSuffix, nameof(bodynumberSuffix), required: false);
+            var __workflow_bodyportfolioId = WorkflowExpression.Compile(bodyportfolioId, nameof(bodyportfolioId), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyprojectStatusId = WorkflowExpression.Compile(bodyprojectStatusId, nameof(bodyprojectStatusId), required: false);
+            var __workflow_bodyriskScore = WorkflowExpression.Compile(bodyriskScore, nameof(bodyriskScore), required: false);
+            var __workflow_bodysizeScore = WorkflowExpression.Compile(bodysizeScore, nameof(bodysizeScore), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyvalueScore = WorkflowExpression.Compile(bodyvalueScore, nameof(bodyvalueScore), required: false);
             return new DeferredBodyAction<ApiProject>(() =>
             {
                 var apiCallPath = "/Project";
@@ -216,8 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IWorkflowAction DeleteProject(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -230,8 +207,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetProjectByIdResponse> GetProjectById(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<GetProjectByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -244,44 +220,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject(Expression<Func<string>> projectId, Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyisArchived = null, Expression<Func<bool>> bodyisRecycled = null, Expression<Func<int>> bodylockMode = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodynumberIncremential = null, Expression<Func<string>> bodynumberPrefix = null, Expression<Func<string>> bodynumberSuffix = null, Expression<Func<string>> bodyportfolioId = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyprojectStatusId = null, Expression<Func<int>> bodyriskScore = null, Expression<Func<int>> bodysizeScore = null, Expression<Func<string>> bodystartDate = null, Expression<Func<int>> bodyvalueScore = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodyclientId = bodyclientId == null ? null : WorkflowExpression.Compile(bodyclientId);
-            WorkflowExpression.Validate(__workflow_bodyclientId, nameof(bodyclientId), required: false);
-            var __workflow_bodydescriptionHTML = bodydescriptionHTML == null ? null : WorkflowExpression.Compile(bodydescriptionHTML);
-            WorkflowExpression.Validate(__workflow_bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            var __workflow_bodydivisionId = bodydivisionId == null ? null : WorkflowExpression.Compile(bodydivisionId);
-            WorkflowExpression.Validate(__workflow_bodydivisionId, nameof(bodydivisionId), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyisArchived = bodyisArchived == null ? null : WorkflowExpression.Compile(bodyisArchived);
-            WorkflowExpression.Validate(__workflow_bodyisArchived, nameof(bodyisArchived), required: false);
-            var __workflow_bodyisRecycled = bodyisRecycled == null ? null : WorkflowExpression.Compile(bodyisRecycled);
-            WorkflowExpression.Validate(__workflow_bodyisRecycled, nameof(bodyisRecycled), required: false);
-            var __workflow_bodylockMode = bodylockMode == null ? null : WorkflowExpression.Compile(bodylockMode);
-            WorkflowExpression.Validate(__workflow_bodylockMode, nameof(bodylockMode), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodynumberIncremential = bodynumberIncremential == null ? null : WorkflowExpression.Compile(bodynumberIncremential);
-            WorkflowExpression.Validate(__workflow_bodynumberIncremential, nameof(bodynumberIncremential), required: false);
-            var __workflow_bodynumberPrefix = bodynumberPrefix == null ? null : WorkflowExpression.Compile(bodynumberPrefix);
-            WorkflowExpression.Validate(__workflow_bodynumberPrefix, nameof(bodynumberPrefix), required: false);
-            var __workflow_bodynumberSuffix = bodynumberSuffix == null ? null : WorkflowExpression.Compile(bodynumberSuffix);
-            WorkflowExpression.Validate(__workflow_bodynumberSuffix, nameof(bodynumberSuffix), required: false);
-            var __workflow_bodyportfolioId = bodyportfolioId == null ? null : WorkflowExpression.Compile(bodyportfolioId);
-            WorkflowExpression.Validate(__workflow_bodyportfolioId, nameof(bodyportfolioId), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyprojectStatusId = bodyprojectStatusId == null ? null : WorkflowExpression.Compile(bodyprojectStatusId);
-            WorkflowExpression.Validate(__workflow_bodyprojectStatusId, nameof(bodyprojectStatusId), required: false);
-            var __workflow_bodyriskScore = bodyriskScore == null ? null : WorkflowExpression.Compile(bodyriskScore);
-            WorkflowExpression.Validate(__workflow_bodyriskScore, nameof(bodyriskScore), required: false);
-            var __workflow_bodysizeScore = bodysizeScore == null ? null : WorkflowExpression.Compile(bodysizeScore);
-            WorkflowExpression.Validate(__workflow_bodysizeScore, nameof(bodysizeScore), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyvalueScore = bodyvalueScore == null ? null : WorkflowExpression.Compile(bodyvalueScore);
-            WorkflowExpression.Validate(__workflow_bodyvalueScore, nameof(bodyvalueScore), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: false);
+            var __workflow_bodydescriptionHTML = WorkflowExpression.Compile(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
+            var __workflow_bodydivisionId = WorkflowExpression.Compile(bodydivisionId, nameof(bodydivisionId), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyisArchived = WorkflowExpression.Compile(bodyisArchived, nameof(bodyisArchived), required: false);
+            var __workflow_bodyisRecycled = WorkflowExpression.Compile(bodyisRecycled, nameof(bodyisRecycled), required: false);
+            var __workflow_bodylockMode = WorkflowExpression.Compile(bodylockMode, nameof(bodylockMode), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodynumberIncremential = WorkflowExpression.Compile(bodynumberIncremential, nameof(bodynumberIncremential), required: false);
+            var __workflow_bodynumberPrefix = WorkflowExpression.Compile(bodynumberPrefix, nameof(bodynumberPrefix), required: false);
+            var __workflow_bodynumberSuffix = WorkflowExpression.Compile(bodynumberSuffix, nameof(bodynumberSuffix), required: false);
+            var __workflow_bodyportfolioId = WorkflowExpression.Compile(bodyportfolioId, nameof(bodyportfolioId), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyprojectStatusId = WorkflowExpression.Compile(bodyprojectStatusId, nameof(bodyprojectStatusId), required: false);
+            var __workflow_bodyriskScore = WorkflowExpression.Compile(bodyriskScore, nameof(bodyriskScore), required: false);
+            var __workflow_bodysizeScore = WorkflowExpression.Compile(bodysizeScore, nameof(bodysizeScore), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyvalueScore = WorkflowExpression.Compile(bodyvalueScore, nameof(bodyvalueScore), required: false);
             return new DeferredBodyAction<UpdateProjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -409,12 +366,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IWorkflowAction AddProjectMember(Expression<Func<string>> projectId, Expression<Func<string>> bodycontactId, Expression<Func<int>> bodyrole)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodycontactId = bodycontactId == null ? null : WorkflowExpression.Compile(bodycontactId);
-            WorkflowExpression.Validate(__workflow_bodycontactId, nameof(bodycontactId), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Project/{0}/AddMember", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -438,10 +392,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetTasksResponse> GetTasks(Expression<Func<string>> filter = null, Expression<Func<double>> top = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<GetTasksResponse>(() =>
             {
                 var apiCallPath = "/Task";
@@ -458,20 +410,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<ApiTask> PostTask(Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodyendDateTime = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<double>> bodyworkAmount = null)
         {
-            var __workflow_bodydescriptionHTML = bodydescriptionHTML == null ? null : WorkflowExpression.Compile(bodydescriptionHTML);
-            WorkflowExpression.Validate(__workflow_bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            var __workflow_bodyendDateTime = bodyendDateTime == null ? null : WorkflowExpression.Compile(bodyendDateTime);
-            WorkflowExpression.Validate(__workflow_bodyendDateTime, nameof(bodyendDateTime), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodystartDateTime = bodystartDateTime == null ? null : WorkflowExpression.Compile(bodystartDateTime);
-            WorkflowExpression.Validate(__workflow_bodystartDateTime, nameof(bodystartDateTime), required: false);
-            var __workflow_bodyworkAmount = bodyworkAmount == null ? null : WorkflowExpression.Compile(bodyworkAmount);
-            WorkflowExpression.Validate(__workflow_bodyworkAmount, nameof(bodyworkAmount), required: false);
+            var __workflow_bodydescriptionHTML = WorkflowExpression.Compile(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
+            var __workflow_bodyendDateTime = WorkflowExpression.Compile(bodyendDateTime, nameof(bodyendDateTime), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodyworkAmount = WorkflowExpression.Compile(bodyworkAmount, nameof(bodyworkAmount), required: false);
             return new DeferredBodyAction<ApiTask>(() =>
             {
                 var apiCallPath = "/Task";
@@ -533,8 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IWorkflowAction DeleteTask(Expression<Func<string>> taskId)
         {
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -547,8 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<GetTaskByIdResponse> GetTaskById(Expression<Func<string>> taskId)
         {
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetTaskByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -561,22 +504,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodyendDateTime = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<double>> bodyworkAmount = null)
         {
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_bodydescriptionHTML = bodydescriptionHTML == null ? null : WorkflowExpression.Compile(bodydescriptionHTML);
-            WorkflowExpression.Validate(__workflow_bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
-            var __workflow_bodyendDateTime = bodyendDateTime == null ? null : WorkflowExpression.Compile(bodyendDateTime);
-            WorkflowExpression.Validate(__workflow_bodyendDateTime, nameof(bodyendDateTime), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodystartDateTime = bodystartDateTime == null ? null : WorkflowExpression.Compile(bodystartDateTime);
-            WorkflowExpression.Validate(__workflow_bodystartDateTime, nameof(bodystartDateTime), required: false);
-            var __workflow_bodyworkAmount = bodyworkAmount == null ? null : WorkflowExpression.Compile(bodyworkAmount);
-            WorkflowExpression.Validate(__workflow_bodyworkAmount, nameof(bodyworkAmount), required: false);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_bodydescriptionHTML = WorkflowExpression.Compile(bodydescriptionHTML, nameof(bodydescriptionHTML), required: false);
+            var __workflow_bodyendDateTime = WorkflowExpression.Compile(bodyendDateTime, nameof(bodyendDateTime), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: false);
+            var __workflow_bodyworkAmount = WorkflowExpression.Compile(bodyworkAmount, nameof(bodyworkAmount), required: false);
             return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));

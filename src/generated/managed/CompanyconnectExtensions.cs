@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction ChoicePrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference, Expression<Func<string[]>> requestchoices = null)
         {
-            var __workflow_requestprompt = requestprompt == null ? null : WorkflowExpression.Compile(requestprompt);
-            WorkflowExpression.Validate(__workflow_requestprompt, nameof(requestprompt), required: true);
-            var __workflow_requestconversationReference = requestconversationReference == null ? null : WorkflowExpression.Compile(requestconversationReference);
-            WorkflowExpression.Validate(__workflow_requestconversationReference, nameof(requestconversationReference), required: true);
-            var __workflow_requestchoices = requestchoices == null ? null : WorkflowExpression.Compile(requestchoices);
-            WorkflowExpression.Validate(__workflow_requestchoices, nameof(requestchoices), required: false);
+            var __workflow_requestprompt = WorkflowExpression.Compile(requestprompt, nameof(requestprompt), required: true);
+            var __workflow_requestconversationReference = WorkflowExpression.Compile(requestconversationReference, nameof(requestconversationReference), required: true);
+            var __workflow_requestchoices = WorkflowExpression.Compile(requestchoices, nameof(requestchoices), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/choicePrompt";
@@ -50,14 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction ConfirmPrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference, Expression<Func<string>> requestyesText = null, Expression<Func<string>> requestnoText = null)
         {
-            var __workflow_requestprompt = requestprompt == null ? null : WorkflowExpression.Compile(requestprompt);
-            WorkflowExpression.Validate(__workflow_requestprompt, nameof(requestprompt), required: true);
-            var __workflow_requestconversationReference = requestconversationReference == null ? null : WorkflowExpression.Compile(requestconversationReference);
-            WorkflowExpression.Validate(__workflow_requestconversationReference, nameof(requestconversationReference), required: true);
-            var __workflow_requestyesText = requestyesText == null ? null : WorkflowExpression.Compile(requestyesText);
-            WorkflowExpression.Validate(__workflow_requestyesText, nameof(requestyesText), required: false);
-            var __workflow_requestnoText = requestnoText == null ? null : WorkflowExpression.Compile(requestnoText);
-            WorkflowExpression.Validate(__workflow_requestnoText, nameof(requestnoText), required: false);
+            var __workflow_requestprompt = WorkflowExpression.Compile(requestprompt, nameof(requestprompt), required: true);
+            var __workflow_requestconversationReference = WorkflowExpression.Compile(requestconversationReference, nameof(requestconversationReference), required: true);
+            var __workflow_requestyesText = WorkflowExpression.Compile(requestyesText, nameof(requestyesText), required: false);
+            var __workflow_requestnoText = WorkflowExpression.Compile(requestnoText, nameof(requestnoText), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/confirmPrompt";
@@ -115,10 +108,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction ProactiveDialogStart(Expression<Func<string>> id, Expression<Func<string>> bodyupn)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyupn = bodyupn == null ? null : WorkflowExpression.Compile(bodyupn);
-            WorkflowExpression.Validate(__workflow_bodyupn, nameof(bodyupn), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyupn = WorkflowExpression.Compile(bodyupn, nameof(bodyupn), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proactiveDialogs/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -140,10 +131,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction Reply(Expression<Func<string>> messageActivitytext, Expression<Func<string>> messageActivityconversationReference = null)
         {
-            var __workflow_messageActivitytext = messageActivitytext == null ? null : WorkflowExpression.Compile(messageActivitytext);
-            WorkflowExpression.Validate(__workflow_messageActivitytext, nameof(messageActivitytext), required: true);
-            var __workflow_messageActivityconversationReference = messageActivityconversationReference == null ? null : WorkflowExpression.Compile(messageActivityconversationReference);
-            WorkflowExpression.Validate(__workflow_messageActivityconversationReference, nameof(messageActivityconversationReference), required: false);
+            var __workflow_messageActivitytext = WorkflowExpression.Compile(messageActivitytext, nameof(messageActivitytext), required: true);
+            var __workflow_messageActivityconversationReference = WorkflowExpression.Compile(messageActivityconversationReference, nameof(messageActivityconversationReference), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/reply";
@@ -171,10 +160,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companyconnect")]
         public IWorkflowAction TextPrompt(Expression<Func<string>> requestprompt, Expression<Func<string>> requestconversationReference)
         {
-            var __workflow_requestprompt = requestprompt == null ? null : WorkflowExpression.Compile(requestprompt);
-            WorkflowExpression.Validate(__workflow_requestprompt, nameof(requestprompt), required: true);
-            var __workflow_requestconversationReference = requestconversationReference == null ? null : WorkflowExpression.Compile(requestconversationReference);
-            WorkflowExpression.Validate(__workflow_requestconversationReference, nameof(requestconversationReference), required: true);
+            var __workflow_requestprompt = WorkflowExpression.Compile(requestprompt, nameof(requestprompt), required: true);
+            var __workflow_requestconversationReference = WorkflowExpression.Compile(requestconversationReference, nameof(requestconversationReference), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/textPrompt";
@@ -202,8 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
     {
         public IWorkflowTrigger ProactiveDialogSubscribe(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/proactiveDialogs";
@@ -226,12 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
         public IWorkflowTrigger SmartDialogSubscribe(Expression<Func<string>> bodyappId, Expression<Func<string>> bodyintent, Expression<Func<string>> bodydescription, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyappId = bodyappId == null ? null : WorkflowExpression.Compile(bodyappId);
-            WorkflowExpression.Validate(__workflow_bodyappId, nameof(bodyappId), required: true);
-            var __workflow_bodyintent = bodyintent == null ? null : WorkflowExpression.Compile(bodyintent);
-            WorkflowExpression.Validate(__workflow_bodyintent, nameof(bodyintent), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodyappId = WorkflowExpression.Compile(bodyappId, nameof(bodyappId), required: true);
+            var __workflow_bodyintent = WorkflowExpression.Compile(bodyintent, nameof(bodyintent), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/smartDialogs";
@@ -258,12 +241,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
 
         public IWorkflowTrigger SmartSourceSubscribe(Expression<Func<string>> bodytitle, Expression<Func<string>> bodycategory, Expression<Func<string>> bodyicon = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: true);
-            var __workflow_bodyicon = bodyicon == null ? null : WorkflowExpression.Compile(bodyicon);
-            WorkflowExpression.Validate(__workflow_bodyicon, nameof(bodyicon), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: true);
+            var __workflow_bodyicon = WorkflowExpression.Compile(bodyicon, nameof(bodyicon), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/smartSources";

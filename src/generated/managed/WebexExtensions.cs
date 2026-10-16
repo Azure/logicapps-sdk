@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<CreateSpaceMemberResponse> CreateSpaceMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyroomId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
         {
-            var __workflow_bodyisModerator = bodyisModerator == null ? null : WorkflowExpression.Compile(bodyisModerator);
-            WorkflowExpression.Validate(__workflow_bodyisModerator, nameof(bodyisModerator), required: true);
-            var __workflow_bodyroomId = bodyroomId == null ? null : WorkflowExpression.Compile(bodyroomId);
-            WorkflowExpression.Validate(__workflow_bodyroomId, nameof(bodyroomId), required: true);
-            var __workflow_bodypersonEmail = bodypersonEmail == null ? null : WorkflowExpression.Compile(bodypersonEmail);
-            WorkflowExpression.Validate(__workflow_bodypersonEmail, nameof(bodypersonEmail), required: false);
-            var __workflow_bodypersonId = bodypersonId == null ? null : WorkflowExpression.Compile(bodypersonId);
-            WorkflowExpression.Validate(__workflow_bodypersonId, nameof(bodypersonId), required: false);
+            var __workflow_bodyisModerator = WorkflowExpression.Compile(bodyisModerator, nameof(bodyisModerator), required: true);
+            var __workflow_bodyroomId = WorkflowExpression.Compile(bodyroomId, nameof(bodyroomId), required: true);
+            var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
+            var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
             return new DeferredBodyAction<CreateSpaceMemberResponse>(() =>
             {
                 var apiCallPath = "/v1/memberships";
@@ -56,16 +52,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetMessagesResponse> GetMessages(Expression<Func<string>> roomId, Expression<Func<string>> mentionedPeople = null, Expression<Func<string>> beforeMessage = null, Expression<Func<string>> before = null, Expression<Func<int>> max = null)
         {
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
-            var __workflow_mentionedPeople = mentionedPeople == null ? null : WorkflowExpression.Compile(mentionedPeople);
-            WorkflowExpression.Validate(__workflow_mentionedPeople, nameof(mentionedPeople), required: false);
-            var __workflow_beforeMessage = beforeMessage == null ? null : WorkflowExpression.Compile(beforeMessage);
-            WorkflowExpression.Validate(__workflow_beforeMessage, nameof(beforeMessage), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
+            var __workflow_mentionedPeople = WorkflowExpression.Compile(mentionedPeople, nameof(mentionedPeople), required: false);
+            var __workflow_beforeMessage = WorkflowExpression.Compile(beforeMessage, nameof(beforeMessage), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
             return new DeferredBodyAction<GetMessagesResponse>(() =>
             {
                 var apiCallPath = "/v1/messages";
@@ -87,18 +78,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodymarkdown = null, Expression<Func<string>> bodyroomId = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytoPersonEmail = null, Expression<Func<string>> bodytoPersonId = null)
         {
-            var __workflow_bodyfiles = bodyfiles == null ? null : WorkflowExpression.Compile(bodyfiles);
-            WorkflowExpression.Validate(__workflow_bodyfiles, nameof(bodyfiles), required: false);
-            var __workflow_bodymarkdown = bodymarkdown == null ? null : WorkflowExpression.Compile(bodymarkdown);
-            WorkflowExpression.Validate(__workflow_bodymarkdown, nameof(bodymarkdown), required: false);
-            var __workflow_bodyroomId = bodyroomId == null ? null : WorkflowExpression.Compile(bodyroomId);
-            WorkflowExpression.Validate(__workflow_bodyroomId, nameof(bodyroomId), required: false);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
-            var __workflow_bodytoPersonEmail = bodytoPersonEmail == null ? null : WorkflowExpression.Compile(bodytoPersonEmail);
-            WorkflowExpression.Validate(__workflow_bodytoPersonEmail, nameof(bodytoPersonEmail), required: false);
-            var __workflow_bodytoPersonId = bodytoPersonId == null ? null : WorkflowExpression.Compile(bodytoPersonId);
-            WorkflowExpression.Validate(__workflow_bodytoPersonId, nameof(bodytoPersonId), required: false);
+            var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: false);
+            var __workflow_bodymarkdown = WorkflowExpression.Compile(bodymarkdown, nameof(bodymarkdown), required: false);
+            var __workflow_bodyroomId = WorkflowExpression.Compile(bodyroomId, nameof(bodyroomId), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytoPersonEmail = WorkflowExpression.Compile(bodytoPersonEmail, nameof(bodytoPersonEmail), required: false);
+            var __workflow_bodytoPersonId = WorkflowExpression.Compile(bodytoPersonId, nameof(bodytoPersonId), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/v1/messages";
@@ -154,8 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetMessageDetailsResponse> GetMessageDetails(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<GetMessageDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -168,10 +152,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetPeopleResponse> GetPeople(Expression<Func<string>> id = null, Expression<Func<string>> email = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
             return new DeferredBodyAction<GetPeopleResponse>(() =>
             {
                 var apiCallPath = "/v1/people";
@@ -197,12 +179,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<int>> max = null, Expression<Func<typeInput>> type = null, Expression<Func<sortByInput>> sortBy = null)
         {
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
             return new DeferredBodyAction<GetSpacesResponse>(() =>
             {
                 var apiCallPath = "/v1/rooms";
@@ -222,10 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyteamId = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyteamId = bodyteamId == null ? null : WorkflowExpression.Compile(bodyteamId);
-            WorkflowExpression.Validate(__workflow_bodyteamId, nameof(bodyteamId), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyteamId = WorkflowExpression.Compile(bodyteamId, nameof(bodyteamId), required: false);
             return new DeferredBodyAction<CreateSpaceResponse>(() =>
             {
                 var apiCallPath = "/v1/rooms";
@@ -253,8 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<GetSpaceDetailResponse> GetSpaceDetail(Expression<Func<string>> roomId)
         {
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
             return new DeferredBodyAction<GetSpaceDetailResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/rooms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_roomId, 1));
@@ -267,14 +243,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
         public IBodyWorkflowAction<CreateTeamMemberResponse> CreateTeamMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyteamId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
         {
-            var __workflow_bodyisModerator = bodyisModerator == null ? null : WorkflowExpression.Compile(bodyisModerator);
-            WorkflowExpression.Validate(__workflow_bodyisModerator, nameof(bodyisModerator), required: true);
-            var __workflow_bodyteamId = bodyteamId == null ? null : WorkflowExpression.Compile(bodyteamId);
-            WorkflowExpression.Validate(__workflow_bodyteamId, nameof(bodyteamId), required: true);
-            var __workflow_bodypersonEmail = bodypersonEmail == null ? null : WorkflowExpression.Compile(bodypersonEmail);
-            WorkflowExpression.Validate(__workflow_bodypersonEmail, nameof(bodypersonEmail), required: false);
-            var __workflow_bodypersonId = bodypersonId == null ? null : WorkflowExpression.Compile(bodypersonId);
-            WorkflowExpression.Validate(__workflow_bodypersonId, nameof(bodypersonId), required: false);
+            var __workflow_bodyisModerator = WorkflowExpression.Compile(bodyisModerator, nameof(bodyisModerator), required: true);
+            var __workflow_bodyteamId = WorkflowExpression.Compile(bodyteamId, nameof(bodyteamId), required: true);
+            var __workflow_bodypersonEmail = WorkflowExpression.Compile(bodypersonEmail, nameof(bodypersonEmail), required: false);
+            var __workflow_bodypersonId = WorkflowExpression.Compile(bodypersonId, nameof(bodypersonId), required: false);
             return new DeferredBodyAction<CreateTeamMemberResponse>(() =>
             {
                 var apiCallPath = "/v1/team/memberships";

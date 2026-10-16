@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         public IBodyWorkflowAction<LoginAuthResponse> LoginAuth(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserCd = null, Expression<Func<string>> bodypassword = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: false);
-            var __workflow_bodycompanyCd = bodycompanyCd == null ? null : WorkflowExpression.Compile(bodycompanyCd);
-            WorkflowExpression.Validate(__workflow_bodycompanyCd, nameof(bodycompanyCd), required: false);
-            var __workflow_bodyuserCd = bodyuserCd == null ? null : WorkflowExpression.Compile(bodyuserCd);
-            WorkflowExpression.Validate(__workflow_bodyuserCd, nameof(bodyuserCd), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
+            var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
+            var __workflow_bodyuserCd = WorkflowExpression.Compile(bodyuserCd, nameof(bodyuserCd), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
             return new DeferredBodyAction<LoginAuthResponse>(() =>
             {
                 var apiCallPath = "/webapi/login/auth";
@@ -60,30 +56,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         public IBodyWorkflowAction<ActionFindResponse> ActionFind(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string[]>> bodyreportCdList = null, Expression<Func<string>> bodyfindstatement = null, Expression<Func<bodyfindstatementListInputItem[]>> bodyfindstatementList = null, Expression<Func<bodysortListInputItem[]>> bodysortList = null, Expression<Func<string>> bodypageSize = null, Expression<Func<string>> bodypageNo = null, Expression<Func<bodyrequestListInputItem[]>> bodyrequestList = null, Expression<Func<string>> bodyenableEpoch = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: false);
-            var __workflow_bodycompanyCd = bodycompanyCd == null ? null : WorkflowExpression.Compile(bodycompanyCd);
-            WorkflowExpression.Validate(__workflow_bodycompanyCd, nameof(bodycompanyCd), required: false);
-            var __workflow_bodyuserUCd = bodyuserUCd == null ? null : WorkflowExpression.Compile(bodyuserUCd);
-            WorkflowExpression.Validate(__workflow_bodyuserUCd, nameof(bodyuserUCd), required: false);
-            var __workflow_bodyauthKey = bodyauthKey == null ? null : WorkflowExpression.Compile(bodyauthKey);
-            WorkflowExpression.Validate(__workflow_bodyauthKey, nameof(bodyauthKey), required: false);
-            var __workflow_bodyreportCdList = bodyreportCdList == null ? null : WorkflowExpression.Compile(bodyreportCdList);
-            WorkflowExpression.Validate(__workflow_bodyreportCdList, nameof(bodyreportCdList), required: false);
-            var __workflow_bodyfindstatement = bodyfindstatement == null ? null : WorkflowExpression.Compile(bodyfindstatement);
-            WorkflowExpression.Validate(__workflow_bodyfindstatement, nameof(bodyfindstatement), required: false);
-            var __workflow_bodyfindstatementList = bodyfindstatementList == null ? null : WorkflowExpression.Compile(bodyfindstatementList);
-            WorkflowExpression.Validate(__workflow_bodyfindstatementList, nameof(bodyfindstatementList), required: false);
-            var __workflow_bodysortList = bodysortList == null ? null : WorkflowExpression.Compile(bodysortList);
-            WorkflowExpression.Validate(__workflow_bodysortList, nameof(bodysortList), required: false);
-            var __workflow_bodypageSize = bodypageSize == null ? null : WorkflowExpression.Compile(bodypageSize);
-            WorkflowExpression.Validate(__workflow_bodypageSize, nameof(bodypageSize), required: false);
-            var __workflow_bodypageNo = bodypageNo == null ? null : WorkflowExpression.Compile(bodypageNo);
-            WorkflowExpression.Validate(__workflow_bodypageNo, nameof(bodypageNo), required: false);
-            var __workflow_bodyrequestList = bodyrequestList == null ? null : WorkflowExpression.Compile(bodyrequestList);
-            WorkflowExpression.Validate(__workflow_bodyrequestList, nameof(bodyrequestList), required: false);
-            var __workflow_bodyenableEpoch = bodyenableEpoch == null ? null : WorkflowExpression.Compile(bodyenableEpoch);
-            WorkflowExpression.Validate(__workflow_bodyenableEpoch, nameof(bodyenableEpoch), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
+            var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
+            var __workflow_bodyuserUCd = WorkflowExpression.Compile(bodyuserUCd, nameof(bodyuserUCd), required: false);
+            var __workflow_bodyauthKey = WorkflowExpression.Compile(bodyauthKey, nameof(bodyauthKey), required: false);
+            var __workflow_bodyreportCdList = WorkflowExpression.Compile(bodyreportCdList, nameof(bodyreportCdList), required: false);
+            var __workflow_bodyfindstatement = WorkflowExpression.Compile(bodyfindstatement, nameof(bodyfindstatement), required: false);
+            var __workflow_bodyfindstatementList = WorkflowExpression.Compile(bodyfindstatementList, nameof(bodyfindstatementList), required: false);
+            var __workflow_bodysortList = WorkflowExpression.Compile(bodysortList, nameof(bodysortList), required: false);
+            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
+            var __workflow_bodypageNo = WorkflowExpression.Compile(bodypageNo, nameof(bodypageNo), required: false);
+            var __workflow_bodyrequestList = WorkflowExpression.Compile(bodyrequestList, nameof(bodyrequestList), required: false);
+            var __workflow_bodyenableEpoch = WorkflowExpression.Compile(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
             return new DeferredBodyAction<ActionFindResponse>(() =>
             {
                 var apiCallPath = "/webapi/action/find";
@@ -179,22 +163,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xcgatepreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xcgatepreview")]
         public IBodyWorkflowAction<ActionGetResponse> ActionGet(Expression<Func<string>> host = null, Expression<Func<string>> bodycompanyCd = null, Expression<Func<string>> bodyuserUCd = null, Expression<Func<string>> bodyauthKey = null, Expression<Func<string>> bodyreportCd = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytrxCdx = null, Expression<Func<string>> bodyenableEpoch = null)
         {
-            var __workflow_host = host == null ? null : WorkflowExpression.Compile(host);
-            WorkflowExpression.Validate(__workflow_host, nameof(host), required: false);
-            var __workflow_bodycompanyCd = bodycompanyCd == null ? null : WorkflowExpression.Compile(bodycompanyCd);
-            WorkflowExpression.Validate(__workflow_bodycompanyCd, nameof(bodycompanyCd), required: false);
-            var __workflow_bodyuserUCd = bodyuserUCd == null ? null : WorkflowExpression.Compile(bodyuserUCd);
-            WorkflowExpression.Validate(__workflow_bodyuserUCd, nameof(bodyuserUCd), required: false);
-            var __workflow_bodyauthKey = bodyauthKey == null ? null : WorkflowExpression.Compile(bodyauthKey);
-            WorkflowExpression.Validate(__workflow_bodyauthKey, nameof(bodyauthKey), required: false);
-            var __workflow_bodyreportCd = bodyreportCd == null ? null : WorkflowExpression.Compile(bodyreportCd);
-            WorkflowExpression.Validate(__workflow_bodyreportCd, nameof(bodyreportCd), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytrxCdx = bodytrxCdx == null ? null : WorkflowExpression.Compile(bodytrxCdx);
-            WorkflowExpression.Validate(__workflow_bodytrxCdx, nameof(bodytrxCdx), required: false);
-            var __workflow_bodyenableEpoch = bodyenableEpoch == null ? null : WorkflowExpression.Compile(bodyenableEpoch);
-            WorkflowExpression.Validate(__workflow_bodyenableEpoch, nameof(bodyenableEpoch), required: false);
+            var __workflow_host = WorkflowExpression.Compile(host, nameof(host), required: false);
+            var __workflow_bodycompanyCd = WorkflowExpression.Compile(bodycompanyCd, nameof(bodycompanyCd), required: false);
+            var __workflow_bodyuserUCd = WorkflowExpression.Compile(bodyuserUCd, nameof(bodyuserUCd), required: false);
+            var __workflow_bodyauthKey = WorkflowExpression.Compile(bodyauthKey, nameof(bodyauthKey), required: false);
+            var __workflow_bodyreportCd = WorkflowExpression.Compile(bodyreportCd, nameof(bodyreportCd), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytrxCdx = WorkflowExpression.Compile(bodytrxCdx, nameof(bodytrxCdx), required: false);
+            var __workflow_bodyenableEpoch = WorkflowExpression.Compile(bodyenableEpoch, nameof(bodyenableEpoch), required: false);
             return new DeferredBodyAction<ActionGetResponse>(() =>
             {
                 var apiCallPath = "/webapi/action/get";

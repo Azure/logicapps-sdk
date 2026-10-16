@@ -15,12 +15,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_includeInfo = includeInfo == null ? null : WorkflowExpression.Compile(includeInfo);
-            WorkflowExpression.Validate(__workflow_includeInfo, nameof(includeInfo), required: true);
-            var __workflow_getMessageOptions = getMessageOptions == null ? null : WorkflowExpression.Compile(getMessageOptions);
-            WorkflowExpression.Validate(__workflow_getMessageOptions, nameof(getMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
             return new DeferredBodyAction<BrowseMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -43,12 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_includeInfo = includeInfo == null ? null : WorkflowExpression.Compile(includeInfo);
-            WorkflowExpression.Validate(__workflow_includeInfo, nameof(includeInfo), required: true);
-            var __workflow_getMessageOptions = getMessageOptions == null ? null : WorkflowExpression.Compile(getMessageOptions);
-            WorkflowExpression.Validate(__workflow_getMessageOptions, nameof(getMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
             return new DeferredBodyAction<BrowseBatchOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -71,12 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_includeInfo = includeInfo == null ? null : WorkflowExpression.Compile(includeInfo);
-            WorkflowExpression.Validate(__workflow_includeInfo, nameof(includeInfo), required: true);
-            var __workflow_getMessageOptions = getMessageOptions == null ? null : WorkflowExpression.Compile(getMessageOptions);
-            WorkflowExpression.Validate(__workflow_getMessageOptions, nameof(getMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
             return new DeferredBodyAction<ReceiveMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -99,12 +90,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_includeInfo = includeInfo == null ? null : WorkflowExpression.Compile(includeInfo);
-            WorkflowExpression.Validate(__workflow_includeInfo, nameof(includeInfo), required: true);
-            var __workflow_getMessageOptions = getMessageOptions == null ? null : WorkflowExpression.Compile(getMessageOptions);
-            WorkflowExpression.Validate(__workflow_getMessageOptions, nameof(getMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
             return new DeferredBodyAction<ReceiveBatchOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -127,12 +115,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageInputSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
-            var __workflow_sendMessageOptions = sendMessageOptions == null ? null : WorkflowExpression.Compile(sendMessageOptions);
-            WorkflowExpression.Validate(__workflow_sendMessageOptions, nameof(sendMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
             return new DeferredBodyAction<SendMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -155,12 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendBatchOutput> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchInputMessageListTypeItem[]>> messageList, Expression<Func<SendBatchInputSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_messageList = messageList == null ? null : WorkflowExpression.Compile(messageList);
-            WorkflowExpression.Validate(__workflow_messageList, nameof(messageList), required: true);
-            var __workflow_sendMessageOptions = sendMessageOptions == null ? null : WorkflowExpression.Compile(sendMessageOptions);
-            WorkflowExpression.Validate(__workflow_sendMessageOptions, nameof(sendMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_messageList = WorkflowExpression.Compile(messageList, nameof(messageList), required: true);
+            var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
             return new DeferredBodyAction<SendBatchOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -183,16 +165,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageInputCompleteActionType>> completeAction)
         {
-            var __workflow_operationConnectionId = operationConnectionId == null ? null : WorkflowExpression.Compile(operationConnectionId);
-            WorkflowExpression.Validate(__workflow_operationConnectionId, nameof(operationConnectionId), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_uniqueId = uniqueId == null ? null : WorkflowExpression.Compile(uniqueId);
-            WorkflowExpression.Validate(__workflow_uniqueId, nameof(uniqueId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_completeAction = completeAction == null ? null : WorkflowExpression.Compile(completeAction);
-            WorkflowExpression.Validate(__workflow_completeAction, nameof(completeAction), required: true);
+            var __workflow_operationConnectionId = WorkflowExpression.Compile(operationConnectionId, nameof(operationConnectionId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_uniqueId = WorkflowExpression.Compile(uniqueId, nameof(uniqueId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_completeAction = WorkflowExpression.Compile(completeAction, nameof(completeAction), required: true);
             return new DeferredBodyAction<CompleteMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -213,12 +190,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<CompleteBatchInputCompleteActionType>> completeAction)
         {
-            var __workflow_operationConnectionId = operationConnectionId == null ? null : WorkflowExpression.Compile(operationConnectionId);
-            WorkflowExpression.Validate(__workflow_operationConnectionId, nameof(operationConnectionId), required: true);
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_completeAction = completeAction == null ? null : WorkflowExpression.Compile(completeAction);
-            WorkflowExpression.Validate(__workflow_completeAction, nameof(completeAction), required: true);
+            var __workflow_operationConnectionId = WorkflowExpression.Compile(operationConnectionId, nameof(operationConnectionId), required: true);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_completeAction = WorkflowExpression.Compile(completeAction, nameof(completeAction), required: true);
             return new DeferredBodyAction<CompleteBatchOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -237,14 +211,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
         public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType>> sendMessageOptions = null)
         {
-            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
-            var __workflow_reasonCode = reasonCode == null ? null : WorkflowExpression.Compile(reasonCode);
-            WorkflowExpression.Validate(__workflow_reasonCode, nameof(reasonCode), required: true);
-            var __workflow_deadLetterQueueName = deadLetterQueueName == null ? null : WorkflowExpression.Compile(deadLetterQueueName);
-            WorkflowExpression.Validate(__workflow_deadLetterQueueName, nameof(deadLetterQueueName), required: false);
-            var __workflow_sendMessageOptions = sendMessageOptions == null ? null : WorkflowExpression.Compile(sendMessageOptions);
-            WorkflowExpression.Validate(__workflow_sendMessageOptions, nameof(sendMessageOptions), required: false);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_reasonCode = WorkflowExpression.Compile(reasonCode, nameof(reasonCode), required: true);
+            var __workflow_deadLetterQueueName = WorkflowExpression.Compile(deadLetterQueueName, nameof(deadLetterQueueName), required: false);
+            var __workflow_sendMessageOptions = WorkflowExpression.Compile(sendMessageOptions, nameof(sendMessageOptions), required: false);
             return new DeferredBodyAction<MoveMessageToDeadLetterQueueOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -274,10 +244,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
     {
         public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_waitIntervalInSeconds = waitIntervalInSeconds == null ? null : WorkflowExpression.Compile(waitIntervalInSeconds);
-            WorkflowExpression.Validate(__workflow_waitIntervalInSeconds, nameof(waitIntervalInSeconds), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_waitIntervalInSeconds = WorkflowExpression.Compile(waitIntervalInSeconds, nameof(waitIntervalInSeconds), required: false);
             return new DeferredBodyTrigger<PollAvailableOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -298,12 +266,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 
         public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_includeInfo = includeInfo == null ? null : WorkflowExpression.Compile(includeInfo);
-            WorkflowExpression.Validate(__workflow_includeInfo, nameof(includeInfo), required: true);
-            var __workflow_getMessageOptions = getMessageOptions == null ? null : WorkflowExpression.Compile(getMessageOptions);
-            WorkflowExpression.Validate(__workflow_getMessageOptions, nameof(getMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
             return new DeferredBodyTrigger<PollBrowseMessagesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -325,12 +290,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 
         public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_queueName = queueName == null ? null : WorkflowExpression.Compile(queueName);
-            WorkflowExpression.Validate(__workflow_queueName, nameof(queueName), required: true);
-            var __workflow_includeInfo = includeInfo == null ? null : WorkflowExpression.Compile(includeInfo);
-            WorkflowExpression.Validate(__workflow_includeInfo, nameof(includeInfo), required: true);
-            var __workflow_getMessageOptions = getMessageOptions == null ? null : WorkflowExpression.Compile(getMessageOptions);
-            WorkflowExpression.Validate(__workflow_getMessageOptions, nameof(getMessageOptions), required: false);
+            var __workflow_queueName = WorkflowExpression.Compile(queueName, nameof(queueName), required: true);
+            var __workflow_includeInfo = WorkflowExpression.Compile(includeInfo, nameof(includeInfo), required: true);
+            var __workflow_getMessageOptions = WorkflowExpression.Compile(getMessageOptions, nameof(getMessageOptions), required: false);
             return new DeferredBodyTrigger<PollMessagesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

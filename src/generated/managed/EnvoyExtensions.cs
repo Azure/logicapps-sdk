@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
     {
         public IWorkflowTrigger InviteCreated(Expression<Func<string>> bodytoken = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytoken = bodytoken == null ? null : WorkflowExpression.Compile(bodytoken);
-            WorkflowExpression.Validate(__workflow_bodytoken, nameof(bodytoken), required: false);
+            var __workflow_bodytoken = WorkflowExpression.Compile(bodytoken, nameof(bodytoken), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/register-invite-created";

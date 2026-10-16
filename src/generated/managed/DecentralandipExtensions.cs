@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails(Expression<Func<string>> x, Expression<Func<string>> y)
         {
-            var __workflow_x = x == null ? null : WorkflowExpression.Compile(x);
-            WorkflowExpression.Validate(__workflow_x, nameof(x), required: true);
-            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
-            WorkflowExpression.Validate(__workflow_y, nameof(y), required: true);
+            var __workflow_x = WorkflowExpression.Compile(x, nameof(x), required: true);
+            var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: true);
             return new DeferredBodyAction<GetParcelDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_x, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_y, 1));
@@ -38,18 +36,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap(Expression<Func<string>> x, Expression<Func<string>> y, Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<int>> size, Expression<Func<bool>> publication)
         {
-            var __workflow_x = x == null ? null : WorkflowExpression.Compile(x);
-            WorkflowExpression.Validate(__workflow_x, nameof(x), required: true);
-            var __workflow_y = y == null ? null : WorkflowExpression.Compile(y);
-            WorkflowExpression.Validate(__workflow_y, nameof(y), required: true);
-            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
-            WorkflowExpression.Validate(__workflow_width, nameof(width), required: true);
-            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
-            WorkflowExpression.Validate(__workflow_height, nameof(height), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: true);
-            var __workflow_publication = publication == null ? null : WorkflowExpression.Compile(publication);
-            WorkflowExpression.Validate(__workflow_publication, nameof(publication), required: true);
+            var __workflow_x = WorkflowExpression.Compile(x, nameof(x), required: true);
+            var __workflow_y = WorkflowExpression.Compile(y, nameof(y), required: true);
+            var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: true);
+            var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: true);
+            var __workflow_publication = WorkflowExpression.Compile(publication, nameof(publication), required: true);
             return new DeferredBodyAction<GetParcelMapResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", ExpressionConverter.ConvertWithUrlEncoding(__workflow_x, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_y, 1));
@@ -66,16 +58,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetTilesResponse> GetId(Expression<Func<string>> x1, Expression<Func<string>> x2, Expression<Func<string>> y1, Expression<Func<string>> y2, Expression<Func<string>> include)
         {
-            var __workflow_x1 = x1 == null ? null : WorkflowExpression.Compile(x1);
-            WorkflowExpression.Validate(__workflow_x1, nameof(x1), required: true);
-            var __workflow_x2 = x2 == null ? null : WorkflowExpression.Compile(x2);
-            WorkflowExpression.Validate(__workflow_x2, nameof(x2), required: true);
-            var __workflow_y1 = y1 == null ? null : WorkflowExpression.Compile(y1);
-            WorkflowExpression.Validate(__workflow_y1, nameof(y1), required: true);
-            var __workflow_y2 = y2 == null ? null : WorkflowExpression.Compile(y2);
-            WorkflowExpression.Validate(__workflow_y2, nameof(y2), required: true);
-            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
-            WorkflowExpression.Validate(__workflow_include, nameof(include), required: true);
+            var __workflow_x1 = WorkflowExpression.Compile(x1, nameof(x1), required: true);
+            var __workflow_x2 = WorkflowExpression.Compile(x2, nameof(x2), required: true);
+            var __workflow_y1 = WorkflowExpression.Compile(y1, nameof(y1), required: true);
+            var __workflow_y2 = WorkflowExpression.Compile(y2, nameof(y2), required: true);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
             return new DeferredBodyAction<GetTilesResponse>(() =>
             {
                 var apiCallPath = "/tiles";

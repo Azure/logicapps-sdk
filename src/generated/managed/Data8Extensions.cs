@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsUsableNameResponse> IsUsableName(Expression<Func<string>> bodynametitle = null, Expression<Func<string>> bodynameforename = null, Expression<Func<string>> bodynamemiddleName = null, Expression<Func<string>> bodynamesurname = null)
         {
-            var __workflow_bodynametitle = bodynametitle == null ? null : WorkflowExpression.Compile(bodynametitle);
-            WorkflowExpression.Validate(__workflow_bodynametitle, nameof(bodynametitle), required: false);
-            var __workflow_bodynameforename = bodynameforename == null ? null : WorkflowExpression.Compile(bodynameforename);
-            WorkflowExpression.Validate(__workflow_bodynameforename, nameof(bodynameforename), required: false);
-            var __workflow_bodynamemiddleName = bodynamemiddleName == null ? null : WorkflowExpression.Compile(bodynamemiddleName);
-            WorkflowExpression.Validate(__workflow_bodynamemiddleName, nameof(bodynamemiddleName), required: false);
-            var __workflow_bodynamesurname = bodynamesurname == null ? null : WorkflowExpression.Compile(bodynamesurname);
-            WorkflowExpression.Validate(__workflow_bodynamesurname, nameof(bodynamesurname), required: false);
+            var __workflow_bodynametitle = WorkflowExpression.Compile(bodynametitle, nameof(bodynametitle), required: false);
+            var __workflow_bodynameforename = WorkflowExpression.Compile(bodynameforename, nameof(bodynameforename), required: false);
+            var __workflow_bodynamemiddleName = WorkflowExpression.Compile(bodynamemiddleName, nameof(bodynamemiddleName), required: false);
+            var __workflow_bodynamesurname = WorkflowExpression.Compile(bodynamesurname, nameof(bodynamesurname), required: false);
             return new DeferredBodyAction<IsUsableNameResponse>(() =>
             {
                 var apiCallPath = "/SalaciousName/IsUnusableName.json";
@@ -72,8 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsCallableTPSResponse> IsCallableTPS(Expression<Func<string>> bodynumber)
         {
-            var __workflow_bodynumber = bodynumber == null ? null : WorkflowExpression.Compile(bodynumber);
-            WorkflowExpression.Validate(__workflow_bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             return new DeferredBodyAction<IsCallableTPSResponse>(() =>
             {
                 var apiCallPath = "/TPS/IsCallable.json";
@@ -95,8 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsCallableCTPSResponse> IsCallableCTPS(Expression<Func<string>> bodynumber)
         {
-            var __workflow_bodynumber = bodynumber == null ? null : WorkflowExpression.Compile(bodynumber);
-            WorkflowExpression.Validate(__workflow_bodynumber, nameof(bodynumber), required: true);
+            var __workflow_bodynumber = WorkflowExpression.Compile(bodynumber, nameof(bodynumber), required: true);
             return new DeferredBodyAction<IsCallableCTPSResponse>(() =>
             {
                 var apiCallPath = "/CTPS/IsCallable.json";
@@ -118,10 +112,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidBankAccountResponse> IsValidBankAccount(Expression<Func<string>> bodysortCode, Expression<Func<string>> bodybankAccountNumber = null)
         {
-            var __workflow_bodysortCode = bodysortCode == null ? null : WorkflowExpression.Compile(bodysortCode);
-            WorkflowExpression.Validate(__workflow_bodysortCode, nameof(bodysortCode), required: true);
-            var __workflow_bodybankAccountNumber = bodybankAccountNumber == null ? null : WorkflowExpression.Compile(bodybankAccountNumber);
-            WorkflowExpression.Validate(__workflow_bodybankAccountNumber, nameof(bodybankAccountNumber), required: false);
+            var __workflow_bodysortCode = WorkflowExpression.Compile(bodysortCode, nameof(bodysortCode), required: true);
+            var __workflow_bodybankAccountNumber = WorkflowExpression.Compile(bodybankAccountNumber, nameof(bodybankAccountNumber), required: false);
             return new DeferredBodyAction<IsValidBankAccountResponse>(() =>
             {
                 var apiCallPath = "/BankAccountValidation/IsValid.json";
@@ -149,10 +141,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidEmailResponse> IsValidEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodylevel = bodylevel == null ? null : WorkflowExpression.Compile(bodylevel);
-            WorkflowExpression.Validate(__workflow_bodylevel, nameof(bodylevel), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
             return new DeferredBodyAction<IsValidEmailResponse>(() =>
             {
                 var apiCallPath = "/EmailValidation/IsValid.json";
@@ -176,14 +166,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidTelephoneResponse> IsValidTelephone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<string>> bodydefaultCountry, Expression<Func<bool>> bodyoptionsuseLineValidation = null, Expression<Func<bool>> bodyoptionsuseMobileValidation = null)
         {
-            var __workflow_bodytelephoneNumber = bodytelephoneNumber == null ? null : WorkflowExpression.Compile(bodytelephoneNumber);
-            WorkflowExpression.Validate(__workflow_bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            var __workflow_bodydefaultCountry = bodydefaultCountry == null ? null : WorkflowExpression.Compile(bodydefaultCountry);
-            WorkflowExpression.Validate(__workflow_bodydefaultCountry, nameof(bodydefaultCountry), required: true);
-            var __workflow_bodyoptionsuseLineValidation = bodyoptionsuseLineValidation == null ? null : WorkflowExpression.Compile(bodyoptionsuseLineValidation);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseLineValidation, nameof(bodyoptionsuseLineValidation), required: false);
-            var __workflow_bodyoptionsuseMobileValidation = bodyoptionsuseMobileValidation == null ? null : WorkflowExpression.Compile(bodyoptionsuseMobileValidation);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseMobileValidation, nameof(bodyoptionsuseMobileValidation), required: false);
+            var __workflow_bodytelephoneNumber = WorkflowExpression.Compile(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
+            var __workflow_bodydefaultCountry = WorkflowExpression.Compile(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
+            var __workflow_bodyoptionsuseLineValidation = WorkflowExpression.Compile(bodyoptionsuseLineValidation, nameof(bodyoptionsuseLineValidation), required: false);
+            var __workflow_bodyoptionsuseMobileValidation = WorkflowExpression.Compile(bodyoptionsuseMobileValidation, nameof(bodyoptionsuseMobileValidation), required: false);
             return new DeferredBodyAction<IsValidTelephoneResponse>(() =>
             {
                 var apiCallPath = "/InternationalTelephoneValidation/IsValid.json";
@@ -227,16 +213,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<CleanAddressResponse> CleanAddress(Expression<Func<string[]>> bodyaddresslines = null, Expression<Func<string>> bodyoptionsdefaultCountryCode = null, Expression<Func<bool>> bodyoptionsdetectCountry = null, Expression<Func<string>> bodyoptionscountry = null, Expression<Func<bool>> bodyoptionsincludeCountry = null)
         {
-            var __workflow_bodyaddresslines = bodyaddresslines == null ? null : WorkflowExpression.Compile(bodyaddresslines);
-            WorkflowExpression.Validate(__workflow_bodyaddresslines, nameof(bodyaddresslines), required: false);
-            var __workflow_bodyoptionsdefaultCountryCode = bodyoptionsdefaultCountryCode == null ? null : WorkflowExpression.Compile(bodyoptionsdefaultCountryCode);
-            WorkflowExpression.Validate(__workflow_bodyoptionsdefaultCountryCode, nameof(bodyoptionsdefaultCountryCode), required: false);
-            var __workflow_bodyoptionsdetectCountry = bodyoptionsdetectCountry == null ? null : WorkflowExpression.Compile(bodyoptionsdetectCountry);
-            WorkflowExpression.Validate(__workflow_bodyoptionsdetectCountry, nameof(bodyoptionsdetectCountry), required: false);
-            var __workflow_bodyoptionscountry = bodyoptionscountry == null ? null : WorkflowExpression.Compile(bodyoptionscountry);
-            WorkflowExpression.Validate(__workflow_bodyoptionscountry, nameof(bodyoptionscountry), required: false);
-            var __workflow_bodyoptionsincludeCountry = bodyoptionsincludeCountry == null ? null : WorkflowExpression.Compile(bodyoptionsincludeCountry);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeCountry, nameof(bodyoptionsincludeCountry), required: false);
+            var __workflow_bodyaddresslines = WorkflowExpression.Compile(bodyaddresslines, nameof(bodyaddresslines), required: false);
+            var __workflow_bodyoptionsdefaultCountryCode = WorkflowExpression.Compile(bodyoptionsdefaultCountryCode, nameof(bodyoptionsdefaultCountryCode), required: false);
+            var __workflow_bodyoptionsdetectCountry = WorkflowExpression.Compile(bodyoptionsdetectCountry, nameof(bodyoptionsdetectCountry), required: false);
+            var __workflow_bodyoptionscountry = WorkflowExpression.Compile(bodyoptionscountry, nameof(bodyoptionscountry), required: false);
+            var __workflow_bodyoptionsincludeCountry = WorkflowExpression.Compile(bodyoptionsincludeCountry, nameof(bodyoptionsincludeCountry), required: false);
             return new DeferredBodyAction<CleanAddressResponse>(() =>
             {
                 var apiCallPath = "/Postcoder/CleanAddress.json";
@@ -302,42 +283,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<GetFullAddressResponse> GetFullAddress(Expression<Func<bodylicenceInput>> bodylicence, Expression<Func<string>> bodypostcode, Expression<Func<string>> bodybuilding = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<bool>> bodyoptionsnormalizeCase = null, Expression<Func<bool>> bodyoptionsnormalizeTownCase = null, Expression<Func<bool>> bodyoptionsexcludeCounty = null, Expression<Func<bool>> bodyoptionsuseAnyAvailableCounty = null, Expression<Func<bool>> bodyoptionsunwantedPunctuation = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeLocation = null, Expression<Func<bool>> bodyoptionsreturnResultCount = null, Expression<Func<bool>> bodyoptionsincludeNYB = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null)
         {
-            var __workflow_bodylicence = bodylicence == null ? null : WorkflowExpression.Compile(bodylicence);
-            WorkflowExpression.Validate(__workflow_bodylicence, nameof(bodylicence), required: true);
-            var __workflow_bodypostcode = bodypostcode == null ? null : WorkflowExpression.Compile(bodypostcode);
-            WorkflowExpression.Validate(__workflow_bodypostcode, nameof(bodypostcode), required: true);
-            var __workflow_bodybuilding = bodybuilding == null ? null : WorkflowExpression.Compile(bodybuilding);
-            WorkflowExpression.Validate(__workflow_bodybuilding, nameof(bodybuilding), required: false);
-            var __workflow_bodyoptionsfixTownCounty = bodyoptionsfixTownCounty == null ? null : WorkflowExpression.Compile(bodyoptionsfixTownCounty);
-            WorkflowExpression.Validate(__workflow_bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            var __workflow_bodyoptionsmaxLines = bodyoptionsmaxLines == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLines);
-            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            var __workflow_bodyoptionsmaxLineLength = bodyoptionsmaxLineLength == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLineLength);
-            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            var __workflow_bodyoptionsnormalizeCase = bodyoptionsnormalizeCase == null ? null : WorkflowExpression.Compile(bodyoptionsnormalizeCase);
-            WorkflowExpression.Validate(__workflow_bodyoptionsnormalizeCase, nameof(bodyoptionsnormalizeCase), required: false);
-            var __workflow_bodyoptionsnormalizeTownCase = bodyoptionsnormalizeTownCase == null ? null : WorkflowExpression.Compile(bodyoptionsnormalizeTownCase);
-            WorkflowExpression.Validate(__workflow_bodyoptionsnormalizeTownCase, nameof(bodyoptionsnormalizeTownCase), required: false);
-            var __workflow_bodyoptionsexcludeCounty = bodyoptionsexcludeCounty == null ? null : WorkflowExpression.Compile(bodyoptionsexcludeCounty);
-            WorkflowExpression.Validate(__workflow_bodyoptionsexcludeCounty, nameof(bodyoptionsexcludeCounty), required: false);
-            var __workflow_bodyoptionsuseAnyAvailableCounty = bodyoptionsuseAnyAvailableCounty == null ? null : WorkflowExpression.Compile(bodyoptionsuseAnyAvailableCounty);
-            WorkflowExpression.Validate(__workflow_bodyoptionsuseAnyAvailableCounty, nameof(bodyoptionsuseAnyAvailableCounty), required: false);
-            var __workflow_bodyoptionsunwantedPunctuation = bodyoptionsunwantedPunctuation == null ? null : WorkflowExpression.Compile(bodyoptionsunwantedPunctuation);
-            WorkflowExpression.Validate(__workflow_bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            var __workflow_bodyoptionsfixBuilding = bodyoptionsfixBuilding == null ? null : WorkflowExpression.Compile(bodyoptionsfixBuilding);
-            WorkflowExpression.Validate(__workflow_bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            var __workflow_bodyoptionsincludeUDPRN = bodyoptionsincludeUDPRN == null ? null : WorkflowExpression.Compile(bodyoptionsincludeUDPRN);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            var __workflow_bodyoptionsincludeLocation = bodyoptionsincludeLocation == null ? null : WorkflowExpression.Compile(bodyoptionsincludeLocation);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeLocation, nameof(bodyoptionsincludeLocation), required: false);
-            var __workflow_bodyoptionsreturnResultCount = bodyoptionsreturnResultCount == null ? null : WorkflowExpression.Compile(bodyoptionsreturnResultCount);
-            WorkflowExpression.Validate(__workflow_bodyoptionsreturnResultCount, nameof(bodyoptionsreturnResultCount), required: false);
-            var __workflow_bodyoptionsincludeNYB = bodyoptionsincludeNYB == null ? null : WorkflowExpression.Compile(bodyoptionsincludeNYB);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
-            var __workflow_bodyoptionsincludeMR = bodyoptionsincludeMR == null ? null : WorkflowExpression.Compile(bodyoptionsincludeMR);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            var __workflow_bodyoptionsformatter = bodyoptionsformatter == null ? null : WorkflowExpression.Compile(bodyoptionsformatter);
-            WorkflowExpression.Validate(__workflow_bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
+            var __workflow_bodylicence = WorkflowExpression.Compile(bodylicence, nameof(bodylicence), required: true);
+            var __workflow_bodypostcode = WorkflowExpression.Compile(bodypostcode, nameof(bodypostcode), required: true);
+            var __workflow_bodybuilding = WorkflowExpression.Compile(bodybuilding, nameof(bodybuilding), required: false);
+            var __workflow_bodyoptionsfixTownCounty = WorkflowExpression.Compile(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
+            var __workflow_bodyoptionsmaxLines = WorkflowExpression.Compile(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
+            var __workflow_bodyoptionsmaxLineLength = WorkflowExpression.Compile(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
+            var __workflow_bodyoptionsnormalizeCase = WorkflowExpression.Compile(bodyoptionsnormalizeCase, nameof(bodyoptionsnormalizeCase), required: false);
+            var __workflow_bodyoptionsnormalizeTownCase = WorkflowExpression.Compile(bodyoptionsnormalizeTownCase, nameof(bodyoptionsnormalizeTownCase), required: false);
+            var __workflow_bodyoptionsexcludeCounty = WorkflowExpression.Compile(bodyoptionsexcludeCounty, nameof(bodyoptionsexcludeCounty), required: false);
+            var __workflow_bodyoptionsuseAnyAvailableCounty = WorkflowExpression.Compile(bodyoptionsuseAnyAvailableCounty, nameof(bodyoptionsuseAnyAvailableCounty), required: false);
+            var __workflow_bodyoptionsunwantedPunctuation = WorkflowExpression.Compile(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
+            var __workflow_bodyoptionsfixBuilding = WorkflowExpression.Compile(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
+            var __workflow_bodyoptionsincludeUDPRN = WorkflowExpression.Compile(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
+            var __workflow_bodyoptionsincludeLocation = WorkflowExpression.Compile(bodyoptionsincludeLocation, nameof(bodyoptionsincludeLocation), required: false);
+            var __workflow_bodyoptionsreturnResultCount = WorkflowExpression.Compile(bodyoptionsreturnResultCount, nameof(bodyoptionsreturnResultCount), required: false);
+            var __workflow_bodyoptionsincludeNYB = WorkflowExpression.Compile(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_bodyoptionsincludeMR = WorkflowExpression.Compile(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
+            var __workflow_bodyoptionsformatter = WorkflowExpression.Compile(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
             return new DeferredBodyAction<GetFullAddressResponse>(() =>
             {
                 var apiCallPath = "/AddressCapture/GetFullAddress.json";
@@ -485,20 +448,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased(Expression<Func<string>> bodyrecordnamesurname, Expression<Func<string[]>> bodyrecordaddresslines, Expression<Func<bool>> bodymarketing, Expression<Func<string>> bodyrecordnametitle = null, Expression<Func<string>> bodyrecordnameforename = null, Expression<Func<string>> bodyrecordnamemiddleName = null, Expression<Func<bodyoptionsmatchLevelInput>> bodyoptionsmatchLevel = null)
         {
-            var __workflow_bodyrecordnamesurname = bodyrecordnamesurname == null ? null : WorkflowExpression.Compile(bodyrecordnamesurname);
-            WorkflowExpression.Validate(__workflow_bodyrecordnamesurname, nameof(bodyrecordnamesurname), required: true);
-            var __workflow_bodyrecordaddresslines = bodyrecordaddresslines == null ? null : WorkflowExpression.Compile(bodyrecordaddresslines);
-            WorkflowExpression.Validate(__workflow_bodyrecordaddresslines, nameof(bodyrecordaddresslines), required: true);
-            var __workflow_bodymarketing = bodymarketing == null ? null : WorkflowExpression.Compile(bodymarketing);
-            WorkflowExpression.Validate(__workflow_bodymarketing, nameof(bodymarketing), required: true);
-            var __workflow_bodyrecordnametitle = bodyrecordnametitle == null ? null : WorkflowExpression.Compile(bodyrecordnametitle);
-            WorkflowExpression.Validate(__workflow_bodyrecordnametitle, nameof(bodyrecordnametitle), required: false);
-            var __workflow_bodyrecordnameforename = bodyrecordnameforename == null ? null : WorkflowExpression.Compile(bodyrecordnameforename);
-            WorkflowExpression.Validate(__workflow_bodyrecordnameforename, nameof(bodyrecordnameforename), required: false);
-            var __workflow_bodyrecordnamemiddleName = bodyrecordnamemiddleName == null ? null : WorkflowExpression.Compile(bodyrecordnamemiddleName);
-            WorkflowExpression.Validate(__workflow_bodyrecordnamemiddleName, nameof(bodyrecordnamemiddleName), required: false);
-            var __workflow_bodyoptionsmatchLevel = bodyoptionsmatchLevel == null ? null : WorkflowExpression.Compile(bodyoptionsmatchLevel);
-            WorkflowExpression.Validate(__workflow_bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
+            var __workflow_bodyrecordnamesurname = WorkflowExpression.Compile(bodyrecordnamesurname, nameof(bodyrecordnamesurname), required: true);
+            var __workflow_bodyrecordaddresslines = WorkflowExpression.Compile(bodyrecordaddresslines, nameof(bodyrecordaddresslines), required: true);
+            var __workflow_bodymarketing = WorkflowExpression.Compile(bodymarketing, nameof(bodymarketing), required: true);
+            var __workflow_bodyrecordnametitle = WorkflowExpression.Compile(bodyrecordnametitle, nameof(bodyrecordnametitle), required: false);
+            var __workflow_bodyrecordnameforename = WorkflowExpression.Compile(bodyrecordnameforename, nameof(bodyrecordnameforename), required: false);
+            var __workflow_bodyrecordnamemiddleName = WorkflowExpression.Compile(bodyrecordnamemiddleName, nameof(bodyrecordnamemiddleName), required: false);
+            var __workflow_bodyoptionsmatchLevel = WorkflowExpression.Compile(bodyoptionsmatchLevel, nameof(bodyoptionsmatchLevel), required: false);
             return new DeferredBodyAction<IsDeceasedResponse>(() =>
             {
                 var apiCallPath = "/Deceased/IsDeceased.json";
@@ -590,18 +546,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<SearchPredictiveAddressResponse> SearchPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytelephoneNumber = null, Expression<Func<string>> bodysession = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
         {
-            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
-            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: true);
-            var __workflow_bodysearch = bodysearch == null ? null : WorkflowExpression.Compile(bodysearch);
-            WorkflowExpression.Validate(__workflow_bodysearch, nameof(bodysearch), required: true);
-            var __workflow_bodytelephoneNumber = bodytelephoneNumber == null ? null : WorkflowExpression.Compile(bodytelephoneNumber);
-            WorkflowExpression.Validate(__workflow_bodytelephoneNumber, nameof(bodytelephoneNumber), required: false);
-            var __workflow_bodysession = bodysession == null ? null : WorkflowExpression.Compile(bodysession);
-            WorkflowExpression.Validate(__workflow_bodysession, nameof(bodysession), required: false);
-            var __workflow_bodyoptionsincludeMR = bodyoptionsincludeMR == null ? null : WorkflowExpression.Compile(bodyoptionsincludeMR);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            var __workflow_bodyoptionsincludeNYB = bodyoptionsincludeNYB == null ? null : WorkflowExpression.Compile(bodyoptionsincludeNYB);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
+            var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: true);
+            var __workflow_bodytelephoneNumber = WorkflowExpression.Compile(bodytelephoneNumber, nameof(bodytelephoneNumber), required: false);
+            var __workflow_bodysession = WorkflowExpression.Compile(bodysession, nameof(bodysession), required: false);
+            var __workflow_bodyoptionsincludeMR = WorkflowExpression.Compile(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
+            var __workflow_bodyoptionsincludeNYB = WorkflowExpression.Compile(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
             return new DeferredBodyAction<SearchPredictiveAddressResponse>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/Search.json";
@@ -657,14 +607,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> DrilldownPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
         {
-            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
-            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyoptionsincludeMR = bodyoptionsincludeMR == null ? null : WorkflowExpression.Compile(bodyoptionsincludeMR);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
-            var __workflow_bodyoptionsincludeNYB = bodyoptionsincludeNYB == null ? null : WorkflowExpression.Compile(bodyoptionsincludeNYB);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
+            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyoptionsincludeMR = WorkflowExpression.Compile(bodyoptionsincludeMR, nameof(bodyoptionsincludeMR), required: false);
+            var __workflow_bodyoptionsincludeNYB = WorkflowExpression.Compile(bodyoptionsincludeNYB, nameof(bodyoptionsincludeNYB), required: false);
             return new DeferredBodyAction<DrilldownPredictiveAddressResponse>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/DrillDown.json";
@@ -708,28 +654,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<RetrievePredictiveAddressResponse> RetrievePredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<bool>> bodyoptionsfixPostcode = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<string>> bodyoptionsunwantedPunctuation = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeUPRN = null)
         {
-            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
-            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyoptionsmaxLineLength = bodyoptionsmaxLineLength == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLineLength);
-            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
-            var __workflow_bodyoptionsmaxLines = bodyoptionsmaxLines == null ? null : WorkflowExpression.Compile(bodyoptionsmaxLines);
-            WorkflowExpression.Validate(__workflow_bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
-            var __workflow_bodyoptionsfixTownCounty = bodyoptionsfixTownCounty == null ? null : WorkflowExpression.Compile(bodyoptionsfixTownCounty);
-            WorkflowExpression.Validate(__workflow_bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
-            var __workflow_bodyoptionsfixPostcode = bodyoptionsfixPostcode == null ? null : WorkflowExpression.Compile(bodyoptionsfixPostcode);
-            WorkflowExpression.Validate(__workflow_bodyoptionsfixPostcode, nameof(bodyoptionsfixPostcode), required: false);
-            var __workflow_bodyoptionsfixBuilding = bodyoptionsfixBuilding == null ? null : WorkflowExpression.Compile(bodyoptionsfixBuilding);
-            WorkflowExpression.Validate(__workflow_bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
-            var __workflow_bodyoptionsunwantedPunctuation = bodyoptionsunwantedPunctuation == null ? null : WorkflowExpression.Compile(bodyoptionsunwantedPunctuation);
-            WorkflowExpression.Validate(__workflow_bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
-            var __workflow_bodyoptionsformatter = bodyoptionsformatter == null ? null : WorkflowExpression.Compile(bodyoptionsformatter);
-            WorkflowExpression.Validate(__workflow_bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
-            var __workflow_bodyoptionsincludeUDPRN = bodyoptionsincludeUDPRN == null ? null : WorkflowExpression.Compile(bodyoptionsincludeUDPRN);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
-            var __workflow_bodyoptionsincludeUPRN = bodyoptionsincludeUPRN == null ? null : WorkflowExpression.Compile(bodyoptionsincludeUPRN);
-            WorkflowExpression.Validate(__workflow_bodyoptionsincludeUPRN, nameof(bodyoptionsincludeUPRN), required: false);
+            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyoptionsmaxLineLength = WorkflowExpression.Compile(bodyoptionsmaxLineLength, nameof(bodyoptionsmaxLineLength), required: false);
+            var __workflow_bodyoptionsmaxLines = WorkflowExpression.Compile(bodyoptionsmaxLines, nameof(bodyoptionsmaxLines), required: false);
+            var __workflow_bodyoptionsfixTownCounty = WorkflowExpression.Compile(bodyoptionsfixTownCounty, nameof(bodyoptionsfixTownCounty), required: false);
+            var __workflow_bodyoptionsfixPostcode = WorkflowExpression.Compile(bodyoptionsfixPostcode, nameof(bodyoptionsfixPostcode), required: false);
+            var __workflow_bodyoptionsfixBuilding = WorkflowExpression.Compile(bodyoptionsfixBuilding, nameof(bodyoptionsfixBuilding), required: false);
+            var __workflow_bodyoptionsunwantedPunctuation = WorkflowExpression.Compile(bodyoptionsunwantedPunctuation, nameof(bodyoptionsunwantedPunctuation), required: false);
+            var __workflow_bodyoptionsformatter = WorkflowExpression.Compile(bodyoptionsformatter, nameof(bodyoptionsformatter), required: false);
+            var __workflow_bodyoptionsincludeUDPRN = WorkflowExpression.Compile(bodyoptionsincludeUDPRN, nameof(bodyoptionsincludeUDPRN), required: false);
+            var __workflow_bodyoptionsincludeUPRN = WorkflowExpression.Compile(bodyoptionsincludeUPRN, nameof(bodyoptionsincludeUPRN), required: false);
             return new DeferredBodyAction<RetrievePredictiveAddressResponse>(() =>
             {
                 var apiCallPath = "/PredictiveAddress/Retrieve.json";
@@ -895,20 +830,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<CleanseEmailResponse> CleanseEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyforename = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodysurname = null, Expression<Func<string>> bodycompany = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodylevel = bodylevel == null ? null : WorkflowExpression.Compile(bodylevel);
-            WorkflowExpression.Validate(__workflow_bodylevel, nameof(bodylevel), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyforename = bodyforename == null ? null : WorkflowExpression.Compile(bodyforename);
-            WorkflowExpression.Validate(__workflow_bodyforename, nameof(bodyforename), required: false);
-            var __workflow_bodymiddleName = bodymiddleName == null ? null : WorkflowExpression.Compile(bodymiddleName);
-            WorkflowExpression.Validate(__workflow_bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodysurname = bodysurname == null ? null : WorkflowExpression.Compile(bodysurname);
-            WorkflowExpression.Validate(__workflow_bodysurname, nameof(bodysurname), required: false);
-            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
-            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyforename = WorkflowExpression.Compile(bodyforename, nameof(bodyforename), required: false);
+            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
+            var __workflow_bodysurname = WorkflowExpression.Compile(bodysurname, nameof(bodysurname), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
             return new DeferredBodyAction<CleanseEmailResponse>(() =>
             {
                 var apiCallPath = "/EmailValidation/CleanseSimple.json";
@@ -962,10 +890,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
         public IBodyWorkflowAction<IsValidPhoneResponse> IsValidPhone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<int>> bodydefaultCountry)
         {
-            var __workflow_bodytelephoneNumber = bodytelephoneNumber == null ? null : WorkflowExpression.Compile(bodytelephoneNumber);
-            WorkflowExpression.Validate(__workflow_bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
-            var __workflow_bodydefaultCountry = bodydefaultCountry == null ? null : WorkflowExpression.Compile(bodydefaultCountry);
-            WorkflowExpression.Validate(__workflow_bodydefaultCountry, nameof(bodydefaultCountry), required: true);
+            var __workflow_bodytelephoneNumber = WorkflowExpression.Compile(bodytelephoneNumber, nameof(bodytelephoneNumber), required: true);
+            var __workflow_bodydefaultCountry = WorkflowExpression.Compile(bodydefaultCountry, nameof(bodydefaultCountry), required: true);
             return new DeferredBodyAction<IsValidPhoneResponse>(() =>
             {
                 var apiCallPath = "/PhoneValidation/IsValid.json";

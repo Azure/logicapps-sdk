@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_fa = fa == null ? null : WorkflowExpression.Compile(fa);
-            WorkflowExpression.Validate(__workflow_fa, nameof(fa), required: false);
-            var __workflow_c = c == null ? null : WorkflowExpression.Compile(c);
-            WorkflowExpression.Validate(__workflow_c, nameof(c), required: false);
-            var __workflow_sp = sp == null ? null : WorkflowExpression.Compile(sp);
-            WorkflowExpression.Validate(__workflow_sp, nameof(sp), required: false);
-            var __workflow_at = at == null ? null : WorkflowExpression.Compile(at);
-            WorkflowExpression.Validate(__workflow_at, nameof(at), required: false);
-            var __workflow_sb = sb == null ? null : WorkflowExpression.Compile(sb);
-            WorkflowExpression.Validate(__workflow_sb, nameof(sb), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_fa = WorkflowExpression.Compile(fa, nameof(fa), required: false);
+            var __workflow_c = WorkflowExpression.Compile(c, nameof(c), required: false);
+            var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
+            var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
+            var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search/";
@@ -48,20 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var __workflow_collection = collection == null ? null : WorkflowExpression.Compile(collection);
-            WorkflowExpression.Validate(__workflow_collection, nameof(collection), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_fa = fa == null ? null : WorkflowExpression.Compile(fa);
-            WorkflowExpression.Validate(__workflow_fa, nameof(fa), required: false);
-            var __workflow_c = c == null ? null : WorkflowExpression.Compile(c);
-            WorkflowExpression.Validate(__workflow_c, nameof(c), required: false);
-            var __workflow_sp = sp == null ? null : WorkflowExpression.Compile(sp);
-            WorkflowExpression.Validate(__workflow_sp, nameof(sp), required: false);
-            var __workflow_at = at == null ? null : WorkflowExpression.Compile(at);
-            WorkflowExpression.Validate(__workflow_at, nameof(at), required: false);
-            var __workflow_sb = sb == null ? null : WorkflowExpression.Compile(sb);
-            WorkflowExpression.Validate(__workflow_sb, nameof(sb), required: false);
+            var __workflow_collection = WorkflowExpression.Compile(collection, nameof(collection), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_fa = WorkflowExpression.Compile(fa, nameof(fa), required: false);
+            var __workflow_c = WorkflowExpression.Compile(c, nameof(c), required: false);
+            var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
+            var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
+            var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
             return new DeferredBodyAction<CollectionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collection, 1));
@@ -85,20 +72,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
         {
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_fa = fa == null ? null : WorkflowExpression.Compile(fa);
-            WorkflowExpression.Validate(__workflow_fa, nameof(fa), required: false);
-            var __workflow_c = c == null ? null : WorkflowExpression.Compile(c);
-            WorkflowExpression.Validate(__workflow_c, nameof(c), required: false);
-            var __workflow_sp = sp == null ? null : WorkflowExpression.Compile(sp);
-            WorkflowExpression.Validate(__workflow_sp, nameof(sp), required: false);
-            var __workflow_at = at == null ? null : WorkflowExpression.Compile(at);
-            WorkflowExpression.Validate(__workflow_at, nameof(at), required: false);
-            var __workflow_sb = sb == null ? null : WorkflowExpression.Compile(sb);
-            WorkflowExpression.Validate(__workflow_sb, nameof(sb), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_fa = WorkflowExpression.Compile(fa, nameof(fa), required: false);
+            var __workflow_c = WorkflowExpression.Compile(c, nameof(c), required: false);
+            var __workflow_sp = WorkflowExpression.Compile(sp, nameof(sp), required: false);
+            var __workflow_at = WorkflowExpression.Compile(at, nameof(at), required: false);
+            var __workflow_sb = WorkflowExpression.Compile(sb, nameof(sb), required: false);
             return new DeferredBodyAction<FormatResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
@@ -122,8 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
         public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
         {
-            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
-            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: true);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<ItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));

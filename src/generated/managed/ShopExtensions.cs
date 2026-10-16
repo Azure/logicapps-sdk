@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query = null, Expression<Func<double>> priceMin = null, Expression<Func<double>> priceMax = null, Expression<Func<string>> similarToId = null, Expression<Func<string>> numResults = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_priceMin = priceMin == null ? null : WorkflowExpression.Compile(priceMin);
-            WorkflowExpression.Validate(__workflow_priceMin, nameof(priceMin), required: false);
-            var __workflow_priceMax = priceMax == null ? null : WorkflowExpression.Compile(priceMax);
-            WorkflowExpression.Validate(__workflow_priceMax, nameof(priceMax), required: false);
-            var __workflow_similarToId = similarToId == null ? null : WorkflowExpression.Compile(similarToId);
-            WorkflowExpression.Validate(__workflow_similarToId, nameof(similarToId), required: false);
-            var __workflow_numResults = numResults == null ? null : WorkflowExpression.Compile(numResults);
-            WorkflowExpression.Validate(__workflow_numResults, nameof(numResults), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_priceMin = WorkflowExpression.Compile(priceMin, nameof(priceMin), required: false);
+            var __workflow_priceMax = WorkflowExpression.Compile(priceMax, nameof(priceMax), required: false);
+            var __workflow_similarToId = WorkflowExpression.Compile(similarToId, nameof(similarToId), required: false);
+            var __workflow_numResults = WorkflowExpression.Compile(numResults, nameof(numResults), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/openai/search";
@@ -45,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
         public IBodyWorkflowAction<SearchResponse> Details(Expression<Func<string>> ids)
         {
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: true);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: true);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/openai/details";

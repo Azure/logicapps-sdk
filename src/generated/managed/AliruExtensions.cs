@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
         public IWorkflowAction SendNews(Expression<Func<string>> bodyheadline, Expression<Func<string>> bodytext, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodypictureURL = null, Expression<Func<string>> bodytags = null, Expression<Func<int>> bodytimeToLiveInDays = null, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_bodyheadline = bodyheadline == null ? null : WorkflowExpression.Compile(bodyheadline);
-            WorkflowExpression.Validate(__workflow_bodyheadline, nameof(bodyheadline), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyuRL = bodyuRL == null ? null : WorkflowExpression.Compile(bodyuRL);
-            WorkflowExpression.Validate(__workflow_bodyuRL, nameof(bodyuRL), required: false);
-            var __workflow_bodypictureURL = bodypictureURL == null ? null : WorkflowExpression.Compile(bodypictureURL);
-            WorkflowExpression.Validate(__workflow_bodypictureURL, nameof(bodypictureURL), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodytimeToLiveInDays = bodytimeToLiveInDays == null ? null : WorkflowExpression.Compile(bodytimeToLiveInDays);
-            WorkflowExpression.Validate(__workflow_bodytimeToLiveInDays, nameof(bodytimeToLiveInDays), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyheadline = WorkflowExpression.Compile(bodyheadline, nameof(bodyheadline), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyuRL = WorkflowExpression.Compile(bodyuRL, nameof(bodyuRL), required: false);
+            var __workflow_bodypictureURL = WorkflowExpression.Compile(bodypictureURL, nameof(bodypictureURL), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodytimeToLiveInDays = WorkflowExpression.Compile(bodytimeToLiveInDays, nameof(bodytimeToLiveInDays), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/SendNews";
@@ -80,10 +73,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
         public IWorkflowAction SendNotification(Expression<Func<string>> bodytext, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/SendNotification";

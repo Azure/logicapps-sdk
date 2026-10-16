@@ -15,10 +15,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<ExecuteCodeOutput> ExecuteCode(Expression<Func<object>> pythonCode, Expression<Func<object>> sessionId = null)
         {
-            var __workflow_pythonCode = pythonCode == null ? null : WorkflowExpression.Compile(pythonCode);
-            WorkflowExpression.Validate(__workflow_pythonCode, nameof(pythonCode), required: true);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_pythonCode = WorkflowExpression.Compile(pythonCode, nameof(pythonCode), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<ExecuteCodeOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -40,10 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<FileUploadOutput> FileUpload(Expression<Func<FileUploadInputFilesTypeItem[]>> files, Expression<Func<object>> sessionId = null)
         {
-            var __workflow_files = files == null ? null : WorkflowExpression.Compile(files);
-            WorkflowExpression.Validate(__workflow_files, nameof(files), required: true);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_files = WorkflowExpression.Compile(files, nameof(files), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<FileUploadOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -65,10 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<JToken> FileDownload(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -86,10 +80,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Acasession
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "acasession")]
         public IBodyWorkflowAction<JToken> FileDelete(Expression<Func<string>> fileName, Expression<Func<object>> sessionId)
         {
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();

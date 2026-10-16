@@ -15,16 +15,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "confluentKafka")]
         public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> topicName, Expression<Func<object>> message, Expression<Func<string>> messageKey = null, Expression<Func<object>> headers = null, Expression<Func<string>> schemaSubjectName = null)
         {
-            var __workflow_topicName = topicName == null ? null : WorkflowExpression.Compile(topicName);
-            WorkflowExpression.Validate(__workflow_topicName, nameof(topicName), required: true);
-            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
-            var __workflow_messageKey = messageKey == null ? null : WorkflowExpression.Compile(messageKey);
-            WorkflowExpression.Validate(__workflow_messageKey, nameof(messageKey), required: false);
-            var __workflow_headers = headers == null ? null : WorkflowExpression.Compile(headers);
-            WorkflowExpression.Validate(__workflow_headers, nameof(headers), required: false);
-            var __workflow_schemaSubjectName = schemaSubjectName == null ? null : WorkflowExpression.Compile(schemaSubjectName);
-            WorkflowExpression.Validate(__workflow_schemaSubjectName, nameof(schemaSubjectName), required: false);
+            var __workflow_topicName = WorkflowExpression.Compile(topicName, nameof(topicName), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_messageKey = WorkflowExpression.Compile(messageKey, nameof(messageKey), required: false);
+            var __workflow_headers = WorkflowExpression.Compile(headers, nameof(headers), required: false);
+            var __workflow_schemaSubjectName = WorkflowExpression.Compile(schemaSubjectName, nameof(schemaSubjectName), required: false);
             return new DeferredBodyAction<SendMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -59,16 +54,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
     {
         public IBodyWorkflowTrigger<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> topic, Expression<Func<string>> consumerGroup = null, Expression<Func<ReceiveMessageInputAuthenticationModeType>> authenticationMode = null, Expression<Func<ReceiveMessageInputProtocolType>> protocol = null, Expression<Func<string>> avroSchema = null)
         {
-            var __workflow_topic = topic == null ? null : WorkflowExpression.Compile(topic);
-            WorkflowExpression.Validate(__workflow_topic, nameof(topic), required: true);
-            var __workflow_consumerGroup = consumerGroup == null ? null : WorkflowExpression.Compile(consumerGroup);
-            WorkflowExpression.Validate(__workflow_consumerGroup, nameof(consumerGroup), required: false);
-            var __workflow_authenticationMode = authenticationMode == null ? null : WorkflowExpression.Compile(authenticationMode);
-            WorkflowExpression.Validate(__workflow_authenticationMode, nameof(authenticationMode), required: false);
-            var __workflow_protocol = protocol == null ? null : WorkflowExpression.Compile(protocol);
-            WorkflowExpression.Validate(__workflow_protocol, nameof(protocol), required: false);
-            var __workflow_avroSchema = avroSchema == null ? null : WorkflowExpression.Compile(avroSchema);
-            WorkflowExpression.Validate(__workflow_avroSchema, nameof(avroSchema), required: false);
+            var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: true);
+            var __workflow_consumerGroup = WorkflowExpression.Compile(consumerGroup, nameof(consumerGroup), required: false);
+            var __workflow_authenticationMode = WorkflowExpression.Compile(authenticationMode, nameof(authenticationMode), required: false);
+            var __workflow_protocol = WorkflowExpression.Compile(protocol, nameof(protocol), required: false);
+            var __workflow_avroSchema = WorkflowExpression.Compile(avroSchema, nameof(avroSchema), required: false);
             return new DeferredBodyTrigger<ReceiveMessageOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

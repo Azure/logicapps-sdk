@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecportabilitycheck
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecportabilitycheck")]
         public IBodyWorkflowAction<VerifyPhoneNumberResponse> VerifyPhoneNumber(Expression<Func<string>> phonenumber)
         {
-            var __workflow_phonenumber = phonenumber == null ? null : WorkflowExpression.Compile(phonenumber);
-            WorkflowExpression.Validate(__workflow_phonenumber, nameof(phonenumber), required: true);
+            var __workflow_phonenumber = WorkflowExpression.Compile(phonenumber, nameof(phonenumber), required: true);
             return new DeferredBodyAction<VerifyPhoneNumberResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_phonenumber, 1));

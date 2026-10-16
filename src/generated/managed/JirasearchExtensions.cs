@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jirasearch")]
         public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch(Expression<Func<string>> jql, Expression<Func<string>> hostname, Expression<Func<string>> fields, Expression<Func<string>> expand = null, Expression<Func<int>> startAt = null, Expression<Func<int>> maxResults = null)
         {
-            var __workflow_jql = jql == null ? null : WorkflowExpression.Compile(jql);
-            WorkflowExpression.Validate(__workflow_jql, nameof(jql), required: true);
-            var __workflow_hostname = hostname == null ? null : WorkflowExpression.Compile(hostname);
-            WorkflowExpression.Validate(__workflow_hostname, nameof(hostname), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: true);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_startAt = startAt == null ? null : WorkflowExpression.Compile(startAt);
-            WorkflowExpression.Validate(__workflow_startAt, nameof(startAt), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_jql = WorkflowExpression.Compile(jql, nameof(jql), required: true);
+            var __workflow_hostname = WorkflowExpression.Compile(hostname, nameof(hostname), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: true);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_startAt = WorkflowExpression.Compile(startAt, nameof(startAt), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<SimpleSearchResponse>(() =>
             {
                 var apiCallPath = "/rest/api/2/search";

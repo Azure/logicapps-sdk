@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         public IBodyWorkflowAction<GetTimeSlotsResponseItem[]> GetTimeSlots(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetTimeSlotsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/time-slots", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,20 +26,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
         public IWorkflowAction BookATimeSlot(Expression<Func<string>> id, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyguestTimeZone, Expression<Func<string>> bodybookingFormname = null, Expression<Func<string>> bodybookingFormemail = null, Expression<Func<bodylocationTypeInput>> bodylocationType = null, Expression<Func<string>> bodylocationValue = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: true);
-            var __workflow_bodyguestTimeZone = bodyguestTimeZone == null ? null : WorkflowExpression.Compile(bodyguestTimeZone);
-            WorkflowExpression.Validate(__workflow_bodyguestTimeZone, nameof(bodyguestTimeZone), required: true);
-            var __workflow_bodybookingFormname = bodybookingFormname == null ? null : WorkflowExpression.Compile(bodybookingFormname);
-            WorkflowExpression.Validate(__workflow_bodybookingFormname, nameof(bodybookingFormname), required: false);
-            var __workflow_bodybookingFormemail = bodybookingFormemail == null ? null : WorkflowExpression.Compile(bodybookingFormemail);
-            WorkflowExpression.Validate(__workflow_bodybookingFormemail, nameof(bodybookingFormemail), required: false);
-            var __workflow_bodylocationType = bodylocationType == null ? null : WorkflowExpression.Compile(bodylocationType);
-            WorkflowExpression.Validate(__workflow_bodylocationType, nameof(bodylocationType), required: false);
-            var __workflow_bodylocationValue = bodylocationValue == null ? null : WorkflowExpression.Compile(bodylocationValue);
-            WorkflowExpression.Validate(__workflow_bodylocationValue, nameof(bodylocationValue), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: true);
+            var __workflow_bodyguestTimeZone = WorkflowExpression.Compile(bodyguestTimeZone, nameof(bodyguestTimeZone), required: true);
+            var __workflow_bodybookingFormname = WorkflowExpression.Compile(bodybookingFormname, nameof(bodybookingFormname), required: false);
+            var __workflow_bodybookingFormemail = WorkflowExpression.Compile(bodybookingFormemail, nameof(bodybookingFormemail), required: false);
+            var __workflow_bodylocationType = WorkflowExpression.Compile(bodylocationType, nameof(bodylocationType), required: false);
+            var __workflow_bodylocationValue = WorkflowExpression.Compile(bodylocationValue, nameof(bodylocationValue), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/schedule", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

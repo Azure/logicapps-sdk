@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
         public IBodyWorkflowAction<string> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
         {
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));

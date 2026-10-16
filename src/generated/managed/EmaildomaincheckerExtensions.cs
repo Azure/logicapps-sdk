@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
         public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_endpoint = endpoint == null ? null : WorkflowExpression.Compile(endpoint);
-            WorkflowExpression.Validate(__workflow_endpoint, nameof(endpoint), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             return new DeferredBodyAction<CheckDomainResponse>(() =>
             {
                 var apiCallPath = "/checkDomain/";

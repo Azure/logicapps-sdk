@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<Item> Read(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
         {
-            var __workflow_optionsqueue = optionsqueue == null ? null : WorkflowExpression.Compile(optionsqueue);
-            WorkflowExpression.Validate(__workflow_optionsqueue, nameof(optionsqueue), required: false);
-            var __workflow_optionsmessageId = optionsmessageId == null ? null : WorkflowExpression.Compile(optionsmessageId);
-            WorkflowExpression.Validate(__workflow_optionsmessageId, nameof(optionsmessageId), required: false);
-            var __workflow_optionscorrelationId = optionscorrelationId == null ? null : WorkflowExpression.Compile(optionscorrelationId);
-            WorkflowExpression.Validate(__workflow_optionscorrelationId, nameof(optionscorrelationId), required: false);
-            var __workflow_optionsgroupId = optionsgroupId == null ? null : WorkflowExpression.Compile(optionsgroupId);
-            WorkflowExpression.Validate(__workflow_optionsgroupId, nameof(optionsgroupId), required: false);
-            var __workflow_optionsmessageToken = optionsmessageToken == null ? null : WorkflowExpression.Compile(optionsmessageToken);
-            WorkflowExpression.Validate(__workflow_optionsmessageToken, nameof(optionsmessageToken), required: false);
-            var __workflow_optionsoffset = optionsoffset == null ? null : WorkflowExpression.Compile(optionsoffset);
-            WorkflowExpression.Validate(__workflow_optionsoffset, nameof(optionsoffset), required: false);
-            var __workflow_optionslogicalSequenceNumber = optionslogicalSequenceNumber == null ? null : WorkflowExpression.Compile(optionslogicalSequenceNumber);
-            WorkflowExpression.Validate(__workflow_optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            var __workflow_optionsincludeInfo = optionsincludeInfo == null ? null : WorkflowExpression.Compile(optionsincludeInfo);
-            WorkflowExpression.Validate(__workflow_optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            var __workflow_optionstimeout = optionstimeout == null ? null : WorkflowExpression.Compile(optionstimeout);
-            WorkflowExpression.Validate(__workflow_optionstimeout, nameof(optionstimeout), required: false);
+            var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
+            var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
+            var __workflow_optionscorrelationId = WorkflowExpression.Compile(optionscorrelationId, nameof(optionscorrelationId), required: false);
+            var __workflow_optionsgroupId = WorkflowExpression.Compile(optionsgroupId, nameof(optionsgroupId), required: false);
+            var __workflow_optionsmessageToken = WorkflowExpression.Compile(optionsmessageToken, nameof(optionsmessageToken), required: false);
+            var __workflow_optionsoffset = WorkflowExpression.Compile(optionsoffset, nameof(optionsoffset), required: false);
+            var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
+            var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
+            var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
             return new DeferredBodyAction<Item>(() =>
             {
                 var apiCallPath = "/read";
@@ -114,26 +105,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<ItemsList> ReadAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
         {
-            var __workflow_optionsqueue = optionsqueue == null ? null : WorkflowExpression.Compile(optionsqueue);
-            WorkflowExpression.Validate(__workflow_optionsqueue, nameof(optionsqueue), required: false);
-            var __workflow_optionsmessageId = optionsmessageId == null ? null : WorkflowExpression.Compile(optionsmessageId);
-            WorkflowExpression.Validate(__workflow_optionsmessageId, nameof(optionsmessageId), required: false);
-            var __workflow_optionscorrelationId = optionscorrelationId == null ? null : WorkflowExpression.Compile(optionscorrelationId);
-            WorkflowExpression.Validate(__workflow_optionscorrelationId, nameof(optionscorrelationId), required: false);
-            var __workflow_optionsgroupId = optionsgroupId == null ? null : WorkflowExpression.Compile(optionsgroupId);
-            WorkflowExpression.Validate(__workflow_optionsgroupId, nameof(optionsgroupId), required: false);
-            var __workflow_optionsmessageToken = optionsmessageToken == null ? null : WorkflowExpression.Compile(optionsmessageToken);
-            WorkflowExpression.Validate(__workflow_optionsmessageToken, nameof(optionsmessageToken), required: false);
-            var __workflow_optionsoffset = optionsoffset == null ? null : WorkflowExpression.Compile(optionsoffset);
-            WorkflowExpression.Validate(__workflow_optionsoffset, nameof(optionsoffset), required: false);
-            var __workflow_optionslogicalSequenceNumber = optionslogicalSequenceNumber == null ? null : WorkflowExpression.Compile(optionslogicalSequenceNumber);
-            WorkflowExpression.Validate(__workflow_optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            var __workflow_optionsincludeInfo = optionsincludeInfo == null ? null : WorkflowExpression.Compile(optionsincludeInfo);
-            WorkflowExpression.Validate(__workflow_optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            var __workflow_optionstimeout = optionstimeout == null ? null : WorkflowExpression.Compile(optionstimeout);
-            WorkflowExpression.Validate(__workflow_optionstimeout, nameof(optionstimeout), required: false);
-            var __workflow_optionsbatchSize = optionsbatchSize == null ? null : WorkflowExpression.Compile(optionsbatchSize);
-            WorkflowExpression.Validate(__workflow_optionsbatchSize, nameof(optionsbatchSize), required: false);
+            var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
+            var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
+            var __workflow_optionscorrelationId = WorkflowExpression.Compile(optionscorrelationId, nameof(optionscorrelationId), required: false);
+            var __workflow_optionsgroupId = WorkflowExpression.Compile(optionsgroupId, nameof(optionsgroupId), required: false);
+            var __workflow_optionsmessageToken = WorkflowExpression.Compile(optionsmessageToken, nameof(optionsmessageToken), required: false);
+            var __workflow_optionsoffset = WorkflowExpression.Compile(optionsoffset, nameof(optionsoffset), required: false);
+            var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
+            var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
+            var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
+            var __workflow_optionsbatchSize = WorkflowExpression.Compile(optionsbatchSize, nameof(optionsbatchSize), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/readall";
@@ -223,24 +204,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<Item> Receive(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
         {
-            var __workflow_optionsqueue = optionsqueue == null ? null : WorkflowExpression.Compile(optionsqueue);
-            WorkflowExpression.Validate(__workflow_optionsqueue, nameof(optionsqueue), required: false);
-            var __workflow_optionsmessageId = optionsmessageId == null ? null : WorkflowExpression.Compile(optionsmessageId);
-            WorkflowExpression.Validate(__workflow_optionsmessageId, nameof(optionsmessageId), required: false);
-            var __workflow_optionscorrelationId = optionscorrelationId == null ? null : WorkflowExpression.Compile(optionscorrelationId);
-            WorkflowExpression.Validate(__workflow_optionscorrelationId, nameof(optionscorrelationId), required: false);
-            var __workflow_optionsgroupId = optionsgroupId == null ? null : WorkflowExpression.Compile(optionsgroupId);
-            WorkflowExpression.Validate(__workflow_optionsgroupId, nameof(optionsgroupId), required: false);
-            var __workflow_optionsmessageToken = optionsmessageToken == null ? null : WorkflowExpression.Compile(optionsmessageToken);
-            WorkflowExpression.Validate(__workflow_optionsmessageToken, nameof(optionsmessageToken), required: false);
-            var __workflow_optionsoffset = optionsoffset == null ? null : WorkflowExpression.Compile(optionsoffset);
-            WorkflowExpression.Validate(__workflow_optionsoffset, nameof(optionsoffset), required: false);
-            var __workflow_optionslogicalSequenceNumber = optionslogicalSequenceNumber == null ? null : WorkflowExpression.Compile(optionslogicalSequenceNumber);
-            WorkflowExpression.Validate(__workflow_optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            var __workflow_optionsincludeInfo = optionsincludeInfo == null ? null : WorkflowExpression.Compile(optionsincludeInfo);
-            WorkflowExpression.Validate(__workflow_optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            var __workflow_optionstimeout = optionstimeout == null ? null : WorkflowExpression.Compile(optionstimeout);
-            WorkflowExpression.Validate(__workflow_optionstimeout, nameof(optionstimeout), required: false);
+            var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
+            var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
+            var __workflow_optionscorrelationId = WorkflowExpression.Compile(optionscorrelationId, nameof(optionscorrelationId), required: false);
+            var __workflow_optionsgroupId = WorkflowExpression.Compile(optionsgroupId, nameof(optionsgroupId), required: false);
+            var __workflow_optionsmessageToken = WorkflowExpression.Compile(optionsmessageToken, nameof(optionsmessageToken), required: false);
+            var __workflow_optionsoffset = WorkflowExpression.Compile(optionsoffset, nameof(optionsoffset), required: false);
+            var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
+            var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
+            var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
             return new DeferredBodyAction<Item>(() =>
             {
                 var apiCallPath = "/receive";
@@ -324,26 +296,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<ItemsList> ReceiveAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
         {
-            var __workflow_optionsqueue = optionsqueue == null ? null : WorkflowExpression.Compile(optionsqueue);
-            WorkflowExpression.Validate(__workflow_optionsqueue, nameof(optionsqueue), required: false);
-            var __workflow_optionsmessageId = optionsmessageId == null ? null : WorkflowExpression.Compile(optionsmessageId);
-            WorkflowExpression.Validate(__workflow_optionsmessageId, nameof(optionsmessageId), required: false);
-            var __workflow_optionscorrelationId = optionscorrelationId == null ? null : WorkflowExpression.Compile(optionscorrelationId);
-            WorkflowExpression.Validate(__workflow_optionscorrelationId, nameof(optionscorrelationId), required: false);
-            var __workflow_optionsgroupId = optionsgroupId == null ? null : WorkflowExpression.Compile(optionsgroupId);
-            WorkflowExpression.Validate(__workflow_optionsgroupId, nameof(optionsgroupId), required: false);
-            var __workflow_optionsmessageToken = optionsmessageToken == null ? null : WorkflowExpression.Compile(optionsmessageToken);
-            WorkflowExpression.Validate(__workflow_optionsmessageToken, nameof(optionsmessageToken), required: false);
-            var __workflow_optionsoffset = optionsoffset == null ? null : WorkflowExpression.Compile(optionsoffset);
-            WorkflowExpression.Validate(__workflow_optionsoffset, nameof(optionsoffset), required: false);
-            var __workflow_optionslogicalSequenceNumber = optionslogicalSequenceNumber == null ? null : WorkflowExpression.Compile(optionslogicalSequenceNumber);
-            WorkflowExpression.Validate(__workflow_optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            var __workflow_optionsincludeInfo = optionsincludeInfo == null ? null : WorkflowExpression.Compile(optionsincludeInfo);
-            WorkflowExpression.Validate(__workflow_optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            var __workflow_optionstimeout = optionstimeout == null ? null : WorkflowExpression.Compile(optionstimeout);
-            WorkflowExpression.Validate(__workflow_optionstimeout, nameof(optionstimeout), required: false);
-            var __workflow_optionsbatchSize = optionsbatchSize == null ? null : WorkflowExpression.Compile(optionsbatchSize);
-            WorkflowExpression.Validate(__workflow_optionsbatchSize, nameof(optionsbatchSize), required: false);
+            var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
+            var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
+            var __workflow_optionscorrelationId = WorkflowExpression.Compile(optionscorrelationId, nameof(optionscorrelationId), required: false);
+            var __workflow_optionsgroupId = WorkflowExpression.Compile(optionsgroupId, nameof(optionsgroupId), required: false);
+            var __workflow_optionsmessageToken = WorkflowExpression.Compile(optionsmessageToken, nameof(optionsmessageToken), required: false);
+            var __workflow_optionsoffset = WorkflowExpression.Compile(optionsoffset, nameof(optionsoffset), required: false);
+            var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
+            var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
+            var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
+            var __workflow_optionsbatchSize = WorkflowExpression.Compile(optionsbatchSize, nameof(optionsbatchSize), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/receiveall";
@@ -433,24 +395,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<Item> Delete(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
         {
-            var __workflow_optionsqueue = optionsqueue == null ? null : WorkflowExpression.Compile(optionsqueue);
-            WorkflowExpression.Validate(__workflow_optionsqueue, nameof(optionsqueue), required: false);
-            var __workflow_optionsmessageId = optionsmessageId == null ? null : WorkflowExpression.Compile(optionsmessageId);
-            WorkflowExpression.Validate(__workflow_optionsmessageId, nameof(optionsmessageId), required: false);
-            var __workflow_optionscorrelationId = optionscorrelationId == null ? null : WorkflowExpression.Compile(optionscorrelationId);
-            WorkflowExpression.Validate(__workflow_optionscorrelationId, nameof(optionscorrelationId), required: false);
-            var __workflow_optionsgroupId = optionsgroupId == null ? null : WorkflowExpression.Compile(optionsgroupId);
-            WorkflowExpression.Validate(__workflow_optionsgroupId, nameof(optionsgroupId), required: false);
-            var __workflow_optionsmessageToken = optionsmessageToken == null ? null : WorkflowExpression.Compile(optionsmessageToken);
-            WorkflowExpression.Validate(__workflow_optionsmessageToken, nameof(optionsmessageToken), required: false);
-            var __workflow_optionsoffset = optionsoffset == null ? null : WorkflowExpression.Compile(optionsoffset);
-            WorkflowExpression.Validate(__workflow_optionsoffset, nameof(optionsoffset), required: false);
-            var __workflow_optionslogicalSequenceNumber = optionslogicalSequenceNumber == null ? null : WorkflowExpression.Compile(optionslogicalSequenceNumber);
-            WorkflowExpression.Validate(__workflow_optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            var __workflow_optionsincludeInfo = optionsincludeInfo == null ? null : WorkflowExpression.Compile(optionsincludeInfo);
-            WorkflowExpression.Validate(__workflow_optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            var __workflow_optionstimeout = optionstimeout == null ? null : WorkflowExpression.Compile(optionstimeout);
-            WorkflowExpression.Validate(__workflow_optionstimeout, nameof(optionstimeout), required: false);
+            var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
+            var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
+            var __workflow_optionscorrelationId = WorkflowExpression.Compile(optionscorrelationId, nameof(optionscorrelationId), required: false);
+            var __workflow_optionsgroupId = WorkflowExpression.Compile(optionsgroupId, nameof(optionsgroupId), required: false);
+            var __workflow_optionsmessageToken = WorkflowExpression.Compile(optionsmessageToken, nameof(optionsmessageToken), required: false);
+            var __workflow_optionsoffset = WorkflowExpression.Compile(optionsoffset, nameof(optionsoffset), required: false);
+            var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
+            var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
+            var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
             return new DeferredBodyAction<Item>(() =>
             {
                 var apiCallPath = "/delete";
@@ -534,26 +487,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<ItemsList> DeleteAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
         {
-            var __workflow_optionsqueue = optionsqueue == null ? null : WorkflowExpression.Compile(optionsqueue);
-            WorkflowExpression.Validate(__workflow_optionsqueue, nameof(optionsqueue), required: false);
-            var __workflow_optionsmessageId = optionsmessageId == null ? null : WorkflowExpression.Compile(optionsmessageId);
-            WorkflowExpression.Validate(__workflow_optionsmessageId, nameof(optionsmessageId), required: false);
-            var __workflow_optionscorrelationId = optionscorrelationId == null ? null : WorkflowExpression.Compile(optionscorrelationId);
-            WorkflowExpression.Validate(__workflow_optionscorrelationId, nameof(optionscorrelationId), required: false);
-            var __workflow_optionsgroupId = optionsgroupId == null ? null : WorkflowExpression.Compile(optionsgroupId);
-            WorkflowExpression.Validate(__workflow_optionsgroupId, nameof(optionsgroupId), required: false);
-            var __workflow_optionsmessageToken = optionsmessageToken == null ? null : WorkflowExpression.Compile(optionsmessageToken);
-            WorkflowExpression.Validate(__workflow_optionsmessageToken, nameof(optionsmessageToken), required: false);
-            var __workflow_optionsoffset = optionsoffset == null ? null : WorkflowExpression.Compile(optionsoffset);
-            WorkflowExpression.Validate(__workflow_optionsoffset, nameof(optionsoffset), required: false);
-            var __workflow_optionslogicalSequenceNumber = optionslogicalSequenceNumber == null ? null : WorkflowExpression.Compile(optionslogicalSequenceNumber);
-            WorkflowExpression.Validate(__workflow_optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
-            var __workflow_optionsincludeInfo = optionsincludeInfo == null ? null : WorkflowExpression.Compile(optionsincludeInfo);
-            WorkflowExpression.Validate(__workflow_optionsincludeInfo, nameof(optionsincludeInfo), required: false);
-            var __workflow_optionstimeout = optionstimeout == null ? null : WorkflowExpression.Compile(optionstimeout);
-            WorkflowExpression.Validate(__workflow_optionstimeout, nameof(optionstimeout), required: false);
-            var __workflow_optionsbatchSize = optionsbatchSize == null ? null : WorkflowExpression.Compile(optionsbatchSize);
-            WorkflowExpression.Validate(__workflow_optionsbatchSize, nameof(optionsbatchSize), required: false);
+            var __workflow_optionsqueue = WorkflowExpression.Compile(optionsqueue, nameof(optionsqueue), required: false);
+            var __workflow_optionsmessageId = WorkflowExpression.Compile(optionsmessageId, nameof(optionsmessageId), required: false);
+            var __workflow_optionscorrelationId = WorkflowExpression.Compile(optionscorrelationId, nameof(optionscorrelationId), required: false);
+            var __workflow_optionsgroupId = WorkflowExpression.Compile(optionsgroupId, nameof(optionsgroupId), required: false);
+            var __workflow_optionsmessageToken = WorkflowExpression.Compile(optionsmessageToken, nameof(optionsmessageToken), required: false);
+            var __workflow_optionsoffset = WorkflowExpression.Compile(optionsoffset, nameof(optionsoffset), required: false);
+            var __workflow_optionslogicalSequenceNumber = WorkflowExpression.Compile(optionslogicalSequenceNumber, nameof(optionslogicalSequenceNumber), required: false);
+            var __workflow_optionsincludeInfo = WorkflowExpression.Compile(optionsincludeInfo, nameof(optionsincludeInfo), required: false);
+            var __workflow_optionstimeout = WorkflowExpression.Compile(optionstimeout, nameof(optionstimeout), required: false);
+            var __workflow_optionsbatchSize = WorkflowExpression.Compile(optionsbatchSize, nameof(optionsbatchSize), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/deleteall";
@@ -643,26 +586,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
         public IBodyWorkflowAction<SendResponse> Send(Expression<Func<string>> messagemessage, Expression<Func<string>> messagequeue = null, Expression<Func<messagemessageTypeInput>> messagemessageType = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messagereplyToQueue = null, Expression<Func<string>> messagereplyToQueueManager = null, Expression<Func<double>> messagecodeCharSetId = null, Expression<Func<double>> messageoffset = null, Expression<Func<string>> messageformat = null)
         {
-            var __workflow_messagemessage = messagemessage == null ? null : WorkflowExpression.Compile(messagemessage);
-            WorkflowExpression.Validate(__workflow_messagemessage, nameof(messagemessage), required: true);
-            var __workflow_messagequeue = messagequeue == null ? null : WorkflowExpression.Compile(messagequeue);
-            WorkflowExpression.Validate(__workflow_messagequeue, nameof(messagequeue), required: false);
-            var __workflow_messagemessageType = messagemessageType == null ? null : WorkflowExpression.Compile(messagemessageType);
-            WorkflowExpression.Validate(__workflow_messagemessageType, nameof(messagemessageType), required: false);
-            var __workflow_messagecorrelationId = messagecorrelationId == null ? null : WorkflowExpression.Compile(messagecorrelationId);
-            WorkflowExpression.Validate(__workflow_messagecorrelationId, nameof(messagecorrelationId), required: false);
-            var __workflow_messagemessageId = messagemessageId == null ? null : WorkflowExpression.Compile(messagemessageId);
-            WorkflowExpression.Validate(__workflow_messagemessageId, nameof(messagemessageId), required: false);
-            var __workflow_messagereplyToQueue = messagereplyToQueue == null ? null : WorkflowExpression.Compile(messagereplyToQueue);
-            WorkflowExpression.Validate(__workflow_messagereplyToQueue, nameof(messagereplyToQueue), required: false);
-            var __workflow_messagereplyToQueueManager = messagereplyToQueueManager == null ? null : WorkflowExpression.Compile(messagereplyToQueueManager);
-            WorkflowExpression.Validate(__workflow_messagereplyToQueueManager, nameof(messagereplyToQueueManager), required: false);
-            var __workflow_messagecodeCharSetId = messagecodeCharSetId == null ? null : WorkflowExpression.Compile(messagecodeCharSetId);
-            WorkflowExpression.Validate(__workflow_messagecodeCharSetId, nameof(messagecodeCharSetId), required: false);
-            var __workflow_messageoffset = messageoffset == null ? null : WorkflowExpression.Compile(messageoffset);
-            WorkflowExpression.Validate(__workflow_messageoffset, nameof(messageoffset), required: false);
-            var __workflow_messageformat = messageformat == null ? null : WorkflowExpression.Compile(messageformat);
-            WorkflowExpression.Validate(__workflow_messageformat, nameof(messageformat), required: false);
+            var __workflow_messagemessage = WorkflowExpression.Compile(messagemessage, nameof(messagemessage), required: true);
+            var __workflow_messagequeue = WorkflowExpression.Compile(messagequeue, nameof(messagequeue), required: false);
+            var __workflow_messagemessageType = WorkflowExpression.Compile(messagemessageType, nameof(messagemessageType), required: false);
+            var __workflow_messagecorrelationId = WorkflowExpression.Compile(messagecorrelationId, nameof(messagecorrelationId), required: false);
+            var __workflow_messagemessageId = WorkflowExpression.Compile(messagemessageId, nameof(messagemessageId), required: false);
+            var __workflow_messagereplyToQueue = WorkflowExpression.Compile(messagereplyToQueue, nameof(messagereplyToQueue), required: false);
+            var __workflow_messagereplyToQueueManager = WorkflowExpression.Compile(messagereplyToQueueManager, nameof(messagereplyToQueueManager), required: false);
+            var __workflow_messagecodeCharSetId = WorkflowExpression.Compile(messagecodeCharSetId, nameof(messagecodeCharSetId), required: false);
+            var __workflow_messageoffset = WorkflowExpression.Compile(messageoffset, nameof(messageoffset), required: false);
+            var __workflow_messageformat = WorkflowExpression.Compile(messageformat, nameof(messageformat), required: false);
             return new DeferredBodyAction<SendResponse>(() =>
             {
                 var apiCallPath = "/send";

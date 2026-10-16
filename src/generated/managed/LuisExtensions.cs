@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
         public IBodyWorkflowAction<PredictResponse> GetPredictions(Expression<Func<string>> appId, Expression<Func<string>> q, Expression<Func<string>> desiredIntent = null, Expression<Func<string>> versionId = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_desiredIntent = desiredIntent == null ? null : WorkflowExpression.Compile(desiredIntent);
-            WorkflowExpression.Validate(__workflow_desiredIntent, nameof(desiredIntent), required: false);
-            var __workflow_versionId = versionId == null ? null : WorkflowExpression.Compile(versionId);
-            WorkflowExpression.Validate(__workflow_versionId, nameof(versionId), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_desiredIntent = WorkflowExpression.Compile(desiredIntent, nameof(desiredIntent), required: false);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
             return new DeferredBodyAction<PredictResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
@@ -40,14 +36,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
         public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> GetTopScoringMatchingEntity(Expression<Func<string>> appId, Expression<Func<string>> desiredEntity, Expression<Func<string>> versionId = null, Expression<Func<string>> luisPredictionObject = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_desiredEntity = desiredEntity == null ? null : WorkflowExpression.Compile(desiredEntity);
-            WorkflowExpression.Validate(__workflow_desiredEntity, nameof(desiredEntity), required: true);
-            var __workflow_versionId = versionId == null ? null : WorkflowExpression.Compile(versionId);
-            WorkflowExpression.Validate(__workflow_versionId, nameof(versionId), required: false);
-            var __workflow_luisPredictionObject = luisPredictionObject == null ? null : WorkflowExpression.Compile(luisPredictionObject);
-            WorkflowExpression.Validate(__workflow_luisPredictionObject, nameof(luisPredictionObject), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_desiredEntity = WorkflowExpression.Compile(desiredEntity, nameof(desiredEntity), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: false);
+            var __workflow_luisPredictionObject = WorkflowExpression.Compile(luisPredictionObject, nameof(luisPredictionObject), required: false);
             return new DeferredBodyAction<GetTopScoringMatchingEntityResponse>(() =>
             {
                 var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";

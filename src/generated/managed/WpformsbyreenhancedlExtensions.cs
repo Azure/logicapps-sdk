@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
         public IBodyWorkflowAction<GetEntriesResponseItem[]> GetEntries(Expression<Func<string>> formId, Expression<Func<object>> body = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetEntriesResponseItem[]>(() =>
             {
                 var apiCallPath = "/resources/entries/query";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
         public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> id, Expression<Func<string>> formId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/entries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -50,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
     {
         public IWorkflowTrigger CreateFlow(Expression<Func<string>> bodyformID, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyformID = bodyformID == null ? null : WorkflowExpression.Compile(bodyformID);
-            WorkflowExpression.Validate(__workflow_bodyformID, nameof(bodyformID), required: true);
+            var __workflow_bodyformID = WorkflowExpression.Compile(bodyformID, nameof(bodyformID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/resources/flows";

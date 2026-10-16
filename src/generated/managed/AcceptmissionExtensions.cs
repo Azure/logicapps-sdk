@@ -22,34 +22,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostcategoriesResponse> Postcategories(Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodychipColor = null, Expression<Func<string>> bodymissionsId = null, Expression<Func<int>> bodycompanyId = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodyuserId = null, Expression<Func<string>> bodytempImage = null, Expression<Func<string>> bodymainImage = null, Expression<Func<string>> bodyimageConfigs = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyupdatedBy = null, Expression<Func<string>> bodyrecordUrl = null, Expression<Func<string>> bodysyncId = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodychipColor = bodychipColor == null ? null : WorkflowExpression.Compile(bodychipColor);
-            WorkflowExpression.Validate(__workflow_bodychipColor, nameof(bodychipColor), required: false);
-            var __workflow_bodymissionsId = bodymissionsId == null ? null : WorkflowExpression.Compile(bodymissionsId);
-            WorkflowExpression.Validate(__workflow_bodymissionsId, nameof(bodymissionsId), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodytempImage = bodytempImage == null ? null : WorkflowExpression.Compile(bodytempImage);
-            WorkflowExpression.Validate(__workflow_bodytempImage, nameof(bodytempImage), required: false);
-            var __workflow_bodymainImage = bodymainImage == null ? null : WorkflowExpression.Compile(bodymainImage);
-            WorkflowExpression.Validate(__workflow_bodymainImage, nameof(bodymainImage), required: false);
-            var __workflow_bodyimageConfigs = bodyimageConfigs == null ? null : WorkflowExpression.Compile(bodyimageConfigs);
-            WorkflowExpression.Validate(__workflow_bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
-            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
-            var __workflow_bodyupdatedBy = bodyupdatedBy == null ? null : WorkflowExpression.Compile(bodyupdatedBy);
-            WorkflowExpression.Validate(__workflow_bodyupdatedBy, nameof(bodyupdatedBy), required: false);
-            var __workflow_bodyrecordUrl = bodyrecordUrl == null ? null : WorkflowExpression.Compile(bodyrecordUrl);
-            WorkflowExpression.Validate(__workflow_bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodychipColor = WorkflowExpression.Compile(bodychipColor, nameof(bodychipColor), required: false);
+            var __workflow_bodymissionsId = WorkflowExpression.Compile(bodymissionsId, nameof(bodymissionsId), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodytempImage = WorkflowExpression.Compile(bodytempImage, nameof(bodytempImage), required: false);
+            var __workflow_bodymainImage = WorkflowExpression.Compile(bodymainImage, nameof(bodymainImage), required: false);
+            var __workflow_bodyimageConfigs = WorkflowExpression.Compile(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyupdatedBy = WorkflowExpression.Compile(bodyupdatedBy, nameof(bodyupdatedBy), required: false);
+            var __workflow_bodyrecordUrl = WorkflowExpression.Compile(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
             return new DeferredBodyAction<PostcategoriesResponse>(() =>
             {
                 var apiCallPath = "/general/v1/categories";
@@ -153,8 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetcategoriesIdResponse> GetcategoriesId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetcategoriesIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -167,8 +152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletecategoriesId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -181,36 +165,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutcategoriesIdResponse> PutcategoriesId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodychipColor = null, Expression<Func<string>> bodymissionsId = null, Expression<Func<int>> bodycompanyId = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodyuserId = null, Expression<Func<string>> bodytempImage = null, Expression<Func<string>> bodymainImage = null, Expression<Func<string>> bodyimageConfigs = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyupdatedBy = null, Expression<Func<string>> bodyrecordUrl = null, Expression<Func<string>> bodysyncId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodychipColor = bodychipColor == null ? null : WorkflowExpression.Compile(bodychipColor);
-            WorkflowExpression.Validate(__workflow_bodychipColor, nameof(bodychipColor), required: false);
-            var __workflow_bodymissionsId = bodymissionsId == null ? null : WorkflowExpression.Compile(bodymissionsId);
-            WorkflowExpression.Validate(__workflow_bodymissionsId, nameof(bodymissionsId), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodytempImage = bodytempImage == null ? null : WorkflowExpression.Compile(bodytempImage);
-            WorkflowExpression.Validate(__workflow_bodytempImage, nameof(bodytempImage), required: false);
-            var __workflow_bodymainImage = bodymainImage == null ? null : WorkflowExpression.Compile(bodymainImage);
-            WorkflowExpression.Validate(__workflow_bodymainImage, nameof(bodymainImage), required: false);
-            var __workflow_bodyimageConfigs = bodyimageConfigs == null ? null : WorkflowExpression.Compile(bodyimageConfigs);
-            WorkflowExpression.Validate(__workflow_bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
-            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
-            var __workflow_bodyupdatedBy = bodyupdatedBy == null ? null : WorkflowExpression.Compile(bodyupdatedBy);
-            WorkflowExpression.Validate(__workflow_bodyupdatedBy, nameof(bodyupdatedBy), required: false);
-            var __workflow_bodyrecordUrl = bodyrecordUrl == null ? null : WorkflowExpression.Compile(bodyrecordUrl);
-            WorkflowExpression.Validate(__workflow_bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodychipColor = WorkflowExpression.Compile(bodychipColor, nameof(bodychipColor), required: false);
+            var __workflow_bodymissionsId = WorkflowExpression.Compile(bodymissionsId, nameof(bodymissionsId), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodytempImage = WorkflowExpression.Compile(bodytempImage, nameof(bodytempImage), required: false);
+            var __workflow_bodymainImage = WorkflowExpression.Compile(bodymainImage, nameof(bodymainImage), required: false);
+            var __workflow_bodyimageConfigs = WorkflowExpression.Compile(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyupdatedBy = WorkflowExpression.Compile(bodyupdatedBy, nameof(bodyupdatedBy), required: false);
+            var __workflow_bodyrecordUrl = WorkflowExpression.Compile(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
             return new DeferredBodyAction<PutcategoriesIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -314,10 +283,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchcategoriesIdResponse> PatchcategoriesId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<PatchcategoriesIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -352,10 +319,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostdepartmentsResponse> Postdepartments(Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyposition = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
             return new DeferredBodyAction<PostdepartmentsResponse>(() =>
             {
                 var apiCallPath = "/general/v1/departments";
@@ -387,8 +352,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetdepartmentsIdResponse> GetdepartmentsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetdepartmentsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -401,8 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletedepartmentsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -415,36 +378,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutdepartmentsIdResponse> PutdepartmentsId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyposition = null, Expression<Func<int>> bodycompanyId = null, Expression<Func<int>> bodyideasCount = null, Expression<Func<int>> bodyprojectsCount = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodyuserId = null, Expression<Func<string>> bodytempImage = null, Expression<Func<string>> bodymainImage = null, Expression<Func<string>> bodyimageConfigs = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyupdatedBy = null, Expression<Func<string>> bodyrecordUrl = null, Expression<Func<string>> bodysyncId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyideasCount = bodyideasCount == null ? null : WorkflowExpression.Compile(bodyideasCount);
-            WorkflowExpression.Validate(__workflow_bodyideasCount, nameof(bodyideasCount), required: false);
-            var __workflow_bodyprojectsCount = bodyprojectsCount == null ? null : WorkflowExpression.Compile(bodyprojectsCount);
-            WorkflowExpression.Validate(__workflow_bodyprojectsCount, nameof(bodyprojectsCount), required: false);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodytempImage = bodytempImage == null ? null : WorkflowExpression.Compile(bodytempImage);
-            WorkflowExpression.Validate(__workflow_bodytempImage, nameof(bodytempImage), required: false);
-            var __workflow_bodymainImage = bodymainImage == null ? null : WorkflowExpression.Compile(bodymainImage);
-            WorkflowExpression.Validate(__workflow_bodymainImage, nameof(bodymainImage), required: false);
-            var __workflow_bodyimageConfigs = bodyimageConfigs == null ? null : WorkflowExpression.Compile(bodyimageConfigs);
-            WorkflowExpression.Validate(__workflow_bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
-            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
-            var __workflow_bodyupdatedBy = bodyupdatedBy == null ? null : WorkflowExpression.Compile(bodyupdatedBy);
-            WorkflowExpression.Validate(__workflow_bodyupdatedBy, nameof(bodyupdatedBy), required: false);
-            var __workflow_bodyrecordUrl = bodyrecordUrl == null ? null : WorkflowExpression.Compile(bodyrecordUrl);
-            WorkflowExpression.Validate(__workflow_bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyideasCount = WorkflowExpression.Compile(bodyideasCount, nameof(bodyideasCount), required: false);
+            var __workflow_bodyprojectsCount = WorkflowExpression.Compile(bodyprojectsCount, nameof(bodyprojectsCount), required: false);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodytempImage = WorkflowExpression.Compile(bodytempImage, nameof(bodytempImage), required: false);
+            var __workflow_bodymainImage = WorkflowExpression.Compile(bodymainImage, nameof(bodymainImage), required: false);
+            var __workflow_bodyimageConfigs = WorkflowExpression.Compile(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyupdatedBy = WorkflowExpression.Compile(bodyupdatedBy, nameof(bodyupdatedBy), required: false);
+            var __workflow_bodyrecordUrl = WorkflowExpression.Compile(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
             return new DeferredBodyAction<PutdepartmentsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -548,12 +496,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchdepartmentsIdResponse> PatchdepartmentsId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyposition = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
             return new DeferredBodyAction<PatchdepartmentsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/departments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -594,8 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostfunnelLanesResponse> PostfunnelLanes(Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<PostfunnelLanesResponse>(() =>
             {
                 var apiCallPath = "/general/v1/funnel_lanes";
@@ -621,8 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetfunnelLanesIdResponse> GetfunnelLanesId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetfunnelLanesIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -635,8 +578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletefunnelLanesId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -649,50 +591,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutfunnelLanesIdResponse> PutfunnelLanesId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyfunnelStageType = null, Expression<Func<int>> bodystageType = null, Expression<Func<string>> bodycolor = null, Expression<Func<int>> bodydeadline = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodymodifiedBy = null, Expression<Func<int>> bodyfunnelId = null, Expression<Func<int>> bodyfunnelStatusId = null, Expression<Func<int>> bodyownerId = null, Expression<Func<bool>> bodyenableNotification = null, Expression<Func<int>> bodyideasCount = null, Expression<Func<int>> bodyprojectsCount = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodyfile = null, Expression<Func<bool>> bodyshowInGraph = null, Expression<Func<bool>> bodyshowInBubble = null, Expression<Func<int>> bodyconfettiType = null, Expression<Func<string>> bodyautomationOwnerId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyfunnelStageType = bodyfunnelStageType == null ? null : WorkflowExpression.Compile(bodyfunnelStageType);
-            WorkflowExpression.Validate(__workflow_bodyfunnelStageType, nameof(bodyfunnelStageType), required: false);
-            var __workflow_bodystageType = bodystageType == null ? null : WorkflowExpression.Compile(bodystageType);
-            WorkflowExpression.Validate(__workflow_bodystageType, nameof(bodystageType), required: false);
-            var __workflow_bodycolor = bodycolor == null ? null : WorkflowExpression.Compile(bodycolor);
-            WorkflowExpression.Validate(__workflow_bodycolor, nameof(bodycolor), required: false);
-            var __workflow_bodydeadline = bodydeadline == null ? null : WorkflowExpression.Compile(bodydeadline);
-            WorkflowExpression.Validate(__workflow_bodydeadline, nameof(bodydeadline), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodymodifiedBy = bodymodifiedBy == null ? null : WorkflowExpression.Compile(bodymodifiedBy);
-            WorkflowExpression.Validate(__workflow_bodymodifiedBy, nameof(bodymodifiedBy), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
-            var __workflow_bodyfunnelStatusId = bodyfunnelStatusId == null ? null : WorkflowExpression.Compile(bodyfunnelStatusId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
-            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
-            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
-            var __workflow_bodyenableNotification = bodyenableNotification == null ? null : WorkflowExpression.Compile(bodyenableNotification);
-            WorkflowExpression.Validate(__workflow_bodyenableNotification, nameof(bodyenableNotification), required: false);
-            var __workflow_bodyideasCount = bodyideasCount == null ? null : WorkflowExpression.Compile(bodyideasCount);
-            WorkflowExpression.Validate(__workflow_bodyideasCount, nameof(bodyideasCount), required: false);
-            var __workflow_bodyprojectsCount = bodyprojectsCount == null ? null : WorkflowExpression.Compile(bodyprojectsCount);
-            WorkflowExpression.Validate(__workflow_bodyprojectsCount, nameof(bodyprojectsCount), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodylink = bodylink == null ? null : WorkflowExpression.Compile(bodylink);
-            WorkflowExpression.Validate(__workflow_bodylink, nameof(bodylink), required: false);
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
-            var __workflow_bodyshowInGraph = bodyshowInGraph == null ? null : WorkflowExpression.Compile(bodyshowInGraph);
-            WorkflowExpression.Validate(__workflow_bodyshowInGraph, nameof(bodyshowInGraph), required: false);
-            var __workflow_bodyshowInBubble = bodyshowInBubble == null ? null : WorkflowExpression.Compile(bodyshowInBubble);
-            WorkflowExpression.Validate(__workflow_bodyshowInBubble, nameof(bodyshowInBubble), required: false);
-            var __workflow_bodyconfettiType = bodyconfettiType == null ? null : WorkflowExpression.Compile(bodyconfettiType);
-            WorkflowExpression.Validate(__workflow_bodyconfettiType, nameof(bodyconfettiType), required: false);
-            var __workflow_bodyautomationOwnerId = bodyautomationOwnerId == null ? null : WorkflowExpression.Compile(bodyautomationOwnerId);
-            WorkflowExpression.Validate(__workflow_bodyautomationOwnerId, nameof(bodyautomationOwnerId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyfunnelStageType = WorkflowExpression.Compile(bodyfunnelStageType, nameof(bodyfunnelStageType), required: false);
+            var __workflow_bodystageType = WorkflowExpression.Compile(bodystageType, nameof(bodystageType), required: false);
+            var __workflow_bodycolor = WorkflowExpression.Compile(bodycolor, nameof(bodycolor), required: false);
+            var __workflow_bodydeadline = WorkflowExpression.Compile(bodydeadline, nameof(bodydeadline), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodymodifiedBy = WorkflowExpression.Compile(bodymodifiedBy, nameof(bodymodifiedBy), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_bodyfunnelStatusId = WorkflowExpression.Compile(bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyenableNotification = WorkflowExpression.Compile(bodyenableNotification, nameof(bodyenableNotification), required: false);
+            var __workflow_bodyideasCount = WorkflowExpression.Compile(bodyideasCount, nameof(bodyideasCount), required: false);
+            var __workflow_bodyprojectsCount = WorkflowExpression.Compile(bodyprojectsCount, nameof(bodyprojectsCount), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodylink = WorkflowExpression.Compile(bodylink, nameof(bodylink), required: false);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyshowInGraph = WorkflowExpression.Compile(bodyshowInGraph, nameof(bodyshowInGraph), required: false);
+            var __workflow_bodyshowInBubble = WorkflowExpression.Compile(bodyshowInBubble, nameof(bodyshowInBubble), required: false);
+            var __workflow_bodyconfettiType = WorkflowExpression.Compile(bodyconfettiType, nameof(bodyconfettiType), required: false);
+            var __workflow_bodyautomationOwnerId = WorkflowExpression.Compile(bodyautomationOwnerId, nameof(bodyautomationOwnerId), required: false);
             return new DeferredBodyAction<PutfunnelLanesIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -838,10 +758,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchfunnelLanesIdResponse> PatchfunnelLanesId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<PatchfunnelLanesIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnel_lanes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -876,10 +794,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction Postfunnels(Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyfunnelType = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyfunnelType = bodyfunnelType == null ? null : WorkflowExpression.Compile(bodyfunnelType);
-            WorkflowExpression.Validate(__workflow_bodyfunnelType, nameof(bodyfunnelType), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyfunnelType = WorkflowExpression.Compile(bodyfunnelType, nameof(bodyfunnelType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/general/v1/funnels";
@@ -911,8 +827,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetfunnelsIdResponse> GetfunnelsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetfunnelsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -925,8 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletefunnelsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -939,52 +853,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction PutfunnelsId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodycompanyId = null, Expression<Func<int>> bodyuserId = null, Expression<Func<int>> bodyfunnelType = null, Expression<Func<int>> bodymodifiedBy = null, Expression<Func<int>> bodyprivacySetting = null, Expression<Func<int>> bodyownerId = null, Expression<Func<bool>> bodyblockFunnelNotification = null, Expression<Func<int>> bodyideasCount = null, Expression<Func<int>> bodyprojectsCount = null, Expression<Func<bool>> bodyhidden = null, Expression<Func<string>> bodysetXAxis = null, Expression<Func<string>> bodysetYAxis = null, Expression<Func<string>> bodysetZAxis = null, Expression<Func<string>> bodysetAxisColor = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<int>> bodyprojectFunnelId = null, Expression<Func<string>> bodyfromScript = null, Expression<Func<int>> bodyuserPrivacySetting = null, Expression<Func<bool>> bodyincludeInDashboard = null, Expression<Func<string>> bodyrecordUrl = null, Expression<Func<string>> bodysyncId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyfunnelType = bodyfunnelType == null ? null : WorkflowExpression.Compile(bodyfunnelType);
-            WorkflowExpression.Validate(__workflow_bodyfunnelType, nameof(bodyfunnelType), required: false);
-            var __workflow_bodymodifiedBy = bodymodifiedBy == null ? null : WorkflowExpression.Compile(bodymodifiedBy);
-            WorkflowExpression.Validate(__workflow_bodymodifiedBy, nameof(bodymodifiedBy), required: false);
-            var __workflow_bodyprivacySetting = bodyprivacySetting == null ? null : WorkflowExpression.Compile(bodyprivacySetting);
-            WorkflowExpression.Validate(__workflow_bodyprivacySetting, nameof(bodyprivacySetting), required: false);
-            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
-            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
-            var __workflow_bodyblockFunnelNotification = bodyblockFunnelNotification == null ? null : WorkflowExpression.Compile(bodyblockFunnelNotification);
-            WorkflowExpression.Validate(__workflow_bodyblockFunnelNotification, nameof(bodyblockFunnelNotification), required: false);
-            var __workflow_bodyideasCount = bodyideasCount == null ? null : WorkflowExpression.Compile(bodyideasCount);
-            WorkflowExpression.Validate(__workflow_bodyideasCount, nameof(bodyideasCount), required: false);
-            var __workflow_bodyprojectsCount = bodyprojectsCount == null ? null : WorkflowExpression.Compile(bodyprojectsCount);
-            WorkflowExpression.Validate(__workflow_bodyprojectsCount, nameof(bodyprojectsCount), required: false);
-            var __workflow_bodyhidden = bodyhidden == null ? null : WorkflowExpression.Compile(bodyhidden);
-            WorkflowExpression.Validate(__workflow_bodyhidden, nameof(bodyhidden), required: false);
-            var __workflow_bodysetXAxis = bodysetXAxis == null ? null : WorkflowExpression.Compile(bodysetXAxis);
-            WorkflowExpression.Validate(__workflow_bodysetXAxis, nameof(bodysetXAxis), required: false);
-            var __workflow_bodysetYAxis = bodysetYAxis == null ? null : WorkflowExpression.Compile(bodysetYAxis);
-            WorkflowExpression.Validate(__workflow_bodysetYAxis, nameof(bodysetYAxis), required: false);
-            var __workflow_bodysetZAxis = bodysetZAxis == null ? null : WorkflowExpression.Compile(bodysetZAxis);
-            WorkflowExpression.Validate(__workflow_bodysetZAxis, nameof(bodysetZAxis), required: false);
-            var __workflow_bodysetAxisColor = bodysetAxisColor == null ? null : WorkflowExpression.Compile(bodysetAxisColor);
-            WorkflowExpression.Validate(__workflow_bodysetAxisColor, nameof(bodysetAxisColor), required: false);
-            var __workflow_bodydepartmentId = bodydepartmentId == null ? null : WorkflowExpression.Compile(bodydepartmentId);
-            WorkflowExpression.Validate(__workflow_bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyprojectFunnelId = bodyprojectFunnelId == null ? null : WorkflowExpression.Compile(bodyprojectFunnelId);
-            WorkflowExpression.Validate(__workflow_bodyprojectFunnelId, nameof(bodyprojectFunnelId), required: false);
-            var __workflow_bodyfromScript = bodyfromScript == null ? null : WorkflowExpression.Compile(bodyfromScript);
-            WorkflowExpression.Validate(__workflow_bodyfromScript, nameof(bodyfromScript), required: false);
-            var __workflow_bodyuserPrivacySetting = bodyuserPrivacySetting == null ? null : WorkflowExpression.Compile(bodyuserPrivacySetting);
-            WorkflowExpression.Validate(__workflow_bodyuserPrivacySetting, nameof(bodyuserPrivacySetting), required: false);
-            var __workflow_bodyincludeInDashboard = bodyincludeInDashboard == null ? null : WorkflowExpression.Compile(bodyincludeInDashboard);
-            WorkflowExpression.Validate(__workflow_bodyincludeInDashboard, nameof(bodyincludeInDashboard), required: false);
-            var __workflow_bodyrecordUrl = bodyrecordUrl == null ? null : WorkflowExpression.Compile(bodyrecordUrl);
-            WorkflowExpression.Validate(__workflow_bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyfunnelType = WorkflowExpression.Compile(bodyfunnelType, nameof(bodyfunnelType), required: false);
+            var __workflow_bodymodifiedBy = WorkflowExpression.Compile(bodymodifiedBy, nameof(bodymodifiedBy), required: false);
+            var __workflow_bodyprivacySetting = WorkflowExpression.Compile(bodyprivacySetting, nameof(bodyprivacySetting), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyblockFunnelNotification = WorkflowExpression.Compile(bodyblockFunnelNotification, nameof(bodyblockFunnelNotification), required: false);
+            var __workflow_bodyideasCount = WorkflowExpression.Compile(bodyideasCount, nameof(bodyideasCount), required: false);
+            var __workflow_bodyprojectsCount = WorkflowExpression.Compile(bodyprojectsCount, nameof(bodyprojectsCount), required: false);
+            var __workflow_bodyhidden = WorkflowExpression.Compile(bodyhidden, nameof(bodyhidden), required: false);
+            var __workflow_bodysetXAxis = WorkflowExpression.Compile(bodysetXAxis, nameof(bodysetXAxis), required: false);
+            var __workflow_bodysetYAxis = WorkflowExpression.Compile(bodysetYAxis, nameof(bodysetYAxis), required: false);
+            var __workflow_bodysetZAxis = WorkflowExpression.Compile(bodysetZAxis, nameof(bodysetZAxis), required: false);
+            var __workflow_bodysetAxisColor = WorkflowExpression.Compile(bodysetAxisColor, nameof(bodysetAxisColor), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodyprojectFunnelId = WorkflowExpression.Compile(bodyprojectFunnelId, nameof(bodyprojectFunnelId), required: false);
+            var __workflow_bodyfromScript = WorkflowExpression.Compile(bodyfromScript, nameof(bodyfromScript), required: false);
+            var __workflow_bodyuserPrivacySetting = WorkflowExpression.Compile(bodyuserPrivacySetting, nameof(bodyuserPrivacySetting), required: false);
+            var __workflow_bodyincludeInDashboard = WorkflowExpression.Compile(bodyincludeInDashboard, nameof(bodyincludeInDashboard), required: false);
+            var __workflow_bodyrecordUrl = WorkflowExpression.Compile(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1136,12 +1027,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchfunnelsIdResponse> PatchfunnelsId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodyfunnelType = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyfunnelType = bodyfunnelType == null ? null : WorkflowExpression.Compile(bodyfunnelType);
-            WorkflowExpression.Validate(__workflow_bodyfunnelType, nameof(bodyfunnelType), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyfunnelType = WorkflowExpression.Compile(bodyfunnelType, nameof(bodyfunnelType), required: false);
             return new DeferredBodyAction<PatchfunnelsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/funnels/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1182,14 +1070,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction Postideas(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycontent = null, Expression<Func<int>> bodyfunnelId = null, Expression<Func<int>> bodymissionId = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
-            var __workflow_bodymissionId = bodymissionId == null ? null : WorkflowExpression.Compile(bodymissionId);
-            WorkflowExpression.Validate(__workflow_bodymissionId, nameof(bodymissionId), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_bodymissionId = WorkflowExpression.Compile(bodymissionId, nameof(bodymissionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/general/v1/ideas";
@@ -1233,8 +1117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetideasIdeaIdTasksResponse> GetideasIdeaIdTasks(Expression<Func<string>> ideaId)
         {
-            var __workflow_ideaId = ideaId == null ? null : WorkflowExpression.Compile(ideaId);
-            WorkflowExpression.Validate(__workflow_ideaId, nameof(ideaId), required: true);
+            var __workflow_ideaId = WorkflowExpression.Compile(ideaId, nameof(ideaId), required: true);
             return new DeferredBodyAction<GetideasIdeaIdTasksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ideaId, 1));
@@ -1247,12 +1130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostideasIdeaIdTasksResponse> PostideasIdeaIdTasks(Expression<Func<string>> ideaId, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodystatus = null)
         {
-            var __workflow_ideaId = ideaId == null ? null : WorkflowExpression.Compile(ideaId);
-            WorkflowExpression.Validate(__workflow_ideaId, nameof(ideaId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_ideaId = WorkflowExpression.Compile(ideaId, nameof(ideaId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<PostideasIdeaIdTasksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ideaId, 1));
@@ -1284,8 +1164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction GetideasId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1298,8 +1177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeleteideasId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1312,164 +1190,85 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction PutideasId(Expression<Func<string>> id, Expression<Func<int>> bodyuserId = null, Expression<Func<int>> bodyroundId = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodydevice = null, Expression<Func<string>> bodybrowser = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodypostalCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<string>> bodyscreenRes = null, Expression<Func<string>> bodyuserIp = null, Expression<Func<int>> bodycommentsCount = null, Expression<Func<int>> bodyreviewScoresCount = null, Expression<Func<string>> bodyslug = null, Expression<Func<int>> bodystage = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodystatusId = null, Expression<Func<string>> bodyposition = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodyideaCreator = null, Expression<Func<string>> bodyideationIdeaCategoryId = null, Expression<Func<string>> bodyboardIdeaCategoryId = null, Expression<Func<int>> bodycompanyId = null, Expression<Func<int>> bodyideaLikesCount = null, Expression<Func<bool>> bodybookmark = null, Expression<Func<int>> bodyideaScoresCount = null, Expression<Func<int>> bodylikesCount = null, Expression<Func<string>> bodyboardId = null, Expression<Func<string>> bodymissionId = null, Expression<Func<string>> bodycreatorName = null, Expression<Func<int>> bodytagsCount = null, Expression<Func<string>> bodyfunnelId = null, Expression<Func<string>> bodyfunnelStageId = null, Expression<Func<string>> bodyfunnelStatusId = null, Expression<Func<string>> bodyideaDeadline = null, Expression<Func<bool>> bodydeadlineNotification = null, Expression<Func<int>> bodyideaViews = null, Expression<Func<string>> bodyrevenue = null, Expression<Func<string>> bodycost = null, Expression<Func<string>> bodyprofit = null, Expression<Func<string>> bodystatusName = null, Expression<Func<string>> bodyideaScores = null, Expression<Func<string>> bodyapprovedAt = null, Expression<Func<string>> bodydeniedAt = null, Expression<Func<string>> bodyadminComments = null, Expression<Func<bool>> bodyisChild = null, Expression<Func<string>> bodyparentId = null, Expression<Func<string>> bodytempImage = null, Expression<Func<string>> bodymainImage = null, Expression<Func<string>> bodyimageConfigs = null, Expression<Func<int>> bodyscoreCompleteScore = null, Expression<Func<int>> bodyenrichmentScore = null, Expression<Func<int>> bodyengagementScore = null, Expression<Func<int>> bodyopportunityScore = null, Expression<Func<int>> bodytrendScore = null, Expression<Func<string>> bodycleanedText = null, Expression<Func<int>> bodyduplicateIdeasCount = null, Expression<Func<string>> bodysidekiqDuplicateIdeasCount = null, Expression<Func<string>> bodyaiCreated = null, Expression<Func<string>> bodyideaType = null, Expression<Func<string>> bodyfromScript = null, Expression<Func<string>> bodyembedding = null, Expression<Func<string>> bodyreasonText = null, Expression<Func<string>> bodycategoryText = null, Expression<Func<string>> bodycanvassId = null, Expression<Func<string>> bodybudgetTotal = null, Expression<Func<string>> bodybudgetSpend = null, Expression<Func<string>> bodybudgetResult = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytagText = null, Expression<Func<string>> bodyinnovationTypeId = null, Expression<Func<string>> bodyinnovationTypeText = null, Expression<Func<string>> bodysyncId = null, Expression<Func<string>> bodyrecordUrl = null, Expression<Func<string>> bodydescriptionEnriched = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyroundId = bodyroundId == null ? null : WorkflowExpression.Compile(bodyroundId);
-            WorkflowExpression.Validate(__workflow_bodyroundId, nameof(bodyroundId), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodydevice = bodydevice == null ? null : WorkflowExpression.Compile(bodydevice);
-            WorkflowExpression.Validate(__workflow_bodydevice, nameof(bodydevice), required: false);
-            var __workflow_bodybrowser = bodybrowser == null ? null : WorkflowExpression.Compile(bodybrowser);
-            WorkflowExpression.Validate(__workflow_bodybrowser, nameof(bodybrowser), required: false);
-            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
-            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: false);
-            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
-            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
-            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
-            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
-            var __workflow_bodypostalCode = bodypostalCode == null ? null : WorkflowExpression.Compile(bodypostalCode);
-            WorkflowExpression.Validate(__workflow_bodypostalCode, nameof(bodypostalCode), required: false);
-            var __workflow_bodycountry = bodycountry == null ? null : WorkflowExpression.Compile(bodycountry);
-            WorkflowExpression.Validate(__workflow_bodycountry, nameof(bodycountry), required: false);
-            var __workflow_bodyscreenRes = bodyscreenRes == null ? null : WorkflowExpression.Compile(bodyscreenRes);
-            WorkflowExpression.Validate(__workflow_bodyscreenRes, nameof(bodyscreenRes), required: false);
-            var __workflow_bodyuserIp = bodyuserIp == null ? null : WorkflowExpression.Compile(bodyuserIp);
-            WorkflowExpression.Validate(__workflow_bodyuserIp, nameof(bodyuserIp), required: false);
-            var __workflow_bodycommentsCount = bodycommentsCount == null ? null : WorkflowExpression.Compile(bodycommentsCount);
-            WorkflowExpression.Validate(__workflow_bodycommentsCount, nameof(bodycommentsCount), required: false);
-            var __workflow_bodyreviewScoresCount = bodyreviewScoresCount == null ? null : WorkflowExpression.Compile(bodyreviewScoresCount);
-            WorkflowExpression.Validate(__workflow_bodyreviewScoresCount, nameof(bodyreviewScoresCount), required: false);
-            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
-            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodystage = bodystage == null ? null : WorkflowExpression.Compile(bodystage);
-            WorkflowExpression.Validate(__workflow_bodystage, nameof(bodystage), required: false);
-            var __workflow_bodydepartmentId = bodydepartmentId == null ? null : WorkflowExpression.Compile(bodydepartmentId);
-            WorkflowExpression.Validate(__workflow_bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodystatusId = bodystatusId == null ? null : WorkflowExpression.Compile(bodystatusId);
-            WorkflowExpression.Validate(__workflow_bodystatusId, nameof(bodystatusId), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodyideaCreator = bodyideaCreator == null ? null : WorkflowExpression.Compile(bodyideaCreator);
-            WorkflowExpression.Validate(__workflow_bodyideaCreator, nameof(bodyideaCreator), required: false);
-            var __workflow_bodyideationIdeaCategoryId = bodyideationIdeaCategoryId == null ? null : WorkflowExpression.Compile(bodyideationIdeaCategoryId);
-            WorkflowExpression.Validate(__workflow_bodyideationIdeaCategoryId, nameof(bodyideationIdeaCategoryId), required: false);
-            var __workflow_bodyboardIdeaCategoryId = bodyboardIdeaCategoryId == null ? null : WorkflowExpression.Compile(bodyboardIdeaCategoryId);
-            WorkflowExpression.Validate(__workflow_bodyboardIdeaCategoryId, nameof(bodyboardIdeaCategoryId), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyideaLikesCount = bodyideaLikesCount == null ? null : WorkflowExpression.Compile(bodyideaLikesCount);
-            WorkflowExpression.Validate(__workflow_bodyideaLikesCount, nameof(bodyideaLikesCount), required: false);
-            var __workflow_bodybookmark = bodybookmark == null ? null : WorkflowExpression.Compile(bodybookmark);
-            WorkflowExpression.Validate(__workflow_bodybookmark, nameof(bodybookmark), required: false);
-            var __workflow_bodyideaScoresCount = bodyideaScoresCount == null ? null : WorkflowExpression.Compile(bodyideaScoresCount);
-            WorkflowExpression.Validate(__workflow_bodyideaScoresCount, nameof(bodyideaScoresCount), required: false);
-            var __workflow_bodylikesCount = bodylikesCount == null ? null : WorkflowExpression.Compile(bodylikesCount);
-            WorkflowExpression.Validate(__workflow_bodylikesCount, nameof(bodylikesCount), required: false);
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: false);
-            var __workflow_bodymissionId = bodymissionId == null ? null : WorkflowExpression.Compile(bodymissionId);
-            WorkflowExpression.Validate(__workflow_bodymissionId, nameof(bodymissionId), required: false);
-            var __workflow_bodycreatorName = bodycreatorName == null ? null : WorkflowExpression.Compile(bodycreatorName);
-            WorkflowExpression.Validate(__workflow_bodycreatorName, nameof(bodycreatorName), required: false);
-            var __workflow_bodytagsCount = bodytagsCount == null ? null : WorkflowExpression.Compile(bodytagsCount);
-            WorkflowExpression.Validate(__workflow_bodytagsCount, nameof(bodytagsCount), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
-            var __workflow_bodyfunnelStageId = bodyfunnelStageId == null ? null : WorkflowExpression.Compile(bodyfunnelStageId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelStageId, nameof(bodyfunnelStageId), required: false);
-            var __workflow_bodyfunnelStatusId = bodyfunnelStatusId == null ? null : WorkflowExpression.Compile(bodyfunnelStatusId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
-            var __workflow_bodyideaDeadline = bodyideaDeadline == null ? null : WorkflowExpression.Compile(bodyideaDeadline);
-            WorkflowExpression.Validate(__workflow_bodyideaDeadline, nameof(bodyideaDeadline), required: false);
-            var __workflow_bodydeadlineNotification = bodydeadlineNotification == null ? null : WorkflowExpression.Compile(bodydeadlineNotification);
-            WorkflowExpression.Validate(__workflow_bodydeadlineNotification, nameof(bodydeadlineNotification), required: false);
-            var __workflow_bodyideaViews = bodyideaViews == null ? null : WorkflowExpression.Compile(bodyideaViews);
-            WorkflowExpression.Validate(__workflow_bodyideaViews, nameof(bodyideaViews), required: false);
-            var __workflow_bodyrevenue = bodyrevenue == null ? null : WorkflowExpression.Compile(bodyrevenue);
-            WorkflowExpression.Validate(__workflow_bodyrevenue, nameof(bodyrevenue), required: false);
-            var __workflow_bodycost = bodycost == null ? null : WorkflowExpression.Compile(bodycost);
-            WorkflowExpression.Validate(__workflow_bodycost, nameof(bodycost), required: false);
-            var __workflow_bodyprofit = bodyprofit == null ? null : WorkflowExpression.Compile(bodyprofit);
-            WorkflowExpression.Validate(__workflow_bodyprofit, nameof(bodyprofit), required: false);
-            var __workflow_bodystatusName = bodystatusName == null ? null : WorkflowExpression.Compile(bodystatusName);
-            WorkflowExpression.Validate(__workflow_bodystatusName, nameof(bodystatusName), required: false);
-            var __workflow_bodyideaScores = bodyideaScores == null ? null : WorkflowExpression.Compile(bodyideaScores);
-            WorkflowExpression.Validate(__workflow_bodyideaScores, nameof(bodyideaScores), required: false);
-            var __workflow_bodyapprovedAt = bodyapprovedAt == null ? null : WorkflowExpression.Compile(bodyapprovedAt);
-            WorkflowExpression.Validate(__workflow_bodyapprovedAt, nameof(bodyapprovedAt), required: false);
-            var __workflow_bodydeniedAt = bodydeniedAt == null ? null : WorkflowExpression.Compile(bodydeniedAt);
-            WorkflowExpression.Validate(__workflow_bodydeniedAt, nameof(bodydeniedAt), required: false);
-            var __workflow_bodyadminComments = bodyadminComments == null ? null : WorkflowExpression.Compile(bodyadminComments);
-            WorkflowExpression.Validate(__workflow_bodyadminComments, nameof(bodyadminComments), required: false);
-            var __workflow_bodyisChild = bodyisChild == null ? null : WorkflowExpression.Compile(bodyisChild);
-            WorkflowExpression.Validate(__workflow_bodyisChild, nameof(bodyisChild), required: false);
-            var __workflow_bodyparentId = bodyparentId == null ? null : WorkflowExpression.Compile(bodyparentId);
-            WorkflowExpression.Validate(__workflow_bodyparentId, nameof(bodyparentId), required: false);
-            var __workflow_bodytempImage = bodytempImage == null ? null : WorkflowExpression.Compile(bodytempImage);
-            WorkflowExpression.Validate(__workflow_bodytempImage, nameof(bodytempImage), required: false);
-            var __workflow_bodymainImage = bodymainImage == null ? null : WorkflowExpression.Compile(bodymainImage);
-            WorkflowExpression.Validate(__workflow_bodymainImage, nameof(bodymainImage), required: false);
-            var __workflow_bodyimageConfigs = bodyimageConfigs == null ? null : WorkflowExpression.Compile(bodyimageConfigs);
-            WorkflowExpression.Validate(__workflow_bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            var __workflow_bodyscoreCompleteScore = bodyscoreCompleteScore == null ? null : WorkflowExpression.Compile(bodyscoreCompleteScore);
-            WorkflowExpression.Validate(__workflow_bodyscoreCompleteScore, nameof(bodyscoreCompleteScore), required: false);
-            var __workflow_bodyenrichmentScore = bodyenrichmentScore == null ? null : WorkflowExpression.Compile(bodyenrichmentScore);
-            WorkflowExpression.Validate(__workflow_bodyenrichmentScore, nameof(bodyenrichmentScore), required: false);
-            var __workflow_bodyengagementScore = bodyengagementScore == null ? null : WorkflowExpression.Compile(bodyengagementScore);
-            WorkflowExpression.Validate(__workflow_bodyengagementScore, nameof(bodyengagementScore), required: false);
-            var __workflow_bodyopportunityScore = bodyopportunityScore == null ? null : WorkflowExpression.Compile(bodyopportunityScore);
-            WorkflowExpression.Validate(__workflow_bodyopportunityScore, nameof(bodyopportunityScore), required: false);
-            var __workflow_bodytrendScore = bodytrendScore == null ? null : WorkflowExpression.Compile(bodytrendScore);
-            WorkflowExpression.Validate(__workflow_bodytrendScore, nameof(bodytrendScore), required: false);
-            var __workflow_bodycleanedText = bodycleanedText == null ? null : WorkflowExpression.Compile(bodycleanedText);
-            WorkflowExpression.Validate(__workflow_bodycleanedText, nameof(bodycleanedText), required: false);
-            var __workflow_bodyduplicateIdeasCount = bodyduplicateIdeasCount == null ? null : WorkflowExpression.Compile(bodyduplicateIdeasCount);
-            WorkflowExpression.Validate(__workflow_bodyduplicateIdeasCount, nameof(bodyduplicateIdeasCount), required: false);
-            var __workflow_bodysidekiqDuplicateIdeasCount = bodysidekiqDuplicateIdeasCount == null ? null : WorkflowExpression.Compile(bodysidekiqDuplicateIdeasCount);
-            WorkflowExpression.Validate(__workflow_bodysidekiqDuplicateIdeasCount, nameof(bodysidekiqDuplicateIdeasCount), required: false);
-            var __workflow_bodyaiCreated = bodyaiCreated == null ? null : WorkflowExpression.Compile(bodyaiCreated);
-            WorkflowExpression.Validate(__workflow_bodyaiCreated, nameof(bodyaiCreated), required: false);
-            var __workflow_bodyideaType = bodyideaType == null ? null : WorkflowExpression.Compile(bodyideaType);
-            WorkflowExpression.Validate(__workflow_bodyideaType, nameof(bodyideaType), required: false);
-            var __workflow_bodyfromScript = bodyfromScript == null ? null : WorkflowExpression.Compile(bodyfromScript);
-            WorkflowExpression.Validate(__workflow_bodyfromScript, nameof(bodyfromScript), required: false);
-            var __workflow_bodyembedding = bodyembedding == null ? null : WorkflowExpression.Compile(bodyembedding);
-            WorkflowExpression.Validate(__workflow_bodyembedding, nameof(bodyembedding), required: false);
-            var __workflow_bodyreasonText = bodyreasonText == null ? null : WorkflowExpression.Compile(bodyreasonText);
-            WorkflowExpression.Validate(__workflow_bodyreasonText, nameof(bodyreasonText), required: false);
-            var __workflow_bodycategoryText = bodycategoryText == null ? null : WorkflowExpression.Compile(bodycategoryText);
-            WorkflowExpression.Validate(__workflow_bodycategoryText, nameof(bodycategoryText), required: false);
-            var __workflow_bodycanvassId = bodycanvassId == null ? null : WorkflowExpression.Compile(bodycanvassId);
-            WorkflowExpression.Validate(__workflow_bodycanvassId, nameof(bodycanvassId), required: false);
-            var __workflow_bodybudgetTotal = bodybudgetTotal == null ? null : WorkflowExpression.Compile(bodybudgetTotal);
-            WorkflowExpression.Validate(__workflow_bodybudgetTotal, nameof(bodybudgetTotal), required: false);
-            var __workflow_bodybudgetSpend = bodybudgetSpend == null ? null : WorkflowExpression.Compile(bodybudgetSpend);
-            WorkflowExpression.Validate(__workflow_bodybudgetSpend, nameof(bodybudgetSpend), required: false);
-            var __workflow_bodybudgetResult = bodybudgetResult == null ? null : WorkflowExpression.Compile(bodybudgetResult);
-            WorkflowExpression.Validate(__workflow_bodybudgetResult, nameof(bodybudgetResult), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodytagText = bodytagText == null ? null : WorkflowExpression.Compile(bodytagText);
-            WorkflowExpression.Validate(__workflow_bodytagText, nameof(bodytagText), required: false);
-            var __workflow_bodyinnovationTypeId = bodyinnovationTypeId == null ? null : WorkflowExpression.Compile(bodyinnovationTypeId);
-            WorkflowExpression.Validate(__workflow_bodyinnovationTypeId, nameof(bodyinnovationTypeId), required: false);
-            var __workflow_bodyinnovationTypeText = bodyinnovationTypeText == null ? null : WorkflowExpression.Compile(bodyinnovationTypeText);
-            WorkflowExpression.Validate(__workflow_bodyinnovationTypeText, nameof(bodyinnovationTypeText), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
-            var __workflow_bodyrecordUrl = bodyrecordUrl == null ? null : WorkflowExpression.Compile(bodyrecordUrl);
-            WorkflowExpression.Validate(__workflow_bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            var __workflow_bodydescriptionEnriched = bodydescriptionEnriched == null ? null : WorkflowExpression.Compile(bodydescriptionEnriched);
-            WorkflowExpression.Validate(__workflow_bodydescriptionEnriched, nameof(bodydescriptionEnriched), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyroundId = WorkflowExpression.Compile(bodyroundId, nameof(bodyroundId), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodydevice = WorkflowExpression.Compile(bodydevice, nameof(bodydevice), required: false);
+            var __workflow_bodybrowser = WorkflowExpression.Compile(bodybrowser, nameof(bodybrowser), required: false);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
+            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            var __workflow_bodypostalCode = WorkflowExpression.Compile(bodypostalCode, nameof(bodypostalCode), required: false);
+            var __workflow_bodycountry = WorkflowExpression.Compile(bodycountry, nameof(bodycountry), required: false);
+            var __workflow_bodyscreenRes = WorkflowExpression.Compile(bodyscreenRes, nameof(bodyscreenRes), required: false);
+            var __workflow_bodyuserIp = WorkflowExpression.Compile(bodyuserIp, nameof(bodyuserIp), required: false);
+            var __workflow_bodycommentsCount = WorkflowExpression.Compile(bodycommentsCount, nameof(bodycommentsCount), required: false);
+            var __workflow_bodyreviewScoresCount = WorkflowExpression.Compile(bodyreviewScoresCount, nameof(bodyreviewScoresCount), required: false);
+            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodystage = WorkflowExpression.Compile(bodystage, nameof(bodystage), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodystatusId = WorkflowExpression.Compile(bodystatusId, nameof(bodystatusId), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodyideaCreator = WorkflowExpression.Compile(bodyideaCreator, nameof(bodyideaCreator), required: false);
+            var __workflow_bodyideationIdeaCategoryId = WorkflowExpression.Compile(bodyideationIdeaCategoryId, nameof(bodyideationIdeaCategoryId), required: false);
+            var __workflow_bodyboardIdeaCategoryId = WorkflowExpression.Compile(bodyboardIdeaCategoryId, nameof(bodyboardIdeaCategoryId), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyideaLikesCount = WorkflowExpression.Compile(bodyideaLikesCount, nameof(bodyideaLikesCount), required: false);
+            var __workflow_bodybookmark = WorkflowExpression.Compile(bodybookmark, nameof(bodybookmark), required: false);
+            var __workflow_bodyideaScoresCount = WorkflowExpression.Compile(bodyideaScoresCount, nameof(bodyideaScoresCount), required: false);
+            var __workflow_bodylikesCount = WorkflowExpression.Compile(bodylikesCount, nameof(bodylikesCount), required: false);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: false);
+            var __workflow_bodymissionId = WorkflowExpression.Compile(bodymissionId, nameof(bodymissionId), required: false);
+            var __workflow_bodycreatorName = WorkflowExpression.Compile(bodycreatorName, nameof(bodycreatorName), required: false);
+            var __workflow_bodytagsCount = WorkflowExpression.Compile(bodytagsCount, nameof(bodytagsCount), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_bodyfunnelStageId = WorkflowExpression.Compile(bodyfunnelStageId, nameof(bodyfunnelStageId), required: false);
+            var __workflow_bodyfunnelStatusId = WorkflowExpression.Compile(bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
+            var __workflow_bodyideaDeadline = WorkflowExpression.Compile(bodyideaDeadline, nameof(bodyideaDeadline), required: false);
+            var __workflow_bodydeadlineNotification = WorkflowExpression.Compile(bodydeadlineNotification, nameof(bodydeadlineNotification), required: false);
+            var __workflow_bodyideaViews = WorkflowExpression.Compile(bodyideaViews, nameof(bodyideaViews), required: false);
+            var __workflow_bodyrevenue = WorkflowExpression.Compile(bodyrevenue, nameof(bodyrevenue), required: false);
+            var __workflow_bodycost = WorkflowExpression.Compile(bodycost, nameof(bodycost), required: false);
+            var __workflow_bodyprofit = WorkflowExpression.Compile(bodyprofit, nameof(bodyprofit), required: false);
+            var __workflow_bodystatusName = WorkflowExpression.Compile(bodystatusName, nameof(bodystatusName), required: false);
+            var __workflow_bodyideaScores = WorkflowExpression.Compile(bodyideaScores, nameof(bodyideaScores), required: false);
+            var __workflow_bodyapprovedAt = WorkflowExpression.Compile(bodyapprovedAt, nameof(bodyapprovedAt), required: false);
+            var __workflow_bodydeniedAt = WorkflowExpression.Compile(bodydeniedAt, nameof(bodydeniedAt), required: false);
+            var __workflow_bodyadminComments = WorkflowExpression.Compile(bodyadminComments, nameof(bodyadminComments), required: false);
+            var __workflow_bodyisChild = WorkflowExpression.Compile(bodyisChild, nameof(bodyisChild), required: false);
+            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: false);
+            var __workflow_bodytempImage = WorkflowExpression.Compile(bodytempImage, nameof(bodytempImage), required: false);
+            var __workflow_bodymainImage = WorkflowExpression.Compile(bodymainImage, nameof(bodymainImage), required: false);
+            var __workflow_bodyimageConfigs = WorkflowExpression.Compile(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
+            var __workflow_bodyscoreCompleteScore = WorkflowExpression.Compile(bodyscoreCompleteScore, nameof(bodyscoreCompleteScore), required: false);
+            var __workflow_bodyenrichmentScore = WorkflowExpression.Compile(bodyenrichmentScore, nameof(bodyenrichmentScore), required: false);
+            var __workflow_bodyengagementScore = WorkflowExpression.Compile(bodyengagementScore, nameof(bodyengagementScore), required: false);
+            var __workflow_bodyopportunityScore = WorkflowExpression.Compile(bodyopportunityScore, nameof(bodyopportunityScore), required: false);
+            var __workflow_bodytrendScore = WorkflowExpression.Compile(bodytrendScore, nameof(bodytrendScore), required: false);
+            var __workflow_bodycleanedText = WorkflowExpression.Compile(bodycleanedText, nameof(bodycleanedText), required: false);
+            var __workflow_bodyduplicateIdeasCount = WorkflowExpression.Compile(bodyduplicateIdeasCount, nameof(bodyduplicateIdeasCount), required: false);
+            var __workflow_bodysidekiqDuplicateIdeasCount = WorkflowExpression.Compile(bodysidekiqDuplicateIdeasCount, nameof(bodysidekiqDuplicateIdeasCount), required: false);
+            var __workflow_bodyaiCreated = WorkflowExpression.Compile(bodyaiCreated, nameof(bodyaiCreated), required: false);
+            var __workflow_bodyideaType = WorkflowExpression.Compile(bodyideaType, nameof(bodyideaType), required: false);
+            var __workflow_bodyfromScript = WorkflowExpression.Compile(bodyfromScript, nameof(bodyfromScript), required: false);
+            var __workflow_bodyembedding = WorkflowExpression.Compile(bodyembedding, nameof(bodyembedding), required: false);
+            var __workflow_bodyreasonText = WorkflowExpression.Compile(bodyreasonText, nameof(bodyreasonText), required: false);
+            var __workflow_bodycategoryText = WorkflowExpression.Compile(bodycategoryText, nameof(bodycategoryText), required: false);
+            var __workflow_bodycanvassId = WorkflowExpression.Compile(bodycanvassId, nameof(bodycanvassId), required: false);
+            var __workflow_bodybudgetTotal = WorkflowExpression.Compile(bodybudgetTotal, nameof(bodybudgetTotal), required: false);
+            var __workflow_bodybudgetSpend = WorkflowExpression.Compile(bodybudgetSpend, nameof(bodybudgetSpend), required: false);
+            var __workflow_bodybudgetResult = WorkflowExpression.Compile(bodybudgetResult, nameof(bodybudgetResult), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodytagText = WorkflowExpression.Compile(bodytagText, nameof(bodytagText), required: false);
+            var __workflow_bodyinnovationTypeId = WorkflowExpression.Compile(bodyinnovationTypeId, nameof(bodyinnovationTypeId), required: false);
+            var __workflow_bodyinnovationTypeText = WorkflowExpression.Compile(bodyinnovationTypeText, nameof(bodyinnovationTypeText), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_bodyrecordUrl = WorkflowExpression.Compile(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
+            var __workflow_bodydescriptionEnriched = WorkflowExpression.Compile(bodydescriptionEnriched, nameof(bodydescriptionEnriched), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1965,14 +1764,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction PatchideasId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycontent = null, Expression<Func<int>> bodyfunnelId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/ideas/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -2019,16 +1814,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction Postmissions(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyhidden = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyhidden = bodyhidden == null ? null : WorkflowExpression.Compile(bodyhidden);
-            WorkflowExpression.Validate(__workflow_bodyhidden, nameof(bodyhidden), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyhidden = WorkflowExpression.Compile(bodyhidden, nameof(bodyhidden), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/general/v1/missions";
@@ -2078,8 +1868,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetmissionsIdResponse> GetmissionsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetmissionsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -2092,8 +1881,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletemissionsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -2106,116 +1894,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutmissionsIdResponse> PutmissionsId(Expression<Func<string>> id, Expression<Func<int>> bodyuserId = null, Expression<Func<int>> bodycompanyId = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyisAnonymous = null, Expression<Func<string>> bodyendingNote = null, Expression<Func<string>> bodymissionPic = null, Expression<Func<int>> bodyteamSize = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyfromName = null, Expression<Func<bool>> bodyisTemplate = null, Expression<Func<int>> bodyendDuration = null, Expression<Func<string>> bodytoken = null, Expression<Func<bool>> bodyisTryout = null, Expression<Func<int>> bodytemplateType = null, Expression<Func<bool>> bodyisOpen = null, Expression<Func<int>> bodymissionType = null, Expression<Func<string>> bodypublishedOnce = null, Expression<Func<string>> bodyinboxQuestion = null, Expression<Func<string>> bodyprivacySetting = null, Expression<Func<string>> bodyagentProfile = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<bool>> bodyenableReport = null, Expression<Func<int>> bodyideasCount = null, Expression<Func<int>> bodylikesCount = null, Expression<Func<int>> bodycommentsCount = null, Expression<Func<string>> bodyfunnelId = null, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyenableInboundEmail = null, Expression<Func<string>> bodydepartmentName = null, Expression<Func<string>> bodynotificationType = null, Expression<Func<string>> bodynotificationFrequency = null, Expression<Func<string>> bodynotificationText = null, Expression<Func<int>> bodyposition = null, Expression<Func<string>> bodymissionViews = null, Expression<Func<string>> bodytempImage = null, Expression<Func<string>> bodymainImage = null, Expression<Func<string>> bodyimageConfigs = null, Expression<Func<string>> bodyallowAiIdeas = null, Expression<Func<string>> bodyaiMissionType = null, Expression<Func<string>> bodyfromScript = null, Expression<Func<string>> bodyideaAttachmentsAllowed = null, Expression<Func<string>> bodyvideoLink = null, Expression<Func<string>> bodyhidden = null, Expression<Func<string>> bodyconfettiType = null, Expression<Func<string>> bodyenable = null, Expression<Func<string>> bodyaddAttachment = null, Expression<Func<string>> bodyaddComment = null, Expression<Func<string>> bodyrecordUrl = null, Expression<Func<string>> bodysyncId = null, Expression<Func<string>> bodyideaCustomFields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyisAnonymous = bodyisAnonymous == null ? null : WorkflowExpression.Compile(bodyisAnonymous);
-            WorkflowExpression.Validate(__workflow_bodyisAnonymous, nameof(bodyisAnonymous), required: false);
-            var __workflow_bodyendingNote = bodyendingNote == null ? null : WorkflowExpression.Compile(bodyendingNote);
-            WorkflowExpression.Validate(__workflow_bodyendingNote, nameof(bodyendingNote), required: false);
-            var __workflow_bodymissionPic = bodymissionPic == null ? null : WorkflowExpression.Compile(bodymissionPic);
-            WorkflowExpression.Validate(__workflow_bodymissionPic, nameof(bodymissionPic), required: false);
-            var __workflow_bodyteamSize = bodyteamSize == null ? null : WorkflowExpression.Compile(bodyteamSize);
-            WorkflowExpression.Validate(__workflow_bodyteamSize, nameof(bodyteamSize), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
-            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodyfromName = bodyfromName == null ? null : WorkflowExpression.Compile(bodyfromName);
-            WorkflowExpression.Validate(__workflow_bodyfromName, nameof(bodyfromName), required: false);
-            var __workflow_bodyisTemplate = bodyisTemplate == null ? null : WorkflowExpression.Compile(bodyisTemplate);
-            WorkflowExpression.Validate(__workflow_bodyisTemplate, nameof(bodyisTemplate), required: false);
-            var __workflow_bodyendDuration = bodyendDuration == null ? null : WorkflowExpression.Compile(bodyendDuration);
-            WorkflowExpression.Validate(__workflow_bodyendDuration, nameof(bodyendDuration), required: false);
-            var __workflow_bodytoken = bodytoken == null ? null : WorkflowExpression.Compile(bodytoken);
-            WorkflowExpression.Validate(__workflow_bodytoken, nameof(bodytoken), required: false);
-            var __workflow_bodyisTryout = bodyisTryout == null ? null : WorkflowExpression.Compile(bodyisTryout);
-            WorkflowExpression.Validate(__workflow_bodyisTryout, nameof(bodyisTryout), required: false);
-            var __workflow_bodytemplateType = bodytemplateType == null ? null : WorkflowExpression.Compile(bodytemplateType);
-            WorkflowExpression.Validate(__workflow_bodytemplateType, nameof(bodytemplateType), required: false);
-            var __workflow_bodyisOpen = bodyisOpen == null ? null : WorkflowExpression.Compile(bodyisOpen);
-            WorkflowExpression.Validate(__workflow_bodyisOpen, nameof(bodyisOpen), required: false);
-            var __workflow_bodymissionType = bodymissionType == null ? null : WorkflowExpression.Compile(bodymissionType);
-            WorkflowExpression.Validate(__workflow_bodymissionType, nameof(bodymissionType), required: false);
-            var __workflow_bodypublishedOnce = bodypublishedOnce == null ? null : WorkflowExpression.Compile(bodypublishedOnce);
-            WorkflowExpression.Validate(__workflow_bodypublishedOnce, nameof(bodypublishedOnce), required: false);
-            var __workflow_bodyinboxQuestion = bodyinboxQuestion == null ? null : WorkflowExpression.Compile(bodyinboxQuestion);
-            WorkflowExpression.Validate(__workflow_bodyinboxQuestion, nameof(bodyinboxQuestion), required: false);
-            var __workflow_bodyprivacySetting = bodyprivacySetting == null ? null : WorkflowExpression.Compile(bodyprivacySetting);
-            WorkflowExpression.Validate(__workflow_bodyprivacySetting, nameof(bodyprivacySetting), required: false);
-            var __workflow_bodyagentProfile = bodyagentProfile == null ? null : WorkflowExpression.Compile(bodyagentProfile);
-            WorkflowExpression.Validate(__workflow_bodyagentProfile, nameof(bodyagentProfile), required: false);
-            var __workflow_bodydepartmentId = bodydepartmentId == null ? null : WorkflowExpression.Compile(bodydepartmentId);
-            WorkflowExpression.Validate(__workflow_bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyenableReport = bodyenableReport == null ? null : WorkflowExpression.Compile(bodyenableReport);
-            WorkflowExpression.Validate(__workflow_bodyenableReport, nameof(bodyenableReport), required: false);
-            var __workflow_bodyideasCount = bodyideasCount == null ? null : WorkflowExpression.Compile(bodyideasCount);
-            WorkflowExpression.Validate(__workflow_bodyideasCount, nameof(bodyideasCount), required: false);
-            var __workflow_bodylikesCount = bodylikesCount == null ? null : WorkflowExpression.Compile(bodylikesCount);
-            WorkflowExpression.Validate(__workflow_bodylikesCount, nameof(bodylikesCount), required: false);
-            var __workflow_bodycommentsCount = bodycommentsCount == null ? null : WorkflowExpression.Compile(bodycommentsCount);
-            WorkflowExpression.Validate(__workflow_bodycommentsCount, nameof(bodycommentsCount), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyenableInboundEmail = bodyenableInboundEmail == null ? null : WorkflowExpression.Compile(bodyenableInboundEmail);
-            WorkflowExpression.Validate(__workflow_bodyenableInboundEmail, nameof(bodyenableInboundEmail), required: false);
-            var __workflow_bodydepartmentName = bodydepartmentName == null ? null : WorkflowExpression.Compile(bodydepartmentName);
-            WorkflowExpression.Validate(__workflow_bodydepartmentName, nameof(bodydepartmentName), required: false);
-            var __workflow_bodynotificationType = bodynotificationType == null ? null : WorkflowExpression.Compile(bodynotificationType);
-            WorkflowExpression.Validate(__workflow_bodynotificationType, nameof(bodynotificationType), required: false);
-            var __workflow_bodynotificationFrequency = bodynotificationFrequency == null ? null : WorkflowExpression.Compile(bodynotificationFrequency);
-            WorkflowExpression.Validate(__workflow_bodynotificationFrequency, nameof(bodynotificationFrequency), required: false);
-            var __workflow_bodynotificationText = bodynotificationText == null ? null : WorkflowExpression.Compile(bodynotificationText);
-            WorkflowExpression.Validate(__workflow_bodynotificationText, nameof(bodynotificationText), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodymissionViews = bodymissionViews == null ? null : WorkflowExpression.Compile(bodymissionViews);
-            WorkflowExpression.Validate(__workflow_bodymissionViews, nameof(bodymissionViews), required: false);
-            var __workflow_bodytempImage = bodytempImage == null ? null : WorkflowExpression.Compile(bodytempImage);
-            WorkflowExpression.Validate(__workflow_bodytempImage, nameof(bodytempImage), required: false);
-            var __workflow_bodymainImage = bodymainImage == null ? null : WorkflowExpression.Compile(bodymainImage);
-            WorkflowExpression.Validate(__workflow_bodymainImage, nameof(bodymainImage), required: false);
-            var __workflow_bodyimageConfigs = bodyimageConfigs == null ? null : WorkflowExpression.Compile(bodyimageConfigs);
-            WorkflowExpression.Validate(__workflow_bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            var __workflow_bodyallowAiIdeas = bodyallowAiIdeas == null ? null : WorkflowExpression.Compile(bodyallowAiIdeas);
-            WorkflowExpression.Validate(__workflow_bodyallowAiIdeas, nameof(bodyallowAiIdeas), required: false);
-            var __workflow_bodyaiMissionType = bodyaiMissionType == null ? null : WorkflowExpression.Compile(bodyaiMissionType);
-            WorkflowExpression.Validate(__workflow_bodyaiMissionType, nameof(bodyaiMissionType), required: false);
-            var __workflow_bodyfromScript = bodyfromScript == null ? null : WorkflowExpression.Compile(bodyfromScript);
-            WorkflowExpression.Validate(__workflow_bodyfromScript, nameof(bodyfromScript), required: false);
-            var __workflow_bodyideaAttachmentsAllowed = bodyideaAttachmentsAllowed == null ? null : WorkflowExpression.Compile(bodyideaAttachmentsAllowed);
-            WorkflowExpression.Validate(__workflow_bodyideaAttachmentsAllowed, nameof(bodyideaAttachmentsAllowed), required: false);
-            var __workflow_bodyvideoLink = bodyvideoLink == null ? null : WorkflowExpression.Compile(bodyvideoLink);
-            WorkflowExpression.Validate(__workflow_bodyvideoLink, nameof(bodyvideoLink), required: false);
-            var __workflow_bodyhidden = bodyhidden == null ? null : WorkflowExpression.Compile(bodyhidden);
-            WorkflowExpression.Validate(__workflow_bodyhidden, nameof(bodyhidden), required: false);
-            var __workflow_bodyconfettiType = bodyconfettiType == null ? null : WorkflowExpression.Compile(bodyconfettiType);
-            WorkflowExpression.Validate(__workflow_bodyconfettiType, nameof(bodyconfettiType), required: false);
-            var __workflow_bodyenable = bodyenable == null ? null : WorkflowExpression.Compile(bodyenable);
-            WorkflowExpression.Validate(__workflow_bodyenable, nameof(bodyenable), required: false);
-            var __workflow_bodyaddAttachment = bodyaddAttachment == null ? null : WorkflowExpression.Compile(bodyaddAttachment);
-            WorkflowExpression.Validate(__workflow_bodyaddAttachment, nameof(bodyaddAttachment), required: false);
-            var __workflow_bodyaddComment = bodyaddComment == null ? null : WorkflowExpression.Compile(bodyaddComment);
-            WorkflowExpression.Validate(__workflow_bodyaddComment, nameof(bodyaddComment), required: false);
-            var __workflow_bodyrecordUrl = bodyrecordUrl == null ? null : WorkflowExpression.Compile(bodyrecordUrl);
-            WorkflowExpression.Validate(__workflow_bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
-            var __workflow_bodyideaCustomFields = bodyideaCustomFields == null ? null : WorkflowExpression.Compile(bodyideaCustomFields);
-            WorkflowExpression.Validate(__workflow_bodyideaCustomFields, nameof(bodyideaCustomFields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyisAnonymous = WorkflowExpression.Compile(bodyisAnonymous, nameof(bodyisAnonymous), required: false);
+            var __workflow_bodyendingNote = WorkflowExpression.Compile(bodyendingNote, nameof(bodyendingNote), required: false);
+            var __workflow_bodymissionPic = WorkflowExpression.Compile(bodymissionPic, nameof(bodymissionPic), required: false);
+            var __workflow_bodyteamSize = WorkflowExpression.Compile(bodyteamSize, nameof(bodyteamSize), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodyfromName = WorkflowExpression.Compile(bodyfromName, nameof(bodyfromName), required: false);
+            var __workflow_bodyisTemplate = WorkflowExpression.Compile(bodyisTemplate, nameof(bodyisTemplate), required: false);
+            var __workflow_bodyendDuration = WorkflowExpression.Compile(bodyendDuration, nameof(bodyendDuration), required: false);
+            var __workflow_bodytoken = WorkflowExpression.Compile(bodytoken, nameof(bodytoken), required: false);
+            var __workflow_bodyisTryout = WorkflowExpression.Compile(bodyisTryout, nameof(bodyisTryout), required: false);
+            var __workflow_bodytemplateType = WorkflowExpression.Compile(bodytemplateType, nameof(bodytemplateType), required: false);
+            var __workflow_bodyisOpen = WorkflowExpression.Compile(bodyisOpen, nameof(bodyisOpen), required: false);
+            var __workflow_bodymissionType = WorkflowExpression.Compile(bodymissionType, nameof(bodymissionType), required: false);
+            var __workflow_bodypublishedOnce = WorkflowExpression.Compile(bodypublishedOnce, nameof(bodypublishedOnce), required: false);
+            var __workflow_bodyinboxQuestion = WorkflowExpression.Compile(bodyinboxQuestion, nameof(bodyinboxQuestion), required: false);
+            var __workflow_bodyprivacySetting = WorkflowExpression.Compile(bodyprivacySetting, nameof(bodyprivacySetting), required: false);
+            var __workflow_bodyagentProfile = WorkflowExpression.Compile(bodyagentProfile, nameof(bodyagentProfile), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodyenableReport = WorkflowExpression.Compile(bodyenableReport, nameof(bodyenableReport), required: false);
+            var __workflow_bodyideasCount = WorkflowExpression.Compile(bodyideasCount, nameof(bodyideasCount), required: false);
+            var __workflow_bodylikesCount = WorkflowExpression.Compile(bodylikesCount, nameof(bodylikesCount), required: false);
+            var __workflow_bodycommentsCount = WorkflowExpression.Compile(bodycommentsCount, nameof(bodycommentsCount), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyenableInboundEmail = WorkflowExpression.Compile(bodyenableInboundEmail, nameof(bodyenableInboundEmail), required: false);
+            var __workflow_bodydepartmentName = WorkflowExpression.Compile(bodydepartmentName, nameof(bodydepartmentName), required: false);
+            var __workflow_bodynotificationType = WorkflowExpression.Compile(bodynotificationType, nameof(bodynotificationType), required: false);
+            var __workflow_bodynotificationFrequency = WorkflowExpression.Compile(bodynotificationFrequency, nameof(bodynotificationFrequency), required: false);
+            var __workflow_bodynotificationText = WorkflowExpression.Compile(bodynotificationText, nameof(bodynotificationText), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodymissionViews = WorkflowExpression.Compile(bodymissionViews, nameof(bodymissionViews), required: false);
+            var __workflow_bodytempImage = WorkflowExpression.Compile(bodytempImage, nameof(bodytempImage), required: false);
+            var __workflow_bodymainImage = WorkflowExpression.Compile(bodymainImage, nameof(bodymainImage), required: false);
+            var __workflow_bodyimageConfigs = WorkflowExpression.Compile(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
+            var __workflow_bodyallowAiIdeas = WorkflowExpression.Compile(bodyallowAiIdeas, nameof(bodyallowAiIdeas), required: false);
+            var __workflow_bodyaiMissionType = WorkflowExpression.Compile(bodyaiMissionType, nameof(bodyaiMissionType), required: false);
+            var __workflow_bodyfromScript = WorkflowExpression.Compile(bodyfromScript, nameof(bodyfromScript), required: false);
+            var __workflow_bodyideaAttachmentsAllowed = WorkflowExpression.Compile(bodyideaAttachmentsAllowed, nameof(bodyideaAttachmentsAllowed), required: false);
+            var __workflow_bodyvideoLink = WorkflowExpression.Compile(bodyvideoLink, nameof(bodyvideoLink), required: false);
+            var __workflow_bodyhidden = WorkflowExpression.Compile(bodyhidden, nameof(bodyhidden), required: false);
+            var __workflow_bodyconfettiType = WorkflowExpression.Compile(bodyconfettiType, nameof(bodyconfettiType), required: false);
+            var __workflow_bodyenable = WorkflowExpression.Compile(bodyenable, nameof(bodyenable), required: false);
+            var __workflow_bodyaddAttachment = WorkflowExpression.Compile(bodyaddAttachment, nameof(bodyaddAttachment), required: false);
+            var __workflow_bodyaddComment = WorkflowExpression.Compile(bodyaddComment, nameof(bodyaddComment), required: false);
+            var __workflow_bodyrecordUrl = WorkflowExpression.Compile(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_bodyideaCustomFields = WorkflowExpression.Compile(bodyideaCustomFields, nameof(bodyideaCustomFields), required: false);
             return new DeferredBodyAction<PutmissionsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -2567,14 +2300,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchmissionsIdResponse> PatchmissionsId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyhidden = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyhidden = bodyhidden == null ? null : WorkflowExpression.Compile(bodyhidden);
-            WorkflowExpression.Validate(__workflow_bodyhidden, nameof(bodyhidden), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyhidden = WorkflowExpression.Compile(bodyhidden, nameof(bodyhidden), required: false);
             return new DeferredBodyAction<PatchmissionsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/missions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -2621,16 +2350,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostprojectsResponse> Postprojects(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodyfunnelId = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
             return new DeferredBodyAction<PostprojectsResponse>(() =>
             {
                 var apiCallPath = "/general/v1/projects";
@@ -2680,8 +2404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetprojectsIdResponse> GetprojectsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetprojectsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -2694,8 +2417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeleteprojectsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -2708,112 +2430,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutprojectsIdResponse> PutprojectsId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodystatusId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodystageId = null, Expression<Func<string>> bodyprojectManagerId = null, Expression<Func<string>> bodybusinessOwnerId = null, Expression<Func<string>> bodyprogress = null, Expression<Func<string>> bodycompanyId = null, Expression<Func<string>> bodycommentsCount = null, Expression<Func<string>> bodyprojectScore = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyposition = null, Expression<Func<int>> bodymodifiedBy = null, Expression<Func<int>> bodytagsCount = null, Expression<Func<string>> bodyfunnelId = null, Expression<Func<string>> bodyfunnelStageId = null, Expression<Func<string>> bodyfunnelStatusId = null, Expression<Func<string>> bodystageDeadline = null, Expression<Func<string>> bodydeadlineNotification = null, Expression<Func<string>> bodystatusName = null, Expression<Func<string>> bodyapprovedAt = null, Expression<Func<string>> bodydeniedAt = null, Expression<Func<string>> bodyamScores = null, Expression<Func<string>> bodyprojectRevenue = null, Expression<Func<string>> bodyprojectCost = null, Expression<Func<string>> bodyprojectProfit = null, Expression<Func<string>> bodyadminComments = null, Expression<Func<string>> bodytempImage = null, Expression<Func<string>> bodymainImage = null, Expression<Func<string>> bodyimageConfigs = null, Expression<Func<string>> bodyfromScript = null, Expression<Func<string>> bodyreasonText = null, Expression<Func<string>> bodycategoryText = null, Expression<Func<string>> bodycanvassId = null, Expression<Func<string>> bodybudgetTotal = null, Expression<Func<string>> bodybudgetSpend = null, Expression<Func<string>> bodybudgetResult = null, Expression<Func<string>> bodytagText = null, Expression<Func<string>> bodyestimatedTime = null, Expression<Func<string>> bodytotalTimeSpend = null, Expression<Func<string>> bodytotalTime = null, Expression<Func<string>> bodyinnovationTypeId = null, Expression<Func<string>> bodyinnovationTypeText = null, Expression<Func<string>> bodysyncId = null, Expression<Func<string>> bodyrecordUrl = null, Expression<Func<string>> bodydescriptionEnriched = null, Expression<Func<string>> bodycustomFieldValues = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodystatusId = bodystatusId == null ? null : WorkflowExpression.Compile(bodystatusId);
-            WorkflowExpression.Validate(__workflow_bodystatusId, nameof(bodystatusId), required: false);
-            var __workflow_bodydepartmentId = bodydepartmentId == null ? null : WorkflowExpression.Compile(bodydepartmentId);
-            WorkflowExpression.Validate(__workflow_bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodystageId = bodystageId == null ? null : WorkflowExpression.Compile(bodystageId);
-            WorkflowExpression.Validate(__workflow_bodystageId, nameof(bodystageId), required: false);
-            var __workflow_bodyprojectManagerId = bodyprojectManagerId == null ? null : WorkflowExpression.Compile(bodyprojectManagerId);
-            WorkflowExpression.Validate(__workflow_bodyprojectManagerId, nameof(bodyprojectManagerId), required: false);
-            var __workflow_bodybusinessOwnerId = bodybusinessOwnerId == null ? null : WorkflowExpression.Compile(bodybusinessOwnerId);
-            WorkflowExpression.Validate(__workflow_bodybusinessOwnerId, nameof(bodybusinessOwnerId), required: false);
-            var __workflow_bodyprogress = bodyprogress == null ? null : WorkflowExpression.Compile(bodyprogress);
-            WorkflowExpression.Validate(__workflow_bodyprogress, nameof(bodyprogress), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodycommentsCount = bodycommentsCount == null ? null : WorkflowExpression.Compile(bodycommentsCount);
-            WorkflowExpression.Validate(__workflow_bodycommentsCount, nameof(bodycommentsCount), required: false);
-            var __workflow_bodyprojectScore = bodyprojectScore == null ? null : WorkflowExpression.Compile(bodyprojectScore);
-            WorkflowExpression.Validate(__workflow_bodyprojectScore, nameof(bodyprojectScore), required: false);
-            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
-            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodymodifiedBy = bodymodifiedBy == null ? null : WorkflowExpression.Compile(bodymodifiedBy);
-            WorkflowExpression.Validate(__workflow_bodymodifiedBy, nameof(bodymodifiedBy), required: false);
-            var __workflow_bodytagsCount = bodytagsCount == null ? null : WorkflowExpression.Compile(bodytagsCount);
-            WorkflowExpression.Validate(__workflow_bodytagsCount, nameof(bodytagsCount), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
-            var __workflow_bodyfunnelStageId = bodyfunnelStageId == null ? null : WorkflowExpression.Compile(bodyfunnelStageId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelStageId, nameof(bodyfunnelStageId), required: false);
-            var __workflow_bodyfunnelStatusId = bodyfunnelStatusId == null ? null : WorkflowExpression.Compile(bodyfunnelStatusId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
-            var __workflow_bodystageDeadline = bodystageDeadline == null ? null : WorkflowExpression.Compile(bodystageDeadline);
-            WorkflowExpression.Validate(__workflow_bodystageDeadline, nameof(bodystageDeadline), required: false);
-            var __workflow_bodydeadlineNotification = bodydeadlineNotification == null ? null : WorkflowExpression.Compile(bodydeadlineNotification);
-            WorkflowExpression.Validate(__workflow_bodydeadlineNotification, nameof(bodydeadlineNotification), required: false);
-            var __workflow_bodystatusName = bodystatusName == null ? null : WorkflowExpression.Compile(bodystatusName);
-            WorkflowExpression.Validate(__workflow_bodystatusName, nameof(bodystatusName), required: false);
-            var __workflow_bodyapprovedAt = bodyapprovedAt == null ? null : WorkflowExpression.Compile(bodyapprovedAt);
-            WorkflowExpression.Validate(__workflow_bodyapprovedAt, nameof(bodyapprovedAt), required: false);
-            var __workflow_bodydeniedAt = bodydeniedAt == null ? null : WorkflowExpression.Compile(bodydeniedAt);
-            WorkflowExpression.Validate(__workflow_bodydeniedAt, nameof(bodydeniedAt), required: false);
-            var __workflow_bodyamScores = bodyamScores == null ? null : WorkflowExpression.Compile(bodyamScores);
-            WorkflowExpression.Validate(__workflow_bodyamScores, nameof(bodyamScores), required: false);
-            var __workflow_bodyprojectRevenue = bodyprojectRevenue == null ? null : WorkflowExpression.Compile(bodyprojectRevenue);
-            WorkflowExpression.Validate(__workflow_bodyprojectRevenue, nameof(bodyprojectRevenue), required: false);
-            var __workflow_bodyprojectCost = bodyprojectCost == null ? null : WorkflowExpression.Compile(bodyprojectCost);
-            WorkflowExpression.Validate(__workflow_bodyprojectCost, nameof(bodyprojectCost), required: false);
-            var __workflow_bodyprojectProfit = bodyprojectProfit == null ? null : WorkflowExpression.Compile(bodyprojectProfit);
-            WorkflowExpression.Validate(__workflow_bodyprojectProfit, nameof(bodyprojectProfit), required: false);
-            var __workflow_bodyadminComments = bodyadminComments == null ? null : WorkflowExpression.Compile(bodyadminComments);
-            WorkflowExpression.Validate(__workflow_bodyadminComments, nameof(bodyadminComments), required: false);
-            var __workflow_bodytempImage = bodytempImage == null ? null : WorkflowExpression.Compile(bodytempImage);
-            WorkflowExpression.Validate(__workflow_bodytempImage, nameof(bodytempImage), required: false);
-            var __workflow_bodymainImage = bodymainImage == null ? null : WorkflowExpression.Compile(bodymainImage);
-            WorkflowExpression.Validate(__workflow_bodymainImage, nameof(bodymainImage), required: false);
-            var __workflow_bodyimageConfigs = bodyimageConfigs == null ? null : WorkflowExpression.Compile(bodyimageConfigs);
-            WorkflowExpression.Validate(__workflow_bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            var __workflow_bodyfromScript = bodyfromScript == null ? null : WorkflowExpression.Compile(bodyfromScript);
-            WorkflowExpression.Validate(__workflow_bodyfromScript, nameof(bodyfromScript), required: false);
-            var __workflow_bodyreasonText = bodyreasonText == null ? null : WorkflowExpression.Compile(bodyreasonText);
-            WorkflowExpression.Validate(__workflow_bodyreasonText, nameof(bodyreasonText), required: false);
-            var __workflow_bodycategoryText = bodycategoryText == null ? null : WorkflowExpression.Compile(bodycategoryText);
-            WorkflowExpression.Validate(__workflow_bodycategoryText, nameof(bodycategoryText), required: false);
-            var __workflow_bodycanvassId = bodycanvassId == null ? null : WorkflowExpression.Compile(bodycanvassId);
-            WorkflowExpression.Validate(__workflow_bodycanvassId, nameof(bodycanvassId), required: false);
-            var __workflow_bodybudgetTotal = bodybudgetTotal == null ? null : WorkflowExpression.Compile(bodybudgetTotal);
-            WorkflowExpression.Validate(__workflow_bodybudgetTotal, nameof(bodybudgetTotal), required: false);
-            var __workflow_bodybudgetSpend = bodybudgetSpend == null ? null : WorkflowExpression.Compile(bodybudgetSpend);
-            WorkflowExpression.Validate(__workflow_bodybudgetSpend, nameof(bodybudgetSpend), required: false);
-            var __workflow_bodybudgetResult = bodybudgetResult == null ? null : WorkflowExpression.Compile(bodybudgetResult);
-            WorkflowExpression.Validate(__workflow_bodybudgetResult, nameof(bodybudgetResult), required: false);
-            var __workflow_bodytagText = bodytagText == null ? null : WorkflowExpression.Compile(bodytagText);
-            WorkflowExpression.Validate(__workflow_bodytagText, nameof(bodytagText), required: false);
-            var __workflow_bodyestimatedTime = bodyestimatedTime == null ? null : WorkflowExpression.Compile(bodyestimatedTime);
-            WorkflowExpression.Validate(__workflow_bodyestimatedTime, nameof(bodyestimatedTime), required: false);
-            var __workflow_bodytotalTimeSpend = bodytotalTimeSpend == null ? null : WorkflowExpression.Compile(bodytotalTimeSpend);
-            WorkflowExpression.Validate(__workflow_bodytotalTimeSpend, nameof(bodytotalTimeSpend), required: false);
-            var __workflow_bodytotalTime = bodytotalTime == null ? null : WorkflowExpression.Compile(bodytotalTime);
-            WorkflowExpression.Validate(__workflow_bodytotalTime, nameof(bodytotalTime), required: false);
-            var __workflow_bodyinnovationTypeId = bodyinnovationTypeId == null ? null : WorkflowExpression.Compile(bodyinnovationTypeId);
-            WorkflowExpression.Validate(__workflow_bodyinnovationTypeId, nameof(bodyinnovationTypeId), required: false);
-            var __workflow_bodyinnovationTypeText = bodyinnovationTypeText == null ? null : WorkflowExpression.Compile(bodyinnovationTypeText);
-            WorkflowExpression.Validate(__workflow_bodyinnovationTypeText, nameof(bodyinnovationTypeText), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
-            var __workflow_bodyrecordUrl = bodyrecordUrl == null ? null : WorkflowExpression.Compile(bodyrecordUrl);
-            WorkflowExpression.Validate(__workflow_bodyrecordUrl, nameof(bodyrecordUrl), required: false);
-            var __workflow_bodydescriptionEnriched = bodydescriptionEnriched == null ? null : WorkflowExpression.Compile(bodydescriptionEnriched);
-            WorkflowExpression.Validate(__workflow_bodydescriptionEnriched, nameof(bodydescriptionEnriched), required: false);
-            var __workflow_bodycustomFieldValues = bodycustomFieldValues == null ? null : WorkflowExpression.Compile(bodycustomFieldValues);
-            WorkflowExpression.Validate(__workflow_bodycustomFieldValues, nameof(bodycustomFieldValues), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodystatusId = WorkflowExpression.Compile(bodystatusId, nameof(bodystatusId), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodystageId = WorkflowExpression.Compile(bodystageId, nameof(bodystageId), required: false);
+            var __workflow_bodyprojectManagerId = WorkflowExpression.Compile(bodyprojectManagerId, nameof(bodyprojectManagerId), required: false);
+            var __workflow_bodybusinessOwnerId = WorkflowExpression.Compile(bodybusinessOwnerId, nameof(bodybusinessOwnerId), required: false);
+            var __workflow_bodyprogress = WorkflowExpression.Compile(bodyprogress, nameof(bodyprogress), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodycommentsCount = WorkflowExpression.Compile(bodycommentsCount, nameof(bodycommentsCount), required: false);
+            var __workflow_bodyprojectScore = WorkflowExpression.Compile(bodyprojectScore, nameof(bodyprojectScore), required: false);
+            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodymodifiedBy = WorkflowExpression.Compile(bodymodifiedBy, nameof(bodymodifiedBy), required: false);
+            var __workflow_bodytagsCount = WorkflowExpression.Compile(bodytagsCount, nameof(bodytagsCount), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_bodyfunnelStageId = WorkflowExpression.Compile(bodyfunnelStageId, nameof(bodyfunnelStageId), required: false);
+            var __workflow_bodyfunnelStatusId = WorkflowExpression.Compile(bodyfunnelStatusId, nameof(bodyfunnelStatusId), required: false);
+            var __workflow_bodystageDeadline = WorkflowExpression.Compile(bodystageDeadline, nameof(bodystageDeadline), required: false);
+            var __workflow_bodydeadlineNotification = WorkflowExpression.Compile(bodydeadlineNotification, nameof(bodydeadlineNotification), required: false);
+            var __workflow_bodystatusName = WorkflowExpression.Compile(bodystatusName, nameof(bodystatusName), required: false);
+            var __workflow_bodyapprovedAt = WorkflowExpression.Compile(bodyapprovedAt, nameof(bodyapprovedAt), required: false);
+            var __workflow_bodydeniedAt = WorkflowExpression.Compile(bodydeniedAt, nameof(bodydeniedAt), required: false);
+            var __workflow_bodyamScores = WorkflowExpression.Compile(bodyamScores, nameof(bodyamScores), required: false);
+            var __workflow_bodyprojectRevenue = WorkflowExpression.Compile(bodyprojectRevenue, nameof(bodyprojectRevenue), required: false);
+            var __workflow_bodyprojectCost = WorkflowExpression.Compile(bodyprojectCost, nameof(bodyprojectCost), required: false);
+            var __workflow_bodyprojectProfit = WorkflowExpression.Compile(bodyprojectProfit, nameof(bodyprojectProfit), required: false);
+            var __workflow_bodyadminComments = WorkflowExpression.Compile(bodyadminComments, nameof(bodyadminComments), required: false);
+            var __workflow_bodytempImage = WorkflowExpression.Compile(bodytempImage, nameof(bodytempImage), required: false);
+            var __workflow_bodymainImage = WorkflowExpression.Compile(bodymainImage, nameof(bodymainImage), required: false);
+            var __workflow_bodyimageConfigs = WorkflowExpression.Compile(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
+            var __workflow_bodyfromScript = WorkflowExpression.Compile(bodyfromScript, nameof(bodyfromScript), required: false);
+            var __workflow_bodyreasonText = WorkflowExpression.Compile(bodyreasonText, nameof(bodyreasonText), required: false);
+            var __workflow_bodycategoryText = WorkflowExpression.Compile(bodycategoryText, nameof(bodycategoryText), required: false);
+            var __workflow_bodycanvassId = WorkflowExpression.Compile(bodycanvassId, nameof(bodycanvassId), required: false);
+            var __workflow_bodybudgetTotal = WorkflowExpression.Compile(bodybudgetTotal, nameof(bodybudgetTotal), required: false);
+            var __workflow_bodybudgetSpend = WorkflowExpression.Compile(bodybudgetSpend, nameof(bodybudgetSpend), required: false);
+            var __workflow_bodybudgetResult = WorkflowExpression.Compile(bodybudgetResult, nameof(bodybudgetResult), required: false);
+            var __workflow_bodytagText = WorkflowExpression.Compile(bodytagText, nameof(bodytagText), required: false);
+            var __workflow_bodyestimatedTime = WorkflowExpression.Compile(bodyestimatedTime, nameof(bodyestimatedTime), required: false);
+            var __workflow_bodytotalTimeSpend = WorkflowExpression.Compile(bodytotalTimeSpend, nameof(bodytotalTimeSpend), required: false);
+            var __workflow_bodytotalTime = WorkflowExpression.Compile(bodytotalTime, nameof(bodytotalTime), required: false);
+            var __workflow_bodyinnovationTypeId = WorkflowExpression.Compile(bodyinnovationTypeId, nameof(bodyinnovationTypeId), required: false);
+            var __workflow_bodyinnovationTypeText = WorkflowExpression.Compile(bodyinnovationTypeText, nameof(bodyinnovationTypeText), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_bodyrecordUrl = WorkflowExpression.Compile(bodyrecordUrl, nameof(bodyrecordUrl), required: false);
+            var __workflow_bodydescriptionEnriched = WorkflowExpression.Compile(bodydescriptionEnriched, nameof(bodydescriptionEnriched), required: false);
+            var __workflow_bodycustomFieldValues = WorkflowExpression.Compile(bodycustomFieldValues, nameof(bodycustomFieldValues), required: false);
             return new DeferredBodyAction<PutprojectsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3153,12 +2822,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchprojectsIdResponse> PatchprojectsId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<PatchprojectsIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3190,8 +2856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetprojectsProjectIdTasksResponse> GetprojectsProjectIdTasks(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<GetprojectsProjectIdTasksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -3204,12 +2869,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostprojectsProjectIdTasksResponse> PostprojectsProjectIdTasks(Expression<Func<string>> projectId, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodystatus = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<PostprojectsProjectIdTasksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/projects/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -3241,8 +2903,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetTaskBySyncIdResponse> GetTaskBySyncId(Expression<Func<string>> syncId = null)
         {
-            var __workflow_syncId = syncId == null ? null : WorkflowExpression.Compile(syncId);
-            WorkflowExpression.Validate(__workflow_syncId, nameof(syncId), required: false);
+            var __workflow_syncId = WorkflowExpression.Compile(syncId, nameof(syncId), required: false);
             return new DeferredBodyAction<GetTaskBySyncIdResponse>(() =>
             {
                 var apiCallPath = "/general/v1/tasks";
@@ -3257,10 +2918,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PosttasksResponse> Posttasks(Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodystatus = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<PosttasksResponse>(() =>
             {
                 var apiCallPath = "/general/v1/tasks";
@@ -3292,8 +2951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GettasksIdResponse> GettasksId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GettasksIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3306,8 +2964,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletetasksId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3320,14 +2977,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PatchtasksIdResponse> PatchtasksId(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodysyncId = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodysyncId = bodysyncId == null ? null : WorkflowExpression.Compile(bodysyncId);
-            WorkflowExpression.Validate(__workflow_bodysyncId, nameof(bodysyncId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodysyncId = WorkflowExpression.Compile(bodysyncId, nameof(bodysyncId), required: false);
             return new DeferredBodyAction<PatchtasksIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3374,8 +3027,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeletetopicsId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/topics/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3397,18 +3049,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PostusersResponse> Postusers(Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<int>> bodyposition = null)
         {
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
             return new DeferredBodyAction<PostusersResponse>(() =>
             {
                 var apiCallPath = "/general/v1/users";
@@ -3473,8 +3119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<GetusersIdResponse> GetusersId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetusersIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3487,8 +3132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IWorkflowAction DeleteusersId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -3501,108 +3145,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acceptmission")]
         public IBodyWorkflowAction<PutusersIdResponse> PutusersId(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyprofilePic = null, Expression<Func<int>> bodypoints = null, Expression<Func<int>> bodycompanyId = null, Expression<Func<int>> bodyuserRoleId = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodylastSignOutAt = null, Expression<Func<string>> bodyposition = null, Expression<Func<bool>> bodyprofileFlag = null, Expression<Func<string>> bodyuserChecklist = null, Expression<Func<int>> bodyideaLikesCount = null, Expression<Func<int>> bodycommentsCount = null, Expression<Func<int>> bodyxpPoints = null, Expression<Func<int>> bodyideasCount = null, Expression<Func<string>> bodyfunnelId = null, Expression<Func<int>> bodylevel = null, Expression<Func<int>> bodyxpLevel = null, Expression<Func<string>> bodyprojectFunnelId = null, Expression<Func<string>> bodychecklistScore = null, Expression<Func<string>> bodyprovider = null, Expression<Func<string>> bodyuid = null, Expression<Func<string>> bodyemailSentAt = null, Expression<Func<bool>> bodyblockAllNotification = null, Expression<Func<string>> bodydbName = null, Expression<Func<string>> bodydeptId = null, Expression<Func<string>> bodydeptName = null, Expression<Func<string>> bodymainImage = null, Expression<Func<string>> bodytempImage = null, Expression<Func<string>> bodyimageConfigs = null, Expression<Func<bool>> bodyimageAutoGenerated = null, Expression<Func<string>> bodyamAccount = null, Expression<Func<string>> bodyuuid = null, Expression<Func<string>> bodypasswordResetAttempts = null, Expression<Func<string>> bodylastPasswordResetAt = null, Expression<Func<string>> bodycustomDomain = null, Expression<Func<string>> bodyuserRoleName = null, Expression<Func<int>> bodytheme = null, Expression<Func<string>> bodyuserType = null, Expression<Func<string>> bodyviewSettings = null, Expression<Func<string>> bodyreadManual = null, Expression<Func<string>> bodyaddIdeaBox = null, Expression<Func<string>> bodyvisitAgent = null, Expression<Func<string>> bodyaddIdea = null, Expression<Func<string>> bodyinvitePeople = null, Expression<Func<string>> bodyaddBoardMission = null, Expression<Func<string>> bodyaddProject = null, Expression<Func<string>> bodycompletedChecklist = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyprofilePic = bodyprofilePic == null ? null : WorkflowExpression.Compile(bodyprofilePic);
-            WorkflowExpression.Validate(__workflow_bodyprofilePic, nameof(bodyprofilePic), required: false);
-            var __workflow_bodypoints = bodypoints == null ? null : WorkflowExpression.Compile(bodypoints);
-            WorkflowExpression.Validate(__workflow_bodypoints, nameof(bodypoints), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
-            var __workflow_bodyuserRoleId = bodyuserRoleId == null ? null : WorkflowExpression.Compile(bodyuserRoleId);
-            WorkflowExpression.Validate(__workflow_bodyuserRoleId, nameof(bodyuserRoleId), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyslug = bodyslug == null ? null : WorkflowExpression.Compile(bodyslug);
-            WorkflowExpression.Validate(__workflow_bodyslug, nameof(bodyslug), required: false);
-            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            var __workflow_bodylastSignOutAt = bodylastSignOutAt == null ? null : WorkflowExpression.Compile(bodylastSignOutAt);
-            WorkflowExpression.Validate(__workflow_bodylastSignOutAt, nameof(bodylastSignOutAt), required: false);
-            var __workflow_bodyposition = bodyposition == null ? null : WorkflowExpression.Compile(bodyposition);
-            WorkflowExpression.Validate(__workflow_bodyposition, nameof(bodyposition), required: false);
-            var __workflow_bodyprofileFlag = bodyprofileFlag == null ? null : WorkflowExpression.Compile(bodyprofileFlag);
-            WorkflowExpression.Validate(__workflow_bodyprofileFlag, nameof(bodyprofileFlag), required: false);
-            var __workflow_bodyuserChecklist = bodyuserChecklist == null ? null : WorkflowExpression.Compile(bodyuserChecklist);
-            WorkflowExpression.Validate(__workflow_bodyuserChecklist, nameof(bodyuserChecklist), required: false);
-            var __workflow_bodyideaLikesCount = bodyideaLikesCount == null ? null : WorkflowExpression.Compile(bodyideaLikesCount);
-            WorkflowExpression.Validate(__workflow_bodyideaLikesCount, nameof(bodyideaLikesCount), required: false);
-            var __workflow_bodycommentsCount = bodycommentsCount == null ? null : WorkflowExpression.Compile(bodycommentsCount);
-            WorkflowExpression.Validate(__workflow_bodycommentsCount, nameof(bodycommentsCount), required: false);
-            var __workflow_bodyxpPoints = bodyxpPoints == null ? null : WorkflowExpression.Compile(bodyxpPoints);
-            WorkflowExpression.Validate(__workflow_bodyxpPoints, nameof(bodyxpPoints), required: false);
-            var __workflow_bodyideasCount = bodyideasCount == null ? null : WorkflowExpression.Compile(bodyideasCount);
-            WorkflowExpression.Validate(__workflow_bodyideasCount, nameof(bodyideasCount), required: false);
-            var __workflow_bodyfunnelId = bodyfunnelId == null ? null : WorkflowExpression.Compile(bodyfunnelId);
-            WorkflowExpression.Validate(__workflow_bodyfunnelId, nameof(bodyfunnelId), required: false);
-            var __workflow_bodylevel = bodylevel == null ? null : WorkflowExpression.Compile(bodylevel);
-            WorkflowExpression.Validate(__workflow_bodylevel, nameof(bodylevel), required: false);
-            var __workflow_bodyxpLevel = bodyxpLevel == null ? null : WorkflowExpression.Compile(bodyxpLevel);
-            WorkflowExpression.Validate(__workflow_bodyxpLevel, nameof(bodyxpLevel), required: false);
-            var __workflow_bodyprojectFunnelId = bodyprojectFunnelId == null ? null : WorkflowExpression.Compile(bodyprojectFunnelId);
-            WorkflowExpression.Validate(__workflow_bodyprojectFunnelId, nameof(bodyprojectFunnelId), required: false);
-            var __workflow_bodychecklistScore = bodychecklistScore == null ? null : WorkflowExpression.Compile(bodychecklistScore);
-            WorkflowExpression.Validate(__workflow_bodychecklistScore, nameof(bodychecklistScore), required: false);
-            var __workflow_bodyprovider = bodyprovider == null ? null : WorkflowExpression.Compile(bodyprovider);
-            WorkflowExpression.Validate(__workflow_bodyprovider, nameof(bodyprovider), required: false);
-            var __workflow_bodyuid = bodyuid == null ? null : WorkflowExpression.Compile(bodyuid);
-            WorkflowExpression.Validate(__workflow_bodyuid, nameof(bodyuid), required: false);
-            var __workflow_bodyemailSentAt = bodyemailSentAt == null ? null : WorkflowExpression.Compile(bodyemailSentAt);
-            WorkflowExpression.Validate(__workflow_bodyemailSentAt, nameof(bodyemailSentAt), required: false);
-            var __workflow_bodyblockAllNotification = bodyblockAllNotification == null ? null : WorkflowExpression.Compile(bodyblockAllNotification);
-            WorkflowExpression.Validate(__workflow_bodyblockAllNotification, nameof(bodyblockAllNotification), required: false);
-            var __workflow_bodydbName = bodydbName == null ? null : WorkflowExpression.Compile(bodydbName);
-            WorkflowExpression.Validate(__workflow_bodydbName, nameof(bodydbName), required: false);
-            var __workflow_bodydeptId = bodydeptId == null ? null : WorkflowExpression.Compile(bodydeptId);
-            WorkflowExpression.Validate(__workflow_bodydeptId, nameof(bodydeptId), required: false);
-            var __workflow_bodydeptName = bodydeptName == null ? null : WorkflowExpression.Compile(bodydeptName);
-            WorkflowExpression.Validate(__workflow_bodydeptName, nameof(bodydeptName), required: false);
-            var __workflow_bodymainImage = bodymainImage == null ? null : WorkflowExpression.Compile(bodymainImage);
-            WorkflowExpression.Validate(__workflow_bodymainImage, nameof(bodymainImage), required: false);
-            var __workflow_bodytempImage = bodytempImage == null ? null : WorkflowExpression.Compile(bodytempImage);
-            WorkflowExpression.Validate(__workflow_bodytempImage, nameof(bodytempImage), required: false);
-            var __workflow_bodyimageConfigs = bodyimageConfigs == null ? null : WorkflowExpression.Compile(bodyimageConfigs);
-            WorkflowExpression.Validate(__workflow_bodyimageConfigs, nameof(bodyimageConfigs), required: false);
-            var __workflow_bodyimageAutoGenerated = bodyimageAutoGenerated == null ? null : WorkflowExpression.Compile(bodyimageAutoGenerated);
-            WorkflowExpression.Validate(__workflow_bodyimageAutoGenerated, nameof(bodyimageAutoGenerated), required: false);
-            var __workflow_bodyamAccount = bodyamAccount == null ? null : WorkflowExpression.Compile(bodyamAccount);
-            WorkflowExpression.Validate(__workflow_bodyamAccount, nameof(bodyamAccount), required: false);
-            var __workflow_bodyuuid = bodyuuid == null ? null : WorkflowExpression.Compile(bodyuuid);
-            WorkflowExpression.Validate(__workflow_bodyuuid, nameof(bodyuuid), required: false);
-            var __workflow_bodypasswordResetAttempts = bodypasswordResetAttempts == null ? null : WorkflowExpression.Compile(bodypasswordResetAttempts);
-            WorkflowExpression.Validate(__workflow_bodypasswordResetAttempts, nameof(bodypasswordResetAttempts), required: false);
-            var __workflow_bodylastPasswordResetAt = bodylastPasswordResetAt == null ? null : WorkflowExpression.Compile(bodylastPasswordResetAt);
-            WorkflowExpression.Validate(__workflow_bodylastPasswordResetAt, nameof(bodylastPasswordResetAt), required: false);
-            var __workflow_bodycustomDomain = bodycustomDomain == null ? null : WorkflowExpression.Compile(bodycustomDomain);
-            WorkflowExpression.Validate(__workflow_bodycustomDomain, nameof(bodycustomDomain), required: false);
-            var __workflow_bodyuserRoleName = bodyuserRoleName == null ? null : WorkflowExpression.Compile(bodyuserRoleName);
-            WorkflowExpression.Validate(__workflow_bodyuserRoleName, nameof(bodyuserRoleName), required: false);
-            var __workflow_bodytheme = bodytheme == null ? null : WorkflowExpression.Compile(bodytheme);
-            WorkflowExpression.Validate(__workflow_bodytheme, nameof(bodytheme), required: false);
-            var __workflow_bodyuserType = bodyuserType == null ? null : WorkflowExpression.Compile(bodyuserType);
-            WorkflowExpression.Validate(__workflow_bodyuserType, nameof(bodyuserType), required: false);
-            var __workflow_bodyviewSettings = bodyviewSettings == null ? null : WorkflowExpression.Compile(bodyviewSettings);
-            WorkflowExpression.Validate(__workflow_bodyviewSettings, nameof(bodyviewSettings), required: false);
-            var __workflow_bodyreadManual = bodyreadManual == null ? null : WorkflowExpression.Compile(bodyreadManual);
-            WorkflowExpression.Validate(__workflow_bodyreadManual, nameof(bodyreadManual), required: false);
-            var __workflow_bodyaddIdeaBox = bodyaddIdeaBox == null ? null : WorkflowExpression.Compile(bodyaddIdeaBox);
-            WorkflowExpression.Validate(__workflow_bodyaddIdeaBox, nameof(bodyaddIdeaBox), required: false);
-            var __workflow_bodyvisitAgent = bodyvisitAgent == null ? null : WorkflowExpression.Compile(bodyvisitAgent);
-            WorkflowExpression.Validate(__workflow_bodyvisitAgent, nameof(bodyvisitAgent), required: false);
-            var __workflow_bodyaddIdea = bodyaddIdea == null ? null : WorkflowExpression.Compile(bodyaddIdea);
-            WorkflowExpression.Validate(__workflow_bodyaddIdea, nameof(bodyaddIdea), required: false);
-            var __workflow_bodyinvitePeople = bodyinvitePeople == null ? null : WorkflowExpression.Compile(bodyinvitePeople);
-            WorkflowExpression.Validate(__workflow_bodyinvitePeople, nameof(bodyinvitePeople), required: false);
-            var __workflow_bodyaddBoardMission = bodyaddBoardMission == null ? null : WorkflowExpression.Compile(bodyaddBoardMission);
-            WorkflowExpression.Validate(__workflow_bodyaddBoardMission, nameof(bodyaddBoardMission), required: false);
-            var __workflow_bodyaddProject = bodyaddProject == null ? null : WorkflowExpression.Compile(bodyaddProject);
-            WorkflowExpression.Validate(__workflow_bodyaddProject, nameof(bodyaddProject), required: false);
-            var __workflow_bodycompletedChecklist = bodycompletedChecklist == null ? null : WorkflowExpression.Compile(bodycompletedChecklist);
-            WorkflowExpression.Validate(__workflow_bodycompletedChecklist, nameof(bodycompletedChecklist), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyprofilePic = WorkflowExpression.Compile(bodyprofilePic, nameof(bodyprofilePic), required: false);
+            var __workflow_bodypoints = WorkflowExpression.Compile(bodypoints, nameof(bodypoints), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyuserRoleId = WorkflowExpression.Compile(bodyuserRoleId, nameof(bodyuserRoleId), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyslug = WorkflowExpression.Compile(bodyslug, nameof(bodyslug), required: false);
+            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            var __workflow_bodylastSignOutAt = WorkflowExpression.Compile(bodylastSignOutAt, nameof(bodylastSignOutAt), required: false);
+            var __workflow_bodyposition = WorkflowExpression.Compile(bodyposition, nameof(bodyposition), required: false);
+            var __workflow_bodyprofileFlag = WorkflowExpression.Compile(bodyprofileFlag, nameof(bodyprofileFlag), required: false);
+            var __workflow_bodyuserChecklist = WorkflowExpression.Compile(bodyuserChecklist, nameof(bodyuserChecklist), required: false);
+            var __workflow_bodyideaLikesCount = WorkflowExpression.Compile(bodyideaLikesCount, nameof(bodyideaLikesCount), required: false);
+            var __workflow_bodycommentsCount = WorkflowExpression.Compile(bodycommentsCount, nameof(bodycommentsCount), required: false);
+            var __workflow_bodyxpPoints = WorkflowExpression.Compile(bodyxpPoints, nameof(bodyxpPoints), required: false);
+            var __workflow_bodyideasCount = WorkflowExpression.Compile(bodyideasCount, nameof(bodyideasCount), required: false);
+            var __workflow_bodyfunnelId = WorkflowExpression.Compile(bodyfunnelId, nameof(bodyfunnelId), required: false);
+            var __workflow_bodylevel = WorkflowExpression.Compile(bodylevel, nameof(bodylevel), required: false);
+            var __workflow_bodyxpLevel = WorkflowExpression.Compile(bodyxpLevel, nameof(bodyxpLevel), required: false);
+            var __workflow_bodyprojectFunnelId = WorkflowExpression.Compile(bodyprojectFunnelId, nameof(bodyprojectFunnelId), required: false);
+            var __workflow_bodychecklistScore = WorkflowExpression.Compile(bodychecklistScore, nameof(bodychecklistScore), required: false);
+            var __workflow_bodyprovider = WorkflowExpression.Compile(bodyprovider, nameof(bodyprovider), required: false);
+            var __workflow_bodyuid = WorkflowExpression.Compile(bodyuid, nameof(bodyuid), required: false);
+            var __workflow_bodyemailSentAt = WorkflowExpression.Compile(bodyemailSentAt, nameof(bodyemailSentAt), required: false);
+            var __workflow_bodyblockAllNotification = WorkflowExpression.Compile(bodyblockAllNotification, nameof(bodyblockAllNotification), required: false);
+            var __workflow_bodydbName = WorkflowExpression.Compile(bodydbName, nameof(bodydbName), required: false);
+            var __workflow_bodydeptId = WorkflowExpression.Compile(bodydeptId, nameof(bodydeptId), required: false);
+            var __workflow_bodydeptName = WorkflowExpression.Compile(bodydeptName, nameof(bodydeptName), required: false);
+            var __workflow_bodymainImage = WorkflowExpression.Compile(bodymainImage, nameof(bodymainImage), required: false);
+            var __workflow_bodytempImage = WorkflowExpression.Compile(bodytempImage, nameof(bodytempImage), required: false);
+            var __workflow_bodyimageConfigs = WorkflowExpression.Compile(bodyimageConfigs, nameof(bodyimageConfigs), required: false);
+            var __workflow_bodyimageAutoGenerated = WorkflowExpression.Compile(bodyimageAutoGenerated, nameof(bodyimageAutoGenerated), required: false);
+            var __workflow_bodyamAccount = WorkflowExpression.Compile(bodyamAccount, nameof(bodyamAccount), required: false);
+            var __workflow_bodyuuid = WorkflowExpression.Compile(bodyuuid, nameof(bodyuuid), required: false);
+            var __workflow_bodypasswordResetAttempts = WorkflowExpression.Compile(bodypasswordResetAttempts, nameof(bodypasswordResetAttempts), required: false);
+            var __workflow_bodylastPasswordResetAt = WorkflowExpression.Compile(bodylastPasswordResetAt, nameof(bodylastPasswordResetAt), required: false);
+            var __workflow_bodycustomDomain = WorkflowExpression.Compile(bodycustomDomain, nameof(bodycustomDomain), required: false);
+            var __workflow_bodyuserRoleName = WorkflowExpression.Compile(bodyuserRoleName, nameof(bodyuserRoleName), required: false);
+            var __workflow_bodytheme = WorkflowExpression.Compile(bodytheme, nameof(bodytheme), required: false);
+            var __workflow_bodyuserType = WorkflowExpression.Compile(bodyuserType, nameof(bodyuserType), required: false);
+            var __workflow_bodyviewSettings = WorkflowExpression.Compile(bodyviewSettings, nameof(bodyviewSettings), required: false);
+            var __workflow_bodyreadManual = WorkflowExpression.Compile(bodyreadManual, nameof(bodyreadManual), required: false);
+            var __workflow_bodyaddIdeaBox = WorkflowExpression.Compile(bodyaddIdeaBox, nameof(bodyaddIdeaBox), required: false);
+            var __workflow_bodyvisitAgent = WorkflowExpression.Compile(bodyvisitAgent, nameof(bodyvisitAgent), required: false);
+            var __workflow_bodyaddIdea = WorkflowExpression.Compile(bodyaddIdea, nameof(bodyaddIdea), required: false);
+            var __workflow_bodyinvitePeople = WorkflowExpression.Compile(bodyinvitePeople, nameof(bodyinvitePeople), required: false);
+            var __workflow_bodyaddBoardMission = WorkflowExpression.Compile(bodyaddBoardMission, nameof(bodyaddBoardMission), required: false);
+            var __workflow_bodyaddProject = WorkflowExpression.Compile(bodyaddProject, nameof(bodyaddProject), required: false);
+            var __workflow_bodycompletedChecklist = WorkflowExpression.Compile(bodycompletedChecklist, nameof(bodycompletedChecklist), required: false);
             return new DeferredBodyAction<PutusersIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/general/v1/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

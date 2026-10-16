@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
         public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyclientId, Expression<Func<string>> bodyclientSecret)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodyclientId = bodyclientId == null ? null : WorkflowExpression.Compile(bodyclientId);
-            WorkflowExpression.Validate(__workflow_bodyclientId, nameof(bodyclientId), required: true);
-            var __workflow_bodyclientSecret = bodyclientSecret == null ? null : WorkflowExpression.Compile(bodyclientSecret);
-            WorkflowExpression.Validate(__workflow_bodyclientSecret, nameof(bodyclientSecret), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyclientId = WorkflowExpression.Compile(bodyclientId, nameof(bodyclientId), required: true);
+            var __workflow_bodyclientSecret = WorkflowExpression.Compile(bodyclientSecret, nameof(bodyclientSecret), required: true);
             return new DeferredBodyAction<GetAccessTokenResponse>(() =>
             {
                 var apiCallPath = "/api/authentication/access_token";

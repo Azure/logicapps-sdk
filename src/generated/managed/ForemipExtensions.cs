@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
         public IBodyWorkflowAction<Articles200Item[]> GetArticles(Expression<Func<int>> page, Expression<Func<int>> perPage, Expression<Func<string>> tag, Expression<Func<string>> tags = null, Expression<Func<string>> tagsExclude = null, Expression<Func<string>> username = null, Expression<Func<string>> state = null, Expression<Func<string>> top = null, Expression<Func<string>> collectionId = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: true);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: true);
-            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
-            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: true);
-            var __workflow_tags = tags == null ? null : WorkflowExpression.Compile(tags);
-            WorkflowExpression.Validate(__workflow_tags, nameof(tags), required: false);
-            var __workflow_tagsExclude = tagsExclude == null ? null : WorkflowExpression.Compile(tagsExclude);
-            WorkflowExpression.Validate(__workflow_tagsExclude, nameof(tagsExclude), required: false);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
-            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: true);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
+            var __workflow_tags = WorkflowExpression.Compile(tags, nameof(tags), required: false);
+            var __workflow_tagsExclude = WorkflowExpression.Compile(tagsExclude, nameof(tagsExclude), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: false);
             return new DeferredBodyAction<Articles200Item[]>(() =>
             {
                 var apiCallPath = "/api/articles";
@@ -61,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Foremip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "foremip")]
         public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId, Expression<Func<string>> url)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredBodyAction<User>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));

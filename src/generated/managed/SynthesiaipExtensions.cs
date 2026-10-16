@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoListResponse> VideoList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<VideoListResponse>(() =>
             {
                 var apiCallPath = "/videos";
@@ -33,24 +31,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoCreateResponse> VideoCreate(Expression<Func<bodyinputInputItem[]>> bodyinput, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodycallbackId = null, Expression<Func<string>> bodysoundtrack = null)
         {
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
-            var __workflow_bodytest = bodytest == null ? null : WorkflowExpression.Compile(bodytest);
-            WorkflowExpression.Validate(__workflow_bodytest, nameof(bodytest), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
-            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: false);
-            var __workflow_bodyctaSettingslabel = bodyctaSettingslabel == null ? null : WorkflowExpression.Compile(bodyctaSettingslabel);
-            WorkflowExpression.Validate(__workflow_bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
-            var __workflow_bodyctaSettingsurl = bodyctaSettingsurl == null ? null : WorkflowExpression.Compile(bodyctaSettingsurl);
-            WorkflowExpression.Validate(__workflow_bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
-            var __workflow_bodycallbackId = bodycallbackId == null ? null : WorkflowExpression.Compile(bodycallbackId);
-            WorkflowExpression.Validate(__workflow_bodycallbackId, nameof(bodycallbackId), required: false);
-            var __workflow_bodysoundtrack = bodysoundtrack == null ? null : WorkflowExpression.Compile(bodysoundtrack);
-            WorkflowExpression.Validate(__workflow_bodysoundtrack, nameof(bodysoundtrack), required: false);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
+            var __workflow_bodyctaSettingslabel = WorkflowExpression.Compile(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
+            var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
+            var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
+            var __workflow_bodysoundtrack = WorkflowExpression.Compile(bodysoundtrack, nameof(bodysoundtrack), required: false);
             return new DeferredBodyAction<VideoCreateResponse>(() =>
             {
                 var apiCallPath = "/videos";
@@ -128,8 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoStatusResponse> VideoStatus(Expression<Func<string>> videoId)
         {
-            var __workflow_videoId = videoId == null ? null : WorkflowExpression.Compile(videoId);
-            WorkflowExpression.Validate(__workflow_videoId, nameof(videoId), required: true);
+            var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             return new DeferredBodyAction<VideoStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
@@ -142,8 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<string> VideoDelete(Expression<Func<string>> videoId)
         {
-            var __workflow_videoId = videoId == null ? null : WorkflowExpression.Compile(videoId);
-            WorkflowExpression.Validate(__workflow_videoId, nameof(videoId), required: true);
+            var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
@@ -156,18 +143,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoPatchResponse> VideoPatch(Expression<Func<string>> videoId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyctaSettingslabel = null, Expression<Func<string>> bodyctaSettingsurl = null, Expression<Func<string>> bodyvisibility = null)
         {
-            var __workflow_videoId = videoId == null ? null : WorkflowExpression.Compile(videoId);
-            WorkflowExpression.Validate(__workflow_videoId, nameof(videoId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyctaSettingslabel = bodyctaSettingslabel == null ? null : WorkflowExpression.Compile(bodyctaSettingslabel);
-            WorkflowExpression.Validate(__workflow_bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
-            var __workflow_bodyctaSettingsurl = bodyctaSettingsurl == null ? null : WorkflowExpression.Compile(bodyctaSettingsurl);
-            WorkflowExpression.Validate(__workflow_bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
-            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
-            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: false);
+            var __workflow_videoId = WorkflowExpression.Compile(videoId, nameof(videoId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyctaSettingslabel = WorkflowExpression.Compile(bodyctaSettingslabel, nameof(bodyctaSettingslabel), required: false);
+            var __workflow_bodyctaSettingsurl = WorkflowExpression.Compile(bodyctaSettingsurl, nameof(bodyctaSettingsurl), required: false);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
             return new DeferredBodyAction<VideoPatchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/videos/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_videoId, 1));
@@ -225,10 +206,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<TemplateListResponse> TemplateList(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<TemplateListResponse>(() =>
             {
                 var apiCallPath = "/templates";
@@ -245,8 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -259,20 +237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Synthesiaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "synthesiaip")]
         public IBodyWorkflowAction<VideoCreateTemplateResponse> VideoCreateTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyvisibility = null, Expression<Func<string>> bodytemplateDataname = null, Expression<Func<bool>> bodytest = null, Expression<Func<string>> bodycallbackId = null)
         {
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
-            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: false);
-            var __workflow_bodytemplateDataname = bodytemplateDataname == null ? null : WorkflowExpression.Compile(bodytemplateDataname);
-            WorkflowExpression.Validate(__workflow_bodytemplateDataname, nameof(bodytemplateDataname), required: false);
-            var __workflow_bodytest = bodytest == null ? null : WorkflowExpression.Compile(bodytest);
-            WorkflowExpression.Validate(__workflow_bodytest, nameof(bodytest), required: false);
-            var __workflow_bodycallbackId = bodycallbackId == null ? null : WorkflowExpression.Compile(bodycallbackId);
-            WorkflowExpression.Validate(__workflow_bodycallbackId, nameof(bodycallbackId), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
+            var __workflow_bodytemplateDataname = WorkflowExpression.Compile(bodytemplateDataname, nameof(bodytemplateDataname), required: false);
+            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
+            var __workflow_bodycallbackId = WorkflowExpression.Compile(bodycallbackId, nameof(bodycallbackId), required: false);
             return new DeferredBodyAction<VideoCreateTemplateResponse>(() =>
             {
                 var apiCallPath = "/videos/fromTemplate";

@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationsResponse> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<string>> state = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             return new DeferredBodyAction<GetStationsResponse>(() =>
             {
                 var apiCallPath = "/stations";
@@ -53,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationResponse> GetStation(Expression<Func<string>> stationCode)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -67,24 +59,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetNearbyWeatherStationsResponse> GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<string>> state = null)
         {
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
             return new DeferredBodyAction<GetNearbyWeatherStationsResponse>(() =>
             {
                 var apiCallPath = "/stations/nearby";
@@ -113,18 +96,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetStationRainfallResponse> GetStationRainfall(Expression<Func<string>> stationCode, Expression<Func<string>> summerStartDate = null, Expression<Func<string>> growingSeasonStartDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> forecastDate = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_summerStartDate = summerStartDate == null ? null : WorkflowExpression.Compile(summerStartDate);
-            WorkflowExpression.Validate(__workflow_summerStartDate, nameof(summerStartDate), required: false);
-            var __workflow_growingSeasonStartDate = growingSeasonStartDate == null ? null : WorkflowExpression.Compile(growingSeasonStartDate);
-            WorkflowExpression.Validate(__workflow_growingSeasonStartDate, nameof(growingSeasonStartDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_forecastDate = forecastDate == null ? null : WorkflowExpression.Compile(forecastDate);
-            WorkflowExpression.Validate(__workflow_forecastDate, nameof(forecastDate), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_summerStartDate = WorkflowExpression.Compile(summerStartDate, nameof(summerStartDate), required: false);
+            var __workflow_growingSeasonStartDate = WorkflowExpression.Compile(growingSeasonStartDate, nameof(growingSeasonStartDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_forecastDate = WorkflowExpression.Compile(forecastDate, nameof(forecastDate), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationRainfallResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/rainfall/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -147,24 +124,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetPotentialYieldResponse> GetPotentialYield(Expression<Func<string>> stationCode = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<string>> summerStartDate = null, Expression<Func<string>> growingSeasonStartDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> forecastDate = null, Expression<Func<int>> waterUseEfficiency = null, Expression<Func<int>> evaporation = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: false);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: false);
-            var __workflow_summerStartDate = summerStartDate == null ? null : WorkflowExpression.Compile(summerStartDate);
-            WorkflowExpression.Validate(__workflow_summerStartDate, nameof(summerStartDate), required: false);
-            var __workflow_growingSeasonStartDate = growingSeasonStartDate == null ? null : WorkflowExpression.Compile(growingSeasonStartDate);
-            WorkflowExpression.Validate(__workflow_growingSeasonStartDate, nameof(growingSeasonStartDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_forecastDate = forecastDate == null ? null : WorkflowExpression.Compile(forecastDate);
-            WorkflowExpression.Validate(__workflow_forecastDate, nameof(forecastDate), required: false);
-            var __workflow_waterUseEfficiency = waterUseEfficiency == null ? null : WorkflowExpression.Compile(waterUseEfficiency);
-            WorkflowExpression.Validate(__workflow_waterUseEfficiency, nameof(waterUseEfficiency), required: false);
-            var __workflow_evaporation = evaporation == null ? null : WorkflowExpression.Compile(evaporation);
-            WorkflowExpression.Validate(__workflow_evaporation, nameof(evaporation), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: false);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: false);
+            var __workflow_summerStartDate = WorkflowExpression.Compile(summerStartDate, nameof(summerStartDate), required: false);
+            var __workflow_growingSeasonStartDate = WorkflowExpression.Compile(growingSeasonStartDate, nameof(growingSeasonStartDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_forecastDate = WorkflowExpression.Compile(forecastDate, nameof(forecastDate), required: false);
+            var __workflow_waterUseEfficiency = WorkflowExpression.Compile(waterUseEfficiency, nameof(waterUseEfficiency), required: false);
+            var __workflow_evaporation = WorkflowExpression.Compile(evaporation, nameof(evaporation), required: false);
             return new DeferredBodyAction<GetPotentialYieldResponse>(() =>
             {
                 var apiCallPath = "/potential-yield";
@@ -195,38 +163,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetSoilWaterResponse> GetSoilWater(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<soilTypeInput>> soilType, Expression<Func<string>> stationCode = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<int>> faoInitialisationDays = null, Expression<Func<double>> faoInitialisationCropCoefficient = null, Expression<Func<int>> faoDevelopmentDays = null, Expression<Func<double>> faoDevelopmentCropCoefficient = null, Expression<Func<int>> faoMidSeasonDays = null, Expression<Func<double>> faoMidSeasonCropCoefficient = null, Expression<Func<int>> faoLateSeasonDays = null, Expression<Func<double>> faoLateSeasonCropCoefficient = null, Expression<Func<int>> faoBreakOfSeason3Days25April = null, Expression<Func<int>> faoBreakOfSeason3Days5June = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_soilType = soilType == null ? null : WorkflowExpression.Compile(soilType);
-            WorkflowExpression.Validate(__workflow_soilType, nameof(soilType), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: false);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: false);
-            var __workflow_faoInitialisationDays = faoInitialisationDays == null ? null : WorkflowExpression.Compile(faoInitialisationDays);
-            WorkflowExpression.Validate(__workflow_faoInitialisationDays, nameof(faoInitialisationDays), required: false);
-            var __workflow_faoInitialisationCropCoefficient = faoInitialisationCropCoefficient == null ? null : WorkflowExpression.Compile(faoInitialisationCropCoefficient);
-            WorkflowExpression.Validate(__workflow_faoInitialisationCropCoefficient, nameof(faoInitialisationCropCoefficient), required: false);
-            var __workflow_faoDevelopmentDays = faoDevelopmentDays == null ? null : WorkflowExpression.Compile(faoDevelopmentDays);
-            WorkflowExpression.Validate(__workflow_faoDevelopmentDays, nameof(faoDevelopmentDays), required: false);
-            var __workflow_faoDevelopmentCropCoefficient = faoDevelopmentCropCoefficient == null ? null : WorkflowExpression.Compile(faoDevelopmentCropCoefficient);
-            WorkflowExpression.Validate(__workflow_faoDevelopmentCropCoefficient, nameof(faoDevelopmentCropCoefficient), required: false);
-            var __workflow_faoMidSeasonDays = faoMidSeasonDays == null ? null : WorkflowExpression.Compile(faoMidSeasonDays);
-            WorkflowExpression.Validate(__workflow_faoMidSeasonDays, nameof(faoMidSeasonDays), required: false);
-            var __workflow_faoMidSeasonCropCoefficient = faoMidSeasonCropCoefficient == null ? null : WorkflowExpression.Compile(faoMidSeasonCropCoefficient);
-            WorkflowExpression.Validate(__workflow_faoMidSeasonCropCoefficient, nameof(faoMidSeasonCropCoefficient), required: false);
-            var __workflow_faoLateSeasonDays = faoLateSeasonDays == null ? null : WorkflowExpression.Compile(faoLateSeasonDays);
-            WorkflowExpression.Validate(__workflow_faoLateSeasonDays, nameof(faoLateSeasonDays), required: false);
-            var __workflow_faoLateSeasonCropCoefficient = faoLateSeasonCropCoefficient == null ? null : WorkflowExpression.Compile(faoLateSeasonCropCoefficient);
-            WorkflowExpression.Validate(__workflow_faoLateSeasonCropCoefficient, nameof(faoLateSeasonCropCoefficient), required: false);
-            var __workflow_faoBreakOfSeason3Days25April = faoBreakOfSeason3Days25April == null ? null : WorkflowExpression.Compile(faoBreakOfSeason3Days25April);
-            WorkflowExpression.Validate(__workflow_faoBreakOfSeason3Days25April, nameof(faoBreakOfSeason3Days25April), required: false);
-            var __workflow_faoBreakOfSeason3Days5June = faoBreakOfSeason3Days5June == null ? null : WorkflowExpression.Compile(faoBreakOfSeason3Days5June);
-            WorkflowExpression.Validate(__workflow_faoBreakOfSeason3Days5June, nameof(faoBreakOfSeason3Days5June), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_soilType = WorkflowExpression.Compile(soilType, nameof(soilType), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: false);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: false);
+            var __workflow_faoInitialisationDays = WorkflowExpression.Compile(faoInitialisationDays, nameof(faoInitialisationDays), required: false);
+            var __workflow_faoInitialisationCropCoefficient = WorkflowExpression.Compile(faoInitialisationCropCoefficient, nameof(faoInitialisationCropCoefficient), required: false);
+            var __workflow_faoDevelopmentDays = WorkflowExpression.Compile(faoDevelopmentDays, nameof(faoDevelopmentDays), required: false);
+            var __workflow_faoDevelopmentCropCoefficient = WorkflowExpression.Compile(faoDevelopmentCropCoefficient, nameof(faoDevelopmentCropCoefficient), required: false);
+            var __workflow_faoMidSeasonDays = WorkflowExpression.Compile(faoMidSeasonDays, nameof(faoMidSeasonDays), required: false);
+            var __workflow_faoMidSeasonCropCoefficient = WorkflowExpression.Compile(faoMidSeasonCropCoefficient, nameof(faoMidSeasonCropCoefficient), required: false);
+            var __workflow_faoLateSeasonDays = WorkflowExpression.Compile(faoLateSeasonDays, nameof(faoLateSeasonDays), required: false);
+            var __workflow_faoLateSeasonCropCoefficient = WorkflowExpression.Compile(faoLateSeasonCropCoefficient, nameof(faoLateSeasonCropCoefficient), required: false);
+            var __workflow_faoBreakOfSeason3Days25April = WorkflowExpression.Compile(faoBreakOfSeason3Days25April, nameof(faoBreakOfSeason3Days25April), required: false);
+            var __workflow_faoBreakOfSeason3Days5June = WorkflowExpression.Compile(faoBreakOfSeason3Days5June, nameof(faoBreakOfSeason3Days5June), required: false);
             return new DeferredBodyAction<GetSoilWaterResponse>(() =>
             {
                 var apiCallPath = "/soilwater";
@@ -268,12 +220,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdscienceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdscienceip")]
         public IBodyWorkflowAction<GetYellowSpotResponse> GetYellowSpot(Expression<Func<string>> stationCode = null, Expression<Func<string>> date = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetYellowSpotResponse>(() =>
             {
                 var apiCallPath = "/yellowspot";

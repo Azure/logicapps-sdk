@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IWorkflowAction SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
         {
-            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
-            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodyaudienceUsers = bodyaudienceUsers == null ? null : WorkflowExpression.Compile(bodyaudienceUsers);
-            WorkflowExpression.Validate(__workflow_bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
+            var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodyaudienceUsers = WorkflowExpression.Compile(bodyaudienceUsers, nameof(bodyaudienceUsers), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
@@ -67,8 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
         public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates(Expression<Func<string>> profileId)
         {
-            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
-            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
+            var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             return new DeferredBodyAction<GetTemplatesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));

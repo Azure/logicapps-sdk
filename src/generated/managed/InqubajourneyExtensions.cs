@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<AcquireAccessTokenResponse> AcquireAccessToken(Expression<Func<string>> tenantName, Expression<Func<string>> hostURL, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
         {
-            var __workflow_tenantName = tenantName == null ? null : WorkflowExpression.Compile(tenantName);
-            WorkflowExpression.Validate(__workflow_tenantName, nameof(tenantName), required: true);
-            var __workflow_hostURL = hostURL == null ? null : WorkflowExpression.Compile(hostURL);
-            WorkflowExpression.Validate(__workflow_hostURL, nameof(hostURL), required: true);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: true);
-            var __workflow_clientId = clientId == null ? null : WorkflowExpression.Compile(clientId);
-            WorkflowExpression.Validate(__workflow_clientId, nameof(clientId), required: true);
-            var __workflow_clientSecret = clientSecret == null ? null : WorkflowExpression.Compile(clientSecret);
-            WorkflowExpression.Validate(__workflow_clientSecret, nameof(clientSecret), required: true);
+            var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
+            var __workflow_hostURL = WorkflowExpression.Compile(hostURL, nameof(hostURL), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
+            var __workflow_clientSecret = WorkflowExpression.Compile(clientSecret, nameof(clientSecret), required: true);
             return new DeferredBodyAction<AcquireAccessTokenResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/connect/token", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tenantName, 1));
@@ -39,16 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<string> PublishEvent(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodyeventDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
         {
-            var __workflow_tenantName = tenantName == null ? null : WorkflowExpression.Compile(tenantName);
-            WorkflowExpression.Validate(__workflow_tenantName, nameof(tenantName), required: true);
-            var __workflow_authorizationToken = authorizationToken == null ? null : WorkflowExpression.Compile(authorizationToken);
-            WorkflowExpression.Validate(__workflow_authorizationToken, nameof(authorizationToken), required: true);
-            var __workflow_bodyeventDefinitionCode = bodyeventDefinitionCode == null ? null : WorkflowExpression.Compile(bodyeventDefinitionCode);
-            WorkflowExpression.Validate(__workflow_bodyeventDefinitionCode, nameof(bodyeventDefinitionCode), required: false);
-            var __workflow_bodyisTest = bodyisTest == null ? null : WorkflowExpression.Compile(bodyisTest);
-            WorkflowExpression.Validate(__workflow_bodyisTest, nameof(bodyisTest), required: false);
-            var __workflow_bodyattributes = bodyattributes == null ? null : WorkflowExpression.Compile(bodyattributes);
-            WorkflowExpression.Validate(__workflow_bodyattributes, nameof(bodyattributes), required: false);
+            var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
+            var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
+            var __workflow_bodyeventDefinitionCode = WorkflowExpression.Compile(bodyeventDefinitionCode, nameof(bodyeventDefinitionCode), required: false);
+            var __workflow_bodyisTest = WorkflowExpression.Compile(bodyisTest, nameof(bodyisTest), required: false);
+            var __workflow_bodyattributes = WorkflowExpression.Compile(bodyattributes, nameof(bodyattributes), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/cems/api/Events";
@@ -89,16 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inqubajourney
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inqubajourney")]
         public IBodyWorkflowAction<string> PublishTransaction(Expression<Func<string>> tenantName, Expression<Func<string>> authorizationToken, Expression<Func<string>> bodytransactionDefinitionCode = null, Expression<Func<bool>> bodyisTest = null, Expression<Func<bodyattributesInputItem[]>> bodyattributes = null)
         {
-            var __workflow_tenantName = tenantName == null ? null : WorkflowExpression.Compile(tenantName);
-            WorkflowExpression.Validate(__workflow_tenantName, nameof(tenantName), required: true);
-            var __workflow_authorizationToken = authorizationToken == null ? null : WorkflowExpression.Compile(authorizationToken);
-            WorkflowExpression.Validate(__workflow_authorizationToken, nameof(authorizationToken), required: true);
-            var __workflow_bodytransactionDefinitionCode = bodytransactionDefinitionCode == null ? null : WorkflowExpression.Compile(bodytransactionDefinitionCode);
-            WorkflowExpression.Validate(__workflow_bodytransactionDefinitionCode, nameof(bodytransactionDefinitionCode), required: false);
-            var __workflow_bodyisTest = bodyisTest == null ? null : WorkflowExpression.Compile(bodyisTest);
-            WorkflowExpression.Validate(__workflow_bodyisTest, nameof(bodyisTest), required: false);
-            var __workflow_bodyattributes = bodyattributes == null ? null : WorkflowExpression.Compile(bodyattributes);
-            WorkflowExpression.Validate(__workflow_bodyattributes, nameof(bodyattributes), required: false);
+            var __workflow_tenantName = WorkflowExpression.Compile(tenantName, nameof(tenantName), required: true);
+            var __workflow_authorizationToken = WorkflowExpression.Compile(authorizationToken, nameof(authorizationToken), required: true);
+            var __workflow_bodytransactionDefinitionCode = WorkflowExpression.Compile(bodytransactionDefinitionCode, nameof(bodytransactionDefinitionCode), required: false);
+            var __workflow_bodyisTest = WorkflowExpression.Compile(bodyisTest, nameof(bodyisTest), required: false);
+            var __workflow_bodyattributes = WorkflowExpression.Compile(bodyattributes, nameof(bodyattributes), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/cems/api/Transactions";

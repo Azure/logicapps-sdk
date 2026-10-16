@@ -13,52 +13,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<CreateInstantPackageResponse> CreateInstantPackage(Expression<Func<string>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
         {
-            var __workflow_bodydocument = bodydocument == null ? null : WorkflowExpression.Compile(bodydocument);
-            WorkflowExpression.Validate(__workflow_bodydocument, nameof(bodydocument), required: false);
-            var __workflow_bodydocumentLanguage = bodydocumentLanguage == null ? null : WorkflowExpression.Compile(bodydocumentLanguage);
-            WorkflowExpression.Validate(__workflow_bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
-            var __workflow_bodydocumentName = bodydocumentName == null ? null : WorkflowExpression.Compile(bodydocumentName);
-            WorkflowExpression.Validate(__workflow_bodydocumentName, nameof(bodydocumentName), required: false);
-            var __workflow_bodyexternalPackageData = bodyexternalPackageData == null ? null : WorkflowExpression.Compile(bodyexternalPackageData);
-            WorkflowExpression.Validate(__workflow_bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
-            var __workflow_bodyinitiator = bodyinitiator == null ? null : WorkflowExpression.Compile(bodyinitiator);
-            WorkflowExpression.Validate(__workflow_bodyinitiator, nameof(bodyinitiator), required: false);
-            var __workflow_bodystakeholders = bodystakeholders == null ? null : WorkflowExpression.Compile(bodystakeholders);
-            WorkflowExpression.Validate(__workflow_bodystakeholders, nameof(bodystakeholders), required: false);
-            var __workflow_bodycallBackUrl = bodycallBackUrl == null ? null : WorkflowExpression.Compile(bodycallBackUrl);
-            WorkflowExpression.Validate(__workflow_bodycallBackUrl, nameof(bodycallBackUrl), required: false);
-            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
-            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: false);
-            var __workflow_bodydocumentGroupCode = bodydocumentGroupCode == null ? null : WorkflowExpression.Compile(bodydocumentGroupCode);
-            WorkflowExpression.Validate(__workflow_bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
-            var __workflow_bodythemeCode = bodythemeCode == null ? null : WorkflowExpression.Compile(bodythemeCode);
-            WorkflowExpression.Validate(__workflow_bodythemeCode, nameof(bodythemeCode), required: false);
-            var __workflow_bodydownloadUnsignedFiles = bodydownloadUnsignedFiles == null ? null : WorkflowExpression.Compile(bodydownloadUnsignedFiles);
-            WorkflowExpression.Validate(__workflow_bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
-            var __workflow_bodyreassignEnabled = bodyreassignEnabled == null ? null : WorkflowExpression.Compile(bodyreassignEnabled);
-            WorkflowExpression.Validate(__workflow_bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
-            var __workflow_bodyactionUrlExpirationPeriodInDays = bodyactionUrlExpirationPeriodInDays == null ? null : WorkflowExpression.Compile(bodyactionUrlExpirationPeriodInDays);
-            WorkflowExpression.Validate(__workflow_bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
-            var __workflow_bodyexpiryTimestamp = bodyexpiryTimestamp == null ? null : WorkflowExpression.Compile(bodyexpiryTimestamp);
-            WorkflowExpression.Validate(__workflow_bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
-            var __workflow_bodyexternalDocumentReference = bodyexternalDocumentReference == null ? null : WorkflowExpression.Compile(bodyexternalDocumentReference);
-            WorkflowExpression.Validate(__workflow_bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
-            var __workflow_bodyexternalPackageReference = bodyexternalPackageReference == null ? null : WorkflowExpression.Compile(bodyexternalPackageReference);
-            WorkflowExpression.Validate(__workflow_bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
-            var __workflow_bodyf2FRedirectUrl = bodyf2FRedirectUrl == null ? null : WorkflowExpression.Compile(bodyf2FRedirectUrl);
-            WorkflowExpression.Validate(__workflow_bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
-            var __workflow_bodynotificationCallBackUrl = bodynotificationCallBackUrl == null ? null : WorkflowExpression.Compile(bodynotificationCallBackUrl);
-            WorkflowExpression.Validate(__workflow_bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
-            var __workflow_bodypdfErrorHandling = bodypdfErrorHandling == null ? null : WorkflowExpression.Compile(bodypdfErrorHandling);
-            WorkflowExpression.Validate(__workflow_bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
-            var __workflow_bodyrepresentation = bodyrepresentation == null ? null : WorkflowExpression.Compile(bodyrepresentation);
-            WorkflowExpression.Validate(__workflow_bodyrepresentation, nameof(bodyrepresentation), required: false);
-            var __workflow_bodyrepresentationType = bodyrepresentationType == null ? null : WorkflowExpression.Compile(bodyrepresentationType);
-            WorkflowExpression.Validate(__workflow_bodyrepresentationType, nameof(bodyrepresentationType), required: false);
-            var __workflow_bodysigningTemplateCode = bodysigningTemplateCode == null ? null : WorkflowExpression.Compile(bodysigningTemplateCode);
-            WorkflowExpression.Validate(__workflow_bodysigningTemplateCode, nameof(bodysigningTemplateCode), required: false);
-            var __workflow_bodytargetType = bodytargetType == null ? null : WorkflowExpression.Compile(bodytargetType);
-            WorkflowExpression.Validate(__workflow_bodytargetType, nameof(bodytargetType), required: false);
+            var __workflow_bodydocument = WorkflowExpression.Compile(bodydocument, nameof(bodydocument), required: false);
+            var __workflow_bodydocumentLanguage = WorkflowExpression.Compile(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
+            var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
+            var __workflow_bodyexternalPackageData = WorkflowExpression.Compile(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
+            var __workflow_bodyinitiator = WorkflowExpression.Compile(bodyinitiator, nameof(bodyinitiator), required: false);
+            var __workflow_bodystakeholders = WorkflowExpression.Compile(bodystakeholders, nameof(bodystakeholders), required: false);
+            var __workflow_bodycallBackUrl = WorkflowExpression.Compile(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
+            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: false);
+            var __workflow_bodydocumentGroupCode = WorkflowExpression.Compile(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
+            var __workflow_bodythemeCode = WorkflowExpression.Compile(bodythemeCode, nameof(bodythemeCode), required: false);
+            var __workflow_bodydownloadUnsignedFiles = WorkflowExpression.Compile(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
+            var __workflow_bodyreassignEnabled = WorkflowExpression.Compile(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
+            var __workflow_bodyactionUrlExpirationPeriodInDays = WorkflowExpression.Compile(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
+            var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
+            var __workflow_bodyexternalDocumentReference = WorkflowExpression.Compile(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
+            var __workflow_bodyexternalPackageReference = WorkflowExpression.Compile(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
+            var __workflow_bodyf2FRedirectUrl = WorkflowExpression.Compile(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
+            var __workflow_bodynotificationCallBackUrl = WorkflowExpression.Compile(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
+            var __workflow_bodypdfErrorHandling = WorkflowExpression.Compile(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
+            var __workflow_bodyrepresentation = WorkflowExpression.Compile(bodyrepresentation, nameof(bodyrepresentation), required: false);
+            var __workflow_bodyrepresentationType = WorkflowExpression.Compile(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
+            var __workflow_bodysigningTemplateCode = WorkflowExpression.Compile(bodysigningTemplateCode, nameof(bodysigningTemplateCode), required: false);
+            var __workflow_bodytargetType = WorkflowExpression.Compile(bodytargetType, nameof(bodytargetType), required: false);
             return new DeferredBodyAction<CreateInstantPackageResponse>(() =>
             {
                 var apiCallPath = "/packages/instant";
@@ -236,20 +213,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<PackageListResponse> PackageList(Expression<Func<string>> continuationToken = null, Expression<Func<int>> maxQuantity = null, Expression<Func<string>> sortField = null, Expression<Func<string>> sortOrder = null, Expression<Func<string>> createdBeforeDate = null, Expression<Func<string>> status = null, Expression<Func<string>> createdAfterDate = null)
         {
-            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
-            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
-            var __workflow_maxQuantity = maxQuantity == null ? null : WorkflowExpression.Compile(maxQuantity);
-            WorkflowExpression.Validate(__workflow_maxQuantity, nameof(maxQuantity), required: false);
-            var __workflow_sortField = sortField == null ? null : WorkflowExpression.Compile(sortField);
-            WorkflowExpression.Validate(__workflow_sortField, nameof(sortField), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_createdBeforeDate = createdBeforeDate == null ? null : WorkflowExpression.Compile(createdBeforeDate);
-            WorkflowExpression.Validate(__workflow_createdBeforeDate, nameof(createdBeforeDate), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_createdAfterDate = createdAfterDate == null ? null : WorkflowExpression.Compile(createdAfterDate);
-            WorkflowExpression.Validate(__workflow_createdAfterDate, nameof(createdAfterDate), required: false);
+            var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_maxQuantity = WorkflowExpression.Compile(maxQuantity, nameof(maxQuantity), required: false);
+            var __workflow_sortField = WorkflowExpression.Compile(sortField, nameof(sortField), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_createdBeforeDate = WorkflowExpression.Compile(createdBeforeDate, nameof(createdBeforeDate), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_createdAfterDate = WorkflowExpression.Compile(createdAfterDate, nameof(createdAfterDate), required: false);
             return new DeferredBodyAction<PackageListResponse>(() =>
             {
                 var apiCallPath = "/packages";
@@ -279,36 +249,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<CreatePackageResponse> CreatePackage(Expression<Func<string>> contentType, Expression<Func<string>> bodyinitiator = null, Expression<Func<string>> bodypackageName = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_bodyinitiator = bodyinitiator == null ? null : WorkflowExpression.Compile(bodyinitiator);
-            WorkflowExpression.Validate(__workflow_bodyinitiator, nameof(bodyinitiator), required: false);
-            var __workflow_bodypackageName = bodypackageName == null ? null : WorkflowExpression.Compile(bodypackageName);
-            WorkflowExpression.Validate(__workflow_bodypackageName, nameof(bodypackageName), required: false);
-            var __workflow_bodycallBackUrl = bodycallBackUrl == null ? null : WorkflowExpression.Compile(bodycallBackUrl);
-            WorkflowExpression.Validate(__workflow_bodycallBackUrl, nameof(bodycallBackUrl), required: false);
-            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
-            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: false);
-            var __workflow_bodydocumentGroupCode = bodydocumentGroupCode == null ? null : WorkflowExpression.Compile(bodydocumentGroupCode);
-            WorkflowExpression.Validate(__workflow_bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
-            var __workflow_bodythemeCode = bodythemeCode == null ? null : WorkflowExpression.Compile(bodythemeCode);
-            WorkflowExpression.Validate(__workflow_bodythemeCode, nameof(bodythemeCode), required: false);
-            var __workflow_bodydownloadUnsignedFiles = bodydownloadUnsignedFiles == null ? null : WorkflowExpression.Compile(bodydownloadUnsignedFiles);
-            WorkflowExpression.Validate(__workflow_bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
-            var __workflow_bodyreassignEnabled = bodyreassignEnabled == null ? null : WorkflowExpression.Compile(bodyreassignEnabled);
-            WorkflowExpression.Validate(__workflow_bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
-            var __workflow_bodyactionUrlExpirationPeriodInDays = bodyactionUrlExpirationPeriodInDays == null ? null : WorkflowExpression.Compile(bodyactionUrlExpirationPeriodInDays);
-            WorkflowExpression.Validate(__workflow_bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
-            var __workflow_bodyexpiryTimestamp = bodyexpiryTimestamp == null ? null : WorkflowExpression.Compile(bodyexpiryTimestamp);
-            WorkflowExpression.Validate(__workflow_bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
-            var __workflow_bodyexternalPackageReference = bodyexternalPackageReference == null ? null : WorkflowExpression.Compile(bodyexternalPackageReference);
-            WorkflowExpression.Validate(__workflow_bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
-            var __workflow_bodyexternalPackageData = bodyexternalPackageData == null ? null : WorkflowExpression.Compile(bodyexternalPackageData);
-            WorkflowExpression.Validate(__workflow_bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
-            var __workflow_bodyf2FRedirectUrl = bodyf2FRedirectUrl == null ? null : WorkflowExpression.Compile(bodyf2FRedirectUrl);
-            WorkflowExpression.Validate(__workflow_bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
-            var __workflow_bodynotificationCallBackUrl = bodynotificationCallBackUrl == null ? null : WorkflowExpression.Compile(bodynotificationCallBackUrl);
-            WorkflowExpression.Validate(__workflow_bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_bodyinitiator = WorkflowExpression.Compile(bodyinitiator, nameof(bodyinitiator), required: false);
+            var __workflow_bodypackageName = WorkflowExpression.Compile(bodypackageName, nameof(bodypackageName), required: false);
+            var __workflow_bodycallBackUrl = WorkflowExpression.Compile(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
+            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: false);
+            var __workflow_bodydocumentGroupCode = WorkflowExpression.Compile(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
+            var __workflow_bodythemeCode = WorkflowExpression.Compile(bodythemeCode, nameof(bodythemeCode), required: false);
+            var __workflow_bodydownloadUnsignedFiles = WorkflowExpression.Compile(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
+            var __workflow_bodyreassignEnabled = WorkflowExpression.Compile(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
+            var __workflow_bodyactionUrlExpirationPeriodInDays = WorkflowExpression.Compile(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
+            var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
+            var __workflow_bodyexternalPackageReference = WorkflowExpression.Compile(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
+            var __workflow_bodyexternalPackageData = WorkflowExpression.Compile(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
+            var __workflow_bodyf2FRedirectUrl = WorkflowExpression.Compile(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
+            var __workflow_bodynotificationCallBackUrl = WorkflowExpression.Compile(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
             return new DeferredBodyAction<CreatePackageResponse>(() =>
             {
                 var apiCallPath = "/packages";
@@ -413,30 +368,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<AddDocumentToPackageResponse> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<string>> bodydocument = null, Expression<Func<string>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<SigningField[]>> bodysigningFields = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<ErrorHandlingResponse[]>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodytargetType = null)
         {
-            var __workflow_packageId = packageId == null ? null : WorkflowExpression.Compile(packageId);
-            WorkflowExpression.Validate(__workflow_packageId, nameof(packageId), required: true);
-            var __workflow_bodydocument = bodydocument == null ? null : WorkflowExpression.Compile(bodydocument);
-            WorkflowExpression.Validate(__workflow_bodydocument, nameof(bodydocument), required: false);
-            var __workflow_bodydocumentLanguage = bodydocumentLanguage == null ? null : WorkflowExpression.Compile(bodydocumentLanguage);
-            WorkflowExpression.Validate(__workflow_bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
-            var __workflow_bodydocumentName = bodydocumentName == null ? null : WorkflowExpression.Compile(bodydocumentName);
-            WorkflowExpression.Validate(__workflow_bodydocumentName, nameof(bodydocumentName), required: false);
-            var __workflow_bodysigningFields = bodysigningFields == null ? null : WorkflowExpression.Compile(bodysigningFields);
-            WorkflowExpression.Validate(__workflow_bodysigningFields, nameof(bodysigningFields), required: false);
-            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
-            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: false);
-            var __workflow_bodydocumentType = bodydocumentType == null ? null : WorkflowExpression.Compile(bodydocumentType);
-            WorkflowExpression.Validate(__workflow_bodydocumentType, nameof(bodydocumentType), required: false);
-            var __workflow_bodyexternalDocumentReference = bodyexternalDocumentReference == null ? null : WorkflowExpression.Compile(bodyexternalDocumentReference);
-            WorkflowExpression.Validate(__workflow_bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
-            var __workflow_bodypdfErrorHandling = bodypdfErrorHandling == null ? null : WorkflowExpression.Compile(bodypdfErrorHandling);
-            WorkflowExpression.Validate(__workflow_bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
-            var __workflow_bodyrepresentation = bodyrepresentation == null ? null : WorkflowExpression.Compile(bodyrepresentation);
-            WorkflowExpression.Validate(__workflow_bodyrepresentation, nameof(bodyrepresentation), required: false);
-            var __workflow_bodyrepresentationType = bodyrepresentationType == null ? null : WorkflowExpression.Compile(bodyrepresentationType);
-            WorkflowExpression.Validate(__workflow_bodyrepresentationType, nameof(bodyrepresentationType), required: false);
-            var __workflow_bodytargetType = bodytargetType == null ? null : WorkflowExpression.Compile(bodytargetType);
-            WorkflowExpression.Validate(__workflow_bodytargetType, nameof(bodytargetType), required: false);
+            var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
+            var __workflow_bodydocument = WorkflowExpression.Compile(bodydocument, nameof(bodydocument), required: false);
+            var __workflow_bodydocumentLanguage = WorkflowExpression.Compile(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
+            var __workflow_bodydocumentName = WorkflowExpression.Compile(bodydocumentName, nameof(bodydocumentName), required: false);
+            var __workflow_bodysigningFields = WorkflowExpression.Compile(bodysigningFields, nameof(bodysigningFields), required: false);
+            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: false);
+            var __workflow_bodydocumentType = WorkflowExpression.Compile(bodydocumentType, nameof(bodydocumentType), required: false);
+            var __workflow_bodyexternalDocumentReference = WorkflowExpression.Compile(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
+            var __workflow_bodypdfErrorHandling = WorkflowExpression.Compile(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
+            var __workflow_bodyrepresentation = WorkflowExpression.Compile(bodyrepresentation, nameof(bodyrepresentation), required: false);
+            var __workflow_bodyrepresentationType = WorkflowExpression.Compile(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
+            var __workflow_bodytargetType = WorkflowExpression.Compile(bodytargetType, nameof(bodytargetType), required: false);
             return new DeferredBodyAction<AddDocumentToPackageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
@@ -522,8 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<GetSigningLocationsResponse> GetSigningLocations(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetSigningLocationsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/locations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -536,8 +478,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<PackageStatusInfo> GetPackageStatus(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<PackageStatusInfo>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -550,10 +491,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<PackageStatusInfo> SetPackageStatus(Expression<Func<string>> id, Expression<Func<string>> bodystatus = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
             return new DeferredBodyAction<PackageStatusInfo>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -579,8 +518,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction SkipSigners(Expression<Func<string>> packageId)
         {
-            var __workflow_packageId = packageId == null ? null : WorkflowExpression.Compile(packageId);
-            WorkflowExpression.Validate(__workflow_packageId, nameof(packageId), required: true);
+            var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/skipsigners", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
@@ -593,8 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<string> DownloadPackage(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -607,10 +544,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<string> DownloadDocumentFromPackage(Expression<Func<string>> id, Expression<Func<string>> documentId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -623,10 +558,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<string>> bodyexpiryTimestamp = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyexpiryTimestamp = bodyexpiryTimestamp == null ? null : WorkflowExpression.Compile(bodyexpiryTimestamp);
-            WorkflowExpression.Validate(__workflow_bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyexpiryTimestamp = WorkflowExpression.Compile(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/expirytimestamp", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -652,8 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction SendPackageReminders(Expression<Func<string>> packageId)
         {
-            var __workflow_packageId = packageId == null ? null : WorkflowExpression.Compile(packageId);
-            WorkflowExpression.Validate(__workflow_packageId, nameof(packageId), required: true);
+            var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/reminders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
@@ -666,8 +598,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction DeletePackage(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -680,10 +611,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction SetProcessInformation(Expression<Func<string>> id, Expression<Func<bodystakeholdersInputItem[]>> bodystakeholders = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodystakeholders = bodystakeholders == null ? null : WorkflowExpression.Compile(bodystakeholders);
-            WorkflowExpression.Validate(__workflow_bodystakeholders, nameof(bodystakeholders), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodystakeholders = WorkflowExpression.Compile(bodystakeholders, nameof(bodystakeholders), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/process", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -709,8 +638,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> PackageAuditProof(Expression<Func<string>> packageId)
         {
-            var __workflow_packageId = packageId == null ? null : WorkflowExpression.Compile(packageId);
-            WorkflowExpression.Validate(__workflow_packageId, nameof(packageId), required: true);
+            var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));
@@ -723,10 +651,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> PackageAuditProofDoc(Expression<Func<string>> packageId, Expression<Func<string>> documentId)
         {
-            var __workflow_packageId = packageId == null ? null : WorkflowExpression.Compile(packageId);
-            WorkflowExpression.Validate(__workflow_packageId, nameof(packageId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -739,8 +665,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> PackageCorrelationAuditProof(Expression<Func<string>> correlationId)
         {
-            var __workflow_correlationId = correlationId == null ? null : WorkflowExpression.Compile(correlationId);
-            WorkflowExpression.Validate(__workflow_correlationId, nameof(correlationId), required: true);
+            var __workflow_correlationId = WorkflowExpression.Compile(correlationId, nameof(correlationId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packagecorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_correlationId, 1));
@@ -753,8 +678,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IBodyWorkflowAction<Content> DocumentCorrelationAuditProof(Expression<Func<string>> correlationId)
         {
-            var __workflow_correlationId = correlationId == null ? null : WorkflowExpression.Compile(correlationId);
-            WorkflowExpression.Validate(__workflow_correlationId, nameof(correlationId), required: true);
+            var __workflow_correlationId = WorkflowExpression.Compile(correlationId, nameof(correlationId), required: true);
             return new DeferredBodyAction<Content>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentcorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_correlationId, 1));
@@ -767,20 +691,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
         public IWorkflowAction ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyipAddress = null)
         {
-            var __workflow_packageId = packageId == null ? null : WorkflowExpression.Compile(packageId);
-            WorkflowExpression.Validate(__workflow_packageId, nameof(packageId), required: true);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodylocationId = bodylocationId == null ? null : WorkflowExpression.Compile(bodylocationId);
-            WorkflowExpression.Validate(__workflow_bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyipAddress = bodyipAddress == null ? null : WorkflowExpression.Compile(bodyipAddress);
-            WorkflowExpression.Validate(__workflow_bodyipAddress, nameof(bodyipAddress), required: false);
+            var __workflow_packageId = WorkflowExpression.Compile(packageId, nameof(packageId), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyipAddress = WorkflowExpression.Compile(bodyipAddress, nameof(bodyipAddress), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/proofs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_packageId, 1));

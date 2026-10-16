@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> GetConfigurationXml(Expression<Func<string>> type, Expression<Func<string>> id)
         {
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/ConfigurationXml";
@@ -31,14 +29,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfigurationFromCopy(Expression<Func<string>> reqtargetId, Expression<Func<string>> reqsourceId, Expression<Func<string>> reqtype, Expression<Func<int[]>> reqlineItemIds = null)
         {
-            var __workflow_reqtargetId = reqtargetId == null ? null : WorkflowExpression.Compile(reqtargetId);
-            WorkflowExpression.Validate(__workflow_reqtargetId, nameof(reqtargetId), required: true);
-            var __workflow_reqsourceId = reqsourceId == null ? null : WorkflowExpression.Compile(reqsourceId);
-            WorkflowExpression.Validate(__workflow_reqsourceId, nameof(reqsourceId), required: true);
-            var __workflow_reqtype = reqtype == null ? null : WorkflowExpression.Compile(reqtype);
-            WorkflowExpression.Validate(__workflow_reqtype, nameof(reqtype), required: true);
-            var __workflow_reqlineItemIds = reqlineItemIds == null ? null : WorkflowExpression.Compile(reqlineItemIds);
-            WorkflowExpression.Validate(__workflow_reqlineItemIds, nameof(reqlineItemIds), required: false);
+            var __workflow_reqtargetId = WorkflowExpression.Compile(reqtargetId, nameof(reqtargetId), required: true);
+            var __workflow_reqsourceId = WorkflowExpression.Compile(reqsourceId, nameof(reqsourceId), required: true);
+            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
+            var __workflow_reqlineItemIds = WorkflowExpression.Compile(reqlineItemIds, nameof(reqlineItemIds), required: false);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/CreateConfigurationFromCopy";
@@ -70,12 +64,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> UpdateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
         {
-            var __workflow_reqid = reqid == null ? null : WorkflowExpression.Compile(reqid);
-            WorkflowExpression.Validate(__workflow_reqid, nameof(reqid), required: true);
-            var __workflow_reqtype = reqtype == null ? null : WorkflowExpression.Compile(reqtype);
-            WorkflowExpression.Validate(__workflow_reqtype, nameof(reqtype), required: true);
-            var __workflow_reqconfigurationXml = reqconfigurationXml == null ? null : WorkflowExpression.Compile(reqconfigurationXml);
-            WorkflowExpression.Validate(__workflow_reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
+            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
+            var __workflow_reqconfigurationXml = WorkflowExpression.Compile(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/UpdateConfiguration";
@@ -101,12 +92,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
         public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
         {
-            var __workflow_reqid = reqid == null ? null : WorkflowExpression.Compile(reqid);
-            WorkflowExpression.Validate(__workflow_reqid, nameof(reqid), required: true);
-            var __workflow_reqtype = reqtype == null ? null : WorkflowExpression.Compile(reqtype);
-            WorkflowExpression.Validate(__workflow_reqtype, nameof(reqtype), required: true);
-            var __workflow_reqconfigurationXml = reqconfigurationXml == null ? null : WorkflowExpression.Compile(reqconfigurationXml);
-            WorkflowExpression.Validate(__workflow_reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            var __workflow_reqid = WorkflowExpression.Compile(reqid, nameof(reqid), required: true);
+            var __workflow_reqtype = WorkflowExpression.Compile(reqtype, nameof(reqtype), required: true);
+            var __workflow_reqconfigurationXml = WorkflowExpression.Compile(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
             return new DeferredBodyAction<GetConfigurationXmlResponse>(() =>
             {
                 var apiCallPath = "/api/CreateConfiguration";

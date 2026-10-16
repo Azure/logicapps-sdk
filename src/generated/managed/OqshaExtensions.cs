@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         public IBodyWorkflowAction<CreateIncidentResponse> CreateIncident(Expression<Func<string>> contentType = null, Expression<Func<string>> accessToken = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodylocationId = null, Expression<Func<double>> bodylatitude = null, Expression<Func<double>> bodylongitude = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyuserId = null, Expression<Func<bool>> bodyanonymouslyReported = null, Expression<Func<bodycheckListDataInputItem[]>> bodycheckListData = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
-            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: false);
-            var __workflow_bodylocation = bodylocation == null ? null : WorkflowExpression.Compile(bodylocation);
-            WorkflowExpression.Validate(__workflow_bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodylocationId = bodylocationId == null ? null : WorkflowExpression.Compile(bodylocationId);
-            WorkflowExpression.Validate(__workflow_bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodylatitude = bodylatitude == null ? null : WorkflowExpression.Compile(bodylatitude);
-            WorkflowExpression.Validate(__workflow_bodylatitude, nameof(bodylatitude), required: false);
-            var __workflow_bodylongitude = bodylongitude == null ? null : WorkflowExpression.Compile(bodylongitude);
-            WorkflowExpression.Validate(__workflow_bodylongitude, nameof(bodylongitude), required: false);
-            var __workflow_bodydivisionId = bodydivisionId == null ? null : WorkflowExpression.Compile(bodydivisionId);
-            WorkflowExpression.Validate(__workflow_bodydivisionId, nameof(bodydivisionId), required: false);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
-            var __workflow_bodyanonymouslyReported = bodyanonymouslyReported == null ? null : WorkflowExpression.Compile(bodyanonymouslyReported);
-            WorkflowExpression.Validate(__workflow_bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
-            var __workflow_bodycheckListData = bodycheckListData == null ? null : WorkflowExpression.Compile(bodycheckListData);
-            WorkflowExpression.Validate(__workflow_bodycheckListData, nameof(bodycheckListData), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
+            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
+            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: false);
+            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: false);
+            var __workflow_bodydivisionId = WorkflowExpression.Compile(bodydivisionId, nameof(bodydivisionId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_bodyanonymouslyReported = WorkflowExpression.Compile(bodyanonymouslyReported, nameof(bodyanonymouslyReported), required: false);
+            var __workflow_bodycheckListData = WorkflowExpression.Compile(bodycheckListData, nameof(bodycheckListData), required: false);
             return new DeferredBodyAction<CreateIncidentResponse>(() =>
             {
                 var apiCallPath = "/Organisations/3/Incidents";
@@ -105,16 +95,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oqsha
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oqsha")]
         public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> contentType = null, Expression<Func<string>> bodyuserUid = null, Expression<Func<string>> bodyappPassword = null, Expression<Func<bool>> bodyacceptConditions = null, Expression<Func<bool>> bodyisOqsha = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_bodyuserUid = bodyuserUid == null ? null : WorkflowExpression.Compile(bodyuserUid);
-            WorkflowExpression.Validate(__workflow_bodyuserUid, nameof(bodyuserUid), required: false);
-            var __workflow_bodyappPassword = bodyappPassword == null ? null : WorkflowExpression.Compile(bodyappPassword);
-            WorkflowExpression.Validate(__workflow_bodyappPassword, nameof(bodyappPassword), required: false);
-            var __workflow_bodyacceptConditions = bodyacceptConditions == null ? null : WorkflowExpression.Compile(bodyacceptConditions);
-            WorkflowExpression.Validate(__workflow_bodyacceptConditions, nameof(bodyacceptConditions), required: false);
-            var __workflow_bodyisOqsha = bodyisOqsha == null ? null : WorkflowExpression.Compile(bodyisOqsha);
-            WorkflowExpression.Validate(__workflow_bodyisOqsha, nameof(bodyisOqsha), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodyuserUid = WorkflowExpression.Compile(bodyuserUid, nameof(bodyuserUid), required: false);
+            var __workflow_bodyappPassword = WorkflowExpression.Compile(bodyappPassword, nameof(bodyappPassword), required: false);
+            var __workflow_bodyacceptConditions = WorkflowExpression.Compile(bodyacceptConditions, nameof(bodyacceptConditions), required: false);
+            var __workflow_bodyisOqsha = WorkflowExpression.Compile(bodyisOqsha, nameof(bodyisOqsha), required: false);
             return new DeferredBodyAction<LoginResponse>(() =>
             {
                 var apiCallPath = "/App/Login";

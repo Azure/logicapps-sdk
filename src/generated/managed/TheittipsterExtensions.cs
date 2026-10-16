@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
         public IBodyWorkflowAction<GenerateBarcodeResponse> GenerateBarcode(Expression<Func<string>> bodybarcodeNumber = null)
         {
-            var __workflow_bodybarcodeNumber = bodybarcodeNumber == null ? null : WorkflowExpression.Compile(bodybarcodeNumber);
-            WorkflowExpression.Validate(__workflow_bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
+            var __workflow_bodybarcodeNumber = WorkflowExpression.Compile(bodybarcodeNumber, nameof(bodybarcodeNumber), required: false);
             return new DeferredBodyAction<GenerateBarcodeResponse>(() =>
             {
                 var apiCallPath = "/api/generateBarcode";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theittipster
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theittipster")]
         public IBodyWorkflowAction<GenerateQRCodeResponse> GenerateQRCode(Expression<Func<string>> bodyqrcodeText = null)
         {
-            var __workflow_bodyqrcodeText = bodyqrcodeText == null ? null : WorkflowExpression.Compile(bodyqrcodeText);
-            WorkflowExpression.Validate(__workflow_bodyqrcodeText, nameof(bodyqrcodeText), required: false);
+            var __workflow_bodyqrcodeText = WorkflowExpression.Compile(bodyqrcodeText, nameof(bodyqrcodeText), required: false);
             return new DeferredBodyAction<GenerateQRCodeResponse>(() =>
             {
                 var apiCallPath = "/api/generateQRCode";

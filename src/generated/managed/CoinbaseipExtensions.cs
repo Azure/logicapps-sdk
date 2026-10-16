@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
         public IBodyWorkflowAction<GetSpotPriceResponse> GetSpotPrice(Expression<Func<string>> currencyPair)
         {
-            var __workflow_currencyPair = currencyPair == null ? null : WorkflowExpression.Compile(currencyPair);
-            WorkflowExpression.Validate(__workflow_currencyPair, nameof(currencyPair), required: true);
+            var __workflow_currencyPair = WorkflowExpression.Compile(currencyPair, nameof(currencyPair), required: true);
             return new DeferredBodyAction<GetSpotPriceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/prices/{0}/spot", ExpressionConverter.ConvertWithUrlEncoding(__workflow_currencyPair, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Coinbaseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "coinbaseip")]
         public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate(Expression<Func<string>> currency)
         {
-            var __workflow_currency = currency == null ? null : WorkflowExpression.Compile(currency);
-            WorkflowExpression.Validate(__workflow_currency, nameof(currency), required: true);
+            var __workflow_currency = WorkflowExpression.Compile(currency, nameof(currency), required: true);
             return new DeferredBodyAction<GetExchangeRateResponse>(() =>
             {
                 var apiCallPath = "/exchange-rates";

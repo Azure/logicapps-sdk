@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myacclaro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "myacclaro")]
         public IBodyWorkflowAction<string> DeleteAnOrder(Expression<Func<string>> orderid)
         {
-            var __workflow_orderid = orderid == null ? null : WorkflowExpression.Compile(orderid);
-            WorkflowExpression.Validate(__workflow_orderid, nameof(orderid), required: true);
+            var __workflow_orderid = WorkflowExpression.Compile(orderid, nameof(orderid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_orderid, 1));

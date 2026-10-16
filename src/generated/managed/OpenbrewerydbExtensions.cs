@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery> GetBrewery(Expression<Func<string>> obdbId)
         {
-            var __workflow_obdbId = obdbId == null ? null : WorkflowExpression.Compile(obdbId);
-            WorkflowExpression.Validate(__workflow_obdbId, nameof(obdbId), required: true);
+            var __workflow_obdbId = WorkflowExpression.Compile(obdbId, nameof(obdbId), required: true);
             return new DeferredBodyAction<RefBrewery>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/breweries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_obdbId, 1));
@@ -27,24 +26,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> ListBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byDist = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_byCity = byCity == null ? null : WorkflowExpression.Compile(byCity);
-            WorkflowExpression.Validate(__workflow_byCity, nameof(byCity), required: false);
-            var __workflow_byCountry = byCountry == null ? null : WorkflowExpression.Compile(byCountry);
-            WorkflowExpression.Validate(__workflow_byCountry, nameof(byCountry), required: false);
-            var __workflow_byDist = byDist == null ? null : WorkflowExpression.Compile(byDist);
-            WorkflowExpression.Validate(__workflow_byDist, nameof(byDist), required: false);
-            var __workflow_byName = byName == null ? null : WorkflowExpression.Compile(byName);
-            WorkflowExpression.Validate(__workflow_byName, nameof(byName), required: false);
-            var __workflow_byState = byState == null ? null : WorkflowExpression.Compile(byState);
-            WorkflowExpression.Validate(__workflow_byState, nameof(byState), required: false);
-            var __workflow_byPostal = byPostal == null ? null : WorkflowExpression.Compile(byPostal);
-            WorkflowExpression.Validate(__workflow_byPostal, nameof(byPostal), required: false);
-            var __workflow_byType = byType == null ? null : WorkflowExpression.Compile(byType);
-            WorkflowExpression.Validate(__workflow_byType, nameof(byType), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
+            var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
+            var __workflow_byDist = WorkflowExpression.Compile(byDist, nameof(byDist), required: false);
+            var __workflow_byName = WorkflowExpression.Compile(byName, nameof(byName), required: false);
+            var __workflow_byState = WorkflowExpression.Compile(byState, nameof(byState), required: false);
+            var __workflow_byPostal = WorkflowExpression.Compile(byPostal, nameof(byPostal), required: false);
+            var __workflow_byType = WorkflowExpression.Compile(byType, nameof(byType), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<RefBrewery[]>(() =>
             {
                 var apiCallPath = "/v1/breweries";
@@ -75,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> GetRandom(Expression<Func<int>> size = null)
         {
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<RefBrewery[]>(() =>
             {
                 var apiCallPath = "/v1/breweries/random";
@@ -91,8 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<RefBrewery[]> SearchBreweries(Expression<Func<string>> query)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
             return new DeferredBodyAction<RefBrewery[]>(() =>
             {
                 var apiCallPath = "/v1/breweries/search";
@@ -106,18 +94,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openbrewerydb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openbrewerydb")]
         public IBodyWorkflowAction<CountBreweriesResponse> CountBreweries(Expression<Func<string>> byCity = null, Expression<Func<string>> byCountry = null, Expression<Func<string>> byName = null, Expression<Func<string>> byState = null, Expression<Func<string>> byPostal = null, Expression<Func<byTypeInput>> byType = null)
         {
-            var __workflow_byCity = byCity == null ? null : WorkflowExpression.Compile(byCity);
-            WorkflowExpression.Validate(__workflow_byCity, nameof(byCity), required: false);
-            var __workflow_byCountry = byCountry == null ? null : WorkflowExpression.Compile(byCountry);
-            WorkflowExpression.Validate(__workflow_byCountry, nameof(byCountry), required: false);
-            var __workflow_byName = byName == null ? null : WorkflowExpression.Compile(byName);
-            WorkflowExpression.Validate(__workflow_byName, nameof(byName), required: false);
-            var __workflow_byState = byState == null ? null : WorkflowExpression.Compile(byState);
-            WorkflowExpression.Validate(__workflow_byState, nameof(byState), required: false);
-            var __workflow_byPostal = byPostal == null ? null : WorkflowExpression.Compile(byPostal);
-            WorkflowExpression.Validate(__workflow_byPostal, nameof(byPostal), required: false);
-            var __workflow_byType = byType == null ? null : WorkflowExpression.Compile(byType);
-            WorkflowExpression.Validate(__workflow_byType, nameof(byType), required: false);
+            var __workflow_byCity = WorkflowExpression.Compile(byCity, nameof(byCity), required: false);
+            var __workflow_byCountry = WorkflowExpression.Compile(byCountry, nameof(byCountry), required: false);
+            var __workflow_byName = WorkflowExpression.Compile(byName, nameof(byName), required: false);
+            var __workflow_byState = WorkflowExpression.Compile(byState, nameof(byState), required: false);
+            var __workflow_byPostal = WorkflowExpression.Compile(byPostal, nameof(byPostal), required: false);
+            var __workflow_byType = WorkflowExpression.Compile(byType, nameof(byType), required: false);
             return new DeferredBodyAction<CountBreweriesResponse>(() =>
             {
                 var apiCallPath = "/v1/breweries/meta";

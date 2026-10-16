@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> CompressImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodycompressionLevelInput>> bodycompressionLevel = null)
         {
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyimageType = bodyimageType == null ? null : WorkflowExpression.Compile(bodyimageType);
-            WorkflowExpression.Validate(__workflow_bodyimageType, nameof(bodyimageType), required: true);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodycompressionLevel = bodycompressionLevel == null ? null : WorkflowExpression.Compile(bodycompressionLevel);
-            WorkflowExpression.Validate(__workflow_bodycompressionLevel, nameof(bodycompressionLevel), required: false);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodycompressionLevel = WorkflowExpression.Compile(bodycompressionLevel, nameof(bodycompressionLevel), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CompressImage";
@@ -64,14 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> ConvertImageFormat(Expression<Func<string>> bodydocContent, Expression<Func<bodycurrentImageFormatInput>> bodycurrentImageFormat, Expression<Func<bodynewImageFormatInput>> bodynewImageFormat, Expression<Func<string>> bodydocumentname = null)
         {
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodycurrentImageFormat = bodycurrentImageFormat == null ? null : WorkflowExpression.Compile(bodycurrentImageFormat);
-            WorkflowExpression.Validate(__workflow_bodycurrentImageFormat, nameof(bodycurrentImageFormat), required: true);
-            var __workflow_bodynewImageFormat = bodynewImageFormat == null ? null : WorkflowExpression.Compile(bodynewImageFormat);
-            WorkflowExpression.Validate(__workflow_bodynewImageFormat, nameof(bodynewImageFormat), required: true);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodycurrentImageFormat = WorkflowExpression.Compile(bodycurrentImageFormat, nameof(bodycurrentImageFormat), required: true);
+            var __workflow_bodynewImageFormat = WorkflowExpression.Compile(bodynewImageFormat, nameof(bodynewImageFormat), required: true);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ConvertImageFormat";
@@ -111,10 +103,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> CropImage(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
-            var __workflow_schemaVal = schemaVal == null ? null : WorkflowExpression.Compile(schemaVal);
-            WorkflowExpression.Validate(__workflow_schemaVal, nameof(schemaVal), required: false);
-            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
-            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: false);
+            var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CropImage";
@@ -131,10 +121,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IWorkflowAction CustomAPI(Expression<Func<string>> featurePath, Expression<Func<string>> body = null)
         {
-            var __workflow_featurePath = featurePath == null ? null : WorkflowExpression.Compile(featurePath);
-            WorkflowExpression.Validate(__workflow_featurePath, nameof(featurePath), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_featurePath = WorkflowExpression.Compile(featurePath, nameof(featurePath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/FlowV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_featurePath, 1));
@@ -149,12 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> FlipImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyorientationTypeInput>> bodyorientationType, Expression<Func<string>> bodydocumentname = null)
         {
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyorientationType = bodyorientationType == null ? null : WorkflowExpression.Compile(bodyorientationType);
-            WorkflowExpression.Validate(__workflow_bodyorientationType, nameof(bodyorientationType), required: true);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyorientationType = WorkflowExpression.Compile(bodyorientationType, nameof(bodyorientationType), required: true);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/FlipImage";
@@ -192,12 +177,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<ImageExtractTextV1Response> ImageExtractText(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeExtractInput>> bodyimageTypeExtract, Expression<Func<string>> bodydocumentname = null)
         {
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyimageTypeExtract = bodyimageTypeExtract == null ? null : WorkflowExpression.Compile(bodyimageTypeExtract);
-            WorkflowExpression.Validate(__workflow_bodyimageTypeExtract, nameof(bodyimageTypeExtract), required: true);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyimageTypeExtract = WorkflowExpression.Compile(bodyimageTypeExtract, nameof(bodyimageTypeExtract), required: true);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<ImageExtractTextV1Response>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ImageExtractText";
@@ -235,12 +217,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> RemoveExifTagsFromImage(Expression<Func<string>> bodydocContent, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<string>> bodydocumentname = null)
         {
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyimageType = bodyimageType == null ? null : WorkflowExpression.Compile(bodyimageType);
-            WorkflowExpression.Validate(__workflow_bodyimageType, nameof(bodyimageType), required: true);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/RemoveEXIFTagsFromImage";
@@ -278,10 +257,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meimage
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meimage")]
         public IBodyWorkflowAction<string> ResizeImage(Expression<Func<schemaValInput>> schemaVal = null, Expression<Func<object>> operation = null)
         {
-            var __workflow_schemaVal = schemaVal == null ? null : WorkflowExpression.Compile(schemaVal);
-            WorkflowExpression.Validate(__workflow_schemaVal, nameof(schemaVal), required: false);
-            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
-            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: false);
+            var __workflow_schemaVal = WorkflowExpression.Compile(schemaVal, nameof(schemaVal), required: false);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ResizeImage";

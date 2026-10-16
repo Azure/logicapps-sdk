@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
         public IBodyWorkflowAction<AssignFormResponse> AssignForm(Expression<Func<string>> formAssignBodyuser, Expression<Func<string>> formAssignBodyform, Expression<Func<object>> formAssignBodyfields = null)
         {
-            var __workflow_formAssignBodyuser = formAssignBodyuser == null ? null : WorkflowExpression.Compile(formAssignBodyuser);
-            WorkflowExpression.Validate(__workflow_formAssignBodyuser, nameof(formAssignBodyuser), required: true);
-            var __workflow_formAssignBodyform = formAssignBodyform == null ? null : WorkflowExpression.Compile(formAssignBodyform);
-            WorkflowExpression.Validate(__workflow_formAssignBodyform, nameof(formAssignBodyform), required: true);
-            var __workflow_formAssignBodyfields = formAssignBodyfields == null ? null : WorkflowExpression.Compile(formAssignBodyfields);
-            WorkflowExpression.Validate(__workflow_formAssignBodyfields, nameof(formAssignBodyfields), required: false);
+            var __workflow_formAssignBodyuser = WorkflowExpression.Compile(formAssignBodyuser, nameof(formAssignBodyuser), required: true);
+            var __workflow_formAssignBodyform = WorkflowExpression.Compile(formAssignBodyform, nameof(formAssignBodyform), required: true);
+            var __workflow_formAssignBodyfields = WorkflowExpression.Compile(formAssignBodyfields, nameof(formAssignBodyfields), required: false);
             return new DeferredBodyAction<AssignFormResponse>(() =>
             {
                 var apiCallPath = "/api/external/Form";
@@ -48,10 +45,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "elasticforms")]
         public IBodyWorkflowAction<string> AddData(Expression<Func<string>> formDataBodyform, Expression<Func<object>> formDataBodyfields = null)
         {
-            var __workflow_formDataBodyform = formDataBodyform == null ? null : WorkflowExpression.Compile(formDataBodyform);
-            WorkflowExpression.Validate(__workflow_formDataBodyform, nameof(formDataBodyform), required: true);
-            var __workflow_formDataBodyfields = formDataBodyfields == null ? null : WorkflowExpression.Compile(formDataBodyfields);
-            WorkflowExpression.Validate(__workflow_formDataBodyfields, nameof(formDataBodyfields), required: false);
+            var __workflow_formDataBodyform = WorkflowExpression.Compile(formDataBodyform, nameof(formDataBodyform), required: true);
+            var __workflow_formDataBodyfields = WorkflowExpression.Compile(formDataBodyfields, nameof(formDataBodyfields), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/external/FormData";
@@ -81,8 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     {
         public IWorkflowTrigger TrigNewResponse(Expression<Func<string>> requestBodyOfWebhookform, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookform = requestBodyOfWebhookform == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookform);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
+            var __workflow_requestBodyOfWebhookform = WorkflowExpression.Compile(requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/external/WebHook";

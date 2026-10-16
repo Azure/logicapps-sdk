@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         public IBodyWorkflowAction<AnalysisDto> AnalysisControllerGetResults(Expression<Func<string>> targetUrlDomain = null, Expression<Func<string>> finalUrlDomain = null, Expression<Func<bool>> finalUrlLive = null, Expression<Func<bool>> targetUrlRedirects = null, Expression<Func<string>> targetUrlAgencyOwner = null, Expression<Func<string>> targetUrlBureauOwner = null, Expression<Func<primaryScanStatusInput>> primaryScanStatus = null, Expression<Func<bool>> dapDetectedFinalUrl = null)
         {
-            var __workflow_targetUrlDomain = targetUrlDomain == null ? null : WorkflowExpression.Compile(targetUrlDomain);
-            WorkflowExpression.Validate(__workflow_targetUrlDomain, nameof(targetUrlDomain), required: false);
-            var __workflow_finalUrlDomain = finalUrlDomain == null ? null : WorkflowExpression.Compile(finalUrlDomain);
-            WorkflowExpression.Validate(__workflow_finalUrlDomain, nameof(finalUrlDomain), required: false);
-            var __workflow_finalUrlLive = finalUrlLive == null ? null : WorkflowExpression.Compile(finalUrlLive);
-            WorkflowExpression.Validate(__workflow_finalUrlLive, nameof(finalUrlLive), required: false);
-            var __workflow_targetUrlRedirects = targetUrlRedirects == null ? null : WorkflowExpression.Compile(targetUrlRedirects);
-            WorkflowExpression.Validate(__workflow_targetUrlRedirects, nameof(targetUrlRedirects), required: false);
-            var __workflow_targetUrlAgencyOwner = targetUrlAgencyOwner == null ? null : WorkflowExpression.Compile(targetUrlAgencyOwner);
-            WorkflowExpression.Validate(__workflow_targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
-            var __workflow_targetUrlBureauOwner = targetUrlBureauOwner == null ? null : WorkflowExpression.Compile(targetUrlBureauOwner);
-            WorkflowExpression.Validate(__workflow_targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
-            var __workflow_primaryScanStatus = primaryScanStatus == null ? null : WorkflowExpression.Compile(primaryScanStatus);
-            WorkflowExpression.Validate(__workflow_primaryScanStatus, nameof(primaryScanStatus), required: false);
-            var __workflow_dapDetectedFinalUrl = dapDetectedFinalUrl == null ? null : WorkflowExpression.Compile(dapDetectedFinalUrl);
-            WorkflowExpression.Validate(__workflow_dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
+            var __workflow_targetUrlDomain = WorkflowExpression.Compile(targetUrlDomain, nameof(targetUrlDomain), required: false);
+            var __workflow_finalUrlDomain = WorkflowExpression.Compile(finalUrlDomain, nameof(finalUrlDomain), required: false);
+            var __workflow_finalUrlLive = WorkflowExpression.Compile(finalUrlLive, nameof(finalUrlLive), required: false);
+            var __workflow_targetUrlRedirects = WorkflowExpression.Compile(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
+            var __workflow_targetUrlAgencyOwner = WorkflowExpression.Compile(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
+            var __workflow_targetUrlBureauOwner = WorkflowExpression.Compile(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
+            var __workflow_primaryScanStatus = WorkflowExpression.Compile(primaryScanStatus, nameof(primaryScanStatus), required: false);
+            var __workflow_dapDetectedFinalUrl = WorkflowExpression.Compile(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
             return new DeferredBodyAction<AnalysisDto>(() =>
             {
                 var apiCallPath = "/analysis";
@@ -57,26 +49,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         public IBodyWorkflowAction<PaginatedWebsiteResponseDto> WebsiteControllerGetResults(Expression<Func<string>> targetUrlDomain = null, Expression<Func<string>> finalUrlDomain = null, Expression<Func<bool>> finalUrlLive = null, Expression<Func<bool>> targetUrlRedirects = null, Expression<Func<string>> targetUrlAgencyOwner = null, Expression<Func<string>> targetUrlBureauOwner = null, Expression<Func<primaryScanStatusInput>> primaryScanStatus = null, Expression<Func<bool>> dapDetectedFinalUrl = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
         {
-            var __workflow_targetUrlDomain = targetUrlDomain == null ? null : WorkflowExpression.Compile(targetUrlDomain);
-            WorkflowExpression.Validate(__workflow_targetUrlDomain, nameof(targetUrlDomain), required: false);
-            var __workflow_finalUrlDomain = finalUrlDomain == null ? null : WorkflowExpression.Compile(finalUrlDomain);
-            WorkflowExpression.Validate(__workflow_finalUrlDomain, nameof(finalUrlDomain), required: false);
-            var __workflow_finalUrlLive = finalUrlLive == null ? null : WorkflowExpression.Compile(finalUrlLive);
-            WorkflowExpression.Validate(__workflow_finalUrlLive, nameof(finalUrlLive), required: false);
-            var __workflow_targetUrlRedirects = targetUrlRedirects == null ? null : WorkflowExpression.Compile(targetUrlRedirects);
-            WorkflowExpression.Validate(__workflow_targetUrlRedirects, nameof(targetUrlRedirects), required: false);
-            var __workflow_targetUrlAgencyOwner = targetUrlAgencyOwner == null ? null : WorkflowExpression.Compile(targetUrlAgencyOwner);
-            WorkflowExpression.Validate(__workflow_targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
-            var __workflow_targetUrlBureauOwner = targetUrlBureauOwner == null ? null : WorkflowExpression.Compile(targetUrlBureauOwner);
-            WorkflowExpression.Validate(__workflow_targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
-            var __workflow_primaryScanStatus = primaryScanStatus == null ? null : WorkflowExpression.Compile(primaryScanStatus);
-            WorkflowExpression.Validate(__workflow_primaryScanStatus, nameof(primaryScanStatus), required: false);
-            var __workflow_dapDetectedFinalUrl = dapDetectedFinalUrl == null ? null : WorkflowExpression.Compile(dapDetectedFinalUrl);
-            WorkflowExpression.Validate(__workflow_dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_targetUrlDomain = WorkflowExpression.Compile(targetUrlDomain, nameof(targetUrlDomain), required: false);
+            var __workflow_finalUrlDomain = WorkflowExpression.Compile(finalUrlDomain, nameof(finalUrlDomain), required: false);
+            var __workflow_finalUrlLive = WorkflowExpression.Compile(finalUrlLive, nameof(finalUrlLive), required: false);
+            var __workflow_targetUrlRedirects = WorkflowExpression.Compile(targetUrlRedirects, nameof(targetUrlRedirects), required: false);
+            var __workflow_targetUrlAgencyOwner = WorkflowExpression.Compile(targetUrlAgencyOwner, nameof(targetUrlAgencyOwner), required: false);
+            var __workflow_targetUrlBureauOwner = WorkflowExpression.Compile(targetUrlBureauOwner, nameof(targetUrlBureauOwner), required: false);
+            var __workflow_primaryScanStatus = WorkflowExpression.Compile(primaryScanStatus, nameof(primaryScanStatus), required: false);
+            var __workflow_dapDetectedFinalUrl = WorkflowExpression.Compile(dapDetectedFinalUrl, nameof(dapDetectedFinalUrl), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<PaginatedWebsiteResponseDto>(() =>
             {
                 var apiCallPath = "/websites";
@@ -109,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsasitescanning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsasitescanning")]
         public IBodyWorkflowAction<WebsiteApiResultDto> WebsiteControllerGetResultByUrl(Expression<Func<string>> url)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredBodyAction<WebsiteApiResultDto>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/websites/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_url, 1));

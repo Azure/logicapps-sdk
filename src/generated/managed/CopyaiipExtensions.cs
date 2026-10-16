@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet(Expression<Func<string>> workflowId, Expression<Func<int>> size = null, Expression<Func<int>> page = null)
         {
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<WorkflowsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
@@ -37,8 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowPostResponse> Workflow(Expression<Func<string>> workflowId)
         {
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
             return new DeferredBodyAction<WorkflowPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));
@@ -74,10 +70,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
         public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet(Expression<Func<string>> workflowId, Expression<Func<string>> runId)
         {
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
             return new DeferredBodyAction<WorkflowGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));

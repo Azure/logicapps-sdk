@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
         public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<string>> bodytransactionData, Expression<Func<int>> bodybatchConfigResId, Expression<Func<int>> bodyprojectID = null, Expression<Func<int>> bodytransactionRange = null, Expression<Func<bodytransactionDataTypeInput>> bodytransactionDataType = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
         {
-            var __workflow_includeDocumentData = includeDocumentData == null ? null : WorkflowExpression.Compile(includeDocumentData);
-            WorkflowExpression.Validate(__workflow_includeDocumentData, nameof(includeDocumentData), required: true);
-            var __workflow_bodytransactionData = bodytransactionData == null ? null : WorkflowExpression.Compile(bodytransactionData);
-            WorkflowExpression.Validate(__workflow_bodytransactionData, nameof(bodytransactionData), required: true);
-            var __workflow_bodybatchConfigResId = bodybatchConfigResId == null ? null : WorkflowExpression.Compile(bodybatchConfigResId);
-            WorkflowExpression.Validate(__workflow_bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
-            var __workflow_bodyprojectID = bodyprojectID == null ? null : WorkflowExpression.Compile(bodyprojectID);
-            WorkflowExpression.Validate(__workflow_bodyprojectID, nameof(bodyprojectID), required: false);
-            var __workflow_bodytransactionRange = bodytransactionRange == null ? null : WorkflowExpression.Compile(bodytransactionRange);
-            WorkflowExpression.Validate(__workflow_bodytransactionRange, nameof(bodytransactionRange), required: false);
-            var __workflow_bodytransactionDataType = bodytransactionDataType == null ? null : WorkflowExpression.Compile(bodytransactionDataType);
-            WorkflowExpression.Validate(__workflow_bodytransactionDataType, nameof(bodytransactionDataType), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_includeDocumentData = WorkflowExpression.Compile(includeDocumentData, nameof(includeDocumentData), required: true);
+            var __workflow_bodytransactionData = WorkflowExpression.Compile(bodytransactionData, nameof(bodytransactionData), required: true);
+            var __workflow_bodybatchConfigResId = WorkflowExpression.Compile(bodybatchConfigResId, nameof(bodybatchConfigResId), required: true);
+            var __workflow_bodyprojectID = WorkflowExpression.Compile(bodyprojectID, nameof(bodyprojectID), required: false);
+            var __workflow_bodytransactionRange = WorkflowExpression.Compile(bodytransactionRange, nameof(bodytransactionRange), required: false);
+            var __workflow_bodytransactionDataType = WorkflowExpression.Compile(bodytransactionDataType, nameof(bodytransactionDataType), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
             return new DeferredBodyAction<GenerateDocumentResponse>(() =>
             {
                 var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";

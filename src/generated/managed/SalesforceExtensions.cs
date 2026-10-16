@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> GetItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_externalIdField = externalIdField == null ? null : WorkflowExpression.Compile(externalIdField);
-            WorkflowExpression.Validate(__workflow_externalIdField, nameof(externalIdField), required: true);
-            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
-            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_externalIdField = WorkflowExpression.Compile(externalIdField, nameof(externalIdField), required: true);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalId, 2));
@@ -40,18 +37,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -74,16 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableAccount(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/datasets/default/tables/account/items";
@@ -106,16 +92,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableUser(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/datasets/default/tables/user/items";
@@ -138,16 +119,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableCase(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/datasets/default/tables/case/items";
@@ -170,16 +146,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableOpportunity(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/datasets/default/tables/opportunity/items";
@@ -202,16 +173,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableProduct2(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/datasets/default/tables/product2/items";
@@ -234,16 +200,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<ItemsList> GetItemsTableContact(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = "/datasets/default/tables/contact/items";
@@ -266,10 +227,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction DeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -282,8 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> ExecuteSoqlQuery(Expression<Func<string>> queryParameterssOQLQuery)
         {
-            var __workflow_queryParameterssOQLQuery = queryParameterssOQLQuery == null ? null : WorkflowExpression.Compile(queryParameterssOQLQuery);
-            WorkflowExpression.Validate(__workflow_queryParameterssOQLQuery, nameof(queryParameterssOQLQuery), required: true);
+            var __workflow_queryParameterssOQLQuery = WorkflowExpression.Compile(queryParameterssOQLQuery, nameof(queryParameterssOQLQuery), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/soql/executesoqlquery";
@@ -313,14 +271,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<GetAllJobsResponse> GetAllJobs(Expression<Func<concurrenyModeInput>> concurrenyMode = null, Expression<Func<bool>> isPkChunkingEnabled = null, Expression<Func<jobTypeInput>> jobType = null, Expression<Func<string>> queryLocator = null)
         {
-            var __workflow_concurrenyMode = concurrenyMode == null ? null : WorkflowExpression.Compile(concurrenyMode);
-            WorkflowExpression.Validate(__workflow_concurrenyMode, nameof(concurrenyMode), required: false);
-            var __workflow_isPkChunkingEnabled = isPkChunkingEnabled == null ? null : WorkflowExpression.Compile(isPkChunkingEnabled);
-            WorkflowExpression.Validate(__workflow_isPkChunkingEnabled, nameof(isPkChunkingEnabled), required: false);
-            var __workflow_jobType = jobType == null ? null : WorkflowExpression.Compile(jobType);
-            WorkflowExpression.Validate(__workflow_jobType, nameof(jobType), required: false);
-            var __workflow_queryLocator = queryLocator == null ? null : WorkflowExpression.Compile(queryLocator);
-            WorkflowExpression.Validate(__workflow_queryLocator, nameof(queryLocator), required: false);
+            var __workflow_concurrenyMode = WorkflowExpression.Compile(concurrenyMode, nameof(concurrenyMode), required: false);
+            var __workflow_isPkChunkingEnabled = WorkflowExpression.Compile(isPkChunkingEnabled, nameof(isPkChunkingEnabled), required: false);
+            var __workflow_jobType = WorkflowExpression.Compile(jobType, nameof(jobType), required: false);
+            var __workflow_queryLocator = WorkflowExpression.Compile(queryLocator, nameof(queryLocator), required: false);
             return new DeferredBodyAction<GetAllJobsResponse>(() =>
             {
                 var apiCallPath = "/codeless/jobs/ingest";
@@ -342,10 +296,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction UploadJobData(Expression<Func<string>> jobId, Expression<Func<string>> body = null)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/batches", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -359,8 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<CheckJobResponse> GetJobInfo(Expression<Func<string>> jobId)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<CheckJobResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -373,10 +324,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JobInfo> CloseJob(Expression<Func<string>> jobId, Expression<Func<bodystateInput>> bodystate)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
-            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
-            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
             return new DeferredBodyAction<JobInfo>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -398,8 +347,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IWorkflowAction DeleteJob(Expression<Func<string>> jobId)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -412,10 +360,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<string> GetJobRecordResults(Expression<Func<string>> jobId, Expression<Func<resultTypeInput>> resultType)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
-            var __workflow_resultType = resultType == null ? null : WorkflowExpression.Compile(resultType);
-            WorkflowExpression.Validate(__workflow_resultType, nameof(resultType), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
+            var __workflow_resultType = WorkflowExpression.Compile(resultType, nameof(resultType), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -429,8 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<SOSLSearchQueryResponse> ExecuteSOSLQuery(Expression<Func<string>> q)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyAction<SOSLSearchQueryResponse>(() =>
             {
                 var apiCallPath = "/codeless/search";
@@ -444,24 +389,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            var __workflow_uri = uri == null ? null : WorkflowExpression.Compile(uri);
-            WorkflowExpression.Validate(__workflow_uri, nameof(uri), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_customHeader1 = customHeader1 == null ? null : WorkflowExpression.Compile(customHeader1);
-            WorkflowExpression.Validate(__workflow_customHeader1, nameof(customHeader1), required: false);
-            var __workflow_customHeader2 = customHeader2 == null ? null : WorkflowExpression.Compile(customHeader2);
-            WorkflowExpression.Validate(__workflow_customHeader2, nameof(customHeader2), required: false);
-            var __workflow_customHeader3 = customHeader3 == null ? null : WorkflowExpression.Compile(customHeader3);
-            WorkflowExpression.Validate(__workflow_customHeader3, nameof(customHeader3), required: false);
-            var __workflow_customHeader4 = customHeader4 == null ? null : WorkflowExpression.Compile(customHeader4);
-            WorkflowExpression.Validate(__workflow_customHeader4, nameof(customHeader4), required: false);
-            var __workflow_customHeader5 = customHeader5 == null ? null : WorkflowExpression.Compile(customHeader5);
-            WorkflowExpression.Validate(__workflow_customHeader5, nameof(customHeader5), required: false);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = WorkflowExpression.Compile(customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = WorkflowExpression.Compile(customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = WorkflowExpression.Compile(customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = WorkflowExpression.Compile(customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = WorkflowExpression.Compile(customHeader5, nameof(customHeader5), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/codeless/httprequest";
@@ -490,14 +426,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<MCPQueryResponse> McpSalesforceManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
         {
-            var __workflow_queryRequestjsonrpc = queryRequestjsonrpc == null ? null : WorkflowExpression.Compile(queryRequestjsonrpc);
-            WorkflowExpression.Validate(__workflow_queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
-            var __workflow_queryRequestid = queryRequestid == null ? null : WorkflowExpression.Compile(queryRequestid);
-            WorkflowExpression.Validate(__workflow_queryRequestid, nameof(queryRequestid), required: false);
-            var __workflow_queryRequestmethod = queryRequestmethod == null ? null : WorkflowExpression.Compile(queryRequestmethod);
-            WorkflowExpression.Validate(__workflow_queryRequestmethod, nameof(queryRequestmethod), required: false);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_queryRequestjsonrpc = WorkflowExpression.Compile(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            var __workflow_queryRequestid = WorkflowExpression.Compile(queryRequestid, nameof(queryRequestid), required: false);
+            var __workflow_queryRequestmethod = WorkflowExpression.Compile(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<MCPQueryResponse>(() =>
             {
                 var apiCallPath = "/mcp/SalesforceManagement";
@@ -561,18 +493,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> parametersobject, Expression<Func<parametersoperationInput>> parametersoperation, Expression<Func<string>> parameterscolumnDelimiter = null, Expression<Func<string>> parametersexternalIDFieldName = null, Expression<Func<string>> parameterslineEnding = null, Expression<Func<string>> parameterscontentType = null)
         {
-            var __workflow_parametersobject = parametersobject == null ? null : WorkflowExpression.Compile(parametersobject);
-            WorkflowExpression.Validate(__workflow_parametersobject, nameof(parametersobject), required: true);
-            var __workflow_parametersoperation = parametersoperation == null ? null : WorkflowExpression.Compile(parametersoperation);
-            WorkflowExpression.Validate(__workflow_parametersoperation, nameof(parametersoperation), required: true);
-            var __workflow_parameterscolumnDelimiter = parameterscolumnDelimiter == null ? null : WorkflowExpression.Compile(parameterscolumnDelimiter);
-            WorkflowExpression.Validate(__workflow_parameterscolumnDelimiter, nameof(parameterscolumnDelimiter), required: false);
-            var __workflow_parametersexternalIDFieldName = parametersexternalIDFieldName == null ? null : WorkflowExpression.Compile(parametersexternalIDFieldName);
-            WorkflowExpression.Validate(__workflow_parametersexternalIDFieldName, nameof(parametersexternalIDFieldName), required: false);
-            var __workflow_parameterslineEnding = parameterslineEnding == null ? null : WorkflowExpression.Compile(parameterslineEnding);
-            WorkflowExpression.Validate(__workflow_parameterslineEnding, nameof(parameterslineEnding), required: false);
-            var __workflow_parameterscontentType = parameterscontentType == null ? null : WorkflowExpression.Compile(parameterscontentType);
-            WorkflowExpression.Validate(__workflow_parameterscontentType, nameof(parameterscontentType), required: false);
+            var __workflow_parametersobject = WorkflowExpression.Compile(parametersobject, nameof(parametersobject), required: true);
+            var __workflow_parametersoperation = WorkflowExpression.Compile(parametersoperation, nameof(parametersoperation), required: true);
+            var __workflow_parameterscolumnDelimiter = WorkflowExpression.Compile(parameterscolumnDelimiter, nameof(parameterscolumnDelimiter), required: false);
+            var __workflow_parametersexternalIDFieldName = WorkflowExpression.Compile(parametersexternalIDFieldName, nameof(parametersexternalIDFieldName), required: false);
+            var __workflow_parameterslineEnding = WorkflowExpression.Compile(parameterslineEnding, nameof(parameterslineEnding), required: false);
+            var __workflow_parameterscontentType = WorkflowExpression.Compile(parameterscontentType, nameof(parameterscontentType), required: false);
             return new DeferredBodyAction<CreateJobResponse>(() =>
             {
                 var apiCallPath = "/bulk/createjob";
@@ -620,12 +546,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -640,14 +563,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null, Expression<Func<string>> select = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -663,14 +582,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PatchItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId, Expression<Func<object>> item = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_externalIdField = externalIdField == null ? null : WorkflowExpression.Compile(externalIdField);
-            WorkflowExpression.Validate(__workflow_externalIdField, nameof(externalIdField), required: true);
-            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
-            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_externalIdField = WorkflowExpression.Compile(externalIdField, nameof(externalIdField), required: true);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalId, 2));
@@ -684,10 +599,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
         public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> table, Expression<Func<object>> item = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -703,14 +616,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     {
         public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -728,14 +637,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 
         public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyTrigger<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));

@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetArrivalsResponse> GetArrivals(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<int>> maxJourneys = null)
         {
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
-            var __workflow_station = station == null ? null : WorkflowExpression.Compile(station);
-            WorkflowExpression.Validate(__workflow_station, nameof(station), required: false);
-            var __workflow_uicCode = uicCode == null ? null : WorkflowExpression.Compile(uicCode);
-            WorkflowExpression.Validate(__workflow_uicCode, nameof(uicCode), required: false);
-            var __workflow_dateTime = dateTime == null ? null : WorkflowExpression.Compile(dateTime);
-            WorkflowExpression.Validate(__workflow_dateTime, nameof(dateTime), required: false);
-            var __workflow_maxJourneys = maxJourneys == null ? null : WorkflowExpression.Compile(maxJourneys);
-            WorkflowExpression.Validate(__workflow_maxJourneys, nameof(maxJourneys), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            var __workflow_station = WorkflowExpression.Compile(station, nameof(station), required: false);
+            var __workflow_uicCode = WorkflowExpression.Compile(uicCode, nameof(uicCode), required: false);
+            var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
+            var __workflow_maxJourneys = WorkflowExpression.Compile(maxJourneys, nameof(maxJourneys), required: false);
             return new DeferredBodyAction<GetArrivalsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/arrivals";
@@ -45,16 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetDeparturesResponse> GetDepartures(Expression<Func<string>> lang = null, Expression<Func<string>> station = null, Expression<Func<string>> uicCode = null, Expression<Func<string>> dateTime = null, Expression<Func<string>> maxJourneys = null)
         {
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
-            var __workflow_station = station == null ? null : WorkflowExpression.Compile(station);
-            WorkflowExpression.Validate(__workflow_station, nameof(station), required: false);
-            var __workflow_uicCode = uicCode == null ? null : WorkflowExpression.Compile(uicCode);
-            WorkflowExpression.Validate(__workflow_uicCode, nameof(uicCode), required: false);
-            var __workflow_dateTime = dateTime == null ? null : WorkflowExpression.Compile(dateTime);
-            WorkflowExpression.Validate(__workflow_dateTime, nameof(dateTime), required: false);
-            var __workflow_maxJourneys = maxJourneys == null ? null : WorkflowExpression.Compile(maxJourneys);
-            WorkflowExpression.Validate(__workflow_maxJourneys, nameof(maxJourneys), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
+            var __workflow_station = WorkflowExpression.Compile(station, nameof(station), required: false);
+            var __workflow_uicCode = WorkflowExpression.Compile(uicCode, nameof(uicCode), required: false);
+            var __workflow_dateTime = WorkflowExpression.Compile(dateTime, nameof(dateTime), required: false);
+            var __workflow_maxJourneys = WorkflowExpression.Compile(maxJourneys, nameof(maxJourneys), required: false);
             return new DeferredBodyAction<GetDeparturesResponse>(() =>
             {
                 var apiCallPath = "/api/v2/departures";
@@ -77,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nederlandsespoorweip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nederlandsespoorweip")]
         public IBodyWorkflowAction<GetStationDisruptionsResponseItem[]> GetStationDisruptions(Expression<Func<string>> stationCode)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationDisruptionsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/disruptions/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode(Expression<Func<countryInput>> country, Expression<Func<string>> postalCode)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: true);
             return new DeferredBodyAction<GetDetailsByPostalCodeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postalCode, 1));
@@ -29,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
         public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity(Expression<Func<countryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: true);
             return new DeferredBodyAction<GetDetailsByStateCityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_state, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_city, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<SynthesizeResponse> Synthesize(Expression<Func<string>> bodytext, Expression<Func<voiceInput>> voice = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_voice = voice == null ? null : WorkflowExpression.Compile(voice);
-            WorkflowExpression.Validate(__workflow_voice, nameof(voice), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
             return new DeferredBodyAction<SynthesizeResponse>(() =>
             {
                 var apiCallPath = "/v1/synthesize";
@@ -50,10 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<PronunciationResponse> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
         {
-            var __workflow_voice = voice == null ? null : WorkflowExpression.Compile(voice);
-            WorkflowExpression.Validate(__workflow_voice, nameof(voice), required: false);
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
+            var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
             return new DeferredBodyAction<PronunciationResponse>(() =>
             {
                 var apiCallPath = "/v1/pronunciation";
@@ -71,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
         public IBodyWorkflowAction<GetVoiceResponse> GetVoice(Expression<Func<string>> voice)
         {
-            var __workflow_voice = voice == null ? null : WorkflowExpression.Compile(voice);
-            WorkflowExpression.Validate(__workflow_voice, nameof(voice), required: true);
+            var __workflow_voice = WorkflowExpression.Compile(voice, nameof(voice), required: true);
             return new DeferredBodyAction<GetVoiceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_voice, 1));

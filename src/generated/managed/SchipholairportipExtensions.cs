@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveFlightUsingGETResponse> RetrieveFlightUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> id)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_appKey = appKey == null ? null : WorkflowExpression.Compile(appKey);
-            WorkflowExpression.Validate(__workflow_appKey, nameof(appKey), required: true);
-            var __workflow_resourceVersion = resourceVersion == null ? null : WorkflowExpression.Compile(resourceVersion);
-            WorkflowExpression.Validate(__workflow_resourceVersion, nameof(resourceVersion), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveFlightUsingGETResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flights/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -37,42 +33,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveFlightsForDateOrPeriodUsingGETResponse> RetrieveFlightsForDateOrPeriodUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> scheduleDate = null, Expression<Func<string>> scheduleTime = null, Expression<Func<string>> flightName = null, Expression<Func<flightDirectionInput>> flightDirection = null, Expression<Func<string>> airline = null, Expression<Func<int>> airlineCode = null, Expression<Func<string>> route = null, Expression<Func<bool>> includedelays = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null, Expression<Func<string>> fromDateTime = null, Expression<Func<string>> toDateTime = null, Expression<Func<string>> searchDateTimeField = null, Expression<Func<string>> fromScheduleDate = null, Expression<Func<string>> toScheduleDate = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_appKey = appKey == null ? null : WorkflowExpression.Compile(appKey);
-            WorkflowExpression.Validate(__workflow_appKey, nameof(appKey), required: true);
-            var __workflow_resourceVersion = resourceVersion == null ? null : WorkflowExpression.Compile(resourceVersion);
-            WorkflowExpression.Validate(__workflow_resourceVersion, nameof(resourceVersion), required: true);
-            var __workflow_scheduleDate = scheduleDate == null ? null : WorkflowExpression.Compile(scheduleDate);
-            WorkflowExpression.Validate(__workflow_scheduleDate, nameof(scheduleDate), required: false);
-            var __workflow_scheduleTime = scheduleTime == null ? null : WorkflowExpression.Compile(scheduleTime);
-            WorkflowExpression.Validate(__workflow_scheduleTime, nameof(scheduleTime), required: false);
-            var __workflow_flightName = flightName == null ? null : WorkflowExpression.Compile(flightName);
-            WorkflowExpression.Validate(__workflow_flightName, nameof(flightName), required: false);
-            var __workflow_flightDirection = flightDirection == null ? null : WorkflowExpression.Compile(flightDirection);
-            WorkflowExpression.Validate(__workflow_flightDirection, nameof(flightDirection), required: false);
-            var __workflow_airline = airline == null ? null : WorkflowExpression.Compile(airline);
-            WorkflowExpression.Validate(__workflow_airline, nameof(airline), required: false);
-            var __workflow_airlineCode = airlineCode == null ? null : WorkflowExpression.Compile(airlineCode);
-            WorkflowExpression.Validate(__workflow_airlineCode, nameof(airlineCode), required: false);
-            var __workflow_route = route == null ? null : WorkflowExpression.Compile(route);
-            WorkflowExpression.Validate(__workflow_route, nameof(route), required: false);
-            var __workflow_includedelays = includedelays == null ? null : WorkflowExpression.Compile(includedelays);
-            WorkflowExpression.Validate(__workflow_includedelays, nameof(includedelays), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_fromDateTime = fromDateTime == null ? null : WorkflowExpression.Compile(fromDateTime);
-            WorkflowExpression.Validate(__workflow_fromDateTime, nameof(fromDateTime), required: false);
-            var __workflow_toDateTime = toDateTime == null ? null : WorkflowExpression.Compile(toDateTime);
-            WorkflowExpression.Validate(__workflow_toDateTime, nameof(toDateTime), required: false);
-            var __workflow_searchDateTimeField = searchDateTimeField == null ? null : WorkflowExpression.Compile(searchDateTimeField);
-            WorkflowExpression.Validate(__workflow_searchDateTimeField, nameof(searchDateTimeField), required: false);
-            var __workflow_fromScheduleDate = fromScheduleDate == null ? null : WorkflowExpression.Compile(fromScheduleDate);
-            WorkflowExpression.Validate(__workflow_fromScheduleDate, nameof(fromScheduleDate), required: false);
-            var __workflow_toScheduleDate = toScheduleDate == null ? null : WorkflowExpression.Compile(toScheduleDate);
-            WorkflowExpression.Validate(__workflow_toScheduleDate, nameof(toScheduleDate), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_scheduleDate = WorkflowExpression.Compile(scheduleDate, nameof(scheduleDate), required: false);
+            var __workflow_scheduleTime = WorkflowExpression.Compile(scheduleTime, nameof(scheduleTime), required: false);
+            var __workflow_flightName = WorkflowExpression.Compile(flightName, nameof(flightName), required: false);
+            var __workflow_flightDirection = WorkflowExpression.Compile(flightDirection, nameof(flightDirection), required: false);
+            var __workflow_airline = WorkflowExpression.Compile(airline, nameof(airline), required: false);
+            var __workflow_airlineCode = WorkflowExpression.Compile(airlineCode, nameof(airlineCode), required: false);
+            var __workflow_route = WorkflowExpression.Compile(route, nameof(route), required: false);
+            var __workflow_includedelays = WorkflowExpression.Compile(includedelays, nameof(includedelays), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_fromDateTime = WorkflowExpression.Compile(fromDateTime, nameof(fromDateTime), required: false);
+            var __workflow_toDateTime = WorkflowExpression.Compile(toDateTime, nameof(toDateTime), required: false);
+            var __workflow_searchDateTimeField = WorkflowExpression.Compile(searchDateTimeField, nameof(searchDateTimeField), required: false);
+            var __workflow_fromScheduleDate = WorkflowExpression.Compile(fromScheduleDate, nameof(fromScheduleDate), required: false);
+            var __workflow_toScheduleDate = WorkflowExpression.Compile(toScheduleDate, nameof(toScheduleDate), required: false);
             return new DeferredBodyAction<RetrieveFlightsForDateOrPeriodUsingGETResponse>(() =>
             {
                 var apiCallPath = "/flights";
@@ -122,16 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllAirlinesUsingGETResponse> RetrieveAllAirlinesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_appKey = appKey == null ? null : WorkflowExpression.Compile(appKey);
-            WorkflowExpression.Validate(__workflow_appKey, nameof(appKey), required: true);
-            var __workflow_resourceVersion = resourceVersion == null ? null : WorkflowExpression.Compile(resourceVersion);
-            WorkflowExpression.Validate(__workflow_resourceVersion, nameof(resourceVersion), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<RetrieveAllAirlinesUsingGETResponse>(() =>
             {
                 var apiCallPath = "/airlines";
@@ -154,14 +127,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAirlineUsingGETResponse> RetrieveAirlineUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> airline)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_appKey = appKey == null ? null : WorkflowExpression.Compile(appKey);
-            WorkflowExpression.Validate(__workflow_appKey, nameof(appKey), required: true);
-            var __workflow_resourceVersion = resourceVersion == null ? null : WorkflowExpression.Compile(resourceVersion);
-            WorkflowExpression.Validate(__workflow_resourceVersion, nameof(resourceVersion), required: true);
-            var __workflow_airline = airline == null ? null : WorkflowExpression.Compile(airline);
-            WorkflowExpression.Validate(__workflow_airline, nameof(airline), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_airline = WorkflowExpression.Compile(airline, nameof(airline), required: true);
             return new DeferredBodyAction<RetrieveAirlineUsingGETResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/airlines/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_airline, 1));
@@ -178,20 +147,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllAircraftTypesUsingGETResponse> RetrieveAllAircraftTypesUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iataMain = null, Expression<Func<string>> iataSub = null, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_appKey = appKey == null ? null : WorkflowExpression.Compile(appKey);
-            WorkflowExpression.Validate(__workflow_appKey, nameof(appKey), required: true);
-            var __workflow_resourceVersion = resourceVersion == null ? null : WorkflowExpression.Compile(resourceVersion);
-            WorkflowExpression.Validate(__workflow_resourceVersion, nameof(resourceVersion), required: true);
-            var __workflow_iataMain = iataMain == null ? null : WorkflowExpression.Compile(iataMain);
-            WorkflowExpression.Validate(__workflow_iataMain, nameof(iataMain), required: false);
-            var __workflow_iataSub = iataSub == null ? null : WorkflowExpression.Compile(iataSub);
-            WorkflowExpression.Validate(__workflow_iataSub, nameof(iataSub), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_iataMain = WorkflowExpression.Compile(iataMain, nameof(iataMain), required: false);
+            var __workflow_iataSub = WorkflowExpression.Compile(iataSub, nameof(iataSub), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<RetrieveAllAircraftTypesUsingGETResponse>(() =>
             {
                 var apiCallPath = "/aircrafttypes";
@@ -218,16 +180,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveAllDestinationsUsingGETResponse> RetrieveAllDestinationsUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<int>> page = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_appKey = appKey == null ? null : WorkflowExpression.Compile(appKey);
-            WorkflowExpression.Validate(__workflow_appKey, nameof(appKey), required: true);
-            var __workflow_resourceVersion = resourceVersion == null ? null : WorkflowExpression.Compile(resourceVersion);
-            WorkflowExpression.Validate(__workflow_resourceVersion, nameof(resourceVersion), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<RetrieveAllDestinationsUsingGETResponse>(() =>
             {
                 var apiCallPath = "/destinations";
@@ -250,14 +207,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schipholairportip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schipholairportip")]
         public IBodyWorkflowAction<RetrieveDestinationUsingGETResponse> RetrieveDestinationUsingGET(Expression<Func<string>> appId, Expression<Func<string>> appKey, Expression<Func<string>> resourceVersion, Expression<Func<string>> iata)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_appKey = appKey == null ? null : WorkflowExpression.Compile(appKey);
-            WorkflowExpression.Validate(__workflow_appKey, nameof(appKey), required: true);
-            var __workflow_resourceVersion = resourceVersion == null ? null : WorkflowExpression.Compile(resourceVersion);
-            WorkflowExpression.Validate(__workflow_resourceVersion, nameof(resourceVersion), required: true);
-            var __workflow_iata = iata == null ? null : WorkflowExpression.Compile(iata);
-            WorkflowExpression.Validate(__workflow_iata, nameof(iata), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_appKey = WorkflowExpression.Compile(appKey, nameof(appKey), required: true);
+            var __workflow_resourceVersion = WorkflowExpression.Compile(resourceVersion, nameof(resourceVersion), required: true);
+            var __workflow_iata = WorkflowExpression.Compile(iata, nameof(iata), required: true);
             return new DeferredBodyAction<RetrieveDestinationUsingGETResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/destinations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iata, 1));

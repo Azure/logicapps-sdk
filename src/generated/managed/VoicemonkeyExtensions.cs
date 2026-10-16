@@ -13,42 +13,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement(Expression<Func<string>> bodydeviceID, Expression<Func<string>> bodytext = null, Expression<Func<bodyvoiceInput>> bodyvoice = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodychimeInput>> bodychime = null, Expression<Func<string>> bodyaudio = null, Expression<Func<string>> bodybackgroundAudio = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodynoBackground = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodymediaWidth = null, Expression<Func<int>> bodymediaHeight = null, Expression<Func<bodymediaScalingInput>> bodymediaScaling = null, Expression<Func<bodymediaAlignmentInput>> bodymediaAlignment = null, Expression<Func<int>> bodymediaRadius = null, Expression<Func<string>> bodyvideo = null, Expression<Func<int>> bodyvideoRepeat = null, Expression<Func<string>> bodyechoDotWithClockDisplay = null)
         {
-            var __workflow_bodydeviceID = bodydeviceID == null ? null : WorkflowExpression.Compile(bodydeviceID);
-            WorkflowExpression.Validate(__workflow_bodydeviceID, nameof(bodydeviceID), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyvoice = bodyvoice == null ? null : WorkflowExpression.Compile(bodyvoice);
-            WorkflowExpression.Validate(__workflow_bodyvoice, nameof(bodyvoice), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodychime = bodychime == null ? null : WorkflowExpression.Compile(bodychime);
-            WorkflowExpression.Validate(__workflow_bodychime, nameof(bodychime), required: false);
-            var __workflow_bodyaudio = bodyaudio == null ? null : WorkflowExpression.Compile(bodyaudio);
-            WorkflowExpression.Validate(__workflow_bodyaudio, nameof(bodyaudio), required: false);
-            var __workflow_bodybackgroundAudio = bodybackgroundAudio == null ? null : WorkflowExpression.Compile(bodybackgroundAudio);
-            WorkflowExpression.Validate(__workflow_bodybackgroundAudio, nameof(bodybackgroundAudio), required: false);
-            var __workflow_bodywebsite = bodywebsite == null ? null : WorkflowExpression.Compile(bodywebsite);
-            WorkflowExpression.Validate(__workflow_bodywebsite, nameof(bodywebsite), required: false);
-            var __workflow_bodynoBackground = bodynoBackground == null ? null : WorkflowExpression.Compile(bodynoBackground);
-            WorkflowExpression.Validate(__workflow_bodynoBackground, nameof(bodynoBackground), required: false);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: false);
-            var __workflow_bodymediaWidth = bodymediaWidth == null ? null : WorkflowExpression.Compile(bodymediaWidth);
-            WorkflowExpression.Validate(__workflow_bodymediaWidth, nameof(bodymediaWidth), required: false);
-            var __workflow_bodymediaHeight = bodymediaHeight == null ? null : WorkflowExpression.Compile(bodymediaHeight);
-            WorkflowExpression.Validate(__workflow_bodymediaHeight, nameof(bodymediaHeight), required: false);
-            var __workflow_bodymediaScaling = bodymediaScaling == null ? null : WorkflowExpression.Compile(bodymediaScaling);
-            WorkflowExpression.Validate(__workflow_bodymediaScaling, nameof(bodymediaScaling), required: false);
-            var __workflow_bodymediaAlignment = bodymediaAlignment == null ? null : WorkflowExpression.Compile(bodymediaAlignment);
-            WorkflowExpression.Validate(__workflow_bodymediaAlignment, nameof(bodymediaAlignment), required: false);
-            var __workflow_bodymediaRadius = bodymediaRadius == null ? null : WorkflowExpression.Compile(bodymediaRadius);
-            WorkflowExpression.Validate(__workflow_bodymediaRadius, nameof(bodymediaRadius), required: false);
-            var __workflow_bodyvideo = bodyvideo == null ? null : WorkflowExpression.Compile(bodyvideo);
-            WorkflowExpression.Validate(__workflow_bodyvideo, nameof(bodyvideo), required: false);
-            var __workflow_bodyvideoRepeat = bodyvideoRepeat == null ? null : WorkflowExpression.Compile(bodyvideoRepeat);
-            WorkflowExpression.Validate(__workflow_bodyvideoRepeat, nameof(bodyvideoRepeat), required: false);
-            var __workflow_bodyechoDotWithClockDisplay = bodyechoDotWithClockDisplay == null ? null : WorkflowExpression.Compile(bodyechoDotWithClockDisplay);
-            WorkflowExpression.Validate(__workflow_bodyechoDotWithClockDisplay, nameof(bodyechoDotWithClockDisplay), required: false);
+            var __workflow_bodydeviceID = WorkflowExpression.Compile(bodydeviceID, nameof(bodydeviceID), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyvoice = WorkflowExpression.Compile(bodyvoice, nameof(bodyvoice), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodychime = WorkflowExpression.Compile(bodychime, nameof(bodychime), required: false);
+            var __workflow_bodyaudio = WorkflowExpression.Compile(bodyaudio, nameof(bodyaudio), required: false);
+            var __workflow_bodybackgroundAudio = WorkflowExpression.Compile(bodybackgroundAudio, nameof(bodybackgroundAudio), required: false);
+            var __workflow_bodywebsite = WorkflowExpression.Compile(bodywebsite, nameof(bodywebsite), required: false);
+            var __workflow_bodynoBackground = WorkflowExpression.Compile(bodynoBackground, nameof(bodynoBackground), required: false);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: false);
+            var __workflow_bodymediaWidth = WorkflowExpression.Compile(bodymediaWidth, nameof(bodymediaWidth), required: false);
+            var __workflow_bodymediaHeight = WorkflowExpression.Compile(bodymediaHeight, nameof(bodymediaHeight), required: false);
+            var __workflow_bodymediaScaling = WorkflowExpression.Compile(bodymediaScaling, nameof(bodymediaScaling), required: false);
+            var __workflow_bodymediaAlignment = WorkflowExpression.Compile(bodymediaAlignment, nameof(bodymediaAlignment), required: false);
+            var __workflow_bodymediaRadius = WorkflowExpression.Compile(bodymediaRadius, nameof(bodymediaRadius), required: false);
+            var __workflow_bodyvideo = WorkflowExpression.Compile(bodyvideo, nameof(bodyvideo), required: false);
+            var __workflow_bodyvideoRepeat = WorkflowExpression.Compile(bodyvideoRepeat, nameof(bodyvideoRepeat), required: false);
+            var __workflow_bodyechoDotWithClockDisplay = WorkflowExpression.Compile(bodyechoDotWithClockDisplay, nameof(bodyechoDotWithClockDisplay), required: false);
             return new DeferredBodyAction<MakeAnnouncementResponse>(() =>
             {
                 var apiCallPath = "/announcement";
@@ -172,8 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine(Expression<Func<string>> bodydeviceID)
         {
-            var __workflow_bodydeviceID = bodydeviceID == null ? null : WorkflowExpression.Compile(bodydeviceID);
-            WorkflowExpression.Validate(__workflow_bodydeviceID, nameof(bodydeviceID), required: true);
+            var __workflow_bodydeviceID = WorkflowExpression.Compile(bodydeviceID, nameof(bodydeviceID), required: true);
             return new DeferredBodyAction<TriggerRoutineResponse>(() =>
             {
                 var apiCallPath = "/trigger";
@@ -195,8 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
         public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow(Expression<Func<int>> bodyflowID)
         {
-            var __workflow_bodyflowID = bodyflowID == null ? null : WorkflowExpression.Compile(bodyflowID);
-            WorkflowExpression.Validate(__workflow_bodyflowID, nameof(bodyflowID), required: true);
+            var __workflow_bodyflowID = WorkflowExpression.Compile(bodyflowID, nameof(bodyflowID), required: true);
             return new DeferredBodyAction<TriggerFlowResponse>(() =>
             {
                 var apiCallPath = "/flows";

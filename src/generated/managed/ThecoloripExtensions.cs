@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
         public IBodyWorkflowAction<ColorGetResponse> ColorGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null)
         {
-            var __workflow_hex = hex == null ? null : WorkflowExpression.Compile(hex);
-            WorkflowExpression.Validate(__workflow_hex, nameof(hex), required: false);
-            var __workflow_rgb = rgb == null ? null : WorkflowExpression.Compile(rgb);
-            WorkflowExpression.Validate(__workflow_rgb, nameof(rgb), required: false);
-            var __workflow_hsl = hsl == null ? null : WorkflowExpression.Compile(hsl);
-            WorkflowExpression.Validate(__workflow_hsl, nameof(hsl), required: false);
-            var __workflow_cmyk = cmyk == null ? null : WorkflowExpression.Compile(cmyk);
-            WorkflowExpression.Validate(__workflow_cmyk, nameof(cmyk), required: false);
+            var __workflow_hex = WorkflowExpression.Compile(hex, nameof(hex), required: false);
+            var __workflow_rgb = WorkflowExpression.Compile(rgb, nameof(rgb), required: false);
+            var __workflow_hsl = WorkflowExpression.Compile(hsl, nameof(hsl), required: false);
+            var __workflow_cmyk = WorkflowExpression.Compile(cmyk, nameof(cmyk), required: false);
             return new DeferredBodyAction<ColorGetResponse>(() =>
             {
                 var apiCallPath = "/id";
@@ -42,18 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
         public IBodyWorkflowAction<SchemeGetResponse> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<modeInput>> mode = null, Expression<Func<int>> count = null)
         {
-            var __workflow_hex = hex == null ? null : WorkflowExpression.Compile(hex);
-            WorkflowExpression.Validate(__workflow_hex, nameof(hex), required: false);
-            var __workflow_rgb = rgb == null ? null : WorkflowExpression.Compile(rgb);
-            WorkflowExpression.Validate(__workflow_rgb, nameof(rgb), required: false);
-            var __workflow_hsl = hsl == null ? null : WorkflowExpression.Compile(hsl);
-            WorkflowExpression.Validate(__workflow_hsl, nameof(hsl), required: false);
-            var __workflow_cmyk = cmyk == null ? null : WorkflowExpression.Compile(cmyk);
-            WorkflowExpression.Validate(__workflow_cmyk, nameof(cmyk), required: false);
-            var __workflow_mode = mode == null ? null : WorkflowExpression.Compile(mode);
-            WorkflowExpression.Validate(__workflow_mode, nameof(mode), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_hex = WorkflowExpression.Compile(hex, nameof(hex), required: false);
+            var __workflow_rgb = WorkflowExpression.Compile(rgb, nameof(rgb), required: false);
+            var __workflow_hsl = WorkflowExpression.Compile(hsl, nameof(hsl), required: false);
+            var __workflow_cmyk = WorkflowExpression.Compile(cmyk, nameof(cmyk), required: false);
+            var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             return new DeferredBodyAction<SchemeGetResponse>(() =>
             {
                 var apiCallPath = "/scheme";

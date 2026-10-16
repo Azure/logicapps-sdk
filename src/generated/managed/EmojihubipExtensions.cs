@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory(Expression<Func<categoryNameInput>> categoryName)
         {
-            var __workflow_categoryName = categoryName == null ? null : WorkflowExpression.Compile(categoryName);
-            WorkflowExpression.Validate(__workflow_categoryName, nameof(categoryName), required: true);
+            var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
             return new DeferredBodyAction<AllCategoryResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryName, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup(Expression<Func<groupNameInput>> groupName)
         {
-            var __workflow_groupName = groupName == null ? null : WorkflowExpression.Compile(groupName);
-            WorkflowExpression.Validate(__workflow_groupName, nameof(groupName), required: true);
+            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             return new DeferredBodyAction<AllGroupResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1));
@@ -59,8 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory(Expression<Func<categoryNameInput>> categoryName)
         {
-            var __workflow_categoryName = categoryName == null ? null : WorkflowExpression.Compile(categoryName);
-            WorkflowExpression.Validate(__workflow_categoryName, nameof(categoryName), required: true);
+            var __workflow_categoryName = WorkflowExpression.Compile(categoryName, nameof(categoryName), required: true);
             return new DeferredBodyAction<RandomCategoryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_categoryName, 1));
@@ -73,8 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
         public IBodyWorkflowAction<RandomGroupResponse> RandomGroup(Expression<Func<groupNameInput>> groupName)
         {
-            var __workflow_groupName = groupName == null ? null : WorkflowExpression.Compile(groupName);
-            WorkflowExpression.Validate(__workflow_groupName, nameof(groupName), required: true);
+            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
             return new DeferredBodyAction<RandomGroupResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1));

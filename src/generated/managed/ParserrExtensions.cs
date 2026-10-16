@@ -24,8 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
     {
         public IWorkflowTrigger WebhookEmailReceived(Expression<Func<string>> bodyemail, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/microsoft/subscription/create";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loripsumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loripsumip")]
         public IBodyWorkflowAction<string> GetText(Expression<Func<string>> parameters)
         {
-            var __workflow_parameters = parameters == null ? null : WorkflowExpression.Compile(parameters);
-            WorkflowExpression.Validate(__workflow_parameters, nameof(parameters), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parameters, 1));

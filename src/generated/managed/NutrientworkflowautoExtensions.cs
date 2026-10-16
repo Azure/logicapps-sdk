@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nutrientworkflowauto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nutrientworkflowauto")]
         public IBodyWorkflowAction<SubmitFormResponse> SubmitForm(Expression<Func<string>> processGuid, Expression<Func<string>> processTaskGuid, Expression<Func<object>> dynamicListSchema = null)
         {
-            var __workflow_processGuid = processGuid == null ? null : WorkflowExpression.Compile(processGuid);
-            WorkflowExpression.Validate(__workflow_processGuid, nameof(processGuid), required: true);
-            var __workflow_processTaskGuid = processTaskGuid == null ? null : WorkflowExpression.Compile(processTaskGuid);
-            WorkflowExpression.Validate(__workflow_processTaskGuid, nameof(processTaskGuid), required: true);
-            var __workflow_dynamicListSchema = dynamicListSchema == null ? null : WorkflowExpression.Compile(dynamicListSchema);
-            WorkflowExpression.Validate(__workflow_dynamicListSchema, nameof(dynamicListSchema), required: false);
+            var __workflow_processGuid = WorkflowExpression.Compile(processGuid, nameof(processGuid), required: true);
+            var __workflow_processTaskGuid = WorkflowExpression.Compile(processTaskGuid, nameof(processTaskGuid), required: true);
+            var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
             return new DeferredBodyAction<SubmitFormResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/instance/start/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_processGuid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_processTaskGuid, 1));

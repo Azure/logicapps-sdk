@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsEmailsResponse> EmailsGet(Expression<Func<string>> requestJobId, Expression<Func<requestEmailTypeInput>> requestEmailType)
         {
-            var __workflow_requestJobId = requestJobId == null ? null : WorkflowExpression.Compile(requestJobId);
-            WorkflowExpression.Validate(__workflow_requestJobId, nameof(requestJobId), required: true);
-            var __workflow_requestEmailType = requestEmailType == null ? null : WorkflowExpression.Compile(requestEmailType);
-            WorkflowExpression.Validate(__workflow_requestEmailType, nameof(requestEmailType), required: true);
+            var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
+            var __workflow_requestEmailType = WorkflowExpression.Compile(requestEmailType, nameof(requestEmailType), required: true);
             return new DeferredBodyAction<JsEmailsResponse>(() =>
             {
                 var apiCallPath = "/1.0/emails";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JToken> JobApprove(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
         {
-            var __workflow_requestsecret = requestsecret == null ? null : WorkflowExpression.Compile(requestsecret);
-            WorkflowExpression.Validate(__workflow_requestsecret, nameof(requestsecret), required: true);
-            var __workflow_requestcomments = requestcomments == null ? null : WorkflowExpression.Compile(requestcomments);
-            WorkflowExpression.Validate(__workflow_requestcomments, nameof(requestcomments), required: false);
+            var __workflow_requestsecret = WorkflowExpression.Compile(requestsecret, nameof(requestsecret), required: true);
+            var __workflow_requestcomments = WorkflowExpression.Compile(requestcomments, nameof(requestcomments), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1.0/job/approve";
@@ -62,50 +58,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsCreateJobResponse> JobCreate(Expression<Func<requestrecipientSourceInput>> requestrecipientSource, Expression<Func<string>> requestsendingAccount, Expression<Func<string>> requestnewsletterTitle, Expression<Func<string>> requestoffice365Groups = null, Expression<Func<string>> requestattachmentContent = null, Expression<Func<string>> requestattachmentName = null, Expression<Func<string>> requestemailAddresses = null, Expression<Func<string>> requestemailContent = null, Expression<Func<requestemailContentTypeInput>> requestemailContentType = null, Expression<Func<string>> requestemailSubject = null, Expression<Func<string>> requestexchangeGroups = null, Expression<Func<requestwhenToSendTypeInput>> requestwhenToSendType = null, Expression<Func<string>> requestwhenToSend = null, Expression<Func<string>> requestrecipientEmailField = null, Expression<Func<string>> requestrecipientListURL = null, Expression<Func<string>> requestrecipientFilterView = null, Expression<Func<bool>> requestremoveDuplicates = null, Expression<Func<bool>> requestsendReport = null, Expression<Func<string>> requesttimeZone = null, Expression<Func<string>> requesttemplate = null, Expression<Func<bool>> requesttrackClicks = null, Expression<Func<bool>> requesttrackOpens = null)
         {
-            var __workflow_requestrecipientSource = requestrecipientSource == null ? null : WorkflowExpression.Compile(requestrecipientSource);
-            WorkflowExpression.Validate(__workflow_requestrecipientSource, nameof(requestrecipientSource), required: true);
-            var __workflow_requestsendingAccount = requestsendingAccount == null ? null : WorkflowExpression.Compile(requestsendingAccount);
-            WorkflowExpression.Validate(__workflow_requestsendingAccount, nameof(requestsendingAccount), required: true);
-            var __workflow_requestnewsletterTitle = requestnewsletterTitle == null ? null : WorkflowExpression.Compile(requestnewsletterTitle);
-            WorkflowExpression.Validate(__workflow_requestnewsletterTitle, nameof(requestnewsletterTitle), required: true);
-            var __workflow_requestoffice365Groups = requestoffice365Groups == null ? null : WorkflowExpression.Compile(requestoffice365Groups);
-            WorkflowExpression.Validate(__workflow_requestoffice365Groups, nameof(requestoffice365Groups), required: false);
-            var __workflow_requestattachmentContent = requestattachmentContent == null ? null : WorkflowExpression.Compile(requestattachmentContent);
-            WorkflowExpression.Validate(__workflow_requestattachmentContent, nameof(requestattachmentContent), required: false);
-            var __workflow_requestattachmentName = requestattachmentName == null ? null : WorkflowExpression.Compile(requestattachmentName);
-            WorkflowExpression.Validate(__workflow_requestattachmentName, nameof(requestattachmentName), required: false);
-            var __workflow_requestemailAddresses = requestemailAddresses == null ? null : WorkflowExpression.Compile(requestemailAddresses);
-            WorkflowExpression.Validate(__workflow_requestemailAddresses, nameof(requestemailAddresses), required: false);
-            var __workflow_requestemailContent = requestemailContent == null ? null : WorkflowExpression.Compile(requestemailContent);
-            WorkflowExpression.Validate(__workflow_requestemailContent, nameof(requestemailContent), required: false);
-            var __workflow_requestemailContentType = requestemailContentType == null ? null : WorkflowExpression.Compile(requestemailContentType);
-            WorkflowExpression.Validate(__workflow_requestemailContentType, nameof(requestemailContentType), required: false);
-            var __workflow_requestemailSubject = requestemailSubject == null ? null : WorkflowExpression.Compile(requestemailSubject);
-            WorkflowExpression.Validate(__workflow_requestemailSubject, nameof(requestemailSubject), required: false);
-            var __workflow_requestexchangeGroups = requestexchangeGroups == null ? null : WorkflowExpression.Compile(requestexchangeGroups);
-            WorkflowExpression.Validate(__workflow_requestexchangeGroups, nameof(requestexchangeGroups), required: false);
-            var __workflow_requestwhenToSendType = requestwhenToSendType == null ? null : WorkflowExpression.Compile(requestwhenToSendType);
-            WorkflowExpression.Validate(__workflow_requestwhenToSendType, nameof(requestwhenToSendType), required: false);
-            var __workflow_requestwhenToSend = requestwhenToSend == null ? null : WorkflowExpression.Compile(requestwhenToSend);
-            WorkflowExpression.Validate(__workflow_requestwhenToSend, nameof(requestwhenToSend), required: false);
-            var __workflow_requestrecipientEmailField = requestrecipientEmailField == null ? null : WorkflowExpression.Compile(requestrecipientEmailField);
-            WorkflowExpression.Validate(__workflow_requestrecipientEmailField, nameof(requestrecipientEmailField), required: false);
-            var __workflow_requestrecipientListURL = requestrecipientListURL == null ? null : WorkflowExpression.Compile(requestrecipientListURL);
-            WorkflowExpression.Validate(__workflow_requestrecipientListURL, nameof(requestrecipientListURL), required: false);
-            var __workflow_requestrecipientFilterView = requestrecipientFilterView == null ? null : WorkflowExpression.Compile(requestrecipientFilterView);
-            WorkflowExpression.Validate(__workflow_requestrecipientFilterView, nameof(requestrecipientFilterView), required: false);
-            var __workflow_requestremoveDuplicates = requestremoveDuplicates == null ? null : WorkflowExpression.Compile(requestremoveDuplicates);
-            WorkflowExpression.Validate(__workflow_requestremoveDuplicates, nameof(requestremoveDuplicates), required: false);
-            var __workflow_requestsendReport = requestsendReport == null ? null : WorkflowExpression.Compile(requestsendReport);
-            WorkflowExpression.Validate(__workflow_requestsendReport, nameof(requestsendReport), required: false);
-            var __workflow_requesttimeZone = requesttimeZone == null ? null : WorkflowExpression.Compile(requesttimeZone);
-            WorkflowExpression.Validate(__workflow_requesttimeZone, nameof(requesttimeZone), required: false);
-            var __workflow_requesttemplate = requesttemplate == null ? null : WorkflowExpression.Compile(requesttemplate);
-            WorkflowExpression.Validate(__workflow_requesttemplate, nameof(requesttemplate), required: false);
-            var __workflow_requesttrackClicks = requesttrackClicks == null ? null : WorkflowExpression.Compile(requesttrackClicks);
-            WorkflowExpression.Validate(__workflow_requesttrackClicks, nameof(requesttrackClicks), required: false);
-            var __workflow_requesttrackOpens = requesttrackOpens == null ? null : WorkflowExpression.Compile(requesttrackOpens);
-            WorkflowExpression.Validate(__workflow_requesttrackOpens, nameof(requesttrackOpens), required: false);
+            var __workflow_requestrecipientSource = WorkflowExpression.Compile(requestrecipientSource, nameof(requestrecipientSource), required: true);
+            var __workflow_requestsendingAccount = WorkflowExpression.Compile(requestsendingAccount, nameof(requestsendingAccount), required: true);
+            var __workflow_requestnewsletterTitle = WorkflowExpression.Compile(requestnewsletterTitle, nameof(requestnewsletterTitle), required: true);
+            var __workflow_requestoffice365Groups = WorkflowExpression.Compile(requestoffice365Groups, nameof(requestoffice365Groups), required: false);
+            var __workflow_requestattachmentContent = WorkflowExpression.Compile(requestattachmentContent, nameof(requestattachmentContent), required: false);
+            var __workflow_requestattachmentName = WorkflowExpression.Compile(requestattachmentName, nameof(requestattachmentName), required: false);
+            var __workflow_requestemailAddresses = WorkflowExpression.Compile(requestemailAddresses, nameof(requestemailAddresses), required: false);
+            var __workflow_requestemailContent = WorkflowExpression.Compile(requestemailContent, nameof(requestemailContent), required: false);
+            var __workflow_requestemailContentType = WorkflowExpression.Compile(requestemailContentType, nameof(requestemailContentType), required: false);
+            var __workflow_requestemailSubject = WorkflowExpression.Compile(requestemailSubject, nameof(requestemailSubject), required: false);
+            var __workflow_requestexchangeGroups = WorkflowExpression.Compile(requestexchangeGroups, nameof(requestexchangeGroups), required: false);
+            var __workflow_requestwhenToSendType = WorkflowExpression.Compile(requestwhenToSendType, nameof(requestwhenToSendType), required: false);
+            var __workflow_requestwhenToSend = WorkflowExpression.Compile(requestwhenToSend, nameof(requestwhenToSend), required: false);
+            var __workflow_requestrecipientEmailField = WorkflowExpression.Compile(requestrecipientEmailField, nameof(requestrecipientEmailField), required: false);
+            var __workflow_requestrecipientListURL = WorkflowExpression.Compile(requestrecipientListURL, nameof(requestrecipientListURL), required: false);
+            var __workflow_requestrecipientFilterView = WorkflowExpression.Compile(requestrecipientFilterView, nameof(requestrecipientFilterView), required: false);
+            var __workflow_requestremoveDuplicates = WorkflowExpression.Compile(requestremoveDuplicates, nameof(requestremoveDuplicates), required: false);
+            var __workflow_requestsendReport = WorkflowExpression.Compile(requestsendReport, nameof(requestsendReport), required: false);
+            var __workflow_requesttimeZone = WorkflowExpression.Compile(requesttimeZone, nameof(requesttimeZone), required: false);
+            var __workflow_requesttemplate = WorkflowExpression.Compile(requesttemplate, nameof(requesttemplate), required: false);
+            var __workflow_requesttrackClicks = WorkflowExpression.Compile(requesttrackClicks, nameof(requesttrackClicks), required: false);
+            var __workflow_requesttrackOpens = WorkflowExpression.Compile(requesttrackOpens, nameof(requesttrackOpens), required: false);
             return new DeferredBodyAction<JsCreateJobResponse>(() =>
             {
                 var apiCallPath = "/1.0/job/create";
@@ -305,8 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsJob> JobGet(Expression<Func<string>> requestJobId)
         {
-            var __workflow_requestJobId = requestJobId == null ? null : WorkflowExpression.Compile(requestJobId);
-            WorkflowExpression.Validate(__workflow_requestJobId, nameof(requestJobId), required: true);
+            var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
             return new DeferredBodyAction<JsJob>(() =>
             {
                 var apiCallPath = "/1.0/job/get";
@@ -320,12 +293,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsJobsResponse> JobGetAll(Expression<Func<string>> requestDateFrom = null, Expression<Func<string>> requestDateTo = null, Expression<Func<int>> requestLimit = null)
         {
-            var __workflow_requestDateFrom = requestDateFrom == null ? null : WorkflowExpression.Compile(requestDateFrom);
-            WorkflowExpression.Validate(__workflow_requestDateFrom, nameof(requestDateFrom), required: false);
-            var __workflow_requestDateTo = requestDateTo == null ? null : WorkflowExpression.Compile(requestDateTo);
-            WorkflowExpression.Validate(__workflow_requestDateTo, nameof(requestDateTo), required: false);
-            var __workflow_requestLimit = requestLimit == null ? null : WorkflowExpression.Compile(requestLimit);
-            WorkflowExpression.Validate(__workflow_requestLimit, nameof(requestLimit), required: false);
+            var __workflow_requestDateFrom = WorkflowExpression.Compile(requestDateFrom, nameof(requestDateFrom), required: false);
+            var __workflow_requestDateTo = WorkflowExpression.Compile(requestDateTo, nameof(requestDateTo), required: false);
+            var __workflow_requestLimit = WorkflowExpression.Compile(requestLimit, nameof(requestLimit), required: false);
             return new DeferredBodyAction<JsJobsResponse>(() =>
             {
                 var apiCallPath = "/1.0/job/getlist";
@@ -344,8 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsJobReport> JobGetReport(Expression<Func<string>> requestJobId)
         {
-            var __workflow_requestJobId = requestJobId == null ? null : WorkflowExpression.Compile(requestJobId);
-            WorkflowExpression.Validate(__workflow_requestJobId, nameof(requestJobId), required: true);
+            var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
             return new DeferredBodyAction<JsJobReport>(() =>
             {
                 var apiCallPath = "/1.0/job/getreport";
@@ -359,10 +328,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JToken> JobReject(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
         {
-            var __workflow_requestsecret = requestsecret == null ? null : WorkflowExpression.Compile(requestsecret);
-            WorkflowExpression.Validate(__workflow_requestsecret, nameof(requestsecret), required: true);
-            var __workflow_requestcomments = requestcomments == null ? null : WorkflowExpression.Compile(requestcomments);
-            WorkflowExpression.Validate(__workflow_requestcomments, nameof(requestcomments), required: false);
+            var __workflow_requestsecret = WorkflowExpression.Compile(requestsecret, nameof(requestsecret), required: true);
+            var __workflow_requestcomments = WorkflowExpression.Compile(requestcomments, nameof(requestcomments), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1.0/job/reject";
@@ -390,10 +357,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsTrackerLogResponse> TrackerLogGet(Expression<Func<string>> requestJobId, Expression<Func<requestDataTypeInput>> requestDataType)
         {
-            var __workflow_requestJobId = requestJobId == null ? null : WorkflowExpression.Compile(requestJobId);
-            WorkflowExpression.Validate(__workflow_requestJobId, nameof(requestJobId), required: true);
-            var __workflow_requestDataType = requestDataType == null ? null : WorkflowExpression.Compile(requestDataType);
-            WorkflowExpression.Validate(__workflow_requestDataType, nameof(requestDataType), required: true);
+            var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: true);
+            var __workflow_requestDataType = WorkflowExpression.Compile(requestDataType, nameof(requestDataType), required: true);
             return new DeferredBodyAction<JsTrackerLogResponse>(() =>
             {
                 var apiCallPath = "/1.0/trackerlog";
@@ -408,8 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
         public IBodyWorkflowAction<JsUnsubscribesResponse> UnsubscribesGet(Expression<Func<string>> requestJobId = null)
         {
-            var __workflow_requestJobId = requestJobId == null ? null : WorkflowExpression.Compile(requestJobId);
-            WorkflowExpression.Validate(__workflow_requestJobId, nameof(requestJobId), required: false);
+            var __workflow_requestJobId = WorkflowExpression.Compile(requestJobId, nameof(requestJobId), required: false);
             return new DeferredBodyAction<JsUnsubscribesResponse>(() =>
             {
                 var apiCallPath = "/1.0/unsubscribes";
@@ -426,8 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     {
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobcompleted";
@@ -450,8 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobstarted";
@@ -474,8 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
 
         public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted(Expression<Func<string>> requesttitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_requesttitle = requesttitle == null ? null : WorkflowExpression.Compile(requesttitle);
-            WorkflowExpression.Validate(__workflow_requesttitle, nameof(requesttitle), required: true);
+            var __workflow_requesttitle = WorkflowExpression.Compile(requesttitle, nameof(requesttitle), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
             {
                 var apiCallPath = "/1.0/registerwebhookjobsubmitted";

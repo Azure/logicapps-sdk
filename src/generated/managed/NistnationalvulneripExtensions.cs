@@ -13,38 +13,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnationalvulnerip")]
         public IBodyWorkflowAction<GetCVECollectionResponse> GetCVECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<string>> cvssV2Metrics = null, Expression<Func<cvssV2SeverityInput>> cvssV2Severity = null, Expression<Func<string>> cvssV3Metrics = null, Expression<Func<cvssV3SeverityInput>> cvssV3Severity = null, Expression<Func<string>> cweId = null, Expression<Func<bool>> includeMatchStringChange = null, Expression<Func<bool>> isExactMatch = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<string>> pubStartDate = null, Expression<Func<string>> pubEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
         {
-            var __workflow_addOns = addOns == null ? null : WorkflowExpression.Compile(addOns);
-            WorkflowExpression.Validate(__workflow_addOns, nameof(addOns), required: false);
-            var __workflow_cpeMatchString = cpeMatchString == null ? null : WorkflowExpression.Compile(cpeMatchString);
-            WorkflowExpression.Validate(__workflow_cpeMatchString, nameof(cpeMatchString), required: false);
-            var __workflow_cvssV2Metrics = cvssV2Metrics == null ? null : WorkflowExpression.Compile(cvssV2Metrics);
-            WorkflowExpression.Validate(__workflow_cvssV2Metrics, nameof(cvssV2Metrics), required: false);
-            var __workflow_cvssV2Severity = cvssV2Severity == null ? null : WorkflowExpression.Compile(cvssV2Severity);
-            WorkflowExpression.Validate(__workflow_cvssV2Severity, nameof(cvssV2Severity), required: false);
-            var __workflow_cvssV3Metrics = cvssV3Metrics == null ? null : WorkflowExpression.Compile(cvssV3Metrics);
-            WorkflowExpression.Validate(__workflow_cvssV3Metrics, nameof(cvssV3Metrics), required: false);
-            var __workflow_cvssV3Severity = cvssV3Severity == null ? null : WorkflowExpression.Compile(cvssV3Severity);
-            WorkflowExpression.Validate(__workflow_cvssV3Severity, nameof(cvssV3Severity), required: false);
-            var __workflow_cweId = cweId == null ? null : WorkflowExpression.Compile(cweId);
-            WorkflowExpression.Validate(__workflow_cweId, nameof(cweId), required: false);
-            var __workflow_includeMatchStringChange = includeMatchStringChange == null ? null : WorkflowExpression.Compile(includeMatchStringChange);
-            WorkflowExpression.Validate(__workflow_includeMatchStringChange, nameof(includeMatchStringChange), required: false);
-            var __workflow_isExactMatch = isExactMatch == null ? null : WorkflowExpression.Compile(isExactMatch);
-            WorkflowExpression.Validate(__workflow_isExactMatch, nameof(isExactMatch), required: false);
-            var __workflow_keyword = keyword == null ? null : WorkflowExpression.Compile(keyword);
-            WorkflowExpression.Validate(__workflow_keyword, nameof(keyword), required: false);
-            var __workflow_modStartDate = modStartDate == null ? null : WorkflowExpression.Compile(modStartDate);
-            WorkflowExpression.Validate(__workflow_modStartDate, nameof(modStartDate), required: false);
-            var __workflow_modEndDate = modEndDate == null ? null : WorkflowExpression.Compile(modEndDate);
-            WorkflowExpression.Validate(__workflow_modEndDate, nameof(modEndDate), required: false);
-            var __workflow_pubStartDate = pubStartDate == null ? null : WorkflowExpression.Compile(pubStartDate);
-            WorkflowExpression.Validate(__workflow_pubStartDate, nameof(pubStartDate), required: false);
-            var __workflow_pubEndDate = pubEndDate == null ? null : WorkflowExpression.Compile(pubEndDate);
-            WorkflowExpression.Validate(__workflow_pubEndDate, nameof(pubEndDate), required: false);
-            var __workflow_resultsPerPage = resultsPerPage == null ? null : WorkflowExpression.Compile(resultsPerPage);
-            WorkflowExpression.Validate(__workflow_resultsPerPage, nameof(resultsPerPage), required: false);
-            var __workflow_startIndex = startIndex == null ? null : WorkflowExpression.Compile(startIndex);
-            WorkflowExpression.Validate(__workflow_startIndex, nameof(startIndex), required: false);
+            var __workflow_addOns = WorkflowExpression.Compile(addOns, nameof(addOns), required: false);
+            var __workflow_cpeMatchString = WorkflowExpression.Compile(cpeMatchString, nameof(cpeMatchString), required: false);
+            var __workflow_cvssV2Metrics = WorkflowExpression.Compile(cvssV2Metrics, nameof(cvssV2Metrics), required: false);
+            var __workflow_cvssV2Severity = WorkflowExpression.Compile(cvssV2Severity, nameof(cvssV2Severity), required: false);
+            var __workflow_cvssV3Metrics = WorkflowExpression.Compile(cvssV3Metrics, nameof(cvssV3Metrics), required: false);
+            var __workflow_cvssV3Severity = WorkflowExpression.Compile(cvssV3Severity, nameof(cvssV3Severity), required: false);
+            var __workflow_cweId = WorkflowExpression.Compile(cweId, nameof(cweId), required: false);
+            var __workflow_includeMatchStringChange = WorkflowExpression.Compile(includeMatchStringChange, nameof(includeMatchStringChange), required: false);
+            var __workflow_isExactMatch = WorkflowExpression.Compile(isExactMatch, nameof(isExactMatch), required: false);
+            var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
+            var __workflow_modStartDate = WorkflowExpression.Compile(modStartDate, nameof(modStartDate), required: false);
+            var __workflow_modEndDate = WorkflowExpression.Compile(modEndDate, nameof(modEndDate), required: false);
+            var __workflow_pubStartDate = WorkflowExpression.Compile(pubStartDate, nameof(pubStartDate), required: false);
+            var __workflow_pubEndDate = WorkflowExpression.Compile(pubEndDate, nameof(pubEndDate), required: false);
+            var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
+            var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
             return new DeferredBodyAction<GetCVECollectionResponse>(() =>
             {
                 var apiCallPath = "/cves/1.0/";
@@ -89,22 +73,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnationalvulnerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnationalvulnerip")]
         public IBodyWorkflowAction<GetCPECollectionResponse> GetCPECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
         {
-            var __workflow_addOns = addOns == null ? null : WorkflowExpression.Compile(addOns);
-            WorkflowExpression.Validate(__workflow_addOns, nameof(addOns), required: false);
-            var __workflow_cpeMatchString = cpeMatchString == null ? null : WorkflowExpression.Compile(cpeMatchString);
-            WorkflowExpression.Validate(__workflow_cpeMatchString, nameof(cpeMatchString), required: false);
-            var __workflow_includeDeprecated = includeDeprecated == null ? null : WorkflowExpression.Compile(includeDeprecated);
-            WorkflowExpression.Validate(__workflow_includeDeprecated, nameof(includeDeprecated), required: false);
-            var __workflow_keyword = keyword == null ? null : WorkflowExpression.Compile(keyword);
-            WorkflowExpression.Validate(__workflow_keyword, nameof(keyword), required: false);
-            var __workflow_modStartDate = modStartDate == null ? null : WorkflowExpression.Compile(modStartDate);
-            WorkflowExpression.Validate(__workflow_modStartDate, nameof(modStartDate), required: false);
-            var __workflow_modEndDate = modEndDate == null ? null : WorkflowExpression.Compile(modEndDate);
-            WorkflowExpression.Validate(__workflow_modEndDate, nameof(modEndDate), required: false);
-            var __workflow_resultsPerPage = resultsPerPage == null ? null : WorkflowExpression.Compile(resultsPerPage);
-            WorkflowExpression.Validate(__workflow_resultsPerPage, nameof(resultsPerPage), required: false);
-            var __workflow_startIndex = startIndex == null ? null : WorkflowExpression.Compile(startIndex);
-            WorkflowExpression.Validate(__workflow_startIndex, nameof(startIndex), required: false);
+            var __workflow_addOns = WorkflowExpression.Compile(addOns, nameof(addOns), required: false);
+            var __workflow_cpeMatchString = WorkflowExpression.Compile(cpeMatchString, nameof(cpeMatchString), required: false);
+            var __workflow_includeDeprecated = WorkflowExpression.Compile(includeDeprecated, nameof(includeDeprecated), required: false);
+            var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
+            var __workflow_modStartDate = WorkflowExpression.Compile(modStartDate, nameof(modStartDate), required: false);
+            var __workflow_modEndDate = WorkflowExpression.Compile(modEndDate, nameof(modEndDate), required: false);
+            var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
+            var __workflow_startIndex = WorkflowExpression.Compile(startIndex, nameof(startIndex), required: false);
             return new DeferredBodyAction<GetCPECollectionResponse>(() =>
             {
                 var apiCallPath = "/cpes/1.0/";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<TodoListV2> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<TodoListV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
@@ -38,8 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IWorkflowAction DeleteToDoList(Expression<Func<string>> folderId)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
@@ -52,22 +49,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2> CreateToDo(Expression<Func<string>> folderId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydueDateTimedueDate = bodydueDateTimedueDate == null ? null : WorkflowExpression.Compile(bodydueDateTimedueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
-            var __workflow_bodyreminderDateTimereminderDateTime = bodyreminderDateTimereminderDateTime == null ? null : WorkflowExpression.Compile(bodyreminderDateTimereminderDateTime);
-            WorkflowExpression.Validate(__workflow_bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
-            var __workflow_bodyimportance = bodyimportance == null ? null : WorkflowExpression.Compile(bodyimportance);
-            WorkflowExpression.Validate(__workflow_bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodybodycontent = bodybodycontent == null ? null : WorkflowExpression.Compile(bodybodycontent);
-            WorkflowExpression.Validate(__workflow_bodybodycontent, nameof(bodybodycontent), required: false);
-            var __workflow_bodyisReminderOn = bodyisReminderOn == null ? null : WorkflowExpression.Compile(bodyisReminderOn);
-            WorkflowExpression.Validate(__workflow_bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydueDateTimedueDate = WorkflowExpression.Compile(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
+            var __workflow_bodyreminderDateTimereminderDateTime = WorkflowExpression.Compile(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
+            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodybodycontent = WorkflowExpression.Compile(bodybodycontent, nameof(bodybodycontent), required: false);
+            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
             return new DeferredBodyAction<ToDoV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
@@ -155,8 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<TodoListV2> CreateToDoList(Expression<Func<string>> bodyname)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<TodoListV2>(() =>
             {
                 var apiCallPath = "/lists";
@@ -178,10 +166,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IWorkflowAction DeleteToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -203,10 +189,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2> GetToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ToDoV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -219,8 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<TodoListV2> GetToDoList(Expression<Func<string>> folderId)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyAction<TodoListV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
@@ -233,10 +216,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2[]> ListToDosByFolder(Expression<Func<string>> folderId, Expression<Func<int>> top = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ToDoV2[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
@@ -251,24 +232,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
         public IBodyWorkflowAction<ToDoV2> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodydueDateTimedueDate = bodydueDateTimedueDate == null ? null : WorkflowExpression.Compile(bodydueDateTimedueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
-            var __workflow_bodyreminderDateTimereminderDateTime = bodyreminderDateTimereminderDateTime == null ? null : WorkflowExpression.Compile(bodyreminderDateTimereminderDateTime);
-            WorkflowExpression.Validate(__workflow_bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
-            var __workflow_bodyimportance = bodyimportance == null ? null : WorkflowExpression.Compile(bodyimportance);
-            WorkflowExpression.Validate(__workflow_bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodybodycontent = bodybodycontent == null ? null : WorkflowExpression.Compile(bodybodycontent);
-            WorkflowExpression.Validate(__workflow_bodybodycontent, nameof(bodybodycontent), required: false);
-            var __workflow_bodyisReminderOn = bodyisReminderOn == null ? null : WorkflowExpression.Compile(bodyisReminderOn);
-            WorkflowExpression.Validate(__workflow_bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydueDateTimedueDate = WorkflowExpression.Compile(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
+            var __workflow_bodyreminderDateTimereminderDateTime = WorkflowExpression.Compile(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
+            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodybodycontent = WorkflowExpression.Compile(bodybodycontent, nameof(bodybodycontent), required: false);
+            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
             return new DeferredBodyAction<ToDoV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -362,8 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
     {
         public IBodyWorkflowTrigger<ToDoV2[]> OnNewToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<ToDoV2[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/onNewToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));
@@ -375,8 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
 
         public IBodyWorkflowTrigger<ToDoV2[]> OnUpdateToDoInFolder(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<ToDoV2[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/onUpdateToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));

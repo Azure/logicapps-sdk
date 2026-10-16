@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescocloud")]
         public IBodyWorkflowAction<OdataError> RecordDelete(Expression<Func<string>> id, Expression<Func<string>> entity, Expression<Func<string>> ifMatch = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
-            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
             return new DeferredBodyAction<OdataError>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -35,10 +32,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
     {
         public IWorkflowTrigger TriggerCreate(Expression<Func<string>> entity, Expression<Func<actionInput>> action, FlowRecurrence recurrence = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_action = action == null ? null : WorkflowExpression.Compile(action);
-            WorkflowExpression.Validate(__workflow_action, nameof(action), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_action = WorkflowExpression.Compile(action, nameof(action), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/$hook";

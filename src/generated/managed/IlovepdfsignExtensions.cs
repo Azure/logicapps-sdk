@@ -13,32 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovepdfsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovepdfsign")]
         public IBodyWorkflowAction<SignResponse> Sign(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodysigners = null, Expression<Func<string>> bodysignersEmails = null, Expression<Func<string>> bodysignsPositions = null, Expression<Func<bodysignTypeInput>> bodysignType = null, Expression<Func<string>> bodyexpirationDays = null, Expression<Func<bodysignerRemindersInput>> bodysignerReminders = null, Expression<Func<string>> bodysignerReminderDaysCycle = null, Expression<Func<string>> bodypages = null, Expression<Func<string>> bodysize = null)
         {
-            var __workflow_bodyfileSource = bodyfileSource == null ? null : WorkflowExpression.Compile(bodyfileSource);
-            WorkflowExpression.Validate(__workflow_bodyfileSource, nameof(bodyfileSource), required: true);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
-            var __workflow_bodyfileUrl = bodyfileUrl == null ? null : WorkflowExpression.Compile(bodyfileUrl);
-            WorkflowExpression.Validate(__workflow_bodyfileUrl, nameof(bodyfileUrl), required: false);
-            var __workflow_bodysigners = bodysigners == null ? null : WorkflowExpression.Compile(bodysigners);
-            WorkflowExpression.Validate(__workflow_bodysigners, nameof(bodysigners), required: false);
-            var __workflow_bodysignersEmails = bodysignersEmails == null ? null : WorkflowExpression.Compile(bodysignersEmails);
-            WorkflowExpression.Validate(__workflow_bodysignersEmails, nameof(bodysignersEmails), required: false);
-            var __workflow_bodysignsPositions = bodysignsPositions == null ? null : WorkflowExpression.Compile(bodysignsPositions);
-            WorkflowExpression.Validate(__workflow_bodysignsPositions, nameof(bodysignsPositions), required: false);
-            var __workflow_bodysignType = bodysignType == null ? null : WorkflowExpression.Compile(bodysignType);
-            WorkflowExpression.Validate(__workflow_bodysignType, nameof(bodysignType), required: false);
-            var __workflow_bodyexpirationDays = bodyexpirationDays == null ? null : WorkflowExpression.Compile(bodyexpirationDays);
-            WorkflowExpression.Validate(__workflow_bodyexpirationDays, nameof(bodyexpirationDays), required: false);
-            var __workflow_bodysignerReminders = bodysignerReminders == null ? null : WorkflowExpression.Compile(bodysignerReminders);
-            WorkflowExpression.Validate(__workflow_bodysignerReminders, nameof(bodysignerReminders), required: false);
-            var __workflow_bodysignerReminderDaysCycle = bodysignerReminderDaysCycle == null ? null : WorkflowExpression.Compile(bodysignerReminderDaysCycle);
-            WorkflowExpression.Validate(__workflow_bodysignerReminderDaysCycle, nameof(bodysignerReminderDaysCycle), required: false);
-            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
-            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: false);
-            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
-            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: false);
+            var __workflow_bodyfileSource = WorkflowExpression.Compile(bodyfileSource, nameof(bodyfileSource), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfileUrl = WorkflowExpression.Compile(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            var __workflow_bodysigners = WorkflowExpression.Compile(bodysigners, nameof(bodysigners), required: false);
+            var __workflow_bodysignersEmails = WorkflowExpression.Compile(bodysignersEmails, nameof(bodysignersEmails), required: false);
+            var __workflow_bodysignsPositions = WorkflowExpression.Compile(bodysignsPositions, nameof(bodysignsPositions), required: false);
+            var __workflow_bodysignType = WorkflowExpression.Compile(bodysignType, nameof(bodysignType), required: false);
+            var __workflow_bodyexpirationDays = WorkflowExpression.Compile(bodyexpirationDays, nameof(bodyexpirationDays), required: false);
+            var __workflow_bodysignerReminders = WorkflowExpression.Compile(bodysignerReminders, nameof(bodysignerReminders), required: false);
+            var __workflow_bodysignerReminderDaysCycle = WorkflowExpression.Compile(bodysignerReminderDaysCycle, nameof(bodysignerReminderDaysCycle), required: false);
+            var __workflow_bodypages = WorkflowExpression.Compile(bodypages, nameof(bodypages), required: false);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
             return new DeferredBodyAction<SignResponse>(() =>
             {
                 var apiCallPath = "/sign";

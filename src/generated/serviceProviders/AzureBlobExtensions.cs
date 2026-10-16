@@ -15,10 +15,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<BlobExistsOutput> BlobExists(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobName = blobName == null ? null : WorkflowExpression.Compile(blobName);
-            WorkflowExpression.Validate(__workflow_blobName, nameof(blobName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
             return new DeferredBodyAction<BlobExistsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -36,10 +34,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction DeleteBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobName = blobName == null ? null : WorkflowExpression.Compile(blobName);
-            WorkflowExpression.Validate(__workflow_blobName, nameof(blobName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -57,8 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction DeleteBlobFromUri(Expression<Func<string>> blobUri)
         {
-            var __workflow_blobUri = blobUri == null ? null : WorkflowExpression.Compile(blobUri);
-            WorkflowExpression.Validate(__workflow_blobUri, nameof(blobUri), required: true);
+            var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -75,12 +70,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ReadBlobOutput> ReadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobName = blobName == null ? null : WorkflowExpression.Compile(blobName);
-            WorkflowExpression.Validate(__workflow_blobName, nameof(blobName), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<ReadBlobOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -103,10 +95,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ReadBlobFromUriOutput> ReadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_blobUri = blobUri == null ? null : WorkflowExpression.Compile(blobUri);
-            WorkflowExpression.Validate(__workflow_blobUri, nameof(blobUri), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<ReadBlobFromUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -128,14 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<UploadBlobOutput> UploadBlob(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<object>> content, Expression<Func<UploadBlobInputOverrideIfExistsType>> overrideIfExists = null)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobName = blobName == null ? null : WorkflowExpression.Compile(blobName);
-            WorkflowExpression.Validate(__workflow_blobName, nameof(blobName), required: true);
-            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
-            WorkflowExpression.Validate(__workflow_content, nameof(content), required: true);
-            var __workflow_overrideIfExists = overrideIfExists == null ? null : WorkflowExpression.Compile(overrideIfExists);
-            WorkflowExpression.Validate(__workflow_overrideIfExists, nameof(overrideIfExists), required: false);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
+            var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
             return new DeferredBodyAction<UploadBlobOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -159,12 +145,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<UploadBlobFromUriOutput> UploadBlobFromUri(Expression<Func<string>> blobUri, Expression<Func<object>> content, Expression<Func<UploadBlobFromUriInputOverrideIfExistsType>> overrideIfExists = null)
         {
-            var __workflow_blobUri = blobUri == null ? null : WorkflowExpression.Compile(blobUri);
-            WorkflowExpression.Validate(__workflow_blobUri, nameof(blobUri), required: true);
-            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
-            WorkflowExpression.Validate(__workflow_content, nameof(content), required: true);
-            var __workflow_overrideIfExists = overrideIfExists == null ? null : WorkflowExpression.Compile(overrideIfExists);
-            WorkflowExpression.Validate(__workflow_overrideIfExists, nameof(overrideIfExists), required: false);
+            var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
+            var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
             return new DeferredBodyAction<UploadBlobFromUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -187,14 +170,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListBlobsOutput> ListBlobs(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null, Expression<Func<string>> pageMarker = null, Expression<Func<bool>> excludeSubFolderBlobs = null)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobNamePrefix = blobNamePrefix == null ? null : WorkflowExpression.Compile(blobNamePrefix);
-            WorkflowExpression.Validate(__workflow_blobNamePrefix, nameof(blobNamePrefix), required: false);
-            var __workflow_pageMarker = pageMarker == null ? null : WorkflowExpression.Compile(pageMarker);
-            WorkflowExpression.Validate(__workflow_pageMarker, nameof(pageMarker), required: false);
-            var __workflow_excludeSubFolderBlobs = excludeSubFolderBlobs == null ? null : WorkflowExpression.Compile(excludeSubFolderBlobs);
-            WorkflowExpression.Validate(__workflow_excludeSubFolderBlobs, nameof(excludeSubFolderBlobs), required: false);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobNamePrefix = WorkflowExpression.Compile(blobNamePrefix, nameof(blobNamePrefix), required: false);
+            var __workflow_pageMarker = WorkflowExpression.Compile(pageMarker, nameof(pageMarker), required: false);
+            var __workflow_excludeSubFolderBlobs = WorkflowExpression.Compile(excludeSubFolderBlobs, nameof(excludeSubFolderBlobs), required: false);
             return new DeferredBodyAction<ListBlobsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -226,10 +205,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListBlobsFromUriOutput> ListBlobsFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> pageMarker = null)
         {
-            var __workflow_blobUri = blobUri == null ? null : WorkflowExpression.Compile(blobUri);
-            WorkflowExpression.Validate(__workflow_blobUri, nameof(blobUri), required: true);
-            var __workflow_pageMarker = pageMarker == null ? null : WorkflowExpression.Compile(pageMarker);
-            WorkflowExpression.Validate(__workflow_pageMarker, nameof(pageMarker), required: false);
+            var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
+            var __workflow_pageMarker = WorkflowExpression.Compile(pageMarker, nameof(pageMarker), required: false);
             return new DeferredBodyAction<ListBlobsFromUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -251,10 +228,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListBlobDirectoriesOutput> ListBlobDirectories(Expression<Func<string>> containerName, Expression<Func<string>> blobNamePrefix = null)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobNamePrefix = blobNamePrefix == null ? null : WorkflowExpression.Compile(blobNamePrefix);
-            WorkflowExpression.Validate(__workflow_blobNamePrefix, nameof(blobNamePrefix), required: false);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobNamePrefix = WorkflowExpression.Compile(blobNamePrefix, nameof(blobNamePrefix), required: false);
             return new DeferredBodyAction<ListBlobDirectoriesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -276,8 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ListContainersOutput> ListContainers(Expression<Func<string>> pageMarker = null)
         {
-            var __workflow_pageMarker = pageMarker == null ? null : WorkflowExpression.Compile(pageMarker);
-            WorkflowExpression.Validate(__workflow_pageMarker, nameof(pageMarker), required: false);
+            var __workflow_pageMarker = WorkflowExpression.Compile(pageMarker, nameof(pageMarker), required: false);
             return new DeferredBodyAction<ListContainersOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -298,22 +272,14 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobSASUriOutput> GetBlobSASUri(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobName = blobName == null ? null : WorkflowExpression.Compile(blobName);
-            WorkflowExpression.Validate(__workflow_blobName, nameof(blobName), required: true);
-            var __workflow_groupPolicyIdentifier = groupPolicyIdentifier == null ? null : WorkflowExpression.Compile(groupPolicyIdentifier);
-            WorkflowExpression.Validate(__workflow_groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
-            var __workflow_permissions = permissions == null ? null : WorkflowExpression.Compile(permissions);
-            WorkflowExpression.Validate(__workflow_permissions, nameof(permissions), required: false);
-            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
-            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: false);
-            var __workflow_expiryTime = expiryTime == null ? null : WorkflowExpression.Compile(expiryTime);
-            WorkflowExpression.Validate(__workflow_expiryTime, nameof(expiryTime), required: false);
-            var __workflow_sharedAccessProtocol = sharedAccessProtocol == null ? null : WorkflowExpression.Compile(sharedAccessProtocol);
-            WorkflowExpression.Validate(__workflow_sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
-            var __workflow_ipAddressRange = ipAddressRange == null ? null : WorkflowExpression.Compile(ipAddressRange);
-            WorkflowExpression.Validate(__workflow_ipAddressRange, nameof(ipAddressRange), required: false);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
+            var __workflow_groupPolicyIdentifier = WorkflowExpression.Compile(groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
+            var __workflow_permissions = WorkflowExpression.Compile(permissions, nameof(permissions), required: false);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
+            var __workflow_expiryTime = WorkflowExpression.Compile(expiryTime, nameof(expiryTime), required: false);
+            var __workflow_sharedAccessProtocol = WorkflowExpression.Compile(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
+            var __workflow_ipAddressRange = WorkflowExpression.Compile(ipAddressRange, nameof(ipAddressRange), required: false);
             return new DeferredBodyAction<GetBlobSASUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -361,20 +327,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobSASUriFromUriOutput> GetBlobSASUriFromUri(Expression<Func<string>> blobUri, Expression<Func<string>> groupPolicyIdentifier = null, Expression<Func<GetBlobSASUriFromUriInputPermissionsType>> permissions = null, Expression<Func<string>> startTime = null, Expression<Func<string>> expiryTime = null, Expression<Func<GetBlobSASUriFromUriInputSharedAccessProtocolType>> sharedAccessProtocol = null, Expression<Func<string>> ipAddressRange = null)
         {
-            var __workflow_blobUri = blobUri == null ? null : WorkflowExpression.Compile(blobUri);
-            WorkflowExpression.Validate(__workflow_blobUri, nameof(blobUri), required: true);
-            var __workflow_groupPolicyIdentifier = groupPolicyIdentifier == null ? null : WorkflowExpression.Compile(groupPolicyIdentifier);
-            WorkflowExpression.Validate(__workflow_groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
-            var __workflow_permissions = permissions == null ? null : WorkflowExpression.Compile(permissions);
-            WorkflowExpression.Validate(__workflow_permissions, nameof(permissions), required: false);
-            var __workflow_startTime = startTime == null ? null : WorkflowExpression.Compile(startTime);
-            WorkflowExpression.Validate(__workflow_startTime, nameof(startTime), required: false);
-            var __workflow_expiryTime = expiryTime == null ? null : WorkflowExpression.Compile(expiryTime);
-            WorkflowExpression.Validate(__workflow_expiryTime, nameof(expiryTime), required: false);
-            var __workflow_sharedAccessProtocol = sharedAccessProtocol == null ? null : WorkflowExpression.Compile(sharedAccessProtocol);
-            WorkflowExpression.Validate(__workflow_sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
-            var __workflow_ipAddressRange = ipAddressRange == null ? null : WorkflowExpression.Compile(ipAddressRange);
-            WorkflowExpression.Validate(__workflow_ipAddressRange, nameof(ipAddressRange), required: false);
+            var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
+            var __workflow_groupPolicyIdentifier = WorkflowExpression.Compile(groupPolicyIdentifier, nameof(groupPolicyIdentifier), required: false);
+            var __workflow_permissions = WorkflowExpression.Compile(permissions, nameof(permissions), required: false);
+            var __workflow_startTime = WorkflowExpression.Compile(startTime, nameof(startTime), required: false);
+            var __workflow_expiryTime = WorkflowExpression.Compile(expiryTime, nameof(expiryTime), required: false);
+            var __workflow_sharedAccessProtocol = WorkflowExpression.Compile(sharedAccessProtocol, nameof(sharedAccessProtocol), required: false);
+            var __workflow_ipAddressRange = WorkflowExpression.Compile(ipAddressRange, nameof(ipAddressRange), required: false);
             return new DeferredBodyAction<GetBlobSASUriFromUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -421,10 +380,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobMetadataOutput> GetBlobMetadata(Expression<Func<string>> containerName, Expression<Func<string>> blobName)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobName = blobName == null ? null : WorkflowExpression.Compile(blobName);
-            WorkflowExpression.Validate(__workflow_blobName, nameof(blobName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
             return new DeferredBodyAction<GetBlobMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -442,8 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetBlobMetadataFromUriOutput> GetBlobMetadataFromUri(Expression<Func<string>> blobUri)
         {
-            var __workflow_blobUri = blobUri == null ? null : WorkflowExpression.Compile(blobUri);
-            WorkflowExpression.Validate(__workflow_blobUri, nameof(blobUri), required: true);
+            var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
             return new DeferredBodyAction<GetBlobMetadataFromUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -460,8 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetContainerMetadataOutput> GetContainerMetadata(Expression<Func<string>> containerName)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             return new DeferredBodyAction<GetContainerMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -478,16 +433,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<CopyBlobOutput> CopyBlob(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationBlobName, Expression<Func<bool>> overrideIfExists = null)
         {
-            var __workflow_sourceContainerName = sourceContainerName == null ? null : WorkflowExpression.Compile(sourceContainerName);
-            WorkflowExpression.Validate(__workflow_sourceContainerName, nameof(sourceContainerName), required: true);
-            var __workflow_sourceBlobName = sourceBlobName == null ? null : WorkflowExpression.Compile(sourceBlobName);
-            WorkflowExpression.Validate(__workflow_sourceBlobName, nameof(sourceBlobName), required: true);
-            var __workflow_destinationContainerName = destinationContainerName == null ? null : WorkflowExpression.Compile(destinationContainerName);
-            WorkflowExpression.Validate(__workflow_destinationContainerName, nameof(destinationContainerName), required: true);
-            var __workflow_destinationBlobName = destinationBlobName == null ? null : WorkflowExpression.Compile(destinationBlobName);
-            WorkflowExpression.Validate(__workflow_destinationBlobName, nameof(destinationBlobName), required: true);
-            var __workflow_overrideIfExists = overrideIfExists == null ? null : WorkflowExpression.Compile(overrideIfExists);
-            WorkflowExpression.Validate(__workflow_overrideIfExists, nameof(overrideIfExists), required: false);
+            var __workflow_sourceContainerName = WorkflowExpression.Compile(sourceContainerName, nameof(sourceContainerName), required: true);
+            var __workflow_sourceBlobName = WorkflowExpression.Compile(sourceBlobName, nameof(sourceBlobName), required: true);
+            var __workflow_destinationContainerName = WorkflowExpression.Compile(destinationContainerName, nameof(destinationContainerName), required: true);
+            var __workflow_destinationBlobName = WorkflowExpression.Compile(destinationBlobName, nameof(destinationBlobName), required: true);
+            var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
             return new DeferredBodyAction<CopyBlobOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -512,12 +462,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<CopyBlobFromUriOutput> CopyBlobFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<bool>> overrideIfExists = null)
         {
-            var __workflow_sourceBlobUri = sourceBlobUri == null ? null : WorkflowExpression.Compile(sourceBlobUri);
-            WorkflowExpression.Validate(__workflow_sourceBlobUri, nameof(sourceBlobUri), required: true);
-            var __workflow_destinationBlobUri = destinationBlobUri == null ? null : WorkflowExpression.Compile(destinationBlobUri);
-            WorkflowExpression.Validate(__workflow_destinationBlobUri, nameof(destinationBlobUri), required: true);
-            var __workflow_overrideIfExists = overrideIfExists == null ? null : WorkflowExpression.Compile(overrideIfExists);
-            WorkflowExpression.Validate(__workflow_overrideIfExists, nameof(overrideIfExists), required: false);
+            var __workflow_sourceBlobUri = WorkflowExpression.Compile(sourceBlobUri, nameof(sourceBlobUri), required: true);
+            var __workflow_destinationBlobUri = WorkflowExpression.Compile(destinationBlobUri, nameof(destinationBlobUri), required: true);
+            var __workflow_overrideIfExists = WorkflowExpression.Compile(overrideIfExists, nameof(overrideIfExists), required: false);
             return new DeferredBodyAction<CopyBlobFromUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -540,8 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<GetAccessPoliciesOutputItem[]> GetAccessPolicies(Expression<Func<string>> containerName)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
             return new DeferredBodyAction<GetAccessPoliciesOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -558,12 +504,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction SetBlobTier(Expression<Func<string>> containerName, Expression<Func<string>> blobName, Expression<Func<SetBlobTierInputBlobAccessTierType>> blobAccessTier)
         {
-            var __workflow_containerName = containerName == null ? null : WorkflowExpression.Compile(containerName);
-            WorkflowExpression.Validate(__workflow_containerName, nameof(containerName), required: true);
-            var __workflow_blobName = blobName == null ? null : WorkflowExpression.Compile(blobName);
-            WorkflowExpression.Validate(__workflow_blobName, nameof(blobName), required: true);
-            var __workflow_blobAccessTier = blobAccessTier == null ? null : WorkflowExpression.Compile(blobAccessTier);
-            WorkflowExpression.Validate(__workflow_blobAccessTier, nameof(blobAccessTier), required: true);
+            var __workflow_containerName = WorkflowExpression.Compile(containerName, nameof(containerName), required: true);
+            var __workflow_blobName = WorkflowExpression.Compile(blobName, nameof(blobName), required: true);
+            var __workflow_blobAccessTier = WorkflowExpression.Compile(blobAccessTier, nameof(blobAccessTier), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -582,10 +525,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IWorkflowAction SetBlobTierFromUri(Expression<Func<string>> blobUri, Expression<Func<SetBlobTierFromUriInputBlobAccessTierType>> blobAccessTier)
         {
-            var __workflow_blobUri = blobUri == null ? null : WorkflowExpression.Compile(blobUri);
-            WorkflowExpression.Validate(__workflow_blobUri, nameof(blobUri), required: true);
-            var __workflow_blobAccessTier = blobAccessTier == null ? null : WorkflowExpression.Compile(blobAccessTier);
-            WorkflowExpression.Validate(__workflow_blobAccessTier, nameof(blobAccessTier), required: true);
+            var __workflow_blobUri = WorkflowExpression.Compile(blobUri, nameof(blobUri), required: true);
+            var __workflow_blobAccessTier = WorkflowExpression.Compile(blobAccessTier, nameof(blobAccessTier), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -603,16 +544,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ExtractArchiveFromBlobPathOutput> ExtractArchiveFromBlobPath(Expression<Func<string>> sourceContainerName, Expression<Func<string>> sourceBlobName, Expression<Func<string>> destinationContainerName, Expression<Func<string>> destinationFolderPath, Expression<Func<ExtractArchiveFromBlobPathInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
-            var __workflow_sourceContainerName = sourceContainerName == null ? null : WorkflowExpression.Compile(sourceContainerName);
-            WorkflowExpression.Validate(__workflow_sourceContainerName, nameof(sourceContainerName), required: true);
-            var __workflow_sourceBlobName = sourceBlobName == null ? null : WorkflowExpression.Compile(sourceBlobName);
-            WorkflowExpression.Validate(__workflow_sourceBlobName, nameof(sourceBlobName), required: true);
-            var __workflow_destinationContainerName = destinationContainerName == null ? null : WorkflowExpression.Compile(destinationContainerName);
-            WorkflowExpression.Validate(__workflow_destinationContainerName, nameof(destinationContainerName), required: true);
-            var __workflow_destinationFolderPath = destinationFolderPath == null ? null : WorkflowExpression.Compile(destinationFolderPath);
-            WorkflowExpression.Validate(__workflow_destinationFolderPath, nameof(destinationFolderPath), required: true);
-            var __workflow_overwriteExistingFilesBehaviour = overwriteExistingFilesBehaviour == null ? null : WorkflowExpression.Compile(overwriteExistingFilesBehaviour);
-            WorkflowExpression.Validate(__workflow_overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
+            var __workflow_sourceContainerName = WorkflowExpression.Compile(sourceContainerName, nameof(sourceContainerName), required: true);
+            var __workflow_sourceBlobName = WorkflowExpression.Compile(sourceBlobName, nameof(sourceBlobName), required: true);
+            var __workflow_destinationContainerName = WorkflowExpression.Compile(destinationContainerName, nameof(destinationContainerName), required: true);
+            var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: true);
+            var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
             return new DeferredBodyAction<ExtractArchiveFromBlobPathOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -637,12 +573,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ExtractArchiveFromUriOutput> ExtractArchiveFromUri(Expression<Func<string>> sourceBlobUri, Expression<Func<string>> destinationBlobUri, Expression<Func<ExtractArchiveFromUriInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
-            var __workflow_sourceBlobUri = sourceBlobUri == null ? null : WorkflowExpression.Compile(sourceBlobUri);
-            WorkflowExpression.Validate(__workflow_sourceBlobUri, nameof(sourceBlobUri), required: true);
-            var __workflow_destinationBlobUri = destinationBlobUri == null ? null : WorkflowExpression.Compile(destinationBlobUri);
-            WorkflowExpression.Validate(__workflow_destinationBlobUri, nameof(destinationBlobUri), required: true);
-            var __workflow_overwriteExistingFilesBehaviour = overwriteExistingFilesBehaviour == null ? null : WorkflowExpression.Compile(overwriteExistingFilesBehaviour);
-            WorkflowExpression.Validate(__workflow_overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
+            var __workflow_sourceBlobUri = WorkflowExpression.Compile(sourceBlobUri, nameof(sourceBlobUri), required: true);
+            var __workflow_destinationBlobUri = WorkflowExpression.Compile(destinationBlobUri, nameof(destinationBlobUri), required: true);
+            var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
             return new DeferredBodyAction<ExtractArchiveFromUriOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -665,14 +598,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureBlob")]
         public IBodyWorkflowAction<ExtractArchiveFromContentOutput> ExtractArchiveFromContent(Expression<Func<string>> destinationContainerName, Expression<Func<string>> content = null, Expression<Func<string>> destinationFolderPath = null, Expression<Func<ExtractArchiveFromContentInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null)
         {
-            var __workflow_destinationContainerName = destinationContainerName == null ? null : WorkflowExpression.Compile(destinationContainerName);
-            WorkflowExpression.Validate(__workflow_destinationContainerName, nameof(destinationContainerName), required: true);
-            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
-            WorkflowExpression.Validate(__workflow_content, nameof(content), required: false);
-            var __workflow_destinationFolderPath = destinationFolderPath == null ? null : WorkflowExpression.Compile(destinationFolderPath);
-            WorkflowExpression.Validate(__workflow_destinationFolderPath, nameof(destinationFolderPath), required: false);
-            var __workflow_overwriteExistingFilesBehaviour = overwriteExistingFilesBehaviour == null ? null : WorkflowExpression.Compile(overwriteExistingFilesBehaviour);
-            WorkflowExpression.Validate(__workflow_overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
+            var __workflow_destinationContainerName = WorkflowExpression.Compile(destinationContainerName, nameof(destinationContainerName), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: false);
+            var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: false);
+            var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
             return new DeferredBodyAction<ExtractArchiveFromContentOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -706,8 +635,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
     {
         public IBodyWorkflowTrigger<WhenABlobIsAddedOrModifiedOutput> WhenABlobIsAddedOrModified(Expression<Func<string>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyTrigger<WhenABlobIsAddedOrModifiedOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

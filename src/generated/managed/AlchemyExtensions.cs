@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
         public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodytext)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<GetSelfHelpInsightsResponse>(() =>
             {
                 var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";

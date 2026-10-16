@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<TextTranslateResponse> TextTranslate(Expression<Func<string>> q, Expression<Func<string>> target, Expression<Func<formatInput>> format = null, Expression<Func<string>> source = null, Expression<Func<string>> model = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
             return new DeferredBodyAction<TextTranslateResponse>(() =>
             {
                 var apiCallPath = "/language/translate/v2";
@@ -45,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<LanguageDetectResponse> LanguageDetect(Expression<Func<string>> q)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyAction<LanguageDetectResponse>(() =>
             {
                 var apiCallPath = "/language/translate/v2/detect";
@@ -60,10 +54,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecloudtranslaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecloudtranslaip")]
         public IBodyWorkflowAction<LanguageGetResponse> LanguageGet(Expression<Func<string>> target = null, Expression<Func<string>> model = null)
         {
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: false);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
             return new DeferredBodyAction<LanguageGetResponse>(() =>
             {
                 var apiCallPath = "/language/translate/v2/languages";

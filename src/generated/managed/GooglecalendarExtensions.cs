@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<CalendarList> ListCalendars(Expression<Func<minAccessRoleInput>> minAccessRole = null)
         {
-            var __workflow_minAccessRole = minAccessRole == null ? null : WorkflowExpression.Compile(minAccessRole);
-            WorkflowExpression.Validate(__workflow_minAccessRole, nameof(minAccessRole), required: false);
+            var __workflow_minAccessRole = WorkflowExpression.Compile(minAccessRole, nameof(minAccessRole), required: false);
             return new DeferredBodyAction<CalendarList>(() =>
             {
                 var apiCallPath = "/users/me/calendarList";
@@ -29,14 +28,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<CalendarEventList> ListEvents(Expression<Func<string>> calendarId, Expression<Func<string>> timeMin = null, Expression<Func<string>> timeMax = null, Expression<Func<string>> q = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
-            var __workflow_timeMin = timeMin == null ? null : WorkflowExpression.Compile(timeMin);
-            WorkflowExpression.Validate(__workflow_timeMin, nameof(timeMin), required: false);
-            var __workflow_timeMax = timeMax == null ? null : WorkflowExpression.Compile(timeMax);
-            WorkflowExpression.Validate(__workflow_timeMax, nameof(timeMax), required: false);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_timeMin = WorkflowExpression.Compile(timeMin, nameof(timeMin), required: false);
+            var __workflow_timeMax = WorkflowExpression.Compile(timeMax, nameof(timeMax), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
             return new DeferredBodyAction<CalendarEventList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
@@ -55,24 +50,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> CreateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> newEventstartTime, Expression<Func<string>> newEventendTime, Expression<Func<string>> newEventtitle = null, Expression<Func<string>> newEventdescription = null, Expression<Func<string>> newEventlocation = null, Expression<Func<string>> newEventattendees = null, Expression<Func<newEventstatusInput>> newEventstatus = null, Expression<Func<bool>> newEventisAllDay = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
-            var __workflow_newEventstartTime = newEventstartTime == null ? null : WorkflowExpression.Compile(newEventstartTime);
-            WorkflowExpression.Validate(__workflow_newEventstartTime, nameof(newEventstartTime), required: true);
-            var __workflow_newEventendTime = newEventendTime == null ? null : WorkflowExpression.Compile(newEventendTime);
-            WorkflowExpression.Validate(__workflow_newEventendTime, nameof(newEventendTime), required: true);
-            var __workflow_newEventtitle = newEventtitle == null ? null : WorkflowExpression.Compile(newEventtitle);
-            WorkflowExpression.Validate(__workflow_newEventtitle, nameof(newEventtitle), required: false);
-            var __workflow_newEventdescription = newEventdescription == null ? null : WorkflowExpression.Compile(newEventdescription);
-            WorkflowExpression.Validate(__workflow_newEventdescription, nameof(newEventdescription), required: false);
-            var __workflow_newEventlocation = newEventlocation == null ? null : WorkflowExpression.Compile(newEventlocation);
-            WorkflowExpression.Validate(__workflow_newEventlocation, nameof(newEventlocation), required: false);
-            var __workflow_newEventattendees = newEventattendees == null ? null : WorkflowExpression.Compile(newEventattendees);
-            WorkflowExpression.Validate(__workflow_newEventattendees, nameof(newEventattendees), required: false);
-            var __workflow_newEventstatus = newEventstatus == null ? null : WorkflowExpression.Compile(newEventstatus);
-            WorkflowExpression.Validate(__workflow_newEventstatus, nameof(newEventstatus), required: false);
-            var __workflow_newEventisAllDay = newEventisAllDay == null ? null : WorkflowExpression.Compile(newEventisAllDay);
-            WorkflowExpression.Validate(__workflow_newEventisAllDay, nameof(newEventisAllDay), required: false);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_newEventstartTime = WorkflowExpression.Compile(newEventstartTime, nameof(newEventstartTime), required: true);
+            var __workflow_newEventendTime = WorkflowExpression.Compile(newEventendTime, nameof(newEventendTime), required: true);
+            var __workflow_newEventtitle = WorkflowExpression.Compile(newEventtitle, nameof(newEventtitle), required: false);
+            var __workflow_newEventdescription = WorkflowExpression.Compile(newEventdescription, nameof(newEventdescription), required: false);
+            var __workflow_newEventlocation = WorkflowExpression.Compile(newEventlocation, nameof(newEventlocation), required: false);
+            var __workflow_newEventattendees = WorkflowExpression.Compile(newEventattendees, nameof(newEventattendees), required: false);
+            var __workflow_newEventstatus = WorkflowExpression.Compile(newEventstatus, nameof(newEventstatus), required: false);
+            var __workflow_newEventisAllDay = WorkflowExpression.Compile(newEventisAllDay, nameof(newEventisAllDay), required: false);
             return new DeferredBodyAction<ResponseEvent>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
@@ -132,10 +118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> GetEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
-            var __workflow_eventId = eventId == null ? null : WorkflowExpression.Compile(eventId);
-            WorkflowExpression.Validate(__workflow_eventId, nameof(eventId), required: true);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<ResponseEvent>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
@@ -148,10 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<JToken> DeleteEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
-            var __workflow_eventId = eventId == null ? null : WorkflowExpression.Compile(eventId);
-            WorkflowExpression.Validate(__workflow_eventId, nameof(eventId), required: true);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
@@ -164,26 +146,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecalendar")]
         public IBodyWorkflowAction<ResponseEvent> UpdateEvent(Expression<Func<string>> calendarId, Expression<Func<string>> eventId, Expression<Func<string>> updatedEventtitle = null, Expression<Func<string>> updatedEventstartTime = null, Expression<Func<string>> updatedEventendTime = null, Expression<Func<string>> updatedEventdescription = null, Expression<Func<string>> updatedEventlocation = null, Expression<Func<string>> updatedEventattendees = null, Expression<Func<updatedEventstatusInput>> updatedEventstatus = null, Expression<Func<bool>> updatedEventisAllDay = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
-            var __workflow_eventId = eventId == null ? null : WorkflowExpression.Compile(eventId);
-            WorkflowExpression.Validate(__workflow_eventId, nameof(eventId), required: true);
-            var __workflow_updatedEventtitle = updatedEventtitle == null ? null : WorkflowExpression.Compile(updatedEventtitle);
-            WorkflowExpression.Validate(__workflow_updatedEventtitle, nameof(updatedEventtitle), required: false);
-            var __workflow_updatedEventstartTime = updatedEventstartTime == null ? null : WorkflowExpression.Compile(updatedEventstartTime);
-            WorkflowExpression.Validate(__workflow_updatedEventstartTime, nameof(updatedEventstartTime), required: false);
-            var __workflow_updatedEventendTime = updatedEventendTime == null ? null : WorkflowExpression.Compile(updatedEventendTime);
-            WorkflowExpression.Validate(__workflow_updatedEventendTime, nameof(updatedEventendTime), required: false);
-            var __workflow_updatedEventdescription = updatedEventdescription == null ? null : WorkflowExpression.Compile(updatedEventdescription);
-            WorkflowExpression.Validate(__workflow_updatedEventdescription, nameof(updatedEventdescription), required: false);
-            var __workflow_updatedEventlocation = updatedEventlocation == null ? null : WorkflowExpression.Compile(updatedEventlocation);
-            WorkflowExpression.Validate(__workflow_updatedEventlocation, nameof(updatedEventlocation), required: false);
-            var __workflow_updatedEventattendees = updatedEventattendees == null ? null : WorkflowExpression.Compile(updatedEventattendees);
-            WorkflowExpression.Validate(__workflow_updatedEventattendees, nameof(updatedEventattendees), required: false);
-            var __workflow_updatedEventstatus = updatedEventstatus == null ? null : WorkflowExpression.Compile(updatedEventstatus);
-            WorkflowExpression.Validate(__workflow_updatedEventstatus, nameof(updatedEventstatus), required: false);
-            var __workflow_updatedEventisAllDay = updatedEventisAllDay == null ? null : WorkflowExpression.Compile(updatedEventisAllDay);
-            WorkflowExpression.Validate(__workflow_updatedEventisAllDay, nameof(updatedEventisAllDay), required: false);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_updatedEventtitle = WorkflowExpression.Compile(updatedEventtitle, nameof(updatedEventtitle), required: false);
+            var __workflow_updatedEventstartTime = WorkflowExpression.Compile(updatedEventstartTime, nameof(updatedEventstartTime), required: false);
+            var __workflow_updatedEventendTime = WorkflowExpression.Compile(updatedEventendTime, nameof(updatedEventendTime), required: false);
+            var __workflow_updatedEventdescription = WorkflowExpression.Compile(updatedEventdescription, nameof(updatedEventdescription), required: false);
+            var __workflow_updatedEventlocation = WorkflowExpression.Compile(updatedEventlocation, nameof(updatedEventlocation), required: false);
+            var __workflow_updatedEventattendees = WorkflowExpression.Compile(updatedEventattendees, nameof(updatedEventattendees), required: false);
+            var __workflow_updatedEventstatus = WorkflowExpression.Compile(updatedEventstatus, nameof(updatedEventstatus), required: false);
+            var __workflow_updatedEventisAllDay = WorkflowExpression.Compile(updatedEventisAllDay, nameof(updatedEventisAllDay), required: false);
             return new DeferredBodyAction<ResponseEvent>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/calendars/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1));
@@ -253,8 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     {
         public IBodyWorkflowTrigger<CalendarEventList> OnNewEventInCalendar(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
@@ -266,8 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnUpdatedEventInCalendar(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
@@ -279,8 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnDeletedEventInCalendar(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
@@ -292,10 +261,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventChangedList> OnChangedEventInCalendar(Expression<Func<string>> calendarId, Expression<Func<bool>> singleEvents = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
-            var __workflow_singleEvents = singleEvents == null ? null : WorkflowExpression.Compile(singleEvents);
-            WorkflowExpression.Validate(__workflow_singleEvents, nameof(singleEvents), required: false);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_singleEvents = WorkflowExpression.Compile(singleEvents, nameof(singleEvents), required: false);
             return new DeferredBodyTrigger<CalendarEventChangedList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));
@@ -309,8 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
 
         public IBodyWorkflowTrigger<CalendarEventList> OnEventStarted(Expression<Func<string>> calendarId, FlowRecurrence recurrence = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/eventstarted/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_calendarId, 1));

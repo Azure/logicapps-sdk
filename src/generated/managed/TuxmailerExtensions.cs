@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tuxmailer")]
         public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> email, Expression<Func<string>> teamName = null)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_teamName = teamName == null ? null : WorkflowExpression.Compile(teamName);
-            WorkflowExpression.Validate(__workflow_teamName, nameof(teamName), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_teamName = WorkflowExpression.Compile(teamName, nameof(teamName), required: false);
             return new DeferredBodyAction<ValidateEmailResponse>(() =>
             {
                 var apiCallPath = "/common/v1/user/validate/email";

@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         public IBodyWorkflowAction<ApplicationListDefinition> ListApplications(Expression<Func<string>> select = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<countInput>> count = null, Expression<Func<string>> expand = null, Expression<Func<int>> top = null)
         {
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ApplicationListDefinition>(() =>
             {
                 var apiCallPath = "/v1.0/applications";
@@ -51,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         public IBodyWorkflowAction<ApplicationDefinition> GetApplication(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ApplicationDefinition>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -65,8 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadapplications")]
         public IBodyWorkflowAction<ApplicationOwnersDefinition> GetAppOwners(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ApplicationOwnersDefinition>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/applications/{0}/owners", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

@@ -31,14 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3ObjectCollection> ListObjects(Expression<Func<string>> bucketName, Expression<Func<string>> bucketRegion = null, Expression<Func<int>> maxObjectCount = null, Expression<Func<string>> continuationToken = null)
         {
-            var __workflow_bucketName = bucketName == null ? null : WorkflowExpression.Compile(bucketName);
-            WorkflowExpression.Validate(__workflow_bucketName, nameof(bucketName), required: true);
-            var __workflow_bucketRegion = bucketRegion == null ? null : WorkflowExpression.Compile(bucketRegion);
-            WorkflowExpression.Validate(__workflow_bucketRegion, nameof(bucketRegion), required: false);
-            var __workflow_maxObjectCount = maxObjectCount == null ? null : WorkflowExpression.Compile(maxObjectCount);
-            WorkflowExpression.Validate(__workflow_maxObjectCount, nameof(maxObjectCount), required: false);
-            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
-            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
+            var __workflow_bucketName = WorkflowExpression.Compile(bucketName, nameof(bucketName), required: true);
+            var __workflow_bucketRegion = WorkflowExpression.Compile(bucketRegion, nameof(bucketRegion), required: false);
+            var __workflow_maxObjectCount = WorkflowExpression.Compile(maxObjectCount, nameof(maxObjectCount), required: false);
+            var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
             return new DeferredBodyAction<S3ObjectCollection>(() =>
             {
                 var apiCallPath = "/buckets/objects";
@@ -59,12 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3ObjectDeepMetadata> GetObjectMetadata(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
         {
-            var __workflow_bucketName = bucketName == null ? null : WorkflowExpression.Compile(bucketName);
-            WorkflowExpression.Validate(__workflow_bucketName, nameof(bucketName), required: true);
-            var __workflow_objectKey = objectKey == null ? null : WorkflowExpression.Compile(objectKey);
-            WorkflowExpression.Validate(__workflow_objectKey, nameof(objectKey), required: true);
-            var __workflow_bucketRegion = bucketRegion == null ? null : WorkflowExpression.Compile(bucketRegion);
-            WorkflowExpression.Validate(__workflow_bucketRegion, nameof(bucketRegion), required: false);
+            var __workflow_bucketName = WorkflowExpression.Compile(bucketName, nameof(bucketName), required: true);
+            var __workflow_objectKey = WorkflowExpression.Compile(objectKey, nameof(objectKey), required: true);
+            var __workflow_bucketRegion = WorkflowExpression.Compile(bucketRegion, nameof(bucketRegion), required: false);
             return new DeferredBodyAction<S3ObjectDeepMetadata>(() =>
             {
                 var apiCallPath = "/buckets/objects/metadata";
@@ -81,12 +74,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<string> GetObjectContent(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
         {
-            var __workflow_bucketName = bucketName == null ? null : WorkflowExpression.Compile(bucketName);
-            WorkflowExpression.Validate(__workflow_bucketName, nameof(bucketName), required: true);
-            var __workflow_objectKey = objectKey == null ? null : WorkflowExpression.Compile(objectKey);
-            WorkflowExpression.Validate(__workflow_objectKey, nameof(objectKey), required: true);
-            var __workflow_bucketRegion = bucketRegion == null ? null : WorkflowExpression.Compile(bucketRegion);
-            WorkflowExpression.Validate(__workflow_bucketRegion, nameof(bucketRegion), required: false);
+            var __workflow_bucketName = WorkflowExpression.Compile(bucketName, nameof(bucketName), required: true);
+            var __workflow_objectKey = WorkflowExpression.Compile(objectKey, nameof(objectKey), required: true);
+            var __workflow_bucketRegion = WorkflowExpression.Compile(bucketRegion, nameof(bucketRegion), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/buckets/objects/content";
@@ -105,12 +95,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
     {
         public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bucketName = bucketName == null ? null : WorkflowExpression.Compile(bucketName);
-            WorkflowExpression.Validate(__workflow_bucketName, nameof(bucketName), required: true);
-            var __workflow_objectKey = objectKey == null ? null : WorkflowExpression.Compile(objectKey);
-            WorkflowExpression.Validate(__workflow_objectKey, nameof(objectKey), required: true);
-            var __workflow_bucketRegion = bucketRegion == null ? null : WorkflowExpression.Compile(bucketRegion);
-            WorkflowExpression.Validate(__workflow_bucketRegion, nameof(bucketRegion), required: false);
+            var __workflow_bucketName = WorkflowExpression.Compile(bucketName, nameof(bucketName), required: true);
+            var __workflow_objectKey = WorkflowExpression.Compile(objectKey, nameof(objectKey), required: true);
+            var __workflow_bucketRegion = WorkflowExpression.Compile(bucketRegion, nameof(bucketRegion), required: false);
             return new DeferredBodyTrigger<S3ObjectDeepMetadata>(() =>
             {
                 var apiCallPath = "/buckets/objects/onupdate";

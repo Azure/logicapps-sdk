@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<GenerateSecretResponse> GenerateSecret(Expression<Func<string>> passphrase = null, Expression<Func<int>> ttl = null, Expression<Func<string>> recipient = null)
         {
-            var __workflow_passphrase = passphrase == null ? null : WorkflowExpression.Compile(passphrase);
-            WorkflowExpression.Validate(__workflow_passphrase, nameof(passphrase), required: false);
-            var __workflow_ttl = ttl == null ? null : WorkflowExpression.Compile(ttl);
-            WorkflowExpression.Validate(__workflow_ttl, nameof(ttl), required: false);
-            var __workflow_recipient = recipient == null ? null : WorkflowExpression.Compile(recipient);
-            WorkflowExpression.Validate(__workflow_recipient, nameof(recipient), required: false);
+            var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
+            var __workflow_ttl = WorkflowExpression.Compile(ttl, nameof(ttl), required: false);
+            var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: false);
             return new DeferredBodyAction<GenerateSecretResponse>(() =>
             {
                 var apiCallPath = "/generate";
@@ -37,14 +34,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<CreateSecretResponse> CreateSecret(Expression<Func<string>> secret, Expression<Func<string>> ttl = null, Expression<Func<string>> passphrase = null, Expression<Func<string>> recipient = null)
         {
-            var __workflow_secret = secret == null ? null : WorkflowExpression.Compile(secret);
-            WorkflowExpression.Validate(__workflow_secret, nameof(secret), required: true);
-            var __workflow_ttl = ttl == null ? null : WorkflowExpression.Compile(ttl);
-            WorkflowExpression.Validate(__workflow_ttl, nameof(ttl), required: false);
-            var __workflow_passphrase = passphrase == null ? null : WorkflowExpression.Compile(passphrase);
-            WorkflowExpression.Validate(__workflow_passphrase, nameof(passphrase), required: false);
-            var __workflow_recipient = recipient == null ? null : WorkflowExpression.Compile(recipient);
-            WorkflowExpression.Validate(__workflow_recipient, nameof(recipient), required: false);
+            var __workflow_secret = WorkflowExpression.Compile(secret, nameof(secret), required: true);
+            var __workflow_ttl = WorkflowExpression.Compile(ttl, nameof(ttl), required: false);
+            var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
+            var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: false);
             return new DeferredBodyAction<CreateSecretResponse>(() =>
             {
                 var apiCallPath = "/share";
@@ -64,10 +57,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<RetrieveSecretResponse> RetrieveSecret(Expression<Func<string>> sECRETKEY, Expression<Func<string>> passphrase = null)
         {
-            var __workflow_sECRETKEY = sECRETKEY == null ? null : WorkflowExpression.Compile(sECRETKEY);
-            WorkflowExpression.Validate(__workflow_sECRETKEY, nameof(sECRETKEY), required: true);
-            var __workflow_passphrase = passphrase == null ? null : WorkflowExpression.Compile(passphrase);
-            WorkflowExpression.Validate(__workflow_passphrase, nameof(passphrase), required: false);
+            var __workflow_sECRETKEY = WorkflowExpression.Compile(sECRETKEY, nameof(sECRETKEY), required: true);
+            var __workflow_passphrase = WorkflowExpression.Compile(passphrase, nameof(passphrase), required: false);
             return new DeferredBodyAction<RetrieveSecretResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/secret/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sECRETKEY, 1));
@@ -82,8 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<RetrieveMetadataResponse> RetrieveMetadata(Expression<Func<string>> mETADATAKEY)
         {
-            var __workflow_mETADATAKEY = mETADATAKEY == null ? null : WorkflowExpression.Compile(mETADATAKEY);
-            WorkflowExpression.Validate(__workflow_mETADATAKEY, nameof(mETADATAKEY), required: true);
+            var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
             return new DeferredBodyAction<RetrieveMetadataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/private/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mETADATAKEY, 1));
@@ -96,8 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onetimesecretip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onetimesecretip")]
         public IBodyWorkflowAction<BurnASecretResponse> BurnASecret(Expression<Func<string>> mETADATAKEY)
         {
-            var __workflow_mETADATAKEY = mETADATAKEY == null ? null : WorkflowExpression.Compile(mETADATAKEY);
-            WorkflowExpression.Validate(__workflow_mETADATAKEY, nameof(mETADATAKEY), required: true);
+            var __workflow_mETADATAKEY = WorkflowExpression.Compile(mETADATAKEY, nameof(mETADATAKEY), required: true);
             return new DeferredBodyAction<BurnASecretResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/private/{0}/burn", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mETADATAKEY, 1));

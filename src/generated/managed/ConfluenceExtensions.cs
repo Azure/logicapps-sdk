@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<string>> cloudId)
         {
-            var __workflow_cloudId = cloudId == null ? null : WorkflowExpression.Compile(cloudId);
-            WorkflowExpression.Validate(__workflow_cloudId, nameof(cloudId), required: true);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
             return new DeferredBodyAction<GetSpacesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPages(Expression<Func<string>> cloudId)
         {
-            var __workflow_cloudId = cloudId == null ? null : WorkflowExpression.Compile(cloudId);
-            WorkflowExpression.Validate(__workflow_cloudId, nameof(cloudId), required: true);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
             return new DeferredBodyAction<GetPagesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1));
@@ -41,10 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId)
         {
-            var __workflow_cloudId = cloudId == null ? null : WorkflowExpression.Compile(cloudId);
-            WorkflowExpression.Validate(__workflow_cloudId, nameof(cloudId), required: true);
-            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
-            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
+            var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
             return new DeferredBodyAction<GetPagesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
@@ -57,12 +53,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
         public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId, Expression<Func<string>> pageId)
         {
-            var __workflow_cloudId = cloudId == null ? null : WorkflowExpression.Compile(cloudId);
-            WorkflowExpression.Validate(__workflow_cloudId, nameof(cloudId), required: true);
-            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
-            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
+            var __workflow_cloudId = WorkflowExpression.Compile(cloudId, nameof(cloudId), required: true);
+            var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<GetPagesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));

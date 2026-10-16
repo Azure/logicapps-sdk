@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyemail, Expression<Func<string>> bodycomments, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null, Expression<Func<string>> bodyassignedTo = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
-            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodycustomUserId = bodycustomUserId == null ? null : WorkflowExpression.Compile(bodycustomUserId);
-            WorkflowExpression.Validate(__workflow_bodycustomUserId, nameof(bodycustomUserId), required: false);
-            var __workflow_bodycustomAccountId = bodycustomAccountId == null ? null : WorkflowExpression.Compile(bodycustomAccountId);
-            WorkflowExpression.Validate(__workflow_bodycustomAccountId, nameof(bodycustomAccountId), required: false);
-            var __workflow_bodytextOptIn = bodytextOptIn == null ? null : WorkflowExpression.Compile(bodytextOptIn);
-            WorkflowExpression.Validate(__workflow_bodytextOptIn, nameof(bodytextOptIn), required: false);
-            var __workflow_bodycellNumber = bodycellNumber == null ? null : WorkflowExpression.Compile(bodycellNumber);
-            WorkflowExpression.Validate(__workflow_bodycellNumber, nameof(bodycellNumber), required: false);
-            var __workflow_bodyassignedTo = bodyassignedTo == null ? null : WorkflowExpression.Compile(bodyassignedTo);
-            WorkflowExpression.Validate(__workflow_bodyassignedTo, nameof(bodyassignedTo), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodycustomUserId = WorkflowExpression.Compile(bodycustomUserId, nameof(bodycustomUserId), required: false);
+            var __workflow_bodycustomAccountId = WorkflowExpression.Compile(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
+            var __workflow_bodytextOptIn = WorkflowExpression.Compile(bodytextOptIn, nameof(bodytextOptIn), required: false);
+            var __workflow_bodycellNumber = WorkflowExpression.Compile(bodycellNumber, nameof(bodycellNumber), required: false);
+            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -98,22 +89,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
         public IBodyWorkflowAction<SendNoteResponse> SendNote(Expression<Func<string>> bodynoteId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null)
         {
-            var __workflow_bodynoteId = bodynoteId == null ? null : WorkflowExpression.Compile(bodynoteId);
-            WorkflowExpression.Validate(__workflow_bodynoteId, nameof(bodynoteId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodycustomUserId = bodycustomUserId == null ? null : WorkflowExpression.Compile(bodycustomUserId);
-            WorkflowExpression.Validate(__workflow_bodycustomUserId, nameof(bodycustomUserId), required: false);
-            var __workflow_bodycustomAccountId = bodycustomAccountId == null ? null : WorkflowExpression.Compile(bodycustomAccountId);
-            WorkflowExpression.Validate(__workflow_bodycustomAccountId, nameof(bodycustomAccountId), required: false);
-            var __workflow_bodytextOptIn = bodytextOptIn == null ? null : WorkflowExpression.Compile(bodytextOptIn);
-            WorkflowExpression.Validate(__workflow_bodytextOptIn, nameof(bodytextOptIn), required: false);
-            var __workflow_bodycellNumber = bodycellNumber == null ? null : WorkflowExpression.Compile(bodycellNumber);
-            WorkflowExpression.Validate(__workflow_bodycellNumber, nameof(bodycellNumber), required: false);
+            var __workflow_bodynoteId = WorkflowExpression.Compile(bodynoteId, nameof(bodynoteId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodycustomUserId = WorkflowExpression.Compile(bodycustomUserId, nameof(bodycustomUserId), required: false);
+            var __workflow_bodycustomAccountId = WorkflowExpression.Compile(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
+            var __workflow_bodytextOptIn = WorkflowExpression.Compile(bodytextOptIn, nameof(bodytextOptIn), required: false);
+            var __workflow_bodycellNumber = WorkflowExpression.Compile(bodycellNumber, nameof(bodycellNumber), required: false);
             return new DeferredBodyAction<SendNoteResponse>(() =>
             {
                 var apiCallPath = "/api/integrationsEndpoint";
@@ -177,8 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     {
         public IWorkflowTrigger NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, FlowRecurrence recurrence = null)
         {
-            var __workflow_webookHookEvent = webookHookEvent == null ? null : WorkflowExpression.Compile(webookHookEvent);
-            WorkflowExpression.Validate(__workflow_webookHookEvent, nameof(webookHookEvent), required: true);
+            var __workflow_webookHookEvent = WorkflowExpression.Compile(webookHookEvent, nameof(webookHookEvent), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/manageIntegrations";

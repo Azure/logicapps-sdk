@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
         public IBodyWorkflowAction<FileLoadResponse> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
         {
-            var __workflow_columnDelimiter = columnDelimiter == null ? null : WorkflowExpression.Compile(columnDelimiter);
-            WorkflowExpression.Validate(__workflow_columnDelimiter, nameof(columnDelimiter), required: true);
-            var __workflow_dataLoadRuleName = dataLoadRuleName == null ? null : WorkflowExpression.Compile(dataLoadRuleName);
-            WorkflowExpression.Validate(__workflow_dataLoadRuleName, nameof(dataLoadRuleName), required: false);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: false);
+            var __workflow_columnDelimiter = WorkflowExpression.Compile(columnDelimiter, nameof(columnDelimiter), required: true);
+            var __workflow_dataLoadRuleName = WorkflowExpression.Compile(dataLoadRuleName, nameof(dataLoadRuleName), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
             return new DeferredBodyAction<FileLoadResponse>(() =>
             {
                 var apiCallPath = "/financemodel/data/transferfile";
@@ -43,12 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
         public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata(Expression<Func<string>> scenario, Expression<Func<int>> fiscalYear, Expression<Func<string>> filter = null)
         {
-            var __workflow_scenario = scenario == null ? null : WorkflowExpression.Compile(scenario);
-            WorkflowExpression.Validate(__workflow_scenario, nameof(scenario), required: true);
-            var __workflow_fiscalYear = fiscalYear == null ? null : WorkflowExpression.Compile(fiscalYear);
-            WorkflowExpression.Validate(__workflow_fiscalYear, nameof(fiscalYear), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_scenario = WorkflowExpression.Compile(scenario, nameof(scenario), required: true);
+            var __workflow_fiscalYear = WorkflowExpression.Compile(fiscalYear, nameof(fiscalYear), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<GetGLdataResponseItem[]>(() =>
             {
                 var apiCallPath = "/financemodel/data/extract/gldata";

@@ -31,18 +31,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<ListLinksResponseItem[]> ListLinks(Expression<Func<string>> domainId = null, Expression<Func<string>> slashtag = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null, Expression<Func<string>> workspace = null)
         {
-            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
-            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: false);
-            var __workflow_slashtag = slashtag == null ? null : WorkflowExpression.Compile(slashtag);
-            WorkflowExpression.Validate(__workflow_slashtag, nameof(slashtag), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
-            var __workflow_orderDir = orderDir == null ? null : WorkflowExpression.Compile(orderDir);
-            WorkflowExpression.Validate(__workflow_orderDir, nameof(orderDir), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: false);
+            var __workflow_slashtag = WorkflowExpression.Compile(slashtag, nameof(slashtag), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_orderDir = WorkflowExpression.Compile(orderDir, nameof(orderDir), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<ListLinksResponseItem[]>(() =>
             {
                 var apiCallPath = "/links";
@@ -67,14 +61,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<CreateLinkResponse> CreateLink(Expression<Func<string>> bodydestination = null, Expression<Func<string>> bodyslashtag = null, Expression<Func<string>> bodydomainid = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_bodydestination = bodydestination == null ? null : WorkflowExpression.Compile(bodydestination);
-            WorkflowExpression.Validate(__workflow_bodydestination, nameof(bodydestination), required: false);
-            var __workflow_bodyslashtag = bodyslashtag == null ? null : WorkflowExpression.Compile(bodyslashtag);
-            WorkflowExpression.Validate(__workflow_bodyslashtag, nameof(bodyslashtag), required: false);
-            var __workflow_bodydomainid = bodydomainid == null ? null : WorkflowExpression.Compile(bodydomainid);
-            WorkflowExpression.Validate(__workflow_bodydomainid, nameof(bodydomainid), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodydestination = WorkflowExpression.Compile(bodydestination, nameof(bodydestination), required: false);
+            var __workflow_bodyslashtag = WorkflowExpression.Compile(bodyslashtag, nameof(bodyslashtag), required: false);
+            var __workflow_bodydomainid = WorkflowExpression.Compile(bodydomainid, nameof(bodydomainid), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateLinkResponse>(() =>
             {
                 var apiCallPath = "/links";
@@ -126,12 +116,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<ListWorkspacesResponseItem[]> ListWorkspaces(Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderDirInput>> orderDir = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
-            var __workflow_orderDir = orderDir == null ? null : WorkflowExpression.Compile(orderDir);
-            WorkflowExpression.Validate(__workflow_orderDir, nameof(orderDir), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_orderDir = WorkflowExpression.Compile(orderDir, nameof(orderDir), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<ListWorkspacesResponseItem[]>(() =>
             {
                 var apiCallPath = "/workspaces";
@@ -150,10 +137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<GetLinkResponse> GetLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<GetLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -168,10 +153,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<DeleteLinkResponse> DeleteLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<DeleteLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -186,14 +169,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rebrandlyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rebrandlyip")]
         public IBodyWorkflowAction<UpdateLinkResponse> UpdateLink(Expression<Func<string>> id, Expression<Func<string>> workspace = null, Expression<Func<string>> bodydestinationURL = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
-            var __workflow_bodydestinationURL = bodydestinationURL == null ? null : WorkflowExpression.Compile(bodydestinationURL);
-            WorkflowExpression.Validate(__workflow_bodydestinationURL, nameof(bodydestinationURL), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
+            var __workflow_bodydestinationURL = WorkflowExpression.Compile(bodydestinationURL, nameof(bodydestinationURL), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<UpdateLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/links/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

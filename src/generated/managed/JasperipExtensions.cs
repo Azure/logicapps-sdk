@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<CommandPostResponse> Command(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
         {
-            var __workflow_bodyinputscommand = bodyinputscommand == null ? null : WorkflowExpression.Compile(bodyinputscommand);
-            WorkflowExpression.Validate(__workflow_bodyinputscommand, nameof(bodyinputscommand), required: false);
-            var __workflow_bodyinputscontext = bodyinputscontext == null ? null : WorkflowExpression.Compile(bodyinputscontext);
-            WorkflowExpression.Validate(__workflow_bodyinputscontext, nameof(bodyinputscontext), required: false);
-            var __workflow_bodyoptionsoutputCount = bodyoptionsoutputCount == null ? null : WorkflowExpression.Compile(bodyoptionsoutputCount);
-            WorkflowExpression.Validate(__workflow_bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
-            var __workflow_bodyoptionsinputLanguage = bodyoptionsinputLanguage == null ? null : WorkflowExpression.Compile(bodyoptionsinputLanguage);
-            WorkflowExpression.Validate(__workflow_bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
-            var __workflow_bodyoptionsoutputLanguage = bodyoptionsoutputLanguage == null ? null : WorkflowExpression.Compile(bodyoptionsoutputLanguage);
-            WorkflowExpression.Validate(__workflow_bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
-            var __workflow_bodyoptionslanguageFormality = bodyoptionslanguageFormality == null ? null : WorkflowExpression.Compile(bodyoptionslanguageFormality);
-            WorkflowExpression.Validate(__workflow_bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
-            var __workflow_bodyoptionscompletionType = bodyoptionscompletionType == null ? null : WorkflowExpression.Compile(bodyoptionscompletionType);
-            WorkflowExpression.Validate(__workflow_bodyoptionscompletionType, nameof(bodyoptionscompletionType), required: false);
+            var __workflow_bodyinputscommand = WorkflowExpression.Compile(bodyinputscommand, nameof(bodyinputscommand), required: false);
+            var __workflow_bodyinputscontext = WorkflowExpression.Compile(bodyinputscontext, nameof(bodyinputscontext), required: false);
+            var __workflow_bodyoptionsoutputCount = WorkflowExpression.Compile(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
+            var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            var __workflow_bodyoptionscompletionType = WorkflowExpression.Compile(bodyoptionscompletionType, nameof(bodyoptionscompletionType), required: false);
             return new DeferredBodyAction<CommandPostResponse>(() =>
             {
                 var apiCallPath = "/v1/command";
@@ -154,16 +147,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KeepWritingPostResponse> KeepWriting(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
-            var __workflow_bodyinputstype = bodyinputstype == null ? null : WorkflowExpression.Compile(bodyinputstype);
-            WorkflowExpression.Validate(__workflow_bodyinputstype, nameof(bodyinputstype), required: false);
-            var __workflow_bodyinputsvalue = bodyinputsvalue == null ? null : WorkflowExpression.Compile(bodyinputsvalue);
-            WorkflowExpression.Validate(__workflow_bodyinputsvalue, nameof(bodyinputsvalue), required: false);
-            var __workflow_bodyoptionsinputLanguage = bodyoptionsinputLanguage == null ? null : WorkflowExpression.Compile(bodyoptionsinputLanguage);
-            WorkflowExpression.Validate(__workflow_bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
-            var __workflow_bodyoptionsoutputLanguage = bodyoptionsoutputLanguage == null ? null : WorkflowExpression.Compile(bodyoptionsoutputLanguage);
-            WorkflowExpression.Validate(__workflow_bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
-            var __workflow_bodyoptionslanguageFormality = bodyoptionslanguageFormality == null ? null : WorkflowExpression.Compile(bodyoptionslanguageFormality);
-            WorkflowExpression.Validate(__workflow_bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            var __workflow_bodyinputstype = WorkflowExpression.Compile(bodyinputstype, nameof(bodyinputstype), required: false);
+            var __workflow_bodyinputsvalue = WorkflowExpression.Compile(bodyinputsvalue, nameof(bodyinputsvalue), required: false);
+            var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
             return new DeferredBodyAction<KeepWritingPostResponse>(() =>
             {
                 var apiCallPath = "/v1/keep-writing";
@@ -278,8 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -292,16 +279,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_bodyoptionsoutputCount = bodyoptionsoutputCount == null ? null : WorkflowExpression.Compile(bodyoptionsoutputCount);
-            WorkflowExpression.Validate(__workflow_bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
-            var __workflow_bodyoptionsinputLanguage = bodyoptionsinputLanguage == null ? null : WorkflowExpression.Compile(bodyoptionsinputLanguage);
-            WorkflowExpression.Validate(__workflow_bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
-            var __workflow_bodyoptionsoutputLanguage = bodyoptionsoutputLanguage == null ? null : WorkflowExpression.Compile(bodyoptionsoutputLanguage);
-            WorkflowExpression.Validate(__workflow_bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
-            var __workflow_bodyoptionslanguageFormality = bodyoptionslanguageFormality == null ? null : WorkflowExpression.Compile(bodyoptionslanguageFormality);
-            WorkflowExpression.Validate(__workflow_bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_bodyoptionsoutputCount = WorkflowExpression.Compile(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
+            var __workflow_bodyoptionsinputLanguage = WorkflowExpression.Compile(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            var __workflow_bodyoptionsoutputLanguage = WorkflowExpression.Compile(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            var __workflow_bodyoptionslanguageFormality = WorkflowExpression.Compile(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
             return new DeferredBodyAction<TemplatePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -391,10 +373,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgesGetResponse> KnowledgesGet(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<KnowledgesGetResponse>(() =>
             {
                 var apiCallPath = "/v1/knowledge";
@@ -411,12 +391,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgePostResponse> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: true);
-            var __workflow_bodysettingsappVisibility = bodysettingsappVisibility == null ? null : WorkflowExpression.Compile(bodysettingsappVisibility);
-            WorkflowExpression.Validate(__workflow_bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             return new DeferredBodyAction<KnowledgePostResponse>(() =>
             {
                 var apiCallPath = "/v1/knowledge";
@@ -472,8 +449,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeGetResponse> KnowledgeGet(Expression<Func<string>> knowledgeId)
         {
-            var __workflow_knowledgeId = knowledgeId == null ? null : WorkflowExpression.Compile(knowledgeId);
-            WorkflowExpression.Validate(__workflow_knowledgeId, nameof(knowledgeId), required: true);
+            var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
             return new DeferredBodyAction<KnowledgeGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
@@ -486,8 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgeDeleteResponse> KnowledgeDelete(Expression<Func<string>> knowledgeId)
         {
-            var __workflow_knowledgeId = knowledgeId == null ? null : WorkflowExpression.Compile(knowledgeId);
-            WorkflowExpression.Validate(__workflow_knowledgeId, nameof(knowledgeId), required: true);
+            var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
             return new DeferredBodyAction<KnowledgeDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
@@ -500,14 +475,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfile = null)
         {
-            var __workflow_knowledgeId = knowledgeId == null ? null : WorkflowExpression.Compile(knowledgeId);
-            WorkflowExpression.Validate(__workflow_knowledgeId, nameof(knowledgeId), required: true);
-            var __workflow_bodysettingsappVisibility = bodysettingsappVisibility == null ? null : WorkflowExpression.Compile(bodysettingsappVisibility);
-            WorkflowExpression.Validate(__workflow_bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_knowledgeId = WorkflowExpression.Compile(knowledgeId, nameof(knowledgeId), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
             return new DeferredBodyAction<KnowledgePatchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_knowledgeId, 1));
@@ -570,12 +541,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonePostResponse> Tone(Expression<Func<string>> bodyname, Expression<Func<string>> bodyvalue, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_bodysettingsappVisibility = bodysettingsappVisibility == null ? null : WorkflowExpression.Compile(bodysettingsappVisibility);
-            WorkflowExpression.Validate(__workflow_bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
             return new DeferredBodyAction<TonePostResponse>(() =>
             {
                 var apiCallPath = "/v1/tones";
@@ -631,8 +599,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneGetResponse> ToneGet(Expression<Func<string>> toneId)
         {
-            var __workflow_toneId = toneId == null ? null : WorkflowExpression.Compile(toneId);
-            WorkflowExpression.Validate(__workflow_toneId, nameof(toneId), required: true);
+            var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
             return new DeferredBodyAction<ToneGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
@@ -645,14 +612,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonePatchResponse> TonePatch(Expression<Func<string>> toneId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyvalue = null)
         {
-            var __workflow_toneId = toneId == null ? null : WorkflowExpression.Compile(toneId);
-            WorkflowExpression.Validate(__workflow_toneId, nameof(toneId), required: true);
-            var __workflow_bodysettingsappVisibility = bodysettingsappVisibility == null ? null : WorkflowExpression.Compile(bodysettingsappVisibility);
-            WorkflowExpression.Validate(__workflow_bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: false);
+            var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
+            var __workflow_bodysettingsappVisibility = WorkflowExpression.Compile(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: false);
             return new DeferredBodyAction<TonePatchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));
@@ -706,8 +669,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<ToneDeleteResponse> ToneDelete(Expression<Func<string>> toneId)
         {
-            var __workflow_toneId = toneId == null ? null : WorkflowExpression.Compile(toneId);
-            WorkflowExpression.Validate(__workflow_toneId, nameof(toneId), required: true);
+            var __workflow_toneId = WorkflowExpression.Compile(toneId, nameof(toneId), required: true);
             return new DeferredBodyAction<ToneDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_toneId, 1));

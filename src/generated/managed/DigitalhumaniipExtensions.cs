@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<EnterpriseGetResponse> EnterpriseGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<EnterpriseGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enterprise/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<ProjectGetAResponse> ProjectGetA(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ProjectGetAResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -50,14 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreePlantResponse> TreePlant(Expression<Func<int>> bodytreeCount = null, Expression<Func<string>> bodyenterpriseId = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodyuser = null)
         {
-            var __workflow_bodytreeCount = bodytreeCount == null ? null : WorkflowExpression.Compile(bodytreeCount);
-            WorkflowExpression.Validate(__workflow_bodytreeCount, nameof(bodytreeCount), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: false);
-            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
-            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodytreeCount = WorkflowExpression.Compile(bodytreeCount, nameof(bodytreeCount), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<TreePlantResponse>(() =>
             {
                 var apiCallPath = "/tree";
@@ -101,10 +95,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreeCountResponse> TreeCount(Expression<Func<string>> enterpriseId = null, Expression<Func<string>> user = null)
         {
-            var __workflow_enterpriseId = enterpriseId == null ? null : WorkflowExpression.Compile(enterpriseId);
-            WorkflowExpression.Validate(__workflow_enterpriseId, nameof(enterpriseId), required: false);
-            var __workflow_user = user == null ? null : WorkflowExpression.Compile(user);
-            WorkflowExpression.Validate(__workflow_user, nameof(user), required: false);
+            var __workflow_enterpriseId = WorkflowExpression.Compile(enterpriseId, nameof(enterpriseId), required: false);
+            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: false);
             return new DeferredBodyAction<TreeCountResponse>(() =>
             {
                 var apiCallPath = "/tree";
@@ -121,8 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreeDetailsResponse> TreeDetails(Expression<Func<string>> uuidOfTreePlanted)
         {
-            var __workflow_uuidOfTreePlanted = uuidOfTreePlanted == null ? null : WorkflowExpression.Compile(uuidOfTreePlanted);
-            WorkflowExpression.Validate(__workflow_uuidOfTreePlanted, nameof(uuidOfTreePlanted), required: true);
+            var __workflow_uuidOfTreePlanted = WorkflowExpression.Compile(uuidOfTreePlanted, nameof(uuidOfTreePlanted), required: true);
             return new DeferredBodyAction<TreeDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tree/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uuidOfTreePlanted, 1));
@@ -135,10 +126,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreeCountMonthResponse> TreeCountMonth(Expression<Func<string>> id, Expression<Func<string>> yYYYMM)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_yYYYMM = yYYYMM == null ? null : WorkflowExpression.Compile(yYYYMM);
-            WorkflowExpression.Validate(__workflow_yYYYMM, nameof(yYYYMM), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_yYYYMM = WorkflowExpression.Compile(yYYYMM, nameof(yYYYMM), required: true);
             return new DeferredBodyAction<TreeCountMonthResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enterprise/{0}/treeCount/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_yYYYMM, 1));
@@ -151,12 +140,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Digitalhumaniip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "digitalhumaniip")]
         public IBodyWorkflowAction<TreeCountDatesResponse> TreeCountDates(Expression<Func<string>> id, Expression<Func<string>> startDate, Expression<Func<string>> endDate)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
             return new DeferredBodyAction<TreeCountDatesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/enterprise/{0}/treeCount", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

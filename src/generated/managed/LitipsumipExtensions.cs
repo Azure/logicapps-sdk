@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
         public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
         {
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
             return new DeferredBodyAction<TextTitleResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_title, 1));

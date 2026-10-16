@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
         public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid(Expression<Func<string>> names)
         {
-            var __workflow_names = names == null ? null : WorkflowExpression.Compile(names);
-            WorkflowExpression.Validate(__workflow_names, nameof(names), required: true);
+            var __workflow_names = WorkflowExpression.Compile(names, nameof(names), required: true);
             return new DeferredBodyAction<GetCompanyFidResponse>(() =>
             {
                 var apiCallPath = "/_api/v1/companies/search";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
         public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID(Expression<Func<string>> fID)
         {
-            var __workflow_fID = fID == null ? null : WorkflowExpression.Compile(fID);
-            WorkflowExpression.Validate(__workflow_fID, nameof(fID), required: true);
+            var __workflow_fID = WorkflowExpression.Compile(fID, nameof(fID), required: true);
             return new DeferredBodyAction<CompanyInfoByFIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_api/v1/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fID, 1));
@@ -43,10 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
         public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID(Expression<Func<string>> companyIds, Expression<Func<includesInput>> includes)
         {
-            var __workflow_companyIds = companyIds == null ? null : WorkflowExpression.Compile(companyIds);
-            WorkflowExpression.Validate(__workflow_companyIds, nameof(companyIds), required: true);
-            var __workflow_includes = includes == null ? null : WorkflowExpression.Compile(includes);
-            WorkflowExpression.Validate(__workflow_includes, nameof(includes), required: true);
+            var __workflow_companyIds = WorkflowExpression.Compile(companyIds, nameof(companyIds), required: true);
+            var __workflow_includes = WorkflowExpression.Compile(includes, nameof(includes), required: true);
             return new DeferredBodyAction<FundsByFIDResponse>(() =>
             {
                 var apiCallPath = "/_api/v1/transactions/company";

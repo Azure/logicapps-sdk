@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<Output> GetEntityData(Expression<Func<string>> entity, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
-            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_inlinecount = inlinecount == null ? null : WorkflowExpression.Compile(inlinecount);
-            WorkflowExpression.Validate(__workflow_inlinecount, nameof(inlinecount), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_inlinecount = WorkflowExpression.Compile(inlinecount, nameof(inlinecount), required: false);
             return new DeferredBodyAction<Output>(() =>
             {
                 var apiCallPath = "/getentitydata";
@@ -65,28 +55,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null, Expression<Func<double>> top = null, Expression<Func<double>> skip = null, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<inlinecountInput>> inlinecount = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
-            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
-            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
-            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_inlinecount = inlinecount == null ? null : WorkflowExpression.Compile(inlinecount);
-            WorkflowExpression.Validate(__workflow_inlinecount, nameof(inlinecount), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_inlinecount = WorkflowExpression.Compile(inlinecount, nameof(inlinecount), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/getentry";
@@ -120,12 +99,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> CreateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
-            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
-            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
-            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/createentry";
@@ -143,12 +119,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> UpdateEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
-            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
-            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
-            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updateentry";
@@ -166,12 +139,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<AdHocRequestResponse> AdHocRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<bool>> bypassMetadata = null)
         {
-            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
-            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: true);
-            var __workflow_entryInputhttpMethod = entryInputhttpMethod == null ? null : WorkflowExpression.Compile(entryInputhttpMethod);
-            WorkflowExpression.Validate(__workflow_entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
-            var __workflow_bypassMetadata = bypassMetadata == null ? null : WorkflowExpression.Compile(bypassMetadata);
-            WorkflowExpression.Validate(__workflow_bypassMetadata, nameof(bypassMetadata), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
+            var __workflow_entryInputhttpMethod = WorkflowExpression.Compile(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
+            var __workflow_bypassMetadata = WorkflowExpression.Compile(bypassMetadata, nameof(bypassMetadata), required: false);
             return new DeferredBodyAction<AdHocRequestResponse>(() =>
             {
                 var apiCallPath = "/adhoc";
@@ -213,14 +183,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<AdHocBulkRequestResponse> AdHocBulkRequest(Expression<Func<string>> relativePath, Expression<Func<entryInputhttpMethodInput>> entryInputhttpMethod, Expression<Func<JToken[]>> entryInputpayload = null, Expression<Func<bool>> bypassMetadata = null)
         {
-            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
-            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: true);
-            var __workflow_entryInputhttpMethod = entryInputhttpMethod == null ? null : WorkflowExpression.Compile(entryInputhttpMethod);
-            WorkflowExpression.Validate(__workflow_entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
-            var __workflow_entryInputpayload = entryInputpayload == null ? null : WorkflowExpression.Compile(entryInputpayload);
-            WorkflowExpression.Validate(__workflow_entryInputpayload, nameof(entryInputpayload), required: false);
-            var __workflow_bypassMetadata = bypassMetadata == null ? null : WorkflowExpression.Compile(bypassMetadata);
-            WorkflowExpression.Validate(__workflow_bypassMetadata, nameof(bypassMetadata), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: true);
+            var __workflow_entryInputhttpMethod = WorkflowExpression.Compile(entryInputhttpMethod, nameof(entryInputhttpMethod), required: true);
+            var __workflow_entryInputpayload = WorkflowExpression.Compile(entryInputpayload, nameof(entryInputpayload), required: false);
+            var __workflow_bypassMetadata = WorkflowExpression.Compile(bypassMetadata, nameof(bypassMetadata), required: false);
             return new DeferredBodyAction<AdHocBulkRequestResponse>(() =>
             {
                 var apiCallPath = "/adhocBulk";
@@ -260,12 +226,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sapodata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sapodata")]
         public IBodyWorkflowAction<JToken> DeleteEntry(Expression<Func<string>> entity, Expression<Func<object>> entryInput = null, Expression<Func<string>> relativePath = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_entryInput = entryInput == null ? null : WorkflowExpression.Compile(entryInput);
-            WorkflowExpression.Validate(__workflow_entryInput, nameof(entryInput), required: false);
-            var __workflow_relativePath = relativePath == null ? null : WorkflowExpression.Compile(relativePath);
-            WorkflowExpression.Validate(__workflow_relativePath, nameof(relativePath), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_entryInput = WorkflowExpression.Compile(entryInput, nameof(entryInput), required: false);
+            var __workflow_relativePath = WorkflowExpression.Compile(relativePath, nameof(relativePath), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/deleteentry";

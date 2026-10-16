@@ -22,18 +22,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "edgility")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> messageto = null, Expression<Func<string>> messagefrom = null, Expression<Func<string>> messagebody = null, Expression<Func<string>> messagecampaign = null, Expression<Func<string>> messagereference = null, Expression<Func<string>> messagedate = null)
         {
-            var __workflow_messageto = messageto == null ? null : WorkflowExpression.Compile(messageto);
-            WorkflowExpression.Validate(__workflow_messageto, nameof(messageto), required: false);
-            var __workflow_messagefrom = messagefrom == null ? null : WorkflowExpression.Compile(messagefrom);
-            WorkflowExpression.Validate(__workflow_messagefrom, nameof(messagefrom), required: false);
-            var __workflow_messagebody = messagebody == null ? null : WorkflowExpression.Compile(messagebody);
-            WorkflowExpression.Validate(__workflow_messagebody, nameof(messagebody), required: false);
-            var __workflow_messagecampaign = messagecampaign == null ? null : WorkflowExpression.Compile(messagecampaign);
-            WorkflowExpression.Validate(__workflow_messagecampaign, nameof(messagecampaign), required: false);
-            var __workflow_messagereference = messagereference == null ? null : WorkflowExpression.Compile(messagereference);
-            WorkflowExpression.Validate(__workflow_messagereference, nameof(messagereference), required: false);
-            var __workflow_messagedate = messagedate == null ? null : WorkflowExpression.Compile(messagedate);
-            WorkflowExpression.Validate(__workflow_messagedate, nameof(messagedate), required: false);
+            var __workflow_messageto = WorkflowExpression.Compile(messageto, nameof(messageto), required: false);
+            var __workflow_messagefrom = WorkflowExpression.Compile(messagefrom, nameof(messagefrom), required: false);
+            var __workflow_messagebody = WorkflowExpression.Compile(messagebody, nameof(messagebody), required: false);
+            var __workflow_messagecampaign = WorkflowExpression.Compile(messagecampaign, nameof(messagecampaign), required: false);
+            var __workflow_messagereference = WorkflowExpression.Compile(messagereference, nameof(messagereference), required: false);
+            var __workflow_messagedate = WorkflowExpression.Compile(messagedate, nameof(messagedate), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/v2/integrations/power-automate/send";
@@ -91,8 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
     {
         public IWorkflowTrigger InboundMessage(Expression<Func<string>> configdedicatedNumber = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_configdedicatedNumber = configdedicatedNumber == null ? null : WorkflowExpression.Compile(configdedicatedNumber);
-            WorkflowExpression.Validate(__workflow_configdedicatedNumber, nameof(configdedicatedNumber), required: false);
+            var __workflow_configdedicatedNumber = WorkflowExpression.Compile(configdedicatedNumber, nameof(configdedicatedNumber), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v2/integrations/power-automate/subscribe";

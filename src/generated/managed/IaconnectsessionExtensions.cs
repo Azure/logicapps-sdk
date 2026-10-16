@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMachineNameResponse> GetMachineName(Expression<Func<string>> getMachineNameworkflow)
         {
-            var __workflow_getMachineNameworkflow = getMachineNameworkflow == null ? null : WorkflowExpression.Compile(getMachineNameworkflow);
-            WorkflowExpression.Validate(__workflow_getMachineNameworkflow, nameof(getMachineNameworkflow), required: true);
+            var __workflow_getMachineNameworkflow = WorkflowExpression.Compile(getMachineNameworkflow, nameof(getMachineNameworkflow), required: true);
             return new DeferredBodyAction<GetMachineNameResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetMachineName";
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMachineDomainResponse> GetMachineDomain(Expression<Func<string>> getMachineDomainworkflow)
         {
-            var __workflow_getMachineDomainworkflow = getMachineDomainworkflow == null ? null : WorkflowExpression.Compile(getMachineDomainworkflow);
-            WorkflowExpression.Validate(__workflow_getMachineDomainworkflow, nameof(getMachineDomainworkflow), required: true);
+            var __workflow_getMachineDomainworkflow = WorkflowExpression.Compile(getMachineDomainworkflow, nameof(getMachineDomainworkflow), required: true);
             return new DeferredBodyAction<GetMachineDomainResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetMachineDomain";
@@ -59,8 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteSessionClientHostnameResponse> GetRemoteSessionClientHostname(Expression<Func<string>> getRemoteSessionClientHostnameworkflow)
         {
-            var __workflow_getRemoteSessionClientHostnameworkflow = getRemoteSessionClientHostnameworkflow == null ? null : WorkflowExpression.Compile(getRemoteSessionClientHostnameworkflow);
-            WorkflowExpression.Validate(__workflow_getRemoteSessionClientHostnameworkflow, nameof(getRemoteSessionClientHostnameworkflow), required: true);
+            var __workflow_getRemoteSessionClientHostnameworkflow = WorkflowExpression.Compile(getRemoteSessionClientHostnameworkflow, nameof(getRemoteSessionClientHostnameworkflow), required: true);
             return new DeferredBodyAction<GetRemoteSessionClientHostnameResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetRemoteSessionClientHostname";
@@ -82,10 +79,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ExpandEnvironmentVariableResponse> ExpandEnvironmentVariable(Expression<Func<string>> expandEnvironmentVariableinputString, Expression<Func<string>> expandEnvironmentVariableworkflow)
         {
-            var __workflow_expandEnvironmentVariableinputString = expandEnvironmentVariableinputString == null ? null : WorkflowExpression.Compile(expandEnvironmentVariableinputString);
-            WorkflowExpression.Validate(__workflow_expandEnvironmentVariableinputString, nameof(expandEnvironmentVariableinputString), required: true);
-            var __workflow_expandEnvironmentVariableworkflow = expandEnvironmentVariableworkflow == null ? null : WorkflowExpression.Compile(expandEnvironmentVariableworkflow);
-            WorkflowExpression.Validate(__workflow_expandEnvironmentVariableworkflow, nameof(expandEnvironmentVariableworkflow), required: true);
+            var __workflow_expandEnvironmentVariableinputString = WorkflowExpression.Compile(expandEnvironmentVariableinputString, nameof(expandEnvironmentVariableinputString), required: true);
+            var __workflow_expandEnvironmentVariableworkflow = WorkflowExpression.Compile(expandEnvironmentVariableworkflow, nameof(expandEnvironmentVariableworkflow), required: true);
             return new DeferredBodyAction<ExpandEnvironmentVariableResponse>(() =>
             {
                 var apiCallPath = "/Environment/ExpandEnvironmentVariable";
@@ -109,10 +104,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillProcessResponse> KillProcess(Expression<Func<string>> killProcessprocessName, Expression<Func<string>> killProcessworkflow)
         {
-            var __workflow_killProcessprocessName = killProcessprocessName == null ? null : WorkflowExpression.Compile(killProcessprocessName);
-            WorkflowExpression.Validate(__workflow_killProcessprocessName, nameof(killProcessprocessName), required: true);
-            var __workflow_killProcessworkflow = killProcessworkflow == null ? null : WorkflowExpression.Compile(killProcessworkflow);
-            WorkflowExpression.Validate(__workflow_killProcessworkflow, nameof(killProcessworkflow), required: true);
+            var __workflow_killProcessprocessName = WorkflowExpression.Compile(killProcessprocessName, nameof(killProcessprocessName), required: true);
+            var __workflow_killProcessworkflow = WorkflowExpression.Compile(killProcessworkflow, nameof(killProcessworkflow), required: true);
             return new DeferredBodyAction<KillProcessResponse>(() =>
             {
                 var apiCallPath = "/Environment/KillProcess";
@@ -136,10 +129,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillProcessIDResponse> KillProcessID(Expression<Func<int>> killProcessIDprocessID, Expression<Func<string>> killProcessIDworkflow)
         {
-            var __workflow_killProcessIDprocessID = killProcessIDprocessID == null ? null : WorkflowExpression.Compile(killProcessIDprocessID);
-            WorkflowExpression.Validate(__workflow_killProcessIDprocessID, nameof(killProcessIDprocessID), required: true);
-            var __workflow_killProcessIDworkflow = killProcessIDworkflow == null ? null : WorkflowExpression.Compile(killProcessIDworkflow);
-            WorkflowExpression.Validate(__workflow_killProcessIDworkflow, nameof(killProcessIDworkflow), required: true);
+            var __workflow_killProcessIDprocessID = WorkflowExpression.Compile(killProcessIDprocessID, nameof(killProcessIDprocessID), required: true);
+            var __workflow_killProcessIDworkflow = WorkflowExpression.Compile(killProcessIDworkflow, nameof(killProcessIDworkflow), required: true);
             return new DeferredBodyAction<KillProcessIDResponse>(() =>
             {
                 var apiCallPath = "/Environment/KillProcessID";
@@ -163,10 +154,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessCountByNameResponse> GetProcessCountByName(Expression<Func<string>> getProcessCountByNameprocessName, Expression<Func<string>> getProcessCountByNameworkflow)
         {
-            var __workflow_getProcessCountByNameprocessName = getProcessCountByNameprocessName == null ? null : WorkflowExpression.Compile(getProcessCountByNameprocessName);
-            WorkflowExpression.Validate(__workflow_getProcessCountByNameprocessName, nameof(getProcessCountByNameprocessName), required: true);
-            var __workflow_getProcessCountByNameworkflow = getProcessCountByNameworkflow == null ? null : WorkflowExpression.Compile(getProcessCountByNameworkflow);
-            WorkflowExpression.Validate(__workflow_getProcessCountByNameworkflow, nameof(getProcessCountByNameworkflow), required: true);
+            var __workflow_getProcessCountByNameprocessName = WorkflowExpression.Compile(getProcessCountByNameprocessName, nameof(getProcessCountByNameprocessName), required: true);
+            var __workflow_getProcessCountByNameworkflow = WorkflowExpression.Compile(getProcessCountByNameworkflow, nameof(getProcessCountByNameworkflow), required: true);
             return new DeferredBodyAction<GetProcessCountByNameResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessCountByName";
@@ -190,8 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentProcessCountResponse> GetAgentProcessCount(Expression<Func<string>> getAgentProcessCountworkflow)
         {
-            var __workflow_getAgentProcessCountworkflow = getAgentProcessCountworkflow == null ? null : WorkflowExpression.Compile(getAgentProcessCountworkflow);
-            WorkflowExpression.Validate(__workflow_getAgentProcessCountworkflow, nameof(getAgentProcessCountworkflow), required: true);
+            var __workflow_getAgentProcessCountworkflow = WorkflowExpression.Compile(getAgentProcessCountworkflow, nameof(getAgentProcessCountworkflow), required: true);
             return new DeferredBodyAction<GetAgentProcessCountResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetAgentProcessCount";
@@ -213,8 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillAllOtherAgentsResponse> KillAllOtherAgents(Expression<Func<string>> killAllOtherAgentsworkflow)
         {
-            var __workflow_killAllOtherAgentsworkflow = killAllOtherAgentsworkflow == null ? null : WorkflowExpression.Compile(killAllOtherAgentsworkflow);
-            WorkflowExpression.Validate(__workflow_killAllOtherAgentsworkflow, nameof(killAllOtherAgentsworkflow), required: true);
+            var __workflow_killAllOtherAgentsworkflow = WorkflowExpression.Compile(killAllOtherAgentsworkflow, nameof(killAllOtherAgentsworkflow), required: true);
             return new DeferredBodyAction<KillAllOtherAgentsResponse>(() =>
             {
                 var apiCallPath = "/Environment/KillAllOtherAgents";
@@ -236,10 +223,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessByPIDResponse> GetProcessByPID(Expression<Func<int>> getProcessByPIDprocessId, Expression<Func<string>> getProcessByPIDworkflow)
         {
-            var __workflow_getProcessByPIDprocessId = getProcessByPIDprocessId == null ? null : WorkflowExpression.Compile(getProcessByPIDprocessId);
-            WorkflowExpression.Validate(__workflow_getProcessByPIDprocessId, nameof(getProcessByPIDprocessId), required: true);
-            var __workflow_getProcessByPIDworkflow = getProcessByPIDworkflow == null ? null : WorkflowExpression.Compile(getProcessByPIDworkflow);
-            WorkflowExpression.Validate(__workflow_getProcessByPIDworkflow, nameof(getProcessByPIDworkflow), required: true);
+            var __workflow_getProcessByPIDprocessId = WorkflowExpression.Compile(getProcessByPIDprocessId, nameof(getProcessByPIDprocessId), required: true);
+            var __workflow_getProcessByPIDworkflow = WorkflowExpression.Compile(getProcessByPIDworkflow, nameof(getProcessByPIDworkflow), required: true);
             return new DeferredBodyAction<GetProcessByPIDResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessByPID";
@@ -263,12 +248,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessesResponse> GetProcesses(Expression<Func<string>> getProcessesworkflow, Expression<Func<string>> getProcessesprocessName = null, Expression<Func<bool>> getProcessesgetProcessCommandLine = null)
         {
-            var __workflow_getProcessesworkflow = getProcessesworkflow == null ? null : WorkflowExpression.Compile(getProcessesworkflow);
-            WorkflowExpression.Validate(__workflow_getProcessesworkflow, nameof(getProcessesworkflow), required: true);
-            var __workflow_getProcessesprocessName = getProcessesprocessName == null ? null : WorkflowExpression.Compile(getProcessesprocessName);
-            WorkflowExpression.Validate(__workflow_getProcessesprocessName, nameof(getProcessesprocessName), required: false);
-            var __workflow_getProcessesgetProcessCommandLine = getProcessesgetProcessCommandLine == null ? null : WorkflowExpression.Compile(getProcessesgetProcessCommandLine);
-            WorkflowExpression.Validate(__workflow_getProcessesgetProcessCommandLine, nameof(getProcessesgetProcessCommandLine), required: false);
+            var __workflow_getProcessesworkflow = WorkflowExpression.Compile(getProcessesworkflow, nameof(getProcessesworkflow), required: true);
+            var __workflow_getProcessesprocessName = WorkflowExpression.Compile(getProcessesprocessName, nameof(getProcessesprocessName), required: false);
+            var __workflow_getProcessesgetProcessCommandLine = WorkflowExpression.Compile(getProcessesgetProcessCommandLine, nameof(getProcessesgetProcessCommandLine), required: false);
             return new DeferredBodyAction<GetProcessesResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetProcesses";
@@ -312,44 +294,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunProcessResponse> RunProcess(Expression<Func<string>> runProcessprocessName, Expression<Func<string>> runProcessworkflow, Expression<Func<string>> runProcessarguments = null, Expression<Func<string>> runProcessworkingDirectory = null, Expression<Func<bool>> runProcessuseShellExecute = null, Expression<Func<bool>> runProcesscreateNoWindow = null, Expression<Func<runProcesswindowStyleInput>> runProcesswindowStyle = null, Expression<Func<bool>> runProcesswaitForProcess = null, Expression<Func<bool>> runProcessredirectStandardOutput = null, Expression<Func<bool>> runProcessredirectStandardError = null, Expression<Func<bool>> runProcessredirectStandardErrorToOutput = null, Expression<Func<runProcessstandardOutputEncodingInput>> runProcessstandardOutputEncoding = null, Expression<Func<runProcessstandardErrorEncodingInput>> runProcessstandardErrorEncoding = null, Expression<Func<string>> runProcessrunAsDomain = null, Expression<Func<string>> runProcessrunAsUsername = null, Expression<Func<string>> runProcessrunAsPassword = null, Expression<Func<bool>> runProcessrunAsLoadUserProfile = null, Expression<Func<bool>> runProcessrunAsElevate = null, Expression<Func<int>> runProcesstimeoutInSeconds = null)
         {
-            var __workflow_runProcessprocessName = runProcessprocessName == null ? null : WorkflowExpression.Compile(runProcessprocessName);
-            WorkflowExpression.Validate(__workflow_runProcessprocessName, nameof(runProcessprocessName), required: true);
-            var __workflow_runProcessworkflow = runProcessworkflow == null ? null : WorkflowExpression.Compile(runProcessworkflow);
-            WorkflowExpression.Validate(__workflow_runProcessworkflow, nameof(runProcessworkflow), required: true);
-            var __workflow_runProcessarguments = runProcessarguments == null ? null : WorkflowExpression.Compile(runProcessarguments);
-            WorkflowExpression.Validate(__workflow_runProcessarguments, nameof(runProcessarguments), required: false);
-            var __workflow_runProcessworkingDirectory = runProcessworkingDirectory == null ? null : WorkflowExpression.Compile(runProcessworkingDirectory);
-            WorkflowExpression.Validate(__workflow_runProcessworkingDirectory, nameof(runProcessworkingDirectory), required: false);
-            var __workflow_runProcessuseShellExecute = runProcessuseShellExecute == null ? null : WorkflowExpression.Compile(runProcessuseShellExecute);
-            WorkflowExpression.Validate(__workflow_runProcessuseShellExecute, nameof(runProcessuseShellExecute), required: false);
-            var __workflow_runProcesscreateNoWindow = runProcesscreateNoWindow == null ? null : WorkflowExpression.Compile(runProcesscreateNoWindow);
-            WorkflowExpression.Validate(__workflow_runProcesscreateNoWindow, nameof(runProcesscreateNoWindow), required: false);
-            var __workflow_runProcesswindowStyle = runProcesswindowStyle == null ? null : WorkflowExpression.Compile(runProcesswindowStyle);
-            WorkflowExpression.Validate(__workflow_runProcesswindowStyle, nameof(runProcesswindowStyle), required: false);
-            var __workflow_runProcesswaitForProcess = runProcesswaitForProcess == null ? null : WorkflowExpression.Compile(runProcesswaitForProcess);
-            WorkflowExpression.Validate(__workflow_runProcesswaitForProcess, nameof(runProcesswaitForProcess), required: false);
-            var __workflow_runProcessredirectStandardOutput = runProcessredirectStandardOutput == null ? null : WorkflowExpression.Compile(runProcessredirectStandardOutput);
-            WorkflowExpression.Validate(__workflow_runProcessredirectStandardOutput, nameof(runProcessredirectStandardOutput), required: false);
-            var __workflow_runProcessredirectStandardError = runProcessredirectStandardError == null ? null : WorkflowExpression.Compile(runProcessredirectStandardError);
-            WorkflowExpression.Validate(__workflow_runProcessredirectStandardError, nameof(runProcessredirectStandardError), required: false);
-            var __workflow_runProcessredirectStandardErrorToOutput = runProcessredirectStandardErrorToOutput == null ? null : WorkflowExpression.Compile(runProcessredirectStandardErrorToOutput);
-            WorkflowExpression.Validate(__workflow_runProcessredirectStandardErrorToOutput, nameof(runProcessredirectStandardErrorToOutput), required: false);
-            var __workflow_runProcessstandardOutputEncoding = runProcessstandardOutputEncoding == null ? null : WorkflowExpression.Compile(runProcessstandardOutputEncoding);
-            WorkflowExpression.Validate(__workflow_runProcessstandardOutputEncoding, nameof(runProcessstandardOutputEncoding), required: false);
-            var __workflow_runProcessstandardErrorEncoding = runProcessstandardErrorEncoding == null ? null : WorkflowExpression.Compile(runProcessstandardErrorEncoding);
-            WorkflowExpression.Validate(__workflow_runProcessstandardErrorEncoding, nameof(runProcessstandardErrorEncoding), required: false);
-            var __workflow_runProcessrunAsDomain = runProcessrunAsDomain == null ? null : WorkflowExpression.Compile(runProcessrunAsDomain);
-            WorkflowExpression.Validate(__workflow_runProcessrunAsDomain, nameof(runProcessrunAsDomain), required: false);
-            var __workflow_runProcessrunAsUsername = runProcessrunAsUsername == null ? null : WorkflowExpression.Compile(runProcessrunAsUsername);
-            WorkflowExpression.Validate(__workflow_runProcessrunAsUsername, nameof(runProcessrunAsUsername), required: false);
-            var __workflow_runProcessrunAsPassword = runProcessrunAsPassword == null ? null : WorkflowExpression.Compile(runProcessrunAsPassword);
-            WorkflowExpression.Validate(__workflow_runProcessrunAsPassword, nameof(runProcessrunAsPassword), required: false);
-            var __workflow_runProcessrunAsLoadUserProfile = runProcessrunAsLoadUserProfile == null ? null : WorkflowExpression.Compile(runProcessrunAsLoadUserProfile);
-            WorkflowExpression.Validate(__workflow_runProcessrunAsLoadUserProfile, nameof(runProcessrunAsLoadUserProfile), required: false);
-            var __workflow_runProcessrunAsElevate = runProcessrunAsElevate == null ? null : WorkflowExpression.Compile(runProcessrunAsElevate);
-            WorkflowExpression.Validate(__workflow_runProcessrunAsElevate, nameof(runProcessrunAsElevate), required: false);
-            var __workflow_runProcesstimeoutInSeconds = runProcesstimeoutInSeconds == null ? null : WorkflowExpression.Compile(runProcesstimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_runProcesstimeoutInSeconds, nameof(runProcesstimeoutInSeconds), required: false);
+            var __workflow_runProcessprocessName = WorkflowExpression.Compile(runProcessprocessName, nameof(runProcessprocessName), required: true);
+            var __workflow_runProcessworkflow = WorkflowExpression.Compile(runProcessworkflow, nameof(runProcessworkflow), required: true);
+            var __workflow_runProcessarguments = WorkflowExpression.Compile(runProcessarguments, nameof(runProcessarguments), required: false);
+            var __workflow_runProcessworkingDirectory = WorkflowExpression.Compile(runProcessworkingDirectory, nameof(runProcessworkingDirectory), required: false);
+            var __workflow_runProcessuseShellExecute = WorkflowExpression.Compile(runProcessuseShellExecute, nameof(runProcessuseShellExecute), required: false);
+            var __workflow_runProcesscreateNoWindow = WorkflowExpression.Compile(runProcesscreateNoWindow, nameof(runProcesscreateNoWindow), required: false);
+            var __workflow_runProcesswindowStyle = WorkflowExpression.Compile(runProcesswindowStyle, nameof(runProcesswindowStyle), required: false);
+            var __workflow_runProcesswaitForProcess = WorkflowExpression.Compile(runProcesswaitForProcess, nameof(runProcesswaitForProcess), required: false);
+            var __workflow_runProcessredirectStandardOutput = WorkflowExpression.Compile(runProcessredirectStandardOutput, nameof(runProcessredirectStandardOutput), required: false);
+            var __workflow_runProcessredirectStandardError = WorkflowExpression.Compile(runProcessredirectStandardError, nameof(runProcessredirectStandardError), required: false);
+            var __workflow_runProcessredirectStandardErrorToOutput = WorkflowExpression.Compile(runProcessredirectStandardErrorToOutput, nameof(runProcessredirectStandardErrorToOutput), required: false);
+            var __workflow_runProcessstandardOutputEncoding = WorkflowExpression.Compile(runProcessstandardOutputEncoding, nameof(runProcessstandardOutputEncoding), required: false);
+            var __workflow_runProcessstandardErrorEncoding = WorkflowExpression.Compile(runProcessstandardErrorEncoding, nameof(runProcessstandardErrorEncoding), required: false);
+            var __workflow_runProcessrunAsDomain = WorkflowExpression.Compile(runProcessrunAsDomain, nameof(runProcessrunAsDomain), required: false);
+            var __workflow_runProcessrunAsUsername = WorkflowExpression.Compile(runProcessrunAsUsername, nameof(runProcessrunAsUsername), required: false);
+            var __workflow_runProcessrunAsPassword = WorkflowExpression.Compile(runProcessrunAsPassword, nameof(runProcessrunAsPassword), required: false);
+            var __workflow_runProcessrunAsLoadUserProfile = WorkflowExpression.Compile(runProcessrunAsLoadUserProfile, nameof(runProcessrunAsLoadUserProfile), required: false);
+            var __workflow_runProcessrunAsElevate = WorkflowExpression.Compile(runProcessrunAsElevate, nameof(runProcessrunAsElevate), required: false);
+            var __workflow_runProcesstimeoutInSeconds = WorkflowExpression.Compile(runProcesstimeoutInSeconds, nameof(runProcesstimeoutInSeconds), required: false);
             return new DeferredBodyAction<RunProcessResponse>(() =>
             {
                 var apiCallPath = "/Environment/RunProcess";
@@ -575,46 +538,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunPowerShellProcessResponse> RunPowerShellProcess(Expression<Func<string>> runPowerShellProcessworkflow, Expression<Func<string>> runPowerShellProcesspowerShellExecutable = null, Expression<Func<string>> runPowerShellProcesspowerShellScriptFilePath = null, Expression<Func<string>> runPowerShellProcesspowerShellScriptContents = null, Expression<Func<string>> runPowerShellProcessworkingDirectory = null, Expression<Func<bool>> runPowerShellProcesscreateNoWindow = null, Expression<Func<runPowerShellProcesswindowStyleInput>> runPowerShellProcesswindowStyle = null, Expression<Func<bool>> runPowerShellProcesswaitForProcess = null, Expression<Func<bool>> runPowerShellProcessredirectStandardOutput = null, Expression<Func<bool>> runPowerShellProcessredirectStandardError = null, Expression<Func<bool>> runPowerShellProcessredirectStandardErrorToOutput = null, Expression<Func<runPowerShellProcessstandardOutputEncodingInput>> runPowerShellProcessstandardOutputEncoding = null, Expression<Func<runPowerShellProcessstandardErrorEncodingInput>> runPowerShellProcessstandardErrorEncoding = null, Expression<Func<string>> runPowerShellProcessrunAsDomain = null, Expression<Func<string>> runPowerShellProcessrunAsUsername = null, Expression<Func<string>> runPowerShellProcessrunAsPassword = null, Expression<Func<bool>> runPowerShellProcessrunAsLoadUserProfile = null, Expression<Func<bool>> runPowerShellProcessrunAsElevate = null, Expression<Func<int>> runPowerShellProcesstimeoutInSeconds = null, Expression<Func<string>> runPowerShellProcesspowerShellScriptTempFolder = null)
         {
-            var __workflow_runPowerShellProcessworkflow = runPowerShellProcessworkflow == null ? null : WorkflowExpression.Compile(runPowerShellProcessworkflow);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessworkflow, nameof(runPowerShellProcessworkflow), required: true);
-            var __workflow_runPowerShellProcesspowerShellExecutable = runPowerShellProcesspowerShellExecutable == null ? null : WorkflowExpression.Compile(runPowerShellProcesspowerShellExecutable);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesspowerShellExecutable, nameof(runPowerShellProcesspowerShellExecutable), required: false);
-            var __workflow_runPowerShellProcesspowerShellScriptFilePath = runPowerShellProcesspowerShellScriptFilePath == null ? null : WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptFilePath);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesspowerShellScriptFilePath, nameof(runPowerShellProcesspowerShellScriptFilePath), required: false);
-            var __workflow_runPowerShellProcesspowerShellScriptContents = runPowerShellProcesspowerShellScriptContents == null ? null : WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptContents);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesspowerShellScriptContents, nameof(runPowerShellProcesspowerShellScriptContents), required: false);
-            var __workflow_runPowerShellProcessworkingDirectory = runPowerShellProcessworkingDirectory == null ? null : WorkflowExpression.Compile(runPowerShellProcessworkingDirectory);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessworkingDirectory, nameof(runPowerShellProcessworkingDirectory), required: false);
-            var __workflow_runPowerShellProcesscreateNoWindow = runPowerShellProcesscreateNoWindow == null ? null : WorkflowExpression.Compile(runPowerShellProcesscreateNoWindow);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesscreateNoWindow, nameof(runPowerShellProcesscreateNoWindow), required: false);
-            var __workflow_runPowerShellProcesswindowStyle = runPowerShellProcesswindowStyle == null ? null : WorkflowExpression.Compile(runPowerShellProcesswindowStyle);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesswindowStyle, nameof(runPowerShellProcesswindowStyle), required: false);
-            var __workflow_runPowerShellProcesswaitForProcess = runPowerShellProcesswaitForProcess == null ? null : WorkflowExpression.Compile(runPowerShellProcesswaitForProcess);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesswaitForProcess, nameof(runPowerShellProcesswaitForProcess), required: false);
-            var __workflow_runPowerShellProcessredirectStandardOutput = runPowerShellProcessredirectStandardOutput == null ? null : WorkflowExpression.Compile(runPowerShellProcessredirectStandardOutput);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessredirectStandardOutput, nameof(runPowerShellProcessredirectStandardOutput), required: false);
-            var __workflow_runPowerShellProcessredirectStandardError = runPowerShellProcessredirectStandardError == null ? null : WorkflowExpression.Compile(runPowerShellProcessredirectStandardError);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessredirectStandardError, nameof(runPowerShellProcessredirectStandardError), required: false);
-            var __workflow_runPowerShellProcessredirectStandardErrorToOutput = runPowerShellProcessredirectStandardErrorToOutput == null ? null : WorkflowExpression.Compile(runPowerShellProcessredirectStandardErrorToOutput);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessredirectStandardErrorToOutput, nameof(runPowerShellProcessredirectStandardErrorToOutput), required: false);
-            var __workflow_runPowerShellProcessstandardOutputEncoding = runPowerShellProcessstandardOutputEncoding == null ? null : WorkflowExpression.Compile(runPowerShellProcessstandardOutputEncoding);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessstandardOutputEncoding, nameof(runPowerShellProcessstandardOutputEncoding), required: false);
-            var __workflow_runPowerShellProcessstandardErrorEncoding = runPowerShellProcessstandardErrorEncoding == null ? null : WorkflowExpression.Compile(runPowerShellProcessstandardErrorEncoding);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessstandardErrorEncoding, nameof(runPowerShellProcessstandardErrorEncoding), required: false);
-            var __workflow_runPowerShellProcessrunAsDomain = runPowerShellProcessrunAsDomain == null ? null : WorkflowExpression.Compile(runPowerShellProcessrunAsDomain);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessrunAsDomain, nameof(runPowerShellProcessrunAsDomain), required: false);
-            var __workflow_runPowerShellProcessrunAsUsername = runPowerShellProcessrunAsUsername == null ? null : WorkflowExpression.Compile(runPowerShellProcessrunAsUsername);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessrunAsUsername, nameof(runPowerShellProcessrunAsUsername), required: false);
-            var __workflow_runPowerShellProcessrunAsPassword = runPowerShellProcessrunAsPassword == null ? null : WorkflowExpression.Compile(runPowerShellProcessrunAsPassword);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessrunAsPassword, nameof(runPowerShellProcessrunAsPassword), required: false);
-            var __workflow_runPowerShellProcessrunAsLoadUserProfile = runPowerShellProcessrunAsLoadUserProfile == null ? null : WorkflowExpression.Compile(runPowerShellProcessrunAsLoadUserProfile);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessrunAsLoadUserProfile, nameof(runPowerShellProcessrunAsLoadUserProfile), required: false);
-            var __workflow_runPowerShellProcessrunAsElevate = runPowerShellProcessrunAsElevate == null ? null : WorkflowExpression.Compile(runPowerShellProcessrunAsElevate);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcessrunAsElevate, nameof(runPowerShellProcessrunAsElevate), required: false);
-            var __workflow_runPowerShellProcesstimeoutInSeconds = runPowerShellProcesstimeoutInSeconds == null ? null : WorkflowExpression.Compile(runPowerShellProcesstimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesstimeoutInSeconds, nameof(runPowerShellProcesstimeoutInSeconds), required: false);
-            var __workflow_runPowerShellProcesspowerShellScriptTempFolder = runPowerShellProcesspowerShellScriptTempFolder == null ? null : WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptTempFolder);
-            WorkflowExpression.Validate(__workflow_runPowerShellProcesspowerShellScriptTempFolder, nameof(runPowerShellProcesspowerShellScriptTempFolder), required: false);
+            var __workflow_runPowerShellProcessworkflow = WorkflowExpression.Compile(runPowerShellProcessworkflow, nameof(runPowerShellProcessworkflow), required: true);
+            var __workflow_runPowerShellProcesspowerShellExecutable = WorkflowExpression.Compile(runPowerShellProcesspowerShellExecutable, nameof(runPowerShellProcesspowerShellExecutable), required: false);
+            var __workflow_runPowerShellProcesspowerShellScriptFilePath = WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptFilePath, nameof(runPowerShellProcesspowerShellScriptFilePath), required: false);
+            var __workflow_runPowerShellProcesspowerShellScriptContents = WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptContents, nameof(runPowerShellProcesspowerShellScriptContents), required: false);
+            var __workflow_runPowerShellProcessworkingDirectory = WorkflowExpression.Compile(runPowerShellProcessworkingDirectory, nameof(runPowerShellProcessworkingDirectory), required: false);
+            var __workflow_runPowerShellProcesscreateNoWindow = WorkflowExpression.Compile(runPowerShellProcesscreateNoWindow, nameof(runPowerShellProcesscreateNoWindow), required: false);
+            var __workflow_runPowerShellProcesswindowStyle = WorkflowExpression.Compile(runPowerShellProcesswindowStyle, nameof(runPowerShellProcesswindowStyle), required: false);
+            var __workflow_runPowerShellProcesswaitForProcess = WorkflowExpression.Compile(runPowerShellProcesswaitForProcess, nameof(runPowerShellProcesswaitForProcess), required: false);
+            var __workflow_runPowerShellProcessredirectStandardOutput = WorkflowExpression.Compile(runPowerShellProcessredirectStandardOutput, nameof(runPowerShellProcessredirectStandardOutput), required: false);
+            var __workflow_runPowerShellProcessredirectStandardError = WorkflowExpression.Compile(runPowerShellProcessredirectStandardError, nameof(runPowerShellProcessredirectStandardError), required: false);
+            var __workflow_runPowerShellProcessredirectStandardErrorToOutput = WorkflowExpression.Compile(runPowerShellProcessredirectStandardErrorToOutput, nameof(runPowerShellProcessredirectStandardErrorToOutput), required: false);
+            var __workflow_runPowerShellProcessstandardOutputEncoding = WorkflowExpression.Compile(runPowerShellProcessstandardOutputEncoding, nameof(runPowerShellProcessstandardOutputEncoding), required: false);
+            var __workflow_runPowerShellProcessstandardErrorEncoding = WorkflowExpression.Compile(runPowerShellProcessstandardErrorEncoding, nameof(runPowerShellProcessstandardErrorEncoding), required: false);
+            var __workflow_runPowerShellProcessrunAsDomain = WorkflowExpression.Compile(runPowerShellProcessrunAsDomain, nameof(runPowerShellProcessrunAsDomain), required: false);
+            var __workflow_runPowerShellProcessrunAsUsername = WorkflowExpression.Compile(runPowerShellProcessrunAsUsername, nameof(runPowerShellProcessrunAsUsername), required: false);
+            var __workflow_runPowerShellProcessrunAsPassword = WorkflowExpression.Compile(runPowerShellProcessrunAsPassword, nameof(runPowerShellProcessrunAsPassword), required: false);
+            var __workflow_runPowerShellProcessrunAsLoadUserProfile = WorkflowExpression.Compile(runPowerShellProcessrunAsLoadUserProfile, nameof(runPowerShellProcessrunAsLoadUserProfile), required: false);
+            var __workflow_runPowerShellProcessrunAsElevate = WorkflowExpression.Compile(runPowerShellProcessrunAsElevate, nameof(runPowerShellProcessrunAsElevate), required: false);
+            var __workflow_runPowerShellProcesstimeoutInSeconds = WorkflowExpression.Compile(runPowerShellProcesstimeoutInSeconds, nameof(runPowerShellProcesstimeoutInSeconds), required: false);
+            var __workflow_runPowerShellProcesspowerShellScriptTempFolder = WorkflowExpression.Compile(runPowerShellProcesspowerShellScriptTempFolder, nameof(runPowerShellProcesspowerShellScriptTempFolder), required: false);
             return new DeferredBodyAction<RunPowerShellProcessResponse>(() =>
             {
                 var apiCallPath = "/Environment/RunPowerShellProcess";
@@ -850,8 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetScreenResolutionResponse> GetScreenResolution(Expression<Func<string>> getScreenResolutionworkflow)
         {
-            var __workflow_getScreenResolutionworkflow = getScreenResolutionworkflow == null ? null : WorkflowExpression.Compile(getScreenResolutionworkflow);
-            WorkflowExpression.Validate(__workflow_getScreenResolutionworkflow, nameof(getScreenResolutionworkflow), required: true);
+            var __workflow_getScreenResolutionworkflow = WorkflowExpression.Compile(getScreenResolutionworkflow, nameof(getScreenResolutionworkflow), required: true);
             return new DeferredBodyAction<GetScreenResolutionResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetScreenResolution";
@@ -873,10 +815,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetDefaultPrinter(Expression<Func<string>> setDefaultPrinterdefaultPrinterName, Expression<Func<string>> setDefaultPrinterworkflow)
         {
-            var __workflow_setDefaultPrinterdefaultPrinterName = setDefaultPrinterdefaultPrinterName == null ? null : WorkflowExpression.Compile(setDefaultPrinterdefaultPrinterName);
-            WorkflowExpression.Validate(__workflow_setDefaultPrinterdefaultPrinterName, nameof(setDefaultPrinterdefaultPrinterName), required: true);
-            var __workflow_setDefaultPrinterworkflow = setDefaultPrinterworkflow == null ? null : WorkflowExpression.Compile(setDefaultPrinterworkflow);
-            WorkflowExpression.Validate(__workflow_setDefaultPrinterworkflow, nameof(setDefaultPrinterworkflow), required: true);
+            var __workflow_setDefaultPrinterdefaultPrinterName = WorkflowExpression.Compile(setDefaultPrinterdefaultPrinterName, nameof(setDefaultPrinterdefaultPrinterName), required: true);
+            var __workflow_setDefaultPrinterworkflow = WorkflowExpression.Compile(setDefaultPrinterworkflow, nameof(setDefaultPrinterworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SetDefaultPrinter";
@@ -900,8 +840,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetDefaultPrinterResponse> GetDefaultPrinter(Expression<Func<string>> getDefaultPrinterworkflow)
         {
-            var __workflow_getDefaultPrinterworkflow = getDefaultPrinterworkflow == null ? null : WorkflowExpression.Compile(getDefaultPrinterworkflow);
-            WorkflowExpression.Validate(__workflow_getDefaultPrinterworkflow, nameof(getDefaultPrinterworkflow), required: true);
+            var __workflow_getDefaultPrinterworkflow = WorkflowExpression.Compile(getDefaultPrinterworkflow, nameof(getDefaultPrinterworkflow), required: true);
             return new DeferredBodyAction<GetDefaultPrinterResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetDefaultPrinter";
@@ -923,14 +862,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetListOfPrintersResponse> GetListOfPrinters(Expression<Func<string>> getListOfPrintersworkflow, Expression<Func<bool>> getListOfPrinterslistLocalPrinters = null, Expression<Func<bool>> getListOfPrinterslistNetworkPrinters = null, Expression<Func<bool>> getListOfPrintersreturnDetailedInformation = null)
         {
-            var __workflow_getListOfPrintersworkflow = getListOfPrintersworkflow == null ? null : WorkflowExpression.Compile(getListOfPrintersworkflow);
-            WorkflowExpression.Validate(__workflow_getListOfPrintersworkflow, nameof(getListOfPrintersworkflow), required: true);
-            var __workflow_getListOfPrinterslistLocalPrinters = getListOfPrinterslistLocalPrinters == null ? null : WorkflowExpression.Compile(getListOfPrinterslistLocalPrinters);
-            WorkflowExpression.Validate(__workflow_getListOfPrinterslistLocalPrinters, nameof(getListOfPrinterslistLocalPrinters), required: false);
-            var __workflow_getListOfPrinterslistNetworkPrinters = getListOfPrinterslistNetworkPrinters == null ? null : WorkflowExpression.Compile(getListOfPrinterslistNetworkPrinters);
-            WorkflowExpression.Validate(__workflow_getListOfPrinterslistNetworkPrinters, nameof(getListOfPrinterslistNetworkPrinters), required: false);
-            var __workflow_getListOfPrintersreturnDetailedInformation = getListOfPrintersreturnDetailedInformation == null ? null : WorkflowExpression.Compile(getListOfPrintersreturnDetailedInformation);
-            WorkflowExpression.Validate(__workflow_getListOfPrintersreturnDetailedInformation, nameof(getListOfPrintersreturnDetailedInformation), required: false);
+            var __workflow_getListOfPrintersworkflow = WorkflowExpression.Compile(getListOfPrintersworkflow, nameof(getListOfPrintersworkflow), required: true);
+            var __workflow_getListOfPrinterslistLocalPrinters = WorkflowExpression.Compile(getListOfPrinterslistLocalPrinters, nameof(getListOfPrinterslistLocalPrinters), required: false);
+            var __workflow_getListOfPrinterslistNetworkPrinters = WorkflowExpression.Compile(getListOfPrinterslistNetworkPrinters, nameof(getListOfPrinterslistNetworkPrinters), required: false);
+            var __workflow_getListOfPrintersreturnDetailedInformation = WorkflowExpression.Compile(getListOfPrintersreturnDetailedInformation, nameof(getListOfPrintersreturnDetailedInformation), required: false);
             return new DeferredBodyAction<GetListOfPrintersResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetListOfPrinters";
@@ -1000,18 +935,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetMouseMultiplier(Expression<Func<string>> setMouseMultiplierworkflow, Expression<Func<double>> setMouseMultipliermouseXMultiplier = null, Expression<Func<double>> setMouseMultipliermouseYMultiplier = null, Expression<Func<bool>> setMouseMultiplierapplyToMouseEvent = null, Expression<Func<bool>> setMouseMultiplierapplyToSetCursorPos = null, Expression<Func<bool>> setMouseMultiplierapplyToCurrentMouseMoveMethod = null)
         {
-            var __workflow_setMouseMultiplierworkflow = setMouseMultiplierworkflow == null ? null : WorkflowExpression.Compile(setMouseMultiplierworkflow);
-            WorkflowExpression.Validate(__workflow_setMouseMultiplierworkflow, nameof(setMouseMultiplierworkflow), required: true);
-            var __workflow_setMouseMultipliermouseXMultiplier = setMouseMultipliermouseXMultiplier == null ? null : WorkflowExpression.Compile(setMouseMultipliermouseXMultiplier);
-            WorkflowExpression.Validate(__workflow_setMouseMultipliermouseXMultiplier, nameof(setMouseMultipliermouseXMultiplier), required: false);
-            var __workflow_setMouseMultipliermouseYMultiplier = setMouseMultipliermouseYMultiplier == null ? null : WorkflowExpression.Compile(setMouseMultipliermouseYMultiplier);
-            WorkflowExpression.Validate(__workflow_setMouseMultipliermouseYMultiplier, nameof(setMouseMultipliermouseYMultiplier), required: false);
-            var __workflow_setMouseMultiplierapplyToMouseEvent = setMouseMultiplierapplyToMouseEvent == null ? null : WorkflowExpression.Compile(setMouseMultiplierapplyToMouseEvent);
-            WorkflowExpression.Validate(__workflow_setMouseMultiplierapplyToMouseEvent, nameof(setMouseMultiplierapplyToMouseEvent), required: false);
-            var __workflow_setMouseMultiplierapplyToSetCursorPos = setMouseMultiplierapplyToSetCursorPos == null ? null : WorkflowExpression.Compile(setMouseMultiplierapplyToSetCursorPos);
-            WorkflowExpression.Validate(__workflow_setMouseMultiplierapplyToSetCursorPos, nameof(setMouseMultiplierapplyToSetCursorPos), required: false);
-            var __workflow_setMouseMultiplierapplyToCurrentMouseMoveMethod = setMouseMultiplierapplyToCurrentMouseMoveMethod == null ? null : WorkflowExpression.Compile(setMouseMultiplierapplyToCurrentMouseMoveMethod);
-            WorkflowExpression.Validate(__workflow_setMouseMultiplierapplyToCurrentMouseMoveMethod, nameof(setMouseMultiplierapplyToCurrentMouseMoveMethod), required: false);
+            var __workflow_setMouseMultiplierworkflow = WorkflowExpression.Compile(setMouseMultiplierworkflow, nameof(setMouseMultiplierworkflow), required: true);
+            var __workflow_setMouseMultipliermouseXMultiplier = WorkflowExpression.Compile(setMouseMultipliermouseXMultiplier, nameof(setMouseMultipliermouseXMultiplier), required: false);
+            var __workflow_setMouseMultipliermouseYMultiplier = WorkflowExpression.Compile(setMouseMultipliermouseYMultiplier, nameof(setMouseMultipliermouseYMultiplier), required: false);
+            var __workflow_setMouseMultiplierapplyToMouseEvent = WorkflowExpression.Compile(setMouseMultiplierapplyToMouseEvent, nameof(setMouseMultiplierapplyToMouseEvent), required: false);
+            var __workflow_setMouseMultiplierapplyToSetCursorPos = WorkflowExpression.Compile(setMouseMultiplierapplyToSetCursorPos, nameof(setMouseMultiplierapplyToSetCursorPos), required: false);
+            var __workflow_setMouseMultiplierapplyToCurrentMouseMoveMethod = WorkflowExpression.Compile(setMouseMultiplierapplyToCurrentMouseMoveMethod, nameof(setMouseMultiplierapplyToCurrentMouseMoveMethod), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SetMouseMultiplier";
@@ -1113,8 +1042,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMouseMultiplierResponse> GetMouseMultiplier(Expression<Func<string>> getMouseMultiplierworkflow)
         {
-            var __workflow_getMouseMultiplierworkflow = getMouseMultiplierworkflow == null ? null : WorkflowExpression.Compile(getMouseMultiplierworkflow);
-            WorkflowExpression.Validate(__workflow_getMouseMultiplierworkflow, nameof(getMouseMultiplierworkflow), required: true);
+            var __workflow_getMouseMultiplierworkflow = WorkflowExpression.Compile(getMouseMultiplierworkflow, nameof(getMouseMultiplierworkflow), required: true);
             return new DeferredBodyAction<GetMouseMultiplierResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetMouseMultiplier";
@@ -1136,12 +1064,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveMouseToCoordinate(Expression<Func<int>> moveMouseToCoordinatexCoord, Expression<Func<int>> moveMouseToCoordinateyCoord, Expression<Func<string>> moveMouseToCoordinateworkflow)
         {
-            var __workflow_moveMouseToCoordinatexCoord = moveMouseToCoordinatexCoord == null ? null : WorkflowExpression.Compile(moveMouseToCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseToCoordinatexCoord, nameof(moveMouseToCoordinatexCoord), required: true);
-            var __workflow_moveMouseToCoordinateyCoord = moveMouseToCoordinateyCoord == null ? null : WorkflowExpression.Compile(moveMouseToCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseToCoordinateyCoord, nameof(moveMouseToCoordinateyCoord), required: true);
-            var __workflow_moveMouseToCoordinateworkflow = moveMouseToCoordinateworkflow == null ? null : WorkflowExpression.Compile(moveMouseToCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_moveMouseToCoordinateworkflow, nameof(moveMouseToCoordinateworkflow), required: true);
+            var __workflow_moveMouseToCoordinatexCoord = WorkflowExpression.Compile(moveMouseToCoordinatexCoord, nameof(moveMouseToCoordinatexCoord), required: true);
+            var __workflow_moveMouseToCoordinateyCoord = WorkflowExpression.Compile(moveMouseToCoordinateyCoord, nameof(moveMouseToCoordinateyCoord), required: true);
+            var __workflow_moveMouseToCoordinateworkflow = WorkflowExpression.Compile(moveMouseToCoordinateworkflow, nameof(moveMouseToCoordinateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MoveMouseToCoordinate";
@@ -1167,12 +1092,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveMouseRelative(Expression<Func<int>> moveMouseRelativexCoord, Expression<Func<int>> moveMouseRelativeyCoord, Expression<Func<string>> moveMouseRelativeworkflow)
         {
-            var __workflow_moveMouseRelativexCoord = moveMouseRelativexCoord == null ? null : WorkflowExpression.Compile(moveMouseRelativexCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseRelativexCoord, nameof(moveMouseRelativexCoord), required: true);
-            var __workflow_moveMouseRelativeyCoord = moveMouseRelativeyCoord == null ? null : WorkflowExpression.Compile(moveMouseRelativeyCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseRelativeyCoord, nameof(moveMouseRelativeyCoord), required: true);
-            var __workflow_moveMouseRelativeworkflow = moveMouseRelativeworkflow == null ? null : WorkflowExpression.Compile(moveMouseRelativeworkflow);
-            WorkflowExpression.Validate(__workflow_moveMouseRelativeworkflow, nameof(moveMouseRelativeworkflow), required: true);
+            var __workflow_moveMouseRelativexCoord = WorkflowExpression.Compile(moveMouseRelativexCoord, nameof(moveMouseRelativexCoord), required: true);
+            var __workflow_moveMouseRelativeyCoord = WorkflowExpression.Compile(moveMouseRelativeyCoord, nameof(moveMouseRelativeyCoord), required: true);
+            var __workflow_moveMouseRelativeworkflow = WorkflowExpression.Compile(moveMouseRelativeworkflow, nameof(moveMouseRelativeworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MoveMouseRelative";
@@ -1198,8 +1120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftMouseButtonDown(Expression<Func<string>> leftMouseButtonDownworkflow)
         {
-            var __workflow_leftMouseButtonDownworkflow = leftMouseButtonDownworkflow == null ? null : WorkflowExpression.Compile(leftMouseButtonDownworkflow);
-            WorkflowExpression.Validate(__workflow_leftMouseButtonDownworkflow, nameof(leftMouseButtonDownworkflow), required: true);
+            var __workflow_leftMouseButtonDownworkflow = WorkflowExpression.Compile(leftMouseButtonDownworkflow, nameof(leftMouseButtonDownworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/LeftMouseButtonDown";
@@ -1221,8 +1142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftMouseButtonUp(Expression<Func<string>> leftMouseButtonUpworkflow)
         {
-            var __workflow_leftMouseButtonUpworkflow = leftMouseButtonUpworkflow == null ? null : WorkflowExpression.Compile(leftMouseButtonUpworkflow);
-            WorkflowExpression.Validate(__workflow_leftMouseButtonUpworkflow, nameof(leftMouseButtonUpworkflow), required: true);
+            var __workflow_leftMouseButtonUpworkflow = WorkflowExpression.Compile(leftMouseButtonUpworkflow, nameof(leftMouseButtonUpworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/LeftMouseButtonUp";
@@ -1244,8 +1164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftClickMouse(Expression<Func<string>> leftClickMouseworkflow)
         {
-            var __workflow_leftClickMouseworkflow = leftClickMouseworkflow == null ? null : WorkflowExpression.Compile(leftClickMouseworkflow);
-            WorkflowExpression.Validate(__workflow_leftClickMouseworkflow, nameof(leftClickMouseworkflow), required: true);
+            var __workflow_leftClickMouseworkflow = WorkflowExpression.Compile(leftClickMouseworkflow, nameof(leftClickMouseworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/LeftClickMouse";
@@ -1267,12 +1186,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftClickMouseAtCoordinate(Expression<Func<int>> leftClickMouseAtCoordinatexCoord, Expression<Func<int>> leftClickMouseAtCoordinateyCoord, Expression<Func<string>> leftClickMouseAtCoordinateworkflow)
         {
-            var __workflow_leftClickMouseAtCoordinatexCoord = leftClickMouseAtCoordinatexCoord == null ? null : WorkflowExpression.Compile(leftClickMouseAtCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_leftClickMouseAtCoordinatexCoord, nameof(leftClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_leftClickMouseAtCoordinateyCoord = leftClickMouseAtCoordinateyCoord == null ? null : WorkflowExpression.Compile(leftClickMouseAtCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_leftClickMouseAtCoordinateyCoord, nameof(leftClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_leftClickMouseAtCoordinateworkflow = leftClickMouseAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(leftClickMouseAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_leftClickMouseAtCoordinateworkflow, nameof(leftClickMouseAtCoordinateworkflow), required: true);
+            var __workflow_leftClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(leftClickMouseAtCoordinatexCoord, nameof(leftClickMouseAtCoordinatexCoord), required: true);
+            var __workflow_leftClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(leftClickMouseAtCoordinateyCoord, nameof(leftClickMouseAtCoordinateyCoord), required: true);
+            var __workflow_leftClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(leftClickMouseAtCoordinateworkflow, nameof(leftClickMouseAtCoordinateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/LeftClickMouseAtCoordinate";
@@ -1298,10 +1214,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftHoldMouse(Expression<Func<double>> leftHoldMousesecondsToHold, Expression<Func<string>> leftHoldMouseworkflow)
         {
-            var __workflow_leftHoldMousesecondsToHold = leftHoldMousesecondsToHold == null ? null : WorkflowExpression.Compile(leftHoldMousesecondsToHold);
-            WorkflowExpression.Validate(__workflow_leftHoldMousesecondsToHold, nameof(leftHoldMousesecondsToHold), required: true);
-            var __workflow_leftHoldMouseworkflow = leftHoldMouseworkflow == null ? null : WorkflowExpression.Compile(leftHoldMouseworkflow);
-            WorkflowExpression.Validate(__workflow_leftHoldMouseworkflow, nameof(leftHoldMouseworkflow), required: true);
+            var __workflow_leftHoldMousesecondsToHold = WorkflowExpression.Compile(leftHoldMousesecondsToHold, nameof(leftHoldMousesecondsToHold), required: true);
+            var __workflow_leftHoldMouseworkflow = WorkflowExpression.Compile(leftHoldMouseworkflow, nameof(leftHoldMouseworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/LeftHoldMouse";
@@ -1325,14 +1239,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftHoldMouseAtCoordinate(Expression<Func<int>> leftHoldMouseAtCoordinatexCoord, Expression<Func<int>> leftHoldMouseAtCoordinateyCoord, Expression<Func<double>> leftHoldMouseAtCoordinatesecondsToHold, Expression<Func<string>> leftHoldMouseAtCoordinateworkflow)
         {
-            var __workflow_leftHoldMouseAtCoordinatexCoord = leftHoldMouseAtCoordinatexCoord == null ? null : WorkflowExpression.Compile(leftHoldMouseAtCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_leftHoldMouseAtCoordinatexCoord, nameof(leftHoldMouseAtCoordinatexCoord), required: true);
-            var __workflow_leftHoldMouseAtCoordinateyCoord = leftHoldMouseAtCoordinateyCoord == null ? null : WorkflowExpression.Compile(leftHoldMouseAtCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_leftHoldMouseAtCoordinateyCoord, nameof(leftHoldMouseAtCoordinateyCoord), required: true);
-            var __workflow_leftHoldMouseAtCoordinatesecondsToHold = leftHoldMouseAtCoordinatesecondsToHold == null ? null : WorkflowExpression.Compile(leftHoldMouseAtCoordinatesecondsToHold);
-            WorkflowExpression.Validate(__workflow_leftHoldMouseAtCoordinatesecondsToHold, nameof(leftHoldMouseAtCoordinatesecondsToHold), required: true);
-            var __workflow_leftHoldMouseAtCoordinateworkflow = leftHoldMouseAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(leftHoldMouseAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_leftHoldMouseAtCoordinateworkflow, nameof(leftHoldMouseAtCoordinateworkflow), required: true);
+            var __workflow_leftHoldMouseAtCoordinatexCoord = WorkflowExpression.Compile(leftHoldMouseAtCoordinatexCoord, nameof(leftHoldMouseAtCoordinatexCoord), required: true);
+            var __workflow_leftHoldMouseAtCoordinateyCoord = WorkflowExpression.Compile(leftHoldMouseAtCoordinateyCoord, nameof(leftHoldMouseAtCoordinateyCoord), required: true);
+            var __workflow_leftHoldMouseAtCoordinatesecondsToHold = WorkflowExpression.Compile(leftHoldMouseAtCoordinatesecondsToHold, nameof(leftHoldMouseAtCoordinatesecondsToHold), required: true);
+            var __workflow_leftHoldMouseAtCoordinateworkflow = WorkflowExpression.Compile(leftHoldMouseAtCoordinateworkflow, nameof(leftHoldMouseAtCoordinateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/LeftHoldMouseAtCoordinate";
@@ -1360,8 +1270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightMouseButtonDown(Expression<Func<string>> rightMouseButtonDownworkflow)
         {
-            var __workflow_rightMouseButtonDownworkflow = rightMouseButtonDownworkflow == null ? null : WorkflowExpression.Compile(rightMouseButtonDownworkflow);
-            WorkflowExpression.Validate(__workflow_rightMouseButtonDownworkflow, nameof(rightMouseButtonDownworkflow), required: true);
+            var __workflow_rightMouseButtonDownworkflow = WorkflowExpression.Compile(rightMouseButtonDownworkflow, nameof(rightMouseButtonDownworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/RightMouseButtonDown";
@@ -1383,8 +1292,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightMouseButtonUp(Expression<Func<string>> rightMouseButtonUpworkflow)
         {
-            var __workflow_rightMouseButtonUpworkflow = rightMouseButtonUpworkflow == null ? null : WorkflowExpression.Compile(rightMouseButtonUpworkflow);
-            WorkflowExpression.Validate(__workflow_rightMouseButtonUpworkflow, nameof(rightMouseButtonUpworkflow), required: true);
+            var __workflow_rightMouseButtonUpworkflow = WorkflowExpression.Compile(rightMouseButtonUpworkflow, nameof(rightMouseButtonUpworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/RightMouseButtonUp";
@@ -1406,8 +1314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightClickMouse(Expression<Func<string>> rightClickMouseworkflow)
         {
-            var __workflow_rightClickMouseworkflow = rightClickMouseworkflow == null ? null : WorkflowExpression.Compile(rightClickMouseworkflow);
-            WorkflowExpression.Validate(__workflow_rightClickMouseworkflow, nameof(rightClickMouseworkflow), required: true);
+            var __workflow_rightClickMouseworkflow = WorkflowExpression.Compile(rightClickMouseworkflow, nameof(rightClickMouseworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/RightClickMouse";
@@ -1429,12 +1336,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightClickMouseAtCoordinate(Expression<Func<int>> rightClickMouseAtCoordinatexCoord, Expression<Func<int>> rightClickMouseAtCoordinateyCoord, Expression<Func<string>> rightClickMouseAtCoordinateworkflow)
         {
-            var __workflow_rightClickMouseAtCoordinatexCoord = rightClickMouseAtCoordinatexCoord == null ? null : WorkflowExpression.Compile(rightClickMouseAtCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_rightClickMouseAtCoordinatexCoord, nameof(rightClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_rightClickMouseAtCoordinateyCoord = rightClickMouseAtCoordinateyCoord == null ? null : WorkflowExpression.Compile(rightClickMouseAtCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_rightClickMouseAtCoordinateyCoord, nameof(rightClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_rightClickMouseAtCoordinateworkflow = rightClickMouseAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(rightClickMouseAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_rightClickMouseAtCoordinateworkflow, nameof(rightClickMouseAtCoordinateworkflow), required: true);
+            var __workflow_rightClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(rightClickMouseAtCoordinatexCoord, nameof(rightClickMouseAtCoordinatexCoord), required: true);
+            var __workflow_rightClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(rightClickMouseAtCoordinateyCoord, nameof(rightClickMouseAtCoordinateyCoord), required: true);
+            var __workflow_rightClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(rightClickMouseAtCoordinateworkflow, nameof(rightClickMouseAtCoordinateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/RightClickMouseAtCoordinate";
@@ -1460,10 +1364,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightHoldMouse(Expression<Func<double>> rightHoldMousesecondsToHold, Expression<Func<string>> rightHoldMouseworkflow)
         {
-            var __workflow_rightHoldMousesecondsToHold = rightHoldMousesecondsToHold == null ? null : WorkflowExpression.Compile(rightHoldMousesecondsToHold);
-            WorkflowExpression.Validate(__workflow_rightHoldMousesecondsToHold, nameof(rightHoldMousesecondsToHold), required: true);
-            var __workflow_rightHoldMouseworkflow = rightHoldMouseworkflow == null ? null : WorkflowExpression.Compile(rightHoldMouseworkflow);
-            WorkflowExpression.Validate(__workflow_rightHoldMouseworkflow, nameof(rightHoldMouseworkflow), required: true);
+            var __workflow_rightHoldMousesecondsToHold = WorkflowExpression.Compile(rightHoldMousesecondsToHold, nameof(rightHoldMousesecondsToHold), required: true);
+            var __workflow_rightHoldMouseworkflow = WorkflowExpression.Compile(rightHoldMouseworkflow, nameof(rightHoldMouseworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/RightHoldMouse";
@@ -1487,14 +1389,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightHoldMouseAtCoordinate(Expression<Func<int>> rightHoldMouseAtCoordinatexCoord, Expression<Func<int>> rightHoldMouseAtCoordinateyCoord, Expression<Func<double>> rightHoldMouseAtCoordinatesecondsToHold, Expression<Func<string>> rightHoldMouseAtCoordinateworkflow)
         {
-            var __workflow_rightHoldMouseAtCoordinatexCoord = rightHoldMouseAtCoordinatexCoord == null ? null : WorkflowExpression.Compile(rightHoldMouseAtCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_rightHoldMouseAtCoordinatexCoord, nameof(rightHoldMouseAtCoordinatexCoord), required: true);
-            var __workflow_rightHoldMouseAtCoordinateyCoord = rightHoldMouseAtCoordinateyCoord == null ? null : WorkflowExpression.Compile(rightHoldMouseAtCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_rightHoldMouseAtCoordinateyCoord, nameof(rightHoldMouseAtCoordinateyCoord), required: true);
-            var __workflow_rightHoldMouseAtCoordinatesecondsToHold = rightHoldMouseAtCoordinatesecondsToHold == null ? null : WorkflowExpression.Compile(rightHoldMouseAtCoordinatesecondsToHold);
-            WorkflowExpression.Validate(__workflow_rightHoldMouseAtCoordinatesecondsToHold, nameof(rightHoldMouseAtCoordinatesecondsToHold), required: true);
-            var __workflow_rightHoldMouseAtCoordinateworkflow = rightHoldMouseAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(rightHoldMouseAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_rightHoldMouseAtCoordinateworkflow, nameof(rightHoldMouseAtCoordinateworkflow), required: true);
+            var __workflow_rightHoldMouseAtCoordinatexCoord = WorkflowExpression.Compile(rightHoldMouseAtCoordinatexCoord, nameof(rightHoldMouseAtCoordinatexCoord), required: true);
+            var __workflow_rightHoldMouseAtCoordinateyCoord = WorkflowExpression.Compile(rightHoldMouseAtCoordinateyCoord, nameof(rightHoldMouseAtCoordinateyCoord), required: true);
+            var __workflow_rightHoldMouseAtCoordinatesecondsToHold = WorkflowExpression.Compile(rightHoldMouseAtCoordinatesecondsToHold, nameof(rightHoldMouseAtCoordinatesecondsToHold), required: true);
+            var __workflow_rightHoldMouseAtCoordinateworkflow = WorkflowExpression.Compile(rightHoldMouseAtCoordinateworkflow, nameof(rightHoldMouseAtCoordinateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/RightHoldMouseAtCoordinate";
@@ -1522,8 +1420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleMouseButtonDown(Expression<Func<string>> middleMouseButtonDownworkflow)
         {
-            var __workflow_middleMouseButtonDownworkflow = middleMouseButtonDownworkflow == null ? null : WorkflowExpression.Compile(middleMouseButtonDownworkflow);
-            WorkflowExpression.Validate(__workflow_middleMouseButtonDownworkflow, nameof(middleMouseButtonDownworkflow), required: true);
+            var __workflow_middleMouseButtonDownworkflow = WorkflowExpression.Compile(middleMouseButtonDownworkflow, nameof(middleMouseButtonDownworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MiddleMouseButtonDown";
@@ -1545,8 +1442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleMouseButtonUp(Expression<Func<string>> middleMouseButtonUpworkflow)
         {
-            var __workflow_middleMouseButtonUpworkflow = middleMouseButtonUpworkflow == null ? null : WorkflowExpression.Compile(middleMouseButtonUpworkflow);
-            WorkflowExpression.Validate(__workflow_middleMouseButtonUpworkflow, nameof(middleMouseButtonUpworkflow), required: true);
+            var __workflow_middleMouseButtonUpworkflow = WorkflowExpression.Compile(middleMouseButtonUpworkflow, nameof(middleMouseButtonUpworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MiddleMouseButtonUp";
@@ -1568,8 +1464,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleClickMouse(Expression<Func<string>> middleClickMouseworkflow)
         {
-            var __workflow_middleClickMouseworkflow = middleClickMouseworkflow == null ? null : WorkflowExpression.Compile(middleClickMouseworkflow);
-            WorkflowExpression.Validate(__workflow_middleClickMouseworkflow, nameof(middleClickMouseworkflow), required: true);
+            var __workflow_middleClickMouseworkflow = WorkflowExpression.Compile(middleClickMouseworkflow, nameof(middleClickMouseworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MiddleClickMouse";
@@ -1591,12 +1486,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleClickMouseAtCoordinate(Expression<Func<int>> middleClickMouseAtCoordinatexCoord, Expression<Func<int>> middleClickMouseAtCoordinateyCoord, Expression<Func<string>> middleClickMouseAtCoordinateworkflow)
         {
-            var __workflow_middleClickMouseAtCoordinatexCoord = middleClickMouseAtCoordinatexCoord == null ? null : WorkflowExpression.Compile(middleClickMouseAtCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_middleClickMouseAtCoordinatexCoord, nameof(middleClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_middleClickMouseAtCoordinateyCoord = middleClickMouseAtCoordinateyCoord == null ? null : WorkflowExpression.Compile(middleClickMouseAtCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_middleClickMouseAtCoordinateyCoord, nameof(middleClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_middleClickMouseAtCoordinateworkflow = middleClickMouseAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(middleClickMouseAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_middleClickMouseAtCoordinateworkflow, nameof(middleClickMouseAtCoordinateworkflow), required: true);
+            var __workflow_middleClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(middleClickMouseAtCoordinatexCoord, nameof(middleClickMouseAtCoordinatexCoord), required: true);
+            var __workflow_middleClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(middleClickMouseAtCoordinateyCoord, nameof(middleClickMouseAtCoordinateyCoord), required: true);
+            var __workflow_middleClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(middleClickMouseAtCoordinateworkflow, nameof(middleClickMouseAtCoordinateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MiddleClickMouseAtCoordinate";
@@ -1622,10 +1514,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleHoldMouse(Expression<Func<double>> middleHoldMousesecondsToHold, Expression<Func<string>> middleHoldMouseworkflow)
         {
-            var __workflow_middleHoldMousesecondsToHold = middleHoldMousesecondsToHold == null ? null : WorkflowExpression.Compile(middleHoldMousesecondsToHold);
-            WorkflowExpression.Validate(__workflow_middleHoldMousesecondsToHold, nameof(middleHoldMousesecondsToHold), required: true);
-            var __workflow_middleHoldMouseworkflow = middleHoldMouseworkflow == null ? null : WorkflowExpression.Compile(middleHoldMouseworkflow);
-            WorkflowExpression.Validate(__workflow_middleHoldMouseworkflow, nameof(middleHoldMouseworkflow), required: true);
+            var __workflow_middleHoldMousesecondsToHold = WorkflowExpression.Compile(middleHoldMousesecondsToHold, nameof(middleHoldMousesecondsToHold), required: true);
+            var __workflow_middleHoldMouseworkflow = WorkflowExpression.Compile(middleHoldMouseworkflow, nameof(middleHoldMouseworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MiddleHoldMouse";
@@ -1649,14 +1539,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleHoldMouseAtCoordinate(Expression<Func<int>> middleHoldMouseAtCoordinatexCoord, Expression<Func<int>> middleHoldMouseAtCoordinateyCoord, Expression<Func<double>> middleHoldMouseAtCoordinatesecondsToHold, Expression<Func<string>> middleHoldMouseAtCoordinateworkflow)
         {
-            var __workflow_middleHoldMouseAtCoordinatexCoord = middleHoldMouseAtCoordinatexCoord == null ? null : WorkflowExpression.Compile(middleHoldMouseAtCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_middleHoldMouseAtCoordinatexCoord, nameof(middleHoldMouseAtCoordinatexCoord), required: true);
-            var __workflow_middleHoldMouseAtCoordinateyCoord = middleHoldMouseAtCoordinateyCoord == null ? null : WorkflowExpression.Compile(middleHoldMouseAtCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_middleHoldMouseAtCoordinateyCoord, nameof(middleHoldMouseAtCoordinateyCoord), required: true);
-            var __workflow_middleHoldMouseAtCoordinatesecondsToHold = middleHoldMouseAtCoordinatesecondsToHold == null ? null : WorkflowExpression.Compile(middleHoldMouseAtCoordinatesecondsToHold);
-            WorkflowExpression.Validate(__workflow_middleHoldMouseAtCoordinatesecondsToHold, nameof(middleHoldMouseAtCoordinatesecondsToHold), required: true);
-            var __workflow_middleHoldMouseAtCoordinateworkflow = middleHoldMouseAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(middleHoldMouseAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_middleHoldMouseAtCoordinateworkflow, nameof(middleHoldMouseAtCoordinateworkflow), required: true);
+            var __workflow_middleHoldMouseAtCoordinatexCoord = WorkflowExpression.Compile(middleHoldMouseAtCoordinatexCoord, nameof(middleHoldMouseAtCoordinatexCoord), required: true);
+            var __workflow_middleHoldMouseAtCoordinateyCoord = WorkflowExpression.Compile(middleHoldMouseAtCoordinateyCoord, nameof(middleHoldMouseAtCoordinateyCoord), required: true);
+            var __workflow_middleHoldMouseAtCoordinatesecondsToHold = WorkflowExpression.Compile(middleHoldMouseAtCoordinatesecondsToHold, nameof(middleHoldMouseAtCoordinatesecondsToHold), required: true);
+            var __workflow_middleHoldMouseAtCoordinateworkflow = WorkflowExpression.Compile(middleHoldMouseAtCoordinateworkflow, nameof(middleHoldMouseAtCoordinateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MiddleHoldMouseAtCoordinate";
@@ -1684,10 +1570,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DoubleLeftClickMouse(Expression<Func<string>> doubleLeftClickMouseworkflow, Expression<Func<int>> doubleLeftClickMousedelayInMilliseconds = null)
         {
-            var __workflow_doubleLeftClickMouseworkflow = doubleLeftClickMouseworkflow == null ? null : WorkflowExpression.Compile(doubleLeftClickMouseworkflow);
-            WorkflowExpression.Validate(__workflow_doubleLeftClickMouseworkflow, nameof(doubleLeftClickMouseworkflow), required: true);
-            var __workflow_doubleLeftClickMousedelayInMilliseconds = doubleLeftClickMousedelayInMilliseconds == null ? null : WorkflowExpression.Compile(doubleLeftClickMousedelayInMilliseconds);
-            WorkflowExpression.Validate(__workflow_doubleLeftClickMousedelayInMilliseconds, nameof(doubleLeftClickMousedelayInMilliseconds), required: false);
+            var __workflow_doubleLeftClickMouseworkflow = WorkflowExpression.Compile(doubleLeftClickMouseworkflow, nameof(doubleLeftClickMouseworkflow), required: true);
+            var __workflow_doubleLeftClickMousedelayInMilliseconds = WorkflowExpression.Compile(doubleLeftClickMousedelayInMilliseconds, nameof(doubleLeftClickMousedelayInMilliseconds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/DoubleLeftClickMouse";
@@ -1725,14 +1609,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DoubleLeftClickMouseAtCoordinate(Expression<Func<int>> doubleLeftClickMouseAtCoordinatexCoord, Expression<Func<int>> doubleLeftClickMouseAtCoordinateyCoord, Expression<Func<string>> doubleLeftClickMouseAtCoordinateworkflow, Expression<Func<int>> doubleLeftClickMouseAtCoordinatedelayInMilliseconds = null)
         {
-            var __workflow_doubleLeftClickMouseAtCoordinatexCoord = doubleLeftClickMouseAtCoordinatexCoord == null ? null : WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinatexCoord);
-            WorkflowExpression.Validate(__workflow_doubleLeftClickMouseAtCoordinatexCoord, nameof(doubleLeftClickMouseAtCoordinatexCoord), required: true);
-            var __workflow_doubleLeftClickMouseAtCoordinateyCoord = doubleLeftClickMouseAtCoordinateyCoord == null ? null : WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinateyCoord);
-            WorkflowExpression.Validate(__workflow_doubleLeftClickMouseAtCoordinateyCoord, nameof(doubleLeftClickMouseAtCoordinateyCoord), required: true);
-            var __workflow_doubleLeftClickMouseAtCoordinateworkflow = doubleLeftClickMouseAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_doubleLeftClickMouseAtCoordinateworkflow, nameof(doubleLeftClickMouseAtCoordinateworkflow), required: true);
-            var __workflow_doubleLeftClickMouseAtCoordinatedelayInMilliseconds = doubleLeftClickMouseAtCoordinatedelayInMilliseconds == null ? null : WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinatedelayInMilliseconds);
-            WorkflowExpression.Validate(__workflow_doubleLeftClickMouseAtCoordinatedelayInMilliseconds, nameof(doubleLeftClickMouseAtCoordinatedelayInMilliseconds), required: false);
+            var __workflow_doubleLeftClickMouseAtCoordinatexCoord = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinatexCoord, nameof(doubleLeftClickMouseAtCoordinatexCoord), required: true);
+            var __workflow_doubleLeftClickMouseAtCoordinateyCoord = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinateyCoord, nameof(doubleLeftClickMouseAtCoordinateyCoord), required: true);
+            var __workflow_doubleLeftClickMouseAtCoordinateworkflow = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinateworkflow, nameof(doubleLeftClickMouseAtCoordinateworkflow), required: true);
+            var __workflow_doubleLeftClickMouseAtCoordinatedelayInMilliseconds = WorkflowExpression.Compile(doubleLeftClickMouseAtCoordinatedelayInMilliseconds, nameof(doubleLeftClickMouseAtCoordinatedelayInMilliseconds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/DoubleLeftClickMouseAtCoordinate";
@@ -1774,26 +1654,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LeftMouseDragBetweenCoordinates(Expression<Func<int>> leftMouseDragBetweenCoordinatesstartXCoord, Expression<Func<int>> leftMouseDragBetweenCoordinatesstartYCoord, Expression<Func<int>> leftMouseDragBetweenCoordinatesendXCoord, Expression<Func<int>> leftMouseDragBetweenCoordinatesendYCoord, Expression<Func<string>> leftMouseDragBetweenCoordinatesworkflow, Expression<Func<int>> leftMouseDragBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> leftMouseDragBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> leftMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            var __workflow_leftMouseDragBetweenCoordinatesstartXCoord = leftMouseDragBetweenCoordinatesstartXCoord == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesstartXCoord);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesstartXCoord, nameof(leftMouseDragBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesstartYCoord = leftMouseDragBetweenCoordinatesstartYCoord == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesstartYCoord);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesstartYCoord, nameof(leftMouseDragBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesendXCoord = leftMouseDragBetweenCoordinatesendXCoord == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesendXCoord);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesendXCoord, nameof(leftMouseDragBetweenCoordinatesendXCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesendYCoord = leftMouseDragBetweenCoordinatesendYCoord == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesendYCoord);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesendYCoord, nameof(leftMouseDragBetweenCoordinatesendYCoord), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesworkflow = leftMouseDragBetweenCoordinatesworkflow == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesworkflow);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesworkflow, nameof(leftMouseDragBetweenCoordinatesworkflow), required: true);
-            var __workflow_leftMouseDragBetweenCoordinatesnumberOfSteps = leftMouseDragBetweenCoordinatesnumberOfSteps == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesnumberOfSteps);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesnumberOfSteps, nameof(leftMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatestotalTimeInSeconds = leftMouseDragBetweenCoordinatestotalTimeInSeconds == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatestotalTimeInSeconds);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(leftMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter = leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatesmaximumEndPixelJitter = leftMouseDragBetweenCoordinatesmaximumEndPixelJitter == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta == null ? null : WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
-            WorkflowExpression.Validate(__workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_leftMouseDragBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesstartXCoord, nameof(leftMouseDragBetweenCoordinatesstartXCoord), required: true);
+            var __workflow_leftMouseDragBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesstartYCoord, nameof(leftMouseDragBetweenCoordinatesstartYCoord), required: true);
+            var __workflow_leftMouseDragBetweenCoordinatesendXCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesendXCoord, nameof(leftMouseDragBetweenCoordinatesendXCoord), required: true);
+            var __workflow_leftMouseDragBetweenCoordinatesendYCoord = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesendYCoord, nameof(leftMouseDragBetweenCoordinatesendYCoord), required: true);
+            var __workflow_leftMouseDragBetweenCoordinatesworkflow = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesworkflow, nameof(leftMouseDragBetweenCoordinatesworkflow), required: true);
+            var __workflow_leftMouseDragBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesnumberOfSteps, nameof(leftMouseDragBetweenCoordinatesnumberOfSteps), required: false);
+            var __workflow_leftMouseDragBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(leftMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
+            var __workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
+            var __workflow_leftMouseDragBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(leftMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
+            var __workflow_leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(leftMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/LeftMouseDragBetweenCoordinates";
@@ -1883,26 +1753,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RightMouseDragBetweenCoordinates(Expression<Func<int>> rightMouseDragBetweenCoordinatesstartXCoord, Expression<Func<int>> rightMouseDragBetweenCoordinatesstartYCoord, Expression<Func<int>> rightMouseDragBetweenCoordinatesendXCoord, Expression<Func<int>> rightMouseDragBetweenCoordinatesendYCoord, Expression<Func<string>> rightMouseDragBetweenCoordinatesworkflow, Expression<Func<int>> rightMouseDragBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> rightMouseDragBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> rightMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            var __workflow_rightMouseDragBetweenCoordinatesstartXCoord = rightMouseDragBetweenCoordinatesstartXCoord == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesstartXCoord);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesstartXCoord, nameof(rightMouseDragBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesstartYCoord = rightMouseDragBetweenCoordinatesstartYCoord == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesstartYCoord);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesstartYCoord, nameof(rightMouseDragBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesendXCoord = rightMouseDragBetweenCoordinatesendXCoord == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesendXCoord);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesendXCoord, nameof(rightMouseDragBetweenCoordinatesendXCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesendYCoord = rightMouseDragBetweenCoordinatesendYCoord == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesendYCoord);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesendYCoord, nameof(rightMouseDragBetweenCoordinatesendYCoord), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesworkflow = rightMouseDragBetweenCoordinatesworkflow == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesworkflow);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesworkflow, nameof(rightMouseDragBetweenCoordinatesworkflow), required: true);
-            var __workflow_rightMouseDragBetweenCoordinatesnumberOfSteps = rightMouseDragBetweenCoordinatesnumberOfSteps == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesnumberOfSteps);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesnumberOfSteps, nameof(rightMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatestotalTimeInSeconds = rightMouseDragBetweenCoordinatestotalTimeInSeconds == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatestotalTimeInSeconds);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(rightMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter = rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatesmaximumEndPixelJitter = rightMouseDragBetweenCoordinatesmaximumEndPixelJitter == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta == null ? null : WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
-            WorkflowExpression.Validate(__workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_rightMouseDragBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesstartXCoord, nameof(rightMouseDragBetweenCoordinatesstartXCoord), required: true);
+            var __workflow_rightMouseDragBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesstartYCoord, nameof(rightMouseDragBetweenCoordinatesstartYCoord), required: true);
+            var __workflow_rightMouseDragBetweenCoordinatesendXCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesendXCoord, nameof(rightMouseDragBetweenCoordinatesendXCoord), required: true);
+            var __workflow_rightMouseDragBetweenCoordinatesendYCoord = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesendYCoord, nameof(rightMouseDragBetweenCoordinatesendYCoord), required: true);
+            var __workflow_rightMouseDragBetweenCoordinatesworkflow = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesworkflow, nameof(rightMouseDragBetweenCoordinatesworkflow), required: true);
+            var __workflow_rightMouseDragBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesnumberOfSteps, nameof(rightMouseDragBetweenCoordinatesnumberOfSteps), required: false);
+            var __workflow_rightMouseDragBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(rightMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
+            var __workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
+            var __workflow_rightMouseDragBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(rightMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
+            var __workflow_rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(rightMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/RightMouseDragBetweenCoordinates";
@@ -1992,26 +1852,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MiddleMouseDragBetweenCoordinates(Expression<Func<int>> middleMouseDragBetweenCoordinatesstartXCoord, Expression<Func<int>> middleMouseDragBetweenCoordinatesstartYCoord, Expression<Func<int>> middleMouseDragBetweenCoordinatesendXCoord, Expression<Func<int>> middleMouseDragBetweenCoordinatesendYCoord, Expression<Func<string>> middleMouseDragBetweenCoordinatesworkflow, Expression<Func<int>> middleMouseDragBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> middleMouseDragBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> middleMouseDragBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            var __workflow_middleMouseDragBetweenCoordinatesstartXCoord = middleMouseDragBetweenCoordinatesstartXCoord == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesstartXCoord);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesstartXCoord, nameof(middleMouseDragBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesstartYCoord = middleMouseDragBetweenCoordinatesstartYCoord == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesstartYCoord);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesstartYCoord, nameof(middleMouseDragBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesendXCoord = middleMouseDragBetweenCoordinatesendXCoord == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesendXCoord);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesendXCoord, nameof(middleMouseDragBetweenCoordinatesendXCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesendYCoord = middleMouseDragBetweenCoordinatesendYCoord == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesendYCoord);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesendYCoord, nameof(middleMouseDragBetweenCoordinatesendYCoord), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesworkflow = middleMouseDragBetweenCoordinatesworkflow == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesworkflow);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesworkflow, nameof(middleMouseDragBetweenCoordinatesworkflow), required: true);
-            var __workflow_middleMouseDragBetweenCoordinatesnumberOfSteps = middleMouseDragBetweenCoordinatesnumberOfSteps == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesnumberOfSteps);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesnumberOfSteps, nameof(middleMouseDragBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatestotalTimeInSeconds = middleMouseDragBetweenCoordinatestotalTimeInSeconds == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatestotalTimeInSeconds);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(middleMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter = middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatesmaximumEndPixelJitter = middleMouseDragBetweenCoordinatesmaximumEndPixelJitter == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta == null ? null : WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta);
-            WorkflowExpression.Validate(__workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_middleMouseDragBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesstartXCoord, nameof(middleMouseDragBetweenCoordinatesstartXCoord), required: true);
+            var __workflow_middleMouseDragBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesstartYCoord, nameof(middleMouseDragBetweenCoordinatesstartYCoord), required: true);
+            var __workflow_middleMouseDragBetweenCoordinatesendXCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesendXCoord, nameof(middleMouseDragBetweenCoordinatesendXCoord), required: true);
+            var __workflow_middleMouseDragBetweenCoordinatesendYCoord = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesendYCoord, nameof(middleMouseDragBetweenCoordinatesendYCoord), required: true);
+            var __workflow_middleMouseDragBetweenCoordinatesworkflow = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesworkflow, nameof(middleMouseDragBetweenCoordinatesworkflow), required: true);
+            var __workflow_middleMouseDragBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesnumberOfSteps, nameof(middleMouseDragBetweenCoordinatesnumberOfSteps), required: false);
+            var __workflow_middleMouseDragBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatestotalTimeInSeconds, nameof(middleMouseDragBetweenCoordinatestotalTimeInSeconds), required: false);
+            var __workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitter), required: false);
+            var __workflow_middleMouseDragBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter, nameof(middleMouseDragBetweenCoordinatesmaximumEndPixelJitter), required: false);
+            var __workflow_middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(middleMouseDragBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MiddleMouseDragBetweenCoordinates";
@@ -2101,26 +1951,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveMouseBetweenCoordinates(Expression<Func<int>> moveMouseBetweenCoordinatesstartXCoord, Expression<Func<int>> moveMouseBetweenCoordinatesstartYCoord, Expression<Func<int>> moveMouseBetweenCoordinatesendXCoord, Expression<Func<int>> moveMouseBetweenCoordinatesendYCoord, Expression<Func<string>> moveMouseBetweenCoordinatesworkflow, Expression<Func<int>> moveMouseBetweenCoordinatesnumberOfSteps = null, Expression<Func<double>> moveMouseBetweenCoordinatestotalTimeInSeconds = null, Expression<Func<int>> moveMouseBetweenCoordinatesmaximumMovementPixelJitter = null, Expression<Func<int>> moveMouseBetweenCoordinatesmaximumEndPixelJitter = null, Expression<Func<int>> moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta = null)
         {
-            var __workflow_moveMouseBetweenCoordinatesstartXCoord = moveMouseBetweenCoordinatesstartXCoord == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesstartXCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesstartXCoord, nameof(moveMouseBetweenCoordinatesstartXCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesstartYCoord = moveMouseBetweenCoordinatesstartYCoord == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesstartYCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesstartYCoord, nameof(moveMouseBetweenCoordinatesstartYCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesendXCoord = moveMouseBetweenCoordinatesendXCoord == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesendXCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesendXCoord, nameof(moveMouseBetweenCoordinatesendXCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesendYCoord = moveMouseBetweenCoordinatesendYCoord == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesendYCoord);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesendYCoord, nameof(moveMouseBetweenCoordinatesendYCoord), required: true);
-            var __workflow_moveMouseBetweenCoordinatesworkflow = moveMouseBetweenCoordinatesworkflow == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesworkflow);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesworkflow, nameof(moveMouseBetweenCoordinatesworkflow), required: true);
-            var __workflow_moveMouseBetweenCoordinatesnumberOfSteps = moveMouseBetweenCoordinatesnumberOfSteps == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesnumberOfSteps);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesnumberOfSteps, nameof(moveMouseBetweenCoordinatesnumberOfSteps), required: false);
-            var __workflow_moveMouseBetweenCoordinatestotalTimeInSeconds = moveMouseBetweenCoordinatestotalTimeInSeconds == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatestotalTimeInSeconds);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatestotalTimeInSeconds, nameof(moveMouseBetweenCoordinatestotalTimeInSeconds), required: false);
-            var __workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitter = moveMouseBetweenCoordinatesmaximumMovementPixelJitter == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumMovementPixelJitter);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitter), required: false);
-            var __workflow_moveMouseBetweenCoordinatesmaximumEndPixelJitter = moveMouseBetweenCoordinatesmaximumEndPixelJitter == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumEndPixelJitter);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesmaximumEndPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumEndPixelJitter), required: false);
-            var __workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta = moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta == null ? null : WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta);
-            WorkflowExpression.Validate(__workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
+            var __workflow_moveMouseBetweenCoordinatesstartXCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesstartXCoord, nameof(moveMouseBetweenCoordinatesstartXCoord), required: true);
+            var __workflow_moveMouseBetweenCoordinatesstartYCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesstartYCoord, nameof(moveMouseBetweenCoordinatesstartYCoord), required: true);
+            var __workflow_moveMouseBetweenCoordinatesendXCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesendXCoord, nameof(moveMouseBetweenCoordinatesendXCoord), required: true);
+            var __workflow_moveMouseBetweenCoordinatesendYCoord = WorkflowExpression.Compile(moveMouseBetweenCoordinatesendYCoord, nameof(moveMouseBetweenCoordinatesendYCoord), required: true);
+            var __workflow_moveMouseBetweenCoordinatesworkflow = WorkflowExpression.Compile(moveMouseBetweenCoordinatesworkflow, nameof(moveMouseBetweenCoordinatesworkflow), required: true);
+            var __workflow_moveMouseBetweenCoordinatesnumberOfSteps = WorkflowExpression.Compile(moveMouseBetweenCoordinatesnumberOfSteps, nameof(moveMouseBetweenCoordinatesnumberOfSteps), required: false);
+            var __workflow_moveMouseBetweenCoordinatestotalTimeInSeconds = WorkflowExpression.Compile(moveMouseBetweenCoordinatestotalTimeInSeconds, nameof(moveMouseBetweenCoordinatestotalTimeInSeconds), required: false);
+            var __workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitter = WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumMovementPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitter), required: false);
+            var __workflow_moveMouseBetweenCoordinatesmaximumEndPixelJitter = WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumEndPixelJitter, nameof(moveMouseBetweenCoordinatesmaximumEndPixelJitter), required: false);
+            var __workflow_moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta = WorkflowExpression.Compile(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta, nameof(moveMouseBetweenCoordinatesmaximumMovementPixelJitterDelta), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/MoveMouseBetweenCoordinates";
@@ -2210,10 +2050,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction TurnMouseWheel(Expression<Func<int>> turnMouseWheelwheelTurns, Expression<Func<string>> turnMouseWheelworkflow)
         {
-            var __workflow_turnMouseWheelwheelTurns = turnMouseWheelwheelTurns == null ? null : WorkflowExpression.Compile(turnMouseWheelwheelTurns);
-            WorkflowExpression.Validate(__workflow_turnMouseWheelwheelTurns, nameof(turnMouseWheelwheelTurns), required: true);
-            var __workflow_turnMouseWheelworkflow = turnMouseWheelworkflow == null ? null : WorkflowExpression.Compile(turnMouseWheelworkflow);
-            WorkflowExpression.Validate(__workflow_turnMouseWheelworkflow, nameof(turnMouseWheelworkflow), required: true);
+            var __workflow_turnMouseWheelwheelTurns = WorkflowExpression.Compile(turnMouseWheelwheelTurns, nameof(turnMouseWheelwheelTurns), required: true);
+            var __workflow_turnMouseWheelworkflow = WorkflowExpression.Compile(turnMouseWheelworkflow, nameof(turnMouseWheelworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/TurnMouseWheel";
@@ -2237,12 +2075,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetCursorPos(Expression<Func<int>> setCursorPosx, Expression<Func<int>> setCursorPosy, Expression<Func<string>> setCursorPosworkflow)
         {
-            var __workflow_setCursorPosx = setCursorPosx == null ? null : WorkflowExpression.Compile(setCursorPosx);
-            WorkflowExpression.Validate(__workflow_setCursorPosx, nameof(setCursorPosx), required: true);
-            var __workflow_setCursorPosy = setCursorPosy == null ? null : WorkflowExpression.Compile(setCursorPosy);
-            WorkflowExpression.Validate(__workflow_setCursorPosy, nameof(setCursorPosy), required: true);
-            var __workflow_setCursorPosworkflow = setCursorPosworkflow == null ? null : WorkflowExpression.Compile(setCursorPosworkflow);
-            WorkflowExpression.Validate(__workflow_setCursorPosworkflow, nameof(setCursorPosworkflow), required: true);
+            var __workflow_setCursorPosx = WorkflowExpression.Compile(setCursorPosx, nameof(setCursorPosx), required: true);
+            var __workflow_setCursorPosy = WorkflowExpression.Compile(setCursorPosy, nameof(setCursorPosy), required: true);
+            var __workflow_setCursorPosworkflow = WorkflowExpression.Compile(setCursorPosworkflow, nameof(setCursorPosworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SetCursorPos";
@@ -2268,8 +2103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetCursorPosResponse> GetCursorPos(Expression<Func<string>> getCursorPosworkflow)
         {
-            var __workflow_getCursorPosworkflow = getCursorPosworkflow == null ? null : WorkflowExpression.Compile(getCursorPosworkflow);
-            WorkflowExpression.Validate(__workflow_getCursorPosworkflow, nameof(getCursorPosworkflow), required: true);
+            var __workflow_getCursorPosworkflow = WorkflowExpression.Compile(getCursorPosworkflow, nameof(getCursorPosworkflow), required: true);
             return new DeferredBodyAction<GetCursorPosResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetCursorPos";
@@ -2291,10 +2125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CalibrateMouseEventResponse> CalibrateMouseEvent(Expression<Func<string>> calibrateMouseEventworkflow, Expression<Func<int>> calibrateMouseEventcalibrationSizeInPixels = null)
         {
-            var __workflow_calibrateMouseEventworkflow = calibrateMouseEventworkflow == null ? null : WorkflowExpression.Compile(calibrateMouseEventworkflow);
-            WorkflowExpression.Validate(__workflow_calibrateMouseEventworkflow, nameof(calibrateMouseEventworkflow), required: true);
-            var __workflow_calibrateMouseEventcalibrationSizeInPixels = calibrateMouseEventcalibrationSizeInPixels == null ? null : WorkflowExpression.Compile(calibrateMouseEventcalibrationSizeInPixels);
-            WorkflowExpression.Validate(__workflow_calibrateMouseEventcalibrationSizeInPixels, nameof(calibrateMouseEventcalibrationSizeInPixels), required: false);
+            var __workflow_calibrateMouseEventworkflow = WorkflowExpression.Compile(calibrateMouseEventworkflow, nameof(calibrateMouseEventworkflow), required: true);
+            var __workflow_calibrateMouseEventcalibrationSizeInPixels = WorkflowExpression.Compile(calibrateMouseEventcalibrationSizeInPixels, nameof(calibrateMouseEventcalibrationSizeInPixels), required: false);
             return new DeferredBodyAction<CalibrateMouseEventResponse>(() =>
             {
                 var apiCallPath = "/Environment/CalibrateMouseEvent";
@@ -2332,8 +2164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetMouseMoveMethodResponse> GetMouseMoveMethod(Expression<Func<string>> getMouseMoveMethodworkflow)
         {
-            var __workflow_getMouseMoveMethodworkflow = getMouseMoveMethodworkflow == null ? null : WorkflowExpression.Compile(getMouseMoveMethodworkflow);
-            WorkflowExpression.Validate(__workflow_getMouseMoveMethodworkflow, nameof(getMouseMoveMethodworkflow), required: true);
+            var __workflow_getMouseMoveMethodworkflow = WorkflowExpression.Compile(getMouseMoveMethodworkflow, nameof(getMouseMoveMethodworkflow), required: true);
             return new DeferredBodyAction<GetMouseMoveMethodResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetMouseMoveMethod";
@@ -2355,10 +2186,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetMouseMoveMethod(Expression<Func<setMouseMoveMethodmouseMoveMethodInput>> setMouseMoveMethodmouseMoveMethod, Expression<Func<string>> setMouseMoveMethodworkflow)
         {
-            var __workflow_setMouseMoveMethodmouseMoveMethod = setMouseMoveMethodmouseMoveMethod == null ? null : WorkflowExpression.Compile(setMouseMoveMethodmouseMoveMethod);
-            WorkflowExpression.Validate(__workflow_setMouseMoveMethodmouseMoveMethod, nameof(setMouseMoveMethodmouseMoveMethod), required: true);
-            var __workflow_setMouseMoveMethodworkflow = setMouseMoveMethodworkflow == null ? null : WorkflowExpression.Compile(setMouseMoveMethodworkflow);
-            WorkflowExpression.Validate(__workflow_setMouseMoveMethodworkflow, nameof(setMouseMoveMethodworkflow), required: true);
+            var __workflow_setMouseMoveMethodmouseMoveMethod = WorkflowExpression.Compile(setMouseMoveMethodmouseMoveMethod, nameof(setMouseMoveMethodmouseMoveMethod), required: true);
+            var __workflow_setMouseMoveMethodworkflow = WorkflowExpression.Compile(setMouseMoveMethodworkflow, nameof(setMouseMoveMethodworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SetMouseMoveMethod";
@@ -2382,14 +2211,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction WiggleMouse(Expression<Func<string>> wiggleMouseworkflow, Expression<Func<int>> wiggleMousexWiggle = null, Expression<Func<int>> wiggleMouseyWiggle = null, Expression<Func<double>> wiggleMousewiggleDelayInSeconds = null)
         {
-            var __workflow_wiggleMouseworkflow = wiggleMouseworkflow == null ? null : WorkflowExpression.Compile(wiggleMouseworkflow);
-            WorkflowExpression.Validate(__workflow_wiggleMouseworkflow, nameof(wiggleMouseworkflow), required: true);
-            var __workflow_wiggleMousexWiggle = wiggleMousexWiggle == null ? null : WorkflowExpression.Compile(wiggleMousexWiggle);
-            WorkflowExpression.Validate(__workflow_wiggleMousexWiggle, nameof(wiggleMousexWiggle), required: false);
-            var __workflow_wiggleMouseyWiggle = wiggleMouseyWiggle == null ? null : WorkflowExpression.Compile(wiggleMouseyWiggle);
-            WorkflowExpression.Validate(__workflow_wiggleMouseyWiggle, nameof(wiggleMouseyWiggle), required: false);
-            var __workflow_wiggleMousewiggleDelayInSeconds = wiggleMousewiggleDelayInSeconds == null ? null : WorkflowExpression.Compile(wiggleMousewiggleDelayInSeconds);
-            WorkflowExpression.Validate(__workflow_wiggleMousewiggleDelayInSeconds, nameof(wiggleMousewiggleDelayInSeconds), required: false);
+            var __workflow_wiggleMouseworkflow = WorkflowExpression.Compile(wiggleMouseworkflow, nameof(wiggleMouseworkflow), required: true);
+            var __workflow_wiggleMousexWiggle = WorkflowExpression.Compile(wiggleMousexWiggle, nameof(wiggleMousexWiggle), required: false);
+            var __workflow_wiggleMouseyWiggle = WorkflowExpression.Compile(wiggleMouseyWiggle, nameof(wiggleMouseyWiggle), required: false);
+            var __workflow_wiggleMousewiggleDelayInSeconds = WorkflowExpression.Compile(wiggleMousewiggleDelayInSeconds, nameof(wiggleMousewiggleDelayInSeconds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/WiggleMouse";
@@ -2449,16 +2274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendKeyEvents(Expression<Func<string>> sendKeyEventstext, Expression<Func<string>> sendKeyEventsworkflow, Expression<Func<int>> sendKeyEventsinterval = null, Expression<Func<bool>> sendKeyEventsisPassword = null, Expression<Func<bool>> sendKeyEventsdontInterpretSymbols = null)
         {
-            var __workflow_sendKeyEventstext = sendKeyEventstext == null ? null : WorkflowExpression.Compile(sendKeyEventstext);
-            WorkflowExpression.Validate(__workflow_sendKeyEventstext, nameof(sendKeyEventstext), required: true);
-            var __workflow_sendKeyEventsworkflow = sendKeyEventsworkflow == null ? null : WorkflowExpression.Compile(sendKeyEventsworkflow);
-            WorkflowExpression.Validate(__workflow_sendKeyEventsworkflow, nameof(sendKeyEventsworkflow), required: true);
-            var __workflow_sendKeyEventsinterval = sendKeyEventsinterval == null ? null : WorkflowExpression.Compile(sendKeyEventsinterval);
-            WorkflowExpression.Validate(__workflow_sendKeyEventsinterval, nameof(sendKeyEventsinterval), required: false);
-            var __workflow_sendKeyEventsisPassword = sendKeyEventsisPassword == null ? null : WorkflowExpression.Compile(sendKeyEventsisPassword);
-            WorkflowExpression.Validate(__workflow_sendKeyEventsisPassword, nameof(sendKeyEventsisPassword), required: false);
-            var __workflow_sendKeyEventsdontInterpretSymbols = sendKeyEventsdontInterpretSymbols == null ? null : WorkflowExpression.Compile(sendKeyEventsdontInterpretSymbols);
-            WorkflowExpression.Validate(__workflow_sendKeyEventsdontInterpretSymbols, nameof(sendKeyEventsdontInterpretSymbols), required: false);
+            var __workflow_sendKeyEventstext = WorkflowExpression.Compile(sendKeyEventstext, nameof(sendKeyEventstext), required: true);
+            var __workflow_sendKeyEventsworkflow = WorkflowExpression.Compile(sendKeyEventsworkflow, nameof(sendKeyEventsworkflow), required: true);
+            var __workflow_sendKeyEventsinterval = WorkflowExpression.Compile(sendKeyEventsinterval, nameof(sendKeyEventsinterval), required: false);
+            var __workflow_sendKeyEventsisPassword = WorkflowExpression.Compile(sendKeyEventsisPassword, nameof(sendKeyEventsisPassword), required: false);
+            var __workflow_sendKeyEventsdontInterpretSymbols = WorkflowExpression.Compile(sendKeyEventsdontInterpretSymbols, nameof(sendKeyEventsdontInterpretSymbols), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SendKeyEvents";
@@ -2530,16 +2350,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendPasswordKeyEvents(Expression<Func<string>> sendPasswordKeyEventspassword, Expression<Func<string>> sendPasswordKeyEventsworkflow, Expression<Func<int>> sendPasswordKeyEventsinterval = null, Expression<Func<bool>> sendPasswordKeyEventsdontInterpretSymbols = null, Expression<Func<bool>> sendPasswordKeyEventspasswordContainsStoredPassword = null)
         {
-            var __workflow_sendPasswordKeyEventspassword = sendPasswordKeyEventspassword == null ? null : WorkflowExpression.Compile(sendPasswordKeyEventspassword);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeyEventspassword, nameof(sendPasswordKeyEventspassword), required: true);
-            var __workflow_sendPasswordKeyEventsworkflow = sendPasswordKeyEventsworkflow == null ? null : WorkflowExpression.Compile(sendPasswordKeyEventsworkflow);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeyEventsworkflow, nameof(sendPasswordKeyEventsworkflow), required: true);
-            var __workflow_sendPasswordKeyEventsinterval = sendPasswordKeyEventsinterval == null ? null : WorkflowExpression.Compile(sendPasswordKeyEventsinterval);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeyEventsinterval, nameof(sendPasswordKeyEventsinterval), required: false);
-            var __workflow_sendPasswordKeyEventsdontInterpretSymbols = sendPasswordKeyEventsdontInterpretSymbols == null ? null : WorkflowExpression.Compile(sendPasswordKeyEventsdontInterpretSymbols);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeyEventsdontInterpretSymbols, nameof(sendPasswordKeyEventsdontInterpretSymbols), required: false);
-            var __workflow_sendPasswordKeyEventspasswordContainsStoredPassword = sendPasswordKeyEventspasswordContainsStoredPassword == null ? null : WorkflowExpression.Compile(sendPasswordKeyEventspasswordContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeyEventspasswordContainsStoredPassword, nameof(sendPasswordKeyEventspasswordContainsStoredPassword), required: false);
+            var __workflow_sendPasswordKeyEventspassword = WorkflowExpression.Compile(sendPasswordKeyEventspassword, nameof(sendPasswordKeyEventspassword), required: true);
+            var __workflow_sendPasswordKeyEventsworkflow = WorkflowExpression.Compile(sendPasswordKeyEventsworkflow, nameof(sendPasswordKeyEventsworkflow), required: true);
+            var __workflow_sendPasswordKeyEventsinterval = WorkflowExpression.Compile(sendPasswordKeyEventsinterval, nameof(sendPasswordKeyEventsinterval), required: false);
+            var __workflow_sendPasswordKeyEventsdontInterpretSymbols = WorkflowExpression.Compile(sendPasswordKeyEventsdontInterpretSymbols, nameof(sendPasswordKeyEventsdontInterpretSymbols), required: false);
+            var __workflow_sendPasswordKeyEventspasswordContainsStoredPassword = WorkflowExpression.Compile(sendPasswordKeyEventspasswordContainsStoredPassword, nameof(sendPasswordKeyEventspasswordContainsStoredPassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SendPasswordKeyEvents";
@@ -2611,16 +2426,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendKeys(Expression<Func<string>> sendKeystext, Expression<Func<string>> sendKeysworkflow, Expression<Func<int>> sendKeysinterval = null, Expression<Func<bool>> sendKeysisPassword = null, Expression<Func<bool>> sendKeysdontInterpretSymbols = null)
         {
-            var __workflow_sendKeystext = sendKeystext == null ? null : WorkflowExpression.Compile(sendKeystext);
-            WorkflowExpression.Validate(__workflow_sendKeystext, nameof(sendKeystext), required: true);
-            var __workflow_sendKeysworkflow = sendKeysworkflow == null ? null : WorkflowExpression.Compile(sendKeysworkflow);
-            WorkflowExpression.Validate(__workflow_sendKeysworkflow, nameof(sendKeysworkflow), required: true);
-            var __workflow_sendKeysinterval = sendKeysinterval == null ? null : WorkflowExpression.Compile(sendKeysinterval);
-            WorkflowExpression.Validate(__workflow_sendKeysinterval, nameof(sendKeysinterval), required: false);
-            var __workflow_sendKeysisPassword = sendKeysisPassword == null ? null : WorkflowExpression.Compile(sendKeysisPassword);
-            WorkflowExpression.Validate(__workflow_sendKeysisPassword, nameof(sendKeysisPassword), required: false);
-            var __workflow_sendKeysdontInterpretSymbols = sendKeysdontInterpretSymbols == null ? null : WorkflowExpression.Compile(sendKeysdontInterpretSymbols);
-            WorkflowExpression.Validate(__workflow_sendKeysdontInterpretSymbols, nameof(sendKeysdontInterpretSymbols), required: false);
+            var __workflow_sendKeystext = WorkflowExpression.Compile(sendKeystext, nameof(sendKeystext), required: true);
+            var __workflow_sendKeysworkflow = WorkflowExpression.Compile(sendKeysworkflow, nameof(sendKeysworkflow), required: true);
+            var __workflow_sendKeysinterval = WorkflowExpression.Compile(sendKeysinterval, nameof(sendKeysinterval), required: false);
+            var __workflow_sendKeysisPassword = WorkflowExpression.Compile(sendKeysisPassword, nameof(sendKeysisPassword), required: false);
+            var __workflow_sendKeysdontInterpretSymbols = WorkflowExpression.Compile(sendKeysdontInterpretSymbols, nameof(sendKeysdontInterpretSymbols), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SendKeys";
@@ -2692,16 +2502,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SendPasswordKeys(Expression<Func<string>> sendPasswordKeyspassword, Expression<Func<string>> sendPasswordKeysworkflow, Expression<Func<int>> sendPasswordKeysinterval = null, Expression<Func<bool>> sendPasswordKeysdontInterpretSymbols = null, Expression<Func<bool>> sendPasswordKeyspasswordContainsStoredPassword = null)
         {
-            var __workflow_sendPasswordKeyspassword = sendPasswordKeyspassword == null ? null : WorkflowExpression.Compile(sendPasswordKeyspassword);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeyspassword, nameof(sendPasswordKeyspassword), required: true);
-            var __workflow_sendPasswordKeysworkflow = sendPasswordKeysworkflow == null ? null : WorkflowExpression.Compile(sendPasswordKeysworkflow);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeysworkflow, nameof(sendPasswordKeysworkflow), required: true);
-            var __workflow_sendPasswordKeysinterval = sendPasswordKeysinterval == null ? null : WorkflowExpression.Compile(sendPasswordKeysinterval);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeysinterval, nameof(sendPasswordKeysinterval), required: false);
-            var __workflow_sendPasswordKeysdontInterpretSymbols = sendPasswordKeysdontInterpretSymbols == null ? null : WorkflowExpression.Compile(sendPasswordKeysdontInterpretSymbols);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeysdontInterpretSymbols, nameof(sendPasswordKeysdontInterpretSymbols), required: false);
-            var __workflow_sendPasswordKeyspasswordContainsStoredPassword = sendPasswordKeyspasswordContainsStoredPassword == null ? null : WorkflowExpression.Compile(sendPasswordKeyspasswordContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_sendPasswordKeyspasswordContainsStoredPassword, nameof(sendPasswordKeyspasswordContainsStoredPassword), required: false);
+            var __workflow_sendPasswordKeyspassword = WorkflowExpression.Compile(sendPasswordKeyspassword, nameof(sendPasswordKeyspassword), required: true);
+            var __workflow_sendPasswordKeysworkflow = WorkflowExpression.Compile(sendPasswordKeysworkflow, nameof(sendPasswordKeysworkflow), required: true);
+            var __workflow_sendPasswordKeysinterval = WorkflowExpression.Compile(sendPasswordKeysinterval, nameof(sendPasswordKeysinterval), required: false);
+            var __workflow_sendPasswordKeysdontInterpretSymbols = WorkflowExpression.Compile(sendPasswordKeysdontInterpretSymbols, nameof(sendPasswordKeysdontInterpretSymbols), required: false);
+            var __workflow_sendPasswordKeyspasswordContainsStoredPassword = WorkflowExpression.Compile(sendPasswordKeyspasswordContainsStoredPassword, nameof(sendPasswordKeyspasswordContainsStoredPassword), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SendPasswordKeys";
@@ -2773,8 +2578,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ClearClipboard(Expression<Func<string>> clearClipboardworkflow)
         {
-            var __workflow_clearClipboardworkflow = clearClipboardworkflow == null ? null : WorkflowExpression.Compile(clearClipboardworkflow);
-            WorkflowExpression.Validate(__workflow_clearClipboardworkflow, nameof(clearClipboardworkflow), required: true);
+            var __workflow_clearClipboardworkflow = WorkflowExpression.Compile(clearClipboardworkflow, nameof(clearClipboardworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/ClearClipboard";
@@ -2796,10 +2600,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetClipboardData(Expression<Func<string>> setClipboardDataworkflow, Expression<Func<string>> setClipboardDatanewClipboardData = null)
         {
-            var __workflow_setClipboardDataworkflow = setClipboardDataworkflow == null ? null : WorkflowExpression.Compile(setClipboardDataworkflow);
-            WorkflowExpression.Validate(__workflow_setClipboardDataworkflow, nameof(setClipboardDataworkflow), required: true);
-            var __workflow_setClipboardDatanewClipboardData = setClipboardDatanewClipboardData == null ? null : WorkflowExpression.Compile(setClipboardDatanewClipboardData);
-            WorkflowExpression.Validate(__workflow_setClipboardDatanewClipboardData, nameof(setClipboardDatanewClipboardData), required: false);
+            var __workflow_setClipboardDataworkflow = WorkflowExpression.Compile(setClipboardDataworkflow, nameof(setClipboardDataworkflow), required: true);
+            var __workflow_setClipboardDatanewClipboardData = WorkflowExpression.Compile(setClipboardDatanewClipboardData, nameof(setClipboardDatanewClipboardData), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SetClipboardData";
@@ -2827,8 +2629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetClipboardDataResponse> GetClipboardData(Expression<Func<string>> getClipboardDataworkflow)
         {
-            var __workflow_getClipboardDataworkflow = getClipboardDataworkflow == null ? null : WorkflowExpression.Compile(getClipboardDataworkflow);
-            WorkflowExpression.Validate(__workflow_getClipboardDataworkflow, nameof(getClipboardDataworkflow), required: true);
+            var __workflow_getClipboardDataworkflow = WorkflowExpression.Compile(getClipboardDataworkflow, nameof(getClipboardDataworkflow), required: true);
             return new DeferredBodyAction<GetClipboardDataResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetClipboardData";
@@ -2850,30 +2651,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TakeScreenshotResponse> TakeScreenshot(Expression<Func<string>> takeScreenshotworkflow, Expression<Func<bool>> takeScreenshotfullscreen = null, Expression<Func<int>> takeScreenshotleftXPixels = null, Expression<Func<int>> takeScreenshottopYPixels = null, Expression<Func<int>> takeScreenshotwidthPixels = null, Expression<Func<int>> takeScreenshotheightPixels = null, Expression<Func<takeScreenshotimageFormatInput>> takeScreenshotimageFormat = null, Expression<Func<bool>> takeScreenshotuseDisplayDevice = null, Expression<Func<bool>> takeScreenshotraiseExceptionOnError = null, Expression<Func<bool>> takeScreenshothideAgent = null, Expression<Func<bool>> takeScreenshotusePhysicalCoordinates = null, Expression<Func<int>> takeScreenshotdisplayDeviceId = null)
         {
-            var __workflow_takeScreenshotworkflow = takeScreenshotworkflow == null ? null : WorkflowExpression.Compile(takeScreenshotworkflow);
-            WorkflowExpression.Validate(__workflow_takeScreenshotworkflow, nameof(takeScreenshotworkflow), required: true);
-            var __workflow_takeScreenshotfullscreen = takeScreenshotfullscreen == null ? null : WorkflowExpression.Compile(takeScreenshotfullscreen);
-            WorkflowExpression.Validate(__workflow_takeScreenshotfullscreen, nameof(takeScreenshotfullscreen), required: false);
-            var __workflow_takeScreenshotleftXPixels = takeScreenshotleftXPixels == null ? null : WorkflowExpression.Compile(takeScreenshotleftXPixels);
-            WorkflowExpression.Validate(__workflow_takeScreenshotleftXPixels, nameof(takeScreenshotleftXPixels), required: false);
-            var __workflow_takeScreenshottopYPixels = takeScreenshottopYPixels == null ? null : WorkflowExpression.Compile(takeScreenshottopYPixels);
-            WorkflowExpression.Validate(__workflow_takeScreenshottopYPixels, nameof(takeScreenshottopYPixels), required: false);
-            var __workflow_takeScreenshotwidthPixels = takeScreenshotwidthPixels == null ? null : WorkflowExpression.Compile(takeScreenshotwidthPixels);
-            WorkflowExpression.Validate(__workflow_takeScreenshotwidthPixels, nameof(takeScreenshotwidthPixels), required: false);
-            var __workflow_takeScreenshotheightPixels = takeScreenshotheightPixels == null ? null : WorkflowExpression.Compile(takeScreenshotheightPixels);
-            WorkflowExpression.Validate(__workflow_takeScreenshotheightPixels, nameof(takeScreenshotheightPixels), required: false);
-            var __workflow_takeScreenshotimageFormat = takeScreenshotimageFormat == null ? null : WorkflowExpression.Compile(takeScreenshotimageFormat);
-            WorkflowExpression.Validate(__workflow_takeScreenshotimageFormat, nameof(takeScreenshotimageFormat), required: false);
-            var __workflow_takeScreenshotuseDisplayDevice = takeScreenshotuseDisplayDevice == null ? null : WorkflowExpression.Compile(takeScreenshotuseDisplayDevice);
-            WorkflowExpression.Validate(__workflow_takeScreenshotuseDisplayDevice, nameof(takeScreenshotuseDisplayDevice), required: false);
-            var __workflow_takeScreenshotraiseExceptionOnError = takeScreenshotraiseExceptionOnError == null ? null : WorkflowExpression.Compile(takeScreenshotraiseExceptionOnError);
-            WorkflowExpression.Validate(__workflow_takeScreenshotraiseExceptionOnError, nameof(takeScreenshotraiseExceptionOnError), required: false);
-            var __workflow_takeScreenshothideAgent = takeScreenshothideAgent == null ? null : WorkflowExpression.Compile(takeScreenshothideAgent);
-            WorkflowExpression.Validate(__workflow_takeScreenshothideAgent, nameof(takeScreenshothideAgent), required: false);
-            var __workflow_takeScreenshotusePhysicalCoordinates = takeScreenshotusePhysicalCoordinates == null ? null : WorkflowExpression.Compile(takeScreenshotusePhysicalCoordinates);
-            WorkflowExpression.Validate(__workflow_takeScreenshotusePhysicalCoordinates, nameof(takeScreenshotusePhysicalCoordinates), required: false);
-            var __workflow_takeScreenshotdisplayDeviceId = takeScreenshotdisplayDeviceId == null ? null : WorkflowExpression.Compile(takeScreenshotdisplayDeviceId);
-            WorkflowExpression.Validate(__workflow_takeScreenshotdisplayDeviceId, nameof(takeScreenshotdisplayDeviceId), required: false);
+            var __workflow_takeScreenshotworkflow = WorkflowExpression.Compile(takeScreenshotworkflow, nameof(takeScreenshotworkflow), required: true);
+            var __workflow_takeScreenshotfullscreen = WorkflowExpression.Compile(takeScreenshotfullscreen, nameof(takeScreenshotfullscreen), required: false);
+            var __workflow_takeScreenshotleftXPixels = WorkflowExpression.Compile(takeScreenshotleftXPixels, nameof(takeScreenshotleftXPixels), required: false);
+            var __workflow_takeScreenshottopYPixels = WorkflowExpression.Compile(takeScreenshottopYPixels, nameof(takeScreenshottopYPixels), required: false);
+            var __workflow_takeScreenshotwidthPixels = WorkflowExpression.Compile(takeScreenshotwidthPixels, nameof(takeScreenshotwidthPixels), required: false);
+            var __workflow_takeScreenshotheightPixels = WorkflowExpression.Compile(takeScreenshotheightPixels, nameof(takeScreenshotheightPixels), required: false);
+            var __workflow_takeScreenshotimageFormat = WorkflowExpression.Compile(takeScreenshotimageFormat, nameof(takeScreenshotimageFormat), required: false);
+            var __workflow_takeScreenshotuseDisplayDevice = WorkflowExpression.Compile(takeScreenshotuseDisplayDevice, nameof(takeScreenshotuseDisplayDevice), required: false);
+            var __workflow_takeScreenshotraiseExceptionOnError = WorkflowExpression.Compile(takeScreenshotraiseExceptionOnError, nameof(takeScreenshotraiseExceptionOnError), required: false);
+            var __workflow_takeScreenshothideAgent = WorkflowExpression.Compile(takeScreenshothideAgent, nameof(takeScreenshothideAgent), required: false);
+            var __workflow_takeScreenshotusePhysicalCoordinates = WorkflowExpression.Compile(takeScreenshotusePhysicalCoordinates, nameof(takeScreenshotusePhysicalCoordinates), required: false);
+            var __workflow_takeScreenshotdisplayDeviceId = WorkflowExpression.Compile(takeScreenshotdisplayDeviceId, nameof(takeScreenshotdisplayDeviceId), required: false);
             return new DeferredBodyAction<TakeScreenshotResponse>(() =>
             {
                 var apiCallPath = "/Environment/TakeScreenshot";
@@ -3011,8 +2800,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetEnvironmentInfoResponse> GetEnvironmentInfo(Expression<Func<string>> getEnvironmentInfoworkflow)
         {
-            var __workflow_getEnvironmentInfoworkflow = getEnvironmentInfoworkflow == null ? null : WorkflowExpression.Compile(getEnvironmentInfoworkflow);
-            WorkflowExpression.Validate(__workflow_getEnvironmentInfoworkflow, nameof(getEnvironmentInfoworkflow), required: true);
+            var __workflow_getEnvironmentInfoworkflow = WorkflowExpression.Compile(getEnvironmentInfoworkflow, nameof(getEnvironmentInfoworkflow), required: true);
             return new DeferredBodyAction<GetEnvironmentInfoResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetEnvironmentInfo";
@@ -3034,8 +2822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<IsScreenReaderEnabledResponse> IsScreenReaderEnabled(Expression<Func<string>> isScreenReaderEnabledworkflow)
         {
-            var __workflow_isScreenReaderEnabledworkflow = isScreenReaderEnabledworkflow == null ? null : WorkflowExpression.Compile(isScreenReaderEnabledworkflow);
-            WorkflowExpression.Validate(__workflow_isScreenReaderEnabledworkflow, nameof(isScreenReaderEnabledworkflow), required: true);
+            var __workflow_isScreenReaderEnabledworkflow = WorkflowExpression.Compile(isScreenReaderEnabledworkflow, nameof(isScreenReaderEnabledworkflow), required: true);
             return new DeferredBodyAction<IsScreenReaderEnabledResponse>(() =>
             {
                 var apiCallPath = "/Environment/IsScreenReaderEnabled";
@@ -3057,10 +2844,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetScreenReader(Expression<Func<string>> setScreenReaderworkflow, Expression<Func<bool>> setScreenReaderenableScreenReader = null)
         {
-            var __workflow_setScreenReaderworkflow = setScreenReaderworkflow == null ? null : WorkflowExpression.Compile(setScreenReaderworkflow);
-            WorkflowExpression.Validate(__workflow_setScreenReaderworkflow, nameof(setScreenReaderworkflow), required: true);
-            var __workflow_setScreenReaderenableScreenReader = setScreenReaderenableScreenReader == null ? null : WorkflowExpression.Compile(setScreenReaderenableScreenReader);
-            WorkflowExpression.Validate(__workflow_setScreenReaderenableScreenReader, nameof(setScreenReaderenableScreenReader), required: false);
+            var __workflow_setScreenReaderworkflow = WorkflowExpression.Compile(setScreenReaderworkflow, nameof(setScreenReaderworkflow), required: true);
+            var __workflow_setScreenReaderenableScreenReader = WorkflowExpression.Compile(setScreenReaderenableScreenReader, nameof(setScreenReaderenableScreenReader), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Environment/SetScreenReader";
@@ -3098,10 +2883,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetParentProcessIdResponse> GetParentProcessId(Expression<Func<int>> getParentProcessIdprocessId, Expression<Func<string>> getParentProcessIdworkflow)
         {
-            var __workflow_getParentProcessIdprocessId = getParentProcessIdprocessId == null ? null : WorkflowExpression.Compile(getParentProcessIdprocessId);
-            WorkflowExpression.Validate(__workflow_getParentProcessIdprocessId, nameof(getParentProcessIdprocessId), required: true);
-            var __workflow_getParentProcessIdworkflow = getParentProcessIdworkflow == null ? null : WorkflowExpression.Compile(getParentProcessIdworkflow);
-            WorkflowExpression.Validate(__workflow_getParentProcessIdworkflow, nameof(getParentProcessIdworkflow), required: true);
+            var __workflow_getParentProcessIdprocessId = WorkflowExpression.Compile(getParentProcessIdprocessId, nameof(getParentProcessIdprocessId), required: true);
+            var __workflow_getParentProcessIdworkflow = WorkflowExpression.Compile(getParentProcessIdworkflow, nameof(getParentProcessIdworkflow), required: true);
             return new DeferredBodyAction<GetParentProcessIdResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetParentProcessId";
@@ -3125,10 +2908,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetProcessIdCommandLineResponse> GetProcessIdCommandLine(Expression<Func<int>> getProcessIdCommandLineprocessId, Expression<Func<string>> getProcessIdCommandLineworkflow)
         {
-            var __workflow_getProcessIdCommandLineprocessId = getProcessIdCommandLineprocessId == null ? null : WorkflowExpression.Compile(getProcessIdCommandLineprocessId);
-            WorkflowExpression.Validate(__workflow_getProcessIdCommandLineprocessId, nameof(getProcessIdCommandLineprocessId), required: true);
-            var __workflow_getProcessIdCommandLineworkflow = getProcessIdCommandLineworkflow == null ? null : WorkflowExpression.Compile(getProcessIdCommandLineworkflow);
-            WorkflowExpression.Validate(__workflow_getProcessIdCommandLineworkflow, nameof(getProcessIdCommandLineworkflow), required: true);
+            var __workflow_getProcessIdCommandLineprocessId = WorkflowExpression.Compile(getProcessIdCommandLineprocessId, nameof(getProcessIdCommandLineprocessId), required: true);
+            var __workflow_getProcessIdCommandLineworkflow = WorkflowExpression.Compile(getProcessIdCommandLineworkflow, nameof(getProcessIdCommandLineworkflow), required: true);
             return new DeferredBodyAction<GetProcessIdCommandLineResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetProcessIdCommandLine";
@@ -3152,8 +2933,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLastInputInfoResponse> GetLastInputInfo(Expression<Func<string>> getLastInputInfoworkflow)
         {
-            var __workflow_getLastInputInfoworkflow = getLastInputInfoworkflow == null ? null : WorkflowExpression.Compile(getLastInputInfoworkflow);
-            WorkflowExpression.Validate(__workflow_getLastInputInfoworkflow, nameof(getLastInputInfoworkflow), required: true);
+            var __workflow_getLastInputInfoworkflow = WorkflowExpression.Compile(getLastInputInfoworkflow, nameof(getLastInputInfoworkflow), required: true);
             return new DeferredBodyAction<GetLastInputInfoResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetLastInputInfo";
@@ -3175,20 +2955,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KeepSessionAliveResponse> KeepSessionAlive(Expression<Func<string>> keepSessionAliveworkflow, Expression<Func<int>> keepSessionAlivexWiggle = null, Expression<Func<int>> keepSessionAliveyWiggle = null, Expression<Func<double>> keepSessionAlivewiggleDelayInSeconds = null, Expression<Func<int>> keepSessionAliveidleThresholdInSeconds = null, Expression<Func<int>> keepSessionAliveidleCheckPeriodInSeconds = null, Expression<Func<int>> keepSessionAlivetotalKeepaliveRuntimeInSeconds = null)
         {
-            var __workflow_keepSessionAliveworkflow = keepSessionAliveworkflow == null ? null : WorkflowExpression.Compile(keepSessionAliveworkflow);
-            WorkflowExpression.Validate(__workflow_keepSessionAliveworkflow, nameof(keepSessionAliveworkflow), required: true);
-            var __workflow_keepSessionAlivexWiggle = keepSessionAlivexWiggle == null ? null : WorkflowExpression.Compile(keepSessionAlivexWiggle);
-            WorkflowExpression.Validate(__workflow_keepSessionAlivexWiggle, nameof(keepSessionAlivexWiggle), required: false);
-            var __workflow_keepSessionAliveyWiggle = keepSessionAliveyWiggle == null ? null : WorkflowExpression.Compile(keepSessionAliveyWiggle);
-            WorkflowExpression.Validate(__workflow_keepSessionAliveyWiggle, nameof(keepSessionAliveyWiggle), required: false);
-            var __workflow_keepSessionAlivewiggleDelayInSeconds = keepSessionAlivewiggleDelayInSeconds == null ? null : WorkflowExpression.Compile(keepSessionAlivewiggleDelayInSeconds);
-            WorkflowExpression.Validate(__workflow_keepSessionAlivewiggleDelayInSeconds, nameof(keepSessionAlivewiggleDelayInSeconds), required: false);
-            var __workflow_keepSessionAliveidleThresholdInSeconds = keepSessionAliveidleThresholdInSeconds == null ? null : WorkflowExpression.Compile(keepSessionAliveidleThresholdInSeconds);
-            WorkflowExpression.Validate(__workflow_keepSessionAliveidleThresholdInSeconds, nameof(keepSessionAliveidleThresholdInSeconds), required: false);
-            var __workflow_keepSessionAliveidleCheckPeriodInSeconds = keepSessionAliveidleCheckPeriodInSeconds == null ? null : WorkflowExpression.Compile(keepSessionAliveidleCheckPeriodInSeconds);
-            WorkflowExpression.Validate(__workflow_keepSessionAliveidleCheckPeriodInSeconds, nameof(keepSessionAliveidleCheckPeriodInSeconds), required: false);
-            var __workflow_keepSessionAlivetotalKeepaliveRuntimeInSeconds = keepSessionAlivetotalKeepaliveRuntimeInSeconds == null ? null : WorkflowExpression.Compile(keepSessionAlivetotalKeepaliveRuntimeInSeconds);
-            WorkflowExpression.Validate(__workflow_keepSessionAlivetotalKeepaliveRuntimeInSeconds, nameof(keepSessionAlivetotalKeepaliveRuntimeInSeconds), required: false);
+            var __workflow_keepSessionAliveworkflow = WorkflowExpression.Compile(keepSessionAliveworkflow, nameof(keepSessionAliveworkflow), required: true);
+            var __workflow_keepSessionAlivexWiggle = WorkflowExpression.Compile(keepSessionAlivexWiggle, nameof(keepSessionAlivexWiggle), required: false);
+            var __workflow_keepSessionAliveyWiggle = WorkflowExpression.Compile(keepSessionAliveyWiggle, nameof(keepSessionAliveyWiggle), required: false);
+            var __workflow_keepSessionAlivewiggleDelayInSeconds = WorkflowExpression.Compile(keepSessionAlivewiggleDelayInSeconds, nameof(keepSessionAlivewiggleDelayInSeconds), required: false);
+            var __workflow_keepSessionAliveidleThresholdInSeconds = WorkflowExpression.Compile(keepSessionAliveidleThresholdInSeconds, nameof(keepSessionAliveidleThresholdInSeconds), required: false);
+            var __workflow_keepSessionAliveidleCheckPeriodInSeconds = WorkflowExpression.Compile(keepSessionAliveidleCheckPeriodInSeconds, nameof(keepSessionAliveidleCheckPeriodInSeconds), required: false);
+            var __workflow_keepSessionAlivetotalKeepaliveRuntimeInSeconds = WorkflowExpression.Compile(keepSessionAlivetotalKeepaliveRuntimeInSeconds, nameof(keepSessionAlivetotalKeepaliveRuntimeInSeconds), required: false);
             return new DeferredBodyAction<KeepSessionAliveResponse>(() =>
             {
                 var apiCallPath = "/Environment/KeepSessionAlive";
@@ -3296,8 +3069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<StopKeepSessionAliveResponse> StopKeepSessionAlive(Expression<Func<string>> stopKeepSessionAliveworkflow)
         {
-            var __workflow_stopKeepSessionAliveworkflow = stopKeepSessionAliveworkflow == null ? null : WorkflowExpression.Compile(stopKeepSessionAliveworkflow);
-            WorkflowExpression.Validate(__workflow_stopKeepSessionAliveworkflow, nameof(stopKeepSessionAliveworkflow), required: true);
+            var __workflow_stopKeepSessionAliveworkflow = WorkflowExpression.Compile(stopKeepSessionAliveworkflow, nameof(stopKeepSessionAliveworkflow), required: true);
             return new DeferredBodyAction<StopKeepSessionAliveResponse>(() =>
             {
                 var apiCallPath = "/Environment/StopKeepSessionAlive";
@@ -3319,12 +3091,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CopyFileToClipboardResponse> CopyFileToClipboard(Expression<Func<string>> copyFileToClipboardfilepath, Expression<Func<string>> copyFileToClipboardworkflow, Expression<Func<bool>> copyFileToClipboardcut = null)
         {
-            var __workflow_copyFileToClipboardfilepath = copyFileToClipboardfilepath == null ? null : WorkflowExpression.Compile(copyFileToClipboardfilepath);
-            WorkflowExpression.Validate(__workflow_copyFileToClipboardfilepath, nameof(copyFileToClipboardfilepath), required: true);
-            var __workflow_copyFileToClipboardworkflow = copyFileToClipboardworkflow == null ? null : WorkflowExpression.Compile(copyFileToClipboardworkflow);
-            WorkflowExpression.Validate(__workflow_copyFileToClipboardworkflow, nameof(copyFileToClipboardworkflow), required: true);
-            var __workflow_copyFileToClipboardcut = copyFileToClipboardcut == null ? null : WorkflowExpression.Compile(copyFileToClipboardcut);
-            WorkflowExpression.Validate(__workflow_copyFileToClipboardcut, nameof(copyFileToClipboardcut), required: false);
+            var __workflow_copyFileToClipboardfilepath = WorkflowExpression.Compile(copyFileToClipboardfilepath, nameof(copyFileToClipboardfilepath), required: true);
+            var __workflow_copyFileToClipboardworkflow = WorkflowExpression.Compile(copyFileToClipboardworkflow, nameof(copyFileToClipboardworkflow), required: true);
+            var __workflow_copyFileToClipboardcut = WorkflowExpression.Compile(copyFileToClipboardcut, nameof(copyFileToClipboardcut), required: false);
             return new DeferredBodyAction<CopyFileToClipboardResponse>(() =>
             {
                 var apiCallPath = "/Environment/CopyFileToClipboard";
@@ -3364,8 +3133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteSessionInfoResponse> GetRemoteSessionInfo(Expression<Func<string>> getRemoteSessionInfoworkflow)
         {
-            var __workflow_getRemoteSessionInfoworkflow = getRemoteSessionInfoworkflow == null ? null : WorkflowExpression.Compile(getRemoteSessionInfoworkflow);
-            WorkflowExpression.Validate(__workflow_getRemoteSessionInfoworkflow, nameof(getRemoteSessionInfoworkflow), required: true);
+            var __workflow_getRemoteSessionInfoworkflow = WorkflowExpression.Compile(getRemoteSessionInfoworkflow, nameof(getRemoteSessionInfoworkflow), required: true);
             return new DeferredBodyAction<GetRemoteSessionInfoResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetRemoteSessionInfo";
@@ -3387,30 +3155,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GeneratePasswordResponse> GeneratePassword(Expression<Func<string>> generatePasswordpasswordFormat, Expression<Func<string>> generatePasswordworkflow, Expression<Func<int>> generatePasswordminimumLength = null, Expression<Func<bool>> generatePasswordreturnAsPlainText = null, Expression<Func<string>> generatePasswordstorePasswordAsIdentifier = null, Expression<Func<string>> generatePasswordsupportedSymbols = null, Expression<Func<bool>> generatePasswordattemptUniquePasswords = null, Expression<Func<generatePasswordgenerateAtInput>> generatePasswordgenerateAt = null, Expression<Func<int>> generatePasswordminimumLowercase = null, Expression<Func<int>> generatePasswordminimumUppercase = null, Expression<Func<int>> generatePasswordminimumNumbers = null, Expression<Func<int>> generatePasswordminimumSymbols = null)
         {
-            var __workflow_generatePasswordpasswordFormat = generatePasswordpasswordFormat == null ? null : WorkflowExpression.Compile(generatePasswordpasswordFormat);
-            WorkflowExpression.Validate(__workflow_generatePasswordpasswordFormat, nameof(generatePasswordpasswordFormat), required: true);
-            var __workflow_generatePasswordworkflow = generatePasswordworkflow == null ? null : WorkflowExpression.Compile(generatePasswordworkflow);
-            WorkflowExpression.Validate(__workflow_generatePasswordworkflow, nameof(generatePasswordworkflow), required: true);
-            var __workflow_generatePasswordminimumLength = generatePasswordminimumLength == null ? null : WorkflowExpression.Compile(generatePasswordminimumLength);
-            WorkflowExpression.Validate(__workflow_generatePasswordminimumLength, nameof(generatePasswordminimumLength), required: false);
-            var __workflow_generatePasswordreturnAsPlainText = generatePasswordreturnAsPlainText == null ? null : WorkflowExpression.Compile(generatePasswordreturnAsPlainText);
-            WorkflowExpression.Validate(__workflow_generatePasswordreturnAsPlainText, nameof(generatePasswordreturnAsPlainText), required: false);
-            var __workflow_generatePasswordstorePasswordAsIdentifier = generatePasswordstorePasswordAsIdentifier == null ? null : WorkflowExpression.Compile(generatePasswordstorePasswordAsIdentifier);
-            WorkflowExpression.Validate(__workflow_generatePasswordstorePasswordAsIdentifier, nameof(generatePasswordstorePasswordAsIdentifier), required: false);
-            var __workflow_generatePasswordsupportedSymbols = generatePasswordsupportedSymbols == null ? null : WorkflowExpression.Compile(generatePasswordsupportedSymbols);
-            WorkflowExpression.Validate(__workflow_generatePasswordsupportedSymbols, nameof(generatePasswordsupportedSymbols), required: false);
-            var __workflow_generatePasswordattemptUniquePasswords = generatePasswordattemptUniquePasswords == null ? null : WorkflowExpression.Compile(generatePasswordattemptUniquePasswords);
-            WorkflowExpression.Validate(__workflow_generatePasswordattemptUniquePasswords, nameof(generatePasswordattemptUniquePasswords), required: false);
-            var __workflow_generatePasswordgenerateAt = generatePasswordgenerateAt == null ? null : WorkflowExpression.Compile(generatePasswordgenerateAt);
-            WorkflowExpression.Validate(__workflow_generatePasswordgenerateAt, nameof(generatePasswordgenerateAt), required: false);
-            var __workflow_generatePasswordminimumLowercase = generatePasswordminimumLowercase == null ? null : WorkflowExpression.Compile(generatePasswordminimumLowercase);
-            WorkflowExpression.Validate(__workflow_generatePasswordminimumLowercase, nameof(generatePasswordminimumLowercase), required: false);
-            var __workflow_generatePasswordminimumUppercase = generatePasswordminimumUppercase == null ? null : WorkflowExpression.Compile(generatePasswordminimumUppercase);
-            WorkflowExpression.Validate(__workflow_generatePasswordminimumUppercase, nameof(generatePasswordminimumUppercase), required: false);
-            var __workflow_generatePasswordminimumNumbers = generatePasswordminimumNumbers == null ? null : WorkflowExpression.Compile(generatePasswordminimumNumbers);
-            WorkflowExpression.Validate(__workflow_generatePasswordminimumNumbers, nameof(generatePasswordminimumNumbers), required: false);
-            var __workflow_generatePasswordminimumSymbols = generatePasswordminimumSymbols == null ? null : WorkflowExpression.Compile(generatePasswordminimumSymbols);
-            WorkflowExpression.Validate(__workflow_generatePasswordminimumSymbols, nameof(generatePasswordminimumSymbols), required: false);
+            var __workflow_generatePasswordpasswordFormat = WorkflowExpression.Compile(generatePasswordpasswordFormat, nameof(generatePasswordpasswordFormat), required: true);
+            var __workflow_generatePasswordworkflow = WorkflowExpression.Compile(generatePasswordworkflow, nameof(generatePasswordworkflow), required: true);
+            var __workflow_generatePasswordminimumLength = WorkflowExpression.Compile(generatePasswordminimumLength, nameof(generatePasswordminimumLength), required: false);
+            var __workflow_generatePasswordreturnAsPlainText = WorkflowExpression.Compile(generatePasswordreturnAsPlainText, nameof(generatePasswordreturnAsPlainText), required: false);
+            var __workflow_generatePasswordstorePasswordAsIdentifier = WorkflowExpression.Compile(generatePasswordstorePasswordAsIdentifier, nameof(generatePasswordstorePasswordAsIdentifier), required: false);
+            var __workflow_generatePasswordsupportedSymbols = WorkflowExpression.Compile(generatePasswordsupportedSymbols, nameof(generatePasswordsupportedSymbols), required: false);
+            var __workflow_generatePasswordattemptUniquePasswords = WorkflowExpression.Compile(generatePasswordattemptUniquePasswords, nameof(generatePasswordattemptUniquePasswords), required: false);
+            var __workflow_generatePasswordgenerateAt = WorkflowExpression.Compile(generatePasswordgenerateAt, nameof(generatePasswordgenerateAt), required: false);
+            var __workflow_generatePasswordminimumLowercase = WorkflowExpression.Compile(generatePasswordminimumLowercase, nameof(generatePasswordminimumLowercase), required: false);
+            var __workflow_generatePasswordminimumUppercase = WorkflowExpression.Compile(generatePasswordminimumUppercase, nameof(generatePasswordminimumUppercase), required: false);
+            var __workflow_generatePasswordminimumNumbers = WorkflowExpression.Compile(generatePasswordminimumNumbers, nameof(generatePasswordminimumNumbers), required: false);
+            var __workflow_generatePasswordminimumSymbols = WorkflowExpression.Compile(generatePasswordminimumSymbols, nameof(generatePasswordminimumSymbols), required: false);
             return new DeferredBodyAction<GeneratePasswordResponse>(() =>
             {
                 var apiCallPath = "/Environment/GeneratePassword";
@@ -3564,10 +3320,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetStoredPasswordResponse> GetStoredPassword(Expression<Func<string>> getStoredPasswordworkflow, Expression<Func<string>> getStoredPasswordpasswordIdentifier = null)
         {
-            var __workflow_getStoredPasswordworkflow = getStoredPasswordworkflow == null ? null : WorkflowExpression.Compile(getStoredPasswordworkflow);
-            WorkflowExpression.Validate(__workflow_getStoredPasswordworkflow, nameof(getStoredPasswordworkflow), required: true);
-            var __workflow_getStoredPasswordpasswordIdentifier = getStoredPasswordpasswordIdentifier == null ? null : WorkflowExpression.Compile(getStoredPasswordpasswordIdentifier);
-            WorkflowExpression.Validate(__workflow_getStoredPasswordpasswordIdentifier, nameof(getStoredPasswordpasswordIdentifier), required: false);
+            var __workflow_getStoredPasswordworkflow = WorkflowExpression.Compile(getStoredPasswordworkflow, nameof(getStoredPasswordworkflow), required: true);
+            var __workflow_getStoredPasswordpasswordIdentifier = WorkflowExpression.Compile(getStoredPasswordpasswordIdentifier, nameof(getStoredPasswordpasswordIdentifier), required: false);
             return new DeferredBodyAction<GetStoredPasswordResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetStoredPassword";
@@ -3595,10 +3349,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ExpandPasswordStringResponse> ExpandPasswordString(Expression<Func<string>> expandPasswordStringworkflow, Expression<Func<string>> expandPasswordStringinputString = null)
         {
-            var __workflow_expandPasswordStringworkflow = expandPasswordStringworkflow == null ? null : WorkflowExpression.Compile(expandPasswordStringworkflow);
-            WorkflowExpression.Validate(__workflow_expandPasswordStringworkflow, nameof(expandPasswordStringworkflow), required: true);
-            var __workflow_expandPasswordStringinputString = expandPasswordStringinputString == null ? null : WorkflowExpression.Compile(expandPasswordStringinputString);
-            WorkflowExpression.Validate(__workflow_expandPasswordStringinputString, nameof(expandPasswordStringinputString), required: false);
+            var __workflow_expandPasswordStringworkflow = WorkflowExpression.Compile(expandPasswordStringworkflow, nameof(expandPasswordStringworkflow), required: true);
+            var __workflow_expandPasswordStringinputString = WorkflowExpression.Compile(expandPasswordStringinputString, nameof(expandPasswordStringinputString), required: false);
             return new DeferredBodyAction<ExpandPasswordStringResponse>(() =>
             {
                 var apiCallPath = "/Environment/ExpandPasswordString";
@@ -3626,12 +3378,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<StorePasswordInAgentMemoryResponse> StorePasswordInAgentMemory(Expression<Func<string>> storePasswordInAgentMemoryidentifier, Expression<Func<string>> storePasswordInAgentMemorypassword, Expression<Func<string>> storePasswordInAgentMemoryworkflow)
         {
-            var __workflow_storePasswordInAgentMemoryidentifier = storePasswordInAgentMemoryidentifier == null ? null : WorkflowExpression.Compile(storePasswordInAgentMemoryidentifier);
-            WorkflowExpression.Validate(__workflow_storePasswordInAgentMemoryidentifier, nameof(storePasswordInAgentMemoryidentifier), required: true);
-            var __workflow_storePasswordInAgentMemorypassword = storePasswordInAgentMemorypassword == null ? null : WorkflowExpression.Compile(storePasswordInAgentMemorypassword);
-            WorkflowExpression.Validate(__workflow_storePasswordInAgentMemorypassword, nameof(storePasswordInAgentMemorypassword), required: true);
-            var __workflow_storePasswordInAgentMemoryworkflow = storePasswordInAgentMemoryworkflow == null ? null : WorkflowExpression.Compile(storePasswordInAgentMemoryworkflow);
-            WorkflowExpression.Validate(__workflow_storePasswordInAgentMemoryworkflow, nameof(storePasswordInAgentMemoryworkflow), required: true);
+            var __workflow_storePasswordInAgentMemoryidentifier = WorkflowExpression.Compile(storePasswordInAgentMemoryidentifier, nameof(storePasswordInAgentMemoryidentifier), required: true);
+            var __workflow_storePasswordInAgentMemorypassword = WorkflowExpression.Compile(storePasswordInAgentMemorypassword, nameof(storePasswordInAgentMemorypassword), required: true);
+            var __workflow_storePasswordInAgentMemoryworkflow = WorkflowExpression.Compile(storePasswordInAgentMemoryworkflow, nameof(storePasswordInAgentMemoryworkflow), required: true);
             return new DeferredBodyAction<StorePasswordInAgentMemoryResponse>(() =>
             {
                 var apiCallPath = "/Environment/StorePasswordInAgentMemory";
@@ -3657,12 +3406,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DeletePasswordInAgentMemoryResponse> DeletePasswordInAgentMemory(Expression<Func<string>> deletePasswordInAgentMemoryworkflow, Expression<Func<bool>> deletePasswordInAgentMemorydeleteAllPasswords = null, Expression<Func<string>> deletePasswordInAgentMemoryidentifier = null)
         {
-            var __workflow_deletePasswordInAgentMemoryworkflow = deletePasswordInAgentMemoryworkflow == null ? null : WorkflowExpression.Compile(deletePasswordInAgentMemoryworkflow);
-            WorkflowExpression.Validate(__workflow_deletePasswordInAgentMemoryworkflow, nameof(deletePasswordInAgentMemoryworkflow), required: true);
-            var __workflow_deletePasswordInAgentMemorydeleteAllPasswords = deletePasswordInAgentMemorydeleteAllPasswords == null ? null : WorkflowExpression.Compile(deletePasswordInAgentMemorydeleteAllPasswords);
-            WorkflowExpression.Validate(__workflow_deletePasswordInAgentMemorydeleteAllPasswords, nameof(deletePasswordInAgentMemorydeleteAllPasswords), required: false);
-            var __workflow_deletePasswordInAgentMemoryidentifier = deletePasswordInAgentMemoryidentifier == null ? null : WorkflowExpression.Compile(deletePasswordInAgentMemoryidentifier);
-            WorkflowExpression.Validate(__workflow_deletePasswordInAgentMemoryidentifier, nameof(deletePasswordInAgentMemoryidentifier), required: false);
+            var __workflow_deletePasswordInAgentMemoryworkflow = WorkflowExpression.Compile(deletePasswordInAgentMemoryworkflow, nameof(deletePasswordInAgentMemoryworkflow), required: true);
+            var __workflow_deletePasswordInAgentMemorydeleteAllPasswords = WorkflowExpression.Compile(deletePasswordInAgentMemorydeleteAllPasswords, nameof(deletePasswordInAgentMemorydeleteAllPasswords), required: false);
+            var __workflow_deletePasswordInAgentMemoryidentifier = WorkflowExpression.Compile(deletePasswordInAgentMemoryidentifier, nameof(deletePasswordInAgentMemoryidentifier), required: false);
             return new DeferredBodyAction<DeletePasswordInAgentMemoryResponse>(() =>
             {
                 var apiCallPath = "/Environment/DeletePasswordInAgentMemory";
@@ -3706,22 +3452,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CredentialWriteResponse> CredentialWrite(Expression<Func<string>> credentialWritecredentialAddress, Expression<Func<string>> credentialWriteuserName, Expression<Func<string>> credentialWritepassword, Expression<Func<credentialWritecredentialTypeInput>> credentialWritecredentialType, Expression<Func<string>> credentialWriteworkflow, Expression<Func<credentialWritecredentialPersistenceInput>> credentialWritecredentialPersistence = null, Expression<Func<string>> credentialWritesymmetricKey = null, Expression<Func<string>> credentialWritestorePasswordAsIdentifier = null)
         {
-            var __workflow_credentialWritecredentialAddress = credentialWritecredentialAddress == null ? null : WorkflowExpression.Compile(credentialWritecredentialAddress);
-            WorkflowExpression.Validate(__workflow_credentialWritecredentialAddress, nameof(credentialWritecredentialAddress), required: true);
-            var __workflow_credentialWriteuserName = credentialWriteuserName == null ? null : WorkflowExpression.Compile(credentialWriteuserName);
-            WorkflowExpression.Validate(__workflow_credentialWriteuserName, nameof(credentialWriteuserName), required: true);
-            var __workflow_credentialWritepassword = credentialWritepassword == null ? null : WorkflowExpression.Compile(credentialWritepassword);
-            WorkflowExpression.Validate(__workflow_credentialWritepassword, nameof(credentialWritepassword), required: true);
-            var __workflow_credentialWritecredentialType = credentialWritecredentialType == null ? null : WorkflowExpression.Compile(credentialWritecredentialType);
-            WorkflowExpression.Validate(__workflow_credentialWritecredentialType, nameof(credentialWritecredentialType), required: true);
-            var __workflow_credentialWriteworkflow = credentialWriteworkflow == null ? null : WorkflowExpression.Compile(credentialWriteworkflow);
-            WorkflowExpression.Validate(__workflow_credentialWriteworkflow, nameof(credentialWriteworkflow), required: true);
-            var __workflow_credentialWritecredentialPersistence = credentialWritecredentialPersistence == null ? null : WorkflowExpression.Compile(credentialWritecredentialPersistence);
-            WorkflowExpression.Validate(__workflow_credentialWritecredentialPersistence, nameof(credentialWritecredentialPersistence), required: false);
-            var __workflow_credentialWritesymmetricKey = credentialWritesymmetricKey == null ? null : WorkflowExpression.Compile(credentialWritesymmetricKey);
-            WorkflowExpression.Validate(__workflow_credentialWritesymmetricKey, nameof(credentialWritesymmetricKey), required: false);
-            var __workflow_credentialWritestorePasswordAsIdentifier = credentialWritestorePasswordAsIdentifier == null ? null : WorkflowExpression.Compile(credentialWritestorePasswordAsIdentifier);
-            WorkflowExpression.Validate(__workflow_credentialWritestorePasswordAsIdentifier, nameof(credentialWritestorePasswordAsIdentifier), required: false);
+            var __workflow_credentialWritecredentialAddress = WorkflowExpression.Compile(credentialWritecredentialAddress, nameof(credentialWritecredentialAddress), required: true);
+            var __workflow_credentialWriteuserName = WorkflowExpression.Compile(credentialWriteuserName, nameof(credentialWriteuserName), required: true);
+            var __workflow_credentialWritepassword = WorkflowExpression.Compile(credentialWritepassword, nameof(credentialWritepassword), required: true);
+            var __workflow_credentialWritecredentialType = WorkflowExpression.Compile(credentialWritecredentialType, nameof(credentialWritecredentialType), required: true);
+            var __workflow_credentialWriteworkflow = WorkflowExpression.Compile(credentialWriteworkflow, nameof(credentialWriteworkflow), required: true);
+            var __workflow_credentialWritecredentialPersistence = WorkflowExpression.Compile(credentialWritecredentialPersistence, nameof(credentialWritecredentialPersistence), required: false);
+            var __workflow_credentialWritesymmetricKey = WorkflowExpression.Compile(credentialWritesymmetricKey, nameof(credentialWritesymmetricKey), required: false);
+            var __workflow_credentialWritestorePasswordAsIdentifier = WorkflowExpression.Compile(credentialWritestorePasswordAsIdentifier, nameof(credentialWritestorePasswordAsIdentifier), required: false);
             return new DeferredBodyAction<CredentialWriteResponse>(() =>
             {
                 var apiCallPath = "/Environment/CredentialWrite";
@@ -3779,18 +3517,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CredentialReadResponse> CredentialRead(Expression<Func<string>> credentialReadcredentialAddress, Expression<Func<credentialReadcredentialTypeInput>> credentialReadcredentialType, Expression<Func<string>> credentialReadworkflow, Expression<Func<string>> credentialReadsymmetricKey = null, Expression<Func<string>> credentialReadstorePasswordAsIdentifier = null, Expression<Func<bool>> credentialReaddontReturnPassword = null)
         {
-            var __workflow_credentialReadcredentialAddress = credentialReadcredentialAddress == null ? null : WorkflowExpression.Compile(credentialReadcredentialAddress);
-            WorkflowExpression.Validate(__workflow_credentialReadcredentialAddress, nameof(credentialReadcredentialAddress), required: true);
-            var __workflow_credentialReadcredentialType = credentialReadcredentialType == null ? null : WorkflowExpression.Compile(credentialReadcredentialType);
-            WorkflowExpression.Validate(__workflow_credentialReadcredentialType, nameof(credentialReadcredentialType), required: true);
-            var __workflow_credentialReadworkflow = credentialReadworkflow == null ? null : WorkflowExpression.Compile(credentialReadworkflow);
-            WorkflowExpression.Validate(__workflow_credentialReadworkflow, nameof(credentialReadworkflow), required: true);
-            var __workflow_credentialReadsymmetricKey = credentialReadsymmetricKey == null ? null : WorkflowExpression.Compile(credentialReadsymmetricKey);
-            WorkflowExpression.Validate(__workflow_credentialReadsymmetricKey, nameof(credentialReadsymmetricKey), required: false);
-            var __workflow_credentialReadstorePasswordAsIdentifier = credentialReadstorePasswordAsIdentifier == null ? null : WorkflowExpression.Compile(credentialReadstorePasswordAsIdentifier);
-            WorkflowExpression.Validate(__workflow_credentialReadstorePasswordAsIdentifier, nameof(credentialReadstorePasswordAsIdentifier), required: false);
-            var __workflow_credentialReaddontReturnPassword = credentialReaddontReturnPassword == null ? null : WorkflowExpression.Compile(credentialReaddontReturnPassword);
-            WorkflowExpression.Validate(__workflow_credentialReaddontReturnPassword, nameof(credentialReaddontReturnPassword), required: false);
+            var __workflow_credentialReadcredentialAddress = WorkflowExpression.Compile(credentialReadcredentialAddress, nameof(credentialReadcredentialAddress), required: true);
+            var __workflow_credentialReadcredentialType = WorkflowExpression.Compile(credentialReadcredentialType, nameof(credentialReadcredentialType), required: true);
+            var __workflow_credentialReadworkflow = WorkflowExpression.Compile(credentialReadworkflow, nameof(credentialReadworkflow), required: true);
+            var __workflow_credentialReadsymmetricKey = WorkflowExpression.Compile(credentialReadsymmetricKey, nameof(credentialReadsymmetricKey), required: false);
+            var __workflow_credentialReadstorePasswordAsIdentifier = WorkflowExpression.Compile(credentialReadstorePasswordAsIdentifier, nameof(credentialReadstorePasswordAsIdentifier), required: false);
+            var __workflow_credentialReaddontReturnPassword = WorkflowExpression.Compile(credentialReaddontReturnPassword, nameof(credentialReaddontReturnPassword), required: false);
             return new DeferredBodyAction<CredentialReadResponse>(() =>
             {
                 var apiCallPath = "/Environment/CredentialRead";
@@ -3844,12 +3576,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CredentialDeleteResponse> CredentialDelete(Expression<Func<string>> credentialDeletecredentialAddress, Expression<Func<credentialDeletecredentialTypeInput>> credentialDeletecredentialType, Expression<Func<string>> credentialDeleteworkflow)
         {
-            var __workflow_credentialDeletecredentialAddress = credentialDeletecredentialAddress == null ? null : WorkflowExpression.Compile(credentialDeletecredentialAddress);
-            WorkflowExpression.Validate(__workflow_credentialDeletecredentialAddress, nameof(credentialDeletecredentialAddress), required: true);
-            var __workflow_credentialDeletecredentialType = credentialDeletecredentialType == null ? null : WorkflowExpression.Compile(credentialDeletecredentialType);
-            WorkflowExpression.Validate(__workflow_credentialDeletecredentialType, nameof(credentialDeletecredentialType), required: true);
-            var __workflow_credentialDeleteworkflow = credentialDeleteworkflow == null ? null : WorkflowExpression.Compile(credentialDeleteworkflow);
-            WorkflowExpression.Validate(__workflow_credentialDeleteworkflow, nameof(credentialDeleteworkflow), required: true);
+            var __workflow_credentialDeletecredentialAddress = WorkflowExpression.Compile(credentialDeletecredentialAddress, nameof(credentialDeletecredentialAddress), required: true);
+            var __workflow_credentialDeletecredentialType = WorkflowExpression.Compile(credentialDeletecredentialType, nameof(credentialDeletecredentialType), required: true);
+            var __workflow_credentialDeleteworkflow = WorkflowExpression.Compile(credentialDeleteworkflow, nameof(credentialDeleteworkflow), required: true);
             return new DeferredBodyAction<CredentialDeleteResponse>(() =>
             {
                 var apiCallPath = "/Environment/CredentialDelete";
@@ -3875,46 +3604,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GenerateRDPFileResponse> GenerateRDPFile(Expression<Func<string>> generateRDPFileremoteAddress, Expression<Func<string>> generateRDPFileoutputFolderPath, Expression<Func<string>> generateRDPFilerDPFileName, Expression<Func<string>> generateRDPFileworkflow, Expression<Func<bool>> generateRDPFileoverwriteRDPFileIfAlreadyExists = null, Expression<Func<bool>> generateRDPFiletrustRemoteComputer = null, Expression<Func<bool>> generateRDPFilestoreCredentials = null, Expression<Func<string>> generateRDPFileuserName = null, Expression<Func<string>> generateRDPFilepassword = null, Expression<Func<generateRDPFilecredentialTypeInput>> generateRDPFilecredentialType = null, Expression<Func<generateRDPFilecredentialPersistenceInput>> generateRDPFilecredentialPersistence = null, Expression<Func<bool>> generateRDPFileredirectPrinters = null, Expression<Func<bool>> generateRDPFileredirectAllDrives = null, Expression<Func<bool>> generateRDPFileredirectClipboard = null, Expression<Func<bool>> generateRDPFilefullscreen = null, Expression<Func<int>> generateRDPFiledesktopWidth = null, Expression<Func<int>> generateRDPFiledesktopHeight = null, Expression<Func<bool>> generateRDPFileuseMultiMonitor = null, Expression<Func<int>> generateRDPFilesessionBPP = null, Expression<Func<bool>> generateRDPFilesmartSizing = null)
         {
-            var __workflow_generateRDPFileremoteAddress = generateRDPFileremoteAddress == null ? null : WorkflowExpression.Compile(generateRDPFileremoteAddress);
-            WorkflowExpression.Validate(__workflow_generateRDPFileremoteAddress, nameof(generateRDPFileremoteAddress), required: true);
-            var __workflow_generateRDPFileoutputFolderPath = generateRDPFileoutputFolderPath == null ? null : WorkflowExpression.Compile(generateRDPFileoutputFolderPath);
-            WorkflowExpression.Validate(__workflow_generateRDPFileoutputFolderPath, nameof(generateRDPFileoutputFolderPath), required: true);
-            var __workflow_generateRDPFilerDPFileName = generateRDPFilerDPFileName == null ? null : WorkflowExpression.Compile(generateRDPFilerDPFileName);
-            WorkflowExpression.Validate(__workflow_generateRDPFilerDPFileName, nameof(generateRDPFilerDPFileName), required: true);
-            var __workflow_generateRDPFileworkflow = generateRDPFileworkflow == null ? null : WorkflowExpression.Compile(generateRDPFileworkflow);
-            WorkflowExpression.Validate(__workflow_generateRDPFileworkflow, nameof(generateRDPFileworkflow), required: true);
-            var __workflow_generateRDPFileoverwriteRDPFileIfAlreadyExists = generateRDPFileoverwriteRDPFileIfAlreadyExists == null ? null : WorkflowExpression.Compile(generateRDPFileoverwriteRDPFileIfAlreadyExists);
-            WorkflowExpression.Validate(__workflow_generateRDPFileoverwriteRDPFileIfAlreadyExists, nameof(generateRDPFileoverwriteRDPFileIfAlreadyExists), required: false);
-            var __workflow_generateRDPFiletrustRemoteComputer = generateRDPFiletrustRemoteComputer == null ? null : WorkflowExpression.Compile(generateRDPFiletrustRemoteComputer);
-            WorkflowExpression.Validate(__workflow_generateRDPFiletrustRemoteComputer, nameof(generateRDPFiletrustRemoteComputer), required: false);
-            var __workflow_generateRDPFilestoreCredentials = generateRDPFilestoreCredentials == null ? null : WorkflowExpression.Compile(generateRDPFilestoreCredentials);
-            WorkflowExpression.Validate(__workflow_generateRDPFilestoreCredentials, nameof(generateRDPFilestoreCredentials), required: false);
-            var __workflow_generateRDPFileuserName = generateRDPFileuserName == null ? null : WorkflowExpression.Compile(generateRDPFileuserName);
-            WorkflowExpression.Validate(__workflow_generateRDPFileuserName, nameof(generateRDPFileuserName), required: false);
-            var __workflow_generateRDPFilepassword = generateRDPFilepassword == null ? null : WorkflowExpression.Compile(generateRDPFilepassword);
-            WorkflowExpression.Validate(__workflow_generateRDPFilepassword, nameof(generateRDPFilepassword), required: false);
-            var __workflow_generateRDPFilecredentialType = generateRDPFilecredentialType == null ? null : WorkflowExpression.Compile(generateRDPFilecredentialType);
-            WorkflowExpression.Validate(__workflow_generateRDPFilecredentialType, nameof(generateRDPFilecredentialType), required: false);
-            var __workflow_generateRDPFilecredentialPersistence = generateRDPFilecredentialPersistence == null ? null : WorkflowExpression.Compile(generateRDPFilecredentialPersistence);
-            WorkflowExpression.Validate(__workflow_generateRDPFilecredentialPersistence, nameof(generateRDPFilecredentialPersistence), required: false);
-            var __workflow_generateRDPFileredirectPrinters = generateRDPFileredirectPrinters == null ? null : WorkflowExpression.Compile(generateRDPFileredirectPrinters);
-            WorkflowExpression.Validate(__workflow_generateRDPFileredirectPrinters, nameof(generateRDPFileredirectPrinters), required: false);
-            var __workflow_generateRDPFileredirectAllDrives = generateRDPFileredirectAllDrives == null ? null : WorkflowExpression.Compile(generateRDPFileredirectAllDrives);
-            WorkflowExpression.Validate(__workflow_generateRDPFileredirectAllDrives, nameof(generateRDPFileredirectAllDrives), required: false);
-            var __workflow_generateRDPFileredirectClipboard = generateRDPFileredirectClipboard == null ? null : WorkflowExpression.Compile(generateRDPFileredirectClipboard);
-            WorkflowExpression.Validate(__workflow_generateRDPFileredirectClipboard, nameof(generateRDPFileredirectClipboard), required: false);
-            var __workflow_generateRDPFilefullscreen = generateRDPFilefullscreen == null ? null : WorkflowExpression.Compile(generateRDPFilefullscreen);
-            WorkflowExpression.Validate(__workflow_generateRDPFilefullscreen, nameof(generateRDPFilefullscreen), required: false);
-            var __workflow_generateRDPFiledesktopWidth = generateRDPFiledesktopWidth == null ? null : WorkflowExpression.Compile(generateRDPFiledesktopWidth);
-            WorkflowExpression.Validate(__workflow_generateRDPFiledesktopWidth, nameof(generateRDPFiledesktopWidth), required: false);
-            var __workflow_generateRDPFiledesktopHeight = generateRDPFiledesktopHeight == null ? null : WorkflowExpression.Compile(generateRDPFiledesktopHeight);
-            WorkflowExpression.Validate(__workflow_generateRDPFiledesktopHeight, nameof(generateRDPFiledesktopHeight), required: false);
-            var __workflow_generateRDPFileuseMultiMonitor = generateRDPFileuseMultiMonitor == null ? null : WorkflowExpression.Compile(generateRDPFileuseMultiMonitor);
-            WorkflowExpression.Validate(__workflow_generateRDPFileuseMultiMonitor, nameof(generateRDPFileuseMultiMonitor), required: false);
-            var __workflow_generateRDPFilesessionBPP = generateRDPFilesessionBPP == null ? null : WorkflowExpression.Compile(generateRDPFilesessionBPP);
-            WorkflowExpression.Validate(__workflow_generateRDPFilesessionBPP, nameof(generateRDPFilesessionBPP), required: false);
-            var __workflow_generateRDPFilesmartSizing = generateRDPFilesmartSizing == null ? null : WorkflowExpression.Compile(generateRDPFilesmartSizing);
-            WorkflowExpression.Validate(__workflow_generateRDPFilesmartSizing, nameof(generateRDPFilesmartSizing), required: false);
+            var __workflow_generateRDPFileremoteAddress = WorkflowExpression.Compile(generateRDPFileremoteAddress, nameof(generateRDPFileremoteAddress), required: true);
+            var __workflow_generateRDPFileoutputFolderPath = WorkflowExpression.Compile(generateRDPFileoutputFolderPath, nameof(generateRDPFileoutputFolderPath), required: true);
+            var __workflow_generateRDPFilerDPFileName = WorkflowExpression.Compile(generateRDPFilerDPFileName, nameof(generateRDPFilerDPFileName), required: true);
+            var __workflow_generateRDPFileworkflow = WorkflowExpression.Compile(generateRDPFileworkflow, nameof(generateRDPFileworkflow), required: true);
+            var __workflow_generateRDPFileoverwriteRDPFileIfAlreadyExists = WorkflowExpression.Compile(generateRDPFileoverwriteRDPFileIfAlreadyExists, nameof(generateRDPFileoverwriteRDPFileIfAlreadyExists), required: false);
+            var __workflow_generateRDPFiletrustRemoteComputer = WorkflowExpression.Compile(generateRDPFiletrustRemoteComputer, nameof(generateRDPFiletrustRemoteComputer), required: false);
+            var __workflow_generateRDPFilestoreCredentials = WorkflowExpression.Compile(generateRDPFilestoreCredentials, nameof(generateRDPFilestoreCredentials), required: false);
+            var __workflow_generateRDPFileuserName = WorkflowExpression.Compile(generateRDPFileuserName, nameof(generateRDPFileuserName), required: false);
+            var __workflow_generateRDPFilepassword = WorkflowExpression.Compile(generateRDPFilepassword, nameof(generateRDPFilepassword), required: false);
+            var __workflow_generateRDPFilecredentialType = WorkflowExpression.Compile(generateRDPFilecredentialType, nameof(generateRDPFilecredentialType), required: false);
+            var __workflow_generateRDPFilecredentialPersistence = WorkflowExpression.Compile(generateRDPFilecredentialPersistence, nameof(generateRDPFilecredentialPersistence), required: false);
+            var __workflow_generateRDPFileredirectPrinters = WorkflowExpression.Compile(generateRDPFileredirectPrinters, nameof(generateRDPFileredirectPrinters), required: false);
+            var __workflow_generateRDPFileredirectAllDrives = WorkflowExpression.Compile(generateRDPFileredirectAllDrives, nameof(generateRDPFileredirectAllDrives), required: false);
+            var __workflow_generateRDPFileredirectClipboard = WorkflowExpression.Compile(generateRDPFileredirectClipboard, nameof(generateRDPFileredirectClipboard), required: false);
+            var __workflow_generateRDPFilefullscreen = WorkflowExpression.Compile(generateRDPFilefullscreen, nameof(generateRDPFilefullscreen), required: false);
+            var __workflow_generateRDPFiledesktopWidth = WorkflowExpression.Compile(generateRDPFiledesktopWidth, nameof(generateRDPFiledesktopWidth), required: false);
+            var __workflow_generateRDPFiledesktopHeight = WorkflowExpression.Compile(generateRDPFiledesktopHeight, nameof(generateRDPFiledesktopHeight), required: false);
+            var __workflow_generateRDPFileuseMultiMonitor = WorkflowExpression.Compile(generateRDPFileuseMultiMonitor, nameof(generateRDPFileuseMultiMonitor), required: false);
+            var __workflow_generateRDPFilesessionBPP = WorkflowExpression.Compile(generateRDPFilesessionBPP, nameof(generateRDPFilesessionBPP), required: false);
+            var __workflow_generateRDPFilesmartSizing = WorkflowExpression.Compile(generateRDPFilesmartSizing, nameof(generateRDPFilesmartSizing), required: false);
             return new DeferredBodyAction<GenerateRDPFileResponse>(() =>
             {
                 var apiCallPath = "/Environment/GenerateRDPFile";
@@ -4178,12 +3887,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<LaunchRemoteDesktopSessionResponse> LaunchRemoteDesktopSession(Expression<Func<string>> launchRemoteDesktopSessionrDPFilePath, Expression<Func<string>> launchRemoteDesktopSessionworkflow, Expression<Func<bool>> launchRemoteDesktopSessiontrustRemoteComputer = null)
         {
-            var __workflow_launchRemoteDesktopSessionrDPFilePath = launchRemoteDesktopSessionrDPFilePath == null ? null : WorkflowExpression.Compile(launchRemoteDesktopSessionrDPFilePath);
-            WorkflowExpression.Validate(__workflow_launchRemoteDesktopSessionrDPFilePath, nameof(launchRemoteDesktopSessionrDPFilePath), required: true);
-            var __workflow_launchRemoteDesktopSessionworkflow = launchRemoteDesktopSessionworkflow == null ? null : WorkflowExpression.Compile(launchRemoteDesktopSessionworkflow);
-            WorkflowExpression.Validate(__workflow_launchRemoteDesktopSessionworkflow, nameof(launchRemoteDesktopSessionworkflow), required: true);
-            var __workflow_launchRemoteDesktopSessiontrustRemoteComputer = launchRemoteDesktopSessiontrustRemoteComputer == null ? null : WorkflowExpression.Compile(launchRemoteDesktopSessiontrustRemoteComputer);
-            WorkflowExpression.Validate(__workflow_launchRemoteDesktopSessiontrustRemoteComputer, nameof(launchRemoteDesktopSessiontrustRemoteComputer), required: false);
+            var __workflow_launchRemoteDesktopSessionrDPFilePath = WorkflowExpression.Compile(launchRemoteDesktopSessionrDPFilePath, nameof(launchRemoteDesktopSessionrDPFilePath), required: true);
+            var __workflow_launchRemoteDesktopSessionworkflow = WorkflowExpression.Compile(launchRemoteDesktopSessionworkflow, nameof(launchRemoteDesktopSessionworkflow), required: true);
+            var __workflow_launchRemoteDesktopSessiontrustRemoteComputer = WorkflowExpression.Compile(launchRemoteDesktopSessiontrustRemoteComputer, nameof(launchRemoteDesktopSessiontrustRemoteComputer), required: false);
             return new DeferredBodyAction<LaunchRemoteDesktopSessionResponse>(() =>
             {
                 var apiCallPath = "/Environment/LaunchRemoteDesktopSession";
@@ -4223,14 +3929,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<IsTCPPortRespondingResponse> IsTCPPortResponding(Expression<Func<string>> isTCPPortRespondingremoteHost, Expression<Func<int>> isTCPPortRespondingtCPPort, Expression<Func<string>> isTCPPortRespondingworkflow, Expression<Func<int>> isTCPPortRespondingtimeoutInSeconds = null)
         {
-            var __workflow_isTCPPortRespondingremoteHost = isTCPPortRespondingremoteHost == null ? null : WorkflowExpression.Compile(isTCPPortRespondingremoteHost);
-            WorkflowExpression.Validate(__workflow_isTCPPortRespondingremoteHost, nameof(isTCPPortRespondingremoteHost), required: true);
-            var __workflow_isTCPPortRespondingtCPPort = isTCPPortRespondingtCPPort == null ? null : WorkflowExpression.Compile(isTCPPortRespondingtCPPort);
-            WorkflowExpression.Validate(__workflow_isTCPPortRespondingtCPPort, nameof(isTCPPortRespondingtCPPort), required: true);
-            var __workflow_isTCPPortRespondingworkflow = isTCPPortRespondingworkflow == null ? null : WorkflowExpression.Compile(isTCPPortRespondingworkflow);
-            WorkflowExpression.Validate(__workflow_isTCPPortRespondingworkflow, nameof(isTCPPortRespondingworkflow), required: true);
-            var __workflow_isTCPPortRespondingtimeoutInSeconds = isTCPPortRespondingtimeoutInSeconds == null ? null : WorkflowExpression.Compile(isTCPPortRespondingtimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_isTCPPortRespondingtimeoutInSeconds, nameof(isTCPPortRespondingtimeoutInSeconds), required: false);
+            var __workflow_isTCPPortRespondingremoteHost = WorkflowExpression.Compile(isTCPPortRespondingremoteHost, nameof(isTCPPortRespondingremoteHost), required: true);
+            var __workflow_isTCPPortRespondingtCPPort = WorkflowExpression.Compile(isTCPPortRespondingtCPPort, nameof(isTCPPortRespondingtCPPort), required: true);
+            var __workflow_isTCPPortRespondingworkflow = WorkflowExpression.Compile(isTCPPortRespondingworkflow, nameof(isTCPPortRespondingworkflow), required: true);
+            var __workflow_isTCPPortRespondingtimeoutInSeconds = WorkflowExpression.Compile(isTCPPortRespondingtimeoutInSeconds, nameof(isTCPPortRespondingtimeoutInSeconds), required: false);
             return new DeferredBodyAction<IsTCPPortRespondingResponse>(() =>
             {
                 var apiCallPath = "/Environment/IsTCPPortResponding";
@@ -4272,18 +3974,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<UnlockSessionResponse> UnlockSession(Expression<Func<string>> unlockSessionunlockPassword, Expression<Func<bool>> unlockSessiondetectIfLocked, Expression<Func<bool>> unlockSessiondetectCredentialProvider, Expression<Func<string>> unlockSessionworkflow, Expression<Func<bool>> unlockSessionpasswordContainsStoredPassword = null, Expression<Func<int>> unlockSessionsecondsToWaitForUnlock = null)
         {
-            var __workflow_unlockSessionunlockPassword = unlockSessionunlockPassword == null ? null : WorkflowExpression.Compile(unlockSessionunlockPassword);
-            WorkflowExpression.Validate(__workflow_unlockSessionunlockPassword, nameof(unlockSessionunlockPassword), required: true);
-            var __workflow_unlockSessiondetectIfLocked = unlockSessiondetectIfLocked == null ? null : WorkflowExpression.Compile(unlockSessiondetectIfLocked);
-            WorkflowExpression.Validate(__workflow_unlockSessiondetectIfLocked, nameof(unlockSessiondetectIfLocked), required: true);
-            var __workflow_unlockSessiondetectCredentialProvider = unlockSessiondetectCredentialProvider == null ? null : WorkflowExpression.Compile(unlockSessiondetectCredentialProvider);
-            WorkflowExpression.Validate(__workflow_unlockSessiondetectCredentialProvider, nameof(unlockSessiondetectCredentialProvider), required: true);
-            var __workflow_unlockSessionworkflow = unlockSessionworkflow == null ? null : WorkflowExpression.Compile(unlockSessionworkflow);
-            WorkflowExpression.Validate(__workflow_unlockSessionworkflow, nameof(unlockSessionworkflow), required: true);
-            var __workflow_unlockSessionpasswordContainsStoredPassword = unlockSessionpasswordContainsStoredPassword == null ? null : WorkflowExpression.Compile(unlockSessionpasswordContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_unlockSessionpasswordContainsStoredPassword, nameof(unlockSessionpasswordContainsStoredPassword), required: false);
-            var __workflow_unlockSessionsecondsToWaitForUnlock = unlockSessionsecondsToWaitForUnlock == null ? null : WorkflowExpression.Compile(unlockSessionsecondsToWaitForUnlock);
-            WorkflowExpression.Validate(__workflow_unlockSessionsecondsToWaitForUnlock, nameof(unlockSessionsecondsToWaitForUnlock), required: false);
+            var __workflow_unlockSessionunlockPassword = WorkflowExpression.Compile(unlockSessionunlockPassword, nameof(unlockSessionunlockPassword), required: true);
+            var __workflow_unlockSessiondetectIfLocked = WorkflowExpression.Compile(unlockSessiondetectIfLocked, nameof(unlockSessiondetectIfLocked), required: true);
+            var __workflow_unlockSessiondetectCredentialProvider = WorkflowExpression.Compile(unlockSessiondetectCredentialProvider, nameof(unlockSessiondetectCredentialProvider), required: true);
+            var __workflow_unlockSessionworkflow = WorkflowExpression.Compile(unlockSessionworkflow, nameof(unlockSessionworkflow), required: true);
+            var __workflow_unlockSessionpasswordContainsStoredPassword = WorkflowExpression.Compile(unlockSessionpasswordContainsStoredPassword, nameof(unlockSessionpasswordContainsStoredPassword), required: false);
+            var __workflow_unlockSessionsecondsToWaitForUnlock = WorkflowExpression.Compile(unlockSessionsecondsToWaitForUnlock, nameof(unlockSessionsecondsToWaitForUnlock), required: false);
             return new DeferredBodyAction<UnlockSessionResponse>(() =>
             {
                 var apiCallPath = "/Environment/UnlockSession";
@@ -4343,12 +4039,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<LockSessionResponse> LockSession(Expression<Func<string>> lockSessionworkflow, Expression<Func<int>> lockSessionlockAfterMinutesOfActionInactivity = null, Expression<Func<int>> lockSessionsecondsToWaitAfterLock = null)
         {
-            var __workflow_lockSessionworkflow = lockSessionworkflow == null ? null : WorkflowExpression.Compile(lockSessionworkflow);
-            WorkflowExpression.Validate(__workflow_lockSessionworkflow, nameof(lockSessionworkflow), required: true);
-            var __workflow_lockSessionlockAfterMinutesOfActionInactivity = lockSessionlockAfterMinutesOfActionInactivity == null ? null : WorkflowExpression.Compile(lockSessionlockAfterMinutesOfActionInactivity);
-            WorkflowExpression.Validate(__workflow_lockSessionlockAfterMinutesOfActionInactivity, nameof(lockSessionlockAfterMinutesOfActionInactivity), required: false);
-            var __workflow_lockSessionsecondsToWaitAfterLock = lockSessionsecondsToWaitAfterLock == null ? null : WorkflowExpression.Compile(lockSessionsecondsToWaitAfterLock);
-            WorkflowExpression.Validate(__workflow_lockSessionsecondsToWaitAfterLock, nameof(lockSessionsecondsToWaitAfterLock), required: false);
+            var __workflow_lockSessionworkflow = WorkflowExpression.Compile(lockSessionworkflow, nameof(lockSessionworkflow), required: true);
+            var __workflow_lockSessionlockAfterMinutesOfActionInactivity = WorkflowExpression.Compile(lockSessionlockAfterMinutesOfActionInactivity, nameof(lockSessionlockAfterMinutesOfActionInactivity), required: false);
+            var __workflow_lockSessionsecondsToWaitAfterLock = WorkflowExpression.Compile(lockSessionsecondsToWaitAfterLock, nameof(lockSessionsecondsToWaitAfterLock), required: false);
             return new DeferredBodyAction<LockSessionResponse>(() =>
             {
                 var apiCallPath = "/Environment/LockSession";
@@ -4402,8 +4095,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<IsSessionLockedResponse> IsSessionLocked(Expression<Func<string>> isSessionLockedworkflow)
         {
-            var __workflow_isSessionLockedworkflow = isSessionLockedworkflow == null ? null : WorkflowExpression.Compile(isSessionLockedworkflow);
-            WorkflowExpression.Validate(__workflow_isSessionLockedworkflow, nameof(isSessionLockedworkflow), required: true);
+            var __workflow_isSessionLockedworkflow = WorkflowExpression.Compile(isSessionLockedworkflow, nameof(isSessionLockedworkflow), required: true);
             return new DeferredBodyAction<IsSessionLockedResponse>(() =>
             {
                 var apiCallPath = "/Environment/IsSessionLocked";
@@ -4425,10 +4117,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetGenericCredentialFromOrchestratorResponse> GetGenericCredentialFromOrchestrator(Expression<Func<string>> getGenericCredentialFromOrchestratorfriendlyName = null, Expression<Func<bool>> getGenericCredentialFromOrchestratorretrievePlainTextPassword = null)
         {
-            var __workflow_getGenericCredentialFromOrchestratorfriendlyName = getGenericCredentialFromOrchestratorfriendlyName == null ? null : WorkflowExpression.Compile(getGenericCredentialFromOrchestratorfriendlyName);
-            WorkflowExpression.Validate(__workflow_getGenericCredentialFromOrchestratorfriendlyName, nameof(getGenericCredentialFromOrchestratorfriendlyName), required: false);
-            var __workflow_getGenericCredentialFromOrchestratorretrievePlainTextPassword = getGenericCredentialFromOrchestratorretrievePlainTextPassword == null ? null : WorkflowExpression.Compile(getGenericCredentialFromOrchestratorretrievePlainTextPassword);
-            WorkflowExpression.Validate(__workflow_getGenericCredentialFromOrchestratorretrievePlainTextPassword, nameof(getGenericCredentialFromOrchestratorretrievePlainTextPassword), required: false);
+            var __workflow_getGenericCredentialFromOrchestratorfriendlyName = WorkflowExpression.Compile(getGenericCredentialFromOrchestratorfriendlyName, nameof(getGenericCredentialFromOrchestratorfriendlyName), required: false);
+            var __workflow_getGenericCredentialFromOrchestratorretrievePlainTextPassword = WorkflowExpression.Compile(getGenericCredentialFromOrchestratorretrievePlainTextPassword, nameof(getGenericCredentialFromOrchestratorretrievePlainTextPassword), required: false);
             return new DeferredBodyAction<GetGenericCredentialFromOrchestratorResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetGenericCredentialFromOrchestrator";
@@ -4470,24 +4160,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DrawRectangleOnScreenResponse> DrawRectangleOnScreen(Expression<Func<int>> drawRectangleOnScreenrectangleLeftPixelXCoord, Expression<Func<int>> drawRectangleOnScreenrectangleRightPixelXCoord, Expression<Func<int>> drawRectangleOnScreenrectangleTopPixelYCoord, Expression<Func<int>> drawRectangleOnScreenrectangleBottomPixelYCoord, Expression<Func<string>> drawRectangleOnScreenworkflow, Expression<Func<string>> drawRectangleOnScreenpenColour = null, Expression<Func<int>> drawRectangleOnScreenpenThicknessPixels = null, Expression<Func<int>> drawRectangleOnScreensecondsToDisplay = null, Expression<Func<bool>> drawRectangleOnScreencoordinatesArePhysical = null)
         {
-            var __workflow_drawRectangleOnScreenrectangleLeftPixelXCoord = drawRectangleOnScreenrectangleLeftPixelXCoord == null ? null : WorkflowExpression.Compile(drawRectangleOnScreenrectangleLeftPixelXCoord);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreenrectangleLeftPixelXCoord, nameof(drawRectangleOnScreenrectangleLeftPixelXCoord), required: true);
-            var __workflow_drawRectangleOnScreenrectangleRightPixelXCoord = drawRectangleOnScreenrectangleRightPixelXCoord == null ? null : WorkflowExpression.Compile(drawRectangleOnScreenrectangleRightPixelXCoord);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreenrectangleRightPixelXCoord, nameof(drawRectangleOnScreenrectangleRightPixelXCoord), required: true);
-            var __workflow_drawRectangleOnScreenrectangleTopPixelYCoord = drawRectangleOnScreenrectangleTopPixelYCoord == null ? null : WorkflowExpression.Compile(drawRectangleOnScreenrectangleTopPixelYCoord);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreenrectangleTopPixelYCoord, nameof(drawRectangleOnScreenrectangleTopPixelYCoord), required: true);
-            var __workflow_drawRectangleOnScreenrectangleBottomPixelYCoord = drawRectangleOnScreenrectangleBottomPixelYCoord == null ? null : WorkflowExpression.Compile(drawRectangleOnScreenrectangleBottomPixelYCoord);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreenrectangleBottomPixelYCoord, nameof(drawRectangleOnScreenrectangleBottomPixelYCoord), required: true);
-            var __workflow_drawRectangleOnScreenworkflow = drawRectangleOnScreenworkflow == null ? null : WorkflowExpression.Compile(drawRectangleOnScreenworkflow);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreenworkflow, nameof(drawRectangleOnScreenworkflow), required: true);
-            var __workflow_drawRectangleOnScreenpenColour = drawRectangleOnScreenpenColour == null ? null : WorkflowExpression.Compile(drawRectangleOnScreenpenColour);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreenpenColour, nameof(drawRectangleOnScreenpenColour), required: false);
-            var __workflow_drawRectangleOnScreenpenThicknessPixels = drawRectangleOnScreenpenThicknessPixels == null ? null : WorkflowExpression.Compile(drawRectangleOnScreenpenThicknessPixels);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreenpenThicknessPixels, nameof(drawRectangleOnScreenpenThicknessPixels), required: false);
-            var __workflow_drawRectangleOnScreensecondsToDisplay = drawRectangleOnScreensecondsToDisplay == null ? null : WorkflowExpression.Compile(drawRectangleOnScreensecondsToDisplay);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreensecondsToDisplay, nameof(drawRectangleOnScreensecondsToDisplay), required: false);
-            var __workflow_drawRectangleOnScreencoordinatesArePhysical = drawRectangleOnScreencoordinatesArePhysical == null ? null : WorkflowExpression.Compile(drawRectangleOnScreencoordinatesArePhysical);
-            WorkflowExpression.Validate(__workflow_drawRectangleOnScreencoordinatesArePhysical, nameof(drawRectangleOnScreencoordinatesArePhysical), required: false);
+            var __workflow_drawRectangleOnScreenrectangleLeftPixelXCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleLeftPixelXCoord, nameof(drawRectangleOnScreenrectangleLeftPixelXCoord), required: true);
+            var __workflow_drawRectangleOnScreenrectangleRightPixelXCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleRightPixelXCoord, nameof(drawRectangleOnScreenrectangleRightPixelXCoord), required: true);
+            var __workflow_drawRectangleOnScreenrectangleTopPixelYCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleTopPixelYCoord, nameof(drawRectangleOnScreenrectangleTopPixelYCoord), required: true);
+            var __workflow_drawRectangleOnScreenrectangleBottomPixelYCoord = WorkflowExpression.Compile(drawRectangleOnScreenrectangleBottomPixelYCoord, nameof(drawRectangleOnScreenrectangleBottomPixelYCoord), required: true);
+            var __workflow_drawRectangleOnScreenworkflow = WorkflowExpression.Compile(drawRectangleOnScreenworkflow, nameof(drawRectangleOnScreenworkflow), required: true);
+            var __workflow_drawRectangleOnScreenpenColour = WorkflowExpression.Compile(drawRectangleOnScreenpenColour, nameof(drawRectangleOnScreenpenColour), required: false);
+            var __workflow_drawRectangleOnScreenpenThicknessPixels = WorkflowExpression.Compile(drawRectangleOnScreenpenThicknessPixels, nameof(drawRectangleOnScreenpenThicknessPixels), required: false);
+            var __workflow_drawRectangleOnScreensecondsToDisplay = WorkflowExpression.Compile(drawRectangleOnScreensecondsToDisplay, nameof(drawRectangleOnScreensecondsToDisplay), required: false);
+            var __workflow_drawRectangleOnScreencoordinatesArePhysical = WorkflowExpression.Compile(drawRectangleOnScreencoordinatesArePhysical, nameof(drawRectangleOnScreencoordinatesArePhysical), required: false);
             return new DeferredBodyAction<DrawRectangleOnScreenResponse>(() =>
             {
                 var apiCallPath = "/Environment/DrawRectangleOnScreen";
@@ -4581,10 +4262,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse> GetFailedActionErrorMessageFromPowerAutomateResultJSON(Expression<Func<string[]>> getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, Expression<Func<string>> getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus = null)
         {
-            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON = getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON == null ? null : WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON);
-            WorkflowExpression.Validate(__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON), required: true);
-            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus = getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus == null ? null : WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus);
-            WorkflowExpression.Validate(__workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus), required: false);
+            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON = WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONpowerAutomateResultJSON), required: true);
+            var __workflow_getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus = WorkflowExpression.Compile(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus, nameof(getFailedActionErrorMessageFromPowerAutomateResultJSONsearchStatus), required: false);
             return new DeferredBodyAction<GetFailedActionErrorMessageFromPowerAutomateResultJSONResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetFailedActionErrorMessageFromPowerAutomateResultJSON";
@@ -4622,16 +4301,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetPixelColourAtCoordinateResponse> GetPixelColourAtCoordinate(Expression<Func<int>> getPixelColourAtCoordinateleftXPixels, Expression<Func<int>> getPixelColourAtCoordinatetopYPixels, Expression<Func<string>> getPixelColourAtCoordinateworkflow, Expression<Func<bool>> getPixelColourAtCoordinatehideAgent = null, Expression<Func<bool>> getPixelColourAtCoordinateusePhysicalCoordinates = null)
         {
-            var __workflow_getPixelColourAtCoordinateleftXPixels = getPixelColourAtCoordinateleftXPixels == null ? null : WorkflowExpression.Compile(getPixelColourAtCoordinateleftXPixels);
-            WorkflowExpression.Validate(__workflow_getPixelColourAtCoordinateleftXPixels, nameof(getPixelColourAtCoordinateleftXPixels), required: true);
-            var __workflow_getPixelColourAtCoordinatetopYPixels = getPixelColourAtCoordinatetopYPixels == null ? null : WorkflowExpression.Compile(getPixelColourAtCoordinatetopYPixels);
-            WorkflowExpression.Validate(__workflow_getPixelColourAtCoordinatetopYPixels, nameof(getPixelColourAtCoordinatetopYPixels), required: true);
-            var __workflow_getPixelColourAtCoordinateworkflow = getPixelColourAtCoordinateworkflow == null ? null : WorkflowExpression.Compile(getPixelColourAtCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_getPixelColourAtCoordinateworkflow, nameof(getPixelColourAtCoordinateworkflow), required: true);
-            var __workflow_getPixelColourAtCoordinatehideAgent = getPixelColourAtCoordinatehideAgent == null ? null : WorkflowExpression.Compile(getPixelColourAtCoordinatehideAgent);
-            WorkflowExpression.Validate(__workflow_getPixelColourAtCoordinatehideAgent, nameof(getPixelColourAtCoordinatehideAgent), required: false);
-            var __workflow_getPixelColourAtCoordinateusePhysicalCoordinates = getPixelColourAtCoordinateusePhysicalCoordinates == null ? null : WorkflowExpression.Compile(getPixelColourAtCoordinateusePhysicalCoordinates);
-            WorkflowExpression.Validate(__workflow_getPixelColourAtCoordinateusePhysicalCoordinates, nameof(getPixelColourAtCoordinateusePhysicalCoordinates), required: false);
+            var __workflow_getPixelColourAtCoordinateleftXPixels = WorkflowExpression.Compile(getPixelColourAtCoordinateleftXPixels, nameof(getPixelColourAtCoordinateleftXPixels), required: true);
+            var __workflow_getPixelColourAtCoordinatetopYPixels = WorkflowExpression.Compile(getPixelColourAtCoordinatetopYPixels, nameof(getPixelColourAtCoordinatetopYPixels), required: true);
+            var __workflow_getPixelColourAtCoordinateworkflow = WorkflowExpression.Compile(getPixelColourAtCoordinateworkflow, nameof(getPixelColourAtCoordinateworkflow), required: true);
+            var __workflow_getPixelColourAtCoordinatehideAgent = WorkflowExpression.Compile(getPixelColourAtCoordinatehideAgent, nameof(getPixelColourAtCoordinatehideAgent), required: false);
+            var __workflow_getPixelColourAtCoordinateusePhysicalCoordinates = WorkflowExpression.Compile(getPixelColourAtCoordinateusePhysicalCoordinates, nameof(getPixelColourAtCoordinateusePhysicalCoordinates), required: false);
             return new DeferredBodyAction<GetPixelColourAtCoordinateResponse>(() =>
             {
                 var apiCallPath = "/Environment/GetPixelColourAtCoordinate";
@@ -4689,18 +4363,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ConvertRectangleCoordinatesResponse> ConvertRectangleCoordinates(Expression<Func<int>> convertRectangleCoordinatesrectangleLeftPixelXCoord, Expression<Func<int>> convertRectangleCoordinatesrectangleTopPixelYCoord, Expression<Func<int>> convertRectangleCoordinatesrectangleRightPixelXCoord, Expression<Func<int>> convertRectangleCoordinatesrectangleBottomPixelYCoord, Expression<Func<convertRectangleCoordinatesconversionTypeInput>> convertRectangleCoordinatesconversionType, Expression<Func<string>> convertRectangleCoordinatesworkflow)
         {
-            var __workflow_convertRectangleCoordinatesrectangleLeftPixelXCoord = convertRectangleCoordinatesrectangleLeftPixelXCoord == null ? null : WorkflowExpression.Compile(convertRectangleCoordinatesrectangleLeftPixelXCoord);
-            WorkflowExpression.Validate(__workflow_convertRectangleCoordinatesrectangleLeftPixelXCoord, nameof(convertRectangleCoordinatesrectangleLeftPixelXCoord), required: true);
-            var __workflow_convertRectangleCoordinatesrectangleTopPixelYCoord = convertRectangleCoordinatesrectangleTopPixelYCoord == null ? null : WorkflowExpression.Compile(convertRectangleCoordinatesrectangleTopPixelYCoord);
-            WorkflowExpression.Validate(__workflow_convertRectangleCoordinatesrectangleTopPixelYCoord, nameof(convertRectangleCoordinatesrectangleTopPixelYCoord), required: true);
-            var __workflow_convertRectangleCoordinatesrectangleRightPixelXCoord = convertRectangleCoordinatesrectangleRightPixelXCoord == null ? null : WorkflowExpression.Compile(convertRectangleCoordinatesrectangleRightPixelXCoord);
-            WorkflowExpression.Validate(__workflow_convertRectangleCoordinatesrectangleRightPixelXCoord, nameof(convertRectangleCoordinatesrectangleRightPixelXCoord), required: true);
-            var __workflow_convertRectangleCoordinatesrectangleBottomPixelYCoord = convertRectangleCoordinatesrectangleBottomPixelYCoord == null ? null : WorkflowExpression.Compile(convertRectangleCoordinatesrectangleBottomPixelYCoord);
-            WorkflowExpression.Validate(__workflow_convertRectangleCoordinatesrectangleBottomPixelYCoord, nameof(convertRectangleCoordinatesrectangleBottomPixelYCoord), required: true);
-            var __workflow_convertRectangleCoordinatesconversionType = convertRectangleCoordinatesconversionType == null ? null : WorkflowExpression.Compile(convertRectangleCoordinatesconversionType);
-            WorkflowExpression.Validate(__workflow_convertRectangleCoordinatesconversionType, nameof(convertRectangleCoordinatesconversionType), required: true);
-            var __workflow_convertRectangleCoordinatesworkflow = convertRectangleCoordinatesworkflow == null ? null : WorkflowExpression.Compile(convertRectangleCoordinatesworkflow);
-            WorkflowExpression.Validate(__workflow_convertRectangleCoordinatesworkflow, nameof(convertRectangleCoordinatesworkflow), required: true);
+            var __workflow_convertRectangleCoordinatesrectangleLeftPixelXCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleLeftPixelXCoord, nameof(convertRectangleCoordinatesrectangleLeftPixelXCoord), required: true);
+            var __workflow_convertRectangleCoordinatesrectangleTopPixelYCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleTopPixelYCoord, nameof(convertRectangleCoordinatesrectangleTopPixelYCoord), required: true);
+            var __workflow_convertRectangleCoordinatesrectangleRightPixelXCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleRightPixelXCoord, nameof(convertRectangleCoordinatesrectangleRightPixelXCoord), required: true);
+            var __workflow_convertRectangleCoordinatesrectangleBottomPixelYCoord = WorkflowExpression.Compile(convertRectangleCoordinatesrectangleBottomPixelYCoord, nameof(convertRectangleCoordinatesrectangleBottomPixelYCoord), required: true);
+            var __workflow_convertRectangleCoordinatesconversionType = WorkflowExpression.Compile(convertRectangleCoordinatesconversionType, nameof(convertRectangleCoordinatesconversionType), required: true);
+            var __workflow_convertRectangleCoordinatesworkflow = WorkflowExpression.Compile(convertRectangleCoordinatesworkflow, nameof(convertRectangleCoordinatesworkflow), required: true);
             return new DeferredBodyAction<ConvertRectangleCoordinatesResponse>(() =>
             {
                 var apiCallPath = "/Environment/ConvertRectangleCoordinates";
@@ -4732,48 +4400,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SendMessageToWebAPIResponse> SendMessageToWebAPI(Expression<Func<string>> sendMessageToWebAPIworkflow, Expression<Func<string>> sendMessageToWebAPIuRL = null, Expression<Func<sendMessageToWebAPImethodInput>> sendMessageToWebAPImethod = null, Expression<Func<int>> sendMessageToWebAPItimeoutInSeconds = null, Expression<Func<string>> sendMessageToWebAPIcontentType = null, Expression<Func<string>> sendMessageToWebAPIaccept = null, Expression<Func<string>> sendMessageToWebAPImessageBody = null, Expression<Func<sendMessageToWebAPItransmitEncodingInput>> sendMessageToWebAPItransmitEncoding = null, Expression<Func<sendMessageToWebAPIresponseEncodingInput>> sendMessageToWebAPIresponseEncoding = null, Expression<Func<int>> sendMessageToWebAPIbufferSize = null, Expression<Func<sendMessageToWebAPIhTTPRequestHeadersListInputItem[]>> sendMessageToWebAPIhTTPRequestHeadersList = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS10 = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS11 = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS12 = null, Expression<Func<bool>> sendMessageToWebAPInegotiateTLS13 = null, Expression<Func<bool>> sendMessageToWebAPIkeepAlive = null, Expression<Func<bool>> sendMessageToWebAPIexpect100Continue = null, Expression<Func<bool>> sendMessageToWebAPIreturnResponseHeaders = null, Expression<Func<bool>> sendMessageToWebAPIrunAsThread = null, Expression<Func<bool>> sendMessageToWebAPIwaitForThread = null, Expression<Func<int>> sendMessageToWebAPIretrieveOutputDataFromThreadId = null)
         {
-            var __workflow_sendMessageToWebAPIworkflow = sendMessageToWebAPIworkflow == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIworkflow);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIworkflow, nameof(sendMessageToWebAPIworkflow), required: true);
-            var __workflow_sendMessageToWebAPIuRL = sendMessageToWebAPIuRL == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIuRL);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIuRL, nameof(sendMessageToWebAPIuRL), required: false);
-            var __workflow_sendMessageToWebAPImethod = sendMessageToWebAPImethod == null ? null : WorkflowExpression.Compile(sendMessageToWebAPImethod);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPImethod, nameof(sendMessageToWebAPImethod), required: false);
-            var __workflow_sendMessageToWebAPItimeoutInSeconds = sendMessageToWebAPItimeoutInSeconds == null ? null : WorkflowExpression.Compile(sendMessageToWebAPItimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPItimeoutInSeconds, nameof(sendMessageToWebAPItimeoutInSeconds), required: false);
-            var __workflow_sendMessageToWebAPIcontentType = sendMessageToWebAPIcontentType == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIcontentType);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIcontentType, nameof(sendMessageToWebAPIcontentType), required: false);
-            var __workflow_sendMessageToWebAPIaccept = sendMessageToWebAPIaccept == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIaccept);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIaccept, nameof(sendMessageToWebAPIaccept), required: false);
-            var __workflow_sendMessageToWebAPImessageBody = sendMessageToWebAPImessageBody == null ? null : WorkflowExpression.Compile(sendMessageToWebAPImessageBody);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPImessageBody, nameof(sendMessageToWebAPImessageBody), required: false);
-            var __workflow_sendMessageToWebAPItransmitEncoding = sendMessageToWebAPItransmitEncoding == null ? null : WorkflowExpression.Compile(sendMessageToWebAPItransmitEncoding);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPItransmitEncoding, nameof(sendMessageToWebAPItransmitEncoding), required: false);
-            var __workflow_sendMessageToWebAPIresponseEncoding = sendMessageToWebAPIresponseEncoding == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIresponseEncoding);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIresponseEncoding, nameof(sendMessageToWebAPIresponseEncoding), required: false);
-            var __workflow_sendMessageToWebAPIbufferSize = sendMessageToWebAPIbufferSize == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIbufferSize);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIbufferSize, nameof(sendMessageToWebAPIbufferSize), required: false);
-            var __workflow_sendMessageToWebAPIhTTPRequestHeadersList = sendMessageToWebAPIhTTPRequestHeadersList == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIhTTPRequestHeadersList);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIhTTPRequestHeadersList, nameof(sendMessageToWebAPIhTTPRequestHeadersList), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS10 = sendMessageToWebAPInegotiateTLS10 == null ? null : WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS10);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPInegotiateTLS10, nameof(sendMessageToWebAPInegotiateTLS10), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS11 = sendMessageToWebAPInegotiateTLS11 == null ? null : WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS11);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPInegotiateTLS11, nameof(sendMessageToWebAPInegotiateTLS11), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS12 = sendMessageToWebAPInegotiateTLS12 == null ? null : WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS12);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPInegotiateTLS12, nameof(sendMessageToWebAPInegotiateTLS12), required: false);
-            var __workflow_sendMessageToWebAPInegotiateTLS13 = sendMessageToWebAPInegotiateTLS13 == null ? null : WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS13);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPInegotiateTLS13, nameof(sendMessageToWebAPInegotiateTLS13), required: false);
-            var __workflow_sendMessageToWebAPIkeepAlive = sendMessageToWebAPIkeepAlive == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIkeepAlive);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIkeepAlive, nameof(sendMessageToWebAPIkeepAlive), required: false);
-            var __workflow_sendMessageToWebAPIexpect100Continue = sendMessageToWebAPIexpect100Continue == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIexpect100Continue);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIexpect100Continue, nameof(sendMessageToWebAPIexpect100Continue), required: false);
-            var __workflow_sendMessageToWebAPIreturnResponseHeaders = sendMessageToWebAPIreturnResponseHeaders == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIreturnResponseHeaders);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIreturnResponseHeaders, nameof(sendMessageToWebAPIreturnResponseHeaders), required: false);
-            var __workflow_sendMessageToWebAPIrunAsThread = sendMessageToWebAPIrunAsThread == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIrunAsThread);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIrunAsThread, nameof(sendMessageToWebAPIrunAsThread), required: false);
-            var __workflow_sendMessageToWebAPIwaitForThread = sendMessageToWebAPIwaitForThread == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIwaitForThread);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIwaitForThread, nameof(sendMessageToWebAPIwaitForThread), required: false);
-            var __workflow_sendMessageToWebAPIretrieveOutputDataFromThreadId = sendMessageToWebAPIretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(sendMessageToWebAPIretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_sendMessageToWebAPIretrieveOutputDataFromThreadId, nameof(sendMessageToWebAPIretrieveOutputDataFromThreadId), required: false);
+            var __workflow_sendMessageToWebAPIworkflow = WorkflowExpression.Compile(sendMessageToWebAPIworkflow, nameof(sendMessageToWebAPIworkflow), required: true);
+            var __workflow_sendMessageToWebAPIuRL = WorkflowExpression.Compile(sendMessageToWebAPIuRL, nameof(sendMessageToWebAPIuRL), required: false);
+            var __workflow_sendMessageToWebAPImethod = WorkflowExpression.Compile(sendMessageToWebAPImethod, nameof(sendMessageToWebAPImethod), required: false);
+            var __workflow_sendMessageToWebAPItimeoutInSeconds = WorkflowExpression.Compile(sendMessageToWebAPItimeoutInSeconds, nameof(sendMessageToWebAPItimeoutInSeconds), required: false);
+            var __workflow_sendMessageToWebAPIcontentType = WorkflowExpression.Compile(sendMessageToWebAPIcontentType, nameof(sendMessageToWebAPIcontentType), required: false);
+            var __workflow_sendMessageToWebAPIaccept = WorkflowExpression.Compile(sendMessageToWebAPIaccept, nameof(sendMessageToWebAPIaccept), required: false);
+            var __workflow_sendMessageToWebAPImessageBody = WorkflowExpression.Compile(sendMessageToWebAPImessageBody, nameof(sendMessageToWebAPImessageBody), required: false);
+            var __workflow_sendMessageToWebAPItransmitEncoding = WorkflowExpression.Compile(sendMessageToWebAPItransmitEncoding, nameof(sendMessageToWebAPItransmitEncoding), required: false);
+            var __workflow_sendMessageToWebAPIresponseEncoding = WorkflowExpression.Compile(sendMessageToWebAPIresponseEncoding, nameof(sendMessageToWebAPIresponseEncoding), required: false);
+            var __workflow_sendMessageToWebAPIbufferSize = WorkflowExpression.Compile(sendMessageToWebAPIbufferSize, nameof(sendMessageToWebAPIbufferSize), required: false);
+            var __workflow_sendMessageToWebAPIhTTPRequestHeadersList = WorkflowExpression.Compile(sendMessageToWebAPIhTTPRequestHeadersList, nameof(sendMessageToWebAPIhTTPRequestHeadersList), required: false);
+            var __workflow_sendMessageToWebAPInegotiateTLS10 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS10, nameof(sendMessageToWebAPInegotiateTLS10), required: false);
+            var __workflow_sendMessageToWebAPInegotiateTLS11 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS11, nameof(sendMessageToWebAPInegotiateTLS11), required: false);
+            var __workflow_sendMessageToWebAPInegotiateTLS12 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS12, nameof(sendMessageToWebAPInegotiateTLS12), required: false);
+            var __workflow_sendMessageToWebAPInegotiateTLS13 = WorkflowExpression.Compile(sendMessageToWebAPInegotiateTLS13, nameof(sendMessageToWebAPInegotiateTLS13), required: false);
+            var __workflow_sendMessageToWebAPIkeepAlive = WorkflowExpression.Compile(sendMessageToWebAPIkeepAlive, nameof(sendMessageToWebAPIkeepAlive), required: false);
+            var __workflow_sendMessageToWebAPIexpect100Continue = WorkflowExpression.Compile(sendMessageToWebAPIexpect100Continue, nameof(sendMessageToWebAPIexpect100Continue), required: false);
+            var __workflow_sendMessageToWebAPIreturnResponseHeaders = WorkflowExpression.Compile(sendMessageToWebAPIreturnResponseHeaders, nameof(sendMessageToWebAPIreturnResponseHeaders), required: false);
+            var __workflow_sendMessageToWebAPIrunAsThread = WorkflowExpression.Compile(sendMessageToWebAPIrunAsThread, nameof(sendMessageToWebAPIrunAsThread), required: false);
+            var __workflow_sendMessageToWebAPIwaitForThread = WorkflowExpression.Compile(sendMessageToWebAPIwaitForThread, nameof(sendMessageToWebAPIwaitForThread), required: false);
+            var __workflow_sendMessageToWebAPIretrieveOutputDataFromThreadId = WorkflowExpression.Compile(sendMessageToWebAPIretrieveOutputDataFromThreadId, nameof(sendMessageToWebAPIretrieveOutputDataFromThreadId), required: false);
             return new DeferredBodyAction<SendMessageToWebAPIResponse>(() =>
             {
                 var apiCallPath = "/Environment/SendMessageToWebAPI";
@@ -5075,30 +4722,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewTaskResponse> TasksAddNewTask(Expression<Func<string>> tasksAddNewTaskworkflow, Expression<Func<tasksAddNewTasksetAutomationNameInput>> tasksAddNewTasksetAutomationName = null, Expression<Func<string>> tasksAddNewTaskautomationName = null, Expression<Func<string>> tasksAddNewTasktaskInputData = null, Expression<Func<string>> tasksAddNewTaskprocessStage = null, Expression<Func<int>> tasksAddNewTaskpriority = null, Expression<Func<int>> tasksAddNewTasksLA = null, Expression<Func<bool>> tasksAddNewTasktaskOnHold = null, Expression<Func<string>> tasksAddNewTaskorganisation = null, Expression<Func<string>> tasksAddNewTaskdepartment = null, Expression<Func<string>> tasksAddNewTaskdescription = null, Expression<Func<string>> tasksAddNewTasktags = null)
         {
-            var __workflow_tasksAddNewTaskworkflow = tasksAddNewTaskworkflow == null ? null : WorkflowExpression.Compile(tasksAddNewTaskworkflow);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskworkflow, nameof(tasksAddNewTaskworkflow), required: true);
-            var __workflow_tasksAddNewTasksetAutomationName = tasksAddNewTasksetAutomationName == null ? null : WorkflowExpression.Compile(tasksAddNewTasksetAutomationName);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTasksetAutomationName, nameof(tasksAddNewTasksetAutomationName), required: false);
-            var __workflow_tasksAddNewTaskautomationName = tasksAddNewTaskautomationName == null ? null : WorkflowExpression.Compile(tasksAddNewTaskautomationName);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskautomationName, nameof(tasksAddNewTaskautomationName), required: false);
-            var __workflow_tasksAddNewTasktaskInputData = tasksAddNewTasktaskInputData == null ? null : WorkflowExpression.Compile(tasksAddNewTasktaskInputData);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTasktaskInputData, nameof(tasksAddNewTasktaskInputData), required: false);
-            var __workflow_tasksAddNewTaskprocessStage = tasksAddNewTaskprocessStage == null ? null : WorkflowExpression.Compile(tasksAddNewTaskprocessStage);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskprocessStage, nameof(tasksAddNewTaskprocessStage), required: false);
-            var __workflow_tasksAddNewTaskpriority = tasksAddNewTaskpriority == null ? null : WorkflowExpression.Compile(tasksAddNewTaskpriority);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskpriority, nameof(tasksAddNewTaskpriority), required: false);
-            var __workflow_tasksAddNewTasksLA = tasksAddNewTasksLA == null ? null : WorkflowExpression.Compile(tasksAddNewTasksLA);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTasksLA, nameof(tasksAddNewTasksLA), required: false);
-            var __workflow_tasksAddNewTasktaskOnHold = tasksAddNewTasktaskOnHold == null ? null : WorkflowExpression.Compile(tasksAddNewTasktaskOnHold);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTasktaskOnHold, nameof(tasksAddNewTasktaskOnHold), required: false);
-            var __workflow_tasksAddNewTaskorganisation = tasksAddNewTaskorganisation == null ? null : WorkflowExpression.Compile(tasksAddNewTaskorganisation);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskorganisation, nameof(tasksAddNewTaskorganisation), required: false);
-            var __workflow_tasksAddNewTaskdepartment = tasksAddNewTaskdepartment == null ? null : WorkflowExpression.Compile(tasksAddNewTaskdepartment);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskdepartment, nameof(tasksAddNewTaskdepartment), required: false);
-            var __workflow_tasksAddNewTaskdescription = tasksAddNewTaskdescription == null ? null : WorkflowExpression.Compile(tasksAddNewTaskdescription);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskdescription, nameof(tasksAddNewTaskdescription), required: false);
-            var __workflow_tasksAddNewTasktags = tasksAddNewTasktags == null ? null : WorkflowExpression.Compile(tasksAddNewTasktags);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTasktags, nameof(tasksAddNewTasktags), required: false);
+            var __workflow_tasksAddNewTaskworkflow = WorkflowExpression.Compile(tasksAddNewTaskworkflow, nameof(tasksAddNewTaskworkflow), required: true);
+            var __workflow_tasksAddNewTasksetAutomationName = WorkflowExpression.Compile(tasksAddNewTasksetAutomationName, nameof(tasksAddNewTasksetAutomationName), required: false);
+            var __workflow_tasksAddNewTaskautomationName = WorkflowExpression.Compile(tasksAddNewTaskautomationName, nameof(tasksAddNewTaskautomationName), required: false);
+            var __workflow_tasksAddNewTasktaskInputData = WorkflowExpression.Compile(tasksAddNewTasktaskInputData, nameof(tasksAddNewTasktaskInputData), required: false);
+            var __workflow_tasksAddNewTaskprocessStage = WorkflowExpression.Compile(tasksAddNewTaskprocessStage, nameof(tasksAddNewTaskprocessStage), required: false);
+            var __workflow_tasksAddNewTaskpriority = WorkflowExpression.Compile(tasksAddNewTaskpriority, nameof(tasksAddNewTaskpriority), required: false);
+            var __workflow_tasksAddNewTasksLA = WorkflowExpression.Compile(tasksAddNewTasksLA, nameof(tasksAddNewTasksLA), required: false);
+            var __workflow_tasksAddNewTasktaskOnHold = WorkflowExpression.Compile(tasksAddNewTasktaskOnHold, nameof(tasksAddNewTasktaskOnHold), required: false);
+            var __workflow_tasksAddNewTaskorganisation = WorkflowExpression.Compile(tasksAddNewTaskorganisation, nameof(tasksAddNewTaskorganisation), required: false);
+            var __workflow_tasksAddNewTaskdepartment = WorkflowExpression.Compile(tasksAddNewTaskdepartment, nameof(tasksAddNewTaskdepartment), required: false);
+            var __workflow_tasksAddNewTaskdescription = WorkflowExpression.Compile(tasksAddNewTaskdescription, nameof(tasksAddNewTaskdescription), required: false);
+            var __workflow_tasksAddNewTasktags = WorkflowExpression.Compile(tasksAddNewTasktags, nameof(tasksAddNewTasktags), required: false);
             return new DeferredBodyAction<TasksAddNewTaskResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewTask";
@@ -5216,32 +4851,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewDeferralResponse> TasksAddNewDeferral(Expression<Func<string>> tasksAddNewDeferralworkflow, Expression<Func<tasksAddNewDeferralsetAutomationNameInput>> tasksAddNewDeferralsetAutomationName = null, Expression<Func<string>> tasksAddNewDeferralautomationName = null, Expression<Func<int>> tasksAddNewDeferraldeferralTimeInMinutes = null, Expression<Func<string>> tasksAddNewDeferraltaskInputData = null, Expression<Func<string>> tasksAddNewDeferraldeferralStoredData = null, Expression<Func<string>> tasksAddNewDeferralprocessStage = null, Expression<Func<int>> tasksAddNewDeferralpriority = null, Expression<Func<bool>> tasksAddNewDeferraltaskOnHold = null, Expression<Func<string>> tasksAddNewDeferralorganisation = null, Expression<Func<string>> tasksAddNewDeferraldepartment = null, Expression<Func<string>> tasksAddNewDeferraldescription = null, Expression<Func<string>> tasksAddNewDeferraltags = null)
         {
-            var __workflow_tasksAddNewDeferralworkflow = tasksAddNewDeferralworkflow == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralworkflow);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralworkflow, nameof(tasksAddNewDeferralworkflow), required: true);
-            var __workflow_tasksAddNewDeferralsetAutomationName = tasksAddNewDeferralsetAutomationName == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralsetAutomationName);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralsetAutomationName, nameof(tasksAddNewDeferralsetAutomationName), required: false);
-            var __workflow_tasksAddNewDeferralautomationName = tasksAddNewDeferralautomationName == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralautomationName);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralautomationName, nameof(tasksAddNewDeferralautomationName), required: false);
-            var __workflow_tasksAddNewDeferraldeferralTimeInMinutes = tasksAddNewDeferraldeferralTimeInMinutes == null ? null : WorkflowExpression.Compile(tasksAddNewDeferraldeferralTimeInMinutes);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferraldeferralTimeInMinutes, nameof(tasksAddNewDeferraldeferralTimeInMinutes), required: false);
-            var __workflow_tasksAddNewDeferraltaskInputData = tasksAddNewDeferraltaskInputData == null ? null : WorkflowExpression.Compile(tasksAddNewDeferraltaskInputData);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferraltaskInputData, nameof(tasksAddNewDeferraltaskInputData), required: false);
-            var __workflow_tasksAddNewDeferraldeferralStoredData = tasksAddNewDeferraldeferralStoredData == null ? null : WorkflowExpression.Compile(tasksAddNewDeferraldeferralStoredData);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferraldeferralStoredData, nameof(tasksAddNewDeferraldeferralStoredData), required: false);
-            var __workflow_tasksAddNewDeferralprocessStage = tasksAddNewDeferralprocessStage == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralprocessStage);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralprocessStage, nameof(tasksAddNewDeferralprocessStage), required: false);
-            var __workflow_tasksAddNewDeferralpriority = tasksAddNewDeferralpriority == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralpriority);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralpriority, nameof(tasksAddNewDeferralpriority), required: false);
-            var __workflow_tasksAddNewDeferraltaskOnHold = tasksAddNewDeferraltaskOnHold == null ? null : WorkflowExpression.Compile(tasksAddNewDeferraltaskOnHold);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferraltaskOnHold, nameof(tasksAddNewDeferraltaskOnHold), required: false);
-            var __workflow_tasksAddNewDeferralorganisation = tasksAddNewDeferralorganisation == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralorganisation);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralorganisation, nameof(tasksAddNewDeferralorganisation), required: false);
-            var __workflow_tasksAddNewDeferraldepartment = tasksAddNewDeferraldepartment == null ? null : WorkflowExpression.Compile(tasksAddNewDeferraldepartment);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferraldepartment, nameof(tasksAddNewDeferraldepartment), required: false);
-            var __workflow_tasksAddNewDeferraldescription = tasksAddNewDeferraldescription == null ? null : WorkflowExpression.Compile(tasksAddNewDeferraldescription);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferraldescription, nameof(tasksAddNewDeferraldescription), required: false);
-            var __workflow_tasksAddNewDeferraltags = tasksAddNewDeferraltags == null ? null : WorkflowExpression.Compile(tasksAddNewDeferraltags);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferraltags, nameof(tasksAddNewDeferraltags), required: false);
+            var __workflow_tasksAddNewDeferralworkflow = WorkflowExpression.Compile(tasksAddNewDeferralworkflow, nameof(tasksAddNewDeferralworkflow), required: true);
+            var __workflow_tasksAddNewDeferralsetAutomationName = WorkflowExpression.Compile(tasksAddNewDeferralsetAutomationName, nameof(tasksAddNewDeferralsetAutomationName), required: false);
+            var __workflow_tasksAddNewDeferralautomationName = WorkflowExpression.Compile(tasksAddNewDeferralautomationName, nameof(tasksAddNewDeferralautomationName), required: false);
+            var __workflow_tasksAddNewDeferraldeferralTimeInMinutes = WorkflowExpression.Compile(tasksAddNewDeferraldeferralTimeInMinutes, nameof(tasksAddNewDeferraldeferralTimeInMinutes), required: false);
+            var __workflow_tasksAddNewDeferraltaskInputData = WorkflowExpression.Compile(tasksAddNewDeferraltaskInputData, nameof(tasksAddNewDeferraltaskInputData), required: false);
+            var __workflow_tasksAddNewDeferraldeferralStoredData = WorkflowExpression.Compile(tasksAddNewDeferraldeferralStoredData, nameof(tasksAddNewDeferraldeferralStoredData), required: false);
+            var __workflow_tasksAddNewDeferralprocessStage = WorkflowExpression.Compile(tasksAddNewDeferralprocessStage, nameof(tasksAddNewDeferralprocessStage), required: false);
+            var __workflow_tasksAddNewDeferralpriority = WorkflowExpression.Compile(tasksAddNewDeferralpriority, nameof(tasksAddNewDeferralpriority), required: false);
+            var __workflow_tasksAddNewDeferraltaskOnHold = WorkflowExpression.Compile(tasksAddNewDeferraltaskOnHold, nameof(tasksAddNewDeferraltaskOnHold), required: false);
+            var __workflow_tasksAddNewDeferralorganisation = WorkflowExpression.Compile(tasksAddNewDeferralorganisation, nameof(tasksAddNewDeferralorganisation), required: false);
+            var __workflow_tasksAddNewDeferraldepartment = WorkflowExpression.Compile(tasksAddNewDeferraldepartment, nameof(tasksAddNewDeferraldepartment), required: false);
+            var __workflow_tasksAddNewDeferraldescription = WorkflowExpression.Compile(tasksAddNewDeferraldescription, nameof(tasksAddNewDeferraldescription), required: false);
+            var __workflow_tasksAddNewDeferraltags = WorkflowExpression.Compile(tasksAddNewDeferraltags, nameof(tasksAddNewDeferraltags), required: false);
             return new DeferredBodyAction<TasksAddNewDeferralResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewDeferral";
@@ -5365,18 +4987,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeferExistingTaskResponse> TasksDeferExistingTask(Expression<Func<int>> tasksDeferExistingTasktaskId, Expression<Func<int>> tasksDeferExistingTaskdeferralTimeInMinutes = null, Expression<Func<string>> tasksDeferExistingTaskdeferralStoredData = null, Expression<Func<string>> tasksDeferExistingTaskprocessStage = null, Expression<Func<int>> tasksDeferExistingTaskpriority = null, Expression<Func<bool>> tasksDeferExistingTasktaskOnHold = null)
         {
-            var __workflow_tasksDeferExistingTasktaskId = tasksDeferExistingTasktaskId == null ? null : WorkflowExpression.Compile(tasksDeferExistingTasktaskId);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTasktaskId, nameof(tasksDeferExistingTasktaskId), required: true);
-            var __workflow_tasksDeferExistingTaskdeferralTimeInMinutes = tasksDeferExistingTaskdeferralTimeInMinutes == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskdeferralTimeInMinutes);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskdeferralTimeInMinutes, nameof(tasksDeferExistingTaskdeferralTimeInMinutes), required: false);
-            var __workflow_tasksDeferExistingTaskdeferralStoredData = tasksDeferExistingTaskdeferralStoredData == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskdeferralStoredData);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskdeferralStoredData, nameof(tasksDeferExistingTaskdeferralStoredData), required: false);
-            var __workflow_tasksDeferExistingTaskprocessStage = tasksDeferExistingTaskprocessStage == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskprocessStage);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskprocessStage, nameof(tasksDeferExistingTaskprocessStage), required: false);
-            var __workflow_tasksDeferExistingTaskpriority = tasksDeferExistingTaskpriority == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskpriority);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskpriority, nameof(tasksDeferExistingTaskpriority), required: false);
-            var __workflow_tasksDeferExistingTasktaskOnHold = tasksDeferExistingTasktaskOnHold == null ? null : WorkflowExpression.Compile(tasksDeferExistingTasktaskOnHold);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTasktaskOnHold, nameof(tasksDeferExistingTasktaskOnHold), required: false);
+            var __workflow_tasksDeferExistingTasktaskId = WorkflowExpression.Compile(tasksDeferExistingTasktaskId, nameof(tasksDeferExistingTasktaskId), required: true);
+            var __workflow_tasksDeferExistingTaskdeferralTimeInMinutes = WorkflowExpression.Compile(tasksDeferExistingTaskdeferralTimeInMinutes, nameof(tasksDeferExistingTaskdeferralTimeInMinutes), required: false);
+            var __workflow_tasksDeferExistingTaskdeferralStoredData = WorkflowExpression.Compile(tasksDeferExistingTaskdeferralStoredData, nameof(tasksDeferExistingTaskdeferralStoredData), required: false);
+            var __workflow_tasksDeferExistingTaskprocessStage = WorkflowExpression.Compile(tasksDeferExistingTaskprocessStage, nameof(tasksDeferExistingTaskprocessStage), required: false);
+            var __workflow_tasksDeferExistingTaskpriority = WorkflowExpression.Compile(tasksDeferExistingTaskpriority, nameof(tasksDeferExistingTaskpriority), required: false);
+            var __workflow_tasksDeferExistingTasktaskOnHold = WorkflowExpression.Compile(tasksDeferExistingTasktaskOnHold, nameof(tasksDeferExistingTasktaskOnHold), required: false);
             return new DeferredBodyAction<TasksDeferExistingTaskResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeferExistingTask";
@@ -5448,16 +5064,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeferExistingTaskOperationResponse> TasksDeferExistingTaskOperation(Expression<Func<string>> tasksDeferExistingTaskOperationoperationId, Expression<Func<int>> tasksDeferExistingTaskOperationdeferralTimeInMinutes = null, Expression<Func<string>> tasksDeferExistingTaskOperationdeferralStoredData = null, Expression<Func<string>> tasksDeferExistingTaskOperationprocessStage = null, Expression<Func<int>> tasksDeferExistingTaskOperationpriority = null)
         {
-            var __workflow_tasksDeferExistingTaskOperationoperationId = tasksDeferExistingTaskOperationoperationId == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskOperationoperationId);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskOperationoperationId, nameof(tasksDeferExistingTaskOperationoperationId), required: true);
-            var __workflow_tasksDeferExistingTaskOperationdeferralTimeInMinutes = tasksDeferExistingTaskOperationdeferralTimeInMinutes == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskOperationdeferralTimeInMinutes);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskOperationdeferralTimeInMinutes, nameof(tasksDeferExistingTaskOperationdeferralTimeInMinutes), required: false);
-            var __workflow_tasksDeferExistingTaskOperationdeferralStoredData = tasksDeferExistingTaskOperationdeferralStoredData == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskOperationdeferralStoredData);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskOperationdeferralStoredData, nameof(tasksDeferExistingTaskOperationdeferralStoredData), required: false);
-            var __workflow_tasksDeferExistingTaskOperationprocessStage = tasksDeferExistingTaskOperationprocessStage == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskOperationprocessStage);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskOperationprocessStage, nameof(tasksDeferExistingTaskOperationprocessStage), required: false);
-            var __workflow_tasksDeferExistingTaskOperationpriority = tasksDeferExistingTaskOperationpriority == null ? null : WorkflowExpression.Compile(tasksDeferExistingTaskOperationpriority);
-            WorkflowExpression.Validate(__workflow_tasksDeferExistingTaskOperationpriority, nameof(tasksDeferExistingTaskOperationpriority), required: false);
+            var __workflow_tasksDeferExistingTaskOperationoperationId = WorkflowExpression.Compile(tasksDeferExistingTaskOperationoperationId, nameof(tasksDeferExistingTaskOperationoperationId), required: true);
+            var __workflow_tasksDeferExistingTaskOperationdeferralTimeInMinutes = WorkflowExpression.Compile(tasksDeferExistingTaskOperationdeferralTimeInMinutes, nameof(tasksDeferExistingTaskOperationdeferralTimeInMinutes), required: false);
+            var __workflow_tasksDeferExistingTaskOperationdeferralStoredData = WorkflowExpression.Compile(tasksDeferExistingTaskOperationdeferralStoredData, nameof(tasksDeferExistingTaskOperationdeferralStoredData), required: false);
+            var __workflow_tasksDeferExistingTaskOperationprocessStage = WorkflowExpression.Compile(tasksDeferExistingTaskOperationprocessStage, nameof(tasksDeferExistingTaskOperationprocessStage), required: false);
+            var __workflow_tasksDeferExistingTaskOperationpriority = WorkflowExpression.Compile(tasksDeferExistingTaskOperationpriority, nameof(tasksDeferExistingTaskOperationpriority), required: false);
             return new DeferredBodyAction<TasksDeferExistingTaskOperationResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeferExistingTaskOperation";
@@ -5513,10 +5124,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeleteTaskResponse> TasksDeleteTask(Expression<Func<int>> tasksDeleteTasktaskId, Expression<Func<bool>> tasksDeleteTaskupdateSourceSystem = null)
         {
-            var __workflow_tasksDeleteTasktaskId = tasksDeleteTasktaskId == null ? null : WorkflowExpression.Compile(tasksDeleteTasktaskId);
-            WorkflowExpression.Validate(__workflow_tasksDeleteTasktaskId, nameof(tasksDeleteTasktaskId), required: true);
-            var __workflow_tasksDeleteTaskupdateSourceSystem = tasksDeleteTaskupdateSourceSystem == null ? null : WorkflowExpression.Compile(tasksDeleteTaskupdateSourceSystem);
-            WorkflowExpression.Validate(__workflow_tasksDeleteTaskupdateSourceSystem, nameof(tasksDeleteTaskupdateSourceSystem), required: false);
+            var __workflow_tasksDeleteTasktaskId = WorkflowExpression.Compile(tasksDeleteTasktaskId, nameof(tasksDeleteTasktaskId), required: true);
+            var __workflow_tasksDeleteTaskupdateSourceSystem = WorkflowExpression.Compile(tasksDeleteTaskupdateSourceSystem, nameof(tasksDeleteTaskupdateSourceSystem), required: false);
             return new DeferredBodyAction<TasksDeleteTaskResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeleteTask";
@@ -5554,10 +5163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksDeleteTaskOperationResponse> TasksDeleteTaskOperation(Expression<Func<string>> tasksDeleteTaskOperationoperationId, Expression<Func<bool>> tasksDeleteTaskOperationupdateSourceSystem = null)
         {
-            var __workflow_tasksDeleteTaskOperationoperationId = tasksDeleteTaskOperationoperationId == null ? null : WorkflowExpression.Compile(tasksDeleteTaskOperationoperationId);
-            WorkflowExpression.Validate(__workflow_tasksDeleteTaskOperationoperationId, nameof(tasksDeleteTaskOperationoperationId), required: true);
-            var __workflow_tasksDeleteTaskOperationupdateSourceSystem = tasksDeleteTaskOperationupdateSourceSystem == null ? null : WorkflowExpression.Compile(tasksDeleteTaskOperationupdateSourceSystem);
-            WorkflowExpression.Validate(__workflow_tasksDeleteTaskOperationupdateSourceSystem, nameof(tasksDeleteTaskOperationupdateSourceSystem), required: false);
+            var __workflow_tasksDeleteTaskOperationoperationId = WorkflowExpression.Compile(tasksDeleteTaskOperationoperationId, nameof(tasksDeleteTaskOperationoperationId), required: true);
+            var __workflow_tasksDeleteTaskOperationupdateSourceSystem = WorkflowExpression.Compile(tasksDeleteTaskOperationupdateSourceSystem, nameof(tasksDeleteTaskOperationupdateSourceSystem), required: false);
             return new DeferredBodyAction<TasksDeleteTaskOperationResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksDeleteTaskOperation";
@@ -5595,26 +5202,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetAllTasksResponse> TasksGetAllTasks(Expression<Func<string>> tasksGetAllTasksautomationName = null, Expression<Func<tasksGetAllTasksautomationTaskStatusInput>> tasksGetAllTasksautomationTaskStatus = null, Expression<Func<string>> tasksGetAllTasksfilterByPropertyQuery = null, Expression<Func<int>> tasksGetAllTasksminutesUntilDeferralDate = null, Expression<Func<int>> tasksGetAllTasksminimumPriorityLevel = null, Expression<Func<bool>> tasksGetAllTaskssortByDeferralDate = null, Expression<Func<bool>> tasksGetAllTasksretrieveOnHoldTasks = null, Expression<Func<int>> tasksGetAllTasksskip = null, Expression<Func<int>> tasksGetAllTasksmaxResults = null, Expression<Func<bool>> tasksGetAllTasksexcludeTaskData = null)
         {
-            var __workflow_tasksGetAllTasksautomationName = tasksGetAllTasksautomationName == null ? null : WorkflowExpression.Compile(tasksGetAllTasksautomationName);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksautomationName, nameof(tasksGetAllTasksautomationName), required: false);
-            var __workflow_tasksGetAllTasksautomationTaskStatus = tasksGetAllTasksautomationTaskStatus == null ? null : WorkflowExpression.Compile(tasksGetAllTasksautomationTaskStatus);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksautomationTaskStatus, nameof(tasksGetAllTasksautomationTaskStatus), required: false);
-            var __workflow_tasksGetAllTasksfilterByPropertyQuery = tasksGetAllTasksfilterByPropertyQuery == null ? null : WorkflowExpression.Compile(tasksGetAllTasksfilterByPropertyQuery);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksfilterByPropertyQuery, nameof(tasksGetAllTasksfilterByPropertyQuery), required: false);
-            var __workflow_tasksGetAllTasksminutesUntilDeferralDate = tasksGetAllTasksminutesUntilDeferralDate == null ? null : WorkflowExpression.Compile(tasksGetAllTasksminutesUntilDeferralDate);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksminutesUntilDeferralDate, nameof(tasksGetAllTasksminutesUntilDeferralDate), required: false);
-            var __workflow_tasksGetAllTasksminimumPriorityLevel = tasksGetAllTasksminimumPriorityLevel == null ? null : WorkflowExpression.Compile(tasksGetAllTasksminimumPriorityLevel);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksminimumPriorityLevel, nameof(tasksGetAllTasksminimumPriorityLevel), required: false);
-            var __workflow_tasksGetAllTaskssortByDeferralDate = tasksGetAllTaskssortByDeferralDate == null ? null : WorkflowExpression.Compile(tasksGetAllTaskssortByDeferralDate);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTaskssortByDeferralDate, nameof(tasksGetAllTaskssortByDeferralDate), required: false);
-            var __workflow_tasksGetAllTasksretrieveOnHoldTasks = tasksGetAllTasksretrieveOnHoldTasks == null ? null : WorkflowExpression.Compile(tasksGetAllTasksretrieveOnHoldTasks);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksretrieveOnHoldTasks, nameof(tasksGetAllTasksretrieveOnHoldTasks), required: false);
-            var __workflow_tasksGetAllTasksskip = tasksGetAllTasksskip == null ? null : WorkflowExpression.Compile(tasksGetAllTasksskip);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksskip, nameof(tasksGetAllTasksskip), required: false);
-            var __workflow_tasksGetAllTasksmaxResults = tasksGetAllTasksmaxResults == null ? null : WorkflowExpression.Compile(tasksGetAllTasksmaxResults);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksmaxResults, nameof(tasksGetAllTasksmaxResults), required: false);
-            var __workflow_tasksGetAllTasksexcludeTaskData = tasksGetAllTasksexcludeTaskData == null ? null : WorkflowExpression.Compile(tasksGetAllTasksexcludeTaskData);
-            WorkflowExpression.Validate(__workflow_tasksGetAllTasksexcludeTaskData, nameof(tasksGetAllTasksexcludeTaskData), required: false);
+            var __workflow_tasksGetAllTasksautomationName = WorkflowExpression.Compile(tasksGetAllTasksautomationName, nameof(tasksGetAllTasksautomationName), required: false);
+            var __workflow_tasksGetAllTasksautomationTaskStatus = WorkflowExpression.Compile(tasksGetAllTasksautomationTaskStatus, nameof(tasksGetAllTasksautomationTaskStatus), required: false);
+            var __workflow_tasksGetAllTasksfilterByPropertyQuery = WorkflowExpression.Compile(tasksGetAllTasksfilterByPropertyQuery, nameof(tasksGetAllTasksfilterByPropertyQuery), required: false);
+            var __workflow_tasksGetAllTasksminutesUntilDeferralDate = WorkflowExpression.Compile(tasksGetAllTasksminutesUntilDeferralDate, nameof(tasksGetAllTasksminutesUntilDeferralDate), required: false);
+            var __workflow_tasksGetAllTasksminimumPriorityLevel = WorkflowExpression.Compile(tasksGetAllTasksminimumPriorityLevel, nameof(tasksGetAllTasksminimumPriorityLevel), required: false);
+            var __workflow_tasksGetAllTaskssortByDeferralDate = WorkflowExpression.Compile(tasksGetAllTaskssortByDeferralDate, nameof(tasksGetAllTaskssortByDeferralDate), required: false);
+            var __workflow_tasksGetAllTasksretrieveOnHoldTasks = WorkflowExpression.Compile(tasksGetAllTasksretrieveOnHoldTasks, nameof(tasksGetAllTasksretrieveOnHoldTasks), required: false);
+            var __workflow_tasksGetAllTasksskip = WorkflowExpression.Compile(tasksGetAllTasksskip, nameof(tasksGetAllTasksskip), required: false);
+            var __workflow_tasksGetAllTasksmaxResults = WorkflowExpression.Compile(tasksGetAllTasksmaxResults, nameof(tasksGetAllTasksmaxResults), required: false);
+            var __workflow_tasksGetAllTasksexcludeTaskData = WorkflowExpression.Compile(tasksGetAllTasksexcludeTaskData, nameof(tasksGetAllTasksexcludeTaskData), required: false);
             return new DeferredBodyAction<TasksGetAllTasksResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetAllTasks";
@@ -5744,10 +5341,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetTaskResponse> TasksGetTask(Expression<Func<int>> tasksGetTasktaskId, Expression<Func<tasksGetTaskstatusChangeInput>> tasksGetTaskstatusChange = null)
         {
-            var __workflow_tasksGetTasktaskId = tasksGetTasktaskId == null ? null : WorkflowExpression.Compile(tasksGetTasktaskId);
-            WorkflowExpression.Validate(__workflow_tasksGetTasktaskId, nameof(tasksGetTasktaskId), required: true);
-            var __workflow_tasksGetTaskstatusChange = tasksGetTaskstatusChange == null ? null : WorkflowExpression.Compile(tasksGetTaskstatusChange);
-            WorkflowExpression.Validate(__workflow_tasksGetTaskstatusChange, nameof(tasksGetTaskstatusChange), required: false);
+            var __workflow_tasksGetTasktaskId = WorkflowExpression.Compile(tasksGetTasktaskId, nameof(tasksGetTasktaskId), required: true);
+            var __workflow_tasksGetTaskstatusChange = WorkflowExpression.Compile(tasksGetTaskstatusChange, nameof(tasksGetTaskstatusChange), required: false);
             return new DeferredBodyAction<TasksGetTaskResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetTask";
@@ -5785,20 +5380,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetNextTaskResponse> TasksGetNextTask(Expression<Func<string>> tasksGetNextTaskautomationName = null, Expression<Func<string[]>> tasksGetNextTaskautomationNames = null, Expression<Func<int>> tasksGetNextTaskminimumPriorityLevel = null, Expression<Func<tasksGetNextTaskstatusChangeInput>> tasksGetNextTaskstatusChange = null, Expression<Func<int>> tasksGetNextTaskminutesUntilDeferralDate = null, Expression<Func<bool>> tasksGetNextTaskignoreSLA = null, Expression<Func<int[]>> tasksGetNextTaskexcludeTaskIds = null)
         {
-            var __workflow_tasksGetNextTaskautomationName = tasksGetNextTaskautomationName == null ? null : WorkflowExpression.Compile(tasksGetNextTaskautomationName);
-            WorkflowExpression.Validate(__workflow_tasksGetNextTaskautomationName, nameof(tasksGetNextTaskautomationName), required: false);
-            var __workflow_tasksGetNextTaskautomationNames = tasksGetNextTaskautomationNames == null ? null : WorkflowExpression.Compile(tasksGetNextTaskautomationNames);
-            WorkflowExpression.Validate(__workflow_tasksGetNextTaskautomationNames, nameof(tasksGetNextTaskautomationNames), required: false);
-            var __workflow_tasksGetNextTaskminimumPriorityLevel = tasksGetNextTaskminimumPriorityLevel == null ? null : WorkflowExpression.Compile(tasksGetNextTaskminimumPriorityLevel);
-            WorkflowExpression.Validate(__workflow_tasksGetNextTaskminimumPriorityLevel, nameof(tasksGetNextTaskminimumPriorityLevel), required: false);
-            var __workflow_tasksGetNextTaskstatusChange = tasksGetNextTaskstatusChange == null ? null : WorkflowExpression.Compile(tasksGetNextTaskstatusChange);
-            WorkflowExpression.Validate(__workflow_tasksGetNextTaskstatusChange, nameof(tasksGetNextTaskstatusChange), required: false);
-            var __workflow_tasksGetNextTaskminutesUntilDeferralDate = tasksGetNextTaskminutesUntilDeferralDate == null ? null : WorkflowExpression.Compile(tasksGetNextTaskminutesUntilDeferralDate);
-            WorkflowExpression.Validate(__workflow_tasksGetNextTaskminutesUntilDeferralDate, nameof(tasksGetNextTaskminutesUntilDeferralDate), required: false);
-            var __workflow_tasksGetNextTaskignoreSLA = tasksGetNextTaskignoreSLA == null ? null : WorkflowExpression.Compile(tasksGetNextTaskignoreSLA);
-            WorkflowExpression.Validate(__workflow_tasksGetNextTaskignoreSLA, nameof(tasksGetNextTaskignoreSLA), required: false);
-            var __workflow_tasksGetNextTaskexcludeTaskIds = tasksGetNextTaskexcludeTaskIds == null ? null : WorkflowExpression.Compile(tasksGetNextTaskexcludeTaskIds);
-            WorkflowExpression.Validate(__workflow_tasksGetNextTaskexcludeTaskIds, nameof(tasksGetNextTaskexcludeTaskIds), required: false);
+            var __workflow_tasksGetNextTaskautomationName = WorkflowExpression.Compile(tasksGetNextTaskautomationName, nameof(tasksGetNextTaskautomationName), required: false);
+            var __workflow_tasksGetNextTaskautomationNames = WorkflowExpression.Compile(tasksGetNextTaskautomationNames, nameof(tasksGetNextTaskautomationNames), required: false);
+            var __workflow_tasksGetNextTaskminimumPriorityLevel = WorkflowExpression.Compile(tasksGetNextTaskminimumPriorityLevel, nameof(tasksGetNextTaskminimumPriorityLevel), required: false);
+            var __workflow_tasksGetNextTaskstatusChange = WorkflowExpression.Compile(tasksGetNextTaskstatusChange, nameof(tasksGetNextTaskstatusChange), required: false);
+            var __workflow_tasksGetNextTaskminutesUntilDeferralDate = WorkflowExpression.Compile(tasksGetNextTaskminutesUntilDeferralDate, nameof(tasksGetNextTaskminutesUntilDeferralDate), required: false);
+            var __workflow_tasksGetNextTaskignoreSLA = WorkflowExpression.Compile(tasksGetNextTaskignoreSLA, nameof(tasksGetNextTaskignoreSLA), required: false);
+            var __workflow_tasksGetNextTaskexcludeTaskIds = WorkflowExpression.Compile(tasksGetNextTaskexcludeTaskIds, nameof(tasksGetNextTaskexcludeTaskIds), required: false);
             return new DeferredBodyAction<TasksGetNextTaskResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetNextTask";
@@ -5890,20 +5478,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksChangeTaskStatusResponse> TasksChangeTaskStatus(Expression<Func<int>> tasksChangeTaskStatustaskId, Expression<Func<tasksChangeTaskStatusautomationTaskStatusInput>> tasksChangeTaskStatusautomationTaskStatus = null, Expression<Func<bool>> tasksChangeTaskStatustaskOnHold = null, Expression<Func<bool>> tasksChangeTaskStatuseraseTaskInputData = null, Expression<Func<bool>> tasksChangeTaskStatuseraseDeferralStoredData = null, Expression<Func<bool>> tasksChangeTaskStatusupdateSourceSystem = null, Expression<Func<string>> tasksChangeTaskStatustaskClosureReason = null)
         {
-            var __workflow_tasksChangeTaskStatustaskId = tasksChangeTaskStatustaskId == null ? null : WorkflowExpression.Compile(tasksChangeTaskStatustaskId);
-            WorkflowExpression.Validate(__workflow_tasksChangeTaskStatustaskId, nameof(tasksChangeTaskStatustaskId), required: true);
-            var __workflow_tasksChangeTaskStatusautomationTaskStatus = tasksChangeTaskStatusautomationTaskStatus == null ? null : WorkflowExpression.Compile(tasksChangeTaskStatusautomationTaskStatus);
-            WorkflowExpression.Validate(__workflow_tasksChangeTaskStatusautomationTaskStatus, nameof(tasksChangeTaskStatusautomationTaskStatus), required: false);
-            var __workflow_tasksChangeTaskStatustaskOnHold = tasksChangeTaskStatustaskOnHold == null ? null : WorkflowExpression.Compile(tasksChangeTaskStatustaskOnHold);
-            WorkflowExpression.Validate(__workflow_tasksChangeTaskStatustaskOnHold, nameof(tasksChangeTaskStatustaskOnHold), required: false);
-            var __workflow_tasksChangeTaskStatuseraseTaskInputData = tasksChangeTaskStatuseraseTaskInputData == null ? null : WorkflowExpression.Compile(tasksChangeTaskStatuseraseTaskInputData);
-            WorkflowExpression.Validate(__workflow_tasksChangeTaskStatuseraseTaskInputData, nameof(tasksChangeTaskStatuseraseTaskInputData), required: false);
-            var __workflow_tasksChangeTaskStatuseraseDeferralStoredData = tasksChangeTaskStatuseraseDeferralStoredData == null ? null : WorkflowExpression.Compile(tasksChangeTaskStatuseraseDeferralStoredData);
-            WorkflowExpression.Validate(__workflow_tasksChangeTaskStatuseraseDeferralStoredData, nameof(tasksChangeTaskStatuseraseDeferralStoredData), required: false);
-            var __workflow_tasksChangeTaskStatusupdateSourceSystem = tasksChangeTaskStatusupdateSourceSystem == null ? null : WorkflowExpression.Compile(tasksChangeTaskStatusupdateSourceSystem);
-            WorkflowExpression.Validate(__workflow_tasksChangeTaskStatusupdateSourceSystem, nameof(tasksChangeTaskStatusupdateSourceSystem), required: false);
-            var __workflow_tasksChangeTaskStatustaskClosureReason = tasksChangeTaskStatustaskClosureReason == null ? null : WorkflowExpression.Compile(tasksChangeTaskStatustaskClosureReason);
-            WorkflowExpression.Validate(__workflow_tasksChangeTaskStatustaskClosureReason, nameof(tasksChangeTaskStatustaskClosureReason), required: false);
+            var __workflow_tasksChangeTaskStatustaskId = WorkflowExpression.Compile(tasksChangeTaskStatustaskId, nameof(tasksChangeTaskStatustaskId), required: true);
+            var __workflow_tasksChangeTaskStatusautomationTaskStatus = WorkflowExpression.Compile(tasksChangeTaskStatusautomationTaskStatus, nameof(tasksChangeTaskStatusautomationTaskStatus), required: false);
+            var __workflow_tasksChangeTaskStatustaskOnHold = WorkflowExpression.Compile(tasksChangeTaskStatustaskOnHold, nameof(tasksChangeTaskStatustaskOnHold), required: false);
+            var __workflow_tasksChangeTaskStatuseraseTaskInputData = WorkflowExpression.Compile(tasksChangeTaskStatuseraseTaskInputData, nameof(tasksChangeTaskStatuseraseTaskInputData), required: false);
+            var __workflow_tasksChangeTaskStatuseraseDeferralStoredData = WorkflowExpression.Compile(tasksChangeTaskStatuseraseDeferralStoredData, nameof(tasksChangeTaskStatuseraseDeferralStoredData), required: false);
+            var __workflow_tasksChangeTaskStatusupdateSourceSystem = WorkflowExpression.Compile(tasksChangeTaskStatusupdateSourceSystem, nameof(tasksChangeTaskStatusupdateSourceSystem), required: false);
+            var __workflow_tasksChangeTaskStatustaskClosureReason = WorkflowExpression.Compile(tasksChangeTaskStatustaskClosureReason, nameof(tasksChangeTaskStatustaskClosureReason), required: false);
             return new DeferredBodyAction<TasksChangeTaskStatusResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksChangeTaskStatus";
@@ -6001,14 +5582,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNoteResponse> TasksAddNote(Expression<Func<int>> tasksAddNotetaskId, Expression<Func<string>> tasksAddNotenoteText, Expression<Func<tasksAddNotenoteTypeInput>> tasksAddNotenoteType = null, Expression<Func<string>> tasksAddNotenoteTypeOther = null)
         {
-            var __workflow_tasksAddNotetaskId = tasksAddNotetaskId == null ? null : WorkflowExpression.Compile(tasksAddNotetaskId);
-            WorkflowExpression.Validate(__workflow_tasksAddNotetaskId, nameof(tasksAddNotetaskId), required: true);
-            var __workflow_tasksAddNotenoteText = tasksAddNotenoteText == null ? null : WorkflowExpression.Compile(tasksAddNotenoteText);
-            WorkflowExpression.Validate(__workflow_tasksAddNotenoteText, nameof(tasksAddNotenoteText), required: true);
-            var __workflow_tasksAddNotenoteType = tasksAddNotenoteType == null ? null : WorkflowExpression.Compile(tasksAddNotenoteType);
-            WorkflowExpression.Validate(__workflow_tasksAddNotenoteType, nameof(tasksAddNotenoteType), required: false);
-            var __workflow_tasksAddNotenoteTypeOther = tasksAddNotenoteTypeOther == null ? null : WorkflowExpression.Compile(tasksAddNotenoteTypeOther);
-            WorkflowExpression.Validate(__workflow_tasksAddNotenoteTypeOther, nameof(tasksAddNotenoteTypeOther), required: false);
+            var __workflow_tasksAddNotetaskId = WorkflowExpression.Compile(tasksAddNotetaskId, nameof(tasksAddNotetaskId), required: true);
+            var __workflow_tasksAddNotenoteText = WorkflowExpression.Compile(tasksAddNotenoteText, nameof(tasksAddNotenoteText), required: true);
+            var __workflow_tasksAddNotenoteType = WorkflowExpression.Compile(tasksAddNotenoteType, nameof(tasksAddNotenoteType), required: false);
+            var __workflow_tasksAddNotenoteTypeOther = WorkflowExpression.Compile(tasksAddNotenoteTypeOther, nameof(tasksAddNotenoteTypeOther), required: false);
             return new DeferredBodyAction<TasksAddNoteResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNote";
@@ -6054,20 +5631,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAssignTaskResponse> TasksAssignTask(Expression<Func<int>> tasksAssignTasktaskId, Expression<Func<string>> tasksAssignTaskassignToUserId = null, Expression<Func<string>> tasksAssignTaskassignToUserName = null, Expression<Func<string>> tasksAssignTaskassignToGroupId = null, Expression<Func<string>> tasksAssignTaskassignToGroupName = null, Expression<Func<bool>> tasksAssignTaskremoveUserAssignmentIfBlank = null, Expression<Func<bool>> tasksAssignTaskremoveGroupAssignmentIfBlank = null)
         {
-            var __workflow_tasksAssignTasktaskId = tasksAssignTasktaskId == null ? null : WorkflowExpression.Compile(tasksAssignTasktaskId);
-            WorkflowExpression.Validate(__workflow_tasksAssignTasktaskId, nameof(tasksAssignTasktaskId), required: true);
-            var __workflow_tasksAssignTaskassignToUserId = tasksAssignTaskassignToUserId == null ? null : WorkflowExpression.Compile(tasksAssignTaskassignToUserId);
-            WorkflowExpression.Validate(__workflow_tasksAssignTaskassignToUserId, nameof(tasksAssignTaskassignToUserId), required: false);
-            var __workflow_tasksAssignTaskassignToUserName = tasksAssignTaskassignToUserName == null ? null : WorkflowExpression.Compile(tasksAssignTaskassignToUserName);
-            WorkflowExpression.Validate(__workflow_tasksAssignTaskassignToUserName, nameof(tasksAssignTaskassignToUserName), required: false);
-            var __workflow_tasksAssignTaskassignToGroupId = tasksAssignTaskassignToGroupId == null ? null : WorkflowExpression.Compile(tasksAssignTaskassignToGroupId);
-            WorkflowExpression.Validate(__workflow_tasksAssignTaskassignToGroupId, nameof(tasksAssignTaskassignToGroupId), required: false);
-            var __workflow_tasksAssignTaskassignToGroupName = tasksAssignTaskassignToGroupName == null ? null : WorkflowExpression.Compile(tasksAssignTaskassignToGroupName);
-            WorkflowExpression.Validate(__workflow_tasksAssignTaskassignToGroupName, nameof(tasksAssignTaskassignToGroupName), required: false);
-            var __workflow_tasksAssignTaskremoveUserAssignmentIfBlank = tasksAssignTaskremoveUserAssignmentIfBlank == null ? null : WorkflowExpression.Compile(tasksAssignTaskremoveUserAssignmentIfBlank);
-            WorkflowExpression.Validate(__workflow_tasksAssignTaskremoveUserAssignmentIfBlank, nameof(tasksAssignTaskremoveUserAssignmentIfBlank), required: false);
-            var __workflow_tasksAssignTaskremoveGroupAssignmentIfBlank = tasksAssignTaskremoveGroupAssignmentIfBlank == null ? null : WorkflowExpression.Compile(tasksAssignTaskremoveGroupAssignmentIfBlank);
-            WorkflowExpression.Validate(__workflow_tasksAssignTaskremoveGroupAssignmentIfBlank, nameof(tasksAssignTaskremoveGroupAssignmentIfBlank), required: false);
+            var __workflow_tasksAssignTasktaskId = WorkflowExpression.Compile(tasksAssignTasktaskId, nameof(tasksAssignTasktaskId), required: true);
+            var __workflow_tasksAssignTaskassignToUserId = WorkflowExpression.Compile(tasksAssignTaskassignToUserId, nameof(tasksAssignTaskassignToUserId), required: false);
+            var __workflow_tasksAssignTaskassignToUserName = WorkflowExpression.Compile(tasksAssignTaskassignToUserName, nameof(tasksAssignTaskassignToUserName), required: false);
+            var __workflow_tasksAssignTaskassignToGroupId = WorkflowExpression.Compile(tasksAssignTaskassignToGroupId, nameof(tasksAssignTaskassignToGroupId), required: false);
+            var __workflow_tasksAssignTaskassignToGroupName = WorkflowExpression.Compile(tasksAssignTaskassignToGroupName, nameof(tasksAssignTaskassignToGroupName), required: false);
+            var __workflow_tasksAssignTaskremoveUserAssignmentIfBlank = WorkflowExpression.Compile(tasksAssignTaskremoveUserAssignmentIfBlank, nameof(tasksAssignTaskremoveUserAssignmentIfBlank), required: false);
+            var __workflow_tasksAssignTaskremoveGroupAssignmentIfBlank = WorkflowExpression.Compile(tasksAssignTaskremoveGroupAssignmentIfBlank, nameof(tasksAssignTaskremoveGroupAssignmentIfBlank), required: false);
             return new DeferredBodyAction<TasksAssignTaskResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksAssignTask";
@@ -6145,10 +5715,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksSetOutputDataResponse> TasksSetOutputData(Expression<Func<int>> tasksSetOutputDatataskId, Expression<Func<string>> tasksSetOutputDatataskOutputData = null)
         {
-            var __workflow_tasksSetOutputDatataskId = tasksSetOutputDatataskId == null ? null : WorkflowExpression.Compile(tasksSetOutputDatataskId);
-            WorkflowExpression.Validate(__workflow_tasksSetOutputDatataskId, nameof(tasksSetOutputDatataskId), required: true);
-            var __workflow_tasksSetOutputDatataskOutputData = tasksSetOutputDatataskOutputData == null ? null : WorkflowExpression.Compile(tasksSetOutputDatataskOutputData);
-            WorkflowExpression.Validate(__workflow_tasksSetOutputDatataskOutputData, nameof(tasksSetOutputDatataskOutputData), required: false);
+            var __workflow_tasksSetOutputDatataskId = WorkflowExpression.Compile(tasksSetOutputDatataskId, nameof(tasksSetOutputDatataskId), required: true);
+            var __workflow_tasksSetOutputDatataskOutputData = WorkflowExpression.Compile(tasksSetOutputDatataskOutputData, nameof(tasksSetOutputDatataskOutputData), required: false);
             return new DeferredBodyAction<TasksSetOutputDataResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksSetOutputData";
@@ -6176,24 +5744,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewTaskOperationResponse> TasksAddNewTaskOperation(Expression<Func<string>> tasksAddNewTaskOperationautomationName = null, Expression<Func<string>> tasksAddNewTaskOperationtaskInputData = null, Expression<Func<string>> tasksAddNewTaskOperationprocessStage = null, Expression<Func<int>> tasksAddNewTaskOperationpriority = null, Expression<Func<int>> tasksAddNewTaskOperationsLA = null, Expression<Func<string>> tasksAddNewTaskOperationorganisation = null, Expression<Func<string>> tasksAddNewTaskOperationdepartment = null, Expression<Func<string>> tasksAddNewTaskOperationdescription = null, Expression<Func<string>> tasksAddNewTaskOperationtags = null)
         {
-            var __workflow_tasksAddNewTaskOperationautomationName = tasksAddNewTaskOperationautomationName == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationautomationName);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationautomationName, nameof(tasksAddNewTaskOperationautomationName), required: false);
-            var __workflow_tasksAddNewTaskOperationtaskInputData = tasksAddNewTaskOperationtaskInputData == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationtaskInputData);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationtaskInputData, nameof(tasksAddNewTaskOperationtaskInputData), required: false);
-            var __workflow_tasksAddNewTaskOperationprocessStage = tasksAddNewTaskOperationprocessStage == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationprocessStage);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationprocessStage, nameof(tasksAddNewTaskOperationprocessStage), required: false);
-            var __workflow_tasksAddNewTaskOperationpriority = tasksAddNewTaskOperationpriority == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationpriority);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationpriority, nameof(tasksAddNewTaskOperationpriority), required: false);
-            var __workflow_tasksAddNewTaskOperationsLA = tasksAddNewTaskOperationsLA == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationsLA);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationsLA, nameof(tasksAddNewTaskOperationsLA), required: false);
-            var __workflow_tasksAddNewTaskOperationorganisation = tasksAddNewTaskOperationorganisation == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationorganisation);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationorganisation, nameof(tasksAddNewTaskOperationorganisation), required: false);
-            var __workflow_tasksAddNewTaskOperationdepartment = tasksAddNewTaskOperationdepartment == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationdepartment);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationdepartment, nameof(tasksAddNewTaskOperationdepartment), required: false);
-            var __workflow_tasksAddNewTaskOperationdescription = tasksAddNewTaskOperationdescription == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationdescription);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationdescription, nameof(tasksAddNewTaskOperationdescription), required: false);
-            var __workflow_tasksAddNewTaskOperationtags = tasksAddNewTaskOperationtags == null ? null : WorkflowExpression.Compile(tasksAddNewTaskOperationtags);
-            WorkflowExpression.Validate(__workflow_tasksAddNewTaskOperationtags, nameof(tasksAddNewTaskOperationtags), required: false);
+            var __workflow_tasksAddNewTaskOperationautomationName = WorkflowExpression.Compile(tasksAddNewTaskOperationautomationName, nameof(tasksAddNewTaskOperationautomationName), required: false);
+            var __workflow_tasksAddNewTaskOperationtaskInputData = WorkflowExpression.Compile(tasksAddNewTaskOperationtaskInputData, nameof(tasksAddNewTaskOperationtaskInputData), required: false);
+            var __workflow_tasksAddNewTaskOperationprocessStage = WorkflowExpression.Compile(tasksAddNewTaskOperationprocessStage, nameof(tasksAddNewTaskOperationprocessStage), required: false);
+            var __workflow_tasksAddNewTaskOperationpriority = WorkflowExpression.Compile(tasksAddNewTaskOperationpriority, nameof(tasksAddNewTaskOperationpriority), required: false);
+            var __workflow_tasksAddNewTaskOperationsLA = WorkflowExpression.Compile(tasksAddNewTaskOperationsLA, nameof(tasksAddNewTaskOperationsLA), required: false);
+            var __workflow_tasksAddNewTaskOperationorganisation = WorkflowExpression.Compile(tasksAddNewTaskOperationorganisation, nameof(tasksAddNewTaskOperationorganisation), required: false);
+            var __workflow_tasksAddNewTaskOperationdepartment = WorkflowExpression.Compile(tasksAddNewTaskOperationdepartment, nameof(tasksAddNewTaskOperationdepartment), required: false);
+            var __workflow_tasksAddNewTaskOperationdescription = WorkflowExpression.Compile(tasksAddNewTaskOperationdescription, nameof(tasksAddNewTaskOperationdescription), required: false);
+            var __workflow_tasksAddNewTaskOperationtags = WorkflowExpression.Compile(tasksAddNewTaskOperationtags, nameof(tasksAddNewTaskOperationtags), required: false);
             return new DeferredBodyAction<TasksAddNewTaskOperationResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewTaskOperation";
@@ -6277,26 +5836,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksAddNewDeferralOperationResponse> TasksAddNewDeferralOperation(Expression<Func<string>> tasksAddNewDeferralOperationautomationName = null, Expression<Func<int>> tasksAddNewDeferralOperationdeferralTimeInMinutes = null, Expression<Func<string>> tasksAddNewDeferralOperationtaskInputData = null, Expression<Func<string>> tasksAddNewDeferralOperationdeferralStoredData = null, Expression<Func<string>> tasksAddNewDeferralOperationprocessStage = null, Expression<Func<int>> tasksAddNewDeferralOperationpriority = null, Expression<Func<string>> tasksAddNewDeferralOperationorganisation = null, Expression<Func<string>> tasksAddNewDeferralOperationdepartment = null, Expression<Func<string>> tasksAddNewDeferralOperationdescription = null, Expression<Func<string>> tasksAddNewDeferralOperationtags = null)
         {
-            var __workflow_tasksAddNewDeferralOperationautomationName = tasksAddNewDeferralOperationautomationName == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationautomationName);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationautomationName, nameof(tasksAddNewDeferralOperationautomationName), required: false);
-            var __workflow_tasksAddNewDeferralOperationdeferralTimeInMinutes = tasksAddNewDeferralOperationdeferralTimeInMinutes == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationdeferralTimeInMinutes);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationdeferralTimeInMinutes, nameof(tasksAddNewDeferralOperationdeferralTimeInMinutes), required: false);
-            var __workflow_tasksAddNewDeferralOperationtaskInputData = tasksAddNewDeferralOperationtaskInputData == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationtaskInputData);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationtaskInputData, nameof(tasksAddNewDeferralOperationtaskInputData), required: false);
-            var __workflow_tasksAddNewDeferralOperationdeferralStoredData = tasksAddNewDeferralOperationdeferralStoredData == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationdeferralStoredData);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationdeferralStoredData, nameof(tasksAddNewDeferralOperationdeferralStoredData), required: false);
-            var __workflow_tasksAddNewDeferralOperationprocessStage = tasksAddNewDeferralOperationprocessStage == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationprocessStage);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationprocessStage, nameof(tasksAddNewDeferralOperationprocessStage), required: false);
-            var __workflow_tasksAddNewDeferralOperationpriority = tasksAddNewDeferralOperationpriority == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationpriority);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationpriority, nameof(tasksAddNewDeferralOperationpriority), required: false);
-            var __workflow_tasksAddNewDeferralOperationorganisation = tasksAddNewDeferralOperationorganisation == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationorganisation);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationorganisation, nameof(tasksAddNewDeferralOperationorganisation), required: false);
-            var __workflow_tasksAddNewDeferralOperationdepartment = tasksAddNewDeferralOperationdepartment == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationdepartment);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationdepartment, nameof(tasksAddNewDeferralOperationdepartment), required: false);
-            var __workflow_tasksAddNewDeferralOperationdescription = tasksAddNewDeferralOperationdescription == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationdescription);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationdescription, nameof(tasksAddNewDeferralOperationdescription), required: false);
-            var __workflow_tasksAddNewDeferralOperationtags = tasksAddNewDeferralOperationtags == null ? null : WorkflowExpression.Compile(tasksAddNewDeferralOperationtags);
-            WorkflowExpression.Validate(__workflow_tasksAddNewDeferralOperationtags, nameof(tasksAddNewDeferralOperationtags), required: false);
+            var __workflow_tasksAddNewDeferralOperationautomationName = WorkflowExpression.Compile(tasksAddNewDeferralOperationautomationName, nameof(tasksAddNewDeferralOperationautomationName), required: false);
+            var __workflow_tasksAddNewDeferralOperationdeferralTimeInMinutes = WorkflowExpression.Compile(tasksAddNewDeferralOperationdeferralTimeInMinutes, nameof(tasksAddNewDeferralOperationdeferralTimeInMinutes), required: false);
+            var __workflow_tasksAddNewDeferralOperationtaskInputData = WorkflowExpression.Compile(tasksAddNewDeferralOperationtaskInputData, nameof(tasksAddNewDeferralOperationtaskInputData), required: false);
+            var __workflow_tasksAddNewDeferralOperationdeferralStoredData = WorkflowExpression.Compile(tasksAddNewDeferralOperationdeferralStoredData, nameof(tasksAddNewDeferralOperationdeferralStoredData), required: false);
+            var __workflow_tasksAddNewDeferralOperationprocessStage = WorkflowExpression.Compile(tasksAddNewDeferralOperationprocessStage, nameof(tasksAddNewDeferralOperationprocessStage), required: false);
+            var __workflow_tasksAddNewDeferralOperationpriority = WorkflowExpression.Compile(tasksAddNewDeferralOperationpriority, nameof(tasksAddNewDeferralOperationpriority), required: false);
+            var __workflow_tasksAddNewDeferralOperationorganisation = WorkflowExpression.Compile(tasksAddNewDeferralOperationorganisation, nameof(tasksAddNewDeferralOperationorganisation), required: false);
+            var __workflow_tasksAddNewDeferralOperationdepartment = WorkflowExpression.Compile(tasksAddNewDeferralOperationdepartment, nameof(tasksAddNewDeferralOperationdepartment), required: false);
+            var __workflow_tasksAddNewDeferralOperationdescription = WorkflowExpression.Compile(tasksAddNewDeferralOperationdescription, nameof(tasksAddNewDeferralOperationdescription), required: false);
+            var __workflow_tasksAddNewDeferralOperationtags = WorkflowExpression.Compile(tasksAddNewDeferralOperationtags, nameof(tasksAddNewDeferralOperationtags), required: false);
             return new DeferredBodyAction<TasksAddNewDeferralOperationResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksAddNewDeferralOperation";
@@ -6386,8 +5935,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<TasksGetTaskOperationResponse> TasksGetTaskOperation(Expression<Func<string>> tasksGetTaskOperationoperationId)
         {
-            var __workflow_tasksGetTaskOperationoperationId = tasksGetTaskOperationoperationId == null ? null : WorkflowExpression.Compile(tasksGetTaskOperationoperationId);
-            WorkflowExpression.Validate(__workflow_tasksGetTaskOperationoperationId, nameof(tasksGetTaskOperationoperationId), required: true);
+            var __workflow_tasksGetTaskOperationoperationId = WorkflowExpression.Compile(tasksGetTaskOperationoperationId, nameof(tasksGetTaskOperationoperationId), required: true);
             return new DeferredBodyAction<TasksGetTaskOperationResponse>(() =>
             {
                 var apiCallPath = "/Environment/TasksGetTaskOperation";
@@ -6409,10 +5957,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRemoteLoggingLevel(Expression<Func<int>> setRemoteLoggingLevelloggingLevel, Expression<Func<string>> setRemoteLoggingLevelworkflow)
         {
-            var __workflow_setRemoteLoggingLevelloggingLevel = setRemoteLoggingLevelloggingLevel == null ? null : WorkflowExpression.Compile(setRemoteLoggingLevelloggingLevel);
-            WorkflowExpression.Validate(__workflow_setRemoteLoggingLevelloggingLevel, nameof(setRemoteLoggingLevelloggingLevel), required: true);
-            var __workflow_setRemoteLoggingLevelworkflow = setRemoteLoggingLevelworkflow == null ? null : WorkflowExpression.Compile(setRemoteLoggingLevelworkflow);
-            WorkflowExpression.Validate(__workflow_setRemoteLoggingLevelworkflow, nameof(setRemoteLoggingLevelworkflow), required: true);
+            var __workflow_setRemoteLoggingLevelloggingLevel = WorkflowExpression.Compile(setRemoteLoggingLevelloggingLevel, nameof(setRemoteLoggingLevelloggingLevel), required: true);
+            var __workflow_setRemoteLoggingLevelworkflow = WorkflowExpression.Compile(setRemoteLoggingLevelworkflow, nameof(setRemoteLoggingLevelworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/SetRemoteLoggingLevel";
@@ -6436,8 +5982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteLoggingLevelResponse> GetRemoteLoggingLevel(Expression<Func<string>> getRemoteLoggingLevelworkflow)
         {
-            var __workflow_getRemoteLoggingLevelworkflow = getRemoteLoggingLevelworkflow == null ? null : WorkflowExpression.Compile(getRemoteLoggingLevelworkflow);
-            WorkflowExpression.Validate(__workflow_getRemoteLoggingLevelworkflow, nameof(getRemoteLoggingLevelworkflow), required: true);
+            var __workflow_getRemoteLoggingLevelworkflow = WorkflowExpression.Compile(getRemoteLoggingLevelworkflow, nameof(getRemoteLoggingLevelworkflow), required: true);
             return new DeferredBodyAction<GetRemoteLoggingLevelResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetRemoteLoggingLevel";
@@ -6459,20 +6004,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetLicenseCode(Expression<Func<string>> setLicenseCodecustomerNETBIOSDomainName, Expression<Func<string>> setLicenseCodecustomerDisplayName, Expression<Func<string>> setLicenseCodevendorName, Expression<Func<string>> setLicenseCodelicenseExpiryDate, Expression<Func<string>> setLicenseCodeactivationCode, Expression<Func<string>> setLicenseCodeworkflow, Expression<Func<bool>> setLicenseCodestoreInRegistry = null)
         {
-            var __workflow_setLicenseCodecustomerNETBIOSDomainName = setLicenseCodecustomerNETBIOSDomainName == null ? null : WorkflowExpression.Compile(setLicenseCodecustomerNETBIOSDomainName);
-            WorkflowExpression.Validate(__workflow_setLicenseCodecustomerNETBIOSDomainName, nameof(setLicenseCodecustomerNETBIOSDomainName), required: true);
-            var __workflow_setLicenseCodecustomerDisplayName = setLicenseCodecustomerDisplayName == null ? null : WorkflowExpression.Compile(setLicenseCodecustomerDisplayName);
-            WorkflowExpression.Validate(__workflow_setLicenseCodecustomerDisplayName, nameof(setLicenseCodecustomerDisplayName), required: true);
-            var __workflow_setLicenseCodevendorName = setLicenseCodevendorName == null ? null : WorkflowExpression.Compile(setLicenseCodevendorName);
-            WorkflowExpression.Validate(__workflow_setLicenseCodevendorName, nameof(setLicenseCodevendorName), required: true);
-            var __workflow_setLicenseCodelicenseExpiryDate = setLicenseCodelicenseExpiryDate == null ? null : WorkflowExpression.Compile(setLicenseCodelicenseExpiryDate);
-            WorkflowExpression.Validate(__workflow_setLicenseCodelicenseExpiryDate, nameof(setLicenseCodelicenseExpiryDate), required: true);
-            var __workflow_setLicenseCodeactivationCode = setLicenseCodeactivationCode == null ? null : WorkflowExpression.Compile(setLicenseCodeactivationCode);
-            WorkflowExpression.Validate(__workflow_setLicenseCodeactivationCode, nameof(setLicenseCodeactivationCode), required: true);
-            var __workflow_setLicenseCodeworkflow = setLicenseCodeworkflow == null ? null : WorkflowExpression.Compile(setLicenseCodeworkflow);
-            WorkflowExpression.Validate(__workflow_setLicenseCodeworkflow, nameof(setLicenseCodeworkflow), required: true);
-            var __workflow_setLicenseCodestoreInRegistry = setLicenseCodestoreInRegistry == null ? null : WorkflowExpression.Compile(setLicenseCodestoreInRegistry);
-            WorkflowExpression.Validate(__workflow_setLicenseCodestoreInRegistry, nameof(setLicenseCodestoreInRegistry), required: false);
+            var __workflow_setLicenseCodecustomerNETBIOSDomainName = WorkflowExpression.Compile(setLicenseCodecustomerNETBIOSDomainName, nameof(setLicenseCodecustomerNETBIOSDomainName), required: true);
+            var __workflow_setLicenseCodecustomerDisplayName = WorkflowExpression.Compile(setLicenseCodecustomerDisplayName, nameof(setLicenseCodecustomerDisplayName), required: true);
+            var __workflow_setLicenseCodevendorName = WorkflowExpression.Compile(setLicenseCodevendorName, nameof(setLicenseCodevendorName), required: true);
+            var __workflow_setLicenseCodelicenseExpiryDate = WorkflowExpression.Compile(setLicenseCodelicenseExpiryDate, nameof(setLicenseCodelicenseExpiryDate), required: true);
+            var __workflow_setLicenseCodeactivationCode = WorkflowExpression.Compile(setLicenseCodeactivationCode, nameof(setLicenseCodeactivationCode), required: true);
+            var __workflow_setLicenseCodeworkflow = WorkflowExpression.Compile(setLicenseCodeworkflow, nameof(setLicenseCodeworkflow), required: true);
+            var __workflow_setLicenseCodestoreInRegistry = WorkflowExpression.Compile(setLicenseCodestoreInRegistry, nameof(setLicenseCodestoreInRegistry), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/SetLicenseCode";
@@ -6520,12 +6058,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SetLicenseStringResponse> SetLicenseString(Expression<Func<string>> setLicenseStringlicenseString, Expression<Func<string>> setLicenseStringworkflow, Expression<Func<bool>> setLicenseStringstoreInRegistry = null)
         {
-            var __workflow_setLicenseStringlicenseString = setLicenseStringlicenseString == null ? null : WorkflowExpression.Compile(setLicenseStringlicenseString);
-            WorkflowExpression.Validate(__workflow_setLicenseStringlicenseString, nameof(setLicenseStringlicenseString), required: true);
-            var __workflow_setLicenseStringworkflow = setLicenseStringworkflow == null ? null : WorkflowExpression.Compile(setLicenseStringworkflow);
-            WorkflowExpression.Validate(__workflow_setLicenseStringworkflow, nameof(setLicenseStringworkflow), required: true);
-            var __workflow_setLicenseStringstoreInRegistry = setLicenseStringstoreInRegistry == null ? null : WorkflowExpression.Compile(setLicenseStringstoreInRegistry);
-            WorkflowExpression.Validate(__workflow_setLicenseStringstoreInRegistry, nameof(setLicenseStringstoreInRegistry), required: false);
+            var __workflow_setLicenseStringlicenseString = WorkflowExpression.Compile(setLicenseStringlicenseString, nameof(setLicenseStringlicenseString), required: true);
+            var __workflow_setLicenseStringworkflow = WorkflowExpression.Compile(setLicenseStringworkflow, nameof(setLicenseStringworkflow), required: true);
+            var __workflow_setLicenseStringstoreInRegistry = WorkflowExpression.Compile(setLicenseStringstoreInRegistry, nameof(setLicenseStringstoreInRegistry), required: false);
             return new DeferredBodyAction<SetLicenseStringResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/SetLicenseString";
@@ -6565,8 +6100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLicenseStateResponse> GetLicenseState(Expression<Func<string>> getLicenseStateworkflow)
         {
-            var __workflow_getLicenseStateworkflow = getLicenseStateworkflow == null ? null : WorkflowExpression.Compile(getLicenseStateworkflow);
-            WorkflowExpression.Validate(__workflow_getLicenseStateworkflow, nameof(getLicenseStateworkflow), required: true);
+            var __workflow_getLicenseStateworkflow = WorkflowExpression.Compile(getLicenseStateworkflow, nameof(getLicenseStateworkflow), required: true);
             return new DeferredBodyAction<GetLicenseStateResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetLicenseState";
@@ -6588,10 +6122,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRSAGUITopmost(Expression<Func<string>> setRSAGUITopmostworkflow, Expression<Func<bool>> setRSAGUITopmosttopMost = null)
         {
-            var __workflow_setRSAGUITopmostworkflow = setRSAGUITopmostworkflow == null ? null : WorkflowExpression.Compile(setRSAGUITopmostworkflow);
-            WorkflowExpression.Validate(__workflow_setRSAGUITopmostworkflow, nameof(setRSAGUITopmostworkflow), required: true);
-            var __workflow_setRSAGUITopmosttopMost = setRSAGUITopmosttopMost == null ? null : WorkflowExpression.Compile(setRSAGUITopmosttopMost);
-            WorkflowExpression.Validate(__workflow_setRSAGUITopmosttopMost, nameof(setRSAGUITopmosttopMost), required: false);
+            var __workflow_setRSAGUITopmostworkflow = WorkflowExpression.Compile(setRSAGUITopmostworkflow, nameof(setRSAGUITopmostworkflow), required: true);
+            var __workflow_setRSAGUITopmosttopMost = WorkflowExpression.Compile(setRSAGUITopmosttopMost, nameof(setRSAGUITopmosttopMost), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUITopmost";
@@ -6629,10 +6161,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRSAGUIOpacity(Expression<Func<double>> setRSAGUIOpacityopacity, Expression<Func<string>> setRSAGUIOpacityworkflow)
         {
-            var __workflow_setRSAGUIOpacityopacity = setRSAGUIOpacityopacity == null ? null : WorkflowExpression.Compile(setRSAGUIOpacityopacity);
-            WorkflowExpression.Validate(__workflow_setRSAGUIOpacityopacity, nameof(setRSAGUIOpacityopacity), required: true);
-            var __workflow_setRSAGUIOpacityworkflow = setRSAGUIOpacityworkflow == null ? null : WorkflowExpression.Compile(setRSAGUIOpacityworkflow);
-            WorkflowExpression.Validate(__workflow_setRSAGUIOpacityworkflow, nameof(setRSAGUIOpacityworkflow), required: true);
+            var __workflow_setRSAGUIOpacityopacity = WorkflowExpression.Compile(setRSAGUIOpacityopacity, nameof(setRSAGUIOpacityopacity), required: true);
+            var __workflow_setRSAGUIOpacityworkflow = WorkflowExpression.Compile(setRSAGUIOpacityworkflow, nameof(setRSAGUIOpacityworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIOpacity";
@@ -6656,12 +6186,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRSAGUIPosition(Expression<Func<int>> setRSAGUIPositionx, Expression<Func<int>> setRSAGUIPositiony, Expression<Func<string>> setRSAGUIPositionworkflow)
         {
-            var __workflow_setRSAGUIPositionx = setRSAGUIPositionx == null ? null : WorkflowExpression.Compile(setRSAGUIPositionx);
-            WorkflowExpression.Validate(__workflow_setRSAGUIPositionx, nameof(setRSAGUIPositionx), required: true);
-            var __workflow_setRSAGUIPositiony = setRSAGUIPositiony == null ? null : WorkflowExpression.Compile(setRSAGUIPositiony);
-            WorkflowExpression.Validate(__workflow_setRSAGUIPositiony, nameof(setRSAGUIPositiony), required: true);
-            var __workflow_setRSAGUIPositionworkflow = setRSAGUIPositionworkflow == null ? null : WorkflowExpression.Compile(setRSAGUIPositionworkflow);
-            WorkflowExpression.Validate(__workflow_setRSAGUIPositionworkflow, nameof(setRSAGUIPositionworkflow), required: true);
+            var __workflow_setRSAGUIPositionx = WorkflowExpression.Compile(setRSAGUIPositionx, nameof(setRSAGUIPositionx), required: true);
+            var __workflow_setRSAGUIPositiony = WorkflowExpression.Compile(setRSAGUIPositiony, nameof(setRSAGUIPositiony), required: true);
+            var __workflow_setRSAGUIPositionworkflow = WorkflowExpression.Compile(setRSAGUIPositionworkflow, nameof(setRSAGUIPositionworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/SetRSAGUIPosition";
@@ -6687,12 +6214,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction BringRSAGUIToFront(Expression<Func<string>> bringRSAGUIToFrontworkflow, Expression<Func<bool>> bringRSAGUIToFrontfocus = null, Expression<Func<bool>> bringRSAGUIToFrontglobalLeftMouseClick = null)
         {
-            var __workflow_bringRSAGUIToFrontworkflow = bringRSAGUIToFrontworkflow == null ? null : WorkflowExpression.Compile(bringRSAGUIToFrontworkflow);
-            WorkflowExpression.Validate(__workflow_bringRSAGUIToFrontworkflow, nameof(bringRSAGUIToFrontworkflow), required: true);
-            var __workflow_bringRSAGUIToFrontfocus = bringRSAGUIToFrontfocus == null ? null : WorkflowExpression.Compile(bringRSAGUIToFrontfocus);
-            WorkflowExpression.Validate(__workflow_bringRSAGUIToFrontfocus, nameof(bringRSAGUIToFrontfocus), required: false);
-            var __workflow_bringRSAGUIToFrontglobalLeftMouseClick = bringRSAGUIToFrontglobalLeftMouseClick == null ? null : WorkflowExpression.Compile(bringRSAGUIToFrontglobalLeftMouseClick);
-            WorkflowExpression.Validate(__workflow_bringRSAGUIToFrontglobalLeftMouseClick, nameof(bringRSAGUIToFrontglobalLeftMouseClick), required: false);
+            var __workflow_bringRSAGUIToFrontworkflow = WorkflowExpression.Compile(bringRSAGUIToFrontworkflow, nameof(bringRSAGUIToFrontworkflow), required: true);
+            var __workflow_bringRSAGUIToFrontfocus = WorkflowExpression.Compile(bringRSAGUIToFrontfocus, nameof(bringRSAGUIToFrontfocus), required: false);
+            var __workflow_bringRSAGUIToFrontglobalLeftMouseClick = WorkflowExpression.Compile(bringRSAGUIToFrontglobalLeftMouseClick, nameof(bringRSAGUIToFrontglobalLeftMouseClick), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/BringRSAGUIToFront";
@@ -6746,12 +6270,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DisconnectSession(Expression<Func<string>> disconnectSessionworkflow, Expression<Func<int>> disconnectSessionsecondsToWait = null, Expression<Func<bool>> disconnectSessiondoNotDisconnectIfLocalAgent = null)
         {
-            var __workflow_disconnectSessionworkflow = disconnectSessionworkflow == null ? null : WorkflowExpression.Compile(disconnectSessionworkflow);
-            WorkflowExpression.Validate(__workflow_disconnectSessionworkflow, nameof(disconnectSessionworkflow), required: true);
-            var __workflow_disconnectSessionsecondsToWait = disconnectSessionsecondsToWait == null ? null : WorkflowExpression.Compile(disconnectSessionsecondsToWait);
-            WorkflowExpression.Validate(__workflow_disconnectSessionsecondsToWait, nameof(disconnectSessionsecondsToWait), required: false);
-            var __workflow_disconnectSessiondoNotDisconnectIfLocalAgent = disconnectSessiondoNotDisconnectIfLocalAgent == null ? null : WorkflowExpression.Compile(disconnectSessiondoNotDisconnectIfLocalAgent);
-            WorkflowExpression.Validate(__workflow_disconnectSessiondoNotDisconnectIfLocalAgent, nameof(disconnectSessiondoNotDisconnectIfLocalAgent), required: false);
+            var __workflow_disconnectSessionworkflow = WorkflowExpression.Compile(disconnectSessionworkflow, nameof(disconnectSessionworkflow), required: true);
+            var __workflow_disconnectSessionsecondsToWait = WorkflowExpression.Compile(disconnectSessionsecondsToWait, nameof(disconnectSessionsecondsToWait), required: false);
+            var __workflow_disconnectSessiondoNotDisconnectIfLocalAgent = WorkflowExpression.Compile(disconnectSessiondoNotDisconnectIfLocalAgent, nameof(disconnectSessiondoNotDisconnectIfLocalAgent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/DisconnectSession";
@@ -6805,10 +6326,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction LogoffSession(Expression<Func<string>> logoffSessionworkflow, Expression<Func<int>> logoffSessionsecondsToWait = null)
         {
-            var __workflow_logoffSessionworkflow = logoffSessionworkflow == null ? null : WorkflowExpression.Compile(logoffSessionworkflow);
-            WorkflowExpression.Validate(__workflow_logoffSessionworkflow, nameof(logoffSessionworkflow), required: true);
-            var __workflow_logoffSessionsecondsToWait = logoffSessionsecondsToWait == null ? null : WorkflowExpression.Compile(logoffSessionsecondsToWait);
-            WorkflowExpression.Validate(__workflow_logoffSessionsecondsToWait, nameof(logoffSessionsecondsToWait), required: false);
+            var __workflow_logoffSessionworkflow = WorkflowExpression.Compile(logoffSessionworkflow, nameof(logoffSessionworkflow), required: true);
+            var __workflow_logoffSessionsecondsToWait = WorkflowExpression.Compile(logoffSessionsecondsToWait, nameof(logoffSessionsecondsToWait), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/LogoffSession";
@@ -6846,10 +6365,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CloseRSAServer(Expression<Func<string>> closeRSAServerworkflow, Expression<Func<int>> closeRSAServersecondsToWait = null)
         {
-            var __workflow_closeRSAServerworkflow = closeRSAServerworkflow == null ? null : WorkflowExpression.Compile(closeRSAServerworkflow);
-            WorkflowExpression.Validate(__workflow_closeRSAServerworkflow, nameof(closeRSAServerworkflow), required: true);
-            var __workflow_closeRSAServersecondsToWait = closeRSAServersecondsToWait == null ? null : WorkflowExpression.Compile(closeRSAServersecondsToWait);
-            WorkflowExpression.Validate(__workflow_closeRSAServersecondsToWait, nameof(closeRSAServersecondsToWait), required: false);
+            var __workflow_closeRSAServerworkflow = WorkflowExpression.Compile(closeRSAServerworkflow, nameof(closeRSAServerworkflow), required: true);
+            var __workflow_closeRSAServersecondsToWait = WorkflowExpression.Compile(closeRSAServersecondsToWait, nameof(closeRSAServersecondsToWait), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/CloseRSAServer";
@@ -6887,12 +6404,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetRPACommandTimeout(Expression<Func<int>> setRPACommandTimeoutcommandTimeoutInSeconds, Expression<Func<string>> setRPACommandTimeoutworkflow, Expression<Func<bool>> setRPACommandTimeoutterminateTimedoutRPACommandThreads = null)
         {
-            var __workflow_setRPACommandTimeoutcommandTimeoutInSeconds = setRPACommandTimeoutcommandTimeoutInSeconds == null ? null : WorkflowExpression.Compile(setRPACommandTimeoutcommandTimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_setRPACommandTimeoutcommandTimeoutInSeconds, nameof(setRPACommandTimeoutcommandTimeoutInSeconds), required: true);
-            var __workflow_setRPACommandTimeoutworkflow = setRPACommandTimeoutworkflow == null ? null : WorkflowExpression.Compile(setRPACommandTimeoutworkflow);
-            WorkflowExpression.Validate(__workflow_setRPACommandTimeoutworkflow, nameof(setRPACommandTimeoutworkflow), required: true);
-            var __workflow_setRPACommandTimeoutterminateTimedoutRPACommandThreads = setRPACommandTimeoutterminateTimedoutRPACommandThreads == null ? null : WorkflowExpression.Compile(setRPACommandTimeoutterminateTimedoutRPACommandThreads);
-            WorkflowExpression.Validate(__workflow_setRPACommandTimeoutterminateTimedoutRPACommandThreads, nameof(setRPACommandTimeoutterminateTimedoutRPACommandThreads), required: false);
+            var __workflow_setRPACommandTimeoutcommandTimeoutInSeconds = WorkflowExpression.Compile(setRPACommandTimeoutcommandTimeoutInSeconds, nameof(setRPACommandTimeoutcommandTimeoutInSeconds), required: true);
+            var __workflow_setRPACommandTimeoutworkflow = WorkflowExpression.Compile(setRPACommandTimeoutworkflow, nameof(setRPACommandTimeoutworkflow), required: true);
+            var __workflow_setRPACommandTimeoutterminateTimedoutRPACommandThreads = WorkflowExpression.Compile(setRPACommandTimeoutterminateTimedoutRPACommandThreads, nameof(setRPACommandTimeoutterminateTimedoutRPACommandThreads), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/SetRPACommandTimeout";
@@ -6932,14 +6446,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction RunAlternativeIAConnect(Expression<Func<string>> runAlternativeIAConnectfilename, Expression<Func<string>> runAlternativeIAConnectworkflow, Expression<Func<string>> runAlternativeIAConnectarguments = null, Expression<Func<bool>> runAlternativeIAConnectloadIntoMemory = null)
         {
-            var __workflow_runAlternativeIAConnectfilename = runAlternativeIAConnectfilename == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectfilename);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectfilename, nameof(runAlternativeIAConnectfilename), required: true);
-            var __workflow_runAlternativeIAConnectworkflow = runAlternativeIAConnectworkflow == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectworkflow);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectworkflow, nameof(runAlternativeIAConnectworkflow), required: true);
-            var __workflow_runAlternativeIAConnectarguments = runAlternativeIAConnectarguments == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectarguments);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectarguments, nameof(runAlternativeIAConnectarguments), required: false);
-            var __workflow_runAlternativeIAConnectloadIntoMemory = runAlternativeIAConnectloadIntoMemory == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectloadIntoMemory);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectloadIntoMemory, nameof(runAlternativeIAConnectloadIntoMemory), required: false);
+            var __workflow_runAlternativeIAConnectfilename = WorkflowExpression.Compile(runAlternativeIAConnectfilename, nameof(runAlternativeIAConnectfilename), required: true);
+            var __workflow_runAlternativeIAConnectworkflow = WorkflowExpression.Compile(runAlternativeIAConnectworkflow, nameof(runAlternativeIAConnectworkflow), required: true);
+            var __workflow_runAlternativeIAConnectarguments = WorkflowExpression.Compile(runAlternativeIAConnectarguments, nameof(runAlternativeIAConnectarguments), required: false);
+            var __workflow_runAlternativeIAConnectloadIntoMemory = WorkflowExpression.Compile(runAlternativeIAConnectloadIntoMemory, nameof(runAlternativeIAConnectloadIntoMemory), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/RunAlternativeIAConnect";
@@ -6985,24 +6495,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunAlternativeIAConnectSentFromDirectorResponse> RunAlternativeIAConnectSentFromDirector(Expression<Func<string>> runAlternativeIAConnectSentFromDirectorlocalFilename, Expression<Func<string>> runAlternativeIAConnectSentFromDirectorworkflow, Expression<Func<string>> runAlternativeIAConnectSentFromDirectorremoteFilename = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorcompress = null, Expression<Func<string>> runAlternativeIAConnectSentFromDirectorarguments = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorpermitDowngrade = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorskipVersionCheck = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorloadIntoMemory = null, Expression<Func<bool>> runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory = null)
         {
-            var __workflow_runAlternativeIAConnectSentFromDirectorlocalFilename = runAlternativeIAConnectSentFromDirectorlocalFilename == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorlocalFilename);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorlocalFilename, nameof(runAlternativeIAConnectSentFromDirectorlocalFilename), required: true);
-            var __workflow_runAlternativeIAConnectSentFromDirectorworkflow = runAlternativeIAConnectSentFromDirectorworkflow == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorworkflow);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorworkflow, nameof(runAlternativeIAConnectSentFromDirectorworkflow), required: true);
-            var __workflow_runAlternativeIAConnectSentFromDirectorremoteFilename = runAlternativeIAConnectSentFromDirectorremoteFilename == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorremoteFilename);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorremoteFilename, nameof(runAlternativeIAConnectSentFromDirectorremoteFilename), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorcompress = runAlternativeIAConnectSentFromDirectorcompress == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorcompress);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorcompress, nameof(runAlternativeIAConnectSentFromDirectorcompress), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorarguments = runAlternativeIAConnectSentFromDirectorarguments == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorarguments);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorarguments, nameof(runAlternativeIAConnectSentFromDirectorarguments), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorpermitDowngrade = runAlternativeIAConnectSentFromDirectorpermitDowngrade == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorpermitDowngrade);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorpermitDowngrade, nameof(runAlternativeIAConnectSentFromDirectorpermitDowngrade), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorskipVersionCheck = runAlternativeIAConnectSentFromDirectorskipVersionCheck == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorskipVersionCheck);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorskipVersionCheck, nameof(runAlternativeIAConnectSentFromDirectorskipVersionCheck), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorloadIntoMemory = runAlternativeIAConnectSentFromDirectorloadIntoMemory == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorloadIntoMemory);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorloadIntoMemory, nameof(runAlternativeIAConnectSentFromDirectorloadIntoMemory), required: false);
-            var __workflow_runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory = runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory == null ? null : WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory);
-            WorkflowExpression.Validate(__workflow_runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory, nameof(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirectorlocalFilename = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorlocalFilename, nameof(runAlternativeIAConnectSentFromDirectorlocalFilename), required: true);
+            var __workflow_runAlternativeIAConnectSentFromDirectorworkflow = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorworkflow, nameof(runAlternativeIAConnectSentFromDirectorworkflow), required: true);
+            var __workflow_runAlternativeIAConnectSentFromDirectorremoteFilename = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorremoteFilename, nameof(runAlternativeIAConnectSentFromDirectorremoteFilename), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirectorcompress = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorcompress, nameof(runAlternativeIAConnectSentFromDirectorcompress), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirectorarguments = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorarguments, nameof(runAlternativeIAConnectSentFromDirectorarguments), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirectorpermitDowngrade = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorpermitDowngrade, nameof(runAlternativeIAConnectSentFromDirectorpermitDowngrade), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirectorskipVersionCheck = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorskipVersionCheck, nameof(runAlternativeIAConnectSentFromDirectorskipVersionCheck), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirectorloadIntoMemory = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorloadIntoMemory, nameof(runAlternativeIAConnectSentFromDirectorloadIntoMemory), required: false);
+            var __workflow_runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory = WorkflowExpression.Compile(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory, nameof(runAlternativeIAConnectSentFromDirectorsaveToDiskEvenIfRunningFromMemory), required: false);
             return new DeferredBodyAction<RunAlternativeIAConnectSentFromDirectorResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/RunAlternativeIAConnectSentFromDirector";
@@ -7118,8 +6619,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetIAConnectAgentInfoResponse> GetIAConnectAgentInfo(Expression<Func<string>> getIAConnectAgentInfoworkflow)
         {
-            var __workflow_getIAConnectAgentInfoworkflow = getIAConnectAgentInfoworkflow == null ? null : WorkflowExpression.Compile(getIAConnectAgentInfoworkflow);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentInfoworkflow, nameof(getIAConnectAgentInfoworkflow), required: true);
+            var __workflow_getIAConnectAgentInfoworkflow = WorkflowExpression.Compile(getIAConnectAgentInfoworkflow, nameof(getIAConnectAgentInfoworkflow), required: true);
             return new DeferredBodyAction<GetIAConnectAgentInfoResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetIAConnectAgentInfo";
@@ -7141,24 +6641,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetIAConnectAgentLogResponse> GetIAConnectAgentLog(Expression<Func<string>> getIAConnectAgentLogworkflow, Expression<Func<bool>> getIAConnectAgentLogcompress = null, Expression<Func<bool>> getIAConnectAgentLogreturnLastCommandOnly = null, Expression<Func<bool>> getIAConnectAgentLogsaveLogToFile = null, Expression<Func<bool>> getIAConnectAgentLogplaceLogContentInDataItem = null, Expression<Func<string>> getIAConnectAgentLoglocalSaveFolder = null, Expression<Func<bool>> getIAConnectAgentLoguseAgentLogFilename = null, Expression<Func<string>> getIAConnectAgentLoglocalSaveFilename = null, Expression<Func<int>> getIAConnectAgentLogmaxBytesToRead = null)
         {
-            var __workflow_getIAConnectAgentLogworkflow = getIAConnectAgentLogworkflow == null ? null : WorkflowExpression.Compile(getIAConnectAgentLogworkflow);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLogworkflow, nameof(getIAConnectAgentLogworkflow), required: true);
-            var __workflow_getIAConnectAgentLogcompress = getIAConnectAgentLogcompress == null ? null : WorkflowExpression.Compile(getIAConnectAgentLogcompress);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLogcompress, nameof(getIAConnectAgentLogcompress), required: false);
-            var __workflow_getIAConnectAgentLogreturnLastCommandOnly = getIAConnectAgentLogreturnLastCommandOnly == null ? null : WorkflowExpression.Compile(getIAConnectAgentLogreturnLastCommandOnly);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLogreturnLastCommandOnly, nameof(getIAConnectAgentLogreturnLastCommandOnly), required: false);
-            var __workflow_getIAConnectAgentLogsaveLogToFile = getIAConnectAgentLogsaveLogToFile == null ? null : WorkflowExpression.Compile(getIAConnectAgentLogsaveLogToFile);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLogsaveLogToFile, nameof(getIAConnectAgentLogsaveLogToFile), required: false);
-            var __workflow_getIAConnectAgentLogplaceLogContentInDataItem = getIAConnectAgentLogplaceLogContentInDataItem == null ? null : WorkflowExpression.Compile(getIAConnectAgentLogplaceLogContentInDataItem);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLogplaceLogContentInDataItem, nameof(getIAConnectAgentLogplaceLogContentInDataItem), required: false);
-            var __workflow_getIAConnectAgentLoglocalSaveFolder = getIAConnectAgentLoglocalSaveFolder == null ? null : WorkflowExpression.Compile(getIAConnectAgentLoglocalSaveFolder);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLoglocalSaveFolder, nameof(getIAConnectAgentLoglocalSaveFolder), required: false);
-            var __workflow_getIAConnectAgentLoguseAgentLogFilename = getIAConnectAgentLoguseAgentLogFilename == null ? null : WorkflowExpression.Compile(getIAConnectAgentLoguseAgentLogFilename);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLoguseAgentLogFilename, nameof(getIAConnectAgentLoguseAgentLogFilename), required: false);
-            var __workflow_getIAConnectAgentLoglocalSaveFilename = getIAConnectAgentLoglocalSaveFilename == null ? null : WorkflowExpression.Compile(getIAConnectAgentLoglocalSaveFilename);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLoglocalSaveFilename, nameof(getIAConnectAgentLoglocalSaveFilename), required: false);
-            var __workflow_getIAConnectAgentLogmaxBytesToRead = getIAConnectAgentLogmaxBytesToRead == null ? null : WorkflowExpression.Compile(getIAConnectAgentLogmaxBytesToRead);
-            WorkflowExpression.Validate(__workflow_getIAConnectAgentLogmaxBytesToRead, nameof(getIAConnectAgentLogmaxBytesToRead), required: false);
+            var __workflow_getIAConnectAgentLogworkflow = WorkflowExpression.Compile(getIAConnectAgentLogworkflow, nameof(getIAConnectAgentLogworkflow), required: true);
+            var __workflow_getIAConnectAgentLogcompress = WorkflowExpression.Compile(getIAConnectAgentLogcompress, nameof(getIAConnectAgentLogcompress), required: false);
+            var __workflow_getIAConnectAgentLogreturnLastCommandOnly = WorkflowExpression.Compile(getIAConnectAgentLogreturnLastCommandOnly, nameof(getIAConnectAgentLogreturnLastCommandOnly), required: false);
+            var __workflow_getIAConnectAgentLogsaveLogToFile = WorkflowExpression.Compile(getIAConnectAgentLogsaveLogToFile, nameof(getIAConnectAgentLogsaveLogToFile), required: false);
+            var __workflow_getIAConnectAgentLogplaceLogContentInDataItem = WorkflowExpression.Compile(getIAConnectAgentLogplaceLogContentInDataItem, nameof(getIAConnectAgentLogplaceLogContentInDataItem), required: false);
+            var __workflow_getIAConnectAgentLoglocalSaveFolder = WorkflowExpression.Compile(getIAConnectAgentLoglocalSaveFolder, nameof(getIAConnectAgentLoglocalSaveFolder), required: false);
+            var __workflow_getIAConnectAgentLoguseAgentLogFilename = WorkflowExpression.Compile(getIAConnectAgentLoguseAgentLogFilename, nameof(getIAConnectAgentLoguseAgentLogFilename), required: false);
+            var __workflow_getIAConnectAgentLoglocalSaveFilename = WorkflowExpression.Compile(getIAConnectAgentLoglocalSaveFilename, nameof(getIAConnectAgentLoglocalSaveFilename), required: false);
+            var __workflow_getIAConnectAgentLogmaxBytesToRead = WorkflowExpression.Compile(getIAConnectAgentLogmaxBytesToRead, nameof(getIAConnectAgentLogmaxBytesToRead), required: false);
             return new DeferredBodyAction<GetIAConnectAgentLogResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetIAConnectAgentLog";
@@ -7288,8 +6779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ResetCommandStats(Expression<Func<string>> resetCommandStatsworkflow)
         {
-            var __workflow_resetCommandStatsworkflow = resetCommandStatsworkflow == null ? null : WorkflowExpression.Compile(resetCommandStatsworkflow);
-            WorkflowExpression.Validate(__workflow_resetCommandStatsworkflow, nameof(resetCommandStatsworkflow), required: true);
+            var __workflow_resetCommandStatsworkflow = WorkflowExpression.Compile(resetCommandStatsworkflow, nameof(resetCommandStatsworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/ResetCommandStats";
@@ -7311,8 +6801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAllCommandStatsResponse> GetAllCommandStats(Expression<Func<string>> getAllCommandStatsworkflow)
         {
-            var __workflow_getAllCommandStatsworkflow = getAllCommandStatsworkflow == null ? null : WorkflowExpression.Compile(getAllCommandStatsworkflow);
-            WorkflowExpression.Validate(__workflow_getAllCommandStatsworkflow, nameof(getAllCommandStatsworkflow), required: true);
+            var __workflow_getAllCommandStatsworkflow = WorkflowExpression.Compile(getAllCommandStatsworkflow, nameof(getAllCommandStatsworkflow), required: true);
             return new DeferredBodyAction<GetAllCommandStatsResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAllCommandStats";
@@ -7334,30 +6823,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<EnableNextHopResponse> EnableNextHop(Expression<Func<string>> enableNextHopworkflow, Expression<Func<string>> enableNextHopnextHopDirectorAddress = null, Expression<Func<int>> enableNextHopnextHopDirectorTCPPort = null, Expression<Func<bool>> enableNextHopnextHopDirectorUsesHTTPS = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsLocalhostname = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsHostname = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsFQDN = null, Expression<Func<bool>> enableNextHopincrementNextHopDirectorTCPPortBySessionId = null, Expression<Func<bool>> enableNextHopdisableBeforeEnable = null, Expression<Func<bool>> enableNextHopcheckNextHopDirectorIsRunning = null, Expression<Func<bool>> enableNextHopcheckNextHopAgentIsRunning = null, Expression<Func<bool>> enableNextHopnextHopDirectorAddressIsNamedPipe = null)
         {
-            var __workflow_enableNextHopworkflow = enableNextHopworkflow == null ? null : WorkflowExpression.Compile(enableNextHopworkflow);
-            WorkflowExpression.Validate(__workflow_enableNextHopworkflow, nameof(enableNextHopworkflow), required: true);
-            var __workflow_enableNextHopnextHopDirectorAddress = enableNextHopnextHopDirectorAddress == null ? null : WorkflowExpression.Compile(enableNextHopnextHopDirectorAddress);
-            WorkflowExpression.Validate(__workflow_enableNextHopnextHopDirectorAddress, nameof(enableNextHopnextHopDirectorAddress), required: false);
-            var __workflow_enableNextHopnextHopDirectorTCPPort = enableNextHopnextHopDirectorTCPPort == null ? null : WorkflowExpression.Compile(enableNextHopnextHopDirectorTCPPort);
-            WorkflowExpression.Validate(__workflow_enableNextHopnextHopDirectorTCPPort, nameof(enableNextHopnextHopDirectorTCPPort), required: false);
-            var __workflow_enableNextHopnextHopDirectorUsesHTTPS = enableNextHopnextHopDirectorUsesHTTPS == null ? null : WorkflowExpression.Compile(enableNextHopnextHopDirectorUsesHTTPS);
-            WorkflowExpression.Validate(__workflow_enableNextHopnextHopDirectorUsesHTTPS, nameof(enableNextHopnextHopDirectorUsesHTTPS), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsLocalhostname = enableNextHopnextHopDirectorAddressIsLocalhostname == null ? null : WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsLocalhostname);
-            WorkflowExpression.Validate(__workflow_enableNextHopnextHopDirectorAddressIsLocalhostname, nameof(enableNextHopnextHopDirectorAddressIsLocalhostname), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsHostname = enableNextHopnextHopDirectorAddressIsHostname == null ? null : WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsHostname);
-            WorkflowExpression.Validate(__workflow_enableNextHopnextHopDirectorAddressIsHostname, nameof(enableNextHopnextHopDirectorAddressIsHostname), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsFQDN = enableNextHopnextHopDirectorAddressIsFQDN == null ? null : WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsFQDN);
-            WorkflowExpression.Validate(__workflow_enableNextHopnextHopDirectorAddressIsFQDN, nameof(enableNextHopnextHopDirectorAddressIsFQDN), required: false);
-            var __workflow_enableNextHopincrementNextHopDirectorTCPPortBySessionId = enableNextHopincrementNextHopDirectorTCPPortBySessionId == null ? null : WorkflowExpression.Compile(enableNextHopincrementNextHopDirectorTCPPortBySessionId);
-            WorkflowExpression.Validate(__workflow_enableNextHopincrementNextHopDirectorTCPPortBySessionId, nameof(enableNextHopincrementNextHopDirectorTCPPortBySessionId), required: false);
-            var __workflow_enableNextHopdisableBeforeEnable = enableNextHopdisableBeforeEnable == null ? null : WorkflowExpression.Compile(enableNextHopdisableBeforeEnable);
-            WorkflowExpression.Validate(__workflow_enableNextHopdisableBeforeEnable, nameof(enableNextHopdisableBeforeEnable), required: false);
-            var __workflow_enableNextHopcheckNextHopDirectorIsRunning = enableNextHopcheckNextHopDirectorIsRunning == null ? null : WorkflowExpression.Compile(enableNextHopcheckNextHopDirectorIsRunning);
-            WorkflowExpression.Validate(__workflow_enableNextHopcheckNextHopDirectorIsRunning, nameof(enableNextHopcheckNextHopDirectorIsRunning), required: false);
-            var __workflow_enableNextHopcheckNextHopAgentIsRunning = enableNextHopcheckNextHopAgentIsRunning == null ? null : WorkflowExpression.Compile(enableNextHopcheckNextHopAgentIsRunning);
-            WorkflowExpression.Validate(__workflow_enableNextHopcheckNextHopAgentIsRunning, nameof(enableNextHopcheckNextHopAgentIsRunning), required: false);
-            var __workflow_enableNextHopnextHopDirectorAddressIsNamedPipe = enableNextHopnextHopDirectorAddressIsNamedPipe == null ? null : WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsNamedPipe);
-            WorkflowExpression.Validate(__workflow_enableNextHopnextHopDirectorAddressIsNamedPipe, nameof(enableNextHopnextHopDirectorAddressIsNamedPipe), required: false);
+            var __workflow_enableNextHopworkflow = WorkflowExpression.Compile(enableNextHopworkflow, nameof(enableNextHopworkflow), required: true);
+            var __workflow_enableNextHopnextHopDirectorAddress = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddress, nameof(enableNextHopnextHopDirectorAddress), required: false);
+            var __workflow_enableNextHopnextHopDirectorTCPPort = WorkflowExpression.Compile(enableNextHopnextHopDirectorTCPPort, nameof(enableNextHopnextHopDirectorTCPPort), required: false);
+            var __workflow_enableNextHopnextHopDirectorUsesHTTPS = WorkflowExpression.Compile(enableNextHopnextHopDirectorUsesHTTPS, nameof(enableNextHopnextHopDirectorUsesHTTPS), required: false);
+            var __workflow_enableNextHopnextHopDirectorAddressIsLocalhostname = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsLocalhostname, nameof(enableNextHopnextHopDirectorAddressIsLocalhostname), required: false);
+            var __workflow_enableNextHopnextHopDirectorAddressIsHostname = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsHostname, nameof(enableNextHopnextHopDirectorAddressIsHostname), required: false);
+            var __workflow_enableNextHopnextHopDirectorAddressIsFQDN = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsFQDN, nameof(enableNextHopnextHopDirectorAddressIsFQDN), required: false);
+            var __workflow_enableNextHopincrementNextHopDirectorTCPPortBySessionId = WorkflowExpression.Compile(enableNextHopincrementNextHopDirectorTCPPortBySessionId, nameof(enableNextHopincrementNextHopDirectorTCPPortBySessionId), required: false);
+            var __workflow_enableNextHopdisableBeforeEnable = WorkflowExpression.Compile(enableNextHopdisableBeforeEnable, nameof(enableNextHopdisableBeforeEnable), required: false);
+            var __workflow_enableNextHopcheckNextHopDirectorIsRunning = WorkflowExpression.Compile(enableNextHopcheckNextHopDirectorIsRunning, nameof(enableNextHopcheckNextHopDirectorIsRunning), required: false);
+            var __workflow_enableNextHopcheckNextHopAgentIsRunning = WorkflowExpression.Compile(enableNextHopcheckNextHopAgentIsRunning, nameof(enableNextHopcheckNextHopAgentIsRunning), required: false);
+            var __workflow_enableNextHopnextHopDirectorAddressIsNamedPipe = WorkflowExpression.Compile(enableNextHopnextHopDirectorAddressIsNamedPipe, nameof(enableNextHopnextHopDirectorAddressIsNamedPipe), required: false);
             return new DeferredBodyAction<EnableNextHopResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/EnableNextHop";
@@ -7545,8 +7022,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DisableNextHop(Expression<Func<string>> disableNextHopworkflow)
         {
-            var __workflow_disableNextHopworkflow = disableNextHopworkflow == null ? null : WorkflowExpression.Compile(disableNextHopworkflow);
-            WorkflowExpression.Validate(__workflow_disableNextHopworkflow, nameof(disableNextHopworkflow), required: true);
+            var __workflow_disableNextHopworkflow = WorkflowExpression.Compile(disableNextHopworkflow, nameof(disableNextHopworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/DisableNextHop";
@@ -7568,12 +7044,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetNextHopStatusResponse> GetNextHopStatus(Expression<Func<string>> getNextHopStatusworkflow, Expression<Func<bool>> getNextHopStatuscheckNextHopDirectorIsRunning = null, Expression<Func<bool>> getNextHopStatuscheckNextHopAgentIsRunning = null)
         {
-            var __workflow_getNextHopStatusworkflow = getNextHopStatusworkflow == null ? null : WorkflowExpression.Compile(getNextHopStatusworkflow);
-            WorkflowExpression.Validate(__workflow_getNextHopStatusworkflow, nameof(getNextHopStatusworkflow), required: true);
-            var __workflow_getNextHopStatuscheckNextHopDirectorIsRunning = getNextHopStatuscheckNextHopDirectorIsRunning == null ? null : WorkflowExpression.Compile(getNextHopStatuscheckNextHopDirectorIsRunning);
-            WorkflowExpression.Validate(__workflow_getNextHopStatuscheckNextHopDirectorIsRunning, nameof(getNextHopStatuscheckNextHopDirectorIsRunning), required: false);
-            var __workflow_getNextHopStatuscheckNextHopAgentIsRunning = getNextHopStatuscheckNextHopAgentIsRunning == null ? null : WorkflowExpression.Compile(getNextHopStatuscheckNextHopAgentIsRunning);
-            WorkflowExpression.Validate(__workflow_getNextHopStatuscheckNextHopAgentIsRunning, nameof(getNextHopStatuscheckNextHopAgentIsRunning), required: false);
+            var __workflow_getNextHopStatusworkflow = WorkflowExpression.Compile(getNextHopStatusworkflow, nameof(getNextHopStatusworkflow), required: true);
+            var __workflow_getNextHopStatuscheckNextHopDirectorIsRunning = WorkflowExpression.Compile(getNextHopStatuscheckNextHopDirectorIsRunning, nameof(getNextHopStatuscheckNextHopDirectorIsRunning), required: false);
+            var __workflow_getNextHopStatuscheckNextHopAgentIsRunning = WorkflowExpression.Compile(getNextHopStatuscheckNextHopAgentIsRunning, nameof(getNextHopStatuscheckNextHopAgentIsRunning), required: false);
             return new DeferredBodyAction<GetNextHopStatusResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetNextHopStatus";
@@ -7627,28 +7100,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WaitForNextHopSessionToConnectResponse> WaitForNextHopSessionToConnect(Expression<Func<string>> waitForNextHopSessionToConnectworkflow, Expression<Func<string>> waitForNextHopSessionToConnectnextHopDirectorAddress = null, Expression<Func<int>> waitForNextHopSessionToConnectnextHopDirectorTCPPort = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN = null, Expression<Func<bool>> waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId = null, Expression<Func<double>> waitForNextHopSessionToConnectsecondsToWait = null, Expression<Func<bool>> waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe = null, Expression<Func<bool>> waitForNextHopSessionToConnectdisableExistingNextHop = null)
         {
-            var __workflow_waitForNextHopSessionToConnectworkflow = waitForNextHopSessionToConnectworkflow == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectworkflow);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectworkflow, nameof(waitForNextHopSessionToConnectworkflow), required: true);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddress = waitForNextHopSessionToConnectnextHopDirectorAddress == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddress);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddress, nameof(waitForNextHopSessionToConnectnextHopDirectorAddress), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorTCPPort = waitForNextHopSessionToConnectnextHopDirectorTCPPort == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorTCPPort);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectnextHopDirectorTCPPort, nameof(waitForNextHopSessionToConnectnextHopDirectorTCPPort), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS = waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS, nameof(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname = waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname = waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN = waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN), required: false);
-            var __workflow_waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId = waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId, nameof(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId), required: false);
-            var __workflow_waitForNextHopSessionToConnectsecondsToWait = waitForNextHopSessionToConnectsecondsToWait == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectsecondsToWait);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectsecondsToWait, nameof(waitForNextHopSessionToConnectsecondsToWait), required: false);
-            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe = waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe), required: false);
-            var __workflow_waitForNextHopSessionToConnectdisableExistingNextHop = waitForNextHopSessionToConnectdisableExistingNextHop == null ? null : WorkflowExpression.Compile(waitForNextHopSessionToConnectdisableExistingNextHop);
-            WorkflowExpression.Validate(__workflow_waitForNextHopSessionToConnectdisableExistingNextHop, nameof(waitForNextHopSessionToConnectdisableExistingNextHop), required: false);
+            var __workflow_waitForNextHopSessionToConnectworkflow = WorkflowExpression.Compile(waitForNextHopSessionToConnectworkflow, nameof(waitForNextHopSessionToConnectworkflow), required: true);
+            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddress = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddress, nameof(waitForNextHopSessionToConnectnextHopDirectorAddress), required: false);
+            var __workflow_waitForNextHopSessionToConnectnextHopDirectorTCPPort = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorTCPPort, nameof(waitForNextHopSessionToConnectnextHopDirectorTCPPort), required: false);
+            var __workflow_waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS, nameof(waitForNextHopSessionToConnectnextHopDirectorUsesHTTPS), required: false);
+            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsLocalhostname), required: false);
+            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsHostname), required: false);
+            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsFQDN), required: false);
+            var __workflow_waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId = WorkflowExpression.Compile(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId, nameof(waitForNextHopSessionToConnectincrementNextHopDirectorTCPPortBySessionId), required: false);
+            var __workflow_waitForNextHopSessionToConnectsecondsToWait = WorkflowExpression.Compile(waitForNextHopSessionToConnectsecondsToWait, nameof(waitForNextHopSessionToConnectsecondsToWait), required: false);
+            var __workflow_waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe = WorkflowExpression.Compile(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe, nameof(waitForNextHopSessionToConnectnextHopDirectorAddressIsNamedPipe), required: false);
+            var __workflow_waitForNextHopSessionToConnectdisableExistingNextHop = WorkflowExpression.Compile(waitForNextHopSessionToConnectdisableExistingNextHop, nameof(waitForNextHopSessionToConnectdisableExistingNextHop), required: false);
             return new DeferredBodyAction<WaitForNextHopSessionToConnectResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/WaitForNextHopSessionToConnect";
@@ -7820,32 +7282,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ConfigureNextHopDirector(Expression<Func<string>> configureNextHopDirectorworkflow, Expression<Func<bool>> configureNextHopDirectorsOAPEnabled = null, Expression<Func<bool>> configureNextHopDirectorrESTEnabled = null, Expression<Func<bool>> configureNextHopDirectorwebServerEnabled = null, Expression<Func<bool>> configureNextHopDirectordirectorIsLocalhostOnly = null, Expression<Func<int>> configureNextHopDirectorsOAPTCPPort = null, Expression<Func<int>> configureNextHopDirectorrESTTCPPort = null, Expression<Func<bool>> configureNextHopDirectorsOAPUsesHTTPS = null, Expression<Func<bool>> configureNextHopDirectorrESTUsesHTTPS = null, Expression<Func<bool>> configureNextHopDirectorincrementDirectorTCPPortBySessionId = null, Expression<Func<bool>> configureNextHopDirectorsOAPUsesUserAuthentication = null, Expression<Func<bool>> configureNextHopDirectorrESTUsesUserAuthentication = null, Expression<Func<bool>> configureNextHopDirectorcommandNamedPipeEnabled = null)
         {
-            var __workflow_configureNextHopDirectorworkflow = configureNextHopDirectorworkflow == null ? null : WorkflowExpression.Compile(configureNextHopDirectorworkflow);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorworkflow, nameof(configureNextHopDirectorworkflow), required: true);
-            var __workflow_configureNextHopDirectorsOAPEnabled = configureNextHopDirectorsOAPEnabled == null ? null : WorkflowExpression.Compile(configureNextHopDirectorsOAPEnabled);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorsOAPEnabled, nameof(configureNextHopDirectorsOAPEnabled), required: false);
-            var __workflow_configureNextHopDirectorrESTEnabled = configureNextHopDirectorrESTEnabled == null ? null : WorkflowExpression.Compile(configureNextHopDirectorrESTEnabled);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorrESTEnabled, nameof(configureNextHopDirectorrESTEnabled), required: false);
-            var __workflow_configureNextHopDirectorwebServerEnabled = configureNextHopDirectorwebServerEnabled == null ? null : WorkflowExpression.Compile(configureNextHopDirectorwebServerEnabled);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorwebServerEnabled, nameof(configureNextHopDirectorwebServerEnabled), required: false);
-            var __workflow_configureNextHopDirectordirectorIsLocalhostOnly = configureNextHopDirectordirectorIsLocalhostOnly == null ? null : WorkflowExpression.Compile(configureNextHopDirectordirectorIsLocalhostOnly);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectordirectorIsLocalhostOnly, nameof(configureNextHopDirectordirectorIsLocalhostOnly), required: false);
-            var __workflow_configureNextHopDirectorsOAPTCPPort = configureNextHopDirectorsOAPTCPPort == null ? null : WorkflowExpression.Compile(configureNextHopDirectorsOAPTCPPort);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorsOAPTCPPort, nameof(configureNextHopDirectorsOAPTCPPort), required: false);
-            var __workflow_configureNextHopDirectorrESTTCPPort = configureNextHopDirectorrESTTCPPort == null ? null : WorkflowExpression.Compile(configureNextHopDirectorrESTTCPPort);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorrESTTCPPort, nameof(configureNextHopDirectorrESTTCPPort), required: false);
-            var __workflow_configureNextHopDirectorsOAPUsesHTTPS = configureNextHopDirectorsOAPUsesHTTPS == null ? null : WorkflowExpression.Compile(configureNextHopDirectorsOAPUsesHTTPS);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorsOAPUsesHTTPS, nameof(configureNextHopDirectorsOAPUsesHTTPS), required: false);
-            var __workflow_configureNextHopDirectorrESTUsesHTTPS = configureNextHopDirectorrESTUsesHTTPS == null ? null : WorkflowExpression.Compile(configureNextHopDirectorrESTUsesHTTPS);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorrESTUsesHTTPS, nameof(configureNextHopDirectorrESTUsesHTTPS), required: false);
-            var __workflow_configureNextHopDirectorincrementDirectorTCPPortBySessionId = configureNextHopDirectorincrementDirectorTCPPortBySessionId == null ? null : WorkflowExpression.Compile(configureNextHopDirectorincrementDirectorTCPPortBySessionId);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorincrementDirectorTCPPortBySessionId, nameof(configureNextHopDirectorincrementDirectorTCPPortBySessionId), required: false);
-            var __workflow_configureNextHopDirectorsOAPUsesUserAuthentication = configureNextHopDirectorsOAPUsesUserAuthentication == null ? null : WorkflowExpression.Compile(configureNextHopDirectorsOAPUsesUserAuthentication);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorsOAPUsesUserAuthentication, nameof(configureNextHopDirectorsOAPUsesUserAuthentication), required: false);
-            var __workflow_configureNextHopDirectorrESTUsesUserAuthentication = configureNextHopDirectorrESTUsesUserAuthentication == null ? null : WorkflowExpression.Compile(configureNextHopDirectorrESTUsesUserAuthentication);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorrESTUsesUserAuthentication, nameof(configureNextHopDirectorrESTUsesUserAuthentication), required: false);
-            var __workflow_configureNextHopDirectorcommandNamedPipeEnabled = configureNextHopDirectorcommandNamedPipeEnabled == null ? null : WorkflowExpression.Compile(configureNextHopDirectorcommandNamedPipeEnabled);
-            WorkflowExpression.Validate(__workflow_configureNextHopDirectorcommandNamedPipeEnabled, nameof(configureNextHopDirectorcommandNamedPipeEnabled), required: false);
+            var __workflow_configureNextHopDirectorworkflow = WorkflowExpression.Compile(configureNextHopDirectorworkflow, nameof(configureNextHopDirectorworkflow), required: true);
+            var __workflow_configureNextHopDirectorsOAPEnabled = WorkflowExpression.Compile(configureNextHopDirectorsOAPEnabled, nameof(configureNextHopDirectorsOAPEnabled), required: false);
+            var __workflow_configureNextHopDirectorrESTEnabled = WorkflowExpression.Compile(configureNextHopDirectorrESTEnabled, nameof(configureNextHopDirectorrESTEnabled), required: false);
+            var __workflow_configureNextHopDirectorwebServerEnabled = WorkflowExpression.Compile(configureNextHopDirectorwebServerEnabled, nameof(configureNextHopDirectorwebServerEnabled), required: false);
+            var __workflow_configureNextHopDirectordirectorIsLocalhostOnly = WorkflowExpression.Compile(configureNextHopDirectordirectorIsLocalhostOnly, nameof(configureNextHopDirectordirectorIsLocalhostOnly), required: false);
+            var __workflow_configureNextHopDirectorsOAPTCPPort = WorkflowExpression.Compile(configureNextHopDirectorsOAPTCPPort, nameof(configureNextHopDirectorsOAPTCPPort), required: false);
+            var __workflow_configureNextHopDirectorrESTTCPPort = WorkflowExpression.Compile(configureNextHopDirectorrESTTCPPort, nameof(configureNextHopDirectorrESTTCPPort), required: false);
+            var __workflow_configureNextHopDirectorsOAPUsesHTTPS = WorkflowExpression.Compile(configureNextHopDirectorsOAPUsesHTTPS, nameof(configureNextHopDirectorsOAPUsesHTTPS), required: false);
+            var __workflow_configureNextHopDirectorrESTUsesHTTPS = WorkflowExpression.Compile(configureNextHopDirectorrESTUsesHTTPS, nameof(configureNextHopDirectorrESTUsesHTTPS), required: false);
+            var __workflow_configureNextHopDirectorincrementDirectorTCPPortBySessionId = WorkflowExpression.Compile(configureNextHopDirectorincrementDirectorTCPPortBySessionId, nameof(configureNextHopDirectorincrementDirectorTCPPortBySessionId), required: false);
+            var __workflow_configureNextHopDirectorsOAPUsesUserAuthentication = WorkflowExpression.Compile(configureNextHopDirectorsOAPUsesUserAuthentication, nameof(configureNextHopDirectorsOAPUsesUserAuthentication), required: false);
+            var __workflow_configureNextHopDirectorrESTUsesUserAuthentication = WorkflowExpression.Compile(configureNextHopDirectorrESTUsesUserAuthentication, nameof(configureNextHopDirectorrESTUsesUserAuthentication), required: false);
+            var __workflow_configureNextHopDirectorcommandNamedPipeEnabled = WorkflowExpression.Compile(configureNextHopDirectorcommandNamedPipeEnabled, nameof(configureNextHopDirectorcommandNamedPipeEnabled), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/ConfigureNextHopDirector";
@@ -8059,8 +7508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ResetNextHopDirectorSettings(Expression<Func<string>> resetNextHopDirectorSettingsworkflow)
         {
-            var __workflow_resetNextHopDirectorSettingsworkflow = resetNextHopDirectorSettingsworkflow == null ? null : WorkflowExpression.Compile(resetNextHopDirectorSettingsworkflow);
-            WorkflowExpression.Validate(__workflow_resetNextHopDirectorSettingsworkflow, nameof(resetNextHopDirectorSettingsworkflow), required: true);
+            var __workflow_resetNextHopDirectorSettingsworkflow = WorkflowExpression.Compile(resetNextHopDirectorSettingsworkflow, nameof(resetNextHopDirectorSettingsworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/ResetNextHopDirectorSettings";
@@ -8082,8 +7530,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction WorkflowCompleted(Expression<Func<string>> workflowCompletedworkflow)
         {
-            var __workflow_workflowCompletedworkflow = workflowCompletedworkflow == null ? null : WorkflowExpression.Compile(workflowCompletedworkflow);
-            WorkflowExpression.Validate(__workflow_workflowCompletedworkflow, nameof(workflowCompletedworkflow), required: true);
+            var __workflow_workflowCompletedworkflow = WorkflowExpression.Compile(workflowCompletedworkflow, nameof(workflowCompletedworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/WorkflowCompleted";
@@ -8105,10 +7552,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RaiseExceptionResponse> RaiseException(Expression<Func<string>> raiseExceptioninputException = null, Expression<Func<string>> raiseExceptionexceptionMessage = null)
         {
-            var __workflow_raiseExceptioninputException = raiseExceptioninputException == null ? null : WorkflowExpression.Compile(raiseExceptioninputException);
-            WorkflowExpression.Validate(__workflow_raiseExceptioninputException, nameof(raiseExceptioninputException), required: false);
-            var __workflow_raiseExceptionexceptionMessage = raiseExceptionexceptionMessage == null ? null : WorkflowExpression.Compile(raiseExceptionexceptionMessage);
-            WorkflowExpression.Validate(__workflow_raiseExceptionexceptionMessage, nameof(raiseExceptionexceptionMessage), required: false);
+            var __workflow_raiseExceptioninputException = WorkflowExpression.Compile(raiseExceptioninputException, nameof(raiseExceptioninputException), required: false);
+            var __workflow_raiseExceptionexceptionMessage = WorkflowExpression.Compile(raiseExceptionexceptionMessage, nameof(raiseExceptionexceptionMessage), required: false);
             return new DeferredBodyAction<RaiseExceptionResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/RaiseException";
@@ -8140,14 +7585,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<UpdateOrchestratorFlowStatsResultResponse> UpdateOrchestratorFlowStatsResult(Expression<Func<string>> updateOrchestratorFlowStatsResultworkflow, Expression<Func<bool>> updateOrchestratorFlowStatsResultflowLastActionSuccess = null, Expression<Func<string>> updateOrchestratorFlowStatsResultflowLastActionErrorMessage = null, Expression<Func<int>> updateOrchestratorFlowStatsResultflowLastActionCode = null)
         {
-            var __workflow_updateOrchestratorFlowStatsResultworkflow = updateOrchestratorFlowStatsResultworkflow == null ? null : WorkflowExpression.Compile(updateOrchestratorFlowStatsResultworkflow);
-            WorkflowExpression.Validate(__workflow_updateOrchestratorFlowStatsResultworkflow, nameof(updateOrchestratorFlowStatsResultworkflow), required: true);
-            var __workflow_updateOrchestratorFlowStatsResultflowLastActionSuccess = updateOrchestratorFlowStatsResultflowLastActionSuccess == null ? null : WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionSuccess);
-            WorkflowExpression.Validate(__workflow_updateOrchestratorFlowStatsResultflowLastActionSuccess, nameof(updateOrchestratorFlowStatsResultflowLastActionSuccess), required: false);
-            var __workflow_updateOrchestratorFlowStatsResultflowLastActionErrorMessage = updateOrchestratorFlowStatsResultflowLastActionErrorMessage == null ? null : WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionErrorMessage);
-            WorkflowExpression.Validate(__workflow_updateOrchestratorFlowStatsResultflowLastActionErrorMessage, nameof(updateOrchestratorFlowStatsResultflowLastActionErrorMessage), required: false);
-            var __workflow_updateOrchestratorFlowStatsResultflowLastActionCode = updateOrchestratorFlowStatsResultflowLastActionCode == null ? null : WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionCode);
-            WorkflowExpression.Validate(__workflow_updateOrchestratorFlowStatsResultflowLastActionCode, nameof(updateOrchestratorFlowStatsResultflowLastActionCode), required: false);
+            var __workflow_updateOrchestratorFlowStatsResultworkflow = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultworkflow, nameof(updateOrchestratorFlowStatsResultworkflow), required: true);
+            var __workflow_updateOrchestratorFlowStatsResultflowLastActionSuccess = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionSuccess, nameof(updateOrchestratorFlowStatsResultflowLastActionSuccess), required: false);
+            var __workflow_updateOrchestratorFlowStatsResultflowLastActionErrorMessage = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionErrorMessage, nameof(updateOrchestratorFlowStatsResultflowLastActionErrorMessage), required: false);
+            var __workflow_updateOrchestratorFlowStatsResultflowLastActionCode = WorkflowExpression.Compile(updateOrchestratorFlowStatsResultflowLastActionCode, nameof(updateOrchestratorFlowStatsResultflowLastActionCode), required: false);
             return new DeferredBodyAction<UpdateOrchestratorFlowStatsResultResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/UpdateOrchestratorFlowStatsResult";
@@ -8187,8 +7628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLastFailedActionFromOrchestratorFlowStatsResponse> GetLastFailedActionFromOrchestratorFlowStats(Expression<Func<string>> getLastFailedActionFromOrchestratorFlowStatsworkflow)
         {
-            var __workflow_getLastFailedActionFromOrchestratorFlowStatsworkflow = getLastFailedActionFromOrchestratorFlowStatsworkflow == null ? null : WorkflowExpression.Compile(getLastFailedActionFromOrchestratorFlowStatsworkflow);
-            WorkflowExpression.Validate(__workflow_getLastFailedActionFromOrchestratorFlowStatsworkflow, nameof(getLastFailedActionFromOrchestratorFlowStatsworkflow), required: true);
+            var __workflow_getLastFailedActionFromOrchestratorFlowStatsworkflow = WorkflowExpression.Compile(getLastFailedActionFromOrchestratorFlowStatsworkflow, nameof(getLastFailedActionFromOrchestratorFlowStatsworkflow), required: true);
             return new DeferredBodyAction<GetLastFailedActionFromOrchestratorFlowStatsResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetLastFailedActionFromOrchestratorFlowStats";
@@ -8210,16 +7650,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorFlowStatsResponse> GetOrchestratorFlowStats(Expression<Func<int>> getOrchestratorFlowStatswithinLastNumberOfDays = null, Expression<Func<string>> getOrchestratorFlowStatssearchFlowName = null, Expression<Func<bool>> getOrchestratorFlowStatssearchFlowLastActionResult = null, Expression<Func<string>> getOrchestratorFlowStatssearchFlowStartTimeStartWindow = null, Expression<Func<string>> getOrchestratorFlowStatssearchFlowStartTimeEndWindow = null)
         {
-            var __workflow_getOrchestratorFlowStatswithinLastNumberOfDays = getOrchestratorFlowStatswithinLastNumberOfDays == null ? null : WorkflowExpression.Compile(getOrchestratorFlowStatswithinLastNumberOfDays);
-            WorkflowExpression.Validate(__workflow_getOrchestratorFlowStatswithinLastNumberOfDays, nameof(getOrchestratorFlowStatswithinLastNumberOfDays), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowName = getOrchestratorFlowStatssearchFlowName == null ? null : WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowName);
-            WorkflowExpression.Validate(__workflow_getOrchestratorFlowStatssearchFlowName, nameof(getOrchestratorFlowStatssearchFlowName), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowLastActionResult = getOrchestratorFlowStatssearchFlowLastActionResult == null ? null : WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowLastActionResult);
-            WorkflowExpression.Validate(__workflow_getOrchestratorFlowStatssearchFlowLastActionResult, nameof(getOrchestratorFlowStatssearchFlowLastActionResult), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowStartTimeStartWindow = getOrchestratorFlowStatssearchFlowStartTimeStartWindow == null ? null : WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowStartTimeStartWindow);
-            WorkflowExpression.Validate(__workflow_getOrchestratorFlowStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeStartWindow), required: false);
-            var __workflow_getOrchestratorFlowStatssearchFlowStartTimeEndWindow = getOrchestratorFlowStatssearchFlowStartTimeEndWindow == null ? null : WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowStartTimeEndWindow);
-            WorkflowExpression.Validate(__workflow_getOrchestratorFlowStatssearchFlowStartTimeEndWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeEndWindow), required: false);
+            var __workflow_getOrchestratorFlowStatswithinLastNumberOfDays = WorkflowExpression.Compile(getOrchestratorFlowStatswithinLastNumberOfDays, nameof(getOrchestratorFlowStatswithinLastNumberOfDays), required: false);
+            var __workflow_getOrchestratorFlowStatssearchFlowName = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowName, nameof(getOrchestratorFlowStatssearchFlowName), required: false);
+            var __workflow_getOrchestratorFlowStatssearchFlowLastActionResult = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowLastActionResult, nameof(getOrchestratorFlowStatssearchFlowLastActionResult), required: false);
+            var __workflow_getOrchestratorFlowStatssearchFlowStartTimeStartWindow = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeStartWindow), required: false);
+            var __workflow_getOrchestratorFlowStatssearchFlowStartTimeEndWindow = WorkflowExpression.Compile(getOrchestratorFlowStatssearchFlowStartTimeEndWindow, nameof(getOrchestratorFlowStatssearchFlowStartTimeEndWindow), required: false);
             return new DeferredBodyAction<GetOrchestratorFlowStatsResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorFlowStats";
@@ -8269,12 +7704,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorWorkerAvailabilityStatsResponse> GetOrchestratorWorkerAvailabilityStats(Expression<Func<int>> getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays = null, Expression<Func<string>> getOrchestratorWorkerAvailabilityStatssearchFlowName = null, Expression<Func<string>> getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow = null)
         {
-            var __workflow_getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays = getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays == null ? null : WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays, nameof(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays), required: false);
-            var __workflow_getOrchestratorWorkerAvailabilityStatssearchFlowName = getOrchestratorWorkerAvailabilityStatssearchFlowName == null ? null : WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatssearchFlowName);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkerAvailabilityStatssearchFlowName, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowName), required: false);
-            var __workflow_getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow = getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow == null ? null : WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow), required: false);
+            var __workflow_getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays = WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays, nameof(getOrchestratorWorkerAvailabilityStatswithinLastNumberOfDays), required: false);
+            var __workflow_getOrchestratorWorkerAvailabilityStatssearchFlowName = WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatssearchFlowName, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowName), required: false);
+            var __workflow_getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow = WorkflowExpression.Compile(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow, nameof(getOrchestratorWorkerAvailabilityStatssearchFlowStartTimeStartWindow), required: false);
             return new DeferredBodyAction<GetOrchestratorWorkerAvailabilityStatsResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorkerAvailabilityStats";
@@ -8312,14 +7744,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorWorkerFlowUsageHeatmapResponse> GetOrchestratorWorkerFlowUsageHeatmap(Expression<Func<string>> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, Expression<Func<string>> getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, Expression<Func<int>> getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC = null, Expression<Func<string>> getOrchestratorWorkerFlowUsageHeatmapworkerNames = null)
         {
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow = getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow == null ? null : WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow), required: true);
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow = getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow == null ? null : WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow), required: true);
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC = getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC == null ? null : WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC, nameof(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC), required: false);
-            var __workflow_getOrchestratorWorkerFlowUsageHeatmapworkerNames = getOrchestratorWorkerFlowUsageHeatmapworkerNames == null ? null : WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapworkerNames);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkerFlowUsageHeatmapworkerNames, nameof(getOrchestratorWorkerFlowUsageHeatmapworkerNames), required: false);
+            var __workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateStartWindow), required: true);
+            var __workflow_getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow, nameof(getOrchestratorWorkerFlowUsageHeatmapsearchStartDateEndWindow), required: true);
+            var __workflow_getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC, nameof(getOrchestratorWorkerFlowUsageHeatmaptimeZoneMinutesOffsetFromUTC), required: false);
+            var __workflow_getOrchestratorWorkerFlowUsageHeatmapworkerNames = WorkflowExpression.Compile(getOrchestratorWorkerFlowUsageHeatmapworkerNames, nameof(getOrchestratorWorkerFlowUsageHeatmapworkerNames), required: false);
             return new DeferredBodyAction<GetOrchestratorWorkerFlowUsageHeatmapResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorkerFlowUsageHeatmap";
@@ -8365,14 +7793,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorLoginHistoryResponse> GetOrchestratorLoginHistory(Expression<Func<int>> getOrchestratorLoginHistorywithinLastNumberOfDays = null, Expression<Func<string>> getOrchestratorLoginHistorysearchByEmail = null, Expression<Func<string>> getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow = null, Expression<Func<string>> getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow = null)
         {
-            var __workflow_getOrchestratorLoginHistorywithinLastNumberOfDays = getOrchestratorLoginHistorywithinLastNumberOfDays == null ? null : WorkflowExpression.Compile(getOrchestratorLoginHistorywithinLastNumberOfDays);
-            WorkflowExpression.Validate(__workflow_getOrchestratorLoginHistorywithinLastNumberOfDays, nameof(getOrchestratorLoginHistorywithinLastNumberOfDays), required: false);
-            var __workflow_getOrchestratorLoginHistorysearchByEmail = getOrchestratorLoginHistorysearchByEmail == null ? null : WorkflowExpression.Compile(getOrchestratorLoginHistorysearchByEmail);
-            WorkflowExpression.Validate(__workflow_getOrchestratorLoginHistorysearchByEmail, nameof(getOrchestratorLoginHistorysearchByEmail), required: false);
-            var __workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow = getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow == null ? null : WorkflowExpression.Compile(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow);
-            WorkflowExpression.Validate(__workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow), required: false);
-            var __workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow = getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow == null ? null : WorkflowExpression.Compile(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow);
-            WorkflowExpression.Validate(__workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow), required: false);
+            var __workflow_getOrchestratorLoginHistorywithinLastNumberOfDays = WorkflowExpression.Compile(getOrchestratorLoginHistorywithinLastNumberOfDays, nameof(getOrchestratorLoginHistorywithinLastNumberOfDays), required: false);
+            var __workflow_getOrchestratorLoginHistorysearchByEmail = WorkflowExpression.Compile(getOrchestratorLoginHistorysearchByEmail, nameof(getOrchestratorLoginHistorysearchByEmail), required: false);
+            var __workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow = WorkflowExpression.Compile(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeStartWindow), required: false);
+            var __workflow_getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow = WorkflowExpression.Compile(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow, nameof(getOrchestratorLoginHistorysearchLoginHistoryTimeEndWindow), required: false);
             return new DeferredBodyAction<GetOrchestratorLoginHistoryResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorLoginHistory";
@@ -8416,10 +7840,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetLocalLoggingLevel(Expression<Func<int>> setLocalLoggingLevelloggingLevel, Expression<Func<string>> setLocalLoggingLevelworkflow)
         {
-            var __workflow_setLocalLoggingLevelloggingLevel = setLocalLoggingLevelloggingLevel == null ? null : WorkflowExpression.Compile(setLocalLoggingLevelloggingLevel);
-            WorkflowExpression.Validate(__workflow_setLocalLoggingLevelloggingLevel, nameof(setLocalLoggingLevelloggingLevel), required: true);
-            var __workflow_setLocalLoggingLevelworkflow = setLocalLoggingLevelworkflow == null ? null : WorkflowExpression.Compile(setLocalLoggingLevelworkflow);
-            WorkflowExpression.Validate(__workflow_setLocalLoggingLevelworkflow, nameof(setLocalLoggingLevelworkflow), required: true);
+            var __workflow_setLocalLoggingLevelloggingLevel = WorkflowExpression.Compile(setLocalLoggingLevelloggingLevel, nameof(setLocalLoggingLevelloggingLevel), required: true);
+            var __workflow_setLocalLoggingLevelworkflow = WorkflowExpression.Compile(setLocalLoggingLevelworkflow, nameof(setLocalLoggingLevelworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/SetLocalLoggingLevel";
@@ -8443,12 +7865,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RunCommandResponse> RunCommand(Expression<Func<string>> runCommandcommandName, Expression<Func<string>> runCommandworkflow, Expression<Func<string>> runCommandinputJSON = null)
         {
-            var __workflow_runCommandcommandName = runCommandcommandName == null ? null : WorkflowExpression.Compile(runCommandcommandName);
-            WorkflowExpression.Validate(__workflow_runCommandcommandName, nameof(runCommandcommandName), required: true);
-            var __workflow_runCommandworkflow = runCommandworkflow == null ? null : WorkflowExpression.Compile(runCommandworkflow);
-            WorkflowExpression.Validate(__workflow_runCommandworkflow, nameof(runCommandworkflow), required: true);
-            var __workflow_runCommandinputJSON = runCommandinputJSON == null ? null : WorkflowExpression.Compile(runCommandinputJSON);
-            WorkflowExpression.Validate(__workflow_runCommandinputJSON, nameof(runCommandinputJSON), required: false);
+            var __workflow_runCommandcommandName = WorkflowExpression.Compile(runCommandcommandName, nameof(runCommandcommandName), required: true);
+            var __workflow_runCommandworkflow = WorkflowExpression.Compile(runCommandworkflow, nameof(runCommandworkflow), required: true);
+            var __workflow_runCommandinputJSON = WorkflowExpression.Compile(runCommandinputJSON, nameof(runCommandinputJSON), required: false);
             return new DeferredBodyAction<RunCommandResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/RunCommand";
@@ -8478,8 +7897,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetLocalLoggingLevelResponse> GetLocalLoggingLevel(Expression<Func<string>> getLocalLoggingLevelworkflow)
         {
-            var __workflow_getLocalLoggingLevelworkflow = getLocalLoggingLevelworkflow == null ? null : WorkflowExpression.Compile(getLocalLoggingLevelworkflow);
-            WorkflowExpression.Validate(__workflow_getLocalLoggingLevelworkflow, nameof(getLocalLoggingLevelworkflow), required: true);
+            var __workflow_getLocalLoggingLevelworkflow = WorkflowExpression.Compile(getLocalLoggingLevelworkflow, nameof(getLocalLoggingLevelworkflow), required: true);
             return new DeferredBodyAction<GetLocalLoggingLevelResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetLocalLoggingLevel";
@@ -8501,8 +7919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetRemoteClientTypeResponse> GetRemoteClientType(Expression<Func<string>> getRemoteClientTypeworkflow)
         {
-            var __workflow_getRemoteClientTypeworkflow = getRemoteClientTypeworkflow == null ? null : WorkflowExpression.Compile(getRemoteClientTypeworkflow);
-            WorkflowExpression.Validate(__workflow_getRemoteClientTypeworkflow, nameof(getRemoteClientTypeworkflow), required: true);
+            var __workflow_getRemoteClientTypeworkflow = WorkflowExpression.Compile(getRemoteClientTypeworkflow, nameof(getRemoteClientTypeworkflow), required: true);
             return new DeferredBodyAction<GetRemoteClientTypeResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetRemoteClientType";
@@ -8524,8 +7941,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetIAConnectDirectorInfoResponse> GetIAConnectDirectorInfo(Expression<Func<string>> getIAConnectDirectorInfoworkflow)
         {
-            var __workflow_getIAConnectDirectorInfoworkflow = getIAConnectDirectorInfoworkflow == null ? null : WorkflowExpression.Compile(getIAConnectDirectorInfoworkflow);
-            WorkflowExpression.Validate(__workflow_getIAConnectDirectorInfoworkflow, nameof(getIAConnectDirectorInfoworkflow), required: true);
+            var __workflow_getIAConnectDirectorInfoworkflow = WorkflowExpression.Compile(getIAConnectDirectorInfoworkflow, nameof(getIAConnectDirectorInfoworkflow), required: true);
             return new DeferredBodyAction<GetIAConnectDirectorInfoResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetIAConnectDirectorInfo";
@@ -8547,8 +7963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAvailableIAConnectSessionsResponse> GetAvailableIAConnectSessions(Expression<Func<string>> getAvailableIAConnectSessionsworkflow)
         {
-            var __workflow_getAvailableIAConnectSessionsworkflow = getAvailableIAConnectSessionsworkflow == null ? null : WorkflowExpression.Compile(getAvailableIAConnectSessionsworkflow);
-            WorkflowExpression.Validate(__workflow_getAvailableIAConnectSessionsworkflow, nameof(getAvailableIAConnectSessionsworkflow), required: true);
+            var __workflow_getAvailableIAConnectSessionsworkflow = WorkflowExpression.Compile(getAvailableIAConnectSessionsworkflow, nameof(getAvailableIAConnectSessionsworkflow), required: true);
             return new DeferredBodyAction<GetAvailableIAConnectSessionsResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAvailableIAConnectSessions";
@@ -8570,12 +7985,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AttachToIAConnectSessionByName(Expression<Func<string>> attachToIAConnectSessionByNameiAConnectSessionName, Expression<Func<string>> attachToIAConnectSessionByNameworkflow, Expression<Func<bool>> attachToIAConnectSessionByNamevirtualChannelMustBeConnected = null)
         {
-            var __workflow_attachToIAConnectSessionByNameiAConnectSessionName = attachToIAConnectSessionByNameiAConnectSessionName == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByNameiAConnectSessionName);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByNameiAConnectSessionName, nameof(attachToIAConnectSessionByNameiAConnectSessionName), required: true);
-            var __workflow_attachToIAConnectSessionByNameworkflow = attachToIAConnectSessionByNameworkflow == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByNameworkflow);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByNameworkflow, nameof(attachToIAConnectSessionByNameworkflow), required: true);
-            var __workflow_attachToIAConnectSessionByNamevirtualChannelMustBeConnected = attachToIAConnectSessionByNamevirtualChannelMustBeConnected == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByNamevirtualChannelMustBeConnected);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByNamevirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByNamevirtualChannelMustBeConnected), required: false);
+            var __workflow_attachToIAConnectSessionByNameiAConnectSessionName = WorkflowExpression.Compile(attachToIAConnectSessionByNameiAConnectSessionName, nameof(attachToIAConnectSessionByNameiAConnectSessionName), required: true);
+            var __workflow_attachToIAConnectSessionByNameworkflow = WorkflowExpression.Compile(attachToIAConnectSessionByNameworkflow, nameof(attachToIAConnectSessionByNameworkflow), required: true);
+            var __workflow_attachToIAConnectSessionByNamevirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToIAConnectSessionByNamevirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByNamevirtualChannelMustBeConnected), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToIAConnectSessionByName";
@@ -8615,10 +8027,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AttachToTier1IAConnectSessionResponse> AttachToTier1IAConnectSession(Expression<Func<string>> attachToTier1IAConnectSessionworkflow, Expression<Func<bool>> attachToTier1IAConnectSessionvirtualChannelMustBeConnected = null)
         {
-            var __workflow_attachToTier1IAConnectSessionworkflow = attachToTier1IAConnectSessionworkflow == null ? null : WorkflowExpression.Compile(attachToTier1IAConnectSessionworkflow);
-            WorkflowExpression.Validate(__workflow_attachToTier1IAConnectSessionworkflow, nameof(attachToTier1IAConnectSessionworkflow), required: true);
-            var __workflow_attachToTier1IAConnectSessionvirtualChannelMustBeConnected = attachToTier1IAConnectSessionvirtualChannelMustBeConnected == null ? null : WorkflowExpression.Compile(attachToTier1IAConnectSessionvirtualChannelMustBeConnected);
-            WorkflowExpression.Validate(__workflow_attachToTier1IAConnectSessionvirtualChannelMustBeConnected, nameof(attachToTier1IAConnectSessionvirtualChannelMustBeConnected), required: false);
+            var __workflow_attachToTier1IAConnectSessionworkflow = WorkflowExpression.Compile(attachToTier1IAConnectSessionworkflow, nameof(attachToTier1IAConnectSessionworkflow), required: true);
+            var __workflow_attachToTier1IAConnectSessionvirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToTier1IAConnectSessionvirtualChannelMustBeConnected, nameof(attachToTier1IAConnectSessionvirtualChannelMustBeConnected), required: false);
             return new DeferredBodyAction<AttachToTier1IAConnectSessionResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToTier1IAConnectSession";
@@ -8656,20 +8066,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AttachToIAConnectSessionByIndexResponse> AttachToIAConnectSessionByIndex(Expression<Func<string>> attachToIAConnectSessionByIndexworkflow, Expression<Func<attachToIAConnectSessionByIndexsearchIAConnectSessionTypeInput>> attachToIAConnectSessionByIndexsearchIAConnectSessionType = null, Expression<Func<int>> attachToIAConnectSessionByIndexsearchIAConnectSessionIndex = null, Expression<Func<int>> attachToIAConnectSessionByIndextimeToWaitInSeconds = null, Expression<Func<bool>> attachToIAConnectSessionByIndexraiseExceptionIfTimedout = null, Expression<Func<bool>> attachToIAConnectSessionByIndexvirtualChannelMustBeConnected = null, Expression<Func<bool>> attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore = null)
         {
-            var __workflow_attachToIAConnectSessionByIndexworkflow = attachToIAConnectSessionByIndexworkflow == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByIndexworkflow);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByIndexworkflow, nameof(attachToIAConnectSessionByIndexworkflow), required: true);
-            var __workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionType = attachToIAConnectSessionByIndexsearchIAConnectSessionType == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByIndexsearchIAConnectSessionType);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionType, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionType), required: false);
-            var __workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionIndex = attachToIAConnectSessionByIndexsearchIAConnectSessionIndex == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionIndex, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex), required: false);
-            var __workflow_attachToIAConnectSessionByIndextimeToWaitInSeconds = attachToIAConnectSessionByIndextimeToWaitInSeconds == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByIndextimeToWaitInSeconds);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByIndextimeToWaitInSeconds, nameof(attachToIAConnectSessionByIndextimeToWaitInSeconds), required: false);
-            var __workflow_attachToIAConnectSessionByIndexraiseExceptionIfTimedout = attachToIAConnectSessionByIndexraiseExceptionIfTimedout == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByIndexraiseExceptionIfTimedout);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByIndexraiseExceptionIfTimedout, nameof(attachToIAConnectSessionByIndexraiseExceptionIfTimedout), required: false);
-            var __workflow_attachToIAConnectSessionByIndexvirtualChannelMustBeConnected = attachToIAConnectSessionByIndexvirtualChannelMustBeConnected == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByIndexvirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected), required: false);
-            var __workflow_attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore = attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore == null ? null : WorkflowExpression.Compile(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore);
-            WorkflowExpression.Validate(__workflow_attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore, nameof(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore), required: false);
+            var __workflow_attachToIAConnectSessionByIndexworkflow = WorkflowExpression.Compile(attachToIAConnectSessionByIndexworkflow, nameof(attachToIAConnectSessionByIndexworkflow), required: true);
+            var __workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionType = WorkflowExpression.Compile(attachToIAConnectSessionByIndexsearchIAConnectSessionType, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionType), required: false);
+            var __workflow_attachToIAConnectSessionByIndexsearchIAConnectSessionIndex = WorkflowExpression.Compile(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex, nameof(attachToIAConnectSessionByIndexsearchIAConnectSessionIndex), required: false);
+            var __workflow_attachToIAConnectSessionByIndextimeToWaitInSeconds = WorkflowExpression.Compile(attachToIAConnectSessionByIndextimeToWaitInSeconds, nameof(attachToIAConnectSessionByIndextimeToWaitInSeconds), required: false);
+            var __workflow_attachToIAConnectSessionByIndexraiseExceptionIfTimedout = WorkflowExpression.Compile(attachToIAConnectSessionByIndexraiseExceptionIfTimedout, nameof(attachToIAConnectSessionByIndexraiseExceptionIfTimedout), required: false);
+            var __workflow_attachToIAConnectSessionByIndexvirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected, nameof(attachToIAConnectSessionByIndexvirtualChannelMustBeConnected), required: false);
+            var __workflow_attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore = WorkflowExpression.Compile(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore, nameof(attachToIAConnectSessionByIndexonlyCountSessionsNotSeenBefore), required: false);
             return new DeferredBodyAction<AttachToIAConnectSessionByIndexResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToIAConnectSessionByIndex";
@@ -8757,18 +8160,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AttachToMostRecentIAConnectSessionResponse> AttachToMostRecentIAConnectSession(Expression<Func<string>> attachToMostRecentIAConnectSessionworkflow, Expression<Func<attachToMostRecentIAConnectSessionsearchIAConnectSessionTypeInput>> attachToMostRecentIAConnectSessionsearchIAConnectSessionType = null, Expression<Func<int>> attachToMostRecentIAConnectSessiontimeToWaitInSeconds = null, Expression<Func<bool>> attachToMostRecentIAConnectSessionraiseExceptionIfTimedout = null, Expression<Func<bool>> attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected = null, Expression<Func<bool>> attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore = null)
         {
-            var __workflow_attachToMostRecentIAConnectSessionworkflow = attachToMostRecentIAConnectSessionworkflow == null ? null : WorkflowExpression.Compile(attachToMostRecentIAConnectSessionworkflow);
-            WorkflowExpression.Validate(__workflow_attachToMostRecentIAConnectSessionworkflow, nameof(attachToMostRecentIAConnectSessionworkflow), required: true);
-            var __workflow_attachToMostRecentIAConnectSessionsearchIAConnectSessionType = attachToMostRecentIAConnectSessionsearchIAConnectSessionType == null ? null : WorkflowExpression.Compile(attachToMostRecentIAConnectSessionsearchIAConnectSessionType);
-            WorkflowExpression.Validate(__workflow_attachToMostRecentIAConnectSessionsearchIAConnectSessionType, nameof(attachToMostRecentIAConnectSessionsearchIAConnectSessionType), required: false);
-            var __workflow_attachToMostRecentIAConnectSessiontimeToWaitInSeconds = attachToMostRecentIAConnectSessiontimeToWaitInSeconds == null ? null : WorkflowExpression.Compile(attachToMostRecentIAConnectSessiontimeToWaitInSeconds);
-            WorkflowExpression.Validate(__workflow_attachToMostRecentIAConnectSessiontimeToWaitInSeconds, nameof(attachToMostRecentIAConnectSessiontimeToWaitInSeconds), required: false);
-            var __workflow_attachToMostRecentIAConnectSessionraiseExceptionIfTimedout = attachToMostRecentIAConnectSessionraiseExceptionIfTimedout == null ? null : WorkflowExpression.Compile(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout);
-            WorkflowExpression.Validate(__workflow_attachToMostRecentIAConnectSessionraiseExceptionIfTimedout, nameof(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout), required: false);
-            var __workflow_attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected = attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected == null ? null : WorkflowExpression.Compile(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected);
-            WorkflowExpression.Validate(__workflow_attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected, nameof(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected), required: false);
-            var __workflow_attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore = attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore == null ? null : WorkflowExpression.Compile(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore);
-            WorkflowExpression.Validate(__workflow_attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore, nameof(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore), required: false);
+            var __workflow_attachToMostRecentIAConnectSessionworkflow = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionworkflow, nameof(attachToMostRecentIAConnectSessionworkflow), required: true);
+            var __workflow_attachToMostRecentIAConnectSessionsearchIAConnectSessionType = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionsearchIAConnectSessionType, nameof(attachToMostRecentIAConnectSessionsearchIAConnectSessionType), required: false);
+            var __workflow_attachToMostRecentIAConnectSessiontimeToWaitInSeconds = WorkflowExpression.Compile(attachToMostRecentIAConnectSessiontimeToWaitInSeconds, nameof(attachToMostRecentIAConnectSessiontimeToWaitInSeconds), required: false);
+            var __workflow_attachToMostRecentIAConnectSessionraiseExceptionIfTimedout = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout, nameof(attachToMostRecentIAConnectSessionraiseExceptionIfTimedout), required: false);
+            var __workflow_attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected = WorkflowExpression.Compile(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected, nameof(attachToMostRecentIAConnectSessionvirtualChannelMustBeConnected), required: false);
+            var __workflow_attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore = WorkflowExpression.Compile(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore, nameof(attachToMostRecentIAConnectSessiononlyCountSessionsNotSeenBefore), required: false);
             return new DeferredBodyAction<AttachToMostRecentIAConnectSessionResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/AttachToMostRecentIAConnectSession";
@@ -8850,8 +8247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetDirectorUpTimeResponse> GetDirectorUpTime(Expression<Func<string>> getDirectorUpTimeworkflow)
         {
-            var __workflow_getDirectorUpTimeworkflow = getDirectorUpTimeworkflow == null ? null : WorkflowExpression.Compile(getDirectorUpTimeworkflow);
-            WorkflowExpression.Validate(__workflow_getDirectorUpTimeworkflow, nameof(getDirectorUpTimeworkflow), required: true);
+            var __workflow_getDirectorUpTimeworkflow = WorkflowExpression.Compile(getDirectorUpTimeworkflow, nameof(getDirectorUpTimeworkflow), required: true);
             return new DeferredBodyAction<GetDirectorUpTimeResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetDirectorUpTime";
@@ -8873,10 +8269,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DoesIAConnectSessionExistByNameResponse> DoesIAConnectSessionExistByName(Expression<Func<string>> doesIAConnectSessionExistByNameiAConnectSessionName, Expression<Func<string>> doesIAConnectSessionExistByNameworkflow)
         {
-            var __workflow_doesIAConnectSessionExistByNameiAConnectSessionName = doesIAConnectSessionExistByNameiAConnectSessionName == null ? null : WorkflowExpression.Compile(doesIAConnectSessionExistByNameiAConnectSessionName);
-            WorkflowExpression.Validate(__workflow_doesIAConnectSessionExistByNameiAConnectSessionName, nameof(doesIAConnectSessionExistByNameiAConnectSessionName), required: true);
-            var __workflow_doesIAConnectSessionExistByNameworkflow = doesIAConnectSessionExistByNameworkflow == null ? null : WorkflowExpression.Compile(doesIAConnectSessionExistByNameworkflow);
-            WorkflowExpression.Validate(__workflow_doesIAConnectSessionExistByNameworkflow, nameof(doesIAConnectSessionExistByNameworkflow), required: true);
+            var __workflow_doesIAConnectSessionExistByNameiAConnectSessionName = WorkflowExpression.Compile(doesIAConnectSessionExistByNameiAConnectSessionName, nameof(doesIAConnectSessionExistByNameiAConnectSessionName), required: true);
+            var __workflow_doesIAConnectSessionExistByNameworkflow = WorkflowExpression.Compile(doesIAConnectSessionExistByNameworkflow, nameof(doesIAConnectSessionExistByNameworkflow), required: true);
             return new DeferredBodyAction<DoesIAConnectSessionExistByNameResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/DoesIAConnectSessionExistByName";
@@ -8900,16 +8294,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WaitForIAConnectSessionToCloseByNameResponse> WaitForIAConnectSessionToCloseByName(Expression<Func<string>> waitForIAConnectSessionToCloseByNameiAConnectSessionName, Expression<Func<string>> waitForIAConnectSessionToCloseByNameworkflow, Expression<Func<int>> waitForIAConnectSessionToCloseByNametimeToWaitInSeconds = null, Expression<Func<bool>> waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout = null, Expression<Func<bool>> waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess = null)
         {
-            var __workflow_waitForIAConnectSessionToCloseByNameiAConnectSessionName = waitForIAConnectSessionToCloseByNameiAConnectSessionName == null ? null : WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameiAConnectSessionName);
-            WorkflowExpression.Validate(__workflow_waitForIAConnectSessionToCloseByNameiAConnectSessionName, nameof(waitForIAConnectSessionToCloseByNameiAConnectSessionName), required: true);
-            var __workflow_waitForIAConnectSessionToCloseByNameworkflow = waitForIAConnectSessionToCloseByNameworkflow == null ? null : WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameworkflow);
-            WorkflowExpression.Validate(__workflow_waitForIAConnectSessionToCloseByNameworkflow, nameof(waitForIAConnectSessionToCloseByNameworkflow), required: true);
-            var __workflow_waitForIAConnectSessionToCloseByNametimeToWaitInSeconds = waitForIAConnectSessionToCloseByNametimeToWaitInSeconds == null ? null : WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds);
-            WorkflowExpression.Validate(__workflow_waitForIAConnectSessionToCloseByNametimeToWaitInSeconds, nameof(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds), required: false);
-            var __workflow_waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout = waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout == null ? null : WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout);
-            WorkflowExpression.Validate(__workflow_waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout, nameof(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout), required: false);
-            var __workflow_waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess = waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess == null ? null : WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess);
-            WorkflowExpression.Validate(__workflow_waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess, nameof(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess), required: false);
+            var __workflow_waitForIAConnectSessionToCloseByNameiAConnectSessionName = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameiAConnectSessionName, nameof(waitForIAConnectSessionToCloseByNameiAConnectSessionName), required: true);
+            var __workflow_waitForIAConnectSessionToCloseByNameworkflow = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameworkflow, nameof(waitForIAConnectSessionToCloseByNameworkflow), required: true);
+            var __workflow_waitForIAConnectSessionToCloseByNametimeToWaitInSeconds = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds, nameof(waitForIAConnectSessionToCloseByNametimeToWaitInSeconds), required: false);
+            var __workflow_waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout, nameof(waitForIAConnectSessionToCloseByNameraiseExceptionIfTimedout), required: false);
+            var __workflow_waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess = WorkflowExpression.Compile(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess, nameof(waitForIAConnectSessionToCloseByNameattachToTier1IAConnectSessionOnSuccess), required: false);
             return new DeferredBodyAction<WaitForIAConnectSessionToCloseByNameResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/WaitForIAConnectSessionToCloseByName";
@@ -8971,12 +8360,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillIAConnectSessionByNameResponse> KillIAConnectSessionByName(Expression<Func<string>> killIAConnectSessionByNameiAConnectSessionName, Expression<Func<string>> killIAConnectSessionByNameworkflow, Expression<Func<bool>> killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess = null)
         {
-            var __workflow_killIAConnectSessionByNameiAConnectSessionName = killIAConnectSessionByNameiAConnectSessionName == null ? null : WorkflowExpression.Compile(killIAConnectSessionByNameiAConnectSessionName);
-            WorkflowExpression.Validate(__workflow_killIAConnectSessionByNameiAConnectSessionName, nameof(killIAConnectSessionByNameiAConnectSessionName), required: true);
-            var __workflow_killIAConnectSessionByNameworkflow = killIAConnectSessionByNameworkflow == null ? null : WorkflowExpression.Compile(killIAConnectSessionByNameworkflow);
-            WorkflowExpression.Validate(__workflow_killIAConnectSessionByNameworkflow, nameof(killIAConnectSessionByNameworkflow), required: true);
-            var __workflow_killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess = killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess == null ? null : WorkflowExpression.Compile(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess);
-            WorkflowExpression.Validate(__workflow_killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess, nameof(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess), required: false);
+            var __workflow_killIAConnectSessionByNameiAConnectSessionName = WorkflowExpression.Compile(killIAConnectSessionByNameiAConnectSessionName, nameof(killIAConnectSessionByNameiAConnectSessionName), required: true);
+            var __workflow_killIAConnectSessionByNameworkflow = WorkflowExpression.Compile(killIAConnectSessionByNameworkflow, nameof(killIAConnectSessionByNameworkflow), required: true);
+            var __workflow_killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess = WorkflowExpression.Compile(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess, nameof(killIAConnectSessionByNameattachToTier1IAConnectSessionOnSuccess), required: false);
             return new DeferredBodyAction<KillIAConnectSessionByNameResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/KillIAConnectSessionByName";
@@ -9016,32 +8402,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SetAgentGlobalCoordinateConfigurationResponse> SetAgentGlobalCoordinateConfiguration(Expression<Func<string>> setAgentGlobalCoordinateConfigurationworkflow, Expression<Func<setAgentGlobalCoordinateConfigurationmultiMonitorFunctionalityInput>> setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality = null, Expression<Func<setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplierInput>> setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier = null, Expression<Func<setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplierInput>> setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier = null, Expression<Func<double>> setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier = null, Expression<Func<bool>> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent = null, Expression<Func<bool>> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos = null, Expression<Func<bool>> setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod = null, Expression<Func<setAgentGlobalCoordinateConfigurationjavaCoordinateSystemInput>> setAgentGlobalCoordinateConfigurationjavaCoordinateSystem = null, Expression<Func<setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystemInput>> setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem = null)
         {
-            var __workflow_setAgentGlobalCoordinateConfigurationworkflow = setAgentGlobalCoordinateConfigurationworkflow == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationworkflow);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationworkflow, nameof(setAgentGlobalCoordinateConfigurationworkflow), required: true);
-            var __workflow_setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality = setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality, nameof(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier = setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier = setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier = setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier = setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier = setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier = setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent = setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos = setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod = setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationjavaCoordinateSystem = setAgentGlobalCoordinateConfigurationjavaCoordinateSystem == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationjavaCoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem), required: false);
-            var __workflow_setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem = setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem == null ? null : WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem);
-            WorkflowExpression.Validate(__workflow_setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationworkflow = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationworkflow, nameof(setAgentGlobalCoordinateConfigurationworkflow), required: true);
+            var __workflow_setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality, nameof(setAgentGlobalCoordinateConfigurationmultiMonitorFunctionality), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetMouseInspectionMultiplier), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier, nameof(setAgentGlobalCoordinateConfigurationautoSetGlobalMouseMultiplier), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionXMultiplier), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier, nameof(setAgentGlobalCoordinateConfigurationmouseInspectionYMultiplier), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseXMultiplier), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier, nameof(setAgentGlobalCoordinateConfigurationglobalMouseYMultiplier), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToMouseEvent), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToSetCursorPos), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod, nameof(setAgentGlobalCoordinateConfigurationglobalMouseMultiplierApplyToCurrentMouseMoveMethod), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationjavaCoordinateSystem = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationjavaCoordinateSystem), required: false);
+            var __workflow_setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem = WorkflowExpression.Compile(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem, nameof(setAgentGlobalCoordinateConfigurationsAPGUICoordinateSystem), required: false);
             return new DeferredBodyAction<SetAgentGlobalCoordinateConfigurationResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/SetAgentGlobalCoordinateConfiguration";
@@ -9255,8 +8628,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentGlobalCoordinateConfigurationResponse> GetAgentGlobalCoordinateConfiguration(Expression<Func<string>> getAgentGlobalCoordinateConfigurationworkflow)
         {
-            var __workflow_getAgentGlobalCoordinateConfigurationworkflow = getAgentGlobalCoordinateConfigurationworkflow == null ? null : WorkflowExpression.Compile(getAgentGlobalCoordinateConfigurationworkflow);
-            WorkflowExpression.Validate(__workflow_getAgentGlobalCoordinateConfigurationworkflow, nameof(getAgentGlobalCoordinateConfigurationworkflow), required: true);
+            var __workflow_getAgentGlobalCoordinateConfigurationworkflow = WorkflowExpression.Compile(getAgentGlobalCoordinateConfigurationworkflow, nameof(getAgentGlobalCoordinateConfigurationworkflow), required: true);
             return new DeferredBodyAction<GetAgentGlobalCoordinateConfigurationResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAgentGlobalCoordinateConfiguration";
@@ -9278,14 +8650,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentThreadStatusResponse> GetAgentThreadStatus(Expression<Func<int>> getAgentThreadStatusthreadId, Expression<Func<string>> getAgentThreadStatusworkflow, Expression<Func<bool>> getAgentThreadStatusretrieveThreadOutputData = null, Expression<Func<bool>> getAgentThreadStatusclearOutputDataFromMemoryOnceRead = null)
         {
-            var __workflow_getAgentThreadStatusthreadId = getAgentThreadStatusthreadId == null ? null : WorkflowExpression.Compile(getAgentThreadStatusthreadId);
-            WorkflowExpression.Validate(__workflow_getAgentThreadStatusthreadId, nameof(getAgentThreadStatusthreadId), required: true);
-            var __workflow_getAgentThreadStatusworkflow = getAgentThreadStatusworkflow == null ? null : WorkflowExpression.Compile(getAgentThreadStatusworkflow);
-            WorkflowExpression.Validate(__workflow_getAgentThreadStatusworkflow, nameof(getAgentThreadStatusworkflow), required: true);
-            var __workflow_getAgentThreadStatusretrieveThreadOutputData = getAgentThreadStatusretrieveThreadOutputData == null ? null : WorkflowExpression.Compile(getAgentThreadStatusretrieveThreadOutputData);
-            WorkflowExpression.Validate(__workflow_getAgentThreadStatusretrieveThreadOutputData, nameof(getAgentThreadStatusretrieveThreadOutputData), required: false);
-            var __workflow_getAgentThreadStatusclearOutputDataFromMemoryOnceRead = getAgentThreadStatusclearOutputDataFromMemoryOnceRead == null ? null : WorkflowExpression.Compile(getAgentThreadStatusclearOutputDataFromMemoryOnceRead);
-            WorkflowExpression.Validate(__workflow_getAgentThreadStatusclearOutputDataFromMemoryOnceRead, nameof(getAgentThreadStatusclearOutputDataFromMemoryOnceRead), required: false);
+            var __workflow_getAgentThreadStatusthreadId = WorkflowExpression.Compile(getAgentThreadStatusthreadId, nameof(getAgentThreadStatusthreadId), required: true);
+            var __workflow_getAgentThreadStatusworkflow = WorkflowExpression.Compile(getAgentThreadStatusworkflow, nameof(getAgentThreadStatusworkflow), required: true);
+            var __workflow_getAgentThreadStatusretrieveThreadOutputData = WorkflowExpression.Compile(getAgentThreadStatusretrieveThreadOutputData, nameof(getAgentThreadStatusretrieveThreadOutputData), required: false);
+            var __workflow_getAgentThreadStatusclearOutputDataFromMemoryOnceRead = WorkflowExpression.Compile(getAgentThreadStatusclearOutputDataFromMemoryOnceRead, nameof(getAgentThreadStatusclearOutputDataFromMemoryOnceRead), required: false);
             return new DeferredBodyAction<GetAgentThreadStatusResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAgentThreadStatus";
@@ -9341,22 +8709,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WaitForAgentThreadToCompleteSuccessfullyResponse> WaitForAgentThreadToCompleteSuccessfully(Expression<Func<int>> waitForAgentThreadToCompleteSuccessfullythreadId, Expression<Func<int>> waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, Expression<Func<string>> waitForAgentThreadToCompleteSuccessfullyworkflow, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData = null, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead = null, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted = null, Expression<Func<bool>> waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError = null, Expression<Func<int>> waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall = null)
         {
-            var __workflow_waitForAgentThreadToCompleteSuccessfullythreadId = waitForAgentThreadToCompleteSuccessfullythreadId == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullythreadId);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullythreadId, nameof(waitForAgentThreadToCompleteSuccessfullythreadId), required: true);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread = waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread), required: true);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyworkflow = waitForAgentThreadToCompleteSuccessfullyworkflow == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyworkflow);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullyworkflow, nameof(waitForAgentThreadToCompleteSuccessfullyworkflow), required: true);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData = waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData, nameof(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead = waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead, nameof(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted = waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError = waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError), required: false);
-            var __workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall = waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall == null ? null : WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall);
-            WorkflowExpression.Validate(__workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall), required: false);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullythreadId = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullythreadId, nameof(waitForAgentThreadToCompleteSuccessfullythreadId), required: true);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitForThread), required: true);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullyworkflow = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyworkflow, nameof(waitForAgentThreadToCompleteSuccessfullyworkflow), required: true);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData, nameof(waitForAgentThreadToCompleteSuccessfullyretrieveThreadOutputData), required: false);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead, nameof(waitForAgentThreadToCompleteSuccessfullyclearOutputDataFromMemoryOnceRead), required: false);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadNotCompleted), required: false);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError, nameof(waitForAgentThreadToCompleteSuccessfullyraiseExceptionIfThreadError), required: false);
+            var __workflow_waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall = WorkflowExpression.Compile(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall, nameof(waitForAgentThreadToCompleteSuccessfullysecondsToWaitPerCall), required: false);
             return new DeferredBodyAction<WaitForAgentThreadToCompleteSuccessfullyResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/WaitForAgentThreadToCompleteSuccessfully";
@@ -9462,10 +8822,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetAgentThreadsResponse> GetAgentThreads(Expression<Func<string>> getAgentThreadsworkflow, Expression<Func<getAgentThreadssortOrderInput>> getAgentThreadssortOrder = null)
         {
-            var __workflow_getAgentThreadsworkflow = getAgentThreadsworkflow == null ? null : WorkflowExpression.Compile(getAgentThreadsworkflow);
-            WorkflowExpression.Validate(__workflow_getAgentThreadsworkflow, nameof(getAgentThreadsworkflow), required: true);
-            var __workflow_getAgentThreadssortOrder = getAgentThreadssortOrder == null ? null : WorkflowExpression.Compile(getAgentThreadssortOrder);
-            WorkflowExpression.Validate(__workflow_getAgentThreadssortOrder, nameof(getAgentThreadssortOrder), required: false);
+            var __workflow_getAgentThreadsworkflow = WorkflowExpression.Compile(getAgentThreadsworkflow, nameof(getAgentThreadsworkflow), required: true);
+            var __workflow_getAgentThreadssortOrder = WorkflowExpression.Compile(getAgentThreadssortOrder, nameof(getAgentThreadssortOrder), required: false);
             return new DeferredBodyAction<GetAgentThreadsResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetAgentThreads";
@@ -9493,10 +8851,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<KillAgentThreadResponse> KillAgentThread(Expression<Func<int>> killAgentThreadthreadId, Expression<Func<string>> killAgentThreadworkflow)
         {
-            var __workflow_killAgentThreadthreadId = killAgentThreadthreadId == null ? null : WorkflowExpression.Compile(killAgentThreadthreadId);
-            WorkflowExpression.Validate(__workflow_killAgentThreadthreadId, nameof(killAgentThreadthreadId), required: true);
-            var __workflow_killAgentThreadworkflow = killAgentThreadworkflow == null ? null : WorkflowExpression.Compile(killAgentThreadworkflow);
-            WorkflowExpression.Validate(__workflow_killAgentThreadworkflow, nameof(killAgentThreadworkflow), required: true);
+            var __workflow_killAgentThreadthreadId = WorkflowExpression.Compile(killAgentThreadthreadId, nameof(killAgentThreadthreadId), required: true);
+            var __workflow_killAgentThreadworkflow = WorkflowExpression.Compile(killAgentThreadworkflow, nameof(killAgentThreadworkflow), required: true);
             return new DeferredBodyAction<KillAgentThreadResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/KillAgentThread";
@@ -9520,14 +8876,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DeleteAgentThreadResponse> DeleteAgentThread(Expression<Func<string>> deleteAgentThreadworkflow, Expression<Func<int>> deleteAgentThreadthreadId = null, Expression<Func<bool>> deleteAgentThreaddeleteAllAgentThreads = null, Expression<Func<bool>> deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete = null)
         {
-            var __workflow_deleteAgentThreadworkflow = deleteAgentThreadworkflow == null ? null : WorkflowExpression.Compile(deleteAgentThreadworkflow);
-            WorkflowExpression.Validate(__workflow_deleteAgentThreadworkflow, nameof(deleteAgentThreadworkflow), required: true);
-            var __workflow_deleteAgentThreadthreadId = deleteAgentThreadthreadId == null ? null : WorkflowExpression.Compile(deleteAgentThreadthreadId);
-            WorkflowExpression.Validate(__workflow_deleteAgentThreadthreadId, nameof(deleteAgentThreadthreadId), required: false);
-            var __workflow_deleteAgentThreaddeleteAllAgentThreads = deleteAgentThreaddeleteAllAgentThreads == null ? null : WorkflowExpression.Compile(deleteAgentThreaddeleteAllAgentThreads);
-            WorkflowExpression.Validate(__workflow_deleteAgentThreaddeleteAllAgentThreads, nameof(deleteAgentThreaddeleteAllAgentThreads), required: false);
-            var __workflow_deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete = deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete == null ? null : WorkflowExpression.Compile(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete);
-            WorkflowExpression.Validate(__workflow_deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete, nameof(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete), required: false);
+            var __workflow_deleteAgentThreadworkflow = WorkflowExpression.Compile(deleteAgentThreadworkflow, nameof(deleteAgentThreadworkflow), required: true);
+            var __workflow_deleteAgentThreadthreadId = WorkflowExpression.Compile(deleteAgentThreadthreadId, nameof(deleteAgentThreadthreadId), required: false);
+            var __workflow_deleteAgentThreaddeleteAllAgentThreads = WorkflowExpression.Compile(deleteAgentThreaddeleteAllAgentThreads, nameof(deleteAgentThreaddeleteAllAgentThreads), required: false);
+            var __workflow_deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete = WorkflowExpression.Compile(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete, nameof(deleteAgentThreadraiseExceptionIfAgentThreadFailsToDelete), required: false);
             return new DeferredBodyAction<DeleteAgentThreadResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/DeleteAgentThread";
@@ -9587,14 +8939,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AllocateWorkerFromOrchestratorResponse> AllocateWorkerFromOrchestrator(Expression<Func<string>> allocateWorkerFromOrchestratorworkflow, Expression<Func<string>> allocateWorkerFromOrchestratorworkerTag = null, Expression<Func<string>> allocateWorkerFromOrchestratorworkerName = null, Expression<Func<bool>> allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable = null)
         {
-            var __workflow_allocateWorkerFromOrchestratorworkflow = allocateWorkerFromOrchestratorworkflow == null ? null : WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkflow);
-            WorkflowExpression.Validate(__workflow_allocateWorkerFromOrchestratorworkflow, nameof(allocateWorkerFromOrchestratorworkflow), required: true);
-            var __workflow_allocateWorkerFromOrchestratorworkerTag = allocateWorkerFromOrchestratorworkerTag == null ? null : WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkerTag);
-            WorkflowExpression.Validate(__workflow_allocateWorkerFromOrchestratorworkerTag, nameof(allocateWorkerFromOrchestratorworkerTag), required: false);
-            var __workflow_allocateWorkerFromOrchestratorworkerName = allocateWorkerFromOrchestratorworkerName == null ? null : WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkerName);
-            WorkflowExpression.Validate(__workflow_allocateWorkerFromOrchestratorworkerName, nameof(allocateWorkerFromOrchestratorworkerName), required: false);
-            var __workflow_allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable = allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable == null ? null : WorkflowExpression.Compile(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable);
-            WorkflowExpression.Validate(__workflow_allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable, nameof(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable), required: false);
+            var __workflow_allocateWorkerFromOrchestratorworkflow = WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkflow, nameof(allocateWorkerFromOrchestratorworkflow), required: true);
+            var __workflow_allocateWorkerFromOrchestratorworkerTag = WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkerTag, nameof(allocateWorkerFromOrchestratorworkerTag), required: false);
+            var __workflow_allocateWorkerFromOrchestratorworkerName = WorkflowExpression.Compile(allocateWorkerFromOrchestratorworkerName, nameof(allocateWorkerFromOrchestratorworkerName), required: false);
+            var __workflow_allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable = WorkflowExpression.Compile(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable, nameof(allocateWorkerFromOrchestratorraiseExceptionIfWorkerNotImmediatelyAvailable), required: false);
             return new DeferredBodyAction<AllocateWorkerFromOrchestratorResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/AllocateWorkerFromOrchestrator";
@@ -9644,12 +8992,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<SetOrchestratorWorkerMaintenanceModeResponse> SetOrchestratorWorkerMaintenanceMode(Expression<Func<int>> setOrchestratorWorkerMaintenanceModeworkerId = null, Expression<Func<string>> setOrchestratorWorkerMaintenanceModeworkerName = null, Expression<Func<bool>> setOrchestratorWorkerMaintenanceModemaintenanceMode = null)
         {
-            var __workflow_setOrchestratorWorkerMaintenanceModeworkerId = setOrchestratorWorkerMaintenanceModeworkerId == null ? null : WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModeworkerId);
-            WorkflowExpression.Validate(__workflow_setOrchestratorWorkerMaintenanceModeworkerId, nameof(setOrchestratorWorkerMaintenanceModeworkerId), required: false);
-            var __workflow_setOrchestratorWorkerMaintenanceModeworkerName = setOrchestratorWorkerMaintenanceModeworkerName == null ? null : WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModeworkerName);
-            WorkflowExpression.Validate(__workflow_setOrchestratorWorkerMaintenanceModeworkerName, nameof(setOrchestratorWorkerMaintenanceModeworkerName), required: false);
-            var __workflow_setOrchestratorWorkerMaintenanceModemaintenanceMode = setOrchestratorWorkerMaintenanceModemaintenanceMode == null ? null : WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModemaintenanceMode);
-            WorkflowExpression.Validate(__workflow_setOrchestratorWorkerMaintenanceModemaintenanceMode, nameof(setOrchestratorWorkerMaintenanceModemaintenanceMode), required: false);
+            var __workflow_setOrchestratorWorkerMaintenanceModeworkerId = WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModeworkerId, nameof(setOrchestratorWorkerMaintenanceModeworkerId), required: false);
+            var __workflow_setOrchestratorWorkerMaintenanceModeworkerName = WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModeworkerName, nameof(setOrchestratorWorkerMaintenanceModeworkerName), required: false);
+            var __workflow_setOrchestratorWorkerMaintenanceModemaintenanceMode = WorkflowExpression.Compile(setOrchestratorWorkerMaintenanceModemaintenanceMode, nameof(setOrchestratorWorkerMaintenanceModemaintenanceMode), required: false);
             return new DeferredBodyAction<SetOrchestratorWorkerMaintenanceModeResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/SetOrchestratorWorkerMaintenanceMode";
@@ -9707,28 +9052,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<CreateOrchestratorOneTimeSecretResponse> CreateOrchestratorOneTimeSecret(Expression<Func<string>> createOrchestratorOneTimeSecretfriendlyName, Expression<Func<string>> createOrchestratorOneTimeSecretsecretValue = null, Expression<Func<string>> createOrchestratorOneTimeSecretretrievalPhrase1 = null, Expression<Func<string>> createOrchestratorOneTimeSecretretrievalPhrase2 = null, Expression<Func<int>> createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion = null, Expression<Func<bool>> createOrchestratorOneTimeSecretsecretHasAStartDate = null, Expression<Func<string>> createOrchestratorOneTimeSecretsecretStartDateTime = null, Expression<Func<int>> createOrchestratorOneTimeSecrethoursUntilSecretStartTime = null, Expression<Func<bool>> createOrchestratorOneTimeSecretsecretHasAnExpiryDate = null, Expression<Func<string>> createOrchestratorOneTimeSecretsecretExpiryDateTime = null, Expression<Func<int>> createOrchestratorOneTimeSecrethoursUntilSecretExpiry = null)
         {
-            var __workflow_createOrchestratorOneTimeSecretfriendlyName = createOrchestratorOneTimeSecretfriendlyName == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretfriendlyName);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretfriendlyName, nameof(createOrchestratorOneTimeSecretfriendlyName), required: true);
-            var __workflow_createOrchestratorOneTimeSecretsecretValue = createOrchestratorOneTimeSecretsecretValue == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretValue);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretsecretValue, nameof(createOrchestratorOneTimeSecretsecretValue), required: false);
-            var __workflow_createOrchestratorOneTimeSecretretrievalPhrase1 = createOrchestratorOneTimeSecretretrievalPhrase1 == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretretrievalPhrase1);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretretrievalPhrase1, nameof(createOrchestratorOneTimeSecretretrievalPhrase1), required: false);
-            var __workflow_createOrchestratorOneTimeSecretretrievalPhrase2 = createOrchestratorOneTimeSecretretrievalPhrase2 == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretretrievalPhrase2);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretretrievalPhrase2, nameof(createOrchestratorOneTimeSecretretrievalPhrase2), required: false);
-            var __workflow_createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion = createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion, nameof(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretHasAStartDate = createOrchestratorOneTimeSecretsecretHasAStartDate == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretHasAStartDate);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretsecretHasAStartDate, nameof(createOrchestratorOneTimeSecretsecretHasAStartDate), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretStartDateTime = createOrchestratorOneTimeSecretsecretStartDateTime == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretStartDateTime);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretsecretStartDateTime, nameof(createOrchestratorOneTimeSecretsecretStartDateTime), required: false);
-            var __workflow_createOrchestratorOneTimeSecrethoursUntilSecretStartTime = createOrchestratorOneTimeSecrethoursUntilSecretStartTime == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecrethoursUntilSecretStartTime);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecrethoursUntilSecretStartTime, nameof(createOrchestratorOneTimeSecrethoursUntilSecretStartTime), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretHasAnExpiryDate = createOrchestratorOneTimeSecretsecretHasAnExpiryDate == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretHasAnExpiryDate);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretsecretHasAnExpiryDate, nameof(createOrchestratorOneTimeSecretsecretHasAnExpiryDate), required: false);
-            var __workflow_createOrchestratorOneTimeSecretsecretExpiryDateTime = createOrchestratorOneTimeSecretsecretExpiryDateTime == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretExpiryDateTime);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecretsecretExpiryDateTime, nameof(createOrchestratorOneTimeSecretsecretExpiryDateTime), required: false);
-            var __workflow_createOrchestratorOneTimeSecrethoursUntilSecretExpiry = createOrchestratorOneTimeSecrethoursUntilSecretExpiry == null ? null : WorkflowExpression.Compile(createOrchestratorOneTimeSecrethoursUntilSecretExpiry);
-            WorkflowExpression.Validate(__workflow_createOrchestratorOneTimeSecrethoursUntilSecretExpiry, nameof(createOrchestratorOneTimeSecrethoursUntilSecretExpiry), required: false);
+            var __workflow_createOrchestratorOneTimeSecretfriendlyName = WorkflowExpression.Compile(createOrchestratorOneTimeSecretfriendlyName, nameof(createOrchestratorOneTimeSecretfriendlyName), required: true);
+            var __workflow_createOrchestratorOneTimeSecretsecretValue = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretValue, nameof(createOrchestratorOneTimeSecretsecretValue), required: false);
+            var __workflow_createOrchestratorOneTimeSecretretrievalPhrase1 = WorkflowExpression.Compile(createOrchestratorOneTimeSecretretrievalPhrase1, nameof(createOrchestratorOneTimeSecretretrievalPhrase1), required: false);
+            var __workflow_createOrchestratorOneTimeSecretretrievalPhrase2 = WorkflowExpression.Compile(createOrchestratorOneTimeSecretretrievalPhrase2, nameof(createOrchestratorOneTimeSecretretrievalPhrase2), required: false);
+            var __workflow_createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion = WorkflowExpression.Compile(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion, nameof(createOrchestratorOneTimeSecretmaximumRetrievalsBeforeDeletion), required: false);
+            var __workflow_createOrchestratorOneTimeSecretsecretHasAStartDate = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretHasAStartDate, nameof(createOrchestratorOneTimeSecretsecretHasAStartDate), required: false);
+            var __workflow_createOrchestratorOneTimeSecretsecretStartDateTime = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretStartDateTime, nameof(createOrchestratorOneTimeSecretsecretStartDateTime), required: false);
+            var __workflow_createOrchestratorOneTimeSecrethoursUntilSecretStartTime = WorkflowExpression.Compile(createOrchestratorOneTimeSecrethoursUntilSecretStartTime, nameof(createOrchestratorOneTimeSecrethoursUntilSecretStartTime), required: false);
+            var __workflow_createOrchestratorOneTimeSecretsecretHasAnExpiryDate = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretHasAnExpiryDate, nameof(createOrchestratorOneTimeSecretsecretHasAnExpiryDate), required: false);
+            var __workflow_createOrchestratorOneTimeSecretsecretExpiryDateTime = WorkflowExpression.Compile(createOrchestratorOneTimeSecretsecretExpiryDateTime, nameof(createOrchestratorOneTimeSecretsecretExpiryDateTime), required: false);
+            var __workflow_createOrchestratorOneTimeSecrethoursUntilSecretExpiry = WorkflowExpression.Compile(createOrchestratorOneTimeSecrethoursUntilSecretExpiry, nameof(createOrchestratorOneTimeSecrethoursUntilSecretExpiry), required: false);
             return new DeferredBodyAction<CreateOrchestratorOneTimeSecretResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/CreateOrchestratorOneTimeSecret";
@@ -9840,8 +9174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetListOfOrchestratorWorkersResponse> GetListOfOrchestratorWorkers(Expression<Func<bool>> getListOfOrchestratorWorkersonlyReturnLiveWorkers = null)
         {
-            var __workflow_getListOfOrchestratorWorkersonlyReturnLiveWorkers = getListOfOrchestratorWorkersonlyReturnLiveWorkers == null ? null : WorkflowExpression.Compile(getListOfOrchestratorWorkersonlyReturnLiveWorkers);
-            WorkflowExpression.Validate(__workflow_getListOfOrchestratorWorkersonlyReturnLiveWorkers, nameof(getListOfOrchestratorWorkersonlyReturnLiveWorkers), required: false);
+            var __workflow_getListOfOrchestratorWorkersonlyReturnLiveWorkers = WorkflowExpression.Compile(getListOfOrchestratorWorkersonlyReturnLiveWorkers, nameof(getListOfOrchestratorWorkersonlyReturnLiveWorkers), required: false);
             return new DeferredBodyAction<GetListOfOrchestratorWorkersResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetListOfOrchestratorWorkers";
@@ -9877,10 +9210,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetOrchestratorWorkerResponse> GetOrchestratorWorker(Expression<Func<int>> getOrchestratorWorkersearchWorkerId = null, Expression<Func<string>> getOrchestratorWorkersearchWorkerName = null)
         {
-            var __workflow_getOrchestratorWorkersearchWorkerId = getOrchestratorWorkersearchWorkerId == null ? null : WorkflowExpression.Compile(getOrchestratorWorkersearchWorkerId);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkersearchWorkerId, nameof(getOrchestratorWorkersearchWorkerId), required: false);
-            var __workflow_getOrchestratorWorkersearchWorkerName = getOrchestratorWorkersearchWorkerName == null ? null : WorkflowExpression.Compile(getOrchestratorWorkersearchWorkerName);
-            WorkflowExpression.Validate(__workflow_getOrchestratorWorkersearchWorkerName, nameof(getOrchestratorWorkersearchWorkerName), required: false);
+            var __workflow_getOrchestratorWorkersearchWorkerId = WorkflowExpression.Compile(getOrchestratorWorkersearchWorkerId, nameof(getOrchestratorWorkersearchWorkerId), required: false);
+            var __workflow_getOrchestratorWorkersearchWorkerName = WorkflowExpression.Compile(getOrchestratorWorkersearchWorkerName, nameof(getOrchestratorWorkersearchWorkerName), required: false);
             return new DeferredBodyAction<GetOrchestratorWorkerResponse>(() =>
             {
                 var apiCallPath = "/DriverControl/GetOrchestratorWorker";
@@ -9930,10 +9261,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<FileExistsResponse> FileExists(Expression<Func<string>> fileExistsfilename, Expression<Func<string>> fileExistsworkflow)
         {
-            var __workflow_fileExistsfilename = fileExistsfilename == null ? null : WorkflowExpression.Compile(fileExistsfilename);
-            WorkflowExpression.Validate(__workflow_fileExistsfilename, nameof(fileExistsfilename), required: true);
-            var __workflow_fileExistsworkflow = fileExistsworkflow == null ? null : WorkflowExpression.Compile(fileExistsworkflow);
-            WorkflowExpression.Validate(__workflow_fileExistsworkflow, nameof(fileExistsworkflow), required: true);
+            var __workflow_fileExistsfilename = WorkflowExpression.Compile(fileExistsfilename, nameof(fileExistsfilename), required: true);
+            var __workflow_fileExistsworkflow = WorkflowExpression.Compile(fileExistsworkflow, nameof(fileExistsworkflow), required: true);
             return new DeferredBodyAction<FileExistsResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/FileExists";
@@ -9957,10 +9286,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DirectoryExistsResponse> DirectoryExists(Expression<Func<string>> directoryExistsdirectoryPath, Expression<Func<string>> directoryExistsworkflow)
         {
-            var __workflow_directoryExistsdirectoryPath = directoryExistsdirectoryPath == null ? null : WorkflowExpression.Compile(directoryExistsdirectoryPath);
-            WorkflowExpression.Validate(__workflow_directoryExistsdirectoryPath, nameof(directoryExistsdirectoryPath), required: true);
-            var __workflow_directoryExistsworkflow = directoryExistsworkflow == null ? null : WorkflowExpression.Compile(directoryExistsworkflow);
-            WorkflowExpression.Validate(__workflow_directoryExistsworkflow, nameof(directoryExistsworkflow), required: true);
+            var __workflow_directoryExistsdirectoryPath = WorkflowExpression.Compile(directoryExistsdirectoryPath, nameof(directoryExistsdirectoryPath), required: true);
+            var __workflow_directoryExistsworkflow = WorkflowExpression.Compile(directoryExistsworkflow, nameof(directoryExistsworkflow), required: true);
             return new DeferredBodyAction<DirectoryExistsResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/DirectoryExists";
@@ -9984,10 +9311,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DeleteFile(Expression<Func<string>> deleteFilefilename, Expression<Func<string>> deleteFileworkflow)
         {
-            var __workflow_deleteFilefilename = deleteFilefilename == null ? null : WorkflowExpression.Compile(deleteFilefilename);
-            WorkflowExpression.Validate(__workflow_deleteFilefilename, nameof(deleteFilefilename), required: true);
-            var __workflow_deleteFileworkflow = deleteFileworkflow == null ? null : WorkflowExpression.Compile(deleteFileworkflow);
-            WorkflowExpression.Validate(__workflow_deleteFileworkflow, nameof(deleteFileworkflow), required: true);
+            var __workflow_deleteFilefilename = WorkflowExpression.Compile(deleteFilefilename, nameof(deleteFilefilename), required: true);
+            var __workflow_deleteFileworkflow = WorkflowExpression.Compile(deleteFileworkflow, nameof(deleteFileworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/DeleteFile";
@@ -10011,12 +9336,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction DeleteDirectory(Expression<Func<string>> deleteDirectorydirectoryPath, Expression<Func<string>> deleteDirectoryworkflow, Expression<Func<bool>> deleteDirectoryrecursive = null)
         {
-            var __workflow_deleteDirectorydirectoryPath = deleteDirectorydirectoryPath == null ? null : WorkflowExpression.Compile(deleteDirectorydirectoryPath);
-            WorkflowExpression.Validate(__workflow_deleteDirectorydirectoryPath, nameof(deleteDirectorydirectoryPath), required: true);
-            var __workflow_deleteDirectoryworkflow = deleteDirectoryworkflow == null ? null : WorkflowExpression.Compile(deleteDirectoryworkflow);
-            WorkflowExpression.Validate(__workflow_deleteDirectoryworkflow, nameof(deleteDirectoryworkflow), required: true);
-            var __workflow_deleteDirectoryrecursive = deleteDirectoryrecursive == null ? null : WorkflowExpression.Compile(deleteDirectoryrecursive);
-            WorkflowExpression.Validate(__workflow_deleteDirectoryrecursive, nameof(deleteDirectoryrecursive), required: false);
+            var __workflow_deleteDirectorydirectoryPath = WorkflowExpression.Compile(deleteDirectorydirectoryPath, nameof(deleteDirectorydirectoryPath), required: true);
+            var __workflow_deleteDirectoryworkflow = WorkflowExpression.Compile(deleteDirectoryworkflow, nameof(deleteDirectoryworkflow), required: true);
+            var __workflow_deleteDirectoryrecursive = WorkflowExpression.Compile(deleteDirectoryrecursive, nameof(deleteDirectoryrecursive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/DeleteDirectory";
@@ -10056,14 +9378,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction PurgeDirectory(Expression<Func<string>> purgeDirectorydirectoryPath, Expression<Func<string>> purgeDirectoryworkflow, Expression<Func<bool>> purgeDirectoryrecursive = null, Expression<Func<bool>> purgeDirectorydeleteTopLevel = null)
         {
-            var __workflow_purgeDirectorydirectoryPath = purgeDirectorydirectoryPath == null ? null : WorkflowExpression.Compile(purgeDirectorydirectoryPath);
-            WorkflowExpression.Validate(__workflow_purgeDirectorydirectoryPath, nameof(purgeDirectorydirectoryPath), required: true);
-            var __workflow_purgeDirectoryworkflow = purgeDirectoryworkflow == null ? null : WorkflowExpression.Compile(purgeDirectoryworkflow);
-            WorkflowExpression.Validate(__workflow_purgeDirectoryworkflow, nameof(purgeDirectoryworkflow), required: true);
-            var __workflow_purgeDirectoryrecursive = purgeDirectoryrecursive == null ? null : WorkflowExpression.Compile(purgeDirectoryrecursive);
-            WorkflowExpression.Validate(__workflow_purgeDirectoryrecursive, nameof(purgeDirectoryrecursive), required: false);
-            var __workflow_purgeDirectorydeleteTopLevel = purgeDirectorydeleteTopLevel == null ? null : WorkflowExpression.Compile(purgeDirectorydeleteTopLevel);
-            WorkflowExpression.Validate(__workflow_purgeDirectorydeleteTopLevel, nameof(purgeDirectorydeleteTopLevel), required: false);
+            var __workflow_purgeDirectorydirectoryPath = WorkflowExpression.Compile(purgeDirectorydirectoryPath, nameof(purgeDirectorydirectoryPath), required: true);
+            var __workflow_purgeDirectoryworkflow = WorkflowExpression.Compile(purgeDirectoryworkflow, nameof(purgeDirectoryworkflow), required: true);
+            var __workflow_purgeDirectoryrecursive = WorkflowExpression.Compile(purgeDirectoryrecursive, nameof(purgeDirectoryrecursive), required: false);
+            var __workflow_purgeDirectorydeleteTopLevel = WorkflowExpression.Compile(purgeDirectorydeleteTopLevel, nameof(purgeDirectorydeleteTopLevel), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/PurgeDirectory";
@@ -10119,12 +9437,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CopyFile(Expression<Func<string>> copyFilesourceFilePath, Expression<Func<string>> copyFiledestFilePath, Expression<Func<string>> copyFileworkflow)
         {
-            var __workflow_copyFilesourceFilePath = copyFilesourceFilePath == null ? null : WorkflowExpression.Compile(copyFilesourceFilePath);
-            WorkflowExpression.Validate(__workflow_copyFilesourceFilePath, nameof(copyFilesourceFilePath), required: true);
-            var __workflow_copyFiledestFilePath = copyFiledestFilePath == null ? null : WorkflowExpression.Compile(copyFiledestFilePath);
-            WorkflowExpression.Validate(__workflow_copyFiledestFilePath, nameof(copyFiledestFilePath), required: true);
-            var __workflow_copyFileworkflow = copyFileworkflow == null ? null : WorkflowExpression.Compile(copyFileworkflow);
-            WorkflowExpression.Validate(__workflow_copyFileworkflow, nameof(copyFileworkflow), required: true);
+            var __workflow_copyFilesourceFilePath = WorkflowExpression.Compile(copyFilesourceFilePath, nameof(copyFilesourceFilePath), required: true);
+            var __workflow_copyFiledestFilePath = WorkflowExpression.Compile(copyFiledestFilePath, nameof(copyFiledestFilePath), required: true);
+            var __workflow_copyFileworkflow = WorkflowExpression.Compile(copyFileworkflow, nameof(copyFileworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/CopyFile";
@@ -10150,12 +9465,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction MoveFile(Expression<Func<string>> moveFilesourceFilePath, Expression<Func<string>> moveFiledestFilePath, Expression<Func<string>> moveFileworkflow)
         {
-            var __workflow_moveFilesourceFilePath = moveFilesourceFilePath == null ? null : WorkflowExpression.Compile(moveFilesourceFilePath);
-            WorkflowExpression.Validate(__workflow_moveFilesourceFilePath, nameof(moveFilesourceFilePath), required: true);
-            var __workflow_moveFiledestFilePath = moveFiledestFilePath == null ? null : WorkflowExpression.Compile(moveFiledestFilePath);
-            WorkflowExpression.Validate(__workflow_moveFiledestFilePath, nameof(moveFiledestFilePath), required: true);
-            var __workflow_moveFileworkflow = moveFileworkflow == null ? null : WorkflowExpression.Compile(moveFileworkflow);
-            WorkflowExpression.Validate(__workflow_moveFileworkflow, nameof(moveFileworkflow), required: true);
+            var __workflow_moveFilesourceFilePath = WorkflowExpression.Compile(moveFilesourceFilePath, nameof(moveFilesourceFilePath), required: true);
+            var __workflow_moveFiledestFilePath = WorkflowExpression.Compile(moveFiledestFilePath, nameof(moveFiledestFilePath), required: true);
+            var __workflow_moveFileworkflow = WorkflowExpression.Compile(moveFileworkflow, nameof(moveFileworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/MoveFile";
@@ -10181,12 +9493,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CreateDirectory(Expression<Func<string>> createDirectorydirectoryPath, Expression<Func<string>> createDirectoryworkflow, Expression<Func<bool>> createDirectoryerrorIfAlreadyExists = null)
         {
-            var __workflow_createDirectorydirectoryPath = createDirectorydirectoryPath == null ? null : WorkflowExpression.Compile(createDirectorydirectoryPath);
-            WorkflowExpression.Validate(__workflow_createDirectorydirectoryPath, nameof(createDirectorydirectoryPath), required: true);
-            var __workflow_createDirectoryworkflow = createDirectoryworkflow == null ? null : WorkflowExpression.Compile(createDirectoryworkflow);
-            WorkflowExpression.Validate(__workflow_createDirectoryworkflow, nameof(createDirectoryworkflow), required: true);
-            var __workflow_createDirectoryerrorIfAlreadyExists = createDirectoryerrorIfAlreadyExists == null ? null : WorkflowExpression.Compile(createDirectoryerrorIfAlreadyExists);
-            WorkflowExpression.Validate(__workflow_createDirectoryerrorIfAlreadyExists, nameof(createDirectoryerrorIfAlreadyExists), required: false);
+            var __workflow_createDirectorydirectoryPath = WorkflowExpression.Compile(createDirectorydirectoryPath, nameof(createDirectorydirectoryPath), required: true);
+            var __workflow_createDirectoryworkflow = WorkflowExpression.Compile(createDirectoryworkflow, nameof(createDirectoryworkflow), required: true);
+            var __workflow_createDirectoryerrorIfAlreadyExists = WorkflowExpression.Compile(createDirectoryerrorIfAlreadyExists, nameof(createDirectoryerrorIfAlreadyExists), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/CreateDirectory";
@@ -10226,10 +9535,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFileSizeResponse> GetFileSize(Expression<Func<string>> getFileSizefilename, Expression<Func<string>> getFileSizeworkflow)
         {
-            var __workflow_getFileSizefilename = getFileSizefilename == null ? null : WorkflowExpression.Compile(getFileSizefilename);
-            WorkflowExpression.Validate(__workflow_getFileSizefilename, nameof(getFileSizefilename), required: true);
-            var __workflow_getFileSizeworkflow = getFileSizeworkflow == null ? null : WorkflowExpression.Compile(getFileSizeworkflow);
-            WorkflowExpression.Validate(__workflow_getFileSizeworkflow, nameof(getFileSizeworkflow), required: true);
+            var __workflow_getFileSizefilename = WorkflowExpression.Compile(getFileSizefilename, nameof(getFileSizefilename), required: true);
+            var __workflow_getFileSizeworkflow = WorkflowExpression.Compile(getFileSizeworkflow, nameof(getFileSizeworkflow), required: true);
             return new DeferredBodyAction<GetFileSizeResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFileSize";
@@ -10253,18 +9560,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction WriteTextFile(Expression<Func<string>> writeTextFilefilename, Expression<Func<string>> writeTextFileworkflow, Expression<Func<string>> writeTextFiletextToWrite = null, Expression<Func<bool>> writeTextFileappendExistingFile = null, Expression<Func<writeTextFileencodingInput>> writeTextFileencoding = null, Expression<Func<bool>> writeTextFilecreateFolderIfRequired = null)
         {
-            var __workflow_writeTextFilefilename = writeTextFilefilename == null ? null : WorkflowExpression.Compile(writeTextFilefilename);
-            WorkflowExpression.Validate(__workflow_writeTextFilefilename, nameof(writeTextFilefilename), required: true);
-            var __workflow_writeTextFileworkflow = writeTextFileworkflow == null ? null : WorkflowExpression.Compile(writeTextFileworkflow);
-            WorkflowExpression.Validate(__workflow_writeTextFileworkflow, nameof(writeTextFileworkflow), required: true);
-            var __workflow_writeTextFiletextToWrite = writeTextFiletextToWrite == null ? null : WorkflowExpression.Compile(writeTextFiletextToWrite);
-            WorkflowExpression.Validate(__workflow_writeTextFiletextToWrite, nameof(writeTextFiletextToWrite), required: false);
-            var __workflow_writeTextFileappendExistingFile = writeTextFileappendExistingFile == null ? null : WorkflowExpression.Compile(writeTextFileappendExistingFile);
-            WorkflowExpression.Validate(__workflow_writeTextFileappendExistingFile, nameof(writeTextFileappendExistingFile), required: false);
-            var __workflow_writeTextFileencoding = writeTextFileencoding == null ? null : WorkflowExpression.Compile(writeTextFileencoding);
-            WorkflowExpression.Validate(__workflow_writeTextFileencoding, nameof(writeTextFileencoding), required: false);
-            var __workflow_writeTextFilecreateFolderIfRequired = writeTextFilecreateFolderIfRequired == null ? null : WorkflowExpression.Compile(writeTextFilecreateFolderIfRequired);
-            WorkflowExpression.Validate(__workflow_writeTextFilecreateFolderIfRequired, nameof(writeTextFilecreateFolderIfRequired), required: false);
+            var __workflow_writeTextFilefilename = WorkflowExpression.Compile(writeTextFilefilename, nameof(writeTextFilefilename), required: true);
+            var __workflow_writeTextFileworkflow = WorkflowExpression.Compile(writeTextFileworkflow, nameof(writeTextFileworkflow), required: true);
+            var __workflow_writeTextFiletextToWrite = WorkflowExpression.Compile(writeTextFiletextToWrite, nameof(writeTextFiletextToWrite), required: false);
+            var __workflow_writeTextFileappendExistingFile = WorkflowExpression.Compile(writeTextFileappendExistingFile, nameof(writeTextFileappendExistingFile), required: false);
+            var __workflow_writeTextFileencoding = WorkflowExpression.Compile(writeTextFileencoding, nameof(writeTextFileencoding), required: false);
+            var __workflow_writeTextFilecreateFolderIfRequired = WorkflowExpression.Compile(writeTextFilecreateFolderIfRequired, nameof(writeTextFilecreateFolderIfRequired), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/WriteTextFile";
@@ -10332,10 +9633,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<ReadAllTextFromFileResponse> ReadAllTextFromFile(Expression<Func<string>> readAllTextFromFilefilename, Expression<Func<string>> readAllTextFromFileworkflow)
         {
-            var __workflow_readAllTextFromFilefilename = readAllTextFromFilefilename == null ? null : WorkflowExpression.Compile(readAllTextFromFilefilename);
-            WorkflowExpression.Validate(__workflow_readAllTextFromFilefilename, nameof(readAllTextFromFilefilename), required: true);
-            var __workflow_readAllTextFromFileworkflow = readAllTextFromFileworkflow == null ? null : WorkflowExpression.Compile(readAllTextFromFileworkflow);
-            WorkflowExpression.Validate(__workflow_readAllTextFromFileworkflow, nameof(readAllTextFromFileworkflow), required: true);
+            var __workflow_readAllTextFromFilefilename = WorkflowExpression.Compile(readAllTextFromFilefilename, nameof(readAllTextFromFilefilename), required: true);
+            var __workflow_readAllTextFromFileworkflow = WorkflowExpression.Compile(readAllTextFromFileworkflow, nameof(readAllTextFromFileworkflow), required: true);
             return new DeferredBodyAction<ReadAllTextFromFileResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/ReadAllTextFromFile";
@@ -10359,12 +9658,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFilesResponse> GetFiles(Expression<Func<string>> getFilesdirectoryPath, Expression<Func<string>> getFilespatternsCSV, Expression<Func<string>> getFilesworkflow)
         {
-            var __workflow_getFilesdirectoryPath = getFilesdirectoryPath == null ? null : WorkflowExpression.Compile(getFilesdirectoryPath);
-            WorkflowExpression.Validate(__workflow_getFilesdirectoryPath, nameof(getFilesdirectoryPath), required: true);
-            var __workflow_getFilespatternsCSV = getFilespatternsCSV == null ? null : WorkflowExpression.Compile(getFilespatternsCSV);
-            WorkflowExpression.Validate(__workflow_getFilespatternsCSV, nameof(getFilespatternsCSV), required: true);
-            var __workflow_getFilesworkflow = getFilesworkflow == null ? null : WorkflowExpression.Compile(getFilesworkflow);
-            WorkflowExpression.Validate(__workflow_getFilesworkflow, nameof(getFilesworkflow), required: true);
+            var __workflow_getFilesdirectoryPath = WorkflowExpression.Compile(getFilesdirectoryPath, nameof(getFilesdirectoryPath), required: true);
+            var __workflow_getFilespatternsCSV = WorkflowExpression.Compile(getFilespatternsCSV, nameof(getFilespatternsCSV), required: true);
+            var __workflow_getFilesworkflow = WorkflowExpression.Compile(getFilesworkflow, nameof(getFilesworkflow), required: true);
             return new DeferredBodyAction<GetFilesResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFiles";
@@ -10390,10 +9686,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFoldersResponse> GetFolders(Expression<Func<string>> getFoldersdirectoryPath, Expression<Func<string>> getFoldersworkflow)
         {
-            var __workflow_getFoldersdirectoryPath = getFoldersdirectoryPath == null ? null : WorkflowExpression.Compile(getFoldersdirectoryPath);
-            WorkflowExpression.Validate(__workflow_getFoldersdirectoryPath, nameof(getFoldersdirectoryPath), required: true);
-            var __workflow_getFoldersworkflow = getFoldersworkflow == null ? null : WorkflowExpression.Compile(getFoldersworkflow);
-            WorkflowExpression.Validate(__workflow_getFoldersworkflow, nameof(getFoldersworkflow), required: true);
+            var __workflow_getFoldersdirectoryPath = WorkflowExpression.Compile(getFoldersdirectoryPath, nameof(getFoldersdirectoryPath), required: true);
+            var __workflow_getFoldersworkflow = WorkflowExpression.Compile(getFoldersworkflow, nameof(getFoldersworkflow), required: true);
             return new DeferredBodyAction<GetFoldersResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFolders";
@@ -10417,12 +9711,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DeleteFilesResponse> DeleteFiles(Expression<Func<string>> deleteFilesdirectoryPath, Expression<Func<string>> deleteFilesworkflow, Expression<Func<string>> deleteFilespattern = null)
         {
-            var __workflow_deleteFilesdirectoryPath = deleteFilesdirectoryPath == null ? null : WorkflowExpression.Compile(deleteFilesdirectoryPath);
-            WorkflowExpression.Validate(__workflow_deleteFilesdirectoryPath, nameof(deleteFilesdirectoryPath), required: true);
-            var __workflow_deleteFilesworkflow = deleteFilesworkflow == null ? null : WorkflowExpression.Compile(deleteFilesworkflow);
-            WorkflowExpression.Validate(__workflow_deleteFilesworkflow, nameof(deleteFilesworkflow), required: true);
-            var __workflow_deleteFilespattern = deleteFilespattern == null ? null : WorkflowExpression.Compile(deleteFilespattern);
-            WorkflowExpression.Validate(__workflow_deleteFilespattern, nameof(deleteFilespattern), required: false);
+            var __workflow_deleteFilesdirectoryPath = WorkflowExpression.Compile(deleteFilesdirectoryPath, nameof(deleteFilesdirectoryPath), required: true);
+            var __workflow_deleteFilesworkflow = WorkflowExpression.Compile(deleteFilesworkflow, nameof(deleteFilesworkflow), required: true);
+            var __workflow_deleteFilespattern = WorkflowExpression.Compile(deleteFilespattern, nameof(deleteFilespattern), required: false);
             return new DeferredBodyAction<DeleteFilesResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/DeleteFiles";
@@ -10452,10 +9743,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetDiskFreeSpaceResponse> GetDiskFreeSpace(Expression<Func<string>> getDiskFreeSpacedriveLetter, Expression<Func<string>> getDiskFreeSpaceworkflow)
         {
-            var __workflow_getDiskFreeSpacedriveLetter = getDiskFreeSpacedriveLetter == null ? null : WorkflowExpression.Compile(getDiskFreeSpacedriveLetter);
-            WorkflowExpression.Validate(__workflow_getDiskFreeSpacedriveLetter, nameof(getDiskFreeSpacedriveLetter), required: true);
-            var __workflow_getDiskFreeSpaceworkflow = getDiskFreeSpaceworkflow == null ? null : WorkflowExpression.Compile(getDiskFreeSpaceworkflow);
-            WorkflowExpression.Validate(__workflow_getDiskFreeSpaceworkflow, nameof(getDiskFreeSpaceworkflow), required: true);
+            var __workflow_getDiskFreeSpacedriveLetter = WorkflowExpression.Compile(getDiskFreeSpacedriveLetter, nameof(getDiskFreeSpacedriveLetter), required: true);
+            var __workflow_getDiskFreeSpaceworkflow = WorkflowExpression.Compile(getDiskFreeSpaceworkflow, nameof(getDiskFreeSpaceworkflow), required: true);
             return new DeferredBodyAction<GetDiskFreeSpaceResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetDiskFreeSpace";
@@ -10479,8 +9768,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetListOfDrivesResponse> GetListOfDrives(Expression<Func<string>> getListOfDrivesworkflow)
         {
-            var __workflow_getListOfDrivesworkflow = getListOfDrivesworkflow == null ? null : WorkflowExpression.Compile(getListOfDrivesworkflow);
-            WorkflowExpression.Validate(__workflow_getListOfDrivesworkflow, nameof(getListOfDrivesworkflow), required: true);
+            var __workflow_getListOfDrivesworkflow = WorkflowExpression.Compile(getListOfDrivesworkflow, nameof(getListOfDrivesworkflow), required: true);
             return new DeferredBodyAction<GetListOfDrivesResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetListOfDrives";
@@ -10502,10 +9790,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DirectoryIsAccessibleResponse> DirectoryIsAccessible(Expression<Func<string>> directoryIsAccessibledirectoryPath, Expression<Func<string>> directoryIsAccessibleworkflow)
         {
-            var __workflow_directoryIsAccessibledirectoryPath = directoryIsAccessibledirectoryPath == null ? null : WorkflowExpression.Compile(directoryIsAccessibledirectoryPath);
-            WorkflowExpression.Validate(__workflow_directoryIsAccessibledirectoryPath, nameof(directoryIsAccessibledirectoryPath), required: true);
-            var __workflow_directoryIsAccessibleworkflow = directoryIsAccessibleworkflow == null ? null : WorkflowExpression.Compile(directoryIsAccessibleworkflow);
-            WorkflowExpression.Validate(__workflow_directoryIsAccessibleworkflow, nameof(directoryIsAccessibleworkflow), required: true);
+            var __workflow_directoryIsAccessibledirectoryPath = WorkflowExpression.Compile(directoryIsAccessibledirectoryPath, nameof(directoryIsAccessibledirectoryPath), required: true);
+            var __workflow_directoryIsAccessibleworkflow = WorkflowExpression.Compile(directoryIsAccessibleworkflow, nameof(directoryIsAccessibleworkflow), required: true);
             return new DeferredBodyAction<DirectoryIsAccessibleResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/DirectoryIsAccessible";
@@ -10529,18 +9815,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetCSVTextAsCollectionResponse> GetCSVTextAsCollection(Expression<Func<string>> getCSVTextAsCollectioncSVFilePath, Expression<Func<string>> getCSVTextAsCollectionworkflow, Expression<Func<bool>> getCSVTextAsCollectionfirstLineIsHeader = null, Expression<Func<bool>> getCSVTextAsCollectiontrimHeaders = null, Expression<Func<bool>> getCSVTextAsCollectionallowBlankRows = null, Expression<Func<bool>> getCSVTextAsCollectionextendColumnsIfRequired = null)
         {
-            var __workflow_getCSVTextAsCollectioncSVFilePath = getCSVTextAsCollectioncSVFilePath == null ? null : WorkflowExpression.Compile(getCSVTextAsCollectioncSVFilePath);
-            WorkflowExpression.Validate(__workflow_getCSVTextAsCollectioncSVFilePath, nameof(getCSVTextAsCollectioncSVFilePath), required: true);
-            var __workflow_getCSVTextAsCollectionworkflow = getCSVTextAsCollectionworkflow == null ? null : WorkflowExpression.Compile(getCSVTextAsCollectionworkflow);
-            WorkflowExpression.Validate(__workflow_getCSVTextAsCollectionworkflow, nameof(getCSVTextAsCollectionworkflow), required: true);
-            var __workflow_getCSVTextAsCollectionfirstLineIsHeader = getCSVTextAsCollectionfirstLineIsHeader == null ? null : WorkflowExpression.Compile(getCSVTextAsCollectionfirstLineIsHeader);
-            WorkflowExpression.Validate(__workflow_getCSVTextAsCollectionfirstLineIsHeader, nameof(getCSVTextAsCollectionfirstLineIsHeader), required: false);
-            var __workflow_getCSVTextAsCollectiontrimHeaders = getCSVTextAsCollectiontrimHeaders == null ? null : WorkflowExpression.Compile(getCSVTextAsCollectiontrimHeaders);
-            WorkflowExpression.Validate(__workflow_getCSVTextAsCollectiontrimHeaders, nameof(getCSVTextAsCollectiontrimHeaders), required: false);
-            var __workflow_getCSVTextAsCollectionallowBlankRows = getCSVTextAsCollectionallowBlankRows == null ? null : WorkflowExpression.Compile(getCSVTextAsCollectionallowBlankRows);
-            WorkflowExpression.Validate(__workflow_getCSVTextAsCollectionallowBlankRows, nameof(getCSVTextAsCollectionallowBlankRows), required: false);
-            var __workflow_getCSVTextAsCollectionextendColumnsIfRequired = getCSVTextAsCollectionextendColumnsIfRequired == null ? null : WorkflowExpression.Compile(getCSVTextAsCollectionextendColumnsIfRequired);
-            WorkflowExpression.Validate(__workflow_getCSVTextAsCollectionextendColumnsIfRequired, nameof(getCSVTextAsCollectionextendColumnsIfRequired), required: false);
+            var __workflow_getCSVTextAsCollectioncSVFilePath = WorkflowExpression.Compile(getCSVTextAsCollectioncSVFilePath, nameof(getCSVTextAsCollectioncSVFilePath), required: true);
+            var __workflow_getCSVTextAsCollectionworkflow = WorkflowExpression.Compile(getCSVTextAsCollectionworkflow, nameof(getCSVTextAsCollectionworkflow), required: true);
+            var __workflow_getCSVTextAsCollectionfirstLineIsHeader = WorkflowExpression.Compile(getCSVTextAsCollectionfirstLineIsHeader, nameof(getCSVTextAsCollectionfirstLineIsHeader), required: false);
+            var __workflow_getCSVTextAsCollectiontrimHeaders = WorkflowExpression.Compile(getCSVTextAsCollectiontrimHeaders, nameof(getCSVTextAsCollectiontrimHeaders), required: false);
+            var __workflow_getCSVTextAsCollectionallowBlankRows = WorkflowExpression.Compile(getCSVTextAsCollectionallowBlankRows, nameof(getCSVTextAsCollectionallowBlankRows), required: false);
+            var __workflow_getCSVTextAsCollectionextendColumnsIfRequired = WorkflowExpression.Compile(getCSVTextAsCollectionextendColumnsIfRequired, nameof(getCSVTextAsCollectionextendColumnsIfRequired), required: false);
             return new DeferredBodyAction<GetCSVTextAsCollectionResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetCSVTextAsCollection";
@@ -10628,16 +9908,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<WriteCollectionToCSVFileResponse> WriteCollectionToCSVFile(Expression<Func<string>> writeCollectionToCSVFilecSVFilePath, Expression<Func<string>> writeCollectionToCSVFileworkflow, Expression<Func<JToken[]>> writeCollectionToCSVFileinputTable = null, Expression<Func<string>> writeCollectionToCSVFileinputTableJSON = null, Expression<Func<writeCollectionToCSVFileoutputEncodingInput>> writeCollectionToCSVFileoutputEncoding = null)
         {
-            var __workflow_writeCollectionToCSVFilecSVFilePath = writeCollectionToCSVFilecSVFilePath == null ? null : WorkflowExpression.Compile(writeCollectionToCSVFilecSVFilePath);
-            WorkflowExpression.Validate(__workflow_writeCollectionToCSVFilecSVFilePath, nameof(writeCollectionToCSVFilecSVFilePath), required: true);
-            var __workflow_writeCollectionToCSVFileworkflow = writeCollectionToCSVFileworkflow == null ? null : WorkflowExpression.Compile(writeCollectionToCSVFileworkflow);
-            WorkflowExpression.Validate(__workflow_writeCollectionToCSVFileworkflow, nameof(writeCollectionToCSVFileworkflow), required: true);
-            var __workflow_writeCollectionToCSVFileinputTable = writeCollectionToCSVFileinputTable == null ? null : WorkflowExpression.Compile(writeCollectionToCSVFileinputTable);
-            WorkflowExpression.Validate(__workflow_writeCollectionToCSVFileinputTable, nameof(writeCollectionToCSVFileinputTable), required: false);
-            var __workflow_writeCollectionToCSVFileinputTableJSON = writeCollectionToCSVFileinputTableJSON == null ? null : WorkflowExpression.Compile(writeCollectionToCSVFileinputTableJSON);
-            WorkflowExpression.Validate(__workflow_writeCollectionToCSVFileinputTableJSON, nameof(writeCollectionToCSVFileinputTableJSON), required: false);
-            var __workflow_writeCollectionToCSVFileoutputEncoding = writeCollectionToCSVFileoutputEncoding == null ? null : WorkflowExpression.Compile(writeCollectionToCSVFileoutputEncoding);
-            WorkflowExpression.Validate(__workflow_writeCollectionToCSVFileoutputEncoding, nameof(writeCollectionToCSVFileoutputEncoding), required: false);
+            var __workflow_writeCollectionToCSVFilecSVFilePath = WorkflowExpression.Compile(writeCollectionToCSVFilecSVFilePath, nameof(writeCollectionToCSVFilecSVFilePath), required: true);
+            var __workflow_writeCollectionToCSVFileworkflow = WorkflowExpression.Compile(writeCollectionToCSVFileworkflow, nameof(writeCollectionToCSVFileworkflow), required: true);
+            var __workflow_writeCollectionToCSVFileinputTable = WorkflowExpression.Compile(writeCollectionToCSVFileinputTable, nameof(writeCollectionToCSVFileinputTable), required: false);
+            var __workflow_writeCollectionToCSVFileinputTableJSON = WorkflowExpression.Compile(writeCollectionToCSVFileinputTableJSON, nameof(writeCollectionToCSVFileinputTableJSON), required: false);
+            var __workflow_writeCollectionToCSVFileoutputEncoding = WorkflowExpression.Compile(writeCollectionToCSVFileoutputEncoding, nameof(writeCollectionToCSVFileoutputEncoding), required: false);
             return new DeferredBodyAction<WriteCollectionToCSVFileResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/WriteCollectionToCSVFile";
@@ -10689,12 +9964,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetOwnerOnFolder(Expression<Func<string>> setOwnerOnFolderfolderPath, Expression<Func<string>> setOwnerOnFolderuserIdentity, Expression<Func<string>> setOwnerOnFolderworkflow)
         {
-            var __workflow_setOwnerOnFolderfolderPath = setOwnerOnFolderfolderPath == null ? null : WorkflowExpression.Compile(setOwnerOnFolderfolderPath);
-            WorkflowExpression.Validate(__workflow_setOwnerOnFolderfolderPath, nameof(setOwnerOnFolderfolderPath), required: true);
-            var __workflow_setOwnerOnFolderuserIdentity = setOwnerOnFolderuserIdentity == null ? null : WorkflowExpression.Compile(setOwnerOnFolderuserIdentity);
-            WorkflowExpression.Validate(__workflow_setOwnerOnFolderuserIdentity, nameof(setOwnerOnFolderuserIdentity), required: true);
-            var __workflow_setOwnerOnFolderworkflow = setOwnerOnFolderworkflow == null ? null : WorkflowExpression.Compile(setOwnerOnFolderworkflow);
-            WorkflowExpression.Validate(__workflow_setOwnerOnFolderworkflow, nameof(setOwnerOnFolderworkflow), required: true);
+            var __workflow_setOwnerOnFolderfolderPath = WorkflowExpression.Compile(setOwnerOnFolderfolderPath, nameof(setOwnerOnFolderfolderPath), required: true);
+            var __workflow_setOwnerOnFolderuserIdentity = WorkflowExpression.Compile(setOwnerOnFolderuserIdentity, nameof(setOwnerOnFolderuserIdentity), required: true);
+            var __workflow_setOwnerOnFolderworkflow = WorkflowExpression.Compile(setOwnerOnFolderworkflow, nameof(setOwnerOnFolderworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/SetOwnerOnFolder";
@@ -10720,12 +9992,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction SetOwnerOnFile(Expression<Func<string>> setOwnerOnFilefilePath, Expression<Func<string>> setOwnerOnFileuserIdentity, Expression<Func<string>> setOwnerOnFileworkflow)
         {
-            var __workflow_setOwnerOnFilefilePath = setOwnerOnFilefilePath == null ? null : WorkflowExpression.Compile(setOwnerOnFilefilePath);
-            WorkflowExpression.Validate(__workflow_setOwnerOnFilefilePath, nameof(setOwnerOnFilefilePath), required: true);
-            var __workflow_setOwnerOnFileuserIdentity = setOwnerOnFileuserIdentity == null ? null : WorkflowExpression.Compile(setOwnerOnFileuserIdentity);
-            WorkflowExpression.Validate(__workflow_setOwnerOnFileuserIdentity, nameof(setOwnerOnFileuserIdentity), required: true);
-            var __workflow_setOwnerOnFileworkflow = setOwnerOnFileworkflow == null ? null : WorkflowExpression.Compile(setOwnerOnFileworkflow);
-            WorkflowExpression.Validate(__workflow_setOwnerOnFileworkflow, nameof(setOwnerOnFileworkflow), required: true);
+            var __workflow_setOwnerOnFilefilePath = WorkflowExpression.Compile(setOwnerOnFilefilePath, nameof(setOwnerOnFilefilePath), required: true);
+            var __workflow_setOwnerOnFileuserIdentity = WorkflowExpression.Compile(setOwnerOnFileuserIdentity, nameof(setOwnerOnFileuserIdentity), required: true);
+            var __workflow_setOwnerOnFileworkflow = WorkflowExpression.Compile(setOwnerOnFileworkflow, nameof(setOwnerOnFileworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/SetOwnerOnFile";
@@ -10751,22 +10020,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AddPermissionToFolder(Expression<Func<string>> addPermissionToFolderfolderPath, Expression<Func<string>> addPermissionToFolderidentity, Expression<Func<addPermissionToFolderpermissionInput>> addPermissionToFolderpermission, Expression<Func<string>> addPermissionToFolderworkflow, Expression<Func<bool>> addPermissionToFolderapplyToFolder = null, Expression<Func<bool>> addPermissionToFolderapplyToSubFolders = null, Expression<Func<bool>> addPermissionToFolderapplyToFiles = null, Expression<Func<bool>> addPermissionToFolderdeny = null)
         {
-            var __workflow_addPermissionToFolderfolderPath = addPermissionToFolderfolderPath == null ? null : WorkflowExpression.Compile(addPermissionToFolderfolderPath);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderfolderPath, nameof(addPermissionToFolderfolderPath), required: true);
-            var __workflow_addPermissionToFolderidentity = addPermissionToFolderidentity == null ? null : WorkflowExpression.Compile(addPermissionToFolderidentity);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderidentity, nameof(addPermissionToFolderidentity), required: true);
-            var __workflow_addPermissionToFolderpermission = addPermissionToFolderpermission == null ? null : WorkflowExpression.Compile(addPermissionToFolderpermission);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderpermission, nameof(addPermissionToFolderpermission), required: true);
-            var __workflow_addPermissionToFolderworkflow = addPermissionToFolderworkflow == null ? null : WorkflowExpression.Compile(addPermissionToFolderworkflow);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderworkflow, nameof(addPermissionToFolderworkflow), required: true);
-            var __workflow_addPermissionToFolderapplyToFolder = addPermissionToFolderapplyToFolder == null ? null : WorkflowExpression.Compile(addPermissionToFolderapplyToFolder);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderapplyToFolder, nameof(addPermissionToFolderapplyToFolder), required: false);
-            var __workflow_addPermissionToFolderapplyToSubFolders = addPermissionToFolderapplyToSubFolders == null ? null : WorkflowExpression.Compile(addPermissionToFolderapplyToSubFolders);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderapplyToSubFolders, nameof(addPermissionToFolderapplyToSubFolders), required: false);
-            var __workflow_addPermissionToFolderapplyToFiles = addPermissionToFolderapplyToFiles == null ? null : WorkflowExpression.Compile(addPermissionToFolderapplyToFiles);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderapplyToFiles, nameof(addPermissionToFolderapplyToFiles), required: false);
-            var __workflow_addPermissionToFolderdeny = addPermissionToFolderdeny == null ? null : WorkflowExpression.Compile(addPermissionToFolderdeny);
-            WorkflowExpression.Validate(__workflow_addPermissionToFolderdeny, nameof(addPermissionToFolderdeny), required: false);
+            var __workflow_addPermissionToFolderfolderPath = WorkflowExpression.Compile(addPermissionToFolderfolderPath, nameof(addPermissionToFolderfolderPath), required: true);
+            var __workflow_addPermissionToFolderidentity = WorkflowExpression.Compile(addPermissionToFolderidentity, nameof(addPermissionToFolderidentity), required: true);
+            var __workflow_addPermissionToFolderpermission = WorkflowExpression.Compile(addPermissionToFolderpermission, nameof(addPermissionToFolderpermission), required: true);
+            var __workflow_addPermissionToFolderworkflow = WorkflowExpression.Compile(addPermissionToFolderworkflow, nameof(addPermissionToFolderworkflow), required: true);
+            var __workflow_addPermissionToFolderapplyToFolder = WorkflowExpression.Compile(addPermissionToFolderapplyToFolder, nameof(addPermissionToFolderapplyToFolder), required: false);
+            var __workflow_addPermissionToFolderapplyToSubFolders = WorkflowExpression.Compile(addPermissionToFolderapplyToSubFolders, nameof(addPermissionToFolderapplyToSubFolders), required: false);
+            var __workflow_addPermissionToFolderapplyToFiles = WorkflowExpression.Compile(addPermissionToFolderapplyToFiles, nameof(addPermissionToFolderapplyToFiles), required: false);
+            var __workflow_addPermissionToFolderdeny = WorkflowExpression.Compile(addPermissionToFolderdeny, nameof(addPermissionToFolderdeny), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/AddPermissionToFolder";
@@ -10858,16 +10119,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AddPermissionToFile(Expression<Func<string>> addPermissionToFilefilePath, Expression<Func<string>> addPermissionToFileidentity, Expression<Func<addPermissionToFilepermissionInput>> addPermissionToFilepermission, Expression<Func<string>> addPermissionToFileworkflow, Expression<Func<bool>> addPermissionToFiledeny = null)
         {
-            var __workflow_addPermissionToFilefilePath = addPermissionToFilefilePath == null ? null : WorkflowExpression.Compile(addPermissionToFilefilePath);
-            WorkflowExpression.Validate(__workflow_addPermissionToFilefilePath, nameof(addPermissionToFilefilePath), required: true);
-            var __workflow_addPermissionToFileidentity = addPermissionToFileidentity == null ? null : WorkflowExpression.Compile(addPermissionToFileidentity);
-            WorkflowExpression.Validate(__workflow_addPermissionToFileidentity, nameof(addPermissionToFileidentity), required: true);
-            var __workflow_addPermissionToFilepermission = addPermissionToFilepermission == null ? null : WorkflowExpression.Compile(addPermissionToFilepermission);
-            WorkflowExpression.Validate(__workflow_addPermissionToFilepermission, nameof(addPermissionToFilepermission), required: true);
-            var __workflow_addPermissionToFileworkflow = addPermissionToFileworkflow == null ? null : WorkflowExpression.Compile(addPermissionToFileworkflow);
-            WorkflowExpression.Validate(__workflow_addPermissionToFileworkflow, nameof(addPermissionToFileworkflow), required: true);
-            var __workflow_addPermissionToFiledeny = addPermissionToFiledeny == null ? null : WorkflowExpression.Compile(addPermissionToFiledeny);
-            WorkflowExpression.Validate(__workflow_addPermissionToFiledeny, nameof(addPermissionToFiledeny), required: false);
+            var __workflow_addPermissionToFilefilePath = WorkflowExpression.Compile(addPermissionToFilefilePath, nameof(addPermissionToFilefilePath), required: true);
+            var __workflow_addPermissionToFileidentity = WorkflowExpression.Compile(addPermissionToFileidentity, nameof(addPermissionToFileidentity), required: true);
+            var __workflow_addPermissionToFilepermission = WorkflowExpression.Compile(addPermissionToFilepermission, nameof(addPermissionToFilepermission), required: true);
+            var __workflow_addPermissionToFileworkflow = WorkflowExpression.Compile(addPermissionToFileworkflow, nameof(addPermissionToFileworkflow), required: true);
+            var __workflow_addPermissionToFiledeny = WorkflowExpression.Compile(addPermissionToFiledeny, nameof(addPermissionToFiledeny), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/AddPermissionToFile";
@@ -10911,12 +10167,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction BreakFolderSecurityInheritance(Expression<Func<string>> breakFolderSecurityInheritancefolderPath, Expression<Func<string>> breakFolderSecurityInheritanceworkflow, Expression<Func<bool>> breakFolderSecurityInheritanceconvertInheritedToExplicit = null)
         {
-            var __workflow_breakFolderSecurityInheritancefolderPath = breakFolderSecurityInheritancefolderPath == null ? null : WorkflowExpression.Compile(breakFolderSecurityInheritancefolderPath);
-            WorkflowExpression.Validate(__workflow_breakFolderSecurityInheritancefolderPath, nameof(breakFolderSecurityInheritancefolderPath), required: true);
-            var __workflow_breakFolderSecurityInheritanceworkflow = breakFolderSecurityInheritanceworkflow == null ? null : WorkflowExpression.Compile(breakFolderSecurityInheritanceworkflow);
-            WorkflowExpression.Validate(__workflow_breakFolderSecurityInheritanceworkflow, nameof(breakFolderSecurityInheritanceworkflow), required: true);
-            var __workflow_breakFolderSecurityInheritanceconvertInheritedToExplicit = breakFolderSecurityInheritanceconvertInheritedToExplicit == null ? null : WorkflowExpression.Compile(breakFolderSecurityInheritanceconvertInheritedToExplicit);
-            WorkflowExpression.Validate(__workflow_breakFolderSecurityInheritanceconvertInheritedToExplicit, nameof(breakFolderSecurityInheritanceconvertInheritedToExplicit), required: false);
+            var __workflow_breakFolderSecurityInheritancefolderPath = WorkflowExpression.Compile(breakFolderSecurityInheritancefolderPath, nameof(breakFolderSecurityInheritancefolderPath), required: true);
+            var __workflow_breakFolderSecurityInheritanceworkflow = WorkflowExpression.Compile(breakFolderSecurityInheritanceworkflow, nameof(breakFolderSecurityInheritanceworkflow), required: true);
+            var __workflow_breakFolderSecurityInheritanceconvertInheritedToExplicit = WorkflowExpression.Compile(breakFolderSecurityInheritanceconvertInheritedToExplicit, nameof(breakFolderSecurityInheritanceconvertInheritedToExplicit), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/BreakFolderSecurityInheritance";
@@ -10956,10 +10209,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction EnableFolderSecurityInheritance(Expression<Func<string>> enableFolderSecurityInheritancefolderPath, Expression<Func<string>> enableFolderSecurityInheritanceworkflow)
         {
-            var __workflow_enableFolderSecurityInheritancefolderPath = enableFolderSecurityInheritancefolderPath == null ? null : WorkflowExpression.Compile(enableFolderSecurityInheritancefolderPath);
-            WorkflowExpression.Validate(__workflow_enableFolderSecurityInheritancefolderPath, nameof(enableFolderSecurityInheritancefolderPath), required: true);
-            var __workflow_enableFolderSecurityInheritanceworkflow = enableFolderSecurityInheritanceworkflow == null ? null : WorkflowExpression.Compile(enableFolderSecurityInheritanceworkflow);
-            WorkflowExpression.Validate(__workflow_enableFolderSecurityInheritanceworkflow, nameof(enableFolderSecurityInheritanceworkflow), required: true);
+            var __workflow_enableFolderSecurityInheritancefolderPath = WorkflowExpression.Compile(enableFolderSecurityInheritancefolderPath, nameof(enableFolderSecurityInheritancefolderPath), required: true);
+            var __workflow_enableFolderSecurityInheritanceworkflow = WorkflowExpression.Compile(enableFolderSecurityInheritanceworkflow, nameof(enableFolderSecurityInheritanceworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/EnableFolderSecurityInheritance";
@@ -10983,10 +10234,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFolderSecurityPermissionsResponse> GetFolderSecurityPermissions(Expression<Func<string>> getFolderSecurityPermissionsfolderPath, Expression<Func<string>> getFolderSecurityPermissionsworkflow)
         {
-            var __workflow_getFolderSecurityPermissionsfolderPath = getFolderSecurityPermissionsfolderPath == null ? null : WorkflowExpression.Compile(getFolderSecurityPermissionsfolderPath);
-            WorkflowExpression.Validate(__workflow_getFolderSecurityPermissionsfolderPath, nameof(getFolderSecurityPermissionsfolderPath), required: true);
-            var __workflow_getFolderSecurityPermissionsworkflow = getFolderSecurityPermissionsworkflow == null ? null : WorkflowExpression.Compile(getFolderSecurityPermissionsworkflow);
-            WorkflowExpression.Validate(__workflow_getFolderSecurityPermissionsworkflow, nameof(getFolderSecurityPermissionsworkflow), required: true);
+            var __workflow_getFolderSecurityPermissionsfolderPath = WorkflowExpression.Compile(getFolderSecurityPermissionsfolderPath, nameof(getFolderSecurityPermissionsfolderPath), required: true);
+            var __workflow_getFolderSecurityPermissionsworkflow = WorkflowExpression.Compile(getFolderSecurityPermissionsworkflow, nameof(getFolderSecurityPermissionsworkflow), required: true);
             return new DeferredBodyAction<GetFolderSecurityPermissionsResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFolderSecurityPermissions";
@@ -11010,10 +10259,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFileSecurityPermissionsResponse> GetFileSecurityPermissions(Expression<Func<string>> getFileSecurityPermissionsfilePath, Expression<Func<string>> getFileSecurityPermissionsworkflow)
         {
-            var __workflow_getFileSecurityPermissionsfilePath = getFileSecurityPermissionsfilePath == null ? null : WorkflowExpression.Compile(getFileSecurityPermissionsfilePath);
-            WorkflowExpression.Validate(__workflow_getFileSecurityPermissionsfilePath, nameof(getFileSecurityPermissionsfilePath), required: true);
-            var __workflow_getFileSecurityPermissionsworkflow = getFileSecurityPermissionsworkflow == null ? null : WorkflowExpression.Compile(getFileSecurityPermissionsworkflow);
-            WorkflowExpression.Validate(__workflow_getFileSecurityPermissionsworkflow, nameof(getFileSecurityPermissionsworkflow), required: true);
+            var __workflow_getFileSecurityPermissionsfilePath = WorkflowExpression.Compile(getFileSecurityPermissionsfilePath, nameof(getFileSecurityPermissionsfilePath), required: true);
+            var __workflow_getFileSecurityPermissionsworkflow = WorkflowExpression.Compile(getFileSecurityPermissionsworkflow, nameof(getFileSecurityPermissionsworkflow), required: true);
             return new DeferredBodyAction<GetFileSecurityPermissionsResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFileSecurityPermissions";
@@ -11037,12 +10284,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RemoveIdentityFromFolderSecurityResponse> RemoveIdentityFromFolderSecurity(Expression<Func<string>> removeIdentityFromFolderSecurityfolderPath, Expression<Func<string>> removeIdentityFromFolderSecurityidentityToRemove, Expression<Func<string>> removeIdentityFromFolderSecurityworkflow)
         {
-            var __workflow_removeIdentityFromFolderSecurityfolderPath = removeIdentityFromFolderSecurityfolderPath == null ? null : WorkflowExpression.Compile(removeIdentityFromFolderSecurityfolderPath);
-            WorkflowExpression.Validate(__workflow_removeIdentityFromFolderSecurityfolderPath, nameof(removeIdentityFromFolderSecurityfolderPath), required: true);
-            var __workflow_removeIdentityFromFolderSecurityidentityToRemove = removeIdentityFromFolderSecurityidentityToRemove == null ? null : WorkflowExpression.Compile(removeIdentityFromFolderSecurityidentityToRemove);
-            WorkflowExpression.Validate(__workflow_removeIdentityFromFolderSecurityidentityToRemove, nameof(removeIdentityFromFolderSecurityidentityToRemove), required: true);
-            var __workflow_removeIdentityFromFolderSecurityworkflow = removeIdentityFromFolderSecurityworkflow == null ? null : WorkflowExpression.Compile(removeIdentityFromFolderSecurityworkflow);
-            WorkflowExpression.Validate(__workflow_removeIdentityFromFolderSecurityworkflow, nameof(removeIdentityFromFolderSecurityworkflow), required: true);
+            var __workflow_removeIdentityFromFolderSecurityfolderPath = WorkflowExpression.Compile(removeIdentityFromFolderSecurityfolderPath, nameof(removeIdentityFromFolderSecurityfolderPath), required: true);
+            var __workflow_removeIdentityFromFolderSecurityidentityToRemove = WorkflowExpression.Compile(removeIdentityFromFolderSecurityidentityToRemove, nameof(removeIdentityFromFolderSecurityidentityToRemove), required: true);
+            var __workflow_removeIdentityFromFolderSecurityworkflow = WorkflowExpression.Compile(removeIdentityFromFolderSecurityworkflow, nameof(removeIdentityFromFolderSecurityworkflow), required: true);
             return new DeferredBodyAction<RemoveIdentityFromFolderSecurityResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/RemoveIdentityFromFolderSecurity";
@@ -11068,12 +10312,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<RemoveIdentityFromFileSecurityResponse> RemoveIdentityFromFileSecurity(Expression<Func<string>> removeIdentityFromFileSecurityfilePath, Expression<Func<string>> removeIdentityFromFileSecurityidentityToRemove, Expression<Func<string>> removeIdentityFromFileSecurityworkflow)
         {
-            var __workflow_removeIdentityFromFileSecurityfilePath = removeIdentityFromFileSecurityfilePath == null ? null : WorkflowExpression.Compile(removeIdentityFromFileSecurityfilePath);
-            WorkflowExpression.Validate(__workflow_removeIdentityFromFileSecurityfilePath, nameof(removeIdentityFromFileSecurityfilePath), required: true);
-            var __workflow_removeIdentityFromFileSecurityidentityToRemove = removeIdentityFromFileSecurityidentityToRemove == null ? null : WorkflowExpression.Compile(removeIdentityFromFileSecurityidentityToRemove);
-            WorkflowExpression.Validate(__workflow_removeIdentityFromFileSecurityidentityToRemove, nameof(removeIdentityFromFileSecurityidentityToRemove), required: true);
-            var __workflow_removeIdentityFromFileSecurityworkflow = removeIdentityFromFileSecurityworkflow == null ? null : WorkflowExpression.Compile(removeIdentityFromFileSecurityworkflow);
-            WorkflowExpression.Validate(__workflow_removeIdentityFromFileSecurityworkflow, nameof(removeIdentityFromFileSecurityworkflow), required: true);
+            var __workflow_removeIdentityFromFileSecurityfilePath = WorkflowExpression.Compile(removeIdentityFromFileSecurityfilePath, nameof(removeIdentityFromFileSecurityfilePath), required: true);
+            var __workflow_removeIdentityFromFileSecurityidentityToRemove = WorkflowExpression.Compile(removeIdentityFromFileSecurityidentityToRemove, nameof(removeIdentityFromFileSecurityidentityToRemove), required: true);
+            var __workflow_removeIdentityFromFileSecurityworkflow = WorkflowExpression.Compile(removeIdentityFromFileSecurityworkflow, nameof(removeIdentityFromFileSecurityworkflow), required: true);
             return new DeferredBodyAction<RemoveIdentityFromFileSecurityResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/RemoveIdentityFromFileSecurity";
@@ -11099,14 +10340,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction CopyFileFromClientToServer(Expression<Func<string>> copyFileFromClientToServerclientFilePath, Expression<Func<string>> copyFileFromClientToServerserverFilePath, Expression<Func<string>> copyFileFromClientToServerworkflow, Expression<Func<bool>> copyFileFromClientToServercompress = null)
         {
-            var __workflow_copyFileFromClientToServerclientFilePath = copyFileFromClientToServerclientFilePath == null ? null : WorkflowExpression.Compile(copyFileFromClientToServerclientFilePath);
-            WorkflowExpression.Validate(__workflow_copyFileFromClientToServerclientFilePath, nameof(copyFileFromClientToServerclientFilePath), required: true);
-            var __workflow_copyFileFromClientToServerserverFilePath = copyFileFromClientToServerserverFilePath == null ? null : WorkflowExpression.Compile(copyFileFromClientToServerserverFilePath);
-            WorkflowExpression.Validate(__workflow_copyFileFromClientToServerserverFilePath, nameof(copyFileFromClientToServerserverFilePath), required: true);
-            var __workflow_copyFileFromClientToServerworkflow = copyFileFromClientToServerworkflow == null ? null : WorkflowExpression.Compile(copyFileFromClientToServerworkflow);
-            WorkflowExpression.Validate(__workflow_copyFileFromClientToServerworkflow, nameof(copyFileFromClientToServerworkflow), required: true);
-            var __workflow_copyFileFromClientToServercompress = copyFileFromClientToServercompress == null ? null : WorkflowExpression.Compile(copyFileFromClientToServercompress);
-            WorkflowExpression.Validate(__workflow_copyFileFromClientToServercompress, nameof(copyFileFromClientToServercompress), required: false);
+            var __workflow_copyFileFromClientToServerclientFilePath = WorkflowExpression.Compile(copyFileFromClientToServerclientFilePath, nameof(copyFileFromClientToServerclientFilePath), required: true);
+            var __workflow_copyFileFromClientToServerserverFilePath = WorkflowExpression.Compile(copyFileFromClientToServerserverFilePath, nameof(copyFileFromClientToServerserverFilePath), required: true);
+            var __workflow_copyFileFromClientToServerworkflow = WorkflowExpression.Compile(copyFileFromClientToServerworkflow, nameof(copyFileFromClientToServerworkflow), required: true);
+            var __workflow_copyFileFromClientToServercompress = WorkflowExpression.Compile(copyFileFromClientToServercompress, nameof(copyFileFromClientToServercompress), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/CopyFileFromClientToServer";
@@ -11148,26 +10385,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction ReplaceVariableDataInINIFile(Expression<Func<string>> replaceVariableDataInINIFileinputFilename, Expression<Func<string>> replaceVariableDataInINIFileworkflow, Expression<Func<string>> replaceVariableDataInINIFileoutputFilename = null, Expression<Func<string>> replaceVariableDataInINIFilesearchSection = null, Expression<Func<string>> replaceVariableDataInINIFilesearchVariable = null, Expression<Func<string>> replaceVariableDataInINIFilereplaceData = null, Expression<Func<string>> replaceVariableDataInINIFileinputFilenameEncoding = null, Expression<Func<bool>> replaceVariableDataInINIFilecreateNewFileIfNotExists = null, Expression<Func<bool>> replaceVariableDataInINIFilewriteSpaceBeforeEquals = null, Expression<Func<bool>> replaceVariableDataInINIFilewriteSpaceAfterEquals = null)
         {
-            var __workflow_replaceVariableDataInINIFileinputFilename = replaceVariableDataInINIFileinputFilename == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFileinputFilename);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFileinputFilename, nameof(replaceVariableDataInINIFileinputFilename), required: true);
-            var __workflow_replaceVariableDataInINIFileworkflow = replaceVariableDataInINIFileworkflow == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFileworkflow);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFileworkflow, nameof(replaceVariableDataInINIFileworkflow), required: true);
-            var __workflow_replaceVariableDataInINIFileoutputFilename = replaceVariableDataInINIFileoutputFilename == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFileoutputFilename);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFileoutputFilename, nameof(replaceVariableDataInINIFileoutputFilename), required: false);
-            var __workflow_replaceVariableDataInINIFilesearchSection = replaceVariableDataInINIFilesearchSection == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFilesearchSection);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFilesearchSection, nameof(replaceVariableDataInINIFilesearchSection), required: false);
-            var __workflow_replaceVariableDataInINIFilesearchVariable = replaceVariableDataInINIFilesearchVariable == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFilesearchVariable);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFilesearchVariable, nameof(replaceVariableDataInINIFilesearchVariable), required: false);
-            var __workflow_replaceVariableDataInINIFilereplaceData = replaceVariableDataInINIFilereplaceData == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFilereplaceData);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFilereplaceData, nameof(replaceVariableDataInINIFilereplaceData), required: false);
-            var __workflow_replaceVariableDataInINIFileinputFilenameEncoding = replaceVariableDataInINIFileinputFilenameEncoding == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFileinputFilenameEncoding);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFileinputFilenameEncoding, nameof(replaceVariableDataInINIFileinputFilenameEncoding), required: false);
-            var __workflow_replaceVariableDataInINIFilecreateNewFileIfNotExists = replaceVariableDataInINIFilecreateNewFileIfNotExists == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFilecreateNewFileIfNotExists);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFilecreateNewFileIfNotExists, nameof(replaceVariableDataInINIFilecreateNewFileIfNotExists), required: false);
-            var __workflow_replaceVariableDataInINIFilewriteSpaceBeforeEquals = replaceVariableDataInINIFilewriteSpaceBeforeEquals == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFilewriteSpaceBeforeEquals);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFilewriteSpaceBeforeEquals, nameof(replaceVariableDataInINIFilewriteSpaceBeforeEquals), required: false);
-            var __workflow_replaceVariableDataInINIFilewriteSpaceAfterEquals = replaceVariableDataInINIFilewriteSpaceAfterEquals == null ? null : WorkflowExpression.Compile(replaceVariableDataInINIFilewriteSpaceAfterEquals);
-            WorkflowExpression.Validate(__workflow_replaceVariableDataInINIFilewriteSpaceAfterEquals, nameof(replaceVariableDataInINIFilewriteSpaceAfterEquals), required: false);
+            var __workflow_replaceVariableDataInINIFileinputFilename = WorkflowExpression.Compile(replaceVariableDataInINIFileinputFilename, nameof(replaceVariableDataInINIFileinputFilename), required: true);
+            var __workflow_replaceVariableDataInINIFileworkflow = WorkflowExpression.Compile(replaceVariableDataInINIFileworkflow, nameof(replaceVariableDataInINIFileworkflow), required: true);
+            var __workflow_replaceVariableDataInINIFileoutputFilename = WorkflowExpression.Compile(replaceVariableDataInINIFileoutputFilename, nameof(replaceVariableDataInINIFileoutputFilename), required: false);
+            var __workflow_replaceVariableDataInINIFilesearchSection = WorkflowExpression.Compile(replaceVariableDataInINIFilesearchSection, nameof(replaceVariableDataInINIFilesearchSection), required: false);
+            var __workflow_replaceVariableDataInINIFilesearchVariable = WorkflowExpression.Compile(replaceVariableDataInINIFilesearchVariable, nameof(replaceVariableDataInINIFilesearchVariable), required: false);
+            var __workflow_replaceVariableDataInINIFilereplaceData = WorkflowExpression.Compile(replaceVariableDataInINIFilereplaceData, nameof(replaceVariableDataInINIFilereplaceData), required: false);
+            var __workflow_replaceVariableDataInINIFileinputFilenameEncoding = WorkflowExpression.Compile(replaceVariableDataInINIFileinputFilenameEncoding, nameof(replaceVariableDataInINIFileinputFilenameEncoding), required: false);
+            var __workflow_replaceVariableDataInINIFilecreateNewFileIfNotExists = WorkflowExpression.Compile(replaceVariableDataInINIFilecreateNewFileIfNotExists, nameof(replaceVariableDataInINIFilecreateNewFileIfNotExists), required: false);
+            var __workflow_replaceVariableDataInINIFilewriteSpaceBeforeEquals = WorkflowExpression.Compile(replaceVariableDataInINIFilewriteSpaceBeforeEquals, nameof(replaceVariableDataInINIFilewriteSpaceBeforeEquals), required: false);
+            var __workflow_replaceVariableDataInINIFilewriteSpaceAfterEquals = WorkflowExpression.Compile(replaceVariableDataInINIFilewriteSpaceAfterEquals, nameof(replaceVariableDataInINIFilewriteSpaceAfterEquals), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/ReplaceVariableDataInINIFile";
@@ -11269,34 +10496,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<DownloadHTTPFileResponse> DownloadHTTPFile(Expression<Func<string>> downloadHTTPFiledownloadURL, Expression<Func<string>> downloadHTTPFileworkflow, Expression<Func<string>> downloadHTTPFilesaveFilename = null, Expression<Func<bool>> downloadHTTPFileoverwriteExistingFile = null, Expression<Func<bool>> downloadHTTPFilepassthroughAuthentication = null, Expression<Func<string>> downloadHTTPFileuserAgent = null, Expression<Func<string>> downloadHTTPFileaccept = null, Expression<Func<bool>> downloadHTTPFilesupportTLS10 = null, Expression<Func<bool>> downloadHTTPFilesupportTLS11 = null, Expression<Func<bool>> downloadHTTPFilesupportTLS12 = null, Expression<Func<bool>> downloadHTTPFileautoDecompressDeflate = null, Expression<Func<bool>> downloadHTTPFileautoDecompressGZIP = null, Expression<Func<bool>> downloadHTTPFilereturnContentsAsString = null, Expression<Func<downloadHTTPFilereturnContentEncodingInput>> downloadHTTPFilereturnContentEncoding = null)
         {
-            var __workflow_downloadHTTPFiledownloadURL = downloadHTTPFiledownloadURL == null ? null : WorkflowExpression.Compile(downloadHTTPFiledownloadURL);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFiledownloadURL, nameof(downloadHTTPFiledownloadURL), required: true);
-            var __workflow_downloadHTTPFileworkflow = downloadHTTPFileworkflow == null ? null : WorkflowExpression.Compile(downloadHTTPFileworkflow);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFileworkflow, nameof(downloadHTTPFileworkflow), required: true);
-            var __workflow_downloadHTTPFilesaveFilename = downloadHTTPFilesaveFilename == null ? null : WorkflowExpression.Compile(downloadHTTPFilesaveFilename);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFilesaveFilename, nameof(downloadHTTPFilesaveFilename), required: false);
-            var __workflow_downloadHTTPFileoverwriteExistingFile = downloadHTTPFileoverwriteExistingFile == null ? null : WorkflowExpression.Compile(downloadHTTPFileoverwriteExistingFile);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFileoverwriteExistingFile, nameof(downloadHTTPFileoverwriteExistingFile), required: false);
-            var __workflow_downloadHTTPFilepassthroughAuthentication = downloadHTTPFilepassthroughAuthentication == null ? null : WorkflowExpression.Compile(downloadHTTPFilepassthroughAuthentication);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFilepassthroughAuthentication, nameof(downloadHTTPFilepassthroughAuthentication), required: false);
-            var __workflow_downloadHTTPFileuserAgent = downloadHTTPFileuserAgent == null ? null : WorkflowExpression.Compile(downloadHTTPFileuserAgent);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFileuserAgent, nameof(downloadHTTPFileuserAgent), required: false);
-            var __workflow_downloadHTTPFileaccept = downloadHTTPFileaccept == null ? null : WorkflowExpression.Compile(downloadHTTPFileaccept);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFileaccept, nameof(downloadHTTPFileaccept), required: false);
-            var __workflow_downloadHTTPFilesupportTLS10 = downloadHTTPFilesupportTLS10 == null ? null : WorkflowExpression.Compile(downloadHTTPFilesupportTLS10);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFilesupportTLS10, nameof(downloadHTTPFilesupportTLS10), required: false);
-            var __workflow_downloadHTTPFilesupportTLS11 = downloadHTTPFilesupportTLS11 == null ? null : WorkflowExpression.Compile(downloadHTTPFilesupportTLS11);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFilesupportTLS11, nameof(downloadHTTPFilesupportTLS11), required: false);
-            var __workflow_downloadHTTPFilesupportTLS12 = downloadHTTPFilesupportTLS12 == null ? null : WorkflowExpression.Compile(downloadHTTPFilesupportTLS12);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFilesupportTLS12, nameof(downloadHTTPFilesupportTLS12), required: false);
-            var __workflow_downloadHTTPFileautoDecompressDeflate = downloadHTTPFileautoDecompressDeflate == null ? null : WorkflowExpression.Compile(downloadHTTPFileautoDecompressDeflate);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFileautoDecompressDeflate, nameof(downloadHTTPFileautoDecompressDeflate), required: false);
-            var __workflow_downloadHTTPFileautoDecompressGZIP = downloadHTTPFileautoDecompressGZIP == null ? null : WorkflowExpression.Compile(downloadHTTPFileautoDecompressGZIP);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFileautoDecompressGZIP, nameof(downloadHTTPFileautoDecompressGZIP), required: false);
-            var __workflow_downloadHTTPFilereturnContentsAsString = downloadHTTPFilereturnContentsAsString == null ? null : WorkflowExpression.Compile(downloadHTTPFilereturnContentsAsString);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFilereturnContentsAsString, nameof(downloadHTTPFilereturnContentsAsString), required: false);
-            var __workflow_downloadHTTPFilereturnContentEncoding = downloadHTTPFilereturnContentEncoding == null ? null : WorkflowExpression.Compile(downloadHTTPFilereturnContentEncoding);
-            WorkflowExpression.Validate(__workflow_downloadHTTPFilereturnContentEncoding, nameof(downloadHTTPFilereturnContentEncoding), required: false);
+            var __workflow_downloadHTTPFiledownloadURL = WorkflowExpression.Compile(downloadHTTPFiledownloadURL, nameof(downloadHTTPFiledownloadURL), required: true);
+            var __workflow_downloadHTTPFileworkflow = WorkflowExpression.Compile(downloadHTTPFileworkflow, nameof(downloadHTTPFileworkflow), required: true);
+            var __workflow_downloadHTTPFilesaveFilename = WorkflowExpression.Compile(downloadHTTPFilesaveFilename, nameof(downloadHTTPFilesaveFilename), required: false);
+            var __workflow_downloadHTTPFileoverwriteExistingFile = WorkflowExpression.Compile(downloadHTTPFileoverwriteExistingFile, nameof(downloadHTTPFileoverwriteExistingFile), required: false);
+            var __workflow_downloadHTTPFilepassthroughAuthentication = WorkflowExpression.Compile(downloadHTTPFilepassthroughAuthentication, nameof(downloadHTTPFilepassthroughAuthentication), required: false);
+            var __workflow_downloadHTTPFileuserAgent = WorkflowExpression.Compile(downloadHTTPFileuserAgent, nameof(downloadHTTPFileuserAgent), required: false);
+            var __workflow_downloadHTTPFileaccept = WorkflowExpression.Compile(downloadHTTPFileaccept, nameof(downloadHTTPFileaccept), required: false);
+            var __workflow_downloadHTTPFilesupportTLS10 = WorkflowExpression.Compile(downloadHTTPFilesupportTLS10, nameof(downloadHTTPFilesupportTLS10), required: false);
+            var __workflow_downloadHTTPFilesupportTLS11 = WorkflowExpression.Compile(downloadHTTPFilesupportTLS11, nameof(downloadHTTPFilesupportTLS11), required: false);
+            var __workflow_downloadHTTPFilesupportTLS12 = WorkflowExpression.Compile(downloadHTTPFilesupportTLS12, nameof(downloadHTTPFilesupportTLS12), required: false);
+            var __workflow_downloadHTTPFileautoDecompressDeflate = WorkflowExpression.Compile(downloadHTTPFileautoDecompressDeflate, nameof(downloadHTTPFileautoDecompressDeflate), required: false);
+            var __workflow_downloadHTTPFileautoDecompressGZIP = WorkflowExpression.Compile(downloadHTTPFileautoDecompressGZIP, nameof(downloadHTTPFileautoDecompressGZIP), required: false);
+            var __workflow_downloadHTTPFilereturnContentsAsString = WorkflowExpression.Compile(downloadHTTPFilereturnContentsAsString, nameof(downloadHTTPFilereturnContentsAsString), required: false);
+            var __workflow_downloadHTTPFilereturnContentEncoding = WorkflowExpression.Compile(downloadHTTPFilereturnContentEncoding, nameof(downloadHTTPFilereturnContentEncoding), required: false);
             return new DeferredBodyAction<DownloadHTTPFileResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/DownloadHTTPFile";
@@ -11502,18 +10715,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<UnZIPFileResponse> UnZIPFile(Expression<Func<string>> unZIPFilezIPFilename, Expression<Func<string>> unZIPFileworkflow, Expression<Func<string>> unZIPFileextractFolder = null, Expression<Func<bool>> unZIPFileextractAllFilesToSingleFolder = null, Expression<Func<string>> unZIPFileincludeFilesRegEx = null, Expression<Func<string>> unZIPFileexcludeFilesRegEx = null)
         {
-            var __workflow_unZIPFilezIPFilename = unZIPFilezIPFilename == null ? null : WorkflowExpression.Compile(unZIPFilezIPFilename);
-            WorkflowExpression.Validate(__workflow_unZIPFilezIPFilename, nameof(unZIPFilezIPFilename), required: true);
-            var __workflow_unZIPFileworkflow = unZIPFileworkflow == null ? null : WorkflowExpression.Compile(unZIPFileworkflow);
-            WorkflowExpression.Validate(__workflow_unZIPFileworkflow, nameof(unZIPFileworkflow), required: true);
-            var __workflow_unZIPFileextractFolder = unZIPFileextractFolder == null ? null : WorkflowExpression.Compile(unZIPFileextractFolder);
-            WorkflowExpression.Validate(__workflow_unZIPFileextractFolder, nameof(unZIPFileextractFolder), required: false);
-            var __workflow_unZIPFileextractAllFilesToSingleFolder = unZIPFileextractAllFilesToSingleFolder == null ? null : WorkflowExpression.Compile(unZIPFileextractAllFilesToSingleFolder);
-            WorkflowExpression.Validate(__workflow_unZIPFileextractAllFilesToSingleFolder, nameof(unZIPFileextractAllFilesToSingleFolder), required: false);
-            var __workflow_unZIPFileincludeFilesRegEx = unZIPFileincludeFilesRegEx == null ? null : WorkflowExpression.Compile(unZIPFileincludeFilesRegEx);
-            WorkflowExpression.Validate(__workflow_unZIPFileincludeFilesRegEx, nameof(unZIPFileincludeFilesRegEx), required: false);
-            var __workflow_unZIPFileexcludeFilesRegEx = unZIPFileexcludeFilesRegEx == null ? null : WorkflowExpression.Compile(unZIPFileexcludeFilesRegEx);
-            WorkflowExpression.Validate(__workflow_unZIPFileexcludeFilesRegEx, nameof(unZIPFileexcludeFilesRegEx), required: false);
+            var __workflow_unZIPFilezIPFilename = WorkflowExpression.Compile(unZIPFilezIPFilename, nameof(unZIPFilezIPFilename), required: true);
+            var __workflow_unZIPFileworkflow = WorkflowExpression.Compile(unZIPFileworkflow, nameof(unZIPFileworkflow), required: true);
+            var __workflow_unZIPFileextractFolder = WorkflowExpression.Compile(unZIPFileextractFolder, nameof(unZIPFileextractFolder), required: false);
+            var __workflow_unZIPFileextractAllFilesToSingleFolder = WorkflowExpression.Compile(unZIPFileextractAllFilesToSingleFolder, nameof(unZIPFileextractAllFilesToSingleFolder), required: false);
+            var __workflow_unZIPFileincludeFilesRegEx = WorkflowExpression.Compile(unZIPFileincludeFilesRegEx, nameof(unZIPFileincludeFilesRegEx), required: false);
+            var __workflow_unZIPFileexcludeFilesRegEx = WorkflowExpression.Compile(unZIPFileexcludeFilesRegEx, nameof(unZIPFileexcludeFilesRegEx), required: false);
             return new DeferredBodyAction<UnZIPFileResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/UnZIPFile";
@@ -11571,20 +10778,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IWorkflowAction AddFileToZIP(Expression<Func<string>> addFileToZIPsourceFilenameToAddToZIP, Expression<Func<string>> addFileToZIPoutputZIPFilename, Expression<Func<string>> addFileToZIPworkflow, Expression<Func<string>> addFileToZIPaddFilenameToFolderInZIP = null, Expression<Func<string>> addFileToZIPsourceFilenameToAddToZIPComment = null, Expression<Func<bool>> addFileToZIPcompress = null, Expression<Func<bool>> addFileToZIPaddToExistingZIPFile = null)
         {
-            var __workflow_addFileToZIPsourceFilenameToAddToZIP = addFileToZIPsourceFilenameToAddToZIP == null ? null : WorkflowExpression.Compile(addFileToZIPsourceFilenameToAddToZIP);
-            WorkflowExpression.Validate(__workflow_addFileToZIPsourceFilenameToAddToZIP, nameof(addFileToZIPsourceFilenameToAddToZIP), required: true);
-            var __workflow_addFileToZIPoutputZIPFilename = addFileToZIPoutputZIPFilename == null ? null : WorkflowExpression.Compile(addFileToZIPoutputZIPFilename);
-            WorkflowExpression.Validate(__workflow_addFileToZIPoutputZIPFilename, nameof(addFileToZIPoutputZIPFilename), required: true);
-            var __workflow_addFileToZIPworkflow = addFileToZIPworkflow == null ? null : WorkflowExpression.Compile(addFileToZIPworkflow);
-            WorkflowExpression.Validate(__workflow_addFileToZIPworkflow, nameof(addFileToZIPworkflow), required: true);
-            var __workflow_addFileToZIPaddFilenameToFolderInZIP = addFileToZIPaddFilenameToFolderInZIP == null ? null : WorkflowExpression.Compile(addFileToZIPaddFilenameToFolderInZIP);
-            WorkflowExpression.Validate(__workflow_addFileToZIPaddFilenameToFolderInZIP, nameof(addFileToZIPaddFilenameToFolderInZIP), required: false);
-            var __workflow_addFileToZIPsourceFilenameToAddToZIPComment = addFileToZIPsourceFilenameToAddToZIPComment == null ? null : WorkflowExpression.Compile(addFileToZIPsourceFilenameToAddToZIPComment);
-            WorkflowExpression.Validate(__workflow_addFileToZIPsourceFilenameToAddToZIPComment, nameof(addFileToZIPsourceFilenameToAddToZIPComment), required: false);
-            var __workflow_addFileToZIPcompress = addFileToZIPcompress == null ? null : WorkflowExpression.Compile(addFileToZIPcompress);
-            WorkflowExpression.Validate(__workflow_addFileToZIPcompress, nameof(addFileToZIPcompress), required: false);
-            var __workflow_addFileToZIPaddToExistingZIPFile = addFileToZIPaddToExistingZIPFile == null ? null : WorkflowExpression.Compile(addFileToZIPaddToExistingZIPFile);
-            WorkflowExpression.Validate(__workflow_addFileToZIPaddToExistingZIPFile, nameof(addFileToZIPaddToExistingZIPFile), required: false);
+            var __workflow_addFileToZIPsourceFilenameToAddToZIP = WorkflowExpression.Compile(addFileToZIPsourceFilenameToAddToZIP, nameof(addFileToZIPsourceFilenameToAddToZIP), required: true);
+            var __workflow_addFileToZIPoutputZIPFilename = WorkflowExpression.Compile(addFileToZIPoutputZIPFilename, nameof(addFileToZIPoutputZIPFilename), required: true);
+            var __workflow_addFileToZIPworkflow = WorkflowExpression.Compile(addFileToZIPworkflow, nameof(addFileToZIPworkflow), required: true);
+            var __workflow_addFileToZIPaddFilenameToFolderInZIP = WorkflowExpression.Compile(addFileToZIPaddFilenameToFolderInZIP, nameof(addFileToZIPaddFilenameToFolderInZIP), required: false);
+            var __workflow_addFileToZIPsourceFilenameToAddToZIPComment = WorkflowExpression.Compile(addFileToZIPsourceFilenameToAddToZIPComment, nameof(addFileToZIPsourceFilenameToAddToZIPComment), required: false);
+            var __workflow_addFileToZIPcompress = WorkflowExpression.Compile(addFileToZIPcompress, nameof(addFileToZIPcompress), required: false);
+            var __workflow_addFileToZIPaddToExistingZIPFile = WorkflowExpression.Compile(addFileToZIPaddToExistingZIPFile, nameof(addFileToZIPaddToExistingZIPFile), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/FileManagement/AddFileToZIP";
@@ -11654,24 +10854,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<AddFolderToZIPResponse> AddFolderToZIP(Expression<Func<string>> addFolderToZIPsourceFolderToAddToZIP, Expression<Func<string>> addFolderToZIPoutputZIPFilename, Expression<Func<string>> addFolderToZIPworkflow, Expression<Func<string>> addFolderToZIPaddFilesToFolderInZIP = null, Expression<Func<bool>> addFolderToZIPcompress = null, Expression<Func<bool>> addFolderToZIPaddToExistingZIPFile = null, Expression<Func<bool>> addFolderToZIPincludeSubfolders = null, Expression<Func<string>> addFolderToZIPincludeFilesRegEx = null, Expression<Func<string>> addFolderToZIPexcludeFilesRegEx = null)
         {
-            var __workflow_addFolderToZIPsourceFolderToAddToZIP = addFolderToZIPsourceFolderToAddToZIP == null ? null : WorkflowExpression.Compile(addFolderToZIPsourceFolderToAddToZIP);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPsourceFolderToAddToZIP, nameof(addFolderToZIPsourceFolderToAddToZIP), required: true);
-            var __workflow_addFolderToZIPoutputZIPFilename = addFolderToZIPoutputZIPFilename == null ? null : WorkflowExpression.Compile(addFolderToZIPoutputZIPFilename);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPoutputZIPFilename, nameof(addFolderToZIPoutputZIPFilename), required: true);
-            var __workflow_addFolderToZIPworkflow = addFolderToZIPworkflow == null ? null : WorkflowExpression.Compile(addFolderToZIPworkflow);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPworkflow, nameof(addFolderToZIPworkflow), required: true);
-            var __workflow_addFolderToZIPaddFilesToFolderInZIP = addFolderToZIPaddFilesToFolderInZIP == null ? null : WorkflowExpression.Compile(addFolderToZIPaddFilesToFolderInZIP);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPaddFilesToFolderInZIP, nameof(addFolderToZIPaddFilesToFolderInZIP), required: false);
-            var __workflow_addFolderToZIPcompress = addFolderToZIPcompress == null ? null : WorkflowExpression.Compile(addFolderToZIPcompress);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPcompress, nameof(addFolderToZIPcompress), required: false);
-            var __workflow_addFolderToZIPaddToExistingZIPFile = addFolderToZIPaddToExistingZIPFile == null ? null : WorkflowExpression.Compile(addFolderToZIPaddToExistingZIPFile);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPaddToExistingZIPFile, nameof(addFolderToZIPaddToExistingZIPFile), required: false);
-            var __workflow_addFolderToZIPincludeSubfolders = addFolderToZIPincludeSubfolders == null ? null : WorkflowExpression.Compile(addFolderToZIPincludeSubfolders);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPincludeSubfolders, nameof(addFolderToZIPincludeSubfolders), required: false);
-            var __workflow_addFolderToZIPincludeFilesRegEx = addFolderToZIPincludeFilesRegEx == null ? null : WorkflowExpression.Compile(addFolderToZIPincludeFilesRegEx);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPincludeFilesRegEx, nameof(addFolderToZIPincludeFilesRegEx), required: false);
-            var __workflow_addFolderToZIPexcludeFilesRegEx = addFolderToZIPexcludeFilesRegEx == null ? null : WorkflowExpression.Compile(addFolderToZIPexcludeFilesRegEx);
-            WorkflowExpression.Validate(__workflow_addFolderToZIPexcludeFilesRegEx, nameof(addFolderToZIPexcludeFilesRegEx), required: false);
+            var __workflow_addFolderToZIPsourceFolderToAddToZIP = WorkflowExpression.Compile(addFolderToZIPsourceFolderToAddToZIP, nameof(addFolderToZIPsourceFolderToAddToZIP), required: true);
+            var __workflow_addFolderToZIPoutputZIPFilename = WorkflowExpression.Compile(addFolderToZIPoutputZIPFilename, nameof(addFolderToZIPoutputZIPFilename), required: true);
+            var __workflow_addFolderToZIPworkflow = WorkflowExpression.Compile(addFolderToZIPworkflow, nameof(addFolderToZIPworkflow), required: true);
+            var __workflow_addFolderToZIPaddFilesToFolderInZIP = WorkflowExpression.Compile(addFolderToZIPaddFilesToFolderInZIP, nameof(addFolderToZIPaddFilesToFolderInZIP), required: false);
+            var __workflow_addFolderToZIPcompress = WorkflowExpression.Compile(addFolderToZIPcompress, nameof(addFolderToZIPcompress), required: false);
+            var __workflow_addFolderToZIPaddToExistingZIPFile = WorkflowExpression.Compile(addFolderToZIPaddToExistingZIPFile, nameof(addFolderToZIPaddToExistingZIPFile), required: false);
+            var __workflow_addFolderToZIPincludeSubfolders = WorkflowExpression.Compile(addFolderToZIPincludeSubfolders, nameof(addFolderToZIPincludeSubfolders), required: false);
+            var __workflow_addFolderToZIPincludeFilesRegEx = WorkflowExpression.Compile(addFolderToZIPincludeFilesRegEx, nameof(addFolderToZIPincludeFilesRegEx), required: false);
+            var __workflow_addFolderToZIPexcludeFilesRegEx = WorkflowExpression.Compile(addFolderToZIPexcludeFilesRegEx, nameof(addFolderToZIPexcludeFilesRegEx), required: false);
             return new DeferredBodyAction<AddFolderToZIPResponse>(() =>
             {
                 var apiCallPath = "/FileManagement/AddFolderToZIP";
@@ -11763,14 +10954,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsession
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsession")]
         public IBodyWorkflowAction<GetFileContentsAsBase64Response> GetFileContentsAsBase64(Expression<Func<string>> getFileContentsAsBase64filePath, Expression<Func<string>> getFileContentsAsBase64workflow, Expression<Func<bool>> getFileContentsAsBase64compress = null, Expression<Func<int>> getFileContentsAsBase64maxFileSize = null)
         {
-            var __workflow_getFileContentsAsBase64filePath = getFileContentsAsBase64filePath == null ? null : WorkflowExpression.Compile(getFileContentsAsBase64filePath);
-            WorkflowExpression.Validate(__workflow_getFileContentsAsBase64filePath, nameof(getFileContentsAsBase64filePath), required: true);
-            var __workflow_getFileContentsAsBase64workflow = getFileContentsAsBase64workflow == null ? null : WorkflowExpression.Compile(getFileContentsAsBase64workflow);
-            WorkflowExpression.Validate(__workflow_getFileContentsAsBase64workflow, nameof(getFileContentsAsBase64workflow), required: true);
-            var __workflow_getFileContentsAsBase64compress = getFileContentsAsBase64compress == null ? null : WorkflowExpression.Compile(getFileContentsAsBase64compress);
-            WorkflowExpression.Validate(__workflow_getFileContentsAsBase64compress, nameof(getFileContentsAsBase64compress), required: false);
-            var __workflow_getFileContentsAsBase64maxFileSize = getFileContentsAsBase64maxFileSize == null ? null : WorkflowExpression.Compile(getFileContentsAsBase64maxFileSize);
-            WorkflowExpression.Validate(__workflow_getFileContentsAsBase64maxFileSize, nameof(getFileContentsAsBase64maxFileSize), required: false);
+            var __workflow_getFileContentsAsBase64filePath = WorkflowExpression.Compile(getFileContentsAsBase64filePath, nameof(getFileContentsAsBase64filePath), required: true);
+            var __workflow_getFileContentsAsBase64workflow = WorkflowExpression.Compile(getFileContentsAsBase64workflow, nameof(getFileContentsAsBase64workflow), required: true);
+            var __workflow_getFileContentsAsBase64compress = WorkflowExpression.Compile(getFileContentsAsBase64compress, nameof(getFileContentsAsBase64compress), required: false);
+            var __workflow_getFileContentsAsBase64maxFileSize = WorkflowExpression.Compile(getFileContentsAsBase64maxFileSize, nameof(getFileContentsAsBase64maxFileSize), required: false);
             return new DeferredBodyAction<GetFileContentsAsBase64Response>(() =>
             {
                 var apiCallPath = "/FileManagement/GetFileContentsAsBase64";

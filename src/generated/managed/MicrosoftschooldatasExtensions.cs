@@ -30,10 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction GetInboundFlow(Expression<Func<string>> inboundFlowId, Expression<Func<string>> accessToken = null)
         {
-            var __workflow_inboundFlowId = inboundFlowId == null ? null : WorkflowExpression.Compile(inboundFlowId);
-            WorkflowExpression.Validate(__workflow_inboundFlowId, nameof(inboundFlowId), required: true);
-            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
-            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: false);
+            var __workflow_inboundFlowId = WorkflowExpression.Compile(inboundFlowId, nameof(inboundFlowId), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/external/industryData/inboundFlows/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inboundFlowId, 1));
@@ -49,8 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction GetDataconnectorList(Expression<Func<string>> accessToken)
         {
-            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
-            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/beta/external/industryData/dataConnectors";
@@ -64,10 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CallGetuploadsession(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
         {
-            var __workflow_createdDataConnectorId = createdDataConnectorId == null ? null : WorkflowExpression.Compile(createdDataConnectorId);
-            WorkflowExpression.Validate(__workflow_createdDataConnectorId, nameof(createdDataConnectorId), required: true);
-            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
-            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: true);
+            var __workflow_createdDataConnectorId = WorkflowExpression.Compile(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/external/industryData/dataConnectors('{0}')/microsoft.graph.industryData.azureDataLakeConnector/microsoft.graph.industryData.getUploadSession()", ExpressionConverter.ConvertWithUrlEncoding(__workflow_createdDataConnectorId, 1));
@@ -81,10 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CallValidate(Expression<Func<string>> createdDataConnectorId, Expression<Func<string>> accessToken)
         {
-            var __workflow_createdDataConnectorId = createdDataConnectorId == null ? null : WorkflowExpression.Compile(createdDataConnectorId);
-            WorkflowExpression.Validate(__workflow_createdDataConnectorId, nameof(createdDataConnectorId), required: true);
-            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
-            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: true);
+            var __workflow_createdDataConnectorId = WorkflowExpression.Compile(createdDataConnectorId, nameof(createdDataConnectorId), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/external/industryData/dataConnectors/{0}/validate()", ExpressionConverter.ConvertWithUrlEncoding(__workflow_createdDataConnectorId, 1));
@@ -99,10 +92,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftschooldatas
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftschooldatas")]
         public IWorkflowAction CheckValidationResult(Expression<Func<string>> validationOperationUri, Expression<Func<string>> accessToken)
         {
-            var __workflow_validationOperationUri = validationOperationUri == null ? null : WorkflowExpression.Compile(validationOperationUri);
-            WorkflowExpression.Validate(__workflow_validationOperationUri, nameof(validationOperationUri), required: true);
-            var __workflow_accessToken = accessToken == null ? null : WorkflowExpression.Compile(accessToken);
-            WorkflowExpression.Validate(__workflow_accessToken, nameof(accessToken), required: true);
+            var __workflow_validationOperationUri = WorkflowExpression.Compile(validationOperationUri, nameof(validationOperationUri), required: true);
+            var __workflow_accessToken = WorkflowExpression.Compile(accessToken, nameof(accessToken), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/";

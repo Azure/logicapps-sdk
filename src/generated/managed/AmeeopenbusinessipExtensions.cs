@@ -13,42 +13,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         public IBodyWorkflowAction<GetCompaniesResponse> GetCompanies(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> companyName = null, Expression<Func<int>> gupAmeeCompanyId = null, Expression<Func<bool>> isGup = null, Expression<Func<string>> city = null, Expression<Func<int>> postcode = null, Expression<Func<string>> provinceName = null, Expression<Func<string>> ukSic2007 = null, Expression<Func<int>> minEmployees = null, Expression<Func<int>> maxEmployees = null, Expression<Func<int>> minAnnualSalesLocal = null, Expression<Func<int>> maxAnnualSalesLocal = null, Expression<Func<int>> minScore = null, Expression<Func<int>> maxScore = null, Expression<Func<string>> fromLatLon = null, Expression<Func<int>> distance = null, Expression<Func<string>> stats = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_companyName = companyName == null ? null : WorkflowExpression.Compile(companyName);
-            WorkflowExpression.Validate(__workflow_companyName, nameof(companyName), required: false);
-            var __workflow_gupAmeeCompanyId = gupAmeeCompanyId == null ? null : WorkflowExpression.Compile(gupAmeeCompanyId);
-            WorkflowExpression.Validate(__workflow_gupAmeeCompanyId, nameof(gupAmeeCompanyId), required: false);
-            var __workflow_isGup = isGup == null ? null : WorkflowExpression.Compile(isGup);
-            WorkflowExpression.Validate(__workflow_isGup, nameof(isGup), required: false);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
-            var __workflow_postcode = postcode == null ? null : WorkflowExpression.Compile(postcode);
-            WorkflowExpression.Validate(__workflow_postcode, nameof(postcode), required: false);
-            var __workflow_provinceName = provinceName == null ? null : WorkflowExpression.Compile(provinceName);
-            WorkflowExpression.Validate(__workflow_provinceName, nameof(provinceName), required: false);
-            var __workflow_ukSic2007 = ukSic2007 == null ? null : WorkflowExpression.Compile(ukSic2007);
-            WorkflowExpression.Validate(__workflow_ukSic2007, nameof(ukSic2007), required: false);
-            var __workflow_minEmployees = minEmployees == null ? null : WorkflowExpression.Compile(minEmployees);
-            WorkflowExpression.Validate(__workflow_minEmployees, nameof(minEmployees), required: false);
-            var __workflow_maxEmployees = maxEmployees == null ? null : WorkflowExpression.Compile(maxEmployees);
-            WorkflowExpression.Validate(__workflow_maxEmployees, nameof(maxEmployees), required: false);
-            var __workflow_minAnnualSalesLocal = minAnnualSalesLocal == null ? null : WorkflowExpression.Compile(minAnnualSalesLocal);
-            WorkflowExpression.Validate(__workflow_minAnnualSalesLocal, nameof(minAnnualSalesLocal), required: false);
-            var __workflow_maxAnnualSalesLocal = maxAnnualSalesLocal == null ? null : WorkflowExpression.Compile(maxAnnualSalesLocal);
-            WorkflowExpression.Validate(__workflow_maxAnnualSalesLocal, nameof(maxAnnualSalesLocal), required: false);
-            var __workflow_minScore = minScore == null ? null : WorkflowExpression.Compile(minScore);
-            WorkflowExpression.Validate(__workflow_minScore, nameof(minScore), required: false);
-            var __workflow_maxScore = maxScore == null ? null : WorkflowExpression.Compile(maxScore);
-            WorkflowExpression.Validate(__workflow_maxScore, nameof(maxScore), required: false);
-            var __workflow_fromLatLon = fromLatLon == null ? null : WorkflowExpression.Compile(fromLatLon);
-            WorkflowExpression.Validate(__workflow_fromLatLon, nameof(fromLatLon), required: false);
-            var __workflow_distance = distance == null ? null : WorkflowExpression.Compile(distance);
-            WorkflowExpression.Validate(__workflow_distance, nameof(distance), required: false);
-            var __workflow_stats = stats == null ? null : WorkflowExpression.Compile(stats);
-            WorkflowExpression.Validate(__workflow_stats, nameof(stats), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_companyName = WorkflowExpression.Compile(companyName, nameof(companyName), required: false);
+            var __workflow_gupAmeeCompanyId = WorkflowExpression.Compile(gupAmeeCompanyId, nameof(gupAmeeCompanyId), required: false);
+            var __workflow_isGup = WorkflowExpression.Compile(isGup, nameof(isGup), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_postcode = WorkflowExpression.Compile(postcode, nameof(postcode), required: false);
+            var __workflow_provinceName = WorkflowExpression.Compile(provinceName, nameof(provinceName), required: false);
+            var __workflow_ukSic2007 = WorkflowExpression.Compile(ukSic2007, nameof(ukSic2007), required: false);
+            var __workflow_minEmployees = WorkflowExpression.Compile(minEmployees, nameof(minEmployees), required: false);
+            var __workflow_maxEmployees = WorkflowExpression.Compile(maxEmployees, nameof(maxEmployees), required: false);
+            var __workflow_minAnnualSalesLocal = WorkflowExpression.Compile(minAnnualSalesLocal, nameof(minAnnualSalesLocal), required: false);
+            var __workflow_maxAnnualSalesLocal = WorkflowExpression.Compile(maxAnnualSalesLocal, nameof(maxAnnualSalesLocal), required: false);
+            var __workflow_minScore = WorkflowExpression.Compile(minScore, nameof(minScore), required: false);
+            var __workflow_maxScore = WorkflowExpression.Compile(maxScore, nameof(maxScore), required: false);
+            var __workflow_fromLatLon = WorkflowExpression.Compile(fromLatLon, nameof(fromLatLon), required: false);
+            var __workflow_distance = WorkflowExpression.Compile(distance, nameof(distance), required: false);
+            var __workflow_stats = WorkflowExpression.Compile(stats, nameof(stats), required: false);
             return new DeferredBodyAction<GetCompaniesResponse>(() =>
             {
                 var apiCallPath = "/companies";
@@ -97,10 +79,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ameeopenbusinessip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ameeopenbusinessip")]
         public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> id, Expression<Func<string>> type = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<GetCompanyResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

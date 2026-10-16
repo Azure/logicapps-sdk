@@ -13,30 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodysender, Expression<Func<string>> requestBodycontent, Expression<Func<requestBodyprotocolInput>> requestBodyprotocol, Expression<Func<requestBodyrecipientsInputItem[]>> requestBodyrecipients, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<bool>> requestBodyadMessage = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodyrequestId = null)
         {
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
-            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
-            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
-            var __workflow_requestBodysender = requestBodysender == null ? null : WorkflowExpression.Compile(requestBodysender);
-            WorkflowExpression.Validate(__workflow_requestBodysender, nameof(requestBodysender), required: true);
-            var __workflow_requestBodycontent = requestBodycontent == null ? null : WorkflowExpression.Compile(requestBodycontent);
-            WorkflowExpression.Validate(__workflow_requestBodycontent, nameof(requestBodycontent), required: true);
-            var __workflow_requestBodyprotocol = requestBodyprotocol == null ? null : WorkflowExpression.Compile(requestBodyprotocol);
-            WorkflowExpression.Validate(__workflow_requestBodyprotocol, nameof(requestBodyprotocol), required: true);
-            var __workflow_requestBodyrecipients = requestBodyrecipients == null ? null : WorkflowExpression.Compile(requestBodyrecipients);
-            WorkflowExpression.Validate(__workflow_requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            var __workflow_requestBodysendDateTime = requestBodysendDateTime == null ? null : WorkflowExpression.Compile(requestBodysendDateTime);
-            WorkflowExpression.Validate(__workflow_requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            var __workflow_requestBodyattachmentUri = requestBodyattachmentUri == null ? null : WorkflowExpression.Compile(requestBodyattachmentUri);
-            WorkflowExpression.Validate(__workflow_requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
-            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            var __workflow_requestBodyadMessage = requestBodyadMessage == null ? null : WorkflowExpression.Compile(requestBodyadMessage);
-            WorkflowExpression.Validate(__workflow_requestBodyadMessage, nameof(requestBodyadMessage), required: false);
-            var __workflow_requestBodydlrUrl = requestBodydlrUrl == null ? null : WorkflowExpression.Compile(requestBodydlrUrl);
-            WorkflowExpression.Validate(__workflow_requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            var __workflow_requestBodyrequestId = requestBodyrequestId == null ? null : WorkflowExpression.Compile(requestBodyrequestId);
-            WorkflowExpression.Validate(__workflow_requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
+            var __workflow_requestBodysender = WorkflowExpression.Compile(requestBodysender, nameof(requestBodysender), required: true);
+            var __workflow_requestBodycontent = WorkflowExpression.Compile(requestBodycontent, nameof(requestBodycontent), required: true);
+            var __workflow_requestBodyprotocol = WorkflowExpression.Compile(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
+            var __workflow_requestBodyrecipients = WorkflowExpression.Compile(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            var __workflow_requestBodysendDateTime = WorkflowExpression.Compile(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            var __workflow_requestBodyattachmentUri = WorkflowExpression.Compile(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            var __workflow_requestBodycustomerData = WorkflowExpression.Compile(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_requestBodyadMessage = WorkflowExpression.Compile(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
+            var __workflow_requestBodydlrUrl = WorkflowExpression.Compile(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            var __workflow_requestBodyrequestId = WorkflowExpression.Compile(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/messages";
@@ -102,32 +90,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage(Expression<Func<string>> parentMessageId, Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodysender, Expression<Func<string>> requestBodycontent, Expression<Func<requestBodyprotocolInput>> requestBodyprotocol, Expression<Func<requestBodyrecipientsInputItem[]>> requestBodyrecipients, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<bool>> requestBodyadMessage = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodyrequestId = null)
         {
-            var __workflow_parentMessageId = parentMessageId == null ? null : WorkflowExpression.Compile(parentMessageId);
-            WorkflowExpression.Validate(__workflow_parentMessageId, nameof(parentMessageId), required: true);
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
-            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
-            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
-            var __workflow_requestBodysender = requestBodysender == null ? null : WorkflowExpression.Compile(requestBodysender);
-            WorkflowExpression.Validate(__workflow_requestBodysender, nameof(requestBodysender), required: true);
-            var __workflow_requestBodycontent = requestBodycontent == null ? null : WorkflowExpression.Compile(requestBodycontent);
-            WorkflowExpression.Validate(__workflow_requestBodycontent, nameof(requestBodycontent), required: true);
-            var __workflow_requestBodyprotocol = requestBodyprotocol == null ? null : WorkflowExpression.Compile(requestBodyprotocol);
-            WorkflowExpression.Validate(__workflow_requestBodyprotocol, nameof(requestBodyprotocol), required: true);
-            var __workflow_requestBodyrecipients = requestBodyrecipients == null ? null : WorkflowExpression.Compile(requestBodyrecipients);
-            WorkflowExpression.Validate(__workflow_requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            var __workflow_requestBodysendDateTime = requestBodysendDateTime == null ? null : WorkflowExpression.Compile(requestBodysendDateTime);
-            WorkflowExpression.Validate(__workflow_requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            var __workflow_requestBodyattachmentUri = requestBodyattachmentUri == null ? null : WorkflowExpression.Compile(requestBodyattachmentUri);
-            WorkflowExpression.Validate(__workflow_requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
-            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            var __workflow_requestBodyadMessage = requestBodyadMessage == null ? null : WorkflowExpression.Compile(requestBodyadMessage);
-            WorkflowExpression.Validate(__workflow_requestBodyadMessage, nameof(requestBodyadMessage), required: false);
-            var __workflow_requestBodydlrUrl = requestBodydlrUrl == null ? null : WorkflowExpression.Compile(requestBodydlrUrl);
-            WorkflowExpression.Validate(__workflow_requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            var __workflow_requestBodyrequestId = requestBodyrequestId == null ? null : WorkflowExpression.Compile(requestBodyrequestId);
-            WorkflowExpression.Validate(__workflow_requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            var __workflow_parentMessageId = WorkflowExpression.Compile(parentMessageId, nameof(parentMessageId), required: true);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
+            var __workflow_requestBodysender = WorkflowExpression.Compile(requestBodysender, nameof(requestBodysender), required: true);
+            var __workflow_requestBodycontent = WorkflowExpression.Compile(requestBodycontent, nameof(requestBodycontent), required: true);
+            var __workflow_requestBodyprotocol = WorkflowExpression.Compile(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
+            var __workflow_requestBodyrecipients = WorkflowExpression.Compile(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            var __workflow_requestBodysendDateTime = WorkflowExpression.Compile(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            var __workflow_requestBodyattachmentUri = WorkflowExpression.Compile(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            var __workflow_requestBodycustomerData = WorkflowExpression.Compile(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_requestBodyadMessage = WorkflowExpression.Compile(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
+            var __workflow_requestBodydlrUrl = WorkflowExpression.Compile(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            var __workflow_requestBodyrequestId = WorkflowExpression.Compile(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             return new DeferredBodyAction<SendReplyMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentMessageId, 1));
@@ -193,14 +168,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> SendDiscussionReplyMessage(Expression<Func<string>> customerId, Expression<Func<string>> requestBodythreadId, Expression<Func<string>> requestBodycontent, Expression<Func<string>> requestBodycustomerData = null)
         {
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
-            var __workflow_requestBodythreadId = requestBodythreadId == null ? null : WorkflowExpression.Compile(requestBodythreadId);
-            WorkflowExpression.Validate(__workflow_requestBodythreadId, nameof(requestBodythreadId), required: true);
-            var __workflow_requestBodycontent = requestBodycontent == null ? null : WorkflowExpression.Compile(requestBodycontent);
-            WorkflowExpression.Validate(__workflow_requestBodycontent, nameof(requestBodycontent), required: true);
-            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
-            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
+            var __workflow_requestBodythreadId = WorkflowExpression.Compile(requestBodythreadId, nameof(requestBodythreadId), required: true);
+            var __workflow_requestBodycontent = WorkflowExpression.Compile(requestBodycontent, nameof(requestBodycontent), required: true);
+            var __workflow_requestBodycustomerData = WorkflowExpression.Compile(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
             return new DeferredBodyAction<SendDiscussionReplyMessageResponse>(() =>
             {
                 var apiCallPath = "/messages/discussion/reply";
@@ -231,22 +202,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IWorkflowAction CreateWhatsappTemplate(Expression<Func<string>> customerId, Expression<Func<string>> identityNumber, Expression<Func<string>> requestBodydisplayName, Expression<Func<string>> requestBodyrawContent, Expression<Func<string>> requestBodycategory, Expression<Func<string>> requestBodylanguage, Expression<Func<requestBodybuttonsInputItem[]>> requestBodybuttons = null, Expression<Func<string>> requestBodyattachmentUrl = null)
         {
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
-            var __workflow_identityNumber = identityNumber == null ? null : WorkflowExpression.Compile(identityNumber);
-            WorkflowExpression.Validate(__workflow_identityNumber, nameof(identityNumber), required: true);
-            var __workflow_requestBodydisplayName = requestBodydisplayName == null ? null : WorkflowExpression.Compile(requestBodydisplayName);
-            WorkflowExpression.Validate(__workflow_requestBodydisplayName, nameof(requestBodydisplayName), required: true);
-            var __workflow_requestBodyrawContent = requestBodyrawContent == null ? null : WorkflowExpression.Compile(requestBodyrawContent);
-            WorkflowExpression.Validate(__workflow_requestBodyrawContent, nameof(requestBodyrawContent), required: true);
-            var __workflow_requestBodycategory = requestBodycategory == null ? null : WorkflowExpression.Compile(requestBodycategory);
-            WorkflowExpression.Validate(__workflow_requestBodycategory, nameof(requestBodycategory), required: true);
-            var __workflow_requestBodylanguage = requestBodylanguage == null ? null : WorkflowExpression.Compile(requestBodylanguage);
-            WorkflowExpression.Validate(__workflow_requestBodylanguage, nameof(requestBodylanguage), required: true);
-            var __workflow_requestBodybuttons = requestBodybuttons == null ? null : WorkflowExpression.Compile(requestBodybuttons);
-            WorkflowExpression.Validate(__workflow_requestBodybuttons, nameof(requestBodybuttons), required: false);
-            var __workflow_requestBodyattachmentUrl = requestBodyattachmentUrl == null ? null : WorkflowExpression.Compile(requestBodyattachmentUrl);
-            WorkflowExpression.Validate(__workflow_requestBodyattachmentUrl, nameof(requestBodyattachmentUrl), required: false);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
+            var __workflow_identityNumber = WorkflowExpression.Compile(identityNumber, nameof(identityNumber), required: true);
+            var __workflow_requestBodydisplayName = WorkflowExpression.Compile(requestBodydisplayName, nameof(requestBodydisplayName), required: true);
+            var __workflow_requestBodyrawContent = WorkflowExpression.Compile(requestBodyrawContent, nameof(requestBodyrawContent), required: true);
+            var __workflow_requestBodycategory = WorkflowExpression.Compile(requestBodycategory, nameof(requestBodycategory), required: true);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: true);
+            var __workflow_requestBodybuttons = WorkflowExpression.Compile(requestBodybuttons, nameof(requestBodybuttons), required: false);
+            var __workflow_requestBodyattachmentUrl = WorkflowExpression.Compile(requestBodyattachmentUrl, nameof(requestBodyattachmentUrl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/whatsapp/templates/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityNumber, 1));
@@ -286,32 +249,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodytemplateName, Expression<Func<requestBodyrecipientsInputItem2[]>> requestBodyrecipients, Expression<Func<string[]>> requestBodybodyParameters = null, Expression<Func<string[]>> requestBodyheaderParameters = null, Expression<Func<requestBodybuttonsInputItem2[]>> requestBodybuttons = null, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<bool>> requestBodyuseSmsFallback = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<string>> requestBodyrequestId = null)
         {
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: true);
-            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
-            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
-            var __workflow_requestBodytemplateName = requestBodytemplateName == null ? null : WorkflowExpression.Compile(requestBodytemplateName);
-            WorkflowExpression.Validate(__workflow_requestBodytemplateName, nameof(requestBodytemplateName), required: true);
-            var __workflow_requestBodyrecipients = requestBodyrecipients == null ? null : WorkflowExpression.Compile(requestBodyrecipients);
-            WorkflowExpression.Validate(__workflow_requestBodyrecipients, nameof(requestBodyrecipients), required: true);
-            var __workflow_requestBodybodyParameters = requestBodybodyParameters == null ? null : WorkflowExpression.Compile(requestBodybodyParameters);
-            WorkflowExpression.Validate(__workflow_requestBodybodyParameters, nameof(requestBodybodyParameters), required: false);
-            var __workflow_requestBodyheaderParameters = requestBodyheaderParameters == null ? null : WorkflowExpression.Compile(requestBodyheaderParameters);
-            WorkflowExpression.Validate(__workflow_requestBodyheaderParameters, nameof(requestBodyheaderParameters), required: false);
-            var __workflow_requestBodybuttons = requestBodybuttons == null ? null : WorkflowExpression.Compile(requestBodybuttons);
-            WorkflowExpression.Validate(__workflow_requestBodybuttons, nameof(requestBodybuttons), required: false);
-            var __workflow_requestBodysendDateTime = requestBodysendDateTime == null ? null : WorkflowExpression.Compile(requestBodysendDateTime);
-            WorkflowExpression.Validate(__workflow_requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
-            var __workflow_requestBodyattachmentUri = requestBodyattachmentUri == null ? null : WorkflowExpression.Compile(requestBodyattachmentUri);
-            WorkflowExpression.Validate(__workflow_requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
-            var __workflow_requestBodyuseSmsFallback = requestBodyuseSmsFallback == null ? null : WorkflowExpression.Compile(requestBodyuseSmsFallback);
-            WorkflowExpression.Validate(__workflow_requestBodyuseSmsFallback, nameof(requestBodyuseSmsFallback), required: false);
-            var __workflow_requestBodydlrUrl = requestBodydlrUrl == null ? null : WorkflowExpression.Compile(requestBodydlrUrl);
-            WorkflowExpression.Validate(__workflow_requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
-            var __workflow_requestBodycustomerData = requestBodycustomerData == null ? null : WorkflowExpression.Compile(requestBodycustomerData);
-            WorkflowExpression.Validate(__workflow_requestBodycustomerData, nameof(requestBodycustomerData), required: false);
-            var __workflow_requestBodyrequestId = requestBodyrequestId == null ? null : WorkflowExpression.Compile(requestBodyrequestId);
-            WorkflowExpression.Validate(__workflow_requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
+            var __workflow_requestBodytemplateName = WorkflowExpression.Compile(requestBodytemplateName, nameof(requestBodytemplateName), required: true);
+            var __workflow_requestBodyrecipients = WorkflowExpression.Compile(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            var __workflow_requestBodybodyParameters = WorkflowExpression.Compile(requestBodybodyParameters, nameof(requestBodybodyParameters), required: false);
+            var __workflow_requestBodyheaderParameters = WorkflowExpression.Compile(requestBodyheaderParameters, nameof(requestBodyheaderParameters), required: false);
+            var __workflow_requestBodybuttons = WorkflowExpression.Compile(requestBodybuttons, nameof(requestBodybuttons), required: false);
+            var __workflow_requestBodysendDateTime = WorkflowExpression.Compile(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            var __workflow_requestBodyattachmentUri = WorkflowExpression.Compile(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            var __workflow_requestBodyuseSmsFallback = WorkflowExpression.Compile(requestBodyuseSmsFallback, nameof(requestBodyuseSmsFallback), required: false);
+            var __workflow_requestBodydlrUrl = WorkflowExpression.Compile(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            var __workflow_requestBodycustomerData = WorkflowExpression.Compile(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            var __workflow_requestBodyrequestId = WorkflowExpression.Compile(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
             return new DeferredBodyAction<SendWhatsappTemplateMessageResponse>(() =>
             {
                 var apiCallPath = "/messages/templates/whatsapp";
@@ -391,14 +341,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<GetGroupContactResponse> GetGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<string>> region = null)
         {
-            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
-            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
-            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
-            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
+            var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
+            var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
             return new DeferredBodyAction<GetGroupContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
@@ -413,12 +359,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> DeleteGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone)
         {
-            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
-            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
-            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
-            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
+            var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
+            var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
@@ -431,36 +374,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> UpdateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
         {
-            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
-            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
-            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
-            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
-            var __workflow_requestBodyactive = requestBodyactive == null ? null : WorkflowExpression.Compile(requestBodyactive);
-            WorkflowExpression.Validate(__workflow_requestBodyactive, nameof(requestBodyactive), required: false);
-            var __workflow_requestBodyemail = requestBodyemail == null ? null : WorkflowExpression.Compile(requestBodyemail);
-            WorkflowExpression.Validate(__workflow_requestBodyemail, nameof(requestBodyemail), required: false);
-            var __workflow_requestBodyfirstName = requestBodyfirstName == null ? null : WorkflowExpression.Compile(requestBodyfirstName);
-            WorkflowExpression.Validate(__workflow_requestBodyfirstName, nameof(requestBodyfirstName), required: false);
-            var __workflow_requestBodylastName = requestBodylastName == null ? null : WorkflowExpression.Compile(requestBodylastName);
-            WorkflowExpression.Validate(__workflow_requestBodylastName, nameof(requestBodylastName), required: false);
-            var __workflow_requestBodygender = requestBodygender == null ? null : WorkflowExpression.Compile(requestBodygender);
-            WorkflowExpression.Validate(__workflow_requestBodygender, nameof(requestBodygender), required: false);
-            var __workflow_requestBodybirthYear = requestBodybirthYear == null ? null : WorkflowExpression.Compile(requestBodybirthYear);
-            WorkflowExpression.Validate(__workflow_requestBodybirthYear, nameof(requestBodybirthYear), required: false);
-            var __workflow_requestBodystreetAddress = requestBodystreetAddress == null ? null : WorkflowExpression.Compile(requestBodystreetAddress);
-            WorkflowExpression.Validate(__workflow_requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
-            var __workflow_requestBodyzipCode = requestBodyzipCode == null ? null : WorkflowExpression.Compile(requestBodyzipCode);
-            WorkflowExpression.Validate(__workflow_requestBodyzipCode, nameof(requestBodyzipCode), required: false);
-            var __workflow_requestBodycity = requestBodycity == null ? null : WorkflowExpression.Compile(requestBodycity);
-            WorkflowExpression.Validate(__workflow_requestBodycity, nameof(requestBodycity), required: false);
-            var __workflow_requestBodycountryCode = requestBodycountryCode == null ? null : WorkflowExpression.Compile(requestBodycountryCode);
-            WorkflowExpression.Validate(__workflow_requestBodycountryCode, nameof(requestBodycountryCode), required: false);
-            var __workflow_requestBodycustomContactProperties = requestBodycustomContactProperties == null ? null : WorkflowExpression.Compile(requestBodycustomContactProperties);
-            WorkflowExpression.Validate(__workflow_requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
-            var __workflow_requestBodyphoneNumberRegions = requestBodyphoneNumberRegions == null ? null : WorkflowExpression.Compile(requestBodyphoneNumberRegions);
-            WorkflowExpression.Validate(__workflow_requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
+            var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
+            var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
+            var __workflow_requestBodyactive = WorkflowExpression.Compile(requestBodyactive, nameof(requestBodyactive), required: false);
+            var __workflow_requestBodyemail = WorkflowExpression.Compile(requestBodyemail, nameof(requestBodyemail), required: false);
+            var __workflow_requestBodyfirstName = WorkflowExpression.Compile(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
+            var __workflow_requestBodylastName = WorkflowExpression.Compile(requestBodylastName, nameof(requestBodylastName), required: false);
+            var __workflow_requestBodygender = WorkflowExpression.Compile(requestBodygender, nameof(requestBodygender), required: false);
+            var __workflow_requestBodybirthYear = WorkflowExpression.Compile(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
+            var __workflow_requestBodystreetAddress = WorkflowExpression.Compile(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
+            var __workflow_requestBodyzipCode = WorkflowExpression.Compile(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
+            var __workflow_requestBodycity = WorkflowExpression.Compile(requestBodycity, nameof(requestBodycity), required: false);
+            var __workflow_requestBodycountryCode = WorkflowExpression.Compile(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
+            var __workflow_requestBodycustomContactProperties = WorkflowExpression.Compile(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
+            var __workflow_requestBodyphoneNumberRegions = WorkflowExpression.Compile(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
@@ -562,10 +490,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<bool> DeleteAllGroupContacts(Expression<Func<string>> customer, Expression<Func<string>> groupService)
         {
-            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
-            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
-            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
-            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
+            var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
+            var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1));
@@ -578,36 +504,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
         public IBodyWorkflowAction<string> CreateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> requestBodyphone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
         {
-            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
-            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
-            var __workflow_groupService = groupService == null ? null : WorkflowExpression.Compile(groupService);
-            WorkflowExpression.Validate(__workflow_groupService, nameof(groupService), required: true);
-            var __workflow_requestBodyphone = requestBodyphone == null ? null : WorkflowExpression.Compile(requestBodyphone);
-            WorkflowExpression.Validate(__workflow_requestBodyphone, nameof(requestBodyphone), required: true);
-            var __workflow_requestBodyactive = requestBodyactive == null ? null : WorkflowExpression.Compile(requestBodyactive);
-            WorkflowExpression.Validate(__workflow_requestBodyactive, nameof(requestBodyactive), required: false);
-            var __workflow_requestBodyemail = requestBodyemail == null ? null : WorkflowExpression.Compile(requestBodyemail);
-            WorkflowExpression.Validate(__workflow_requestBodyemail, nameof(requestBodyemail), required: false);
-            var __workflow_requestBodyfirstName = requestBodyfirstName == null ? null : WorkflowExpression.Compile(requestBodyfirstName);
-            WorkflowExpression.Validate(__workflow_requestBodyfirstName, nameof(requestBodyfirstName), required: false);
-            var __workflow_requestBodylastName = requestBodylastName == null ? null : WorkflowExpression.Compile(requestBodylastName);
-            WorkflowExpression.Validate(__workflow_requestBodylastName, nameof(requestBodylastName), required: false);
-            var __workflow_requestBodygender = requestBodygender == null ? null : WorkflowExpression.Compile(requestBodygender);
-            WorkflowExpression.Validate(__workflow_requestBodygender, nameof(requestBodygender), required: false);
-            var __workflow_requestBodybirthYear = requestBodybirthYear == null ? null : WorkflowExpression.Compile(requestBodybirthYear);
-            WorkflowExpression.Validate(__workflow_requestBodybirthYear, nameof(requestBodybirthYear), required: false);
-            var __workflow_requestBodystreetAddress = requestBodystreetAddress == null ? null : WorkflowExpression.Compile(requestBodystreetAddress);
-            WorkflowExpression.Validate(__workflow_requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
-            var __workflow_requestBodyzipCode = requestBodyzipCode == null ? null : WorkflowExpression.Compile(requestBodyzipCode);
-            WorkflowExpression.Validate(__workflow_requestBodyzipCode, nameof(requestBodyzipCode), required: false);
-            var __workflow_requestBodycity = requestBodycity == null ? null : WorkflowExpression.Compile(requestBodycity);
-            WorkflowExpression.Validate(__workflow_requestBodycity, nameof(requestBodycity), required: false);
-            var __workflow_requestBodycountryCode = requestBodycountryCode == null ? null : WorkflowExpression.Compile(requestBodycountryCode);
-            WorkflowExpression.Validate(__workflow_requestBodycountryCode, nameof(requestBodycountryCode), required: false);
-            var __workflow_requestBodycustomContactProperties = requestBodycustomContactProperties == null ? null : WorkflowExpression.Compile(requestBodycustomContactProperties);
-            WorkflowExpression.Validate(__workflow_requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
-            var __workflow_requestBodyphoneNumberRegions = requestBodyphoneNumberRegions == null ? null : WorkflowExpression.Compile(requestBodyphoneNumberRegions);
-            WorkflowExpression.Validate(__workflow_requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
+            var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
+            var __workflow_groupService = WorkflowExpression.Compile(groupService, nameof(groupService), required: true);
+            var __workflow_requestBodyphone = WorkflowExpression.Compile(requestBodyphone, nameof(requestBodyphone), required: true);
+            var __workflow_requestBodyactive = WorkflowExpression.Compile(requestBodyactive, nameof(requestBodyactive), required: false);
+            var __workflow_requestBodyemail = WorkflowExpression.Compile(requestBodyemail, nameof(requestBodyemail), required: false);
+            var __workflow_requestBodyfirstName = WorkflowExpression.Compile(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
+            var __workflow_requestBodylastName = WorkflowExpression.Compile(requestBodylastName, nameof(requestBodylastName), required: false);
+            var __workflow_requestBodygender = WorkflowExpression.Compile(requestBodygender, nameof(requestBodygender), required: false);
+            var __workflow_requestBodybirthYear = WorkflowExpression.Compile(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
+            var __workflow_requestBodystreetAddress = WorkflowExpression.Compile(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
+            var __workflow_requestBodyzipCode = WorkflowExpression.Compile(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
+            var __workflow_requestBodycity = WorkflowExpression.Compile(requestBodycity, nameof(requestBodycity), required: false);
+            var __workflow_requestBodycountryCode = WorkflowExpression.Compile(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
+            var __workflow_requestBodycustomContactProperties = WorkflowExpression.Compile(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
+            var __workflow_requestBodyphoneNumberRegions = WorkflowExpression.Compile(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customer, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupService, 1));
@@ -713,10 +624,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     {
         public IBodyWorkflowTrigger<NewMessageResponse> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, FlowRecurrence recurrence = null)
         {
-            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
-            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: true);
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
+            var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: true);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
             return new DeferredBodyTrigger<NewMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/service/{0}/pipelines/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1));

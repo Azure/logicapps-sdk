@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
         public IBodyWorkflowAction<GetGIFResponse> GetGIF(Expression<Func<string>> aPIKEY, Expression<Func<string>> q, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> rating = null, Expression<Func<string>> lang = null)
         {
-            var __workflow_aPIKEY = aPIKEY == null ? null : WorkflowExpression.Compile(aPIKEY);
-            WorkflowExpression.Validate(__workflow_aPIKEY, nameof(aPIKEY), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_rating = rating == null ? null : WorkflowExpression.Compile(rating);
-            WorkflowExpression.Validate(__workflow_rating, nameof(rating), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_aPIKEY = WorkflowExpression.Compile(aPIKEY, nameof(aPIKEY), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_rating = WorkflowExpression.Compile(rating, nameof(rating), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             return new DeferredBodyAction<GetGIFResponse>(() =>
             {
                 var apiCallPath = "/";

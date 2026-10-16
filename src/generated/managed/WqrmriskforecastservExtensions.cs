@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction GroupReportBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: false);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytenantFirstName = bodytenantFirstName == null ? null : WorkflowExpression.Compile(bodytenantFirstName);
-            WorkflowExpression.Validate(__workflow_bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            var __workflow_bodytenantLastName = bodytenantLastName == null ? null : WorkflowExpression.Compile(bodytenantLastName);
-            WorkflowExpression.Validate(__workflow_bodytenantLastName, nameof(bodytenantLastName), required: false);
-            var __workflow_bodycompanyName = bodycompanyName == null ? null : WorkflowExpression.Compile(bodycompanyName);
-            WorkflowExpression.Validate(__workflow_bodycompanyName, nameof(bodycompanyName), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodytenantFirstName = WorkflowExpression.Compile(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
+            var __workflow_bodytenantLastName = WorkflowExpression.Compile(bodytenantLastName, nameof(bodytenantLastName), required: false);
+            var __workflow_bodycompanyName = WorkflowExpression.Compile(bodycompanyName, nameof(bodycompanyName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/play/371c4dca-f7af-48b7-8dfa-cd6864969ba5";
@@ -84,22 +76,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction GroupReportCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: false);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytenantFirstName = bodytenantFirstName == null ? null : WorkflowExpression.Compile(bodytenantFirstName);
-            WorkflowExpression.Validate(__workflow_bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            var __workflow_bodytenantLastName = bodytenantLastName == null ? null : WorkflowExpression.Compile(bodytenantLastName);
-            WorkflowExpression.Validate(__workflow_bodytenantLastName, nameof(bodytenantLastName), required: false);
-            var __workflow_bodycompanyName = bodycompanyName == null ? null : WorkflowExpression.Compile(bodycompanyName);
-            WorkflowExpression.Validate(__workflow_bodycompanyName, nameof(bodycompanyName), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodytenantFirstName = WorkflowExpression.Compile(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
+            var __workflow_bodytenantLastName = WorkflowExpression.Compile(bodytenantLastName, nameof(bodytenantLastName), required: false);
+            var __workflow_bodycompanyName = WorkflowExpression.Compile(bodycompanyName, nameof(bodycompanyName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/play/e5f00dbd-dc28-4b35-8550-1901efa36af7";
@@ -155,22 +139,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction ReportManagementBanks(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: false);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytenantFirstName = bodytenantFirstName == null ? null : WorkflowExpression.Compile(bodytenantFirstName);
-            WorkflowExpression.Validate(__workflow_bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            var __workflow_bodytenantLastName = bodytenantLastName == null ? null : WorkflowExpression.Compile(bodytenantLastName);
-            WorkflowExpression.Validate(__workflow_bodytenantLastName, nameof(bodytenantLastName), required: false);
-            var __workflow_bodycompanyName = bodycompanyName == null ? null : WorkflowExpression.Compile(bodycompanyName);
-            WorkflowExpression.Validate(__workflow_bodycompanyName, nameof(bodycompanyName), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodytenantFirstName = WorkflowExpression.Compile(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
+            var __workflow_bodytenantLastName = WorkflowExpression.Compile(bodytenantLastName, nameof(bodytenantLastName), required: false);
+            var __workflow_bodycompanyName = WorkflowExpression.Compile(bodycompanyName, nameof(bodycompanyName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/play/158ed27b-9e89-45d2-a216-617d0b2d4355";
@@ -226,22 +202,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wqrmriskforecastserv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wqrmriskforecastserv")]
         public IWorkflowAction ReportManagementCUs(Expression<Func<string>> tenantId = null, Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytenantFirstName = null, Expression<Func<string>> bodytenantLastName = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodyemail = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: false);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodytenantFirstName = bodytenantFirstName == null ? null : WorkflowExpression.Compile(bodytenantFirstName);
-            WorkflowExpression.Validate(__workflow_bodytenantFirstName, nameof(bodytenantFirstName), required: false);
-            var __workflow_bodytenantLastName = bodytenantLastName == null ? null : WorkflowExpression.Compile(bodytenantLastName);
-            WorkflowExpression.Validate(__workflow_bodytenantLastName, nameof(bodytenantLastName), required: false);
-            var __workflow_bodycompanyName = bodycompanyName == null ? null : WorkflowExpression.Compile(bodycompanyName);
-            WorkflowExpression.Validate(__workflow_bodycompanyName, nameof(bodycompanyName), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodytenantFirstName = WorkflowExpression.Compile(bodytenantFirstName, nameof(bodytenantFirstName), required: false);
+            var __workflow_bodytenantLastName = WorkflowExpression.Compile(bodytenantLastName, nameof(bodytenantLastName), required: false);
+            var __workflow_bodycompanyName = WorkflowExpression.Compile(bodycompanyName, nameof(bodycompanyName), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/play/b60262a8-7cf2-4526-8e78-c7fc7bd21ae9";

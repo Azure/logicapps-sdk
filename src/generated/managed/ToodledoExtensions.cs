@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject[]> ListTasks(Expression<Func<int>> comp = null)
         {
-            var __workflow_comp = comp == null ? null : WorkflowExpression.Compile(comp);
-            WorkflowExpression.Validate(__workflow_comp, nameof(comp), required: false);
+            var __workflow_comp = WorkflowExpression.Compile(comp, nameof(comp), required: false);
             return new DeferredBodyAction<TaskObject[]>(() =>
             {
                 var apiCallPath = "/tasks/get.php";
@@ -30,18 +29,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject> CreateTask(Expression<Func<string>> tasktitle = null, Expression<Func<int>> taskfolderId = null, Expression<Func<int>> taskpriority = null, Expression<Func<string>> tasknote = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null)
         {
-            var __workflow_tasktitle = tasktitle == null ? null : WorkflowExpression.Compile(tasktitle);
-            WorkflowExpression.Validate(__workflow_tasktitle, nameof(tasktitle), required: false);
-            var __workflow_taskfolderId = taskfolderId == null ? null : WorkflowExpression.Compile(taskfolderId);
-            WorkflowExpression.Validate(__workflow_taskfolderId, nameof(taskfolderId), required: false);
-            var __workflow_taskpriority = taskpriority == null ? null : WorkflowExpression.Compile(taskpriority);
-            WorkflowExpression.Validate(__workflow_taskpriority, nameof(taskpriority), required: false);
-            var __workflow_tasknote = tasknote == null ? null : WorkflowExpression.Compile(tasknote);
-            WorkflowExpression.Validate(__workflow_tasknote, nameof(tasknote), required: false);
-            var __workflow_taskdueDate = taskdueDate == null ? null : WorkflowExpression.Compile(taskdueDate);
-            WorkflowExpression.Validate(__workflow_taskdueDate, nameof(taskdueDate), required: false);
-            var __workflow_taskdueTime = taskdueTime == null ? null : WorkflowExpression.Compile(taskdueTime);
-            WorkflowExpression.Validate(__workflow_taskdueTime, nameof(taskdueTime), required: false);
+            var __workflow_tasktitle = WorkflowExpression.Compile(tasktitle, nameof(tasktitle), required: false);
+            var __workflow_taskfolderId = WorkflowExpression.Compile(taskfolderId, nameof(taskfolderId), required: false);
+            var __workflow_taskpriority = WorkflowExpression.Compile(taskpriority, nameof(taskpriority), required: false);
+            var __workflow_tasknote = WorkflowExpression.Compile(tasknote, nameof(tasknote), required: false);
+            var __workflow_taskdueDate = WorkflowExpression.Compile(taskdueDate, nameof(taskdueDate), required: false);
+            var __workflow_taskdueTime = WorkflowExpression.Compile(taskdueTime, nameof(taskdueTime), required: false);
             return new DeferredBodyAction<TaskObject>(() =>
             {
                 var apiCallPath = "/tasks/add.php";
@@ -97,8 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject> GetTaskById(Expression<Func<int>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
                 var apiCallPath = "/tasks/getById.php";
@@ -112,24 +104,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Toodledo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "toodledo")]
         public IBodyWorkflowAction<TaskObject> UpdateTask(Expression<Func<int>> taskid = null, Expression<Func<string>> tasktitle = null, Expression<Func<string>> taskcompleted = null, Expression<Func<string>> taskdueDate = null, Expression<Func<string>> taskdueTime = null, Expression<Func<string>> tasknote = null, Expression<Func<int>> taskpriority = null, Expression<Func<int>> taskfolder = null, Expression<Func<string>> taskmodified = null)
         {
-            var __workflow_taskid = taskid == null ? null : WorkflowExpression.Compile(taskid);
-            WorkflowExpression.Validate(__workflow_taskid, nameof(taskid), required: false);
-            var __workflow_tasktitle = tasktitle == null ? null : WorkflowExpression.Compile(tasktitle);
-            WorkflowExpression.Validate(__workflow_tasktitle, nameof(tasktitle), required: false);
-            var __workflow_taskcompleted = taskcompleted == null ? null : WorkflowExpression.Compile(taskcompleted);
-            WorkflowExpression.Validate(__workflow_taskcompleted, nameof(taskcompleted), required: false);
-            var __workflow_taskdueDate = taskdueDate == null ? null : WorkflowExpression.Compile(taskdueDate);
-            WorkflowExpression.Validate(__workflow_taskdueDate, nameof(taskdueDate), required: false);
-            var __workflow_taskdueTime = taskdueTime == null ? null : WorkflowExpression.Compile(taskdueTime);
-            WorkflowExpression.Validate(__workflow_taskdueTime, nameof(taskdueTime), required: false);
-            var __workflow_tasknote = tasknote == null ? null : WorkflowExpression.Compile(tasknote);
-            WorkflowExpression.Validate(__workflow_tasknote, nameof(tasknote), required: false);
-            var __workflow_taskpriority = taskpriority == null ? null : WorkflowExpression.Compile(taskpriority);
-            WorkflowExpression.Validate(__workflow_taskpriority, nameof(taskpriority), required: false);
-            var __workflow_taskfolder = taskfolder == null ? null : WorkflowExpression.Compile(taskfolder);
-            WorkflowExpression.Validate(__workflow_taskfolder, nameof(taskfolder), required: false);
-            var __workflow_taskmodified = taskmodified == null ? null : WorkflowExpression.Compile(taskmodified);
-            WorkflowExpression.Validate(__workflow_taskmodified, nameof(taskmodified), required: false);
+            var __workflow_taskid = WorkflowExpression.Compile(taskid, nameof(taskid), required: false);
+            var __workflow_tasktitle = WorkflowExpression.Compile(tasktitle, nameof(tasktitle), required: false);
+            var __workflow_taskcompleted = WorkflowExpression.Compile(taskcompleted, nameof(taskcompleted), required: false);
+            var __workflow_taskdueDate = WorkflowExpression.Compile(taskdueDate, nameof(taskdueDate), required: false);
+            var __workflow_taskdueTime = WorkflowExpression.Compile(taskdueTime, nameof(taskdueTime), required: false);
+            var __workflow_tasknote = WorkflowExpression.Compile(tasknote, nameof(tasknote), required: false);
+            var __workflow_taskpriority = WorkflowExpression.Compile(taskpriority, nameof(taskpriority), required: false);
+            var __workflow_taskfolder = WorkflowExpression.Compile(taskfolder, nameof(taskfolder), required: false);
+            var __workflow_taskmodified = WorkflowExpression.Compile(taskmodified, nameof(taskmodified), required: false);
             return new DeferredBodyAction<TaskObject>(() =>
             {
                 var apiCallPath = "/tasks/edit.php";

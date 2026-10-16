@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
         public IWorkflowAction AppendIDsToList(Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<string>> bodylist, Expression<Func<string[]>> bodyiDS)
         {
-            var __workflow_bodylistType = bodylistType == null ? null : WorkflowExpression.Compile(bodylistType);
-            WorkflowExpression.Validate(__workflow_bodylistType, nameof(bodylistType), required: true);
-            var __workflow_bodylist = bodylist == null ? null : WorkflowExpression.Compile(bodylist);
-            WorkflowExpression.Validate(__workflow_bodylist, nameof(bodylist), required: true);
-            var __workflow_bodyiDS = bodyiDS == null ? null : WorkflowExpression.Compile(bodyiDS);
-            WorkflowExpression.Validate(__workflow_bodyiDS, nameof(bodyiDS), required: true);
+            var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
+            var __workflow_bodylist = WorkflowExpression.Compile(bodylist, nameof(bodylist), required: true);
+            var __workflow_bodyiDS = WorkflowExpression.Compile(bodyiDS, nameof(bodyiDS), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/list/v1/appendidstolist";
@@ -44,16 +41,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudlists
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudlists")]
         public IBodyWorkflowAction<ListApiCreatedList> CreateListFromIDs(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription, Expression<Func<bodylistTypeInput>> bodylistType, Expression<Func<bodypermissionsInput>> bodypermissions, Expression<Func<string[]>> bodyiDS)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodylistType = bodylistType == null ? null : WorkflowExpression.Compile(bodylistType);
-            WorkflowExpression.Validate(__workflow_bodylistType, nameof(bodylistType), required: true);
-            var __workflow_bodypermissions = bodypermissions == null ? null : WorkflowExpression.Compile(bodypermissions);
-            WorkflowExpression.Validate(__workflow_bodypermissions, nameof(bodypermissions), required: true);
-            var __workflow_bodyiDS = bodyiDS == null ? null : WorkflowExpression.Compile(bodyiDS);
-            WorkflowExpression.Validate(__workflow_bodyiDS, nameof(bodyiDS), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodylistType = WorkflowExpression.Compile(bodylistType, nameof(bodylistType), required: true);
+            var __workflow_bodypermissions = WorkflowExpression.Compile(bodypermissions, nameof(bodypermissions), required: true);
+            var __workflow_bodyiDS = WorkflowExpression.Compile(bodyiDS, nameof(bodyiDS), required: true);
             return new DeferredBodyAction<ListApiCreatedList>(() =>
             {
                 var apiCallPath = "/list/v1/createlistfromids";

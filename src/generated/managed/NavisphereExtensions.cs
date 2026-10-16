@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction CreateOrder(Expression<Func<string>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/orders";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction RatingRequest(Expression<Func<string>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/quotes";
@@ -45,8 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction EventsCallback(Expression<Func<string>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/events/callback/here";
@@ -61,8 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Navisphere
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "navisphere")]
         public IWorkflowAction GenerateLabel(Expression<Func<string>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/labels";

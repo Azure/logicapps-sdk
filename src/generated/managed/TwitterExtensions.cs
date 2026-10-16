@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> UserTimeline(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<TweetModel[]>(() =>
             {
                 var apiCallPath = "/usertimeline";
@@ -33,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> HomeTimeline(Expression<Func<int>> maxResults = null)
         {
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<TweetModel[]>(() =>
             {
                 var apiCallPath = "/hometimeline";
@@ -50,12 +47,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetModel[]> SearchTweet(Expression<Func<string>> searchQuery, Expression<Func<int>> maxResults = null, Expression<Func<string>> sinceId = null)
         {
-            var __workflow_searchQuery = searchQuery == null ? null : WorkflowExpression.Compile(searchQuery);
-            WorkflowExpression.Validate(__workflow_searchQuery, nameof(searchQuery), required: true);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
-            var __workflow_sinceId = sinceId == null ? null : WorkflowExpression.Compile(sinceId);
-            WorkflowExpression.Validate(__workflow_sinceId, nameof(sinceId), required: false);
+            var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            var __workflow_sinceId = WorkflowExpression.Compile(sinceId, nameof(sinceId), required: false);
             return new DeferredBodyAction<TweetModel[]>(() =>
             {
                 var apiCallPath = "/searchtweets";
@@ -74,10 +68,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> Followers(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/followers";
@@ -94,8 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> MyFollowers(Expression<Func<int>> maxResults = null)
         {
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/myfollowers";
@@ -111,10 +102,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> Following(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
         {
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/friends";
@@ -131,8 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel[]> MyFollowing(Expression<Func<int>> maxResults = null)
         {
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<UserDetailsModel[]>(() =>
             {
                 var apiCallPath = "/myfriends";
@@ -148,8 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<UserDetailsModel> User(Expression<Func<string>> userName)
         {
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: true);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: true);
             return new DeferredBodyAction<UserDetailsModel>(() =>
             {
                 var apiCallPath = "/user";
@@ -163,10 +150,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetResponseModel> Tweet(Expression<Func<string>> tweetText = null, Expression<Func<string>> body = null)
         {
-            var __workflow_tweetText = tweetText == null ? null : WorkflowExpression.Compile(tweetText);
-            WorkflowExpression.Validate(__workflow_tweetText, nameof(tweetText), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_tweetText = WorkflowExpression.Compile(tweetText, nameof(tweetText), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TweetResponseModel>(() =>
             {
                 var apiCallPath = "/posttweet";
@@ -182,10 +167,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
         public IBodyWorkflowAction<TweetResponseModel> Retweet(Expression<Func<string>> tweetId, Expression<Func<bool>> trimUser = null)
         {
-            var __workflow_tweetId = tweetId == null ? null : WorkflowExpression.Compile(tweetId);
-            WorkflowExpression.Validate(__workflow_tweetId, nameof(tweetId), required: true);
-            var __workflow_trimUser = trimUser == null ? null : WorkflowExpression.Compile(trimUser);
-            WorkflowExpression.Validate(__workflow_trimUser, nameof(trimUser), required: false);
+            var __workflow_tweetId = WorkflowExpression.Compile(tweetId, nameof(tweetId), required: true);
+            var __workflow_trimUser = WorkflowExpression.Compile(trimUser, nameof(trimUser), required: false);
             return new DeferredBodyAction<TweetResponseModel>(() =>
             {
                 var apiCallPath = "/retweet";
@@ -204,8 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
     {
         public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet(Expression<Func<string>> searchQuery, FlowRecurrence recurrence = null)
         {
-            var __workflow_searchQuery = searchQuery == null ? null : WorkflowExpression.Compile(searchQuery);
-            WorkflowExpression.Validate(__workflow_searchQuery, nameof(searchQuery), required: true);
+            var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: true);
             return new DeferredBodyTrigger<TriggerBatchResponseTweetModel>(() =>
             {
                 var apiCallPath = "/onnewtweet";

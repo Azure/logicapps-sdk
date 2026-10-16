@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMedia(Expression<Func<string>> bodycontent)
         {
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/uploads";
@@ -37,10 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
         public IBodyWorkflowAction<SendPostcardResponse> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
         {
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: true);
-            var __workflow_bodyfileUrls = bodyfileUrls == null ? null : WorkflowExpression.Compile(bodyfileUrls);
-            WorkflowExpression.Validate(__workflow_bodyfileUrls, nameof(bodyfileUrls), required: true);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodyfileUrls = WorkflowExpression.Compile(bodyfileUrls, nameof(bodyfileUrls), required: true);
             return new DeferredBodyAction<SendPostcardResponse>(() =>
             {
                 var apiCallPath = "/post/postcards/send";

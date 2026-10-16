@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         public IBodyWorkflowAction<Message> SendMessage(Expression<Func<string>> sendMessageRequestfrom, Expression<Func<string>> sendMessageRequestto, Expression<Func<string>> sendMessageRequestbody, Expression<Func<string[]>> sendMessageRequestmediaUrl = null, Expression<Func<string>> sendMessageRequeststatusCallback = null, Expression<Func<string>> sendMessageRequestmessagingServiceSid = null, Expression<Func<string>> sendMessageRequestapplicationSid = null, Expression<Func<string>> sendMessageRequestmaxPrice = null, Expression<Func<string>> sendMessageRequestvalidityPeriod = null)
         {
-            var __workflow_sendMessageRequestfrom = sendMessageRequestfrom == null ? null : WorkflowExpression.Compile(sendMessageRequestfrom);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestfrom, nameof(sendMessageRequestfrom), required: true);
-            var __workflow_sendMessageRequestto = sendMessageRequestto == null ? null : WorkflowExpression.Compile(sendMessageRequestto);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestto, nameof(sendMessageRequestto), required: true);
-            var __workflow_sendMessageRequestbody = sendMessageRequestbody == null ? null : WorkflowExpression.Compile(sendMessageRequestbody);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestbody, nameof(sendMessageRequestbody), required: true);
-            var __workflow_sendMessageRequestmediaUrl = sendMessageRequestmediaUrl == null ? null : WorkflowExpression.Compile(sendMessageRequestmediaUrl);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmediaUrl, nameof(sendMessageRequestmediaUrl), required: false);
-            var __workflow_sendMessageRequeststatusCallback = sendMessageRequeststatusCallback == null ? null : WorkflowExpression.Compile(sendMessageRequeststatusCallback);
-            WorkflowExpression.Validate(__workflow_sendMessageRequeststatusCallback, nameof(sendMessageRequeststatusCallback), required: false);
-            var __workflow_sendMessageRequestmessagingServiceSid = sendMessageRequestmessagingServiceSid == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagingServiceSid);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagingServiceSid, nameof(sendMessageRequestmessagingServiceSid), required: false);
-            var __workflow_sendMessageRequestapplicationSid = sendMessageRequestapplicationSid == null ? null : WorkflowExpression.Compile(sendMessageRequestapplicationSid);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestapplicationSid, nameof(sendMessageRequestapplicationSid), required: false);
-            var __workflow_sendMessageRequestmaxPrice = sendMessageRequestmaxPrice == null ? null : WorkflowExpression.Compile(sendMessageRequestmaxPrice);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmaxPrice, nameof(sendMessageRequestmaxPrice), required: false);
-            var __workflow_sendMessageRequestvalidityPeriod = sendMessageRequestvalidityPeriod == null ? null : WorkflowExpression.Compile(sendMessageRequestvalidityPeriod);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestvalidityPeriod, nameof(sendMessageRequestvalidityPeriod), required: false);
+            var __workflow_sendMessageRequestfrom = WorkflowExpression.Compile(sendMessageRequestfrom, nameof(sendMessageRequestfrom), required: true);
+            var __workflow_sendMessageRequestto = WorkflowExpression.Compile(sendMessageRequestto, nameof(sendMessageRequestto), required: true);
+            var __workflow_sendMessageRequestbody = WorkflowExpression.Compile(sendMessageRequestbody, nameof(sendMessageRequestbody), required: true);
+            var __workflow_sendMessageRequestmediaUrl = WorkflowExpression.Compile(sendMessageRequestmediaUrl, nameof(sendMessageRequestmediaUrl), required: false);
+            var __workflow_sendMessageRequeststatusCallback = WorkflowExpression.Compile(sendMessageRequeststatusCallback, nameof(sendMessageRequeststatusCallback), required: false);
+            var __workflow_sendMessageRequestmessagingServiceSid = WorkflowExpression.Compile(sendMessageRequestmessagingServiceSid, nameof(sendMessageRequestmessagingServiceSid), required: false);
+            var __workflow_sendMessageRequestapplicationSid = WorkflowExpression.Compile(sendMessageRequestapplicationSid, nameof(sendMessageRequestapplicationSid), required: false);
+            var __workflow_sendMessageRequestmaxPrice = WorkflowExpression.Compile(sendMessageRequestmaxPrice, nameof(sendMessageRequestmaxPrice), required: false);
+            var __workflow_sendMessageRequestvalidityPeriod = WorkflowExpression.Compile(sendMessageRequestvalidityPeriod, nameof(sendMessageRequestvalidityPeriod), required: false);
             return new DeferredBodyAction<Message>(() =>
             {
                 var apiCallPath = "/Messages.json";
@@ -92,8 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         public IBodyWorkflowAction<Message> GetMessage(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<Message>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Messages/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -106,14 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
         public IBodyWorkflowAction<MessageListV2> ListMessages(Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> dateSent = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_dateSent = dateSent == null ? null : WorkflowExpression.Compile(dateSent);
-            WorkflowExpression.Validate(__workflow_dateSent, nameof(dateSent), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_dateSent = WorkflowExpression.Compile(dateSent, nameof(dateSent), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MessageListV2>(() =>
             {
                 var apiCallPath = "/v2/Messages.json";

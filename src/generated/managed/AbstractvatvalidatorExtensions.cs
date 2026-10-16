@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> vatNumber)
         {
-            var __workflow_vatNumber = vatNumber == null ? null : WorkflowExpression.Compile(vatNumber);
-            WorkflowExpression.Validate(__workflow_vatNumber, nameof(vatNumber), required: true);
+            var __workflow_vatNumber = WorkflowExpression.Compile(vatNumber, nameof(vatNumber), required: true);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v1/validate/";
@@ -28,14 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<CalculateResponse> Calculate(Expression<Func<string>> amount, Expression<Func<string>> countryCode, Expression<Func<bool>> isVatIncl = null, Expression<Func<string>> vatCategory = null)
         {
-            var __workflow_amount = amount == null ? null : WorkflowExpression.Compile(amount);
-            WorkflowExpression.Validate(__workflow_amount, nameof(amount), required: true);
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
-            var __workflow_isVatIncl = isVatIncl == null ? null : WorkflowExpression.Compile(isVatIncl);
-            WorkflowExpression.Validate(__workflow_isVatIncl, nameof(isVatIncl), required: false);
-            var __workflow_vatCategory = vatCategory == null ? null : WorkflowExpression.Compile(vatCategory);
-            WorkflowExpression.Validate(__workflow_vatCategory, nameof(vatCategory), required: false);
+            var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
+            var __workflow_isVatIncl = WorkflowExpression.Compile(isVatIncl, nameof(isVatIncl), required: false);
+            var __workflow_vatCategory = WorkflowExpression.Compile(vatCategory, nameof(vatCategory), required: false);
             return new DeferredBodyAction<CalculateResponse>(() =>
             {
                 var apiCallPath = "/v1/calculate/";
@@ -54,8 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
         public IBodyWorkflowAction<ListCategoriesResponseItem[]> ListCategories(Expression<Func<string>> countryCode)
         {
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             return new DeferredBodyAction<ListCategoriesResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/categories/";

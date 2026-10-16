@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
         public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
         {
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<AMObjectsExpandedApiResponse>(() =>
             {
                 var apiCallPath = "/v1/objects";
@@ -42,14 +38,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
         public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
         {
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
             return new DeferredBodyAction<CommonUsersApiResponse>(() =>
             {
                 var apiCallPath = "/v1/users";
@@ -72,12 +64,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     {
         public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyprocessName = bodyprocessName == null ? null : WorkflowExpression.Compile(bodyprocessName);
-            WorkflowExpression.Validate(__workflow_bodyprocessName, nameof(bodyprocessName), required: true);
-            var __workflow_bodyticketStatusName = bodyticketStatusName == null ? null : WorkflowExpression.Compile(bodyticketStatusName);
-            WorkflowExpression.Validate(__workflow_bodyticketStatusName, nameof(bodyticketStatusName), required: true);
-            var __workflow_bodyserviceName = bodyserviceName == null ? null : WorkflowExpression.Compile(bodyserviceName);
-            WorkflowExpression.Validate(__workflow_bodyserviceName, nameof(bodyserviceName), required: false);
+            var __workflow_bodyprocessName = WorkflowExpression.Compile(bodyprocessName, nameof(bodyprocessName), required: true);
+            var __workflow_bodyticketStatusName = WorkflowExpression.Compile(bodyticketStatusName, nameof(bodyticketStatusName), required: true);
+            var __workflow_bodyserviceName = WorkflowExpression.Compile(bodyserviceName, nameof(bodyserviceName), required: false);
             return new DeferredBodyTrigger<WebhookCreatedResponse>(() =>
             {
                 var apiCallPath = "/webhooks/tickettransitionstostatus";

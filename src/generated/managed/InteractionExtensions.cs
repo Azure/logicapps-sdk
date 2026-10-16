@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadListByIdResponse> ReadListById(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesprimarySponsorName = null)
         {
-            var __workflow_bodyvariablesid = bodyvariablesid == null ? null : WorkflowExpression.Compile(bodyvariablesid);
-            WorkflowExpression.Validate(__workflow_bodyvariablesid, nameof(bodyvariablesid), required: false);
-            var __workflow_bodyvariablesskip = bodyvariablesskip == null ? null : WorkflowExpression.Compile(bodyvariablesskip);
-            WorkflowExpression.Validate(__workflow_bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = bodyvariableslimit == null ? null : WorkflowExpression.Compile(bodyvariableslimit);
-            WorkflowExpression.Validate(__workflow_bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            var __workflow_bodyvariablesprimarySponsorName = bodyvariablesprimarySponsorName == null ? null : WorkflowExpression.Compile(bodyvariablesprimarySponsorName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesprimarySponsorName, nameof(bodyvariablesprimarySponsorName), required: false);
+            var __workflow_bodyvariablesid = WorkflowExpression.Compile(bodyvariablesid, nameof(bodyvariablesid), required: false);
+            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
+            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
+            var __workflow_bodyvariablesprimarySponsorName = WorkflowExpression.Compile(bodyvariablesprimarySponsorName, nameof(bodyvariablesprimarySponsorName), required: false);
             return new DeferredBodyAction<ReadListByIdResponse>(() =>
             {
                 var apiCallPath = "/graphql/ReadListByID";
@@ -94,12 +90,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadListByNameResponse> ReadListByName(Expression<Func<string>> bodyvariablesfilterByName = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
         {
-            var __workflow_bodyvariablesfilterByName = bodyvariablesfilterByName == null ? null : WorkflowExpression.Compile(bodyvariablesfilterByName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
-            var __workflow_bodyvariablesskip = bodyvariablesskip == null ? null : WorkflowExpression.Compile(bodyvariablesskip);
-            WorkflowExpression.Validate(__workflow_bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = bodyvariableslimit == null ? null : WorkflowExpression.Compile(bodyvariableslimit);
-            WorkflowExpression.Validate(__workflow_bodyvariableslimit, nameof(bodyvariableslimit), required: false);
+            var __workflow_bodyvariablesfilterByName = WorkflowExpression.Compile(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
+            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
+            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
             return new DeferredBodyAction<ReadListByNameResponse>(() =>
             {
                 var apiCallPath = "/graphql/ReadListByName";
@@ -167,12 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
         {
-            var __workflow_bodyvariablesid = bodyvariablesid == null ? null : WorkflowExpression.Compile(bodyvariablesid);
-            WorkflowExpression.Validate(__workflow_bodyvariablesid, nameof(bodyvariablesid), required: false);
-            var __workflow_bodyvariablesskip = bodyvariablesskip == null ? null : WorkflowExpression.Compile(bodyvariablesskip);
-            WorkflowExpression.Validate(__workflow_bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = bodyvariableslimit == null ? null : WorkflowExpression.Compile(bodyvariableslimit);
-            WorkflowExpression.Validate(__workflow_bodyvariableslimit, nameof(bodyvariableslimit), required: false);
+            var __workflow_bodyvariablesid = WorkflowExpression.Compile(bodyvariablesid, nameof(bodyvariablesid), required: false);
+            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
+            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
             return new DeferredBodyAction<ReadAdditionalFieldDefinitionsAndValuesResponse>(() =>
             {
                 var apiCallPath = "/graphql/ReadAdditionalFieldDefinitionsAndValues";
@@ -240,10 +230,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse> AddOrUpdateAdditionalFieldValues(Expression<Func<string>> bodyvariablesinputcontactId, Expression<Func<bodyvariablesinputadditionalFieldsInputItem[]>> bodyvariablesinputadditionalFields)
         {
-            var __workflow_bodyvariablesinputcontactId = bodyvariablesinputcontactId == null ? null : WorkflowExpression.Compile(bodyvariablesinputcontactId);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputcontactId, nameof(bodyvariablesinputcontactId), required: true);
-            var __workflow_bodyvariablesinputadditionalFields = bodyvariablesinputadditionalFields == null ? null : WorkflowExpression.Compile(bodyvariablesinputadditionalFields);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputadditionalFields, nameof(bodyvariablesinputadditionalFields), required: true);
+            var __workflow_bodyvariablesinputcontactId = WorkflowExpression.Compile(bodyvariablesinputcontactId, nameof(bodyvariablesinputcontactId), required: true);
+            var __workflow_bodyvariablesinputadditionalFields = WorkflowExpression.Compile(bodyvariablesinputadditionalFields, nameof(bodyvariablesinputadditionalFields), required: true);
             return new DeferredBodyAction<AddOrUpdateAdditionalFieldValuesResponse>(() =>
             {
                 var apiCallPath = "/graphql/UpdateAdditionalFieldValues";
@@ -285,10 +273,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ReadContactByIdResponse> ReadContactById(Expression<Func<string>> bodyvariablescontactid = null, Expression<Func<string>> bodyvariableslistid = null)
         {
-            var __workflow_bodyvariablescontactid = bodyvariablescontactid == null ? null : WorkflowExpression.Compile(bodyvariablescontactid);
-            WorkflowExpression.Validate(__workflow_bodyvariablescontactid, nameof(bodyvariablescontactid), required: false);
-            var __workflow_bodyvariableslistid = bodyvariableslistid == null ? null : WorkflowExpression.Compile(bodyvariableslistid);
-            WorkflowExpression.Validate(__workflow_bodyvariableslistid, nameof(bodyvariableslistid), required: false);
+            var __workflow_bodyvariablescontactid = WorkflowExpression.Compile(bodyvariablescontactid, nameof(bodyvariablescontactid), required: false);
+            var __workflow_bodyvariableslistid = WorkflowExpression.Compile(bodyvariableslistid, nameof(bodyvariableslistid), required: false);
             return new DeferredBodyAction<ReadContactByIdResponse>(() =>
             {
                 var apiCallPath = "/graphql/ReadContactByID";
@@ -340,34 +326,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputemailAddress = null, Expression<Func<string>> bodyvariablesinputcompanyName = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputprimaryPhone = null, Expression<Func<bodyvariablesinputbusinessAddresscountryInput>> bodyvariablesinputbusinessAddresscountry = null, Expression<Func<string>> bodyvariablesinputbusinessAddressstreet = null, Expression<Func<string>> bodyvariablesinputbusinessAddresscity = null, Expression<Func<string>> bodyvariablesinputbusinessAddressadministrativeDivision = null, Expression<Func<string>> bodyvariablesinputbusinessAddresspostalCode = null)
         {
-            var __workflow_bodyvariablesinputlastName = bodyvariablesinputlastName == null ? null : WorkflowExpression.Compile(bodyvariablesinputlastName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
-            var __workflow_bodyvariablesinputfirstName = bodyvariablesinputfirstName == null ? null : WorkflowExpression.Compile(bodyvariablesinputfirstName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
-            var __workflow_bodyvariablesinputmiddleName = bodyvariablesinputmiddleName == null ? null : WorkflowExpression.Compile(bodyvariablesinputmiddleName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
-            var __workflow_bodyvariablesinputgoesBy = bodyvariablesinputgoesBy == null ? null : WorkflowExpression.Compile(bodyvariablesinputgoesBy);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
-            var __workflow_bodyvariablesinputtitle = bodyvariablesinputtitle == null ? null : WorkflowExpression.Compile(bodyvariablesinputtitle);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
-            var __workflow_bodyvariablesinputemailAddress = bodyvariablesinputemailAddress == null ? null : WorkflowExpression.Compile(bodyvariablesinputemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputemailAddress, nameof(bodyvariablesinputemailAddress), required: false);
-            var __workflow_bodyvariablesinputcompanyName = bodyvariablesinputcompanyName == null ? null : WorkflowExpression.Compile(bodyvariablesinputcompanyName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
-            var __workflow_bodyvariablesinputjobTitle = bodyvariablesinputjobTitle == null ? null : WorkflowExpression.Compile(bodyvariablesinputjobTitle);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
-            var __workflow_bodyvariablesinputprimaryPhone = bodyvariablesinputprimaryPhone == null ? null : WorkflowExpression.Compile(bodyvariablesinputprimaryPhone);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputprimaryPhone, nameof(bodyvariablesinputprimaryPhone), required: false);
-            var __workflow_bodyvariablesinputbusinessAddresscountry = bodyvariablesinputbusinessAddresscountry == null ? null : WorkflowExpression.Compile(bodyvariablesinputbusinessAddresscountry);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputbusinessAddresscountry, nameof(bodyvariablesinputbusinessAddresscountry), required: false);
-            var __workflow_bodyvariablesinputbusinessAddressstreet = bodyvariablesinputbusinessAddressstreet == null ? null : WorkflowExpression.Compile(bodyvariablesinputbusinessAddressstreet);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputbusinessAddressstreet, nameof(bodyvariablesinputbusinessAddressstreet), required: false);
-            var __workflow_bodyvariablesinputbusinessAddresscity = bodyvariablesinputbusinessAddresscity == null ? null : WorkflowExpression.Compile(bodyvariablesinputbusinessAddresscity);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputbusinessAddresscity, nameof(bodyvariablesinputbusinessAddresscity), required: false);
-            var __workflow_bodyvariablesinputbusinessAddressadministrativeDivision = bodyvariablesinputbusinessAddressadministrativeDivision == null ? null : WorkflowExpression.Compile(bodyvariablesinputbusinessAddressadministrativeDivision);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputbusinessAddressadministrativeDivision, nameof(bodyvariablesinputbusinessAddressadministrativeDivision), required: false);
-            var __workflow_bodyvariablesinputbusinessAddresspostalCode = bodyvariablesinputbusinessAddresspostalCode == null ? null : WorkflowExpression.Compile(bodyvariablesinputbusinessAddresspostalCode);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputbusinessAddresspostalCode, nameof(bodyvariablesinputbusinessAddresspostalCode), required: false);
+            var __workflow_bodyvariablesinputlastName = WorkflowExpression.Compile(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
+            var __workflow_bodyvariablesinputfirstName = WorkflowExpression.Compile(bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
+            var __workflow_bodyvariablesinputmiddleName = WorkflowExpression.Compile(bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
+            var __workflow_bodyvariablesinputgoesBy = WorkflowExpression.Compile(bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
+            var __workflow_bodyvariablesinputtitle = WorkflowExpression.Compile(bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
+            var __workflow_bodyvariablesinputemailAddress = WorkflowExpression.Compile(bodyvariablesinputemailAddress, nameof(bodyvariablesinputemailAddress), required: false);
+            var __workflow_bodyvariablesinputcompanyName = WorkflowExpression.Compile(bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
+            var __workflow_bodyvariablesinputjobTitle = WorkflowExpression.Compile(bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
+            var __workflow_bodyvariablesinputprimaryPhone = WorkflowExpression.Compile(bodyvariablesinputprimaryPhone, nameof(bodyvariablesinputprimaryPhone), required: false);
+            var __workflow_bodyvariablesinputbusinessAddresscountry = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresscountry, nameof(bodyvariablesinputbusinessAddresscountry), required: false);
+            var __workflow_bodyvariablesinputbusinessAddressstreet = WorkflowExpression.Compile(bodyvariablesinputbusinessAddressstreet, nameof(bodyvariablesinputbusinessAddressstreet), required: false);
+            var __workflow_bodyvariablesinputbusinessAddresscity = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresscity, nameof(bodyvariablesinputbusinessAddresscity), required: false);
+            var __workflow_bodyvariablesinputbusinessAddressadministrativeDivision = WorkflowExpression.Compile(bodyvariablesinputbusinessAddressadministrativeDivision, nameof(bodyvariablesinputbusinessAddressadministrativeDivision), required: false);
+            var __workflow_bodyvariablesinputbusinessAddresspostalCode = WorkflowExpression.Compile(bodyvariablesinputbusinessAddresspostalCode, nameof(bodyvariablesinputbusinessAddresspostalCode), required: false);
             return new DeferredBodyAction<CreateContactResponse>(() =>
             {
                 var apiCallPath = "/graphql/CreateContact";
@@ -493,14 +465,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<ListResponse> ReadLists(Expression<Func<bodyvariableslistClassInput>> bodyvariableslistClass = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesfilterByName = null)
         {
-            var __workflow_bodyvariableslistClass = bodyvariableslistClass == null ? null : WorkflowExpression.Compile(bodyvariableslistClass);
-            WorkflowExpression.Validate(__workflow_bodyvariableslistClass, nameof(bodyvariableslistClass), required: false);
-            var __workflow_bodyvariablesskip = bodyvariablesskip == null ? null : WorkflowExpression.Compile(bodyvariablesskip);
-            WorkflowExpression.Validate(__workflow_bodyvariablesskip, nameof(bodyvariablesskip), required: false);
-            var __workflow_bodyvariableslimit = bodyvariableslimit == null ? null : WorkflowExpression.Compile(bodyvariableslimit);
-            WorkflowExpression.Validate(__workflow_bodyvariableslimit, nameof(bodyvariableslimit), required: false);
-            var __workflow_bodyvariablesfilterByName = bodyvariablesfilterByName == null ? null : WorkflowExpression.Compile(bodyvariablesfilterByName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
+            var __workflow_bodyvariableslistClass = WorkflowExpression.Compile(bodyvariableslistClass, nameof(bodyvariableslistClass), required: false);
+            var __workflow_bodyvariablesskip = WorkflowExpression.Compile(bodyvariablesskip, nameof(bodyvariablesskip), required: false);
+            var __workflow_bodyvariableslimit = WorkflowExpression.Compile(bodyvariableslimit, nameof(bodyvariableslimit), required: false);
+            var __workflow_bodyvariablesfilterByName = WorkflowExpression.Compile(bodyvariablesfilterByName, nameof(bodyvariablesfilterByName), required: false);
             return new DeferredBodyAction<ListResponse>(() =>
             {
                 var apiCallPath = "/graphql/ReadLists";
@@ -574,10 +542,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<AddContactsToListsResponse> AddContactsToLists(Expression<Func<string[]>> bodyvariableslistIds = null, Expression<Func<string[]>> bodyvariablescontactIds = null)
         {
-            var __workflow_bodyvariableslistIds = bodyvariableslistIds == null ? null : WorkflowExpression.Compile(bodyvariableslistIds);
-            WorkflowExpression.Validate(__workflow_bodyvariableslistIds, nameof(bodyvariableslistIds), required: false);
-            var __workflow_bodyvariablescontactIds = bodyvariablescontactIds == null ? null : WorkflowExpression.Compile(bodyvariablescontactIds);
-            WorkflowExpression.Validate(__workflow_bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
+            var __workflow_bodyvariableslistIds = WorkflowExpression.Compile(bodyvariableslistIds, nameof(bodyvariableslistIds), required: false);
+            var __workflow_bodyvariablescontactIds = WorkflowExpression.Compile(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
             return new DeferredBodyAction<AddContactsToListsResponse>(() =>
             {
                 var apiCallPath = "/graphql/AddContactsToLists";
@@ -619,10 +585,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<RemoveContactsfromListResponse> RemoveContactsfromList(Expression<Func<string[]>> bodyvariablescontactIds = null, Expression<Func<string>> bodyvariableslistId = null)
         {
-            var __workflow_bodyvariablescontactIds = bodyvariablescontactIds == null ? null : WorkflowExpression.Compile(bodyvariablescontactIds);
-            WorkflowExpression.Validate(__workflow_bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
-            var __workflow_bodyvariableslistId = bodyvariableslistId == null ? null : WorkflowExpression.Compile(bodyvariableslistId);
-            WorkflowExpression.Validate(__workflow_bodyvariableslistId, nameof(bodyvariableslistId), required: false);
+            var __workflow_bodyvariablescontactIds = WorkflowExpression.Compile(bodyvariablescontactIds, nameof(bodyvariablescontactIds), required: false);
+            var __workflow_bodyvariableslistId = WorkflowExpression.Compile(bodyvariableslistId, nameof(bodyvariableslistId), required: false);
             return new DeferredBodyAction<RemoveContactsfromListResponse>(() =>
             {
                 var apiCallPath = "/graphql/RemoveContactsFromList";
@@ -664,36 +628,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<UpdatePersonContactResponse> UpdatePersonContact(Expression<Func<string>> bodyvariablesinputid, Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputaddressstreet = null, Expression<Func<string>> bodyvariablesinputaddresscity = null, Expression<Func<string>> bodyvariablesinputaddressadministrativeDivision = null, Expression<Func<bodyvariablesinputaddresscountryInput>> bodyvariablesinputaddresscountry = null, Expression<Func<string>> bodyvariablesinputaddresspostalCode = null, Expression<Func<string>> bodyvariablesinputemailelectronicAddress = null, Expression<Func<string>> bodyvariablesinputprimaryPhonenumber = null, Expression<Func<string>> bodyvariablesinputcompanyName = null)
         {
-            var __workflow_bodyvariablesinputid = bodyvariablesinputid == null ? null : WorkflowExpression.Compile(bodyvariablesinputid);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputid, nameof(bodyvariablesinputid), required: true);
-            var __workflow_bodyvariablesinputlastName = bodyvariablesinputlastName == null ? null : WorkflowExpression.Compile(bodyvariablesinputlastName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
-            var __workflow_bodyvariablesinputtitle = bodyvariablesinputtitle == null ? null : WorkflowExpression.Compile(bodyvariablesinputtitle);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
-            var __workflow_bodyvariablesinputfirstName = bodyvariablesinputfirstName == null ? null : WorkflowExpression.Compile(bodyvariablesinputfirstName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
-            var __workflow_bodyvariablesinputmiddleName = bodyvariablesinputmiddleName == null ? null : WorkflowExpression.Compile(bodyvariablesinputmiddleName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
-            var __workflow_bodyvariablesinputgoesBy = bodyvariablesinputgoesBy == null ? null : WorkflowExpression.Compile(bodyvariablesinputgoesBy);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
-            var __workflow_bodyvariablesinputjobTitle = bodyvariablesinputjobTitle == null ? null : WorkflowExpression.Compile(bodyvariablesinputjobTitle);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
-            var __workflow_bodyvariablesinputaddressstreet = bodyvariablesinputaddressstreet == null ? null : WorkflowExpression.Compile(bodyvariablesinputaddressstreet);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputaddressstreet, nameof(bodyvariablesinputaddressstreet), required: false);
-            var __workflow_bodyvariablesinputaddresscity = bodyvariablesinputaddresscity == null ? null : WorkflowExpression.Compile(bodyvariablesinputaddresscity);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputaddresscity, nameof(bodyvariablesinputaddresscity), required: false);
-            var __workflow_bodyvariablesinputaddressadministrativeDivision = bodyvariablesinputaddressadministrativeDivision == null ? null : WorkflowExpression.Compile(bodyvariablesinputaddressadministrativeDivision);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputaddressadministrativeDivision, nameof(bodyvariablesinputaddressadministrativeDivision), required: false);
-            var __workflow_bodyvariablesinputaddresscountry = bodyvariablesinputaddresscountry == null ? null : WorkflowExpression.Compile(bodyvariablesinputaddresscountry);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputaddresscountry, nameof(bodyvariablesinputaddresscountry), required: false);
-            var __workflow_bodyvariablesinputaddresspostalCode = bodyvariablesinputaddresspostalCode == null ? null : WorkflowExpression.Compile(bodyvariablesinputaddresspostalCode);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputaddresspostalCode, nameof(bodyvariablesinputaddresspostalCode), required: false);
-            var __workflow_bodyvariablesinputemailelectronicAddress = bodyvariablesinputemailelectronicAddress == null ? null : WorkflowExpression.Compile(bodyvariablesinputemailelectronicAddress);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputemailelectronicAddress, nameof(bodyvariablesinputemailelectronicAddress), required: false);
-            var __workflow_bodyvariablesinputprimaryPhonenumber = bodyvariablesinputprimaryPhonenumber == null ? null : WorkflowExpression.Compile(bodyvariablesinputprimaryPhonenumber);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputprimaryPhonenumber, nameof(bodyvariablesinputprimaryPhonenumber), required: false);
-            var __workflow_bodyvariablesinputcompanyName = bodyvariablesinputcompanyName == null ? null : WorkflowExpression.Compile(bodyvariablesinputcompanyName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
+            var __workflow_bodyvariablesinputid = WorkflowExpression.Compile(bodyvariablesinputid, nameof(bodyvariablesinputid), required: true);
+            var __workflow_bodyvariablesinputlastName = WorkflowExpression.Compile(bodyvariablesinputlastName, nameof(bodyvariablesinputlastName), required: true);
+            var __workflow_bodyvariablesinputtitle = WorkflowExpression.Compile(bodyvariablesinputtitle, nameof(bodyvariablesinputtitle), required: false);
+            var __workflow_bodyvariablesinputfirstName = WorkflowExpression.Compile(bodyvariablesinputfirstName, nameof(bodyvariablesinputfirstName), required: false);
+            var __workflow_bodyvariablesinputmiddleName = WorkflowExpression.Compile(bodyvariablesinputmiddleName, nameof(bodyvariablesinputmiddleName), required: false);
+            var __workflow_bodyvariablesinputgoesBy = WorkflowExpression.Compile(bodyvariablesinputgoesBy, nameof(bodyvariablesinputgoesBy), required: false);
+            var __workflow_bodyvariablesinputjobTitle = WorkflowExpression.Compile(bodyvariablesinputjobTitle, nameof(bodyvariablesinputjobTitle), required: false);
+            var __workflow_bodyvariablesinputaddressstreet = WorkflowExpression.Compile(bodyvariablesinputaddressstreet, nameof(bodyvariablesinputaddressstreet), required: false);
+            var __workflow_bodyvariablesinputaddresscity = WorkflowExpression.Compile(bodyvariablesinputaddresscity, nameof(bodyvariablesinputaddresscity), required: false);
+            var __workflow_bodyvariablesinputaddressadministrativeDivision = WorkflowExpression.Compile(bodyvariablesinputaddressadministrativeDivision, nameof(bodyvariablesinputaddressadministrativeDivision), required: false);
+            var __workflow_bodyvariablesinputaddresscountry = WorkflowExpression.Compile(bodyvariablesinputaddresscountry, nameof(bodyvariablesinputaddresscountry), required: false);
+            var __workflow_bodyvariablesinputaddresspostalCode = WorkflowExpression.Compile(bodyvariablesinputaddresspostalCode, nameof(bodyvariablesinputaddresspostalCode), required: false);
+            var __workflow_bodyvariablesinputemailelectronicAddress = WorkflowExpression.Compile(bodyvariablesinputemailelectronicAddress, nameof(bodyvariablesinputemailelectronicAddress), required: false);
+            var __workflow_bodyvariablesinputprimaryPhonenumber = WorkflowExpression.Compile(bodyvariablesinputprimaryPhonenumber, nameof(bodyvariablesinputprimaryPhonenumber), required: false);
+            var __workflow_bodyvariablesinputcompanyName = WorkflowExpression.Compile(bodyvariablesinputcompanyName, nameof(bodyvariablesinputcompanyName), required: false);
             return new DeferredBodyAction<UpdatePersonContactResponse>(() =>
             {
                 var apiCallPath = "/graphql/UpdatePersonContact";
@@ -837,16 +786,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<CreateActivityResponse> CreateActivity(Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string>> bodyvariablesinputactivityDate, Expression<Func<string>> bodyvariablesinputsubject, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputsummary = null)
         {
-            var __workflow_bodyvariablesinputtypeId = bodyvariablesinputtypeId == null ? null : WorkflowExpression.Compile(bodyvariablesinputtypeId);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
-            var __workflow_bodyvariablesinputactivityDate = bodyvariablesinputactivityDate == null ? null : WorkflowExpression.Compile(bodyvariablesinputactivityDate);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: true);
-            var __workflow_bodyvariablesinputsubject = bodyvariablesinputsubject == null ? null : WorkflowExpression.Compile(bodyvariablesinputsubject);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: true);
-            var __workflow_bodyvariablesinputlinkedEntityIds = bodyvariablesinputlinkedEntityIds == null ? null : WorkflowExpression.Compile(bodyvariablesinputlinkedEntityIds);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
-            var __workflow_bodyvariablesinputsummary = bodyvariablesinputsummary == null ? null : WorkflowExpression.Compile(bodyvariablesinputsummary);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
+            var __workflow_bodyvariablesinputtypeId = WorkflowExpression.Compile(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
+            var __workflow_bodyvariablesinputactivityDate = WorkflowExpression.Compile(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: true);
+            var __workflow_bodyvariablesinputsubject = WorkflowExpression.Compile(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: true);
+            var __workflow_bodyvariablesinputlinkedEntityIds = WorkflowExpression.Compile(bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
+            var __workflow_bodyvariablesinputsummary = WorkflowExpression.Compile(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
             return new DeferredBodyAction<CreateActivityResponse>(() =>
             {
                 var apiCallPath = "/graphql/CreateActivity";
@@ -898,12 +842,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<SearchContactsResponse> SearchContacts(Expression<Func<string>> bodyvariablesemailAddress = null, Expression<Func<string>> bodyvariablesfirstName = null, Expression<Func<string>> bodyvariableslastName = null)
         {
-            var __workflow_bodyvariablesemailAddress = bodyvariablesemailAddress == null ? null : WorkflowExpression.Compile(bodyvariablesemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyvariablesemailAddress, nameof(bodyvariablesemailAddress), required: false);
-            var __workflow_bodyvariablesfirstName = bodyvariablesfirstName == null ? null : WorkflowExpression.Compile(bodyvariablesfirstName);
-            WorkflowExpression.Validate(__workflow_bodyvariablesfirstName, nameof(bodyvariablesfirstName), required: false);
-            var __workflow_bodyvariableslastName = bodyvariableslastName == null ? null : WorkflowExpression.Compile(bodyvariableslastName);
-            WorkflowExpression.Validate(__workflow_bodyvariableslastName, nameof(bodyvariableslastName), required: false);
+            var __workflow_bodyvariablesemailAddress = WorkflowExpression.Compile(bodyvariablesemailAddress, nameof(bodyvariablesemailAddress), required: false);
+            var __workflow_bodyvariablesfirstName = WorkflowExpression.Compile(bodyvariablesfirstName, nameof(bodyvariablesfirstName), required: false);
+            var __workflow_bodyvariableslastName = WorkflowExpression.Compile(bodyvariableslastName, nameof(bodyvariableslastName), required: false);
             return new DeferredBodyAction<SearchContactsResponse>(() =>
             {
                 var apiCallPath = "/graphql/SearchContacts";
@@ -951,18 +892,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
         public IBodyWorkflowAction<UpdateActivityResponse> UpdateActivity(Expression<Func<string>> bodyvariablesinputactivityId, Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputactivityDate = null, Expression<Func<string>> bodyvariablesinputsubject = null, Expression<Func<string>> bodyvariablesinputsummary = null)
         {
-            var __workflow_bodyvariablesinputactivityId = bodyvariablesinputactivityId == null ? null : WorkflowExpression.Compile(bodyvariablesinputactivityId);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputactivityId, nameof(bodyvariablesinputactivityId), required: true);
-            var __workflow_bodyvariablesinputtypeId = bodyvariablesinputtypeId == null ? null : WorkflowExpression.Compile(bodyvariablesinputtypeId);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
-            var __workflow_bodyvariablesinputlinkedEntityIds = bodyvariablesinputlinkedEntityIds == null ? null : WorkflowExpression.Compile(bodyvariablesinputlinkedEntityIds);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
-            var __workflow_bodyvariablesinputactivityDate = bodyvariablesinputactivityDate == null ? null : WorkflowExpression.Compile(bodyvariablesinputactivityDate);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: false);
-            var __workflow_bodyvariablesinputsubject = bodyvariablesinputsubject == null ? null : WorkflowExpression.Compile(bodyvariablesinputsubject);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: false);
-            var __workflow_bodyvariablesinputsummary = bodyvariablesinputsummary == null ? null : WorkflowExpression.Compile(bodyvariablesinputsummary);
-            WorkflowExpression.Validate(__workflow_bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
+            var __workflow_bodyvariablesinputactivityId = WorkflowExpression.Compile(bodyvariablesinputactivityId, nameof(bodyvariablesinputactivityId), required: true);
+            var __workflow_bodyvariablesinputtypeId = WorkflowExpression.Compile(bodyvariablesinputtypeId, nameof(bodyvariablesinputtypeId), required: true);
+            var __workflow_bodyvariablesinputlinkedEntityIds = WorkflowExpression.Compile(bodyvariablesinputlinkedEntityIds, nameof(bodyvariablesinputlinkedEntityIds), required: true);
+            var __workflow_bodyvariablesinputactivityDate = WorkflowExpression.Compile(bodyvariablesinputactivityDate, nameof(bodyvariablesinputactivityDate), required: false);
+            var __workflow_bodyvariablesinputsubject = WorkflowExpression.Compile(bodyvariablesinputsubject, nameof(bodyvariablesinputsubject), required: false);
+            var __workflow_bodyvariablesinputsummary = WorkflowExpression.Compile(bodyvariablesinputsummary, nameof(bodyvariablesinputsummary), required: false);
             return new DeferredBodyAction<UpdateActivityResponse>(() =>
             {
                 var apiCallPath = "/graphql/UpdateActivity";

@@ -15,12 +15,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<CopyFileOutput> CopyFile(Expression<Func<string>> sourceFilePath, Expression<Func<string>> destinationFilePath, Expression<Func<bool>> overwrite = null)
         {
-            var __workflow_sourceFilePath = sourceFilePath == null ? null : WorkflowExpression.Compile(sourceFilePath);
-            WorkflowExpression.Validate(__workflow_sourceFilePath, nameof(sourceFilePath), required: true);
-            var __workflow_destinationFilePath = destinationFilePath == null ? null : WorkflowExpression.Compile(destinationFilePath);
-            WorkflowExpression.Validate(__workflow_destinationFilePath, nameof(destinationFilePath), required: true);
-            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
-            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
+            var __workflow_sourceFilePath = WorkflowExpression.Compile(sourceFilePath, nameof(sourceFilePath), required: true);
+            var __workflow_destinationFilePath = WorkflowExpression.Compile(destinationFilePath, nameof(destinationFilePath), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
             return new DeferredBodyAction<CopyFileOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -43,14 +40,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<ExtractArchiveOutputItem[]> ExtractArchive(Expression<Func<string>> destinationFolderPath, Expression<Func<string>> filePath = null, Expression<Func<ExtractArchiveInputOverwriteExistingFilesBehaviourType>> overwriteExistingFilesBehaviour = null, Expression<Func<object>> fileContent = null)
         {
-            var __workflow_destinationFolderPath = destinationFolderPath == null ? null : WorkflowExpression.Compile(destinationFolderPath);
-            WorkflowExpression.Validate(__workflow_destinationFolderPath, nameof(destinationFolderPath), required: true);
-            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
-            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: false);
-            var __workflow_overwriteExistingFilesBehaviour = overwriteExistingFilesBehaviour == null ? null : WorkflowExpression.Compile(overwriteExistingFilesBehaviour);
-            WorkflowExpression.Validate(__workflow_overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
-            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
-            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: false);
+            var __workflow_destinationFolderPath = WorkflowExpression.Compile(destinationFolderPath, nameof(destinationFolderPath), required: true);
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: false);
+            var __workflow_overwriteExistingFilesBehaviour = WorkflowExpression.Compile(overwriteExistingFilesBehaviour, nameof(overwriteExistingFilesBehaviour), required: false);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
             return new DeferredBodyAction<ExtractArchiveOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -82,14 +75,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<CreateFileOutput> CreateFile(Expression<Func<string>> folderPath, Expression<Func<string>> fileName, Expression<Func<object>> fileContent, Expression<Func<bool>> overwrite = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
-            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: true);
-            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
-            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
             return new DeferredBodyAction<CreateFileOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -113,8 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IOutputWorkflowAction<bool> DeleteFile(Expression<Func<string>> fileId)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredOutputAction<bool>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -131,10 +119,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> fileId, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -160,10 +146,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<JToken> GetFileContentV2(Expression<Func<string>> fileId, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -189,10 +173,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<JToken> GetFileContentByPath(Expression<Func<string>> fileId, Expression<Func<bool>> inferContentType = null)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_inferContentType = inferContentType == null ? null : WorkflowExpression.Compile(inferContentType);
-            WorkflowExpression.Validate(__workflow_inferContentType, nameof(inferContentType), required: false);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_inferContentType = WorkflowExpression.Compile(inferContentType, nameof(inferContentType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -218,8 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<GetFileMetadataOutput> GetFileMetadata(Expression<Func<string>> fileId)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<GetFileMetadataOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -236,8 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<GetFileMetadataByPathOutput> GetFileMetadataByPath(Expression<Func<string>> filePath)
         {
-            var __workflow_filePath = filePath == null ? null : WorkflowExpression.Compile(filePath);
-            WorkflowExpression.Validate(__workflow_filePath, nameof(filePath), required: true);
+            var __workflow_filePath = WorkflowExpression.Compile(filePath, nameof(filePath), required: true);
             return new DeferredBodyAction<GetFileMetadataByPathOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -254,8 +234,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<ListFolderOutputItem[]> ListFolder(Expression<Func<string>> folderId)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyAction<ListFolderOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -272,10 +251,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureFile")]
         public IBodyWorkflowAction<UpdateFileOutput> UpdateFile(Expression<Func<string>> fileId, Expression<Func<object>> fileContent)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
-            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
             return new DeferredBodyAction<UpdateFileOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -295,12 +272,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
     {
         public IBodyWorkflowTrigger<WhenFilesAreAddedOutputItem[]> WhenFilesAreAdded(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
-            var __workflow_maxFileCount = maxFileCount == null ? null : WorkflowExpression.Compile(maxFileCount);
-            WorkflowExpression.Validate(__workflow_maxFileCount, nameof(maxFileCount), required: false);
-            var __workflow_oldFilesCutOffTimestamp = oldFilesCutOffTimestamp == null ? null : WorkflowExpression.Compile(oldFilesCutOffTimestamp);
-            WorkflowExpression.Validate(__workflow_oldFilesCutOffTimestamp, nameof(oldFilesCutOffTimestamp), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
+            var __workflow_oldFilesCutOffTimestamp = WorkflowExpression.Compile(oldFilesCutOffTimestamp, nameof(oldFilesCutOffTimestamp), required: false);
             return new DeferredBodyTrigger<WhenFilesAreAddedOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -326,12 +300,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureFile
 
         public IBodyWorkflowTrigger<WhenFilesAreAddedOrModifiedOutputItem[]> WhenFilesAreAddedOrModified(Expression<Func<string>> folderPath, Expression<Func<int>> maxFileCount = null, Expression<Func<string>> oldFilesCutOffTimestamp = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
-            var __workflow_maxFileCount = maxFileCount == null ? null : WorkflowExpression.Compile(maxFileCount);
-            WorkflowExpression.Validate(__workflow_maxFileCount, nameof(maxFileCount), required: false);
-            var __workflow_oldFilesCutOffTimestamp = oldFilesCutOffTimestamp == null ? null : WorkflowExpression.Compile(oldFilesCutOffTimestamp);
-            WorkflowExpression.Validate(__workflow_oldFilesCutOffTimestamp, nameof(oldFilesCutOffTimestamp), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
+            var __workflow_maxFileCount = WorkflowExpression.Compile(maxFileCount, nameof(maxFileCount), required: false);
+            var __workflow_oldFilesCutOffTimestamp = WorkflowExpression.Compile(oldFilesCutOffTimestamp, nameof(oldFilesCutOffTimestamp), required: false);
             return new DeferredBodyTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();

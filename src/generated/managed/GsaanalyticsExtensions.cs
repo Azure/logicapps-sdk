@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetReportData(Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
-            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<Reports[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/reports/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
@@ -43,18 +38,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetAgencyReportData(Expression<Func<agencyNameInput>> agencyName, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var __workflow_agencyName = agencyName == null ? null : WorkflowExpression.Compile(agencyName);
-            WorkflowExpression.Validate(__workflow_agencyName, nameof(agencyName), required: true);
-            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
-            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_agencyName = WorkflowExpression.Compile(agencyName, nameof(agencyName), required: true);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<Reports[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agencies/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agencyName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));
@@ -75,18 +64,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsaanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsaanalytics")]
         public IBodyWorkflowAction<Reports[]> GetDomainReportData(Expression<Func<string>> domain, Expression<Func<reportNameInput>> reportName, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_reportName = reportName == null ? null : WorkflowExpression.Compile(reportName);
-            WorkflowExpression.Validate(__workflow_reportName, nameof(reportName), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_reportName = WorkflowExpression.Compile(reportName, nameof(reportName), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<Reports[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domain/{0}/reports/{1}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_reportName, 1));

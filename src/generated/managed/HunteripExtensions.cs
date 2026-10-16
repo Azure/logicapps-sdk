@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<DomainResponse> Domain(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> seniority = null, Expression<Func<string>> department = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_seniority = seniority == null ? null : WorkflowExpression.Compile(seniority);
-            WorkflowExpression.Validate(__workflow_seniority, nameof(seniority), required: false);
-            var __workflow_department = department == null ? null : WorkflowExpression.Compile(department);
-            WorkflowExpression.Validate(__workflow_department, nameof(department), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_seniority = WorkflowExpression.Compile(seniority, nameof(seniority), required: false);
+            var __workflow_department = WorkflowExpression.Compile(department, nameof(department), required: false);
             return new DeferredBodyAction<DomainResponse>(() =>
             {
                 var apiCallPath = "/domain-search";
@@ -53,18 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<EmailResponse> Email(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> fullName = null, Expression<Func<int>> maxDuration = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: false);
-            var __workflow_firstName = firstName == null ? null : WorkflowExpression.Compile(firstName);
-            WorkflowExpression.Validate(__workflow_firstName, nameof(firstName), required: false);
-            var __workflow_lastName = lastName == null ? null : WorkflowExpression.Compile(lastName);
-            WorkflowExpression.Validate(__workflow_lastName, nameof(lastName), required: false);
-            var __workflow_fullName = fullName == null ? null : WorkflowExpression.Compile(fullName);
-            WorkflowExpression.Validate(__workflow_fullName, nameof(fullName), required: false);
-            var __workflow_maxDuration = maxDuration == null ? null : WorkflowExpression.Compile(maxDuration);
-            WorkflowExpression.Validate(__workflow_maxDuration, nameof(maxDuration), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
+            var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
+            var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
+            var __workflow_fullName = WorkflowExpression.Compile(fullName, nameof(fullName), required: false);
+            var __workflow_maxDuration = WorkflowExpression.Compile(maxDuration, nameof(maxDuration), required: false);
             return new DeferredBodyAction<EmailResponse>(() =>
             {
                 var apiCallPath = "/email-finder";
@@ -89,10 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<AuthorResponse> Author(Expression<Func<string>> url, Expression<Func<int>> maxDuration = null)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_maxDuration = maxDuration == null ? null : WorkflowExpression.Compile(maxDuration);
-            WorkflowExpression.Validate(__workflow_maxDuration, nameof(maxDuration), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_maxDuration = WorkflowExpression.Compile(maxDuration, nameof(maxDuration), required: false);
             return new DeferredBodyAction<AuthorResponse>(() =>
             {
                 var apiCallPath = "/author-finder";
@@ -108,8 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<EmailVerifyResponse> EmailVerify(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<EmailVerifyResponse>(() =>
             {
                 var apiCallPath = "/email-verifier";
@@ -123,12 +107,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
         public IBodyWorkflowAction<EmailCountResponse> EmailCount(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<typeInput>> type = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<EmailCountResponse>(() =>
             {
                 var apiCallPath = "/email-count";

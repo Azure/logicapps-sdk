@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
         public IBodyWorkflowAction<CheckTextResponse> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
         {
-            var __workflow_bodyleft = bodyleft == null ? null : WorkflowExpression.Compile(bodyleft);
-            WorkflowExpression.Validate(__workflow_bodyleft, nameof(bodyleft), required: true);
-            var __workflow_bodyright = bodyright == null ? null : WorkflowExpression.Compile(bodyright);
-            WorkflowExpression.Validate(__workflow_bodyright, nameof(bodyright), required: true);
-            var __workflow_diffLevel = diffLevel == null ? null : WorkflowExpression.Compile(diffLevel);
-            WorkflowExpression.Validate(__workflow_diffLevel, nameof(diffLevel), required: false);
+            var __workflow_bodyleft = WorkflowExpression.Compile(bodyleft, nameof(bodyleft), required: true);
+            var __workflow_bodyright = WorkflowExpression.Compile(bodyright, nameof(bodyright), required: true);
+            var __workflow_diffLevel = WorkflowExpression.Compile(diffLevel, nameof(diffLevel), required: false);
             return new DeferredBodyAction<CheckTextResponse>(() =>
             {
                 var apiCallPath = "/public/text";
@@ -47,10 +44,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
         public IBodyWorkflowAction<CheckImageResponse> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
         {
-            var __workflow_bodyleftImage = bodyleftImage == null ? null : WorkflowExpression.Compile(bodyleftImage);
-            WorkflowExpression.Validate(__workflow_bodyleftImage, nameof(bodyleftImage), required: true);
-            var __workflow_bodyrightImage = bodyrightImage == null ? null : WorkflowExpression.Compile(bodyrightImage);
-            WorkflowExpression.Validate(__workflow_bodyrightImage, nameof(bodyrightImage), required: true);
+            var __workflow_bodyleftImage = WorkflowExpression.Compile(bodyleftImage, nameof(bodyleftImage), required: true);
+            var __workflow_bodyrightImage = WorkflowExpression.Compile(bodyrightImage, nameof(bodyrightImage), required: true);
             return new DeferredBodyAction<CheckImageResponse>(() =>
             {
                 var apiCallPath = "/public/image";

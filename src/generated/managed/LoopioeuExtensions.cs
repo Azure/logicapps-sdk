@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioeu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loopioeu")]
         public IBodyWorkflowAction<ListStacksResponse> ListStacks(Expression<Func<string>> fields = null)
         {
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<ListStacksResponse>(() =>
             {
                 var apiCallPath = "/stacks";

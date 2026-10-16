@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> ListModels(Expression<Func<string>> aPIVersion, Expression<Func<int>> pageSize = null, Expression<Func<string>> pageToken = null)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_pageToken = pageToken == null ? null : WorkflowExpression.Compile(pageToken);
-            WorkflowExpression.Validate(__workflow_pageToken, nameof(pageToken), required: false);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_pageToken = WorkflowExpression.Compile(pageToken, nameof(pageToken), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1));
@@ -35,10 +32,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GetModel(Expression<Func<string>> aPIVersion, Expression<Func<string>> name)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));
@@ -51,28 +46,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateText(Expression<Func<string>> aPIVersion, Expression<Func<string>> modelType, Expression<Func<string>> modelName, Expression<Func<string>> bodypromptprompt, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodycandidateCount = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodytopK = null, Expression<Func<JToken[]>> bodysafetySettings = null, Expression<Func<string[]>> bodystopSequences = null)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_modelType = modelType == null ? null : WorkflowExpression.Compile(modelType);
-            WorkflowExpression.Validate(__workflow_modelType, nameof(modelType), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
-            var __workflow_bodypromptprompt = bodypromptprompt == null ? null : WorkflowExpression.Compile(bodypromptprompt);
-            WorkflowExpression.Validate(__workflow_bodypromptprompt, nameof(bodypromptprompt), required: true);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodycandidateCount = bodycandidateCount == null ? null : WorkflowExpression.Compile(bodycandidateCount);
-            WorkflowExpression.Validate(__workflow_bodycandidateCount, nameof(bodycandidateCount), required: false);
-            var __workflow_bodymaxOutputTokens = bodymaxOutputTokens == null ? null : WorkflowExpression.Compile(bodymaxOutputTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodytopK = bodytopK == null ? null : WorkflowExpression.Compile(bodytopK);
-            WorkflowExpression.Validate(__workflow_bodytopK, nameof(bodytopK), required: false);
-            var __workflow_bodysafetySettings = bodysafetySettings == null ? null : WorkflowExpression.Compile(bodysafetySettings);
-            WorkflowExpression.Validate(__workflow_bodysafetySettings, nameof(bodysafetySettings), required: false);
-            var __workflow_bodystopSequences = bodystopSequences == null ? null : WorkflowExpression.Compile(bodystopSequences);
-            WorkflowExpression.Validate(__workflow_bodystopSequences, nameof(bodystopSequences), required: false);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_modelType = WorkflowExpression.Compile(modelType, nameof(modelType), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodypromptprompt = WorkflowExpression.Compile(bodypromptprompt, nameof(bodypromptprompt), required: true);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodycandidateCount = WorkflowExpression.Compile(bodycandidateCount, nameof(bodycandidateCount), required: false);
+            var __workflow_bodymaxOutputTokens = WorkflowExpression.Compile(bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodystopSequences = WorkflowExpression.Compile(bodystopSequences, nameof(bodystopSequences), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}:generateText", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -144,18 +128,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> GenerateMessage(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodytopK = null)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_bodypromptmessages = bodypromptmessages == null ? null : WorkflowExpression.Compile(bodypromptmessages);
-            WorkflowExpression.Validate(__workflow_bodypromptmessages, nameof(bodypromptmessages), required: false);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodytopK = bodytopK == null ? null : WorkflowExpression.Compile(bodytopK);
-            WorkflowExpression.Validate(__workflow_bodytopK, nameof(bodytopK), required: false);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodypromptmessages = WorkflowExpression.Compile(bodypromptmessages, nameof(bodypromptmessages), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateMessage", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
@@ -207,12 +185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountTextTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodyprompttext = null)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_bodyprompttext = bodyprompttext == null ? null : WorkflowExpression.Compile(bodyprompttext);
-            WorkflowExpression.Validate(__workflow_bodyprompttext, nameof(bodyprompttext), required: false);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodyprompttext = WorkflowExpression.Compile(bodyprompttext, nameof(bodyprompttext), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTextTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
@@ -246,12 +221,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<JToken> CountMessageTokens(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<bodypromptmessagesInputItem[]>> bodypromptmessages = null)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_bodypromptmessages = bodypromptmessages == null ? null : WorkflowExpression.Compile(bodypromptmessages);
-            WorkflowExpression.Validate(__workflow_bodypromptmessages, nameof(bodypromptmessages), required: false);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodypromptmessages = WorkflowExpression.Compile(bodypromptmessages, nameof(bodypromptmessages), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countMessageTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));
@@ -285,12 +257,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlepalm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlepalm")]
         public IBodyWorkflowAction<EmbedTextResponse> EmbedText(Expression<Func<string>> aPIVersion, Expression<Func<string>> model, Expression<Func<string>> bodytext)
         {
-            var __workflow_aPIVersion = aPIVersion == null ? null : WorkflowExpression.Compile(aPIVersion);
-            WorkflowExpression.Validate(__workflow_aPIVersion, nameof(aPIVersion), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_aPIVersion = WorkflowExpression.Compile(aPIVersion, nameof(aPIVersion), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<EmbedTextResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedText", ExpressionConverter.ConvertWithUrlEncoding(__workflow_aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_model, 1));

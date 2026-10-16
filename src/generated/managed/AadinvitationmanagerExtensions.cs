@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aadinvitationmanager")]
         public IBodyWorkflowAction<CreateInvitationResponse> CreateInvitation(Expression<Func<string>> bodyinvitedUserDisplayName = null, Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]>> bodyinvitedUserMessageInfoccRecipients = null, Expression<Func<string>> bodyinvitedUserMessageInfocustomizedMessageBody = null, Expression<Func<string>> bodyinvitedUserMessageInfomessageLanguage = null, Expression<Func<string>> bodyinvitedUserType = null, Expression<Func<string>> bodyinviteRedirectUrl = null, Expression<Func<bool>> bodyresetRedemption = null, Expression<Func<bool>> bodysendInvitationMessage = null)
         {
-            var __workflow_bodyinvitedUserDisplayName = bodyinvitedUserDisplayName == null ? null : WorkflowExpression.Compile(bodyinvitedUserDisplayName);
-            WorkflowExpression.Validate(__workflow_bodyinvitedUserDisplayName, nameof(bodyinvitedUserDisplayName), required: false);
-            var __workflow_bodyinvitedUserEmailAddress = bodyinvitedUserEmailAddress == null ? null : WorkflowExpression.Compile(bodyinvitedUserEmailAddress);
-            WorkflowExpression.Validate(__workflow_bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
-            var __workflow_bodyinvitedUserMessageInfoccRecipients = bodyinvitedUserMessageInfoccRecipients == null ? null : WorkflowExpression.Compile(bodyinvitedUserMessageInfoccRecipients);
-            WorkflowExpression.Validate(__workflow_bodyinvitedUserMessageInfoccRecipients, nameof(bodyinvitedUserMessageInfoccRecipients), required: false);
-            var __workflow_bodyinvitedUserMessageInfocustomizedMessageBody = bodyinvitedUserMessageInfocustomizedMessageBody == null ? null : WorkflowExpression.Compile(bodyinvitedUserMessageInfocustomizedMessageBody);
-            WorkflowExpression.Validate(__workflow_bodyinvitedUserMessageInfocustomizedMessageBody, nameof(bodyinvitedUserMessageInfocustomizedMessageBody), required: false);
-            var __workflow_bodyinvitedUserMessageInfomessageLanguage = bodyinvitedUserMessageInfomessageLanguage == null ? null : WorkflowExpression.Compile(bodyinvitedUserMessageInfomessageLanguage);
-            WorkflowExpression.Validate(__workflow_bodyinvitedUserMessageInfomessageLanguage, nameof(bodyinvitedUserMessageInfomessageLanguage), required: false);
-            var __workflow_bodyinvitedUserType = bodyinvitedUserType == null ? null : WorkflowExpression.Compile(bodyinvitedUserType);
-            WorkflowExpression.Validate(__workflow_bodyinvitedUserType, nameof(bodyinvitedUserType), required: false);
-            var __workflow_bodyinviteRedirectUrl = bodyinviteRedirectUrl == null ? null : WorkflowExpression.Compile(bodyinviteRedirectUrl);
-            WorkflowExpression.Validate(__workflow_bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
-            var __workflow_bodyresetRedemption = bodyresetRedemption == null ? null : WorkflowExpression.Compile(bodyresetRedemption);
-            WorkflowExpression.Validate(__workflow_bodyresetRedemption, nameof(bodyresetRedemption), required: false);
-            var __workflow_bodysendInvitationMessage = bodysendInvitationMessage == null ? null : WorkflowExpression.Compile(bodysendInvitationMessage);
-            WorkflowExpression.Validate(__workflow_bodysendInvitationMessage, nameof(bodysendInvitationMessage), required: false);
+            var __workflow_bodyinvitedUserDisplayName = WorkflowExpression.Compile(bodyinvitedUserDisplayName, nameof(bodyinvitedUserDisplayName), required: false);
+            var __workflow_bodyinvitedUserEmailAddress = WorkflowExpression.Compile(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
+            var __workflow_bodyinvitedUserMessageInfoccRecipients = WorkflowExpression.Compile(bodyinvitedUserMessageInfoccRecipients, nameof(bodyinvitedUserMessageInfoccRecipients), required: false);
+            var __workflow_bodyinvitedUserMessageInfocustomizedMessageBody = WorkflowExpression.Compile(bodyinvitedUserMessageInfocustomizedMessageBody, nameof(bodyinvitedUserMessageInfocustomizedMessageBody), required: false);
+            var __workflow_bodyinvitedUserMessageInfomessageLanguage = WorkflowExpression.Compile(bodyinvitedUserMessageInfomessageLanguage, nameof(bodyinvitedUserMessageInfomessageLanguage), required: false);
+            var __workflow_bodyinvitedUserType = WorkflowExpression.Compile(bodyinvitedUserType, nameof(bodyinvitedUserType), required: false);
+            var __workflow_bodyinviteRedirectUrl = WorkflowExpression.Compile(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
+            var __workflow_bodyresetRedemption = WorkflowExpression.Compile(bodyresetRedemption, nameof(bodyresetRedemption), required: false);
+            var __workflow_bodysendInvitationMessage = WorkflowExpression.Compile(bodysendInvitationMessage, nameof(bodysendInvitationMessage), required: false);
             return new DeferredBodyAction<CreateInvitationResponse>(() =>
             {
                 var apiCallPath = "/v1.0/invitations";

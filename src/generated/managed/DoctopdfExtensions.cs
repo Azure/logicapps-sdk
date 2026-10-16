@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
         public IBodyWorkflowAction<DocToPDFResponse> DocToPDF(Expression<Func<string>> bodyfileName = null, Expression<Func<object>> bodyfileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
         {
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_publickey = publickey == null ? null : WorkflowExpression.Compile(publickey);
-            WorkflowExpression.Validate(__workflow_publickey, nameof(publickey), required: false);
-            var __workflow_apikey = apikey == null ? null : WorkflowExpression.Compile(apikey);
-            WorkflowExpression.Validate(__workflow_apikey, nameof(apikey), required: false);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_publickey = WorkflowExpression.Compile(publickey, nameof(publickey), required: false);
+            var __workflow_apikey = WorkflowExpression.Compile(apikey, nameof(apikey), required: false);
             return new DeferredBodyAction<DocToPDFResponse>(() =>
             {
                 var apiCallPath = "/api/doctopdf";

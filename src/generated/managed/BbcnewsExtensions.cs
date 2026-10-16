@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
         public IBodyWorkflowAction<NewsResponse> GetNewsByTopic(Expression<Func<string>> lang, Expression<Func<string>> topic = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
-            var __workflow_topic = topic == null ? null : WorkflowExpression.Compile(topic);
-            WorkflowExpression.Validate(__workflow_topic, nameof(topic), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<NewsResponse>(() =>
             {
                 var apiCallPath = "/news";
@@ -37,10 +34,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
         public IBodyWorkflowAction<NewsResponse> GetLatestNews(Expression<Func<string>> lang, Expression<Func<int>> limit = null)
         {
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<NewsResponse>(() =>
             {
                 var apiCallPath = "/latest";

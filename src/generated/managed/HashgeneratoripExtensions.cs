@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
         public IBodyWorkflowAction<HashResponse> Hash(Expression<Func<string>> bodystring, Expression<Func<bodytypeInput>> bodytype = null)
         {
-            var __workflow_bodystring = bodystring == null ? null : WorkflowExpression.Compile(bodystring);
-            WorkflowExpression.Validate(__workflow_bodystring, nameof(bodystring), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodystring = WorkflowExpression.Compile(bodystring, nameof(bodystring), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<HashResponse>(() =>
             {
                 var apiCallPath = "/";

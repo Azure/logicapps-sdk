@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_tin = tin == null ? null : WorkflowExpression.Compile(tin);
-            WorkflowExpression.Validate(__workflow_tin, nameof(tin), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
-            var __workflow_isIrs = isIrs == null ? null : WorkflowExpression.Compile(isIrs);
-            WorkflowExpression.Validate(__workflow_isIrs, nameof(isIrs), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_tin = WorkflowExpression.Compile(tin, nameof(tin), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            var __workflow_isIrs = WorkflowExpression.Compile(isIrs, nameof(isIrs), required: false);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/validate";
@@ -43,16 +38,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Taxidpro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "taxidpro")]
         public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> country, Expression<Func<string>> tin, Expression<Func<typeInput>> type = null, Expression<Func<localeInput>> locale = null, Expression<Func<bool>> isIrs = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_tin = tin == null ? null : WorkflowExpression.Compile(tin);
-            WorkflowExpression.Validate(__workflow_tin, nameof(tin), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
-            var __workflow_isIrs = isIrs == null ? null : WorkflowExpression.Compile(isIrs);
-            WorkflowExpression.Validate(__workflow_isIrs, nameof(isIrs), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_tin = WorkflowExpression.Compile(tin, nameof(tin), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            var __workflow_isIrs = WorkflowExpression.Compile(isIrs, nameof(isIrs), required: false);
             return new DeferredBodyAction<LookupResponse>(() =>
             {
                 var apiCallPath = "/lookup";

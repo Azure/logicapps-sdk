@@ -15,12 +15,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
         public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<JToken[]>> rows)
         {
-            var __workflow_hidx = hidx == null ? null : WorkflowExpression.Compile(hidx);
-            WorkflowExpression.Validate(__workflow_hidx, nameof(hidx), required: true);
-            var __workflow_schema = schema == null ? null : WorkflowExpression.Compile(schema);
-            WorkflowExpression.Validate(__workflow_schema, nameof(schema), required: true);
-            var __workflow_rows = rows == null ? null : WorkflowExpression.Compile(rows);
-            WorkflowExpression.Validate(__workflow_rows, nameof(rows), required: true);
+            var __workflow_hidx = WorkflowExpression.Compile(hidx, nameof(hidx), required: true);
+            var __workflow_schema = WorkflowExpression.Compile(schema, nameof(schema), required: true);
+            var __workflow_rows = WorkflowExpression.Compile(rows, nameof(rows), required: true);
             return new DeferredBodyAction<GenerateFileContentsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -39,12 +36,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
         public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<string>> contents)
         {
-            var __workflow_hidx = hidx == null ? null : WorkflowExpression.Compile(hidx);
-            WorkflowExpression.Validate(__workflow_hidx, nameof(hidx), required: true);
-            var __workflow_schema = schema == null ? null : WorkflowExpression.Compile(schema);
-            WorkflowExpression.Validate(__workflow_schema, nameof(schema), required: true);
-            var __workflow_contents = contents == null ? null : WorkflowExpression.Compile(contents);
-            WorkflowExpression.Validate(__workflow_contents, nameof(contents), required: true);
+            var __workflow_hidx = WorkflowExpression.Compile(hidx, nameof(hidx), required: true);
+            var __workflow_schema = WorkflowExpression.Compile(schema, nameof(schema), required: true);
+            var __workflow_contents = WorkflowExpression.Compile(contents, nameof(contents), required: true);
             return new DeferredBodyAction<ParseFileContentsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

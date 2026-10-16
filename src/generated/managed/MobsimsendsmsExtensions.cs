@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
         public IBodyWorkflowAction<string> SMS(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodygroupMsg = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodygroupMsg = bodygroupMsg == null ? null : WorkflowExpression.Compile(bodygroupMsg);
-            WorkflowExpression.Validate(__workflow_bodygroupMsg, nameof(bodygroupMsg), required: false);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodygroupMsg = WorkflowExpression.Compile(bodygroupMsg, nameof(bodygroupMsg), required: false);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/sms";

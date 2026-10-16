@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = inputdocuments == null ? null : WorkflowExpression.Compile(inputdocuments);
-            WorkflowExpression.Validate(__workflow_inputdocuments, nameof(inputdocuments), required: true);
-            var __workflow_modelVersion = modelVersion == null ? null : WorkflowExpression.Compile(modelVersion);
-            WorkflowExpression.Validate(__workflow_modelVersion, nameof(modelVersion), required: false);
-            var __workflow_showStats = showStats == null ? null : WorkflowExpression.Compile(showStats);
-            WorkflowExpression.Validate(__workflow_showStats, nameof(showStats), required: false);
+            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
+            var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<EntityLinkingResult>(() =>
             {
                 var apiCallPath = "/text/analytics/v3.0/entities/linking";
@@ -44,12 +41,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = inputdocuments == null ? null : WorkflowExpression.Compile(inputdocuments);
-            WorkflowExpression.Validate(__workflow_inputdocuments, nameof(inputdocuments), required: true);
-            var __workflow_modelVersion = modelVersion == null ? null : WorkflowExpression.Compile(modelVersion);
-            WorkflowExpression.Validate(__workflow_modelVersion, nameof(modelVersion), required: false);
-            var __workflow_showStats = showStats == null ? null : WorkflowExpression.Compile(showStats);
-            WorkflowExpression.Validate(__workflow_showStats, nameof(showStats), required: false);
+            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
+            var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<EntitiesResultV3>(() =>
             {
                 var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
@@ -75,12 +69,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = inputdocuments == null ? null : WorkflowExpression.Compile(inputdocuments);
-            WorkflowExpression.Validate(__workflow_inputdocuments, nameof(inputdocuments), required: true);
-            var __workflow_modelVersion = modelVersion == null ? null : WorkflowExpression.Compile(modelVersion);
-            WorkflowExpression.Validate(__workflow_modelVersion, nameof(modelVersion), required: false);
-            var __workflow_showStats = showStats == null ? null : WorkflowExpression.Compile(showStats);
-            WorkflowExpression.Validate(__workflow_showStats, nameof(showStats), required: false);
+            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
+            var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<KeyPhraseResultV3>(() =>
             {
                 var apiCallPath = "/text/analytics/v3.0/keyPhrases";
@@ -106,12 +97,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<LanguageResultV3> Languages(Expression<Func<LanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = inputdocuments == null ? null : WorkflowExpression.Compile(inputdocuments);
-            WorkflowExpression.Validate(__workflow_inputdocuments, nameof(inputdocuments), required: true);
-            var __workflow_modelVersion = modelVersion == null ? null : WorkflowExpression.Compile(modelVersion);
-            WorkflowExpression.Validate(__workflow_modelVersion, nameof(modelVersion), required: false);
-            var __workflow_showStats = showStats == null ? null : WorkflowExpression.Compile(showStats);
-            WorkflowExpression.Validate(__workflow_showStats, nameof(showStats), required: false);
+            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
+            var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<LanguageResultV3>(() =>
             {
                 var apiCallPath = "/text/analytics/v3.0/languages";
@@ -137,12 +125,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
         public IBodyWorkflowAction<SentimentResponse> Sentiment(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
         {
-            var __workflow_inputdocuments = inputdocuments == null ? null : WorkflowExpression.Compile(inputdocuments);
-            WorkflowExpression.Validate(__workflow_inputdocuments, nameof(inputdocuments), required: true);
-            var __workflow_modelVersion = modelVersion == null ? null : WorkflowExpression.Compile(modelVersion);
-            WorkflowExpression.Validate(__workflow_modelVersion, nameof(modelVersion), required: false);
-            var __workflow_showStats = showStats == null ? null : WorkflowExpression.Compile(showStats);
-            WorkflowExpression.Validate(__workflow_showStats, nameof(showStats), required: false);
+            var __workflow_inputdocuments = WorkflowExpression.Compile(inputdocuments, nameof(inputdocuments), required: true);
+            var __workflow_modelVersion = WorkflowExpression.Compile(modelVersion, nameof(modelVersion), required: false);
+            var __workflow_showStats = WorkflowExpression.Compile(showStats, nameof(showStats), required: false);
             return new DeferredBodyAction<SentimentResponse>(() =>
             {
                 var apiCallPath = "/text/analytics/v3.0/sentiment";

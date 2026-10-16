@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodyn = null, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytopP = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<string[]>> bodystop = null)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodyn = bodyn == null ? null : WorkflowExpression.Compile(bodyn);
-            WorkflowExpression.Validate(__workflow_bodyn, nameof(bodyn), required: false);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodyfrequencyPenalty = bodyfrequencyPenalty == null ? null : WorkflowExpression.Compile(bodyfrequencyPenalty);
-            WorkflowExpression.Validate(__workflow_bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            var __workflow_bodypresencePenalty = bodypresencePenalty == null ? null : WorkflowExpression.Compile(bodypresencePenalty);
-            WorkflowExpression.Validate(__workflow_bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            var __workflow_bodystop = bodystop == null ? null : WorkflowExpression.Compile(bodystop);
-            WorkflowExpression.Validate(__workflow_bodystop, nameof(bodystop), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodyn = WorkflowExpression.Compile(bodyn, nameof(bodyn), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodystop = WorkflowExpression.Compile(bodystop, nameof(bodystop), required: false);
             return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -136,10 +127,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<EmbeddingsResponse> Embeddings(Expression<Func<string>> bodymodel, Expression<Func<string>> bodyinput)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
             return new DeferredBodyAction<EmbeddingsResponse>(() =>
             {
                 var apiCallPath = "/v1/embeddings";
@@ -163,14 +152,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<CreateImageResponse> CreateImage(Expression<Func<string>> bodyprompt, Expression<Func<int>> bodyn = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null)
         {
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodyn = bodyn == null ? null : WorkflowExpression.Compile(bodyn);
-            WorkflowExpression.Validate(__workflow_bodyn, nameof(bodyn), required: false);
-            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
-            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: false);
-            var __workflow_bodyresponseFormat = bodyresponseFormat == null ? null : WorkflowExpression.Compile(bodyresponseFormat);
-            WorkflowExpression.Validate(__workflow_bodyresponseFormat, nameof(bodyresponseFormat), required: false);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodyn = WorkflowExpression.Compile(bodyn, nameof(bodyn), required: false);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
+            var __workflow_bodyresponseFormat = WorkflowExpression.Compile(bodyresponseFormat, nameof(bodyresponseFormat), required: false);
             return new DeferredBodyAction<CreateImageResponse>(() =>
             {
                 var apiCallPath = "/v1/images/generations";
@@ -240,26 +225,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaiip")]
         public IBodyWorkflowAction<CompletionV2Response> Completion(Expression<Func<bodyengineInput>> bodyengine, Expression<Func<string>> bodyprompt, Expression<Func<int>> bodyn = null, Expression<Func<int>> bodybestOf = null, Expression<Func<double>> bodytemperature = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytopP = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<string[]>> bodystop = null)
         {
-            var __workflow_bodyengine = bodyengine == null ? null : WorkflowExpression.Compile(bodyengine);
-            WorkflowExpression.Validate(__workflow_bodyengine, nameof(bodyengine), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodyn = bodyn == null ? null : WorkflowExpression.Compile(bodyn);
-            WorkflowExpression.Validate(__workflow_bodyn, nameof(bodyn), required: false);
-            var __workflow_bodybestOf = bodybestOf == null ? null : WorkflowExpression.Compile(bodybestOf);
-            WorkflowExpression.Validate(__workflow_bodybestOf, nameof(bodybestOf), required: false);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodyfrequencyPenalty = bodyfrequencyPenalty == null ? null : WorkflowExpression.Compile(bodyfrequencyPenalty);
-            WorkflowExpression.Validate(__workflow_bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            var __workflow_bodypresencePenalty = bodypresencePenalty == null ? null : WorkflowExpression.Compile(bodypresencePenalty);
-            WorkflowExpression.Validate(__workflow_bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            var __workflow_bodystop = bodystop == null ? null : WorkflowExpression.Compile(bodystop);
-            WorkflowExpression.Validate(__workflow_bodystop, nameof(bodystop), required: false);
+            var __workflow_bodyengine = WorkflowExpression.Compile(bodyengine, nameof(bodyengine), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodyn = WorkflowExpression.Compile(bodyn, nameof(bodyn), required: false);
+            var __workflow_bodybestOf = WorkflowExpression.Compile(bodybestOf, nameof(bodybestOf), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodystop = WorkflowExpression.Compile(bodystop, nameof(bodystop), required: false);
             return new DeferredBodyAction<CompletionV2Response>(() =>
             {
                 var apiCallPath = "/v1/completions";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
         public IBodyWorkflowAction<TranscriptResponse> GetTranscript(Expression<Func<string>> bodyyouTubeVideoID)
         {
-            var __workflow_bodyyouTubeVideoID = bodyyouTubeVideoID == null ? null : WorkflowExpression.Compile(bodyyouTubeVideoID);
-            WorkflowExpression.Validate(__workflow_bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
+            var __workflow_bodyyouTubeVideoID = WorkflowExpression.Compile(bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
             return new DeferredBodyAction<TranscriptResponse>(() =>
             {
                 var apiCallPath = "/youtubei/v1/get_transcript";

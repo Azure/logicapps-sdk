@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<EnginesListGetResponseItem[]> EnginesListGet(Expression<Func<string>> organization = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
             return new DeferredBodyAction<EnginesListGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/engines/list";
@@ -47,28 +46,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationTextImagePostResponse> GenerationTextImage(Expression<Func<string>> engineId, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
         {
-            var __workflow_engineId = engineId == null ? null : WorkflowExpression.Compile(engineId);
-            WorkflowExpression.Validate(__workflow_engineId, nameof(engineId), required: true);
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodytextPrompts = bodytextPrompts == null ? null : WorkflowExpression.Compile(bodytextPrompts);
-            WorkflowExpression.Validate(__workflow_bodytextPrompts, nameof(bodytextPrompts), required: false);
-            var __workflow_bodycfgScale = bodycfgScale == null ? null : WorkflowExpression.Compile(bodycfgScale);
-            WorkflowExpression.Validate(__workflow_bodycfgScale, nameof(bodycfgScale), required: false);
-            var __workflow_bodyclipGuidancePreset = bodyclipGuidancePreset == null ? null : WorkflowExpression.Compile(bodyclipGuidancePreset);
-            WorkflowExpression.Validate(__workflow_bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            var __workflow_bodysampler = bodysampler == null ? null : WorkflowExpression.Compile(bodysampler);
-            WorkflowExpression.Validate(__workflow_bodysampler, nameof(bodysampler), required: false);
-            var __workflow_bodysamples = bodysamples == null ? null : WorkflowExpression.Compile(bodysamples);
-            WorkflowExpression.Validate(__workflow_bodysamples, nameof(bodysamples), required: false);
-            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
-            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodysteps = bodysteps == null ? null : WorkflowExpression.Compile(bodysteps);
-            WorkflowExpression.Validate(__workflow_bodysteps, nameof(bodysteps), required: false);
+            var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodytextPrompts = WorkflowExpression.Compile(bodytextPrompts, nameof(bodytextPrompts), required: false);
+            var __workflow_bodycfgScale = WorkflowExpression.Compile(bodycfgScale, nameof(bodycfgScale), required: false);
+            var __workflow_bodyclipGuidancePreset = WorkflowExpression.Compile(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
+            var __workflow_bodysampler = WorkflowExpression.Compile(bodysampler, nameof(bodysampler), required: false);
+            var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
             return new DeferredBodyAction<GenerationTextImagePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/text-to-image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_engineId, 1));
@@ -146,34 +134,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationImageImagePostResponse> GenerationImageImage(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<bodyinitImageModeInput>> bodyinitImageMode = null, Expression<Func<double>> bodyimageStrength = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
         {
-            var __workflow_engineId = engineId == null ? null : WorkflowExpression.Compile(engineId);
-            WorkflowExpression.Validate(__workflow_engineId, nameof(engineId), required: true);
-            var __workflow_bodyinitImage = bodyinitImage == null ? null : WorkflowExpression.Compile(bodyinitImage);
-            WorkflowExpression.Validate(__workflow_bodyinitImage, nameof(bodyinitImage), required: true);
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: false);
-            var __workflow_bodytextPrompts = bodytextPrompts == null ? null : WorkflowExpression.Compile(bodytextPrompts);
-            WorkflowExpression.Validate(__workflow_bodytextPrompts, nameof(bodytextPrompts), required: false);
-            var __workflow_bodyinitImageMode = bodyinitImageMode == null ? null : WorkflowExpression.Compile(bodyinitImageMode);
-            WorkflowExpression.Validate(__workflow_bodyinitImageMode, nameof(bodyinitImageMode), required: false);
-            var __workflow_bodyimageStrength = bodyimageStrength == null ? null : WorkflowExpression.Compile(bodyimageStrength);
-            WorkflowExpression.Validate(__workflow_bodyimageStrength, nameof(bodyimageStrength), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodycfgScale = bodycfgScale == null ? null : WorkflowExpression.Compile(bodycfgScale);
-            WorkflowExpression.Validate(__workflow_bodycfgScale, nameof(bodycfgScale), required: false);
-            var __workflow_bodyclipGuidancePreset = bodyclipGuidancePreset == null ? null : WorkflowExpression.Compile(bodyclipGuidancePreset);
-            WorkflowExpression.Validate(__workflow_bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            var __workflow_bodysampler = bodysampler == null ? null : WorkflowExpression.Compile(bodysampler);
-            WorkflowExpression.Validate(__workflow_bodysampler, nameof(bodysampler), required: false);
-            var __workflow_bodysamples = bodysamples == null ? null : WorkflowExpression.Compile(bodysamples);
-            WorkflowExpression.Validate(__workflow_bodysamples, nameof(bodysamples), required: false);
-            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
-            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodysteps = bodysteps == null ? null : WorkflowExpression.Compile(bodysteps);
-            WorkflowExpression.Validate(__workflow_bodysteps, nameof(bodysteps), required: false);
+            var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
+            var __workflow_bodyinitImage = WorkflowExpression.Compile(bodyinitImage, nameof(bodyinitImage), required: true);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_bodytextPrompts = WorkflowExpression.Compile(bodytextPrompts, nameof(bodytextPrompts), required: false);
+            var __workflow_bodyinitImageMode = WorkflowExpression.Compile(bodyinitImageMode, nameof(bodyinitImageMode), required: false);
+            var __workflow_bodyimageStrength = WorkflowExpression.Compile(bodyimageStrength, nameof(bodyimageStrength), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodycfgScale = WorkflowExpression.Compile(bodycfgScale, nameof(bodycfgScale), required: false);
+            var __workflow_bodyclipGuidancePreset = WorkflowExpression.Compile(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
+            var __workflow_bodysampler = WorkflowExpression.Compile(bodysampler, nameof(bodysampler), required: false);
+            var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
             return new DeferredBodyAction<GenerationImageImagePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/image-to-image", ExpressionConverter.ConvertWithUrlEncoding(__workflow_engineId, 1));
@@ -265,16 +239,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationUpscalePostResponse> GenerationUpscale(Expression<Func<string>> engineId, Expression<Func<string>> bodyimage, Expression<Func<string>> organization = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null)
         {
-            var __workflow_engineId = engineId == null ? null : WorkflowExpression.Compile(engineId);
-            WorkflowExpression.Validate(__workflow_engineId, nameof(engineId), required: true);
-            var __workflow_bodyimage = bodyimage == null ? null : WorkflowExpression.Compile(bodyimage);
-            WorkflowExpression.Validate(__workflow_bodyimage, nameof(bodyimage), required: true);
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
+            var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
+            var __workflow_bodyimage = WorkflowExpression.Compile(bodyimage, nameof(bodyimage), required: true);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
             return new DeferredBodyAction<GenerationUpscalePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/image-to-image/upscale", ExpressionConverter.ConvertWithUrlEncoding(__workflow_engineId, 1));
@@ -312,34 +281,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<GenerationMaskPostResponse> GenerationMask(Expression<Func<string>> engineId, Expression<Func<string>> bodyinitImage, Expression<Func<bodymaskSourceInput>> bodymaskSource, Expression<Func<string>> bodymaskImage, Expression<Func<string>> organization = null, Expression<Func<bodytextPromptsInputItem[]>> bodytextPrompts = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodycfgScale = null, Expression<Func<string>> bodyclipGuidancePreset = null, Expression<Func<string>> bodysampler = null, Expression<Func<int>> bodysamples = null, Expression<Func<int>> bodyseed = null, Expression<Func<int>> bodysteps = null)
         {
-            var __workflow_engineId = engineId == null ? null : WorkflowExpression.Compile(engineId);
-            WorkflowExpression.Validate(__workflow_engineId, nameof(engineId), required: true);
-            var __workflow_bodyinitImage = bodyinitImage == null ? null : WorkflowExpression.Compile(bodyinitImage);
-            WorkflowExpression.Validate(__workflow_bodyinitImage, nameof(bodyinitImage), required: true);
-            var __workflow_bodymaskSource = bodymaskSource == null ? null : WorkflowExpression.Compile(bodymaskSource);
-            WorkflowExpression.Validate(__workflow_bodymaskSource, nameof(bodymaskSource), required: true);
-            var __workflow_bodymaskImage = bodymaskImage == null ? null : WorkflowExpression.Compile(bodymaskImage);
-            WorkflowExpression.Validate(__workflow_bodymaskImage, nameof(bodymaskImage), required: true);
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: false);
-            var __workflow_bodytextPrompts = bodytextPrompts == null ? null : WorkflowExpression.Compile(bodytextPrompts);
-            WorkflowExpression.Validate(__workflow_bodytextPrompts, nameof(bodytextPrompts), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodycfgScale = bodycfgScale == null ? null : WorkflowExpression.Compile(bodycfgScale);
-            WorkflowExpression.Validate(__workflow_bodycfgScale, nameof(bodycfgScale), required: false);
-            var __workflow_bodyclipGuidancePreset = bodyclipGuidancePreset == null ? null : WorkflowExpression.Compile(bodyclipGuidancePreset);
-            WorkflowExpression.Validate(__workflow_bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
-            var __workflow_bodysampler = bodysampler == null ? null : WorkflowExpression.Compile(bodysampler);
-            WorkflowExpression.Validate(__workflow_bodysampler, nameof(bodysampler), required: false);
-            var __workflow_bodysamples = bodysamples == null ? null : WorkflowExpression.Compile(bodysamples);
-            WorkflowExpression.Validate(__workflow_bodysamples, nameof(bodysamples), required: false);
-            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
-            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodysteps = bodysteps == null ? null : WorkflowExpression.Compile(bodysteps);
-            WorkflowExpression.Validate(__workflow_bodysteps, nameof(bodysteps), required: false);
+            var __workflow_engineId = WorkflowExpression.Compile(engineId, nameof(engineId), required: true);
+            var __workflow_bodyinitImage = WorkflowExpression.Compile(bodyinitImage, nameof(bodyinitImage), required: true);
+            var __workflow_bodymaskSource = WorkflowExpression.Compile(bodymaskSource, nameof(bodymaskSource), required: true);
+            var __workflow_bodymaskImage = WorkflowExpression.Compile(bodymaskImage, nameof(bodymaskImage), required: true);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_bodytextPrompts = WorkflowExpression.Compile(bodytextPrompts, nameof(bodytextPrompts), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodycfgScale = WorkflowExpression.Compile(bodycfgScale, nameof(bodycfgScale), required: false);
+            var __workflow_bodyclipGuidancePreset = WorkflowExpression.Compile(bodyclipGuidancePreset, nameof(bodyclipGuidancePreset), required: false);
+            var __workflow_bodysampler = WorkflowExpression.Compile(bodysampler, nameof(bodysampler), required: false);
+            var __workflow_bodysamples = WorkflowExpression.Compile(bodysamples, nameof(bodysamples), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
             return new DeferredBodyAction<GenerationMaskPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/generation/{0}/image-to-image/masking", ExpressionConverter.ConvertWithUrlEncoding(__workflow_engineId, 1));
@@ -423,16 +378,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<StableImageCorePostResponse> StableImageCore(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
         {
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodyaspectRatio = bodyaspectRatio == null ? null : WorkflowExpression.Compile(bodyaspectRatio);
-            WorkflowExpression.Validate(__workflow_bodyaspectRatio, nameof(bodyaspectRatio), required: false);
-            var __workflow_bodynegativePrompt = bodynegativePrompt == null ? null : WorkflowExpression.Compile(bodynegativePrompt);
-            WorkflowExpression.Validate(__workflow_bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
-            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodystylePreset = bodystylePreset == null ? null : WorkflowExpression.Compile(bodystylePreset);
-            WorkflowExpression.Validate(__workflow_bodystylePreset, nameof(bodystylePreset), required: false);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodyaspectRatio = WorkflowExpression.Compile(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
+            var __workflow_bodynegativePrompt = WorkflowExpression.Compile(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodystylePreset = WorkflowExpression.Compile(bodystylePreset, nameof(bodystylePreset), required: false);
             return new DeferredBodyAction<StableImageCorePostResponse>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/core";
@@ -488,18 +438,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stabilityaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stabilityaiip")]
         public IBodyWorkflowAction<StableDiffusionPostResponse> StableDiffusion(Expression<Func<string>> bodyprompt, Expression<Func<bodyaspectRatioInput>> bodyaspectRatio = null, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyseed = null, Expression<Func<bodystylePresetInput>> bodystylePreset = null)
         {
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodyaspectRatio = bodyaspectRatio == null ? null : WorkflowExpression.Compile(bodyaspectRatio);
-            WorkflowExpression.Validate(__workflow_bodyaspectRatio, nameof(bodyaspectRatio), required: false);
-            var __workflow_bodynegativePrompt = bodynegativePrompt == null ? null : WorkflowExpression.Compile(bodynegativePrompt);
-            WorkflowExpression.Validate(__workflow_bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
-            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
-            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodystylePreset = bodystylePreset == null ? null : WorkflowExpression.Compile(bodystylePreset);
-            WorkflowExpression.Validate(__workflow_bodystylePreset, nameof(bodystylePreset), required: false);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodyaspectRatio = WorkflowExpression.Compile(bodyaspectRatio, nameof(bodyaspectRatio), required: false);
+            var __workflow_bodynegativePrompt = WorkflowExpression.Compile(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodystylePreset = WorkflowExpression.Compile(bodystylePreset, nameof(bodystylePreset), required: false);
             return new DeferredBodyAction<StableDiffusionPostResponse>(() =>
             {
                 var apiCallPath = "/api.stability.ai/v2beta/stable-image/generate/sd3";

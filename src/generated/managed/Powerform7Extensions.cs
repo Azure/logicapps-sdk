@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
         public IWorkflowAction SubmitForm(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, Expression<Func<object>> query = null)
         {
-            var __workflow_wPSITEURL = wPSITEURL == null ? null : WorkflowExpression.Compile(wPSITEURL);
-            WorkflowExpression.Validate(__workflow_wPSITEURL, nameof(wPSITEURL), required: true);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_wPSITEURL = WorkflowExpression.Compile(wPSITEURL, nameof(wPSITEURL), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
@@ -33,8 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
         public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms(Expression<Func<string>> wPSITEURL)
         {
-            var __workflow_wPSITEURL = wPSITEURL == null ? null : WorkflowExpression.Compile(wPSITEURL);
-            WorkflowExpression.Validate(__workflow_wPSITEURL, nameof(wPSITEURL), required: true);
+            var __workflow_wPSITEURL = WorkflowExpression.Compile(wPSITEURL, nameof(wPSITEURL), required: true);
             return new DeferredBodyAction<GetCF7FormsResponseItem[]>(() =>
             {
                 var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
@@ -50,10 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     {
         public IWorkflowTrigger CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, FlowRecurrence recurrence = null)
         {
-            var __workflow_wPSITEURL = wPSITEURL == null ? null : WorkflowExpression.Compile(wPSITEURL);
-            WorkflowExpression.Validate(__workflow_wPSITEURL, nameof(wPSITEURL), required: true);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_wPSITEURL = WorkflowExpression.Compile(wPSITEURL, nameof(wPSITEURL), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));

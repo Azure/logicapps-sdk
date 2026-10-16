@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarksResponse> ListBookmarksLiked(Expression<Func<string>> readFilterreadFilter = null)
         {
-            var __workflow_readFilterreadFilter = readFilterreadFilter == null ? null : WorkflowExpression.Compile(readFilterreadFilter);
-            WorkflowExpression.Validate(__workflow_readFilterreadFilter, nameof(readFilterreadFilter), required: false);
+            var __workflow_readFilterreadFilter = WorkflowExpression.Compile(readFilterreadFilter, nameof(readFilterreadFilter), required: false);
             return new DeferredBodyAction<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/starred";
@@ -40,10 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarksResponse> ListBookmarksArchived(Expression<Func<filterslikedFilterDefaultAllInput>> filterslikedFilterDefaultAll = null, Expression<Func<filtersreadFilterDefaultAllInput>> filtersreadFilterDefaultAll = null)
         {
-            var __workflow_filterslikedFilterDefaultAll = filterslikedFilterDefaultAll == null ? null : WorkflowExpression.Compile(filterslikedFilterDefaultAll);
-            WorkflowExpression.Validate(__workflow_filterslikedFilterDefaultAll, nameof(filterslikedFilterDefaultAll), required: false);
-            var __workflow_filtersreadFilterDefaultAll = filtersreadFilterDefaultAll == null ? null : WorkflowExpression.Compile(filtersreadFilterDefaultAll);
-            WorkflowExpression.Validate(__workflow_filtersreadFilterDefaultAll, nameof(filtersreadFilterDefaultAll), required: false);
+            var __workflow_filterslikedFilterDefaultAll = WorkflowExpression.Compile(filterslikedFilterDefaultAll, nameof(filterslikedFilterDefaultAll), required: false);
+            var __workflow_filtersreadFilterDefaultAll = WorkflowExpression.Compile(filtersreadFilterDefaultAll, nameof(filtersreadFilterDefaultAll), required: false);
             return new DeferredBodyAction<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/archive";
@@ -75,12 +72,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarksResponse> ListBookmarksInFolder(Expression<Func<string>> folderId, Expression<Func<likedFilterInput>> likedFilter = null, Expression<Func<readFilterInput>> readFilter = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_likedFilter = likedFilter == null ? null : WorkflowExpression.Compile(likedFilter);
-            WorkflowExpression.Validate(__workflow_likedFilter, nameof(likedFilter), required: false);
-            var __workflow_readFilter = readFilter == null ? null : WorkflowExpression.Compile(readFilter);
-            WorkflowExpression.Validate(__workflow_readFilter, nameof(readFilter), required: false);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_likedFilter = WorkflowExpression.Compile(likedFilter, nameof(likedFilter), required: false);
+            var __workflow_readFilter = WorkflowExpression.Compile(readFilter, nameof(readFilter), required: false);
             return new DeferredBodyAction<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/list/folder_id";
@@ -107,8 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<HighlighstResponse> ListHighlights(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<HighlighstResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
@@ -121,8 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> UnlikeBookmark(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/unstar";
@@ -136,8 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> LikeBookmark(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/star";
@@ -151,8 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> ArchiveBookmark(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/archive";
@@ -166,8 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<BookmarkResponse> UnarchiveBookmark(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<BookmarkResponse>(() =>
             {
                 var apiCallPath = "/1/bookmarks/unarchive";
@@ -181,8 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<JToken> DeleteBookmark(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1/bookmarks/delete";
@@ -196,8 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<JToken> MarkReadBookmark(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1/bookmarks/update_read_progress/read";
@@ -211,8 +198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<JToken> MarkUnreadBookmark(Expression<Func<string>> bookmarkId)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/1/bookmarks/update_read_progress/unread";
@@ -226,10 +212,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<HighlightResponse> AddHighlight(Expression<Func<string>> bookmarkId, Expression<Func<string>> text)
         {
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
             return new DeferredBodyAction<HighlightResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));
@@ -243,8 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<FolderResponse> CreateFolder(Expression<Func<string>> title)
         {
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
             return new DeferredBodyAction<FolderResponse>(() =>
             {
                 var apiCallPath = "/1/folders/add";
@@ -260,8 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     {
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/bookmark_folder_trigger/1/bookmarks/list/folder_id";
@@ -274,8 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<int[]>(() =>
             {
                 var apiCallPath = "/bookmark_removed_folder_trigger/1/bookmarks/list/folder_id";
@@ -312,8 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/bookmark_progress_trigger/1/bookmarks/list/folder_id";
@@ -326,8 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead(Expression<Func<string>> folderId, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
             {
                 var apiCallPath = "/bookmark_progressread_trigger/1/bookmarks/list/folder_id";
@@ -340,10 +319,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
 
         public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded(Expression<Func<string>> folderId, Expression<Func<string>> bookmarkId, FlowRecurrence recurrence = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_bookmarkId = bookmarkId == null ? null : WorkflowExpression.Compile(bookmarkId);
-            WorkflowExpression.Validate(__workflow_bookmarkId, nameof(bookmarkId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_bookmarkId = WorkflowExpression.Compile(bookmarkId, nameof(bookmarkId), required: true);
             return new DeferredBodyTrigger<HighlighstResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bookmarkId, 1));

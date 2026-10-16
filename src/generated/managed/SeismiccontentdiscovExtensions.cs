@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
         {
-            var __workflow_predictiveContentId = predictiveContentId == null ? null : WorkflowExpression.Compile(predictiveContentId);
-            WorkflowExpression.Validate(__workflow_predictiveContentId, nameof(predictiveContentId), required: true);
-            var __workflow_contextId = contextId == null ? null : WorkflowExpression.Compile(contextId);
-            WorkflowExpression.Validate(__workflow_contextId, nameof(contextId), required: true);
+            var __workflow_predictiveContentId = WorkflowExpression.Compile(predictiveContentId, nameof(predictiveContentId), required: true);
+            var __workflow_contextId = WorkflowExpression.Compile(contextId, nameof(contextId), required: true);
             return new DeferredBodyAction<SeismicPredictiveContentPredictiveContentResponse[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contextId, 1));
@@ -29,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[]> GetPredictiveSettings(Expression<Func<string>> systemType = null, Expression<Func<string>> contextType = null)
         {
-            var __workflow_systemType = systemType == null ? null : WorkflowExpression.Compile(systemType);
-            WorkflowExpression.Validate(__workflow_systemType, nameof(systemType), required: false);
-            var __workflow_contextType = contextType == null ? null : WorkflowExpression.Compile(contextType);
-            WorkflowExpression.Validate(__workflow_contextType, nameof(contextType), required: false);
+            var __workflow_systemType = WorkflowExpression.Compile(systemType, nameof(systemType), required: false);
+            var __workflow_contextType = WorkflowExpression.Compile(contextType, nameof(contextType), required: false);
             return new DeferredBodyAction<SeismicPredictiveContentEmbeddedAppTab[]>(() =>
             {
                 var apiCallPath = "/integration/v2/predictiveContent";
@@ -67,24 +63,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
         public IBodyWorkflowAction<SeismicSearchSearchResponse> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<string>> searchRequestBodyterm = null, Expression<Func<int>> searchRequestBodyoptionspageSize = null, Expression<Func<searchRequestBodyoptionssearchFieldsInputItem[]>> searchRequestBodyoptionssearchFields = null, Expression<Func<searchRequestBodyoptionsreturnFieldsInputItem[]>> searchRequestBodyoptionsreturnFields = null, Expression<Func<SeismicSearchSortConstraint[]>> searchRequestBodysort = null, Expression<Func<SeismicSearchConditionExpressionInfo[]>> searchRequestBodyfiltercondition = null, Expression<Func<SeismicSearchFilterExpressionInfo[]>> searchRequestBodyfilterfilter = null, Expression<Func<string>> searchRequestBodyfilterOperator = null)
         {
-            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
-            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
-            var __workflow_searchRequestBodyterm = searchRequestBodyterm == null ? null : WorkflowExpression.Compile(searchRequestBodyterm);
-            WorkflowExpression.Validate(__workflow_searchRequestBodyterm, nameof(searchRequestBodyterm), required: false);
-            var __workflow_searchRequestBodyoptionspageSize = searchRequestBodyoptionspageSize == null ? null : WorkflowExpression.Compile(searchRequestBodyoptionspageSize);
-            WorkflowExpression.Validate(__workflow_searchRequestBodyoptionspageSize, nameof(searchRequestBodyoptionspageSize), required: false);
-            var __workflow_searchRequestBodyoptionssearchFields = searchRequestBodyoptionssearchFields == null ? null : WorkflowExpression.Compile(searchRequestBodyoptionssearchFields);
-            WorkflowExpression.Validate(__workflow_searchRequestBodyoptionssearchFields, nameof(searchRequestBodyoptionssearchFields), required: false);
-            var __workflow_searchRequestBodyoptionsreturnFields = searchRequestBodyoptionsreturnFields == null ? null : WorkflowExpression.Compile(searchRequestBodyoptionsreturnFields);
-            WorkflowExpression.Validate(__workflow_searchRequestBodyoptionsreturnFields, nameof(searchRequestBodyoptionsreturnFields), required: false);
-            var __workflow_searchRequestBodysort = searchRequestBodysort == null ? null : WorkflowExpression.Compile(searchRequestBodysort);
-            WorkflowExpression.Validate(__workflow_searchRequestBodysort, nameof(searchRequestBodysort), required: false);
-            var __workflow_searchRequestBodyfiltercondition = searchRequestBodyfiltercondition == null ? null : WorkflowExpression.Compile(searchRequestBodyfiltercondition);
-            WorkflowExpression.Validate(__workflow_searchRequestBodyfiltercondition, nameof(searchRequestBodyfiltercondition), required: false);
-            var __workflow_searchRequestBodyfilterfilter = searchRequestBodyfilterfilter == null ? null : WorkflowExpression.Compile(searchRequestBodyfilterfilter);
-            WorkflowExpression.Validate(__workflow_searchRequestBodyfilterfilter, nameof(searchRequestBodyfilterfilter), required: false);
-            var __workflow_searchRequestBodyfilterOperator = searchRequestBodyfilterOperator == null ? null : WorkflowExpression.Compile(searchRequestBodyfilterOperator);
-            WorkflowExpression.Validate(__workflow_searchRequestBodyfilterOperator, nameof(searchRequestBodyfilterOperator), required: false);
+            var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_searchRequestBodyterm = WorkflowExpression.Compile(searchRequestBodyterm, nameof(searchRequestBodyterm), required: false);
+            var __workflow_searchRequestBodyoptionspageSize = WorkflowExpression.Compile(searchRequestBodyoptionspageSize, nameof(searchRequestBodyoptionspageSize), required: false);
+            var __workflow_searchRequestBodyoptionssearchFields = WorkflowExpression.Compile(searchRequestBodyoptionssearchFields, nameof(searchRequestBodyoptionssearchFields), required: false);
+            var __workflow_searchRequestBodyoptionsreturnFields = WorkflowExpression.Compile(searchRequestBodyoptionsreturnFields, nameof(searchRequestBodyoptionsreturnFields), required: false);
+            var __workflow_searchRequestBodysort = WorkflowExpression.Compile(searchRequestBodysort, nameof(searchRequestBodysort), required: false);
+            var __workflow_searchRequestBodyfiltercondition = WorkflowExpression.Compile(searchRequestBodyfiltercondition, nameof(searchRequestBodyfiltercondition), required: false);
+            var __workflow_searchRequestBodyfilterfilter = WorkflowExpression.Compile(searchRequestBodyfilterfilter, nameof(searchRequestBodyfilterfilter), required: false);
+            var __workflow_searchRequestBodyfilterOperator = WorkflowExpression.Compile(searchRequestBodyfilterOperator, nameof(searchRequestBodyfilterOperator), required: false);
             return new DeferredBodyAction<SeismicSearchSearchResponse>(() =>
             {
                 var apiCallPath = "/search/v1/content/query";

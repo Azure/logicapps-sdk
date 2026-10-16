@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
         public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<ValidateSingleResponse>(() =>
             {
                 var apiCallPath = "/validation/single";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
         public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<ValidateDisposableResponse>(() =>
             {
                 var apiCallPath = "/email/disposable";
@@ -45,8 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
         public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<ValidateFreeResponse>(() =>
             {
                 var apiCallPath = "/email/free";

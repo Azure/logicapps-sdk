@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
         public IBodyWorkflowAction<string> EquityWeeklySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/data/group/otcMarket/name/weeklySummary";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
         public IBodyWorkflowAction<string> EquityMonthlySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/data/group/otcMarket/name/monthlySummary";
@@ -49,10 +45,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
         public IBodyWorkflowAction<string> EquityOTCBlockSummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/data/group/otcMarket/name/otcBlocksSummary";

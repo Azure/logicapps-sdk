@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
         public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
         {
-            var __workflow_bodypDFFileContent = bodypDFFileContent == null ? null : WorkflowExpression.Compile(bodypDFFileContent);
-            WorkflowExpression.Validate(__workflow_bodypDFFileContent, nameof(bodypDFFileContent), required: true);
-            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
-            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: false);
-            var __workflow_bodygarbageLevel = bodygarbageLevel == null ? null : WorkflowExpression.Compile(bodygarbageLevel);
-            WorkflowExpression.Validate(__workflow_bodygarbageLevel, nameof(bodygarbageLevel), required: false);
-            var __workflow_bodydeflate = bodydeflate == null ? null : WorkflowExpression.Compile(bodydeflate);
-            WorkflowExpression.Validate(__workflow_bodydeflate, nameof(bodydeflate), required: false);
-            var __workflow_bodyclean = bodyclean == null ? null : WorkflowExpression.Compile(bodyclean);
-            WorkflowExpression.Validate(__workflow_bodyclean, nameof(bodyclean), required: false);
+            var __workflow_bodypDFFileContent = WorkflowExpression.Compile(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: false);
+            var __workflow_bodygarbageLevel = WorkflowExpression.Compile(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
+            var __workflow_bodydeflate = WorkflowExpression.Compile(bodydeflate, nameof(bodydeflate), required: false);
+            var __workflow_bodyclean = WorkflowExpression.Compile(bodyclean, nameof(bodyclean), required: false);
             return new DeferredBodyAction<OptimizePdfResponse>(() =>
             {
                 var apiCallPath = "/optimize";

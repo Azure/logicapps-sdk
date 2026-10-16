@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
         public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
         {
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
-            var __workflow_commandtemplateId = commandtemplateId == null ? null : WorkflowExpression.Compile(commandtemplateId);
-            WorkflowExpression.Validate(__workflow_commandtemplateId, nameof(commandtemplateId), required: true);
-            var __workflow_commandpayload = commandpayload == null ? null : WorkflowExpression.Compile(commandpayload);
-            WorkflowExpression.Validate(__workflow_commandpayload, nameof(commandpayload), required: true);
-            var __workflow_commandreferenceId = commandreferenceId == null ? null : WorkflowExpression.Compile(commandreferenceId);
-            WorkflowExpression.Validate(__workflow_commandreferenceId, nameof(commandreferenceId), required: false);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
+            var __workflow_commandtemplateId = WorkflowExpression.Compile(commandtemplateId, nameof(commandtemplateId), required: true);
+            var __workflow_commandpayload = WorkflowExpression.Compile(commandpayload, nameof(commandpayload), required: true);
+            var __workflow_commandreferenceId = WorkflowExpression.Compile(commandreferenceId, nameof(commandreferenceId), required: false);
             return new DeferredBodyAction<PDFDtoApiResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_version, 1));

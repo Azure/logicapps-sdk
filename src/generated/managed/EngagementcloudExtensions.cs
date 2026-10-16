@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<CreateAddressBookResponse> CreateAddressBook(Expression<Func<regionInput>> region, Expression<Func<string>> bodyname, Expression<Func<bodyvisibilityInput>> bodyvisibility = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
-            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: false);
             return new DeferredBodyAction<CreateAddressBookResponse>(() =>
             {
                 var apiCallPath = "/v2/address-books";
@@ -57,18 +54,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> addressBook, Expression<Func<regionInput>> region, Expression<Func<string>> bodyemail, Expression<Func<bodydataFieldsInputItem[]>> bodydataFields = null, Expression<Func<bodyemailTypeInput>> bodyemailType = null, Expression<Func<bodyoptInTypeInput>> bodyoptInType = null)
         {
-            var __workflow_addressBook = addressBook == null ? null : WorkflowExpression.Compile(addressBook);
-            WorkflowExpression.Validate(__workflow_addressBook, nameof(addressBook), required: true);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodydataFields = bodydataFields == null ? null : WorkflowExpression.Compile(bodydataFields);
-            WorkflowExpression.Validate(__workflow_bodydataFields, nameof(bodydataFields), required: false);
-            var __workflow_bodyemailType = bodyemailType == null ? null : WorkflowExpression.Compile(bodyemailType);
-            WorkflowExpression.Validate(__workflow_bodyemailType, nameof(bodyemailType), required: false);
-            var __workflow_bodyoptInType = bodyoptInType == null ? null : WorkflowExpression.Compile(bodyoptInType);
-            WorkflowExpression.Validate(__workflow_bodyoptInType, nameof(bodyoptInType), required: false);
+            var __workflow_addressBook = WorkflowExpression.Compile(addressBook, nameof(addressBook), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodydataFields = WorkflowExpression.Compile(bodydataFields, nameof(bodydataFields), required: false);
+            var __workflow_bodyemailType = WorkflowExpression.Compile(bodyemailType, nameof(bodyemailType), required: false);
+            var __workflow_bodyoptInType = WorkflowExpression.Compile(bodyoptInType, nameof(bodyoptInType), required: false);
             return new DeferredBodyAction<CreateContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/address-books/{0}/contacts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_addressBook, 1));
@@ -129,16 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<SendEmailCampaignResponse> SendEmailCampaign(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<int[]>> bodyaddressBookIDs = null, Expression<Func<int[]>> bodycontactIDs = null, Expression<Func<string>> bodysendDate = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bodycampaignID = bodycampaignID == null ? null : WorkflowExpression.Compile(bodycampaignID);
-            WorkflowExpression.Validate(__workflow_bodycampaignID, nameof(bodycampaignID), required: true);
-            var __workflow_bodyaddressBookIDs = bodyaddressBookIDs == null ? null : WorkflowExpression.Compile(bodyaddressBookIDs);
-            WorkflowExpression.Validate(__workflow_bodyaddressBookIDs, nameof(bodyaddressBookIDs), required: false);
-            var __workflow_bodycontactIDs = bodycontactIDs == null ? null : WorkflowExpression.Compile(bodycontactIDs);
-            WorkflowExpression.Validate(__workflow_bodycontactIDs, nameof(bodycontactIDs), required: false);
-            var __workflow_bodysendDate = bodysendDate == null ? null : WorkflowExpression.Compile(bodysendDate);
-            WorkflowExpression.Validate(__workflow_bodysendDate, nameof(bodysendDate), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: true);
+            var __workflow_bodyaddressBookIDs = WorkflowExpression.Compile(bodyaddressBookIDs, nameof(bodyaddressBookIDs), required: false);
+            var __workflow_bodycontactIDs = WorkflowExpression.Compile(bodycontactIDs, nameof(bodycontactIDs), required: false);
+            var __workflow_bodysendDate = WorkflowExpression.Compile(bodysendDate, nameof(bodysendDate), required: false);
             return new DeferredBodyAction<SendEmailCampaignResponse>(() =>
             {
                 var apiCallPath = "/v2/campaigns/send";
@@ -179,14 +165,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction SendTransactionalEmailUsingTriggeredCampagin(Expression<Func<regionInput>> region, Expression<Func<int>> bodycampaignID, Expression<Func<string[]>> bodytoAddresses, Expression<Func<bodypersonalizationValuesInputItem[]>> bodypersonalizationValues = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bodycampaignID = bodycampaignID == null ? null : WorkflowExpression.Compile(bodycampaignID);
-            WorkflowExpression.Validate(__workflow_bodycampaignID, nameof(bodycampaignID), required: true);
-            var __workflow_bodytoAddresses = bodytoAddresses == null ? null : WorkflowExpression.Compile(bodytoAddresses);
-            WorkflowExpression.Validate(__workflow_bodytoAddresses, nameof(bodytoAddresses), required: true);
-            var __workflow_bodypersonalizationValues = bodypersonalizationValues == null ? null : WorkflowExpression.Compile(bodypersonalizationValues);
-            WorkflowExpression.Validate(__workflow_bodypersonalizationValues, nameof(bodypersonalizationValues), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bodycampaignID = WorkflowExpression.Compile(bodycampaignID, nameof(bodycampaignID), required: true);
+            var __workflow_bodytoAddresses = WorkflowExpression.Compile(bodytoAddresses, nameof(bodytoAddresses), required: true);
+            var __workflow_bodypersonalizationValues = WorkflowExpression.Compile(bodypersonalizationValues, nameof(bodypersonalizationValues), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/email/triggered-campaign";
@@ -217,14 +199,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IBodyWorkflowAction<CreateProgramEnrolmentResponse> CreateProgramEnrolment(Expression<Func<regionInput>> region, Expression<Func<int>> bodyprogramID, Expression<Func<int[]>> bodyaddressBooks = null, Expression<Func<int[]>> bodycontacts = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bodyprogramID = bodyprogramID == null ? null : WorkflowExpression.Compile(bodyprogramID);
-            WorkflowExpression.Validate(__workflow_bodyprogramID, nameof(bodyprogramID), required: true);
-            var __workflow_bodyaddressBooks = bodyaddressBooks == null ? null : WorkflowExpression.Compile(bodyaddressBooks);
-            WorkflowExpression.Validate(__workflow_bodyaddressBooks, nameof(bodyaddressBooks), required: false);
-            var __workflow_bodycontacts = bodycontacts == null ? null : WorkflowExpression.Compile(bodycontacts);
-            WorkflowExpression.Validate(__workflow_bodycontacts, nameof(bodycontacts), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bodyprogramID = WorkflowExpression.Compile(bodyprogramID, nameof(bodyprogramID), required: true);
+            var __workflow_bodyaddressBooks = WorkflowExpression.Compile(bodyaddressBooks, nameof(bodyaddressBooks), required: false);
+            var __workflow_bodycontacts = WorkflowExpression.Compile(bodycontacts, nameof(bodycontacts), required: false);
             return new DeferredBodyAction<CreateProgramEnrolmentResponse>(() =>
             {
                 var apiCallPath = "/v2/programs/enrolments";
@@ -259,12 +237,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction SendSmsMessage(Expression<Func<string>> telephoneNumber, Expression<Func<regionInput>> region, Expression<Func<string>> bodymessage)
         {
-            var __workflow_telephoneNumber = telephoneNumber == null ? null : WorkflowExpression.Compile(telephoneNumber);
-            WorkflowExpression.Validate(__workflow_telephoneNumber, nameof(telephoneNumber), required: true);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_telephoneNumber = WorkflowExpression.Compile(telephoneNumber, nameof(telephoneNumber), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/sms-messages/send-to/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_telephoneNumber, 1));
@@ -287,10 +262,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction BulkContactsImport(Expression<Func<string>> addressBook, Expression<Func<object>> filedata)
         {
-            var __workflow_addressBook = addressBook == null ? null : WorkflowExpression.Compile(addressBook);
-            WorkflowExpression.Validate(__workflow_addressBook, nameof(addressBook), required: true);
-            var __workflow_filedata = filedata == null ? null : WorkflowExpression.Compile(filedata);
-            WorkflowExpression.Validate(__workflow_filedata, nameof(filedata), required: true);
+            var __workflow_addressBook = WorkflowExpression.Compile(addressBook, nameof(addressBook), required: true);
+            var __workflow_filedata = WorkflowExpression.Compile(filedata, nameof(filedata), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/address-books/{0}/contacts/import", ExpressionConverter.ConvertWithUrlEncoding(__workflow_addressBook, 1));
@@ -303,8 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction GetContactsImportStatus(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/contacts/import/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -317,8 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Engagementcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "engagementcloud")]
         public IWorkflowAction GetContactsImportReport(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/contacts/import/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

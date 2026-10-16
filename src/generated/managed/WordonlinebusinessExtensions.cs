@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
         public IBodyWorkflowAction<string> CreateFileItem(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<object>> dynamicFileSchema = null)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_drive = drive == null ? null : WorkflowExpression.Compile(drive);
-            WorkflowExpression.Validate(__workflow_drive, nameof(drive), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_dynamicFileSchema = dynamicFileSchema == null ? null : WorkflowExpression.Compile(dynamicFileSchema);
-            WorkflowExpression.Validate(__workflow_dynamicFileSchema, nameof(dynamicFileSchema), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_dynamicFileSchema = WorkflowExpression.Compile(dynamicFileSchema, nameof(dynamicFileSchema), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/templates/getFile";
@@ -37,10 +33,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
         public IBodyWorkflowAction<string> CreateWordFileWithContent(Expression<Func<string>> contentcontent, Expression<Func<string>> fileName = null)
         {
-            var __workflow_contentcontent = contentcontent == null ? null : WorkflowExpression.Compile(contentcontent);
-            WorkflowExpression.Validate(__workflow_contentcontent, nameof(contentcontent), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: false);
+            var __workflow_contentcontent = WorkflowExpression.Compile(contentcontent, nameof(contentcontent), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/templates/createWordFileWithContent";
@@ -65,16 +59,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordonlinebusiness
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordonlinebusiness")]
         public IBodyWorkflowAction<string> GetFilePDF(Expression<Func<string>> source, Expression<Func<string>> drive, Expression<Func<string>> file, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_drive = drive == null ? null : WorkflowExpression.Compile(drive);
-            WorkflowExpression.Validate(__workflow_drive, nameof(drive), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_extractSensitivityLabel = extractSensitivityLabel == null ? null : WorkflowExpression.Compile(extractSensitivityLabel);
-            WorkflowExpression.Validate(__workflow_extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            var __workflow_fetchSensitivityLabelMetadata = fetchSensitivityLabelMetadata == null ? null : WorkflowExpression.Compile(fetchSensitivityLabelMetadata);
-            WorkflowExpression.Validate(__workflow_fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_drive = WorkflowExpression.Compile(drive, nameof(drive), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/templates/convertFile";

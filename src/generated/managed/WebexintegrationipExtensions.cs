@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         public IBodyWorkflowAction<ReadMeetingResponse> ReadMeetings(Expression<Func<string>> contentType = null, Expression<Func<string>> password = null, Expression<Func<string>> timezone = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: false);
-            var __workflow_timezone = timezone == null ? null : WorkflowExpression.Compile(timezone);
-            WorkflowExpression.Validate(__workflow_timezone, nameof(timezone), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
+            var __workflow_timezone = WorkflowExpression.Compile(timezone, nameof(timezone), required: false);
             return new DeferredBodyAction<ReadMeetingResponse>(() =>
             {
                 var apiCallPath = "/meetings";
@@ -38,24 +35,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         public IBodyWorkflowAction<CreateAMeetingResponse> CreateAMeeting(Expression<Func<string>> contentType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystart, Expression<Func<string>> bodyend, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
-            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: true);
-            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
-            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: true);
-            var __workflow_bodyagenda = bodyagenda == null ? null : WorkflowExpression.Compile(bodyagenda);
-            WorkflowExpression.Validate(__workflow_bodyagenda, nameof(bodyagenda), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
-            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyenabledAutoRecordMeeting = bodyenabledAutoRecordMeeting == null ? null : WorkflowExpression.Compile(bodyenabledAutoRecordMeeting);
-            WorkflowExpression.Validate(__workflow_bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
-            var __workflow_bodyallowAnyUserToBeCoHost = bodyallowAnyUserToBeCoHost == null ? null : WorkflowExpression.Compile(bodyallowAnyUserToBeCoHost);
-            WorkflowExpression.Validate(__workflow_bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: true);
+            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: true);
+            var __workflow_bodyagenda = WorkflowExpression.Compile(bodyagenda, nameof(bodyagenda), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodyenabledAutoRecordMeeting = WorkflowExpression.Compile(bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
+            var __workflow_bodyallowAnyUserToBeCoHost = WorkflowExpression.Compile(bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
             return new DeferredBodyAction<CreateAMeetingResponse>(() =>
             {
                 var apiCallPath = "/meetings";
@@ -142,22 +130,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         public IWorkflowAction CreateAInvitee(Expression<Func<string>> bodymeetingId, Expression<Func<string>> bodyemail, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodycoHost = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysendEmail = null, Expression<Func<string>> bodypanelist = null)
         {
-            var __workflow_bodymeetingId = bodymeetingId == null ? null : WorkflowExpression.Compile(bodymeetingId);
-            WorkflowExpression.Validate(__workflow_bodymeetingId, nameof(bodymeetingId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodycoHost = bodycoHost == null ? null : WorkflowExpression.Compile(bodycoHost);
-            WorkflowExpression.Validate(__workflow_bodycoHost, nameof(bodycoHost), required: false);
-            var __workflow_bodyhostEmail = bodyhostEmail == null ? null : WorkflowExpression.Compile(bodyhostEmail);
-            WorkflowExpression.Validate(__workflow_bodyhostEmail, nameof(bodyhostEmail), required: false);
-            var __workflow_bodysendEmail = bodysendEmail == null ? null : WorkflowExpression.Compile(bodysendEmail);
-            WorkflowExpression.Validate(__workflow_bodysendEmail, nameof(bodysendEmail), required: false);
-            var __workflow_bodypanelist = bodypanelist == null ? null : WorkflowExpression.Compile(bodypanelist);
-            WorkflowExpression.Validate(__workflow_bodypanelist, nameof(bodypanelist), required: false);
+            var __workflow_bodymeetingId = WorkflowExpression.Compile(bodymeetingId, nameof(bodymeetingId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodycoHost = WorkflowExpression.Compile(bodycoHost, nameof(bodycoHost), required: false);
+            var __workflow_bodyhostEmail = WorkflowExpression.Compile(bodyhostEmail, nameof(bodyhostEmail), required: false);
+            var __workflow_bodysendEmail = WorkflowExpression.Compile(bodysendEmail, nameof(bodysendEmail), required: false);
+            var __workflow_bodypanelist = WorkflowExpression.Compile(bodypanelist, nameof(bodypanelist), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/meetingInvitees";
@@ -214,8 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         public IWorkflowAction DeleteAMeeting(Expression<Func<string>> meetingId)
         {
-            var __workflow_meetingId = meetingId == null ? null : WorkflowExpression.Compile(meetingId);
-            WorkflowExpression.Validate(__workflow_meetingId, nameof(meetingId), required: true);
+            var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
@@ -228,118 +207,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
         public IWorkflowAction UpdateAMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> contentType = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null, Expression<Func<bool>> bodyenabledJoinBeforeHost = null, Expression<Func<bool>> bodyenableConnectAudioBeforeHost = null, Expression<Func<int>> bodyjoinBeforeHostMinutes = null, Expression<Func<bool>> bodyexcludePassword = null, Expression<Func<bool>> bodypublicMeeting = null, Expression<Func<int>> bodyreminderTime = null, Expression<Func<string>> bodyunlockedMeetingJoinSecurity = null, Expression<Func<bool>> bodyenableAutomaticLock = null, Expression<Func<int>> bodyautomaticLockMinutes = null, Expression<Func<bool>> bodyallowFirstUserToBeCoHost = null, Expression<Func<bool>> bodyallowAuthenticatedDevices = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysiteUrl = null, Expression<Func<bool>> bodymeetingOptionsenabledChat = null, Expression<Func<bool>> bodymeetingOptionsenabledVideo = null, Expression<Func<bool>> bodymeetingOptionsenabledPolling = null, Expression<Func<bool>> bodymeetingOptionsenabledNote = null, Expression<Func<string>> bodymeetingOptionsnoteType = null, Expression<Func<bool>> bodymeetingOptionsenabledClosedCaptions = null, Expression<Func<bool>> bodymeetingOptionsenabledFileTransfer = null, Expression<Func<bool>> bodymeetingOptionsenabledUCFRichMedia = null, Expression<Func<bool>> bodyattendeePrivilegesenabledShareContent = null, Expression<Func<bool>> bodyattendeePrivilegesenabledSaveDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledPrintDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledAnnotate = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewParticipantList = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewThumbnails = null, Expression<Func<bool>> bodyattendeePrivilegesenabledRemoteControl = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyPage = null, Expression<Func<bool>> bodyattendeePrivilegesenabledContactOperatorPrivately = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatHost = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatPresenter = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatOtherParticipants = null, Expression<Func<string[]>> bodyintegrationTags = null, Expression<Func<bool>> bodyenabledBreakoutSessions = null, Expression<Func<bodytrackingCodesInputItem[]>> bodytrackingCodes = null, Expression<Func<string>> bodyaudioConnectionOptionsaudioConnectionType = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledGlobalCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledAudienceCallBack = null, Expression<Func<string>> bodyaudioConnectionOptionsentryAndExitTone = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, Expression<Func<bool>> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
         {
-            var __workflow_meetingId = meetingId == null ? null : WorkflowExpression.Compile(meetingId);
-            WorkflowExpression.Validate(__workflow_meetingId, nameof(meetingId), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyagenda = bodyagenda == null ? null : WorkflowExpression.Compile(bodyagenda);
-            WorkflowExpression.Validate(__workflow_bodyagenda, nameof(bodyagenda), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
-            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
-            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
-            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
-            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
-            var __workflow_bodyenabledAutoRecordMeeting = bodyenabledAutoRecordMeeting == null ? null : WorkflowExpression.Compile(bodyenabledAutoRecordMeeting);
-            WorkflowExpression.Validate(__workflow_bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
-            var __workflow_bodyallowAnyUserToBeCoHost = bodyallowAnyUserToBeCoHost == null ? null : WorkflowExpression.Compile(bodyallowAnyUserToBeCoHost);
-            WorkflowExpression.Validate(__workflow_bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
-            var __workflow_bodyenabledJoinBeforeHost = bodyenabledJoinBeforeHost == null ? null : WorkflowExpression.Compile(bodyenabledJoinBeforeHost);
-            WorkflowExpression.Validate(__workflow_bodyenabledJoinBeforeHost, nameof(bodyenabledJoinBeforeHost), required: false);
-            var __workflow_bodyenableConnectAudioBeforeHost = bodyenableConnectAudioBeforeHost == null ? null : WorkflowExpression.Compile(bodyenableConnectAudioBeforeHost);
-            WorkflowExpression.Validate(__workflow_bodyenableConnectAudioBeforeHost, nameof(bodyenableConnectAudioBeforeHost), required: false);
-            var __workflow_bodyjoinBeforeHostMinutes = bodyjoinBeforeHostMinutes == null ? null : WorkflowExpression.Compile(bodyjoinBeforeHostMinutes);
-            WorkflowExpression.Validate(__workflow_bodyjoinBeforeHostMinutes, nameof(bodyjoinBeforeHostMinutes), required: false);
-            var __workflow_bodyexcludePassword = bodyexcludePassword == null ? null : WorkflowExpression.Compile(bodyexcludePassword);
-            WorkflowExpression.Validate(__workflow_bodyexcludePassword, nameof(bodyexcludePassword), required: false);
-            var __workflow_bodypublicMeeting = bodypublicMeeting == null ? null : WorkflowExpression.Compile(bodypublicMeeting);
-            WorkflowExpression.Validate(__workflow_bodypublicMeeting, nameof(bodypublicMeeting), required: false);
-            var __workflow_bodyreminderTime = bodyreminderTime == null ? null : WorkflowExpression.Compile(bodyreminderTime);
-            WorkflowExpression.Validate(__workflow_bodyreminderTime, nameof(bodyreminderTime), required: false);
-            var __workflow_bodyunlockedMeetingJoinSecurity = bodyunlockedMeetingJoinSecurity == null ? null : WorkflowExpression.Compile(bodyunlockedMeetingJoinSecurity);
-            WorkflowExpression.Validate(__workflow_bodyunlockedMeetingJoinSecurity, nameof(bodyunlockedMeetingJoinSecurity), required: false);
-            var __workflow_bodyenableAutomaticLock = bodyenableAutomaticLock == null ? null : WorkflowExpression.Compile(bodyenableAutomaticLock);
-            WorkflowExpression.Validate(__workflow_bodyenableAutomaticLock, nameof(bodyenableAutomaticLock), required: false);
-            var __workflow_bodyautomaticLockMinutes = bodyautomaticLockMinutes == null ? null : WorkflowExpression.Compile(bodyautomaticLockMinutes);
-            WorkflowExpression.Validate(__workflow_bodyautomaticLockMinutes, nameof(bodyautomaticLockMinutes), required: false);
-            var __workflow_bodyallowFirstUserToBeCoHost = bodyallowFirstUserToBeCoHost == null ? null : WorkflowExpression.Compile(bodyallowFirstUserToBeCoHost);
-            WorkflowExpression.Validate(__workflow_bodyallowFirstUserToBeCoHost, nameof(bodyallowFirstUserToBeCoHost), required: false);
-            var __workflow_bodyallowAuthenticatedDevices = bodyallowAuthenticatedDevices == null ? null : WorkflowExpression.Compile(bodyallowAuthenticatedDevices);
-            WorkflowExpression.Validate(__workflow_bodyallowAuthenticatedDevices, nameof(bodyallowAuthenticatedDevices), required: false);
-            var __workflow_bodysendEmail = bodysendEmail == null ? null : WorkflowExpression.Compile(bodysendEmail);
-            WorkflowExpression.Validate(__workflow_bodysendEmail, nameof(bodysendEmail), required: false);
-            var __workflow_bodyhostEmail = bodyhostEmail == null ? null : WorkflowExpression.Compile(bodyhostEmail);
-            WorkflowExpression.Validate(__workflow_bodyhostEmail, nameof(bodyhostEmail), required: false);
-            var __workflow_bodysiteUrl = bodysiteUrl == null ? null : WorkflowExpression.Compile(bodysiteUrl);
-            WorkflowExpression.Validate(__workflow_bodysiteUrl, nameof(bodysiteUrl), required: false);
-            var __workflow_bodymeetingOptionsenabledChat = bodymeetingOptionsenabledChat == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledChat);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledChat, nameof(bodymeetingOptionsenabledChat), required: false);
-            var __workflow_bodymeetingOptionsenabledVideo = bodymeetingOptionsenabledVideo == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledVideo);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledVideo, nameof(bodymeetingOptionsenabledVideo), required: false);
-            var __workflow_bodymeetingOptionsenabledPolling = bodymeetingOptionsenabledPolling == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledPolling);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledPolling, nameof(bodymeetingOptionsenabledPolling), required: false);
-            var __workflow_bodymeetingOptionsenabledNote = bodymeetingOptionsenabledNote == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledNote);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledNote, nameof(bodymeetingOptionsenabledNote), required: false);
-            var __workflow_bodymeetingOptionsnoteType = bodymeetingOptionsnoteType == null ? null : WorkflowExpression.Compile(bodymeetingOptionsnoteType);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsnoteType, nameof(bodymeetingOptionsnoteType), required: false);
-            var __workflow_bodymeetingOptionsenabledClosedCaptions = bodymeetingOptionsenabledClosedCaptions == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledClosedCaptions);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledClosedCaptions, nameof(bodymeetingOptionsenabledClosedCaptions), required: false);
-            var __workflow_bodymeetingOptionsenabledFileTransfer = bodymeetingOptionsenabledFileTransfer == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledFileTransfer);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledFileTransfer, nameof(bodymeetingOptionsenabledFileTransfer), required: false);
-            var __workflow_bodymeetingOptionsenabledUCFRichMedia = bodymeetingOptionsenabledUCFRichMedia == null ? null : WorkflowExpression.Compile(bodymeetingOptionsenabledUCFRichMedia);
-            WorkflowExpression.Validate(__workflow_bodymeetingOptionsenabledUCFRichMedia, nameof(bodymeetingOptionsenabledUCFRichMedia), required: false);
-            var __workflow_bodyattendeePrivilegesenabledShareContent = bodyattendeePrivilegesenabledShareContent == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledShareContent);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledShareContent, nameof(bodyattendeePrivilegesenabledShareContent), required: false);
-            var __workflow_bodyattendeePrivilegesenabledSaveDocument = bodyattendeePrivilegesenabledSaveDocument == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledSaveDocument);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledSaveDocument, nameof(bodyattendeePrivilegesenabledSaveDocument), required: false);
-            var __workflow_bodyattendeePrivilegesenabledPrintDocument = bodyattendeePrivilegesenabledPrintDocument == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledPrintDocument);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledPrintDocument, nameof(bodyattendeePrivilegesenabledPrintDocument), required: false);
-            var __workflow_bodyattendeePrivilegesenabledAnnotate = bodyattendeePrivilegesenabledAnnotate == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledAnnotate);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledAnnotate, nameof(bodyattendeePrivilegesenabledAnnotate), required: false);
-            var __workflow_bodyattendeePrivilegesenabledViewParticipantList = bodyattendeePrivilegesenabledViewParticipantList == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewParticipantList);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewParticipantList, nameof(bodyattendeePrivilegesenabledViewParticipantList), required: false);
-            var __workflow_bodyattendeePrivilegesenabledViewThumbnails = bodyattendeePrivilegesenabledViewThumbnails == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewThumbnails);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewThumbnails, nameof(bodyattendeePrivilegesenabledViewThumbnails), required: false);
-            var __workflow_bodyattendeePrivilegesenabledRemoteControl = bodyattendeePrivilegesenabledRemoteControl == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledRemoteControl);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledRemoteControl, nameof(bodyattendeePrivilegesenabledRemoteControl), required: false);
-            var __workflow_bodyattendeePrivilegesenabledViewAnyDocument = bodyattendeePrivilegesenabledViewAnyDocument == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewAnyDocument);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewAnyDocument, nameof(bodyattendeePrivilegesenabledViewAnyDocument), required: false);
-            var __workflow_bodyattendeePrivilegesenabledViewAnyPage = bodyattendeePrivilegesenabledViewAnyPage == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewAnyPage);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledViewAnyPage, nameof(bodyattendeePrivilegesenabledViewAnyPage), required: false);
-            var __workflow_bodyattendeePrivilegesenabledContactOperatorPrivately = bodyattendeePrivilegesenabledContactOperatorPrivately == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledContactOperatorPrivately);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledContactOperatorPrivately, nameof(bodyattendeePrivilegesenabledContactOperatorPrivately), required: false);
-            var __workflow_bodyattendeePrivilegesenabledChatHost = bodyattendeePrivilegesenabledChatHost == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatHost);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledChatHost, nameof(bodyattendeePrivilegesenabledChatHost), required: false);
-            var __workflow_bodyattendeePrivilegesenabledChatPresenter = bodyattendeePrivilegesenabledChatPresenter == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatPresenter);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledChatPresenter, nameof(bodyattendeePrivilegesenabledChatPresenter), required: false);
-            var __workflow_bodyattendeePrivilegesenabledChatOtherParticipants = bodyattendeePrivilegesenabledChatOtherParticipants == null ? null : WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatOtherParticipants);
-            WorkflowExpression.Validate(__workflow_bodyattendeePrivilegesenabledChatOtherParticipants, nameof(bodyattendeePrivilegesenabledChatOtherParticipants), required: false);
-            var __workflow_bodyintegrationTags = bodyintegrationTags == null ? null : WorkflowExpression.Compile(bodyintegrationTags);
-            WorkflowExpression.Validate(__workflow_bodyintegrationTags, nameof(bodyintegrationTags), required: false);
-            var __workflow_bodyenabledBreakoutSessions = bodyenabledBreakoutSessions == null ? null : WorkflowExpression.Compile(bodyenabledBreakoutSessions);
-            WorkflowExpression.Validate(__workflow_bodyenabledBreakoutSessions, nameof(bodyenabledBreakoutSessions), required: false);
-            var __workflow_bodytrackingCodes = bodytrackingCodes == null ? null : WorkflowExpression.Compile(bodytrackingCodes);
-            WorkflowExpression.Validate(__workflow_bodytrackingCodes, nameof(bodytrackingCodes), required: false);
-            var __workflow_bodyaudioConnectionOptionsaudioConnectionType = bodyaudioConnectionOptionsaudioConnectionType == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsaudioConnectionType);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsaudioConnectionType, nameof(bodyaudioConnectionOptionsaudioConnectionType), required: false);
-            var __workflow_bodyaudioConnectionOptionsenabledTollFreeCallIn = bodyaudioConnectionOptionsenabledTollFreeCallIn == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledTollFreeCallIn);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsenabledTollFreeCallIn, nameof(bodyaudioConnectionOptionsenabledTollFreeCallIn), required: false);
-            var __workflow_bodyaudioConnectionOptionsenabledGlobalCallIn = bodyaudioConnectionOptionsenabledGlobalCallIn == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledGlobalCallIn);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsenabledGlobalCallIn, nameof(bodyaudioConnectionOptionsenabledGlobalCallIn), required: false);
-            var __workflow_bodyaudioConnectionOptionsenabledAudienceCallBack = bodyaudioConnectionOptionsenabledAudienceCallBack == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledAudienceCallBack);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsenabledAudienceCallBack, nameof(bodyaudioConnectionOptionsenabledAudienceCallBack), required: false);
-            var __workflow_bodyaudioConnectionOptionsentryAndExitTone = bodyaudioConnectionOptionsentryAndExitTone == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsentryAndExitTone);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsentryAndExitTone, nameof(bodyaudioConnectionOptionsentryAndExitTone), required: false);
-            var __workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants = bodyaudioConnectionOptionsallowHostToUnmuteParticipants == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsallowHostToUnmuteParticipants);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants, nameof(bodyaudioConnectionOptionsallowHostToUnmuteParticipants), required: false);
-            var __workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf, nameof(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf), required: false);
-            var __workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry = bodyaudioConnectionOptionsmuteAttendeeUponEntry == null ? null : WorkflowExpression.Compile(bodyaudioConnectionOptionsmuteAttendeeUponEntry);
-            WorkflowExpression.Validate(__workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry, nameof(bodyaudioConnectionOptionsmuteAttendeeUponEntry), required: false);
+            var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyagenda = WorkflowExpression.Compile(bodyagenda, nameof(bodyagenda), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
+            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
+            var __workflow_bodyenabledAutoRecordMeeting = WorkflowExpression.Compile(bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
+            var __workflow_bodyallowAnyUserToBeCoHost = WorkflowExpression.Compile(bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
+            var __workflow_bodyenabledJoinBeforeHost = WorkflowExpression.Compile(bodyenabledJoinBeforeHost, nameof(bodyenabledJoinBeforeHost), required: false);
+            var __workflow_bodyenableConnectAudioBeforeHost = WorkflowExpression.Compile(bodyenableConnectAudioBeforeHost, nameof(bodyenableConnectAudioBeforeHost), required: false);
+            var __workflow_bodyjoinBeforeHostMinutes = WorkflowExpression.Compile(bodyjoinBeforeHostMinutes, nameof(bodyjoinBeforeHostMinutes), required: false);
+            var __workflow_bodyexcludePassword = WorkflowExpression.Compile(bodyexcludePassword, nameof(bodyexcludePassword), required: false);
+            var __workflow_bodypublicMeeting = WorkflowExpression.Compile(bodypublicMeeting, nameof(bodypublicMeeting), required: false);
+            var __workflow_bodyreminderTime = WorkflowExpression.Compile(bodyreminderTime, nameof(bodyreminderTime), required: false);
+            var __workflow_bodyunlockedMeetingJoinSecurity = WorkflowExpression.Compile(bodyunlockedMeetingJoinSecurity, nameof(bodyunlockedMeetingJoinSecurity), required: false);
+            var __workflow_bodyenableAutomaticLock = WorkflowExpression.Compile(bodyenableAutomaticLock, nameof(bodyenableAutomaticLock), required: false);
+            var __workflow_bodyautomaticLockMinutes = WorkflowExpression.Compile(bodyautomaticLockMinutes, nameof(bodyautomaticLockMinutes), required: false);
+            var __workflow_bodyallowFirstUserToBeCoHost = WorkflowExpression.Compile(bodyallowFirstUserToBeCoHost, nameof(bodyallowFirstUserToBeCoHost), required: false);
+            var __workflow_bodyallowAuthenticatedDevices = WorkflowExpression.Compile(bodyallowAuthenticatedDevices, nameof(bodyallowAuthenticatedDevices), required: false);
+            var __workflow_bodysendEmail = WorkflowExpression.Compile(bodysendEmail, nameof(bodysendEmail), required: false);
+            var __workflow_bodyhostEmail = WorkflowExpression.Compile(bodyhostEmail, nameof(bodyhostEmail), required: false);
+            var __workflow_bodysiteUrl = WorkflowExpression.Compile(bodysiteUrl, nameof(bodysiteUrl), required: false);
+            var __workflow_bodymeetingOptionsenabledChat = WorkflowExpression.Compile(bodymeetingOptionsenabledChat, nameof(bodymeetingOptionsenabledChat), required: false);
+            var __workflow_bodymeetingOptionsenabledVideo = WorkflowExpression.Compile(bodymeetingOptionsenabledVideo, nameof(bodymeetingOptionsenabledVideo), required: false);
+            var __workflow_bodymeetingOptionsenabledPolling = WorkflowExpression.Compile(bodymeetingOptionsenabledPolling, nameof(bodymeetingOptionsenabledPolling), required: false);
+            var __workflow_bodymeetingOptionsenabledNote = WorkflowExpression.Compile(bodymeetingOptionsenabledNote, nameof(bodymeetingOptionsenabledNote), required: false);
+            var __workflow_bodymeetingOptionsnoteType = WorkflowExpression.Compile(bodymeetingOptionsnoteType, nameof(bodymeetingOptionsnoteType), required: false);
+            var __workflow_bodymeetingOptionsenabledClosedCaptions = WorkflowExpression.Compile(bodymeetingOptionsenabledClosedCaptions, nameof(bodymeetingOptionsenabledClosedCaptions), required: false);
+            var __workflow_bodymeetingOptionsenabledFileTransfer = WorkflowExpression.Compile(bodymeetingOptionsenabledFileTransfer, nameof(bodymeetingOptionsenabledFileTransfer), required: false);
+            var __workflow_bodymeetingOptionsenabledUCFRichMedia = WorkflowExpression.Compile(bodymeetingOptionsenabledUCFRichMedia, nameof(bodymeetingOptionsenabledUCFRichMedia), required: false);
+            var __workflow_bodyattendeePrivilegesenabledShareContent = WorkflowExpression.Compile(bodyattendeePrivilegesenabledShareContent, nameof(bodyattendeePrivilegesenabledShareContent), required: false);
+            var __workflow_bodyattendeePrivilegesenabledSaveDocument = WorkflowExpression.Compile(bodyattendeePrivilegesenabledSaveDocument, nameof(bodyattendeePrivilegesenabledSaveDocument), required: false);
+            var __workflow_bodyattendeePrivilegesenabledPrintDocument = WorkflowExpression.Compile(bodyattendeePrivilegesenabledPrintDocument, nameof(bodyattendeePrivilegesenabledPrintDocument), required: false);
+            var __workflow_bodyattendeePrivilegesenabledAnnotate = WorkflowExpression.Compile(bodyattendeePrivilegesenabledAnnotate, nameof(bodyattendeePrivilegesenabledAnnotate), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewParticipantList = WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewParticipantList, nameof(bodyattendeePrivilegesenabledViewParticipantList), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewThumbnails = WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewThumbnails, nameof(bodyattendeePrivilegesenabledViewThumbnails), required: false);
+            var __workflow_bodyattendeePrivilegesenabledRemoteControl = WorkflowExpression.Compile(bodyattendeePrivilegesenabledRemoteControl, nameof(bodyattendeePrivilegesenabledRemoteControl), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewAnyDocument = WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewAnyDocument, nameof(bodyattendeePrivilegesenabledViewAnyDocument), required: false);
+            var __workflow_bodyattendeePrivilegesenabledViewAnyPage = WorkflowExpression.Compile(bodyattendeePrivilegesenabledViewAnyPage, nameof(bodyattendeePrivilegesenabledViewAnyPage), required: false);
+            var __workflow_bodyattendeePrivilegesenabledContactOperatorPrivately = WorkflowExpression.Compile(bodyattendeePrivilegesenabledContactOperatorPrivately, nameof(bodyattendeePrivilegesenabledContactOperatorPrivately), required: false);
+            var __workflow_bodyattendeePrivilegesenabledChatHost = WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatHost, nameof(bodyattendeePrivilegesenabledChatHost), required: false);
+            var __workflow_bodyattendeePrivilegesenabledChatPresenter = WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatPresenter, nameof(bodyattendeePrivilegesenabledChatPresenter), required: false);
+            var __workflow_bodyattendeePrivilegesenabledChatOtherParticipants = WorkflowExpression.Compile(bodyattendeePrivilegesenabledChatOtherParticipants, nameof(bodyattendeePrivilegesenabledChatOtherParticipants), required: false);
+            var __workflow_bodyintegrationTags = WorkflowExpression.Compile(bodyintegrationTags, nameof(bodyintegrationTags), required: false);
+            var __workflow_bodyenabledBreakoutSessions = WorkflowExpression.Compile(bodyenabledBreakoutSessions, nameof(bodyenabledBreakoutSessions), required: false);
+            var __workflow_bodytrackingCodes = WorkflowExpression.Compile(bodytrackingCodes, nameof(bodytrackingCodes), required: false);
+            var __workflow_bodyaudioConnectionOptionsaudioConnectionType = WorkflowExpression.Compile(bodyaudioConnectionOptionsaudioConnectionType, nameof(bodyaudioConnectionOptionsaudioConnectionType), required: false);
+            var __workflow_bodyaudioConnectionOptionsenabledTollFreeCallIn = WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledTollFreeCallIn, nameof(bodyaudioConnectionOptionsenabledTollFreeCallIn), required: false);
+            var __workflow_bodyaudioConnectionOptionsenabledGlobalCallIn = WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledGlobalCallIn, nameof(bodyaudioConnectionOptionsenabledGlobalCallIn), required: false);
+            var __workflow_bodyaudioConnectionOptionsenabledAudienceCallBack = WorkflowExpression.Compile(bodyaudioConnectionOptionsenabledAudienceCallBack, nameof(bodyaudioConnectionOptionsenabledAudienceCallBack), required: false);
+            var __workflow_bodyaudioConnectionOptionsentryAndExitTone = WorkflowExpression.Compile(bodyaudioConnectionOptionsentryAndExitTone, nameof(bodyaudioConnectionOptionsentryAndExitTone), required: false);
+            var __workflow_bodyaudioConnectionOptionsallowHostToUnmuteParticipants = WorkflowExpression.Compile(bodyaudioConnectionOptionsallowHostToUnmuteParticipants, nameof(bodyaudioConnectionOptionsallowHostToUnmuteParticipants), required: false);
+            var __workflow_bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = WorkflowExpression.Compile(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf, nameof(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf), required: false);
+            var __workflow_bodyaudioConnectionOptionsmuteAttendeeUponEntry = WorkflowExpression.Compile(bodyaudioConnectionOptionsmuteAttendeeUponEntry, nameof(bodyaudioConnectionOptionsmuteAttendeeUponEntry), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));

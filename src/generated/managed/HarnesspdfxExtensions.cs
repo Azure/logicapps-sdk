@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harnesspdfx")]
         public IBodyWorkflowAction<PostPdfResponse> PostPdf(Expression<Func<object>> fileToProcess = null)
         {
-            var __workflow_fileToProcess = fileToProcess == null ? null : WorkflowExpression.Compile(fileToProcess);
-            WorkflowExpression.Validate(__workflow_fileToProcess, nameof(fileToProcess), required: false);
+            var __workflow_fileToProcess = WorkflowExpression.Compile(fileToProcess, nameof(fileToProcess), required: false);
             return new DeferredBodyAction<PostPdfResponse>(() =>
             {
                 var apiCallPath = "/pdfs";

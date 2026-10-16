@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetLibraryRolesResponse> GetLibraryRoles(Expression<Func<string>> libraryId, Expression<Func<bool>> isExternal = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_isExternal = isExternal == null ? null : WorkflowExpression.Compile(isExternal);
-            WorkflowExpression.Validate(__workflow_isExternal, nameof(isExternal), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_isExternal = WorkflowExpression.Compile(isExternal, nameof(isExternal), required: false);
             return new DeferredBodyAction<GetLibraryRolesResponse>(() =>
             {
                 var apiCallPath = "/getLibraryRoles";
@@ -33,12 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetLookupAliasesResponse> GetLookupAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_lookupFieldId = lookupFieldId == null ? null : WorkflowExpression.Compile(lookupFieldId);
-            WorkflowExpression.Validate(__workflow_lookupFieldId, nameof(lookupFieldId), required: true);
-            var __workflow_parentAlias = parentAlias == null ? null : WorkflowExpression.Compile(parentAlias);
-            WorkflowExpression.Validate(__workflow_parentAlias, nameof(parentAlias), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_lookupFieldId = WorkflowExpression.Compile(lookupFieldId, nameof(lookupFieldId), required: true);
+            var __workflow_parentAlias = WorkflowExpression.Compile(parentAlias, nameof(parentAlias), required: false);
             return new DeferredBodyAction<GetLookupAliasesResponse>(() =>
             {
                 var apiCallPath = "/getLookupAliases";
@@ -57,20 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<SearchCustomPropertyResponseBody> SearchCustomPropertyAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null, Expression<Func<string>> alias = null, Expression<Func<string>> description = null, Expression<Func<bool>> hipaa = null, Expression<Func<enabledStateInput>> enabledState = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_lookupFieldId = lookupFieldId == null ? null : WorkflowExpression.Compile(lookupFieldId);
-            WorkflowExpression.Validate(__workflow_lookupFieldId, nameof(lookupFieldId), required: true);
-            var __workflow_parentAlias = parentAlias == null ? null : WorkflowExpression.Compile(parentAlias);
-            WorkflowExpression.Validate(__workflow_parentAlias, nameof(parentAlias), required: false);
-            var __workflow_alias = alias == null ? null : WorkflowExpression.Compile(alias);
-            WorkflowExpression.Validate(__workflow_alias, nameof(alias), required: false);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
-            var __workflow_hipaa = hipaa == null ? null : WorkflowExpression.Compile(hipaa);
-            WorkflowExpression.Validate(__workflow_hipaa, nameof(hipaa), required: false);
-            var __workflow_enabledState = enabledState == null ? null : WorkflowExpression.Compile(enabledState);
-            WorkflowExpression.Validate(__workflow_enabledState, nameof(enabledState), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_lookupFieldId = WorkflowExpression.Compile(lookupFieldId, nameof(lookupFieldId), required: true);
+            var __workflow_parentAlias = WorkflowExpression.Compile(parentAlias, nameof(parentAlias), required: false);
+            var __workflow_alias = WorkflowExpression.Compile(alias, nameof(alias), required: false);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_hipaa = WorkflowExpression.Compile(hipaa, nameof(hipaa), required: false);
+            var __workflow_enabledState = WorkflowExpression.Compile(enabledState, nameof(enabledState), required: false);
             return new DeferredBodyAction<SearchCustomPropertyResponseBody>(() =>
             {
                 var apiCallPath = "/searchCustomPropertyAliases";
@@ -98,12 +86,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<JToken> CreateCustomOrPropertyLookup(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodylookupFieldId = bodylookupFieldId == null ? null : WorkflowExpression.Compile(bodylookupFieldId);
-            WorkflowExpression.Validate(__workflow_bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            var __workflow_bodyaliasInfo = bodyaliasInfo == null ? null : WorkflowExpression.Compile(bodyaliasInfo);
-            WorkflowExpression.Validate(__workflow_bodyaliasInfo, nameof(bodyaliasInfo), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodylookupFieldId = WorkflowExpression.Compile(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
+            var __workflow_bodyaliasInfo = WorkflowExpression.Compile(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/createCustomOrPropertyLookup";
@@ -130,24 +115,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyisExternal, Expression<Func<string>> bodypreferredLibrary, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyignoreIfUserAlreadyExists, Expression<Func<bodypasswordCreateMethodInput>> bodypasswordCreateMethod, Expression<Func<object>> bodycreatePassword)
         {
-            var __workflow_bodyfullName = bodyfullName == null ? null : WorkflowExpression.Compile(bodyfullName);
-            WorkflowExpression.Validate(__workflow_bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyisExternal = bodyisExternal == null ? null : WorkflowExpression.Compile(bodyisExternal);
-            WorkflowExpression.Validate(__workflow_bodyisExternal, nameof(bodyisExternal), required: true);
-            var __workflow_bodypreferredLibrary = bodypreferredLibrary == null ? null : WorkflowExpression.Compile(bodypreferredLibrary);
-            WorkflowExpression.Validate(__workflow_bodypreferredLibrary, nameof(bodypreferredLibrary), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
-            var __workflow_bodyignoreIfUserAlreadyExists = bodyignoreIfUserAlreadyExists == null ? null : WorkflowExpression.Compile(bodyignoreIfUserAlreadyExists);
-            WorkflowExpression.Validate(__workflow_bodyignoreIfUserAlreadyExists, nameof(bodyignoreIfUserAlreadyExists), required: true);
-            var __workflow_bodypasswordCreateMethod = bodypasswordCreateMethod == null ? null : WorkflowExpression.Compile(bodypasswordCreateMethod);
-            WorkflowExpression.Validate(__workflow_bodypasswordCreateMethod, nameof(bodypasswordCreateMethod), required: true);
-            var __workflow_bodycreatePassword = bodycreatePassword == null ? null : WorkflowExpression.Compile(bodycreatePassword);
-            WorkflowExpression.Validate(__workflow_bodycreatePassword, nameof(bodycreatePassword), required: true);
+            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyisExternal = WorkflowExpression.Compile(bodyisExternal, nameof(bodyisExternal), required: true);
+            var __workflow_bodypreferredLibrary = WorkflowExpression.Compile(bodypreferredLibrary, nameof(bodypreferredLibrary), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
+            var __workflow_bodyignoreIfUserAlreadyExists = WorkflowExpression.Compile(bodyignoreIfUserAlreadyExists, nameof(bodyignoreIfUserAlreadyExists), required: true);
+            var __workflow_bodypasswordCreateMethod = WorkflowExpression.Compile(bodypasswordCreateMethod, nameof(bodypasswordCreateMethod), required: true);
+            var __workflow_bodycreatePassword = WorkflowExpression.Compile(bodycreatePassword, nameof(bodycreatePassword), required: true);
             return new DeferredBodyAction<CreateUserResponse>(() =>
             {
                 var apiCallPath = "/createUser";
@@ -186,14 +162,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<AssignUserToLibraryResponse> AssignUserToLibrary(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyisPreferredLibrary)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
-            var __workflow_bodyisPreferredLibrary = bodyisPreferredLibrary == null ? null : WorkflowExpression.Compile(bodyisPreferredLibrary);
-            WorkflowExpression.Validate(__workflow_bodyisPreferredLibrary, nameof(bodyisPreferredLibrary), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
+            var __workflow_bodyisPreferredLibrary = WorkflowExpression.Compile(bodyisPreferredLibrary, nameof(bodyisPreferredLibrary), required: true);
             return new DeferredBodyAction<AssignUserToLibraryResponse>(() =>
             {
                 var apiCallPath = "/assignUserToLibrary";
@@ -222,30 +194,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<CreateFolderResponseBody> AddFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodyparentTypeInput>> bodyparentType, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<bodyinheritProfileFromWorkspaceInput>> bodyinheritProfileFromWorkspace, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofileProperties = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentId = bodyparentId == null ? null : WorkflowExpression.Compile(bodyparentId);
-            WorkflowExpression.Validate(__workflow_bodyparentId, nameof(bodyparentId), required: true);
-            var __workflow_bodyparentType = bodyparentType == null ? null : WorkflowExpression.Compile(bodyparentType);
-            WorkflowExpression.Validate(__workflow_bodyparentType, nameof(bodyparentType), required: true);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            var __workflow_bodyinheritProfileFromWorkspace = bodyinheritProfileFromWorkspace == null ? null : WorkflowExpression.Compile(bodyinheritProfileFromWorkspace);
-            WorkflowExpression.Validate(__workflow_bodyinheritProfileFromWorkspace, nameof(bodyinheritProfileFromWorkspace), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodyClass = bodyClass == null ? null : WorkflowExpression.Compile(bodyClass);
-            WorkflowExpression.Validate(__workflow_bodyClass, nameof(bodyClass), required: false);
-            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
-            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
-            var __workflow_bodyisExternalAsNormal = bodyisExternalAsNormal == null ? null : WorkflowExpression.Compile(bodyisExternalAsNormal);
-            WorkflowExpression.Validate(__workflow_bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            var __workflow_bodyprofileProperties = bodyprofileProperties == null ? null : WorkflowExpression.Compile(bodyprofileProperties);
-            WorkflowExpression.Validate(__workflow_bodyprofileProperties, nameof(bodyprofileProperties), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
+            var __workflow_bodyparentType = WorkflowExpression.Compile(bodyparentType, nameof(bodyparentType), required: true);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
+            var __workflow_bodyinheritProfileFromWorkspace = WorkflowExpression.Compile(bodyinheritProfileFromWorkspace, nameof(bodyinheritProfileFromWorkspace), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyClass = WorkflowExpression.Compile(bodyClass, nameof(bodyClass), required: false);
+            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
+            var __workflow_bodyprofileProperties = WorkflowExpression.Compile(bodyprofileProperties, nameof(bodyprofileProperties), required: false);
             return new DeferredBodyAction<CreateFolderResponseBody>(() =>
             {
                 var apiCallPath = "/addFolder";
@@ -328,16 +288,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<CreateTabResponseBody> AddTab(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyowner = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentId = bodyparentId == null ? null : WorkflowExpression.Compile(bodyparentId);
-            WorkflowExpression.Validate(__workflow_bodyparentId, nameof(bodyparentId), required: true);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyparentId = WorkflowExpression.Compile(bodyparentId, nameof(bodyparentId), required: true);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
             return new DeferredBodyAction<CreateTabResponseBody>(() =>
             {
                 var apiCallPath = "/addTab";
@@ -376,8 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetMyMattersCategoriesResponse> GetMyMattersCategories(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetMyMattersCategoriesResponse>(() =>
             {
                 var apiCallPath = "/getMyMattersCategories";
@@ -392,12 +346,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> AddShortcutsToMyMattersAdmin(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycategoryId = null)
         {
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodycategoryId = bodycategoryId == null ? null : WorkflowExpression.Compile(bodycategoryId);
-            WorkflowExpression.Validate(__workflow_bodycategoryId, nameof(bodycategoryId), required: false);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: false);
             return new DeferredBodyAction<AddShortcutsToMyMattersAdminResponse>(() =>
             {
                 var apiCallPath = "/addShortcutsToMyMattersAdmin";
@@ -428,12 +379,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<JToken> UpdateCustomField(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodylookupFieldId = bodylookupFieldId == null ? null : WorkflowExpression.Compile(bodylookupFieldId);
-            WorkflowExpression.Validate(__workflow_bodylookupFieldId, nameof(bodylookupFieldId), required: true);
-            var __workflow_bodyaliasInfo = bodyaliasInfo == null ? null : WorkflowExpression.Compile(bodyaliasInfo);
-            WorkflowExpression.Validate(__workflow_bodyaliasInfo, nameof(bodyaliasInfo), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodylookupFieldId = WorkflowExpression.Compile(bodylookupFieldId, nameof(bodylookupFieldId), required: true);
+            var __workflow_bodyaliasInfo = WorkflowExpression.Compile(bodyaliasInfo, nameof(bodyaliasInfo), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updateCustomField";
@@ -460,12 +408,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> GetRowsFromCSVDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodycolumnNames, Expression<Func<bool>> bodylatest = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodycolumnNames = bodycolumnNames == null ? null : WorkflowExpression.Compile(bodycolumnNames);
-            WorkflowExpression.Validate(__workflow_bodycolumnNames, nameof(bodycolumnNames), required: true);
-            var __workflow_bodylatest = bodylatest == null ? null : WorkflowExpression.Compile(bodylatest);
-            WorkflowExpression.Validate(__workflow_bodylatest, nameof(bodylatest), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodycolumnNames = WorkflowExpression.Compile(bodycolumnNames, nameof(bodycolumnNames), required: true);
+            var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: false);
             return new DeferredBodyAction<GetRowsFromCSVDocumentResponse>(() =>
             {
                 var apiCallPath = "/getRowsFromCSVDocument";
@@ -506,10 +451,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<MoveFolderResponseBody> MoveFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodydestinationId)
         {
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodydestinationId = bodydestinationId == null ? null : WorkflowExpression.Compile(bodydestinationId);
-            WorkflowExpression.Validate(__workflow_bodydestinationId, nameof(bodydestinationId), required: true);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodydestinationId = WorkflowExpression.Compile(bodydestinationId, nameof(bodydestinationId), required: true);
             return new DeferredBodyAction<MoveFolderResponseBody>(() =>
             {
                 var apiCallPath = "/moveFolder";
@@ -534,26 +477,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
         public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
         {
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodyClass = bodyClass == null ? null : WorkflowExpression.Compile(bodyClass);
-            WorkflowExpression.Validate(__workflow_bodyClass, nameof(bodyClass), required: false);
-            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
-            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
-            var __workflow_bodyisExternalAsNormal = bodyisExternalAsNormal == null ? null : WorkflowExpression.Compile(bodyisExternalAsNormal);
-            WorkflowExpression.Validate(__workflow_bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            var __workflow_bodyprofile = bodyprofile == null ? null : WorkflowExpression.Compile(bodyprofile);
-            WorkflowExpression.Validate(__workflow_bodyprofile, nameof(bodyprofile), required: false);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyClass = WorkflowExpression.Compile(bodyClass, nameof(bodyClass), required: false);
+            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
+            var __workflow_bodyprofile = WorkflowExpression.Compile(bodyprofile, nameof(bodyprofile), required: false);
             return new DeferredBodyAction<UpdateFolderPropertiesResponseBody>(() =>
             {
                 var apiCallPath = "/updateFolder";

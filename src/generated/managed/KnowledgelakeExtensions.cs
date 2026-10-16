@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
         public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
         {
-            var __workflow_batchimportData = batchimportData == null ? null : WorkflowExpression.Compile(batchimportData);
-            WorkflowExpression.Validate(__workflow_batchimportData, nameof(batchimportData), required: true);
-            var __workflow_batchnameForImport = batchnameForImport == null ? null : WorkflowExpression.Compile(batchnameForImport);
-            WorkflowExpression.Validate(__workflow_batchnameForImport, nameof(batchnameForImport), required: true);
-            var __workflow_batchsecurityToken = batchsecurityToken == null ? null : WorkflowExpression.Compile(batchsecurityToken);
-            WorkflowExpression.Validate(__workflow_batchsecurityToken, nameof(batchsecurityToken), required: true);
-            var __workflow_batchrPAEnvironment = batchrPAEnvironment == null ? null : WorkflowExpression.Compile(batchrPAEnvironment);
-            WorkflowExpression.Validate(__workflow_batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
+            var __workflow_batchimportData = WorkflowExpression.Compile(batchimportData, nameof(batchimportData), required: true);
+            var __workflow_batchnameForImport = WorkflowExpression.Compile(batchnameForImport, nameof(batchnameForImport), required: true);
+            var __workflow_batchsecurityToken = WorkflowExpression.Compile(batchsecurityToken, nameof(batchsecurityToken), required: true);
+            var __workflow_batchrPAEnvironment = WorkflowExpression.Compile(batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
             return new DeferredBodyAction<ImportJobsPostResponse>(() =>
             {
                 var apiCallPath = "/ImportJobs";

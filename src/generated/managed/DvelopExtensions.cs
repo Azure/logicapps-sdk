@@ -16,10 +16,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
     {
         public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_triggerId = triggerId == null ? null : WorkflowExpression.Compile(triggerId);
-            WorkflowExpression.Validate(__workflow_triggerId, nameof(triggerId), required: true);
-            var __workflow_bodycondition = bodycondition == null ? null : WorkflowExpression.Compile(bodycondition);
-            WorkflowExpression.Validate(__workflow_bodycondition, nameof(bodycondition), required: false);
+            var __workflow_triggerId = WorkflowExpression.Compile(triggerId, nameof(triggerId), required: true);
+            var __workflow_bodycondition = WorkflowExpression.Compile(bodycondition, nameof(bodycondition), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_triggerId, 1));

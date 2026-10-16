@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteksa")]
         public IBodyWorkflowAction<string> FILEDOWNLOADBYURL(Expression<Func<string>> downloadUrl)
         {
-            var __workflow_downloadUrl = downloadUrl == null ? null : WorkflowExpression.Compile(downloadUrl);
-            WorkflowExpression.Validate(__workflow_downloadUrl, nameof(downloadUrl), required: true);
+            var __workflow_downloadUrl = WorkflowExpression.Compile(downloadUrl, nameof(downloadUrl), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/downloadFileByUrl";
@@ -28,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteksa")]
         public IBodyWorkflowAction<string> SETFILEMETADATA(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<object>> items = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_items = items == null ? null : WorkflowExpression.Compile(items);
-            WorkflowExpression.Validate(__workflow_items, nameof(items), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/saveMetadataForUpload";
@@ -49,16 +45,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asiteksa")]
         public IBodyWorkflowAction<JToken> UPLOADBINARYFILE(Expression<Func<string>> projectId, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> metadataId, Expression<Func<string>> fileBinary = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_metadataId = metadataId == null ? null : WorkflowExpression.Compile(metadataId);
-            WorkflowExpression.Validate(__workflow_metadataId, nameof(metadataId), required: true);
-            var __workflow_fileBinary = fileBinary == null ? null : WorkflowExpression.Compile(fileBinary);
-            WorkflowExpression.Validate(__workflow_fileBinary, nameof(fileBinary), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_metadataId = WorkflowExpression.Compile(metadataId, nameof(metadataId), required: true);
+            var __workflow_fileBinary = WorkflowExpression.Compile(fileBinary, nameof(fileBinary), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/uploadFileFromExternalSystem";
@@ -78,10 +69,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
     {
         public IWorkflowTrigger ASITETRIGGEREVENT(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodytriggerName = bodytriggerName == null ? null : WorkflowExpression.Compile(bodytriggerName);
-            WorkflowExpression.Validate(__workflow_bodytriggerName, nameof(bodytriggerName), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/asitePullDataWebhook";
@@ -108,10 +97,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
 
         public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM(Expression<Func<string>> projectId, Expression<Func<string>> bodytriggerName, FlowRecurrence recurrence = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodytriggerName = bodytriggerName == null ? null : WorkflowExpression.Compile(bodytriggerName);
-            WorkflowExpression.Validate(__workflow_bodytriggerName, nameof(bodytriggerName), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodytriggerName = WorkflowExpression.Compile(bodytriggerName, nameof(bodytriggerName), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/asitePullAppFormDataWebhook";

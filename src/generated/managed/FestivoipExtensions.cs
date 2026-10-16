@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
         public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet(Expression<Func<string>> country, Expression<Func<int>> year, Expression<Func<int>> month = null, Expression<Func<int>> day = null, Expression<Func<string>> language = null, Expression<Func<bool>> before = null, Expression<Func<bool>> after = null, Expression<Func<bool>> @public = null, Expression<Func<string>> timezone = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: false);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_public = @public == null ? null : WorkflowExpression.Compile(@public);
-            WorkflowExpression.Validate(__workflow_public, nameof(@public), required: false);
-            var __workflow_timezone = timezone == null ? null : WorkflowExpression.Compile(timezone);
-            WorkflowExpression.Validate(__workflow_timezone, nameof(timezone), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_public = WorkflowExpression.Compile(@public, nameof(@public), required: false);
+            var __workflow_timezone = WorkflowExpression.Compile(timezone, nameof(timezone), required: false);
             return new DeferredBodyAction<HolidaysGetResponse>(() =>
             {
                 var apiCallPath = "/holidays";
@@ -63,8 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
         public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet(Expression<Func<string>> code = null)
         {
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: false);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
             return new DeferredBodyAction<CountriesGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/countries";

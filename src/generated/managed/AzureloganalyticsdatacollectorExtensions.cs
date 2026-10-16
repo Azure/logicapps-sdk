@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureloganalyticsdatacollecto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureloganalyticsdatacollector")]
         public IWorkflowAction SendData(Expression<Func<string>> logType, Expression<Func<string>> body = null, Expression<Func<string>> timeGeneratedField = null)
         {
-            var __workflow_logType = logType == null ? null : WorkflowExpression.Compile(logType);
-            WorkflowExpression.Validate(__workflow_logType, nameof(logType), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
-            var __workflow_timeGeneratedField = timeGeneratedField == null ? null : WorkflowExpression.Compile(timeGeneratedField);
-            WorkflowExpression.Validate(__workflow_timeGeneratedField, nameof(timeGeneratedField), required: false);
+            var __workflow_logType = WorkflowExpression.Compile(logType, nameof(logType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_timeGeneratedField = WorkflowExpression.Compile(timeGeneratedField, nameof(timeGeneratedField), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/logs";

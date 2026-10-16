@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsSearchGetResponse> CardsSearchGet(Expression<Func<string>> q, Expression<Func<uniqueInput>> unique = null, Expression<Func<orderInput>> order = null, Expression<Func<dirInput>> dir = null, Expression<Func<bool>> includeExtras = null, Expression<Func<bool>> includeMultilingual = null, Expression<Func<bool>> includeVariations = null, Expression<Func<int>> page = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_unique = unique == null ? null : WorkflowExpression.Compile(unique);
-            WorkflowExpression.Validate(__workflow_unique, nameof(unique), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_dir = dir == null ? null : WorkflowExpression.Compile(dir);
-            WorkflowExpression.Validate(__workflow_dir, nameof(dir), required: false);
-            var __workflow_includeExtras = includeExtras == null ? null : WorkflowExpression.Compile(includeExtras);
-            WorkflowExpression.Validate(__workflow_includeExtras, nameof(includeExtras), required: false);
-            var __workflow_includeMultilingual = includeMultilingual == null ? null : WorkflowExpression.Compile(includeMultilingual);
-            WorkflowExpression.Validate(__workflow_includeMultilingual, nameof(includeMultilingual), required: false);
-            var __workflow_includeVariations = includeVariations == null ? null : WorkflowExpression.Compile(includeVariations);
-            WorkflowExpression.Validate(__workflow_includeVariations, nameof(includeVariations), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_unique = WorkflowExpression.Compile(unique, nameof(unique), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_dir = WorkflowExpression.Compile(dir, nameof(dir), required: false);
+            var __workflow_includeExtras = WorkflowExpression.Compile(includeExtras, nameof(includeExtras), required: false);
+            var __workflow_includeMultilingual = WorkflowExpression.Compile(includeMultilingual, nameof(includeMultilingual), required: false);
+            var __workflow_includeVariations = WorkflowExpression.Compile(includeVariations, nameof(includeVariations), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<CardsSearchGetResponse>(() =>
             {
                 var apiCallPath = "/cards/search";
@@ -62,14 +54,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsNamedGetResponse> CardsNamedGet(Expression<Func<string>> exact = null, Expression<Func<string>> fuzzy = null, Expression<Func<string>> set = null, Expression<Func<versionInput>> version = null)
         {
-            var __workflow_exact = exact == null ? null : WorkflowExpression.Compile(exact);
-            WorkflowExpression.Validate(__workflow_exact, nameof(exact), required: false);
-            var __workflow_fuzzy = fuzzy == null ? null : WorkflowExpression.Compile(fuzzy);
-            WorkflowExpression.Validate(__workflow_fuzzy, nameof(fuzzy), required: false);
-            var __workflow_set = set == null ? null : WorkflowExpression.Compile(set);
-            WorkflowExpression.Validate(__workflow_set, nameof(set), required: false);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
+            var __workflow_exact = WorkflowExpression.Compile(exact, nameof(exact), required: false);
+            var __workflow_fuzzy = WorkflowExpression.Compile(fuzzy, nameof(fuzzy), required: false);
+            var __workflow_set = WorkflowExpression.Compile(set, nameof(set), required: false);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
             return new DeferredBodyAction<CardsNamedGetResponse>(() =>
             {
                 var apiCallPath = "/cards/named";
@@ -91,10 +79,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsAutocompleteGetResponse> CardsAutocompleteGet(Expression<Func<string>> q, Expression<Func<bool>> includeExtras = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_includeExtras = includeExtras == null ? null : WorkflowExpression.Compile(includeExtras);
-            WorkflowExpression.Validate(__workflow_includeExtras, nameof(includeExtras), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_includeExtras = WorkflowExpression.Compile(includeExtras, nameof(includeExtras), required: false);
             return new DeferredBodyAction<CardsAutocompleteGetResponse>(() =>
             {
                 var apiCallPath = "/cards/autocomplete";
@@ -110,8 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsCollectionPostResponse> CardsCollection(Expression<Func<bodyidentifiersInputItem[]>> bodyidentifiers = null)
         {
-            var __workflow_bodyidentifiers = bodyidentifiers == null ? null : WorkflowExpression.Compile(bodyidentifiers);
-            WorkflowExpression.Validate(__workflow_bodyidentifiers, nameof(bodyidentifiers), required: false);
+            var __workflow_bodyidentifiers = WorkflowExpression.Compile(bodyidentifiers, nameof(bodyidentifiers), required: false);
             return new DeferredBodyAction<CardsCollectionPostResponse>(() =>
             {
                 var apiCallPath = "/cards/collection";
@@ -137,10 +122,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsSetNumberGetResponse> CardsSetNumberGet(Expression<Func<string>> code, Expression<Func<string>> number)
         {
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
-            var __workflow_number = number == null ? null : WorkflowExpression.Compile(number);
-            WorkflowExpression.Validate(__workflow_number, nameof(number), required: true);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
             return new DeferredBodyAction<CardsSetNumberGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_code, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_number, 1));
@@ -153,8 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsMultiverseGetResponse> CardsMultiverseGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsMultiverseGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -167,8 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsMTGOGetResponse> CardsMTGOGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsMTGOGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -181,8 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsArenaGetResponse> CardsArenaGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsArenaGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -195,8 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsTCGplayerGetResponse> CardsTCGplayerGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsTCGplayerGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -209,8 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsCardmarketGetResponse> CardsCardmarketGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsCardmarketGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/cardmarket/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -223,8 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<CardsScryfallGetResponse> CardsScryfallGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CardsScryfallGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -246,8 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SetGetResponse> SetGet(Expression<Func<string>> code)
         {
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             return new DeferredBodyAction<SetGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_code, 1));
@@ -260,8 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<SetsTCGplayerGetResponse> SetsTCGplayerGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SetsTCGplayerGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sets/tcgplayer/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -274,8 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsMultiverseGetResponse> RulingsMultiverseGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RulingsMultiverseGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/multiverse/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -288,8 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsMTGOGetResponse> RulingsMTGOGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RulingsMTGOGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/mtgo/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -302,8 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scryfallip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "scryfallip")]
         public IBodyWorkflowAction<RulingsArenaGetResponse> RulingsArenaGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RulingsArenaGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cards/arena/{0}/rulings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

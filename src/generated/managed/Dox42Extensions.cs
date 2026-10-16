@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dox42
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dox42")]
         public IWorkflowAction Dox42Call(Expression<Func<string>> domainname, Expression<Func<string>> querystring, Expression<Func<string>> token, Expression<Func<string>> accept = null)
         {
-            var __workflow_domainname = domainname == null ? null : WorkflowExpression.Compile(domainname);
-            WorkflowExpression.Validate(__workflow_domainname, nameof(domainname), required: true);
-            var __workflow_querystring = querystring == null ? null : WorkflowExpression.Compile(querystring);
-            WorkflowExpression.Validate(__workflow_querystring, nameof(querystring), required: true);
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
+            var __workflow_domainname = WorkflowExpression.Compile(domainname, nameof(domainname), required: true);
+            var __workflow_querystring = WorkflowExpression.Compile(querystring, nameof(querystring), required: true);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/dox42RestService.ashx";

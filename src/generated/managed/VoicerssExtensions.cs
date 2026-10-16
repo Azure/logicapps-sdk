@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicerss")]
         public IWorkflowAction ConvertTTS(Expression<Func<string>> hl, Expression<Func<string>> src, Expression<Func<cInput>> c = null, Expression<Func<string>> f = null, Expression<Func<string>> v = null, Expression<Func<int>> r = null, Expression<Func<bool>> ssml = null, Expression<Func<bool>> b64 = null)
         {
-            var __workflow_hl = hl == null ? null : WorkflowExpression.Compile(hl);
-            WorkflowExpression.Validate(__workflow_hl, nameof(hl), required: true);
-            var __workflow_src = src == null ? null : WorkflowExpression.Compile(src);
-            WorkflowExpression.Validate(__workflow_src, nameof(src), required: true);
-            var __workflow_c = c == null ? null : WorkflowExpression.Compile(c);
-            WorkflowExpression.Validate(__workflow_c, nameof(c), required: false);
-            var __workflow_f = f == null ? null : WorkflowExpression.Compile(f);
-            WorkflowExpression.Validate(__workflow_f, nameof(f), required: false);
-            var __workflow_v = v == null ? null : WorkflowExpression.Compile(v);
-            WorkflowExpression.Validate(__workflow_v, nameof(v), required: false);
-            var __workflow_r = r == null ? null : WorkflowExpression.Compile(r);
-            WorkflowExpression.Validate(__workflow_r, nameof(r), required: false);
-            var __workflow_ssml = ssml == null ? null : WorkflowExpression.Compile(ssml);
-            WorkflowExpression.Validate(__workflow_ssml, nameof(ssml), required: false);
-            var __workflow_b64 = b64 == null ? null : WorkflowExpression.Compile(b64);
-            WorkflowExpression.Validate(__workflow_b64, nameof(b64), required: false);
+            var __workflow_hl = WorkflowExpression.Compile(hl, nameof(hl), required: true);
+            var __workflow_src = WorkflowExpression.Compile(src, nameof(src), required: true);
+            var __workflow_c = WorkflowExpression.Compile(c, nameof(c), required: false);
+            var __workflow_f = WorkflowExpression.Compile(f, nameof(f), required: false);
+            var __workflow_v = WorkflowExpression.Compile(v, nameof(v), required: false);
+            var __workflow_r = WorkflowExpression.Compile(r, nameof(r), required: false);
+            var __workflow_ssml = WorkflowExpression.Compile(ssml, nameof(ssml), required: false);
+            var __workflow_b64 = WorkflowExpression.Compile(b64, nameof(b64), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/";

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<QueryListResponse> QueryList(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null)
         {
-            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
-            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
+            var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
             return new DeferredBodyAction<QueryListResponse>(() =>
             {
                 var apiCallPath = "/QueryList";
@@ -33,14 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<JToken[]> QueryTable(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> queryName = null, Expression<Func<string>> searchText = null)
         {
-            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
-            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
-            var __workflow_queryName = queryName == null ? null : WorkflowExpression.Compile(queryName);
-            WorkflowExpression.Validate(__workflow_queryName, nameof(queryName), required: false);
-            var __workflow_searchText = searchText == null ? null : WorkflowExpression.Compile(searchText);
-            WorkflowExpression.Validate(__workflow_searchText, nameof(searchText), required: false);
+            var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
+            var __workflow_queryName = WorkflowExpression.Compile(queryName, nameof(queryName), required: false);
+            var __workflow_searchText = WorkflowExpression.Compile(searchText, nameof(searchText), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/QueryTable";
@@ -61,18 +55,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<QueryDataResponse> QueryData(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> queryName = null, Expression<Func<int>> startPosition = null, Expression<Func<int>> numberOfRecords = null, Expression<Func<string>> searchText = null)
         {
-            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
-            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
-            var __workflow_queryName = queryName == null ? null : WorkflowExpression.Compile(queryName);
-            WorkflowExpression.Validate(__workflow_queryName, nameof(queryName), required: false);
-            var __workflow_startPosition = startPosition == null ? null : WorkflowExpression.Compile(startPosition);
-            WorkflowExpression.Validate(__workflow_startPosition, nameof(startPosition), required: false);
-            var __workflow_numberOfRecords = numberOfRecords == null ? null : WorkflowExpression.Compile(numberOfRecords);
-            WorkflowExpression.Validate(__workflow_numberOfRecords, nameof(numberOfRecords), required: false);
-            var __workflow_searchText = searchText == null ? null : WorkflowExpression.Compile(searchText);
-            WorkflowExpression.Validate(__workflow_searchText, nameof(searchText), required: false);
+            var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
+            var __workflow_queryName = WorkflowExpression.Compile(queryName, nameof(queryName), required: false);
+            var __workflow_startPosition = WorkflowExpression.Compile(startPosition, nameof(startPosition), required: false);
+            var __workflow_numberOfRecords = WorkflowExpression.Compile(numberOfRecords, nameof(numberOfRecords), required: false);
+            var __workflow_searchText = WorkflowExpression.Compile(searchText, nameof(searchText), required: false);
             return new DeferredBodyAction<QueryDataResponse>(() =>
             {
                 var apiCallPath = "/QueryData";
@@ -97,14 +85,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<JToken[]> SavedSearch(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> savedSearchName = null, Expression<Func<string>> queryParams = null)
         {
-            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
-            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
-            var __workflow_savedSearchName = savedSearchName == null ? null : WorkflowExpression.Compile(savedSearchName);
-            WorkflowExpression.Validate(__workflow_savedSearchName, nameof(savedSearchName), required: false);
-            var __workflow_queryParams = queryParams == null ? null : WorkflowExpression.Compile(queryParams);
-            WorkflowExpression.Validate(__workflow_queryParams, nameof(queryParams), required: false);
+            var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
+            var __workflow_savedSearchName = WorkflowExpression.Compile(savedSearchName, nameof(savedSearchName), required: false);
+            var __workflow_queryParams = WorkflowExpression.Compile(queryParams, nameof(queryParams), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/SavedSearch";
@@ -125,22 +109,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
         public IBodyWorkflowAction<SendFileResponse> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> bodyfileContents = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycreatedDate = null, Expression<Func<string>> bodyeDOCType = null, Expression<Func<bodyextraFieldsInputItem[]>> bodyextraFields = null)
         {
-            var __workflow_hostUrl = hostUrl == null ? null : WorkflowExpression.Compile(hostUrl);
-            WorkflowExpression.Validate(__workflow_hostUrl, nameof(hostUrl), required: false);
-            var __workflow_userName = userName == null ? null : WorkflowExpression.Compile(userName);
-            WorkflowExpression.Validate(__workflow_userName, nameof(userName), required: false);
-            var __workflow_bodyfileContents = bodyfileContents == null ? null : WorkflowExpression.Compile(bodyfileContents);
-            WorkflowExpression.Validate(__workflow_bodyfileContents, nameof(bodyfileContents), required: false);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodycreatedDate = bodycreatedDate == null ? null : WorkflowExpression.Compile(bodycreatedDate);
-            WorkflowExpression.Validate(__workflow_bodycreatedDate, nameof(bodycreatedDate), required: false);
-            var __workflow_bodyeDOCType = bodyeDOCType == null ? null : WorkflowExpression.Compile(bodyeDOCType);
-            WorkflowExpression.Validate(__workflow_bodyeDOCType, nameof(bodyeDOCType), required: false);
-            var __workflow_bodyextraFields = bodyextraFields == null ? null : WorkflowExpression.Compile(bodyextraFields);
-            WorkflowExpression.Validate(__workflow_bodyextraFields, nameof(bodyextraFields), required: false);
+            var __workflow_hostUrl = WorkflowExpression.Compile(hostUrl, nameof(hostUrl), required: false);
+            var __workflow_userName = WorkflowExpression.Compile(userName, nameof(userName), required: false);
+            var __workflow_bodyfileContents = WorkflowExpression.Compile(bodyfileContents, nameof(bodyfileContents), required: false);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodycreatedDate = WorkflowExpression.Compile(bodycreatedDate, nameof(bodycreatedDate), required: false);
+            var __workflow_bodyeDOCType = WorkflowExpression.Compile(bodyeDOCType, nameof(bodyeDOCType), required: false);
+            var __workflow_bodyextraFields = WorkflowExpression.Compile(bodyextraFields, nameof(bodyextraFields), required: false);
             return new DeferredBodyAction<SendFileResponse>(() =>
             {
                 var apiCallPath = "/SendFile";

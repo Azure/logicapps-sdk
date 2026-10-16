@@ -22,20 +22,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<CreateAgentResponse> CreateAgent(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<bodyloginStatusInput>> bodyloginStatus = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodypermissionInput>> bodypermission = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodymaxChatCounts = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyloginStatus = bodyloginStatus == null ? null : WorkflowExpression.Compile(bodyloginStatus);
-            WorkflowExpression.Validate(__workflow_bodyloginStatus, nameof(bodyloginStatus), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodypermission = bodypermission == null ? null : WorkflowExpression.Compile(bodypermission);
-            WorkflowExpression.Validate(__workflow_bodypermission, nameof(bodypermission), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodymaxChatCounts = bodymaxChatCounts == null ? null : WorkflowExpression.Compile(bodymaxChatCounts);
-            WorkflowExpression.Validate(__workflow_bodymaxChatCounts, nameof(bodymaxChatCounts), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyloginStatus = WorkflowExpression.Compile(bodyloginStatus, nameof(bodyloginStatus), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodypermission = WorkflowExpression.Compile(bodypermission, nameof(bodypermission), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodymaxChatCounts = WorkflowExpression.Compile(bodymaxChatCounts, nameof(bodymaxChatCounts), required: false);
             return new DeferredBodyAction<CreateAgentResponse>(() =>
             {
                 var apiCallPath = "/agents";
@@ -89,8 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<DeleteAgentResponse> DeleteAgent(Expression<Func<string>> login)
         {
-            var __workflow_login = login == null ? null : WorkflowExpression.Compile(login);
-            WorkflowExpression.Validate(__workflow_login, nameof(login), required: true);
+            var __workflow_login = WorkflowExpression.Compile(login, nameof(login), required: true);
             return new DeferredBodyAction<DeleteAgentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_login, 1));
@@ -112,20 +104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<TicketResponse> CreateTicket(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyrequesterrequesterSEmail = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodyrequesterrequesterSEmail = bodyrequesterrequesterSEmail == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSEmail);
-            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: false);
-            var __workflow_bodyrequesterrequesterSName = bodyrequesterrequesterSName == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSName);
-            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodyassigneeassigneeId = bodyassigneeassigneeId == null ? null : WorkflowExpression.Compile(bodyassigneeassigneeId);
-            WorkflowExpression.Validate(__workflow_bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
-            var __workflow_bodysourcesourceType = bodysourcesourceType == null ? null : WorkflowExpression.Compile(bodysourcesourceType);
-            WorkflowExpression.Validate(__workflow_bodysourcesourceType, nameof(bodysourcesourceType), required: false);
-            var __workflow_bodysourcesourceURL = bodysourcesourceURL == null ? null : WorkflowExpression.Compile(bodysourcesourceURL);
-            WorkflowExpression.Validate(__workflow_bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyrequesterrequesterSEmail = WorkflowExpression.Compile(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: false);
+            var __workflow_bodyrequesterrequesterSName = WorkflowExpression.Compile(bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyassigneeassigneeId = WorkflowExpression.Compile(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
+            var __workflow_bodysourcesourceType = WorkflowExpression.Compile(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
+            var __workflow_bodysourcesourceURL = WorkflowExpression.Compile(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
                 var apiCallPath = "/tickets";
@@ -207,22 +192,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<TicketResponse> UpdateTicket(Expression<Func<string>> ticketId, Expression<Func<string>> bodyrequesterrequesterSEmail, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
         {
-            var __workflow_ticketId = ticketId == null ? null : WorkflowExpression.Compile(ticketId);
-            WorkflowExpression.Validate(__workflow_ticketId, nameof(ticketId), required: true);
-            var __workflow_bodyrequesterrequesterSEmail = bodyrequesterrequesterSEmail == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSEmail);
-            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodyrequesterrequesterSName = bodyrequesterrequesterSName == null ? null : WorkflowExpression.Compile(bodyrequesterrequesterSName);
-            WorkflowExpression.Validate(__workflow_bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodyassigneeassigneeId = bodyassigneeassigneeId == null ? null : WorkflowExpression.Compile(bodyassigneeassigneeId);
-            WorkflowExpression.Validate(__workflow_bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
-            var __workflow_bodysourcesourceType = bodysourcesourceType == null ? null : WorkflowExpression.Compile(bodysourcesourceType);
-            WorkflowExpression.Validate(__workflow_bodysourcesourceType, nameof(bodysourcesourceType), required: false);
-            var __workflow_bodysourcesourceURL = bodysourcesourceURL == null ? null : WorkflowExpression.Compile(bodysourcesourceURL);
-            WorkflowExpression.Validate(__workflow_bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
+            var __workflow_bodyrequesterrequesterSEmail = WorkflowExpression.Compile(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyrequesterrequesterSName = WorkflowExpression.Compile(bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyassigneeassigneeId = WorkflowExpression.Compile(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
+            var __workflow_bodysourcesourceType = WorkflowExpression.Compile(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
+            var __workflow_bodysourcesourceURL = WorkflowExpression.Compile(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
@@ -304,8 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<TicketResponse> GetTicket(Expression<Func<string>> ticketId)
         {
-            var __workflow_ticketId = ticketId == null ? null : WorkflowExpression.Compile(ticketId);
-            WorkflowExpression.Validate(__workflow_ticketId, nameof(ticketId), required: true);
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             return new DeferredBodyAction<TicketResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));

@@ -31,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
         {
-            var __workflow_bodystoreId = bodystoreId == null ? null : WorkflowExpression.Compile(bodystoreId);
-            WorkflowExpression.Validate(__workflow_bodystoreId, nameof(bodystoreId), required: false);
-            var __workflow_bodyrefreshDate = bodyrefreshDate == null ? null : WorkflowExpression.Compile(bodyrefreshDate);
-            WorkflowExpression.Validate(__workflow_bodyrefreshDate, nameof(bodyrefreshDate), required: false);
+            var __workflow_bodystoreId = WorkflowExpression.Compile(bodystoreId, nameof(bodystoreId), required: false);
+            var __workflow_bodyrefreshDate = WorkflowExpression.Compile(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
             return new DeferredBodyAction<RefreshStoreResponse>(() =>
             {
                 var apiCallPath = "/stores/refreshstore";

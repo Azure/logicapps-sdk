@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IBodyWorkflowAction<JToken> CPCreateExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
         {
-            var __workflow_actionReqselectAction = actionReqselectAction == null ? null : WorkflowExpression.Compile(actionReqselectAction);
-            WorkflowExpression.Validate(__workflow_actionReqselectAction, nameof(actionReqselectAction), required: true);
-            var __workflow_actionReqparameters = actionReqparameters == null ? null : WorkflowExpression.Compile(actionReqparameters);
-            WorkflowExpression.Validate(__workflow_actionReqparameters, nameof(actionReqparameters), required: true);
+            var __workflow_actionReqselectAction = WorkflowExpression.Compile(actionReqselectAction, nameof(actionReqselectAction), required: true);
+            var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/v1/executions/async";
@@ -40,10 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IWorkflowAction CPCreateWebhookExecution(Expression<Func<string>> actionReqselectAction, Expression<Func<object>> actionReqparameters)
         {
-            var __workflow_actionReqselectAction = actionReqselectAction == null ? null : WorkflowExpression.Compile(actionReqselectAction);
-            WorkflowExpression.Validate(__workflow_actionReqselectAction, nameof(actionReqselectAction), required: true);
-            var __workflow_actionReqparameters = actionReqparameters == null ? null : WorkflowExpression.Compile(actionReqparameters);
-            WorkflowExpression.Validate(__workflow_actionReqparameters, nameof(actionReqparameters), required: true);
+            var __workflow_actionReqselectAction = WorkflowExpression.Compile(actionReqselectAction, nameof(actionReqselectAction), required: true);
+            var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/webhooks/user-action";
@@ -69,12 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IWorkflowAction CPSetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
         {
-            var __workflow_actionCustomReqalertId = actionCustomReqalertId == null ? null : WorkflowExpression.Compile(actionCustomReqalertId);
-            WorkflowExpression.Validate(__workflow_actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
-            var __workflow_actionCustomReqselectClassification = actionCustomReqselectClassification == null ? null : WorkflowExpression.Compile(actionCustomReqselectClassification);
-            WorkflowExpression.Validate(__workflow_actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
-            var __workflow_actionCustomReqselectField = actionCustomReqselectField == null ? null : WorkflowExpression.Compile(actionCustomReqselectField);
-            WorkflowExpression.Validate(__workflow_actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
+            var __workflow_actionCustomReqalertId = WorkflowExpression.Compile(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
+            var __workflow_actionCustomReqselectClassification = WorkflowExpression.Compile(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
+            var __workflow_actionCustomReqselectField = WorkflowExpression.Compile(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/set";
@@ -100,12 +93,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IBodyWorkflowAction<JToken> CPGetAlertCustomField(Expression<Func<string>> actionCustomReqalertId, Expression<Func<string>> actionCustomReqselectClassification, Expression<Func<object>> actionCustomReqselectField)
         {
-            var __workflow_actionCustomReqalertId = actionCustomReqalertId == null ? null : WorkflowExpression.Compile(actionCustomReqalertId);
-            WorkflowExpression.Validate(__workflow_actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
-            var __workflow_actionCustomReqselectClassification = actionCustomReqselectClassification == null ? null : WorkflowExpression.Compile(actionCustomReqselectClassification);
-            WorkflowExpression.Validate(__workflow_actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
-            var __workflow_actionCustomReqselectField = actionCustomReqselectField == null ? null : WorkflowExpression.Compile(actionCustomReqselectField);
-            WorkflowExpression.Validate(__workflow_actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
+            var __workflow_actionCustomReqalertId = WorkflowExpression.Compile(actionCustomReqalertId, nameof(actionCustomReqalertId), required: true);
+            var __workflow_actionCustomReqselectClassification = WorkflowExpression.Compile(actionCustomReqselectClassification, nameof(actionCustomReqselectClassification), required: true);
+            var __workflow_actionCustomReqselectField = WorkflowExpression.Compile(actionCustomReqselectField, nameof(actionCustomReqselectField), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/alert-extended-properties/get";
@@ -131,10 +121,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IBodyWorkflowAction<JToken> CPGetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectIncidentSummary)
         {
-            var __workflow_actionCustomReqincidentId = actionCustomReqincidentId == null ? null : WorkflowExpression.Compile(actionCustomReqincidentId);
-            WorkflowExpression.Validate(__workflow_actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
-            var __workflow_actionCustomReqselectIncidentSummary = actionCustomReqselectIncidentSummary == null ? null : WorkflowExpression.Compile(actionCustomReqselectIncidentSummary);
-            WorkflowExpression.Validate(__workflow_actionCustomReqselectIncidentSummary, nameof(actionCustomReqselectIncidentSummary), required: true);
+            var __workflow_actionCustomReqincidentId = WorkflowExpression.Compile(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
+            var __workflow_actionCustomReqselectIncidentSummary = WorkflowExpression.Compile(actionCustomReqselectIncidentSummary, nameof(actionCustomReqselectIncidentSummary), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/get";
@@ -158,10 +146,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberproof")]
         public IWorkflowAction CPSetIncidentSummary(Expression<Func<string>> actionCustomReqincidentId, Expression<Func<object>> actionCustomReqselectValue)
         {
-            var __workflow_actionCustomReqincidentId = actionCustomReqincidentId == null ? null : WorkflowExpression.Compile(actionCustomReqincidentId);
-            WorkflowExpression.Validate(__workflow_actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
-            var __workflow_actionCustomReqselectValue = actionCustomReqselectValue == null ? null : WorkflowExpression.Compile(actionCustomReqselectValue);
-            WorkflowExpression.Validate(__workflow_actionCustomReqselectValue, nameof(actionCustomReqselectValue), required: true);
+            var __workflow_actionCustomReqincidentId = WorkflowExpression.Compile(actionCustomReqincidentId, nameof(actionCustomReqincidentId), required: true);
+            var __workflow_actionCustomReqselectValue = WorkflowExpression.Compile(actionCustomReqselectValue, nameof(actionCustomReqselectValue), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v1/custom-fields/incident-summary/set";
@@ -187,10 +173,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
     {
         public IWorkflowTrigger CPTrigger(Expression<Func<string>> actionReqselectTrigger, Expression<Func<object>> actionReqparameters, FlowRecurrence recurrence = null)
         {
-            var __workflow_actionReqselectTrigger = actionReqselectTrigger == null ? null : WorkflowExpression.Compile(actionReqselectTrigger);
-            WorkflowExpression.Validate(__workflow_actionReqselectTrigger, nameof(actionReqselectTrigger), required: true);
-            var __workflow_actionReqparameters = actionReqparameters == null ? null : WorkflowExpression.Compile(actionReqparameters);
-            WorkflowExpression.Validate(__workflow_actionReqparameters, nameof(actionReqparameters), required: true);
+            var __workflow_actionReqselectTrigger = WorkflowExpression.Compile(actionReqselectTrigger, nameof(actionReqselectTrigger), required: true);
+            var __workflow_actionReqparameters = WorkflowExpression.Compile(actionReqparameters, nameof(actionReqparameters), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v1/webhooks";

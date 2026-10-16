@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<FeedResponse> Feed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<bool>> detailed = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_detailed = detailed == null ? null : WorkflowExpression.Compile(detailed);
-            WorkflowExpression.Validate(__workflow_detailed, nameof(detailed), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
             return new DeferredBodyAction<FeedResponse>(() =>
             {
                 var apiCallPath = "/feed";
@@ -37,8 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<FeedTodayResponse> FeedToday(Expression<Func<bool>> detailed = null)
         {
-            var __workflow_detailed = detailed == null ? null : WorkflowExpression.Compile(detailed);
-            WorkflowExpression.Validate(__workflow_detailed, nameof(detailed), required: false);
+            var __workflow_detailed = WorkflowExpression.Compile(detailed, nameof(detailed), required: false);
             return new DeferredBodyAction<FeedTodayResponse>(() =>
             {
                 var apiCallPath = "/feed/today";
@@ -53,10 +49,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<NeoResponse> Neo(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<NeoResponse>(() =>
             {
                 var apiCallPath = "/neo/browse";
@@ -73,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<NeoIDResponse> NeoID(Expression<Func<string>> iD)
         {
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<NeoIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/neo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iD, 1));
@@ -87,12 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<SentryResponse> Sentry(Expression<Func<bool>> isActive = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null)
         {
-            var __workflow_isActive = isActive == null ? null : WorkflowExpression.Compile(isActive);
-            WorkflowExpression.Validate(__workflow_isActive, nameof(isActive), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_isActive = WorkflowExpression.Compile(isActive, nameof(isActive), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<SentryResponse>(() =>
             {
                 var apiCallPath = "/neo/sentry";
@@ -111,8 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<SentryIDResponse> SentryID(Expression<Func<string>> iD)
         {
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<SentryIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iD, 1));

@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newsdataio")]
         public IBodyWorkflowAction<LatestGetResponse> LatestGet(Expression<Func<string>> q = null, Expression<Func<string>> qInTitle = null, Expression<Func<string>> country = null, Expression<Func<string>> category = null, Expression<Func<string>> language = null, Expression<Func<string>> domain = null, Expression<Func<fullContentInput>> fullContent = null, Expression<Func<imageInput>> image = null, Expression<Func<videoInput>> video = null, Expression<Func<string>> page = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_qInTitle = qInTitle == null ? null : WorkflowExpression.Compile(qInTitle);
-            WorkflowExpression.Validate(__workflow_qInTitle, nameof(qInTitle), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
-            var __workflow_fullContent = fullContent == null ? null : WorkflowExpression.Compile(fullContent);
-            WorkflowExpression.Validate(__workflow_fullContent, nameof(fullContent), required: false);
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: false);
-            var __workflow_video = video == null ? null : WorkflowExpression.Compile(video);
-            WorkflowExpression.Validate(__workflow_video, nameof(video), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_qInTitle = WorkflowExpression.Compile(qInTitle, nameof(qInTitle), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_fullContent = WorkflowExpression.Compile(fullContent, nameof(fullContent), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: false);
+            var __workflow_video = WorkflowExpression.Compile(video, nameof(video), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<LatestGetResponse>(() =>
             {
                 var apiCallPath = "/news";

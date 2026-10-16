@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
         public IBodyWorkflowAction<CreateSealResponse> CreateSeal(Expression<Func<string>> bodyfile)
         {
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
             return new DeferredBodyAction<CreateSealResponse>(() =>
             {
                 var apiCallPath = "/v2/CreateSeal";
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
         public IBodyWorkflowAction<ListSealsResponse> ListSeals(Expression<Func<string>> bodyfile = null)
         {
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: false);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: false);
             return new DeferredBodyAction<ListSealsResponse>(() =>
             {
                 var apiCallPath = "/v2/ListSeals";
@@ -63,10 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
         public IWorkflowAction VerifySeal(Expression<Func<string>> bodyfile, Expression<Func<string>> bodysealId)
         {
-            var __workflow_bodyfile = bodyfile == null ? null : WorkflowExpression.Compile(bodyfile);
-            WorkflowExpression.Validate(__workflow_bodyfile, nameof(bodyfile), required: true);
-            var __workflow_bodysealId = bodysealId == null ? null : WorkflowExpression.Compile(bodysealId);
-            WorkflowExpression.Validate(__workflow_bodysealId, nameof(bodysealId), required: true);
+            var __workflow_bodyfile = WorkflowExpression.Compile(bodyfile, nameof(bodyfile), required: true);
+            var __workflow_bodysealId = WorkflowExpression.Compile(bodysealId, nameof(bodysealId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/VerfiySeal";

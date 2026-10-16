@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> GetTheLinkedListTemplates(Expression<Func<string>> siteUrl, Expression<Func<string>> listName)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_listName = listName == null ? null : WorkflowExpression.Compile(listName);
-            WorkflowExpression.Validate(__workflow_listName, nameof(listName), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
             return new DeferredBodyAction<GetLinkedListTemplatesResponse[]>(() =>
             {
                 var apiCallPath = "/api/DocFusion365/GetLinkedListTemplates";
@@ -40,16 +38,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<ComposeLinkedTemplateResponse> ComposeALinkedTemplate(Expression<Func<string>> siteUrl, Expression<Func<string>> listName, Expression<Func<int>> templateId, Expression<Func<int>> listItemId, Expression<Func<bool>> skipPostProcess)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_listName = listName == null ? null : WorkflowExpression.Compile(listName);
-            WorkflowExpression.Validate(__workflow_listName, nameof(listName), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_listItemId = listItemId == null ? null : WorkflowExpression.Compile(listItemId);
-            WorkflowExpression.Validate(__workflow_listItemId, nameof(listItemId), required: true);
-            var __workflow_skipPostProcess = skipPostProcess == null ? null : WorkflowExpression.Compile(skipPostProcess);
-            WorkflowExpression.Validate(__workflow_skipPostProcess, nameof(skipPostProcess), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_listItemId = WorkflowExpression.Compile(listItemId, nameof(listItemId), required: true);
+            var __workflow_skipPostProcess = WorkflowExpression.Compile(skipPostProcess, nameof(skipPostProcess), required: true);
             return new DeferredBodyAction<ComposeLinkedTemplateResponse>(() =>
             {
                 var apiCallPath = "/api/DocFusion365/ComposeLinkedTemplate";
@@ -67,14 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> ComposeAllTheLinkedTemplates(Expression<Func<string>> siteUrl, Expression<Func<string>> listName, Expression<Func<int>> listItemId, Expression<Func<bool>> skipPostProcess)
         {
-            var __workflow_siteUrl = siteUrl == null ? null : WorkflowExpression.Compile(siteUrl);
-            WorkflowExpression.Validate(__workflow_siteUrl, nameof(siteUrl), required: true);
-            var __workflow_listName = listName == null ? null : WorkflowExpression.Compile(listName);
-            WorkflowExpression.Validate(__workflow_listName, nameof(listName), required: true);
-            var __workflow_listItemId = listItemId == null ? null : WorkflowExpression.Compile(listItemId);
-            WorkflowExpression.Validate(__workflow_listItemId, nameof(listItemId), required: true);
-            var __workflow_skipPostProcess = skipPostProcess == null ? null : WorkflowExpression.Compile(skipPostProcess);
-            WorkflowExpression.Validate(__workflow_skipPostProcess, nameof(skipPostProcess), required: true);
+            var __workflow_siteUrl = WorkflowExpression.Compile(siteUrl, nameof(siteUrl), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
+            var __workflow_listItemId = WorkflowExpression.Compile(listItemId, nameof(listItemId), required: true);
+            var __workflow_skipPostProcess = WorkflowExpression.Compile(skipPostProcess, nameof(skipPostProcess), required: true);
             return new DeferredBodyAction<ComposeLinkedTemplateResponse[]>(() =>
             {
                 var apiCallPath = "/api/DocFusion365/ComposeAllLinkedTemplates";

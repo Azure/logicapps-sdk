@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION(Expression<Func<string>> ip, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> userAgent = null, Expression<Func<string>> userLanguage = null, Expression<Func<bool>> fast = null, Expression<Func<bool>> mobile = null, Expression<Func<bool>> allowPublicAccessPoints = null, Expression<Func<bool>> lighterPenalties = null)
         {
-            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
-            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
-            var __workflow_strictness = strictness == null ? null : WorkflowExpression.Compile(strictness);
-            WorkflowExpression.Validate(__workflow_strictness, nameof(strictness), required: true);
-            var __workflow_userAgent = userAgent == null ? null : WorkflowExpression.Compile(userAgent);
-            WorkflowExpression.Validate(__workflow_userAgent, nameof(userAgent), required: false);
-            var __workflow_userLanguage = userLanguage == null ? null : WorkflowExpression.Compile(userLanguage);
-            WorkflowExpression.Validate(__workflow_userLanguage, nameof(userLanguage), required: false);
-            var __workflow_fast = fast == null ? null : WorkflowExpression.Compile(fast);
-            WorkflowExpression.Validate(__workflow_fast, nameof(fast), required: false);
-            var __workflow_mobile = mobile == null ? null : WorkflowExpression.Compile(mobile);
-            WorkflowExpression.Validate(__workflow_mobile, nameof(mobile), required: false);
-            var __workflow_allowPublicAccessPoints = allowPublicAccessPoints == null ? null : WorkflowExpression.Compile(allowPublicAccessPoints);
-            WorkflowExpression.Validate(__workflow_allowPublicAccessPoints, nameof(allowPublicAccessPoints), required: false);
-            var __workflow_lighterPenalties = lighterPenalties == null ? null : WorkflowExpression.Compile(lighterPenalties);
-            WorkflowExpression.Validate(__workflow_lighterPenalties, nameof(lighterPenalties), required: false);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
+            var __workflow_strictness = WorkflowExpression.Compile(strictness, nameof(strictness), required: true);
+            var __workflow_userAgent = WorkflowExpression.Compile(userAgent, nameof(userAgent), required: false);
+            var __workflow_userLanguage = WorkflowExpression.Compile(userLanguage, nameof(userLanguage), required: false);
+            var __workflow_fast = WorkflowExpression.Compile(fast, nameof(fast), required: false);
+            var __workflow_mobile = WorkflowExpression.Compile(mobile, nameof(mobile), required: false);
+            var __workflow_allowPublicAccessPoints = WorkflowExpression.Compile(allowPublicAccessPoints, nameof(allowPublicAccessPoints), required: false);
+            var __workflow_lighterPenalties = WorkflowExpression.Compile(lighterPenalties, nameof(lighterPenalties), required: false);
             return new DeferredBodyAction<IPREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/ip";
@@ -41,16 +33,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION(Expression<Func<string>> email, Expression<Func<abuseStrictnessInput>> abuseStrictness, Expression<Func<bool>> fast = null, Expression<Func<int>> timeout = null, Expression<Func<bool>> suggestDomain = null)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_abuseStrictness = abuseStrictness == null ? null : WorkflowExpression.Compile(abuseStrictness);
-            WorkflowExpression.Validate(__workflow_abuseStrictness, nameof(abuseStrictness), required: true);
-            var __workflow_fast = fast == null ? null : WorkflowExpression.Compile(fast);
-            WorkflowExpression.Validate(__workflow_fast, nameof(fast), required: false);
-            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
-            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
-            var __workflow_suggestDomain = suggestDomain == null ? null : WorkflowExpression.Compile(suggestDomain);
-            WorkflowExpression.Validate(__workflow_suggestDomain, nameof(suggestDomain), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_abuseStrictness = WorkflowExpression.Compile(abuseStrictness, nameof(abuseStrictness), required: true);
+            var __workflow_fast = WorkflowExpression.Compile(fast, nameof(fast), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            var __workflow_suggestDomain = WorkflowExpression.Compile(suggestDomain, nameof(suggestDomain), required: false);
             return new DeferredBodyAction<EMAILREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/email";
@@ -63,12 +50,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION(Expression<Func<string>> url, Expression<Func<strictnessInput>> strictness, Expression<Func<bool>> fast = null)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_strictness = strictness == null ? null : WorkflowExpression.Compile(strictness);
-            WorkflowExpression.Validate(__workflow_strictness, nameof(strictness), required: true);
-            var __workflow_fast = fast == null ? null : WorkflowExpression.Compile(fast);
-            WorkflowExpression.Validate(__workflow_fast, nameof(fast), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_strictness = WorkflowExpression.Compile(strictness, nameof(strictness), required: true);
+            var __workflow_fast = WorkflowExpression.Compile(fast, nameof(fast), required: false);
             return new DeferredBodyAction<URLREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/url";
@@ -81,12 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
         public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION(Expression<Func<string>> phone, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> country = null)
         {
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
-            var __workflow_strictness = strictness == null ? null : WorkflowExpression.Compile(strictness);
-            WorkflowExpression.Validate(__workflow_strictness, nameof(strictness), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
+            var __workflow_strictness = WorkflowExpression.Compile(strictness, nameof(strictness), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<PHONEREPUTATIONResponse>(() =>
             {
                 var apiCallPath = "/phone";

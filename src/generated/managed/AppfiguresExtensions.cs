@@ -32,8 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
         public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_products = products == null ? null : WorkflowExpression.Compile(products);
-            WorkflowExpression.Validate(__workflow_products, nameof(products), required: false);
+            var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
             return new DeferredBodyTrigger<ReviewInfo[]>(() =>
             {
                 var apiCallPath = "/reviews_trigger/reviews";
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
 
         public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_products = products == null ? null : WorkflowExpression.Compile(products);
-            WorkflowExpression.Validate(__workflow_products, nameof(products), required: false);
+            var __workflow_products = WorkflowExpression.Compile(products, nameof(products), required: false);
             return new DeferredBodyTrigger<Rating[]>(() =>
             {
                 var apiCallPath = "/ratings_trigger/ratings";

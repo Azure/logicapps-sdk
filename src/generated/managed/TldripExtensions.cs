@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<ArticleHumanPostResponse> ArticleHuman(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null, Expression<Func<bool>> bodyisDetailed = null)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyminLength = bodyminLength == null ? null : WorkflowExpression.Compile(bodyminLength);
-            WorkflowExpression.Validate(__workflow_bodyminLength, nameof(bodyminLength), required: false);
-            var __workflow_bodymaxLength = bodymaxLength == null ? null : WorkflowExpression.Compile(bodymaxLength);
-            WorkflowExpression.Validate(__workflow_bodymaxLength, nameof(bodymaxLength), required: false);
-            var __workflow_bodyisDetailed = bodyisDetailed == null ? null : WorkflowExpression.Compile(bodyisDetailed);
-            WorkflowExpression.Validate(__workflow_bodyisDetailed, nameof(bodyisDetailed), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: false);
+            var __workflow_bodymaxLength = WorkflowExpression.Compile(bodymaxLength, nameof(bodymaxLength), required: false);
+            var __workflow_bodyisDetailed = WorkflowExpression.Compile(bodyisDetailed, nameof(bodyisDetailed), required: false);
             return new DeferredBodyAction<ArticleHumanPostResponse>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-url/";
@@ -80,12 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<ExtractArticlePostResponse> ExtractArticle(Expression<Func<string>> bodyurl, Expression<Func<int>> bodynumSentences = null, Expression<Func<bool>> bodyisDetailed = null)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodynumSentences = bodynumSentences == null ? null : WorkflowExpression.Compile(bodynumSentences);
-            WorkflowExpression.Validate(__workflow_bodynumSentences, nameof(bodynumSentences), required: false);
-            var __workflow_bodyisDetailed = bodyisDetailed == null ? null : WorkflowExpression.Compile(bodyisDetailed);
-            WorkflowExpression.Validate(__workflow_bodyisDetailed, nameof(bodyisDetailed), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodynumSentences = WorkflowExpression.Compile(bodynumSentences, nameof(bodynumSentences), required: false);
+            var __workflow_bodyisDetailed = WorkflowExpression.Compile(bodyisDetailed, nameof(bodyisDetailed), required: false);
             return new DeferredBodyAction<ExtractArticlePostResponse>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-url/";
@@ -129,12 +122,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<TextHumanPostResponse> TextHuman(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength = null, Expression<Func<int>> bodymaxLength = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyminLength = bodyminLength == null ? null : WorkflowExpression.Compile(bodyminLength);
-            WorkflowExpression.Validate(__workflow_bodyminLength, nameof(bodyminLength), required: false);
-            var __workflow_bodymaxLength = bodymaxLength == null ? null : WorkflowExpression.Compile(bodymaxLength);
-            WorkflowExpression.Validate(__workflow_bodymaxLength, nameof(bodymaxLength), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyminLength = WorkflowExpression.Compile(bodyminLength, nameof(bodyminLength), required: false);
+            var __workflow_bodymaxLength = WorkflowExpression.Compile(bodymaxLength, nameof(bodymaxLength), required: false);
             return new DeferredBodyAction<TextHumanPostResponse>(() =>
             {
                 var apiCallPath = "/model/abstractive/summarize-text/";
@@ -188,10 +178,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tldrip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tldrip")]
         public IBodyWorkflowAction<ExtractTextPostResponse> ExtractText(Expression<Func<string>> bodytext, Expression<Func<int>> bodynumSentences = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodynumSentences = bodynumSentences == null ? null : WorkflowExpression.Compile(bodynumSentences);
-            WorkflowExpression.Validate(__workflow_bodynumSentences, nameof(bodynumSentences), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodynumSentences = WorkflowExpression.Compile(bodynumSentences, nameof(bodynumSentences), required: false);
             return new DeferredBodyAction<ExtractTextPostResponse>(() =>
             {
                 var apiCallPath = "/model/extractive/summarize-text/";

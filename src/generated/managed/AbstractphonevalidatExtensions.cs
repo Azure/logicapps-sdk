@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractphonevalidat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractphonevalidat")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> phone)
         {
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v1/";

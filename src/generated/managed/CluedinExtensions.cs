@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
         public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
         {
-            var __workflow_bodyresultapproval = bodyresultapproval == null ? null : WorkflowExpression.Compile(bodyresultapproval);
-            WorkflowExpression.Validate(__workflow_bodyresultapproval, nameof(bodyresultapproval), required: false);
-            var __workflow_bodyresultreason = bodyresultreason == null ? null : WorkflowExpression.Compile(bodyresultreason);
-            WorkflowExpression.Validate(__workflow_bodyresultreason, nameof(bodyresultreason), required: false);
-            var __workflow_bodyresultreviewedBy = bodyresultreviewedBy == null ? null : WorkflowExpression.Compile(bodyresultreviewedBy);
-            WorkflowExpression.Validate(__workflow_bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
+            var __workflow_bodyresultapproval = WorkflowExpression.Compile(bodyresultapproval, nameof(bodyresultapproval), required: false);
+            var __workflow_bodyresultreason = WorkflowExpression.Compile(bodyresultreason, nameof(bodyresultreason), required: false);
+            var __workflow_bodyresultreviewedBy = WorkflowExpression.Compile(bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
             return new DeferredBodyAction<ApprovalResponseResponse>(() =>
             {
                 var apiCallPath = "/callback";

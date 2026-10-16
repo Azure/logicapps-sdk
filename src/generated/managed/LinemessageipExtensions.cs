@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linemessageip")]
         public IWorkflowAction SendMessage(Expression<Func<string>> bodyto = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
         {
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/bot/message/push";

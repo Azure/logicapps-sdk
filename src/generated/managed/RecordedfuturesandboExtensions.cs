@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetReportResponse> GetReport(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
-            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
-            var __workflow_sampleID = sampleID == null ? null : WorkflowExpression.Compile(sampleID);
-            WorkflowExpression.Validate(__workflow_sampleID, nameof(sampleID), required: true);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
             return new DeferredBodyAction<GetReportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}/overview.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
@@ -30,10 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<GetSummaryResponse> GetSummary(Expression<Func<string>> sandboxToken, Expression<Func<string>> sampleID)
         {
-            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
-            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
-            var __workflow_sampleID = sampleID == null ? null : WorkflowExpression.Compile(sampleID);
-            WorkflowExpression.Validate(__workflow_sampleID, nameof(sampleID), required: true);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_sampleID = WorkflowExpression.Compile(sampleID, nameof(sampleID), required: true);
             return new DeferredBodyAction<GetSummaryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/samples/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sampleID, 1));
@@ -47,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<SubmitUrlSampleResponse> SubmitUrlSample(Expression<Func<string>> sandboxToken, Expression<Func<string>> bodyurl = null)
         {
-            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
-            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             return new DeferredBodyAction<SubmitUrlSampleResponse>(() =>
             {
                 var apiCallPath = "/samples/url";
@@ -77,14 +71,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfuturesandbo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfuturesandbo")]
         public IBodyWorkflowAction<SubmitFileSampleResponse> SubmitFileSample(Expression<Func<string>> sandboxToken, Expression<Func<object>> file, Expression<Func<string>> password = null, Expression<Func<string>> userTags = null)
         {
-            var __workflow_sandboxToken = sandboxToken == null ? null : WorkflowExpression.Compile(sandboxToken);
-            WorkflowExpression.Validate(__workflow_sandboxToken, nameof(sandboxToken), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: false);
-            var __workflow_userTags = userTags == null ? null : WorkflowExpression.Compile(userTags);
-            WorkflowExpression.Validate(__workflow_userTags, nameof(userTags), required: false);
+            var __workflow_sandboxToken = WorkflowExpression.Compile(sandboxToken, nameof(sandboxToken), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
+            var __workflow_userTags = WorkflowExpression.Compile(userTags, nameof(userTags), required: false);
             return new DeferredBodyAction<SubmitFileSampleResponse>(() =>
             {
                 var apiCallPath = "/samples/file";

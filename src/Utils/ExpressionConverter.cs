@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public static string LiteralName(WorkflowExpression<string> value)
         {
-            WorkflowExpression.Validate(value, nameof(value), true);
+            if (value == null) throw new ArgumentNullException(nameof(value));
             if (value.LiteralToken?.Type != JTokenType.String) throw new NotSupportedException("Referenced variable names must be literal or captured strings.");
             return value.LiteralToken.Value<string>();
         }

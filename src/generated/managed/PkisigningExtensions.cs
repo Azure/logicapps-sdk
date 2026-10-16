@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsList(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<bool>> hasActed = null)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_hasActed = hasActed == null ? null : WorkflowExpression.Compile(hasActed);
-            WorkflowExpression.Validate(__workflow_hasActed, nameof(hasActed), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_hasActed = WorkflowExpression.Compile(hasActed, nameof(hasActed), required: false);
             return new DeferredBodyAction<ExtendedSignerModel[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -33,36 +30,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsCreate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<actorModelactionInput>> actorModelaction, Expression<Func<string>> actorModelfirstname, Expression<Func<string>> actorModellastname, Expression<Func<string>> actorModelemail, Expression<Func<string>> actorModelmobile, Expression<Func<string>> actorModeldeadline, Expression<Func<actorModellanguageInput>> actorModellanguage, Expression<Func<bool>> actorModelvalidateRealIdentity, Expression<Func<string>> actorModelprefix = null, Expression<Func<int>> actorModeldossierPersonId = null, Expression<Func<string>> actorModelmessage = null, Expression<Func<string>> actorModelfieldName = null, Expression<Func<string>> actorModelplaceholder = null)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_actorModelaction = actorModelaction == null ? null : WorkflowExpression.Compile(actorModelaction);
-            WorkflowExpression.Validate(__workflow_actorModelaction, nameof(actorModelaction), required: true);
-            var __workflow_actorModelfirstname = actorModelfirstname == null ? null : WorkflowExpression.Compile(actorModelfirstname);
-            WorkflowExpression.Validate(__workflow_actorModelfirstname, nameof(actorModelfirstname), required: true);
-            var __workflow_actorModellastname = actorModellastname == null ? null : WorkflowExpression.Compile(actorModellastname);
-            WorkflowExpression.Validate(__workflow_actorModellastname, nameof(actorModellastname), required: true);
-            var __workflow_actorModelemail = actorModelemail == null ? null : WorkflowExpression.Compile(actorModelemail);
-            WorkflowExpression.Validate(__workflow_actorModelemail, nameof(actorModelemail), required: true);
-            var __workflow_actorModelmobile = actorModelmobile == null ? null : WorkflowExpression.Compile(actorModelmobile);
-            WorkflowExpression.Validate(__workflow_actorModelmobile, nameof(actorModelmobile), required: true);
-            var __workflow_actorModeldeadline = actorModeldeadline == null ? null : WorkflowExpression.Compile(actorModeldeadline);
-            WorkflowExpression.Validate(__workflow_actorModeldeadline, nameof(actorModeldeadline), required: true);
-            var __workflow_actorModellanguage = actorModellanguage == null ? null : WorkflowExpression.Compile(actorModellanguage);
-            WorkflowExpression.Validate(__workflow_actorModellanguage, nameof(actorModellanguage), required: true);
-            var __workflow_actorModelvalidateRealIdentity = actorModelvalidateRealIdentity == null ? null : WorkflowExpression.Compile(actorModelvalidateRealIdentity);
-            WorkflowExpression.Validate(__workflow_actorModelvalidateRealIdentity, nameof(actorModelvalidateRealIdentity), required: true);
-            var __workflow_actorModelprefix = actorModelprefix == null ? null : WorkflowExpression.Compile(actorModelprefix);
-            WorkflowExpression.Validate(__workflow_actorModelprefix, nameof(actorModelprefix), required: false);
-            var __workflow_actorModeldossierPersonId = actorModeldossierPersonId == null ? null : WorkflowExpression.Compile(actorModeldossierPersonId);
-            WorkflowExpression.Validate(__workflow_actorModeldossierPersonId, nameof(actorModeldossierPersonId), required: false);
-            var __workflow_actorModelmessage = actorModelmessage == null ? null : WorkflowExpression.Compile(actorModelmessage);
-            WorkflowExpression.Validate(__workflow_actorModelmessage, nameof(actorModelmessage), required: false);
-            var __workflow_actorModelfieldName = actorModelfieldName == null ? null : WorkflowExpression.Compile(actorModelfieldName);
-            WorkflowExpression.Validate(__workflow_actorModelfieldName, nameof(actorModelfieldName), required: false);
-            var __workflow_actorModelplaceholder = actorModelplaceholder == null ? null : WorkflowExpression.Compile(actorModelplaceholder);
-            WorkflowExpression.Validate(__workflow_actorModelplaceholder, nameof(actorModelplaceholder), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_actorModelaction = WorkflowExpression.Compile(actorModelaction, nameof(actorModelaction), required: true);
+            var __workflow_actorModelfirstname = WorkflowExpression.Compile(actorModelfirstname, nameof(actorModelfirstname), required: true);
+            var __workflow_actorModellastname = WorkflowExpression.Compile(actorModellastname, nameof(actorModellastname), required: true);
+            var __workflow_actorModelemail = WorkflowExpression.Compile(actorModelemail, nameof(actorModelemail), required: true);
+            var __workflow_actorModelmobile = WorkflowExpression.Compile(actorModelmobile, nameof(actorModelmobile), required: true);
+            var __workflow_actorModeldeadline = WorkflowExpression.Compile(actorModeldeadline, nameof(actorModeldeadline), required: true);
+            var __workflow_actorModellanguage = WorkflowExpression.Compile(actorModellanguage, nameof(actorModellanguage), required: true);
+            var __workflow_actorModelvalidateRealIdentity = WorkflowExpression.Compile(actorModelvalidateRealIdentity, nameof(actorModelvalidateRealIdentity), required: true);
+            var __workflow_actorModelprefix = WorkflowExpression.Compile(actorModelprefix, nameof(actorModelprefix), required: false);
+            var __workflow_actorModeldossierPersonId = WorkflowExpression.Compile(actorModeldossierPersonId, nameof(actorModeldossierPersonId), required: false);
+            var __workflow_actorModelmessage = WorkflowExpression.Compile(actorModelmessage, nameof(actorModelmessage), required: false);
+            var __workflow_actorModelfieldName = WorkflowExpression.Compile(actorModelfieldName, nameof(actorModelfieldName), required: false);
+            var __workflow_actorModelplaceholder = WorkflowExpression.Compile(actorModelplaceholder, nameof(actorModelplaceholder), required: false);
             return new DeferredBodyAction<ExtendedSignerModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -136,34 +118,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId, Expression<Func<actorModelModelactionInput>> actorModelModelaction, Expression<Func<string>> actorModelModelfirstname, Expression<Func<string>> actorModelModellastname, Expression<Func<string>> actorModelModelemail, Expression<Func<string>> actorModelModelmobile, Expression<Func<string>> actorModelModeldeadline, Expression<Func<actorModelModellanguageInput>> actorModelModellanguage, Expression<Func<bool>> actorModelModelvalidateRealIdentity, Expression<Func<string>> actorModelModelprefix = null, Expression<Func<int>> actorModelModeldossierPersonId = null, Expression<Func<string>> actorModelModelmessage = null)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_actorId = actorId == null ? null : WorkflowExpression.Compile(actorId);
-            WorkflowExpression.Validate(__workflow_actorId, nameof(actorId), required: true);
-            var __workflow_actorModelModelaction = actorModelModelaction == null ? null : WorkflowExpression.Compile(actorModelModelaction);
-            WorkflowExpression.Validate(__workflow_actorModelModelaction, nameof(actorModelModelaction), required: true);
-            var __workflow_actorModelModelfirstname = actorModelModelfirstname == null ? null : WorkflowExpression.Compile(actorModelModelfirstname);
-            WorkflowExpression.Validate(__workflow_actorModelModelfirstname, nameof(actorModelModelfirstname), required: true);
-            var __workflow_actorModelModellastname = actorModelModellastname == null ? null : WorkflowExpression.Compile(actorModelModellastname);
-            WorkflowExpression.Validate(__workflow_actorModelModellastname, nameof(actorModelModellastname), required: true);
-            var __workflow_actorModelModelemail = actorModelModelemail == null ? null : WorkflowExpression.Compile(actorModelModelemail);
-            WorkflowExpression.Validate(__workflow_actorModelModelemail, nameof(actorModelModelemail), required: true);
-            var __workflow_actorModelModelmobile = actorModelModelmobile == null ? null : WorkflowExpression.Compile(actorModelModelmobile);
-            WorkflowExpression.Validate(__workflow_actorModelModelmobile, nameof(actorModelModelmobile), required: true);
-            var __workflow_actorModelModeldeadline = actorModelModeldeadline == null ? null : WorkflowExpression.Compile(actorModelModeldeadline);
-            WorkflowExpression.Validate(__workflow_actorModelModeldeadline, nameof(actorModelModeldeadline), required: true);
-            var __workflow_actorModelModellanguage = actorModelModellanguage == null ? null : WorkflowExpression.Compile(actorModelModellanguage);
-            WorkflowExpression.Validate(__workflow_actorModelModellanguage, nameof(actorModelModellanguage), required: true);
-            var __workflow_actorModelModelvalidateRealIdentity = actorModelModelvalidateRealIdentity == null ? null : WorkflowExpression.Compile(actorModelModelvalidateRealIdentity);
-            WorkflowExpression.Validate(__workflow_actorModelModelvalidateRealIdentity, nameof(actorModelModelvalidateRealIdentity), required: true);
-            var __workflow_actorModelModelprefix = actorModelModelprefix == null ? null : WorkflowExpression.Compile(actorModelModelprefix);
-            WorkflowExpression.Validate(__workflow_actorModelModelprefix, nameof(actorModelModelprefix), required: false);
-            var __workflow_actorModelModeldossierPersonId = actorModelModeldossierPersonId == null ? null : WorkflowExpression.Compile(actorModelModeldossierPersonId);
-            WorkflowExpression.Validate(__workflow_actorModelModeldossierPersonId, nameof(actorModelModeldossierPersonId), required: false);
-            var __workflow_actorModelModelmessage = actorModelModelmessage == null ? null : WorkflowExpression.Compile(actorModelModelmessage);
-            WorkflowExpression.Validate(__workflow_actorModelModelmessage, nameof(actorModelModelmessage), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_actorId = WorkflowExpression.Compile(actorId, nameof(actorId), required: true);
+            var __workflow_actorModelModelaction = WorkflowExpression.Compile(actorModelModelaction, nameof(actorModelModelaction), required: true);
+            var __workflow_actorModelModelfirstname = WorkflowExpression.Compile(actorModelModelfirstname, nameof(actorModelModelfirstname), required: true);
+            var __workflow_actorModelModellastname = WorkflowExpression.Compile(actorModelModellastname, nameof(actorModelModellastname), required: true);
+            var __workflow_actorModelModelemail = WorkflowExpression.Compile(actorModelModelemail, nameof(actorModelModelemail), required: true);
+            var __workflow_actorModelModelmobile = WorkflowExpression.Compile(actorModelModelmobile, nameof(actorModelModelmobile), required: true);
+            var __workflow_actorModelModeldeadline = WorkflowExpression.Compile(actorModelModeldeadline, nameof(actorModelModeldeadline), required: true);
+            var __workflow_actorModelModellanguage = WorkflowExpression.Compile(actorModelModellanguage, nameof(actorModelModellanguage), required: true);
+            var __workflow_actorModelModelvalidateRealIdentity = WorkflowExpression.Compile(actorModelModelvalidateRealIdentity, nameof(actorModelModelvalidateRealIdentity), required: true);
+            var __workflow_actorModelModelprefix = WorkflowExpression.Compile(actorModelModelprefix, nameof(actorModelModelprefix), required: false);
+            var __workflow_actorModelModeldossierPersonId = WorkflowExpression.Compile(actorModelModeldossierPersonId, nameof(actorModelModeldossierPersonId), required: false);
+            var __workflow_actorModelModelmessage = WorkflowExpression.Compile(actorModelModelmessage, nameof(actorModelModelmessage), required: false);
             return new DeferredBodyAction<ExtendedSignerModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_actorId, 1));
@@ -217,12 +185,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel> ActorsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_actorId = actorId == null ? null : WorkflowExpression.Compile(actorId);
-            WorkflowExpression.Validate(__workflow_actorId, nameof(actorId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_actorId = WorkflowExpression.Compile(actorId, nameof(actorId), required: true);
             return new DeferredBodyAction<ExtendedSignerModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_actorId, 1));
@@ -235,12 +200,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<string>> actorId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_actorId = actorId == null ? null : WorkflowExpression.Compile(actorId);
-            WorkflowExpression.Validate(__workflow_actorId, nameof(actorId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_actorId = WorkflowExpression.Compile(actorId, nameof(actorId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}/Actors/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_actorId, 1));
@@ -253,10 +215,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<ExtendedSignerModel[]> ActorsRequestActors(Expression<Func<string>> requestId, Expression<Func<bool>> hasActed = null)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_hasActed = hasActed == null ? null : WorkflowExpression.Compile(hasActed);
-            WorkflowExpression.Validate(__workflow_hasActed, nameof(hasActed), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_hasActed = WorkflowExpression.Compile(hasActed, nameof(hasActed), required: false);
             return new DeferredBodyAction<ExtendedSignerModel[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -271,8 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsResendCurrentInvite(Expression<Func<string>> requestId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors/ResendCurrentInvite", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -285,8 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction ActorsWithdrawCurrentInvite(Expression<Func<string>> requestId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/Actors/WithdrawCurrentInvite", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -299,10 +257,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsGet(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<DocumentMetaDataModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -315,16 +271,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<DocumentMetaDataModel> DocumentsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> documentId, Expression<Func<metadatadocumentTypeInput>> metadatadocumentType, Expression<Func<string>> metadataname = null, Expression<Func<string>> metadatafilename = null)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_metadatadocumentType = metadatadocumentType == null ? null : WorkflowExpression.Compile(metadatadocumentType);
-            WorkflowExpression.Validate(__workflow_metadatadocumentType, nameof(metadatadocumentType), required: true);
-            var __workflow_metadataname = metadataname == null ? null : WorkflowExpression.Compile(metadataname);
-            WorkflowExpression.Validate(__workflow_metadataname, nameof(metadataname), required: false);
-            var __workflow_metadatafilename = metadatafilename == null ? null : WorkflowExpression.Compile(metadatafilename);
-            WorkflowExpression.Validate(__workflow_metadatafilename, nameof(metadatafilename), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_metadatadocumentType = WorkflowExpression.Compile(metadatadocumentType, nameof(metadatadocumentType), required: true);
+            var __workflow_metadataname = WorkflowExpression.Compile(metadataname, nameof(metadataname), required: false);
+            var __workflow_metadatafilename = WorkflowExpression.Compile(metadatafilename, nameof(metadatafilename), required: false);
             return new DeferredBodyAction<DocumentMetaDataModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -358,10 +309,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction DocumentsDelete(Expression<Func<string>> requestId, Expression<Func<string>> documentId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -374,8 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroups(Expression<Func<string>> organisationId)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyAction<OrganisationWorkgroup[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Organisations/{0}/workgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -388,10 +336,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<OrganisationWorkgroup[]> OrganisationsGetWorkgroupsByUser(Expression<Func<string>> organisationId, Expression<Func<string>> modelusername)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
-            var __workflow_modelusername = modelusername == null ? null : WorkflowExpression.Compile(modelusername);
-            WorkflowExpression.Validate(__workflow_modelusername, nameof(modelusername), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
+            var __workflow_modelusername = WorkflowExpression.Compile(modelusername, nameof(modelusername), required: true);
             return new DeferredBodyAction<OrganisationWorkgroup[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Organisations/{0}/workgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -413,14 +359,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsCreate(Expression<Func<string>> modelname, Expression<Func<int>> modelclearancelevel, Expression<Func<string>> modelworkgroupId = null, Expression<Func<string>> modelowner = null)
         {
-            var __workflow_modelname = modelname == null ? null : WorkflowExpression.Compile(modelname);
-            WorkflowExpression.Validate(__workflow_modelname, nameof(modelname), required: true);
-            var __workflow_modelclearancelevel = modelclearancelevel == null ? null : WorkflowExpression.Compile(modelclearancelevel);
-            WorkflowExpression.Validate(__workflow_modelclearancelevel, nameof(modelclearancelevel), required: true);
-            var __workflow_modelworkgroupId = modelworkgroupId == null ? null : WorkflowExpression.Compile(modelworkgroupId);
-            WorkflowExpression.Validate(__workflow_modelworkgroupId, nameof(modelworkgroupId), required: false);
-            var __workflow_modelowner = modelowner == null ? null : WorkflowExpression.Compile(modelowner);
-            WorkflowExpression.Validate(__workflow_modelowner, nameof(modelowner), required: false);
+            var __workflow_modelname = WorkflowExpression.Compile(modelname, nameof(modelname), required: true);
+            var __workflow_modelclearancelevel = WorkflowExpression.Compile(modelclearancelevel, nameof(modelclearancelevel), required: true);
+            var __workflow_modelworkgroupId = WorkflowExpression.Compile(modelworkgroupId, nameof(modelworkgroupId), required: false);
+            var __workflow_modelowner = WorkflowExpression.Compile(modelowner, nameof(modelowner), required: false);
             return new DeferredBodyAction<RequestModel>(() =>
             {
                 var apiCallPath = "/requests";
@@ -456,10 +398,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsGet(Expression<Func<string>> requestId, Expression<Func<string>> callbackAuthenticationKey = null)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_callbackAuthenticationKey = callbackAuthenticationKey == null ? null : WorkflowExpression.Compile(callbackAuthenticationKey);
-            WorkflowExpression.Validate(__workflow_callbackAuthenticationKey, nameof(callbackAuthenticationKey), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_callbackAuthenticationKey = WorkflowExpression.Compile(callbackAuthenticationKey, nameof(callbackAuthenticationKey), required: false);
             return new DeferredBodyAction<RequestModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -474,16 +414,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<RequestModel> RequestsUpdate(Expression<Func<string>> requestId, Expression<Func<string>> modelname, Expression<Func<int>> modelclearancelevel, Expression<Func<string>> modelworkgroupId = null, Expression<Func<string>> modelowner = null)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
-            var __workflow_modelname = modelname == null ? null : WorkflowExpression.Compile(modelname);
-            WorkflowExpression.Validate(__workflow_modelname, nameof(modelname), required: true);
-            var __workflow_modelclearancelevel = modelclearancelevel == null ? null : WorkflowExpression.Compile(modelclearancelevel);
-            WorkflowExpression.Validate(__workflow_modelclearancelevel, nameof(modelclearancelevel), required: true);
-            var __workflow_modelworkgroupId = modelworkgroupId == null ? null : WorkflowExpression.Compile(modelworkgroupId);
-            WorkflowExpression.Validate(__workflow_modelworkgroupId, nameof(modelworkgroupId), required: false);
-            var __workflow_modelowner = modelowner == null ? null : WorkflowExpression.Compile(modelowner);
-            WorkflowExpression.Validate(__workflow_modelowner, nameof(modelowner), required: false);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
+            var __workflow_modelname = WorkflowExpression.Compile(modelname, nameof(modelname), required: true);
+            var __workflow_modelclearancelevel = WorkflowExpression.Compile(modelclearancelevel, nameof(modelclearancelevel), required: true);
+            var __workflow_modelworkgroupId = WorkflowExpression.Compile(modelworkgroupId, nameof(modelworkgroupId), required: false);
+            var __workflow_modelowner = WorkflowExpression.Compile(modelowner, nameof(modelowner), required: false);
             return new DeferredBodyAction<RequestModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -519,8 +454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction RequestsDelete(Expression<Func<string>> requestId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -533,8 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IBodyWorkflowAction<object> RequestsDownload(Expression<Func<string>> requestId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/Download", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -547,8 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pkisigning")]
         public IWorkflowAction RequestsSend(Expression<Func<string>> requestId)
         {
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/requests/{0}/Send", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -563,10 +495,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
     {
         public IBodyWorkflowTrigger<WebhookResponseModel> WebhooksCreateWebhook(Expression<Func<string[]>> modelevents, Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_modelevents = modelevents == null ? null : WorkflowExpression.Compile(modelevents);
-            WorkflowExpression.Validate(__workflow_modelevents, nameof(modelevents), required: true);
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_modelevents = WorkflowExpression.Compile(modelevents, nameof(modelevents), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<WebhookResponseModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organisations/{0}/webhooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));

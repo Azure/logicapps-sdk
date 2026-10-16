@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
         public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2(Expression<Func<string>> bodyfromPhoneNumber, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodysmsSendOptionsdeliveryReport = null, Expression<Func<string>> bodysmsSendOptionstag = null)
         {
-            var __workflow_bodyfromPhoneNumber = bodyfromPhoneNumber == null ? null : WorkflowExpression.Compile(bodyfromPhoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodysmsSendOptionsdeliveryReport = bodysmsSendOptionsdeliveryReport == null ? null : WorkflowExpression.Compile(bodysmsSendOptionsdeliveryReport);
-            WorkflowExpression.Validate(__workflow_bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
-            var __workflow_bodysmsSendOptionstag = bodysmsSendOptionstag == null ? null : WorkflowExpression.Compile(bodysmsSendOptionstag);
-            WorkflowExpression.Validate(__workflow_bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
+            var __workflow_bodyfromPhoneNumber = WorkflowExpression.Compile(bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodysmsSendOptionsdeliveryReport = WorkflowExpression.Compile(bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
+            var __workflow_bodysmsSendOptionstag = WorkflowExpression.Compile(bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
             return new DeferredBodyAction<SendSMSv2Response>(() =>
             {
                 var apiCallPath = "/v2/sms";

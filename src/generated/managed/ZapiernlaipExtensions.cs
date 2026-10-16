@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
         public IBodyWorkflowAction<ActionPostResponse> Action(Expression<Func<string>> actionId, Expression<Func<string>> bodyinstructions, Expression<Func<bool>> bodypreviewOnly = null)
         {
-            var __workflow_actionId = actionId == null ? null : WorkflowExpression.Compile(actionId);
-            WorkflowExpression.Validate(__workflow_actionId, nameof(actionId), required: true);
-            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
-            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: true);
-            var __workflow_bodypreviewOnly = bodypreviewOnly == null ? null : WorkflowExpression.Compile(bodypreviewOnly);
-            WorkflowExpression.Validate(__workflow_bodypreviewOnly, nameof(bodypreviewOnly), required: false);
+            var __workflow_actionId = WorkflowExpression.Compile(actionId, nameof(actionId), required: true);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: true);
+            var __workflow_bodypreviewOnly = WorkflowExpression.Compile(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
             return new DeferredBodyAction<ActionPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionId, 1));

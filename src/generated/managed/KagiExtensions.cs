@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SummarizePostResponse> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyengine = bodyengine == null ? null : WorkflowExpression.Compile(bodyengine);
-            WorkflowExpression.Validate(__workflow_bodyengine, nameof(bodyengine), required: false);
-            var __workflow_bodysummaryType = bodysummaryType == null ? null : WorkflowExpression.Compile(bodysummaryType);
-            WorkflowExpression.Validate(__workflow_bodysummaryType, nameof(bodysummaryType), required: false);
-            var __workflow_bodytargetLanguage = bodytargetLanguage == null ? null : WorkflowExpression.Compile(bodytargetLanguage);
-            WorkflowExpression.Validate(__workflow_bodytargetLanguage, nameof(bodytargetLanguage), required: false);
-            var __workflow_bodycache = bodycache == null ? null : WorkflowExpression.Compile(bodycache);
-            WorkflowExpression.Validate(__workflow_bodycache, nameof(bodycache), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyengine = WorkflowExpression.Compile(bodyengine, nameof(bodyengine), required: false);
+            var __workflow_bodysummaryType = WorkflowExpression.Compile(bodysummaryType, nameof(bodysummaryType), required: false);
+            var __workflow_bodytargetLanguage = WorkflowExpression.Compile(bodytargetLanguage, nameof(bodytargetLanguage), required: false);
+            var __workflow_bodycache = WorkflowExpression.Compile(bodycache, nameof(bodycache), required: false);
             return new DeferredBodyAction<SummarizePostResponse>(() =>
             {
                 var apiCallPath = "/v0/summarize";
@@ -100,8 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<FastGPTPostResponse> FastGPT(Expression<Func<string>> bodyquery)
         {
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
             return new DeferredBodyAction<FastGPTPostResponse>(() =>
             {
                 var apiCallPath = "/v0/fastgpt";
@@ -123,10 +116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<int>> limit = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<SearchGetResponse>(() =>
             {
                 var apiCallPath = "/v0/search/";
@@ -142,8 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet(Expression<Func<string>> q)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyAction<EnrichmentWebGetResponse>(() =>
             {
                 var apiCallPath = "/v0/enrich/web";
@@ -157,8 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet(Expression<Func<string>> q)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
             return new DeferredBodyAction<EnrichmentNewsGetResponse>(() =>
             {
                 var apiCallPath = "/v0/enrich/news";
@@ -172,8 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
         public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet(Expression<Func<int>> limit = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<SmallWebGetResponse>(() =>
             {
                 var apiCallPath = "/v1/smallweb/feed/";

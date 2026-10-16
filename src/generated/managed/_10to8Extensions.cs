@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "10to8")]
         public IBodyWorkflowAction<string> BookAppointment(Expression<Func<string>> organisationId, Expression<Func<string>> bodystartDateTime, Expression<Func<string>> bodyendDateTime, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
-            var __workflow_bodystartDateTime = bodystartDateTime == null ? null : WorkflowExpression.Compile(bodystartDateTime);
-            WorkflowExpression.Validate(__workflow_bodystartDateTime, nameof(bodystartDateTime), required: true);
-            var __workflow_bodyendDateTime = bodyendDateTime == null ? null : WorkflowExpression.Compile(bodyendDateTime);
-            WorkflowExpression.Validate(__workflow_bodyendDateTime, nameof(bodyendDateTime), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
+            var __workflow_bodystartDateTime = WorkflowExpression.Compile(bodystartDateTime, nameof(bodystartDateTime), required: true);
+            var __workflow_bodyendDateTime = WorkflowExpression.Compile(bodyendDateTime, nameof(bodyendDateTime), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/appointments/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -52,8 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
     {
         public IBodyWorkflowTrigger<GetAppointmentsResponseItem[]> GetAppointments(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<GetAppointmentsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/appointments/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -65,8 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<GetCustomersResponseItem[]> GetCustomers(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<GetCustomersResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/customers/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -78,8 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesAppeared(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<IncomingMessage[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/appeared/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -91,8 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesDisappeared(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<IncomingMessage[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -104,8 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestAppeared(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<EventProposal[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -117,8 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestDisappeared(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<EventProposal[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -130,8 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestAppeared(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<EventProposal[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));
@@ -143,8 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 
         public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestDisappeared(Expression<Func<string>> organisationId, FlowRecurrence recurrence = null)
         {
-            var __workflow_organisationId = organisationId == null ? null : WorkflowExpression.Compile(organisationId);
-            WorkflowExpression.Validate(__workflow_organisationId, nameof(organisationId), required: true);
+            var __workflow_organisationId = WorkflowExpression.Compile(organisationId, nameof(organisationId), required: true);
             return new DeferredBodyTrigger<EventProposal[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisationId, 1));

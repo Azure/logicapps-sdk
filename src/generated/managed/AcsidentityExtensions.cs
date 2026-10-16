@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IBodyWorkflowAction<CreateCommunicationIdentityResponse> CreateCommunicationIdentity(Expression<Func<TokenScopes[]>> bodytokenScopes = null)
         {
-            var __workflow_bodytokenScopes = bodytokenScopes == null ? null : WorkflowExpression.Compile(bodytokenScopes);
-            WorkflowExpression.Validate(__workflow_bodytokenScopes, nameof(bodytokenScopes), required: false);
+            var __workflow_bodytokenScopes = WorkflowExpression.Compile(bodytokenScopes, nameof(bodytokenScopes), required: false);
             return new DeferredBodyAction<CreateCommunicationIdentityResponse>(() =>
             {
                 var apiCallPath = "/identities";
@@ -41,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IWorkflowAction DeleteCommunicationIdentity(Expression<Func<string>> identityId)
         {
-            var __workflow_identityId = identityId == null ? null : WorkflowExpression.Compile(identityId);
-            WorkflowExpression.Validate(__workflow_identityId, nameof(identityId), required: true);
+            var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
@@ -56,10 +54,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<TokenScopes[]>> bodytokenScopes)
         {
-            var __workflow_identityId = identityId == null ? null : WorkflowExpression.Compile(identityId);
-            WorkflowExpression.Validate(__workflow_identityId, nameof(identityId), required: true);
-            var __workflow_bodytokenScopes = bodytokenScopes == null ? null : WorkflowExpression.Compile(bodytokenScopes);
-            WorkflowExpression.Validate(__workflow_bodytokenScopes, nameof(bodytokenScopes), required: true);
+            var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
+            var __workflow_bodytokenScopes = WorkflowExpression.Compile(bodytokenScopes, nameof(bodytokenScopes), required: true);
             return new DeferredBodyAction<AccessTokenInfo>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:issueAccessToken", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));
@@ -82,8 +78,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
         public IWorkflowAction RevokeIdentityAccessTokens(Expression<Func<string>> identityId)
         {
-            var __workflow_identityId = identityId == null ? null : WorkflowExpression.Compile(identityId);
-            WorkflowExpression.Validate(__workflow_identityId, nameof(identityId), required: true);
+            var __workflow_identityId = WorkflowExpression.Compile(identityId, nameof(identityId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identities/{0}/:revokeAccessTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identityId, 1));

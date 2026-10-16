@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage(Expression<Func<string>> relocationId)
         {
-            var __workflow_relocationId = relocationId == null ? null : WorkflowExpression.Compile(relocationId);
-            WorkflowExpression.Validate(__workflow_relocationId, nameof(relocationId), required: true);
+            var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
             return new DeferredBodyAction<GetRelocationPackageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
@@ -36,10 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
         {
-            var __workflow_includePicture = includePicture == null ? null : WorkflowExpression.Compile(includePicture);
-            WorkflowExpression.Validate(__workflow_includePicture, nameof(includePicture), required: true);
-            var __workflow_relocationId = relocationId == null ? null : WorkflowExpression.Compile(relocationId);
-            WorkflowExpression.Validate(__workflow_relocationId, nameof(relocationId), required: true);
+            var __workflow_includePicture = WorkflowExpression.Compile(includePicture, nameof(includePicture), required: true);
+            var __workflow_relocationId = WorkflowExpression.Compile(relocationId, nameof(relocationId), required: true);
             return new DeferredBodyAction<GetCounselorContactInformationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_relocationId, 1));
@@ -53,12 +50,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
         public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
         {
-            var __workflow_bodyrelocationId = bodyrelocationId == null ? null : WorkflowExpression.Compile(bodyrelocationId);
-            WorkflowExpression.Validate(__workflow_bodyrelocationId, nameof(bodyrelocationId), required: true);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodytopic = bodytopic == null ? null : WorkflowExpression.Compile(bodytopic);
-            WorkflowExpression.Validate(__workflow_bodytopic, nameof(bodytopic), required: true);
+            var __workflow_bodyrelocationId = WorkflowExpression.Compile(bodyrelocationId, nameof(bodyrelocationId), required: true);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: true);
             return new DeferredBodyAction<AskSirvaBotAboutTopicResponse>(() =>
             {
                 var apiCallPath = "/chat/topic";

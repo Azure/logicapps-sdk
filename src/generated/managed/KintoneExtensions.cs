@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
         public IWorkflowAction AddRecord(Expression<Func<string>> requestBodyOfRecordappID, Expression<Func<object>> requestBodyOfRecordrecord = null)
         {
-            var __workflow_requestBodyOfRecordappID = requestBodyOfRecordappID == null ? null : WorkflowExpression.Compile(requestBodyOfRecordappID);
-            WorkflowExpression.Validate(__workflow_requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
-            var __workflow_requestBodyOfRecordrecord = requestBodyOfRecordrecord == null ? null : WorkflowExpression.Compile(requestBodyOfRecordrecord);
-            WorkflowExpression.Validate(__workflow_requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
+            var __workflow_requestBodyOfRecordappID = WorkflowExpression.Compile(requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
+            var __workflow_requestBodyOfRecordrecord = WorkflowExpression.Compile(requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
@@ -46,12 +44,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kintone")]
         public IWorkflowAction UpdateRecord(Expression<Func<string>> requestBodyOfRecordappID, Expression<Func<string>> requestBodyOfRecordrecordNumber, Expression<Func<object>> requestBodyOfRecordrecord = null)
         {
-            var __workflow_requestBodyOfRecordappID = requestBodyOfRecordappID == null ? null : WorkflowExpression.Compile(requestBodyOfRecordappID);
-            WorkflowExpression.Validate(__workflow_requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
-            var __workflow_requestBodyOfRecordrecordNumber = requestBodyOfRecordrecordNumber == null ? null : WorkflowExpression.Compile(requestBodyOfRecordrecordNumber);
-            WorkflowExpression.Validate(__workflow_requestBodyOfRecordrecordNumber, nameof(requestBodyOfRecordrecordNumber), required: true);
-            var __workflow_requestBodyOfRecordrecord = requestBodyOfRecordrecord == null ? null : WorkflowExpression.Compile(requestBodyOfRecordrecord);
-            WorkflowExpression.Validate(__workflow_requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
+            var __workflow_requestBodyOfRecordappID = WorkflowExpression.Compile(requestBodyOfRecordappID, nameof(requestBodyOfRecordappID), required: true);
+            var __workflow_requestBodyOfRecordrecordNumber = WorkflowExpression.Compile(requestBodyOfRecordrecordNumber, nameof(requestBodyOfRecordrecordNumber), required: true);
+            var __workflow_requestBodyOfRecordrecord = WorkflowExpression.Compile(requestBodyOfRecordrecord, nameof(requestBodyOfRecordrecord), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/k/v1/record.json";
@@ -85,8 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
     {
         public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = WorkflowExpression.Compile(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook.json";
@@ -115,8 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForUpdatingRecord(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = WorkflowExpression.Compile(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_record.json";
@@ -143,8 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForDeletingRecord(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = WorkflowExpression.Compile(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/delete_record.json";
@@ -171,8 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForAddingRecordComment(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = WorkflowExpression.Compile(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/add_record_comment.json";
@@ -199,8 +190,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
 
         public IWorkflowTrigger AddWebhookForUpdatingStatus(Expression<Func<string>> requestBodyOfWebhookappID, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookappID = requestBodyOfWebhookappID == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookappID);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
+            var __workflow_requestBodyOfWebhookappID = WorkflowExpression.Compile(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/k/integration/v1/preview/app/webhook/update_status.json";

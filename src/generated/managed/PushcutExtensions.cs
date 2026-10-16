@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
         public IWorkflowAction SendNotification(Expression<Func<string>> notificationName, Expression<Func<string>> bodydynamicText = null, Expression<Func<string>> bodydynamicTitle = null, Expression<Func<string>> bodyinputParameter = null, Expression<Func<string[]>> bodydevices = null)
         {
-            var __workflow_notificationName = notificationName == null ? null : WorkflowExpression.Compile(notificationName);
-            WorkflowExpression.Validate(__workflow_notificationName, nameof(notificationName), required: true);
-            var __workflow_bodydynamicText = bodydynamicText == null ? null : WorkflowExpression.Compile(bodydynamicText);
-            WorkflowExpression.Validate(__workflow_bodydynamicText, nameof(bodydynamicText), required: false);
-            var __workflow_bodydynamicTitle = bodydynamicTitle == null ? null : WorkflowExpression.Compile(bodydynamicTitle);
-            WorkflowExpression.Validate(__workflow_bodydynamicTitle, nameof(bodydynamicTitle), required: false);
-            var __workflow_bodyinputParameter = bodyinputParameter == null ? null : WorkflowExpression.Compile(bodyinputParameter);
-            WorkflowExpression.Validate(__workflow_bodyinputParameter, nameof(bodyinputParameter), required: false);
-            var __workflow_bodydevices = bodydevices == null ? null : WorkflowExpression.Compile(bodydevices);
-            WorkflowExpression.Validate(__workflow_bodydevices, nameof(bodydevices), required: false);
+            var __workflow_notificationName = WorkflowExpression.Compile(notificationName, nameof(notificationName), required: true);
+            var __workflow_bodydynamicText = WorkflowExpression.Compile(bodydynamicText, nameof(bodydynamicText), required: false);
+            var __workflow_bodydynamicTitle = WorkflowExpression.Compile(bodydynamicTitle, nameof(bodydynamicTitle), required: false);
+            var __workflow_bodyinputParameter = WorkflowExpression.Compile(bodyinputParameter, nameof(bodyinputParameter), required: false);
+            var __workflow_bodydevices = WorkflowExpression.Compile(bodydevices, nameof(bodydevices), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notifications/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notificationName, 1));
@@ -68,8 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
     {
         public IWorkflowTrigger ActionExecuted(Expression<Func<string>> bodyactionName, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyactionName = bodyactionName == null ? null : WorkflowExpression.Compile(bodyactionName);
-            WorkflowExpression.Validate(__workflow_bodyactionName, nameof(bodyactionName), required: true);
+            var __workflow_bodyactionName = WorkflowExpression.Compile(bodyactionName, nameof(bodyactionName), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/subscriptions";

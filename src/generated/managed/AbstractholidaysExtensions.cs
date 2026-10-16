@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractholidays")]
         public IBodyWorkflowAction<ListHolidaysResponseItem[]> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year = null, Expression<Func<string>> month = null, Expression<Func<string>> day = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: false);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: false);
             return new DeferredBodyAction<ListHolidaysResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/";

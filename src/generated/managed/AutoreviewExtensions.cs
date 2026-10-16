@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IWorkflowAction POSTHttp(Expression<Func<string>> path = null)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: false);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/autoreview/";
@@ -61,18 +60,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IBodyWorkflowAction<POSTJsonResponse> POSTJson(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<string[]>> bodyconfigscomplexity = null, Expression<Func<string[]>> bodyconfigsscoring = null)
         {
-            var __workflow_bodyflowPropertiesdisplayName = bodyflowPropertiesdisplayName == null ? null : WorkflowExpression.Compile(bodyflowPropertiesdisplayName);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
-            var __workflow_bodyflowPropertiesflowId = bodyflowPropertiesflowId == null ? null : WorkflowExpression.Compile(bodyflowPropertiesflowId);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
-            var __workflow_bodyflowPropertiesowner = bodyflowPropertiesowner == null ? null : WorkflowExpression.Compile(bodyflowPropertiesowner);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
-            var __workflow_bodyflowPropertiesenvironment = bodyflowPropertiesenvironment == null ? null : WorkflowExpression.Compile(bodyflowPropertiesenvironment);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
-            var __workflow_bodyconfigscomplexity = bodyconfigscomplexity == null ? null : WorkflowExpression.Compile(bodyconfigscomplexity);
-            WorkflowExpression.Validate(__workflow_bodyconfigscomplexity, nameof(bodyconfigscomplexity), required: false);
-            var __workflow_bodyconfigsscoring = bodyconfigsscoring == null ? null : WorkflowExpression.Compile(bodyconfigsscoring);
-            WorkflowExpression.Validate(__workflow_bodyconfigsscoring, nameof(bodyconfigsscoring), required: false);
+            var __workflow_bodyflowPropertiesdisplayName = WorkflowExpression.Compile(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
+            var __workflow_bodyflowPropertiesflowId = WorkflowExpression.Compile(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
+            var __workflow_bodyflowPropertiesowner = WorkflowExpression.Compile(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
+            var __workflow_bodyflowPropertiesenvironment = WorkflowExpression.Compile(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
+            var __workflow_bodyconfigscomplexity = WorkflowExpression.Compile(bodyconfigscomplexity, nameof(bodyconfigscomplexity), required: false);
+            var __workflow_bodyconfigsscoring = WorkflowExpression.Compile(bodyconfigsscoring, nameof(bodyconfigsscoring), required: false);
             return new DeferredBodyAction<POSTJsonResponse>(() =>
             {
                 var apiCallPath = "/v2/autoreview/json";
@@ -170,20 +163,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IWorkflowAction POSTFile(Expression<Func<string>> bodyflowPropertiesdisplayName = null, Expression<Func<string>> bodyflowPropertiesflowId = null, Expression<Func<string>> bodyflowPropertiesowner = null, Expression<Func<string>> bodyflowPropertiesenvironment = null, Expression<Func<bodyconfigfileTypeInput>> bodyconfigfileType = null, Expression<Func<string[]>> bodyconfigcomplexity = null, Expression<Func<string[]>> bodyconfigscoring = null)
         {
-            var __workflow_bodyflowPropertiesdisplayName = bodyflowPropertiesdisplayName == null ? null : WorkflowExpression.Compile(bodyflowPropertiesdisplayName);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
-            var __workflow_bodyflowPropertiesflowId = bodyflowPropertiesflowId == null ? null : WorkflowExpression.Compile(bodyflowPropertiesflowId);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
-            var __workflow_bodyflowPropertiesowner = bodyflowPropertiesowner == null ? null : WorkflowExpression.Compile(bodyflowPropertiesowner);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
-            var __workflow_bodyflowPropertiesenvironment = bodyflowPropertiesenvironment == null ? null : WorkflowExpression.Compile(bodyflowPropertiesenvironment);
-            WorkflowExpression.Validate(__workflow_bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
-            var __workflow_bodyconfigfileType = bodyconfigfileType == null ? null : WorkflowExpression.Compile(bodyconfigfileType);
-            WorkflowExpression.Validate(__workflow_bodyconfigfileType, nameof(bodyconfigfileType), required: false);
-            var __workflow_bodyconfigcomplexity = bodyconfigcomplexity == null ? null : WorkflowExpression.Compile(bodyconfigcomplexity);
-            WorkflowExpression.Validate(__workflow_bodyconfigcomplexity, nameof(bodyconfigcomplexity), required: false);
-            var __workflow_bodyconfigscoring = bodyconfigscoring == null ? null : WorkflowExpression.Compile(bodyconfigscoring);
-            WorkflowExpression.Validate(__workflow_bodyconfigscoring, nameof(bodyconfigscoring), required: false);
+            var __workflow_bodyflowPropertiesdisplayName = WorkflowExpression.Compile(bodyflowPropertiesdisplayName, nameof(bodyflowPropertiesdisplayName), required: false);
+            var __workflow_bodyflowPropertiesflowId = WorkflowExpression.Compile(bodyflowPropertiesflowId, nameof(bodyflowPropertiesflowId), required: false);
+            var __workflow_bodyflowPropertiesowner = WorkflowExpression.Compile(bodyflowPropertiesowner, nameof(bodyflowPropertiesowner), required: false);
+            var __workflow_bodyflowPropertiesenvironment = WorkflowExpression.Compile(bodyflowPropertiesenvironment, nameof(bodyflowPropertiesenvironment), required: false);
+            var __workflow_bodyconfigfileType = WorkflowExpression.Compile(bodyconfigfileType, nameof(bodyconfigfileType), required: false);
+            var __workflow_bodyconfigcomplexity = WorkflowExpression.Compile(bodyconfigcomplexity, nameof(bodyconfigcomplexity), required: false);
+            var __workflow_bodyconfigscoring = WorkflowExpression.Compile(bodyconfigscoring, nameof(bodyconfigscoring), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/autoreview/file";
@@ -295,14 +281,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autoreview
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "autoreview")]
         public IBodyWorkflowAction<POSTDiagramResponse> POSTDiagram(Expression<Func<string>> bodypropertiesdisplayName = null, Expression<Func<string>> bodypropertiesflowId = null, Expression<Func<string>> bodypropertiesowner = null, Expression<Func<string>> bodypropertiesenvironment = null)
         {
-            var __workflow_bodypropertiesdisplayName = bodypropertiesdisplayName == null ? null : WorkflowExpression.Compile(bodypropertiesdisplayName);
-            WorkflowExpression.Validate(__workflow_bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
-            var __workflow_bodypropertiesflowId = bodypropertiesflowId == null ? null : WorkflowExpression.Compile(bodypropertiesflowId);
-            WorkflowExpression.Validate(__workflow_bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
-            var __workflow_bodypropertiesowner = bodypropertiesowner == null ? null : WorkflowExpression.Compile(bodypropertiesowner);
-            WorkflowExpression.Validate(__workflow_bodypropertiesowner, nameof(bodypropertiesowner), required: false);
-            var __workflow_bodypropertiesenvironment = bodypropertiesenvironment == null ? null : WorkflowExpression.Compile(bodypropertiesenvironment);
-            WorkflowExpression.Validate(__workflow_bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
+            var __workflow_bodypropertiesdisplayName = WorkflowExpression.Compile(bodypropertiesdisplayName, nameof(bodypropertiesdisplayName), required: false);
+            var __workflow_bodypropertiesflowId = WorkflowExpression.Compile(bodypropertiesflowId, nameof(bodypropertiesflowId), required: false);
+            var __workflow_bodypropertiesowner = WorkflowExpression.Compile(bodypropertiesowner, nameof(bodypropertiesowner), required: false);
+            var __workflow_bodypropertiesenvironment = WorkflowExpression.Compile(bodypropertiesenvironment, nameof(bodypropertiesenvironment), required: false);
             return new DeferredBodyAction<POSTDiagramResponse>(() =>
             {
                 var apiCallPath = "/v2/autoreview/diagram";

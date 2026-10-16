@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureeventgridpublish")]
         public IWorkflowAction PublishEvent(Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/eventGrid/api/events";

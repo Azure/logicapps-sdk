@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         public IBodyWorkflowAction<CompanyDetailResultApiResponse> CompanyGet(Expression<Func<string>> hitHorizonsId)
         {
-            var __workflow_hitHorizonsId = hitHorizonsId == null ? null : WorkflowExpression.Compile(hitHorizonsId);
-            WorkflowExpression.Validate(__workflow_hitHorizonsId, nameof(hitHorizonsId), required: true);
+            var __workflow_hitHorizonsId = WorkflowExpression.Compile(hitHorizonsId, nameof(hitHorizonsId), required: true);
             return new DeferredBodyAction<CompanyDetailResultApiResponse>(() =>
             {
                 var apiCallPath = "/Company/Get";
@@ -28,28 +27,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearch(Expression<Func<string>> dUNSNumber = null, Expression<Func<string>> companyName = null, Expression<Func<string>> nationalId = null, Expression<Func<string>> addressUnstructured = null, Expression<Func<string>> addressStreet = null, Expression<Func<string>> city = null, Expression<Func<string>> stateProvince = null, Expression<Func<string>> country = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
         {
-            var __workflow_dUNSNumber = dUNSNumber == null ? null : WorkflowExpression.Compile(dUNSNumber);
-            WorkflowExpression.Validate(__workflow_dUNSNumber, nameof(dUNSNumber), required: false);
-            var __workflow_companyName = companyName == null ? null : WorkflowExpression.Compile(companyName);
-            WorkflowExpression.Validate(__workflow_companyName, nameof(companyName), required: false);
-            var __workflow_nationalId = nationalId == null ? null : WorkflowExpression.Compile(nationalId);
-            WorkflowExpression.Validate(__workflow_nationalId, nameof(nationalId), required: false);
-            var __workflow_addressUnstructured = addressUnstructured == null ? null : WorkflowExpression.Compile(addressUnstructured);
-            WorkflowExpression.Validate(__workflow_addressUnstructured, nameof(addressUnstructured), required: false);
-            var __workflow_addressStreet = addressStreet == null ? null : WorkflowExpression.Compile(addressStreet);
-            WorkflowExpression.Validate(__workflow_addressStreet, nameof(addressStreet), required: false);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
-            var __workflow_stateProvince = stateProvince == null ? null : WorkflowExpression.Compile(stateProvince);
-            WorkflowExpression.Validate(__workflow_stateProvince, nameof(stateProvince), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_showBranches = showBranches == null ? null : WorkflowExpression.Compile(showBranches);
-            WorkflowExpression.Validate(__workflow_showBranches, nameof(showBranches), required: false);
-            var __workflow_companyTypes = companyTypes == null ? null : WorkflowExpression.Compile(companyTypes);
-            WorkflowExpression.Validate(__workflow_companyTypes, nameof(companyTypes), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_dUNSNumber = WorkflowExpression.Compile(dUNSNumber, nameof(dUNSNumber), required: false);
+            var __workflow_companyName = WorkflowExpression.Compile(companyName, nameof(companyName), required: false);
+            var __workflow_nationalId = WorkflowExpression.Compile(nationalId, nameof(nationalId), required: false);
+            var __workflow_addressUnstructured = WorkflowExpression.Compile(addressUnstructured, nameof(addressUnstructured), required: false);
+            var __workflow_addressStreet = WorkflowExpression.Compile(addressStreet, nameof(addressStreet), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_stateProvince = WorkflowExpression.Compile(stateProvince, nameof(stateProvince), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_showBranches = WorkflowExpression.Compile(showBranches, nameof(showBranches), required: false);
+            var __workflow_companyTypes = WorkflowExpression.Compile(companyTypes, nameof(companyTypes), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<CompanySearchResponseApiResponse>(() =>
             {
                 var apiCallPath = "/Company/Search";
@@ -86,18 +74,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
         public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearchUnstructured(Expression<Func<string>> ids = null, Expression<Func<string>> name = null, Expression<Func<string>> address = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
         {
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
-            var __workflow_showBranches = showBranches == null ? null : WorkflowExpression.Compile(showBranches);
-            WorkflowExpression.Validate(__workflow_showBranches, nameof(showBranches), required: false);
-            var __workflow_companyTypes = companyTypes == null ? null : WorkflowExpression.Compile(companyTypes);
-            WorkflowExpression.Validate(__workflow_companyTypes, nameof(companyTypes), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
+            var __workflow_showBranches = WorkflowExpression.Compile(showBranches, nameof(showBranches), required: false);
+            var __workflow_companyTypes = WorkflowExpression.Compile(companyTypes, nameof(companyTypes), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
             return new DeferredBodyAction<CompanySearchResponseApiResponse>(() =>
             {
                 var apiCallPath = "/Company/SearchUnstructured";

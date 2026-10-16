@@ -15,14 +15,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<BulkCreateOrUpdateDocumentOutputItem[]> BulkCreateOrUpdateDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<object>> items, Expression<Func<bool>> isUpsert = null)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
-            var __workflow_containerId = containerId == null ? null : WorkflowExpression.Compile(containerId);
-            WorkflowExpression.Validate(__workflow_containerId, nameof(containerId), required: true);
-            var __workflow_items = items == null ? null : WorkflowExpression.Compile(items);
-            WorkflowExpression.Validate(__workflow_items, nameof(items), required: true);
-            var __workflow_isUpsert = isUpsert == null ? null : WorkflowExpression.Compile(isUpsert);
-            WorkflowExpression.Validate(__workflow_isUpsert, nameof(isUpsert), required: false);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
+            var __workflow_containerId = WorkflowExpression.Compile(containerId, nameof(containerId), required: true);
+            var __workflow_items = WorkflowExpression.Compile(items, nameof(items), required: true);
+            var __workflow_isUpsert = WorkflowExpression.Compile(isUpsert, nameof(isUpsert), required: false);
             return new DeferredBodyAction<BulkCreateOrUpdateDocumentOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -50,20 +46,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<CreateOrUpdateDocumentOutput> CreateOrUpdateDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> item, Expression<Func<string>> partitionKey = null, Expression<Func<bool>> isUpsert = null, Expression<Func<string>> sessionToken = null, Expression<Func<string>> etag = null)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
-            var __workflow_containerId = containerId == null ? null : WorkflowExpression.Compile(containerId);
-            WorkflowExpression.Validate(__workflow_containerId, nameof(containerId), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
-            var __workflow_isUpsert = isUpsert == null ? null : WorkflowExpression.Compile(isUpsert);
-            WorkflowExpression.Validate(__workflow_isUpsert, nameof(isUpsert), required: false);
-            var __workflow_sessionToken = sessionToken == null ? null : WorkflowExpression.Compile(sessionToken);
-            WorkflowExpression.Validate(__workflow_sessionToken, nameof(sessionToken), required: false);
-            var __workflow_etag = etag == null ? null : WorkflowExpression.Compile(etag);
-            WorkflowExpression.Validate(__workflow_etag, nameof(etag), required: false);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
+            var __workflow_containerId = WorkflowExpression.Compile(containerId, nameof(containerId), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
+            var __workflow_isUpsert = WorkflowExpression.Compile(isUpsert, nameof(isUpsert), required: false);
+            var __workflow_sessionToken = WorkflowExpression.Compile(sessionToken, nameof(sessionToken), required: false);
+            var __workflow_etag = WorkflowExpression.Compile(etag, nameof(etag), required: false);
             return new DeferredBodyAction<CreateOrUpdateDocumentOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -106,16 +95,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<DeleteDocumentOutput> DeleteDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<string>> sessionToken = null)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
-            var __workflow_containerId = containerId == null ? null : WorkflowExpression.Compile(containerId);
-            WorkflowExpression.Validate(__workflow_containerId, nameof(containerId), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_sessionToken = sessionToken == null ? null : WorkflowExpression.Compile(sessionToken);
-            WorkflowExpression.Validate(__workflow_sessionToken, nameof(sessionToken), required: false);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
+            var __workflow_containerId = WorkflowExpression.Compile(containerId, nameof(containerId), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_sessionToken = WorkflowExpression.Compile(sessionToken, nameof(sessionToken), required: false);
             return new DeferredBodyAction<DeleteDocumentOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -140,20 +124,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<QueryDocumentsOutput> QueryDocuments(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> queryText, Expression<Func<string>> partitionKey = null, Expression<Func<string>> continuationToken = null, Expression<Func<string>> maxItemCount = null, Expression<Func<string>> sessionToken = null)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
-            var __workflow_containerId = containerId == null ? null : WorkflowExpression.Compile(containerId);
-            WorkflowExpression.Validate(__workflow_containerId, nameof(containerId), required: true);
-            var __workflow_queryText = queryText == null ? null : WorkflowExpression.Compile(queryText);
-            WorkflowExpression.Validate(__workflow_queryText, nameof(queryText), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
-            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
-            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
-            var __workflow_maxItemCount = maxItemCount == null ? null : WorkflowExpression.Compile(maxItemCount);
-            WorkflowExpression.Validate(__workflow_maxItemCount, nameof(maxItemCount), required: false);
-            var __workflow_sessionToken = sessionToken == null ? null : WorkflowExpression.Compile(sessionToken);
-            WorkflowExpression.Validate(__workflow_sessionToken, nameof(sessionToken), required: false);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
+            var __workflow_containerId = WorkflowExpression.Compile(containerId, nameof(containerId), required: true);
+            var __workflow_queryText = WorkflowExpression.Compile(queryText, nameof(queryText), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
+            var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_maxItemCount = WorkflowExpression.Compile(maxItemCount, nameof(maxItemCount), required: false);
+            var __workflow_sessionToken = WorkflowExpression.Compile(sessionToken, nameof(sessionToken), required: false);
             return new DeferredBodyAction<QueryDocumentsOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -192,16 +169,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<ReadDocumentOutput> ReadDocument(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<string>> sessionToken = null)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
-            var __workflow_containerId = containerId == null ? null : WorkflowExpression.Compile(containerId);
-            WorkflowExpression.Validate(__workflow_containerId, nameof(containerId), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_sessionToken = sessionToken == null ? null : WorkflowExpression.Compile(sessionToken);
-            WorkflowExpression.Validate(__workflow_sessionToken, nameof(sessionToken), required: false);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
+            var __workflow_containerId = WorkflowExpression.Compile(containerId, nameof(containerId), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_sessionToken = WorkflowExpression.Compile(sessionToken, nameof(sessionToken), required: false);
             return new DeferredBodyAction<ReadDocumentOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -226,18 +198,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "AzureCosmosDB")]
         public IBodyWorkflowAction<PatchItemOutput> PatchItem(Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> itemId, Expression<Func<string>> partitionKey, Expression<Func<PatchItemInputPatchOperationsTypeItem[]>> patchOperations, Expression<Func<string>> sessionToken = null)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
-            var __workflow_containerId = containerId == null ? null : WorkflowExpression.Compile(containerId);
-            WorkflowExpression.Validate(__workflow_containerId, nameof(containerId), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_patchOperations = patchOperations == null ? null : WorkflowExpression.Compile(patchOperations);
-            WorkflowExpression.Validate(__workflow_patchOperations, nameof(patchOperations), required: true);
-            var __workflow_sessionToken = sessionToken == null ? null : WorkflowExpression.Compile(sessionToken);
-            WorkflowExpression.Validate(__workflow_sessionToken, nameof(sessionToken), required: false);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
+            var __workflow_containerId = WorkflowExpression.Compile(containerId, nameof(containerId), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_patchOperations = WorkflowExpression.Compile(patchOperations, nameof(patchOperations), required: true);
+            var __workflow_sessionToken = WorkflowExpression.Compile(sessionToken, nameof(sessionToken), required: false);
             return new DeferredBodyAction<PatchItemOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -265,16 +231,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
     {
         public IBodyWorkflowTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]> WhenADocumentIsCreatedOrModified(Expression<Func<string>> databaseName, Expression<Func<string>> collectionName, Expression<Func<string>> leaseCollectionName = null, Expression<Func<bool>> createLeaseCollectionIfNotExists = null, Expression<Func<int>> leasesCollectionThroughput = null)
         {
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_collectionName = collectionName == null ? null : WorkflowExpression.Compile(collectionName);
-            WorkflowExpression.Validate(__workflow_collectionName, nameof(collectionName), required: true);
-            var __workflow_leaseCollectionName = leaseCollectionName == null ? null : WorkflowExpression.Compile(leaseCollectionName);
-            WorkflowExpression.Validate(__workflow_leaseCollectionName, nameof(leaseCollectionName), required: false);
-            var __workflow_createLeaseCollectionIfNotExists = createLeaseCollectionIfNotExists == null ? null : WorkflowExpression.Compile(createLeaseCollectionIfNotExists);
-            WorkflowExpression.Validate(__workflow_createLeaseCollectionIfNotExists, nameof(createLeaseCollectionIfNotExists), required: false);
-            var __workflow_leasesCollectionThroughput = leasesCollectionThroughput == null ? null : WorkflowExpression.Compile(leasesCollectionThroughput);
-            WorkflowExpression.Validate(__workflow_leasesCollectionThroughput, nameof(leasesCollectionThroughput), required: false);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_collectionName = WorkflowExpression.Compile(collectionName, nameof(collectionName), required: true);
+            var __workflow_leaseCollectionName = WorkflowExpression.Compile(leaseCollectionName, nameof(leaseCollectionName), required: false);
+            var __workflow_createLeaseCollectionIfNotExists = WorkflowExpression.Compile(createLeaseCollectionIfNotExists, nameof(createLeaseCollectionIfNotExists), required: false);
+            var __workflow_leasesCollectionThroughput = WorkflowExpression.Compile(leasesCollectionThroughput, nameof(leasesCollectionThroughput), required: false);
             return new DeferredBodyTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();

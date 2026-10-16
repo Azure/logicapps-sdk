@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<AddGlobalSuppressRequestAndResponse> AddGlobalSuppression(Expression<Func<string[]>> recipientEmailsrecipientEmail = null)
         {
-            var __workflow_recipientEmailsrecipientEmail = recipientEmailsrecipientEmail == null ? null : WorkflowExpression.Compile(recipientEmailsrecipientEmail);
-            WorkflowExpression.Validate(__workflow_recipientEmailsrecipientEmail, nameof(recipientEmailsrecipientEmail), required: false);
+            var __workflow_recipientEmailsrecipientEmail = WorkflowExpression.Compile(recipientEmailsrecipientEmail, nameof(recipientEmailsrecipientEmail), required: false);
             return new DeferredBodyAction<AddGlobalSuppressRequestAndResponse>(() =>
             {
                 var apiCallPath = "/suppressions/global";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteGlobalSuppression(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/suppressions/global/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_email, 1));
@@ -54,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<JToken> AddRecipientToList(Expression<Func<string>> listId, Expression<Func<string>> recipientId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/contactdb/lists/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -70,8 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<Bounce[]> GetBounce(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<Bounce[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_email, 1));
@@ -84,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IWorkflowAction DeleteBounce(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/suppression/bounces/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_email, 1));
@@ -98,8 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<EmailIsUnsubscribedResponse> CheckEmailIsInUnsubscribesList(Expression<Func<string>> email)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
             return new DeferredBodyAction<EmailIsUnsubscribedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/unsubscribes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_email, 1));
@@ -112,28 +105,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendgrid
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendgrid")]
         public IBodyWorkflowAction<JToken> SendEmail(Expression<Func<string>> requestfrom, Expression<Func<string>> requestto, Expression<Func<string>> requestsubject, Expression<Func<string>> requestemailBody, Expression<Func<EmailAttachment[]>> requestattachment = null, Expression<Func<string>> requestfromName = null, Expression<Func<string>> requesttoNames = null, Expression<Func<string>> requestcC = null, Expression<Func<string>> requestcCNames = null, Expression<Func<string>> requestbcc = null, Expression<Func<string>> requestbCCNames = null)
         {
-            var __workflow_requestfrom = requestfrom == null ? null : WorkflowExpression.Compile(requestfrom);
-            WorkflowExpression.Validate(__workflow_requestfrom, nameof(requestfrom), required: true);
-            var __workflow_requestto = requestto == null ? null : WorkflowExpression.Compile(requestto);
-            WorkflowExpression.Validate(__workflow_requestto, nameof(requestto), required: true);
-            var __workflow_requestsubject = requestsubject == null ? null : WorkflowExpression.Compile(requestsubject);
-            WorkflowExpression.Validate(__workflow_requestsubject, nameof(requestsubject), required: true);
-            var __workflow_requestemailBody = requestemailBody == null ? null : WorkflowExpression.Compile(requestemailBody);
-            WorkflowExpression.Validate(__workflow_requestemailBody, nameof(requestemailBody), required: true);
-            var __workflow_requestattachment = requestattachment == null ? null : WorkflowExpression.Compile(requestattachment);
-            WorkflowExpression.Validate(__workflow_requestattachment, nameof(requestattachment), required: false);
-            var __workflow_requestfromName = requestfromName == null ? null : WorkflowExpression.Compile(requestfromName);
-            WorkflowExpression.Validate(__workflow_requestfromName, nameof(requestfromName), required: false);
-            var __workflow_requesttoNames = requesttoNames == null ? null : WorkflowExpression.Compile(requesttoNames);
-            WorkflowExpression.Validate(__workflow_requesttoNames, nameof(requesttoNames), required: false);
-            var __workflow_requestcC = requestcC == null ? null : WorkflowExpression.Compile(requestcC);
-            WorkflowExpression.Validate(__workflow_requestcC, nameof(requestcC), required: false);
-            var __workflow_requestcCNames = requestcCNames == null ? null : WorkflowExpression.Compile(requestcCNames);
-            WorkflowExpression.Validate(__workflow_requestcCNames, nameof(requestcCNames), required: false);
-            var __workflow_requestbcc = requestbcc == null ? null : WorkflowExpression.Compile(requestbcc);
-            WorkflowExpression.Validate(__workflow_requestbcc, nameof(requestbcc), required: false);
-            var __workflow_requestbCCNames = requestbCCNames == null ? null : WorkflowExpression.Compile(requestbCCNames);
-            WorkflowExpression.Validate(__workflow_requestbCCNames, nameof(requestbCCNames), required: false);
+            var __workflow_requestfrom = WorkflowExpression.Compile(requestfrom, nameof(requestfrom), required: true);
+            var __workflow_requestto = WorkflowExpression.Compile(requestto, nameof(requestto), required: true);
+            var __workflow_requestsubject = WorkflowExpression.Compile(requestsubject, nameof(requestsubject), required: true);
+            var __workflow_requestemailBody = WorkflowExpression.Compile(requestemailBody, nameof(requestemailBody), required: true);
+            var __workflow_requestattachment = WorkflowExpression.Compile(requestattachment, nameof(requestattachment), required: false);
+            var __workflow_requestfromName = WorkflowExpression.Compile(requestfromName, nameof(requestfromName), required: false);
+            var __workflow_requesttoNames = WorkflowExpression.Compile(requesttoNames, nameof(requesttoNames), required: false);
+            var __workflow_requestcC = WorkflowExpression.Compile(requestcC, nameof(requestcC), required: false);
+            var __workflow_requestcCNames = WorkflowExpression.Compile(requestcCNames, nameof(requestcCNames), required: false);
+            var __workflow_requestbcc = WorkflowExpression.Compile(requestbcc, nameof(requestbcc), required: false);
+            var __workflow_requestbCCNames = WorkflowExpression.Compile(requestbCCNames, nameof(requestbCCNames), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/v4/mail/send";

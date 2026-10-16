@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<SiteStatsModel> SiteStats(Expression<Func<string>> siteId)
         {
-            var __workflow_siteId = siteId == null ? null : WorkflowExpression.Compile(siteId);
-            WorkflowExpression.Validate(__workflow_siteId, nameof(siteId), required: true);
+            var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
             return new DeferredBodyAction<SiteStatsModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1));
@@ -28,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<PostModel> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
         {
-            var __workflow_siteId = siteId == null ? null : WorkflowExpression.Compile(siteId);
-            WorkflowExpression.Validate(__workflow_siteId, nameof(siteId), required: true);
-            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
-            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredBodyAction<PostModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
@@ -44,16 +41,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
         public IBodyWorkflowAction<PostModel> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
         {
-            var __workflow_siteId = siteId == null ? null : WorkflowExpression.Compile(siteId);
-            WorkflowExpression.Validate(__workflow_siteId, nameof(siteId), required: true);
-            var __workflow_posttitle = posttitle == null ? null : WorkflowExpression.Compile(posttitle);
-            WorkflowExpression.Validate(__workflow_posttitle, nameof(posttitle), required: false);
-            var __workflow_postcontent = postcontent == null ? null : WorkflowExpression.Compile(postcontent);
-            WorkflowExpression.Validate(__workflow_postcontent, nameof(postcontent), required: false);
-            var __workflow_poststatus = poststatus == null ? null : WorkflowExpression.Compile(poststatus);
-            WorkflowExpression.Validate(__workflow_poststatus, nameof(poststatus), required: false);
-            var __workflow_posttags = posttags == null ? null : WorkflowExpression.Compile(posttags);
-            WorkflowExpression.Validate(__workflow_posttags, nameof(posttags), required: false);
+            var __workflow_siteId = WorkflowExpression.Compile(siteId, nameof(siteId), required: true);
+            var __workflow_posttitle = WorkflowExpression.Compile(posttitle, nameof(posttitle), required: false);
+            var __workflow_postcontent = WorkflowExpression.Compile(postcontent, nameof(postcontent), required: false);
+            var __workflow_poststatus = WorkflowExpression.Compile(poststatus, nameof(poststatus), required: false);
+            var __workflow_posttags = WorkflowExpression.Compile(posttags, nameof(posttags), required: false);
             return new DeferredBodyAction<PostModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", ExpressionConverter.ConvertWithUrlEncoding(__workflow_siteId, 1));

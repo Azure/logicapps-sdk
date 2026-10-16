@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
         {
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
-            var __workflow_instanceURL = instanceURL == null ? null : WorkflowExpression.Compile(instanceURL);
-            WorkflowExpression.Validate(__workflow_instanceURL, nameof(instanceURL), required: true);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_instanceURL = WorkflowExpression.Compile(instanceURL, nameof(instanceURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1));
@@ -39,10 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
         public IWorkflowAction SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
         {
-            var __workflow_service = service == null ? null : WorkflowExpression.Compile(service);
-            WorkflowExpression.Validate(__workflow_service, nameof(service), required: true);
-            var __workflow_instanceURL = instanceURL == null ? null : WorkflowExpression.Compile(instanceURL);
-            WorkflowExpression.Validate(__workflow_instanceURL, nameof(instanceURL), required: true);
+            var __workflow_service = WorkflowExpression.Compile(service, nameof(service), required: true);
+            var __workflow_instanceURL = WorkflowExpression.Compile(instanceURL, nameof(instanceURL), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/inbound/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_service, 1));

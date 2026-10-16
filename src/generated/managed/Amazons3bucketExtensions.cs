@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IBodyWorkflowAction<ListObjectsS3Response> ListObjectsS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> bucketlistType = null, Expression<Func<string>> continuationToken = null, Expression<Func<string>> delimiter = null, Expression<Func<string>> prefix = null, Expression<Func<string>> encodingType = null, Expression<Func<string>> fetchOwner = null, Expression<Func<double>> maxKeys = null, Expression<Func<string>> startAfter = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bucket = bucket == null ? null : WorkflowExpression.Compile(bucket);
-            WorkflowExpression.Validate(__workflow_bucket, nameof(bucket), required: true);
-            var __workflow_bucketlistType = bucketlistType == null ? null : WorkflowExpression.Compile(bucketlistType);
-            WorkflowExpression.Validate(__workflow_bucketlistType, nameof(bucketlistType), required: false);
-            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
-            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
-            var __workflow_delimiter = delimiter == null ? null : WorkflowExpression.Compile(delimiter);
-            WorkflowExpression.Validate(__workflow_delimiter, nameof(delimiter), required: false);
-            var __workflow_prefix = prefix == null ? null : WorkflowExpression.Compile(prefix);
-            WorkflowExpression.Validate(__workflow_prefix, nameof(prefix), required: false);
-            var __workflow_encodingType = encodingType == null ? null : WorkflowExpression.Compile(encodingType);
-            WorkflowExpression.Validate(__workflow_encodingType, nameof(encodingType), required: false);
-            var __workflow_fetchOwner = fetchOwner == null ? null : WorkflowExpression.Compile(fetchOwner);
-            WorkflowExpression.Validate(__workflow_fetchOwner, nameof(fetchOwner), required: false);
-            var __workflow_maxKeys = maxKeys == null ? null : WorkflowExpression.Compile(maxKeys);
-            WorkflowExpression.Validate(__workflow_maxKeys, nameof(maxKeys), required: false);
-            var __workflow_startAfter = startAfter == null ? null : WorkflowExpression.Compile(startAfter);
-            WorkflowExpression.Validate(__workflow_startAfter, nameof(startAfter), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
+            var __workflow_bucketlistType = WorkflowExpression.Compile(bucketlistType, nameof(bucketlistType), required: false);
+            var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_delimiter = WorkflowExpression.Compile(delimiter, nameof(delimiter), required: false);
+            var __workflow_prefix = WorkflowExpression.Compile(prefix, nameof(prefix), required: false);
+            var __workflow_encodingType = WorkflowExpression.Compile(encodingType, nameof(encodingType), required: false);
+            var __workflow_fetchOwner = WorkflowExpression.Compile(fetchOwner, nameof(fetchOwner), required: false);
+            var __workflow_maxKeys = WorkflowExpression.Compile(maxKeys, nameof(maxKeys), required: false);
+            var __workflow_startAfter = WorkflowExpression.Compile(startAfter, nameof(startAfter), required: false);
             return new DeferredBodyAction<ListObjectsS3Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_region, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_bucket, 1));
@@ -62,12 +52,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IWorkflowAction DeleteObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bucket = bucket == null ? null : WorkflowExpression.Compile(bucket);
-            WorkflowExpression.Validate(__workflow_bucket, nameof(bucket), required: true);
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_region, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_bucket, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -80,12 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IWorkflowAction GetObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bucket = bucket == null ? null : WorkflowExpression.Compile(bucket);
-            WorkflowExpression.Validate(__workflow_bucket, nameof(bucket), required: true);
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_region, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_bucket, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -98,14 +82,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
         public IWorkflowAction PutObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key, Expression<Func<string>> body = null)
         {
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
-            var __workflow_bucket = bucket == null ? null : WorkflowExpression.Compile(bucket);
-            WorkflowExpression.Validate(__workflow_bucket, nameof(bucket), required: true);
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
+            var __workflow_bucket = WorkflowExpression.Compile(bucket, nameof(bucket), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_region, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_bucket, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));

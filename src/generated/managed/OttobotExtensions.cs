@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
         public IWorkflowAction SendAttachmentsToUrl(Expression<Func<string>> bodyaPIURL, Expression<Func<string>> bodyattachmentURL, Expression<Func<string>> bodyattachmentFileName)
         {
-            var __workflow_bodyaPIURL = bodyaPIURL == null ? null : WorkflowExpression.Compile(bodyaPIURL);
-            WorkflowExpression.Validate(__workflow_bodyaPIURL, nameof(bodyaPIURL), required: true);
-            var __workflow_bodyattachmentURL = bodyattachmentURL == null ? null : WorkflowExpression.Compile(bodyattachmentURL);
-            WorkflowExpression.Validate(__workflow_bodyattachmentURL, nameof(bodyattachmentURL), required: true);
-            var __workflow_bodyattachmentFileName = bodyattachmentFileName == null ? null : WorkflowExpression.Compile(bodyattachmentFileName);
-            WorkflowExpression.Validate(__workflow_bodyattachmentFileName, nameof(bodyattachmentFileName), required: true);
+            var __workflow_bodyaPIURL = WorkflowExpression.Compile(bodyaPIURL, nameof(bodyaPIURL), required: true);
+            var __workflow_bodyattachmentURL = WorkflowExpression.Compile(bodyattachmentURL, nameof(bodyattachmentURL), required: true);
+            var __workflow_bodyattachmentFileName = WorkflowExpression.Compile(bodyattachmentFileName, nameof(bodyattachmentFileName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/attachments";
@@ -60,24 +57,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
         public IBodyWorkflowAction<Response> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<string>> bodyadaptiveCardadaptiveCardSchema, Expression<Func<string>> bodyadaptiveCardadaptiveCardType, Expression<Func<string>> bodyadaptiveCardadaptiveCardVersion, Expression<Func<string>> bodytext, Expression<Func<bool>> bodyendRequest, Expression<Func<JToken[]>> bodyadaptiveCardadaptiveCardActions = null, Expression<Func<JToken[]>> bodyadaptiveCardadaptiveCardBody = null, Expression<Func<bool>> bodyrenderPreformattedText = null)
         {
-            var __workflow_returnResultURL = returnResultURL == null ? null : WorkflowExpression.Compile(returnResultURL);
-            WorkflowExpression.Validate(__workflow_returnResultURL, nameof(returnResultURL), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardSchema = bodyadaptiveCardadaptiveCardSchema == null ? null : WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardSchema);
-            WorkflowExpression.Validate(__workflow_bodyadaptiveCardadaptiveCardSchema, nameof(bodyadaptiveCardadaptiveCardSchema), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardType = bodyadaptiveCardadaptiveCardType == null ? null : WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardType);
-            WorkflowExpression.Validate(__workflow_bodyadaptiveCardadaptiveCardType, nameof(bodyadaptiveCardadaptiveCardType), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardVersion = bodyadaptiveCardadaptiveCardVersion == null ? null : WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardVersion);
-            WorkflowExpression.Validate(__workflow_bodyadaptiveCardadaptiveCardVersion, nameof(bodyadaptiveCardadaptiveCardVersion), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyendRequest = bodyendRequest == null ? null : WorkflowExpression.Compile(bodyendRequest);
-            WorkflowExpression.Validate(__workflow_bodyendRequest, nameof(bodyendRequest), required: true);
-            var __workflow_bodyadaptiveCardadaptiveCardActions = bodyadaptiveCardadaptiveCardActions == null ? null : WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardActions);
-            WorkflowExpression.Validate(__workflow_bodyadaptiveCardadaptiveCardActions, nameof(bodyadaptiveCardadaptiveCardActions), required: false);
-            var __workflow_bodyadaptiveCardadaptiveCardBody = bodyadaptiveCardadaptiveCardBody == null ? null : WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardBody);
-            WorkflowExpression.Validate(__workflow_bodyadaptiveCardadaptiveCardBody, nameof(bodyadaptiveCardadaptiveCardBody), required: false);
-            var __workflow_bodyrenderPreformattedText = bodyrenderPreformattedText == null ? null : WorkflowExpression.Compile(bodyrenderPreformattedText);
-            WorkflowExpression.Validate(__workflow_bodyrenderPreformattedText, nameof(bodyrenderPreformattedText), required: false);
+            var __workflow_returnResultURL = WorkflowExpression.Compile(returnResultURL, nameof(returnResultURL), required: true);
+            var __workflow_bodyadaptiveCardadaptiveCardSchema = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardSchema, nameof(bodyadaptiveCardadaptiveCardSchema), required: true);
+            var __workflow_bodyadaptiveCardadaptiveCardType = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardType, nameof(bodyadaptiveCardadaptiveCardType), required: true);
+            var __workflow_bodyadaptiveCardadaptiveCardVersion = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardVersion, nameof(bodyadaptiveCardadaptiveCardVersion), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyendRequest = WorkflowExpression.Compile(bodyendRequest, nameof(bodyendRequest), required: true);
+            var __workflow_bodyadaptiveCardadaptiveCardActions = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardActions, nameof(bodyadaptiveCardadaptiveCardActions), required: false);
+            var __workflow_bodyadaptiveCardadaptiveCardBody = WorkflowExpression.Compile(bodyadaptiveCardadaptiveCardBody, nameof(bodyadaptiveCardadaptiveCardBody), required: false);
+            var __workflow_bodyrenderPreformattedText = WorkflowExpression.Compile(bodyrenderPreformattedText, nameof(bodyrenderPreformattedText), required: false);
             return new DeferredBodyAction<Response>(() =>
             {
                 var apiCallPath = "/skills/results";

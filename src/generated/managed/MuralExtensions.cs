@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
         public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural(Expression<Func<string>> bodyworkspaceId, Expression<Func<int>> bodyroomId, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
-            var __workflow_bodyroomId = bodyroomId == null ? null : WorkflowExpression.Compile(bodyroomId);
-            WorkflowExpression.Validate(__workflow_bodyroomId, nameof(bodyroomId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyroomId = WorkflowExpression.Compile(bodyroomId, nameof(bodyroomId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateNewMuralResponse>(() =>
             {
                 var apiCallPath = "/api/public/v1/murals";
@@ -48,18 +45,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
         public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote(Expression<Func<string>> workspaceId, Expression<Func<string>> roomId, Expression<Func<string>> muralId, Expression<Func<bodyshapeInput>> bodyshape, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_roomId = roomId == null ? null : WorkflowExpression.Compile(roomId);
-            WorkflowExpression.Validate(__workflow_roomId, nameof(roomId), required: true);
-            var __workflow_muralId = muralId == null ? null : WorkflowExpression.Compile(muralId);
-            WorkflowExpression.Validate(__workflow_muralId, nameof(muralId), required: true);
-            var __workflow_bodyshape = bodyshape == null ? null : WorkflowExpression.Compile(bodyshape);
-            WorkflowExpression.Validate(__workflow_bodyshape, nameof(bodyshape), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_roomId = WorkflowExpression.Compile(roomId, nameof(roomId), required: true);
+            var __workflow_muralId = WorkflowExpression.Compile(muralId, nameof(muralId), required: true);
+            var __workflow_bodyshape = WorkflowExpression.Compile(bodyshape, nameof(bodyshape), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateNewStickyNoteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", ExpressionConverter.ConvertWithUrlEncoding(__workflow_muralId, 1));

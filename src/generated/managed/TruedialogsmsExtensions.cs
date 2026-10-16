@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<AccountResponse> AccountGetInfo(Expression<Func<string>> accountId)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<AccountResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactSearchRequestItem[]> ContactSearch(Expression<Func<string>> accountId, Expression<Func<string>> phone)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
             return new DeferredBodyAction<ContactSearchRequestItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/contact-search/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_phone, 1));
@@ -43,16 +40,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactResponse> ContactCreate(Expression<Func<string>> accountId, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             return new DeferredBodyAction<ContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/contact", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -97,18 +89,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<ContactResponse> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_contactid = contactid == null ? null : WorkflowExpression.Compile(contactid);
-            WorkflowExpression.Validate(__workflow_contactid, nameof(contactid), required: true);
-            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_contactid = WorkflowExpression.Compile(contactid, nameof(contactid), required: true);
+            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
             return new DeferredBodyAction<ContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/contact/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactid, 1));
@@ -152,30 +138,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
         public IBodyWorkflowAction<PushCampaignResponse> CampaignPush(Expression<Func<string>> accountId, Expression<Func<string[]>> bodychannels, Expression<Func<string[]>> bodytargets, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodyexecute, Expression<Func<string[]>> bodycontactListIds = null, Expression<Func<string[]>> bodyexcludeListIds = null, Expression<Func<int>> bodymediaId = null, Expression<Func<bool>> bodyignoreSingleUse = null, Expression<Func<bool>> bodyforceOptIn = null, Expression<Func<string[]>> bodyschedules = null, Expression<Func<bool>> bodyignoreInvalidTargets = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_bodychannels = bodychannels == null ? null : WorkflowExpression.Compile(bodychannels);
-            WorkflowExpression.Validate(__workflow_bodychannels, nameof(bodychannels), required: true);
-            var __workflow_bodytargets = bodytargets == null ? null : WorkflowExpression.Compile(bodytargets);
-            WorkflowExpression.Validate(__workflow_bodytargets, nameof(bodytargets), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodyexecute = bodyexecute == null ? null : WorkflowExpression.Compile(bodyexecute);
-            WorkflowExpression.Validate(__workflow_bodyexecute, nameof(bodyexecute), required: true);
-            var __workflow_bodycontactListIds = bodycontactListIds == null ? null : WorkflowExpression.Compile(bodycontactListIds);
-            WorkflowExpression.Validate(__workflow_bodycontactListIds, nameof(bodycontactListIds), required: false);
-            var __workflow_bodyexcludeListIds = bodyexcludeListIds == null ? null : WorkflowExpression.Compile(bodyexcludeListIds);
-            WorkflowExpression.Validate(__workflow_bodyexcludeListIds, nameof(bodyexcludeListIds), required: false);
-            var __workflow_bodymediaId = bodymediaId == null ? null : WorkflowExpression.Compile(bodymediaId);
-            WorkflowExpression.Validate(__workflow_bodymediaId, nameof(bodymediaId), required: false);
-            var __workflow_bodyignoreSingleUse = bodyignoreSingleUse == null ? null : WorkflowExpression.Compile(bodyignoreSingleUse);
-            WorkflowExpression.Validate(__workflow_bodyignoreSingleUse, nameof(bodyignoreSingleUse), required: false);
-            var __workflow_bodyforceOptIn = bodyforceOptIn == null ? null : WorkflowExpression.Compile(bodyforceOptIn);
-            WorkflowExpression.Validate(__workflow_bodyforceOptIn, nameof(bodyforceOptIn), required: false);
-            var __workflow_bodyschedules = bodyschedules == null ? null : WorkflowExpression.Compile(bodyschedules);
-            WorkflowExpression.Validate(__workflow_bodyschedules, nameof(bodyschedules), required: false);
-            var __workflow_bodyignoreInvalidTargets = bodyignoreInvalidTargets == null ? null : WorkflowExpression.Compile(bodyignoreInvalidTargets);
-            WorkflowExpression.Validate(__workflow_bodyignoreInvalidTargets, nameof(bodyignoreInvalidTargets), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodychannels = WorkflowExpression.Compile(bodychannels, nameof(bodychannels), required: true);
+            var __workflow_bodytargets = WorkflowExpression.Compile(bodytargets, nameof(bodytargets), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyexecute = WorkflowExpression.Compile(bodyexecute, nameof(bodyexecute), required: true);
+            var __workflow_bodycontactListIds = WorkflowExpression.Compile(bodycontactListIds, nameof(bodycontactListIds), required: false);
+            var __workflow_bodyexcludeListIds = WorkflowExpression.Compile(bodyexcludeListIds, nameof(bodyexcludeListIds), required: false);
+            var __workflow_bodymediaId = WorkflowExpression.Compile(bodymediaId, nameof(bodymediaId), required: false);
+            var __workflow_bodyignoreSingleUse = WorkflowExpression.Compile(bodyignoreSingleUse, nameof(bodyignoreSingleUse), required: false);
+            var __workflow_bodyforceOptIn = WorkflowExpression.Compile(bodyforceOptIn, nameof(bodyforceOptIn), required: false);
+            var __workflow_bodyschedules = WorkflowExpression.Compile(bodyschedules, nameof(bodyschedules), required: false);
+            var __workflow_bodyignoreInvalidTargets = WorkflowExpression.Compile(bodyignoreInvalidTargets, nameof(bodyignoreInvalidTargets), required: false);
             return new DeferredBodyAction<PushCampaignResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/action-pushcampaign", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -279,8 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
     {
         public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -307,8 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -335,8 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-6", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -363,8 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-12", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -391,8 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
         public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets(Expression<Func<string>> accountId, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-13", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));

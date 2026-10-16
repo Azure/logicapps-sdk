@@ -16,10 +16,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
     {
         public IWorkflowTrigger FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<requestBodyOfWebhookeventsInput>> requestBodyOfWebhookevents = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_buttonUuid = buttonUuid == null ? null : WorkflowExpression.Compile(buttonUuid);
-            WorkflowExpression.Validate(__workflow_buttonUuid, nameof(buttonUuid), required: true);
-            var __workflow_requestBodyOfWebhookevents = requestBodyOfWebhookevents == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookevents);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookevents, nameof(requestBodyOfWebhookevents), required: false);
+            var __workflow_buttonUuid = WorkflowExpression.Compile(buttonUuid, nameof(buttonUuid), required: true);
+            var __workflow_requestBodyOfWebhookevents = WorkflowExpression.Compile(requestBodyOfWebhookevents, nameof(requestBodyOfWebhookevents), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_buttonUuid, 1));
@@ -56,8 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
         public IWorkflowTrigger FlicTaskTrigger(Expression<Func<string>> taskUuid, FlowRecurrence recurrence = null)
         {
-            var __workflow_taskUuid = taskUuid == null ? null : WorkflowExpression.Compile(taskUuid);
-            WorkflowExpression.Validate(__workflow_taskUuid, nameof(taskUuid), required: true);
+            var __workflow_taskUuid = WorkflowExpression.Compile(taskUuid, nameof(taskUuid), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskUuid, 1));

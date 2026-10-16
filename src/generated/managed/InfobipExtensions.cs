@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
         public IBodyWorkflowAction<SendSMSSuccessResponseBody> SendInfobipSMS(Expression<Func<string>> requestBodyrecipientSPhoneNumber, Expression<Func<string>> requestBodymessage, Expression<Func<string>> requestBodysenderSPhoneNumber = null)
         {
-            var __workflow_requestBodyrecipientSPhoneNumber = requestBodyrecipientSPhoneNumber == null ? null : WorkflowExpression.Compile(requestBodyrecipientSPhoneNumber);
-            WorkflowExpression.Validate(__workflow_requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
-            var __workflow_requestBodymessage = requestBodymessage == null ? null : WorkflowExpression.Compile(requestBodymessage);
-            WorkflowExpression.Validate(__workflow_requestBodymessage, nameof(requestBodymessage), required: true);
-            var __workflow_requestBodysenderSPhoneNumber = requestBodysenderSPhoneNumber == null ? null : WorkflowExpression.Compile(requestBodysenderSPhoneNumber);
-            WorkflowExpression.Validate(__workflow_requestBodysenderSPhoneNumber, nameof(requestBodysenderSPhoneNumber), required: false);
+            var __workflow_requestBodyrecipientSPhoneNumber = WorkflowExpression.Compile(requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
+            var __workflow_requestBodymessage = WorkflowExpression.Compile(requestBodymessage, nameof(requestBodymessage), required: true);
+            var __workflow_requestBodysenderSPhoneNumber = WorkflowExpression.Compile(requestBodysenderSPhoneNumber, nameof(requestBodysenderSPhoneNumber), required: false);
             return new DeferredBodyAction<SendSMSSuccessResponseBody>(() =>
             {
                 var apiCallPath = "/sms/1/text/single";
@@ -48,14 +45,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infobip")]
         public IBodyWorkflowAction<VoiceCallSuccessResponseBody> MakeInfobipVoiceCall(Expression<Func<string>> requestBodyrecipientSPhoneNumber, Expression<Func<string>> requestBodymessage, Expression<Func<requestBodylanguageInput>> requestBodylanguage, Expression<Func<string>> requestBodycallerSPhoneNumber = null)
         {
-            var __workflow_requestBodyrecipientSPhoneNumber = requestBodyrecipientSPhoneNumber == null ? null : WorkflowExpression.Compile(requestBodyrecipientSPhoneNumber);
-            WorkflowExpression.Validate(__workflow_requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
-            var __workflow_requestBodymessage = requestBodymessage == null ? null : WorkflowExpression.Compile(requestBodymessage);
-            WorkflowExpression.Validate(__workflow_requestBodymessage, nameof(requestBodymessage), required: true);
-            var __workflow_requestBodylanguage = requestBodylanguage == null ? null : WorkflowExpression.Compile(requestBodylanguage);
-            WorkflowExpression.Validate(__workflow_requestBodylanguage, nameof(requestBodylanguage), required: true);
-            var __workflow_requestBodycallerSPhoneNumber = requestBodycallerSPhoneNumber == null ? null : WorkflowExpression.Compile(requestBodycallerSPhoneNumber);
-            WorkflowExpression.Validate(__workflow_requestBodycallerSPhoneNumber, nameof(requestBodycallerSPhoneNumber), required: false);
+            var __workflow_requestBodyrecipientSPhoneNumber = WorkflowExpression.Compile(requestBodyrecipientSPhoneNumber, nameof(requestBodyrecipientSPhoneNumber), required: true);
+            var __workflow_requestBodymessage = WorkflowExpression.Compile(requestBodymessage, nameof(requestBodymessage), required: true);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: true);
+            var __workflow_requestBodycallerSPhoneNumber = WorkflowExpression.Compile(requestBodycallerSPhoneNumber, nameof(requestBodycallerSPhoneNumber), required: false);
             return new DeferredBodyAction<VoiceCallSuccessResponseBody>(() =>
             {
                 var apiCallPath = "/tts/3/single";
@@ -98,10 +91,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook(Expression<Func<string>> requestBodyOfWebhookphoneNumber, Expression<Func<string>> requestBodyOfWebhookkeyword, FlowRecurrence recurrence = null)
         {
-            var __workflow_requestBodyOfWebhookphoneNumber = requestBodyOfWebhookphoneNumber == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookphoneNumber);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookphoneNumber, nameof(requestBodyOfWebhookphoneNumber), required: true);
-            var __workflow_requestBodyOfWebhookkeyword = requestBodyOfWebhookkeyword == null ? null : WorkflowExpression.Compile(requestBodyOfWebhookkeyword);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhookkeyword, nameof(requestBodyOfWebhookkeyword), required: true);
+            var __workflow_requestBodyOfWebhookphoneNumber = WorkflowExpression.Compile(requestBodyOfWebhookphoneNumber, nameof(requestBodyOfWebhookphoneNumber), required: true);
+            var __workflow_requestBodyOfWebhookkeyword = WorkflowExpression.Compile(requestBodyOfWebhookkeyword, nameof(requestBodyOfWebhookkeyword), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
                 var apiCallPath = "/sms/1/webhooks";

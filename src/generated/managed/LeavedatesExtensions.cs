@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetDepartmentsResponseItem[]> GetDepartments(Expression<Func<string>> company)
         {
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredBodyAction<GetDepartmentsResponseItem[]>(() =>
             {
                 var apiCallPath = "/departments";
@@ -37,8 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetLeaveTypesResponseItem[]> GetLeaveTypes(Expression<Func<string>> company)
         {
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredBodyAction<GetLeaveTypesResponseItem[]>(() =>
             {
                 var apiCallPath = "/leave-types";
@@ -52,18 +50,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetAllowanceSummaryResponse> GetAllowanceSummary(Expression<Func<string>> company, Expression<Func<string>> date, Expression<Func<int>> page, Expression<Func<string>> employee = null, Expression<Func<string>> department = null, Expression<Func<string>> allowanceType = null)
         {
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: true);
-            var __workflow_employee = employee == null ? null : WorkflowExpression.Compile(employee);
-            WorkflowExpression.Validate(__workflow_employee, nameof(employee), required: false);
-            var __workflow_department = department == null ? null : WorkflowExpression.Compile(department);
-            WorkflowExpression.Validate(__workflow_department, nameof(department), required: false);
-            var __workflow_allowanceType = allowanceType == null ? null : WorkflowExpression.Compile(allowanceType);
-            WorkflowExpression.Validate(__workflow_allowanceType, nameof(allowanceType), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
+            var __workflow_employee = WorkflowExpression.Compile(employee, nameof(employee), required: false);
+            var __workflow_department = WorkflowExpression.Compile(department, nameof(department), required: false);
+            var __workflow_allowanceType = WorkflowExpression.Compile(allowanceType, nameof(allowanceType), required: false);
             return new DeferredBodyAction<GetAllowanceSummaryResponse>(() =>
             {
                 var apiCallPath = "/reports/summary-allowances";
@@ -85,10 +77,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetEmployeesResponseItem[]> GetEmployees(Expression<Func<string>> company, Expression<Func<string>> departmentId = null)
         {
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
-            var __workflow_departmentId = departmentId == null ? null : WorkflowExpression.Compile(departmentId);
-            WorkflowExpression.Validate(__workflow_departmentId, nameof(departmentId), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_departmentId = WorkflowExpression.Compile(departmentId, nameof(departmentId), required: false);
             return new DeferredBodyAction<GetEmployeesResponseItem[]>(() =>
             {
                 var apiCallPath = "/employments";
@@ -104,34 +94,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<AddEmploymentResponse> AddEmployment(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
         {
-            var __workflow_bodyfullName = bodyfullName == null ? null : WorkflowExpression.Compile(bodyfullName);
-            WorkflowExpression.Validate(__workflow_bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodyjobTitle = bodyjobTitle == null ? null : WorkflowExpression.Compile(bodyjobTitle);
-            WorkflowExpression.Validate(__workflow_bodyjobTitle, nameof(bodyjobTitle), required: false);
-            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
-            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyapproverId = bodyapproverId == null ? null : WorkflowExpression.Compile(bodyapproverId);
-            WorkflowExpression.Validate(__workflow_bodyapproverId, nameof(bodyapproverId), required: false);
-            var __workflow_bodydepartmentId = bodydepartmentId == null ? null : WorkflowExpression.Compile(bodydepartmentId);
-            WorkflowExpression.Validate(__workflow_bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyemployeeCode = bodyemployeeCode == null ? null : WorkflowExpression.Compile(bodyemployeeCode);
-            WorkflowExpression.Validate(__workflow_bodyemployeeCode, nameof(bodyemployeeCode), required: false);
-            var __workflow_bodyisAdmin = bodyisAdmin == null ? null : WorkflowExpression.Compile(bodyisAdmin);
-            WorkflowExpression.Validate(__workflow_bodyisAdmin, nameof(bodyisAdmin), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyholidayLocation = bodyholidayLocation == null ? null : WorkflowExpression.Compile(bodyholidayLocation);
-            WorkflowExpression.Validate(__workflow_bodyholidayLocation, nameof(bodyholidayLocation), required: false);
-            var __workflow_bodyallowanceUnitIsDays = bodyallowanceUnitIsDays == null ? null : WorkflowExpression.Compile(bodyallowanceUnitIsDays);
-            WorkflowExpression.Validate(__workflow_bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
-            var __workflow_bodyminutesPerWorkingDay = bodyminutesPerWorkingDay == null ? null : WorkflowExpression.Compile(bodyminutesPerWorkingDay);
-            WorkflowExpression.Validate(__workflow_bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
+            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
+            var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
+            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodyapproverId = WorkflowExpression.Compile(bodyapproverId, nameof(bodyapproverId), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodyemployeeCode = WorkflowExpression.Compile(bodyemployeeCode, nameof(bodyemployeeCode), required: false);
+            var __workflow_bodyisAdmin = WorkflowExpression.Compile(bodyisAdmin, nameof(bodyisAdmin), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyholidayLocation = WorkflowExpression.Compile(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
+            var __workflow_bodyallowanceUnitIsDays = WorkflowExpression.Compile(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
+            var __workflow_bodyminutesPerWorkingDay = WorkflowExpression.Compile(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
             return new DeferredBodyAction<AddEmploymentResponse>(() =>
             {
                 var apiCallPath = "/employments";
@@ -234,10 +210,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetDetailsEmployeeResponse> GetDetailsEmployee(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredBodyAction<GetDetailsEmployeeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -251,10 +225,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<JToken> DeleteEmployment(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -277,36 +249,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<UpdateEmploymentResponse> UpdateEmployment(Expression<Func<string>> id, Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodyapproverId = null, Expression<Func<string>> bodydepartmentId = null, Expression<Func<string>> bodyemployeeCode = null, Expression<Func<bool>> bodyisAdmin = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyholidayLocation = null, Expression<Func<string>> bodyallowanceUnitIsDays = null, Expression<Func<string>> bodyminutesPerWorkingDay = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyfullName = bodyfullName == null ? null : WorkflowExpression.Compile(bodyfullName);
-            WorkflowExpression.Validate(__workflow_bodyfullName, nameof(bodyfullName), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodyjobTitle = bodyjobTitle == null ? null : WorkflowExpression.Compile(bodyjobTitle);
-            WorkflowExpression.Validate(__workflow_bodyjobTitle, nameof(bodyjobTitle), required: false);
-            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
-            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
-            var __workflow_bodyapproverId = bodyapproverId == null ? null : WorkflowExpression.Compile(bodyapproverId);
-            WorkflowExpression.Validate(__workflow_bodyapproverId, nameof(bodyapproverId), required: false);
-            var __workflow_bodydepartmentId = bodydepartmentId == null ? null : WorkflowExpression.Compile(bodydepartmentId);
-            WorkflowExpression.Validate(__workflow_bodydepartmentId, nameof(bodydepartmentId), required: false);
-            var __workflow_bodyemployeeCode = bodyemployeeCode == null ? null : WorkflowExpression.Compile(bodyemployeeCode);
-            WorkflowExpression.Validate(__workflow_bodyemployeeCode, nameof(bodyemployeeCode), required: false);
-            var __workflow_bodyisAdmin = bodyisAdmin == null ? null : WorkflowExpression.Compile(bodyisAdmin);
-            WorkflowExpression.Validate(__workflow_bodyisAdmin, nameof(bodyisAdmin), required: false);
-            var __workflow_bodystartDate = bodystartDate == null ? null : WorkflowExpression.Compile(bodystartDate);
-            WorkflowExpression.Validate(__workflow_bodystartDate, nameof(bodystartDate), required: false);
-            var __workflow_bodyendDate = bodyendDate == null ? null : WorkflowExpression.Compile(bodyendDate);
-            WorkflowExpression.Validate(__workflow_bodyendDate, nameof(bodyendDate), required: false);
-            var __workflow_bodyholidayLocation = bodyholidayLocation == null ? null : WorkflowExpression.Compile(bodyholidayLocation);
-            WorkflowExpression.Validate(__workflow_bodyholidayLocation, nameof(bodyholidayLocation), required: false);
-            var __workflow_bodyallowanceUnitIsDays = bodyallowanceUnitIsDays == null ? null : WorkflowExpression.Compile(bodyallowanceUnitIsDays);
-            WorkflowExpression.Validate(__workflow_bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
-            var __workflow_bodyminutesPerWorkingDay = bodyminutesPerWorkingDay == null ? null : WorkflowExpression.Compile(bodyminutesPerWorkingDay);
-            WorkflowExpression.Validate(__workflow_bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
+            var __workflow_bodyjobTitle = WorkflowExpression.Compile(bodyjobTitle, nameof(bodyjobTitle), required: false);
+            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodyapproverId = WorkflowExpression.Compile(bodyapproverId, nameof(bodyapproverId), required: false);
+            var __workflow_bodydepartmentId = WorkflowExpression.Compile(bodydepartmentId, nameof(bodydepartmentId), required: false);
+            var __workflow_bodyemployeeCode = WorkflowExpression.Compile(bodyemployeeCode, nameof(bodyemployeeCode), required: false);
+            var __workflow_bodyisAdmin = WorkflowExpression.Compile(bodyisAdmin, nameof(bodyisAdmin), required: false);
+            var __workflow_bodystartDate = WorkflowExpression.Compile(bodystartDate, nameof(bodystartDate), required: false);
+            var __workflow_bodyendDate = WorkflowExpression.Compile(bodyendDate, nameof(bodyendDate), required: false);
+            var __workflow_bodyholidayLocation = WorkflowExpression.Compile(bodyholidayLocation, nameof(bodyholidayLocation), required: false);
+            var __workflow_bodyallowanceUnitIsDays = WorkflowExpression.Compile(bodyallowanceUnitIsDays, nameof(bodyallowanceUnitIsDays), required: false);
+            var __workflow_bodyminutesPerWorkingDay = WorkflowExpression.Compile(bodyminutesPerWorkingDay, nameof(bodyminutesPerWorkingDay), required: false);
             return new DeferredBodyAction<UpdateEmploymentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/employments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -409,10 +366,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<GetLeaveDetailsResponse> GetLeaveDetails(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredBodyAction<GetLeaveDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/leaves/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -426,20 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<string[]> UpdateLeave(Expression<Func<string>> id, Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyreason = null, Expression<Func<bodyleaveBreakdownsInputItem[]>> bodyleaveBreakdowns = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodytypeId = bodytypeId == null ? null : WorkflowExpression.Compile(bodytypeId);
-            WorkflowExpression.Validate(__workflow_bodytypeId, nameof(bodytypeId), required: true);
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
-            var __workflow_bodyreason = bodyreason == null ? null : WorkflowExpression.Compile(bodyreason);
-            WorkflowExpression.Validate(__workflow_bodyreason, nameof(bodyreason), required: false);
-            var __workflow_bodyleaveBreakdowns = bodyleaveBreakdowns == null ? null : WorkflowExpression.Compile(bodyleaveBreakdowns);
-            WorkflowExpression.Validate(__workflow_bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
+            var __workflow_bodytypeId = WorkflowExpression.Compile(bodytypeId, nameof(bodytypeId), required: true);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
+            var __workflow_bodyleaveBreakdowns = WorkflowExpression.Compile(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/leaves/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -488,20 +436,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IBodyWorkflowAction<string[]> RequestLeave(Expression<Func<string>> bodycompanyId, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodytypeId, Expression<Func<string>> bodyreason = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyleaveBreakdownsInputItem2[]>> bodyleaveBreakdowns = null)
         {
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: true);
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: true);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
-            var __workflow_bodytypeId = bodytypeId == null ? null : WorkflowExpression.Compile(bodytypeId);
-            WorkflowExpression.Validate(__workflow_bodytypeId, nameof(bodytypeId), required: true);
-            var __workflow_bodyreason = bodyreason == null ? null : WorkflowExpression.Compile(bodyreason);
-            WorkflowExpression.Validate(__workflow_bodyreason, nameof(bodyreason), required: false);
-            var __workflow_bodyisPrivate = bodyisPrivate == null ? null : WorkflowExpression.Compile(bodyisPrivate);
-            WorkflowExpression.Validate(__workflow_bodyisPrivate, nameof(bodyisPrivate), required: false);
-            var __workflow_bodyleaveBreakdowns = bodyleaveBreakdowns == null ? null : WorkflowExpression.Compile(bodyleaveBreakdowns);
-            WorkflowExpression.Validate(__workflow_bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: true);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodytypeId = WorkflowExpression.Compile(bodytypeId, nameof(bodytypeId), required: true);
+            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
+            var __workflow_bodyisPrivate = WorkflowExpression.Compile(bodyisPrivate, nameof(bodyisPrivate), required: false);
+            var __workflow_bodyleaveBreakdowns = WorkflowExpression.Compile(bodyleaveBreakdowns, nameof(bodyleaveBreakdowns), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = "/leaves";
@@ -558,10 +499,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IWorkflowAction ApproveLeave(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/leaves/{0}/approve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -575,10 +514,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leavedates
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leavedates")]
         public IWorkflowAction CancelLeave(Expression<Func<string>> id, Expression<Func<string>> company)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/leaves/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

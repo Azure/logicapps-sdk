@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveuserResponse> Retrieveuser(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<RetrieveuserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<ListOfAllUsersResponse> ListOfAllUsers(Expression<Func<int>> pageSize = null)
         {
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<ListOfAllUsersResponse>(() =>
             {
                 var apiCallPath = "/users";
@@ -46,8 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveablockResponse> Retrieveablock(Expression<Func<string>> blockId)
         {
-            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
-            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
+            var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<RetrieveablockResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
@@ -61,8 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DeleteablockResponse> Deleteablock(Expression<Func<string>> blockId)
         {
-            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
-            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
+            var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<DeleteablockResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
@@ -76,38 +72,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IWorkflowAction Updateablock(Expression<Func<string>> blockId, Expression<Func<bodyparagraphrichTextInputItem[]>> bodyparagraphrichText = null, Expression<Func<string>> bodyparagraphcolor = null, Expression<Func<bodyheading1richTextInputItem[]>> bodyheading1richText = null, Expression<Func<string>> bodyheading1color = null, Expression<Func<bodyheading2richTextInputItem[]>> bodyheading2richText = null, Expression<Func<string>> bodyheading2color = null, Expression<Func<bodyheading3richTextInputItem[]>> bodyheading3richText = null, Expression<Func<string>> bodyheading3color = null, Expression<Func<bodybulletedListItemrichTextInputItem[]>> bodybulletedListItemrichText = null, Expression<Func<string>> bodybulletedListItemcolor = null, Expression<Func<bodynumberedListItemrichTextInputItem[]>> bodynumberedListItemrichText = null, Expression<Func<string>> bodynumberedListItemcolor = null, Expression<Func<bodytoDorichTextInputItem[]>> bodytoDorichText = null, Expression<Func<bool>> bodytoDochecked = null, Expression<Func<string>> bodytoDocolor = null)
         {
-            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
-            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
-            var __workflow_bodyparagraphrichText = bodyparagraphrichText == null ? null : WorkflowExpression.Compile(bodyparagraphrichText);
-            WorkflowExpression.Validate(__workflow_bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
-            var __workflow_bodyparagraphcolor = bodyparagraphcolor == null ? null : WorkflowExpression.Compile(bodyparagraphcolor);
-            WorkflowExpression.Validate(__workflow_bodyparagraphcolor, nameof(bodyparagraphcolor), required: false);
-            var __workflow_bodyheading1richText = bodyheading1richText == null ? null : WorkflowExpression.Compile(bodyheading1richText);
-            WorkflowExpression.Validate(__workflow_bodyheading1richText, nameof(bodyheading1richText), required: false);
-            var __workflow_bodyheading1color = bodyheading1color == null ? null : WorkflowExpression.Compile(bodyheading1color);
-            WorkflowExpression.Validate(__workflow_bodyheading1color, nameof(bodyheading1color), required: false);
-            var __workflow_bodyheading2richText = bodyheading2richText == null ? null : WorkflowExpression.Compile(bodyheading2richText);
-            WorkflowExpression.Validate(__workflow_bodyheading2richText, nameof(bodyheading2richText), required: false);
-            var __workflow_bodyheading2color = bodyheading2color == null ? null : WorkflowExpression.Compile(bodyheading2color);
-            WorkflowExpression.Validate(__workflow_bodyheading2color, nameof(bodyheading2color), required: false);
-            var __workflow_bodyheading3richText = bodyheading3richText == null ? null : WorkflowExpression.Compile(bodyheading3richText);
-            WorkflowExpression.Validate(__workflow_bodyheading3richText, nameof(bodyheading3richText), required: false);
-            var __workflow_bodyheading3color = bodyheading3color == null ? null : WorkflowExpression.Compile(bodyheading3color);
-            WorkflowExpression.Validate(__workflow_bodyheading3color, nameof(bodyheading3color), required: false);
-            var __workflow_bodybulletedListItemrichText = bodybulletedListItemrichText == null ? null : WorkflowExpression.Compile(bodybulletedListItemrichText);
-            WorkflowExpression.Validate(__workflow_bodybulletedListItemrichText, nameof(bodybulletedListItemrichText), required: false);
-            var __workflow_bodybulletedListItemcolor = bodybulletedListItemcolor == null ? null : WorkflowExpression.Compile(bodybulletedListItemcolor);
-            WorkflowExpression.Validate(__workflow_bodybulletedListItemcolor, nameof(bodybulletedListItemcolor), required: false);
-            var __workflow_bodynumberedListItemrichText = bodynumberedListItemrichText == null ? null : WorkflowExpression.Compile(bodynumberedListItemrichText);
-            WorkflowExpression.Validate(__workflow_bodynumberedListItemrichText, nameof(bodynumberedListItemrichText), required: false);
-            var __workflow_bodynumberedListItemcolor = bodynumberedListItemcolor == null ? null : WorkflowExpression.Compile(bodynumberedListItemcolor);
-            WorkflowExpression.Validate(__workflow_bodynumberedListItemcolor, nameof(bodynumberedListItemcolor), required: false);
-            var __workflow_bodytoDorichText = bodytoDorichText == null ? null : WorkflowExpression.Compile(bodytoDorichText);
-            WorkflowExpression.Validate(__workflow_bodytoDorichText, nameof(bodytoDorichText), required: false);
-            var __workflow_bodytoDochecked = bodytoDochecked == null ? null : WorkflowExpression.Compile(bodytoDochecked);
-            WorkflowExpression.Validate(__workflow_bodytoDochecked, nameof(bodytoDochecked), required: false);
-            var __workflow_bodytoDocolor = bodytoDocolor == null ? null : WorkflowExpression.Compile(bodytoDocolor);
-            WorkflowExpression.Validate(__workflow_bodytoDocolor, nameof(bodytoDocolor), required: false);
+            var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
+            var __workflow_bodyparagraphrichText = WorkflowExpression.Compile(bodyparagraphrichText, nameof(bodyparagraphrichText), required: false);
+            var __workflow_bodyparagraphcolor = WorkflowExpression.Compile(bodyparagraphcolor, nameof(bodyparagraphcolor), required: false);
+            var __workflow_bodyheading1richText = WorkflowExpression.Compile(bodyheading1richText, nameof(bodyheading1richText), required: false);
+            var __workflow_bodyheading1color = WorkflowExpression.Compile(bodyheading1color, nameof(bodyheading1color), required: false);
+            var __workflow_bodyheading2richText = WorkflowExpression.Compile(bodyheading2richText, nameof(bodyheading2richText), required: false);
+            var __workflow_bodyheading2color = WorkflowExpression.Compile(bodyheading2color, nameof(bodyheading2color), required: false);
+            var __workflow_bodyheading3richText = WorkflowExpression.Compile(bodyheading3richText, nameof(bodyheading3richText), required: false);
+            var __workflow_bodyheading3color = WorkflowExpression.Compile(bodyheading3color, nameof(bodyheading3color), required: false);
+            var __workflow_bodybulletedListItemrichText = WorkflowExpression.Compile(bodybulletedListItemrichText, nameof(bodybulletedListItemrichText), required: false);
+            var __workflow_bodybulletedListItemcolor = WorkflowExpression.Compile(bodybulletedListItemcolor, nameof(bodybulletedListItemcolor), required: false);
+            var __workflow_bodynumberedListItemrichText = WorkflowExpression.Compile(bodynumberedListItemrichText, nameof(bodynumberedListItemrichText), required: false);
+            var __workflow_bodynumberedListItemcolor = WorkflowExpression.Compile(bodynumberedListItemcolor, nameof(bodynumberedListItemcolor), required: false);
+            var __workflow_bodytoDorichText = WorkflowExpression.Compile(bodytoDorichText, nameof(bodytoDorichText), required: false);
+            var __workflow_bodytoDochecked = WorkflowExpression.Compile(bodytoDochecked, nameof(bodytoDochecked), required: false);
+            var __workflow_bodytoDocolor = WorkflowExpression.Compile(bodytoDocolor, nameof(bodytoDocolor), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
@@ -275,10 +255,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveBlockChildrenResponse> RetrieveBlockChildren(Expression<Func<string>> blockId, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
-            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<RetrieveBlockChildrenResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
@@ -295,10 +273,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IWorkflowAction Appendblockchildren(Expression<Func<string>> blockId, Expression<Func<bodychildrenInputItem[]>> bodychildren = null)
         {
-            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
-            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
-            var __workflow_bodychildren = bodychildren == null ? null : WorkflowExpression.Compile(bodychildren);
-            WorkflowExpression.Validate(__workflow_bodychildren, nameof(bodychildren), required: false);
+            var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
+            var __workflow_bodychildren = WorkflowExpression.Compile(bodychildren, nameof(bodychildren), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blocks/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blockId, 1));
@@ -326,8 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DatabaseResponse> RetrieveADatabase(Expression<Func<string>> databaseId)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             return new DeferredBodyAction<DatabaseResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1));
@@ -341,12 +316,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysortdirection = null, Expression<Func<string>> bodysorttimestamp = null)
         {
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodysortdirection = bodysortdirection == null ? null : WorkflowExpression.Compile(bodysortdirection);
-            WorkflowExpression.Validate(__workflow_bodysortdirection, nameof(bodysortdirection), required: false);
-            var __workflow_bodysorttimestamp = bodysorttimestamp == null ? null : WorkflowExpression.Compile(bodysorttimestamp);
-            WorkflowExpression.Validate(__workflow_bodysorttimestamp, nameof(bodysorttimestamp), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodysortdirection = WorkflowExpression.Compile(bodysortdirection, nameof(bodysortdirection), required: false);
+            var __workflow_bodysorttimestamp = WorkflowExpression.Compile(bodysorttimestamp, nameof(bodysorttimestamp), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -390,8 +362,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<DatabaseResponse> QueryADatabase(Expression<Func<string>> databaseId)
         {
-            var __workflow_databaseId = databaseId == null ? null : WorkflowExpression.Compile(databaseId);
-            WorkflowExpression.Validate(__workflow_databaseId, nameof(databaseId), required: true);
+            var __workflow_databaseId = WorkflowExpression.Compile(databaseId, nameof(databaseId), required: true);
             return new DeferredBodyAction<DatabaseResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/databases/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_databaseId, 1));
@@ -416,10 +387,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveapagepropertyitemResponse> Retrieveapagepropertyitem(Expression<Func<string>> pageId, Expression<Func<string>> propertyId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_propertyId = propertyId == null ? null : WorkflowExpression.Compile(propertyId);
-            WorkflowExpression.Validate(__workflow_propertyId, nameof(propertyId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_propertyId = WorkflowExpression.Compile(propertyId, nameof(propertyId), required: true);
             return new DeferredBodyAction<RetrieveapagepropertyitemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}/properties/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_propertyId, 1));
@@ -433,8 +402,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<RetrieveapageResponse> Retrieveapage(Expression<Func<string>> pageId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<RetrieveapageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -448,12 +416,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<CreateaPageResponse> CreateaPage(Expression<Func<string>> bodyparentdatabaseId = null, Expression<Func<string>> bodyiconemoji = null, Expression<Func<string>> bodycoverexternalurl = null)
         {
-            var __workflow_bodyparentdatabaseId = bodyparentdatabaseId == null ? null : WorkflowExpression.Compile(bodyparentdatabaseId);
-            WorkflowExpression.Validate(__workflow_bodyparentdatabaseId, nameof(bodyparentdatabaseId), required: false);
-            var __workflow_bodyiconemoji = bodyiconemoji == null ? null : WorkflowExpression.Compile(bodyiconemoji);
-            WorkflowExpression.Validate(__workflow_bodyiconemoji, nameof(bodyiconemoji), required: false);
-            var __workflow_bodycoverexternalurl = bodycoverexternalurl == null ? null : WorkflowExpression.Compile(bodycoverexternalurl);
-            WorkflowExpression.Validate(__workflow_bodycoverexternalurl, nameof(bodycoverexternalurl), required: false);
+            var __workflow_bodyparentdatabaseId = WorkflowExpression.Compile(bodyparentdatabaseId, nameof(bodyparentdatabaseId), required: false);
+            var __workflow_bodyiconemoji = WorkflowExpression.Compile(bodyiconemoji, nameof(bodyiconemoji), required: false);
+            var __workflow_bodycoverexternalurl = WorkflowExpression.Compile(bodycoverexternalurl, nameof(bodycoverexternalurl), required: false);
             return new DeferredBodyAction<CreateaPageResponse>(() =>
             {
                 var apiCallPath = "/pages";
@@ -533,8 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<CommentResponse> Retrievecomments(Expression<Func<string>> blockId)
         {
-            var __workflow_blockId = blockId == null ? null : WorkflowExpression.Compile(blockId);
-            WorkflowExpression.Validate(__workflow_blockId, nameof(blockId), required: true);
+            var __workflow_blockId = WorkflowExpression.Compile(blockId, nameof(blockId), required: true);
             return new DeferredBodyAction<CommentResponse>(() =>
             {
                 var apiCallPath = "/comments";
@@ -549,12 +513,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Notionip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "notionip")]
         public IBodyWorkflowAction<CommentResponse> Createcomment(Expression<Func<string>> bodyparentpageId = null, Expression<Func<string>> bodydiscussionId = null, Expression<Func<bodyrichTextInputItem[]>> bodyrichText = null)
         {
-            var __workflow_bodyparentpageId = bodyparentpageId == null ? null : WorkflowExpression.Compile(bodyparentpageId);
-            WorkflowExpression.Validate(__workflow_bodyparentpageId, nameof(bodyparentpageId), required: false);
-            var __workflow_bodydiscussionId = bodydiscussionId == null ? null : WorkflowExpression.Compile(bodydiscussionId);
-            WorkflowExpression.Validate(__workflow_bodydiscussionId, nameof(bodydiscussionId), required: false);
-            var __workflow_bodyrichText = bodyrichText == null ? null : WorkflowExpression.Compile(bodyrichText);
-            WorkflowExpression.Validate(__workflow_bodyrichText, nameof(bodyrichText), required: false);
+            var __workflow_bodyparentpageId = WorkflowExpression.Compile(bodyparentpageId, nameof(bodyparentpageId), required: false);
+            var __workflow_bodydiscussionId = WorkflowExpression.Compile(bodydiscussionId, nameof(bodydiscussionId), required: false);
+            var __workflow_bodyrichText = WorkflowExpression.Compile(bodyrichText, nameof(bodyrichText), required: false);
             return new DeferredBodyAction<CommentResponse>(() =>
             {
                 var apiCallPath = "/comments";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
         public IBodyWorkflowAction<string> DownloadAttachment(Expression<Func<string>> fileUrl)
         {
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: true);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/attachments";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
         public IWorkflowAction DeleteAttachment(Expression<Func<string>> fileUrl = null)
         {
-            var __workflow_fileUrl = fileUrl == null ? null : WorkflowExpression.Compile(fileUrl);
-            WorkflowExpression.Validate(__workflow_fileUrl, nameof(fileUrl), required: false);
+            var __workflow_fileUrl = WorkflowExpression.Compile(fileUrl, nameof(fileUrl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/attachments";
@@ -43,10 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
         public IWorkflowAction DeleteSubmission(Expression<Func<string>> formId, Expression<Func<string>> submissionId)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_submissionId = submissionId == null ? null : WorkflowExpression.Compile(submissionId);
-            WorkflowExpression.Validate(__workflow_submissionId, nameof(submissionId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_submissionId = WorkflowExpression.Compile(submissionId, nameof(submissionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forms/{0}/submissions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_submissionId, 1));
@@ -61,8 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
     {
         public IWorkflowTrigger FormIsSubmitted(Expression<Func<string>> subscriberform, FlowRecurrence recurrence = null)
         {
-            var __workflow_subscriberform = subscriberform == null ? null : WorkflowExpression.Compile(subscriberform);
-            WorkflowExpression.Validate(__workflow_subscriberform, nameof(subscriberform), required: true);
+            var __workflow_subscriberform = WorkflowExpression.Compile(subscriberform, nameof(subscriberform), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/submissions";

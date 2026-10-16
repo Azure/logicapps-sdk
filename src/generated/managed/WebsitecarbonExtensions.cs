@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis(Expression<Func<string>> url)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredBodyAction<SiteAnalysisResponse>(() =>
             {
                 var apiCallPath = "/site";
@@ -28,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
         public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
         {
-            var __workflow_bytes = bytes == null ? null : WorkflowExpression.Compile(bytes);
-            WorkflowExpression.Validate(__workflow_bytes, nameof(bytes), required: true);
-            var __workflow_green = green == null ? null : WorkflowExpression.Compile(green);
-            WorkflowExpression.Validate(__workflow_green, nameof(green), required: true);
+            var __workflow_bytes = WorkflowExpression.Compile(bytes, nameof(bytes), required: true);
+            var __workflow_green = WorkflowExpression.Compile(green, nameof(green), required: true);
             return new DeferredBodyAction<DataAnalysisResponse>(() =>
             {
                 var apiCallPath = "/data";

@@ -13,34 +13,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<string>> center = null, Expression<Func<string>> description = null, Expression<Func<string>> description508 = null, Expression<Func<string>> keywords = null, Expression<Func<string>> location = null, Expression<Func<string>> mediaType = null, Expression<Func<string>> nasaId = null, Expression<Func<int>> page = null, Expression<Func<string>> photographer = null, Expression<Func<string>> secondaryCreator = null, Expression<Func<string>> title = null, Expression<Func<int>> yearStart = null, Expression<Func<int>> yearEnd = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_center = center == null ? null : WorkflowExpression.Compile(center);
-            WorkflowExpression.Validate(__workflow_center, nameof(center), required: false);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
-            var __workflow_description508 = description508 == null ? null : WorkflowExpression.Compile(description508);
-            WorkflowExpression.Validate(__workflow_description508, nameof(description508), required: false);
-            var __workflow_keywords = keywords == null ? null : WorkflowExpression.Compile(keywords);
-            WorkflowExpression.Validate(__workflow_keywords, nameof(keywords), required: false);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
-            var __workflow_mediaType = mediaType == null ? null : WorkflowExpression.Compile(mediaType);
-            WorkflowExpression.Validate(__workflow_mediaType, nameof(mediaType), required: false);
-            var __workflow_nasaId = nasaId == null ? null : WorkflowExpression.Compile(nasaId);
-            WorkflowExpression.Validate(__workflow_nasaId, nameof(nasaId), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_photographer = photographer == null ? null : WorkflowExpression.Compile(photographer);
-            WorkflowExpression.Validate(__workflow_photographer, nameof(photographer), required: false);
-            var __workflow_secondaryCreator = secondaryCreator == null ? null : WorkflowExpression.Compile(secondaryCreator);
-            WorkflowExpression.Validate(__workflow_secondaryCreator, nameof(secondaryCreator), required: false);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_yearStart = yearStart == null ? null : WorkflowExpression.Compile(yearStart);
-            WorkflowExpression.Validate(__workflow_yearStart, nameof(yearStart), required: false);
-            var __workflow_yearEnd = yearEnd == null ? null : WorkflowExpression.Compile(yearEnd);
-            WorkflowExpression.Validate(__workflow_yearEnd, nameof(yearEnd), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_center = WorkflowExpression.Compile(center, nameof(center), required: false);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_description508 = WorkflowExpression.Compile(description508, nameof(description508), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
+            var __workflow_mediaType = WorkflowExpression.Compile(mediaType, nameof(mediaType), required: false);
+            var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_photographer = WorkflowExpression.Compile(photographer, nameof(photographer), required: false);
+            var __workflow_secondaryCreator = WorkflowExpression.Compile(secondaryCreator, nameof(secondaryCreator), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_yearStart = WorkflowExpression.Compile(yearStart, nameof(yearStart), required: false);
+            var __workflow_yearEnd = WorkflowExpression.Compile(yearEnd, nameof(yearEnd), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -81,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAssetManifestResponse> GetMediaAssetManifest(Expression<Func<string>> nasaId)
         {
-            var __workflow_nasaId = nasaId == null ? null : WorkflowExpression.Compile(nasaId);
-            WorkflowExpression.Validate(__workflow_nasaId, nameof(nasaId), required: true);
+            var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
             return new DeferredBodyAction<GetMediaAssetManifestResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/asset/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nasaId, 1));
@@ -95,8 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAssetMetadataLocationResponse> GetMediaAssetMetadataLocation(Expression<Func<string>> nasaId)
         {
-            var __workflow_nasaId = nasaId == null ? null : WorkflowExpression.Compile(nasaId);
-            WorkflowExpression.Validate(__workflow_nasaId, nameof(nasaId), required: true);
+            var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
             return new DeferredBodyAction<GetMediaAssetMetadataLocationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/metadata/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nasaId, 1));
@@ -109,8 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetVideoAssetCaptionsLocationResponse> GetVideoAssetCaptionsLocation(Expression<Func<string>> nasaId)
         {
-            var __workflow_nasaId = nasaId == null ? null : WorkflowExpression.Compile(nasaId);
-            WorkflowExpression.Validate(__workflow_nasaId, nameof(nasaId), required: true);
+            var __workflow_nasaId = WorkflowExpression.Compile(nasaId, nameof(nasaId), required: true);
             return new DeferredBodyAction<GetVideoAssetCaptionsLocationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/captions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_nasaId, 1));
@@ -123,10 +106,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasaivlibraryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasaivlibraryip")]
         public IBodyWorkflowAction<GetMediaAlbumContentsResponse> GetMediaAlbumContents(Expression<Func<string>> albumName, Expression<Func<int>> page = null)
         {
-            var __workflow_albumName = albumName == null ? null : WorkflowExpression.Compile(albumName);
-            WorkflowExpression.Validate(__workflow_albumName, nameof(albumName), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_albumName = WorkflowExpression.Compile(albumName, nameof(albumName), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetMediaAlbumContentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/album/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_albumName, 1));

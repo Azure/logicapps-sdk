@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Anthropicip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "anthropicip")]
         public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens, Expression<Func<bool>> bodythinkingtype = null, Expression<Func<int>> bodythinkingbudgetTokens = null, Expression<Func<string[]>> bodystopSequences = null, Expression<Func<string>> bodysystem = null, Expression<Func<double>> bodytemperature = null, Expression<Func<bodytoolsInputItem[]>> bodytools = null, Expression<Func<int>> bodytopK = null, Expression<Func<double>> bodytopP = null)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: true);
-            var __workflow_bodythinkingtype = bodythinkingtype == null ? null : WorkflowExpression.Compile(bodythinkingtype);
-            WorkflowExpression.Validate(__workflow_bodythinkingtype, nameof(bodythinkingtype), required: false);
-            var __workflow_bodythinkingbudgetTokens = bodythinkingbudgetTokens == null ? null : WorkflowExpression.Compile(bodythinkingbudgetTokens);
-            WorkflowExpression.Validate(__workflow_bodythinkingbudgetTokens, nameof(bodythinkingbudgetTokens), required: false);
-            var __workflow_bodystopSequences = bodystopSequences == null ? null : WorkflowExpression.Compile(bodystopSequences);
-            WorkflowExpression.Validate(__workflow_bodystopSequences, nameof(bodystopSequences), required: false);
-            var __workflow_bodysystem = bodysystem == null ? null : WorkflowExpression.Compile(bodysystem);
-            WorkflowExpression.Validate(__workflow_bodysystem, nameof(bodysystem), required: false);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
-            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
-            var __workflow_bodytopK = bodytopK == null ? null : WorkflowExpression.Compile(bodytopK);
-            WorkflowExpression.Validate(__workflow_bodytopK, nameof(bodytopK), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: true);
+            var __workflow_bodythinkingtype = WorkflowExpression.Compile(bodythinkingtype, nameof(bodythinkingtype), required: false);
+            var __workflow_bodythinkingbudgetTokens = WorkflowExpression.Compile(bodythinkingbudgetTokens, nameof(bodythinkingbudgetTokens), required: false);
+            var __workflow_bodystopSequences = WorkflowExpression.Compile(bodystopSequences, nameof(bodystopSequences), required: false);
+            var __workflow_bodysystem = WorkflowExpression.Compile(bodysystem, nameof(bodysystem), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
+            var __workflow_bodytopK = WorkflowExpression.Compile(bodytopK, nameof(bodytopK), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
                 var apiCallPath = "/v1/messages";

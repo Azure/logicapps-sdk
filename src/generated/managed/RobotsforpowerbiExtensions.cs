@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PlaylistEnableResponse>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.enable";
@@ -39,10 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PlaylistDisableResponse>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.disable";
@@ -65,10 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
         public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
             return new DeferredBodyAction<PlaylistExecuteResponse>(() =>
             {
                 var apiCallPath = "/api/v1/playlist.execute";

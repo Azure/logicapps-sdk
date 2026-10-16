@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIAutocompleteSchoolResult> AutocompleteGetSchools(Expression<Func<string>> q, Expression<Func<bool>> qSearchCityStateName = null, Expression<Func<string>> st = null, Expression<Func<levelInput>> level = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> returnCount = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_qSearchCityStateName = qSearchCityStateName == null ? null : WorkflowExpression.Compile(qSearchCityStateName);
-            WorkflowExpression.Validate(__workflow_qSearchCityStateName, nameof(qSearchCityStateName), required: false);
-            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
-            WorkflowExpression.Validate(__workflow_st, nameof(st), required: false);
-            var __workflow_level = level == null ? null : WorkflowExpression.Compile(level);
-            WorkflowExpression.Validate(__workflow_level, nameof(level), required: false);
-            var __workflow_boxLatitudeNW = boxLatitudeNW == null ? null : WorkflowExpression.Compile(boxLatitudeNW);
-            WorkflowExpression.Validate(__workflow_boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            var __workflow_boxLongitudeNW = boxLongitudeNW == null ? null : WorkflowExpression.Compile(boxLongitudeNW);
-            WorkflowExpression.Validate(__workflow_boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            var __workflow_boxLatitudeSE = boxLatitudeSE == null ? null : WorkflowExpression.Compile(boxLatitudeSE);
-            WorkflowExpression.Validate(__workflow_boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            var __workflow_boxLongitudeSE = boxLongitudeSE == null ? null : WorkflowExpression.Compile(boxLongitudeSE);
-            WorkflowExpression.Validate(__workflow_boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            var __workflow_returnCount = returnCount == null ? null : WorkflowExpression.Compile(returnCount);
-            WorkflowExpression.Validate(__workflow_returnCount, nameof(returnCount), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_qSearchCityStateName = WorkflowExpression.Compile(qSearchCityStateName, nameof(qSearchCityStateName), required: false);
+            var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: false);
+            var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
+            var __workflow_boxLatitudeNW = WorkflowExpression.Compile(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
+            var __workflow_boxLongitudeNW = WorkflowExpression.Compile(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
+            var __workflow_boxLatitudeSE = WorkflowExpression.Compile(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
+            var __workflow_boxLongitudeSE = WorkflowExpression.Compile(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
+            var __workflow_returnCount = WorkflowExpression.Compile(returnCount, nameof(returnCount), required: false);
             return new DeferredBodyAction<APIAutocompleteSchoolResult>(() =>
             {
                 var apiCallPath = "/v2.0/autocomplete/schools";
@@ -60,40 +51,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrictList2> DistrictsGetAllDistricts2(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedDistrictsInRankSort = null)
         {
-            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
-            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
-            var __workflow_zip = zip == null ? null : WorkflowExpression.Compile(zip);
-            WorkflowExpression.Validate(__workflow_zip, nameof(zip), required: false);
-            var __workflow_nearLatitude = nearLatitude == null ? null : WorkflowExpression.Compile(nearLatitude);
-            WorkflowExpression.Validate(__workflow_nearLatitude, nameof(nearLatitude), required: false);
-            var __workflow_nearLongitude = nearLongitude == null ? null : WorkflowExpression.Compile(nearLongitude);
-            WorkflowExpression.Validate(__workflow_nearLongitude, nameof(nearLongitude), required: false);
-            var __workflow_boundaryAddress = boundaryAddress == null ? null : WorkflowExpression.Compile(boundaryAddress);
-            WorkflowExpression.Validate(__workflow_boundaryAddress, nameof(boundaryAddress), required: false);
-            var __workflow_distanceMiles = distanceMiles == null ? null : WorkflowExpression.Compile(distanceMiles);
-            WorkflowExpression.Validate(__workflow_distanceMiles, nameof(distanceMiles), required: false);
-            var __workflow_isInBoundaryOnly = isInBoundaryOnly == null ? null : WorkflowExpression.Compile(isInBoundaryOnly);
-            WorkflowExpression.Validate(__workflow_isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
-            var __workflow_boxLatitudeNW = boxLatitudeNW == null ? null : WorkflowExpression.Compile(boxLatitudeNW);
-            WorkflowExpression.Validate(__workflow_boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            var __workflow_boxLongitudeNW = boxLongitudeNW == null ? null : WorkflowExpression.Compile(boxLongitudeNW);
-            WorkflowExpression.Validate(__workflow_boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            var __workflow_boxLatitudeSE = boxLatitudeSE == null ? null : WorkflowExpression.Compile(boxLatitudeSE);
-            WorkflowExpression.Validate(__workflow_boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            var __workflow_boxLongitudeSE = boxLongitudeSE == null ? null : WorkflowExpression.Compile(boxLongitudeSE);
-            WorkflowExpression.Validate(__workflow_boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_includeUnrankedDistrictsInRankSort = includeUnrankedDistrictsInRankSort == null ? null : WorkflowExpression.Compile(includeUnrankedDistrictsInRankSort);
-            WorkflowExpression.Validate(__workflow_includeUnrankedDistrictsInRankSort, nameof(includeUnrankedDistrictsInRankSort), required: false);
+            var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_zip = WorkflowExpression.Compile(zip, nameof(zip), required: false);
+            var __workflow_nearLatitude = WorkflowExpression.Compile(nearLatitude, nameof(nearLatitude), required: false);
+            var __workflow_nearLongitude = WorkflowExpression.Compile(nearLongitude, nameof(nearLongitude), required: false);
+            var __workflow_boundaryAddress = WorkflowExpression.Compile(boundaryAddress, nameof(boundaryAddress), required: false);
+            var __workflow_distanceMiles = WorkflowExpression.Compile(distanceMiles, nameof(distanceMiles), required: false);
+            var __workflow_isInBoundaryOnly = WorkflowExpression.Compile(isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
+            var __workflow_boxLatitudeNW = WorkflowExpression.Compile(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
+            var __workflow_boxLongitudeNW = WorkflowExpression.Compile(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
+            var __workflow_boxLatitudeSE = WorkflowExpression.Compile(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
+            var __workflow_boxLongitudeSE = WorkflowExpression.Compile(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_includeUnrankedDistrictsInRankSort = WorkflowExpression.Compile(includeUnrankedDistrictsInRankSort, nameof(includeUnrankedDistrictsInRankSort), required: false);
             return new DeferredBodyAction<APIDistrictList2>(() =>
             {
                 var apiCallPath = "/v2.0/districts";
@@ -139,8 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrict12> DistrictsGetDistrict2(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<APIDistrict12>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -153,16 +126,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchoolListRank2> RankingGet(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<levelInput>> level = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
-            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_level = level == null ? null : WorkflowExpression.Compile(level);
-            WorkflowExpression.Validate(__workflow_level, nameof(level), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<APISchoolListRank2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_st, 1));
@@ -183,14 +151,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APIDistrictListRank2> DistrictRanking(Expression<Func<string>> st, Expression<Func<int>> year = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
-            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<APIDistrictListRank2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/rankings/districts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_st, 1));
@@ -209,62 +173,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchoolList2> SchoolsGetAllSchools20(Expression<Func<string>> st, Expression<Func<string>> q = null, Expression<Func<bool>> qSearchSchoolNameOnly = null, Expression<Func<string>> districtID = null, Expression<Func<levelInput>> level = null, Expression<Func<string>> city = null, Expression<Func<string>> zip = null, Expression<Func<bool>> isMagnet = null, Expression<Func<bool>> isCharter = null, Expression<Func<bool>> isVirtual = null, Expression<Func<bool>> isTitleI = null, Expression<Func<bool>> isTitleISchoolwide = null, Expression<Func<double>> nearLatitude = null, Expression<Func<double>> nearLongitude = null, Expression<Func<string>> nearAddress = null, Expression<Func<int>> distanceMiles = null, Expression<Func<double>> boundaryLatitude = null, Expression<Func<double>> boundaryLongitude = null, Expression<Func<string>> boundaryAddress = null, Expression<Func<bool>> isInBoundaryOnly = null, Expression<Func<double>> boxLatitudeNW = null, Expression<Func<double>> boxLongitudeNW = null, Expression<Func<double>> boxLatitudeSE = null, Expression<Func<double>> boxLongitudeSE = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> includeUnrankedSchoolsInRankSort = null)
         {
-            var __workflow_st = st == null ? null : WorkflowExpression.Compile(st);
-            WorkflowExpression.Validate(__workflow_st, nameof(st), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_qSearchSchoolNameOnly = qSearchSchoolNameOnly == null ? null : WorkflowExpression.Compile(qSearchSchoolNameOnly);
-            WorkflowExpression.Validate(__workflow_qSearchSchoolNameOnly, nameof(qSearchSchoolNameOnly), required: false);
-            var __workflow_districtID = districtID == null ? null : WorkflowExpression.Compile(districtID);
-            WorkflowExpression.Validate(__workflow_districtID, nameof(districtID), required: false);
-            var __workflow_level = level == null ? null : WorkflowExpression.Compile(level);
-            WorkflowExpression.Validate(__workflow_level, nameof(level), required: false);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
-            var __workflow_zip = zip == null ? null : WorkflowExpression.Compile(zip);
-            WorkflowExpression.Validate(__workflow_zip, nameof(zip), required: false);
-            var __workflow_isMagnet = isMagnet == null ? null : WorkflowExpression.Compile(isMagnet);
-            WorkflowExpression.Validate(__workflow_isMagnet, nameof(isMagnet), required: false);
-            var __workflow_isCharter = isCharter == null ? null : WorkflowExpression.Compile(isCharter);
-            WorkflowExpression.Validate(__workflow_isCharter, nameof(isCharter), required: false);
-            var __workflow_isVirtual = isVirtual == null ? null : WorkflowExpression.Compile(isVirtual);
-            WorkflowExpression.Validate(__workflow_isVirtual, nameof(isVirtual), required: false);
-            var __workflow_isTitleI = isTitleI == null ? null : WorkflowExpression.Compile(isTitleI);
-            WorkflowExpression.Validate(__workflow_isTitleI, nameof(isTitleI), required: false);
-            var __workflow_isTitleISchoolwide = isTitleISchoolwide == null ? null : WorkflowExpression.Compile(isTitleISchoolwide);
-            WorkflowExpression.Validate(__workflow_isTitleISchoolwide, nameof(isTitleISchoolwide), required: false);
-            var __workflow_nearLatitude = nearLatitude == null ? null : WorkflowExpression.Compile(nearLatitude);
-            WorkflowExpression.Validate(__workflow_nearLatitude, nameof(nearLatitude), required: false);
-            var __workflow_nearLongitude = nearLongitude == null ? null : WorkflowExpression.Compile(nearLongitude);
-            WorkflowExpression.Validate(__workflow_nearLongitude, nameof(nearLongitude), required: false);
-            var __workflow_nearAddress = nearAddress == null ? null : WorkflowExpression.Compile(nearAddress);
-            WorkflowExpression.Validate(__workflow_nearAddress, nameof(nearAddress), required: false);
-            var __workflow_distanceMiles = distanceMiles == null ? null : WorkflowExpression.Compile(distanceMiles);
-            WorkflowExpression.Validate(__workflow_distanceMiles, nameof(distanceMiles), required: false);
-            var __workflow_boundaryLatitude = boundaryLatitude == null ? null : WorkflowExpression.Compile(boundaryLatitude);
-            WorkflowExpression.Validate(__workflow_boundaryLatitude, nameof(boundaryLatitude), required: false);
-            var __workflow_boundaryLongitude = boundaryLongitude == null ? null : WorkflowExpression.Compile(boundaryLongitude);
-            WorkflowExpression.Validate(__workflow_boundaryLongitude, nameof(boundaryLongitude), required: false);
-            var __workflow_boundaryAddress = boundaryAddress == null ? null : WorkflowExpression.Compile(boundaryAddress);
-            WorkflowExpression.Validate(__workflow_boundaryAddress, nameof(boundaryAddress), required: false);
-            var __workflow_isInBoundaryOnly = isInBoundaryOnly == null ? null : WorkflowExpression.Compile(isInBoundaryOnly);
-            WorkflowExpression.Validate(__workflow_isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
-            var __workflow_boxLatitudeNW = boxLatitudeNW == null ? null : WorkflowExpression.Compile(boxLatitudeNW);
-            WorkflowExpression.Validate(__workflow_boxLatitudeNW, nameof(boxLatitudeNW), required: false);
-            var __workflow_boxLongitudeNW = boxLongitudeNW == null ? null : WorkflowExpression.Compile(boxLongitudeNW);
-            WorkflowExpression.Validate(__workflow_boxLongitudeNW, nameof(boxLongitudeNW), required: false);
-            var __workflow_boxLatitudeSE = boxLatitudeSE == null ? null : WorkflowExpression.Compile(boxLatitudeSE);
-            WorkflowExpression.Validate(__workflow_boxLatitudeSE, nameof(boxLatitudeSE), required: false);
-            var __workflow_boxLongitudeSE = boxLongitudeSE == null ? null : WorkflowExpression.Compile(boxLongitudeSE);
-            WorkflowExpression.Validate(__workflow_boxLongitudeSE, nameof(boxLongitudeSE), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_includeUnrankedSchoolsInRankSort = includeUnrankedSchoolsInRankSort == null ? null : WorkflowExpression.Compile(includeUnrankedSchoolsInRankSort);
-            WorkflowExpression.Validate(__workflow_includeUnrankedSchoolsInRankSort, nameof(includeUnrankedSchoolsInRankSort), required: false);
+            var __workflow_st = WorkflowExpression.Compile(st, nameof(st), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_qSearchSchoolNameOnly = WorkflowExpression.Compile(qSearchSchoolNameOnly, nameof(qSearchSchoolNameOnly), required: false);
+            var __workflow_districtID = WorkflowExpression.Compile(districtID, nameof(districtID), required: false);
+            var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_zip = WorkflowExpression.Compile(zip, nameof(zip), required: false);
+            var __workflow_isMagnet = WorkflowExpression.Compile(isMagnet, nameof(isMagnet), required: false);
+            var __workflow_isCharter = WorkflowExpression.Compile(isCharter, nameof(isCharter), required: false);
+            var __workflow_isVirtual = WorkflowExpression.Compile(isVirtual, nameof(isVirtual), required: false);
+            var __workflow_isTitleI = WorkflowExpression.Compile(isTitleI, nameof(isTitleI), required: false);
+            var __workflow_isTitleISchoolwide = WorkflowExpression.Compile(isTitleISchoolwide, nameof(isTitleISchoolwide), required: false);
+            var __workflow_nearLatitude = WorkflowExpression.Compile(nearLatitude, nameof(nearLatitude), required: false);
+            var __workflow_nearLongitude = WorkflowExpression.Compile(nearLongitude, nameof(nearLongitude), required: false);
+            var __workflow_nearAddress = WorkflowExpression.Compile(nearAddress, nameof(nearAddress), required: false);
+            var __workflow_distanceMiles = WorkflowExpression.Compile(distanceMiles, nameof(distanceMiles), required: false);
+            var __workflow_boundaryLatitude = WorkflowExpression.Compile(boundaryLatitude, nameof(boundaryLatitude), required: false);
+            var __workflow_boundaryLongitude = WorkflowExpression.Compile(boundaryLongitude, nameof(boundaryLongitude), required: false);
+            var __workflow_boundaryAddress = WorkflowExpression.Compile(boundaryAddress, nameof(boundaryAddress), required: false);
+            var __workflow_isInBoundaryOnly = WorkflowExpression.Compile(isInBoundaryOnly, nameof(isInBoundaryOnly), required: false);
+            var __workflow_boxLatitudeNW = WorkflowExpression.Compile(boxLatitudeNW, nameof(boxLatitudeNW), required: false);
+            var __workflow_boxLongitudeNW = WorkflowExpression.Compile(boxLongitudeNW, nameof(boxLongitudeNW), required: false);
+            var __workflow_boxLatitudeSE = WorkflowExpression.Compile(boxLatitudeSE, nameof(boxLatitudeSE), required: false);
+            var __workflow_boxLongitudeSE = WorkflowExpression.Compile(boxLongitudeSE, nameof(boxLongitudeSE), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_includeUnrankedSchoolsInRankSort = WorkflowExpression.Compile(includeUnrankedSchoolsInRankSort, nameof(includeUnrankedSchoolsInRankSort), required: false);
             return new DeferredBodyAction<APISchoolList2>(() =>
             {
                 var apiCallPath = "/v2.0/schools";
@@ -332,8 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Schooldiggerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "schooldiggerip")]
         public IBodyWorkflowAction<APISchool20Full> SchoolsGetSchool20(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<APISchool20Full>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/schools/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

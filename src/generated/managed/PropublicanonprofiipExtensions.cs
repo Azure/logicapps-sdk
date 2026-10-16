@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<int>> page = null, Expression<Func<string>> stateId = null, Expression<Func<int>> nteeId = null, Expression<Func<int>> cCodeId = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_stateId = stateId == null ? null : WorkflowExpression.Compile(stateId);
-            WorkflowExpression.Validate(__workflow_stateId, nameof(stateId), required: false);
-            var __workflow_nteeId = nteeId == null ? null : WorkflowExpression.Compile(nteeId);
-            WorkflowExpression.Validate(__workflow_nteeId, nameof(nteeId), required: false);
-            var __workflow_cCodeId = cCodeId == null ? null : WorkflowExpression.Compile(cCodeId);
-            WorkflowExpression.Validate(__workflow_cCodeId, nameof(cCodeId), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_stateId = WorkflowExpression.Compile(stateId, nameof(stateId), required: false);
+            var __workflow_nteeId = WorkflowExpression.Compile(nteeId, nameof(nteeId), required: false);
+            var __workflow_cCodeId = WorkflowExpression.Compile(cCodeId, nameof(cCodeId), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/search.json";
@@ -45,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
         public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet(Expression<Func<string>> ein)
         {
-            var __workflow_ein = ein == null ? null : WorkflowExpression.Compile(ein);
-            WorkflowExpression.Validate(__workflow_ein, nameof(ein), required: true);
+            var __workflow_ein = WorkflowExpression.Compile(ein, nameof(ein), required: true);
             return new DeferredBodyAction<NonprofitGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ein, 1));

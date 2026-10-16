@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarsResponse> GetRadars(Expression<Func<string>> radarCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_radarCode = radarCode == null ? null : WorkflowExpression.Compile(radarCode);
-            WorkflowExpression.Validate(__workflow_radarCode, nameof(radarCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_radarCode = WorkflowExpression.Compile(radarCode, nameof(radarCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetRadarsResponse>(() =>
             {
                 var apiCallPath = "/radars";
@@ -46,10 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarResponse> GetRadar(Expression<Func<string>> radarCode, Expression<Func<string>> select = null)
         {
-            var __workflow_radarCode = radarCode == null ? null : WorkflowExpression.Compile(radarCode);
-            WorkflowExpression.Validate(__workflow_radarCode, nameof(radarCode), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_radarCode = WorkflowExpression.Compile(radarCode, nameof(radarCode), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetRadarResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/radars/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_radarCode, 1));
@@ -65,12 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetNearbyRadarResponse> GetNearbyRadar(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null)
         {
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
-            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
             return new DeferredBodyAction<GetNearbyRadarResponse>(() =>
             {
                 var apiCallPath = "/nearby";
@@ -88,22 +78,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarRainfallResponse> GetRadarRainfall(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> radarCode = null, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_radarCode = radarCode == null ? null : WorkflowExpression.Compile(radarCode);
-            WorkflowExpression.Validate(__workflow_radarCode, nameof(radarCode), required: false);
-            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
-            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_radarCode = WorkflowExpression.Compile(radarCode, nameof(radarCode), required: false);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetRadarRainfallResponse>(() =>
             {
                 var apiCallPath = "/rainfall";
@@ -132,24 +114,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarDailySummariesResponse> GetRadarDailySummaries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
-            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetRadarDailySummariesResponse>(() =>
             {
                 var apiCallPath = "/summaries/daily";
@@ -178,24 +151,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdradarip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdradarip")]
         public IBodyWorkflowAction<GetRadarMonthlySummariesResponse> GetRadarMonthlySummaries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<dataSetInput>> dataSet = null, Expression<Func<string>> select = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_startMonth = startMonth == null ? null : WorkflowExpression.Compile(startMonth);
-            WorkflowExpression.Validate(__workflow_startMonth, nameof(startMonth), required: true);
-            var __workflow_endMonth = endMonth == null ? null : WorkflowExpression.Compile(endMonth);
-            WorkflowExpression.Validate(__workflow_endMonth, nameof(endMonth), required: true);
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_dataSet = dataSet == null ? null : WorkflowExpression.Compile(dataSet);
-            WorkflowExpression.Validate(__workflow_dataSet, nameof(dataSet), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
+            var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_dataSet = WorkflowExpression.Compile(dataSet, nameof(dataSet), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<GetRadarMonthlySummariesResponse>(() =>
             {
                 var apiCallPath = "/summaries/monthly";

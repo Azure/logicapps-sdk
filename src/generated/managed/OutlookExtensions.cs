@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ClientReceiveMessage> GetEmail(Expression<Func<string>> messageId, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> internetMessageId = null)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_includeAttachments = includeAttachments == null ? null : WorkflowExpression.Compile(includeAttachments);
-            WorkflowExpression.Validate(__workflow_includeAttachments, nameof(includeAttachments), required: false);
-            var __workflow_internetMessageId = internetMessageId == null ? null : WorkflowExpression.Compile(internetMessageId);
-            WorkflowExpression.Validate(__workflow_internetMessageId, nameof(internetMessageId), required: false);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_internetMessageId = WorkflowExpression.Compile(internetMessageId, nameof(internetMessageId), required: false);
             return new DeferredBodyAction<ClientReceiveMessage>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -36,8 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction DeleteEmail(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -50,10 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ClientReceiveMessageStringEnums> Move(Expression<Func<string>> messageId, Expression<Func<string>> folderPath)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyAction<ClientReceiveMessageStringEnums>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/Move/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -67,8 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction Flag(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/Flag/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -81,8 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction MarkAsRead(Expression<Func<string>> messageId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/MarkAsRead/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -95,10 +87,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<string> GetAttachment(Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_attachmentId = attachmentId == null ? null : WorkflowExpression.Compile(attachmentId);
-            WorkflowExpression.Validate(__workflow_attachmentId, nameof(attachmentId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/{0}/Attachments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
@@ -111,28 +101,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<SubscriptionResponse> SendMailWithOptions(Expression<Func<string>> optionsEmailSubscriptionmessageto, Expression<Func<string>> optionsEmailSubscriptionmessagesubject = null, Expression<Func<string>> optionsEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> optionsEmailSubscriptionmessageheaderText = null, Expression<Func<string>> optionsEmailSubscriptionmessageselectionText = null, Expression<Func<string>> optionsEmailSubscriptionmessagebody = null, Expression<Func<optionsEmailSubscriptionmessageimportanceInput>> optionsEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachment[]>> optionsEmailSubscriptionmessageattachments = null, Expression<Func<bool>> optionsEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
-            var __workflow_optionsEmailSubscriptionmessageto = optionsEmailSubscriptionmessageto == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageto);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageto, nameof(optionsEmailSubscriptionmessageto), required: true);
-            var __workflow_optionsEmailSubscriptionmessagesubject = optionsEmailSubscriptionmessagesubject == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessagesubject);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessagesubject, nameof(optionsEmailSubscriptionmessagesubject), required: false);
-            var __workflow_optionsEmailSubscriptionmessageuserOptions = optionsEmailSubscriptionmessageuserOptions == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageuserOptions);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageuserOptions, nameof(optionsEmailSubscriptionmessageuserOptions), required: false);
-            var __workflow_optionsEmailSubscriptionmessageheaderText = optionsEmailSubscriptionmessageheaderText == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageheaderText);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageheaderText, nameof(optionsEmailSubscriptionmessageheaderText), required: false);
-            var __workflow_optionsEmailSubscriptionmessageselectionText = optionsEmailSubscriptionmessageselectionText == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageselectionText);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageselectionText, nameof(optionsEmailSubscriptionmessageselectionText), required: false);
-            var __workflow_optionsEmailSubscriptionmessagebody = optionsEmailSubscriptionmessagebody == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessagebody);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessagebody, nameof(optionsEmailSubscriptionmessagebody), required: false);
-            var __workflow_optionsEmailSubscriptionmessageimportance = optionsEmailSubscriptionmessageimportance == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageimportance);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageimportance, nameof(optionsEmailSubscriptionmessageimportance), required: false);
-            var __workflow_optionsEmailSubscriptionmessageattachments = optionsEmailSubscriptionmessageattachments == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageattachments);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageattachments, nameof(optionsEmailSubscriptionmessageattachments), required: false);
-            var __workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage = optionsEmailSubscriptionmessageuseOnlyHTMLMessage == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageuseOnlyHTMLMessage);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(optionsEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
-            var __workflow_optionsEmailSubscriptionmessagehideHTMLMessage = optionsEmailSubscriptionmessagehideHTMLMessage == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessagehideHTMLMessage);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessagehideHTMLMessage, nameof(optionsEmailSubscriptionmessagehideHTMLMessage), required: false);
-            var __workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = optionsEmailSubscriptionmessageshowHTMLConfirmationDialog == null ? null : WorkflowExpression.Compile(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog);
-            WorkflowExpression.Validate(__workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
+            var __workflow_optionsEmailSubscriptionmessageto = WorkflowExpression.Compile(optionsEmailSubscriptionmessageto, nameof(optionsEmailSubscriptionmessageto), required: true);
+            var __workflow_optionsEmailSubscriptionmessagesubject = WorkflowExpression.Compile(optionsEmailSubscriptionmessagesubject, nameof(optionsEmailSubscriptionmessagesubject), required: false);
+            var __workflow_optionsEmailSubscriptionmessageuserOptions = WorkflowExpression.Compile(optionsEmailSubscriptionmessageuserOptions, nameof(optionsEmailSubscriptionmessageuserOptions), required: false);
+            var __workflow_optionsEmailSubscriptionmessageheaderText = WorkflowExpression.Compile(optionsEmailSubscriptionmessageheaderText, nameof(optionsEmailSubscriptionmessageheaderText), required: false);
+            var __workflow_optionsEmailSubscriptionmessageselectionText = WorkflowExpression.Compile(optionsEmailSubscriptionmessageselectionText, nameof(optionsEmailSubscriptionmessageselectionText), required: false);
+            var __workflow_optionsEmailSubscriptionmessagebody = WorkflowExpression.Compile(optionsEmailSubscriptionmessagebody, nameof(optionsEmailSubscriptionmessagebody), required: false);
+            var __workflow_optionsEmailSubscriptionmessageimportance = WorkflowExpression.Compile(optionsEmailSubscriptionmessageimportance, nameof(optionsEmailSubscriptionmessageimportance), required: false);
+            var __workflow_optionsEmailSubscriptionmessageattachments = WorkflowExpression.Compile(optionsEmailSubscriptionmessageattachments, nameof(optionsEmailSubscriptionmessageattachments), required: false);
+            var __workflow_optionsEmailSubscriptionmessageuseOnlyHTMLMessage = WorkflowExpression.Compile(optionsEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(optionsEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
+            var __workflow_optionsEmailSubscriptionmessagehideHTMLMessage = WorkflowExpression.Compile(optionsEmailSubscriptionmessagehideHTMLMessage, nameof(optionsEmailSubscriptionmessagehideHTMLMessage), required: false);
+            var __workflow_optionsEmailSubscriptionmessageshowHTMLConfirmationDialog = WorkflowExpression.Compile(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(optionsEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
             return new DeferredBodyAction<SubscriptionResponse>(() =>
             {
                 var apiCallPath = "/mailwithoptions/$subscriptions";
@@ -274,28 +253,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<SubscriptionResponse> SendApprovalMail(Expression<Func<string>> approvalEmailSubscriptionmessageto, Expression<Func<string>> approvalEmailSubscriptionmessagesubject = null, Expression<Func<string>> approvalEmailSubscriptionmessageuserOptions = null, Expression<Func<string>> approvalEmailSubscriptionmessageheaderText = null, Expression<Func<string>> approvalEmailSubscriptionmessageselectionText = null, Expression<Func<string>> approvalEmailSubscriptionmessagebody = null, Expression<Func<approvalEmailSubscriptionmessageimportanceInput>> approvalEmailSubscriptionmessageimportance = null, Expression<Func<ClientSendAttachment[]>> approvalEmailSubscriptionmessageattachments = null, Expression<Func<bool>> approvalEmailSubscriptionmessageuseOnlyHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessagehideHTMLMessage = null, Expression<Func<bool>> approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = null)
         {
-            var __workflow_approvalEmailSubscriptionmessageto = approvalEmailSubscriptionmessageto == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageto);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageto, nameof(approvalEmailSubscriptionmessageto), required: true);
-            var __workflow_approvalEmailSubscriptionmessagesubject = approvalEmailSubscriptionmessagesubject == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessagesubject);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessagesubject, nameof(approvalEmailSubscriptionmessagesubject), required: false);
-            var __workflow_approvalEmailSubscriptionmessageuserOptions = approvalEmailSubscriptionmessageuserOptions == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageuserOptions);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageuserOptions, nameof(approvalEmailSubscriptionmessageuserOptions), required: false);
-            var __workflow_approvalEmailSubscriptionmessageheaderText = approvalEmailSubscriptionmessageheaderText == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageheaderText);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageheaderText, nameof(approvalEmailSubscriptionmessageheaderText), required: false);
-            var __workflow_approvalEmailSubscriptionmessageselectionText = approvalEmailSubscriptionmessageselectionText == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageselectionText);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageselectionText, nameof(approvalEmailSubscriptionmessageselectionText), required: false);
-            var __workflow_approvalEmailSubscriptionmessagebody = approvalEmailSubscriptionmessagebody == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessagebody);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessagebody, nameof(approvalEmailSubscriptionmessagebody), required: false);
-            var __workflow_approvalEmailSubscriptionmessageimportance = approvalEmailSubscriptionmessageimportance == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageimportance);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageimportance, nameof(approvalEmailSubscriptionmessageimportance), required: false);
-            var __workflow_approvalEmailSubscriptionmessageattachments = approvalEmailSubscriptionmessageattachments == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageattachments);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageattachments, nameof(approvalEmailSubscriptionmessageattachments), required: false);
-            var __workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage = approvalEmailSubscriptionmessageuseOnlyHTMLMessage == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageuseOnlyHTMLMessage);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(approvalEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
-            var __workflow_approvalEmailSubscriptionmessagehideHTMLMessage = approvalEmailSubscriptionmessagehideHTMLMessage == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessagehideHTMLMessage);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessagehideHTMLMessage, nameof(approvalEmailSubscriptionmessagehideHTMLMessage), required: false);
-            var __workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = approvalEmailSubscriptionmessageshowHTMLConfirmationDialog == null ? null : WorkflowExpression.Compile(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog);
-            WorkflowExpression.Validate(__workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
+            var __workflow_approvalEmailSubscriptionmessageto = WorkflowExpression.Compile(approvalEmailSubscriptionmessageto, nameof(approvalEmailSubscriptionmessageto), required: true);
+            var __workflow_approvalEmailSubscriptionmessagesubject = WorkflowExpression.Compile(approvalEmailSubscriptionmessagesubject, nameof(approvalEmailSubscriptionmessagesubject), required: false);
+            var __workflow_approvalEmailSubscriptionmessageuserOptions = WorkflowExpression.Compile(approvalEmailSubscriptionmessageuserOptions, nameof(approvalEmailSubscriptionmessageuserOptions), required: false);
+            var __workflow_approvalEmailSubscriptionmessageheaderText = WorkflowExpression.Compile(approvalEmailSubscriptionmessageheaderText, nameof(approvalEmailSubscriptionmessageheaderText), required: false);
+            var __workflow_approvalEmailSubscriptionmessageselectionText = WorkflowExpression.Compile(approvalEmailSubscriptionmessageselectionText, nameof(approvalEmailSubscriptionmessageselectionText), required: false);
+            var __workflow_approvalEmailSubscriptionmessagebody = WorkflowExpression.Compile(approvalEmailSubscriptionmessagebody, nameof(approvalEmailSubscriptionmessagebody), required: false);
+            var __workflow_approvalEmailSubscriptionmessageimportance = WorkflowExpression.Compile(approvalEmailSubscriptionmessageimportance, nameof(approvalEmailSubscriptionmessageimportance), required: false);
+            var __workflow_approvalEmailSubscriptionmessageattachments = WorkflowExpression.Compile(approvalEmailSubscriptionmessageattachments, nameof(approvalEmailSubscriptionmessageattachments), required: false);
+            var __workflow_approvalEmailSubscriptionmessageuseOnlyHTMLMessage = WorkflowExpression.Compile(approvalEmailSubscriptionmessageuseOnlyHTMLMessage, nameof(approvalEmailSubscriptionmessageuseOnlyHTMLMessage), required: false);
+            var __workflow_approvalEmailSubscriptionmessagehideHTMLMessage = WorkflowExpression.Compile(approvalEmailSubscriptionmessagehideHTMLMessage, nameof(approvalEmailSubscriptionmessagehideHTMLMessage), required: false);
+            var __workflow_approvalEmailSubscriptionmessageshowHTMLConfirmationDialog = WorkflowExpression.Compile(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog, nameof(approvalEmailSubscriptionmessageshowHTMLConfirmationDialog), required: false);
             return new DeferredBodyAction<SubscriptionResponse>(() =>
             {
                 var apiCallPath = "/approvalmail/$subscriptions";
@@ -446,10 +414,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction CalendarDeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/calendars/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -471,16 +437,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseContactResponse> ContactGetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredBodyAction<EntityListResponseContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -501,102 +462,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactPostItem(Expression<Func<string>> table, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddress[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemhomeAddressstreet = null, Expression<Func<string>> itemhomeAddresscity = null, Expression<Func<string>> itemhomeAddressstate = null, Expression<Func<string>> itemhomeAddresscountryOrRegion = null, Expression<Func<string>> itemhomeAddresspostalCode = null, Expression<Func<string>> itembusinessAddressstreet = null, Expression<Func<string>> itembusinessAddresscity = null, Expression<Func<string>> itembusinessAddressstate = null, Expression<Func<string>> itembusinessAddresscountryOrRegion = null, Expression<Func<string>> itembusinessAddresspostalCode = null, Expression<Func<string>> itemotherAddressstreet = null, Expression<Func<string>> itemotherAddresscity = null, Expression<Func<string>> itemotherAddressstate = null, Expression<Func<string>> itemotherAddresscountryOrRegion = null, Expression<Func<string>> itemotherAddresspostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_itemgivenName = itemgivenName == null ? null : WorkflowExpression.Compile(itemgivenName);
-            WorkflowExpression.Validate(__workflow_itemgivenName, nameof(itemgivenName), required: true);
-            var __workflow_itemhomePhones = itemhomePhones == null ? null : WorkflowExpression.Compile(itemhomePhones);
-            WorkflowExpression.Validate(__workflow_itemhomePhones, nameof(itemhomePhones), required: true);
-            var __workflow_itemid = itemid == null ? null : WorkflowExpression.Compile(itemid);
-            WorkflowExpression.Validate(__workflow_itemid, nameof(itemid), required: false);
-            var __workflow_itemparentFolderId = itemparentFolderId == null ? null : WorkflowExpression.Compile(itemparentFolderId);
-            WorkflowExpression.Validate(__workflow_itemparentFolderId, nameof(itemparentFolderId), required: false);
-            var __workflow_itembirthday = itembirthday == null ? null : WorkflowExpression.Compile(itembirthday);
-            WorkflowExpression.Validate(__workflow_itembirthday, nameof(itembirthday), required: false);
-            var __workflow_itemfileAs = itemfileAs == null ? null : WorkflowExpression.Compile(itemfileAs);
-            WorkflowExpression.Validate(__workflow_itemfileAs, nameof(itemfileAs), required: false);
-            var __workflow_itemdisplayName = itemdisplayName == null ? null : WorkflowExpression.Compile(itemdisplayName);
-            WorkflowExpression.Validate(__workflow_itemdisplayName, nameof(itemdisplayName), required: false);
-            var __workflow_iteminitials = iteminitials == null ? null : WorkflowExpression.Compile(iteminitials);
-            WorkflowExpression.Validate(__workflow_iteminitials, nameof(iteminitials), required: false);
-            var __workflow_itemmiddleName = itemmiddleName == null ? null : WorkflowExpression.Compile(itemmiddleName);
-            WorkflowExpression.Validate(__workflow_itemmiddleName, nameof(itemmiddleName), required: false);
-            var __workflow_itemnickname = itemnickname == null ? null : WorkflowExpression.Compile(itemnickname);
-            WorkflowExpression.Validate(__workflow_itemnickname, nameof(itemnickname), required: false);
-            var __workflow_itemsurname = itemsurname == null ? null : WorkflowExpression.Compile(itemsurname);
-            WorkflowExpression.Validate(__workflow_itemsurname, nameof(itemsurname), required: false);
-            var __workflow_itemtitle = itemtitle == null ? null : WorkflowExpression.Compile(itemtitle);
-            WorkflowExpression.Validate(__workflow_itemtitle, nameof(itemtitle), required: false);
-            var __workflow_itemgeneration = itemgeneration == null ? null : WorkflowExpression.Compile(itemgeneration);
-            WorkflowExpression.Validate(__workflow_itemgeneration, nameof(itemgeneration), required: false);
-            var __workflow_itememailAddresses = itememailAddresses == null ? null : WorkflowExpression.Compile(itememailAddresses);
-            WorkflowExpression.Validate(__workflow_itememailAddresses, nameof(itememailAddresses), required: false);
-            var __workflow_itemiMAddresses = itemiMAddresses == null ? null : WorkflowExpression.Compile(itemiMAddresses);
-            WorkflowExpression.Validate(__workflow_itemiMAddresses, nameof(itemiMAddresses), required: false);
-            var __workflow_itemjobTitle = itemjobTitle == null ? null : WorkflowExpression.Compile(itemjobTitle);
-            WorkflowExpression.Validate(__workflow_itemjobTitle, nameof(itemjobTitle), required: false);
-            var __workflow_itemcompanyName = itemcompanyName == null ? null : WorkflowExpression.Compile(itemcompanyName);
-            WorkflowExpression.Validate(__workflow_itemcompanyName, nameof(itemcompanyName), required: false);
-            var __workflow_itemdepartment = itemdepartment == null ? null : WorkflowExpression.Compile(itemdepartment);
-            WorkflowExpression.Validate(__workflow_itemdepartment, nameof(itemdepartment), required: false);
-            var __workflow_itemofficeLocation = itemofficeLocation == null ? null : WorkflowExpression.Compile(itemofficeLocation);
-            WorkflowExpression.Validate(__workflow_itemofficeLocation, nameof(itemofficeLocation), required: false);
-            var __workflow_itemprofession = itemprofession == null ? null : WorkflowExpression.Compile(itemprofession);
-            WorkflowExpression.Validate(__workflow_itemprofession, nameof(itemprofession), required: false);
-            var __workflow_itembusinessHomePage = itembusinessHomePage == null ? null : WorkflowExpression.Compile(itembusinessHomePage);
-            WorkflowExpression.Validate(__workflow_itembusinessHomePage, nameof(itembusinessHomePage), required: false);
-            var __workflow_itemassistantName = itemassistantName == null ? null : WorkflowExpression.Compile(itemassistantName);
-            WorkflowExpression.Validate(__workflow_itemassistantName, nameof(itemassistantName), required: false);
-            var __workflow_itemmanager = itemmanager == null ? null : WorkflowExpression.Compile(itemmanager);
-            WorkflowExpression.Validate(__workflow_itemmanager, nameof(itemmanager), required: false);
-            var __workflow_itembusinessPhones = itembusinessPhones == null ? null : WorkflowExpression.Compile(itembusinessPhones);
-            WorkflowExpression.Validate(__workflow_itembusinessPhones, nameof(itembusinessPhones), required: false);
-            var __workflow_itemmobilePhone = itemmobilePhone == null ? null : WorkflowExpression.Compile(itemmobilePhone);
-            WorkflowExpression.Validate(__workflow_itemmobilePhone, nameof(itemmobilePhone), required: false);
-            var __workflow_itemhomeAddressstreet = itemhomeAddressstreet == null ? null : WorkflowExpression.Compile(itemhomeAddressstreet);
-            WorkflowExpression.Validate(__workflow_itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
-            var __workflow_itemhomeAddresscity = itemhomeAddresscity == null ? null : WorkflowExpression.Compile(itemhomeAddresscity);
-            WorkflowExpression.Validate(__workflow_itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
-            var __workflow_itemhomeAddressstate = itemhomeAddressstate == null ? null : WorkflowExpression.Compile(itemhomeAddressstate);
-            WorkflowExpression.Validate(__workflow_itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
-            var __workflow_itemhomeAddresscountryOrRegion = itemhomeAddresscountryOrRegion == null ? null : WorkflowExpression.Compile(itemhomeAddresscountryOrRegion);
-            WorkflowExpression.Validate(__workflow_itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
-            var __workflow_itemhomeAddresspostalCode = itemhomeAddresspostalCode == null ? null : WorkflowExpression.Compile(itemhomeAddresspostalCode);
-            WorkflowExpression.Validate(__workflow_itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
-            var __workflow_itembusinessAddressstreet = itembusinessAddressstreet == null ? null : WorkflowExpression.Compile(itembusinessAddressstreet);
-            WorkflowExpression.Validate(__workflow_itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
-            var __workflow_itembusinessAddresscity = itembusinessAddresscity == null ? null : WorkflowExpression.Compile(itembusinessAddresscity);
-            WorkflowExpression.Validate(__workflow_itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
-            var __workflow_itembusinessAddressstate = itembusinessAddressstate == null ? null : WorkflowExpression.Compile(itembusinessAddressstate);
-            WorkflowExpression.Validate(__workflow_itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
-            var __workflow_itembusinessAddresscountryOrRegion = itembusinessAddresscountryOrRegion == null ? null : WorkflowExpression.Compile(itembusinessAddresscountryOrRegion);
-            WorkflowExpression.Validate(__workflow_itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
-            var __workflow_itembusinessAddresspostalCode = itembusinessAddresspostalCode == null ? null : WorkflowExpression.Compile(itembusinessAddresspostalCode);
-            WorkflowExpression.Validate(__workflow_itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
-            var __workflow_itemotherAddressstreet = itemotherAddressstreet == null ? null : WorkflowExpression.Compile(itemotherAddressstreet);
-            WorkflowExpression.Validate(__workflow_itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
-            var __workflow_itemotherAddresscity = itemotherAddresscity == null ? null : WorkflowExpression.Compile(itemotherAddresscity);
-            WorkflowExpression.Validate(__workflow_itemotherAddresscity, nameof(itemotherAddresscity), required: false);
-            var __workflow_itemotherAddressstate = itemotherAddressstate == null ? null : WorkflowExpression.Compile(itemotherAddressstate);
-            WorkflowExpression.Validate(__workflow_itemotherAddressstate, nameof(itemotherAddressstate), required: false);
-            var __workflow_itemotherAddresscountryOrRegion = itemotherAddresscountryOrRegion == null ? null : WorkflowExpression.Compile(itemotherAddresscountryOrRegion);
-            WorkflowExpression.Validate(__workflow_itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
-            var __workflow_itemotherAddresspostalCode = itemotherAddresspostalCode == null ? null : WorkflowExpression.Compile(itemotherAddresspostalCode);
-            WorkflowExpression.Validate(__workflow_itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
-            var __workflow_itemyomiCompanyName = itemyomiCompanyName == null ? null : WorkflowExpression.Compile(itemyomiCompanyName);
-            WorkflowExpression.Validate(__workflow_itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
-            var __workflow_itemyomiGivenName = itemyomiGivenName == null ? null : WorkflowExpression.Compile(itemyomiGivenName);
-            WorkflowExpression.Validate(__workflow_itemyomiGivenName, nameof(itemyomiGivenName), required: false);
-            var __workflow_itemyomiSurname = itemyomiSurname == null ? null : WorkflowExpression.Compile(itemyomiSurname);
-            WorkflowExpression.Validate(__workflow_itemyomiSurname, nameof(itemyomiSurname), required: false);
-            var __workflow_itemcategories = itemcategories == null ? null : WorkflowExpression.Compile(itemcategories);
-            WorkflowExpression.Validate(__workflow_itemcategories, nameof(itemcategories), required: false);
-            var __workflow_itemchangeKey = itemchangeKey == null ? null : WorkflowExpression.Compile(itemchangeKey);
-            WorkflowExpression.Validate(__workflow_itemchangeKey, nameof(itemchangeKey), required: false);
-            var __workflow_itemcreatedTime = itemcreatedTime == null ? null : WorkflowExpression.Compile(itemcreatedTime);
-            WorkflowExpression.Validate(__workflow_itemcreatedTime, nameof(itemcreatedTime), required: false);
-            var __workflow_itemlastModifiedTime = itemlastModifiedTime == null ? null : WorkflowExpression.Compile(itemlastModifiedTime);
-            WorkflowExpression.Validate(__workflow_itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemgivenName = WorkflowExpression.Compile(itemgivenName, nameof(itemgivenName), required: true);
+            var __workflow_itemhomePhones = WorkflowExpression.Compile(itemhomePhones, nameof(itemhomePhones), required: true);
+            var __workflow_itemid = WorkflowExpression.Compile(itemid, nameof(itemid), required: false);
+            var __workflow_itemparentFolderId = WorkflowExpression.Compile(itemparentFolderId, nameof(itemparentFolderId), required: false);
+            var __workflow_itembirthday = WorkflowExpression.Compile(itembirthday, nameof(itembirthday), required: false);
+            var __workflow_itemfileAs = WorkflowExpression.Compile(itemfileAs, nameof(itemfileAs), required: false);
+            var __workflow_itemdisplayName = WorkflowExpression.Compile(itemdisplayName, nameof(itemdisplayName), required: false);
+            var __workflow_iteminitials = WorkflowExpression.Compile(iteminitials, nameof(iteminitials), required: false);
+            var __workflow_itemmiddleName = WorkflowExpression.Compile(itemmiddleName, nameof(itemmiddleName), required: false);
+            var __workflow_itemnickname = WorkflowExpression.Compile(itemnickname, nameof(itemnickname), required: false);
+            var __workflow_itemsurname = WorkflowExpression.Compile(itemsurname, nameof(itemsurname), required: false);
+            var __workflow_itemtitle = WorkflowExpression.Compile(itemtitle, nameof(itemtitle), required: false);
+            var __workflow_itemgeneration = WorkflowExpression.Compile(itemgeneration, nameof(itemgeneration), required: false);
+            var __workflow_itememailAddresses = WorkflowExpression.Compile(itememailAddresses, nameof(itememailAddresses), required: false);
+            var __workflow_itemiMAddresses = WorkflowExpression.Compile(itemiMAddresses, nameof(itemiMAddresses), required: false);
+            var __workflow_itemjobTitle = WorkflowExpression.Compile(itemjobTitle, nameof(itemjobTitle), required: false);
+            var __workflow_itemcompanyName = WorkflowExpression.Compile(itemcompanyName, nameof(itemcompanyName), required: false);
+            var __workflow_itemdepartment = WorkflowExpression.Compile(itemdepartment, nameof(itemdepartment), required: false);
+            var __workflow_itemofficeLocation = WorkflowExpression.Compile(itemofficeLocation, nameof(itemofficeLocation), required: false);
+            var __workflow_itemprofession = WorkflowExpression.Compile(itemprofession, nameof(itemprofession), required: false);
+            var __workflow_itembusinessHomePage = WorkflowExpression.Compile(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
+            var __workflow_itemassistantName = WorkflowExpression.Compile(itemassistantName, nameof(itemassistantName), required: false);
+            var __workflow_itemmanager = WorkflowExpression.Compile(itemmanager, nameof(itemmanager), required: false);
+            var __workflow_itembusinessPhones = WorkflowExpression.Compile(itembusinessPhones, nameof(itembusinessPhones), required: false);
+            var __workflow_itemmobilePhone = WorkflowExpression.Compile(itemmobilePhone, nameof(itemmobilePhone), required: false);
+            var __workflow_itemhomeAddressstreet = WorkflowExpression.Compile(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
+            var __workflow_itemhomeAddresscity = WorkflowExpression.Compile(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
+            var __workflow_itemhomeAddressstate = WorkflowExpression.Compile(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
+            var __workflow_itemhomeAddresscountryOrRegion = WorkflowExpression.Compile(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
+            var __workflow_itemhomeAddresspostalCode = WorkflowExpression.Compile(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
+            var __workflow_itembusinessAddressstreet = WorkflowExpression.Compile(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
+            var __workflow_itembusinessAddresscity = WorkflowExpression.Compile(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
+            var __workflow_itembusinessAddressstate = WorkflowExpression.Compile(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
+            var __workflow_itembusinessAddresscountryOrRegion = WorkflowExpression.Compile(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
+            var __workflow_itembusinessAddresspostalCode = WorkflowExpression.Compile(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
+            var __workflow_itemotherAddressstreet = WorkflowExpression.Compile(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
+            var __workflow_itemotherAddresscity = WorkflowExpression.Compile(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
+            var __workflow_itemotherAddressstate = WorkflowExpression.Compile(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
+            var __workflow_itemotherAddresscountryOrRegion = WorkflowExpression.Compile(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
+            var __workflow_itemotherAddresspostalCode = WorkflowExpression.Compile(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
+            var __workflow_itemyomiCompanyName = WorkflowExpression.Compile(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
+            var __workflow_itemyomiGivenName = WorkflowExpression.Compile(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
+            var __workflow_itemyomiSurname = WorkflowExpression.Compile(itemyomiSurname, nameof(itemyomiSurname), required: false);
+            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
+            var __workflow_itemchangeKey = WorkflowExpression.Compile(itemchangeKey, nameof(itemchangeKey), required: false);
+            var __workflow_itemcreatedTime = WorkflowExpression.Compile(itemcreatedTime, nameof(itemcreatedTime), required: false);
+            var __workflow_itemlastModifiedTime = WorkflowExpression.Compile(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
             return new DeferredBodyAction<ContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -914,10 +827,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactGetItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -930,10 +841,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ContactDeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -946,104 +855,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<ContactResponse> ContactPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> itemgivenName, Expression<Func<string[]>> itemhomePhones, Expression<Func<string>> itemid = null, Expression<Func<string>> itemparentFolderId = null, Expression<Func<string>> itembirthday = null, Expression<Func<string>> itemfileAs = null, Expression<Func<string>> itemdisplayName = null, Expression<Func<string>> iteminitials = null, Expression<Func<string>> itemmiddleName = null, Expression<Func<string>> itemnickname = null, Expression<Func<string>> itemsurname = null, Expression<Func<string>> itemtitle = null, Expression<Func<string>> itemgeneration = null, Expression<Func<EmailAddress[]>> itememailAddresses = null, Expression<Func<string[]>> itemiMAddresses = null, Expression<Func<string>> itemjobTitle = null, Expression<Func<string>> itemcompanyName = null, Expression<Func<string>> itemdepartment = null, Expression<Func<string>> itemofficeLocation = null, Expression<Func<string>> itemprofession = null, Expression<Func<string>> itembusinessHomePage = null, Expression<Func<string>> itemassistantName = null, Expression<Func<string>> itemmanager = null, Expression<Func<string[]>> itembusinessPhones = null, Expression<Func<string>> itemmobilePhone = null, Expression<Func<string>> itemhomeAddressstreet = null, Expression<Func<string>> itemhomeAddresscity = null, Expression<Func<string>> itemhomeAddressstate = null, Expression<Func<string>> itemhomeAddresscountryOrRegion = null, Expression<Func<string>> itemhomeAddresspostalCode = null, Expression<Func<string>> itembusinessAddressstreet = null, Expression<Func<string>> itembusinessAddresscity = null, Expression<Func<string>> itembusinessAddressstate = null, Expression<Func<string>> itembusinessAddresscountryOrRegion = null, Expression<Func<string>> itembusinessAddresspostalCode = null, Expression<Func<string>> itemotherAddressstreet = null, Expression<Func<string>> itemotherAddresscity = null, Expression<Func<string>> itemotherAddressstate = null, Expression<Func<string>> itemotherAddresscountryOrRegion = null, Expression<Func<string>> itemotherAddresspostalCode = null, Expression<Func<string>> itemyomiCompanyName = null, Expression<Func<string>> itemyomiGivenName = null, Expression<Func<string>> itemyomiSurname = null, Expression<Func<string[]>> itemcategories = null, Expression<Func<string>> itemchangeKey = null, Expression<Func<string>> itemcreatedTime = null, Expression<Func<string>> itemlastModifiedTime = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_itemgivenName = itemgivenName == null ? null : WorkflowExpression.Compile(itemgivenName);
-            WorkflowExpression.Validate(__workflow_itemgivenName, nameof(itemgivenName), required: true);
-            var __workflow_itemhomePhones = itemhomePhones == null ? null : WorkflowExpression.Compile(itemhomePhones);
-            WorkflowExpression.Validate(__workflow_itemhomePhones, nameof(itemhomePhones), required: true);
-            var __workflow_itemid = itemid == null ? null : WorkflowExpression.Compile(itemid);
-            WorkflowExpression.Validate(__workflow_itemid, nameof(itemid), required: false);
-            var __workflow_itemparentFolderId = itemparentFolderId == null ? null : WorkflowExpression.Compile(itemparentFolderId);
-            WorkflowExpression.Validate(__workflow_itemparentFolderId, nameof(itemparentFolderId), required: false);
-            var __workflow_itembirthday = itembirthday == null ? null : WorkflowExpression.Compile(itembirthday);
-            WorkflowExpression.Validate(__workflow_itembirthday, nameof(itembirthday), required: false);
-            var __workflow_itemfileAs = itemfileAs == null ? null : WorkflowExpression.Compile(itemfileAs);
-            WorkflowExpression.Validate(__workflow_itemfileAs, nameof(itemfileAs), required: false);
-            var __workflow_itemdisplayName = itemdisplayName == null ? null : WorkflowExpression.Compile(itemdisplayName);
-            WorkflowExpression.Validate(__workflow_itemdisplayName, nameof(itemdisplayName), required: false);
-            var __workflow_iteminitials = iteminitials == null ? null : WorkflowExpression.Compile(iteminitials);
-            WorkflowExpression.Validate(__workflow_iteminitials, nameof(iteminitials), required: false);
-            var __workflow_itemmiddleName = itemmiddleName == null ? null : WorkflowExpression.Compile(itemmiddleName);
-            WorkflowExpression.Validate(__workflow_itemmiddleName, nameof(itemmiddleName), required: false);
-            var __workflow_itemnickname = itemnickname == null ? null : WorkflowExpression.Compile(itemnickname);
-            WorkflowExpression.Validate(__workflow_itemnickname, nameof(itemnickname), required: false);
-            var __workflow_itemsurname = itemsurname == null ? null : WorkflowExpression.Compile(itemsurname);
-            WorkflowExpression.Validate(__workflow_itemsurname, nameof(itemsurname), required: false);
-            var __workflow_itemtitle = itemtitle == null ? null : WorkflowExpression.Compile(itemtitle);
-            WorkflowExpression.Validate(__workflow_itemtitle, nameof(itemtitle), required: false);
-            var __workflow_itemgeneration = itemgeneration == null ? null : WorkflowExpression.Compile(itemgeneration);
-            WorkflowExpression.Validate(__workflow_itemgeneration, nameof(itemgeneration), required: false);
-            var __workflow_itememailAddresses = itememailAddresses == null ? null : WorkflowExpression.Compile(itememailAddresses);
-            WorkflowExpression.Validate(__workflow_itememailAddresses, nameof(itememailAddresses), required: false);
-            var __workflow_itemiMAddresses = itemiMAddresses == null ? null : WorkflowExpression.Compile(itemiMAddresses);
-            WorkflowExpression.Validate(__workflow_itemiMAddresses, nameof(itemiMAddresses), required: false);
-            var __workflow_itemjobTitle = itemjobTitle == null ? null : WorkflowExpression.Compile(itemjobTitle);
-            WorkflowExpression.Validate(__workflow_itemjobTitle, nameof(itemjobTitle), required: false);
-            var __workflow_itemcompanyName = itemcompanyName == null ? null : WorkflowExpression.Compile(itemcompanyName);
-            WorkflowExpression.Validate(__workflow_itemcompanyName, nameof(itemcompanyName), required: false);
-            var __workflow_itemdepartment = itemdepartment == null ? null : WorkflowExpression.Compile(itemdepartment);
-            WorkflowExpression.Validate(__workflow_itemdepartment, nameof(itemdepartment), required: false);
-            var __workflow_itemofficeLocation = itemofficeLocation == null ? null : WorkflowExpression.Compile(itemofficeLocation);
-            WorkflowExpression.Validate(__workflow_itemofficeLocation, nameof(itemofficeLocation), required: false);
-            var __workflow_itemprofession = itemprofession == null ? null : WorkflowExpression.Compile(itemprofession);
-            WorkflowExpression.Validate(__workflow_itemprofession, nameof(itemprofession), required: false);
-            var __workflow_itembusinessHomePage = itembusinessHomePage == null ? null : WorkflowExpression.Compile(itembusinessHomePage);
-            WorkflowExpression.Validate(__workflow_itembusinessHomePage, nameof(itembusinessHomePage), required: false);
-            var __workflow_itemassistantName = itemassistantName == null ? null : WorkflowExpression.Compile(itemassistantName);
-            WorkflowExpression.Validate(__workflow_itemassistantName, nameof(itemassistantName), required: false);
-            var __workflow_itemmanager = itemmanager == null ? null : WorkflowExpression.Compile(itemmanager);
-            WorkflowExpression.Validate(__workflow_itemmanager, nameof(itemmanager), required: false);
-            var __workflow_itembusinessPhones = itembusinessPhones == null ? null : WorkflowExpression.Compile(itembusinessPhones);
-            WorkflowExpression.Validate(__workflow_itembusinessPhones, nameof(itembusinessPhones), required: false);
-            var __workflow_itemmobilePhone = itemmobilePhone == null ? null : WorkflowExpression.Compile(itemmobilePhone);
-            WorkflowExpression.Validate(__workflow_itemmobilePhone, nameof(itemmobilePhone), required: false);
-            var __workflow_itemhomeAddressstreet = itemhomeAddressstreet == null ? null : WorkflowExpression.Compile(itemhomeAddressstreet);
-            WorkflowExpression.Validate(__workflow_itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
-            var __workflow_itemhomeAddresscity = itemhomeAddresscity == null ? null : WorkflowExpression.Compile(itemhomeAddresscity);
-            WorkflowExpression.Validate(__workflow_itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
-            var __workflow_itemhomeAddressstate = itemhomeAddressstate == null ? null : WorkflowExpression.Compile(itemhomeAddressstate);
-            WorkflowExpression.Validate(__workflow_itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
-            var __workflow_itemhomeAddresscountryOrRegion = itemhomeAddresscountryOrRegion == null ? null : WorkflowExpression.Compile(itemhomeAddresscountryOrRegion);
-            WorkflowExpression.Validate(__workflow_itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
-            var __workflow_itemhomeAddresspostalCode = itemhomeAddresspostalCode == null ? null : WorkflowExpression.Compile(itemhomeAddresspostalCode);
-            WorkflowExpression.Validate(__workflow_itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
-            var __workflow_itembusinessAddressstreet = itembusinessAddressstreet == null ? null : WorkflowExpression.Compile(itembusinessAddressstreet);
-            WorkflowExpression.Validate(__workflow_itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
-            var __workflow_itembusinessAddresscity = itembusinessAddresscity == null ? null : WorkflowExpression.Compile(itembusinessAddresscity);
-            WorkflowExpression.Validate(__workflow_itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
-            var __workflow_itembusinessAddressstate = itembusinessAddressstate == null ? null : WorkflowExpression.Compile(itembusinessAddressstate);
-            WorkflowExpression.Validate(__workflow_itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
-            var __workflow_itembusinessAddresscountryOrRegion = itembusinessAddresscountryOrRegion == null ? null : WorkflowExpression.Compile(itembusinessAddresscountryOrRegion);
-            WorkflowExpression.Validate(__workflow_itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
-            var __workflow_itembusinessAddresspostalCode = itembusinessAddresspostalCode == null ? null : WorkflowExpression.Compile(itembusinessAddresspostalCode);
-            WorkflowExpression.Validate(__workflow_itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
-            var __workflow_itemotherAddressstreet = itemotherAddressstreet == null ? null : WorkflowExpression.Compile(itemotherAddressstreet);
-            WorkflowExpression.Validate(__workflow_itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
-            var __workflow_itemotherAddresscity = itemotherAddresscity == null ? null : WorkflowExpression.Compile(itemotherAddresscity);
-            WorkflowExpression.Validate(__workflow_itemotherAddresscity, nameof(itemotherAddresscity), required: false);
-            var __workflow_itemotherAddressstate = itemotherAddressstate == null ? null : WorkflowExpression.Compile(itemotherAddressstate);
-            WorkflowExpression.Validate(__workflow_itemotherAddressstate, nameof(itemotherAddressstate), required: false);
-            var __workflow_itemotherAddresscountryOrRegion = itemotherAddresscountryOrRegion == null ? null : WorkflowExpression.Compile(itemotherAddresscountryOrRegion);
-            WorkflowExpression.Validate(__workflow_itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
-            var __workflow_itemotherAddresspostalCode = itemotherAddresspostalCode == null ? null : WorkflowExpression.Compile(itemotherAddresspostalCode);
-            WorkflowExpression.Validate(__workflow_itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
-            var __workflow_itemyomiCompanyName = itemyomiCompanyName == null ? null : WorkflowExpression.Compile(itemyomiCompanyName);
-            WorkflowExpression.Validate(__workflow_itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
-            var __workflow_itemyomiGivenName = itemyomiGivenName == null ? null : WorkflowExpression.Compile(itemyomiGivenName);
-            WorkflowExpression.Validate(__workflow_itemyomiGivenName, nameof(itemyomiGivenName), required: false);
-            var __workflow_itemyomiSurname = itemyomiSurname == null ? null : WorkflowExpression.Compile(itemyomiSurname);
-            WorkflowExpression.Validate(__workflow_itemyomiSurname, nameof(itemyomiSurname), required: false);
-            var __workflow_itemcategories = itemcategories == null ? null : WorkflowExpression.Compile(itemcategories);
-            WorkflowExpression.Validate(__workflow_itemcategories, nameof(itemcategories), required: false);
-            var __workflow_itemchangeKey = itemchangeKey == null ? null : WorkflowExpression.Compile(itemchangeKey);
-            WorkflowExpression.Validate(__workflow_itemchangeKey, nameof(itemchangeKey), required: false);
-            var __workflow_itemcreatedTime = itemcreatedTime == null ? null : WorkflowExpression.Compile(itemcreatedTime);
-            WorkflowExpression.Validate(__workflow_itemcreatedTime, nameof(itemcreatedTime), required: false);
-            var __workflow_itemlastModifiedTime = itemlastModifiedTime == null ? null : WorkflowExpression.Compile(itemlastModifiedTime);
-            WorkflowExpression.Validate(__workflow_itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_itemgivenName = WorkflowExpression.Compile(itemgivenName, nameof(itemgivenName), required: true);
+            var __workflow_itemhomePhones = WorkflowExpression.Compile(itemhomePhones, nameof(itemhomePhones), required: true);
+            var __workflow_itemid = WorkflowExpression.Compile(itemid, nameof(itemid), required: false);
+            var __workflow_itemparentFolderId = WorkflowExpression.Compile(itemparentFolderId, nameof(itemparentFolderId), required: false);
+            var __workflow_itembirthday = WorkflowExpression.Compile(itembirthday, nameof(itembirthday), required: false);
+            var __workflow_itemfileAs = WorkflowExpression.Compile(itemfileAs, nameof(itemfileAs), required: false);
+            var __workflow_itemdisplayName = WorkflowExpression.Compile(itemdisplayName, nameof(itemdisplayName), required: false);
+            var __workflow_iteminitials = WorkflowExpression.Compile(iteminitials, nameof(iteminitials), required: false);
+            var __workflow_itemmiddleName = WorkflowExpression.Compile(itemmiddleName, nameof(itemmiddleName), required: false);
+            var __workflow_itemnickname = WorkflowExpression.Compile(itemnickname, nameof(itemnickname), required: false);
+            var __workflow_itemsurname = WorkflowExpression.Compile(itemsurname, nameof(itemsurname), required: false);
+            var __workflow_itemtitle = WorkflowExpression.Compile(itemtitle, nameof(itemtitle), required: false);
+            var __workflow_itemgeneration = WorkflowExpression.Compile(itemgeneration, nameof(itemgeneration), required: false);
+            var __workflow_itememailAddresses = WorkflowExpression.Compile(itememailAddresses, nameof(itememailAddresses), required: false);
+            var __workflow_itemiMAddresses = WorkflowExpression.Compile(itemiMAddresses, nameof(itemiMAddresses), required: false);
+            var __workflow_itemjobTitle = WorkflowExpression.Compile(itemjobTitle, nameof(itemjobTitle), required: false);
+            var __workflow_itemcompanyName = WorkflowExpression.Compile(itemcompanyName, nameof(itemcompanyName), required: false);
+            var __workflow_itemdepartment = WorkflowExpression.Compile(itemdepartment, nameof(itemdepartment), required: false);
+            var __workflow_itemofficeLocation = WorkflowExpression.Compile(itemofficeLocation, nameof(itemofficeLocation), required: false);
+            var __workflow_itemprofession = WorkflowExpression.Compile(itemprofession, nameof(itemprofession), required: false);
+            var __workflow_itembusinessHomePage = WorkflowExpression.Compile(itembusinessHomePage, nameof(itembusinessHomePage), required: false);
+            var __workflow_itemassistantName = WorkflowExpression.Compile(itemassistantName, nameof(itemassistantName), required: false);
+            var __workflow_itemmanager = WorkflowExpression.Compile(itemmanager, nameof(itemmanager), required: false);
+            var __workflow_itembusinessPhones = WorkflowExpression.Compile(itembusinessPhones, nameof(itembusinessPhones), required: false);
+            var __workflow_itemmobilePhone = WorkflowExpression.Compile(itemmobilePhone, nameof(itemmobilePhone), required: false);
+            var __workflow_itemhomeAddressstreet = WorkflowExpression.Compile(itemhomeAddressstreet, nameof(itemhomeAddressstreet), required: false);
+            var __workflow_itemhomeAddresscity = WorkflowExpression.Compile(itemhomeAddresscity, nameof(itemhomeAddresscity), required: false);
+            var __workflow_itemhomeAddressstate = WorkflowExpression.Compile(itemhomeAddressstate, nameof(itemhomeAddressstate), required: false);
+            var __workflow_itemhomeAddresscountryOrRegion = WorkflowExpression.Compile(itemhomeAddresscountryOrRegion, nameof(itemhomeAddresscountryOrRegion), required: false);
+            var __workflow_itemhomeAddresspostalCode = WorkflowExpression.Compile(itemhomeAddresspostalCode, nameof(itemhomeAddresspostalCode), required: false);
+            var __workflow_itembusinessAddressstreet = WorkflowExpression.Compile(itembusinessAddressstreet, nameof(itembusinessAddressstreet), required: false);
+            var __workflow_itembusinessAddresscity = WorkflowExpression.Compile(itembusinessAddresscity, nameof(itembusinessAddresscity), required: false);
+            var __workflow_itembusinessAddressstate = WorkflowExpression.Compile(itembusinessAddressstate, nameof(itembusinessAddressstate), required: false);
+            var __workflow_itembusinessAddresscountryOrRegion = WorkflowExpression.Compile(itembusinessAddresscountryOrRegion, nameof(itembusinessAddresscountryOrRegion), required: false);
+            var __workflow_itembusinessAddresspostalCode = WorkflowExpression.Compile(itembusinessAddresspostalCode, nameof(itembusinessAddresspostalCode), required: false);
+            var __workflow_itemotherAddressstreet = WorkflowExpression.Compile(itemotherAddressstreet, nameof(itemotherAddressstreet), required: false);
+            var __workflow_itemotherAddresscity = WorkflowExpression.Compile(itemotherAddresscity, nameof(itemotherAddresscity), required: false);
+            var __workflow_itemotherAddressstate = WorkflowExpression.Compile(itemotherAddressstate, nameof(itemotherAddressstate), required: false);
+            var __workflow_itemotherAddresscountryOrRegion = WorkflowExpression.Compile(itemotherAddresscountryOrRegion, nameof(itemotherAddresscountryOrRegion), required: false);
+            var __workflow_itemotherAddresspostalCode = WorkflowExpression.Compile(itemotherAddresspostalCode, nameof(itemotherAddresspostalCode), required: false);
+            var __workflow_itemyomiCompanyName = WorkflowExpression.Compile(itemyomiCompanyName, nameof(itemyomiCompanyName), required: false);
+            var __workflow_itemyomiGivenName = WorkflowExpression.Compile(itemyomiGivenName, nameof(itemyomiGivenName), required: false);
+            var __workflow_itemyomiSurname = WorkflowExpression.Compile(itemyomiSurname, nameof(itemyomiSurname), required: false);
+            var __workflow_itemcategories = WorkflowExpression.Compile(itemcategories, nameof(itemcategories), required: false);
+            var __workflow_itemchangeKey = WorkflowExpression.Compile(itemchangeKey, nameof(itemchangeKey), required: false);
+            var __workflow_itemcreatedTime = WorkflowExpression.Compile(itemcreatedTime, nameof(itemcreatedTime), required: false);
+            var __workflow_itemlastModifiedTime = WorkflowExpression.Compile(itemlastModifiedTime, nameof(itemlastModifiedTime), required: false);
             return new DeferredBodyAction<ContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/contacts/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -1361,14 +1221,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction RespondToEvent(Expression<Func<string>> eventId, Expression<Func<responseInput>> response, Expression<Func<string>> bodycomment = null, Expression<Func<bool>> bodysendResponse = null)
         {
-            var __workflow_eventId = eventId == null ? null : WorkflowExpression.Compile(eventId);
-            WorkflowExpression.Validate(__workflow_eventId, nameof(eventId), required: true);
-            var __workflow_response = response == null ? null : WorkflowExpression.Compile(response);
-            WorkflowExpression.Validate(__workflow_response, nameof(response), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodysendResponse = bodysendResponse == null ? null : WorkflowExpression.Compile(bodysendResponse);
-            WorkflowExpression.Validate(__workflow_bodysendResponse, nameof(bodysendResponse), required: false);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: true);
+            var __workflow_response = WorkflowExpression.Compile(response, nameof(response), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodysendResponse = WorkflowExpression.Compile(bodysendResponse, nameof(bodysendResponse), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/api/v2.0/me/events/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_response, 1));
@@ -1410,12 +1266,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ForwardEmail(Expression<Func<string>> messageId, Expression<Func<string>> bodyto, Expression<Func<string>> bodycomment = null)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/api/v2.0/me/messages/{0}/forward", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -1443,10 +1296,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarGetItem(Expression<Func<string>> table, Expression<Func<string>> id)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CalendarEventClientReceiveStringEnums>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v2/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -1459,16 +1310,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventListClientReceive> CalendarGetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredBodyAction<CalendarEventListClientReceive>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v3/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1489,44 +1335,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarPatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<string>> itemrecurrenceEndTime = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_itemsubject = itemsubject == null ? null : WorkflowExpression.Compile(itemsubject);
-            WorkflowExpression.Validate(__workflow_itemsubject, nameof(itemsubject), required: true);
-            var __workflow_itemstartTime = itemstartTime == null ? null : WorkflowExpression.Compile(itemstartTime);
-            WorkflowExpression.Validate(__workflow_itemstartTime, nameof(itemstartTime), required: true);
-            var __workflow_itemendTime = itemendTime == null ? null : WorkflowExpression.Compile(itemendTime);
-            WorkflowExpression.Validate(__workflow_itemendTime, nameof(itemendTime), required: true);
-            var __workflow_itemtimeZone = itemtimeZone == null ? null : WorkflowExpression.Compile(itemtimeZone);
-            WorkflowExpression.Validate(__workflow_itemtimeZone, nameof(itemtimeZone), required: false);
-            var __workflow_itemrequiredAttendees = itemrequiredAttendees == null ? null : WorkflowExpression.Compile(itemrequiredAttendees);
-            WorkflowExpression.Validate(__workflow_itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
-            var __workflow_itemoptionalAttendees = itemoptionalAttendees == null ? null : WorkflowExpression.Compile(itemoptionalAttendees);
-            WorkflowExpression.Validate(__workflow_itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
-            var __workflow_itemresourceAttendees = itemresourceAttendees == null ? null : WorkflowExpression.Compile(itemresourceAttendees);
-            WorkflowExpression.Validate(__workflow_itemresourceAttendees, nameof(itemresourceAttendees), required: false);
-            var __workflow_itembody = itembody == null ? null : WorkflowExpression.Compile(itembody);
-            WorkflowExpression.Validate(__workflow_itembody, nameof(itembody), required: false);
-            var __workflow_itemlocation = itemlocation == null ? null : WorkflowExpression.Compile(itemlocation);
-            WorkflowExpression.Validate(__workflow_itemlocation, nameof(itemlocation), required: false);
-            var __workflow_itemimportance = itemimportance == null ? null : WorkflowExpression.Compile(itemimportance);
-            WorkflowExpression.Validate(__workflow_itemimportance, nameof(itemimportance), required: false);
-            var __workflow_itemisAllDayEvent = itemisAllDayEvent == null ? null : WorkflowExpression.Compile(itemisAllDayEvent);
-            WorkflowExpression.Validate(__workflow_itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
-            var __workflow_itemrecurrence = itemrecurrence == null ? null : WorkflowExpression.Compile(itemrecurrence);
-            WorkflowExpression.Validate(__workflow_itemrecurrence, nameof(itemrecurrence), required: false);
-            var __workflow_itemrecurrenceEndTime = itemrecurrenceEndTime == null ? null : WorkflowExpression.Compile(itemrecurrenceEndTime);
-            WorkflowExpression.Validate(__workflow_itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
-            var __workflow_itemnumberOfOccurrences = itemnumberOfOccurrences == null ? null : WorkflowExpression.Compile(itemnumberOfOccurrences);
-            WorkflowExpression.Validate(__workflow_itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
-            var __workflow_itemreminder = itemreminder == null ? null : WorkflowExpression.Compile(itemreminder);
-            WorkflowExpression.Validate(__workflow_itemreminder, nameof(itemreminder), required: false);
-            var __workflow_itemshowAs = itemshowAs == null ? null : WorkflowExpression.Compile(itemshowAs);
-            WorkflowExpression.Validate(__workflow_itemshowAs, nameof(itemshowAs), required: false);
-            var __workflow_itemresponseRequested = itemresponseRequested == null ? null : WorkflowExpression.Compile(itemresponseRequested);
-            WorkflowExpression.Validate(__workflow_itemresponseRequested, nameof(itemresponseRequested), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_itemsubject = WorkflowExpression.Compile(itemsubject, nameof(itemsubject), required: true);
+            var __workflow_itemstartTime = WorkflowExpression.Compile(itemstartTime, nameof(itemstartTime), required: true);
+            var __workflow_itemendTime = WorkflowExpression.Compile(itemendTime, nameof(itemendTime), required: true);
+            var __workflow_itemtimeZone = WorkflowExpression.Compile(itemtimeZone, nameof(itemtimeZone), required: false);
+            var __workflow_itemrequiredAttendees = WorkflowExpression.Compile(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
+            var __workflow_itemoptionalAttendees = WorkflowExpression.Compile(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
+            var __workflow_itemresourceAttendees = WorkflowExpression.Compile(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
+            var __workflow_itembody = WorkflowExpression.Compile(itembody, nameof(itembody), required: false);
+            var __workflow_itemlocation = WorkflowExpression.Compile(itemlocation, nameof(itemlocation), required: false);
+            var __workflow_itemimportance = WorkflowExpression.Compile(itemimportance, nameof(itemimportance), required: false);
+            var __workflow_itemisAllDayEvent = WorkflowExpression.Compile(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
+            var __workflow_itemrecurrence = WorkflowExpression.Compile(itemrecurrence, nameof(itemrecurrence), required: false);
+            var __workflow_itemrecurrenceEndTime = WorkflowExpression.Compile(itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
+            var __workflow_itemnumberOfOccurrences = WorkflowExpression.Compile(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
+            var __workflow_itemreminder = WorkflowExpression.Compile(itemreminder, nameof(itemreminder), required: false);
+            var __workflow_itemshowAs = WorkflowExpression.Compile(itemshowAs, nameof(itemshowAs), required: false);
+            var __workflow_itemresponseRequested = WorkflowExpression.Compile(itemresponseRequested, nameof(itemresponseRequested), required: false);
             return new DeferredBodyAction<CalendarEventClientReceiveStringEnums>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v3/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 2));
@@ -1636,42 +1463,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<CalendarEventClientReceiveStringEnums> CalendarPostItem(Expression<Func<string>> table, Expression<Func<string>> itemsubject, Expression<Func<string>> itemstartTime, Expression<Func<string>> itemendTime, Expression<Func<itemtimeZoneInput>> itemtimeZone = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemresourceAttendees = null, Expression<Func<string>> itembody = null, Expression<Func<string>> itemlocation = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<bool>> itemisAllDayEvent = null, Expression<Func<itemrecurrenceInput>> itemrecurrence = null, Expression<Func<string>> itemrecurrenceEndTime = null, Expression<Func<int>> itemnumberOfOccurrences = null, Expression<Func<int>> itemreminder = null, Expression<Func<itemshowAsInput>> itemshowAs = null, Expression<Func<bool>> itemresponseRequested = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_itemsubject = itemsubject == null ? null : WorkflowExpression.Compile(itemsubject);
-            WorkflowExpression.Validate(__workflow_itemsubject, nameof(itemsubject), required: true);
-            var __workflow_itemstartTime = itemstartTime == null ? null : WorkflowExpression.Compile(itemstartTime);
-            WorkflowExpression.Validate(__workflow_itemstartTime, nameof(itemstartTime), required: true);
-            var __workflow_itemendTime = itemendTime == null ? null : WorkflowExpression.Compile(itemendTime);
-            WorkflowExpression.Validate(__workflow_itemendTime, nameof(itemendTime), required: true);
-            var __workflow_itemtimeZone = itemtimeZone == null ? null : WorkflowExpression.Compile(itemtimeZone);
-            WorkflowExpression.Validate(__workflow_itemtimeZone, nameof(itemtimeZone), required: false);
-            var __workflow_itemrequiredAttendees = itemrequiredAttendees == null ? null : WorkflowExpression.Compile(itemrequiredAttendees);
-            WorkflowExpression.Validate(__workflow_itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
-            var __workflow_itemoptionalAttendees = itemoptionalAttendees == null ? null : WorkflowExpression.Compile(itemoptionalAttendees);
-            WorkflowExpression.Validate(__workflow_itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
-            var __workflow_itemresourceAttendees = itemresourceAttendees == null ? null : WorkflowExpression.Compile(itemresourceAttendees);
-            WorkflowExpression.Validate(__workflow_itemresourceAttendees, nameof(itemresourceAttendees), required: false);
-            var __workflow_itembody = itembody == null ? null : WorkflowExpression.Compile(itembody);
-            WorkflowExpression.Validate(__workflow_itembody, nameof(itembody), required: false);
-            var __workflow_itemlocation = itemlocation == null ? null : WorkflowExpression.Compile(itemlocation);
-            WorkflowExpression.Validate(__workflow_itemlocation, nameof(itemlocation), required: false);
-            var __workflow_itemimportance = itemimportance == null ? null : WorkflowExpression.Compile(itemimportance);
-            WorkflowExpression.Validate(__workflow_itemimportance, nameof(itemimportance), required: false);
-            var __workflow_itemisAllDayEvent = itemisAllDayEvent == null ? null : WorkflowExpression.Compile(itemisAllDayEvent);
-            WorkflowExpression.Validate(__workflow_itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
-            var __workflow_itemrecurrence = itemrecurrence == null ? null : WorkflowExpression.Compile(itemrecurrence);
-            WorkflowExpression.Validate(__workflow_itemrecurrence, nameof(itemrecurrence), required: false);
-            var __workflow_itemrecurrenceEndTime = itemrecurrenceEndTime == null ? null : WorkflowExpression.Compile(itemrecurrenceEndTime);
-            WorkflowExpression.Validate(__workflow_itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
-            var __workflow_itemnumberOfOccurrences = itemnumberOfOccurrences == null ? null : WorkflowExpression.Compile(itemnumberOfOccurrences);
-            WorkflowExpression.Validate(__workflow_itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
-            var __workflow_itemreminder = itemreminder == null ? null : WorkflowExpression.Compile(itemreminder);
-            WorkflowExpression.Validate(__workflow_itemreminder, nameof(itemreminder), required: false);
-            var __workflow_itemshowAs = itemshowAs == null ? null : WorkflowExpression.Compile(itemshowAs);
-            WorkflowExpression.Validate(__workflow_itemshowAs, nameof(itemshowAs), required: false);
-            var __workflow_itemresponseRequested = itemresponseRequested == null ? null : WorkflowExpression.Compile(itemresponseRequested);
-            WorkflowExpression.Validate(__workflow_itemresponseRequested, nameof(itemresponseRequested), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_itemsubject = WorkflowExpression.Compile(itemsubject, nameof(itemsubject), required: true);
+            var __workflow_itemstartTime = WorkflowExpression.Compile(itemstartTime, nameof(itemstartTime), required: true);
+            var __workflow_itemendTime = WorkflowExpression.Compile(itemendTime, nameof(itemendTime), required: true);
+            var __workflow_itemtimeZone = WorkflowExpression.Compile(itemtimeZone, nameof(itemtimeZone), required: false);
+            var __workflow_itemrequiredAttendees = WorkflowExpression.Compile(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
+            var __workflow_itemoptionalAttendees = WorkflowExpression.Compile(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
+            var __workflow_itemresourceAttendees = WorkflowExpression.Compile(itemresourceAttendees, nameof(itemresourceAttendees), required: false);
+            var __workflow_itembody = WorkflowExpression.Compile(itembody, nameof(itembody), required: false);
+            var __workflow_itemlocation = WorkflowExpression.Compile(itemlocation, nameof(itemlocation), required: false);
+            var __workflow_itemimportance = WorkflowExpression.Compile(itemimportance, nameof(itemimportance), required: false);
+            var __workflow_itemisAllDayEvent = WorkflowExpression.Compile(itemisAllDayEvent, nameof(itemisAllDayEvent), required: false);
+            var __workflow_itemrecurrence = WorkflowExpression.Compile(itemrecurrence, nameof(itemrecurrence), required: false);
+            var __workflow_itemrecurrenceEndTime = WorkflowExpression.Compile(itemrecurrenceEndTime, nameof(itemrecurrenceEndTime), required: false);
+            var __workflow_itemnumberOfOccurrences = WorkflowExpression.Compile(itemnumberOfOccurrences, nameof(itemnumberOfOccurrences), required: false);
+            var __workflow_itemreminder = WorkflowExpression.Compile(itemreminder, nameof(itemreminder), required: false);
+            var __workflow_itemshowAs = WorkflowExpression.Compile(itemshowAs, nameof(itemshowAs), required: false);
+            var __workflow_itemresponseRequested = WorkflowExpression.Compile(itemresponseRequested, nameof(itemresponseRequested), required: false);
             return new DeferredBodyAction<CalendarEventClientReceiveStringEnums>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v3/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -1781,30 +1590,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<BatchResponseClientReceiveMessage> GetEmails(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<string>> subjectFilter = null, Expression<Func<bool>> fetchOnlyUnread = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> searchQuery = null, Expression<Func<int>> top = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_cc = cc == null ? null : WorkflowExpression.Compile(cc);
-            WorkflowExpression.Validate(__workflow_cc, nameof(cc), required: false);
-            var __workflow_toOrCc = toOrCc == null ? null : WorkflowExpression.Compile(toOrCc);
-            WorkflowExpression.Validate(__workflow_toOrCc, nameof(toOrCc), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_importance = importance == null ? null : WorkflowExpression.Compile(importance);
-            WorkflowExpression.Validate(__workflow_importance, nameof(importance), required: false);
-            var __workflow_fetchOnlyWithAttachment = fetchOnlyWithAttachment == null ? null : WorkflowExpression.Compile(fetchOnlyWithAttachment);
-            WorkflowExpression.Validate(__workflow_fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            var __workflow_subjectFilter = subjectFilter == null ? null : WorkflowExpression.Compile(subjectFilter);
-            WorkflowExpression.Validate(__workflow_subjectFilter, nameof(subjectFilter), required: false);
-            var __workflow_fetchOnlyUnread = fetchOnlyUnread == null ? null : WorkflowExpression.Compile(fetchOnlyUnread);
-            WorkflowExpression.Validate(__workflow_fetchOnlyUnread, nameof(fetchOnlyUnread), required: false);
-            var __workflow_includeAttachments = includeAttachments == null ? null : WorkflowExpression.Compile(includeAttachments);
-            WorkflowExpression.Validate(__workflow_includeAttachments, nameof(includeAttachments), required: false);
-            var __workflow_searchQuery = searchQuery == null ? null : WorkflowExpression.Compile(searchQuery);
-            WorkflowExpression.Validate(__workflow_searchQuery, nameof(searchQuery), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
+            var __workflow_fetchOnlyUnread = WorkflowExpression.Compile(fetchOnlyUnread, nameof(fetchOnlyUnread), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_searchQuery = WorkflowExpression.Compile(searchQuery, nameof(searchQuery), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<BatchResponseClientReceiveMessage>(() =>
             {
                 var apiCallPath = "/v2/Mail";
@@ -1848,22 +1645,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IBodyWorkflowAction<EntityListResponseCalendarEventClientReceiveStringEnums> GetEventsCalendarView(Expression<Func<string>> calendarId, Expression<Func<string>> startDateTimeOffset, Expression<Func<string>> endDateTimeOffset, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> search = null)
         {
-            var __workflow_calendarId = calendarId == null ? null : WorkflowExpression.Compile(calendarId);
-            WorkflowExpression.Validate(__workflow_calendarId, nameof(calendarId), required: true);
-            var __workflow_startDateTimeOffset = startDateTimeOffset == null ? null : WorkflowExpression.Compile(startDateTimeOffset);
-            WorkflowExpression.Validate(__workflow_startDateTimeOffset, nameof(startDateTimeOffset), required: true);
-            var __workflow_endDateTimeOffset = endDateTimeOffset == null ? null : WorkflowExpression.Compile(endDateTimeOffset);
-            WorkflowExpression.Validate(__workflow_endDateTimeOffset, nameof(endDateTimeOffset), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
+            var __workflow_calendarId = WorkflowExpression.Compile(calendarId, nameof(calendarId), required: true);
+            var __workflow_startDateTimeOffset = WorkflowExpression.Compile(startDateTimeOffset, nameof(startDateTimeOffset), required: true);
+            var __workflow_endDateTimeOffset = WorkflowExpression.Compile(endDateTimeOffset, nameof(endDateTimeOffset), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
             return new DeferredBodyAction<EntityListResponseCalendarEventClientReceiveStringEnums>(() =>
             {
                 var apiCallPath = "/datasets/calendars/v2/tables/items/calendarview";
@@ -1889,24 +1678,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction ReplyTo(Expression<Func<string>> messageId, Expression<Func<string>> replyParametersto = null, Expression<Func<string>> replyParameterscC = null, Expression<Func<string>> replyParametersbCC = null, Expression<Func<string>> replyParameterssubject = null, Expression<Func<string>> replyParametersbody = null, Expression<Func<bool>> replyParametersreplyAll = null, Expression<Func<replyParametersimportanceInput>> replyParametersimportance = null, Expression<Func<ClientSendAttachment[]>> replyParametersattachments = null)
         {
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_replyParametersto = replyParametersto == null ? null : WorkflowExpression.Compile(replyParametersto);
-            WorkflowExpression.Validate(__workflow_replyParametersto, nameof(replyParametersto), required: false);
-            var __workflow_replyParameterscC = replyParameterscC == null ? null : WorkflowExpression.Compile(replyParameterscC);
-            WorkflowExpression.Validate(__workflow_replyParameterscC, nameof(replyParameterscC), required: false);
-            var __workflow_replyParametersbCC = replyParametersbCC == null ? null : WorkflowExpression.Compile(replyParametersbCC);
-            WorkflowExpression.Validate(__workflow_replyParametersbCC, nameof(replyParametersbCC), required: false);
-            var __workflow_replyParameterssubject = replyParameterssubject == null ? null : WorkflowExpression.Compile(replyParameterssubject);
-            WorkflowExpression.Validate(__workflow_replyParameterssubject, nameof(replyParameterssubject), required: false);
-            var __workflow_replyParametersbody = replyParametersbody == null ? null : WorkflowExpression.Compile(replyParametersbody);
-            WorkflowExpression.Validate(__workflow_replyParametersbody, nameof(replyParametersbody), required: false);
-            var __workflow_replyParametersreplyAll = replyParametersreplyAll == null ? null : WorkflowExpression.Compile(replyParametersreplyAll);
-            WorkflowExpression.Validate(__workflow_replyParametersreplyAll, nameof(replyParametersreplyAll), required: false);
-            var __workflow_replyParametersimportance = replyParametersimportance == null ? null : WorkflowExpression.Compile(replyParametersimportance);
-            WorkflowExpression.Validate(__workflow_replyParametersimportance, nameof(replyParametersimportance), required: false);
-            var __workflow_replyParametersattachments = replyParametersattachments == null ? null : WorkflowExpression.Compile(replyParametersattachments);
-            WorkflowExpression.Validate(__workflow_replyParametersattachments, nameof(replyParametersattachments), required: false);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_replyParametersto = WorkflowExpression.Compile(replyParametersto, nameof(replyParametersto), required: false);
+            var __workflow_replyParameterscC = WorkflowExpression.Compile(replyParameterscC, nameof(replyParameterscC), required: false);
+            var __workflow_replyParametersbCC = WorkflowExpression.Compile(replyParametersbCC, nameof(replyParametersbCC), required: false);
+            var __workflow_replyParameterssubject = WorkflowExpression.Compile(replyParameterssubject, nameof(replyParameterssubject), required: false);
+            var __workflow_replyParametersbody = WorkflowExpression.Compile(replyParametersbody, nameof(replyParametersbody), required: false);
+            var __workflow_replyParametersreplyAll = WorkflowExpression.Compile(replyParametersreplyAll, nameof(replyParametersreplyAll), required: false);
+            var __workflow_replyParametersimportance = WorkflowExpression.Compile(replyParametersimportance, nameof(replyParametersimportance), required: false);
+            var __workflow_replyParametersattachments = WorkflowExpression.Compile(replyParametersattachments, nameof(replyParametersattachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/Mail/ReplyTo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -1974,24 +1754,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "outlook")]
         public IWorkflowAction SendEmail(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagesubject, Expression<Func<string>> emailMessagebody, Expression<Func<string>> emailMessagefromSendAs = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<ClientSendAttachment[]>> emailMessageattachments = null, Expression<Func<string>> emailMessagereplyTo = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null)
         {
-            var __workflow_emailMessageto = emailMessageto == null ? null : WorkflowExpression.Compile(emailMessageto);
-            WorkflowExpression.Validate(__workflow_emailMessageto, nameof(emailMessageto), required: true);
-            var __workflow_emailMessagesubject = emailMessagesubject == null ? null : WorkflowExpression.Compile(emailMessagesubject);
-            WorkflowExpression.Validate(__workflow_emailMessagesubject, nameof(emailMessagesubject), required: true);
-            var __workflow_emailMessagebody = emailMessagebody == null ? null : WorkflowExpression.Compile(emailMessagebody);
-            WorkflowExpression.Validate(__workflow_emailMessagebody, nameof(emailMessagebody), required: true);
-            var __workflow_emailMessagefromSendAs = emailMessagefromSendAs == null ? null : WorkflowExpression.Compile(emailMessagefromSendAs);
-            WorkflowExpression.Validate(__workflow_emailMessagefromSendAs, nameof(emailMessagefromSendAs), required: false);
-            var __workflow_emailMessagecC = emailMessagecC == null ? null : WorkflowExpression.Compile(emailMessagecC);
-            WorkflowExpression.Validate(__workflow_emailMessagecC, nameof(emailMessagecC), required: false);
-            var __workflow_emailMessagebCC = emailMessagebCC == null ? null : WorkflowExpression.Compile(emailMessagebCC);
-            WorkflowExpression.Validate(__workflow_emailMessagebCC, nameof(emailMessagebCC), required: false);
-            var __workflow_emailMessageattachments = emailMessageattachments == null ? null : WorkflowExpression.Compile(emailMessageattachments);
-            WorkflowExpression.Validate(__workflow_emailMessageattachments, nameof(emailMessageattachments), required: false);
-            var __workflow_emailMessagereplyTo = emailMessagereplyTo == null ? null : WorkflowExpression.Compile(emailMessagereplyTo);
-            WorkflowExpression.Validate(__workflow_emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
-            var __workflow_emailMessageimportance = emailMessageimportance == null ? null : WorkflowExpression.Compile(emailMessageimportance);
-            WorkflowExpression.Validate(__workflow_emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: true);
+            var __workflow_emailMessagesubject = WorkflowExpression.Compile(emailMessagesubject, nameof(emailMessagesubject), required: true);
+            var __workflow_emailMessagebody = WorkflowExpression.Compile(emailMessagebody, nameof(emailMessagebody), required: true);
+            var __workflow_emailMessagefromSendAs = WorkflowExpression.Compile(emailMessagefromSendAs, nameof(emailMessagefromSendAs), required: false);
+            var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
+            var __workflow_emailMessagebCC = WorkflowExpression.Compile(emailMessagebCC, nameof(emailMessagebCC), required: false);
+            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessagereplyTo = WorkflowExpression.Compile(emailMessagereplyTo, nameof(emailMessagereplyTo), required: false);
+            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/Mail";
@@ -2065,12 +1836,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
     {
         public IBodyWorkflowTrigger<CalendarEventListWithActionType> CalendarGetOnChangedItems(Expression<Func<string>> table, Expression<Func<int>> incomingDays = null, Expression<Func<int>> pastDays = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_incomingDays = incomingDays == null ? null : WorkflowExpression.Compile(incomingDays);
-            WorkflowExpression.Validate(__workflow_incomingDays, nameof(incomingDays), required: false);
-            var __workflow_pastDays = pastDays == null ? null : WorkflowExpression.Compile(pastDays);
-            WorkflowExpression.Validate(__workflow_pastDays, nameof(pastDays), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_incomingDays = WorkflowExpression.Compile(incomingDays, nameof(incomingDays), required: false);
+            var __workflow_pastDays = WorkflowExpression.Compile(pastDays, nameof(pastDays), required: false);
             return new DeferredBodyTrigger<CalendarEventListWithActionType>(() =>
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -2121,14 +1889,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnNewItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredBodyTrigger<CalendarEventListClientReceive>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v2/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -2146,14 +1910,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> CalendarGetOnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredBodyTrigger<CalendarEventListClientReceive>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/calendars/v2/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -2171,24 +1931,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnFlaggedEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_cc = cc == null ? null : WorkflowExpression.Compile(cc);
-            WorkflowExpression.Validate(__workflow_cc, nameof(cc), required: false);
-            var __workflow_toOrCc = toOrCc == null ? null : WorkflowExpression.Compile(toOrCc);
-            WorkflowExpression.Validate(__workflow_toOrCc, nameof(toOrCc), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_importance = importance == null ? null : WorkflowExpression.Compile(importance);
-            WorkflowExpression.Validate(__workflow_importance, nameof(importance), required: false);
-            var __workflow_fetchOnlyWithAttachment = fetchOnlyWithAttachment == null ? null : WorkflowExpression.Compile(fetchOnlyWithAttachment);
-            WorkflowExpression.Validate(__workflow_fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            var __workflow_includeAttachments = includeAttachments == null ? null : WorkflowExpression.Compile(includeAttachments);
-            WorkflowExpression.Validate(__workflow_includeAttachments, nameof(includeAttachments), required: false);
-            var __workflow_subjectFilter = subjectFilter == null ? null : WorkflowExpression.Compile(subjectFilter);
-            WorkflowExpression.Validate(__workflow_subjectFilter, nameof(subjectFilter), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
             return new DeferredBodyTrigger<TriggerBatchResponseClientReceiveMessage>(() =>
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -2258,24 +2009,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_cc = cc == null ? null : WorkflowExpression.Compile(cc);
-            WorkflowExpression.Validate(__workflow_cc, nameof(cc), required: false);
-            var __workflow_toOrCc = toOrCc == null ? null : WorkflowExpression.Compile(toOrCc);
-            WorkflowExpression.Validate(__workflow_toOrCc, nameof(toOrCc), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_importance = importance == null ? null : WorkflowExpression.Compile(importance);
-            WorkflowExpression.Validate(__workflow_importance, nameof(importance), required: false);
-            var __workflow_fetchOnlyWithAttachment = fetchOnlyWithAttachment == null ? null : WorkflowExpression.Compile(fetchOnlyWithAttachment);
-            WorkflowExpression.Validate(__workflow_fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            var __workflow_includeAttachments = includeAttachments == null ? null : WorkflowExpression.Compile(includeAttachments);
-            WorkflowExpression.Validate(__workflow_includeAttachments, nameof(includeAttachments), required: false);
-            var __workflow_subjectFilter = subjectFilter == null ? null : WorkflowExpression.Compile(subjectFilter);
-            WorkflowExpression.Validate(__workflow_subjectFilter, nameof(subjectFilter), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
             return new DeferredBodyTrigger<TriggerBatchResponseClientReceiveMessage>(() =>
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -2345,24 +2087,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<TriggerBatchResponseClientReceiveMessage> OnNewMentionMeEmail(Expression<Func<string>> folderPath = null, Expression<Func<string>> to = null, Expression<Func<string>> cc = null, Expression<Func<string>> toOrCc = null, Expression<Func<string>> from = null, Expression<Func<importanceInput>> importance = null, Expression<Func<bool>> fetchOnlyWithAttachment = null, Expression<Func<bool>> includeAttachments = null, Expression<Func<string>> subjectFilter = null)
         {
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_cc = cc == null ? null : WorkflowExpression.Compile(cc);
-            WorkflowExpression.Validate(__workflow_cc, nameof(cc), required: false);
-            var __workflow_toOrCc = toOrCc == null ? null : WorkflowExpression.Compile(toOrCc);
-            WorkflowExpression.Validate(__workflow_toOrCc, nameof(toOrCc), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_importance = importance == null ? null : WorkflowExpression.Compile(importance);
-            WorkflowExpression.Validate(__workflow_importance, nameof(importance), required: false);
-            var __workflow_fetchOnlyWithAttachment = fetchOnlyWithAttachment == null ? null : WorkflowExpression.Compile(fetchOnlyWithAttachment);
-            WorkflowExpression.Validate(__workflow_fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
-            var __workflow_includeAttachments = includeAttachments == null ? null : WorkflowExpression.Compile(includeAttachments);
-            WorkflowExpression.Validate(__workflow_includeAttachments, nameof(includeAttachments), required: false);
-            var __workflow_subjectFilter = subjectFilter == null ? null : WorkflowExpression.Compile(subjectFilter);
-            WorkflowExpression.Validate(__workflow_subjectFilter, nameof(subjectFilter), required: false);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_toOrCc = WorkflowExpression.Compile(toOrCc, nameof(toOrCc), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_fetchOnlyWithAttachment = WorkflowExpression.Compile(fetchOnlyWithAttachment, nameof(fetchOnlyWithAttachment), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_subjectFilter = WorkflowExpression.Compile(subjectFilter, nameof(subjectFilter), required: false);
             return new DeferredBodyTrigger<TriggerBatchResponseClientReceiveMessage>(() =>
             {
                 var input = new ApiConnectionNotificationActionInput(connectionId);
@@ -2430,10 +2163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Outlook
 
         public IBodyWorkflowTrigger<CalendarEventListClientReceive> OnUpcomingEvents(Expression<Func<string>> table, Expression<Func<int>> lookAheadTimeInMinutes = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_lookAheadTimeInMinutes = lookAheadTimeInMinutes == null ? null : WorkflowExpression.Compile(lookAheadTimeInMinutes);
-            WorkflowExpression.Validate(__workflow_lookAheadTimeInMinutes, nameof(lookAheadTimeInMinutes), required: false);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_lookAheadTimeInMinutes = WorkflowExpression.Compile(lookAheadTimeInMinutes, nameof(lookAheadTimeInMinutes), required: false);
             return new DeferredBodyTrigger<CalendarEventListClientReceive>(() =>
             {
                 var apiCallPath = "/v2/Events/OnUpcomingEvents";

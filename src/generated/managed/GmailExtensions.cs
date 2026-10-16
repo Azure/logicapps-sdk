@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IBodyWorkflowAction<DetailedReceiveMessage> GetEmail(Expression<Func<string>> id, Expression<Func<bool>> includeAttachments = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_includeAttachments = includeAttachments == null ? null : WorkflowExpression.Compile(includeAttachments);
-            WorkflowExpression.Validate(__workflow_includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
             return new DeferredBodyAction<DetailedReceiveMessage>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -32,8 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction DeleteEmail(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -46,8 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction TrashEmail(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Mail/{0}/trash", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -60,24 +56,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction ReplyTo(Expression<Func<string>> id, Expression<Func<string>> replyMessageto = null, Expression<Func<string>> replyMessagecC = null, Expression<Func<string>> replyMessagebCC = null, Expression<Func<string>> replyMessagesubject = null, Expression<Func<string>> replyMessagebody = null, Expression<Func<bool>> replyMessagereplyAll = null, Expression<Func<replyMessageimportanceInput>> replyMessageimportance = null, Expression<Func<Attachment[]>> replyMessageattachments = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_replyMessageto = replyMessageto == null ? null : WorkflowExpression.Compile(replyMessageto);
-            WorkflowExpression.Validate(__workflow_replyMessageto, nameof(replyMessageto), required: false);
-            var __workflow_replyMessagecC = replyMessagecC == null ? null : WorkflowExpression.Compile(replyMessagecC);
-            WorkflowExpression.Validate(__workflow_replyMessagecC, nameof(replyMessagecC), required: false);
-            var __workflow_replyMessagebCC = replyMessagebCC == null ? null : WorkflowExpression.Compile(replyMessagebCC);
-            WorkflowExpression.Validate(__workflow_replyMessagebCC, nameof(replyMessagebCC), required: false);
-            var __workflow_replyMessagesubject = replyMessagesubject == null ? null : WorkflowExpression.Compile(replyMessagesubject);
-            WorkflowExpression.Validate(__workflow_replyMessagesubject, nameof(replyMessagesubject), required: false);
-            var __workflow_replyMessagebody = replyMessagebody == null ? null : WorkflowExpression.Compile(replyMessagebody);
-            WorkflowExpression.Validate(__workflow_replyMessagebody, nameof(replyMessagebody), required: false);
-            var __workflow_replyMessagereplyAll = replyMessagereplyAll == null ? null : WorkflowExpression.Compile(replyMessagereplyAll);
-            WorkflowExpression.Validate(__workflow_replyMessagereplyAll, nameof(replyMessagereplyAll), required: false);
-            var __workflow_replyMessageimportance = replyMessageimportance == null ? null : WorkflowExpression.Compile(replyMessageimportance);
-            WorkflowExpression.Validate(__workflow_replyMessageimportance, nameof(replyMessageimportance), required: false);
-            var __workflow_replyMessageattachments = replyMessageattachments == null ? null : WorkflowExpression.Compile(replyMessageattachments);
-            WorkflowExpression.Validate(__workflow_replyMessageattachments, nameof(replyMessageattachments), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_replyMessageto = WorkflowExpression.Compile(replyMessageto, nameof(replyMessageto), required: false);
+            var __workflow_replyMessagecC = WorkflowExpression.Compile(replyMessagecC, nameof(replyMessagecC), required: false);
+            var __workflow_replyMessagebCC = WorkflowExpression.Compile(replyMessagebCC, nameof(replyMessagebCC), required: false);
+            var __workflow_replyMessagesubject = WorkflowExpression.Compile(replyMessagesubject, nameof(replyMessagesubject), required: false);
+            var __workflow_replyMessagebody = WorkflowExpression.Compile(replyMessagebody, nameof(replyMessagebody), required: false);
+            var __workflow_replyMessagereplyAll = WorkflowExpression.Compile(replyMessagereplyAll, nameof(replyMessagereplyAll), required: false);
+            var __workflow_replyMessageimportance = WorkflowExpression.Compile(replyMessageimportance, nameof(replyMessageimportance), required: false);
+            var __workflow_replyMessageattachments = WorkflowExpression.Compile(replyMessageattachments, nameof(replyMessageattachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/Mail/ReplyTo/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -145,20 +132,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gmail")]
         public IWorkflowAction SendEmail(Expression<Func<string>> emailMessageto, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagebCC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<Attachment[]>> emailMessageattachments = null)
         {
-            var __workflow_emailMessageto = emailMessageto == null ? null : WorkflowExpression.Compile(emailMessageto);
-            WorkflowExpression.Validate(__workflow_emailMessageto, nameof(emailMessageto), required: true);
-            var __workflow_emailMessagecC = emailMessagecC == null ? null : WorkflowExpression.Compile(emailMessagecC);
-            WorkflowExpression.Validate(__workflow_emailMessagecC, nameof(emailMessagecC), required: false);
-            var __workflow_emailMessagebCC = emailMessagebCC == null ? null : WorkflowExpression.Compile(emailMessagebCC);
-            WorkflowExpression.Validate(__workflow_emailMessagebCC, nameof(emailMessagebCC), required: false);
-            var __workflow_emailMessagesubject = emailMessagesubject == null ? null : WorkflowExpression.Compile(emailMessagesubject);
-            WorkflowExpression.Validate(__workflow_emailMessagesubject, nameof(emailMessagesubject), required: false);
-            var __workflow_emailMessagebody = emailMessagebody == null ? null : WorkflowExpression.Compile(emailMessagebody);
-            WorkflowExpression.Validate(__workflow_emailMessagebody, nameof(emailMessagebody), required: false);
-            var __workflow_emailMessageimportance = emailMessageimportance == null ? null : WorkflowExpression.Compile(emailMessageimportance);
-            WorkflowExpression.Validate(__workflow_emailMessageimportance, nameof(emailMessageimportance), required: false);
-            var __workflow_emailMessageattachments = emailMessageattachments == null ? null : WorkflowExpression.Compile(emailMessageattachments);
-            WorkflowExpression.Validate(__workflow_emailMessageattachments, nameof(emailMessageattachments), required: false);
+            var __workflow_emailMessageto = WorkflowExpression.Compile(emailMessageto, nameof(emailMessageto), required: true);
+            var __workflow_emailMessagecC = WorkflowExpression.Compile(emailMessagecC, nameof(emailMessagecC), required: false);
+            var __workflow_emailMessagebCC = WorkflowExpression.Compile(emailMessagebCC, nameof(emailMessagebCC), required: false);
+            var __workflow_emailMessagesubject = WorkflowExpression.Compile(emailMessagesubject, nameof(emailMessagesubject), required: false);
+            var __workflow_emailMessagebody = WorkflowExpression.Compile(emailMessagebody, nameof(emailMessagebody), required: false);
+            var __workflow_emailMessageimportance = WorkflowExpression.Compile(emailMessageimportance, nameof(emailMessageimportance), required: false);
+            var __workflow_emailMessageattachments = WorkflowExpression.Compile(emailMessageattachments, nameof(emailMessageattachments), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/Mail";
@@ -218,22 +198,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
     {
         public IBodyWorkflowTrigger<DetailedReceiveMessage> OnNewEmail(Expression<Func<string>> label = null, Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> subject = null, Expression<Func<importanceInput>> importance = null, Expression<Func<starredInput>> starred = null, Expression<Func<bool>> fetchOnlyWithAttachments = null, Expression<Func<bool>> includeAttachments = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_label = label == null ? null : WorkflowExpression.Compile(label);
-            WorkflowExpression.Validate(__workflow_label, nameof(label), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_subject = subject == null ? null : WorkflowExpression.Compile(subject);
-            WorkflowExpression.Validate(__workflow_subject, nameof(subject), required: false);
-            var __workflow_importance = importance == null ? null : WorkflowExpression.Compile(importance);
-            WorkflowExpression.Validate(__workflow_importance, nameof(importance), required: false);
-            var __workflow_starred = starred == null ? null : WorkflowExpression.Compile(starred);
-            WorkflowExpression.Validate(__workflow_starred, nameof(starred), required: false);
-            var __workflow_fetchOnlyWithAttachments = fetchOnlyWithAttachments == null ? null : WorkflowExpression.Compile(fetchOnlyWithAttachments);
-            WorkflowExpression.Validate(__workflow_fetchOnlyWithAttachments, nameof(fetchOnlyWithAttachments), required: false);
-            var __workflow_includeAttachments = includeAttachments == null ? null : WorkflowExpression.Compile(includeAttachments);
-            WorkflowExpression.Validate(__workflow_includeAttachments, nameof(includeAttachments), required: false);
+            var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
+            var __workflow_importance = WorkflowExpression.Compile(importance, nameof(importance), required: false);
+            var __workflow_starred = WorkflowExpression.Compile(starred, nameof(starred), required: false);
+            var __workflow_fetchOnlyWithAttachments = WorkflowExpression.Compile(fetchOnlyWithAttachments, nameof(fetchOnlyWithAttachments), required: false);
+            var __workflow_includeAttachments = WorkflowExpression.Compile(includeAttachments, nameof(includeAttachments), required: false);
             return new DeferredBodyTrigger<DetailedReceiveMessage>(() =>
             {
                 var apiCallPath = "/Mail/OnNewEmail";

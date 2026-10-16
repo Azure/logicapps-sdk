@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetLightResponse> GetLight(Expression<Func<string>> deviceId)
         {
-            var __workflow_deviceId = deviceId == null ? null : WorkflowExpression.Compile(deviceId);
-            WorkflowExpression.Validate(__workflow_deviceId, nameof(deviceId), required: true);
+            var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             return new DeferredBodyAction<GetLightResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
@@ -36,28 +35,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<string>> bodymetadataname = null, Expression<Func<bool>> bodyonon = null, Expression<Func<double>> bodydimmingbrightness = null, Expression<Func<int>> bodycolorTemperaturemirek = null, Expression<Func<double>> bodycolorxyx = null, Expression<Func<double>> bodycolorxyy = null, Expression<Func<double>> bodydynamicsspeed = null, Expression<Func<int>> bodydynamicsduration = null, Expression<Func<string>> bodyalertaction = null, Expression<Func<bodygradientpointsInputItem[]>> bodygradientpoints = null)
         {
-            var __workflow_deviceId = deviceId == null ? null : WorkflowExpression.Compile(deviceId);
-            WorkflowExpression.Validate(__workflow_deviceId, nameof(deviceId), required: true);
-            var __workflow_bodymetadataname = bodymetadataname == null ? null : WorkflowExpression.Compile(bodymetadataname);
-            WorkflowExpression.Validate(__workflow_bodymetadataname, nameof(bodymetadataname), required: false);
-            var __workflow_bodyonon = bodyonon == null ? null : WorkflowExpression.Compile(bodyonon);
-            WorkflowExpression.Validate(__workflow_bodyonon, nameof(bodyonon), required: false);
-            var __workflow_bodydimmingbrightness = bodydimmingbrightness == null ? null : WorkflowExpression.Compile(bodydimmingbrightness);
-            WorkflowExpression.Validate(__workflow_bodydimmingbrightness, nameof(bodydimmingbrightness), required: false);
-            var __workflow_bodycolorTemperaturemirek = bodycolorTemperaturemirek == null ? null : WorkflowExpression.Compile(bodycolorTemperaturemirek);
-            WorkflowExpression.Validate(__workflow_bodycolorTemperaturemirek, nameof(bodycolorTemperaturemirek), required: false);
-            var __workflow_bodycolorxyx = bodycolorxyx == null ? null : WorkflowExpression.Compile(bodycolorxyx);
-            WorkflowExpression.Validate(__workflow_bodycolorxyx, nameof(bodycolorxyx), required: false);
-            var __workflow_bodycolorxyy = bodycolorxyy == null ? null : WorkflowExpression.Compile(bodycolorxyy);
-            WorkflowExpression.Validate(__workflow_bodycolorxyy, nameof(bodycolorxyy), required: false);
-            var __workflow_bodydynamicsspeed = bodydynamicsspeed == null ? null : WorkflowExpression.Compile(bodydynamicsspeed);
-            WorkflowExpression.Validate(__workflow_bodydynamicsspeed, nameof(bodydynamicsspeed), required: false);
-            var __workflow_bodydynamicsduration = bodydynamicsduration == null ? null : WorkflowExpression.Compile(bodydynamicsduration);
-            WorkflowExpression.Validate(__workflow_bodydynamicsduration, nameof(bodydynamicsduration), required: false);
-            var __workflow_bodyalertaction = bodyalertaction == null ? null : WorkflowExpression.Compile(bodyalertaction);
-            WorkflowExpression.Validate(__workflow_bodyalertaction, nameof(bodyalertaction), required: false);
-            var __workflow_bodygradientpoints = bodygradientpoints == null ? null : WorkflowExpression.Compile(bodygradientpoints);
-            WorkflowExpression.Validate(__workflow_bodygradientpoints, nameof(bodygradientpoints), required: false);
+            var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
+            var __workflow_bodymetadataname = WorkflowExpression.Compile(bodymetadataname, nameof(bodymetadataname), required: false);
+            var __workflow_bodyonon = WorkflowExpression.Compile(bodyonon, nameof(bodyonon), required: false);
+            var __workflow_bodydimmingbrightness = WorkflowExpression.Compile(bodydimmingbrightness, nameof(bodydimmingbrightness), required: false);
+            var __workflow_bodycolorTemperaturemirek = WorkflowExpression.Compile(bodycolorTemperaturemirek, nameof(bodycolorTemperaturemirek), required: false);
+            var __workflow_bodycolorxyx = WorkflowExpression.Compile(bodycolorxyx, nameof(bodycolorxyx), required: false);
+            var __workflow_bodycolorxyy = WorkflowExpression.Compile(bodycolorxyy, nameof(bodycolorxyy), required: false);
+            var __workflow_bodydynamicsspeed = WorkflowExpression.Compile(bodydynamicsspeed, nameof(bodydynamicsspeed), required: false);
+            var __workflow_bodydynamicsduration = WorkflowExpression.Compile(bodydynamicsduration, nameof(bodydynamicsduration), required: false);
+            var __workflow_bodyalertaction = WorkflowExpression.Compile(bodyalertaction, nameof(bodyalertaction), required: false);
+            var __workflow_bodygradientpoints = WorkflowExpression.Compile(bodygradientpoints, nameof(bodygradientpoints), required: false);
             return new DeferredBodyAction<ExecuteLightResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
@@ -229,8 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetDeviceResponse> GetDevice(Expression<Func<string>> deviceId)
         {
-            var __workflow_deviceId = deviceId == null ? null : WorkflowExpression.Compile(deviceId);
-            WorkflowExpression.Validate(__workflow_deviceId, nameof(deviceId), required: true);
+            var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
             return new DeferredBodyAction<GetDeviceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
@@ -243,14 +230,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<bodymetadataarchetypeInput>> bodymetadataarchetype = null, Expression<Func<string>> bodymetadataname = null, Expression<Func<string>> bodyidentifyaction = null)
         {
-            var __workflow_deviceId = deviceId == null ? null : WorkflowExpression.Compile(deviceId);
-            WorkflowExpression.Validate(__workflow_deviceId, nameof(deviceId), required: true);
-            var __workflow_bodymetadataarchetype = bodymetadataarchetype == null ? null : WorkflowExpression.Compile(bodymetadataarchetype);
-            WorkflowExpression.Validate(__workflow_bodymetadataarchetype, nameof(bodymetadataarchetype), required: false);
-            var __workflow_bodymetadataname = bodymetadataname == null ? null : WorkflowExpression.Compile(bodymetadataname);
-            WorkflowExpression.Validate(__workflow_bodymetadataname, nameof(bodymetadataname), required: false);
-            var __workflow_bodyidentifyaction = bodyidentifyaction == null ? null : WorkflowExpression.Compile(bodyidentifyaction);
-            WorkflowExpression.Validate(__workflow_bodyidentifyaction, nameof(bodyidentifyaction), required: false);
+            var __workflow_deviceId = WorkflowExpression.Compile(deviceId, nameof(deviceId), required: true);
+            var __workflow_bodymetadataarchetype = WorkflowExpression.Compile(bodymetadataarchetype, nameof(bodymetadataarchetype), required: false);
+            var __workflow_bodymetadataname = WorkflowExpression.Compile(bodymetadataname, nameof(bodymetadataname), required: false);
+            var __workflow_bodyidentifyaction = WorkflowExpression.Compile(bodyidentifyaction, nameof(bodyidentifyaction), required: false);
             return new DeferredBodyAction<ExecuteDeviceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deviceId, 1));
@@ -333,8 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<GetSceneResponse> GetScene(Expression<Func<string>> sceneId)
         {
-            var __workflow_sceneId = sceneId == null ? null : WorkflowExpression.Compile(sceneId);
-            WorkflowExpression.Validate(__workflow_sceneId, nameof(sceneId), required: true);
+            var __workflow_sceneId = WorkflowExpression.Compile(sceneId, nameof(sceneId), required: true);
             return new DeferredBodyAction<GetSceneResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sceneId, 1));
@@ -347,8 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
         public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene(Expression<Func<string>> sceneId)
         {
-            var __workflow_sceneId = sceneId == null ? null : WorkflowExpression.Compile(sceneId);
-            WorkflowExpression.Validate(__workflow_sceneId, nameof(sceneId), required: true);
+            var __workflow_sceneId = WorkflowExpression.Compile(sceneId, nameof(sceneId), required: true);
             return new DeferredBodyAction<DeleteSceneResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sceneId, 1));

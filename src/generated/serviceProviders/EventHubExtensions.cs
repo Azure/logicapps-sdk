@@ -15,12 +15,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_eventData = eventData == null ? null : WorkflowExpression.Compile(eventData);
-            WorkflowExpression.Validate(__workflow_eventData, nameof(eventData), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_eventData = WorkflowExpression.Compile(eventData, nameof(eventData), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -43,12 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_eventDatas = eventDatas == null ? null : WorkflowExpression.Compile(eventDatas);
-            WorkflowExpression.Validate(__workflow_eventDatas, nameof(eventDatas), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_eventDatas = WorkflowExpression.Compile(eventDatas, nameof(eventDatas), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -71,10 +65,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
         public IOutputWorkflowAction<JToken> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_skipAlreadyReplicated = skipAlreadyReplicated == null ? null : WorkflowExpression.Compile(skipAlreadyReplicated);
-            WorkflowExpression.Validate(__workflow_skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_skipAlreadyReplicated = WorkflowExpression.Compile(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -94,10 +86,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     {
         public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_consumerGroup = consumerGroup == null ? null : WorkflowExpression.Compile(consumerGroup);
-            WorkflowExpression.Validate(__workflow_consumerGroup, nameof(consumerGroup), required: false);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_consumerGroup = WorkflowExpression.Compile(consumerGroup, nameof(consumerGroup), required: false);
             return new DeferredBodyTrigger<ReceiveEventsOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -118,10 +108,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
 
         public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_consumerGroup = consumerGroup == null ? null : WorkflowExpression.Compile(consumerGroup);
-            WorkflowExpression.Validate(__workflow_consumerGroup, nameof(consumerGroup), required: false);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_consumerGroup = WorkflowExpression.Compile(consumerGroup, nameof(consumerGroup), required: false);
             return new DeferredOutputTrigger<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<AddSubscriptionResponse> AddSubscription(Expression<Func<string>> bodyquickadd = null)
         {
-            var __workflow_bodyquickadd = bodyquickadd == null ? null : WorkflowExpression.Compile(bodyquickadd);
-            WorkflowExpression.Validate(__workflow_bodyquickadd, nameof(bodyquickadd), required: false);
+            var __workflow_bodyquickadd = WorkflowExpression.Compile(bodyquickadd, nameof(bodyquickadd), required: false);
             return new DeferredBodyAction<AddSubscriptionResponse>(() =>
             {
                 var apiCallPath = "/subscription/quickadd";
@@ -40,10 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction EditSubscription(Expression<Func<string>> streamId, Expression<Func<string>> bodyt)
         {
-            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
-            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
-            var __workflow_bodyt = bodyt == null ? null : WorkflowExpression.Compile(bodyt);
-            WorkflowExpression.Validate(__workflow_bodyt, nameof(bodyt), required: true);
+            var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
+            var __workflow_bodyt = WorkflowExpression.Compile(bodyt, nameof(bodyt), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/subscription/edit";
@@ -66,8 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction UnsubscribeSubscription(Expression<Func<string>> streamId)
         {
-            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
-            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
+            var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/unsubscribe/subscription/edit";
@@ -81,10 +77,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction RemoveSubscriptionFromFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
         {
-            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
-            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
+            var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/remove/subscription/edit";
@@ -99,10 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction AddSubscriptionToFolder(Expression<Func<string>> streamId, Expression<Func<string>> tagId)
         {
-            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
-            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
+            var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/add/subscription/edit";
@@ -117,8 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IWorkflowAction DeleteTag(Expression<Func<string>> tagId)
         {
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/disable-tag";
@@ -132,8 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<UnreadCount> GetUnreadCountForStream(Expression<Func<string>> streamId)
         {
-            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
-            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
+            var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
             return new DeferredBodyAction<UnreadCount>(() =>
             {
                 var apiCallPath = "/single/unread-count";
@@ -156,10 +146,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inoreader")]
         public IBodyWorkflowAction<StreamContentsResponseItem[]> StreamContents(Expression<Func<string>> streamId, Expression<Func<int>> n = null)
         {
-            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
-            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
-            var __workflow_n = n == null ? null : WorkflowExpression.Compile(n);
-            WorkflowExpression.Validate(__workflow_n, nameof(n), required: false);
+            var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
+            var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
             return new DeferredBodyAction<StreamContentsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stream/contents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_streamId, 1));
@@ -184,10 +172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 
         public IBodyWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget(Expression<Func<string>> streamId, Expression<Func<int>> target, FlowRecurrence recurrence = null)
         {
-            var __workflow_streamId = streamId == null ? null : WorkflowExpression.Compile(streamId);
-            WorkflowExpression.Validate(__workflow_streamId, nameof(streamId), required: true);
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
+            var __workflow_streamId = WorkflowExpression.Compile(streamId, nameof(streamId), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
             return new DeferredBodyTrigger<UnreadCount>(() =>
             {
                 var apiCallPath = "/trigger/unread-count";

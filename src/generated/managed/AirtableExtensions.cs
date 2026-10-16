@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<ListRecordsResponse> ListRecords(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> filterByFormula = null, Expression<Func<int>> maxRecords = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> view = null, Expression<Func<string>> cellFormat = null, Expression<Func<string>> timeZone = null, Expression<Func<string>> userLocale = null)
         {
-            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
-            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filterByFormula = filterByFormula == null ? null : WorkflowExpression.Compile(filterByFormula);
-            WorkflowExpression.Validate(__workflow_filterByFormula, nameof(filterByFormula), required: false);
-            var __workflow_maxRecords = maxRecords == null ? null : WorkflowExpression.Compile(maxRecords);
-            WorkflowExpression.Validate(__workflow_maxRecords, nameof(maxRecords), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: false);
-            var __workflow_cellFormat = cellFormat == null ? null : WorkflowExpression.Compile(cellFormat);
-            WorkflowExpression.Validate(__workflow_cellFormat, nameof(cellFormat), required: false);
-            var __workflow_timeZone = timeZone == null ? null : WorkflowExpression.Compile(timeZone);
-            WorkflowExpression.Validate(__workflow_timeZone, nameof(timeZone), required: false);
-            var __workflow_userLocale = userLocale == null ? null : WorkflowExpression.Compile(userLocale);
-            WorkflowExpression.Validate(__workflow_userLocale, nameof(userLocale), required: false);
+            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filterByFormula = WorkflowExpression.Compile(filterByFormula, nameof(filterByFormula), required: false);
+            var __workflow_maxRecords = WorkflowExpression.Compile(maxRecords, nameof(maxRecords), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: false);
+            var __workflow_cellFormat = WorkflowExpression.Compile(cellFormat, nameof(cellFormat), required: false);
+            var __workflow_timeZone = WorkflowExpression.Compile(timeZone, nameof(timeZone), required: false);
+            var __workflow_userLocale = WorkflowExpression.Compile(userLocale, nameof(userLocale), required: false);
             return new DeferredBodyAction<ListRecordsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
@@ -57,10 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table)
         {
-            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
-            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyAction<CreateaRecordResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1));
@@ -81,12 +70,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
         {
-            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
-            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: true);
+            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
             return new DeferredBodyAction<RetrieveaRecordResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
@@ -99,12 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
         {
-            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
-            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: true);
+            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
             return new DeferredBodyAction<DeleteaRecordResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));
@@ -117,14 +100,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
         public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID, Expression<Func<string>> contentType = null)
         {
-            var __workflow_baseID = baseID == null ? null : WorkflowExpression.Compile(baseID);
-            WorkflowExpression.Validate(__workflow_baseID, nameof(baseID), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_recordID = recordID == null ? null : WorkflowExpression.Compile(recordID);
-            WorkflowExpression.Validate(__workflow_recordID, nameof(recordID), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_baseID = WorkflowExpression.Compile(baseID, nameof(baseID), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_recordID = WorkflowExpression.Compile(recordID, nameof(recordID), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<UpdateaRecordResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordID, 1));

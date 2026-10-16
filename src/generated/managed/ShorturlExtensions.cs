@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlCreateShortUrl(Expression<Func<string>> longUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> shortUrl = null, Expression<Func<string>> generatedBy = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> password = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
         {
-            var __workflow_longUrl = longUrl == null ? null : WorkflowExpression.Compile(longUrl);
-            WorkflowExpression.Validate(__workflow_longUrl, nameof(longUrl), required: true);
-            var __workflow_baseDomain = baseDomain == null ? null : WorkflowExpression.Compile(baseDomain);
-            WorkflowExpression.Validate(__workflow_baseDomain, nameof(baseDomain), required: true);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_licenseKey = licenseKey == null ? null : WorkflowExpression.Compile(licenseKey);
-            WorkflowExpression.Validate(__workflow_licenseKey, nameof(licenseKey), required: true);
-            var __workflow_shortUrl = shortUrl == null ? null : WorkflowExpression.Compile(shortUrl);
-            WorkflowExpression.Validate(__workflow_shortUrl, nameof(shortUrl), required: false);
-            var __workflow_generatedBy = generatedBy == null ? null : WorkflowExpression.Compile(generatedBy);
-            WorkflowExpression.Validate(__workflow_generatedBy, nameof(generatedBy), required: false);
-            var __workflow_maxUses = maxUses == null ? null : WorkflowExpression.Compile(maxUses);
-            WorkflowExpression.Validate(__workflow_maxUses, nameof(maxUses), required: false);
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: false);
-            var __workflow_expiryDate = expiryDate == null ? null : WorkflowExpression.Compile(expiryDate);
-            WorkflowExpression.Validate(__workflow_expiryDate, nameof(expiryDate), required: false);
-            var __workflow_redirectionCode = redirectionCode == null ? null : WorkflowExpression.Compile(redirectionCode);
-            WorkflowExpression.Validate(__workflow_redirectionCode, nameof(redirectionCode), required: false);
+            var __workflow_longUrl = WorkflowExpression.Compile(longUrl, nameof(longUrl), required: true);
+            var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_licenseKey = WorkflowExpression.Compile(licenseKey, nameof(licenseKey), required: true);
+            var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: false);
+            var __workflow_generatedBy = WorkflowExpression.Compile(generatedBy, nameof(generatedBy), required: false);
+            var __workflow_maxUses = WorkflowExpression.Compile(maxUses, nameof(maxUses), required: false);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
+            var __workflow_expiryDate = WorkflowExpression.Compile(expiryDate, nameof(expiryDate), required: false);
+            var __workflow_redirectionCode = WorkflowExpression.Compile(redirectionCode, nameof(redirectionCode), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/shorturl/create";
@@ -62,14 +52,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlDeleteShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey)
         {
-            var __workflow_shortUrl = shortUrl == null ? null : WorkflowExpression.Compile(shortUrl);
-            WorkflowExpression.Validate(__workflow_shortUrl, nameof(shortUrl), required: true);
-            var __workflow_baseDomain = baseDomain == null ? null : WorkflowExpression.Compile(baseDomain);
-            WorkflowExpression.Validate(__workflow_baseDomain, nameof(baseDomain), required: true);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_licenseKey = licenseKey == null ? null : WorkflowExpression.Compile(licenseKey);
-            WorkflowExpression.Validate(__workflow_licenseKey, nameof(licenseKey), required: true);
+            var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: true);
+            var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_licenseKey = WorkflowExpression.Compile(licenseKey, nameof(licenseKey), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/shorturl/delete";
@@ -86,14 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlGetAllShortUrls(Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> generatedBy = null)
         {
-            var __workflow_baseDomain = baseDomain == null ? null : WorkflowExpression.Compile(baseDomain);
-            WorkflowExpression.Validate(__workflow_baseDomain, nameof(baseDomain), required: true);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_licenseKey = licenseKey == null ? null : WorkflowExpression.Compile(licenseKey);
-            WorkflowExpression.Validate(__workflow_licenseKey, nameof(licenseKey), required: true);
-            var __workflow_generatedBy = generatedBy == null ? null : WorkflowExpression.Compile(generatedBy);
-            WorkflowExpression.Validate(__workflow_generatedBy, nameof(generatedBy), required: false);
+            var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_licenseKey = WorkflowExpression.Compile(licenseKey, nameof(licenseKey), required: true);
+            var __workflow_generatedBy = WorkflowExpression.Compile(generatedBy, nameof(generatedBy), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/shorturl/getall";
@@ -111,24 +93,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
         public IBodyWorkflowAction<JToken> ShortUrlModifyShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> newLongUrl = null, Expression<Func<string>> password = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
         {
-            var __workflow_shortUrl = shortUrl == null ? null : WorkflowExpression.Compile(shortUrl);
-            WorkflowExpression.Validate(__workflow_shortUrl, nameof(shortUrl), required: true);
-            var __workflow_baseDomain = baseDomain == null ? null : WorkflowExpression.Compile(baseDomain);
-            WorkflowExpression.Validate(__workflow_baseDomain, nameof(baseDomain), required: true);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_licenseKey = licenseKey == null ? null : WorkflowExpression.Compile(licenseKey);
-            WorkflowExpression.Validate(__workflow_licenseKey, nameof(licenseKey), required: true);
-            var __workflow_newLongUrl = newLongUrl == null ? null : WorkflowExpression.Compile(newLongUrl);
-            WorkflowExpression.Validate(__workflow_newLongUrl, nameof(newLongUrl), required: false);
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: false);
-            var __workflow_maxUses = maxUses == null ? null : WorkflowExpression.Compile(maxUses);
-            WorkflowExpression.Validate(__workflow_maxUses, nameof(maxUses), required: false);
-            var __workflow_expiryDate = expiryDate == null ? null : WorkflowExpression.Compile(expiryDate);
-            WorkflowExpression.Validate(__workflow_expiryDate, nameof(expiryDate), required: false);
-            var __workflow_redirectionCode = redirectionCode == null ? null : WorkflowExpression.Compile(redirectionCode);
-            WorkflowExpression.Validate(__workflow_redirectionCode, nameof(redirectionCode), required: false);
+            var __workflow_shortUrl = WorkflowExpression.Compile(shortUrl, nameof(shortUrl), required: true);
+            var __workflow_baseDomain = WorkflowExpression.Compile(baseDomain, nameof(baseDomain), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_licenseKey = WorkflowExpression.Compile(licenseKey, nameof(licenseKey), required: true);
+            var __workflow_newLongUrl = WorkflowExpression.Compile(newLongUrl, nameof(newLongUrl), required: false);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
+            var __workflow_maxUses = WorkflowExpression.Compile(maxUses, nameof(maxUses), required: false);
+            var __workflow_expiryDate = WorkflowExpression.Compile(expiryDate, nameof(expiryDate), required: false);
+            var __workflow_redirectionCode = WorkflowExpression.Compile(redirectionCode, nameof(redirectionCode), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/shorturl/modify";

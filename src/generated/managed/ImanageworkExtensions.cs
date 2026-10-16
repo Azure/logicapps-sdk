@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetTrusteesResponse> GetTrustees(Expression<Func<bodyobjectTypeInput>> bodyobjectType, Expression<Func<string>> bodyobjectId)
         {
-            var __workflow_bodyobjectType = bodyobjectType == null ? null : WorkflowExpression.Compile(bodyobjectType);
-            WorkflowExpression.Validate(__workflow_bodyobjectType, nameof(bodyobjectType), required: true);
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: true);
+            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: true);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: true);
             return new DeferredBodyAction<GetTrusteesResponse>(() =>
             {
                 var apiCallPath = "/getTrustees";
@@ -40,12 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<UpdateDefaultSecurityResponse> UpdateDefaultSecurity(Expression<Func<bodyobjectTypeInput>> bodyobjectType, Expression<Func<string>> bodyobjectId, Expression<Func<string>> bodydefaultSecurity)
         {
-            var __workflow_bodyobjectType = bodyobjectType == null ? null : WorkflowExpression.Compile(bodyobjectType);
-            WorkflowExpression.Validate(__workflow_bodyobjectType, nameof(bodyobjectType), required: true);
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: true);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
+            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: true);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: true);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: true);
             return new DeferredBodyAction<UpdateDefaultSecurityResponse>(() =>
             {
                 var apiCallPath = "/updateDefaultSecurity";
@@ -71,16 +66,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<UpdatePermissionsResponse> UpdatePermissions(Expression<Func<bodyobjectTypeInput>> bodyobjectType, Expression<Func<string>> bodyobjectId, Expression<Func<bodyaccessLevelInput>> bodyaccessLevel, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null)
         {
-            var __workflow_bodyobjectType = bodyobjectType == null ? null : WorkflowExpression.Compile(bodyobjectType);
-            WorkflowExpression.Validate(__workflow_bodyobjectType, nameof(bodyobjectType), required: true);
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: true);
-            var __workflow_bodyaccessLevel = bodyaccessLevel == null ? null : WorkflowExpression.Compile(bodyaccessLevel);
-            WorkflowExpression.Validate(__workflow_bodyaccessLevel, nameof(bodyaccessLevel), required: true);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
-            var __workflow_bodygroups = bodygroups == null ? null : WorkflowExpression.Compile(bodygroups);
-            WorkflowExpression.Validate(__workflow_bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: true);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: true);
+            var __workflow_bodyaccessLevel = WorkflowExpression.Compile(bodyaccessLevel, nameof(bodyaccessLevel), required: true);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
             return new DeferredBodyAction<UpdatePermissionsResponse>(() =>
             {
                 var apiCallPath = "/updatePermissions";
@@ -118,10 +108,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetPermissionsResponse> GetPermissions(Expression<Func<bodyobjectTypeInput>> bodyobjectType, Expression<Func<string>> bodyobjectId)
         {
-            var __workflow_bodyobjectType = bodyobjectType == null ? null : WorkflowExpression.Compile(bodyobjectType);
-            WorkflowExpression.Validate(__workflow_bodyobjectType, nameof(bodyobjectType), required: true);
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: true);
+            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: true);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: true);
             return new DeferredBodyAction<GetPermissionsResponse>(() =>
             {
                 var apiCallPath = "/getPermissions";
@@ -145,18 +133,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<UpdatePermissionsResponse> CopyPermissions(Expression<Func<bodysourceObjectTypeInput>> bodysourceObjectType, Expression<Func<string>> bodysourceObjectId, Expression<Func<bodytargetObjectTypeInput>> bodytargetObjectType, Expression<Func<string>> bodytargetObjectId, Expression<Func<bodycopyTypeInput>> bodycopyType, Expression<Func<bool>> bodycopyDefaultSecurity)
         {
-            var __workflow_bodysourceObjectType = bodysourceObjectType == null ? null : WorkflowExpression.Compile(bodysourceObjectType);
-            WorkflowExpression.Validate(__workflow_bodysourceObjectType, nameof(bodysourceObjectType), required: true);
-            var __workflow_bodysourceObjectId = bodysourceObjectId == null ? null : WorkflowExpression.Compile(bodysourceObjectId);
-            WorkflowExpression.Validate(__workflow_bodysourceObjectId, nameof(bodysourceObjectId), required: true);
-            var __workflow_bodytargetObjectType = bodytargetObjectType == null ? null : WorkflowExpression.Compile(bodytargetObjectType);
-            WorkflowExpression.Validate(__workflow_bodytargetObjectType, nameof(bodytargetObjectType), required: true);
-            var __workflow_bodytargetObjectId = bodytargetObjectId == null ? null : WorkflowExpression.Compile(bodytargetObjectId);
-            WorkflowExpression.Validate(__workflow_bodytargetObjectId, nameof(bodytargetObjectId), required: true);
-            var __workflow_bodycopyType = bodycopyType == null ? null : WorkflowExpression.Compile(bodycopyType);
-            WorkflowExpression.Validate(__workflow_bodycopyType, nameof(bodycopyType), required: true);
-            var __workflow_bodycopyDefaultSecurity = bodycopyDefaultSecurity == null ? null : WorkflowExpression.Compile(bodycopyDefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodycopyDefaultSecurity, nameof(bodycopyDefaultSecurity), required: true);
+            var __workflow_bodysourceObjectType = WorkflowExpression.Compile(bodysourceObjectType, nameof(bodysourceObjectType), required: true);
+            var __workflow_bodysourceObjectId = WorkflowExpression.Compile(bodysourceObjectId, nameof(bodysourceObjectId), required: true);
+            var __workflow_bodytargetObjectType = WorkflowExpression.Compile(bodytargetObjectType, nameof(bodytargetObjectType), required: true);
+            var __workflow_bodytargetObjectId = WorkflowExpression.Compile(bodytargetObjectId, nameof(bodytargetObjectId), required: true);
+            var __workflow_bodycopyType = WorkflowExpression.Compile(bodycopyType, nameof(bodycopyType), required: true);
+            var __workflow_bodycopyDefaultSecurity = WorkflowExpression.Compile(bodycopyDefaultSecurity, nameof(bodycopyDefaultSecurity), required: true);
             return new DeferredBodyAction<UpdatePermissionsResponse>(() =>
             {
                 var apiCallPath = "/copyPermissions";
@@ -188,90 +170,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> CreateWorkspace(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodyname, Expression<Func<bodycreateChildrenInput>> bodycreateChildren, Expression<Func<string>> bodyowner = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycustom1 = null, Expression<Func<string>> bodycustom2 = null, Expression<Func<string>> bodycustom3 = null, Expression<Func<string>> bodycustom4 = null, Expression<Func<string>> bodycustom5 = null, Expression<Func<string>> bodycustom6 = null, Expression<Func<string>> bodycustom7 = null, Expression<Func<string>> bodycustom8 = null, Expression<Func<string>> bodycustom9 = null, Expression<Func<string>> bodycustom10 = null, Expression<Func<string>> bodycustom11 = null, Expression<Func<string>> bodycustom12 = null, Expression<Func<string>> bodycustom13 = null, Expression<Func<string>> bodycustom14 = null, Expression<Func<string>> bodycustom15 = null, Expression<Func<string>> bodycustom16 = null, Expression<Func<double>> bodycustom17 = null, Expression<Func<double>> bodycustom18 = null, Expression<Func<double>> bodycustom19 = null, Expression<Func<double>> bodycustom20 = null, Expression<Func<string>> bodycustom21 = null, Expression<Func<string>> bodycustom22 = null, Expression<Func<string>> bodycustom23 = null, Expression<Func<string>> bodycustom24 = null, Expression<Func<bool>> bodycustom25 = null, Expression<Func<bool>> bodycustom26 = null, Expression<Func<bool>> bodycustom27 = null, Expression<Func<bool>> bodycustom28 = null, Expression<Func<string>> bodycustom29 = null, Expression<Func<string>> bodycustom30 = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<string>> bodyprojectCustom1 = null, Expression<Func<string>> bodyprojectCustom2 = null, Expression<Func<string>> bodyprojectCustom3 = null, Expression<Func<string>> bodysubclass = null)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodycreateChildren = bodycreateChildren == null ? null : WorkflowExpression.Compile(bodycreateChildren);
-            WorkflowExpression.Validate(__workflow_bodycreateChildren, nameof(bodycreateChildren), required: true);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodycustom1 = bodycustom1 == null ? null : WorkflowExpression.Compile(bodycustom1);
-            WorkflowExpression.Validate(__workflow_bodycustom1, nameof(bodycustom1), required: false);
-            var __workflow_bodycustom2 = bodycustom2 == null ? null : WorkflowExpression.Compile(bodycustom2);
-            WorkflowExpression.Validate(__workflow_bodycustom2, nameof(bodycustom2), required: false);
-            var __workflow_bodycustom3 = bodycustom3 == null ? null : WorkflowExpression.Compile(bodycustom3);
-            WorkflowExpression.Validate(__workflow_bodycustom3, nameof(bodycustom3), required: false);
-            var __workflow_bodycustom4 = bodycustom4 == null ? null : WorkflowExpression.Compile(bodycustom4);
-            WorkflowExpression.Validate(__workflow_bodycustom4, nameof(bodycustom4), required: false);
-            var __workflow_bodycustom5 = bodycustom5 == null ? null : WorkflowExpression.Compile(bodycustom5);
-            WorkflowExpression.Validate(__workflow_bodycustom5, nameof(bodycustom5), required: false);
-            var __workflow_bodycustom6 = bodycustom6 == null ? null : WorkflowExpression.Compile(bodycustom6);
-            WorkflowExpression.Validate(__workflow_bodycustom6, nameof(bodycustom6), required: false);
-            var __workflow_bodycustom7 = bodycustom7 == null ? null : WorkflowExpression.Compile(bodycustom7);
-            WorkflowExpression.Validate(__workflow_bodycustom7, nameof(bodycustom7), required: false);
-            var __workflow_bodycustom8 = bodycustom8 == null ? null : WorkflowExpression.Compile(bodycustom8);
-            WorkflowExpression.Validate(__workflow_bodycustom8, nameof(bodycustom8), required: false);
-            var __workflow_bodycustom9 = bodycustom9 == null ? null : WorkflowExpression.Compile(bodycustom9);
-            WorkflowExpression.Validate(__workflow_bodycustom9, nameof(bodycustom9), required: false);
-            var __workflow_bodycustom10 = bodycustom10 == null ? null : WorkflowExpression.Compile(bodycustom10);
-            WorkflowExpression.Validate(__workflow_bodycustom10, nameof(bodycustom10), required: false);
-            var __workflow_bodycustom11 = bodycustom11 == null ? null : WorkflowExpression.Compile(bodycustom11);
-            WorkflowExpression.Validate(__workflow_bodycustom11, nameof(bodycustom11), required: false);
-            var __workflow_bodycustom12 = bodycustom12 == null ? null : WorkflowExpression.Compile(bodycustom12);
-            WorkflowExpression.Validate(__workflow_bodycustom12, nameof(bodycustom12), required: false);
-            var __workflow_bodycustom13 = bodycustom13 == null ? null : WorkflowExpression.Compile(bodycustom13);
-            WorkflowExpression.Validate(__workflow_bodycustom13, nameof(bodycustom13), required: false);
-            var __workflow_bodycustom14 = bodycustom14 == null ? null : WorkflowExpression.Compile(bodycustom14);
-            WorkflowExpression.Validate(__workflow_bodycustom14, nameof(bodycustom14), required: false);
-            var __workflow_bodycustom15 = bodycustom15 == null ? null : WorkflowExpression.Compile(bodycustom15);
-            WorkflowExpression.Validate(__workflow_bodycustom15, nameof(bodycustom15), required: false);
-            var __workflow_bodycustom16 = bodycustom16 == null ? null : WorkflowExpression.Compile(bodycustom16);
-            WorkflowExpression.Validate(__workflow_bodycustom16, nameof(bodycustom16), required: false);
-            var __workflow_bodycustom17 = bodycustom17 == null ? null : WorkflowExpression.Compile(bodycustom17);
-            WorkflowExpression.Validate(__workflow_bodycustom17, nameof(bodycustom17), required: false);
-            var __workflow_bodycustom18 = bodycustom18 == null ? null : WorkflowExpression.Compile(bodycustom18);
-            WorkflowExpression.Validate(__workflow_bodycustom18, nameof(bodycustom18), required: false);
-            var __workflow_bodycustom19 = bodycustom19 == null ? null : WorkflowExpression.Compile(bodycustom19);
-            WorkflowExpression.Validate(__workflow_bodycustom19, nameof(bodycustom19), required: false);
-            var __workflow_bodycustom20 = bodycustom20 == null ? null : WorkflowExpression.Compile(bodycustom20);
-            WorkflowExpression.Validate(__workflow_bodycustom20, nameof(bodycustom20), required: false);
-            var __workflow_bodycustom21 = bodycustom21 == null ? null : WorkflowExpression.Compile(bodycustom21);
-            WorkflowExpression.Validate(__workflow_bodycustom21, nameof(bodycustom21), required: false);
-            var __workflow_bodycustom22 = bodycustom22 == null ? null : WorkflowExpression.Compile(bodycustom22);
-            WorkflowExpression.Validate(__workflow_bodycustom22, nameof(bodycustom22), required: false);
-            var __workflow_bodycustom23 = bodycustom23 == null ? null : WorkflowExpression.Compile(bodycustom23);
-            WorkflowExpression.Validate(__workflow_bodycustom23, nameof(bodycustom23), required: false);
-            var __workflow_bodycustom24 = bodycustom24 == null ? null : WorkflowExpression.Compile(bodycustom24);
-            WorkflowExpression.Validate(__workflow_bodycustom24, nameof(bodycustom24), required: false);
-            var __workflow_bodycustom25 = bodycustom25 == null ? null : WorkflowExpression.Compile(bodycustom25);
-            WorkflowExpression.Validate(__workflow_bodycustom25, nameof(bodycustom25), required: false);
-            var __workflow_bodycustom26 = bodycustom26 == null ? null : WorkflowExpression.Compile(bodycustom26);
-            WorkflowExpression.Validate(__workflow_bodycustom26, nameof(bodycustom26), required: false);
-            var __workflow_bodycustom27 = bodycustom27 == null ? null : WorkflowExpression.Compile(bodycustom27);
-            WorkflowExpression.Validate(__workflow_bodycustom27, nameof(bodycustom27), required: false);
-            var __workflow_bodycustom28 = bodycustom28 == null ? null : WorkflowExpression.Compile(bodycustom28);
-            WorkflowExpression.Validate(__workflow_bodycustom28, nameof(bodycustom28), required: false);
-            var __workflow_bodycustom29 = bodycustom29 == null ? null : WorkflowExpression.Compile(bodycustom29);
-            WorkflowExpression.Validate(__workflow_bodycustom29, nameof(bodycustom29), required: false);
-            var __workflow_bodycustom30 = bodycustom30 == null ? null : WorkflowExpression.Compile(bodycustom30);
-            WorkflowExpression.Validate(__workflow_bodycustom30, nameof(bodycustom30), required: false);
-            var __workflow_bodyisExternalAsNormal = bodyisExternalAsNormal == null ? null : WorkflowExpression.Compile(bodyisExternalAsNormal);
-            WorkflowExpression.Validate(__workflow_bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            var __workflow_bodyprojectCustom1 = bodyprojectCustom1 == null ? null : WorkflowExpression.Compile(bodyprojectCustom1);
-            WorkflowExpression.Validate(__workflow_bodyprojectCustom1, nameof(bodyprojectCustom1), required: false);
-            var __workflow_bodyprojectCustom2 = bodyprojectCustom2 == null ? null : WorkflowExpression.Compile(bodyprojectCustom2);
-            WorkflowExpression.Validate(__workflow_bodyprojectCustom2, nameof(bodyprojectCustom2), required: false);
-            var __workflow_bodyprojectCustom3 = bodyprojectCustom3 == null ? null : WorkflowExpression.Compile(bodyprojectCustom3);
-            WorkflowExpression.Validate(__workflow_bodyprojectCustom3, nameof(bodyprojectCustom3), required: false);
-            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
-            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodycreateChildren = WorkflowExpression.Compile(bodycreateChildren, nameof(bodycreateChildren), required: true);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodycustom1 = WorkflowExpression.Compile(bodycustom1, nameof(bodycustom1), required: false);
+            var __workflow_bodycustom2 = WorkflowExpression.Compile(bodycustom2, nameof(bodycustom2), required: false);
+            var __workflow_bodycustom3 = WorkflowExpression.Compile(bodycustom3, nameof(bodycustom3), required: false);
+            var __workflow_bodycustom4 = WorkflowExpression.Compile(bodycustom4, nameof(bodycustom4), required: false);
+            var __workflow_bodycustom5 = WorkflowExpression.Compile(bodycustom5, nameof(bodycustom5), required: false);
+            var __workflow_bodycustom6 = WorkflowExpression.Compile(bodycustom6, nameof(bodycustom6), required: false);
+            var __workflow_bodycustom7 = WorkflowExpression.Compile(bodycustom7, nameof(bodycustom7), required: false);
+            var __workflow_bodycustom8 = WorkflowExpression.Compile(bodycustom8, nameof(bodycustom8), required: false);
+            var __workflow_bodycustom9 = WorkflowExpression.Compile(bodycustom9, nameof(bodycustom9), required: false);
+            var __workflow_bodycustom10 = WorkflowExpression.Compile(bodycustom10, nameof(bodycustom10), required: false);
+            var __workflow_bodycustom11 = WorkflowExpression.Compile(bodycustom11, nameof(bodycustom11), required: false);
+            var __workflow_bodycustom12 = WorkflowExpression.Compile(bodycustom12, nameof(bodycustom12), required: false);
+            var __workflow_bodycustom13 = WorkflowExpression.Compile(bodycustom13, nameof(bodycustom13), required: false);
+            var __workflow_bodycustom14 = WorkflowExpression.Compile(bodycustom14, nameof(bodycustom14), required: false);
+            var __workflow_bodycustom15 = WorkflowExpression.Compile(bodycustom15, nameof(bodycustom15), required: false);
+            var __workflow_bodycustom16 = WorkflowExpression.Compile(bodycustom16, nameof(bodycustom16), required: false);
+            var __workflow_bodycustom17 = WorkflowExpression.Compile(bodycustom17, nameof(bodycustom17), required: false);
+            var __workflow_bodycustom18 = WorkflowExpression.Compile(bodycustom18, nameof(bodycustom18), required: false);
+            var __workflow_bodycustom19 = WorkflowExpression.Compile(bodycustom19, nameof(bodycustom19), required: false);
+            var __workflow_bodycustom20 = WorkflowExpression.Compile(bodycustom20, nameof(bodycustom20), required: false);
+            var __workflow_bodycustom21 = WorkflowExpression.Compile(bodycustom21, nameof(bodycustom21), required: false);
+            var __workflow_bodycustom22 = WorkflowExpression.Compile(bodycustom22, nameof(bodycustom22), required: false);
+            var __workflow_bodycustom23 = WorkflowExpression.Compile(bodycustom23, nameof(bodycustom23), required: false);
+            var __workflow_bodycustom24 = WorkflowExpression.Compile(bodycustom24, nameof(bodycustom24), required: false);
+            var __workflow_bodycustom25 = WorkflowExpression.Compile(bodycustom25, nameof(bodycustom25), required: false);
+            var __workflow_bodycustom26 = WorkflowExpression.Compile(bodycustom26, nameof(bodycustom26), required: false);
+            var __workflow_bodycustom27 = WorkflowExpression.Compile(bodycustom27, nameof(bodycustom27), required: false);
+            var __workflow_bodycustom28 = WorkflowExpression.Compile(bodycustom28, nameof(bodycustom28), required: false);
+            var __workflow_bodycustom29 = WorkflowExpression.Compile(bodycustom29, nameof(bodycustom29), required: false);
+            var __workflow_bodycustom30 = WorkflowExpression.Compile(bodycustom30, nameof(bodycustom30), required: false);
+            var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
+            var __workflow_bodyprojectCustom1 = WorkflowExpression.Compile(bodyprojectCustom1, nameof(bodyprojectCustom1), required: false);
+            var __workflow_bodyprojectCustom2 = WorkflowExpression.Compile(bodyprojectCustom2, nameof(bodyprojectCustom2), required: false);
+            var __workflow_bodyprojectCustom3 = WorkflowExpression.Compile(bodyprojectCustom3, nameof(bodyprojectCustom3), required: false);
+            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
             return new DeferredBodyAction<WorkspaceProfileResponseBody>(() =>
             {
                 var apiCallPath = "/createWorkspace";
@@ -537,86 +477,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> UpdateWorkspace(Expression<Func<string>> bodyid, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodycustom1 = null, Expression<Func<string>> bodycustom2 = null, Expression<Func<string>> bodycustom3 = null, Expression<Func<string>> bodycustom4 = null, Expression<Func<string>> bodycustom5 = null, Expression<Func<string>> bodycustom6 = null, Expression<Func<string>> bodycustom7 = null, Expression<Func<string>> bodycustom8 = null, Expression<Func<string>> bodycustom9 = null, Expression<Func<string>> bodycustom10 = null, Expression<Func<string>> bodycustom11 = null, Expression<Func<string>> bodycustom12 = null, Expression<Func<string>> bodycustom13 = null, Expression<Func<string>> bodycustom14 = null, Expression<Func<string>> bodycustom15 = null, Expression<Func<string>> bodycustom16 = null, Expression<Func<double>> bodycustom17 = null, Expression<Func<double>> bodycustom18 = null, Expression<Func<double>> bodycustom19 = null, Expression<Func<double>> bodycustom20 = null, Expression<Func<string>> bodycustom21 = null, Expression<Func<string>> bodycustom22 = null, Expression<Func<string>> bodycustom23 = null, Expression<Func<string>> bodycustom24 = null, Expression<Func<bool>> bodycustom25 = null, Expression<Func<bool>> bodycustom26 = null, Expression<Func<bool>> bodycustom27 = null, Expression<Func<bool>> bodycustom28 = null, Expression<Func<string>> bodycustom29 = null, Expression<Func<string>> bodycustom30 = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<string>> bodyprojectCustom1 = null, Expression<Func<string>> bodyprojectCustom2 = null, Expression<Func<string>> bodyprojectCustom3 = null, Expression<Func<string>> bodysubclass = null)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodycustom1 = bodycustom1 == null ? null : WorkflowExpression.Compile(bodycustom1);
-            WorkflowExpression.Validate(__workflow_bodycustom1, nameof(bodycustom1), required: false);
-            var __workflow_bodycustom2 = bodycustom2 == null ? null : WorkflowExpression.Compile(bodycustom2);
-            WorkflowExpression.Validate(__workflow_bodycustom2, nameof(bodycustom2), required: false);
-            var __workflow_bodycustom3 = bodycustom3 == null ? null : WorkflowExpression.Compile(bodycustom3);
-            WorkflowExpression.Validate(__workflow_bodycustom3, nameof(bodycustom3), required: false);
-            var __workflow_bodycustom4 = bodycustom4 == null ? null : WorkflowExpression.Compile(bodycustom4);
-            WorkflowExpression.Validate(__workflow_bodycustom4, nameof(bodycustom4), required: false);
-            var __workflow_bodycustom5 = bodycustom5 == null ? null : WorkflowExpression.Compile(bodycustom5);
-            WorkflowExpression.Validate(__workflow_bodycustom5, nameof(bodycustom5), required: false);
-            var __workflow_bodycustom6 = bodycustom6 == null ? null : WorkflowExpression.Compile(bodycustom6);
-            WorkflowExpression.Validate(__workflow_bodycustom6, nameof(bodycustom6), required: false);
-            var __workflow_bodycustom7 = bodycustom7 == null ? null : WorkflowExpression.Compile(bodycustom7);
-            WorkflowExpression.Validate(__workflow_bodycustom7, nameof(bodycustom7), required: false);
-            var __workflow_bodycustom8 = bodycustom8 == null ? null : WorkflowExpression.Compile(bodycustom8);
-            WorkflowExpression.Validate(__workflow_bodycustom8, nameof(bodycustom8), required: false);
-            var __workflow_bodycustom9 = bodycustom9 == null ? null : WorkflowExpression.Compile(bodycustom9);
-            WorkflowExpression.Validate(__workflow_bodycustom9, nameof(bodycustom9), required: false);
-            var __workflow_bodycustom10 = bodycustom10 == null ? null : WorkflowExpression.Compile(bodycustom10);
-            WorkflowExpression.Validate(__workflow_bodycustom10, nameof(bodycustom10), required: false);
-            var __workflow_bodycustom11 = bodycustom11 == null ? null : WorkflowExpression.Compile(bodycustom11);
-            WorkflowExpression.Validate(__workflow_bodycustom11, nameof(bodycustom11), required: false);
-            var __workflow_bodycustom12 = bodycustom12 == null ? null : WorkflowExpression.Compile(bodycustom12);
-            WorkflowExpression.Validate(__workflow_bodycustom12, nameof(bodycustom12), required: false);
-            var __workflow_bodycustom13 = bodycustom13 == null ? null : WorkflowExpression.Compile(bodycustom13);
-            WorkflowExpression.Validate(__workflow_bodycustom13, nameof(bodycustom13), required: false);
-            var __workflow_bodycustom14 = bodycustom14 == null ? null : WorkflowExpression.Compile(bodycustom14);
-            WorkflowExpression.Validate(__workflow_bodycustom14, nameof(bodycustom14), required: false);
-            var __workflow_bodycustom15 = bodycustom15 == null ? null : WorkflowExpression.Compile(bodycustom15);
-            WorkflowExpression.Validate(__workflow_bodycustom15, nameof(bodycustom15), required: false);
-            var __workflow_bodycustom16 = bodycustom16 == null ? null : WorkflowExpression.Compile(bodycustom16);
-            WorkflowExpression.Validate(__workflow_bodycustom16, nameof(bodycustom16), required: false);
-            var __workflow_bodycustom17 = bodycustom17 == null ? null : WorkflowExpression.Compile(bodycustom17);
-            WorkflowExpression.Validate(__workflow_bodycustom17, nameof(bodycustom17), required: false);
-            var __workflow_bodycustom18 = bodycustom18 == null ? null : WorkflowExpression.Compile(bodycustom18);
-            WorkflowExpression.Validate(__workflow_bodycustom18, nameof(bodycustom18), required: false);
-            var __workflow_bodycustom19 = bodycustom19 == null ? null : WorkflowExpression.Compile(bodycustom19);
-            WorkflowExpression.Validate(__workflow_bodycustom19, nameof(bodycustom19), required: false);
-            var __workflow_bodycustom20 = bodycustom20 == null ? null : WorkflowExpression.Compile(bodycustom20);
-            WorkflowExpression.Validate(__workflow_bodycustom20, nameof(bodycustom20), required: false);
-            var __workflow_bodycustom21 = bodycustom21 == null ? null : WorkflowExpression.Compile(bodycustom21);
-            WorkflowExpression.Validate(__workflow_bodycustom21, nameof(bodycustom21), required: false);
-            var __workflow_bodycustom22 = bodycustom22 == null ? null : WorkflowExpression.Compile(bodycustom22);
-            WorkflowExpression.Validate(__workflow_bodycustom22, nameof(bodycustom22), required: false);
-            var __workflow_bodycustom23 = bodycustom23 == null ? null : WorkflowExpression.Compile(bodycustom23);
-            WorkflowExpression.Validate(__workflow_bodycustom23, nameof(bodycustom23), required: false);
-            var __workflow_bodycustom24 = bodycustom24 == null ? null : WorkflowExpression.Compile(bodycustom24);
-            WorkflowExpression.Validate(__workflow_bodycustom24, nameof(bodycustom24), required: false);
-            var __workflow_bodycustom25 = bodycustom25 == null ? null : WorkflowExpression.Compile(bodycustom25);
-            WorkflowExpression.Validate(__workflow_bodycustom25, nameof(bodycustom25), required: false);
-            var __workflow_bodycustom26 = bodycustom26 == null ? null : WorkflowExpression.Compile(bodycustom26);
-            WorkflowExpression.Validate(__workflow_bodycustom26, nameof(bodycustom26), required: false);
-            var __workflow_bodycustom27 = bodycustom27 == null ? null : WorkflowExpression.Compile(bodycustom27);
-            WorkflowExpression.Validate(__workflow_bodycustom27, nameof(bodycustom27), required: false);
-            var __workflow_bodycustom28 = bodycustom28 == null ? null : WorkflowExpression.Compile(bodycustom28);
-            WorkflowExpression.Validate(__workflow_bodycustom28, nameof(bodycustom28), required: false);
-            var __workflow_bodycustom29 = bodycustom29 == null ? null : WorkflowExpression.Compile(bodycustom29);
-            WorkflowExpression.Validate(__workflow_bodycustom29, nameof(bodycustom29), required: false);
-            var __workflow_bodycustom30 = bodycustom30 == null ? null : WorkflowExpression.Compile(bodycustom30);
-            WorkflowExpression.Validate(__workflow_bodycustom30, nameof(bodycustom30), required: false);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyisExternalAsNormal = bodyisExternalAsNormal == null ? null : WorkflowExpression.Compile(bodyisExternalAsNormal);
-            WorkflowExpression.Validate(__workflow_bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
-            var __workflow_bodyprojectCustom1 = bodyprojectCustom1 == null ? null : WorkflowExpression.Compile(bodyprojectCustom1);
-            WorkflowExpression.Validate(__workflow_bodyprojectCustom1, nameof(bodyprojectCustom1), required: false);
-            var __workflow_bodyprojectCustom2 = bodyprojectCustom2 == null ? null : WorkflowExpression.Compile(bodyprojectCustom2);
-            WorkflowExpression.Validate(__workflow_bodyprojectCustom2, nameof(bodyprojectCustom2), required: false);
-            var __workflow_bodyprojectCustom3 = bodyprojectCustom3 == null ? null : WorkflowExpression.Compile(bodyprojectCustom3);
-            WorkflowExpression.Validate(__workflow_bodyprojectCustom3, nameof(bodyprojectCustom3), required: false);
-            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
-            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodycustom1 = WorkflowExpression.Compile(bodycustom1, nameof(bodycustom1), required: false);
+            var __workflow_bodycustom2 = WorkflowExpression.Compile(bodycustom2, nameof(bodycustom2), required: false);
+            var __workflow_bodycustom3 = WorkflowExpression.Compile(bodycustom3, nameof(bodycustom3), required: false);
+            var __workflow_bodycustom4 = WorkflowExpression.Compile(bodycustom4, nameof(bodycustom4), required: false);
+            var __workflow_bodycustom5 = WorkflowExpression.Compile(bodycustom5, nameof(bodycustom5), required: false);
+            var __workflow_bodycustom6 = WorkflowExpression.Compile(bodycustom6, nameof(bodycustom6), required: false);
+            var __workflow_bodycustom7 = WorkflowExpression.Compile(bodycustom7, nameof(bodycustom7), required: false);
+            var __workflow_bodycustom8 = WorkflowExpression.Compile(bodycustom8, nameof(bodycustom8), required: false);
+            var __workflow_bodycustom9 = WorkflowExpression.Compile(bodycustom9, nameof(bodycustom9), required: false);
+            var __workflow_bodycustom10 = WorkflowExpression.Compile(bodycustom10, nameof(bodycustom10), required: false);
+            var __workflow_bodycustom11 = WorkflowExpression.Compile(bodycustom11, nameof(bodycustom11), required: false);
+            var __workflow_bodycustom12 = WorkflowExpression.Compile(bodycustom12, nameof(bodycustom12), required: false);
+            var __workflow_bodycustom13 = WorkflowExpression.Compile(bodycustom13, nameof(bodycustom13), required: false);
+            var __workflow_bodycustom14 = WorkflowExpression.Compile(bodycustom14, nameof(bodycustom14), required: false);
+            var __workflow_bodycustom15 = WorkflowExpression.Compile(bodycustom15, nameof(bodycustom15), required: false);
+            var __workflow_bodycustom16 = WorkflowExpression.Compile(bodycustom16, nameof(bodycustom16), required: false);
+            var __workflow_bodycustom17 = WorkflowExpression.Compile(bodycustom17, nameof(bodycustom17), required: false);
+            var __workflow_bodycustom18 = WorkflowExpression.Compile(bodycustom18, nameof(bodycustom18), required: false);
+            var __workflow_bodycustom19 = WorkflowExpression.Compile(bodycustom19, nameof(bodycustom19), required: false);
+            var __workflow_bodycustom20 = WorkflowExpression.Compile(bodycustom20, nameof(bodycustom20), required: false);
+            var __workflow_bodycustom21 = WorkflowExpression.Compile(bodycustom21, nameof(bodycustom21), required: false);
+            var __workflow_bodycustom22 = WorkflowExpression.Compile(bodycustom22, nameof(bodycustom22), required: false);
+            var __workflow_bodycustom23 = WorkflowExpression.Compile(bodycustom23, nameof(bodycustom23), required: false);
+            var __workflow_bodycustom24 = WorkflowExpression.Compile(bodycustom24, nameof(bodycustom24), required: false);
+            var __workflow_bodycustom25 = WorkflowExpression.Compile(bodycustom25, nameof(bodycustom25), required: false);
+            var __workflow_bodycustom26 = WorkflowExpression.Compile(bodycustom26, nameof(bodycustom26), required: false);
+            var __workflow_bodycustom27 = WorkflowExpression.Compile(bodycustom27, nameof(bodycustom27), required: false);
+            var __workflow_bodycustom28 = WorkflowExpression.Compile(bodycustom28, nameof(bodycustom28), required: false);
+            var __workflow_bodycustom29 = WorkflowExpression.Compile(bodycustom29, nameof(bodycustom29), required: false);
+            var __workflow_bodycustom30 = WorkflowExpression.Compile(bodycustom30, nameof(bodycustom30), required: false);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyisExternalAsNormal = WorkflowExpression.Compile(bodyisExternalAsNormal, nameof(bodyisExternalAsNormal), required: false);
+            var __workflow_bodyprojectCustom1 = WorkflowExpression.Compile(bodyprojectCustom1, nameof(bodyprojectCustom1), required: false);
+            var __workflow_bodyprojectCustom2 = WorkflowExpression.Compile(bodyprojectCustom2, nameof(bodyprojectCustom2), required: false);
+            var __workflow_bodyprojectCustom3 = WorkflowExpression.Compile(bodyprojectCustom3, nameof(bodyprojectCustom3), required: false);
+            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
             return new DeferredBodyAction<WorkspaceProfileResponseBody>(() =>
             {
                 var apiCallPath = "/updateWorkspace";
@@ -872,24 +772,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetClassesResponse> GetClasses(Expression<Func<string>> libraryId, Expression<Func<string>> alias = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<string>> description = null, Expression<Func<bool>> echo = null, Expression<Func<bool>> hipaa = null, Expression<Func<bool>> indexable = null, Expression<Func<string>> query = null, Expression<Func<bool>> subclassRequired = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_alias = alias == null ? null : WorkflowExpression.Compile(alias);
-            WorkflowExpression.Validate(__workflow_alias, nameof(alias), required: false);
-            var __workflow_defaultSecurity = defaultSecurity == null ? null : WorkflowExpression.Compile(defaultSecurity);
-            WorkflowExpression.Validate(__workflow_defaultSecurity, nameof(defaultSecurity), required: false);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
-            var __workflow_echo = echo == null ? null : WorkflowExpression.Compile(echo);
-            WorkflowExpression.Validate(__workflow_echo, nameof(echo), required: false);
-            var __workflow_hipaa = hipaa == null ? null : WorkflowExpression.Compile(hipaa);
-            WorkflowExpression.Validate(__workflow_hipaa, nameof(hipaa), required: false);
-            var __workflow_indexable = indexable == null ? null : WorkflowExpression.Compile(indexable);
-            WorkflowExpression.Validate(__workflow_indexable, nameof(indexable), required: false);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_subclassRequired = subclassRequired == null ? null : WorkflowExpression.Compile(subclassRequired);
-            WorkflowExpression.Validate(__workflow_subclassRequired, nameof(subclassRequired), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_alias = WorkflowExpression.Compile(alias, nameof(alias), required: false);
+            var __workflow_defaultSecurity = WorkflowExpression.Compile(defaultSecurity, nameof(defaultSecurity), required: false);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_echo = WorkflowExpression.Compile(echo, nameof(echo), required: false);
+            var __workflow_hipaa = WorkflowExpression.Compile(hipaa, nameof(hipaa), required: false);
+            var __workflow_indexable = WorkflowExpression.Compile(indexable, nameof(indexable), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_subclassRequired = WorkflowExpression.Compile(subclassRequired, nameof(subclassRequired), required: false);
             return new DeferredBodyAction<GetClassesResponse>(() =>
             {
                 var apiCallPath = "/getClasses";
@@ -919,22 +810,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetSubclassesResponse> GetSubclasses(Expression<Func<string>> libraryId, Expression<Func<string>> classId, Expression<Func<string>> alias = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<string>> description = null, Expression<Func<bool>> echo = null, Expression<Func<bool>> hipaa = null, Expression<Func<string>> query = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_classId = classId == null ? null : WorkflowExpression.Compile(classId);
-            WorkflowExpression.Validate(__workflow_classId, nameof(classId), required: true);
-            var __workflow_alias = alias == null ? null : WorkflowExpression.Compile(alias);
-            WorkflowExpression.Validate(__workflow_alias, nameof(alias), required: false);
-            var __workflow_defaultSecurity = defaultSecurity == null ? null : WorkflowExpression.Compile(defaultSecurity);
-            WorkflowExpression.Validate(__workflow_defaultSecurity, nameof(defaultSecurity), required: false);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
-            var __workflow_echo = echo == null ? null : WorkflowExpression.Compile(echo);
-            WorkflowExpression.Validate(__workflow_echo, nameof(echo), required: false);
-            var __workflow_hipaa = hipaa == null ? null : WorkflowExpression.Compile(hipaa);
-            WorkflowExpression.Validate(__workflow_hipaa, nameof(hipaa), required: false);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
+            var __workflow_alias = WorkflowExpression.Compile(alias, nameof(alias), required: false);
+            var __workflow_defaultSecurity = WorkflowExpression.Compile(defaultSecurity, nameof(defaultSecurity), required: false);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_echo = WorkflowExpression.Compile(echo, nameof(echo), required: false);
+            var __workflow_hipaa = WorkflowExpression.Compile(hipaa, nameof(hipaa), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<GetSubclassesResponse>(() =>
             {
                 var apiCallPath = "/getSubclasses";
@@ -961,84 +844,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceTemplatesResponseBody> GetWorkspaceTemplates(Expression<Func<string>> libraryId, Expression<Func<string>> custom1 = null, Expression<Func<string>> custom2 = null, Expression<Func<string>> custom3 = null, Expression<Func<string>> custom4 = null, Expression<Func<string>> custom5 = null, Expression<Func<string>> custom6 = null, Expression<Func<string>> custom7 = null, Expression<Func<string>> custom8 = null, Expression<Func<string>> custom9 = null, Expression<Func<string>> custom10 = null, Expression<Func<string>> custom11 = null, Expression<Func<string>> custom12 = null, Expression<Func<double>> custom17 = null, Expression<Func<double>> custom18 = null, Expression<Func<double>> custom19 = null, Expression<Func<double>> custom20 = null, Expression<Func<string>> custom21 = null, Expression<Func<string>> custom22 = null, Expression<Func<string>> custom23 = null, Expression<Func<string>> custom24 = null, Expression<Func<string>> custom21From = null, Expression<Func<string>> custom21To = null, Expression<Func<string>> custom21Relative = null, Expression<Func<string>> custom22From = null, Expression<Func<string>> custom22To = null, Expression<Func<string>> custom22Relative = null, Expression<Func<string>> custom23From = null, Expression<Func<string>> custom23To = null, Expression<Func<string>> custom23Relative = null, Expression<Func<string>> custom24From = null, Expression<Func<string>> custom24To = null, Expression<Func<string>> custom24Relative = null, Expression<Func<bool>> custom25 = null, Expression<Func<bool>> custom26 = null, Expression<Func<bool>> custom27 = null, Expression<Func<bool>> custom28 = null, Expression<Func<string>> custom29 = null, Expression<Func<string>> custom30 = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_custom1 = custom1 == null ? null : WorkflowExpression.Compile(custom1);
-            WorkflowExpression.Validate(__workflow_custom1, nameof(custom1), required: false);
-            var __workflow_custom2 = custom2 == null ? null : WorkflowExpression.Compile(custom2);
-            WorkflowExpression.Validate(__workflow_custom2, nameof(custom2), required: false);
-            var __workflow_custom3 = custom3 == null ? null : WorkflowExpression.Compile(custom3);
-            WorkflowExpression.Validate(__workflow_custom3, nameof(custom3), required: false);
-            var __workflow_custom4 = custom4 == null ? null : WorkflowExpression.Compile(custom4);
-            WorkflowExpression.Validate(__workflow_custom4, nameof(custom4), required: false);
-            var __workflow_custom5 = custom5 == null ? null : WorkflowExpression.Compile(custom5);
-            WorkflowExpression.Validate(__workflow_custom5, nameof(custom5), required: false);
-            var __workflow_custom6 = custom6 == null ? null : WorkflowExpression.Compile(custom6);
-            WorkflowExpression.Validate(__workflow_custom6, nameof(custom6), required: false);
-            var __workflow_custom7 = custom7 == null ? null : WorkflowExpression.Compile(custom7);
-            WorkflowExpression.Validate(__workflow_custom7, nameof(custom7), required: false);
-            var __workflow_custom8 = custom8 == null ? null : WorkflowExpression.Compile(custom8);
-            WorkflowExpression.Validate(__workflow_custom8, nameof(custom8), required: false);
-            var __workflow_custom9 = custom9 == null ? null : WorkflowExpression.Compile(custom9);
-            WorkflowExpression.Validate(__workflow_custom9, nameof(custom9), required: false);
-            var __workflow_custom10 = custom10 == null ? null : WorkflowExpression.Compile(custom10);
-            WorkflowExpression.Validate(__workflow_custom10, nameof(custom10), required: false);
-            var __workflow_custom11 = custom11 == null ? null : WorkflowExpression.Compile(custom11);
-            WorkflowExpression.Validate(__workflow_custom11, nameof(custom11), required: false);
-            var __workflow_custom12 = custom12 == null ? null : WorkflowExpression.Compile(custom12);
-            WorkflowExpression.Validate(__workflow_custom12, nameof(custom12), required: false);
-            var __workflow_custom17 = custom17 == null ? null : WorkflowExpression.Compile(custom17);
-            WorkflowExpression.Validate(__workflow_custom17, nameof(custom17), required: false);
-            var __workflow_custom18 = custom18 == null ? null : WorkflowExpression.Compile(custom18);
-            WorkflowExpression.Validate(__workflow_custom18, nameof(custom18), required: false);
-            var __workflow_custom19 = custom19 == null ? null : WorkflowExpression.Compile(custom19);
-            WorkflowExpression.Validate(__workflow_custom19, nameof(custom19), required: false);
-            var __workflow_custom20 = custom20 == null ? null : WorkflowExpression.Compile(custom20);
-            WorkflowExpression.Validate(__workflow_custom20, nameof(custom20), required: false);
-            var __workflow_custom21 = custom21 == null ? null : WorkflowExpression.Compile(custom21);
-            WorkflowExpression.Validate(__workflow_custom21, nameof(custom21), required: false);
-            var __workflow_custom22 = custom22 == null ? null : WorkflowExpression.Compile(custom22);
-            WorkflowExpression.Validate(__workflow_custom22, nameof(custom22), required: false);
-            var __workflow_custom23 = custom23 == null ? null : WorkflowExpression.Compile(custom23);
-            WorkflowExpression.Validate(__workflow_custom23, nameof(custom23), required: false);
-            var __workflow_custom24 = custom24 == null ? null : WorkflowExpression.Compile(custom24);
-            WorkflowExpression.Validate(__workflow_custom24, nameof(custom24), required: false);
-            var __workflow_custom21From = custom21From == null ? null : WorkflowExpression.Compile(custom21From);
-            WorkflowExpression.Validate(__workflow_custom21From, nameof(custom21From), required: false);
-            var __workflow_custom21To = custom21To == null ? null : WorkflowExpression.Compile(custom21To);
-            WorkflowExpression.Validate(__workflow_custom21To, nameof(custom21To), required: false);
-            var __workflow_custom21Relative = custom21Relative == null ? null : WorkflowExpression.Compile(custom21Relative);
-            WorkflowExpression.Validate(__workflow_custom21Relative, nameof(custom21Relative), required: false);
-            var __workflow_custom22From = custom22From == null ? null : WorkflowExpression.Compile(custom22From);
-            WorkflowExpression.Validate(__workflow_custom22From, nameof(custom22From), required: false);
-            var __workflow_custom22To = custom22To == null ? null : WorkflowExpression.Compile(custom22To);
-            WorkflowExpression.Validate(__workflow_custom22To, nameof(custom22To), required: false);
-            var __workflow_custom22Relative = custom22Relative == null ? null : WorkflowExpression.Compile(custom22Relative);
-            WorkflowExpression.Validate(__workflow_custom22Relative, nameof(custom22Relative), required: false);
-            var __workflow_custom23From = custom23From == null ? null : WorkflowExpression.Compile(custom23From);
-            WorkflowExpression.Validate(__workflow_custom23From, nameof(custom23From), required: false);
-            var __workflow_custom23To = custom23To == null ? null : WorkflowExpression.Compile(custom23To);
-            WorkflowExpression.Validate(__workflow_custom23To, nameof(custom23To), required: false);
-            var __workflow_custom23Relative = custom23Relative == null ? null : WorkflowExpression.Compile(custom23Relative);
-            WorkflowExpression.Validate(__workflow_custom23Relative, nameof(custom23Relative), required: false);
-            var __workflow_custom24From = custom24From == null ? null : WorkflowExpression.Compile(custom24From);
-            WorkflowExpression.Validate(__workflow_custom24From, nameof(custom24From), required: false);
-            var __workflow_custom24To = custom24To == null ? null : WorkflowExpression.Compile(custom24To);
-            WorkflowExpression.Validate(__workflow_custom24To, nameof(custom24To), required: false);
-            var __workflow_custom24Relative = custom24Relative == null ? null : WorkflowExpression.Compile(custom24Relative);
-            WorkflowExpression.Validate(__workflow_custom24Relative, nameof(custom24Relative), required: false);
-            var __workflow_custom25 = custom25 == null ? null : WorkflowExpression.Compile(custom25);
-            WorkflowExpression.Validate(__workflow_custom25, nameof(custom25), required: false);
-            var __workflow_custom26 = custom26 == null ? null : WorkflowExpression.Compile(custom26);
-            WorkflowExpression.Validate(__workflow_custom26, nameof(custom26), required: false);
-            var __workflow_custom27 = custom27 == null ? null : WorkflowExpression.Compile(custom27);
-            WorkflowExpression.Validate(__workflow_custom27, nameof(custom27), required: false);
-            var __workflow_custom28 = custom28 == null ? null : WorkflowExpression.Compile(custom28);
-            WorkflowExpression.Validate(__workflow_custom28, nameof(custom28), required: false);
-            var __workflow_custom29 = custom29 == null ? null : WorkflowExpression.Compile(custom29);
-            WorkflowExpression.Validate(__workflow_custom29, nameof(custom29), required: false);
-            var __workflow_custom30 = custom30 == null ? null : WorkflowExpression.Compile(custom30);
-            WorkflowExpression.Validate(__workflow_custom30, nameof(custom30), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_custom1 = WorkflowExpression.Compile(custom1, nameof(custom1), required: false);
+            var __workflow_custom2 = WorkflowExpression.Compile(custom2, nameof(custom2), required: false);
+            var __workflow_custom3 = WorkflowExpression.Compile(custom3, nameof(custom3), required: false);
+            var __workflow_custom4 = WorkflowExpression.Compile(custom4, nameof(custom4), required: false);
+            var __workflow_custom5 = WorkflowExpression.Compile(custom5, nameof(custom5), required: false);
+            var __workflow_custom6 = WorkflowExpression.Compile(custom6, nameof(custom6), required: false);
+            var __workflow_custom7 = WorkflowExpression.Compile(custom7, nameof(custom7), required: false);
+            var __workflow_custom8 = WorkflowExpression.Compile(custom8, nameof(custom8), required: false);
+            var __workflow_custom9 = WorkflowExpression.Compile(custom9, nameof(custom9), required: false);
+            var __workflow_custom10 = WorkflowExpression.Compile(custom10, nameof(custom10), required: false);
+            var __workflow_custom11 = WorkflowExpression.Compile(custom11, nameof(custom11), required: false);
+            var __workflow_custom12 = WorkflowExpression.Compile(custom12, nameof(custom12), required: false);
+            var __workflow_custom17 = WorkflowExpression.Compile(custom17, nameof(custom17), required: false);
+            var __workflow_custom18 = WorkflowExpression.Compile(custom18, nameof(custom18), required: false);
+            var __workflow_custom19 = WorkflowExpression.Compile(custom19, nameof(custom19), required: false);
+            var __workflow_custom20 = WorkflowExpression.Compile(custom20, nameof(custom20), required: false);
+            var __workflow_custom21 = WorkflowExpression.Compile(custom21, nameof(custom21), required: false);
+            var __workflow_custom22 = WorkflowExpression.Compile(custom22, nameof(custom22), required: false);
+            var __workflow_custom23 = WorkflowExpression.Compile(custom23, nameof(custom23), required: false);
+            var __workflow_custom24 = WorkflowExpression.Compile(custom24, nameof(custom24), required: false);
+            var __workflow_custom21From = WorkflowExpression.Compile(custom21From, nameof(custom21From), required: false);
+            var __workflow_custom21To = WorkflowExpression.Compile(custom21To, nameof(custom21To), required: false);
+            var __workflow_custom21Relative = WorkflowExpression.Compile(custom21Relative, nameof(custom21Relative), required: false);
+            var __workflow_custom22From = WorkflowExpression.Compile(custom22From, nameof(custom22From), required: false);
+            var __workflow_custom22To = WorkflowExpression.Compile(custom22To, nameof(custom22To), required: false);
+            var __workflow_custom22Relative = WorkflowExpression.Compile(custom22Relative, nameof(custom22Relative), required: false);
+            var __workflow_custom23From = WorkflowExpression.Compile(custom23From, nameof(custom23From), required: false);
+            var __workflow_custom23To = WorkflowExpression.Compile(custom23To, nameof(custom23To), required: false);
+            var __workflow_custom23Relative = WorkflowExpression.Compile(custom23Relative, nameof(custom23Relative), required: false);
+            var __workflow_custom24From = WorkflowExpression.Compile(custom24From, nameof(custom24From), required: false);
+            var __workflow_custom24To = WorkflowExpression.Compile(custom24To, nameof(custom24To), required: false);
+            var __workflow_custom24Relative = WorkflowExpression.Compile(custom24Relative, nameof(custom24Relative), required: false);
+            var __workflow_custom25 = WorkflowExpression.Compile(custom25, nameof(custom25), required: false);
+            var __workflow_custom26 = WorkflowExpression.Compile(custom26, nameof(custom26), required: false);
+            var __workflow_custom27 = WorkflowExpression.Compile(custom27, nameof(custom27), required: false);
+            var __workflow_custom28 = WorkflowExpression.Compile(custom28, nameof(custom28), required: false);
+            var __workflow_custom29 = WorkflowExpression.Compile(custom29, nameof(custom29), required: false);
+            var __workflow_custom30 = WorkflowExpression.Compile(custom30, nameof(custom30), required: false);
             return new DeferredBodyAction<WorkspaceTemplatesResponseBody>(() =>
             {
                 var apiCallPath = "/getWorkspaceTemplates";
@@ -1128,10 +972,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IWorkflowAction EditNVP(Expression<Func<bodyobjectTypeInput>> bodyobjectType, Expression<Func<string>> bodyobjectId)
         {
-            var __workflow_bodyobjectType = bodyobjectType == null ? null : WorkflowExpression.Compile(bodyobjectType);
-            WorkflowExpression.Validate(__workflow_bodyobjectType, nameof(bodyobjectType), required: true);
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: true);
+            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: true);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/editNVP";
@@ -1163,20 +1005,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchFoldersResponseBody> SearchFolders(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodycontainerId = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyworkspaceName = null)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodycontainerId = bodycontainerId == null ? null : WorkflowExpression.Compile(bodycontainerId);
-            WorkflowExpression.Validate(__workflow_bodycontainerId, nameof(bodycontainerId), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodyworkspaceName = bodyworkspaceName == null ? null : WorkflowExpression.Compile(bodyworkspaceName);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceName, nameof(bodyworkspaceName), required: false);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodycontainerId = WorkflowExpression.Compile(bodycontainerId, nameof(bodycontainerId), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyworkspaceName = WorkflowExpression.Compile(bodyworkspaceName, nameof(bodyworkspaceName), required: false);
             return new DeferredBodyAction<SearchFoldersResponseBody>(() =>
             {
                 var apiCallPath = "/searchFolders";
@@ -1234,96 +1069,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<ShortDocumentProfileResponseBody> UploadDocument(Expression<Func<string>> libraryId, Expression<Func<string>> folderId, Expression<Func<bool>> inheritProfileFromFolder, Expression<Func<object>> file, Expression<Func<bool>> keepLocked = null, Expression<Func<string>> comment = null, Expression<Func<string>> author = null, Expression<Func<string>> @operator = null, Expression<Func<string>> @class = null, Expression<Func<string>> subclass = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<bool>> isHipaa = null, Expression<Func<int>> retainDays = null, Expression<Func<string>> fileCreateDate = null, Expression<Func<string>> fileEditDate = null, Expression<Func<string>> custom1 = null, Expression<Func<string>> custom2 = null, Expression<Func<string>> custom3 = null, Expression<Func<string>> custom4 = null, Expression<Func<string>> custom5 = null, Expression<Func<string>> custom6 = null, Expression<Func<string>> custom7 = null, Expression<Func<string>> custom8 = null, Expression<Func<string>> custom9 = null, Expression<Func<string>> custom10 = null, Expression<Func<string>> custom11 = null, Expression<Func<string>> custom12 = null, Expression<Func<string>> custom13 = null, Expression<Func<string>> custom14 = null, Expression<Func<string>> custom15 = null, Expression<Func<string>> custom16 = null, Expression<Func<double>> custom17 = null, Expression<Func<double>> custom18 = null, Expression<Func<double>> custom19 = null, Expression<Func<double>> custom20 = null, Expression<Func<string>> custom21 = null, Expression<Func<string>> custom22 = null, Expression<Func<string>> custom23 = null, Expression<Func<string>> custom24 = null, Expression<Func<bool>> custom25 = null, Expression<Func<bool>> custom26 = null, Expression<Func<bool>> custom27 = null, Expression<Func<bool>> custom28 = null, Expression<Func<string>> custom29 = null, Expression<Func<string>> custom30 = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_inheritProfileFromFolder = inheritProfileFromFolder == null ? null : WorkflowExpression.Compile(inheritProfileFromFolder);
-            WorkflowExpression.Validate(__workflow_inheritProfileFromFolder, nameof(inheritProfileFromFolder), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_keepLocked = keepLocked == null ? null : WorkflowExpression.Compile(keepLocked);
-            WorkflowExpression.Validate(__workflow_keepLocked, nameof(keepLocked), required: false);
-            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
-            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
-            var __workflow_author = author == null ? null : WorkflowExpression.Compile(author);
-            WorkflowExpression.Validate(__workflow_author, nameof(author), required: false);
-            var __workflow_operator = @operator == null ? null : WorkflowExpression.Compile(@operator);
-            WorkflowExpression.Validate(__workflow_operator, nameof(@operator), required: false);
-            var __workflow_class = @class == null ? null : WorkflowExpression.Compile(@class);
-            WorkflowExpression.Validate(__workflow_class, nameof(@class), required: false);
-            var __workflow_subclass = subclass == null ? null : WorkflowExpression.Compile(subclass);
-            WorkflowExpression.Validate(__workflow_subclass, nameof(subclass), required: false);
-            var __workflow_defaultSecurity = defaultSecurity == null ? null : WorkflowExpression.Compile(defaultSecurity);
-            WorkflowExpression.Validate(__workflow_defaultSecurity, nameof(defaultSecurity), required: false);
-            var __workflow_isHipaa = isHipaa == null ? null : WorkflowExpression.Compile(isHipaa);
-            WorkflowExpression.Validate(__workflow_isHipaa, nameof(isHipaa), required: false);
-            var __workflow_retainDays = retainDays == null ? null : WorkflowExpression.Compile(retainDays);
-            WorkflowExpression.Validate(__workflow_retainDays, nameof(retainDays), required: false);
-            var __workflow_fileCreateDate = fileCreateDate == null ? null : WorkflowExpression.Compile(fileCreateDate);
-            WorkflowExpression.Validate(__workflow_fileCreateDate, nameof(fileCreateDate), required: false);
-            var __workflow_fileEditDate = fileEditDate == null ? null : WorkflowExpression.Compile(fileEditDate);
-            WorkflowExpression.Validate(__workflow_fileEditDate, nameof(fileEditDate), required: false);
-            var __workflow_custom1 = custom1 == null ? null : WorkflowExpression.Compile(custom1);
-            WorkflowExpression.Validate(__workflow_custom1, nameof(custom1), required: false);
-            var __workflow_custom2 = custom2 == null ? null : WorkflowExpression.Compile(custom2);
-            WorkflowExpression.Validate(__workflow_custom2, nameof(custom2), required: false);
-            var __workflow_custom3 = custom3 == null ? null : WorkflowExpression.Compile(custom3);
-            WorkflowExpression.Validate(__workflow_custom3, nameof(custom3), required: false);
-            var __workflow_custom4 = custom4 == null ? null : WorkflowExpression.Compile(custom4);
-            WorkflowExpression.Validate(__workflow_custom4, nameof(custom4), required: false);
-            var __workflow_custom5 = custom5 == null ? null : WorkflowExpression.Compile(custom5);
-            WorkflowExpression.Validate(__workflow_custom5, nameof(custom5), required: false);
-            var __workflow_custom6 = custom6 == null ? null : WorkflowExpression.Compile(custom6);
-            WorkflowExpression.Validate(__workflow_custom6, nameof(custom6), required: false);
-            var __workflow_custom7 = custom7 == null ? null : WorkflowExpression.Compile(custom7);
-            WorkflowExpression.Validate(__workflow_custom7, nameof(custom7), required: false);
-            var __workflow_custom8 = custom8 == null ? null : WorkflowExpression.Compile(custom8);
-            WorkflowExpression.Validate(__workflow_custom8, nameof(custom8), required: false);
-            var __workflow_custom9 = custom9 == null ? null : WorkflowExpression.Compile(custom9);
-            WorkflowExpression.Validate(__workflow_custom9, nameof(custom9), required: false);
-            var __workflow_custom10 = custom10 == null ? null : WorkflowExpression.Compile(custom10);
-            WorkflowExpression.Validate(__workflow_custom10, nameof(custom10), required: false);
-            var __workflow_custom11 = custom11 == null ? null : WorkflowExpression.Compile(custom11);
-            WorkflowExpression.Validate(__workflow_custom11, nameof(custom11), required: false);
-            var __workflow_custom12 = custom12 == null ? null : WorkflowExpression.Compile(custom12);
-            WorkflowExpression.Validate(__workflow_custom12, nameof(custom12), required: false);
-            var __workflow_custom13 = custom13 == null ? null : WorkflowExpression.Compile(custom13);
-            WorkflowExpression.Validate(__workflow_custom13, nameof(custom13), required: false);
-            var __workflow_custom14 = custom14 == null ? null : WorkflowExpression.Compile(custom14);
-            WorkflowExpression.Validate(__workflow_custom14, nameof(custom14), required: false);
-            var __workflow_custom15 = custom15 == null ? null : WorkflowExpression.Compile(custom15);
-            WorkflowExpression.Validate(__workflow_custom15, nameof(custom15), required: false);
-            var __workflow_custom16 = custom16 == null ? null : WorkflowExpression.Compile(custom16);
-            WorkflowExpression.Validate(__workflow_custom16, nameof(custom16), required: false);
-            var __workflow_custom17 = custom17 == null ? null : WorkflowExpression.Compile(custom17);
-            WorkflowExpression.Validate(__workflow_custom17, nameof(custom17), required: false);
-            var __workflow_custom18 = custom18 == null ? null : WorkflowExpression.Compile(custom18);
-            WorkflowExpression.Validate(__workflow_custom18, nameof(custom18), required: false);
-            var __workflow_custom19 = custom19 == null ? null : WorkflowExpression.Compile(custom19);
-            WorkflowExpression.Validate(__workflow_custom19, nameof(custom19), required: false);
-            var __workflow_custom20 = custom20 == null ? null : WorkflowExpression.Compile(custom20);
-            WorkflowExpression.Validate(__workflow_custom20, nameof(custom20), required: false);
-            var __workflow_custom21 = custom21 == null ? null : WorkflowExpression.Compile(custom21);
-            WorkflowExpression.Validate(__workflow_custom21, nameof(custom21), required: false);
-            var __workflow_custom22 = custom22 == null ? null : WorkflowExpression.Compile(custom22);
-            WorkflowExpression.Validate(__workflow_custom22, nameof(custom22), required: false);
-            var __workflow_custom23 = custom23 == null ? null : WorkflowExpression.Compile(custom23);
-            WorkflowExpression.Validate(__workflow_custom23, nameof(custom23), required: false);
-            var __workflow_custom24 = custom24 == null ? null : WorkflowExpression.Compile(custom24);
-            WorkflowExpression.Validate(__workflow_custom24, nameof(custom24), required: false);
-            var __workflow_custom25 = custom25 == null ? null : WorkflowExpression.Compile(custom25);
-            WorkflowExpression.Validate(__workflow_custom25, nameof(custom25), required: false);
-            var __workflow_custom26 = custom26 == null ? null : WorkflowExpression.Compile(custom26);
-            WorkflowExpression.Validate(__workflow_custom26, nameof(custom26), required: false);
-            var __workflow_custom27 = custom27 == null ? null : WorkflowExpression.Compile(custom27);
-            WorkflowExpression.Validate(__workflow_custom27, nameof(custom27), required: false);
-            var __workflow_custom28 = custom28 == null ? null : WorkflowExpression.Compile(custom28);
-            WorkflowExpression.Validate(__workflow_custom28, nameof(custom28), required: false);
-            var __workflow_custom29 = custom29 == null ? null : WorkflowExpression.Compile(custom29);
-            WorkflowExpression.Validate(__workflow_custom29, nameof(custom29), required: false);
-            var __workflow_custom30 = custom30 == null ? null : WorkflowExpression.Compile(custom30);
-            WorkflowExpression.Validate(__workflow_custom30, nameof(custom30), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_inheritProfileFromFolder = WorkflowExpression.Compile(inheritProfileFromFolder, nameof(inheritProfileFromFolder), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_keepLocked = WorkflowExpression.Compile(keepLocked, nameof(keepLocked), required: false);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
+            var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: false);
+            var __workflow_operator = WorkflowExpression.Compile(@operator, nameof(@operator), required: false);
+            var __workflow_class = WorkflowExpression.Compile(@class, nameof(@class), required: false);
+            var __workflow_subclass = WorkflowExpression.Compile(subclass, nameof(subclass), required: false);
+            var __workflow_defaultSecurity = WorkflowExpression.Compile(defaultSecurity, nameof(defaultSecurity), required: false);
+            var __workflow_isHipaa = WorkflowExpression.Compile(isHipaa, nameof(isHipaa), required: false);
+            var __workflow_retainDays = WorkflowExpression.Compile(retainDays, nameof(retainDays), required: false);
+            var __workflow_fileCreateDate = WorkflowExpression.Compile(fileCreateDate, nameof(fileCreateDate), required: false);
+            var __workflow_fileEditDate = WorkflowExpression.Compile(fileEditDate, nameof(fileEditDate), required: false);
+            var __workflow_custom1 = WorkflowExpression.Compile(custom1, nameof(custom1), required: false);
+            var __workflow_custom2 = WorkflowExpression.Compile(custom2, nameof(custom2), required: false);
+            var __workflow_custom3 = WorkflowExpression.Compile(custom3, nameof(custom3), required: false);
+            var __workflow_custom4 = WorkflowExpression.Compile(custom4, nameof(custom4), required: false);
+            var __workflow_custom5 = WorkflowExpression.Compile(custom5, nameof(custom5), required: false);
+            var __workflow_custom6 = WorkflowExpression.Compile(custom6, nameof(custom6), required: false);
+            var __workflow_custom7 = WorkflowExpression.Compile(custom7, nameof(custom7), required: false);
+            var __workflow_custom8 = WorkflowExpression.Compile(custom8, nameof(custom8), required: false);
+            var __workflow_custom9 = WorkflowExpression.Compile(custom9, nameof(custom9), required: false);
+            var __workflow_custom10 = WorkflowExpression.Compile(custom10, nameof(custom10), required: false);
+            var __workflow_custom11 = WorkflowExpression.Compile(custom11, nameof(custom11), required: false);
+            var __workflow_custom12 = WorkflowExpression.Compile(custom12, nameof(custom12), required: false);
+            var __workflow_custom13 = WorkflowExpression.Compile(custom13, nameof(custom13), required: false);
+            var __workflow_custom14 = WorkflowExpression.Compile(custom14, nameof(custom14), required: false);
+            var __workflow_custom15 = WorkflowExpression.Compile(custom15, nameof(custom15), required: false);
+            var __workflow_custom16 = WorkflowExpression.Compile(custom16, nameof(custom16), required: false);
+            var __workflow_custom17 = WorkflowExpression.Compile(custom17, nameof(custom17), required: false);
+            var __workflow_custom18 = WorkflowExpression.Compile(custom18, nameof(custom18), required: false);
+            var __workflow_custom19 = WorkflowExpression.Compile(custom19, nameof(custom19), required: false);
+            var __workflow_custom20 = WorkflowExpression.Compile(custom20, nameof(custom20), required: false);
+            var __workflow_custom21 = WorkflowExpression.Compile(custom21, nameof(custom21), required: false);
+            var __workflow_custom22 = WorkflowExpression.Compile(custom22, nameof(custom22), required: false);
+            var __workflow_custom23 = WorkflowExpression.Compile(custom23, nameof(custom23), required: false);
+            var __workflow_custom24 = WorkflowExpression.Compile(custom24, nameof(custom24), required: false);
+            var __workflow_custom25 = WorkflowExpression.Compile(custom25, nameof(custom25), required: false);
+            var __workflow_custom26 = WorkflowExpression.Compile(custom26, nameof(custom26), required: false);
+            var __workflow_custom27 = WorkflowExpression.Compile(custom27, nameof(custom27), required: false);
+            var __workflow_custom28 = WorkflowExpression.Compile(custom28, nameof(custom28), required: false);
+            var __workflow_custom29 = WorkflowExpression.Compile(custom29, nameof(custom29), required: false);
+            var __workflow_custom30 = WorkflowExpression.Compile(custom30, nameof(custom30), required: false);
             return new DeferredBodyAction<ShortDocumentProfileResponseBody>(() =>
             {
                 var apiCallPath = "/uploadDocument";
@@ -1337,96 +1127,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<ShortDocumentProfileResponseBody> UpdateOrCreateNewDocVersion(Expression<Func<updateOrCreateInput>> updateOrCreate, Expression<Func<string>> documentId, Expression<Func<object>> file, Expression<Func<bool>> keepLocked = null, Expression<Func<string>> comment = null, Expression<Func<string>> name = null, Expression<Func<string>> author = null, Expression<Func<string>> @operator = null, Expression<Func<string>> @class = null, Expression<Func<string>> subclass = null, Expression<Func<defaultSecurityInput>> defaultSecurity = null, Expression<Func<bool>> isHipaa = null, Expression<Func<int>> retainDays = null, Expression<Func<string>> fileCreateDate = null, Expression<Func<string>> fileEditDate = null, Expression<Func<string>> custom1 = null, Expression<Func<string>> custom2 = null, Expression<Func<string>> custom3 = null, Expression<Func<string>> custom4 = null, Expression<Func<string>> custom5 = null, Expression<Func<string>> custom6 = null, Expression<Func<string>> custom7 = null, Expression<Func<string>> custom8 = null, Expression<Func<string>> custom9 = null, Expression<Func<string>> custom10 = null, Expression<Func<string>> custom11 = null, Expression<Func<string>> custom12 = null, Expression<Func<string>> custom13 = null, Expression<Func<string>> custom14 = null, Expression<Func<string>> custom15 = null, Expression<Func<string>> custom16 = null, Expression<Func<double>> custom17 = null, Expression<Func<double>> custom18 = null, Expression<Func<double>> custom19 = null, Expression<Func<double>> custom20 = null, Expression<Func<string>> custom21 = null, Expression<Func<string>> custom22 = null, Expression<Func<string>> custom23 = null, Expression<Func<string>> custom24 = null, Expression<Func<bool>> custom25 = null, Expression<Func<bool>> custom26 = null, Expression<Func<bool>> custom27 = null, Expression<Func<bool>> custom28 = null, Expression<Func<string>> custom29 = null, Expression<Func<string>> custom30 = null)
         {
-            var __workflow_updateOrCreate = updateOrCreate == null ? null : WorkflowExpression.Compile(updateOrCreate);
-            WorkflowExpression.Validate(__workflow_updateOrCreate, nameof(updateOrCreate), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_keepLocked = keepLocked == null ? null : WorkflowExpression.Compile(keepLocked);
-            WorkflowExpression.Validate(__workflow_keepLocked, nameof(keepLocked), required: false);
-            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
-            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_author = author == null ? null : WorkflowExpression.Compile(author);
-            WorkflowExpression.Validate(__workflow_author, nameof(author), required: false);
-            var __workflow_operator = @operator == null ? null : WorkflowExpression.Compile(@operator);
-            WorkflowExpression.Validate(__workflow_operator, nameof(@operator), required: false);
-            var __workflow_class = @class == null ? null : WorkflowExpression.Compile(@class);
-            WorkflowExpression.Validate(__workflow_class, nameof(@class), required: false);
-            var __workflow_subclass = subclass == null ? null : WorkflowExpression.Compile(subclass);
-            WorkflowExpression.Validate(__workflow_subclass, nameof(subclass), required: false);
-            var __workflow_defaultSecurity = defaultSecurity == null ? null : WorkflowExpression.Compile(defaultSecurity);
-            WorkflowExpression.Validate(__workflow_defaultSecurity, nameof(defaultSecurity), required: false);
-            var __workflow_isHipaa = isHipaa == null ? null : WorkflowExpression.Compile(isHipaa);
-            WorkflowExpression.Validate(__workflow_isHipaa, nameof(isHipaa), required: false);
-            var __workflow_retainDays = retainDays == null ? null : WorkflowExpression.Compile(retainDays);
-            WorkflowExpression.Validate(__workflow_retainDays, nameof(retainDays), required: false);
-            var __workflow_fileCreateDate = fileCreateDate == null ? null : WorkflowExpression.Compile(fileCreateDate);
-            WorkflowExpression.Validate(__workflow_fileCreateDate, nameof(fileCreateDate), required: false);
-            var __workflow_fileEditDate = fileEditDate == null ? null : WorkflowExpression.Compile(fileEditDate);
-            WorkflowExpression.Validate(__workflow_fileEditDate, nameof(fileEditDate), required: false);
-            var __workflow_custom1 = custom1 == null ? null : WorkflowExpression.Compile(custom1);
-            WorkflowExpression.Validate(__workflow_custom1, nameof(custom1), required: false);
-            var __workflow_custom2 = custom2 == null ? null : WorkflowExpression.Compile(custom2);
-            WorkflowExpression.Validate(__workflow_custom2, nameof(custom2), required: false);
-            var __workflow_custom3 = custom3 == null ? null : WorkflowExpression.Compile(custom3);
-            WorkflowExpression.Validate(__workflow_custom3, nameof(custom3), required: false);
-            var __workflow_custom4 = custom4 == null ? null : WorkflowExpression.Compile(custom4);
-            WorkflowExpression.Validate(__workflow_custom4, nameof(custom4), required: false);
-            var __workflow_custom5 = custom5 == null ? null : WorkflowExpression.Compile(custom5);
-            WorkflowExpression.Validate(__workflow_custom5, nameof(custom5), required: false);
-            var __workflow_custom6 = custom6 == null ? null : WorkflowExpression.Compile(custom6);
-            WorkflowExpression.Validate(__workflow_custom6, nameof(custom6), required: false);
-            var __workflow_custom7 = custom7 == null ? null : WorkflowExpression.Compile(custom7);
-            WorkflowExpression.Validate(__workflow_custom7, nameof(custom7), required: false);
-            var __workflow_custom8 = custom8 == null ? null : WorkflowExpression.Compile(custom8);
-            WorkflowExpression.Validate(__workflow_custom8, nameof(custom8), required: false);
-            var __workflow_custom9 = custom9 == null ? null : WorkflowExpression.Compile(custom9);
-            WorkflowExpression.Validate(__workflow_custom9, nameof(custom9), required: false);
-            var __workflow_custom10 = custom10 == null ? null : WorkflowExpression.Compile(custom10);
-            WorkflowExpression.Validate(__workflow_custom10, nameof(custom10), required: false);
-            var __workflow_custom11 = custom11 == null ? null : WorkflowExpression.Compile(custom11);
-            WorkflowExpression.Validate(__workflow_custom11, nameof(custom11), required: false);
-            var __workflow_custom12 = custom12 == null ? null : WorkflowExpression.Compile(custom12);
-            WorkflowExpression.Validate(__workflow_custom12, nameof(custom12), required: false);
-            var __workflow_custom13 = custom13 == null ? null : WorkflowExpression.Compile(custom13);
-            WorkflowExpression.Validate(__workflow_custom13, nameof(custom13), required: false);
-            var __workflow_custom14 = custom14 == null ? null : WorkflowExpression.Compile(custom14);
-            WorkflowExpression.Validate(__workflow_custom14, nameof(custom14), required: false);
-            var __workflow_custom15 = custom15 == null ? null : WorkflowExpression.Compile(custom15);
-            WorkflowExpression.Validate(__workflow_custom15, nameof(custom15), required: false);
-            var __workflow_custom16 = custom16 == null ? null : WorkflowExpression.Compile(custom16);
-            WorkflowExpression.Validate(__workflow_custom16, nameof(custom16), required: false);
-            var __workflow_custom17 = custom17 == null ? null : WorkflowExpression.Compile(custom17);
-            WorkflowExpression.Validate(__workflow_custom17, nameof(custom17), required: false);
-            var __workflow_custom18 = custom18 == null ? null : WorkflowExpression.Compile(custom18);
-            WorkflowExpression.Validate(__workflow_custom18, nameof(custom18), required: false);
-            var __workflow_custom19 = custom19 == null ? null : WorkflowExpression.Compile(custom19);
-            WorkflowExpression.Validate(__workflow_custom19, nameof(custom19), required: false);
-            var __workflow_custom20 = custom20 == null ? null : WorkflowExpression.Compile(custom20);
-            WorkflowExpression.Validate(__workflow_custom20, nameof(custom20), required: false);
-            var __workflow_custom21 = custom21 == null ? null : WorkflowExpression.Compile(custom21);
-            WorkflowExpression.Validate(__workflow_custom21, nameof(custom21), required: false);
-            var __workflow_custom22 = custom22 == null ? null : WorkflowExpression.Compile(custom22);
-            WorkflowExpression.Validate(__workflow_custom22, nameof(custom22), required: false);
-            var __workflow_custom23 = custom23 == null ? null : WorkflowExpression.Compile(custom23);
-            WorkflowExpression.Validate(__workflow_custom23, nameof(custom23), required: false);
-            var __workflow_custom24 = custom24 == null ? null : WorkflowExpression.Compile(custom24);
-            WorkflowExpression.Validate(__workflow_custom24, nameof(custom24), required: false);
-            var __workflow_custom25 = custom25 == null ? null : WorkflowExpression.Compile(custom25);
-            WorkflowExpression.Validate(__workflow_custom25, nameof(custom25), required: false);
-            var __workflow_custom26 = custom26 == null ? null : WorkflowExpression.Compile(custom26);
-            WorkflowExpression.Validate(__workflow_custom26, nameof(custom26), required: false);
-            var __workflow_custom27 = custom27 == null ? null : WorkflowExpression.Compile(custom27);
-            WorkflowExpression.Validate(__workflow_custom27, nameof(custom27), required: false);
-            var __workflow_custom28 = custom28 == null ? null : WorkflowExpression.Compile(custom28);
-            WorkflowExpression.Validate(__workflow_custom28, nameof(custom28), required: false);
-            var __workflow_custom29 = custom29 == null ? null : WorkflowExpression.Compile(custom29);
-            WorkflowExpression.Validate(__workflow_custom29, nameof(custom29), required: false);
-            var __workflow_custom30 = custom30 == null ? null : WorkflowExpression.Compile(custom30);
-            WorkflowExpression.Validate(__workflow_custom30, nameof(custom30), required: false);
+            var __workflow_updateOrCreate = WorkflowExpression.Compile(updateOrCreate, nameof(updateOrCreate), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_keepLocked = WorkflowExpression.Compile(keepLocked, nameof(keepLocked), required: false);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: false);
+            var __workflow_operator = WorkflowExpression.Compile(@operator, nameof(@operator), required: false);
+            var __workflow_class = WorkflowExpression.Compile(@class, nameof(@class), required: false);
+            var __workflow_subclass = WorkflowExpression.Compile(subclass, nameof(subclass), required: false);
+            var __workflow_defaultSecurity = WorkflowExpression.Compile(defaultSecurity, nameof(defaultSecurity), required: false);
+            var __workflow_isHipaa = WorkflowExpression.Compile(isHipaa, nameof(isHipaa), required: false);
+            var __workflow_retainDays = WorkflowExpression.Compile(retainDays, nameof(retainDays), required: false);
+            var __workflow_fileCreateDate = WorkflowExpression.Compile(fileCreateDate, nameof(fileCreateDate), required: false);
+            var __workflow_fileEditDate = WorkflowExpression.Compile(fileEditDate, nameof(fileEditDate), required: false);
+            var __workflow_custom1 = WorkflowExpression.Compile(custom1, nameof(custom1), required: false);
+            var __workflow_custom2 = WorkflowExpression.Compile(custom2, nameof(custom2), required: false);
+            var __workflow_custom3 = WorkflowExpression.Compile(custom3, nameof(custom3), required: false);
+            var __workflow_custom4 = WorkflowExpression.Compile(custom4, nameof(custom4), required: false);
+            var __workflow_custom5 = WorkflowExpression.Compile(custom5, nameof(custom5), required: false);
+            var __workflow_custom6 = WorkflowExpression.Compile(custom6, nameof(custom6), required: false);
+            var __workflow_custom7 = WorkflowExpression.Compile(custom7, nameof(custom7), required: false);
+            var __workflow_custom8 = WorkflowExpression.Compile(custom8, nameof(custom8), required: false);
+            var __workflow_custom9 = WorkflowExpression.Compile(custom9, nameof(custom9), required: false);
+            var __workflow_custom10 = WorkflowExpression.Compile(custom10, nameof(custom10), required: false);
+            var __workflow_custom11 = WorkflowExpression.Compile(custom11, nameof(custom11), required: false);
+            var __workflow_custom12 = WorkflowExpression.Compile(custom12, nameof(custom12), required: false);
+            var __workflow_custom13 = WorkflowExpression.Compile(custom13, nameof(custom13), required: false);
+            var __workflow_custom14 = WorkflowExpression.Compile(custom14, nameof(custom14), required: false);
+            var __workflow_custom15 = WorkflowExpression.Compile(custom15, nameof(custom15), required: false);
+            var __workflow_custom16 = WorkflowExpression.Compile(custom16, nameof(custom16), required: false);
+            var __workflow_custom17 = WorkflowExpression.Compile(custom17, nameof(custom17), required: false);
+            var __workflow_custom18 = WorkflowExpression.Compile(custom18, nameof(custom18), required: false);
+            var __workflow_custom19 = WorkflowExpression.Compile(custom19, nameof(custom19), required: false);
+            var __workflow_custom20 = WorkflowExpression.Compile(custom20, nameof(custom20), required: false);
+            var __workflow_custom21 = WorkflowExpression.Compile(custom21, nameof(custom21), required: false);
+            var __workflow_custom22 = WorkflowExpression.Compile(custom22, nameof(custom22), required: false);
+            var __workflow_custom23 = WorkflowExpression.Compile(custom23, nameof(custom23), required: false);
+            var __workflow_custom24 = WorkflowExpression.Compile(custom24, nameof(custom24), required: false);
+            var __workflow_custom25 = WorkflowExpression.Compile(custom25, nameof(custom25), required: false);
+            var __workflow_custom26 = WorkflowExpression.Compile(custom26, nameof(custom26), required: false);
+            var __workflow_custom27 = WorkflowExpression.Compile(custom27, nameof(custom27), required: false);
+            var __workflow_custom28 = WorkflowExpression.Compile(custom28, nameof(custom28), required: false);
+            var __workflow_custom29 = WorkflowExpression.Compile(custom29, nameof(custom29), required: false);
+            var __workflow_custom30 = WorkflowExpression.Compile(custom30, nameof(custom30), required: false);
             return new DeferredBodyAction<ShortDocumentProfileResponseBody>(() =>
             {
                 var apiCallPath = "/updateOrCreateNewDocVersion";
@@ -1440,10 +1185,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodylatest = bodylatest == null ? null : WorkflowExpression.Compile(bodylatest);
-            WorkflowExpression.Validate(__workflow_bodylatest, nameof(bodylatest), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/downloadDocument";
@@ -1481,10 +1224,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetUserDetailsResponse> GetUserDetails(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyuserId)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: true);
             return new DeferredBodyAction<GetUserDetailsResponse>(() =>
             {
                 var apiCallPath = "/getUserDetails";
@@ -1508,8 +1249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<WorkspaceProfileResponseBody> GetWorkspaceProfile(Expression<Func<string>> bodyworkspaceId)
         {
-            var __workflow_bodyworkspaceId = bodyworkspaceId == null ? null : WorkflowExpression.Compile(bodyworkspaceId);
-            WorkflowExpression.Validate(__workflow_bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            var __workflow_bodyworkspaceId = WorkflowExpression.Compile(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             return new DeferredBodyAction<WorkspaceProfileResponseBody>(() =>
             {
                 var apiCallPath = "/getWorkspaceProfile";
@@ -1542,10 +1282,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<FullDocumentProfileResponseBody> GetDocumentProfile(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodylatest = bodylatest == null ? null : WorkflowExpression.Compile(bodylatest);
-            WorkflowExpression.Validate(__workflow_bodylatest, nameof(bodylatest), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: false);
             return new DeferredBodyAction<FullDocumentProfileResponseBody>(() =>
             {
                 var apiCallPath = "/getDocumentProfile";
@@ -1583,92 +1321,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<ShortDocumentProfileResponseBody> UpdateDocumentProfile(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyalias = null, Expression<Func<string>> bodyauthor = null, Expression<Func<string>> bodycomment = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<bool>> bodyisDeclared = null, Expression<Func<bool>> bodyisHipaa = null, Expression<Func<string>> bodyauditComment = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyOperator = null, Expression<Func<int>> bodyretainDays = null, Expression<Func<string>> bodysubclass = null, Expression<Func<string>> bodycustom1 = null, Expression<Func<string>> bodycustom2 = null, Expression<Func<string>> bodycustom3 = null, Expression<Func<string>> bodycustom4 = null, Expression<Func<string>> bodycustom5 = null, Expression<Func<string>> bodycustom6 = null, Expression<Func<string>> bodycustom7 = null, Expression<Func<string>> bodycustom8 = null, Expression<Func<string>> bodycustom9 = null, Expression<Func<string>> bodycustom10 = null, Expression<Func<string>> bodycustom11 = null, Expression<Func<string>> bodycustom12 = null, Expression<Func<string>> bodycustom13 = null, Expression<Func<string>> bodycustom14 = null, Expression<Func<string>> bodycustom15 = null, Expression<Func<string>> bodycustom16 = null, Expression<Func<double>> bodycustom17 = null, Expression<Func<double>> bodycustom18 = null, Expression<Func<double>> bodycustom19 = null, Expression<Func<double>> bodycustom20 = null, Expression<Func<string>> bodycustom21 = null, Expression<Func<string>> bodycustom22 = null, Expression<Func<string>> bodycustom23 = null, Expression<Func<string>> bodycustom24 = null, Expression<Func<bool>> bodycustom25 = null, Expression<Func<bool>> bodycustom26 = null, Expression<Func<bool>> bodycustom27 = null, Expression<Func<bool>> bodycustom28 = null, Expression<Func<string>> bodycustom29 = null, Expression<Func<string>> bodycustom30 = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyalias = bodyalias == null ? null : WorkflowExpression.Compile(bodyalias);
-            WorkflowExpression.Validate(__workflow_bodyalias, nameof(bodyalias), required: false);
-            var __workflow_bodyauthor = bodyauthor == null ? null : WorkflowExpression.Compile(bodyauthor);
-            WorkflowExpression.Validate(__workflow_bodyauthor, nameof(bodyauthor), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            var __workflow_bodyisDeclared = bodyisDeclared == null ? null : WorkflowExpression.Compile(bodyisDeclared);
-            WorkflowExpression.Validate(__workflow_bodyisDeclared, nameof(bodyisDeclared), required: false);
-            var __workflow_bodyisHipaa = bodyisHipaa == null ? null : WorkflowExpression.Compile(bodyisHipaa);
-            WorkflowExpression.Validate(__workflow_bodyisHipaa, nameof(bodyisHipaa), required: false);
-            var __workflow_bodyauditComment = bodyauditComment == null ? null : WorkflowExpression.Compile(bodyauditComment);
-            WorkflowExpression.Validate(__workflow_bodyauditComment, nameof(bodyauditComment), required: false);
-            var __workflow_bodyClass = bodyClass == null ? null : WorkflowExpression.Compile(bodyClass);
-            WorkflowExpression.Validate(__workflow_bodyClass, nameof(bodyClass), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyOperator = bodyOperator == null ? null : WorkflowExpression.Compile(bodyOperator);
-            WorkflowExpression.Validate(__workflow_bodyOperator, nameof(bodyOperator), required: false);
-            var __workflow_bodyretainDays = bodyretainDays == null ? null : WorkflowExpression.Compile(bodyretainDays);
-            WorkflowExpression.Validate(__workflow_bodyretainDays, nameof(bodyretainDays), required: false);
-            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
-            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
-            var __workflow_bodycustom1 = bodycustom1 == null ? null : WorkflowExpression.Compile(bodycustom1);
-            WorkflowExpression.Validate(__workflow_bodycustom1, nameof(bodycustom1), required: false);
-            var __workflow_bodycustom2 = bodycustom2 == null ? null : WorkflowExpression.Compile(bodycustom2);
-            WorkflowExpression.Validate(__workflow_bodycustom2, nameof(bodycustom2), required: false);
-            var __workflow_bodycustom3 = bodycustom3 == null ? null : WorkflowExpression.Compile(bodycustom3);
-            WorkflowExpression.Validate(__workflow_bodycustom3, nameof(bodycustom3), required: false);
-            var __workflow_bodycustom4 = bodycustom4 == null ? null : WorkflowExpression.Compile(bodycustom4);
-            WorkflowExpression.Validate(__workflow_bodycustom4, nameof(bodycustom4), required: false);
-            var __workflow_bodycustom5 = bodycustom5 == null ? null : WorkflowExpression.Compile(bodycustom5);
-            WorkflowExpression.Validate(__workflow_bodycustom5, nameof(bodycustom5), required: false);
-            var __workflow_bodycustom6 = bodycustom6 == null ? null : WorkflowExpression.Compile(bodycustom6);
-            WorkflowExpression.Validate(__workflow_bodycustom6, nameof(bodycustom6), required: false);
-            var __workflow_bodycustom7 = bodycustom7 == null ? null : WorkflowExpression.Compile(bodycustom7);
-            WorkflowExpression.Validate(__workflow_bodycustom7, nameof(bodycustom7), required: false);
-            var __workflow_bodycustom8 = bodycustom8 == null ? null : WorkflowExpression.Compile(bodycustom8);
-            WorkflowExpression.Validate(__workflow_bodycustom8, nameof(bodycustom8), required: false);
-            var __workflow_bodycustom9 = bodycustom9 == null ? null : WorkflowExpression.Compile(bodycustom9);
-            WorkflowExpression.Validate(__workflow_bodycustom9, nameof(bodycustom9), required: false);
-            var __workflow_bodycustom10 = bodycustom10 == null ? null : WorkflowExpression.Compile(bodycustom10);
-            WorkflowExpression.Validate(__workflow_bodycustom10, nameof(bodycustom10), required: false);
-            var __workflow_bodycustom11 = bodycustom11 == null ? null : WorkflowExpression.Compile(bodycustom11);
-            WorkflowExpression.Validate(__workflow_bodycustom11, nameof(bodycustom11), required: false);
-            var __workflow_bodycustom12 = bodycustom12 == null ? null : WorkflowExpression.Compile(bodycustom12);
-            WorkflowExpression.Validate(__workflow_bodycustom12, nameof(bodycustom12), required: false);
-            var __workflow_bodycustom13 = bodycustom13 == null ? null : WorkflowExpression.Compile(bodycustom13);
-            WorkflowExpression.Validate(__workflow_bodycustom13, nameof(bodycustom13), required: false);
-            var __workflow_bodycustom14 = bodycustom14 == null ? null : WorkflowExpression.Compile(bodycustom14);
-            WorkflowExpression.Validate(__workflow_bodycustom14, nameof(bodycustom14), required: false);
-            var __workflow_bodycustom15 = bodycustom15 == null ? null : WorkflowExpression.Compile(bodycustom15);
-            WorkflowExpression.Validate(__workflow_bodycustom15, nameof(bodycustom15), required: false);
-            var __workflow_bodycustom16 = bodycustom16 == null ? null : WorkflowExpression.Compile(bodycustom16);
-            WorkflowExpression.Validate(__workflow_bodycustom16, nameof(bodycustom16), required: false);
-            var __workflow_bodycustom17 = bodycustom17 == null ? null : WorkflowExpression.Compile(bodycustom17);
-            WorkflowExpression.Validate(__workflow_bodycustom17, nameof(bodycustom17), required: false);
-            var __workflow_bodycustom18 = bodycustom18 == null ? null : WorkflowExpression.Compile(bodycustom18);
-            WorkflowExpression.Validate(__workflow_bodycustom18, nameof(bodycustom18), required: false);
-            var __workflow_bodycustom19 = bodycustom19 == null ? null : WorkflowExpression.Compile(bodycustom19);
-            WorkflowExpression.Validate(__workflow_bodycustom19, nameof(bodycustom19), required: false);
-            var __workflow_bodycustom20 = bodycustom20 == null ? null : WorkflowExpression.Compile(bodycustom20);
-            WorkflowExpression.Validate(__workflow_bodycustom20, nameof(bodycustom20), required: false);
-            var __workflow_bodycustom21 = bodycustom21 == null ? null : WorkflowExpression.Compile(bodycustom21);
-            WorkflowExpression.Validate(__workflow_bodycustom21, nameof(bodycustom21), required: false);
-            var __workflow_bodycustom22 = bodycustom22 == null ? null : WorkflowExpression.Compile(bodycustom22);
-            WorkflowExpression.Validate(__workflow_bodycustom22, nameof(bodycustom22), required: false);
-            var __workflow_bodycustom23 = bodycustom23 == null ? null : WorkflowExpression.Compile(bodycustom23);
-            WorkflowExpression.Validate(__workflow_bodycustom23, nameof(bodycustom23), required: false);
-            var __workflow_bodycustom24 = bodycustom24 == null ? null : WorkflowExpression.Compile(bodycustom24);
-            WorkflowExpression.Validate(__workflow_bodycustom24, nameof(bodycustom24), required: false);
-            var __workflow_bodycustom25 = bodycustom25 == null ? null : WorkflowExpression.Compile(bodycustom25);
-            WorkflowExpression.Validate(__workflow_bodycustom25, nameof(bodycustom25), required: false);
-            var __workflow_bodycustom26 = bodycustom26 == null ? null : WorkflowExpression.Compile(bodycustom26);
-            WorkflowExpression.Validate(__workflow_bodycustom26, nameof(bodycustom26), required: false);
-            var __workflow_bodycustom27 = bodycustom27 == null ? null : WorkflowExpression.Compile(bodycustom27);
-            WorkflowExpression.Validate(__workflow_bodycustom27, nameof(bodycustom27), required: false);
-            var __workflow_bodycustom28 = bodycustom28 == null ? null : WorkflowExpression.Compile(bodycustom28);
-            WorkflowExpression.Validate(__workflow_bodycustom28, nameof(bodycustom28), required: false);
-            var __workflow_bodycustom29 = bodycustom29 == null ? null : WorkflowExpression.Compile(bodycustom29);
-            WorkflowExpression.Validate(__workflow_bodycustom29, nameof(bodycustom29), required: false);
-            var __workflow_bodycustom30 = bodycustom30 == null ? null : WorkflowExpression.Compile(bodycustom30);
-            WorkflowExpression.Validate(__workflow_bodycustom30, nameof(bodycustom30), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyalias = WorkflowExpression.Compile(bodyalias, nameof(bodyalias), required: false);
+            var __workflow_bodyauthor = WorkflowExpression.Compile(bodyauthor, nameof(bodyauthor), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
+            var __workflow_bodyisDeclared = WorkflowExpression.Compile(bodyisDeclared, nameof(bodyisDeclared), required: false);
+            var __workflow_bodyisHipaa = WorkflowExpression.Compile(bodyisHipaa, nameof(bodyisHipaa), required: false);
+            var __workflow_bodyauditComment = WorkflowExpression.Compile(bodyauditComment, nameof(bodyauditComment), required: false);
+            var __workflow_bodyClass = WorkflowExpression.Compile(bodyClass, nameof(bodyClass), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyOperator = WorkflowExpression.Compile(bodyOperator, nameof(bodyOperator), required: false);
+            var __workflow_bodyretainDays = WorkflowExpression.Compile(bodyretainDays, nameof(bodyretainDays), required: false);
+            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodycustom1 = WorkflowExpression.Compile(bodycustom1, nameof(bodycustom1), required: false);
+            var __workflow_bodycustom2 = WorkflowExpression.Compile(bodycustom2, nameof(bodycustom2), required: false);
+            var __workflow_bodycustom3 = WorkflowExpression.Compile(bodycustom3, nameof(bodycustom3), required: false);
+            var __workflow_bodycustom4 = WorkflowExpression.Compile(bodycustom4, nameof(bodycustom4), required: false);
+            var __workflow_bodycustom5 = WorkflowExpression.Compile(bodycustom5, nameof(bodycustom5), required: false);
+            var __workflow_bodycustom6 = WorkflowExpression.Compile(bodycustom6, nameof(bodycustom6), required: false);
+            var __workflow_bodycustom7 = WorkflowExpression.Compile(bodycustom7, nameof(bodycustom7), required: false);
+            var __workflow_bodycustom8 = WorkflowExpression.Compile(bodycustom8, nameof(bodycustom8), required: false);
+            var __workflow_bodycustom9 = WorkflowExpression.Compile(bodycustom9, nameof(bodycustom9), required: false);
+            var __workflow_bodycustom10 = WorkflowExpression.Compile(bodycustom10, nameof(bodycustom10), required: false);
+            var __workflow_bodycustom11 = WorkflowExpression.Compile(bodycustom11, nameof(bodycustom11), required: false);
+            var __workflow_bodycustom12 = WorkflowExpression.Compile(bodycustom12, nameof(bodycustom12), required: false);
+            var __workflow_bodycustom13 = WorkflowExpression.Compile(bodycustom13, nameof(bodycustom13), required: false);
+            var __workflow_bodycustom14 = WorkflowExpression.Compile(bodycustom14, nameof(bodycustom14), required: false);
+            var __workflow_bodycustom15 = WorkflowExpression.Compile(bodycustom15, nameof(bodycustom15), required: false);
+            var __workflow_bodycustom16 = WorkflowExpression.Compile(bodycustom16, nameof(bodycustom16), required: false);
+            var __workflow_bodycustom17 = WorkflowExpression.Compile(bodycustom17, nameof(bodycustom17), required: false);
+            var __workflow_bodycustom18 = WorkflowExpression.Compile(bodycustom18, nameof(bodycustom18), required: false);
+            var __workflow_bodycustom19 = WorkflowExpression.Compile(bodycustom19, nameof(bodycustom19), required: false);
+            var __workflow_bodycustom20 = WorkflowExpression.Compile(bodycustom20, nameof(bodycustom20), required: false);
+            var __workflow_bodycustom21 = WorkflowExpression.Compile(bodycustom21, nameof(bodycustom21), required: false);
+            var __workflow_bodycustom22 = WorkflowExpression.Compile(bodycustom22, nameof(bodycustom22), required: false);
+            var __workflow_bodycustom23 = WorkflowExpression.Compile(bodycustom23, nameof(bodycustom23), required: false);
+            var __workflow_bodycustom24 = WorkflowExpression.Compile(bodycustom24, nameof(bodycustom24), required: false);
+            var __workflow_bodycustom25 = WorkflowExpression.Compile(bodycustom25, nameof(bodycustom25), required: false);
+            var __workflow_bodycustom26 = WorkflowExpression.Compile(bodycustom26, nameof(bodycustom26), required: false);
+            var __workflow_bodycustom27 = WorkflowExpression.Compile(bodycustom27, nameof(bodycustom27), required: false);
+            var __workflow_bodycustom28 = WorkflowExpression.Compile(bodycustom28, nameof(bodycustom28), required: false);
+            var __workflow_bodycustom29 = WorkflowExpression.Compile(bodycustom29, nameof(bodycustom29), required: false);
+            var __workflow_bodycustom30 = WorkflowExpression.Compile(bodycustom30, nameof(bodycustom30), required: false);
             return new DeferredBodyAction<ShortDocumentProfileResponseBody>(() =>
             {
                 var apiCallPath = "/updateDocumentProfile";
@@ -1942,18 +1637,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetGroupMembersResponse> GetGroupMembers(Expression<Func<string>> libraryId, Expression<Func<string>> groupId, Expression<Func<logonStatusInput>> logonStatus = null, Expression<Func<int>> limit = null, Expression<Func<string>> preferredLibrary = null, Expression<Func<string>> location = null)
         {
-            var __workflow_libraryId = libraryId == null ? null : WorkflowExpression.Compile(libraryId);
-            WorkflowExpression.Validate(__workflow_libraryId, nameof(libraryId), required: true);
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_logonStatus = logonStatus == null ? null : WorkflowExpression.Compile(logonStatus);
-            WorkflowExpression.Validate(__workflow_logonStatus, nameof(logonStatus), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_preferredLibrary = preferredLibrary == null ? null : WorkflowExpression.Compile(preferredLibrary);
-            WorkflowExpression.Validate(__workflow_preferredLibrary, nameof(preferredLibrary), required: false);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
+            var __workflow_libraryId = WorkflowExpression.Compile(libraryId, nameof(libraryId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_logonStatus = WorkflowExpression.Compile(logonStatus, nameof(logonStatus), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_preferredLibrary = WorkflowExpression.Compile(preferredLibrary, nameof(preferredLibrary), required: false);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
             return new DeferredBodyAction<GetGroupMembersResponse>(() =>
             {
                 var apiCallPath = "/getGroupMembers";
@@ -1977,86 +1666,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchWorkspacesResponseBody> SearchWorkspaces(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyanywhere = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubclass = null, Expression<Func<string>> bodycustom1 = null, Expression<Func<string>> bodycustom2 = null, Expression<Func<string>> bodycustom3 = null, Expression<Func<string>> bodycustom4 = null, Expression<Func<string>> bodycustom5 = null, Expression<Func<string>> bodycustom6 = null, Expression<Func<string>> bodycustom7 = null, Expression<Func<string>> bodycustom8 = null, Expression<Func<string>> bodycustom9 = null, Expression<Func<string>> bodycustom10 = null, Expression<Func<string>> bodycustom11 = null, Expression<Func<string>> bodycustom12 = null, Expression<Func<string>> bodycustom13 = null, Expression<Func<string>> bodycustom14 = null, Expression<Func<string>> bodycustom15 = null, Expression<Func<string>> bodycustom16 = null, Expression<Func<string>> bodycustom17 = null, Expression<Func<string>> bodycustom18 = null, Expression<Func<string>> bodycustom19 = null, Expression<Func<string>> bodycustom20 = null, Expression<Func<string>> bodycustom21From = null, Expression<Func<string>> bodycustom21To = null, Expression<Func<string>> bodycustom22From = null, Expression<Func<string>> bodycustom22To = null, Expression<Func<string>> bodycustom23From = null, Expression<Func<string>> bodycustom23To = null, Expression<Func<string>> bodycustom24From = null, Expression<Func<string>> bodycustom24To = null, Expression<Func<bool>> bodycustom25 = null, Expression<Func<bool>> bodycustom26 = null, Expression<Func<bool>> bodycustom27 = null, Expression<Func<bool>> bodycustom28 = null, Expression<Func<string>> bodycustom29 = null, Expression<Func<string>> bodycustom30 = null)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodyanywhere = bodyanywhere == null ? null : WorkflowExpression.Compile(bodyanywhere);
-            WorkflowExpression.Validate(__workflow_bodyanywhere, nameof(bodyanywhere), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
-            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
-            var __workflow_bodycustom1 = bodycustom1 == null ? null : WorkflowExpression.Compile(bodycustom1);
-            WorkflowExpression.Validate(__workflow_bodycustom1, nameof(bodycustom1), required: false);
-            var __workflow_bodycustom2 = bodycustom2 == null ? null : WorkflowExpression.Compile(bodycustom2);
-            WorkflowExpression.Validate(__workflow_bodycustom2, nameof(bodycustom2), required: false);
-            var __workflow_bodycustom3 = bodycustom3 == null ? null : WorkflowExpression.Compile(bodycustom3);
-            WorkflowExpression.Validate(__workflow_bodycustom3, nameof(bodycustom3), required: false);
-            var __workflow_bodycustom4 = bodycustom4 == null ? null : WorkflowExpression.Compile(bodycustom4);
-            WorkflowExpression.Validate(__workflow_bodycustom4, nameof(bodycustom4), required: false);
-            var __workflow_bodycustom5 = bodycustom5 == null ? null : WorkflowExpression.Compile(bodycustom5);
-            WorkflowExpression.Validate(__workflow_bodycustom5, nameof(bodycustom5), required: false);
-            var __workflow_bodycustom6 = bodycustom6 == null ? null : WorkflowExpression.Compile(bodycustom6);
-            WorkflowExpression.Validate(__workflow_bodycustom6, nameof(bodycustom6), required: false);
-            var __workflow_bodycustom7 = bodycustom7 == null ? null : WorkflowExpression.Compile(bodycustom7);
-            WorkflowExpression.Validate(__workflow_bodycustom7, nameof(bodycustom7), required: false);
-            var __workflow_bodycustom8 = bodycustom8 == null ? null : WorkflowExpression.Compile(bodycustom8);
-            WorkflowExpression.Validate(__workflow_bodycustom8, nameof(bodycustom8), required: false);
-            var __workflow_bodycustom9 = bodycustom9 == null ? null : WorkflowExpression.Compile(bodycustom9);
-            WorkflowExpression.Validate(__workflow_bodycustom9, nameof(bodycustom9), required: false);
-            var __workflow_bodycustom10 = bodycustom10 == null ? null : WorkflowExpression.Compile(bodycustom10);
-            WorkflowExpression.Validate(__workflow_bodycustom10, nameof(bodycustom10), required: false);
-            var __workflow_bodycustom11 = bodycustom11 == null ? null : WorkflowExpression.Compile(bodycustom11);
-            WorkflowExpression.Validate(__workflow_bodycustom11, nameof(bodycustom11), required: false);
-            var __workflow_bodycustom12 = bodycustom12 == null ? null : WorkflowExpression.Compile(bodycustom12);
-            WorkflowExpression.Validate(__workflow_bodycustom12, nameof(bodycustom12), required: false);
-            var __workflow_bodycustom13 = bodycustom13 == null ? null : WorkflowExpression.Compile(bodycustom13);
-            WorkflowExpression.Validate(__workflow_bodycustom13, nameof(bodycustom13), required: false);
-            var __workflow_bodycustom14 = bodycustom14 == null ? null : WorkflowExpression.Compile(bodycustom14);
-            WorkflowExpression.Validate(__workflow_bodycustom14, nameof(bodycustom14), required: false);
-            var __workflow_bodycustom15 = bodycustom15 == null ? null : WorkflowExpression.Compile(bodycustom15);
-            WorkflowExpression.Validate(__workflow_bodycustom15, nameof(bodycustom15), required: false);
-            var __workflow_bodycustom16 = bodycustom16 == null ? null : WorkflowExpression.Compile(bodycustom16);
-            WorkflowExpression.Validate(__workflow_bodycustom16, nameof(bodycustom16), required: false);
-            var __workflow_bodycustom17 = bodycustom17 == null ? null : WorkflowExpression.Compile(bodycustom17);
-            WorkflowExpression.Validate(__workflow_bodycustom17, nameof(bodycustom17), required: false);
-            var __workflow_bodycustom18 = bodycustom18 == null ? null : WorkflowExpression.Compile(bodycustom18);
-            WorkflowExpression.Validate(__workflow_bodycustom18, nameof(bodycustom18), required: false);
-            var __workflow_bodycustom19 = bodycustom19 == null ? null : WorkflowExpression.Compile(bodycustom19);
-            WorkflowExpression.Validate(__workflow_bodycustom19, nameof(bodycustom19), required: false);
-            var __workflow_bodycustom20 = bodycustom20 == null ? null : WorkflowExpression.Compile(bodycustom20);
-            WorkflowExpression.Validate(__workflow_bodycustom20, nameof(bodycustom20), required: false);
-            var __workflow_bodycustom21From = bodycustom21From == null ? null : WorkflowExpression.Compile(bodycustom21From);
-            WorkflowExpression.Validate(__workflow_bodycustom21From, nameof(bodycustom21From), required: false);
-            var __workflow_bodycustom21To = bodycustom21To == null ? null : WorkflowExpression.Compile(bodycustom21To);
-            WorkflowExpression.Validate(__workflow_bodycustom21To, nameof(bodycustom21To), required: false);
-            var __workflow_bodycustom22From = bodycustom22From == null ? null : WorkflowExpression.Compile(bodycustom22From);
-            WorkflowExpression.Validate(__workflow_bodycustom22From, nameof(bodycustom22From), required: false);
-            var __workflow_bodycustom22To = bodycustom22To == null ? null : WorkflowExpression.Compile(bodycustom22To);
-            WorkflowExpression.Validate(__workflow_bodycustom22To, nameof(bodycustom22To), required: false);
-            var __workflow_bodycustom23From = bodycustom23From == null ? null : WorkflowExpression.Compile(bodycustom23From);
-            WorkflowExpression.Validate(__workflow_bodycustom23From, nameof(bodycustom23From), required: false);
-            var __workflow_bodycustom23To = bodycustom23To == null ? null : WorkflowExpression.Compile(bodycustom23To);
-            WorkflowExpression.Validate(__workflow_bodycustom23To, nameof(bodycustom23To), required: false);
-            var __workflow_bodycustom24From = bodycustom24From == null ? null : WorkflowExpression.Compile(bodycustom24From);
-            WorkflowExpression.Validate(__workflow_bodycustom24From, nameof(bodycustom24From), required: false);
-            var __workflow_bodycustom24To = bodycustom24To == null ? null : WorkflowExpression.Compile(bodycustom24To);
-            WorkflowExpression.Validate(__workflow_bodycustom24To, nameof(bodycustom24To), required: false);
-            var __workflow_bodycustom25 = bodycustom25 == null ? null : WorkflowExpression.Compile(bodycustom25);
-            WorkflowExpression.Validate(__workflow_bodycustom25, nameof(bodycustom25), required: false);
-            var __workflow_bodycustom26 = bodycustom26 == null ? null : WorkflowExpression.Compile(bodycustom26);
-            WorkflowExpression.Validate(__workflow_bodycustom26, nameof(bodycustom26), required: false);
-            var __workflow_bodycustom27 = bodycustom27 == null ? null : WorkflowExpression.Compile(bodycustom27);
-            WorkflowExpression.Validate(__workflow_bodycustom27, nameof(bodycustom27), required: false);
-            var __workflow_bodycustom28 = bodycustom28 == null ? null : WorkflowExpression.Compile(bodycustom28);
-            WorkflowExpression.Validate(__workflow_bodycustom28, nameof(bodycustom28), required: false);
-            var __workflow_bodycustom29 = bodycustom29 == null ? null : WorkflowExpression.Compile(bodycustom29);
-            WorkflowExpression.Validate(__workflow_bodycustom29, nameof(bodycustom29), required: false);
-            var __workflow_bodycustom30 = bodycustom30 == null ? null : WorkflowExpression.Compile(bodycustom30);
-            WorkflowExpression.Validate(__workflow_bodycustom30, nameof(bodycustom30), required: false);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodyanywhere = WorkflowExpression.Compile(bodyanywhere, nameof(bodyanywhere), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodycustom1 = WorkflowExpression.Compile(bodycustom1, nameof(bodycustom1), required: false);
+            var __workflow_bodycustom2 = WorkflowExpression.Compile(bodycustom2, nameof(bodycustom2), required: false);
+            var __workflow_bodycustom3 = WorkflowExpression.Compile(bodycustom3, nameof(bodycustom3), required: false);
+            var __workflow_bodycustom4 = WorkflowExpression.Compile(bodycustom4, nameof(bodycustom4), required: false);
+            var __workflow_bodycustom5 = WorkflowExpression.Compile(bodycustom5, nameof(bodycustom5), required: false);
+            var __workflow_bodycustom6 = WorkflowExpression.Compile(bodycustom6, nameof(bodycustom6), required: false);
+            var __workflow_bodycustom7 = WorkflowExpression.Compile(bodycustom7, nameof(bodycustom7), required: false);
+            var __workflow_bodycustom8 = WorkflowExpression.Compile(bodycustom8, nameof(bodycustom8), required: false);
+            var __workflow_bodycustom9 = WorkflowExpression.Compile(bodycustom9, nameof(bodycustom9), required: false);
+            var __workflow_bodycustom10 = WorkflowExpression.Compile(bodycustom10, nameof(bodycustom10), required: false);
+            var __workflow_bodycustom11 = WorkflowExpression.Compile(bodycustom11, nameof(bodycustom11), required: false);
+            var __workflow_bodycustom12 = WorkflowExpression.Compile(bodycustom12, nameof(bodycustom12), required: false);
+            var __workflow_bodycustom13 = WorkflowExpression.Compile(bodycustom13, nameof(bodycustom13), required: false);
+            var __workflow_bodycustom14 = WorkflowExpression.Compile(bodycustom14, nameof(bodycustom14), required: false);
+            var __workflow_bodycustom15 = WorkflowExpression.Compile(bodycustom15, nameof(bodycustom15), required: false);
+            var __workflow_bodycustom16 = WorkflowExpression.Compile(bodycustom16, nameof(bodycustom16), required: false);
+            var __workflow_bodycustom17 = WorkflowExpression.Compile(bodycustom17, nameof(bodycustom17), required: false);
+            var __workflow_bodycustom18 = WorkflowExpression.Compile(bodycustom18, nameof(bodycustom18), required: false);
+            var __workflow_bodycustom19 = WorkflowExpression.Compile(bodycustom19, nameof(bodycustom19), required: false);
+            var __workflow_bodycustom20 = WorkflowExpression.Compile(bodycustom20, nameof(bodycustom20), required: false);
+            var __workflow_bodycustom21From = WorkflowExpression.Compile(bodycustom21From, nameof(bodycustom21From), required: false);
+            var __workflow_bodycustom21To = WorkflowExpression.Compile(bodycustom21To, nameof(bodycustom21To), required: false);
+            var __workflow_bodycustom22From = WorkflowExpression.Compile(bodycustom22From, nameof(bodycustom22From), required: false);
+            var __workflow_bodycustom22To = WorkflowExpression.Compile(bodycustom22To, nameof(bodycustom22To), required: false);
+            var __workflow_bodycustom23From = WorkflowExpression.Compile(bodycustom23From, nameof(bodycustom23From), required: false);
+            var __workflow_bodycustom23To = WorkflowExpression.Compile(bodycustom23To, nameof(bodycustom23To), required: false);
+            var __workflow_bodycustom24From = WorkflowExpression.Compile(bodycustom24From, nameof(bodycustom24From), required: false);
+            var __workflow_bodycustom24To = WorkflowExpression.Compile(bodycustom24To, nameof(bodycustom24To), required: false);
+            var __workflow_bodycustom25 = WorkflowExpression.Compile(bodycustom25, nameof(bodycustom25), required: false);
+            var __workflow_bodycustom26 = WorkflowExpression.Compile(bodycustom26, nameof(bodycustom26), required: false);
+            var __workflow_bodycustom27 = WorkflowExpression.Compile(bodycustom27, nameof(bodycustom27), required: false);
+            var __workflow_bodycustom28 = WorkflowExpression.Compile(bodycustom28, nameof(bodycustom28), required: false);
+            var __workflow_bodycustom29 = WorkflowExpression.Compile(bodycustom29, nameof(bodycustom29), required: false);
+            var __workflow_bodycustom30 = WorkflowExpression.Compile(bodycustom30, nameof(bodycustom30), required: false);
             return new DeferredBodyAction<SearchWorkspacesResponseBody>(() =>
             {
                 var apiCallPath = "/searchWorkspaces";
@@ -2312,10 +1961,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<AddDocumentReferenceResponse> AddDocumentReference(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyfolderId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
             return new DeferredBodyAction<AddDocumentReferenceResponse>(() =>
             {
                 var apiCallPath = "/addDocumentReference";
@@ -2339,10 +1986,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> DeleteDocumentReference(Expression<Func<string>> documentId, Expression<Func<string>> folderId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/deleteDocumentReference";
@@ -2357,18 +2002,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<MoveDocumentResponseBody> MoveDocument(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydestinationFolderId, Expression<Func<bool>> bodyupdateProfile = null, Expression<Func<bool>> bodyupdateSecurity = null, Expression<Func<string>> bodycomments = null)
         {
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodydestinationFolderId = bodydestinationFolderId == null ? null : WorkflowExpression.Compile(bodydestinationFolderId);
-            WorkflowExpression.Validate(__workflow_bodydestinationFolderId, nameof(bodydestinationFolderId), required: true);
-            var __workflow_bodyupdateProfile = bodyupdateProfile == null ? null : WorkflowExpression.Compile(bodyupdateProfile);
-            WorkflowExpression.Validate(__workflow_bodyupdateProfile, nameof(bodyupdateProfile), required: false);
-            var __workflow_bodyupdateSecurity = bodyupdateSecurity == null ? null : WorkflowExpression.Compile(bodyupdateSecurity);
-            WorkflowExpression.Validate(__workflow_bodyupdateSecurity, nameof(bodyupdateSecurity), required: false);
-            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
-            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydestinationFolderId = WorkflowExpression.Compile(bodydestinationFolderId, nameof(bodydestinationFolderId), required: true);
+            var __workflow_bodyupdateProfile = WorkflowExpression.Compile(bodyupdateProfile, nameof(bodyupdateProfile), required: false);
+            var __workflow_bodyupdateSecurity = WorkflowExpression.Compile(bodyupdateSecurity, nameof(bodyupdateSecurity), required: false);
+            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
             return new DeferredBodyAction<MoveDocumentResponseBody>(() =>
             {
                 var apiCallPath = "/moveDocument";
@@ -2432,10 +2071,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<CopyDocumentResponse> CopyDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyfolderId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: true);
             return new DeferredBodyAction<CopyDocumentResponse>(() =>
             {
                 var apiCallPath = "/copyDocument";
@@ -2459,14 +2096,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> UpdateWorkflowState(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodystate, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodystatusMessage = null)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
-            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodystatusMessage = bodystatusMessage == null ? null : WorkflowExpression.Compile(bodystatusMessage);
-            WorkflowExpression.Validate(__workflow_bodystatusMessage, nameof(bodystatusMessage), required: false);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodystatusMessage = WorkflowExpression.Compile(bodystatusMessage, nameof(bodystatusMessage), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updateWorkflowState";
@@ -2502,10 +2135,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<CoreEMPropertiesResponseBody> GetCoreEMPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bool>> bodylatest = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodylatest = bodylatest == null ? null : WorkflowExpression.Compile(bodylatest);
-            WorkflowExpression.Validate(__workflow_bodylatest, nameof(bodylatest), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodylatest = WorkflowExpression.Compile(bodylatest, nameof(bodylatest), required: false);
             return new DeferredBodyAction<CoreEMPropertiesResponseBody>(() =>
             {
                 var apiCallPath = "/getCoreEMPropertiesForDocument";
@@ -2543,94 +2174,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<PromoteDocumentVersionResponseBody> PromoteDocumentVersion(Expression<Func<string>> bodydocumentId, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyjournalId = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyalias = null, Expression<Func<string>> bodyauthor = null, Expression<Func<string>> bodyClass = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<bool>> bodyisDeclared = null, Expression<Func<bool>> bodyisHipaa = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyOperator = null, Expression<Func<int>> bodyretainDays = null, Expression<Func<string>> bodysubclass = null, Expression<Func<string>> bodycustom1 = null, Expression<Func<string>> bodycustom2 = null, Expression<Func<string>> bodycustom3 = null, Expression<Func<string>> bodycustom4 = null, Expression<Func<string>> bodycustom5 = null, Expression<Func<string>> bodycustom6 = null, Expression<Func<string>> bodycustom7 = null, Expression<Func<string>> bodycustom8 = null, Expression<Func<string>> bodycustom9 = null, Expression<Func<string>> bodycustom10 = null, Expression<Func<string>> bodycustom11 = null, Expression<Func<string>> bodycustom12 = null, Expression<Func<string>> bodycustom13 = null, Expression<Func<string>> bodycustom14 = null, Expression<Func<string>> bodycustom15 = null, Expression<Func<string>> bodycustom16 = null, Expression<Func<double>> bodycustom17 = null, Expression<Func<double>> bodycustom18 = null, Expression<Func<double>> bodycustom19 = null, Expression<Func<double>> bodycustom20 = null, Expression<Func<string>> bodycustom21 = null, Expression<Func<string>> bodycustom22 = null, Expression<Func<string>> bodycustom23 = null, Expression<Func<string>> bodycustom24 = null, Expression<Func<bool>> bodycustom25 = null, Expression<Func<bool>> bodycustom26 = null, Expression<Func<bool>> bodycustom27 = null, Expression<Func<bool>> bodycustom28 = null, Expression<Func<string>> bodycustom29 = null, Expression<Func<string>> bodycustom30 = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyversion = bodyversion == null ? null : WorkflowExpression.Compile(bodyversion);
-            WorkflowExpression.Validate(__workflow_bodyversion, nameof(bodyversion), required: false);
-            var __workflow_bodyjournalId = bodyjournalId == null ? null : WorkflowExpression.Compile(bodyjournalId);
-            WorkflowExpression.Validate(__workflow_bodyjournalId, nameof(bodyjournalId), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyalias = bodyalias == null ? null : WorkflowExpression.Compile(bodyalias);
-            WorkflowExpression.Validate(__workflow_bodyalias, nameof(bodyalias), required: false);
-            var __workflow_bodyauthor = bodyauthor == null ? null : WorkflowExpression.Compile(bodyauthor);
-            WorkflowExpression.Validate(__workflow_bodyauthor, nameof(bodyauthor), required: false);
-            var __workflow_bodyClass = bodyClass == null ? null : WorkflowExpression.Compile(bodyClass);
-            WorkflowExpression.Validate(__workflow_bodyClass, nameof(bodyClass), required: false);
-            var __workflow_bodydefaultSecurity = bodydefaultSecurity == null ? null : WorkflowExpression.Compile(bodydefaultSecurity);
-            WorkflowExpression.Validate(__workflow_bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
-            var __workflow_bodyisDeclared = bodyisDeclared == null ? null : WorkflowExpression.Compile(bodyisDeclared);
-            WorkflowExpression.Validate(__workflow_bodyisDeclared, nameof(bodyisDeclared), required: false);
-            var __workflow_bodyisHipaa = bodyisHipaa == null ? null : WorkflowExpression.Compile(bodyisHipaa);
-            WorkflowExpression.Validate(__workflow_bodyisHipaa, nameof(bodyisHipaa), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyOperator = bodyOperator == null ? null : WorkflowExpression.Compile(bodyOperator);
-            WorkflowExpression.Validate(__workflow_bodyOperator, nameof(bodyOperator), required: false);
-            var __workflow_bodyretainDays = bodyretainDays == null ? null : WorkflowExpression.Compile(bodyretainDays);
-            WorkflowExpression.Validate(__workflow_bodyretainDays, nameof(bodyretainDays), required: false);
-            var __workflow_bodysubclass = bodysubclass == null ? null : WorkflowExpression.Compile(bodysubclass);
-            WorkflowExpression.Validate(__workflow_bodysubclass, nameof(bodysubclass), required: false);
-            var __workflow_bodycustom1 = bodycustom1 == null ? null : WorkflowExpression.Compile(bodycustom1);
-            WorkflowExpression.Validate(__workflow_bodycustom1, nameof(bodycustom1), required: false);
-            var __workflow_bodycustom2 = bodycustom2 == null ? null : WorkflowExpression.Compile(bodycustom2);
-            WorkflowExpression.Validate(__workflow_bodycustom2, nameof(bodycustom2), required: false);
-            var __workflow_bodycustom3 = bodycustom3 == null ? null : WorkflowExpression.Compile(bodycustom3);
-            WorkflowExpression.Validate(__workflow_bodycustom3, nameof(bodycustom3), required: false);
-            var __workflow_bodycustom4 = bodycustom4 == null ? null : WorkflowExpression.Compile(bodycustom4);
-            WorkflowExpression.Validate(__workflow_bodycustom4, nameof(bodycustom4), required: false);
-            var __workflow_bodycustom5 = bodycustom5 == null ? null : WorkflowExpression.Compile(bodycustom5);
-            WorkflowExpression.Validate(__workflow_bodycustom5, nameof(bodycustom5), required: false);
-            var __workflow_bodycustom6 = bodycustom6 == null ? null : WorkflowExpression.Compile(bodycustom6);
-            WorkflowExpression.Validate(__workflow_bodycustom6, nameof(bodycustom6), required: false);
-            var __workflow_bodycustom7 = bodycustom7 == null ? null : WorkflowExpression.Compile(bodycustom7);
-            WorkflowExpression.Validate(__workflow_bodycustom7, nameof(bodycustom7), required: false);
-            var __workflow_bodycustom8 = bodycustom8 == null ? null : WorkflowExpression.Compile(bodycustom8);
-            WorkflowExpression.Validate(__workflow_bodycustom8, nameof(bodycustom8), required: false);
-            var __workflow_bodycustom9 = bodycustom9 == null ? null : WorkflowExpression.Compile(bodycustom9);
-            WorkflowExpression.Validate(__workflow_bodycustom9, nameof(bodycustom9), required: false);
-            var __workflow_bodycustom10 = bodycustom10 == null ? null : WorkflowExpression.Compile(bodycustom10);
-            WorkflowExpression.Validate(__workflow_bodycustom10, nameof(bodycustom10), required: false);
-            var __workflow_bodycustom11 = bodycustom11 == null ? null : WorkflowExpression.Compile(bodycustom11);
-            WorkflowExpression.Validate(__workflow_bodycustom11, nameof(bodycustom11), required: false);
-            var __workflow_bodycustom12 = bodycustom12 == null ? null : WorkflowExpression.Compile(bodycustom12);
-            WorkflowExpression.Validate(__workflow_bodycustom12, nameof(bodycustom12), required: false);
-            var __workflow_bodycustom13 = bodycustom13 == null ? null : WorkflowExpression.Compile(bodycustom13);
-            WorkflowExpression.Validate(__workflow_bodycustom13, nameof(bodycustom13), required: false);
-            var __workflow_bodycustom14 = bodycustom14 == null ? null : WorkflowExpression.Compile(bodycustom14);
-            WorkflowExpression.Validate(__workflow_bodycustom14, nameof(bodycustom14), required: false);
-            var __workflow_bodycustom15 = bodycustom15 == null ? null : WorkflowExpression.Compile(bodycustom15);
-            WorkflowExpression.Validate(__workflow_bodycustom15, nameof(bodycustom15), required: false);
-            var __workflow_bodycustom16 = bodycustom16 == null ? null : WorkflowExpression.Compile(bodycustom16);
-            WorkflowExpression.Validate(__workflow_bodycustom16, nameof(bodycustom16), required: false);
-            var __workflow_bodycustom17 = bodycustom17 == null ? null : WorkflowExpression.Compile(bodycustom17);
-            WorkflowExpression.Validate(__workflow_bodycustom17, nameof(bodycustom17), required: false);
-            var __workflow_bodycustom18 = bodycustom18 == null ? null : WorkflowExpression.Compile(bodycustom18);
-            WorkflowExpression.Validate(__workflow_bodycustom18, nameof(bodycustom18), required: false);
-            var __workflow_bodycustom19 = bodycustom19 == null ? null : WorkflowExpression.Compile(bodycustom19);
-            WorkflowExpression.Validate(__workflow_bodycustom19, nameof(bodycustom19), required: false);
-            var __workflow_bodycustom20 = bodycustom20 == null ? null : WorkflowExpression.Compile(bodycustom20);
-            WorkflowExpression.Validate(__workflow_bodycustom20, nameof(bodycustom20), required: false);
-            var __workflow_bodycustom21 = bodycustom21 == null ? null : WorkflowExpression.Compile(bodycustom21);
-            WorkflowExpression.Validate(__workflow_bodycustom21, nameof(bodycustom21), required: false);
-            var __workflow_bodycustom22 = bodycustom22 == null ? null : WorkflowExpression.Compile(bodycustom22);
-            WorkflowExpression.Validate(__workflow_bodycustom22, nameof(bodycustom22), required: false);
-            var __workflow_bodycustom23 = bodycustom23 == null ? null : WorkflowExpression.Compile(bodycustom23);
-            WorkflowExpression.Validate(__workflow_bodycustom23, nameof(bodycustom23), required: false);
-            var __workflow_bodycustom24 = bodycustom24 == null ? null : WorkflowExpression.Compile(bodycustom24);
-            WorkflowExpression.Validate(__workflow_bodycustom24, nameof(bodycustom24), required: false);
-            var __workflow_bodycustom25 = bodycustom25 == null ? null : WorkflowExpression.Compile(bodycustom25);
-            WorkflowExpression.Validate(__workflow_bodycustom25, nameof(bodycustom25), required: false);
-            var __workflow_bodycustom26 = bodycustom26 == null ? null : WorkflowExpression.Compile(bodycustom26);
-            WorkflowExpression.Validate(__workflow_bodycustom26, nameof(bodycustom26), required: false);
-            var __workflow_bodycustom27 = bodycustom27 == null ? null : WorkflowExpression.Compile(bodycustom27);
-            WorkflowExpression.Validate(__workflow_bodycustom27, nameof(bodycustom27), required: false);
-            var __workflow_bodycustom28 = bodycustom28 == null ? null : WorkflowExpression.Compile(bodycustom28);
-            WorkflowExpression.Validate(__workflow_bodycustom28, nameof(bodycustom28), required: false);
-            var __workflow_bodycustom29 = bodycustom29 == null ? null : WorkflowExpression.Compile(bodycustom29);
-            WorkflowExpression.Validate(__workflow_bodycustom29, nameof(bodycustom29), required: false);
-            var __workflow_bodycustom30 = bodycustom30 == null ? null : WorkflowExpression.Compile(bodycustom30);
-            WorkflowExpression.Validate(__workflow_bodycustom30, nameof(bodycustom30), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
+            var __workflow_bodyjournalId = WorkflowExpression.Compile(bodyjournalId, nameof(bodyjournalId), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodyalias = WorkflowExpression.Compile(bodyalias, nameof(bodyalias), required: false);
+            var __workflow_bodyauthor = WorkflowExpression.Compile(bodyauthor, nameof(bodyauthor), required: false);
+            var __workflow_bodyClass = WorkflowExpression.Compile(bodyClass, nameof(bodyClass), required: false);
+            var __workflow_bodydefaultSecurity = WorkflowExpression.Compile(bodydefaultSecurity, nameof(bodydefaultSecurity), required: false);
+            var __workflow_bodyisDeclared = WorkflowExpression.Compile(bodyisDeclared, nameof(bodyisDeclared), required: false);
+            var __workflow_bodyisHipaa = WorkflowExpression.Compile(bodyisHipaa, nameof(bodyisHipaa), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyOperator = WorkflowExpression.Compile(bodyOperator, nameof(bodyOperator), required: false);
+            var __workflow_bodyretainDays = WorkflowExpression.Compile(bodyretainDays, nameof(bodyretainDays), required: false);
+            var __workflow_bodysubclass = WorkflowExpression.Compile(bodysubclass, nameof(bodysubclass), required: false);
+            var __workflow_bodycustom1 = WorkflowExpression.Compile(bodycustom1, nameof(bodycustom1), required: false);
+            var __workflow_bodycustom2 = WorkflowExpression.Compile(bodycustom2, nameof(bodycustom2), required: false);
+            var __workflow_bodycustom3 = WorkflowExpression.Compile(bodycustom3, nameof(bodycustom3), required: false);
+            var __workflow_bodycustom4 = WorkflowExpression.Compile(bodycustom4, nameof(bodycustom4), required: false);
+            var __workflow_bodycustom5 = WorkflowExpression.Compile(bodycustom5, nameof(bodycustom5), required: false);
+            var __workflow_bodycustom6 = WorkflowExpression.Compile(bodycustom6, nameof(bodycustom6), required: false);
+            var __workflow_bodycustom7 = WorkflowExpression.Compile(bodycustom7, nameof(bodycustom7), required: false);
+            var __workflow_bodycustom8 = WorkflowExpression.Compile(bodycustom8, nameof(bodycustom8), required: false);
+            var __workflow_bodycustom9 = WorkflowExpression.Compile(bodycustom9, nameof(bodycustom9), required: false);
+            var __workflow_bodycustom10 = WorkflowExpression.Compile(bodycustom10, nameof(bodycustom10), required: false);
+            var __workflow_bodycustom11 = WorkflowExpression.Compile(bodycustom11, nameof(bodycustom11), required: false);
+            var __workflow_bodycustom12 = WorkflowExpression.Compile(bodycustom12, nameof(bodycustom12), required: false);
+            var __workflow_bodycustom13 = WorkflowExpression.Compile(bodycustom13, nameof(bodycustom13), required: false);
+            var __workflow_bodycustom14 = WorkflowExpression.Compile(bodycustom14, nameof(bodycustom14), required: false);
+            var __workflow_bodycustom15 = WorkflowExpression.Compile(bodycustom15, nameof(bodycustom15), required: false);
+            var __workflow_bodycustom16 = WorkflowExpression.Compile(bodycustom16, nameof(bodycustom16), required: false);
+            var __workflow_bodycustom17 = WorkflowExpression.Compile(bodycustom17, nameof(bodycustom17), required: false);
+            var __workflow_bodycustom18 = WorkflowExpression.Compile(bodycustom18, nameof(bodycustom18), required: false);
+            var __workflow_bodycustom19 = WorkflowExpression.Compile(bodycustom19, nameof(bodycustom19), required: false);
+            var __workflow_bodycustom20 = WorkflowExpression.Compile(bodycustom20, nameof(bodycustom20), required: false);
+            var __workflow_bodycustom21 = WorkflowExpression.Compile(bodycustom21, nameof(bodycustom21), required: false);
+            var __workflow_bodycustom22 = WorkflowExpression.Compile(bodycustom22, nameof(bodycustom22), required: false);
+            var __workflow_bodycustom23 = WorkflowExpression.Compile(bodycustom23, nameof(bodycustom23), required: false);
+            var __workflow_bodycustom24 = WorkflowExpression.Compile(bodycustom24, nameof(bodycustom24), required: false);
+            var __workflow_bodycustom25 = WorkflowExpression.Compile(bodycustom25, nameof(bodycustom25), required: false);
+            var __workflow_bodycustom26 = WorkflowExpression.Compile(bodycustom26, nameof(bodycustom26), required: false);
+            var __workflow_bodycustom27 = WorkflowExpression.Compile(bodycustom27, nameof(bodycustom27), required: false);
+            var __workflow_bodycustom28 = WorkflowExpression.Compile(bodycustom28, nameof(bodycustom28), required: false);
+            var __workflow_bodycustom29 = WorkflowExpression.Compile(bodycustom29, nameof(bodycustom29), required: false);
+            var __workflow_bodycustom30 = WorkflowExpression.Compile(bodycustom30, nameof(bodycustom30), required: false);
             return new DeferredBodyAction<PromoteDocumentVersionResponseBody>(() =>
             {
                 var apiCallPath = "/promoteDocumentVersion";
@@ -2910,8 +2497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<GetDocumentVersionsResponse> GetDocumentVersions(Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<GetDocumentVersionsResponse>(() =>
             {
                 var apiCallPath = "/getDocumentVersions";
@@ -2933,10 +2519,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<CoreEMPropertiesResponseBody> SetCoreEMPropertiesForDocument(Expression<Func<string>> bodydocumentId, Expression<Func<bodyemPropertiesInputItem[]>> bodyemProperties)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyemProperties = bodyemProperties == null ? null : WorkflowExpression.Compile(bodyemProperties);
-            WorkflowExpression.Validate(__workflow_bodyemProperties, nameof(bodyemProperties), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyemProperties = WorkflowExpression.Compile(bodyemProperties, nameof(bodyemProperties), required: true);
             return new DeferredBodyAction<CoreEMPropertiesResponseBody>(() =>
             {
                 var apiCallPath = "/setCoreEMPropertiesForDocument";
@@ -2960,22 +2544,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchCoreEMTaxonomyNodeValuesResponse> SearchCoreEMTaxonomyNodeValues(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodytaxonomyProperty, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyquery = null, Expression<Func<bodyenabledStateInput>> bodyenabledState = null, Expression<Func<bool>> bodyincludePath = null, Expression<Func<string>> bodychildrenOfSsid = null, Expression<Func<bool>> bodyimmediateChildrenOnly = null)
         {
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodytaxonomyProperty = bodytaxonomyProperty == null ? null : WorkflowExpression.Compile(bodytaxonomyProperty);
-            WorkflowExpression.Validate(__workflow_bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
-            var __workflow_bodyenabledState = bodyenabledState == null ? null : WorkflowExpression.Compile(bodyenabledState);
-            WorkflowExpression.Validate(__workflow_bodyenabledState, nameof(bodyenabledState), required: false);
-            var __workflow_bodyincludePath = bodyincludePath == null ? null : WorkflowExpression.Compile(bodyincludePath);
-            WorkflowExpression.Validate(__workflow_bodyincludePath, nameof(bodyincludePath), required: false);
-            var __workflow_bodychildrenOfSsid = bodychildrenOfSsid == null ? null : WorkflowExpression.Compile(bodychildrenOfSsid);
-            WorkflowExpression.Validate(__workflow_bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
-            var __workflow_bodyimmediateChildrenOnly = bodyimmediateChildrenOnly == null ? null : WorkflowExpression.Compile(bodyimmediateChildrenOnly);
-            WorkflowExpression.Validate(__workflow_bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodytaxonomyProperty = WorkflowExpression.Compile(bodytaxonomyProperty, nameof(bodytaxonomyProperty), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyenabledState = WorkflowExpression.Compile(bodyenabledState, nameof(bodyenabledState), required: false);
+            var __workflow_bodyincludePath = WorkflowExpression.Compile(bodyincludePath, nameof(bodyincludePath), required: false);
+            var __workflow_bodychildrenOfSsid = WorkflowExpression.Compile(bodychildrenOfSsid, nameof(bodychildrenOfSsid), required: false);
+            var __workflow_bodyimmediateChildrenOnly = WorkflowExpression.Compile(bodyimmediateChildrenOnly, nameof(bodyimmediateChildrenOnly), required: false);
             return new DeferredBodyAction<SearchCoreEMTaxonomyNodeValuesResponse>(() =>
             {
                 var apiCallPath = "/searchCoreEMTaxonomyNodeValues";
@@ -3065,14 +2641,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<AddDocumentHistoryEntryResponse> AddDocumentHistoryEntry(Expression<Func<string>> bodydocumentId, Expression<Func<int>> bodyactivityCode, Expression<Func<string>> bodycomments = null, Expression<Func<int>> bodyduration = null)
         {
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyactivityCode = bodyactivityCode == null ? null : WorkflowExpression.Compile(bodyactivityCode);
-            WorkflowExpression.Validate(__workflow_bodyactivityCode, nameof(bodyactivityCode), required: true);
-            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
-            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyactivityCode = WorkflowExpression.Compile(bodyactivityCode, nameof(bodyactivityCode), required: true);
+            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
             return new DeferredBodyAction<AddDocumentHistoryEntryResponse>(() =>
             {
                 var apiCallPath = "/addDocumentHistoryEntry";
@@ -3108,8 +2680,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<SearchUsersResponse> SearchUsers(Expression<Func<string>> email = null)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
             return new DeferredBodyAction<SearchUsersResponse>(() =>
             {
                 var apiCallPath = "/searchUsers";
@@ -3124,10 +2695,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<DeleteDocumentResponseBody> DeleteDocument(Expression<Func<string>> documentId, Expression<Func<bool>> deleteAllVersions)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_deleteAllVersions = deleteAllVersions == null ? null : WorkflowExpression.Compile(deleteAllVersions);
-            WorkflowExpression.Validate(__workflow_deleteAllVersions, nameof(deleteAllVersions), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_deleteAllVersions = WorkflowExpression.Compile(deleteAllVersions, nameof(deleteAllVersions), required: true);
             return new DeferredBodyAction<DeleteDocumentResponseBody>(() =>
             {
                 var apiCallPath = "/deleteDocument";
@@ -3142,10 +2711,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> CreateDocumentRelation(Expression<Func<string>> bodyprimaryDocumentId, Expression<Func<string>> bodyrelatedDocumentId)
         {
-            var __workflow_bodyprimaryDocumentId = bodyprimaryDocumentId == null ? null : WorkflowExpression.Compile(bodyprimaryDocumentId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryDocumentId, nameof(bodyprimaryDocumentId), required: true);
-            var __workflow_bodyrelatedDocumentId = bodyrelatedDocumentId == null ? null : WorkflowExpression.Compile(bodyrelatedDocumentId);
-            WorkflowExpression.Validate(__workflow_bodyrelatedDocumentId, nameof(bodyrelatedDocumentId), required: true);
+            var __workflow_bodyprimaryDocumentId = WorkflowExpression.Compile(bodyprimaryDocumentId, nameof(bodyprimaryDocumentId), required: true);
+            var __workflow_bodyrelatedDocumentId = WorkflowExpression.Compile(bodyrelatedDocumentId, nameof(bodyrelatedDocumentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/createDocumentRelation";
@@ -3169,10 +2736,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagework")]
         public IBodyWorkflowAction<JToken> DeleteDocumentRelation(Expression<Func<string>> primaryDocumentId, Expression<Func<string>> relatedDocumentId)
         {
-            var __workflow_primaryDocumentId = primaryDocumentId == null ? null : WorkflowExpression.Compile(primaryDocumentId);
-            WorkflowExpression.Validate(__workflow_primaryDocumentId, nameof(primaryDocumentId), required: true);
-            var __workflow_relatedDocumentId = relatedDocumentId == null ? null : WorkflowExpression.Compile(relatedDocumentId);
-            WorkflowExpression.Validate(__workflow_relatedDocumentId, nameof(relatedDocumentId), required: true);
+            var __workflow_primaryDocumentId = WorkflowExpression.Compile(primaryDocumentId, nameof(primaryDocumentId), required: true);
+            var __workflow_relatedDocumentId = WorkflowExpression.Compile(relatedDocumentId, nameof(relatedDocumentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/deleteDocumentRelation";
@@ -3189,26 +2754,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     {
         public IBodyWorkflowTrigger<SingleSelectedDocumentResponse> SingleSelectedDocument(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<bool>> bodyinferFolderId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<string>> bodyworkspaces = null, Expression<Func<string>> bodyclasses = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkflowName = bodyworkflowName == null ? null : WorkflowExpression.Compile(bodyworkflowName);
-            WorkflowExpression.Validate(__workflow_bodyworkflowName, nameof(bodyworkflowName), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyformId = bodyformId == null ? null : WorkflowExpression.Compile(bodyformId);
-            WorkflowExpression.Validate(__workflow_bodyformId, nameof(bodyformId), required: true);
-            var __workflow_bodyinferFolderId = bodyinferFolderId == null ? null : WorkflowExpression.Compile(bodyinferFolderId);
-            WorkflowExpression.Validate(__workflow_bodyinferFolderId, nameof(bodyinferFolderId), required: true);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
-            var __workflow_bodygroups = bodygroups == null ? null : WorkflowExpression.Compile(bodygroups);
-            WorkflowExpression.Validate(__workflow_bodygroups, nameof(bodygroups), required: false);
-            var __workflow_bodyworkspaces = bodyworkspaces == null ? null : WorkflowExpression.Compile(bodyworkspaces);
-            WorkflowExpression.Validate(__workflow_bodyworkspaces, nameof(bodyworkspaces), required: false);
-            var __workflow_bodyclasses = bodyclasses == null ? null : WorkflowExpression.Compile(bodyclasses);
-            WorkflowExpression.Validate(__workflow_bodyclasses, nameof(bodyclasses), required: false);
-            var __workflow_bodywaitForCompletion = bodywaitForCompletion == null ? null : WorkflowExpression.Compile(bodywaitForCompletion);
-            WorkflowExpression.Validate(__workflow_bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
+            var __workflow_bodyworkflowName = WorkflowExpression.Compile(bodyworkflowName, nameof(bodyworkflowName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_bodyinferFolderId = WorkflowExpression.Compile(bodyinferFolderId, nameof(bodyinferFolderId), required: true);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodyworkspaces = WorkflowExpression.Compile(bodyworkspaces, nameof(bodyworkspaces), required: false);
+            var __workflow_bodyclasses = WorkflowExpression.Compile(bodyclasses, nameof(bodyclasses), required: false);
+            var __workflow_bodywaitForCompletion = WorkflowExpression.Compile(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             return new DeferredBodyTrigger<SingleSelectedDocumentResponse>(() =>
             {
                 var apiCallPath = "/hooks/register/singleSelectedDocument";
@@ -3279,24 +2834,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse> MultipleSelectedDocuments(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<bool>> bodyinferFolderId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodyshowFormPerObject = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkflowName = bodyworkflowName == null ? null : WorkflowExpression.Compile(bodyworkflowName);
-            WorkflowExpression.Validate(__workflow_bodyworkflowName, nameof(bodyworkflowName), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyformId = bodyformId == null ? null : WorkflowExpression.Compile(bodyformId);
-            WorkflowExpression.Validate(__workflow_bodyformId, nameof(bodyformId), required: true);
-            var __workflow_bodyinferFolderId = bodyinferFolderId == null ? null : WorkflowExpression.Compile(bodyinferFolderId);
-            WorkflowExpression.Validate(__workflow_bodyinferFolderId, nameof(bodyinferFolderId), required: true);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
-            var __workflow_bodygroups = bodygroups == null ? null : WorkflowExpression.Compile(bodygroups);
-            WorkflowExpression.Validate(__workflow_bodygroups, nameof(bodygroups), required: false);
-            var __workflow_bodyshowFormPerObject = bodyshowFormPerObject == null ? null : WorkflowExpression.Compile(bodyshowFormPerObject);
-            WorkflowExpression.Validate(__workflow_bodyshowFormPerObject, nameof(bodyshowFormPerObject), required: false);
-            var __workflow_bodywaitForCompletion = bodywaitForCompletion == null ? null : WorkflowExpression.Compile(bodywaitForCompletion);
-            WorkflowExpression.Validate(__workflow_bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
+            var __workflow_bodyworkflowName = WorkflowExpression.Compile(bodyworkflowName, nameof(bodyworkflowName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_bodyinferFolderId = WorkflowExpression.Compile(bodyinferFolderId, nameof(bodyinferFolderId), required: true);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodyshowFormPerObject = WorkflowExpression.Compile(bodyshowFormPerObject, nameof(bodyshowFormPerObject), required: false);
+            var __workflow_bodywaitForCompletion = WorkflowExpression.Compile(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             return new DeferredBodyTrigger<MultipleSelectedDocumentsResponse>(() =>
             {
                 var apiCallPath = "/hooks/register/multipleSelectedDocuments";
@@ -3371,20 +2917,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse> SingleSelectedWorkspace(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkflowName = bodyworkflowName == null ? null : WorkflowExpression.Compile(bodyworkflowName);
-            WorkflowExpression.Validate(__workflow_bodyworkflowName, nameof(bodyworkflowName), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyformId = bodyformId == null ? null : WorkflowExpression.Compile(bodyformId);
-            WorkflowExpression.Validate(__workflow_bodyformId, nameof(bodyformId), required: true);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
-            var __workflow_bodygroups = bodygroups == null ? null : WorkflowExpression.Compile(bodygroups);
-            WorkflowExpression.Validate(__workflow_bodygroups, nameof(bodygroups), required: false);
-            var __workflow_bodywaitForCompletion = bodywaitForCompletion == null ? null : WorkflowExpression.Compile(bodywaitForCompletion);
-            WorkflowExpression.Validate(__workflow_bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
+            var __workflow_bodyworkflowName = WorkflowExpression.Compile(bodyworkflowName, nameof(bodyworkflowName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodywaitForCompletion = WorkflowExpression.Compile(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             return new DeferredBodyTrigger<SingleSelectedWorkspaceResponse>(() =>
             {
                 var apiCallPath = "/hooks/register/singleSelectedWorkspace";
@@ -3441,20 +2980,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
 
         public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse> MultipleSelectedWorkspaces(Expression<Func<string>> bodyworkflowName, Expression<Func<string>> bodydescription, Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyformId, Expression<Func<string>> bodyusers = null, Expression<Func<string>> bodygroups = null, Expression<Func<bool>> bodywaitForCompletion = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyworkflowName = bodyworkflowName == null ? null : WorkflowExpression.Compile(bodyworkflowName);
-            WorkflowExpression.Validate(__workflow_bodyworkflowName, nameof(bodyworkflowName), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodylibraryId = bodylibraryId == null ? null : WorkflowExpression.Compile(bodylibraryId);
-            WorkflowExpression.Validate(__workflow_bodylibraryId, nameof(bodylibraryId), required: true);
-            var __workflow_bodyformId = bodyformId == null ? null : WorkflowExpression.Compile(bodyformId);
-            WorkflowExpression.Validate(__workflow_bodyformId, nameof(bodyformId), required: true);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
-            var __workflow_bodygroups = bodygroups == null ? null : WorkflowExpression.Compile(bodygroups);
-            WorkflowExpression.Validate(__workflow_bodygroups, nameof(bodygroups), required: false);
-            var __workflow_bodywaitForCompletion = bodywaitForCompletion == null ? null : WorkflowExpression.Compile(bodywaitForCompletion);
-            WorkflowExpression.Validate(__workflow_bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
+            var __workflow_bodyworkflowName = WorkflowExpression.Compile(bodyworkflowName, nameof(bodyworkflowName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodylibraryId = WorkflowExpression.Compile(bodylibraryId, nameof(bodylibraryId), required: true);
+            var __workflow_bodyformId = WorkflowExpression.Compile(bodyformId, nameof(bodyformId), required: true);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodywaitForCompletion = WorkflowExpression.Compile(bodywaitForCompletion, nameof(bodywaitForCompletion), required: false);
             return new DeferredBodyTrigger<MultipleSelectedWorkspacesResponse>(() =>
             {
                 var apiCallPath = "/hooks/register/multipleSelectedWorkspaces";

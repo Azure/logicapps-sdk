@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ProjectListResponseItem[]> ProjectList(Expression<Func<string>> status)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
             return new DeferredBodyAction<ProjectListResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/projects";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ProjectDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -42,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SitesListResponseItem[]> SitesList(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<SitesListResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/planting-sites", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -56,8 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<SpeciesListResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/species", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -70,8 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails(Expression<Func<string>> speciesId)
         {
-            var __workflow_speciesId = speciesId == null ? null : WorkflowExpression.Compile(speciesId);
-            WorkflowExpression.Validate(__workflow_speciesId, nameof(speciesId), required: true);
+            var __workflow_speciesId = WorkflowExpression.Compile(speciesId, nameof(speciesId), required: true);
             return new DeferredBodyAction<SpeciesDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_speciesId, 1));
@@ -84,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<ForestDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forests/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -98,10 +92,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount(Expression<Func<string>> userSlug, Expression<Func<string>> period)
         {
-            var __workflow_userSlug = userSlug == null ? null : WorkflowExpression.Compile(userSlug);
-            WorkflowExpression.Validate(__workflow_userSlug, nameof(userSlug), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: true);
+            var __workflow_userSlug = WorkflowExpression.Compile(userSlug, nameof(userSlug), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: true);
             return new DeferredBodyAction<ForestTreeCountResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/forests/{0}/tree_counter/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userSlug, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_period, 1));
@@ -114,16 +106,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<PlantResponse> Plant(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null, Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyspeciesId = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodymessage = null)
         {
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: false);
-            var __workflow_bodyplanterId = bodyplanterId == null ? null : WorkflowExpression.Compile(bodyplanterId);
-            WorkflowExpression.Validate(__workflow_bodyplanterId, nameof(bodyplanterId), required: false);
-            var __workflow_bodyspeciesId = bodyspeciesId == null ? null : WorkflowExpression.Compile(bodyspeciesId);
-            WorkflowExpression.Validate(__workflow_bodyspeciesId, nameof(bodyspeciesId), required: false);
-            var __workflow_bodyquantity = bodyquantity == null ? null : WorkflowExpression.Compile(bodyquantity);
-            WorkflowExpression.Validate(__workflow_bodyquantity, nameof(bodyquantity), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_bodyplanterId = WorkflowExpression.Compile(bodyplanterId, nameof(bodyplanterId), required: false);
+            var __workflow_bodyspeciesId = WorkflowExpression.Compile(bodyspeciesId, nameof(bodyspeciesId), required: false);
+            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<PlantResponse>(() =>
             {
                 var apiCallPath = "/api/plant";
@@ -173,18 +160,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyresponsibleName = null, Expression<Func<string>> bodyorganizationWebsite = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyresponsibleName = bodyresponsibleName == null ? null : WorkflowExpression.Compile(bodyresponsibleName);
-            WorkflowExpression.Validate(__workflow_bodyresponsibleName, nameof(bodyresponsibleName), required: false);
-            var __workflow_bodyorganizationWebsite = bodyorganizationWebsite == null ? null : WorkflowExpression.Compile(bodyorganizationWebsite);
-            WorkflowExpression.Validate(__workflow_bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyresponsibleName = WorkflowExpression.Compile(bodyresponsibleName, nameof(bodyresponsibleName), required: false);
+            var __workflow_bodyorganizationWebsite = WorkflowExpression.Compile(bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
             return new DeferredBodyAction<CreateUserResponse>(() =>
             {
                 var apiCallPath = "/api/user/b2b";
@@ -240,8 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails(Expression<Func<string>> planterId)
         {
-            var __workflow_planterId = planterId == null ? null : WorkflowExpression.Compile(planterId);
-            WorkflowExpression.Validate(__workflow_planterId, nameof(planterId), required: true);
+            var __workflow_planterId = WorkflowExpression.Compile(planterId, nameof(planterId), required: true);
             return new DeferredBodyAction<TreeTemplateDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_planterId, 1));
@@ -254,10 +234,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<string>> bodymessage = null)
         {
-            var __workflow_planterId = planterId == null ? null : WorkflowExpression.Compile(planterId);
-            WorkflowExpression.Validate(__workflow_planterId, nameof(planterId), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_planterId = WorkflowExpression.Compile(planterId, nameof(planterId), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<UpdateTreeTemplateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_planterId, 1));
@@ -283,10 +261,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
         public IBodyWorkflowAction<BuyCreditResponse> BuyCredit(Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyamount = null)
         {
-            var __workflow_bodyplanterId = bodyplanterId == null ? null : WorkflowExpression.Compile(bodyplanterId);
-            WorkflowExpression.Validate(__workflow_bodyplanterId, nameof(bodyplanterId), required: false);
-            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
-            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: false);
+            var __workflow_bodyplanterId = WorkflowExpression.Compile(bodyplanterId, nameof(bodyplanterId), required: false);
+            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: false);
             return new DeferredBodyAction<BuyCreditResponse>(() =>
             {
                 var apiCallPath = "/api/credit";

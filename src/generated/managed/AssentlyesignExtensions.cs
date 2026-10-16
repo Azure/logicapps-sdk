@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<JToken> GetCase(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/v2/getCase";
@@ -30,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<JToken[]> FindCases(Expression<Func<object>> findCasesModel = null)
         {
-            var __workflow_findCasesModel = findCasesModel == null ? null : WorkflowExpression.Compile(findCasesModel);
-            WorkflowExpression.Validate(__workflow_findCasesModel, nameof(findCasesModel), required: false);
+            var __workflow_findCasesModel = WorkflowExpression.Compile(findCasesModel, nameof(findCasesModel), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/v2/findCases";
@@ -47,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<JToken[]> FindTemplates(Expression<Func<object>> findTemplatesModel = null)
         {
-            var __workflow_findTemplatesModel = findTemplatesModel == null ? null : WorkflowExpression.Compile(findTemplatesModel);
-            WorkflowExpression.Validate(__workflow_findTemplatesModel, nameof(findTemplatesModel), required: false);
+            var __workflow_findTemplatesModel = WorkflowExpression.Compile(findTemplatesModel, nameof(findTemplatesModel), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/v2/findTemplates";
@@ -62,8 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction CreateCase(Expression<Func<object>> caseModel = null)
         {
-            var __workflow_caseModel = caseModel == null ? null : WorkflowExpression.Compile(caseModel);
-            WorkflowExpression.Validate(__workflow_caseModel, nameof(caseModel), required: false);
+            var __workflow_caseModel = WorkflowExpression.Compile(caseModel, nameof(caseModel), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/createCase";
@@ -77,8 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel = null)
         {
-            var __workflow_createCaseFromTemplateModel = createCaseFromTemplateModel == null ? null : WorkflowExpression.Compile(createCaseFromTemplateModel);
-            WorkflowExpression.Validate(__workflow_createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
+            var __workflow_createCaseFromTemplateModel = WorkflowExpression.Compile(createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/createCaseFromTemplate";
@@ -108,8 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel = null)
         {
-            var __workflow_updateCaseMetadataModel = updateCaseMetadataModel == null ? null : WorkflowExpression.Compile(updateCaseMetadataModel);
-            WorkflowExpression.Validate(__workflow_updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
+            var __workflow_updateCaseMetadataModel = WorkflowExpression.Compile(updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/updateCaseMetadata";
@@ -123,8 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction SendCase(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/sendCase";
@@ -138,8 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction RequestApproval(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/requestApproval";
@@ -153,8 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction RemindCase(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/remindCase";
@@ -168,8 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction DeleteCase(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/deleteCase";
@@ -183,8 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction RecallCase(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/recallCase";
@@ -198,8 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IWorkflowAction GetCaseByTemporaryId(Expression<Func<int>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/getCaseByTemporaryId";
@@ -213,10 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
         public IBodyWorkflowAction<string> GetFileOfCase(Expression<Func<string>> caseid, Expression<Func<string>> documentid)
         {
-            var __workflow_caseid = caseid == null ? null : WorkflowExpression.Compile(caseid);
-            WorkflowExpression.Validate(__workflow_caseid, nameof(caseid), required: true);
-            var __workflow_documentid = documentid == null ? null : WorkflowExpression.Compile(documentid);
-            WorkflowExpression.Validate(__workflow_documentid, nameof(documentid), required: true);
+            var __workflow_caseid = WorkflowExpression.Compile(caseid, nameof(caseid), required: true);
+            var __workflow_documentid = WorkflowExpression.Compile(documentid, nameof(documentid), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/getdocumentdata";
@@ -233,8 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
     {
         public IWorkflowTrigger CaseEventTrigger(Expression<Func<string>> eventPath, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventPath = eventPath == null ? null : WorkflowExpression.Compile(eventPath);
-            WorkflowExpression.Validate(__workflow_eventPath, nameof(eventPath), required: true);
+            var __workflow_eventPath = WorkflowExpression.Compile(eventPath, nameof(eventPath), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/hook/v1/";

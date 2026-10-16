@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cmi")]
         public IWorkflowAction HttpRequest(Expression<Func<string>> xCMITENANTNAME, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parameterspath, Expression<Func<string>> parametersbody = null)
         {
-            var __workflow_xCMITENANTNAME = xCMITENANTNAME == null ? null : WorkflowExpression.Compile(xCMITENANTNAME);
-            WorkflowExpression.Validate(__workflow_xCMITENANTNAME, nameof(xCMITENANTNAME), required: true);
-            var __workflow_parametersmethod = parametersmethod == null ? null : WorkflowExpression.Compile(parametersmethod);
-            WorkflowExpression.Validate(__workflow_parametersmethod, nameof(parametersmethod), required: true);
-            var __workflow_parameterspath = parameterspath == null ? null : WorkflowExpression.Compile(parameterspath);
-            WorkflowExpression.Validate(__workflow_parameterspath, nameof(parameterspath), required: true);
-            var __workflow_parametersbody = parametersbody == null ? null : WorkflowExpression.Compile(parametersbody);
-            WorkflowExpression.Validate(__workflow_parametersbody, nameof(parametersbody), required: false);
+            var __workflow_xCMITENANTNAME = WorkflowExpression.Compile(xCMITENANTNAME, nameof(xCMITENANTNAME), required: true);
+            var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
+            var __workflow_parameterspath = WorkflowExpression.Compile(parameterspath, nameof(parameterspath), required: true);
+            var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/virtual/httprequest";

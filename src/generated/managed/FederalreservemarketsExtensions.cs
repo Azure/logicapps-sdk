@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
-            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
-            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: true);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
-            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
-            WorkflowExpression.Validate(__workflow_include, nameof(include), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<GetTreasurySecuritiesOperationsByStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operation, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_status, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_include, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));
@@ -33,12 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
         public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
         {
-            var __workflow_operation = operation == null ? null : WorkflowExpression.Compile(operation);
-            WorkflowExpression.Validate(__workflow_operation, nameof(operation), required: true);
-            var __workflow_include = include == null ? null : WorkflowExpression.Compile(include);
-            WorkflowExpression.Validate(__workflow_include, nameof(include), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: true);
+            var __workflow_operation = WorkflowExpression.Compile(operation, nameof(operation), required: true);
+            var __workflow_include = WorkflowExpression.Compile(include, nameof(include), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: true);
             return new DeferredBodyAction<GetSecuritiesLendingOperationsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_operation, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_include, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_format, 1));

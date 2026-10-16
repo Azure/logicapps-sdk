@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vantage365imaging
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vantage365imaging")]
         public IBodyWorkflowAction<GenerateBarCodeResponse> GenerateBarCode(Expression<Func<typeofcodeInput>> typeofcode, Expression<Func<string>> texttoencode, Expression<Func<int>> height = null, Expression<Func<int>> width = null)
         {
-            var __workflow_typeofcode = typeofcode == null ? null : WorkflowExpression.Compile(typeofcode);
-            WorkflowExpression.Validate(__workflow_typeofcode, nameof(typeofcode), required: true);
-            var __workflow_texttoencode = texttoencode == null ? null : WorkflowExpression.Compile(texttoencode);
-            WorkflowExpression.Validate(__workflow_texttoencode, nameof(texttoencode), required: true);
-            var __workflow_height = height == null ? null : WorkflowExpression.Compile(height);
-            WorkflowExpression.Validate(__workflow_height, nameof(height), required: false);
-            var __workflow_width = width == null ? null : WorkflowExpression.Compile(width);
-            WorkflowExpression.Validate(__workflow_width, nameof(width), required: false);
+            var __workflow_typeofcode = WorkflowExpression.Compile(typeofcode, nameof(typeofcode), required: true);
+            var __workflow_texttoencode = WorkflowExpression.Compile(texttoencode, nameof(texttoencode), required: true);
+            var __workflow_height = WorkflowExpression.Compile(height, nameof(height), required: false);
+            var __workflow_width = WorkflowExpression.Compile(width, nameof(width), required: false);
             return new DeferredBodyAction<GenerateBarCodeResponse>(() =>
             {
                 var apiCallPath = "/5884ce85663b4aba83128a0098112024/triggers/manual/paths/invoke";

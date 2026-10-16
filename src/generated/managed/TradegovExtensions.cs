@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<BSPResponse> BusinessServiceProvidersSearch(Expression<Func<string>> q = null, Expression<Func<string>> categories = null, Expression<Func<string>> itaOffices = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
-            var __workflow_itaOffices = itaOffices == null ? null : WorkflowExpression.Compile(itaOffices);
-            WorkflowExpression.Validate(__workflow_itaOffices, nameof(itaOffices), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            var __workflow_itaOffices = WorkflowExpression.Compile(itaOffices, nameof(itaOffices), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<BSPResponse>(() =>
             {
                 var apiCallPath = "/business_service_providers/v1/search";
@@ -54,30 +49,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<ScreeningListSearchResponse> ConsolidatedScreeningListSearch(Expression<Func<string>> name = null, Expression<Func<fuzzyNameInput>> fuzzyName = null, Expression<Func<string>> sources = null, Expression<Func<string>> types = null, Expression<Func<string>> countries = null, Expression<Func<string>> address = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> fullAddress = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_fuzzyName = fuzzyName == null ? null : WorkflowExpression.Compile(fuzzyName);
-            WorkflowExpression.Validate(__workflow_fuzzyName, nameof(fuzzyName), required: false);
-            var __workflow_sources = sources == null ? null : WorkflowExpression.Compile(sources);
-            WorkflowExpression.Validate(__workflow_sources, nameof(sources), required: false);
-            var __workflow_types = types == null ? null : WorkflowExpression.Compile(types);
-            WorkflowExpression.Validate(__workflow_types, nameof(types), required: false);
-            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
-            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
-            var __workflow_address = address == null ? null : WorkflowExpression.Compile(address);
-            WorkflowExpression.Validate(__workflow_address, nameof(address), required: false);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_fullAddress = fullAddress == null ? null : WorkflowExpression.Compile(fullAddress);
-            WorkflowExpression.Validate(__workflow_fullAddress, nameof(fullAddress), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_fuzzyName = WorkflowExpression.Compile(fuzzyName, nameof(fuzzyName), required: false);
+            var __workflow_sources = WorkflowExpression.Compile(sources, nameof(sources), required: false);
+            var __workflow_types = WorkflowExpression.Compile(types, nameof(types), required: false);
+            var __workflow_countries = WorkflowExpression.Compile(countries, nameof(countries), required: false);
+            var __workflow_address = WorkflowExpression.Compile(address, nameof(address), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_fullAddress = WorkflowExpression.Compile(fullAddress, nameof(fullAddress), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<ScreeningListSearchResponse>(() =>
             {
                 var apiCallPath = "/consolidated_screening_list/v1/search";
@@ -123,10 +106,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisList(Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<DeMinimisListResponse>(() =>
             {
                 var apiCallPath = "/de_minimis/v1/list";
@@ -143,12 +124,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<DeMinimisListResponse> DeMinimisSearch(Expression<Func<string>> countryCodes = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_countryCodes = countryCodes == null ? null : WorkflowExpression.Compile(countryCodes);
-            WorkflowExpression.Validate(__workflow_countryCodes, nameof(countryCodes), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_countryCodes = WorkflowExpression.Compile(countryCodes, nameof(countryCodes), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<DeMinimisListResponse>(() =>
             {
                 var apiCallPath = "/de_minimis/v1/search";
@@ -167,18 +145,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<ITAOfficeSearchResponse> ITAOfficeLocationsSearch(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> states = null, Expression<Func<string>> assignedZipCodes = null, Expression<Func<int>> offset = null, Expression<Func<int>> size = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_countryCodes = countryCodes == null ? null : WorkflowExpression.Compile(countryCodes);
-            WorkflowExpression.Validate(__workflow_countryCodes, nameof(countryCodes), required: false);
-            var __workflow_states = states == null ? null : WorkflowExpression.Compile(states);
-            WorkflowExpression.Validate(__workflow_states, nameof(states), required: false);
-            var __workflow_assignedZipCodes = assignedZipCodes == null ? null : WorkflowExpression.Compile(assignedZipCodes);
-            WorkflowExpression.Validate(__workflow_assignedZipCodes, nameof(assignedZipCodes), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_countryCodes = WorkflowExpression.Compile(countryCodes, nameof(countryCodes), required: false);
+            var __workflow_states = WorkflowExpression.Compile(states, nameof(states), required: false);
+            var __workflow_assignedZipCodes = WorkflowExpression.Compile(assignedZipCodes, nameof(assignedZipCodes), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<ITAOfficeSearchResponse>(() =>
             {
                 var apiCallPath = "/ita_office_locations/v1/search";
@@ -212,26 +184,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<TradeEventSearchResponse> TradeEventsSearch(Expression<Func<string>> sources = null, Expression<Func<string>> countries = null, Expression<Func<string>> eventTypes = null, Expression<Func<string>> industries = null, Expression<Func<string>> states = null, Expression<Func<string>> q = null, Expression<Func<string>> startDateRangeFrom = null, Expression<Func<string>> startDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_sources = sources == null ? null : WorkflowExpression.Compile(sources);
-            WorkflowExpression.Validate(__workflow_sources, nameof(sources), required: false);
-            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
-            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
-            var __workflow_eventTypes = eventTypes == null ? null : WorkflowExpression.Compile(eventTypes);
-            WorkflowExpression.Validate(__workflow_eventTypes, nameof(eventTypes), required: false);
-            var __workflow_industries = industries == null ? null : WorkflowExpression.Compile(industries);
-            WorkflowExpression.Validate(__workflow_industries, nameof(industries), required: false);
-            var __workflow_states = states == null ? null : WorkflowExpression.Compile(states);
-            WorkflowExpression.Validate(__workflow_states, nameof(states), required: false);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_startDateRangeFrom = startDateRangeFrom == null ? null : WorkflowExpression.Compile(startDateRangeFrom);
-            WorkflowExpression.Validate(__workflow_startDateRangeFrom, nameof(startDateRangeFrom), required: false);
-            var __workflow_startDateRangeTo = startDateRangeTo == null ? null : WorkflowExpression.Compile(startDateRangeTo);
-            WorkflowExpression.Validate(__workflow_startDateRangeTo, nameof(startDateRangeTo), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_sources = WorkflowExpression.Compile(sources, nameof(sources), required: false);
+            var __workflow_countries = WorkflowExpression.Compile(countries, nameof(countries), required: false);
+            var __workflow_eventTypes = WorkflowExpression.Compile(eventTypes, nameof(eventTypes), required: false);
+            var __workflow_industries = WorkflowExpression.Compile(industries, nameof(industries), required: false);
+            var __workflow_states = WorkflowExpression.Compile(states, nameof(states), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_startDateRangeFrom = WorkflowExpression.Compile(startDateRangeFrom, nameof(startDateRangeFrom), required: false);
+            var __workflow_startDateRangeTo = WorkflowExpression.Compile(startDateRangeTo, nameof(startDateRangeTo), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<TradeEventSearchResponse>(() =>
             {
                 var apiCallPath = "/trade_events/v1/search";
@@ -273,22 +235,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tradegov
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tradegov")]
         public IBodyWorkflowAction<TradeLeadsSearchResponse> SearchTradeLeads(Expression<Func<string>> q = null, Expression<Func<string>> countryCodes = null, Expression<Func<string>> tenderStartDateRangeFrom = null, Expression<Func<string>> tenderStartDateRangeTo = null, Expression<Func<string>> contractStartDateRangeFrom = null, Expression<Func<string>> contractStartDateRangeTo = null, Expression<Func<int>> size = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_countryCodes = countryCodes == null ? null : WorkflowExpression.Compile(countryCodes);
-            WorkflowExpression.Validate(__workflow_countryCodes, nameof(countryCodes), required: false);
-            var __workflow_tenderStartDateRangeFrom = tenderStartDateRangeFrom == null ? null : WorkflowExpression.Compile(tenderStartDateRangeFrom);
-            WorkflowExpression.Validate(__workflow_tenderStartDateRangeFrom, nameof(tenderStartDateRangeFrom), required: false);
-            var __workflow_tenderStartDateRangeTo = tenderStartDateRangeTo == null ? null : WorkflowExpression.Compile(tenderStartDateRangeTo);
-            WorkflowExpression.Validate(__workflow_tenderStartDateRangeTo, nameof(tenderStartDateRangeTo), required: false);
-            var __workflow_contractStartDateRangeFrom = contractStartDateRangeFrom == null ? null : WorkflowExpression.Compile(contractStartDateRangeFrom);
-            WorkflowExpression.Validate(__workflow_contractStartDateRangeFrom, nameof(contractStartDateRangeFrom), required: false);
-            var __workflow_contractStartDateRangeTo = contractStartDateRangeTo == null ? null : WorkflowExpression.Compile(contractStartDateRangeTo);
-            WorkflowExpression.Validate(__workflow_contractStartDateRangeTo, nameof(contractStartDateRangeTo), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_countryCodes = WorkflowExpression.Compile(countryCodes, nameof(countryCodes), required: false);
+            var __workflow_tenderStartDateRangeFrom = WorkflowExpression.Compile(tenderStartDateRangeFrom, nameof(tenderStartDateRangeFrom), required: false);
+            var __workflow_tenderStartDateRangeTo = WorkflowExpression.Compile(tenderStartDateRangeTo, nameof(tenderStartDateRangeTo), required: false);
+            var __workflow_contractStartDateRangeFrom = WorkflowExpression.Compile(contractStartDateRangeFrom, nameof(contractStartDateRangeFrom), required: false);
+            var __workflow_contractStartDateRangeTo = WorkflowExpression.Compile(contractStartDateRangeTo, nameof(contractStartDateRangeTo), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<TradeLeadsSearchResponse>(() =>
             {
                 var apiCallPath = "/trade_leads/v1/search";

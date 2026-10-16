@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<UserGetAllResponse> UserGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             return new DeferredBodyAction<UserGetAllResponse>(() =>
             {
                 var apiCallPath = "/public_api/users";
@@ -31,12 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById(Expression<Func<string>> userId, Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             return new DeferredBodyAction<UserDeleteByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -51,10 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionGetAllResponse> PositionGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             return new DeferredBodyAction<PositionGetAllResponse>(() =>
             {
                 var apiCallPath = "/public_api/positions";
@@ -69,12 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionCreateResponse> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PositionCreateResponse>(() =>
             {
                 var apiCallPath = "/public_api/positions";
@@ -90,12 +80,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> positionId)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
-            var __workflow_positionId = positionId == null ? null : WorkflowExpression.Compile(positionId);
-            WorkflowExpression.Validate(__workflow_positionId, nameof(positionId), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_positionId = WorkflowExpression.Compile(positionId, nameof(positionId), required: true);
             return new DeferredBodyAction<PositionDeleteByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_positionId, 1));
@@ -110,16 +97,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> bodyimportId = null, Expression<Func<string>> bodyname = null)
         {
-            var __workflow_positionId = positionId == null ? null : WorkflowExpression.Compile(positionId);
-            WorkflowExpression.Validate(__workflow_positionId, nameof(positionId), required: true);
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
-            var __workflow_bodyimportId = bodyimportId == null ? null : WorkflowExpression.Compile(bodyimportId);
-            WorkflowExpression.Validate(__workflow_bodyimportId, nameof(bodyimportId), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
+            var __workflow_positionId = WorkflowExpression.Compile(positionId, nameof(positionId), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_bodyimportId = WorkflowExpression.Compile(bodyimportId, nameof(bodyimportId), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
             return new DeferredBodyAction<PositionUpdateByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_positionId, 1));
@@ -153,10 +135,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupGetAllResponse> GroupGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             return new DeferredBodyAction<GroupGetAllResponse>(() =>
             {
                 var apiCallPath = "/public_api/groups";
@@ -171,12 +151,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupCreateResponse> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GroupCreateResponse>(() =>
             {
                 var apiCallPath = "/public_api/groups";
@@ -192,12 +169,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> groupId)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<GroupDeleteByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public_api/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -212,14 +186,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<TokenGetResponse> TokenGet(Expression<Func<string>> subdomain, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId)
         {
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: true);
-            var __workflow_clientId = clientId == null ? null : WorkflowExpression.Compile(clientId);
-            WorkflowExpression.Validate(__workflow_clientId, nameof(clientId), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
             return new DeferredBodyAction<TokenGetResponse>(() =>
             {
                 var apiCallPath = "/oauth/token";
@@ -237,10 +207,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
         public IBodyWorkflowAction<MeResponse> Me(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
         {
-            var __workflow_auth = auth == null ? null : WorkflowExpression.Compile(auth);
-            WorkflowExpression.Validate(__workflow_auth, nameof(auth), required: true);
-            var __workflow_subdomain = subdomain == null ? null : WorkflowExpression.Compile(subdomain);
-            WorkflowExpression.Validate(__workflow_subdomain, nameof(subdomain), required: true);
+            var __workflow_auth = WorkflowExpression.Compile(auth, nameof(auth), required: true);
+            var __workflow_subdomain = WorkflowExpression.Compile(subdomain, nameof(subdomain), required: true);
             return new DeferredBodyAction<MeResponse>(() =>
             {
                 var apiCallPath = "/public_api/me";

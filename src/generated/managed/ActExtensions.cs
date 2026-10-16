@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
         public IBodyWorkflowAction<ActWebApiModelsContact> CreateContact(Expression<Func<string>> contactfullName = null, Expression<Func<string>> contactemailAddress = null, Expression<Func<string>> contactcompany = null, Expression<Func<string>> contactidStatus = null, Expression<Func<string>> contactreferredBy = null, Expression<Func<string>> contactjobTitle = null, Expression<Func<string>> contactbusinessPhoneNumber = null, Expression<Func<string>> contactmobilePhoneNumber = null)
         {
-            var __workflow_contactfullName = contactfullName == null ? null : WorkflowExpression.Compile(contactfullName);
-            WorkflowExpression.Validate(__workflow_contactfullName, nameof(contactfullName), required: false);
-            var __workflow_contactemailAddress = contactemailAddress == null ? null : WorkflowExpression.Compile(contactemailAddress);
-            WorkflowExpression.Validate(__workflow_contactemailAddress, nameof(contactemailAddress), required: false);
-            var __workflow_contactcompany = contactcompany == null ? null : WorkflowExpression.Compile(contactcompany);
-            WorkflowExpression.Validate(__workflow_contactcompany, nameof(contactcompany), required: false);
-            var __workflow_contactidStatus = contactidStatus == null ? null : WorkflowExpression.Compile(contactidStatus);
-            WorkflowExpression.Validate(__workflow_contactidStatus, nameof(contactidStatus), required: false);
-            var __workflow_contactreferredBy = contactreferredBy == null ? null : WorkflowExpression.Compile(contactreferredBy);
-            WorkflowExpression.Validate(__workflow_contactreferredBy, nameof(contactreferredBy), required: false);
-            var __workflow_contactjobTitle = contactjobTitle == null ? null : WorkflowExpression.Compile(contactjobTitle);
-            WorkflowExpression.Validate(__workflow_contactjobTitle, nameof(contactjobTitle), required: false);
-            var __workflow_contactbusinessPhoneNumber = contactbusinessPhoneNumber == null ? null : WorkflowExpression.Compile(contactbusinessPhoneNumber);
-            WorkflowExpression.Validate(__workflow_contactbusinessPhoneNumber, nameof(contactbusinessPhoneNumber), required: false);
-            var __workflow_contactmobilePhoneNumber = contactmobilePhoneNumber == null ? null : WorkflowExpression.Compile(contactmobilePhoneNumber);
-            WorkflowExpression.Validate(__workflow_contactmobilePhoneNumber, nameof(contactmobilePhoneNumber), required: false);
+            var __workflow_contactfullName = WorkflowExpression.Compile(contactfullName, nameof(contactfullName), required: false);
+            var __workflow_contactemailAddress = WorkflowExpression.Compile(contactemailAddress, nameof(contactemailAddress), required: false);
+            var __workflow_contactcompany = WorkflowExpression.Compile(contactcompany, nameof(contactcompany), required: false);
+            var __workflow_contactidStatus = WorkflowExpression.Compile(contactidStatus, nameof(contactidStatus), required: false);
+            var __workflow_contactreferredBy = WorkflowExpression.Compile(contactreferredBy, nameof(contactreferredBy), required: false);
+            var __workflow_contactjobTitle = WorkflowExpression.Compile(contactjobTitle, nameof(contactjobTitle), required: false);
+            var __workflow_contactbusinessPhoneNumber = WorkflowExpression.Compile(contactbusinessPhoneNumber, nameof(contactbusinessPhoneNumber), required: false);
+            var __workflow_contactmobilePhoneNumber = WorkflowExpression.Compile(contactmobilePhoneNumber, nameof(contactmobilePhoneNumber), required: false);
             return new DeferredBodyAction<ActWebApiModelsContact>(() =>
             {
                 var apiCallPath = "/api/Contacts/";
@@ -104,8 +96,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Act
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "act")]
         public IBodyWorkflowAction<ActWebApiModelsContact> GetContact(Expression<Func<string>> contactid)
         {
-            var __workflow_contactid = contactid == null ? null : WorkflowExpression.Compile(contactid);
-            WorkflowExpression.Validate(__workflow_contactid, nameof(contactid), required: true);
+            var __workflow_contactid = WorkflowExpression.Compile(contactid, nameof(contactid), required: true);
             return new DeferredBodyAction<ActWebApiModelsContact>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactid, 1));

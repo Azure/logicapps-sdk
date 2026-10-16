@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<EntityItemList> ListRecords(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> expand = null, Expression<Func<string>> fetchXml = null, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> partitionId = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_fetchXml = fetchXml == null ? null : WorkflowExpression.Compile(fetchXml);
-            WorkflowExpression.Validate(__workflow_fetchXml, nameof(fetchXml), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_partitionId = partitionId == null ? null : WorkflowExpression.Compile(partitionId);
-            WorkflowExpression.Validate(__workflow_partitionId, nameof(partitionId), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_fetchXml = WorkflowExpression.Compile(fetchXml, nameof(fetchXml), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_partitionId = WorkflowExpression.Compile(partitionId, nameof(partitionId), required: false);
             return new DeferredBodyAction<EntityItemList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
@@ -64,12 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> CreateRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<object>> item = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2));
@@ -85,18 +72,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> GetItemCodeless(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> partitionId = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_partitionId = partitionId == null ? null : WorkflowExpression.Compile(partitionId);
-            WorkflowExpression.Validate(__workflow_partitionId, nameof(partitionId), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_partitionId = WorkflowExpression.Compile(partitionId, nameof(partitionId), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2));
@@ -118,14 +99,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction DeleteRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> partitionId = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_partitionId = partitionId == null ? null : WorkflowExpression.Compile(partitionId);
-            WorkflowExpression.Validate(__workflow_partitionId, nameof(partitionId), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_partitionId = WorkflowExpression.Compile(partitionId, nameof(partitionId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2));
@@ -141,14 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> UpdateRecord(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<object>> item = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2));
@@ -165,18 +138,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction UpdateEntityFileImageFieldContent(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> fileImageFieldName, Expression<Func<string>> xMsFileName, Expression<Func<string>> item = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_fileImageFieldName = fileImageFieldName == null ? null : WorkflowExpression.Compile(fileImageFieldName);
-            WorkflowExpression.Validate(__workflow_fileImageFieldName, nameof(fileImageFieldName), required: true);
-            var __workflow_xMsFileName = xMsFileName == null ? null : WorkflowExpression.Compile(xMsFileName);
-            WorkflowExpression.Validate(__workflow_xMsFileName, nameof(xMsFileName), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_fileImageFieldName = WorkflowExpression.Compile(fileImageFieldName, nameof(fileImageFieldName), required: true);
+            var __workflow_xMsFileName = WorkflowExpression.Compile(xMsFileName, nameof(xMsFileName), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileImageFieldName, 2));
@@ -193,16 +160,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<string> GetEntityFileImageFieldContent(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> fileImageFieldName, Expression<Func<string>> size = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_fileImageFieldName = fileImageFieldName == null ? null : WorkflowExpression.Compile(fileImageFieldName);
-            WorkflowExpression.Validate(__workflow_fileImageFieldName, nameof(fileImageFieldName), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_fileImageFieldName = WorkflowExpression.Compile(fileImageFieldName, nameof(fileImageFieldName), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileImageFieldName, 2));
@@ -219,12 +181,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> PerformUnboundAction(Expression<Func<string>> organization, Expression<Func<string>> actionName, Expression<Func<object>> item = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_actionName = actionName == null ? null : WorkflowExpression.Compile(actionName);
-            WorkflowExpression.Validate(__workflow_actionName, nameof(actionName), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_actionName = WorkflowExpression.Compile(actionName, nameof(actionName), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionName, 2));
@@ -239,16 +198,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<JToken> PerformBoundAction(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> actionName, Expression<Func<string>> recordId, Expression<Func<object>> item = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_actionName = actionName == null ? null : WorkflowExpression.Compile(actionName);
-            WorkflowExpression.Validate(__workflow_actionName, nameof(actionName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_actionName = WorkflowExpression.Compile(actionName, nameof(actionName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.2/{0}({1})/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_actionName, 2));
@@ -263,16 +217,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction AssociateEntities(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> associationEntityRelationship, Expression<Func<string>> itemrelateWith)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_associationEntityRelationship = associationEntityRelationship == null ? null : WorkflowExpression.Compile(associationEntityRelationship);
-            WorkflowExpression.Validate(__workflow_associationEntityRelationship, nameof(associationEntityRelationship), required: true);
-            var __workflow_itemrelateWith = itemrelateWith == null ? null : WorkflowExpression.Compile(itemrelateWith);
-            WorkflowExpression.Validate(__workflow_itemrelateWith, nameof(itemrelateWith), required: true);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_associationEntityRelationship = WorkflowExpression.Compile(associationEntityRelationship, nameof(associationEntityRelationship), required: true);
+            var __workflow_itemrelateWith = WorkflowExpression.Compile(itemrelateWith, nameof(itemrelateWith), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_associationEntityRelationship, 1));
@@ -295,16 +244,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IWorkflowAction DisassociateEntities(Expression<Func<string>> organization, Expression<Func<string>> entityName, Expression<Func<string>> recordId, Expression<Func<string>> associationEntityRelationship, Expression<Func<string>> id)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_associationEntityRelationship = associationEntityRelationship == null ? null : WorkflowExpression.Compile(associationEntityRelationship);
-            WorkflowExpression.Validate(__workflow_associationEntityRelationship, nameof(associationEntityRelationship), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_associationEntityRelationship = WorkflowExpression.Compile(associationEntityRelationship, nameof(associationEntityRelationship), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/data/v9.1/{0}({1})/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_associationEntityRelationship, 1));
@@ -319,28 +263,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "commondataservice")]
         public IBodyWorkflowAction<SearchOutput> GetRelevantRows(Expression<Func<string>> organization, Expression<Func<string>> searchRequestsearchTerm, Expression<Func<string>> searchRequestsearchType = null, Expression<Func<string>> searchRequestsearchMode = null, Expression<Func<int>> searchRequestrowCount = null, Expression<Func<string>> searchRequestrowFilter = null, Expression<Func<string[]>> searchRequesttableFilter = null, Expression<Func<string[]>> searchRequestsortBy = null, Expression<Func<string[]>> searchRequestfacetQuery = null, Expression<Func<int>> searchRequestskipRows = null, Expression<Func<bool>> searchRequestreturnRowCount = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_searchRequestsearchTerm = searchRequestsearchTerm == null ? null : WorkflowExpression.Compile(searchRequestsearchTerm);
-            WorkflowExpression.Validate(__workflow_searchRequestsearchTerm, nameof(searchRequestsearchTerm), required: true);
-            var __workflow_searchRequestsearchType = searchRequestsearchType == null ? null : WorkflowExpression.Compile(searchRequestsearchType);
-            WorkflowExpression.Validate(__workflow_searchRequestsearchType, nameof(searchRequestsearchType), required: false);
-            var __workflow_searchRequestsearchMode = searchRequestsearchMode == null ? null : WorkflowExpression.Compile(searchRequestsearchMode);
-            WorkflowExpression.Validate(__workflow_searchRequestsearchMode, nameof(searchRequestsearchMode), required: false);
-            var __workflow_searchRequestrowCount = searchRequestrowCount == null ? null : WorkflowExpression.Compile(searchRequestrowCount);
-            WorkflowExpression.Validate(__workflow_searchRequestrowCount, nameof(searchRequestrowCount), required: false);
-            var __workflow_searchRequestrowFilter = searchRequestrowFilter == null ? null : WorkflowExpression.Compile(searchRequestrowFilter);
-            WorkflowExpression.Validate(__workflow_searchRequestrowFilter, nameof(searchRequestrowFilter), required: false);
-            var __workflow_searchRequesttableFilter = searchRequesttableFilter == null ? null : WorkflowExpression.Compile(searchRequesttableFilter);
-            WorkflowExpression.Validate(__workflow_searchRequesttableFilter, nameof(searchRequesttableFilter), required: false);
-            var __workflow_searchRequestsortBy = searchRequestsortBy == null ? null : WorkflowExpression.Compile(searchRequestsortBy);
-            WorkflowExpression.Validate(__workflow_searchRequestsortBy, nameof(searchRequestsortBy), required: false);
-            var __workflow_searchRequestfacetQuery = searchRequestfacetQuery == null ? null : WorkflowExpression.Compile(searchRequestfacetQuery);
-            WorkflowExpression.Validate(__workflow_searchRequestfacetQuery, nameof(searchRequestfacetQuery), required: false);
-            var __workflow_searchRequestskipRows = searchRequestskipRows == null ? null : WorkflowExpression.Compile(searchRequestskipRows);
-            WorkflowExpression.Validate(__workflow_searchRequestskipRows, nameof(searchRequestskipRows), required: false);
-            var __workflow_searchRequestreturnRowCount = searchRequestreturnRowCount == null ? null : WorkflowExpression.Compile(searchRequestreturnRowCount);
-            WorkflowExpression.Validate(__workflow_searchRequestreturnRowCount, nameof(searchRequestreturnRowCount), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_searchRequestsearchTerm = WorkflowExpression.Compile(searchRequestsearchTerm, nameof(searchRequestsearchTerm), required: true);
+            var __workflow_searchRequestsearchType = WorkflowExpression.Compile(searchRequestsearchType, nameof(searchRequestsearchType), required: false);
+            var __workflow_searchRequestsearchMode = WorkflowExpression.Compile(searchRequestsearchMode, nameof(searchRequestsearchMode), required: false);
+            var __workflow_searchRequestrowCount = WorkflowExpression.Compile(searchRequestrowCount, nameof(searchRequestrowCount), required: false);
+            var __workflow_searchRequestrowFilter = WorkflowExpression.Compile(searchRequestrowFilter, nameof(searchRequestrowFilter), required: false);
+            var __workflow_searchRequesttableFilter = WorkflowExpression.Compile(searchRequesttableFilter, nameof(searchRequesttableFilter), required: false);
+            var __workflow_searchRequestsortBy = WorkflowExpression.Compile(searchRequestsortBy, nameof(searchRequestsortBy), required: false);
+            var __workflow_searchRequestfacetQuery = WorkflowExpression.Compile(searchRequestfacetQuery, nameof(searchRequestfacetQuery), required: false);
+            var __workflow_searchRequestskipRows = WorkflowExpression.Compile(searchRequestskipRows, nameof(searchRequestskipRows), required: false);
+            var __workflow_searchRequestreturnRowCount = WorkflowExpression.Compile(searchRequestreturnRowCount, nameof(searchRequestreturnRowCount), required: false);
             return new DeferredBodyAction<SearchOutput>(() =>
             {
                 var apiCallPath = "/api/search/v1.0/query";
@@ -428,22 +361,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
     {
         public IWorkflowTrigger SubscribeWebhookTrigger(Expression<Func<string>> organization, Expression<Func<string>> subscriptionRequesttableName, Expression<Func<int>> subscriptionRequestchangeType, Expression<Func<int>> subscriptionRequestscope, Expression<Func<string>> subscriptionRequestselectColumns = null, Expression<Func<string>> subscriptionRequestfilterRows = null, Expression<Func<string>> subscriptionRequestdelayUntil = null, Expression<Func<int>> subscriptionRequestrunAs = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_subscriptionRequesttableName = subscriptionRequesttableName == null ? null : WorkflowExpression.Compile(subscriptionRequesttableName);
-            WorkflowExpression.Validate(__workflow_subscriptionRequesttableName, nameof(subscriptionRequesttableName), required: true);
-            var __workflow_subscriptionRequestchangeType = subscriptionRequestchangeType == null ? null : WorkflowExpression.Compile(subscriptionRequestchangeType);
-            WorkflowExpression.Validate(__workflow_subscriptionRequestchangeType, nameof(subscriptionRequestchangeType), required: true);
-            var __workflow_subscriptionRequestscope = subscriptionRequestscope == null ? null : WorkflowExpression.Compile(subscriptionRequestscope);
-            WorkflowExpression.Validate(__workflow_subscriptionRequestscope, nameof(subscriptionRequestscope), required: true);
-            var __workflow_subscriptionRequestselectColumns = subscriptionRequestselectColumns == null ? null : WorkflowExpression.Compile(subscriptionRequestselectColumns);
-            WorkflowExpression.Validate(__workflow_subscriptionRequestselectColumns, nameof(subscriptionRequestselectColumns), required: false);
-            var __workflow_subscriptionRequestfilterRows = subscriptionRequestfilterRows == null ? null : WorkflowExpression.Compile(subscriptionRequestfilterRows);
-            WorkflowExpression.Validate(__workflow_subscriptionRequestfilterRows, nameof(subscriptionRequestfilterRows), required: false);
-            var __workflow_subscriptionRequestdelayUntil = subscriptionRequestdelayUntil == null ? null : WorkflowExpression.Compile(subscriptionRequestdelayUntil);
-            WorkflowExpression.Validate(__workflow_subscriptionRequestdelayUntil, nameof(subscriptionRequestdelayUntil), required: false);
-            var __workflow_subscriptionRequestrunAs = subscriptionRequestrunAs == null ? null : WorkflowExpression.Compile(subscriptionRequestrunAs);
-            WorkflowExpression.Validate(__workflow_subscriptionRequestrunAs, nameof(subscriptionRequestrunAs), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_subscriptionRequesttableName = WorkflowExpression.Compile(subscriptionRequesttableName, nameof(subscriptionRequesttableName), required: true);
+            var __workflow_subscriptionRequestchangeType = WorkflowExpression.Compile(subscriptionRequestchangeType, nameof(subscriptionRequestchangeType), required: true);
+            var __workflow_subscriptionRequestscope = WorkflowExpression.Compile(subscriptionRequestscope, nameof(subscriptionRequestscope), required: true);
+            var __workflow_subscriptionRequestselectColumns = WorkflowExpression.Compile(subscriptionRequestselectColumns, nameof(subscriptionRequestselectColumns), required: false);
+            var __workflow_subscriptionRequestfilterRows = WorkflowExpression.Compile(subscriptionRequestfilterRows, nameof(subscriptionRequestfilterRows), required: false);
+            var __workflow_subscriptionRequestdelayUntil = WorkflowExpression.Compile(subscriptionRequestdelayUntil, nameof(subscriptionRequestdelayUntil), required: false);
+            var __workflow_subscriptionRequestrunAs = WorkflowExpression.Compile(subscriptionRequestrunAs, nameof(subscriptionRequestrunAs), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/data/v9.1/callbackregistrations";
@@ -500,16 +425,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
 
         public IWorkflowTrigger BusinessEventsTrigger(Expression<Func<string>> organization, Expression<Func<string>> catalog, Expression<Func<string>> category, Expression<Func<string>> subscriptionRequesttableName, Expression<Func<string>> subscriptionRequestactionName, FlowRecurrence recurrence = null)
         {
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: true);
-            var __workflow_catalog = catalog == null ? null : WorkflowExpression.Compile(catalog);
-            WorkflowExpression.Validate(__workflow_catalog, nameof(catalog), required: true);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: true);
-            var __workflow_subscriptionRequesttableName = subscriptionRequesttableName == null ? null : WorkflowExpression.Compile(subscriptionRequesttableName);
-            WorkflowExpression.Validate(__workflow_subscriptionRequesttableName, nameof(subscriptionRequesttableName), required: true);
-            var __workflow_subscriptionRequestactionName = subscriptionRequestactionName == null ? null : WorkflowExpression.Compile(subscriptionRequestactionName);
-            WorkflowExpression.Validate(__workflow_subscriptionRequestactionName, nameof(subscriptionRequestactionName), required: true);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: true);
+            var __workflow_catalog = WorkflowExpression.Compile(catalog, nameof(catalog), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: true);
+            var __workflow_subscriptionRequesttableName = WorkflowExpression.Compile(subscriptionRequesttableName, nameof(subscriptionRequesttableName), required: true);
+            var __workflow_subscriptionRequestactionName = WorkflowExpression.Compile(subscriptionRequestactionName, nameof(subscriptionRequestactionName), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/data/v9.2/callbackregistrations";

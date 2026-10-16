@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<ListCloudPCsResponse> ListCloudPCs(Expression<Func<selectInput>> select = null, Expression<Func<string>> filter = null)
         {
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<ListCloudPCsResponse>(() =>
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/cloudPCs";
@@ -33,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetACloudPCObjectResponse> GetACloudPCObject(Expression<Func<string>> cloudPcId, Expression<Func<selectInput>> select = null)
         {
-            var __workflow_cloudPcId = cloudPcId == null ? null : WorkflowExpression.Compile(cloudPcId);
-            WorkflowExpression.Validate(__workflow_cloudPcId, nameof(cloudPcId), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_cloudPcId = WorkflowExpression.Compile(cloudPcId, nameof(cloudPcId), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetACloudPCObjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudPcId, 1));
@@ -51,14 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction RemoteActions(Expression<Func<string>> cloudPcId, Expression<Func<remoteActionInput>> remoteAction, Expression<Func<string>> bodycloudPcSnapshotId = null, Expression<Func<string>> bodydisplayName = null)
         {
-            var __workflow_cloudPcId = cloudPcId == null ? null : WorkflowExpression.Compile(cloudPcId);
-            WorkflowExpression.Validate(__workflow_cloudPcId, nameof(cloudPcId), required: true);
-            var __workflow_remoteAction = remoteAction == null ? null : WorkflowExpression.Compile(remoteAction);
-            WorkflowExpression.Validate(__workflow_remoteAction, nameof(remoteAction), required: true);
-            var __workflow_bodycloudPcSnapshotId = bodycloudPcSnapshotId == null ? null : WorkflowExpression.Compile(bodycloudPcSnapshotId);
-            WorkflowExpression.Validate(__workflow_bodycloudPcSnapshotId, nameof(bodycloudPcSnapshotId), required: false);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_cloudPcId = WorkflowExpression.Compile(cloudPcId, nameof(cloudPcId), required: true);
+            var __workflow_remoteAction = WorkflowExpression.Compile(remoteAction, nameof(remoteAction), required: true);
+            var __workflow_bodycloudPcSnapshotId = WorkflowExpression.Compile(bodycloudPcSnapshotId, nameof(bodycloudPcSnapshotId), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/cloudPCs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cloudPcId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_remoteAction, 1));
@@ -90,24 +82,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            var __workflow_uri = uri == null ? null : WorkflowExpression.Compile(uri);
-            WorkflowExpression.Validate(__workflow_uri, nameof(uri), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_customHeader1 = customHeader1 == null ? null : WorkflowExpression.Compile(customHeader1);
-            WorkflowExpression.Validate(__workflow_customHeader1, nameof(customHeader1), required: false);
-            var __workflow_customHeader2 = customHeader2 == null ? null : WorkflowExpression.Compile(customHeader2);
-            WorkflowExpression.Validate(__workflow_customHeader2, nameof(customHeader2), required: false);
-            var __workflow_customHeader3 = customHeader3 == null ? null : WorkflowExpression.Compile(customHeader3);
-            WorkflowExpression.Validate(__workflow_customHeader3, nameof(customHeader3), required: false);
-            var __workflow_customHeader4 = customHeader4 == null ? null : WorkflowExpression.Compile(customHeader4);
-            WorkflowExpression.Validate(__workflow_customHeader4, nameof(customHeader4), required: false);
-            var __workflow_customHeader5 = customHeader5 == null ? null : WorkflowExpression.Compile(customHeader5);
-            WorkflowExpression.Validate(__workflow_customHeader5, nameof(customHeader5), required: false);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = WorkflowExpression.Compile(customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = WorkflowExpression.Compile(customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = WorkflowExpression.Compile(customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = WorkflowExpression.Compile(customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = WorkflowExpression.Compile(customHeader5, nameof(customHeader5), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/httprequest";
@@ -136,10 +119,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction AssignAProvisioningPolicyToAGroup(Expression<Func<string>> id, Expression<Func<bodyassignmentsInputItem[]>> bodyassignments)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyassignments = bodyassignments == null ? null : WorkflowExpression.Compile(bodyassignments);
-            WorkflowExpression.Validate(__workflow_bodyassignments, nameof(bodyassignments), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyassignments = WorkflowExpression.Compile(bodyassignments, nameof(bodyassignments), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}/assign", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -162,28 +143,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<CreateAProvisioningPolicyV1Response> CreateAProvisioningPolicy(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodydescription, Expression<Func<bodydomainJoinConfigurationsInputItem[]>> bodydomainJoinConfigurations, Expression<Func<string>> bodyimageId, Expression<Func<string>> bodyimageDisplayName, Expression<Func<bodyimageTypeInput>> bodyimageType, Expression<Func<bodyprovisioningTypeInput>> bodyprovisioningType, Expression<Func<bool>> bodyenableSingleSignOn = null, Expression<Func<string>> bodywindowsSettinglocale = null, Expression<Func<string>> bodymicrosoftManagedDesktopmanagedType = null, Expression<Func<string>> bodymicrosoftManagedDesktopprofile = null)
         {
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodydomainJoinConfigurations = bodydomainJoinConfigurations == null ? null : WorkflowExpression.Compile(bodydomainJoinConfigurations);
-            WorkflowExpression.Validate(__workflow_bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: true);
-            var __workflow_bodyimageId = bodyimageId == null ? null : WorkflowExpression.Compile(bodyimageId);
-            WorkflowExpression.Validate(__workflow_bodyimageId, nameof(bodyimageId), required: true);
-            var __workflow_bodyimageDisplayName = bodyimageDisplayName == null ? null : WorkflowExpression.Compile(bodyimageDisplayName);
-            WorkflowExpression.Validate(__workflow_bodyimageDisplayName, nameof(bodyimageDisplayName), required: true);
-            var __workflow_bodyimageType = bodyimageType == null ? null : WorkflowExpression.Compile(bodyimageType);
-            WorkflowExpression.Validate(__workflow_bodyimageType, nameof(bodyimageType), required: true);
-            var __workflow_bodyprovisioningType = bodyprovisioningType == null ? null : WorkflowExpression.Compile(bodyprovisioningType);
-            WorkflowExpression.Validate(__workflow_bodyprovisioningType, nameof(bodyprovisioningType), required: true);
-            var __workflow_bodyenableSingleSignOn = bodyenableSingleSignOn == null ? null : WorkflowExpression.Compile(bodyenableSingleSignOn);
-            WorkflowExpression.Validate(__workflow_bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
-            var __workflow_bodywindowsSettinglocale = bodywindowsSettinglocale == null ? null : WorkflowExpression.Compile(bodywindowsSettinglocale);
-            WorkflowExpression.Validate(__workflow_bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
-            var __workflow_bodymicrosoftManagedDesktopmanagedType = bodymicrosoftManagedDesktopmanagedType == null ? null : WorkflowExpression.Compile(bodymicrosoftManagedDesktopmanagedType);
-            WorkflowExpression.Validate(__workflow_bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
-            var __workflow_bodymicrosoftManagedDesktopprofile = bodymicrosoftManagedDesktopprofile == null ? null : WorkflowExpression.Compile(bodymicrosoftManagedDesktopprofile);
-            WorkflowExpression.Validate(__workflow_bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodydomainJoinConfigurations = WorkflowExpression.Compile(bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: true);
+            var __workflow_bodyimageId = WorkflowExpression.Compile(bodyimageId, nameof(bodyimageId), required: true);
+            var __workflow_bodyimageDisplayName = WorkflowExpression.Compile(bodyimageDisplayName, nameof(bodyimageDisplayName), required: true);
+            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: true);
+            var __workflow_bodyprovisioningType = WorkflowExpression.Compile(bodyprovisioningType, nameof(bodyprovisioningType), required: true);
+            var __workflow_bodyenableSingleSignOn = WorkflowExpression.Compile(bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
+            var __workflow_bodywindowsSettinglocale = WorkflowExpression.Compile(bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
+            var __workflow_bodymicrosoftManagedDesktopmanagedType = WorkflowExpression.Compile(bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
+            var __workflow_bodymicrosoftManagedDesktopprofile = WorkflowExpression.Compile(bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
             return new DeferredBodyAction<CreateAProvisioningPolicyV1Response>(() =>
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/provisioningPolicies";
@@ -266,8 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction DeleteAProvisioningPolicy(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -280,12 +249,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetAProvisioningPolicyV1Response> GetAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<selectInput>> select = null, Expression<Func<string>> expand = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<GetAProvisioningPolicyV1Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -303,12 +269,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IBodyWorkflowAction<GetProvisioningPoliciesV1Response> GetProvisioningPolicies(Expression<Func<selectInput>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null)
         {
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<GetProvisioningPoliciesV1Response>(() =>
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/provisioningPolicies";
@@ -328,36 +291,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "windows365")]
         public IWorkflowAction UpdateAProvisioningPolicy(Expression<Func<string>> id, Expression<Func<string>> bodyautopatchautopatchGroupId = null, Expression<Func<string>> bodyautopilotConfigurationdevicePreparationProfileId = null, Expression<Func<int>> bodyautopilotConfigurationapplicationTimeoutInMinutes = null, Expression<Func<bool>> bodyautopilotConfigurationonFailureDeviceAccessDenied = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodydomainJoinConfigurationsInputItem[]>> bodydomainJoinConfigurations = null, Expression<Func<bool>> bodyenableSingleSignOn = null, Expression<Func<string>> bodyimageDisplayName = null, Expression<Func<string>> bodyimageId = null, Expression<Func<string>> bodyimageType = null, Expression<Func<string>> bodymicrosoftManagedDesktopmanagedType = null, Expression<Func<string>> bodymicrosoftManagedDesktopprofile = null, Expression<Func<string>> bodywindowsSettinglocale = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyautopatchautopatchGroupId = bodyautopatchautopatchGroupId == null ? null : WorkflowExpression.Compile(bodyautopatchautopatchGroupId);
-            WorkflowExpression.Validate(__workflow_bodyautopatchautopatchGroupId, nameof(bodyautopatchautopatchGroupId), required: false);
-            var __workflow_bodyautopilotConfigurationdevicePreparationProfileId = bodyautopilotConfigurationdevicePreparationProfileId == null ? null : WorkflowExpression.Compile(bodyautopilotConfigurationdevicePreparationProfileId);
-            WorkflowExpression.Validate(__workflow_bodyautopilotConfigurationdevicePreparationProfileId, nameof(bodyautopilotConfigurationdevicePreparationProfileId), required: false);
-            var __workflow_bodyautopilotConfigurationapplicationTimeoutInMinutes = bodyautopilotConfigurationapplicationTimeoutInMinutes == null ? null : WorkflowExpression.Compile(bodyautopilotConfigurationapplicationTimeoutInMinutes);
-            WorkflowExpression.Validate(__workflow_bodyautopilotConfigurationapplicationTimeoutInMinutes, nameof(bodyautopilotConfigurationapplicationTimeoutInMinutes), required: false);
-            var __workflow_bodyautopilotConfigurationonFailureDeviceAccessDenied = bodyautopilotConfigurationonFailureDeviceAccessDenied == null ? null : WorkflowExpression.Compile(bodyautopilotConfigurationonFailureDeviceAccessDenied);
-            WorkflowExpression.Validate(__workflow_bodyautopilotConfigurationonFailureDeviceAccessDenied, nameof(bodyautopilotConfigurationonFailureDeviceAccessDenied), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodydomainJoinConfigurations = bodydomainJoinConfigurations == null ? null : WorkflowExpression.Compile(bodydomainJoinConfigurations);
-            WorkflowExpression.Validate(__workflow_bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: false);
-            var __workflow_bodyenableSingleSignOn = bodyenableSingleSignOn == null ? null : WorkflowExpression.Compile(bodyenableSingleSignOn);
-            WorkflowExpression.Validate(__workflow_bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
-            var __workflow_bodyimageDisplayName = bodyimageDisplayName == null ? null : WorkflowExpression.Compile(bodyimageDisplayName);
-            WorkflowExpression.Validate(__workflow_bodyimageDisplayName, nameof(bodyimageDisplayName), required: false);
-            var __workflow_bodyimageId = bodyimageId == null ? null : WorkflowExpression.Compile(bodyimageId);
-            WorkflowExpression.Validate(__workflow_bodyimageId, nameof(bodyimageId), required: false);
-            var __workflow_bodyimageType = bodyimageType == null ? null : WorkflowExpression.Compile(bodyimageType);
-            WorkflowExpression.Validate(__workflow_bodyimageType, nameof(bodyimageType), required: false);
-            var __workflow_bodymicrosoftManagedDesktopmanagedType = bodymicrosoftManagedDesktopmanagedType == null ? null : WorkflowExpression.Compile(bodymicrosoftManagedDesktopmanagedType);
-            WorkflowExpression.Validate(__workflow_bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
-            var __workflow_bodymicrosoftManagedDesktopprofile = bodymicrosoftManagedDesktopprofile == null ? null : WorkflowExpression.Compile(bodymicrosoftManagedDesktopprofile);
-            WorkflowExpression.Validate(__workflow_bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
-            var __workflow_bodywindowsSettinglocale = bodywindowsSettinglocale == null ? null : WorkflowExpression.Compile(bodywindowsSettinglocale);
-            WorkflowExpression.Validate(__workflow_bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyautopatchautopatchGroupId = WorkflowExpression.Compile(bodyautopatchautopatchGroupId, nameof(bodyautopatchautopatchGroupId), required: false);
+            var __workflow_bodyautopilotConfigurationdevicePreparationProfileId = WorkflowExpression.Compile(bodyautopilotConfigurationdevicePreparationProfileId, nameof(bodyautopilotConfigurationdevicePreparationProfileId), required: false);
+            var __workflow_bodyautopilotConfigurationapplicationTimeoutInMinutes = WorkflowExpression.Compile(bodyautopilotConfigurationapplicationTimeoutInMinutes, nameof(bodyautopilotConfigurationapplicationTimeoutInMinutes), required: false);
+            var __workflow_bodyautopilotConfigurationonFailureDeviceAccessDenied = WorkflowExpression.Compile(bodyautopilotConfigurationonFailureDeviceAccessDenied, nameof(bodyautopilotConfigurationonFailureDeviceAccessDenied), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodydomainJoinConfigurations = WorkflowExpression.Compile(bodydomainJoinConfigurations, nameof(bodydomainJoinConfigurations), required: false);
+            var __workflow_bodyenableSingleSignOn = WorkflowExpression.Compile(bodyenableSingleSignOn, nameof(bodyenableSingleSignOn), required: false);
+            var __workflow_bodyimageDisplayName = WorkflowExpression.Compile(bodyimageDisplayName, nameof(bodyimageDisplayName), required: false);
+            var __workflow_bodyimageId = WorkflowExpression.Compile(bodyimageId, nameof(bodyimageId), required: false);
+            var __workflow_bodyimageType = WorkflowExpression.Compile(bodyimageType, nameof(bodyimageType), required: false);
+            var __workflow_bodymicrosoftManagedDesktopmanagedType = WorkflowExpression.Compile(bodymicrosoftManagedDesktopmanagedType, nameof(bodymicrosoftManagedDesktopmanagedType), required: false);
+            var __workflow_bodymicrosoftManagedDesktopprofile = WorkflowExpression.Compile(bodymicrosoftManagedDesktopprofile, nameof(bodymicrosoftManagedDesktopprofile), required: false);
+            var __workflow_bodywindowsSettinglocale = WorkflowExpression.Compile(bodywindowsSettinglocale, nameof(bodywindowsSettinglocale), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/deviceManagement/virtualEndpoint/provisioningPolicies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -504,8 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
     {
         public IWorkflowTrigger Webhook(Expression<Func<bodyscenarioInput>> bodyscenario, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyscenario = bodyscenario == null ? null : WorkflowExpression.Compile(bodyscenario);
-            WorkflowExpression.Validate(__workflow_bodyscenario, nameof(bodyscenario), required: true);
+            var __workflow_bodyscenario = WorkflowExpression.Compile(bodyscenario, nameof(bodyscenario), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/beta/deviceManagement/virtualEndpoint/webhooks";

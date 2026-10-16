@@ -40,8 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
         public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases(Expression<Func<string>> country = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<GetNewReleasesResponse>(() =>
             {
                 var apiCallPath = "/v1/browse/new-releases";

@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<SMSResponse> SendSMSGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
         {
-            var __workflow_recipient = recipient == null ? null : WorkflowExpression.Compile(recipient);
-            WorkflowExpression.Validate(__workflow_recipient, nameof(recipient), required: true);
-            var __workflow_senderId = senderId == null ? null : WorkflowExpression.Compile(senderId);
-            WorkflowExpression.Validate(__workflow_senderId, nameof(senderId), required: true);
-            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(__workflow_message, nameof(message), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_recipient = WorkflowExpression.Compile(recipient, nameof(recipient), required: true);
+            var __workflow_senderId = WorkflowExpression.Compile(senderId, nameof(senderId), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<SMSResponse>(() =>
             {
                 var apiCallPath = "/sms/send";
@@ -39,10 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<SMSList> ListSMS(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<SMSList>(() =>
             {
                 var apiCallPath = "/sms";

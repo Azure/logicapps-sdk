@@ -13,46 +13,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<FlightGetResponse> FlightGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<flightStatusInput>> flightStatus = null, Expression<Func<string>> flightDate = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineName = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> airlineIcao = null, Expression<Func<int>> flightNumber = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<int>> minDelayDep = null, Expression<Func<int>> minDelayArr = null, Expression<Func<int>> maxDelayDep = null, Expression<Func<int>> maxDelayArr = null, Expression<Func<string>> arrScheduledTimeArr = null, Expression<Func<string>> arrScheduledTimeDep = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_flightStatus = flightStatus == null ? null : WorkflowExpression.Compile(flightStatus);
-            WorkflowExpression.Validate(__workflow_flightStatus, nameof(flightStatus), required: false);
-            var __workflow_flightDate = flightDate == null ? null : WorkflowExpression.Compile(flightDate);
-            WorkflowExpression.Validate(__workflow_flightDate, nameof(flightDate), required: false);
-            var __workflow_depIata = depIata == null ? null : WorkflowExpression.Compile(depIata);
-            WorkflowExpression.Validate(__workflow_depIata, nameof(depIata), required: false);
-            var __workflow_arrIata = arrIata == null ? null : WorkflowExpression.Compile(arrIata);
-            WorkflowExpression.Validate(__workflow_arrIata, nameof(arrIata), required: false);
-            var __workflow_depIcao = depIcao == null ? null : WorkflowExpression.Compile(depIcao);
-            WorkflowExpression.Validate(__workflow_depIcao, nameof(depIcao), required: false);
-            var __workflow_arrIcao = arrIcao == null ? null : WorkflowExpression.Compile(arrIcao);
-            WorkflowExpression.Validate(__workflow_arrIcao, nameof(arrIcao), required: false);
-            var __workflow_airlineName = airlineName == null ? null : WorkflowExpression.Compile(airlineName);
-            WorkflowExpression.Validate(__workflow_airlineName, nameof(airlineName), required: false);
-            var __workflow_airlineIata = airlineIata == null ? null : WorkflowExpression.Compile(airlineIata);
-            WorkflowExpression.Validate(__workflow_airlineIata, nameof(airlineIata), required: false);
-            var __workflow_airlineIcao = airlineIcao == null ? null : WorkflowExpression.Compile(airlineIcao);
-            WorkflowExpression.Validate(__workflow_airlineIcao, nameof(airlineIcao), required: false);
-            var __workflow_flightNumber = flightNumber == null ? null : WorkflowExpression.Compile(flightNumber);
-            WorkflowExpression.Validate(__workflow_flightNumber, nameof(flightNumber), required: false);
-            var __workflow_flightIata = flightIata == null ? null : WorkflowExpression.Compile(flightIata);
-            WorkflowExpression.Validate(__workflow_flightIata, nameof(flightIata), required: false);
-            var __workflow_flightIcao = flightIcao == null ? null : WorkflowExpression.Compile(flightIcao);
-            WorkflowExpression.Validate(__workflow_flightIcao, nameof(flightIcao), required: false);
-            var __workflow_minDelayDep = minDelayDep == null ? null : WorkflowExpression.Compile(minDelayDep);
-            WorkflowExpression.Validate(__workflow_minDelayDep, nameof(minDelayDep), required: false);
-            var __workflow_minDelayArr = minDelayArr == null ? null : WorkflowExpression.Compile(minDelayArr);
-            WorkflowExpression.Validate(__workflow_minDelayArr, nameof(minDelayArr), required: false);
-            var __workflow_maxDelayDep = maxDelayDep == null ? null : WorkflowExpression.Compile(maxDelayDep);
-            WorkflowExpression.Validate(__workflow_maxDelayDep, nameof(maxDelayDep), required: false);
-            var __workflow_maxDelayArr = maxDelayArr == null ? null : WorkflowExpression.Compile(maxDelayArr);
-            WorkflowExpression.Validate(__workflow_maxDelayArr, nameof(maxDelayArr), required: false);
-            var __workflow_arrScheduledTimeArr = arrScheduledTimeArr == null ? null : WorkflowExpression.Compile(arrScheduledTimeArr);
-            WorkflowExpression.Validate(__workflow_arrScheduledTimeArr, nameof(arrScheduledTimeArr), required: false);
-            var __workflow_arrScheduledTimeDep = arrScheduledTimeDep == null ? null : WorkflowExpression.Compile(arrScheduledTimeDep);
-            WorkflowExpression.Validate(__workflow_arrScheduledTimeDep, nameof(arrScheduledTimeDep), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_flightStatus = WorkflowExpression.Compile(flightStatus, nameof(flightStatus), required: false);
+            var __workflow_flightDate = WorkflowExpression.Compile(flightDate, nameof(flightDate), required: false);
+            var __workflow_depIata = WorkflowExpression.Compile(depIata, nameof(depIata), required: false);
+            var __workflow_arrIata = WorkflowExpression.Compile(arrIata, nameof(arrIata), required: false);
+            var __workflow_depIcao = WorkflowExpression.Compile(depIcao, nameof(depIcao), required: false);
+            var __workflow_arrIcao = WorkflowExpression.Compile(arrIcao, nameof(arrIcao), required: false);
+            var __workflow_airlineName = WorkflowExpression.Compile(airlineName, nameof(airlineName), required: false);
+            var __workflow_airlineIata = WorkflowExpression.Compile(airlineIata, nameof(airlineIata), required: false);
+            var __workflow_airlineIcao = WorkflowExpression.Compile(airlineIcao, nameof(airlineIcao), required: false);
+            var __workflow_flightNumber = WorkflowExpression.Compile(flightNumber, nameof(flightNumber), required: false);
+            var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
+            var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
+            var __workflow_minDelayDep = WorkflowExpression.Compile(minDelayDep, nameof(minDelayDep), required: false);
+            var __workflow_minDelayArr = WorkflowExpression.Compile(minDelayArr, nameof(minDelayArr), required: false);
+            var __workflow_maxDelayDep = WorkflowExpression.Compile(maxDelayDep, nameof(maxDelayDep), required: false);
+            var __workflow_maxDelayArr = WorkflowExpression.Compile(maxDelayArr, nameof(maxDelayArr), required: false);
+            var __workflow_arrScheduledTimeArr = WorkflowExpression.Compile(arrScheduledTimeArr, nameof(arrScheduledTimeArr), required: false);
+            var __workflow_arrScheduledTimeDep = WorkflowExpression.Compile(arrScheduledTimeDep, nameof(arrScheduledTimeDep), required: false);
             return new DeferredBodyAction<FlightGetResponse>(() =>
             {
                 var apiCallPath = "/flights";
@@ -105,10 +85,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirportGetResponse> AirportGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<AirportGetResponse>(() =>
             {
                 var apiCallPath = "/airports";
@@ -125,10 +103,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirlineGetResponse> AirlineGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<AirlineGetResponse>(() =>
             {
                 var apiCallPath = "/airlines";
@@ -145,10 +121,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AirplaneGetResponse> AirplaneGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<AirplaneGetResponse>(() =>
             {
                 var apiCallPath = "/airplanes";
@@ -165,10 +139,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<AircraftGetResponse> AircraftGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<AircraftGetResponse>(() =>
             {
                 var apiCallPath = "/aircraft_types";
@@ -185,10 +157,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<TaxesGetResponse> TaxesGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<TaxesGetResponse>(() =>
             {
                 var apiCallPath = "/taxes";
@@ -205,10 +175,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<CityGetResponse> CityGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<CityGetResponse>(() =>
             {
                 var apiCallPath = "/cities";
@@ -225,10 +193,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aviationstackip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aviationstackip")]
         public IBodyWorkflowAction<CountryGetResponse> CountryGet(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<CountryGetResponse>(() =>
             {
                 var apiCallPath = "/countries";

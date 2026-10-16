@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetConversationsInboxesResponse> GetConversationsInboxes(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
         {
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_defaultPageLength = defaultPageLength == null ? null : WorkflowExpression.Compile(defaultPageLength);
-            WorkflowExpression.Validate(__workflow_defaultPageLength, nameof(defaultPageLength), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_defaultPageLength = WorkflowExpression.Compile(defaultPageLength, nameof(defaultPageLength), required: false);
             return new DeferredBodyAction<GetConversationsInboxesResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/conversations/inboxes";
@@ -41,12 +37,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleThreadResponse> GetASingleThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_property = property == null ? null : WorkflowExpression.Compile(property);
-            WorkflowExpression.Validate(__workflow_property, nameof(property), required: false);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetASingleThreadResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -63,8 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<string> ArchivesAThread(Expression<Func<string>> threadId)
         {
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -77,14 +69,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<UpdateAThreadResponse> UpdateAThread(Expression<Func<string>> threadId, Expression<Func<bool>> archived = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodyarchived = null)
         {
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyarchived = bodyarchived == null ? null : WorkflowExpression.Compile(bodyarchived);
-            WorkflowExpression.Validate(__workflow_bodyarchived, nameof(bodyarchived), required: false);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
             return new DeferredBodyAction<UpdateAThreadResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -118,12 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetTheOriginalContentOfASingleMessageResponse> GetTheOriginalContentOfASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
         {
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_property = property == null ? null : WorkflowExpression.Compile(property);
-            WorkflowExpression.Validate(__workflow_property, nameof(property), required: false);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetTheOriginalContentOfASingleMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}/original-content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -138,18 +123,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetMessageHistoryForAThreadResponse> GetMessageHistoryForAThread(Expression<Func<string>> threadId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_property = property == null ? null : WorkflowExpression.Compile(property);
-            WorkflowExpression.Validate(__workflow_property, nameof(property), required: false);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetMessageHistoryForAThreadResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -172,18 +151,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetChannelAccountsResponse> GetChannelAccounts(Expression<Func<string>> channelId = null, Expression<Func<string>> inboxId = null, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
         {
-            var __workflow_channelId = channelId == null ? null : WorkflowExpression.Compile(channelId);
-            WorkflowExpression.Validate(__workflow_channelId, nameof(channelId), required: false);
-            var __workflow_inboxId = inboxId == null ? null : WorkflowExpression.Compile(inboxId);
-            WorkflowExpression.Validate(__workflow_inboxId, nameof(inboxId), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_defaultPageLength = defaultPageLength == null ? null : WorkflowExpression.Compile(defaultPageLength);
-            WorkflowExpression.Validate(__workflow_defaultPageLength, nameof(defaultPageLength), required: false);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: false);
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_defaultPageLength = WorkflowExpression.Compile(defaultPageLength, nameof(defaultPageLength), required: false);
             return new DeferredBodyAction<GetChannelAccountsResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/conversations/channel-accounts";
@@ -208,8 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelResponse> GetASingleChannel(Expression<Func<string>> channelId)
         {
-            var __workflow_channelId = channelId == null ? null : WorkflowExpression.Compile(channelId);
-            WorkflowExpression.Validate(__workflow_channelId, nameof(channelId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyAction<GetASingleChannelResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channels/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelId, 1));
@@ -222,12 +194,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleMessageResponse> GetASingleMessage(Expression<Func<string>> threadId, Expression<Func<string>> messageId, Expression<Func<string>> property = null)
         {
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_property = property == null ? null : WorkflowExpression.Compile(property);
-            WorkflowExpression.Validate(__workflow_property, nameof(property), required: false);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetASingleMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/threads/{0}/messages/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -242,14 +211,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetChannelsResponse> GetChannels(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> defaultPageLength = null)
         {
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_defaultPageLength = defaultPageLength == null ? null : WorkflowExpression.Compile(defaultPageLength);
-            WorkflowExpression.Validate(__workflow_defaultPageLength, nameof(defaultPageLength), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_defaultPageLength = WorkflowExpression.Compile(defaultPageLength, nameof(defaultPageLength), required: false);
             return new DeferredBodyAction<GetChannelsResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/conversations/channels";
@@ -270,10 +235,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleActorResponse> GetASingleActor(Expression<Func<string>> actorId, Expression<Func<string>> property = null)
         {
-            var __workflow_actorId = actorId == null ? null : WorkflowExpression.Compile(actorId);
-            WorkflowExpression.Validate(__workflow_actorId, nameof(actorId), required: true);
-            var __workflow_property = property == null ? null : WorkflowExpression.Compile(property);
-            WorkflowExpression.Validate(__workflow_property, nameof(property), required: false);
+            var __workflow_actorId = WorkflowExpression.Compile(actorId, nameof(actorId), required: true);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetASingleActorResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/actors/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_actorId, 1));
@@ -288,24 +251,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetThreadsResponse> GetThreads(Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> inboxId = null, Expression<Func<string>> associatedContactId = null, Expression<Func<string>> threadStatus = null, Expression<Func<string>> latestMessageTimestampAfter = null, Expression<Func<bool>> archived = null, Expression<Func<string>> property = null)
         {
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_inboxId = inboxId == null ? null : WorkflowExpression.Compile(inboxId);
-            WorkflowExpression.Validate(__workflow_inboxId, nameof(inboxId), required: false);
-            var __workflow_associatedContactId = associatedContactId == null ? null : WorkflowExpression.Compile(associatedContactId);
-            WorkflowExpression.Validate(__workflow_associatedContactId, nameof(associatedContactId), required: false);
-            var __workflow_threadStatus = threadStatus == null ? null : WorkflowExpression.Compile(threadStatus);
-            WorkflowExpression.Validate(__workflow_threadStatus, nameof(threadStatus), required: false);
-            var __workflow_latestMessageTimestampAfter = latestMessageTimestampAfter == null ? null : WorkflowExpression.Compile(latestMessageTimestampAfter);
-            WorkflowExpression.Validate(__workflow_latestMessageTimestampAfter, nameof(latestMessageTimestampAfter), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_property = property == null ? null : WorkflowExpression.Compile(property);
-            WorkflowExpression.Validate(__workflow_property, nameof(property), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: false);
+            var __workflow_associatedContactId = WorkflowExpression.Compile(associatedContactId, nameof(associatedContactId), required: false);
+            var __workflow_threadStatus = WorkflowExpression.Compile(threadStatus, nameof(threadStatus), required: false);
+            var __workflow_latestMessageTimestampAfter = WorkflowExpression.Compile(latestMessageTimestampAfter, nameof(latestMessageTimestampAfter), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: false);
             return new DeferredBodyAction<GetThreadsResponse>(() =>
             {
                 var apiCallPath = "/conversations/v3/conversations/threads";
@@ -336,8 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleChannelAccountResponse> GetASingleChannelAccount(Expression<Func<string>> channelAccountId)
         {
-            var __workflow_channelAccountId = channelAccountId == null ? null : WorkflowExpression.Compile(channelAccountId);
-            WorkflowExpression.Validate(__workflow_channelAccountId, nameof(channelAccountId), required: true);
+            var __workflow_channelAccountId = WorkflowExpression.Compile(channelAccountId, nameof(channelAccountId), required: true);
             return new DeferredBodyAction<GetASingleChannelAccountResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/channel-accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_channelAccountId, 1));
@@ -350,8 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotconversations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotconversations")]
         public IBodyWorkflowAction<GetASingleConversationsInboxResponse> GetASingleConversationsInbox(Expression<Func<string>> inboxId)
         {
-            var __workflow_inboxId = inboxId == null ? null : WorkflowExpression.Compile(inboxId);
-            WorkflowExpression.Validate(__workflow_inboxId, nameof(inboxId), required: true);
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: true);
             return new DeferredBodyAction<GetASingleConversationsInboxResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/conversations/v3/conversations/inboxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inboxId, 1));

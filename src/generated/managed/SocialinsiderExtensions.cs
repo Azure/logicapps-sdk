@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction ProfileTimeBasedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofile = null)
         {
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
-            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
-            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: false);
-            var __workflow_bodyprofile = bodyprofile == null ? null : WorkflowExpression.Compile(bodyprofile);
-            WorkflowExpression.Validate(__workflow_bodyprofile, nameof(bodyprofile), required: false);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: false);
+            var __workflow_bodyprofile = WorkflowExpression.Compile(bodyprofile, nameof(bodyprofile), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/profile_time_based_metrics";
@@ -64,14 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction ProfileAggregatedMetrics(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
         {
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
-            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
-            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: false);
-            var __workflow_bodyprofiles = bodyprofiles == null ? null : WorkflowExpression.Compile(bodyprofiles);
-            WorkflowExpression.Validate(__workflow_bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: false);
+            var __workflow_bodyprofiles = WorkflowExpression.Compile(bodyprofiles, nameof(bodyprofiles), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/profiles_aggregated_metrics";
@@ -115,14 +107,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction Posts(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyplatform = null, Expression<Func<string[]>> bodyprofiles = null)
         {
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
-            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyplatform = bodyplatform == null ? null : WorkflowExpression.Compile(bodyplatform);
-            WorkflowExpression.Validate(__workflow_bodyplatform, nameof(bodyplatform), required: false);
-            var __workflow_bodyprofiles = bodyprofiles == null ? null : WorkflowExpression.Compile(bodyprofiles);
-            WorkflowExpression.Validate(__workflow_bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyplatform = WorkflowExpression.Compile(bodyplatform, nameof(bodyplatform), required: false);
+            var __workflow_bodyprofiles = WorkflowExpression.Compile(bodyprofiles, nameof(bodyprofiles), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/posts";
@@ -166,12 +154,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Socialinsider
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "socialinsider")]
         public IWorkflowAction Stories(Expression<Func<string>> bodykey = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<string[]>> bodyprofiles = null)
         {
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
-            var __workflow_bodyprojectname = bodyprojectname == null ? null : WorkflowExpression.Compile(bodyprojectname);
-            WorkflowExpression.Validate(__workflow_bodyprojectname, nameof(bodyprojectname), required: false);
-            var __workflow_bodyprofiles = bodyprofiles == null ? null : WorkflowExpression.Compile(bodyprofiles);
-            WorkflowExpression.Validate(__workflow_bodyprofiles, nameof(bodyprofiles), required: false);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
+            var __workflow_bodyprojectname = WorkflowExpression.Compile(bodyprojectname, nameof(bodyprojectname), required: false);
+            var __workflow_bodyprofiles = WorkflowExpression.Compile(bodyprofiles, nameof(bodyprofiles), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/stories";

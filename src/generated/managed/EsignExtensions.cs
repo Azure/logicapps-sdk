@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> bodybase64, Expression<Func<string>> bodytitle)
         {
-            var __workflow_bodybase64 = bodybase64 == null ? null : WorkflowExpression.Compile(bodybase64);
-            WorkflowExpression.Validate(__workflow_bodybase64, nameof(bodybase64), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodybase64 = WorkflowExpression.Compile(bodybase64, nameof(bodybase64), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredBodyAction<UploadFileResponse>(() =>
             {
                 var apiCallPath = "/v3/pa_uploads";
@@ -45,16 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         public IWorkflowAction CreateEnvelopeFromTemplate(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytemplateTitle = null, Expression<Func<string>> bodyuploadFile = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodysignersInputItem[]>> bodysigners = null)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytemplateTitle = bodytemplateTitle == null ? null : WorkflowExpression.Compile(bodytemplateTitle);
-            WorkflowExpression.Validate(__workflow_bodytemplateTitle, nameof(bodytemplateTitle), required: false);
-            var __workflow_bodyuploadFile = bodyuploadFile == null ? null : WorkflowExpression.Compile(bodyuploadFile);
-            WorkflowExpression.Validate(__workflow_bodyuploadFile, nameof(bodyuploadFile), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodysigners = bodysigners == null ? null : WorkflowExpression.Compile(bodysigners);
-            WorkflowExpression.Validate(__workflow_bodysigners, nameof(bodysigners), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodytemplateTitle = WorkflowExpression.Compile(bodytemplateTitle, nameof(bodytemplateTitle), required: false);
+            var __workflow_bodyuploadFile = WorkflowExpression.Compile(bodyuploadFile, nameof(bodyuploadFile), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodysigners = WorkflowExpression.Compile(bodysigners, nameof(bodysigners), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v3/pa_envelopes";
@@ -105,20 +98,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
         public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope(Expression<Func<string>> bodytitle, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodysignersInputItem[]>> bodysigners, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyenvelopeOptionssignInSequentialOrder = null, Expression<Func<bodycarbonCopiesInputItem[]>> bodycarbonCopies = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: true);
-            var __workflow_bodysigners = bodysigners == null ? null : WorkflowExpression.Compile(bodysigners);
-            WorkflowExpression.Validate(__workflow_bodysigners, nameof(bodysigners), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyenvelopeOptionssignInSequentialOrder = bodyenvelopeOptionssignInSequentialOrder == null ? null : WorkflowExpression.Compile(bodyenvelopeOptionssignInSequentialOrder);
-            WorkflowExpression.Validate(__workflow_bodyenvelopeOptionssignInSequentialOrder, nameof(bodyenvelopeOptionssignInSequentialOrder), required: false);
-            var __workflow_bodycarbonCopies = bodycarbonCopies == null ? null : WorkflowExpression.Compile(bodycarbonCopies);
-            WorkflowExpression.Validate(__workflow_bodycarbonCopies, nameof(bodycarbonCopies), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
+            var __workflow_bodysigners = WorkflowExpression.Compile(bodysigners, nameof(bodysigners), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyenvelopeOptionssignInSequentialOrder = WorkflowExpression.Compile(bodyenvelopeOptionssignInSequentialOrder, nameof(bodyenvelopeOptionssignInSequentialOrder), required: false);
+            var __workflow_bodycarbonCopies = WorkflowExpression.Compile(bodycarbonCopies, nameof(bodycarbonCopies), required: false);
             return new DeferredBodyAction<CreateEnvelopeResponse>(() =>
             {
                 var apiCallPath = "/v3/pa_send_envelope";

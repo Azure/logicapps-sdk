@@ -23,16 +23,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<string> Translate(Expression<Func<string>> to, Expression<Func<string>> bodytext, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<textTypeInput>> textType = null)
         {
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: true);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_textType = textType == null ? null : WorkflowExpression.Compile(textType);
-            WorkflowExpression.Validate(__workflow_textType, nameof(textType), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_textType = WorkflowExpression.Compile(textType, nameof(textType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Translate";
@@ -61,8 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<Language> Detect(Expression<Func<string>> bodytext)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
             return new DeferredBodyAction<Language>(() =>
             {
                 var apiCallPath = "/Detect";

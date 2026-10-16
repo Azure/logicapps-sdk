@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
         {
-            var __workflow_bodydeviceMACAddress = bodydeviceMACAddress == null ? null : WorkflowExpression.Compile(bodydeviceMACAddress);
-            WorkflowExpression.Validate(__workflow_bodydeviceMACAddress, nameof(bodydeviceMACAddress), required: true);
-            var __workflow_bodydeviceModel = bodydeviceModel == null ? null : WorkflowExpression.Compile(bodydeviceModel);
-            WorkflowExpression.Validate(__workflow_bodydeviceModel, nameof(bodydeviceModel), required: true);
-            var __workflow_bodycmdcommandName = bodycmdcommandName == null ? null : WorkflowExpression.Compile(bodycmdcommandName);
-            WorkflowExpression.Validate(__workflow_bodycmdcommandName, nameof(bodycmdcommandName), required: false);
-            var __workflow_bodyturn = bodyturn == null ? null : WorkflowExpression.Compile(bodyturn);
-            WorkflowExpression.Validate(__workflow_bodyturn, nameof(bodyturn), required: false);
-            var __workflow_bodybrightness = bodybrightness == null ? null : WorkflowExpression.Compile(bodybrightness);
-            WorkflowExpression.Validate(__workflow_bodybrightness, nameof(bodybrightness), required: false);
-            var __workflow_bodycolorcolorRed = bodycolorcolorRed == null ? null : WorkflowExpression.Compile(bodycolorcolorRed);
-            WorkflowExpression.Validate(__workflow_bodycolorcolorRed, nameof(bodycolorcolorRed), required: false);
-            var __workflow_bodycolorcolorGreen = bodycolorcolorGreen == null ? null : WorkflowExpression.Compile(bodycolorcolorGreen);
-            WorkflowExpression.Validate(__workflow_bodycolorcolorGreen, nameof(bodycolorcolorGreen), required: false);
-            var __workflow_bodycolorcolorBlue = bodycolorcolorBlue == null ? null : WorkflowExpression.Compile(bodycolorcolorBlue);
-            WorkflowExpression.Validate(__workflow_bodycolorcolorBlue, nameof(bodycolorcolorBlue), required: false);
-            var __workflow_bodycolorTemperature = bodycolorTemperature == null ? null : WorkflowExpression.Compile(bodycolorTemperature);
-            WorkflowExpression.Validate(__workflow_bodycolorTemperature, nameof(bodycolorTemperature), required: false);
+            var __workflow_bodydeviceMACAddress = WorkflowExpression.Compile(bodydeviceMACAddress, nameof(bodydeviceMACAddress), required: true);
+            var __workflow_bodydeviceModel = WorkflowExpression.Compile(bodydeviceModel, nameof(bodydeviceModel), required: true);
+            var __workflow_bodycmdcommandName = WorkflowExpression.Compile(bodycmdcommandName, nameof(bodycmdcommandName), required: false);
+            var __workflow_bodyturn = WorkflowExpression.Compile(bodyturn, nameof(bodyturn), required: false);
+            var __workflow_bodybrightness = WorkflowExpression.Compile(bodybrightness, nameof(bodybrightness), required: false);
+            var __workflow_bodycolorcolorRed = WorkflowExpression.Compile(bodycolorcolorRed, nameof(bodycolorcolorRed), required: false);
+            var __workflow_bodycolorcolorGreen = WorkflowExpression.Compile(bodycolorcolorGreen, nameof(bodycolorcolorGreen), required: false);
+            var __workflow_bodycolorcolorBlue = WorkflowExpression.Compile(bodycolorcolorBlue, nameof(bodycolorcolorBlue), required: false);
+            var __workflow_bodycolorTemperature = WorkflowExpression.Compile(bodycolorTemperature, nameof(bodycolorTemperature), required: false);
             return new DeferredBodyAction<RunCommandOnDeviceResponse>(() =>
             {
                 var apiCallPath = "/devices/control";
@@ -112,10 +103,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
         public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
         {
-            var __workflow_device = device == null ? null : WorkflowExpression.Compile(device);
-            WorkflowExpression.Validate(__workflow_device, nameof(device), required: false);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
+            var __workflow_device = WorkflowExpression.Compile(device, nameof(device), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
             return new DeferredBodyAction<GetDeviceInformationResponse>(() =>
             {
                 var apiCallPath = "/devices";

@@ -16,12 +16,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<bool>> bodyenabled = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
-            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: true);
-            var __workflow_bodyenabled = bodyenabled == null ? null : WorkflowExpression.Compile(bodyenabled);
-            WorkflowExpression.Validate(__workflow_bodyenabled, nameof(bodyenabled), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: true);
+            var __workflow_bodyenabled = WorkflowExpression.Compile(bodyenabled, nameof(bodyenabled), required: false);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tag, 1));

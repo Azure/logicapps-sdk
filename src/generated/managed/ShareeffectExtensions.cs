@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<AddUpdateTermResponse> AddUpdateTerm(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
         {
-            var __workflow_bodyisavailable = bodyisavailable == null ? null : WorkflowExpression.Compile(bodyisavailable);
-            WorkflowExpression.Validate(__workflow_bodyisavailable, nameof(bodyisavailable), required: true);
-            var __workflow_bodytermlabel = bodytermlabel == null ? null : WorkflowExpression.Compile(bodytermlabel);
-            WorkflowExpression.Validate(__workflow_bodytermlabel, nameof(bodytermlabel), required: true);
-            var __workflow_bodytermsgroup = bodytermsgroup == null ? null : WorkflowExpression.Compile(bodytermsgroup);
-            WorkflowExpression.Validate(__workflow_bodytermsgroup, nameof(bodytermsgroup), required: true);
-            var __workflow_bodytermsset = bodytermsset == null ? null : WorkflowExpression.Compile(bodytermsset);
-            WorkflowExpression.Validate(__workflow_bodytermsset, nameof(bodytermsset), required: true);
-            var __workflow_bodyotherlabels = bodyotherlabels == null ? null : WorkflowExpression.Compile(bodyotherlabels);
-            WorkflowExpression.Validate(__workflow_bodyotherlabels, nameof(bodyotherlabels), required: false);
-            var __workflow_bodyparentterm = bodyparentterm == null ? null : WorkflowExpression.Compile(bodyparentterm);
-            WorkflowExpression.Validate(__workflow_bodyparentterm, nameof(bodyparentterm), required: false);
+            var __workflow_bodyisavailable = WorkflowExpression.Compile(bodyisavailable, nameof(bodyisavailable), required: true);
+            var __workflow_bodytermlabel = WorkflowExpression.Compile(bodytermlabel, nameof(bodytermlabel), required: true);
+            var __workflow_bodytermsgroup = WorkflowExpression.Compile(bodytermsgroup, nameof(bodytermsgroup), required: true);
+            var __workflow_bodytermsset = WorkflowExpression.Compile(bodytermsset, nameof(bodytermsset), required: true);
+            var __workflow_bodyotherlabels = WorkflowExpression.Compile(bodyotherlabels, nameof(bodyotherlabels), required: false);
+            var __workflow_bodyparentterm = WorkflowExpression.Compile(bodyparentterm, nameof(bodyparentterm), required: false);
             return new DeferredBodyAction<AddUpdateTermResponse>(() =>
             {
                 var apiCallPath = "/AddUpdateTerm";
@@ -64,20 +58,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> AddUpdateTermByKeyValue(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodykeyvalue, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
         {
-            var __workflow_bodyisavailable = bodyisavailable == null ? null : WorkflowExpression.Compile(bodyisavailable);
-            WorkflowExpression.Validate(__workflow_bodyisavailable, nameof(bodyisavailable), required: true);
-            var __workflow_bodykeyvalue = bodykeyvalue == null ? null : WorkflowExpression.Compile(bodykeyvalue);
-            WorkflowExpression.Validate(__workflow_bodykeyvalue, nameof(bodykeyvalue), required: true);
-            var __workflow_bodytermlabel = bodytermlabel == null ? null : WorkflowExpression.Compile(bodytermlabel);
-            WorkflowExpression.Validate(__workflow_bodytermlabel, nameof(bodytermlabel), required: true);
-            var __workflow_bodytermsgroup = bodytermsgroup == null ? null : WorkflowExpression.Compile(bodytermsgroup);
-            WorkflowExpression.Validate(__workflow_bodytermsgroup, nameof(bodytermsgroup), required: true);
-            var __workflow_bodytermsset = bodytermsset == null ? null : WorkflowExpression.Compile(bodytermsset);
-            WorkflowExpression.Validate(__workflow_bodytermsset, nameof(bodytermsset), required: true);
-            var __workflow_bodyotherlabels = bodyotherlabels == null ? null : WorkflowExpression.Compile(bodyotherlabels);
-            WorkflowExpression.Validate(__workflow_bodyotherlabels, nameof(bodyotherlabels), required: false);
-            var __workflow_bodyparentterm = bodyparentterm == null ? null : WorkflowExpression.Compile(bodyparentterm);
-            WorkflowExpression.Validate(__workflow_bodyparentterm, nameof(bodyparentterm), required: false);
+            var __workflow_bodyisavailable = WorkflowExpression.Compile(bodyisavailable, nameof(bodyisavailable), required: true);
+            var __workflow_bodykeyvalue = WorkflowExpression.Compile(bodykeyvalue, nameof(bodykeyvalue), required: true);
+            var __workflow_bodytermlabel = WorkflowExpression.Compile(bodytermlabel, nameof(bodytermlabel), required: true);
+            var __workflow_bodytermsgroup = WorkflowExpression.Compile(bodytermsgroup, nameof(bodytermsgroup), required: true);
+            var __workflow_bodytermsset = WorkflowExpression.Compile(bodytermsset, nameof(bodytermsset), required: true);
+            var __workflow_bodyotherlabels = WorkflowExpression.Compile(bodyotherlabels, nameof(bodyotherlabels), required: false);
+            var __workflow_bodyparentterm = WorkflowExpression.Compile(bodyparentterm, nameof(bodyparentterm), required: false);
             return new DeferredBodyAction<AddUpdateTermByKeyValueResponse>(() =>
             {
                 var apiCallPath = "/AddUpdateTermByKeyvalue";
@@ -119,8 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> GetTermByKeyValue(Expression<Func<string>> searchValue)
         {
-            var __workflow_searchValue = searchValue == null ? null : WorkflowExpression.Compile(searchValue);
-            WorkflowExpression.Validate(__workflow_searchValue, nameof(searchValue), required: true);
+            var __workflow_searchValue = WorkflowExpression.Compile(searchValue, nameof(searchValue), required: true);
             return new DeferredBodyAction<GetTermByKeyValueResponseItem[]>(() =>
             {
                 var apiCallPath = "/GetTermsByProperty";
@@ -135,8 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<GetTermByLabelResponseItem[]> GetTermByLabel(Expression<Func<string>> searchValue)
         {
-            var __workflow_searchValue = searchValue == null ? null : WorkflowExpression.Compile(searchValue);
-            WorkflowExpression.Validate(__workflow_searchValue, nameof(searchValue), required: true);
+            var __workflow_searchValue = WorkflowExpression.Compile(searchValue, nameof(searchValue), required: true);
             return new DeferredBodyAction<GetTermByLabelResponseItem[]>(() =>
             {
                 var apiCallPath = "/GetTermsByTermLabel";
@@ -150,10 +135,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<UploadTemplateResponse> UploadTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytemplate)
         {
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
-            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: true);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: true);
             return new DeferredBodyAction<UploadTemplateResponse>(() =>
             {
                 var apiCallPath = "/uploadtemplate";
@@ -177,10 +160,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
         public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<bodyoutputformatInput>> bodyoutputformat)
         {
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: true);
-            var __workflow_bodyoutputformat = bodyoutputformat == null ? null : WorkflowExpression.Compile(bodyoutputformat);
-            WorkflowExpression.Validate(__workflow_bodyoutputformat, nameof(bodyoutputformat), required: true);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: true);
+            var __workflow_bodyoutputformat = WorkflowExpression.Compile(bodyoutputformat, nameof(bodyoutputformat), required: true);
             return new DeferredBodyAction<GenerateDocumentResponse>(() =>
             {
                 var apiCallPath = "/GenerateDocument";

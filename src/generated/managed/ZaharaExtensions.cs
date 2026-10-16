@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<int> CreateDraftInvoice(Expression<Func<string>> senderEmail, Expression<Func<string>> recipientEmail, Expression<Func<string>> raisedDate = null, Expression<Func<object>> file = null)
         {
-            var __workflow_senderEmail = senderEmail == null ? null : WorkflowExpression.Compile(senderEmail);
-            WorkflowExpression.Validate(__workflow_senderEmail, nameof(senderEmail), required: true);
-            var __workflow_recipientEmail = recipientEmail == null ? null : WorkflowExpression.Compile(recipientEmail);
-            WorkflowExpression.Validate(__workflow_recipientEmail, nameof(recipientEmail), required: true);
-            var __workflow_raisedDate = raisedDate == null ? null : WorkflowExpression.Compile(raisedDate);
-            WorkflowExpression.Validate(__workflow_raisedDate, nameof(raisedDate), required: false);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: false);
+            var __workflow_senderEmail = WorkflowExpression.Compile(senderEmail, nameof(senderEmail), required: true);
+            var __workflow_recipientEmail = WorkflowExpression.Compile(recipientEmail, nameof(recipientEmail), required: true);
+            var __workflow_raisedDate = WorkflowExpression.Compile(raisedDate, nameof(raisedDate), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
             return new DeferredBodyAction<int>(() =>
             {
                 var apiCallPath = "/api/DraftInvoiceIntegration/Add";
@@ -33,26 +29,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<int> CreateInvoice(Expression<Func<string>> modelinvoiceNumber = null, Expression<Func<string>> modelpurchaseOrderNumber = null, Expression<Func<string>> modelraisedDate = null, Expression<Func<string>> modeldueDate = null, Expression<Func<string>> modelsupplierReferenceNumber = null, Expression<Func<string>> modeldescription = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeldivisionName = null, Expression<Func<string>> modelcurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modellineItems = null)
         {
-            var __workflow_modelinvoiceNumber = modelinvoiceNumber == null ? null : WorkflowExpression.Compile(modelinvoiceNumber);
-            WorkflowExpression.Validate(__workflow_modelinvoiceNumber, nameof(modelinvoiceNumber), required: false);
-            var __workflow_modelpurchaseOrderNumber = modelpurchaseOrderNumber == null ? null : WorkflowExpression.Compile(modelpurchaseOrderNumber);
-            WorkflowExpression.Validate(__workflow_modelpurchaseOrderNumber, nameof(modelpurchaseOrderNumber), required: false);
-            var __workflow_modelraisedDate = modelraisedDate == null ? null : WorkflowExpression.Compile(modelraisedDate);
-            WorkflowExpression.Validate(__workflow_modelraisedDate, nameof(modelraisedDate), required: false);
-            var __workflow_modeldueDate = modeldueDate == null ? null : WorkflowExpression.Compile(modeldueDate);
-            WorkflowExpression.Validate(__workflow_modeldueDate, nameof(modeldueDate), required: false);
-            var __workflow_modelsupplierReferenceNumber = modelsupplierReferenceNumber == null ? null : WorkflowExpression.Compile(modelsupplierReferenceNumber);
-            WorkflowExpression.Validate(__workflow_modelsupplierReferenceNumber, nameof(modelsupplierReferenceNumber), required: false);
-            var __workflow_modeldescription = modeldescription == null ? null : WorkflowExpression.Compile(modeldescription);
-            WorkflowExpression.Validate(__workflow_modeldescription, nameof(modeldescription), required: false);
-            var __workflow_modelcomments = modelcomments == null ? null : WorkflowExpression.Compile(modelcomments);
-            WorkflowExpression.Validate(__workflow_modelcomments, nameof(modelcomments), required: false);
-            var __workflow_modeldivisionName = modeldivisionName == null ? null : WorkflowExpression.Compile(modeldivisionName);
-            WorkflowExpression.Validate(__workflow_modeldivisionName, nameof(modeldivisionName), required: false);
-            var __workflow_modelcurrencyCode = modelcurrencyCode == null ? null : WorkflowExpression.Compile(modelcurrencyCode);
-            WorkflowExpression.Validate(__workflow_modelcurrencyCode, nameof(modelcurrencyCode), required: false);
-            var __workflow_modellineItems = modellineItems == null ? null : WorkflowExpression.Compile(modellineItems);
-            WorkflowExpression.Validate(__workflow_modellineItems, nameof(modellineItems), required: false);
+            var __workflow_modelinvoiceNumber = WorkflowExpression.Compile(modelinvoiceNumber, nameof(modelinvoiceNumber), required: false);
+            var __workflow_modelpurchaseOrderNumber = WorkflowExpression.Compile(modelpurchaseOrderNumber, nameof(modelpurchaseOrderNumber), required: false);
+            var __workflow_modelraisedDate = WorkflowExpression.Compile(modelraisedDate, nameof(modelraisedDate), required: false);
+            var __workflow_modeldueDate = WorkflowExpression.Compile(modeldueDate, nameof(modeldueDate), required: false);
+            var __workflow_modelsupplierReferenceNumber = WorkflowExpression.Compile(modelsupplierReferenceNumber, nameof(modelsupplierReferenceNumber), required: false);
+            var __workflow_modeldescription = WorkflowExpression.Compile(modeldescription, nameof(modeldescription), required: false);
+            var __workflow_modelcomments = WorkflowExpression.Compile(modelcomments, nameof(modelcomments), required: false);
+            var __workflow_modeldivisionName = WorkflowExpression.Compile(modeldivisionName, nameof(modeldivisionName), required: false);
+            var __workflow_modelcurrencyCode = WorkflowExpression.Compile(modelcurrencyCode, nameof(modelcurrencyCode), required: false);
+            var __workflow_modellineItems = WorkflowExpression.Compile(modellineItems, nameof(modellineItems), required: false);
             return new DeferredBodyAction<int>(() =>
             {
                 var apiCallPath = "/api/InvoiceIntegration/Add";
@@ -132,22 +118,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<int> CreatePurchaseOrder(Expression<Func<string>> modelrequisitorName = null, Expression<Func<string>> modelrequiredDate = null, Expression<Func<string>> modelsupplierReferenceNumber = null, Expression<Func<string>> modeldescription = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeldivisionName = null, Expression<Func<string>> modelcurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modellineItems = null)
         {
-            var __workflow_modelrequisitorName = modelrequisitorName == null ? null : WorkflowExpression.Compile(modelrequisitorName);
-            WorkflowExpression.Validate(__workflow_modelrequisitorName, nameof(modelrequisitorName), required: false);
-            var __workflow_modelrequiredDate = modelrequiredDate == null ? null : WorkflowExpression.Compile(modelrequiredDate);
-            WorkflowExpression.Validate(__workflow_modelrequiredDate, nameof(modelrequiredDate), required: false);
-            var __workflow_modelsupplierReferenceNumber = modelsupplierReferenceNumber == null ? null : WorkflowExpression.Compile(modelsupplierReferenceNumber);
-            WorkflowExpression.Validate(__workflow_modelsupplierReferenceNumber, nameof(modelsupplierReferenceNumber), required: false);
-            var __workflow_modeldescription = modeldescription == null ? null : WorkflowExpression.Compile(modeldescription);
-            WorkflowExpression.Validate(__workflow_modeldescription, nameof(modeldescription), required: false);
-            var __workflow_modelcomments = modelcomments == null ? null : WorkflowExpression.Compile(modelcomments);
-            WorkflowExpression.Validate(__workflow_modelcomments, nameof(modelcomments), required: false);
-            var __workflow_modeldivisionName = modeldivisionName == null ? null : WorkflowExpression.Compile(modeldivisionName);
-            WorkflowExpression.Validate(__workflow_modeldivisionName, nameof(modeldivisionName), required: false);
-            var __workflow_modelcurrencyCode = modelcurrencyCode == null ? null : WorkflowExpression.Compile(modelcurrencyCode);
-            WorkflowExpression.Validate(__workflow_modelcurrencyCode, nameof(modelcurrencyCode), required: false);
-            var __workflow_modellineItems = modellineItems == null ? null : WorkflowExpression.Compile(modellineItems);
-            WorkflowExpression.Validate(__workflow_modellineItems, nameof(modellineItems), required: false);
+            var __workflow_modelrequisitorName = WorkflowExpression.Compile(modelrequisitorName, nameof(modelrequisitorName), required: false);
+            var __workflow_modelrequiredDate = WorkflowExpression.Compile(modelrequiredDate, nameof(modelrequiredDate), required: false);
+            var __workflow_modelsupplierReferenceNumber = WorkflowExpression.Compile(modelsupplierReferenceNumber, nameof(modelsupplierReferenceNumber), required: false);
+            var __workflow_modeldescription = WorkflowExpression.Compile(modeldescription, nameof(modeldescription), required: false);
+            var __workflow_modelcomments = WorkflowExpression.Compile(modelcomments, nameof(modelcomments), required: false);
+            var __workflow_modeldivisionName = WorkflowExpression.Compile(modeldivisionName, nameof(modeldivisionName), required: false);
+            var __workflow_modelcurrencyCode = WorkflowExpression.Compile(modelcurrencyCode, nameof(modelcurrencyCode), required: false);
+            var __workflow_modellineItems = WorkflowExpression.Compile(modellineItems, nameof(modellineItems), required: false);
             return new DeferredBodyAction<int>(() =>
             {
                 var apiCallPath = "/api/PurchaseOrderIntegration/Add";
@@ -215,24 +193,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<int> CreateSupplier(Expression<Func<string>> modeladdressLines = null, Expression<Func<string>> modelcontactName = null, Expression<Func<string>> modelcountryCode = null, Expression<Func<string>> modelemail = null, Expression<Func<string>> modelpostCode = null, Expression<Func<string>> modelreferenceNumber = null, Expression<Func<string>> modelsupplierName = null, Expression<Func<string>> modeltelephone = null, Expression<Func<string>> modeltype = null)
         {
-            var __workflow_modeladdressLines = modeladdressLines == null ? null : WorkflowExpression.Compile(modeladdressLines);
-            WorkflowExpression.Validate(__workflow_modeladdressLines, nameof(modeladdressLines), required: false);
-            var __workflow_modelcontactName = modelcontactName == null ? null : WorkflowExpression.Compile(modelcontactName);
-            WorkflowExpression.Validate(__workflow_modelcontactName, nameof(modelcontactName), required: false);
-            var __workflow_modelcountryCode = modelcountryCode == null ? null : WorkflowExpression.Compile(modelcountryCode);
-            WorkflowExpression.Validate(__workflow_modelcountryCode, nameof(modelcountryCode), required: false);
-            var __workflow_modelemail = modelemail == null ? null : WorkflowExpression.Compile(modelemail);
-            WorkflowExpression.Validate(__workflow_modelemail, nameof(modelemail), required: false);
-            var __workflow_modelpostCode = modelpostCode == null ? null : WorkflowExpression.Compile(modelpostCode);
-            WorkflowExpression.Validate(__workflow_modelpostCode, nameof(modelpostCode), required: false);
-            var __workflow_modelreferenceNumber = modelreferenceNumber == null ? null : WorkflowExpression.Compile(modelreferenceNumber);
-            WorkflowExpression.Validate(__workflow_modelreferenceNumber, nameof(modelreferenceNumber), required: false);
-            var __workflow_modelsupplierName = modelsupplierName == null ? null : WorkflowExpression.Compile(modelsupplierName);
-            WorkflowExpression.Validate(__workflow_modelsupplierName, nameof(modelsupplierName), required: false);
-            var __workflow_modeltelephone = modeltelephone == null ? null : WorkflowExpression.Compile(modeltelephone);
-            WorkflowExpression.Validate(__workflow_modeltelephone, nameof(modeltelephone), required: false);
-            var __workflow_modeltype = modeltype == null ? null : WorkflowExpression.Compile(modeltype);
-            WorkflowExpression.Validate(__workflow_modeltype, nameof(modeltype), required: false);
+            var __workflow_modeladdressLines = WorkflowExpression.Compile(modeladdressLines, nameof(modeladdressLines), required: false);
+            var __workflow_modelcontactName = WorkflowExpression.Compile(modelcontactName, nameof(modelcontactName), required: false);
+            var __workflow_modelcountryCode = WorkflowExpression.Compile(modelcountryCode, nameof(modelcountryCode), required: false);
+            var __workflow_modelemail = WorkflowExpression.Compile(modelemail, nameof(modelemail), required: false);
+            var __workflow_modelpostCode = WorkflowExpression.Compile(modelpostCode, nameof(modelpostCode), required: false);
+            var __workflow_modelreferenceNumber = WorkflowExpression.Compile(modelreferenceNumber, nameof(modelreferenceNumber), required: false);
+            var __workflow_modelsupplierName = WorkflowExpression.Compile(modelsupplierName, nameof(modelsupplierName), required: false);
+            var __workflow_modeltelephone = WorkflowExpression.Compile(modeltelephone, nameof(modeltelephone), required: false);
+            var __workflow_modeltype = WorkflowExpression.Compile(modeltype, nameof(modeltype), required: false);
             return new DeferredBodyAction<int>(() =>
             {
                 var apiCallPath = "/api/SupplierIntegration/Add";
@@ -306,28 +275,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
         public IBodyWorkflowAction<JToken> UpdateSupplier(Expression<Func<int>> id, Expression<Func<int>> modelid = null, Expression<Func<string>> modeladdressLines = null, Expression<Func<string>> modelcontactName = null, Expression<Func<string>> modelcountryCode = null, Expression<Func<string>> modelemail = null, Expression<Func<string>> modelpostCode = null, Expression<Func<string>> modelreferenceNumber = null, Expression<Func<string>> modelsupplierName = null, Expression<Func<string>> modeltelephone = null, Expression<Func<string>> modeltype = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_modelid = modelid == null ? null : WorkflowExpression.Compile(modelid);
-            WorkflowExpression.Validate(__workflow_modelid, nameof(modelid), required: false);
-            var __workflow_modeladdressLines = modeladdressLines == null ? null : WorkflowExpression.Compile(modeladdressLines);
-            WorkflowExpression.Validate(__workflow_modeladdressLines, nameof(modeladdressLines), required: false);
-            var __workflow_modelcontactName = modelcontactName == null ? null : WorkflowExpression.Compile(modelcontactName);
-            WorkflowExpression.Validate(__workflow_modelcontactName, nameof(modelcontactName), required: false);
-            var __workflow_modelcountryCode = modelcountryCode == null ? null : WorkflowExpression.Compile(modelcountryCode);
-            WorkflowExpression.Validate(__workflow_modelcountryCode, nameof(modelcountryCode), required: false);
-            var __workflow_modelemail = modelemail == null ? null : WorkflowExpression.Compile(modelemail);
-            WorkflowExpression.Validate(__workflow_modelemail, nameof(modelemail), required: false);
-            var __workflow_modelpostCode = modelpostCode == null ? null : WorkflowExpression.Compile(modelpostCode);
-            WorkflowExpression.Validate(__workflow_modelpostCode, nameof(modelpostCode), required: false);
-            var __workflow_modelreferenceNumber = modelreferenceNumber == null ? null : WorkflowExpression.Compile(modelreferenceNumber);
-            WorkflowExpression.Validate(__workflow_modelreferenceNumber, nameof(modelreferenceNumber), required: false);
-            var __workflow_modelsupplierName = modelsupplierName == null ? null : WorkflowExpression.Compile(modelsupplierName);
-            WorkflowExpression.Validate(__workflow_modelsupplierName, nameof(modelsupplierName), required: false);
-            var __workflow_modeltelephone = modeltelephone == null ? null : WorkflowExpression.Compile(modeltelephone);
-            WorkflowExpression.Validate(__workflow_modeltelephone, nameof(modeltelephone), required: false);
-            var __workflow_modeltype = modeltype == null ? null : WorkflowExpression.Compile(modeltype);
-            WorkflowExpression.Validate(__workflow_modeltype, nameof(modeltype), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_modelid = WorkflowExpression.Compile(modelid, nameof(modelid), required: false);
+            var __workflow_modeladdressLines = WorkflowExpression.Compile(modeladdressLines, nameof(modeladdressLines), required: false);
+            var __workflow_modelcontactName = WorkflowExpression.Compile(modelcontactName, nameof(modelcontactName), required: false);
+            var __workflow_modelcountryCode = WorkflowExpression.Compile(modelcountryCode, nameof(modelcountryCode), required: false);
+            var __workflow_modelemail = WorkflowExpression.Compile(modelemail, nameof(modelemail), required: false);
+            var __workflow_modelpostCode = WorkflowExpression.Compile(modelpostCode, nameof(modelpostCode), required: false);
+            var __workflow_modelreferenceNumber = WorkflowExpression.Compile(modelreferenceNumber, nameof(modelreferenceNumber), required: false);
+            var __workflow_modelsupplierName = WorkflowExpression.Compile(modelsupplierName, nameof(modelsupplierName), required: false);
+            var __workflow_modeltelephone = WorkflowExpression.Compile(modeltelephone, nameof(modeltelephone), required: false);
+            var __workflow_modeltype = WorkflowExpression.Compile(modeltype, nameof(modeltype), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/SupplierIntegration/Update";
@@ -426,8 +384,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
 
         public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved(Expression<Func<documentTypeInput>> documentType, FlowRecurrence recurrence = null)
         {
-            var __workflow_documentType = documentType == null ? null : WorkflowExpression.Compile(documentType);
-            WorkflowExpression.Validate(__workflow_documentType, nameof(documentType), required: true);
+            var __workflow_documentType = WorkflowExpression.Compile(documentType, nameof(documentType), required: true);
             return new DeferredBodyTrigger<ProcessLogIntegrationModel[]>(() =>
             {
                 var apiCallPath = "/api/DocumentsIntegration/GetApproved";

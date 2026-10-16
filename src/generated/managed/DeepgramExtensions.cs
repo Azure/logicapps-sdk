@@ -13,64 +13,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<TranscribePostResponse> Transcribe(Expression<Func<string>> bodyurl, Expression<Func<modelInput>> model = null, Expression<Func<tierInput>> tier = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<redactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
-            var __workflow_tier = tier == null ? null : WorkflowExpression.Compile(tier);
-            WorkflowExpression.Validate(__workflow_tier, nameof(tier), required: false);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_detectLanguage = detectLanguage == null ? null : WorkflowExpression.Compile(detectLanguage);
-            WorkflowExpression.Validate(__workflow_detectLanguage, nameof(detectLanguage), required: false);
-            var __workflow_punctuate = punctuate == null ? null : WorkflowExpression.Compile(punctuate);
-            WorkflowExpression.Validate(__workflow_punctuate, nameof(punctuate), required: false);
-            var __workflow_profanityFilter = profanityFilter == null ? null : WorkflowExpression.Compile(profanityFilter);
-            WorkflowExpression.Validate(__workflow_profanityFilter, nameof(profanityFilter), required: false);
-            var __workflow_redact = redact == null ? null : WorkflowExpression.Compile(redact);
-            WorkflowExpression.Validate(__workflow_redact, nameof(redact), required: false);
-            var __workflow_diarize = diarize == null ? null : WorkflowExpression.Compile(diarize);
-            WorkflowExpression.Validate(__workflow_diarize, nameof(diarize), required: false);
-            var __workflow_diarizeVersion = diarizeVersion == null ? null : WorkflowExpression.Compile(diarizeVersion);
-            WorkflowExpression.Validate(__workflow_diarizeVersion, nameof(diarizeVersion), required: false);
-            var __workflow_smartFormat = smartFormat == null ? null : WorkflowExpression.Compile(smartFormat);
-            WorkflowExpression.Validate(__workflow_smartFormat, nameof(smartFormat), required: false);
-            var __workflow_fillerWords = fillerWords == null ? null : WorkflowExpression.Compile(fillerWords);
-            WorkflowExpression.Validate(__workflow_fillerWords, nameof(fillerWords), required: false);
-            var __workflow_multichannel = multichannel == null ? null : WorkflowExpression.Compile(multichannel);
-            WorkflowExpression.Validate(__workflow_multichannel, nameof(multichannel), required: false);
-            var __workflow_alternatives = alternatives == null ? null : WorkflowExpression.Compile(alternatives);
-            WorkflowExpression.Validate(__workflow_alternatives, nameof(alternatives), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_replace = replace == null ? null : WorkflowExpression.Compile(replace);
-            WorkflowExpression.Validate(__workflow_replace, nameof(replace), required: false);
-            var __workflow_callback = callback == null ? null : WorkflowExpression.Compile(callback);
-            WorkflowExpression.Validate(__workflow_callback, nameof(callback), required: false);
-            var __workflow_keywords = keywords == null ? null : WorkflowExpression.Compile(keywords);
-            WorkflowExpression.Validate(__workflow_keywords, nameof(keywords), required: false);
-            var __workflow_paragraphs = paragraphs == null ? null : WorkflowExpression.Compile(paragraphs);
-            WorkflowExpression.Validate(__workflow_paragraphs, nameof(paragraphs), required: false);
-            var __workflow_summarize = summarize == null ? null : WorkflowExpression.Compile(summarize);
-            WorkflowExpression.Validate(__workflow_summarize, nameof(summarize), required: false);
-            var __workflow_detectTopics = detectTopics == null ? null : WorkflowExpression.Compile(detectTopics);
-            WorkflowExpression.Validate(__workflow_detectTopics, nameof(detectTopics), required: false);
-            var __workflow_utterances = utterances == null ? null : WorkflowExpression.Compile(utterances);
-            WorkflowExpression.Validate(__workflow_utterances, nameof(utterances), required: false);
-            var __workflow_uttSplit = uttSplit == null ? null : WorkflowExpression.Compile(uttSplit);
-            WorkflowExpression.Validate(__workflow_uttSplit, nameof(uttSplit), required: false);
-            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
-            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: false);
-            var __workflow_numerals = numerals == null ? null : WorkflowExpression.Compile(numerals);
-            WorkflowExpression.Validate(__workflow_numerals, nameof(numerals), required: false);
-            var __workflow_ner = ner == null ? null : WorkflowExpression.Compile(ner);
-            WorkflowExpression.Validate(__workflow_ner, nameof(ner), required: false);
-            var __workflow_measurements = measurements == null ? null : WorkflowExpression.Compile(measurements);
-            WorkflowExpression.Validate(__workflow_measurements, nameof(measurements), required: false);
-            var __workflow_dictation = dictation == null ? null : WorkflowExpression.Compile(dictation);
-            WorkflowExpression.Validate(__workflow_dictation, nameof(dictation), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_tier = WorkflowExpression.Compile(tier, nameof(tier), required: false);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_detectLanguage = WorkflowExpression.Compile(detectLanguage, nameof(detectLanguage), required: false);
+            var __workflow_punctuate = WorkflowExpression.Compile(punctuate, nameof(punctuate), required: false);
+            var __workflow_profanityFilter = WorkflowExpression.Compile(profanityFilter, nameof(profanityFilter), required: false);
+            var __workflow_redact = WorkflowExpression.Compile(redact, nameof(redact), required: false);
+            var __workflow_diarize = WorkflowExpression.Compile(diarize, nameof(diarize), required: false);
+            var __workflow_diarizeVersion = WorkflowExpression.Compile(diarizeVersion, nameof(diarizeVersion), required: false);
+            var __workflow_smartFormat = WorkflowExpression.Compile(smartFormat, nameof(smartFormat), required: false);
+            var __workflow_fillerWords = WorkflowExpression.Compile(fillerWords, nameof(fillerWords), required: false);
+            var __workflow_multichannel = WorkflowExpression.Compile(multichannel, nameof(multichannel), required: false);
+            var __workflow_alternatives = WorkflowExpression.Compile(alternatives, nameof(alternatives), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_replace = WorkflowExpression.Compile(replace, nameof(replace), required: false);
+            var __workflow_callback = WorkflowExpression.Compile(callback, nameof(callback), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_paragraphs = WorkflowExpression.Compile(paragraphs, nameof(paragraphs), required: false);
+            var __workflow_summarize = WorkflowExpression.Compile(summarize, nameof(summarize), required: false);
+            var __workflow_detectTopics = WorkflowExpression.Compile(detectTopics, nameof(detectTopics), required: false);
+            var __workflow_utterances = WorkflowExpression.Compile(utterances, nameof(utterances), required: false);
+            var __workflow_uttSplit = WorkflowExpression.Compile(uttSplit, nameof(uttSplit), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            var __workflow_numerals = WorkflowExpression.Compile(numerals, nameof(numerals), required: false);
+            var __workflow_ner = WorkflowExpression.Compile(ner, nameof(ner), required: false);
+            var __workflow_measurements = WorkflowExpression.Compile(measurements, nameof(measurements), required: false);
+            var __workflow_dictation = WorkflowExpression.Compile(dictation, nameof(dictation), required: false);
             return new DeferredBodyAction<TranscribePostResponse>(() =>
             {
                 var apiCallPath = "/listen";
@@ -157,8 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ProjectGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -171,8 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<JToken> ProjectDelete(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -185,10 +154,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<string>> bodyname)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ProjectPatchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -210,16 +177,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestsGetResponse> RequestsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> limit = null, Expression<Func<statusInput>> status = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             return new DeferredBodyAction<RequestsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -240,10 +202,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<RequestGetResponse> RequestGet(Expression<Func<string>> projectId, Expression<Func<string>> requestId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<RequestGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -256,50 +216,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<UsageGetResponse> UsageGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> accessor = null, Expression<Func<string>> tag = null, Expression<Func<methodInput>> method = null, Expression<Func<string>> model = null, Expression<Func<bool>> multichannel = null, Expression<Func<bool>> interimResults = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> utterances = null, Expression<Func<bool>> replace = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<bool>> keywords = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> diarize = null, Expression<Func<bool>> search = null, Expression<Func<bool>> redact = null, Expression<Func<bool>> alternatives = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> smartFormat = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_accessor = accessor == null ? null : WorkflowExpression.Compile(accessor);
-            WorkflowExpression.Validate(__workflow_accessor, nameof(accessor), required: false);
-            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
-            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: false);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: false);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
-            var __workflow_multichannel = multichannel == null ? null : WorkflowExpression.Compile(multichannel);
-            WorkflowExpression.Validate(__workflow_multichannel, nameof(multichannel), required: false);
-            var __workflow_interimResults = interimResults == null ? null : WorkflowExpression.Compile(interimResults);
-            WorkflowExpression.Validate(__workflow_interimResults, nameof(interimResults), required: false);
-            var __workflow_punctuate = punctuate == null ? null : WorkflowExpression.Compile(punctuate);
-            WorkflowExpression.Validate(__workflow_punctuate, nameof(punctuate), required: false);
-            var __workflow_ner = ner == null ? null : WorkflowExpression.Compile(ner);
-            WorkflowExpression.Validate(__workflow_ner, nameof(ner), required: false);
-            var __workflow_utterances = utterances == null ? null : WorkflowExpression.Compile(utterances);
-            WorkflowExpression.Validate(__workflow_utterances, nameof(utterances), required: false);
-            var __workflow_replace = replace == null ? null : WorkflowExpression.Compile(replace);
-            WorkflowExpression.Validate(__workflow_replace, nameof(replace), required: false);
-            var __workflow_profanityFilter = profanityFilter == null ? null : WorkflowExpression.Compile(profanityFilter);
-            WorkflowExpression.Validate(__workflow_profanityFilter, nameof(profanityFilter), required: false);
-            var __workflow_keywords = keywords == null ? null : WorkflowExpression.Compile(keywords);
-            WorkflowExpression.Validate(__workflow_keywords, nameof(keywords), required: false);
-            var __workflow_detectTopics = detectTopics == null ? null : WorkflowExpression.Compile(detectTopics);
-            WorkflowExpression.Validate(__workflow_detectTopics, nameof(detectTopics), required: false);
-            var __workflow_diarize = diarize == null ? null : WorkflowExpression.Compile(diarize);
-            WorkflowExpression.Validate(__workflow_diarize, nameof(diarize), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_redact = redact == null ? null : WorkflowExpression.Compile(redact);
-            WorkflowExpression.Validate(__workflow_redact, nameof(redact), required: false);
-            var __workflow_alternatives = alternatives == null ? null : WorkflowExpression.Compile(alternatives);
-            WorkflowExpression.Validate(__workflow_alternatives, nameof(alternatives), required: false);
-            var __workflow_numerals = numerals == null ? null : WorkflowExpression.Compile(numerals);
-            WorkflowExpression.Validate(__workflow_numerals, nameof(numerals), required: false);
-            var __workflow_smartFormat = smartFormat == null ? null : WorkflowExpression.Compile(smartFormat);
-            WorkflowExpression.Validate(__workflow_smartFormat, nameof(smartFormat), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_accessor = WorkflowExpression.Compile(accessor, nameof(accessor), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_multichannel = WorkflowExpression.Compile(multichannel, nameof(multichannel), required: false);
+            var __workflow_interimResults = WorkflowExpression.Compile(interimResults, nameof(interimResults), required: false);
+            var __workflow_punctuate = WorkflowExpression.Compile(punctuate, nameof(punctuate), required: false);
+            var __workflow_ner = WorkflowExpression.Compile(ner, nameof(ner), required: false);
+            var __workflow_utterances = WorkflowExpression.Compile(utterances, nameof(utterances), required: false);
+            var __workflow_replace = WorkflowExpression.Compile(replace, nameof(replace), required: false);
+            var __workflow_profanityFilter = WorkflowExpression.Compile(profanityFilter, nameof(profanityFilter), required: false);
+            var __workflow_keywords = WorkflowExpression.Compile(keywords, nameof(keywords), required: false);
+            var __workflow_detectTopics = WorkflowExpression.Compile(detectTopics, nameof(detectTopics), required: false);
+            var __workflow_diarize = WorkflowExpression.Compile(diarize, nameof(diarize), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_redact = WorkflowExpression.Compile(redact, nameof(redact), required: false);
+            var __workflow_alternatives = WorkflowExpression.Compile(alternatives, nameof(alternatives), required: false);
+            var __workflow_numerals = WorkflowExpression.Compile(numerals, nameof(numerals), required: false);
+            var __workflow_smartFormat = WorkflowExpression.Compile(smartFormat, nameof(smartFormat), required: false);
             return new DeferredBodyAction<UsageGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -354,12 +292,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<FieldsGetResponse> FieldsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             return new DeferredBodyAction<FieldsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));

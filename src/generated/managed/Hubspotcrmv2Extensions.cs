@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfCompaniesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/companies/batch/archive";
@@ -40,18 +39,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListResponse> List(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<ListResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/companies";
@@ -76,8 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateResponse> Create(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<CreateResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/companies";
@@ -111,18 +103,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadResponse> Read(Expression<Func<string>> companyId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<ReadResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyId, 1));
@@ -145,8 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive(Expression<Func<string>> companyId)
         {
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyId, 1));
@@ -159,10 +144,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateResponse> Update(Expression<Func<string>> companyId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<UpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyId, 1));
@@ -192,10 +175,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse> MergeTwoCompaniesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoCompaniesWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/companies/merge";
@@ -227,10 +208,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/companies/gdpr-delete";
@@ -262,18 +241,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse> PostCrmV3ObjectsCompaniesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsCompaniesSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/companies/search";
@@ -329,8 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfContactsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/contacts/batch/archive";
@@ -356,18 +328,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List16Response> List16(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List16Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/contacts";
@@ -392,8 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create17Response> Create17(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create17Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/contacts";
@@ -427,16 +392,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read18Response> Read18(Expression<Func<string>> contactId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<Read18Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -457,8 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive19(Expression<Func<string>> contactId)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -471,8 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update20Response> Update20(Expression<Func<string>> contactId)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<Update20Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));
@@ -500,10 +458,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse> MergeTwoContactsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoContactsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/contacts/merge";
@@ -535,10 +491,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete22(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/contacts/gdpr-delete";
@@ -570,18 +524,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse> PostCrmV3ObjectsContactsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsContactsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/contacts/search";
@@ -637,8 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfDealsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/deals/batch/archive";
@@ -664,18 +611,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List28Response> List28(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List28Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/deals";
@@ -700,8 +641,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create29Response> Create29(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create29Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/deals";
@@ -735,18 +675,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read30Response> Read30(Expression<Func<string>> dealId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_dealId = dealId == null ? null : WorkflowExpression.Compile(dealId);
-            WorkflowExpression.Validate(__workflow_dealId, nameof(dealId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read30Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dealId, 1));
@@ -769,8 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive31(Expression<Func<string>> dealId)
         {
-            var __workflow_dealId = dealId == null ? null : WorkflowExpression.Compile(dealId);
-            WorkflowExpression.Validate(__workflow_dealId, nameof(dealId), required: true);
+            var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dealId, 1));
@@ -783,10 +716,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update32Response> Update32(Expression<Func<string>> dealId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_dealId = dealId == null ? null : WorkflowExpression.Compile(dealId);
-            WorkflowExpression.Validate(__workflow_dealId, nameof(dealId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_dealId = WorkflowExpression.Compile(dealId, nameof(dealId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update32Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dealId, 1));
@@ -816,10 +747,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse> MergeTwoDealsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoDealsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/deals/merge";
@@ -851,10 +780,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete34(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/deals/gdpr-delete";
@@ -886,18 +813,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse> PostCrmV3ObjectsDealsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsDealsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/deals/search";
@@ -953,8 +874,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfFeesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/fees/batch/archive";
@@ -980,18 +900,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read40Response> Read40(Expression<Func<string>> feeId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_feeId = feeId == null ? null : WorkflowExpression.Compile(feeId);
-            WorkflowExpression.Validate(__workflow_feeId, nameof(feeId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_feeId = WorkflowExpression.Compile(feeId, nameof(feeId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read40Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_feeId, 1));
@@ -1014,8 +928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive41(Expression<Func<string>> feeId)
         {
-            var __workflow_feeId = feeId == null ? null : WorkflowExpression.Compile(feeId);
-            WorkflowExpression.Validate(__workflow_feeId, nameof(feeId), required: true);
+            var __workflow_feeId = WorkflowExpression.Compile(feeId, nameof(feeId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_feeId, 1));
@@ -1028,10 +941,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update42Response> Update42(Expression<Func<string>> feeId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_feeId = feeId == null ? null : WorkflowExpression.Compile(feeId);
-            WorkflowExpression.Validate(__workflow_feeId, nameof(feeId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_feeId = WorkflowExpression.Compile(feeId, nameof(feeId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update42Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_feeId, 1));
@@ -1061,18 +972,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List43Response> List43(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List43Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/fees";
@@ -1097,8 +1002,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create44Response> Create44(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create44Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/fees";
@@ -1132,10 +1036,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse> MergeTwoFeesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoFeesWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/fees/merge";
@@ -1167,10 +1069,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete46(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/fees/gdpr-delete";
@@ -1202,18 +1102,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse> PostCrmV3ObjectsFeesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsFeesSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/fees/search";
@@ -1269,8 +1163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfGoalTargetsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/batch/archive";
@@ -1296,18 +1189,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read52Response> Read52(Expression<Func<string>> goalTargetId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_goalTargetId = goalTargetId == null ? null : WorkflowExpression.Compile(goalTargetId);
-            WorkflowExpression.Validate(__workflow_goalTargetId, nameof(goalTargetId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_goalTargetId = WorkflowExpression.Compile(goalTargetId, nameof(goalTargetId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read52Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalTargetId, 1));
@@ -1330,8 +1217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive53(Expression<Func<string>> goalTargetId)
         {
-            var __workflow_goalTargetId = goalTargetId == null ? null : WorkflowExpression.Compile(goalTargetId);
-            WorkflowExpression.Validate(__workflow_goalTargetId, nameof(goalTargetId), required: true);
+            var __workflow_goalTargetId = WorkflowExpression.Compile(goalTargetId, nameof(goalTargetId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalTargetId, 1));
@@ -1344,10 +1230,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update54Response> Update54(Expression<Func<string>> goalTargetId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_goalTargetId = goalTargetId == null ? null : WorkflowExpression.Compile(goalTargetId);
-            WorkflowExpression.Validate(__workflow_goalTargetId, nameof(goalTargetId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_goalTargetId = WorkflowExpression.Compile(goalTargetId, nameof(goalTargetId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update54Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_goalTargetId, 1));
@@ -1377,18 +1261,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List55Response> List55(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List55Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets";
@@ -1413,8 +1291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create56Response> Create56(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create56Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets";
@@ -1448,10 +1325,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse> MergeTwoGoalTargetsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoGoalTargetsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/merge";
@@ -1483,10 +1358,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete58(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/gdpr-delete";
@@ -1518,18 +1391,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse> PostCrmV3ObjectsGoalTargetsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsGoalTargetsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/goal_targets/search";
@@ -1585,8 +1452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfLineItemsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/line_items/batch/archive";
@@ -1612,18 +1478,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List64Response> List64(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List64Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/line_items";
@@ -1648,8 +1508,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create65Response> Create65(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create65Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/line_items";
@@ -1683,18 +1542,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read66Response> Read66(Expression<Func<string>> lineItemId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_lineItemId = lineItemId == null ? null : WorkflowExpression.Compile(lineItemId);
-            WorkflowExpression.Validate(__workflow_lineItemId, nameof(lineItemId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read66Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lineItemId, 1));
@@ -1717,8 +1570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive67(Expression<Func<string>> lineItemId)
         {
-            var __workflow_lineItemId = lineItemId == null ? null : WorkflowExpression.Compile(lineItemId);
-            WorkflowExpression.Validate(__workflow_lineItemId, nameof(lineItemId), required: true);
+            var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lineItemId, 1));
@@ -1731,10 +1583,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update68Response> Update68(Expression<Func<string>> lineItemId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_lineItemId = lineItemId == null ? null : WorkflowExpression.Compile(lineItemId);
-            WorkflowExpression.Validate(__workflow_lineItemId, nameof(lineItemId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_lineItemId = WorkflowExpression.Compile(lineItemId, nameof(lineItemId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update68Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_lineItemId, 1));
@@ -1764,10 +1614,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse> MergeTwoLineItemsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoLineItemsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/line_items/merge";
@@ -1799,10 +1647,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete70(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/line_items/gdpr-delete";
@@ -1834,18 +1680,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse> PostCrmV3ObjectsLineItemsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsLineItemsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/line_items/search";
@@ -1901,14 +1741,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetAPageOfOwnersResponse> GetAPageOfOwners(Expression<Func<string>> email, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<GetAPageOfOwnersResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/owners/";
@@ -1928,12 +1764,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> ReadAnOwnerByGivenidOruserid(Expression<Func<string>> ownerId, Expression<Func<string>> idProperty = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_ownerId = ownerId == null ? null : WorkflowExpression.Compile(ownerId);
-            WorkflowExpression.Validate(__workflow_ownerId, nameof(ownerId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_ownerId = WorkflowExpression.Compile(ownerId, nameof(ownerId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<ReadAnOwnerByGivenidOruseridResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/owners/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ownerId, 1));
@@ -1950,8 +1783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfProductsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/products/batch/archive";
@@ -1977,18 +1809,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List78Response> List78(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List78Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/products";
@@ -2013,8 +1839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create79Response> Create79(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create79Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/products";
@@ -2048,18 +1873,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read80Response> Read80(Expression<Func<string>> productId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
-            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read80Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));
@@ -2082,8 +1901,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive81(Expression<Func<string>> productId)
         {
-            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
-            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: true);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));
@@ -2096,10 +1914,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update82Response> Update82(Expression<Func<string>> productId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
-            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update82Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));
@@ -2129,10 +1945,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse> MergeTwoProductsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoProductsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/products/merge";
@@ -2164,10 +1978,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDelete84(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/products/gdpr-delete";
@@ -2199,18 +2011,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse> PostCrmV3ObjectsProductsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsProductsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/products/search";
@@ -2266,10 +2072,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfObjectsById(Expression<Func<string>> objectType, Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1));
@@ -2295,20 +2099,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ReadObjectResponse> ReadObject(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<ReadObjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectId, 1));
@@ -2331,10 +2128,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectId, 1));
@@ -2347,12 +2142,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateObjectIdResponse> UpdateObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<UpdateObjectIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectId, 1));
@@ -2382,20 +2174,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListObjectResponse> ListObject(Expression<Func<string>> objectType, Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<ListObjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1));
@@ -2420,10 +2205,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateObjectIdResponse> CreateObjectId(Expression<Func<string>> objectType, Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<CreateObjectIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1));
@@ -2457,12 +2240,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> MergeTwoObjectsWithSameType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoObjectsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/merge", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1));
@@ -2494,12 +2274,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteObjectType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/gdpr-delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1));
@@ -2531,20 +2308,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> PostCrmV3ObjectsObjectTypeSearch(Expression<Func<string>> objectType, Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsObjectTypeSearchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1));
@@ -2600,8 +2370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfDiscountsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/discounts/batch/archive";
@@ -2627,18 +2396,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read16Response> Read16(Expression<Func<string>> discountId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_discountId = discountId == null ? null : WorkflowExpression.Compile(discountId);
-            WorkflowExpression.Validate(__workflow_discountId, nameof(discountId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_discountId = WorkflowExpression.Compile(discountId, nameof(discountId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read16Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_discountId, 1));
@@ -2661,8 +2424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive17(Expression<Func<string>> discountId)
         {
-            var __workflow_discountId = discountId == null ? null : WorkflowExpression.Compile(discountId);
-            WorkflowExpression.Validate(__workflow_discountId, nameof(discountId), required: true);
+            var __workflow_discountId = WorkflowExpression.Compile(discountId, nameof(discountId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_discountId, 1));
@@ -2675,10 +2437,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update18Response> Update18(Expression<Func<string>> discountId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_discountId = discountId == null ? null : WorkflowExpression.Compile(discountId);
-            WorkflowExpression.Validate(__workflow_discountId, nameof(discountId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_discountId = WorkflowExpression.Compile(discountId, nameof(discountId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update18Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_discountId, 1));
@@ -2708,18 +2468,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List19Response> List19(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List19Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/discounts";
@@ -2744,10 +2498,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create20Response> Create20(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null, Expression<Func<string>> bodypropertiesnostrudcf = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
-            var __workflow_bodypropertiesnostrudcf = bodypropertiesnostrudcf == null ? null : WorkflowExpression.Compile(bodypropertiesnostrudcf);
-            WorkflowExpression.Validate(__workflow_bodypropertiesnostrudcf, nameof(bodypropertiesnostrudcf), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodypropertiesnostrudcf = WorkflowExpression.Compile(bodypropertiesnostrudcf, nameof(bodypropertiesnostrudcf), required: false);
             return new DeferredBodyAction<Create20Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/discounts";
@@ -2787,10 +2539,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse> MergeTwoDiscountsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoDiscountsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/discounts/merge";
@@ -2822,10 +2572,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteDiscounts(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/discounts/gdpr-delete";
@@ -2857,18 +2605,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse> PostCrmV3ObjectsDiscountsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsDiscountsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/discounts/search";
@@ -2924,8 +2666,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfFeedbackSubmissionsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/batch/archive";
@@ -2951,18 +2692,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read28Response> Read28(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_feedbackSubmissionId = feedbackSubmissionId == null ? null : WorkflowExpression.Compile(feedbackSubmissionId);
-            WorkflowExpression.Validate(__workflow_feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_feedbackSubmissionId = WorkflowExpression.Compile(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read28Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_feedbackSubmissionId, 1));
@@ -2985,8 +2720,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive29(Expression<Func<string>> feedbackSubmissionId)
         {
-            var __workflow_feedbackSubmissionId = feedbackSubmissionId == null ? null : WorkflowExpression.Compile(feedbackSubmissionId);
-            WorkflowExpression.Validate(__workflow_feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            var __workflow_feedbackSubmissionId = WorkflowExpression.Compile(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_feedbackSubmissionId, 1));
@@ -2999,10 +2733,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update30Response> Update30(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_feedbackSubmissionId = feedbackSubmissionId == null ? null : WorkflowExpression.Compile(feedbackSubmissionId);
-            WorkflowExpression.Validate(__workflow_feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_feedbackSubmissionId = WorkflowExpression.Compile(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update30Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_feedbackSubmissionId, 1));
@@ -3032,18 +2764,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List31Response> List31(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List31Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions";
@@ -3068,8 +2794,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create32Response> Create32(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create32Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions";
@@ -3103,10 +2828,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse> MergeTwoFeedbackSubmissionsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/merge";
@@ -3138,10 +2861,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteFeedback(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/gdpr-delete";
@@ -3173,18 +2894,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse> PostCrmV3ObjectsFeedbackSubmissionsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/feedback_submissions/search";
@@ -3240,8 +2955,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfQuotesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/quotes/batch/archive";
@@ -3267,18 +2981,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List40Response> List40(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List40Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/quotes";
@@ -3303,10 +3011,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create41Response> Create41(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null, Expression<Func<string>> bodypropertieselit26 = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
-            var __workflow_bodypropertieselit26 = bodypropertieselit26 == null ? null : WorkflowExpression.Compile(bodypropertieselit26);
-            WorkflowExpression.Validate(__workflow_bodypropertieselit26, nameof(bodypropertieselit26), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodypropertieselit26 = WorkflowExpression.Compile(bodypropertieselit26, nameof(bodypropertieselit26), required: false);
             return new DeferredBodyAction<Create41Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/quotes";
@@ -3346,18 +3052,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read42Response> Read42(Expression<Func<string>> quoteId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_quoteId = quoteId == null ? null : WorkflowExpression.Compile(quoteId);
-            WorkflowExpression.Validate(__workflow_quoteId, nameof(quoteId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_quoteId = WorkflowExpression.Compile(quoteId, nameof(quoteId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read42Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_quoteId, 1));
@@ -3380,8 +3080,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive43(Expression<Func<string>> quoteId)
         {
-            var __workflow_quoteId = quoteId == null ? null : WorkflowExpression.Compile(quoteId);
-            WorkflowExpression.Validate(__workflow_quoteId, nameof(quoteId), required: true);
+            var __workflow_quoteId = WorkflowExpression.Compile(quoteId, nameof(quoteId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_quoteId, 1));
@@ -3394,10 +3093,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update44Response> Update44(Expression<Func<string>> quoteId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_quoteId = quoteId == null ? null : WorkflowExpression.Compile(quoteId);
-            WorkflowExpression.Validate(__workflow_quoteId, nameof(quoteId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_quoteId = WorkflowExpression.Compile(quoteId, nameof(quoteId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update44Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_quoteId, 1));
@@ -3427,10 +3124,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse> MergeTwoQuotesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoQuotesWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/quotes/merge";
@@ -3462,10 +3157,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteQuotes(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/quotes/gdpr-delete";
@@ -3497,18 +3190,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse> PostCrmV3ObjectsQuotesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsQuotesSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/quotes/search";
@@ -3564,8 +3251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfTaxesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/taxes/batch/archive";
@@ -3591,18 +3277,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List52Response> List52(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List52Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/taxes";
@@ -3627,8 +3307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create53Response> Create53(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create53Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/taxes";
@@ -3662,18 +3341,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read54Response> Read54(Expression<Func<string>> taxId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_taxId = taxId == null ? null : WorkflowExpression.Compile(taxId);
-            WorkflowExpression.Validate(__workflow_taxId, nameof(taxId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_taxId = WorkflowExpression.Compile(taxId, nameof(taxId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read54Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taxId, 1));
@@ -3696,8 +3369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive55(Expression<Func<string>> taxId)
         {
-            var __workflow_taxId = taxId == null ? null : WorkflowExpression.Compile(taxId);
-            WorkflowExpression.Validate(__workflow_taxId, nameof(taxId), required: true);
+            var __workflow_taxId = WorkflowExpression.Compile(taxId, nameof(taxId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taxId, 1));
@@ -3710,10 +3382,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update56Response> Update56(Expression<Func<string>> taxId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_taxId = taxId == null ? null : WorkflowExpression.Compile(taxId);
-            WorkflowExpression.Validate(__workflow_taxId, nameof(taxId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_taxId = WorkflowExpression.Compile(taxId, nameof(taxId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update56Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taxId, 1));
@@ -3743,10 +3413,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse> MergeTwoTaxesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoTaxesWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/taxes/merge";
@@ -3778,10 +3446,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteTaxes(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/taxes/gdpr-delete";
@@ -3813,18 +3479,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse> PostCrmV3ObjectsTaxesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsTaxesSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/taxes/search";
@@ -3880,8 +3540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> ArchiveABatchOfTicketsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
         {
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/tickets/batch/archive";
@@ -3907,18 +3566,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Read64Response> Read64(Expression<Func<string>> ticketId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_ticketId = ticketId == null ? null : WorkflowExpression.Compile(ticketId);
-            WorkflowExpression.Validate(__workflow_ticketId, nameof(ticketId), required: true);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Read64Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
@@ -3941,8 +3594,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Archive65(Expression<Func<string>> ticketId)
         {
-            var __workflow_ticketId = ticketId == null ? null : WorkflowExpression.Compile(ticketId);
-            WorkflowExpression.Validate(__workflow_ticketId, nameof(ticketId), required: true);
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
@@ -3955,10 +3607,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Update66Response> Update66(Expression<Func<string>> ticketId, Expression<Func<string>> idProperty = null)
         {
-            var __workflow_ticketId = ticketId == null ? null : WorkflowExpression.Compile(ticketId);
-            WorkflowExpression.Validate(__workflow_ticketId, nameof(ticketId), required: true);
-            var __workflow_idProperty = idProperty == null ? null : WorkflowExpression.Compile(idProperty);
-            WorkflowExpression.Validate(__workflow_idProperty, nameof(idProperty), required: false);
+            var __workflow_ticketId = WorkflowExpression.Compile(ticketId, nameof(ticketId), required: true);
+            var __workflow_idProperty = WorkflowExpression.Compile(idProperty, nameof(idProperty), required: false);
             return new DeferredBodyAction<Update66Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ticketId, 1));
@@ -3988,18 +3638,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<List67Response> List67(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_properties = properties == null ? null : WorkflowExpression.Compile(properties);
-            WorkflowExpression.Validate(__workflow_properties, nameof(properties), required: false);
-            var __workflow_propertiesWithHistory = propertiesWithHistory == null ? null : WorkflowExpression.Compile(propertiesWithHistory);
-            WorkflowExpression.Validate(__workflow_propertiesWithHistory, nameof(propertiesWithHistory), required: false);
-            var __workflow_associations = associations == null ? null : WorkflowExpression.Compile(associations);
-            WorkflowExpression.Validate(__workflow_associations, nameof(associations), required: false);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_properties = WorkflowExpression.Compile(properties, nameof(properties), required: false);
+            var __workflow_propertiesWithHistory = WorkflowExpression.Compile(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            var __workflow_associations = WorkflowExpression.Compile(associations, nameof(associations), required: false);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<List67Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/tickets";
@@ -4024,8 +3668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create68Response> Create68(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
         {
-            var __workflow_bodyassociations = bodyassociations == null ? null : WorkflowExpression.Compile(bodyassociations);
-            WorkflowExpression.Validate(__workflow_bodyassociations, nameof(bodyassociations), required: false);
+            var __workflow_bodyassociations = WorkflowExpression.Compile(bodyassociations, nameof(bodyassociations), required: false);
             return new DeferredBodyAction<Create68Response>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/tickets";
@@ -4059,10 +3702,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse> MergeTwoTicketsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
         {
-            var __workflow_bodyobjectIdToMerge = bodyobjectIdToMerge == null ? null : WorkflowExpression.Compile(bodyobjectIdToMerge);
-            WorkflowExpression.Validate(__workflow_bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
-            var __workflow_bodyprimaryObjectId = bodyprimaryObjectId == null ? null : WorkflowExpression.Compile(bodyprimaryObjectId);
-            WorkflowExpression.Validate(__workflow_bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            var __workflow_bodyobjectIdToMerge = WorkflowExpression.Compile(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            var __workflow_bodyprimaryObjectId = WorkflowExpression.Compile(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
             return new DeferredBodyAction<MergeTwoTicketsWithSameTypeResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/tickets/merge";
@@ -4094,10 +3735,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> GdprDeleteTickets(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
         {
-            var __workflow_bodyobjectId = bodyobjectId == null ? null : WorkflowExpression.Compile(bodyobjectId);
-            WorkflowExpression.Validate(__workflow_bodyobjectId, nameof(bodyobjectId), required: false);
-            var __workflow_bodyidProperty = bodyidProperty == null ? null : WorkflowExpression.Compile(bodyidProperty);
-            WorkflowExpression.Validate(__workflow_bodyidProperty, nameof(bodyidProperty), required: false);
+            var __workflow_bodyobjectId = WorkflowExpression.Compile(bodyobjectId, nameof(bodyobjectId), required: false);
+            var __workflow_bodyidProperty = WorkflowExpression.Compile(bodyidProperty, nameof(bodyidProperty), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/tickets/gdpr-delete";
@@ -4129,18 +3768,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse> PostCrmV3ObjectsTicketsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
         {
-            var __workflow_bodyafter = bodyafter == null ? null : WorkflowExpression.Compile(bodyafter);
-            WorkflowExpression.Validate(__workflow_bodyafter, nameof(bodyafter), required: false);
-            var __workflow_bodyfilterGroups = bodyfilterGroups == null ? null : WorkflowExpression.Compile(bodyfilterGroups);
-            WorkflowExpression.Validate(__workflow_bodyfilterGroups, nameof(bodyfilterGroups), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
-            var __workflow_bodyproperties = bodyproperties == null ? null : WorkflowExpression.Compile(bodyproperties);
-            WorkflowExpression.Validate(__workflow_bodyproperties, nameof(bodyproperties), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodyafter = WorkflowExpression.Compile(bodyafter, nameof(bodyafter), required: false);
+            var __workflow_bodyfilterGroups = WorkflowExpression.Compile(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyproperties = WorkflowExpression.Compile(bodyproperties, nameof(bodyproperties), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
             return new DeferredBodyAction<PostCrmV3ObjectsTicketsSearchResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/objects/tickets/search";
@@ -4196,10 +3829,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationTypesResponse> ListAssociationTypes(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType)
         {
-            var __workflow_fromObjectType = fromObjectType == null ? null : WorkflowExpression.Compile(fromObjectType);
-            WorkflowExpression.Validate(__workflow_fromObjectType, nameof(fromObjectType), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
             return new DeferredBodyAction<ListAssociationTypesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/associations/{0}/{1}/types", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1));
@@ -4212,12 +3843,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteSpecificLabels(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem2[]>> bodyinputs = null)
         {
-            var __workflow_fromObjectType = fromObjectType == null ? null : WorkflowExpression.Compile(fromObjectType);
-            WorkflowExpression.Validate(__workflow_fromObjectType, nameof(fromObjectType), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/labels/archive", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1));
@@ -4243,12 +3871,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem22[]>> bodyinputs = null)
         {
-            var __workflow_fromObjectType = fromObjectType == null ? null : WorkflowExpression.Compile(fromObjectType);
-            WorkflowExpression.Validate(__workflow_fromObjectType, nameof(fromObjectType), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1));
@@ -4274,12 +3899,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultAssociationsResponse> CreateDefaultAssociations(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem222[]>> bodyinputs = null)
         {
-            var __workflow_fromObjectType = fromObjectType == null ? null : WorkflowExpression.Compile(fromObjectType);
-            WorkflowExpression.Validate(__workflow_fromObjectType, nameof(fromObjectType), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
-            var __workflow_bodyinputs = bodyinputs == null ? null : WorkflowExpression.Compile(bodyinputs);
-            WorkflowExpression.Validate(__workflow_bodyinputs, nameof(bodyinputs), required: false);
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_bodyinputs = WorkflowExpression.Compile(bodyinputs, nameof(bodyinputs), required: false);
             return new DeferredBodyAction<CreateDefaultAssociationsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/associate/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1));
@@ -4305,14 +3927,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> Delete6(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
-            var __workflow_toObjectId = toObjectId == null ? null : WorkflowExpression.Compile(toObjectId);
-            WorkflowExpression.Validate(__workflow_toObjectId, nameof(toObjectId), required: true);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_toObjectId = WorkflowExpression.Compile(toObjectId, nameof(toObjectId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectId, 1));
@@ -4325,16 +3943,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<Create7Response> Create7(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
-            var __workflow_toObjectId = toObjectId == null ? null : WorkflowExpression.Compile(toObjectId);
-            WorkflowExpression.Validate(__workflow_toObjectId, nameof(toObjectId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_toObjectId = WorkflowExpression.Compile(toObjectId, nameof(toObjectId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<Create7Response>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectId, 1));
@@ -4348,14 +3961,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateDefaultResponse> CreateDefault(Expression<Func<string>> fromObjectType, Expression<Func<string>> fromObjectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
         {
-            var __workflow_fromObjectType = fromObjectType == null ? null : WorkflowExpression.Compile(fromObjectType);
-            WorkflowExpression.Validate(__workflow_fromObjectType, nameof(fromObjectType), required: true);
-            var __workflow_fromObjectId = fromObjectId == null ? null : WorkflowExpression.Compile(fromObjectId);
-            WorkflowExpression.Validate(__workflow_fromObjectId, nameof(fromObjectId), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
-            var __workflow_toObjectId = toObjectId == null ? null : WorkflowExpression.Compile(toObjectId);
-            WorkflowExpression.Validate(__workflow_toObjectId, nameof(toObjectId), required: true);
+            var __workflow_fromObjectType = WorkflowExpression.Compile(fromObjectType, nameof(fromObjectType), required: true);
+            var __workflow_fromObjectId = WorkflowExpression.Compile(fromObjectId, nameof(fromObjectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_toObjectId = WorkflowExpression.Compile(toObjectId, nameof(toObjectId), required: true);
             return new DeferredBodyAction<CreateDefaultResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fromObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectId, 1));
@@ -4368,16 +3977,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<ListAssociationsResponse> ListAssociations(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
         {
-            var __workflow_objectType = objectType == null ? null : WorkflowExpression.Compile(objectType);
-            WorkflowExpression.Validate(__workflow_objectType, nameof(objectType), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
-            var __workflow_toObjectType = toObjectType == null ? null : WorkflowExpression.Compile(toObjectType);
-            WorkflowExpression.Validate(__workflow_toObjectType, nameof(toObjectType), required: true);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_objectType = WorkflowExpression.Compile(objectType, nameof(objectType), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_toObjectType = WorkflowExpression.Compile(toObjectType, nameof(toObjectType), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<ListAssociationsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_toObjectType, 1));
@@ -4394,8 +3998,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetAllCardsResponse> GetAllCards(Expression<Func<string>> appId)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
             return new DeferredBodyAction<GetAllCardsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
@@ -4408,22 +4011,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CreateANewCardResponse> CreateANewCard(Expression<Func<string>> appId, Expression<Func<string[]>> bodyactionsbaseUrls = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_bodyactionsbaseUrls = bodyactionsbaseUrls == null ? null : WorkflowExpression.Compile(bodyactionsbaseUrls);
-            WorkflowExpression.Validate(__workflow_bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
-            var __workflow_bodydisplayproperties = bodydisplayproperties == null ? null : WorkflowExpression.Compile(bodydisplayproperties);
-            WorkflowExpression.Validate(__workflow_bodydisplayproperties, nameof(bodydisplayproperties), required: false);
-            var __workflow_bodyfetchobjectTypes = bodyfetchobjectTypes == null ? null : WorkflowExpression.Compile(bodyfetchobjectTypes);
-            WorkflowExpression.Validate(__workflow_bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
-            var __workflow_bodyfetchtargetUrl = bodyfetchtargetUrl == null ? null : WorkflowExpression.Compile(bodyfetchtargetUrl);
-            WorkflowExpression.Validate(__workflow_bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
-            var __workflow_bodyfetchcardType = bodyfetchcardType == null ? null : WorkflowExpression.Compile(bodyfetchcardType);
-            WorkflowExpression.Validate(__workflow_bodyfetchcardType, nameof(bodyfetchcardType), required: false);
-            var __workflow_bodyfetchserverlessFunction = bodyfetchserverlessFunction == null ? null : WorkflowExpression.Compile(bodyfetchserverlessFunction);
-            WorkflowExpression.Validate(__workflow_bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_bodyactionsbaseUrls = WorkflowExpression.Compile(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
+            var __workflow_bodydisplayproperties = WorkflowExpression.Compile(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
+            var __workflow_bodyfetchobjectTypes = WorkflowExpression.Compile(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
+            var __workflow_bodyfetchtargetUrl = WorkflowExpression.Compile(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
+            var __workflow_bodyfetchcardType = WorkflowExpression.Compile(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
+            var __workflow_bodyfetchserverlessFunction = WorkflowExpression.Compile(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<CreateANewCardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1));
@@ -4509,10 +4104,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetACardResponse> GetACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<GetACardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -4525,10 +4118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -4541,24 +4132,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<UpdateACardResponse> UpdateACard(Expression<Func<string>> appId, Expression<Func<string>> cardId, Expression<Func<string>> bodytitle = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<string[]>> bodyactionsbaseUrls = null)
         {
-            var __workflow_appId = appId == null ? null : WorkflowExpression.Compile(appId);
-            WorkflowExpression.Validate(__workflow_appId, nameof(appId), required: true);
-            var __workflow_cardId = cardId == null ? null : WorkflowExpression.Compile(cardId);
-            WorkflowExpression.Validate(__workflow_cardId, nameof(cardId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodyfetchobjectTypes = bodyfetchobjectTypes == null ? null : WorkflowExpression.Compile(bodyfetchobjectTypes);
-            WorkflowExpression.Validate(__workflow_bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
-            var __workflow_bodyfetchcardType = bodyfetchcardType == null ? null : WorkflowExpression.Compile(bodyfetchcardType);
-            WorkflowExpression.Validate(__workflow_bodyfetchcardType, nameof(bodyfetchcardType), required: false);
-            var __workflow_bodyfetchtargetUrl = bodyfetchtargetUrl == null ? null : WorkflowExpression.Compile(bodyfetchtargetUrl);
-            WorkflowExpression.Validate(__workflow_bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
-            var __workflow_bodyfetchserverlessFunction = bodyfetchserverlessFunction == null ? null : WorkflowExpression.Compile(bodyfetchserverlessFunction);
-            WorkflowExpression.Validate(__workflow_bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
-            var __workflow_bodydisplayproperties = bodydisplayproperties == null ? null : WorkflowExpression.Compile(bodydisplayproperties);
-            WorkflowExpression.Validate(__workflow_bodydisplayproperties, nameof(bodydisplayproperties), required: false);
-            var __workflow_bodyactionsbaseUrls = bodyactionsbaseUrls == null ? null : WorkflowExpression.Compile(bodyactionsbaseUrls);
-            WorkflowExpression.Validate(__workflow_bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
+            var __workflow_appId = WorkflowExpression.Compile(appId, nameof(appId), required: true);
+            var __workflow_cardId = WorkflowExpression.Compile(cardId, nameof(cardId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodyfetchobjectTypes = WorkflowExpression.Compile(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
+            var __workflow_bodyfetchcardType = WorkflowExpression.Compile(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
+            var __workflow_bodyfetchtargetUrl = WorkflowExpression.Compile(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
+            var __workflow_bodyfetchserverlessFunction = WorkflowExpression.Compile(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
+            var __workflow_bodydisplayproperties = WorkflowExpression.Compile(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
+            var __workflow_bodyactionsbaseUrls = WorkflowExpression.Compile(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
             return new DeferredBodyAction<UpdateACardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_appId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardId, 1));
@@ -4653,8 +4235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> GetCrmV3ExportsExportAsyncTasksTaskIdStatus(Expression<Func<string>> taskId)
         {
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/exports/export/async/tasks/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -4667,26 +4248,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<StartAnExportResponse> StartAnExport(Expression<Func<string>> bodyexportName = null, Expression<Func<string>> bodyexportType = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodyobjectProperties = null, Expression<Func<string>> bodyobjectType = null, Expression<Func<string>> bodyassociatedObjectType = null, Expression<Func<bodypublicCrmSearchRequestfiltersInputItem[]>> bodypublicCrmSearchRequestfilters = null, Expression<Func<string>> bodypublicCrmSearchRequestquery = null, Expression<Func<string[]>> bodypublicCrmSearchRequestsorts = null)
         {
-            var __workflow_bodyexportName = bodyexportName == null ? null : WorkflowExpression.Compile(bodyexportName);
-            WorkflowExpression.Validate(__workflow_bodyexportName, nameof(bodyexportName), required: false);
-            var __workflow_bodyexportType = bodyexportType == null ? null : WorkflowExpression.Compile(bodyexportType);
-            WorkflowExpression.Validate(__workflow_bodyexportType, nameof(bodyexportType), required: false);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyobjectProperties = bodyobjectProperties == null ? null : WorkflowExpression.Compile(bodyobjectProperties);
-            WorkflowExpression.Validate(__workflow_bodyobjectProperties, nameof(bodyobjectProperties), required: false);
-            var __workflow_bodyobjectType = bodyobjectType == null ? null : WorkflowExpression.Compile(bodyobjectType);
-            WorkflowExpression.Validate(__workflow_bodyobjectType, nameof(bodyobjectType), required: false);
-            var __workflow_bodyassociatedObjectType = bodyassociatedObjectType == null ? null : WorkflowExpression.Compile(bodyassociatedObjectType);
-            WorkflowExpression.Validate(__workflow_bodyassociatedObjectType, nameof(bodyassociatedObjectType), required: false);
-            var __workflow_bodypublicCrmSearchRequestfilters = bodypublicCrmSearchRequestfilters == null ? null : WorkflowExpression.Compile(bodypublicCrmSearchRequestfilters);
-            WorkflowExpression.Validate(__workflow_bodypublicCrmSearchRequestfilters, nameof(bodypublicCrmSearchRequestfilters), required: false);
-            var __workflow_bodypublicCrmSearchRequestquery = bodypublicCrmSearchRequestquery == null ? null : WorkflowExpression.Compile(bodypublicCrmSearchRequestquery);
-            WorkflowExpression.Validate(__workflow_bodypublicCrmSearchRequestquery, nameof(bodypublicCrmSearchRequestquery), required: false);
-            var __workflow_bodypublicCrmSearchRequestsorts = bodypublicCrmSearchRequestsorts == null ? null : WorkflowExpression.Compile(bodypublicCrmSearchRequestsorts);
-            WorkflowExpression.Validate(__workflow_bodypublicCrmSearchRequestsorts, nameof(bodypublicCrmSearchRequestsorts), required: false);
+            var __workflow_bodyexportName = WorkflowExpression.Compile(bodyexportName, nameof(bodyexportName), required: false);
+            var __workflow_bodyexportType = WorkflowExpression.Compile(bodyexportType, nameof(bodyexportType), required: false);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyobjectProperties = WorkflowExpression.Compile(bodyobjectProperties, nameof(bodyobjectProperties), required: false);
+            var __workflow_bodyobjectType = WorkflowExpression.Compile(bodyobjectType, nameof(bodyobjectType), required: false);
+            var __workflow_bodyassociatedObjectType = WorkflowExpression.Compile(bodyassociatedObjectType, nameof(bodyassociatedObjectType), required: false);
+            var __workflow_bodypublicCrmSearchRequestfilters = WorkflowExpression.Compile(bodypublicCrmSearchRequestfilters, nameof(bodypublicCrmSearchRequestfilters), required: false);
+            var __workflow_bodypublicCrmSearchRequestquery = WorkflowExpression.Compile(bodypublicCrmSearchRequestquery, nameof(bodypublicCrmSearchRequestquery), required: false);
+            var __workflow_bodypublicCrmSearchRequestsorts = WorkflowExpression.Compile(bodypublicCrmSearchRequestsorts, nameof(bodypublicCrmSearchRequestsorts), required: false);
             return new DeferredBodyAction<StartAnExportResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/exports/export/async";
@@ -4774,8 +4345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> GetTheInformationOnAnyImport(Expression<Func<string>> importId)
         {
-            var __workflow_importId = importId == null ? null : WorkflowExpression.Compile(importId);
-            WorkflowExpression.Validate(__workflow_importId, nameof(importId), required: true);
+            var __workflow_importId = WorkflowExpression.Compile(importId, nameof(importId), required: true);
             return new DeferredBodyAction<GetTheInformationOnAnyImportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_importId, 1));
@@ -4788,8 +4358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<CancelAnActiveImportResponse> CancelAnActiveImport(Expression<Func<string>> importId)
         {
-            var __workflow_importId = importId == null ? null : WorkflowExpression.Compile(importId);
-            WorkflowExpression.Validate(__workflow_importId, nameof(importId), required: true);
+            var __workflow_importId = WorkflowExpression.Compile(importId, nameof(importId), required: true);
             return new DeferredBodyAction<CancelAnActiveImportResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_importId, 1));
@@ -4802,12 +4371,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetActiveImportsResponse> GetActiveImports(Expression<Func<string>> after = null, Expression<Func<string>> before = null, Expression<Func<string>> limit = null)
         {
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetActiveImportsResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/imports/";
@@ -4826,8 +4392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<StartANewImportResponse> StartANewImport(Expression<Func<string>> contentType)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
             return new DeferredBodyAction<StartANewImportResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/imports/";
@@ -4841,12 +4406,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> GetCrmV3ImportsImportIdErrorsGetErrors(Expression<Func<string>> importId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
         {
-            var __workflow_importId = importId == null ? null : WorkflowExpression.Compile(importId);
-            WorkflowExpression.Validate(__workflow_importId, nameof(importId), required: true);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_importId = WorkflowExpression.Compile(importId, nameof(importId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/errors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_importId, 1));
@@ -4863,12 +4425,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> AddAndOrRemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> bodyrecordIdsToAdd = null, Expression<Func<string[]>> bodyrecordIdsToRemove = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_bodyrecordIdsToAdd = bodyrecordIdsToAdd == null ? null : WorkflowExpression.Compile(bodyrecordIdsToAdd);
-            WorkflowExpression.Validate(__workflow_bodyrecordIdsToAdd, nameof(bodyrecordIdsToAdd), required: false);
-            var __workflow_bodyrecordIdsToRemove = bodyrecordIdsToRemove == null ? null : WorkflowExpression.Compile(bodyrecordIdsToRemove);
-            WorkflowExpression.Validate(__workflow_bodyrecordIdsToRemove, nameof(bodyrecordIdsToRemove), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_bodyrecordIdsToAdd = WorkflowExpression.Compile(bodyrecordIdsToAdd, nameof(bodyrecordIdsToAdd), required: false);
+            var __workflow_bodyrecordIdsToRemove = WorkflowExpression.Compile(bodyrecordIdsToRemove, nameof(bodyrecordIdsToRemove), required: false);
             return new DeferredBodyAction<AddAndOrRemoveRecordsFromAListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-and-remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -4900,10 +4459,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<AddRecordsToAListResponse> AddRecordsToAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddRecordsToAListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -4917,10 +4474,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> AddAllRecordsFromASourceListToADestinationList(Expression<Func<string>> listId, Expression<Func<string>> sourceListId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_sourceListId = sourceListId == null ? null : WorkflowExpression.Compile(sourceListId);
-            WorkflowExpression.Validate(__workflow_sourceListId, nameof(sourceListId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_sourceListId = WorkflowExpression.Compile(sourceListId, nameof(sourceListId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-from/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sourceListId, 1));
@@ -4933,14 +4488,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> FetchListMembershipsOrderedById(Expression<Func<string>> listId, Expression<Func<string>> after = null, Expression<Func<string>> before = null, Expression<Func<string>> limit = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<FetchListMembershipsOrderedByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -4959,8 +4510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<string> DeleteAllRecordsFromAList(Expression<Func<string>> listId)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -4973,10 +4523,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<RemoveRecordsFromAListResponse> RemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
         {
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RemoveRecordsFromAListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -4990,14 +4538,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
         public IBodyWorkflowAction<SearchListsResponse> SearchLists(Expression<Func<string[]>> bodyadditionalProperties = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodyquery = null, Expression<Func<string>> bodycount = null)
         {
-            var __workflow_bodyadditionalProperties = bodyadditionalProperties == null ? null : WorkflowExpression.Compile(bodyadditionalProperties);
-            WorkflowExpression.Validate(__workflow_bodyadditionalProperties, nameof(bodyadditionalProperties), required: false);
-            var __workflow_bodyoffset = bodyoffset == null ? null : WorkflowExpression.Compile(bodyoffset);
-            WorkflowExpression.Validate(__workflow_bodyoffset, nameof(bodyoffset), required: false);
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: false);
-            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
-            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
+            var __workflow_bodyadditionalProperties = WorkflowExpression.Compile(bodyadditionalProperties, nameof(bodyadditionalProperties), required: false);
+            var __workflow_bodyoffset = WorkflowExpression.Compile(bodyoffset, nameof(bodyoffset), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
             return new DeferredBodyAction<SearchListsResponse>(() =>
             {
                 var apiCallPath = "/crm/v3/lists/search";

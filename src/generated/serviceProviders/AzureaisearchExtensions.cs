@@ -15,10 +15,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_documents = documents == null ? null : WorkflowExpression.Compile(documents);
-            WorkflowExpression.Validate(__workflow_documents, nameof(documents), required: true);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -36,10 +34,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> IndexDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
-            WorkflowExpression.Validate(__workflow_document, nameof(document), required: true);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -57,18 +53,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> VectorSearch(Expression<Func<string>> indexName, Expression<Func<VectorSearchInputSearchVectorType>> searchVector, Expression<Func<int>> kNearestNeighbors, Expression<Func<string>> search = null, Expression<Func<VectorSearchInputSearchModeType>> searchMode = null, Expression<Func<string>> filter = null)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_searchVector = searchVector == null ? null : WorkflowExpression.Compile(searchVector);
-            WorkflowExpression.Validate(__workflow_searchVector, nameof(searchVector), required: true);
-            var __workflow_kNearestNeighbors = kNearestNeighbors == null ? null : WorkflowExpression.Compile(kNearestNeighbors);
-            WorkflowExpression.Validate(__workflow_kNearestNeighbors, nameof(kNearestNeighbors), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_searchMode = searchMode == null ? null : WorkflowExpression.Compile(searchMode);
-            WorkflowExpression.Validate(__workflow_searchMode, nameof(searchMode), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_searchVector = WorkflowExpression.Compile(searchVector, nameof(searchVector), required: true);
+            var __workflow_kNearestNeighbors = WorkflowExpression.Compile(kNearestNeighbors, nameof(kNearestNeighbors), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_searchMode = WorkflowExpression.Compile(searchMode, nameof(searchMode), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -102,20 +92,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<JToken> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> searchText, Expression<Func<int>> kNearestNeighbors, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<JToken[]>> vectorizedSearchFields = null, Expression<Func<JToken[]>> selectFields = null)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_searchText = searchText == null ? null : WorkflowExpression.Compile(searchText);
-            WorkflowExpression.Validate(__workflow_searchText, nameof(searchText), required: true);
-            var __workflow_kNearestNeighbors = kNearestNeighbors == null ? null : WorkflowExpression.Compile(kNearestNeighbors);
-            WorkflowExpression.Validate(__workflow_kNearestNeighbors, nameof(kNearestNeighbors), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_vectorizedSearchFields = vectorizedSearchFields == null ? null : WorkflowExpression.Compile(vectorizedSearchFields);
-            WorkflowExpression.Validate(__workflow_vectorizedSearchFields, nameof(vectorizedSearchFields), required: false);
-            var __workflow_selectFields = selectFields == null ? null : WorkflowExpression.Compile(selectFields);
-            WorkflowExpression.Validate(__workflow_selectFields, nameof(selectFields), required: false);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_searchText = WorkflowExpression.Compile(searchText, nameof(searchText), required: true);
+            var __workflow_kNearestNeighbors = WorkflowExpression.Compile(kNearestNeighbors, nameof(kNearestNeighbors), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_vectorizedSearchFields = WorkflowExpression.Compile(vectorizedSearchFields, nameof(vectorizedSearchFields), required: false);
+            var __workflow_selectFields = WorkflowExpression.Compile(selectFields, nameof(selectFields), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -154,10 +137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> DeleteDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
-            WorkflowExpression.Validate(__workflow_document, nameof(document), required: true);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -175,10 +156,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documents)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_documents = documents == null ? null : WorkflowExpression.Compile(documents);
-            WorkflowExpression.Validate(__workflow_documents, nameof(documents), required: true);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_documents = WorkflowExpression.Compile(documents, nameof(documents), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -196,10 +175,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IOutputWorkflowAction<JToken> MergeDocument(Expression<Func<string>> indexName, Expression<Func<object>> document)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_document = document == null ? null : WorkflowExpression.Compile(document);
-            WorkflowExpression.Validate(__workflow_document, nameof(document), required: true);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_document = WorkflowExpression.Compile(document, nameof(document), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -217,12 +194,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azureaisearch
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureaisearch")]
         public IBodyWorkflowAction<KnowledgeAgentRetrievalOutput> KnowledgeAgentRetrieval(Expression<Func<string>> indexName, Expression<Func<string>> agentName, Expression<Func<KnowledgeAgentRetrievalInputAgentMessageContentTypeItem[]>> agentMessageContent)
         {
-            var __workflow_indexName = indexName == null ? null : WorkflowExpression.Compile(indexName);
-            WorkflowExpression.Validate(__workflow_indexName, nameof(indexName), required: true);
-            var __workflow_agentName = agentName == null ? null : WorkflowExpression.Compile(agentName);
-            WorkflowExpression.Validate(__workflow_agentName, nameof(agentName), required: true);
-            var __workflow_agentMessageContent = agentMessageContent == null ? null : WorkflowExpression.Compile(agentMessageContent);
-            WorkflowExpression.Validate(__workflow_agentMessageContent, nameof(agentMessageContent), required: true);
+            var __workflow_indexName = WorkflowExpression.Compile(indexName, nameof(indexName), required: true);
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_agentMessageContent = WorkflowExpression.Compile(agentMessageContent, nameof(agentMessageContent), required: true);
             return new DeferredBodyAction<KnowledgeAgentRetrievalOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

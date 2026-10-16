@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IBodyWorkflowAction<Scan[]> GetScans(Expression<Func<statusInput>> status = null)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             return new DeferredBodyAction<Scan[]>(() =>
             {
                 var apiCallPath = "/beta/scans";
@@ -30,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IBodyWorkflowAction<Scan> GetScanById(Expression<Func<string>> scanId)
         {
-            var __workflow_scanId = scanId == null ? null : WorkflowExpression.Compile(scanId);
-            WorkflowExpression.Validate(__workflow_scanId, nameof(scanId), required: true);
+            var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
             return new DeferredBodyAction<Scan>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scanId, 1));
@@ -44,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webhoodurlscanner
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webhoodurlscanner")]
         public IWorkflowAction GetScreenshotByScanId(Expression<Func<string>> scanId)
         {
-            var __workflow_scanId = scanId == null ? null : WorkflowExpression.Compile(scanId);
-            WorkflowExpression.Validate(__workflow_scanId, nameof(scanId), required: true);
+            var __workflow_scanId = WorkflowExpression.Compile(scanId, nameof(scanId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/scans/{0}/screenshot", ExpressionConverter.ConvertWithUrlEncoding(__workflow_scanId, 1));

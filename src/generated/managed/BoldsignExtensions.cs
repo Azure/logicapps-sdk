@@ -13,34 +13,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> title, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_isSandbox = isSandbox == null ? null : WorkflowExpression.Compile(isSandbox);
-            WorkflowExpression.Validate(__workflow_isSandbox, nameof(isSandbox), required: true);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: true);
-            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(__workflow_message, nameof(message), required: false);
-            var __workflow_cc = cc == null ? null : WorkflowExpression.Compile(cc);
-            WorkflowExpression.Validate(__workflow_cc, nameof(cc), required: false);
-            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
-            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: false);
-            var __workflow_onBehalfOf = onBehalfOf == null ? null : WorkflowExpression.Compile(onBehalfOf);
-            WorkflowExpression.Validate(__workflow_onBehalfOf, nameof(onBehalfOf), required: false);
-            var __workflow_expiryDays = expiryDays == null ? null : WorkflowExpression.Compile(expiryDays);
-            WorkflowExpression.Validate(__workflow_expiryDays, nameof(expiryDays), required: false);
-            var __workflow_labels = labels == null ? null : WorkflowExpression.Compile(labels);
-            WorkflowExpression.Validate(__workflow_labels, nameof(labels), required: false);
-            var __workflow_hideDocumentId = hideDocumentId == null ? null : WorkflowExpression.Compile(hideDocumentId);
-            WorkflowExpression.Validate(__workflow_hideDocumentId, nameof(hideDocumentId), required: false);
-            var __workflow_enablePrintAndSign = enablePrintAndSign == null ? null : WorkflowExpression.Compile(enablePrintAndSign);
-            WorkflowExpression.Validate(__workflow_enablePrintAndSign, nameof(enablePrintAndSign), required: false);
-            var __workflow_enableReassign = enableReassign == null ? null : WorkflowExpression.Compile(enableReassign);
-            WorkflowExpression.Validate(__workflow_enableReassign, nameof(enableReassign), required: false);
-            var __workflow_enableAutoReminder = enableAutoReminder == null ? null : WorkflowExpression.Compile(enableAutoReminder);
-            WorkflowExpression.Validate(__workflow_enableAutoReminder, nameof(enableAutoReminder), required: false);
-            var __workflow_signers = signers == null ? null : WorkflowExpression.Compile(signers);
-            WorkflowExpression.Validate(__workflow_signers, nameof(signers), required: false);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_isSandbox = WorkflowExpression.Compile(isSandbox, nameof(isSandbox), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
+            var __workflow_cc = WorkflowExpression.Compile(cc, nameof(cc), required: false);
+            var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: false);
+            var __workflow_onBehalfOf = WorkflowExpression.Compile(onBehalfOf, nameof(onBehalfOf), required: false);
+            var __workflow_expiryDays = WorkflowExpression.Compile(expiryDays, nameof(expiryDays), required: false);
+            var __workflow_labels = WorkflowExpression.Compile(labels, nameof(labels), required: false);
+            var __workflow_hideDocumentId = WorkflowExpression.Compile(hideDocumentId, nameof(hideDocumentId), required: false);
+            var __workflow_enablePrintAndSign = WorkflowExpression.Compile(enablePrintAndSign, nameof(enablePrintAndSign), required: false);
+            var __workflow_enableReassign = WorkflowExpression.Compile(enableReassign, nameof(enableReassign), required: false);
+            var __workflow_enableAutoReminder = WorkflowExpression.Compile(enableAutoReminder, nameof(enableAutoReminder), required: false);
+            var __workflow_signers = WorkflowExpression.Compile(signers, nameof(signers), required: false);
             return new DeferredBodyAction<SendDocumentFromTemplateResponse>(() =>
             {
                 var apiCallPath = "/v1/template/send";
@@ -81,10 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IWorkflowAction DownloadDocument(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_onBehalfOf = onBehalfOf == null ? null : WorkflowExpression.Compile(onBehalfOf);
-            WorkflowExpression.Validate(__workflow_onBehalfOf, nameof(onBehalfOf), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_onBehalfOf = WorkflowExpression.Compile(onBehalfOf, nameof(onBehalfOf), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/document/download";
@@ -100,10 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IWorkflowAction DownloadAuditTrail(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_onBehalfOf = onBehalfOf == null ? null : WorkflowExpression.Compile(onBehalfOf);
-            WorkflowExpression.Validate(__workflow_onBehalfOf, nameof(onBehalfOf), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_onBehalfOf = WorkflowExpression.Compile(onBehalfOf, nameof(onBehalfOf), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/document/downloadAuditLog";
@@ -119,8 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
         public IBodyWorkflowAction<DocumentPropertiesResponse> GetDocumentStatus(Expression<Func<string>> documentId)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
             return new DeferredBodyAction<DocumentPropertiesResponse>(() =>
             {
                 var apiCallPath = "/v1/document/properties";
@@ -136,10 +117,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     {
         public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode, FlowRecurrence recurrence = null)
         {
-            var __workflow_events = events == null ? null : WorkflowExpression.Compile(events);
-            WorkflowExpression.Validate(__workflow_events, nameof(events), required: true);
-            var __workflow_bodyadminMode = bodyadminMode == null ? null : WorkflowExpression.Compile(bodyadminMode);
-            WorkflowExpression.Validate(__workflow_bodyadminMode, nameof(bodyadminMode), required: true);
+            var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
+            var __workflow_bodyadminMode = WorkflowExpression.Compile(bodyadminMode, nameof(bodyadminMode), required: true);
             return new DeferredBodyTrigger<AddWebHooksResponse>(() =>
             {
                 var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";

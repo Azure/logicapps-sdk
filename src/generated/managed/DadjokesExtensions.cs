@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokes")]
         public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet(Expression<Func<int>> limit = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<JokeGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/dadjokes";

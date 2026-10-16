@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
         public IBodyWorkflowAction<ListFormsResponse> ListForms(Expression<Func<string>> query = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
             return new DeferredBodyAction<ListFormsResponse>(() =>
             {
                 var apiCallPath = "/forms";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
         public IBodyWorkflowAction<FormShow> GetFormByName(Expression<Func<string>> formName)
         {
-            var __workflow_formName = formName == null ? null : WorkflowExpression.Compile(formName);
-            WorkflowExpression.Validate(__workflow_formName, nameof(formName), required: true);
+            var __workflow_formName = WorkflowExpression.Compile(formName, nameof(formName), required: true);
             return new DeferredBodyAction<FormShow>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formName, 1));

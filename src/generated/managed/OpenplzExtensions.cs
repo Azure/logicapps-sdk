@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<GovernmentRegion[]> GetGovernmentRegionsByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalStateKey = federalStateKey == null ? null : WorkflowExpression.Compile(federalStateKey);
-            WorkflowExpression.Validate(__workflow_federalStateKey, nameof(federalStateKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalStateKey = WorkflowExpression.Compile(federalStateKey, nameof(federalStateKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<GovernmentRegion[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/GovernmentRegions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
@@ -44,12 +41,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<District[]> GetDistrictsByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalStateKey = federalStateKey == null ? null : WorkflowExpression.Compile(federalStateKey);
-            WorkflowExpression.Validate(__workflow_federalStateKey, nameof(federalStateKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalStateKey = WorkflowExpression.Compile(federalStateKey, nameof(federalStateKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<District[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
@@ -66,12 +60,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<District[]> GetDistrictsByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_governmentRegionKey = governmentRegionKey == null ? null : WorkflowExpression.Compile(governmentRegionKey);
-            WorkflowExpression.Validate(__workflow_governmentRegionKey, nameof(governmentRegionKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_governmentRegionKey = WorkflowExpression.Compile(governmentRegionKey, nameof(governmentRegionKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<District[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
@@ -88,12 +79,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalStateKey = federalStateKey == null ? null : WorkflowExpression.Compile(federalStateKey);
-            WorkflowExpression.Validate(__workflow_federalStateKey, nameof(federalStateKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalStateKey = WorkflowExpression.Compile(federalStateKey, nameof(federalStateKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Municipality[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
@@ -110,12 +98,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_governmentRegionKey = governmentRegionKey == null ? null : WorkflowExpression.Compile(governmentRegionKey);
-            WorkflowExpression.Validate(__workflow_governmentRegionKey, nameof(governmentRegionKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_governmentRegionKey = WorkflowExpression.Compile(governmentRegionKey, nameof(governmentRegionKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Municipality[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
@@ -132,12 +117,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByDistrictDE(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_districtKey = districtKey == null ? null : WorkflowExpression.Compile(districtKey);
-            WorkflowExpression.Validate(__workflow_districtKey, nameof(districtKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_districtKey = WorkflowExpression.Compile(districtKey, nameof(districtKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Municipality[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
@@ -154,12 +136,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalStateKey = federalStateKey == null ? null : WorkflowExpression.Compile(federalStateKey);
-            WorkflowExpression.Validate(__workflow_federalStateKey, nameof(federalStateKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalStateKey = WorkflowExpression.Compile(federalStateKey, nameof(federalStateKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalAssociation[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
@@ -176,12 +155,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_governmentRegionKey = governmentRegionKey == null ? null : WorkflowExpression.Compile(governmentRegionKey);
-            WorkflowExpression.Validate(__workflow_governmentRegionKey, nameof(governmentRegionKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_governmentRegionKey = WorkflowExpression.Compile(governmentRegionKey, nameof(governmentRegionKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalAssociation[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
@@ -198,12 +174,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByDistrictDE(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_districtKey = districtKey == null ? null : WorkflowExpression.Compile(districtKey);
-            WorkflowExpression.Validate(__workflow_districtKey, nameof(districtKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_districtKey = WorkflowExpression.Compile(districtKey, nameof(districtKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalAssociation[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
@@ -220,12 +193,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> GetLocalitiesByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalStateKey = federalStateKey == null ? null : WorkflowExpression.Compile(federalStateKey);
-            WorkflowExpression.Validate(__workflow_federalStateKey, nameof(federalStateKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalStateKey = WorkflowExpression.Compile(federalStateKey, nameof(federalStateKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Locality[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/FederalStates/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalStateKey, 1));
@@ -242,12 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> GetLocalitiesByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_governmentRegionKey = governmentRegionKey == null ? null : WorkflowExpression.Compile(governmentRegionKey);
-            WorkflowExpression.Validate(__workflow_governmentRegionKey, nameof(governmentRegionKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_governmentRegionKey = WorkflowExpression.Compile(governmentRegionKey, nameof(governmentRegionKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Locality[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/GovernmentRegions/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_governmentRegionKey, 1));
@@ -264,12 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> GetLocalitiesByDistrictDE(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_districtKey = districtKey == null ? null : WorkflowExpression.Compile(districtKey);
-            WorkflowExpression.Validate(__workflow_districtKey, nameof(districtKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_districtKey = WorkflowExpression.Compile(districtKey, nameof(districtKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Locality[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/de/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
@@ -286,14 +250,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Locality[]> SearchLocalitiesDE(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Locality[]>(() =>
             {
                 var apiCallPath = "/de/Localities";
@@ -314,16 +274,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Street[]> SearchStreetsDE(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
-            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_locality = WorkflowExpression.Compile(locality, nameof(locality), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Street[]>(() =>
             {
                 var apiCallPath = "/de/Streets";
@@ -346,12 +301,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<Street[]> FullTextSearchDE(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<Street[]>(() =>
             {
                 var apiCallPath = "/de/FullTextSearch";
@@ -378,14 +330,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityLI[]> SearchLocalitiesLI(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityLI[]>(() =>
             {
                 var apiCallPath = "/li/Localities";
@@ -406,16 +354,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetLI[]> SearchStreetsLI(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
-            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_locality = WorkflowExpression.Compile(locality, nameof(locality), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<StreetLI[]>(() =>
             {
                 var apiCallPath = "/li/Streets";
@@ -438,12 +381,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetLI[]> FullTextSearchLI(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<StreetLI[]>(() =>
             {
                 var apiCallPath = "/li/FullTextSearch";
@@ -470,12 +410,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<DistrictCH[]> GetDistrictsByCantonCH(Expression<Func<string>> cantonKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_cantonKey = cantonKey == null ? null : WorkflowExpression.Compile(cantonKey);
-            WorkflowExpression.Validate(__workflow_cantonKey, nameof(cantonKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_cantonKey = WorkflowExpression.Compile(cantonKey, nameof(cantonKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<DistrictCH[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cantonKey, 1));
@@ -492,12 +429,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<CommuneCH[]> GetCommunesByCantonCH(Expression<Func<string>> cantonKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_cantonKey = cantonKey == null ? null : WorkflowExpression.Compile(cantonKey);
-            WorkflowExpression.Validate(__workflow_cantonKey, nameof(cantonKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_cantonKey = WorkflowExpression.Compile(cantonKey, nameof(cantonKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<CommuneCH[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Communes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cantonKey, 1));
@@ -514,12 +448,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<CommuneCH[]> GetCommunesByDistrictCH(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_districtKey = districtKey == null ? null : WorkflowExpression.Compile(districtKey);
-            WorkflowExpression.Validate(__workflow_districtKey, nameof(districtKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_districtKey = WorkflowExpression.Compile(districtKey, nameof(districtKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<CommuneCH[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Districts/{0}/Communes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
@@ -536,12 +467,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByCantonCH(Expression<Func<string>> cantonKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_cantonKey = cantonKey == null ? null : WorkflowExpression.Compile(cantonKey);
-            WorkflowExpression.Validate(__workflow_cantonKey, nameof(cantonKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_cantonKey = WorkflowExpression.Compile(cantonKey, nameof(cantonKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityCH[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Cantons/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cantonKey, 1));
@@ -558,12 +486,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByDistrictCH(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_districtKey = districtKey == null ? null : WorkflowExpression.Compile(districtKey);
-            WorkflowExpression.Validate(__workflow_districtKey, nameof(districtKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_districtKey = WorkflowExpression.Compile(districtKey, nameof(districtKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityCH[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ch/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
@@ -580,14 +505,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityCH[]> SearchLocalitiesCH(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityCH[]>(() =>
             {
                 var apiCallPath = "/ch/Localities";
@@ -608,16 +529,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetCH[]> SearchStreetsCH(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
-            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_locality = WorkflowExpression.Compile(locality, nameof(locality), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<StreetCH[]>(() =>
             {
                 var apiCallPath = "/ch/Streets";
@@ -640,12 +556,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetCH[]> FullTextSearchCH(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<StreetCH[]>(() =>
             {
                 var apiCallPath = "/ch/FullTextSearch";
@@ -672,12 +585,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<DistrictAT[]> GetDistrictsByFederalProvinceAT(Expression<Func<string>> federalProvinceKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalProvinceKey = federalProvinceKey == null ? null : WorkflowExpression.Compile(federalProvinceKey);
-            WorkflowExpression.Validate(__workflow_federalProvinceKey, nameof(federalProvinceKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalProvinceKey = WorkflowExpression.Compile(federalProvinceKey, nameof(federalProvinceKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<DistrictAT[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalProvinceKey, 1));
@@ -694,12 +604,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByFederalProvinceAT(Expression<Func<string>> federalProvinceKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalProvinceKey = federalProvinceKey == null ? null : WorkflowExpression.Compile(federalProvinceKey);
-            WorkflowExpression.Validate(__workflow_federalProvinceKey, nameof(federalProvinceKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalProvinceKey = WorkflowExpression.Compile(federalProvinceKey, nameof(federalProvinceKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalityAT[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalProvinceKey, 1));
@@ -716,12 +623,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByDistrictAT(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_districtKey = districtKey == null ? null : WorkflowExpression.Compile(districtKey);
-            WorkflowExpression.Validate(__workflow_districtKey, nameof(districtKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_districtKey = WorkflowExpression.Compile(districtKey, nameof(districtKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<MunicipalityAT[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/Districts/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
@@ -738,12 +642,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByFederalProvinceAT(Expression<Func<string>> federalProvinceKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_federalProvinceKey = federalProvinceKey == null ? null : WorkflowExpression.Compile(federalProvinceKey);
-            WorkflowExpression.Validate(__workflow_federalProvinceKey, nameof(federalProvinceKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_federalProvinceKey = WorkflowExpression.Compile(federalProvinceKey, nameof(federalProvinceKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityAT[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/FederalProvinces/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_federalProvinceKey, 1));
@@ -760,12 +661,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByDistrictAT(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_districtKey = districtKey == null ? null : WorkflowExpression.Compile(districtKey);
-            WorkflowExpression.Validate(__workflow_districtKey, nameof(districtKey), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_districtKey = WorkflowExpression.Compile(districtKey, nameof(districtKey), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityAT[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/at/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_districtKey, 1));
@@ -782,14 +680,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<LocalityAT[]> SearchLocalitiesAT(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<LocalityAT[]>(() =>
             {
                 var apiCallPath = "/at/Localities";
@@ -810,16 +704,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetAT[]> SearchStreetsAT(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_postalCode = postalCode == null ? null : WorkflowExpression.Compile(postalCode);
-            WorkflowExpression.Validate(__workflow_postalCode, nameof(postalCode), required: false);
-            var __workflow_locality = locality == null ? null : WorkflowExpression.Compile(locality);
-            WorkflowExpression.Validate(__workflow_locality, nameof(locality), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_postalCode = WorkflowExpression.Compile(postalCode, nameof(postalCode), required: false);
+            var __workflow_locality = WorkflowExpression.Compile(locality, nameof(locality), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<StreetAT[]>(() =>
             {
                 var apiCallPath = "/at/Streets";
@@ -842,12 +731,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
         public IBodyWorkflowAction<StreetAT[]> FullTextSearchAT(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<StreetAT[]>(() =>
             {
                 var apiCallPath = "/at/FullTextSearch";

@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
         public IBodyWorkflowAction<FeedItem[]> ListFeedItems(Expression<Func<string>> feedUrl, Expression<Func<string>> since = null, Expression<Func<sincePropertyInput>> sinceProperty = null)
         {
-            var __workflow_feedUrl = feedUrl == null ? null : WorkflowExpression.Compile(feedUrl);
-            WorkflowExpression.Validate(__workflow_feedUrl, nameof(feedUrl), required: true);
-            var __workflow_since = since == null ? null : WorkflowExpression.Compile(since);
-            WorkflowExpression.Validate(__workflow_since, nameof(since), required: false);
-            var __workflow_sinceProperty = sinceProperty == null ? null : WorkflowExpression.Compile(sinceProperty);
-            WorkflowExpression.Validate(__workflow_sinceProperty, nameof(sinceProperty), required: false);
+            var __workflow_feedUrl = WorkflowExpression.Compile(feedUrl, nameof(feedUrl), required: true);
+            var __workflow_since = WorkflowExpression.Compile(since, nameof(since), required: false);
+            var __workflow_sinceProperty = WorkflowExpression.Compile(sinceProperty, nameof(sinceProperty), required: false);
             return new DeferredBodyAction<FeedItem[]>(() =>
             {
                 var apiCallPath = "/ListFeedItems";
@@ -39,10 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     {
         public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<sincePropertyInput>> sinceProperty = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_feedUrl = feedUrl == null ? null : WorkflowExpression.Compile(feedUrl);
-            WorkflowExpression.Validate(__workflow_feedUrl, nameof(feedUrl), required: true);
-            var __workflow_sinceProperty = sinceProperty == null ? null : WorkflowExpression.Compile(sinceProperty);
-            WorkflowExpression.Validate(__workflow_sinceProperty, nameof(sinceProperty), required: false);
+            var __workflow_feedUrl = WorkflowExpression.Compile(feedUrl, nameof(feedUrl), required: true);
+            var __workflow_sinceProperty = WorkflowExpression.Compile(sinceProperty, nameof(sinceProperty), required: false);
             return new DeferredBodyTrigger<TriggerBatchResponseFeedItem>(() =>
             {
                 var apiCallPath = "/OnNewFeed";

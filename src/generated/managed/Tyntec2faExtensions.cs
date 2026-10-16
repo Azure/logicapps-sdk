@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<SendOTPResponse> SendOTP(Expression<Func<string>> number, Expression<Func<string>> text = null, Expression<Func<int>> pinLength = null, Expression<Func<viaInput>> via = null, Expression<Func<int>> applicationId = null, Expression<Func<string>> language = null, Expression<Func<string>> country = null, Expression<Func<string>> otpCode = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
         {
-            var __workflow_number = number == null ? null : WorkflowExpression.Compile(number);
-            WorkflowExpression.Validate(__workflow_number, nameof(number), required: true);
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: false);
-            var __workflow_pinLength = pinLength == null ? null : WorkflowExpression.Compile(pinLength);
-            WorkflowExpression.Validate(__workflow_pinLength, nameof(pinLength), required: false);
-            var __workflow_via = via == null ? null : WorkflowExpression.Compile(via);
-            WorkflowExpression.Validate(__workflow_via, nameof(via), required: false);
-            var __workflow_applicationId = applicationId == null ? null : WorkflowExpression.Compile(applicationId);
-            WorkflowExpression.Validate(__workflow_applicationId, nameof(applicationId), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_otpCode = otpCode == null ? null : WorkflowExpression.Compile(otpCode);
-            WorkflowExpression.Validate(__workflow_otpCode, nameof(otpCode), required: false);
-            var __workflow_sender = sender == null ? null : WorkflowExpression.Compile(sender);
-            WorkflowExpression.Validate(__workflow_sender, nameof(sender), required: false);
-            var __workflow_caller = caller == null ? null : WorkflowExpression.Compile(caller);
-            WorkflowExpression.Validate(__workflow_caller, nameof(caller), required: false);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: true);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: false);
+            var __workflow_pinLength = WorkflowExpression.Compile(pinLength, nameof(pinLength), required: false);
+            var __workflow_via = WorkflowExpression.Compile(via, nameof(via), required: false);
+            var __workflow_applicationId = WorkflowExpression.Compile(applicationId, nameof(applicationId), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_otpCode = WorkflowExpression.Compile(otpCode, nameof(otpCode), required: false);
+            var __workflow_sender = WorkflowExpression.Compile(sender, nameof(sender), required: false);
+            var __workflow_caller = WorkflowExpression.Compile(caller, nameof(caller), required: false);
             return new DeferredBodyAction<SendOTPResponse>(() =>
             {
                 var apiCallPath = "/2fa/v1/otp";
@@ -65,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<DeleteOTPResponse> DeleteOTP(Expression<Func<string>> otpID)
         {
-            var __workflow_otpID = otpID == null ? null : WorkflowExpression.Compile(otpID);
-            WorkflowExpression.Validate(__workflow_otpID, nameof(otpID), required: true);
+            var __workflow_otpID = WorkflowExpression.Compile(otpID, nameof(otpID), required: true);
             return new DeferredBodyAction<DeleteOTPResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));
@@ -79,14 +68,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<ResendOTPResponse> ResendOTP(Expression<Func<string>> otpID, Expression<Func<viaInput>> via = null, Expression<Func<string>> sender = null, Expression<Func<string>> caller = null)
         {
-            var __workflow_otpID = otpID == null ? null : WorkflowExpression.Compile(otpID);
-            WorkflowExpression.Validate(__workflow_otpID, nameof(otpID), required: true);
-            var __workflow_via = via == null ? null : WorkflowExpression.Compile(via);
-            WorkflowExpression.Validate(__workflow_via, nameof(via), required: false);
-            var __workflow_sender = sender == null ? null : WorkflowExpression.Compile(sender);
-            WorkflowExpression.Validate(__workflow_sender, nameof(sender), required: false);
-            var __workflow_caller = caller == null ? null : WorkflowExpression.Compile(caller);
-            WorkflowExpression.Validate(__workflow_caller, nameof(caller), required: false);
+            var __workflow_otpID = WorkflowExpression.Compile(otpID, nameof(otpID), required: true);
+            var __workflow_via = WorkflowExpression.Compile(via, nameof(via), required: false);
+            var __workflow_sender = WorkflowExpression.Compile(sender, nameof(sender), required: false);
+            var __workflow_caller = WorkflowExpression.Compile(caller, nameof(caller), required: false);
             return new DeferredBodyAction<ResendOTPResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));
@@ -106,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<StatusOTPResponse> StatusOTP(Expression<Func<string>> otpID)
         {
-            var __workflow_otpID = otpID == null ? null : WorkflowExpression.Compile(otpID);
-            WorkflowExpression.Validate(__workflow_otpID, nameof(otpID), required: true);
+            var __workflow_otpID = WorkflowExpression.Compile(otpID, nameof(otpID), required: true);
             return new DeferredBodyAction<StatusOTPResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));
@@ -120,10 +104,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntec2fa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntec2fa")]
         public IBodyWorkflowAction<VerifyOTPResponse> VerifyOTP(Expression<Func<string>> otpID, Expression<Func<int>> otpCode = null)
         {
-            var __workflow_otpID = otpID == null ? null : WorkflowExpression.Compile(otpID);
-            WorkflowExpression.Validate(__workflow_otpID, nameof(otpID), required: true);
-            var __workflow_otpCode = otpCode == null ? null : WorkflowExpression.Compile(otpCode);
-            WorkflowExpression.Validate(__workflow_otpCode, nameof(otpCode), required: false);
+            var __workflow_otpID = WorkflowExpression.Compile(otpID, nameof(otpID), required: true);
+            var __workflow_otpCode = WorkflowExpression.Compile(otpCode, nameof(otpCode), required: false);
             return new DeferredBodyAction<VerifyOTPResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/2fa/v1/otp/{0}/check", ExpressionConverter.ConvertWithUrlEncoding(__workflow_otpID, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<IssuePostResponse> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<IssuePostResponse>(() =>
             {
                 var apiCallPath = "/sticker/share";
@@ -39,8 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet(Expression<Func<string>> username)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             return new DeferredBodyAction<UserStickerGetResponse>(() =>
             {
                 var apiCallPath = "/stickers";
@@ -54,8 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopin
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopin")]
         public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet(Expression<Func<string>> user)
         {
-            var __workflow_user = user == null ? null : WorkflowExpression.Compile(user);
-            WorkflowExpression.Validate(__workflow_user, nameof(user), required: true);
+            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: true);
             return new DeferredBodyAction<UserBoardGetResponse>(() =>
             {
                 var apiCallPath = "/user/board";

@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<AllBreachesAccountResponseItem[]> AllBreachesAccount(Expression<Func<string>> account, Expression<Func<bool>> truncateResponse = null, Expression<Func<string>> domain = null, Expression<Func<bool>> includeUnverified = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_truncateResponse = truncateResponse == null ? null : WorkflowExpression.Compile(truncateResponse);
-            WorkflowExpression.Validate(__workflow_truncateResponse, nameof(truncateResponse), required: false);
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
-            var __workflow_includeUnverified = includeUnverified == null ? null : WorkflowExpression.Compile(includeUnverified);
-            WorkflowExpression.Validate(__workflow_includeUnverified, nameof(includeUnverified), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_truncateResponse = WorkflowExpression.Compile(truncateResponse, nameof(truncateResponse), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
+            var __workflow_includeUnverified = WorkflowExpression.Compile(includeUnverified, nameof(includeUnverified), required: false);
             return new DeferredBodyAction<AllBreachesAccountResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/breachedaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -50,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<PastesResponseItem[]> Pastes(Expression<Func<string>> account)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<PastesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/pasteaccount/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -73,8 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Haveibeenpwnedip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "haveibeenpwnedip")]
         public IBodyWorkflowAction<BreachSingleResponse> BreachSingle(Expression<Func<string>> name)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<BreachSingleResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/breach/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));

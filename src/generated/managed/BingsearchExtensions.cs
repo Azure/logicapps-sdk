@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bingsearch")]
         public IBodyWorkflowAction<NewsArticle[]> GetNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_mkt = mkt == null ? null : WorkflowExpression.Compile(mkt);
-            WorkflowExpression.Validate(__workflow_mkt, nameof(mkt), required: false);
-            var __workflow_safeSearch = safeSearch == null ? null : WorkflowExpression.Compile(safeSearch);
-            WorkflowExpression.Validate(__workflow_safeSearch, nameof(safeSearch), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_mkt = WorkflowExpression.Compile(mkt, nameof(mkt), required: false);
+            var __workflow_safeSearch = WorkflowExpression.Compile(safeSearch, nameof(safeSearch), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<NewsArticle[]>(() =>
             {
                 var apiCallPath = "/news/search";
@@ -49,16 +44,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
     {
         public IBodyWorkflowTrigger<NewsArticle[]> TrigNewNews(Expression<Func<string>> q, Expression<Func<mktInput>> mkt = null, Expression<Func<safeSearchInput>> safeSearch = null, Expression<Func<string>> count = null, Expression<Func<string>> offset = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_mkt = mkt == null ? null : WorkflowExpression.Compile(mkt);
-            WorkflowExpression.Validate(__workflow_mkt, nameof(mkt), required: false);
-            var __workflow_safeSearch = safeSearch == null ? null : WorkflowExpression.Compile(safeSearch);
-            WorkflowExpression.Validate(__workflow_safeSearch, nameof(safeSearch), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_mkt = WorkflowExpression.Compile(mkt, nameof(mkt), required: false);
+            var __workflow_safeSearch = WorkflowExpression.Compile(safeSearch, nameof(safeSearch), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyTrigger<NewsArticle[]>(() =>
             {
                 var apiCallPath = "/trigger/news/search";

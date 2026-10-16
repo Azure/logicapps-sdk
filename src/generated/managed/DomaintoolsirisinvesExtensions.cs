@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseIP(Expression<Func<string>> ip, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_ip = ip == null ? null : WorkflowExpression.Compile(ip);
-            WorkflowExpression.Validate(__workflow_ip, nameof(ip), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_ip = WorkflowExpression.Compile(ip, nameof(ip), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/reverse-ip/";
@@ -40,14 +36,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotNameserverIP(Expression<Func<string>> nameserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_nameserverIp = nameserverIp == null ? null : WorkflowExpression.Compile(nameserverIp);
-            WorkflowExpression.Validate(__workflow_nameserverIp, nameof(nameserverIp), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_nameserverIp = WorkflowExpression.Compile(nameserverIp, nameof(nameserverIp), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/nameserver-ip";
@@ -67,14 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> InvestigateDomain(Expression<Func<string>> domain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/investigate_domain";
@@ -94,14 +82,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotMXIP(Expression<Func<string>> mailserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_mailserverIp = mailserverIp == null ? null : WorkflowExpression.Compile(mailserverIp);
-            WorkflowExpression.Validate(__workflow_mailserverIp, nameof(mailserverIp), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_mailserverIp = WorkflowExpression.Compile(mailserverIp, nameof(mailserverIp), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/mx-ip";
@@ -121,14 +105,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseEmail(Expression<Func<string>> email, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/reverse-email";
@@ -148,14 +128,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> LoadSearchHash(Expression<Func<string>> searchHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_searchHash = searchHash == null ? null : WorkflowExpression.Compile(searchHash);
-            WorkflowExpression.Validate(__workflow_searchHash, nameof(searchHash), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_searchHash = WorkflowExpression.Compile(searchHash, nameof(searchHash), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/search-hash";
@@ -175,14 +151,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotSSLHash(Expression<Func<string>> sslHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_sslHash = sslHash == null ? null : WorkflowExpression.Compile(sslHash);
-            WorkflowExpression.Validate(__workflow_sslHash, nameof(sslHash), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_sslHash = WorkflowExpression.Compile(sslHash, nameof(sslHash), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/ssl-hash";
@@ -202,14 +174,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantOrg(Expression<Func<string>> registrantOrg, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_registrantOrg = registrantOrg == null ? null : WorkflowExpression.Compile(registrantOrg);
-            WorkflowExpression.Validate(__workflow_registrantOrg, nameof(registrantOrg), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_registrantOrg = WorkflowExpression.Compile(registrantOrg, nameof(registrantOrg), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/registrant-org";
@@ -229,14 +197,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantName(Expression<Func<string>> registrant, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_registrant = registrant == null ? null : WorkflowExpression.Compile(registrant);
-            WorkflowExpression.Validate(__workflow_registrant, nameof(registrant), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_registrant = WorkflowExpression.Compile(registrant, nameof(registrant), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/registrant";
@@ -256,14 +220,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReverseEmailDomain(Expression<Func<string>> emailDomain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_emailDomain = emailDomain == null ? null : WorkflowExpression.Compile(emailDomain);
-            WorkflowExpression.Validate(__workflow_emailDomain, nameof(emailDomain), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_emailDomain = WorkflowExpression.Compile(emailDomain, nameof(emailDomain), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/email-domain";
@@ -283,14 +243,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotSSLEmail(Expression<Func<string>> sslEmail, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_sslEmail = sslEmail == null ? null : WorkflowExpression.Compile(sslEmail);
-            WorkflowExpression.Validate(__workflow_sslEmail, nameof(sslEmail), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_sslEmail = WorkflowExpression.Compile(sslEmail, nameof(sslEmail), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/ssl-email/";
@@ -310,14 +266,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotNameserverHost(Expression<Func<string>> nameserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_nameserverHost = nameserverHost == null ? null : WorkflowExpression.Compile(nameserverHost);
-            WorkflowExpression.Validate(__workflow_nameserverHost, nameof(nameserverHost), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_nameserverHost = WorkflowExpression.Compile(nameserverHost, nameof(nameserverHost), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/nameserver-host/";
@@ -337,14 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> PivotMXHost(Expression<Func<string>> mailserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_mailserverHost = mailserverHost == null ? null : WorkflowExpression.Compile(mailserverHost);
-            WorkflowExpression.Validate(__workflow_mailserverHost, nameof(mailserverHost), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_mailserverHost = WorkflowExpression.Compile(mailserverHost, nameof(mailserverHost), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/mailserver-host/";
@@ -364,14 +312,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAny(Expression<Func<string>> taggedWithAny, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_taggedWithAny = taggedWithAny == null ? null : WorkflowExpression.Compile(taggedWithAny);
-            WorkflowExpression.Validate(__workflow_taggedWithAny, nameof(taggedWithAny), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_taggedWithAny = WorkflowExpression.Compile(taggedWithAny, nameof(taggedWithAny), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/tagged-any/";
@@ -391,14 +335,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
         public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAll(Expression<Func<string>> taggedWithAll, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
         {
-            var __workflow_taggedWithAll = taggedWithAll == null ? null : WorkflowExpression.Compile(taggedWithAll);
-            WorkflowExpression.Validate(__workflow_taggedWithAll, nameof(taggedWithAll), required: true);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_createDate = createDate == null ? null : WorkflowExpression.Compile(createDate);
-            WorkflowExpression.Validate(__workflow_createDate, nameof(createDate), required: false);
-            var __workflow_expirationDate = expirationDate == null ? null : WorkflowExpression.Compile(expirationDate);
-            WorkflowExpression.Validate(__workflow_expirationDate, nameof(expirationDate), required: false);
+            var __workflow_taggedWithAll = WorkflowExpression.Compile(taggedWithAll, nameof(taggedWithAll), required: true);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_createDate = WorkflowExpression.Compile(createDate, nameof(createDate), required: false);
+            var __workflow_expirationDate = WorkflowExpression.Compile(expirationDate, nameof(expirationDate), required: false);
             return new DeferredBodyAction<InvestigateResponse>(() =>
             {
                 var apiCallPath = "/iris-investigate/tagged-all/";

@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
         {
-            var __workflow_bodychannel = bodychannel == null ? null : WorkflowExpression.Compile(bodychannel);
-            WorkflowExpression.Validate(__workflow_bodychannel, nameof(bodychannel), required: false);
-            var __workflow_bodychannelID = bodychannelID == null ? null : WorkflowExpression.Compile(bodychannelID);
-            WorkflowExpression.Validate(__workflow_bodychannelID, nameof(bodychannelID), required: false);
-            var __workflow_bodyblocks = bodyblocks == null ? null : WorkflowExpression.Compile(bodyblocks);
-            WorkflowExpression.Validate(__workflow_bodyblocks, nameof(bodyblocks), required: false);
+            var __workflow_bodychannel = WorkflowExpression.Compile(bodychannel, nameof(bodychannel), required: false);
+            var __workflow_bodychannelID = WorkflowExpression.Compile(bodychannelID, nameof(bodychannelID), required: false);
+            var __workflow_bodyblocks = WorkflowExpression.Compile(bodyblocks, nameof(bodyblocks), required: false);
             return new DeferredBodyAction<ThreadPostResponse>(() =>
             {
                 var apiCallPath = "/postThread";
@@ -56,8 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete(Expression<Func<string>> bodythreadID)
         {
-            var __workflow_bodythreadID = bodythreadID == null ? null : WorkflowExpression.Compile(bodythreadID);
-            WorkflowExpression.Validate(__workflow_bodythreadID, nameof(bodythreadID), required: true);
+            var __workflow_bodythreadID = WorkflowExpression.Compile(bodythreadID, nameof(bodythreadID), required: true);
             return new DeferredBodyAction<ThreadDeleteResponse>(() =>
             {
                 var apiCallPath = "/deleteThread";
@@ -88,12 +84,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
         {
-            var __workflow_bodychat = bodychat == null ? null : WorkflowExpression.Compile(bodychat);
-            WorkflowExpression.Validate(__workflow_bodychat, nameof(bodychat), required: false);
-            var __workflow_bodychatID = bodychatID == null ? null : WorkflowExpression.Compile(bodychatID);
-            WorkflowExpression.Validate(__workflow_bodychatID, nameof(bodychatID), required: false);
-            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
-            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: false);
+            var __workflow_bodychat = WorkflowExpression.Compile(bodychat, nameof(bodychat), required: false);
+            var __workflow_bodychatID = WorkflowExpression.Compile(bodychatID, nameof(bodychatID), required: false);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: false);
             return new DeferredBodyAction<ChatPostResponse>(() =>
             {
                 var apiCallPath = "/postChatMessage";
@@ -131,8 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete(Expression<Func<string>> bodymessageID = null)
         {
-            var __workflow_bodymessageID = bodymessageID == null ? null : WorkflowExpression.Compile(bodymessageID);
-            WorkflowExpression.Validate(__workflow_bodymessageID, nameof(bodymessageID), required: false);
+            var __workflow_bodymessageID = WorkflowExpression.Compile(bodymessageID, nameof(bodymessageID), required: false);
             return new DeferredBodyAction<ChatDeleteResponse>(() =>
             {
                 var apiCallPath = "/deleteChatMessage";
@@ -158,8 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<object>> data = null)
         {
-            var __workflow_data = data == null ? null : WorkflowExpression.Compile(data);
-            WorkflowExpression.Validate(__workflow_data, nameof(data), required: false);
+            var __workflow_data = WorkflowExpression.Compile(data, nameof(data), required: false);
             return new DeferredBodyAction<FilePostResponse>(() =>
             {
                 var apiCallPath = "/uploadFile";

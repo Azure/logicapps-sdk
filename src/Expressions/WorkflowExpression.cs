@@ -21,24 +21,31 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal static WorkflowExpression<T> Create<T>(SourceProgram program) =>
             new WorkflowExpression<T>(null, program ?? throw new ArgumentNullException(nameof(program)));
 
-        internal static WorkflowExpression<T> Compile<T>(Expression<Func<T>> expression)
+        internal static WorkflowExpression<T> Compile<T>(
+            Expression<Func<T>> expression,
+            string parameterName,
+            bool required)
         {
-            if (expression == null) throw new ArgumentNullException(nameof(expression));
+            if (expression == null)
+            {
+                if (required) throw new ArgumentNullException(parameterName);
+                return null;
+            }
+
             if (!WorkflowExpressionVisitor.IsAnonymous(typeof(T)))
                 WorkflowExpressionVisitor.ValidateRuntimeType(typeof(T));
 
-            if (WorkflowExpressionVisitor.TryReadValue(expression.Body, out var literal) &&
-                (literal == null || WorkflowExpressionVisitor.CanUseWorkflowLiteral(typeof(T))))
-                return Literal((T)literal);
+            var isLiteral = WorkflowExpressionVisitor.TryReadValue(expression.Body, out var literal) &&
+                (literal == null || WorkflowExpressionVisitor.CanUseWorkflowLiteral(typeof(T)));
 
-            return Create<T>(new WorkflowExpressionVisitor().Visit(expression.Body));
-        }
+            var descriptor = isLiteral
+                ? Literal((T)literal)
+                : Create<T>(new WorkflowExpressionVisitor().Visit(expression.Body));
 
-        internal static void Validate(WorkflowExpression value, string name, bool required)
-        {
-            if (required && value == null) throw new ArgumentNullException(name);
-            if (required && value.LiteralToken?.Type == JTokenType.Null)
-                throw new ArgumentException("A required workflow value cannot be null.", name);
+            if (required && descriptor.LiteralToken?.Type == JTokenType.Null)
+                throw new ArgumentException("A required workflow value cannot be null.", parameterName);
+
+            return descriptor;
         }
 
         internal static JToken Serialize(object value)

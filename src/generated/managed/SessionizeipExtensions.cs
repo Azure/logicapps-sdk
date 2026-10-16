@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
         public IBodyWorkflowAction<GetSessionsResponseItem[]> GetSessions(Expression<Func<string>> iD)
         {
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<GetSessionsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/view/Sessions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iD, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sessionizeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sessionizeip")]
         public IBodyWorkflowAction<GetSpeakersResponseItem[]> GetSpeakers(Expression<Func<string>> iD)
         {
-            var __workflow_iD = iD == null ? null : WorkflowExpression.Compile(iD);
-            WorkflowExpression.Validate(__workflow_iD, nameof(iD), required: true);
+            var __workflow_iD = WorkflowExpression.Compile(iD, nameof(iD), required: true);
             return new DeferredBodyAction<GetSpeakersResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/view/Speakers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_iD, 1));

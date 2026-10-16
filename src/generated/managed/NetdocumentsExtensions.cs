@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> id, Expression<Func<string>> cabGuid = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_cabGuid = cabGuid == null ? null : WorkflowExpression.Compile(cabGuid);
-            WorkflowExpression.Validate(__workflow_cabGuid, nameof(cabGuid), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_cabGuid = WorkflowExpression.Compile(cabGuid, nameof(cabGuid), required: false);
             return new DeferredBodyAction<GetUserInfoResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/User/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -42,24 +40,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<NewVersionResponse> NewVersion(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<string>> versionDescription = null, Expression<Func<string>> verName = null, Expression<Func<bool>> official = null, Expression<Func<bool>> addToRecent = null, Expression<Func<string>> srcVer = null, Expression<Func<bool>> allocatesubversion = null, Expression<Func<string>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_extension = extension == null ? null : WorkflowExpression.Compile(extension);
-            WorkflowExpression.Validate(__workflow_extension, nameof(extension), required: false);
-            var __workflow_versionDescription = versionDescription == null ? null : WorkflowExpression.Compile(versionDescription);
-            WorkflowExpression.Validate(__workflow_versionDescription, nameof(versionDescription), required: false);
-            var __workflow_verName = verName == null ? null : WorkflowExpression.Compile(verName);
-            WorkflowExpression.Validate(__workflow_verName, nameof(verName), required: false);
-            var __workflow_official = official == null ? null : WorkflowExpression.Compile(official);
-            WorkflowExpression.Validate(__workflow_official, nameof(official), required: false);
-            var __workflow_addToRecent = addToRecent == null ? null : WorkflowExpression.Compile(addToRecent);
-            WorkflowExpression.Validate(__workflow_addToRecent, nameof(addToRecent), required: false);
-            var __workflow_srcVer = srcVer == null ? null : WorkflowExpression.Compile(srcVer);
-            WorkflowExpression.Validate(__workflow_srcVer, nameof(srcVer), required: false);
-            var __workflow_allocatesubversion = allocatesubversion == null ? null : WorkflowExpression.Compile(allocatesubversion);
-            WorkflowExpression.Validate(__workflow_allocatesubversion, nameof(allocatesubversion), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_extension = WorkflowExpression.Compile(extension, nameof(extension), required: false);
+            var __workflow_versionDescription = WorkflowExpression.Compile(versionDescription, nameof(versionDescription), required: false);
+            var __workflow_verName = WorkflowExpression.Compile(verName, nameof(verName), required: false);
+            var __workflow_official = WorkflowExpression.Compile(official, nameof(official), required: false);
+            var __workflow_addToRecent = WorkflowExpression.Compile(addToRecent, nameof(addToRecent), required: false);
+            var __workflow_srcVer = WorkflowExpression.Compile(srcVer, nameof(srcVer), required: false);
+            var __workflow_allocatesubversion = WorkflowExpression.Compile(allocatesubversion, nameof(allocatesubversion), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<NewVersionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/new", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -90,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocInfo(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -105,10 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction RenameDocument(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_renameBodystandardAttributesnewName = renameBodystandardAttributesnewName == null ? null : WorkflowExpression.Compile(renameBodystandardAttributesnewName);
-            WorkflowExpression.Validate(__workflow_renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_renameBodystandardAttributesnewName = WorkflowExpression.Compile(renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -139,10 +125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocContent(Expression<Func<string>> id, Expression<Func<bool>> base64 = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_base64 = base64 == null ? null : WorkflowExpression.Compile(base64);
-            WorkflowExpression.Validate(__workflow_base64, nameof(base64), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_base64 = WorkflowExpression.Compile(base64, nameof(base64), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -158,10 +142,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction DeleteDoc(Expression<Func<string>> id, Expression<Func<bool>> permanent = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_permanent = permanent == null ? null : WorkflowExpression.Compile(permanent);
-            WorkflowExpression.Validate(__workflow_permanent, nameof(permanent), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_permanent = WorkflowExpression.Compile(permanent, nameof(permanent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -178,14 +160,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null, Expression<Func<string>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_extension = extension == null ? null : WorkflowExpression.Compile(extension);
-            WorkflowExpression.Validate(__workflow_extension, nameof(extension), required: false);
-            var __workflow_base64 = base64 == null ? null : WorkflowExpression.Compile(base64);
-            WorkflowExpression.Validate(__workflow_base64, nameof(base64), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_extension = WorkflowExpression.Compile(extension, nameof(extension), required: false);
+            var __workflow_base64 = WorkflowExpression.Compile(base64, nameof(base64), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -205,12 +183,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateFolderResponse> CreateFolder(Expression<Func<string>> name, Expression<Func<string>> parent = null, Expression<Func<string>> cabinet = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_parent = parent == null ? null : WorkflowExpression.Compile(parent);
-            WorkflowExpression.Validate(__workflow_parent, nameof(parent), required: false);
-            var __workflow_cabinet = cabinet == null ? null : WorkflowExpression.Compile(cabinet);
-            WorkflowExpression.Validate(__workflow_cabinet, nameof(cabinet), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_parent = WorkflowExpression.Compile(parent, nameof(parent), required: false);
+            var __workflow_cabinet = WorkflowExpression.Compile(cabinet, nameof(cabinet), required: false);
             return new DeferredBodyAction<CreateFolderResponse>(() =>
             {
                 var apiCallPath = "/v1/Folder";
@@ -224,10 +199,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetFldContent(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -243,12 +216,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction FileFolder(Expression<Func<string>> id, Expression<Func<string>> item, Expression<Func<actionInput>> action)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_item = item == null ? null : WorkflowExpression.Compile(item);
-            WorkflowExpression.Validate(__workflow_item, nameof(item), required: true);
-            var __workflow_action = action == null ? null : WorkflowExpression.Compile(action);
-            WorkflowExpression.Validate(__workflow_action, nameof(action), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_item = WorkflowExpression.Compile(item, nameof(item), required: true);
+            var __workflow_action = WorkflowExpression.Compile(action, nameof(action), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -261,12 +231,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction DeleteFolder(Expression<Func<string>> id, Expression<Func<bool>> permanent = null, Expression<Func<bool>> deleteContents = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_permanent = permanent == null ? null : WorkflowExpression.Compile(permanent);
-            WorkflowExpression.Validate(__workflow_permanent, nameof(permanent), required: false);
-            var __workflow_deleteContents = deleteContents == null ? null : WorkflowExpression.Compile(deleteContents);
-            WorkflowExpression.Validate(__workflow_deleteContents, nameof(deleteContents), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_permanent = WorkflowExpression.Compile(permanent, nameof(permanent), required: false);
+            var __workflow_deleteContents = WorkflowExpression.Compile(deleteContents, nameof(deleteContents), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -286,10 +253,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction RenameFolder(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_renameBodystandardAttributesnewName = renameBodystandardAttributesnewName == null ? null : WorkflowExpression.Compile(renameBodystandardAttributesnewName);
-            WorkflowExpression.Validate(__workflow_renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_renameBodystandardAttributesnewName = WorkflowExpression.Compile(renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -320,12 +285,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction FollowFolder(Expression<Func<string>> id, Expression<Func<string>> recipients, Expression<Func<sendInput>> send = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_recipients = recipients == null ? null : WorkflowExpression.Compile(recipients);
-            WorkflowExpression.Validate(__workflow_recipients, nameof(recipients), required: true);
-            var __workflow_send = send == null ? null : WorkflowExpression.Compile(send);
-            WorkflowExpression.Validate(__workflow_send, nameof(send), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_recipients = WorkflowExpression.Compile(recipients, nameof(recipients), required: true);
+            var __workflow_send = WorkflowExpression.Compile(send, nameof(send), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}/follow", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -338,12 +300,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction FollowDocument(Expression<Func<string>> id, Expression<Func<string>> recipients, Expression<Func<sendInput>> send = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_recipients = recipients == null ? null : WorkflowExpression.Compile(recipients);
-            WorkflowExpression.Validate(__workflow_recipients, nameof(recipients), required: true);
-            var __workflow_send = send == null ? null : WorkflowExpression.Compile(send);
-            WorkflowExpression.Validate(__workflow_send, nameof(send), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_recipients = WorkflowExpression.Compile(recipients, nameof(recipients), required: true);
+            var __workflow_send = WorkflowExpression.Compile(send, nameof(send), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/Document/follow";
@@ -356,8 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetCurrentUserInfoResponse> GetCurrentUserInfo(Expression<Func<string>> cabGuid = null)
         {
-            var __workflow_cabGuid = cabGuid == null ? null : WorkflowExpression.Compile(cabGuid);
-            WorkflowExpression.Validate(__workflow_cabGuid, nameof(cabGuid), required: false);
+            var __workflow_cabGuid = WorkflowExpression.Compile(cabGuid, nameof(cabGuid), required: false);
             return new DeferredBodyAction<GetCurrentUserInfoResponse>(() =>
             {
                 var apiCallPath = "/v1/User/info";
@@ -373,14 +331,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction CheckinDoc(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<object>> file = null, Expression<Func<bool>> addToRecent = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_extension = extension == null ? null : WorkflowExpression.Compile(extension);
-            WorkflowExpression.Validate(__workflow_extension, nameof(extension), required: false);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: false);
-            var __workflow_addToRecent = addToRecent == null ? null : WorkflowExpression.Compile(addToRecent);
-            WorkflowExpression.Validate(__workflow_addToRecent, nameof(addToRecent), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_extension = WorkflowExpression.Compile(extension, nameof(extension), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: false);
+            var __workflow_addToRecent = WorkflowExpression.Compile(addToRecent, nameof(addToRecent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/Document/checkin";
@@ -394,16 +348,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction CheckOutDoc(Expression<Func<string>> id, Expression<Func<string>> comment = null, Expression<Func<bool>> download = null, Expression<Func<string>> version = null, Expression<Func<bool>> addToRecent = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
-            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
-            var __workflow_addToRecent = addToRecent == null ? null : WorkflowExpression.Compile(addToRecent);
-            WorkflowExpression.Validate(__workflow_addToRecent, nameof(addToRecent), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
+            var __workflow_addToRecent = WorkflowExpression.Compile(addToRecent, nameof(addToRecent), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/Document/checkout";
@@ -417,14 +366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> destination, Expression<Func<object>> file, Expression<Func<bool>> addToRecent = null, Expression<Func<string>> profile = null)
         {
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_addToRecent = addToRecent == null ? null : WorkflowExpression.Compile(addToRecent);
-            WorkflowExpression.Validate(__workflow_addToRecent, nameof(addToRecent), required: false);
-            var __workflow_profile = profile == null ? null : WorkflowExpression.Compile(profile);
-            WorkflowExpression.Validate(__workflow_profile, nameof(profile), required: false);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_addToRecent = WorkflowExpression.Compile(addToRecent, nameof(addToRecent), required: false);
+            var __workflow_profile = WorkflowExpression.Compile(profile, nameof(profile), required: false);
             return new DeferredBodyAction<CreateDocumentResponse>(() =>
             {
                 var apiCallPath = "/v1/Document/upload";
@@ -438,12 +383,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction LockDocumentVersion(Expression<Func<string>> id, Expression<Func<int>> version, Expression<Func<string>> description = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: true);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/Document/lock";
@@ -457,8 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocumentVersions(Expression<Func<string>> documentID)
         {
-            var __workflow_documentID = documentID == null ? null : WorkflowExpression.Compile(documentID);
-            WorkflowExpression.Validate(__workflow_documentID, nameof(documentID), required: true);
+            var __workflow_documentID = WorkflowExpression.Compile(documentID, nameof(documentID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/versionList", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentID, 1));
@@ -472,20 +413,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateSecuredLinkResponse> CreateSecuredLink(Expression<Func<string>> id, Expression<Func<string>> password = null, Expression<Func<string>> expirationdate = null, Expression<Func<string>> version = null, Expression<Func<bool>> download = null, Expression<Func<bool>> notifyme = null, Expression<Func<bool>> @lock = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: false);
-            var __workflow_expirationdate = expirationdate == null ? null : WorkflowExpression.Compile(expirationdate);
-            WorkflowExpression.Validate(__workflow_expirationdate, nameof(expirationdate), required: false);
-            var __workflow_version = version == null ? null : WorkflowExpression.Compile(version);
-            WorkflowExpression.Validate(__workflow_version, nameof(version), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_notifyme = notifyme == null ? null : WorkflowExpression.Compile(notifyme);
-            WorkflowExpression.Validate(__workflow_notifyme, nameof(notifyme), required: false);
-            var __workflow_lock = @lock == null ? null : WorkflowExpression.Compile(@lock);
-            WorkflowExpression.Validate(__workflow_lock, nameof(@lock), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: false);
+            var __workflow_expirationdate = WorkflowExpression.Compile(expirationdate, nameof(expirationdate), required: false);
+            var __workflow_version = WorkflowExpression.Compile(version, nameof(version), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_notifyme = WorkflowExpression.Compile(notifyme, nameof(notifyme), required: false);
+            var __workflow_lock = WorkflowExpression.Compile(@lock, nameof(@lock), required: false);
             return new DeferredBodyAction<CreateSecuredLinkResponse>(() =>
             {
                 var apiCallPath = "/v1/Document/createsecuredlink";
@@ -499,8 +433,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetDocHistory(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -514,12 +447,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateWorkspaceParentChildResponse> CreateWorkspaceParentChild(Expression<Func<string>> cabinetID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
-            var __workflow_childID = childID == null ? null : WorkflowExpression.Compile(childID);
-            WorkflowExpression.Validate(__workflow_childID, nameof(childID), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
+            var __workflow_childID = WorkflowExpression.Compile(childID, nameof(childID), required: true);
             return new DeferredBodyAction<CreateWorkspaceParentChildResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/{1}/{2}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childID, 1));
@@ -534,10 +464,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateWorkspaceSingleResponse> CreateWorkspaceSingle(Expression<Func<string>> cabinetID, Expression<Func<string>> parentID)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
             return new DeferredBodyAction<CreateWorkspaceSingleResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/{1}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1));
@@ -552,8 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetWorkspaceInformation(Expression<Func<string>> workspaceID)
         {
-            var __workflow_workspaceID = workspaceID == null ? null : WorkflowExpression.Compile(workspaceID);
-            WorkflowExpression.Validate(__workflow_workspaceID, nameof(workspaceID), required: true);
+            var __workflow_workspaceID = WorkflowExpression.Compile(workspaceID, nameof(workspaceID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceID, 1));
@@ -568,28 +495,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateChildEntryResponse> CreateChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_childAttributeID = childAttributeID == null ? null : WorkflowExpression.Compile(childAttributeID);
-            WorkflowExpression.Validate(__workflow_childAttributeID, nameof(childAttributeID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
-            var __workflow_childID = childID == null ? null : WorkflowExpression.Compile(childID);
-            WorkflowExpression.Validate(__workflow_childID, nameof(childID), required: true);
-            var __workflow_lookupEntryBodyaccessfilteredPermissions = lookupEntryBodyaccessfilteredPermissions == null ? null : WorkflowExpression.Compile(lookupEntryBodyaccessfilteredPermissions);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
-            var __workflow_lookupEntryBodyaccessforcePermssions = lookupEntryBodyaccessforcePermssions == null ? null : WorkflowExpression.Compile(lookupEntryBodyaccessforcePermssions);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
-            var __workflow_lookupEntryBodydescription = lookupEntryBodydescription == null ? null : WorkflowExpression.Compile(lookupEntryBodydescription);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
-            var __workflow_lookupEntryBodytype = lookupEntryBodytype == null ? null : WorkflowExpression.Compile(lookupEntryBodytype);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
-            var __workflow_lookupEntryBodylitigationHold = lookupEntryBodylitigationHold == null ? null : WorkflowExpression.Compile(lookupEntryBodylitigationHold);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
-            var __workflow_lookupEntryBodyclosedDate = lookupEntryBodyclosedDate == null ? null : WorkflowExpression.Compile(lookupEntryBodyclosedDate);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
-            var __workflow_lookupEntryBodyaccesspermissions = lookupEntryBodyaccesspermissions == null ? null : WorkflowExpression.Compile(lookupEntryBodyaccesspermissions);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_childAttributeID = WorkflowExpression.Compile(childAttributeID, nameof(childAttributeID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
+            var __workflow_childID = WorkflowExpression.Compile(childID, nameof(childID), required: true);
+            var __workflow_lookupEntryBodyaccessfilteredPermissions = WorkflowExpression.Compile(lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
+            var __workflow_lookupEntryBodyaccessforcePermssions = WorkflowExpression.Compile(lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
+            var __workflow_lookupEntryBodydescription = WorkflowExpression.Compile(lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
+            var __workflow_lookupEntryBodytype = WorkflowExpression.Compile(lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
+            var __workflow_lookupEntryBodylitigationHold = WorkflowExpression.Compile(lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
+            var __workflow_lookupEntryBodyclosedDate = WorkflowExpression.Compile(lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
+            var __workflow_lookupEntryBodyaccesspermissions = WorkflowExpression.Compile(lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
             return new DeferredBodyAction<CreateChildEntryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childID, 1));
@@ -653,14 +569,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_childAttributeID = childAttributeID == null ? null : WorkflowExpression.Compile(childAttributeID);
-            WorkflowExpression.Validate(__workflow_childAttributeID, nameof(childAttributeID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
-            var __workflow_childID = childID == null ? null : WorkflowExpression.Compile(childID);
-            WorkflowExpression.Validate(__workflow_childID, nameof(childID), required: true);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_childAttributeID = WorkflowExpression.Compile(childAttributeID, nameof(childAttributeID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
+            var __workflow_childID = WorkflowExpression.Compile(childID, nameof(childID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childID, 1));
@@ -675,14 +587,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<DeleteChildEntryResponse> DeleteChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_childAttributeID = childAttributeID == null ? null : WorkflowExpression.Compile(childAttributeID);
-            WorkflowExpression.Validate(__workflow_childAttributeID, nameof(childAttributeID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
-            var __workflow_childID = childID == null ? null : WorkflowExpression.Compile(childID);
-            WorkflowExpression.Validate(__workflow_childID, nameof(childID), required: true);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_childAttributeID = WorkflowExpression.Compile(childAttributeID, nameof(childAttributeID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
+            var __workflow_childID = WorkflowExpression.Compile(childID, nameof(childID), required: true);
             return new DeferredBodyAction<DeleteChildEntryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childID, 1));
@@ -697,26 +605,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateEntryResponse> CreateEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_attributeID = attributeID == null ? null : WorkflowExpression.Compile(attributeID);
-            WorkflowExpression.Validate(__workflow_attributeID, nameof(attributeID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
-            var __workflow_lookupEntryBodyaccessfilteredPermissions = lookupEntryBodyaccessfilteredPermissions == null ? null : WorkflowExpression.Compile(lookupEntryBodyaccessfilteredPermissions);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
-            var __workflow_lookupEntryBodyaccessforcePermssions = lookupEntryBodyaccessforcePermssions == null ? null : WorkflowExpression.Compile(lookupEntryBodyaccessforcePermssions);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
-            var __workflow_lookupEntryBodydescription = lookupEntryBodydescription == null ? null : WorkflowExpression.Compile(lookupEntryBodydescription);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
-            var __workflow_lookupEntryBodytype = lookupEntryBodytype == null ? null : WorkflowExpression.Compile(lookupEntryBodytype);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
-            var __workflow_lookupEntryBodylitigationHold = lookupEntryBodylitigationHold == null ? null : WorkflowExpression.Compile(lookupEntryBodylitigationHold);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
-            var __workflow_lookupEntryBodyclosedDate = lookupEntryBodyclosedDate == null ? null : WorkflowExpression.Compile(lookupEntryBodyclosedDate);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
-            var __workflow_lookupEntryBodyaccesspermissions = lookupEntryBodyaccesspermissions == null ? null : WorkflowExpression.Compile(lookupEntryBodyaccesspermissions);
-            WorkflowExpression.Validate(__workflow_lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_attributeID = WorkflowExpression.Compile(attributeID, nameof(attributeID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
+            var __workflow_lookupEntryBodyaccessfilteredPermissions = WorkflowExpression.Compile(lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
+            var __workflow_lookupEntryBodyaccessforcePermssions = WorkflowExpression.Compile(lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
+            var __workflow_lookupEntryBodydescription = WorkflowExpression.Compile(lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
+            var __workflow_lookupEntryBodytype = WorkflowExpression.Compile(lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
+            var __workflow_lookupEntryBodylitigationHold = WorkflowExpression.Compile(lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
+            var __workflow_lookupEntryBodyclosedDate = WorkflowExpression.Compile(lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
+            var __workflow_lookupEntryBodyaccesspermissions = WorkflowExpression.Compile(lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
             return new DeferredBodyAction<CreateEntryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1));
@@ -780,22 +678,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetLookupEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<orderbyInput>> orderby = null)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_attributeID = attributeID == null ? null : WorkflowExpression.Compile(attributeID);
-            WorkflowExpression.Validate(__workflow_attributeID, nameof(attributeID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_attributeID = WorkflowExpression.Compile(attributeID, nameof(attributeID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1));
@@ -821,12 +711,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<DeleteLookupEntryResponse> DeleteLookupEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_attributeID = attributeID == null ? null : WorkflowExpression.Compile(attributeID);
-            WorkflowExpression.Validate(__workflow_attributeID, nameof(attributeID), required: true);
-            var __workflow_parentID = parentID == null ? null : WorkflowExpression.Compile(parentID);
-            WorkflowExpression.Validate(__workflow_parentID, nameof(parentID), required: true);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_attributeID = WorkflowExpression.Compile(attributeID, nameof(attributeID), required: true);
+            var __workflow_parentID = WorkflowExpression.Compile(parentID, nameof(parentID), required: true);
             return new DeferredBodyAction<DeleteLookupEntryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentID, 1));
@@ -841,18 +728,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<SearchLookupEntriesResponse> SearchLookupEntries(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_attributeID = attributeID == null ? null : WorkflowExpression.Compile(attributeID);
-            WorkflowExpression.Validate(__workflow_attributeID, nameof(attributeID), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_attributeID = WorkflowExpression.Compile(attributeID, nameof(attributeID), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<SearchLookupEntriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attributeID, 1));
@@ -876,20 +757,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction SearchCabinets(Expression<Func<string>> cabinets, Expression<Func<string>> q, Expression<Func<string>> select, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> skiptoken = null)
         {
-            var __workflow_cabinets = cabinets == null ? null : WorkflowExpression.Compile(cabinets);
-            WorkflowExpression.Validate(__workflow_cabinets, nameof(cabinets), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: true);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
+            var __workflow_cabinets = WorkflowExpression.Compile(cabinets, nameof(cabinets), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: true);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/Search";
@@ -915,8 +789,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction RefreshWorkspace(Expression<Func<string>> workspaceID)
         {
-            var __workflow_workspaceID = workspaceID == null ? null : WorkflowExpression.Compile(workspaceID);
-            WorkflowExpression.Validate(__workflow_workspaceID, nameof(workspaceID), required: true);
+            var __workflow_workspaceID = WorkflowExpression.Compile(workspaceID, nameof(workspaceID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceID, 1));
@@ -931,10 +804,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction LockDocument(Expression<Func<string>> id, Expression<Func<string>> comment = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
-            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/lock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -951,8 +822,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction UnockDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/unlock", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -967,14 +837,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetRepositoryLog(Expression<Func<string>> repositoryID, Expression<Func<logtypeInput>> logtype, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_logtype = logtype == null ? null : WorkflowExpression.Compile(logtype);
-            WorkflowExpression.Validate(__workflow_logtype, nameof(logtype), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_logtype = WorkflowExpression.Compile(logtype, nameof(logtype), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/log", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1));
@@ -995,8 +861,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetRepositoryInformation(Expression<Func<string>> repositoryID)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1));
@@ -1011,8 +876,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetRepositoryUsersResponseItem[]> GetRepositoryUsers(Expression<Func<string>> repositoryID)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
             return new DeferredBodyAction<GetRepositoryUsersResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1));
@@ -1027,18 +891,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<string[]> GetRepositoryGroups(Expression<Func<string>> repositoryID, Expression<Func<string>> filter = null, Expression<Func<string>> top = null, Expression<Func<bool>> paging = null, Expression<Func<string>> skiptoken = null, Expression<Func<returnInfoInput>> returnInfo = null)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_paging = paging == null ? null : WorkflowExpression.Compile(paging);
-            WorkflowExpression.Validate(__workflow_paging, nameof(paging), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_returnInfo = returnInfo == null ? null : WorkflowExpression.Compile(returnInfo);
-            WorkflowExpression.Validate(__workflow_returnInfo, nameof(returnInfo), required: false);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_paging = WorkflowExpression.Compile(paging, nameof(paging), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_returnInfo = WorkflowExpression.Compile(returnInfo, nameof(returnInfo), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1));
@@ -1065,16 +923,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateRepositoryGroupResponse> CreateRepositoryGroup(Expression<Func<string>> repositoryID, Expression<Func<string>> name, Expression<Func<bool>> external, Expression<Func<bool>> hidden, Expression<Func<bool>> hideMembership)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_external = external == null ? null : WorkflowExpression.Compile(external);
-            WorkflowExpression.Validate(__workflow_external, nameof(external), required: true);
-            var __workflow_hidden = hidden == null ? null : WorkflowExpression.Compile(hidden);
-            WorkflowExpression.Validate(__workflow_hidden, nameof(hidden), required: true);
-            var __workflow_hideMembership = hideMembership == null ? null : WorkflowExpression.Compile(hideMembership);
-            WorkflowExpression.Validate(__workflow_hideMembership, nameof(hideMembership), required: true);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_external = WorkflowExpression.Compile(external, nameof(external), required: true);
+            var __workflow_hidden = WorkflowExpression.Compile(hidden, nameof(hidden), required: true);
+            var __workflow_hideMembership = WorkflowExpression.Compile(hideMembership, nameof(hideMembership), required: true);
             return new DeferredBodyAction<CreateRepositoryGroupResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/group", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1));
@@ -1089,10 +942,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction DeleteRepositoryGroup(Expression<Func<string>> repositoryID, Expression<Func<string>> groupID)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/group/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -1106,22 +957,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> username, Expression<Func<string>> displayFirstName, Expression<Func<string>> displayLastName, Expression<Func<string>> email, Expression<Func<bool>> external, Expression<Func<bool>> sendWelcome, Expression<Func<string>> repository, Expression<Func<string>> displayMiddleName = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_displayFirstName = displayFirstName == null ? null : WorkflowExpression.Compile(displayFirstName);
-            WorkflowExpression.Validate(__workflow_displayFirstName, nameof(displayFirstName), required: true);
-            var __workflow_displayLastName = displayLastName == null ? null : WorkflowExpression.Compile(displayLastName);
-            WorkflowExpression.Validate(__workflow_displayLastName, nameof(displayLastName), required: true);
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_external = external == null ? null : WorkflowExpression.Compile(external);
-            WorkflowExpression.Validate(__workflow_external, nameof(external), required: true);
-            var __workflow_sendWelcome = sendWelcome == null ? null : WorkflowExpression.Compile(sendWelcome);
-            WorkflowExpression.Validate(__workflow_sendWelcome, nameof(sendWelcome), required: true);
-            var __workflow_repository = repository == null ? null : WorkflowExpression.Compile(repository);
-            WorkflowExpression.Validate(__workflow_repository, nameof(repository), required: true);
-            var __workflow_displayMiddleName = displayMiddleName == null ? null : WorkflowExpression.Compile(displayMiddleName);
-            WorkflowExpression.Validate(__workflow_displayMiddleName, nameof(displayMiddleName), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_displayFirstName = WorkflowExpression.Compile(displayFirstName, nameof(displayFirstName), required: true);
+            var __workflow_displayLastName = WorkflowExpression.Compile(displayLastName, nameof(displayLastName), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_external = WorkflowExpression.Compile(external, nameof(external), required: true);
+            var __workflow_sendWelcome = WorkflowExpression.Compile(sendWelcome, nameof(sendWelcome), required: true);
+            var __workflow_repository = WorkflowExpression.Compile(repository, nameof(repository), required: true);
+            var __workflow_displayMiddleName = WorkflowExpression.Compile(displayMiddleName, nameof(displayMiddleName), required: false);
             return new DeferredBodyAction<CreateUserResponse>(() =>
             {
                 var apiCallPath = "/v1/User";
@@ -1136,16 +979,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction AddOrRemoveUserRepository(Expression<Func<string>> repositoryID, Expression<Func<actionInput>> action, Expression<Func<string>> member, Expression<Func<bool>> external, Expression<Func<bool>> deleteIfFederated = null)
         {
-            var __workflow_repositoryID = repositoryID == null ? null : WorkflowExpression.Compile(repositoryID);
-            WorkflowExpression.Validate(__workflow_repositoryID, nameof(repositoryID), required: true);
-            var __workflow_action = action == null ? null : WorkflowExpression.Compile(action);
-            WorkflowExpression.Validate(__workflow_action, nameof(action), required: true);
-            var __workflow_member = member == null ? null : WorkflowExpression.Compile(member);
-            WorkflowExpression.Validate(__workflow_member, nameof(member), required: true);
-            var __workflow_external = external == null ? null : WorkflowExpression.Compile(external);
-            WorkflowExpression.Validate(__workflow_external, nameof(external), required: true);
-            var __workflow_deleteIfFederated = deleteIfFederated == null ? null : WorkflowExpression.Compile(deleteIfFederated);
-            WorkflowExpression.Validate(__workflow_deleteIfFederated, nameof(deleteIfFederated), required: false);
+            var __workflow_repositoryID = WorkflowExpression.Compile(repositoryID, nameof(repositoryID), required: true);
+            var __workflow_action = WorkflowExpression.Compile(action, nameof(action), required: true);
+            var __workflow_member = WorkflowExpression.Compile(member, nameof(member), required: true);
+            var __workflow_external = WorkflowExpression.Compile(external, nameof(external), required: true);
+            var __workflow_deleteIfFederated = WorkflowExpression.Compile(deleteIfFederated, nameof(deleteIfFederated), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryID, 1));
@@ -1160,12 +998,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateCollabSpaceResponse> CreateCollabSpace(Expression<Func<string>> workspaceID, Expression<Func<string>> name, Expression<Func<string>> description = null)
         {
-            var __workflow_workspaceID = workspaceID == null ? null : WorkflowExpression.Compile(workspaceID);
-            WorkflowExpression.Validate(__workflow_workspaceID, nameof(workspaceID), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
+            var __workflow_workspaceID = WorkflowExpression.Compile(workspaceID, nameof(workspaceID), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
             return new DeferredBodyAction<CreateCollabSpaceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/container/{0}/collabspace", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceID, 1));
@@ -1180,8 +1015,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetCabinetSettings(Expression<Func<string>> cabinetID)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/settings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1196,8 +1030,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetCabinetInformation(Expression<Func<string>> cabinetID)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1212,8 +1045,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<JToken[]> GetCabinetCustomAttributes(Expression<Func<string>> cabinetID)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/customAttributes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1228,8 +1060,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetCabinetDefaultAccessResponseItem[]> GetCabinetDefaultAccess(Expression<Func<string>> cabinetID)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
             return new DeferredBodyAction<GetCabinetDefaultAccessResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1244,22 +1075,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction AddToOrRemoveGroupFromCabinet(Expression<Func<string>> cabinetID, Expression<Func<actionInput>> action, Expression<Func<string>> id, Expression<Func<bool>> view, Expression<Func<bool>> edit, Expression<Func<bool>> share, Expression<Func<bool>> administer, Expression<Func<bool>> noAccess)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
-            var __workflow_action = action == null ? null : WorkflowExpression.Compile(action);
-            WorkflowExpression.Validate(__workflow_action, nameof(action), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_view = view == null ? null : WorkflowExpression.Compile(view);
-            WorkflowExpression.Validate(__workflow_view, nameof(view), required: true);
-            var __workflow_edit = edit == null ? null : WorkflowExpression.Compile(edit);
-            WorkflowExpression.Validate(__workflow_edit, nameof(edit), required: true);
-            var __workflow_share = share == null ? null : WorkflowExpression.Compile(share);
-            WorkflowExpression.Validate(__workflow_share, nameof(share), required: true);
-            var __workflow_administer = administer == null ? null : WorkflowExpression.Compile(administer);
-            WorkflowExpression.Validate(__workflow_administer, nameof(administer), required: true);
-            var __workflow_noAccess = noAccess == null ? null : WorkflowExpression.Compile(noAccess);
-            WorkflowExpression.Validate(__workflow_noAccess, nameof(noAccess), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
+            var __workflow_action = WorkflowExpression.Compile(action, nameof(action), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_view = WorkflowExpression.Compile(view, nameof(view), required: true);
+            var __workflow_edit = WorkflowExpression.Compile(edit, nameof(edit), required: true);
+            var __workflow_share = WorkflowExpression.Compile(share, nameof(share), required: true);
+            var __workflow_administer = WorkflowExpression.Compile(administer, nameof(administer), required: true);
+            var __workflow_noAccess = WorkflowExpression.Compile(noAccess, nameof(noAccess), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1274,8 +1097,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetCabinetGroupsResponseItem[]> GetCabinetGroups(Expression<Func<string>> cabinetID)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
             return new DeferredBodyAction<GetCabinetGroupsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cabinet/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1290,20 +1112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<CreateCabinetExternalGroupResponse> CreateCabinetExternalGroup(Expression<Func<string>> cabinetID, Expression<Func<string>> name, Expression<Func<optionsInput>> options = null, Expression<Func<accessInput>> access = null, Expression<Func<string>> collaborationSpaceId = null, Expression<Func<collaborationspaceaccessInput>> collaborationspaceaccess = null, Expression<Func<string>> topwsattributegroupkey = null)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_options = options == null ? null : WorkflowExpression.Compile(options);
-            WorkflowExpression.Validate(__workflow_options, nameof(options), required: false);
-            var __workflow_access = access == null ? null : WorkflowExpression.Compile(access);
-            WorkflowExpression.Validate(__workflow_access, nameof(access), required: false);
-            var __workflow_collaborationSpaceId = collaborationSpaceId == null ? null : WorkflowExpression.Compile(collaborationSpaceId);
-            WorkflowExpression.Validate(__workflow_collaborationSpaceId, nameof(collaborationSpaceId), required: false);
-            var __workflow_collaborationspaceaccess = collaborationspaceaccess == null ? null : WorkflowExpression.Compile(collaborationspaceaccess);
-            WorkflowExpression.Validate(__workflow_collaborationspaceaccess, nameof(collaborationspaceaccess), required: false);
-            var __workflow_topwsattributegroupkey = topwsattributegroupkey == null ? null : WorkflowExpression.Compile(topwsattributegroupkey);
-            WorkflowExpression.Validate(__workflow_topwsattributegroupkey, nameof(topwsattributegroupkey), required: false);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_options = WorkflowExpression.Compile(options, nameof(options), required: false);
+            var __workflow_access = WorkflowExpression.Compile(access, nameof(access), required: false);
+            var __workflow_collaborationSpaceId = WorkflowExpression.Compile(collaborationSpaceId, nameof(collaborationSpaceId), required: false);
+            var __workflow_collaborationspaceaccess = WorkflowExpression.Compile(collaborationspaceaccess, nameof(collaborationspaceaccess), required: false);
+            var __workflow_topwsattributegroupkey = WorkflowExpression.Compile(topwsattributegroupkey, nameof(topwsattributegroupkey), required: false);
             return new DeferredBodyAction<CreateCabinetExternalGroupResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cabinet/{0}/group/external", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1318,18 +1133,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction SearchCabinetModifyACLs(Expression<Func<string>> cabinetID, Expression<Func<string>> q, Expression<Func<modeInput>> mode, Expression<Func<string>> newAcl, Expression<Func<string>> email = null, Expression<Func<completionEmailInput>> completionEmail = null)
         {
-            var __workflow_cabinetID = cabinetID == null ? null : WorkflowExpression.Compile(cabinetID);
-            WorkflowExpression.Validate(__workflow_cabinetID, nameof(cabinetID), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_mode = mode == null ? null : WorkflowExpression.Compile(mode);
-            WorkflowExpression.Validate(__workflow_mode, nameof(mode), required: true);
-            var __workflow_newAcl = newAcl == null ? null : WorkflowExpression.Compile(newAcl);
-            WorkflowExpression.Validate(__workflow_newAcl, nameof(newAcl), required: true);
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
-            var __workflow_completionEmail = completionEmail == null ? null : WorkflowExpression.Compile(completionEmail);
-            WorkflowExpression.Validate(__workflow_completionEmail, nameof(completionEmail), required: false);
+            var __workflow_cabinetID = WorkflowExpression.Compile(cabinetID, nameof(cabinetID), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: true);
+            var __workflow_newAcl = WorkflowExpression.Compile(newAcl, nameof(newAcl), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
+            var __workflow_completionEmail = WorkflowExpression.Compile(completionEmail, nameof(completionEmail), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetID, 1));
@@ -1344,16 +1153,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction GetContainerContents(Expression<Func<string>> containerID, Expression<Func<string>> select, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> orderby = null)
         {
-            var __workflow_containerID = containerID == null ? null : WorkflowExpression.Compile(containerID);
-            WorkflowExpression.Validate(__workflow_containerID, nameof(containerID), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
+            var __workflow_containerID = WorkflowExpression.Compile(containerID, nameof(containerID), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/container/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_containerID, 1));
@@ -1375,10 +1179,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetGroupInformationResponse> GetGroupInformation(Expression<Func<string>> groupID, Expression<Func<bool>> cabMembership = null)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_cabMembership = cabMembership == null ? null : WorkflowExpression.Compile(cabMembership);
-            WorkflowExpression.Validate(__workflow_cabMembership, nameof(cabMembership), required: false);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_cabMembership = WorkflowExpression.Compile(cabMembership, nameof(cabMembership), required: false);
             return new DeferredBodyAction<GetGroupInformationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -1396,8 +1198,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IBodyWorkflowAction<GetGroupMembershipResponseItem[]> GetGroupMembership(Expression<Func<string>> groupID)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
             return new DeferredBodyAction<GetGroupMembershipResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -1412,12 +1213,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
         public IWorkflowAction AddOrRemoveGroupMember(Expression<Func<string>> groupID, Expression<Func<actionInput>> action, Expression<Func<string>> member)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_action = action == null ? null : WorkflowExpression.Compile(action);
-            WorkflowExpression.Validate(__workflow_action, nameof(action), required: true);
-            var __workflow_member = member == null ? null : WorkflowExpression.Compile(member);
-            WorkflowExpression.Validate(__workflow_member, nameof(member), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_action = WorkflowExpression.Compile(action, nameof(action), required: true);
+            var __workflow_member = WorkflowExpression.Compile(member, nameof(member), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -1434,16 +1232,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
     {
         public IWorkflowTrigger SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_cabId = cabId == null ? null : WorkflowExpression.Compile(cabId);
-            WorkflowExpression.Validate(__workflow_cabId, nameof(cabId), required: true);
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_cabId = WorkflowExpression.Compile(cabId, nameof(cabId), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabId, 1));

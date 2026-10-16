@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<GetAllTicketsResponse> GetAllTickets(Expression<Func<int>> offset = null, Expression<Func<orderByInput>> orderBy = null, Expression<Func<orderTypeInput>> orderType = null, Expression<Func<string>> updatedSince = null, Expression<Func<includeDescriptionInput>> includeDescription = null)
         {
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
-            var __workflow_orderType = orderType == null ? null : WorkflowExpression.Compile(orderType);
-            WorkflowExpression.Validate(__workflow_orderType, nameof(orderType), required: false);
-            var __workflow_updatedSince = updatedSince == null ? null : WorkflowExpression.Compile(updatedSince);
-            WorkflowExpression.Validate(__workflow_updatedSince, nameof(updatedSince), required: false);
-            var __workflow_includeDescription = includeDescription == null ? null : WorkflowExpression.Compile(includeDescription);
-            WorkflowExpression.Validate(__workflow_includeDescription, nameof(includeDescription), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_orderType = WorkflowExpression.Compile(orderType, nameof(orderType), required: false);
+            var __workflow_updatedSince = WorkflowExpression.Compile(updatedSince, nameof(updatedSince), required: false);
+            var __workflow_includeDescription = WorkflowExpression.Compile(includeDescription, nameof(includeDescription), required: false);
             return new DeferredBodyAction<GetAllTicketsResponse>(() =>
             {
                 var apiCallPath = "/power_automate/tickets";
@@ -51,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<GetTicketResponse> GetTicket(Expression<Func<int>> ticketNumber = null)
         {
-            var __workflow_ticketNumber = ticketNumber == null ? null : WorkflowExpression.Compile(ticketNumber);
-            WorkflowExpression.Validate(__workflow_ticketNumber, nameof(ticketNumber), required: false);
+            var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: false);
             return new DeferredBodyAction<GetTicketResponse>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/details";
@@ -68,22 +62,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<CreateTicketResponse> CreateTicket(Expression<Func<string>> bodyemail, Expression<Func<string>> bodydescription, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycategory = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodytypeInput>> bodytype = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodyagent = bodyagent == null ? null : WorkflowExpression.Compile(bodyagent);
-            WorkflowExpression.Validate(__workflow_bodyagent, nameof(bodyagent), required: false);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
             return new DeferredBodyAction<CreateTicketResponse>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/create";
@@ -140,22 +126,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<UpdateTicketResponse> UpdateTicket(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyassignTo = null, Expression<Func<string>> bodycategory = null)
         {
-            var __workflow_ticketNumber = ticketNumber == null ? null : WorkflowExpression.Compile(ticketNumber);
-            WorkflowExpression.Validate(__workflow_ticketNumber, nameof(ticketNumber), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyassignTo = bodyassignTo == null ? null : WorkflowExpression.Compile(bodyassignTo);
-            WorkflowExpression.Validate(__workflow_bodyassignTo, nameof(bodyassignTo), required: false);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
+            var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyassignTo = WorkflowExpression.Compile(bodyassignTo, nameof(bodyassignTo), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
             return new DeferredBodyAction<UpdateTicketResponse>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/update";
@@ -219,16 +197,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "desk365")]
         public IBodyWorkflowAction<AddNoteResponse> AddNote(Expression<Func<int>> ticketNumber, Expression<Func<string>> bodycontent, Expression<Func<string>> bodyagentEmail = null, Expression<Func<string>> bodynotifyAgent = null, Expression<Func<bodyprivateInput>> bodyprivate = null)
         {
-            var __workflow_ticketNumber = ticketNumber == null ? null : WorkflowExpression.Compile(ticketNumber);
-            WorkflowExpression.Validate(__workflow_ticketNumber, nameof(ticketNumber), required: true);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodyagentEmail = bodyagentEmail == null ? null : WorkflowExpression.Compile(bodyagentEmail);
-            WorkflowExpression.Validate(__workflow_bodyagentEmail, nameof(bodyagentEmail), required: false);
-            var __workflow_bodynotifyAgent = bodynotifyAgent == null ? null : WorkflowExpression.Compile(bodynotifyAgent);
-            WorkflowExpression.Validate(__workflow_bodynotifyAgent, nameof(bodynotifyAgent), required: false);
-            var __workflow_bodyprivate = bodyprivate == null ? null : WorkflowExpression.Compile(bodyprivate);
-            WorkflowExpression.Validate(__workflow_bodyprivate, nameof(bodyprivate), required: false);
+            var __workflow_ticketNumber = WorkflowExpression.Compile(ticketNumber, nameof(ticketNumber), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodyagentEmail = WorkflowExpression.Compile(bodyagentEmail, nameof(bodyagentEmail), required: false);
+            var __workflow_bodynotifyAgent = WorkflowExpression.Compile(bodynotifyAgent, nameof(bodynotifyAgent), required: false);
+            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
             return new DeferredBodyAction<AddNoteResponse>(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_note";
@@ -281,18 +254,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     {
         public IWorkflowTrigger CreateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycontactEmail = bodycontactEmail == null ? null : WorkflowExpression.Compile(bodycontactEmail);
-            WorkflowExpression.Validate(__workflow_bodycontactEmail, nameof(bodycontactEmail), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyagent = bodyagent == null ? null : WorkflowExpression.Compile(bodyagent);
-            WorkflowExpression.Validate(__workflow_bodyagent, nameof(bodyagent), required: false);
-            var __workflow_bodygroup = bodygroup == null ? null : WorkflowExpression.Compile(bodygroup);
-            WorkflowExpression.Validate(__workflow_bodygroup, nameof(bodygroup), required: false);
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/power_automate/tickets/create_ticket_webhook";
@@ -349,18 +316,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
         public IWorkflowTrigger UpdateTicketWebhook(Expression<Func<string>> bodycontactEmail = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodygroup = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycontactEmail = bodycontactEmail == null ? null : WorkflowExpression.Compile(bodycontactEmail);
-            WorkflowExpression.Validate(__workflow_bodycontactEmail, nameof(bodycontactEmail), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyagent = bodyagent == null ? null : WorkflowExpression.Compile(bodyagent);
-            WorkflowExpression.Validate(__workflow_bodyagent, nameof(bodyagent), required: false);
-            var __workflow_bodygroup = bodygroup == null ? null : WorkflowExpression.Compile(bodygroup);
-            WorkflowExpression.Validate(__workflow_bodygroup, nameof(bodygroup), required: false);
+            var __workflow_bodycontactEmail = WorkflowExpression.Compile(bodycontactEmail, nameof(bodycontactEmail), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodygroup = WorkflowExpression.Compile(bodygroup, nameof(bodygroup), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/power_automate/tickets/update_ticket_webhook";
@@ -417,12 +378,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
         public IWorkflowTrigger AddNoteWebhook(Expression<Func<string>> bodyagent = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyprivateInput>> bodyprivate = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyagent = bodyagent == null ? null : WorkflowExpression.Compile(bodyagent);
-            WorkflowExpression.Validate(__workflow_bodyagent, nameof(bodyagent), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyprivate = bodyprivate == null ? null : WorkflowExpression.Compile(bodyprivate);
-            WorkflowExpression.Validate(__workflow_bodyprivate, nameof(bodyprivate), required: false);
+            var __workflow_bodyagent = WorkflowExpression.Compile(bodyagent, nameof(bodyagent), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_note_webhook";
@@ -461,10 +419,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
 
         public IWorkflowTrigger AddReplyWebhook(Expression<Func<string>> bodycontent = null, Expression<Func<bodyresponseTypeInput>> bodyresponseType = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyresponseType = bodyresponseType == null ? null : WorkflowExpression.Compile(bodyresponseType);
-            WorkflowExpression.Validate(__workflow_bodyresponseType, nameof(bodyresponseType), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/power_automate/tickets/add_reply_webhook";

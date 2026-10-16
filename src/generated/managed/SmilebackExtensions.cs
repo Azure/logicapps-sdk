@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IWorkflowAction DeletePower(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -65,20 +64,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     {
         public IWorkflowTrigger CSATReceived(Expression<Func<fieldcsatFilterRaitingInputItem[]>> fieldcsatFilterRaiting = null, Expression<Func<string[]>> fieldcsatFilterAgents = null, Expression<Func<string[]>> fieldcsatFilterSegments = null, Expression<Func<string[]>> fieldcsatFilterCompanies = null, Expression<Func<string[]>> fieldcsatFilterContacts = null, Expression<Func<fieldcsatFilterCommentsInput>> fieldcsatFilterComments = null, Expression<Func<fieldcsatFilterMpInput>> fieldcsatFilterMp = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_fieldcsatFilterRaiting = fieldcsatFilterRaiting == null ? null : WorkflowExpression.Compile(fieldcsatFilterRaiting);
-            WorkflowExpression.Validate(__workflow_fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
-            var __workflow_fieldcsatFilterAgents = fieldcsatFilterAgents == null ? null : WorkflowExpression.Compile(fieldcsatFilterAgents);
-            WorkflowExpression.Validate(__workflow_fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
-            var __workflow_fieldcsatFilterSegments = fieldcsatFilterSegments == null ? null : WorkflowExpression.Compile(fieldcsatFilterSegments);
-            WorkflowExpression.Validate(__workflow_fieldcsatFilterSegments, nameof(fieldcsatFilterSegments), required: false);
-            var __workflow_fieldcsatFilterCompanies = fieldcsatFilterCompanies == null ? null : WorkflowExpression.Compile(fieldcsatFilterCompanies);
-            WorkflowExpression.Validate(__workflow_fieldcsatFilterCompanies, nameof(fieldcsatFilterCompanies), required: false);
-            var __workflow_fieldcsatFilterContacts = fieldcsatFilterContacts == null ? null : WorkflowExpression.Compile(fieldcsatFilterContacts);
-            WorkflowExpression.Validate(__workflow_fieldcsatFilterContacts, nameof(fieldcsatFilterContacts), required: false);
-            var __workflow_fieldcsatFilterComments = fieldcsatFilterComments == null ? null : WorkflowExpression.Compile(fieldcsatFilterComments);
-            WorkflowExpression.Validate(__workflow_fieldcsatFilterComments, nameof(fieldcsatFilterComments), required: false);
-            var __workflow_fieldcsatFilterMp = fieldcsatFilterMp == null ? null : WorkflowExpression.Compile(fieldcsatFilterMp);
-            WorkflowExpression.Validate(__workflow_fieldcsatFilterMp, nameof(fieldcsatFilterMp), required: false);
+            var __workflow_fieldcsatFilterRaiting = WorkflowExpression.Compile(fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
+            var __workflow_fieldcsatFilterAgents = WorkflowExpression.Compile(fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
+            var __workflow_fieldcsatFilterSegments = WorkflowExpression.Compile(fieldcsatFilterSegments, nameof(fieldcsatFilterSegments), required: false);
+            var __workflow_fieldcsatFilterCompanies = WorkflowExpression.Compile(fieldcsatFilterCompanies, nameof(fieldcsatFilterCompanies), required: false);
+            var __workflow_fieldcsatFilterContacts = WorkflowExpression.Compile(fieldcsatFilterContacts, nameof(fieldcsatFilterContacts), required: false);
+            var __workflow_fieldcsatFilterComments = WorkflowExpression.Compile(fieldcsatFilterComments, nameof(fieldcsatFilterComments), required: false);
+            var __workflow_fieldcsatFilterMp = WorkflowExpression.Compile(fieldcsatFilterMp, nameof(fieldcsatFilterMp), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v3/power/CSAT/";
@@ -140,14 +132,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
         public IWorkflowTrigger NPSReceived(Expression<Func<fieldnpsFilterScoreInputItem[]>> fieldnpsFilterScore = null, Expression<Func<string[]>> fieldnpsFilterCampaigns = null, Expression<Func<fieldnpsFilterCommentsInput>> fieldnpsFilterComments = null, Expression<Func<fieldnpsFilterMpInput>> fieldnpsFilterMp = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_fieldnpsFilterScore = fieldnpsFilterScore == null ? null : WorkflowExpression.Compile(fieldnpsFilterScore);
-            WorkflowExpression.Validate(__workflow_fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
-            var __workflow_fieldnpsFilterCampaigns = fieldnpsFilterCampaigns == null ? null : WorkflowExpression.Compile(fieldnpsFilterCampaigns);
-            WorkflowExpression.Validate(__workflow_fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
-            var __workflow_fieldnpsFilterComments = fieldnpsFilterComments == null ? null : WorkflowExpression.Compile(fieldnpsFilterComments);
-            WorkflowExpression.Validate(__workflow_fieldnpsFilterComments, nameof(fieldnpsFilterComments), required: false);
-            var __workflow_fieldnpsFilterMp = fieldnpsFilterMp == null ? null : WorkflowExpression.Compile(fieldnpsFilterMp);
-            WorkflowExpression.Validate(__workflow_fieldnpsFilterMp, nameof(fieldnpsFilterMp), required: false);
+            var __workflow_fieldnpsFilterScore = WorkflowExpression.Compile(fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
+            var __workflow_fieldnpsFilterCampaigns = WorkflowExpression.Compile(fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
+            var __workflow_fieldnpsFilterComments = WorkflowExpression.Compile(fieldnpsFilterComments, nameof(fieldnpsFilterComments), required: false);
+            var __workflow_fieldnpsFilterMp = WorkflowExpression.Compile(fieldnpsFilterMp, nameof(fieldnpsFilterMp), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v3/power/NPS/";
@@ -191,14 +179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
 
         public IWorkflowTrigger PRJReceived(Expression<Func<fieldprojectsFilterScoreInputItem[]>> fieldprojectsFilterScore = null, Expression<Func<string[]>> fieldprojectsFilterSurveys = null, Expression<Func<fieldprojectsFilterCommentsInput>> fieldprojectsFilterComments = null, Expression<Func<fieldprojectsFilterMpInput>> fieldprojectsFilterMp = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_fieldprojectsFilterScore = fieldprojectsFilterScore == null ? null : WorkflowExpression.Compile(fieldprojectsFilterScore);
-            WorkflowExpression.Validate(__workflow_fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
-            var __workflow_fieldprojectsFilterSurveys = fieldprojectsFilterSurveys == null ? null : WorkflowExpression.Compile(fieldprojectsFilterSurveys);
-            WorkflowExpression.Validate(__workflow_fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
-            var __workflow_fieldprojectsFilterComments = fieldprojectsFilterComments == null ? null : WorkflowExpression.Compile(fieldprojectsFilterComments);
-            WorkflowExpression.Validate(__workflow_fieldprojectsFilterComments, nameof(fieldprojectsFilterComments), required: false);
-            var __workflow_fieldprojectsFilterMp = fieldprojectsFilterMp == null ? null : WorkflowExpression.Compile(fieldprojectsFilterMp);
-            WorkflowExpression.Validate(__workflow_fieldprojectsFilterMp, nameof(fieldprojectsFilterMp), required: false);
+            var __workflow_fieldprojectsFilterScore = WorkflowExpression.Compile(fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
+            var __workflow_fieldprojectsFilterSurveys = WorkflowExpression.Compile(fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
+            var __workflow_fieldprojectsFilterComments = WorkflowExpression.Compile(fieldprojectsFilterComments, nameof(fieldprojectsFilterComments), required: false);
+            var __workflow_fieldprojectsFilterMp = WorkflowExpression.Compile(fieldprojectsFilterMp, nameof(fieldprojectsFilterMp), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/v3/power/PRJ/";

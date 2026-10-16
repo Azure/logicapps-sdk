@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship> RelationshipsGet(Expression<Func<bool>> includeIntersectional = null, Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
-            var __workflow_includeIntersectional = includeIntersectional == null ? null : WorkflowExpression.Compile(includeIntersectional);
-            WorkflowExpression.Validate(__workflow_includeIntersectional, nameof(includeIntersectional), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_includeIntersectional = WorkflowExpression.Compile(includeIntersectional, nameof(includeIntersectional), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelRelationship>(() =>
             {
                 var apiCallPath = "/odata/Relationships";
@@ -58,16 +50,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0> Relationships(Expression<Func<string>> bodyrelationshipTypeId, Expression<Func<string>> bodyleadModelItemId, Expression<Func<string>> bodymemberModelItemId, Expression<Func<string>> bodymodelId, Expression<Func<string>> bodyrelationshipTypePairId = null)
         {
-            var __workflow_bodyrelationshipTypeId = bodyrelationshipTypeId == null ? null : WorkflowExpression.Compile(bodyrelationshipTypeId);
-            WorkflowExpression.Validate(__workflow_bodyrelationshipTypeId, nameof(bodyrelationshipTypeId), required: true);
-            var __workflow_bodyleadModelItemId = bodyleadModelItemId == null ? null : WorkflowExpression.Compile(bodyleadModelItemId);
-            WorkflowExpression.Validate(__workflow_bodyleadModelItemId, nameof(bodyleadModelItemId), required: true);
-            var __workflow_bodymemberModelItemId = bodymemberModelItemId == null ? null : WorkflowExpression.Compile(bodymemberModelItemId);
-            WorkflowExpression.Validate(__workflow_bodymemberModelItemId, nameof(bodymemberModelItemId), required: true);
-            var __workflow_bodymodelId = bodymodelId == null ? null : WorkflowExpression.Compile(bodymodelId);
-            WorkflowExpression.Validate(__workflow_bodymodelId, nameof(bodymodelId), required: true);
-            var __workflow_bodyrelationshipTypePairId = bodyrelationshipTypePairId == null ? null : WorkflowExpression.Compile(bodyrelationshipTypePairId);
-            WorkflowExpression.Validate(__workflow_bodyrelationshipTypePairId, nameof(bodyrelationshipTypePairId), required: false);
+            var __workflow_bodyrelationshipTypeId = WorkflowExpression.Compile(bodyrelationshipTypeId, nameof(bodyrelationshipTypeId), required: true);
+            var __workflow_bodyleadModelItemId = WorkflowExpression.Compile(bodyleadModelItemId, nameof(bodyleadModelItemId), required: true);
+            var __workflow_bodymemberModelItemId = WorkflowExpression.Compile(bodymemberModelItemId, nameof(bodymemberModelItemId), required: true);
+            var __workflow_bodymodelId = WorkflowExpression.Compile(bodymodelId, nameof(bodymodelId), required: true);
+            var __workflow_bodyrelationshipTypePairId = WorkflowExpression.Compile(bodyrelationshipTypePairId, nameof(bodyrelationshipTypePairId), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseCreateRelationshipResponseLevel0>(() =>
             {
                 var apiCallPath = "/odata/Relationships";
@@ -109,12 +96,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelRelationshipLevel0> RelationshipsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsODataModelRelationshipLevel0>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -131,8 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0> RelationshipsDelete(Expression<Func<string>> key)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseDeleteRelationshipResponseLevel0>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -145,8 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0> RelationshipsPatch(Expression<Func<string>> key)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsRelationshipResponseUpdateRelationshipResponseLevel0>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Relationships({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -174,20 +156,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject> ObjectsGet(Expression<Func<string>> select = null, Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
         {
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsSwaggerResponseODataPageResponseOfOfficeArchitectContractsODataModelObject>(() =>
             {
                 var apiCallPath = "/odata/Objects";
@@ -214,10 +189,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0> Objects(Expression<Func<string>> bodyobjectTypeId, Expression<Func<string>> bodymodelId)
         {
-            var __workflow_bodyobjectTypeId = bodyobjectTypeId == null ? null : WorkflowExpression.Compile(bodyobjectTypeId);
-            WorkflowExpression.Validate(__workflow_bodyobjectTypeId, nameof(bodyobjectTypeId), required: true);
-            var __workflow_bodymodelId = bodymodelId == null ? null : WorkflowExpression.Compile(bodymodelId);
-            WorkflowExpression.Validate(__workflow_bodymodelId, nameof(bodymodelId), required: true);
+            var __workflow_bodyobjectTypeId = WorkflowExpression.Compile(bodyobjectTypeId, nameof(bodyobjectTypeId), required: true);
+            var __workflow_bodymodelId = WorkflowExpression.Compile(bodymodelId, nameof(bodymodelId), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseCreateObjectResponseLevel0>(() =>
             {
                 var apiCallPath = "/odata/Objects";
@@ -249,12 +222,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsODataModelObjectLevel0> ObjectsGetSingle(Expression<Func<string>> key, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
             return new DeferredBodyAction<OfficeArchitectContractsODataModelObjectLevel0>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -271,8 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0> ObjectsDelete(Expression<Func<string>> key)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseDeleteObjectResponseLevel0>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -285,8 +254,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "orbusinfinity")]
         public IBodyWorkflowAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0> ObjectsPatch(Expression<Func<string>> key)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
             return new DeferredBodyAction<OfficeArchitectContractsObjectResponseUpdateObjectResponseLevel0>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/odata/Objects({0})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_key, 1));
@@ -316,12 +284,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
     {
         public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodysecret = null, Expression<Func<string>> bodyexpirationDate = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
-            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
-            var __workflow_bodysecret = bodysecret == null ? null : WorkflowExpression.Compile(bodysecret);
-            WorkflowExpression.Validate(__workflow_bodysecret, nameof(bodysecret), required: false);
-            var __workflow_bodyexpirationDate = bodyexpirationDate == null ? null : WorkflowExpression.Compile(bodyexpirationDate);
-            WorkflowExpression.Validate(__workflow_bodyexpirationDate, nameof(bodyexpirationDate), required: false);
+            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodysecret = WorkflowExpression.Compile(bodysecret, nameof(bodysecret), required: false);
+            var __workflow_bodyexpirationDate = WorkflowExpression.Compile(bodyexpirationDate, nameof(bodyexpirationDate), required: false);
             return new DeferredBodyTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(() =>
             {
                 var apiCallPath = "/odata/Webhooks";

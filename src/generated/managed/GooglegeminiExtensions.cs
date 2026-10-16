@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateTextContentResponse> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: false);
-            var __workflow_bodysafetySettings = bodysafetySettings == null ? null : WorkflowExpression.Compile(bodysafetySettings);
-            WorkflowExpression.Validate(__workflow_bodysafetySettings, nameof(bodysafetySettings), required: false);
-            var __workflow_bodygenerationConfigmaxOutputTokens = bodygenerationConfigmaxOutputTokens == null ? null : WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
-            var __workflow_bodygenerationConfigtemperature = bodygenerationConfigtemperature == null ? null : WorkflowExpression.Compile(bodygenerationConfigtemperature);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
-            var __workflow_bodygenerationConfigtopP = bodygenerationConfigtopP == null ? null : WorkflowExpression.Compile(bodygenerationConfigtopP);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
-            var __workflow_bodygenerationConfigtopK = bodygenerationConfigtopK == null ? null : WorkflowExpression.Compile(bodygenerationConfigtopK);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
-            var __workflow_bodygenerationConfigcandidateCount = bodygenerationConfigcandidateCount == null ? null : WorkflowExpression.Compile(bodygenerationConfigcandidateCount);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
-            var __workflow_bodygenerationConfigstopSequences = bodygenerationConfigstopSequences == null ? null : WorkflowExpression.Compile(bodygenerationConfigstopSequences);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodygenerationConfigmaxOutputTokens = WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            var __workflow_bodygenerationConfigtemperature = WorkflowExpression.Compile(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            var __workflow_bodygenerationConfigtopP = WorkflowExpression.Compile(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            var __workflow_bodygenerationConfigcandidateCount = WorkflowExpression.Compile(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
+            var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             return new DeferredBodyAction<GenerateTextContentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -108,26 +98,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: false);
-            var __workflow_bodysafetySettings = bodysafetySettings == null ? null : WorkflowExpression.Compile(bodysafetySettings);
-            WorkflowExpression.Validate(__workflow_bodysafetySettings, nameof(bodysafetySettings), required: false);
-            var __workflow_bodygenerationConfigtemperature = bodygenerationConfigtemperature == null ? null : WorkflowExpression.Compile(bodygenerationConfigtemperature);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
-            var __workflow_bodygenerationConfigmaxOutputTokens = bodygenerationConfigmaxOutputTokens == null ? null : WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
-            var __workflow_bodygenerationConfigtopP = bodygenerationConfigtopP == null ? null : WorkflowExpression.Compile(bodygenerationConfigtopP);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
-            var __workflow_bodygenerationConfigtopK = bodygenerationConfigtopK == null ? null : WorkflowExpression.Compile(bodygenerationConfigtopK);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
-            var __workflow_bodygenerationConfigcandidateCount = bodygenerationConfigcandidateCount == null ? null : WorkflowExpression.Compile(bodygenerationConfigcandidateCount);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
-            var __workflow_bodygenerationConfigstopSequences = bodygenerationConfigstopSequences == null ? null : WorkflowExpression.Compile(bodygenerationConfigstopSequences);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodygenerationConfigtemperature = WorkflowExpression.Compile(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            var __workflow_bodygenerationConfigmaxOutputTokens = WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            var __workflow_bodygenerationConfigtopP = WorkflowExpression.Compile(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            var __workflow_bodygenerationConfigcandidateCount = WorkflowExpression.Compile(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
+            var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             return new DeferredBodyAction<GenerateStreamContentResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:streamGenerateContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -203,24 +183,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateMultiModalContentResponse> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: false);
-            var __workflow_bodysafetySettings = bodysafetySettings == null ? null : WorkflowExpression.Compile(bodysafetySettings);
-            WorkflowExpression.Validate(__workflow_bodysafetySettings, nameof(bodysafetySettings), required: false);
-            var __workflow_bodygenerationConfigmaxOutputTokens = bodygenerationConfigmaxOutputTokens == null ? null : WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
-            var __workflow_bodygenerationConfigtemperature = bodygenerationConfigtemperature == null ? null : WorkflowExpression.Compile(bodygenerationConfigtemperature);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
-            var __workflow_bodygenerationConfigtopP = bodygenerationConfigtopP == null ? null : WorkflowExpression.Compile(bodygenerationConfigtopP);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
-            var __workflow_bodygenerationConfigtopK = bodygenerationConfigtopK == null ? null : WorkflowExpression.Compile(bodygenerationConfigtopK);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
-            var __workflow_bodygenerationConfigstopSequences = bodygenerationConfigstopSequences == null ? null : WorkflowExpression.Compile(bodygenerationConfigstopSequences);
-            WorkflowExpression.Validate(__workflow_bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
+            var __workflow_bodysafetySettings = WorkflowExpression.Compile(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            var __workflow_bodygenerationConfigmaxOutputTokens = WorkflowExpression.Compile(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            var __workflow_bodygenerationConfigtemperature = WorkflowExpression.Compile(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            var __workflow_bodygenerationConfigtopP = WorkflowExpression.Compile(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            var __workflow_bodygenerationConfigtopK = WorkflowExpression.Compile(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            var __workflow_bodygenerationConfigstopSequences = WorkflowExpression.Compile(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
             return new DeferredBodyAction<GenerateMultiModalContentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}-vision:generateContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -290,12 +261,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<CountTokensResponse> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem22[]>> bodycontents = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
-            var __workflow_bodycontents = bodycontents == null ? null : WorkflowExpression.Compile(bodycontents);
-            WorkflowExpression.Validate(__workflow_bodycontents, nameof(bodycontents), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodycontents = WorkflowExpression.Compile(bodycontents, nameof(bodycontents), required: false);
             return new DeferredBodyAction<CountTokensResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTokens", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -321,8 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetAllModelsResponse> GetAllModels(Expression<Func<string>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<GetAllModelsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1));
@@ -335,10 +302,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GetModelDetailsResponse> GetModelDetails(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
             return new DeferredBodyAction<GetModelDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -351,18 +316,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<string>> bodymodelResourceName, Expression<Func<bodycontentpartsInputItem[]>> bodycontentparts = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
-            var __workflow_bodymodelResourceName = bodymodelResourceName == null ? null : WorkflowExpression.Compile(bodymodelResourceName);
-            WorkflowExpression.Validate(__workflow_bodymodelResourceName, nameof(bodymodelResourceName), required: true);
-            var __workflow_bodycontentparts = bodycontentparts == null ? null : WorkflowExpression.Compile(bodycontentparts);
-            WorkflowExpression.Validate(__workflow_bodycontentparts, nameof(bodycontentparts), required: false);
-            var __workflow_bodytaskType = bodytaskType == null ? null : WorkflowExpression.Compile(bodytaskType);
-            WorkflowExpression.Validate(__workflow_bodytaskType, nameof(bodytaskType), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodymodelResourceName = WorkflowExpression.Compile(bodymodelResourceName, nameof(bodymodelResourceName), required: true);
+            var __workflow_bodycontentparts = WorkflowExpression.Compile(bodycontentparts, nameof(bodycontentparts), required: false);
+            var __workflow_bodytaskType = WorkflowExpression.Compile(bodytaskType, nameof(bodytaskType), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<GenerateEmbeddingResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedContent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -410,12 +369,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
         public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodyrequestsInputItem[]>> bodyrequests)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
-            var __workflow_bodyrequests = bodyrequests == null ? null : WorkflowExpression.Compile(bodyrequests);
-            WorkflowExpression.Validate(__workflow_bodyrequests, nameof(bodyrequests), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
+            var __workflow_bodyrequests = WorkflowExpression.Compile(bodyrequests, nameof(bodyrequests), required: true);
             return new DeferredBodyAction<BatchEmbedContentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:batchEmbedContents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_apiVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));

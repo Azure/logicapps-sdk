@@ -13,34 +13,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houseraterqa")]
         public IBodyWorkflowAction<JToken> UpdateInspection(Expression<Func<string>> bodyinspectionTemplateId, Expression<Func<string>> bodybuilderId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string[]>> bodyprograms = null, Expression<Func<string[]>> bodyraters = null, Expression<Func<string>> bodysharePointSubscriberId = null, Expression<Func<string>> bodyoutlookEventId = null, Expression<Func<string>> bodyaddress1 = null, Expression<Func<string>> bodyaddress2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzip = null, Expression<Func<string>> bodytimeZone = null)
         {
-            var __workflow_bodyinspectionTemplateId = bodyinspectionTemplateId == null ? null : WorkflowExpression.Compile(bodyinspectionTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyinspectionTemplateId, nameof(bodyinspectionTemplateId), required: true);
-            var __workflow_bodybuilderId = bodybuilderId == null ? null : WorkflowExpression.Compile(bodybuilderId);
-            WorkflowExpression.Validate(__workflow_bodybuilderId, nameof(bodybuilderId), required: true);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: true);
-            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
-            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: true);
-            var __workflow_bodyprograms = bodyprograms == null ? null : WorkflowExpression.Compile(bodyprograms);
-            WorkflowExpression.Validate(__workflow_bodyprograms, nameof(bodyprograms), required: false);
-            var __workflow_bodyraters = bodyraters == null ? null : WorkflowExpression.Compile(bodyraters);
-            WorkflowExpression.Validate(__workflow_bodyraters, nameof(bodyraters), required: false);
-            var __workflow_bodysharePointSubscriberId = bodysharePointSubscriberId == null ? null : WorkflowExpression.Compile(bodysharePointSubscriberId);
-            WorkflowExpression.Validate(__workflow_bodysharePointSubscriberId, nameof(bodysharePointSubscriberId), required: false);
-            var __workflow_bodyoutlookEventId = bodyoutlookEventId == null ? null : WorkflowExpression.Compile(bodyoutlookEventId);
-            WorkflowExpression.Validate(__workflow_bodyoutlookEventId, nameof(bodyoutlookEventId), required: false);
-            var __workflow_bodyaddress1 = bodyaddress1 == null ? null : WorkflowExpression.Compile(bodyaddress1);
-            WorkflowExpression.Validate(__workflow_bodyaddress1, nameof(bodyaddress1), required: false);
-            var __workflow_bodyaddress2 = bodyaddress2 == null ? null : WorkflowExpression.Compile(bodyaddress2);
-            WorkflowExpression.Validate(__workflow_bodyaddress2, nameof(bodyaddress2), required: false);
-            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
-            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
-            var __workflow_bodystate = bodystate == null ? null : WorkflowExpression.Compile(bodystate);
-            WorkflowExpression.Validate(__workflow_bodystate, nameof(bodystate), required: false);
-            var __workflow_bodyzip = bodyzip == null ? null : WorkflowExpression.Compile(bodyzip);
-            WorkflowExpression.Validate(__workflow_bodyzip, nameof(bodyzip), required: false);
-            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
-            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: false);
+            var __workflow_bodyinspectionTemplateId = WorkflowExpression.Compile(bodyinspectionTemplateId, nameof(bodyinspectionTemplateId), required: true);
+            var __workflow_bodybuilderId = WorkflowExpression.Compile(bodybuilderId, nameof(bodybuilderId), required: true);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: true);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: true);
+            var __workflow_bodyprograms = WorkflowExpression.Compile(bodyprograms, nameof(bodyprograms), required: false);
+            var __workflow_bodyraters = WorkflowExpression.Compile(bodyraters, nameof(bodyraters), required: false);
+            var __workflow_bodysharePointSubscriberId = WorkflowExpression.Compile(bodysharePointSubscriberId, nameof(bodysharePointSubscriberId), required: false);
+            var __workflow_bodyoutlookEventId = WorkflowExpression.Compile(bodyoutlookEventId, nameof(bodyoutlookEventId), required: false);
+            var __workflow_bodyaddress1 = WorkflowExpression.Compile(bodyaddress1, nameof(bodyaddress1), required: false);
+            var __workflow_bodyaddress2 = WorkflowExpression.Compile(bodyaddress2, nameof(bodyaddress2), required: false);
+            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
+            var __workflow_bodystate = WorkflowExpression.Compile(bodystate, nameof(bodystate), required: false);
+            var __workflow_bodyzip = WorkflowExpression.Compile(bodyzip, nameof(bodyzip), required: false);
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/updateInspection";

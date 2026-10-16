@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetIssueResponse> GetIssue(Expression<Func<string>> issueId)
         {
-            var __workflow_issueId = issueId == null ? null : WorkflowExpression.Compile(issueId);
-            WorkflowExpression.Validate(__workflow_issueId, nameof(issueId), required: true);
+            var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
             return new DeferredBodyAction<GetIssueResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_issueId, 1));
@@ -27,18 +26,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<string> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<string>> issueissuepriority = null, Expression<Func<issueissuetrackerInput>> issueissuetracker = null, Expression<Func<issueissuestatusInput>> issueissuestatus = null, Expression<Func<string>> issueissuesubject = null, Expression<Func<string>> issueissuedescription = null)
         {
-            var __workflow_issueId = issueId == null ? null : WorkflowExpression.Compile(issueId);
-            WorkflowExpression.Validate(__workflow_issueId, nameof(issueId), required: true);
-            var __workflow_issueissuepriority = issueissuepriority == null ? null : WorkflowExpression.Compile(issueissuepriority);
-            WorkflowExpression.Validate(__workflow_issueissuepriority, nameof(issueissuepriority), required: false);
-            var __workflow_issueissuetracker = issueissuetracker == null ? null : WorkflowExpression.Compile(issueissuetracker);
-            WorkflowExpression.Validate(__workflow_issueissuetracker, nameof(issueissuetracker), required: false);
-            var __workflow_issueissuestatus = issueissuestatus == null ? null : WorkflowExpression.Compile(issueissuestatus);
-            WorkflowExpression.Validate(__workflow_issueissuestatus, nameof(issueissuestatus), required: false);
-            var __workflow_issueissuesubject = issueissuesubject == null ? null : WorkflowExpression.Compile(issueissuesubject);
-            WorkflowExpression.Validate(__workflow_issueissuesubject, nameof(issueissuesubject), required: false);
-            var __workflow_issueissuedescription = issueissuedescription == null ? null : WorkflowExpression.Compile(issueissuedescription);
-            WorkflowExpression.Validate(__workflow_issueissuedescription, nameof(issueissuedescription), required: false);
+            var __workflow_issueId = WorkflowExpression.Compile(issueId, nameof(issueId), required: true);
+            var __workflow_issueissuepriority = WorkflowExpression.Compile(issueissuepriority, nameof(issueissuepriority), required: false);
+            var __workflow_issueissuetracker = WorkflowExpression.Compile(issueissuetracker, nameof(issueissuetracker), required: false);
+            var __workflow_issueissuestatus = WorkflowExpression.Compile(issueissuestatus, nameof(issueissuestatus), required: false);
+            var __workflow_issueissuesubject = WorkflowExpression.Compile(issueissuesubject, nameof(issueissuesubject), required: false);
+            var __workflow_issueissuedescription = WorkflowExpression.Compile(issueissuedescription, nameof(issueissuedescription), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_issueId, 1));
@@ -96,8 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<GetProjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -119,8 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
         public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetUserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -143,8 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
         public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<ListIssuesResponse>(() =>
             {
                 var apiCallPath = "/new_issue_trigger/issues.json";
@@ -157,8 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
         public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<ListIssuesResponse>(() =>
             {
                 var apiCallPath = "/resolved_issue_trigger/issues.json";

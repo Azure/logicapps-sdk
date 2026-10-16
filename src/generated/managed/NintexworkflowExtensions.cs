@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
         public IWorkflowAction CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<object>> bodystartData = null)
         {
-            var __workflow_workflowId = workflowId == null ? null : WorkflowExpression.Compile(workflowId);
-            WorkflowExpression.Validate(__workflow_workflowId, nameof(workflowId), required: true);
-            var __workflow_bodystartData = bodystartData == null ? null : WorkflowExpression.Compile(bodystartData);
-            WorkflowExpression.Validate(__workflow_bodystartData, nameof(bodystartData), required: false);
+            var __workflow_workflowId = WorkflowExpression.Compile(workflowId, nameof(workflowId), required: true);
+            var __workflow_bodystartData = WorkflowExpression.Compile(bodystartData, nameof(bodystartData), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workflowId, 1));

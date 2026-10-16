@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         public IBodyWorkflowAction<SearchResultsResponse> SearchCfrResults(Expression<Func<string>> query, Expression<Func<string>> lastModifiedOnOrAfter = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<orderInput>> order = null, Expression<Func<paginateByInput>> paginateBy = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_lastModifiedOnOrAfter = lastModifiedOnOrAfter == null ? null : WorkflowExpression.Compile(lastModifiedOnOrAfter);
-            WorkflowExpression.Validate(__workflow_lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_paginateBy = paginateBy == null ? null : WorkflowExpression.Compile(paginateBy);
-            WorkflowExpression.Validate(__workflow_paginateBy, nameof(paginateBy), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_lastModifiedOnOrAfter = WorkflowExpression.Compile(lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_paginateBy = WorkflowExpression.Compile(paginateBy, nameof(paginateBy), required: false);
             return new DeferredBodyAction<SearchResultsResponse>(() =>
             {
                 var apiCallPath = "/search/v1/results";
@@ -48,20 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         public IBodyWorkflowAction<HierarchyCountResponse> GetHierarchyCounts(Expression<Func<string>> query, Expression<Func<string>> agencySlugs = null, Expression<Func<string>> date = null, Expression<Func<string>> lastModifiedAfter = null, Expression<Func<string>> lastModifiedOnOrAfter = null, Expression<Func<string>> lastModifiedBefore = null, Expression<Func<string>> lastModifiedOnOrBefore = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_agencySlugs = agencySlugs == null ? null : WorkflowExpression.Compile(agencySlugs);
-            WorkflowExpression.Validate(__workflow_agencySlugs, nameof(agencySlugs), required: false);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
-            var __workflow_lastModifiedAfter = lastModifiedAfter == null ? null : WorkflowExpression.Compile(lastModifiedAfter);
-            WorkflowExpression.Validate(__workflow_lastModifiedAfter, nameof(lastModifiedAfter), required: false);
-            var __workflow_lastModifiedOnOrAfter = lastModifiedOnOrAfter == null ? null : WorkflowExpression.Compile(lastModifiedOnOrAfter);
-            WorkflowExpression.Validate(__workflow_lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
-            var __workflow_lastModifiedBefore = lastModifiedBefore == null ? null : WorkflowExpression.Compile(lastModifiedBefore);
-            WorkflowExpression.Validate(__workflow_lastModifiedBefore, nameof(lastModifiedBefore), required: false);
-            var __workflow_lastModifiedOnOrBefore = lastModifiedOnOrBefore == null ? null : WorkflowExpression.Compile(lastModifiedOnOrBefore);
-            WorkflowExpression.Validate(__workflow_lastModifiedOnOrBefore, nameof(lastModifiedOnOrBefore), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_agencySlugs = WorkflowExpression.Compile(agencySlugs, nameof(agencySlugs), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_lastModifiedAfter = WorkflowExpression.Compile(lastModifiedAfter, nameof(lastModifiedAfter), required: false);
+            var __workflow_lastModifiedOnOrAfter = WorkflowExpression.Compile(lastModifiedOnOrAfter, nameof(lastModifiedOnOrAfter), required: false);
+            var __workflow_lastModifiedBefore = WorkflowExpression.Compile(lastModifiedBefore, nameof(lastModifiedBefore), required: false);
+            var __workflow_lastModifiedOnOrBefore = WorkflowExpression.Compile(lastModifiedOnOrBefore, nameof(lastModifiedOnOrBefore), required: false);
             return new DeferredBodyAction<HierarchyCountResponse>(() =>
             {
                 var apiCallPath = "/search/v1/counts/hierarchy";
@@ -87,24 +74,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecfr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecfr")]
         public IBodyWorkflowAction<object> GetFullRegulationXML(Expression<Func<string>> date, Expression<Func<string>> title, Expression<Func<string>> subtitle = null, Expression<Func<string>> chapter = null, Expression<Func<string>> subchapter = null, Expression<Func<string>> part = null, Expression<Func<string>> subpart = null, Expression<Func<string>> section = null, Expression<Func<string>> appendix = null)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: true);
-            var __workflow_subtitle = subtitle == null ? null : WorkflowExpression.Compile(subtitle);
-            WorkflowExpression.Validate(__workflow_subtitle, nameof(subtitle), required: false);
-            var __workflow_chapter = chapter == null ? null : WorkflowExpression.Compile(chapter);
-            WorkflowExpression.Validate(__workflow_chapter, nameof(chapter), required: false);
-            var __workflow_subchapter = subchapter == null ? null : WorkflowExpression.Compile(subchapter);
-            WorkflowExpression.Validate(__workflow_subchapter, nameof(subchapter), required: false);
-            var __workflow_part = part == null ? null : WorkflowExpression.Compile(part);
-            WorkflowExpression.Validate(__workflow_part, nameof(part), required: false);
-            var __workflow_subpart = subpart == null ? null : WorkflowExpression.Compile(subpart);
-            WorkflowExpression.Validate(__workflow_subpart, nameof(subpart), required: false);
-            var __workflow_section = section == null ? null : WorkflowExpression.Compile(section);
-            WorkflowExpression.Validate(__workflow_section, nameof(section), required: false);
-            var __workflow_appendix = appendix == null ? null : WorkflowExpression.Compile(appendix);
-            WorkflowExpression.Validate(__workflow_appendix, nameof(appendix), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: true);
+            var __workflow_subtitle = WorkflowExpression.Compile(subtitle, nameof(subtitle), required: false);
+            var __workflow_chapter = WorkflowExpression.Compile(chapter, nameof(chapter), required: false);
+            var __workflow_subchapter = WorkflowExpression.Compile(subchapter, nameof(subchapter), required: false);
+            var __workflow_part = WorkflowExpression.Compile(part, nameof(part), required: false);
+            var __workflow_subpart = WorkflowExpression.Compile(subpart, nameof(subpart), required: false);
+            var __workflow_section = WorkflowExpression.Compile(section, nameof(section), required: false);
+            var __workflow_appendix = WorkflowExpression.Compile(appendix, nameof(appendix), required: false);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/versioner/v1/full/{0}/title-{1}.xml", ExpressionConverter.ConvertWithUrlEncoding(__workflow_date, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_title, 1));

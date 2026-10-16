@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimintelligentxfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimintelligentxfor")]
         public IBodyWorkflowAction<AuditLog[]> GetTopicAuditTrailLogs(Expression<Func<string>> repositoryId, Expression<Func<string>> topicId, Expression<Func<int>> logId = null, Expression<Func<int>> range = null, Expression<Func<dataLanguageInput>> dataLanguage = null)
         {
-            var __workflow_repositoryId = repositoryId == null ? null : WorkflowExpression.Compile(repositoryId);
-            WorkflowExpression.Validate(__workflow_repositoryId, nameof(repositoryId), required: true);
-            var __workflow_topicId = topicId == null ? null : WorkflowExpression.Compile(topicId);
-            WorkflowExpression.Validate(__workflow_topicId, nameof(topicId), required: true);
-            var __workflow_logId = logId == null ? null : WorkflowExpression.Compile(logId);
-            WorkflowExpression.Validate(__workflow_logId, nameof(logId), required: false);
-            var __workflow_range = range == null ? null : WorkflowExpression.Compile(range);
-            WorkflowExpression.Validate(__workflow_range, nameof(range), required: false);
-            var __workflow_dataLanguage = dataLanguage == null ? null : WorkflowExpression.Compile(dataLanguage);
-            WorkflowExpression.Validate(__workflow_dataLanguage, nameof(dataLanguage), required: false);
+            var __workflow_repositoryId = WorkflowExpression.Compile(repositoryId, nameof(repositoryId), required: true);
+            var __workflow_topicId = WorkflowExpression.Compile(topicId, nameof(topicId), required: true);
+            var __workflow_logId = WorkflowExpression.Compile(logId, nameof(logId), required: false);
+            var __workflow_range = WorkflowExpression.Compile(range, nameof(range), required: false);
+            var __workflow_dataLanguage = WorkflowExpression.Compile(dataLanguage, nameof(dataLanguage), required: false);
             return new DeferredBodyAction<AuditLog[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/insights/v2/activities/repositories/{0}/system-logs/topics/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_repositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_topicId, 1));

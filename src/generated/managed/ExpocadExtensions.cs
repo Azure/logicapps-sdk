@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth> BoothsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Booth>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -33,12 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth[]> BoothsGetAllBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<deletedFilterInput>> deletedFilter = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_deletedFilter = deletedFilter == null ? null : WorkflowExpression.Compile(deletedFilter);
-            WorkflowExpression.Validate(__workflow_deletedFilter, nameof(deletedFilter), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_deletedFilter = WorkflowExpression.Compile(deletedFilter, nameof(deletedFilter), required: false);
             return new DeferredBodyAction<Booth[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -54,10 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth[]> BoothsGetAllAvailableBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Booth[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/available", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -71,10 +63,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Booth[]> BoothsGetAllRentedBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Booth[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/rented", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -88,20 +78,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> exhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null, Expression<Func<string>> status = null, Expression<Func<string>> comment = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_exhibitorId = exhibitorId == null ? null : WorkflowExpression.Compile(exhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorId, nameof(exhibitorId), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_ratePlan = ratePlan == null ? null : WorkflowExpression.Compile(ratePlan);
-            WorkflowExpression.Validate(__workflow_ratePlan, nameof(ratePlan), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
-            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_ratePlan = WorkflowExpression.Compile(ratePlan, nameof(ratePlan), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/rent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -123,12 +106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUnRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/unrent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -143,18 +123,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> exhibitorName = null, Expression<Func<string>> comment = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_exhibitorId = exhibitorId == null ? null : WorkflowExpression.Compile(exhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorId, nameof(exhibitorId), required: false);
-            var __workflow_exhibitorName = exhibitorName == null ? null : WorkflowExpression.Compile(exhibitorName);
-            WorkflowExpression.Validate(__workflow_exhibitorName, nameof(exhibitorName), required: false);
-            var __workflow_comment = comment == null ? null : WorkflowExpression.Compile(comment);
-            WorkflowExpression.Validate(__workflow_comment, nameof(comment), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
+            var __workflow_exhibitorName = WorkflowExpression.Compile(exhibitorName, nameof(exhibitorName), required: false);
+            var __workflow_comment = WorkflowExpression.Compile(comment, nameof(comment), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/hold", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -175,12 +149,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUnHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/unhold", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -195,12 +166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsRentToHold(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/rentToHold", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -215,14 +183,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsHoldToRent(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_ratePlan = ratePlan == null ? null : WorkflowExpression.Compile(ratePlan);
-            WorkflowExpression.Validate(__workflow_ratePlan, nameof(ratePlan), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_ratePlan = WorkflowExpression.Compile(ratePlan, nameof(ratePlan), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/holdToRent", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -239,14 +203,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsCombineBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<int>> boundary, Expression<Func<string[]>> boothNumbers = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_boundary = boundary == null ? null : WorkflowExpression.Compile(boundary);
-            WorkflowExpression.Validate(__workflow_boundary, nameof(boundary), required: true);
-            var __workflow_boothNumbers = boothNumbers == null ? null : WorkflowExpression.Compile(boothNumbers);
-            WorkflowExpression.Validate(__workflow_boothNumbers, nameof(boothNumbers), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_boundary = WorkflowExpression.Compile(boundary, nameof(boundary), required: true);
+            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/combine", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -262,12 +222,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUncombineBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/uncombine", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -282,12 +239,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsDeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_boothNumbers = boothNumbers == null ? null : WorkflowExpression.Compile(boothNumbers);
-            WorkflowExpression.Validate(__workflow_boothNumbers, nameof(boothNumbers), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -302,12 +256,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsUndeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_boothNumbers = boothNumbers == null ? null : WorkflowExpression.Compile(boothNumbers);
-            WorkflowExpression.Validate(__workflow_boothNumbers, nameof(boothNumbers), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_boothNumbers = WorkflowExpression.Compile(boothNumbers, nameof(boothNumbers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/undelete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -322,14 +273,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsChangeBoothNumber(Expression<Func<string>> clientName, Expression<Func<string>> oldNumber, Expression<Func<string>> newNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_oldNumber = oldNumber == null ? null : WorkflowExpression.Compile(oldNumber);
-            WorkflowExpression.Validate(__workflow_oldNumber, nameof(oldNumber), required: true);
-            var __workflow_newNumber = newNumber == null ? null : WorkflowExpression.Compile(newNumber);
-            WorkflowExpression.Validate(__workflow_newNumber, nameof(newNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_oldNumber = WorkflowExpression.Compile(oldNumber, nameof(oldNumber), required: true);
+            var __workflow_newNumber = WorkflowExpression.Compile(newNumber, nameof(newNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/changenumber", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -345,14 +292,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsSetBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_classId = classId == null ? null : WorkflowExpression.Compile(classId);
-            WorkflowExpression.Validate(__workflow_classId, nameof(classId), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/apply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -368,14 +311,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsClearBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_classId = classId == null ? null : WorkflowExpression.Compile(classId);
-            WorkflowExpression.Validate(__workflow_classId, nameof(classId), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -391,14 +330,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsSetBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> text, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/set", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -414,12 +349,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsClearBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/reset", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -434,14 +366,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsAddChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_childExhibitorId = childExhibitorId == null ? null : WorkflowExpression.Compile(childExhibitorId);
-            WorkflowExpression.Validate(__workflow_childExhibitorId, nameof(childExhibitorId), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_childExhibitorId = WorkflowExpression.Compile(childExhibitorId, nameof(childExhibitorId), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -457,14 +385,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> BoothsRemoveChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_childExhibitorId = childExhibitorId == null ? null : WorkflowExpression.Compile(childExhibitorId);
-            WorkflowExpression.Validate(__workflow_childExhibitorId, nameof(childExhibitorId), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_childExhibitorId = WorkflowExpression.Compile(childExhibitorId, nameof(childExhibitorId), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/remove", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -480,12 +404,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass> ClassesGet(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_classId = classId == null ? null : WorkflowExpression.Compile(classId);
-            WorkflowExpression.Validate(__workflow_classId, nameof(classId), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<BoothClass>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -500,10 +421,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass[]> ClassesGetAllBoothClasses(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<BoothClass[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -517,24 +436,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothClassid = boothClassid == null ? null : WorkflowExpression.Compile(boothClassid);
-            WorkflowExpression.Validate(__workflow_boothClassid, nameof(boothClassid), required: true);
-            var __workflow_boothClasskeepWhenCombined = boothClasskeepWhenCombined == null ? null : WorkflowExpression.Compile(boothClasskeepWhenCombined);
-            WorkflowExpression.Validate(__workflow_boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
-            var __workflow_boothClasscountAsInventory = boothClasscountAsInventory == null ? null : WorkflowExpression.Compile(boothClasscountAsInventory);
-            WorkflowExpression.Validate(__workflow_boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_boothClassname = boothClassname == null ? null : WorkflowExpression.Compile(boothClassname);
-            WorkflowExpression.Validate(__workflow_boothClassname, nameof(boothClassname), required: false);
-            var __workflow_boothClassdescription = boothClassdescription == null ? null : WorkflowExpression.Compile(boothClassdescription);
-            WorkflowExpression.Validate(__workflow_boothClassdescription, nameof(boothClassdescription), required: false);
-            var __workflow_boothClassprioritity = boothClassprioritity == null ? null : WorkflowExpression.Compile(boothClassprioritity);
-            WorkflowExpression.Validate(__workflow_boothClassprioritity, nameof(boothClassprioritity), required: false);
-            var __workflow_boothClasscolor = boothClasscolor == null ? null : WorkflowExpression.Compile(boothClasscolor);
-            WorkflowExpression.Validate(__workflow_boothClasscolor, nameof(boothClasscolor), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothClassid = WorkflowExpression.Compile(boothClassid, nameof(boothClassid), required: true);
+            var __workflow_boothClasskeepWhenCombined = WorkflowExpression.Compile(boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
+            var __workflow_boothClasscountAsInventory = WorkflowExpression.Compile(boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_boothClassname = WorkflowExpression.Compile(boothClassname, nameof(boothClassname), required: false);
+            var __workflow_boothClassdescription = WorkflowExpression.Compile(boothClassdescription, nameof(boothClassdescription), required: false);
+            var __workflow_boothClassprioritity = WorkflowExpression.Compile(boothClassprioritity, nameof(boothClassprioritity), required: false);
+            var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
             return new DeferredBodyAction<BoothClass>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -585,26 +495,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothClass> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> classId, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothClassid = boothClassid == null ? null : WorkflowExpression.Compile(boothClassid);
-            WorkflowExpression.Validate(__workflow_boothClassid, nameof(boothClassid), required: true);
-            var __workflow_boothClasskeepWhenCombined = boothClasskeepWhenCombined == null ? null : WorkflowExpression.Compile(boothClasskeepWhenCombined);
-            WorkflowExpression.Validate(__workflow_boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
-            var __workflow_boothClasscountAsInventory = boothClasscountAsInventory == null ? null : WorkflowExpression.Compile(boothClasscountAsInventory);
-            WorkflowExpression.Validate(__workflow_boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
-            var __workflow_classId = classId == null ? null : WorkflowExpression.Compile(classId);
-            WorkflowExpression.Validate(__workflow_classId, nameof(classId), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_boothClassname = boothClassname == null ? null : WorkflowExpression.Compile(boothClassname);
-            WorkflowExpression.Validate(__workflow_boothClassname, nameof(boothClassname), required: false);
-            var __workflow_boothClassdescription = boothClassdescription == null ? null : WorkflowExpression.Compile(boothClassdescription);
-            WorkflowExpression.Validate(__workflow_boothClassdescription, nameof(boothClassdescription), required: false);
-            var __workflow_boothClassprioritity = boothClassprioritity == null ? null : WorkflowExpression.Compile(boothClassprioritity);
-            WorkflowExpression.Validate(__workflow_boothClassprioritity, nameof(boothClassprioritity), required: false);
-            var __workflow_boothClasscolor = boothClasscolor == null ? null : WorkflowExpression.Compile(boothClasscolor);
-            WorkflowExpression.Validate(__workflow_boothClasscolor, nameof(boothClasscolor), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothClassid = WorkflowExpression.Compile(boothClassid, nameof(boothClassid), required: true);
+            var __workflow_boothClasskeepWhenCombined = WorkflowExpression.Compile(boothClasskeepWhenCombined, nameof(boothClasskeepWhenCombined), required: true);
+            var __workflow_boothClasscountAsInventory = WorkflowExpression.Compile(boothClasscountAsInventory, nameof(boothClasscountAsInventory), required: true);
+            var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_boothClassname = WorkflowExpression.Compile(boothClassname, nameof(boothClassname), required: false);
+            var __workflow_boothClassdescription = WorkflowExpression.Compile(boothClassdescription, nameof(boothClassdescription), required: false);
+            var __workflow_boothClassprioritity = WorkflowExpression.Compile(boothClassprioritity, nameof(boothClassprioritity), required: false);
+            var __workflow_boothClasscolor = WorkflowExpression.Compile(boothClasscolor, nameof(boothClasscolor), required: false);
             return new DeferredBodyAction<BoothClass>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/update", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -656,12 +556,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> ClassesDelete(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_classId = classId == null ? null : WorkflowExpression.Compile(classId);
-            WorkflowExpression.Validate(__workflow_classId, nameof(classId), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_classId = WorkflowExpression.Compile(classId, nameof(classId), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/classes/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -676,8 +573,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<ExpocadEvent[]> EventsGetAllEvents(Expression<Func<string>> clientName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
             return new DeferredBodyAction<ExpocadEvent[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -690,10 +586,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<EventStats> EventsGetEventStatistics(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<EventStats>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events/stats", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -707,10 +601,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<ExpoEventInformation> EventsGetEventInformation(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<ExpoEventInformation>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -724,12 +616,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor> ExhibitorsGet(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Exhibitor>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -744,10 +633,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor[]> ExhibitorsGetAllExhibitors(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Exhibitor[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -761,80 +648,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_exhibitorexhibitorId = exhibitorexhibitorId == null ? null : WorkflowExpression.Compile(exhibitorexhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_exhibitoraddress1 = exhibitoraddress1 == null ? null : WorkflowExpression.Compile(exhibitoraddress1);
-            WorkflowExpression.Validate(__workflow_exhibitoraddress1, nameof(exhibitoraddress1), required: false);
-            var __workflow_exhibitoraddress2 = exhibitoraddress2 == null ? null : WorkflowExpression.Compile(exhibitoraddress2);
-            WorkflowExpression.Validate(__workflow_exhibitoraddress2, nameof(exhibitoraddress2), required: false);
-            var __workflow_exhibitorcity = exhibitorcity == null ? null : WorkflowExpression.Compile(exhibitorcity);
-            WorkflowExpression.Validate(__workflow_exhibitorcity, nameof(exhibitorcity), required: false);
-            var __workflow_exhibitorcomments = exhibitorcomments == null ? null : WorkflowExpression.Compile(exhibitorcomments);
-            WorkflowExpression.Validate(__workflow_exhibitorcomments, nameof(exhibitorcomments), required: false);
-            var __workflow_exhibitorcomments2 = exhibitorcomments2 == null ? null : WorkflowExpression.Compile(exhibitorcomments2);
-            WorkflowExpression.Validate(__workflow_exhibitorcomments2, nameof(exhibitorcomments2), required: false);
-            var __workflow_exhibitorcontact = exhibitorcontact == null ? null : WorkflowExpression.Compile(exhibitorcontact);
-            WorkflowExpression.Validate(__workflow_exhibitorcontact, nameof(exhibitorcontact), required: false);
-            var __workflow_exhibitorcountry = exhibitorcountry == null ? null : WorkflowExpression.Compile(exhibitorcountry);
-            WorkflowExpression.Validate(__workflow_exhibitorcountry, nameof(exhibitorcountry), required: false);
-            var __workflow_exhibitorcellPhone = exhibitorcellPhone == null ? null : WorkflowExpression.Compile(exhibitorcellPhone);
-            WorkflowExpression.Validate(__workflow_exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
-            var __workflow_exhibitordisplayOnDrawing = exhibitordisplayOnDrawing == null ? null : WorkflowExpression.Compile(exhibitordisplayOnDrawing);
-            WorkflowExpression.Validate(__workflow_exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
-            var __workflow_exhibitordoingBusinessAs = exhibitordoingBusinessAs == null ? null : WorkflowExpression.Compile(exhibitordoingBusinessAs);
-            WorkflowExpression.Validate(__workflow_exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
-            var __workflow_exhibitordoingBusinessAsDisplayOnDrawing = exhibitordoingBusinessAsDisplayOnDrawing == null ? null : WorkflowExpression.Compile(exhibitordoingBusinessAsDisplayOnDrawing);
-            WorkflowExpression.Validate(__workflow_exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
-            var __workflow_exhibitoremail = exhibitoremail == null ? null : WorkflowExpression.Compile(exhibitoremail);
-            WorkflowExpression.Validate(__workflow_exhibitoremail, nameof(exhibitoremail), required: false);
-            var __workflow_exhibitorexhibitorName = exhibitorexhibitorName == null ? null : WorkflowExpression.Compile(exhibitorexhibitorName);
-            WorkflowExpression.Validate(__workflow_exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
-            var __workflow_exhibitorexhibitorNameLine2 = exhibitorexhibitorNameLine2 == null ? null : WorkflowExpression.Compile(exhibitorexhibitorNameLine2);
-            WorkflowExpression.Validate(__workflow_exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
-            var __workflow_exhibitorfax = exhibitorfax == null ? null : WorkflowExpression.Compile(exhibitorfax);
-            WorkflowExpression.Validate(__workflow_exhibitorfax, nameof(exhibitorfax), required: false);
-            var __workflow_exhibitorfield1 = exhibitorfield1 == null ? null : WorkflowExpression.Compile(exhibitorfield1);
-            WorkflowExpression.Validate(__workflow_exhibitorfield1, nameof(exhibitorfield1), required: false);
-            var __workflow_exhibitorfield2 = exhibitorfield2 == null ? null : WorkflowExpression.Compile(exhibitorfield2);
-            WorkflowExpression.Validate(__workflow_exhibitorfield2, nameof(exhibitorfield2), required: false);
-            var __workflow_exhibitorfield3 = exhibitorfield3 == null ? null : WorkflowExpression.Compile(exhibitorfield3);
-            WorkflowExpression.Validate(__workflow_exhibitorfield3, nameof(exhibitorfield3), required: false);
-            var __workflow_exhibitorfield4 = exhibitorfield4 == null ? null : WorkflowExpression.Compile(exhibitorfield4);
-            WorkflowExpression.Validate(__workflow_exhibitorfield4, nameof(exhibitorfield4), required: false);
-            var __workflow_exhibitorfield5 = exhibitorfield5 == null ? null : WorkflowExpression.Compile(exhibitorfield5);
-            WorkflowExpression.Validate(__workflow_exhibitorfield5, nameof(exhibitorfield5), required: false);
-            var __workflow_exhibitorfield6 = exhibitorfield6 == null ? null : WorkflowExpression.Compile(exhibitorfield6);
-            WorkflowExpression.Validate(__workflow_exhibitorfield6, nameof(exhibitorfield6), required: false);
-            var __workflow_exhibitorfield7 = exhibitorfield7 == null ? null : WorkflowExpression.Compile(exhibitorfield7);
-            WorkflowExpression.Validate(__workflow_exhibitorfield7, nameof(exhibitorfield7), required: false);
-            var __workflow_exhibitorfield8 = exhibitorfield8 == null ? null : WorkflowExpression.Compile(exhibitorfield8);
-            WorkflowExpression.Validate(__workflow_exhibitorfield8, nameof(exhibitorfield8), required: false);
-            var __workflow_exhibitorfield9 = exhibitorfield9 == null ? null : WorkflowExpression.Compile(exhibitorfield9);
-            WorkflowExpression.Validate(__workflow_exhibitorfield9, nameof(exhibitorfield9), required: false);
-            var __workflow_exhibitornickName = exhibitornickName == null ? null : WorkflowExpression.Compile(exhibitornickName);
-            WorkflowExpression.Validate(__workflow_exhibitornickName, nameof(exhibitornickName), required: false);
-            var __workflow_exhibitorsalutation = exhibitorsalutation == null ? null : WorkflowExpression.Compile(exhibitorsalutation);
-            WorkflowExpression.Validate(__workflow_exhibitorsalutation, nameof(exhibitorsalutation), required: false);
-            var __workflow_exhibitortitle = exhibitortitle == null ? null : WorkflowExpression.Compile(exhibitortitle);
-            WorkflowExpression.Validate(__workflow_exhibitortitle, nameof(exhibitortitle), required: false);
-            var __workflow_exhibitorphone = exhibitorphone == null ? null : WorkflowExpression.Compile(exhibitorphone);
-            WorkflowExpression.Validate(__workflow_exhibitorphone, nameof(exhibitorphone), required: false);
-            var __workflow_exhibitorpostalCode = exhibitorpostalCode == null ? null : WorkflowExpression.Compile(exhibitorpostalCode);
-            WorkflowExpression.Validate(__workflow_exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
-            var __workflow_exhibitorprimaryGroup = exhibitorprimaryGroup == null ? null : WorkflowExpression.Compile(exhibitorprimaryGroup);
-            WorkflowExpression.Validate(__workflow_exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
-            var __workflow_exhibitorpriorityPoints = exhibitorpriorityPoints == null ? null : WorkflowExpression.Compile(exhibitorpriorityPoints);
-            WorkflowExpression.Validate(__workflow_exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
-            var __workflow_exhibitorproductDescription = exhibitorproductDescription == null ? null : WorkflowExpression.Compile(exhibitorproductDescription);
-            WorkflowExpression.Validate(__workflow_exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
-            var __workflow_exhibitorstate = exhibitorstate == null ? null : WorkflowExpression.Compile(exhibitorstate);
-            WorkflowExpression.Validate(__workflow_exhibitorstate, nameof(exhibitorstate), required: false);
-            var __workflow_exhibitorwebSite = exhibitorwebSite == null ? null : WorkflowExpression.Compile(exhibitorwebSite);
-            WorkflowExpression.Validate(__workflow_exhibitorwebSite, nameof(exhibitorwebSite), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_exhibitorexhibitorId = WorkflowExpression.Compile(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_exhibitoraddress1 = WorkflowExpression.Compile(exhibitoraddress1, nameof(exhibitoraddress1), required: false);
+            var __workflow_exhibitoraddress2 = WorkflowExpression.Compile(exhibitoraddress2, nameof(exhibitoraddress2), required: false);
+            var __workflow_exhibitorcity = WorkflowExpression.Compile(exhibitorcity, nameof(exhibitorcity), required: false);
+            var __workflow_exhibitorcomments = WorkflowExpression.Compile(exhibitorcomments, nameof(exhibitorcomments), required: false);
+            var __workflow_exhibitorcomments2 = WorkflowExpression.Compile(exhibitorcomments2, nameof(exhibitorcomments2), required: false);
+            var __workflow_exhibitorcontact = WorkflowExpression.Compile(exhibitorcontact, nameof(exhibitorcontact), required: false);
+            var __workflow_exhibitorcountry = WorkflowExpression.Compile(exhibitorcountry, nameof(exhibitorcountry), required: false);
+            var __workflow_exhibitorcellPhone = WorkflowExpression.Compile(exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
+            var __workflow_exhibitordisplayOnDrawing = WorkflowExpression.Compile(exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
+            var __workflow_exhibitordoingBusinessAs = WorkflowExpression.Compile(exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
+            var __workflow_exhibitordoingBusinessAsDisplayOnDrawing = WorkflowExpression.Compile(exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
+            var __workflow_exhibitoremail = WorkflowExpression.Compile(exhibitoremail, nameof(exhibitoremail), required: false);
+            var __workflow_exhibitorexhibitorName = WorkflowExpression.Compile(exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
+            var __workflow_exhibitorexhibitorNameLine2 = WorkflowExpression.Compile(exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
+            var __workflow_exhibitorfax = WorkflowExpression.Compile(exhibitorfax, nameof(exhibitorfax), required: false);
+            var __workflow_exhibitorfield1 = WorkflowExpression.Compile(exhibitorfield1, nameof(exhibitorfield1), required: false);
+            var __workflow_exhibitorfield2 = WorkflowExpression.Compile(exhibitorfield2, nameof(exhibitorfield2), required: false);
+            var __workflow_exhibitorfield3 = WorkflowExpression.Compile(exhibitorfield3, nameof(exhibitorfield3), required: false);
+            var __workflow_exhibitorfield4 = WorkflowExpression.Compile(exhibitorfield4, nameof(exhibitorfield4), required: false);
+            var __workflow_exhibitorfield5 = WorkflowExpression.Compile(exhibitorfield5, nameof(exhibitorfield5), required: false);
+            var __workflow_exhibitorfield6 = WorkflowExpression.Compile(exhibitorfield6, nameof(exhibitorfield6), required: false);
+            var __workflow_exhibitorfield7 = WorkflowExpression.Compile(exhibitorfield7, nameof(exhibitorfield7), required: false);
+            var __workflow_exhibitorfield8 = WorkflowExpression.Compile(exhibitorfield8, nameof(exhibitorfield8), required: false);
+            var __workflow_exhibitorfield9 = WorkflowExpression.Compile(exhibitorfield9, nameof(exhibitorfield9), required: false);
+            var __workflow_exhibitornickName = WorkflowExpression.Compile(exhibitornickName, nameof(exhibitornickName), required: false);
+            var __workflow_exhibitorsalutation = WorkflowExpression.Compile(exhibitorsalutation, nameof(exhibitorsalutation), required: false);
+            var __workflow_exhibitortitle = WorkflowExpression.Compile(exhibitortitle, nameof(exhibitortitle), required: false);
+            var __workflow_exhibitorphone = WorkflowExpression.Compile(exhibitorphone, nameof(exhibitorphone), required: false);
+            var __workflow_exhibitorpostalCode = WorkflowExpression.Compile(exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
+            var __workflow_exhibitorprimaryGroup = WorkflowExpression.Compile(exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
+            var __workflow_exhibitorpriorityPoints = WorkflowExpression.Compile(exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
+            var __workflow_exhibitorproductDescription = WorkflowExpression.Compile(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
+            var __workflow_exhibitorstate = WorkflowExpression.Compile(exhibitorstate, nameof(exhibitorstate), required: false);
+            var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             return new DeferredBodyAction<Exhibitor>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1061,82 +911,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Exhibitor> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> id, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_exhibitorexhibitorId = exhibitorexhibitorId == null ? null : WorkflowExpression.Compile(exhibitorexhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_exhibitoraddress1 = exhibitoraddress1 == null ? null : WorkflowExpression.Compile(exhibitoraddress1);
-            WorkflowExpression.Validate(__workflow_exhibitoraddress1, nameof(exhibitoraddress1), required: false);
-            var __workflow_exhibitoraddress2 = exhibitoraddress2 == null ? null : WorkflowExpression.Compile(exhibitoraddress2);
-            WorkflowExpression.Validate(__workflow_exhibitoraddress2, nameof(exhibitoraddress2), required: false);
-            var __workflow_exhibitorcity = exhibitorcity == null ? null : WorkflowExpression.Compile(exhibitorcity);
-            WorkflowExpression.Validate(__workflow_exhibitorcity, nameof(exhibitorcity), required: false);
-            var __workflow_exhibitorcomments = exhibitorcomments == null ? null : WorkflowExpression.Compile(exhibitorcomments);
-            WorkflowExpression.Validate(__workflow_exhibitorcomments, nameof(exhibitorcomments), required: false);
-            var __workflow_exhibitorcomments2 = exhibitorcomments2 == null ? null : WorkflowExpression.Compile(exhibitorcomments2);
-            WorkflowExpression.Validate(__workflow_exhibitorcomments2, nameof(exhibitorcomments2), required: false);
-            var __workflow_exhibitorcontact = exhibitorcontact == null ? null : WorkflowExpression.Compile(exhibitorcontact);
-            WorkflowExpression.Validate(__workflow_exhibitorcontact, nameof(exhibitorcontact), required: false);
-            var __workflow_exhibitorcountry = exhibitorcountry == null ? null : WorkflowExpression.Compile(exhibitorcountry);
-            WorkflowExpression.Validate(__workflow_exhibitorcountry, nameof(exhibitorcountry), required: false);
-            var __workflow_exhibitorcellPhone = exhibitorcellPhone == null ? null : WorkflowExpression.Compile(exhibitorcellPhone);
-            WorkflowExpression.Validate(__workflow_exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
-            var __workflow_exhibitordisplayOnDrawing = exhibitordisplayOnDrawing == null ? null : WorkflowExpression.Compile(exhibitordisplayOnDrawing);
-            WorkflowExpression.Validate(__workflow_exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
-            var __workflow_exhibitordoingBusinessAs = exhibitordoingBusinessAs == null ? null : WorkflowExpression.Compile(exhibitordoingBusinessAs);
-            WorkflowExpression.Validate(__workflow_exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
-            var __workflow_exhibitordoingBusinessAsDisplayOnDrawing = exhibitordoingBusinessAsDisplayOnDrawing == null ? null : WorkflowExpression.Compile(exhibitordoingBusinessAsDisplayOnDrawing);
-            WorkflowExpression.Validate(__workflow_exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
-            var __workflow_exhibitoremail = exhibitoremail == null ? null : WorkflowExpression.Compile(exhibitoremail);
-            WorkflowExpression.Validate(__workflow_exhibitoremail, nameof(exhibitoremail), required: false);
-            var __workflow_exhibitorexhibitorName = exhibitorexhibitorName == null ? null : WorkflowExpression.Compile(exhibitorexhibitorName);
-            WorkflowExpression.Validate(__workflow_exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
-            var __workflow_exhibitorexhibitorNameLine2 = exhibitorexhibitorNameLine2 == null ? null : WorkflowExpression.Compile(exhibitorexhibitorNameLine2);
-            WorkflowExpression.Validate(__workflow_exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
-            var __workflow_exhibitorfax = exhibitorfax == null ? null : WorkflowExpression.Compile(exhibitorfax);
-            WorkflowExpression.Validate(__workflow_exhibitorfax, nameof(exhibitorfax), required: false);
-            var __workflow_exhibitorfield1 = exhibitorfield1 == null ? null : WorkflowExpression.Compile(exhibitorfield1);
-            WorkflowExpression.Validate(__workflow_exhibitorfield1, nameof(exhibitorfield1), required: false);
-            var __workflow_exhibitorfield2 = exhibitorfield2 == null ? null : WorkflowExpression.Compile(exhibitorfield2);
-            WorkflowExpression.Validate(__workflow_exhibitorfield2, nameof(exhibitorfield2), required: false);
-            var __workflow_exhibitorfield3 = exhibitorfield3 == null ? null : WorkflowExpression.Compile(exhibitorfield3);
-            WorkflowExpression.Validate(__workflow_exhibitorfield3, nameof(exhibitorfield3), required: false);
-            var __workflow_exhibitorfield4 = exhibitorfield4 == null ? null : WorkflowExpression.Compile(exhibitorfield4);
-            WorkflowExpression.Validate(__workflow_exhibitorfield4, nameof(exhibitorfield4), required: false);
-            var __workflow_exhibitorfield5 = exhibitorfield5 == null ? null : WorkflowExpression.Compile(exhibitorfield5);
-            WorkflowExpression.Validate(__workflow_exhibitorfield5, nameof(exhibitorfield5), required: false);
-            var __workflow_exhibitorfield6 = exhibitorfield6 == null ? null : WorkflowExpression.Compile(exhibitorfield6);
-            WorkflowExpression.Validate(__workflow_exhibitorfield6, nameof(exhibitorfield6), required: false);
-            var __workflow_exhibitorfield7 = exhibitorfield7 == null ? null : WorkflowExpression.Compile(exhibitorfield7);
-            WorkflowExpression.Validate(__workflow_exhibitorfield7, nameof(exhibitorfield7), required: false);
-            var __workflow_exhibitorfield8 = exhibitorfield8 == null ? null : WorkflowExpression.Compile(exhibitorfield8);
-            WorkflowExpression.Validate(__workflow_exhibitorfield8, nameof(exhibitorfield8), required: false);
-            var __workflow_exhibitorfield9 = exhibitorfield9 == null ? null : WorkflowExpression.Compile(exhibitorfield9);
-            WorkflowExpression.Validate(__workflow_exhibitorfield9, nameof(exhibitorfield9), required: false);
-            var __workflow_exhibitornickName = exhibitornickName == null ? null : WorkflowExpression.Compile(exhibitornickName);
-            WorkflowExpression.Validate(__workflow_exhibitornickName, nameof(exhibitornickName), required: false);
-            var __workflow_exhibitorsalutation = exhibitorsalutation == null ? null : WorkflowExpression.Compile(exhibitorsalutation);
-            WorkflowExpression.Validate(__workflow_exhibitorsalutation, nameof(exhibitorsalutation), required: false);
-            var __workflow_exhibitortitle = exhibitortitle == null ? null : WorkflowExpression.Compile(exhibitortitle);
-            WorkflowExpression.Validate(__workflow_exhibitortitle, nameof(exhibitortitle), required: false);
-            var __workflow_exhibitorphone = exhibitorphone == null ? null : WorkflowExpression.Compile(exhibitorphone);
-            WorkflowExpression.Validate(__workflow_exhibitorphone, nameof(exhibitorphone), required: false);
-            var __workflow_exhibitorpostalCode = exhibitorpostalCode == null ? null : WorkflowExpression.Compile(exhibitorpostalCode);
-            WorkflowExpression.Validate(__workflow_exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
-            var __workflow_exhibitorprimaryGroup = exhibitorprimaryGroup == null ? null : WorkflowExpression.Compile(exhibitorprimaryGroup);
-            WorkflowExpression.Validate(__workflow_exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
-            var __workflow_exhibitorpriorityPoints = exhibitorpriorityPoints == null ? null : WorkflowExpression.Compile(exhibitorpriorityPoints);
-            WorkflowExpression.Validate(__workflow_exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
-            var __workflow_exhibitorproductDescription = exhibitorproductDescription == null ? null : WorkflowExpression.Compile(exhibitorproductDescription);
-            WorkflowExpression.Validate(__workflow_exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
-            var __workflow_exhibitorstate = exhibitorstate == null ? null : WorkflowExpression.Compile(exhibitorstate);
-            WorkflowExpression.Validate(__workflow_exhibitorstate, nameof(exhibitorstate), required: false);
-            var __workflow_exhibitorwebSite = exhibitorwebSite == null ? null : WorkflowExpression.Compile(exhibitorwebSite);
-            WorkflowExpression.Validate(__workflow_exhibitorwebSite, nameof(exhibitorwebSite), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_exhibitorexhibitorId = WorkflowExpression.Compile(exhibitorexhibitorId, nameof(exhibitorexhibitorId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_exhibitoraddress1 = WorkflowExpression.Compile(exhibitoraddress1, nameof(exhibitoraddress1), required: false);
+            var __workflow_exhibitoraddress2 = WorkflowExpression.Compile(exhibitoraddress2, nameof(exhibitoraddress2), required: false);
+            var __workflow_exhibitorcity = WorkflowExpression.Compile(exhibitorcity, nameof(exhibitorcity), required: false);
+            var __workflow_exhibitorcomments = WorkflowExpression.Compile(exhibitorcomments, nameof(exhibitorcomments), required: false);
+            var __workflow_exhibitorcomments2 = WorkflowExpression.Compile(exhibitorcomments2, nameof(exhibitorcomments2), required: false);
+            var __workflow_exhibitorcontact = WorkflowExpression.Compile(exhibitorcontact, nameof(exhibitorcontact), required: false);
+            var __workflow_exhibitorcountry = WorkflowExpression.Compile(exhibitorcountry, nameof(exhibitorcountry), required: false);
+            var __workflow_exhibitorcellPhone = WorkflowExpression.Compile(exhibitorcellPhone, nameof(exhibitorcellPhone), required: false);
+            var __workflow_exhibitordisplayOnDrawing = WorkflowExpression.Compile(exhibitordisplayOnDrawing, nameof(exhibitordisplayOnDrawing), required: false);
+            var __workflow_exhibitordoingBusinessAs = WorkflowExpression.Compile(exhibitordoingBusinessAs, nameof(exhibitordoingBusinessAs), required: false);
+            var __workflow_exhibitordoingBusinessAsDisplayOnDrawing = WorkflowExpression.Compile(exhibitordoingBusinessAsDisplayOnDrawing, nameof(exhibitordoingBusinessAsDisplayOnDrawing), required: false);
+            var __workflow_exhibitoremail = WorkflowExpression.Compile(exhibitoremail, nameof(exhibitoremail), required: false);
+            var __workflow_exhibitorexhibitorName = WorkflowExpression.Compile(exhibitorexhibitorName, nameof(exhibitorexhibitorName), required: false);
+            var __workflow_exhibitorexhibitorNameLine2 = WorkflowExpression.Compile(exhibitorexhibitorNameLine2, nameof(exhibitorexhibitorNameLine2), required: false);
+            var __workflow_exhibitorfax = WorkflowExpression.Compile(exhibitorfax, nameof(exhibitorfax), required: false);
+            var __workflow_exhibitorfield1 = WorkflowExpression.Compile(exhibitorfield1, nameof(exhibitorfield1), required: false);
+            var __workflow_exhibitorfield2 = WorkflowExpression.Compile(exhibitorfield2, nameof(exhibitorfield2), required: false);
+            var __workflow_exhibitorfield3 = WorkflowExpression.Compile(exhibitorfield3, nameof(exhibitorfield3), required: false);
+            var __workflow_exhibitorfield4 = WorkflowExpression.Compile(exhibitorfield4, nameof(exhibitorfield4), required: false);
+            var __workflow_exhibitorfield5 = WorkflowExpression.Compile(exhibitorfield5, nameof(exhibitorfield5), required: false);
+            var __workflow_exhibitorfield6 = WorkflowExpression.Compile(exhibitorfield6, nameof(exhibitorfield6), required: false);
+            var __workflow_exhibitorfield7 = WorkflowExpression.Compile(exhibitorfield7, nameof(exhibitorfield7), required: false);
+            var __workflow_exhibitorfield8 = WorkflowExpression.Compile(exhibitorfield8, nameof(exhibitorfield8), required: false);
+            var __workflow_exhibitorfield9 = WorkflowExpression.Compile(exhibitorfield9, nameof(exhibitorfield9), required: false);
+            var __workflow_exhibitornickName = WorkflowExpression.Compile(exhibitornickName, nameof(exhibitornickName), required: false);
+            var __workflow_exhibitorsalutation = WorkflowExpression.Compile(exhibitorsalutation, nameof(exhibitorsalutation), required: false);
+            var __workflow_exhibitortitle = WorkflowExpression.Compile(exhibitortitle, nameof(exhibitortitle), required: false);
+            var __workflow_exhibitorphone = WorkflowExpression.Compile(exhibitorphone, nameof(exhibitorphone), required: false);
+            var __workflow_exhibitorpostalCode = WorkflowExpression.Compile(exhibitorpostalCode, nameof(exhibitorpostalCode), required: false);
+            var __workflow_exhibitorprimaryGroup = WorkflowExpression.Compile(exhibitorprimaryGroup, nameof(exhibitorprimaryGroup), required: false);
+            var __workflow_exhibitorpriorityPoints = WorkflowExpression.Compile(exhibitorpriorityPoints, nameof(exhibitorpriorityPoints), required: false);
+            var __workflow_exhibitorproductDescription = WorkflowExpression.Compile(exhibitorproductDescription, nameof(exhibitorproductDescription), required: false);
+            var __workflow_exhibitorstate = WorkflowExpression.Compile(exhibitorstate, nameof(exhibitorstate), required: false);
+            var __workflow_exhibitorwebSite = WorkflowExpression.Compile(exhibitorwebSite, nameof(exhibitorwebSite), required: false);
             return new DeferredBodyAction<Exhibitor>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/update", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1364,12 +1176,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> ExhibitorsDeleteExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1384,24 +1193,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Transaction[]> FinancialsGetAllTransactions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> boothNumber = null, Expression<Func<string>> expocadUser = null, Expression<Func<string>> glCode = null, Expression<Func<reversedFilterInput>> reversedFilter = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_exhibitorId = exhibitorId == null ? null : WorkflowExpression.Compile(exhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorId, nameof(exhibitorId), required: false);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: false);
-            var __workflow_expocadUser = expocadUser == null ? null : WorkflowExpression.Compile(expocadUser);
-            WorkflowExpression.Validate(__workflow_expocadUser, nameof(expocadUser), required: false);
-            var __workflow_glCode = glCode == null ? null : WorkflowExpression.Compile(glCode);
-            WorkflowExpression.Validate(__workflow_glCode, nameof(glCode), required: false);
-            var __workflow_reversedFilter = reversedFilter == null ? null : WorkflowExpression.Compile(reversedFilter);
-            WorkflowExpression.Validate(__workflow_reversedFilter, nameof(reversedFilter), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: false);
+            var __workflow_expocadUser = WorkflowExpression.Compile(expocadUser, nameof(expocadUser), required: false);
+            var __workflow_glCode = WorkflowExpression.Compile(glCode, nameof(glCode), required: false);
+            var __workflow_reversedFilter = WorkflowExpression.Compile(reversedFilter, nameof(reversedFilter), required: false);
             return new DeferredBodyAction<Transaction[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/transactions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1429,12 +1229,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<BoothFinancial> FinancialsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_boothNumber = boothNumber == null ? null : WorkflowExpression.Compile(boothNumber);
-            WorkflowExpression.Validate(__workflow_boothNumber, nameof(boothNumber), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_boothNumber = WorkflowExpression.Compile(boothNumber, nameof(boothNumber), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<BoothFinancial>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/booths", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1449,14 +1246,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Invoice> FinancialsGetInvoice(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> invoiceNo = null, Expression<Func<string>> exhibitorId = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_invoiceNo = invoiceNo == null ? null : WorkflowExpression.Compile(invoiceNo);
-            WorkflowExpression.Validate(__workflow_invoiceNo, nameof(invoiceNo), required: false);
-            var __workflow_exhibitorId = exhibitorId == null ? null : WorkflowExpression.Compile(exhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorId, nameof(exhibitorId), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_invoiceNo = WorkflowExpression.Compile(invoiceNo, nameof(invoiceNo), required: false);
+            var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
             return new DeferredBodyAction<Invoice>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1474,10 +1267,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Invoice[]> FinancialsGetAllInvoices(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Invoice[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1491,14 +1282,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<MasterRequestItem[]> FinancialsGetRequestItemList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_glCode = glCode == null ? null : WorkflowExpression.Compile(glCode);
-            WorkflowExpression.Validate(__workflow_glCode, nameof(glCode), required: false);
-            var __workflow_transactionCode = transactionCode == null ? null : WorkflowExpression.Compile(transactionCode);
-            WorkflowExpression.Validate(__workflow_transactionCode, nameof(transactionCode), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_glCode = WorkflowExpression.Compile(glCode, nameof(glCode), required: false);
+            var __workflow_transactionCode = WorkflowExpression.Compile(transactionCode, nameof(transactionCode), required: false);
             return new DeferredBodyAction<MasterRequestItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitemlist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1516,24 +1303,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<InvoiceRequestItem[]> FinancialsGetAssignedRequestItems(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> booth = null, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_exhibitorId = exhibitorId == null ? null : WorkflowExpression.Compile(exhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorId, nameof(exhibitorId), required: false);
-            var __workflow_invoiceNumber = invoiceNumber == null ? null : WorkflowExpression.Compile(invoiceNumber);
-            WorkflowExpression.Validate(__workflow_invoiceNumber, nameof(invoiceNumber), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_booth = booth == null ? null : WorkflowExpression.Compile(booth);
-            WorkflowExpression.Validate(__workflow_booth, nameof(booth), required: false);
-            var __workflow_glCode = glCode == null ? null : WorkflowExpression.Compile(glCode);
-            WorkflowExpression.Validate(__workflow_glCode, nameof(glCode), required: false);
-            var __workflow_transactionCode = transactionCode == null ? null : WorkflowExpression.Compile(transactionCode);
-            WorkflowExpression.Validate(__workflow_transactionCode, nameof(transactionCode), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
+            var __workflow_invoiceNumber = WorkflowExpression.Compile(invoiceNumber, nameof(invoiceNumber), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_booth = WorkflowExpression.Compile(booth, nameof(booth), required: false);
+            var __workflow_glCode = WorkflowExpression.Compile(glCode, nameof(glCode), required: false);
+            var __workflow_transactionCode = WorkflowExpression.Compile(transactionCode, nameof(transactionCode), required: false);
             return new DeferredBodyAction<InvoiceRequestItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1561,10 +1339,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<PaymentTypeItem[]> FinancialsGetPaymentTypeList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<PaymentTypeItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/paymenttypelist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1578,22 +1354,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<InvoicePayment[]> FinancialsGetPayments(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> depositId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> paymentTypeCategory = null)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_exhibitorId = exhibitorId == null ? null : WorkflowExpression.Compile(exhibitorId);
-            WorkflowExpression.Validate(__workflow_exhibitorId, nameof(exhibitorId), required: false);
-            var __workflow_depositId = depositId == null ? null : WorkflowExpression.Compile(depositId);
-            WorkflowExpression.Validate(__workflow_depositId, nameof(depositId), required: false);
-            var __workflow_invoiceNumber = invoiceNumber == null ? null : WorkflowExpression.Compile(invoiceNumber);
-            WorkflowExpression.Validate(__workflow_invoiceNumber, nameof(invoiceNumber), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_paymentTypeCategory = paymentTypeCategory == null ? null : WorkflowExpression.Compile(paymentTypeCategory);
-            WorkflowExpression.Validate(__workflow_paymentTypeCategory, nameof(paymentTypeCategory), required: false);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_exhibitorId = WorkflowExpression.Compile(exhibitorId, nameof(exhibitorId), required: false);
+            var __workflow_depositId = WorkflowExpression.Compile(depositId, nameof(depositId), required: false);
+            var __workflow_invoiceNumber = WorkflowExpression.Compile(invoiceNumber, nameof(invoiceNumber), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_paymentTypeCategory = WorkflowExpression.Compile(paymentTypeCategory, nameof(paymentTypeCategory), required: false);
             return new DeferredBodyAction<InvoicePayment[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/financials/payments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1619,10 +1387,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<Pavilion[]> PavilionsGetAllPavilions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<Pavilion[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/pavilions/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1636,10 +1402,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<RatePlan> RatePlansGetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<RatePlan>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1653,12 +1417,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<JToken> RatePlansSetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> name)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1673,10 +1434,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<RatePlan[]> RatePlansGetAllRatePlans(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<RatePlan[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1690,22 +1449,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<RatePlan> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlanname, Expression<Func<string>> ratePlanshortCode, Expression<Func<double>> ratePlangrossRate, Expression<Func<double>> ratePlanfixedDiscountRate, Expression<Func<double>> ratePlanpercentDiscountRate, Expression<Func<bool>> ratePlanisFixed)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
-            var __workflow_ratePlanname = ratePlanname == null ? null : WorkflowExpression.Compile(ratePlanname);
-            WorkflowExpression.Validate(__workflow_ratePlanname, nameof(ratePlanname), required: true);
-            var __workflow_ratePlanshortCode = ratePlanshortCode == null ? null : WorkflowExpression.Compile(ratePlanshortCode);
-            WorkflowExpression.Validate(__workflow_ratePlanshortCode, nameof(ratePlanshortCode), required: true);
-            var __workflow_ratePlangrossRate = ratePlangrossRate == null ? null : WorkflowExpression.Compile(ratePlangrossRate);
-            WorkflowExpression.Validate(__workflow_ratePlangrossRate, nameof(ratePlangrossRate), required: true);
-            var __workflow_ratePlanfixedDiscountRate = ratePlanfixedDiscountRate == null ? null : WorkflowExpression.Compile(ratePlanfixedDiscountRate);
-            WorkflowExpression.Validate(__workflow_ratePlanfixedDiscountRate, nameof(ratePlanfixedDiscountRate), required: true);
-            var __workflow_ratePlanpercentDiscountRate = ratePlanpercentDiscountRate == null ? null : WorkflowExpression.Compile(ratePlanpercentDiscountRate);
-            WorkflowExpression.Validate(__workflow_ratePlanpercentDiscountRate, nameof(ratePlanpercentDiscountRate), required: true);
-            var __workflow_ratePlanisFixed = ratePlanisFixed == null ? null : WorkflowExpression.Compile(ratePlanisFixed);
-            WorkflowExpression.Validate(__workflow_ratePlanisFixed, nameof(ratePlanisFixed), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
+            var __workflow_ratePlanname = WorkflowExpression.Compile(ratePlanname, nameof(ratePlanname), required: true);
+            var __workflow_ratePlanshortCode = WorkflowExpression.Compile(ratePlanshortCode, nameof(ratePlanshortCode), required: true);
+            var __workflow_ratePlangrossRate = WorkflowExpression.Compile(ratePlangrossRate, nameof(ratePlangrossRate), required: true);
+            var __workflow_ratePlanfixedDiscountRate = WorkflowExpression.Compile(ratePlanfixedDiscountRate, nameof(ratePlanfixedDiscountRate), required: true);
+            var __workflow_ratePlanpercentDiscountRate = WorkflowExpression.Compile(ratePlanpercentDiscountRate, nameof(ratePlanpercentDiscountRate), required: true);
+            var __workflow_ratePlanisFixed = WorkflowExpression.Compile(ratePlanisFixed, nameof(ratePlanisFixed), required: true);
             return new DeferredBodyAction<RatePlan>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));
@@ -1738,10 +1489,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
         public IBodyWorkflowAction<ShowInShow[]> ShowInShowsGetAllShowinShows(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
         {
-            var __workflow_clientName = clientName == null ? null : WorkflowExpression.Compile(clientName);
-            WorkflowExpression.Validate(__workflow_clientName, nameof(clientName), required: true);
-            var __workflow_databaseName = databaseName == null ? null : WorkflowExpression.Compile(databaseName);
-            WorkflowExpression.Validate(__workflow_databaseName, nameof(databaseName), required: true);
+            var __workflow_clientName = WorkflowExpression.Compile(clientName, nameof(clientName), required: true);
+            var __workflow_databaseName = WorkflowExpression.Compile(databaseName, nameof(databaseName), required: true);
             return new DeferredBodyAction<ShowInShow[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/showinshows/all", ExpressionConverter.ConvertWithUrlEncoding(__workflow_clientName, 1));

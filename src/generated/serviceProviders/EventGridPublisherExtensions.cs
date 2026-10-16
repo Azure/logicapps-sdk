@@ -15,8 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventGridPublisher")]
         public IOutputWorkflowAction<JToken> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
         {
-            var __workflow_events = events == null ? null : WorkflowExpression.Compile(events);
-            WorkflowExpression.Validate(__workflow_events, nameof(events), required: true);
+            var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: true);
             return new DeferredOutputAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();

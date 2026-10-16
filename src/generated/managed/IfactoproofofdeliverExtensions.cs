@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<ListCompanyResponse> ListCompany(Expression<Func<string>> bcenvironment)
         {
-            var __workflow_bcenvironment = bcenvironment == null ? null : WorkflowExpression.Compile(bcenvironment);
-            WorkflowExpression.Validate(__workflow_bcenvironment, nameof(bcenvironment), required: true);
+            var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
             return new DeferredBodyAction<ListCompanyResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 1));
@@ -36,10 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ifactoproofofdeliver
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ifactoproofofdeliver")]
         public IBodyWorkflowAction<GetCompanyResponse> GetCompany(Expression<Func<string>> bcenvironment, Expression<Func<string>> company)
         {
-            var __workflow_bcenvironment = bcenvironment == null ? null : WorkflowExpression.Compile(bcenvironment);
-            WorkflowExpression.Validate(__workflow_bcenvironment, nameof(bcenvironment), required: true);
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
+            var __workflow_bcenvironment = WorkflowExpression.Compile(bcenvironment, nameof(bcenvironment), required: true);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
             return new DeferredBodyAction<GetCompanyResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/{0}/api/v2.0/companies({1})", ExpressionConverter.ConvertWithUrlEncoding(__workflow_bcenvironment, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_company, 1));

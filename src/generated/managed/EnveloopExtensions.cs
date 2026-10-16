@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
         public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodytemplateVariablesInputItem[]>> bodytemplateVariables = null)
         {
-            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
-            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: false);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodytemplateVariables = bodytemplateVariables == null ? null : WorkflowExpression.Compile(bodytemplateVariables);
-            WorkflowExpression.Validate(__workflow_bodytemplateVariables, nameof(bodytemplateVariables), required: false);
+            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodytemplateVariables = WorkflowExpression.Compile(bodytemplateVariables, nameof(bodytemplateVariables), required: false);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
                 var apiCallPath = "/messages";
@@ -72,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateName)
         {
-            var __workflow_templateName = templateName == null ? null : WorkflowExpression.Compile(templateName);
-            WorkflowExpression.Validate(__workflow_templateName, nameof(templateName), required: true);
+            var __workflow_templateName = WorkflowExpression.Compile(templateName, nameof(templateName), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateName, 1));

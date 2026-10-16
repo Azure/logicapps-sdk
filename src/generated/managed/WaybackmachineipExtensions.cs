@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waybackmachineip")]
         public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot(Expression<Func<string>> url, Expression<Func<string>> timestamp = null)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_timestamp = timestamp == null ? null : WorkflowExpression.Compile(timestamp);
-            WorkflowExpression.Validate(__workflow_timestamp, nameof(timestamp), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_timestamp = WorkflowExpression.Compile(timestamp, nameof(timestamp), required: false);
             return new DeferredBodyAction<GetSnapshotResponse>(() =>
             {
                 var apiCallPath = "/wayback/available";

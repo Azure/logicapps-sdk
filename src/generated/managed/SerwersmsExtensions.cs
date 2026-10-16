@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<AddBlacklistResponse> AddBlacklist(Expression<Func<string>> bodyphone)
         {
-            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
-            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: true);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
             return new DeferredBodyAction<AddBlacklistResponse>(() =>
             {
                 var apiCallPath = "/action/add_blacklist";
@@ -36,26 +35,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<AddContactResponse> AddContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytaxId = null)
         {
-            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
-            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: true);
-            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
-            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: false);
-            var __workflow_bodycity = bodycity == null ? null : WorkflowExpression.Compile(bodycity);
-            WorkflowExpression.Validate(__workflow_bodycity, nameof(bodycity), required: false);
-            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
-            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodytaxId = bodytaxId == null ? null : WorkflowExpression.Compile(bodytaxId);
-            WorkflowExpression.Validate(__workflow_bodytaxId, nameof(bodytaxId), required: false);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: false);
+            var __workflow_bodycity = WorkflowExpression.Compile(bodycity, nameof(bodycity), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodytaxId = WorkflowExpression.Compile(bodytaxId, nameof(bodytaxId), required: false);
             return new DeferredBodyAction<AddContactResponse>(() =>
             {
                 var apiCallPath = "/action/add_contact";
@@ -131,16 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
         public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodysender = null, Expression<Func<bool>> bodyutf = null)
         {
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: false);
-            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
-            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodysender = bodysender == null ? null : WorkflowExpression.Compile(bodysender);
-            WorkflowExpression.Validate(__workflow_bodysender, nameof(bodysender), required: false);
-            var __workflow_bodyutf = bodyutf == null ? null : WorkflowExpression.Compile(bodyutf);
-            WorkflowExpression.Validate(__workflow_bodyutf, nameof(bodyutf), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: false);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodysender = WorkflowExpression.Compile(bodysender, nameof(bodysender), required: false);
+            var __workflow_bodyutf = WorkflowExpression.Compile(bodyutf, nameof(bodyutf), required: false);
             return new DeferredBodyAction<SendSmsResponse>(() =>
             {
                 var apiCallPath = "/action/send_sms";
@@ -188,8 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
     {
         public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer(Expression<Func<bodytypeInput>> bodytype, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             return new DeferredBodyTrigger<NewAnswerResponse>(() =>
             {
                 var apiCallPath = "/trigger/get_answer";

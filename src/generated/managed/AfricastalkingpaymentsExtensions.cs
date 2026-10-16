@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<MobileB2BResponse> MobileB2B(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodyproviderInput>> bodyprovider, Expression<Func<bodytransferTypeInput>> bodytransferType, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount, Expression<Func<string>> bodydestinationChannel, Expression<Func<string>> bodydestinationAccount)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = bodyproductName == null ? null : WorkflowExpression.Compile(bodyproductName);
-            WorkflowExpression.Validate(__workflow_bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodyprovider = bodyprovider == null ? null : WorkflowExpression.Compile(bodyprovider);
-            WorkflowExpression.Validate(__workflow_bodyprovider, nameof(bodyprovider), required: true);
-            var __workflow_bodytransferType = bodytransferType == null ? null : WorkflowExpression.Compile(bodytransferType);
-            WorkflowExpression.Validate(__workflow_bodytransferType, nameof(bodytransferType), required: true);
-            var __workflow_bodycurrencyCode = bodycurrencyCode == null ? null : WorkflowExpression.Compile(bodycurrencyCode);
-            WorkflowExpression.Validate(__workflow_bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
-            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: true);
-            var __workflow_bodydestinationChannel = bodydestinationChannel == null ? null : WorkflowExpression.Compile(bodydestinationChannel);
-            WorkflowExpression.Validate(__workflow_bodydestinationChannel, nameof(bodydestinationChannel), required: true);
-            var __workflow_bodydestinationAccount = bodydestinationAccount == null ? null : WorkflowExpression.Compile(bodydestinationAccount);
-            WorkflowExpression.Validate(__workflow_bodydestinationAccount, nameof(bodydestinationAccount), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
+            var __workflow_bodyprovider = WorkflowExpression.Compile(bodyprovider, nameof(bodyprovider), required: true);
+            var __workflow_bodytransferType = WorkflowExpression.Compile(bodytransferType, nameof(bodytransferType), required: true);
+            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
+            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
+            var __workflow_bodydestinationChannel = WorkflowExpression.Compile(bodydestinationChannel, nameof(bodydestinationChannel), required: true);
+            var __workflow_bodydestinationAccount = WorkflowExpression.Compile(bodydestinationAccount, nameof(bodydestinationAccount), required: true);
             return new DeferredBodyAction<MobileB2BResponse>(() =>
             {
                 var apiCallPath = "/mobile/b2b/request";
@@ -72,8 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<FetchWalletBalanceResponse> FetchWalletBalance(Expression<Func<string>> username)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
             return new DeferredBodyAction<FetchWalletBalanceResponse>(() =>
             {
                 var apiCallPath = "/query/wallet/balance";
@@ -87,16 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<WalletTransferResponse> WalletTransfer(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<int>> bodytargetProductCode, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = bodyproductName == null ? null : WorkflowExpression.Compile(bodyproductName);
-            WorkflowExpression.Validate(__workflow_bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodytargetProductCode = bodytargetProductCode == null ? null : WorkflowExpression.Compile(bodytargetProductCode);
-            WorkflowExpression.Validate(__workflow_bodytargetProductCode, nameof(bodytargetProductCode), required: true);
-            var __workflow_bodycurrencyCode = bodycurrencyCode == null ? null : WorkflowExpression.Compile(bodycurrencyCode);
-            WorkflowExpression.Validate(__workflow_bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
-            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
+            var __workflow_bodytargetProductCode = WorkflowExpression.Compile(bodytargetProductCode, nameof(bodytargetProductCode), required: true);
+            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
+            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
             return new DeferredBodyAction<WalletTransferResponse>(() =>
             {
                 var apiCallPath = "/transfer/wallet";
@@ -134,16 +120,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<FetchWalletTransactionsResponse> FetchWalletTransactions(Expression<Func<string>> username, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_pageNumber = pageNumber == null ? null : WorkflowExpression.Compile(pageNumber);
-            WorkflowExpression.Validate(__workflow_pageNumber, nameof(pageNumber), required: true);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_pageNumber = WorkflowExpression.Compile(pageNumber, nameof(pageNumber), required: true);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             return new DeferredBodyAction<FetchWalletTransactionsResponse>(() =>
             {
                 var apiCallPath = "/query/wallet/fetch";
@@ -163,14 +144,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<TopUpStashResponse> TopUpStash(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = bodyproductName == null ? null : WorkflowExpression.Compile(bodyproductName);
-            WorkflowExpression.Validate(__workflow_bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodycurrencyCode = bodycurrencyCode == null ? null : WorkflowExpression.Compile(bodycurrencyCode);
-            WorkflowExpression.Validate(__workflow_bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
-            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
+            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
+            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
             return new DeferredBodyAction<TopUpStashResponse>(() =>
             {
                 var apiCallPath = "/topup/stash";
@@ -206,30 +183,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<FetchProductTransactionsResponse> FetchProductTransactions(Expression<Func<string>> username, Expression<Func<string>> productName, Expression<Func<int>> pageNumber, Expression<Func<int>> count, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<categoryInput>> category = null, Expression<Func<providerInput>> provider = null, Expression<Func<statusInput>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<destinationInput>> destination = null, Expression<Func<string>> providerChannel = null)
         {
-            var __workflow_username = username == null ? null : WorkflowExpression.Compile(username);
-            WorkflowExpression.Validate(__workflow_username, nameof(username), required: true);
-            var __workflow_productName = productName == null ? null : WorkflowExpression.Compile(productName);
-            WorkflowExpression.Validate(__workflow_productName, nameof(productName), required: true);
-            var __workflow_pageNumber = pageNumber == null ? null : WorkflowExpression.Compile(pageNumber);
-            WorkflowExpression.Validate(__workflow_pageNumber, nameof(pageNumber), required: true);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_provider = provider == null ? null : WorkflowExpression.Compile(provider);
-            WorkflowExpression.Validate(__workflow_provider, nameof(provider), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: false);
-            var __workflow_providerChannel = providerChannel == null ? null : WorkflowExpression.Compile(providerChannel);
-            WorkflowExpression.Validate(__workflow_providerChannel, nameof(providerChannel), required: false);
+            var __workflow_username = WorkflowExpression.Compile(username, nameof(username), required: true);
+            var __workflow_productName = WorkflowExpression.Compile(productName, nameof(productName), required: true);
+            var __workflow_pageNumber = WorkflowExpression.Compile(pageNumber, nameof(pageNumber), required: true);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: false);
+            var __workflow_providerChannel = WorkflowExpression.Compile(providerChannel, nameof(providerChannel), required: false);
             return new DeferredBodyAction<FetchProductTransactionsResponse>(() =>
             {
                 var apiCallPath = "/query/transaction/fetch";
@@ -262,18 +227,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<MobileCheckoutResponse> MobileCheckout(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<string>> bodyphoneNumber, Expression<Func<bodycurrencyCodeInput>> bodycurrencyCode, Expression<Func<double>> bodyamount, Expression<Func<string>> bodyproviderChannel = null)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = bodyproductName == null ? null : WorkflowExpression.Compile(bodyproductName);
-            WorkflowExpression.Validate(__workflow_bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            var __workflow_bodycurrencyCode = bodycurrencyCode == null ? null : WorkflowExpression.Compile(bodycurrencyCode);
-            WorkflowExpression.Validate(__workflow_bodycurrencyCode, nameof(bodycurrencyCode), required: true);
-            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
-            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: true);
-            var __workflow_bodyproviderChannel = bodyproviderChannel == null ? null : WorkflowExpression.Compile(bodyproviderChannel);
-            WorkflowExpression.Validate(__workflow_bodyproviderChannel, nameof(bodyproviderChannel), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
+            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
+            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
+            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: true);
+            var __workflow_bodyproviderChannel = WorkflowExpression.Compile(bodyproviderChannel, nameof(bodyproviderChannel), required: false);
             return new DeferredBodyAction<MobileCheckoutResponse>(() =>
             {
                 var apiCallPath = "/mobile/checkout/request";
@@ -317,12 +276,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingpayments
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingpayments")]
         public IBodyWorkflowAction<MobileB2CResponse> MobileB2C(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyproductName, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyproductName = bodyproductName == null ? null : WorkflowExpression.Compile(bodyproductName);
-            WorkflowExpression.Validate(__workflow_bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: true);
             return new DeferredBodyAction<MobileB2CResponse>(() =>
             {
                 var apiCallPath = "/mobile/b2c/request";

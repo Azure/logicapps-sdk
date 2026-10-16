@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
         public IBodyWorkflowAction<ConvertToWordResponse> ConvertToWord(Expression<Func<string>> coordinates)
         {
-            var __workflow_coordinates = coordinates == null ? null : WorkflowExpression.Compile(coordinates);
-            WorkflowExpression.Validate(__workflow_coordinates, nameof(coordinates), required: true);
+            var __workflow_coordinates = WorkflowExpression.Compile(coordinates, nameof(coordinates), required: true);
             return new DeferredBodyAction<ConvertToWordResponse>(() =>
             {
                 var apiCallPath = "/convert-to-3wa";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
         public IBodyWorkflowAction<ConvertToLatLngResponse> ConvertToLatLng(Expression<Func<string>> words)
         {
-            var __workflow_words = words == null ? null : WorkflowExpression.Compile(words);
-            WorkflowExpression.Validate(__workflow_words, nameof(words), required: true);
+            var __workflow_words = WorkflowExpression.Compile(words, nameof(words), required: true);
             return new DeferredBodyAction<ConvertToLatLngResponse>(() =>
             {
                 var apiCallPath = "/convert-to-coordinates";

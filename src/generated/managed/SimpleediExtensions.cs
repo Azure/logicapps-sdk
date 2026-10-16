@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
         public IBodyWorkflowAction<JToken> EdiToJson(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
         {
-            var __workflow_bodyinputString = bodyinputString == null ? null : WorkflowExpression.Compile(bodyinputString);
-            WorkflowExpression.Validate(__workflow_bodyinputString, nameof(bodyinputString), required: true);
-            var __workflow_bodyliquidTemplate = bodyliquidTemplate == null ? null : WorkflowExpression.Compile(bodyliquidTemplate);
-            WorkflowExpression.Validate(__workflow_bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
-            var __workflow_bodylogFileName = bodylogFileName == null ? null : WorkflowExpression.Compile(bodylogFileName);
-            WorkflowExpression.Validate(__workflow_bodylogFileName, nameof(bodylogFileName), required: false);
+            var __workflow_bodyinputString = WorkflowExpression.Compile(bodyinputString, nameof(bodyinputString), required: true);
+            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            var __workflow_bodylogFileName = WorkflowExpression.Compile(bodylogFileName, nameof(bodylogFileName), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/EdiToJson";
@@ -48,12 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Simpleedi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "simpleedi")]
         public IBodyWorkflowAction<JToken> XmlToXml(Expression<Func<string>> bodyinputString, Expression<Func<string>> bodyliquidTemplate, Expression<Func<string>> bodylogFileName = null)
         {
-            var __workflow_bodyinputString = bodyinputString == null ? null : WorkflowExpression.Compile(bodyinputString);
-            WorkflowExpression.Validate(__workflow_bodyinputString, nameof(bodyinputString), required: true);
-            var __workflow_bodyliquidTemplate = bodyliquidTemplate == null ? null : WorkflowExpression.Compile(bodyliquidTemplate);
-            WorkflowExpression.Validate(__workflow_bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
-            var __workflow_bodylogFileName = bodylogFileName == null ? null : WorkflowExpression.Compile(bodylogFileName);
-            WorkflowExpression.Validate(__workflow_bodylogFileName, nameof(bodylogFileName), required: false);
+            var __workflow_bodyinputString = WorkflowExpression.Compile(bodyinputString, nameof(bodyinputString), required: true);
+            var __workflow_bodyliquidTemplate = WorkflowExpression.Compile(bodyliquidTemplate, nameof(bodyliquidTemplate), required: true);
+            var __workflow_bodylogFileName = WorkflowExpression.Compile(bodylogFileName, nameof(bodylogFileName), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/EdiToXml";

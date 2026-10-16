@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToHtmlResponse> MarkdownToHtml(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToHtmlResponse>(() =>
             {
                 var apiCallPath = "/convert/toHtml";
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToJsonResponse> MarkdownToJson(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToJsonResponse>(() =>
             {
                 var apiCallPath = "/convert/toJson";
@@ -59,8 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToXmlResponse> MarkdownToXml(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToXmlResponse>(() =>
             {
                 var apiCallPath = "/convert/toXml";
@@ -82,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToPlainTextResponse> MarkdownToPlainText(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToPlainTextResponse>(() =>
             {
                 var apiCallPath = "/convert/toPlainText";
@@ -105,8 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToCsvResponse> MarkdownToCsv(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToCsvResponse>(() =>
             {
                 var apiCallPath = "/convert/toCsv";
@@ -128,8 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToLaTeXResponse> MarkdownToLaTeX(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToLaTeXResponse>(() =>
             {
                 var apiCallPath = "/convert/toLaTeX";
@@ -151,8 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToAdaptiveCardResponse> MarkdownToAdaptiveCard(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToAdaptiveCardResponse>(() =>
             {
                 var apiCallPath = "/convert/toAdaptiveCard";
@@ -174,8 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToYamlResponse> MarkdownToYaml(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToYamlResponse>(() =>
             {
                 var apiCallPath = "/convert/toYaml";
@@ -197,8 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToEmailResponse> MarkdownToEmail(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToEmailResponse>(() =>
             {
                 var apiCallPath = "/convert/toEmail";
@@ -220,8 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToSvgResponse> MarkdownToSvg(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToSvgResponse>(() =>
             {
                 var apiCallPath = "/convert/toSvg";
@@ -243,8 +233,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToRssResponse> MarkdownToRss(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToRssResponse>(() =>
             {
                 var apiCallPath = "/convert/toRss";
@@ -266,8 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToWikiResponse> MarkdownToWiki(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToWikiResponse>(() =>
             {
                 var apiCallPath = "/convert/toWiki";
@@ -289,8 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToPngResponse> MarkdownToPng(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToPngResponse>(() =>
             {
                 var apiCallPath = "/convert/toPng";
@@ -312,8 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToChartResponse> MarkdownToChart(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToChartResponse>(() =>
             {
                 var apiCallPath = "/convert/toChart";
@@ -335,8 +321,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToDiagramResponse> MarkdownToDiagram(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToDiagramResponse>(() =>
             {
                 var apiCallPath = "/convert/toDiagram";
@@ -358,8 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownStatsResponse> MarkdownStats(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownStatsResponse>(() =>
             {
                 var apiCallPath = "/statistics";
@@ -381,8 +365,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToQrResponse> MarkdownToQr(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToQrResponse>(() =>
             {
                 var apiCallPath = "/convert/toQr";
@@ -404,8 +387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToJpegResponse> MarkdownToJpeg(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToJpegResponse>(() =>
             {
                 var apiCallPath = "/convert/toJpeg";
@@ -427,8 +409,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToBadgeResponse> MarkdownToBadge(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToBadgeResponse>(() =>
             {
                 var apiCallPath = "/convert/toBadge";
@@ -450,8 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToInfographicResponse> MarkdownToInfographic(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToInfographicResponse>(() =>
             {
                 var apiCallPath = "/convert/toInfographic";
@@ -473,8 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToLogResponse> MarkdownToLog(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToLogResponse>(() =>
             {
                 var apiCallPath = "/convert/toLog";
@@ -496,8 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToMetricsResponse> MarkdownToMetrics(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToMetricsResponse>(() =>
             {
                 var apiCallPath = "/convert/toMetrics";
@@ -519,8 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToSyslogResponse> MarkdownToSyslog(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToSyslogResponse>(() =>
             {
                 var apiCallPath = "/convert/toSyslog";
@@ -542,8 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToJsDocResponse> MarkdownToJsDoc(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToJsDocResponse>(() =>
             {
                 var apiCallPath = "/convert/toJsDoc";
@@ -565,8 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToXmlDocResponse> MarkdownToXmlDoc(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToXmlDocResponse>(() =>
             {
                 var apiCallPath = "/convert/toXmlDoc";
@@ -588,8 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToReadmeResponse> MarkdownToReadme(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToReadmeResponse>(() =>
             {
                 var apiCallPath = "/convert/toReadme";
@@ -611,8 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToChangelogResponse> MarkdownToChangelog(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToChangelogResponse>(() =>
             {
                 var apiCallPath = "/convert/toChangelog";
@@ -634,8 +607,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToTableOfContentsResponse> MarkdownToTableOfContents(Expression<Func<string>> bodymarkdownContent)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
             return new DeferredBodyAction<MarkdownToTableOfContentsResponse>(() =>
             {
                 var apiCallPath = "/convert/toTableOfContents";
@@ -657,10 +629,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Markdownconverter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "markdownconverter")]
         public IBodyWorkflowAction<MarkdownToStyledHtmlResponse> MarkdownToStyledHtml(Expression<Func<string>> bodymarkdownContent, Expression<Func<string>> bodytheme = null)
         {
-            var __workflow_bodymarkdownContent = bodymarkdownContent == null ? null : WorkflowExpression.Compile(bodymarkdownContent);
-            WorkflowExpression.Validate(__workflow_bodymarkdownContent, nameof(bodymarkdownContent), required: true);
-            var __workflow_bodytheme = bodytheme == null ? null : WorkflowExpression.Compile(bodytheme);
-            WorkflowExpression.Validate(__workflow_bodytheme, nameof(bodytheme), required: false);
+            var __workflow_bodymarkdownContent = WorkflowExpression.Compile(bodymarkdownContent, nameof(bodymarkdownContent), required: true);
+            var __workflow_bodytheme = WorkflowExpression.Compile(bodytheme, nameof(bodytheme), required: false);
             return new DeferredBodyAction<MarkdownToStyledHtmlResponse>(() =>
             {
                 var apiCallPath = "/convert/toStyledHtml";

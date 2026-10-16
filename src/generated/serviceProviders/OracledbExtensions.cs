@@ -15,8 +15,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables(Expression<Func<bool>> ownedTables = null)
         {
-            var __workflow_ownedTables = ownedTables == null ? null : WorkflowExpression.Compile(ownedTables);
-            WorkflowExpression.Validate(__workflow_ownedTables, nameof(ownedTables), required: false);
+            var __workflow_ownedTables = WorkflowExpression.Compile(ownedTables, nameof(ownedTables), required: false);
             return new DeferredBodyAction<GetTablesOutputItem[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -41,10 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_queryParameters = queryParameters == null ? null : WorkflowExpression.Compile(queryParameters);
-            WorkflowExpression.Validate(__workflow_queryParameters, nameof(queryParameters), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_queryParameters = WorkflowExpression.Compile(queryParameters, nameof(queryParameters), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -66,18 +63,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<JToken[]> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<int>> skipCount = null, Expression<Func<int>> maxCount = null, Expression<Func<string>> orderBy = null, Expression<Func<string[]>> filterBy = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_columnValuesForWhereCondition = columnValuesForWhereCondition == null ? null : WorkflowExpression.Compile(columnValuesForWhereCondition);
-            WorkflowExpression.Validate(__workflow_columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
-            var __workflow_skipCount = skipCount == null ? null : WorkflowExpression.Compile(skipCount);
-            WorkflowExpression.Validate(__workflow_skipCount, nameof(skipCount), required: false);
-            var __workflow_maxCount = maxCount == null ? null : WorkflowExpression.Compile(maxCount);
-            WorkflowExpression.Validate(__workflow_maxCount, nameof(maxCount), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
-            var __workflow_filterBy = filterBy == null ? null : WorkflowExpression.Compile(filterBy);
-            WorkflowExpression.Validate(__workflow_filterBy, nameof(filterBy), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_columnValuesForWhereCondition = WorkflowExpression.Compile(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
+            var __workflow_skipCount = WorkflowExpression.Compile(skipCount, nameof(skipCount), required: false);
+            var __workflow_maxCount = WorkflowExpression.Compile(maxCount, nameof(maxCount), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_filterBy = WorkflowExpression.Compile(filterBy, nameof(filterBy), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -127,10 +118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<JToken> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_setColumns = setColumns == null ? null : WorkflowExpression.Compile(setColumns);
-            WorkflowExpression.Validate(__workflow_setColumns, nameof(setColumns), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_setColumns = WorkflowExpression.Compile(setColumns, nameof(setColumns), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -152,10 +141,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
         public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure(Expression<Func<string>> storedProcedure, Expression<Func<object>> storedProcedureParameters = null)
         {
-            var __workflow_storedProcedure = storedProcedure == null ? null : WorkflowExpression.Compile(storedProcedure);
-            WorkflowExpression.Validate(__workflow_storedProcedure, nameof(storedProcedure), required: true);
-            var __workflow_storedProcedureParameters = storedProcedureParameters == null ? null : WorkflowExpression.Compile(storedProcedureParameters);
-            WorkflowExpression.Validate(__workflow_storedProcedureParameters, nameof(storedProcedureParameters), required: false);
+            var __workflow_storedProcedure = WorkflowExpression.Compile(storedProcedure, nameof(storedProcedure), required: true);
+            var __workflow_storedProcedureParameters = WorkflowExpression.Compile(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
             return new DeferredBodyAction<ExecuteStoredProcedureOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

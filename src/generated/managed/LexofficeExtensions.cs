@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseArticlesGet> FilteringArticles(Expression<Func<string>> articleNumber = null, Expression<Func<string>> gtin = null, Expression<Func<string>> type = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_articleNumber = articleNumber == null ? null : WorkflowExpression.Compile(articleNumber);
-            WorkflowExpression.Validate(__workflow_articleNumber, nameof(articleNumber), required: false);
-            var __workflow_gtin = gtin == null ? null : WorkflowExpression.Compile(gtin);
-            WorkflowExpression.Validate(__workflow_gtin, nameof(gtin), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_articleNumber = WorkflowExpression.Compile(articleNumber, nameof(articleNumber), required: false);
+            var __workflow_gtin = WorkflowExpression.Compile(gtin, nameof(gtin), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<ResponseArticlesGet>(() =>
             {
                 var apiCallPath = "/articles";
@@ -50,22 +44,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseArticlesPost> CreateArticle(Expression<Func<string>> bodyarticleNumber = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<string>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodyunitName = null)
         {
-            var __workflow_bodyarticleNumber = bodyarticleNumber == null ? null : WorkflowExpression.Compile(bodyarticleNumber);
-            WorkflowExpression.Validate(__workflow_bodyarticleNumber, nameof(bodyarticleNumber), required: false);
-            var __workflow_bodypricegrossPrice = bodypricegrossPrice == null ? null : WorkflowExpression.Compile(bodypricegrossPrice);
-            WorkflowExpression.Validate(__workflow_bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
-            var __workflow_bodypriceleadingPrice = bodypriceleadingPrice == null ? null : WorkflowExpression.Compile(bodypriceleadingPrice);
-            WorkflowExpression.Validate(__workflow_bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
-            var __workflow_bodypricenetPrice = bodypricenetPrice == null ? null : WorkflowExpression.Compile(bodypricenetPrice);
-            WorkflowExpression.Validate(__workflow_bodypricenetPrice, nameof(bodypricenetPrice), required: false);
-            var __workflow_bodypricetaxRate = bodypricetaxRate == null ? null : WorkflowExpression.Compile(bodypricetaxRate);
-            WorkflowExpression.Validate(__workflow_bodypricetaxRate, nameof(bodypricetaxRate), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyunitName = bodyunitName == null ? null : WorkflowExpression.Compile(bodyunitName);
-            WorkflowExpression.Validate(__workflow_bodyunitName, nameof(bodyunitName), required: false);
+            var __workflow_bodyarticleNumber = WorkflowExpression.Compile(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
+            var __workflow_bodypricegrossPrice = WorkflowExpression.Compile(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
+            var __workflow_bodypriceleadingPrice = WorkflowExpression.Compile(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
+            var __workflow_bodypricenetPrice = WorkflowExpression.Compile(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
+            var __workflow_bodypricetaxRate = WorkflowExpression.Compile(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyunitName = WorkflowExpression.Compile(bodyunitName, nameof(bodyunitName), required: false);
             return new DeferredBodyAction<ResponseArticlesPost>(() =>
             {
                 var apiCallPath = "/articles";
@@ -143,8 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveAnArticleResponse> RetrieveAnArticle(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveAnArticleResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -158,8 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction DeleteAnArticle(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -173,30 +157,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseArticlesIdGet> UpdateAnArticle(Expression<Func<string>> id, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyunitName, Expression<Func<int>> bodyversion, Expression<Func<string>> bodyarticleNumber = null, Expression<Func<string>> bodygtin = null, Expression<Func<string>> bodynote = null, Expression<Func<double>> bodypricegrossPrice = null, Expression<Func<bodypriceleadingPriceInput>> bodypriceleadingPrice = null, Expression<Func<double>> bodypricenetPrice = null, Expression<Func<double>> bodypricetaxRate = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyunitName = bodyunitName == null ? null : WorkflowExpression.Compile(bodyunitName);
-            WorkflowExpression.Validate(__workflow_bodyunitName, nameof(bodyunitName), required: true);
-            var __workflow_bodyversion = bodyversion == null ? null : WorkflowExpression.Compile(bodyversion);
-            WorkflowExpression.Validate(__workflow_bodyversion, nameof(bodyversion), required: true);
-            var __workflow_bodyarticleNumber = bodyarticleNumber == null ? null : WorkflowExpression.Compile(bodyarticleNumber);
-            WorkflowExpression.Validate(__workflow_bodyarticleNumber, nameof(bodyarticleNumber), required: false);
-            var __workflow_bodygtin = bodygtin == null ? null : WorkflowExpression.Compile(bodygtin);
-            WorkflowExpression.Validate(__workflow_bodygtin, nameof(bodygtin), required: false);
-            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
-            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
-            var __workflow_bodypricegrossPrice = bodypricegrossPrice == null ? null : WorkflowExpression.Compile(bodypricegrossPrice);
-            WorkflowExpression.Validate(__workflow_bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
-            var __workflow_bodypriceleadingPrice = bodypriceleadingPrice == null ? null : WorkflowExpression.Compile(bodypriceleadingPrice);
-            WorkflowExpression.Validate(__workflow_bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
-            var __workflow_bodypricenetPrice = bodypricenetPrice == null ? null : WorkflowExpression.Compile(bodypricenetPrice);
-            WorkflowExpression.Validate(__workflow_bodypricenetPrice, nameof(bodypricenetPrice), required: false);
-            var __workflow_bodypricetaxRate = bodypricetaxRate == null ? null : WorkflowExpression.Compile(bodypricetaxRate);
-            WorkflowExpression.Validate(__workflow_bodypricetaxRate, nameof(bodypricetaxRate), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyunitName = WorkflowExpression.Compile(bodyunitName, nameof(bodyunitName), required: true);
+            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: true);
+            var __workflow_bodyarticleNumber = WorkflowExpression.Compile(bodyarticleNumber, nameof(bodyarticleNumber), required: false);
+            var __workflow_bodygtin = WorkflowExpression.Compile(bodygtin, nameof(bodygtin), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
+            var __workflow_bodypricegrossPrice = WorkflowExpression.Compile(bodypricegrossPrice, nameof(bodypricegrossPrice), required: false);
+            var __workflow_bodypriceleadingPrice = WorkflowExpression.Compile(bodypriceleadingPrice, nameof(bodypriceleadingPrice), required: false);
+            var __workflow_bodypricenetPrice = WorkflowExpression.Compile(bodypricenetPrice, nameof(bodypricenetPrice), required: false);
+            var __workflow_bodypricetaxRate = WorkflowExpression.Compile(bodypricetaxRate, nameof(bodypricetaxRate), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<ResponseArticlesIdGet>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/articles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -290,22 +262,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseContactsGet> RetrieveAllContacts(Expression<Func<int>> number = null, Expression<Func<string>> email = null, Expression<Func<string>> name = null, Expression<Func<bool>> vendor = null, Expression<Func<bool>> customer = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_number = number == null ? null : WorkflowExpression.Compile(number);
-            WorkflowExpression.Validate(__workflow_number, nameof(number), required: false);
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_vendor = vendor == null ? null : WorkflowExpression.Compile(vendor);
-            WorkflowExpression.Validate(__workflow_vendor, nameof(vendor), required: false);
-            var __workflow_customer = customer == null ? null : WorkflowExpression.Compile(customer);
-            WorkflowExpression.Validate(__workflow_customer, nameof(customer), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_number = WorkflowExpression.Compile(number, nameof(number), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_vendor = WorkflowExpression.Compile(vendor, nameof(vendor), required: false);
+            var __workflow_customer = WorkflowExpression.Compile(customer, nameof(customer), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<ResponseContactsGet>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -355,8 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveContactResponse> RetrieveContact(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveContactResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -370,8 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseContactsIdPut> UpdateContact(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ResponseContactsIdPut>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -403,10 +365,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseCreditNotesPost> CreateCreditNote(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
         {
-            var __workflow_finalize = finalize == null ? null : WorkflowExpression.Compile(finalize);
-            WorkflowExpression.Validate(__workflow_finalize, nameof(finalize), required: true);
-            var __workflow_precedingSalesVoucherId = precedingSalesVoucherId == null ? null : WorkflowExpression.Compile(precedingSalesVoucherId);
-            WorkflowExpression.Validate(__workflow_precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_finalize = WorkflowExpression.Compile(finalize, nameof(finalize), required: true);
+            var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             return new DeferredBodyAction<ResponseCreditNotesPost>(() =>
             {
                 var apiCallPath = "/credit-notes";
@@ -431,8 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveCreditNoteResponse> RetrieveCreditNote(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveCreditNoteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -446,8 +405,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderCreditNoteDocumentResponse> RenderCreditNoteDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RenderCreditNoteDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/credit-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -461,8 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseDeliveryNotesPost> CreateDeliveryNote(Expression<Func<string>> precedingSalesVoucherId = null)
         {
-            var __workflow_precedingSalesVoucherId = precedingSalesVoucherId == null ? null : WorkflowExpression.Compile(precedingSalesVoucherId);
-            WorkflowExpression.Validate(__workflow_precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             return new DeferredBodyAction<ResponseDeliveryNotesPost>(() =>
             {
                 var apiCallPath = "/delivery-notes";
@@ -486,8 +443,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderDeliveryNoteDocumentResponse> RenderDeliveryNoteDocument(Expression<Func<string>> deliveryNoteid)
         {
-            var __workflow_deliveryNoteid = deliveryNoteid == null ? null : WorkflowExpression.Compile(deliveryNoteid);
-            WorkflowExpression.Validate(__workflow_deliveryNoteid, nameof(deliveryNoteid), required: true);
+            var __workflow_deliveryNoteid = WorkflowExpression.Compile(deliveryNoteid, nameof(deliveryNoteid), required: true);
             return new DeferredBodyAction<RenderDeliveryNoteDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_deliveryNoteid, 1));
@@ -501,8 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDeliveryNoteResponse> RetrieveDeliveryNote(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveDeliveryNoteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/delivery-notes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -516,8 +471,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDownPaymentInvoiceResponse> RetrieveDownPaymentInvoice(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveDownPaymentInvoiceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/down-payment-invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -532,8 +486,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseDunningsPost> CreateDunning(Expression<Func<string>> precedingSalesVoucherId = null)
         {
-            var __workflow_precedingSalesVoucherId = precedingSalesVoucherId == null ? null : WorkflowExpression.Compile(precedingSalesVoucherId);
-            WorkflowExpression.Validate(__workflow_precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             return new DeferredBodyAction<ResponseDunningsPost>(() =>
             {
                 var apiCallPath = "/dunnings";
@@ -557,8 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveDunningResponse> RetrieveDunning(Expression<Func<string>> dunningsid)
         {
-            var __workflow_dunningsid = dunningsid == null ? null : WorkflowExpression.Compile(dunningsid);
-            WorkflowExpression.Validate(__workflow_dunningsid, nameof(dunningsid), required: true);
+            var __workflow_dunningsid = WorkflowExpression.Compile(dunningsid, nameof(dunningsid), required: true);
             return new DeferredBodyAction<RetrieveDunningResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/dunnings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dunningsid, 1));
@@ -572,8 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderDunningDocumentResponse> RenderDunningDocument(Expression<Func<string>> dunningsid)
         {
-            var __workflow_dunningsid = dunningsid == null ? null : WorkflowExpression.Compile(dunningsid);
-            WorkflowExpression.Validate(__workflow_dunningsid, nameof(dunningsid), required: true);
+            var __workflow_dunningsid = WorkflowExpression.Compile(dunningsid, nameof(dunningsid), required: true);
             return new DeferredBodyAction<RenderDunningDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/dunnings/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dunningsid, 1));
@@ -597,8 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<EventSubscriptionResponse> RetrieveAEventSubscription(Expression<Func<string>> subscriptionId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             return new DeferredBodyAction<EventSubscriptionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
@@ -612,8 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction DeleteEventSubscription(Expression<Func<string>> subscriptionId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event-subscriptions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1));
@@ -627,10 +576,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseFilesPost> UploadFileLexoffice(Expression<Func<object>> file, Expression<Func<string>> type)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             return new DeferredBodyAction<ResponseFilesPost>(() =>
             {
                 var apiCallPath = "/files";
@@ -643,10 +590,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<object> DownloadFileLexoffice(Expression<Func<string>> fileId, Expression<Func<acceptInput>> accept = null)
         {
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: false);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: false);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -662,10 +607,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseInvoicesPost> CreateInvoice(Expression<Func<bool>> finalize, Expression<Func<string>> precedingSalesVoucherId = null)
         {
-            var __workflow_finalize = finalize == null ? null : WorkflowExpression.Compile(finalize);
-            WorkflowExpression.Validate(__workflow_finalize, nameof(finalize), required: true);
-            var __workflow_precedingSalesVoucherId = precedingSalesVoucherId == null ? null : WorkflowExpression.Compile(precedingSalesVoucherId);
-            WorkflowExpression.Validate(__workflow_precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_finalize = WorkflowExpression.Compile(finalize, nameof(finalize), required: true);
+            var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             return new DeferredBodyAction<ResponseInvoicesPost>(() =>
             {
                 var apiCallPath = "/invoices";
@@ -690,8 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveInvoiceResponse> RetrieveInvoice(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveInvoiceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -706,8 +648,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderInvoiceDocumentResponse> RenderInvoiceDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RenderInvoiceDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoices/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -721,8 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseOrderConfirmationsPost> CreateOrderConfirmation(Expression<Func<string>> precedingSalesVoucherId = null)
         {
-            var __workflow_precedingSalesVoucherId = precedingSalesVoucherId == null ? null : WorkflowExpression.Compile(precedingSalesVoucherId);
-            WorkflowExpression.Validate(__workflow_precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
+            var __workflow_precedingSalesVoucherId = WorkflowExpression.Compile(precedingSalesVoucherId, nameof(precedingSalesVoucherId), required: false);
             return new DeferredBodyAction<ResponseOrderConfirmationsPost>(() =>
             {
                 var apiCallPath = "/order-confirmations";
@@ -746,8 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveOrderConfirmationResponse> RetrieveOrderConfirmation(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveOrderConfirmationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -761,8 +700,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderOrderConfirmationDocumentResponse> RenderOrderConfirmationDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RenderOrderConfirmationDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/order-confirmations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -786,8 +724,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrievePaymentInformationResponse> RetrievePaymentInformation(Expression<Func<string>> voucherId)
         {
-            var __workflow_voucherId = voucherId == null ? null : WorkflowExpression.Compile(voucherId);
-            WorkflowExpression.Validate(__workflow_voucherId, nameof(voucherId), required: true);
+            var __workflow_voucherId = WorkflowExpression.Compile(voucherId, nameof(voucherId), required: true);
             return new DeferredBodyAction<RetrievePaymentInformationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/payments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_voucherId, 1));
@@ -821,8 +758,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseQuotationsPost> CreateQuotation(Expression<Func<bool>> finalize)
         {
-            var __workflow_finalize = finalize == null ? null : WorkflowExpression.Compile(finalize);
-            WorkflowExpression.Validate(__workflow_finalize, nameof(finalize), required: true);
+            var __workflow_finalize = WorkflowExpression.Compile(finalize, nameof(finalize), required: true);
             return new DeferredBodyAction<ResponseQuotationsPost>(() =>
             {
                 var apiCallPath = "/quotations";
@@ -845,8 +781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveQuotationResponse> RetrieveQuotation(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveQuotationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/quotations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -861,8 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RenderQuotationDocumentResponse> RenderQuotationDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RenderQuotationDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/quotations/{0}/document", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -876,12 +810,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseRecurringTemplatesGet> RetrieveAllRecurringTemplates(Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<ResponseRecurringTemplatesGet>(() =>
             {
                 var apiCallPath = "/recurring-templates";
@@ -901,8 +832,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveRecurringTemplateResponse> RetrieveRecurringTemplate(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveRecurringTemplateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/recurring-templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -917,34 +847,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseVoucherlistGet> RetrieveAndFilterVoucherlist(Expression<Func<voucherTypeInput>> voucherType, Expression<Func<voucherStatusInput>> voucherStatus, Expression<Func<bool>> archived = null, Expression<Func<string>> contactId = null, Expression<Func<string>> voucherDateFrom = null, Expression<Func<string>> voucherDateTo = null, Expression<Func<string>> createdDateFrom = null, Expression<Func<string>> createdDateTo = null, Expression<Func<string>> updatedDateFrom = null, Expression<Func<string>> updatedDateTo = null, Expression<Func<string>> voucherNumber = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_voucherType = voucherType == null ? null : WorkflowExpression.Compile(voucherType);
-            WorkflowExpression.Validate(__workflow_voucherType, nameof(voucherType), required: true);
-            var __workflow_voucherStatus = voucherStatus == null ? null : WorkflowExpression.Compile(voucherStatus);
-            WorkflowExpression.Validate(__workflow_voucherStatus, nameof(voucherStatus), required: true);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: false);
-            var __workflow_voucherDateFrom = voucherDateFrom == null ? null : WorkflowExpression.Compile(voucherDateFrom);
-            WorkflowExpression.Validate(__workflow_voucherDateFrom, nameof(voucherDateFrom), required: false);
-            var __workflow_voucherDateTo = voucherDateTo == null ? null : WorkflowExpression.Compile(voucherDateTo);
-            WorkflowExpression.Validate(__workflow_voucherDateTo, nameof(voucherDateTo), required: false);
-            var __workflow_createdDateFrom = createdDateFrom == null ? null : WorkflowExpression.Compile(createdDateFrom);
-            WorkflowExpression.Validate(__workflow_createdDateFrom, nameof(createdDateFrom), required: false);
-            var __workflow_createdDateTo = createdDateTo == null ? null : WorkflowExpression.Compile(createdDateTo);
-            WorkflowExpression.Validate(__workflow_createdDateTo, nameof(createdDateTo), required: false);
-            var __workflow_updatedDateFrom = updatedDateFrom == null ? null : WorkflowExpression.Compile(updatedDateFrom);
-            WorkflowExpression.Validate(__workflow_updatedDateFrom, nameof(updatedDateFrom), required: false);
-            var __workflow_updatedDateTo = updatedDateTo == null ? null : WorkflowExpression.Compile(updatedDateTo);
-            WorkflowExpression.Validate(__workflow_updatedDateTo, nameof(updatedDateTo), required: false);
-            var __workflow_voucherNumber = voucherNumber == null ? null : WorkflowExpression.Compile(voucherNumber);
-            WorkflowExpression.Validate(__workflow_voucherNumber, nameof(voucherNumber), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_voucherType = WorkflowExpression.Compile(voucherType, nameof(voucherType), required: true);
+            var __workflow_voucherStatus = WorkflowExpression.Compile(voucherStatus, nameof(voucherStatus), required: true);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: false);
+            var __workflow_voucherDateFrom = WorkflowExpression.Compile(voucherDateFrom, nameof(voucherDateFrom), required: false);
+            var __workflow_voucherDateTo = WorkflowExpression.Compile(voucherDateTo, nameof(voucherDateTo), required: false);
+            var __workflow_createdDateFrom = WorkflowExpression.Compile(createdDateFrom, nameof(createdDateFrom), required: false);
+            var __workflow_createdDateTo = WorkflowExpression.Compile(createdDateTo, nameof(createdDateTo), required: false);
+            var __workflow_updatedDateFrom = WorkflowExpression.Compile(updatedDateFrom, nameof(updatedDateFrom), required: false);
+            var __workflow_updatedDateTo = WorkflowExpression.Compile(updatedDateTo, nameof(updatedDateTo), required: false);
+            var __workflow_voucherNumber = WorkflowExpression.Compile(voucherNumber, nameof(voucherNumber), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<ResponseVoucherlistGet>(() =>
             {
                 var apiCallPath = "/voucherlist";
@@ -987,32 +903,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseVouchersPost> CreateVoucher(Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
         {
-            var __workflow_bodytaxType = bodytaxType == null ? null : WorkflowExpression.Compile(bodytaxType);
-            WorkflowExpression.Validate(__workflow_bodytaxType, nameof(bodytaxType), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyvoucherItems = bodyvoucherItems == null ? null : WorkflowExpression.Compile(bodyvoucherItems);
-            WorkflowExpression.Validate(__workflow_bodyvoucherItems, nameof(bodyvoucherItems), required: true);
-            var __workflow_bodycontactId = bodycontactId == null ? null : WorkflowExpression.Compile(bodycontactId);
-            WorkflowExpression.Validate(__workflow_bodycontactId, nameof(bodycontactId), required: false);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyremark = bodyremark == null ? null : WorkflowExpression.Compile(bodyremark);
-            WorkflowExpression.Validate(__workflow_bodyremark, nameof(bodyremark), required: false);
-            var __workflow_bodyshippingDate = bodyshippingDate == null ? null : WorkflowExpression.Compile(bodyshippingDate);
-            WorkflowExpression.Validate(__workflow_bodyshippingDate, nameof(bodyshippingDate), required: false);
-            var __workflow_bodytotalGrossAmount = bodytotalGrossAmount == null ? null : WorkflowExpression.Compile(bodytotalGrossAmount);
-            WorkflowExpression.Validate(__workflow_bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
-            var __workflow_bodytotalTaxAmount = bodytotalTaxAmount == null ? null : WorkflowExpression.Compile(bodytotalTaxAmount);
-            WorkflowExpression.Validate(__workflow_bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
-            var __workflow_bodyuseCollectiveContact = bodyuseCollectiveContact == null ? null : WorkflowExpression.Compile(bodyuseCollectiveContact);
-            WorkflowExpression.Validate(__workflow_bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
-            var __workflow_bodyvoucherDate = bodyvoucherDate == null ? null : WorkflowExpression.Compile(bodyvoucherDate);
-            WorkflowExpression.Validate(__workflow_bodyvoucherDate, nameof(bodyvoucherDate), required: false);
-            var __workflow_bodyvoucherNumber = bodyvoucherNumber == null ? null : WorkflowExpression.Compile(bodyvoucherNumber);
-            WorkflowExpression.Validate(__workflow_bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
-            var __workflow_bodyvoucherStatus = bodyvoucherStatus == null ? null : WorkflowExpression.Compile(bodyvoucherStatus);
-            WorkflowExpression.Validate(__workflow_bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
+            var __workflow_bodytaxType = WorkflowExpression.Compile(bodytaxType, nameof(bodytaxType), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyvoucherItems = WorkflowExpression.Compile(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
+            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
+            var __workflow_bodyshippingDate = WorkflowExpression.Compile(bodyshippingDate, nameof(bodyshippingDate), required: false);
+            var __workflow_bodytotalGrossAmount = WorkflowExpression.Compile(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
+            var __workflow_bodytotalTaxAmount = WorkflowExpression.Compile(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
+            var __workflow_bodyuseCollectiveContact = WorkflowExpression.Compile(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
+            var __workflow_bodyvoucherDate = WorkflowExpression.Compile(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
+            var __workflow_bodyvoucherNumber = WorkflowExpression.Compile(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
+            var __workflow_bodyvoucherStatus = WorkflowExpression.Compile(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
             return new DeferredBodyAction<ResponseVouchersPost>(() =>
             {
                 var apiCallPath = "/vouchers";
@@ -1100,8 +1003,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<RetrieveVoucherResponse> RetrieveVoucher(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<RetrieveVoucherResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1115,38 +1017,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IBodyWorkflowAction<ResponseVouchersIdPut> UpdateVoucher(Expression<Func<string>> id, Expression<Func<bodytaxTypeInput>> bodytaxType, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bodyvoucherItemsInputItem[]>> bodyvoucherItems, Expression<Func<string>> bodycontactId = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodyremark = null, Expression<Func<string>> bodyshippingDate = null, Expression<Func<double>> bodytotalGrossAmount = null, Expression<Func<double>> bodytotalTaxAmount = null, Expression<Func<bool>> bodyuseCollectiveContact = null, Expression<Func<int>> bodyversion = null, Expression<Func<string>> bodyvoucherDate = null, Expression<Func<string>> bodyvoucherNumber = null, Expression<Func<bodyvoucherStatusInput>> bodyvoucherStatus = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytaxType = bodytaxType == null ? null : WorkflowExpression.Compile(bodytaxType);
-            WorkflowExpression.Validate(__workflow_bodytaxType, nameof(bodytaxType), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyvoucherItems = bodyvoucherItems == null ? null : WorkflowExpression.Compile(bodyvoucherItems);
-            WorkflowExpression.Validate(__workflow_bodyvoucherItems, nameof(bodyvoucherItems), required: true);
-            var __workflow_bodycontactId = bodycontactId == null ? null : WorkflowExpression.Compile(bodycontactId);
-            WorkflowExpression.Validate(__workflow_bodycontactId, nameof(bodycontactId), required: false);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyfiles = bodyfiles == null ? null : WorkflowExpression.Compile(bodyfiles);
-            WorkflowExpression.Validate(__workflow_bodyfiles, nameof(bodyfiles), required: false);
-            var __workflow_bodyremark = bodyremark == null ? null : WorkflowExpression.Compile(bodyremark);
-            WorkflowExpression.Validate(__workflow_bodyremark, nameof(bodyremark), required: false);
-            var __workflow_bodyshippingDate = bodyshippingDate == null ? null : WorkflowExpression.Compile(bodyshippingDate);
-            WorkflowExpression.Validate(__workflow_bodyshippingDate, nameof(bodyshippingDate), required: false);
-            var __workflow_bodytotalGrossAmount = bodytotalGrossAmount == null ? null : WorkflowExpression.Compile(bodytotalGrossAmount);
-            WorkflowExpression.Validate(__workflow_bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
-            var __workflow_bodytotalTaxAmount = bodytotalTaxAmount == null ? null : WorkflowExpression.Compile(bodytotalTaxAmount);
-            WorkflowExpression.Validate(__workflow_bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
-            var __workflow_bodyuseCollectiveContact = bodyuseCollectiveContact == null ? null : WorkflowExpression.Compile(bodyuseCollectiveContact);
-            WorkflowExpression.Validate(__workflow_bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
-            var __workflow_bodyversion = bodyversion == null ? null : WorkflowExpression.Compile(bodyversion);
-            WorkflowExpression.Validate(__workflow_bodyversion, nameof(bodyversion), required: false);
-            var __workflow_bodyvoucherDate = bodyvoucherDate == null ? null : WorkflowExpression.Compile(bodyvoucherDate);
-            WorkflowExpression.Validate(__workflow_bodyvoucherDate, nameof(bodyvoucherDate), required: false);
-            var __workflow_bodyvoucherNumber = bodyvoucherNumber == null ? null : WorkflowExpression.Compile(bodyvoucherNumber);
-            WorkflowExpression.Validate(__workflow_bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
-            var __workflow_bodyvoucherStatus = bodyvoucherStatus == null ? null : WorkflowExpression.Compile(bodyvoucherStatus);
-            WorkflowExpression.Validate(__workflow_bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytaxType = WorkflowExpression.Compile(bodytaxType, nameof(bodytaxType), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyvoucherItems = WorkflowExpression.Compile(bodyvoucherItems, nameof(bodyvoucherItems), required: true);
+            var __workflow_bodycontactId = WorkflowExpression.Compile(bodycontactId, nameof(bodycontactId), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyfiles = WorkflowExpression.Compile(bodyfiles, nameof(bodyfiles), required: false);
+            var __workflow_bodyremark = WorkflowExpression.Compile(bodyremark, nameof(bodyremark), required: false);
+            var __workflow_bodyshippingDate = WorkflowExpression.Compile(bodyshippingDate, nameof(bodyshippingDate), required: false);
+            var __workflow_bodytotalGrossAmount = WorkflowExpression.Compile(bodytotalGrossAmount, nameof(bodytotalGrossAmount), required: false);
+            var __workflow_bodytotalTaxAmount = WorkflowExpression.Compile(bodytotalTaxAmount, nameof(bodytotalTaxAmount), required: false);
+            var __workflow_bodyuseCollectiveContact = WorkflowExpression.Compile(bodyuseCollectiveContact, nameof(bodyuseCollectiveContact), required: false);
+            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: false);
+            var __workflow_bodyvoucherDate = WorkflowExpression.Compile(bodyvoucherDate, nameof(bodyvoucherDate), required: false);
+            var __workflow_bodyvoucherNumber = WorkflowExpression.Compile(bodyvoucherNumber, nameof(bodyvoucherNumber), required: false);
+            var __workflow_bodyvoucherStatus = WorkflowExpression.Compile(bodyvoucherStatus, nameof(bodyvoucherStatus), required: false);
             return new DeferredBodyAction<ResponseVouchersIdPut>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vouchers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1246,10 +1132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lexoffice")]
         public IWorkflowAction UploadFileVoucherLexoffice(Expression<Func<string>> id, Expression<Func<object>> file)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vouchers/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -1264,8 +1148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     {
         public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice(Expression<Func<bodyeventTypeInput>> bodyeventType, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
-            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
             return new DeferredBodyTrigger<ResponseEventSubscriptionsPost>(() =>
             {
                 var apiCallPath = "/event-subscriptions";

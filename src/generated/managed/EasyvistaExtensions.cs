@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<FinishActionResponse> FinishAction(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyendActionchoice = null, Expression<Func<string>> bodyendActiondescription = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_bodyendActionchoice = bodyendActionchoice == null ? null : WorkflowExpression.Compile(bodyendActionchoice);
-            WorkflowExpression.Validate(__workflow_bodyendActionchoice, nameof(bodyendActionchoice), required: false);
-            var __workflow_bodyendActiondescription = bodyendActiondescription == null ? null : WorkflowExpression.Compile(bodyendActiondescription);
-            WorkflowExpression.Validate(__workflow_bodyendActiondescription, nameof(bodyendActiondescription), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_bodyendActionchoice = WorkflowExpression.Compile(bodyendActionchoice, nameof(bodyendActionchoice), required: false);
+            var __workflow_bodyendActiondescription = WorkflowExpression.Compile(bodyendActiondescription, nameof(bodyendActiondescription), required: false);
             return new DeferredBodyAction<FinishActionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -60,16 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetsListResponse> ViewAssetsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewAssetsListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -90,10 +81,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateAssetResponse> CreateAsset(Expression<Func<string>> account, Expression<Func<bodyassetsInputItem[]>> bodyassets = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_bodyassets = bodyassets == null ? null : WorkflowExpression.Compile(bodyassets);
-            WorkflowExpression.Validate(__workflow_bodyassets, nameof(bodyassets), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_bodyassets = WorkflowExpression.Compile(bodyassets, nameof(bodyassets), required: false);
             return new DeferredBodyAction<CreateAssetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -119,10 +108,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetResponse> ViewAsset(Expression<Func<string>> account, Expression<Func<string>> assetId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
             return new DeferredBodyAction<ViewAssetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1));
@@ -135,194 +122,100 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> bodybEFORELOANDEPARTMENTID = null, Expression<Func<string>> bodybEFORELOANEMPLOYEEID = null, Expression<Func<string>> bodybEFORELOANLOCATIONID = null, Expression<Func<string>> bodybILLINGPERIODICITYINMONTH = null, Expression<Func<string>> bodybUYBACKVALUE = null, Expression<Func<string>> bodybUYBACKVALUECURID = null, Expression<Func<string>> bodycATALOGID = null, Expression<Func<string>> bodycHARGEBACK = null, Expression<Func<string>> bodycHARGEBACKCURID = null, Expression<Func<string>> bodycISTATUSID = null, Expression<Func<string>> bodycIVERSION = null, Expression<Func<string>> bodycMDEFAULTCHANGEID = null, Expression<Func<string>> bodycONFIGURATIONID = null, Expression<Func<string>> bodycRITICALLEVELID = null, Expression<Func<string>> bodydELIVERYDATE = null, Expression<Func<string>> bodydELIVERYNUMBER = null, Expression<Func<string>> bodydEPARTMENTID = null, Expression<Func<string>> bodydEPRECIATIONRULEID = null, Expression<Func<string>> bodydHARDWAREGUID = null, Expression<Func<string>> bodyeMPLOYEEID = null, Expression<Func<string>> bodyeNDOFWARANTY = null, Expression<Func<string>> bodyeNTRYDATE = null, Expression<Func<string>> bodyeSTIMATEDPERCENTAGEUSE = null, Expression<Func<string>> bodyeXPECTEDENDLENDDATE = null, Expression<Func<string>> bodyeXPECTEDRETURNDATE = null, Expression<Func<string>> bodyfALLENTERM = null, Expression<Func<string>> bodyfIXEDASSETNUMBER = null, Expression<Func<string>> bodyiNITIALSTART = null, Expression<Func<string>> bodyiNSTALLATIONDATE = null, Expression<Func<string>> bodyiNTERNALDELIVERYDATE = null, Expression<Func<string>> bodyiNVOICENUMBER = null, Expression<Func<string>> bodyiSDML = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTPHYSICALINVENTORY = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylICENSEVERSION = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodymAINTENANCECOST = null, Expression<Func<string>> bodymAINTENANCECOSTCURID = null, Expression<Func<string>> bodymAINUSAGEID = null, Expression<Func<string>> bodymAXINSTALLS = null, Expression<Func<string>> bodymONTHLYFIXEDCOST = null, Expression<Func<string>> bodymONTHLYFIXEDCOSTCURID = null, Expression<Func<string>> bodymONTHLYNETRENTAL = null, Expression<Func<string>> bodymONTHLYNETRENTALCURID = null, Expression<Func<string>> bodymONTHDURATION = null, Expression<Func<string>> bodynETWORKIDENTIFIER = null, Expression<Func<string>> bodynEXTDEPARTMENTID = null, Expression<Func<string>> bodynEXTMAINTENANCEDATE = null, Expression<Func<string>> bodynEXTSTATUSID = null, Expression<Func<string>> bodynEXTUSERAPPLICATIONDATE = null, Expression<Func<string>> bodynEXTUSERID = null, Expression<Func<string>> bodynOTICE = null, Expression<Func<string>> bodyoRDERDETAILSID = null, Expression<Func<string>> bodyoRDERNUMBER = null, Expression<Func<string>> bodypIPELINESTATUSID = null, Expression<Func<string>> bodypOWERCONSUMPTIONWH = null, Expression<Func<string>> bodypROCESSORCOUNT = null, Expression<Func<string>> bodypROCESSORSOCKETCOUNT = null, Expression<Func<string>> bodypURCHASEDATE = null, Expression<Func<string>> bodypURCHASEPRICE = null, Expression<Func<string>> bodypURCHASEPRICECURID = null, Expression<Func<string>> bodypURCHASERATEID = null, Expression<Func<string>> bodyrECYCLEDDATE = null, Expression<Func<string>> bodyrECYCLINGPROVIDERID = null, Expression<Func<string>> bodyrEFORMNUMBER = null, Expression<Func<string>> bodyrEMOVEDDATE = null, Expression<Func<string>> bodyrENEWALDECISIONID = null, Expression<Func<string>> bodyrENEWALVALUE = null, Expression<Func<string>> bodyrENEWALVALUECURID = null, Expression<Func<string>> bodyrEPAIREDBYID = null, Expression<Func<string>> bodyrESALESVALUE = null, Expression<Func<string>> bodysCHEDULEDEND = null, Expression<Func<string>> bodysDCATALOGID = null, Expression<Func<string>> bodysERIALNUMBER = null, Expression<Func<string>> bodysLAID = null, Expression<Func<string>> bodysTATUSID = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodytERM = null, Expression<Func<string>> bodyuPDATECOVERAGETERM = null, Expression<Func<string>> bodywARANTYTYPEID = null, Expression<Func<string>> bodyassetLabel = null, Expression<Func<string>> bodyassetTag = null, Expression<Func<string>> bodyautomaticRenewal = null, Expression<Func<string>> bodyavailabilitySlaId = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodycommentAsset = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
-            var __workflow_bodybEFORELOANDEPARTMENTID = bodybEFORELOANDEPARTMENTID == null ? null : WorkflowExpression.Compile(bodybEFORELOANDEPARTMENTID);
-            WorkflowExpression.Validate(__workflow_bodybEFORELOANDEPARTMENTID, nameof(bodybEFORELOANDEPARTMENTID), required: false);
-            var __workflow_bodybEFORELOANEMPLOYEEID = bodybEFORELOANEMPLOYEEID == null ? null : WorkflowExpression.Compile(bodybEFORELOANEMPLOYEEID);
-            WorkflowExpression.Validate(__workflow_bodybEFORELOANEMPLOYEEID, nameof(bodybEFORELOANEMPLOYEEID), required: false);
-            var __workflow_bodybEFORELOANLOCATIONID = bodybEFORELOANLOCATIONID == null ? null : WorkflowExpression.Compile(bodybEFORELOANLOCATIONID);
-            WorkflowExpression.Validate(__workflow_bodybEFORELOANLOCATIONID, nameof(bodybEFORELOANLOCATIONID), required: false);
-            var __workflow_bodybILLINGPERIODICITYINMONTH = bodybILLINGPERIODICITYINMONTH == null ? null : WorkflowExpression.Compile(bodybILLINGPERIODICITYINMONTH);
-            WorkflowExpression.Validate(__workflow_bodybILLINGPERIODICITYINMONTH, nameof(bodybILLINGPERIODICITYINMONTH), required: false);
-            var __workflow_bodybUYBACKVALUE = bodybUYBACKVALUE == null ? null : WorkflowExpression.Compile(bodybUYBACKVALUE);
-            WorkflowExpression.Validate(__workflow_bodybUYBACKVALUE, nameof(bodybUYBACKVALUE), required: false);
-            var __workflow_bodybUYBACKVALUECURID = bodybUYBACKVALUECURID == null ? null : WorkflowExpression.Compile(bodybUYBACKVALUECURID);
-            WorkflowExpression.Validate(__workflow_bodybUYBACKVALUECURID, nameof(bodybUYBACKVALUECURID), required: false);
-            var __workflow_bodycATALOGID = bodycATALOGID == null ? null : WorkflowExpression.Compile(bodycATALOGID);
-            WorkflowExpression.Validate(__workflow_bodycATALOGID, nameof(bodycATALOGID), required: false);
-            var __workflow_bodycHARGEBACK = bodycHARGEBACK == null ? null : WorkflowExpression.Compile(bodycHARGEBACK);
-            WorkflowExpression.Validate(__workflow_bodycHARGEBACK, nameof(bodycHARGEBACK), required: false);
-            var __workflow_bodycHARGEBACKCURID = bodycHARGEBACKCURID == null ? null : WorkflowExpression.Compile(bodycHARGEBACKCURID);
-            WorkflowExpression.Validate(__workflow_bodycHARGEBACKCURID, nameof(bodycHARGEBACKCURID), required: false);
-            var __workflow_bodycISTATUSID = bodycISTATUSID == null ? null : WorkflowExpression.Compile(bodycISTATUSID);
-            WorkflowExpression.Validate(__workflow_bodycISTATUSID, nameof(bodycISTATUSID), required: false);
-            var __workflow_bodycIVERSION = bodycIVERSION == null ? null : WorkflowExpression.Compile(bodycIVERSION);
-            WorkflowExpression.Validate(__workflow_bodycIVERSION, nameof(bodycIVERSION), required: false);
-            var __workflow_bodycMDEFAULTCHANGEID = bodycMDEFAULTCHANGEID == null ? null : WorkflowExpression.Compile(bodycMDEFAULTCHANGEID);
-            WorkflowExpression.Validate(__workflow_bodycMDEFAULTCHANGEID, nameof(bodycMDEFAULTCHANGEID), required: false);
-            var __workflow_bodycONFIGURATIONID = bodycONFIGURATIONID == null ? null : WorkflowExpression.Compile(bodycONFIGURATIONID);
-            WorkflowExpression.Validate(__workflow_bodycONFIGURATIONID, nameof(bodycONFIGURATIONID), required: false);
-            var __workflow_bodycRITICALLEVELID = bodycRITICALLEVELID == null ? null : WorkflowExpression.Compile(bodycRITICALLEVELID);
-            WorkflowExpression.Validate(__workflow_bodycRITICALLEVELID, nameof(bodycRITICALLEVELID), required: false);
-            var __workflow_bodydELIVERYDATE = bodydELIVERYDATE == null ? null : WorkflowExpression.Compile(bodydELIVERYDATE);
-            WorkflowExpression.Validate(__workflow_bodydELIVERYDATE, nameof(bodydELIVERYDATE), required: false);
-            var __workflow_bodydELIVERYNUMBER = bodydELIVERYNUMBER == null ? null : WorkflowExpression.Compile(bodydELIVERYNUMBER);
-            WorkflowExpression.Validate(__workflow_bodydELIVERYNUMBER, nameof(bodydELIVERYNUMBER), required: false);
-            var __workflow_bodydEPARTMENTID = bodydEPARTMENTID == null ? null : WorkflowExpression.Compile(bodydEPARTMENTID);
-            WorkflowExpression.Validate(__workflow_bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
-            var __workflow_bodydEPRECIATIONRULEID = bodydEPRECIATIONRULEID == null ? null : WorkflowExpression.Compile(bodydEPRECIATIONRULEID);
-            WorkflowExpression.Validate(__workflow_bodydEPRECIATIONRULEID, nameof(bodydEPRECIATIONRULEID), required: false);
-            var __workflow_bodydHARDWAREGUID = bodydHARDWAREGUID == null ? null : WorkflowExpression.Compile(bodydHARDWAREGUID);
-            WorkflowExpression.Validate(__workflow_bodydHARDWAREGUID, nameof(bodydHARDWAREGUID), required: false);
-            var __workflow_bodyeMPLOYEEID = bodyeMPLOYEEID == null ? null : WorkflowExpression.Compile(bodyeMPLOYEEID);
-            WorkflowExpression.Validate(__workflow_bodyeMPLOYEEID, nameof(bodyeMPLOYEEID), required: false);
-            var __workflow_bodyeNDOFWARANTY = bodyeNDOFWARANTY == null ? null : WorkflowExpression.Compile(bodyeNDOFWARANTY);
-            WorkflowExpression.Validate(__workflow_bodyeNDOFWARANTY, nameof(bodyeNDOFWARANTY), required: false);
-            var __workflow_bodyeNTRYDATE = bodyeNTRYDATE == null ? null : WorkflowExpression.Compile(bodyeNTRYDATE);
-            WorkflowExpression.Validate(__workflow_bodyeNTRYDATE, nameof(bodyeNTRYDATE), required: false);
-            var __workflow_bodyeSTIMATEDPERCENTAGEUSE = bodyeSTIMATEDPERCENTAGEUSE == null ? null : WorkflowExpression.Compile(bodyeSTIMATEDPERCENTAGEUSE);
-            WorkflowExpression.Validate(__workflow_bodyeSTIMATEDPERCENTAGEUSE, nameof(bodyeSTIMATEDPERCENTAGEUSE), required: false);
-            var __workflow_bodyeXPECTEDENDLENDDATE = bodyeXPECTEDENDLENDDATE == null ? null : WorkflowExpression.Compile(bodyeXPECTEDENDLENDDATE);
-            WorkflowExpression.Validate(__workflow_bodyeXPECTEDENDLENDDATE, nameof(bodyeXPECTEDENDLENDDATE), required: false);
-            var __workflow_bodyeXPECTEDRETURNDATE = bodyeXPECTEDRETURNDATE == null ? null : WorkflowExpression.Compile(bodyeXPECTEDRETURNDATE);
-            WorkflowExpression.Validate(__workflow_bodyeXPECTEDRETURNDATE, nameof(bodyeXPECTEDRETURNDATE), required: false);
-            var __workflow_bodyfALLENTERM = bodyfALLENTERM == null ? null : WorkflowExpression.Compile(bodyfALLENTERM);
-            WorkflowExpression.Validate(__workflow_bodyfALLENTERM, nameof(bodyfALLENTERM), required: false);
-            var __workflow_bodyfIXEDASSETNUMBER = bodyfIXEDASSETNUMBER == null ? null : WorkflowExpression.Compile(bodyfIXEDASSETNUMBER);
-            WorkflowExpression.Validate(__workflow_bodyfIXEDASSETNUMBER, nameof(bodyfIXEDASSETNUMBER), required: false);
-            var __workflow_bodyiNITIALSTART = bodyiNITIALSTART == null ? null : WorkflowExpression.Compile(bodyiNITIALSTART);
-            WorkflowExpression.Validate(__workflow_bodyiNITIALSTART, nameof(bodyiNITIALSTART), required: false);
-            var __workflow_bodyiNSTALLATIONDATE = bodyiNSTALLATIONDATE == null ? null : WorkflowExpression.Compile(bodyiNSTALLATIONDATE);
-            WorkflowExpression.Validate(__workflow_bodyiNSTALLATIONDATE, nameof(bodyiNSTALLATIONDATE), required: false);
-            var __workflow_bodyiNTERNALDELIVERYDATE = bodyiNTERNALDELIVERYDATE == null ? null : WorkflowExpression.Compile(bodyiNTERNALDELIVERYDATE);
-            WorkflowExpression.Validate(__workflow_bodyiNTERNALDELIVERYDATE, nameof(bodyiNTERNALDELIVERYDATE), required: false);
-            var __workflow_bodyiNVOICENUMBER = bodyiNVOICENUMBER == null ? null : WorkflowExpression.Compile(bodyiNVOICENUMBER);
-            WorkflowExpression.Validate(__workflow_bodyiNVOICENUMBER, nameof(bodyiNVOICENUMBER), required: false);
-            var __workflow_bodyiSDML = bodyiSDML == null ? null : WorkflowExpression.Compile(bodyiSDML);
-            WorkflowExpression.Validate(__workflow_bodyiSDML, nameof(bodyiSDML), required: false);
-            var __workflow_bodylASTINTEGRATION = bodylASTINTEGRATION == null ? null : WorkflowExpression.Compile(bodylASTINTEGRATION);
-            WorkflowExpression.Validate(__workflow_bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
-            var __workflow_bodylASTPHYSICALINVENTORY = bodylASTPHYSICALINVENTORY == null ? null : WorkflowExpression.Compile(bodylASTPHYSICALINVENTORY);
-            WorkflowExpression.Validate(__workflow_bodylASTPHYSICALINVENTORY, nameof(bodylASTPHYSICALINVENTORY), required: false);
-            var __workflow_bodylASTUPDATE = bodylASTUPDATE == null ? null : WorkflowExpression.Compile(bodylASTUPDATE);
-            WorkflowExpression.Validate(__workflow_bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
-            var __workflow_bodylICENSEVERSION = bodylICENSEVERSION == null ? null : WorkflowExpression.Compile(bodylICENSEVERSION);
-            WorkflowExpression.Validate(__workflow_bodylICENSEVERSION, nameof(bodylICENSEVERSION), required: false);
-            var __workflow_bodylOCATIONID = bodylOCATIONID == null ? null : WorkflowExpression.Compile(bodylOCATIONID);
-            WorkflowExpression.Validate(__workflow_bodylOCATIONID, nameof(bodylOCATIONID), required: false);
-            var __workflow_bodymAINTENANCECOST = bodymAINTENANCECOST == null ? null : WorkflowExpression.Compile(bodymAINTENANCECOST);
-            WorkflowExpression.Validate(__workflow_bodymAINTENANCECOST, nameof(bodymAINTENANCECOST), required: false);
-            var __workflow_bodymAINTENANCECOSTCURID = bodymAINTENANCECOSTCURID == null ? null : WorkflowExpression.Compile(bodymAINTENANCECOSTCURID);
-            WorkflowExpression.Validate(__workflow_bodymAINTENANCECOSTCURID, nameof(bodymAINTENANCECOSTCURID), required: false);
-            var __workflow_bodymAINUSAGEID = bodymAINUSAGEID == null ? null : WorkflowExpression.Compile(bodymAINUSAGEID);
-            WorkflowExpression.Validate(__workflow_bodymAINUSAGEID, nameof(bodymAINUSAGEID), required: false);
-            var __workflow_bodymAXINSTALLS = bodymAXINSTALLS == null ? null : WorkflowExpression.Compile(bodymAXINSTALLS);
-            WorkflowExpression.Validate(__workflow_bodymAXINSTALLS, nameof(bodymAXINSTALLS), required: false);
-            var __workflow_bodymONTHLYFIXEDCOST = bodymONTHLYFIXEDCOST == null ? null : WorkflowExpression.Compile(bodymONTHLYFIXEDCOST);
-            WorkflowExpression.Validate(__workflow_bodymONTHLYFIXEDCOST, nameof(bodymONTHLYFIXEDCOST), required: false);
-            var __workflow_bodymONTHLYFIXEDCOSTCURID = bodymONTHLYFIXEDCOSTCURID == null ? null : WorkflowExpression.Compile(bodymONTHLYFIXEDCOSTCURID);
-            WorkflowExpression.Validate(__workflow_bodymONTHLYFIXEDCOSTCURID, nameof(bodymONTHLYFIXEDCOSTCURID), required: false);
-            var __workflow_bodymONTHLYNETRENTAL = bodymONTHLYNETRENTAL == null ? null : WorkflowExpression.Compile(bodymONTHLYNETRENTAL);
-            WorkflowExpression.Validate(__workflow_bodymONTHLYNETRENTAL, nameof(bodymONTHLYNETRENTAL), required: false);
-            var __workflow_bodymONTHLYNETRENTALCURID = bodymONTHLYNETRENTALCURID == null ? null : WorkflowExpression.Compile(bodymONTHLYNETRENTALCURID);
-            WorkflowExpression.Validate(__workflow_bodymONTHLYNETRENTALCURID, nameof(bodymONTHLYNETRENTALCURID), required: false);
-            var __workflow_bodymONTHDURATION = bodymONTHDURATION == null ? null : WorkflowExpression.Compile(bodymONTHDURATION);
-            WorkflowExpression.Validate(__workflow_bodymONTHDURATION, nameof(bodymONTHDURATION), required: false);
-            var __workflow_bodynETWORKIDENTIFIER = bodynETWORKIDENTIFIER == null ? null : WorkflowExpression.Compile(bodynETWORKIDENTIFIER);
-            WorkflowExpression.Validate(__workflow_bodynETWORKIDENTIFIER, nameof(bodynETWORKIDENTIFIER), required: false);
-            var __workflow_bodynEXTDEPARTMENTID = bodynEXTDEPARTMENTID == null ? null : WorkflowExpression.Compile(bodynEXTDEPARTMENTID);
-            WorkflowExpression.Validate(__workflow_bodynEXTDEPARTMENTID, nameof(bodynEXTDEPARTMENTID), required: false);
-            var __workflow_bodynEXTMAINTENANCEDATE = bodynEXTMAINTENANCEDATE == null ? null : WorkflowExpression.Compile(bodynEXTMAINTENANCEDATE);
-            WorkflowExpression.Validate(__workflow_bodynEXTMAINTENANCEDATE, nameof(bodynEXTMAINTENANCEDATE), required: false);
-            var __workflow_bodynEXTSTATUSID = bodynEXTSTATUSID == null ? null : WorkflowExpression.Compile(bodynEXTSTATUSID);
-            WorkflowExpression.Validate(__workflow_bodynEXTSTATUSID, nameof(bodynEXTSTATUSID), required: false);
-            var __workflow_bodynEXTUSERAPPLICATIONDATE = bodynEXTUSERAPPLICATIONDATE == null ? null : WorkflowExpression.Compile(bodynEXTUSERAPPLICATIONDATE);
-            WorkflowExpression.Validate(__workflow_bodynEXTUSERAPPLICATIONDATE, nameof(bodynEXTUSERAPPLICATIONDATE), required: false);
-            var __workflow_bodynEXTUSERID = bodynEXTUSERID == null ? null : WorkflowExpression.Compile(bodynEXTUSERID);
-            WorkflowExpression.Validate(__workflow_bodynEXTUSERID, nameof(bodynEXTUSERID), required: false);
-            var __workflow_bodynOTICE = bodynOTICE == null ? null : WorkflowExpression.Compile(bodynOTICE);
-            WorkflowExpression.Validate(__workflow_bodynOTICE, nameof(bodynOTICE), required: false);
-            var __workflow_bodyoRDERDETAILSID = bodyoRDERDETAILSID == null ? null : WorkflowExpression.Compile(bodyoRDERDETAILSID);
-            WorkflowExpression.Validate(__workflow_bodyoRDERDETAILSID, nameof(bodyoRDERDETAILSID), required: false);
-            var __workflow_bodyoRDERNUMBER = bodyoRDERNUMBER == null ? null : WorkflowExpression.Compile(bodyoRDERNUMBER);
-            WorkflowExpression.Validate(__workflow_bodyoRDERNUMBER, nameof(bodyoRDERNUMBER), required: false);
-            var __workflow_bodypIPELINESTATUSID = bodypIPELINESTATUSID == null ? null : WorkflowExpression.Compile(bodypIPELINESTATUSID);
-            WorkflowExpression.Validate(__workflow_bodypIPELINESTATUSID, nameof(bodypIPELINESTATUSID), required: false);
-            var __workflow_bodypOWERCONSUMPTIONWH = bodypOWERCONSUMPTIONWH == null ? null : WorkflowExpression.Compile(bodypOWERCONSUMPTIONWH);
-            WorkflowExpression.Validate(__workflow_bodypOWERCONSUMPTIONWH, nameof(bodypOWERCONSUMPTIONWH), required: false);
-            var __workflow_bodypROCESSORCOUNT = bodypROCESSORCOUNT == null ? null : WorkflowExpression.Compile(bodypROCESSORCOUNT);
-            WorkflowExpression.Validate(__workflow_bodypROCESSORCOUNT, nameof(bodypROCESSORCOUNT), required: false);
-            var __workflow_bodypROCESSORSOCKETCOUNT = bodypROCESSORSOCKETCOUNT == null ? null : WorkflowExpression.Compile(bodypROCESSORSOCKETCOUNT);
-            WorkflowExpression.Validate(__workflow_bodypROCESSORSOCKETCOUNT, nameof(bodypROCESSORSOCKETCOUNT), required: false);
-            var __workflow_bodypURCHASEDATE = bodypURCHASEDATE == null ? null : WorkflowExpression.Compile(bodypURCHASEDATE);
-            WorkflowExpression.Validate(__workflow_bodypURCHASEDATE, nameof(bodypURCHASEDATE), required: false);
-            var __workflow_bodypURCHASEPRICE = bodypURCHASEPRICE == null ? null : WorkflowExpression.Compile(bodypURCHASEPRICE);
-            WorkflowExpression.Validate(__workflow_bodypURCHASEPRICE, nameof(bodypURCHASEPRICE), required: false);
-            var __workflow_bodypURCHASEPRICECURID = bodypURCHASEPRICECURID == null ? null : WorkflowExpression.Compile(bodypURCHASEPRICECURID);
-            WorkflowExpression.Validate(__workflow_bodypURCHASEPRICECURID, nameof(bodypURCHASEPRICECURID), required: false);
-            var __workflow_bodypURCHASERATEID = bodypURCHASERATEID == null ? null : WorkflowExpression.Compile(bodypURCHASERATEID);
-            WorkflowExpression.Validate(__workflow_bodypURCHASERATEID, nameof(bodypURCHASERATEID), required: false);
-            var __workflow_bodyrECYCLEDDATE = bodyrECYCLEDDATE == null ? null : WorkflowExpression.Compile(bodyrECYCLEDDATE);
-            WorkflowExpression.Validate(__workflow_bodyrECYCLEDDATE, nameof(bodyrECYCLEDDATE), required: false);
-            var __workflow_bodyrECYCLINGPROVIDERID = bodyrECYCLINGPROVIDERID == null ? null : WorkflowExpression.Compile(bodyrECYCLINGPROVIDERID);
-            WorkflowExpression.Validate(__workflow_bodyrECYCLINGPROVIDERID, nameof(bodyrECYCLINGPROVIDERID), required: false);
-            var __workflow_bodyrEFORMNUMBER = bodyrEFORMNUMBER == null ? null : WorkflowExpression.Compile(bodyrEFORMNUMBER);
-            WorkflowExpression.Validate(__workflow_bodyrEFORMNUMBER, nameof(bodyrEFORMNUMBER), required: false);
-            var __workflow_bodyrEMOVEDDATE = bodyrEMOVEDDATE == null ? null : WorkflowExpression.Compile(bodyrEMOVEDDATE);
-            WorkflowExpression.Validate(__workflow_bodyrEMOVEDDATE, nameof(bodyrEMOVEDDATE), required: false);
-            var __workflow_bodyrENEWALDECISIONID = bodyrENEWALDECISIONID == null ? null : WorkflowExpression.Compile(bodyrENEWALDECISIONID);
-            WorkflowExpression.Validate(__workflow_bodyrENEWALDECISIONID, nameof(bodyrENEWALDECISIONID), required: false);
-            var __workflow_bodyrENEWALVALUE = bodyrENEWALVALUE == null ? null : WorkflowExpression.Compile(bodyrENEWALVALUE);
-            WorkflowExpression.Validate(__workflow_bodyrENEWALVALUE, nameof(bodyrENEWALVALUE), required: false);
-            var __workflow_bodyrENEWALVALUECURID = bodyrENEWALVALUECURID == null ? null : WorkflowExpression.Compile(bodyrENEWALVALUECURID);
-            WorkflowExpression.Validate(__workflow_bodyrENEWALVALUECURID, nameof(bodyrENEWALVALUECURID), required: false);
-            var __workflow_bodyrEPAIREDBYID = bodyrEPAIREDBYID == null ? null : WorkflowExpression.Compile(bodyrEPAIREDBYID);
-            WorkflowExpression.Validate(__workflow_bodyrEPAIREDBYID, nameof(bodyrEPAIREDBYID), required: false);
-            var __workflow_bodyrESALESVALUE = bodyrESALESVALUE == null ? null : WorkflowExpression.Compile(bodyrESALESVALUE);
-            WorkflowExpression.Validate(__workflow_bodyrESALESVALUE, nameof(bodyrESALESVALUE), required: false);
-            var __workflow_bodysCHEDULEDEND = bodysCHEDULEDEND == null ? null : WorkflowExpression.Compile(bodysCHEDULEDEND);
-            WorkflowExpression.Validate(__workflow_bodysCHEDULEDEND, nameof(bodysCHEDULEDEND), required: false);
-            var __workflow_bodysDCATALOGID = bodysDCATALOGID == null ? null : WorkflowExpression.Compile(bodysDCATALOGID);
-            WorkflowExpression.Validate(__workflow_bodysDCATALOGID, nameof(bodysDCATALOGID), required: false);
-            var __workflow_bodysERIALNUMBER = bodysERIALNUMBER == null ? null : WorkflowExpression.Compile(bodysERIALNUMBER);
-            WorkflowExpression.Validate(__workflow_bodysERIALNUMBER, nameof(bodysERIALNUMBER), required: false);
-            var __workflow_bodysLAID = bodysLAID == null ? null : WorkflowExpression.Compile(bodysLAID);
-            WorkflowExpression.Validate(__workflow_bodysLAID, nameof(bodysLAID), required: false);
-            var __workflow_bodysTATUSID = bodysTATUSID == null ? null : WorkflowExpression.Compile(bodysTATUSID);
-            WorkflowExpression.Validate(__workflow_bodysTATUSID, nameof(bodysTATUSID), required: false);
-            var __workflow_bodysUPPLIERID = bodysUPPLIERID == null ? null : WorkflowExpression.Compile(bodysUPPLIERID);
-            WorkflowExpression.Validate(__workflow_bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
-            var __workflow_bodytERM = bodytERM == null ? null : WorkflowExpression.Compile(bodytERM);
-            WorkflowExpression.Validate(__workflow_bodytERM, nameof(bodytERM), required: false);
-            var __workflow_bodyuPDATECOVERAGETERM = bodyuPDATECOVERAGETERM == null ? null : WorkflowExpression.Compile(bodyuPDATECOVERAGETERM);
-            WorkflowExpression.Validate(__workflow_bodyuPDATECOVERAGETERM, nameof(bodyuPDATECOVERAGETERM), required: false);
-            var __workflow_bodywARANTYTYPEID = bodywARANTYTYPEID == null ? null : WorkflowExpression.Compile(bodywARANTYTYPEID);
-            WorkflowExpression.Validate(__workflow_bodywARANTYTYPEID, nameof(bodywARANTYTYPEID), required: false);
-            var __workflow_bodyassetLabel = bodyassetLabel == null ? null : WorkflowExpression.Compile(bodyassetLabel);
-            WorkflowExpression.Validate(__workflow_bodyassetLabel, nameof(bodyassetLabel), required: false);
-            var __workflow_bodyassetTag = bodyassetTag == null ? null : WorkflowExpression.Compile(bodyassetTag);
-            WorkflowExpression.Validate(__workflow_bodyassetTag, nameof(bodyassetTag), required: false);
-            var __workflow_bodyautomaticRenewal = bodyautomaticRenewal == null ? null : WorkflowExpression.Compile(bodyautomaticRenewal);
-            WorkflowExpression.Validate(__workflow_bodyautomaticRenewal, nameof(bodyautomaticRenewal), required: false);
-            var __workflow_bodyavailabilitySlaId = bodyavailabilitySlaId == null ? null : WorkflowExpression.Compile(bodyavailabilitySlaId);
-            WorkflowExpression.Validate(__workflow_bodyavailabilitySlaId, nameof(bodyavailabilitySlaId), required: false);
-            var __workflow_bodyavailableField1 = bodyavailableField1 == null ? null : WorkflowExpression.Compile(bodyavailableField1);
-            WorkflowExpression.Validate(__workflow_bodyavailableField1, nameof(bodyavailableField1), required: false);
-            var __workflow_bodyavailableField2 = bodyavailableField2 == null ? null : WorkflowExpression.Compile(bodyavailableField2);
-            WorkflowExpression.Validate(__workflow_bodyavailableField2, nameof(bodyavailableField2), required: false);
-            var __workflow_bodyavailableField3 = bodyavailableField3 == null ? null : WorkflowExpression.Compile(bodyavailableField3);
-            WorkflowExpression.Validate(__workflow_bodyavailableField3, nameof(bodyavailableField3), required: false);
-            var __workflow_bodyavailableField4 = bodyavailableField4 == null ? null : WorkflowExpression.Compile(bodyavailableField4);
-            WorkflowExpression.Validate(__workflow_bodyavailableField4, nameof(bodyavailableField4), required: false);
-            var __workflow_bodyavailableField5 = bodyavailableField5 == null ? null : WorkflowExpression.Compile(bodyavailableField5);
-            WorkflowExpression.Validate(__workflow_bodyavailableField5, nameof(bodyavailableField5), required: false);
-            var __workflow_bodyavailableField6 = bodyavailableField6 == null ? null : WorkflowExpression.Compile(bodyavailableField6);
-            WorkflowExpression.Validate(__workflow_bodyavailableField6, nameof(bodyavailableField6), required: false);
-            var __workflow_bodycommentAsset = bodycommentAsset == null ? null : WorkflowExpression.Compile(bodycommentAsset);
-            WorkflowExpression.Validate(__workflow_bodycommentAsset, nameof(bodycommentAsset), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
+            var __workflow_bodybEFORELOANDEPARTMENTID = WorkflowExpression.Compile(bodybEFORELOANDEPARTMENTID, nameof(bodybEFORELOANDEPARTMENTID), required: false);
+            var __workflow_bodybEFORELOANEMPLOYEEID = WorkflowExpression.Compile(bodybEFORELOANEMPLOYEEID, nameof(bodybEFORELOANEMPLOYEEID), required: false);
+            var __workflow_bodybEFORELOANLOCATIONID = WorkflowExpression.Compile(bodybEFORELOANLOCATIONID, nameof(bodybEFORELOANLOCATIONID), required: false);
+            var __workflow_bodybILLINGPERIODICITYINMONTH = WorkflowExpression.Compile(bodybILLINGPERIODICITYINMONTH, nameof(bodybILLINGPERIODICITYINMONTH), required: false);
+            var __workflow_bodybUYBACKVALUE = WorkflowExpression.Compile(bodybUYBACKVALUE, nameof(bodybUYBACKVALUE), required: false);
+            var __workflow_bodybUYBACKVALUECURID = WorkflowExpression.Compile(bodybUYBACKVALUECURID, nameof(bodybUYBACKVALUECURID), required: false);
+            var __workflow_bodycATALOGID = WorkflowExpression.Compile(bodycATALOGID, nameof(bodycATALOGID), required: false);
+            var __workflow_bodycHARGEBACK = WorkflowExpression.Compile(bodycHARGEBACK, nameof(bodycHARGEBACK), required: false);
+            var __workflow_bodycHARGEBACKCURID = WorkflowExpression.Compile(bodycHARGEBACKCURID, nameof(bodycHARGEBACKCURID), required: false);
+            var __workflow_bodycISTATUSID = WorkflowExpression.Compile(bodycISTATUSID, nameof(bodycISTATUSID), required: false);
+            var __workflow_bodycIVERSION = WorkflowExpression.Compile(bodycIVERSION, nameof(bodycIVERSION), required: false);
+            var __workflow_bodycMDEFAULTCHANGEID = WorkflowExpression.Compile(bodycMDEFAULTCHANGEID, nameof(bodycMDEFAULTCHANGEID), required: false);
+            var __workflow_bodycONFIGURATIONID = WorkflowExpression.Compile(bodycONFIGURATIONID, nameof(bodycONFIGURATIONID), required: false);
+            var __workflow_bodycRITICALLEVELID = WorkflowExpression.Compile(bodycRITICALLEVELID, nameof(bodycRITICALLEVELID), required: false);
+            var __workflow_bodydELIVERYDATE = WorkflowExpression.Compile(bodydELIVERYDATE, nameof(bodydELIVERYDATE), required: false);
+            var __workflow_bodydELIVERYNUMBER = WorkflowExpression.Compile(bodydELIVERYNUMBER, nameof(bodydELIVERYNUMBER), required: false);
+            var __workflow_bodydEPARTMENTID = WorkflowExpression.Compile(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
+            var __workflow_bodydEPRECIATIONRULEID = WorkflowExpression.Compile(bodydEPRECIATIONRULEID, nameof(bodydEPRECIATIONRULEID), required: false);
+            var __workflow_bodydHARDWAREGUID = WorkflowExpression.Compile(bodydHARDWAREGUID, nameof(bodydHARDWAREGUID), required: false);
+            var __workflow_bodyeMPLOYEEID = WorkflowExpression.Compile(bodyeMPLOYEEID, nameof(bodyeMPLOYEEID), required: false);
+            var __workflow_bodyeNDOFWARANTY = WorkflowExpression.Compile(bodyeNDOFWARANTY, nameof(bodyeNDOFWARANTY), required: false);
+            var __workflow_bodyeNTRYDATE = WorkflowExpression.Compile(bodyeNTRYDATE, nameof(bodyeNTRYDATE), required: false);
+            var __workflow_bodyeSTIMATEDPERCENTAGEUSE = WorkflowExpression.Compile(bodyeSTIMATEDPERCENTAGEUSE, nameof(bodyeSTIMATEDPERCENTAGEUSE), required: false);
+            var __workflow_bodyeXPECTEDENDLENDDATE = WorkflowExpression.Compile(bodyeXPECTEDENDLENDDATE, nameof(bodyeXPECTEDENDLENDDATE), required: false);
+            var __workflow_bodyeXPECTEDRETURNDATE = WorkflowExpression.Compile(bodyeXPECTEDRETURNDATE, nameof(bodyeXPECTEDRETURNDATE), required: false);
+            var __workflow_bodyfALLENTERM = WorkflowExpression.Compile(bodyfALLENTERM, nameof(bodyfALLENTERM), required: false);
+            var __workflow_bodyfIXEDASSETNUMBER = WorkflowExpression.Compile(bodyfIXEDASSETNUMBER, nameof(bodyfIXEDASSETNUMBER), required: false);
+            var __workflow_bodyiNITIALSTART = WorkflowExpression.Compile(bodyiNITIALSTART, nameof(bodyiNITIALSTART), required: false);
+            var __workflow_bodyiNSTALLATIONDATE = WorkflowExpression.Compile(bodyiNSTALLATIONDATE, nameof(bodyiNSTALLATIONDATE), required: false);
+            var __workflow_bodyiNTERNALDELIVERYDATE = WorkflowExpression.Compile(bodyiNTERNALDELIVERYDATE, nameof(bodyiNTERNALDELIVERYDATE), required: false);
+            var __workflow_bodyiNVOICENUMBER = WorkflowExpression.Compile(bodyiNVOICENUMBER, nameof(bodyiNVOICENUMBER), required: false);
+            var __workflow_bodyiSDML = WorkflowExpression.Compile(bodyiSDML, nameof(bodyiSDML), required: false);
+            var __workflow_bodylASTINTEGRATION = WorkflowExpression.Compile(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
+            var __workflow_bodylASTPHYSICALINVENTORY = WorkflowExpression.Compile(bodylASTPHYSICALINVENTORY, nameof(bodylASTPHYSICALINVENTORY), required: false);
+            var __workflow_bodylASTUPDATE = WorkflowExpression.Compile(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
+            var __workflow_bodylICENSEVERSION = WorkflowExpression.Compile(bodylICENSEVERSION, nameof(bodylICENSEVERSION), required: false);
+            var __workflow_bodylOCATIONID = WorkflowExpression.Compile(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            var __workflow_bodymAINTENANCECOST = WorkflowExpression.Compile(bodymAINTENANCECOST, nameof(bodymAINTENANCECOST), required: false);
+            var __workflow_bodymAINTENANCECOSTCURID = WorkflowExpression.Compile(bodymAINTENANCECOSTCURID, nameof(bodymAINTENANCECOSTCURID), required: false);
+            var __workflow_bodymAINUSAGEID = WorkflowExpression.Compile(bodymAINUSAGEID, nameof(bodymAINUSAGEID), required: false);
+            var __workflow_bodymAXINSTALLS = WorkflowExpression.Compile(bodymAXINSTALLS, nameof(bodymAXINSTALLS), required: false);
+            var __workflow_bodymONTHLYFIXEDCOST = WorkflowExpression.Compile(bodymONTHLYFIXEDCOST, nameof(bodymONTHLYFIXEDCOST), required: false);
+            var __workflow_bodymONTHLYFIXEDCOSTCURID = WorkflowExpression.Compile(bodymONTHLYFIXEDCOSTCURID, nameof(bodymONTHLYFIXEDCOSTCURID), required: false);
+            var __workflow_bodymONTHLYNETRENTAL = WorkflowExpression.Compile(bodymONTHLYNETRENTAL, nameof(bodymONTHLYNETRENTAL), required: false);
+            var __workflow_bodymONTHLYNETRENTALCURID = WorkflowExpression.Compile(bodymONTHLYNETRENTALCURID, nameof(bodymONTHLYNETRENTALCURID), required: false);
+            var __workflow_bodymONTHDURATION = WorkflowExpression.Compile(bodymONTHDURATION, nameof(bodymONTHDURATION), required: false);
+            var __workflow_bodynETWORKIDENTIFIER = WorkflowExpression.Compile(bodynETWORKIDENTIFIER, nameof(bodynETWORKIDENTIFIER), required: false);
+            var __workflow_bodynEXTDEPARTMENTID = WorkflowExpression.Compile(bodynEXTDEPARTMENTID, nameof(bodynEXTDEPARTMENTID), required: false);
+            var __workflow_bodynEXTMAINTENANCEDATE = WorkflowExpression.Compile(bodynEXTMAINTENANCEDATE, nameof(bodynEXTMAINTENANCEDATE), required: false);
+            var __workflow_bodynEXTSTATUSID = WorkflowExpression.Compile(bodynEXTSTATUSID, nameof(bodynEXTSTATUSID), required: false);
+            var __workflow_bodynEXTUSERAPPLICATIONDATE = WorkflowExpression.Compile(bodynEXTUSERAPPLICATIONDATE, nameof(bodynEXTUSERAPPLICATIONDATE), required: false);
+            var __workflow_bodynEXTUSERID = WorkflowExpression.Compile(bodynEXTUSERID, nameof(bodynEXTUSERID), required: false);
+            var __workflow_bodynOTICE = WorkflowExpression.Compile(bodynOTICE, nameof(bodynOTICE), required: false);
+            var __workflow_bodyoRDERDETAILSID = WorkflowExpression.Compile(bodyoRDERDETAILSID, nameof(bodyoRDERDETAILSID), required: false);
+            var __workflow_bodyoRDERNUMBER = WorkflowExpression.Compile(bodyoRDERNUMBER, nameof(bodyoRDERNUMBER), required: false);
+            var __workflow_bodypIPELINESTATUSID = WorkflowExpression.Compile(bodypIPELINESTATUSID, nameof(bodypIPELINESTATUSID), required: false);
+            var __workflow_bodypOWERCONSUMPTIONWH = WorkflowExpression.Compile(bodypOWERCONSUMPTIONWH, nameof(bodypOWERCONSUMPTIONWH), required: false);
+            var __workflow_bodypROCESSORCOUNT = WorkflowExpression.Compile(bodypROCESSORCOUNT, nameof(bodypROCESSORCOUNT), required: false);
+            var __workflow_bodypROCESSORSOCKETCOUNT = WorkflowExpression.Compile(bodypROCESSORSOCKETCOUNT, nameof(bodypROCESSORSOCKETCOUNT), required: false);
+            var __workflow_bodypURCHASEDATE = WorkflowExpression.Compile(bodypURCHASEDATE, nameof(bodypURCHASEDATE), required: false);
+            var __workflow_bodypURCHASEPRICE = WorkflowExpression.Compile(bodypURCHASEPRICE, nameof(bodypURCHASEPRICE), required: false);
+            var __workflow_bodypURCHASEPRICECURID = WorkflowExpression.Compile(bodypURCHASEPRICECURID, nameof(bodypURCHASEPRICECURID), required: false);
+            var __workflow_bodypURCHASERATEID = WorkflowExpression.Compile(bodypURCHASERATEID, nameof(bodypURCHASERATEID), required: false);
+            var __workflow_bodyrECYCLEDDATE = WorkflowExpression.Compile(bodyrECYCLEDDATE, nameof(bodyrECYCLEDDATE), required: false);
+            var __workflow_bodyrECYCLINGPROVIDERID = WorkflowExpression.Compile(bodyrECYCLINGPROVIDERID, nameof(bodyrECYCLINGPROVIDERID), required: false);
+            var __workflow_bodyrEFORMNUMBER = WorkflowExpression.Compile(bodyrEFORMNUMBER, nameof(bodyrEFORMNUMBER), required: false);
+            var __workflow_bodyrEMOVEDDATE = WorkflowExpression.Compile(bodyrEMOVEDDATE, nameof(bodyrEMOVEDDATE), required: false);
+            var __workflow_bodyrENEWALDECISIONID = WorkflowExpression.Compile(bodyrENEWALDECISIONID, nameof(bodyrENEWALDECISIONID), required: false);
+            var __workflow_bodyrENEWALVALUE = WorkflowExpression.Compile(bodyrENEWALVALUE, nameof(bodyrENEWALVALUE), required: false);
+            var __workflow_bodyrENEWALVALUECURID = WorkflowExpression.Compile(bodyrENEWALVALUECURID, nameof(bodyrENEWALVALUECURID), required: false);
+            var __workflow_bodyrEPAIREDBYID = WorkflowExpression.Compile(bodyrEPAIREDBYID, nameof(bodyrEPAIREDBYID), required: false);
+            var __workflow_bodyrESALESVALUE = WorkflowExpression.Compile(bodyrESALESVALUE, nameof(bodyrESALESVALUE), required: false);
+            var __workflow_bodysCHEDULEDEND = WorkflowExpression.Compile(bodysCHEDULEDEND, nameof(bodysCHEDULEDEND), required: false);
+            var __workflow_bodysDCATALOGID = WorkflowExpression.Compile(bodysDCATALOGID, nameof(bodysDCATALOGID), required: false);
+            var __workflow_bodysERIALNUMBER = WorkflowExpression.Compile(bodysERIALNUMBER, nameof(bodysERIALNUMBER), required: false);
+            var __workflow_bodysLAID = WorkflowExpression.Compile(bodysLAID, nameof(bodysLAID), required: false);
+            var __workflow_bodysTATUSID = WorkflowExpression.Compile(bodysTATUSID, nameof(bodysTATUSID), required: false);
+            var __workflow_bodysUPPLIERID = WorkflowExpression.Compile(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
+            var __workflow_bodytERM = WorkflowExpression.Compile(bodytERM, nameof(bodytERM), required: false);
+            var __workflow_bodyuPDATECOVERAGETERM = WorkflowExpression.Compile(bodyuPDATECOVERAGETERM, nameof(bodyuPDATECOVERAGETERM), required: false);
+            var __workflow_bodywARANTYTYPEID = WorkflowExpression.Compile(bodywARANTYTYPEID, nameof(bodywARANTYTYPEID), required: false);
+            var __workflow_bodyassetLabel = WorkflowExpression.Compile(bodyassetLabel, nameof(bodyassetLabel), required: false);
+            var __workflow_bodyassetTag = WorkflowExpression.Compile(bodyassetTag, nameof(bodyassetTag), required: false);
+            var __workflow_bodyautomaticRenewal = WorkflowExpression.Compile(bodyautomaticRenewal, nameof(bodyautomaticRenewal), required: false);
+            var __workflow_bodyavailabilitySlaId = WorkflowExpression.Compile(bodyavailabilitySlaId, nameof(bodyavailabilitySlaId), required: false);
+            var __workflow_bodyavailableField1 = WorkflowExpression.Compile(bodyavailableField1, nameof(bodyavailableField1), required: false);
+            var __workflow_bodyavailableField2 = WorkflowExpression.Compile(bodyavailableField2, nameof(bodyavailableField2), required: false);
+            var __workflow_bodyavailableField3 = WorkflowExpression.Compile(bodyavailableField3, nameof(bodyavailableField3), required: false);
+            var __workflow_bodyavailableField4 = WorkflowExpression.Compile(bodyavailableField4, nameof(bodyavailableField4), required: false);
+            var __workflow_bodyavailableField5 = WorkflowExpression.Compile(bodyavailableField5, nameof(bodyavailableField5), required: false);
+            var __workflow_bodyavailableField6 = WorkflowExpression.Compile(bodyavailableField6, nameof(bodyavailableField6), required: false);
+            var __workflow_bodycommentAsset = WorkflowExpression.Compile(bodycommentAsset, nameof(bodycommentAsset), required: false);
             return new DeferredBodyAction<UpdateAssetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1));
@@ -894,10 +787,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetLinksResponse> ViewAssetLinks(Expression<Func<string>> account, Expression<Func<string>> assetId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
             return new DeferredBodyAction<ViewAssetLinksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1));
@@ -910,12 +801,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<string> DeleteAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
-            var __workflow_parentAssetId = parentAssetId == null ? null : WorkflowExpression.Compile(parentAssetId);
-            WorkflowExpression.Validate(__workflow_parentAssetId, nameof(parentAssetId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
+            var __workflow_parentAssetId = WorkflowExpression.Compile(parentAssetId, nameof(parentAssetId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1));
@@ -928,16 +816,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateAssetLinkResponse> CreateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<string>> bodycontractRow = null, Expression<Func<string>> bodymonthlyPayment = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
-            var __workflow_parentAssetId = parentAssetId == null ? null : WorkflowExpression.Compile(parentAssetId);
-            WorkflowExpression.Validate(__workflow_parentAssetId, nameof(parentAssetId), required: true);
-            var __workflow_bodycontractRow = bodycontractRow == null ? null : WorkflowExpression.Compile(bodycontractRow);
-            WorkflowExpression.Validate(__workflow_bodycontractRow, nameof(bodycontractRow), required: false);
-            var __workflow_bodymonthlyPayment = bodymonthlyPayment == null ? null : WorkflowExpression.Compile(bodymonthlyPayment);
-            WorkflowExpression.Validate(__workflow_bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
+            var __workflow_parentAssetId = WorkflowExpression.Compile(parentAssetId, nameof(parentAssetId), required: true);
+            var __workflow_bodycontractRow = WorkflowExpression.Compile(bodycontractRow, nameof(bodycontractRow), required: false);
+            var __workflow_bodymonthlyPayment = WorkflowExpression.Compile(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
             return new DeferredBodyAction<CreateAssetLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1));
@@ -969,16 +852,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateAssetLinkResponse> UpdateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<string>> bodycontractRow = null, Expression<Func<string>> bodymonthlyPayment = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
-            var __workflow_parentAssetId = parentAssetId == null ? null : WorkflowExpression.Compile(parentAssetId);
-            WorkflowExpression.Validate(__workflow_parentAssetId, nameof(parentAssetId), required: true);
-            var __workflow_bodycontractRow = bodycontractRow == null ? null : WorkflowExpression.Compile(bodycontractRow);
-            WorkflowExpression.Validate(__workflow_bodycontractRow, nameof(bodycontractRow), required: false);
-            var __workflow_bodymonthlyPayment = bodymonthlyPayment == null ? null : WorkflowExpression.Compile(bodymonthlyPayment);
-            WorkflowExpression.Validate(__workflow_bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
+            var __workflow_parentAssetId = WorkflowExpression.Compile(parentAssetId, nameof(parentAssetId), required: true);
+            var __workflow_bodycontractRow = WorkflowExpression.Compile(bodycontractRow, nameof(bodycontractRow), required: false);
+            var __workflow_bodymonthlyPayment = WorkflowExpression.Compile(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
             return new DeferredBodyAction<UpdateAssetLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_assetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1));
@@ -1010,12 +888,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewAssetLinkResponse> ViewAssetLink(Expression<Func<string>> account, Expression<Func<string>> parentAssetId, Expression<Func<string>> childAssetId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_parentAssetId = parentAssetId == null ? null : WorkflowExpression.Compile(parentAssetId);
-            WorkflowExpression.Validate(__workflow_parentAssetId, nameof(parentAssetId), required: true);
-            var __workflow_childAssetId = childAssetId == null ? null : WorkflowExpression.Compile(childAssetId);
-            WorkflowExpression.Validate(__workflow_childAssetId, nameof(childAssetId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_parentAssetId = WorkflowExpression.Compile(parentAssetId, nameof(parentAssetId), required: true);
+            var __workflow_childAssetId = WorkflowExpression.Compile(childAssetId, nameof(childAssetId), required: true);
             return new DeferredBodyAction<ViewAssetLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentAssetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childAssetId, 1));
@@ -1028,16 +903,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogAssetsListResponse> ViewCatalogAssetsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewCatalogAssetsListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1058,10 +928,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogAssetResponse> ViewCatalogAsset(Expression<Func<string>> account, Expression<Func<string>> catalogId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_catalogId = catalogId == null ? null : WorkflowExpression.Compile(catalogId);
-            WorkflowExpression.Validate(__workflow_catalogId, nameof(catalogId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_catalogId = WorkflowExpression.Compile(catalogId, nameof(catalogId), required: true);
             return new DeferredBodyAction<ViewCatalogAssetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_catalogId, 1));
@@ -1074,14 +942,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestsListResponse> ViewCatalogRequestsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<ViewCatalogRequestsListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1100,16 +964,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestsPathListResponse> ViewCatalogRequestsPathList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewCatalogRequestsPathListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1130,10 +989,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestPathResponse> ViewCatalogRequestPath(Expression<Func<string>> account, Expression<Func<string>> catalogId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_catalogId = catalogId == null ? null : WorkflowExpression.Compile(catalogId);
-            WorkflowExpression.Validate(__workflow_catalogId, nameof(catalogId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_catalogId = WorkflowExpression.Compile(catalogId, nameof(catalogId), required: true);
             return new DeferredBodyAction<ViewCatalogRequestPathResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_catalogId, 1));
@@ -1146,10 +1003,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewCatalogRequestResponse> ViewCatalogRequest(Expression<Func<string>> account, Expression<Func<string>> catalogId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_catalogId = catalogId == null ? null : WorkflowExpression.Compile(catalogId);
-            WorkflowExpression.Validate(__workflow_catalogId, nameof(catalogId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_catalogId = WorkflowExpression.Compile(catalogId, nameof(catalogId), required: true);
             return new DeferredBodyAction<ViewCatalogRequestResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_catalogId, 1));
@@ -1162,16 +1017,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemsListResponse> ViewConfigurationItemsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewConfigurationItemsListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1192,10 +1042,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemResponse> ViewConfigurationItem(Expression<Func<string>> account, Expression<Func<string>> ciId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_ciId = ciId == null ? null : WorkflowExpression.Compile(ciId);
-            WorkflowExpression.Validate(__workflow_ciId, nameof(ciId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<ViewConfigurationItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
@@ -1208,10 +1056,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemLinksResponse> ViewConfigurationItemLinks(Expression<Func<string>> account, Expression<Func<string>> ciId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_ciId = ciId == null ? null : WorkflowExpression.Compile(ciId);
-            WorkflowExpression.Validate(__workflow_ciId, nameof(ciId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_ciId = WorkflowExpression.Compile(ciId, nameof(ciId), required: true);
             return new DeferredBodyAction<ViewConfigurationItemLinksResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_ciId, 1));
@@ -1224,12 +1070,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<string> DeleteConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_parentCiId = parentCiId == null ? null : WorkflowExpression.Compile(parentCiId);
-            WorkflowExpression.Validate(__workflow_parentCiId, nameof(parentCiId), required: true);
-            var __workflow_childCiId = childCiId == null ? null : WorkflowExpression.Compile(childCiId);
-            WorkflowExpression.Validate(__workflow_childCiId, nameof(childCiId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
+            var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
@@ -1242,12 +1085,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewConfigurationItemLinkResponse> ViewConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_parentCiId = parentCiId == null ? null : WorkflowExpression.Compile(parentCiId);
-            WorkflowExpression.Validate(__workflow_parentCiId, nameof(parentCiId), required: true);
-            var __workflow_childCiId = childCiId == null ? null : WorkflowExpression.Compile(childCiId);
-            WorkflowExpression.Validate(__workflow_childCiId, nameof(childCiId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
+            var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
             return new DeferredBodyAction<ViewConfigurationItemLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
@@ -1260,16 +1100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateConfigurationItemLinkResponse> CreateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyrelationTypeID, Expression<Func<string>> bodyblocking = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_parentCiId = parentCiId == null ? null : WorkflowExpression.Compile(parentCiId);
-            WorkflowExpression.Validate(__workflow_parentCiId, nameof(parentCiId), required: true);
-            var __workflow_childCiId = childCiId == null ? null : WorkflowExpression.Compile(childCiId);
-            WorkflowExpression.Validate(__workflow_childCiId, nameof(childCiId), required: true);
-            var __workflow_bodyrelationTypeID = bodyrelationTypeID == null ? null : WorkflowExpression.Compile(bodyrelationTypeID);
-            WorkflowExpression.Validate(__workflow_bodyrelationTypeID, nameof(bodyrelationTypeID), required: true);
-            var __workflow_bodyblocking = bodyblocking == null ? null : WorkflowExpression.Compile(bodyblocking);
-            WorkflowExpression.Validate(__workflow_bodyblocking, nameof(bodyblocking), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
+            var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
+            var __workflow_bodyrelationTypeID = WorkflowExpression.Compile(bodyrelationTypeID, nameof(bodyrelationTypeID), required: true);
+            var __workflow_bodyblocking = WorkflowExpression.Compile(bodyblocking, nameof(bodyblocking), required: false);
             return new DeferredBodyAction<CreateConfigurationItemLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
@@ -1297,16 +1132,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse> UpdateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyblocking = null, Expression<Func<string>> bodyrelationTypeID = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_parentCiId = parentCiId == null ? null : WorkflowExpression.Compile(parentCiId);
-            WorkflowExpression.Validate(__workflow_parentCiId, nameof(parentCiId), required: true);
-            var __workflow_childCiId = childCiId == null ? null : WorkflowExpression.Compile(childCiId);
-            WorkflowExpression.Validate(__workflow_childCiId, nameof(childCiId), required: true);
-            var __workflow_bodyblocking = bodyblocking == null ? null : WorkflowExpression.Compile(bodyblocking);
-            WorkflowExpression.Validate(__workflow_bodyblocking, nameof(bodyblocking), required: false);
-            var __workflow_bodyrelationTypeID = bodyrelationTypeID == null ? null : WorkflowExpression.Compile(bodyrelationTypeID);
-            WorkflowExpression.Validate(__workflow_bodyrelationTypeID, nameof(bodyrelationTypeID), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_parentCiId = WorkflowExpression.Compile(parentCiId, nameof(parentCiId), required: true);
+            var __workflow_childCiId = WorkflowExpression.Compile(childCiId, nameof(childCiId), required: true);
+            var __workflow_bodyblocking = WorkflowExpression.Compile(bodyblocking, nameof(bodyblocking), required: false);
+            var __workflow_bodyrelationTypeID = WorkflowExpression.Compile(bodyrelationTypeID, nameof(bodyrelationTypeID), required: false);
             return new DeferredBodyAction<UpdateConfigurationItemLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentCiId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_childCiId, 1));
@@ -1338,16 +1168,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEntitiesListResponse> ViewEntitiesList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewEntitiesListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1368,10 +1193,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEntityResponse> ViewEntity(Expression<Func<string>> account, Expression<Func<string>> departmentId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_departmentId = departmentId == null ? null : WorkflowExpression.Compile(departmentId);
-            WorkflowExpression.Validate(__workflow_departmentId, nameof(departmentId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_departmentId = WorkflowExpression.Compile(departmentId, nameof(departmentId), required: true);
             return new DeferredBodyAction<ViewEntityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_departmentId, 1));
@@ -1384,16 +1207,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEmployeesListResponse> ViewEmployeesList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewEmployeesListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1414,10 +1232,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateEmployeeResponse> CreateEmployee(Expression<Func<string>> account, Expression<Func<bodyemployeesInputItem[]>> bodyemployees = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_bodyemployees = bodyemployees == null ? null : WorkflowExpression.Compile(bodyemployees);
-            WorkflowExpression.Validate(__workflow_bodyemployees, nameof(bodyemployees), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_bodyemployees = WorkflowExpression.Compile(bodyemployees, nameof(bodyemployees), required: false);
             return new DeferredBodyAction<CreateEmployeeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1443,10 +1259,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewEmployeeResponse> ViewEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_employeeId = employeeId == null ? null : WorkflowExpression.Compile(employeeId);
-            WorkflowExpression.Validate(__workflow_employeeId, nameof(employeeId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
             return new DeferredBodyAction<ViewEmployeeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_employeeId, 1));
@@ -1459,98 +1273,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateEmployeeResponse> UpdateEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId, Expression<Func<string>> bodyaPPROVEDTOVALIDATE = null, Expression<Func<string>> bodyaVAILABILITYSTATUSID = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodybEGINOFCONTRACT = null, Expression<Func<string>> bodycELLULARNUMBER = null, Expression<Func<string>> bodycHATLOGIN = null, Expression<Func<string>> bodycIVILSTATUSID = null, Expression<Func<string>> bodycOMMENTEMPLOYEE = null, Expression<Func<string>> bodycOSTPERHOUR = null, Expression<Func<string>> bodycOSTPERHOURCURID = null, Expression<Func<string>> bodydEFAULTCOSTCENTERID = null, Expression<Func<string>> bodydELEGATIONFROM = null, Expression<Func<string>> bodydELEGATIONID = null, Expression<Func<string>> bodydELEGATIONTO = null, Expression<Func<string>> bodydEPARTMENTID = null, Expression<Func<string>> bodyeNDOFCONTRACT = null, Expression<Func<string>> bodyeMAIL = null, Expression<Func<string>> bodyfAXNUMBER = null, Expression<Func<string>> bodyfUNCTIONID = null, Expression<Func<string>> bodyiCQNUMBER = null, Expression<Func<string>> bodyiDENTIFICATION = null, Expression<Func<string>> bodyiSAUTOMATICSTATUS = null, Expression<Func<string>> bodyiTCORRESPONDENT = null, Expression<Func<string>> bodylANGUAGEID = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTNAME = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodylOGIN = null, Expression<Func<string>> bodymANAGERID = null, Expression<Func<string>> bodymESSENGERSIGNNAME = null, Expression<Func<string>> bodynOTIFICATIONTYPEID = null, Expression<Func<string>> bodypASSWDLASTUPDATEUT = null, Expression<Func<string>> bodypHONENUMBER = null, Expression<Func<string>> bodypICTUREPATH = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodyvALIDATORID = null, Expression<Func<string>> bodyvIPLEVELID = null, Expression<Func<string>> bodywAVEADDRESS = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_employeeId = employeeId == null ? null : WorkflowExpression.Compile(employeeId);
-            WorkflowExpression.Validate(__workflow_employeeId, nameof(employeeId), required: true);
-            var __workflow_bodyaPPROVEDTOVALIDATE = bodyaPPROVEDTOVALIDATE == null ? null : WorkflowExpression.Compile(bodyaPPROVEDTOVALIDATE);
-            WorkflowExpression.Validate(__workflow_bodyaPPROVEDTOVALIDATE, nameof(bodyaPPROVEDTOVALIDATE), required: false);
-            var __workflow_bodyaVAILABILITYSTATUSID = bodyaVAILABILITYSTATUSID == null ? null : WorkflowExpression.Compile(bodyaVAILABILITYSTATUSID);
-            WorkflowExpression.Validate(__workflow_bodyaVAILABILITYSTATUSID, nameof(bodyaVAILABILITYSTATUSID), required: false);
-            var __workflow_bodyaVAILABLEFIELD1 = bodyaVAILABLEFIELD1 == null ? null : WorkflowExpression.Compile(bodyaVAILABLEFIELD1);
-            WorkflowExpression.Validate(__workflow_bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
-            var __workflow_bodyaVAILABLEFIELD2 = bodyaVAILABLEFIELD2 == null ? null : WorkflowExpression.Compile(bodyaVAILABLEFIELD2);
-            WorkflowExpression.Validate(__workflow_bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
-            var __workflow_bodyaVAILABLEFIELD3 = bodyaVAILABLEFIELD3 == null ? null : WorkflowExpression.Compile(bodyaVAILABLEFIELD3);
-            WorkflowExpression.Validate(__workflow_bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
-            var __workflow_bodyaVAILABLEFIELD4 = bodyaVAILABLEFIELD4 == null ? null : WorkflowExpression.Compile(bodyaVAILABLEFIELD4);
-            WorkflowExpression.Validate(__workflow_bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
-            var __workflow_bodyaVAILABLEFIELD5 = bodyaVAILABLEFIELD5 == null ? null : WorkflowExpression.Compile(bodyaVAILABLEFIELD5);
-            WorkflowExpression.Validate(__workflow_bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
-            var __workflow_bodyaVAILABLEFIELD6 = bodyaVAILABLEFIELD6 == null ? null : WorkflowExpression.Compile(bodyaVAILABLEFIELD6);
-            WorkflowExpression.Validate(__workflow_bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
-            var __workflow_bodybEGINOFCONTRACT = bodybEGINOFCONTRACT == null ? null : WorkflowExpression.Compile(bodybEGINOFCONTRACT);
-            WorkflowExpression.Validate(__workflow_bodybEGINOFCONTRACT, nameof(bodybEGINOFCONTRACT), required: false);
-            var __workflow_bodycELLULARNUMBER = bodycELLULARNUMBER == null ? null : WorkflowExpression.Compile(bodycELLULARNUMBER);
-            WorkflowExpression.Validate(__workflow_bodycELLULARNUMBER, nameof(bodycELLULARNUMBER), required: false);
-            var __workflow_bodycHATLOGIN = bodycHATLOGIN == null ? null : WorkflowExpression.Compile(bodycHATLOGIN);
-            WorkflowExpression.Validate(__workflow_bodycHATLOGIN, nameof(bodycHATLOGIN), required: false);
-            var __workflow_bodycIVILSTATUSID = bodycIVILSTATUSID == null ? null : WorkflowExpression.Compile(bodycIVILSTATUSID);
-            WorkflowExpression.Validate(__workflow_bodycIVILSTATUSID, nameof(bodycIVILSTATUSID), required: false);
-            var __workflow_bodycOMMENTEMPLOYEE = bodycOMMENTEMPLOYEE == null ? null : WorkflowExpression.Compile(bodycOMMENTEMPLOYEE);
-            WorkflowExpression.Validate(__workflow_bodycOMMENTEMPLOYEE, nameof(bodycOMMENTEMPLOYEE), required: false);
-            var __workflow_bodycOSTPERHOUR = bodycOSTPERHOUR == null ? null : WorkflowExpression.Compile(bodycOSTPERHOUR);
-            WorkflowExpression.Validate(__workflow_bodycOSTPERHOUR, nameof(bodycOSTPERHOUR), required: false);
-            var __workflow_bodycOSTPERHOURCURID = bodycOSTPERHOURCURID == null ? null : WorkflowExpression.Compile(bodycOSTPERHOURCURID);
-            WorkflowExpression.Validate(__workflow_bodycOSTPERHOURCURID, nameof(bodycOSTPERHOURCURID), required: false);
-            var __workflow_bodydEFAULTCOSTCENTERID = bodydEFAULTCOSTCENTERID == null ? null : WorkflowExpression.Compile(bodydEFAULTCOSTCENTERID);
-            WorkflowExpression.Validate(__workflow_bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
-            var __workflow_bodydELEGATIONFROM = bodydELEGATIONFROM == null ? null : WorkflowExpression.Compile(bodydELEGATIONFROM);
-            WorkflowExpression.Validate(__workflow_bodydELEGATIONFROM, nameof(bodydELEGATIONFROM), required: false);
-            var __workflow_bodydELEGATIONID = bodydELEGATIONID == null ? null : WorkflowExpression.Compile(bodydELEGATIONID);
-            WorkflowExpression.Validate(__workflow_bodydELEGATIONID, nameof(bodydELEGATIONID), required: false);
-            var __workflow_bodydELEGATIONTO = bodydELEGATIONTO == null ? null : WorkflowExpression.Compile(bodydELEGATIONTO);
-            WorkflowExpression.Validate(__workflow_bodydELEGATIONTO, nameof(bodydELEGATIONTO), required: false);
-            var __workflow_bodydEPARTMENTID = bodydEPARTMENTID == null ? null : WorkflowExpression.Compile(bodydEPARTMENTID);
-            WorkflowExpression.Validate(__workflow_bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
-            var __workflow_bodyeNDOFCONTRACT = bodyeNDOFCONTRACT == null ? null : WorkflowExpression.Compile(bodyeNDOFCONTRACT);
-            WorkflowExpression.Validate(__workflow_bodyeNDOFCONTRACT, nameof(bodyeNDOFCONTRACT), required: false);
-            var __workflow_bodyeMAIL = bodyeMAIL == null ? null : WorkflowExpression.Compile(bodyeMAIL);
-            WorkflowExpression.Validate(__workflow_bodyeMAIL, nameof(bodyeMAIL), required: false);
-            var __workflow_bodyfAXNUMBER = bodyfAXNUMBER == null ? null : WorkflowExpression.Compile(bodyfAXNUMBER);
-            WorkflowExpression.Validate(__workflow_bodyfAXNUMBER, nameof(bodyfAXNUMBER), required: false);
-            var __workflow_bodyfUNCTIONID = bodyfUNCTIONID == null ? null : WorkflowExpression.Compile(bodyfUNCTIONID);
-            WorkflowExpression.Validate(__workflow_bodyfUNCTIONID, nameof(bodyfUNCTIONID), required: false);
-            var __workflow_bodyiCQNUMBER = bodyiCQNUMBER == null ? null : WorkflowExpression.Compile(bodyiCQNUMBER);
-            WorkflowExpression.Validate(__workflow_bodyiCQNUMBER, nameof(bodyiCQNUMBER), required: false);
-            var __workflow_bodyiDENTIFICATION = bodyiDENTIFICATION == null ? null : WorkflowExpression.Compile(bodyiDENTIFICATION);
-            WorkflowExpression.Validate(__workflow_bodyiDENTIFICATION, nameof(bodyiDENTIFICATION), required: false);
-            var __workflow_bodyiSAUTOMATICSTATUS = bodyiSAUTOMATICSTATUS == null ? null : WorkflowExpression.Compile(bodyiSAUTOMATICSTATUS);
-            WorkflowExpression.Validate(__workflow_bodyiSAUTOMATICSTATUS, nameof(bodyiSAUTOMATICSTATUS), required: false);
-            var __workflow_bodyiTCORRESPONDENT = bodyiTCORRESPONDENT == null ? null : WorkflowExpression.Compile(bodyiTCORRESPONDENT);
-            WorkflowExpression.Validate(__workflow_bodyiTCORRESPONDENT, nameof(bodyiTCORRESPONDENT), required: false);
-            var __workflow_bodylANGUAGEID = bodylANGUAGEID == null ? null : WorkflowExpression.Compile(bodylANGUAGEID);
-            WorkflowExpression.Validate(__workflow_bodylANGUAGEID, nameof(bodylANGUAGEID), required: false);
-            var __workflow_bodylASTINTEGRATION = bodylASTINTEGRATION == null ? null : WorkflowExpression.Compile(bodylASTINTEGRATION);
-            WorkflowExpression.Validate(__workflow_bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
-            var __workflow_bodylASTNAME = bodylASTNAME == null ? null : WorkflowExpression.Compile(bodylASTNAME);
-            WorkflowExpression.Validate(__workflow_bodylASTNAME, nameof(bodylASTNAME), required: false);
-            var __workflow_bodylASTUPDATE = bodylASTUPDATE == null ? null : WorkflowExpression.Compile(bodylASTUPDATE);
-            WorkflowExpression.Validate(__workflow_bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
-            var __workflow_bodylOCATIONID = bodylOCATIONID == null ? null : WorkflowExpression.Compile(bodylOCATIONID);
-            WorkflowExpression.Validate(__workflow_bodylOCATIONID, nameof(bodylOCATIONID), required: false);
-            var __workflow_bodylOGIN = bodylOGIN == null ? null : WorkflowExpression.Compile(bodylOGIN);
-            WorkflowExpression.Validate(__workflow_bodylOGIN, nameof(bodylOGIN), required: false);
-            var __workflow_bodymANAGERID = bodymANAGERID == null ? null : WorkflowExpression.Compile(bodymANAGERID);
-            WorkflowExpression.Validate(__workflow_bodymANAGERID, nameof(bodymANAGERID), required: false);
-            var __workflow_bodymESSENGERSIGNNAME = bodymESSENGERSIGNNAME == null ? null : WorkflowExpression.Compile(bodymESSENGERSIGNNAME);
-            WorkflowExpression.Validate(__workflow_bodymESSENGERSIGNNAME, nameof(bodymESSENGERSIGNNAME), required: false);
-            var __workflow_bodynOTIFICATIONTYPEID = bodynOTIFICATIONTYPEID == null ? null : WorkflowExpression.Compile(bodynOTIFICATIONTYPEID);
-            WorkflowExpression.Validate(__workflow_bodynOTIFICATIONTYPEID, nameof(bodynOTIFICATIONTYPEID), required: false);
-            var __workflow_bodypASSWDLASTUPDATEUT = bodypASSWDLASTUPDATEUT == null ? null : WorkflowExpression.Compile(bodypASSWDLASTUPDATEUT);
-            WorkflowExpression.Validate(__workflow_bodypASSWDLASTUPDATEUT, nameof(bodypASSWDLASTUPDATEUT), required: false);
-            var __workflow_bodypHONENUMBER = bodypHONENUMBER == null ? null : WorkflowExpression.Compile(bodypHONENUMBER);
-            WorkflowExpression.Validate(__workflow_bodypHONENUMBER, nameof(bodypHONENUMBER), required: false);
-            var __workflow_bodypICTUREPATH = bodypICTUREPATH == null ? null : WorkflowExpression.Compile(bodypICTUREPATH);
-            WorkflowExpression.Validate(__workflow_bodypICTUREPATH, nameof(bodypICTUREPATH), required: false);
-            var __workflow_bodysUPPLIERID = bodysUPPLIERID == null ? null : WorkflowExpression.Compile(bodysUPPLIERID);
-            WorkflowExpression.Validate(__workflow_bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
-            var __workflow_bodyvALIDATORID = bodyvALIDATORID == null ? null : WorkflowExpression.Compile(bodyvALIDATORID);
-            WorkflowExpression.Validate(__workflow_bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
-            var __workflow_bodyvIPLEVELID = bodyvIPLEVELID == null ? null : WorkflowExpression.Compile(bodyvIPLEVELID);
-            WorkflowExpression.Validate(__workflow_bodyvIPLEVELID, nameof(bodyvIPLEVELID), required: false);
-            var __workflow_bodywAVEADDRESS = bodywAVEADDRESS == null ? null : WorkflowExpression.Compile(bodywAVEADDRESS);
-            WorkflowExpression.Validate(__workflow_bodywAVEADDRESS, nameof(bodywAVEADDRESS), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_employeeId = WorkflowExpression.Compile(employeeId, nameof(employeeId), required: true);
+            var __workflow_bodyaPPROVEDTOVALIDATE = WorkflowExpression.Compile(bodyaPPROVEDTOVALIDATE, nameof(bodyaPPROVEDTOVALIDATE), required: false);
+            var __workflow_bodyaVAILABILITYSTATUSID = WorkflowExpression.Compile(bodyaVAILABILITYSTATUSID, nameof(bodyaVAILABILITYSTATUSID), required: false);
+            var __workflow_bodyaVAILABLEFIELD1 = WorkflowExpression.Compile(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
+            var __workflow_bodyaVAILABLEFIELD2 = WorkflowExpression.Compile(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
+            var __workflow_bodyaVAILABLEFIELD3 = WorkflowExpression.Compile(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
+            var __workflow_bodyaVAILABLEFIELD4 = WorkflowExpression.Compile(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
+            var __workflow_bodyaVAILABLEFIELD5 = WorkflowExpression.Compile(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
+            var __workflow_bodyaVAILABLEFIELD6 = WorkflowExpression.Compile(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
+            var __workflow_bodybEGINOFCONTRACT = WorkflowExpression.Compile(bodybEGINOFCONTRACT, nameof(bodybEGINOFCONTRACT), required: false);
+            var __workflow_bodycELLULARNUMBER = WorkflowExpression.Compile(bodycELLULARNUMBER, nameof(bodycELLULARNUMBER), required: false);
+            var __workflow_bodycHATLOGIN = WorkflowExpression.Compile(bodycHATLOGIN, nameof(bodycHATLOGIN), required: false);
+            var __workflow_bodycIVILSTATUSID = WorkflowExpression.Compile(bodycIVILSTATUSID, nameof(bodycIVILSTATUSID), required: false);
+            var __workflow_bodycOMMENTEMPLOYEE = WorkflowExpression.Compile(bodycOMMENTEMPLOYEE, nameof(bodycOMMENTEMPLOYEE), required: false);
+            var __workflow_bodycOSTPERHOUR = WorkflowExpression.Compile(bodycOSTPERHOUR, nameof(bodycOSTPERHOUR), required: false);
+            var __workflow_bodycOSTPERHOURCURID = WorkflowExpression.Compile(bodycOSTPERHOURCURID, nameof(bodycOSTPERHOURCURID), required: false);
+            var __workflow_bodydEFAULTCOSTCENTERID = WorkflowExpression.Compile(bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
+            var __workflow_bodydELEGATIONFROM = WorkflowExpression.Compile(bodydELEGATIONFROM, nameof(bodydELEGATIONFROM), required: false);
+            var __workflow_bodydELEGATIONID = WorkflowExpression.Compile(bodydELEGATIONID, nameof(bodydELEGATIONID), required: false);
+            var __workflow_bodydELEGATIONTO = WorkflowExpression.Compile(bodydELEGATIONTO, nameof(bodydELEGATIONTO), required: false);
+            var __workflow_bodydEPARTMENTID = WorkflowExpression.Compile(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
+            var __workflow_bodyeNDOFCONTRACT = WorkflowExpression.Compile(bodyeNDOFCONTRACT, nameof(bodyeNDOFCONTRACT), required: false);
+            var __workflow_bodyeMAIL = WorkflowExpression.Compile(bodyeMAIL, nameof(bodyeMAIL), required: false);
+            var __workflow_bodyfAXNUMBER = WorkflowExpression.Compile(bodyfAXNUMBER, nameof(bodyfAXNUMBER), required: false);
+            var __workflow_bodyfUNCTIONID = WorkflowExpression.Compile(bodyfUNCTIONID, nameof(bodyfUNCTIONID), required: false);
+            var __workflow_bodyiCQNUMBER = WorkflowExpression.Compile(bodyiCQNUMBER, nameof(bodyiCQNUMBER), required: false);
+            var __workflow_bodyiDENTIFICATION = WorkflowExpression.Compile(bodyiDENTIFICATION, nameof(bodyiDENTIFICATION), required: false);
+            var __workflow_bodyiSAUTOMATICSTATUS = WorkflowExpression.Compile(bodyiSAUTOMATICSTATUS, nameof(bodyiSAUTOMATICSTATUS), required: false);
+            var __workflow_bodyiTCORRESPONDENT = WorkflowExpression.Compile(bodyiTCORRESPONDENT, nameof(bodyiTCORRESPONDENT), required: false);
+            var __workflow_bodylANGUAGEID = WorkflowExpression.Compile(bodylANGUAGEID, nameof(bodylANGUAGEID), required: false);
+            var __workflow_bodylASTINTEGRATION = WorkflowExpression.Compile(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
+            var __workflow_bodylASTNAME = WorkflowExpression.Compile(bodylASTNAME, nameof(bodylASTNAME), required: false);
+            var __workflow_bodylASTUPDATE = WorkflowExpression.Compile(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
+            var __workflow_bodylOCATIONID = WorkflowExpression.Compile(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            var __workflow_bodylOGIN = WorkflowExpression.Compile(bodylOGIN, nameof(bodylOGIN), required: false);
+            var __workflow_bodymANAGERID = WorkflowExpression.Compile(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            var __workflow_bodymESSENGERSIGNNAME = WorkflowExpression.Compile(bodymESSENGERSIGNNAME, nameof(bodymESSENGERSIGNNAME), required: false);
+            var __workflow_bodynOTIFICATIONTYPEID = WorkflowExpression.Compile(bodynOTIFICATIONTYPEID, nameof(bodynOTIFICATIONTYPEID), required: false);
+            var __workflow_bodypASSWDLASTUPDATEUT = WorkflowExpression.Compile(bodypASSWDLASTUPDATEUT, nameof(bodypASSWDLASTUPDATEUT), required: false);
+            var __workflow_bodypHONENUMBER = WorkflowExpression.Compile(bodypHONENUMBER, nameof(bodypHONENUMBER), required: false);
+            var __workflow_bodypICTUREPATH = WorkflowExpression.Compile(bodypICTUREPATH, nameof(bodypICTUREPATH), required: false);
+            var __workflow_bodysUPPLIERID = WorkflowExpression.Compile(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
+            var __workflow_bodyvALIDATORID = WorkflowExpression.Compile(bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
+            var __workflow_bodyvIPLEVELID = WorkflowExpression.Compile(bodyvIPLEVELID, nameof(bodyvIPLEVELID), required: false);
+            var __workflow_bodywAVEADDRESS = WorkflowExpression.Compile(bodywAVEADDRESS, nameof(bodywAVEADDRESS), required: false);
             return new DeferredBodyAction<UpdateEmployeeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_employeeId, 1));
@@ -1834,16 +1602,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewKnownErrorsListResponse> ViewKnownErrorsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewKnownErrorsListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/known-problems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1864,10 +1627,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewKnownErrorsResponse> ViewKnownErrors(Expression<Func<string>> account, Expression<Func<string>> kpId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_kpId = kpId == null ? null : WorkflowExpression.Compile(kpId);
-            WorkflowExpression.Validate(__workflow_kpId, nameof(kpId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_kpId = WorkflowExpression.Compile(kpId, nameof(kpId), required: true);
             return new DeferredBodyAction<ViewKnownErrorsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/known-problems/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_kpId, 1));
@@ -1880,16 +1641,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewLocationsListResponse> ViewLocationsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewLocationsListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1910,10 +1666,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewLocationResponse> ViewLocation(Expression<Func<string>> account, Expression<Func<string>> locationId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_locationId = locationId == null ? null : WorkflowExpression.Compile(locationId);
-            WorkflowExpression.Validate(__workflow_locationId, nameof(locationId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_locationId = WorkflowExpression.Compile(locationId, nameof(locationId), required: true);
             return new DeferredBodyAction<ViewLocationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_locationId, 1));
@@ -1926,14 +1680,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewManufacturerListResponse> ViewManufacturerList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewManufacturerListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1952,10 +1702,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewManufacturerResponse> ViewManufacturer(Expression<Func<string>> account, Expression<Func<string>> manufacturerId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_manufacturerId = manufacturerId == null ? null : WorkflowExpression.Compile(manufacturerId);
-            WorkflowExpression.Validate(__workflow_manufacturerId, nameof(manufacturerId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_manufacturerId = WorkflowExpression.Compile(manufacturerId, nameof(manufacturerId), required: true);
             return new DeferredBodyAction<ViewManufacturerResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_manufacturerId, 1));
@@ -1968,16 +1716,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewRequestsIncidentsListResponse> ViewRequestsIncidentsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewRequestsIncidentsListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -1998,10 +1741,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CreateRequestIncidentResponse> CreateRequestIncident(Expression<Func<string>> account, Expression<Func<bodyrequestsInputItem[]>> bodyrequests = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_bodyrequests = bodyrequests == null ? null : WorkflowExpression.Compile(bodyrequests);
-            WorkflowExpression.Validate(__workflow_bodyrequests, nameof(bodyrequests), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_bodyrequests = WorkflowExpression.Compile(bodyrequests, nameof(bodyrequests), required: false);
             return new DeferredBodyAction<CreateRequestIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -2027,10 +1768,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewRequestIncidentResponse> ViewRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<ViewRequestIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2043,12 +1782,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<CloseRequestIncidentResponse> CloseRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<bodyclosedInputItem[]>> bodyclosed = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_bodyclosed = bodyclosed == null ? null : WorkflowExpression.Compile(bodyclosed);
-            WorkflowExpression.Validate(__workflow_bodyclosed, nameof(bodyclosed), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_bodyclosed = WorkflowExpression.Compile(bodyclosed, nameof(bodyclosed), required: false);
             return new DeferredBodyAction<CloseRequestIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2074,142 +1810,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UpdateRequestIncidentResponse> UpdateRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyanalyticalChargeId = null, Expression<Func<string>> bodyassetId = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodybudgetPlanned = null, Expression<Func<string>> bodycanBeDuplicated = null, Expression<Func<string>> bodyciId = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodycontinuityPlanId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodycreationDateUt = null, Expression<Func<string>> bodydelay = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydynamicDetails = null, Expression<Func<string>> bodyeffectiveChangeDateEnd = null, Expression<Func<string>> bodyeffectiveChangeDateStart = null, Expression<Func<string>> bodyendDateUt = null, Expression<Func<string>> bodyestimatedNetPrice = null, Expression<Func<string>> bodyexpectedDateUt = null, Expression<Func<string>> bodyexpectedDuration = null, Expression<Func<string>> bodyexpectedEndDateUt = null, Expression<Func<string>> bodyexpectedStartDateUt = null, Expression<Func<string>> bodyexternalReference = null, Expression<Func<string>> bodyfirstCallResolution = null, Expression<Func<string>> bodyhourPerDay = null, Expression<Func<string>> bodyimpactId = null, Expression<Func<string>> bodyimputationDate = null, Expression<Func<string>> bodyisMajorIncident = null, Expression<Func<string>> bodyisTemplate = null, Expression<Func<string>> bodyknownProblemsId = null, Expression<Func<string>> bodylastUpdate = null, Expression<Func<string>> bodymark1 = null, Expression<Func<string>> bodymark2 = null, Expression<Func<string>> bodymaxResolutionDateUt = null, Expression<Func<string>> bodymsProjectImportValidationWaiting = null, Expression<Func<string>> bodynetPrice = null, Expression<Func<string>> bodynetPriceCurId = null, Expression<Func<string>> bodyoriginToolId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyowningGroupId = null, Expression<Func<string>> bodyplannedChangeDateEnd = null, Expression<Func<string>> bodyplannedChangeDateStart = null, Expression<Func<string>> bodypmStatusId = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectStartDateUt = null, Expression<Func<string>> bodyqty = null, Expression<Func<string>> bodyreleaseId = null, Expression<Func<string>> bodyrentalNetPrice = null, Expression<Func<string>> bodyrentalNetPriceCurId = null, Expression<Func<string>> bodyrequestOriginId = null, Expression<Func<string>> bodyrequestedChangeDateEnd = null, Expression<Func<string>> bodyrequestedChangeDateStart = null, Expression<Func<string>> bodyrequestorId = null, Expression<Func<string>> bodyrequestorIpAddress = null, Expression<Func<string>> bodyrequestorPhone = null, Expression<Func<string>> bodyriskAmount = null, Expression<Func<string>> bodyriskDescription = null, Expression<Func<string>> bodyriskLevelId = null, Expression<Func<string>> bodyrootCauseId = null, Expression<Func<string>> bodysubmitDateUt = null, Expression<Func<string>> bodytimeUsedToSolveRequest = null, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_bodyanalyticalChargeId = bodyanalyticalChargeId == null ? null : WorkflowExpression.Compile(bodyanalyticalChargeId);
-            WorkflowExpression.Validate(__workflow_bodyanalyticalChargeId, nameof(bodyanalyticalChargeId), required: false);
-            var __workflow_bodyassetId = bodyassetId == null ? null : WorkflowExpression.Compile(bodyassetId);
-            WorkflowExpression.Validate(__workflow_bodyassetId, nameof(bodyassetId), required: false);
-            var __workflow_bodyavailableField1 = bodyavailableField1 == null ? null : WorkflowExpression.Compile(bodyavailableField1);
-            WorkflowExpression.Validate(__workflow_bodyavailableField1, nameof(bodyavailableField1), required: false);
-            var __workflow_bodyavailableField2 = bodyavailableField2 == null ? null : WorkflowExpression.Compile(bodyavailableField2);
-            WorkflowExpression.Validate(__workflow_bodyavailableField2, nameof(bodyavailableField2), required: false);
-            var __workflow_bodyavailableField3 = bodyavailableField3 == null ? null : WorkflowExpression.Compile(bodyavailableField3);
-            WorkflowExpression.Validate(__workflow_bodyavailableField3, nameof(bodyavailableField3), required: false);
-            var __workflow_bodyavailableField4 = bodyavailableField4 == null ? null : WorkflowExpression.Compile(bodyavailableField4);
-            WorkflowExpression.Validate(__workflow_bodyavailableField4, nameof(bodyavailableField4), required: false);
-            var __workflow_bodyavailableField5 = bodyavailableField5 == null ? null : WorkflowExpression.Compile(bodyavailableField5);
-            WorkflowExpression.Validate(__workflow_bodyavailableField5, nameof(bodyavailableField5), required: false);
-            var __workflow_bodyavailableField6 = bodyavailableField6 == null ? null : WorkflowExpression.Compile(bodyavailableField6);
-            WorkflowExpression.Validate(__workflow_bodyavailableField6, nameof(bodyavailableField6), required: false);
-            var __workflow_bodybudgetPlanned = bodybudgetPlanned == null ? null : WorkflowExpression.Compile(bodybudgetPlanned);
-            WorkflowExpression.Validate(__workflow_bodybudgetPlanned, nameof(bodybudgetPlanned), required: false);
-            var __workflow_bodycanBeDuplicated = bodycanBeDuplicated == null ? null : WorkflowExpression.Compile(bodycanBeDuplicated);
-            WorkflowExpression.Validate(__workflow_bodycanBeDuplicated, nameof(bodycanBeDuplicated), required: false);
-            var __workflow_bodyciId = bodyciId == null ? null : WorkflowExpression.Compile(bodyciId);
-            WorkflowExpression.Validate(__workflow_bodyciId, nameof(bodyciId), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodycontinuityPlanId = bodycontinuityPlanId == null ? null : WorkflowExpression.Compile(bodycontinuityPlanId);
-            WorkflowExpression.Validate(__workflow_bodycontinuityPlanId, nameof(bodycontinuityPlanId), required: false);
-            var __workflow_bodycostCenterId = bodycostCenterId == null ? null : WorkflowExpression.Compile(bodycostCenterId);
-            WorkflowExpression.Validate(__workflow_bodycostCenterId, nameof(bodycostCenterId), required: false);
-            var __workflow_bodycreationDateUt = bodycreationDateUt == null ? null : WorkflowExpression.Compile(bodycreationDateUt);
-            WorkflowExpression.Validate(__workflow_bodycreationDateUt, nameof(bodycreationDateUt), required: false);
-            var __workflow_bodydelay = bodydelay == null ? null : WorkflowExpression.Compile(bodydelay);
-            WorkflowExpression.Validate(__workflow_bodydelay, nameof(bodydelay), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodydynamicDetails = bodydynamicDetails == null ? null : WorkflowExpression.Compile(bodydynamicDetails);
-            WorkflowExpression.Validate(__workflow_bodydynamicDetails, nameof(bodydynamicDetails), required: false);
-            var __workflow_bodyeffectiveChangeDateEnd = bodyeffectiveChangeDateEnd == null ? null : WorkflowExpression.Compile(bodyeffectiveChangeDateEnd);
-            WorkflowExpression.Validate(__workflow_bodyeffectiveChangeDateEnd, nameof(bodyeffectiveChangeDateEnd), required: false);
-            var __workflow_bodyeffectiveChangeDateStart = bodyeffectiveChangeDateStart == null ? null : WorkflowExpression.Compile(bodyeffectiveChangeDateStart);
-            WorkflowExpression.Validate(__workflow_bodyeffectiveChangeDateStart, nameof(bodyeffectiveChangeDateStart), required: false);
-            var __workflow_bodyendDateUt = bodyendDateUt == null ? null : WorkflowExpression.Compile(bodyendDateUt);
-            WorkflowExpression.Validate(__workflow_bodyendDateUt, nameof(bodyendDateUt), required: false);
-            var __workflow_bodyestimatedNetPrice = bodyestimatedNetPrice == null ? null : WorkflowExpression.Compile(bodyestimatedNetPrice);
-            WorkflowExpression.Validate(__workflow_bodyestimatedNetPrice, nameof(bodyestimatedNetPrice), required: false);
-            var __workflow_bodyexpectedDateUt = bodyexpectedDateUt == null ? null : WorkflowExpression.Compile(bodyexpectedDateUt);
-            WorkflowExpression.Validate(__workflow_bodyexpectedDateUt, nameof(bodyexpectedDateUt), required: false);
-            var __workflow_bodyexpectedDuration = bodyexpectedDuration == null ? null : WorkflowExpression.Compile(bodyexpectedDuration);
-            WorkflowExpression.Validate(__workflow_bodyexpectedDuration, nameof(bodyexpectedDuration), required: false);
-            var __workflow_bodyexpectedEndDateUt = bodyexpectedEndDateUt == null ? null : WorkflowExpression.Compile(bodyexpectedEndDateUt);
-            WorkflowExpression.Validate(__workflow_bodyexpectedEndDateUt, nameof(bodyexpectedEndDateUt), required: false);
-            var __workflow_bodyexpectedStartDateUt = bodyexpectedStartDateUt == null ? null : WorkflowExpression.Compile(bodyexpectedStartDateUt);
-            WorkflowExpression.Validate(__workflow_bodyexpectedStartDateUt, nameof(bodyexpectedStartDateUt), required: false);
-            var __workflow_bodyexternalReference = bodyexternalReference == null ? null : WorkflowExpression.Compile(bodyexternalReference);
-            WorkflowExpression.Validate(__workflow_bodyexternalReference, nameof(bodyexternalReference), required: false);
-            var __workflow_bodyfirstCallResolution = bodyfirstCallResolution == null ? null : WorkflowExpression.Compile(bodyfirstCallResolution);
-            WorkflowExpression.Validate(__workflow_bodyfirstCallResolution, nameof(bodyfirstCallResolution), required: false);
-            var __workflow_bodyhourPerDay = bodyhourPerDay == null ? null : WorkflowExpression.Compile(bodyhourPerDay);
-            WorkflowExpression.Validate(__workflow_bodyhourPerDay, nameof(bodyhourPerDay), required: false);
-            var __workflow_bodyimpactId = bodyimpactId == null ? null : WorkflowExpression.Compile(bodyimpactId);
-            WorkflowExpression.Validate(__workflow_bodyimpactId, nameof(bodyimpactId), required: false);
-            var __workflow_bodyimputationDate = bodyimputationDate == null ? null : WorkflowExpression.Compile(bodyimputationDate);
-            WorkflowExpression.Validate(__workflow_bodyimputationDate, nameof(bodyimputationDate), required: false);
-            var __workflow_bodyisMajorIncident = bodyisMajorIncident == null ? null : WorkflowExpression.Compile(bodyisMajorIncident);
-            WorkflowExpression.Validate(__workflow_bodyisMajorIncident, nameof(bodyisMajorIncident), required: false);
-            var __workflow_bodyisTemplate = bodyisTemplate == null ? null : WorkflowExpression.Compile(bodyisTemplate);
-            WorkflowExpression.Validate(__workflow_bodyisTemplate, nameof(bodyisTemplate), required: false);
-            var __workflow_bodyknownProblemsId = bodyknownProblemsId == null ? null : WorkflowExpression.Compile(bodyknownProblemsId);
-            WorkflowExpression.Validate(__workflow_bodyknownProblemsId, nameof(bodyknownProblemsId), required: false);
-            var __workflow_bodylastUpdate = bodylastUpdate == null ? null : WorkflowExpression.Compile(bodylastUpdate);
-            WorkflowExpression.Validate(__workflow_bodylastUpdate, nameof(bodylastUpdate), required: false);
-            var __workflow_bodymark1 = bodymark1 == null ? null : WorkflowExpression.Compile(bodymark1);
-            WorkflowExpression.Validate(__workflow_bodymark1, nameof(bodymark1), required: false);
-            var __workflow_bodymark2 = bodymark2 == null ? null : WorkflowExpression.Compile(bodymark2);
-            WorkflowExpression.Validate(__workflow_bodymark2, nameof(bodymark2), required: false);
-            var __workflow_bodymaxResolutionDateUt = bodymaxResolutionDateUt == null ? null : WorkflowExpression.Compile(bodymaxResolutionDateUt);
-            WorkflowExpression.Validate(__workflow_bodymaxResolutionDateUt, nameof(bodymaxResolutionDateUt), required: false);
-            var __workflow_bodymsProjectImportValidationWaiting = bodymsProjectImportValidationWaiting == null ? null : WorkflowExpression.Compile(bodymsProjectImportValidationWaiting);
-            WorkflowExpression.Validate(__workflow_bodymsProjectImportValidationWaiting, nameof(bodymsProjectImportValidationWaiting), required: false);
-            var __workflow_bodynetPrice = bodynetPrice == null ? null : WorkflowExpression.Compile(bodynetPrice);
-            WorkflowExpression.Validate(__workflow_bodynetPrice, nameof(bodynetPrice), required: false);
-            var __workflow_bodynetPriceCurId = bodynetPriceCurId == null ? null : WorkflowExpression.Compile(bodynetPriceCurId);
-            WorkflowExpression.Validate(__workflow_bodynetPriceCurId, nameof(bodynetPriceCurId), required: false);
-            var __workflow_bodyoriginToolId = bodyoriginToolId == null ? null : WorkflowExpression.Compile(bodyoriginToolId);
-            WorkflowExpression.Validate(__workflow_bodyoriginToolId, nameof(bodyoriginToolId), required: false);
-            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
-            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
-            var __workflow_bodyowningGroupId = bodyowningGroupId == null ? null : WorkflowExpression.Compile(bodyowningGroupId);
-            WorkflowExpression.Validate(__workflow_bodyowningGroupId, nameof(bodyowningGroupId), required: false);
-            var __workflow_bodyplannedChangeDateEnd = bodyplannedChangeDateEnd == null ? null : WorkflowExpression.Compile(bodyplannedChangeDateEnd);
-            WorkflowExpression.Validate(__workflow_bodyplannedChangeDateEnd, nameof(bodyplannedChangeDateEnd), required: false);
-            var __workflow_bodyplannedChangeDateStart = bodyplannedChangeDateStart == null ? null : WorkflowExpression.Compile(bodyplannedChangeDateStart);
-            WorkflowExpression.Validate(__workflow_bodyplannedChangeDateStart, nameof(bodyplannedChangeDateStart), required: false);
-            var __workflow_bodypmStatusId = bodypmStatusId == null ? null : WorkflowExpression.Compile(bodypmStatusId);
-            WorkflowExpression.Validate(__workflow_bodypmStatusId, nameof(bodypmStatusId), required: false);
-            var __workflow_bodyprojectName = bodyprojectName == null ? null : WorkflowExpression.Compile(bodyprojectName);
-            WorkflowExpression.Validate(__workflow_bodyprojectName, nameof(bodyprojectName), required: false);
-            var __workflow_bodyprojectStartDateUt = bodyprojectStartDateUt == null ? null : WorkflowExpression.Compile(bodyprojectStartDateUt);
-            WorkflowExpression.Validate(__workflow_bodyprojectStartDateUt, nameof(bodyprojectStartDateUt), required: false);
-            var __workflow_bodyqty = bodyqty == null ? null : WorkflowExpression.Compile(bodyqty);
-            WorkflowExpression.Validate(__workflow_bodyqty, nameof(bodyqty), required: false);
-            var __workflow_bodyreleaseId = bodyreleaseId == null ? null : WorkflowExpression.Compile(bodyreleaseId);
-            WorkflowExpression.Validate(__workflow_bodyreleaseId, nameof(bodyreleaseId), required: false);
-            var __workflow_bodyrentalNetPrice = bodyrentalNetPrice == null ? null : WorkflowExpression.Compile(bodyrentalNetPrice);
-            WorkflowExpression.Validate(__workflow_bodyrentalNetPrice, nameof(bodyrentalNetPrice), required: false);
-            var __workflow_bodyrentalNetPriceCurId = bodyrentalNetPriceCurId == null ? null : WorkflowExpression.Compile(bodyrentalNetPriceCurId);
-            WorkflowExpression.Validate(__workflow_bodyrentalNetPriceCurId, nameof(bodyrentalNetPriceCurId), required: false);
-            var __workflow_bodyrequestOriginId = bodyrequestOriginId == null ? null : WorkflowExpression.Compile(bodyrequestOriginId);
-            WorkflowExpression.Validate(__workflow_bodyrequestOriginId, nameof(bodyrequestOriginId), required: false);
-            var __workflow_bodyrequestedChangeDateEnd = bodyrequestedChangeDateEnd == null ? null : WorkflowExpression.Compile(bodyrequestedChangeDateEnd);
-            WorkflowExpression.Validate(__workflow_bodyrequestedChangeDateEnd, nameof(bodyrequestedChangeDateEnd), required: false);
-            var __workflow_bodyrequestedChangeDateStart = bodyrequestedChangeDateStart == null ? null : WorkflowExpression.Compile(bodyrequestedChangeDateStart);
-            WorkflowExpression.Validate(__workflow_bodyrequestedChangeDateStart, nameof(bodyrequestedChangeDateStart), required: false);
-            var __workflow_bodyrequestorId = bodyrequestorId == null ? null : WorkflowExpression.Compile(bodyrequestorId);
-            WorkflowExpression.Validate(__workflow_bodyrequestorId, nameof(bodyrequestorId), required: false);
-            var __workflow_bodyrequestorIpAddress = bodyrequestorIpAddress == null ? null : WorkflowExpression.Compile(bodyrequestorIpAddress);
-            WorkflowExpression.Validate(__workflow_bodyrequestorIpAddress, nameof(bodyrequestorIpAddress), required: false);
-            var __workflow_bodyrequestorPhone = bodyrequestorPhone == null ? null : WorkflowExpression.Compile(bodyrequestorPhone);
-            WorkflowExpression.Validate(__workflow_bodyrequestorPhone, nameof(bodyrequestorPhone), required: false);
-            var __workflow_bodyriskAmount = bodyriskAmount == null ? null : WorkflowExpression.Compile(bodyriskAmount);
-            WorkflowExpression.Validate(__workflow_bodyriskAmount, nameof(bodyriskAmount), required: false);
-            var __workflow_bodyriskDescription = bodyriskDescription == null ? null : WorkflowExpression.Compile(bodyriskDescription);
-            WorkflowExpression.Validate(__workflow_bodyriskDescription, nameof(bodyriskDescription), required: false);
-            var __workflow_bodyriskLevelId = bodyriskLevelId == null ? null : WorkflowExpression.Compile(bodyriskLevelId);
-            WorkflowExpression.Validate(__workflow_bodyriskLevelId, nameof(bodyriskLevelId), required: false);
-            var __workflow_bodyrootCauseId = bodyrootCauseId == null ? null : WorkflowExpression.Compile(bodyrootCauseId);
-            WorkflowExpression.Validate(__workflow_bodyrootCauseId, nameof(bodyrootCauseId), required: false);
-            var __workflow_bodysubmitDateUt = bodysubmitDateUt == null ? null : WorkflowExpression.Compile(bodysubmitDateUt);
-            WorkflowExpression.Validate(__workflow_bodysubmitDateUt, nameof(bodysubmitDateUt), required: false);
-            var __workflow_bodytimeUsedToSolveRequest = bodytimeUsedToSolveRequest == null ? null : WorkflowExpression.Compile(bodytimeUsedToSolveRequest);
-            WorkflowExpression.Validate(__workflow_bodytimeUsedToSolveRequest, nameof(bodytimeUsedToSolveRequest), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_bodyanalyticalChargeId = WorkflowExpression.Compile(bodyanalyticalChargeId, nameof(bodyanalyticalChargeId), required: false);
+            var __workflow_bodyassetId = WorkflowExpression.Compile(bodyassetId, nameof(bodyassetId), required: false);
+            var __workflow_bodyavailableField1 = WorkflowExpression.Compile(bodyavailableField1, nameof(bodyavailableField1), required: false);
+            var __workflow_bodyavailableField2 = WorkflowExpression.Compile(bodyavailableField2, nameof(bodyavailableField2), required: false);
+            var __workflow_bodyavailableField3 = WorkflowExpression.Compile(bodyavailableField3, nameof(bodyavailableField3), required: false);
+            var __workflow_bodyavailableField4 = WorkflowExpression.Compile(bodyavailableField4, nameof(bodyavailableField4), required: false);
+            var __workflow_bodyavailableField5 = WorkflowExpression.Compile(bodyavailableField5, nameof(bodyavailableField5), required: false);
+            var __workflow_bodyavailableField6 = WorkflowExpression.Compile(bodyavailableField6, nameof(bodyavailableField6), required: false);
+            var __workflow_bodybudgetPlanned = WorkflowExpression.Compile(bodybudgetPlanned, nameof(bodybudgetPlanned), required: false);
+            var __workflow_bodycanBeDuplicated = WorkflowExpression.Compile(bodycanBeDuplicated, nameof(bodycanBeDuplicated), required: false);
+            var __workflow_bodyciId = WorkflowExpression.Compile(bodyciId, nameof(bodyciId), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodycontinuityPlanId = WorkflowExpression.Compile(bodycontinuityPlanId, nameof(bodycontinuityPlanId), required: false);
+            var __workflow_bodycostCenterId = WorkflowExpression.Compile(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            var __workflow_bodycreationDateUt = WorkflowExpression.Compile(bodycreationDateUt, nameof(bodycreationDateUt), required: false);
+            var __workflow_bodydelay = WorkflowExpression.Compile(bodydelay, nameof(bodydelay), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodydynamicDetails = WorkflowExpression.Compile(bodydynamicDetails, nameof(bodydynamicDetails), required: false);
+            var __workflow_bodyeffectiveChangeDateEnd = WorkflowExpression.Compile(bodyeffectiveChangeDateEnd, nameof(bodyeffectiveChangeDateEnd), required: false);
+            var __workflow_bodyeffectiveChangeDateStart = WorkflowExpression.Compile(bodyeffectiveChangeDateStart, nameof(bodyeffectiveChangeDateStart), required: false);
+            var __workflow_bodyendDateUt = WorkflowExpression.Compile(bodyendDateUt, nameof(bodyendDateUt), required: false);
+            var __workflow_bodyestimatedNetPrice = WorkflowExpression.Compile(bodyestimatedNetPrice, nameof(bodyestimatedNetPrice), required: false);
+            var __workflow_bodyexpectedDateUt = WorkflowExpression.Compile(bodyexpectedDateUt, nameof(bodyexpectedDateUt), required: false);
+            var __workflow_bodyexpectedDuration = WorkflowExpression.Compile(bodyexpectedDuration, nameof(bodyexpectedDuration), required: false);
+            var __workflow_bodyexpectedEndDateUt = WorkflowExpression.Compile(bodyexpectedEndDateUt, nameof(bodyexpectedEndDateUt), required: false);
+            var __workflow_bodyexpectedStartDateUt = WorkflowExpression.Compile(bodyexpectedStartDateUt, nameof(bodyexpectedStartDateUt), required: false);
+            var __workflow_bodyexternalReference = WorkflowExpression.Compile(bodyexternalReference, nameof(bodyexternalReference), required: false);
+            var __workflow_bodyfirstCallResolution = WorkflowExpression.Compile(bodyfirstCallResolution, nameof(bodyfirstCallResolution), required: false);
+            var __workflow_bodyhourPerDay = WorkflowExpression.Compile(bodyhourPerDay, nameof(bodyhourPerDay), required: false);
+            var __workflow_bodyimpactId = WorkflowExpression.Compile(bodyimpactId, nameof(bodyimpactId), required: false);
+            var __workflow_bodyimputationDate = WorkflowExpression.Compile(bodyimputationDate, nameof(bodyimputationDate), required: false);
+            var __workflow_bodyisMajorIncident = WorkflowExpression.Compile(bodyisMajorIncident, nameof(bodyisMajorIncident), required: false);
+            var __workflow_bodyisTemplate = WorkflowExpression.Compile(bodyisTemplate, nameof(bodyisTemplate), required: false);
+            var __workflow_bodyknownProblemsId = WorkflowExpression.Compile(bodyknownProblemsId, nameof(bodyknownProblemsId), required: false);
+            var __workflow_bodylastUpdate = WorkflowExpression.Compile(bodylastUpdate, nameof(bodylastUpdate), required: false);
+            var __workflow_bodymark1 = WorkflowExpression.Compile(bodymark1, nameof(bodymark1), required: false);
+            var __workflow_bodymark2 = WorkflowExpression.Compile(bodymark2, nameof(bodymark2), required: false);
+            var __workflow_bodymaxResolutionDateUt = WorkflowExpression.Compile(bodymaxResolutionDateUt, nameof(bodymaxResolutionDateUt), required: false);
+            var __workflow_bodymsProjectImportValidationWaiting = WorkflowExpression.Compile(bodymsProjectImportValidationWaiting, nameof(bodymsProjectImportValidationWaiting), required: false);
+            var __workflow_bodynetPrice = WorkflowExpression.Compile(bodynetPrice, nameof(bodynetPrice), required: false);
+            var __workflow_bodynetPriceCurId = WorkflowExpression.Compile(bodynetPriceCurId, nameof(bodynetPriceCurId), required: false);
+            var __workflow_bodyoriginToolId = WorkflowExpression.Compile(bodyoriginToolId, nameof(bodyoriginToolId), required: false);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_bodyowningGroupId = WorkflowExpression.Compile(bodyowningGroupId, nameof(bodyowningGroupId), required: false);
+            var __workflow_bodyplannedChangeDateEnd = WorkflowExpression.Compile(bodyplannedChangeDateEnd, nameof(bodyplannedChangeDateEnd), required: false);
+            var __workflow_bodyplannedChangeDateStart = WorkflowExpression.Compile(bodyplannedChangeDateStart, nameof(bodyplannedChangeDateStart), required: false);
+            var __workflow_bodypmStatusId = WorkflowExpression.Compile(bodypmStatusId, nameof(bodypmStatusId), required: false);
+            var __workflow_bodyprojectName = WorkflowExpression.Compile(bodyprojectName, nameof(bodyprojectName), required: false);
+            var __workflow_bodyprojectStartDateUt = WorkflowExpression.Compile(bodyprojectStartDateUt, nameof(bodyprojectStartDateUt), required: false);
+            var __workflow_bodyqty = WorkflowExpression.Compile(bodyqty, nameof(bodyqty), required: false);
+            var __workflow_bodyreleaseId = WorkflowExpression.Compile(bodyreleaseId, nameof(bodyreleaseId), required: false);
+            var __workflow_bodyrentalNetPrice = WorkflowExpression.Compile(bodyrentalNetPrice, nameof(bodyrentalNetPrice), required: false);
+            var __workflow_bodyrentalNetPriceCurId = WorkflowExpression.Compile(bodyrentalNetPriceCurId, nameof(bodyrentalNetPriceCurId), required: false);
+            var __workflow_bodyrequestOriginId = WorkflowExpression.Compile(bodyrequestOriginId, nameof(bodyrequestOriginId), required: false);
+            var __workflow_bodyrequestedChangeDateEnd = WorkflowExpression.Compile(bodyrequestedChangeDateEnd, nameof(bodyrequestedChangeDateEnd), required: false);
+            var __workflow_bodyrequestedChangeDateStart = WorkflowExpression.Compile(bodyrequestedChangeDateStart, nameof(bodyrequestedChangeDateStart), required: false);
+            var __workflow_bodyrequestorId = WorkflowExpression.Compile(bodyrequestorId, nameof(bodyrequestorId), required: false);
+            var __workflow_bodyrequestorIpAddress = WorkflowExpression.Compile(bodyrequestorIpAddress, nameof(bodyrequestorIpAddress), required: false);
+            var __workflow_bodyrequestorPhone = WorkflowExpression.Compile(bodyrequestorPhone, nameof(bodyrequestorPhone), required: false);
+            var __workflow_bodyriskAmount = WorkflowExpression.Compile(bodyriskAmount, nameof(bodyriskAmount), required: false);
+            var __workflow_bodyriskDescription = WorkflowExpression.Compile(bodyriskDescription, nameof(bodyriskDescription), required: false);
+            var __workflow_bodyriskLevelId = WorkflowExpression.Compile(bodyriskLevelId, nameof(bodyriskLevelId), required: false);
+            var __workflow_bodyrootCauseId = WorkflowExpression.Compile(bodyrootCauseId, nameof(bodyrootCauseId), required: false);
+            var __workflow_bodysubmitDateUt = WorkflowExpression.Compile(bodysubmitDateUt, nameof(bodysubmitDateUt), required: false);
+            var __workflow_bodytimeUsedToSolveRequest = WorkflowExpression.Compile(bodytimeUsedToSolveRequest, nameof(bodytimeUsedToSolveRequest), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<UpdateRequestIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2625,10 +2293,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewRequestIncidentCommentResponse> ViewRequestIncidentComment(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<ViewRequestIncidentCommentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/comment", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2641,10 +2307,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<GetRequestIncidentDocumentListResponse> GetRequestIncidentDocumentList(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
             return new DeferredBodyAction<GetRequestIncidentDocumentListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2657,12 +2321,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<UploadAndAttachADocumentToARequestIncidentResponse> UploadAndAttachADocumentToARequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<bodydocumentsInputItem[]>> bodydocuments)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: true);
             return new DeferredBodyAction<UploadAndAttachADocumentToARequestIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2684,14 +2345,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<RestartRequestIncidentResponse> RestartRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodycomment = null, Expression<Func<int>> bodydoneById = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodydoneById = bodydoneById == null ? null : WorkflowExpression.Compile(bodydoneById);
-            WorkflowExpression.Validate(__workflow_bodydoneById, nameof(bodydoneById), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodydoneById = WorkflowExpression.Compile(bodydoneById, nameof(bodydoneById), required: false);
             return new DeferredBodyAction<RestartRequestIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2723,14 +2380,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<SuspendRequestIncidentResponse> SuspendRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodydoneById = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodydoneById = bodydoneById == null ? null : WorkflowExpression.Compile(bodydoneById);
-            WorkflowExpression.Validate(__workflow_bodydoneById, nameof(bodydoneById), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodydoneById = WorkflowExpression.Compile(bodydoneById, nameof(bodydoneById), required: false);
             return new DeferredBodyAction<SuspendRequestIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/suspend", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2762,42 +2415,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IWorkflowAction CreateTask(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyactionTypeId, Expression<Func<string>> bodyelapsedTime = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodycontractualCost = null, Expression<Func<string>> bodycreationDateUt = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendDateUt = null, Expression<Func<string>> bodygroupMail = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodystartDateUt = null, Expression<Func<string>> bodytimeCost = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_rfcNumber = rfcNumber == null ? null : WorkflowExpression.Compile(rfcNumber);
-            WorkflowExpression.Validate(__workflow_rfcNumber, nameof(rfcNumber), required: true);
-            var __workflow_bodyactionTypeId = bodyactionTypeId == null ? null : WorkflowExpression.Compile(bodyactionTypeId);
-            WorkflowExpression.Validate(__workflow_bodyactionTypeId, nameof(bodyactionTypeId), required: true);
-            var __workflow_bodyelapsedTime = bodyelapsedTime == null ? null : WorkflowExpression.Compile(bodyelapsedTime);
-            WorkflowExpression.Validate(__workflow_bodyelapsedTime, nameof(bodyelapsedTime), required: false);
-            var __workflow_bodyavailableField1 = bodyavailableField1 == null ? null : WorkflowExpression.Compile(bodyavailableField1);
-            WorkflowExpression.Validate(__workflow_bodyavailableField1, nameof(bodyavailableField1), required: false);
-            var __workflow_bodyavailableField2 = bodyavailableField2 == null ? null : WorkflowExpression.Compile(bodyavailableField2);
-            WorkflowExpression.Validate(__workflow_bodyavailableField2, nameof(bodyavailableField2), required: false);
-            var __workflow_bodyavailableField3 = bodyavailableField3 == null ? null : WorkflowExpression.Compile(bodyavailableField3);
-            WorkflowExpression.Validate(__workflow_bodyavailableField3, nameof(bodyavailableField3), required: false);
-            var __workflow_bodyavailableField4 = bodyavailableField4 == null ? null : WorkflowExpression.Compile(bodyavailableField4);
-            WorkflowExpression.Validate(__workflow_bodyavailableField4, nameof(bodyavailableField4), required: false);
-            var __workflow_bodyavailableField5 = bodyavailableField5 == null ? null : WorkflowExpression.Compile(bodyavailableField5);
-            WorkflowExpression.Validate(__workflow_bodyavailableField5, nameof(bodyavailableField5), required: false);
-            var __workflow_bodyavailableField6 = bodyavailableField6 == null ? null : WorkflowExpression.Compile(bodyavailableField6);
-            WorkflowExpression.Validate(__workflow_bodyavailableField6, nameof(bodyavailableField6), required: false);
-            var __workflow_bodycontractualCost = bodycontractualCost == null ? null : WorkflowExpression.Compile(bodycontractualCost);
-            WorkflowExpression.Validate(__workflow_bodycontractualCost, nameof(bodycontractualCost), required: false);
-            var __workflow_bodycreationDateUt = bodycreationDateUt == null ? null : WorkflowExpression.Compile(bodycreationDateUt);
-            WorkflowExpression.Validate(__workflow_bodycreationDateUt, nameof(bodycreationDateUt), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyendDateUt = bodyendDateUt == null ? null : WorkflowExpression.Compile(bodyendDateUt);
-            WorkflowExpression.Validate(__workflow_bodyendDateUt, nameof(bodyendDateUt), required: false);
-            var __workflow_bodygroupMail = bodygroupMail == null ? null : WorkflowExpression.Compile(bodygroupMail);
-            WorkflowExpression.Validate(__workflow_bodygroupMail, nameof(bodygroupMail), required: false);
-            var __workflow_bodygroupName = bodygroupName == null ? null : WorkflowExpression.Compile(bodygroupName);
-            WorkflowExpression.Validate(__workflow_bodygroupName, nameof(bodygroupName), required: false);
-            var __workflow_bodystartDateUt = bodystartDateUt == null ? null : WorkflowExpression.Compile(bodystartDateUt);
-            WorkflowExpression.Validate(__workflow_bodystartDateUt, nameof(bodystartDateUt), required: false);
-            var __workflow_bodytimeCost = bodytimeCost == null ? null : WorkflowExpression.Compile(bodytimeCost);
-            WorkflowExpression.Validate(__workflow_bodytimeCost, nameof(bodytimeCost), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_rfcNumber = WorkflowExpression.Compile(rfcNumber, nameof(rfcNumber), required: true);
+            var __workflow_bodyactionTypeId = WorkflowExpression.Compile(bodyactionTypeId, nameof(bodyactionTypeId), required: true);
+            var __workflow_bodyelapsedTime = WorkflowExpression.Compile(bodyelapsedTime, nameof(bodyelapsedTime), required: false);
+            var __workflow_bodyavailableField1 = WorkflowExpression.Compile(bodyavailableField1, nameof(bodyavailableField1), required: false);
+            var __workflow_bodyavailableField2 = WorkflowExpression.Compile(bodyavailableField2, nameof(bodyavailableField2), required: false);
+            var __workflow_bodyavailableField3 = WorkflowExpression.Compile(bodyavailableField3, nameof(bodyavailableField3), required: false);
+            var __workflow_bodyavailableField4 = WorkflowExpression.Compile(bodyavailableField4, nameof(bodyavailableField4), required: false);
+            var __workflow_bodyavailableField5 = WorkflowExpression.Compile(bodyavailableField5, nameof(bodyavailableField5), required: false);
+            var __workflow_bodyavailableField6 = WorkflowExpression.Compile(bodyavailableField6, nameof(bodyavailableField6), required: false);
+            var __workflow_bodycontractualCost = WorkflowExpression.Compile(bodycontractualCost, nameof(bodycontractualCost), required: false);
+            var __workflow_bodycreationDateUt = WorkflowExpression.Compile(bodycreationDateUt, nameof(bodycreationDateUt), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyendDateUt = WorkflowExpression.Compile(bodyendDateUt, nameof(bodyendDateUt), required: false);
+            var __workflow_bodygroupMail = WorkflowExpression.Compile(bodygroupMail, nameof(bodygroupMail), required: false);
+            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
+            var __workflow_bodystartDateUt = WorkflowExpression.Compile(bodystartDateUt, nameof(bodystartDateUt), required: false);
+            var __workflow_bodytimeCost = WorkflowExpression.Compile(bodytimeCost, nameof(bodytimeCost), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rfcNumber, 1));
@@ -2909,16 +2544,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewSlasListResponse> ViewSlasList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_maxRows = maxRows == null ? null : WorkflowExpression.Compile(maxRows);
-            WorkflowExpression.Validate(__workflow_maxRows, nameof(maxRows), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_maxRows = WorkflowExpression.Compile(maxRows, nameof(maxRows), required: false);
             return new DeferredBodyAction<ViewSlasListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1));
@@ -2939,10 +2569,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvista
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvista")]
         public IBodyWorkflowAction<ViewSlaResponse> ViewSla(Expression<Func<string>> account, Expression<Func<string>> slaId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_slaId = slaId == null ? null : WorkflowExpression.Compile(slaId);
-            WorkflowExpression.Validate(__workflow_slaId, nameof(slaId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_slaId = WorkflowExpression.Compile(slaId, nameof(slaId), required: true);
             return new DeferredBodyAction<ViewSlaResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_account, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_slaId, 1));

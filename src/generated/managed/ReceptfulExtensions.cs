@@ -16,16 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
     {
         public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents(Expression<Func<bodyEventInput>> bodyEvent, Expression<Func<string>> bodyregionId = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodybuttonId = null, Expression<Func<string>> bodyconfigId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyEvent = bodyEvent == null ? null : WorkflowExpression.Compile(bodyEvent);
-            WorkflowExpression.Validate(__workflow_bodyEvent, nameof(bodyEvent), required: true);
-            var __workflow_bodyregionId = bodyregionId == null ? null : WorkflowExpression.Compile(bodyregionId);
-            WorkflowExpression.Validate(__workflow_bodyregionId, nameof(bodyregionId), required: false);
-            var __workflow_bodylocationId = bodylocationId == null ? null : WorkflowExpression.Compile(bodylocationId);
-            WorkflowExpression.Validate(__workflow_bodylocationId, nameof(bodylocationId), required: false);
-            var __workflow_bodybuttonId = bodybuttonId == null ? null : WorkflowExpression.Compile(bodybuttonId);
-            WorkflowExpression.Validate(__workflow_bodybuttonId, nameof(bodybuttonId), required: false);
-            var __workflow_bodyconfigId = bodyconfigId == null ? null : WorkflowExpression.Compile(bodyconfigId);
-            WorkflowExpression.Validate(__workflow_bodyconfigId, nameof(bodyconfigId), required: false);
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_bodyregionId = WorkflowExpression.Compile(bodyregionId, nameof(bodyregionId), required: false);
+            var __workflow_bodylocationId = WorkflowExpression.Compile(bodylocationId, nameof(bodylocationId), required: false);
+            var __workflow_bodybuttonId = WorkflowExpression.Compile(bodybuttonId, nameof(bodybuttonId), required: false);
+            var __workflow_bodyconfigId = WorkflowExpression.Compile(bodyconfigId, nameof(bodyconfigId), required: false);
             return new DeferredBodyTrigger<VisitEventsResponse>(() =>
             {
                 var apiCallPath = "/hooks";

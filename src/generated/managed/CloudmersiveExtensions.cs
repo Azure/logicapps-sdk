@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
         public IBodyWorkflowAction<VirusScanResult> ScanFile(Expression<Func<string>> inputFile)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<VirusScanResult>(() =>
             {
                 var apiCallPath = "/virus/scan/file";
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
         public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
         {
-            var __workflow_inputurl = inputurl == null ? null : WorkflowExpression.Compile(inputurl);
-            WorkflowExpression.Validate(__workflow_inputurl, nameof(inputurl), required: false);
+            var __workflow_inputurl = WorkflowExpression.Compile(inputurl, nameof(inputurl), required: false);
             return new DeferredBodyAction<WebsiteScanResult>(() =>
             {
                 var apiCallPath = "/virus/scan/website";

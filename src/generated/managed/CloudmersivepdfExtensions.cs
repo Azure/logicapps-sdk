@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfAddAnnotations(Expression<Func<PdfAnnotation[]>> requestannotationsToAdd = null, Expression<Func<string>> requestinputFileBytes = null)
         {
-            var __workflow_requestannotationsToAdd = requestannotationsToAdd == null ? null : WorkflowExpression.Compile(requestannotationsToAdd);
-            WorkflowExpression.Validate(__workflow_requestannotationsToAdd, nameof(requestannotationsToAdd), required: false);
-            var __workflow_requestinputFileBytes = requestinputFileBytes == null ? null : WorkflowExpression.Compile(requestinputFileBytes);
-            WorkflowExpression.Validate(__workflow_requestinputFileBytes, nameof(requestinputFileBytes), required: false);
+            var __workflow_requestannotationsToAdd = WorkflowExpression.Compile(requestannotationsToAdd, nameof(requestannotationsToAdd), required: false);
+            var __workflow_requestinputFileBytes = WorkflowExpression.Compile(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/annotations/add-item";
@@ -48,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<GetPdfAnnotationsResult> EditPdfGetAnnotations(Expression<Func<object>> inputFile)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<GetPdfAnnotationsResult>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/annotations/list";
@@ -62,8 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfRemoveAllAnnotations(Expression<Func<object>> inputFile)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/annotations/remove-all";
@@ -76,10 +72,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfRemoveAnnotationItem(Expression<Func<object>> inputFile, Expression<Func<int>> annotationIndex)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
-            var __workflow_annotationIndex = annotationIndex == null ? null : WorkflowExpression.Compile(annotationIndex);
-            WorkflowExpression.Validate(__workflow_annotationIndex, nameof(annotationIndex), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            var __workflow_annotationIndex = WorkflowExpression.Compile(annotationIndex, nameof(annotationIndex), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/annotations/remove-item";
@@ -93,10 +87,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfDecrypt(Expression<Func<string>> password, Expression<Func<object>> inputFile)
         {
-            var __workflow_password = password == null ? null : WorkflowExpression.Compile(password);
-            WorkflowExpression.Validate(__workflow_password, nameof(password), required: true);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_password = WorkflowExpression.Compile(password, nameof(password), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/decrypt";
@@ -110,14 +102,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfEncrypt(Expression<Func<object>> inputFile, Expression<Func<string>> userPassword = null, Expression<Func<string>> ownerPassword = null, Expression<Func<string>> encryptionKeyLength = null)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
-            var __workflow_userPassword = userPassword == null ? null : WorkflowExpression.Compile(userPassword);
-            WorkflowExpression.Validate(__workflow_userPassword, nameof(userPassword), required: false);
-            var __workflow_ownerPassword = ownerPassword == null ? null : WorkflowExpression.Compile(ownerPassword);
-            WorkflowExpression.Validate(__workflow_ownerPassword, nameof(ownerPassword), required: false);
-            var __workflow_encryptionKeyLength = encryptionKeyLength == null ? null : WorkflowExpression.Compile(encryptionKeyLength);
-            WorkflowExpression.Validate(__workflow_encryptionKeyLength, nameof(encryptionKeyLength), required: false);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            var __workflow_userPassword = WorkflowExpression.Compile(userPassword, nameof(userPassword), required: false);
+            var __workflow_ownerPassword = WorkflowExpression.Compile(ownerPassword, nameof(ownerPassword), required: false);
+            var __workflow_encryptionKeyLength = WorkflowExpression.Compile(encryptionKeyLength, nameof(encryptionKeyLength), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/encrypt";
@@ -136,28 +124,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfSetPermissions(Expression<Func<string>> ownerPassword, Expression<Func<string>> userPassword, Expression<Func<object>> inputFile, Expression<Func<string>> encryptionKeyLength = null, Expression<Func<bool>> allowPrinting = null, Expression<Func<bool>> allowDocumentAssembly = null, Expression<Func<bool>> allowContentExtraction = null, Expression<Func<bool>> allowFormFilling = null, Expression<Func<bool>> allowEditing = null, Expression<Func<bool>> allowAnnotations = null, Expression<Func<bool>> allowDegradedPrinting = null)
         {
-            var __workflow_ownerPassword = ownerPassword == null ? null : WorkflowExpression.Compile(ownerPassword);
-            WorkflowExpression.Validate(__workflow_ownerPassword, nameof(ownerPassword), required: true);
-            var __workflow_userPassword = userPassword == null ? null : WorkflowExpression.Compile(userPassword);
-            WorkflowExpression.Validate(__workflow_userPassword, nameof(userPassword), required: true);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
-            var __workflow_encryptionKeyLength = encryptionKeyLength == null ? null : WorkflowExpression.Compile(encryptionKeyLength);
-            WorkflowExpression.Validate(__workflow_encryptionKeyLength, nameof(encryptionKeyLength), required: false);
-            var __workflow_allowPrinting = allowPrinting == null ? null : WorkflowExpression.Compile(allowPrinting);
-            WorkflowExpression.Validate(__workflow_allowPrinting, nameof(allowPrinting), required: false);
-            var __workflow_allowDocumentAssembly = allowDocumentAssembly == null ? null : WorkflowExpression.Compile(allowDocumentAssembly);
-            WorkflowExpression.Validate(__workflow_allowDocumentAssembly, nameof(allowDocumentAssembly), required: false);
-            var __workflow_allowContentExtraction = allowContentExtraction == null ? null : WorkflowExpression.Compile(allowContentExtraction);
-            WorkflowExpression.Validate(__workflow_allowContentExtraction, nameof(allowContentExtraction), required: false);
-            var __workflow_allowFormFilling = allowFormFilling == null ? null : WorkflowExpression.Compile(allowFormFilling);
-            WorkflowExpression.Validate(__workflow_allowFormFilling, nameof(allowFormFilling), required: false);
-            var __workflow_allowEditing = allowEditing == null ? null : WorkflowExpression.Compile(allowEditing);
-            WorkflowExpression.Validate(__workflow_allowEditing, nameof(allowEditing), required: false);
-            var __workflow_allowAnnotations = allowAnnotations == null ? null : WorkflowExpression.Compile(allowAnnotations);
-            WorkflowExpression.Validate(__workflow_allowAnnotations, nameof(allowAnnotations), required: false);
-            var __workflow_allowDegradedPrinting = allowDegradedPrinting == null ? null : WorkflowExpression.Compile(allowDegradedPrinting);
-            WorkflowExpression.Validate(__workflow_allowDegradedPrinting, nameof(allowDegradedPrinting), required: false);
+            var __workflow_ownerPassword = WorkflowExpression.Compile(ownerPassword, nameof(ownerPassword), required: true);
+            var __workflow_userPassword = WorkflowExpression.Compile(userPassword, nameof(userPassword), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            var __workflow_encryptionKeyLength = WorkflowExpression.Compile(encryptionKeyLength, nameof(encryptionKeyLength), required: false);
+            var __workflow_allowPrinting = WorkflowExpression.Compile(allowPrinting, nameof(allowPrinting), required: false);
+            var __workflow_allowDocumentAssembly = WorkflowExpression.Compile(allowDocumentAssembly, nameof(allowDocumentAssembly), required: false);
+            var __workflow_allowContentExtraction = WorkflowExpression.Compile(allowContentExtraction, nameof(allowContentExtraction), required: false);
+            var __workflow_allowFormFilling = WorkflowExpression.Compile(allowFormFilling, nameof(allowFormFilling), required: false);
+            var __workflow_allowEditing = WorkflowExpression.Compile(allowEditing, nameof(allowEditing), required: false);
+            var __workflow_allowAnnotations = WorkflowExpression.Compile(allowAnnotations, nameof(allowAnnotations), required: false);
+            var __workflow_allowDegradedPrinting = WorkflowExpression.Compile(allowDegradedPrinting, nameof(allowDegradedPrinting), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/encrypt/set-permissions";
@@ -188,8 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<PdfFormFields> EditPdfGetFormFields(Expression<Func<object>> inputFile)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<PdfFormFields>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/form/get-fields";
@@ -202,10 +178,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfSetFormFields(Expression<Func<SetFormFieldValue[]>> fieldValuesfieldValues = null, Expression<Func<string>> fieldValuesinputFileBytes = null)
         {
-            var __workflow_fieldValuesfieldValues = fieldValuesfieldValues == null ? null : WorkflowExpression.Compile(fieldValuesfieldValues);
-            WorkflowExpression.Validate(__workflow_fieldValuesfieldValues, nameof(fieldValuesfieldValues), required: false);
-            var __workflow_fieldValuesinputFileBytes = fieldValuesinputFileBytes == null ? null : WorkflowExpression.Compile(fieldValuesinputFileBytes);
-            WorkflowExpression.Validate(__workflow_fieldValuesinputFileBytes, nameof(fieldValuesinputFileBytes), required: false);
+            var __workflow_fieldValuesfieldValues = WorkflowExpression.Compile(fieldValuesfieldValues, nameof(fieldValuesfieldValues), required: false);
+            var __workflow_fieldValuesinputFileBytes = WorkflowExpression.Compile(fieldValuesinputFileBytes, nameof(fieldValuesinputFileBytes), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/form/set-fields";
@@ -237,8 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<PdfMetadata> EditPdfGetMetadata(Expression<Func<object>> inputFile)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<PdfMetadata>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/get-metadata";
@@ -251,12 +224,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfDeletePages(Expression<Func<object>> inputFile, Expression<Func<int>> pageStart, Expression<Func<int>> pageEnd)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
-            var __workflow_pageStart = pageStart == null ? null : WorkflowExpression.Compile(pageStart);
-            WorkflowExpression.Validate(__workflow_pageStart, nameof(pageStart), required: true);
-            var __workflow_pageEnd = pageEnd == null ? null : WorkflowExpression.Compile(pageEnd);
-            WorkflowExpression.Validate(__workflow_pageEnd, nameof(pageEnd), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            var __workflow_pageStart = WorkflowExpression.Compile(pageStart, nameof(pageStart), required: true);
+            var __workflow_pageEnd = WorkflowExpression.Compile(pageEnd, nameof(pageEnd), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/pages/delete";
@@ -271,8 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<PdfTextByPageResult> EditPdfGetPdfTextByPages(Expression<Func<object>> inputFile)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<PdfTextByPageResult>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/pages/get-text";
@@ -285,16 +254,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfInsertPages(Expression<Func<object>> sourceFile, Expression<Func<object>> destinationFile, Expression<Func<int>> pageStartSource, Expression<Func<int>> pageEndSource, Expression<Func<int>> pageInsertBeforeDesitnation)
         {
-            var __workflow_sourceFile = sourceFile == null ? null : WorkflowExpression.Compile(sourceFile);
-            WorkflowExpression.Validate(__workflow_sourceFile, nameof(sourceFile), required: true);
-            var __workflow_destinationFile = destinationFile == null ? null : WorkflowExpression.Compile(destinationFile);
-            WorkflowExpression.Validate(__workflow_destinationFile, nameof(destinationFile), required: true);
-            var __workflow_pageStartSource = pageStartSource == null ? null : WorkflowExpression.Compile(pageStartSource);
-            WorkflowExpression.Validate(__workflow_pageStartSource, nameof(pageStartSource), required: true);
-            var __workflow_pageEndSource = pageEndSource == null ? null : WorkflowExpression.Compile(pageEndSource);
-            WorkflowExpression.Validate(__workflow_pageEndSource, nameof(pageEndSource), required: true);
-            var __workflow_pageInsertBeforeDesitnation = pageInsertBeforeDesitnation == null ? null : WorkflowExpression.Compile(pageInsertBeforeDesitnation);
-            WorkflowExpression.Validate(__workflow_pageInsertBeforeDesitnation, nameof(pageInsertBeforeDesitnation), required: true);
+            var __workflow_sourceFile = WorkflowExpression.Compile(sourceFile, nameof(sourceFile), required: true);
+            var __workflow_destinationFile = WorkflowExpression.Compile(destinationFile, nameof(destinationFile), required: true);
+            var __workflow_pageStartSource = WorkflowExpression.Compile(pageStartSource, nameof(pageStartSource), required: true);
+            var __workflow_pageEndSource = WorkflowExpression.Compile(pageEndSource, nameof(pageEndSource), required: true);
+            var __workflow_pageInsertBeforeDesitnation = WorkflowExpression.Compile(pageInsertBeforeDesitnation, nameof(pageInsertBeforeDesitnation), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/pages/insert";
@@ -310,10 +274,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfRotateAllPages(Expression<Func<object>> inputFile, Expression<Func<int>> rotationAngle)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
-            var __workflow_rotationAngle = rotationAngle == null ? null : WorkflowExpression.Compile(rotationAngle);
-            WorkflowExpression.Validate(__workflow_rotationAngle, nameof(rotationAngle), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            var __workflow_rotationAngle = WorkflowExpression.Compile(rotationAngle, nameof(rotationAngle), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/pages/rotate/all";
@@ -327,14 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfRotatePageRange(Expression<Func<object>> inputFile, Expression<Func<int>> rotationAngle, Expression<Func<int>> pageStart, Expression<Func<int>> pageEnd)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
-            var __workflow_rotationAngle = rotationAngle == null ? null : WorkflowExpression.Compile(rotationAngle);
-            WorkflowExpression.Validate(__workflow_rotationAngle, nameof(rotationAngle), required: true);
-            var __workflow_pageStart = pageStart == null ? null : WorkflowExpression.Compile(pageStart);
-            WorkflowExpression.Validate(__workflow_pageStart, nameof(pageStart), required: true);
-            var __workflow_pageEnd = pageEnd == null ? null : WorkflowExpression.Compile(pageEnd);
-            WorkflowExpression.Validate(__workflow_pageEnd, nameof(pageEnd), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            var __workflow_rotationAngle = WorkflowExpression.Compile(rotationAngle, nameof(rotationAngle), required: true);
+            var __workflow_pageStart = WorkflowExpression.Compile(pageStart, nameof(pageStart), required: true);
+            var __workflow_pageEnd = WorkflowExpression.Compile(pageEnd, nameof(pageEnd), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/pages/rotate/page-range";
@@ -350,8 +308,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfRasterize(Expression<Func<object>> inputFile)
         {
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/rasterize";
@@ -364,26 +321,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfSetMetadata(Expression<Func<string>> requestinputFileBytes = null, Expression<Func<string>> requestmetadataToSetauthor = null, Expression<Func<string>> requestmetadataToSetcreator = null, Expression<Func<string>> requestmetadataToSetdateCreated = null, Expression<Func<string>> requestmetadataToSetdateModified = null, Expression<Func<string>> requestmetadataToSetkeywords = null, Expression<Func<int>> requestmetadataToSetpageCount = null, Expression<Func<string>> requestmetadataToSetsubject = null, Expression<Func<bool>> requestmetadataToSetsuccessful = null, Expression<Func<string>> requestmetadataToSettitle = null)
         {
-            var __workflow_requestinputFileBytes = requestinputFileBytes == null ? null : WorkflowExpression.Compile(requestinputFileBytes);
-            WorkflowExpression.Validate(__workflow_requestinputFileBytes, nameof(requestinputFileBytes), required: false);
-            var __workflow_requestmetadataToSetauthor = requestmetadataToSetauthor == null ? null : WorkflowExpression.Compile(requestmetadataToSetauthor);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetauthor, nameof(requestmetadataToSetauthor), required: false);
-            var __workflow_requestmetadataToSetcreator = requestmetadataToSetcreator == null ? null : WorkflowExpression.Compile(requestmetadataToSetcreator);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetcreator, nameof(requestmetadataToSetcreator), required: false);
-            var __workflow_requestmetadataToSetdateCreated = requestmetadataToSetdateCreated == null ? null : WorkflowExpression.Compile(requestmetadataToSetdateCreated);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetdateCreated, nameof(requestmetadataToSetdateCreated), required: false);
-            var __workflow_requestmetadataToSetdateModified = requestmetadataToSetdateModified == null ? null : WorkflowExpression.Compile(requestmetadataToSetdateModified);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetdateModified, nameof(requestmetadataToSetdateModified), required: false);
-            var __workflow_requestmetadataToSetkeywords = requestmetadataToSetkeywords == null ? null : WorkflowExpression.Compile(requestmetadataToSetkeywords);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetkeywords, nameof(requestmetadataToSetkeywords), required: false);
-            var __workflow_requestmetadataToSetpageCount = requestmetadataToSetpageCount == null ? null : WorkflowExpression.Compile(requestmetadataToSetpageCount);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetpageCount, nameof(requestmetadataToSetpageCount), required: false);
-            var __workflow_requestmetadataToSetsubject = requestmetadataToSetsubject == null ? null : WorkflowExpression.Compile(requestmetadataToSetsubject);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetsubject, nameof(requestmetadataToSetsubject), required: false);
-            var __workflow_requestmetadataToSetsuccessful = requestmetadataToSetsuccessful == null ? null : WorkflowExpression.Compile(requestmetadataToSetsuccessful);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSetsuccessful, nameof(requestmetadataToSetsuccessful), required: false);
-            var __workflow_requestmetadataToSettitle = requestmetadataToSettitle == null ? null : WorkflowExpression.Compile(requestmetadataToSettitle);
-            WorkflowExpression.Validate(__workflow_requestmetadataToSettitle, nameof(requestmetadataToSettitle), required: false);
+            var __workflow_requestinputFileBytes = WorkflowExpression.Compile(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
+            var __workflow_requestmetadataToSetauthor = WorkflowExpression.Compile(requestmetadataToSetauthor, nameof(requestmetadataToSetauthor), required: false);
+            var __workflow_requestmetadataToSetcreator = WorkflowExpression.Compile(requestmetadataToSetcreator, nameof(requestmetadataToSetcreator), required: false);
+            var __workflow_requestmetadataToSetdateCreated = WorkflowExpression.Compile(requestmetadataToSetdateCreated, nameof(requestmetadataToSetdateCreated), required: false);
+            var __workflow_requestmetadataToSetdateModified = WorkflowExpression.Compile(requestmetadataToSetdateModified, nameof(requestmetadataToSetdateModified), required: false);
+            var __workflow_requestmetadataToSetkeywords = WorkflowExpression.Compile(requestmetadataToSetkeywords, nameof(requestmetadataToSetkeywords), required: false);
+            var __workflow_requestmetadataToSetpageCount = WorkflowExpression.Compile(requestmetadataToSetpageCount, nameof(requestmetadataToSetpageCount), required: false);
+            var __workflow_requestmetadataToSetsubject = WorkflowExpression.Compile(requestmetadataToSetsubject, nameof(requestmetadataToSetsubject), required: false);
+            var __workflow_requestmetadataToSetsuccessful = WorkflowExpression.Compile(requestmetadataToSetsuccessful, nameof(requestmetadataToSetsuccessful), required: false);
+            var __workflow_requestmetadataToSettitle = WorkflowExpression.Compile(requestmetadataToSettitle, nameof(requestmetadataToSettitle), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/set-metadata";
@@ -471,18 +418,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
         public IBodyWorkflowAction<string> EditPdfWatermarkText(Expression<Func<string>> watermarkText, Expression<Func<object>> inputFile, Expression<Func<string>> fontName = null, Expression<Func<double>> fontSize = null, Expression<Func<string>> fontColor = null, Expression<Func<double>> fontTransparency = null)
         {
-            var __workflow_watermarkText = watermarkText == null ? null : WorkflowExpression.Compile(watermarkText);
-            WorkflowExpression.Validate(__workflow_watermarkText, nameof(watermarkText), required: true);
-            var __workflow_inputFile = inputFile == null ? null : WorkflowExpression.Compile(inputFile);
-            WorkflowExpression.Validate(__workflow_inputFile, nameof(inputFile), required: true);
-            var __workflow_fontName = fontName == null ? null : WorkflowExpression.Compile(fontName);
-            WorkflowExpression.Validate(__workflow_fontName, nameof(fontName), required: false);
-            var __workflow_fontSize = fontSize == null ? null : WorkflowExpression.Compile(fontSize);
-            WorkflowExpression.Validate(__workflow_fontSize, nameof(fontSize), required: false);
-            var __workflow_fontColor = fontColor == null ? null : WorkflowExpression.Compile(fontColor);
-            WorkflowExpression.Validate(__workflow_fontColor, nameof(fontColor), required: false);
-            var __workflow_fontTransparency = fontTransparency == null ? null : WorkflowExpression.Compile(fontTransparency);
-            WorkflowExpression.Validate(__workflow_fontTransparency, nameof(fontTransparency), required: false);
+            var __workflow_watermarkText = WorkflowExpression.Compile(watermarkText, nameof(watermarkText), required: true);
+            var __workflow_inputFile = WorkflowExpression.Compile(inputFile, nameof(inputFile), required: true);
+            var __workflow_fontName = WorkflowExpression.Compile(fontName, nameof(fontName), required: false);
+            var __workflow_fontSize = WorkflowExpression.Compile(fontSize, nameof(fontSize), required: false);
+            var __workflow_fontColor = WorkflowExpression.Compile(fontColor, nameof(fontColor), required: false);
+            var __workflow_fontTransparency = WorkflowExpression.Compile(fontTransparency, nameof(fontTransparency), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/convert/edit/pdf/watermark/text";

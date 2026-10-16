@@ -29,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         public IBodyWorkflowAction<DeleteCompanySubscriptionResponse> DeleteCompanySubscription(Expression<Func<string>> subscriptionId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
             return new DeferredBodyAction<DeleteCompanySubscriptionResponse>(() =>
             {
                 var apiCallPath = "/webhook/v1/subscription";
@@ -53,16 +52,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         public IBodyWorkflowAction<PostCompanySubscriptionResponse> PostCompanySubscription(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodyregistrationId, Expression<Func<string>> bodykey, Expression<Func<string[]>> bodyvalues, Expression<Func<string>> bodycallbackUrl = null)
         {
-            var __workflow_bodyEvent = bodyEvent == null ? null : WorkflowExpression.Compile(bodyEvent);
-            WorkflowExpression.Validate(__workflow_bodyEvent, nameof(bodyEvent), required: true);
-            var __workflow_bodyregistrationId = bodyregistrationId == null ? null : WorkflowExpression.Compile(bodyregistrationId);
-            WorkflowExpression.Validate(__workflow_bodyregistrationId, nameof(bodyregistrationId), required: true);
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
-            var __workflow_bodyvalues = bodyvalues == null ? null : WorkflowExpression.Compile(bodyvalues);
-            WorkflowExpression.Validate(__workflow_bodyvalues, nameof(bodyvalues), required: true);
-            var __workflow_bodycallbackUrl = bodycallbackUrl == null ? null : WorkflowExpression.Compile(bodycallbackUrl);
-            WorkflowExpression.Validate(__workflow_bodycallbackUrl, nameof(bodycallbackUrl), required: false);
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_bodyregistrationId = WorkflowExpression.Compile(bodyregistrationId, nameof(bodyregistrationId), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyvalues = WorkflowExpression.Compile(bodyvalues, nameof(bodyvalues), required: true);
+            var __workflow_bodycallbackUrl = WorkflowExpression.Compile(bodycallbackUrl, nameof(bodycallbackUrl), required: false);
             return new DeferredBodyAction<PostCompanySubscriptionResponse>(() =>
             {
                 var apiCallPath = "/webhook/v1/subscription";
@@ -105,10 +99,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         public IBodyWorkflowAction<ValidateWebhookNotificationSignatureResponse> ValidateWebhookNotificationSignature(Expression<Func<string>> messageSignature, Expression<Func<string>> secretKey)
         {
-            var __workflow_messageSignature = messageSignature == null ? null : WorkflowExpression.Compile(messageSignature);
-            WorkflowExpression.Validate(__workflow_messageSignature, nameof(messageSignature), required: true);
-            var __workflow_secretKey = secretKey == null ? null : WorkflowExpression.Compile(secretKey);
-            WorkflowExpression.Validate(__workflow_secretKey, nameof(secretKey), required: true);
+            var __workflow_messageSignature = WorkflowExpression.Compile(messageSignature, nameof(messageSignature), required: true);
+            var __workflow_secretKey = WorkflowExpression.Compile(secretKey, nameof(secretKey), required: true);
             return new DeferredBodyAction<ValidateWebhookNotificationSignatureResponse>(() =>
             {
                 var apiCallPath = "/validatesignature";
@@ -130,8 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fedexdataworks")]
         public IBodyWorkflowAction<DeleteCompanyRegistrationResponse> DeleteCompanyRegistration(Expression<Func<string>> registrationId = null)
         {
-            var __workflow_registrationId = registrationId == null ? null : WorkflowExpression.Compile(registrationId);
-            WorkflowExpression.Validate(__workflow_registrationId, nameof(registrationId), required: false);
+            var __workflow_registrationId = WorkflowExpression.Compile(registrationId, nameof(registrationId), required: false);
             return new DeferredBodyAction<DeleteCompanyRegistrationResponse>(() =>
             {
                 var apiCallPath = "/webhook/v1/deleteregistration";
@@ -164,18 +155,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
     {
         public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration(Expression<Func<string>> bodyEvent, Expression<Func<string>> bodycallbackSignatureSecretKey, Expression<Func<string>> bodycallbackSignatureAlgorithm, Expression<Func<string>> bodycallbackAuthUrl = null, Expression<Func<string>> bodycallbackClientId = null, Expression<Func<string>> bodycallbackClientSecret = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyEvent = bodyEvent == null ? null : WorkflowExpression.Compile(bodyEvent);
-            WorkflowExpression.Validate(__workflow_bodyEvent, nameof(bodyEvent), required: true);
-            var __workflow_bodycallbackSignatureSecretKey = bodycallbackSignatureSecretKey == null ? null : WorkflowExpression.Compile(bodycallbackSignatureSecretKey);
-            WorkflowExpression.Validate(__workflow_bodycallbackSignatureSecretKey, nameof(bodycallbackSignatureSecretKey), required: true);
-            var __workflow_bodycallbackSignatureAlgorithm = bodycallbackSignatureAlgorithm == null ? null : WorkflowExpression.Compile(bodycallbackSignatureAlgorithm);
-            WorkflowExpression.Validate(__workflow_bodycallbackSignatureAlgorithm, nameof(bodycallbackSignatureAlgorithm), required: true);
-            var __workflow_bodycallbackAuthUrl = bodycallbackAuthUrl == null ? null : WorkflowExpression.Compile(bodycallbackAuthUrl);
-            WorkflowExpression.Validate(__workflow_bodycallbackAuthUrl, nameof(bodycallbackAuthUrl), required: false);
-            var __workflow_bodycallbackClientId = bodycallbackClientId == null ? null : WorkflowExpression.Compile(bodycallbackClientId);
-            WorkflowExpression.Validate(__workflow_bodycallbackClientId, nameof(bodycallbackClientId), required: false);
-            var __workflow_bodycallbackClientSecret = bodycallbackClientSecret == null ? null : WorkflowExpression.Compile(bodycallbackClientSecret);
-            WorkflowExpression.Validate(__workflow_bodycallbackClientSecret, nameof(bodycallbackClientSecret), required: false);
+            var __workflow_bodyEvent = WorkflowExpression.Compile(bodyEvent, nameof(bodyEvent), required: true);
+            var __workflow_bodycallbackSignatureSecretKey = WorkflowExpression.Compile(bodycallbackSignatureSecretKey, nameof(bodycallbackSignatureSecretKey), required: true);
+            var __workflow_bodycallbackSignatureAlgorithm = WorkflowExpression.Compile(bodycallbackSignatureAlgorithm, nameof(bodycallbackSignatureAlgorithm), required: true);
+            var __workflow_bodycallbackAuthUrl = WorkflowExpression.Compile(bodycallbackAuthUrl, nameof(bodycallbackAuthUrl), required: false);
+            var __workflow_bodycallbackClientId = WorkflowExpression.Compile(bodycallbackClientId, nameof(bodycallbackClientId), required: false);
+            var __workflow_bodycallbackClientSecret = WorkflowExpression.Compile(bodycallbackClientSecret, nameof(bodycallbackClientSecret), required: false);
             return new DeferredBodyTrigger<PostCompanyRegistrationResponse>(() =>
             {
                 var apiCallPath = "/webhook/v1/register";

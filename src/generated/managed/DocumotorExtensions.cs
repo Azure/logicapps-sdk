@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documotor")]
         public IBodyWorkflowAction<string> GenerateDoc(Expression<Func<string>> templateId, Expression<Func<acceptInput>> accept, Expression<Func<string>> stageId = null)
         {
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_stageId = stageId == null ? null : WorkflowExpression.Compile(stageId);
-            WorkflowExpression.Validate(__workflow_stageId, nameof(stageId), required: false);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_stageId = WorkflowExpression.Compile(stageId, nameof(stageId), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/template/{0}/generate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));

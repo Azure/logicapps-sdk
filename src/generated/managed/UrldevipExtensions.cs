@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
         public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodyurl, Expression<Func<int>> bodyttl = null)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: true);
-            var __workflow_bodyttl = bodyttl == null ? null : WorkflowExpression.Compile(bodyttl);
-            WorkflowExpression.Validate(__workflow_bodyttl, nameof(bodyttl), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: true);
+            var __workflow_bodyttl = WorkflowExpression.Compile(bodyttl, nameof(bodyttl), required: false);
             return new DeferredBodyAction<LinkPostResponse>(() =>
             {
                 var apiCallPath = "/create/";
@@ -44,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
         public IBodyWorkflowAction<bool> LinkDelete(Expression<Func<string>> bodykey = null)
         {
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: false);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = "/destroy/";
@@ -71,10 +68,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urldevip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urldevip")]
         public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodymessage, Expression<Func<int>> bodyttl = null)
         {
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodyttl = bodyttl == null ? null : WorkflowExpression.Compile(bodyttl);
-            WorkflowExpression.Validate(__workflow_bodyttl, nameof(bodyttl), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodyttl = WorkflowExpression.Compile(bodyttl, nameof(bodyttl), required: false);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
                 var apiCallPath = "/messages/create/";

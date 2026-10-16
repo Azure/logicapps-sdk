@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline(Expression<Func<string>> baseUrl, Expression<Func<string>> status = null)
         {
-            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
-            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             return new DeferredBodyAction<ListBaseline[]>(() =>
             {
                 var apiCallPath = "/aimsapi/assets/configuration/base_line/";
@@ -32,10 +30,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline(Expression<Func<string>> baselineId, Expression<Func<string>> baseUrl)
         {
-            var __workflow_baselineId = baselineId == null ? null : WorkflowExpression.Compile(baselineId);
-            WorkflowExpression.Validate(__workflow_baselineId, nameof(baselineId), required: true);
-            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
-            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
+            var __workflow_baselineId = WorkflowExpression.Compile(baselineId, nameof(baselineId), required: true);
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
             return new DeferredBodyAction<ListBaseline>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baselineId, 1));
@@ -49,24 +45,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<AssetSearchResult> AssetsSearch(Expression<Func<string>> baseUrl, Expression<Func<string>> bodycontractId = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodymodifiedDategreaterThan = null, Expression<Func<string>> bodymodifiedDatelessThan = null, Expression<Func<string>> bodysortKey = null, Expression<Func<string>> bodysortOrder = null, Expression<Func<string[]>> bodyfilteredAssetClassCode = null)
         {
-            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
-            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
-            var __workflow_bodycontractId = bodycontractId == null ? null : WorkflowExpression.Compile(bodycontractId);
-            WorkflowExpression.Validate(__workflow_bodycontractId, nameof(bodycontractId), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodypageSize = bodypageSize == null ? null : WorkflowExpression.Compile(bodypageSize);
-            WorkflowExpression.Validate(__workflow_bodypageSize, nameof(bodypageSize), required: false);
-            var __workflow_bodymodifiedDategreaterThan = bodymodifiedDategreaterThan == null ? null : WorkflowExpression.Compile(bodymodifiedDategreaterThan);
-            WorkflowExpression.Validate(__workflow_bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
-            var __workflow_bodymodifiedDatelessThan = bodymodifiedDatelessThan == null ? null : WorkflowExpression.Compile(bodymodifiedDatelessThan);
-            WorkflowExpression.Validate(__workflow_bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
-            var __workflow_bodysortKey = bodysortKey == null ? null : WorkflowExpression.Compile(bodysortKey);
-            WorkflowExpression.Validate(__workflow_bodysortKey, nameof(bodysortKey), required: false);
-            var __workflow_bodysortOrder = bodysortOrder == null ? null : WorkflowExpression.Compile(bodysortOrder);
-            WorkflowExpression.Validate(__workflow_bodysortOrder, nameof(bodysortOrder), required: false);
-            var __workflow_bodyfilteredAssetClassCode = bodyfilteredAssetClassCode == null ? null : WorkflowExpression.Compile(bodyfilteredAssetClassCode);
-            WorkflowExpression.Validate(__workflow_bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
+            var __workflow_bodycontractId = WorkflowExpression.Compile(bodycontractId, nameof(bodycontractId), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
+            var __workflow_bodymodifiedDategreaterThan = WorkflowExpression.Compile(bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
+            var __workflow_bodymodifiedDatelessThan = WorkflowExpression.Compile(bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
+            var __workflow_bodysortKey = WorkflowExpression.Compile(bodysortKey, nameof(bodysortKey), required: false);
+            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
+            var __workflow_bodyfilteredAssetClassCode = WorkflowExpression.Compile(bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
             return new DeferredBodyAction<AssetSearchResult>(() =>
             {
                 var apiCallPath = "/aimsapi/assets/search/";
@@ -143,8 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
         public IBodyWorkflowAction<UserDataResponseDoc> GetUserData(Expression<Func<string>> baseUrl)
         {
-            var __workflow_baseUrl = baseUrl == null ? null : WorkflowExpression.Compile(baseUrl);
-            WorkflowExpression.Validate(__workflow_baseUrl, nameof(baseUrl), required: true);
+            var __workflow_baseUrl = WorkflowExpression.Compile(baseUrl, nameof(baseUrl), required: true);
             return new DeferredBodyAction<UserDataResponseDoc>(() =>
             {
                 var apiCallPath = "/aimsapi/user/user_data/";

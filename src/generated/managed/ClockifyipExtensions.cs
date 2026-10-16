@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_archived = archived == null ? null : WorkflowExpression.Compile(archived);
-            WorkflowExpression.Validate(__workflow_archived, nameof(archived), required: false);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_archived = WorkflowExpression.Compile(archived, nameof(archived), required: false);
             return new DeferredBodyAction<GetClientsV1ResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
@@ -31,22 +29,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: false);
-            var __workflow_task = task == null ? null : WorkflowExpression.Compile(task);
-            WorkflowExpression.Validate(__workflow_task, nameof(task), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: false);
+            var __workflow_task = WorkflowExpression.Compile(task, nameof(task), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<GetTimeEntriesForUserV1ResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));

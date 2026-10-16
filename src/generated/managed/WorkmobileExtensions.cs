@@ -33,10 +33,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
     {
         public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyuserFormId = bodyuserFormId == null ? null : WorkflowExpression.Compile(bodyuserFormId);
-            WorkflowExpression.Validate(__workflow_bodyuserFormId, nameof(bodyuserFormId), required: true);
-            var __workflow_bodyincludeSubFormData = bodyincludeSubFormData == null ? null : WorkflowExpression.Compile(bodyincludeSubFormData);
-            WorkflowExpression.Validate(__workflow_bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
+            var __workflow_bodyuserFormId = WorkflowExpression.Compile(bodyuserFormId, nameof(bodyuserFormId), required: true);
+            var __workflow_bodyincludeSubFormData = WorkflowExpression.Compile(bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/notifications/external";

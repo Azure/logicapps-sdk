@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
         public IWorkflowAction ActivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
-            var __workflow_product = product == null ? null : WorkflowExpression.Compile(product);
-            WorkflowExpression.Validate(__workflow_product, nameof(product), required: true);
-            var __workflow_productUserId = productUserId == null ? null : WorkflowExpression.Compile(productUserId);
-            WorkflowExpression.Validate(__workflow_productUserId, nameof(productUserId), required: true);
+            var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
+            var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/users/activatefromproduct";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
         public IWorkflowAction DeactivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
         {
-            var __workflow_product = product == null ? null : WorkflowExpression.Compile(product);
-            WorkflowExpression.Validate(__workflow_product, nameof(product), required: true);
-            var __workflow_productUserId = productUserId == null ? null : WorkflowExpression.Compile(productUserId);
-            WorkflowExpression.Validate(__workflow_productUserId, nameof(productUserId), required: true);
+            var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: true);
+            var __workflow_productUserId = WorkflowExpression.Compile(productUserId, nameof(productUserId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/users/deactivatefromproduct";

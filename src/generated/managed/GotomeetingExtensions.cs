@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<Meeting> GetMeeting(Expression<Func<string>> meetingId)
         {
-            var __workflow_meetingId = meetingId == null ? null : WorkflowExpression.Compile(meetingId);
-            WorkflowExpression.Validate(__workflow_meetingId, nameof(meetingId), required: true);
+            var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             return new DeferredBodyAction<Meeting>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
@@ -36,20 +35,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IWorkflowAction UpdateMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> meetingsubject, Expression<Func<string>> meetingstartTime, Expression<Func<string>> meetingendTime, Expression<Func<bool>> meetingrequiresPassword, Expression<Func<meetingconferenceCallInfoInput>> meetingconferenceCallInfo, Expression<Func<meetingmeetingTypeInput>> meetingmeetingType = null)
         {
-            var __workflow_meetingId = meetingId == null ? null : WorkflowExpression.Compile(meetingId);
-            WorkflowExpression.Validate(__workflow_meetingId, nameof(meetingId), required: true);
-            var __workflow_meetingsubject = meetingsubject == null ? null : WorkflowExpression.Compile(meetingsubject);
-            WorkflowExpression.Validate(__workflow_meetingsubject, nameof(meetingsubject), required: true);
-            var __workflow_meetingstartTime = meetingstartTime == null ? null : WorkflowExpression.Compile(meetingstartTime);
-            WorkflowExpression.Validate(__workflow_meetingstartTime, nameof(meetingstartTime), required: true);
-            var __workflow_meetingendTime = meetingendTime == null ? null : WorkflowExpression.Compile(meetingendTime);
-            WorkflowExpression.Validate(__workflow_meetingendTime, nameof(meetingendTime), required: true);
-            var __workflow_meetingrequiresPassword = meetingrequiresPassword == null ? null : WorkflowExpression.Compile(meetingrequiresPassword);
-            WorkflowExpression.Validate(__workflow_meetingrequiresPassword, nameof(meetingrequiresPassword), required: true);
-            var __workflow_meetingconferenceCallInfo = meetingconferenceCallInfo == null ? null : WorkflowExpression.Compile(meetingconferenceCallInfo);
-            WorkflowExpression.Validate(__workflow_meetingconferenceCallInfo, nameof(meetingconferenceCallInfo), required: true);
-            var __workflow_meetingmeetingType = meetingmeetingType == null ? null : WorkflowExpression.Compile(meetingmeetingType);
-            WorkflowExpression.Validate(__workflow_meetingmeetingType, nameof(meetingmeetingType), required: false);
+            var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
+            var __workflow_meetingsubject = WorkflowExpression.Compile(meetingsubject, nameof(meetingsubject), required: true);
+            var __workflow_meetingstartTime = WorkflowExpression.Compile(meetingstartTime, nameof(meetingstartTime), required: true);
+            var __workflow_meetingendTime = WorkflowExpression.Compile(meetingendTime, nameof(meetingendTime), required: true);
+            var __workflow_meetingrequiresPassword = WorkflowExpression.Compile(meetingrequiresPassword, nameof(meetingrequiresPassword), required: true);
+            var __workflow_meetingconferenceCallInfo = WorkflowExpression.Compile(meetingconferenceCallInfo, nameof(meetingconferenceCallInfo), required: true);
+            var __workflow_meetingmeetingType = WorkflowExpression.Compile(meetingmeetingType, nameof(meetingmeetingType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
@@ -85,8 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<Attendee[]> GetMeetingAttendees(Expression<Func<string>> meetingId)
         {
-            var __workflow_meetingId = meetingId == null ? null : WorkflowExpression.Compile(meetingId);
-            WorkflowExpression.Validate(__workflow_meetingId, nameof(meetingId), required: true);
+            var __workflow_meetingId = WorkflowExpression.Compile(meetingId, nameof(meetingId), required: true);
             return new DeferredBodyAction<Attendee[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/meetings/{0}/attendees", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingId, 1));
@@ -99,18 +90,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<NewMeetingResponse> CreateMeeting(Expression<Func<string>> newMeetingsubject, Expression<Func<string>> newMeetingstartTime, Expression<Func<string>> newMeetingendTime, Expression<Func<bool>> newMeetingrequiresPassword, Expression<Func<newMeetingconferenceCallInfoInput>> newMeetingconferenceCallInfo, Expression<Func<newMeetingmeetingTypeInput>> newMeetingmeetingType)
         {
-            var __workflow_newMeetingsubject = newMeetingsubject == null ? null : WorkflowExpression.Compile(newMeetingsubject);
-            WorkflowExpression.Validate(__workflow_newMeetingsubject, nameof(newMeetingsubject), required: true);
-            var __workflow_newMeetingstartTime = newMeetingstartTime == null ? null : WorkflowExpression.Compile(newMeetingstartTime);
-            WorkflowExpression.Validate(__workflow_newMeetingstartTime, nameof(newMeetingstartTime), required: true);
-            var __workflow_newMeetingendTime = newMeetingendTime == null ? null : WorkflowExpression.Compile(newMeetingendTime);
-            WorkflowExpression.Validate(__workflow_newMeetingendTime, nameof(newMeetingendTime), required: true);
-            var __workflow_newMeetingrequiresPassword = newMeetingrequiresPassword == null ? null : WorkflowExpression.Compile(newMeetingrequiresPassword);
-            WorkflowExpression.Validate(__workflow_newMeetingrequiresPassword, nameof(newMeetingrequiresPassword), required: true);
-            var __workflow_newMeetingconferenceCallInfo = newMeetingconferenceCallInfo == null ? null : WorkflowExpression.Compile(newMeetingconferenceCallInfo);
-            WorkflowExpression.Validate(__workflow_newMeetingconferenceCallInfo, nameof(newMeetingconferenceCallInfo), required: true);
-            var __workflow_newMeetingmeetingType = newMeetingmeetingType == null ? null : WorkflowExpression.Compile(newMeetingmeetingType);
-            WorkflowExpression.Validate(__workflow_newMeetingmeetingType, nameof(newMeetingmeetingType), required: true);
+            var __workflow_newMeetingsubject = WorkflowExpression.Compile(newMeetingsubject, nameof(newMeetingsubject), required: true);
+            var __workflow_newMeetingstartTime = WorkflowExpression.Compile(newMeetingstartTime, nameof(newMeetingstartTime), required: true);
+            var __workflow_newMeetingendTime = WorkflowExpression.Compile(newMeetingendTime, nameof(newMeetingendTime), required: true);
+            var __workflow_newMeetingrequiresPassword = WorkflowExpression.Compile(newMeetingrequiresPassword, nameof(newMeetingrequiresPassword), required: true);
+            var __workflow_newMeetingconferenceCallInfo = WorkflowExpression.Compile(newMeetingconferenceCallInfo, nameof(newMeetingconferenceCallInfo), required: true);
+            var __workflow_newMeetingmeetingType = WorkflowExpression.Compile(newMeetingmeetingType, nameof(newMeetingmeetingType), required: true);
             return new DeferredBodyAction<NewMeetingResponse>(() =>
             {
                 var apiCallPath = "/v2/meetings";

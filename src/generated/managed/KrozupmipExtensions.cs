@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyUserProfileResponse> GetMyUserProfile(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyUserProfileResponse>(() =>
             {
                 var apiCallPath = "/api/v1.00/user/";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyBoardsResponseItem[]> GetMyBoards(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyBoardsResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1.00/boards";
@@ -43,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyOwnedTreesResponseItem[]> GetMyOwnedTrees(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyOwnedTreesResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1.00/owned";
@@ -58,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyAssignedBoardsResponseItem[]> GetMyAssignedBoards(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyAssignedBoardsResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1.00/assigned";
@@ -73,10 +69,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardGroupsResponseItem[]> GetBoardGroups(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardGroupsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardgroups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -90,8 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyNotificationsResponse> GetMyNotifications(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyNotificationsResponse>(() =>
             {
                 var apiCallPath = "/api/v1.00/notifications";
@@ -105,8 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyTasksAllResponse> GetMyTasksAll(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyTasksAllResponse>(() =>
             {
                 var apiCallPath = "/api/v1.00/tasks/all";
@@ -120,8 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyTasksNewResponse> GetMyTasksNew(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyTasksNewResponse>(() =>
             {
                 var apiCallPath = "/api/v1.00/tasks/new";
@@ -135,8 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetMyTasksOverdueResponse> GetMyTasksOverdue(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetMyTasksOverdueResponse>(() =>
             {
                 var apiCallPath = "/api/v1.00/tasks/overdue";
@@ -150,10 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardListsResponseItem[]> GetBoardLists(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardListsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardlists/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -167,10 +155,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardCardsResponseItem[]> GetBoardCards(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardCardsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardcards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -184,10 +170,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetListCardsResponseItem[]> GetListCards(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
         {
-            var __workflow_listUUID = listUUID == null ? null : WorkflowExpression.Compile(listUUID);
-            WorkflowExpression.Validate(__workflow_listUUID, nameof(listUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetListCardsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/listcards/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listUUID, 1));
@@ -201,10 +185,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetListResponseItem[]> GetList(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
         {
-            var __workflow_listUUID = listUUID == null ? null : WorkflowExpression.Compile(listUUID);
-            WorkflowExpression.Validate(__workflow_listUUID, nameof(listUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetListResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listUUID, 1));
@@ -218,10 +200,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetCardResponseItem[]> GetCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_cardUUID = cardUUID == null ? null : WorkflowExpression.Compile(cardUUID);
-            WorkflowExpression.Validate(__workflow_cardUUID, nameof(cardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetCardResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardUUID, 1));
@@ -235,10 +215,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<JToken> GetBoardMessages(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -252,10 +230,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardMembersResponse> GetBoardMembers(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardMembersResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/members/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -269,10 +245,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardRecordsResponseItem[]> GetBoardRecords(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardRecordsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardrecords/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -286,10 +260,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetListRecordsResponseItem[]> GetListRecords(Expression<Func<string>> listUUID, Expression<Func<string>> accept)
         {
-            var __workflow_listUUID = listUUID == null ? null : WorkflowExpression.Compile(listUUID);
-            WorkflowExpression.Validate(__workflow_listUUID, nameof(listUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetListRecordsResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/listrecords/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listUUID, 1));
@@ -303,10 +275,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetTreeClientsResponse> GetTreeClients(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetTreeClientsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/clients/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -320,10 +290,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<GetBoardHierarchyResponseItem[]> GetBoardHierarchy(Expression<Func<string>> boardUUID, Expression<Func<string>> accept)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetBoardHierarchyResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/boardhierarchy/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -337,14 +305,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddCardResponse> ActionAddCard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname, Expression<Func<string>> bodylistuuid)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodylistuuid = bodylistuuid == null ? null : WorkflowExpression.Compile(bodylistuuid);
-            WorkflowExpression.Validate(__workflow_bodylistuuid, nameof(bodylistuuid), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodylistuuid = WorkflowExpression.Compile(bodylistuuid, nameof(bodylistuuid), required: true);
             return new DeferredBodyAction<ActionAddCardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -369,12 +333,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionDeleteCardResponse> ActionDeleteCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<int>> bodyconfirmed)
         {
-            var __workflow_cardUUID = cardUUID == null ? null : WorkflowExpression.Compile(cardUUID);
-            WorkflowExpression.Validate(__workflow_cardUUID, nameof(cardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyconfirmed = bodyconfirmed == null ? null : WorkflowExpression.Compile(bodyconfirmed);
-            WorkflowExpression.Validate(__workflow_bodyconfirmed, nameof(bodyconfirmed), required: true);
+            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyconfirmed = WorkflowExpression.Compile(bodyconfirmed, nameof(bodyconfirmed), required: true);
             return new DeferredBodyAction<ActionDeleteCardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/delete/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardUUID, 1));
@@ -397,12 +358,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddMessageToBoardResponse> ActionAddMessageToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodymessage)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
             return new DeferredBodyAction<ActionAddMessageToBoardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/message/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -425,12 +383,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddChecklistToCardResponse> ActionAddChecklistToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
         {
-            var __workflow_cardUUID = cardUUID == null ? null : WorkflowExpression.Compile(cardUUID);
-            WorkflowExpression.Validate(__workflow_cardUUID, nameof(cardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ActionAddChecklistToCardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/checklist/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardUUID, 1));
@@ -453,12 +408,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAddListResponse> ActionAddList(Expression<Func<string>> baordUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
         {
-            var __workflow_baordUUID = baordUUID == null ? null : WorkflowExpression.Compile(baordUUID);
-            WorkflowExpression.Validate(__workflow_baordUUID, nameof(baordUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_baordUUID = WorkflowExpression.Compile(baordUUID, nameof(baordUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ActionAddListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/add/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baordUUID, 1));
@@ -481,12 +433,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionListRenameResponse> ActionListRename(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
         {
-            var __workflow_listUUID = listUUID == null ? null : WorkflowExpression.Compile(listUUID);
-            WorkflowExpression.Validate(__workflow_listUUID, nameof(listUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ActionListRenameResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/rename/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listUUID, 1));
@@ -509,12 +458,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionBoardRenameResponse> ActionBoardRename(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyname)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ActionBoardRenameResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/rename/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -537,14 +483,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAssignToCardResponse> ActionAssignToCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
         {
-            var __workflow_cardUUID = cardUUID == null ? null : WorkflowExpression.Compile(cardUUID);
-            WorkflowExpression.Validate(__workflow_cardUUID, nameof(cardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
+            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
             return new DeferredBodyAction<ActionAssignToCardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/assign/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardUUID, 1));
@@ -569,14 +511,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionAssignToBoardResponse> ActionAssignToBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
             return new DeferredBodyAction<ActionAssignToBoardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/assign/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -601,14 +539,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionUnassignFromCardResponse> ActionUnassignFromCard(Expression<Func<string>> cardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
         {
-            var __workflow_cardUUID = cardUUID == null ? null : WorkflowExpression.Compile(cardUUID);
-            WorkflowExpression.Validate(__workflow_cardUUID, nameof(cardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
+            var __workflow_cardUUID = WorkflowExpression.Compile(cardUUID, nameof(cardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
             return new DeferredBodyAction<ActionUnassignFromCardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/unassign/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cardUUID, 1));
@@ -633,14 +567,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionUnassignFromBoardResponse> ActionUnassignFromBoard(Expression<Func<string>> boardUUID, Expression<Func<string>> accept, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyrole)
         {
-            var __workflow_boardUUID = boardUUID == null ? null : WorkflowExpression.Compile(boardUUID);
-            WorkflowExpression.Validate(__workflow_boardUUID, nameof(boardUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyrole = bodyrole == null ? null : WorkflowExpression.Compile(bodyrole);
-            WorkflowExpression.Validate(__workflow_bodyrole, nameof(bodyrole), required: true);
+            var __workflow_boardUUID = WorkflowExpression.Compile(boardUUID, nameof(boardUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyrole = WorkflowExpression.Compile(bodyrole, nameof(bodyrole), required: true);
             return new DeferredBodyAction<ActionUnassignFromBoardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/unassign/board/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardUUID, 1));
@@ -665,12 +595,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Krozupmip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "krozupmip")]
         public IBodyWorkflowAction<ActionDeleteListResponse> ActionDeleteList(Expression<Func<string>> listUUID, Expression<Func<string>> accept, Expression<Func<int>> bodyconfirm)
         {
-            var __workflow_listUUID = listUUID == null ? null : WorkflowExpression.Compile(listUUID);
-            WorkflowExpression.Validate(__workflow_listUUID, nameof(listUUID), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyconfirm = bodyconfirm == null ? null : WorkflowExpression.Compile(bodyconfirm);
-            WorkflowExpression.Validate(__workflow_bodyconfirm, nameof(bodyconfirm), required: true);
+            var __workflow_listUUID = WorkflowExpression.Compile(listUUID, nameof(listUUID), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyconfirm = WorkflowExpression.Compile(bodyconfirm, nameof(bodyconfirm), required: true);
             return new DeferredBodyAction<ActionDeleteListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1.00/delete/list/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listUUID, 1));

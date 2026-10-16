@@ -15,10 +15,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<CreateTableOutput> CreateTable(Expression<Func<string>> tableName, Expression<Func<bool>> failIfTableExists = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_failIfTableExists = failIfTableExists == null ? null : WorkflowExpression.Compile(failIfTableExists);
-            WorkflowExpression.Validate(__workflow_failIfTableExists, nameof(failIfTableExists), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_failIfTableExists = WorkflowExpression.Compile(failIfTableExists, nameof(failIfTableExists), required: false);
             return new DeferredBodyAction<CreateTableOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -40,12 +38,9 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<ListTablesOutput> ListTables(Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<int>> top = null)
         {
-            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
-            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ListTablesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -76,8 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction DeleteTable(Expression<Func<string>> tableName)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -94,14 +88,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction UpsertEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<bool>> failIfEntityExists = null, Expression<Func<UpsertEntityInputUpdateModeType>> updateMode = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_failIfEntityExists = failIfEntityExists == null ? null : WorkflowExpression.Compile(failIfEntityExists);
-            WorkflowExpression.Validate(__workflow_failIfEntityExists, nameof(failIfEntityExists), required: false);
-            var __workflow_updateMode = updateMode == null ? null : WorkflowExpression.Compile(updateMode);
-            WorkflowExpression.Validate(__workflow_updateMode, nameof(updateMode), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_failIfEntityExists = WorkflowExpression.Compile(failIfEntityExists, nameof(failIfEntityExists), required: false);
+            var __workflow_updateMode = WorkflowExpression.Compile(updateMode, nameof(updateMode), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -129,14 +119,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction UpdateEntity(Expression<Func<string>> tableName, Expression<Func<object>> entity, Expression<Func<UpdateEntityInputUpdateModeType>> updateMode = null, Expression<Func<string>> ifMatch = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_updateMode = updateMode == null ? null : WorkflowExpression.Compile(updateMode);
-            WorkflowExpression.Validate(__workflow_updateMode, nameof(updateMode), required: false);
-            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
-            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_updateMode = WorkflowExpression.Compile(updateMode, nameof(updateMode), required: false);
+            var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -164,14 +150,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IWorkflowAction DeleteEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_ifMatch = ifMatch == null ? null : WorkflowExpression.Compile(ifMatch);
-            WorkflowExpression.Validate(__workflow_ifMatch, nameof(ifMatch), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_ifMatch = WorkflowExpression.Compile(ifMatch, nameof(ifMatch), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -195,14 +177,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<GetEntityOutput> GetEntity(Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string[]>> select = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_rowKey = rowKey == null ? null : WorkflowExpression.Compile(rowKey);
-            WorkflowExpression.Validate(__workflow_rowKey, nameof(rowKey), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_rowKey = WorkflowExpression.Compile(rowKey, nameof(rowKey), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetEntityOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -226,16 +204,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureTables
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureTables")]
         public IBodyWorkflowAction<QueryEntitiesOutput> QueryEntities(Expression<Func<string>> tableName, Expression<Func<string>> continuationToken = null, Expression<Func<string>> filter = null, Expression<Func<string[]>> select = null, Expression<Func<int>> top = null)
         {
-            var __workflow_tableName = tableName == null ? null : WorkflowExpression.Compile(tableName);
-            WorkflowExpression.Validate(__workflow_tableName, nameof(tableName), required: true);
-            var __workflow_continuationToken = continuationToken == null ? null : WorkflowExpression.Compile(continuationToken);
-            WorkflowExpression.Validate(__workflow_continuationToken, nameof(continuationToken), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_tableName = WorkflowExpression.Compile(tableName, nameof(tableName), required: true);
+            var __workflow_continuationToken = WorkflowExpression.Compile(continuationToken, nameof(continuationToken), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<QueryEntitiesOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();

@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> Aggregate(Expression<Func<bodyaggregationTypeInput>> bodyaggregationType, Expression<Func<string[]>> bodyaggregateBy, Expression<Func<string[]>> bodyaggregateOn, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyaggregationType = bodyaggregationType == null ? null : WorkflowExpression.Compile(bodyaggregationType);
-            WorkflowExpression.Validate(__workflow_bodyaggregationType, nameof(bodyaggregationType), required: true);
-            var __workflow_bodyaggregateBy = bodyaggregateBy == null ? null : WorkflowExpression.Compile(bodyaggregateBy);
-            WorkflowExpression.Validate(__workflow_bodyaggregateBy, nameof(bodyaggregateBy), required: true);
-            var __workflow_bodyaggregateOn = bodyaggregateOn == null ? null : WorkflowExpression.Compile(bodyaggregateOn);
-            WorkflowExpression.Validate(__workflow_bodyaggregateOn, nameof(bodyaggregateOn), required: true);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyaggregationType = WorkflowExpression.Compile(bodyaggregationType, nameof(bodyaggregationType), required: true);
+            var __workflow_bodyaggregateBy = WorkflowExpression.Compile(bodyaggregateBy, nameof(bodyaggregateBy), required: true);
+            var __workflow_bodyaggregateOn = WorkflowExpression.Compile(bodyaggregateOn, nameof(bodyaggregateOn), required: true);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/Aggregate";
@@ -100,12 +93,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> CartesianJoin(Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/CartesianJoin";
@@ -175,20 +165,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string> Concatenate(Expression<Func<string>> bodyfield, Expression<Func<string>> bodyseparator = null, Expression<Func<bool>> bodyignoreEmpty = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyfield = bodyfield == null ? null : WorkflowExpression.Compile(bodyfield);
-            WorkflowExpression.Validate(__workflow_bodyfield, nameof(bodyfield), required: true);
-            var __workflow_bodyseparator = bodyseparator == null ? null : WorkflowExpression.Compile(bodyseparator);
-            WorkflowExpression.Validate(__workflow_bodyseparator, nameof(bodyseparator), required: false);
-            var __workflow_bodyignoreEmpty = bodyignoreEmpty == null ? null : WorkflowExpression.Compile(bodyignoreEmpty);
-            WorkflowExpression.Validate(__workflow_bodyignoreEmpty, nameof(bodyignoreEmpty), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyfield = WorkflowExpression.Compile(bodyfield, nameof(bodyfield), required: true);
+            var __workflow_bodyseparator = WorkflowExpression.Compile(bodyseparator, nameof(bodyseparator), required: false);
+            var __workflow_bodyignoreEmpty = WorkflowExpression.Compile(bodyignoreEmpty, nameof(bodyignoreEmpty), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Concatenate";
@@ -270,8 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken> CSharpEvaluate(Expression<Func<string>> bodyexpression)
         {
-            var __workflow_bodyexpression = bodyexpression == null ? null : WorkflowExpression.Compile(bodyexpression);
-            WorkflowExpression.Validate(__workflow_bodyexpression, nameof(bodyexpression), required: true);
+            var __workflow_bodyexpression = WorkflowExpression.Compile(bodyexpression, nameof(bodyexpression), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/CSharpEvaluate";
@@ -293,10 +275,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken> CSharpScriptExecute(Expression<Func<string>> bodyscript, Expression<Func<string[]>> bodyclassDefinitions = null)
         {
-            var __workflow_bodyscript = bodyscript == null ? null : WorkflowExpression.Compile(bodyscript);
-            WorkflowExpression.Validate(__workflow_bodyscript, nameof(bodyscript), required: true);
-            var __workflow_bodyclassDefinitions = bodyclassDefinitions == null ? null : WorkflowExpression.Compile(bodyclassDefinitions);
-            WorkflowExpression.Validate(__workflow_bodyclassDefinitions, nameof(bodyclassDefinitions), required: false);
+            var __workflow_bodyscript = WorkflowExpression.Compile(bodyscript, nameof(bodyscript), required: true);
+            var __workflow_bodyclassDefinitions = WorkflowExpression.Compile(bodyclassDefinitions, nameof(bodyclassDefinitions), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/CSharpScriptExecute";
@@ -332,24 +312,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> CsvToJson(Expression<Func<string>> bodydata, Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodydelimiter = null, Expression<Func<string>> bodyescapeCharacter = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyheaderRow = bodyheaderRow == null ? null : WorkflowExpression.Compile(bodyheaderRow);
-            WorkflowExpression.Validate(__workflow_bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = bodyrowSeparator == null ? null : WorkflowExpression.Compile(bodyrowSeparator);
-            WorkflowExpression.Validate(__workflow_bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodydelimiter = bodydelimiter == null ? null : WorkflowExpression.Compile(bodydelimiter);
-            WorkflowExpression.Validate(__workflow_bodydelimiter, nameof(bodydelimiter), required: false);
-            var __workflow_bodyescapeCharacter = bodyescapeCharacter == null ? null : WorkflowExpression.Compile(bodyescapeCharacter);
-            WorkflowExpression.Validate(__workflow_bodyescapeCharacter, nameof(bodyescapeCharacter), required: false);
-            var __workflow_bodyencoding = bodyencoding == null ? null : WorkflowExpression.Compile(bodyencoding);
-            WorkflowExpression.Validate(__workflow_bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
+            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
+            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
+            var __workflow_bodyescapeCharacter = WorkflowExpression.Compile(bodyescapeCharacter, nameof(bodyescapeCharacter), required: false);
+            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/CsvToJson";
@@ -443,16 +414,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IWorkflowAction Distinct(Expression<Func<string[]>> bodyfields, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/Distinct";
@@ -522,12 +488,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> Expert(Expression<Func<string>> bodyquery, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/Expert";
@@ -585,10 +548,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> FilterObjectArray(Expression<Func<string>> bodyfilter, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/FilterObjectArray";
@@ -616,18 +577,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> FlattenObjectArray(Expression<Func<string>> bodydelimiter, Expression<Func<bool>> bodybalancedOutput, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodydelimiter = bodydelimiter == null ? null : WorkflowExpression.Compile(bodydelimiter);
-            WorkflowExpression.Validate(__workflow_bodydelimiter, nameof(bodydelimiter), required: true);
-            var __workflow_bodybalancedOutput = bodybalancedOutput == null ? null : WorkflowExpression.Compile(bodybalancedOutput);
-            WorkflowExpression.Validate(__workflow_bodybalancedOutput, nameof(bodybalancedOutput), required: true);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: true);
+            var __workflow_bodybalancedOutput = WorkflowExpression.Compile(bodybalancedOutput, nameof(bodybalancedOutput), required: true);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/FlattenObjectArray";
@@ -699,14 +654,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> GetDataSchema(Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/GetDataSchema";
@@ -774,8 +725,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string> GZipCompress(Expression<Func<string>> bodydata)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/GZipCompress";
@@ -797,8 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string> GZipDecompress(Expression<Func<string>> bodydata)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/GZipDecompress";
@@ -820,20 +769,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> Join(Expression<Func<bodyjoinTypeInput>> bodyjoinType, Expression<Func<string[]>> bodyjoinFields, Expression<Func<string[]>> bodyfields, Expression<Func<bool>> bodyforceFullyQualifiedFieldNames = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodyjoinType = bodyjoinType == null ? null : WorkflowExpression.Compile(bodyjoinType);
-            WorkflowExpression.Validate(__workflow_bodyjoinType, nameof(bodyjoinType), required: true);
-            var __workflow_bodyjoinFields = bodyjoinFields == null ? null : WorkflowExpression.Compile(bodyjoinFields);
-            WorkflowExpression.Validate(__workflow_bodyjoinFields, nameof(bodyjoinFields), required: true);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyforceFullyQualifiedFieldNames = bodyforceFullyQualifiedFieldNames == null ? null : WorkflowExpression.Compile(bodyforceFullyQualifiedFieldNames);
-            WorkflowExpression.Validate(__workflow_bodyforceFullyQualifiedFieldNames, nameof(bodyforceFullyQualifiedFieldNames), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodyjoinType = WorkflowExpression.Compile(bodyjoinType, nameof(bodyjoinType), required: true);
+            var __workflow_bodyjoinFields = WorkflowExpression.Compile(bodyjoinFields, nameof(bodyjoinFields), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
+            var __workflow_bodyforceFullyQualifiedFieldNames = WorkflowExpression.Compile(bodyforceFullyQualifiedFieldNames, nameof(bodyforceFullyQualifiedFieldNames), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/Join";
@@ -947,16 +889,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> JsonToTable(Expression<Func<string>> bodypath = null, Expression<Func<bool>> bodybalancedOutput = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodypath = bodypath == null ? null : WorkflowExpression.Compile(bodypath);
-            WorkflowExpression.Validate(__workflow_bodypath, nameof(bodypath), required: false);
-            var __workflow_bodybalancedOutput = bodybalancedOutput == null ? null : WorkflowExpression.Compile(bodybalancedOutput);
-            WorkflowExpression.Validate(__workflow_bodybalancedOutput, nameof(bodybalancedOutput), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodypath = WorkflowExpression.Compile(bodypath, nameof(bodypath), required: false);
+            var __workflow_bodybalancedOutput = WorkflowExpression.Compile(bodybalancedOutput, nameof(bodybalancedOutput), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/JsonToTable";
@@ -1038,18 +975,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string> JsonToText(Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyheaderRow = bodyheaderRow == null ? null : WorkflowExpression.Compile(bodyheaderRow);
-            WorkflowExpression.Validate(__workflow_bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = bodyrowSeparator == null ? null : WorkflowExpression.Compile(bodyrowSeparator);
-            WorkflowExpression.Validate(__workflow_bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
+            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/JsonToText";
@@ -1129,20 +1060,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string> JsonToCsv(Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodyescapeCharacter = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyheaderRow = bodyheaderRow == null ? null : WorkflowExpression.Compile(bodyheaderRow);
-            WorkflowExpression.Validate(__workflow_bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = bodyrowSeparator == null ? null : WorkflowExpression.Compile(bodyrowSeparator);
-            WorkflowExpression.Validate(__workflow_bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodyescapeCharacter = bodyescapeCharacter == null ? null : WorkflowExpression.Compile(bodyescapeCharacter);
-            WorkflowExpression.Validate(__workflow_bodyescapeCharacter, nameof(bodyescapeCharacter), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
+            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
+            var __workflow_bodyescapeCharacter = WorkflowExpression.Compile(bodyescapeCharacter, nameof(bodyescapeCharacter), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/JsonToCsv";
@@ -1228,8 +1152,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IWorkflowAction JsonPropertiesToNameValuePairArray(Expression<Func<object>> bodydata)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/JsonPropertiesToNameValuePairArray";
@@ -1251,24 +1174,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<LevenshteinDistanceResponse> LevenshteinDistance(Expression<Func<string>> bodybaseValue, Expression<Func<string[]>> bodycomparisonValues, Expression<Func<double>> bodysettingsratioThreshold = null, Expression<Func<bodysettingsapplyRatioThresholdToInput>> bodysettingsapplyRatioThresholdTo = null, Expression<Func<bodysettingsratioSelectionTypeInput>> bodysettingsratioSelectionType = null, Expression<Func<bodysettingstokenSortTypeInput>> bodysettingstokenSortType = null, Expression<Func<bool>> bodysettingscaseSensitive = null, Expression<Func<bool>> bodysettingsremoveWhitespace = null, Expression<Func<bool>> bodysettingsremoveSpecialCharacters = null)
         {
-            var __workflow_bodybaseValue = bodybaseValue == null ? null : WorkflowExpression.Compile(bodybaseValue);
-            WorkflowExpression.Validate(__workflow_bodybaseValue, nameof(bodybaseValue), required: true);
-            var __workflow_bodycomparisonValues = bodycomparisonValues == null ? null : WorkflowExpression.Compile(bodycomparisonValues);
-            WorkflowExpression.Validate(__workflow_bodycomparisonValues, nameof(bodycomparisonValues), required: true);
-            var __workflow_bodysettingsratioThreshold = bodysettingsratioThreshold == null ? null : WorkflowExpression.Compile(bodysettingsratioThreshold);
-            WorkflowExpression.Validate(__workflow_bodysettingsratioThreshold, nameof(bodysettingsratioThreshold), required: false);
-            var __workflow_bodysettingsapplyRatioThresholdTo = bodysettingsapplyRatioThresholdTo == null ? null : WorkflowExpression.Compile(bodysettingsapplyRatioThresholdTo);
-            WorkflowExpression.Validate(__workflow_bodysettingsapplyRatioThresholdTo, nameof(bodysettingsapplyRatioThresholdTo), required: false);
-            var __workflow_bodysettingsratioSelectionType = bodysettingsratioSelectionType == null ? null : WorkflowExpression.Compile(bodysettingsratioSelectionType);
-            WorkflowExpression.Validate(__workflow_bodysettingsratioSelectionType, nameof(bodysettingsratioSelectionType), required: false);
-            var __workflow_bodysettingstokenSortType = bodysettingstokenSortType == null ? null : WorkflowExpression.Compile(bodysettingstokenSortType);
-            WorkflowExpression.Validate(__workflow_bodysettingstokenSortType, nameof(bodysettingstokenSortType), required: false);
-            var __workflow_bodysettingscaseSensitive = bodysettingscaseSensitive == null ? null : WorkflowExpression.Compile(bodysettingscaseSensitive);
-            WorkflowExpression.Validate(__workflow_bodysettingscaseSensitive, nameof(bodysettingscaseSensitive), required: false);
-            var __workflow_bodysettingsremoveWhitespace = bodysettingsremoveWhitespace == null ? null : WorkflowExpression.Compile(bodysettingsremoveWhitespace);
-            WorkflowExpression.Validate(__workflow_bodysettingsremoveWhitespace, nameof(bodysettingsremoveWhitespace), required: false);
-            var __workflow_bodysettingsremoveSpecialCharacters = bodysettingsremoveSpecialCharacters == null ? null : WorkflowExpression.Compile(bodysettingsremoveSpecialCharacters);
-            WorkflowExpression.Validate(__workflow_bodysettingsremoveSpecialCharacters, nameof(bodysettingsremoveSpecialCharacters), required: false);
+            var __workflow_bodybaseValue = WorkflowExpression.Compile(bodybaseValue, nameof(bodybaseValue), required: true);
+            var __workflow_bodycomparisonValues = WorkflowExpression.Compile(bodycomparisonValues, nameof(bodycomparisonValues), required: true);
+            var __workflow_bodysettingsratioThreshold = WorkflowExpression.Compile(bodysettingsratioThreshold, nameof(bodysettingsratioThreshold), required: false);
+            var __workflow_bodysettingsapplyRatioThresholdTo = WorkflowExpression.Compile(bodysettingsapplyRatioThresholdTo, nameof(bodysettingsapplyRatioThresholdTo), required: false);
+            var __workflow_bodysettingsratioSelectionType = WorkflowExpression.Compile(bodysettingsratioSelectionType, nameof(bodysettingsratioSelectionType), required: false);
+            var __workflow_bodysettingstokenSortType = WorkflowExpression.Compile(bodysettingstokenSortType, nameof(bodysettingstokenSortType), required: false);
+            var __workflow_bodysettingscaseSensitive = WorkflowExpression.Compile(bodysettingscaseSensitive, nameof(bodysettingscaseSensitive), required: false);
+            var __workflow_bodysettingsremoveWhitespace = WorkflowExpression.Compile(bodysettingsremoveWhitespace, nameof(bodysettingsremoveWhitespace), required: false);
+            var __workflow_bodysettingsremoveSpecialCharacters = WorkflowExpression.Compile(bodysettingsremoveSpecialCharacters, nameof(bodysettingsremoveSpecialCharacters), required: false);
             return new DeferredBodyAction<LevenshteinDistanceResponse>(() =>
             {
                 var apiCallPath = "/LevenshteinDistance";
@@ -1342,20 +1256,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> ParquetToJson(Expression<Func<string>> bodydata, Expression<Func<bool>> bodyvalidateOnly = null, Expression<Func<int>> bodyskip = null, Expression<Func<int>> bodytake = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyvalidateOnly = bodyvalidateOnly == null ? null : WorkflowExpression.Compile(bodyvalidateOnly);
-            WorkflowExpression.Validate(__workflow_bodyvalidateOnly, nameof(bodyvalidateOnly), required: false);
-            var __workflow_bodyskip = bodyskip == null ? null : WorkflowExpression.Compile(bodyskip);
-            WorkflowExpression.Validate(__workflow_bodyskip, nameof(bodyskip), required: false);
-            var __workflow_bodytake = bodytake == null ? null : WorkflowExpression.Compile(bodytake);
-            WorkflowExpression.Validate(__workflow_bodytake, nameof(bodytake), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyvalidateOnly = WorkflowExpression.Compile(bodyvalidateOnly, nameof(bodyvalidateOnly), required: false);
+            var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: false);
+            var __workflow_bodytake = WorkflowExpression.Compile(bodytake, nameof(bodytake), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/ParquetToJson";
@@ -1437,16 +1344,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string[]> RegexMatches(Expression<Func<string>> bodypattern, Expression<Func<string>> bodydata, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
-            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = "/RegexMatches";
@@ -1512,20 +1414,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<string> SimpleConcatenate(Expression<Func<string[]>> bodydata, Expression<Func<string>> bodyseparator = null, Expression<Func<bool>> bodyignoreEmpty = null, Expression<Func<string>> bodyfilter = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyseparator = bodyseparator == null ? null : WorkflowExpression.Compile(bodyseparator);
-            WorkflowExpression.Validate(__workflow_bodyseparator, nameof(bodyseparator), required: false);
-            var __workflow_bodyignoreEmpty = bodyignoreEmpty == null ? null : WorkflowExpression.Compile(bodyignoreEmpty);
-            WorkflowExpression.Validate(__workflow_bodyignoreEmpty, nameof(bodyignoreEmpty), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodysortOrder = bodysortOrder == null ? null : WorkflowExpression.Compile(bodysortOrder);
-            WorkflowExpression.Validate(__workflow_bodysortOrder, nameof(bodysortOrder), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyseparator = WorkflowExpression.Compile(bodyseparator, nameof(bodyseparator), required: false);
+            var __workflow_bodyignoreEmpty = WorkflowExpression.Compile(bodyignoreEmpty, nameof(bodyignoreEmpty), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/SimpleConcatenate";
@@ -1599,18 +1494,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IWorkflowAction SimpleDistinct(Expression<Func<string>> bodyfield, Expression<Func<string>> bodyfilter = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodyfield = bodyfield == null ? null : WorkflowExpression.Compile(bodyfield);
-            WorkflowExpression.Validate(__workflow_bodyfield, nameof(bodyfield), required: true);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodysortOrder = bodysortOrder == null ? null : WorkflowExpression.Compile(bodysortOrder);
-            WorkflowExpression.Validate(__workflow_bodysortOrder, nameof(bodysortOrder), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyfield = WorkflowExpression.Compile(bodyfield, nameof(bodyfield), required: true);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SimpleDistinct";
@@ -1678,8 +1567,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> SortObjectArray(Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/SortObjectArray";
@@ -1713,16 +1601,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> Split(Expression<Func<JToken[]>> bodysplits, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodysplits = bodysplits == null ? null : WorkflowExpression.Compile(bodysplits);
-            WorkflowExpression.Validate(__workflow_bodysplits, nameof(bodysplits), required: true);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodysplits = WorkflowExpression.Compile(bodysplits, nameof(bodysplits), required: true);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/Split";
@@ -1792,22 +1675,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> TextToJson(Expression<Func<string>> bodydata, Expression<Func<bool>> bodyheaderRow = null, Expression<Func<string>> bodyrowSeparator = null, Expression<Func<string>> bodydelimiter = null, Expression<Func<bodyencodingInput>> bodyencoding = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyheaderRow = bodyheaderRow == null ? null : WorkflowExpression.Compile(bodyheaderRow);
-            WorkflowExpression.Validate(__workflow_bodyheaderRow, nameof(bodyheaderRow), required: false);
-            var __workflow_bodyrowSeparator = bodyrowSeparator == null ? null : WorkflowExpression.Compile(bodyrowSeparator);
-            WorkflowExpression.Validate(__workflow_bodyrowSeparator, nameof(bodyrowSeparator), required: false);
-            var __workflow_bodydelimiter = bodydelimiter == null ? null : WorkflowExpression.Compile(bodydelimiter);
-            WorkflowExpression.Validate(__workflow_bodydelimiter, nameof(bodydelimiter), required: false);
-            var __workflow_bodyencoding = bodyencoding == null ? null : WorkflowExpression.Compile(bodyencoding);
-            WorkflowExpression.Validate(__workflow_bodyencoding, nameof(bodyencoding), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyheaderRow = WorkflowExpression.Compile(bodyheaderRow, nameof(bodyheaderRow), required: false);
+            var __workflow_bodyrowSeparator = WorkflowExpression.Compile(bodyrowSeparator, nameof(bodyrowSeparator), required: false);
+            var __workflow_bodydelimiter = WorkflowExpression.Compile(bodydelimiter, nameof(bodydelimiter), required: false);
+            var __workflow_bodyencoding = WorkflowExpression.Compile(bodyencoding, nameof(bodyencoding), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/TextToJson";
@@ -1895,16 +1770,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> Transform(Expression<Func<bool>> bodypreserveAllProperties = null, Expression<Func<string>> bodyfilter = null, Expression<Func<string>> bodyadvancedOptionscultureName = null, Expression<Func<string[]>> bodyadvancedOptionsisBoolean = null, Expression<Func<JToken[]>> bodydata = null)
         {
-            var __workflow_bodypreserveAllProperties = bodypreserveAllProperties == null ? null : WorkflowExpression.Compile(bodypreserveAllProperties);
-            WorkflowExpression.Validate(__workflow_bodypreserveAllProperties, nameof(bodypreserveAllProperties), required: false);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
-            var __workflow_bodyadvancedOptionscultureName = bodyadvancedOptionscultureName == null ? null : WorkflowExpression.Compile(bodyadvancedOptionscultureName);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
-            var __workflow_bodyadvancedOptionsisBoolean = bodyadvancedOptionsisBoolean == null ? null : WorkflowExpression.Compile(bodyadvancedOptionsisBoolean);
-            WorkflowExpression.Validate(__workflow_bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodypreserveAllProperties = WorkflowExpression.Compile(bodypreserveAllProperties, nameof(bodypreserveAllProperties), required: false);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodyadvancedOptionscultureName = WorkflowExpression.Compile(bodyadvancedOptionscultureName, nameof(bodyadvancedOptionscultureName), required: false);
+            var __workflow_bodyadvancedOptionsisBoolean = WorkflowExpression.Compile(bodyadvancedOptionsisBoolean, nameof(bodyadvancedOptionsisBoolean), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/Transform";
@@ -1986,12 +1856,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<JToken[]> XmlToJson(Expression<Func<string>> bodydata, Expression<Func<string>> bodyprimaryLoopAtElement = null, Expression<Func<bodysubLoopAtElementsInputItem[]>> bodysubLoopAtElements = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyprimaryLoopAtElement = bodyprimaryLoopAtElement == null ? null : WorkflowExpression.Compile(bodyprimaryLoopAtElement);
-            WorkflowExpression.Validate(__workflow_bodyprimaryLoopAtElement, nameof(bodyprimaryLoopAtElement), required: false);
-            var __workflow_bodysubLoopAtElements = bodysubLoopAtElements == null ? null : WorkflowExpression.Compile(bodysubLoopAtElements);
-            WorkflowExpression.Validate(__workflow_bodysubLoopAtElements, nameof(bodysubLoopAtElements), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyprimaryLoopAtElement = WorkflowExpression.Compile(bodyprimaryLoopAtElement, nameof(bodyprimaryLoopAtElement), required: false);
+            var __workflow_bodysubLoopAtElements = WorkflowExpression.Compile(bodysubLoopAtElements, nameof(bodysubLoopAtElements), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/XmlToJson";
@@ -2033,12 +1900,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advanceddataoperatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advanceddataoperatio")]
         public IBodyWorkflowAction<ZipArchiveDecompressResponseItem[]> ZipArchiveDecompress(Expression<Func<string>> bodydata, Expression<Func<bool>> bodygetFileContents, Expression<Func<string>> bodyfilter = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodygetFileContents = bodygetFileContents == null ? null : WorkflowExpression.Compile(bodygetFileContents);
-            WorkflowExpression.Validate(__workflow_bodygetFileContents, nameof(bodygetFileContents), required: true);
-            var __workflow_bodyfilter = bodyfilter == null ? null : WorkflowExpression.Compile(bodyfilter);
-            WorkflowExpression.Validate(__workflow_bodyfilter, nameof(bodyfilter), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodygetFileContents = WorkflowExpression.Compile(bodygetFileContents, nameof(bodygetFileContents), required: true);
+            var __workflow_bodyfilter = WorkflowExpression.Compile(bodyfilter, nameof(bodyfilter), required: false);
             return new DeferredBodyAction<ZipArchiveDecompressResponseItem[]>(() =>
             {
                 var apiCallPath = "/ZipArchiveDecompress";

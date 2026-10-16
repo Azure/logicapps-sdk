@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractibanvalidato
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractibanvalidato")]
         public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> iban)
         {
-            var __workflow_iban = iban == null ? null : WorkflowExpression.Compile(iban);
-            WorkflowExpression.Validate(__workflow_iban, nameof(iban), required: true);
+            var __workflow_iban = WorkflowExpression.Compile(iban, nameof(iban), required: true);
             return new DeferredBodyAction<ValidateResponse>(() =>
             {
                 var apiCallPath = "/v1/";

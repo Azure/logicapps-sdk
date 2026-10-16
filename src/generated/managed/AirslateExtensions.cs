@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<CreateSmartLinkResponse> CreateSmartLink(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
-            var __workflow_organizationDomain = organizationDomain == null ? null : WorkflowExpression.Compile(organizationDomain);
-            WorkflowExpression.Validate(__workflow_organizationDomain, nameof(organizationDomain), required: true);
-            var __workflow_slateId = slateId == null ? null : WorkflowExpression.Compile(slateId);
-            WorkflowExpression.Validate(__workflow_slateId, nameof(slateId), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_organizationDomain = WorkflowExpression.Compile(organizationDomain, nameof(organizationDomain), required: true);
+            var __workflow_slateId = WorkflowExpression.Compile(slateId, nameof(slateId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<CreateSmartLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flows/{0}/smartLink/create", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slateId, 1));
@@ -34,12 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airslate")]
         public IBodyWorkflowAction<StartFlowResponse> StartFlow(Expression<Func<string>> organizationDomain, Expression<Func<string>> slateId, Expression<Func<object>> fields = null)
         {
-            var __workflow_organizationDomain = organizationDomain == null ? null : WorkflowExpression.Compile(organizationDomain);
-            WorkflowExpression.Validate(__workflow_organizationDomain, nameof(organizationDomain), required: true);
-            var __workflow_slateId = slateId == null ? null : WorkflowExpression.Compile(slateId);
-            WorkflowExpression.Validate(__workflow_slateId, nameof(slateId), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_organizationDomain = WorkflowExpression.Compile(organizationDomain, nameof(organizationDomain), required: true);
+            var __workflow_slateId = WorkflowExpression.Compile(slateId, nameof(slateId), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<StartFlowResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/addon-proxy/flow/v1/flows/{0}/packets/blank", ExpressionConverter.ConvertWithUrlEncoding(__workflow_slateId, 1));
@@ -57,8 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
     {
         public IBodyWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger(Expression<Func<string>> bodybotAuthorizationToken, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodybotAuthorizationToken = bodybotAuthorizationToken == null ? null : WorkflowExpression.Compile(bodybotAuthorizationToken);
-            WorkflowExpression.Validate(__workflow_bodybotAuthorizationToken, nameof(bodybotAuthorizationToken), required: true);
+            var __workflow_bodybotAuthorizationToken = WorkflowExpression.Compile(bodybotAuthorizationToken, nameof(bodybotAuthorizationToken), required: true);
             return new DeferredBodyTrigger<CreateSlateTriggerResponse>(() =>
             {
                 var apiCallPath = "/event";

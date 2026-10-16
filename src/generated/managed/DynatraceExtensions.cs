@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetProblemsResponse> GetProblems(Expression<Func<string>> from = null)
         {
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             return new DeferredBodyAction<GetProblemsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/problems";
@@ -31,8 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetProblemByIdResponse> GetProblemById(Expression<Func<string>> problemId)
         {
-            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
-            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
+            var __workflow_problemId = WorkflowExpression.Compile(problemId, nameof(problemId), required: true);
             return new DeferredBodyAction<GetProblemByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1));
@@ -46,8 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IWorkflowAction GetProblemComments(Expression<Func<string>> problemId)
         {
-            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
-            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
+            var __workflow_problemId = WorkflowExpression.Compile(problemId, nameof(problemId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1));
@@ -60,12 +57,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IWorkflowAction PostProblemComment(Expression<Func<string>> problemId, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycontext = null)
         {
-            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
-            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycontext = bodycontext == null ? null : WorkflowExpression.Compile(bodycontext);
-            WorkflowExpression.Validate(__workflow_bodycontext, nameof(bodycontext), required: false);
+            var __workflow_problemId = WorkflowExpression.Compile(problemId, nameof(problemId), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycontext = WorkflowExpression.Compile(bodycontext, nameof(bodycontext), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1));
@@ -98,10 +92,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> GetProblemCommentByProblemIdAndCommentId(Expression<Func<string>> problemId, Expression<Func<string>> commentId)
         {
-            var __workflow_problemId = problemId == null ? null : WorkflowExpression.Compile(problemId);
-            WorkflowExpression.Validate(__workflow_problemId, nameof(problemId), required: true);
-            var __workflow_commentId = commentId == null ? null : WorkflowExpression.Compile(commentId);
-            WorkflowExpression.Validate(__workflow_commentId, nameof(commentId), required: true);
+            var __workflow_problemId = WorkflowExpression.Compile(problemId, nameof(problemId), required: true);
+            var __workflow_commentId = WorkflowExpression.Compile(commentId, nameof(commentId), required: true);
             return new DeferredBodyAction<GetProblemCommentByProblemIdAndCommentIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_problemId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_commentId, 1));
@@ -115,8 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetEventsResponse> GetEvents(Expression<Func<string>> from = null)
         {
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             return new DeferredBodyAction<GetEventsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/events";
@@ -132,10 +123,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetEntitiesResponse> GetEntities(Expression<Func<string>> entitySelector, Expression<Func<string>> from = null)
         {
-            var __workflow_entitySelector = entitySelector == null ? null : WorkflowExpression.Compile(entitySelector);
-            WorkflowExpression.Validate(__workflow_entitySelector, nameof(entitySelector), required: true);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_entitySelector = WorkflowExpression.Compile(entitySelector, nameof(entitySelector), required: true);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             return new DeferredBodyAction<GetEntitiesResponse>(() =>
             {
                 var apiCallPath = "/api/v2/entities";
@@ -152,8 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetEntityByIdResponse> GetEntityById(Expression<Func<string>> entityId)
         {
-            var __workflow_entityId = entityId == null ? null : WorkflowExpression.Compile(entityId);
-            WorkflowExpression.Validate(__workflow_entityId, nameof(entityId), required: true);
+            var __workflow_entityId = WorkflowExpression.Compile(entityId, nameof(entityId), required: true);
             return new DeferredBodyAction<GetEntityByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/entities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityId, 1));
@@ -166,18 +154,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IWorkflowAction PostEventIngest(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodytimeout = null, Expression<Func<string>> bodyentitySelector = null)
         {
-            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
-            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
-            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodytimeout = bodytimeout == null ? null : WorkflowExpression.Compile(bodytimeout);
-            WorkflowExpression.Validate(__workflow_bodytimeout, nameof(bodytimeout), required: false);
-            var __workflow_bodyentitySelector = bodyentitySelector == null ? null : WorkflowExpression.Compile(bodyentitySelector);
-            WorkflowExpression.Validate(__workflow_bodyentitySelector, nameof(bodyentitySelector), required: false);
+            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
+            var __workflow_bodytimeout = WorkflowExpression.Compile(bodytimeout, nameof(bodytimeout), required: false);
+            var __workflow_bodyentitySelector = WorkflowExpression.Compile(bodyentitySelector, nameof(bodyentitySelector), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/v2/events/ingest";
@@ -234,10 +216,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetSecurityProblemsResponse> GetSecurityProblems(Expression<Func<string>> securityProblemSelector = null, Expression<Func<string>> from = null)
         {
-            var __workflow_securityProblemSelector = securityProblemSelector == null ? null : WorkflowExpression.Compile(securityProblemSelector);
-            WorkflowExpression.Validate(__workflow_securityProblemSelector, nameof(securityProblemSelector), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
+            var __workflow_securityProblemSelector = WorkflowExpression.Compile(securityProblemSelector, nameof(securityProblemSelector), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
             return new DeferredBodyAction<GetSecurityProblemsResponse>(() =>
             {
                 var apiCallPath = "/api/v2/securityProblems";
@@ -256,10 +236,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
         public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> GetSecurityProblemsById(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<GetSecurityProblemsByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/securityProblems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

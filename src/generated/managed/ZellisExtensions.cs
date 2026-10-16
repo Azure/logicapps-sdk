@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IWorkflowAction ValidateNotification(Expression<Func<string>> xZipSignature, Expression<Func<string>> bodypayload)
         {
-            var __workflow_xZipSignature = xZipSignature == null ? null : WorkflowExpression.Compile(xZipSignature);
-            WorkflowExpression.Validate(__workflow_xZipSignature, nameof(xZipSignature), required: true);
-            var __workflow_bodypayload = bodypayload == null ? null : WorkflowExpression.Compile(bodypayload);
-            WorkflowExpression.Validate(__workflow_bodypayload, nameof(bodypayload), required: true);
+            var __workflow_xZipSignature = WorkflowExpression.Compile(xZipSignature, nameof(xZipSignature), required: true);
+            var __workflow_bodypayload = WorkflowExpression.Compile(bodypayload, nameof(bodypayload), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/ValidateNotification";
@@ -39,10 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IBodyWorkflowAction<StaticResponseWriteSchema> AmendObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<StaticResponseWriteSchema>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1));
@@ -56,20 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IBodyWorkflowAction<JToken> GetZellisObjects(Expression<Func<string>> entity, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> select = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1));
@@ -94,10 +83,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zellis")]
         public IBodyWorkflowAction<StaticResponseWriteSchema> UpdateObject(Expression<Func<entityInput>> entity, Expression<Func<object>> body = null)
         {
-            var __workflow_entity = entity == null ? null : WorkflowExpression.Compile(entity);
-            WorkflowExpression.Validate(__workflow_entity, nameof(entity), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_entity = WorkflowExpression.Compile(entity, nameof(entity), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<StaticResponseWriteSchema>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_entity, 1));
@@ -113,16 +100,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     {
         public IBodyWorkflowTrigger<JToken> CRUDEntitiy(Expression<Func<string>> bodyevent, Expression<Func<bool>> bodyisEnabled, Expression<Func<bool>> bodyeventTypecreate = null, Expression<Func<bool>> bodyeventTypedelete = null, Expression<Func<bool>> bodyeventTypeupdate = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevent = bodyevent == null ? null : WorkflowExpression.Compile(bodyevent);
-            WorkflowExpression.Validate(__workflow_bodyevent, nameof(bodyevent), required: true);
-            var __workflow_bodyisEnabled = bodyisEnabled == null ? null : WorkflowExpression.Compile(bodyisEnabled);
-            WorkflowExpression.Validate(__workflow_bodyisEnabled, nameof(bodyisEnabled), required: true);
-            var __workflow_bodyeventTypecreate = bodyeventTypecreate == null ? null : WorkflowExpression.Compile(bodyeventTypecreate);
-            WorkflowExpression.Validate(__workflow_bodyeventTypecreate, nameof(bodyeventTypecreate), required: false);
-            var __workflow_bodyeventTypedelete = bodyeventTypedelete == null ? null : WorkflowExpression.Compile(bodyeventTypedelete);
-            WorkflowExpression.Validate(__workflow_bodyeventTypedelete, nameof(bodyeventTypedelete), required: false);
-            var __workflow_bodyeventTypeupdate = bodyeventTypeupdate == null ? null : WorkflowExpression.Compile(bodyeventTypeupdate);
-            WorkflowExpression.Validate(__workflow_bodyeventTypeupdate, nameof(bodyeventTypeupdate), required: false);
+            var __workflow_bodyevent = WorkflowExpression.Compile(bodyevent, nameof(bodyevent), required: true);
+            var __workflow_bodyisEnabled = WorkflowExpression.Compile(bodyisEnabled, nameof(bodyisEnabled), required: true);
+            var __workflow_bodyeventTypecreate = WorkflowExpression.Compile(bodyeventTypecreate, nameof(bodyeventTypecreate), required: false);
+            var __workflow_bodyeventTypedelete = WorkflowExpression.Compile(bodyeventTypedelete, nameof(bodyeventTypedelete), required: false);
+            var __workflow_bodyeventTypeupdate = WorkflowExpression.Compile(bodyeventTypeupdate, nameof(bodyeventTypeupdate), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = "/v1/subscription";

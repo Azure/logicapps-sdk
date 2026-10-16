@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPEnableScripting(Expression<Func<string>> sAPEnableScriptingworkflow, Expression<Func<bool>> sAPEnableScriptingnotifyWhenScriptAttachesToGUI = null, Expression<Func<bool>> sAPEnableScriptingnotifyWhenScriptOpensConnection = null, Expression<Func<bool>> sAPEnableScriptingshowNativeWindowsDialogs = null)
         {
-            var __workflow_sAPEnableScriptingworkflow = sAPEnableScriptingworkflow == null ? null : WorkflowExpression.Compile(sAPEnableScriptingworkflow);
-            WorkflowExpression.Validate(__workflow_sAPEnableScriptingworkflow, nameof(sAPEnableScriptingworkflow), required: true);
-            var __workflow_sAPEnableScriptingnotifyWhenScriptAttachesToGUI = sAPEnableScriptingnotifyWhenScriptAttachesToGUI == null ? null : WorkflowExpression.Compile(sAPEnableScriptingnotifyWhenScriptAttachesToGUI);
-            WorkflowExpression.Validate(__workflow_sAPEnableScriptingnotifyWhenScriptAttachesToGUI, nameof(sAPEnableScriptingnotifyWhenScriptAttachesToGUI), required: false);
-            var __workflow_sAPEnableScriptingnotifyWhenScriptOpensConnection = sAPEnableScriptingnotifyWhenScriptOpensConnection == null ? null : WorkflowExpression.Compile(sAPEnableScriptingnotifyWhenScriptOpensConnection);
-            WorkflowExpression.Validate(__workflow_sAPEnableScriptingnotifyWhenScriptOpensConnection, nameof(sAPEnableScriptingnotifyWhenScriptOpensConnection), required: false);
-            var __workflow_sAPEnableScriptingshowNativeWindowsDialogs = sAPEnableScriptingshowNativeWindowsDialogs == null ? null : WorkflowExpression.Compile(sAPEnableScriptingshowNativeWindowsDialogs);
-            WorkflowExpression.Validate(__workflow_sAPEnableScriptingshowNativeWindowsDialogs, nameof(sAPEnableScriptingshowNativeWindowsDialogs), required: false);
+            var __workflow_sAPEnableScriptingworkflow = WorkflowExpression.Compile(sAPEnableScriptingworkflow, nameof(sAPEnableScriptingworkflow), required: true);
+            var __workflow_sAPEnableScriptingnotifyWhenScriptAttachesToGUI = WorkflowExpression.Compile(sAPEnableScriptingnotifyWhenScriptAttachesToGUI, nameof(sAPEnableScriptingnotifyWhenScriptAttachesToGUI), required: false);
+            var __workflow_sAPEnableScriptingnotifyWhenScriptOpensConnection = WorkflowExpression.Compile(sAPEnableScriptingnotifyWhenScriptOpensConnection, nameof(sAPEnableScriptingnotifyWhenScriptOpensConnection), required: false);
+            var __workflow_sAPEnableScriptingshowNativeWindowsDialogs = WorkflowExpression.Compile(sAPEnableScriptingshowNativeWindowsDialogs, nameof(sAPEnableScriptingshowNativeWindowsDialogs), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPEnableScripting";
@@ -90,28 +86,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPLaunchSAPGUIResponse> SAPLaunchSAPGUI(Expression<Func<string>> sAPLaunchSAPGUIworkflow, Expression<Func<string>> sAPLaunchSAPGUIsAPLogonEXE = null, Expression<Func<string>> sAPLaunchSAPGUIsAPLogonArguments = null, Expression<Func<bool>> sAPLaunchSAPGUIenableSAPScripting = null, Expression<Func<bool>> sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI = null, Expression<Func<bool>> sAPLaunchSAPGUInotifyWhenScriptOpensConnection = null, Expression<Func<bool>> sAPLaunchSAPGUIshowNativeWindowsDialogs = null, Expression<Func<bool>> sAPLaunchSAPGUIattachAfterLaunch = null, Expression<Func<double>> sAPLaunchSAPGUIsecondsToWait = null, Expression<Func<string>> sAPLaunchSAPGUIsAPProgId = null, Expression<Func<bool>> sAPLaunchSAPGUIdisableSystemMessages = null)
         {
-            var __workflow_sAPLaunchSAPGUIworkflow = sAPLaunchSAPGUIworkflow == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIworkflow);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIworkflow, nameof(sAPLaunchSAPGUIworkflow), required: true);
-            var __workflow_sAPLaunchSAPGUIsAPLogonEXE = sAPLaunchSAPGUIsAPLogonEXE == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIsAPLogonEXE);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIsAPLogonEXE, nameof(sAPLaunchSAPGUIsAPLogonEXE), required: false);
-            var __workflow_sAPLaunchSAPGUIsAPLogonArguments = sAPLaunchSAPGUIsAPLogonArguments == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIsAPLogonArguments);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIsAPLogonArguments, nameof(sAPLaunchSAPGUIsAPLogonArguments), required: false);
-            var __workflow_sAPLaunchSAPGUIenableSAPScripting = sAPLaunchSAPGUIenableSAPScripting == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIenableSAPScripting);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIenableSAPScripting, nameof(sAPLaunchSAPGUIenableSAPScripting), required: false);
-            var __workflow_sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI = sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI, nameof(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI), required: false);
-            var __workflow_sAPLaunchSAPGUInotifyWhenScriptOpensConnection = sAPLaunchSAPGUInotifyWhenScriptOpensConnection == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUInotifyWhenScriptOpensConnection);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUInotifyWhenScriptOpensConnection, nameof(sAPLaunchSAPGUInotifyWhenScriptOpensConnection), required: false);
-            var __workflow_sAPLaunchSAPGUIshowNativeWindowsDialogs = sAPLaunchSAPGUIshowNativeWindowsDialogs == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIshowNativeWindowsDialogs);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIshowNativeWindowsDialogs, nameof(sAPLaunchSAPGUIshowNativeWindowsDialogs), required: false);
-            var __workflow_sAPLaunchSAPGUIattachAfterLaunch = sAPLaunchSAPGUIattachAfterLaunch == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIattachAfterLaunch);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIattachAfterLaunch, nameof(sAPLaunchSAPGUIattachAfterLaunch), required: false);
-            var __workflow_sAPLaunchSAPGUIsecondsToWait = sAPLaunchSAPGUIsecondsToWait == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIsecondsToWait);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIsecondsToWait, nameof(sAPLaunchSAPGUIsecondsToWait), required: false);
-            var __workflow_sAPLaunchSAPGUIsAPProgId = sAPLaunchSAPGUIsAPProgId == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIsAPProgId);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIsAPProgId, nameof(sAPLaunchSAPGUIsAPProgId), required: false);
-            var __workflow_sAPLaunchSAPGUIdisableSystemMessages = sAPLaunchSAPGUIdisableSystemMessages == null ? null : WorkflowExpression.Compile(sAPLaunchSAPGUIdisableSystemMessages);
-            WorkflowExpression.Validate(__workflow_sAPLaunchSAPGUIdisableSystemMessages, nameof(sAPLaunchSAPGUIdisableSystemMessages), required: false);
+            var __workflow_sAPLaunchSAPGUIworkflow = WorkflowExpression.Compile(sAPLaunchSAPGUIworkflow, nameof(sAPLaunchSAPGUIworkflow), required: true);
+            var __workflow_sAPLaunchSAPGUIsAPLogonEXE = WorkflowExpression.Compile(sAPLaunchSAPGUIsAPLogonEXE, nameof(sAPLaunchSAPGUIsAPLogonEXE), required: false);
+            var __workflow_sAPLaunchSAPGUIsAPLogonArguments = WorkflowExpression.Compile(sAPLaunchSAPGUIsAPLogonArguments, nameof(sAPLaunchSAPGUIsAPLogonArguments), required: false);
+            var __workflow_sAPLaunchSAPGUIenableSAPScripting = WorkflowExpression.Compile(sAPLaunchSAPGUIenableSAPScripting, nameof(sAPLaunchSAPGUIenableSAPScripting), required: false);
+            var __workflow_sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI = WorkflowExpression.Compile(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI, nameof(sAPLaunchSAPGUInotifyWhenScriptAttachesToGUI), required: false);
+            var __workflow_sAPLaunchSAPGUInotifyWhenScriptOpensConnection = WorkflowExpression.Compile(sAPLaunchSAPGUInotifyWhenScriptOpensConnection, nameof(sAPLaunchSAPGUInotifyWhenScriptOpensConnection), required: false);
+            var __workflow_sAPLaunchSAPGUIshowNativeWindowsDialogs = WorkflowExpression.Compile(sAPLaunchSAPGUIshowNativeWindowsDialogs, nameof(sAPLaunchSAPGUIshowNativeWindowsDialogs), required: false);
+            var __workflow_sAPLaunchSAPGUIattachAfterLaunch = WorkflowExpression.Compile(sAPLaunchSAPGUIattachAfterLaunch, nameof(sAPLaunchSAPGUIattachAfterLaunch), required: false);
+            var __workflow_sAPLaunchSAPGUIsecondsToWait = WorkflowExpression.Compile(sAPLaunchSAPGUIsecondsToWait, nameof(sAPLaunchSAPGUIsecondsToWait), required: false);
+            var __workflow_sAPLaunchSAPGUIsAPProgId = WorkflowExpression.Compile(sAPLaunchSAPGUIsAPProgId, nameof(sAPLaunchSAPGUIsAPProgId), required: false);
+            var __workflow_sAPLaunchSAPGUIdisableSystemMessages = WorkflowExpression.Compile(sAPLaunchSAPGUIdisableSystemMessages, nameof(sAPLaunchSAPGUIdisableSystemMessages), required: false);
             return new DeferredBodyAction<SAPLaunchSAPGUIResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPLaunchSAPGUI";
@@ -273,12 +258,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPAttachToSAPGUIResponse> SAPAttachToSAPGUI(Expression<Func<string>> sAPAttachToSAPGUIworkflow, Expression<Func<string>> sAPAttachToSAPGUIsAPProgId = null, Expression<Func<bool>> sAPAttachToSAPGUIdisableSystemMessages = null)
         {
-            var __workflow_sAPAttachToSAPGUIworkflow = sAPAttachToSAPGUIworkflow == null ? null : WorkflowExpression.Compile(sAPAttachToSAPGUIworkflow);
-            WorkflowExpression.Validate(__workflow_sAPAttachToSAPGUIworkflow, nameof(sAPAttachToSAPGUIworkflow), required: true);
-            var __workflow_sAPAttachToSAPGUIsAPProgId = sAPAttachToSAPGUIsAPProgId == null ? null : WorkflowExpression.Compile(sAPAttachToSAPGUIsAPProgId);
-            WorkflowExpression.Validate(__workflow_sAPAttachToSAPGUIsAPProgId, nameof(sAPAttachToSAPGUIsAPProgId), required: false);
-            var __workflow_sAPAttachToSAPGUIdisableSystemMessages = sAPAttachToSAPGUIdisableSystemMessages == null ? null : WorkflowExpression.Compile(sAPAttachToSAPGUIdisableSystemMessages);
-            WorkflowExpression.Validate(__workflow_sAPAttachToSAPGUIdisableSystemMessages, nameof(sAPAttachToSAPGUIdisableSystemMessages), required: false);
+            var __workflow_sAPAttachToSAPGUIworkflow = WorkflowExpression.Compile(sAPAttachToSAPGUIworkflow, nameof(sAPAttachToSAPGUIworkflow), required: true);
+            var __workflow_sAPAttachToSAPGUIsAPProgId = WorkflowExpression.Compile(sAPAttachToSAPGUIsAPProgId, nameof(sAPAttachToSAPGUIsAPProgId), required: false);
+            var __workflow_sAPAttachToSAPGUIdisableSystemMessages = WorkflowExpression.Compile(sAPAttachToSAPGUIdisableSystemMessages, nameof(sAPAttachToSAPGUIdisableSystemMessages), required: false);
             return new DeferredBodyAction<SAPAttachToSAPGUIResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPAttachToSAPGUI";
@@ -332,8 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDetachFromSAPGUI(Expression<Func<string>> sAPDetachFromSAPGUIworkflow)
         {
-            var __workflow_sAPDetachFromSAPGUIworkflow = sAPDetachFromSAPGUIworkflow == null ? null : WorkflowExpression.Compile(sAPDetachFromSAPGUIworkflow);
-            WorkflowExpression.Validate(__workflow_sAPDetachFromSAPGUIworkflow, nameof(sAPDetachFromSAPGUIworkflow), required: true);
+            var __workflow_sAPDetachFromSAPGUIworkflow = WorkflowExpression.Compile(sAPDetachFromSAPGUIworkflow, nameof(sAPDetachFromSAPGUIworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDetachFromSAPGUI";
@@ -355,8 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGUIStatusResponse> SAPGetSAPGUIStatus(Expression<Func<string>> sAPGetSAPGUIStatusworkflow)
         {
-            var __workflow_sAPGetSAPGUIStatusworkflow = sAPGetSAPGUIStatusworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPGUIStatusworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGUIStatusworkflow, nameof(sAPGetSAPGUIStatusworkflow), required: true);
+            var __workflow_sAPGetSAPGUIStatusworkflow = WorkflowExpression.Compile(sAPGetSAPGUIStatusworkflow, nameof(sAPGetSAPGUIStatusworkflow), required: true);
             return new DeferredBodyAction<SAPGetSAPGUIStatusResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGUIStatus";
@@ -378,8 +358,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPSessionsResponse> SAPGetSAPSessions(Expression<Func<string>> sAPGetSAPSessionsworkflow)
         {
-            var __workflow_sAPGetSAPSessionsworkflow = sAPGetSAPSessionsworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPSessionsworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPSessionsworkflow, nameof(sAPGetSAPSessionsworkflow), required: true);
+            var __workflow_sAPGetSAPSessionsworkflow = WorkflowExpression.Compile(sAPGetSAPSessionsworkflow, nameof(sAPGetSAPSessionsworkflow), required: true);
             return new DeferredBodyAction<SAPGetSAPSessionsResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPSessions";
@@ -401,12 +380,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPAttachToSessionResponse> SAPAttachToSession(Expression<Func<string>> sAPAttachToSessionworkflow, Expression<Func<string>> sAPAttachToSessionsearchConnectionName = null, Expression<Func<string>> sAPAttachToSessionsearchSessionName = null)
         {
-            var __workflow_sAPAttachToSessionworkflow = sAPAttachToSessionworkflow == null ? null : WorkflowExpression.Compile(sAPAttachToSessionworkflow);
-            WorkflowExpression.Validate(__workflow_sAPAttachToSessionworkflow, nameof(sAPAttachToSessionworkflow), required: true);
-            var __workflow_sAPAttachToSessionsearchConnectionName = sAPAttachToSessionsearchConnectionName == null ? null : WorkflowExpression.Compile(sAPAttachToSessionsearchConnectionName);
-            WorkflowExpression.Validate(__workflow_sAPAttachToSessionsearchConnectionName, nameof(sAPAttachToSessionsearchConnectionName), required: false);
-            var __workflow_sAPAttachToSessionsearchSessionName = sAPAttachToSessionsearchSessionName == null ? null : WorkflowExpression.Compile(sAPAttachToSessionsearchSessionName);
-            WorkflowExpression.Validate(__workflow_sAPAttachToSessionsearchSessionName, nameof(sAPAttachToSessionsearchSessionName), required: false);
+            var __workflow_sAPAttachToSessionworkflow = WorkflowExpression.Compile(sAPAttachToSessionworkflow, nameof(sAPAttachToSessionworkflow), required: true);
+            var __workflow_sAPAttachToSessionsearchConnectionName = WorkflowExpression.Compile(sAPAttachToSessionsearchConnectionName, nameof(sAPAttachToSessionsearchConnectionName), required: false);
+            var __workflow_sAPAttachToSessionsearchSessionName = WorkflowExpression.Compile(sAPAttachToSessionsearchSessionName, nameof(sAPAttachToSessionsearchSessionName), required: false);
             return new DeferredBodyAction<SAPAttachToSessionResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPAttachToSession";
@@ -440,14 +416,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCloseSession(Expression<Func<string>> sAPCloseSessionworkflow, Expression<Func<bool>> sAPCloseSessioncloseAttachedSession = null, Expression<Func<string>> sAPCloseSessionsearchConnectionName = null, Expression<Func<string>> sAPCloseSessionsearchSessionName = null)
         {
-            var __workflow_sAPCloseSessionworkflow = sAPCloseSessionworkflow == null ? null : WorkflowExpression.Compile(sAPCloseSessionworkflow);
-            WorkflowExpression.Validate(__workflow_sAPCloseSessionworkflow, nameof(sAPCloseSessionworkflow), required: true);
-            var __workflow_sAPCloseSessioncloseAttachedSession = sAPCloseSessioncloseAttachedSession == null ? null : WorkflowExpression.Compile(sAPCloseSessioncloseAttachedSession);
-            WorkflowExpression.Validate(__workflow_sAPCloseSessioncloseAttachedSession, nameof(sAPCloseSessioncloseAttachedSession), required: false);
-            var __workflow_sAPCloseSessionsearchConnectionName = sAPCloseSessionsearchConnectionName == null ? null : WorkflowExpression.Compile(sAPCloseSessionsearchConnectionName);
-            WorkflowExpression.Validate(__workflow_sAPCloseSessionsearchConnectionName, nameof(sAPCloseSessionsearchConnectionName), required: false);
-            var __workflow_sAPCloseSessionsearchSessionName = sAPCloseSessionsearchSessionName == null ? null : WorkflowExpression.Compile(sAPCloseSessionsearchSessionName);
-            WorkflowExpression.Validate(__workflow_sAPCloseSessionsearchSessionName, nameof(sAPCloseSessionsearchSessionName), required: false);
+            var __workflow_sAPCloseSessionworkflow = WorkflowExpression.Compile(sAPCloseSessionworkflow, nameof(sAPCloseSessionworkflow), required: true);
+            var __workflow_sAPCloseSessioncloseAttachedSession = WorkflowExpression.Compile(sAPCloseSessioncloseAttachedSession, nameof(sAPCloseSessioncloseAttachedSession), required: false);
+            var __workflow_sAPCloseSessionsearchConnectionName = WorkflowExpression.Compile(sAPCloseSessionsearchConnectionName, nameof(sAPCloseSessionsearchConnectionName), required: false);
+            var __workflow_sAPCloseSessionsearchSessionName = WorkflowExpression.Compile(sAPCloseSessionsearchSessionName, nameof(sAPCloseSessionsearchSessionName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCloseSession";
@@ -497,8 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetAttachedSessionPropertiesResponse> SAPGetAttachedSessionProperties(Expression<Func<string>> sAPGetAttachedSessionPropertiesworkflow)
         {
-            var __workflow_sAPGetAttachedSessionPropertiesworkflow = sAPGetAttachedSessionPropertiesworkflow == null ? null : WorkflowExpression.Compile(sAPGetAttachedSessionPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetAttachedSessionPropertiesworkflow, nameof(sAPGetAttachedSessionPropertiesworkflow), required: true);
+            var __workflow_sAPGetAttachedSessionPropertiesworkflow = WorkflowExpression.Compile(sAPGetAttachedSessionPropertiesworkflow, nameof(sAPGetAttachedSessionPropertiesworkflow), required: true);
             return new DeferredBodyAction<SAPGetAttachedSessionPropertiesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetAttachedSessionProperties";
@@ -520,12 +491,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPWaitForAttachedSessionNotBusyResponse> SAPWaitForAttachedSessionNotBusy(Expression<Func<double>> sAPWaitForAttachedSessionNotBusysecondsToWait, Expression<Func<string>> sAPWaitForAttachedSessionNotBusyworkflow, Expression<Func<bool>> sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait = null)
         {
-            var __workflow_sAPWaitForAttachedSessionNotBusysecondsToWait = sAPWaitForAttachedSessionNotBusysecondsToWait == null ? null : WorkflowExpression.Compile(sAPWaitForAttachedSessionNotBusysecondsToWait);
-            WorkflowExpression.Validate(__workflow_sAPWaitForAttachedSessionNotBusysecondsToWait, nameof(sAPWaitForAttachedSessionNotBusysecondsToWait), required: true);
-            var __workflow_sAPWaitForAttachedSessionNotBusyworkflow = sAPWaitForAttachedSessionNotBusyworkflow == null ? null : WorkflowExpression.Compile(sAPWaitForAttachedSessionNotBusyworkflow);
-            WorkflowExpression.Validate(__workflow_sAPWaitForAttachedSessionNotBusyworkflow, nameof(sAPWaitForAttachedSessionNotBusyworkflow), required: true);
-            var __workflow_sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait = sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait == null ? null : WorkflowExpression.Compile(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait);
-            WorkflowExpression.Validate(__workflow_sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait, nameof(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait), required: false);
+            var __workflow_sAPWaitForAttachedSessionNotBusysecondsToWait = WorkflowExpression.Compile(sAPWaitForAttachedSessionNotBusysecondsToWait, nameof(sAPWaitForAttachedSessionNotBusysecondsToWait), required: true);
+            var __workflow_sAPWaitForAttachedSessionNotBusyworkflow = WorkflowExpression.Compile(sAPWaitForAttachedSessionNotBusyworkflow, nameof(sAPWaitForAttachedSessionNotBusyworkflow), required: true);
+            var __workflow_sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait = WorkflowExpression.Compile(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait, nameof(sAPWaitForAttachedSessionNotBusyraiseExceptionIfBusyAfterWait), required: false);
             return new DeferredBodyAction<SAPWaitForAttachedSessionNotBusyResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForAttachedSessionNotBusy";
@@ -565,16 +533,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPInputTextIntoSAPElement(Expression<Func<string>> sAPInputTextIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPInputTextIntoSAPElementworkflow, Expression<Func<string>> sAPInputTextIntoSAPElementtextToInput = null, Expression<Func<bool>> sAPInputTextIntoSAPElementreplaceExistingValue = null, Expression<Func<int>> sAPInputTextIntoSAPElementinsertPosition = null)
         {
-            var __workflow_sAPInputTextIntoSAPElementsearchSAPElementId = sAPInputTextIntoSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPInputTextIntoSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPInputTextIntoSAPElementsearchSAPElementId, nameof(sAPInputTextIntoSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPInputTextIntoSAPElementworkflow = sAPInputTextIntoSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPInputTextIntoSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPInputTextIntoSAPElementworkflow, nameof(sAPInputTextIntoSAPElementworkflow), required: true);
-            var __workflow_sAPInputTextIntoSAPElementtextToInput = sAPInputTextIntoSAPElementtextToInput == null ? null : WorkflowExpression.Compile(sAPInputTextIntoSAPElementtextToInput);
-            WorkflowExpression.Validate(__workflow_sAPInputTextIntoSAPElementtextToInput, nameof(sAPInputTextIntoSAPElementtextToInput), required: false);
-            var __workflow_sAPInputTextIntoSAPElementreplaceExistingValue = sAPInputTextIntoSAPElementreplaceExistingValue == null ? null : WorkflowExpression.Compile(sAPInputTextIntoSAPElementreplaceExistingValue);
-            WorkflowExpression.Validate(__workflow_sAPInputTextIntoSAPElementreplaceExistingValue, nameof(sAPInputTextIntoSAPElementreplaceExistingValue), required: false);
-            var __workflow_sAPInputTextIntoSAPElementinsertPosition = sAPInputTextIntoSAPElementinsertPosition == null ? null : WorkflowExpression.Compile(sAPInputTextIntoSAPElementinsertPosition);
-            WorkflowExpression.Validate(__workflow_sAPInputTextIntoSAPElementinsertPosition, nameof(sAPInputTextIntoSAPElementinsertPosition), required: false);
+            var __workflow_sAPInputTextIntoSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPInputTextIntoSAPElementsearchSAPElementId, nameof(sAPInputTextIntoSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPInputTextIntoSAPElementworkflow = WorkflowExpression.Compile(sAPInputTextIntoSAPElementworkflow, nameof(sAPInputTextIntoSAPElementworkflow), required: true);
+            var __workflow_sAPInputTextIntoSAPElementtextToInput = WorkflowExpression.Compile(sAPInputTextIntoSAPElementtextToInput, nameof(sAPInputTextIntoSAPElementtextToInput), required: false);
+            var __workflow_sAPInputTextIntoSAPElementreplaceExistingValue = WorkflowExpression.Compile(sAPInputTextIntoSAPElementreplaceExistingValue, nameof(sAPInputTextIntoSAPElementreplaceExistingValue), required: false);
+            var __workflow_sAPInputTextIntoSAPElementinsertPosition = WorkflowExpression.Compile(sAPInputTextIntoSAPElementinsertPosition, nameof(sAPInputTextIntoSAPElementinsertPosition), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPInputTextIntoSAPElement";
@@ -636,12 +599,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPInputPasswordIntoSAPElement(Expression<Func<string>> sAPInputPasswordIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPInputPasswordIntoSAPElementpasswordToInput, Expression<Func<string>> sAPInputPasswordIntoSAPElementworkflow)
         {
-            var __workflow_sAPInputPasswordIntoSAPElementsearchSAPElementId = sAPInputPasswordIntoSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPInputPasswordIntoSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPInputPasswordIntoSAPElementsearchSAPElementId, nameof(sAPInputPasswordIntoSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPInputPasswordIntoSAPElementpasswordToInput = sAPInputPasswordIntoSAPElementpasswordToInput == null ? null : WorkflowExpression.Compile(sAPInputPasswordIntoSAPElementpasswordToInput);
-            WorkflowExpression.Validate(__workflow_sAPInputPasswordIntoSAPElementpasswordToInput, nameof(sAPInputPasswordIntoSAPElementpasswordToInput), required: true);
-            var __workflow_sAPInputPasswordIntoSAPElementworkflow = sAPInputPasswordIntoSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPInputPasswordIntoSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPInputPasswordIntoSAPElementworkflow, nameof(sAPInputPasswordIntoSAPElementworkflow), required: true);
+            var __workflow_sAPInputPasswordIntoSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPInputPasswordIntoSAPElementsearchSAPElementId, nameof(sAPInputPasswordIntoSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPInputPasswordIntoSAPElementpasswordToInput = WorkflowExpression.Compile(sAPInputPasswordIntoSAPElementpasswordToInput, nameof(sAPInputPasswordIntoSAPElementpasswordToInput), required: true);
+            var __workflow_sAPInputPasswordIntoSAPElementworkflow = WorkflowExpression.Compile(sAPInputPasswordIntoSAPElementworkflow, nameof(sAPInputPasswordIntoSAPElementworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPInputPasswordIntoSAPElement";
@@ -667,10 +627,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetElementPropertiesResponse> SAPGetElementProperties(Expression<Func<string>> sAPGetElementPropertiessearchSAPElementId, Expression<Func<string>> sAPGetElementPropertiesworkflow)
         {
-            var __workflow_sAPGetElementPropertiessearchSAPElementId = sAPGetElementPropertiessearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetElementPropertiessearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetElementPropertiessearchSAPElementId, nameof(sAPGetElementPropertiessearchSAPElementId), required: true);
-            var __workflow_sAPGetElementPropertiesworkflow = sAPGetElementPropertiesworkflow == null ? null : WorkflowExpression.Compile(sAPGetElementPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetElementPropertiesworkflow, nameof(sAPGetElementPropertiesworkflow), required: true);
+            var __workflow_sAPGetElementPropertiessearchSAPElementId = WorkflowExpression.Compile(sAPGetElementPropertiessearchSAPElementId, nameof(sAPGetElementPropertiessearchSAPElementId), required: true);
+            var __workflow_sAPGetElementPropertiesworkflow = WorkflowExpression.Compile(sAPGetElementPropertiesworkflow, nameof(sAPGetElementPropertiesworkflow), required: true);
             return new DeferredBodyAction<SAPGetElementPropertiesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementProperties";
@@ -694,14 +652,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPWaitForElementIdResponse> SAPWaitForElementId(Expression<Func<string>> sAPWaitForElementIdsearchSAPElementId, Expression<Func<string>> sAPWaitForElementIdworkflow, Expression<Func<double>> sAPWaitForElementIdsecondsToWait = null, Expression<Func<bool>> sAPWaitForElementIdraiseExceptionIfElementNotFound = null)
         {
-            var __workflow_sAPWaitForElementIdsearchSAPElementId = sAPWaitForElementIdsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPWaitForElementIdsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPWaitForElementIdsearchSAPElementId, nameof(sAPWaitForElementIdsearchSAPElementId), required: true);
-            var __workflow_sAPWaitForElementIdworkflow = sAPWaitForElementIdworkflow == null ? null : WorkflowExpression.Compile(sAPWaitForElementIdworkflow);
-            WorkflowExpression.Validate(__workflow_sAPWaitForElementIdworkflow, nameof(sAPWaitForElementIdworkflow), required: true);
-            var __workflow_sAPWaitForElementIdsecondsToWait = sAPWaitForElementIdsecondsToWait == null ? null : WorkflowExpression.Compile(sAPWaitForElementIdsecondsToWait);
-            WorkflowExpression.Validate(__workflow_sAPWaitForElementIdsecondsToWait, nameof(sAPWaitForElementIdsecondsToWait), required: false);
-            var __workflow_sAPWaitForElementIdraiseExceptionIfElementNotFound = sAPWaitForElementIdraiseExceptionIfElementNotFound == null ? null : WorkflowExpression.Compile(sAPWaitForElementIdraiseExceptionIfElementNotFound);
-            WorkflowExpression.Validate(__workflow_sAPWaitForElementIdraiseExceptionIfElementNotFound, nameof(sAPWaitForElementIdraiseExceptionIfElementNotFound), required: false);
+            var __workflow_sAPWaitForElementIdsearchSAPElementId = WorkflowExpression.Compile(sAPWaitForElementIdsearchSAPElementId, nameof(sAPWaitForElementIdsearchSAPElementId), required: true);
+            var __workflow_sAPWaitForElementIdworkflow = WorkflowExpression.Compile(sAPWaitForElementIdworkflow, nameof(sAPWaitForElementIdworkflow), required: true);
+            var __workflow_sAPWaitForElementIdsecondsToWait = WorkflowExpression.Compile(sAPWaitForElementIdsecondsToWait, nameof(sAPWaitForElementIdsecondsToWait), required: false);
+            var __workflow_sAPWaitForElementIdraiseExceptionIfElementNotFound = WorkflowExpression.Compile(sAPWaitForElementIdraiseExceptionIfElementNotFound, nameof(sAPWaitForElementIdraiseExceptionIfElementNotFound), required: false);
             return new DeferredBodyAction<SAPWaitForElementIdResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForElementId";
@@ -757,18 +711,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPWaitForWindowResponse> SAPWaitForWindow(Expression<Func<string>> sAPWaitForWindowsearchSAPWindowTitle, Expression<Func<string>> sAPWaitForWindowworkflow, Expression<Func<bool>> sAPWaitForWindowsearchIsRegularExpression = null, Expression<Func<bool>> sAPWaitForWindowsearchIsCaseSensitive = null, Expression<Func<double>> sAPWaitForWindowsecondsToWait = null, Expression<Func<bool>> sAPWaitForWindowraiseExceptionIfElementNotFound = null)
         {
-            var __workflow_sAPWaitForWindowsearchSAPWindowTitle = sAPWaitForWindowsearchSAPWindowTitle == null ? null : WorkflowExpression.Compile(sAPWaitForWindowsearchSAPWindowTitle);
-            WorkflowExpression.Validate(__workflow_sAPWaitForWindowsearchSAPWindowTitle, nameof(sAPWaitForWindowsearchSAPWindowTitle), required: true);
-            var __workflow_sAPWaitForWindowworkflow = sAPWaitForWindowworkflow == null ? null : WorkflowExpression.Compile(sAPWaitForWindowworkflow);
-            WorkflowExpression.Validate(__workflow_sAPWaitForWindowworkflow, nameof(sAPWaitForWindowworkflow), required: true);
-            var __workflow_sAPWaitForWindowsearchIsRegularExpression = sAPWaitForWindowsearchIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPWaitForWindowsearchIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPWaitForWindowsearchIsRegularExpression, nameof(sAPWaitForWindowsearchIsRegularExpression), required: false);
-            var __workflow_sAPWaitForWindowsearchIsCaseSensitive = sAPWaitForWindowsearchIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPWaitForWindowsearchIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPWaitForWindowsearchIsCaseSensitive, nameof(sAPWaitForWindowsearchIsCaseSensitive), required: false);
-            var __workflow_sAPWaitForWindowsecondsToWait = sAPWaitForWindowsecondsToWait == null ? null : WorkflowExpression.Compile(sAPWaitForWindowsecondsToWait);
-            WorkflowExpression.Validate(__workflow_sAPWaitForWindowsecondsToWait, nameof(sAPWaitForWindowsecondsToWait), required: false);
-            var __workflow_sAPWaitForWindowraiseExceptionIfElementNotFound = sAPWaitForWindowraiseExceptionIfElementNotFound == null ? null : WorkflowExpression.Compile(sAPWaitForWindowraiseExceptionIfElementNotFound);
-            WorkflowExpression.Validate(__workflow_sAPWaitForWindowraiseExceptionIfElementNotFound, nameof(sAPWaitForWindowraiseExceptionIfElementNotFound), required: false);
+            var __workflow_sAPWaitForWindowsearchSAPWindowTitle = WorkflowExpression.Compile(sAPWaitForWindowsearchSAPWindowTitle, nameof(sAPWaitForWindowsearchSAPWindowTitle), required: true);
+            var __workflow_sAPWaitForWindowworkflow = WorkflowExpression.Compile(sAPWaitForWindowworkflow, nameof(sAPWaitForWindowworkflow), required: true);
+            var __workflow_sAPWaitForWindowsearchIsRegularExpression = WorkflowExpression.Compile(sAPWaitForWindowsearchIsRegularExpression, nameof(sAPWaitForWindowsearchIsRegularExpression), required: false);
+            var __workflow_sAPWaitForWindowsearchIsCaseSensitive = WorkflowExpression.Compile(sAPWaitForWindowsearchIsCaseSensitive, nameof(sAPWaitForWindowsearchIsCaseSensitive), required: false);
+            var __workflow_sAPWaitForWindowsecondsToWait = WorkflowExpression.Compile(sAPWaitForWindowsecondsToWait, nameof(sAPWaitForWindowsecondsToWait), required: false);
+            var __workflow_sAPWaitForWindowraiseExceptionIfElementNotFound = WorkflowExpression.Compile(sAPWaitForWindowraiseExceptionIfElementNotFound, nameof(sAPWaitForWindowraiseExceptionIfElementNotFound), required: false);
             return new DeferredBodyAction<SAPWaitForWindowResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWaitForWindow";
@@ -856,10 +804,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetElementTextValueResponse> SAPGetElementTextValue(Expression<Func<string>> sAPGetElementTextValuesearchSAPElementId, Expression<Func<string>> sAPGetElementTextValueworkflow)
         {
-            var __workflow_sAPGetElementTextValuesearchSAPElementId = sAPGetElementTextValuesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetElementTextValuesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetElementTextValuesearchSAPElementId, nameof(sAPGetElementTextValuesearchSAPElementId), required: true);
-            var __workflow_sAPGetElementTextValueworkflow = sAPGetElementTextValueworkflow == null ? null : WorkflowExpression.Compile(sAPGetElementTextValueworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetElementTextValueworkflow, nameof(sAPGetElementTextValueworkflow), required: true);
+            var __workflow_sAPGetElementTextValuesearchSAPElementId = WorkflowExpression.Compile(sAPGetElementTextValuesearchSAPElementId, nameof(sAPGetElementTextValuesearchSAPElementId), required: true);
+            var __workflow_sAPGetElementTextValueworkflow = WorkflowExpression.Compile(sAPGetElementTextValueworkflow, nameof(sAPGetElementTextValueworkflow), required: true);
             return new DeferredBodyAction<SAPGetElementTextValueResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementTextValue";
@@ -883,10 +829,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPElement(Expression<Func<string>> sAPPressSAPElementsearchSAPElementId, Expression<Func<string>> sAPPressSAPElementworkflow)
         {
-            var __workflow_sAPPressSAPElementsearchSAPElementId = sAPPressSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPElementsearchSAPElementId, nameof(sAPPressSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPPressSAPElementworkflow = sAPPressSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPPressSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPElementworkflow, nameof(sAPPressSAPElementworkflow), required: true);
+            var __workflow_sAPPressSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPPressSAPElementsearchSAPElementId, nameof(sAPPressSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPPressSAPElementworkflow = WorkflowExpression.Compile(sAPPressSAPElementworkflow, nameof(sAPPressSAPElementworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPElement";
@@ -910,10 +854,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPElement(Expression<Func<string>> sAPSelectSAPElementsearchSAPElementId, Expression<Func<string>> sAPSelectSAPElementworkflow)
         {
-            var __workflow_sAPSelectSAPElementsearchSAPElementId = sAPSelectSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPElementsearchSAPElementId, nameof(sAPSelectSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPSelectSAPElementworkflow = sAPSelectSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPSelectSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPElementworkflow, nameof(sAPSelectSAPElementworkflow), required: true);
+            var __workflow_sAPSelectSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPSelectSAPElementsearchSAPElementId, nameof(sAPSelectSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPSelectSAPElementworkflow = WorkflowExpression.Compile(sAPSelectSAPElementworkflow, nameof(sAPSelectSAPElementworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPElement";
@@ -937,10 +879,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPFocusSAPElement(Expression<Func<string>> sAPFocusSAPElementsearchSAPElementId, Expression<Func<string>> sAPFocusSAPElementworkflow)
         {
-            var __workflow_sAPFocusSAPElementsearchSAPElementId = sAPFocusSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPFocusSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPFocusSAPElementsearchSAPElementId, nameof(sAPFocusSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPFocusSAPElementworkflow = sAPFocusSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPFocusSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPFocusSAPElementworkflow, nameof(sAPFocusSAPElementworkflow), required: true);
+            var __workflow_sAPFocusSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPFocusSAPElementsearchSAPElementId, nameof(sAPFocusSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPFocusSAPElementworkflow = WorkflowExpression.Compile(sAPFocusSAPElementworkflow, nameof(sAPFocusSAPElementworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPFocusSAPElement";
@@ -964,12 +904,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckSAPElement(Expression<Func<string>> sAPCheckSAPElementsearchSAPElementId, Expression<Func<string>> sAPCheckSAPElementworkflow, Expression<Func<bool>> sAPCheckSAPElementcheckElement = null)
         {
-            var __workflow_sAPCheckSAPElementsearchSAPElementId = sAPCheckSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPCheckSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPElementsearchSAPElementId, nameof(sAPCheckSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPCheckSAPElementworkflow = sAPCheckSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPCheckSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPElementworkflow, nameof(sAPCheckSAPElementworkflow), required: true);
-            var __workflow_sAPCheckSAPElementcheckElement = sAPCheckSAPElementcheckElement == null ? null : WorkflowExpression.Compile(sAPCheckSAPElementcheckElement);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPElementcheckElement, nameof(sAPCheckSAPElementcheckElement), required: false);
+            var __workflow_sAPCheckSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPCheckSAPElementsearchSAPElementId, nameof(sAPCheckSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPCheckSAPElementworkflow = WorkflowExpression.Compile(sAPCheckSAPElementworkflow, nameof(sAPCheckSAPElementworkflow), required: true);
+            var __workflow_sAPCheckSAPElementcheckElement = WorkflowExpression.Compile(sAPCheckSAPElementcheckElement, nameof(sAPCheckSAPElementcheckElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPElement";
@@ -1009,12 +946,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPVisualiseSAPElement(Expression<Func<string>> sAPVisualiseSAPElementsearchSAPElementId, Expression<Func<string>> sAPVisualiseSAPElementworkflow, Expression<Func<bool>> sAPVisualiseSAPElementvisualiseOn = null)
         {
-            var __workflow_sAPVisualiseSAPElementsearchSAPElementId = sAPVisualiseSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPVisualiseSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPVisualiseSAPElementsearchSAPElementId, nameof(sAPVisualiseSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPVisualiseSAPElementworkflow = sAPVisualiseSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPVisualiseSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPVisualiseSAPElementworkflow, nameof(sAPVisualiseSAPElementworkflow), required: true);
-            var __workflow_sAPVisualiseSAPElementvisualiseOn = sAPVisualiseSAPElementvisualiseOn == null ? null : WorkflowExpression.Compile(sAPVisualiseSAPElementvisualiseOn);
-            WorkflowExpression.Validate(__workflow_sAPVisualiseSAPElementvisualiseOn, nameof(sAPVisualiseSAPElementvisualiseOn), required: false);
+            var __workflow_sAPVisualiseSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPVisualiseSAPElementsearchSAPElementId, nameof(sAPVisualiseSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPVisualiseSAPElementworkflow = WorkflowExpression.Compile(sAPVisualiseSAPElementworkflow, nameof(sAPVisualiseSAPElementworkflow), required: true);
+            var __workflow_sAPVisualiseSAPElementvisualiseOn = WorkflowExpression.Compile(sAPVisualiseSAPElementvisualiseOn, nameof(sAPVisualiseSAPElementvisualiseOn), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPVisualiseSAPElement";
@@ -1054,14 +988,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDrawRectangleAroundSAPElement(Expression<Func<string>> sAPDrawRectangleAroundSAPElementsearchSAPElementId, Expression<Func<string>> sAPDrawRectangleAroundSAPElementworkflow, Expression<Func<string>> sAPDrawRectangleAroundSAPElementpenColour = null, Expression<Func<int>> sAPDrawRectangleAroundSAPElementpenThicknessPixels = null)
         {
-            var __workflow_sAPDrawRectangleAroundSAPElementsearchSAPElementId = sAPDrawRectangleAroundSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPElementsearchSAPElementId, nameof(sAPDrawRectangleAroundSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPDrawRectangleAroundSAPElementworkflow = sAPDrawRectangleAroundSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPElementworkflow, nameof(sAPDrawRectangleAroundSAPElementworkflow), required: true);
-            var __workflow_sAPDrawRectangleAroundSAPElementpenColour = sAPDrawRectangleAroundSAPElementpenColour == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementpenColour);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPElementpenColour, nameof(sAPDrawRectangleAroundSAPElementpenColour), required: false);
-            var __workflow_sAPDrawRectangleAroundSAPElementpenThicknessPixels = sAPDrawRectangleAroundSAPElementpenThicknessPixels == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementpenThicknessPixels);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPElementpenThicknessPixels, nameof(sAPDrawRectangleAroundSAPElementpenThicknessPixels), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementsearchSAPElementId, nameof(sAPDrawRectangleAroundSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPDrawRectangleAroundSAPElementworkflow = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementworkflow, nameof(sAPDrawRectangleAroundSAPElementworkflow), required: true);
+            var __workflow_sAPDrawRectangleAroundSAPElementpenColour = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementpenColour, nameof(sAPDrawRectangleAroundSAPElementpenColour), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPElementpenThicknessPixels = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPElementpenThicknessPixels, nameof(sAPDrawRectangleAroundSAPElementpenThicknessPixels), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPElement";
@@ -1117,10 +1047,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSendCommand(Expression<Func<string>> sAPSendCommandsAPCommand, Expression<Func<string>> sAPSendCommandworkflow)
         {
-            var __workflow_sAPSendCommandsAPCommand = sAPSendCommandsAPCommand == null ? null : WorkflowExpression.Compile(sAPSendCommandsAPCommand);
-            WorkflowExpression.Validate(__workflow_sAPSendCommandsAPCommand, nameof(sAPSendCommandsAPCommand), required: true);
-            var __workflow_sAPSendCommandworkflow = sAPSendCommandworkflow == null ? null : WorkflowExpression.Compile(sAPSendCommandworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSendCommandworkflow, nameof(sAPSendCommandworkflow), required: true);
+            var __workflow_sAPSendCommandsAPCommand = WorkflowExpression.Compile(sAPSendCommandsAPCommand, nameof(sAPSendCommandsAPCommand), required: true);
+            var __workflow_sAPSendCommandworkflow = WorkflowExpression.Compile(sAPSendCommandworkflow, nameof(sAPSendCommandworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSendCommand";
@@ -1144,10 +1072,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPEnterTCode(Expression<Func<string>> sAPEnterTCodesAPTCode, Expression<Func<string>> sAPEnterTCodeworkflow)
         {
-            var __workflow_sAPEnterTCodesAPTCode = sAPEnterTCodesAPTCode == null ? null : WorkflowExpression.Compile(sAPEnterTCodesAPTCode);
-            WorkflowExpression.Validate(__workflow_sAPEnterTCodesAPTCode, nameof(sAPEnterTCodesAPTCode), required: true);
-            var __workflow_sAPEnterTCodeworkflow = sAPEnterTCodeworkflow == null ? null : WorkflowExpression.Compile(sAPEnterTCodeworkflow);
-            WorkflowExpression.Validate(__workflow_sAPEnterTCodeworkflow, nameof(sAPEnterTCodeworkflow), required: true);
+            var __workflow_sAPEnterTCodesAPTCode = WorkflowExpression.Compile(sAPEnterTCodesAPTCode, nameof(sAPEnterTCodesAPTCode), required: true);
+            var __workflow_sAPEnterTCodeworkflow = WorkflowExpression.Compile(sAPEnterTCodeworkflow, nameof(sAPEnterTCodeworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPEnterTCode";
@@ -1171,14 +1097,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSendVKey(Expression<Func<string>> sAPSendVKeysearchSAPElementId, Expression<Func<int>> sAPSendVKeysAPVKey, Expression<Func<string>> sAPSendVKeyworkflow, Expression<Func<bool>> sAPSendVKeydetectParentWindowElement = null)
         {
-            var __workflow_sAPSendVKeysearchSAPElementId = sAPSendVKeysearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSendVKeysearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSendVKeysearchSAPElementId, nameof(sAPSendVKeysearchSAPElementId), required: true);
-            var __workflow_sAPSendVKeysAPVKey = sAPSendVKeysAPVKey == null ? null : WorkflowExpression.Compile(sAPSendVKeysAPVKey);
-            WorkflowExpression.Validate(__workflow_sAPSendVKeysAPVKey, nameof(sAPSendVKeysAPVKey), required: true);
-            var __workflow_sAPSendVKeyworkflow = sAPSendVKeyworkflow == null ? null : WorkflowExpression.Compile(sAPSendVKeyworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSendVKeyworkflow, nameof(sAPSendVKeyworkflow), required: true);
-            var __workflow_sAPSendVKeydetectParentWindowElement = sAPSendVKeydetectParentWindowElement == null ? null : WorkflowExpression.Compile(sAPSendVKeydetectParentWindowElement);
-            WorkflowExpression.Validate(__workflow_sAPSendVKeydetectParentWindowElement, nameof(sAPSendVKeydetectParentWindowElement), required: false);
+            var __workflow_sAPSendVKeysearchSAPElementId = WorkflowExpression.Compile(sAPSendVKeysearchSAPElementId, nameof(sAPSendVKeysearchSAPElementId), required: true);
+            var __workflow_sAPSendVKeysAPVKey = WorkflowExpression.Compile(sAPSendVKeysAPVKey, nameof(sAPSendVKeysAPVKey), required: true);
+            var __workflow_sAPSendVKeyworkflow = WorkflowExpression.Compile(sAPSendVKeyworkflow, nameof(sAPSendVKeyworkflow), required: true);
+            var __workflow_sAPSendVKeydetectParentWindowElement = WorkflowExpression.Compile(sAPSendVKeydetectParentWindowElement, nameof(sAPSendVKeydetectParentWindowElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSendVKey";
@@ -1220,12 +1142,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSendEnterVKey(Expression<Func<string>> sAPSendEnterVKeysearchSAPElementId, Expression<Func<string>> sAPSendEnterVKeyworkflow, Expression<Func<bool>> sAPSendEnterVKeydetectParentWindowElement = null)
         {
-            var __workflow_sAPSendEnterVKeysearchSAPElementId = sAPSendEnterVKeysearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSendEnterVKeysearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSendEnterVKeysearchSAPElementId, nameof(sAPSendEnterVKeysearchSAPElementId), required: true);
-            var __workflow_sAPSendEnterVKeyworkflow = sAPSendEnterVKeyworkflow == null ? null : WorkflowExpression.Compile(sAPSendEnterVKeyworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSendEnterVKeyworkflow, nameof(sAPSendEnterVKeyworkflow), required: true);
-            var __workflow_sAPSendEnterVKeydetectParentWindowElement = sAPSendEnterVKeydetectParentWindowElement == null ? null : WorkflowExpression.Compile(sAPSendEnterVKeydetectParentWindowElement);
-            WorkflowExpression.Validate(__workflow_sAPSendEnterVKeydetectParentWindowElement, nameof(sAPSendEnterVKeydetectParentWindowElement), required: false);
+            var __workflow_sAPSendEnterVKeysearchSAPElementId = WorkflowExpression.Compile(sAPSendEnterVKeysearchSAPElementId, nameof(sAPSendEnterVKeysearchSAPElementId), required: true);
+            var __workflow_sAPSendEnterVKeyworkflow = WorkflowExpression.Compile(sAPSendEnterVKeyworkflow, nameof(sAPSendEnterVKeyworkflow), required: true);
+            var __workflow_sAPSendEnterVKeydetectParentWindowElement = WorkflowExpression.Compile(sAPSendEnterVKeydetectParentWindowElement, nameof(sAPSendEnterVKeydetectParentWindowElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSendEnterVKey";
@@ -1265,12 +1184,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowRestore(Expression<Func<string>> sAPWindowRestoresearchSAPElementId, Expression<Func<string>> sAPWindowRestoreworkflow, Expression<Func<bool>> sAPWindowRestoredetectParentWindowElement = null)
         {
-            var __workflow_sAPWindowRestoresearchSAPElementId = sAPWindowRestoresearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPWindowRestoresearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPWindowRestoresearchSAPElementId, nameof(sAPWindowRestoresearchSAPElementId), required: true);
-            var __workflow_sAPWindowRestoreworkflow = sAPWindowRestoreworkflow == null ? null : WorkflowExpression.Compile(sAPWindowRestoreworkflow);
-            WorkflowExpression.Validate(__workflow_sAPWindowRestoreworkflow, nameof(sAPWindowRestoreworkflow), required: true);
-            var __workflow_sAPWindowRestoredetectParentWindowElement = sAPWindowRestoredetectParentWindowElement == null ? null : WorkflowExpression.Compile(sAPWindowRestoredetectParentWindowElement);
-            WorkflowExpression.Validate(__workflow_sAPWindowRestoredetectParentWindowElement, nameof(sAPWindowRestoredetectParentWindowElement), required: false);
+            var __workflow_sAPWindowRestoresearchSAPElementId = WorkflowExpression.Compile(sAPWindowRestoresearchSAPElementId, nameof(sAPWindowRestoresearchSAPElementId), required: true);
+            var __workflow_sAPWindowRestoreworkflow = WorkflowExpression.Compile(sAPWindowRestoreworkflow, nameof(sAPWindowRestoreworkflow), required: true);
+            var __workflow_sAPWindowRestoredetectParentWindowElement = WorkflowExpression.Compile(sAPWindowRestoredetectParentWindowElement, nameof(sAPWindowRestoredetectParentWindowElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowRestore";
@@ -1310,12 +1226,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowMaximise(Expression<Func<string>> sAPWindowMaximisesearchSAPElementId, Expression<Func<string>> sAPWindowMaximiseworkflow, Expression<Func<bool>> sAPWindowMaximisedetectParentWindowElement = null)
         {
-            var __workflow_sAPWindowMaximisesearchSAPElementId = sAPWindowMaximisesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPWindowMaximisesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPWindowMaximisesearchSAPElementId, nameof(sAPWindowMaximisesearchSAPElementId), required: true);
-            var __workflow_sAPWindowMaximiseworkflow = sAPWindowMaximiseworkflow == null ? null : WorkflowExpression.Compile(sAPWindowMaximiseworkflow);
-            WorkflowExpression.Validate(__workflow_sAPWindowMaximiseworkflow, nameof(sAPWindowMaximiseworkflow), required: true);
-            var __workflow_sAPWindowMaximisedetectParentWindowElement = sAPWindowMaximisedetectParentWindowElement == null ? null : WorkflowExpression.Compile(sAPWindowMaximisedetectParentWindowElement);
-            WorkflowExpression.Validate(__workflow_sAPWindowMaximisedetectParentWindowElement, nameof(sAPWindowMaximisedetectParentWindowElement), required: false);
+            var __workflow_sAPWindowMaximisesearchSAPElementId = WorkflowExpression.Compile(sAPWindowMaximisesearchSAPElementId, nameof(sAPWindowMaximisesearchSAPElementId), required: true);
+            var __workflow_sAPWindowMaximiseworkflow = WorkflowExpression.Compile(sAPWindowMaximiseworkflow, nameof(sAPWindowMaximiseworkflow), required: true);
+            var __workflow_sAPWindowMaximisedetectParentWindowElement = WorkflowExpression.Compile(sAPWindowMaximisedetectParentWindowElement, nameof(sAPWindowMaximisedetectParentWindowElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowMaximise";
@@ -1355,12 +1268,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowMinimise(Expression<Func<string>> sAPWindowMinimisesearchSAPElementId, Expression<Func<string>> sAPWindowMinimiseworkflow, Expression<Func<bool>> sAPWindowMinimisedetectParentWindowElement = null)
         {
-            var __workflow_sAPWindowMinimisesearchSAPElementId = sAPWindowMinimisesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPWindowMinimisesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPWindowMinimisesearchSAPElementId, nameof(sAPWindowMinimisesearchSAPElementId), required: true);
-            var __workflow_sAPWindowMinimiseworkflow = sAPWindowMinimiseworkflow == null ? null : WorkflowExpression.Compile(sAPWindowMinimiseworkflow);
-            WorkflowExpression.Validate(__workflow_sAPWindowMinimiseworkflow, nameof(sAPWindowMinimiseworkflow), required: true);
-            var __workflow_sAPWindowMinimisedetectParentWindowElement = sAPWindowMinimisedetectParentWindowElement == null ? null : WorkflowExpression.Compile(sAPWindowMinimisedetectParentWindowElement);
-            WorkflowExpression.Validate(__workflow_sAPWindowMinimisedetectParentWindowElement, nameof(sAPWindowMinimisedetectParentWindowElement), required: false);
+            var __workflow_sAPWindowMinimisesearchSAPElementId = WorkflowExpression.Compile(sAPWindowMinimisesearchSAPElementId, nameof(sAPWindowMinimisesearchSAPElementId), required: true);
+            var __workflow_sAPWindowMinimiseworkflow = WorkflowExpression.Compile(sAPWindowMinimiseworkflow, nameof(sAPWindowMinimiseworkflow), required: true);
+            var __workflow_sAPWindowMinimisedetectParentWindowElement = WorkflowExpression.Compile(sAPWindowMinimisedetectParentWindowElement, nameof(sAPWindowMinimisedetectParentWindowElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowMinimise";
@@ -1400,12 +1310,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPWindowClose(Expression<Func<string>> sAPWindowClosesearchSAPElementId, Expression<Func<string>> sAPWindowCloseworkflow, Expression<Func<bool>> sAPWindowClosedetectParentWindowElement = null)
         {
-            var __workflow_sAPWindowClosesearchSAPElementId = sAPWindowClosesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPWindowClosesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPWindowClosesearchSAPElementId, nameof(sAPWindowClosesearchSAPElementId), required: true);
-            var __workflow_sAPWindowCloseworkflow = sAPWindowCloseworkflow == null ? null : WorkflowExpression.Compile(sAPWindowCloseworkflow);
-            WorkflowExpression.Validate(__workflow_sAPWindowCloseworkflow, nameof(sAPWindowCloseworkflow), required: true);
-            var __workflow_sAPWindowClosedetectParentWindowElement = sAPWindowClosedetectParentWindowElement == null ? null : WorkflowExpression.Compile(sAPWindowClosedetectParentWindowElement);
-            WorkflowExpression.Validate(__workflow_sAPWindowClosedetectParentWindowElement, nameof(sAPWindowClosedetectParentWindowElement), required: false);
+            var __workflow_sAPWindowClosesearchSAPElementId = WorkflowExpression.Compile(sAPWindowClosesearchSAPElementId, nameof(sAPWindowClosesearchSAPElementId), required: true);
+            var __workflow_sAPWindowCloseworkflow = WorkflowExpression.Compile(sAPWindowCloseworkflow, nameof(sAPWindowCloseworkflow), required: true);
+            var __workflow_sAPWindowClosedetectParentWindowElement = WorkflowExpression.Compile(sAPWindowClosedetectParentWindowElement, nameof(sAPWindowClosedetectParentWindowElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPWindowClose";
@@ -1445,18 +1352,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPBringWindowToFront(Expression<Func<string>> sAPBringWindowToFrontsearchSAPElementId, Expression<Func<string>> sAPBringWindowToFrontworkflow, Expression<Func<bool>> sAPBringWindowToFronttoggleWindow = null, Expression<Func<bool>> sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPBringWindowToFronttoggleDelay = null, Expression<Func<bool>> sAPBringWindowToFrontdetectParentWindowElement = null)
         {
-            var __workflow_sAPBringWindowToFrontsearchSAPElementId = sAPBringWindowToFrontsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPBringWindowToFrontsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPBringWindowToFrontsearchSAPElementId, nameof(sAPBringWindowToFrontsearchSAPElementId), required: true);
-            var __workflow_sAPBringWindowToFrontworkflow = sAPBringWindowToFrontworkflow == null ? null : WorkflowExpression.Compile(sAPBringWindowToFrontworkflow);
-            WorkflowExpression.Validate(__workflow_sAPBringWindowToFrontworkflow, nameof(sAPBringWindowToFrontworkflow), required: true);
-            var __workflow_sAPBringWindowToFronttoggleWindow = sAPBringWindowToFronttoggleWindow == null ? null : WorkflowExpression.Compile(sAPBringWindowToFronttoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPBringWindowToFronttoggleWindow, nameof(sAPBringWindowToFronttoggleWindow), required: false);
-            var __workflow_sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent = sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent, nameof(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPBringWindowToFronttoggleDelay = sAPBringWindowToFronttoggleDelay == null ? null : WorkflowExpression.Compile(sAPBringWindowToFronttoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPBringWindowToFronttoggleDelay, nameof(sAPBringWindowToFronttoggleDelay), required: false);
-            var __workflow_sAPBringWindowToFrontdetectParentWindowElement = sAPBringWindowToFrontdetectParentWindowElement == null ? null : WorkflowExpression.Compile(sAPBringWindowToFrontdetectParentWindowElement);
-            WorkflowExpression.Validate(__workflow_sAPBringWindowToFrontdetectParentWindowElement, nameof(sAPBringWindowToFrontdetectParentWindowElement), required: false);
+            var __workflow_sAPBringWindowToFrontsearchSAPElementId = WorkflowExpression.Compile(sAPBringWindowToFrontsearchSAPElementId, nameof(sAPBringWindowToFrontsearchSAPElementId), required: true);
+            var __workflow_sAPBringWindowToFrontworkflow = WorkflowExpression.Compile(sAPBringWindowToFrontworkflow, nameof(sAPBringWindowToFrontworkflow), required: true);
+            var __workflow_sAPBringWindowToFronttoggleWindow = WorkflowExpression.Compile(sAPBringWindowToFronttoggleWindow, nameof(sAPBringWindowToFronttoggleWindow), required: false);
+            var __workflow_sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent, nameof(sAPBringWindowToFronttoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPBringWindowToFronttoggleDelay = WorkflowExpression.Compile(sAPBringWindowToFronttoggleDelay, nameof(sAPBringWindowToFronttoggleDelay), required: false);
+            var __workflow_sAPBringWindowToFrontdetectParentWindowElement = WorkflowExpression.Compile(sAPBringWindowToFrontdetectParentWindowElement, nameof(sAPBringWindowToFrontdetectParentWindowElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPBringWindowToFront";
@@ -1544,26 +1445,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalLeftMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalLeftMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalLeftMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalLeftMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalLeftMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo = null)
         {
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId = sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementworkflow = sAPGlobalLeftMouseClickOnSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementworkflow, nameof(sAPGlobalLeftMouseClickOnSAPElementworkflow), required: true);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost = sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront = sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleWindow = sAPGlobalLeftMouseClickOnSAPElementtoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow), required: false);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleDelay = sAPGlobalLeftMouseClickOnSAPElementtoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay), required: false);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementclickOffsetX = sAPGlobalLeftMouseClickOnSAPElementclickOffsetX == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX), required: false);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementclickOffsetY = sAPGlobalLeftMouseClickOnSAPElementclickOffsetY == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY), required: false);
-            var __workflow_sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo = sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo == null ? null : WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalLeftMouseClickOnSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementworkflow = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementworkflow, nameof(sAPGlobalLeftMouseClickOnSAPElementworkflow), required: true);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalLeftMouseClickOnSAPElementsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalLeftMouseClickOnSAPElementbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleWindow = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleWindow), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementtoggleDelay = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalLeftMouseClickOnSAPElementtoggleDelay), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementclickOffsetX = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalLeftMouseClickOnSAPElementclickOffsetX), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementclickOffsetY = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalLeftMouseClickOnSAPElementclickOffsetY), required: false);
+            var __workflow_sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo = WorkflowExpression.Compile(sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalLeftMouseClickOnSAPElementoffsetRelativeTo), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalLeftMouseClickOnSAPElement";
@@ -1705,26 +1596,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalRightMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalRightMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalRightMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalRightMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalRightMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalRightMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo = null)
         {
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId = sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementworkflow = sAPGlobalRightMouseClickOnSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementworkflow, nameof(sAPGlobalRightMouseClickOnSAPElementworkflow), required: true);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost = sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront = sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementtoggleWindow = sAPGlobalRightMouseClickOnSAPElementtoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementtoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleWindow), required: false);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementtoggleDelay = sAPGlobalRightMouseClickOnSAPElementtoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementtoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleDelay), required: false);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementclickOffsetX = sAPGlobalRightMouseClickOnSAPElementclickOffsetX == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementclickOffsetX);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalRightMouseClickOnSAPElementclickOffsetX), required: false);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementclickOffsetY = sAPGlobalRightMouseClickOnSAPElementclickOffsetY == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementclickOffsetY);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalRightMouseClickOnSAPElementclickOffsetY), required: false);
-            var __workflow_sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo = sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo == null ? null : WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalRightMouseClickOnSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementworkflow = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementworkflow, nameof(sAPGlobalRightMouseClickOnSAPElementworkflow), required: true);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalRightMouseClickOnSAPElementsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalRightMouseClickOnSAPElementbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementtoggleWindow = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleWindow), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementtoggleDelay = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalRightMouseClickOnSAPElementtoggleDelay), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementclickOffsetX = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalRightMouseClickOnSAPElementclickOffsetX), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementclickOffsetY = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalRightMouseClickOnSAPElementclickOffsetY), required: false);
+            var __workflow_sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo = WorkflowExpression.Compile(sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalRightMouseClickOnSAPElementoffsetRelativeTo), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalRightMouseClickOnSAPElement";
@@ -1866,26 +1747,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalMiddleMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalMiddleMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo = null)
         {
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId = sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementworkflow = sAPGlobalMiddleMouseClickOnSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementworkflow, nameof(sAPGlobalMiddleMouseClickOnSAPElementworkflow), required: true);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost = sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront = sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow = sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow), required: false);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay = sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay), required: false);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX = sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX), required: false);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY = sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY), required: false);
-            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo = sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo == null ? null : WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo);
-            WorkflowExpression.Validate(__workflow_sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalMiddleMouseClickOnSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementworkflow = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementworkflow, nameof(sAPGlobalMiddleMouseClickOnSAPElementworkflow), required: true);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalMiddleMouseClickOnSAPElementsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalMiddleMouseClickOnSAPElementbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleWindow), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalMiddleMouseClickOnSAPElementtoggleDelay), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetX), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalMiddleMouseClickOnSAPElementclickOffsetY), required: false);
+            var __workflow_sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo = WorkflowExpression.Compile(sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalMiddleMouseClickOnSAPElementoffsetRelativeTo), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalMiddleMouseClickOnSAPElement";
@@ -2027,28 +1898,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalDoubleLeftMouseClickOnSAPElement(Expression<Func<string>> sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY = null, Expression<Func<sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeToInput>> sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo = null, Expression<Func<int>> sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds = null)
         {
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId = sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow = sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow), required: true);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost = sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront = sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow = sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay = sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX = sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY = sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo = sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo), required: false);
-            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds = sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementworkflow), required: true);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleWindow), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementtoggleDelay), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetX), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementclickOffsetY), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementoffsetRelativeTo), required: false);
+            var __workflow_sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds = WorkflowExpression.Compile(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds, nameof(sAPGlobalDoubleLeftMouseClickOnSAPElementdoubleClickDelayInMilliseconds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftMouseClickOnSAPElement";
@@ -2206,36 +2066,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalInputTextIntoSAPElement(Expression<Func<string>> sAPGlobalInputTextIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalInputTextIntoSAPElementworkflow, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalInputTextIntoSAPElementtoggleDelay = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<string>> sAPGlobalInputTextIntoSAPElementtextToInput = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementsendKeyEvents = null, Expression<Func<int>> sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds = null, Expression<Func<int>> sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> sAPGlobalInputTextIntoSAPElementdontInterpretSymbols = null)
         {
-            var __workflow_sAPGlobalInputTextIntoSAPElementsearchSAPElementId = sAPGlobalInputTextIntoSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementsearchSAPElementId, nameof(sAPGlobalInputTextIntoSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalInputTextIntoSAPElementworkflow = sAPGlobalInputTextIntoSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementworkflow, nameof(sAPGlobalInputTextIntoSAPElementworkflow), required: true);
-            var __workflow_sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost = sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost, nameof(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementbringElementWindowToFront = sAPGlobalInputTextIntoSAPElementbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementbringElementWindowToFront, nameof(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementtoggleWindow = sAPGlobalInputTextIntoSAPElementtoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementtoggleWindow, nameof(sAPGlobalInputTextIntoSAPElementtoggleWindow), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementtoggleDelay = sAPGlobalInputTextIntoSAPElementtoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementtoggleDelay, nameof(sAPGlobalInputTextIntoSAPElementtoggleDelay), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement = sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement, nameof(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete, nameof(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete = sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete, nameof(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementtextToInput = sAPGlobalInputTextIntoSAPElementtextToInput == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtextToInput);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementtextToInput, nameof(sAPGlobalInputTextIntoSAPElementtextToInput), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementsendKeyEvents = sAPGlobalInputTextIntoSAPElementsendKeyEvents == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementsendKeyEvents);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementsendKeyEvents, nameof(sAPGlobalInputTextIntoSAPElementsendKeyEvents), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds = sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds, nameof(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds = sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds, nameof(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds), required: false);
-            var __workflow_sAPGlobalInputTextIntoSAPElementdontInterpretSymbols = sAPGlobalInputTextIntoSAPElementdontInterpretSymbols == null ? null : WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputTextIntoSAPElementdontInterpretSymbols, nameof(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementsearchSAPElementId, nameof(sAPGlobalInputTextIntoSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalInputTextIntoSAPElementworkflow = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementworkflow, nameof(sAPGlobalInputTextIntoSAPElementworkflow), required: true);
+            var __workflow_sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost, nameof(sAPGlobalInputTextIntoSAPElementsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront, nameof(sAPGlobalInputTextIntoSAPElementbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementtoggleWindow = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtoggleWindow, nameof(sAPGlobalInputTextIntoSAPElementtoggleWindow), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalInputTextIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementtoggleDelay = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtoggleDelay, nameof(sAPGlobalInputTextIntoSAPElementtoggleDelay), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement, nameof(sAPGlobalInputTextIntoSAPElementglobalMouseClickOnElement), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete, nameof(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingDoubleClickDelete), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete, nameof(sAPGlobalInputTextIntoSAPElementreplaceExistingValueUsingCTRLADelete), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementtextToInput = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementtextToInput, nameof(sAPGlobalInputTextIntoSAPElementtextToInput), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementsendKeyEvents = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementsendKeyEvents, nameof(sAPGlobalInputTextIntoSAPElementsendKeyEvents), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds, nameof(sAPGlobalInputTextIntoSAPElementkeyIntervalInMilliseconds), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds, nameof(sAPGlobalInputTextIntoSAPElementdoubleClickIntervalInMilliseconds), required: false);
+            var __workflow_sAPGlobalInputTextIntoSAPElementdontInterpretSymbols = WorkflowExpression.Compile(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols, nameof(sAPGlobalInputTextIntoSAPElementdontInterpretSymbols), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalInputTextIntoSAPElement";
@@ -2457,36 +2302,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalInputPasswordIntoSAPElement(Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId, Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementpasswordToInput, Expression<Func<string>> sAPGlobalInputPasswordIntoSAPElementworkflow, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementtoggleWindow = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalInputPasswordIntoSAPElementtoggleDelay = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementsendKeyEvents = null, Expression<Func<int>> sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds = null, Expression<Func<int>> sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds = null, Expression<Func<bool>> sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols = null)
         {
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId = sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId, nameof(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementpasswordToInput = sAPGlobalInputPasswordIntoSAPElementpasswordToInput == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementpasswordToInput);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementpasswordToInput, nameof(sAPGlobalInputPasswordIntoSAPElementpasswordToInput), required: true);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementworkflow = sAPGlobalInputPasswordIntoSAPElementworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementworkflow, nameof(sAPGlobalInputPasswordIntoSAPElementworkflow), required: true);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost = sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost, nameof(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront = sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront, nameof(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementtoggleWindow = sAPGlobalInputPasswordIntoSAPElementtoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementtoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementtoggleWindow, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleWindow), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementtoggleDelay = sAPGlobalInputPasswordIntoSAPElementtoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementtoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementtoggleDelay, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleDelay), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement = sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement, nameof(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete, nameof(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete = sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete, nameof(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementsendKeyEvents = sAPGlobalInputPasswordIntoSAPElementsendKeyEvents == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementsendKeyEvents, nameof(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds = sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds, nameof(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds = sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds, nameof(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds), required: false);
-            var __workflow_sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols = sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols == null ? null : WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols);
-            WorkflowExpression.Validate(__workflow_sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols, nameof(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId, nameof(sAPGlobalInputPasswordIntoSAPElementsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementpasswordToInput = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementpasswordToInput, nameof(sAPGlobalInputPasswordIntoSAPElementpasswordToInput), required: true);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementworkflow = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementworkflow, nameof(sAPGlobalInputPasswordIntoSAPElementworkflow), required: true);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost, nameof(sAPGlobalInputPasswordIntoSAPElementsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront, nameof(sAPGlobalInputPasswordIntoSAPElementbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementtoggleWindow = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementtoggleWindow, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleWindow), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementtoggleDelay = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementtoggleDelay, nameof(sAPGlobalInputPasswordIntoSAPElementtoggleDelay), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement, nameof(sAPGlobalInputPasswordIntoSAPElementglobalMouseClickOnElement), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete, nameof(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingDoubleClickDelete), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete, nameof(sAPGlobalInputPasswordIntoSAPElementreplaceExistingValueUsingCTRLADelete), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementsendKeyEvents = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents, nameof(sAPGlobalInputPasswordIntoSAPElementsendKeyEvents), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds, nameof(sAPGlobalInputPasswordIntoSAPElementkeyIntervalInMilliseconds), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds, nameof(sAPGlobalInputPasswordIntoSAPElementdoubleClickIntervalInMilliseconds), required: false);
+            var __workflow_sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols = WorkflowExpression.Compile(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols, nameof(sAPGlobalInputPasswordIntoSAPElementdontInterpretSymbols), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalInputPasswordIntoSAPElement";
@@ -2704,12 +2534,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetListSelectionByName(Expression<Func<string>> sAPSetListSelectionByNamesearchSAPElementId, Expression<Func<string>> sAPSetListSelectionByNamelistItemName, Expression<Func<string>> sAPSetListSelectionByNameworkflow)
         {
-            var __workflow_sAPSetListSelectionByNamesearchSAPElementId = sAPSetListSelectionByNamesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetListSelectionByNamesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetListSelectionByNamesearchSAPElementId, nameof(sAPSetListSelectionByNamesearchSAPElementId), required: true);
-            var __workflow_sAPSetListSelectionByNamelistItemName = sAPSetListSelectionByNamelistItemName == null ? null : WorkflowExpression.Compile(sAPSetListSelectionByNamelistItemName);
-            WorkflowExpression.Validate(__workflow_sAPSetListSelectionByNamelistItemName, nameof(sAPSetListSelectionByNamelistItemName), required: true);
-            var __workflow_sAPSetListSelectionByNameworkflow = sAPSetListSelectionByNameworkflow == null ? null : WorkflowExpression.Compile(sAPSetListSelectionByNameworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetListSelectionByNameworkflow, nameof(sAPSetListSelectionByNameworkflow), required: true);
+            var __workflow_sAPSetListSelectionByNamesearchSAPElementId = WorkflowExpression.Compile(sAPSetListSelectionByNamesearchSAPElementId, nameof(sAPSetListSelectionByNamesearchSAPElementId), required: true);
+            var __workflow_sAPSetListSelectionByNamelistItemName = WorkflowExpression.Compile(sAPSetListSelectionByNamelistItemName, nameof(sAPSetListSelectionByNamelistItemName), required: true);
+            var __workflow_sAPSetListSelectionByNameworkflow = WorkflowExpression.Compile(sAPSetListSelectionByNameworkflow, nameof(sAPSetListSelectionByNameworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetListSelectionByName";
@@ -2735,12 +2562,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetListSelectionByKey(Expression<Func<string>> sAPSetListSelectionByKeysearchSAPElementId, Expression<Func<string>> sAPSetListSelectionByKeylistItemKey, Expression<Func<string>> sAPSetListSelectionByKeyworkflow)
         {
-            var __workflow_sAPSetListSelectionByKeysearchSAPElementId = sAPSetListSelectionByKeysearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetListSelectionByKeysearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetListSelectionByKeysearchSAPElementId, nameof(sAPSetListSelectionByKeysearchSAPElementId), required: true);
-            var __workflow_sAPSetListSelectionByKeylistItemKey = sAPSetListSelectionByKeylistItemKey == null ? null : WorkflowExpression.Compile(sAPSetListSelectionByKeylistItemKey);
-            WorkflowExpression.Validate(__workflow_sAPSetListSelectionByKeylistItemKey, nameof(sAPSetListSelectionByKeylistItemKey), required: true);
-            var __workflow_sAPSetListSelectionByKeyworkflow = sAPSetListSelectionByKeyworkflow == null ? null : WorkflowExpression.Compile(sAPSetListSelectionByKeyworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetListSelectionByKeyworkflow, nameof(sAPSetListSelectionByKeyworkflow), required: true);
+            var __workflow_sAPSetListSelectionByKeysearchSAPElementId = WorkflowExpression.Compile(sAPSetListSelectionByKeysearchSAPElementId, nameof(sAPSetListSelectionByKeysearchSAPElementId), required: true);
+            var __workflow_sAPSetListSelectionByKeylistItemKey = WorkflowExpression.Compile(sAPSetListSelectionByKeylistItemKey, nameof(sAPSetListSelectionByKeylistItemKey), required: true);
+            var __workflow_sAPSetListSelectionByKeyworkflow = WorkflowExpression.Compile(sAPSetListSelectionByKeyworkflow, nameof(sAPSetListSelectionByKeyworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetListSelectionByKey";
@@ -2766,10 +2590,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetListSelectionElementItemsResponse> SAPGetListSelectionElementItems(Expression<Func<string>> sAPGetListSelectionElementItemssearchSAPElementId, Expression<Func<string>> sAPGetListSelectionElementItemsworkflow)
         {
-            var __workflow_sAPGetListSelectionElementItemssearchSAPElementId = sAPGetListSelectionElementItemssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetListSelectionElementItemssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetListSelectionElementItemssearchSAPElementId, nameof(sAPGetListSelectionElementItemssearchSAPElementId), required: true);
-            var __workflow_sAPGetListSelectionElementItemsworkflow = sAPGetListSelectionElementItemsworkflow == null ? null : WorkflowExpression.Compile(sAPGetListSelectionElementItemsworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetListSelectionElementItemsworkflow, nameof(sAPGetListSelectionElementItemsworkflow), required: true);
+            var __workflow_sAPGetListSelectionElementItemssearchSAPElementId = WorkflowExpression.Compile(sAPGetListSelectionElementItemssearchSAPElementId, nameof(sAPGetListSelectionElementItemssearchSAPElementId), required: true);
+            var __workflow_sAPGetListSelectionElementItemsworkflow = WorkflowExpression.Compile(sAPGetListSelectionElementItemsworkflow, nameof(sAPGetListSelectionElementItemsworkflow), required: true);
             return new DeferredBodyAction<SAPGetListSelectionElementItemsResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetListSelectionElementItems";
@@ -2793,18 +2615,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetAllChildSAPElementPropertiesResponse> SAPGetAllChildSAPElementProperties(Expression<Func<string>> sAPGetAllChildSAPElementPropertiessearchSAPElementId, Expression<Func<string>> sAPGetAllChildSAPElementPropertiesworkflow, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesfirstItemToReturn = null, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesmaxItemsToReturn = null, Expression<Func<string>> sAPGetAllChildSAPElementPropertiessearchSAPElementType = null, Expression<Func<int>> sAPGetAllChildSAPElementPropertiesmaxTextLength = null)
         {
-            var __workflow_sAPGetAllChildSAPElementPropertiessearchSAPElementId = sAPGetAllChildSAPElementPropertiessearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiessearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetAllChildSAPElementPropertiessearchSAPElementId, nameof(sAPGetAllChildSAPElementPropertiessearchSAPElementId), required: true);
-            var __workflow_sAPGetAllChildSAPElementPropertiesworkflow = sAPGetAllChildSAPElementPropertiesworkflow == null ? null : WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetAllChildSAPElementPropertiesworkflow, nameof(sAPGetAllChildSAPElementPropertiesworkflow), required: true);
-            var __workflow_sAPGetAllChildSAPElementPropertiesfirstItemToReturn = sAPGetAllChildSAPElementPropertiesfirstItemToReturn == null ? null : WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesfirstItemToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetAllChildSAPElementPropertiesfirstItemToReturn, nameof(sAPGetAllChildSAPElementPropertiesfirstItemToReturn), required: false);
-            var __workflow_sAPGetAllChildSAPElementPropertiesmaxItemsToReturn = sAPGetAllChildSAPElementPropertiesmaxItemsToReturn == null ? null : WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetAllChildSAPElementPropertiesmaxItemsToReturn, nameof(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn), required: false);
-            var __workflow_sAPGetAllChildSAPElementPropertiessearchSAPElementType = sAPGetAllChildSAPElementPropertiessearchSAPElementType == null ? null : WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiessearchSAPElementType);
-            WorkflowExpression.Validate(__workflow_sAPGetAllChildSAPElementPropertiessearchSAPElementType, nameof(sAPGetAllChildSAPElementPropertiessearchSAPElementType), required: false);
-            var __workflow_sAPGetAllChildSAPElementPropertiesmaxTextLength = sAPGetAllChildSAPElementPropertiesmaxTextLength == null ? null : WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesmaxTextLength);
-            WorkflowExpression.Validate(__workflow_sAPGetAllChildSAPElementPropertiesmaxTextLength, nameof(sAPGetAllChildSAPElementPropertiesmaxTextLength), required: false);
+            var __workflow_sAPGetAllChildSAPElementPropertiessearchSAPElementId = WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiessearchSAPElementId, nameof(sAPGetAllChildSAPElementPropertiessearchSAPElementId), required: true);
+            var __workflow_sAPGetAllChildSAPElementPropertiesworkflow = WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesworkflow, nameof(sAPGetAllChildSAPElementPropertiesworkflow), required: true);
+            var __workflow_sAPGetAllChildSAPElementPropertiesfirstItemToReturn = WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesfirstItemToReturn, nameof(sAPGetAllChildSAPElementPropertiesfirstItemToReturn), required: false);
+            var __workflow_sAPGetAllChildSAPElementPropertiesmaxItemsToReturn = WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn, nameof(sAPGetAllChildSAPElementPropertiesmaxItemsToReturn), required: false);
+            var __workflow_sAPGetAllChildSAPElementPropertiessearchSAPElementType = WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiessearchSAPElementType, nameof(sAPGetAllChildSAPElementPropertiessearchSAPElementType), required: false);
+            var __workflow_sAPGetAllChildSAPElementPropertiesmaxTextLength = WorkflowExpression.Compile(sAPGetAllChildSAPElementPropertiesmaxTextLength, nameof(sAPGetAllChildSAPElementPropertiesmaxTextLength), required: false);
             return new DeferredBodyAction<SAPGetAllChildSAPElementPropertiesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetAllChildSAPElementProperties";
@@ -2882,16 +2698,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse> SAPGetSAPSessionTopLevelSAPElementProperties(Expression<Func<string>> sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn = null, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn = null, Expression<Func<string>> sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType = null, Expression<Func<int>> sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength = null)
         {
-            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow = sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow), required: true);
-            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn = sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn == null ? null : WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn), required: false);
-            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn = sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn == null ? null : WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn), required: false);
-            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType = sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType == null ? null : WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType), required: false);
-            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength = sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength == null ? null : WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength), required: false);
+            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow = WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesworkflow), required: true);
+            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn = WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesfirstItemToReturn), required: false);
+            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn = WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxItemsToReturn), required: false);
+            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType = WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiessearchSAPElementType), required: false);
+            var __workflow_sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength = WorkflowExpression.Compile(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength, nameof(sAPGetSAPSessionTopLevelSAPElementPropertiesmaxTextLength), required: false);
             return new DeferredBodyAction<SAPGetSAPSessionTopLevelSAPElementPropertiesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPSessionTopLevelSAPElementProperties";
@@ -2967,10 +2778,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPElementParentIdResponse> SAPGetSAPElementParentId(Expression<Func<string>> sAPGetSAPElementParentIdsearchSAPElementId, Expression<Func<string>> sAPGetSAPElementParentIdworkflow)
         {
-            var __workflow_sAPGetSAPElementParentIdsearchSAPElementId = sAPGetSAPElementParentIdsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPElementParentIdsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPElementParentIdsearchSAPElementId, nameof(sAPGetSAPElementParentIdsearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPElementParentIdworkflow = sAPGetSAPElementParentIdworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPElementParentIdworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPElementParentIdworkflow, nameof(sAPGetSAPElementParentIdworkflow), required: true);
+            var __workflow_sAPGetSAPElementParentIdsearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPElementParentIdsearchSAPElementId, nameof(sAPGetSAPElementParentIdsearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPElementParentIdworkflow = WorkflowExpression.Compile(sAPGetSAPElementParentIdworkflow, nameof(sAPGetSAPElementParentIdworkflow), required: true);
             return new DeferredBodyAction<SAPGetSAPElementParentIdResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPElementParentId";
@@ -2994,12 +2803,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetElementPropertiesAsListResponse> SAPGetElementPropertiesAsList(Expression<Func<string>> sAPGetElementPropertiesAsListsearchSAPElementId, Expression<Func<string>> sAPGetElementPropertiesAsListworkflow, Expression<Func<int>> sAPGetElementPropertiesAsListmaxTextLength = null)
         {
-            var __workflow_sAPGetElementPropertiesAsListsearchSAPElementId = sAPGetElementPropertiesAsListsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetElementPropertiesAsListsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetElementPropertiesAsListsearchSAPElementId, nameof(sAPGetElementPropertiesAsListsearchSAPElementId), required: true);
-            var __workflow_sAPGetElementPropertiesAsListworkflow = sAPGetElementPropertiesAsListworkflow == null ? null : WorkflowExpression.Compile(sAPGetElementPropertiesAsListworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetElementPropertiesAsListworkflow, nameof(sAPGetElementPropertiesAsListworkflow), required: true);
-            var __workflow_sAPGetElementPropertiesAsListmaxTextLength = sAPGetElementPropertiesAsListmaxTextLength == null ? null : WorkflowExpression.Compile(sAPGetElementPropertiesAsListmaxTextLength);
-            WorkflowExpression.Validate(__workflow_sAPGetElementPropertiesAsListmaxTextLength, nameof(sAPGetElementPropertiesAsListmaxTextLength), required: false);
+            var __workflow_sAPGetElementPropertiesAsListsearchSAPElementId = WorkflowExpression.Compile(sAPGetElementPropertiesAsListsearchSAPElementId, nameof(sAPGetElementPropertiesAsListsearchSAPElementId), required: true);
+            var __workflow_sAPGetElementPropertiesAsListworkflow = WorkflowExpression.Compile(sAPGetElementPropertiesAsListworkflow, nameof(sAPGetElementPropertiesAsListworkflow), required: true);
+            var __workflow_sAPGetElementPropertiesAsListmaxTextLength = WorkflowExpression.Compile(sAPGetElementPropertiesAsListmaxTextLength, nameof(sAPGetElementPropertiesAsListmaxTextLength), required: false);
             return new DeferredBodyAction<SAPGetElementPropertiesAsListResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetElementPropertiesAsList";
@@ -3039,12 +2845,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPElementAtScreenCoordinateResponse> SAPGetSAPElementAtScreenCoordinate(Expression<Func<int>> sAPGetSAPElementAtScreenCoordinatescreenX, Expression<Func<int>> sAPGetSAPElementAtScreenCoordinatescreenY, Expression<Func<string>> sAPGetSAPElementAtScreenCoordinateworkflow)
         {
-            var __workflow_sAPGetSAPElementAtScreenCoordinatescreenX = sAPGetSAPElementAtScreenCoordinatescreenX == null ? null : WorkflowExpression.Compile(sAPGetSAPElementAtScreenCoordinatescreenX);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPElementAtScreenCoordinatescreenX, nameof(sAPGetSAPElementAtScreenCoordinatescreenX), required: true);
-            var __workflow_sAPGetSAPElementAtScreenCoordinatescreenY = sAPGetSAPElementAtScreenCoordinatescreenY == null ? null : WorkflowExpression.Compile(sAPGetSAPElementAtScreenCoordinatescreenY);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPElementAtScreenCoordinatescreenY, nameof(sAPGetSAPElementAtScreenCoordinatescreenY), required: true);
-            var __workflow_sAPGetSAPElementAtScreenCoordinateworkflow = sAPGetSAPElementAtScreenCoordinateworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPElementAtScreenCoordinateworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPElementAtScreenCoordinateworkflow, nameof(sAPGetSAPElementAtScreenCoordinateworkflow), required: true);
+            var __workflow_sAPGetSAPElementAtScreenCoordinatescreenX = WorkflowExpression.Compile(sAPGetSAPElementAtScreenCoordinatescreenX, nameof(sAPGetSAPElementAtScreenCoordinatescreenX), required: true);
+            var __workflow_sAPGetSAPElementAtScreenCoordinatescreenY = WorkflowExpression.Compile(sAPGetSAPElementAtScreenCoordinatescreenY, nameof(sAPGetSAPElementAtScreenCoordinatescreenY), required: true);
+            var __workflow_sAPGetSAPElementAtScreenCoordinateworkflow = WorkflowExpression.Compile(sAPGetSAPElementAtScreenCoordinateworkflow, nameof(sAPGetSAPElementAtScreenCoordinateworkflow), required: true);
             return new DeferredBodyAction<SAPGetSAPElementAtScreenCoordinateResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPElementAtScreenCoordinate";
@@ -3070,16 +2873,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPOpenConnectionResponse> SAPOpenConnection(Expression<Func<string>> sAPOpenConnectionworkflow, Expression<Func<string>> sAPOpenConnectionsAPConnectionDescription = null, Expression<Func<string>> sAPOpenConnectionsAPConnectionAddress = null, Expression<Func<bool>> sAPOpenConnectionconnectSynchronous = null, Expression<Func<bool>> sAPOpenConnectionconnectToSession = null)
         {
-            var __workflow_sAPOpenConnectionworkflow = sAPOpenConnectionworkflow == null ? null : WorkflowExpression.Compile(sAPOpenConnectionworkflow);
-            WorkflowExpression.Validate(__workflow_sAPOpenConnectionworkflow, nameof(sAPOpenConnectionworkflow), required: true);
-            var __workflow_sAPOpenConnectionsAPConnectionDescription = sAPOpenConnectionsAPConnectionDescription == null ? null : WorkflowExpression.Compile(sAPOpenConnectionsAPConnectionDescription);
-            WorkflowExpression.Validate(__workflow_sAPOpenConnectionsAPConnectionDescription, nameof(sAPOpenConnectionsAPConnectionDescription), required: false);
-            var __workflow_sAPOpenConnectionsAPConnectionAddress = sAPOpenConnectionsAPConnectionAddress == null ? null : WorkflowExpression.Compile(sAPOpenConnectionsAPConnectionAddress);
-            WorkflowExpression.Validate(__workflow_sAPOpenConnectionsAPConnectionAddress, nameof(sAPOpenConnectionsAPConnectionAddress), required: false);
-            var __workflow_sAPOpenConnectionconnectSynchronous = sAPOpenConnectionconnectSynchronous == null ? null : WorkflowExpression.Compile(sAPOpenConnectionconnectSynchronous);
-            WorkflowExpression.Validate(__workflow_sAPOpenConnectionconnectSynchronous, nameof(sAPOpenConnectionconnectSynchronous), required: false);
-            var __workflow_sAPOpenConnectionconnectToSession = sAPOpenConnectionconnectToSession == null ? null : WorkflowExpression.Compile(sAPOpenConnectionconnectToSession);
-            WorkflowExpression.Validate(__workflow_sAPOpenConnectionconnectToSession, nameof(sAPOpenConnectionconnectToSession), required: false);
+            var __workflow_sAPOpenConnectionworkflow = WorkflowExpression.Compile(sAPOpenConnectionworkflow, nameof(sAPOpenConnectionworkflow), required: true);
+            var __workflow_sAPOpenConnectionsAPConnectionDescription = WorkflowExpression.Compile(sAPOpenConnectionsAPConnectionDescription, nameof(sAPOpenConnectionsAPConnectionDescription), required: false);
+            var __workflow_sAPOpenConnectionsAPConnectionAddress = WorkflowExpression.Compile(sAPOpenConnectionsAPConnectionAddress, nameof(sAPOpenConnectionsAPConnectionAddress), required: false);
+            var __workflow_sAPOpenConnectionconnectSynchronous = WorkflowExpression.Compile(sAPOpenConnectionconnectSynchronous, nameof(sAPOpenConnectionconnectSynchronous), required: false);
+            var __workflow_sAPOpenConnectionconnectToSession = WorkflowExpression.Compile(sAPOpenConnectionconnectToSession, nameof(sAPOpenConnectionconnectToSession), required: false);
             return new DeferredBodyAction<SAPOpenConnectionResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPOpenConnection";
@@ -3145,10 +2943,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPTablePropertiesResponse> SAPGetSAPTableProperties(Expression<Func<string>> sAPGetSAPTablePropertiessearchSAPElementId, Expression<Func<string>> sAPGetSAPTablePropertiesworkflow)
         {
-            var __workflow_sAPGetSAPTablePropertiessearchSAPElementId = sAPGetSAPTablePropertiessearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPTablePropertiessearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTablePropertiessearchSAPElementId, nameof(sAPGetSAPTablePropertiessearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPTablePropertiesworkflow = sAPGetSAPTablePropertiesworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPTablePropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTablePropertiesworkflow, nameof(sAPGetSAPTablePropertiesworkflow), required: true);
+            var __workflow_sAPGetSAPTablePropertiessearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPTablePropertiessearchSAPElementId, nameof(sAPGetSAPTablePropertiessearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPTablePropertiesworkflow = WorkflowExpression.Compile(sAPGetSAPTablePropertiesworkflow, nameof(sAPGetSAPTablePropertiesworkflow), required: true);
             return new DeferredBodyAction<SAPGetSAPTablePropertiesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableProperties";
@@ -3172,16 +2968,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse> SAPGetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow, Expression<Func<int>> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, Expression<Func<string>> sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue = null)
         {
-            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId = sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow = sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow), required: true);
-            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex), required: false);
-            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex), required: false);
-            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue = sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue), required: false);
+            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexworkflow), required: true);
+            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex), required: false);
+            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex), required: false);
+            var __workflow_sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue, nameof(sAPGetSAPTableVisibleCellTextContentsAtIndexcheckedElementValue), required: false);
             return new DeferredBodyAction<SAPGetSAPTableVisibleCellTextContentsAtIndexResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellTextContentsAtIndex";
@@ -3253,14 +3044,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse> SAPGetSAPTableVisibleCellPropertiesAtIndex(Expression<Func<string>> sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId, Expression<Func<string>> sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow, Expression<Func<int>> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex = null)
         {
-            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId = sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow = sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow), required: true);
-            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex = sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex), required: false);
-            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex = sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex == null ? null : WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex), required: false);
+            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexworkflow), required: true);
+            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleRowIndex), required: false);
+            var __workflow_sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex = WorkflowExpression.Compile(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex, nameof(sAPGetSAPTableVisibleCellPropertiesAtIndexvisibleColumnIndex), required: false);
             return new DeferredBodyAction<SAPGetSAPTableVisibleCellPropertiesAtIndexResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPTableVisibleCellPropertiesAtIndex";
@@ -3316,20 +3103,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPTableVisibleCellTextContentsAtIndex(Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = null, Expression<Func<string>> sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput = null, Expression<Func<bool>> sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue = null, Expression<Func<int>> sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition = null)
         {
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId = sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow = sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow), required: true);
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex == null ? null : WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex), required: false);
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex == null ? null : WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex), required: false);
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput = sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput == null ? null : WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput), required: false);
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue = sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue == null ? null : WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue), required: false);
-            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition = sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition == null ? null : WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition), required: false);
+            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexworkflow), required: true);
+            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleRowIndex), required: false);
+            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexvisibleColumnIndex), required: false);
+            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndextextToInput), required: false);
+            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexreplaceExistingValue), required: false);
+            var __workflow_sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition = WorkflowExpression.Compile(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition, nameof(sAPSetSAPTableVisibleCellTextContentsAtIndexinsertPosition), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPTableVisibleCellTextContentsAtIndex";
@@ -3423,16 +3203,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckSAPTableVisibleCellCheckboxAtIndex(Expression<Func<string>> sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId, Expression<Func<string>> sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow, Expression<Func<int>> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex = null, Expression<Func<bool>> sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement = null)
         {
-            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId = sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow = sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow), required: true);
-            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex = sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex == null ? null : WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex), required: false);
-            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex = sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex == null ? null : WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex), required: false);
-            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement = sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement == null ? null : WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement), required: false);
+            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow = WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexworkflow), required: true);
+            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex = WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleRowIndex), required: false);
+            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex = WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexvisibleColumnIndex), required: false);
+            var __workflow_sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement = WorkflowExpression.Compile(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement, nameof(sAPCheckSAPTableVisibleCellCheckboxAtIndexcheckCellElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPTableVisibleCellCheckboxAtIndex";
@@ -3504,14 +3279,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPTableVisibleCellAtIndex(Expression<Func<string>> sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId, Expression<Func<string>> sAPPressSAPTableVisibleCellAtIndexworkflow, Expression<Func<int>> sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex = null, Expression<Func<int>> sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex = null)
         {
-            var __workflow_sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId = sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId, nameof(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPPressSAPTableVisibleCellAtIndexworkflow = sAPPressSAPTableVisibleCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPTableVisibleCellAtIndexworkflow, nameof(sAPPressSAPTableVisibleCellAtIndexworkflow), required: true);
-            var __workflow_sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex = sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex == null ? null : WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex, nameof(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex), required: false);
-            var __workflow_sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex = sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex == null ? null : WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex, nameof(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex), required: false);
+            var __workflow_sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId, nameof(sAPPressSAPTableVisibleCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPPressSAPTableVisibleCellAtIndexworkflow = WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexworkflow, nameof(sAPPressSAPTableVisibleCellAtIndexworkflow), required: true);
+            var __workflow_sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex = WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex, nameof(sAPPressSAPTableVisibleCellAtIndexvisibleRowIndex), required: false);
+            var __workflow_sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex = WorkflowExpression.Compile(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex, nameof(sAPPressSAPTableVisibleCellAtIndexvisibleColumnIndex), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPTableVisibleCellAtIndex";
@@ -3567,18 +3338,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPScrollSAPTable(Expression<Func<string>> sAPScrollSAPTablesearchSAPElementId, Expression<Func<string>> sAPScrollSAPTableworkflow, Expression<Func<bool>> sAPScrollSAPTablemoveHorizontalScrollbar = null, Expression<Func<int>> sAPScrollSAPTablehorizontalScrollbarPosition = null, Expression<Func<bool>> sAPScrollSAPTablemoveVerticalScrollbar = null, Expression<Func<int>> sAPScrollSAPTableverticalScrollbarPosition = null)
         {
-            var __workflow_sAPScrollSAPTablesearchSAPElementId = sAPScrollSAPTablesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPScrollSAPTablesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPScrollSAPTablesearchSAPElementId, nameof(sAPScrollSAPTablesearchSAPElementId), required: true);
-            var __workflow_sAPScrollSAPTableworkflow = sAPScrollSAPTableworkflow == null ? null : WorkflowExpression.Compile(sAPScrollSAPTableworkflow);
-            WorkflowExpression.Validate(__workflow_sAPScrollSAPTableworkflow, nameof(sAPScrollSAPTableworkflow), required: true);
-            var __workflow_sAPScrollSAPTablemoveHorizontalScrollbar = sAPScrollSAPTablemoveHorizontalScrollbar == null ? null : WorkflowExpression.Compile(sAPScrollSAPTablemoveHorizontalScrollbar);
-            WorkflowExpression.Validate(__workflow_sAPScrollSAPTablemoveHorizontalScrollbar, nameof(sAPScrollSAPTablemoveHorizontalScrollbar), required: false);
-            var __workflow_sAPScrollSAPTablehorizontalScrollbarPosition = sAPScrollSAPTablehorizontalScrollbarPosition == null ? null : WorkflowExpression.Compile(sAPScrollSAPTablehorizontalScrollbarPosition);
-            WorkflowExpression.Validate(__workflow_sAPScrollSAPTablehorizontalScrollbarPosition, nameof(sAPScrollSAPTablehorizontalScrollbarPosition), required: false);
-            var __workflow_sAPScrollSAPTablemoveVerticalScrollbar = sAPScrollSAPTablemoveVerticalScrollbar == null ? null : WorkflowExpression.Compile(sAPScrollSAPTablemoveVerticalScrollbar);
-            WorkflowExpression.Validate(__workflow_sAPScrollSAPTablemoveVerticalScrollbar, nameof(sAPScrollSAPTablemoveVerticalScrollbar), required: false);
-            var __workflow_sAPScrollSAPTableverticalScrollbarPosition = sAPScrollSAPTableverticalScrollbarPosition == null ? null : WorkflowExpression.Compile(sAPScrollSAPTableverticalScrollbarPosition);
-            WorkflowExpression.Validate(__workflow_sAPScrollSAPTableverticalScrollbarPosition, nameof(sAPScrollSAPTableverticalScrollbarPosition), required: false);
+            var __workflow_sAPScrollSAPTablesearchSAPElementId = WorkflowExpression.Compile(sAPScrollSAPTablesearchSAPElementId, nameof(sAPScrollSAPTablesearchSAPElementId), required: true);
+            var __workflow_sAPScrollSAPTableworkflow = WorkflowExpression.Compile(sAPScrollSAPTableworkflow, nameof(sAPScrollSAPTableworkflow), required: true);
+            var __workflow_sAPScrollSAPTablemoveHorizontalScrollbar = WorkflowExpression.Compile(sAPScrollSAPTablemoveHorizontalScrollbar, nameof(sAPScrollSAPTablemoveHorizontalScrollbar), required: false);
+            var __workflow_sAPScrollSAPTablehorizontalScrollbarPosition = WorkflowExpression.Compile(sAPScrollSAPTablehorizontalScrollbarPosition, nameof(sAPScrollSAPTablehorizontalScrollbarPosition), required: false);
+            var __workflow_sAPScrollSAPTablemoveVerticalScrollbar = WorkflowExpression.Compile(sAPScrollSAPTablemoveVerticalScrollbar, nameof(sAPScrollSAPTablemoveVerticalScrollbar), required: false);
+            var __workflow_sAPScrollSAPTableverticalScrollbarPosition = WorkflowExpression.Compile(sAPScrollSAPTableverticalScrollbarPosition, nameof(sAPScrollSAPTableverticalScrollbarPosition), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPScrollSAPTable";
@@ -3646,26 +3411,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTableVisibleTextContentsResponse> SAPGetTableVisibleTextContents(Expression<Func<string>> sAPGetTableVisibleTextContentssearchSAPElementId, Expression<Func<string>> sAPGetTableVisibleTextContentsworkflow, Expression<Func<int>> sAPGetTableVisibleTextContentsfirstVisibleRowToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsmaxRowsToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn = null, Expression<Func<int>> sAPGetTableVisibleTextContentsmaxColumnsToReturn = null, Expression<Func<bool>> sAPGetTableVisibleTextContentsuseColumnHeadersFromTable = null, Expression<Func<bool>> sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex = null, Expression<Func<string>> sAPGetTableVisibleTextContentscheckedElementValue = null)
         {
-            var __workflow_sAPGetTableVisibleTextContentssearchSAPElementId = sAPGetTableVisibleTextContentssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentssearchSAPElementId, nameof(sAPGetTableVisibleTextContentssearchSAPElementId), required: true);
-            var __workflow_sAPGetTableVisibleTextContentsworkflow = sAPGetTableVisibleTextContentsworkflow == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsworkflow, nameof(sAPGetTableVisibleTextContentsworkflow), required: true);
-            var __workflow_sAPGetTableVisibleTextContentsfirstVisibleRowToReturn = sAPGetTableVisibleTextContentsfirstVisibleRowToReturn == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsfirstVisibleRowToReturn, nameof(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn), required: false);
-            var __workflow_sAPGetTableVisibleTextContentsmaxRowsToReturn = sAPGetTableVisibleTextContentsmaxRowsToReturn == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsmaxRowsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsmaxRowsToReturn, nameof(sAPGetTableVisibleTextContentsmaxRowsToReturn), required: false);
-            var __workflow_sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn = sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn, nameof(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn), required: false);
-            var __workflow_sAPGetTableVisibleTextContentsmaxColumnsToReturn = sAPGetTableVisibleTextContentsmaxColumnsToReturn == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsmaxColumnsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsmaxColumnsToReturn, nameof(sAPGetTableVisibleTextContentsmaxColumnsToReturn), required: false);
-            var __workflow_sAPGetTableVisibleTextContentsuseColumnHeadersFromTable = sAPGetTableVisibleTextContentsuseColumnHeadersFromTable == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsuseColumnHeadersFromTable, nameof(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable), required: false);
-            var __workflow_sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection = sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection), required: false);
-            var __workflow_sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex = sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex), required: false);
-            var __workflow_sAPGetTableVisibleTextContentscheckedElementValue = sAPGetTableVisibleTextContentscheckedElementValue == null ? null : WorkflowExpression.Compile(sAPGetTableVisibleTextContentscheckedElementValue);
-            WorkflowExpression.Validate(__workflow_sAPGetTableVisibleTextContentscheckedElementValue, nameof(sAPGetTableVisibleTextContentscheckedElementValue), required: false);
+            var __workflow_sAPGetTableVisibleTextContentssearchSAPElementId = WorkflowExpression.Compile(sAPGetTableVisibleTextContentssearchSAPElementId, nameof(sAPGetTableVisibleTextContentssearchSAPElementId), required: true);
+            var __workflow_sAPGetTableVisibleTextContentsworkflow = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsworkflow, nameof(sAPGetTableVisibleTextContentsworkflow), required: true);
+            var __workflow_sAPGetTableVisibleTextContentsfirstVisibleRowToReturn = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn, nameof(sAPGetTableVisibleTextContentsfirstVisibleRowToReturn), required: false);
+            var __workflow_sAPGetTableVisibleTextContentsmaxRowsToReturn = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsmaxRowsToReturn, nameof(sAPGetTableVisibleTextContentsmaxRowsToReturn), required: false);
+            var __workflow_sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn, nameof(sAPGetTableVisibleTextContentsfirstVisibleColumnToReturn), required: false);
+            var __workflow_sAPGetTableVisibleTextContentsmaxColumnsToReturn = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsmaxColumnsToReturn, nameof(sAPGetTableVisibleTextContentsmaxColumnsToReturn), required: false);
+            var __workflow_sAPGetTableVisibleTextContentsuseColumnHeadersFromTable = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable, nameof(sAPGetTableVisibleTextContentsuseColumnHeadersFromTable), required: false);
+            var __workflow_sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetTableVisibleTextContentsreturnRowIndexInOutputCollection), required: false);
+            var __workflow_sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex = WorkflowExpression.Compile(sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetTableVisibleTextContentsnameOfColumnToStoreRowIndex), required: false);
+            var __workflow_sAPGetTableVisibleTextContentscheckedElementValue = WorkflowExpression.Compile(sAPGetTableVisibleTextContentscheckedElementValue, nameof(sAPGetTableVisibleTextContentscheckedElementValue), required: false);
             return new DeferredBodyAction<SAPGetTableVisibleTextContentsResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTableVisibleTextContents";
@@ -3807,14 +3562,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPTableRow(Expression<Func<string>> sAPSelectSAPTableRowsearchSAPElementId, Expression<Func<string>> sAPSelectSAPTableRowworkflow, Expression<Func<int>> sAPSelectSAPTableRowvisibleRowIndex = null, Expression<Func<bool>> sAPSelectSAPTableRowselect = null)
         {
-            var __workflow_sAPSelectSAPTableRowsearchSAPElementId = sAPSelectSAPTableRowsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableRowsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableRowsearchSAPElementId, nameof(sAPSelectSAPTableRowsearchSAPElementId), required: true);
-            var __workflow_sAPSelectSAPTableRowworkflow = sAPSelectSAPTableRowworkflow == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableRowworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableRowworkflow, nameof(sAPSelectSAPTableRowworkflow), required: true);
-            var __workflow_sAPSelectSAPTableRowvisibleRowIndex = sAPSelectSAPTableRowvisibleRowIndex == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableRowvisibleRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableRowvisibleRowIndex, nameof(sAPSelectSAPTableRowvisibleRowIndex), required: false);
-            var __workflow_sAPSelectSAPTableRowselect = sAPSelectSAPTableRowselect == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableRowselect);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableRowselect, nameof(sAPSelectSAPTableRowselect), required: false);
+            var __workflow_sAPSelectSAPTableRowsearchSAPElementId = WorkflowExpression.Compile(sAPSelectSAPTableRowsearchSAPElementId, nameof(sAPSelectSAPTableRowsearchSAPElementId), required: true);
+            var __workflow_sAPSelectSAPTableRowworkflow = WorkflowExpression.Compile(sAPSelectSAPTableRowworkflow, nameof(sAPSelectSAPTableRowworkflow), required: true);
+            var __workflow_sAPSelectSAPTableRowvisibleRowIndex = WorkflowExpression.Compile(sAPSelectSAPTableRowvisibleRowIndex, nameof(sAPSelectSAPTableRowvisibleRowIndex), required: false);
+            var __workflow_sAPSelectSAPTableRowselect = WorkflowExpression.Compile(sAPSelectSAPTableRowselect, nameof(sAPSelectSAPTableRowselect), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPTableRow";
@@ -3870,14 +3621,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPTableColumn(Expression<Func<string>> sAPSelectSAPTableColumnsearchSAPElementId, Expression<Func<string>> sAPSelectSAPTableColumnworkflow, Expression<Func<int>> sAPSelectSAPTableColumnvisibleColumnIndex = null, Expression<Func<bool>> sAPSelectSAPTableColumnselect = null)
         {
-            var __workflow_sAPSelectSAPTableColumnsearchSAPElementId = sAPSelectSAPTableColumnsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableColumnsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableColumnsearchSAPElementId, nameof(sAPSelectSAPTableColumnsearchSAPElementId), required: true);
-            var __workflow_sAPSelectSAPTableColumnworkflow = sAPSelectSAPTableColumnworkflow == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableColumnworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableColumnworkflow, nameof(sAPSelectSAPTableColumnworkflow), required: true);
-            var __workflow_sAPSelectSAPTableColumnvisibleColumnIndex = sAPSelectSAPTableColumnvisibleColumnIndex == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableColumnvisibleColumnIndex);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableColumnvisibleColumnIndex, nameof(sAPSelectSAPTableColumnvisibleColumnIndex), required: false);
-            var __workflow_sAPSelectSAPTableColumnselect = sAPSelectSAPTableColumnselect == null ? null : WorkflowExpression.Compile(sAPSelectSAPTableColumnselect);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPTableColumnselect, nameof(sAPSelectSAPTableColumnselect), required: false);
+            var __workflow_sAPSelectSAPTableColumnsearchSAPElementId = WorkflowExpression.Compile(sAPSelectSAPTableColumnsearchSAPElementId, nameof(sAPSelectSAPTableColumnsearchSAPElementId), required: true);
+            var __workflow_sAPSelectSAPTableColumnworkflow = WorkflowExpression.Compile(sAPSelectSAPTableColumnworkflow, nameof(sAPSelectSAPTableColumnworkflow), required: true);
+            var __workflow_sAPSelectSAPTableColumnvisibleColumnIndex = WorkflowExpression.Compile(sAPSelectSAPTableColumnvisibleColumnIndex, nameof(sAPSelectSAPTableColumnvisibleColumnIndex), required: false);
+            var __workflow_sAPSelectSAPTableColumnselect = WorkflowExpression.Compile(sAPSelectSAPTableColumnselect, nameof(sAPSelectSAPTableColumnselect), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPTableColumn";
@@ -3933,14 +3680,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeNodesResponse> SAPGetTreeNodes(Expression<Func<string>> sAPGetTreeNodessearchSAPElementId, Expression<Func<string>> sAPGetTreeNodesworkflow, Expression<Func<string>> sAPGetTreeNodesparentNodeKey = null, Expression<Func<bool>> sAPGetTreeNodesprocessSubNodes = null)
         {
-            var __workflow_sAPGetTreeNodessearchSAPElementId = sAPGetTreeNodessearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetTreeNodessearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeNodessearchSAPElementId, nameof(sAPGetTreeNodessearchSAPElementId), required: true);
-            var __workflow_sAPGetTreeNodesworkflow = sAPGetTreeNodesworkflow == null ? null : WorkflowExpression.Compile(sAPGetTreeNodesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeNodesworkflow, nameof(sAPGetTreeNodesworkflow), required: true);
-            var __workflow_sAPGetTreeNodesparentNodeKey = sAPGetTreeNodesparentNodeKey == null ? null : WorkflowExpression.Compile(sAPGetTreeNodesparentNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeNodesparentNodeKey, nameof(sAPGetTreeNodesparentNodeKey), required: false);
-            var __workflow_sAPGetTreeNodesprocessSubNodes = sAPGetTreeNodesprocessSubNodes == null ? null : WorkflowExpression.Compile(sAPGetTreeNodesprocessSubNodes);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeNodesprocessSubNodes, nameof(sAPGetTreeNodesprocessSubNodes), required: false);
+            var __workflow_sAPGetTreeNodessearchSAPElementId = WorkflowExpression.Compile(sAPGetTreeNodessearchSAPElementId, nameof(sAPGetTreeNodessearchSAPElementId), required: true);
+            var __workflow_sAPGetTreeNodesworkflow = WorkflowExpression.Compile(sAPGetTreeNodesworkflow, nameof(sAPGetTreeNodesworkflow), required: true);
+            var __workflow_sAPGetTreeNodesparentNodeKey = WorkflowExpression.Compile(sAPGetTreeNodesparentNodeKey, nameof(sAPGetTreeNodesparentNodeKey), required: false);
+            var __workflow_sAPGetTreeNodesprocessSubNodes = WorkflowExpression.Compile(sAPGetTreeNodesprocessSubNodes, nameof(sAPGetTreeNodesprocessSubNodes), required: false);
             return new DeferredBodyAction<SAPGetTreeNodesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeNodes";
@@ -3986,28 +3729,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDoubleClickTreeItem(Expression<Func<string>> sAPDoubleClickTreeItemsearchSAPElementId, Expression<Func<string>> sAPDoubleClickTreeItemworkflow, Expression<Func<string>> sAPDoubleClickTreeItemsearchNodeKey = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchNodePath = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchNodeText = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchColumnName = null, Expression<Func<string>> sAPDoubleClickTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPDoubleClickTreeItemsearchSAPElementId = sAPDoubleClickTreeItemsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchSAPElementId, nameof(sAPDoubleClickTreeItemsearchSAPElementId), required: true);
-            var __workflow_sAPDoubleClickTreeItemworkflow = sAPDoubleClickTreeItemworkflow == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemworkflow);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemworkflow, nameof(sAPDoubleClickTreeItemworkflow), required: true);
-            var __workflow_sAPDoubleClickTreeItemsearchNodeKey = sAPDoubleClickTreeItemsearchNodeKey == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchNodeKey, nameof(sAPDoubleClickTreeItemsearchNodeKey), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchNodePath = sAPDoubleClickTreeItemsearchNodePath == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchNodePath, nameof(sAPDoubleClickTreeItemsearchNodePath), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchNodeText = sAPDoubleClickTreeItemsearchNodeText == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchNodeText, nameof(sAPDoubleClickTreeItemsearchNodeText), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression = sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression, nameof(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive = sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchColumnName = sAPDoubleClickTreeItemsearchColumnName == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchColumnName, nameof(sAPDoubleClickTreeItemsearchColumnName), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchColumnTitle = sAPDoubleClickTreeItemsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchColumnTitle, nameof(sAPDoubleClickTreeItemsearchColumnTitle), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression = sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive = sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchSAPElementId = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchSAPElementId, nameof(sAPDoubleClickTreeItemsearchSAPElementId), required: true);
+            var __workflow_sAPDoubleClickTreeItemworkflow = WorkflowExpression.Compile(sAPDoubleClickTreeItemworkflow, nameof(sAPDoubleClickTreeItemworkflow), required: true);
+            var __workflow_sAPDoubleClickTreeItemsearchNodeKey = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeKey, nameof(sAPDoubleClickTreeItemsearchNodeKey), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchNodePath = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodePath, nameof(sAPDoubleClickTreeItemsearchNodePath), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchNodeText = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeText, nameof(sAPDoubleClickTreeItemsearchNodeText), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression, nameof(sAPDoubleClickTreeItemsearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPDoubleClickTreeItemsearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchColumnName = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnName, nameof(sAPDoubleClickTreeItemsearchColumnName), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchColumnTitle = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnTitle, nameof(sAPDoubleClickTreeItemsearchColumnTitle), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPDoubleClickTreeItemsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPDoubleClickTreeItemsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDoubleClickTreeItem";
@@ -4125,32 +3857,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectTreeItem(Expression<Func<string>> sAPSelectTreeItemsearchSAPElementId, Expression<Func<string>> sAPSelectTreeItemworkflow, Expression<Func<string>> sAPSelectTreeItemsearchNodeKey = null, Expression<Func<string>> sAPSelectTreeItemsearchNodePath = null, Expression<Func<string>> sAPSelectTreeItemsearchNodeText = null, Expression<Func<bool>> sAPSelectTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPSelectTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPSelectTreeItemsearchColumnName = null, Expression<Func<string>> sAPSelectTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPSelectTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSelectTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPSelectTreeItemselect = null, Expression<Func<bool>> sAPSelectTreeItemdeselectAllFirst = null)
         {
-            var __workflow_sAPSelectTreeItemsearchSAPElementId = sAPSelectTreeItemsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchSAPElementId, nameof(sAPSelectTreeItemsearchSAPElementId), required: true);
-            var __workflow_sAPSelectTreeItemworkflow = sAPSelectTreeItemworkflow == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemworkflow, nameof(sAPSelectTreeItemworkflow), required: true);
-            var __workflow_sAPSelectTreeItemsearchNodeKey = sAPSelectTreeItemsearchNodeKey == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchNodeKey, nameof(sAPSelectTreeItemsearchNodeKey), required: false);
-            var __workflow_sAPSelectTreeItemsearchNodePath = sAPSelectTreeItemsearchNodePath == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchNodePath, nameof(sAPSelectTreeItemsearchNodePath), required: false);
-            var __workflow_sAPSelectTreeItemsearchNodeText = sAPSelectTreeItemsearchNodeText == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchNodeText, nameof(sAPSelectTreeItemsearchNodeText), required: false);
-            var __workflow_sAPSelectTreeItemsearchNodeTextIsRegularExpression = sAPSelectTreeItemsearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchNodeTextIsRegularExpression, nameof(sAPSelectTreeItemsearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPSelectTreeItemsearchNodeTextIsCaseSensitive = sAPSelectTreeItemsearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPSelectTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPSelectTreeItemsearchColumnName = sAPSelectTreeItemsearchColumnName == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchColumnName, nameof(sAPSelectTreeItemsearchColumnName), required: false);
-            var __workflow_sAPSelectTreeItemsearchColumnTitle = sAPSelectTreeItemsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchColumnTitle, nameof(sAPSelectTreeItemsearchColumnTitle), required: false);
-            var __workflow_sAPSelectTreeItemsearchColumnTitleIsRegularExpression = sAPSelectTreeItemsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPSelectTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPSelectTreeItemsearchColumnTitleIsCaseSensitive = sAPSelectTreeItemsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPSelectTreeItemselect = sAPSelectTreeItemselect == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemselect);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemselect, nameof(sAPSelectTreeItemselect), required: false);
-            var __workflow_sAPSelectTreeItemdeselectAllFirst = sAPSelectTreeItemdeselectAllFirst == null ? null : WorkflowExpression.Compile(sAPSelectTreeItemdeselectAllFirst);
-            WorkflowExpression.Validate(__workflow_sAPSelectTreeItemdeselectAllFirst, nameof(sAPSelectTreeItemdeselectAllFirst), required: false);
+            var __workflow_sAPSelectTreeItemsearchSAPElementId = WorkflowExpression.Compile(sAPSelectTreeItemsearchSAPElementId, nameof(sAPSelectTreeItemsearchSAPElementId), required: true);
+            var __workflow_sAPSelectTreeItemworkflow = WorkflowExpression.Compile(sAPSelectTreeItemworkflow, nameof(sAPSelectTreeItemworkflow), required: true);
+            var __workflow_sAPSelectTreeItemsearchNodeKey = WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeKey, nameof(sAPSelectTreeItemsearchNodeKey), required: false);
+            var __workflow_sAPSelectTreeItemsearchNodePath = WorkflowExpression.Compile(sAPSelectTreeItemsearchNodePath, nameof(sAPSelectTreeItemsearchNodePath), required: false);
+            var __workflow_sAPSelectTreeItemsearchNodeText = WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeText, nameof(sAPSelectTreeItemsearchNodeText), required: false);
+            var __workflow_sAPSelectTreeItemsearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeTextIsRegularExpression, nameof(sAPSelectTreeItemsearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPSelectTreeItemsearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPSelectTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPSelectTreeItemsearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPSelectTreeItemsearchColumnName = WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnName, nameof(sAPSelectTreeItemsearchColumnName), required: false);
+            var __workflow_sAPSelectTreeItemsearchColumnTitle = WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnTitle, nameof(sAPSelectTreeItemsearchColumnTitle), required: false);
+            var __workflow_sAPSelectTreeItemsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPSelectTreeItemsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPSelectTreeItemsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPSelectTreeItemsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPSelectTreeItemselect = WorkflowExpression.Compile(sAPSelectTreeItemselect, nameof(sAPSelectTreeItemselect), required: false);
+            var __workflow_sAPSelectTreeItemdeselectAllFirst = WorkflowExpression.Compile(sAPSelectTreeItemdeselectAllFirst, nameof(sAPSelectTreeItemdeselectAllFirst), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectTreeItem";
@@ -4300,22 +4019,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPExpandTreeNode(Expression<Func<string>> sAPExpandTreeNodesearchSAPElementId, Expression<Func<string>> sAPExpandTreeNodeworkflow, Expression<Func<string>> sAPExpandTreeNodesearchNodeKey = null, Expression<Func<string>> sAPExpandTreeNodesearchNodePath = null, Expression<Func<string>> sAPExpandTreeNodesearchNodeText = null, Expression<Func<bool>> sAPExpandTreeNodesearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPExpandTreeNodesearchNodeTextIsCaseSensitive = null, Expression<Func<bool>> sAPExpandTreeNodeexpand = null)
         {
-            var __workflow_sAPExpandTreeNodesearchSAPElementId = sAPExpandTreeNodesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodesearchSAPElementId, nameof(sAPExpandTreeNodesearchSAPElementId), required: true);
-            var __workflow_sAPExpandTreeNodeworkflow = sAPExpandTreeNodeworkflow == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodeworkflow);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodeworkflow, nameof(sAPExpandTreeNodeworkflow), required: true);
-            var __workflow_sAPExpandTreeNodesearchNodeKey = sAPExpandTreeNodesearchNodeKey == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodesearchNodeKey, nameof(sAPExpandTreeNodesearchNodeKey), required: false);
-            var __workflow_sAPExpandTreeNodesearchNodePath = sAPExpandTreeNodesearchNodePath == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodesearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodesearchNodePath, nameof(sAPExpandTreeNodesearchNodePath), required: false);
-            var __workflow_sAPExpandTreeNodesearchNodeText = sAPExpandTreeNodesearchNodeText == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodesearchNodeText, nameof(sAPExpandTreeNodesearchNodeText), required: false);
-            var __workflow_sAPExpandTreeNodesearchNodeTextIsRegularExpression = sAPExpandTreeNodesearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodesearchNodeTextIsRegularExpression, nameof(sAPExpandTreeNodesearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPExpandTreeNodesearchNodeTextIsCaseSensitive = sAPExpandTreeNodesearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodesearchNodeTextIsCaseSensitive, nameof(sAPExpandTreeNodesearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPExpandTreeNodeexpand = sAPExpandTreeNodeexpand == null ? null : WorkflowExpression.Compile(sAPExpandTreeNodeexpand);
-            WorkflowExpression.Validate(__workflow_sAPExpandTreeNodeexpand, nameof(sAPExpandTreeNodeexpand), required: false);
+            var __workflow_sAPExpandTreeNodesearchSAPElementId = WorkflowExpression.Compile(sAPExpandTreeNodesearchSAPElementId, nameof(sAPExpandTreeNodesearchSAPElementId), required: true);
+            var __workflow_sAPExpandTreeNodeworkflow = WorkflowExpression.Compile(sAPExpandTreeNodeworkflow, nameof(sAPExpandTreeNodeworkflow), required: true);
+            var __workflow_sAPExpandTreeNodesearchNodeKey = WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeKey, nameof(sAPExpandTreeNodesearchNodeKey), required: false);
+            var __workflow_sAPExpandTreeNodesearchNodePath = WorkflowExpression.Compile(sAPExpandTreeNodesearchNodePath, nameof(sAPExpandTreeNodesearchNodePath), required: false);
+            var __workflow_sAPExpandTreeNodesearchNodeText = WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeText, nameof(sAPExpandTreeNodesearchNodeText), required: false);
+            var __workflow_sAPExpandTreeNodesearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeTextIsRegularExpression, nameof(sAPExpandTreeNodesearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPExpandTreeNodesearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPExpandTreeNodesearchNodeTextIsCaseSensitive, nameof(sAPExpandTreeNodesearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPExpandTreeNodeexpand = WorkflowExpression.Compile(sAPExpandTreeNodeexpand, nameof(sAPExpandTreeNodeexpand), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPExpandTreeNode";
@@ -4405,10 +4116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDeselectAllTreeNodes(Expression<Func<string>> sAPDeselectAllTreeNodessearchSAPElementId, Expression<Func<string>> sAPDeselectAllTreeNodesworkflow)
         {
-            var __workflow_sAPDeselectAllTreeNodessearchSAPElementId = sAPDeselectAllTreeNodessearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPDeselectAllTreeNodessearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPDeselectAllTreeNodessearchSAPElementId, nameof(sAPDeselectAllTreeNodessearchSAPElementId), required: true);
-            var __workflow_sAPDeselectAllTreeNodesworkflow = sAPDeselectAllTreeNodesworkflow == null ? null : WorkflowExpression.Compile(sAPDeselectAllTreeNodesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPDeselectAllTreeNodesworkflow, nameof(sAPDeselectAllTreeNodesworkflow), required: true);
+            var __workflow_sAPDeselectAllTreeNodessearchSAPElementId = WorkflowExpression.Compile(sAPDeselectAllTreeNodessearchSAPElementId, nameof(sAPDeselectAllTreeNodessearchSAPElementId), required: true);
+            var __workflow_sAPDeselectAllTreeNodesworkflow = WorkflowExpression.Compile(sAPDeselectAllTreeNodesworkflow, nameof(sAPDeselectAllTreeNodesworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDeselectAllTreeNodes";
@@ -4432,12 +4141,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressKeyOnTree(Expression<Func<string>> sAPPressKeyOnTreesearchSAPElementId, Expression<Func<string>> sAPPressKeyOnTreekey, Expression<Func<string>> sAPPressKeyOnTreeworkflow)
         {
-            var __workflow_sAPPressKeyOnTreesearchSAPElementId = sAPPressKeyOnTreesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressKeyOnTreesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressKeyOnTreesearchSAPElementId, nameof(sAPPressKeyOnTreesearchSAPElementId), required: true);
-            var __workflow_sAPPressKeyOnTreekey = sAPPressKeyOnTreekey == null ? null : WorkflowExpression.Compile(sAPPressKeyOnTreekey);
-            WorkflowExpression.Validate(__workflow_sAPPressKeyOnTreekey, nameof(sAPPressKeyOnTreekey), required: true);
-            var __workflow_sAPPressKeyOnTreeworkflow = sAPPressKeyOnTreeworkflow == null ? null : WorkflowExpression.Compile(sAPPressKeyOnTreeworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressKeyOnTreeworkflow, nameof(sAPPressKeyOnTreeworkflow), required: true);
+            var __workflow_sAPPressKeyOnTreesearchSAPElementId = WorkflowExpression.Compile(sAPPressKeyOnTreesearchSAPElementId, nameof(sAPPressKeyOnTreesearchSAPElementId), required: true);
+            var __workflow_sAPPressKeyOnTreekey = WorkflowExpression.Compile(sAPPressKeyOnTreekey, nameof(sAPPressKeyOnTreekey), required: true);
+            var __workflow_sAPPressKeyOnTreeworkflow = WorkflowExpression.Compile(sAPPressKeyOnTreeworkflow, nameof(sAPPressKeyOnTreeworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressKeyOnTree";
@@ -4463,28 +4169,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPOpenContextMenuOnTreeItem(Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchSAPElementId, Expression<Func<string>> sAPOpenContextMenuOnTreeItemworkflow, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchNodeKey = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchNodePath = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchNodeText = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchColumnName = null, Expression<Func<string>> sAPOpenContextMenuOnTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchSAPElementId = sAPOpenContextMenuOnTreeItemsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchSAPElementId, nameof(sAPOpenContextMenuOnTreeItemsearchSAPElementId), required: true);
-            var __workflow_sAPOpenContextMenuOnTreeItemworkflow = sAPOpenContextMenuOnTreeItemworkflow == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemworkflow);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemworkflow, nameof(sAPOpenContextMenuOnTreeItemworkflow), required: true);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeKey = sAPOpenContextMenuOnTreeItemsearchNodeKey == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchNodeKey, nameof(sAPOpenContextMenuOnTreeItemsearchNodeKey), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodePath = sAPOpenContextMenuOnTreeItemsearchNodePath == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchNodePath, nameof(sAPOpenContextMenuOnTreeItemsearchNodePath), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeText = sAPOpenContextMenuOnTreeItemsearchNodeText == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchNodeText, nameof(sAPOpenContextMenuOnTreeItemsearchNodeText), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression = sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive = sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnName = sAPOpenContextMenuOnTreeItemsearchColumnName == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchColumnName, nameof(sAPOpenContextMenuOnTreeItemsearchColumnName), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitle = sAPOpenContextMenuOnTreeItemsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitle, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitle), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression = sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive = sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchSAPElementId = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchSAPElementId, nameof(sAPOpenContextMenuOnTreeItemsearchSAPElementId), required: true);
+            var __workflow_sAPOpenContextMenuOnTreeItemworkflow = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemworkflow, nameof(sAPOpenContextMenuOnTreeItemworkflow), required: true);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeKey = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeKey, nameof(sAPOpenContextMenuOnTreeItemsearchNodeKey), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodePath = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodePath, nameof(sAPOpenContextMenuOnTreeItemsearchNodePath), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeText = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeText, nameof(sAPOpenContextMenuOnTreeItemsearchNodeText), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPOpenContextMenuOnTreeItemsearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPOpenContextMenuOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnName = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnName, nameof(sAPOpenContextMenuOnTreeItemsearchColumnName), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitle = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnTitle, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitle), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPOpenContextMenuOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPOpenContextMenuOnTreeItem";
@@ -4602,24 +4297,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeTextContentsResponse> SAPGetTreeTextContents(Expression<Func<string>> sAPGetTreeTextContentssearchSAPElementId, Expression<Func<string>> sAPGetTreeTextContentsworkflow, Expression<Func<int>> sAPGetTreeTextContentsfirstRowToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsmaxRowsToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsfirstColumnToReturn = null, Expression<Func<int>> sAPGetTreeTextContentsmaxColumnsToReturn = null, Expression<Func<bool>> sAPGetTreeTextContentsuseColumnHeadersFromTree = null, Expression<Func<bool>> sAPGetTreeTextContentsreturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetTreeTextContentsnameOfColumnToStoreRowIndex = null)
         {
-            var __workflow_sAPGetTreeTextContentssearchSAPElementId = sAPGetTreeTextContentssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentssearchSAPElementId, nameof(sAPGetTreeTextContentssearchSAPElementId), required: true);
-            var __workflow_sAPGetTreeTextContentsworkflow = sAPGetTreeTextContentsworkflow == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsworkflow, nameof(sAPGetTreeTextContentsworkflow), required: true);
-            var __workflow_sAPGetTreeTextContentsfirstRowToReturn = sAPGetTreeTextContentsfirstRowToReturn == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsfirstRowToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsfirstRowToReturn, nameof(sAPGetTreeTextContentsfirstRowToReturn), required: false);
-            var __workflow_sAPGetTreeTextContentsmaxRowsToReturn = sAPGetTreeTextContentsmaxRowsToReturn == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsmaxRowsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsmaxRowsToReturn, nameof(sAPGetTreeTextContentsmaxRowsToReturn), required: false);
-            var __workflow_sAPGetTreeTextContentsfirstColumnToReturn = sAPGetTreeTextContentsfirstColumnToReturn == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsfirstColumnToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsfirstColumnToReturn, nameof(sAPGetTreeTextContentsfirstColumnToReturn), required: false);
-            var __workflow_sAPGetTreeTextContentsmaxColumnsToReturn = sAPGetTreeTextContentsmaxColumnsToReturn == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsmaxColumnsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsmaxColumnsToReturn, nameof(sAPGetTreeTextContentsmaxColumnsToReturn), required: false);
-            var __workflow_sAPGetTreeTextContentsuseColumnHeadersFromTree = sAPGetTreeTextContentsuseColumnHeadersFromTree == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsuseColumnHeadersFromTree);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsuseColumnHeadersFromTree, nameof(sAPGetTreeTextContentsuseColumnHeadersFromTree), required: false);
-            var __workflow_sAPGetTreeTextContentsreturnRowIndexInOutputCollection = sAPGetTreeTextContentsreturnRowIndexInOutputCollection == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsreturnRowIndexInOutputCollection);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetTreeTextContentsreturnRowIndexInOutputCollection), required: false);
-            var __workflow_sAPGetTreeTextContentsnameOfColumnToStoreRowIndex = sAPGetTreeTextContentsnameOfColumnToStoreRowIndex == null ? null : WorkflowExpression.Compile(sAPGetTreeTextContentsnameOfColumnToStoreRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetTreeTextContentsnameOfColumnToStoreRowIndex), required: false);
+            var __workflow_sAPGetTreeTextContentssearchSAPElementId = WorkflowExpression.Compile(sAPGetTreeTextContentssearchSAPElementId, nameof(sAPGetTreeTextContentssearchSAPElementId), required: true);
+            var __workflow_sAPGetTreeTextContentsworkflow = WorkflowExpression.Compile(sAPGetTreeTextContentsworkflow, nameof(sAPGetTreeTextContentsworkflow), required: true);
+            var __workflow_sAPGetTreeTextContentsfirstRowToReturn = WorkflowExpression.Compile(sAPGetTreeTextContentsfirstRowToReturn, nameof(sAPGetTreeTextContentsfirstRowToReturn), required: false);
+            var __workflow_sAPGetTreeTextContentsmaxRowsToReturn = WorkflowExpression.Compile(sAPGetTreeTextContentsmaxRowsToReturn, nameof(sAPGetTreeTextContentsmaxRowsToReturn), required: false);
+            var __workflow_sAPGetTreeTextContentsfirstColumnToReturn = WorkflowExpression.Compile(sAPGetTreeTextContentsfirstColumnToReturn, nameof(sAPGetTreeTextContentsfirstColumnToReturn), required: false);
+            var __workflow_sAPGetTreeTextContentsmaxColumnsToReturn = WorkflowExpression.Compile(sAPGetTreeTextContentsmaxColumnsToReturn, nameof(sAPGetTreeTextContentsmaxColumnsToReturn), required: false);
+            var __workflow_sAPGetTreeTextContentsuseColumnHeadersFromTree = WorkflowExpression.Compile(sAPGetTreeTextContentsuseColumnHeadersFromTree, nameof(sAPGetTreeTextContentsuseColumnHeadersFromTree), required: false);
+            var __workflow_sAPGetTreeTextContentsreturnRowIndexInOutputCollection = WorkflowExpression.Compile(sAPGetTreeTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetTreeTextContentsreturnRowIndexInOutputCollection), required: false);
+            var __workflow_sAPGetTreeTextContentsnameOfColumnToStoreRowIndex = WorkflowExpression.Compile(sAPGetTreeTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetTreeTextContentsnameOfColumnToStoreRowIndex), required: false);
             return new DeferredBodyAction<SAPGetTreeTextContentsResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeTextContents";
@@ -4745,20 +4431,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetTreeColumnWidth(Expression<Func<string>> sAPSetTreeColumnWidthsearchSAPElementId, Expression<Func<string>> sAPSetTreeColumnWidthworkflow, Expression<Func<string>> sAPSetTreeColumnWidthsearchColumnName = null, Expression<Func<string>> sAPSetTreeColumnWidthsearchColumnTitle = null, Expression<Func<bool>> sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive = null, Expression<Func<int>> sAPSetTreeColumnWidthcolumnWidthInPixels = null)
         {
-            var __workflow_sAPSetTreeColumnWidthsearchSAPElementId = sAPSetTreeColumnWidthsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetTreeColumnWidthsearchSAPElementId, nameof(sAPSetTreeColumnWidthsearchSAPElementId), required: true);
-            var __workflow_sAPSetTreeColumnWidthworkflow = sAPSetTreeColumnWidthworkflow == null ? null : WorkflowExpression.Compile(sAPSetTreeColumnWidthworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetTreeColumnWidthworkflow, nameof(sAPSetTreeColumnWidthworkflow), required: true);
-            var __workflow_sAPSetTreeColumnWidthsearchColumnName = sAPSetTreeColumnWidthsearchColumnName == null ? null : WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPSetTreeColumnWidthsearchColumnName, nameof(sAPSetTreeColumnWidthsearchColumnName), required: false);
-            var __workflow_sAPSetTreeColumnWidthsearchColumnTitle = sAPSetTreeColumnWidthsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPSetTreeColumnWidthsearchColumnTitle, nameof(sAPSetTreeColumnWidthsearchColumnTitle), required: false);
-            var __workflow_sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression = sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression, nameof(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive = sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive, nameof(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPSetTreeColumnWidthcolumnWidthInPixels = sAPSetTreeColumnWidthcolumnWidthInPixels == null ? null : WorkflowExpression.Compile(sAPSetTreeColumnWidthcolumnWidthInPixels);
-            WorkflowExpression.Validate(__workflow_sAPSetTreeColumnWidthcolumnWidthInPixels, nameof(sAPSetTreeColumnWidthcolumnWidthInPixels), required: false);
+            var __workflow_sAPSetTreeColumnWidthsearchSAPElementId = WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchSAPElementId, nameof(sAPSetTreeColumnWidthsearchSAPElementId), required: true);
+            var __workflow_sAPSetTreeColumnWidthworkflow = WorkflowExpression.Compile(sAPSetTreeColumnWidthworkflow, nameof(sAPSetTreeColumnWidthworkflow), required: true);
+            var __workflow_sAPSetTreeColumnWidthsearchColumnName = WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnName, nameof(sAPSetTreeColumnWidthsearchColumnName), required: false);
+            var __workflow_sAPSetTreeColumnWidthsearchColumnTitle = WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnTitle, nameof(sAPSetTreeColumnWidthsearchColumnTitle), required: false);
+            var __workflow_sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression, nameof(sAPSetTreeColumnWidthsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive, nameof(sAPSetTreeColumnWidthsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPSetTreeColumnWidthcolumnWidthInPixels = WorkflowExpression.Compile(sAPSetTreeColumnWidthcolumnWidthInPixels, nameof(sAPSetTreeColumnWidthcolumnWidthInPixels), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetTreeColumnWidth";
@@ -4842,30 +4521,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressButtonOnTreeItem(Expression<Func<string>> sAPPressButtonOnTreeItemsearchSAPElementId, Expression<Func<string>> sAPPressButtonOnTreeItemworkflow, Expression<Func<string>> sAPPressButtonOnTreeItemsearchNodeKey = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchNodePath = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchNodeText = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchColumnName = null, Expression<Func<string>> sAPPressButtonOnTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPPressButtonOnTreeItemforce = null)
         {
-            var __workflow_sAPPressButtonOnTreeItemsearchSAPElementId = sAPPressButtonOnTreeItemsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchSAPElementId, nameof(sAPPressButtonOnTreeItemsearchSAPElementId), required: true);
-            var __workflow_sAPPressButtonOnTreeItemworkflow = sAPPressButtonOnTreeItemworkflow == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemworkflow, nameof(sAPPressButtonOnTreeItemworkflow), required: true);
-            var __workflow_sAPPressButtonOnTreeItemsearchNodeKey = sAPPressButtonOnTreeItemsearchNodeKey == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchNodeKey, nameof(sAPPressButtonOnTreeItemsearchNodeKey), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchNodePath = sAPPressButtonOnTreeItemsearchNodePath == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchNodePath, nameof(sAPPressButtonOnTreeItemsearchNodePath), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchNodeText = sAPPressButtonOnTreeItemsearchNodeText == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchNodeText, nameof(sAPPressButtonOnTreeItemsearchNodeText), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression = sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive = sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchColumnName = sAPPressButtonOnTreeItemsearchColumnName == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchColumnName, nameof(sAPPressButtonOnTreeItemsearchColumnName), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchColumnTitle = sAPPressButtonOnTreeItemsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchColumnTitle, nameof(sAPPressButtonOnTreeItemsearchColumnTitle), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression = sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive = sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPPressButtonOnTreeItemforce = sAPPressButtonOnTreeItemforce == null ? null : WorkflowExpression.Compile(sAPPressButtonOnTreeItemforce);
-            WorkflowExpression.Validate(__workflow_sAPPressButtonOnTreeItemforce, nameof(sAPPressButtonOnTreeItemforce), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchSAPElementId = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchSAPElementId, nameof(sAPPressButtonOnTreeItemsearchSAPElementId), required: true);
+            var __workflow_sAPPressButtonOnTreeItemworkflow = WorkflowExpression.Compile(sAPPressButtonOnTreeItemworkflow, nameof(sAPPressButtonOnTreeItemworkflow), required: true);
+            var __workflow_sAPPressButtonOnTreeItemsearchNodeKey = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeKey, nameof(sAPPressButtonOnTreeItemsearchNodeKey), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchNodePath = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodePath, nameof(sAPPressButtonOnTreeItemsearchNodePath), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchNodeText = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeText, nameof(sAPPressButtonOnTreeItemsearchNodeText), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPPressButtonOnTreeItemsearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPPressButtonOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchColumnName = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnName, nameof(sAPPressButtonOnTreeItemsearchColumnName), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchColumnTitle = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnTitle, nameof(sAPPressButtonOnTreeItemsearchColumnTitle), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPPressButtonOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPPressButtonOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPPressButtonOnTreeItemforce = WorkflowExpression.Compile(sAPPressButtonOnTreeItemforce, nameof(sAPPressButtonOnTreeItemforce), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressButtonOnTreeItem";
@@ -4999,30 +4666,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPClickLinkOnTreeItem(Expression<Func<string>> sAPClickLinkOnTreeItemsearchSAPElementId, Expression<Func<string>> sAPClickLinkOnTreeItemworkflow, Expression<Func<string>> sAPClickLinkOnTreeItemsearchNodeKey = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchNodePath = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchNodeText = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchColumnName = null, Expression<Func<string>> sAPClickLinkOnTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPClickLinkOnTreeItemforce = null)
         {
-            var __workflow_sAPClickLinkOnTreeItemsearchSAPElementId = sAPClickLinkOnTreeItemsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchSAPElementId, nameof(sAPClickLinkOnTreeItemsearchSAPElementId), required: true);
-            var __workflow_sAPClickLinkOnTreeItemworkflow = sAPClickLinkOnTreeItemworkflow == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemworkflow);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemworkflow, nameof(sAPClickLinkOnTreeItemworkflow), required: true);
-            var __workflow_sAPClickLinkOnTreeItemsearchNodeKey = sAPClickLinkOnTreeItemsearchNodeKey == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchNodeKey, nameof(sAPClickLinkOnTreeItemsearchNodeKey), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchNodePath = sAPClickLinkOnTreeItemsearchNodePath == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchNodePath, nameof(sAPClickLinkOnTreeItemsearchNodePath), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchNodeText = sAPClickLinkOnTreeItemsearchNodeText == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchNodeText, nameof(sAPClickLinkOnTreeItemsearchNodeText), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression = sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive = sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchColumnName = sAPClickLinkOnTreeItemsearchColumnName == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchColumnName, nameof(sAPClickLinkOnTreeItemsearchColumnName), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchColumnTitle = sAPClickLinkOnTreeItemsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchColumnTitle, nameof(sAPClickLinkOnTreeItemsearchColumnTitle), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression = sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive = sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPClickLinkOnTreeItemforce = sAPClickLinkOnTreeItemforce == null ? null : WorkflowExpression.Compile(sAPClickLinkOnTreeItemforce);
-            WorkflowExpression.Validate(__workflow_sAPClickLinkOnTreeItemforce, nameof(sAPClickLinkOnTreeItemforce), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchSAPElementId = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchSAPElementId, nameof(sAPClickLinkOnTreeItemsearchSAPElementId), required: true);
+            var __workflow_sAPClickLinkOnTreeItemworkflow = WorkflowExpression.Compile(sAPClickLinkOnTreeItemworkflow, nameof(sAPClickLinkOnTreeItemworkflow), required: true);
+            var __workflow_sAPClickLinkOnTreeItemsearchNodeKey = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeKey, nameof(sAPClickLinkOnTreeItemsearchNodeKey), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchNodePath = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodePath, nameof(sAPClickLinkOnTreeItemsearchNodePath), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchNodeText = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeText, nameof(sAPClickLinkOnTreeItemsearchNodeText), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression, nameof(sAPClickLinkOnTreeItemsearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPClickLinkOnTreeItemsearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchColumnName = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnName, nameof(sAPClickLinkOnTreeItemsearchColumnName), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchColumnTitle = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnTitle, nameof(sAPClickLinkOnTreeItemsearchColumnTitle), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPClickLinkOnTreeItemsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPClickLinkOnTreeItemsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPClickLinkOnTreeItemforce = WorkflowExpression.Compile(sAPClickLinkOnTreeItemforce, nameof(sAPClickLinkOnTreeItemforce), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPClickLinkOnTreeItem";
@@ -5156,32 +4811,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckTreeItem(Expression<Func<string>> sAPCheckTreeItemsearchSAPElementId, Expression<Func<string>> sAPCheckTreeItemworkflow, Expression<Func<string>> sAPCheckTreeItemsearchNodeKey = null, Expression<Func<string>> sAPCheckTreeItemsearchNodePath = null, Expression<Func<string>> sAPCheckTreeItemsearchNodeText = null, Expression<Func<bool>> sAPCheckTreeItemsearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPCheckTreeItemsearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPCheckTreeItemsearchColumnName = null, Expression<Func<string>> sAPCheckTreeItemsearchColumnTitle = null, Expression<Func<bool>> sAPCheckTreeItemsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPCheckTreeItemsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPCheckTreeItemcheckItem = null, Expression<Func<bool>> sAPCheckTreeItemforce = null)
         {
-            var __workflow_sAPCheckTreeItemsearchSAPElementId = sAPCheckTreeItemsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchSAPElementId, nameof(sAPCheckTreeItemsearchSAPElementId), required: true);
-            var __workflow_sAPCheckTreeItemworkflow = sAPCheckTreeItemworkflow == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemworkflow);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemworkflow, nameof(sAPCheckTreeItemworkflow), required: true);
-            var __workflow_sAPCheckTreeItemsearchNodeKey = sAPCheckTreeItemsearchNodeKey == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchNodeKey, nameof(sAPCheckTreeItemsearchNodeKey), required: false);
-            var __workflow_sAPCheckTreeItemsearchNodePath = sAPCheckTreeItemsearchNodePath == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchNodePath, nameof(sAPCheckTreeItemsearchNodePath), required: false);
-            var __workflow_sAPCheckTreeItemsearchNodeText = sAPCheckTreeItemsearchNodeText == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchNodeText, nameof(sAPCheckTreeItemsearchNodeText), required: false);
-            var __workflow_sAPCheckTreeItemsearchNodeTextIsRegularExpression = sAPCheckTreeItemsearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchNodeTextIsRegularExpression, nameof(sAPCheckTreeItemsearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPCheckTreeItemsearchNodeTextIsCaseSensitive = sAPCheckTreeItemsearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPCheckTreeItemsearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPCheckTreeItemsearchColumnName = sAPCheckTreeItemsearchColumnName == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchColumnName, nameof(sAPCheckTreeItemsearchColumnName), required: false);
-            var __workflow_sAPCheckTreeItemsearchColumnTitle = sAPCheckTreeItemsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchColumnTitle, nameof(sAPCheckTreeItemsearchColumnTitle), required: false);
-            var __workflow_sAPCheckTreeItemsearchColumnTitleIsRegularExpression = sAPCheckTreeItemsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPCheckTreeItemsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPCheckTreeItemsearchColumnTitleIsCaseSensitive = sAPCheckTreeItemsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPCheckTreeItemcheckItem = sAPCheckTreeItemcheckItem == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemcheckItem);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemcheckItem, nameof(sAPCheckTreeItemcheckItem), required: false);
-            var __workflow_sAPCheckTreeItemforce = sAPCheckTreeItemforce == null ? null : WorkflowExpression.Compile(sAPCheckTreeItemforce);
-            WorkflowExpression.Validate(__workflow_sAPCheckTreeItemforce, nameof(sAPCheckTreeItemforce), required: false);
+            var __workflow_sAPCheckTreeItemsearchSAPElementId = WorkflowExpression.Compile(sAPCheckTreeItemsearchSAPElementId, nameof(sAPCheckTreeItemsearchSAPElementId), required: true);
+            var __workflow_sAPCheckTreeItemworkflow = WorkflowExpression.Compile(sAPCheckTreeItemworkflow, nameof(sAPCheckTreeItemworkflow), required: true);
+            var __workflow_sAPCheckTreeItemsearchNodeKey = WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeKey, nameof(sAPCheckTreeItemsearchNodeKey), required: false);
+            var __workflow_sAPCheckTreeItemsearchNodePath = WorkflowExpression.Compile(sAPCheckTreeItemsearchNodePath, nameof(sAPCheckTreeItemsearchNodePath), required: false);
+            var __workflow_sAPCheckTreeItemsearchNodeText = WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeText, nameof(sAPCheckTreeItemsearchNodeText), required: false);
+            var __workflow_sAPCheckTreeItemsearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeTextIsRegularExpression, nameof(sAPCheckTreeItemsearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPCheckTreeItemsearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPCheckTreeItemsearchNodeTextIsCaseSensitive, nameof(sAPCheckTreeItemsearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPCheckTreeItemsearchColumnName = WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnName, nameof(sAPCheckTreeItemsearchColumnName), required: false);
+            var __workflow_sAPCheckTreeItemsearchColumnTitle = WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnTitle, nameof(sAPCheckTreeItemsearchColumnTitle), required: false);
+            var __workflow_sAPCheckTreeItemsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnTitleIsRegularExpression, nameof(sAPCheckTreeItemsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPCheckTreeItemsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive, nameof(sAPCheckTreeItemsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPCheckTreeItemcheckItem = WorkflowExpression.Compile(sAPCheckTreeItemcheckItem, nameof(sAPCheckTreeItemcheckItem), required: false);
+            var __workflow_sAPCheckTreeItemforce = WorkflowExpression.Compile(sAPCheckTreeItemforce, nameof(sAPCheckTreeItemforce), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckTreeItem";
@@ -5331,10 +4973,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeColumnHeadersResponse> SAPGetTreeColumnHeaders(Expression<Func<string>> sAPGetTreeColumnHeaderssearchSAPElementId, Expression<Func<string>> sAPGetTreeColumnHeadersworkflow)
         {
-            var __workflow_sAPGetTreeColumnHeaderssearchSAPElementId = sAPGetTreeColumnHeaderssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetTreeColumnHeaderssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeColumnHeaderssearchSAPElementId, nameof(sAPGetTreeColumnHeaderssearchSAPElementId), required: true);
-            var __workflow_sAPGetTreeColumnHeadersworkflow = sAPGetTreeColumnHeadersworkflow == null ? null : WorkflowExpression.Compile(sAPGetTreeColumnHeadersworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeColumnHeadersworkflow, nameof(sAPGetTreeColumnHeadersworkflow), required: true);
+            var __workflow_sAPGetTreeColumnHeaderssearchSAPElementId = WorkflowExpression.Compile(sAPGetTreeColumnHeaderssearchSAPElementId, nameof(sAPGetTreeColumnHeaderssearchSAPElementId), required: true);
+            var __workflow_sAPGetTreeColumnHeadersworkflow = WorkflowExpression.Compile(sAPGetTreeColumnHeadersworkflow, nameof(sAPGetTreeColumnHeadersworkflow), required: true);
             return new DeferredBodyAction<SAPGetTreeColumnHeadersResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeColumnHeaders";
@@ -5358,28 +4998,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetTreeItemPropertiesResponse> SAPGetTreeItemProperties(Expression<Func<string>> sAPGetTreeItemPropertiessearchSAPElementId, Expression<Func<string>> sAPGetTreeItemPropertiesworkflow, Expression<Func<string>> sAPGetTreeItemPropertiessearchNodeKey = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchNodePath = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchNodeText = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchColumnName = null, Expression<Func<string>> sAPGetTreeItemPropertiessearchColumnTitle = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPGetTreeItemPropertiessearchSAPElementId = sAPGetTreeItemPropertiessearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchSAPElementId, nameof(sAPGetTreeItemPropertiessearchSAPElementId), required: true);
-            var __workflow_sAPGetTreeItemPropertiesworkflow = sAPGetTreeItemPropertiesworkflow == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiesworkflow, nameof(sAPGetTreeItemPropertiesworkflow), required: true);
-            var __workflow_sAPGetTreeItemPropertiessearchNodeKey = sAPGetTreeItemPropertiessearchNodeKey == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeKey);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchNodeKey, nameof(sAPGetTreeItemPropertiessearchNodeKey), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchNodePath = sAPGetTreeItemPropertiessearchNodePath == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodePath);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchNodePath, nameof(sAPGetTreeItemPropertiessearchNodePath), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchNodeText = sAPGetTreeItemPropertiessearchNodeText == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeText);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchNodeText, nameof(sAPGetTreeItemPropertiessearchNodeText), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression = sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression, nameof(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive = sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive, nameof(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchColumnName = sAPGetTreeItemPropertiessearchColumnName == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchColumnName, nameof(sAPGetTreeItemPropertiessearchColumnName), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchColumnTitle = sAPGetTreeItemPropertiessearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchColumnTitle, nameof(sAPGetTreeItemPropertiessearchColumnTitle), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression = sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression, nameof(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive = sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive, nameof(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchSAPElementId = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchSAPElementId, nameof(sAPGetTreeItemPropertiessearchSAPElementId), required: true);
+            var __workflow_sAPGetTreeItemPropertiesworkflow = WorkflowExpression.Compile(sAPGetTreeItemPropertiesworkflow, nameof(sAPGetTreeItemPropertiesworkflow), required: true);
+            var __workflow_sAPGetTreeItemPropertiessearchNodeKey = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeKey, nameof(sAPGetTreeItemPropertiessearchNodeKey), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchNodePath = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodePath, nameof(sAPGetTreeItemPropertiessearchNodePath), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchNodeText = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeText, nameof(sAPGetTreeItemPropertiessearchNodeText), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression, nameof(sAPGetTreeItemPropertiessearchNodeTextIsRegularExpression), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive, nameof(sAPGetTreeItemPropertiessearchNodeTextIsCaseSensitive), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchColumnName = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnName, nameof(sAPGetTreeItemPropertiessearchColumnName), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchColumnTitle = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnTitle, nameof(sAPGetTreeItemPropertiessearchColumnTitle), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression, nameof(sAPGetTreeItemPropertiessearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive, nameof(sAPGetTreeItemPropertiessearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredBodyAction<SAPGetTreeItemPropertiesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetTreeItemProperties";
@@ -5497,10 +5126,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetShellToolbarElementsResponse> SAPGetShellToolbarElements(Expression<Func<string>> sAPGetShellToolbarElementssearchSAPElementId, Expression<Func<string>> sAPGetShellToolbarElementsworkflow)
         {
-            var __workflow_sAPGetShellToolbarElementssearchSAPElementId = sAPGetShellToolbarElementssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetShellToolbarElementssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetShellToolbarElementssearchSAPElementId, nameof(sAPGetShellToolbarElementssearchSAPElementId), required: true);
-            var __workflow_sAPGetShellToolbarElementsworkflow = sAPGetShellToolbarElementsworkflow == null ? null : WorkflowExpression.Compile(sAPGetShellToolbarElementsworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetShellToolbarElementsworkflow, nameof(sAPGetShellToolbarElementsworkflow), required: true);
+            var __workflow_sAPGetShellToolbarElementssearchSAPElementId = WorkflowExpression.Compile(sAPGetShellToolbarElementssearchSAPElementId, nameof(sAPGetShellToolbarElementssearchSAPElementId), required: true);
+            var __workflow_sAPGetShellToolbarElementsworkflow = WorkflowExpression.Compile(sAPGetShellToolbarElementsworkflow, nameof(sAPGetShellToolbarElementsworkflow), required: true);
             return new DeferredBodyAction<SAPGetShellToolbarElementsResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetShellToolbarElements";
@@ -5524,20 +5151,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressShellToolbarElement(Expression<Func<string>> sAPPressShellToolbarElementsearchSAPElementId, Expression<Func<string>> sAPPressShellToolbarElementworkflow, Expression<Func<string>> sAPPressShellToolbarElementsearchToolbarElementId = null, Expression<Func<string>> sAPPressShellToolbarElementsearchToolbarElementText = null, Expression<Func<int>> sAPPressShellToolbarElementsearchToolbarElementIndex = null, Expression<Func<bool>> sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive = null)
         {
-            var __workflow_sAPPressShellToolbarElementsearchSAPElementId = sAPPressShellToolbarElementsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementsearchSAPElementId, nameof(sAPPressShellToolbarElementsearchSAPElementId), required: true);
-            var __workflow_sAPPressShellToolbarElementworkflow = sAPPressShellToolbarElementworkflow == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementworkflow, nameof(sAPPressShellToolbarElementworkflow), required: true);
-            var __workflow_sAPPressShellToolbarElementsearchToolbarElementId = sAPPressShellToolbarElementsearchToolbarElementId == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementsearchToolbarElementId, nameof(sAPPressShellToolbarElementsearchToolbarElementId), required: false);
-            var __workflow_sAPPressShellToolbarElementsearchToolbarElementText = sAPPressShellToolbarElementsearchToolbarElementText == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarElementText);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementsearchToolbarElementText, nameof(sAPPressShellToolbarElementsearchToolbarElementText), required: false);
-            var __workflow_sAPPressShellToolbarElementsearchToolbarElementIndex = sAPPressShellToolbarElementsearchToolbarElementIndex == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarElementIndex);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementsearchToolbarElementIndex, nameof(sAPPressShellToolbarElementsearchToolbarElementIndex), required: false);
-            var __workflow_sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression = sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression, nameof(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression), required: false);
-            var __workflow_sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive = sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive, nameof(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive), required: false);
+            var __workflow_sAPPressShellToolbarElementsearchSAPElementId = WorkflowExpression.Compile(sAPPressShellToolbarElementsearchSAPElementId, nameof(sAPPressShellToolbarElementsearchSAPElementId), required: true);
+            var __workflow_sAPPressShellToolbarElementworkflow = WorkflowExpression.Compile(sAPPressShellToolbarElementworkflow, nameof(sAPPressShellToolbarElementworkflow), required: true);
+            var __workflow_sAPPressShellToolbarElementsearchToolbarElementId = WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarElementId, nameof(sAPPressShellToolbarElementsearchToolbarElementId), required: false);
+            var __workflow_sAPPressShellToolbarElementsearchToolbarElementText = WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarElementText, nameof(sAPPressShellToolbarElementsearchToolbarElementText), required: false);
+            var __workflow_sAPPressShellToolbarElementsearchToolbarElementIndex = WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarElementIndex, nameof(sAPPressShellToolbarElementsearchToolbarElementIndex), required: false);
+            var __workflow_sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression = WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression, nameof(sAPPressShellToolbarElementsearchToolbarTextIsRegularExpression), required: false);
+            var __workflow_sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive = WorkflowExpression.Compile(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive, nameof(sAPPressShellToolbarElementsearchToolbarTextIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressShellToolbarElement";
@@ -5621,20 +5241,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressShellToolbarElementContextButton(Expression<Func<string>> sAPPressShellToolbarElementContextButtonsearchSAPElementId, Expression<Func<string>> sAPPressShellToolbarElementContextButtonworkflow, Expression<Func<string>> sAPPressShellToolbarElementContextButtonsearchToolbarElementId = null, Expression<Func<string>> sAPPressShellToolbarElementContextButtonsearchToolbarElementText = null, Expression<Func<int>> sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex = null, Expression<Func<bool>> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive = null)
         {
-            var __workflow_sAPPressShellToolbarElementContextButtonsearchSAPElementId = sAPPressShellToolbarElementContextButtonsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementContextButtonsearchSAPElementId, nameof(sAPPressShellToolbarElementContextButtonsearchSAPElementId), required: true);
-            var __workflow_sAPPressShellToolbarElementContextButtonworkflow = sAPPressShellToolbarElementContextButtonworkflow == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementContextButtonworkflow, nameof(sAPPressShellToolbarElementContextButtonworkflow), required: true);
-            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementId = sAPPressShellToolbarElementContextButtonsearchToolbarElementId == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementId, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementId), required: false);
-            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementText = sAPPressShellToolbarElementContextButtonsearchToolbarElementText == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarElementText);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementText, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementText), required: false);
-            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex = sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex), required: false);
-            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression = sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression), required: false);
-            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive = sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive), required: false);
+            var __workflow_sAPPressShellToolbarElementContextButtonsearchSAPElementId = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchSAPElementId, nameof(sAPPressShellToolbarElementContextButtonsearchSAPElementId), required: true);
+            var __workflow_sAPPressShellToolbarElementContextButtonworkflow = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonworkflow, nameof(sAPPressShellToolbarElementContextButtonworkflow), required: true);
+            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementId = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarElementId, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementId), required: false);
+            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementText = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarElementText, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementText), required: false);
+            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarElementIndex), required: false);
+            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsRegularExpression), required: false);
+            var __workflow_sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive = WorkflowExpression.Compile(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive, nameof(sAPPressShellToolbarElementContextButtonsearchToolbarTextIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressShellToolbarElementContextButton";
@@ -5718,20 +5331,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectShellToolbarMenuItem(Expression<Func<string>> sAPSelectShellToolbarMenuItemsearchSAPElementId, Expression<Func<string>> sAPSelectShellToolbarMenuItemworkflow, Expression<Func<string>> sAPSelectShellToolbarMenuItemsearchToolbarElementId = null, Expression<Func<string>> sAPSelectShellToolbarMenuItemsearchToolbarElementText = null, Expression<Func<int>> sAPSelectShellToolbarMenuItemsearchToolbarElementIndex = null, Expression<Func<bool>> sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression = null, Expression<Func<bool>> sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive = null)
         {
-            var __workflow_sAPSelectShellToolbarMenuItemsearchSAPElementId = sAPSelectShellToolbarMenuItemsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectShellToolbarMenuItemsearchSAPElementId, nameof(sAPSelectShellToolbarMenuItemsearchSAPElementId), required: true);
-            var __workflow_sAPSelectShellToolbarMenuItemworkflow = sAPSelectShellToolbarMenuItemworkflow == null ? null : WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectShellToolbarMenuItemworkflow, nameof(sAPSelectShellToolbarMenuItemworkflow), required: true);
-            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementId = sAPSelectShellToolbarMenuItemsearchToolbarElementId == null ? null : WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementId, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementId), required: false);
-            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementText = sAPSelectShellToolbarMenuItemsearchToolbarElementText == null ? null : WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarElementText);
-            WorkflowExpression.Validate(__workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementText, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementText), required: false);
-            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementIndex = sAPSelectShellToolbarMenuItemsearchToolbarElementIndex == null ? null : WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex);
-            WorkflowExpression.Validate(__workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementIndex, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex), required: false);
-            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression = sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression, nameof(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression), required: false);
-            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive = sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive, nameof(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive), required: false);
+            var __workflow_sAPSelectShellToolbarMenuItemsearchSAPElementId = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchSAPElementId, nameof(sAPSelectShellToolbarMenuItemsearchSAPElementId), required: true);
+            var __workflow_sAPSelectShellToolbarMenuItemworkflow = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemworkflow, nameof(sAPSelectShellToolbarMenuItemworkflow), required: true);
+            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementId = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarElementId, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementId), required: false);
+            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementText = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarElementText, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementText), required: false);
+            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarElementIndex = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex, nameof(sAPSelectShellToolbarMenuItemsearchToolbarElementIndex), required: false);
+            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression, nameof(sAPSelectShellToolbarMenuItemsearchToolbarTextIsRegularExpression), required: false);
+            var __workflow_sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive = WorkflowExpression.Compile(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive, nameof(sAPSelectShellToolbarMenuItemsearchToolbarTextIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectShellToolbarMenuItem";
@@ -5815,10 +5421,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewPropertiesResponse> SAPGetSAPGridViewProperties(Expression<Func<string>> sAPGetSAPGridViewPropertiessearchSAPElementId, Expression<Func<string>> sAPGetSAPGridViewPropertiesworkflow)
         {
-            var __workflow_sAPGetSAPGridViewPropertiessearchSAPElementId = sAPGetSAPGridViewPropertiessearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewPropertiessearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewPropertiessearchSAPElementId, nameof(sAPGetSAPGridViewPropertiessearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPGridViewPropertiesworkflow = sAPGetSAPGridViewPropertiesworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewPropertiesworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewPropertiesworkflow, nameof(sAPGetSAPGridViewPropertiesworkflow), required: true);
+            var __workflow_sAPGetSAPGridViewPropertiessearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPGridViewPropertiessearchSAPElementId, nameof(sAPGetSAPGridViewPropertiessearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPGridViewPropertiesworkflow = WorkflowExpression.Compile(sAPGetSAPGridViewPropertiesworkflow, nameof(sAPGetSAPGridViewPropertiesworkflow), required: true);
             return new DeferredBodyAction<SAPGetSAPGridViewPropertiesResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewProperties";
@@ -5842,20 +5446,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewCellContentsAtIndexResponse> SAPGetSAPGridViewCellContentsAtIndex(Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId, Expression<Func<int>> sAPGetSAPGridViewCellContentsAtIndexrowIndex, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexworkflow, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnName = null, Expression<Func<string>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId = sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndexrowIndex = sAPGetSAPGridViewCellContentsAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellContentsAtIndexrowIndex, nameof(sAPGetSAPGridViewCellContentsAtIndexrowIndex), required: true);
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndexworkflow = sAPGetSAPGridViewCellContentsAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellContentsAtIndexworkflow, nameof(sAPGetSAPGridViewCellContentsAtIndexworkflow), required: true);
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnName = sAPGetSAPGridViewCellContentsAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnName, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnName), required: false);
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle = sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression = sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive = sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPGridViewCellContentsAtIndexrowIndex = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexrowIndex, nameof(sAPGetSAPGridViewCellContentsAtIndexrowIndex), required: true);
+            var __workflow_sAPGetSAPGridViewCellContentsAtIndexworkflow = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexworkflow, nameof(sAPGetSAPGridViewCellContentsAtIndexworkflow), required: true);
+            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnName = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnName, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnName), required: false);
+            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGetSAPGridViewCellContentsAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredBodyAction<SAPGetSAPGridViewCellContentsAtIndexResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellContentsAtIndex";
@@ -5925,20 +5522,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse> SAPGetSAPGridViewCellPropertiesAtIndex(Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId, Expression<Func<int>> sAPGetSAPGridViewCellPropertiesAtIndexrowIndex, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexworkflow, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName = null, Expression<Func<string>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId = sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexrowIndex = sAPGetSAPGridViewCellPropertiesAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellPropertiesAtIndexrowIndex, nameof(sAPGetSAPGridViewCellPropertiesAtIndexrowIndex), required: true);
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexworkflow = sAPGetSAPGridViewCellPropertiesAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellPropertiesAtIndexworkflow, nameof(sAPGetSAPGridViewCellPropertiesAtIndexworkflow), required: true);
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName = sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName), required: false);
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle = sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression = sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive = sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexrowIndex = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexrowIndex, nameof(sAPGetSAPGridViewCellPropertiesAtIndexrowIndex), required: true);
+            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexworkflow = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexworkflow, nameof(sAPGetSAPGridViewCellPropertiesAtIndexworkflow), required: true);
+            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnName), required: false);
+            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGetSAPGridViewCellPropertiesAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredBodyAction<SAPGetSAPGridViewCellPropertiesAtIndexResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewCellPropertiesAtIndex";
@@ -6008,24 +5598,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDrawRectangleAroundSAPGridViewCellAtIndex(Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<string>> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour = null, Expression<Func<int>> sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels = null)
         {
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId = sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex = sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex), required: true);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow = sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow), required: true);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName = sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName), required: false);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle = sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour = sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour), required: false);
-            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels = sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels == null ? null : WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels);
-            WorkflowExpression.Validate(__workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexrowIndex), required: true);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexworkflow), required: true);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnName), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenColour), required: false);
+            var __workflow_sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels = WorkflowExpression.Compile(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels, nameof(sAPDrawRectangleAroundSAPGridViewCellAtIndexpenThicknessPixels), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDrawRectangleAroundSAPGridViewCellAtIndex";
@@ -6127,36 +5708,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalLeftClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow = null, Expression<Func<bool>> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay = null, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX = null, Expression<Func<int>> sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY = null, Expression<Func<sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput>> sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId = sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex = sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex), required: true);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow = sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow), required: true);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName = sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle = sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow = sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay = sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX = sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY = sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY), required: false);
-            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo == null ? null : WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo);
-            WorkflowExpression.Validate(__workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexrowIndex), required: true);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexworkflow), required: true);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnName), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleWindow), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndextoggleDelay), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetX), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexclickOffsetY), required: false);
+            var __workflow_sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = WorkflowExpression.Compile(sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalLeftClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalLeftClickSAPGridViewCellAtIndex";
@@ -6344,36 +5910,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalRightClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow = null, Expression<Func<bool>> sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay = null, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX = null, Expression<Func<int>> sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY = null, Expression<Func<sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeToInput>> sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo = null)
         {
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId = sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex = sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex), required: true);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexworkflow = sAPGlobalRightClickSAPGridViewCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexworkflow), required: true);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName = sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle = sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost = sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront = sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow = sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay = sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX = sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY = sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY), required: false);
-            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo = sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo == null ? null : WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo);
-            WorkflowExpression.Validate(__workflow_sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexrowIndex), required: true);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexworkflow = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexworkflow), required: true);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnName), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleWindow), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalRightClickSAPGridViewCellAtIndextoggleDelay), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetX), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexclickOffsetY), required: false);
+            var __workflow_sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo = WorkflowExpression.Compile(sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalRightClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalRightClickSAPGridViewCellAtIndex";
@@ -6561,38 +6112,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow = null, Expression<Func<bool>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = null, Expression<Func<double>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY = null, Expression<Func<sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeToInput>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = null, Expression<Func<int>> sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds = null)
         {
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex), required: true);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow), required: true);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
-            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds = sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds == null ? null : WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds);
-            WorkflowExpression.Validate(__workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexrowIndex), required: true);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexworkflow), required: true);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnName), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexsetElementWindowTopMost), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexbringElementWindowToFront), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleWindow), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleUsesGlobalLeftMouseClickAgent), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndextoggleDelay), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetX), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexclickOffsetY), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexoffsetRelativeTo), required: false);
+            var __workflow_sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds = WorkflowExpression.Compile(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds, nameof(sAPGlobalDoubleLeftClickSAPGridViewCellAtIndexdoubleClickDelayInMilliseconds), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGlobalDoubleLeftClickSAPGridViewCellAtIndex";
@@ -6796,10 +6331,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetSAPGridViewColumnHeadersResponse> SAPGetSAPGridViewColumnHeaders(Expression<Func<string>> sAPGetSAPGridViewColumnHeaderssearchSAPElementId, Expression<Func<string>> sAPGetSAPGridViewColumnHeadersworkflow)
         {
-            var __workflow_sAPGetSAPGridViewColumnHeaderssearchSAPElementId = sAPGetSAPGridViewColumnHeaderssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewColumnHeaderssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewColumnHeaderssearchSAPElementId, nameof(sAPGetSAPGridViewColumnHeaderssearchSAPElementId), required: true);
-            var __workflow_sAPGetSAPGridViewColumnHeadersworkflow = sAPGetSAPGridViewColumnHeadersworkflow == null ? null : WorkflowExpression.Compile(sAPGetSAPGridViewColumnHeadersworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetSAPGridViewColumnHeadersworkflow, nameof(sAPGetSAPGridViewColumnHeadersworkflow), required: true);
+            var __workflow_sAPGetSAPGridViewColumnHeaderssearchSAPElementId = WorkflowExpression.Compile(sAPGetSAPGridViewColumnHeaderssearchSAPElementId, nameof(sAPGetSAPGridViewColumnHeaderssearchSAPElementId), required: true);
+            var __workflow_sAPGetSAPGridViewColumnHeadersworkflow = WorkflowExpression.Compile(sAPGetSAPGridViewColumnHeadersworkflow, nameof(sAPGetSAPGridViewColumnHeadersworkflow), required: true);
             return new DeferredBodyAction<SAPGetSAPGridViewColumnHeadersResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetSAPGridViewColumnHeaders";
@@ -6823,20 +6356,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPClickSAPGridViewCellAtIndexsearchSAPElementId = sAPClickSAPGridViewCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPClickSAPGridViewCellAtIndexrowIndex = sAPClickSAPGridViewCellAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPClickSAPGridViewCellAtIndexrowIndex, nameof(sAPClickSAPGridViewCellAtIndexrowIndex), required: true);
-            var __workflow_sAPClickSAPGridViewCellAtIndexworkflow = sAPClickSAPGridViewCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPClickSAPGridViewCellAtIndexworkflow, nameof(sAPClickSAPGridViewCellAtIndexworkflow), required: true);
-            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnName = sAPClickSAPGridViewCellAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitle = sAPClickSAPGridViewCellAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPClickSAPGridViewCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPClickSAPGridViewCellAtIndexrowIndex = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexrowIndex, nameof(sAPClickSAPGridViewCellAtIndexrowIndex), required: true);
+            var __workflow_sAPClickSAPGridViewCellAtIndexworkflow = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexworkflow, nameof(sAPClickSAPGridViewCellAtIndexworkflow), required: true);
+            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnName = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnName), required: false);
+            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPClickSAPGridViewCellAtIndex";
@@ -6906,20 +6432,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPDoubleClickSAPGridViewCellAtIndex(Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPDoubleClickSAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId = sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexrowIndex = sAPDoubleClickSAPGridViewCellAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickSAPGridViewCellAtIndexrowIndex, nameof(sAPDoubleClickSAPGridViewCellAtIndexrowIndex), required: true);
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexworkflow = sAPDoubleClickSAPGridViewCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickSAPGridViewCellAtIndexworkflow, nameof(sAPDoubleClickSAPGridViewCellAtIndexworkflow), required: true);
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName = sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName), required: false);
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle = sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexrowIndex = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexrowIndex, nameof(sAPDoubleClickSAPGridViewCellAtIndexrowIndex), required: true);
+            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexworkflow = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexworkflow, nameof(sAPDoubleClickSAPGridViewCellAtIndexworkflow), required: true);
+            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnName), required: false);
+            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPDoubleClickSAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPDoubleClickSAPGridViewCellAtIndex";
@@ -6989,20 +6508,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPGridViewCellButtonAtIndex(Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId, Expression<Func<int>> sAPPressSAPGridViewCellButtonAtIndexrowIndex, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexworkflow, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnName = null, Expression<Func<string>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId = sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndexrowIndex = sAPPressSAPGridViewCellButtonAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewCellButtonAtIndexrowIndex, nameof(sAPPressSAPGridViewCellButtonAtIndexrowIndex), required: true);
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndexworkflow = sAPPressSAPGridViewCellButtonAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewCellButtonAtIndexworkflow, nameof(sAPPressSAPGridViewCellButtonAtIndexworkflow), required: true);
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnName = sAPPressSAPGridViewCellButtonAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnName, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnName), required: false);
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle = sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression = sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive = sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPPressSAPGridViewCellButtonAtIndexrowIndex = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexrowIndex, nameof(sAPPressSAPGridViewCellButtonAtIndexrowIndex), required: true);
+            var __workflow_sAPPressSAPGridViewCellButtonAtIndexworkflow = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexworkflow, nameof(sAPPressSAPGridViewCellButtonAtIndexworkflow), required: true);
+            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnName = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnName, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnName), required: false);
+            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPPressSAPGridViewCellButtonAtIndexsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPGridViewCellButtonAtIndex";
@@ -7072,22 +6584,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPCheckSAPGridViewCellCheckboxAtIndex(Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId, Expression<Func<int>> sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexworkflow, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName = null, Expression<Func<string>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement = null)
         {
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId = sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex = sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex), required: true);
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexworkflow = sAPCheckSAPGridViewCellCheckboxAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexworkflow, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexworkflow), required: true);
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName = sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName), required: false);
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle = sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression = sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive = sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement = sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement == null ? null : WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement);
-            WorkflowExpression.Validate(__workflow_sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement), required: false);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexrowIndex), required: true);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexworkflow = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexworkflow, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexworkflow), required: true);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnName), required: false);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement = WorkflowExpression.Compile(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement, nameof(sAPCheckSAPGridViewCellCheckboxAtIndexcheckCellElement), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPCheckSAPGridViewCellCheckboxAtIndex";
@@ -7173,22 +6677,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPModifySAPGridViewCellAtIndexResponse> SAPModifySAPGridViewCellAtIndex(Expression<Func<string>> sAPModifySAPGridViewCellAtIndexsearchSAPElementId, Expression<Func<int>> sAPModifySAPGridViewCellAtIndexrowIndex, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexworkflow, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexsearchColumnName = null, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexsearchColumnTitle = null, Expression<Func<bool>> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = null, Expression<Func<string>> sAPModifySAPGridViewCellAtIndexnewValue = null)
         {
-            var __workflow_sAPModifySAPGridViewCellAtIndexsearchSAPElementId = sAPModifySAPGridViewCellAtIndexsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPModifySAPGridViewCellAtIndexsearchSAPElementId), required: true);
-            var __workflow_sAPModifySAPGridViewCellAtIndexrowIndex = sAPModifySAPGridViewCellAtIndexrowIndex == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexrowIndex, nameof(sAPModifySAPGridViewCellAtIndexrowIndex), required: true);
-            var __workflow_sAPModifySAPGridViewCellAtIndexworkflow = sAPModifySAPGridViewCellAtIndexworkflow == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexworkflow);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexworkflow, nameof(sAPModifySAPGridViewCellAtIndexworkflow), required: true);
-            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnName = sAPModifySAPGridViewCellAtIndexsearchColumnName == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexsearchColumnName, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnName), required: false);
-            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitle = sAPModifySAPGridViewCellAtIndexsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitle), required: false);
-            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPModifySAPGridViewCellAtIndexnewValue = sAPModifySAPGridViewCellAtIndexnewValue == null ? null : WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexnewValue);
-            WorkflowExpression.Validate(__workflow_sAPModifySAPGridViewCellAtIndexnewValue, nameof(sAPModifySAPGridViewCellAtIndexnewValue), required: false);
+            var __workflow_sAPModifySAPGridViewCellAtIndexsearchSAPElementId = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchSAPElementId, nameof(sAPModifySAPGridViewCellAtIndexsearchSAPElementId), required: true);
+            var __workflow_sAPModifySAPGridViewCellAtIndexrowIndex = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexrowIndex, nameof(sAPModifySAPGridViewCellAtIndexrowIndex), required: true);
+            var __workflow_sAPModifySAPGridViewCellAtIndexworkflow = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexworkflow, nameof(sAPModifySAPGridViewCellAtIndexworkflow), required: true);
+            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnName = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnName, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnName), required: false);
+            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitle = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnTitle, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitle), required: false);
+            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive, nameof(sAPModifySAPGridViewCellAtIndexsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPModifySAPGridViewCellAtIndexnewValue = WorkflowExpression.Compile(sAPModifySAPGridViewCellAtIndexnewValue, nameof(sAPModifySAPGridViewCellAtIndexnewValue), required: false);
             return new DeferredBodyAction<SAPModifySAPGridViewCellAtIndexResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPModifySAPGridViewCellAtIndex";
@@ -7264,12 +6760,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPGridViewCurrentRow(Expression<Func<string>> sAPSetSAPGridViewCurrentRowsearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewCurrentRowrowIndex, Expression<Func<string>> sAPSetSAPGridViewCurrentRowworkflow)
         {
-            var __workflow_sAPSetSAPGridViewCurrentRowsearchSAPElementId = sAPSetSAPGridViewCurrentRowsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentRowsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentRowsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentRowsearchSAPElementId), required: true);
-            var __workflow_sAPSetSAPGridViewCurrentRowrowIndex = sAPSetSAPGridViewCurrentRowrowIndex == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentRowrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentRowrowIndex, nameof(sAPSetSAPGridViewCurrentRowrowIndex), required: true);
-            var __workflow_sAPSetSAPGridViewCurrentRowworkflow = sAPSetSAPGridViewCurrentRowworkflow == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentRowworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentRowworkflow, nameof(sAPSetSAPGridViewCurrentRowworkflow), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentRowsearchSAPElementId = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentRowsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentRowsearchSAPElementId), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentRowrowIndex = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentRowrowIndex, nameof(sAPSetSAPGridViewCurrentRowrowIndex), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentRowworkflow = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentRowworkflow, nameof(sAPSetSAPGridViewCurrentRowworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentRow";
@@ -7295,18 +6788,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPPressSAPGridViewColumnHeader(Expression<Func<string>> sAPPressSAPGridViewColumnHeadersearchSAPElementId, Expression<Func<string>> sAPPressSAPGridViewColumnHeaderworkflow, Expression<Func<string>> sAPPressSAPGridViewColumnHeadersearchColumnName = null, Expression<Func<string>> sAPPressSAPGridViewColumnHeadersearchColumnTitle = null, Expression<Func<bool>> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPPressSAPGridViewColumnHeadersearchSAPElementId = sAPPressSAPGridViewColumnHeadersearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewColumnHeadersearchSAPElementId, nameof(sAPPressSAPGridViewColumnHeadersearchSAPElementId), required: true);
-            var __workflow_sAPPressSAPGridViewColumnHeaderworkflow = sAPPressSAPGridViewColumnHeaderworkflow == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeaderworkflow);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewColumnHeaderworkflow, nameof(sAPPressSAPGridViewColumnHeaderworkflow), required: true);
-            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnName = sAPPressSAPGridViewColumnHeadersearchColumnName == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewColumnHeadersearchColumnName, nameof(sAPPressSAPGridViewColumnHeadersearchColumnName), required: false);
-            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitle = sAPPressSAPGridViewColumnHeadersearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitle, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitle), required: false);
-            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression = sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive = sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPPressSAPGridViewColumnHeadersearchSAPElementId = WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchSAPElementId, nameof(sAPPressSAPGridViewColumnHeadersearchSAPElementId), required: true);
+            var __workflow_sAPPressSAPGridViewColumnHeaderworkflow = WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeaderworkflow, nameof(sAPPressSAPGridViewColumnHeaderworkflow), required: true);
+            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnName = WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnName, nameof(sAPPressSAPGridViewColumnHeadersearchColumnName), required: false);
+            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitle = WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnTitle, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitle), required: false);
+            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive, nameof(sAPPressSAPGridViewColumnHeadersearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPPressSAPGridViewColumnHeader";
@@ -7374,12 +6861,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleRowResponse> SAPSetSAPGridViewFirstVisibleRow(Expression<Func<string>> sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleRowworkflow)
         {
-            var __workflow_sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId = sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId, nameof(sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId), required: true);
-            var __workflow_sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex = sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex, nameof(sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex), required: true);
-            var __workflow_sAPSetSAPGridViewFirstVisibleRowworkflow = sAPSetSAPGridViewFirstVisibleRowworkflow == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleRowworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleRowworkflow, nameof(sAPSetSAPGridViewFirstVisibleRowworkflow), required: true);
+            var __workflow_sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId, nameof(sAPSetSAPGridViewFirstVisibleRowsearchSAPElementId), required: true);
+            var __workflow_sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex, nameof(sAPSetSAPGridViewFirstVisibleRowfirstVisibleRowIndex), required: true);
+            var __workflow_sAPSetSAPGridViewFirstVisibleRowworkflow = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleRowworkflow, nameof(sAPSetSAPGridViewFirstVisibleRowworkflow), required: true);
             return new DeferredBodyAction<SAPSetSAPGridViewFirstVisibleRowResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleRow";
@@ -7405,14 +6889,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPGridViewRow(Expression<Func<string>> sAPSelectSAPGridViewRowsearchSAPElementId, Expression<Func<int>> sAPSelectSAPGridViewRowrowIndex, Expression<Func<string>> sAPSelectSAPGridViewRowworkflow, Expression<Func<bool>> sAPSelectSAPGridViewRowsetAsCurrentRow = null)
         {
-            var __workflow_sAPSelectSAPGridViewRowsearchSAPElementId = sAPSelectSAPGridViewRowsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewRowsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewRowsearchSAPElementId, nameof(sAPSelectSAPGridViewRowsearchSAPElementId), required: true);
-            var __workflow_sAPSelectSAPGridViewRowrowIndex = sAPSelectSAPGridViewRowrowIndex == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewRowrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewRowrowIndex, nameof(sAPSelectSAPGridViewRowrowIndex), required: true);
-            var __workflow_sAPSelectSAPGridViewRowworkflow = sAPSelectSAPGridViewRowworkflow == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewRowworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewRowworkflow, nameof(sAPSelectSAPGridViewRowworkflow), required: true);
-            var __workflow_sAPSelectSAPGridViewRowsetAsCurrentRow = sAPSelectSAPGridViewRowsetAsCurrentRow == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewRowsetAsCurrentRow);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewRowsetAsCurrentRow, nameof(sAPSelectSAPGridViewRowsetAsCurrentRow), required: false);
+            var __workflow_sAPSelectSAPGridViewRowsearchSAPElementId = WorkflowExpression.Compile(sAPSelectSAPGridViewRowsearchSAPElementId, nameof(sAPSelectSAPGridViewRowsearchSAPElementId), required: true);
+            var __workflow_sAPSelectSAPGridViewRowrowIndex = WorkflowExpression.Compile(sAPSelectSAPGridViewRowrowIndex, nameof(sAPSelectSAPGridViewRowrowIndex), required: true);
+            var __workflow_sAPSelectSAPGridViewRowworkflow = WorkflowExpression.Compile(sAPSelectSAPGridViewRowworkflow, nameof(sAPSelectSAPGridViewRowworkflow), required: true);
+            var __workflow_sAPSelectSAPGridViewRowsetAsCurrentRow = WorkflowExpression.Compile(sAPSelectSAPGridViewRowsetAsCurrentRow, nameof(sAPSelectSAPGridViewRowsetAsCurrentRow), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewRow";
@@ -7454,12 +6934,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPGridViewMultipleRows(Expression<Func<string>> sAPSelectSAPGridViewMultipleRowssearchSAPElementId, Expression<Func<string>> sAPSelectSAPGridViewMultipleRowsrowsToSelect, Expression<Func<string>> sAPSelectSAPGridViewMultipleRowsworkflow)
         {
-            var __workflow_sAPSelectSAPGridViewMultipleRowssearchSAPElementId = sAPSelectSAPGridViewMultipleRowssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewMultipleRowssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewMultipleRowssearchSAPElementId, nameof(sAPSelectSAPGridViewMultipleRowssearchSAPElementId), required: true);
-            var __workflow_sAPSelectSAPGridViewMultipleRowsrowsToSelect = sAPSelectSAPGridViewMultipleRowsrowsToSelect == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewMultipleRowsrowsToSelect);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewMultipleRowsrowsToSelect, nameof(sAPSelectSAPGridViewMultipleRowsrowsToSelect), required: true);
-            var __workflow_sAPSelectSAPGridViewMultipleRowsworkflow = sAPSelectSAPGridViewMultipleRowsworkflow == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewMultipleRowsworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewMultipleRowsworkflow, nameof(sAPSelectSAPGridViewMultipleRowsworkflow), required: true);
+            var __workflow_sAPSelectSAPGridViewMultipleRowssearchSAPElementId = WorkflowExpression.Compile(sAPSelectSAPGridViewMultipleRowssearchSAPElementId, nameof(sAPSelectSAPGridViewMultipleRowssearchSAPElementId), required: true);
+            var __workflow_sAPSelectSAPGridViewMultipleRowsrowsToSelect = WorkflowExpression.Compile(sAPSelectSAPGridViewMultipleRowsrowsToSelect, nameof(sAPSelectSAPGridViewMultipleRowsrowsToSelect), required: true);
+            var __workflow_sAPSelectSAPGridViewMultipleRowsworkflow = WorkflowExpression.Compile(sAPSelectSAPGridViewMultipleRowsworkflow, nameof(sAPSelectSAPGridViewMultipleRowsworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewMultipleRows";
@@ -7485,18 +6962,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPGridViewCurrentColumn(Expression<Func<string>> sAPSetSAPGridViewCurrentColumnsearchSAPElementId, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnworkflow, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnsearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewCurrentColumnsearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPSetSAPGridViewCurrentColumnsearchSAPElementId = sAPSetSAPGridViewCurrentColumnsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentColumnsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentColumnsearchSAPElementId), required: true);
-            var __workflow_sAPSetSAPGridViewCurrentColumnworkflow = sAPSetSAPGridViewCurrentColumnworkflow == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentColumnworkflow, nameof(sAPSetSAPGridViewCurrentColumnworkflow), required: true);
-            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnName = sAPSetSAPGridViewCurrentColumnsearchColumnName == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentColumnsearchColumnName, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnName), required: false);
-            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitle = sAPSetSAPGridViewCurrentColumnsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitle, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitle), required: false);
-            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression = sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive = sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentColumnsearchSAPElementId = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentColumnsearchSAPElementId), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentColumnworkflow = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnworkflow, nameof(sAPSetSAPGridViewCurrentColumnworkflow), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnName = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnName, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnName), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitle = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnTitle, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitle), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewCurrentColumnsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentColumn";
@@ -7564,20 +7035,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSetSAPGridViewCurrentCell(Expression<Func<string>> sAPSetSAPGridViewCurrentCellsearchSAPElementId, Expression<Func<int>> sAPSetSAPGridViewCurrentCellrowIndex, Expression<Func<string>> sAPSetSAPGridViewCurrentCellworkflow, Expression<Func<string>> sAPSetSAPGridViewCurrentCellsearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewCurrentCellsearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPSetSAPGridViewCurrentCellsearchSAPElementId = sAPSetSAPGridViewCurrentCellsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentCellsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentCellsearchSAPElementId), required: true);
-            var __workflow_sAPSetSAPGridViewCurrentCellrowIndex = sAPSetSAPGridViewCurrentCellrowIndex == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellrowIndex);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentCellrowIndex, nameof(sAPSetSAPGridViewCurrentCellrowIndex), required: true);
-            var __workflow_sAPSetSAPGridViewCurrentCellworkflow = sAPSetSAPGridViewCurrentCellworkflow == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentCellworkflow, nameof(sAPSetSAPGridViewCurrentCellworkflow), required: true);
-            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnName = sAPSetSAPGridViewCurrentCellsearchColumnName == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentCellsearchColumnName, nameof(sAPSetSAPGridViewCurrentCellsearchColumnName), required: false);
-            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitle = sAPSetSAPGridViewCurrentCellsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitle, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitle), required: false);
-            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression = sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive = sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentCellsearchSAPElementId = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchSAPElementId, nameof(sAPSetSAPGridViewCurrentCellsearchSAPElementId), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentCellrowIndex = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellrowIndex, nameof(sAPSetSAPGridViewCurrentCellrowIndex), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentCellworkflow = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellworkflow, nameof(sAPSetSAPGridViewCurrentCellworkflow), required: true);
+            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnName = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnName, nameof(sAPSetSAPGridViewCurrentCellsearchColumnName), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitle = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnTitle, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitle), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewCurrentCellsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewCurrentCell";
@@ -7647,24 +7111,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectSAPGridViewColumn(Expression<Func<string>> sAPSelectSAPGridViewColumnsearchSAPElementId, Expression<Func<string>> sAPSelectSAPGridViewColumnworkflow, Expression<Func<string>> sAPSelectSAPGridViewColumnsearchColumnName = null, Expression<Func<string>> sAPSelectSAPGridViewColumnsearchColumnTitle = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnselectColumn = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnsetAsCurrentColumn = null, Expression<Func<bool>> sAPSelectSAPGridViewColumnclearSelectionFirst = null)
         {
-            var __workflow_sAPSelectSAPGridViewColumnsearchSAPElementId = sAPSelectSAPGridViewColumnsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnsearchSAPElementId, nameof(sAPSelectSAPGridViewColumnsearchSAPElementId), required: true);
-            var __workflow_sAPSelectSAPGridViewColumnworkflow = sAPSelectSAPGridViewColumnworkflow == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnworkflow, nameof(sAPSelectSAPGridViewColumnworkflow), required: true);
-            var __workflow_sAPSelectSAPGridViewColumnsearchColumnName = sAPSelectSAPGridViewColumnsearchColumnName == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnsearchColumnName, nameof(sAPSelectSAPGridViewColumnsearchColumnName), required: false);
-            var __workflow_sAPSelectSAPGridViewColumnsearchColumnTitle = sAPSelectSAPGridViewColumnsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnsearchColumnTitle, nameof(sAPSelectSAPGridViewColumnsearchColumnTitle), required: false);
-            var __workflow_sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression = sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression, nameof(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive = sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPSelectSAPGridViewColumnselectColumn = sAPSelectSAPGridViewColumnselectColumn == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnselectColumn);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnselectColumn, nameof(sAPSelectSAPGridViewColumnselectColumn), required: false);
-            var __workflow_sAPSelectSAPGridViewColumnsetAsCurrentColumn = sAPSelectSAPGridViewColumnsetAsCurrentColumn == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsetAsCurrentColumn);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnsetAsCurrentColumn, nameof(sAPSelectSAPGridViewColumnsetAsCurrentColumn), required: false);
-            var __workflow_sAPSelectSAPGridViewColumnclearSelectionFirst = sAPSelectSAPGridViewColumnclearSelectionFirst == null ? null : WorkflowExpression.Compile(sAPSelectSAPGridViewColumnclearSelectionFirst);
-            WorkflowExpression.Validate(__workflow_sAPSelectSAPGridViewColumnclearSelectionFirst, nameof(sAPSelectSAPGridViewColumnclearSelectionFirst), required: false);
+            var __workflow_sAPSelectSAPGridViewColumnsearchSAPElementId = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchSAPElementId, nameof(sAPSelectSAPGridViewColumnsearchSAPElementId), required: true);
+            var __workflow_sAPSelectSAPGridViewColumnworkflow = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnworkflow, nameof(sAPSelectSAPGridViewColumnworkflow), required: true);
+            var __workflow_sAPSelectSAPGridViewColumnsearchColumnName = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnName, nameof(sAPSelectSAPGridViewColumnsearchColumnName), required: false);
+            var __workflow_sAPSelectSAPGridViewColumnsearchColumnTitle = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnTitle, nameof(sAPSelectSAPGridViewColumnsearchColumnTitle), required: false);
+            var __workflow_sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression, nameof(sAPSelectSAPGridViewColumnsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSelectSAPGridViewColumnsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPSelectSAPGridViewColumnselectColumn = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnselectColumn, nameof(sAPSelectSAPGridViewColumnselectColumn), required: false);
+            var __workflow_sAPSelectSAPGridViewColumnsetAsCurrentColumn = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnsetAsCurrentColumn, nameof(sAPSelectSAPGridViewColumnsetAsCurrentColumn), required: false);
+            var __workflow_sAPSelectSAPGridViewColumnclearSelectionFirst = WorkflowExpression.Compile(sAPSelectSAPGridViewColumnclearSelectionFirst, nameof(sAPSelectSAPGridViewColumnclearSelectionFirst), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectSAPGridViewColumn";
@@ -7780,10 +7235,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGridViewSelectAll(Expression<Func<string>> sAPGridViewSelectAllsearchSAPElementId, Expression<Func<string>> sAPGridViewSelectAllworkflow)
         {
-            var __workflow_sAPGridViewSelectAllsearchSAPElementId = sAPGridViewSelectAllsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGridViewSelectAllsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGridViewSelectAllsearchSAPElementId, nameof(sAPGridViewSelectAllsearchSAPElementId), required: true);
-            var __workflow_sAPGridViewSelectAllworkflow = sAPGridViewSelectAllworkflow == null ? null : WorkflowExpression.Compile(sAPGridViewSelectAllworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGridViewSelectAllworkflow, nameof(sAPGridViewSelectAllworkflow), required: true);
+            var __workflow_sAPGridViewSelectAllsearchSAPElementId = WorkflowExpression.Compile(sAPGridViewSelectAllsearchSAPElementId, nameof(sAPGridViewSelectAllsearchSAPElementId), required: true);
+            var __workflow_sAPGridViewSelectAllworkflow = WorkflowExpression.Compile(sAPGridViewSelectAllworkflow, nameof(sAPGridViewSelectAllworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewSelectAll";
@@ -7807,10 +7260,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGridViewDeselectAll(Expression<Func<string>> sAPGridViewDeselectAllsearchSAPElementId, Expression<Func<string>> sAPGridViewDeselectAllworkflow)
         {
-            var __workflow_sAPGridViewDeselectAllsearchSAPElementId = sAPGridViewDeselectAllsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGridViewDeselectAllsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGridViewDeselectAllsearchSAPElementId, nameof(sAPGridViewDeselectAllsearchSAPElementId), required: true);
-            var __workflow_sAPGridViewDeselectAllworkflow = sAPGridViewDeselectAllworkflow == null ? null : WorkflowExpression.Compile(sAPGridViewDeselectAllworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGridViewDeselectAllworkflow, nameof(sAPGridViewDeselectAllworkflow), required: true);
+            var __workflow_sAPGridViewDeselectAllsearchSAPElementId = WorkflowExpression.Compile(sAPGridViewDeselectAllsearchSAPElementId, nameof(sAPGridViewDeselectAllsearchSAPElementId), required: true);
+            var __workflow_sAPGridViewDeselectAllworkflow = WorkflowExpression.Compile(sAPGridViewDeselectAllworkflow, nameof(sAPGridViewDeselectAllworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewDeselectAll";
@@ -7834,18 +7285,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPSetSAPGridViewFirstVisibleColumnResponse> SAPSetSAPGridViewFirstVisibleColumn(Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnworkflow, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnName = null, Expression<Func<string>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle = null, Expression<Func<bool>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId = sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId), required: true);
-            var __workflow_sAPSetSAPGridViewFirstVisibleColumnworkflow = sAPSetSAPGridViewFirstVisibleColumnworkflow == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleColumnworkflow, nameof(sAPSetSAPGridViewFirstVisibleColumnworkflow), required: true);
-            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnName = sAPSetSAPGridViewFirstVisibleColumnsearchColumnName == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnName, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnName), required: false);
-            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle = sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle), required: false);
-            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression = sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive = sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchSAPElementId), required: true);
+            var __workflow_sAPSetSAPGridViewFirstVisibleColumnworkflow = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnworkflow, nameof(sAPSetSAPGridViewFirstVisibleColumnworkflow), required: true);
+            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnName = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnName, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnName), required: false);
+            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitle), required: false);
+            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive, nameof(sAPSetSAPGridViewFirstVisibleColumnsearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredBodyAction<SAPSetSAPGridViewFirstVisibleColumnResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSetSAPGridViewFirstVisibleColumn";
@@ -7913,20 +7358,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPGridViewOpenContextMenu(Expression<Func<string>> sAPGridViewOpenContextMenusearchSAPElementId, Expression<Func<int>> sAPGridViewOpenContextMenurowIndex, Expression<Func<string>> sAPGridViewOpenContextMenuworkflow, Expression<Func<string>> sAPGridViewOpenContextMenusearchColumnName = null, Expression<Func<string>> sAPGridViewOpenContextMenusearchColumnTitle = null, Expression<Func<bool>> sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive = null)
         {
-            var __workflow_sAPGridViewOpenContextMenusearchSAPElementId = sAPGridViewOpenContextMenusearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGridViewOpenContextMenusearchSAPElementId, nameof(sAPGridViewOpenContextMenusearchSAPElementId), required: true);
-            var __workflow_sAPGridViewOpenContextMenurowIndex = sAPGridViewOpenContextMenurowIndex == null ? null : WorkflowExpression.Compile(sAPGridViewOpenContextMenurowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGridViewOpenContextMenurowIndex, nameof(sAPGridViewOpenContextMenurowIndex), required: true);
-            var __workflow_sAPGridViewOpenContextMenuworkflow = sAPGridViewOpenContextMenuworkflow == null ? null : WorkflowExpression.Compile(sAPGridViewOpenContextMenuworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGridViewOpenContextMenuworkflow, nameof(sAPGridViewOpenContextMenuworkflow), required: true);
-            var __workflow_sAPGridViewOpenContextMenusearchColumnName = sAPGridViewOpenContextMenusearchColumnName == null ? null : WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGridViewOpenContextMenusearchColumnName, nameof(sAPGridViewOpenContextMenusearchColumnName), required: false);
-            var __workflow_sAPGridViewOpenContextMenusearchColumnTitle = sAPGridViewOpenContextMenusearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGridViewOpenContextMenusearchColumnTitle, nameof(sAPGridViewOpenContextMenusearchColumnTitle), required: false);
-            var __workflow_sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression = sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression, nameof(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive = sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive, nameof(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGridViewOpenContextMenusearchSAPElementId = WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchSAPElementId, nameof(sAPGridViewOpenContextMenusearchSAPElementId), required: true);
+            var __workflow_sAPGridViewOpenContextMenurowIndex = WorkflowExpression.Compile(sAPGridViewOpenContextMenurowIndex, nameof(sAPGridViewOpenContextMenurowIndex), required: true);
+            var __workflow_sAPGridViewOpenContextMenuworkflow = WorkflowExpression.Compile(sAPGridViewOpenContextMenuworkflow, nameof(sAPGridViewOpenContextMenuworkflow), required: true);
+            var __workflow_sAPGridViewOpenContextMenusearchColumnName = WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnName, nameof(sAPGridViewOpenContextMenusearchColumnName), required: false);
+            var __workflow_sAPGridViewOpenContextMenusearchColumnTitle = WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnTitle, nameof(sAPGridViewOpenContextMenusearchColumnTitle), required: false);
+            var __workflow_sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression, nameof(sAPGridViewOpenContextMenusearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive, nameof(sAPGridViewOpenContextMenusearchColumnTitleIsCaseSensitive), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGridViewOpenContextMenu";
@@ -7996,32 +7434,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IBodyWorkflowAction<SAPGetGridViewTextContentsResponse> SAPGetGridViewTextContents(Expression<Func<string>> sAPGetGridViewTextContentssearchSAPElementId, Expression<Func<string>> sAPGetGridViewTextContentsworkflow, Expression<Func<int>> sAPGetGridViewTextContentsfirstRowToReturn = null, Expression<Func<int>> sAPGetGridViewTextContentsmaxRowsToReturn = null, Expression<Func<string>> sAPGetGridViewTextContentsfirstSearchColumnName = null, Expression<Func<string>> sAPGetGridViewTextContentsfirstSearchColumnTitle = null, Expression<Func<bool>> sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression = null, Expression<Func<bool>> sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive = null, Expression<Func<int>> sAPGetGridViewTextContentsmaxColumnsToReturn = null, Expression<Func<bool>> sAPGetGridViewTextContentsuseColumnHeadersFromTable = null, Expression<Func<bool>> sAPGetGridViewTextContentsreturnRowIndexInOutputCollection = null, Expression<Func<string>> sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex = null, Expression<Func<string>> sAPGetGridViewTextContentscheckedElementValue = null)
         {
-            var __workflow_sAPGetGridViewTextContentssearchSAPElementId = sAPGetGridViewTextContentssearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentssearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentssearchSAPElementId, nameof(sAPGetGridViewTextContentssearchSAPElementId), required: true);
-            var __workflow_sAPGetGridViewTextContentsworkflow = sAPGetGridViewTextContentsworkflow == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsworkflow);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsworkflow, nameof(sAPGetGridViewTextContentsworkflow), required: true);
-            var __workflow_sAPGetGridViewTextContentsfirstRowToReturn = sAPGetGridViewTextContentsfirstRowToReturn == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstRowToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsfirstRowToReturn, nameof(sAPGetGridViewTextContentsfirstRowToReturn), required: false);
-            var __workflow_sAPGetGridViewTextContentsmaxRowsToReturn = sAPGetGridViewTextContentsmaxRowsToReturn == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsmaxRowsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsmaxRowsToReturn, nameof(sAPGetGridViewTextContentsmaxRowsToReturn), required: false);
-            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnName = sAPGetGridViewTextContentsfirstSearchColumnName == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnName);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsfirstSearchColumnName, nameof(sAPGetGridViewTextContentsfirstSearchColumnName), required: false);
-            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnTitle = sAPGetGridViewTextContentsfirstSearchColumnTitle == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnTitle);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsfirstSearchColumnTitle, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitle), required: false);
-            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression = sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression), required: false);
-            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive = sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive), required: false);
-            var __workflow_sAPGetGridViewTextContentsmaxColumnsToReturn = sAPGetGridViewTextContentsmaxColumnsToReturn == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsmaxColumnsToReturn);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsmaxColumnsToReturn, nameof(sAPGetGridViewTextContentsmaxColumnsToReturn), required: false);
-            var __workflow_sAPGetGridViewTextContentsuseColumnHeadersFromTable = sAPGetGridViewTextContentsuseColumnHeadersFromTable == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsuseColumnHeadersFromTable);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsuseColumnHeadersFromTable, nameof(sAPGetGridViewTextContentsuseColumnHeadersFromTable), required: false);
-            var __workflow_sAPGetGridViewTextContentsreturnRowIndexInOutputCollection = sAPGetGridViewTextContentsreturnRowIndexInOutputCollection == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection), required: false);
-            var __workflow_sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex = sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex), required: false);
-            var __workflow_sAPGetGridViewTextContentscheckedElementValue = sAPGetGridViewTextContentscheckedElementValue == null ? null : WorkflowExpression.Compile(sAPGetGridViewTextContentscheckedElementValue);
-            WorkflowExpression.Validate(__workflow_sAPGetGridViewTextContentscheckedElementValue, nameof(sAPGetGridViewTextContentscheckedElementValue), required: false);
+            var __workflow_sAPGetGridViewTextContentssearchSAPElementId = WorkflowExpression.Compile(sAPGetGridViewTextContentssearchSAPElementId, nameof(sAPGetGridViewTextContentssearchSAPElementId), required: true);
+            var __workflow_sAPGetGridViewTextContentsworkflow = WorkflowExpression.Compile(sAPGetGridViewTextContentsworkflow, nameof(sAPGetGridViewTextContentsworkflow), required: true);
+            var __workflow_sAPGetGridViewTextContentsfirstRowToReturn = WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstRowToReturn, nameof(sAPGetGridViewTextContentsfirstRowToReturn), required: false);
+            var __workflow_sAPGetGridViewTextContentsmaxRowsToReturn = WorkflowExpression.Compile(sAPGetGridViewTextContentsmaxRowsToReturn, nameof(sAPGetGridViewTextContentsmaxRowsToReturn), required: false);
+            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnName = WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnName, nameof(sAPGetGridViewTextContentsfirstSearchColumnName), required: false);
+            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnTitle = WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnTitle, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitle), required: false);
+            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression = WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitleIsRegularExpression), required: false);
+            var __workflow_sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive = WorkflowExpression.Compile(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive, nameof(sAPGetGridViewTextContentsfirstSearchColumnTitleIsCaseSensitive), required: false);
+            var __workflow_sAPGetGridViewTextContentsmaxColumnsToReturn = WorkflowExpression.Compile(sAPGetGridViewTextContentsmaxColumnsToReturn, nameof(sAPGetGridViewTextContentsmaxColumnsToReturn), required: false);
+            var __workflow_sAPGetGridViewTextContentsuseColumnHeadersFromTable = WorkflowExpression.Compile(sAPGetGridViewTextContentsuseColumnHeadersFromTable, nameof(sAPGetGridViewTextContentsuseColumnHeadersFromTable), required: false);
+            var __workflow_sAPGetGridViewTextContentsreturnRowIndexInOutputCollection = WorkflowExpression.Compile(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection, nameof(sAPGetGridViewTextContentsreturnRowIndexInOutputCollection), required: false);
+            var __workflow_sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex = WorkflowExpression.Compile(sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex, nameof(sAPGetGridViewTextContentsnameOfColumnToStoreRowIndex), required: false);
+            var __workflow_sAPGetGridViewTextContentscheckedElementValue = WorkflowExpression.Compile(sAPGetGridViewTextContentscheckedElementValue, nameof(sAPGetGridViewTextContentscheckedElementValue), required: false);
             return new DeferredBodyAction<SAPGetGridViewTextContentsResponse>(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPGetGridViewTextContents";
@@ -8191,14 +7616,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectCalendarMonth(Expression<Func<string>> sAPSelectCalendarMonthsearchSAPElementId, Expression<Func<int>> sAPSelectCalendarMonthmonth, Expression<Func<int>> sAPSelectCalendarMonthyear, Expression<Func<string>> sAPSelectCalendarMonthworkflow)
         {
-            var __workflow_sAPSelectCalendarMonthsearchSAPElementId = sAPSelectCalendarMonthsearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectCalendarMonthsearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarMonthsearchSAPElementId, nameof(sAPSelectCalendarMonthsearchSAPElementId), required: true);
-            var __workflow_sAPSelectCalendarMonthmonth = sAPSelectCalendarMonthmonth == null ? null : WorkflowExpression.Compile(sAPSelectCalendarMonthmonth);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarMonthmonth, nameof(sAPSelectCalendarMonthmonth), required: true);
-            var __workflow_sAPSelectCalendarMonthyear = sAPSelectCalendarMonthyear == null ? null : WorkflowExpression.Compile(sAPSelectCalendarMonthyear);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarMonthyear, nameof(sAPSelectCalendarMonthyear), required: true);
-            var __workflow_sAPSelectCalendarMonthworkflow = sAPSelectCalendarMonthworkflow == null ? null : WorkflowExpression.Compile(sAPSelectCalendarMonthworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarMonthworkflow, nameof(sAPSelectCalendarMonthworkflow), required: true);
+            var __workflow_sAPSelectCalendarMonthsearchSAPElementId = WorkflowExpression.Compile(sAPSelectCalendarMonthsearchSAPElementId, nameof(sAPSelectCalendarMonthsearchSAPElementId), required: true);
+            var __workflow_sAPSelectCalendarMonthmonth = WorkflowExpression.Compile(sAPSelectCalendarMonthmonth, nameof(sAPSelectCalendarMonthmonth), required: true);
+            var __workflow_sAPSelectCalendarMonthyear = WorkflowExpression.Compile(sAPSelectCalendarMonthyear, nameof(sAPSelectCalendarMonthyear), required: true);
+            var __workflow_sAPSelectCalendarMonthworkflow = WorkflowExpression.Compile(sAPSelectCalendarMonthworkflow, nameof(sAPSelectCalendarMonthworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarMonth";
@@ -8226,14 +7647,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectCalendarWeek(Expression<Func<string>> sAPSelectCalendarWeeksearchSAPElementId, Expression<Func<int>> sAPSelectCalendarWeekweek, Expression<Func<int>> sAPSelectCalendarWeekyear, Expression<Func<string>> sAPSelectCalendarWeekworkflow)
         {
-            var __workflow_sAPSelectCalendarWeeksearchSAPElementId = sAPSelectCalendarWeeksearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectCalendarWeeksearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarWeeksearchSAPElementId, nameof(sAPSelectCalendarWeeksearchSAPElementId), required: true);
-            var __workflow_sAPSelectCalendarWeekweek = sAPSelectCalendarWeekweek == null ? null : WorkflowExpression.Compile(sAPSelectCalendarWeekweek);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarWeekweek, nameof(sAPSelectCalendarWeekweek), required: true);
-            var __workflow_sAPSelectCalendarWeekyear = sAPSelectCalendarWeekyear == null ? null : WorkflowExpression.Compile(sAPSelectCalendarWeekyear);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarWeekyear, nameof(sAPSelectCalendarWeekyear), required: true);
-            var __workflow_sAPSelectCalendarWeekworkflow = sAPSelectCalendarWeekworkflow == null ? null : WorkflowExpression.Compile(sAPSelectCalendarWeekworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarWeekworkflow, nameof(sAPSelectCalendarWeekworkflow), required: true);
+            var __workflow_sAPSelectCalendarWeeksearchSAPElementId = WorkflowExpression.Compile(sAPSelectCalendarWeeksearchSAPElementId, nameof(sAPSelectCalendarWeeksearchSAPElementId), required: true);
+            var __workflow_sAPSelectCalendarWeekweek = WorkflowExpression.Compile(sAPSelectCalendarWeekweek, nameof(sAPSelectCalendarWeekweek), required: true);
+            var __workflow_sAPSelectCalendarWeekyear = WorkflowExpression.Compile(sAPSelectCalendarWeekyear, nameof(sAPSelectCalendarWeekyear), required: true);
+            var __workflow_sAPSelectCalendarWeekworkflow = WorkflowExpression.Compile(sAPSelectCalendarWeekworkflow, nameof(sAPSelectCalendarWeekworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarWeek";
@@ -8261,14 +7678,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPSelectCalendarRange(Expression<Func<string>> sAPSelectCalendarRangesearchSAPElementId, Expression<Func<string>> sAPSelectCalendarRangefromDateYYYYMMDD, Expression<Func<string>> sAPSelectCalendarRangetoDateYYYYMMDD, Expression<Func<string>> sAPSelectCalendarRangeworkflow)
         {
-            var __workflow_sAPSelectCalendarRangesearchSAPElementId = sAPSelectCalendarRangesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPSelectCalendarRangesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarRangesearchSAPElementId, nameof(sAPSelectCalendarRangesearchSAPElementId), required: true);
-            var __workflow_sAPSelectCalendarRangefromDateYYYYMMDD = sAPSelectCalendarRangefromDateYYYYMMDD == null ? null : WorkflowExpression.Compile(sAPSelectCalendarRangefromDateYYYYMMDD);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarRangefromDateYYYYMMDD, nameof(sAPSelectCalendarRangefromDateYYYYMMDD), required: true);
-            var __workflow_sAPSelectCalendarRangetoDateYYYYMMDD = sAPSelectCalendarRangetoDateYYYYMMDD == null ? null : WorkflowExpression.Compile(sAPSelectCalendarRangetoDateYYYYMMDD);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarRangetoDateYYYYMMDD, nameof(sAPSelectCalendarRangetoDateYYYYMMDD), required: true);
-            var __workflow_sAPSelectCalendarRangeworkflow = sAPSelectCalendarRangeworkflow == null ? null : WorkflowExpression.Compile(sAPSelectCalendarRangeworkflow);
-            WorkflowExpression.Validate(__workflow_sAPSelectCalendarRangeworkflow, nameof(sAPSelectCalendarRangeworkflow), required: true);
+            var __workflow_sAPSelectCalendarRangesearchSAPElementId = WorkflowExpression.Compile(sAPSelectCalendarRangesearchSAPElementId, nameof(sAPSelectCalendarRangesearchSAPElementId), required: true);
+            var __workflow_sAPSelectCalendarRangefromDateYYYYMMDD = WorkflowExpression.Compile(sAPSelectCalendarRangefromDateYYYYMMDD, nameof(sAPSelectCalendarRangefromDateYYYYMMDD), required: true);
+            var __workflow_sAPSelectCalendarRangetoDateYYYYMMDD = WorkflowExpression.Compile(sAPSelectCalendarRangetoDateYYYYMMDD, nameof(sAPSelectCalendarRangetoDateYYYYMMDD), required: true);
+            var __workflow_sAPSelectCalendarRangeworkflow = WorkflowExpression.Compile(sAPSelectCalendarRangeworkflow, nameof(sAPSelectCalendarRangeworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPSelectCalendarRange";
@@ -8296,12 +7709,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectsapgui
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectsapgui")]
         public IWorkflowAction SAPFocusCalendarDate(Expression<Func<string>> sAPFocusCalendarDatesearchSAPElementId, Expression<Func<string>> sAPFocusCalendarDatedateYYYYMMDD, Expression<Func<string>> sAPFocusCalendarDateworkflow)
         {
-            var __workflow_sAPFocusCalendarDatesearchSAPElementId = sAPFocusCalendarDatesearchSAPElementId == null ? null : WorkflowExpression.Compile(sAPFocusCalendarDatesearchSAPElementId);
-            WorkflowExpression.Validate(__workflow_sAPFocusCalendarDatesearchSAPElementId, nameof(sAPFocusCalendarDatesearchSAPElementId), required: true);
-            var __workflow_sAPFocusCalendarDatedateYYYYMMDD = sAPFocusCalendarDatedateYYYYMMDD == null ? null : WorkflowExpression.Compile(sAPFocusCalendarDatedateYYYYMMDD);
-            WorkflowExpression.Validate(__workflow_sAPFocusCalendarDatedateYYYYMMDD, nameof(sAPFocusCalendarDatedateYYYYMMDD), required: true);
-            var __workflow_sAPFocusCalendarDateworkflow = sAPFocusCalendarDateworkflow == null ? null : WorkflowExpression.Compile(sAPFocusCalendarDateworkflow);
-            WorkflowExpression.Validate(__workflow_sAPFocusCalendarDateworkflow, nameof(sAPFocusCalendarDateworkflow), required: true);
+            var __workflow_sAPFocusCalendarDatesearchSAPElementId = WorkflowExpression.Compile(sAPFocusCalendarDatesearchSAPElementId, nameof(sAPFocusCalendarDatesearchSAPElementId), required: true);
+            var __workflow_sAPFocusCalendarDatedateYYYYMMDD = WorkflowExpression.Compile(sAPFocusCalendarDatedateYYYYMMDD, nameof(sAPFocusCalendarDatedateYYYYMMDD), required: true);
+            var __workflow_sAPFocusCalendarDateworkflow = WorkflowExpression.Compile(sAPFocusCalendarDateworkflow, nameof(sAPFocusCalendarDateworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/SAPGUI/SAPFocusCalendarDate";

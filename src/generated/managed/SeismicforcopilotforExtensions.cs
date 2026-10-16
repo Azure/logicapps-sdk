@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<ExternalRelatedRecordListResponseEnvelope> ScpGetRelatedRecords(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
         {
-            var __workflow_recordType = recordType == null ? null : WorkflowExpression.Compile(recordType);
-            WorkflowExpression.Validate(__workflow_recordType, nameof(recordType), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_crmType = crmType == null ? null : WorkflowExpression.Compile(crmType);
-            WorkflowExpression.Validate(__workflow_crmType, nameof(crmType), required: false);
-            var __workflow_crmOrgUrl = crmOrgUrl == null ? null : WorkflowExpression.Compile(crmOrgUrl);
-            WorkflowExpression.Validate(__workflow_crmOrgUrl, nameof(crmOrgUrl), required: false);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
             return new DeferredBodyAction<ExternalRelatedRecordListResponseEnvelope>(() =>
             {
                 var apiCallPath = "/connector/relatedRecords";
@@ -48,22 +42,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<ActivityListResponseEnvelope> ScpGetRelatedActivities(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> startDateTime = null, Expression<Func<string>> endDateTime = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<crmTypeInput>> crmType = null, Expression<Func<string>> crmOrgUrl = null)
         {
-            var __workflow_recordType = recordType == null ? null : WorkflowExpression.Compile(recordType);
-            WorkflowExpression.Validate(__workflow_recordType, nameof(recordType), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: false);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_crmType = crmType == null ? null : WorkflowExpression.Compile(crmType);
-            WorkflowExpression.Validate(__workflow_crmType, nameof(crmType), required: false);
-            var __workflow_crmOrgUrl = crmOrgUrl == null ? null : WorkflowExpression.Compile(crmOrgUrl);
-            WorkflowExpression.Validate(__workflow_crmOrgUrl, nameof(crmOrgUrl), required: false);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: false);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
             return new DeferredBodyAction<ActivityListResponseEnvelope>(() =>
             {
                 var apiCallPath = "/connector/relatedActivities";
@@ -90,18 +76,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<SalesHighlightListResponseEnvelope> ScpGetSalesHighlights(Expression<Func<recordTypeInput>> recordType, Expression<Func<string>> recordId, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_recordType = recordType == null ? null : WorkflowExpression.Compile(recordType);
-            WorkflowExpression.Validate(__workflow_recordType, nameof(recordType), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_crmType = crmType == null ? null : WorkflowExpression.Compile(crmType);
-            WorkflowExpression.Validate(__workflow_crmType, nameof(crmType), required: false);
-            var __workflow_crmOrgUrl = crmOrgUrl == null ? null : WorkflowExpression.Compile(crmOrgUrl);
-            WorkflowExpression.Validate(__workflow_crmOrgUrl, nameof(crmOrgUrl), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredBodyAction<SalesHighlightListResponseEnvelope>(() =>
             {
                 var apiCallPath = "/connector/salesHighlights";
@@ -124,20 +104,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<EmailSummeryResponseEnvelope> ScpGetEmailInsights(Expression<Func<string>> emailContacts, Expression<Func<string>> recordType = null, Expression<Func<string>> recordId = null, Expression<Func<string>> crmType = null, Expression<Func<string>> crmOrgUrl = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_emailContacts = emailContacts == null ? null : WorkflowExpression.Compile(emailContacts);
-            WorkflowExpression.Validate(__workflow_emailContacts, nameof(emailContacts), required: true);
-            var __workflow_recordType = recordType == null ? null : WorkflowExpression.Compile(recordType);
-            WorkflowExpression.Validate(__workflow_recordType, nameof(recordType), required: false);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: false);
-            var __workflow_crmType = crmType == null ? null : WorkflowExpression.Compile(crmType);
-            WorkflowExpression.Validate(__workflow_crmType, nameof(crmType), required: false);
-            var __workflow_crmOrgUrl = crmOrgUrl == null ? null : WorkflowExpression.Compile(crmOrgUrl);
-            WorkflowExpression.Validate(__workflow_crmOrgUrl, nameof(crmOrgUrl), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_emailContacts = WorkflowExpression.Compile(emailContacts, nameof(emailContacts), required: true);
+            var __workflow_recordType = WorkflowExpression.Compile(recordType, nameof(recordType), required: false);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: false);
+            var __workflow_crmType = WorkflowExpression.Compile(crmType, nameof(crmType), required: false);
+            var __workflow_crmOrgUrl = WorkflowExpression.Compile(crmOrgUrl, nameof(crmOrgUrl), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredBodyAction<EmailSummeryResponseEnvelope>(() =>
             {
                 var apiCallPath = "/connector/emailInsights";
@@ -163,46 +136,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicforcopilotfor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicforcopilotfor")]
         public IBodyWorkflowAction<EmailDraftResponseEnvelope> ScpGetContentSuggestions(Expression<Func<string>> requestBodyresourceType, Expression<Func<string>> xMsMessageId = null, Expression<Func<string>> xMsConversationId = null, Expression<Func<string>> requestBodyresourceDataplainTextBody = null, Expression<Func<string>> requestBodyresourceDatafullHTMLBody = null, Expression<Func<string>> requestBodyresourceDatasubject = null, Expression<Func<string>> requestBodyresourceDatafrom = null, Expression<Func<string[]>> requestBodyresourceDatato = null, Expression<Func<string[]>> requestBodyresourceDatacC = null, Expression<Func<string[]>> requestBodyresourceDatabCC = null, Expression<Func<string>> requestBodyresourceDatasentDateTime = null, Expression<Func<string>> requestBodyresourceDatatheGraphMessageId = null, Expression<Func<string>> requestBodyresourceDatatheGraphConversationID = null, Expression<Func<string>> requestBodyrecordType = null, Expression<Func<string>> requestBodyrecordID = null, Expression<Func<string>> requestBodycRMType = null, Expression<Func<string>> requestBodycRMOrgURL = null, Expression<Func<string>> requestBodyinputPrompt = null, Expression<Func<int>> requestBodytop = null, Expression<Func<int>> requestBodyskip = null)
         {
-            var __workflow_requestBodyresourceType = requestBodyresourceType == null ? null : WorkflowExpression.Compile(requestBodyresourceType);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceType, nameof(requestBodyresourceType), required: true);
-            var __workflow_xMsMessageId = xMsMessageId == null ? null : WorkflowExpression.Compile(xMsMessageId);
-            WorkflowExpression.Validate(__workflow_xMsMessageId, nameof(xMsMessageId), required: false);
-            var __workflow_xMsConversationId = xMsConversationId == null ? null : WorkflowExpression.Compile(xMsConversationId);
-            WorkflowExpression.Validate(__workflow_xMsConversationId, nameof(xMsConversationId), required: false);
-            var __workflow_requestBodyresourceDataplainTextBody = requestBodyresourceDataplainTextBody == null ? null : WorkflowExpression.Compile(requestBodyresourceDataplainTextBody);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDataplainTextBody, nameof(requestBodyresourceDataplainTextBody), required: false);
-            var __workflow_requestBodyresourceDatafullHTMLBody = requestBodyresourceDatafullHTMLBody == null ? null : WorkflowExpression.Compile(requestBodyresourceDatafullHTMLBody);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatafullHTMLBody, nameof(requestBodyresourceDatafullHTMLBody), required: false);
-            var __workflow_requestBodyresourceDatasubject = requestBodyresourceDatasubject == null ? null : WorkflowExpression.Compile(requestBodyresourceDatasubject);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatasubject, nameof(requestBodyresourceDatasubject), required: false);
-            var __workflow_requestBodyresourceDatafrom = requestBodyresourceDatafrom == null ? null : WorkflowExpression.Compile(requestBodyresourceDatafrom);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatafrom, nameof(requestBodyresourceDatafrom), required: false);
-            var __workflow_requestBodyresourceDatato = requestBodyresourceDatato == null ? null : WorkflowExpression.Compile(requestBodyresourceDatato);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatato, nameof(requestBodyresourceDatato), required: false);
-            var __workflow_requestBodyresourceDatacC = requestBodyresourceDatacC == null ? null : WorkflowExpression.Compile(requestBodyresourceDatacC);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatacC, nameof(requestBodyresourceDatacC), required: false);
-            var __workflow_requestBodyresourceDatabCC = requestBodyresourceDatabCC == null ? null : WorkflowExpression.Compile(requestBodyresourceDatabCC);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatabCC, nameof(requestBodyresourceDatabCC), required: false);
-            var __workflow_requestBodyresourceDatasentDateTime = requestBodyresourceDatasentDateTime == null ? null : WorkflowExpression.Compile(requestBodyresourceDatasentDateTime);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatasentDateTime, nameof(requestBodyresourceDatasentDateTime), required: false);
-            var __workflow_requestBodyresourceDatatheGraphMessageId = requestBodyresourceDatatheGraphMessageId == null ? null : WorkflowExpression.Compile(requestBodyresourceDatatheGraphMessageId);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatatheGraphMessageId, nameof(requestBodyresourceDatatheGraphMessageId), required: false);
-            var __workflow_requestBodyresourceDatatheGraphConversationID = requestBodyresourceDatatheGraphConversationID == null ? null : WorkflowExpression.Compile(requestBodyresourceDatatheGraphConversationID);
-            WorkflowExpression.Validate(__workflow_requestBodyresourceDatatheGraphConversationID, nameof(requestBodyresourceDatatheGraphConversationID), required: false);
-            var __workflow_requestBodyrecordType = requestBodyrecordType == null ? null : WorkflowExpression.Compile(requestBodyrecordType);
-            WorkflowExpression.Validate(__workflow_requestBodyrecordType, nameof(requestBodyrecordType), required: false);
-            var __workflow_requestBodyrecordID = requestBodyrecordID == null ? null : WorkflowExpression.Compile(requestBodyrecordID);
-            WorkflowExpression.Validate(__workflow_requestBodyrecordID, nameof(requestBodyrecordID), required: false);
-            var __workflow_requestBodycRMType = requestBodycRMType == null ? null : WorkflowExpression.Compile(requestBodycRMType);
-            WorkflowExpression.Validate(__workflow_requestBodycRMType, nameof(requestBodycRMType), required: false);
-            var __workflow_requestBodycRMOrgURL = requestBodycRMOrgURL == null ? null : WorkflowExpression.Compile(requestBodycRMOrgURL);
-            WorkflowExpression.Validate(__workflow_requestBodycRMOrgURL, nameof(requestBodycRMOrgURL), required: false);
-            var __workflow_requestBodyinputPrompt = requestBodyinputPrompt == null ? null : WorkflowExpression.Compile(requestBodyinputPrompt);
-            WorkflowExpression.Validate(__workflow_requestBodyinputPrompt, nameof(requestBodyinputPrompt), required: false);
-            var __workflow_requestBodytop = requestBodytop == null ? null : WorkflowExpression.Compile(requestBodytop);
-            WorkflowExpression.Validate(__workflow_requestBodytop, nameof(requestBodytop), required: false);
-            var __workflow_requestBodyskip = requestBodyskip == null ? null : WorkflowExpression.Compile(requestBodyskip);
-            WorkflowExpression.Validate(__workflow_requestBodyskip, nameof(requestBodyskip), required: false);
+            var __workflow_requestBodyresourceType = WorkflowExpression.Compile(requestBodyresourceType, nameof(requestBodyresourceType), required: true);
+            var __workflow_xMsMessageId = WorkflowExpression.Compile(xMsMessageId, nameof(xMsMessageId), required: false);
+            var __workflow_xMsConversationId = WorkflowExpression.Compile(xMsConversationId, nameof(xMsConversationId), required: false);
+            var __workflow_requestBodyresourceDataplainTextBody = WorkflowExpression.Compile(requestBodyresourceDataplainTextBody, nameof(requestBodyresourceDataplainTextBody), required: false);
+            var __workflow_requestBodyresourceDatafullHTMLBody = WorkflowExpression.Compile(requestBodyresourceDatafullHTMLBody, nameof(requestBodyresourceDatafullHTMLBody), required: false);
+            var __workflow_requestBodyresourceDatasubject = WorkflowExpression.Compile(requestBodyresourceDatasubject, nameof(requestBodyresourceDatasubject), required: false);
+            var __workflow_requestBodyresourceDatafrom = WorkflowExpression.Compile(requestBodyresourceDatafrom, nameof(requestBodyresourceDatafrom), required: false);
+            var __workflow_requestBodyresourceDatato = WorkflowExpression.Compile(requestBodyresourceDatato, nameof(requestBodyresourceDatato), required: false);
+            var __workflow_requestBodyresourceDatacC = WorkflowExpression.Compile(requestBodyresourceDatacC, nameof(requestBodyresourceDatacC), required: false);
+            var __workflow_requestBodyresourceDatabCC = WorkflowExpression.Compile(requestBodyresourceDatabCC, nameof(requestBodyresourceDatabCC), required: false);
+            var __workflow_requestBodyresourceDatasentDateTime = WorkflowExpression.Compile(requestBodyresourceDatasentDateTime, nameof(requestBodyresourceDatasentDateTime), required: false);
+            var __workflow_requestBodyresourceDatatheGraphMessageId = WorkflowExpression.Compile(requestBodyresourceDatatheGraphMessageId, nameof(requestBodyresourceDatatheGraphMessageId), required: false);
+            var __workflow_requestBodyresourceDatatheGraphConversationID = WorkflowExpression.Compile(requestBodyresourceDatatheGraphConversationID, nameof(requestBodyresourceDatatheGraphConversationID), required: false);
+            var __workflow_requestBodyrecordType = WorkflowExpression.Compile(requestBodyrecordType, nameof(requestBodyrecordType), required: false);
+            var __workflow_requestBodyrecordID = WorkflowExpression.Compile(requestBodyrecordID, nameof(requestBodyrecordID), required: false);
+            var __workflow_requestBodycRMType = WorkflowExpression.Compile(requestBodycRMType, nameof(requestBodycRMType), required: false);
+            var __workflow_requestBodycRMOrgURL = WorkflowExpression.Compile(requestBodycRMOrgURL, nameof(requestBodycRMOrgURL), required: false);
+            var __workflow_requestBodyinputPrompt = WorkflowExpression.Compile(requestBodyinputPrompt, nameof(requestBodyinputPrompt), required: false);
+            var __workflow_requestBodytop = WorkflowExpression.Compile(requestBodytop, nameof(requestBodytop), required: false);
+            var __workflow_requestBodyskip = WorkflowExpression.Compile(requestBodyskip, nameof(requestBodyskip), required: false);
             return new DeferredBodyAction<EmailDraftResponseEnvelope>(() =>
             {
                 var apiCallPath = "/connector/contentSuggestions";

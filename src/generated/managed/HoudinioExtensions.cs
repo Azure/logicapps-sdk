@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         public IBodyWorkflowAction<ScanResponse> LaunchScan(Expression<Func<string>> bodyartifact, Expression<Func<string[]>> bodyscanOn = null)
         {
-            var __workflow_bodyartifact = bodyartifact == null ? null : WorkflowExpression.Compile(bodyartifact);
-            WorkflowExpression.Validate(__workflow_bodyartifact, nameof(bodyartifact), required: true);
-            var __workflow_bodyscanOn = bodyscanOn == null ? null : WorkflowExpression.Compile(bodyscanOn);
-            WorkflowExpression.Validate(__workflow_bodyscanOn, nameof(bodyscanOn), required: false);
+            var __workflow_bodyartifact = WorkflowExpression.Compile(bodyartifact, nameof(bodyartifact), required: true);
+            var __workflow_bodyscanOn = WorkflowExpression.Compile(bodyscanOn, nameof(bodyscanOn), required: false);
             return new DeferredBodyAction<ScanResponse>(() =>
             {
                 var apiCallPath = "/scan/launch";
@@ -44,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houdinio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houdinio")]
         public IBodyWorkflowAction<ScanResult> RetrieveScan(Expression<Func<string>> scanID)
         {
-            var __workflow_scanID = scanID == null ? null : WorkflowExpression.Compile(scanID);
-            WorkflowExpression.Validate(__workflow_scanID, nameof(scanID), required: true);
+            var __workflow_scanID = WorkflowExpression.Compile(scanID, nameof(scanID), required: true);
             return new DeferredBodyAction<ScanResult>(() =>
             {
                 var apiCallPath = "/scan/result";

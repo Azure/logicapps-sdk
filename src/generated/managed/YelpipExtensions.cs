@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<BusinessSearchResponse> BusinessSearch(Expression<Func<string>> term, Expression<Func<string>> location, Expression<Func<double>> latitude = null, Expression<Func<double>> longtitude = null, Expression<Func<int>> radius = null, Expression<Func<string>> categories = null, Expression<Func<string>> locale = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<bool>> openNow = null)
         {
-            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
-            WorkflowExpression.Validate(__workflow_term, nameof(term), required: true);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: false);
-            var __workflow_longtitude = longtitude == null ? null : WorkflowExpression.Compile(longtitude);
-            WorkflowExpression.Validate(__workflow_longtitude, nameof(longtitude), required: false);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_categories = categories == null ? null : WorkflowExpression.Compile(categories);
-            WorkflowExpression.Validate(__workflow_categories, nameof(categories), required: false);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_openNow = openNow == null ? null : WorkflowExpression.Compile(openNow);
-            WorkflowExpression.Validate(__workflow_openNow, nameof(openNow), required: false);
+            var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: false);
+            var __workflow_longtitude = WorkflowExpression.Compile(longtitude, nameof(longtitude), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_categories = WorkflowExpression.Compile(categories, nameof(categories), required: false);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_openNow = WorkflowExpression.Compile(openNow, nameof(openNow), required: false);
             return new DeferredBodyAction<BusinessSearchResponse>(() =>
             {
                 var apiCallPath = "/v3/businesses/search";
@@ -67,10 +56,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<PhoneSearchResponse> PhoneSearch(Expression<Func<string>> phone, Expression<Func<string>> locale = null)
         {
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: true);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
             return new DeferredBodyAction<PhoneSearchResponse>(() =>
             {
                 var apiCallPath = "/v3/businesses/search/phone";
@@ -86,10 +73,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<BusinessDetailsResponse> BusinessDetails(Expression<Func<string>> id, Expression<Func<string>> locale = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
             return new DeferredBodyAction<BusinessDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/businesses/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -104,34 +89,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<BusinessMatchResponseItem[]> BusinessMatch(Expression<Func<string>> name, Expression<Func<string>> address1, Expression<Func<string>> city, Expression<Func<string>> state, Expression<Func<string>> country, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<string>> phone = null, Expression<Func<string>> zipCode = null, Expression<Func<string>> yelpBusinessId = null, Expression<Func<int>> limit = null, Expression<Func<matchThresholdInput>> matchThreshold = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_address1 = address1 == null ? null : WorkflowExpression.Compile(address1);
-            WorkflowExpression.Validate(__workflow_address1, nameof(address1), required: true);
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: true);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_address2 = address2 == null ? null : WorkflowExpression.Compile(address2);
-            WorkflowExpression.Validate(__workflow_address2, nameof(address2), required: false);
-            var __workflow_address3 = address3 == null ? null : WorkflowExpression.Compile(address3);
-            WorkflowExpression.Validate(__workflow_address3, nameof(address3), required: false);
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: false);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: false);
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: false);
-            var __workflow_zipCode = zipCode == null ? null : WorkflowExpression.Compile(zipCode);
-            WorkflowExpression.Validate(__workflow_zipCode, nameof(zipCode), required: false);
-            var __workflow_yelpBusinessId = yelpBusinessId == null ? null : WorkflowExpression.Compile(yelpBusinessId);
-            WorkflowExpression.Validate(__workflow_yelpBusinessId, nameof(yelpBusinessId), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_matchThreshold = matchThreshold == null ? null : WorkflowExpression.Compile(matchThreshold);
-            WorkflowExpression.Validate(__workflow_matchThreshold, nameof(matchThreshold), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_address1 = WorkflowExpression.Compile(address1, nameof(address1), required: true);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: true);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_address2 = WorkflowExpression.Compile(address2, nameof(address2), required: false);
+            var __workflow_address3 = WorkflowExpression.Compile(address3, nameof(address3), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: false);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: false);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: false);
+            var __workflow_zipCode = WorkflowExpression.Compile(zipCode, nameof(zipCode), required: false);
+            var __workflow_yelpBusinessId = WorkflowExpression.Compile(yelpBusinessId, nameof(yelpBusinessId), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_matchThreshold = WorkflowExpression.Compile(matchThreshold, nameof(matchThreshold), required: false);
             return new DeferredBodyAction<BusinessMatchResponseItem[]>(() =>
             {
                 var apiCallPath = "/v3/businesses/matches";
@@ -167,10 +138,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<ReviewsResponse> Reviews(Expression<Func<string>> id, Expression<Func<string>> locale = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
             return new DeferredBodyAction<ReviewsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/businesses/{0}/reviews", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -185,14 +154,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yelpip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yelpip")]
         public IBodyWorkflowAction<AutocompleteResponse> Autocomplete(Expression<Func<string>> text, Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<string>> locale = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
             return new DeferredBodyAction<AutocompleteResponse>(() =>
             {
                 var apiCallPath = "/v3/autocomplete";

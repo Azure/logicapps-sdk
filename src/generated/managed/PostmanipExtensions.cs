@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListWorkspacesResponse> ListWorkspaces(Expression<Func<typeInput>> type = null)
         {
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<ListWorkspacesResponse>(() =>
             {
                 var apiCallPath = "/workspaces";
@@ -29,12 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<CreateAWorkspaceResponse> CreateAWorkspace(Expression<Func<string>> bodyworkspacename, Expression<Func<bodyworkspacetypeInput>> bodyworkspacetype, Expression<Func<string>> bodyworkspacedescription = null)
         {
-            var __workflow_bodyworkspacename = bodyworkspacename == null ? null : WorkflowExpression.Compile(bodyworkspacename);
-            WorkflowExpression.Validate(__workflow_bodyworkspacename, nameof(bodyworkspacename), required: true);
-            var __workflow_bodyworkspacetype = bodyworkspacetype == null ? null : WorkflowExpression.Compile(bodyworkspacetype);
-            WorkflowExpression.Validate(__workflow_bodyworkspacetype, nameof(bodyworkspacetype), required: true);
-            var __workflow_bodyworkspacedescription = bodyworkspacedescription == null ? null : WorkflowExpression.Compile(bodyworkspacedescription);
-            WorkflowExpression.Validate(__workflow_bodyworkspacedescription, nameof(bodyworkspacedescription), required: false);
+            var __workflow_bodyworkspacename = WorkflowExpression.Compile(bodyworkspacename, nameof(bodyworkspacename), required: true);
+            var __workflow_bodyworkspacetype = WorkflowExpression.Compile(bodyworkspacetype, nameof(bodyworkspacetype), required: true);
+            var __workflow_bodyworkspacedescription = WorkflowExpression.Compile(bodyworkspacedescription, nameof(bodyworkspacedescription), required: false);
             return new DeferredBodyAction<CreateAWorkspaceResponse>(() =>
             {
                 var apiCallPath = "/workspaces";
@@ -73,8 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetWorkspaceResponse> GetWorkspace(Expression<Func<string>> workspaceId)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             return new DeferredBodyAction<GetWorkspaceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workspaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
@@ -96,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListEnvironmentsResponse> ListEnvironments(Expression<Func<string>> workspace = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<ListEnvironmentsResponse>(() =>
             {
                 var apiCallPath = "/environments";
@@ -112,8 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetEnvironmentResponse> GetEnvironment(Expression<Func<string>> environmentId)
         {
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
             return new DeferredBodyAction<GetEnvironmentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/environments/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1));
@@ -126,8 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ListCollectionsResponse> ListCollections(Expression<Func<string>> workspace = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<ListCollectionsResponse>(() =>
             {
                 var apiCallPath = "/collections";
@@ -142,10 +134,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<GetCollectionResponse> GetCollection(Expression<Func<string>> collectionId, Expression<Func<string>> accessKey = null)
         {
-            var __workflow_collectionId = collectionId == null ? null : WorkflowExpression.Compile(collectionId);
-            WorkflowExpression.Validate(__workflow_collectionId, nameof(collectionId), required: true);
-            var __workflow_accessKey = accessKey == null ? null : WorkflowExpression.Compile(accessKey);
-            WorkflowExpression.Validate(__workflow_accessKey, nameof(accessKey), required: false);
+            var __workflow_collectionId = WorkflowExpression.Compile(collectionId, nameof(collectionId), required: true);
+            var __workflow_accessKey = WorkflowExpression.Compile(accessKey, nameof(accessKey), required: false);
             return new DeferredBodyAction<GetCollectionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionId, 1));
@@ -160,8 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Postmanip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "postmanip")]
         public IBodyWorkflowAction<ImportOpenApiResponse> ImportOpenApi(Expression<Func<string>> workspace = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: false);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: false);
             return new DeferredBodyAction<ImportOpenApiResponse>(() =>
             {
                 var apiCallPath = "/import/openapi";

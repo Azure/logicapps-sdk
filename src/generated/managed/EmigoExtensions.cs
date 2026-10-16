@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> type)
         {
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
             return new DeferredBodyAction<TablesList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<FeedList> GetFeeds(Expression<Func<string>> endpoint)
         {
-            var __workflow_endpoint = endpoint == null ? null : WorkflowExpression.Compile(endpoint);
-            WorkflowExpression.Validate(__workflow_endpoint, nameof(endpoint), required: true);
+            var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
             return new DeferredBodyAction<FeedList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds", ExpressionConverter.ConvertWithUrlEncoding(__workflow_endpoint, 1));
@@ -41,10 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> type, Expression<Func<string>> table)
         {
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
             return new DeferredBodyAction<ItemsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -57,10 +53,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<FeedList> GetODataItems(Expression<Func<string>> endpoint, Expression<Func<string>> feed)
         {
-            var __workflow_endpoint = endpoint == null ? null : WorkflowExpression.Compile(endpoint);
-            WorkflowExpression.Validate(__workflow_endpoint, nameof(endpoint), required: true);
-            var __workflow_feed = feed == null ? null : WorkflowExpression.Compile(feed);
-            WorkflowExpression.Validate(__workflow_feed, nameof(feed), required: true);
+            var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
+            var __workflow_feed = WorkflowExpression.Compile(feed, nameof(feed), required: true);
             return new DeferredBodyAction<FeedList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds/{1}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_feed, 2));
@@ -73,10 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetProductList> GetProductList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
         {
-            var __workflow_idList = idList == null ? null : WorkflowExpression.Compile(idList);
-            WorkflowExpression.Validate(__workflow_idList, nameof(idList), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_idList = WorkflowExpression.Compile(idList, nameof(idList), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetProductList>(() =>
             {
                 var apiCallPath = "/Product/GetList";
@@ -93,10 +85,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetProduct> GetProductItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetProduct>(() =>
             {
                 var apiCallPath = "/Product/GetItem";
@@ -112,10 +102,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
         {
-            var __workflow_idList = idList == null ? null : WorkflowExpression.Compile(idList);
-            WorkflowExpression.Validate(__workflow_idList, nameof(idList), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_idList = WorkflowExpression.Compile(idList, nameof(idList), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetOperationalUnitList>(() =>
             {
                 var apiCallPath = "/OperationalUnit/GetList";
@@ -132,10 +120,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetOperationalUnit>(() =>
             {
                 var apiCallPath = "/OperationalUnit/GetItem";
@@ -151,10 +137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
         public IBodyWorkflowAction<JToken> SendMessageOperationalUnit(Expression<Func<int>> sendMessageidOperationalUnit, Expression<Func<string>> sendMessagemessage)
         {
-            var __workflow_sendMessageidOperationalUnit = sendMessageidOperationalUnit == null ? null : WorkflowExpression.Compile(sendMessageidOperationalUnit);
-            WorkflowExpression.Validate(__workflow_sendMessageidOperationalUnit, nameof(sendMessageidOperationalUnit), required: true);
-            var __workflow_sendMessagemessage = sendMessagemessage == null ? null : WorkflowExpression.Compile(sendMessagemessage);
-            WorkflowExpression.Validate(__workflow_sendMessagemessage, nameof(sendMessagemessage), required: true);
+            var __workflow_sendMessageidOperationalUnit = WorkflowExpression.Compile(sendMessageidOperationalUnit, nameof(sendMessageidOperationalUnit), required: true);
+            var __workflow_sendMessagemessage = WorkflowExpression.Compile(sendMessagemessage, nameof(sendMessagemessage), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/OperationalUnit/SendMessage";
@@ -180,10 +164,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, FlowRecurrence recurrence = null)
         {
-            var __workflow_endpoint = endpoint == null ? null : WorkflowExpression.Compile(endpoint);
-            WorkflowExpression.Validate(__workflow_endpoint, nameof(endpoint), required: true);
-            var __workflow_feed = feed == null ? null : WorkflowExpression.Compile(feed);
-            WorkflowExpression.Validate(__workflow_feed, nameof(feed), required: true);
+            var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
+            var __workflow_feed = WorkflowExpression.Compile(feed, nameof(feed), required: true);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/{0}/feeds/{1}/newItem", ExpressionConverter.ConvertWithUrlEncoding(__workflow_endpoint, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_feed, 2));

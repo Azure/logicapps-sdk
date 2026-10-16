@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
         public IBodyWorkflowAction<CommitteeCandidateHistoryResponse> CommitteeCommitteeIdCandidatesHistory(Expression<Func<string>> committeeId, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> page = null, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sort = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> perPage = null, Expression<Func<string>> electionFull = null)
         {
-            var __workflow_committeeId = committeeId == null ? null : WorkflowExpression.Compile(committeeId);
-            WorkflowExpression.Validate(__workflow_committeeId, nameof(committeeId), required: true);
-            var __workflow_sortHideNull = sortHideNull == null ? null : WorkflowExpression.Compile(sortHideNull);
-            WorkflowExpression.Validate(__workflow_sortHideNull, nameof(sortHideNull), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_sortNullsLast = sortNullsLast == null ? null : WorkflowExpression.Compile(sortNullsLast);
-            WorkflowExpression.Validate(__workflow_sortNullsLast, nameof(sortNullsLast), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_sortNullOnly = sortNullOnly == null ? null : WorkflowExpression.Compile(sortNullOnly);
-            WorkflowExpression.Validate(__workflow_sortNullOnly, nameof(sortNullOnly), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_electionFull = electionFull == null ? null : WorkflowExpression.Compile(electionFull);
-            WorkflowExpression.Validate(__workflow_electionFull, nameof(electionFull), required: false);
+            var __workflow_committeeId = WorkflowExpression.Compile(committeeId, nameof(committeeId), required: true);
+            var __workflow_sortHideNull = WorkflowExpression.Compile(sortHideNull, nameof(sortHideNull), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_sortNullsLast = WorkflowExpression.Compile(sortNullsLast, nameof(sortNullsLast), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_sortNullOnly = WorkflowExpression.Compile(sortNullOnly, nameof(sortNullOnly), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_electionFull = WorkflowExpression.Compile(electionFull, nameof(electionFull), required: false);
             return new DeferredBodyAction<CommitteeCandidateHistoryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/committee/{0}/candidates/history/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_committeeId, 1));
@@ -62,44 +54,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
         public IBodyWorkflowAction<OperationsLogResponse> OperationsLog(Expression<Func<string>> formType, Expression<Func<string>> reportYear, Expression<Func<string>> sort, Expression<Func<string>> maxReceiptDate, Expression<Func<string>> reportType, Expression<Func<string>> perPage, Expression<Func<string>> candidateCommitteeId, Expression<Func<string>> minReceiptDate, Expression<Func<string>> minCoverageEndDate, Expression<Func<string>> page, Expression<Func<string>> statusNum, Expression<Func<string>> minTransactionDataCompleteDate, Expression<Func<string>> maxCoverageEndDate, Expression<Func<string>> maxTransactionDataCompleteDate, Expression<Func<string>> beginningImageNumber, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> amendmentIndicator = null)
         {
-            var __workflow_formType = formType == null ? null : WorkflowExpression.Compile(formType);
-            WorkflowExpression.Validate(__workflow_formType, nameof(formType), required: true);
-            var __workflow_reportYear = reportYear == null ? null : WorkflowExpression.Compile(reportYear);
-            WorkflowExpression.Validate(__workflow_reportYear, nameof(reportYear), required: true);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: true);
-            var __workflow_maxReceiptDate = maxReceiptDate == null ? null : WorkflowExpression.Compile(maxReceiptDate);
-            WorkflowExpression.Validate(__workflow_maxReceiptDate, nameof(maxReceiptDate), required: true);
-            var __workflow_reportType = reportType == null ? null : WorkflowExpression.Compile(reportType);
-            WorkflowExpression.Validate(__workflow_reportType, nameof(reportType), required: true);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: true);
-            var __workflow_candidateCommitteeId = candidateCommitteeId == null ? null : WorkflowExpression.Compile(candidateCommitteeId);
-            WorkflowExpression.Validate(__workflow_candidateCommitteeId, nameof(candidateCommitteeId), required: true);
-            var __workflow_minReceiptDate = minReceiptDate == null ? null : WorkflowExpression.Compile(minReceiptDate);
-            WorkflowExpression.Validate(__workflow_minReceiptDate, nameof(minReceiptDate), required: true);
-            var __workflow_minCoverageEndDate = minCoverageEndDate == null ? null : WorkflowExpression.Compile(minCoverageEndDate);
-            WorkflowExpression.Validate(__workflow_minCoverageEndDate, nameof(minCoverageEndDate), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: true);
-            var __workflow_statusNum = statusNum == null ? null : WorkflowExpression.Compile(statusNum);
-            WorkflowExpression.Validate(__workflow_statusNum, nameof(statusNum), required: true);
-            var __workflow_minTransactionDataCompleteDate = minTransactionDataCompleteDate == null ? null : WorkflowExpression.Compile(minTransactionDataCompleteDate);
-            WorkflowExpression.Validate(__workflow_minTransactionDataCompleteDate, nameof(minTransactionDataCompleteDate), required: true);
-            var __workflow_maxCoverageEndDate = maxCoverageEndDate == null ? null : WorkflowExpression.Compile(maxCoverageEndDate);
-            WorkflowExpression.Validate(__workflow_maxCoverageEndDate, nameof(maxCoverageEndDate), required: true);
-            var __workflow_maxTransactionDataCompleteDate = maxTransactionDataCompleteDate == null ? null : WorkflowExpression.Compile(maxTransactionDataCompleteDate);
-            WorkflowExpression.Validate(__workflow_maxTransactionDataCompleteDate, nameof(maxTransactionDataCompleteDate), required: true);
-            var __workflow_beginningImageNumber = beginningImageNumber == null ? null : WorkflowExpression.Compile(beginningImageNumber);
-            WorkflowExpression.Validate(__workflow_beginningImageNumber, nameof(beginningImageNumber), required: true);
-            var __workflow_sortNullsLast = sortNullsLast == null ? null : WorkflowExpression.Compile(sortNullsLast);
-            WorkflowExpression.Validate(__workflow_sortNullsLast, nameof(sortNullsLast), required: false);
-            var __workflow_sortNullOnly = sortNullOnly == null ? null : WorkflowExpression.Compile(sortNullOnly);
-            WorkflowExpression.Validate(__workflow_sortNullOnly, nameof(sortNullOnly), required: false);
-            var __workflow_sortHideNull = sortHideNull == null ? null : WorkflowExpression.Compile(sortHideNull);
-            WorkflowExpression.Validate(__workflow_sortHideNull, nameof(sortHideNull), required: false);
-            var __workflow_amendmentIndicator = amendmentIndicator == null ? null : WorkflowExpression.Compile(amendmentIndicator);
-            WorkflowExpression.Validate(__workflow_amendmentIndicator, nameof(amendmentIndicator), required: false);
+            var __workflow_formType = WorkflowExpression.Compile(formType, nameof(formType), required: true);
+            var __workflow_reportYear = WorkflowExpression.Compile(reportYear, nameof(reportYear), required: true);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: true);
+            var __workflow_maxReceiptDate = WorkflowExpression.Compile(maxReceiptDate, nameof(maxReceiptDate), required: true);
+            var __workflow_reportType = WorkflowExpression.Compile(reportType, nameof(reportType), required: true);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: true);
+            var __workflow_candidateCommitteeId = WorkflowExpression.Compile(candidateCommitteeId, nameof(candidateCommitteeId), required: true);
+            var __workflow_minReceiptDate = WorkflowExpression.Compile(minReceiptDate, nameof(minReceiptDate), required: true);
+            var __workflow_minCoverageEndDate = WorkflowExpression.Compile(minCoverageEndDate, nameof(minCoverageEndDate), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
+            var __workflow_statusNum = WorkflowExpression.Compile(statusNum, nameof(statusNum), required: true);
+            var __workflow_minTransactionDataCompleteDate = WorkflowExpression.Compile(minTransactionDataCompleteDate, nameof(minTransactionDataCompleteDate), required: true);
+            var __workflow_maxCoverageEndDate = WorkflowExpression.Compile(maxCoverageEndDate, nameof(maxCoverageEndDate), required: true);
+            var __workflow_maxTransactionDataCompleteDate = WorkflowExpression.Compile(maxTransactionDataCompleteDate, nameof(maxTransactionDataCompleteDate), required: true);
+            var __workflow_beginningImageNumber = WorkflowExpression.Compile(beginningImageNumber, nameof(beginningImageNumber), required: true);
+            var __workflow_sortNullsLast = WorkflowExpression.Compile(sortNullsLast, nameof(sortNullsLast), required: false);
+            var __workflow_sortNullOnly = WorkflowExpression.Compile(sortNullOnly, nameof(sortNullOnly), required: false);
+            var __workflow_sortHideNull = WorkflowExpression.Compile(sortHideNull, nameof(sortHideNull), required: false);
+            var __workflow_amendmentIndicator = WorkflowExpression.Compile(amendmentIndicator, nameof(amendmentIndicator), required: false);
             return new DeferredBodyAction<OperationsLogResponse>(() =>
             {
                 var apiCallPath = "/operations-log/";

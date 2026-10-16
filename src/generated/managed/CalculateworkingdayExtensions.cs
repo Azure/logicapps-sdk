@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<CombinedResponse> Combined(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null, Expression<Func<string>> country = null)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_workingDays = workingDays == null ? null : WorkflowExpression.Compile(workingDays);
-            WorkflowExpression.Validate(__workflow_workingDays, nameof(workingDays), required: true);
-            var __workflow_xWorkingDays = xWorkingDays == null ? null : WorkflowExpression.Compile(xWorkingDays);
-            WorkflowExpression.Validate(__workflow_xWorkingDays, nameof(xWorkingDays), required: true);
-            var __workflow_nonWorkingDays = nonWorkingDays == null ? null : WorkflowExpression.Compile(nonWorkingDays);
-            WorkflowExpression.Validate(__workflow_nonWorkingDays, nameof(nonWorkingDays), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
+            var __workflow_xWorkingDays = WorkflowExpression.Compile(xWorkingDays, nameof(xWorkingDays), required: true);
+            var __workflow_nonWorkingDays = WorkflowExpression.Compile(nonWorkingDays, nameof(nonWorkingDays), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<CombinedResponse>(() =>
             {
                 var apiCallPath = "/combined/";
@@ -44,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<BasicNextWorkingDayResponse> BasicNextWorkingDay(Expression<Func<string>> date)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
             return new DeferredBodyAction<BasicNextWorkingDayResponse>(() =>
             {
                 var apiCallPath = "/basicNextWorkingDay/";
@@ -60,14 +54,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<NextWorkingDayResponse> NextWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_workingDays = workingDays == null ? null : WorkflowExpression.Compile(workingDays);
-            WorkflowExpression.Validate(__workflow_workingDays, nameof(workingDays), required: true);
-            var __workflow_xWorkingDays = xWorkingDays == null ? null : WorkflowExpression.Compile(xWorkingDays);
-            WorkflowExpression.Validate(__workflow_xWorkingDays, nameof(xWorkingDays), required: true);
-            var __workflow_nonWorkingDays = nonWorkingDays == null ? null : WorkflowExpression.Compile(nonWorkingDays);
-            WorkflowExpression.Validate(__workflow_nonWorkingDays, nameof(nonWorkingDays), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
+            var __workflow_xWorkingDays = WorkflowExpression.Compile(xWorkingDays, nameof(xWorkingDays), required: true);
+            var __workflow_nonWorkingDays = WorkflowExpression.Compile(nonWorkingDays, nameof(nonWorkingDays), required: false);
             return new DeferredBodyAction<NextWorkingDayResponse>(() =>
             {
                 var apiCallPath = "/nextWorkingDay/";
@@ -86,14 +76,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<DateDifferenceCalculatorResponse> DateDifferenceCalculator(Expression<Func<string>> workingDays, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> nonWorkingDays = null)
         {
-            var __workflow_workingDays = workingDays == null ? null : WorkflowExpression.Compile(workingDays);
-            WorkflowExpression.Validate(__workflow_workingDays, nameof(workingDays), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_nonWorkingDays = nonWorkingDays == null ? null : WorkflowExpression.Compile(nonWorkingDays);
-            WorkflowExpression.Validate(__workflow_nonWorkingDays, nameof(nonWorkingDays), required: false);
+            var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_nonWorkingDays = WorkflowExpression.Compile(nonWorkingDays, nameof(nonWorkingDays), required: false);
             return new DeferredBodyAction<DateDifferenceCalculatorResponse>(() =>
             {
                 var apiCallPath = "/dateDifferenceCalculator/";
@@ -112,10 +98,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> FirstAndLastWorkingDayOfMonth(Expression<Func<string>> date, Expression<Func<string>> workingDays)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_workingDays = workingDays == null ? null : WorkflowExpression.Compile(workingDays);
-            WorkflowExpression.Validate(__workflow_workingDays, nameof(workingDays), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
             return new DeferredBodyAction<FirstAndLastWorkingDayOfMonthResponse>(() =>
             {
                 var apiCallPath = "/firstAndLastWorkingDayOfMonth/";
@@ -131,10 +115,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<IsTodayAWorkingDayResponse> IsTodayAWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_workingDays = workingDays == null ? null : WorkflowExpression.Compile(workingDays);
-            WorkflowExpression.Validate(__workflow_workingDays, nameof(workingDays), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
             return new DeferredBodyAction<IsTodayAWorkingDayResponse>(() =>
             {
                 var apiCallPath = "/isTodayAWorkingDay/";
@@ -150,12 +132,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<DateInXWorkingDaysResponse> DateInXWorkingDays(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_workingDays = workingDays == null ? null : WorkflowExpression.Compile(workingDays);
-            WorkflowExpression.Validate(__workflow_workingDays, nameof(workingDays), required: true);
-            var __workflow_xWorkingDays = xWorkingDays == null ? null : WorkflowExpression.Compile(xWorkingDays);
-            WorkflowExpression.Validate(__workflow_xWorkingDays, nameof(xWorkingDays), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_workingDays = WorkflowExpression.Compile(workingDays, nameof(workingDays), required: true);
+            var __workflow_xWorkingDays = WorkflowExpression.Compile(xWorkingDays, nameof(xWorkingDays), required: true);
             return new DeferredBodyAction<DateInXWorkingDaysResponse>(() =>
             {
                 var apiCallPath = "/dateInXWorkingDays/";

@@ -13,34 +13,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyaccessToApproveDocsOnly = bodyaccessToApproveDocsOnly == null ? null : WorkflowExpression.Compile(bodyaccessToApproveDocsOnly);
-            WorkflowExpression.Validate(__workflow_bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
-            var __workflow_bodyallowAccessToReports = bodyallowAccessToReports == null ? null : WorkflowExpression.Compile(bodyallowAccessToReports);
-            WorkflowExpression.Validate(__workflow_bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
-            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
-            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
-            var __workflow_bodyenableMfa = bodyenableMfa == null ? null : WorkflowExpression.Compile(bodyenableMfa);
-            WorkflowExpression.Validate(__workflow_bodyenableMfa, nameof(bodyenableMfa), required: false);
-            var __workflow_bodyenforceMfaForUsers = bodyenforceMfaForUsers == null ? null : WorkflowExpression.Compile(bodyenforceMfaForUsers);
-            WorkflowExpression.Validate(__workflow_bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
-            var __workflow_bodyfirmFlowRoutingNotification = bodyfirmFlowRoutingNotification == null ? null : WorkflowExpression.Compile(bodyfirmFlowRoutingNotification);
-            WorkflowExpression.Validate(__workflow_bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
-            var __workflow_bodyfullAccessToDocTracking = bodyfullAccessToDocTracking == null ? null : WorkflowExpression.Compile(bodyfullAccessToDocTracking);
-            WorkflowExpression.Validate(__workflow_bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
-            var __workflow_bodygroupName = bodygroupName == null ? null : WorkflowExpression.Compile(bodygroupName);
-            WorkflowExpression.Validate(__workflow_bodygroupName, nameof(bodygroupName), required: false);
-            var __workflow_bodymfaRequired = bodymfaRequired == null ? null : WorkflowExpression.Compile(bodymfaRequired);
-            WorkflowExpression.Validate(__workflow_bodymfaRequired, nameof(bodymfaRequired), required: false);
-            var __workflow_bodypermissonToApproveDocs = bodypermissonToApproveDocs == null ? null : WorkflowExpression.Compile(bodypermissonToApproveDocs);
-            WorkflowExpression.Validate(__workflow_bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
-            var __workflow_bodyreports = bodyreports == null ? null : WorkflowExpression.Compile(bodyreports);
-            WorkflowExpression.Validate(__workflow_bodyreports, nameof(bodyreports), required: false);
-            var __workflow_bodyuploadLocation = bodyuploadLocation == null ? null : WorkflowExpression.Compile(bodyuploadLocation);
-            WorkflowExpression.Validate(__workflow_bodyuploadLocation, nameof(bodyuploadLocation), required: false);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyaccessToApproveDocsOnly = WorkflowExpression.Compile(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
+            var __workflow_bodyallowAccessToReports = WorkflowExpression.Compile(bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
+            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodyenableMfa = WorkflowExpression.Compile(bodyenableMfa, nameof(bodyenableMfa), required: false);
+            var __workflow_bodyenforceMfaForUsers = WorkflowExpression.Compile(bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
+            var __workflow_bodyfirmFlowRoutingNotification = WorkflowExpression.Compile(bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
+            var __workflow_bodyfullAccessToDocTracking = WorkflowExpression.Compile(bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
+            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
+            var __workflow_bodymfaRequired = WorkflowExpression.Compile(bodymfaRequired, nameof(bodymfaRequired), required: false);
+            var __workflow_bodypermissonToApproveDocs = WorkflowExpression.Compile(bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
+            var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
+            var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
             return new DeferredBodyAction<CreateGroupResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/creategroup";
@@ -140,16 +126,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetGroupDocSecurityResponse> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodygroupName = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodycabinetName = bodycabinetName == null ? null : WorkflowExpression.Compile(bodycabinetName);
-            WorkflowExpression.Validate(__workflow_bodycabinetName, nameof(bodycabinetName), required: false);
-            var __workflow_bodydocumentSecurity = bodydocumentSecurity == null ? null : WorkflowExpression.Compile(bodydocumentSecurity);
-            WorkflowExpression.Validate(__workflow_bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
-            var __workflow_bodydrawerName = bodydrawerName == null ? null : WorkflowExpression.Compile(bodydrawerName);
-            WorkflowExpression.Validate(__workflow_bodydrawerName, nameof(bodydrawerName), required: false);
-            var __workflow_bodygroupName = bodygroupName == null ? null : WorkflowExpression.Compile(bodygroupName);
-            WorkflowExpression.Validate(__workflow_bodygroupName, nameof(bodygroupName), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodycabinetName = WorkflowExpression.Compile(bodycabinetName, nameof(bodycabinetName), required: false);
+            var __workflow_bodydocumentSecurity = WorkflowExpression.Compile(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
+            var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
+            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
             return new DeferredBodyAction<SetGroupDocSecurityResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/documentsecurity";
@@ -195,36 +176,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<ModifyGroupResponse> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<string>> bodyrenameGroup = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyaccessToApproveDocsOnly = bodyaccessToApproveDocsOnly == null ? null : WorkflowExpression.Compile(bodyaccessToApproveDocsOnly);
-            WorkflowExpression.Validate(__workflow_bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
-            var __workflow_bodyallowAccessToReports = bodyallowAccessToReports == null ? null : WorkflowExpression.Compile(bodyallowAccessToReports);
-            WorkflowExpression.Validate(__workflow_bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
-            var __workflow_bodycomments = bodycomments == null ? null : WorkflowExpression.Compile(bodycomments);
-            WorkflowExpression.Validate(__workflow_bodycomments, nameof(bodycomments), required: false);
-            var __workflow_bodyenableMfa = bodyenableMfa == null ? null : WorkflowExpression.Compile(bodyenableMfa);
-            WorkflowExpression.Validate(__workflow_bodyenableMfa, nameof(bodyenableMfa), required: false);
-            var __workflow_bodyenforceMfaForUsers = bodyenforceMfaForUsers == null ? null : WorkflowExpression.Compile(bodyenforceMfaForUsers);
-            WorkflowExpression.Validate(__workflow_bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
-            var __workflow_bodyfirmFlowRoutingNotification = bodyfirmFlowRoutingNotification == null ? null : WorkflowExpression.Compile(bodyfirmFlowRoutingNotification);
-            WorkflowExpression.Validate(__workflow_bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
-            var __workflow_bodyfullAccessToDocTracking = bodyfullAccessToDocTracking == null ? null : WorkflowExpression.Compile(bodyfullAccessToDocTracking);
-            WorkflowExpression.Validate(__workflow_bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
-            var __workflow_bodygroupName = bodygroupName == null ? null : WorkflowExpression.Compile(bodygroupName);
-            WorkflowExpression.Validate(__workflow_bodygroupName, nameof(bodygroupName), required: false);
-            var __workflow_bodymfaRequired = bodymfaRequired == null ? null : WorkflowExpression.Compile(bodymfaRequired);
-            WorkflowExpression.Validate(__workflow_bodymfaRequired, nameof(bodymfaRequired), required: false);
-            var __workflow_bodypermissonToApproveDocs = bodypermissonToApproveDocs == null ? null : WorkflowExpression.Compile(bodypermissonToApproveDocs);
-            WorkflowExpression.Validate(__workflow_bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
-            var __workflow_bodyrenameGroup = bodyrenameGroup == null ? null : WorkflowExpression.Compile(bodyrenameGroup);
-            WorkflowExpression.Validate(__workflow_bodyrenameGroup, nameof(bodyrenameGroup), required: false);
-            var __workflow_bodyreports = bodyreports == null ? null : WorkflowExpression.Compile(bodyreports);
-            WorkflowExpression.Validate(__workflow_bodyreports, nameof(bodyreports), required: false);
-            var __workflow_bodyuploadLocation = bodyuploadLocation == null ? null : WorkflowExpression.Compile(bodyuploadLocation);
-            WorkflowExpression.Validate(__workflow_bodyuploadLocation, nameof(bodyuploadLocation), required: false);
-            var __workflow_bodyusers = bodyusers == null ? null : WorkflowExpression.Compile(bodyusers);
-            WorkflowExpression.Validate(__workflow_bodyusers, nameof(bodyusers), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyaccessToApproveDocsOnly = WorkflowExpression.Compile(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
+            var __workflow_bodyallowAccessToReports = WorkflowExpression.Compile(bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
+            var __workflow_bodycomments = WorkflowExpression.Compile(bodycomments, nameof(bodycomments), required: false);
+            var __workflow_bodyenableMfa = WorkflowExpression.Compile(bodyenableMfa, nameof(bodyenableMfa), required: false);
+            var __workflow_bodyenforceMfaForUsers = WorkflowExpression.Compile(bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
+            var __workflow_bodyfirmFlowRoutingNotification = WorkflowExpression.Compile(bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
+            var __workflow_bodyfullAccessToDocTracking = WorkflowExpression.Compile(bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
+            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
+            var __workflow_bodymfaRequired = WorkflowExpression.Compile(bodymfaRequired, nameof(bodymfaRequired), required: false);
+            var __workflow_bodypermissonToApproveDocs = WorkflowExpression.Compile(bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
+            var __workflow_bodyrenameGroup = WorkflowExpression.Compile(bodyrenameGroup, nameof(bodyrenameGroup), required: false);
+            var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
+            var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            var __workflow_bodyusers = WorkflowExpression.Compile(bodyusers, nameof(bodyusers), required: false);
             return new DeferredBodyAction<ModifyGroupResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/modifygroup";
@@ -330,10 +296,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetGroupPermissionsResponse> GetGroupPermissions(Expression<Func<string>> groupName = null, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_groupName = groupName == null ? null : WorkflowExpression.Compile(groupName);
-            WorkflowExpression.Validate(__workflow_groupName, nameof(groupName), required: false);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetGroupPermissionsResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/permissions";
@@ -350,26 +314,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetGroupPermissionsResponse> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodygroupName = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodycabinet = bodycabinet == null ? null : WorkflowExpression.Compile(bodycabinet);
-            WorkflowExpression.Validate(__workflow_bodycabinet, nameof(bodycabinet), required: false);
-            var __workflow_bodycabinetPermissionadd = bodycabinetPermissionadd == null ? null : WorkflowExpression.Compile(bodycabinetPermissionadd);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
-            var __workflow_bodycabinetPermissiondelete = bodycabinetPermissiondelete == null ? null : WorkflowExpression.Compile(bodycabinetPermissiondelete);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
-            var __workflow_bodycabinetPermissiondeny = bodycabinetPermissiondeny == null ? null : WorkflowExpression.Compile(bodycabinetPermissiondeny);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
-            var __workflow_bodycabinetPermissionedit = bodycabinetPermissionedit == null ? null : WorkflowExpression.Compile(bodycabinetPermissionedit);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
-            var __workflow_bodycabinetPermissionlookUp = bodycabinetPermissionlookUp == null ? null : WorkflowExpression.Compile(bodycabinetPermissionlookUp);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
-            var __workflow_bodycabinetPermissionread = bodycabinetPermissionread == null ? null : WorkflowExpression.Compile(bodycabinetPermissionread);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
-            var __workflow_bodydrawerPermissions = bodydrawerPermissions == null ? null : WorkflowExpression.Compile(bodydrawerPermissions);
-            WorkflowExpression.Validate(__workflow_bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
-            var __workflow_bodygroupName = bodygroupName == null ? null : WorkflowExpression.Compile(bodygroupName);
-            WorkflowExpression.Validate(__workflow_bodygroupName, nameof(bodygroupName), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodycabinet = WorkflowExpression.Compile(bodycabinet, nameof(bodycabinet), required: false);
+            var __workflow_bodycabinetPermissionadd = WorkflowExpression.Compile(bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
+            var __workflow_bodycabinetPermissiondelete = WorkflowExpression.Compile(bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
+            var __workflow_bodycabinetPermissiondeny = WorkflowExpression.Compile(bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
+            var __workflow_bodycabinetPermissionedit = WorkflowExpression.Compile(bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
+            var __workflow_bodycabinetPermissionlookUp = WorkflowExpression.Compile(bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
+            var __workflow_bodycabinetPermissionread = WorkflowExpression.Compile(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
+            var __workflow_bodydrawerPermissions = WorkflowExpression.Compile(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
+            var __workflow_bodygroupName = WorkflowExpression.Compile(bodygroupName, nameof(bodygroupName), required: false);
             return new DeferredBodyAction<SetGroupPermissionsResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/group/permissions";
@@ -453,14 +407,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> GetGroupDocumentSecurity(Expression<Func<string>> groupName, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_groupName = groupName == null ? null : WorkflowExpression.Compile(groupName);
-            WorkflowExpression.Validate(__workflow_groupName, nameof(groupName), required: true);
-            var __workflow_cabinetName = cabinetName == null ? null : WorkflowExpression.Compile(cabinetName);
-            WorkflowExpression.Validate(__workflow_cabinetName, nameof(cabinetName), required: true);
-            var __workflow_drawerName = drawerName == null ? null : WorkflowExpression.Compile(drawerName);
-            WorkflowExpression.Validate(__workflow_drawerName, nameof(drawerName), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_groupName = WorkflowExpression.Compile(groupName, nameof(groupName), required: true);
+            var __workflow_cabinetName = WorkflowExpression.Compile(cabinetName, nameof(cabinetName), required: true);
+            var __workflow_drawerName = WorkflowExpression.Compile(drawerName, nameof(drawerName), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetGroupDocumentSecurityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerName, 1));
@@ -475,8 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetGroupsResponseItem[]> GetGroups(Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetGroupsResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1/administration/groups";
@@ -491,52 +440,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateUsersResponse> CreateUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
         {
-            var __workflow_userType = userType == null ? null : WorkflowExpression.Compile(userType);
-            WorkflowExpression.Validate(__workflow_userType, nameof(userType), required: false);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyaccountExpiresDate = bodyaccountExpiresDate == null ? null : WorkflowExpression.Compile(bodyaccountExpiresDate);
-            WorkflowExpression.Validate(__workflow_bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
-            var __workflow_bodydisabledComments = bodydisabledComments == null ? null : WorkflowExpression.Compile(bodydisabledComments);
-            WorkflowExpression.Validate(__workflow_bodydisabledComments, nameof(bodydisabledComments), required: false);
-            var __workflow_bodyfullName = bodyfullName == null ? null : WorkflowExpression.Compile(bodyfullName);
-            WorkflowExpression.Validate(__workflow_bodyfullName, nameof(bodyfullName), required: false);
-            var __workflow_bodygroups = bodygroups == null ? null : WorkflowExpression.Compile(bodygroups);
-            WorkflowExpression.Validate(__workflow_bodygroups, nameof(bodygroups), required: false);
-            var __workflow_bodyisAccountExpires = bodyisAccountExpires == null ? null : WorkflowExpression.Compile(bodyisAccountExpires);
-            WorkflowExpression.Validate(__workflow_bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
-            var __workflow_bodyisAdvanceFlow = bodyisAdvanceFlow == null ? null : WorkflowExpression.Compile(bodyisAdvanceFlow);
-            WorkflowExpression.Validate(__workflow_bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
-            var __workflow_bodyisAllowAccessToReports = bodyisAllowAccessToReports == null ? null : WorkflowExpression.Compile(bodyisAllowAccessToReports);
-            WorkflowExpression.Validate(__workflow_bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
-            var __workflow_bodyisAllowOffline = bodyisAllowOffline == null ? null : WorkflowExpression.Compile(bodyisAllowOffline);
-            WorkflowExpression.Validate(__workflow_bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
-            var __workflow_bodyisDisabled = bodyisDisabled == null ? null : WorkflowExpression.Compile(bodyisDisabled);
-            WorkflowExpression.Validate(__workflow_bodyisDisabled, nameof(bodyisDisabled), required: false);
-            var __workflow_bodyisFirmFlow = bodyisFirmFlow == null ? null : WorkflowExpression.Compile(bodyisFirmFlow);
-            WorkflowExpression.Validate(__workflow_bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
-            var __workflow_bodyisFirmFlowNotificationGroup = bodyisFirmFlowNotificationGroup == null ? null : WorkflowExpression.Compile(bodyisFirmFlowNotificationGroup);
-            WorkflowExpression.Validate(__workflow_bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
-            var __workflow_bodyisFirmFlowNotificationUser = bodyisFirmFlowNotificationUser == null ? null : WorkflowExpression.Compile(bodyisFirmFlowNotificationUser);
-            WorkflowExpression.Validate(__workflow_bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
-            var __workflow_bodyisMfa = bodyisMfa == null ? null : WorkflowExpression.Compile(bodyisMfa);
-            WorkflowExpression.Validate(__workflow_bodyisMfa, nameof(bodyisMfa), required: false);
-            var __workflow_bodyisUserAdministration = bodyisUserAdministration == null ? null : WorkflowExpression.Compile(bodyisUserAdministration);
-            WorkflowExpression.Validate(__workflow_bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
-            var __workflow_bodyisWorkflowManagerUser = bodyisWorkflowManagerUser == null ? null : WorkflowExpression.Compile(bodyisWorkflowManagerUser);
-            WorkflowExpression.Validate(__workflow_bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
-            var __workflow_bodylicenseType = bodylicenseType == null ? null : WorkflowExpression.Compile(bodylicenseType);
-            WorkflowExpression.Validate(__workflow_bodylicenseType, nameof(bodylicenseType), required: false);
-            var __workflow_bodyloginName = bodyloginName == null ? null : WorkflowExpression.Compile(bodyloginName);
-            WorkflowExpression.Validate(__workflow_bodyloginName, nameof(bodyloginName), required: false);
-            var __workflow_bodymanagerEmail = bodymanagerEmail == null ? null : WorkflowExpression.Compile(bodymanagerEmail);
-            WorkflowExpression.Validate(__workflow_bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyreports = bodyreports == null ? null : WorkflowExpression.Compile(bodyreports);
-            WorkflowExpression.Validate(__workflow_bodyreports, nameof(bodyreports), required: false);
-            var __workflow_bodyuploadLocation = bodyuploadLocation == null ? null : WorkflowExpression.Compile(bodyuploadLocation);
-            WorkflowExpression.Validate(__workflow_bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyaccountExpiresDate = WorkflowExpression.Compile(bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
+            var __workflow_bodydisabledComments = WorkflowExpression.Compile(bodydisabledComments, nameof(bodydisabledComments), required: false);
+            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodyisAccountExpires = WorkflowExpression.Compile(bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
+            var __workflow_bodyisAdvanceFlow = WorkflowExpression.Compile(bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
+            var __workflow_bodyisAllowAccessToReports = WorkflowExpression.Compile(bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
+            var __workflow_bodyisAllowOffline = WorkflowExpression.Compile(bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
+            var __workflow_bodyisDisabled = WorkflowExpression.Compile(bodyisDisabled, nameof(bodyisDisabled), required: false);
+            var __workflow_bodyisFirmFlow = WorkflowExpression.Compile(bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
+            var __workflow_bodyisFirmFlowNotificationGroup = WorkflowExpression.Compile(bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
+            var __workflow_bodyisFirmFlowNotificationUser = WorkflowExpression.Compile(bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
+            var __workflow_bodyisMfa = WorkflowExpression.Compile(bodyisMfa, nameof(bodyisMfa), required: false);
+            var __workflow_bodyisUserAdministration = WorkflowExpression.Compile(bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
+            var __workflow_bodyisWorkflowManagerUser = WorkflowExpression.Compile(bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
+            var __workflow_bodylicenseType = WorkflowExpression.Compile(bodylicenseType, nameof(bodylicenseType), required: false);
+            var __workflow_bodyloginName = WorkflowExpression.Compile(bodyloginName, nameof(bodyloginName), required: false);
+            var __workflow_bodymanagerEmail = WorkflowExpression.Compile(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
+            var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
             return new DeferredBodyAction<CreateUsersResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/createuser";
@@ -687,12 +613,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DeleteUserResponse> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyloginId = null, Expression<Func<bodyuserTypeInput>> bodyuserType = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyloginId = bodyloginId == null ? null : WorkflowExpression.Compile(bodyloginId);
-            WorkflowExpression.Validate(__workflow_bodyloginId, nameof(bodyloginId), required: false);
-            var __workflow_bodyuserType = bodyuserType == null ? null : WorkflowExpression.Compile(bodyuserType);
-            WorkflowExpression.Validate(__workflow_bodyuserType, nameof(bodyuserType), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyloginId = WorkflowExpression.Compile(bodyloginId, nameof(bodyloginId), required: false);
+            var __workflow_bodyuserType = WorkflowExpression.Compile(bodyuserType, nameof(bodyuserType), required: false);
             return new DeferredBodyAction<DeleteUserResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/delete";
@@ -726,16 +649,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem2[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodyloginId = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodycabinetName = bodycabinetName == null ? null : WorkflowExpression.Compile(bodycabinetName);
-            WorkflowExpression.Validate(__workflow_bodycabinetName, nameof(bodycabinetName), required: false);
-            var __workflow_bodydocumentSecurity = bodydocumentSecurity == null ? null : WorkflowExpression.Compile(bodydocumentSecurity);
-            WorkflowExpression.Validate(__workflow_bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
-            var __workflow_bodydrawerName = bodydrawerName == null ? null : WorkflowExpression.Compile(bodydrawerName);
-            WorkflowExpression.Validate(__workflow_bodydrawerName, nameof(bodydrawerName), required: false);
-            var __workflow_bodyloginId = bodyloginId == null ? null : WorkflowExpression.Compile(bodyloginId);
-            WorkflowExpression.Validate(__workflow_bodyloginId, nameof(bodyloginId), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodycabinetName = WorkflowExpression.Compile(bodycabinetName, nameof(bodycabinetName), required: false);
+            var __workflow_bodydocumentSecurity = WorkflowExpression.Compile(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
+            var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
+            var __workflow_bodyloginId = WorkflowExpression.Compile(bodyloginId, nameof(bodyloginId), required: false);
             return new DeferredBodyAction<SetUserDocSecurityResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/documentsecurity";
@@ -781,12 +699,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodyuserType, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_bodyloginName = bodyloginName == null ? null : WorkflowExpression.Compile(bodyloginName);
-            WorkflowExpression.Validate(__workflow_bodyloginName, nameof(bodyloginName), required: true);
-            var __workflow_bodyuserType = bodyuserType == null ? null : WorkflowExpression.Compile(bodyuserType);
-            WorkflowExpression.Validate(__workflow_bodyuserType, nameof(bodyuserType), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyloginName = WorkflowExpression.Compile(bodyloginName, nameof(bodyloginName), required: true);
+            var __workflow_bodyuserType = WorkflowExpression.Compile(bodyuserType, nameof(bodyuserType), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetUserInfoResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/getuser";
@@ -812,10 +727,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetLicensesResponse> GetLicenses(Expression<Func<licenseInput>> license = null, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_license = license == null ? null : WorkflowExpression.Compile(license);
-            WorkflowExpression.Validate(__workflow_license, nameof(license), required: false);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_license = WorkflowExpression.Compile(license, nameof(license), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetLicensesResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/licenses";
@@ -832,54 +745,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<ModifyUserResponse> ModifyUser(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisChangeNextLogin = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
         {
-            var __workflow_userType = userType == null ? null : WorkflowExpression.Compile(userType);
-            WorkflowExpression.Validate(__workflow_userType, nameof(userType), required: false);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyaccountExpiresDate = bodyaccountExpiresDate == null ? null : WorkflowExpression.Compile(bodyaccountExpiresDate);
-            WorkflowExpression.Validate(__workflow_bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
-            var __workflow_bodydisabledComments = bodydisabledComments == null ? null : WorkflowExpression.Compile(bodydisabledComments);
-            WorkflowExpression.Validate(__workflow_bodydisabledComments, nameof(bodydisabledComments), required: false);
-            var __workflow_bodyfullName = bodyfullName == null ? null : WorkflowExpression.Compile(bodyfullName);
-            WorkflowExpression.Validate(__workflow_bodyfullName, nameof(bodyfullName), required: false);
-            var __workflow_bodygroups = bodygroups == null ? null : WorkflowExpression.Compile(bodygroups);
-            WorkflowExpression.Validate(__workflow_bodygroups, nameof(bodygroups), required: false);
-            var __workflow_bodyisAccountExpires = bodyisAccountExpires == null ? null : WorkflowExpression.Compile(bodyisAccountExpires);
-            WorkflowExpression.Validate(__workflow_bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
-            var __workflow_bodyisAdvanceFlow = bodyisAdvanceFlow == null ? null : WorkflowExpression.Compile(bodyisAdvanceFlow);
-            WorkflowExpression.Validate(__workflow_bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
-            var __workflow_bodyisAllowAccessToReports = bodyisAllowAccessToReports == null ? null : WorkflowExpression.Compile(bodyisAllowAccessToReports);
-            WorkflowExpression.Validate(__workflow_bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
-            var __workflow_bodyisAllowOffline = bodyisAllowOffline == null ? null : WorkflowExpression.Compile(bodyisAllowOffline);
-            WorkflowExpression.Validate(__workflow_bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
-            var __workflow_bodyisChangeNextLogin = bodyisChangeNextLogin == null ? null : WorkflowExpression.Compile(bodyisChangeNextLogin);
-            WorkflowExpression.Validate(__workflow_bodyisChangeNextLogin, nameof(bodyisChangeNextLogin), required: false);
-            var __workflow_bodyisDisabled = bodyisDisabled == null ? null : WorkflowExpression.Compile(bodyisDisabled);
-            WorkflowExpression.Validate(__workflow_bodyisDisabled, nameof(bodyisDisabled), required: false);
-            var __workflow_bodyisFirmFlow = bodyisFirmFlow == null ? null : WorkflowExpression.Compile(bodyisFirmFlow);
-            WorkflowExpression.Validate(__workflow_bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
-            var __workflow_bodyisFirmFlowNotificationGroup = bodyisFirmFlowNotificationGroup == null ? null : WorkflowExpression.Compile(bodyisFirmFlowNotificationGroup);
-            WorkflowExpression.Validate(__workflow_bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
-            var __workflow_bodyisFirmFlowNotificationUser = bodyisFirmFlowNotificationUser == null ? null : WorkflowExpression.Compile(bodyisFirmFlowNotificationUser);
-            WorkflowExpression.Validate(__workflow_bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
-            var __workflow_bodyisMfa = bodyisMfa == null ? null : WorkflowExpression.Compile(bodyisMfa);
-            WorkflowExpression.Validate(__workflow_bodyisMfa, nameof(bodyisMfa), required: false);
-            var __workflow_bodyisUserAdministration = bodyisUserAdministration == null ? null : WorkflowExpression.Compile(bodyisUserAdministration);
-            WorkflowExpression.Validate(__workflow_bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
-            var __workflow_bodyisWorkflowManagerUser = bodyisWorkflowManagerUser == null ? null : WorkflowExpression.Compile(bodyisWorkflowManagerUser);
-            WorkflowExpression.Validate(__workflow_bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
-            var __workflow_bodylicenseType = bodylicenseType == null ? null : WorkflowExpression.Compile(bodylicenseType);
-            WorkflowExpression.Validate(__workflow_bodylicenseType, nameof(bodylicenseType), required: false);
-            var __workflow_bodyloginName = bodyloginName == null ? null : WorkflowExpression.Compile(bodyloginName);
-            WorkflowExpression.Validate(__workflow_bodyloginName, nameof(bodyloginName), required: false);
-            var __workflow_bodymanagerEmail = bodymanagerEmail == null ? null : WorkflowExpression.Compile(bodymanagerEmail);
-            WorkflowExpression.Validate(__workflow_bodymanagerEmail, nameof(bodymanagerEmail), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyreports = bodyreports == null ? null : WorkflowExpression.Compile(bodyreports);
-            WorkflowExpression.Validate(__workflow_bodyreports, nameof(bodyreports), required: false);
-            var __workflow_bodyuploadLocation = bodyuploadLocation == null ? null : WorkflowExpression.Compile(bodyuploadLocation);
-            WorkflowExpression.Validate(__workflow_bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyaccountExpiresDate = WorkflowExpression.Compile(bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
+            var __workflow_bodydisabledComments = WorkflowExpression.Compile(bodydisabledComments, nameof(bodydisabledComments), required: false);
+            var __workflow_bodyfullName = WorkflowExpression.Compile(bodyfullName, nameof(bodyfullName), required: false);
+            var __workflow_bodygroups = WorkflowExpression.Compile(bodygroups, nameof(bodygroups), required: false);
+            var __workflow_bodyisAccountExpires = WorkflowExpression.Compile(bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
+            var __workflow_bodyisAdvanceFlow = WorkflowExpression.Compile(bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
+            var __workflow_bodyisAllowAccessToReports = WorkflowExpression.Compile(bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
+            var __workflow_bodyisAllowOffline = WorkflowExpression.Compile(bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
+            var __workflow_bodyisChangeNextLogin = WorkflowExpression.Compile(bodyisChangeNextLogin, nameof(bodyisChangeNextLogin), required: false);
+            var __workflow_bodyisDisabled = WorkflowExpression.Compile(bodyisDisabled, nameof(bodyisDisabled), required: false);
+            var __workflow_bodyisFirmFlow = WorkflowExpression.Compile(bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
+            var __workflow_bodyisFirmFlowNotificationGroup = WorkflowExpression.Compile(bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
+            var __workflow_bodyisFirmFlowNotificationUser = WorkflowExpression.Compile(bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
+            var __workflow_bodyisMfa = WorkflowExpression.Compile(bodyisMfa, nameof(bodyisMfa), required: false);
+            var __workflow_bodyisUserAdministration = WorkflowExpression.Compile(bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
+            var __workflow_bodyisWorkflowManagerUser = WorkflowExpression.Compile(bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
+            var __workflow_bodylicenseType = WorkflowExpression.Compile(bodylicenseType, nameof(bodylicenseType), required: false);
+            var __workflow_bodyloginName = WorkflowExpression.Compile(bodyloginName, nameof(bodyloginName), required: false);
+            var __workflow_bodymanagerEmail = WorkflowExpression.Compile(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyreports = WorkflowExpression.Compile(bodyreports, nameof(bodyreports), required: false);
+            var __workflow_bodyuploadLocation = WorkflowExpression.Compile(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
             return new DeferredBodyAction<ModifyUserResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/modifyuser";
@@ -1035,8 +924,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetPasswordPolicyResponse> GetPasswordPolicy(Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetPasswordPolicyResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/passwordpolicy";
@@ -1051,26 +939,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<SetUserPermissionsResponse> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodyloginId = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodycabinet = bodycabinet == null ? null : WorkflowExpression.Compile(bodycabinet);
-            WorkflowExpression.Validate(__workflow_bodycabinet, nameof(bodycabinet), required: false);
-            var __workflow_bodycabinetPermissionadd = bodycabinetPermissionadd == null ? null : WorkflowExpression.Compile(bodycabinetPermissionadd);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
-            var __workflow_bodycabinetPermissiondelete = bodycabinetPermissiondelete == null ? null : WorkflowExpression.Compile(bodycabinetPermissiondelete);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
-            var __workflow_bodycabinetPermissiondeny = bodycabinetPermissiondeny == null ? null : WorkflowExpression.Compile(bodycabinetPermissiondeny);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
-            var __workflow_bodycabinetPermissionedit = bodycabinetPermissionedit == null ? null : WorkflowExpression.Compile(bodycabinetPermissionedit);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
-            var __workflow_bodycabinetPermissionlookUp = bodycabinetPermissionlookUp == null ? null : WorkflowExpression.Compile(bodycabinetPermissionlookUp);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
-            var __workflow_bodycabinetPermissionread = bodycabinetPermissionread == null ? null : WorkflowExpression.Compile(bodycabinetPermissionread);
-            WorkflowExpression.Validate(__workflow_bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
-            var __workflow_bodydrawerPermissions = bodydrawerPermissions == null ? null : WorkflowExpression.Compile(bodydrawerPermissions);
-            WorkflowExpression.Validate(__workflow_bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
-            var __workflow_bodyloginId = bodyloginId == null ? null : WorkflowExpression.Compile(bodyloginId);
-            WorkflowExpression.Validate(__workflow_bodyloginId, nameof(bodyloginId), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodycabinet = WorkflowExpression.Compile(bodycabinet, nameof(bodycabinet), required: false);
+            var __workflow_bodycabinetPermissionadd = WorkflowExpression.Compile(bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
+            var __workflow_bodycabinetPermissiondelete = WorkflowExpression.Compile(bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
+            var __workflow_bodycabinetPermissiondeny = WorkflowExpression.Compile(bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
+            var __workflow_bodycabinetPermissionedit = WorkflowExpression.Compile(bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
+            var __workflow_bodycabinetPermissionlookUp = WorkflowExpression.Compile(bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
+            var __workflow_bodycabinetPermissionread = WorkflowExpression.Compile(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
+            var __workflow_bodydrawerPermissions = WorkflowExpression.Compile(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
+            var __workflow_bodyloginId = WorkflowExpression.Compile(bodyloginId, nameof(bodyloginId), required: false);
             return new DeferredBodyAction<SetUserPermissionsResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/permissions";
@@ -1154,8 +1032,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetListOfReportsResponse> GetListOfReports(Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetListOfReportsResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/reports";
@@ -1170,8 +1047,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUploadLocationResponse> GetUploadLocation(Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetUploadLocationResponse>(() =>
             {
                 var apiCallPath = "/api/v1/administration/user/uploadlocations";
@@ -1186,14 +1062,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserDocumentSecurityResponse> GetUserDocumentSecurity(Expression<Func<string>> loginId, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_loginId = loginId == null ? null : WorkflowExpression.Compile(loginId);
-            WorkflowExpression.Validate(__workflow_loginId, nameof(loginId), required: true);
-            var __workflow_cabinetName = cabinetName == null ? null : WorkflowExpression.Compile(cabinetName);
-            WorkflowExpression.Validate(__workflow_cabinetName, nameof(cabinetName), required: true);
-            var __workflow_drawerName = drawerName == null ? null : WorkflowExpression.Compile(drawerName);
-            WorkflowExpression.Validate(__workflow_drawerName, nameof(drawerName), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_loginId = WorkflowExpression.Compile(loginId, nameof(loginId), required: true);
+            var __workflow_cabinetName = WorkflowExpression.Compile(cabinetName, nameof(cabinetName), required: true);
+            var __workflow_drawerName = WorkflowExpression.Compile(drawerName, nameof(drawerName), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetUserDocumentSecurityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(__workflow_loginId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerName, 1));
@@ -1208,10 +1080,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUserPermissionResponse> GetUserPermission(Expression<Func<string>> login, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_login = login == null ? null : WorkflowExpression.Compile(login);
-            WorkflowExpression.Validate(__workflow_login, nameof(login), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_login = WorkflowExpression.Compile(login, nameof(login), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetUserPermissionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/permissions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_login, 1));
@@ -1226,10 +1096,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_userType = userType == null ? null : WorkflowExpression.Compile(userType);
-            WorkflowExpression.Validate(__workflow_userType, nameof(userType), required: false);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_userType = WorkflowExpression.Compile(userType, nameof(userType), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetUsersResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1/administration/users";
@@ -1246,10 +1114,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetLookupListResponseItem[]> GetLookupList(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_drawerId = drawerId == null ? null : WorkflowExpression.Compile(drawerId);
-            WorkflowExpression.Validate(__workflow_drawerId, nameof(drawerId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_drawerId = WorkflowExpression.Compile(drawerId, nameof(drawerId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetLookupListResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerId, 1));
@@ -1264,12 +1130,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydrawerId = bodydrawerId == null ? null : WorkflowExpression.Compile(bodydrawerId);
-            WorkflowExpression.Validate(__workflow_bodydrawerId, nameof(bodydrawerId), required: false);
-            var __workflow_bodyindexes = bodyindexes == null ? null : WorkflowExpression.Compile(bodyindexes);
-            WorkflowExpression.Validate(__workflow_bodyindexes, nameof(bodyindexes), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
+            var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
             return new DeferredBodyAction<CreateDocumentResponse>(() =>
             {
                 var apiCallPath = "/api/v1/documents";
@@ -1303,12 +1166,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CopyDocumentResponseItem[]> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydocumentIds = bodydocumentIds == null ? null : WorkflowExpression.Compile(bodydocumentIds);
-            WorkflowExpression.Validate(__workflow_bodydocumentIds, nameof(bodydocumentIds), required: false);
-            var __workflow_bodyindexValues = bodyindexValues == null ? null : WorkflowExpression.Compile(bodyindexValues);
-            WorkflowExpression.Validate(__workflow_bodyindexValues, nameof(bodyindexValues), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydocumentIds = WorkflowExpression.Compile(bodydocumentIds, nameof(bodydocumentIds), required: false);
+            var __workflow_bodyindexValues = WorkflowExpression.Compile(bodyindexValues, nameof(bodyindexValues), required: false);
             return new DeferredBodyAction<CopyDocumentResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1/documents/copy";
@@ -1342,10 +1202,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentStatusResponseItem[]> GetDocumentStatus(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<GetDocumentStatusResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1/documents/getdocumentstatus";
@@ -1361,10 +1219,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<string> MergePDF(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/v1/documents/mergePDFs";
@@ -1380,12 +1236,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DocumentReindexResponseItem[]> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydocumentIds = bodydocumentIds == null ? null : WorkflowExpression.Compile(bodydocumentIds);
-            WorkflowExpression.Validate(__workflow_bodydocumentIds, nameof(bodydocumentIds), required: false);
-            var __workflow_bodyindexValues = bodyindexValues == null ? null : WorkflowExpression.Compile(bodyindexValues);
-            WorkflowExpression.Validate(__workflow_bodyindexValues, nameof(bodyindexValues), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydocumentIds = WorkflowExpression.Compile(bodydocumentIds, nameof(bodydocumentIds), required: false);
+            var __workflow_bodyindexValues = WorkflowExpression.Compile(bodyindexValues, nameof(bodyindexValues), required: false);
             return new DeferredBodyAction<DocumentReindexResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1/documents/reindex";
@@ -1419,20 +1272,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DocumentSearchResponse> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyfilterindexValuesInputItem[]>> bodyfilterindexValues = null, Expression<Func<int>> bodynumberOfRows = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<string>> bodysortField = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydrawerId = bodydrawerId == null ? null : WorkflowExpression.Compile(bodydrawerId);
-            WorkflowExpression.Validate(__workflow_bodydrawerId, nameof(bodydrawerId), required: false);
-            var __workflow_bodyfilterindexValues = bodyfilterindexValues == null ? null : WorkflowExpression.Compile(bodyfilterindexValues);
-            WorkflowExpression.Validate(__workflow_bodyfilterindexValues, nameof(bodyfilterindexValues), required: false);
-            var __workflow_bodynumberOfRows = bodynumberOfRows == null ? null : WorkflowExpression.Compile(bodynumberOfRows);
-            WorkflowExpression.Validate(__workflow_bodynumberOfRows, nameof(bodynumberOfRows), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodysortField = bodysortField == null ? null : WorkflowExpression.Compile(bodysortField);
-            WorkflowExpression.Validate(__workflow_bodysortField, nameof(bodysortField), required: false);
-            var __workflow_bodysortOrder = bodysortOrder == null ? null : WorkflowExpression.Compile(bodysortOrder);
-            WorkflowExpression.Validate(__workflow_bodysortOrder, nameof(bodysortOrder), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
+            var __workflow_bodyfilterindexValues = WorkflowExpression.Compile(bodyfilterindexValues, nameof(bodyfilterindexValues), required: false);
+            var __workflow_bodynumberOfRows = WorkflowExpression.Compile(bodynumberOfRows, nameof(bodynumberOfRows), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodysortField = WorkflowExpression.Compile(bodysortField, nameof(bodysortField), required: false);
+            var __workflow_bodysortOrder = WorkflowExpression.Compile(bodysortOrder, nameof(bodysortOrder), required: false);
             return new DeferredBodyAction<DocumentSearchResponse>(() =>
             {
                 var apiCallPath = "/api/v1/documents/search";
@@ -1498,10 +1344,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<TaxsortDocumentResponseItem[]> TaxsortDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<TaxsortDocumentResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1/documents/taxsort";
@@ -1517,10 +1361,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DocumentDeleteResponseItem[]> DocumentDelete(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<DocumentDeleteResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -1535,10 +1377,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IWorkflowAction GetDocument(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -1553,10 +1393,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentHistoryResponse> GetDocumentHistory(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDocumentHistoryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -1571,10 +1409,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> GetDocumentIndexes(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDocumentIndexesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -1589,12 +1425,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> bodyisPublished, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyisPublished = bodyisPublished == null ? null : WorkflowExpression.Compile(bodyisPublished);
-            WorkflowExpression.Validate(__workflow_bodyisPublished, nameof(bodyisPublished), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyisPublished = WorkflowExpression.Compile(bodyisPublished, nameof(bodyisPublished), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<PublishDocumentStatusResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -1618,8 +1451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDrawersResponseItem[]> GetDrawers(Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDrawersResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/v1/drawers";
@@ -1634,10 +1466,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> GetDrawerIndexes(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_drawerId = drawerId == null ? null : WorkflowExpression.Compile(drawerId);
-            WorkflowExpression.Validate(__workflow_drawerId, nameof(drawerId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_drawerId = WorkflowExpression.Compile(drawerId, nameof(drawerId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDrawerIndexesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/drawers/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_drawerId, 1));
@@ -1652,72 +1482,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodypageNumber = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodyworkflowDescription = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyaccountable = bodyaccountable == null ? null : WorkflowExpression.Compile(bodyaccountable);
-            WorkflowExpression.Validate(__workflow_bodyaccountable, nameof(bodyaccountable), required: false);
-            var __workflow_bodyassignedOn = bodyassignedOn == null ? null : WorkflowExpression.Compile(bodyassignedOn);
-            WorkflowExpression.Validate(__workflow_bodyassignedOn, nameof(bodyassignedOn), required: false);
-            var __workflow_bodyassignedTo = bodyassignedTo == null ? null : WorkflowExpression.Compile(bodyassignedTo);
-            WorkflowExpression.Validate(__workflow_bodyassignedTo, nameof(bodyassignedTo), required: false);
-            var __workflow_bodyassignmentHistory = bodyassignmentHistory == null ? null : WorkflowExpression.Compile(bodyassignmentHistory);
-            WorkflowExpression.Validate(__workflow_bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
-            var __workflow_bodycompletedBy = bodycompletedBy == null ? null : WorkflowExpression.Compile(bodycompletedBy);
-            WorkflowExpression.Validate(__workflow_bodycompletedBy, nameof(bodycompletedBy), required: false);
-            var __workflow_bodycompletedOn = bodycompletedOn == null ? null : WorkflowExpression.Compile(bodycompletedOn);
-            WorkflowExpression.Validate(__workflow_bodycompletedOn, nameof(bodycompletedOn), required: false);
-            var __workflow_bodycurrentDueDate = bodycurrentDueDate == null ? null : WorkflowExpression.Compile(bodycurrentDueDate);
-            WorkflowExpression.Validate(__workflow_bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
-            var __workflow_bodycurrentStep = bodycurrentStep == null ? null : WorkflowExpression.Compile(bodycurrentStep);
-            WorkflowExpression.Validate(__workflow_bodycurrentStep, nameof(bodycurrentStep), required: false);
-            var __workflow_bodydateExtended = bodydateExtended == null ? null : WorkflowExpression.Compile(bodydateExtended);
-            WorkflowExpression.Validate(__workflow_bodydateExtended, nameof(bodydateExtended), required: false);
-            var __workflow_bodydaysAtStep = bodydaysAtStep == null ? null : WorkflowExpression.Compile(bodydaysAtStep);
-            WorkflowExpression.Validate(__workflow_bodydaysAtStep, nameof(bodydaysAtStep), required: false);
-            var __workflow_bodydaysBetweenRoutings = bodydaysBetweenRoutings == null ? null : WorkflowExpression.Compile(bodydaysBetweenRoutings);
-            WorkflowExpression.Validate(__workflow_bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
-            var __workflow_bodydrawerId = bodydrawerId == null ? null : WorkflowExpression.Compile(bodydrawerId);
-            WorkflowExpression.Validate(__workflow_bodydrawerId, nameof(bodydrawerId), required: false);
-            var __workflow_bodyengagementType = bodyengagementType == null ? null : WorkflowExpression.Compile(bodyengagementType);
-            WorkflowExpression.Validate(__workflow_bodyengagementType, nameof(bodyengagementType), required: false);
-            var __workflow_bodyinProcessOnly = bodyinProcessOnly == null ? null : WorkflowExpression.Compile(bodyinProcessOnly);
-            WorkflowExpression.Validate(__workflow_bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
-            var __workflow_bodyindexes = bodyindexes == null ? null : WorkflowExpression.Compile(bodyindexes);
-            WorkflowExpression.Validate(__workflow_bodyindexes, nameof(bodyindexes), required: false);
-            var __workflow_bodyinformationFields = bodyinformationFields == null ? null : WorkflowExpression.Compile(bodyinformationFields);
-            WorkflowExpression.Validate(__workflow_bodyinformationFields, nameof(bodyinformationFields), required: false);
-            var __workflow_bodyoriginalDueDate = bodyoriginalDueDate == null ? null : WorkflowExpression.Compile(bodyoriginalDueDate);
-            WorkflowExpression.Validate(__workflow_bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
-            var __workflow_bodypIC = bodypIC == null ? null : WorkflowExpression.Compile(bodypIC);
-            WorkflowExpression.Validate(__workflow_bodypIC, nameof(bodypIC), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyreceivedFrom = bodyreceivedFrom == null ? null : WorkflowExpression.Compile(bodyreceivedFrom);
-            WorkflowExpression.Validate(__workflow_bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
-            var __workflow_bodyreceivedOn = bodyreceivedOn == null ? null : WorkflowExpression.Compile(bodyreceivedOn);
-            WorkflowExpression.Validate(__workflow_bodyreceivedOn, nameof(bodyreceivedOn), required: false);
-            var __workflow_bodyresponsible = bodyresponsible == null ? null : WorkflowExpression.Compile(bodyresponsible);
-            WorkflowExpression.Validate(__workflow_bodyresponsible, nameof(bodyresponsible), required: false);
-            var __workflow_bodyroutingDetails = bodyroutingDetails == null ? null : WorkflowExpression.Compile(bodyroutingDetails);
-            WorkflowExpression.Validate(__workflow_bodyroutingDetails, nameof(bodyroutingDetails), required: false);
-            var __workflow_bodysentOn = bodysentOn == null ? null : WorkflowExpression.Compile(bodysentOn);
-            WorkflowExpression.Validate(__workflow_bodysentOn, nameof(bodysentOn), required: false);
-            var __workflow_bodysentTo = bodysentTo == null ? null : WorkflowExpression.Compile(bodysentTo);
-            WorkflowExpression.Validate(__workflow_bodysentTo, nameof(bodysentTo), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodytotalDaysAtStep = bodytotalDaysAtStep == null ? null : WorkflowExpression.Compile(bodytotalDaysAtStep);
-            WorkflowExpression.Validate(__workflow_bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
-            var __workflow_bodytotalDaysInProcess = bodytotalDaysInProcess == null ? null : WorkflowExpression.Compile(bodytotalDaysInProcess);
-            WorkflowExpression.Validate(__workflow_bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
-            var __workflow_bodyworkflow = bodyworkflow == null ? null : WorkflowExpression.Compile(bodyworkflow);
-            WorkflowExpression.Validate(__workflow_bodyworkflow, nameof(bodyworkflow), required: false);
-            var __workflow_bodyworkflowDescription = bodyworkflowDescription == null ? null : WorkflowExpression.Compile(bodyworkflowDescription);
-            WorkflowExpression.Validate(__workflow_bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyaccountable = WorkflowExpression.Compile(bodyaccountable, nameof(bodyaccountable), required: false);
+            var __workflow_bodyassignedOn = WorkflowExpression.Compile(bodyassignedOn, nameof(bodyassignedOn), required: false);
+            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            var __workflow_bodyassignmentHistory = WorkflowExpression.Compile(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
+            var __workflow_bodycompletedBy = WorkflowExpression.Compile(bodycompletedBy, nameof(bodycompletedBy), required: false);
+            var __workflow_bodycompletedOn = WorkflowExpression.Compile(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            var __workflow_bodycurrentDueDate = WorkflowExpression.Compile(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
+            var __workflow_bodycurrentStep = WorkflowExpression.Compile(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            var __workflow_bodydateExtended = WorkflowExpression.Compile(bodydateExtended, nameof(bodydateExtended), required: false);
+            var __workflow_bodydaysAtStep = WorkflowExpression.Compile(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
+            var __workflow_bodydaysBetweenRoutings = WorkflowExpression.Compile(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
+            var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
+            var __workflow_bodyengagementType = WorkflowExpression.Compile(bodyengagementType, nameof(bodyengagementType), required: false);
+            var __workflow_bodyinProcessOnly = WorkflowExpression.Compile(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
+            var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
+            var __workflow_bodyinformationFields = WorkflowExpression.Compile(bodyinformationFields, nameof(bodyinformationFields), required: false);
+            var __workflow_bodyoriginalDueDate = WorkflowExpression.Compile(bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
+            var __workflow_bodypIC = WorkflowExpression.Compile(bodypIC, nameof(bodypIC), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyreceivedFrom = WorkflowExpression.Compile(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
+            var __workflow_bodyreceivedOn = WorkflowExpression.Compile(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
+            var __workflow_bodyresponsible = WorkflowExpression.Compile(bodyresponsible, nameof(bodyresponsible), required: false);
+            var __workflow_bodyroutingDetails = WorkflowExpression.Compile(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
+            var __workflow_bodysentOn = WorkflowExpression.Compile(bodysentOn, nameof(bodysentOn), required: false);
+            var __workflow_bodysentTo = WorkflowExpression.Compile(bodysentTo, nameof(bodysentTo), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodytotalDaysAtStep = WorkflowExpression.Compile(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
+            var __workflow_bodytotalDaysInProcess = WorkflowExpression.Compile(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
+            var __workflow_bodyworkflow = WorkflowExpression.Compile(bodyworkflow, nameof(bodyworkflow), required: false);
+            var __workflow_bodyworkflowDescription = WorkflowExpression.Compile(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
             return new DeferredBodyAction<GetFirmFlowDeliverableReportResponse>(() =>
             {
                 var apiCallPath = "/api/v1/firmflowreports/TrackingReportByDeliverable";
@@ -1931,12 +1728,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<ValidateIndexesResponse> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydrawerId = bodydrawerId == null ? null : WorkflowExpression.Compile(bodydrawerId);
-            WorkflowExpression.Validate(__workflow_bodydrawerId, nameof(bodydrawerId), required: false);
-            var __workflow_bodyindexes = bodyindexes == null ? null : WorkflowExpression.Compile(bodyindexes);
-            WorkflowExpression.Validate(__workflow_bodyindexes, nameof(bodyindexes), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
+            var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
             return new DeferredBodyAction<ValidateIndexesResponse>(() =>
             {
                 var apiCallPath = "/api/v1/indexes/validate";
@@ -1970,10 +1764,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> GetDynamicRulesForIndex(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_indexId = indexId == null ? null : WorkflowExpression.Compile(indexId);
-            WorkflowExpression.Validate(__workflow_indexId, nameof(indexId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetDynamicRulesForIndexResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/dynamicrules", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1));
@@ -1988,18 +1780,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyindexValue = null, Expression<Func<bodysearchTypeInput>> bodysearchType = null)
         {
-            var __workflow_indexId = indexId == null ? null : WorkflowExpression.Compile(indexId);
-            WorkflowExpression.Validate(__workflow_indexId, nameof(indexId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyactionType = bodyactionType == null ? null : WorkflowExpression.Compile(bodyactionType);
-            WorkflowExpression.Validate(__workflow_bodyactionType, nameof(bodyactionType), required: false);
-            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
-            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
-            var __workflow_bodyindexValue = bodyindexValue == null ? null : WorkflowExpression.Compile(bodyindexValue);
-            WorkflowExpression.Validate(__workflow_bodyindexValue, nameof(bodyindexValue), required: false);
-            var __workflow_bodysearchType = bodysearchType == null ? null : WorkflowExpression.Compile(bodysearchType);
-            WorkflowExpression.Validate(__workflow_bodysearchType, nameof(bodysearchType), required: false);
+            var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyactionType = WorkflowExpression.Compile(bodyactionType, nameof(bodyactionType), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
+            var __workflow_bodyindexValue = WorkflowExpression.Compile(bodyindexValue, nameof(bodyindexValue), required: false);
+            var __workflow_bodysearchType = WorkflowExpression.Compile(bodysearchType, nameof(bodysearchType), required: false);
             return new DeferredBodyAction<IndexLookupListFindResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/lookuplist", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1));
@@ -2045,10 +1831,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> GetListTypeIndexData(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_indexId = indexId == null ? null : WorkflowExpression.Compile(indexId);
-            WorkflowExpression.Validate(__workflow_indexId, nameof(indexId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetListTypeIndexDataResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1));
@@ -2063,12 +1847,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetChildIndexesResponseItem[]> GetChildIndexes(Expression<Func<string>> indexId, Expression<Func<string>> listId, Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_indexId = indexId == null ? null : WorkflowExpression.Compile(indexId);
-            WorkflowExpression.Validate(__workflow_indexId, nameof(indexId), required: true);
-            var __workflow_listId = listId == null ? null : WorkflowExpression.Compile(listId);
-            WorkflowExpression.Validate(__workflow_listId, nameof(listId), required: true);
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_indexId = WorkflowExpression.Compile(indexId, nameof(indexId), required: true);
+            var __workflow_listId = WorkflowExpression.Compile(listId, nameof(listId), required: true);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<GetChildIndexesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values/childindexlist/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_indexId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_listId, 1));
@@ -2083,10 +1864,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodypassword)
         {
-            var __workflow_bodyloginName = bodyloginName == null ? null : WorkflowExpression.Compile(bodyloginName);
-            WorkflowExpression.Validate(__workflow_bodyloginName, nameof(bodyloginName), required: true);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodyloginName = WorkflowExpression.Compile(bodyloginName, nameof(bodyloginName), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
             return new DeferredBodyAction<LoginResponse>(() =>
             {
                 var apiCallPath = "/api/v1/user/login";
@@ -2110,8 +1889,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<LogoutResponse> Logout(Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<LogoutResponse>(() =>
             {
                 var apiCallPath = "/api/v1/user/logout";
@@ -2126,8 +1904,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<bool> ValidateToken(Expression<Func<string>> xAuthorization = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
             return new DeferredBodyAction<bool>(() =>
             {
                 var apiCallPath = "/api/v1/user/validate";
@@ -2142,60 +1919,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<CreateWorkflowResponse> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawer = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyfolderId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodyfilingworkflowName = null, Expression<Func<string>> bodyfilingdescription = null, Expression<Func<string>> bodyfilingstatusName = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydrawer = bodydrawer == null ? null : WorkflowExpression.Compile(bodydrawer);
-            WorkflowExpression.Validate(__workflow_bodydrawer, nameof(bodydrawer), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodyfolderId = bodyfolderId == null ? null : WorkflowExpression.Compile(bodyfolderId);
-            WorkflowExpression.Validate(__workflow_bodyfolderId, nameof(bodyfolderId), required: false);
-            var __workflow_bodyheadersclientName = bodyheadersclientName == null ? null : WorkflowExpression.Compile(bodyheadersclientName);
-            WorkflowExpression.Validate(__workflow_bodyheadersclientName, nameof(bodyheadersclientName), required: false);
-            var __workflow_bodyheadersclientNumber = bodyheadersclientNumber == null ? null : WorkflowExpression.Compile(bodyheadersclientNumber);
-            WorkflowExpression.Validate(__workflow_bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
-            var __workflow_bodyheadersengagementType = bodyheadersengagementType == null ? null : WorkflowExpression.Compile(bodyheadersengagementType);
-            WorkflowExpression.Validate(__workflow_bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
-            var __workflow_bodyheaderspIC = bodyheaderspIC == null ? null : WorkflowExpression.Compile(bodyheaderspIC);
-            WorkflowExpression.Validate(__workflow_bodyheaderspIC, nameof(bodyheaderspIC), required: false);
-            var __workflow_bodyheadersyear = bodyheadersyear == null ? null : WorkflowExpression.Compile(bodyheadersyear);
-            WorkflowExpression.Validate(__workflow_bodyheadersyear, nameof(bodyheadersyear), required: false);
-            var __workflow_bodyheadersperiodEnd = bodyheadersperiodEnd == null ? null : WorkflowExpression.Compile(bodyheadersperiodEnd);
-            WorkflowExpression.Validate(__workflow_bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
-            var __workflow_bodyfilingworkflowName = bodyfilingworkflowName == null ? null : WorkflowExpression.Compile(bodyfilingworkflowName);
-            WorkflowExpression.Validate(__workflow_bodyfilingworkflowName, nameof(bodyfilingworkflowName), required: false);
-            var __workflow_bodyfilingdescription = bodyfilingdescription == null ? null : WorkflowExpression.Compile(bodyfilingdescription);
-            WorkflowExpression.Validate(__workflow_bodyfilingdescription, nameof(bodyfilingdescription), required: false);
-            var __workflow_bodyfilingstatusName = bodyfilingstatusName == null ? null : WorkflowExpression.Compile(bodyfilingstatusName);
-            WorkflowExpression.Validate(__workflow_bodyfilingstatusName, nameof(bodyfilingstatusName), required: false);
-            var __workflow_bodydeliverableaction = bodydeliverableaction == null ? null : WorkflowExpression.Compile(bodydeliverableaction);
-            WorkflowExpression.Validate(__workflow_bodydeliverableaction, nameof(bodydeliverableaction), required: false);
-            var __workflow_bodydeliverablecurrentduedate = bodydeliverablecurrentduedate == null ? null : WorkflowExpression.Compile(bodydeliverablecurrentduedate);
-            WorkflowExpression.Validate(__workflow_bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
-            var __workflow_bodydeliverableoriginalduedate = bodydeliverableoriginalduedate == null ? null : WorkflowExpression.Compile(bodydeliverableoriginalduedate);
-            WorkflowExpression.Validate(__workflow_bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
-            var __workflow_bodydeliverableform = bodydeliverableform == null ? null : WorkflowExpression.Compile(bodydeliverableform);
-            WorkflowExpression.Validate(__workflow_bodydeliverableform, nameof(bodydeliverableform), required: false);
-            var __workflow_bodydeliveryInstructionsdelivery = bodydeliveryInstructionsdelivery == null ? null : WorkflowExpression.Compile(bodydeliveryInstructionsdelivery);
-            WorkflowExpression.Validate(__workflow_bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
-            var __workflow_bodydeliveryInstructionsdestination = bodydeliveryInstructionsdestination == null ? null : WorkflowExpression.Compile(bodydeliveryInstructionsdestination);
-            WorkflowExpression.Validate(__workflow_bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
-            var __workflow_bodydeliveryInstructionssourceDocument = bodydeliveryInstructionssourceDocument == null ? null : WorkflowExpression.Compile(bodydeliveryInstructionssourceDocument);
-            WorkflowExpression.Validate(__workflow_bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
-            var __workflow_bodynotesaction = bodynotesaction == null ? null : WorkflowExpression.Compile(bodynotesaction);
-            WorkflowExpression.Validate(__workflow_bodynotesaction, nameof(bodynotesaction), required: false);
-            var __workflow_bodynotesnoteType = bodynotesnoteType == null ? null : WorkflowExpression.Compile(bodynotesnoteType);
-            WorkflowExpression.Validate(__workflow_bodynotesnoteType, nameof(bodynotesnoteType), required: false);
-            var __workflow_bodynotesnote = bodynotesnote == null ? null : WorkflowExpression.Compile(bodynotesnote);
-            WorkflowExpression.Validate(__workflow_bodynotesnote, nameof(bodynotesnote), required: false);
-            var __workflow_bodyinformationFieldsname = bodyinformationFieldsname == null ? null : WorkflowExpression.Compile(bodyinformationFieldsname);
-            WorkflowExpression.Validate(__workflow_bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
-            var __workflow_bodyinformationFieldsvalue = bodyinformationFieldsvalue == null ? null : WorkflowExpression.Compile(bodyinformationFieldsvalue);
-            WorkflowExpression.Validate(__workflow_bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
-            var __workflow_bodyroutingSummaryresponsibleField = bodyroutingSummaryresponsibleField == null ? null : WorkflowExpression.Compile(bodyroutingSummaryresponsibleField);
-            WorkflowExpression.Validate(__workflow_bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
-            var __workflow_bodyroutingSummaryvalue = bodyroutingSummaryvalue == null ? null : WorkflowExpression.Compile(bodyroutingSummaryvalue);
-            WorkflowExpression.Validate(__workflow_bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydrawer = WorkflowExpression.Compile(bodydrawer, nameof(bodydrawer), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodyfolderId = WorkflowExpression.Compile(bodyfolderId, nameof(bodyfolderId), required: false);
+            var __workflow_bodyheadersclientName = WorkflowExpression.Compile(bodyheadersclientName, nameof(bodyheadersclientName), required: false);
+            var __workflow_bodyheadersclientNumber = WorkflowExpression.Compile(bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
+            var __workflow_bodyheadersengagementType = WorkflowExpression.Compile(bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
+            var __workflow_bodyheaderspIC = WorkflowExpression.Compile(bodyheaderspIC, nameof(bodyheaderspIC), required: false);
+            var __workflow_bodyheadersyear = WorkflowExpression.Compile(bodyheadersyear, nameof(bodyheadersyear), required: false);
+            var __workflow_bodyheadersperiodEnd = WorkflowExpression.Compile(bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
+            var __workflow_bodyfilingworkflowName = WorkflowExpression.Compile(bodyfilingworkflowName, nameof(bodyfilingworkflowName), required: false);
+            var __workflow_bodyfilingdescription = WorkflowExpression.Compile(bodyfilingdescription, nameof(bodyfilingdescription), required: false);
+            var __workflow_bodyfilingstatusName = WorkflowExpression.Compile(bodyfilingstatusName, nameof(bodyfilingstatusName), required: false);
+            var __workflow_bodydeliverableaction = WorkflowExpression.Compile(bodydeliverableaction, nameof(bodydeliverableaction), required: false);
+            var __workflow_bodydeliverablecurrentduedate = WorkflowExpression.Compile(bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
+            var __workflow_bodydeliverableoriginalduedate = WorkflowExpression.Compile(bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
+            var __workflow_bodydeliverableform = WorkflowExpression.Compile(bodydeliverableform, nameof(bodydeliverableform), required: false);
+            var __workflow_bodydeliveryInstructionsdelivery = WorkflowExpression.Compile(bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
+            var __workflow_bodydeliveryInstructionsdestination = WorkflowExpression.Compile(bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
+            var __workflow_bodydeliveryInstructionssourceDocument = WorkflowExpression.Compile(bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
+            var __workflow_bodynotesaction = WorkflowExpression.Compile(bodynotesaction, nameof(bodynotesaction), required: false);
+            var __workflow_bodynotesnoteType = WorkflowExpression.Compile(bodynotesnoteType, nameof(bodynotesnoteType), required: false);
+            var __workflow_bodynotesnote = WorkflowExpression.Compile(bodynotesnote, nameof(bodynotesnote), required: false);
+            var __workflow_bodyinformationFieldsname = WorkflowExpression.Compile(bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
+            var __workflow_bodyinformationFieldsvalue = WorkflowExpression.Compile(bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
+            var __workflow_bodyroutingSummaryresponsibleField = WorkflowExpression.Compile(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
+            var __workflow_bodyroutingSummaryvalue = WorkflowExpression.Compile(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
             return new DeferredBodyAction<CreateWorkflowResponse>(() =>
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/CreateWorkflow";
@@ -2429,14 +2179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string[]>> bodydeliverableNames = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodydrawerName = bodydrawerName == null ? null : WorkflowExpression.Compile(bodydrawerName);
-            WorkflowExpression.Validate(__workflow_bodydrawerName, nameof(bodydrawerName), required: false);
-            var __workflow_bodydeliverableNames = bodydeliverableNames == null ? null : WorkflowExpression.Compile(bodydeliverableNames);
-            WorkflowExpression.Validate(__workflow_bodydeliverableNames, nameof(bodydeliverableNames), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
+            var __workflow_bodydeliverableNames = WorkflowExpression.Compile(bodydeliverableNames, nameof(bodydeliverableNames), required: false);
             return new DeferredBodyAction<DeleteMasterDeliverableResponseItem[]>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/DeleteDeliverableList";
@@ -2476,10 +2222,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<DeleteWorkflowsResponse> DeleteWorkflows(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyfilingId = bodyfilingId == null ? null : WorkflowExpression.Compile(bodyfilingId);
-            WorkflowExpression.Validate(__workflow_bodyfilingId, nameof(bodyfilingId), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyfilingId = WorkflowExpression.Compile(bodyfilingId, nameof(bodyfilingId), required: false);
             return new DeferredBodyAction<DeleteWorkflowsResponse>(() =>
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/DeleteWorkflows";
@@ -2507,28 +2251,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<EditMasterDeliverableResponse> EditMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycurrentdeliverableName = null, Expression<Func<string>> bodyupdatedeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodycurrentdeliverableName = bodycurrentdeliverableName == null ? null : WorkflowExpression.Compile(bodycurrentdeliverableName);
-            WorkflowExpression.Validate(__workflow_bodycurrentdeliverableName, nameof(bodycurrentdeliverableName), required: false);
-            var __workflow_bodyupdatedeliverableName = bodyupdatedeliverableName == null ? null : WorkflowExpression.Compile(bodyupdatedeliverableName);
-            WorkflowExpression.Validate(__workflow_bodyupdatedeliverableName, nameof(bodyupdatedeliverableName), required: false);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyfirstExtension = bodyfirstExtension == null ? null : WorkflowExpression.Compile(bodyfirstExtension);
-            WorkflowExpression.Validate(__workflow_bodyfirstExtension, nameof(bodyfirstExtension), required: false);
-            var __workflow_bodysecondExtension = bodysecondExtension == null ? null : WorkflowExpression.Compile(bodysecondExtension);
-            WorkflowExpression.Validate(__workflow_bodysecondExtension, nameof(bodysecondExtension), required: false);
-            var __workflow_bodythirdExtension = bodythirdExtension == null ? null : WorkflowExpression.Compile(bodythirdExtension);
-            WorkflowExpression.Validate(__workflow_bodythirdExtension, nameof(bodythirdExtension), required: false);
-            var __workflow_bodycalenderOrFiscal = bodycalenderOrFiscal == null ? null : WorkflowExpression.Compile(bodycalenderOrFiscal);
-            WorkflowExpression.Validate(__workflow_bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
-            var __workflow_bodyextension = bodyextension == null ? null : WorkflowExpression.Compile(bodyextension);
-            WorkflowExpression.Validate(__workflow_bodyextension, nameof(bodyextension), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodydrawerName = bodydrawerName == null ? null : WorkflowExpression.Compile(bodydrawerName);
-            WorkflowExpression.Validate(__workflow_bodydrawerName, nameof(bodydrawerName), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodycurrentdeliverableName = WorkflowExpression.Compile(bodycurrentdeliverableName, nameof(bodycurrentdeliverableName), required: false);
+            var __workflow_bodyupdatedeliverableName = WorkflowExpression.Compile(bodyupdatedeliverableName, nameof(bodyupdatedeliverableName), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyfirstExtension = WorkflowExpression.Compile(bodyfirstExtension, nameof(bodyfirstExtension), required: false);
+            var __workflow_bodysecondExtension = WorkflowExpression.Compile(bodysecondExtension, nameof(bodysecondExtension), required: false);
+            var __workflow_bodythirdExtension = WorkflowExpression.Compile(bodythirdExtension, nameof(bodythirdExtension), required: false);
+            var __workflow_bodycalenderOrFiscal = WorkflowExpression.Compile(bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
+            var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
             return new DeferredBodyAction<EditMasterDeliverableResponse>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/UpdateDeliverableList";
@@ -2610,54 +2343,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<EditWorkflowResponse> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodyfilingId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string[]>> bodynotesnoteid = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null, Expression<Func<bool>> bodyreindexDocs = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyfilingId = bodyfilingId == null ? null : WorkflowExpression.Compile(bodyfilingId);
-            WorkflowExpression.Validate(__workflow_bodyfilingId, nameof(bodyfilingId), required: false);
-            var __workflow_bodyheadersclientName = bodyheadersclientName == null ? null : WorkflowExpression.Compile(bodyheadersclientName);
-            WorkflowExpression.Validate(__workflow_bodyheadersclientName, nameof(bodyheadersclientName), required: false);
-            var __workflow_bodyheadersclientNumber = bodyheadersclientNumber == null ? null : WorkflowExpression.Compile(bodyheadersclientNumber);
-            WorkflowExpression.Validate(__workflow_bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
-            var __workflow_bodyheadersengagementType = bodyheadersengagementType == null ? null : WorkflowExpression.Compile(bodyheadersengagementType);
-            WorkflowExpression.Validate(__workflow_bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
-            var __workflow_bodyheaderspIC = bodyheaderspIC == null ? null : WorkflowExpression.Compile(bodyheaderspIC);
-            WorkflowExpression.Validate(__workflow_bodyheaderspIC, nameof(bodyheaderspIC), required: false);
-            var __workflow_bodyheadersyear = bodyheadersyear == null ? null : WorkflowExpression.Compile(bodyheadersyear);
-            WorkflowExpression.Validate(__workflow_bodyheadersyear, nameof(bodyheadersyear), required: false);
-            var __workflow_bodyheadersperiodEnd = bodyheadersperiodEnd == null ? null : WorkflowExpression.Compile(bodyheadersperiodEnd);
-            WorkflowExpression.Validate(__workflow_bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
-            var __workflow_bodydeliverableaction = bodydeliverableaction == null ? null : WorkflowExpression.Compile(bodydeliverableaction);
-            WorkflowExpression.Validate(__workflow_bodydeliverableaction, nameof(bodydeliverableaction), required: false);
-            var __workflow_bodydeliverablecurrentduedate = bodydeliverablecurrentduedate == null ? null : WorkflowExpression.Compile(bodydeliverablecurrentduedate);
-            WorkflowExpression.Validate(__workflow_bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
-            var __workflow_bodydeliverableoriginalduedate = bodydeliverableoriginalduedate == null ? null : WorkflowExpression.Compile(bodydeliverableoriginalduedate);
-            WorkflowExpression.Validate(__workflow_bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
-            var __workflow_bodydeliverableform = bodydeliverableform == null ? null : WorkflowExpression.Compile(bodydeliverableform);
-            WorkflowExpression.Validate(__workflow_bodydeliverableform, nameof(bodydeliverableform), required: false);
-            var __workflow_bodynotesaction = bodynotesaction == null ? null : WorkflowExpression.Compile(bodynotesaction);
-            WorkflowExpression.Validate(__workflow_bodynotesaction, nameof(bodynotesaction), required: false);
-            var __workflow_bodynotesnoteType = bodynotesnoteType == null ? null : WorkflowExpression.Compile(bodynotesnoteType);
-            WorkflowExpression.Validate(__workflow_bodynotesnoteType, nameof(bodynotesnoteType), required: false);
-            var __workflow_bodynotesnoteid = bodynotesnoteid == null ? null : WorkflowExpression.Compile(bodynotesnoteid);
-            WorkflowExpression.Validate(__workflow_bodynotesnoteid, nameof(bodynotesnoteid), required: false);
-            var __workflow_bodynotesnote = bodynotesnote == null ? null : WorkflowExpression.Compile(bodynotesnote);
-            WorkflowExpression.Validate(__workflow_bodynotesnote, nameof(bodynotesnote), required: false);
-            var __workflow_bodyinformationFieldsname = bodyinformationFieldsname == null ? null : WorkflowExpression.Compile(bodyinformationFieldsname);
-            WorkflowExpression.Validate(__workflow_bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
-            var __workflow_bodyinformationFieldsvalue = bodyinformationFieldsvalue == null ? null : WorkflowExpression.Compile(bodyinformationFieldsvalue);
-            WorkflowExpression.Validate(__workflow_bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
-            var __workflow_bodydeliveryInstructionsdelivery = bodydeliveryInstructionsdelivery == null ? null : WorkflowExpression.Compile(bodydeliveryInstructionsdelivery);
-            WorkflowExpression.Validate(__workflow_bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
-            var __workflow_bodydeliveryInstructionsdestination = bodydeliveryInstructionsdestination == null ? null : WorkflowExpression.Compile(bodydeliveryInstructionsdestination);
-            WorkflowExpression.Validate(__workflow_bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
-            var __workflow_bodydeliveryInstructionssourceDocument = bodydeliveryInstructionssourceDocument == null ? null : WorkflowExpression.Compile(bodydeliveryInstructionssourceDocument);
-            WorkflowExpression.Validate(__workflow_bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
-            var __workflow_bodyroutingSummaryresponsibleField = bodyroutingSummaryresponsibleField == null ? null : WorkflowExpression.Compile(bodyroutingSummaryresponsibleField);
-            WorkflowExpression.Validate(__workflow_bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
-            var __workflow_bodyroutingSummaryvalue = bodyroutingSummaryvalue == null ? null : WorkflowExpression.Compile(bodyroutingSummaryvalue);
-            WorkflowExpression.Validate(__workflow_bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
-            var __workflow_bodyreindexDocs = bodyreindexDocs == null ? null : WorkflowExpression.Compile(bodyreindexDocs);
-            WorkflowExpression.Validate(__workflow_bodyreindexDocs, nameof(bodyreindexDocs), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyfilingId = WorkflowExpression.Compile(bodyfilingId, nameof(bodyfilingId), required: false);
+            var __workflow_bodyheadersclientName = WorkflowExpression.Compile(bodyheadersclientName, nameof(bodyheadersclientName), required: false);
+            var __workflow_bodyheadersclientNumber = WorkflowExpression.Compile(bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
+            var __workflow_bodyheadersengagementType = WorkflowExpression.Compile(bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
+            var __workflow_bodyheaderspIC = WorkflowExpression.Compile(bodyheaderspIC, nameof(bodyheaderspIC), required: false);
+            var __workflow_bodyheadersyear = WorkflowExpression.Compile(bodyheadersyear, nameof(bodyheadersyear), required: false);
+            var __workflow_bodyheadersperiodEnd = WorkflowExpression.Compile(bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
+            var __workflow_bodydeliverableaction = WorkflowExpression.Compile(bodydeliverableaction, nameof(bodydeliverableaction), required: false);
+            var __workflow_bodydeliverablecurrentduedate = WorkflowExpression.Compile(bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
+            var __workflow_bodydeliverableoriginalduedate = WorkflowExpression.Compile(bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
+            var __workflow_bodydeliverableform = WorkflowExpression.Compile(bodydeliverableform, nameof(bodydeliverableform), required: false);
+            var __workflow_bodynotesaction = WorkflowExpression.Compile(bodynotesaction, nameof(bodynotesaction), required: false);
+            var __workflow_bodynotesnoteType = WorkflowExpression.Compile(bodynotesnoteType, nameof(bodynotesnoteType), required: false);
+            var __workflow_bodynotesnoteid = WorkflowExpression.Compile(bodynotesnoteid, nameof(bodynotesnoteid), required: false);
+            var __workflow_bodynotesnote = WorkflowExpression.Compile(bodynotesnote, nameof(bodynotesnote), required: false);
+            var __workflow_bodyinformationFieldsname = WorkflowExpression.Compile(bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
+            var __workflow_bodyinformationFieldsvalue = WorkflowExpression.Compile(bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
+            var __workflow_bodydeliveryInstructionsdelivery = WorkflowExpression.Compile(bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
+            var __workflow_bodydeliveryInstructionsdestination = WorkflowExpression.Compile(bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
+            var __workflow_bodydeliveryInstructionssourceDocument = WorkflowExpression.Compile(bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
+            var __workflow_bodyroutingSummaryresponsibleField = WorkflowExpression.Compile(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
+            var __workflow_bodyroutingSummaryvalue = WorkflowExpression.Compile(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
+            var __workflow_bodyreindexDocs = WorkflowExpression.Compile(bodyreindexDocs, nameof(bodyreindexDocs), required: false);
             return new DeferredBodyAction<EditWorkflowResponse>(() =>
             {
                 var apiCallPath = "/firmflow/api/V1/Workflow/EditWorkflow";
@@ -2865,16 +2574,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<GetMasterDeliverableResponse> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodypageSize = bodypageSize == null ? null : WorkflowExpression.Compile(bodypageSize);
-            WorkflowExpression.Validate(__workflow_bodypageSize, nameof(bodypageSize), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodydrawerName = bodydrawerName == null ? null : WorkflowExpression.Compile(bodydrawerName);
-            WorkflowExpression.Validate(__workflow_bodydrawerName, nameof(bodydrawerName), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
             return new DeferredBodyAction<GetMasterDeliverableResponse>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/GetDeliverableList";
@@ -2920,70 +2624,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydrawerId = bodydrawerId == null ? null : WorkflowExpression.Compile(bodydrawerId);
-            WorkflowExpression.Validate(__workflow_bodydrawerId, nameof(bodydrawerId), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodyengagementType = bodyengagementType == null ? null : WorkflowExpression.Compile(bodyengagementType);
-            WorkflowExpression.Validate(__workflow_bodyengagementType, nameof(bodyengagementType), required: false);
-            var __workflow_bodyworkflow = bodyworkflow == null ? null : WorkflowExpression.Compile(bodyworkflow);
-            WorkflowExpression.Validate(__workflow_bodyworkflow, nameof(bodyworkflow), required: false);
-            var __workflow_bodycurrentStep = bodycurrentStep == null ? null : WorkflowExpression.Compile(bodycurrentStep);
-            WorkflowExpression.Validate(__workflow_bodycurrentStep, nameof(bodycurrentStep), required: false);
-            var __workflow_bodypIC = bodypIC == null ? null : WorkflowExpression.Compile(bodypIC);
-            WorkflowExpression.Validate(__workflow_bodypIC, nameof(bodypIC), required: false);
-            var __workflow_bodyassignedTo = bodyassignedTo == null ? null : WorkflowExpression.Compile(bodyassignedTo);
-            WorkflowExpression.Validate(__workflow_bodyassignedTo, nameof(bodyassignedTo), required: false);
-            var __workflow_bodyassignedOn = bodyassignedOn == null ? null : WorkflowExpression.Compile(bodyassignedOn);
-            WorkflowExpression.Validate(__workflow_bodyassignedOn, nameof(bodyassignedOn), required: false);
-            var __workflow_bodyworkflowDescription = bodyworkflowDescription == null ? null : WorkflowExpression.Compile(bodyworkflowDescription);
-            WorkflowExpression.Validate(__workflow_bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
-            var __workflow_bodyinProcessOnly = bodyinProcessOnly == null ? null : WorkflowExpression.Compile(bodyinProcessOnly);
-            WorkflowExpression.Validate(__workflow_bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyresponsible = bodyresponsible == null ? null : WorkflowExpression.Compile(bodyresponsible);
-            WorkflowExpression.Validate(__workflow_bodyresponsible, nameof(bodyresponsible), required: false);
-            var __workflow_bodyassignmentHistory = bodyassignmentHistory == null ? null : WorkflowExpression.Compile(bodyassignmentHistory);
-            WorkflowExpression.Validate(__workflow_bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
-            var __workflow_bodyreceivedFrom = bodyreceivedFrom == null ? null : WorkflowExpression.Compile(bodyreceivedFrom);
-            WorkflowExpression.Validate(__workflow_bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
-            var __workflow_bodyreceivedOn = bodyreceivedOn == null ? null : WorkflowExpression.Compile(bodyreceivedOn);
-            WorkflowExpression.Validate(__workflow_bodyreceivedOn, nameof(bodyreceivedOn), required: false);
-            var __workflow_bodysentTo = bodysentTo == null ? null : WorkflowExpression.Compile(bodysentTo);
-            WorkflowExpression.Validate(__workflow_bodysentTo, nameof(bodysentTo), required: false);
-            var __workflow_bodysentOn = bodysentOn == null ? null : WorkflowExpression.Compile(bodysentOn);
-            WorkflowExpression.Validate(__workflow_bodysentOn, nameof(bodysentOn), required: false);
-            var __workflow_bodycompletedBy = bodycompletedBy == null ? null : WorkflowExpression.Compile(bodycompletedBy);
-            WorkflowExpression.Validate(__workflow_bodycompletedBy, nameof(bodycompletedBy), required: false);
-            var __workflow_bodycompletedOn = bodycompletedOn == null ? null : WorkflowExpression.Compile(bodycompletedOn);
-            WorkflowExpression.Validate(__workflow_bodycompletedOn, nameof(bodycompletedOn), required: false);
-            var __workflow_bodycurrentDueDate = bodycurrentDueDate == null ? null : WorkflowExpression.Compile(bodycurrentDueDate);
-            WorkflowExpression.Validate(__workflow_bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
-            var __workflow_bodydaysAtStep = bodydaysAtStep == null ? null : WorkflowExpression.Compile(bodydaysAtStep);
-            WorkflowExpression.Validate(__workflow_bodydaysAtStep, nameof(bodydaysAtStep), required: false);
-            var __workflow_bodytotalDaysAtStep = bodytotalDaysAtStep == null ? null : WorkflowExpression.Compile(bodytotalDaysAtStep);
-            WorkflowExpression.Validate(__workflow_bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
-            var __workflow_bodydaysBetweenRoutings = bodydaysBetweenRoutings == null ? null : WorkflowExpression.Compile(bodydaysBetweenRoutings);
-            WorkflowExpression.Validate(__workflow_bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
-            var __workflow_bodytotalDaysInProcess = bodytotalDaysInProcess == null ? null : WorkflowExpression.Compile(bodytotalDaysInProcess);
-            WorkflowExpression.Validate(__workflow_bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
-            var __workflow_bodyaccountable = bodyaccountable == null ? null : WorkflowExpression.Compile(bodyaccountable);
-            WorkflowExpression.Validate(__workflow_bodyaccountable, nameof(bodyaccountable), required: false);
-            var __workflow_bodyroutingDetails = bodyroutingDetails == null ? null : WorkflowExpression.Compile(bodyroutingDetails);
-            WorkflowExpression.Validate(__workflow_bodyroutingDetails, nameof(bodyroutingDetails), required: false);
-            var __workflow_bodylastUpdated = bodylastUpdated == null ? null : WorkflowExpression.Compile(bodylastUpdated);
-            WorkflowExpression.Validate(__workflow_bodylastUpdated, nameof(bodylastUpdated), required: false);
-            var __workflow_bodyinformationFields = bodyinformationFields == null ? null : WorkflowExpression.Compile(bodyinformationFields);
-            WorkflowExpression.Validate(__workflow_bodyinformationFields, nameof(bodyinformationFields), required: false);
-            var __workflow_bodyindexes = bodyindexes == null ? null : WorkflowExpression.Compile(bodyindexes);
-            WorkflowExpression.Validate(__workflow_bodyindexes, nameof(bodyindexes), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodyengagementType = WorkflowExpression.Compile(bodyengagementType, nameof(bodyengagementType), required: false);
+            var __workflow_bodyworkflow = WorkflowExpression.Compile(bodyworkflow, nameof(bodyworkflow), required: false);
+            var __workflow_bodycurrentStep = WorkflowExpression.Compile(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            var __workflow_bodypIC = WorkflowExpression.Compile(bodypIC, nameof(bodypIC), required: false);
+            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            var __workflow_bodyassignedOn = WorkflowExpression.Compile(bodyassignedOn, nameof(bodyassignedOn), required: false);
+            var __workflow_bodyworkflowDescription = WorkflowExpression.Compile(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
+            var __workflow_bodyinProcessOnly = WorkflowExpression.Compile(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyresponsible = WorkflowExpression.Compile(bodyresponsible, nameof(bodyresponsible), required: false);
+            var __workflow_bodyassignmentHistory = WorkflowExpression.Compile(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
+            var __workflow_bodyreceivedFrom = WorkflowExpression.Compile(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
+            var __workflow_bodyreceivedOn = WorkflowExpression.Compile(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
+            var __workflow_bodysentTo = WorkflowExpression.Compile(bodysentTo, nameof(bodysentTo), required: false);
+            var __workflow_bodysentOn = WorkflowExpression.Compile(bodysentOn, nameof(bodysentOn), required: false);
+            var __workflow_bodycompletedBy = WorkflowExpression.Compile(bodycompletedBy, nameof(bodycompletedBy), required: false);
+            var __workflow_bodycompletedOn = WorkflowExpression.Compile(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            var __workflow_bodycurrentDueDate = WorkflowExpression.Compile(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
+            var __workflow_bodydaysAtStep = WorkflowExpression.Compile(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
+            var __workflow_bodytotalDaysAtStep = WorkflowExpression.Compile(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
+            var __workflow_bodydaysBetweenRoutings = WorkflowExpression.Compile(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
+            var __workflow_bodytotalDaysInProcess = WorkflowExpression.Compile(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
+            var __workflow_bodyaccountable = WorkflowExpression.Compile(bodyaccountable, nameof(bodyaccountable), required: false);
+            var __workflow_bodyroutingDetails = WorkflowExpression.Compile(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
+            var __workflow_bodylastUpdated = WorkflowExpression.Compile(bodylastUpdated, nameof(bodylastUpdated), required: false);
+            var __workflow_bodyinformationFields = WorkflowExpression.Compile(bodyinformationFields, nameof(bodyinformationFields), required: false);
+            var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
             return new DeferredBodyAction<TrackingReportByWorkflowResponse>(() =>
             {
                 var apiCallPath = "/api/v1/firmflowreports/TrackingReportByWorkflow";
@@ -3191,26 +2863,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<AddMasterDeliverableResponse> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydeliverableName = bodydeliverableName == null ? null : WorkflowExpression.Compile(bodydeliverableName);
-            WorkflowExpression.Validate(__workflow_bodydeliverableName, nameof(bodydeliverableName), required: false);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyfirstExtension = bodyfirstExtension == null ? null : WorkflowExpression.Compile(bodyfirstExtension);
-            WorkflowExpression.Validate(__workflow_bodyfirstExtension, nameof(bodyfirstExtension), required: false);
-            var __workflow_bodysecondExtension = bodysecondExtension == null ? null : WorkflowExpression.Compile(bodysecondExtension);
-            WorkflowExpression.Validate(__workflow_bodysecondExtension, nameof(bodysecondExtension), required: false);
-            var __workflow_bodythirdExtension = bodythirdExtension == null ? null : WorkflowExpression.Compile(bodythirdExtension);
-            WorkflowExpression.Validate(__workflow_bodythirdExtension, nameof(bodythirdExtension), required: false);
-            var __workflow_bodycalenderOrFiscal = bodycalenderOrFiscal == null ? null : WorkflowExpression.Compile(bodycalenderOrFiscal);
-            WorkflowExpression.Validate(__workflow_bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
-            var __workflow_bodyextension = bodyextension == null ? null : WorkflowExpression.Compile(bodyextension);
-            WorkflowExpression.Validate(__workflow_bodyextension, nameof(bodyextension), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodydrawerName = bodydrawerName == null ? null : WorkflowExpression.Compile(bodydrawerName);
-            WorkflowExpression.Validate(__workflow_bodydrawerName, nameof(bodydrawerName), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydeliverableName = WorkflowExpression.Compile(bodydeliverableName, nameof(bodydeliverableName), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyfirstExtension = WorkflowExpression.Compile(bodyfirstExtension, nameof(bodyfirstExtension), required: false);
+            var __workflow_bodysecondExtension = WorkflowExpression.Compile(bodysecondExtension, nameof(bodysecondExtension), required: false);
+            var __workflow_bodythirdExtension = WorkflowExpression.Compile(bodythirdExtension, nameof(bodythirdExtension), required: false);
+            var __workflow_bodycalenderOrFiscal = WorkflowExpression.Compile(bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
+            var __workflow_bodyextension = WorkflowExpression.Compile(bodyextension, nameof(bodyextension), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodydrawerName = WorkflowExpression.Compile(bodydrawerName, nameof(bodydrawerName), required: false);
             return new DeferredBodyAction<AddMasterDeliverableResponse>(() =>
             {
                 var apiCallPath = "/firmflow/api/v1/Deliverable/SaveDeliverableList";
@@ -3286,30 +2948,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodycurrentStep = null, Expression<Func<bool>> bodycomplete = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<string>> bodynextStep = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedDate = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyroutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodyfilingId = bodyfilingId == null ? null : WorkflowExpression.Compile(bodyfilingId);
-            WorkflowExpression.Validate(__workflow_bodyfilingId, nameof(bodyfilingId), required: false);
-            var __workflow_bodycurrentStep = bodycurrentStep == null ? null : WorkflowExpression.Compile(bodycurrentStep);
-            WorkflowExpression.Validate(__workflow_bodycurrentStep, nameof(bodycurrentStep), required: false);
-            var __workflow_bodycomplete = bodycomplete == null ? null : WorkflowExpression.Compile(bodycomplete);
-            WorkflowExpression.Validate(__workflow_bodycomplete, nameof(bodycomplete), required: false);
-            var __workflow_bodycompletedDate = bodycompletedDate == null ? null : WorkflowExpression.Compile(bodycompletedDate);
-            WorkflowExpression.Validate(__workflow_bodycompletedDate, nameof(bodycompletedDate), required: false);
-            var __workflow_bodynextStep = bodynextStep == null ? null : WorkflowExpression.Compile(bodynextStep);
-            WorkflowExpression.Validate(__workflow_bodynextStep, nameof(bodynextStep), required: false);
-            var __workflow_bodyassignedTo = bodyassignedTo == null ? null : WorkflowExpression.Compile(bodyassignedTo);
-            WorkflowExpression.Validate(__workflow_bodyassignedTo, nameof(bodyassignedTo), required: false);
-            var __workflow_bodyassignedDate = bodyassignedDate == null ? null : WorkflowExpression.Compile(bodyassignedDate);
-            WorkflowExpression.Validate(__workflow_bodyassignedDate, nameof(bodyassignedDate), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyroutingNote = bodyroutingNote == null ? null : WorkflowExpression.Compile(bodyroutingNote);
-            WorkflowExpression.Validate(__workflow_bodyroutingNote, nameof(bodyroutingNote), required: false);
-            var __workflow_bodyemailNotify = bodyemailNotify == null ? null : WorkflowExpression.Compile(bodyemailNotify);
-            WorkflowExpression.Validate(__workflow_bodyemailNotify, nameof(bodyemailNotify), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodyfilingId = WorkflowExpression.Compile(bodyfilingId, nameof(bodyfilingId), required: false);
+            var __workflow_bodycurrentStep = WorkflowExpression.Compile(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            var __workflow_bodycomplete = WorkflowExpression.Compile(bodycomplete, nameof(bodycomplete), required: false);
+            var __workflow_bodycompletedDate = WorkflowExpression.Compile(bodycompletedDate, nameof(bodycompletedDate), required: false);
+            var __workflow_bodynextStep = WorkflowExpression.Compile(bodynextStep, nameof(bodynextStep), required: false);
+            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            var __workflow_bodyassignedDate = WorkflowExpression.Compile(bodyassignedDate, nameof(bodyassignedDate), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyroutingNote = WorkflowExpression.Compile(bodyroutingNote, nameof(bodyroutingNote), required: false);
+            var __workflow_bodyemailNotify = WorkflowExpression.Compile(bodyemailNotify, nameof(bodyemailNotify), required: false);
             return new DeferredBodyAction<RouteWorkflowV2Response>(() =>
             {
                 var apiCallPath = "/firmflow/api/V2/Route";
@@ -3397,74 +3047,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
         public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
         {
-            var __workflow_xAuthorization = xAuthorization == null ? null : WorkflowExpression.Compile(xAuthorization);
-            WorkflowExpression.Validate(__workflow_xAuthorization, nameof(xAuthorization), required: false);
-            var __workflow_bodydrawerId = bodydrawerId == null ? null : WorkflowExpression.Compile(bodydrawerId);
-            WorkflowExpression.Validate(__workflow_bodydrawerId, nameof(bodydrawerId), required: false);
-            var __workflow_bodyserviceType = bodyserviceType == null ? null : WorkflowExpression.Compile(bodyserviceType);
-            WorkflowExpression.Validate(__workflow_bodyserviceType, nameof(bodyserviceType), required: false);
-            var __workflow_bodyengagementType = bodyengagementType == null ? null : WorkflowExpression.Compile(bodyengagementType);
-            WorkflowExpression.Validate(__workflow_bodyengagementType, nameof(bodyengagementType), required: false);
-            var __workflow_bodyworkflow = bodyworkflow == null ? null : WorkflowExpression.Compile(bodyworkflow);
-            WorkflowExpression.Validate(__workflow_bodyworkflow, nameof(bodyworkflow), required: false);
-            var __workflow_bodycurrentStep = bodycurrentStep == null ? null : WorkflowExpression.Compile(bodycurrentStep);
-            WorkflowExpression.Validate(__workflow_bodycurrentStep, nameof(bodycurrentStep), required: false);
-            var __workflow_bodypIC = bodypIC == null ? null : WorkflowExpression.Compile(bodypIC);
-            WorkflowExpression.Validate(__workflow_bodypIC, nameof(bodypIC), required: false);
-            var __workflow_bodyassignedTo = bodyassignedTo == null ? null : WorkflowExpression.Compile(bodyassignedTo);
-            WorkflowExpression.Validate(__workflow_bodyassignedTo, nameof(bodyassignedTo), required: false);
-            var __workflow_bodyassignedOn = bodyassignedOn == null ? null : WorkflowExpression.Compile(bodyassignedOn);
-            WorkflowExpression.Validate(__workflow_bodyassignedOn, nameof(bodyassignedOn), required: false);
-            var __workflow_bodyworkflowDescription = bodyworkflowDescription == null ? null : WorkflowExpression.Compile(bodyworkflowDescription);
-            WorkflowExpression.Validate(__workflow_bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
-            var __workflow_bodyinProcessOnly = bodyinProcessOnly == null ? null : WorkflowExpression.Compile(bodyinProcessOnly);
-            WorkflowExpression.Validate(__workflow_bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyreceivedOn = bodyreceivedOn == null ? null : WorkflowExpression.Compile(bodyreceivedOn);
-            WorkflowExpression.Validate(__workflow_bodyreceivedOn, nameof(bodyreceivedOn), required: false);
-            var __workflow_bodycompletedOn = bodycompletedOn == null ? null : WorkflowExpression.Compile(bodycompletedOn);
-            WorkflowExpression.Validate(__workflow_bodycompletedOn, nameof(bodycompletedOn), required: false);
-            var __workflow_bodysentOn = bodysentOn == null ? null : WorkflowExpression.Compile(bodysentOn);
-            WorkflowExpression.Validate(__workflow_bodysentOn, nameof(bodysentOn), required: false);
-            var __workflow_bodyresponsible = bodyresponsible == null ? null : WorkflowExpression.Compile(bodyresponsible);
-            WorkflowExpression.Validate(__workflow_bodyresponsible, nameof(bodyresponsible), required: false);
-            var __workflow_bodyassignmentHistory = bodyassignmentHistory == null ? null : WorkflowExpression.Compile(bodyassignmentHistory);
-            WorkflowExpression.Validate(__workflow_bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
-            var __workflow_bodyreceivedFrom = bodyreceivedFrom == null ? null : WorkflowExpression.Compile(bodyreceivedFrom);
-            WorkflowExpression.Validate(__workflow_bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
-            var __workflow_bodysentTo = bodysentTo == null ? null : WorkflowExpression.Compile(bodysentTo);
-            WorkflowExpression.Validate(__workflow_bodysentTo, nameof(bodysentTo), required: false);
-            var __workflow_bodycompletedBy = bodycompletedBy == null ? null : WorkflowExpression.Compile(bodycompletedBy);
-            WorkflowExpression.Validate(__workflow_bodycompletedBy, nameof(bodycompletedBy), required: false);
-            var __workflow_bodyaccountable = bodyaccountable == null ? null : WorkflowExpression.Compile(bodyaccountable);
-            WorkflowExpression.Validate(__workflow_bodyaccountable, nameof(bodyaccountable), required: false);
-            var __workflow_bodycurrentDueDate = bodycurrentDueDate == null ? null : WorkflowExpression.Compile(bodycurrentDueDate);
-            WorkflowExpression.Validate(__workflow_bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
-            var __workflow_bodyoriginalDueDate = bodyoriginalDueDate == null ? null : WorkflowExpression.Compile(bodyoriginalDueDate);
-            WorkflowExpression.Validate(__workflow_bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
-            var __workflow_bodydateExtended = bodydateExtended == null ? null : WorkflowExpression.Compile(bodydateExtended);
-            WorkflowExpression.Validate(__workflow_bodydateExtended, nameof(bodydateExtended), required: false);
-            var __workflow_bodydaysAtStep = bodydaysAtStep == null ? null : WorkflowExpression.Compile(bodydaysAtStep);
-            WorkflowExpression.Validate(__workflow_bodydaysAtStep, nameof(bodydaysAtStep), required: false);
-            var __workflow_bodytotalDaysAtStep = bodytotalDaysAtStep == null ? null : WorkflowExpression.Compile(bodytotalDaysAtStep);
-            WorkflowExpression.Validate(__workflow_bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
-            var __workflow_bodydaysBetweenRoutings = bodydaysBetweenRoutings == null ? null : WorkflowExpression.Compile(bodydaysBetweenRoutings);
-            WorkflowExpression.Validate(__workflow_bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
-            var __workflow_bodytotalDaysInProcess = bodytotalDaysInProcess == null ? null : WorkflowExpression.Compile(bodytotalDaysInProcess);
-            WorkflowExpression.Validate(__workflow_bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
-            var __workflow_bodyroutingDetails = bodyroutingDetails == null ? null : WorkflowExpression.Compile(bodyroutingDetails);
-            WorkflowExpression.Validate(__workflow_bodyroutingDetails, nameof(bodyroutingDetails), required: false);
-            var __workflow_bodylastUpdated = bodylastUpdated == null ? null : WorkflowExpression.Compile(bodylastUpdated);
-            WorkflowExpression.Validate(__workflow_bodylastUpdated, nameof(bodylastUpdated), required: false);
-            var __workflow_bodyinformationFields = bodyinformationFields == null ? null : WorkflowExpression.Compile(bodyinformationFields);
-            WorkflowExpression.Validate(__workflow_bodyinformationFields, nameof(bodyinformationFields), required: false);
-            var __workflow_bodyindexes = bodyindexes == null ? null : WorkflowExpression.Compile(bodyindexes);
-            WorkflowExpression.Validate(__workflow_bodyindexes, nameof(bodyindexes), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_xAuthorization = WorkflowExpression.Compile(xAuthorization, nameof(xAuthorization), required: false);
+            var __workflow_bodydrawerId = WorkflowExpression.Compile(bodydrawerId, nameof(bodydrawerId), required: false);
+            var __workflow_bodyserviceType = WorkflowExpression.Compile(bodyserviceType, nameof(bodyserviceType), required: false);
+            var __workflow_bodyengagementType = WorkflowExpression.Compile(bodyengagementType, nameof(bodyengagementType), required: false);
+            var __workflow_bodyworkflow = WorkflowExpression.Compile(bodyworkflow, nameof(bodyworkflow), required: false);
+            var __workflow_bodycurrentStep = WorkflowExpression.Compile(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            var __workflow_bodypIC = WorkflowExpression.Compile(bodypIC, nameof(bodypIC), required: false);
+            var __workflow_bodyassignedTo = WorkflowExpression.Compile(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            var __workflow_bodyassignedOn = WorkflowExpression.Compile(bodyassignedOn, nameof(bodyassignedOn), required: false);
+            var __workflow_bodyworkflowDescription = WorkflowExpression.Compile(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
+            var __workflow_bodyinProcessOnly = WorkflowExpression.Compile(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyreceivedOn = WorkflowExpression.Compile(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
+            var __workflow_bodycompletedOn = WorkflowExpression.Compile(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            var __workflow_bodysentOn = WorkflowExpression.Compile(bodysentOn, nameof(bodysentOn), required: false);
+            var __workflow_bodyresponsible = WorkflowExpression.Compile(bodyresponsible, nameof(bodyresponsible), required: false);
+            var __workflow_bodyassignmentHistory = WorkflowExpression.Compile(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
+            var __workflow_bodyreceivedFrom = WorkflowExpression.Compile(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
+            var __workflow_bodysentTo = WorkflowExpression.Compile(bodysentTo, nameof(bodysentTo), required: false);
+            var __workflow_bodycompletedBy = WorkflowExpression.Compile(bodycompletedBy, nameof(bodycompletedBy), required: false);
+            var __workflow_bodyaccountable = WorkflowExpression.Compile(bodyaccountable, nameof(bodyaccountable), required: false);
+            var __workflow_bodycurrentDueDate = WorkflowExpression.Compile(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
+            var __workflow_bodyoriginalDueDate = WorkflowExpression.Compile(bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
+            var __workflow_bodydateExtended = WorkflowExpression.Compile(bodydateExtended, nameof(bodydateExtended), required: false);
+            var __workflow_bodydaysAtStep = WorkflowExpression.Compile(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
+            var __workflow_bodytotalDaysAtStep = WorkflowExpression.Compile(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
+            var __workflow_bodydaysBetweenRoutings = WorkflowExpression.Compile(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
+            var __workflow_bodytotalDaysInProcess = WorkflowExpression.Compile(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
+            var __workflow_bodyroutingDetails = WorkflowExpression.Compile(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
+            var __workflow_bodylastUpdated = WorkflowExpression.Compile(bodylastUpdated, nameof(bodylastUpdated), required: false);
+            var __workflow_bodyinformationFields = WorkflowExpression.Compile(bodyinformationFields, nameof(bodyinformationFields), required: false);
+            var __workflow_bodyindexes = WorkflowExpression.Compile(bodyindexes, nameof(bodyindexes), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
             return new DeferredBodyAction<TrackingReportByDeliverableV2Response>(() =>
             {
                 var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";

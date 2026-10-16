@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionSheet> ListSheets(Expression<Func<string>> optionalFolderId = null)
         {
-            var __workflow_optionalFolderId = optionalFolderId == null ? null : WorkflowExpression.Compile(optionalFolderId);
-            WorkflowExpression.Validate(__workflow_optionalFolderId, nameof(optionalFolderId), required: false);
+            var __workflow_optionalFolderId = WorkflowExpression.Compile(optionalFolderId, nameof(optionalFolderId), required: false);
             return new DeferredBodyAction<SmartsheetCollectionSheet>(() =>
             {
                 var apiCallPath = "/sheets";
@@ -29,10 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SheetWithRows> GetSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
-            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
             return new DeferredBodyAction<SheetWithRows>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -47,8 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionColumn> GetColumns(Expression<Func<string>> sheetId)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             return new DeferredBodyAction<SmartsheetCollectionColumn>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -61,8 +57,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IWorkflowAction GetColumnsSchema(Expression<Func<string>> sheetId)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/remove/sheets/{0}/columns", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -75,10 +70,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<RowsList> GetSheetData(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
-            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
             return new DeferredBodyAction<RowsList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -93,10 +86,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<InsertRowResponse> InsertRow(Expression<Func<string>> sheetId, Expression<Func<object>> row = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_row = row == null ? null : WorkflowExpression.Compile(row);
-            WorkflowExpression.Validate(__workflow_row, nameof(row), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_row = WorkflowExpression.Compile(row, nameof(row), required: false);
             return new DeferredBodyAction<InsertRowResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -110,8 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionFolder> ListSubFolders(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<SmartsheetCollectionFolder>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/folders/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -124,8 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<SmartsheetCollectionGetDiscussionResponse> GetDiscussionsForSheet(Expression<Func<string>> sheetId)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             return new DeferredBodyAction<SmartsheetCollectionGetDiscussionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -138,12 +127,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToSheet(Expression<Func<string>> sheetId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_discussiontitle = discussiontitle == null ? null : WorkflowExpression.Compile(discussiontitle);
-            WorkflowExpression.Validate(__workflow_discussiontitle, nameof(discussiontitle), required: false);
-            var __workflow_discussioncommenttext = discussioncommenttext == null ? null : WorkflowExpression.Compile(discussioncommenttext);
-            WorkflowExpression.Validate(__workflow_discussioncommenttext, nameof(discussioncommenttext), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussiontitle = WorkflowExpression.Compile(discussiontitle, nameof(discussiontitle), required: false);
+            var __workflow_discussioncommenttext = WorkflowExpression.Compile(discussioncommenttext, nameof(discussioncommenttext), required: false);
             return new DeferredBodyAction<DiscussionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -183,14 +169,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionResponse> AddDiscussionToRow(Expression<Func<string>> sheetId, Expression<Func<string>> rowId, Expression<Func<string>> discussiontitle = null, Expression<Func<string>> discussioncommenttext = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_rowId = rowId == null ? null : WorkflowExpression.Compile(rowId);
-            WorkflowExpression.Validate(__workflow_rowId, nameof(rowId), required: true);
-            var __workflow_discussiontitle = discussiontitle == null ? null : WorkflowExpression.Compile(discussiontitle);
-            WorkflowExpression.Validate(__workflow_discussiontitle, nameof(discussiontitle), required: false);
-            var __workflow_discussioncommenttext = discussioncommenttext == null ? null : WorkflowExpression.Compile(discussioncommenttext);
-            WorkflowExpression.Validate(__workflow_discussioncommenttext, nameof(discussioncommenttext), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_rowId = WorkflowExpression.Compile(rowId, nameof(rowId), required: true);
+            var __workflow_discussiontitle = WorkflowExpression.Compile(discussiontitle, nameof(discussiontitle), required: false);
+            var __workflow_discussioncommenttext = WorkflowExpression.Compile(discussioncommenttext, nameof(discussioncommenttext), required: false);
             return new DeferredBodyAction<DiscussionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/rows/{1}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_rowId, 1));
@@ -230,12 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<CreateCommentResponse> AddCommentToDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, Expression<Func<string>> commenttext = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_discussionId = discussionId == null ? null : WorkflowExpression.Compile(discussionId);
-            WorkflowExpression.Validate(__workflow_discussionId, nameof(discussionId), required: true);
-            var __workflow_commenttext = commenttext == null ? null : WorkflowExpression.Compile(commenttext);
-            WorkflowExpression.Validate(__workflow_commenttext, nameof(commenttext), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = WorkflowExpression.Compile(discussionId, nameof(discussionId), required: true);
+            var __workflow_commenttext = WorkflowExpression.Compile(commenttext, nameof(commenttext), required: false);
             return new DeferredBodyAction<CreateCommentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}/comments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
@@ -261,10 +240,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartsheet")]
         public IBodyWorkflowAction<DiscussionData> GetDiscussion(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_discussionId = discussionId == null ? null : WorkflowExpression.Compile(discussionId);
-            WorkflowExpression.Validate(__workflow_discussionId, nameof(discussionId), required: true);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = WorkflowExpression.Compile(discussionId, nameof(discussionId), required: true);
             return new DeferredBodyAction<DiscussionData>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
@@ -279,8 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
     {
         public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnNewSheet(Expression<Func<string>> optionalFolderId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_optionalFolderId = optionalFolderId == null ? null : WorkflowExpression.Compile(optionalFolderId);
-            WorkflowExpression.Validate(__workflow_optionalFolderId, nameof(optionalFolderId), required: false);
+            var __workflow_optionalFolderId = WorkflowExpression.Compile(optionalFolderId, nameof(optionalFolderId), required: false);
             return new DeferredBodyTrigger<SmartsheetCollectionSheet>(() =>
             {
                 var apiCallPath = "/new_trigger/sheets";
@@ -294,8 +270,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionSheet> OnUpdatedSheet(Expression<Func<string>> optionalFolderId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_optionalFolderId = optionalFolderId == null ? null : WorkflowExpression.Compile(optionalFolderId);
-            WorkflowExpression.Validate(__workflow_optionalFolderId, nameof(optionalFolderId), required: false);
+            var __workflow_optionalFolderId = WorkflowExpression.Compile(optionalFolderId, nameof(optionalFolderId), required: false);
             return new DeferredBodyTrigger<SmartsheetCollectionSheet>(() =>
             {
                 var apiCallPath = "/updated_trigger/sheets";
@@ -309,8 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionDiscussionComment> OnNewComment(Expression<Func<string>> sheetId, FlowRecurrence recurrence = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             return new DeferredBodyTrigger<SmartsheetCollectionDiscussionComment>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/new_comment_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -322,10 +296,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionSheetWithRows> OnUpdatedSpecificSheet(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
-            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
             return new DeferredBodyTrigger<SmartsheetCollectionSheetWithRows>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/updated_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -339,10 +311,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<RowResponse> OnRowCreated(Expression<Func<string>> sheetId, Expression<Func<string>> columns = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_columns = columns == null ? null : WorkflowExpression.Compile(columns);
-            WorkflowExpression.Validate(__workflow_columns, nameof(columns), required: false);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_columns = WorkflowExpression.Compile(columns, nameof(columns), required: false);
             return new DeferredBodyTrigger<RowResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/row_created_trigger/sheets/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));
@@ -356,10 +326,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<CommentResponse> OnCommentAdded(Expression<Func<string>> sheetId, Expression<Func<string>> discussionId, FlowRecurrence recurrence = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
-            var __workflow_discussionId = discussionId == null ? null : WorkflowExpression.Compile(discussionId);
-            WorkflowExpression.Validate(__workflow_discussionId, nameof(discussionId), required: true);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
+            var __workflow_discussionId = WorkflowExpression.Compile(discussionId, nameof(discussionId), required: true);
             return new DeferredBodyTrigger<CommentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/comment_added_trigger/sheets/{0}/discussions/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_discussionId, 1));
@@ -371,8 +339,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartsheet
 
         public IBodyWorkflowTrigger<SmartsheetCollectionGetDiscussionResponse> OnDiscussionCreated(Expression<Func<string>> sheetId, FlowRecurrence recurrence = null)
         {
-            var __workflow_sheetId = sheetId == null ? null : WorkflowExpression.Compile(sheetId);
-            WorkflowExpression.Validate(__workflow_sheetId, nameof(sheetId), required: true);
+            var __workflow_sheetId = WorkflowExpression.Compile(sheetId, nameof(sheetId), required: true);
             return new DeferredBodyTrigger<SmartsheetCollectionGetDiscussionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/discussion_trigger/sheets/{0}/discussions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sheetId, 1));

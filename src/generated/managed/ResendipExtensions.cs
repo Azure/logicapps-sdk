@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<EmailPostResponse> Email(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
         {
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: true);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodycc = bodycc == null ? null : WorkflowExpression.Compile(bodycc);
-            WorkflowExpression.Validate(__workflow_bodycc, nameof(bodycc), required: false);
-            var __workflow_bodybcc = bodybcc == null ? null : WorkflowExpression.Compile(bodybcc);
-            WorkflowExpression.Validate(__workflow_bodybcc, nameof(bodybcc), required: false);
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
-            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
-            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: false);
-            var __workflow_bodyattachments = bodyattachments == null ? null : WorkflowExpression.Compile(bodyattachments);
-            WorkflowExpression.Validate(__workflow_bodyattachments, nameof(bodyattachments), required: false);
-            var __workflow_bodyreplyTo = bodyreplyTo == null ? null : WorkflowExpression.Compile(bodyreplyTo);
-            WorkflowExpression.Validate(__workflow_bodyreplyTo, nameof(bodyreplyTo), required: false);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodycc = WorkflowExpression.Compile(bodycc, nameof(bodycc), required: false);
+            var __workflow_bodybcc = WorkflowExpression.Compile(bodybcc, nameof(bodybcc), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: false);
+            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
+            var __workflow_bodyreplyTo = WorkflowExpression.Compile(bodyreplyTo, nameof(bodyreplyTo), required: false);
             return new DeferredBodyAction<EmailPostResponse>(() =>
             {
                 var apiCallPath = "/emails";
@@ -92,8 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<RetrieveGetResponse> RetrieveGet(Expression<Func<string>> emailId)
         {
-            var __workflow_emailId = emailId == null ? null : WorkflowExpression.Compile(emailId);
-            WorkflowExpression.Validate(__workflow_emailId, nameof(emailId), required: true);
+            var __workflow_emailId = WorkflowExpression.Compile(emailId, nameof(emailId), required: true);
             return new DeferredBodyAction<RetrieveGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_emailId, 1));
@@ -115,10 +105,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<DomainPostResponse> Domain(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
-            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: false);
             return new DeferredBodyAction<DomainPostResponse>(() =>
             {
                 var apiCallPath = "/domains";
@@ -156,8 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> DomainDelete(Expression<Func<string>> domainId)
         {
-            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
-            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1));
@@ -170,8 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
         public IBodyWorkflowAction<string> Verify(Expression<Func<string>> domainId)
         {
-            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
-            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1));

@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cioplenu")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> taskDatatitle, Expression<Func<string>> taskDatadescription, Expression<Func<int>> taskDatapriority)
         {
-            var __workflow_taskDatatitle = taskDatatitle == null ? null : WorkflowExpression.Compile(taskDatatitle);
-            WorkflowExpression.Validate(__workflow_taskDatatitle, nameof(taskDatatitle), required: true);
-            var __workflow_taskDatadescription = taskDatadescription == null ? null : WorkflowExpression.Compile(taskDatadescription);
-            WorkflowExpression.Validate(__workflow_taskDatadescription, nameof(taskDatadescription), required: true);
-            var __workflow_taskDatapriority = taskDatapriority == null ? null : WorkflowExpression.Compile(taskDatapriority);
-            WorkflowExpression.Validate(__workflow_taskDatapriority, nameof(taskDatapriority), required: true);
+            var __workflow_taskDatatitle = WorkflowExpression.Compile(taskDatatitle, nameof(taskDatatitle), required: true);
+            var __workflow_taskDatadescription = WorkflowExpression.Compile(taskDatadescription, nameof(taskDatadescription), required: true);
+            var __workflow_taskDatapriority = WorkflowExpression.Compile(taskDatapriority, nameof(taskDatapriority), required: true);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
                 var apiCallPath = "/task";

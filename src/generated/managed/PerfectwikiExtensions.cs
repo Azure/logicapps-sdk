@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perfectwiki")]
         public IWorkflowAction QueryKnowledgebase(Expression<Func<string>> q, Expression<Func<string>> chatId)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_chatId = chatId == null ? null : WorkflowExpression.Compile(chatId);
-            WorkflowExpression.Validate(__workflow_chatId, nameof(chatId), required: true);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_chatId = WorkflowExpression.Compile(chatId, nameof(chatId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/chatgpt/organization/bot";

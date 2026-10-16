@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<bool>> bodystream = null, Expression<Func<bool>> bodysafePrompt = null, Expression<Func<int>> bodyrandomSeed = null)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
-            var __workflow_bodystream = bodystream == null ? null : WorkflowExpression.Compile(bodystream);
-            WorkflowExpression.Validate(__workflow_bodystream, nameof(bodystream), required: false);
-            var __workflow_bodysafePrompt = bodysafePrompt == null ? null : WorkflowExpression.Compile(bodysafePrompt);
-            WorkflowExpression.Validate(__workflow_bodysafePrompt, nameof(bodysafePrompt), required: false);
-            var __workflow_bodyrandomSeed = bodyrandomSeed == null ? null : WorkflowExpression.Compile(bodyrandomSeed);
-            WorkflowExpression.Validate(__workflow_bodyrandomSeed, nameof(bodyrandomSeed), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodystream = WorkflowExpression.Compile(bodystream, nameof(bodystream), required: false);
+            var __workflow_bodysafePrompt = WorkflowExpression.Compile(bodysafePrompt, nameof(bodysafePrompt), required: false);
+            var __workflow_bodyrandomSeed = WorkflowExpression.Compile(bodyrandomSeed, nameof(bodyrandomSeed), required: false);
             return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
                 var apiCallPath = "/chat/completions";
@@ -128,12 +120,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding(Expression<Func<string>> bodymodel = null, Expression<Func<string[]>> bodyinput = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: false);
-            var __workflow_bodyencodingFormat = bodyencodingFormat == null ? null : WorkflowExpression.Compile(bodyencodingFormat);
-            WorkflowExpression.Validate(__workflow_bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: false);
+            var __workflow_bodyencodingFormat = WorkflowExpression.Compile(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
             return new DeferredBodyAction<EmbeddingResponse>(() =>
             {
                 var apiCallPath = "/embeddings";

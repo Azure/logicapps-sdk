@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Si3270
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "si3270")]
         public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidxName, Expression<Func<string>> methodName, Expression<Func<object>> parameters = null)
         {
-            var __workflow_hidxName = hidxName == null ? null : WorkflowExpression.Compile(hidxName);
-            WorkflowExpression.Validate(__workflow_hidxName, nameof(hidxName), required: true);
-            var __workflow_methodName = methodName == null ? null : WorkflowExpression.Compile(methodName);
-            WorkflowExpression.Validate(__workflow_methodName, nameof(methodName), required: true);
-            var __workflow_parameters = parameters == null ? null : WorkflowExpression.Compile(parameters);
-            WorkflowExpression.Validate(__workflow_parameters, nameof(parameters), required: false);
+            var __workflow_hidxName = WorkflowExpression.Compile(hidxName, nameof(hidxName), required: true);
+            var __workflow_methodName = WorkflowExpression.Compile(methodName, nameof(methodName), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/hidx/{0}/methods/{1}/call", ExpressionConverter.ConvertWithUrlEncoding(__workflow_hidxName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_methodName, 1));

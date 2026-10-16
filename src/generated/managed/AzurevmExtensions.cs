@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IBodyWorkflowAction<VirtualMachineInScaleSet> VirtualMachineInScaleSetGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineScaleSetName = virtualMachineScaleSetName == null ? null : WorkflowExpression.Compile(virtualMachineScaleSetName);
-            WorkflowExpression.Validate(__workflow_virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            var __workflow_virtualMachineInScaleSetInstanceId = virtualMachineInScaleSetInstanceId == null ? null : WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId);
-            WorkflowExpression.Validate(__workflow_virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineScaleSetName = WorkflowExpression.Compile(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            var __workflow_virtualMachineInScaleSetInstanceId = WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             return new DeferredBodyAction<VirtualMachineInScaleSet>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineScaleSetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineInScaleSetInstanceId, 1));
@@ -34,14 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetDeallocate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineScaleSetName = virtualMachineScaleSetName == null ? null : WorkflowExpression.Compile(virtualMachineScaleSetName);
-            WorkflowExpression.Validate(__workflow_virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            var __workflow_virtualMachineInScaleSetInstanceId = virtualMachineInScaleSetInstanceId == null ? null : WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId);
-            WorkflowExpression.Validate(__workflow_virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineScaleSetName = WorkflowExpression.Compile(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            var __workflow_virtualMachineInScaleSetInstanceId = WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/deallocate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineScaleSetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineInScaleSetInstanceId, 1));
@@ -55,14 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetPowerOff(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineScaleSetName = virtualMachineScaleSetName == null ? null : WorkflowExpression.Compile(virtualMachineScaleSetName);
-            WorkflowExpression.Validate(__workflow_virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            var __workflow_virtualMachineInScaleSetInstanceId = virtualMachineInScaleSetInstanceId == null ? null : WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId);
-            WorkflowExpression.Validate(__workflow_virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineScaleSetName = WorkflowExpression.Compile(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            var __workflow_virtualMachineInScaleSetInstanceId = WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/poweroff", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineScaleSetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineInScaleSetInstanceId, 1));
@@ -76,14 +64,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetRedeploy(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineScaleSetName = virtualMachineScaleSetName == null ? null : WorkflowExpression.Compile(virtualMachineScaleSetName);
-            WorkflowExpression.Validate(__workflow_virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            var __workflow_virtualMachineInScaleSetInstanceId = virtualMachineInScaleSetInstanceId == null ? null : WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId);
-            WorkflowExpression.Validate(__workflow_virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineScaleSetName = WorkflowExpression.Compile(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            var __workflow_virtualMachineInScaleSetInstanceId = WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/redeploy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineScaleSetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineInScaleSetInstanceId, 1));
@@ -97,14 +81,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetReimage(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineScaleSetName = virtualMachineScaleSetName == null ? null : WorkflowExpression.Compile(virtualMachineScaleSetName);
-            WorkflowExpression.Validate(__workflow_virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            var __workflow_virtualMachineInScaleSetInstanceId = virtualMachineInScaleSetInstanceId == null ? null : WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId);
-            WorkflowExpression.Validate(__workflow_virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineScaleSetName = WorkflowExpression.Compile(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            var __workflow_virtualMachineInScaleSetInstanceId = WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/reimage", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineScaleSetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineInScaleSetInstanceId, 1));
@@ -118,14 +98,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineScaleSetName = virtualMachineScaleSetName == null ? null : WorkflowExpression.Compile(virtualMachineScaleSetName);
-            WorkflowExpression.Validate(__workflow_virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            var __workflow_virtualMachineInScaleSetInstanceId = virtualMachineInScaleSetInstanceId == null ? null : WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId);
-            WorkflowExpression.Validate(__workflow_virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineScaleSetName = WorkflowExpression.Compile(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            var __workflow_virtualMachineInScaleSetInstanceId = WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineScaleSetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineInScaleSetInstanceId, 1));
@@ -139,14 +115,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineInScaleSetStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineScaleSetName = virtualMachineScaleSetName == null ? null : WorkflowExpression.Compile(virtualMachineScaleSetName);
-            WorkflowExpression.Validate(__workflow_virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
-            var __workflow_virtualMachineInScaleSetInstanceId = virtualMachineInScaleSetInstanceId == null ? null : WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId);
-            WorkflowExpression.Validate(__workflow_virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineScaleSetName = WorkflowExpression.Compile(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            var __workflow_virtualMachineInScaleSetInstanceId = WorkflowExpression.Compile(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineScaleSetName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineInScaleSetInstanceId, 1));
@@ -160,12 +132,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IBodyWorkflowAction<VirtualMachine> VirtualMachineGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineName = virtualMachineName == null ? null : WorkflowExpression.Compile(virtualMachineName);
-            WorkflowExpression.Validate(__workflow_virtualMachineName, nameof(virtualMachineName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineName = WorkflowExpression.Compile(virtualMachineName, nameof(virtualMachineName), required: true);
             return new DeferredBodyAction<VirtualMachine>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineName, 1));
@@ -179,12 +148,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineName = virtualMachineName == null ? null : WorkflowExpression.Compile(virtualMachineName);
-            WorkflowExpression.Validate(__workflow_virtualMachineName, nameof(virtualMachineName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineName = WorkflowExpression.Compile(virtualMachineName, nameof(virtualMachineName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineName, 1));
@@ -198,12 +164,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineDeallocate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineName = virtualMachineName == null ? null : WorkflowExpression.Compile(virtualMachineName);
-            WorkflowExpression.Validate(__workflow_virtualMachineName, nameof(virtualMachineName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineName = WorkflowExpression.Compile(virtualMachineName, nameof(virtualMachineName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/deallocate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineName, 1));
@@ -217,12 +180,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachinePoweroff(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineName = virtualMachineName == null ? null : WorkflowExpression.Compile(virtualMachineName);
-            WorkflowExpression.Validate(__workflow_virtualMachineName, nameof(virtualMachineName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineName = WorkflowExpression.Compile(virtualMachineName, nameof(virtualMachineName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/powerOff", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineName, 1));
@@ -236,12 +196,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineReapply(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineName = virtualMachineName == null ? null : WorkflowExpression.Compile(virtualMachineName);
-            WorkflowExpression.Validate(__workflow_virtualMachineName, nameof(virtualMachineName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineName = WorkflowExpression.Compile(virtualMachineName, nameof(virtualMachineName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/reapply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineName, 1));
@@ -255,12 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineRedeploy(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineName = virtualMachineName == null ? null : WorkflowExpression.Compile(virtualMachineName);
-            WorkflowExpression.Validate(__workflow_virtualMachineName, nameof(virtualMachineName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineName = WorkflowExpression.Compile(virtualMachineName, nameof(virtualMachineName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/redeploy", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineName, 1));
@@ -274,12 +228,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
         public IWorkflowAction VirtualMachineRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_virtualMachineName = virtualMachineName == null ? null : WorkflowExpression.Compile(virtualMachineName);
-            WorkflowExpression.Validate(__workflow_virtualMachineName, nameof(virtualMachineName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_virtualMachineName = WorkflowExpression.Compile(virtualMachineName, nameof(virtualMachineName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_virtualMachineName, 1));

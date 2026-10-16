@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
         public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo(Expression<Func<string>> tenantID = null, Expression<Func<string>> domainName = null)
         {
-            var __workflow_tenantID = tenantID == null ? null : WorkflowExpression.Compile(tenantID);
-            WorkflowExpression.Validate(__workflow_tenantID, nameof(tenantID), required: false);
-            var __workflow_domainName = domainName == null ? null : WorkflowExpression.Compile(domainName);
-            WorkflowExpression.Validate(__workflow_domainName, nameof(domainName), required: false);
+            var __workflow_tenantID = WorkflowExpression.Compile(tenantID, nameof(tenantID), required: false);
+            var __workflow_domainName = WorkflowExpression.Compile(domainName, nameof(domainName), required: false);
             return new DeferredBodyAction<TophhieCloudTenantInfoResponse>(() =>
             {
                 var apiCallPath = "/tenantinfo";
@@ -33,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
         public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter(Expression<Func<string>> identifier)
         {
-            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
-            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: true);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<TophhieCloudEntraIDIDConverterResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));

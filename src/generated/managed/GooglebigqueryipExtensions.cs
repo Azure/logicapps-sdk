@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlebigqueryip")]
         public IBodyWorkflowAction<GetDatasetResponse> GetDataset(Expression<Func<string>> projectId, Expression<Func<string>> datasetId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_datasetId = datasetId == null ? null : WorkflowExpression.Compile(datasetId);
-            WorkflowExpression.Validate(__workflow_datasetId, nameof(datasetId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_datasetId = WorkflowExpression.Compile(datasetId, nameof(datasetId), required: true);
             return new DeferredBodyAction<GetDatasetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_datasetId, 1));

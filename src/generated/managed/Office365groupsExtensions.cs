@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupMembersResponse> ListGroupMembers(Expression<Func<string>> groupId, Expression<Func<int>> top = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<ListGroupMembersResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction AddMemberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> userUpn)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_userUpn = userUpn == null ? null : WorkflowExpression.Compile(userUpn);
-            WorkflowExpression.Validate(__workflow_userUpn, nameof(userUpn), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_userUpn = WorkflowExpression.Compile(userUpn, nameof(userUpn), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -57,16 +53,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupsResponse> ListGroups(Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<bool>> fetchSensitivityLabelMetadata = null, Expression<Func<string>> filter = null, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null)
         {
-            var __workflow_extractSensitivityLabel = extractSensitivityLabel == null ? null : WorkflowExpression.Compile(extractSensitivityLabel);
-            WorkflowExpression.Validate(__workflow_extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
-            var __workflow_fetchSensitivityLabelMetadata = fetchSensitivityLabelMetadata == null ? null : WorkflowExpression.Compile(fetchSensitivityLabelMetadata);
-            WorkflowExpression.Validate(__workflow_fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
+            var __workflow_extractSensitivityLabel = WorkflowExpression.Compile(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            var __workflow_fetchSensitivityLabelMetadata = WorkflowExpression.Compile(fetchSensitivityLabelMetadata, nameof(fetchSensitivityLabelMetadata), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredBodyAction<ListGroupsResponse>(() =>
             {
                 var apiCallPath = "/v1.0/groups";
@@ -89,32 +80,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> UpdateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> @event, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_event = @event == null ? null : WorkflowExpression.Compile(@event);
-            WorkflowExpression.Validate(__workflow_event, nameof(@event), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodystartstartTime = bodystartstartTime == null ? null : WorkflowExpression.Compile(bodystartstartTime);
-            WorkflowExpression.Validate(__workflow_bodystartstartTime, nameof(bodystartstartTime), required: false);
-            var __workflow_bodyendendTime = bodyendendTime == null ? null : WorkflowExpression.Compile(bodyendendTime);
-            WorkflowExpression.Validate(__workflow_bodyendendTime, nameof(bodyendendTime), required: false);
-            var __workflow_bodybodybody = bodybodybody == null ? null : WorkflowExpression.Compile(bodybodybody);
-            WorkflowExpression.Validate(__workflow_bodybodybody, nameof(bodybodybody), required: false);
-            var __workflow_bodylocationlocation = bodylocationlocation == null ? null : WorkflowExpression.Compile(bodylocationlocation);
-            WorkflowExpression.Validate(__workflow_bodylocationlocation, nameof(bodylocationlocation), required: false);
-            var __workflow_bodyimportance = bodyimportance == null ? null : WorkflowExpression.Compile(bodyimportance);
-            WorkflowExpression.Validate(__workflow_bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodyisAllDay = bodyisAllDay == null ? null : WorkflowExpression.Compile(bodyisAllDay);
-            WorkflowExpression.Validate(__workflow_bodyisAllDay, nameof(bodyisAllDay), required: false);
-            var __workflow_bodyisReminderOn = bodyisReminderOn == null ? null : WorkflowExpression.Compile(bodyisReminderOn);
-            WorkflowExpression.Validate(__workflow_bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            var __workflow_bodyreminderStartDuration = bodyreminderStartDuration == null ? null : WorkflowExpression.Compile(bodyreminderStartDuration);
-            WorkflowExpression.Validate(__workflow_bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
-            var __workflow_bodyshowAs = bodyshowAs == null ? null : WorkflowExpression.Compile(bodyshowAs);
-            WorkflowExpression.Validate(__workflow_bodyshowAs, nameof(bodyshowAs), required: false);
-            var __workflow_bodyresponseRequested = bodyresponseRequested == null ? null : WorkflowExpression.Compile(bodyresponseRequested);
-            WorkflowExpression.Validate(__workflow_bodyresponseRequested, nameof(bodyresponseRequested), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodystartstartTime = WorkflowExpression.Compile(bodystartstartTime, nameof(bodystartstartTime), required: false);
+            var __workflow_bodyendendTime = WorkflowExpression.Compile(bodyendendTime, nameof(bodyendendTime), required: false);
+            var __workflow_bodybodybody = WorkflowExpression.Compile(bodybodybody, nameof(bodybodybody), required: false);
+            var __workflow_bodylocationlocation = WorkflowExpression.Compile(bodylocationlocation, nameof(bodylocationlocation), required: false);
+            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
+            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
+            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_bodyreminderStartDuration = WorkflowExpression.Compile(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
+            var __workflow_bodyshowAs = WorkflowExpression.Compile(bodyshowAs, nameof(bodyshowAs), required: false);
+            var __workflow_bodyresponseRequested = WorkflowExpression.Compile(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
             return new DeferredBodyAction<CreateCalendarEventResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_event, 2));
@@ -234,10 +212,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RemoveMemberFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> userUpn)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_userUpn = userUpn == null ? null : WorkflowExpression.Compile(userUpn);
-            WorkflowExpression.Validate(__workflow_userUpn, nameof(userUpn), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_userUpn = WorkflowExpression.Compile(userUpn, nameof(userUpn), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/members/memberId/$ref", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -260,8 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction RestoreDeletedGroup(Expression<Func<string>> groupId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/directory/deletedItems/{0}/restore", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -274,8 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<ListGroupsResponse> ListDeletedGroupsByOwner(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<ListGroupsResponse>(() =>
             {
                 var apiCallPath = "/v1.0/directory/deletedItems/getUserOwnedObjects";
@@ -289,10 +263,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IWorkflowAction CalendarDeleteItem(Expression<Func<string>> groupId, Expression<Func<string>> @event)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_event = @event == null ? null : WorkflowExpression.Compile(@event);
-            WorkflowExpression.Validate(__workflow_event, nameof(@event), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_event = WorkflowExpression.Compile(@event, nameof(@event), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/groups/{0}/events/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_event, 2));
@@ -305,30 +277,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<CreateCalendarEventResponse> CreateCalendarEvent(Expression<Func<string>> groupId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodystartstartTime = null, Expression<Func<string>> bodyendendTime = null, Expression<Func<string>> bodybodybody = null, Expression<Func<string>> bodylocationlocation = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisReminderOn = null, Expression<Func<int>> bodyreminderStartDuration = null, Expression<Func<bodyshowAsInput>> bodyshowAs = null, Expression<Func<bool>> bodyresponseRequested = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodystartstartTime = bodystartstartTime == null ? null : WorkflowExpression.Compile(bodystartstartTime);
-            WorkflowExpression.Validate(__workflow_bodystartstartTime, nameof(bodystartstartTime), required: false);
-            var __workflow_bodyendendTime = bodyendendTime == null ? null : WorkflowExpression.Compile(bodyendendTime);
-            WorkflowExpression.Validate(__workflow_bodyendendTime, nameof(bodyendendTime), required: false);
-            var __workflow_bodybodybody = bodybodybody == null ? null : WorkflowExpression.Compile(bodybodybody);
-            WorkflowExpression.Validate(__workflow_bodybodybody, nameof(bodybodybody), required: false);
-            var __workflow_bodylocationlocation = bodylocationlocation == null ? null : WorkflowExpression.Compile(bodylocationlocation);
-            WorkflowExpression.Validate(__workflow_bodylocationlocation, nameof(bodylocationlocation), required: false);
-            var __workflow_bodyimportance = bodyimportance == null ? null : WorkflowExpression.Compile(bodyimportance);
-            WorkflowExpression.Validate(__workflow_bodyimportance, nameof(bodyimportance), required: false);
-            var __workflow_bodyisAllDay = bodyisAllDay == null ? null : WorkflowExpression.Compile(bodyisAllDay);
-            WorkflowExpression.Validate(__workflow_bodyisAllDay, nameof(bodyisAllDay), required: false);
-            var __workflow_bodyisReminderOn = bodyisReminderOn == null ? null : WorkflowExpression.Compile(bodyisReminderOn);
-            WorkflowExpression.Validate(__workflow_bodyisReminderOn, nameof(bodyisReminderOn), required: false);
-            var __workflow_bodyreminderStartDuration = bodyreminderStartDuration == null ? null : WorkflowExpression.Compile(bodyreminderStartDuration);
-            WorkflowExpression.Validate(__workflow_bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
-            var __workflow_bodyshowAs = bodyshowAs == null ? null : WorkflowExpression.Compile(bodyshowAs);
-            WorkflowExpression.Validate(__workflow_bodyshowAs, nameof(bodyshowAs), required: false);
-            var __workflow_bodyresponseRequested = bodyresponseRequested == null ? null : WorkflowExpression.Compile(bodyresponseRequested);
-            WorkflowExpression.Validate(__workflow_bodyresponseRequested, nameof(bodyresponseRequested), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodystartstartTime = WorkflowExpression.Compile(bodystartstartTime, nameof(bodystartstartTime), required: false);
+            var __workflow_bodyendendTime = WorkflowExpression.Compile(bodyendendTime, nameof(bodyendendTime), required: false);
+            var __workflow_bodybodybody = WorkflowExpression.Compile(bodybodybody, nameof(bodybodybody), required: false);
+            var __workflow_bodylocationlocation = WorkflowExpression.Compile(bodylocationlocation, nameof(bodylocationlocation), required: false);
+            var __workflow_bodyimportance = WorkflowExpression.Compile(bodyimportance, nameof(bodyimportance), required: false);
+            var __workflow_bodyisAllDay = WorkflowExpression.Compile(bodyisAllDay, nameof(bodyisAllDay), required: false);
+            var __workflow_bodyisReminderOn = WorkflowExpression.Compile(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            var __workflow_bodyreminderStartDuration = WorkflowExpression.Compile(bodyreminderStartDuration, nameof(bodyreminderStartDuration), required: false);
+            var __workflow_bodyshowAs = WorkflowExpression.Compile(bodyshowAs, nameof(bodyshowAs), required: false);
+            var __workflow_bodyresponseRequested = WorkflowExpression.Compile(bodyresponseRequested, nameof(bodyresponseRequested), required: false);
             return new DeferredBodyAction<CreateCalendarEventResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -448,24 +408,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "office365groups")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
         {
-            var __workflow_uri = uri == null ? null : WorkflowExpression.Compile(uri);
-            WorkflowExpression.Validate(__workflow_uri, nameof(uri), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_customHeader1 = customHeader1 == null ? null : WorkflowExpression.Compile(customHeader1);
-            WorkflowExpression.Validate(__workflow_customHeader1, nameof(customHeader1), required: false);
-            var __workflow_customHeader2 = customHeader2 == null ? null : WorkflowExpression.Compile(customHeader2);
-            WorkflowExpression.Validate(__workflow_customHeader2, nameof(customHeader2), required: false);
-            var __workflow_customHeader3 = customHeader3 == null ? null : WorkflowExpression.Compile(customHeader3);
-            WorkflowExpression.Validate(__workflow_customHeader3, nameof(customHeader3), required: false);
-            var __workflow_customHeader4 = customHeader4 == null ? null : WorkflowExpression.Compile(customHeader4);
-            WorkflowExpression.Validate(__workflow_customHeader4, nameof(customHeader4), required: false);
-            var __workflow_customHeader5 = customHeader5 == null ? null : WorkflowExpression.Compile(customHeader5);
-            WorkflowExpression.Validate(__workflow_customHeader5, nameof(customHeader5), required: false);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_customHeader1 = WorkflowExpression.Compile(customHeader1, nameof(customHeader1), required: false);
+            var __workflow_customHeader2 = WorkflowExpression.Compile(customHeader2, nameof(customHeader2), required: false);
+            var __workflow_customHeader3 = WorkflowExpression.Compile(customHeader3, nameof(customHeader3), required: false);
+            var __workflow_customHeader4 = WorkflowExpression.Compile(customHeader4, nameof(customHeader4), required: false);
+            var __workflow_customHeader5 = WorkflowExpression.Compile(customHeader5, nameof(customHeader5), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/v2/httprequest";
@@ -496,8 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
     {
         public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/v1.0/groups/delta";
@@ -511,8 +461,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
 
         public IBodyWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent(Expression<Func<string>> groupId, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnNewEventResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));

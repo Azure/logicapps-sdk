@@ -57,10 +57,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infuraethereumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infuraethereumip")]
         public IBodyWorkflowAction<EthGetBalanceResponse> EthGetBalance(Expression<Func<string>> bodyParamsaddress = null, Expression<Func<bodyParamsblockInput>> bodyParamsblock = null)
         {
-            var __workflow_bodyParamsaddress = bodyParamsaddress == null ? null : WorkflowExpression.Compile(bodyParamsaddress);
-            WorkflowExpression.Validate(__workflow_bodyParamsaddress, nameof(bodyParamsaddress), required: false);
-            var __workflow_bodyParamsblock = bodyParamsblock == null ? null : WorkflowExpression.Compile(bodyParamsblock);
-            WorkflowExpression.Validate(__workflow_bodyParamsblock, nameof(bodyParamsblock), required: false);
+            var __workflow_bodyParamsaddress = WorkflowExpression.Compile(bodyParamsaddress, nameof(bodyParamsaddress), required: false);
+            var __workflow_bodyParamsblock = WorkflowExpression.Compile(bodyParamsblock, nameof(bodyParamsblock), required: false);
             return new DeferredBodyAction<EthGetBalanceResponse>(() =>
             {
                 var apiCallPath = "/eth_getBalance";

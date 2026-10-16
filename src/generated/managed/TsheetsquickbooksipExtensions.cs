@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetJobcodesResponse> GetJobcodes(Expression<Func<string>> ids = null, Expression<Func<string>> parentIds = null, Expression<Func<string>> name = null, Expression<Func<typeInput>> type = null, Expression<Func<bool>> customfields = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<activeInput>> active = null)
         {
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_parentIds = parentIds == null ? null : WorkflowExpression.Compile(parentIds);
-            WorkflowExpression.Validate(__workflow_parentIds, nameof(parentIds), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_customfields = customfields == null ? null : WorkflowExpression.Compile(customfields);
-            WorkflowExpression.Validate(__workflow_customfields, nameof(customfields), required: false);
-            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
-            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
-            var __workflow_modifiedSince = modifiedSince == null ? null : WorkflowExpression.Compile(modifiedSince);
-            WorkflowExpression.Validate(__workflow_modifiedSince, nameof(modifiedSince), required: false);
-            var __workflow_supplementalData = supplementalData == null ? null : WorkflowExpression.Compile(supplementalData);
-            WorkflowExpression.Validate(__workflow_supplementalData, nameof(supplementalData), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_parentIds = WorkflowExpression.Compile(parentIds, nameof(parentIds), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_customfields = WorkflowExpression.Compile(customfields, nameof(customfields), required: false);
+            var __workflow_modifiedBefore = WorkflowExpression.Compile(modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_modifiedSince = WorkflowExpression.Compile(modifiedSince, nameof(modifiedSince), required: false);
+            var __workflow_supplementalData = WorkflowExpression.Compile(supplementalData, nameof(supplementalData), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
             return new DeferredBodyAction<GetJobcodesResponse>(() =>
             {
                 var apiCallPath = "/jobcodes";
@@ -72,18 +61,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetProjectsResponse> GetProjects(Expression<Func<string>> ids = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<int>> parentJobcodeId = null, Expression<Func<string>> name = null, Expression<Func<activeInput>> active = null, Expression<Func<bool>> byJobcodeAssignment = null)
         {
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_jobcodeIds = jobcodeIds == null ? null : WorkflowExpression.Compile(jobcodeIds);
-            WorkflowExpression.Validate(__workflow_jobcodeIds, nameof(jobcodeIds), required: false);
-            var __workflow_parentJobcodeId = parentJobcodeId == null ? null : WorkflowExpression.Compile(parentJobcodeId);
-            WorkflowExpression.Validate(__workflow_parentJobcodeId, nameof(parentJobcodeId), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_byJobcodeAssignment = byJobcodeAssignment == null ? null : WorkflowExpression.Compile(byJobcodeAssignment);
-            WorkflowExpression.Validate(__workflow_byJobcodeAssignment, nameof(byJobcodeAssignment), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_jobcodeIds = WorkflowExpression.Compile(jobcodeIds, nameof(jobcodeIds), required: false);
+            var __workflow_parentJobcodeId = WorkflowExpression.Compile(parentJobcodeId, nameof(parentJobcodeId), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_byJobcodeAssignment = WorkflowExpression.Compile(byJobcodeAssignment, nameof(byJobcodeAssignment), required: false);
             return new DeferredBodyAction<GetProjectsResponse>(() =>
             {
                 var apiCallPath = "/projects";
@@ -109,36 +92,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> ids = null, Expression<Func<string>> notIds = null, Expression<Func<string>> employeeNumbers = null, Expression<Func<string>> usernames = null, Expression<Func<string>> groupIds = null, Expression<Func<string>> notGroupIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<activeInput>> active = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_notIds = notIds == null ? null : WorkflowExpression.Compile(notIds);
-            WorkflowExpression.Validate(__workflow_notIds, nameof(notIds), required: false);
-            var __workflow_employeeNumbers = employeeNumbers == null ? null : WorkflowExpression.Compile(employeeNumbers);
-            WorkflowExpression.Validate(__workflow_employeeNumbers, nameof(employeeNumbers), required: false);
-            var __workflow_usernames = usernames == null ? null : WorkflowExpression.Compile(usernames);
-            WorkflowExpression.Validate(__workflow_usernames, nameof(usernames), required: false);
-            var __workflow_groupIds = groupIds == null ? null : WorkflowExpression.Compile(groupIds);
-            WorkflowExpression.Validate(__workflow_groupIds, nameof(groupIds), required: false);
-            var __workflow_notGroupIds = notGroupIds == null ? null : WorkflowExpression.Compile(notGroupIds);
-            WorkflowExpression.Validate(__workflow_notGroupIds, nameof(notGroupIds), required: false);
-            var __workflow_payrollIds = payrollIds == null ? null : WorkflowExpression.Compile(payrollIds);
-            WorkflowExpression.Validate(__workflow_payrollIds, nameof(payrollIds), required: false);
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_firstName = firstName == null ? null : WorkflowExpression.Compile(firstName);
-            WorkflowExpression.Validate(__workflow_firstName, nameof(firstName), required: false);
-            var __workflow_lastName = lastName == null ? null : WorkflowExpression.Compile(lastName);
-            WorkflowExpression.Validate(__workflow_lastName, nameof(lastName), required: false);
-            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
-            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
-            var __workflow_modifiedSince = modifiedSince == null ? null : WorkflowExpression.Compile(modifiedSince);
-            WorkflowExpression.Validate(__workflow_modifiedSince, nameof(modifiedSince), required: false);
-            var __workflow_supplementalData = supplementalData == null ? null : WorkflowExpression.Compile(supplementalData);
-            WorkflowExpression.Validate(__workflow_supplementalData, nameof(supplementalData), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_notIds = WorkflowExpression.Compile(notIds, nameof(notIds), required: false);
+            var __workflow_employeeNumbers = WorkflowExpression.Compile(employeeNumbers, nameof(employeeNumbers), required: false);
+            var __workflow_usernames = WorkflowExpression.Compile(usernames, nameof(usernames), required: false);
+            var __workflow_groupIds = WorkflowExpression.Compile(groupIds, nameof(groupIds), required: false);
+            var __workflow_notGroupIds = WorkflowExpression.Compile(notGroupIds, nameof(notGroupIds), required: false);
+            var __workflow_payrollIds = WorkflowExpression.Compile(payrollIds, nameof(payrollIds), required: false);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
+            var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
+            var __workflow_modifiedBefore = WorkflowExpression.Compile(modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_modifiedSince = WorkflowExpression.Compile(modifiedSince, nameof(modifiedSince), required: false);
+            var __workflow_supplementalData = WorkflowExpression.Compile(supplementalData, nameof(supplementalData), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetUsersResponse>(() =>
             {
                 var apiCallPath = "/users";
@@ -183,34 +151,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetTimesheetsResponse> GetTimesheets(Expression<Func<string>> ids = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<string>> userIds = null, Expression<Func<string>> groupIds = null, Expression<Func<onTheClockInput>> onTheClock = null, Expression<Func<jobcodeTypeInput>> jobcodeType = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_jobcodeIds = jobcodeIds == null ? null : WorkflowExpression.Compile(jobcodeIds);
-            WorkflowExpression.Validate(__workflow_jobcodeIds, nameof(jobcodeIds), required: false);
-            var __workflow_payrollIds = payrollIds == null ? null : WorkflowExpression.Compile(payrollIds);
-            WorkflowExpression.Validate(__workflow_payrollIds, nameof(payrollIds), required: false);
-            var __workflow_userIds = userIds == null ? null : WorkflowExpression.Compile(userIds);
-            WorkflowExpression.Validate(__workflow_userIds, nameof(userIds), required: false);
-            var __workflow_groupIds = groupIds == null ? null : WorkflowExpression.Compile(groupIds);
-            WorkflowExpression.Validate(__workflow_groupIds, nameof(groupIds), required: false);
-            var __workflow_onTheClock = onTheClock == null ? null : WorkflowExpression.Compile(onTheClock);
-            WorkflowExpression.Validate(__workflow_onTheClock, nameof(onTheClock), required: false);
-            var __workflow_jobcodeType = jobcodeType == null ? null : WorkflowExpression.Compile(jobcodeType);
-            WorkflowExpression.Validate(__workflow_jobcodeType, nameof(jobcodeType), required: false);
-            var __workflow_modifiedBefore = modifiedBefore == null ? null : WorkflowExpression.Compile(modifiedBefore);
-            WorkflowExpression.Validate(__workflow_modifiedBefore, nameof(modifiedBefore), required: false);
-            var __workflow_modifiedSince = modifiedSince == null ? null : WorkflowExpression.Compile(modifiedSince);
-            WorkflowExpression.Validate(__workflow_modifiedSince, nameof(modifiedSince), required: false);
-            var __workflow_supplementalData = supplementalData == null ? null : WorkflowExpression.Compile(supplementalData);
-            WorkflowExpression.Validate(__workflow_supplementalData, nameof(supplementalData), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_jobcodeIds = WorkflowExpression.Compile(jobcodeIds, nameof(jobcodeIds), required: false);
+            var __workflow_payrollIds = WorkflowExpression.Compile(payrollIds, nameof(payrollIds), required: false);
+            var __workflow_userIds = WorkflowExpression.Compile(userIds, nameof(userIds), required: false);
+            var __workflow_groupIds = WorkflowExpression.Compile(groupIds, nameof(groupIds), required: false);
+            var __workflow_onTheClock = WorkflowExpression.Compile(onTheClock, nameof(onTheClock), required: false);
+            var __workflow_jobcodeType = WorkflowExpression.Compile(jobcodeType, nameof(jobcodeType), required: false);
+            var __workflow_modifiedBefore = WorkflowExpression.Compile(modifiedBefore, nameof(modifiedBefore), required: false);
+            var __workflow_modifiedSince = WorkflowExpression.Compile(modifiedSince, nameof(modifiedSince), required: false);
+            var __workflow_supplementalData = WorkflowExpression.Compile(supplementalData, nameof(supplementalData), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetTimesheetsResponse>(() =>
             {
                 var apiCallPath = "/timesheets";
@@ -254,20 +208,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
         public IBodyWorkflowAction<GetNotificationsResponse> GetNotifications(Expression<Func<string>> ids = null, Expression<Func<string>> deliveryBefore = null, Expression<Func<string>> deliveryAfter = null, Expression<Func<int>> userId = null, Expression<Func<string>> msgTrackingId = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
         {
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_deliveryBefore = deliveryBefore == null ? null : WorkflowExpression.Compile(deliveryBefore);
-            WorkflowExpression.Validate(__workflow_deliveryBefore, nameof(deliveryBefore), required: false);
-            var __workflow_deliveryAfter = deliveryAfter == null ? null : WorkflowExpression.Compile(deliveryAfter);
-            WorkflowExpression.Validate(__workflow_deliveryAfter, nameof(deliveryAfter), required: false);
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: false);
-            var __workflow_msgTrackingId = msgTrackingId == null ? null : WorkflowExpression.Compile(msgTrackingId);
-            WorkflowExpression.Validate(__workflow_msgTrackingId, nameof(msgTrackingId), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_deliveryBefore = WorkflowExpression.Compile(deliveryBefore, nameof(deliveryBefore), required: false);
+            var __workflow_deliveryAfter = WorkflowExpression.Compile(deliveryAfter, nameof(deliveryAfter), required: false);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: false);
+            var __workflow_msgTrackingId = WorkflowExpression.Compile(msgTrackingId, nameof(msgTrackingId), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetNotificationsResponse>(() =>
             {
                 var apiCallPath = "/notifications";

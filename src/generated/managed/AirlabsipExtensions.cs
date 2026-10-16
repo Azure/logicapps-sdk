@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListFlightsResponse> ListFlights(Expression<Func<string>> flag = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> arrIata = null)
         {
-            var __workflow_flag = flag == null ? null : WorkflowExpression.Compile(flag);
-            WorkflowExpression.Validate(__workflow_flag, nameof(flag), required: false);
-            var __workflow_flightIcao = flightIcao == null ? null : WorkflowExpression.Compile(flightIcao);
-            WorkflowExpression.Validate(__workflow_flightIcao, nameof(flightIcao), required: false);
-            var __workflow_flightIata = flightIata == null ? null : WorkflowExpression.Compile(flightIata);
-            WorkflowExpression.Validate(__workflow_flightIata, nameof(flightIata), required: false);
-            var __workflow_depIcao = depIcao == null ? null : WorkflowExpression.Compile(depIcao);
-            WorkflowExpression.Validate(__workflow_depIcao, nameof(depIcao), required: false);
-            var __workflow_depIata = depIata == null ? null : WorkflowExpression.Compile(depIata);
-            WorkflowExpression.Validate(__workflow_depIata, nameof(depIata), required: false);
-            var __workflow_arrIcao = arrIcao == null ? null : WorkflowExpression.Compile(arrIcao);
-            WorkflowExpression.Validate(__workflow_arrIcao, nameof(arrIcao), required: false);
-            var __workflow_arrIata = arrIata == null ? null : WorkflowExpression.Compile(arrIata);
-            WorkflowExpression.Validate(__workflow_arrIata, nameof(arrIata), required: false);
+            var __workflow_flag = WorkflowExpression.Compile(flag, nameof(flag), required: false);
+            var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
+            var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
+            var __workflow_depIcao = WorkflowExpression.Compile(depIcao, nameof(depIcao), required: false);
+            var __workflow_depIata = WorkflowExpression.Compile(depIata, nameof(depIata), required: false);
+            var __workflow_arrIcao = WorkflowExpression.Compile(arrIcao, nameof(arrIcao), required: false);
+            var __workflow_arrIata = WorkflowExpression.Compile(arrIata, nameof(arrIata), required: false);
             return new DeferredBodyAction<ListFlightsResponse>(() =>
             {
                 var apiCallPath = "/flights";
@@ -53,10 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<GetFlightResponse> GetFlight(Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null)
         {
-            var __workflow_flightIata = flightIata == null ? null : WorkflowExpression.Compile(flightIata);
-            WorkflowExpression.Validate(__workflow_flightIata, nameof(flightIata), required: false);
-            var __workflow_flightIcao = flightIcao == null ? null : WorkflowExpression.Compile(flightIcao);
-            WorkflowExpression.Validate(__workflow_flightIcao, nameof(flightIcao), required: false);
+            var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
+            var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
             return new DeferredBodyAction<GetFlightResponse>(() =>
             {
                 var apiCallPath = "/flight";
@@ -73,20 +64,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListAirlinesResponse> ListAirlines(Expression<Func<string>> iataCode = null, Expression<Func<string>> iataPrefix = null, Expression<Func<string>> iataAccounting = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> callsign = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
         {
-            var __workflow_iataCode = iataCode == null ? null : WorkflowExpression.Compile(iataCode);
-            WorkflowExpression.Validate(__workflow_iataCode, nameof(iataCode), required: false);
-            var __workflow_iataPrefix = iataPrefix == null ? null : WorkflowExpression.Compile(iataPrefix);
-            WorkflowExpression.Validate(__workflow_iataPrefix, nameof(iataPrefix), required: false);
-            var __workflow_iataAccounting = iataAccounting == null ? null : WorkflowExpression.Compile(iataAccounting);
-            WorkflowExpression.Validate(__workflow_iataAccounting, nameof(iataAccounting), required: false);
-            var __workflow_icaoCode = icaoCode == null ? null : WorkflowExpression.Compile(icaoCode);
-            WorkflowExpression.Validate(__workflow_icaoCode, nameof(icaoCode), required: false);
-            var __workflow_callsign = callsign == null ? null : WorkflowExpression.Compile(callsign);
-            WorkflowExpression.Validate(__workflow_callsign, nameof(callsign), required: false);
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
-            var __workflow_Fields = Fields == null ? null : WorkflowExpression.Compile(Fields);
-            WorkflowExpression.Validate(__workflow_Fields, nameof(Fields), required: false);
+            var __workflow_iataCode = WorkflowExpression.Compile(iataCode, nameof(iataCode), required: false);
+            var __workflow_iataPrefix = WorkflowExpression.Compile(iataPrefix, nameof(iataPrefix), required: false);
+            var __workflow_iataAccounting = WorkflowExpression.Compile(iataAccounting, nameof(iataAccounting), required: false);
+            var __workflow_icaoCode = WorkflowExpression.Compile(icaoCode, nameof(icaoCode), required: false);
+            var __workflow_callsign = WorkflowExpression.Compile(callsign, nameof(callsign), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
+            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
             return new DeferredBodyAction<ListAirlinesResponse>(() =>
             {
                 var apiCallPath = "/airlines";
@@ -113,24 +97,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListRoutesResponse> ListRoutes(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
         {
-            var __workflow_depIata = depIata == null ? null : WorkflowExpression.Compile(depIata);
-            WorkflowExpression.Validate(__workflow_depIata, nameof(depIata), required: false);
-            var __workflow_depIcao = depIcao == null ? null : WorkflowExpression.Compile(depIcao);
-            WorkflowExpression.Validate(__workflow_depIcao, nameof(depIcao), required: false);
-            var __workflow_arrIata = arrIata == null ? null : WorkflowExpression.Compile(arrIata);
-            WorkflowExpression.Validate(__workflow_arrIata, nameof(arrIata), required: false);
-            var __workflow_arrIcao = arrIcao == null ? null : WorkflowExpression.Compile(arrIcao);
-            WorkflowExpression.Validate(__workflow_arrIcao, nameof(arrIcao), required: false);
-            var __workflow_airlineIcao = airlineIcao == null ? null : WorkflowExpression.Compile(airlineIcao);
-            WorkflowExpression.Validate(__workflow_airlineIcao, nameof(airlineIcao), required: false);
-            var __workflow_airlineIata = airlineIata == null ? null : WorkflowExpression.Compile(airlineIata);
-            WorkflowExpression.Validate(__workflow_airlineIata, nameof(airlineIata), required: false);
-            var __workflow_flightIcao = flightIcao == null ? null : WorkflowExpression.Compile(flightIcao);
-            WorkflowExpression.Validate(__workflow_flightIcao, nameof(flightIcao), required: false);
-            var __workflow_flightIata = flightIata == null ? null : WorkflowExpression.Compile(flightIata);
-            WorkflowExpression.Validate(__workflow_flightIata, nameof(flightIata), required: false);
-            var __workflow_Fields = Fields == null ? null : WorkflowExpression.Compile(Fields);
-            WorkflowExpression.Validate(__workflow_Fields, nameof(Fields), required: false);
+            var __workflow_depIata = WorkflowExpression.Compile(depIata, nameof(depIata), required: false);
+            var __workflow_depIcao = WorkflowExpression.Compile(depIcao, nameof(depIcao), required: false);
+            var __workflow_arrIata = WorkflowExpression.Compile(arrIata, nameof(arrIata), required: false);
+            var __workflow_arrIcao = WorkflowExpression.Compile(arrIcao, nameof(arrIcao), required: false);
+            var __workflow_airlineIcao = WorkflowExpression.Compile(airlineIcao, nameof(airlineIcao), required: false);
+            var __workflow_airlineIata = WorkflowExpression.Compile(airlineIata, nameof(airlineIata), required: false);
+            var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
+            var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
+            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
             return new DeferredBodyAction<ListRoutesResponse>(() =>
             {
                 var apiCallPath = "/routes";
@@ -161,24 +136,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListSchedulesResponse> ListSchedules(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
         {
-            var __workflow_depIata = depIata == null ? null : WorkflowExpression.Compile(depIata);
-            WorkflowExpression.Validate(__workflow_depIata, nameof(depIata), required: false);
-            var __workflow_depIcao = depIcao == null ? null : WorkflowExpression.Compile(depIcao);
-            WorkflowExpression.Validate(__workflow_depIcao, nameof(depIcao), required: false);
-            var __workflow_arrIata = arrIata == null ? null : WorkflowExpression.Compile(arrIata);
-            WorkflowExpression.Validate(__workflow_arrIata, nameof(arrIata), required: false);
-            var __workflow_arrIcao = arrIcao == null ? null : WorkflowExpression.Compile(arrIcao);
-            WorkflowExpression.Validate(__workflow_arrIcao, nameof(arrIcao), required: false);
-            var __workflow_airlineIcao = airlineIcao == null ? null : WorkflowExpression.Compile(airlineIcao);
-            WorkflowExpression.Validate(__workflow_airlineIcao, nameof(airlineIcao), required: false);
-            var __workflow_airlineIata = airlineIata == null ? null : WorkflowExpression.Compile(airlineIata);
-            WorkflowExpression.Validate(__workflow_airlineIata, nameof(airlineIata), required: false);
-            var __workflow_flightIcao = flightIcao == null ? null : WorkflowExpression.Compile(flightIcao);
-            WorkflowExpression.Validate(__workflow_flightIcao, nameof(flightIcao), required: false);
-            var __workflow_flightIata = flightIata == null ? null : WorkflowExpression.Compile(flightIata);
-            WorkflowExpression.Validate(__workflow_flightIata, nameof(flightIata), required: false);
-            var __workflow_Fields = Fields == null ? null : WorkflowExpression.Compile(Fields);
-            WorkflowExpression.Validate(__workflow_Fields, nameof(Fields), required: false);
+            var __workflow_depIata = WorkflowExpression.Compile(depIata, nameof(depIata), required: false);
+            var __workflow_depIcao = WorkflowExpression.Compile(depIcao, nameof(depIcao), required: false);
+            var __workflow_arrIata = WorkflowExpression.Compile(arrIata, nameof(arrIata), required: false);
+            var __workflow_arrIcao = WorkflowExpression.Compile(arrIcao, nameof(arrIcao), required: false);
+            var __workflow_airlineIcao = WorkflowExpression.Compile(airlineIcao, nameof(airlineIcao), required: false);
+            var __workflow_airlineIata = WorkflowExpression.Compile(airlineIata, nameof(airlineIata), required: false);
+            var __workflow_flightIcao = WorkflowExpression.Compile(flightIcao, nameof(flightIcao), required: false);
+            var __workflow_flightIata = WorkflowExpression.Compile(flightIata, nameof(flightIata), required: false);
+            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
             return new DeferredBodyAction<ListSchedulesResponse>(() =>
             {
                 var apiCallPath = "/schedules";
@@ -209,16 +175,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListAirportsResponse> ListAirports(Expression<Func<string>> iataCode = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> cityCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
         {
-            var __workflow_iataCode = iataCode == null ? null : WorkflowExpression.Compile(iataCode);
-            WorkflowExpression.Validate(__workflow_iataCode, nameof(iataCode), required: false);
-            var __workflow_icaoCode = icaoCode == null ? null : WorkflowExpression.Compile(icaoCode);
-            WorkflowExpression.Validate(__workflow_icaoCode, nameof(icaoCode), required: false);
-            var __workflow_cityCode = cityCode == null ? null : WorkflowExpression.Compile(cityCode);
-            WorkflowExpression.Validate(__workflow_cityCode, nameof(cityCode), required: false);
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: false);
-            var __workflow_Fields = Fields == null ? null : WorkflowExpression.Compile(Fields);
-            WorkflowExpression.Validate(__workflow_Fields, nameof(Fields), required: false);
+            var __workflow_iataCode = WorkflowExpression.Compile(iataCode, nameof(iataCode), required: false);
+            var __workflow_icaoCode = WorkflowExpression.Compile(icaoCode, nameof(icaoCode), required: false);
+            var __workflow_cityCode = WorkflowExpression.Compile(cityCode, nameof(cityCode), required: false);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: false);
+            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
             return new DeferredBodyAction<ListAirportsResponse>(() =>
             {
                 var apiCallPath = "/airports";
@@ -241,14 +202,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
         public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> code = null, Expression<Func<string>> code3 = null, Expression<Func<string>> continent = null, Expression<Func<string>> Fields = null)
         {
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: false);
-            var __workflow_code3 = code3 == null ? null : WorkflowExpression.Compile(code3);
-            WorkflowExpression.Validate(__workflow_code3, nameof(code3), required: false);
-            var __workflow_continent = continent == null ? null : WorkflowExpression.Compile(continent);
-            WorkflowExpression.Validate(__workflow_continent, nameof(continent), required: false);
-            var __workflow_Fields = Fields == null ? null : WorkflowExpression.Compile(Fields);
-            WorkflowExpression.Validate(__workflow_Fields, nameof(Fields), required: false);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
+            var __workflow_code3 = WorkflowExpression.Compile(code3, nameof(code3), required: false);
+            var __workflow_continent = WorkflowExpression.Compile(continent, nameof(continent), required: false);
+            var __workflow_Fields = WorkflowExpression.Compile(Fields, nameof(Fields), required: false);
             return new DeferredBodyAction<ListCountriesResponse>(() =>
             {
                 var apiCallPath = "/countries";

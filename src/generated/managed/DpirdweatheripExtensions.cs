@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsResponse> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             return new DeferredBodyAction<GetStationsResponse>(() =>
             {
                 var apiCallPath = "/stations";
@@ -53,14 +46,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsAvailabilityResponse> GetStationsAvailability(Expression<Func<string>> stationCode = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationsAvailabilityResponse>(() =>
             {
                 var apiCallPath = "/stations/availability";
@@ -81,24 +70,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IWorkflowAction GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
-            var __workflow_latitude = latitude == null ? null : WorkflowExpression.Compile(latitude);
-            WorkflowExpression.Validate(__workflow_latitude, nameof(latitude), required: true);
-            var __workflow_longitude = longitude == null ? null : WorkflowExpression.Compile(longitude);
-            WorkflowExpression.Validate(__workflow_longitude, nameof(longitude), required: true);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
+            var __workflow_latitude = WorkflowExpression.Compile(latitude, nameof(latitude), required: true);
+            var __workflow_longitude = WorkflowExpression.Compile(longitude, nameof(longitude), required: true);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/stations/nearby";
@@ -127,10 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationResponse> GetStation(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -145,14 +123,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> GetWeatherStationAvailability(Expression<Func<string>> stationCode, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetWeatherStationAvailabilityResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/availability", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -171,24 +145,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsBulletinsResponse> GetStationsBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             return new DeferredBodyAction<GetStationsBulletinsResponse>(() =>
             {
                 var apiCallPath = "/stations/bulletins";
@@ -217,24 +182,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetWeatherStationsRainfallResponse> GetWeatherStationsRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             return new DeferredBodyAction<GetWeatherStationsRainfallResponse>(() =>
             {
                 var apiCallPath = "/stations/rainfall";
@@ -263,24 +219,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetWeatherStationRainfallResponse> GetWeatherStationRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             return new DeferredBodyAction<GetWeatherStationRainfallResponse>(() =>
             {
                 var apiCallPath = "/stations1/rainfall";
@@ -309,20 +256,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsExtremeConditionsResponse> GetStationsExtremeConditions(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
             return new DeferredBodyAction<GetStationsExtremeConditionsResponse>(() =>
             {
                 var apiCallPath = "/stations/extreme-conditions";
@@ -349,22 +289,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsExtremeEventsResponse> GetStationsExtremeEvents(Expression<Func<@operatorInput>> @operator, Expression<Func<int>> threshold, Expression<Func<propertyInput>> property, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<intervalInput>> interval = null, Expression<Func<string>> select = null)
         {
-            var __workflow_operator = @operator == null ? null : WorkflowExpression.Compile(@operator);
-            WorkflowExpression.Validate(__workflow_operator, nameof(@operator), required: true);
-            var __workflow_threshold = threshold == null ? null : WorkflowExpression.Compile(threshold);
-            WorkflowExpression.Validate(__workflow_threshold, nameof(threshold), required: true);
-            var __workflow_property = property == null ? null : WorkflowExpression.Compile(property);
-            WorkflowExpression.Validate(__workflow_property, nameof(property), required: true);
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_interval = interval == null ? null : WorkflowExpression.Compile(interval);
-            WorkflowExpression.Validate(__workflow_interval, nameof(interval), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_operator = WorkflowExpression.Compile(@operator, nameof(@operator), required: true);
+            var __workflow_threshold = WorkflowExpression.Compile(threshold, nameof(threshold), required: true);
+            var __workflow_property = WorkflowExpression.Compile(property, nameof(property), required: true);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_interval = WorkflowExpression.Compile(interval, nameof(interval), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationsExtremeEventsResponse>(() =>
             {
                 var apiCallPath = "/stations/events";
@@ -388,16 +320,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationsLatestDataResponse> GetStationsLatestData(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
             return new DeferredBodyAction<GetStationsLatestDataResponse>(() =>
             {
                 var apiCallPath = "/stations/latest";
@@ -420,20 +347,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationBulletinsResponse> GetStationBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationBulletinsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/bulletin", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -456,10 +376,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationLatestDataResponse> GetStationLatestData(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationLatestDataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -474,20 +392,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<GetStationMinuteDataResponse> GetStationMinuteData(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<GetStationMinuteDataResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -510,24 +421,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations15minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/15min";
@@ -556,24 +458,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations30minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/30min";
@@ -602,24 +495,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsHourlySummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/hourly";
@@ -648,24 +532,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsDailySummary(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/daily";
@@ -694,24 +569,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsMonthlySummary(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startMonth = startMonth == null ? null : WorkflowExpression.Compile(startMonth);
-            WorkflowExpression.Validate(__workflow_startMonth, nameof(startMonth), required: true);
-            var __workflow_endMonth = endMonth == null ? null : WorkflowExpression.Compile(endMonth);
-            WorkflowExpression.Validate(__workflow_endMonth, nameof(endMonth), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
+            var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/monthly";
@@ -740,24 +606,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsYearlySummary(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startYear = startYear == null ? null : WorkflowExpression.Compile(startYear);
-            WorkflowExpression.Validate(__workflow_startYear, nameof(startYear), required: true);
-            var __workflow_endYear = endYear == null ? null : WorkflowExpression.Compile(endYear);
-            WorkflowExpression.Validate(__workflow_endYear, nameof(endYear), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startYear = WorkflowExpression.Compile(startYear, nameof(startYear), required: true);
+            var __workflow_endYear = WorkflowExpression.Compile(endYear, nameof(endYear), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/yearly";
@@ -786,24 +643,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations15minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/15min/timeseries";
@@ -832,24 +680,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations30minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/30min/timeseries";
@@ -878,24 +717,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsHourlySummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/hourly/timeseries";
@@ -924,24 +754,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsDailySummaryTimeSeries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/daily/timeseries";
@@ -970,24 +791,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsMonthlySummaryTimeSeries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startMonth = startMonth == null ? null : WorkflowExpression.Compile(startMonth);
-            WorkflowExpression.Validate(__workflow_startMonth, nameof(startMonth), required: true);
-            var __workflow_endMonth = endMonth == null ? null : WorkflowExpression.Compile(endMonth);
-            WorkflowExpression.Validate(__workflow_endMonth, nameof(endMonth), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startMonth = WorkflowExpression.Compile(startMonth, nameof(startMonth), required: true);
+            var __workflow_endMonth = WorkflowExpression.Compile(endMonth, nameof(endMonth), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/monthly/timeseries";
@@ -1016,24 +828,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsYearlySummaryTimeSeries(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
         {
-            var __workflow_startYear = startYear == null ? null : WorkflowExpression.Compile(startYear);
-            WorkflowExpression.Validate(__workflow_startYear, nameof(startYear), required: true);
-            var __workflow_endYear = endYear == null ? null : WorkflowExpression.Compile(endYear);
-            WorkflowExpression.Validate(__workflow_endYear, nameof(endYear), required: true);
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_group = group == null ? null : WorkflowExpression.Compile(group);
-            WorkflowExpression.Validate(__workflow_group, nameof(group), required: false);
-            var __workflow_includeClosed = includeClosed == null ? null : WorkflowExpression.Compile(includeClosed);
-            WorkflowExpression.Validate(__workflow_includeClosed, nameof(includeClosed), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_startYear = WorkflowExpression.Compile(startYear, nameof(startYear), required: true);
+            var __workflow_endYear = WorkflowExpression.Compile(endYear, nameof(endYear), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_group = WorkflowExpression.Compile(group, nameof(group), required: false);
+            var __workflow_includeClosed = WorkflowExpression.Compile(includeClosed, nameof(includeClosed), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
             {
                 var apiCallPath = "/stations/summaries/yearly/timeseries";
@@ -1062,20 +865,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation15minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/15min", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -1098,20 +894,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation30minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/30min", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -1134,20 +923,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationHourlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDateTime = startDateTime == null ? null : WorkflowExpression.Compile(startDateTime);
-            WorkflowExpression.Validate(__workflow_startDateTime, nameof(startDateTime), required: true);
-            var __workflow_endDateTime = endDateTime == null ? null : WorkflowExpression.Compile(endDateTime);
-            WorkflowExpression.Validate(__workflow_endDateTime, nameof(endDateTime), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDateTime = WorkflowExpression.Compile(startDateTime, nameof(startDateTime), required: true);
+            var __workflow_endDateTime = WorkflowExpression.Compile(endDateTime, nameof(endDateTime), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/hourly", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -1170,20 +952,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationDailySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/daily", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -1206,20 +981,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationMonthlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/monthly", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));
@@ -1242,20 +1010,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
         public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationYearlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: true);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: true);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: true);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: true);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/yearly", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCode, 1));

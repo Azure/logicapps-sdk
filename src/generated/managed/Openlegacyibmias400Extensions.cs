@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Cobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-AS400Cobol";
@@ -34,12 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Rpg(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-AS400Rpg";
@@ -55,12 +49,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400DataQueue(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-AS400DataQueue";
@@ -76,12 +67,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Db2Queries(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-AS400Db2Queries";
@@ -97,12 +85,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
         public IBodyWorkflowAction<JToken> AS400Db2Executables(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
         {
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/dummy-AS400Db2Executables";

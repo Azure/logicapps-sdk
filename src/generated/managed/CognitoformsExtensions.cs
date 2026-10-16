@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
     {
         public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
-            var __workflow_publisher = publisher == null ? null : WorkflowExpression.Compile(publisher);
-            WorkflowExpression.Validate(__workflow_publisher, nameof(publisher), required: true);
+            var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribenewentry";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
         public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
-            var __workflow_publisher = publisher == null ? null : WorkflowExpression.Compile(publisher);
-            WorkflowExpression.Validate(__workflow_publisher, nameof(publisher), required: true);
+            var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribeupdateentry";
@@ -64,8 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
         public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, FlowRecurrence recurrence = null)
         {
-            var __workflow_publisher = publisher == null ? null : WorkflowExpression.Compile(publisher);
-            WorkflowExpression.Validate(__workflow_publisher, nameof(publisher), required: true);
+            var __workflow_publisher = WorkflowExpression.Compile(publisher, nameof(publisher), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/integration/oauth/subscribeentrydeleted";

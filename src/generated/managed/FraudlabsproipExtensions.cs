@@ -13,72 +13,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         public IBodyWorkflowAction<ScreenPostResponse> Screen(Expression<Func<string>> bodyip = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodybillAddr = null, Expression<Func<string>> bodybillCity = null, Expression<Func<string>> bodybillState = null, Expression<Func<string>> bodybillCountry = null, Expression<Func<string>> bodybillZipCode = null, Expression<Func<string>> bodyshipLastName = null, Expression<Func<string>> bodyshipFirstName = null, Expression<Func<string>> bodyshipAddr = null, Expression<Func<string>> bodyshipCity = null, Expression<Func<string>> bodyshipState = null, Expression<Func<string>> bodyshipCountry = null, Expression<Func<string>> bodyshipZipCode = null, Expression<Func<string>> bodyuserPhone = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyemailHash = null, Expression<Func<string>> bodyemailDomain = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodybinNo = null, Expression<Func<string>> bodycardHash = null, Expression<Func<string>> bodyavsResult = null, Expression<Func<string>> bodycvvResult = null, Expression<Func<string>> bodyuserOrderId = null, Expression<Func<string>> bodyuserOrderMemo = null, Expression<Func<double>> bodyamount = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodypaymentGateway = null, Expression<Func<bodypaymentModeInput>> bodypaymentMode = null, Expression<Func<string>> bodyflpChecksum = null)
         {
-            var __workflow_bodyip = bodyip == null ? null : WorkflowExpression.Compile(bodyip);
-            WorkflowExpression.Validate(__workflow_bodyip, nameof(bodyip), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodybillAddr = bodybillAddr == null ? null : WorkflowExpression.Compile(bodybillAddr);
-            WorkflowExpression.Validate(__workflow_bodybillAddr, nameof(bodybillAddr), required: false);
-            var __workflow_bodybillCity = bodybillCity == null ? null : WorkflowExpression.Compile(bodybillCity);
-            WorkflowExpression.Validate(__workflow_bodybillCity, nameof(bodybillCity), required: false);
-            var __workflow_bodybillState = bodybillState == null ? null : WorkflowExpression.Compile(bodybillState);
-            WorkflowExpression.Validate(__workflow_bodybillState, nameof(bodybillState), required: false);
-            var __workflow_bodybillCountry = bodybillCountry == null ? null : WorkflowExpression.Compile(bodybillCountry);
-            WorkflowExpression.Validate(__workflow_bodybillCountry, nameof(bodybillCountry), required: false);
-            var __workflow_bodybillZipCode = bodybillZipCode == null ? null : WorkflowExpression.Compile(bodybillZipCode);
-            WorkflowExpression.Validate(__workflow_bodybillZipCode, nameof(bodybillZipCode), required: false);
-            var __workflow_bodyshipLastName = bodyshipLastName == null ? null : WorkflowExpression.Compile(bodyshipLastName);
-            WorkflowExpression.Validate(__workflow_bodyshipLastName, nameof(bodyshipLastName), required: false);
-            var __workflow_bodyshipFirstName = bodyshipFirstName == null ? null : WorkflowExpression.Compile(bodyshipFirstName);
-            WorkflowExpression.Validate(__workflow_bodyshipFirstName, nameof(bodyshipFirstName), required: false);
-            var __workflow_bodyshipAddr = bodyshipAddr == null ? null : WorkflowExpression.Compile(bodyshipAddr);
-            WorkflowExpression.Validate(__workflow_bodyshipAddr, nameof(bodyshipAddr), required: false);
-            var __workflow_bodyshipCity = bodyshipCity == null ? null : WorkflowExpression.Compile(bodyshipCity);
-            WorkflowExpression.Validate(__workflow_bodyshipCity, nameof(bodyshipCity), required: false);
-            var __workflow_bodyshipState = bodyshipState == null ? null : WorkflowExpression.Compile(bodyshipState);
-            WorkflowExpression.Validate(__workflow_bodyshipState, nameof(bodyshipState), required: false);
-            var __workflow_bodyshipCountry = bodyshipCountry == null ? null : WorkflowExpression.Compile(bodyshipCountry);
-            WorkflowExpression.Validate(__workflow_bodyshipCountry, nameof(bodyshipCountry), required: false);
-            var __workflow_bodyshipZipCode = bodyshipZipCode == null ? null : WorkflowExpression.Compile(bodyshipZipCode);
-            WorkflowExpression.Validate(__workflow_bodyshipZipCode, nameof(bodyshipZipCode), required: false);
-            var __workflow_bodyuserPhone = bodyuserPhone == null ? null : WorkflowExpression.Compile(bodyuserPhone);
-            WorkflowExpression.Validate(__workflow_bodyuserPhone, nameof(bodyuserPhone), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyemailHash = bodyemailHash == null ? null : WorkflowExpression.Compile(bodyemailHash);
-            WorkflowExpression.Validate(__workflow_bodyemailHash, nameof(bodyemailHash), required: false);
-            var __workflow_bodyemailDomain = bodyemailDomain == null ? null : WorkflowExpression.Compile(bodyemailDomain);
-            WorkflowExpression.Validate(__workflow_bodyemailDomain, nameof(bodyemailDomain), required: false);
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodybinNo = bodybinNo == null ? null : WorkflowExpression.Compile(bodybinNo);
-            WorkflowExpression.Validate(__workflow_bodybinNo, nameof(bodybinNo), required: false);
-            var __workflow_bodycardHash = bodycardHash == null ? null : WorkflowExpression.Compile(bodycardHash);
-            WorkflowExpression.Validate(__workflow_bodycardHash, nameof(bodycardHash), required: false);
-            var __workflow_bodyavsResult = bodyavsResult == null ? null : WorkflowExpression.Compile(bodyavsResult);
-            WorkflowExpression.Validate(__workflow_bodyavsResult, nameof(bodyavsResult), required: false);
-            var __workflow_bodycvvResult = bodycvvResult == null ? null : WorkflowExpression.Compile(bodycvvResult);
-            WorkflowExpression.Validate(__workflow_bodycvvResult, nameof(bodycvvResult), required: false);
-            var __workflow_bodyuserOrderId = bodyuserOrderId == null ? null : WorkflowExpression.Compile(bodyuserOrderId);
-            WorkflowExpression.Validate(__workflow_bodyuserOrderId, nameof(bodyuserOrderId), required: false);
-            var __workflow_bodyuserOrderMemo = bodyuserOrderMemo == null ? null : WorkflowExpression.Compile(bodyuserOrderMemo);
-            WorkflowExpression.Validate(__workflow_bodyuserOrderMemo, nameof(bodyuserOrderMemo), required: false);
-            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
-            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: false);
-            var __workflow_bodyquantity = bodyquantity == null ? null : WorkflowExpression.Compile(bodyquantity);
-            WorkflowExpression.Validate(__workflow_bodyquantity, nameof(bodyquantity), required: false);
-            var __workflow_bodycurrency = bodycurrency == null ? null : WorkflowExpression.Compile(bodycurrency);
-            WorkflowExpression.Validate(__workflow_bodycurrency, nameof(bodycurrency), required: false);
-            var __workflow_bodydepartment = bodydepartment == null ? null : WorkflowExpression.Compile(bodydepartment);
-            WorkflowExpression.Validate(__workflow_bodydepartment, nameof(bodydepartment), required: false);
-            var __workflow_bodypaymentGateway = bodypaymentGateway == null ? null : WorkflowExpression.Compile(bodypaymentGateway);
-            WorkflowExpression.Validate(__workflow_bodypaymentGateway, nameof(bodypaymentGateway), required: false);
-            var __workflow_bodypaymentMode = bodypaymentMode == null ? null : WorkflowExpression.Compile(bodypaymentMode);
-            WorkflowExpression.Validate(__workflow_bodypaymentMode, nameof(bodypaymentMode), required: false);
-            var __workflow_bodyflpChecksum = bodyflpChecksum == null ? null : WorkflowExpression.Compile(bodyflpChecksum);
-            WorkflowExpression.Validate(__workflow_bodyflpChecksum, nameof(bodyflpChecksum), required: false);
+            var __workflow_bodyip = WorkflowExpression.Compile(bodyip, nameof(bodyip), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodybillAddr = WorkflowExpression.Compile(bodybillAddr, nameof(bodybillAddr), required: false);
+            var __workflow_bodybillCity = WorkflowExpression.Compile(bodybillCity, nameof(bodybillCity), required: false);
+            var __workflow_bodybillState = WorkflowExpression.Compile(bodybillState, nameof(bodybillState), required: false);
+            var __workflow_bodybillCountry = WorkflowExpression.Compile(bodybillCountry, nameof(bodybillCountry), required: false);
+            var __workflow_bodybillZipCode = WorkflowExpression.Compile(bodybillZipCode, nameof(bodybillZipCode), required: false);
+            var __workflow_bodyshipLastName = WorkflowExpression.Compile(bodyshipLastName, nameof(bodyshipLastName), required: false);
+            var __workflow_bodyshipFirstName = WorkflowExpression.Compile(bodyshipFirstName, nameof(bodyshipFirstName), required: false);
+            var __workflow_bodyshipAddr = WorkflowExpression.Compile(bodyshipAddr, nameof(bodyshipAddr), required: false);
+            var __workflow_bodyshipCity = WorkflowExpression.Compile(bodyshipCity, nameof(bodyshipCity), required: false);
+            var __workflow_bodyshipState = WorkflowExpression.Compile(bodyshipState, nameof(bodyshipState), required: false);
+            var __workflow_bodyshipCountry = WorkflowExpression.Compile(bodyshipCountry, nameof(bodyshipCountry), required: false);
+            var __workflow_bodyshipZipCode = WorkflowExpression.Compile(bodyshipZipCode, nameof(bodyshipZipCode), required: false);
+            var __workflow_bodyuserPhone = WorkflowExpression.Compile(bodyuserPhone, nameof(bodyuserPhone), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyemailHash = WorkflowExpression.Compile(bodyemailHash, nameof(bodyemailHash), required: false);
+            var __workflow_bodyemailDomain = WorkflowExpression.Compile(bodyemailDomain, nameof(bodyemailDomain), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodybinNo = WorkflowExpression.Compile(bodybinNo, nameof(bodybinNo), required: false);
+            var __workflow_bodycardHash = WorkflowExpression.Compile(bodycardHash, nameof(bodycardHash), required: false);
+            var __workflow_bodyavsResult = WorkflowExpression.Compile(bodyavsResult, nameof(bodyavsResult), required: false);
+            var __workflow_bodycvvResult = WorkflowExpression.Compile(bodycvvResult, nameof(bodycvvResult), required: false);
+            var __workflow_bodyuserOrderId = WorkflowExpression.Compile(bodyuserOrderId, nameof(bodyuserOrderId), required: false);
+            var __workflow_bodyuserOrderMemo = WorkflowExpression.Compile(bodyuserOrderMemo, nameof(bodyuserOrderMemo), required: false);
+            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: false);
+            var __workflow_bodyquantity = WorkflowExpression.Compile(bodyquantity, nameof(bodyquantity), required: false);
+            var __workflow_bodycurrency = WorkflowExpression.Compile(bodycurrency, nameof(bodycurrency), required: false);
+            var __workflow_bodydepartment = WorkflowExpression.Compile(bodydepartment, nameof(bodydepartment), required: false);
+            var __workflow_bodypaymentGateway = WorkflowExpression.Compile(bodypaymentGateway, nameof(bodypaymentGateway), required: false);
+            var __workflow_bodypaymentMode = WorkflowExpression.Compile(bodypaymentMode, nameof(bodypaymentMode), required: false);
+            var __workflow_bodyflpChecksum = WorkflowExpression.Compile(bodyflpChecksum, nameof(bodyflpChecksum), required: false);
             return new DeferredBodyAction<ScreenPostResponse>(() =>
             {
                 var apiCallPath = "/screen";
@@ -296,12 +263,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         public IBodyWorkflowAction<FeedbackPostResponse> Feedback(Expression<Func<string>> bodyid = null, Expression<Func<bodyactionInput>> bodyaction = null, Expression<Func<string>> bodynote = null)
         {
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
-            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: false);
-            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
-            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<FeedbackPostResponse>(() =>
             {
                 var apiCallPath = "/feedback";
@@ -349,10 +313,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
         public IBodyWorkflowAction<ResultGetResponse> ResultGet(Expression<Func<string>> id = null, Expression<Func<idTypeInput>> idType = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_idType = idType == null ? null : WorkflowExpression.Compile(idType);
-            WorkflowExpression.Validate(__workflow_idType, nameof(idType), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_idType = WorkflowExpression.Compile(idType, nameof(idType), required: false);
             return new DeferredBodyAction<ResultGetResponse>(() =>
             {
                 var apiCallPath = "/result";

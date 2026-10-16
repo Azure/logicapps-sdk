@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers(Expression<Func<int>> page = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetUsersResponseItem[]>(() =>
             {
                 var apiCallPath = "/users.json";
@@ -65,8 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> name)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<GetUserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_name, 1));
@@ -79,8 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
         public IBodyWorkflowAction<GetSpecificOrganisationResponse> GetSpecificOrganisation(Expression<Func<string>> organisation)
         {
-            var __workflow_organisation = organisation == null ? null : WorkflowExpression.Compile(organisation);
-            WorkflowExpression.Validate(__workflow_organisation, nameof(organisation), required: true);
+            var __workflow_organisation = WorkflowExpression.Compile(organisation, nameof(organisation), required: true);
             return new DeferredBodyAction<GetSpecificOrganisationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organisations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_organisation, 1));

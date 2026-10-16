@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IBodyWorkflowAction<V2DocsCreateResponse> DocsCreate(Expression<Func<object>> dataFile, Expression<Func<int>> project, Expression<Func<bool>> sync = null)
         {
-            var __workflow_dataFile = dataFile == null ? null : WorkflowExpression.Compile(dataFile);
-            WorkflowExpression.Validate(__workflow_dataFile, nameof(dataFile), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_sync = sync == null ? null : WorkflowExpression.Compile(sync);
-            WorkflowExpression.Validate(__workflow_sync, nameof(sync), required: false);
+            var __workflow_dataFile = WorkflowExpression.Compile(dataFile, nameof(dataFile), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_sync = WorkflowExpression.Compile(sync, nameof(sync), required: false);
             return new DeferredBodyAction<V2DocsCreateResponse>(() =>
             {
                 var apiCallPath = "/v2/docs/";
@@ -31,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsDelete(Expression<Func<string>> doc)
         {
-            var __workflow_doc = doc == null ? null : WorkflowExpression.Compile(doc);
-            WorkflowExpression.Validate(__workflow_doc, nameof(doc), required: true);
+            var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
@@ -45,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsPartialUpdate(Expression<Func<string>> doc)
         {
-            var __workflow_doc = doc == null ? null : WorkflowExpression.Compile(doc);
-            WorkflowExpression.Validate(__workflow_doc, nameof(doc), required: true);
+            var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));
@@ -59,8 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
         public IWorkflowAction DocsRead(Expression<Func<string>> doc)
         {
-            var __workflow_doc = doc == null ? null : WorkflowExpression.Compile(doc);
-            WorkflowExpression.Validate(__workflow_doc, nameof(doc), required: true);
+            var __workflow_doc = WorkflowExpression.Compile(doc, nameof(doc), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_doc, 1));

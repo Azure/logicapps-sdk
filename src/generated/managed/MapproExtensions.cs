@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> GetPlaceById(Expression<Func<string>> mapId, Expression<Func<string>> placeId)
         {
-            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
-            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
-            var __workflow_placeId = placeId == null ? null : WorkflowExpression.Compile(placeId);
-            WorkflowExpression.Validate(__workflow_placeId, nameof(placeId), required: true);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
             return new DeferredBodyAction<Place>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
@@ -29,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IWorkflowAction DeletePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId)
         {
-            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
-            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
-            var __workflow_placeId = placeId == null ? null : WorkflowExpression.Compile(placeId);
-            WorkflowExpression.Validate(__workflow_placeId, nameof(placeId), required: true);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
@@ -45,20 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> UpdatePlace(Expression<Func<string>> mapId, Expression<Func<string>> placeId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
-            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
-            var __workflow_placeId = placeId == null ? null : WorkflowExpression.Compile(placeId);
-            WorkflowExpression.Validate(__workflow_placeId, nameof(placeId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
-            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: true);
-            var __workflow_bodylatitude = bodylatitude == null ? null : WorkflowExpression.Compile(bodylatitude);
-            WorkflowExpression.Validate(__workflow_bodylatitude, nameof(bodylatitude), required: true);
-            var __workflow_bodylongitude = bodylongitude == null ? null : WorkflowExpression.Compile(bodylongitude);
-            WorkflowExpression.Validate(__workflow_bodylongitude, nameof(bodylongitude), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_placeId = WorkflowExpression.Compile(placeId, nameof(placeId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: true);
+            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<Place>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_placeId, 1));
@@ -92,8 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place[]> GetMapPlacesById(Expression<Func<string>> mapId)
         {
-            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
-            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
             return new DeferredBodyAction<Place[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1));
@@ -106,18 +94,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mappro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mappro")]
         public IBodyWorkflowAction<Place> CreateNewPlace(Expression<Func<string>> mapId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyaddress, Expression<Func<double>> bodylatitude, Expression<Func<double>> bodylongitude, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_mapId = mapId == null ? null : WorkflowExpression.Compile(mapId);
-            WorkflowExpression.Validate(__workflow_mapId, nameof(mapId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyaddress = bodyaddress == null ? null : WorkflowExpression.Compile(bodyaddress);
-            WorkflowExpression.Validate(__workflow_bodyaddress, nameof(bodyaddress), required: true);
-            var __workflow_bodylatitude = bodylatitude == null ? null : WorkflowExpression.Compile(bodylatitude);
-            WorkflowExpression.Validate(__workflow_bodylatitude, nameof(bodylatitude), required: true);
-            var __workflow_bodylongitude = bodylongitude == null ? null : WorkflowExpression.Compile(bodylongitude);
-            WorkflowExpression.Validate(__workflow_bodylongitude, nameof(bodylongitude), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_mapId = WorkflowExpression.Compile(mapId, nameof(mapId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyaddress = WorkflowExpression.Compile(bodyaddress, nameof(bodyaddress), required: true);
+            var __workflow_bodylatitude = WorkflowExpression.Compile(bodylatitude, nameof(bodylatitude), required: true);
+            var __workflow_bodylongitude = WorkflowExpression.Compile(bodylongitude, nameof(bodylongitude), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<Place>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/places", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mapId, 1));

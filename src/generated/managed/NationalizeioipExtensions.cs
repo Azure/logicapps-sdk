@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalizeioip")]
         public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> CheckNamesNationality(Expression<Func<string>> name)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredBodyAction<CheckNamesNationalityResponseItem[]>(() =>
             {
                 var apiCallPath = "/";

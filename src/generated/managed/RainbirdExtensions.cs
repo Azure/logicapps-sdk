@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<StartResponse> Start(Expression<Func<environmentInput>> environment, Expression<Func<string>> kmID)
         {
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
-            var __workflow_kmID = kmID == null ? null : WorkflowExpression.Compile(kmID);
-            WorkflowExpression.Validate(__workflow_kmID, nameof(kmID), required: true);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
+            var __workflow_kmID = WorkflowExpression.Compile(kmID, nameof(kmID), required: true);
             return new DeferredBodyAction<StartResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/start/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_kmID, 1));
@@ -30,12 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<InjectResponse> Inject(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
-            var __workflow_sessionID = sessionID == null ? null : WorkflowExpression.Compile(sessionID);
-            WorkflowExpression.Validate(__workflow_sessionID, nameof(sessionID), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
+            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<InjectResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/inject", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionID, 1));
@@ -50,16 +45,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Query(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<string>> bodyrelationship, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyObject = null)
         {
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
-            var __workflow_sessionID = sessionID == null ? null : WorkflowExpression.Compile(sessionID);
-            WorkflowExpression.Validate(__workflow_sessionID, nameof(sessionID), required: true);
-            var __workflow_bodyrelationship = bodyrelationship == null ? null : WorkflowExpression.Compile(bodyrelationship);
-            WorkflowExpression.Validate(__workflow_bodyrelationship, nameof(bodyrelationship), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodyObject = bodyObject == null ? null : WorkflowExpression.Compile(bodyObject);
-            WorkflowExpression.Validate(__workflow_bodyObject, nameof(bodyObject), required: false);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
+            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_bodyrelationship = WorkflowExpression.Compile(bodyrelationship, nameof(bodyrelationship), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionID, 1));
@@ -94,12 +84,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Response(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID, Expression<Func<bodyanswersInputItem[]>> bodyanswers = null)
         {
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
-            var __workflow_sessionID = sessionID == null ? null : WorkflowExpression.Compile(sessionID);
-            WorkflowExpression.Validate(__workflow_sessionID, nameof(sessionID), required: true);
-            var __workflow_bodyanswers = bodyanswers == null ? null : WorkflowExpression.Compile(bodyanswers);
-            WorkflowExpression.Validate(__workflow_bodyanswers, nameof(bodyanswers), required: false);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
+            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
+            var __workflow_bodyanswers = WorkflowExpression.Compile(bodyanswers, nameof(bodyanswers), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/response", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionID, 1));
@@ -126,10 +113,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<JToken> Undo(Expression<Func<environmentInput>> environment, Expression<Func<string>> sessionID)
         {
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
-            var __workflow_sessionID = sessionID == null ? null : WorkflowExpression.Compile(sessionID);
-            WorkflowExpression.Validate(__workflow_sessionID, nameof(sessionID), required: true);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
+            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/undo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionID, 1));
@@ -150,12 +135,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<EvidenceResponse> Evidence(Expression<Func<environmentInput>> environment, Expression<Func<string>> factID, Expression<Func<string>> sessionID)
         {
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
-            var __workflow_factID = factID == null ? null : WorkflowExpression.Compile(factID);
-            WorkflowExpression.Validate(__workflow_factID, nameof(factID), required: true);
-            var __workflow_sessionID = sessionID == null ? null : WorkflowExpression.Compile(sessionID);
-            WorkflowExpression.Validate(__workflow_sessionID, nameof(sessionID), required: true);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
+            var __workflow_factID = WorkflowExpression.Compile(factID, nameof(factID), required: true);
+            var __workflow_sessionID = WorkflowExpression.Compile(sessionID, nameof(sessionID), required: true);
             return new DeferredBodyAction<EvidenceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/analysis/evidence/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_factID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_sessionID, 1));
@@ -169,8 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rainbird
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rainbird")]
         public IBodyWorkflowAction<string> Version(Expression<Func<environmentInput>> environment)
         {
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: true);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/version";

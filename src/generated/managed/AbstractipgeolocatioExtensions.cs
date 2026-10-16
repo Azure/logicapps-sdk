@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractipgeolocatio")]
         public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<string>> ipAddress, Expression<Func<string>> fields = null)
         {
-            var __workflow_ipAddress = ipAddress == null ? null : WorkflowExpression.Compile(ipAddress);
-            WorkflowExpression.Validate(__workflow_ipAddress, nameof(ipAddress), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_ipAddress = WorkflowExpression.Compile(ipAddress, nameof(ipAddress), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<AnalyzeResponse>(() =>
             {
                 var apiCallPath = "/v1/";

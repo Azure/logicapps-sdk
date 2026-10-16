@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
         public IBodyWorkflowAction<Error> TemplateSignatureRequest(Expression<Func<string>> id, Expression<Func<object>> dynamicSchema = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_dynamicSchema = dynamicSchema == null ? null : WorkflowExpression.Compile(dynamicSchema);
-            WorkflowExpression.Validate(__workflow_dynamicSchema, nameof(dynamicSchema), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_dynamicSchema = WorkflowExpression.Compile(dynamicSchema, nameof(dynamicSchema), required: false);
             return new DeferredBodyAction<Error>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
         public IBodyWorkflowAction<Unix2UTCDateTimeResponse> Unix2UTCDateTime(Expression<Func<int>> unixtimestamp = null)
         {
-            var __workflow_unixtimestamp = unixtimestamp == null ? null : WorkflowExpression.Compile(unixtimestamp);
-            WorkflowExpression.Validate(__workflow_unixtimestamp, nameof(unixtimestamp), required: false);
+            var __workflow_unixtimestamp = WorkflowExpression.Compile(unixtimestamp, nameof(unixtimestamp), required: false);
             return new DeferredBodyAction<Unix2UTCDateTimeResponse>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
@@ -29,10 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
         public IBodyWorkflowAction<Unix2DateTimeTimezoneResponse> Unix2DateTimeTimezone(Expression<Func<string>> bodyunixTimeStamp = null, Expression<Func<string>> bodytimezone = null)
         {
-            var __workflow_bodyunixTimeStamp = bodyunixTimeStamp == null ? null : WorkflowExpression.Compile(bodyunixTimeStamp);
-            WorkflowExpression.Validate(__workflow_bodyunixTimeStamp, nameof(bodyunixTimeStamp), required: false);
-            var __workflow_bodytimezone = bodytimezone == null ? null : WorkflowExpression.Compile(bodytimezone);
-            WorkflowExpression.Validate(__workflow_bodytimezone, nameof(bodytimezone), required: false);
+            var __workflow_bodyunixTimeStamp = WorkflowExpression.Compile(bodyunixTimeStamp, nameof(bodyunixTimeStamp), required: false);
+            var __workflow_bodytimezone = WorkflowExpression.Compile(bodytimezone, nameof(bodytimezone), required: false);
             return new DeferredBodyAction<Unix2DateTimeTimezoneResponse>(() =>
             {
                 var apiCallPath = "/fromunixtimestamp";
@@ -64,8 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unixtimestampip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unixtimestampip")]
         public IBodyWorkflowAction<DateTime2UnixTimestampResponse> DateTime2UnixTimestamp(Expression<Func<string>> datetime = null)
         {
-            var __workflow_datetime = datetime == null ? null : WorkflowExpression.Compile(datetime);
-            WorkflowExpression.Validate(__workflow_datetime, nameof(datetime), required: false);
+            var __workflow_datetime = WorkflowExpression.Compile(datetime, nameof(datetime), required: false);
             return new DeferredBodyAction<DateTime2UnixTimestampResponse>(() =>
             {
                 var apiCallPath = "/tounixtimestamp";

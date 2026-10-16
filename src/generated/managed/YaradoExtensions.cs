@@ -31,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
         public IWorkflowAction CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
         {
-            var __workflow_bodyrobotId = bodyrobotId == null ? null : WorkflowExpression.Compile(bodyrobotId);
-            WorkflowExpression.Validate(__workflow_bodyrobotId, nameof(bodyrobotId), required: true);
-            var __workflow_bodytaskFileId = bodytaskFileId == null ? null : WorkflowExpression.Compile(bodytaskFileId);
-            WorkflowExpression.Validate(__workflow_bodytaskFileId, nameof(bodytaskFileId), required: true);
+            var __workflow_bodyrobotId = WorkflowExpression.Compile(bodyrobotId, nameof(bodyrobotId), required: true);
+            var __workflow_bodytaskFileId = WorkflowExpression.Compile(bodytaskFileId, nameof(bodytaskFileId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v1/task-schedules";

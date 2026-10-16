@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<ImagesPostResponse> Images(Expression<Func<string>> bodytemplate, Expression<Func<bodyformatInput>> bodyformat = null)
         {
-            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
-            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: true);
-            var __workflow_bodyformat = bodyformat == null ? null : WorkflowExpression.Compile(bodyformat);
-            WorkflowExpression.Validate(__workflow_bodyformat, nameof(bodyformat), required: false);
+            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: true);
+            var __workflow_bodyformat = WorkflowExpression.Compile(bodyformat, nameof(bodyformat), required: false);
             return new DeferredBodyAction<ImagesPostResponse>(() =>
             {
                 var apiCallPath = "/images/";
@@ -62,8 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/images/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -85,14 +82,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> bodyname, Expression<Func<string>> bodyParams = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyParams = bodyParams == null ? null : WorkflowExpression.Compile(bodyParams);
-            WorkflowExpression.Validate(__workflow_bodyParams, nameof(bodyParams), required: false);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyParams = WorkflowExpression.Compile(bodyParams, nameof(bodyParams), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
             return new DeferredBodyAction<TemplatePostResponse>(() =>
             {
                 var apiCallPath = "/templates/";
@@ -132,8 +125,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Supportivekoalaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "supportivekoalaip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

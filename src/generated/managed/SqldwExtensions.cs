@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<JToken> ExecuteProcedure(Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
         {
-            var __workflow_procedure = procedure == null ? null : WorkflowExpression.Compile(procedure);
-            WorkflowExpression.Validate(__workflow_procedure, nameof(procedure), required: true);
-            var __workflow_parameters = parameters == null ? null : WorkflowExpression.Compile(parameters);
-            WorkflowExpression.Validate(__workflow_parameters, nameof(parameters), required: false);
+            var __workflow_procedure = WorkflowExpression.Compile(procedure, nameof(procedure), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/procedures/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_procedure, 2));
@@ -30,14 +28,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<JToken> ExecutePassThroughNativeQuery(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> queryquery = null, Expression<Func<object>> queryactualParameters = null)
         {
-            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
-            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
-            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
-            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
-            var __workflow_queryquery = queryquery == null ? null : WorkflowExpression.Compile(queryquery);
-            WorkflowExpression.Validate(__workflow_queryquery, nameof(queryquery), required: false);
-            var __workflow_queryactualParameters = queryactualParameters == null ? null : WorkflowExpression.Compile(queryactualParameters);
-            WorkflowExpression.Validate(__workflow_queryactualParameters, nameof(queryactualParameters), required: false);
+            var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
+            var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
+            var __workflow_queryquery = WorkflowExpression.Compile(queryquery, nameof(queryquery), required: false);
+            var __workflow_queryactualParameters = WorkflowExpression.Compile(queryactualParameters, nameof(queryactualParameters), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/query/sql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2));
@@ -77,22 +71,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<ItemsListV2> GetItems(Expression<Func<string>> server, Expression<Func<string>> database, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<string>> select = null)
         {
-            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
-            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
-            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
-            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
-            var __workflow_table = table == null ? null : WorkflowExpression.Compile(table);
-            WorkflowExpression.Validate(__workflow_table, nameof(table), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
+            var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
+            var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
+            var __workflow_table = WorkflowExpression.Compile(table, nameof(table), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
             return new DeferredBodyAction<ItemsListV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/tables/{2}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_table, 2));
@@ -115,10 +101,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sqldw
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sqldw")]
         public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> server, Expression<Func<string>> database)
         {
-            var __workflow_server = server == null ? null : WorkflowExpression.Compile(server);
-            WorkflowExpression.Validate(__workflow_server, nameof(server), required: true);
-            var __workflow_database = database == null ? null : WorkflowExpression.Compile(database);
-            WorkflowExpression.Validate(__workflow_database, nameof(database), required: true);
+            var __workflow_server = WorkflowExpression.Compile(server, nameof(server), required: true);
+            var __workflow_database = WorkflowExpression.Compile(database, nameof(database), required: true);
             return new DeferredBodyAction<TablesList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/{0},{1}/tables", ExpressionConverter.ConvertWithUrlEncoding(__workflow_server, 2), ExpressionConverter.ConvertWithUrlEncoding(__workflow_database, 2));

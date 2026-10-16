@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dexcomip")]
         public IBodyWorkflowAction<GetEGVsResponse> GetEGVs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
         {
-            var __workflow_startDate = startDate == null ? null : WorkflowExpression.Compile(startDate);
-            WorkflowExpression.Validate(__workflow_startDate, nameof(startDate), required: false);
-            var __workflow_endDate = endDate == null ? null : WorkflowExpression.Compile(endDate);
-            WorkflowExpression.Validate(__workflow_endDate, nameof(endDate), required: false);
+            var __workflow_startDate = WorkflowExpression.Compile(startDate, nameof(startDate), required: false);
+            var __workflow_endDate = WorkflowExpression.Compile(endDate, nameof(endDate), required: false);
             return new DeferredBodyAction<GetEGVsResponse>(() =>
             {
                 var apiCallPath = "/v2/users/self/egvs";

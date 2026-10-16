@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<SentimentClassifierResponseItem[]>(() =>
             {
                 var apiCallPath = "/text/SentimentClassifier";
@@ -40,10 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
         {
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
-            var __workflow_bodyentityList = bodyentityList == null ? null : WorkflowExpression.Compile(bodyentityList);
-            WorkflowExpression.Validate(__workflow_bodyentityList, nameof(bodyentityList), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_bodyentityList = WorkflowExpression.Compile(bodyentityList, nameof(bodyentityList), required: false);
             return new DeferredBodyAction<PIIScrubberResponse>(() =>
             {
                 var apiCallPath = "/text/PIIScrubber";
@@ -75,14 +72,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
         public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: false);
-            var __workflow_bodykeyphrasesCount = bodykeyphrasesCount == null ? null : WorkflowExpression.Compile(bodykeyphrasesCount);
-            WorkflowExpression.Validate(__workflow_bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
-            var __workflow_bodydiversityThreshold = bodydiversityThreshold == null ? null : WorkflowExpression.Compile(bodydiversityThreshold);
-            WorkflowExpression.Validate(__workflow_bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
-            var __workflow_bodyaliasThreshold = bodyaliasThreshold == null ? null : WorkflowExpression.Compile(bodyaliasThreshold);
-            WorkflowExpression.Validate(__workflow_bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: false);
+            var __workflow_bodykeyphrasesCount = WorkflowExpression.Compile(bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
+            var __workflow_bodydiversityThreshold = WorkflowExpression.Compile(bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
+            var __workflow_bodyaliasThreshold = WorkflowExpression.Compile(bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
             return new DeferredBodyAction<KeyPhraseExtractorResponseItem[]>(() =>
             {
                 var apiCallPath = "/text/KeyPhrase";

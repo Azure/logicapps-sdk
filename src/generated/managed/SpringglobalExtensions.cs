@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
         public IBodyWorkflowAction<JToken> GetExecutionById(Expression<Func<string>> executionId, Expression<Func<string>> surveyId, Expression<Func<string>> publicationId, Expression<Func<bool>> advancedInfo = null)
         {
-            var __workflow_executionId = executionId == null ? null : WorkflowExpression.Compile(executionId);
-            WorkflowExpression.Validate(__workflow_executionId, nameof(executionId), required: true);
-            var __workflow_surveyId = surveyId == null ? null : WorkflowExpression.Compile(surveyId);
-            WorkflowExpression.Validate(__workflow_surveyId, nameof(surveyId), required: true);
-            var __workflow_publicationId = publicationId == null ? null : WorkflowExpression.Compile(publicationId);
-            WorkflowExpression.Validate(__workflow_publicationId, nameof(publicationId), required: true);
-            var __workflow_advancedInfo = advancedInfo == null ? null : WorkflowExpression.Compile(advancedInfo);
-            WorkflowExpression.Validate(__workflow_advancedInfo, nameof(advancedInfo), required: false);
+            var __workflow_executionId = WorkflowExpression.Compile(executionId, nameof(executionId), required: true);
+            var __workflow_surveyId = WorkflowExpression.Compile(surveyId, nameof(surveyId), required: true);
+            var __workflow_publicationId = WorkflowExpression.Compile(publicationId, nameof(publicationId), required: true);
+            var __workflow_advancedInfo = WorkflowExpression.Compile(advancedInfo, nameof(advancedInfo), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_executionId, 1));
@@ -38,8 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
         public IBodyWorkflowAction<GetUserByIdResponse> GetUserById(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<GetUserByIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -54,10 +49,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
     {
         public IWorkflowTrigger OnSurveyExecution(Expression<Func<string>> bodyparameterssurveyId = null, Expression<Func<string>> bodyparameterspublicationId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyparameterssurveyId = bodyparameterssurveyId == null ? null : WorkflowExpression.Compile(bodyparameterssurveyId);
-            WorkflowExpression.Validate(__workflow_bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
-            var __workflow_bodyparameterspublicationId = bodyparameterspublicationId == null ? null : WorkflowExpression.Compile(bodyparameterspublicationId);
-            WorkflowExpression.Validate(__workflow_bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
+            var __workflow_bodyparameterssurveyId = WorkflowExpression.Compile(bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
+            var __workflow_bodyparameterspublicationId = WorkflowExpression.Compile(bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/webhook-service/subscribe/surveyexecution";

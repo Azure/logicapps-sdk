@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<WeatherPointRequestResponse> WeatherPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
-            var __workflow_params = @params == null ? null : WorkflowExpression.Compile(@params);
-            WorkflowExpression.Validate(__workflow_params, nameof(@params), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_params = WorkflowExpression.Compile(@params, nameof(@params), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             return new DeferredBodyAction<WeatherPointRequestResponse>(() =>
             {
                 var apiCallPath = "/weather/point";
@@ -46,18 +40,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<BioPointRequestResponse> BioPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
-            var __workflow_params = @params == null ? null : WorkflowExpression.Compile(@params);
-            WorkflowExpression.Validate(__workflow_params, nameof(@params), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_params = WorkflowExpression.Compile(@params, nameof(@params), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             return new DeferredBodyAction<BioPointRequestResponse>(() =>
             {
                 var apiCallPath = "/bio/point";
@@ -79,16 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<TimeExtremesPointRequestResponse> TimeExtremesPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_datum = datum == null ? null : WorkflowExpression.Compile(datum);
-            WorkflowExpression.Validate(__workflow_datum, nameof(datum), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_datum = WorkflowExpression.Compile(datum, nameof(datum), required: false);
             return new DeferredBodyAction<TimeExtremesPointRequestResponse>(() =>
             {
                 var apiCallPath = "/tide/extremes/point";
@@ -109,16 +92,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<TimeSealLevelPointRequestResponse> TimeSealLevelPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_datum = datum == null ? null : WorkflowExpression.Compile(datum);
-            WorkflowExpression.Validate(__workflow_datum, nameof(datum), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_datum = WorkflowExpression.Compile(datum, nameof(datum), required: false);
             return new DeferredBodyAction<TimeSealLevelPointRequestResponse>(() =>
             {
                 var apiCallPath = "/tide/sea-level/point";
@@ -148,8 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<GetTideStationsAreaResponse> GetTideStationsArea(Expression<Func<string>> box)
         {
-            var __workflow_box = box == null ? null : WorkflowExpression.Compile(box);
-            WorkflowExpression.Validate(__workflow_box, nameof(box), required: true);
+            var __workflow_box = WorkflowExpression.Compile(box, nameof(box), required: true);
             return new DeferredBodyAction<GetTideStationsAreaResponse>(() =>
             {
                 var apiCallPath = "/tide/stations/area";
@@ -163,14 +140,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<AstronomyPointRequestResponse> AstronomyPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> end = null, Expression<Func<string>> start = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
             return new DeferredBodyAction<AstronomyPointRequestResponse>(() =>
             {
                 var apiCallPath = "/astronomy/point";
@@ -189,18 +162,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<SolarPointRequestResponse> SolarPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
-            var __workflow_params = @params == null ? null : WorkflowExpression.Compile(@params);
-            WorkflowExpression.Validate(__workflow_params, nameof(@params), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_params = WorkflowExpression.Compile(@params, nameof(@params), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
             return new DeferredBodyAction<SolarPointRequestResponse>(() =>
             {
                 var apiCallPath = "/solar/point";
@@ -222,10 +189,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
         public IBodyWorkflowAction<ElevationPointRequestResponse> ElevationPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
             return new DeferredBodyAction<ElevationPointRequestResponse>(() =>
             {
                 var apiCallPath = "/elevation/point";

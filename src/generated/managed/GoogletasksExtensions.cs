@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskListEntry> CreateTaskList(Expression<Func<string>> listtitle)
         {
-            var __workflow_listtitle = listtitle == null ? null : WorkflowExpression.Compile(listtitle);
-            WorkflowExpression.Validate(__workflow_listtitle, nameof(listtitle), required: true);
+            var __workflow_listtitle = WorkflowExpression.Compile(listtitle, nameof(listtitle), required: true);
             return new DeferredBodyAction<TaskListEntry>(() =>
             {
                 var apiCallPath = "/users/@me/lists";
@@ -45,8 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskList> ListTasks(Expression<Func<string>> taskListId)
         {
-            var __workflow_taskListId = taskListId == null ? null : WorkflowExpression.Compile(taskListId);
-            WorkflowExpression.Validate(__workflow_taskListId, nameof(taskListId), required: true);
+            var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyAction<TaskList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
@@ -59,14 +57,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskObject> CraeteTask(Expression<Func<string>> taskListId, Expression<Func<string>> tasktitle, Expression<Func<string>> tasknotes = null, Expression<Func<string>> taskdue = null)
         {
-            var __workflow_taskListId = taskListId == null ? null : WorkflowExpression.Compile(taskListId);
-            WorkflowExpression.Validate(__workflow_taskListId, nameof(taskListId), required: true);
-            var __workflow_tasktitle = tasktitle == null ? null : WorkflowExpression.Compile(tasktitle);
-            WorkflowExpression.Validate(__workflow_tasktitle, nameof(tasktitle), required: true);
-            var __workflow_tasknotes = tasknotes == null ? null : WorkflowExpression.Compile(tasknotes);
-            WorkflowExpression.Validate(__workflow_tasknotes, nameof(tasknotes), required: false);
-            var __workflow_taskdue = taskdue == null ? null : WorkflowExpression.Compile(taskdue);
-            WorkflowExpression.Validate(__workflow_taskdue, nameof(taskdue), required: false);
+            var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
+            var __workflow_tasktitle = WorkflowExpression.Compile(tasktitle, nameof(tasktitle), required: true);
+            var __workflow_tasknotes = WorkflowExpression.Compile(tasknotes, nameof(tasknotes), required: false);
+            var __workflow_taskdue = WorkflowExpression.Compile(taskdue, nameof(taskdue), required: false);
             return new DeferredBodyAction<TaskObject>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
@@ -100,10 +94,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
         public IBodyWorkflowAction<TaskObject> ListTask(Expression<Func<string>> taskListId, Expression<Func<string>> taskId)
         {
-            var __workflow_taskListId = taskListId == null ? null : WorkflowExpression.Compile(taskListId);
-            WorkflowExpression.Validate(__workflow_taskListId, nameof(taskListId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskObject>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -126,8 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
         public IBodyWorkflowTrigger<TaskList> OnNewTaskInList(Expression<Func<string>> taskListId, FlowRecurrence recurrence = null)
         {
-            var __workflow_taskListId = taskListId == null ? null : WorkflowExpression.Compile(taskListId);
-            WorkflowExpression.Validate(__workflow_taskListId, nameof(taskListId), required: true);
+            var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
@@ -139,8 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
         public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList(Expression<Func<string>> taskListId, FlowRecurrence recurrence = null)
         {
-            var __workflow_taskListId = taskListId == null ? null : WorkflowExpression.Compile(taskListId);
-            WorkflowExpression.Validate(__workflow_taskListId, nameof(taskListId), required: true);
+            var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));
@@ -152,8 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
         public IBodyWorkflowTrigger<TaskList> OnDueTaskInList(Expression<Func<string>> taskListId, FlowRecurrence recurrence = null)
         {
-            var __workflow_taskListId = taskListId == null ? null : WorkflowExpression.Compile(taskListId);
-            WorkflowExpression.Validate(__workflow_taskListId, nameof(taskListId), required: true);
+            var __workflow_taskListId = WorkflowExpression.Compile(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskListId, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usb4sap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usb4sap")]
         public IWorkflowAction GetCallExtractMetadata(Expression<Func<string>> filter, Expression<Func<string>> format = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: true);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/sap/opu/odata/ECOS/OBJ2CLOUD_V2_SRV/ET_DatasetSet";

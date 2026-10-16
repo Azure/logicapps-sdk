@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Swaggerconverterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "swaggerconverterip")]
         public IBodyWorkflowAction<JToken> ConvertByUrl(Expression<Func<string>> url)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/convert";

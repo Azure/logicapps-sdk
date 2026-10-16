@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
         public IWorkflowAction GetServiceTickets(Expression<Func<string>> clientId, Expression<Func<string>> conditions = null, Expression<Func<string>> childConditions = null, Expression<Func<string>> customFieldConditions = null, Expression<Func<string>> orderBy = null, Expression<Func<string>> fields = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> pageId = null)
         {
-            var __workflow_clientId = clientId == null ? null : WorkflowExpression.Compile(clientId);
-            WorkflowExpression.Validate(__workflow_clientId, nameof(clientId), required: true);
-            var __workflow_conditions = conditions == null ? null : WorkflowExpression.Compile(conditions);
-            WorkflowExpression.Validate(__workflow_conditions, nameof(conditions), required: false);
-            var __workflow_childConditions = childConditions == null ? null : WorkflowExpression.Compile(childConditions);
-            WorkflowExpression.Validate(__workflow_childConditions, nameof(childConditions), required: false);
-            var __workflow_customFieldConditions = customFieldConditions == null ? null : WorkflowExpression.Compile(customFieldConditions);
-            WorkflowExpression.Validate(__workflow_customFieldConditions, nameof(customFieldConditions), required: false);
-            var __workflow_orderBy = orderBy == null ? null : WorkflowExpression.Compile(orderBy);
-            WorkflowExpression.Validate(__workflow_orderBy, nameof(orderBy), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: false);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
+            var __workflow_conditions = WorkflowExpression.Compile(conditions, nameof(conditions), required: false);
+            var __workflow_childConditions = WorkflowExpression.Compile(childConditions, nameof(childConditions), required: false);
+            var __workflow_customFieldConditions = WorkflowExpression.Compile(customFieldConditions, nameof(customFieldConditions), required: false);
+            var __workflow_orderBy = WorkflowExpression.Compile(orderBy, nameof(orderBy), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";
@@ -60,10 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
         public IWorkflowAction PostServiceTickets(Expression<Func<string>> clientId, Expression<Func<object>> body = null)
         {
-            var __workflow_clientId = clientId == null ? null : WorkflowExpression.Compile(clientId);
-            WorkflowExpression.Validate(__workflow_clientId, nameof(clientId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_clientId = WorkflowExpression.Compile(clientId, nameof(clientId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";

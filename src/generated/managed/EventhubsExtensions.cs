@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
         public IWorkflowAction SendEvent(Expression<Func<string>> eventHubName, Expression<Func<string>> eventDatacontent = null, Expression<Func<string>> partitionKey = null)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_eventDatacontent = eventDatacontent == null ? null : WorkflowExpression.Compile(eventDatacontent);
-            WorkflowExpression.Validate(__workflow_eventDatacontent, nameof(eventDatacontent), required: false);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: false);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_eventDatacontent = WorkflowExpression.Compile(eventDatacontent, nameof(eventDatacontent), required: false);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventHubName, 1));
@@ -54,12 +51,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eventhubs")]
         public IWorkflowAction SendEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> partitionKey, Expression<Func<SendEvent[]>> events = null)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_partitionKey = partitionKey == null ? null : WorkflowExpression.Compile(partitionKey);
-            WorkflowExpression.Validate(__workflow_partitionKey, nameof(partitionKey), required: true);
-            var __workflow_events = events == null ? null : WorkflowExpression.Compile(events);
-            WorkflowExpression.Validate(__workflow_events, nameof(events), required: false);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_partitionKey = WorkflowExpression.Compile(partitionKey, nameof(partitionKey), required: true);
+            var __workflow_events = WorkflowExpression.Compile(events, nameof(events), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events/batch", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventHubName, 1));
@@ -76,20 +70,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
     {
         public IBodyWorkflowTrigger<Event[]> OnNewEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> contentType = null, Expression<Func<string>> contentSchema = null, Expression<Func<string>> consumerGroupName = null, Expression<Func<string>> minimumPartitionKey = null, Expression<Func<string>> maximumPartitionKey = null, Expression<Func<int>> maximumEventsCount = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_eventHubName = eventHubName == null ? null : WorkflowExpression.Compile(eventHubName);
-            WorkflowExpression.Validate(__workflow_eventHubName, nameof(eventHubName), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_contentSchema = contentSchema == null ? null : WorkflowExpression.Compile(contentSchema);
-            WorkflowExpression.Validate(__workflow_contentSchema, nameof(contentSchema), required: false);
-            var __workflow_consumerGroupName = consumerGroupName == null ? null : WorkflowExpression.Compile(consumerGroupName);
-            WorkflowExpression.Validate(__workflow_consumerGroupName, nameof(consumerGroupName), required: false);
-            var __workflow_minimumPartitionKey = minimumPartitionKey == null ? null : WorkflowExpression.Compile(minimumPartitionKey);
-            WorkflowExpression.Validate(__workflow_minimumPartitionKey, nameof(minimumPartitionKey), required: false);
-            var __workflow_maximumPartitionKey = maximumPartitionKey == null ? null : WorkflowExpression.Compile(maximumPartitionKey);
-            WorkflowExpression.Validate(__workflow_maximumPartitionKey, nameof(maximumPartitionKey), required: false);
-            var __workflow_maximumEventsCount = maximumEventsCount == null ? null : WorkflowExpression.Compile(maximumEventsCount);
-            WorkflowExpression.Validate(__workflow_maximumEventsCount, nameof(maximumEventsCount), required: false);
+            var __workflow_eventHubName = WorkflowExpression.Compile(eventHubName, nameof(eventHubName), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_contentSchema = WorkflowExpression.Compile(contentSchema, nameof(contentSchema), required: false);
+            var __workflow_consumerGroupName = WorkflowExpression.Compile(consumerGroupName, nameof(consumerGroupName), required: false);
+            var __workflow_minimumPartitionKey = WorkflowExpression.Compile(minimumPartitionKey, nameof(minimumPartitionKey), required: false);
+            var __workflow_maximumPartitionKey = WorkflowExpression.Compile(maximumPartitionKey, nameof(maximumPartitionKey), required: false);
+            var __workflow_maximumEventsCount = WorkflowExpression.Compile(maximumEventsCount, nameof(maximumEventsCount), required: false);
             return new DeferredBodyTrigger<Event[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/events/batch/head", ExpressionConverter.ConvertWithUrlEncoding(__workflow_eventHubName, 1));

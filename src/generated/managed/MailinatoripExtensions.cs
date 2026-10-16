@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<InboxGetResponse> InboxGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<int>> skip = null, Expression<Func<bool>> decodeSubject = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_inbox = inbox == null ? null : WorkflowExpression.Compile(inbox);
-            WorkflowExpression.Validate(__workflow_inbox, nameof(inbox), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_decodeSubject = decodeSubject == null ? null : WorkflowExpression.Compile(decodeSubject);
-            WorkflowExpression.Validate(__workflow_decodeSubject, nameof(decodeSubject), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_decodeSubject = WorkflowExpression.Compile(decodeSubject, nameof(decodeSubject), required: false);
             return new DeferredBodyAction<InboxGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1));
@@ -45,12 +39,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageGetResponse> MessageGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_inbox = inbox == null ? null : WorkflowExpression.Compile(inbox);
-            WorkflowExpression.Validate(__workflow_inbox, nameof(inbox), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -63,12 +54,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageDeleteResponse> MessageDelete(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_inbox = inbox == null ? null : WorkflowExpression.Compile(inbox);
-            WorkflowExpression.Validate(__workflow_inbox, nameof(inbox), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -81,12 +69,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageAttachmentsGetResponse> MessageAttachmentsGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_inbox = inbox == null ? null : WorkflowExpression.Compile(inbox);
-            WorkflowExpression.Validate(__workflow_inbox, nameof(inbox), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageAttachmentsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/attachments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -99,12 +84,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessageLinksGetResponse> MessageLinksGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_inbox = inbox == null ? null : WorkflowExpression.Compile(inbox);
-            WorkflowExpression.Validate(__workflow_inbox, nameof(inbox), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<MessageLinksGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/links", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -117,34 +99,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> bodyfromfull = null, Expression<Func<string>> bodyheadersmimeVersion = null, Expression<Func<string>> bodyheadersdate = null, Expression<Func<string>> bodyheaderssubject = null, Expression<Func<string>> bodyheaderscontentType = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodypartsInputItem[]>> bodyparts = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyid = null, Expression<Func<int>> bodytime = null, Expression<Func<int>> bodysecondsAgo = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
-            var __workflow_inbox = inbox == null ? null : WorkflowExpression.Compile(inbox);
-            WorkflowExpression.Validate(__workflow_inbox, nameof(inbox), required: true);
-            var __workflow_bodyfromfull = bodyfromfull == null ? null : WorkflowExpression.Compile(bodyfromfull);
-            WorkflowExpression.Validate(__workflow_bodyfromfull, nameof(bodyfromfull), required: false);
-            var __workflow_bodyheadersmimeVersion = bodyheadersmimeVersion == null ? null : WorkflowExpression.Compile(bodyheadersmimeVersion);
-            WorkflowExpression.Validate(__workflow_bodyheadersmimeVersion, nameof(bodyheadersmimeVersion), required: false);
-            var __workflow_bodyheadersdate = bodyheadersdate == null ? null : WorkflowExpression.Compile(bodyheadersdate);
-            WorkflowExpression.Validate(__workflow_bodyheadersdate, nameof(bodyheadersdate), required: false);
-            var __workflow_bodyheaderssubject = bodyheaderssubject == null ? null : WorkflowExpression.Compile(bodyheaderssubject);
-            WorkflowExpression.Validate(__workflow_bodyheaderssubject, nameof(bodyheaderssubject), required: false);
-            var __workflow_bodyheaderscontentType = bodyheaderscontentType == null ? null : WorkflowExpression.Compile(bodyheaderscontentType);
-            WorkflowExpression.Validate(__workflow_bodyheaderscontentType, nameof(bodyheaderscontentType), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodyparts = bodyparts == null ? null : WorkflowExpression.Compile(bodyparts);
-            WorkflowExpression.Validate(__workflow_bodyparts, nameof(bodyparts), required: false);
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: false);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodytime = bodytime == null ? null : WorkflowExpression.Compile(bodytime);
-            WorkflowExpression.Validate(__workflow_bodytime, nameof(bodytime), required: false);
-            var __workflow_bodysecondsAgo = bodysecondsAgo == null ? null : WorkflowExpression.Compile(bodysecondsAgo);
-            WorkflowExpression.Validate(__workflow_bodysecondsAgo, nameof(bodysecondsAgo), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
+            var __workflow_inbox = WorkflowExpression.Compile(inbox, nameof(inbox), required: true);
+            var __workflow_bodyfromfull = WorkflowExpression.Compile(bodyfromfull, nameof(bodyfromfull), required: false);
+            var __workflow_bodyheadersmimeVersion = WorkflowExpression.Compile(bodyheadersmimeVersion, nameof(bodyheadersmimeVersion), required: false);
+            var __workflow_bodyheadersdate = WorkflowExpression.Compile(bodyheadersdate, nameof(bodyheadersdate), required: false);
+            var __workflow_bodyheaderssubject = WorkflowExpression.Compile(bodyheaderssubject, nameof(bodyheaderssubject), required: false);
+            var __workflow_bodyheaderscontentType = WorkflowExpression.Compile(bodyheaderscontentType, nameof(bodyheaderscontentType), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyparts = WorkflowExpression.Compile(bodyparts, nameof(bodyparts), required: false);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodytime = WorkflowExpression.Compile(bodytime, nameof(bodytime), required: false);
+            var __workflow_bodysecondsAgo = WorkflowExpression.Compile(bodysecondsAgo, nameof(bodysecondsAgo), required: false);
             return new DeferredBodyAction<MessagePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inbox, 1));
@@ -262,8 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<DomainGetResponse> DomainGet(Expression<Func<string>> domainId)
         {
-            var __workflow_domainId = domainId == null ? null : WorkflowExpression.Compile(domainId);
-            WorkflowExpression.Validate(__workflow_domainId, nameof(domainId), required: true);
+            var __workflow_domainId = WorkflowExpression.Compile(domainId, nameof(domainId), required: true);
             return new DeferredBodyAction<DomainGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domainId, 1));

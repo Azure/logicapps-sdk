@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
         public IWorkflowAction SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
         {
-            var __workflow_xTopMessageKey = xTopMessageKey == null ? null : WorkflowExpression.Compile(xTopMessageKey);
-            WorkflowExpression.Validate(__workflow_xTopMessageKey, nameof(xTopMessageKey), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_bodydatafrom = bodydatafrom == null ? null : WorkflowExpression.Compile(bodydatafrom);
-            WorkflowExpression.Validate(__workflow_bodydatafrom, nameof(bodydatafrom), required: false);
-            var __workflow_bodydatato = bodydatato == null ? null : WorkflowExpression.Compile(bodydatato);
-            WorkflowExpression.Validate(__workflow_bodydatato, nameof(bodydatato), required: false);
-            var __workflow_bodydatatext = bodydatatext == null ? null : WorkflowExpression.Compile(bodydatatext);
-            WorkflowExpression.Validate(__workflow_bodydatatext, nameof(bodydatatext), required: false);
+            var __workflow_xTopMessageKey = WorkflowExpression.Compile(xTopMessageKey, nameof(xTopMessageKey), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodydatafrom = WorkflowExpression.Compile(bodydatafrom, nameof(bodydatafrom), required: false);
+            var __workflow_bodydatato = WorkflowExpression.Compile(bodydatato, nameof(bodydatato), required: false);
+            var __workflow_bodydatatext = WorkflowExpression.Compile(bodydatatext, nameof(bodydatatext), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/messages";

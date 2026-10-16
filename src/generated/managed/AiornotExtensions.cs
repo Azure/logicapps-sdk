@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
         public IBodyWorkflowAction<ImageReportResponse> ImageReport(Expression<Func<string>> bodyObject)
         {
-            var __workflow_bodyObject = bodyObject == null ? null : WorkflowExpression.Compile(bodyObject);
-            WorkflowExpression.Validate(__workflow_bodyObject, nameof(bodyObject), required: true);
+            var __workflow_bodyObject = WorkflowExpression.Compile(bodyObject, nameof(bodyObject), required: true);
             return new DeferredBodyAction<ImageReportResponse>(() =>
             {
                 var apiCallPath = "/v1/reports/image";

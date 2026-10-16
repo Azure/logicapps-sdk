@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<AttributeSetDTO[]> AttributeSetsGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<AttributeSetDTO[]>(() =>
             {
                 var apiCallPath = "/api/AttributeSets";
@@ -41,26 +37,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<AttributeDTO> AttributesGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> type = null, Expression<Func<bool>> isFilterable = null, Expression<Func<bool>> displayOnProduct = null, Expression<Func<bool>> displayInList = null, Expression<Func<string>> search = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_isFilterable = isFilterable == null ? null : WorkflowExpression.Compile(isFilterable);
-            WorkflowExpression.Validate(__workflow_isFilterable, nameof(isFilterable), required: false);
-            var __workflow_displayOnProduct = displayOnProduct == null ? null : WorkflowExpression.Compile(displayOnProduct);
-            WorkflowExpression.Validate(__workflow_displayOnProduct, nameof(displayOnProduct), required: false);
-            var __workflow_displayInList = displayInList == null ? null : WorkflowExpression.Compile(displayInList);
-            WorkflowExpression.Validate(__workflow_displayInList, nameof(displayInList), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_isFilterable = WorkflowExpression.Compile(isFilterable, nameof(isFilterable), required: false);
+            var __workflow_displayOnProduct = WorkflowExpression.Compile(displayOnProduct, nameof(displayOnProduct), required: false);
+            var __workflow_displayInList = WorkflowExpression.Compile(displayInList, nameof(displayInList), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<AttributeDTO>(() =>
             {
                 var apiCallPath = "/api/Attributes";
@@ -93,20 +79,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<BrandDTO[]> BrandsGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<BrandDTO[]>(() =>
             {
                 var apiCallPath = "/api/Brands";
@@ -133,28 +112,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<CategoryDTO[]> CategoriesGETGetAll(Expression<Func<string>> title = null, Expression<Func<string>> id = null, Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> parentId = null, Expression<Func<string>> path = null, Expression<Func<string>> parentIds = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: false);
-            var __workflow_parentId = parentId == null ? null : WorkflowExpression.Compile(parentId);
-            WorkflowExpression.Validate(__workflow_parentId, nameof(parentId), required: false);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: false);
-            var __workflow_parentIds = parentIds == null ? null : WorkflowExpression.Compile(parentIds);
-            WorkflowExpression.Validate(__workflow_parentIds, nameof(parentIds), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
+            var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: false);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
+            var __workflow_parentIds = WorkflowExpression.Compile(parentIds, nameof(parentIds), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<CategoryDTO[]>(() =>
             {
                 var apiCallPath = "/api/Categories";
@@ -198,16 +166,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<IcoTagDTO[]> IcoTagsGETGetAll(Expression<Func<string>> name = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<IcoTagDTO[]>(() =>
             {
                 var apiCallPath = "/api/IcoTags";
@@ -230,84 +193,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<ProblemDetails> ProductVariantsGETGetAllFlat(Expression<Func<string>> price = null, Expression<Func<double>> maxPrice = null, Expression<Func<string>> size1 = null, Expression<Func<string>> size2 = null, Expression<Func<string>> size3 = null, Expression<Func<string>> insertDate = null, Expression<Func<string>> date1 = null, Expression<Func<string>> date2 = null, Expression<Func<string>> date3 = null, Expression<Func<string>> date1DateRange = null, Expression<Func<string>> date2DateRange = null, Expression<Func<string>> date3DateRange = null, Expression<Func<string>> insertDateRange = null, Expression<Func<string>> search = null, Expression<Func<double>> minPrice = null, Expression<Func<statusInput>> status = null, Expression<Func<string>> availability = null, Expression<Func<string>> tag = null, Expression<Func<string>> sourceTag = null, Expression<Func<string>> privacyRule = null, Expression<Func<string>> rule = null, Expression<Func<string>> condition = null, Expression<Func<string>> ids = null, Expression<Func<string>> id = null, Expression<Func<string>> priceRange = null, Expression<Func<string>> brandCode = null, Expression<Func<string>> brandId = null, Expression<Func<string>> attribute = null, Expression<Func<string>> pathCategory = null, Expression<Func<string>> categoryId = null, Expression<Func<string>> additionalCategoryId = null, Expression<Func<string>> stockAvailabilityId = null, Expression<Func<string>> attributeSetId = null, Expression<Func<string>> priceCategoryId = null, Expression<Func<bool>> hasMedia = null, Expression<Func<string>> masterId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_price = price == null ? null : WorkflowExpression.Compile(price);
-            WorkflowExpression.Validate(__workflow_price, nameof(price), required: false);
-            var __workflow_maxPrice = maxPrice == null ? null : WorkflowExpression.Compile(maxPrice);
-            WorkflowExpression.Validate(__workflow_maxPrice, nameof(maxPrice), required: false);
-            var __workflow_size1 = size1 == null ? null : WorkflowExpression.Compile(size1);
-            WorkflowExpression.Validate(__workflow_size1, nameof(size1), required: false);
-            var __workflow_size2 = size2 == null ? null : WorkflowExpression.Compile(size2);
-            WorkflowExpression.Validate(__workflow_size2, nameof(size2), required: false);
-            var __workflow_size3 = size3 == null ? null : WorkflowExpression.Compile(size3);
-            WorkflowExpression.Validate(__workflow_size3, nameof(size3), required: false);
-            var __workflow_insertDate = insertDate == null ? null : WorkflowExpression.Compile(insertDate);
-            WorkflowExpression.Validate(__workflow_insertDate, nameof(insertDate), required: false);
-            var __workflow_date1 = date1 == null ? null : WorkflowExpression.Compile(date1);
-            WorkflowExpression.Validate(__workflow_date1, nameof(date1), required: false);
-            var __workflow_date2 = date2 == null ? null : WorkflowExpression.Compile(date2);
-            WorkflowExpression.Validate(__workflow_date2, nameof(date2), required: false);
-            var __workflow_date3 = date3 == null ? null : WorkflowExpression.Compile(date3);
-            WorkflowExpression.Validate(__workflow_date3, nameof(date3), required: false);
-            var __workflow_date1DateRange = date1DateRange == null ? null : WorkflowExpression.Compile(date1DateRange);
-            WorkflowExpression.Validate(__workflow_date1DateRange, nameof(date1DateRange), required: false);
-            var __workflow_date2DateRange = date2DateRange == null ? null : WorkflowExpression.Compile(date2DateRange);
-            WorkflowExpression.Validate(__workflow_date2DateRange, nameof(date2DateRange), required: false);
-            var __workflow_date3DateRange = date3DateRange == null ? null : WorkflowExpression.Compile(date3DateRange);
-            WorkflowExpression.Validate(__workflow_date3DateRange, nameof(date3DateRange), required: false);
-            var __workflow_insertDateRange = insertDateRange == null ? null : WorkflowExpression.Compile(insertDateRange);
-            WorkflowExpression.Validate(__workflow_insertDateRange, nameof(insertDateRange), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_minPrice = minPrice == null ? null : WorkflowExpression.Compile(minPrice);
-            WorkflowExpression.Validate(__workflow_minPrice, nameof(minPrice), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_availability = availability == null ? null : WorkflowExpression.Compile(availability);
-            WorkflowExpression.Validate(__workflow_availability, nameof(availability), required: false);
-            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
-            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: false);
-            var __workflow_sourceTag = sourceTag == null ? null : WorkflowExpression.Compile(sourceTag);
-            WorkflowExpression.Validate(__workflow_sourceTag, nameof(sourceTag), required: false);
-            var __workflow_privacyRule = privacyRule == null ? null : WorkflowExpression.Compile(privacyRule);
-            WorkflowExpression.Validate(__workflow_privacyRule, nameof(privacyRule), required: false);
-            var __workflow_rule = rule == null ? null : WorkflowExpression.Compile(rule);
-            WorkflowExpression.Validate(__workflow_rule, nameof(rule), required: false);
-            var __workflow_condition = condition == null ? null : WorkflowExpression.Compile(condition);
-            WorkflowExpression.Validate(__workflow_condition, nameof(condition), required: false);
-            var __workflow_ids = ids == null ? null : WorkflowExpression.Compile(ids);
-            WorkflowExpression.Validate(__workflow_ids, nameof(ids), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_priceRange = priceRange == null ? null : WorkflowExpression.Compile(priceRange);
-            WorkflowExpression.Validate(__workflow_priceRange, nameof(priceRange), required: false);
-            var __workflow_brandCode = brandCode == null ? null : WorkflowExpression.Compile(brandCode);
-            WorkflowExpression.Validate(__workflow_brandCode, nameof(brandCode), required: false);
-            var __workflow_brandId = brandId == null ? null : WorkflowExpression.Compile(brandId);
-            WorkflowExpression.Validate(__workflow_brandId, nameof(brandId), required: false);
-            var __workflow_attribute = attribute == null ? null : WorkflowExpression.Compile(attribute);
-            WorkflowExpression.Validate(__workflow_attribute, nameof(attribute), required: false);
-            var __workflow_pathCategory = pathCategory == null ? null : WorkflowExpression.Compile(pathCategory);
-            WorkflowExpression.Validate(__workflow_pathCategory, nameof(pathCategory), required: false);
-            var __workflow_categoryId = categoryId == null ? null : WorkflowExpression.Compile(categoryId);
-            WorkflowExpression.Validate(__workflow_categoryId, nameof(categoryId), required: false);
-            var __workflow_additionalCategoryId = additionalCategoryId == null ? null : WorkflowExpression.Compile(additionalCategoryId);
-            WorkflowExpression.Validate(__workflow_additionalCategoryId, nameof(additionalCategoryId), required: false);
-            var __workflow_stockAvailabilityId = stockAvailabilityId == null ? null : WorkflowExpression.Compile(stockAvailabilityId);
-            WorkflowExpression.Validate(__workflow_stockAvailabilityId, nameof(stockAvailabilityId), required: false);
-            var __workflow_attributeSetId = attributeSetId == null ? null : WorkflowExpression.Compile(attributeSetId);
-            WorkflowExpression.Validate(__workflow_attributeSetId, nameof(attributeSetId), required: false);
-            var __workflow_priceCategoryId = priceCategoryId == null ? null : WorkflowExpression.Compile(priceCategoryId);
-            WorkflowExpression.Validate(__workflow_priceCategoryId, nameof(priceCategoryId), required: false);
-            var __workflow_hasMedia = hasMedia == null ? null : WorkflowExpression.Compile(hasMedia);
-            WorkflowExpression.Validate(__workflow_hasMedia, nameof(hasMedia), required: false);
-            var __workflow_masterId = masterId == null ? null : WorkflowExpression.Compile(masterId);
-            WorkflowExpression.Validate(__workflow_masterId, nameof(masterId), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_price = WorkflowExpression.Compile(price, nameof(price), required: false);
+            var __workflow_maxPrice = WorkflowExpression.Compile(maxPrice, nameof(maxPrice), required: false);
+            var __workflow_size1 = WorkflowExpression.Compile(size1, nameof(size1), required: false);
+            var __workflow_size2 = WorkflowExpression.Compile(size2, nameof(size2), required: false);
+            var __workflow_size3 = WorkflowExpression.Compile(size3, nameof(size3), required: false);
+            var __workflow_insertDate = WorkflowExpression.Compile(insertDate, nameof(insertDate), required: false);
+            var __workflow_date1 = WorkflowExpression.Compile(date1, nameof(date1), required: false);
+            var __workflow_date2 = WorkflowExpression.Compile(date2, nameof(date2), required: false);
+            var __workflow_date3 = WorkflowExpression.Compile(date3, nameof(date3), required: false);
+            var __workflow_date1DateRange = WorkflowExpression.Compile(date1DateRange, nameof(date1DateRange), required: false);
+            var __workflow_date2DateRange = WorkflowExpression.Compile(date2DateRange, nameof(date2DateRange), required: false);
+            var __workflow_date3DateRange = WorkflowExpression.Compile(date3DateRange, nameof(date3DateRange), required: false);
+            var __workflow_insertDateRange = WorkflowExpression.Compile(insertDateRange, nameof(insertDateRange), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_minPrice = WorkflowExpression.Compile(minPrice, nameof(minPrice), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_availability = WorkflowExpression.Compile(availability, nameof(availability), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            var __workflow_sourceTag = WorkflowExpression.Compile(sourceTag, nameof(sourceTag), required: false);
+            var __workflow_privacyRule = WorkflowExpression.Compile(privacyRule, nameof(privacyRule), required: false);
+            var __workflow_rule = WorkflowExpression.Compile(rule, nameof(rule), required: false);
+            var __workflow_condition = WorkflowExpression.Compile(condition, nameof(condition), required: false);
+            var __workflow_ids = WorkflowExpression.Compile(ids, nameof(ids), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_priceRange = WorkflowExpression.Compile(priceRange, nameof(priceRange), required: false);
+            var __workflow_brandCode = WorkflowExpression.Compile(brandCode, nameof(brandCode), required: false);
+            var __workflow_brandId = WorkflowExpression.Compile(brandId, nameof(brandId), required: false);
+            var __workflow_attribute = WorkflowExpression.Compile(attribute, nameof(attribute), required: false);
+            var __workflow_pathCategory = WorkflowExpression.Compile(pathCategory, nameof(pathCategory), required: false);
+            var __workflow_categoryId = WorkflowExpression.Compile(categoryId, nameof(categoryId), required: false);
+            var __workflow_additionalCategoryId = WorkflowExpression.Compile(additionalCategoryId, nameof(additionalCategoryId), required: false);
+            var __workflow_stockAvailabilityId = WorkflowExpression.Compile(stockAvailabilityId, nameof(stockAvailabilityId), required: false);
+            var __workflow_attributeSetId = WorkflowExpression.Compile(attributeSetId, nameof(attributeSetId), required: false);
+            var __workflow_priceCategoryId = WorkflowExpression.Compile(priceCategoryId, nameof(priceCategoryId), required: false);
+            var __workflow_hasMedia = WorkflowExpression.Compile(hasMedia, nameof(hasMedia), required: false);
+            var __workflow_masterId = WorkflowExpression.Compile(masterId, nameof(masterId), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
                 var apiCallPath = "/api/ProductVariants/flat";
@@ -398,10 +322,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<RelatedProductVariantDTO> RelatedProductsGETGetRelated(Expression<Func<string>> productId, Expression<Func<string>> variantId)
         {
-            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
-            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: true);
-            var __workflow_variantId = variantId == null ? null : WorkflowExpression.Compile(variantId);
-            WorkflowExpression.Validate(__workflow_variantId, nameof(variantId), required: true);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            var __workflow_variantId = WorkflowExpression.Compile(variantId, nameof(variantId), required: true);
             return new DeferredBodyAction<RelatedProductVariantDTO>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/RelatedProducts/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_variantId, 1));
@@ -414,14 +336,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<StockAvailabilityDTO[]> StockAvailabilityGETGetAll(Expression<Func<string>> title = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<StockAvailabilityDTO[]>(() =>
             {
                 var apiCallPath = "/api/StockAvailability";
@@ -442,14 +360,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<UnitDTO[]> UnitsGETGetAll(Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<UnitDTO[]>(() =>
             {
                 var apiCallPath = "/api/Units";
@@ -470,10 +384,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<ProblemDetails> CartDELETERemoveFromCart(Expression<Func<string>> token, Expression<Func<string>> productVariantId)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_productVariantId = productVariantId == null ? null : WorkflowExpression.Compile(productVariantId);
-            WorkflowExpression.Validate(__workflow_productVariantId, nameof(productVariantId), required: true);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_productVariantId = WorkflowExpression.Compile(productVariantId, nameof(productVariantId), required: true);
             return new DeferredBodyAction<ProblemDetails>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/Cart/{0}/Items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_token, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_productVariantId, 1));
@@ -486,26 +398,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<AssortmentValueDTO[]> AssortmentValueGETGetAll(Expression<Func<string>> customerid, Expression<Func<statusInput>> status = null, Expression<Func<sourceInput>> source = null, Expression<Func<string>> type = null, Expression<Func<string>> category = null, Expression<Func<string>> id = null, Expression<Func<string>> productId = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_customerid = customerid == null ? null : WorkflowExpression.Compile(customerid);
-            WorkflowExpression.Validate(__workflow_customerid, nameof(customerid), required: true);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
-            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_customerid = WorkflowExpression.Compile(customerid, nameof(customerid), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<AssortmentValueDTO[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/assortment/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(__workflow_customerid, 1));
@@ -536,22 +438,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<CustomerDTO[]> CustomersGETGetAll(Expression<Func<statusInput>> status = null, Expression<Func<string>> search = null, Expression<Func<string>> name = null, Expression<Func<string>> salesmanId = null, Expression<Func<string>> id = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_salesmanId = salesmanId == null ? null : WorkflowExpression.Compile(salesmanId);
-            WorkflowExpression.Validate(__workflow_salesmanId, nameof(salesmanId), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_salesmanId = WorkflowExpression.Compile(salesmanId, nameof(salesmanId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<CustomerDTO[]>(() =>
             {
                 var apiCallPath = "/api/Customers";
@@ -580,8 +474,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<InventoryLevelDTO[]> InventoryLevelsGETGetByVariantId(Expression<Func<string>> variantId)
         {
-            var __workflow_variantId = variantId == null ? null : WorkflowExpression.Compile(variantId);
-            WorkflowExpression.Validate(__workflow_variantId, nameof(variantId), required: true);
+            var __workflow_variantId = WorkflowExpression.Compile(variantId, nameof(variantId), required: true);
             return new DeferredBodyAction<InventoryLevelDTO[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/InventoryLevels/variant/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_variantId, 1));
@@ -594,30 +487,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shopranos")]
         public IBodyWorkflowAction<OrderDTO[]> OrderGETGetAll(Expression<Func<string>> search = null, Expression<Func<string>> code = null, Expression<Func<string>> customerId = null, Expression<Func<string>> orderStatus = null, Expression<Func<string>> status = null, Expression<Func<string>> tag = null, Expression<Func<string>> customerCode = null, Expression<Func<string>> customerTin = null, Expression<Func<string>> insertDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: false);
-            var __workflow_customerId = customerId == null ? null : WorkflowExpression.Compile(customerId);
-            WorkflowExpression.Validate(__workflow_customerId, nameof(customerId), required: false);
-            var __workflow_orderStatus = orderStatus == null ? null : WorkflowExpression.Compile(orderStatus);
-            WorkflowExpression.Validate(__workflow_orderStatus, nameof(orderStatus), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_tag = tag == null ? null : WorkflowExpression.Compile(tag);
-            WorkflowExpression.Validate(__workflow_tag, nameof(tag), required: false);
-            var __workflow_customerCode = customerCode == null ? null : WorkflowExpression.Compile(customerCode);
-            WorkflowExpression.Validate(__workflow_customerCode, nameof(customerCode), required: false);
-            var __workflow_customerTin = customerTin == null ? null : WorkflowExpression.Compile(customerTin);
-            WorkflowExpression.Validate(__workflow_customerTin, nameof(customerTin), required: false);
-            var __workflow_insertDate = insertDate == null ? null : WorkflowExpression.Compile(insertDate);
-            WorkflowExpression.Validate(__workflow_insertDate, nameof(insertDate), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: false);
+            var __workflow_customerId = WorkflowExpression.Compile(customerId, nameof(customerId), required: false);
+            var __workflow_orderStatus = WorkflowExpression.Compile(orderStatus, nameof(orderStatus), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_tag = WorkflowExpression.Compile(tag, nameof(tag), required: false);
+            var __workflow_customerCode = WorkflowExpression.Compile(customerCode, nameof(customerCode), required: false);
+            var __workflow_customerTin = WorkflowExpression.Compile(customerTin, nameof(customerTin), required: false);
+            var __workflow_insertDate = WorkflowExpression.Compile(insertDate, nameof(insertDate), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<OrderDTO[]>(() =>
             {
                 var apiCallPath = "/api/Order";
@@ -656,8 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     {
         public IWorkflowTrigger ProductCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/product/created";
@@ -680,8 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger ProductUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/product/updated";
@@ -704,8 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger ProductDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/product/deleted";
@@ -728,8 +606,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CategoryCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/category/created";
@@ -752,8 +629,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CategoryUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/category/updated";
@@ -776,8 +652,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CategoryDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/category/deleted";
@@ -800,8 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger BrandCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/brand/created";
@@ -824,8 +698,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger BrandUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/brand/updated";
@@ -848,8 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger BrandDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/brand/deleted";
@@ -872,8 +744,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger UnitCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/unit/created";
@@ -896,8 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger UnitUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/unit/updated";
@@ -920,8 +790,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger UnitDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/unit/deleted";
@@ -944,8 +813,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/attribute/created";
@@ -968,8 +836,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/attribute/updated";
@@ -992,8 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/attribute/deleted";
@@ -1016,8 +882,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeSetCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/attributeset/created";
@@ -1040,8 +905,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeSetUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/attributeset/updated";
@@ -1064,8 +928,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger AttributeSetDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/attributeset/deleted";
@@ -1088,8 +951,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CheckoutCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/checkout/created";
@@ -1112,8 +974,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CheckoutCompletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/checkout/completed";
@@ -1136,8 +997,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CustomerCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/customer/created";
@@ -1160,8 +1020,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CustomerUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/customer/updated";
@@ -1184,8 +1043,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger CustomerDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/customer/deleted";
@@ -1208,8 +1066,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger OrderCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/order/created";
@@ -1232,8 +1089,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger OrderUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/order/updated";
@@ -1256,8 +1112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger OrderDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/order/deleted";
@@ -1280,8 +1135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger InventoryLevelCreatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/inventorylevel/created";
@@ -1304,8 +1158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger InventoryLevelUpdatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/inventorylevel/updated";
@@ -1328,8 +1181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger InventoryLevelDeletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/inventorylevel/deleted";
@@ -1352,8 +1204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger PaymentInitiatedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/payment/initiated";
@@ -1376,8 +1227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
 
         public IWorkflowTrigger PaymentCompletedTrigger(Expression<Func<string>> bodytitle, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/register/payment/completed";

@@ -40,18 +40,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Webhook> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
         {
-            var __workflow_webhookId = webhookId == null ? null : WorkflowExpression.Compile(webhookId);
-            WorkflowExpression.Validate(__workflow_webhookId, nameof(webhookId), required: true);
-            var __workflow_webhookToken = webhookToken == null ? null : WorkflowExpression.Compile(webhookToken);
-            WorkflowExpression.Validate(__workflow_webhookToken, nameof(webhookToken), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: false);
-            var __workflow_bodyavatarURL = bodyavatarURL == null ? null : WorkflowExpression.Compile(bodyavatarURL);
-            WorkflowExpression.Validate(__workflow_bodyavatarURL, nameof(bodyavatarURL), required: false);
+            var __workflow_webhookId = WorkflowExpression.Compile(webhookId, nameof(webhookId), required: true);
+            var __workflow_webhookToken = WorkflowExpression.Compile(webhookToken, nameof(webhookToken), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: false);
+            var __workflow_bodyavatarURL = WorkflowExpression.Compile(bodyavatarURL, nameof(bodyavatarURL), required: false);
             return new DeferredBodyAction<Webhook>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookToken, 1));

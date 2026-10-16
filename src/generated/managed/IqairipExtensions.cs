@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<ListStatesResponse> ListStates(Expression<Func<string>> country = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<ListStatesResponse>(() =>
             {
                 var apiCallPath = "/states";
@@ -38,10 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<ListCitiesResponse> ListCities(Expression<Func<string>> state = null, Expression<Func<string>> country = null)
         {
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<ListCitiesResponse>(() =>
             {
                 var apiCallPath = "/cities";
@@ -58,10 +55,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<CityResponse> GetDataByCoordinates(Expression<Func<string>> lat = null, Expression<Func<string>> lon = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
-            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
             return new DeferredBodyAction<CityResponse>(() =>
             {
                 var apiCallPath = "/nearest_city";
@@ -78,12 +73,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
         public IBodyWorkflowAction<CityResponse> GetDataByCity(Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> country = null)
         {
-            var __workflow_city = city == null ? null : WorkflowExpression.Compile(city);
-            WorkflowExpression.Validate(__workflow_city, nameof(city), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_city = WorkflowExpression.Compile(city, nameof(city), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<CityResponse>(() =>
             {
                 var apiCallPath = "/city";

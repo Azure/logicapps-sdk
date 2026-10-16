@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Expense[]> ListExpenses(Expression<Func<string>> accountid)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyAction<Expense[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
@@ -28,22 +27,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Expense> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
-            var __workflow_bodyexpenseamountamount = bodyexpenseamountamount == null ? null : WorkflowExpression.Compile(bodyexpenseamountamount);
-            WorkflowExpression.Validate(__workflow_bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: true);
-            var __workflow_bodyexpenseamountcurrency = bodyexpenseamountcurrency == null ? null : WorkflowExpression.Compile(bodyexpenseamountcurrency);
-            WorkflowExpression.Validate(__workflow_bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
-            var __workflow_bodyexpensecategory = bodyexpensecategory == null ? null : WorkflowExpression.Compile(bodyexpensecategory);
-            WorkflowExpression.Validate(__workflow_bodyexpensecategory, nameof(bodyexpensecategory), required: false);
-            var __workflow_bodyexpensestaff = bodyexpensestaff == null ? null : WorkflowExpression.Compile(bodyexpensestaff);
-            WorkflowExpression.Validate(__workflow_bodyexpensestaff, nameof(bodyexpensestaff), required: false);
-            var __workflow_bodyexpensedate = bodyexpensedate == null ? null : WorkflowExpression.Compile(bodyexpensedate);
-            WorkflowExpression.Validate(__workflow_bodyexpensedate, nameof(bodyexpensedate), required: false);
-            var __workflow_bodyexpensevendor = bodyexpensevendor == null ? null : WorkflowExpression.Compile(bodyexpensevendor);
-            WorkflowExpression.Validate(__workflow_bodyexpensevendor, nameof(bodyexpensevendor), required: false);
-            var __workflow_bodyexpensenotes = bodyexpensenotes == null ? null : WorkflowExpression.Compile(bodyexpensenotes);
-            WorkflowExpression.Validate(__workflow_bodyexpensenotes, nameof(bodyexpensenotes), required: false);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
+            var __workflow_bodyexpenseamountamount = WorkflowExpression.Compile(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: true);
+            var __workflow_bodyexpenseamountcurrency = WorkflowExpression.Compile(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
+            var __workflow_bodyexpensecategory = WorkflowExpression.Compile(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
+            var __workflow_bodyexpensestaff = WorkflowExpression.Compile(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
+            var __workflow_bodyexpensedate = WorkflowExpression.Compile(bodyexpensedate, nameof(bodyexpensedate), required: false);
+            var __workflow_bodyexpensevendor = WorkflowExpression.Compile(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
+            var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
             return new DeferredBodyAction<Expense>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
@@ -118,24 +109,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IWorkflowAction UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
-            var __workflow_expenseid = expenseid == null ? null : WorkflowExpression.Compile(expenseid);
-            WorkflowExpression.Validate(__workflow_expenseid, nameof(expenseid), required: true);
-            var __workflow_bodyexpenseamountamount = bodyexpenseamountamount == null ? null : WorkflowExpression.Compile(bodyexpenseamountamount);
-            WorkflowExpression.Validate(__workflow_bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: false);
-            var __workflow_bodyexpenseamountcurrency = bodyexpenseamountcurrency == null ? null : WorkflowExpression.Compile(bodyexpenseamountcurrency);
-            WorkflowExpression.Validate(__workflow_bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
-            var __workflow_bodyexpensecategory = bodyexpensecategory == null ? null : WorkflowExpression.Compile(bodyexpensecategory);
-            WorkflowExpression.Validate(__workflow_bodyexpensecategory, nameof(bodyexpensecategory), required: false);
-            var __workflow_bodyexpensestaff = bodyexpensestaff == null ? null : WorkflowExpression.Compile(bodyexpensestaff);
-            WorkflowExpression.Validate(__workflow_bodyexpensestaff, nameof(bodyexpensestaff), required: false);
-            var __workflow_bodyexpensedate = bodyexpensedate == null ? null : WorkflowExpression.Compile(bodyexpensedate);
-            WorkflowExpression.Validate(__workflow_bodyexpensedate, nameof(bodyexpensedate), required: false);
-            var __workflow_bodyexpensevendor = bodyexpensevendor == null ? null : WorkflowExpression.Compile(bodyexpensevendor);
-            WorkflowExpression.Validate(__workflow_bodyexpensevendor, nameof(bodyexpensevendor), required: false);
-            var __workflow_bodyexpensenotes = bodyexpensenotes == null ? null : WorkflowExpression.Compile(bodyexpensenotes);
-            WorkflowExpression.Validate(__workflow_bodyexpensenotes, nameof(bodyexpensenotes), required: false);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
+            var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
+            var __workflow_bodyexpenseamountamount = WorkflowExpression.Compile(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: false);
+            var __workflow_bodyexpenseamountcurrency = WorkflowExpression.Compile(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
+            var __workflow_bodyexpensecategory = WorkflowExpression.Compile(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
+            var __workflow_bodyexpensestaff = WorkflowExpression.Compile(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
+            var __workflow_bodyexpensedate = WorkflowExpression.Compile(bodyexpensedate, nameof(bodyexpensedate), required: false);
+            var __workflow_bodyexpensevendor = WorkflowExpression.Compile(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
+            var __workflow_bodyexpensenotes = WorkflowExpression.Compile(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_expenseid, 1));
@@ -214,10 +196,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IWorkflowAction DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
-            var __workflow_expenseid = expenseid == null ? null : WorkflowExpression.Compile(expenseid);
-            WorkflowExpression.Validate(__workflow_expenseid, nameof(expenseid), required: true);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
+            var __workflow_expenseid = WorkflowExpression.Compile(expenseid, nameof(expenseid), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_expenseid, 1));
@@ -248,32 +228,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
         public IBodyWorkflowAction<Client> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
-            var __workflow_bodyclientfirstName = bodyclientfirstName == null ? null : WorkflowExpression.Compile(bodyclientfirstName);
-            WorkflowExpression.Validate(__workflow_bodyclientfirstName, nameof(bodyclientfirstName), required: false);
-            var __workflow_bodyclientlastName = bodyclientlastName == null ? null : WorkflowExpression.Compile(bodyclientlastName);
-            WorkflowExpression.Validate(__workflow_bodyclientlastName, nameof(bodyclientlastName), required: false);
-            var __workflow_bodyclientorganization = bodyclientorganization == null ? null : WorkflowExpression.Compile(bodyclientorganization);
-            WorkflowExpression.Validate(__workflow_bodyclientorganization, nameof(bodyclientorganization), required: false);
-            var __workflow_bodyclientemailAddress = bodyclientemailAddress == null ? null : WorkflowExpression.Compile(bodyclientemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyclientemailAddress, nameof(bodyclientemailAddress), required: false);
-            var __workflow_bodyclientphoneNumber = bodyclientphoneNumber == null ? null : WorkflowExpression.Compile(bodyclientphoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyclientphoneNumber, nameof(bodyclientphoneNumber), required: false);
-            var __workflow_bodyclientcurrency = bodyclientcurrency == null ? null : WorkflowExpression.Compile(bodyclientcurrency);
-            WorkflowExpression.Validate(__workflow_bodyclientcurrency, nameof(bodyclientcurrency), required: false);
-            var __workflow_bodyclientstreetAddress1 = bodyclientstreetAddress1 == null ? null : WorkflowExpression.Compile(bodyclientstreetAddress1);
-            WorkflowExpression.Validate(__workflow_bodyclientstreetAddress1, nameof(bodyclientstreetAddress1), required: false);
-            var __workflow_bodyclientstreetAddress2 = bodyclientstreetAddress2 == null ? null : WorkflowExpression.Compile(bodyclientstreetAddress2);
-            WorkflowExpression.Validate(__workflow_bodyclientstreetAddress2, nameof(bodyclientstreetAddress2), required: false);
-            var __workflow_bodyclientcity = bodyclientcity == null ? null : WorkflowExpression.Compile(bodyclientcity);
-            WorkflowExpression.Validate(__workflow_bodyclientcity, nameof(bodyclientcity), required: false);
-            var __workflow_bodyclientpostalCode = bodyclientpostalCode == null ? null : WorkflowExpression.Compile(bodyclientpostalCode);
-            WorkflowExpression.Validate(__workflow_bodyclientpostalCode, nameof(bodyclientpostalCode), required: false);
-            var __workflow_bodyclientcountry = bodyclientcountry == null ? null : WorkflowExpression.Compile(bodyclientcountry);
-            WorkflowExpression.Validate(__workflow_bodyclientcountry, nameof(bodyclientcountry), required: false);
-            var __workflow_bodyclientprovince = bodyclientprovince == null ? null : WorkflowExpression.Compile(bodyclientprovince);
-            WorkflowExpression.Validate(__workflow_bodyclientprovince, nameof(bodyclientprovince), required: false);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
+            var __workflow_bodyclientfirstName = WorkflowExpression.Compile(bodyclientfirstName, nameof(bodyclientfirstName), required: false);
+            var __workflow_bodyclientlastName = WorkflowExpression.Compile(bodyclientlastName, nameof(bodyclientlastName), required: false);
+            var __workflow_bodyclientorganization = WorkflowExpression.Compile(bodyclientorganization, nameof(bodyclientorganization), required: false);
+            var __workflow_bodyclientemailAddress = WorkflowExpression.Compile(bodyclientemailAddress, nameof(bodyclientemailAddress), required: false);
+            var __workflow_bodyclientphoneNumber = WorkflowExpression.Compile(bodyclientphoneNumber, nameof(bodyclientphoneNumber), required: false);
+            var __workflow_bodyclientcurrency = WorkflowExpression.Compile(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
+            var __workflow_bodyclientstreetAddress1 = WorkflowExpression.Compile(bodyclientstreetAddress1, nameof(bodyclientstreetAddress1), required: false);
+            var __workflow_bodyclientstreetAddress2 = WorkflowExpression.Compile(bodyclientstreetAddress2, nameof(bodyclientstreetAddress2), required: false);
+            var __workflow_bodyclientcity = WorkflowExpression.Compile(bodyclientcity, nameof(bodyclientcity), required: false);
+            var __workflow_bodyclientpostalCode = WorkflowExpression.Compile(bodyclientpostalCode, nameof(bodyclientpostalCode), required: false);
+            var __workflow_bodyclientcountry = WorkflowExpression.Compile(bodyclientcountry, nameof(bodyclientcountry), required: false);
+            var __workflow_bodyclientprovince = WorkflowExpression.Compile(bodyclientprovince, nameof(bodyclientprovince), required: false);
             return new DeferredBodyAction<Client>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/users/clients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
@@ -376,8 +343,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     {
         public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Invoice[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
@@ -391,8 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
         public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Expense[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));
@@ -405,8 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 
         public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid, FlowRecurrence recurrence = null)
         {
-            var __workflow_accountid = accountid == null ? null : WorkflowExpression.Compile(accountid);
-            WorkflowExpression.Validate(__workflow_accountid, nameof(accountid), required: true);
+            var __workflow_accountid = WorkflowExpression.Compile(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Payment[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/payments/payments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountid, 1));

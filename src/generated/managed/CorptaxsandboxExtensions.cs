@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction CorptaxEntityViews(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyqualifiedviewName = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodyqualifiedviewName = bodyqualifiedviewName == null ? null : WorkflowExpression.Compile(bodyqualifiedviewName);
-            WorkflowExpression.Validate(__workflow_bodyqualifiedviewName, nameof(bodyqualifiedviewName), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodyqualifiedviewName = WorkflowExpression.Compile(bodyqualifiedviewName, nameof(bodyqualifiedviewName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/entityView";
@@ -46,16 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction DataExchangeLookup(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<lookupTypeInput>> lookupType, Expression<Func<bool>> bodydetails, Expression<Func<string>> bodylookupName = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_lookupType = lookupType == null ? null : WorkflowExpression.Compile(lookupType);
-            WorkflowExpression.Validate(__workflow_lookupType, nameof(lookupType), required: true);
-            var __workflow_bodydetails = bodydetails == null ? null : WorkflowExpression.Compile(bodydetails);
-            WorkflowExpression.Validate(__workflow_bodydetails, nameof(bodydetails), required: true);
-            var __workflow_bodylookupName = bodylookupName == null ? null : WorkflowExpression.Compile(bodylookupName);
-            WorkflowExpression.Validate(__workflow_bodylookupName, nameof(bodylookupName), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_lookupType = WorkflowExpression.Compile(lookupType, nameof(lookupType), required: true);
+            var __workflow_bodydetails = WorkflowExpression.Compile(bodydetails, nameof(bodydetails), required: true);
+            var __workflow_bodylookupName = WorkflowExpression.Compile(bodylookupName, nameof(bodylookupName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DataExchangeLookup";
@@ -86,16 +78,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction EntityList(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodyperiodName = null, Expression<Func<string>> bodyviewName = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodyactive = bodyactive == null ? null : WorkflowExpression.Compile(bodyactive);
-            WorkflowExpression.Validate(__workflow_bodyactive, nameof(bodyactive), required: false);
-            var __workflow_bodyperiodName = bodyperiodName == null ? null : WorkflowExpression.Compile(bodyperiodName);
-            WorkflowExpression.Validate(__workflow_bodyperiodName, nameof(bodyperiodName), required: false);
-            var __workflow_bodyviewName = bodyviewName == null ? null : WorkflowExpression.Compile(bodyviewName);
-            WorkflowExpression.Validate(__workflow_bodyviewName, nameof(bodyviewName), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodyactive = WorkflowExpression.Compile(bodyactive, nameof(bodyactive), required: false);
+            var __workflow_bodyperiodName = WorkflowExpression.Compile(bodyperiodName, nameof(bodyperiodName), required: false);
+            var __workflow_bodyviewName = WorkflowExpression.Compile(bodyviewName, nameof(bodyviewName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/EntityLists";
@@ -135,26 +122,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction ExportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodypackageName = bodypackageName == null ? null : WorkflowExpression.Compile(bodypackageName);
-            WorkflowExpression.Validate(__workflow_bodypackageName, nameof(bodypackageName), required: true);
-            var __workflow_bodynamedContext = bodynamedContext == null ? null : WorkflowExpression.Compile(bodynamedContext);
-            WorkflowExpression.Validate(__workflow_bodynamedContext, nameof(bodynamedContext), required: false);
-            var __workflow_bodyentityCode = bodyentityCode == null ? null : WorkflowExpression.Compile(bodyentityCode);
-            WorkflowExpression.Validate(__workflow_bodyentityCode, nameof(bodyentityCode), required: false);
-            var __workflow_bodycaseCode = bodycaseCode == null ? null : WorkflowExpression.Compile(bodycaseCode);
-            WorkflowExpression.Validate(__workflow_bodycaseCode, nameof(bodycaseCode), required: false);
-            var __workflow_bodyperiodCode = bodyperiodCode == null ? null : WorkflowExpression.Compile(bodyperiodCode);
-            WorkflowExpression.Validate(__workflow_bodyperiodCode, nameof(bodyperiodCode), required: false);
-            var __workflow_bodyjurisdictionCode = bodyjurisdictionCode == null ? null : WorkflowExpression.Compile(bodyjurisdictionCode);
-            WorkflowExpression.Validate(__workflow_bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            var __workflow_bodyinternationalTaxName = bodyinternationalTaxName == null ? null : WorkflowExpression.Compile(bodyinternationalTaxName);
-            WorkflowExpression.Validate(__workflow_bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
-            var __workflow_bodyprovisionName = bodyprovisionName == null ? null : WorkflowExpression.Compile(bodyprovisionName);
-            WorkflowExpression.Validate(__workflow_bodyprovisionName, nameof(bodyprovisionName), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodypackageName = WorkflowExpression.Compile(bodypackageName, nameof(bodypackageName), required: true);
+            var __workflow_bodynamedContext = WorkflowExpression.Compile(bodynamedContext, nameof(bodynamedContext), required: false);
+            var __workflow_bodyentityCode = WorkflowExpression.Compile(bodyentityCode, nameof(bodyentityCode), required: false);
+            var __workflow_bodycaseCode = WorkflowExpression.Compile(bodycaseCode, nameof(bodycaseCode), required: false);
+            var __workflow_bodyperiodCode = WorkflowExpression.Compile(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            var __workflow_bodyinternationalTaxName = WorkflowExpression.Compile(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
+            var __workflow_bodyprovisionName = WorkflowExpression.Compile(bodyprovisionName, nameof(bodyprovisionName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/dataExport";
@@ -220,26 +197,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction ExportDataWithDataSource(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodydataSource, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodydataSource = bodydataSource == null ? null : WorkflowExpression.Compile(bodydataSource);
-            WorkflowExpression.Validate(__workflow_bodydataSource, nameof(bodydataSource), required: true);
-            var __workflow_bodynamedContext = bodynamedContext == null ? null : WorkflowExpression.Compile(bodynamedContext);
-            WorkflowExpression.Validate(__workflow_bodynamedContext, nameof(bodynamedContext), required: false);
-            var __workflow_bodyentityCode = bodyentityCode == null ? null : WorkflowExpression.Compile(bodyentityCode);
-            WorkflowExpression.Validate(__workflow_bodyentityCode, nameof(bodyentityCode), required: false);
-            var __workflow_bodycaseCode = bodycaseCode == null ? null : WorkflowExpression.Compile(bodycaseCode);
-            WorkflowExpression.Validate(__workflow_bodycaseCode, nameof(bodycaseCode), required: false);
-            var __workflow_bodyperiodCode = bodyperiodCode == null ? null : WorkflowExpression.Compile(bodyperiodCode);
-            WorkflowExpression.Validate(__workflow_bodyperiodCode, nameof(bodyperiodCode), required: false);
-            var __workflow_bodyjurisdictionCode = bodyjurisdictionCode == null ? null : WorkflowExpression.Compile(bodyjurisdictionCode);
-            WorkflowExpression.Validate(__workflow_bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            var __workflow_bodyinternationalTaxName = bodyinternationalTaxName == null ? null : WorkflowExpression.Compile(bodyinternationalTaxName);
-            WorkflowExpression.Validate(__workflow_bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
-            var __workflow_bodyprovisionName = bodyprovisionName == null ? null : WorkflowExpression.Compile(bodyprovisionName);
-            WorkflowExpression.Validate(__workflow_bodyprovisionName, nameof(bodyprovisionName), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodydataSource = WorkflowExpression.Compile(bodydataSource, nameof(bodydataSource), required: true);
+            var __workflow_bodynamedContext = WorkflowExpression.Compile(bodynamedContext, nameof(bodynamedContext), required: false);
+            var __workflow_bodyentityCode = WorkflowExpression.Compile(bodyentityCode, nameof(bodyentityCode), required: false);
+            var __workflow_bodycaseCode = WorkflowExpression.Compile(bodycaseCode, nameof(bodycaseCode), required: false);
+            var __workflow_bodyperiodCode = WorkflowExpression.Compile(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            var __workflow_bodyinternationalTaxName = WorkflowExpression.Compile(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
+            var __workflow_bodyprovisionName = WorkflowExpression.Compile(bodyprovisionName, nameof(bodyprovisionName), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/dataExportWithDataSource";
@@ -305,28 +272,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<TriggerCartResponse> TriggerCart(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodycartName, Expression<Func<bodytypeOfActionInput>> bodytypeOfAction, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyledgerName = null, Expression<Func<string>> bodyisoCurrencyCode = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodycartName = bodycartName == null ? null : WorkflowExpression.Compile(bodycartName);
-            WorkflowExpression.Validate(__workflow_bodycartName, nameof(bodycartName), required: true);
-            var __workflow_bodytypeOfAction = bodytypeOfAction == null ? null : WorkflowExpression.Compile(bodytypeOfAction);
-            WorkflowExpression.Validate(__workflow_bodytypeOfAction, nameof(bodytypeOfAction), required: true);
-            var __workflow_bodynamedContext = bodynamedContext == null ? null : WorkflowExpression.Compile(bodynamedContext);
-            WorkflowExpression.Validate(__workflow_bodynamedContext, nameof(bodynamedContext), required: false);
-            var __workflow_bodyentityCode = bodyentityCode == null ? null : WorkflowExpression.Compile(bodyentityCode);
-            WorkflowExpression.Validate(__workflow_bodyentityCode, nameof(bodyentityCode), required: false);
-            var __workflow_bodycaseCode = bodycaseCode == null ? null : WorkflowExpression.Compile(bodycaseCode);
-            WorkflowExpression.Validate(__workflow_bodycaseCode, nameof(bodycaseCode), required: false);
-            var __workflow_bodyperiodCode = bodyperiodCode == null ? null : WorkflowExpression.Compile(bodyperiodCode);
-            WorkflowExpression.Validate(__workflow_bodyperiodCode, nameof(bodyperiodCode), required: false);
-            var __workflow_bodyjurisdictionCode = bodyjurisdictionCode == null ? null : WorkflowExpression.Compile(bodyjurisdictionCode);
-            WorkflowExpression.Validate(__workflow_bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            var __workflow_bodyledgerName = bodyledgerName == null ? null : WorkflowExpression.Compile(bodyledgerName);
-            WorkflowExpression.Validate(__workflow_bodyledgerName, nameof(bodyledgerName), required: false);
-            var __workflow_bodyisoCurrencyCode = bodyisoCurrencyCode == null ? null : WorkflowExpression.Compile(bodyisoCurrencyCode);
-            WorkflowExpression.Validate(__workflow_bodyisoCurrencyCode, nameof(bodyisoCurrencyCode), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodycartName = WorkflowExpression.Compile(bodycartName, nameof(bodycartName), required: true);
+            var __workflow_bodytypeOfAction = WorkflowExpression.Compile(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
+            var __workflow_bodynamedContext = WorkflowExpression.Compile(bodynamedContext, nameof(bodynamedContext), required: false);
+            var __workflow_bodyentityCode = WorkflowExpression.Compile(bodyentityCode, nameof(bodyentityCode), required: false);
+            var __workflow_bodycaseCode = WorkflowExpression.Compile(bodycaseCode, nameof(bodycaseCode), required: false);
+            var __workflow_bodyperiodCode = WorkflowExpression.Compile(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            var __workflow_bodyledgerName = WorkflowExpression.Compile(bodyledgerName, nameof(bodyledgerName), required: false);
+            var __workflow_bodyisoCurrencyCode = WorkflowExpression.Compile(bodyisoCurrencyCode, nameof(bodyisoCurrencyCode), required: false);
             return new DeferredBodyAction<TriggerCartResponse>(() =>
             {
                 var apiCallPath = "/triggerCart";
@@ -394,14 +350,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<TriggerReturnResponse> TriggerReturn(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName, Expression<Func<string>> bodytypeOfAction)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodyreturnName = bodyreturnName == null ? null : WorkflowExpression.Compile(bodyreturnName);
-            WorkflowExpression.Validate(__workflow_bodyreturnName, nameof(bodyreturnName), required: true);
-            var __workflow_bodytypeOfAction = bodytypeOfAction == null ? null : WorkflowExpression.Compile(bodytypeOfAction);
-            WorkflowExpression.Validate(__workflow_bodytypeOfAction, nameof(bodytypeOfAction), required: true);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodyreturnName = WorkflowExpression.Compile(bodyreturnName, nameof(bodyreturnName), required: true);
+            var __workflow_bodytypeOfAction = WorkflowExpression.Compile(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
             return new DeferredBodyAction<TriggerReturnResponse>(() =>
             {
                 var apiCallPath = "/triggerReturn";
@@ -427,14 +379,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<DownloadContentsResponseItem[]> DownloadContents(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_typeOfAction = typeOfAction == null ? null : WorkflowExpression.Compile(typeOfAction);
-            WorkflowExpression.Validate(__workflow_typeOfAction, nameof(typeOfAction), required: true);
-            var __workflow_bodyreturnOrCartName = bodyreturnOrCartName == null ? null : WorkflowExpression.Compile(bodyreturnOrCartName);
-            WorkflowExpression.Validate(__workflow_bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_typeOfAction = WorkflowExpression.Compile(typeOfAction, nameof(typeOfAction), required: true);
+            var __workflow_bodyreturnOrCartName = WorkflowExpression.Compile(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
             return new DeferredBodyAction<DownloadContentsResponseItem[]>(() =>
             {
                 var apiCallPath = "/downloadContents";
@@ -459,14 +407,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<CheckTriggerStatusResponse> CheckTriggerStatus(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_typeOfAction = typeOfAction == null ? null : WorkflowExpression.Compile(typeOfAction);
-            WorkflowExpression.Validate(__workflow_typeOfAction, nameof(typeOfAction), required: true);
-            var __workflow_bodyreturnOrCartName = bodyreturnOrCartName == null ? null : WorkflowExpression.Compile(bodyreturnOrCartName);
-            WorkflowExpression.Validate(__workflow_bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_typeOfAction = WorkflowExpression.Compile(typeOfAction, nameof(typeOfAction), required: true);
+            var __workflow_bodyreturnOrCartName = WorkflowExpression.Compile(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
             return new DeferredBodyAction<CheckTriggerStatusResponse>(() =>
             {
                 var apiCallPath = "/checkTriggerStatus";
@@ -491,36 +435,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<ImportDataResponse> ImportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodyfileContents, Expression<Func<string>> bodyfileName, Expression<Func<bodyimportTransactionTypeInput>> bodyimportTransactionType, Expression<Func<string>> bodychartOfAccountsName, Expression<Func<bool>> bodyrecognizeFunctionalCurrency, Expression<Func<bool>> bodystopOnLookupErrors, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<bodyledgerAmountTypeInput>> bodyledgerAmountType = null, Expression<Func<string>> bodyfunctionalCurrencyValue = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodypackageName = bodypackageName == null ? null : WorkflowExpression.Compile(bodypackageName);
-            WorkflowExpression.Validate(__workflow_bodypackageName, nameof(bodypackageName), required: true);
-            var __workflow_bodyfileContents = bodyfileContents == null ? null : WorkflowExpression.Compile(bodyfileContents);
-            WorkflowExpression.Validate(__workflow_bodyfileContents, nameof(bodyfileContents), required: true);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyimportTransactionType = bodyimportTransactionType == null ? null : WorkflowExpression.Compile(bodyimportTransactionType);
-            WorkflowExpression.Validate(__workflow_bodyimportTransactionType, nameof(bodyimportTransactionType), required: true);
-            var __workflow_bodychartOfAccountsName = bodychartOfAccountsName == null ? null : WorkflowExpression.Compile(bodychartOfAccountsName);
-            WorkflowExpression.Validate(__workflow_bodychartOfAccountsName, nameof(bodychartOfAccountsName), required: true);
-            var __workflow_bodyrecognizeFunctionalCurrency = bodyrecognizeFunctionalCurrency == null ? null : WorkflowExpression.Compile(bodyrecognizeFunctionalCurrency);
-            WorkflowExpression.Validate(__workflow_bodyrecognizeFunctionalCurrency, nameof(bodyrecognizeFunctionalCurrency), required: true);
-            var __workflow_bodystopOnLookupErrors = bodystopOnLookupErrors == null ? null : WorkflowExpression.Compile(bodystopOnLookupErrors);
-            WorkflowExpression.Validate(__workflow_bodystopOnLookupErrors, nameof(bodystopOnLookupErrors), required: true);
-            var __workflow_bodyentityCode = bodyentityCode == null ? null : WorkflowExpression.Compile(bodyentityCode);
-            WorkflowExpression.Validate(__workflow_bodyentityCode, nameof(bodyentityCode), required: false);
-            var __workflow_bodycaseCode = bodycaseCode == null ? null : WorkflowExpression.Compile(bodycaseCode);
-            WorkflowExpression.Validate(__workflow_bodycaseCode, nameof(bodycaseCode), required: false);
-            var __workflow_bodyperiodCode = bodyperiodCode == null ? null : WorkflowExpression.Compile(bodyperiodCode);
-            WorkflowExpression.Validate(__workflow_bodyperiodCode, nameof(bodyperiodCode), required: false);
-            var __workflow_bodyjurisdictionCode = bodyjurisdictionCode == null ? null : WorkflowExpression.Compile(bodyjurisdictionCode);
-            WorkflowExpression.Validate(__workflow_bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
-            var __workflow_bodyledgerAmountType = bodyledgerAmountType == null ? null : WorkflowExpression.Compile(bodyledgerAmountType);
-            WorkflowExpression.Validate(__workflow_bodyledgerAmountType, nameof(bodyledgerAmountType), required: false);
-            var __workflow_bodyfunctionalCurrencyValue = bodyfunctionalCurrencyValue == null ? null : WorkflowExpression.Compile(bodyfunctionalCurrencyValue);
-            WorkflowExpression.Validate(__workflow_bodyfunctionalCurrencyValue, nameof(bodyfunctionalCurrencyValue), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodypackageName = WorkflowExpression.Compile(bodypackageName, nameof(bodypackageName), required: true);
+            var __workflow_bodyfileContents = WorkflowExpression.Compile(bodyfileContents, nameof(bodyfileContents), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyimportTransactionType = WorkflowExpression.Compile(bodyimportTransactionType, nameof(bodyimportTransactionType), required: true);
+            var __workflow_bodychartOfAccountsName = WorkflowExpression.Compile(bodychartOfAccountsName, nameof(bodychartOfAccountsName), required: true);
+            var __workflow_bodyrecognizeFunctionalCurrency = WorkflowExpression.Compile(bodyrecognizeFunctionalCurrency, nameof(bodyrecognizeFunctionalCurrency), required: true);
+            var __workflow_bodystopOnLookupErrors = WorkflowExpression.Compile(bodystopOnLookupErrors, nameof(bodystopOnLookupErrors), required: true);
+            var __workflow_bodyentityCode = WorkflowExpression.Compile(bodyentityCode, nameof(bodyentityCode), required: false);
+            var __workflow_bodycaseCode = WorkflowExpression.Compile(bodycaseCode, nameof(bodycaseCode), required: false);
+            var __workflow_bodyperiodCode = WorkflowExpression.Compile(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            var __workflow_bodyjurisdictionCode = WorkflowExpression.Compile(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            var __workflow_bodyledgerAmountType = WorkflowExpression.Compile(bodyledgerAmountType, nameof(bodyledgerAmountType), required: false);
+            var __workflow_bodyfunctionalCurrencyValue = WorkflowExpression.Compile(bodyfunctionalCurrencyValue, nameof(bodyfunctionalCurrencyValue), required: false);
             return new DeferredBodyAction<ImportDataResponse>(() =>
             {
                 var apiCallPath = "/importData";
@@ -592,12 +521,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction CorptaxEfileGroups(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_filingGroup = filingGroup == null ? null : WorkflowExpression.Compile(filingGroup);
-            WorkflowExpression.Validate(__workflow_filingGroup, nameof(filingGroup), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_filingGroup = WorkflowExpression.Compile(filingGroup, nameof(filingGroup), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/efileGroups";
@@ -614,18 +540,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction CorptaxEfilePackage(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup, Expression<Func<bool>> bodyefilePackageDetails, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodyform = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_filingGroup = filingGroup == null ? null : WorkflowExpression.Compile(filingGroup);
-            WorkflowExpression.Validate(__workflow_filingGroup, nameof(filingGroup), required: true);
-            var __workflow_bodyefilePackageDetails = bodyefilePackageDetails == null ? null : WorkflowExpression.Compile(bodyefilePackageDetails);
-            WorkflowExpression.Validate(__workflow_bodyefilePackageDetails, nameof(bodyefilePackageDetails), required: true);
-            var __workflow_bodyentityCode = bodyentityCode == null ? null : WorkflowExpression.Compile(bodyentityCode);
-            WorkflowExpression.Validate(__workflow_bodyentityCode, nameof(bodyentityCode), required: false);
-            var __workflow_bodyform = bodyform == null ? null : WorkflowExpression.Compile(bodyform);
-            WorkflowExpression.Validate(__workflow_bodyform, nameof(bodyform), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_filingGroup = WorkflowExpression.Compile(filingGroup, nameof(filingGroup), required: true);
+            var __workflow_bodyefilePackageDetails = WorkflowExpression.Compile(bodyefilePackageDetails, nameof(bodyefilePackageDetails), required: true);
+            var __workflow_bodyentityCode = WorkflowExpression.Compile(bodyentityCode, nameof(bodyentityCode), required: false);
+            var __workflow_bodyform = WorkflowExpression.Compile(bodyform, nameof(bodyform), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/efilePackage";
@@ -662,14 +582,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IBodyWorkflowAction<GetJobHistoryResponse> GetJobHistory(Expression<Func<string>> environmentName, Expression<Func<string>> bodyjobToken, Expression<Func<bodyreportInput>> bodyreport = null, Expression<Func<bodyreportFormatInput>> bodyreportFormat = null)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_bodyjobToken = bodyjobToken == null ? null : WorkflowExpression.Compile(bodyjobToken);
-            WorkflowExpression.Validate(__workflow_bodyjobToken, nameof(bodyjobToken), required: true);
-            var __workflow_bodyreport = bodyreport == null ? null : WorkflowExpression.Compile(bodyreport);
-            WorkflowExpression.Validate(__workflow_bodyreport, nameof(bodyreport), required: false);
-            var __workflow_bodyreportFormat = bodyreportFormat == null ? null : WorkflowExpression.Compile(bodyreportFormat);
-            WorkflowExpression.Validate(__workflow_bodyreportFormat, nameof(bodyreportFormat), required: false);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_bodyjobToken = WorkflowExpression.Compile(bodyjobToken, nameof(bodyjobToken), required: true);
+            var __workflow_bodyreport = WorkflowExpression.Compile(bodyreport, nameof(bodyreport), required: false);
+            var __workflow_bodyreportFormat = WorkflowExpression.Compile(bodyreportFormat, nameof(bodyreportFormat), required: false);
             return new DeferredBodyAction<GetJobHistoryResponse>(() =>
             {
                 var apiCallPath = "/JobHistoryReports";
@@ -724,14 +640,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction GetGmtDiagnostics(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodygmtSetting, Expression<Func<string>> bodygmtDiagnosticName)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodygmtSetting = bodygmtSetting == null ? null : WorkflowExpression.Compile(bodygmtSetting);
-            WorkflowExpression.Validate(__workflow_bodygmtSetting, nameof(bodygmtSetting), required: true);
-            var __workflow_bodygmtDiagnosticName = bodygmtDiagnosticName == null ? null : WorkflowExpression.Compile(bodygmtDiagnosticName);
-            WorkflowExpression.Validate(__workflow_bodygmtDiagnosticName, nameof(bodygmtDiagnosticName), required: true);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodygmtSetting = WorkflowExpression.Compile(bodygmtSetting, nameof(bodygmtSetting), required: true);
+            var __workflow_bodygmtDiagnosticName = WorkflowExpression.Compile(bodygmtDiagnosticName, nameof(bodygmtDiagnosticName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/gmtDiagnosticsData";
@@ -757,12 +669,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
         public IWorkflowAction ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName)
         {
-            var __workflow_environmentName = environmentName == null ? null : WorkflowExpression.Compile(environmentName);
-            WorkflowExpression.Validate(__workflow_environmentName, nameof(environmentName), required: true);
-            var __workflow_enterpriseName = enterpriseName == null ? null : WorkflowExpression.Compile(enterpriseName);
-            WorkflowExpression.Validate(__workflow_enterpriseName, nameof(enterpriseName), required: true);
-            var __workflow_bodyreturnName = bodyreturnName == null ? null : WorkflowExpression.Compile(bodyreturnName);
-            WorkflowExpression.Validate(__workflow_bodyreturnName, nameof(bodyreturnName), required: true);
+            var __workflow_environmentName = WorkflowExpression.Compile(environmentName, nameof(environmentName), required: true);
+            var __workflow_enterpriseName = WorkflowExpression.Compile(enterpriseName, nameof(enterpriseName), required: true);
+            var __workflow_bodyreturnName = WorkflowExpression.Compile(bodyreturnName, nameof(bodyreturnName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/ReturnCalculationDetails";

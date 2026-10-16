@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedeclarativeconn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onedeclarativeconn")]
         public IBodyWorkflowAction<GetInvoiceFromGetMyInvoicesResponse> GetInvoiceFromGetMyInvoices(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodyapiKey)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodyapiKey = bodyapiKey == null ? null : WorkflowExpression.Compile(bodyapiKey);
-            WorkflowExpression.Validate(__workflow_bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
             return new DeferredBodyAction<GetInvoiceFromGetMyInvoicesResponse>(() =>
             {
                 var apiCallPath = "/accounts/v2/sendDocumentsToPowerAutomate";

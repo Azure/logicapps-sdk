@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetCreditBalanceResponse> GetCreditBalance(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetCreditBalanceResponse>(() =>
             {
                 var apiCallPath = "/api/v1/account/credits/balance";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetCreditUsageResponse> GetCreditUsage(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetCreditUsageResponse>(() =>
             {
                 var apiCallPath = "/api/v1/account/credits/content_scan_usage";
@@ -43,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<GetPaymentResponse> GetPayment(Expression<Func<string>> accept)
         {
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
             return new DeferredBodyAction<GetPaymentResponse>(() =>
             {
                 var apiCallPath = "/api/v1/account/credits/payments";
@@ -58,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<PostAIDetectionResponse> PostAIDetection(Expression<Func<string>> bodycontent = null)
         {
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
             return new DeferredBodyAction<PostAIDetectionResponse>(() =>
             {
                 var apiCallPath = "/api/v1/scan/ai";
@@ -85,8 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
         public IBodyWorkflowAction<PostUrlAIDetectionResponse> PostUrlAIDetection(Expression<Func<string>> bodyurl = null)
         {
-            var __workflow_bodyurl = bodyurl == null ? null : WorkflowExpression.Compile(bodyurl);
-            WorkflowExpression.Validate(__workflow_bodyurl, nameof(bodyurl), required: false);
+            var __workflow_bodyurl = WorkflowExpression.Compile(bodyurl, nameof(bodyurl), required: false);
             return new DeferredBodyAction<PostUrlAIDetectionResponse>(() =>
             {
                 var apiCallPath = "/api/v1/scan/url";

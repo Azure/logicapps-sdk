@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencoregovernance")]
         public IBodyWorkflowAction<GetViolationsResponse> GetViolations(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_checkId = checkId == null ? null : WorkflowExpression.Compile(checkId);
-            WorkflowExpression.Validate(__workflow_checkId, nameof(checkId), required: true);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_checkId = WorkflowExpression.Compile(checkId, nameof(checkId), required: true);
             return new DeferredBodyAction<GetViolationsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_checkId, 1));
@@ -33,12 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
     {
         public IWorkflowTrigger CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, FlowRecurrence recurrence = null)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
-            var __workflow_environmentId = environmentId == null ? null : WorkflowExpression.Compile(environmentId);
-            WorkflowExpression.Validate(__workflow_environmentId, nameof(environmentId), required: true);
-            var __workflow_checkId = checkId == null ? null : WorkflowExpression.Compile(checkId);
-            WorkflowExpression.Validate(__workflow_checkId, nameof(checkId), required: true);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
+            var __workflow_environmentId = WorkflowExpression.Compile(environmentId, nameof(environmentId), required: true);
+            var __workflow_checkId = WorkflowExpression.Compile(checkId, nameof(checkId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_checkId, 1));

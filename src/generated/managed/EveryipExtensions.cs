@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
         public IBodyWorkflowAction<BrowseResponse> Browse(Expression<Func<string>> cause, Expression<Func<int>> take = null, Expression<Func<int>> page = null)
         {
-            var __workflow_cause = cause == null ? null : WorkflowExpression.Compile(cause);
-            WorkflowExpression.Validate(__workflow_cause, nameof(cause), required: true);
-            var __workflow_take = take == null ? null : WorkflowExpression.Compile(take);
-            WorkflowExpression.Validate(__workflow_take, nameof(take), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_cause = WorkflowExpression.Compile(cause, nameof(cause), required: true);
+            var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<BrowseResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/browse/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_cause, 1));
@@ -35,12 +32,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> term, Expression<Func<int>> take = null, Expression<Func<string>> cause = null)
         {
-            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
-            WorkflowExpression.Validate(__workflow_term, nameof(term), required: true);
-            var __workflow_take = take == null ? null : WorkflowExpression.Compile(take);
-            WorkflowExpression.Validate(__workflow_take, nameof(take), required: false);
-            var __workflow_cause = cause == null ? null : WorkflowExpression.Compile(cause);
-            WorkflowExpression.Validate(__workflow_cause, nameof(cause), required: false);
+            var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
+            var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
+            var __workflow_cause = WorkflowExpression.Compile(cause, nameof(cause), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/search/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_term, 1));
@@ -57,8 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
         public IBodyWorkflowAction<DetailsResponse> Details(Expression<Func<string>> identifier)
         {
-            var __workflow_identifier = identifier == null ? null : WorkflowExpression.Compile(identifier);
-            WorkflowExpression.Validate(__workflow_identifier, nameof(identifier), required: true);
+            var __workflow_identifier = WorkflowExpression.Compile(identifier, nameof(identifier), required: true);
             return new DeferredBodyAction<DetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/nonprofit/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_identifier, 1));

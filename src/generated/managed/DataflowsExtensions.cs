@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
         public IBodyWorkflowAction<DataflowModel> RefreshDataflow(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
         {
-            var __workflow_workspaceType = workspaceType == null ? null : WorkflowExpression.Compile(workspaceType);
-            WorkflowExpression.Validate(__workflow_workspaceType, nameof(workspaceType), required: true);
-            var __workflow_groupIdForRefreshDataflow = groupIdForRefreshDataflow == null ? null : WorkflowExpression.Compile(groupIdForRefreshDataflow);
-            WorkflowExpression.Validate(__workflow_groupIdForRefreshDataflow, nameof(groupIdForRefreshDataflow), required: true);
-            var __workflow_dataflowIdForRefreshDataflow = dataflowIdForRefreshDataflow == null ? null : WorkflowExpression.Compile(dataflowIdForRefreshDataflow);
-            WorkflowExpression.Validate(__workflow_dataflowIdForRefreshDataflow, nameof(dataflowIdForRefreshDataflow), required: true);
+            var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
+            var __workflow_groupIdForRefreshDataflow = WorkflowExpression.Compile(groupIdForRefreshDataflow, nameof(groupIdForRefreshDataflow), required: true);
+            var __workflow_dataflowIdForRefreshDataflow = WorkflowExpression.Compile(dataflowIdForRefreshDataflow, nameof(dataflowIdForRefreshDataflow), required: true);
             return new DeferredBodyAction<DataflowModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupIdForRefreshDataflow, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataflowIdForRefreshDataflow, 1));
@@ -34,12 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
     {
         public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, FlowRecurrence recurrence = null)
         {
-            var __workflow_workspaceType = workspaceType == null ? null : WorkflowExpression.Compile(workspaceType);
-            WorkflowExpression.Validate(__workflow_workspaceType, nameof(workspaceType), required: true);
-            var __workflow_groupIdForOnRefreshComplete = groupIdForOnRefreshComplete == null ? null : WorkflowExpression.Compile(groupIdForOnRefreshComplete);
-            WorkflowExpression.Validate(__workflow_groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
-            var __workflow_dataflowIdForOnRefreshComplete = dataflowIdForOnRefreshComplete == null ? null : WorkflowExpression.Compile(dataflowIdForOnRefreshComplete);
-            WorkflowExpression.Validate(__workflow_dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
+            var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
+            var __workflow_groupIdForOnRefreshComplete = WorkflowExpression.Compile(groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
+            var __workflow_dataflowIdForOnRefreshComplete = WorkflowExpression.Compile(dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
             return new DeferredBodyTrigger<RefreshModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupIdForOnRefreshComplete, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dataflowIdForOnRefreshComplete, 1));

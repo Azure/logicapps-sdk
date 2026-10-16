@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IBodyWorkflowAction<GroupExtended> GroupMgrGroupApproval(Expression<Func<string>> bodylistItemId, Expression<Func<bodyapprovedInput>> bodyapproved)
         {
-            var __workflow_bodylistItemId = bodylistItemId == null ? null : WorkflowExpression.Compile(bodylistItemId);
-            WorkflowExpression.Validate(__workflow_bodylistItemId, nameof(bodylistItemId), required: true);
-            var __workflow_bodyapproved = bodyapproved == null ? null : WorkflowExpression.Compile(bodyapproved);
-            WorkflowExpression.Validate(__workflow_bodyapproved, nameof(bodyapproved), required: true);
+            var __workflow_bodylistItemId = WorkflowExpression.Compile(bodylistItemId, nameof(bodylistItemId), required: true);
+            var __workflow_bodyapproved = WorkflowExpression.Compile(bodyapproved, nameof(bodyapproved), required: true);
             return new DeferredBodyAction<GroupExtended>(() =>
             {
                 var apiCallPath = "/api/ConfimationTrigger";
@@ -40,24 +38,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IBodyWorkflowAction<GroupExtended> GroupMgrCreateGroup(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodyemail, Expression<Func<string[]>> bodyowners, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycreatedBy = null)
         {
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyowners = bodyowners == null ? null : WorkflowExpression.Compile(bodyowners);
-            WorkflowExpression.Validate(__workflow_bodyowners, nameof(bodyowners), required: true);
-            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
-            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: false);
-            var __workflow_bodygroupType = bodygroupType == null ? null : WorkflowExpression.Compile(bodygroupType);
-            WorkflowExpression.Validate(__workflow_bodygroupType, nameof(bodygroupType), required: false);
-            var __workflow_bodyisPublic = bodyisPublic == null ? null : WorkflowExpression.Compile(bodyisPublic);
-            WorkflowExpression.Validate(__workflow_bodyisPublic, nameof(bodyisPublic), required: false);
-            var __workflow_bodycreateTeam = bodycreateTeam == null ? null : WorkflowExpression.Compile(bodycreateTeam);
-            WorkflowExpression.Validate(__workflow_bodycreateTeam, nameof(bodycreateTeam), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodycreatedBy = bodycreatedBy == null ? null : WorkflowExpression.Compile(bodycreatedBy);
-            WorkflowExpression.Validate(__workflow_bodycreatedBy, nameof(bodycreatedBy), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyowners = WorkflowExpression.Compile(bodyowners, nameof(bodyowners), required: true);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: false);
+            var __workflow_bodygroupType = WorkflowExpression.Compile(bodygroupType, nameof(bodygroupType), required: false);
+            var __workflow_bodyisPublic = WorkflowExpression.Compile(bodyisPublic, nameof(bodyisPublic), required: false);
+            var __workflow_bodycreateTeam = WorkflowExpression.Compile(bodycreateTeam, nameof(bodycreateTeam), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodycreatedBy = WorkflowExpression.Compile(bodycreatedBy, nameof(bodycreatedBy), required: false);
             return new DeferredBodyAction<GroupExtended>(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -139,22 +128,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IBodyWorkflowAction<GroupExtended> GroupMgrUpdateGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodyowners = null, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null)
         {
-            var __workflow_bodygroupId = bodygroupId == null ? null : WorkflowExpression.Compile(bodygroupId);
-            WorkflowExpression.Validate(__workflow_bodygroupId, nameof(bodygroupId), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodyowners = bodyowners == null ? null : WorkflowExpression.Compile(bodyowners);
-            WorkflowExpression.Validate(__workflow_bodyowners, nameof(bodyowners), required: false);
-            var __workflow_bodymembers = bodymembers == null ? null : WorkflowExpression.Compile(bodymembers);
-            WorkflowExpression.Validate(__workflow_bodymembers, nameof(bodymembers), required: false);
-            var __workflow_bodygroupType = bodygroupType == null ? null : WorkflowExpression.Compile(bodygroupType);
-            WorkflowExpression.Validate(__workflow_bodygroupType, nameof(bodygroupType), required: false);
-            var __workflow_bodyisPublic = bodyisPublic == null ? null : WorkflowExpression.Compile(bodyisPublic);
-            WorkflowExpression.Validate(__workflow_bodyisPublic, nameof(bodyisPublic), required: false);
-            var __workflow_bodycreateTeam = bodycreateTeam == null ? null : WorkflowExpression.Compile(bodycreateTeam);
-            WorkflowExpression.Validate(__workflow_bodycreateTeam, nameof(bodycreateTeam), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodygroupId = WorkflowExpression.Compile(bodygroupId, nameof(bodygroupId), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodyowners = WorkflowExpression.Compile(bodyowners, nameof(bodyowners), required: false);
+            var __workflow_bodymembers = WorkflowExpression.Compile(bodymembers, nameof(bodymembers), required: false);
+            var __workflow_bodygroupType = WorkflowExpression.Compile(bodygroupType, nameof(bodygroupType), required: false);
+            var __workflow_bodyisPublic = WorkflowExpression.Compile(bodyisPublic, nameof(bodyisPublic), required: false);
+            var __workflow_bodycreateTeam = WorkflowExpression.Compile(bodycreateTeam, nameof(bodycreateTeam), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
             return new DeferredBodyAction<GroupExtended>(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -238,8 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IWorkflowAction GroupMgrDeleteGroup(Expression<Func<string>> bodylistItemId)
         {
-            var __workflow_bodylistItemId = bodylistItemId == null ? null : WorkflowExpression.Compile(bodylistItemId);
-            WorkflowExpression.Validate(__workflow_bodylistItemId, nameof(bodylistItemId), required: true);
+            var __workflow_bodylistItemId = WorkflowExpression.Compile(bodylistItemId, nameof(bodylistItemId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -261,10 +241,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
         public IWorkflowAction GroupMgrArchiveGroup(Expression<Func<string>> bodylistItemId, Expression<Func<bodyarchiveInput>> bodyarchive)
         {
-            var __workflow_bodylistItemId = bodylistItemId == null ? null : WorkflowExpression.Compile(bodylistItemId);
-            WorkflowExpression.Validate(__workflow_bodylistItemId, nameof(bodylistItemId), required: true);
-            var __workflow_bodyarchive = bodyarchive == null ? null : WorkflowExpression.Compile(bodyarchive);
-            WorkflowExpression.Validate(__workflow_bodyarchive, nameof(bodyarchive), required: true);
+            var __workflow_bodylistItemId = WorkflowExpression.Compile(bodylistItemId, nameof(bodylistItemId), required: true);
+            var __workflow_bodyarchive = WorkflowExpression.Compile(bodyarchive, nameof(bodyarchive), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/GroupBuilderTrigger";
@@ -290,8 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     {
         public IWorkflowTrigger GroupMgrGroupRequested(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhookrequest/GroupRequested";

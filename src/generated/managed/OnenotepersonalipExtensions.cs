@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         public IBodyWorkflowAction<NotebookPostResponse> Notebook(Expression<Func<string>> bodydisplayName)
         {
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
             return new DeferredBodyAction<NotebookPostResponse>(() =>
             {
                 var apiCallPath = "/notebooks";
@@ -45,8 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         public IBodyWorkflowAction<NotebookGetAResponse> NotebookGetA(Expression<Func<string>> notebookId)
         {
-            var __workflow_notebookId = notebookId == null ? null : WorkflowExpression.Compile(notebookId);
-            WorkflowExpression.Validate(__workflow_notebookId, nameof(notebookId), required: true);
+            var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
             return new DeferredBodyAction<NotebookGetAResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notebookId, 1));
@@ -59,26 +57,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         public IBodyWorkflowAction<SectionGetResponse> SectionGet(Expression<Func<string>> notebookId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
         {
-            var __workflow_notebookId = notebookId == null ? null : WorkflowExpression.Compile(notebookId);
-            WorkflowExpression.Validate(__workflow_notebookId, nameof(notebookId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
+            var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredBodyAction<SectionGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notebookId, 1));
@@ -109,10 +97,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         public IBodyWorkflowAction<SectionPostResponse> Section(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
         {
-            var __workflow_notebookId = notebookId == null ? null : WorkflowExpression.Compile(notebookId);
-            WorkflowExpression.Validate(__workflow_notebookId, nameof(notebookId), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_notebookId = WorkflowExpression.Compile(notebookId, nameof(notebookId), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
             return new DeferredBodyAction<SectionPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(__workflow_notebookId, 1));
@@ -134,26 +120,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         public IBodyWorkflowAction<PageGetResponse> PageGet(Expression<Func<string>> sectionId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
         {
-            var __workflow_sectionId = sectionId == null ? null : WorkflowExpression.Compile(sectionId);
-            WorkflowExpression.Validate(__workflow_sectionId, nameof(sectionId), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_expand = expand == null ? null : WorkflowExpression.Compile(expand);
-            WorkflowExpression.Validate(__workflow_expand, nameof(expand), required: false);
-            var __workflow_orderby = orderby == null ? null : WorkflowExpression.Compile(orderby);
-            WorkflowExpression.Validate(__workflow_orderby, nameof(orderby), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_skiptoken = skiptoken == null ? null : WorkflowExpression.Compile(skiptoken);
-            WorkflowExpression.Validate(__workflow_skiptoken, nameof(skiptoken), required: false);
+            var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_expand = WorkflowExpression.Compile(expand, nameof(expand), required: false);
+            var __workflow_orderby = WorkflowExpression.Compile(orderby, nameof(orderby), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_skiptoken = WorkflowExpression.Compile(skiptoken, nameof(skiptoken), required: false);
             return new DeferredBodyAction<PageGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sectionId, 1));
@@ -184,12 +160,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
         public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
         {
-            var __workflow_sectionId = sectionId == null ? null : WorkflowExpression.Compile(sectionId);
-            WorkflowExpression.Validate(__workflow_sectionId, nameof(sectionId), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_sectionId = WorkflowExpression.Compile(sectionId, nameof(sectionId), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PagePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sectionId, 1));

@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IBodyWorkflowAction<string> ExportForm(Expression<Func<string>> formId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodypages = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodypages = bodypages == null ? null : WorkflowExpression.Compile(bodypages);
-            WorkflowExpression.Validate(__workflow_bodypages, nameof(bodypages), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodypages = WorkflowExpression.Compile(bodypages, nameof(bodypages), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}/exports", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
@@ -50,20 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IWorkflowAction CreateForm(Expression<Func<bool>> runCalculations = null, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyoverrideDefaultFormName = null, Expression<Func<string>> bodytemplateId = null, Expression<Func<string>> bodyassignmentid = null, Expression<Func<string>> bodyassignmenttype = null, Expression<Func<string>> bodyassignmenturl = null)
         {
-            var __workflow_runCalculations = runCalculations == null ? null : WorkflowExpression.Compile(runCalculations);
-            WorkflowExpression.Validate(__workflow_runCalculations, nameof(runCalculations), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyoverrideDefaultFormName = bodyoverrideDefaultFormName == null ? null : WorkflowExpression.Compile(bodyoverrideDefaultFormName);
-            WorkflowExpression.Validate(__workflow_bodyoverrideDefaultFormName, nameof(bodyoverrideDefaultFormName), required: false);
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
-            var __workflow_bodyassignmentid = bodyassignmentid == null ? null : WorkflowExpression.Compile(bodyassignmentid);
-            WorkflowExpression.Validate(__workflow_bodyassignmentid, nameof(bodyassignmentid), required: false);
-            var __workflow_bodyassignmenttype = bodyassignmenttype == null ? null : WorkflowExpression.Compile(bodyassignmenttype);
-            WorkflowExpression.Validate(__workflow_bodyassignmenttype, nameof(bodyassignmenttype), required: false);
-            var __workflow_bodyassignmenturl = bodyassignmenturl == null ? null : WorkflowExpression.Compile(bodyassignmenturl);
-            WorkflowExpression.Validate(__workflow_bodyassignmenturl, nameof(bodyassignmenturl), required: false);
+            var __workflow_runCalculations = WorkflowExpression.Compile(runCalculations, nameof(runCalculations), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyoverrideDefaultFormName = WorkflowExpression.Compile(bodyoverrideDefaultFormName, nameof(bodyoverrideDefaultFormName), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyassignmentid = WorkflowExpression.Compile(bodyassignmentid, nameof(bodyassignmentid), required: false);
+            var __workflow_bodyassignmenttype = WorkflowExpression.Compile(bodyassignmenttype, nameof(bodyassignmenttype), required: false);
+            var __workflow_bodyassignmenturl = WorkflowExpression.Compile(bodyassignmenturl, nameof(bodyassignmenturl), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v2/formz";
@@ -138,8 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
         public IBodyWorkflowAction<FormDto> GetForm(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<FormDto>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -154,12 +143,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
     {
         public IWorkflowTrigger FormCompleted(Expression<Func<string>> bodyentityId, Expression<Func<string>> bodyeventType = null, Expression<Func<bool>> bodyenabled = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyentityId = bodyentityId == null ? null : WorkflowExpression.Compile(bodyentityId);
-            WorkflowExpression.Validate(__workflow_bodyentityId, nameof(bodyentityId), required: true);
-            var __workflow_bodyeventType = bodyeventType == null ? null : WorkflowExpression.Compile(bodyeventType);
-            WorkflowExpression.Validate(__workflow_bodyeventType, nameof(bodyeventType), required: false);
-            var __workflow_bodyenabled = bodyenabled == null ? null : WorkflowExpression.Compile(bodyenabled);
-            WorkflowExpression.Validate(__workflow_bodyenabled, nameof(bodyenabled), required: false);
+            var __workflow_bodyentityId = WorkflowExpression.Compile(bodyentityId, nameof(bodyentityId), required: true);
+            var __workflow_bodyeventType = WorkflowExpression.Compile(bodyeventType, nameof(bodyeventType), required: false);
+            var __workflow_bodyenabled = WorkflowExpression.Compile(bodyenabled, nameof(bodyenabled), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v2/webhooks";

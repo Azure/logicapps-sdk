@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<JobReport[]> ListJobs(Expression<Func<bool>> jobIdsOnly, Expression<Func<string>> fromTs = null, Expression<Func<string>> toTs = null, Expression<Func<bool>> open = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_jobIdsOnly = jobIdsOnly == null ? null : WorkflowExpression.Compile(jobIdsOnly);
-            WorkflowExpression.Validate(__workflow_jobIdsOnly, nameof(jobIdsOnly), required: true);
-            var __workflow_fromTs = fromTs == null ? null : WorkflowExpression.Compile(fromTs);
-            WorkflowExpression.Validate(__workflow_fromTs, nameof(fromTs), required: false);
-            var __workflow_toTs = toTs == null ? null : WorkflowExpression.Compile(toTs);
-            WorkflowExpression.Validate(__workflow_toTs, nameof(toTs), required: false);
-            var __workflow_open = open == null ? null : WorkflowExpression.Compile(open);
-            WorkflowExpression.Validate(__workflow_open, nameof(open), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_jobIdsOnly = WorkflowExpression.Compile(jobIdsOnly, nameof(jobIdsOnly), required: true);
+            var __workflow_fromTs = WorkflowExpression.Compile(fromTs, nameof(fromTs), required: false);
+            var __workflow_toTs = WorkflowExpression.Compile(toTs, nameof(toTs), required: false);
+            var __workflow_open = WorkflowExpression.Compile(open, nameof(open), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<JobReport[]>(() =>
             {
                 var apiCallPath = "/jobs";
@@ -51,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<JobReport> GetJob(Expression<Func<string>> jobId)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<JobReport>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jobId, 1));
@@ -65,8 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<RecipientReport[]> ListRecipients(Expression<Func<string>> jobId)
         {
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<RecipientReport[]>(() =>
             {
                 var apiCallPath = "/sms";

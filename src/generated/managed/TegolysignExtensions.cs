@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tegolysign")]
         public IWorkflowAction ImportPDF(Expression<Func<object>> file)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/webhook/create-draft";
@@ -29,8 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
     {
         public IWorkflowTrigger CompletelySigned(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/webhook/end-trigger";

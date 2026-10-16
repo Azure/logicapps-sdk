@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Films[]> GetFilms(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<Films[]>(() =>
             {
                 var apiCallPath = "/films";
@@ -33,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Films[]> GetFilm(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<Films[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/films/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -51,10 +47,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<People[]> GetPeople(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<People[]>(() =>
             {
                 var apiCallPath = "/people";
@@ -71,10 +65,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<People[]> GetPerson(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<People[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -89,10 +81,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Locations[]> GetLocations(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<Locations[]>(() =>
             {
                 var apiCallPath = "/locations";
@@ -109,10 +99,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Locations[]> GetLocation(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<Locations[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/locations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -127,10 +115,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Species[]> GetSpecies(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<Species[]>(() =>
             {
                 var apiCallPath = "/species";
@@ -147,10 +133,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Species[]> GetASpecies(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<Species[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/species/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -165,10 +149,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Vehicles[]> GetVehicles(Expression<Func<string>> fields = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<Vehicles[]>(() =>
             {
                 var apiCallPath = "/vehicles";
@@ -185,10 +167,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Studioghibliip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "studioghibliip")]
         public IBodyWorkflowAction<Vehicles[]> GetVehicle(Expression<Func<string>> id, Expression<Func<string>> fields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<Vehicles[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/vehicles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

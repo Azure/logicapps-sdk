@@ -31,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
         public IBodyWorkflowAction<JToken> GetMailboxSchema(Expression<Func<string>> mailboxID)
         {
-            var __workflow_mailboxID = mailboxID == null ? null : WorkflowExpression.Compile(mailboxID);
-            WorkflowExpression.Validate(__workflow_mailboxID, nameof(mailboxID), required: true);
+            var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
@@ -45,8 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
         public IBodyWorkflowAction<JToken> GetTableSchema(Expression<Func<string>> tableID)
         {
-            var __workflow_tableID = tableID == null ? null : WorkflowExpression.Compile(tableID);
-            WorkflowExpression.Validate(__workflow_tableID, nameof(tableID), required: true);
+            var __workflow_tableID = WorkflowExpression.Compile(tableID, nameof(tableID), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableID, 1));
@@ -61,8 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
     {
         public IBodyWorkflowTrigger<JToken> NewDocumentExpanded(Expression<Func<string>> mailboxID, FlowRecurrence recurrence = null)
         {
-            var __workflow_mailboxID = mailboxID == null ? null : WorkflowExpression.Compile(mailboxID);
-            WorkflowExpression.Validate(__workflow_mailboxID, nameof(mailboxID), required: true);
+            var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
@@ -83,8 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 
         public IBodyWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID, FlowRecurrence recurrence = null)
         {
-            var __workflow_mailboxID = mailboxID == null ? null : WorkflowExpression.Compile(mailboxID);
-            WorkflowExpression.Validate(__workflow_mailboxID, nameof(mailboxID), required: true);
+            var __workflow_mailboxID = WorkflowExpression.Compile(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mailboxID, 1));
@@ -105,8 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
 
         public IBodyWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID, FlowRecurrence recurrence = null)
         {
-            var __workflow_tableID = tableID == null ? null : WorkflowExpression.Compile(tableID);
-            WorkflowExpression.Validate(__workflow_tableID, nameof(tableID), required: true);
+            var __workflow_tableID = WorkflowExpression.Compile(tableID, nameof(tableID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableID, 1));

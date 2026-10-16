@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
         public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodynotificationsharedLinkemail, Expression<Func<string>> bodynotificationtext = null, Expression<Func<string>> bodynotificationdetail = null, Expression<Func<string>> bodynotificationsharedLinksubject = null, Expression<Func<string>> bodydocumenttemplateCode = null, Expression<Func<string>> bodycallbackMails = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodygroupCode = bodygroupCode == null ? null : WorkflowExpression.Compile(bodygroupCode);
-            WorkflowExpression.Validate(__workflow_bodygroupCode, nameof(bodygroupCode), required: true);
-            var __workflow_bodynotificationsharedLinkemail = bodynotificationsharedLinkemail == null ? null : WorkflowExpression.Compile(bodynotificationsharedLinkemail);
-            WorkflowExpression.Validate(__workflow_bodynotificationsharedLinkemail, nameof(bodynotificationsharedLinkemail), required: true);
-            var __workflow_bodynotificationtext = bodynotificationtext == null ? null : WorkflowExpression.Compile(bodynotificationtext);
-            WorkflowExpression.Validate(__workflow_bodynotificationtext, nameof(bodynotificationtext), required: false);
-            var __workflow_bodynotificationdetail = bodynotificationdetail == null ? null : WorkflowExpression.Compile(bodynotificationdetail);
-            WorkflowExpression.Validate(__workflow_bodynotificationdetail, nameof(bodynotificationdetail), required: false);
-            var __workflow_bodynotificationsharedLinksubject = bodynotificationsharedLinksubject == null ? null : WorkflowExpression.Compile(bodynotificationsharedLinksubject);
-            WorkflowExpression.Validate(__workflow_bodynotificationsharedLinksubject, nameof(bodynotificationsharedLinksubject), required: false);
-            var __workflow_bodydocumenttemplateCode = bodydocumenttemplateCode == null ? null : WorkflowExpression.Compile(bodydocumenttemplateCode);
-            WorkflowExpression.Validate(__workflow_bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
-            var __workflow_bodycallbackMails = bodycallbackMails == null ? null : WorkflowExpression.Compile(bodycallbackMails);
-            WorkflowExpression.Validate(__workflow_bodycallbackMails, nameof(bodycallbackMails), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodygroupCode = WorkflowExpression.Compile(bodygroupCode, nameof(bodygroupCode), required: true);
+            var __workflow_bodynotificationsharedLinkemail = WorkflowExpression.Compile(bodynotificationsharedLinkemail, nameof(bodynotificationsharedLinkemail), required: true);
+            var __workflow_bodynotificationtext = WorkflowExpression.Compile(bodynotificationtext, nameof(bodynotificationtext), required: false);
+            var __workflow_bodynotificationdetail = WorkflowExpression.Compile(bodynotificationdetail, nameof(bodynotificationdetail), required: false);
+            var __workflow_bodynotificationsharedLinksubject = WorkflowExpression.Compile(bodynotificationsharedLinksubject, nameof(bodynotificationsharedLinksubject), required: false);
+            var __workflow_bodydocumenttemplateCode = WorkflowExpression.Compile(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
+            var __workflow_bodycallbackMails = WorkflowExpression.Compile(bodycallbackMails, nameof(bodycallbackMails), required: false);
             return new DeferredBodyAction<SendSignRequestResponse>(() =>
             {
                 var apiCallPath = "/documents/api/v3/messages/";
@@ -120,14 +111,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
         public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodydocumenttemplateCode = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_accept = accept == null ? null : WorkflowExpression.Compile(accept);
-            WorkflowExpression.Validate(__workflow_accept, nameof(accept), required: true);
-            var __workflow_bodygroupCode = bodygroupCode == null ? null : WorkflowExpression.Compile(bodygroupCode);
-            WorkflowExpression.Validate(__workflow_bodygroupCode, nameof(bodygroupCode), required: true);
-            var __workflow_bodydocumenttemplateCode = bodydocumenttemplateCode == null ? null : WorkflowExpression.Compile(bodydocumenttemplateCode);
-            WorkflowExpression.Validate(__workflow_bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_accept = WorkflowExpression.Compile(accept, nameof(accept), required: true);
+            var __workflow_bodygroupCode = WorkflowExpression.Compile(bodygroupCode, nameof(bodygroupCode), required: true);
+            var __workflow_bodydocumenttemplateCode = WorkflowExpression.Compile(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
             return new DeferredBodyAction<CreateSignRequestResponse>(() =>
             {
                 var apiCallPath = "/documents/api/v3/messages/dispatch";

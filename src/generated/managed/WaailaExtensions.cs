@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots(Expression<Func<string>> wauth)
         {
-            var __workflow_wauth = wauth == null ? null : WorkflowExpression.Compile(wauth);
-            WorkflowExpression.Validate(__workflow_wauth, nameof(wauth), required: true);
+            var __workflow_wauth = WorkflowExpression.Compile(wauth, nameof(wauth), required: true);
             return new DeferredBodyAction<GetDepotsResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/depots";
@@ -28,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite(Expression<Func<string>> depot, Expression<Func<string>> testsuite, Expression<Func<string>> wauth)
         {
-            var __workflow_depot = depot == null ? null : WorkflowExpression.Compile(depot);
-            WorkflowExpression.Validate(__workflow_depot, nameof(depot), required: true);
-            var __workflow_testsuite = testsuite == null ? null : WorkflowExpression.Compile(testsuite);
-            WorkflowExpression.Validate(__workflow_testsuite, nameof(testsuite), required: true);
-            var __workflow_wauth = wauth == null ? null : WorkflowExpression.Compile(wauth);
-            WorkflowExpression.Validate(__workflow_wauth, nameof(wauth), required: true);
+            var __workflow_depot = WorkflowExpression.Compile(depot, nameof(depot), required: true);
+            var __workflow_testsuite = WorkflowExpression.Compile(testsuite, nameof(testsuite), required: true);
+            var __workflow_wauth = WorkflowExpression.Compile(wauth, nameof(wauth), required: true);
             return new DeferredBodyAction<GetTestsuiteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_depot, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_testsuite, 1));
@@ -47,10 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
         public IBodyWorkflowAction<GetTokenResponse> GetToken(Expression<Func<string>> bodycode, Expression<Func<string>> bodyemail)
         {
-            var __workflow_bodycode = bodycode == null ? null : WorkflowExpression.Compile(bodycode);
-            WorkflowExpression.Validate(__workflow_bodycode, nameof(bodycode), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodycode = WorkflowExpression.Compile(bodycode, nameof(bodycode), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<GetTokenResponse>(() =>
             {
                 var apiCallPath = "/v1/auth/exchange-api-code";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses(Expression<Func<string>> stopID)
         {
-            var __workflow_stopID = stopID == null ? null : WorkflowExpression.Compile(stopID);
-            WorkflowExpression.Validate(__workflow_stopID, nameof(stopID), required: true);
+            var __workflow_stopID = WorkflowExpression.Compile(stopID, nameof(stopID), required: true);
             return new DeferredBodyAction<GetNextBusesResponse>(() =>
             {
                 var apiCallPath = "/NextBusService.svc/json/jPredictions";
@@ -28,14 +27,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions(Expression<Func<string>> routeID = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            var __workflow_routeID = routeID == null ? null : WorkflowExpression.Compile(routeID);
-            WorkflowExpression.Validate(__workflow_routeID, nameof(routeID), required: false);
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
-            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
+            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
             return new DeferredBodyAction<GetBusPositionsResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jBusPositions";
@@ -56,10 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
         {
-            var __workflow_routeID = routeID == null ? null : WorkflowExpression.Compile(routeID);
-            WorkflowExpression.Validate(__workflow_routeID, nameof(routeID), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             return new DeferredBodyAction<GetRouteDetailsResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jRouteDetails";
@@ -84,10 +77,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
         {
-            var __workflow_routeID = routeID == null ? null : WorkflowExpression.Compile(routeID);
-            WorkflowExpression.Validate(__workflow_routeID, nameof(routeID), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_routeID = WorkflowExpression.Compile(routeID, nameof(routeID), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             return new DeferredBodyAction<GetBusRouteScheduleResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jRouteSchedule";
@@ -103,10 +94,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule(Expression<Func<string>> stopID, Expression<Func<string>> date = null)
         {
-            var __workflow_stopID = stopID == null ? null : WorkflowExpression.Compile(stopID);
-            WorkflowExpression.Validate(__workflow_stopID, nameof(stopID), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
+            var __workflow_stopID = WorkflowExpression.Compile(stopID, nameof(stopID), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
             return new DeferredBodyAction<GetBusStopScheduleResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jStopSchedule";
@@ -122,12 +111,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusStopsResponse> GetBusStops(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
-            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
             return new DeferredBodyAction<GetBusStopsResponse>(() =>
             {
                 var apiCallPath = "/Bus.svc/json/jStops";
@@ -146,8 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains(Expression<Func<string>> stationCodes)
         {
-            var __workflow_stationCodes = stationCodes == null ? null : WorkflowExpression.Compile(stationCodes);
-            WorkflowExpression.Validate(__workflow_stationCodes, nameof(stationCodes), required: true);
+            var __workflow_stationCodes = WorkflowExpression.Compile(stationCodes, nameof(stationCodes), required: true);
             return new DeferredBodyAction<GetNextTrainsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_stationCodes, 1));
@@ -169,8 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationParkingResponse> GetStationParking(Expression<Func<string>> stationCode = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             return new DeferredBodyAction<GetStationParkingResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationParking";
@@ -185,10 +169,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetPathBetweenStationsResponse> GetPathBetweenStations(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
         {
-            var __workflow_fromStationCode = fromStationCode == null ? null : WorkflowExpression.Compile(fromStationCode);
-            WorkflowExpression.Validate(__workflow_fromStationCode, nameof(fromStationCode), required: true);
-            var __workflow_toStationCode = toStationCode == null ? null : WorkflowExpression.Compile(toStationCode);
-            WorkflowExpression.Validate(__workflow_toStationCode, nameof(toStationCode), required: true);
+            var __workflow_fromStationCode = WorkflowExpression.Compile(fromStationCode, nameof(fromStationCode), required: true);
+            var __workflow_toStationCode = WorkflowExpression.Compile(toStationCode, nameof(toStationCode), required: true);
             return new DeferredBodyAction<GetPathBetweenStationsResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jPath";
@@ -203,8 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetJsonStationsResponse> GetJsonStations(Expression<Func<string>> lineCode = null)
         {
-            var __workflow_lineCode = lineCode == null ? null : WorkflowExpression.Compile(lineCode);
-            WorkflowExpression.Validate(__workflow_lineCode, nameof(lineCode), required: false);
+            var __workflow_lineCode = WorkflowExpression.Compile(lineCode, nameof(lineCode), required: false);
             return new DeferredBodyAction<GetJsonStationsResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStations";
@@ -219,12 +200,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationEntrancesResponse> GetStationEntrances(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
-            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
             return new DeferredBodyAction<GetStationEntrancesResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationEntrances";
@@ -243,8 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationInfoResponse> GetStationInfo(Expression<Func<string>> stationCode)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationInfoResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationInfo";
@@ -258,8 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationTimesResponse> GetStationTimes(Expression<Func<string>> stationCode)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: true);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: true);
             return new DeferredBodyAction<GetStationTimesResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jStationTimes";
@@ -273,10 +249,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStationToStationInfoResponse> GetStationToStationInfo(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
         {
-            var __workflow_fromStationCode = fromStationCode == null ? null : WorkflowExpression.Compile(fromStationCode);
-            WorkflowExpression.Validate(__workflow_fromStationCode, nameof(fromStationCode), required: true);
-            var __workflow_toStationCode = toStationCode == null ? null : WorkflowExpression.Compile(toStationCode);
-            WorkflowExpression.Validate(__workflow_toStationCode, nameof(toStationCode), required: true);
+            var __workflow_fromStationCode = WorkflowExpression.Compile(fromStationCode, nameof(fromStationCode), required: true);
+            var __workflow_toStationCode = WorkflowExpression.Compile(toStationCode, nameof(toStationCode), required: true);
             return new DeferredBodyAction<GetStationToStationInfoResponse>(() =>
             {
                 var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
@@ -321,8 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusIncidentsResponse> GetBusIncidents(Expression<Func<string>> route = null)
         {
-            var __workflow_route = route == null ? null : WorkflowExpression.Compile(route);
-            WorkflowExpression.Validate(__workflow_route, nameof(route), required: false);
+            var __workflow_route = WorkflowExpression.Compile(route, nameof(route), required: false);
             return new DeferredBodyAction<GetBusIncidentsResponse>(() =>
             {
                 var apiCallPath = "/Incidents.svc/json/BusIncidents";
@@ -337,8 +310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetElevatorIncidentsResponse> GetElevatorIncidents(Expression<Func<string>> stationCode = null)
         {
-            var __workflow_stationCode = stationCode == null ? null : WorkflowExpression.Compile(stationCode);
-            WorkflowExpression.Validate(__workflow_stationCode, nameof(stationCode), required: false);
+            var __workflow_stationCode = WorkflowExpression.Compile(stationCode, nameof(stationCode), required: false);
             return new DeferredBodyAction<GetElevatorIncidentsResponse>(() =>
             {
                 var apiCallPath = "/Incidents.svc/json/ElevatorIncidents";

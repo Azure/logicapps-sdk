@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
         public IWorkflowAction UploadProfiles(Expression<Func<bodydInputItem[]>> bodyd)
         {
-            var __workflow_bodyd = bodyd == null ? null : WorkflowExpression.Compile(bodyd);
-            WorkflowExpression.Validate(__workflow_bodyd, nameof(bodyd), required: true);
+            var __workflow_bodyd = WorkflowExpression.Compile(bodyd, nameof(bodyd), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/1/upload";

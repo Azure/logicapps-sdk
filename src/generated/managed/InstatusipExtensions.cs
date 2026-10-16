@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PagesGetResponseItem[]> PagesGet(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<PagesGetResponseItem[]>(() =>
             {
                 var apiCallPath = "/v2/pages";
@@ -33,72 +31,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodysubdomain = bodysubdomain == null ? null : WorkflowExpression.Compile(bodysubdomain);
-            WorkflowExpression.Validate(__workflow_bodysubdomain, nameof(bodysubdomain), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodylogoUrl = bodylogoUrl == null ? null : WorkflowExpression.Compile(bodylogoUrl);
-            WorkflowExpression.Validate(__workflow_bodylogoUrl, nameof(bodylogoUrl), required: false);
-            var __workflow_bodyfaviconUrl = bodyfaviconUrl == null ? null : WorkflowExpression.Compile(bodyfaviconUrl);
-            WorkflowExpression.Validate(__workflow_bodyfaviconUrl, nameof(bodyfaviconUrl), required: false);
-            var __workflow_bodywebsiteUrl = bodywebsiteUrl == null ? null : WorkflowExpression.Compile(bodywebsiteUrl);
-            WorkflowExpression.Validate(__workflow_bodywebsiteUrl, nameof(bodywebsiteUrl), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyuseLargeHeader = bodyuseLargeHeader == null ? null : WorkflowExpression.Compile(bodyuseLargeHeader);
-            WorkflowExpression.Validate(__workflow_bodyuseLargeHeader, nameof(bodyuseLargeHeader), required: false);
-            var __workflow_bodybrandColor = bodybrandColor == null ? null : WorkflowExpression.Compile(bodybrandColor);
-            WorkflowExpression.Validate(__workflow_bodybrandColor, nameof(bodybrandColor), required: false);
-            var __workflow_bodyokColor = bodyokColor == null ? null : WorkflowExpression.Compile(bodyokColor);
-            WorkflowExpression.Validate(__workflow_bodyokColor, nameof(bodyokColor), required: false);
-            var __workflow_bodydisruptedColor = bodydisruptedColor == null ? null : WorkflowExpression.Compile(bodydisruptedColor);
-            WorkflowExpression.Validate(__workflow_bodydisruptedColor, nameof(bodydisruptedColor), required: false);
-            var __workflow_bodydegradedColor = bodydegradedColor == null ? null : WorkflowExpression.Compile(bodydegradedColor);
-            WorkflowExpression.Validate(__workflow_bodydegradedColor, nameof(bodydegradedColor), required: false);
-            var __workflow_bodydownColor = bodydownColor == null ? null : WorkflowExpression.Compile(bodydownColor);
-            WorkflowExpression.Validate(__workflow_bodydownColor, nameof(bodydownColor), required: false);
-            var __workflow_bodynoticeColor = bodynoticeColor == null ? null : WorkflowExpression.Compile(bodynoticeColor);
-            WorkflowExpression.Validate(__workflow_bodynoticeColor, nameof(bodynoticeColor), required: false);
-            var __workflow_bodyunknownColor = bodyunknownColor == null ? null : WorkflowExpression.Compile(bodyunknownColor);
-            WorkflowExpression.Validate(__workflow_bodyunknownColor, nameof(bodyunknownColor), required: false);
-            var __workflow_bodygoogleAnalytics = bodygoogleAnalytics == null ? null : WorkflowExpression.Compile(bodygoogleAnalytics);
-            WorkflowExpression.Validate(__workflow_bodygoogleAnalytics, nameof(bodygoogleAnalytics), required: false);
-            var __workflow_bodysubscribeBySms = bodysubscribeBySms == null ? null : WorkflowExpression.Compile(bodysubscribeBySms);
-            WorkflowExpression.Validate(__workflow_bodysubscribeBySms, nameof(bodysubscribeBySms), required: false);
-            var __workflow_bodysmsService = bodysmsService == null ? null : WorkflowExpression.Compile(bodysmsService);
-            WorkflowExpression.Validate(__workflow_bodysmsService, nameof(bodysmsService), required: false);
-            var __workflow_bodytwilioSid = bodytwilioSid == null ? null : WorkflowExpression.Compile(bodytwilioSid);
-            WorkflowExpression.Validate(__workflow_bodytwilioSid, nameof(bodytwilioSid), required: false);
-            var __workflow_bodytwilioToken = bodytwilioToken == null ? null : WorkflowExpression.Compile(bodytwilioToken);
-            WorkflowExpression.Validate(__workflow_bodytwilioToken, nameof(bodytwilioToken), required: false);
-            var __workflow_bodytwilioSender = bodytwilioSender == null ? null : WorkflowExpression.Compile(bodytwilioSender);
-            WorkflowExpression.Validate(__workflow_bodytwilioSender, nameof(bodytwilioSender), required: false);
-            var __workflow_bodyhtmlInMeta = bodyhtmlInMeta == null ? null : WorkflowExpression.Compile(bodyhtmlInMeta);
-            WorkflowExpression.Validate(__workflow_bodyhtmlInMeta, nameof(bodyhtmlInMeta), required: false);
-            var __workflow_bodyhtmlAboveHeader = bodyhtmlAboveHeader == null ? null : WorkflowExpression.Compile(bodyhtmlAboveHeader);
-            WorkflowExpression.Validate(__workflow_bodyhtmlAboveHeader, nameof(bodyhtmlAboveHeader), required: false);
-            var __workflow_bodyhtmlBelowHeader = bodyhtmlBelowHeader == null ? null : WorkflowExpression.Compile(bodyhtmlBelowHeader);
-            WorkflowExpression.Validate(__workflow_bodyhtmlBelowHeader, nameof(bodyhtmlBelowHeader), required: false);
-            var __workflow_bodyhtmlAboveFooter = bodyhtmlAboveFooter == null ? null : WorkflowExpression.Compile(bodyhtmlAboveFooter);
-            WorkflowExpression.Validate(__workflow_bodyhtmlAboveFooter, nameof(bodyhtmlAboveFooter), required: false);
-            var __workflow_bodyhtmlBelowFooter = bodyhtmlBelowFooter == null ? null : WorkflowExpression.Compile(bodyhtmlBelowFooter);
-            WorkflowExpression.Validate(__workflow_bodyhtmlBelowFooter, nameof(bodyhtmlBelowFooter), required: false);
-            var __workflow_bodyhtmlBelowSummary = bodyhtmlBelowSummary == null ? null : WorkflowExpression.Compile(bodyhtmlBelowSummary);
-            WorkflowExpression.Validate(__workflow_bodyhtmlBelowSummary, nameof(bodyhtmlBelowSummary), required: false);
-            var __workflow_bodycssGlobal = bodycssGlobal == null ? null : WorkflowExpression.Compile(bodycssGlobal);
-            WorkflowExpression.Validate(__workflow_bodycssGlobal, nameof(bodycssGlobal), required: false);
-            var __workflow_bodylaunchDate = bodylaunchDate == null ? null : WorkflowExpression.Compile(bodylaunchDate);
-            WorkflowExpression.Validate(__workflow_bodylaunchDate, nameof(bodylaunchDate), required: false);
-            var __workflow_bodydateFormat = bodydateFormat == null ? null : WorkflowExpression.Compile(bodydateFormat);
-            WorkflowExpression.Validate(__workflow_bodydateFormat, nameof(bodydateFormat), required: false);
-            var __workflow_bodydateFormatShort = bodydateFormatShort == null ? null : WorkflowExpression.Compile(bodydateFormatShort);
-            WorkflowExpression.Validate(__workflow_bodydateFormatShort, nameof(bodydateFormatShort), required: false);
-            var __workflow_bodytimeFormat = bodytimeFormat == null ? null : WorkflowExpression.Compile(bodytimeFormat);
-            WorkflowExpression.Validate(__workflow_bodytimeFormat, nameof(bodytimeFormat), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodysubdomain = WorkflowExpression.Compile(bodysubdomain, nameof(bodysubdomain), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodylogoUrl = WorkflowExpression.Compile(bodylogoUrl, nameof(bodylogoUrl), required: false);
+            var __workflow_bodyfaviconUrl = WorkflowExpression.Compile(bodyfaviconUrl, nameof(bodyfaviconUrl), required: false);
+            var __workflow_bodywebsiteUrl = WorkflowExpression.Compile(bodywebsiteUrl, nameof(bodywebsiteUrl), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyuseLargeHeader = WorkflowExpression.Compile(bodyuseLargeHeader, nameof(bodyuseLargeHeader), required: false);
+            var __workflow_bodybrandColor = WorkflowExpression.Compile(bodybrandColor, nameof(bodybrandColor), required: false);
+            var __workflow_bodyokColor = WorkflowExpression.Compile(bodyokColor, nameof(bodyokColor), required: false);
+            var __workflow_bodydisruptedColor = WorkflowExpression.Compile(bodydisruptedColor, nameof(bodydisruptedColor), required: false);
+            var __workflow_bodydegradedColor = WorkflowExpression.Compile(bodydegradedColor, nameof(bodydegradedColor), required: false);
+            var __workflow_bodydownColor = WorkflowExpression.Compile(bodydownColor, nameof(bodydownColor), required: false);
+            var __workflow_bodynoticeColor = WorkflowExpression.Compile(bodynoticeColor, nameof(bodynoticeColor), required: false);
+            var __workflow_bodyunknownColor = WorkflowExpression.Compile(bodyunknownColor, nameof(bodyunknownColor), required: false);
+            var __workflow_bodygoogleAnalytics = WorkflowExpression.Compile(bodygoogleAnalytics, nameof(bodygoogleAnalytics), required: false);
+            var __workflow_bodysubscribeBySms = WorkflowExpression.Compile(bodysubscribeBySms, nameof(bodysubscribeBySms), required: false);
+            var __workflow_bodysmsService = WorkflowExpression.Compile(bodysmsService, nameof(bodysmsService), required: false);
+            var __workflow_bodytwilioSid = WorkflowExpression.Compile(bodytwilioSid, nameof(bodytwilioSid), required: false);
+            var __workflow_bodytwilioToken = WorkflowExpression.Compile(bodytwilioToken, nameof(bodytwilioToken), required: false);
+            var __workflow_bodytwilioSender = WorkflowExpression.Compile(bodytwilioSender, nameof(bodytwilioSender), required: false);
+            var __workflow_bodyhtmlInMeta = WorkflowExpression.Compile(bodyhtmlInMeta, nameof(bodyhtmlInMeta), required: false);
+            var __workflow_bodyhtmlAboveHeader = WorkflowExpression.Compile(bodyhtmlAboveHeader, nameof(bodyhtmlAboveHeader), required: false);
+            var __workflow_bodyhtmlBelowHeader = WorkflowExpression.Compile(bodyhtmlBelowHeader, nameof(bodyhtmlBelowHeader), required: false);
+            var __workflow_bodyhtmlAboveFooter = WorkflowExpression.Compile(bodyhtmlAboveFooter, nameof(bodyhtmlAboveFooter), required: false);
+            var __workflow_bodyhtmlBelowFooter = WorkflowExpression.Compile(bodyhtmlBelowFooter, nameof(bodyhtmlBelowFooter), required: false);
+            var __workflow_bodyhtmlBelowSummary = WorkflowExpression.Compile(bodyhtmlBelowSummary, nameof(bodyhtmlBelowSummary), required: false);
+            var __workflow_bodycssGlobal = WorkflowExpression.Compile(bodycssGlobal, nameof(bodycssGlobal), required: false);
+            var __workflow_bodylaunchDate = WorkflowExpression.Compile(bodylaunchDate, nameof(bodylaunchDate), required: false);
+            var __workflow_bodydateFormat = WorkflowExpression.Compile(bodydateFormat, nameof(bodydateFormat), required: false);
+            var __workflow_bodydateFormatShort = WorkflowExpression.Compile(bodydateFormatShort, nameof(bodydateFormatShort), required: false);
+            var __workflow_bodytimeFormat = WorkflowExpression.Compile(bodytimeFormat, nameof(bodytimeFormat), required: false);
             return new DeferredBodyAction<PagePostResponse>(() =>
             {
                 var apiCallPath = "/v1/pages";
@@ -316,8 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PageDeleteResponse> PageDelete(Expression<Func<string>> pageId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
             return new DeferredBodyAction<PageDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -330,80 +294,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PagePutResponse> PagePut(Expression<Func<string>> pageId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodylogoUrl = null, Expression<Func<string>> bodyfaviconUrl = null, Expression<Func<string>> bodywebsiteUrl = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypublicEmail = null, Expression<Func<bool>> bodyuseLargeHeader = null, Expression<Func<string>> bodybrandColor = null, Expression<Func<string>> bodyokColor = null, Expression<Func<string>> bodydisruptedColor = null, Expression<Func<string>> bodydegradedColor = null, Expression<Func<string>> bodydownColor = null, Expression<Func<string>> bodynoticeColor = null, Expression<Func<string>> bodyunknownColor = null, Expression<Func<string>> bodygoogleAnalytics = null, Expression<Func<bool>> bodysubscribeBySms = null, Expression<Func<string>> bodysmsService = null, Expression<Func<string>> bodytwilioSid = null, Expression<Func<string>> bodytwilioToken = null, Expression<Func<string>> bodytwilioSender = null, Expression<Func<string>> bodyhtmlInMeta = null, Expression<Func<string>> bodyhtmlAboveHeader = null, Expression<Func<string>> bodyhtmlBelowHeader = null, Expression<Func<string>> bodyhtmlAboveFooter = null, Expression<Func<string>> bodyhtmlBelowFooter = null, Expression<Func<string>> bodyhtmlBelowSummary = null, Expression<Func<string>> bodycssGlobal = null, Expression<Func<string>> bodylaunchDate = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<string>> bodydateFormatShort = null, Expression<Func<string>> bodytimeFormat = null, Expression<Func<bool>> bodyprivate = null, Expression<Func<bool>> bodyuseAllowList = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodysubdomain = bodysubdomain == null ? null : WorkflowExpression.Compile(bodysubdomain);
-            WorkflowExpression.Validate(__workflow_bodysubdomain, nameof(bodysubdomain), required: false);
-            var __workflow_bodylogoUrl = bodylogoUrl == null ? null : WorkflowExpression.Compile(bodylogoUrl);
-            WorkflowExpression.Validate(__workflow_bodylogoUrl, nameof(bodylogoUrl), required: false);
-            var __workflow_bodyfaviconUrl = bodyfaviconUrl == null ? null : WorkflowExpression.Compile(bodyfaviconUrl);
-            WorkflowExpression.Validate(__workflow_bodyfaviconUrl, nameof(bodyfaviconUrl), required: false);
-            var __workflow_bodywebsiteUrl = bodywebsiteUrl == null ? null : WorkflowExpression.Compile(bodywebsiteUrl);
-            WorkflowExpression.Validate(__workflow_bodywebsiteUrl, nameof(bodywebsiteUrl), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodypublicEmail = bodypublicEmail == null ? null : WorkflowExpression.Compile(bodypublicEmail);
-            WorkflowExpression.Validate(__workflow_bodypublicEmail, nameof(bodypublicEmail), required: false);
-            var __workflow_bodyuseLargeHeader = bodyuseLargeHeader == null ? null : WorkflowExpression.Compile(bodyuseLargeHeader);
-            WorkflowExpression.Validate(__workflow_bodyuseLargeHeader, nameof(bodyuseLargeHeader), required: false);
-            var __workflow_bodybrandColor = bodybrandColor == null ? null : WorkflowExpression.Compile(bodybrandColor);
-            WorkflowExpression.Validate(__workflow_bodybrandColor, nameof(bodybrandColor), required: false);
-            var __workflow_bodyokColor = bodyokColor == null ? null : WorkflowExpression.Compile(bodyokColor);
-            WorkflowExpression.Validate(__workflow_bodyokColor, nameof(bodyokColor), required: false);
-            var __workflow_bodydisruptedColor = bodydisruptedColor == null ? null : WorkflowExpression.Compile(bodydisruptedColor);
-            WorkflowExpression.Validate(__workflow_bodydisruptedColor, nameof(bodydisruptedColor), required: false);
-            var __workflow_bodydegradedColor = bodydegradedColor == null ? null : WorkflowExpression.Compile(bodydegradedColor);
-            WorkflowExpression.Validate(__workflow_bodydegradedColor, nameof(bodydegradedColor), required: false);
-            var __workflow_bodydownColor = bodydownColor == null ? null : WorkflowExpression.Compile(bodydownColor);
-            WorkflowExpression.Validate(__workflow_bodydownColor, nameof(bodydownColor), required: false);
-            var __workflow_bodynoticeColor = bodynoticeColor == null ? null : WorkflowExpression.Compile(bodynoticeColor);
-            WorkflowExpression.Validate(__workflow_bodynoticeColor, nameof(bodynoticeColor), required: false);
-            var __workflow_bodyunknownColor = bodyunknownColor == null ? null : WorkflowExpression.Compile(bodyunknownColor);
-            WorkflowExpression.Validate(__workflow_bodyunknownColor, nameof(bodyunknownColor), required: false);
-            var __workflow_bodygoogleAnalytics = bodygoogleAnalytics == null ? null : WorkflowExpression.Compile(bodygoogleAnalytics);
-            WorkflowExpression.Validate(__workflow_bodygoogleAnalytics, nameof(bodygoogleAnalytics), required: false);
-            var __workflow_bodysubscribeBySms = bodysubscribeBySms == null ? null : WorkflowExpression.Compile(bodysubscribeBySms);
-            WorkflowExpression.Validate(__workflow_bodysubscribeBySms, nameof(bodysubscribeBySms), required: false);
-            var __workflow_bodysmsService = bodysmsService == null ? null : WorkflowExpression.Compile(bodysmsService);
-            WorkflowExpression.Validate(__workflow_bodysmsService, nameof(bodysmsService), required: false);
-            var __workflow_bodytwilioSid = bodytwilioSid == null ? null : WorkflowExpression.Compile(bodytwilioSid);
-            WorkflowExpression.Validate(__workflow_bodytwilioSid, nameof(bodytwilioSid), required: false);
-            var __workflow_bodytwilioToken = bodytwilioToken == null ? null : WorkflowExpression.Compile(bodytwilioToken);
-            WorkflowExpression.Validate(__workflow_bodytwilioToken, nameof(bodytwilioToken), required: false);
-            var __workflow_bodytwilioSender = bodytwilioSender == null ? null : WorkflowExpression.Compile(bodytwilioSender);
-            WorkflowExpression.Validate(__workflow_bodytwilioSender, nameof(bodytwilioSender), required: false);
-            var __workflow_bodyhtmlInMeta = bodyhtmlInMeta == null ? null : WorkflowExpression.Compile(bodyhtmlInMeta);
-            WorkflowExpression.Validate(__workflow_bodyhtmlInMeta, nameof(bodyhtmlInMeta), required: false);
-            var __workflow_bodyhtmlAboveHeader = bodyhtmlAboveHeader == null ? null : WorkflowExpression.Compile(bodyhtmlAboveHeader);
-            WorkflowExpression.Validate(__workflow_bodyhtmlAboveHeader, nameof(bodyhtmlAboveHeader), required: false);
-            var __workflow_bodyhtmlBelowHeader = bodyhtmlBelowHeader == null ? null : WorkflowExpression.Compile(bodyhtmlBelowHeader);
-            WorkflowExpression.Validate(__workflow_bodyhtmlBelowHeader, nameof(bodyhtmlBelowHeader), required: false);
-            var __workflow_bodyhtmlAboveFooter = bodyhtmlAboveFooter == null ? null : WorkflowExpression.Compile(bodyhtmlAboveFooter);
-            WorkflowExpression.Validate(__workflow_bodyhtmlAboveFooter, nameof(bodyhtmlAboveFooter), required: false);
-            var __workflow_bodyhtmlBelowFooter = bodyhtmlBelowFooter == null ? null : WorkflowExpression.Compile(bodyhtmlBelowFooter);
-            WorkflowExpression.Validate(__workflow_bodyhtmlBelowFooter, nameof(bodyhtmlBelowFooter), required: false);
-            var __workflow_bodyhtmlBelowSummary = bodyhtmlBelowSummary == null ? null : WorkflowExpression.Compile(bodyhtmlBelowSummary);
-            WorkflowExpression.Validate(__workflow_bodyhtmlBelowSummary, nameof(bodyhtmlBelowSummary), required: false);
-            var __workflow_bodycssGlobal = bodycssGlobal == null ? null : WorkflowExpression.Compile(bodycssGlobal);
-            WorkflowExpression.Validate(__workflow_bodycssGlobal, nameof(bodycssGlobal), required: false);
-            var __workflow_bodylaunchDate = bodylaunchDate == null ? null : WorkflowExpression.Compile(bodylaunchDate);
-            WorkflowExpression.Validate(__workflow_bodylaunchDate, nameof(bodylaunchDate), required: false);
-            var __workflow_bodydateFormat = bodydateFormat == null ? null : WorkflowExpression.Compile(bodydateFormat);
-            WorkflowExpression.Validate(__workflow_bodydateFormat, nameof(bodydateFormat), required: false);
-            var __workflow_bodydateFormatShort = bodydateFormatShort == null ? null : WorkflowExpression.Compile(bodydateFormatShort);
-            WorkflowExpression.Validate(__workflow_bodydateFormatShort, nameof(bodydateFormatShort), required: false);
-            var __workflow_bodytimeFormat = bodytimeFormat == null ? null : WorkflowExpression.Compile(bodytimeFormat);
-            WorkflowExpression.Validate(__workflow_bodytimeFormat, nameof(bodytimeFormat), required: false);
-            var __workflow_bodyprivate = bodyprivate == null ? null : WorkflowExpression.Compile(bodyprivate);
-            WorkflowExpression.Validate(__workflow_bodyprivate, nameof(bodyprivate), required: false);
-            var __workflow_bodyuseAllowList = bodyuseAllowList == null ? null : WorkflowExpression.Compile(bodyuseAllowList);
-            WorkflowExpression.Validate(__workflow_bodyuseAllowList, nameof(bodyuseAllowList), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodysubdomain = WorkflowExpression.Compile(bodysubdomain, nameof(bodysubdomain), required: false);
+            var __workflow_bodylogoUrl = WorkflowExpression.Compile(bodylogoUrl, nameof(bodylogoUrl), required: false);
+            var __workflow_bodyfaviconUrl = WorkflowExpression.Compile(bodyfaviconUrl, nameof(bodyfaviconUrl), required: false);
+            var __workflow_bodywebsiteUrl = WorkflowExpression.Compile(bodywebsiteUrl, nameof(bodywebsiteUrl), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodypublicEmail = WorkflowExpression.Compile(bodypublicEmail, nameof(bodypublicEmail), required: false);
+            var __workflow_bodyuseLargeHeader = WorkflowExpression.Compile(bodyuseLargeHeader, nameof(bodyuseLargeHeader), required: false);
+            var __workflow_bodybrandColor = WorkflowExpression.Compile(bodybrandColor, nameof(bodybrandColor), required: false);
+            var __workflow_bodyokColor = WorkflowExpression.Compile(bodyokColor, nameof(bodyokColor), required: false);
+            var __workflow_bodydisruptedColor = WorkflowExpression.Compile(bodydisruptedColor, nameof(bodydisruptedColor), required: false);
+            var __workflow_bodydegradedColor = WorkflowExpression.Compile(bodydegradedColor, nameof(bodydegradedColor), required: false);
+            var __workflow_bodydownColor = WorkflowExpression.Compile(bodydownColor, nameof(bodydownColor), required: false);
+            var __workflow_bodynoticeColor = WorkflowExpression.Compile(bodynoticeColor, nameof(bodynoticeColor), required: false);
+            var __workflow_bodyunknownColor = WorkflowExpression.Compile(bodyunknownColor, nameof(bodyunknownColor), required: false);
+            var __workflow_bodygoogleAnalytics = WorkflowExpression.Compile(bodygoogleAnalytics, nameof(bodygoogleAnalytics), required: false);
+            var __workflow_bodysubscribeBySms = WorkflowExpression.Compile(bodysubscribeBySms, nameof(bodysubscribeBySms), required: false);
+            var __workflow_bodysmsService = WorkflowExpression.Compile(bodysmsService, nameof(bodysmsService), required: false);
+            var __workflow_bodytwilioSid = WorkflowExpression.Compile(bodytwilioSid, nameof(bodytwilioSid), required: false);
+            var __workflow_bodytwilioToken = WorkflowExpression.Compile(bodytwilioToken, nameof(bodytwilioToken), required: false);
+            var __workflow_bodytwilioSender = WorkflowExpression.Compile(bodytwilioSender, nameof(bodytwilioSender), required: false);
+            var __workflow_bodyhtmlInMeta = WorkflowExpression.Compile(bodyhtmlInMeta, nameof(bodyhtmlInMeta), required: false);
+            var __workflow_bodyhtmlAboveHeader = WorkflowExpression.Compile(bodyhtmlAboveHeader, nameof(bodyhtmlAboveHeader), required: false);
+            var __workflow_bodyhtmlBelowHeader = WorkflowExpression.Compile(bodyhtmlBelowHeader, nameof(bodyhtmlBelowHeader), required: false);
+            var __workflow_bodyhtmlAboveFooter = WorkflowExpression.Compile(bodyhtmlAboveFooter, nameof(bodyhtmlAboveFooter), required: false);
+            var __workflow_bodyhtmlBelowFooter = WorkflowExpression.Compile(bodyhtmlBelowFooter, nameof(bodyhtmlBelowFooter), required: false);
+            var __workflow_bodyhtmlBelowSummary = WorkflowExpression.Compile(bodyhtmlBelowSummary, nameof(bodyhtmlBelowSummary), required: false);
+            var __workflow_bodycssGlobal = WorkflowExpression.Compile(bodycssGlobal, nameof(bodycssGlobal), required: false);
+            var __workflow_bodylaunchDate = WorkflowExpression.Compile(bodylaunchDate, nameof(bodylaunchDate), required: false);
+            var __workflow_bodydateFormat = WorkflowExpression.Compile(bodydateFormat, nameof(bodydateFormat), required: false);
+            var __workflow_bodydateFormatShort = WorkflowExpression.Compile(bodydateFormatShort, nameof(bodydateFormatShort), required: false);
+            var __workflow_bodytimeFormat = WorkflowExpression.Compile(bodytimeFormat, nameof(bodytimeFormat), required: false);
+            var __workflow_bodyprivate = WorkflowExpression.Compile(bodyprivate, nameof(bodyprivate), required: false);
+            var __workflow_bodyuseAllowList = WorkflowExpression.Compile(bodyuseAllowList, nameof(bodyuseAllowList), required: false);
             return new DeferredBodyAction<PagePutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -639,12 +566,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentsGetResponseItem[]> ComponentsGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<ComponentsGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/components", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -661,20 +585,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentPostResponse> Component(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyorder = bodyorder == null ? null : WorkflowExpression.Compile(bodyorder);
-            WorkflowExpression.Validate(__workflow_bodyorder, nameof(bodyorder), required: false);
-            var __workflow_bodyshowUptime = bodyshowUptime == null ? null : WorkflowExpression.Compile(bodyshowUptime);
-            WorkflowExpression.Validate(__workflow_bodyshowUptime, nameof(bodyshowUptime), required: false);
-            var __workflow_bodygrouped = bodygrouped == null ? null : WorkflowExpression.Compile(bodygrouped);
-            WorkflowExpression.Validate(__workflow_bodygrouped, nameof(bodygrouped), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
+            var __workflow_bodyshowUptime = WorkflowExpression.Compile(bodyshowUptime, nameof(bodyshowUptime), required: false);
+            var __workflow_bodygrouped = WorkflowExpression.Compile(bodygrouped, nameof(bodygrouped), required: false);
             return new DeferredBodyAction<ComponentPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/components", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -730,10 +647,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentGetResponse> ComponentGet(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_componentId = componentId == null ? null : WorkflowExpression.Compile(componentId);
-            WorkflowExpression.Validate(__workflow_componentId, nameof(componentId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_componentId = WorkflowExpression.Compile(componentId, nameof(componentId), required: true);
             return new DeferredBodyAction<ComponentGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentId, 1));
@@ -746,10 +661,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentDeleteResponse> ComponentDelete(Expression<Func<string>> pageId, Expression<Func<string>> componentId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_componentId = componentId == null ? null : WorkflowExpression.Compile(componentId);
-            WorkflowExpression.Validate(__workflow_componentId, nameof(componentId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_componentId = WorkflowExpression.Compile(componentId, nameof(componentId), required: true);
             return new DeferredBodyAction<ComponentDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentId, 1));
@@ -762,22 +675,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<ComponentPutResponse> ComponentPut(Expression<Func<string>> pageId, Expression<Func<string>> componentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodyshowUptime = null, Expression<Func<bool>> bodygrouped = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_componentId = componentId == null ? null : WorkflowExpression.Compile(componentId);
-            WorkflowExpression.Validate(__workflow_componentId, nameof(componentId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyorder = bodyorder == null ? null : WorkflowExpression.Compile(bodyorder);
-            WorkflowExpression.Validate(__workflow_bodyorder, nameof(bodyorder), required: false);
-            var __workflow_bodyshowUptime = bodyshowUptime == null ? null : WorkflowExpression.Compile(bodyshowUptime);
-            WorkflowExpression.Validate(__workflow_bodyshowUptime, nameof(bodyshowUptime), required: false);
-            var __workflow_bodygrouped = bodygrouped == null ? null : WorkflowExpression.Compile(bodygrouped);
-            WorkflowExpression.Validate(__workflow_bodygrouped, nameof(bodygrouped), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_componentId = WorkflowExpression.Compile(componentId, nameof(componentId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
+            var __workflow_bodyshowUptime = WorkflowExpression.Compile(bodyshowUptime, nameof(bodyshowUptime), required: false);
+            var __workflow_bodygrouped = WorkflowExpression.Compile(bodygrouped, nameof(bodygrouped), required: false);
             return new DeferredBodyAction<ComponentPutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/components/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_componentId, 1));
@@ -833,14 +738,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentsGetResponseItem[]> IncidentsGet(Expression<Func<string>> pageId, Expression<Func<string>> status = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<IncidentsGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -859,22 +760,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentPostResponse> Incident(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystarted = bodystarted == null ? null : WorkflowExpression.Compile(bodystarted);
-            WorkflowExpression.Validate(__workflow_bodystarted, nameof(bodystarted), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystarted = WorkflowExpression.Compile(bodystarted, nameof(bodystarted), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<IncidentPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -936,10 +829,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentGetResponse> IncidentGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             return new DeferredBodyAction<IncidentGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -952,10 +843,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentDeleteResponse> IncidentDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             return new DeferredBodyAction<IncidentDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -968,22 +857,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentPutResponse> IncidentPut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodyname = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystarted = bodystarted == null ? null : WorkflowExpression.Compile(bodystarted);
-            WorkflowExpression.Validate(__workflow_bodystarted, nameof(bodystarted), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystarted = WorkflowExpression.Compile(bodystarted, nameof(bodystarted), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<IncidentPutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -1039,10 +920,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentTemplatePostResponse> IncidentTemplate(Expression<Func<string>> pageId, Expression<Func<string>> template)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             return new DeferredBodyAction<IncidentTemplatePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/{0}/incidents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_template, 1));
@@ -1055,12 +934,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateGetResponse> IncidentUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_incidentUpdateId = incidentUpdateId == null ? null : WorkflowExpression.Compile(incidentUpdateId);
-            WorkflowExpression.Validate(__workflow_incidentUpdateId, nameof(incidentUpdateId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_incidentUpdateId = WorkflowExpression.Compile(incidentUpdateId, nameof(incidentUpdateId), required: true);
             return new DeferredBodyAction<IncidentUpdateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentUpdateId, 1));
@@ -1073,12 +949,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateDeleteResponse> IncidentUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_incidentUpdateId = incidentUpdateId == null ? null : WorkflowExpression.Compile(incidentUpdateId);
-            WorkflowExpression.Validate(__workflow_incidentUpdateId, nameof(incidentUpdateId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_incidentUpdateId = WorkflowExpression.Compile(incidentUpdateId, nameof(incidentUpdateId), required: true);
             return new DeferredBodyAction<IncidentUpdateDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentUpdateId, 1));
@@ -1091,24 +964,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdatePutResponse> IncidentUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> incidentUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_incidentUpdateId = incidentUpdateId == null ? null : WorkflowExpression.Compile(incidentUpdateId);
-            WorkflowExpression.Validate(__workflow_incidentUpdateId, nameof(incidentUpdateId), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystarted = bodystarted == null ? null : WorkflowExpression.Compile(bodystarted);
-            WorkflowExpression.Validate(__workflow_bodystarted, nameof(bodystarted), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_incidentUpdateId = WorkflowExpression.Compile(incidentUpdateId, nameof(incidentUpdateId), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystarted = WorkflowExpression.Compile(bodystarted, nameof(bodystarted), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<IncidentUpdatePutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentUpdateId, 1));
@@ -1164,22 +1028,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdatePostResponse> IncidentUpdate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystarted = bodystarted == null ? null : WorkflowExpression.Compile(bodystarted);
-            WorkflowExpression.Validate(__workflow_bodystarted, nameof(bodystarted), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystarted = WorkflowExpression.Compile(bodystarted, nameof(bodystarted), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<IncidentUpdatePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/incidents/{1}/incident-updates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -1235,12 +1091,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<IncidentUpdateTemplatePostResponse> IncidentUpdateTemplate(Expression<Func<string>> pageId, Expression<Func<string>> incidentId, Expression<Func<string>> template)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_template = template == null ? null : WorkflowExpression.Compile(template);
-            WorkflowExpression.Validate(__workflow_template, nameof(template), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_template = WorkflowExpression.Compile(template, nameof(template), required: true);
             return new DeferredBodyAction<IncidentUpdateTemplatePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/{0}/incidents/{1}/incident-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_template, 1));
@@ -1253,12 +1106,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancesGetResponseItem[]> MaintenancesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<MaintenancesGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -1275,38 +1125,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancePostResponse> Maintenance(Expression<Func<string>> pageId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<int>> bodyduration = null, Expression<Func<bool>> bodynotifyStart = null, Expression<Func<bool>> bodynotifyEnd = null, Expression<Func<bool>> bodynotifyEarly = null, Expression<Func<int>> bodynotifyMinutes = null, Expression<Func<bool>> bodyautoStart = null, Expression<Func<bool>> bodyautoEnd = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
-            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
-            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
-            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodynotifyStart = bodynotifyStart == null ? null : WorkflowExpression.Compile(bodynotifyStart);
-            WorkflowExpression.Validate(__workflow_bodynotifyStart, nameof(bodynotifyStart), required: false);
-            var __workflow_bodynotifyEnd = bodynotifyEnd == null ? null : WorkflowExpression.Compile(bodynotifyEnd);
-            WorkflowExpression.Validate(__workflow_bodynotifyEnd, nameof(bodynotifyEnd), required: false);
-            var __workflow_bodynotifyEarly = bodynotifyEarly == null ? null : WorkflowExpression.Compile(bodynotifyEarly);
-            WorkflowExpression.Validate(__workflow_bodynotifyEarly, nameof(bodynotifyEarly), required: false);
-            var __workflow_bodynotifyMinutes = bodynotifyMinutes == null ? null : WorkflowExpression.Compile(bodynotifyMinutes);
-            WorkflowExpression.Validate(__workflow_bodynotifyMinutes, nameof(bodynotifyMinutes), required: false);
-            var __workflow_bodyautoStart = bodyautoStart == null ? null : WorkflowExpression.Compile(bodyautoStart);
-            WorkflowExpression.Validate(__workflow_bodyautoStart, nameof(bodyautoStart), required: false);
-            var __workflow_bodyautoEnd = bodyautoEnd == null ? null : WorkflowExpression.Compile(bodyautoEnd);
-            WorkflowExpression.Validate(__workflow_bodyautoEnd, nameof(bodyautoEnd), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
+            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodynotifyStart = WorkflowExpression.Compile(bodynotifyStart, nameof(bodynotifyStart), required: false);
+            var __workflow_bodynotifyEnd = WorkflowExpression.Compile(bodynotifyEnd, nameof(bodynotifyEnd), required: false);
+            var __workflow_bodynotifyEarly = WorkflowExpression.Compile(bodynotifyEarly, nameof(bodynotifyEarly), required: false);
+            var __workflow_bodynotifyMinutes = WorkflowExpression.Compile(bodynotifyMinutes, nameof(bodynotifyMinutes), required: false);
+            var __workflow_bodyautoStart = WorkflowExpression.Compile(bodyautoStart, nameof(bodyautoStart), required: false);
+            var __workflow_bodyautoEnd = WorkflowExpression.Compile(bodyautoEnd, nameof(bodyautoEnd), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<MaintenancePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -1416,10 +1250,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceGetResponse> MaintenanceGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_maintenanceId = maintenanceId == null ? null : WorkflowExpression.Compile(maintenanceId);
-            WorkflowExpression.Validate(__workflow_maintenanceId, nameof(maintenanceId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
             return new DeferredBodyAction<MaintenanceGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceId, 1));
@@ -1432,10 +1264,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceDeleteResponse> MaintenanceDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_maintenanceId = maintenanceId == null ? null : WorkflowExpression.Compile(maintenanceId);
-            WorkflowExpression.Validate(__workflow_maintenanceId, nameof(maintenanceId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
             return new DeferredBodyAction<MaintenanceDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceId, 1));
@@ -1448,26 +1278,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenancePutResponse> MaintenancePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_maintenanceId = maintenanceId == null ? null : WorkflowExpression.Compile(maintenanceId);
-            WorkflowExpression.Validate(__workflow_maintenanceId, nameof(maintenanceId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
-            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
-            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
-            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
+            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<MaintenancePutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceId, 1));
@@ -1535,12 +1355,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdateGetResponse> MaintenanceUpdateGet(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_maintenanceId = maintenanceId == null ? null : WorkflowExpression.Compile(maintenanceId);
-            WorkflowExpression.Validate(__workflow_maintenanceId, nameof(maintenanceId), required: true);
-            var __workflow_maintenanceUpdateId = maintenanceUpdateId == null ? null : WorkflowExpression.Compile(maintenanceUpdateId);
-            WorkflowExpression.Validate(__workflow_maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
+            var __workflow_maintenanceUpdateId = WorkflowExpression.Compile(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
             return new DeferredBodyAction<MaintenanceUpdateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceUpdateId, 1));
@@ -1553,12 +1370,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdateDeleteResponse> MaintenanceUpdateDelete(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_maintenanceId = maintenanceId == null ? null : WorkflowExpression.Compile(maintenanceId);
-            WorkflowExpression.Validate(__workflow_maintenanceId, nameof(maintenanceId), required: true);
-            var __workflow_maintenanceUpdateId = maintenanceUpdateId == null ? null : WorkflowExpression.Compile(maintenanceUpdateId);
-            WorkflowExpression.Validate(__workflow_maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
+            var __workflow_maintenanceUpdateId = WorkflowExpression.Compile(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
             return new DeferredBodyAction<MaintenanceUpdateDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceUpdateId, 1));
@@ -1571,26 +1385,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdatePutResponse> MaintenanceUpdatePut(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> maintenanceUpdateId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_maintenanceId = maintenanceId == null ? null : WorkflowExpression.Compile(maintenanceId);
-            WorkflowExpression.Validate(__workflow_maintenanceId, nameof(maintenanceId), required: true);
-            var __workflow_maintenanceUpdateId = maintenanceUpdateId == null ? null : WorkflowExpression.Compile(maintenanceUpdateId);
-            WorkflowExpression.Validate(__workflow_maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystarted = bodystarted == null ? null : WorkflowExpression.Compile(bodystarted);
-            WorkflowExpression.Validate(__workflow_bodystarted, nameof(bodystarted), required: false);
-            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
-            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
+            var __workflow_maintenanceUpdateId = WorkflowExpression.Compile(maintenanceUpdateId, nameof(maintenanceUpdateId), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystarted = WorkflowExpression.Compile(bodystarted, nameof(bodystarted), required: false);
+            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<MaintenanceUpdatePutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceUpdateId, 1));
@@ -1652,24 +1456,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<MaintenanceUpdatePostResponse> MaintenanceUpdate(Expression<Func<string>> pageId, Expression<Func<string>> maintenanceId, Expression<Func<string>> bodymessage = null, Expression<Func<string[]>> bodycomponents = null, Expression<Func<string>> bodystarted = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_maintenanceId = maintenanceId == null ? null : WorkflowExpression.Compile(maintenanceId);
-            WorkflowExpression.Validate(__workflow_maintenanceId, nameof(maintenanceId), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
-            var __workflow_bodystarted = bodystarted == null ? null : WorkflowExpression.Compile(bodystarted);
-            WorkflowExpression.Validate(__workflow_bodystarted, nameof(bodystarted), required: false);
-            var __workflow_bodyend = bodyend == null ? null : WorkflowExpression.Compile(bodyend);
-            WorkflowExpression.Validate(__workflow_bodyend, nameof(bodyend), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_maintenanceId = WorkflowExpression.Compile(maintenanceId, nameof(maintenanceId), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_bodystarted = WorkflowExpression.Compile(bodystarted, nameof(bodystarted), required: false);
+            var __workflow_bodyend = WorkflowExpression.Compile(bodyend, nameof(bodyend), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<MaintenanceUpdatePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/maintenances/{1}/maintenance-updates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_maintenanceId, 1));
@@ -1731,12 +1526,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<PageTemplatesGetResponseItem[]> PageTemplatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<PageTemplatesGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -1753,22 +1545,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> pageId, Expression<Func<string>> bodysubdomain = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodysubdomain = bodysubdomain == null ? null : WorkflowExpression.Compile(bodysubdomain);
-            WorkflowExpression.Validate(__workflow_bodysubdomain, nameof(bodysubdomain), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodysubdomain = WorkflowExpression.Compile(bodysubdomain, nameof(bodysubdomain), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
             return new DeferredBodyAction<TemplatePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -1830,10 +1614,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<TemplateGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -1846,10 +1628,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplateDeleteResponse> TemplateDelete(Expression<Func<string>> pageId, Expression<Func<string>> templateId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
             return new DeferredBodyAction<TemplateDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -1862,22 +1642,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TemplatePutResponse> TemplatePut(Expression<Func<string>> pageId, Expression<Func<string>> templateId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodystatus = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bodycomponentsInputItem[]>> bodycomponents = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodynotify = bodynotify == null ? null : WorkflowExpression.Compile(bodynotify);
-            WorkflowExpression.Validate(__workflow_bodynotify, nameof(bodynotify), required: false);
-            var __workflow_bodycomponents = bodycomponents == null ? null : WorkflowExpression.Compile(bodycomponents);
-            WorkflowExpression.Validate(__workflow_bodycomponents, nameof(bodycomponents), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodynotify = WorkflowExpression.Compile(bodynotify, nameof(bodynotify), required: false);
+            var __workflow_bodycomponents = WorkflowExpression.Compile(bodycomponents, nameof(bodycomponents), required: false);
             return new DeferredBodyAction<TemplatePutResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/templates/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -1933,12 +1705,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<TeammatesGetResponseItem[]> TeammatesGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<TeammatesGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/team", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -1955,10 +1724,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> TeamMember(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/team", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -1984,10 +1751,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> TeamMemberDelete(Expression<Func<string>> pageId, Expression<Func<string>> memberId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_memberId = memberId == null ? null : WorkflowExpression.Compile(memberId);
-            WorkflowExpression.Validate(__workflow_memberId, nameof(memberId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/team/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
@@ -2000,12 +1765,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<SubscribersGetResponseItem[]> SubscribersGet(Expression<Func<string>> pageId, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<SubscribersGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -2022,14 +1784,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<SubscriberPostResponse> Subscriber(Expression<Func<string>> pageId, Expression<Func<string>> bodyemail = null, Expression<Func<bool>> bodyall = null, Expression<Func<bool>> bodyautoConfirm = null)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyall = bodyall == null ? null : WorkflowExpression.Compile(bodyall);
-            WorkflowExpression.Validate(__workflow_bodyall, nameof(bodyall), required: false);
-            var __workflow_bodyautoConfirm = bodyautoConfirm == null ? null : WorkflowExpression.Compile(bodyautoConfirm);
-            WorkflowExpression.Validate(__workflow_bodyautoConfirm, nameof(bodyautoConfirm), required: false);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyall = WorkflowExpression.Compile(bodyall, nameof(bodyall), required: false);
+            var __workflow_bodyautoConfirm = WorkflowExpression.Compile(bodyautoConfirm, nameof(bodyautoConfirm), required: false);
             return new DeferredBodyAction<SubscriberPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1));
@@ -2067,10 +1825,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instatusip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instatusip")]
         public IBodyWorkflowAction<string> SubscriberDelete(Expression<Func<string>> pageId, Expression<Func<string>> subscriberId)
         {
-            var __workflow_pageId = pageId == null ? null : WorkflowExpression.Compile(pageId);
-            WorkflowExpression.Validate(__workflow_pageId, nameof(pageId), required: true);
-            var __workflow_subscriberId = subscriberId == null ? null : WorkflowExpression.Compile(subscriberId);
-            WorkflowExpression.Validate(__workflow_subscriberId, nameof(subscriberId), required: true);
+            var __workflow_pageId = WorkflowExpression.Compile(pageId, nameof(pageId), required: true);
+            var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/{0}/subscribers/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriberId, 1));

@@ -13,32 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
         public IBodyWorkflowAction<string> SubmitReview(Expression<Func<string>> productId, Expression<Func<string>> tenantId, Expression<Func<string>> locale, Expression<Func<string>> encodedUser, Expression<Func<string>> bodyrating, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyproductName, Expression<Func<string>> channelId = null, Expression<Func<string>> market = null, Expression<Func<string>> bodysku = null, Expression<Func<string>> bodylegalEntity = null, Expression<Func<string>> bodysubmittedDateTime = null)
         {
-            var __workflow_productId = productId == null ? null : WorkflowExpression.Compile(productId);
-            WorkflowExpression.Validate(__workflow_productId, nameof(productId), required: true);
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: true);
-            var __workflow_encodedUser = encodedUser == null ? null : WorkflowExpression.Compile(encodedUser);
-            WorkflowExpression.Validate(__workflow_encodedUser, nameof(encodedUser), required: true);
-            var __workflow_bodyrating = bodyrating == null ? null : WorkflowExpression.Compile(bodyrating);
-            WorkflowExpression.Validate(__workflow_bodyrating, nameof(bodyrating), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyreviewText = bodyreviewText == null ? null : WorkflowExpression.Compile(bodyreviewText);
-            WorkflowExpression.Validate(__workflow_bodyreviewText, nameof(bodyreviewText), required: true);
-            var __workflow_bodyproductName = bodyproductName == null ? null : WorkflowExpression.Compile(bodyproductName);
-            WorkflowExpression.Validate(__workflow_bodyproductName, nameof(bodyproductName), required: true);
-            var __workflow_channelId = channelId == null ? null : WorkflowExpression.Compile(channelId);
-            WorkflowExpression.Validate(__workflow_channelId, nameof(channelId), required: false);
-            var __workflow_market = market == null ? null : WorkflowExpression.Compile(market);
-            WorkflowExpression.Validate(__workflow_market, nameof(market), required: false);
-            var __workflow_bodysku = bodysku == null ? null : WorkflowExpression.Compile(bodysku);
-            WorkflowExpression.Validate(__workflow_bodysku, nameof(bodysku), required: false);
-            var __workflow_bodylegalEntity = bodylegalEntity == null ? null : WorkflowExpression.Compile(bodylegalEntity);
-            WorkflowExpression.Validate(__workflow_bodylegalEntity, nameof(bodylegalEntity), required: false);
-            var __workflow_bodysubmittedDateTime = bodysubmittedDateTime == null ? null : WorkflowExpression.Compile(bodysubmittedDateTime);
-            WorkflowExpression.Validate(__workflow_bodysubmittedDateTime, nameof(bodysubmittedDateTime), required: false);
+            var __workflow_productId = WorkflowExpression.Compile(productId, nameof(productId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: true);
+            var __workflow_encodedUser = WorkflowExpression.Compile(encodedUser, nameof(encodedUser), required: true);
+            var __workflow_bodyrating = WorkflowExpression.Compile(bodyrating, nameof(bodyrating), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyreviewText = WorkflowExpression.Compile(bodyreviewText, nameof(bodyreviewText), required: true);
+            var __workflow_bodyproductName = WorkflowExpression.Compile(bodyproductName, nameof(bodyproductName), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: false);
+            var __workflow_market = WorkflowExpression.Compile(market, nameof(market), required: false);
+            var __workflow_bodysku = WorkflowExpression.Compile(bodysku, nameof(bodysku), required: false);
+            var __workflow_bodylegalEntity = WorkflowExpression.Compile(bodylegalEntity, nameof(bodylegalEntity), required: false);
+            var __workflow_bodysubmittedDateTime = WorkflowExpression.Compile(bodysubmittedDateTime, nameof(bodysubmittedDateTime), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2.0/reviews/product/{0}/user", ExpressionConverter.ConvertWithUrlEncoding(__workflow_productId, 1));
@@ -99,8 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamics365ratingsre
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamics365ratingsre")]
         public IBodyWorkflowAction<ExportSuccessfulResponse> ExportReviews(Expression<Func<string>> tenantId)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
             return new DeferredBodyAction<ExportSuccessfulResponse>(() =>
             {
                 var apiCallPath = "/v2.0/export/reviews/";

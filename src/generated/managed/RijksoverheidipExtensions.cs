@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         public IBodyWorkflowAction<SchoolHolidaysResponseItem[]> SchoolHolidays(Expression<Func<int>> rows = null, Expression<Func<string>> output = null)
         {
-            var __workflow_rows = rows == null ? null : WorkflowExpression.Compile(rows);
-            WorkflowExpression.Validate(__workflow_rows, nameof(rows), required: false);
-            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
-            WorkflowExpression.Validate(__workflow_output, nameof(output), required: false);
+            var __workflow_rows = WorkflowExpression.Compile(rows, nameof(rows), required: false);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             return new DeferredBodyAction<SchoolHolidaysResponseItem[]>(() =>
             {
                 var apiCallPath = "/v1/sources/rijksoverheid/infotypes/schoolholidays/";
@@ -35,10 +33,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rijksoverheidip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rijksoverheidip")]
         public IBodyWorkflowAction<SchoolHolidaysPerSchoolYearResponse> SchoolHolidaysPerSchoolYear(Expression<Func<string>> schoolyear, Expression<Func<string>> output = null)
         {
-            var __workflow_schoolyear = schoolyear == null ? null : WorkflowExpression.Compile(schoolyear);
-            WorkflowExpression.Validate(__workflow_schoolyear, nameof(schoolyear), required: true);
-            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
-            WorkflowExpression.Validate(__workflow_output, nameof(output), required: false);
+            var __workflow_schoolyear = WorkflowExpression.Compile(schoolyear, nameof(schoolyear), required: true);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
             return new DeferredBodyAction<SchoolHolidaysPerSchoolYearResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/sources/rijksoverheid/infotypes/schoolholidays/schoolyear/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_schoolyear, 1));

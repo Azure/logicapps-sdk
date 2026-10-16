@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.K2workflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "k2workflow")]
         public IBodyWorkflowAction<JToken> TasksPostReleaseAction(Expression<Func<string>> serialNumber)
         {
-            var __workflow_serialNumber = serialNumber == null ? null : WorkflowExpression.Compile(serialNumber);
-            WorkflowExpression.Validate(__workflow_serialNumber, nameof(serialNumber), required: true);
+            var __workflow_serialNumber = WorkflowExpression.Compile(serialNumber, nameof(serialNumber), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tasks/{0}/actions/release", ExpressionConverter.ConvertWithUrlEncoding(__workflow_serialNumber, 1));

@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
         public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> createUpdateProfileId, Expression<Func<string>> createUpdateText)
         {
-            var __workflow_createUpdateProfileId = createUpdateProfileId == null ? null : WorkflowExpression.Compile(createUpdateProfileId);
-            WorkflowExpression.Validate(__workflow_createUpdateProfileId, nameof(createUpdateProfileId), required: true);
-            var __workflow_createUpdateText = createUpdateText == null ? null : WorkflowExpression.Compile(createUpdateText);
-            WorkflowExpression.Validate(__workflow_createUpdateText, nameof(createUpdateText), required: true);
+            var __workflow_createUpdateProfileId = WorkflowExpression.Compile(createUpdateProfileId, nameof(createUpdateProfileId), required: true);
+            var __workflow_createUpdateText = WorkflowExpression.Compile(createUpdateText, nameof(createUpdateText), required: true);
             return new DeferredBodyAction<CreateUpdateResponse>(() =>
             {
                 var apiCallPath = "/1/updates/create.json";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buffer")]
         public IBodyWorkflowAction<ShareUpdateResponse> ShareUpdate(Expression<Func<string>> profileId, Expression<Func<string>> udpateId)
         {
-            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
-            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
-            var __workflow_udpateId = udpateId == null ? null : WorkflowExpression.Compile(udpateId);
-            WorkflowExpression.Validate(__workflow_udpateId, nameof(udpateId), required: true);
+            var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
+            var __workflow_udpateId = WorkflowExpression.Compile(udpateId, nameof(udpateId), required: true);
             return new DeferredBodyAction<ShareUpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/1/updates/{0}/share.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_udpateId, 1));
@@ -50,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
     {
         public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
         {
-            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
-            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
+            var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListPendingUpdatesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));
@@ -63,8 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
 
         public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates(Expression<Func<string>> profileId, FlowRecurrence recurrence = null)
         {
-            var __workflow_profileId = profileId == null ? null : WorkflowExpression.Compile(profileId);
-            WorkflowExpression.Validate(__workflow_profileId, nameof(profileId), required: true);
+            var __workflow_profileId = WorkflowExpression.Compile(profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListSentUpdatesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_profileId, 1));

@@ -13,36 +13,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cxcardsbysurveyapp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cxcardsbysurveyapp")]
         public IBodyWorkflowAction<SendSurveyResponse> SendSurvey(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobile = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodysalutation = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodylocale = null, Expression<Func<string>> bodyRef = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyrecordType = null, Expression<Func<string>> bodyrecordId = null, Expression<Func<string>> bodyversionNumber = null)
         {
-            var __workflow_bodyapiKey = bodyapiKey == null ? null : WorkflowExpression.Compile(bodyapiKey);
-            WorkflowExpression.Validate(__workflow_bodyapiKey, nameof(bodyapiKey), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodymobile = bodymobile == null ? null : WorkflowExpression.Compile(bodymobile);
-            WorkflowExpression.Validate(__workflow_bodymobile, nameof(bodymobile), required: false);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
-            var __workflow_bodysalutation = bodysalutation == null ? null : WorkflowExpression.Compile(bodysalutation);
-            WorkflowExpression.Validate(__workflow_bodysalutation, nameof(bodysalutation), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodylocale = bodylocale == null ? null : WorkflowExpression.Compile(bodylocale);
-            WorkflowExpression.Validate(__workflow_bodylocale, nameof(bodylocale), required: false);
-            var __workflow_bodyRef = bodyRef == null ? null : WorkflowExpression.Compile(bodyRef);
-            WorkflowExpression.Validate(__workflow_bodyRef, nameof(bodyRef), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyrecordType = bodyrecordType == null ? null : WorkflowExpression.Compile(bodyrecordType);
-            WorkflowExpression.Validate(__workflow_bodyrecordType, nameof(bodyrecordType), required: false);
-            var __workflow_bodyrecordId = bodyrecordId == null ? null : WorkflowExpression.Compile(bodyrecordId);
-            WorkflowExpression.Validate(__workflow_bodyrecordId, nameof(bodyrecordId), required: false);
-            var __workflow_bodyversionNumber = bodyversionNumber == null ? null : WorkflowExpression.Compile(bodyversionNumber);
-            WorkflowExpression.Validate(__workflow_bodyversionNumber, nameof(bodyversionNumber), required: false);
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodymobile = WorkflowExpression.Compile(bodymobile, nameof(bodymobile), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodysalutation = WorkflowExpression.Compile(bodysalutation, nameof(bodysalutation), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodylocale = WorkflowExpression.Compile(bodylocale, nameof(bodylocale), required: false);
+            var __workflow_bodyRef = WorkflowExpression.Compile(bodyRef, nameof(bodyRef), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyrecordType = WorkflowExpression.Compile(bodyrecordType, nameof(bodyrecordType), required: false);
+            var __workflow_bodyrecordId = WorkflowExpression.Compile(bodyrecordId, nameof(bodyrecordId), required: false);
+            var __workflow_bodyversionNumber = WorkflowExpression.Compile(bodyversionNumber, nameof(bodyversionNumber), required: false);
             return new DeferredBodyAction<SendSurveyResponse>(() =>
             {
                 var apiCallPath = "/v1/email-surveys/send";

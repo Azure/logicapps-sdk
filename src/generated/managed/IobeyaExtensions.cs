@@ -24,20 +24,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<CreateRoomsResponse> CreateRooms(Expression<Func<string>> bodyname, Expression<Func<string>> bodydomainName, Expression<Func<int>> bodymaximumBoards = null, Expression<Func<int>> bodymaximumUsers = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyadministrator = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydomainName = bodydomainName == null ? null : WorkflowExpression.Compile(bodydomainName);
-            WorkflowExpression.Validate(__workflow_bodydomainName, nameof(bodydomainName), required: true);
-            var __workflow_bodymaximumBoards = bodymaximumBoards == null ? null : WorkflowExpression.Compile(bodymaximumBoards);
-            WorkflowExpression.Validate(__workflow_bodymaximumBoards, nameof(bodymaximumBoards), required: false);
-            var __workflow_bodymaximumUsers = bodymaximumUsers == null ? null : WorkflowExpression.Compile(bodymaximumUsers);
-            WorkflowExpression.Validate(__workflow_bodymaximumUsers, nameof(bodymaximumUsers), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodycategory = bodycategory == null ? null : WorkflowExpression.Compile(bodycategory);
-            WorkflowExpression.Validate(__workflow_bodycategory, nameof(bodycategory), required: false);
-            var __workflow_bodyadministrator = bodyadministrator == null ? null : WorkflowExpression.Compile(bodyadministrator);
-            WorkflowExpression.Validate(__workflow_bodyadministrator, nameof(bodyadministrator), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydomainName = WorkflowExpression.Compile(bodydomainName, nameof(bodydomainName), required: true);
+            var __workflow_bodymaximumBoards = WorkflowExpression.Compile(bodymaximumBoards, nameof(bodymaximumBoards), required: false);
+            var __workflow_bodymaximumUsers = WorkflowExpression.Compile(bodymaximumUsers, nameof(bodymaximumUsers), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodycategory = WorkflowExpression.Compile(bodycategory, nameof(bodycategory), required: false);
+            var __workflow_bodyadministrator = WorkflowExpression.Compile(bodyadministrator, nameof(bodyadministrator), required: false);
             return new DeferredBodyAction<CreateRoomsResponse>(() =>
             {
                 var apiCallPath = "/rooms";
@@ -91,10 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<ListBoardsResponse> ListBoards(Expression<Func<string>> search = null, Expression<Func<sortDirectionInput>> sortDirection = null)
         {
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_sortDirection = sortDirection == null ? null : WorkflowExpression.Compile(sortDirection);
-            WorkflowExpression.Validate(__workflow_sortDirection, nameof(sortDirection), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
             return new DeferredBodyAction<ListBoardsResponse>(() =>
             {
                 var apiCallPath = "/boards";
@@ -114,10 +105,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<CreateCardResponse> CreateCard(Expression<Func<typeCardInput>> typeCard, Expression<Func<object>> dynamicSchema = null)
         {
-            var __workflow_typeCard = typeCard == null ? null : WorkflowExpression.Compile(typeCard);
-            WorkflowExpression.Validate(__workflow_typeCard, nameof(typeCard), required: true);
-            var __workflow_dynamicSchema = dynamicSchema == null ? null : WorkflowExpression.Compile(dynamicSchema);
-            WorkflowExpression.Validate(__workflow_dynamicSchema, nameof(dynamicSchema), required: false);
+            var __workflow_typeCard = WorkflowExpression.Compile(typeCard, nameof(typeCard), required: true);
+            var __workflow_dynamicSchema = WorkflowExpression.Compile(dynamicSchema, nameof(dynamicSchema), required: false);
             return new DeferredBodyAction<CreateCardResponse>(() =>
             {
                 var apiCallPath = "/cards";
@@ -132,10 +121,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> UpdateQCDIndicatorsValue(Expression<Func<string>> bodyboardId, Expression<Func<JToken[]>> bodyletters)
         {
-            var __workflow_bodyboardId = bodyboardId == null ? null : WorkflowExpression.Compile(bodyboardId);
-            WorkflowExpression.Validate(__workflow_bodyboardId, nameof(bodyboardId), required: true);
-            var __workflow_bodyletters = bodyletters == null ? null : WorkflowExpression.Compile(bodyletters);
-            WorkflowExpression.Validate(__workflow_bodyletters, nameof(bodyletters), required: true);
+            var __workflow_bodyboardId = WorkflowExpression.Compile(bodyboardId, nameof(bodyboardId), required: true);
+            var __workflow_bodyletters = WorkflowExpression.Compile(bodyletters, nameof(bodyletters), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/qcd/indicators-values";
@@ -159,18 +146,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<wedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
         {
-            var __workflow_letterName = letterName == null ? null : WorkflowExpression.Compile(letterName);
-            WorkflowExpression.Validate(__workflow_letterName, nameof(letterName), required: true);
-            var __workflow_indicatorName = indicatorName == null ? null : WorkflowExpression.Compile(indicatorName);
-            WorkflowExpression.Validate(__workflow_indicatorName, nameof(indicatorName), required: true);
-            var __workflow_wedgeValue = wedgeValue == null ? null : WorkflowExpression.Compile(wedgeValue);
-            WorkflowExpression.Validate(__workflow_wedgeValue, nameof(wedgeValue), required: true);
-            var __workflow_wedgeNumber = wedgeNumber == null ? null : WorkflowExpression.Compile(wedgeNumber);
-            WorkflowExpression.Validate(__workflow_wedgeNumber, nameof(wedgeNumber), required: true);
-            var __workflow_wedgeRing = wedgeRing == null ? null : WorkflowExpression.Compile(wedgeRing);
-            WorkflowExpression.Validate(__workflow_wedgeRing, nameof(wedgeRing), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: false);
+            var __workflow_letterName = WorkflowExpression.Compile(letterName, nameof(letterName), required: true);
+            var __workflow_indicatorName = WorkflowExpression.Compile(indicatorName, nameof(indicatorName), required: true);
+            var __workflow_wedgeValue = WorkflowExpression.Compile(wedgeValue, nameof(wedgeValue), required: true);
+            var __workflow_wedgeNumber = WorkflowExpression.Compile(wedgeNumber, nameof(wedgeNumber), required: true);
+            var __workflow_wedgeRing = WorkflowExpression.Compile(wedgeRing, nameof(wedgeRing), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/qcd/compute-indicator";
@@ -190,16 +171,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<ListCardsActivityResponse> ListCardsActivity(Expression<Func<string>> boardId, Expression<Func<int>> page, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<int>> size = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: true);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: true);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
             return new DeferredBodyAction<ListCardsActivityResponse>(() =>
             {
                 var apiCallPath = "/cards/activity";
@@ -221,12 +197,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> UpdateAssetBoardImage(Expression<Func<string>> boardImageId, Expression<Func<object>> file, Expression<Func<fileContentTypeInput>> fileContentType)
         {
-            var __workflow_boardImageId = boardImageId == null ? null : WorkflowExpression.Compile(boardImageId);
-            WorkflowExpression.Validate(__workflow_boardImageId, nameof(boardImageId), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_fileContentType = fileContentType == null ? null : WorkflowExpression.Compile(fileContentType);
-            WorkflowExpression.Validate(__workflow_fileContentType, nameof(fileContentType), required: true);
+            var __workflow_boardImageId = WorkflowExpression.Compile(boardImageId, nameof(boardImageId), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_fileContentType = WorkflowExpression.Compile(fileContentType, nameof(fileContentType), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board-images/{0}/asset", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardImageId, 1));
@@ -239,12 +212,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<JToken> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_gaugeId = gaugeId == null ? null : WorkflowExpression.Compile(gaugeId);
-            WorkflowExpression.Validate(__workflow_gaugeId, nameof(gaugeId), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_gaugeId = WorkflowExpression.Compile(gaugeId, nameof(gaugeId), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gauges/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_gaugeId, 1));

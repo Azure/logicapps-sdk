@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
         {
-            var __workflow_text = text == null ? null : WorkflowExpression.Compile(text);
-            WorkflowExpression.Validate(__workflow_text, nameof(text), required: true);
-            var __workflow_set = set == null ? null : WorkflowExpression.Compile(set);
-            WorkflowExpression.Validate(__workflow_set, nameof(set), required: true);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_bgset = bgset == null ? null : WorkflowExpression.Compile(bgset);
-            WorkflowExpression.Validate(__workflow_bgset, nameof(bgset), required: false);
-            var __workflow_gravatar = gravatar == null ? null : WorkflowExpression.Compile(gravatar);
-            WorkflowExpression.Validate(__workflow_gravatar, nameof(gravatar), required: false);
+            var __workflow_text = WorkflowExpression.Compile(text, nameof(text), required: true);
+            var __workflow_set = WorkflowExpression.Compile(set, nameof(set), required: true);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_bgset = WorkflowExpression.Compile(bgset, nameof(bgset), required: false);
+            var __workflow_gravatar = WorkflowExpression.Compile(gravatar, nameof(gravatar), required: false);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_text, 1));

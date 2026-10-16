@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> EncodeJson(Expression<Func<string>> documentSpec = null)
         {
-            var __workflow_documentSpec = documentSpec == null ? null : WorkflowExpression.Compile(documentSpec);
-            WorkflowExpression.Validate(__workflow_documentSpec, nameof(documentSpec), required: false);
+            var __workflow_documentSpec = WorkflowExpression.Compile(documentSpec, nameof(documentSpec), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/EncodeJson";
@@ -36,10 +35,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> EncodeXml(Expression<Func<string>> documentSpec = null, Expression<Func<string>> body = null)
         {
-            var __workflow_documentSpec = documentSpec == null ? null : WorkflowExpression.Compile(documentSpec);
-            WorkflowExpression.Validate(__workflow_documentSpec, nameof(documentSpec), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_documentSpec = WorkflowExpression.Compile(documentSpec, nameof(documentSpec), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/EncodeXml";
@@ -55,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
         public IBodyWorkflowAction<string> Send(Expression<Func<string>> receiveLocationAddress, Expression<Func<string>> body = null)
         {
-            var __workflow_receiveLocationAddress = receiveLocationAddress == null ? null : WorkflowExpression.Compile(receiveLocationAddress);
-            WorkflowExpression.Validate(__workflow_receiveLocationAddress, nameof(receiveLocationAddress), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_receiveLocationAddress = WorkflowExpression.Compile(receiveLocationAddress, nameof(receiveLocationAddress), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Send";

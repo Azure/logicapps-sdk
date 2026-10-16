@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<DateTimeJsonResponse> GetCurrentTimeBasedOnIp(Expression<Func<string>> ipv4)
         {
-            var __workflow_ipv4 = ipv4 == null ? null : WorkflowExpression.Compile(ipv4);
-            WorkflowExpression.Validate(__workflow_ipv4, nameof(ipv4), required: true);
+            var __workflow_ipv4 = WorkflowExpression.Compile(ipv4, nameof(ipv4), required: true);
             return new DeferredBodyAction<DateTimeJsonResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ip/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_ipv4, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<string[]> GetAreaTimezones(Expression<Func<string>> area)
         {
-            var __workflow_area = area == null ? null : WorkflowExpression.Compile(area);
-            WorkflowExpression.Validate(__workflow_area, nameof(area), required: true);
+            var __workflow_area = WorkflowExpression.Compile(area, nameof(area), required: true);
             return new DeferredBodyAction<string[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1));
@@ -50,10 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<DateTimeJsonResponse> GetLocationTimezone(Expression<Func<string>> area, Expression<Func<string>> location)
         {
-            var __workflow_area = area == null ? null : WorkflowExpression.Compile(area);
-            WorkflowExpression.Validate(__workflow_area, nameof(area), required: true);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
+            var __workflow_area = WorkflowExpression.Compile(area, nameof(area), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<DateTimeJsonResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1));
@@ -66,12 +62,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<DateTimeJsonResponse> GetRegionTimezone(Expression<Func<string>> area, Expression<Func<string>> location, Expression<Func<string>> region)
         {
-            var __workflow_area = area == null ? null : WorkflowExpression.Compile(area);
-            WorkflowExpression.Validate(__workflow_area, nameof(area), required: true);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: true);
+            var __workflow_area = WorkflowExpression.Compile(area, nameof(area), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: true);
             return new DeferredBodyAction<DateTimeJsonResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_area, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_location, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_region, 1));

@@ -13,36 +13,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaSearchResponse> MediaSearch(Expression<Func<string>> q = null, Expression<Func<string>> mediatypes = null, Expression<Func<string>> name = null, Expression<Func<string>> topic = null, Expression<Func<int>> topicids = null, Expression<Func<string>> audience = null, Expression<Func<string>> languagename = null, Expression<Func<string>> languageisocode = null, Expression<Func<string>> sourcename = null, Expression<Func<string>> sourceacronym = null, Expression<Func<string>> sort = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_mediatypes = mediatypes == null ? null : WorkflowExpression.Compile(mediatypes);
-            WorkflowExpression.Validate(__workflow_mediatypes, nameof(mediatypes), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_topic = topic == null ? null : WorkflowExpression.Compile(topic);
-            WorkflowExpression.Validate(__workflow_topic, nameof(topic), required: false);
-            var __workflow_topicids = topicids == null ? null : WorkflowExpression.Compile(topicids);
-            WorkflowExpression.Validate(__workflow_topicids, nameof(topicids), required: false);
-            var __workflow_audience = audience == null ? null : WorkflowExpression.Compile(audience);
-            WorkflowExpression.Validate(__workflow_audience, nameof(audience), required: false);
-            var __workflow_languagename = languagename == null ? null : WorkflowExpression.Compile(languagename);
-            WorkflowExpression.Validate(__workflow_languagename, nameof(languagename), required: false);
-            var __workflow_languageisocode = languageisocode == null ? null : WorkflowExpression.Compile(languageisocode);
-            WorkflowExpression.Validate(__workflow_languageisocode, nameof(languageisocode), required: false);
-            var __workflow_sourcename = sourcename == null ? null : WorkflowExpression.Compile(sourcename);
-            WorkflowExpression.Validate(__workflow_sourcename, nameof(sourcename), required: false);
-            var __workflow_sourceacronym = sourceacronym == null ? null : WorkflowExpression.Compile(sourceacronym);
-            WorkflowExpression.Validate(__workflow_sourceacronym, nameof(sourceacronym), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
-            var __workflow_pagenum = pagenum == null ? null : WorkflowExpression.Compile(pagenum);
-            WorkflowExpression.Validate(__workflow_pagenum, nameof(pagenum), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_mediatypes = WorkflowExpression.Compile(mediatypes, nameof(mediatypes), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_topic = WorkflowExpression.Compile(topic, nameof(topic), required: false);
+            var __workflow_topicids = WorkflowExpression.Compile(topicids, nameof(topicids), required: false);
+            var __workflow_audience = WorkflowExpression.Compile(audience, nameof(audience), required: false);
+            var __workflow_languagename = WorkflowExpression.Compile(languagename, nameof(languagename), required: false);
+            var __workflow_languageisocode = WorkflowExpression.Compile(languageisocode, nameof(languageisocode), required: false);
+            var __workflow_sourcename = WorkflowExpression.Compile(sourcename, nameof(sourcename), required: false);
+            var __workflow_sourceacronym = WorkflowExpression.Compile(sourceacronym, nameof(sourceacronym), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
+            var __workflow_pagenum = WorkflowExpression.Compile(pagenum, nameof(pagenum), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<MediaSearchResponse>(() =>
             {
                 var apiCallPath = "/resources/media";
@@ -85,18 +70,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaGetResponse> MediaGet(Expression<Func<string>> mediaId, Expression<Func<string>> sort = null, Expression<Func<string>> order = null, Expression<Func<int>> max = null, Expression<Func<int>> pagenum = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_mediaId = mediaId == null ? null : WorkflowExpression.Compile(mediaId);
-            WorkflowExpression.Validate(__workflow_mediaId, nameof(mediaId), required: true);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_max = max == null ? null : WorkflowExpression.Compile(max);
-            WorkflowExpression.Validate(__workflow_max, nameof(max), required: false);
-            var __workflow_pagenum = pagenum == null ? null : WorkflowExpression.Compile(pagenum);
-            WorkflowExpression.Validate(__workflow_pagenum, nameof(pagenum), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_mediaId = WorkflowExpression.Compile(mediaId, nameof(mediaId), required: true);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_max = WorkflowExpression.Compile(max, nameof(max), required: false);
+            var __workflow_pagenum = WorkflowExpression.Compile(pagenum, nameof(pagenum), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<MediaGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/media/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_mediaId, 1));
@@ -155,8 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tAGID)
         {
-            var __workflow_tAGID = tAGID == null ? null : WorkflowExpression.Compile(tAGID);
-            WorkflowExpression.Validate(__workflow_tAGID, nameof(tAGID), required: true);
+            var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
             return new DeferredBodyAction<TagGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tAGID, 1));
@@ -169,8 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<MediaTagResponse> MediaTag(Expression<Func<string>> tAGID)
         {
-            var __workflow_tAGID = tAGID == null ? null : WorkflowExpression.Compile(tAGID);
-            WorkflowExpression.Validate(__workflow_tAGID, nameof(tAGID), required: true);
+            var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
             return new DeferredBodyAction<MediaTagResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/media", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tAGID, 1));
@@ -183,8 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cdccontentservicesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cdccontentservicesip")]
         public IBodyWorkflowAction<TagRelatedResponse> TagRelated(Expression<Func<string>> tAGID)
         {
-            var __workflow_tAGID = tAGID == null ? null : WorkflowExpression.Compile(tAGID);
-            WorkflowExpression.Validate(__workflow_tAGID, nameof(tAGID), required: true);
+            var __workflow_tAGID = WorkflowExpression.Compile(tAGID, nameof(tAGID), required: true);
             return new DeferredBodyAction<TagRelatedResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/resources/tags/{0}/related", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tAGID, 1));

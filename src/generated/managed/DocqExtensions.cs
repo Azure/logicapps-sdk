@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
         public IBodyWorkflowAction<ExtractInformationResponse> ExtractInformation(Expression<Func<string>> bodyimageFileContent = null)
         {
-            var __workflow_bodyimageFileContent = bodyimageFileContent == null ? null : WorkflowExpression.Compile(bodyimageFileContent);
-            WorkflowExpression.Validate(__workflow_bodyimageFileContent, nameof(bodyimageFileContent), required: false);
+            var __workflow_bodyimageFileContent = WorkflowExpression.Compile(bodyimageFileContent, nameof(bodyimageFileContent), required: false);
             return new DeferredBodyAction<ExtractInformationResponse>(() =>
             {
                 var apiCallPath = "/api/Flow/ExtractInformation";
@@ -43,10 +42,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docq
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docq")]
         public IBodyWorkflowAction<string> GenerateDocument(Expression<Func<string>> bodydocumentInformation, Expression<Func<string>> bodydocumentTemplateContent)
         {
-            var __workflow_bodydocumentInformation = bodydocumentInformation == null ? null : WorkflowExpression.Compile(bodydocumentInformation);
-            WorkflowExpression.Validate(__workflow_bodydocumentInformation, nameof(bodydocumentInformation), required: true);
-            var __workflow_bodydocumentTemplateContent = bodydocumentTemplateContent == null ? null : WorkflowExpression.Compile(bodydocumentTemplateContent);
-            WorkflowExpression.Validate(__workflow_bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
+            var __workflow_bodydocumentInformation = WorkflowExpression.Compile(bodydocumentInformation, nameof(bodydocumentInformation), required: true);
+            var __workflow_bodydocumentTemplateContent = WorkflowExpression.Compile(bodydocumentTemplateContent, nameof(bodydocumentTemplateContent), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/api/Flow/GenerateDocument";

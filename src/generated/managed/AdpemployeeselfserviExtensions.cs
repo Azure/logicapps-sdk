@@ -13,30 +13,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
-            var __workflow_bodycontactName = bodycontactName == null ? null : WorkflowExpression.Compile(bodycontactName);
-            WorkflowExpression.Validate(__workflow_bodycontactName, nameof(bodycontactName), required: true);
-            var __workflow_bodyrelation = bodyrelation == null ? null : WorkflowExpression.Compile(bodyrelation);
-            WorkflowExpression.Validate(__workflow_bodyrelation, nameof(bodyrelation), required: true);
-            var __workflow_bodyisPrimary = bodyisPrimary == null ? null : WorkflowExpression.Compile(bodyisPrimary);
-            WorkflowExpression.Validate(__workflow_bodyisPrimary, nameof(bodyisPrimary), required: true);
-            var __workflow_bodyaddressLine1 = bodyaddressLine1 == null ? null : WorkflowExpression.Compile(bodyaddressLine1);
-            WorkflowExpression.Validate(__workflow_bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            var __workflow_bodyaddressLine2 = bodyaddressLine2 == null ? null : WorkflowExpression.Compile(bodyaddressLine2);
-            WorkflowExpression.Validate(__workflow_bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            var __workflow_bodyaddressLine3 = bodyaddressLine3 == null ? null : WorkflowExpression.Compile(bodyaddressLine3);
-            WorkflowExpression.Validate(__workflow_bodyaddressLine3, nameof(bodyaddressLine3), required: false);
-            var __workflow_bodyaddressCity = bodyaddressCity == null ? null : WorkflowExpression.Compile(bodyaddressCity);
-            WorkflowExpression.Validate(__workflow_bodyaddressCity, nameof(bodyaddressCity), required: false);
-            var __workflow_bodyaddressState = bodyaddressState == null ? null : WorkflowExpression.Compile(bodyaddressState);
-            WorkflowExpression.Validate(__workflow_bodyaddressState, nameof(bodyaddressState), required: false);
-            var __workflow_bodyaddressCountry = bodyaddressCountry == null ? null : WorkflowExpression.Compile(bodyaddressCountry);
-            WorkflowExpression.Validate(__workflow_bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            var __workflow_bodyaddressPostalCode = bodyaddressPostalCode == null ? null : WorkflowExpression.Compile(bodyaddressPostalCode);
-            WorkflowExpression.Validate(__workflow_bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            var __workflow_bodyphones = bodyphones == null ? null : WorkflowExpression.Compile(bodyphones);
-            WorkflowExpression.Validate(__workflow_bodyphones, nameof(bodyphones), required: false);
-            var __workflow_bodyemails = bodyemails == null ? null : WorkflowExpression.Compile(bodyemails);
-            WorkflowExpression.Validate(__workflow_bodyemails, nameof(bodyemails), required: false);
+            var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: true);
+            var __workflow_bodyrelation = WorkflowExpression.Compile(bodyrelation, nameof(bodyrelation), required: true);
+            var __workflow_bodyisPrimary = WorkflowExpression.Compile(bodyisPrimary, nameof(bodyisPrimary), required: true);
+            var __workflow_bodyaddressLine1 = WorkflowExpression.Compile(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
+            var __workflow_bodyaddressLine2 = WorkflowExpression.Compile(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
+            var __workflow_bodyaddressLine3 = WorkflowExpression.Compile(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
+            var __workflow_bodyaddressCity = WorkflowExpression.Compile(bodyaddressCity, nameof(bodyaddressCity), required: false);
+            var __workflow_bodyaddressState = WorkflowExpression.Compile(bodyaddressState, nameof(bodyaddressState), required: false);
+            var __workflow_bodyaddressCountry = WorkflowExpression.Compile(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
+            var __workflow_bodyaddressPostalCode = WorkflowExpression.Compile(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
+            var __workflow_bodyphones = WorkflowExpression.Compile(bodyphones, nameof(bodyphones), required: false);
+            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
             return new DeferredBodyAction<CreateContactResponse>(() =>
             {
                 var apiCallPath = "/api/create-emergency-contact";
@@ -116,8 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts(Expression<Func<string[]>> bodyitemIds)
         {
-            var __workflow_bodyitemIds = bodyitemIds == null ? null : WorkflowExpression.Compile(bodyitemIds);
-            WorkflowExpression.Validate(__workflow_bodyitemIds, nameof(bodyitemIds), required: true);
+            var __workflow_bodyitemIds = WorkflowExpression.Compile(bodyitemIds, nameof(bodyitemIds), required: true);
             return new DeferredBodyAction<DeleteContactsResponse>(() =>
             {
                 var apiCallPath = "/api/delete-emergency-contacts";
@@ -175,32 +162,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<UpdateContactResponse> UpdateContact(Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem2[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
         {
-            var __workflow_bodyitemId = bodyitemId == null ? null : WorkflowExpression.Compile(bodyitemId);
-            WorkflowExpression.Validate(__workflow_bodyitemId, nameof(bodyitemId), required: true);
-            var __workflow_bodycontactName = bodycontactName == null ? null : WorkflowExpression.Compile(bodycontactName);
-            WorkflowExpression.Validate(__workflow_bodycontactName, nameof(bodycontactName), required: true);
-            var __workflow_bodyrelation = bodyrelation == null ? null : WorkflowExpression.Compile(bodyrelation);
-            WorkflowExpression.Validate(__workflow_bodyrelation, nameof(bodyrelation), required: true);
-            var __workflow_bodyisPrimary = bodyisPrimary == null ? null : WorkflowExpression.Compile(bodyisPrimary);
-            WorkflowExpression.Validate(__workflow_bodyisPrimary, nameof(bodyisPrimary), required: true);
-            var __workflow_bodyaddressLine1 = bodyaddressLine1 == null ? null : WorkflowExpression.Compile(bodyaddressLine1);
-            WorkflowExpression.Validate(__workflow_bodyaddressLine1, nameof(bodyaddressLine1), required: false);
-            var __workflow_bodyaddressLine2 = bodyaddressLine2 == null ? null : WorkflowExpression.Compile(bodyaddressLine2);
-            WorkflowExpression.Validate(__workflow_bodyaddressLine2, nameof(bodyaddressLine2), required: false);
-            var __workflow_bodyaddressLine3 = bodyaddressLine3 == null ? null : WorkflowExpression.Compile(bodyaddressLine3);
-            WorkflowExpression.Validate(__workflow_bodyaddressLine3, nameof(bodyaddressLine3), required: false);
-            var __workflow_bodyaddressCity = bodyaddressCity == null ? null : WorkflowExpression.Compile(bodyaddressCity);
-            WorkflowExpression.Validate(__workflow_bodyaddressCity, nameof(bodyaddressCity), required: false);
-            var __workflow_bodyaddressState = bodyaddressState == null ? null : WorkflowExpression.Compile(bodyaddressState);
-            WorkflowExpression.Validate(__workflow_bodyaddressState, nameof(bodyaddressState), required: false);
-            var __workflow_bodyaddressCountry = bodyaddressCountry == null ? null : WorkflowExpression.Compile(bodyaddressCountry);
-            WorkflowExpression.Validate(__workflow_bodyaddressCountry, nameof(bodyaddressCountry), required: false);
-            var __workflow_bodyaddressPostalCode = bodyaddressPostalCode == null ? null : WorkflowExpression.Compile(bodyaddressPostalCode);
-            WorkflowExpression.Validate(__workflow_bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
-            var __workflow_bodyphones = bodyphones == null ? null : WorkflowExpression.Compile(bodyphones);
-            WorkflowExpression.Validate(__workflow_bodyphones, nameof(bodyphones), required: false);
-            var __workflow_bodyemails = bodyemails == null ? null : WorkflowExpression.Compile(bodyemails);
-            WorkflowExpression.Validate(__workflow_bodyemails, nameof(bodyemails), required: false);
+            var __workflow_bodyitemId = WorkflowExpression.Compile(bodyitemId, nameof(bodyitemId), required: true);
+            var __workflow_bodycontactName = WorkflowExpression.Compile(bodycontactName, nameof(bodycontactName), required: true);
+            var __workflow_bodyrelation = WorkflowExpression.Compile(bodyrelation, nameof(bodyrelation), required: true);
+            var __workflow_bodyisPrimary = WorkflowExpression.Compile(bodyisPrimary, nameof(bodyisPrimary), required: true);
+            var __workflow_bodyaddressLine1 = WorkflowExpression.Compile(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
+            var __workflow_bodyaddressLine2 = WorkflowExpression.Compile(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
+            var __workflow_bodyaddressLine3 = WorkflowExpression.Compile(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
+            var __workflow_bodyaddressCity = WorkflowExpression.Compile(bodyaddressCity, nameof(bodyaddressCity), required: false);
+            var __workflow_bodyaddressState = WorkflowExpression.Compile(bodyaddressState, nameof(bodyaddressState), required: false);
+            var __workflow_bodyaddressCountry = WorkflowExpression.Compile(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
+            var __workflow_bodyaddressPostalCode = WorkflowExpression.Compile(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
+            var __workflow_bodyphones = WorkflowExpression.Compile(bodyphones, nameof(bodyphones), required: false);
+            var __workflow_bodyemails = WorkflowExpression.Compile(bodyemails, nameof(bodyemails), required: false);
             return new DeferredBodyAction<UpdateContactResponse>(() =>
             {
                 var apiCallPath = "/api/update-emergency-contact";
@@ -282,16 +256,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<UpdateUserResponse> UpdateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobileCountry = null, Expression<Func<string>> bodymobileArea = null, Expression<Func<string>> bodymobileNumber = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodymobileCountry = bodymobileCountry == null ? null : WorkflowExpression.Compile(bodymobileCountry);
-            WorkflowExpression.Validate(__workflow_bodymobileCountry, nameof(bodymobileCountry), required: false);
-            var __workflow_bodymobileArea = bodymobileArea == null ? null : WorkflowExpression.Compile(bodymobileArea);
-            WorkflowExpression.Validate(__workflow_bodymobileArea, nameof(bodymobileArea), required: false);
-            var __workflow_bodymobileNumber = bodymobileNumber == null ? null : WorkflowExpression.Compile(bodymobileNumber);
-            WorkflowExpression.Validate(__workflow_bodymobileNumber, nameof(bodymobileNumber), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodymobileCountry = WorkflowExpression.Compile(bodymobileCountry, nameof(bodymobileCountry), required: false);
+            var __workflow_bodymobileArea = WorkflowExpression.Compile(bodymobileArea, nameof(bodymobileArea), required: false);
+            var __workflow_bodymobileNumber = WorkflowExpression.Compile(bodymobileNumber, nameof(bodymobileNumber), required: false);
             return new DeferredBodyAction<UpdateUserResponse>(() =>
             {
                 var apiCallPath = "/api/update-profile";

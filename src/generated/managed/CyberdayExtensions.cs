@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         public IBodyWorkflowAction<AddSystemResponse> AddSystem(Expression<Func<string>> bodytitle = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: false);
             return new DeferredBodyAction<AddSystemResponse>(() =>
             {
                 var apiCallPath = "/api/external/systems/topics/";
@@ -49,24 +48,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberday
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cyberday")]
         public IWorkflowAction AddSystemAdvanced(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyfieldssystemNickname = null, Expression<Func<string>> bodyfieldssystemOwner = null, Expression<Func<string>> bodyfieldssystemAdministrator = null, Expression<Func<string>> bodyfieldscostCenter = null, Expression<Func<string[]>> bodyfieldslinkedSystems = null, Expression<Func<string>> bodyfieldsdataSystemPurpose = null, Expression<Func<string[]>> bodyfieldslinkedSystemProviders = null, Expression<Func<string>> bodyfieldspartnerResponsibilityDetails = null)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyfieldssystemNickname = bodyfieldssystemNickname == null ? null : WorkflowExpression.Compile(bodyfieldssystemNickname);
-            WorkflowExpression.Validate(__workflow_bodyfieldssystemNickname, nameof(bodyfieldssystemNickname), required: false);
-            var __workflow_bodyfieldssystemOwner = bodyfieldssystemOwner == null ? null : WorkflowExpression.Compile(bodyfieldssystemOwner);
-            WorkflowExpression.Validate(__workflow_bodyfieldssystemOwner, nameof(bodyfieldssystemOwner), required: false);
-            var __workflow_bodyfieldssystemAdministrator = bodyfieldssystemAdministrator == null ? null : WorkflowExpression.Compile(bodyfieldssystemAdministrator);
-            WorkflowExpression.Validate(__workflow_bodyfieldssystemAdministrator, nameof(bodyfieldssystemAdministrator), required: false);
-            var __workflow_bodyfieldscostCenter = bodyfieldscostCenter == null ? null : WorkflowExpression.Compile(bodyfieldscostCenter);
-            WorkflowExpression.Validate(__workflow_bodyfieldscostCenter, nameof(bodyfieldscostCenter), required: false);
-            var __workflow_bodyfieldslinkedSystems = bodyfieldslinkedSystems == null ? null : WorkflowExpression.Compile(bodyfieldslinkedSystems);
-            WorkflowExpression.Validate(__workflow_bodyfieldslinkedSystems, nameof(bodyfieldslinkedSystems), required: false);
-            var __workflow_bodyfieldsdataSystemPurpose = bodyfieldsdataSystemPurpose == null ? null : WorkflowExpression.Compile(bodyfieldsdataSystemPurpose);
-            WorkflowExpression.Validate(__workflow_bodyfieldsdataSystemPurpose, nameof(bodyfieldsdataSystemPurpose), required: false);
-            var __workflow_bodyfieldslinkedSystemProviders = bodyfieldslinkedSystemProviders == null ? null : WorkflowExpression.Compile(bodyfieldslinkedSystemProviders);
-            WorkflowExpression.Validate(__workflow_bodyfieldslinkedSystemProviders, nameof(bodyfieldslinkedSystemProviders), required: false);
-            var __workflow_bodyfieldspartnerResponsibilityDetails = bodyfieldspartnerResponsibilityDetails == null ? null : WorkflowExpression.Compile(bodyfieldspartnerResponsibilityDetails);
-            WorkflowExpression.Validate(__workflow_bodyfieldspartnerResponsibilityDetails, nameof(bodyfieldspartnerResponsibilityDetails), required: false);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyfieldssystemNickname = WorkflowExpression.Compile(bodyfieldssystemNickname, nameof(bodyfieldssystemNickname), required: false);
+            var __workflow_bodyfieldssystemOwner = WorkflowExpression.Compile(bodyfieldssystemOwner, nameof(bodyfieldssystemOwner), required: false);
+            var __workflow_bodyfieldssystemAdministrator = WorkflowExpression.Compile(bodyfieldssystemAdministrator, nameof(bodyfieldssystemAdministrator), required: false);
+            var __workflow_bodyfieldscostCenter = WorkflowExpression.Compile(bodyfieldscostCenter, nameof(bodyfieldscostCenter), required: false);
+            var __workflow_bodyfieldslinkedSystems = WorkflowExpression.Compile(bodyfieldslinkedSystems, nameof(bodyfieldslinkedSystems), required: false);
+            var __workflow_bodyfieldsdataSystemPurpose = WorkflowExpression.Compile(bodyfieldsdataSystemPurpose, nameof(bodyfieldsdataSystemPurpose), required: false);
+            var __workflow_bodyfieldslinkedSystemProviders = WorkflowExpression.Compile(bodyfieldslinkedSystemProviders, nameof(bodyfieldslinkedSystemProviders), required: false);
+            var __workflow_bodyfieldspartnerResponsibilityDetails = WorkflowExpression.Compile(bodyfieldspartnerResponsibilityDetails, nameof(bodyfieldspartnerResponsibilityDetails), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/external/systems/topics/advanced/";

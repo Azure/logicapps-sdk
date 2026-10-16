@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openelevation
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openelevation")]
         public IBodyWorkflowAction<LookupResponse> Lookup(Expression<Func<string>> locations)
         {
-            var __workflow_locations = locations == null ? null : WorkflowExpression.Compile(locations);
-            WorkflowExpression.Validate(__workflow_locations, nameof(locations), required: true);
+            var __workflow_locations = WorkflowExpression.Compile(locations, nameof(locations), required: true);
             return new DeferredBodyAction<LookupResponse>(() =>
             {
                 var apiCallPath = "/api/v1/lookup";

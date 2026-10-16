@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<FolderResponse> ListFiles(Expression<Func<string>> account, Expression<Func<string>> path = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
             return new DeferredBodyAction<FolderResponse>(() =>
             {
                 var apiCallPath = "/store/folders/webhdfs/v1/";
@@ -33,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<OperationPerformed> CreateFolder(Expression<Func<string>> account, Expression<Func<string>> path)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<OperationPerformed>(() =>
             {
                 var apiCallPath = "/store/folders/webhdfs/v1/";
@@ -52,14 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<string> AppendFileConcurrent(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<appendModeInput>> appendMode = null, Expression<Func<string>> body = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_filepath = filepath == null ? null : WorkflowExpression.Compile(filepath);
-            WorkflowExpression.Validate(__workflow_filepath, nameof(filepath), required: true);
-            var __workflow_appendMode = appendMode == null ? null : WorkflowExpression.Compile(appendMode);
-            WorkflowExpression.Validate(__workflow_appendMode, nameof(appendMode), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
+            var __workflow_appendMode = WorkflowExpression.Compile(appendMode, nameof(appendMode), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfsext/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
@@ -78,10 +70,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<string> ReadFile(Expression<Func<string>> account, Expression<Func<string>> filepath)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_filepath = filepath == null ? null : WorkflowExpression.Compile(filepath);
-            WorkflowExpression.Validate(__workflow_filepath, nameof(filepath), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
@@ -97,14 +87,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IWorkflowAction UploadFile(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<bool>> overwrite = null, Expression<Func<string>> body = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_filepath = filepath == null ? null : WorkflowExpression.Compile(filepath);
-            WorkflowExpression.Validate(__workflow_filepath, nameof(filepath), required: true);
-            var __workflow_overwrite = overwrite == null ? null : WorkflowExpression.Compile(overwrite);
-            WorkflowExpression.Validate(__workflow_overwrite, nameof(overwrite), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
+            var __workflow_overwrite = WorkflowExpression.Compile(overwrite, nameof(overwrite), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
@@ -124,14 +110,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IWorkflowAction AppendFileSequential(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_filepath = filepath == null ? null : WorkflowExpression.Compile(filepath);
-            WorkflowExpression.Validate(__workflow_filepath, nameof(filepath), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));
@@ -150,10 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
         public IBodyWorkflowAction<OperationPerformed> DeleteFile(Expression<Func<string>> account, Expression<Func<string>> filepath)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_filepath = filepath == null ? null : WorkflowExpression.Compile(filepath);
-            WorkflowExpression.Validate(__workflow_filepath, nameof(filepath), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_filepath = WorkflowExpression.Compile(filepath, nameof(filepath), required: true);
             return new DeferredBodyAction<OperationPerformed>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_filepath, 1));

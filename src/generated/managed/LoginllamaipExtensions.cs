@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loginllamaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loginllamaip")]
         public IBodyWorkflowAction<LoginPostResponse> Login(Expression<Func<string>> bodyipAddress, Expression<Func<string>> bodyuserAgent, Expression<Func<string>> bodyidentityKey, Expression<Func<string>> bodygeoCountry = null, Expression<Func<string>> bodygeoCity = null, Expression<Func<string>> bodyuserTimeOfDay = null)
         {
-            var __workflow_bodyipAddress = bodyipAddress == null ? null : WorkflowExpression.Compile(bodyipAddress);
-            WorkflowExpression.Validate(__workflow_bodyipAddress, nameof(bodyipAddress), required: true);
-            var __workflow_bodyuserAgent = bodyuserAgent == null ? null : WorkflowExpression.Compile(bodyuserAgent);
-            WorkflowExpression.Validate(__workflow_bodyuserAgent, nameof(bodyuserAgent), required: true);
-            var __workflow_bodyidentityKey = bodyidentityKey == null ? null : WorkflowExpression.Compile(bodyidentityKey);
-            WorkflowExpression.Validate(__workflow_bodyidentityKey, nameof(bodyidentityKey), required: true);
-            var __workflow_bodygeoCountry = bodygeoCountry == null ? null : WorkflowExpression.Compile(bodygeoCountry);
-            WorkflowExpression.Validate(__workflow_bodygeoCountry, nameof(bodygeoCountry), required: false);
-            var __workflow_bodygeoCity = bodygeoCity == null ? null : WorkflowExpression.Compile(bodygeoCity);
-            WorkflowExpression.Validate(__workflow_bodygeoCity, nameof(bodygeoCity), required: false);
-            var __workflow_bodyuserTimeOfDay = bodyuserTimeOfDay == null ? null : WorkflowExpression.Compile(bodyuserTimeOfDay);
-            WorkflowExpression.Validate(__workflow_bodyuserTimeOfDay, nameof(bodyuserTimeOfDay), required: false);
+            var __workflow_bodyipAddress = WorkflowExpression.Compile(bodyipAddress, nameof(bodyipAddress), required: true);
+            var __workflow_bodyuserAgent = WorkflowExpression.Compile(bodyuserAgent, nameof(bodyuserAgent), required: true);
+            var __workflow_bodyidentityKey = WorkflowExpression.Compile(bodyidentityKey, nameof(bodyidentityKey), required: true);
+            var __workflow_bodygeoCountry = WorkflowExpression.Compile(bodygeoCountry, nameof(bodygeoCountry), required: false);
+            var __workflow_bodygeoCity = WorkflowExpression.Compile(bodygeoCity, nameof(bodygeoCity), required: false);
+            var __workflow_bodyuserTimeOfDay = WorkflowExpression.Compile(bodyuserTimeOfDay, nameof(bodyuserTimeOfDay), required: false);
             return new DeferredBodyAction<LoginPostResponse>(() =>
             {
                 var apiCallPath = "/login/check";

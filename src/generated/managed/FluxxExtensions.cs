@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<object> DownloadDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rest/v2/model_document_download/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,12 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<JToken> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
         {
-            var __workflow_endpoint = endpoint == null ? null : WorkflowExpression.Compile(endpoint);
-            WorkflowExpression.Validate(__workflow_endpoint, nameof(endpoint), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_endpoint = WorkflowExpression.Compile(endpoint, nameof(endpoint), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/custom_action/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_endpoint, 1));
@@ -47,16 +43,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<object>> content, Expression<Func<string>> dataOwnerModelModelType, Expression<Func<int>> dataOwnerModelId, Expression<Func<string>> dataContentType, Expression<Func<int>> dataCreatedById)
         {
-            var __workflow_content = content == null ? null : WorkflowExpression.Compile(content);
-            WorkflowExpression.Validate(__workflow_content, nameof(content), required: true);
-            var __workflow_dataOwnerModelModelType = dataOwnerModelModelType == null ? null : WorkflowExpression.Compile(dataOwnerModelModelType);
-            WorkflowExpression.Validate(__workflow_dataOwnerModelModelType, nameof(dataOwnerModelModelType), required: true);
-            var __workflow_dataOwnerModelId = dataOwnerModelId == null ? null : WorkflowExpression.Compile(dataOwnerModelId);
-            WorkflowExpression.Validate(__workflow_dataOwnerModelId, nameof(dataOwnerModelId), required: true);
-            var __workflow_dataContentType = dataContentType == null ? null : WorkflowExpression.Compile(dataContentType);
-            WorkflowExpression.Validate(__workflow_dataContentType, nameof(dataContentType), required: true);
-            var __workflow_dataCreatedById = dataCreatedById == null ? null : WorkflowExpression.Compile(dataCreatedById);
-            WorkflowExpression.Validate(__workflow_dataCreatedById, nameof(dataCreatedById), required: true);
+            var __workflow_content = WorkflowExpression.Compile(content, nameof(content), required: true);
+            var __workflow_dataOwnerModelModelType = WorkflowExpression.Compile(dataOwnerModelModelType, nameof(dataOwnerModelModelType), required: true);
+            var __workflow_dataOwnerModelId = WorkflowExpression.Compile(dataOwnerModelId, nameof(dataOwnerModelId), required: true);
+            var __workflow_dataContentType = WorkflowExpression.Compile(dataContentType, nameof(dataContentType), required: true);
+            var __workflow_dataCreatedById = WorkflowExpression.Compile(dataCreatedById, nameof(dataCreatedById), required: true);
             return new DeferredBodyAction<UploadDocumentResponse>(() =>
             {
                 var apiCallPath = "/api/rest/v2/model_document";
@@ -70,10 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> CreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null)
         {
-            var __workflow_typeId = typeId == null ? null : WorkflowExpression.Compile(typeId);
-            WorkflowExpression.Validate(__workflow_typeId, nameof(typeId), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<ModelResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_typeId, 1));
@@ -101,14 +90,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelArrayResponse> FindRecords(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_typeId = typeId == null ? null : WorkflowExpression.Compile(typeId);
-            WorkflowExpression.Validate(__workflow_typeId, nameof(typeId), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
-            var __workflow_currentPage = currentPage == null ? null : WorkflowExpression.Compile(currentPage);
-            WorkflowExpression.Validate(__workflow_currentPage, nameof(currentPage), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_currentPage = WorkflowExpression.Compile(currentPage, nameof(currentPage), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<ModelArrayResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_typeId, 1));
@@ -142,14 +127,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_typeId = typeId == null ? null : WorkflowExpression.Compile(typeId);
-            WorkflowExpression.Validate(__workflow_typeId, nameof(typeId), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
-            var __workflow_currentPage = currentPage == null ? null : WorkflowExpression.Compile(currentPage);
-            WorkflowExpression.Validate(__workflow_currentPage, nameof(currentPage), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
+            var __workflow_currentPage = WorkflowExpression.Compile(currentPage, nameof(currentPage), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<ModelArrayResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_typeId, 1));
@@ -183,10 +164,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> FindRecord(Expression<Func<string>> typeId, Expression<Func<string>> id)
         {
-            var __workflow_typeId = typeId == null ? null : WorkflowExpression.Compile(typeId);
-            WorkflowExpression.Validate(__workflow_typeId, nameof(typeId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ModelResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_typeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -201,12 +180,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
         public IBodyWorkflowAction<ModelResponse> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<object>> bodydata = null)
         {
-            var __workflow_typeId = typeId == null ? null : WorkflowExpression.Compile(typeId);
-            WorkflowExpression.Validate(__workflow_typeId, nameof(typeId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_typeId = WorkflowExpression.Compile(typeId, nameof(typeId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<ModelResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_typeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

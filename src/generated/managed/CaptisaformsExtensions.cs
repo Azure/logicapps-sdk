@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
         public IBodyWorkflowAction<FormFieldResponse> CreateEntry(Expression<Func<string>> formID, Expression<Func<object>> body = null)
         {
-            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
-            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FormFieldResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/data/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));
@@ -30,12 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "captisaforms")]
         public IBodyWorkflowAction<FormFieldResponse> UpdateEntry(Expression<Func<string>> formID, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
-            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
-            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<FormFieldResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/data/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -51,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
     {
         public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
-            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
-            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
+            var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/c/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));
@@ -73,8 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
 
         public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger(Expression<Func<string>> formID, FlowRecurrence recurrence = null)
         {
-            var __workflow_formID = formID == null ? null : WorkflowExpression.Compile(formID);
-            WorkflowExpression.Validate(__workflow_formID, nameof(formID), required: true);
+            var __workflow_formID = WorkflowExpression.Compile(formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/msflow/forms/{0}/u/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formID, 1));

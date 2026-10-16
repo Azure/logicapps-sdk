@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<UserResponse> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycompanyId = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
-            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
             return new DeferredBodyAction<UserResponse>(() =>
             {
                 var apiCallPath = "/users";
@@ -69,16 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<LeadResponse> CreateLead(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyavatarimageURL = null, Expression<Func<string>> bodycompanyId = null)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
-            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodyavatarimageURL = bodyavatarimageURL == null ? null : WorkflowExpression.Compile(bodyavatarimageURL);
-            WorkflowExpression.Validate(__workflow_bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
-            var __workflow_bodycompanyId = bodycompanyId == null ? null : WorkflowExpression.Compile(bodycompanyId);
-            WorkflowExpression.Validate(__workflow_bodycompanyId, nameof(bodycompanyId), required: false);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodyavatarimageURL = WorkflowExpression.Compile(bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
+            var __workflow_bodycompanyId = WorkflowExpression.Compile(bodycompanyId, nameof(bodycompanyId), required: false);
             return new DeferredBodyAction<LeadResponse>(() =>
             {
                 var apiCallPath = "/contacts";
@@ -132,8 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<UserResponse> GetUser(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -146,8 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<LeadResponse> GetLead(Expression<Func<string>> contactId)
         {
-            var __workflow_contactId = contactId == null ? null : WorkflowExpression.Compile(contactId);
-            WorkflowExpression.Validate(__workflow_contactId, nameof(contactId), required: true);
+            var __workflow_contactId = WorkflowExpression.Compile(contactId, nameof(contactId), required: true);
             return new DeferredBodyAction<LeadResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_contactId, 1));

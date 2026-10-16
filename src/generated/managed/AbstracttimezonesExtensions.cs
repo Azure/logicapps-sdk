@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
         public IBodyWorkflowAction<GetCurrentTimeResponse> GetCurrentTime(Expression<Func<string>> location)
         {
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: true);
             return new DeferredBodyAction<GetCurrentTimeResponse>(() =>
             {
                 var apiCallPath = "/v1/current_time";
@@ -28,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
         public IBodyWorkflowAction<ConvertTimeResponse> ConvertTime(Expression<Func<string>> baseLocation, Expression<Func<string>> targetLocation, Expression<Func<string>> baseDatetime = null)
         {
-            var __workflow_baseLocation = baseLocation == null ? null : WorkflowExpression.Compile(baseLocation);
-            WorkflowExpression.Validate(__workflow_baseLocation, nameof(baseLocation), required: true);
-            var __workflow_targetLocation = targetLocation == null ? null : WorkflowExpression.Compile(targetLocation);
-            WorkflowExpression.Validate(__workflow_targetLocation, nameof(targetLocation), required: true);
-            var __workflow_baseDatetime = baseDatetime == null ? null : WorkflowExpression.Compile(baseDatetime);
-            WorkflowExpression.Validate(__workflow_baseDatetime, nameof(baseDatetime), required: false);
+            var __workflow_baseLocation = WorkflowExpression.Compile(baseLocation, nameof(baseLocation), required: true);
+            var __workflow_targetLocation = WorkflowExpression.Compile(targetLocation, nameof(targetLocation), required: true);
+            var __workflow_baseDatetime = WorkflowExpression.Compile(baseDatetime, nameof(baseDatetime), required: false);
             return new DeferredBodyAction<ConvertTimeResponse>(() =>
             {
                 var apiCallPath = "/v1/convert_time";

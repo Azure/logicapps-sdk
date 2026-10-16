@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
         public IBodyWorkflowAction<JToken> BadgeCreate(Expression<Func<string>> label = null, Expression<Func<string>> labelColor = null, Expression<Func<string>> message = null, Expression<Func<string>> color = null, Expression<Func<string>> style = null, Expression<Func<string>> logo = null, Expression<Func<string>> logoColor = null, Expression<Func<int>> logoWidth = null, Expression<Func<string>> link = null, Expression<Func<int>> cacheSeconds = null)
         {
-            var __workflow_label = label == null ? null : WorkflowExpression.Compile(label);
-            WorkflowExpression.Validate(__workflow_label, nameof(label), required: false);
-            var __workflow_labelColor = labelColor == null ? null : WorkflowExpression.Compile(labelColor);
-            WorkflowExpression.Validate(__workflow_labelColor, nameof(labelColor), required: false);
-            var __workflow_message = message == null ? null : WorkflowExpression.Compile(message);
-            WorkflowExpression.Validate(__workflow_message, nameof(message), required: false);
-            var __workflow_color = color == null ? null : WorkflowExpression.Compile(color);
-            WorkflowExpression.Validate(__workflow_color, nameof(color), required: false);
-            var __workflow_style = style == null ? null : WorkflowExpression.Compile(style);
-            WorkflowExpression.Validate(__workflow_style, nameof(style), required: false);
-            var __workflow_logo = logo == null ? null : WorkflowExpression.Compile(logo);
-            WorkflowExpression.Validate(__workflow_logo, nameof(logo), required: false);
-            var __workflow_logoColor = logoColor == null ? null : WorkflowExpression.Compile(logoColor);
-            WorkflowExpression.Validate(__workflow_logoColor, nameof(logoColor), required: false);
-            var __workflow_logoWidth = logoWidth == null ? null : WorkflowExpression.Compile(logoWidth);
-            WorkflowExpression.Validate(__workflow_logoWidth, nameof(logoWidth), required: false);
-            var __workflow_link = link == null ? null : WorkflowExpression.Compile(link);
-            WorkflowExpression.Validate(__workflow_link, nameof(link), required: false);
-            var __workflow_cacheSeconds = cacheSeconds == null ? null : WorkflowExpression.Compile(cacheSeconds);
-            WorkflowExpression.Validate(__workflow_cacheSeconds, nameof(cacheSeconds), required: false);
+            var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: false);
+            var __workflow_labelColor = WorkflowExpression.Compile(labelColor, nameof(labelColor), required: false);
+            var __workflow_message = WorkflowExpression.Compile(message, nameof(message), required: false);
+            var __workflow_color = WorkflowExpression.Compile(color, nameof(color), required: false);
+            var __workflow_style = WorkflowExpression.Compile(style, nameof(style), required: false);
+            var __workflow_logo = WorkflowExpression.Compile(logo, nameof(logo), required: false);
+            var __workflow_logoColor = WorkflowExpression.Compile(logoColor, nameof(logoColor), required: false);
+            var __workflow_logoWidth = WorkflowExpression.Compile(logoWidth, nameof(logoWidth), required: false);
+            var __workflow_link = WorkflowExpression.Compile(link, nameof(link), required: false);
+            var __workflow_cacheSeconds = WorkflowExpression.Compile(cacheSeconds, nameof(cacheSeconds), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/static/v1";
@@ -66,8 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
         public IBodyWorkflowAction<JToken> BadgeGet(Expression<Func<string>> parameters)
         {
-            var __workflow_parameters = parameters == null ? null : WorkflowExpression.Compile(parameters);
-            WorkflowExpression.Validate(__workflow_parameters, nameof(parameters), required: true);
+            var __workflow_parameters = WorkflowExpression.Compile(parameters, nameof(parameters), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parameters, 1));

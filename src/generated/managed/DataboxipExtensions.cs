@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "databoxip")]
         public IBodyWorkflowAction<DataPostResponse> Data(Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<DataPostResponse>(() =>
             {
                 var apiCallPath = "/";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<SetDNDResponse> SetDND(Expression<Func<string>> numMinutes = null)
         {
-            var __workflow_numMinutes = numMinutes == null ? null : WorkflowExpression.Compile(numMinutes);
-            WorkflowExpression.Validate(__workflow_numMinutes, nameof(numMinutes), required: false);
+            var __workflow_numMinutes = WorkflowExpression.Compile(numMinutes, nameof(numMinutes), required: false);
             return new DeferredBodyAction<SetDNDResponse>(() =>
             {
                 var apiCallPath = "/dnd.setSnooze";
@@ -29,10 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<CreateChannelResponse> CreateChannel(Expression<Func<string>> name = null, Expression<Func<bool>> isPrivate = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_isPrivate = isPrivate == null ? null : WorkflowExpression.Compile(isPrivate);
-            WorkflowExpression.Validate(__workflow_isPrivate, nameof(isPrivate), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_isPrivate = WorkflowExpression.Compile(isPrivate, nameof(isPrivate), required: false);
             return new DeferredBodyAction<CreateChannelResponse>(() =>
             {
                 var apiCallPath = "/conversations.create";
@@ -49,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<JoinChannelResponseV2> JoinChannel(Expression<Func<string>> channel = null)
         {
-            var __workflow_channel = channel == null ? null : WorkflowExpression.Compile(channel);
-            WorkflowExpression.Validate(__workflow_channel, nameof(channel), required: false);
+            var __workflow_channel = WorkflowExpression.Compile(channel, nameof(channel), required: false);
             return new DeferredBodyAction<JoinChannelResponseV2>(() =>
             {
                 var apiCallPath = "/conversations.join";
@@ -74,28 +70,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
         public IBodyWorkflowAction<PostMessageResponse> PostMessage(Expression<Func<string>> messagechannelName, Expression<Func<string>> messagemessageText, Expression<Func<string>> messagebotName = null, Expression<Func<bool>> messagepostAsUser = null, Expression<Func<messageparseModeInput>> messageparseMode = null, Expression<Func<bool>> messageslackMarkupParsing = null, Expression<Func<int>> messagelinkNames = null, Expression<Func<bool>> messageunfurlLinks = null, Expression<Func<bool>> messageunfurlMedia = null, Expression<Func<string>> messageiconUrl = null, Expression<Func<string>> messageiconEmoji = null)
         {
-            var __workflow_messagechannelName = messagechannelName == null ? null : WorkflowExpression.Compile(messagechannelName);
-            WorkflowExpression.Validate(__workflow_messagechannelName, nameof(messagechannelName), required: true);
-            var __workflow_messagemessageText = messagemessageText == null ? null : WorkflowExpression.Compile(messagemessageText);
-            WorkflowExpression.Validate(__workflow_messagemessageText, nameof(messagemessageText), required: true);
-            var __workflow_messagebotName = messagebotName == null ? null : WorkflowExpression.Compile(messagebotName);
-            WorkflowExpression.Validate(__workflow_messagebotName, nameof(messagebotName), required: false);
-            var __workflow_messagepostAsUser = messagepostAsUser == null ? null : WorkflowExpression.Compile(messagepostAsUser);
-            WorkflowExpression.Validate(__workflow_messagepostAsUser, nameof(messagepostAsUser), required: false);
-            var __workflow_messageparseMode = messageparseMode == null ? null : WorkflowExpression.Compile(messageparseMode);
-            WorkflowExpression.Validate(__workflow_messageparseMode, nameof(messageparseMode), required: false);
-            var __workflow_messageslackMarkupParsing = messageslackMarkupParsing == null ? null : WorkflowExpression.Compile(messageslackMarkupParsing);
-            WorkflowExpression.Validate(__workflow_messageslackMarkupParsing, nameof(messageslackMarkupParsing), required: false);
-            var __workflow_messagelinkNames = messagelinkNames == null ? null : WorkflowExpression.Compile(messagelinkNames);
-            WorkflowExpression.Validate(__workflow_messagelinkNames, nameof(messagelinkNames), required: false);
-            var __workflow_messageunfurlLinks = messageunfurlLinks == null ? null : WorkflowExpression.Compile(messageunfurlLinks);
-            WorkflowExpression.Validate(__workflow_messageunfurlLinks, nameof(messageunfurlLinks), required: false);
-            var __workflow_messageunfurlMedia = messageunfurlMedia == null ? null : WorkflowExpression.Compile(messageunfurlMedia);
-            WorkflowExpression.Validate(__workflow_messageunfurlMedia, nameof(messageunfurlMedia), required: false);
-            var __workflow_messageiconUrl = messageiconUrl == null ? null : WorkflowExpression.Compile(messageiconUrl);
-            WorkflowExpression.Validate(__workflow_messageiconUrl, nameof(messageiconUrl), required: false);
-            var __workflow_messageiconEmoji = messageiconEmoji == null ? null : WorkflowExpression.Compile(messageiconEmoji);
-            WorkflowExpression.Validate(__workflow_messageiconEmoji, nameof(messageiconEmoji), required: false);
+            var __workflow_messagechannelName = WorkflowExpression.Compile(messagechannelName, nameof(messagechannelName), required: true);
+            var __workflow_messagemessageText = WorkflowExpression.Compile(messagemessageText, nameof(messagemessageText), required: true);
+            var __workflow_messagebotName = WorkflowExpression.Compile(messagebotName, nameof(messagebotName), required: false);
+            var __workflow_messagepostAsUser = WorkflowExpression.Compile(messagepostAsUser, nameof(messagepostAsUser), required: false);
+            var __workflow_messageparseMode = WorkflowExpression.Compile(messageparseMode, nameof(messageparseMode), required: false);
+            var __workflow_messageslackMarkupParsing = WorkflowExpression.Compile(messageslackMarkupParsing, nameof(messageslackMarkupParsing), required: false);
+            var __workflow_messagelinkNames = WorkflowExpression.Compile(messagelinkNames, nameof(messagelinkNames), required: false);
+            var __workflow_messageunfurlLinks = WorkflowExpression.Compile(messageunfurlLinks, nameof(messageunfurlLinks), required: false);
+            var __workflow_messageunfurlMedia = WorkflowExpression.Compile(messageunfurlMedia, nameof(messageunfurlMedia), required: false);
+            var __workflow_messageiconUrl = WorkflowExpression.Compile(messageiconUrl, nameof(messageiconUrl), required: false);
+            var __workflow_messageiconEmoji = WorkflowExpression.Compile(messageiconEmoji, nameof(messageiconEmoji), required: false);
             return new DeferredBodyAction<PostMessageResponse>(() =>
             {
                 var apiCallPath = "/v2/chat.postMessage";
@@ -175,8 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
     {
         public IBodyWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile(Expression<Func<string>> channel, FlowRecurrence recurrence = null)
         {
-            var __workflow_channel = channel == null ? null : WorkflowExpression.Compile(channel);
-            WorkflowExpression.Validate(__workflow_channel, nameof(channel), required: true);
+            var __workflow_channel = WorkflowExpression.Compile(channel, nameof(channel), required: true);
             return new DeferredBodyTrigger<OnNewFileResponseItem[]>(() =>
             {
                 var apiCallPath = "/trigger/files.list";

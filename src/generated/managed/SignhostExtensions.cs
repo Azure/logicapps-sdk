@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<Transaction> Getdetails(Expression<Func<string>> transactionId)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<Transaction>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
@@ -27,12 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<ErrorModel> Delete(Expression<Func<string>> transactionId, Expression<Func<bool>> bodysendNotifications = null, Expression<Func<string>> bodyreason = null)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
-            var __workflow_bodysendNotifications = bodysendNotifications == null ? null : WorkflowExpression.Compile(bodysendNotifications);
-            WorkflowExpression.Validate(__workflow_bodysendNotifications, nameof(bodysendNotifications), required: false);
-            var __workflow_bodyreason = bodyreason == null ? null : WorkflowExpression.Compile(bodyreason);
-            WorkflowExpression.Validate(__workflow_bodyreason, nameof(bodyreason), required: false);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
+            var __workflow_bodysendNotifications = WorkflowExpression.Compile(bodysendNotifications, nameof(bodysendNotifications), required: false);
+            var __workflow_bodyreason = WorkflowExpression.Compile(bodyreason, nameof(bodyreason), required: false);
             return new DeferredBodyAction<ErrorModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
@@ -74,10 +70,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<string> Downloadpdf(Expression<Func<string>> transactionId, Expression<Func<string>> fileId)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -90,8 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<string> Downloadreceipt(Expression<Func<string>> transactionId)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));
@@ -104,22 +97,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<Transaction> Create(Expression<Func<transactionlanguageInput>> transactionlanguage = null, Expression<Func<bool>> transactionseal = null, Expression<Func<transactionsignersInputItem[]>> transactionsigners = null, Expression<Func<transactionreceiversInputItem[]>> transactionreceivers = null, Expression<Func<string>> transactionreference = null, Expression<Func<string>> transactionpostbackUrl = null, Expression<Func<int>> transactionsignRequestMode = null, Expression<Func<int>> transactiondaysToExpire = null)
         {
-            var __workflow_transactionlanguage = transactionlanguage == null ? null : WorkflowExpression.Compile(transactionlanguage);
-            WorkflowExpression.Validate(__workflow_transactionlanguage, nameof(transactionlanguage), required: false);
-            var __workflow_transactionseal = transactionseal == null ? null : WorkflowExpression.Compile(transactionseal);
-            WorkflowExpression.Validate(__workflow_transactionseal, nameof(transactionseal), required: false);
-            var __workflow_transactionsigners = transactionsigners == null ? null : WorkflowExpression.Compile(transactionsigners);
-            WorkflowExpression.Validate(__workflow_transactionsigners, nameof(transactionsigners), required: false);
-            var __workflow_transactionreceivers = transactionreceivers == null ? null : WorkflowExpression.Compile(transactionreceivers);
-            WorkflowExpression.Validate(__workflow_transactionreceivers, nameof(transactionreceivers), required: false);
-            var __workflow_transactionreference = transactionreference == null ? null : WorkflowExpression.Compile(transactionreference);
-            WorkflowExpression.Validate(__workflow_transactionreference, nameof(transactionreference), required: false);
-            var __workflow_transactionpostbackUrl = transactionpostbackUrl == null ? null : WorkflowExpression.Compile(transactionpostbackUrl);
-            WorkflowExpression.Validate(__workflow_transactionpostbackUrl, nameof(transactionpostbackUrl), required: false);
-            var __workflow_transactionsignRequestMode = transactionsignRequestMode == null ? null : WorkflowExpression.Compile(transactionsignRequestMode);
-            WorkflowExpression.Validate(__workflow_transactionsignRequestMode, nameof(transactionsignRequestMode), required: false);
-            var __workflow_transactiondaysToExpire = transactiondaysToExpire == null ? null : WorkflowExpression.Compile(transactiondaysToExpire);
-            WorkflowExpression.Validate(__workflow_transactiondaysToExpire, nameof(transactiondaysToExpire), required: false);
+            var __workflow_transactionlanguage = WorkflowExpression.Compile(transactionlanguage, nameof(transactionlanguage), required: false);
+            var __workflow_transactionseal = WorkflowExpression.Compile(transactionseal, nameof(transactionseal), required: false);
+            var __workflow_transactionsigners = WorkflowExpression.Compile(transactionsigners, nameof(transactionsigners), required: false);
+            var __workflow_transactionreceivers = WorkflowExpression.Compile(transactionreceivers, nameof(transactionreceivers), required: false);
+            var __workflow_transactionreference = WorkflowExpression.Compile(transactionreference, nameof(transactionreference), required: false);
+            var __workflow_transactionpostbackUrl = WorkflowExpression.Compile(transactionpostbackUrl, nameof(transactionpostbackUrl), required: false);
+            var __workflow_transactionsignRequestMode = WorkflowExpression.Compile(transactionsignRequestMode, nameof(transactionsignRequestMode), required: false);
+            var __workflow_transactiondaysToExpire = WorkflowExpression.Compile(transactiondaysToExpire, nameof(transactiondaysToExpire), required: false);
             return new DeferredBodyAction<Transaction>(() =>
             {
                 var apiCallPath = "/api/transaction";
@@ -225,12 +210,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IWorkflowAction Addfile(Expression<Func<string>> transactionId, Expression<Func<string>> fileId, Expression<Func<string>> body = null)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -244,8 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
         public IBodyWorkflowAction<ErrorModel> Start(Expression<Func<string>> transactionId)
         {
-            var __workflow_transactionId = transactionId == null ? null : WorkflowExpression.Compile(transactionId);
-            WorkflowExpression.Validate(__workflow_transactionId, nameof(transactionId), required: true);
+            var __workflow_transactionId = WorkflowExpression.Compile(transactionId, nameof(transactionId), required: true);
             return new DeferredBodyAction<ErrorModel>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_transactionId, 1));

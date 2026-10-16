@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gienitsservermcp")]
         public IBodyWorkflowAction<QueryResponse> GieniTSserver(Expression<Func<string>> sessionId = null)
         {
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
             return new DeferredBodyAction<QueryResponse>(() =>
             {
                 var apiCallPath = "/sse";

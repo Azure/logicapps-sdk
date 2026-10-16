@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         public IBodyWorkflowAction<BadRequestObjectResult> UploadFile(Expression<Func<string>> connectedProjectId, Expression<Func<string>> federatedRepositoryId, Expression<Func<string>> documentIdentifier, Expression<Func<string>> xBsFileName, Expression<Func<string>> fileContent = null)
         {
-            var __workflow_connectedProjectId = connectedProjectId == null ? null : WorkflowExpression.Compile(connectedProjectId);
-            WorkflowExpression.Validate(__workflow_connectedProjectId, nameof(connectedProjectId), required: true);
-            var __workflow_federatedRepositoryId = federatedRepositoryId == null ? null : WorkflowExpression.Compile(federatedRepositoryId);
-            WorkflowExpression.Validate(__workflow_federatedRepositoryId, nameof(federatedRepositoryId), required: true);
-            var __workflow_documentIdentifier = documentIdentifier == null ? null : WorkflowExpression.Compile(documentIdentifier);
-            WorkflowExpression.Validate(__workflow_documentIdentifier, nameof(documentIdentifier), required: true);
-            var __workflow_xBsFileName = xBsFileName == null ? null : WorkflowExpression.Compile(xBsFileName);
-            WorkflowExpression.Validate(__workflow_xBsFileName, nameof(xBsFileName), required: true);
-            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
-            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: false);
+            var __workflow_connectedProjectId = WorkflowExpression.Compile(connectedProjectId, nameof(connectedProjectId), required: true);
+            var __workflow_federatedRepositoryId = WorkflowExpression.Compile(federatedRepositoryId, nameof(federatedRepositoryId), required: true);
+            var __workflow_documentIdentifier = WorkflowExpression.Compile(documentIdentifier, nameof(documentIdentifier), required: true);
+            var __workflow_xBsFileName = WorkflowExpression.Compile(xBsFileName, nameof(xBsFileName), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: false);
             return new DeferredBodyAction<BadRequestObjectResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/connectedProjects/{0}/federatedRepositories/{1}/documents/{2}/file", ExpressionConverter.ConvertWithUrlEncoding(__workflow_connectedProjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_federatedRepositoryId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentIdentifier, 1));
@@ -37,12 +32,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bentley
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bentley")]
         public IBodyWorkflowAction<BadRequestObjectResult> SynchronizeDocumentAttributes(Expression<Func<string>> connection, Expression<Func<string>> documentIdentifier, Expression<Func<attributeSynchronizationModeldirectionInput>> attributeSynchronizationModeldirection)
         {
-            var __workflow_connection = connection == null ? null : WorkflowExpression.Compile(connection);
-            WorkflowExpression.Validate(__workflow_connection, nameof(connection), required: true);
-            var __workflow_documentIdentifier = documentIdentifier == null ? null : WorkflowExpression.Compile(documentIdentifier);
-            WorkflowExpression.Validate(__workflow_documentIdentifier, nameof(documentIdentifier), required: true);
-            var __workflow_attributeSynchronizationModeldirection = attributeSynchronizationModeldirection == null ? null : WorkflowExpression.Compile(attributeSynchronizationModeldirection);
-            WorkflowExpression.Validate(__workflow_attributeSynchronizationModeldirection, nameof(attributeSynchronizationModeldirection), required: true);
+            var __workflow_connection = WorkflowExpression.Compile(connection, nameof(connection), required: true);
+            var __workflow_documentIdentifier = WorkflowExpression.Compile(documentIdentifier, nameof(documentIdentifier), required: true);
+            var __workflow_attributeSynchronizationModeldirection = WorkflowExpression.Compile(attributeSynchronizationModeldirection, nameof(attributeSynchronizationModeldirection), required: true);
             return new DeferredBodyAction<BadRequestObjectResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/{0}/documents/{1}/attributeSynchronization", ExpressionConverter.ConvertWithUrlEncoding(__workflow_connection, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentIdentifier, 1));

@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
         public IBodyWorkflowAction<string> Query(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
         {
-            var __workflow_fcn = fcn == null ? null : WorkflowExpression.Compile(fcn);
-            WorkflowExpression.Validate(__workflow_fcn, nameof(fcn), required: true);
-            var __workflow_async = async == null ? null : WorkflowExpression.Compile(async);
-            WorkflowExpression.Validate(__workflow_async, nameof(async), required: false);
-            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
-            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_fcn = WorkflowExpression.Compile(fcn, nameof(fcn), required: true);
+            var __workflow_async = WorkflowExpression.Compile(async, nameof(async), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fcn, 1));
@@ -40,14 +36,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
         public IBodyWorkflowAction<string> Invoke(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
         {
-            var __workflow_fcn = fcn == null ? null : WorkflowExpression.Compile(fcn);
-            WorkflowExpression.Validate(__workflow_fcn, nameof(fcn), required: true);
-            var __workflow_async = async == null ? null : WorkflowExpression.Compile(async);
-            WorkflowExpression.Validate(__workflow_async, nameof(async), required: false);
-            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
-            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_fcn = WorkflowExpression.Compile(fcn, nameof(fcn), required: true);
+            var __workflow_async = WorkflowExpression.Compile(async, nameof(async), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoke/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fcn, 1));

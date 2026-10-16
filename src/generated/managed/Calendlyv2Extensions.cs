@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes(Expression<Func<bool>> active = null, Expression<Func<int>> count = null, Expression<Func<string>> pageToken = null, Expression<Func<bool>> adminManaged = null)
         {
-            var __workflow_active = active == null ? null : WorkflowExpression.Compile(active);
-            WorkflowExpression.Validate(__workflow_active, nameof(active), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_pageToken = pageToken == null ? null : WorkflowExpression.Compile(pageToken);
-            WorkflowExpression.Validate(__workflow_pageToken, nameof(pageToken), required: false);
-            var __workflow_adminManaged = adminManaged == null ? null : WorkflowExpression.Compile(adminManaged);
-            WorkflowExpression.Validate(__workflow_adminManaged, nameof(adminManaged), required: false);
+            var __workflow_active = WorkflowExpression.Compile(active, nameof(active), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_pageToken = WorkflowExpression.Compile(pageToken, nameof(pageToken), required: false);
+            var __workflow_adminManaged = WorkflowExpression.Compile(adminManaged, nameof(adminManaged), required: false);
             return new DeferredBodyAction<GetEventTypesResponse>(() =>
             {
                 var apiCallPath = "/event_types";
@@ -42,8 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow(Expression<Func<string>> bodyinvitee)
         {
-            var __workflow_bodyinvitee = bodyinvitee == null ? null : WorkflowExpression.Compile(bodyinvitee);
-            WorkflowExpression.Validate(__workflow_bodyinvitee, nameof(bodyinvitee), required: true);
+            var __workflow_bodyinvitee = WorkflowExpression.Compile(bodyinvitee, nameof(bodyinvitee), required: true);
             return new DeferredBodyAction<CreateInviteeNoShowResponse>(() =>
             {
                 var apiCallPath = "/invitee_no_shows";
@@ -65,8 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         public IBodyWorkflowAction<GetEventTypeResponse> GetEventType(Expression<Func<string>> uuid)
         {
-            var __workflow_uuid = uuid == null ? null : WorkflowExpression.Compile(uuid);
-            WorkflowExpression.Validate(__workflow_uuid, nameof(uuid), required: true);
+            var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: true);
             return new DeferredBodyAction<GetEventTypeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event_types/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uuid, 1));
@@ -79,8 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
         public IBodyWorkflowAction<JToken> DeleteInviteeNoShow(Expression<Func<string>> uuid)
         {
-            var __workflow_uuid = uuid == null ? null : WorkflowExpression.Compile(uuid);
-            WorkflowExpression.Validate(__workflow_uuid, nameof(uuid), required: true);
+            var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invitee_no_shows/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uuid, 1));
@@ -95,8 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
     {
         public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevents = bodyevents == null ? null : WorkflowExpression.Compile(bodyevents);
-            WorkflowExpression.Validate(__workflow_bodyevents, nameof(bodyevents), required: true);
+            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions";
@@ -121,8 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 
         public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyevents = bodyevents == null ? null : WorkflowExpression.Compile(bodyevents);
-            WorkflowExpression.Validate(__workflow_bodyevents, nameof(bodyevents), required: true);
+            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(() =>
             {
                 var apiCallPath = "/webhook_subscriptions/routing_form_submission";

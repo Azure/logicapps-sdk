@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reachabilityip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reachabilityip")]
         public IBodyWorkflowAction<ReachResponse> Reach(Expression<Func<string>> url, Expression<Func<string>> country = null)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<ReachResponse>(() =>
             {
                 var apiCallPath = "/reachability";

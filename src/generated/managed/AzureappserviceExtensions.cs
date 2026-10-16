@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         public IWorkflowAction WebAppStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_webAppName = webAppName == null ? null : WorkflowExpression.Compile(webAppName);
-            WorkflowExpression.Validate(__workflow_webAppName, nameof(webAppName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_webAppName = WorkflowExpression.Compile(webAppName, nameof(webAppName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/start", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_webAppName, 1));
@@ -32,12 +29,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         public IWorkflowAction WebAppStop(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_webAppName = webAppName == null ? null : WorkflowExpression.Compile(webAppName);
-            WorkflowExpression.Validate(__workflow_webAppName, nameof(webAppName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_webAppName = WorkflowExpression.Compile(webAppName, nameof(webAppName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/stop", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_webAppName, 1));
@@ -51,12 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
         public IWorkflowAction WebAppRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroupName = resourceGroupName == null ? null : WorkflowExpression.Compile(resourceGroupName);
-            WorkflowExpression.Validate(__workflow_resourceGroupName, nameof(resourceGroupName), required: true);
-            var __workflow_webAppName = webAppName == null ? null : WorkflowExpression.Compile(webAppName);
-            WorkflowExpression.Validate(__workflow_webAppName, nameof(webAppName), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroupName = WorkflowExpression.Compile(resourceGroupName, nameof(resourceGroupName), required: true);
+            var __workflow_webAppName = WorkflowExpression.Compile(webAppName, nameof(webAppName), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/restart", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriptionId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_resourceGroupName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_webAppName, 1));

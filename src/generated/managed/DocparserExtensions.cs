@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<string>> parserId, Expression<Func<object>> file, Expression<Func<string>> remoteId = null)
         {
-            var __workflow_parserId = parserId == null ? null : WorkflowExpression.Compile(parserId);
-            WorkflowExpression.Validate(__workflow_parserId, nameof(parserId), required: true);
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_remoteId = remoteId == null ? null : WorkflowExpression.Compile(remoteId);
-            WorkflowExpression.Validate(__workflow_remoteId, nameof(remoteId), required: false);
+            var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_remoteId = WorkflowExpression.Compile(remoteId, nameof(remoteId), required: false);
             return new DeferredBodyAction<UploadDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/upload/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parserId, 1));
@@ -33,12 +30,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docparser")]
         public IBodyWorkflowAction<FetchDocumentResponse> FetchDocument(Expression<Func<string>> parserId, Expression<Func<string>> url, Expression<Func<string>> remoteId = null)
         {
-            var __workflow_parserId = parserId == null ? null : WorkflowExpression.Compile(parserId);
-            WorkflowExpression.Validate(__workflow_parserId, nameof(parserId), required: true);
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_remoteId = remoteId == null ? null : WorkflowExpression.Compile(remoteId);
-            WorkflowExpression.Validate(__workflow_remoteId, nameof(remoteId), required: false);
+            var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_remoteId = WorkflowExpression.Compile(remoteId, nameof(remoteId), required: false);
             return new DeferredBodyAction<FetchDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/fetch/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parserId, 1));
@@ -56,8 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
     {
         public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate(Expression<Func<string>> parserId, FlowRecurrence recurrence = null)
         {
-            var __workflow_parserId = parserId == null ? null : WorkflowExpression.Compile(parserId);
-            WorkflowExpression.Validate(__workflow_parserId, nameof(parserId), required: true);
+            var __workflow_parserId = WorkflowExpression.Compile(parserId, nameof(parserId), required: true);
             return new DeferredBodyTrigger<WebhookCreateReponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhook/subscribe/{0}/flow", ExpressionConverter.ConvertWithUrlEncoding(__workflow_parserId, 1));

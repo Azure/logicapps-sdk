@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
         public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent(Expression<Func<string>> locale = null, Expression<Func<string>> type = null, Expression<Func<string>> uid = null, Expression<Func<string>> lastModified = null, Expression<Func<string>> popularity = null, Expression<Func<string>> level = null, Expression<Func<string>> role = null, Expression<Func<string>> product = null, Expression<Func<string>> subject = null)
         {
-            var __workflow_locale = locale == null ? null : WorkflowExpression.Compile(locale);
-            WorkflowExpression.Validate(__workflow_locale, nameof(locale), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_uid = uid == null ? null : WorkflowExpression.Compile(uid);
-            WorkflowExpression.Validate(__workflow_uid, nameof(uid), required: false);
-            var __workflow_lastModified = lastModified == null ? null : WorkflowExpression.Compile(lastModified);
-            WorkflowExpression.Validate(__workflow_lastModified, nameof(lastModified), required: false);
-            var __workflow_popularity = popularity == null ? null : WorkflowExpression.Compile(popularity);
-            WorkflowExpression.Validate(__workflow_popularity, nameof(popularity), required: false);
-            var __workflow_level = level == null ? null : WorkflowExpression.Compile(level);
-            WorkflowExpression.Validate(__workflow_level, nameof(level), required: false);
-            var __workflow_role = role == null ? null : WorkflowExpression.Compile(role);
-            WorkflowExpression.Validate(__workflow_role, nameof(role), required: false);
-            var __workflow_product = product == null ? null : WorkflowExpression.Compile(product);
-            WorkflowExpression.Validate(__workflow_product, nameof(product), required: false);
-            var __workflow_subject = subject == null ? null : WorkflowExpression.Compile(subject);
-            WorkflowExpression.Validate(__workflow_subject, nameof(subject), required: false);
+            var __workflow_locale = WorkflowExpression.Compile(locale, nameof(locale), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_uid = WorkflowExpression.Compile(uid, nameof(uid), required: false);
+            var __workflow_lastModified = WorkflowExpression.Compile(lastModified, nameof(lastModified), required: false);
+            var __workflow_popularity = WorkflowExpression.Compile(popularity, nameof(popularity), required: false);
+            var __workflow_level = WorkflowExpression.Compile(level, nameof(level), required: false);
+            var __workflow_role = WorkflowExpression.Compile(role, nameof(role), required: false);
+            var __workflow_product = WorkflowExpression.Compile(product, nameof(product), required: false);
+            var __workflow_subject = WorkflowExpression.Compile(subject, nameof(subject), required: false);
             return new DeferredBodyAction<GetLearningContentResponse>(() =>
             {
                 var apiCallPath = "/";

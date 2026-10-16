@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRatesResponse> GetExchangeRates(Expression<Func<string>> basecurrency)
         {
-            var __workflow_basecurrency = basecurrency == null ? null : WorkflowExpression.Compile(basecurrency);
-            WorkflowExpression.Validate(__workflow_basecurrency, nameof(basecurrency), required: true);
+            var __workflow_basecurrency = WorkflowExpression.Compile(basecurrency, nameof(basecurrency), required: true);
             return new DeferredBodyAction<GetExchangeRatesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/latest/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_basecurrency, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetExchangeRateResponse> GetExchangeRate(Expression<Func<string>> baseCurrency, Expression<Func<string>> targetCurrency)
         {
-            var __workflow_baseCurrency = baseCurrency == null ? null : WorkflowExpression.Compile(baseCurrency);
-            WorkflowExpression.Validate(__workflow_baseCurrency, nameof(baseCurrency), required: true);
-            var __workflow_targetCurrency = targetCurrency == null ? null : WorkflowExpression.Compile(targetCurrency);
-            WorkflowExpression.Validate(__workflow_targetCurrency, nameof(targetCurrency), required: true);
+            var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
+            var __workflow_targetCurrency = WorkflowExpression.Compile(targetCurrency, nameof(targetCurrency), required: true);
             return new DeferredBodyAction<GetExchangeRateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pair/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_targetCurrency, 1));
@@ -52,14 +49,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalRatesResponse> GetHistoricalRates(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
         {
-            var __workflow_baseCurrency = baseCurrency == null ? null : WorkflowExpression.Compile(baseCurrency);
-            WorkflowExpression.Validate(__workflow_baseCurrency, nameof(baseCurrency), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
+            var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
             return new DeferredBodyAction<GetHistoricalRatesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1));
@@ -72,16 +65,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exchangerateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exchangerateip")]
         public IBodyWorkflowAction<GetHistoricalConversionsResponse> GetHistoricalConversions(Expression<Func<string>> baseCurrency, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day, Expression<Func<string>> amount)
         {
-            var __workflow_baseCurrency = baseCurrency == null ? null : WorkflowExpression.Compile(baseCurrency);
-            WorkflowExpression.Validate(__workflow_baseCurrency, nameof(baseCurrency), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: true);
-            var __workflow_amount = amount == null ? null : WorkflowExpression.Compile(amount);
-            WorkflowExpression.Validate(__workflow_amount, nameof(amount), required: true);
+            var __workflow_baseCurrency = WorkflowExpression.Compile(baseCurrency, nameof(baseCurrency), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: true);
+            var __workflow_amount = WorkflowExpression.Compile(amount, nameof(amount), required: true);
             return new DeferredBodyAction<GetHistoricalConversionsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/history/{0}/{1}/{2}/{3}/{4}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_baseCurrency, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_month, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_day, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_amount, 1));

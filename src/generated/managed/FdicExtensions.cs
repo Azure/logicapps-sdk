@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<InstitutionsResponse> SearchInstitutions(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<InstitutionsResponse>(() =>
             {
                 var apiCallPath = "/institutions";
@@ -69,24 +59,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<LocationsResponse> SearchLocations(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<LocationsResponse>(() =>
             {
                 var apiCallPath = "/locations";
@@ -121,32 +102,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<HistoryResponse> GetHistory(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_search = search == null ? null : WorkflowExpression.Compile(search);
-            WorkflowExpression.Validate(__workflow_search, nameof(search), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_aggBy = aggBy == null ? null : WorkflowExpression.Compile(aggBy);
-            WorkflowExpression.Validate(__workflow_aggBy, nameof(aggBy), required: false);
-            var __workflow_aggTermFields = aggTermFields == null ? null : WorkflowExpression.Compile(aggTermFields);
-            WorkflowExpression.Validate(__workflow_aggTermFields, nameof(aggTermFields), required: false);
-            var __workflow_aggLimit = aggLimit == null ? null : WorkflowExpression.Compile(aggLimit);
-            WorkflowExpression.Validate(__workflow_aggLimit, nameof(aggLimit), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_search = WorkflowExpression.Compile(search, nameof(search), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_aggBy = WorkflowExpression.Compile(aggBy, nameof(aggBy), required: false);
+            var __workflow_aggTermFields = WorkflowExpression.Compile(aggTermFields, nameof(aggTermFields), required: false);
+            var __workflow_aggLimit = WorkflowExpression.Compile(aggLimit, nameof(aggLimit), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<HistoryResponse>(() =>
             {
                 var apiCallPath = "/history";
@@ -190,32 +158,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<FinancialsResponse> GetFinancials(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_aggBy = aggBy == null ? null : WorkflowExpression.Compile(aggBy);
-            WorkflowExpression.Validate(__workflow_aggBy, nameof(aggBy), required: false);
-            var __workflow_aggTermFields = aggTermFields == null ? null : WorkflowExpression.Compile(aggTermFields);
-            WorkflowExpression.Validate(__workflow_aggTermFields, nameof(aggTermFields), required: false);
-            var __workflow_aggSumFields = aggSumFields == null ? null : WorkflowExpression.Compile(aggSumFields);
-            WorkflowExpression.Validate(__workflow_aggSumFields, nameof(aggSumFields), required: false);
-            var __workflow_aggLimit = aggLimit == null ? null : WorkflowExpression.Compile(aggLimit);
-            WorkflowExpression.Validate(__workflow_aggLimit, nameof(aggLimit), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_aggBy = WorkflowExpression.Compile(aggBy, nameof(aggBy), required: false);
+            var __workflow_aggTermFields = WorkflowExpression.Compile(aggTermFields, nameof(aggTermFields), required: false);
+            var __workflow_aggSumFields = WorkflowExpression.Compile(aggSumFields, nameof(aggSumFields), required: false);
+            var __workflow_aggLimit = WorkflowExpression.Compile(aggLimit, nameof(aggLimit), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<FinancialsResponse>(() =>
             {
                 var apiCallPath = "/financials";
@@ -258,36 +213,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<SummaryResponse> GetHistorical(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<string>> maxValue = null, Expression<Func<string>> maxValueBy = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_aggBy = aggBy == null ? null : WorkflowExpression.Compile(aggBy);
-            WorkflowExpression.Validate(__workflow_aggBy, nameof(aggBy), required: false);
-            var __workflow_aggTermFields = aggTermFields == null ? null : WorkflowExpression.Compile(aggTermFields);
-            WorkflowExpression.Validate(__workflow_aggTermFields, nameof(aggTermFields), required: false);
-            var __workflow_aggSumFields = aggSumFields == null ? null : WorkflowExpression.Compile(aggSumFields);
-            WorkflowExpression.Validate(__workflow_aggSumFields, nameof(aggSumFields), required: false);
-            var __workflow_aggLimit = aggLimit == null ? null : WorkflowExpression.Compile(aggLimit);
-            WorkflowExpression.Validate(__workflow_aggLimit, nameof(aggLimit), required: false);
-            var __workflow_maxValue = maxValue == null ? null : WorkflowExpression.Compile(maxValue);
-            WorkflowExpression.Validate(__workflow_maxValue, nameof(maxValue), required: false);
-            var __workflow_maxValueBy = maxValueBy == null ? null : WorkflowExpression.Compile(maxValueBy);
-            WorkflowExpression.Validate(__workflow_maxValueBy, nameof(maxValueBy), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_aggBy = WorkflowExpression.Compile(aggBy, nameof(aggBy), required: false);
+            var __workflow_aggTermFields = WorkflowExpression.Compile(aggTermFields, nameof(aggTermFields), required: false);
+            var __workflow_aggSumFields = WorkflowExpression.Compile(aggSumFields, nameof(aggSumFields), required: false);
+            var __workflow_aggLimit = WorkflowExpression.Compile(aggLimit, nameof(aggLimit), required: false);
+            var __workflow_maxValue = WorkflowExpression.Compile(maxValue, nameof(maxValue), required: false);
+            var __workflow_maxValueBy = WorkflowExpression.Compile(maxValueBy, nameof(maxValueBy), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<SummaryResponse>(() =>
             {
                 var apiCallPath = "/summary";
@@ -334,36 +274,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<FailuresResponse> GetFailures(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> totalFields = null, Expression<Func<string>> subtotalBy = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_totalFields = totalFields == null ? null : WorkflowExpression.Compile(totalFields);
-            WorkflowExpression.Validate(__workflow_totalFields, nameof(totalFields), required: false);
-            var __workflow_subtotalBy = subtotalBy == null ? null : WorkflowExpression.Compile(subtotalBy);
-            WorkflowExpression.Validate(__workflow_subtotalBy, nameof(subtotalBy), required: false);
-            var __workflow_aggBy = aggBy == null ? null : WorkflowExpression.Compile(aggBy);
-            WorkflowExpression.Validate(__workflow_aggBy, nameof(aggBy), required: false);
-            var __workflow_aggTermFields = aggTermFields == null ? null : WorkflowExpression.Compile(aggTermFields);
-            WorkflowExpression.Validate(__workflow_aggTermFields, nameof(aggTermFields), required: false);
-            var __workflow_aggSumFields = aggSumFields == null ? null : WorkflowExpression.Compile(aggSumFields);
-            WorkflowExpression.Validate(__workflow_aggSumFields, nameof(aggSumFields), required: false);
-            var __workflow_aggLimit = aggLimit == null ? null : WorkflowExpression.Compile(aggLimit);
-            WorkflowExpression.Validate(__workflow_aggLimit, nameof(aggLimit), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_totalFields = WorkflowExpression.Compile(totalFields, nameof(totalFields), required: false);
+            var __workflow_subtotalBy = WorkflowExpression.Compile(subtotalBy, nameof(subtotalBy), required: false);
+            var __workflow_aggBy = WorkflowExpression.Compile(aggBy, nameof(aggBy), required: false);
+            var __workflow_aggTermFields = WorkflowExpression.Compile(aggTermFields, nameof(aggTermFields), required: false);
+            var __workflow_aggSumFields = WorkflowExpression.Compile(aggSumFields, nameof(aggSumFields), required: false);
+            var __workflow_aggLimit = WorkflowExpression.Compile(aggLimit, nameof(aggLimit), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<FailuresResponse>(() =>
             {
                 var apiCallPath = "/failures";
@@ -411,32 +336,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<SodResponse> GetSod(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortBy = sortBy == null ? null : WorkflowExpression.Compile(sortBy);
-            WorkflowExpression.Validate(__workflow_sortBy, nameof(sortBy), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
-            var __workflow_aggBy = aggBy == null ? null : WorkflowExpression.Compile(aggBy);
-            WorkflowExpression.Validate(__workflow_aggBy, nameof(aggBy), required: false);
-            var __workflow_aggTermFields = aggTermFields == null ? null : WorkflowExpression.Compile(aggTermFields);
-            WorkflowExpression.Validate(__workflow_aggTermFields, nameof(aggTermFields), required: false);
-            var __workflow_aggSumFields = aggSumFields == null ? null : WorkflowExpression.Compile(aggSumFields);
-            WorkflowExpression.Validate(__workflow_aggSumFields, nameof(aggSumFields), required: false);
-            var __workflow_aggLimit = aggLimit == null ? null : WorkflowExpression.Compile(aggLimit);
-            WorkflowExpression.Validate(__workflow_aggLimit, nameof(aggLimit), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortBy = WorkflowExpression.Compile(sortBy, nameof(sortBy), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
+            var __workflow_aggBy = WorkflowExpression.Compile(aggBy, nameof(aggBy), required: false);
+            var __workflow_aggTermFields = WorkflowExpression.Compile(aggTermFields, nameof(aggTermFields), required: false);
+            var __workflow_aggSumFields = WorkflowExpression.Compile(aggSumFields, nameof(aggSumFields), required: false);
+            var __workflow_aggLimit = WorkflowExpression.Compile(aggLimit, nameof(aggLimit), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<SodResponse>(() =>
             {
                 var apiCallPath = "/sod";
@@ -479,14 +391,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
         public IBodyWorkflowAction<DemographicsResponse> GetDemographics(Expression<Func<string>> filters = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
         {
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_format = format == null ? null : WorkflowExpression.Compile(format);
-            WorkflowExpression.Validate(__workflow_format, nameof(format), required: false);
-            var __workflow_download = download == null ? null : WorkflowExpression.Compile(download);
-            WorkflowExpression.Validate(__workflow_download, nameof(download), required: false);
-            var __workflow_filename = filename == null ? null : WorkflowExpression.Compile(filename);
-            WorkflowExpression.Validate(__workflow_filename, nameof(filename), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_format = WorkflowExpression.Compile(format, nameof(format), required: false);
+            var __workflow_download = WorkflowExpression.Compile(download, nameof(download), required: false);
+            var __workflow_filename = WorkflowExpression.Compile(filename, nameof(filename), required: false);
             return new DeferredBodyAction<DemographicsResponse>(() =>
             {
                 var apiCallPath = "/demographics";

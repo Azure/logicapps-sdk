@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<PostAuthenticateResponse> PostAuthenticate(Expression<Func<int>> withoutIpLock)
         {
-            var __workflow_withoutIpLock = withoutIpLock == null ? null : WorkflowExpression.Compile(withoutIpLock);
-            WorkflowExpression.Validate(__workflow_withoutIpLock, nameof(withoutIpLock), required: true);
+            var __workflow_withoutIpLock = WorkflowExpression.Compile(withoutIpLock, nameof(withoutIpLock), required: true);
             return new DeferredBodyAction<PostAuthenticateResponse>(() =>
             {
                 var apiCallPath = "/auth";
@@ -28,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Company> GetCompaniesCompanyId(Expression<Func<string>> token, Expression<Func<string>> companyId)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
             return new DeferredBodyAction<Company>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyId, 1));
@@ -46,12 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Recipient[]> GetEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Recipient[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -68,42 +62,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodygivenName = bodygivenName == null ? null : WorkflowExpression.Compile(bodygivenName);
-            WorkflowExpression.Validate(__workflow_bodygivenName, nameof(bodygivenName), required: true);
-            var __workflow_bodyfamilyName = bodyfamilyName == null ? null : WorkflowExpression.Compile(bodyfamilyName);
-            WorkflowExpression.Validate(__workflow_bodyfamilyName, nameof(bodyfamilyName), required: true);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodysigningMethod = bodysigningMethod == null ? null : WorkflowExpression.Compile(bodysigningMethod);
-            WorkflowExpression.Validate(__workflow_bodysigningMethod, nameof(bodysigningMethod), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyroleaction = bodyroleaction == null ? null : WorkflowExpression.Compile(bodyroleaction);
-            WorkflowExpression.Validate(__workflow_bodyroleaction, nameof(bodyroleaction), required: true);
-            var __workflow_bodyrolelabel = bodyrolelabel == null ? null : WorkflowExpression.Compile(bodyrolelabel);
-            WorkflowExpression.Validate(__workflow_bodyrolelabel, nameof(bodyrolelabel), required: true);
-            var __workflow_bodyrolename = bodyrolename == null ? null : WorkflowExpression.Compile(bodyrolename);
-            WorkflowExpression.Validate(__workflow_bodyrolename, nameof(bodyrolename), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodynotificationMethod = bodynotificationMethod == null ? null : WorkflowExpression.Compile(bodynotificationMethod);
-            WorkflowExpression.Validate(__workflow_bodynotificationMethod, nameof(bodynotificationMethod), required: false);
-            var __workflow_bodytelephone = bodytelephone == null ? null : WorkflowExpression.Compile(bodytelephone);
-            WorkflowExpression.Validate(__workflow_bodytelephone, nameof(bodytelephone), required: false);
-            var __workflow_bodyorder = bodyorder == null ? null : WorkflowExpression.Compile(bodyorder);
-            WorkflowExpression.Validate(__workflow_bodyorder, nameof(bodyorder), required: false);
-            var __workflow_bodysecure = bodysecure == null ? null : WorkflowExpression.Compile(bodysecure);
-            WorkflowExpression.Validate(__workflow_bodysecure, nameof(bodysecure), required: false);
-            var __workflow_bodysms = bodysms == null ? null : WorkflowExpression.Compile(bodysms);
-            WorkflowExpression.Validate(__workflow_bodysms, nameof(bodysms), required: false);
-            var __workflow_bodyssn = bodyssn == null ? null : WorkflowExpression.Compile(bodyssn);
-            WorkflowExpression.Validate(__workflow_bodyssn, nameof(bodyssn), required: false);
-            var __workflow_bodybank = bodybank == null ? null : WorkflowExpression.Compile(bodybank);
-            WorkflowExpression.Validate(__workflow_bodybank, nameof(bodybank), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodygivenName = WorkflowExpression.Compile(bodygivenName, nameof(bodygivenName), required: true);
+            var __workflow_bodyfamilyName = WorkflowExpression.Compile(bodyfamilyName, nameof(bodyfamilyName), required: true);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_bodysigningMethod = WorkflowExpression.Compile(bodysigningMethod, nameof(bodysigningMethod), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyroleaction = WorkflowExpression.Compile(bodyroleaction, nameof(bodyroleaction), required: true);
+            var __workflow_bodyrolelabel = WorkflowExpression.Compile(bodyrolelabel, nameof(bodyrolelabel), required: true);
+            var __workflow_bodyrolename = WorkflowExpression.Compile(bodyrolename, nameof(bodyrolename), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodynotificationMethod = WorkflowExpression.Compile(bodynotificationMethod, nameof(bodynotificationMethod), required: false);
+            var __workflow_bodytelephone = WorkflowExpression.Compile(bodytelephone, nameof(bodytelephone), required: false);
+            var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
+            var __workflow_bodysecure = WorkflowExpression.Compile(bodysecure, nameof(bodysecure), required: false);
+            var __workflow_bodysms = WorkflowExpression.Compile(bodysms, nameof(bodysms), required: false);
+            var __workflow_bodyssn = WorkflowExpression.Compile(bodyssn, nameof(bodyssn), required: false);
+            var __workflow_bodybank = WorkflowExpression.Compile(bodybank, nameof(bodybank), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -193,14 +169,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Recipient> GetEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Recipient>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -217,44 +189,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_recipientId = recipientId == null ? null : WorkflowExpression.Compile(recipientId);
-            WorkflowExpression.Validate(__workflow_recipientId, nameof(recipientId), required: true);
-            var __workflow_bodygivenName = bodygivenName == null ? null : WorkflowExpression.Compile(bodygivenName);
-            WorkflowExpression.Validate(__workflow_bodygivenName, nameof(bodygivenName), required: true);
-            var __workflow_bodyfamilyName = bodyfamilyName == null ? null : WorkflowExpression.Compile(bodyfamilyName);
-            WorkflowExpression.Validate(__workflow_bodyfamilyName, nameof(bodyfamilyName), required: true);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: true);
-            var __workflow_bodysigningMethod = bodysigningMethod == null ? null : WorkflowExpression.Compile(bodysigningMethod);
-            WorkflowExpression.Validate(__workflow_bodysigningMethod, nameof(bodysigningMethod), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyroleaction = bodyroleaction == null ? null : WorkflowExpression.Compile(bodyroleaction);
-            WorkflowExpression.Validate(__workflow_bodyroleaction, nameof(bodyroleaction), required: true);
-            var __workflow_bodyrolelabel = bodyrolelabel == null ? null : WorkflowExpression.Compile(bodyrolelabel);
-            WorkflowExpression.Validate(__workflow_bodyrolelabel, nameof(bodyrolelabel), required: true);
-            var __workflow_bodyrolename = bodyrolename == null ? null : WorkflowExpression.Compile(bodyrolename);
-            WorkflowExpression.Validate(__workflow_bodyrolename, nameof(bodyrolename), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodynotificationMethod = bodynotificationMethod == null ? null : WorkflowExpression.Compile(bodynotificationMethod);
-            WorkflowExpression.Validate(__workflow_bodynotificationMethod, nameof(bodynotificationMethod), required: false);
-            var __workflow_bodytelephone = bodytelephone == null ? null : WorkflowExpression.Compile(bodytelephone);
-            WorkflowExpression.Validate(__workflow_bodytelephone, nameof(bodytelephone), required: false);
-            var __workflow_bodyorder = bodyorder == null ? null : WorkflowExpression.Compile(bodyorder);
-            WorkflowExpression.Validate(__workflow_bodyorder, nameof(bodyorder), required: false);
-            var __workflow_bodysecure = bodysecure == null ? null : WorkflowExpression.Compile(bodysecure);
-            WorkflowExpression.Validate(__workflow_bodysecure, nameof(bodysecure), required: false);
-            var __workflow_bodysms = bodysms == null ? null : WorkflowExpression.Compile(bodysms);
-            WorkflowExpression.Validate(__workflow_bodysms, nameof(bodysms), required: false);
-            var __workflow_bodyssn = bodyssn == null ? null : WorkflowExpression.Compile(bodyssn);
-            WorkflowExpression.Validate(__workflow_bodyssn, nameof(bodyssn), required: false);
-            var __workflow_bodybank = bodybank == null ? null : WorkflowExpression.Compile(bodybank);
-            WorkflowExpression.Validate(__workflow_bodybank, nameof(bodybank), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_recipientId = WorkflowExpression.Compile(recipientId, nameof(recipientId), required: true);
+            var __workflow_bodygivenName = WorkflowExpression.Compile(bodygivenName, nameof(bodygivenName), required: true);
+            var __workflow_bodyfamilyName = WorkflowExpression.Compile(bodyfamilyName, nameof(bodyfamilyName), required: true);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: true);
+            var __workflow_bodysigningMethod = WorkflowExpression.Compile(bodysigningMethod, nameof(bodysigningMethod), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyroleaction = WorkflowExpression.Compile(bodyroleaction, nameof(bodyroleaction), required: true);
+            var __workflow_bodyrolelabel = WorkflowExpression.Compile(bodyrolelabel, nameof(bodyrolelabel), required: true);
+            var __workflow_bodyrolename = WorkflowExpression.Compile(bodyrolename, nameof(bodyrolename), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodynotificationMethod = WorkflowExpression.Compile(bodynotificationMethod, nameof(bodynotificationMethod), required: false);
+            var __workflow_bodytelephone = WorkflowExpression.Compile(bodytelephone, nameof(bodytelephone), required: false);
+            var __workflow_bodyorder = WorkflowExpression.Compile(bodyorder, nameof(bodyorder), required: false);
+            var __workflow_bodysecure = WorkflowExpression.Compile(bodysecure, nameof(bodysecure), required: false);
+            var __workflow_bodysms = WorkflowExpression.Compile(bodysms, nameof(bodysms), required: false);
+            var __workflow_bodyssn = WorkflowExpression.Compile(bodyssn, nameof(bodyssn), required: false);
+            var __workflow_bodybank = WorkflowExpression.Compile(bodybank, nameof(bodybank), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recipientId, 1));
@@ -344,18 +297,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse> GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrl(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> fileId, Expression<Func<string>> xNamespace = null, Expression<Func<bool>> asObject = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_fileId = fileId == null ? null : WorkflowExpression.Compile(fileId);
-            WorkflowExpression.Validate(__workflow_fileId, nameof(fileId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_asObject = asObject == null ? null : WorkflowExpression.Compile(asObject);
-            WorkflowExpression.Validate(__workflow_asObject, nameof(asObject), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_fileId = WorkflowExpression.Compile(fileId, nameof(fileId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_asObject = WorkflowExpression.Compile(asObject, nameof(asObject), required: false);
             return new DeferredBodyAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files/{2}/url", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileId, 1));
@@ -374,12 +321,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Setting> GetCompaniesCompanyIdUsersUserIdSettings(Expression<Func<string>> token, Expression<Func<string>> companyId, Expression<Func<string>> userId)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_companyId = companyId == null ? null : WorkflowExpression.Compile(companyId);
-            WorkflowExpression.Validate(__workflow_companyId, nameof(companyId), required: true);
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_companyId = WorkflowExpression.Compile(companyId, nameof(companyId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<Setting>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}/users/{1}/settings", ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -394,12 +338,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Envelope> GetEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Envelope>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -416,12 +357,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction DeleteEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -438,20 +376,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<bool>> bodysequentialSigning = null, Expression<Func<string>> bodygreeting = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<double>> bodyautomaticReminders = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodysequentialSigning = bodysequentialSigning == null ? null : WorkflowExpression.Compile(bodysequentialSigning);
-            WorkflowExpression.Validate(__workflow_bodysequentialSigning, nameof(bodysequentialSigning), required: false);
-            var __workflow_bodygreeting = bodygreeting == null ? null : WorkflowExpression.Compile(bodygreeting);
-            WorkflowExpression.Validate(__workflow_bodygreeting, nameof(bodygreeting), required: false);
-            var __workflow_bodyexpiration = bodyexpiration == null ? null : WorkflowExpression.Compile(bodyexpiration);
-            WorkflowExpression.Validate(__workflow_bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodyautomaticReminders = bodyautomaticReminders == null ? null : WorkflowExpression.Compile(bodyautomaticReminders);
-            WorkflowExpression.Validate(__workflow_bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodysequentialSigning = WorkflowExpression.Compile(bodysequentialSigning, nameof(bodysequentialSigning), required: false);
+            var __workflow_bodygreeting = WorkflowExpression.Compile(bodygreeting, nameof(bodygreeting), required: false);
+            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_bodyautomaticReminders = WorkflowExpression.Compile(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -499,14 +430,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdPublishStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<bool>> bodypublished, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodypublished = bodypublished == null ? null : WorkflowExpression.Compile(bodypublished);
-            WorkflowExpression.Validate(__workflow_bodypublished, nameof(bodypublished), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodypublished = WorkflowExpression.Compile(bodypublished, nameof(bodypublished), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/publish-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -532,16 +459,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_templateId = templateId == null ? null : WorkflowExpression.Compile(templateId);
-            WorkflowExpression.Validate(__workflow_templateId, nameof(templateId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_templateId = WorkflowExpression.Compile(templateId, nameof(templateId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/templates/{2}/user-data", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_templateId, 1));
@@ -565,14 +487,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdAbortStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/abort-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -602,14 +520,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<File[]> GetEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<File[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -626,20 +540,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<File> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyfileType, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyhash = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyfileType = bodyfileType == null ? null : WorkflowExpression.Compile(bodyfileType);
-            WorkflowExpression.Validate(__workflow_bodyfileType, nameof(bodyfileType), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodyhash = bodyhash == null ? null : WorkflowExpression.Compile(bodyhash);
-            WorkflowExpression.Validate(__workflow_bodyhash, nameof(bodyhash), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyfileType = WorkflowExpression.Compile(bodyfileType, nameof(bodyfileType), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodyhash = WorkflowExpression.Compile(bodyhash, nameof(bodyhash), required: false);
             return new DeferredBodyAction<File>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -673,8 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<UserInfo> GetAuthUserinfo(Expression<Func<string>> token)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
             return new DeferredBodyAction<UserInfo>(() =>
             {
                 var apiCallPath = "/auth/userinfo";
@@ -689,14 +595,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdStatusAborted(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/status/aborted", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -713,14 +615,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PutEnvelopesEnvelopeIdTrashStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/trash-status", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -750,18 +648,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<EnvelopeDescriptorString[]> GetQueryEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null, Expression<Func<int>> from = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<EnvelopeDescriptorString[]>(() =>
             {
                 var apiCallPath = "/query/envelopes";
@@ -786,18 +678,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<EnvelopeDescriptorString[]> GetSearchEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null, Expression<Func<int>> from = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_sort = sort == null ? null : WorkflowExpression.Compile(sort);
-            WorkflowExpression.Validate(__workflow_sort, nameof(sort), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_sort = WorkflowExpression.Compile(sort, nameof(sort), required: false);
             return new DeferredBodyAction<EnvelopeDescriptorString[]>(() =>
             {
                 var apiCallPath = "/search/envelopes";
@@ -822,12 +708,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Descriptor[]> GetEnvelopeDescriptors(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             return new DeferredBodyAction<Descriptor[]>(() =>
             {
                 var apiCallPath = "/envelope-descriptors";
@@ -846,14 +729,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<GetFlowsFlowIdJobsEnvelopeIdResponse> GetFlowsFlowIdJobsEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> flowId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_flowId = flowId == null ? null : WorkflowExpression.Compile(flowId);
-            WorkflowExpression.Validate(__workflow_flowId, nameof(flowId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_flowId = WorkflowExpression.Compile(flowId, nameof(flowId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<GetFlowsFlowIdJobsEnvelopeIdResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flows/{0}/jobs/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_flowId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -870,14 +749,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Document> GetEnvelopesEnvelopeIdDocumentsDocumentId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Document>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -894,14 +769,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction DeleteEnvelopesEnvelopeIdDocumentsDocumentId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_documentId = documentId == null ? null : WorkflowExpression.Compile(documentId);
-            WorkflowExpression.Validate(__workflow_documentId, nameof(documentId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_documentId = WorkflowExpression.Compile(documentId, nameof(documentId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_documentId, 1));
@@ -918,24 +789,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse> PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes(Expression<Func<string>> token, Expression<Func<string>> envelopeDescriptorId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string>> bodysendergivenName = null, Expression<Func<string>> bodysenderfamilyName = null, Expression<Func<double>> bodyautomaticReminders = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeDescriptorId = envelopeDescriptorId == null ? null : WorkflowExpression.Compile(envelopeDescriptorId);
-            WorkflowExpression.Validate(__workflow_envelopeDescriptorId, nameof(envelopeDescriptorId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodysenderemail = bodysenderemail == null ? null : WorkflowExpression.Compile(bodysenderemail);
-            WorkflowExpression.Validate(__workflow_bodysenderemail, nameof(bodysenderemail), required: false);
-            var __workflow_bodysendergivenName = bodysendergivenName == null ? null : WorkflowExpression.Compile(bodysendergivenName);
-            WorkflowExpression.Validate(__workflow_bodysendergivenName, nameof(bodysendergivenName), required: false);
-            var __workflow_bodysenderfamilyName = bodysenderfamilyName == null ? null : WorkflowExpression.Compile(bodysenderfamilyName);
-            WorkflowExpression.Validate(__workflow_bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
-            var __workflow_bodyautomaticReminders = bodyautomaticReminders == null ? null : WorkflowExpression.Compile(bodyautomaticReminders);
-            WorkflowExpression.Validate(__workflow_bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
-            var __workflow_bodyexpiration = bodyexpiration == null ? null : WorkflowExpression.Compile(bodyexpiration);
-            WorkflowExpression.Validate(__workflow_bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeDescriptorId = WorkflowExpression.Compile(envelopeDescriptorId, nameof(envelopeDescriptorId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodysenderemail = WorkflowExpression.Compile(bodysenderemail, nameof(bodysenderemail), required: false);
+            var __workflow_bodysendergivenName = WorkflowExpression.Compile(bodysendergivenName, nameof(bodysendergivenName), required: false);
+            var __workflow_bodysenderfamilyName = WorkflowExpression.Compile(bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
+            var __workflow_bodyautomaticReminders = WorkflowExpression.Compile(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
+            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelope-descriptors/{0}/envelopes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeDescriptorId, 1));
@@ -1003,12 +865,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Document[]> GetEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
             return new DeferredBodyAction<Document[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -1025,18 +884,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodyname, Expression<Func<string>> xNamespace = null, Expression<Func<int>> bodydescriptorhash = null, Expression<Func<string>> bodysource = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodydescriptorhash = bodydescriptorhash == null ? null : WorkflowExpression.Compile(bodydescriptorhash);
-            WorkflowExpression.Validate(__workflow_bodydescriptorhash, nameof(bodydescriptorhash), required: false);
-            var __workflow_bodysource = bodysource == null ? null : WorkflowExpression.Compile(bodysource);
-            WorkflowExpression.Validate(__workflow_bodysource, nameof(bodysource), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodydescriptorhash = WorkflowExpression.Compile(bodydescriptorhash, nameof(bodydescriptorhash), required: false);
+            var __workflow_bodysource = WorkflowExpression.Compile(bodysource, nameof(bodysource), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -1082,16 +935,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse> PostEnvelopesEnvelopeIdJobsGetSignLink(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyrecipientid = null, Expression<Func<string>> bodyredirectTo = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodyrecipientid = bodyrecipientid == null ? null : WorkflowExpression.Compile(bodyrecipientid);
-            WorkflowExpression.Validate(__workflow_bodyrecipientid, nameof(bodyrecipientid), required: false);
-            var __workflow_bodyredirectTo = bodyredirectTo == null ? null : WorkflowExpression.Compile(bodyredirectTo);
-            WorkflowExpression.Validate(__workflow_bodyredirectTo, nameof(bodyredirectTo), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodyrecipientid = WorkflowExpression.Compile(bodyrecipientid, nameof(bodyrecipientid), required: false);
+            var __workflow_bodyredirectTo = WorkflowExpression.Compile(bodyredirectTo, nameof(bodyredirectTo), required: false);
             return new DeferredBodyAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/get.sign.link", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));
@@ -1135,22 +983,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse> PostEnvelopeDescriptorsDefaultEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string>> bodysendergivenName = null, Expression<Func<string>> bodysenderfamilyName = null, Expression<Func<double>> bodyautomaticReminders = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodysenderemail = bodysenderemail == null ? null : WorkflowExpression.Compile(bodysenderemail);
-            WorkflowExpression.Validate(__workflow_bodysenderemail, nameof(bodysenderemail), required: false);
-            var __workflow_bodysendergivenName = bodysendergivenName == null ? null : WorkflowExpression.Compile(bodysendergivenName);
-            WorkflowExpression.Validate(__workflow_bodysendergivenName, nameof(bodysendergivenName), required: false);
-            var __workflow_bodysenderfamilyName = bodysenderfamilyName == null ? null : WorkflowExpression.Compile(bodysenderfamilyName);
-            WorkflowExpression.Validate(__workflow_bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
-            var __workflow_bodyautomaticReminders = bodyautomaticReminders == null ? null : WorkflowExpression.Compile(bodyautomaticReminders);
-            WorkflowExpression.Validate(__workflow_bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
-            var __workflow_bodyexpiration = bodyexpiration == null ? null : WorkflowExpression.Compile(bodyexpiration);
-            WorkflowExpression.Validate(__workflow_bodyexpiration, nameof(bodyexpiration), required: false);
-            var __workflow_bodydocuments = bodydocuments == null ? null : WorkflowExpression.Compile(bodydocuments);
-            WorkflowExpression.Validate(__workflow_bodydocuments, nameof(bodydocuments), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodysenderemail = WorkflowExpression.Compile(bodysenderemail, nameof(bodysenderemail), required: false);
+            var __workflow_bodysendergivenName = WorkflowExpression.Compile(bodysendergivenName, nameof(bodysendergivenName), required: false);
+            var __workflow_bodysenderfamilyName = WorkflowExpression.Compile(bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
+            var __workflow_bodyautomaticReminders = WorkflowExpression.Compile(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
+            var __workflow_bodyexpiration = WorkflowExpression.Compile(bodyexpiration, nameof(bodyexpiration), required: false);
+            var __workflow_bodydocuments = WorkflowExpression.Compile(bodydocuments, nameof(bodydocuments), required: false);
             return new DeferredBodyAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse>(() =>
             {
                 var apiCallPath = "/envelope-descriptors/default/envelopes";
@@ -1218,12 +1058,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IBodyWorkflowAction<Descriptor> GetEnvelopeDescriptorsDefault(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_filters = filters == null ? null : WorkflowExpression.Compile(filters);
-            WorkflowExpression.Validate(__workflow_filters, nameof(filters), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_filters = WorkflowExpression.Compile(filters, nameof(filters), required: false);
             return new DeferredBodyAction<Descriptor>(() =>
             {
                 var apiCallPath = "/envelope-descriptors/default";
@@ -1242,16 +1079,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
         public IWorkflowAction PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyenvelopegreeting = null, Expression<Func<string>> bodyrecipientid = null)
         {
-            var __workflow_token = token == null ? null : WorkflowExpression.Compile(token);
-            WorkflowExpression.Validate(__workflow_token, nameof(token), required: true);
-            var __workflow_envelopeId = envelopeId == null ? null : WorkflowExpression.Compile(envelopeId);
-            WorkflowExpression.Validate(__workflow_envelopeId, nameof(envelopeId), required: true);
-            var __workflow_xNamespace = xNamespace == null ? null : WorkflowExpression.Compile(xNamespace);
-            WorkflowExpression.Validate(__workflow_xNamespace, nameof(xNamespace), required: false);
-            var __workflow_bodyenvelopegreeting = bodyenvelopegreeting == null ? null : WorkflowExpression.Compile(bodyenvelopegreeting);
-            WorkflowExpression.Validate(__workflow_bodyenvelopegreeting, nameof(bodyenvelopegreeting), required: false);
-            var __workflow_bodyrecipientid = bodyrecipientid == null ? null : WorkflowExpression.Compile(bodyrecipientid);
-            WorkflowExpression.Validate(__workflow_bodyrecipientid, nameof(bodyrecipientid), required: false);
+            var __workflow_token = WorkflowExpression.Compile(token, nameof(token), required: true);
+            var __workflow_envelopeId = WorkflowExpression.Compile(envelopeId, nameof(envelopeId), required: true);
+            var __workflow_xNamespace = WorkflowExpression.Compile(xNamespace, nameof(xNamespace), required: false);
+            var __workflow_bodyenvelopegreeting = WorkflowExpression.Compile(bodyenvelopegreeting, nameof(bodyenvelopegreeting), required: false);
+            var __workflow_bodyrecipientid = WorkflowExpression.Compile(bodyrecipientid, nameof(bodyrecipientid), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/send.notification", ExpressionConverter.ConvertWithUrlEncoding(__workflow_envelopeId, 1));

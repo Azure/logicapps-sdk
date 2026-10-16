@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
         public IBodyWorkflowAction<GetLatestbyCodeResponse> GetLatestbyCode(Expression<Func<string>> countryCode)
         {
-            var __workflow_countryCode = countryCode == null ? null : WorkflowExpression.Compile(countryCode);
-            WorkflowExpression.Validate(__workflow_countryCode, nameof(countryCode), required: true);
+            var __workflow_countryCode = WorkflowExpression.Compile(countryCode, nameof(countryCode), required: true);
             return new DeferredBodyAction<GetLatestbyCodeResponse>(() =>
             {
                 var apiCallPath = "/latest";
@@ -28,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
         public IBodyWorkflowAction<GetLatestbyLatLonResponse> GetLatestbyLatLon(Expression<Func<double>> lon = null, Expression<Func<double>> lat = null)
         {
-            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
-            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
             return new DeferredBodyAction<GetLatestbyLatLonResponse>(() =>
             {
                 var apiCallPath = "/latestbyloc";

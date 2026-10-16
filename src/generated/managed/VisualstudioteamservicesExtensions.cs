@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Profile> GetProfile(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Profile>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -36,12 +35,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListTeamSettingsIteration> ListIterations(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_team = team == null ? null : WorkflowExpression.Compile(team);
-            WorkflowExpression.Validate(__workflow_team, nameof(team), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: true);
             return new DeferredBodyAction<VstsListTeamSettingsIteration>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/iterations", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -56,16 +52,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<BuildResult> QueueNewBuild(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> buildDefId, Expression<Func<string>> buildDetailssourceBranch = null, Expression<Func<string>> buildDetailsparameters = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_buildDefId = buildDefId == null ? null : WorkflowExpression.Compile(buildDefId);
-            WorkflowExpression.Validate(__workflow_buildDefId, nameof(buildDefId), required: true);
-            var __workflow_buildDetailssourceBranch = buildDetailssourceBranch == null ? null : WorkflowExpression.Compile(buildDetailssourceBranch);
-            WorkflowExpression.Validate(__workflow_buildDetailssourceBranch, nameof(buildDetailssourceBranch), required: false);
-            var __workflow_buildDetailsparameters = buildDetailsparameters == null ? null : WorkflowExpression.Compile(buildDetailsparameters);
-            WorkflowExpression.Validate(__workflow_buildDetailsparameters, nameof(buildDetailsparameters), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_buildDefId = WorkflowExpression.Compile(buildDefId, nameof(buildDefId), required: true);
+            var __workflow_buildDetailssourceBranch = WorkflowExpression.Compile(buildDetailssourceBranch, nameof(buildDetailssourceBranch), required: false);
+            var __workflow_buildDetailsparameters = WorkflowExpression.Compile(buildDetailsparameters, nameof(buildDetailsparameters), required: false);
             return new DeferredBodyAction<BuildResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -99,10 +90,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListGitRepository> ListGitRepositories(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<VstsListGitRepository>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/git/repositories", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -116,8 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListProject> ListProjects(Expression<Func<string>> account)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
             return new DeferredBodyAction<VstsListProject>(() =>
             {
                 var apiCallPath = "/_apis/projects";
@@ -131,10 +119,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListReleaseDefinition> ListReleaseDefinitions(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<VstsListReleaseDefinition>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/definitions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -148,20 +134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Release> CreateRelease(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> releaseDefId, Expression<Func<string>> releaseStartMetadatadescription = null, Expression<Func<bool>> releaseStartMetadataisDraft = null, Expression<Func<releaseStartMetadatareasonInput>> releaseStartMetadatareason = null, Expression<Func<ConfigurationVariable[]>> releaseStartMetadatareleaseVariables = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_releaseDefId = releaseDefId == null ? null : WorkflowExpression.Compile(releaseDefId);
-            WorkflowExpression.Validate(__workflow_releaseDefId, nameof(releaseDefId), required: true);
-            var __workflow_releaseStartMetadatadescription = releaseStartMetadatadescription == null ? null : WorkflowExpression.Compile(releaseStartMetadatadescription);
-            WorkflowExpression.Validate(__workflow_releaseStartMetadatadescription, nameof(releaseStartMetadatadescription), required: false);
-            var __workflow_releaseStartMetadataisDraft = releaseStartMetadataisDraft == null ? null : WorkflowExpression.Compile(releaseStartMetadataisDraft);
-            WorkflowExpression.Validate(__workflow_releaseStartMetadataisDraft, nameof(releaseStartMetadataisDraft), required: false);
-            var __workflow_releaseStartMetadatareason = releaseStartMetadatareason == null ? null : WorkflowExpression.Compile(releaseStartMetadatareason);
-            WorkflowExpression.Validate(__workflow_releaseStartMetadatareason, nameof(releaseStartMetadatareason), required: false);
-            var __workflow_releaseStartMetadatareleaseVariables = releaseStartMetadatareleaseVariables == null ? null : WorkflowExpression.Compile(releaseStartMetadatareleaseVariables);
-            WorkflowExpression.Validate(__workflow_releaseStartMetadatareleaseVariables, nameof(releaseStartMetadatareleaseVariables), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_releaseDefId = WorkflowExpression.Compile(releaseDefId, nameof(releaseDefId), required: true);
+            var __workflow_releaseStartMetadatadescription = WorkflowExpression.Compile(releaseStartMetadatadescription, nameof(releaseStartMetadatadescription), required: false);
+            var __workflow_releaseStartMetadataisDraft = WorkflowExpression.Compile(releaseStartMetadataisDraft, nameof(releaseStartMetadataisDraft), required: false);
+            var __workflow_releaseStartMetadatareason = WorkflowExpression.Compile(releaseStartMetadatareason, nameof(releaseStartMetadatareason), required: false);
+            var __workflow_releaseStartMetadatareleaseVariables = WorkflowExpression.Compile(releaseStartMetadatareleaseVariables, nameof(releaseStartMetadatareleaseVariables), required: false);
             return new DeferredBodyAction<Release>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/releases", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -207,16 +186,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> account, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersrelativeURI, Expression<Func<string>> parametersbody = null, Expression<Func<bool>> parametersbodyIsBase64 = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_parametersmethod = parametersmethod == null ? null : WorkflowExpression.Compile(parametersmethod);
-            WorkflowExpression.Validate(__workflow_parametersmethod, nameof(parametersmethod), required: true);
-            var __workflow_parametersrelativeURI = parametersrelativeURI == null ? null : WorkflowExpression.Compile(parametersrelativeURI);
-            WorkflowExpression.Validate(__workflow_parametersrelativeURI, nameof(parametersrelativeURI), required: true);
-            var __workflow_parametersbody = parametersbody == null ? null : WorkflowExpression.Compile(parametersbody);
-            WorkflowExpression.Validate(__workflow_parametersbody, nameof(parametersbody), required: false);
-            var __workflow_parametersbodyIsBase64 = parametersbodyIsBase64 == null ? null : WorkflowExpression.Compile(parametersbodyIsBase64);
-            WorkflowExpression.Validate(__workflow_parametersbodyIsBase64, nameof(parametersbodyIsBase64), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_parametersmethod = WorkflowExpression.Compile(parametersmethod, nameof(parametersmethod), required: true);
+            var __workflow_parametersrelativeURI = WorkflowExpression.Compile(parametersrelativeURI, nameof(parametersrelativeURI), required: true);
+            var __workflow_parametersbody = WorkflowExpression.Compile(parametersbody, nameof(parametersbody), required: false);
+            var __workflow_parametersbodyIsBase64 = WorkflowExpression.Compile(parametersbodyIsBase64, nameof(parametersbodyIsBase64), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/httprequest";
@@ -261,10 +235,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<VstsListWorkItemType>(() =>
             {
                 var apiCallPath = "/_apis/wit/workitemtypes";
@@ -279,14 +251,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<DynamicWorkItemResponse> GetWorkItemDetails(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_typeName = typeName == null ? null : WorkflowExpression.Compile(typeName);
-            WorkflowExpression.Validate(__workflow_typeName, nameof(typeName), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_typeName = WorkflowExpression.Compile(typeName, nameof(typeName), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DynamicWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -302,32 +270,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project = null, Expression<Func<string>> type = null, Expression<Func<string>> workItemtitle = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_workItemtitle = workItemtitle == null ? null : WorkflowExpression.Compile(workItemtitle);
-            WorkflowExpression.Validate(__workflow_workItemtitle, nameof(workItemtitle), required: false);
-            var __workflow_workItemdescription = workItemdescription == null ? null : WorkflowExpression.Compile(workItemdescription);
-            WorkflowExpression.Validate(__workflow_workItemdescription, nameof(workItemdescription), required: false);
-            var __workflow_workItempriority = workItempriority == null ? null : WorkflowExpression.Compile(workItempriority);
-            WorkflowExpression.Validate(__workflow_workItempriority, nameof(workItempriority), required: false);
-            var __workflow_workItemiterationPath = workItemiterationPath == null ? null : WorkflowExpression.Compile(workItemiterationPath);
-            WorkflowExpression.Validate(__workflow_workItemiterationPath, nameof(workItemiterationPath), required: false);
-            var __workflow_workItemareaPath = workItemareaPath == null ? null : WorkflowExpression.Compile(workItemareaPath);
-            WorkflowExpression.Validate(__workflow_workItemareaPath, nameof(workItemareaPath), required: false);
-            var __workflow_workItemlinkURL = workItemlinkURL == null ? null : WorkflowExpression.Compile(workItemlinkURL);
-            WorkflowExpression.Validate(__workflow_workItemlinkURL, nameof(workItemlinkURL), required: false);
-            var __workflow_workItemlinkType = workItemlinkType == null ? null : WorkflowExpression.Compile(workItemlinkType);
-            WorkflowExpression.Validate(__workflow_workItemlinkType, nameof(workItemlinkType), required: false);
-            var __workflow_workItemlinkComment = workItemlinkComment == null ? null : WorkflowExpression.Compile(workItemlinkComment);
-            WorkflowExpression.Validate(__workflow_workItemlinkComment, nameof(workItemlinkComment), required: false);
-            var __workflow_workItemdynamicFields = workItemdynamicFields == null ? null : WorkflowExpression.Compile(workItemdynamicFields);
-            WorkflowExpression.Validate(__workflow_workItemdynamicFields, nameof(workItemdynamicFields), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_workItemtitle = WorkflowExpression.Compile(workItemtitle, nameof(workItemtitle), required: false);
+            var __workflow_workItemdescription = WorkflowExpression.Compile(workItemdescription, nameof(workItemdescription), required: false);
+            var __workflow_workItempriority = WorkflowExpression.Compile(workItempriority, nameof(workItempriority), required: false);
+            var __workflow_workItemiterationPath = WorkflowExpression.Compile(workItemiterationPath, nameof(workItemiterationPath), required: false);
+            var __workflow_workItemareaPath = WorkflowExpression.Compile(workItemareaPath, nameof(workItemareaPath), required: false);
+            var __workflow_workItemlinkURL = WorkflowExpression.Compile(workItemlinkURL, nameof(workItemlinkURL), required: false);
+            var __workflow_workItemlinkType = WorkflowExpression.Compile(workItemlinkType, nameof(workItemlinkType), required: false);
+            var __workflow_workItemlinkComment = WorkflowExpression.Compile(workItemlinkComment, nameof(workItemlinkComment), required: false);
+            var __workflow_workItemdynamicFields = WorkflowExpression.Compile(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
             return new DeferredBodyAction<PatchWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -414,14 +369,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> GetWorkItemChildren(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> id, Expression<Func<string>> workItemType = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_workItemType = workItemType == null ? null : WorkflowExpression.Compile(workItemType);
-            WorkflowExpression.Validate(__workflow_workItemType, nameof(workItemType), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_workItemType = WorkflowExpression.Compile(workItemType, nameof(workItemType), required: false);
             return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -439,32 +390,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<PatchWorkItemResponse> CreateWorkItem(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<string>> workItemtitle, Expression<Func<bool>> shouldReturnAllFields = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: true);
-            var __workflow_workItemtitle = workItemtitle == null ? null : WorkflowExpression.Compile(workItemtitle);
-            WorkflowExpression.Validate(__workflow_workItemtitle, nameof(workItemtitle), required: true);
-            var __workflow_shouldReturnAllFields = shouldReturnAllFields == null ? null : WorkflowExpression.Compile(shouldReturnAllFields);
-            WorkflowExpression.Validate(__workflow_shouldReturnAllFields, nameof(shouldReturnAllFields), required: false);
-            var __workflow_workItemdescription = workItemdescription == null ? null : WorkflowExpression.Compile(workItemdescription);
-            WorkflowExpression.Validate(__workflow_workItemdescription, nameof(workItemdescription), required: false);
-            var __workflow_workItempriority = workItempriority == null ? null : WorkflowExpression.Compile(workItempriority);
-            WorkflowExpression.Validate(__workflow_workItempriority, nameof(workItempriority), required: false);
-            var __workflow_workItemiterationPath = workItemiterationPath == null ? null : WorkflowExpression.Compile(workItemiterationPath);
-            WorkflowExpression.Validate(__workflow_workItemiterationPath, nameof(workItemiterationPath), required: false);
-            var __workflow_workItemareaPath = workItemareaPath == null ? null : WorkflowExpression.Compile(workItemareaPath);
-            WorkflowExpression.Validate(__workflow_workItemareaPath, nameof(workItemareaPath), required: false);
-            var __workflow_workItemlinkURL = workItemlinkURL == null ? null : WorkflowExpression.Compile(workItemlinkURL);
-            WorkflowExpression.Validate(__workflow_workItemlinkURL, nameof(workItemlinkURL), required: false);
-            var __workflow_workItemlinkType = workItemlinkType == null ? null : WorkflowExpression.Compile(workItemlinkType);
-            WorkflowExpression.Validate(__workflow_workItemlinkType, nameof(workItemlinkType), required: false);
-            var __workflow_workItemlinkComment = workItemlinkComment == null ? null : WorkflowExpression.Compile(workItemlinkComment);
-            WorkflowExpression.Validate(__workflow_workItemlinkComment, nameof(workItemlinkComment), required: false);
-            var __workflow_workItemdynamicFields = workItemdynamicFields == null ? null : WorkflowExpression.Compile(workItemdynamicFields);
-            WorkflowExpression.Validate(__workflow_workItemdynamicFields, nameof(workItemdynamicFields), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: true);
+            var __workflow_workItemtitle = WorkflowExpression.Compile(workItemtitle, nameof(workItemtitle), required: true);
+            var __workflow_shouldReturnAllFields = WorkflowExpression.Compile(shouldReturnAllFields, nameof(shouldReturnAllFields), required: false);
+            var __workflow_workItemdescription = WorkflowExpression.Compile(workItemdescription, nameof(workItemdescription), required: false);
+            var __workflow_workItempriority = WorkflowExpression.Compile(workItempriority, nameof(workItempriority), required: false);
+            var __workflow_workItemiterationPath = WorkflowExpression.Compile(workItemiterationPath, nameof(workItemiterationPath), required: false);
+            var __workflow_workItemareaPath = WorkflowExpression.Compile(workItemareaPath, nameof(workItemareaPath), required: false);
+            var __workflow_workItemlinkURL = WorkflowExpression.Compile(workItemlinkURL, nameof(workItemlinkURL), required: false);
+            var __workflow_workItemlinkType = WorkflowExpression.Compile(workItemlinkType, nameof(workItemlinkType), required: false);
+            var __workflow_workItemlinkComment = WorkflowExpression.Compile(workItemlinkComment, nameof(workItemlinkComment), required: false);
+            var __workflow_workItemdynamicFields = WorkflowExpression.Compile(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
             return new DeferredBodyAction<PatchWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems/${1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_type, 1));
@@ -545,10 +483,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/queries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -562,12 +498,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_folderPath = folderPath == null ? null : WorkflowExpression.Compile(folderPath);
-            WorkflowExpression.Validate(__workflow_folderPath, nameof(folderPath), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_folderPath = WorkflowExpression.Compile(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/queriesInFolder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -582,14 +515,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> workItemIds, Expression<Func<string>> workItemType = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_workItemIds = workItemIds == null ? null : WorkflowExpression.Compile(workItemIds);
-            WorkflowExpression.Validate(__workflow_workItemIds, nameof(workItemIds), required: true);
-            var __workflow_workItemType = workItemType == null ? null : WorkflowExpression.Compile(workItemType);
-            WorkflowExpression.Validate(__workflow_workItemType, nameof(workItemType), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_workItemIds = WorkflowExpression.Compile(workItemIds, nameof(workItemIds), required: true);
+            var __workflow_workItemType = WorkflowExpression.Compile(workItemType, nameof(workItemType), required: false);
             return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -607,10 +536,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Pipeline> ListPipelines(Expression<Func<string>> account, Expression<Func<string>> project)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyAction<Pipeline>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -624,12 +551,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<Run> ListPipelineRuns(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> pipelineId)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_pipelineId = pipelineId == null ? null : WorkflowExpression.Compile(pipelineId);
-            WorkflowExpression.Validate(__workflow_pipelineId, nameof(pipelineId), required: true);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_pipelineId = WorkflowExpression.Compile(pipelineId, nameof(pipelineId), required: true);
             return new DeferredBodyAction<Run>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_pipelineId, 1));
@@ -643,16 +567,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
         public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId, Expression<Func<int>> workItemsCount = null, Expression<Func<bool>> throwIfQueryChanged = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_queryId = queryId == null ? null : WorkflowExpression.Compile(queryId);
-            WorkflowExpression.Validate(__workflow_queryId, nameof(queryId), required: true);
-            var __workflow_workItemsCount = workItemsCount == null ? null : WorkflowExpression.Compile(workItemsCount);
-            WorkflowExpression.Validate(__workflow_workItemsCount, nameof(workItemsCount), required: false);
-            var __workflow_throwIfQueryChanged = throwIfQueryChanged == null ? null : WorkflowExpression.Compile(throwIfQueryChanged);
-            WorkflowExpression.Validate(__workflow_throwIfQueryChanged, nameof(throwIfQueryChanged), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_queryId = WorkflowExpression.Compile(queryId, nameof(queryId), required: true);
+            var __workflow_workItemsCount = WorkflowExpression.Compile(workItemsCount, nameof(workItemsCount), required: false);
+            var __workflow_throwIfQueryChanged = WorkflowExpression.Compile(throwIfQueryChanged, nameof(throwIfQueryChanged), required: false);
             return new DeferredBodyAction<VstsListQueryResultWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_queryId, 1));
@@ -673,14 +592,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     {
         public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<resultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_resultFilter = resultFilter == null ? null : WorkflowExpression.Compile(resultFilter);
-            WorkflowExpression.Validate(__workflow_resultFilter, nameof(resultFilter), required: false);
-            var __workflow_definitions = definitions == null ? null : WorkflowExpression.Compile(definitions);
-            WorkflowExpression.Validate(__workflow_definitions, nameof(definitions), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_resultFilter = WorkflowExpression.Compile(resultFilter, nameof(resultFilter), required: false);
+            var __workflow_definitions = WorkflowExpression.Compile(definitions, nameof(definitions), required: false);
             return new DeferredBodyTrigger<VstsListBuildResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/buildcompleted_trigger/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -697,14 +612,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> refName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_repository = repository == null ? null : WorkflowExpression.Compile(repository);
-            WorkflowExpression.Validate(__workflow_repository, nameof(repository), required: true);
-            var __workflow_refName = refName == null ? null : WorkflowExpression.Compile(refName);
-            WorkflowExpression.Validate(__workflow_refName, nameof(refName), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_repository = WorkflowExpression.Compile(repository, nameof(repository), required: true);
+            var __workflow_refName = WorkflowExpression.Compile(refName, nameof(refName), required: false);
             return new DeferredBodyTrigger<VstsListGitPush>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_repository, 1));
@@ -719,16 +630,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_repository = repository == null ? null : WorkflowExpression.Compile(repository);
-            WorkflowExpression.Validate(__workflow_repository, nameof(repository), required: true);
-            var __workflow_sourceRefName = sourceRefName == null ? null : WorkflowExpression.Compile(sourceRefName);
-            WorkflowExpression.Validate(__workflow_sourceRefName, nameof(sourceRefName), required: false);
-            var __workflow_targetRefName = targetRefName == null ? null : WorkflowExpression.Compile(targetRefName);
-            WorkflowExpression.Validate(__workflow_targetRefName, nameof(targetRefName), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_repository = WorkflowExpression.Compile(repository, nameof(repository), required: true);
+            var __workflow_sourceRefName = WorkflowExpression.Compile(sourceRefName, nameof(sourceRefName), required: false);
+            var __workflow_targetRefName = WorkflowExpression.Compile(targetRefName, nameof(targetRefName), required: false);
             return new DeferredBodyTrigger<VstsListGitPullRequest>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_repository, 1));
@@ -745,16 +651,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_repository = repository == null ? null : WorkflowExpression.Compile(repository);
-            WorkflowExpression.Validate(__workflow_repository, nameof(repository), required: true);
-            var __workflow_sourceRefName = sourceRefName == null ? null : WorkflowExpression.Compile(sourceRefName);
-            WorkflowExpression.Validate(__workflow_sourceRefName, nameof(sourceRefName), required: false);
-            var __workflow_targetRefName = targetRefName == null ? null : WorkflowExpression.Compile(targetRefName);
-            WorkflowExpression.Validate(__workflow_targetRefName, nameof(targetRefName), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_repository = WorkflowExpression.Compile(repository, nameof(repository), required: true);
+            var __workflow_sourceRefName = WorkflowExpression.Compile(sourceRefName, nameof(sourceRefName), required: false);
+            var __workflow_targetRefName = WorkflowExpression.Compile(targetRefName, nameof(targetRefName), required: false);
             return new DeferredBodyTrigger<VstsListGitPullRequest>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_repository, 1));
@@ -771,14 +672,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> author = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_team = team == null ? null : WorkflowExpression.Compile(team);
-            WorkflowExpression.Validate(__workflow_team, nameof(team), required: false);
-            var __workflow_author = author == null ? null : WorkflowExpression.Compile(author);
-            WorkflowExpression.Validate(__workflow_author, nameof(author), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
+            var __workflow_author = WorkflowExpression.Compile(author, nameof(author), required: false);
             return new DeferredBodyTrigger<VstsListTfvcChangeset>(() =>
             {
                 var apiCallPath = "/tfvccheckin_trigger/_apis/tfvc/changesets";
@@ -796,28 +693,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_team = team == null ? null : WorkflowExpression.Compile(team);
-            WorkflowExpression.Validate(__workflow_team, nameof(team), required: true);
-            var __workflow_wiqlSystemAssignedTo = wiqlSystemAssignedTo == null ? null : WorkflowExpression.Compile(wiqlSystemAssignedTo);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: true);
-            var __workflow_wiqlSystemWorkItemType = wiqlSystemWorkItemType == null ? null : WorkflowExpression.Compile(wiqlSystemWorkItemType);
-            WorkflowExpression.Validate(__workflow_wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            var __workflow_wiqlSystemAreaPath = wiqlSystemAreaPath == null ? null : WorkflowExpression.Compile(wiqlSystemAreaPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            var __workflow_areaPathComparison = areaPathComparison == null ? null : WorkflowExpression.Compile(areaPathComparison);
-            WorkflowExpression.Validate(__workflow_areaPathComparison, nameof(areaPathComparison), required: false);
-            var __workflow_wiqlSystemIterationPath = wiqlSystemIterationPath == null ? null : WorkflowExpression.Compile(wiqlSystemIterationPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            var __workflow_iterationPathComparison = iterationPathComparison == null ? null : WorkflowExpression.Compile(iterationPathComparison);
-            WorkflowExpression.Validate(__workflow_iterationPathComparison, nameof(iterationPathComparison), required: false);
-            var __workflow_wiqlMicrosoftVSTSCommonPriority = wiqlMicrosoftVSTSCommonPriority == null ? null : WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority);
-            WorkflowExpression.Validate(__workflow_wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            var __workflow_wiqlSystemCreatedBy = wiqlSystemCreatedBy == null ? null : WorkflowExpression.Compile(wiqlSystemCreatedBy);
-            WorkflowExpression.Validate(__workflow_wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: true);
+            var __workflow_wiqlSystemAssignedTo = WorkflowExpression.Compile(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: true);
+            var __workflow_wiqlSystemWorkItemType = WorkflowExpression.Compile(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            var __workflow_wiqlSystemAreaPath = WorkflowExpression.Compile(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            var __workflow_areaPathComparison = WorkflowExpression.Compile(areaPathComparison, nameof(areaPathComparison), required: false);
+            var __workflow_wiqlSystemIterationPath = WorkflowExpression.Compile(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -848,30 +734,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_team = team == null ? null : WorkflowExpression.Compile(team);
-            WorkflowExpression.Validate(__workflow_team, nameof(team), required: false);
-            var __workflow_wiqlSystemAssignedTo = wiqlSystemAssignedTo == null ? null : WorkflowExpression.Compile(wiqlSystemAssignedTo);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
-            var __workflow_wiqlSystemWorkItemType = wiqlSystemWorkItemType == null ? null : WorkflowExpression.Compile(wiqlSystemWorkItemType);
-            WorkflowExpression.Validate(__workflow_wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            var __workflow_closedState = closedState == null ? null : WorkflowExpression.Compile(closedState);
-            WorkflowExpression.Validate(__workflow_closedState, nameof(closedState), required: false);
-            var __workflow_wiqlSystemAreaPath = wiqlSystemAreaPath == null ? null : WorkflowExpression.Compile(wiqlSystemAreaPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            var __workflow_areaPathComparison = areaPathComparison == null ? null : WorkflowExpression.Compile(areaPathComparison);
-            WorkflowExpression.Validate(__workflow_areaPathComparison, nameof(areaPathComparison), required: false);
-            var __workflow_wiqlSystemIterationPath = wiqlSystemIterationPath == null ? null : WorkflowExpression.Compile(wiqlSystemIterationPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            var __workflow_iterationPathComparison = iterationPathComparison == null ? null : WorkflowExpression.Compile(iterationPathComparison);
-            WorkflowExpression.Validate(__workflow_iterationPathComparison, nameof(iterationPathComparison), required: false);
-            var __workflow_wiqlMicrosoftVSTSCommonPriority = wiqlMicrosoftVSTSCommonPriority == null ? null : WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority);
-            WorkflowExpression.Validate(__workflow_wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            var __workflow_wiqlSystemCreatedBy = wiqlSystemCreatedBy == null ? null : WorkflowExpression.Compile(wiqlSystemCreatedBy);
-            WorkflowExpression.Validate(__workflow_wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
+            var __workflow_wiqlSystemAssignedTo = WorkflowExpression.Compile(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
+            var __workflow_wiqlSystemWorkItemType = WorkflowExpression.Compile(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            var __workflow_closedState = WorkflowExpression.Compile(closedState, nameof(closedState), required: false);
+            var __workflow_wiqlSystemAreaPath = WorkflowExpression.Compile(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            var __workflow_areaPathComparison = WorkflowExpression.Compile(areaPathComparison, nameof(areaPathComparison), required: false);
+            var __workflow_wiqlSystemIterationPath = WorkflowExpression.Compile(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -908,28 +782,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_team = team == null ? null : WorkflowExpression.Compile(team);
-            WorkflowExpression.Validate(__workflow_team, nameof(team), required: false);
-            var __workflow_wiqlSystemAssignedTo = wiqlSystemAssignedTo == null ? null : WorkflowExpression.Compile(wiqlSystemAssignedTo);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
-            var __workflow_wiqlSystemWorkItemType = wiqlSystemWorkItemType == null ? null : WorkflowExpression.Compile(wiqlSystemWorkItemType);
-            WorkflowExpression.Validate(__workflow_wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            var __workflow_wiqlSystemAreaPath = wiqlSystemAreaPath == null ? null : WorkflowExpression.Compile(wiqlSystemAreaPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            var __workflow_areaPathComparison = areaPathComparison == null ? null : WorkflowExpression.Compile(areaPathComparison);
-            WorkflowExpression.Validate(__workflow_areaPathComparison, nameof(areaPathComparison), required: false);
-            var __workflow_wiqlSystemIterationPath = wiqlSystemIterationPath == null ? null : WorkflowExpression.Compile(wiqlSystemIterationPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            var __workflow_iterationPathComparison = iterationPathComparison == null ? null : WorkflowExpression.Compile(iterationPathComparison);
-            WorkflowExpression.Validate(__workflow_iterationPathComparison, nameof(iterationPathComparison), required: false);
-            var __workflow_wiqlMicrosoftVSTSCommonPriority = wiqlMicrosoftVSTSCommonPriority == null ? null : WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority);
-            WorkflowExpression.Validate(__workflow_wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            var __workflow_wiqlSystemCreatedBy = wiqlSystemCreatedBy == null ? null : WorkflowExpression.Compile(wiqlSystemCreatedBy);
-            WorkflowExpression.Validate(__workflow_wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
+            var __workflow_wiqlSystemAssignedTo = WorkflowExpression.Compile(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
+            var __workflow_wiqlSystemWorkItemType = WorkflowExpression.Compile(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            var __workflow_wiqlSystemAreaPath = WorkflowExpression.Compile(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            var __workflow_areaPathComparison = WorkflowExpression.Compile(areaPathComparison, nameof(areaPathComparison), required: false);
+            var __workflow_wiqlSystemIterationPath = WorkflowExpression.Compile(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));
@@ -963,28 +826,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 
         public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_account = account == null ? null : WorkflowExpression.Compile(account);
-            WorkflowExpression.Validate(__workflow_account, nameof(account), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
-            var __workflow_team = team == null ? null : WorkflowExpression.Compile(team);
-            WorkflowExpression.Validate(__workflow_team, nameof(team), required: false);
-            var __workflow_wiqlSystemAssignedTo = wiqlSystemAssignedTo == null ? null : WorkflowExpression.Compile(wiqlSystemAssignedTo);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
-            var __workflow_wiqlSystemWorkItemType = wiqlSystemWorkItemType == null ? null : WorkflowExpression.Compile(wiqlSystemWorkItemType);
-            WorkflowExpression.Validate(__workflow_wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
-            var __workflow_wiqlSystemAreaPath = wiqlSystemAreaPath == null ? null : WorkflowExpression.Compile(wiqlSystemAreaPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
-            var __workflow_areaPathComparison = areaPathComparison == null ? null : WorkflowExpression.Compile(areaPathComparison);
-            WorkflowExpression.Validate(__workflow_areaPathComparison, nameof(areaPathComparison), required: false);
-            var __workflow_wiqlSystemIterationPath = wiqlSystemIterationPath == null ? null : WorkflowExpression.Compile(wiqlSystemIterationPath);
-            WorkflowExpression.Validate(__workflow_wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
-            var __workflow_iterationPathComparison = iterationPathComparison == null ? null : WorkflowExpression.Compile(iterationPathComparison);
-            WorkflowExpression.Validate(__workflow_iterationPathComparison, nameof(iterationPathComparison), required: false);
-            var __workflow_wiqlMicrosoftVSTSCommonPriority = wiqlMicrosoftVSTSCommonPriority == null ? null : WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority);
-            WorkflowExpression.Validate(__workflow_wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
-            var __workflow_wiqlSystemCreatedBy = wiqlSystemCreatedBy == null ? null : WorkflowExpression.Compile(wiqlSystemCreatedBy);
-            WorkflowExpression.Validate(__workflow_wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            var __workflow_account = WorkflowExpression.Compile(account, nameof(account), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
+            var __workflow_wiqlSystemAssignedTo = WorkflowExpression.Compile(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
+            var __workflow_wiqlSystemWorkItemType = WorkflowExpression.Compile(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            var __workflow_wiqlSystemAreaPath = WorkflowExpression.Compile(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            var __workflow_areaPathComparison = WorkflowExpression.Compile(areaPathComparison, nameof(areaPathComparison), required: false);
+            var __workflow_wiqlSystemIterationPath = WorkflowExpression.Compile(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            var __workflow_iterationPathComparison = WorkflowExpression.Compile(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            var __workflow_wiqlMicrosoftVSTSCommonPriority = WorkflowExpression.Compile(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            var __workflow_wiqlSystemCreatedBy = WorkflowExpression.Compile(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
             return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(__workflow_project, 1));

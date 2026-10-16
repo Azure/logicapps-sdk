@@ -15,20 +15,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         public IBodyWorkflowAction<CreateJobOutput> CreateJob(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> runbookName, Expression<Func<bool>> waitForJob = null, Expression<Func<object>> hybridAutomationWorkerGroup = null, Expression<Func<object>> runbookParameters = null)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroup = resourceGroup == null ? null : WorkflowExpression.Compile(resourceGroup);
-            WorkflowExpression.Validate(__workflow_resourceGroup, nameof(resourceGroup), required: true);
-            var __workflow_automationAccount = automationAccount == null ? null : WorkflowExpression.Compile(automationAccount);
-            WorkflowExpression.Validate(__workflow_automationAccount, nameof(automationAccount), required: true);
-            var __workflow_runbookName = runbookName == null ? null : WorkflowExpression.Compile(runbookName);
-            WorkflowExpression.Validate(__workflow_runbookName, nameof(runbookName), required: true);
-            var __workflow_waitForJob = waitForJob == null ? null : WorkflowExpression.Compile(waitForJob);
-            WorkflowExpression.Validate(__workflow_waitForJob, nameof(waitForJob), required: false);
-            var __workflow_hybridAutomationWorkerGroup = hybridAutomationWorkerGroup == null ? null : WorkflowExpression.Compile(hybridAutomationWorkerGroup);
-            WorkflowExpression.Validate(__workflow_hybridAutomationWorkerGroup, nameof(hybridAutomationWorkerGroup), required: false);
-            var __workflow_runbookParameters = runbookParameters == null ? null : WorkflowExpression.Compile(runbookParameters);
-            WorkflowExpression.Validate(__workflow_runbookParameters, nameof(runbookParameters), required: false);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroup = WorkflowExpression.Compile(resourceGroup, nameof(resourceGroup), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_runbookName = WorkflowExpression.Compile(runbookName, nameof(runbookName), required: true);
+            var __workflow_waitForJob = WorkflowExpression.Compile(waitForJob, nameof(waitForJob), required: false);
+            var __workflow_hybridAutomationWorkerGroup = WorkflowExpression.Compile(hybridAutomationWorkerGroup, nameof(hybridAutomationWorkerGroup), required: false);
+            var __workflow_runbookParameters = WorkflowExpression.Compile(runbookParameters, nameof(runbookParameters), required: false);
             return new DeferredBodyAction<CreateJobOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -67,14 +60,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         public IBodyWorkflowAction<GetJobStatusOutput> GetJobStatus(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> jobId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroup = resourceGroup == null ? null : WorkflowExpression.Compile(resourceGroup);
-            WorkflowExpression.Validate(__workflow_resourceGroup, nameof(resourceGroup), required: true);
-            var __workflow_automationAccount = automationAccount == null ? null : WorkflowExpression.Compile(automationAccount);
-            WorkflowExpression.Validate(__workflow_automationAccount, nameof(automationAccount), required: true);
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroup = WorkflowExpression.Compile(resourceGroup, nameof(resourceGroup), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<GetJobStatusOutput>(() =>
             {
                 var serviceProviderParameters = new JObject();
@@ -94,14 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
         public IBodyWorkflowAction<string> GetJobOutput(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> jobId)
         {
-            var __workflow_subscriptionId = subscriptionId == null ? null : WorkflowExpression.Compile(subscriptionId);
-            WorkflowExpression.Validate(__workflow_subscriptionId, nameof(subscriptionId), required: true);
-            var __workflow_resourceGroup = resourceGroup == null ? null : WorkflowExpression.Compile(resourceGroup);
-            WorkflowExpression.Validate(__workflow_resourceGroup, nameof(resourceGroup), required: true);
-            var __workflow_automationAccount = automationAccount == null ? null : WorkflowExpression.Compile(automationAccount);
-            WorkflowExpression.Validate(__workflow_automationAccount, nameof(automationAccount), required: true);
-            var __workflow_jobId = jobId == null ? null : WorkflowExpression.Compile(jobId);
-            WorkflowExpression.Validate(__workflow_jobId, nameof(jobId), required: true);
+            var __workflow_subscriptionId = WorkflowExpression.Compile(subscriptionId, nameof(subscriptionId), required: true);
+            var __workflow_resourceGroup = WorkflowExpression.Compile(resourceGroup, nameof(resourceGroup), required: true);
+            var __workflow_automationAccount = WorkflowExpression.Compile(automationAccount, nameof(automationAccount), required: true);
+            var __workflow_jobId = WorkflowExpression.Compile(jobId, nameof(jobId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var serviceProviderParameters = new JObject();

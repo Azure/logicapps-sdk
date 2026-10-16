@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateAFolderResponse> CreateAFolder(Expression<Func<string>> spaceId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyfolderName = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodyoverrideStatuses = null, Expression<Func<bool>> bodyhiddenFolder = null, Expression<Func<string>> bodytaskCount = null, Expression<Func<bool>> bodyarchived = null, Expression<Func<JToken[]>> bodystatuses = null, Expression<Func<string>> bodypermissionLevel = null)
         {
-            var __workflow_spaceId = spaceId == null ? null : WorkflowExpression.Compile(spaceId);
-            WorkflowExpression.Validate(__workflow_spaceId, nameof(spaceId), required: true);
-            var __workflow_bodyid = bodyid == null ? null : WorkflowExpression.Compile(bodyid);
-            WorkflowExpression.Validate(__workflow_bodyid, nameof(bodyid), required: false);
-            var __workflow_bodyfolderName = bodyfolderName == null ? null : WorkflowExpression.Compile(bodyfolderName);
-            WorkflowExpression.Validate(__workflow_bodyfolderName, nameof(bodyfolderName), required: false);
-            var __workflow_bodyorderIndex = bodyorderIndex == null ? null : WorkflowExpression.Compile(bodyorderIndex);
-            WorkflowExpression.Validate(__workflow_bodyorderIndex, nameof(bodyorderIndex), required: false);
-            var __workflow_bodyoverrideStatuses = bodyoverrideStatuses == null ? null : WorkflowExpression.Compile(bodyoverrideStatuses);
-            WorkflowExpression.Validate(__workflow_bodyoverrideStatuses, nameof(bodyoverrideStatuses), required: false);
-            var __workflow_bodyhiddenFolder = bodyhiddenFolder == null ? null : WorkflowExpression.Compile(bodyhiddenFolder);
-            WorkflowExpression.Validate(__workflow_bodyhiddenFolder, nameof(bodyhiddenFolder), required: false);
-            var __workflow_bodytaskCount = bodytaskCount == null ? null : WorkflowExpression.Compile(bodytaskCount);
-            WorkflowExpression.Validate(__workflow_bodytaskCount, nameof(bodytaskCount), required: false);
-            var __workflow_bodyarchived = bodyarchived == null ? null : WorkflowExpression.Compile(bodyarchived);
-            WorkflowExpression.Validate(__workflow_bodyarchived, nameof(bodyarchived), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
-            var __workflow_bodypermissionLevel = bodypermissionLevel == null ? null : WorkflowExpression.Compile(bodypermissionLevel);
-            WorkflowExpression.Validate(__workflow_bodypermissionLevel, nameof(bodypermissionLevel), required: false);
+            var __workflow_spaceId = WorkflowExpression.Compile(spaceId, nameof(spaceId), required: true);
+            var __workflow_bodyid = WorkflowExpression.Compile(bodyid, nameof(bodyid), required: false);
+            var __workflow_bodyfolderName = WorkflowExpression.Compile(bodyfolderName, nameof(bodyfolderName), required: false);
+            var __workflow_bodyorderIndex = WorkflowExpression.Compile(bodyorderIndex, nameof(bodyorderIndex), required: false);
+            var __workflow_bodyoverrideStatuses = WorkflowExpression.Compile(bodyoverrideStatuses, nameof(bodyoverrideStatuses), required: false);
+            var __workflow_bodyhiddenFolder = WorkflowExpression.Compile(bodyhiddenFolder, nameof(bodyhiddenFolder), required: false);
+            var __workflow_bodytaskCount = WorkflowExpression.Compile(bodytaskCount, nameof(bodytaskCount), required: false);
+            var __workflow_bodyarchived = WorkflowExpression.Compile(bodyarchived, nameof(bodyarchived), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_bodypermissionLevel = WorkflowExpression.Compile(bodypermissionLevel, nameof(bodypermissionLevel), required: false);
             return new DeferredBodyAction<CreateAFolderResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/space/{0}/folder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_spaceId, 1));
@@ -123,36 +113,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace(Expression<Func<string>> teamId, Expression<Func<string>> bodyspaceName = null, Expression<Func<bool>> bodymultipleAssignees = null, Expression<Func<bool>> bodyfeaturesdueDatesdueDates = null, Expression<Func<bool>> bodyfeaturesdueDatesstartDate = null, Expression<Func<bool>> bodyfeaturesdueDatesremapDueDate = null, Expression<Func<bool>> bodyfeaturesdueDatesremapClosedDueDate = null, Expression<Func<bool>> bodyfeaturestimeTrackingtimeTracking = null, Expression<Func<bool>> bodyfeaturestagstags = null, Expression<Func<bool>> bodyfeaturestimeEstimatestimeEstimates = null, Expression<Func<bool>> bodyfeatureschecklistschecklist = null, Expression<Func<bool>> bodyfeaturescustomFieldscustomFields = null, Expression<Func<bool>> bodyfeaturesremapDependenciesremapDependencies = null, Expression<Func<bool>> bodyfeaturesdependencyWarningdependencyWarning = null, Expression<Func<bool>> bodyfeaturesportfoliosportfolios = null)
         {
-            var __workflow_teamId = teamId == null ? null : WorkflowExpression.Compile(teamId);
-            WorkflowExpression.Validate(__workflow_teamId, nameof(teamId), required: true);
-            var __workflow_bodyspaceName = bodyspaceName == null ? null : WorkflowExpression.Compile(bodyspaceName);
-            WorkflowExpression.Validate(__workflow_bodyspaceName, nameof(bodyspaceName), required: false);
-            var __workflow_bodymultipleAssignees = bodymultipleAssignees == null ? null : WorkflowExpression.Compile(bodymultipleAssignees);
-            WorkflowExpression.Validate(__workflow_bodymultipleAssignees, nameof(bodymultipleAssignees), required: false);
-            var __workflow_bodyfeaturesdueDatesdueDates = bodyfeaturesdueDatesdueDates == null ? null : WorkflowExpression.Compile(bodyfeaturesdueDatesdueDates);
-            WorkflowExpression.Validate(__workflow_bodyfeaturesdueDatesdueDates, nameof(bodyfeaturesdueDatesdueDates), required: false);
-            var __workflow_bodyfeaturesdueDatesstartDate = bodyfeaturesdueDatesstartDate == null ? null : WorkflowExpression.Compile(bodyfeaturesdueDatesstartDate);
-            WorkflowExpression.Validate(__workflow_bodyfeaturesdueDatesstartDate, nameof(bodyfeaturesdueDatesstartDate), required: false);
-            var __workflow_bodyfeaturesdueDatesremapDueDate = bodyfeaturesdueDatesremapDueDate == null ? null : WorkflowExpression.Compile(bodyfeaturesdueDatesremapDueDate);
-            WorkflowExpression.Validate(__workflow_bodyfeaturesdueDatesremapDueDate, nameof(bodyfeaturesdueDatesremapDueDate), required: false);
-            var __workflow_bodyfeaturesdueDatesremapClosedDueDate = bodyfeaturesdueDatesremapClosedDueDate == null ? null : WorkflowExpression.Compile(bodyfeaturesdueDatesremapClosedDueDate);
-            WorkflowExpression.Validate(__workflow_bodyfeaturesdueDatesremapClosedDueDate, nameof(bodyfeaturesdueDatesremapClosedDueDate), required: false);
-            var __workflow_bodyfeaturestimeTrackingtimeTracking = bodyfeaturestimeTrackingtimeTracking == null ? null : WorkflowExpression.Compile(bodyfeaturestimeTrackingtimeTracking);
-            WorkflowExpression.Validate(__workflow_bodyfeaturestimeTrackingtimeTracking, nameof(bodyfeaturestimeTrackingtimeTracking), required: false);
-            var __workflow_bodyfeaturestagstags = bodyfeaturestagstags == null ? null : WorkflowExpression.Compile(bodyfeaturestagstags);
-            WorkflowExpression.Validate(__workflow_bodyfeaturestagstags, nameof(bodyfeaturestagstags), required: false);
-            var __workflow_bodyfeaturestimeEstimatestimeEstimates = bodyfeaturestimeEstimatestimeEstimates == null ? null : WorkflowExpression.Compile(bodyfeaturestimeEstimatestimeEstimates);
-            WorkflowExpression.Validate(__workflow_bodyfeaturestimeEstimatestimeEstimates, nameof(bodyfeaturestimeEstimatestimeEstimates), required: false);
-            var __workflow_bodyfeatureschecklistschecklist = bodyfeatureschecklistschecklist == null ? null : WorkflowExpression.Compile(bodyfeatureschecklistschecklist);
-            WorkflowExpression.Validate(__workflow_bodyfeatureschecklistschecklist, nameof(bodyfeatureschecklistschecklist), required: false);
-            var __workflow_bodyfeaturescustomFieldscustomFields = bodyfeaturescustomFieldscustomFields == null ? null : WorkflowExpression.Compile(bodyfeaturescustomFieldscustomFields);
-            WorkflowExpression.Validate(__workflow_bodyfeaturescustomFieldscustomFields, nameof(bodyfeaturescustomFieldscustomFields), required: false);
-            var __workflow_bodyfeaturesremapDependenciesremapDependencies = bodyfeaturesremapDependenciesremapDependencies == null ? null : WorkflowExpression.Compile(bodyfeaturesremapDependenciesremapDependencies);
-            WorkflowExpression.Validate(__workflow_bodyfeaturesremapDependenciesremapDependencies, nameof(bodyfeaturesremapDependenciesremapDependencies), required: false);
-            var __workflow_bodyfeaturesdependencyWarningdependencyWarning = bodyfeaturesdependencyWarningdependencyWarning == null ? null : WorkflowExpression.Compile(bodyfeaturesdependencyWarningdependencyWarning);
-            WorkflowExpression.Validate(__workflow_bodyfeaturesdependencyWarningdependencyWarning, nameof(bodyfeaturesdependencyWarningdependencyWarning), required: false);
-            var __workflow_bodyfeaturesportfoliosportfolios = bodyfeaturesportfoliosportfolios == null ? null : WorkflowExpression.Compile(bodyfeaturesportfoliosportfolios);
-            WorkflowExpression.Validate(__workflow_bodyfeaturesportfoliosportfolios, nameof(bodyfeaturesportfoliosportfolios), required: false);
+            var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: true);
+            var __workflow_bodyspaceName = WorkflowExpression.Compile(bodyspaceName, nameof(bodyspaceName), required: false);
+            var __workflow_bodymultipleAssignees = WorkflowExpression.Compile(bodymultipleAssignees, nameof(bodymultipleAssignees), required: false);
+            var __workflow_bodyfeaturesdueDatesdueDates = WorkflowExpression.Compile(bodyfeaturesdueDatesdueDates, nameof(bodyfeaturesdueDatesdueDates), required: false);
+            var __workflow_bodyfeaturesdueDatesstartDate = WorkflowExpression.Compile(bodyfeaturesdueDatesstartDate, nameof(bodyfeaturesdueDatesstartDate), required: false);
+            var __workflow_bodyfeaturesdueDatesremapDueDate = WorkflowExpression.Compile(bodyfeaturesdueDatesremapDueDate, nameof(bodyfeaturesdueDatesremapDueDate), required: false);
+            var __workflow_bodyfeaturesdueDatesremapClosedDueDate = WorkflowExpression.Compile(bodyfeaturesdueDatesremapClosedDueDate, nameof(bodyfeaturesdueDatesremapClosedDueDate), required: false);
+            var __workflow_bodyfeaturestimeTrackingtimeTracking = WorkflowExpression.Compile(bodyfeaturestimeTrackingtimeTracking, nameof(bodyfeaturestimeTrackingtimeTracking), required: false);
+            var __workflow_bodyfeaturestagstags = WorkflowExpression.Compile(bodyfeaturestagstags, nameof(bodyfeaturestagstags), required: false);
+            var __workflow_bodyfeaturestimeEstimatestimeEstimates = WorkflowExpression.Compile(bodyfeaturestimeEstimatestimeEstimates, nameof(bodyfeaturestimeEstimatestimeEstimates), required: false);
+            var __workflow_bodyfeatureschecklistschecklist = WorkflowExpression.Compile(bodyfeatureschecklistschecklist, nameof(bodyfeatureschecklistschecklist), required: false);
+            var __workflow_bodyfeaturescustomFieldscustomFields = WorkflowExpression.Compile(bodyfeaturescustomFieldscustomFields, nameof(bodyfeaturescustomFieldscustomFields), required: false);
+            var __workflow_bodyfeaturesremapDependenciesremapDependencies = WorkflowExpression.Compile(bodyfeaturesremapDependenciesremapDependencies, nameof(bodyfeaturesremapDependenciesremapDependencies), required: false);
+            var __workflow_bodyfeaturesdependencyWarningdependencyWarning = WorkflowExpression.Compile(bodyfeaturesdependencyWarningdependencyWarning, nameof(bodyfeaturesdependencyWarningdependencyWarning), required: false);
+            var __workflow_bodyfeaturesportfoliosportfolios = WorkflowExpression.Compile(bodyfeaturesportfoliosportfolios, nameof(bodyfeaturesportfoliosportfolios), required: false);
             return new DeferredBodyAction<CreateSpaceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/team/{0}/space", ExpressionConverter.ConvertWithUrlEncoding(__workflow_teamId, 1));
@@ -336,16 +311,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<CreateAListResponse> CreateAList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodydueDate2 = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
         {
-            var __workflow_folderId = folderId == null ? null : WorkflowExpression.Compile(folderId);
-            WorkflowExpression.Validate(__workflow_folderId, nameof(folderId), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyorderIndex = bodyorderIndex == null ? null : WorkflowExpression.Compile(bodyorderIndex);
-            WorkflowExpression.Validate(__workflow_bodyorderIndex, nameof(bodyorderIndex), required: false);
-            var __workflow_bodydueDate2 = bodydueDate2 == null ? null : WorkflowExpression.Compile(bodydueDate2);
-            WorkflowExpression.Validate(__workflow_bodydueDate2, nameof(bodydueDate2), required: false);
-            var __workflow_bodystatuses = bodystatuses == null ? null : WorkflowExpression.Compile(bodystatuses);
-            WorkflowExpression.Validate(__workflow_bodystatuses, nameof(bodystatuses), required: false);
+            var __workflow_folderId = WorkflowExpression.Compile(folderId, nameof(folderId), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyorderIndex = WorkflowExpression.Compile(bodyorderIndex, nameof(bodyorderIndex), required: false);
+            var __workflow_bodydueDate2 = WorkflowExpression.Compile(bodydueDate2, nameof(bodydueDate2), required: false);
+            var __workflow_bodystatuses = WorkflowExpression.Compile(bodystatuses, nameof(bodystatuses), required: false);
             return new DeferredBodyAction<CreateAListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/folder/{0}/list", ExpressionConverter.ConvertWithUrlEncoding(__workflow_folderId, 1));

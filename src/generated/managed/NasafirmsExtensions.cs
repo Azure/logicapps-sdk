@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<dayRangeInput>> dayRange)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_areaCoord = areaCoord == null ? null : WorkflowExpression.Compile(areaCoord);
-            WorkflowExpression.Validate(__workflow_areaCoord, nameof(areaCoord), required: true);
-            var __workflow_dayRange = dayRange == null ? null : WorkflowExpression.Compile(dayRange);
-            WorkflowExpression.Validate(__workflow_dayRange, nameof(dayRange), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_areaCoord = WorkflowExpression.Compile(areaCoord, nameof(areaCoord), required: true);
+            var __workflow_dayRange = WorkflowExpression.Compile(dayRange, nameof(dayRange), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
@@ -31,12 +28,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IWorkflowAction GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<dayRangeInput>> dayRange)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_dayRange = dayRange == null ? null : WorkflowExpression.Compile(dayRange);
-            WorkflowExpression.Validate(__workflow_dayRange, nameof(dayRange), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_dayRange = WorkflowExpression.Compile(dayRange, nameof(dayRange), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_country, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_dayRange, 1));
@@ -49,8 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
         public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey(Expression<Func<string>> mAPKEY)
         {
-            var __workflow_mAPKEY = mAPKEY == null ? null : WorkflowExpression.Compile(mAPKEY);
-            WorkflowExpression.Validate(__workflow_mAPKEY, nameof(mAPKEY), required: true);
+            var __workflow_mAPKEY = WorkflowExpression.Compile(mAPKEY, nameof(mAPKEY), required: true);
             return new DeferredBodyAction<CheckMapKeyResponse>(() =>
             {
                 var apiCallPath = "/mapserver/mapkey_status/";

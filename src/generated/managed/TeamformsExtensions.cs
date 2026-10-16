@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<FormMeta[]> Forms(Expression<Func<string>> groupId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
             return new DeferredBodyAction<FormMeta[]>(() =>
             {
                 var apiCallPath = "/forms";
@@ -37,10 +36,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<FormSchema> Form(Expression<Func<string>> groupId, Expression<Func<string>> formId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
             return new DeferredBodyAction<FormSchema>(() =>
             {
                 var apiCallPath = "/form";
@@ -55,10 +52,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<File[]> Files(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
-            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<File[]>(() =>
             {
                 var apiCallPath = "/files";
@@ -73,10 +68,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<File> Pdf(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
-            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<File>(() =>
             {
                 var apiCallPath = "/pdf";
@@ -91,10 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<string> PdfContent(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
-            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/pdf-content";
@@ -109,12 +100,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
         public IBodyWorkflowAction<JToken> Response(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<string>> responseId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_responseId = responseId == null ? null : WorkflowExpression.Compile(responseId);
-            WorkflowExpression.Validate(__workflow_responseId, nameof(responseId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_responseId = WorkflowExpression.Compile(responseId, nameof(responseId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/response";
@@ -132,14 +120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
     {
         public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
-            var __workflow_environment = environment == null ? null : WorkflowExpression.Compile(environment);
-            WorkflowExpression.Validate(__workflow_environment, nameof(environment), required: false);
-            var __workflow_triggers = triggers == null ? null : WorkflowExpression.Compile(triggers);
-            WorkflowExpression.Validate(__workflow_triggers, nameof(triggers), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
+            var __workflow_environment = WorkflowExpression.Compile(environment, nameof(environment), required: false);
+            var __workflow_triggers = WorkflowExpression.Compile(triggers, nameof(triggers), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/response-subscription";
@@ -167,10 +151,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 
         public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/response-deletion-subscription";

@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "value">An expression for the initial value.</param>
         public IVariableWorkflowAction InitializeVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
-            var nameDescriptor = name == null ? null : WorkflowExpression.Compile(name);
-            var valueDescriptor = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(nameDescriptor, nameof(name), required: true);
-            WorkflowExpression.Validate(valueDescriptor, nameof(value), required: true);
+            var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             var typeStr = InferVariableType(typeof(T));
             return new DeferredVariableAction(nameStr, () => new InitializeVariableAction(nameStr, typeStr, ExpressionConverter.ConvertO(valueDescriptor)));
@@ -39,10 +37,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "value">An expression for the new value.</param>
         public IVariableWorkflowAction SetVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
-            var nameDescriptor = name == null ? null : WorkflowExpression.Compile(name);
-            var valueDescriptor = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(nameDescriptor, nameof(name), required: true);
-            WorkflowExpression.Validate(valueDescriptor, nameof(value), required: true);
+            var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             return new DeferredVariableAction(nameStr, () => new SetVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
@@ -55,10 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "value">An expression for the increment value.</param>
         public IVariableWorkflowAction IncrementVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
-            var nameDescriptor = name == null ? null : WorkflowExpression.Compile(name);
-            var valueDescriptor = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(nameDescriptor, nameof(name), required: true);
-            WorkflowExpression.Validate(valueDescriptor, nameof(value), required: true);
+            var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             return new DeferredVariableAction(nameStr, () => new IncrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
@@ -71,10 +65,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "value">An expression for the decrement value.</param>
         public IVariableWorkflowAction DecrementVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
-            var nameDescriptor = name == null ? null : WorkflowExpression.Compile(name);
-            var valueDescriptor = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(nameDescriptor, nameof(name), required: true);
-            WorkflowExpression.Validate(valueDescriptor, nameof(value), required: true);
+            var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             return new DeferredVariableAction(nameStr, () => new DecrementVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
@@ -86,10 +78,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "value">An expression for the string to append.</param>
         public IVariableWorkflowAction AppendToStringVariable(Expression<Func<string>> name, Expression<Func<string>> value)
         {
-            var nameDescriptor = name == null ? null : WorkflowExpression.Compile(name);
-            var valueDescriptor = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(nameDescriptor, nameof(name), required: true);
-            WorkflowExpression.Validate(valueDescriptor, nameof(value), required: true);
+            var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             return new DeferredVariableAction(nameStr, () => new AppendToStringVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }
@@ -102,10 +92,8 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name = "value">An expression for the value to append.</param>
         public IVariableWorkflowAction AppendToArrayVariable<T>(Expression<Func<string>> name, Expression<Func<T>> value)
         {
-            var nameDescriptor = name == null ? null : WorkflowExpression.Compile(name);
-            var valueDescriptor = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(nameDescriptor, nameof(name), required: true);
-            WorkflowExpression.Validate(valueDescriptor, nameof(value), required: true);
+            var nameDescriptor = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var valueDescriptor = WorkflowExpression.Compile(value, nameof(value), required: true);
             var nameStr = ExpressionConverter.LiteralName(nameDescriptor);
             return new DeferredVariableAction(nameStr, () => new AppendToArrayVariableAction(nameStr, ExpressionConverter.ConvertO(valueDescriptor)));
         }

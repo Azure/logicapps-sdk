@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<JToken> FlowGetOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
         {
-            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
-            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/flow/office365/settings";
@@ -31,10 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IWorkflowAction FlowUpdateOffice365Setting(Expression<Func<string>> actionType, Expression<Func<object>> body = null)
         {
-            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
-            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/office365/settings";
@@ -49,12 +45,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<JToken> FlowGetRequestById(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> requestId)
         {
-            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
-            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: true);
-            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
-            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flow/requests/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -69,14 +62,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<string> FlowSubmitRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> delegateUserPrincipalName = null, Expression<Func<object>> body = null)
         {
-            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
-            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: true);
-            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
-            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
-            var __workflow_delegateUserPrincipalName = delegateUserPrincipalName == null ? null : WorkflowExpression.Compile(delegateUserPrincipalName);
-            WorkflowExpression.Validate(__workflow_delegateUserPrincipalName, nameof(delegateUserPrincipalName), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
+            var __workflow_delegateUserPrincipalName = WorkflowExpression.Compile(delegateUserPrincipalName, nameof(delegateUserPrincipalName), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/flow/requests";
@@ -94,14 +83,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IWorkflowAction FlowEditRequest(Expression<Func<string>> serviceType, Expression<Func<string>> serviceId, Expression<Func<string>> id, Expression<Func<object>> body = null)
         {
-            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
-            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: true);
-            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
-            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/flow/requests";
@@ -118,20 +103,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<JToken> FlowListWorkspace(Expression<Func<string>> workspaceType = null, Expression<Func<string>> primaryContact = null, Expression<Func<string>> status = null, Expression<Func<string>> urlorIdorEmail = null, Expression<Func<string>> secondaryContact = null, Expression<Func<int>> top = null, Expression<Func<string>> nextLink = null)
         {
-            var __workflow_workspaceType = workspaceType == null ? null : WorkflowExpression.Compile(workspaceType);
-            WorkflowExpression.Validate(__workflow_workspaceType, nameof(workspaceType), required: false);
-            var __workflow_primaryContact = primaryContact == null ? null : WorkflowExpression.Compile(primaryContact);
-            WorkflowExpression.Validate(__workflow_primaryContact, nameof(primaryContact), required: false);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
-            var __workflow_urlorIdorEmail = urlorIdorEmail == null ? null : WorkflowExpression.Compile(urlorIdorEmail);
-            WorkflowExpression.Validate(__workflow_urlorIdorEmail, nameof(urlorIdorEmail), required: false);
-            var __workflow_secondaryContact = secondaryContact == null ? null : WorkflowExpression.Compile(secondaryContact);
-            WorkflowExpression.Validate(__workflow_secondaryContact, nameof(secondaryContact), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_nextLink = nextLink == null ? null : WorkflowExpression.Compile(nextLink);
-            WorkflowExpression.Validate(__workflow_nextLink, nameof(nextLink), required: false);
+            var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: false);
+            var __workflow_primaryContact = WorkflowExpression.Compile(primaryContact, nameof(primaryContact), required: false);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
+            var __workflow_urlorIdorEmail = WorkflowExpression.Compile(urlorIdorEmail, nameof(urlorIdorEmail), required: false);
+            var __workflow_secondaryContact = WorkflowExpression.Compile(secondaryContact, nameof(secondaryContact), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_nextLink = WorkflowExpression.Compile(nextLink, nameof(nextLink), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/flow/workspace";
@@ -165,12 +143,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "avepointcloudgovernance")]
         public IBodyWorkflowAction<string> FlowWorkspaceActions(Expression<Func<string>> workspaceType, Expression<Func<string>> workspaceAction, Expression<Func<object>> body = null)
         {
-            var __workflow_workspaceType = workspaceType == null ? null : WorkflowExpression.Compile(workspaceType);
-            WorkflowExpression.Validate(__workflow_workspaceType, nameof(workspaceType), required: true);
-            var __workflow_workspaceAction = workspaceAction == null ? null : WorkflowExpression.Compile(workspaceAction);
-            WorkflowExpression.Validate(__workflow_workspaceAction, nameof(workspaceAction), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_workspaceType = WorkflowExpression.Compile(workspaceType, nameof(workspaceType), required: true);
+            var __workflow_workspaceAction = WorkflowExpression.Compile(workspaceAction, nameof(workspaceAction), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/flow/workspace/actions";
@@ -188,8 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
     {
         public IBodyWorkflowTrigger<string> FlowCreateHookForCommon(Expression<Func<string>> flowTriggerType, FlowRecurrence recurrence = null)
         {
-            var __workflow_flowTriggerType = flowTriggerType == null ? null : WorkflowExpression.Compile(flowTriggerType);
-            WorkflowExpression.Validate(__workflow_flowTriggerType, nameof(flowTriggerType), required: true);
+            var __workflow_flowTriggerType = WorkflowExpression.Compile(flowTriggerType, nameof(flowTriggerType), required: true);
             return new DeferredBodyTrigger<string>(() =>
             {
                 var apiCallPath = "/flow/hooks/common";

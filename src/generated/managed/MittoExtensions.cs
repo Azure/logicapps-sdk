@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         public IBodyWorkflowAction<SmsResponse> SmsRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string>> requestreceiver, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
-            var __workflow_requestsender = requestsender == null ? null : WorkflowExpression.Compile(requestsender);
-            WorkflowExpression.Validate(__workflow_requestsender, nameof(requestsender), required: true);
-            var __workflow_requesttext = requesttext == null ? null : WorkflowExpression.Compile(requesttext);
-            WorkflowExpression.Validate(__workflow_requesttext, nameof(requesttext), required: true);
-            var __workflow_requestreceiver = requestreceiver == null ? null : WorkflowExpression.Compile(requestreceiver);
-            WorkflowExpression.Validate(__workflow_requestreceiver, nameof(requestreceiver), required: true);
-            var __workflow_requestisFlashSMS = requestisFlashSMS == null ? null : WorkflowExpression.Compile(requestisFlashSMS);
-            WorkflowExpression.Validate(__workflow_requestisFlashSMS, nameof(requestisFlashSMS), required: false);
-            var __workflow_requestprotocolIdentifier = requestprotocolIdentifier == null ? null : WorkflowExpression.Compile(requestprotocolIdentifier);
-            WorkflowExpression.Validate(__workflow_requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
-            var __workflow_requestcustomerReference = requestcustomerReference == null ? null : WorkflowExpression.Compile(requestcustomerReference);
-            WorkflowExpression.Validate(__workflow_requestcustomerReference, nameof(requestcustomerReference), required: false);
-            var __workflow_requestisTestSMS = requestisTestSMS == null ? null : WorkflowExpression.Compile(requestisTestSMS);
-            WorkflowExpression.Validate(__workflow_requestisTestSMS, nameof(requestisTestSMS), required: false);
-            var __workflow_requesttextType = requesttextType == null ? null : WorkflowExpression.Compile(requesttextType);
-            WorkflowExpression.Validate(__workflow_requesttextType, nameof(requesttextType), required: false);
-            var __workflow_requestuserDataHeader = requestuserDataHeader == null ? null : WorkflowExpression.Compile(requestuserDataHeader);
-            WorkflowExpression.Validate(__workflow_requestuserDataHeader, nameof(requestuserDataHeader), required: false);
-            var __workflow_requestvalidityInMinutes = requestvalidityInMinutes == null ? null : WorkflowExpression.Compile(requestvalidityInMinutes);
-            WorkflowExpression.Validate(__workflow_requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
+            var __workflow_requestsender = WorkflowExpression.Compile(requestsender, nameof(requestsender), required: true);
+            var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
+            var __workflow_requestreceiver = WorkflowExpression.Compile(requestreceiver, nameof(requestreceiver), required: true);
+            var __workflow_requestisFlashSMS = WorkflowExpression.Compile(requestisFlashSMS, nameof(requestisFlashSMS), required: false);
+            var __workflow_requestprotocolIdentifier = WorkflowExpression.Compile(requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
+            var __workflow_requestcustomerReference = WorkflowExpression.Compile(requestcustomerReference, nameof(requestcustomerReference), required: false);
+            var __workflow_requestisTestSMS = WorkflowExpression.Compile(requestisTestSMS, nameof(requestisTestSMS), required: false);
+            var __workflow_requesttextType = WorkflowExpression.Compile(requesttextType, nameof(requesttextType), required: false);
+            var __workflow_requestuserDataHeader = WorkflowExpression.Compile(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
+            var __workflow_requestvalidityInMinutes = WorkflowExpression.Compile(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
             return new DeferredBodyAction<SmsResponse>(() =>
             {
                 var apiCallPath = "/sms.json";
@@ -110,26 +100,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mitto
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mitto")]
         public IBodyWorkflowAction<SmsBulkResponse> SmsBulkRequest(Expression<Func<string>> requestsender, Expression<Func<string>> requesttext, Expression<Func<string[]>> requestreceivers, Expression<Func<bool>> requestisFlashSMS = null, Expression<Func<int>> requestprotocolIdentifier = null, Expression<Func<string>> requestcustomerReference = null, Expression<Func<bool>> requestisTestSMS = null, Expression<Func<requesttextTypeInput>> requesttextType = null, Expression<Func<string>> requestuserDataHeader = null, Expression<Func<int>> requestvalidityInMinutes = null)
         {
-            var __workflow_requestsender = requestsender == null ? null : WorkflowExpression.Compile(requestsender);
-            WorkflowExpression.Validate(__workflow_requestsender, nameof(requestsender), required: true);
-            var __workflow_requesttext = requesttext == null ? null : WorkflowExpression.Compile(requesttext);
-            WorkflowExpression.Validate(__workflow_requesttext, nameof(requesttext), required: true);
-            var __workflow_requestreceivers = requestreceivers == null ? null : WorkflowExpression.Compile(requestreceivers);
-            WorkflowExpression.Validate(__workflow_requestreceivers, nameof(requestreceivers), required: true);
-            var __workflow_requestisFlashSMS = requestisFlashSMS == null ? null : WorkflowExpression.Compile(requestisFlashSMS);
-            WorkflowExpression.Validate(__workflow_requestisFlashSMS, nameof(requestisFlashSMS), required: false);
-            var __workflow_requestprotocolIdentifier = requestprotocolIdentifier == null ? null : WorkflowExpression.Compile(requestprotocolIdentifier);
-            WorkflowExpression.Validate(__workflow_requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
-            var __workflow_requestcustomerReference = requestcustomerReference == null ? null : WorkflowExpression.Compile(requestcustomerReference);
-            WorkflowExpression.Validate(__workflow_requestcustomerReference, nameof(requestcustomerReference), required: false);
-            var __workflow_requestisTestSMS = requestisTestSMS == null ? null : WorkflowExpression.Compile(requestisTestSMS);
-            WorkflowExpression.Validate(__workflow_requestisTestSMS, nameof(requestisTestSMS), required: false);
-            var __workflow_requesttextType = requesttextType == null ? null : WorkflowExpression.Compile(requesttextType);
-            WorkflowExpression.Validate(__workflow_requesttextType, nameof(requesttextType), required: false);
-            var __workflow_requestuserDataHeader = requestuserDataHeader == null ? null : WorkflowExpression.Compile(requestuserDataHeader);
-            WorkflowExpression.Validate(__workflow_requestuserDataHeader, nameof(requestuserDataHeader), required: false);
-            var __workflow_requestvalidityInMinutes = requestvalidityInMinutes == null ? null : WorkflowExpression.Compile(requestvalidityInMinutes);
-            WorkflowExpression.Validate(__workflow_requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
+            var __workflow_requestsender = WorkflowExpression.Compile(requestsender, nameof(requestsender), required: true);
+            var __workflow_requesttext = WorkflowExpression.Compile(requesttext, nameof(requesttext), required: true);
+            var __workflow_requestreceivers = WorkflowExpression.Compile(requestreceivers, nameof(requestreceivers), required: true);
+            var __workflow_requestisFlashSMS = WorkflowExpression.Compile(requestisFlashSMS, nameof(requestisFlashSMS), required: false);
+            var __workflow_requestprotocolIdentifier = WorkflowExpression.Compile(requestprotocolIdentifier, nameof(requestprotocolIdentifier), required: false);
+            var __workflow_requestcustomerReference = WorkflowExpression.Compile(requestcustomerReference, nameof(requestcustomerReference), required: false);
+            var __workflow_requestisTestSMS = WorkflowExpression.Compile(requestisTestSMS, nameof(requestisTestSMS), required: false);
+            var __workflow_requesttextType = WorkflowExpression.Compile(requesttextType, nameof(requesttextType), required: false);
+            var __workflow_requestuserDataHeader = WorkflowExpression.Compile(requestuserDataHeader, nameof(requestuserDataHeader), required: false);
+            var __workflow_requestvalidityInMinutes = WorkflowExpression.Compile(requestvalidityInMinutes, nameof(requestvalidityInMinutes), required: false);
             return new DeferredBodyAction<SmsBulkResponse>(() =>
             {
                 var apiCallPath = "/smsbulk.json";

@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateDocument(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyparentID, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent, Expression<Func<string>> bodymetadatadescription = null, Expression<Func<bodymetadatafieldsInputItem[]>> bodymetadatafields = null)
         {
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodyparentID = bodyparentID == null ? null : WorkflowExpression.Compile(bodyparentID);
-            WorkflowExpression.Validate(__workflow_bodyparentID, nameof(bodyparentID), required: true);
-            var __workflow_bodymetadatadisplayName = bodymetadatadisplayName == null ? null : WorkflowExpression.Compile(bodymetadatadisplayName);
-            WorkflowExpression.Validate(__workflow_bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
-            var __workflow_bodyfilefileName = bodyfilefileName == null ? null : WorkflowExpression.Compile(bodyfilefileName);
-            WorkflowExpression.Validate(__workflow_bodyfilefileName, nameof(bodyfilefileName), required: true);
-            var __workflow_bodyfilefileContent = bodyfilefileContent == null ? null : WorkflowExpression.Compile(bodyfilefileContent);
-            WorkflowExpression.Validate(__workflow_bodyfilefileContent, nameof(bodyfilefileContent), required: true);
-            var __workflow_bodymetadatadescription = bodymetadatadescription == null ? null : WorkflowExpression.Compile(bodymetadatadescription);
-            WorkflowExpression.Validate(__workflow_bodymetadatadescription, nameof(bodymetadatadescription), required: false);
-            var __workflow_bodymetadatafields = bodymetadatafields == null ? null : WorkflowExpression.Compile(bodymetadatafields);
-            WorkflowExpression.Validate(__workflow_bodymetadatafields, nameof(bodymetadatafields), required: false);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: true);
+            var __workflow_bodymetadatadisplayName = WorkflowExpression.Compile(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
+            var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
+            var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            var __workflow_bodymetadatadescription = WorkflowExpression.Compile(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
+            var __workflow_bodymetadatafields = WorkflowExpression.Compile(bodymetadatafields, nameof(bodymetadatafields), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -82,20 +75,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodymetadatadisplayName, Expression<Func<string>> bodyfilefileName, Expression<Func<string>> bodyfilefileContent, Expression<Func<string>> bodymetadatadescription = null, Expression<Func<bodymetadatafieldsInputItem[]>> bodymetadatafields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodymetadatadisplayName = bodymetadatadisplayName == null ? null : WorkflowExpression.Compile(bodymetadatadisplayName);
-            WorkflowExpression.Validate(__workflow_bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
-            var __workflow_bodyfilefileName = bodyfilefileName == null ? null : WorkflowExpression.Compile(bodyfilefileName);
-            WorkflowExpression.Validate(__workflow_bodyfilefileName, nameof(bodyfilefileName), required: true);
-            var __workflow_bodyfilefileContent = bodyfilefileContent == null ? null : WorkflowExpression.Compile(bodyfilefileContent);
-            WorkflowExpression.Validate(__workflow_bodyfilefileContent, nameof(bodyfilefileContent), required: true);
-            var __workflow_bodymetadatadescription = bodymetadatadescription == null ? null : WorkflowExpression.Compile(bodymetadatadescription);
-            WorkflowExpression.Validate(__workflow_bodymetadatadescription, nameof(bodymetadatadescription), required: false);
-            var __workflow_bodymetadatafields = bodymetadatafields == null ? null : WorkflowExpression.Compile(bodymetadatafields);
-            WorkflowExpression.Validate(__workflow_bodymetadatafields, nameof(bodymetadatafields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodymetadatadisplayName = WorkflowExpression.Compile(bodymetadatadisplayName, nameof(bodymetadatadisplayName), required: true);
+            var __workflow_bodyfilefileName = WorkflowExpression.Compile(bodyfilefileName, nameof(bodyfilefileName), required: true);
+            var __workflow_bodyfilefileContent = WorkflowExpression.Compile(bodyfilefileContent, nameof(bodyfilefileContent), required: true);
+            var __workflow_bodymetadatadescription = WorkflowExpression.Compile(bodymetadatadescription, nameof(bodymetadatadescription), required: false);
+            var __workflow_bodymetadatafields = WorkflowExpression.Compile(bodymetadatafields, nameof(bodymetadatafields), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -149,16 +135,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/update-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -192,12 +173,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateDocumentContent(Expression<Func<string>> id, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/update-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -221,8 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UnreserveDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/check-in/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -235,8 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction ReserveDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/check-out/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -249,10 +225,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             return new DeferredBodyAction<GetDocumentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -265,10 +239,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentPropertiesResponse> GetDocumentProperties(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             return new DeferredBodyAction<GetDocumentPropertiesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/get-properties/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -281,8 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentContentResponse> GetDocumentContent(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetDocumentContentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/get-content/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -295,10 +266,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetDocumentVersionContentResponse> GetDocumentVersionContent(Expression<Func<string>> id, Expression<Func<string>> versionId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_versionId = versionId == null ? null : WorkflowExpression.Compile(versionId);
-            WorkflowExpression.Validate(__workflow_versionId, nameof(versionId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
             return new DeferredBodyAction<GetDocumentVersionContentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/get-content/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_versionId, 1));
@@ -311,8 +280,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -325,10 +293,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteDocumentVersion(Expression<Func<string>> id, Expression<Func<string>> versionId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_versionId = versionId == null ? null : WorkflowExpression.Compile(versionId);
-            WorkflowExpression.Validate(__workflow_versionId, nameof(versionId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_versionId = WorkflowExpression.Compile(versionId, nameof(versionId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/delete/{0}/version/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_versionId, 1));
@@ -341,8 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<Version[]> GetDocumentVersions(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<Version[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/get-versions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -355,10 +320,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction MoveDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_parentId = parentId == null ? null : WorkflowExpression.Compile(parentId);
-            WorkflowExpression.Validate(__workflow_parentId, nameof(parentId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/move/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentId, 1));
@@ -371,10 +334,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CopyDocument(Expression<Func<string>> id, Expression<Func<string>> parentId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_parentId = parentId == null ? null : WorkflowExpression.Compile(parentId);
-            WorkflowExpression.Validate(__workflow_parentId, nameof(parentId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_parentId = WorkflowExpression.Compile(parentId, nameof(parentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/document/copy/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_parentId, 1));
@@ -387,16 +348,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateFolder(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentID, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyparentID = bodyparentID == null ? null : WorkflowExpression.Compile(bodyparentID);
-            WorkflowExpression.Validate(__workflow_bodyparentID, nameof(bodyparentID), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: false);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/folder/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -432,16 +388,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/folder/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -475,10 +426,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetFolderResponse> GetFolder(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             return new DeferredBodyAction<GetFolderResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/folder/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -491,8 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction DeleteFolder(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/folder/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -505,8 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> GetFolderChildren(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<ResultItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/folder/get-children/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -519,10 +466,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> SimpleSearch(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname)
         {
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyAction<ResultItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/search/simple/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -544,12 +489,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<ResultItem[]> AdvancedSearch(Expression<Func<string>> bodyquery, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodylimit = null)
         {
-            var __workflow_bodyquery = bodyquery == null ? null : WorkflowExpression.Compile(bodyquery);
-            WorkflowExpression.Validate(__workflow_bodyquery, nameof(bodyquery), required: true);
-            var __workflow_bodystart = bodystart == null ? null : WorkflowExpression.Compile(bodystart);
-            WorkflowExpression.Validate(__workflow_bodystart, nameof(bodystart), required: false);
-            var __workflow_bodylimit = bodylimit == null ? null : WorkflowExpression.Compile(bodylimit);
-            WorkflowExpression.Validate(__workflow_bodylimit, nameof(bodylimit), required: false);
+            var __workflow_bodyquery = WorkflowExpression.Compile(bodyquery, nameof(bodyquery), required: true);
+            var __workflow_bodystart = WorkflowExpression.Compile(bodystart, nameof(bodystart), required: false);
+            var __workflow_bodylimit = WorkflowExpression.Compile(bodylimit, nameof(bodylimit), required: false);
             return new DeferredBodyAction<ResultItem[]>(() =>
             {
                 var apiCallPath = "/api/search/advanced";
@@ -583,10 +525,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> ExecuteWebReport(Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/command/execute/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -600,16 +540,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<string> CreateBusinessWorkspace(Expression<Func<string>> configurationKey, Expression<Func<string>> bodyparentID, Expression<Func<string>> bodytemplateID, Expression<Func<string>> bodyname = null, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodyparentID = bodyparentID == null ? null : WorkflowExpression.Compile(bodyparentID);
-            WorkflowExpression.Validate(__workflow_bodyparentID, nameof(bodyparentID), required: true);
-            var __workflow_bodytemplateID = bodytemplateID == null ? null : WorkflowExpression.Compile(bodytemplateID);
-            WorkflowExpression.Validate(__workflow_bodytemplateID, nameof(bodytemplateID), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: false);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyparentID = WorkflowExpression.Compile(bodyparentID, nameof(bodyparentID), required: true);
+            var __workflow_bodytemplateID = WorkflowExpression.Compile(bodytemplateID, nameof(bodytemplateID), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/workspace/create/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -645,8 +580,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<TrusteeRead[]> GetItemTrustees(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<TrusteeRead[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/security/get/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -659,10 +593,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction AddTrustees(Expression<Func<string>> id, Expression<Func<TrusteeWrite[]>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/security/add/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -676,10 +608,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateTrustees(Expression<Func<string>> id, Expression<Func<TrusteeWrite[]>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/security/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -693,10 +623,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction RemoveTrustees(Expression<Func<string>> id, Expression<Func<string[]>> body = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/security/remove/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -710,10 +638,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IBodyWorkflowAction<GetBusinessWorkspaceResponse> GetBusinessWorkspace(Expression<Func<string>> id, Expression<Func<string>> configurationKey)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
             return new DeferredBodyAction<GetBusinessWorkspaceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/workspace/get/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -726,14 +652,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentextcsbyonefox")]
         public IWorkflowAction UpdateBusinessWorkspace(Expression<Func<string>> id, Expression<Func<string>> configurationKey, Expression<Func<string>> bodyname, Expression<Func<bodyfieldsInputItem[]>> bodyfields = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_configurationKey = configurationKey == null ? null : WorkflowExpression.Compile(configurationKey);
-            WorkflowExpression.Validate(__workflow_configurationKey, nameof(configurationKey), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_configurationKey = WorkflowExpression.Compile(configurationKey, nameof(configurationKey), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/workspace/update/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationKey, 1));
@@ -763,12 +685,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
     {
         public IWorkflowTrigger DocumentCreated(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/DocumentCreated";
@@ -815,12 +734,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger DocumentUpdated(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/DocumentUpdated";
@@ -867,12 +783,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger DocumentDeleted(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/DocumentDeleted";
@@ -919,12 +832,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger FolderCreated(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/FolderCreated";
@@ -971,12 +881,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger FolderUpdated(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/FolderUpdated";
@@ -1023,12 +930,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger FolderDeleted(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/FolderDeleted";
@@ -1075,12 +979,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger BusinessWorkspaceCreated(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/BusinessWorkspaceCreated";
@@ -1127,12 +1028,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger BusinessWorkspaceUpdated(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/BusinessWorkspaceUpdated";
@@ -1179,12 +1077,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
 
         public IWorkflowTrigger BusinessWorkspaceDeleted(Expression<Func<string>> bodyfilterparentID = null, Expression<Func<string>> bodyfilterancestorID = null, Expression<Func<bodyfiltermetadataInputItem[]>> bodyfiltermetadata = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyfilterparentID = bodyfilterparentID == null ? null : WorkflowExpression.Compile(bodyfilterparentID);
-            WorkflowExpression.Validate(__workflow_bodyfilterparentID, nameof(bodyfilterparentID), required: false);
-            var __workflow_bodyfilterancestorID = bodyfilterancestorID == null ? null : WorkflowExpression.Compile(bodyfilterancestorID);
-            WorkflowExpression.Validate(__workflow_bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
-            var __workflow_bodyfiltermetadata = bodyfiltermetadata == null ? null : WorkflowExpression.Compile(bodyfiltermetadata);
-            WorkflowExpression.Validate(__workflow_bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
+            var __workflow_bodyfilterparentID = WorkflowExpression.Compile(bodyfilterparentID, nameof(bodyfilterparentID), required: false);
+            var __workflow_bodyfilterancestorID = WorkflowExpression.Compile(bodyfilterancestorID, nameof(bodyfilterancestorID), required: false);
+            var __workflow_bodyfiltermetadata = WorkflowExpression.Compile(bodyfiltermetadata, nameof(bodyfiltermetadata), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/web-hook/create/BusinessWorkspaceDeleted";

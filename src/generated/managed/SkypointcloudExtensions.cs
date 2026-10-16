@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IBodyWorkflowAction<GetEntitiesResponseItem[]> GetEntities(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
-            var __workflow_instanceId = instanceId == null ? null : WorkflowExpression.Compile(instanceId);
-            WorkflowExpression.Validate(__workflow_instanceId, nameof(instanceId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
+            var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
             return new DeferredBodyAction<GetEntitiesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/dataflows/entities", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instanceId, 1));
@@ -31,20 +29,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IWorkflowAction GetItems(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string>> entityName, Expression<Func<string>> select = null, Expression<Func<string>> filter = null, Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
-            var __workflow_instanceId = instanceId == null ? null : WorkflowExpression.Compile(instanceId);
-            WorkflowExpression.Validate(__workflow_instanceId, nameof(instanceId), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
+            var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/instances/{0}/data/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 1));
@@ -68,14 +59,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skypointcloud")]
         public IWorkflowAction GetItem(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string>> entityName, Expression<Func<string>> itemId)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
-            var __workflow_instanceId = instanceId == null ? null : WorkflowExpression.Compile(instanceId);
-            WorkflowExpression.Validate(__workflow_instanceId, nameof(instanceId), required: true);
-            var __workflow_entityName = entityName == null ? null : WorkflowExpression.Compile(entityName);
-            WorkflowExpression.Validate(__workflow_entityName, nameof(entityName), required: true);
-            var __workflow_itemId = itemId == null ? null : WorkflowExpression.Compile(itemId);
-            WorkflowExpression.Validate(__workflow_itemId, nameof(itemId), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
+            var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
+            var __workflow_entityName = WorkflowExpression.Compile(entityName, nameof(entityName), required: true);
+            var __workflow_itemId = WorkflowExpression.Compile(itemId, nameof(itemId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/instances/{0}/data/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_entityName, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_itemId, 1));
@@ -91,12 +78,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
     {
         public IWorkflowTrigger OnDataflowRefreshComplete(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyevents, FlowRecurrence recurrence = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
-            var __workflow_instanceId = instanceId == null ? null : WorkflowExpression.Compile(instanceId);
-            WorkflowExpression.Validate(__workflow_instanceId, nameof(instanceId), required: true);
-            var __workflow_bodyevents = bodyevents == null ? null : WorkflowExpression.Compile(bodyevents);
-            WorkflowExpression.Validate(__workflow_bodyevents, nameof(bodyevents), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
+            var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
+            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/hooks/dataflow_refresh_complete", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instanceId, 1));
@@ -120,12 +104,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
 
         public IWorkflowTrigger OnDataflowRefreshFail(Expression<Func<string>> tenantId, Expression<Func<string>> instanceId, Expression<Func<string[]>> bodyevents, FlowRecurrence recurrence = null)
         {
-            var __workflow_tenantId = tenantId == null ? null : WorkflowExpression.Compile(tenantId);
-            WorkflowExpression.Validate(__workflow_tenantId, nameof(tenantId), required: true);
-            var __workflow_instanceId = instanceId == null ? null : WorkflowExpression.Compile(instanceId);
-            WorkflowExpression.Validate(__workflow_instanceId, nameof(instanceId), required: true);
-            var __workflow_bodyevents = bodyevents == null ? null : WorkflowExpression.Compile(bodyevents);
-            WorkflowExpression.Validate(__workflow_bodyevents, nameof(bodyevents), required: true);
+            var __workflow_tenantId = WorkflowExpression.Compile(tenantId, nameof(tenantId), required: true);
+            var __workflow_instanceId = WorkflowExpression.Compile(instanceId, nameof(instanceId), required: true);
+            var __workflow_bodyevents = WorkflowExpression.Compile(bodyevents, nameof(bodyevents), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/instances/{0}/manage/hooks/dataflow_refresh_fail", ExpressionConverter.ConvertWithUrlEncoding(__workflow_instanceId, 1));

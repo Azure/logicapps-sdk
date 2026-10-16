@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         public IBodyWorkflowAction<ScrapeResponse> Scrape(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_render = render == null ? null : WorkflowExpression.Compile(render);
-            WorkflowExpression.Validate(__workflow_render, nameof(render), required: false);
-            var __workflow_selector = selector == null ? null : WorkflowExpression.Compile(selector);
-            WorkflowExpression.Validate(__workflow_selector, nameof(selector), required: false);
-            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
-            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_render = WorkflowExpression.Compile(render, nameof(render), required: false);
+            var __workflow_selector = WorkflowExpression.Compile(selector, nameof(selector), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
             return new DeferredBodyAction<ScrapeResponse>(() =>
             {
                 var apiCallPath = "/scraper";
@@ -44,18 +39,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
         public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null, Expression<Func<string>> body = null)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_render = render == null ? null : WorkflowExpression.Compile(render);
-            WorkflowExpression.Validate(__workflow_render, nameof(render), required: false);
-            var __workflow_selector = selector == null ? null : WorkflowExpression.Compile(selector);
-            WorkflowExpression.Validate(__workflow_selector, nameof(selector), required: false);
-            var __workflow_timeout = timeout == null ? null : WorkflowExpression.Compile(timeout);
-            WorkflowExpression.Validate(__workflow_timeout, nameof(timeout), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_render = WorkflowExpression.Compile(render, nameof(render), required: false);
+            var __workflow_selector = WorkflowExpression.Compile(selector, nameof(selector), required: false);
+            var __workflow_timeout = WorkflowExpression.Compile(timeout, nameof(timeout), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<ScrapeFormResponse>(() =>
             {
                 var apiCallPath = "/scraper";

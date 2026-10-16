@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
         public IBodyWorkflowAction<NPSCreateResponse> ApiExtNPS(Expression<Func<string>> modelemail, Expression<Func<int>> modelscore, Expression<Func<string>> modelratingDate, Expression<Func<string>> modelname = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeladditionalData = null)
         {
-            var __workflow_modelemail = modelemail == null ? null : WorkflowExpression.Compile(modelemail);
-            WorkflowExpression.Validate(__workflow_modelemail, nameof(modelemail), required: true);
-            var __workflow_modelscore = modelscore == null ? null : WorkflowExpression.Compile(modelscore);
-            WorkflowExpression.Validate(__workflow_modelscore, nameof(modelscore), required: true);
-            var __workflow_modelratingDate = modelratingDate == null ? null : WorkflowExpression.Compile(modelratingDate);
-            WorkflowExpression.Validate(__workflow_modelratingDate, nameof(modelratingDate), required: true);
-            var __workflow_modelname = modelname == null ? null : WorkflowExpression.Compile(modelname);
-            WorkflowExpression.Validate(__workflow_modelname, nameof(modelname), required: false);
-            var __workflow_modelcomments = modelcomments == null ? null : WorkflowExpression.Compile(modelcomments);
-            WorkflowExpression.Validate(__workflow_modelcomments, nameof(modelcomments), required: false);
-            var __workflow_modeladditionalData = modeladditionalData == null ? null : WorkflowExpression.Compile(modeladditionalData);
-            WorkflowExpression.Validate(__workflow_modeladditionalData, nameof(modeladditionalData), required: false);
+            var __workflow_modelemail = WorkflowExpression.Compile(modelemail, nameof(modelemail), required: true);
+            var __workflow_modelscore = WorkflowExpression.Compile(modelscore, nameof(modelscore), required: true);
+            var __workflow_modelratingDate = WorkflowExpression.Compile(modelratingDate, nameof(modelratingDate), required: true);
+            var __workflow_modelname = WorkflowExpression.Compile(modelname, nameof(modelname), required: false);
+            var __workflow_modelcomments = WorkflowExpression.Compile(modelcomments, nameof(modelcomments), required: false);
+            var __workflow_modeladditionalData = WorkflowExpression.Compile(modeladditionalData, nameof(modeladditionalData), required: false);
             return new DeferredBodyAction<NPSCreateResponse>(() =>
             {
                 var apiCallPath = "/api/ext/NPS";
@@ -68,24 +62,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appsforops
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appsforops")]
         public IBodyWorkflowAction<TimelineCreateResponse> ApiExtTimeline(Expression<Func<string>> modelsource, Expression<Func<string>> modeltitle, Expression<Func<string>> modeldescription, Expression<Func<string>> modeltoDisplayName, Expression<Func<string>> modeltoEmail, Expression<Func<string>> modelfromDisplayName, Expression<Func<string>> modelfromEmail, Expression<Func<string>> modelcreatedByDateTime, Expression<Func<string>> modelculture = null)
         {
-            var __workflow_modelsource = modelsource == null ? null : WorkflowExpression.Compile(modelsource);
-            WorkflowExpression.Validate(__workflow_modelsource, nameof(modelsource), required: true);
-            var __workflow_modeltitle = modeltitle == null ? null : WorkflowExpression.Compile(modeltitle);
-            WorkflowExpression.Validate(__workflow_modeltitle, nameof(modeltitle), required: true);
-            var __workflow_modeldescription = modeldescription == null ? null : WorkflowExpression.Compile(modeldescription);
-            WorkflowExpression.Validate(__workflow_modeldescription, nameof(modeldescription), required: true);
-            var __workflow_modeltoDisplayName = modeltoDisplayName == null ? null : WorkflowExpression.Compile(modeltoDisplayName);
-            WorkflowExpression.Validate(__workflow_modeltoDisplayName, nameof(modeltoDisplayName), required: true);
-            var __workflow_modeltoEmail = modeltoEmail == null ? null : WorkflowExpression.Compile(modeltoEmail);
-            WorkflowExpression.Validate(__workflow_modeltoEmail, nameof(modeltoEmail), required: true);
-            var __workflow_modelfromDisplayName = modelfromDisplayName == null ? null : WorkflowExpression.Compile(modelfromDisplayName);
-            WorkflowExpression.Validate(__workflow_modelfromDisplayName, nameof(modelfromDisplayName), required: true);
-            var __workflow_modelfromEmail = modelfromEmail == null ? null : WorkflowExpression.Compile(modelfromEmail);
-            WorkflowExpression.Validate(__workflow_modelfromEmail, nameof(modelfromEmail), required: true);
-            var __workflow_modelcreatedByDateTime = modelcreatedByDateTime == null ? null : WorkflowExpression.Compile(modelcreatedByDateTime);
-            WorkflowExpression.Validate(__workflow_modelcreatedByDateTime, nameof(modelcreatedByDateTime), required: true);
-            var __workflow_modelculture = modelculture == null ? null : WorkflowExpression.Compile(modelculture);
-            WorkflowExpression.Validate(__workflow_modelculture, nameof(modelculture), required: false);
+            var __workflow_modelsource = WorkflowExpression.Compile(modelsource, nameof(modelsource), required: true);
+            var __workflow_modeltitle = WorkflowExpression.Compile(modeltitle, nameof(modeltitle), required: true);
+            var __workflow_modeldescription = WorkflowExpression.Compile(modeldescription, nameof(modeldescription), required: true);
+            var __workflow_modeltoDisplayName = WorkflowExpression.Compile(modeltoDisplayName, nameof(modeltoDisplayName), required: true);
+            var __workflow_modeltoEmail = WorkflowExpression.Compile(modeltoEmail, nameof(modeltoEmail), required: true);
+            var __workflow_modelfromDisplayName = WorkflowExpression.Compile(modelfromDisplayName, nameof(modelfromDisplayName), required: true);
+            var __workflow_modelfromEmail = WorkflowExpression.Compile(modelfromEmail, nameof(modelfromEmail), required: true);
+            var __workflow_modelcreatedByDateTime = WorkflowExpression.Compile(modelcreatedByDateTime, nameof(modelcreatedByDateTime), required: true);
+            var __workflow_modelculture = WorkflowExpression.Compile(modelculture, nameof(modelculture), required: false);
             return new DeferredBodyAction<TimelineCreateResponse>(() =>
             {
                 var apiCallPath = "/api/ext/Timeline";

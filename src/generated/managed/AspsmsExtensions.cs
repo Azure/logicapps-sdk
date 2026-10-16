@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
         public IBodyWorkflowAction<SendSimpleSMSResponse> SendSimpleSMS(Expression<Func<string>> mSISDN, Expression<Func<string>> messageData, Expression<Func<string>> originator = null, Expression<Func<int>> lifeTime = null, Expression<Func<string>> deferredDeliveryTime = null, Expression<Func<string>> transactionReferenceNumber = null)
         {
-            var __workflow_mSISDN = mSISDN == null ? null : WorkflowExpression.Compile(mSISDN);
-            WorkflowExpression.Validate(__workflow_mSISDN, nameof(mSISDN), required: true);
-            var __workflow_messageData = messageData == null ? null : WorkflowExpression.Compile(messageData);
-            WorkflowExpression.Validate(__workflow_messageData, nameof(messageData), required: true);
-            var __workflow_originator = originator == null ? null : WorkflowExpression.Compile(originator);
-            WorkflowExpression.Validate(__workflow_originator, nameof(originator), required: false);
-            var __workflow_lifeTime = lifeTime == null ? null : WorkflowExpression.Compile(lifeTime);
-            WorkflowExpression.Validate(__workflow_lifeTime, nameof(lifeTime), required: false);
-            var __workflow_deferredDeliveryTime = deferredDeliveryTime == null ? null : WorkflowExpression.Compile(deferredDeliveryTime);
-            WorkflowExpression.Validate(__workflow_deferredDeliveryTime, nameof(deferredDeliveryTime), required: false);
-            var __workflow_transactionReferenceNumber = transactionReferenceNumber == null ? null : WorkflowExpression.Compile(transactionReferenceNumber);
-            WorkflowExpression.Validate(__workflow_transactionReferenceNumber, nameof(transactionReferenceNumber), required: false);
+            var __workflow_mSISDN = WorkflowExpression.Compile(mSISDN, nameof(mSISDN), required: true);
+            var __workflow_messageData = WorkflowExpression.Compile(messageData, nameof(messageData), required: true);
+            var __workflow_originator = WorkflowExpression.Compile(originator, nameof(originator), required: false);
+            var __workflow_lifeTime = WorkflowExpression.Compile(lifeTime, nameof(lifeTime), required: false);
+            var __workflow_deferredDeliveryTime = WorkflowExpression.Compile(deferredDeliveryTime, nameof(deferredDeliveryTime), required: false);
+            var __workflow_transactionReferenceNumber = WorkflowExpression.Compile(transactionReferenceNumber, nameof(transactionReferenceNumber), required: false);
             return new DeferredBodyAction<SendSimpleSMSResponse>(() =>
             {
                 var apiCallPath = "/SendSimpleSMS";

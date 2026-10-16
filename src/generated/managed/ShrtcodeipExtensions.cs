@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
         public IBodyWorkflowAction<ShortenLinkResponse> ShortenLink(Expression<Func<string>> url)
         {
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: true);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: true);
             return new DeferredBodyAction<ShortenLinkResponse>(() =>
             {
                 var apiCallPath = "/shorten";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shrtcodeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shrtcodeip")]
         public IBodyWorkflowAction<GettingInformationLinkResponse> GettingInformationLink(Expression<Func<string>> code)
         {
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             return new DeferredBodyAction<GettingInformationLinkResponse>(() =>
             {
                 var apiCallPath = "/info";

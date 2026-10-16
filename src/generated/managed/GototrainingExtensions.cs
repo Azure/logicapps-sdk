@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<Training> GetTraining(Expression<Func<string>> trainingid)
         {
-            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
-            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
+            var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
             return new DeferredBodyAction<Training>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<Registrant[]> ListRegistrations(Expression<Func<string>> trainingid)
         {
-            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
-            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
+            var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
             return new DeferredBodyAction<Registrant[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
@@ -41,14 +39,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<AddRegistrantResponse> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> bodyregistrantEmail, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName)
         {
-            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
-            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
-            var __workflow_bodyregistrantEmail = bodyregistrantEmail == null ? null : WorkflowExpression.Compile(bodyregistrantEmail);
-            WorkflowExpression.Validate(__workflow_bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: true);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: true);
+            var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
+            var __workflow_bodyregistrantEmail = WorkflowExpression.Compile(bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: true);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: true);
             return new DeferredBodyAction<AddRegistrantResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1));
@@ -74,10 +68,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
         public IBodyWorkflowAction<Registrant> GetRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> registrantKey)
         {
-            var __workflow_trainingid = trainingid == null ? null : WorkflowExpression.Compile(trainingid);
-            WorkflowExpression.Validate(__workflow_trainingid, nameof(trainingid), required: true);
-            var __workflow_registrantKey = registrantKey == null ? null : WorkflowExpression.Compile(registrantKey);
-            WorkflowExpression.Validate(__workflow_registrantKey, nameof(registrantKey), required: true);
+            var __workflow_trainingid = WorkflowExpression.Compile(trainingid, nameof(trainingid), required: true);
+            var __workflow_registrantKey = WorkflowExpression.Compile(registrantKey, nameof(registrantKey), required: true);
             return new DeferredBodyAction<Registrant>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_trainingid, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_registrantKey, 1));

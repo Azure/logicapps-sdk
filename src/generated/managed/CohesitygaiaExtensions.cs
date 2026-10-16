@@ -31,14 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         public IBodyWorkflowAction<QueryResponse> SendQuery(Expression<Func<string>> bodyllmName, Expression<Func<string>> bodyllmId, Expression<Func<string[]>> bodydatasetNames, Expression<Func<string>> bodyqueryString)
         {
-            var __workflow_bodyllmName = bodyllmName == null ? null : WorkflowExpression.Compile(bodyllmName);
-            WorkflowExpression.Validate(__workflow_bodyllmName, nameof(bodyllmName), required: true);
-            var __workflow_bodyllmId = bodyllmId == null ? null : WorkflowExpression.Compile(bodyllmId);
-            WorkflowExpression.Validate(__workflow_bodyllmId, nameof(bodyllmId), required: true);
-            var __workflow_bodydatasetNames = bodydatasetNames == null ? null : WorkflowExpression.Compile(bodydatasetNames);
-            WorkflowExpression.Validate(__workflow_bodydatasetNames, nameof(bodydatasetNames), required: true);
-            var __workflow_bodyqueryString = bodyqueryString == null ? null : WorkflowExpression.Compile(bodyqueryString);
-            WorkflowExpression.Validate(__workflow_bodyqueryString, nameof(bodyqueryString), required: true);
+            var __workflow_bodyllmName = WorkflowExpression.Compile(bodyllmName, nameof(bodyllmName), required: true);
+            var __workflow_bodyllmId = WorkflowExpression.Compile(bodyllmId, nameof(bodyllmId), required: true);
+            var __workflow_bodydatasetNames = WorkflowExpression.Compile(bodydatasetNames, nameof(bodydatasetNames), required: true);
+            var __workflow_bodyqueryString = WorkflowExpression.Compile(bodyqueryString, nameof(bodyqueryString), required: true);
             return new DeferredBodyAction<QueryResponse>(() =>
             {
                 var apiCallPath = "/mcm/gaia/ask";

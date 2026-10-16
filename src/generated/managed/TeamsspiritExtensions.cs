@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction Approve(Expression<Func<string>> approvalID)
         {
-            var __workflow_approvalID = approvalID == null ? null : WorkflowExpression.Compile(approvalID);
-            WorkflowExpression.Validate(__workflow_approvalID, nameof(approvalID), required: true);
+            var __workflow_approvalID = WorkflowExpression.Compile(approvalID, nameof(approvalID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvals/{0}/approve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_approvalID, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction Reject(Expression<Func<string>> approvalID)
         {
-            var __workflow_approvalID = approvalID == null ? null : WorkflowExpression.Compile(approvalID);
-            WorkflowExpression.Validate(__workflow_approvalID, nameof(approvalID), required: true);
+            var __workflow_approvalID = WorkflowExpression.Compile(approvalID, nameof(approvalID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/approvals/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_approvalID, 1));
@@ -50,10 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ArchiveTeam(Expression<Func<string>> groupID, Expression<Func<bool>> bodysharePointReadOnly)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_bodysharePointReadOnly = bodysharePointReadOnly == null ? null : WorkflowExpression.Compile(bodysharePointReadOnly);
-            WorkflowExpression.Validate(__workflow_bodysharePointReadOnly, nameof(bodysharePointReadOnly), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodysharePointReadOnly = WorkflowExpression.Compile(bodysharePointReadOnly, nameof(bodysharePointReadOnly), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/archive", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -75,8 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction DeleteTeam(Expression<Func<string>> groupID)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -89,12 +84,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeTagValue(Expression<Func<string>> groupID, Expression<Func<string>> contentid = null, Expression<Func<string>> contentvalue = null)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_contentid = contentid == null ? null : WorkflowExpression.Compile(contentid);
-            WorkflowExpression.Validate(__workflow_contentid, nameof(contentid), required: false);
-            var __workflow_contentvalue = contentvalue == null ? null : WorkflowExpression.Compile(contentvalue);
-            WorkflowExpression.Validate(__workflow_contentvalue, nameof(contentvalue), required: false);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_contentid = WorkflowExpression.Compile(contentid, nameof(contentid), required: false);
+            var __workflow_contentvalue = WorkflowExpression.Compile(contentvalue, nameof(contentvalue), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-tag-value", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -126,8 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveAllUsersExeptOwners(Expression<Func<string>> groupID)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-not-owner", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -140,10 +131,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyownerId = null)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_bodyownerId = bodyownerId == null ? null : WorkflowExpression.Compile(bodyownerId);
-            WorkflowExpression.Validate(__workflow_bodyownerId, nameof(bodyownerId), required: false);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyownerId = WorkflowExpression.Compile(bodyownerId, nameof(bodyownerId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-except-selected-owner", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -169,8 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveGuests(Expression<Func<string>> groupID)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-guests", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -183,10 +171,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction RemoveUser(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-user", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -212,10 +198,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeRoleToMember(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-member", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -241,10 +225,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ChangeRoleToOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_bodyuserId = bodyuserId == null ? null : WorkflowExpression.Compile(bodyuserId);
-            WorkflowExpression.Validate(__workflow_bodyuserId, nameof(bodyuserId), required: false);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyuserId = WorkflowExpression.Compile(bodyuserId, nameof(bodyuserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-owner", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -270,10 +252,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IWorkflowAction ExtendExpirationDate(Expression<Func<string>> groupID, Expression<Func<string>> bodyweeks = null)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_bodyweeks = bodyweeks == null ? null : WorkflowExpression.Compile(bodyweeks);
-            WorkflowExpression.Validate(__workflow_bodyweeks, nameof(bodyweeks), required: false);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_bodyweeks = WorkflowExpression.Compile(bodyweeks, nameof(bodyweeks), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/extend-expiration", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1));
@@ -309,10 +289,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IBodyWorkflowAction<string> GetTagValue(Expression<Func<string>> groupID, Expression<Func<string>> tagID)
         {
-            var __workflow_groupID = groupID == null ? null : WorkflowExpression.Compile(groupID);
-            WorkflowExpression.Validate(__workflow_groupID, nameof(groupID), required: true);
-            var __workflow_tagID = tagID == null ? null : WorkflowExpression.Compile(tagID);
-            WorkflowExpression.Validate(__workflow_tagID, nameof(tagID), required: true);
+            var __workflow_groupID = WorkflowExpression.Compile(groupID, nameof(groupID), required: true);
+            var __workflow_tagID = WorkflowExpression.Compile(tagID, nameof(tagID), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/attribute/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagID, 1));
@@ -327,8 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
     {
         public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger(Expression<Func<string>> bodyname, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyTrigger<ActionTriggerResponse>(() =>
             {
                 var apiCallPath = "/webhooks";

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iconhorseip")]
         public IBodyWorkflowAction<JToken> FaviconGet(Expression<Func<string>> domain)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: true);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_domain, 1));

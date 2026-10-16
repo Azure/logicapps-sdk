@@ -13,26 +13,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<int>> bodymaxTokens = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodyn = null, Expression<Func<string>> bodystop = null, Expression<Func<double>> bodypresencePenalty = null, Expression<Func<double>> bodyfrequencyPenalty = null, Expression<Func<string>> bodyuser = null)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodymessages = bodymessages == null ? null : WorkflowExpression.Compile(bodymessages);
-            WorkflowExpression.Validate(__workflow_bodymessages, nameof(bodymessages), required: true);
-            var __workflow_bodymaxTokens = bodymaxTokens == null ? null : WorkflowExpression.Compile(bodymaxTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxTokens, nameof(bodymaxTokens), required: false);
-            var __workflow_bodytemperature = bodytemperature == null ? null : WorkflowExpression.Compile(bodytemperature);
-            WorkflowExpression.Validate(__workflow_bodytemperature, nameof(bodytemperature), required: false);
-            var __workflow_bodytopP = bodytopP == null ? null : WorkflowExpression.Compile(bodytopP);
-            WorkflowExpression.Validate(__workflow_bodytopP, nameof(bodytopP), required: false);
-            var __workflow_bodyn = bodyn == null ? null : WorkflowExpression.Compile(bodyn);
-            WorkflowExpression.Validate(__workflow_bodyn, nameof(bodyn), required: false);
-            var __workflow_bodystop = bodystop == null ? null : WorkflowExpression.Compile(bodystop);
-            WorkflowExpression.Validate(__workflow_bodystop, nameof(bodystop), required: false);
-            var __workflow_bodypresencePenalty = bodypresencePenalty == null ? null : WorkflowExpression.Compile(bodypresencePenalty);
-            WorkflowExpression.Validate(__workflow_bodypresencePenalty, nameof(bodypresencePenalty), required: false);
-            var __workflow_bodyfrequencyPenalty = bodyfrequencyPenalty == null ? null : WorkflowExpression.Compile(bodyfrequencyPenalty);
-            WorkflowExpression.Validate(__workflow_bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
-            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
-            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodymessages = WorkflowExpression.Compile(bodymessages, nameof(bodymessages), required: true);
+            var __workflow_bodymaxTokens = WorkflowExpression.Compile(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            var __workflow_bodytemperature = WorkflowExpression.Compile(bodytemperature, nameof(bodytemperature), required: false);
+            var __workflow_bodytopP = WorkflowExpression.Compile(bodytopP, nameof(bodytopP), required: false);
+            var __workflow_bodyn = WorkflowExpression.Compile(bodyn, nameof(bodyn), required: false);
+            var __workflow_bodystop = WorkflowExpression.Compile(bodystop, nameof(bodystop), required: false);
+            var __workflow_bodypresencePenalty = WorkflowExpression.Compile(bodypresencePenalty, nameof(bodypresencePenalty), required: false);
+            var __workflow_bodyfrequencyPenalty = WorkflowExpression.Compile(bodyfrequencyPenalty, nameof(bodyfrequencyPenalty), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<ChatPostResponse>(() =>
             {
                 var apiCallPath = "/v1/chat/completions";
@@ -113,16 +103,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningPostResponse> FineTuning(Expression<Func<string>> bodytrainingFile, Expression<Func<string>> bodymodel, Expression<Func<string>> bodyvalidationFile = null, Expression<Func<int>> bodyhyperparametersnEpochs = null, Expression<Func<string>> bodysuffix = null)
         {
-            var __workflow_bodytrainingFile = bodytrainingFile == null ? null : WorkflowExpression.Compile(bodytrainingFile);
-            WorkflowExpression.Validate(__workflow_bodytrainingFile, nameof(bodytrainingFile), required: true);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodyvalidationFile = bodyvalidationFile == null ? null : WorkflowExpression.Compile(bodyvalidationFile);
-            WorkflowExpression.Validate(__workflow_bodyvalidationFile, nameof(bodyvalidationFile), required: false);
-            var __workflow_bodyhyperparametersnEpochs = bodyhyperparametersnEpochs == null ? null : WorkflowExpression.Compile(bodyhyperparametersnEpochs);
-            WorkflowExpression.Validate(__workflow_bodyhyperparametersnEpochs, nameof(bodyhyperparametersnEpochs), required: false);
-            var __workflow_bodysuffix = bodysuffix == null ? null : WorkflowExpression.Compile(bodysuffix);
-            WorkflowExpression.Validate(__workflow_bodysuffix, nameof(bodysuffix), required: false);
+            var __workflow_bodytrainingFile = WorkflowExpression.Compile(bodytrainingFile, nameof(bodytrainingFile), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyvalidationFile = WorkflowExpression.Compile(bodyvalidationFile, nameof(bodyvalidationFile), required: false);
+            var __workflow_bodyhyperparametersnEpochs = WorkflowExpression.Compile(bodyhyperparametersnEpochs, nameof(bodyhyperparametersnEpochs), required: false);
+            var __workflow_bodysuffix = WorkflowExpression.Compile(bodysuffix, nameof(bodysuffix), required: false);
             return new DeferredBodyAction<FineTuningPostResponse>(() =>
             {
                 var apiCallPath = "/v1/fine_tuning/jobs";
@@ -172,8 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningGetResponse> FineTuningGet(Expression<Func<string>> fineTuningJobId)
         {
-            var __workflow_fineTuningJobId = fineTuningJobId == null ? null : WorkflowExpression.Compile(fineTuningJobId);
-            WorkflowExpression.Validate(__workflow_fineTuningJobId, nameof(fineTuningJobId), required: true);
+            var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
             return new DeferredBodyAction<FineTuningGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
@@ -186,8 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningCancelPostResponse> FineTuningCancel(Expression<Func<string>> fineTuningJobId)
         {
-            var __workflow_fineTuningJobId = fineTuningJobId == null ? null : WorkflowExpression.Compile(fineTuningJobId);
-            WorkflowExpression.Validate(__workflow_fineTuningJobId, nameof(fineTuningJobId), required: true);
+            var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
             return new DeferredBodyAction<FineTuningCancelPostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
@@ -200,12 +183,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<FineTuningEventsGetResponse> FineTuningEventsGet(Expression<Func<string>> fineTuningJobId, Expression<Func<string>> after = null, Expression<Func<int>> limit = null)
         {
-            var __workflow_fineTuningJobId = fineTuningJobId == null ? null : WorkflowExpression.Compile(fineTuningJobId);
-            WorkflowExpression.Validate(__workflow_fineTuningJobId, nameof(fineTuningJobId), required: true);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
+            var __workflow_fineTuningJobId = WorkflowExpression.Compile(fineTuningJobId, nameof(fineTuningJobId), required: true);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
             return new DeferredBodyAction<FineTuningEventsGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/fine_tuning/jobs/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(__workflow_fineTuningJobId, 1));
@@ -222,10 +202,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ModerationPostResponse> Moderation(Expression<Func<string>> bodyinput, Expression<Func<bodymodelInput>> bodymodel = null)
         {
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
             return new DeferredBodyAction<ModerationPostResponse>(() =>
             {
                 var apiCallPath = "/v1/moderations";
@@ -263,14 +241,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<EmbedPostResponse> Embed(Expression<Func<string>> bodyinput, Expression<Func<string>> bodymodel = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null, Expression<Func<string>> bodyuser = null)
         {
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
-            var __workflow_bodyencodingFormat = bodyencodingFormat == null ? null : WorkflowExpression.Compile(bodyencodingFormat);
-            WorkflowExpression.Validate(__workflow_bodyencodingFormat, nameof(bodyencodingFormat), required: false);
-            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
-            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyencodingFormat = WorkflowExpression.Compile(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<EmbedPostResponse>(() =>
             {
                 var apiCallPath = "/v1/embeddings";
@@ -330,16 +304,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<AudioSpeechPostResponse> AudioSpeech(Expression<Func<bodymodelInput>> bodymodel, Expression<Func<string>> bodyinput, Expression<Func<bodyvoiceInput>> bodyvoice, Expression<Func<bodyresponseFormatInput>> bodyresponseFormat = null, Expression<Func<double>> bodyspeed = null)
         {
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: true);
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: true);
-            var __workflow_bodyvoice = bodyvoice == null ? null : WorkflowExpression.Compile(bodyvoice);
-            WorkflowExpression.Validate(__workflow_bodyvoice, nameof(bodyvoice), required: true);
-            var __workflow_bodyresponseFormat = bodyresponseFormat == null ? null : WorkflowExpression.Compile(bodyresponseFormat);
-            WorkflowExpression.Validate(__workflow_bodyresponseFormat, nameof(bodyresponseFormat), required: false);
-            var __workflow_bodyspeed = bodyspeed == null ? null : WorkflowExpression.Compile(bodyspeed);
-            WorkflowExpression.Validate(__workflow_bodyspeed, nameof(bodyspeed), required: false);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: true);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: true);
+            var __workflow_bodyvoice = WorkflowExpression.Compile(bodyvoice, nameof(bodyvoice), required: true);
+            var __workflow_bodyresponseFormat = WorkflowExpression.Compile(bodyresponseFormat, nameof(bodyresponseFormat), required: false);
+            var __workflow_bodyspeed = WorkflowExpression.Compile(bodyspeed, nameof(bodyspeed), required: false);
             return new DeferredBodyAction<AudioSpeechPostResponse>(() =>
             {
                 var apiCallPath = "/v1/audio/speech";
@@ -397,16 +366,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<AudioTranscriptionPostResponse> AudioTranscription(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> language = null, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_prompt = prompt == null ? null : WorkflowExpression.Compile(prompt);
-            WorkflowExpression.Validate(__workflow_prompt, nameof(prompt), required: false);
-            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
-            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
+            var __workflow_temperature = WorkflowExpression.Compile(temperature, nameof(temperature), required: false);
             return new DeferredBodyAction<AudioTranscriptionPostResponse>(() =>
             {
                 var apiCallPath = "/v1/audio/transcriptions";
@@ -419,14 +383,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<AudioTranslationPostResponse> AudioTranslation(Expression<Func<object>> file, Expression<Func<string>> model, Expression<Func<string>> prompt = null, Expression<Func<double>> temperature = null)
         {
-            var __workflow_file = file == null ? null : WorkflowExpression.Compile(file);
-            WorkflowExpression.Validate(__workflow_file, nameof(file), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_prompt = prompt == null ? null : WorkflowExpression.Compile(prompt);
-            WorkflowExpression.Validate(__workflow_prompt, nameof(prompt), required: false);
-            var __workflow_temperature = temperature == null ? null : WorkflowExpression.Compile(temperature);
-            WorkflowExpression.Validate(__workflow_temperature, nameof(temperature), required: false);
+            var __workflow_file = WorkflowExpression.Compile(file, nameof(file), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
+            var __workflow_temperature = WorkflowExpression.Compile(temperature, nameof(temperature), required: false);
             return new DeferredBodyAction<AudioTranslationPostResponse>(() =>
             {
                 var apiCallPath = "/v1/audio/translations";
@@ -439,20 +399,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<string>> bodyprompt, Expression<Func<bodymodelInput>> bodymodel = null, Expression<Func<int>> bodyn = null, Expression<Func<bodyqualityInput>> bodyquality = null, Expression<Func<bodysizeInput>> bodysize = null, Expression<Func<bodystyleInput>> bodystyle = null, Expression<Func<string>> bodyuser = null)
         {
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodymodel = bodymodel == null ? null : WorkflowExpression.Compile(bodymodel);
-            WorkflowExpression.Validate(__workflow_bodymodel, nameof(bodymodel), required: false);
-            var __workflow_bodyn = bodyn == null ? null : WorkflowExpression.Compile(bodyn);
-            WorkflowExpression.Validate(__workflow_bodyn, nameof(bodyn), required: false);
-            var __workflow_bodyquality = bodyquality == null ? null : WorkflowExpression.Compile(bodyquality);
-            WorkflowExpression.Validate(__workflow_bodyquality, nameof(bodyquality), required: false);
-            var __workflow_bodysize = bodysize == null ? null : WorkflowExpression.Compile(bodysize);
-            WorkflowExpression.Validate(__workflow_bodysize, nameof(bodysize), required: false);
-            var __workflow_bodystyle = bodystyle == null ? null : WorkflowExpression.Compile(bodystyle);
-            WorkflowExpression.Validate(__workflow_bodystyle, nameof(bodystyle), required: false);
-            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
-            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymodel = WorkflowExpression.Compile(bodymodel, nameof(bodymodel), required: false);
+            var __workflow_bodyn = WorkflowExpression.Compile(bodyn, nameof(bodyn), required: false);
+            var __workflow_bodyquality = WorkflowExpression.Compile(bodyquality, nameof(bodyquality), required: false);
+            var __workflow_bodysize = WorkflowExpression.Compile(bodysize, nameof(bodysize), required: false);
+            var __workflow_bodystyle = WorkflowExpression.Compile(bodystyle, nameof(bodystyle), required: false);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
             return new DeferredBodyAction<ImagePostResponse>(() =>
             {
                 var apiCallPath = "/v1/images/generations";
@@ -542,20 +495,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit(Expression<Func<object>> image, Expression<Func<string>> prompt = null, Expression<Func<object>> mask = null, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: true);
-            var __workflow_prompt = prompt == null ? null : WorkflowExpression.Compile(prompt);
-            WorkflowExpression.Validate(__workflow_prompt, nameof(prompt), required: false);
-            var __workflow_mask = mask == null ? null : WorkflowExpression.Compile(mask);
-            WorkflowExpression.Validate(__workflow_mask, nameof(mask), required: false);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
-            var __workflow_n = n == null ? null : WorkflowExpression.Compile(n);
-            WorkflowExpression.Validate(__workflow_n, nameof(n), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_user = user == null ? null : WorkflowExpression.Compile(user);
-            WorkflowExpression.Validate(__workflow_user, nameof(user), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
+            var __workflow_prompt = WorkflowExpression.Compile(prompt, nameof(prompt), required: false);
+            var __workflow_mask = WorkflowExpression.Compile(mask, nameof(mask), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: false);
             return new DeferredBodyAction<ImageEditPostResponse>(() =>
             {
                 var apiCallPath = "/v1/images/edits";
@@ -568,16 +514,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openaigpt4ip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openaigpt4ip")]
         public IBodyWorkflowAction<ImageVariationPostResponse> ImageVariation(Expression<Func<object>> image, Expression<Func<string>> model = null, Expression<Func<int>> n = null, Expression<Func<sizeInput>> size = null, Expression<Func<string>> user = null)
         {
-            var __workflow_image = image == null ? null : WorkflowExpression.Compile(image);
-            WorkflowExpression.Validate(__workflow_image, nameof(image), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
-            var __workflow_n = n == null ? null : WorkflowExpression.Compile(n);
-            WorkflowExpression.Validate(__workflow_n, nameof(n), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_user = user == null ? null : WorkflowExpression.Compile(user);
-            WorkflowExpression.Validate(__workflow_user, nameof(user), required: false);
+            var __workflow_image = WorkflowExpression.Compile(image, nameof(image), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_n = WorkflowExpression.Compile(n, nameof(n), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_user = WorkflowExpression.Compile(user, nameof(user), required: false);
             return new DeferredBodyAction<ImageVariationPostResponse>(() =>
             {
                 var apiCallPath = "/v1/images/variations";

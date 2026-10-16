@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<TaskV2> CreateItem(Expression<Func<string>> newItemtitle, Expression<Func<string>> newItemprojectId = null, Expression<Func<string>> newItemdueDate = null, Expression<Func<int>> newItempriority = null, Expression<Func<string>> newItemparentId = null, Expression<Func<int>> newItemchildOrder = null)
         {
-            var __workflow_newItemtitle = newItemtitle == null ? null : WorkflowExpression.Compile(newItemtitle);
-            WorkflowExpression.Validate(__workflow_newItemtitle, nameof(newItemtitle), required: true);
-            var __workflow_newItemprojectId = newItemprojectId == null ? null : WorkflowExpression.Compile(newItemprojectId);
-            WorkflowExpression.Validate(__workflow_newItemprojectId, nameof(newItemprojectId), required: false);
-            var __workflow_newItemdueDate = newItemdueDate == null ? null : WorkflowExpression.Compile(newItemdueDate);
-            WorkflowExpression.Validate(__workflow_newItemdueDate, nameof(newItemdueDate), required: false);
-            var __workflow_newItempriority = newItempriority == null ? null : WorkflowExpression.Compile(newItempriority);
-            WorkflowExpression.Validate(__workflow_newItempriority, nameof(newItempriority), required: false);
-            var __workflow_newItemparentId = newItemparentId == null ? null : WorkflowExpression.Compile(newItemparentId);
-            WorkflowExpression.Validate(__workflow_newItemparentId, nameof(newItemparentId), required: false);
-            var __workflow_newItemchildOrder = newItemchildOrder == null ? null : WorkflowExpression.Compile(newItemchildOrder);
-            WorkflowExpression.Validate(__workflow_newItemchildOrder, nameof(newItemchildOrder), required: false);
+            var __workflow_newItemtitle = WorkflowExpression.Compile(newItemtitle, nameof(newItemtitle), required: true);
+            var __workflow_newItemprojectId = WorkflowExpression.Compile(newItemprojectId, nameof(newItemprojectId), required: false);
+            var __workflow_newItemdueDate = WorkflowExpression.Compile(newItemdueDate, nameof(newItemdueDate), required: false);
+            var __workflow_newItempriority = WorkflowExpression.Compile(newItempriority, nameof(newItempriority), required: false);
+            var __workflow_newItemparentId = WorkflowExpression.Compile(newItemparentId, nameof(newItemparentId), required: false);
+            var __workflow_newItemchildOrder = WorkflowExpression.Compile(newItemchildOrder, nameof(newItemchildOrder), required: false);
             return new DeferredBodyAction<TaskV2>(() =>
             {
                 var apiCallPath = "/v4/tasks/createTask";
@@ -76,12 +70,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<LabelV4> CreateLabel(Expression<Func<string>> newLabelname, Expression<Func<string>> newLabelcolor = null, Expression<Func<int>> newLabelorder = null)
         {
-            var __workflow_newLabelname = newLabelname == null ? null : WorkflowExpression.Compile(newLabelname);
-            WorkflowExpression.Validate(__workflow_newLabelname, nameof(newLabelname), required: true);
-            var __workflow_newLabelcolor = newLabelcolor == null ? null : WorkflowExpression.Compile(newLabelcolor);
-            WorkflowExpression.Validate(__workflow_newLabelcolor, nameof(newLabelcolor), required: false);
-            var __workflow_newLabelorder = newLabelorder == null ? null : WorkflowExpression.Compile(newLabelorder);
-            WorkflowExpression.Validate(__workflow_newLabelorder, nameof(newLabelorder), required: false);
+            var __workflow_newLabelname = WorkflowExpression.Compile(newLabelname, nameof(newLabelname), required: true);
+            var __workflow_newLabelcolor = WorkflowExpression.Compile(newLabelcolor, nameof(newLabelcolor), required: false);
+            var __workflow_newLabelorder = WorkflowExpression.Compile(newLabelorder, nameof(newLabelorder), required: false);
             return new DeferredBodyAction<LabelV4>(() =>
             {
                 var apiCallPath = "/v4/labels/createLabel";
@@ -115,14 +106,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<ProjectV4> CreateProject(Expression<Func<string>> newProjectname, Expression<Func<string>> newProjectcolor = null, Expression<Func<string>> newProjectparentId = null, Expression<Func<bool>> newProjectisFavorite = null)
         {
-            var __workflow_newProjectname = newProjectname == null ? null : WorkflowExpression.Compile(newProjectname);
-            WorkflowExpression.Validate(__workflow_newProjectname, nameof(newProjectname), required: true);
-            var __workflow_newProjectcolor = newProjectcolor == null ? null : WorkflowExpression.Compile(newProjectcolor);
-            WorkflowExpression.Validate(__workflow_newProjectcolor, nameof(newProjectcolor), required: false);
-            var __workflow_newProjectparentId = newProjectparentId == null ? null : WorkflowExpression.Compile(newProjectparentId);
-            WorkflowExpression.Validate(__workflow_newProjectparentId, nameof(newProjectparentId), required: false);
-            var __workflow_newProjectisFavorite = newProjectisFavorite == null ? null : WorkflowExpression.Compile(newProjectisFavorite);
-            WorkflowExpression.Validate(__workflow_newProjectisFavorite, nameof(newProjectisFavorite), required: false);
+            var __workflow_newProjectname = WorkflowExpression.Compile(newProjectname, nameof(newProjectname), required: true);
+            var __workflow_newProjectcolor = WorkflowExpression.Compile(newProjectcolor, nameof(newProjectcolor), required: false);
+            var __workflow_newProjectparentId = WorkflowExpression.Compile(newProjectparentId, nameof(newProjectparentId), required: false);
+            var __workflow_newProjectisFavorite = WorkflowExpression.Compile(newProjectisFavorite, nameof(newProjectisFavorite), required: false);
             return new DeferredBodyAction<ProjectV4>(() =>
             {
                 var apiCallPath = "/v4/projects/createProject";
@@ -171,8 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<TaskV2[]> ListItemsByProject(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<TaskV2[]>(() =>
             {
                 var apiCallPath = "/v4/tasks/getTasksByProject";
@@ -204,10 +190,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IBodyWorkflowAction<ProjectV4> ShareProject(Expression<Func<string>> projectId, Expression<Func<string>> shareProjectemail)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_shareProjectemail = shareProjectemail == null ? null : WorkflowExpression.Compile(shareProjectemail);
-            WorkflowExpression.Validate(__workflow_shareProjectemail, nameof(shareProjectemail), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_shareProjectemail = WorkflowExpression.Compile(shareProjectemail, nameof(shareProjectemail), required: true);
             return new DeferredBodyAction<ProjectV4>(() =>
             {
                 var apiCallPath = "/v4/sync/shareProject";
@@ -230,14 +214,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IWorkflowAction UpdateItem(Expression<Func<string>> projectId, Expression<Func<string>> id, Expression<Func<string>> changeItemtitle, Expression<Func<int>> changeItempriority = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_changeItemtitle = changeItemtitle == null ? null : WorkflowExpression.Compile(changeItemtitle);
-            WorkflowExpression.Validate(__workflow_changeItemtitle, nameof(changeItemtitle), required: true);
-            var __workflow_changeItempriority = changeItempriority == null ? null : WorkflowExpression.Compile(changeItempriority);
-            WorkflowExpression.Validate(__workflow_changeItempriority, nameof(changeItempriority), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_changeItemtitle = WorkflowExpression.Compile(changeItemtitle, nameof(changeItemtitle), required: true);
+            var __workflow_changeItempriority = WorkflowExpression.Compile(changeItempriority, nameof(changeItempriority), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4/tasks/updateTask";
@@ -267,14 +247,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IWorkflowAction UpdateLabel(Expression<Func<string>> id, Expression<Func<string>> changeLabelname = null, Expression<Func<string>> changeLabelcolor = null, Expression<Func<int>> changeLabelorder = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_changeLabelname = changeLabelname == null ? null : WorkflowExpression.Compile(changeLabelname);
-            WorkflowExpression.Validate(__workflow_changeLabelname, nameof(changeLabelname), required: false);
-            var __workflow_changeLabelcolor = changeLabelcolor == null ? null : WorkflowExpression.Compile(changeLabelcolor);
-            WorkflowExpression.Validate(__workflow_changeLabelcolor, nameof(changeLabelcolor), required: false);
-            var __workflow_changeLabelorder = changeLabelorder == null ? null : WorkflowExpression.Compile(changeLabelorder);
-            WorkflowExpression.Validate(__workflow_changeLabelorder, nameof(changeLabelorder), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_changeLabelname = WorkflowExpression.Compile(changeLabelname, nameof(changeLabelname), required: false);
+            var __workflow_changeLabelcolor = WorkflowExpression.Compile(changeLabelcolor, nameof(changeLabelcolor), required: false);
+            var __workflow_changeLabelorder = WorkflowExpression.Compile(changeLabelorder, nameof(changeLabelorder), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4/labels/updateLabel";
@@ -313,14 +289,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoist")]
         public IWorkflowAction UpdateProject(Expression<Func<string>> id, Expression<Func<string>> changeProjectname, Expression<Func<string>> changeProjectcolor = null, Expression<Func<bool>> changeProjectisFavorite = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_changeProjectname = changeProjectname == null ? null : WorkflowExpression.Compile(changeProjectname);
-            WorkflowExpression.Validate(__workflow_changeProjectname, nameof(changeProjectname), required: true);
-            var __workflow_changeProjectcolor = changeProjectcolor == null ? null : WorkflowExpression.Compile(changeProjectcolor);
-            WorkflowExpression.Validate(__workflow_changeProjectcolor, nameof(changeProjectcolor), required: false);
-            var __workflow_changeProjectisFavorite = changeProjectisFavorite == null ? null : WorkflowExpression.Compile(changeProjectisFavorite);
-            WorkflowExpression.Validate(__workflow_changeProjectisFavorite, nameof(changeProjectisFavorite), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_changeProjectname = WorkflowExpression.Compile(changeProjectname, nameof(changeProjectname), required: true);
+            var __workflow_changeProjectcolor = WorkflowExpression.Compile(changeProjectcolor, nameof(changeProjectcolor), required: false);
+            var __workflow_changeProjectisFavorite = WorkflowExpression.Compile(changeProjectisFavorite, nameof(changeProjectisFavorite), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/v4/projects/updateProject";
@@ -357,8 +329,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
     {
         public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<OnItemCompletedV4Response>(() =>
             {
                 var apiCallPath = "/v4/trigger/completed/get_all";
@@ -371,8 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
 
         public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated(Expression<Func<string>> projectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<OnItemCreatedV4Response>(() =>
             {
                 var apiCallPath = "/v4/trigger/sync";

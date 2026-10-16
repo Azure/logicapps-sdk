@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<SpecGetResponse> SpecGet(Expression<Func<string>> vin)
         {
-            var __workflow_vin = vin == null ? null : WorkflowExpression.Compile(vin);
-            WorkflowExpression.Validate(__workflow_vin, nameof(vin), required: true);
+            var __workflow_vin = WorkflowExpression.Compile(vin, nameof(vin), required: true);
             return new DeferredBodyAction<SpecGetResponse>(() =>
             {
                 var apiCallPath = "/specs";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<ValueGetResponse> ValueGet(Expression<Func<string>> vin)
         {
-            var __workflow_vin = vin == null ? null : WorkflowExpression.Compile(vin);
-            WorkflowExpression.Validate(__workflow_vin, nameof(vin), required: true);
+            var __workflow_vin = WorkflowExpression.Compile(vin, nameof(vin), required: true);
             return new DeferredBodyAction<ValueGetResponse>(() =>
             {
                 var apiCallPath = "/marketvalue";
@@ -43,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<HistoryGetResponse> HistoryGet(Expression<Func<string>> vin)
         {
-            var __workflow_vin = vin == null ? null : WorkflowExpression.Compile(vin);
-            WorkflowExpression.Validate(__workflow_vin, nameof(vin), required: true);
+            var __workflow_vin = WorkflowExpression.Compile(vin, nameof(vin), required: true);
             return new DeferredBodyAction<HistoryGetResponse>(() =>
             {
                 var apiCallPath = "/history";
@@ -58,12 +55,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<PlateDecodeResponse> PlateDecode(Expression<Func<string>> plate, Expression<Func<string>> state, Expression<Func<countryInput>> country = null)
         {
-            var __workflow_plate = plate == null ? null : WorkflowExpression.Compile(plate);
-            WorkflowExpression.Validate(__workflow_plate, nameof(plate), required: true);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: true);
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
+            var __workflow_plate = WorkflowExpression.Compile(plate, nameof(plate), required: true);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: true);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
             return new DeferredBodyAction<PlateDecodeResponse>(() =>
             {
                 var apiCallPath = "/platedecoder";
@@ -80,26 +74,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> make, Expression<Func<string>> model, Expression<Func<int>> year = null, Expression<Func<string>> trim = null, Expression<Func<string>> color = null, Expression<Func<bool>> transparent = null, Expression<Func<angleInput>> angle = null, Expression<Func<photoTypeInput>> photoType = null, Expression<Func<sizeInput>> size = null, Expression<Func<licenseInput>> license = null)
         {
-            var __workflow_make = make == null ? null : WorkflowExpression.Compile(make);
-            WorkflowExpression.Validate(__workflow_make, nameof(make), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_trim = trim == null ? null : WorkflowExpression.Compile(trim);
-            WorkflowExpression.Validate(__workflow_trim, nameof(trim), required: false);
-            var __workflow_color = color == null ? null : WorkflowExpression.Compile(color);
-            WorkflowExpression.Validate(__workflow_color, nameof(color), required: false);
-            var __workflow_transparent = transparent == null ? null : WorkflowExpression.Compile(transparent);
-            WorkflowExpression.Validate(__workflow_transparent, nameof(transparent), required: false);
-            var __workflow_angle = angle == null ? null : WorkflowExpression.Compile(angle);
-            WorkflowExpression.Validate(__workflow_angle, nameof(angle), required: false);
-            var __workflow_photoType = photoType == null ? null : WorkflowExpression.Compile(photoType);
-            WorkflowExpression.Validate(__workflow_photoType, nameof(photoType), required: false);
-            var __workflow_size = size == null ? null : WorkflowExpression.Compile(size);
-            WorkflowExpression.Validate(__workflow_size, nameof(size), required: false);
-            var __workflow_license = license == null ? null : WorkflowExpression.Compile(license);
-            WorkflowExpression.Validate(__workflow_license, nameof(license), required: false);
+            var __workflow_make = WorkflowExpression.Compile(make, nameof(make), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_trim = WorkflowExpression.Compile(trim, nameof(trim), required: false);
+            var __workflow_color = WorkflowExpression.Compile(color, nameof(color), required: false);
+            var __workflow_transparent = WorkflowExpression.Compile(transparent, nameof(transparent), required: false);
+            var __workflow_angle = WorkflowExpression.Compile(angle, nameof(angle), required: false);
+            var __workflow_photoType = WorkflowExpression.Compile(photoType, nameof(photoType), required: false);
+            var __workflow_size = WorkflowExpression.Compile(size, nameof(size), required: false);
+            var __workflow_license = WorkflowExpression.Compile(license, nameof(license), required: false);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
                 var apiCallPath = "/images";
@@ -131,8 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<PlateRecogResponse> PlateRecog(Expression<Func<string>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<PlateRecogResponse>(() =>
             {
                 var apiCallPath = "/platerecognition";
@@ -147,8 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
         public IBodyWorkflowAction<CodeGetResponse> CodeGet(Expression<Func<string>> code)
         {
-            var __workflow_code = code == null ? null : WorkflowExpression.Compile(code);
-            WorkflowExpression.Validate(__workflow_code, nameof(code), required: true);
+            var __workflow_code = WorkflowExpression.Compile(code, nameof(code), required: true);
             return new DeferredBodyAction<CodeGetResponse>(() =>
             {
                 var apiCallPath = "/obdcodesdecoder";

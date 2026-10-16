@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
     {
         public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
         {
-            var __workflow_formKey = formKey == null ? null : WorkflowExpression.Compile(formKey);
-            WorkflowExpression.Validate(__workflow_formKey, nameof(formKey), required: true);
+            var __workflow_formKey = WorkflowExpression.Compile(formKey, nameof(formKey), required: true);
             return new DeferredBodyTrigger<FormCompletionResponse>(() =>
             {
                 var apiCallPath = "/trigger/power-automate/poll/form_completion/";
@@ -30,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
         public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
         {
-            var __workflow_formKey = formKey == null ? null : WorkflowExpression.Compile(formKey);
-            WorkflowExpression.Validate(__workflow_formKey, nameof(formKey), required: true);
+            var __workflow_formKey = WorkflowExpression.Compile(formKey, nameof(formKey), required: true);
             return new DeferredBodyTrigger<DataReceivedResponse>(() =>
             {
                 var apiCallPath = "/trigger/power-automate/poll/data_received/";
@@ -44,8 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
         public IBodyWorkflowTrigger<NewFileResponse> NewFile(Expression<Func<string>> formKey, FlowRecurrence recurrence = null)
         {
-            var __workflow_formKey = formKey == null ? null : WorkflowExpression.Compile(formKey);
-            WorkflowExpression.Validate(__workflow_formKey, nameof(formKey), required: true);
+            var __workflow_formKey = WorkflowExpression.Compile(formKey, nameof(formKey), required: true);
             return new DeferredBodyTrigger<NewFileResponse>(() =>
             {
                 var apiCallPath = "/trigger/power-automate/poll/file/";

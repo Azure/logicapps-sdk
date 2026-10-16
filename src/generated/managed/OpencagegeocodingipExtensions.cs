@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
         public IBodyWorkflowAction<ReverseGeocodingResponse> ReverseGeocoding(Expression<Func<string>> lat, Expression<Func<string>> @long)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_long = @long == null ? null : WorkflowExpression.Compile(@long);
-            WorkflowExpression.Validate(__workflow_long, nameof(@long), required: true);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
             return new DeferredBodyAction<ReverseGeocodingResponse>(() =>
             {
                 var apiCallPath = "/v1/json/reverse";
@@ -31,8 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
         public IBodyWorkflowAction<ForwardGeocodingResponse> ForwardGeocoding(Expression<Func<string>> placename)
         {
-            var __workflow_placename = placename == null ? null : WorkflowExpression.Compile(placename);
-            WorkflowExpression.Validate(__workflow_placename, nameof(placename), required: true);
+            var __workflow_placename = WorkflowExpression.Compile(placename, nameof(placename), required: true);
             return new DeferredBodyAction<ForwardGeocodingResponse>(() =>
             {
                 var apiCallPath = "/v1/json/forward";

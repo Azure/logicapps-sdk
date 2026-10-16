@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
         public IBodyWorkflowAction<GetDataResponse> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<formattedInput>> formatted = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_lng = lng == null ? null : WorkflowExpression.Compile(lng);
-            WorkflowExpression.Validate(__workflow_lng, nameof(lng), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
-            var __workflow_formatted = formatted == null ? null : WorkflowExpression.Compile(formatted);
-            WorkflowExpression.Validate(__workflow_formatted, nameof(formatted), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_lng = WorkflowExpression.Compile(lng, nameof(lng), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_formatted = WorkflowExpression.Compile(formatted, nameof(formatted), required: false);
             return new DeferredBodyAction<GetDataResponse>(() =>
             {
                 var apiCallPath = "/json";

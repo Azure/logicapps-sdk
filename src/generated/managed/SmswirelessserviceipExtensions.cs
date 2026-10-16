@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smswirelessserviceip")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodybody, Expression<Func<string>> bodyrecipients = null, Expression<Func<string>> bodyconcatenation = null, Expression<Func<string>> bodyoriginator = null, Expression<Func<string>> bodytest = null)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodybody = bodybody == null ? null : WorkflowExpression.Compile(bodybody);
-            WorkflowExpression.Validate(__workflow_bodybody, nameof(bodybody), required: true);
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: false);
-            var __workflow_bodyconcatenation = bodyconcatenation == null ? null : WorkflowExpression.Compile(bodyconcatenation);
-            WorkflowExpression.Validate(__workflow_bodyconcatenation, nameof(bodyconcatenation), required: false);
-            var __workflow_bodyoriginator = bodyoriginator == null ? null : WorkflowExpression.Compile(bodyoriginator);
-            WorkflowExpression.Validate(__workflow_bodyoriginator, nameof(bodyoriginator), required: false);
-            var __workflow_bodytest = bodytest == null ? null : WorkflowExpression.Compile(bodytest);
-            WorkflowExpression.Validate(__workflow_bodytest, nameof(bodytest), required: false);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodybody = WorkflowExpression.Compile(bodybody, nameof(bodybody), required: true);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_bodyconcatenation = WorkflowExpression.Compile(bodyconcatenation, nameof(bodyconcatenation), required: false);
+            var __workflow_bodyoriginator = WorkflowExpression.Compile(bodyoriginator, nameof(bodyoriginator), required: false);
+            var __workflow_bodytest = WorkflowExpression.Compile(bodytest, nameof(bodytest), required: false);
             return new DeferredBodyAction<SendSMSResponse>(() =>
             {
                 var apiCallPath = "/message.php";

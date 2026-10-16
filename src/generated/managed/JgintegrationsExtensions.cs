@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<HASHHMACResponse> HASHHMAC(Expression<Func<bodyalgoInput>> bodyalgo, Expression<Func<string>> bodycontent, Expression<Func<string>> bodykey)
         {
-            var __workflow_bodyalgo = bodyalgo == null ? null : WorkflowExpression.Compile(bodyalgo);
-            WorkflowExpression.Validate(__workflow_bodyalgo, nameof(bodyalgo), required: true);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: true);
-            var __workflow_bodykey = bodykey == null ? null : WorkflowExpression.Compile(bodykey);
-            WorkflowExpression.Validate(__workflow_bodykey, nameof(bodykey), required: true);
+            var __workflow_bodyalgo = WorkflowExpression.Compile(bodyalgo, nameof(bodyalgo), required: true);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: true);
+            var __workflow_bodykey = WorkflowExpression.Compile(bodykey, nameof(bodykey), required: true);
             return new DeferredBodyAction<HASHHMACResponse>(() =>
             {
                 var apiCallPath = "/crypto/hash_hmac";
@@ -46,12 +43,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<PREGREPLACEResponse> PREGREPLACE(Expression<Func<string>> bodypattern, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyreplacement = null)
         {
-            var __workflow_bodypattern = bodypattern == null ? null : WorkflowExpression.Compile(bodypattern);
-            WorkflowExpression.Validate(__workflow_bodypattern, nameof(bodypattern), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodyreplacement = bodyreplacement == null ? null : WorkflowExpression.Compile(bodyreplacement);
-            WorkflowExpression.Validate(__workflow_bodyreplacement, nameof(bodyreplacement), required: false);
+            var __workflow_bodypattern = WorkflowExpression.Compile(bodypattern, nameof(bodypattern), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodyreplacement = WorkflowExpression.Compile(bodyreplacement, nameof(bodyreplacement), required: false);
             return new DeferredBodyAction<PREGREPLACEResponse>(() =>
             {
                 var apiCallPath = "/text/preg_replace";
@@ -93,10 +87,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<MANUALResponse> MANUAL(Expression<Func<string>> bodyfunction, Expression<Func<string>> bodydata)
         {
-            var __workflow_bodyfunction = bodyfunction == null ? null : WorkflowExpression.Compile(bodyfunction);
-            WorkflowExpression.Validate(__workflow_bodyfunction, nameof(bodyfunction), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyfunction = WorkflowExpression.Compile(bodyfunction, nameof(bodyfunction), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
             return new DeferredBodyAction<MANUALResponse>(() =>
             {
                 var apiCallPath = "/manual_func";
@@ -122,14 +114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<JToken> HTMLTOPDF(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyname, Expression<Func<bool>> bodylandscape, Expression<Func<bodypagesizeInput>> bodypagesize)
         {
-            var __workflow_bodyhtml = bodyhtml == null ? null : WorkflowExpression.Compile(bodyhtml);
-            WorkflowExpression.Validate(__workflow_bodyhtml, nameof(bodyhtml), required: true);
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: true);
-            var __workflow_bodylandscape = bodylandscape == null ? null : WorkflowExpression.Compile(bodylandscape);
-            WorkflowExpression.Validate(__workflow_bodylandscape, nameof(bodylandscape), required: true);
-            var __workflow_bodypagesize = bodypagesize == null ? null : WorkflowExpression.Compile(bodypagesize);
-            WorkflowExpression.Validate(__workflow_bodypagesize, nameof(bodypagesize), required: true);
+            var __workflow_bodyhtml = WorkflowExpression.Compile(bodyhtml, nameof(bodyhtml), required: true);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: true);
+            var __workflow_bodylandscape = WorkflowExpression.Compile(bodylandscape, nameof(bodylandscape), required: true);
+            var __workflow_bodypagesize = WorkflowExpression.Compile(bodypagesize, nameof(bodypagesize), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/text/html_to_pdf";
@@ -159,8 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jgintegrations
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jgintegrations")]
         public IBodyWorkflowAction<FILESTRINGResponse> FILESTRING(Expression<Func<string>> bodysubject)
         {
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
             return new DeferredBodyAction<FILESTRINGResponse>(() =>
             {
                 var apiCallPath = "/text/file_string";

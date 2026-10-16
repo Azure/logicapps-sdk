@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_filing = filing == null ? null : WorkflowExpression.Compile(filing);
-            WorkflowExpression.Validate(__workflow_filing, nameof(filing), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_filing = WorkflowExpression.Compile(filing, nameof(filing), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<EntityFilingsResponseItem[]>(() =>
             {
                 var apiCallPath = "/EntityFilings";
@@ -36,8 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<OpenForm4Response> OpenForm4(Expression<Func<string>> filingurl)
         {
-            var __workflow_filingurl = filingurl == null ? null : WorkflowExpression.Compile(filingurl);
-            WorkflowExpression.Validate(__workflow_filingurl, nameof(filingurl), required: true);
+            var __workflow_filingurl = WorkflowExpression.Compile(filingurl, nameof(filingurl), required: true);
             return new DeferredBodyAction<OpenForm4Response>(() =>
             {
                 var apiCallPath = "/OpenForm4";
@@ -51,8 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials(Expression<Func<string>> filingurl)
         {
-            var __workflow_filingurl = filingurl == null ? null : WorkflowExpression.Compile(filingurl);
-            WorkflowExpression.Validate(__workflow_filingurl, nameof(filingurl), required: true);
+            var __workflow_filingurl = WorkflowExpression.Compile(filingurl, nameof(filingurl), required: true);
             return new DeferredBodyAction<OpenCommonFinancialsResponse>(() =>
             {
                 var apiCallPath = "/OpenCommonFinancials";
@@ -66,10 +61,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities(Expression<Func<string>> term, Expression<Func<int>> top = null)
         {
-            var __workflow_term = term == null ? null : WorkflowExpression.Compile(term);
-            WorkflowExpression.Validate(__workflow_term, nameof(term), required: true);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_term = WorkflowExpression.Compile(term, nameof(term), required: true);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<SearchEntitiesResponseItem[]>(() =>
             {
                 var apiCallPath = "/SearchEntities";
@@ -86,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetEntityResponse>(() =>
             {
                 var apiCallPath = "/GetEntity";
@@ -101,10 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetFilingResponse> GetFiling(Expression<Func<string>> id = null, Expression<Func<string>> url = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_url = url == null ? null : WorkflowExpression.Compile(url);
-            WorkflowExpression.Validate(__workflow_url, nameof(url), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_url = WorkflowExpression.Compile(url, nameof(url), required: false);
             return new DeferredBodyAction<GetFilingResponse>(() =>
             {
                 var apiCallPath = "/GetFiling";
@@ -121,20 +111,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions(Expression<Func<string>> issuer = null, Expression<Func<int>> owner = null, Expression<Func<int>> top = null, Expression<Func<string>> before = null, Expression<Func<int>> securitytype = null, Expression<Func<int>> transactiontype = null, Expression<Func<bool>> cascade = null)
         {
-            var __workflow_issuer = issuer == null ? null : WorkflowExpression.Compile(issuer);
-            WorkflowExpression.Validate(__workflow_issuer, nameof(issuer), required: false);
-            var __workflow_owner = owner == null ? null : WorkflowExpression.Compile(owner);
-            WorkflowExpression.Validate(__workflow_owner, nameof(owner), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
-            var __workflow_securitytype = securitytype == null ? null : WorkflowExpression.Compile(securitytype);
-            WorkflowExpression.Validate(__workflow_securitytype, nameof(securitytype), required: false);
-            var __workflow_transactiontype = transactiontype == null ? null : WorkflowExpression.Compile(transactiontype);
-            WorkflowExpression.Validate(__workflow_transactiontype, nameof(transactiontype), required: false);
-            var __workflow_cascade = cascade == null ? null : WorkflowExpression.Compile(cascade);
-            WorkflowExpression.Validate(__workflow_cascade, nameof(cascade), required: false);
+            var __workflow_issuer = WorkflowExpression.Compile(issuer, nameof(issuer), required: false);
+            var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
+            var __workflow_securitytype = WorkflowExpression.Compile(securitytype, nameof(securitytype), required: false);
+            var __workflow_transactiontype = WorkflowExpression.Compile(transactiontype, nameof(transactiontype), required: false);
+            var __workflow_cascade = WorkflowExpression.Compile(cascade, nameof(cascade), required: false);
             return new DeferredBodyAction<LatestTransactionsResponseItem[]>(() =>
             {
                 var apiCallPath = "/LatestTransactions";
@@ -162,8 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<AffiliatedOwnersResponseItem[]>(() =>
             {
                 var apiCallPath = "/AffiliatedOwners";
@@ -177,12 +159,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<GetCommonFinancialsResponse>(() =>
             {
                 var apiCallPath = "/CommonFinancials";
@@ -200,16 +179,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend(Expression<Func<string>> id, Expression<Func<int>> label, Expression<Func<int>> period = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_label = label == null ? null : WorkflowExpression.Compile(label);
-            WorkflowExpression.Validate(__workflow_label, nameof(label), required: true);
-            var __workflow_period = period == null ? null : WorkflowExpression.Compile(period);
-            WorkflowExpression.Validate(__workflow_period, nameof(period), required: false);
-            var __workflow_after = after == null ? null : WorkflowExpression.Compile(after);
-            WorkflowExpression.Validate(__workflow_after, nameof(after), required: false);
-            var __workflow_before = before == null ? null : WorkflowExpression.Compile(before);
-            WorkflowExpression.Validate(__workflow_before, nameof(before), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_label = WorkflowExpression.Compile(label, nameof(label), required: true);
+            var __workflow_period = WorkflowExpression.Compile(period, nameof(period), required: false);
+            var __workflow_after = WorkflowExpression.Compile(after, nameof(after), required: false);
+            var __workflow_before = WorkflowExpression.Compile(before, nameof(before), required: false);
             return new DeferredBodyAction<FinancialFactTrendResponseItem[]>(() =>
             {
                 var apiCallPath = "/FinancialFactTrend";
@@ -230,14 +204,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls(Expression<Func<string>> company = null, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> top = null)
         {
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_quarter = quarter == null ? null : WorkflowExpression.Compile(quarter);
-            WorkflowExpression.Validate(__workflow_quarter, nameof(quarter), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<SearchEarningsCallsResponseItem[]>(() =>
             {
                 var apiCallPath = "/SearchEarningsCalls";
@@ -258,16 +228,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EarningsCallResponse> EarningsCall(Expression<Func<string>> company, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> begin = null, Expression<Func<int>> end = null)
         {
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_quarter = quarter == null ? null : WorkflowExpression.Compile(quarter);
-            WorkflowExpression.Validate(__workflow_quarter, nameof(quarter), required: false);
-            var __workflow_begin = begin == null ? null : WorkflowExpression.Compile(begin);
-            WorkflowExpression.Validate(__workflow_begin, nameof(begin), required: false);
-            var __workflow_end = end == null ? null : WorkflowExpression.Compile(end);
-            WorkflowExpression.Validate(__workflow_end, nameof(end), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: false);
+            var __workflow_begin = WorkflowExpression.Compile(begin, nameof(begin), required: false);
+            var __workflow_end = WorkflowExpression.Compile(end, nameof(end), required: false);
             return new DeferredBodyAction<EarningsCallResponse>(() =>
             {
                 var apiCallPath = "/EarningsCall";
@@ -289,16 +254,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights(Expression<Func<string>> company, Expression<Func<int>> year, Expression<Func<string>> quarter, Expression<Func<int>> category = null, Expression<Func<int>> top = null)
         {
-            var __workflow_company = company == null ? null : WorkflowExpression.Compile(company);
-            WorkflowExpression.Validate(__workflow_company, nameof(company), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_quarter = quarter == null ? null : WorkflowExpression.Compile(quarter);
-            WorkflowExpression.Validate(__workflow_quarter, nameof(quarter), required: true);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
+            var __workflow_company = WorkflowExpression.Compile(company, nameof(company), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_quarter = WorkflowExpression.Compile(quarter, nameof(quarter), required: true);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
             return new DeferredBodyAction<EarningsCallHighlightsResponseItem[]>(() =>
             {
                 var apiCallPath = "/EarningsCallHighlights";
@@ -318,8 +278,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote(Expression<Func<string>> symbol)
         {
-            var __workflow_symbol = symbol == null ? null : WorkflowExpression.Compile(symbol);
-            WorkflowExpression.Validate(__workflow_symbol, nameof(symbol), required: true);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
             return new DeferredBodyAction<CryptoQuoteResponse>(() =>
             {
                 var apiCallPath = "/Crypto";
@@ -333,10 +292,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
         public IBodyWorkflowAction<StockDataV2Response> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
         {
-            var __workflow_symbol = symbol == null ? null : WorkflowExpression.Compile(symbol);
-            WorkflowExpression.Validate(__workflow_symbol, nameof(symbol), required: true);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
+            var __workflow_symbol = WorkflowExpression.Compile(symbol, nameof(symbol), required: true);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
             return new DeferredBodyAction<StockDataV2Response>(() =>
             {
                 var apiCallPath = "/v2/StockData";
@@ -372,14 +329,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
         public IWorkflowTrigger InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyissuer = bodyissuer == null ? null : WorkflowExpression.Compile(bodyissuer);
-            WorkflowExpression.Validate(__workflow_bodyissuer, nameof(bodyissuer), required: false);
-            var __workflow_bodyowner = bodyowner == null ? null : WorkflowExpression.Compile(bodyowner);
-            WorkflowExpression.Validate(__workflow_bodyowner, nameof(bodyowner), required: false);
-            var __workflow_bodytransactionType = bodytransactionType == null ? null : WorkflowExpression.Compile(bodytransactionType);
-            WorkflowExpression.Validate(__workflow_bodytransactionType, nameof(bodytransactionType), required: false);
-            var __workflow_bodysecurityType = bodysecurityType == null ? null : WorkflowExpression.Compile(bodysecurityType);
-            WorkflowExpression.Validate(__workflow_bodysecurityType, nameof(bodysecurityType), required: false);
+            var __workflow_bodyissuer = WorkflowExpression.Compile(bodyissuer, nameof(bodyissuer), required: false);
+            var __workflow_bodyowner = WorkflowExpression.Compile(bodyowner, nameof(bodyowner), required: false);
+            var __workflow_bodytransactionType = WorkflowExpression.Compile(bodytransactionType, nameof(bodytransactionType), required: false);
+            var __workflow_bodysecurityType = WorkflowExpression.Compile(bodysecurityType, nameof(bodysecurityType), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/SubscribeToInsiderTradingWebhook";

@@ -13,32 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<FacilitiesResponse> GetFacilities(Expression<Func<string>> facilityIds = null, Expression<Func<string>> zip = null, Expression<Func<string>> state = null, Expression<Func<double>> lat = null, Expression<Func<double>> @long = null, Expression<Func<double>> radius = null, Expression<Func<string>> bbox = null, Expression<Func<double>> visn = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> services = null, Expression<Func<bool>> mobile = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_facilityIds = facilityIds == null ? null : WorkflowExpression.Compile(facilityIds);
-            WorkflowExpression.Validate(__workflow_facilityIds, nameof(facilityIds), required: false);
-            var __workflow_zip = zip == null ? null : WorkflowExpression.Compile(zip);
-            WorkflowExpression.Validate(__workflow_zip, nameof(zip), required: false);
-            var __workflow_state = state == null ? null : WorkflowExpression.Compile(state);
-            WorkflowExpression.Validate(__workflow_state, nameof(state), required: false);
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_long = @long == null ? null : WorkflowExpression.Compile(@long);
-            WorkflowExpression.Validate(__workflow_long, nameof(@long), required: false);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_bbox = bbox == null ? null : WorkflowExpression.Compile(bbox);
-            WorkflowExpression.Validate(__workflow_bbox, nameof(bbox), required: false);
-            var __workflow_visn = visn == null ? null : WorkflowExpression.Compile(visn);
-            WorkflowExpression.Validate(__workflow_visn, nameof(visn), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_services = services == null ? null : WorkflowExpression.Compile(services);
-            WorkflowExpression.Validate(__workflow_services, nameof(services), required: false);
-            var __workflow_mobile = mobile == null ? null : WorkflowExpression.Compile(mobile);
-            WorkflowExpression.Validate(__workflow_mobile, nameof(mobile), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_facilityIds = WorkflowExpression.Compile(facilityIds, nameof(facilityIds), required: false);
+            var __workflow_zip = WorkflowExpression.Compile(zip, nameof(zip), required: false);
+            var __workflow_state = WorkflowExpression.Compile(state, nameof(state), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_bbox = WorkflowExpression.Compile(bbox, nameof(bbox), required: false);
+            var __workflow_visn = WorkflowExpression.Compile(visn, nameof(visn), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_services = WorkflowExpression.Compile(services, nameof(services), required: false);
+            var __workflow_mobile = WorkflowExpression.Compile(mobile, nameof(mobile), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<FacilitiesResponse>(() =>
             {
                 var apiCallPath = "/facilities";
@@ -77,8 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<FacilityReadResponse> GetFacilityById(Expression<Func<string>> facilityId)
         {
-            var __workflow_facilityId = facilityId == null ? null : WorkflowExpression.Compile(facilityId);
-            WorkflowExpression.Validate(__workflow_facilityId, nameof(facilityId), required: true);
+            var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
             return new DeferredBodyAction<FacilityReadResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
@@ -91,12 +77,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<DetailedServicesResponse> GetFacilityServicesById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceIds = null, Expression<Func<string>> serviceType = null)
         {
-            var __workflow_facilityId = facilityId == null ? null : WorkflowExpression.Compile(facilityId);
-            WorkflowExpression.Validate(__workflow_facilityId, nameof(facilityId), required: true);
-            var __workflow_serviceIds = serviceIds == null ? null : WorkflowExpression.Compile(serviceIds);
-            WorkflowExpression.Validate(__workflow_serviceIds, nameof(serviceIds), required: false);
-            var __workflow_serviceType = serviceType == null ? null : WorkflowExpression.Compile(serviceType);
-            WorkflowExpression.Validate(__workflow_serviceType, nameof(serviceType), required: false);
+            var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
+            var __workflow_serviceIds = WorkflowExpression.Compile(serviceIds, nameof(serviceIds), required: false);
+            var __workflow_serviceType = WorkflowExpression.Compile(serviceType, nameof(serviceType), required: false);
             return new DeferredBodyAction<DetailedServicesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1));
@@ -113,10 +96,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<DetailedServiceResponse> GetFacilityServiceById(Expression<Func<string>> facilityId, Expression<Func<string>> serviceId)
         {
-            var __workflow_facilityId = facilityId == null ? null : WorkflowExpression.Compile(facilityId);
-            WorkflowExpression.Validate(__workflow_facilityId, nameof(facilityId), required: true);
-            var __workflow_serviceId = serviceId == null ? null : WorkflowExpression.Compile(serviceId);
-            WorkflowExpression.Validate(__workflow_serviceId, nameof(serviceId), required: true);
+            var __workflow_facilityId = WorkflowExpression.Compile(facilityId, nameof(facilityId), required: true);
+            var __workflow_serviceId = WorkflowExpression.Compile(serviceId, nameof(serviceId), required: true);
             return new DeferredBodyAction<DetailedServiceResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/facilities/{0}/services/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_facilityId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_serviceId, 1));
@@ -129,8 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<FacilitiesIdsResponse> GetFacilityIds(Expression<Func<typeInput>> type = null)
         {
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
             return new DeferredBodyAction<FacilitiesIdsResponse>(() =>
             {
                 var apiCallPath = "/ids";
@@ -145,18 +125,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsfacil
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsfacil")]
         public IBodyWorkflowAction<NearbyResponse> GetNearbyFacilities(Expression<Func<double>> lat, Expression<Func<double>> @long, Expression<Func<int>> driveTime = null, Expression<Func<string>> services = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: true);
-            var __workflow_long = @long == null ? null : WorkflowExpression.Compile(@long);
-            WorkflowExpression.Validate(__workflow_long, nameof(@long), required: true);
-            var __workflow_driveTime = driveTime == null ? null : WorkflowExpression.Compile(driveTime);
-            WorkflowExpression.Validate(__workflow_driveTime, nameof(driveTime), required: false);
-            var __workflow_services = services == null ? null : WorkflowExpression.Compile(services);
-            WorkflowExpression.Validate(__workflow_services, nameof(services), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_perPage = perPage == null ? null : WorkflowExpression.Compile(perPage);
-            WorkflowExpression.Validate(__workflow_perPage, nameof(perPage), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: true);
+            var __workflow_long = WorkflowExpression.Compile(@long, nameof(@long), required: true);
+            var __workflow_driveTime = WorkflowExpression.Compile(driveTime, nameof(driveTime), required: false);
+            var __workflow_services = WorkflowExpression.Compile(services, nameof(services), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_perPage = WorkflowExpression.Compile(perPage, nameof(perPage), required: false);
             return new DeferredBodyAction<NearbyResponse>(() =>
             {
                 var apiCallPath = "/nearby";

@@ -22,26 +22,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SendMailResponse> SendMail(Expression<Func<string>> accountId, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_bodyfromAddress = bodyfromAddress == null ? null : WorkflowExpression.Compile(bodyfromAddress);
-            WorkflowExpression.Validate(__workflow_bodyfromAddress, nameof(bodyfromAddress), required: true);
-            var __workflow_bodytoAddress = bodytoAddress == null ? null : WorkflowExpression.Compile(bodytoAddress);
-            WorkflowExpression.Validate(__workflow_bodytoAddress, nameof(bodytoAddress), required: true);
-            var __workflow_bodyccAddress = bodyccAddress == null ? null : WorkflowExpression.Compile(bodyccAddress);
-            WorkflowExpression.Validate(__workflow_bodyccAddress, nameof(bodyccAddress), required: false);
-            var __workflow_bodybccAddress = bodybccAddress == null ? null : WorkflowExpression.Compile(bodybccAddress);
-            WorkflowExpression.Validate(__workflow_bodybccAddress, nameof(bodybccAddress), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyaskReceipt = bodyaskReceipt == null ? null : WorkflowExpression.Compile(bodyaskReceipt);
-            WorkflowExpression.Validate(__workflow_bodyaskReceipt, nameof(bodyaskReceipt), required: false);
-            var __workflow_bodymailFormat = bodymailFormat == null ? null : WorkflowExpression.Compile(bodymailFormat);
-            WorkflowExpression.Validate(__workflow_bodymailFormat, nameof(bodymailFormat), required: false);
-            var __workflow_bodyattachment = bodyattachment == null ? null : WorkflowExpression.Compile(bodyattachment);
-            WorkflowExpression.Validate(__workflow_bodyattachment, nameof(bodyattachment), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodyfromAddress = WorkflowExpression.Compile(bodyfromAddress, nameof(bodyfromAddress), required: true);
+            var __workflow_bodytoAddress = WorkflowExpression.Compile(bodytoAddress, nameof(bodytoAddress), required: true);
+            var __workflow_bodyccAddress = WorkflowExpression.Compile(bodyccAddress, nameof(bodyccAddress), required: false);
+            var __workflow_bodybccAddress = WorkflowExpression.Compile(bodybccAddress, nameof(bodybccAddress), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyaskReceipt = WorkflowExpression.Compile(bodyaskReceipt, nameof(bodyaskReceipt), required: false);
+            var __workflow_bodymailFormat = WorkflowExpression.Compile(bodymailFormat, nameof(bodymailFormat), required: false);
+            var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
             return new DeferredBodyAction<SendMailResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -107,28 +97,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SaveDraftResponse> SaveDraft(Expression<Func<string>> accountId, Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyfromAddress, Expression<Func<string>> bodytoAddress, Expression<Func<string>> bodyccAddress = null, Expression<Func<string>> bodybccAddress = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<bodyaskReceiptInput>> bodyaskReceipt = null, Expression<Func<bodymailFormatInput>> bodymailFormat = null, Expression<Func<bodyattachmentInputItem[]>> bodyattachment = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
-            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: true);
-            var __workflow_bodyfromAddress = bodyfromAddress == null ? null : WorkflowExpression.Compile(bodyfromAddress);
-            WorkflowExpression.Validate(__workflow_bodyfromAddress, nameof(bodyfromAddress), required: true);
-            var __workflow_bodytoAddress = bodytoAddress == null ? null : WorkflowExpression.Compile(bodytoAddress);
-            WorkflowExpression.Validate(__workflow_bodytoAddress, nameof(bodytoAddress), required: true);
-            var __workflow_bodyccAddress = bodyccAddress == null ? null : WorkflowExpression.Compile(bodyccAddress);
-            WorkflowExpression.Validate(__workflow_bodyccAddress, nameof(bodyccAddress), required: false);
-            var __workflow_bodybccAddress = bodybccAddress == null ? null : WorkflowExpression.Compile(bodybccAddress);
-            WorkflowExpression.Validate(__workflow_bodybccAddress, nameof(bodybccAddress), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyaskReceipt = bodyaskReceipt == null ? null : WorkflowExpression.Compile(bodyaskReceipt);
-            WorkflowExpression.Validate(__workflow_bodyaskReceipt, nameof(bodyaskReceipt), required: false);
-            var __workflow_bodymailFormat = bodymailFormat == null ? null : WorkflowExpression.Compile(bodymailFormat);
-            WorkflowExpression.Validate(__workflow_bodymailFormat, nameof(bodymailFormat), required: false);
-            var __workflow_bodyattachment = bodyattachment == null ? null : WorkflowExpression.Compile(bodyattachment);
-            WorkflowExpression.Validate(__workflow_bodyattachment, nameof(bodyattachment), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
+            var __workflow_bodyfromAddress = WorkflowExpression.Compile(bodyfromAddress, nameof(bodyfromAddress), required: true);
+            var __workflow_bodytoAddress = WorkflowExpression.Compile(bodytoAddress, nameof(bodytoAddress), required: true);
+            var __workflow_bodyccAddress = WorkflowExpression.Compile(bodyccAddress, nameof(bodyccAddress), required: false);
+            var __workflow_bodybccAddress = WorkflowExpression.Compile(bodybccAddress, nameof(bodybccAddress), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyaskReceipt = WorkflowExpression.Compile(bodyaskReceipt, nameof(bodyaskReceipt), required: false);
+            var __workflow_bodymailFormat = WorkflowExpression.Compile(bodymailFormat, nameof(bodymailFormat), required: false);
+            var __workflow_bodyattachment = WorkflowExpression.Compile(bodyattachment, nameof(bodyattachment), required: false);
             return new DeferredBodyAction<SaveDraftResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/draft", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -196,8 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetSenderDetailsResponse> GetSenderDetails(Expression<Func<string>> accountId)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<GetSenderDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -210,38 +188,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<SearchMailResponse> SearchMail(Expression<Func<string>> accountId, Expression<Func<int>> start, Expression<Func<int>> limit, Expression<Func<string>> bodyentire = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodysender = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyfromDate = null, Expression<Func<string>> bodytoDate = null, Expression<Func<bool>> bodygroupResult = null, Expression<Func<string>> bodyin = null, Expression<Func<string>> bodylabel = null)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: true);
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: true);
-            var __workflow_bodyentire = bodyentire == null ? null : WorkflowExpression.Compile(bodyentire);
-            WorkflowExpression.Validate(__workflow_bodyentire, nameof(bodyentire), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodysender = bodysender == null ? null : WorkflowExpression.Compile(bodysender);
-            WorkflowExpression.Validate(__workflow_bodysender, nameof(bodysender), required: false);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: false);
-            var __workflow_bodycc = bodycc == null ? null : WorkflowExpression.Compile(bodycc);
-            WorkflowExpression.Validate(__workflow_bodycc, nameof(bodycc), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: false);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodyfromDate = bodyfromDate == null ? null : WorkflowExpression.Compile(bodyfromDate);
-            WorkflowExpression.Validate(__workflow_bodyfromDate, nameof(bodyfromDate), required: false);
-            var __workflow_bodytoDate = bodytoDate == null ? null : WorkflowExpression.Compile(bodytoDate);
-            WorkflowExpression.Validate(__workflow_bodytoDate, nameof(bodytoDate), required: false);
-            var __workflow_bodygroupResult = bodygroupResult == null ? null : WorkflowExpression.Compile(bodygroupResult);
-            WorkflowExpression.Validate(__workflow_bodygroupResult, nameof(bodygroupResult), required: false);
-            var __workflow_bodyin = bodyin == null ? null : WorkflowExpression.Compile(bodyin);
-            WorkflowExpression.Validate(__workflow_bodyin, nameof(bodyin), required: false);
-            var __workflow_bodylabel = bodylabel == null ? null : WorkflowExpression.Compile(bodylabel);
-            WorkflowExpression.Validate(__workflow_bodylabel, nameof(bodylabel), required: false);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: true);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: true);
+            var __workflow_bodyentire = WorkflowExpression.Compile(bodyentire, nameof(bodyentire), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodysender = WorkflowExpression.Compile(bodysender, nameof(bodysender), required: false);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: false);
+            var __workflow_bodycc = WorkflowExpression.Compile(bodycc, nameof(bodycc), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodyfromDate = WorkflowExpression.Compile(bodyfromDate, nameof(bodyfromDate), required: false);
+            var __workflow_bodytoDate = WorkflowExpression.Compile(bodytoDate, nameof(bodytoDate), required: false);
+            var __workflow_bodygroupResult = WorkflowExpression.Compile(bodygroupResult, nameof(bodygroupResult), required: false);
+            var __workflow_bodyin = WorkflowExpression.Compile(bodyin, nameof(bodyin), required: false);
+            var __workflow_bodylabel = WorkflowExpression.Compile(bodylabel, nameof(bodylabel), required: false);
             return new DeferredBodyAction<SearchMailResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/messages/search", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -341,8 +303,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetAllFolderResponse> GetAllFolder(Expression<Func<string>> accountId)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<GetAllFolderResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -355,8 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetAllLabelResponse> GetAllLabel(Expression<Func<string>> accountId)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
             return new DeferredBodyAction<GetAllLabelResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/labels", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1));
@@ -369,10 +329,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetEmailContentResponse> GetEmailContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<GetEmailContentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -386,10 +344,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<GetEmailAttachmentInfoResponse> GetEmailAttachmentInfo(Expression<Func<string>> accountId, Expression<Func<string>> messageId)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
             return new DeferredBodyAction<GetEmailAttachmentInfoResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachmentinfo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1));
@@ -402,12 +358,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zohomail")]
         public IBodyWorkflowAction<string> GetEmailAttachmentContent(Expression<Func<string>> accountId, Expression<Func<string>> messageId, Expression<Func<string>> attachmentId)
         {
-            var __workflow_accountId = accountId == null ? null : WorkflowExpression.Compile(accountId);
-            WorkflowExpression.Validate(__workflow_accountId, nameof(accountId), required: true);
-            var __workflow_messageId = messageId == null ? null : WorkflowExpression.Compile(messageId);
-            WorkflowExpression.Validate(__workflow_messageId, nameof(messageId), required: true);
-            var __workflow_attachmentId = attachmentId == null ? null : WorkflowExpression.Compile(attachmentId);
-            WorkflowExpression.Validate(__workflow_attachmentId, nameof(attachmentId), required: true);
+            var __workflow_accountId = WorkflowExpression.Compile(accountId, nameof(accountId), required: true);
+            var __workflow_messageId = WorkflowExpression.Compile(messageId, nameof(messageId), required: true);
+            var __workflow_attachmentId = WorkflowExpression.Compile(attachmentId, nameof(attachmentId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/accounts/{0}/folders/1/messages/{1}/attachments/{2}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_attachmentId, 1));
@@ -422,10 +375,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     {
         public IBodyWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger(Expression<Func<string>> accId, Expression<Func<string>> criterias, FlowRecurrence recurrence = null)
         {
-            var __workflow_accId = accId == null ? null : WorkflowExpression.Compile(accId);
-            WorkflowExpression.Validate(__workflow_accId, nameof(accId), required: true);
-            var __workflow_criterias = criterias == null ? null : WorkflowExpression.Compile(criterias);
-            WorkflowExpression.Validate(__workflow_criterias, nameof(criterias), required: true);
+            var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
+            var __workflow_criterias = WorkflowExpression.Compile(criterias, nameof(criterias), required: true);
             return new DeferredBodyTrigger<NewMailTriggerResponse>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingWebhooks/newcriteriamail";
@@ -452,10 +403,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
 
         public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL(Expression<Func<string>> accId, Expression<Func<bodycriteriasInputItem[]>> bodycriterias, FlowRecurrence recurrence = null)
         {
-            var __workflow_accId = accId == null ? null : WorkflowExpression.Compile(accId);
-            WorkflowExpression.Validate(__workflow_accId, nameof(accId), required: true);
-            var __workflow_bodycriterias = bodycriterias == null ? null : WorkflowExpression.Compile(bodycriterias);
-            WorkflowExpression.Validate(__workflow_bodycriterias, nameof(bodycriterias), required: true);
+            var __workflow_accId = WorkflowExpression.Compile(accId, nameof(accId), required: true);
+            var __workflow_bodycriterias = WorkflowExpression.Compile(bodycriterias, nameof(bodycriterias), required: true);
             return new DeferredBodyTrigger<NEWCONDITIONALMAILResponse>(() =>
             {
                 var apiCallPath = "/integPlatform/api/outgoingconditionWebhooks";

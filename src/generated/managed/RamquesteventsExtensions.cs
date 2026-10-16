@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
     {
         public IWorkflowTrigger CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
-            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: false);
+            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/register/cce";
@@ -44,8 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
         public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyaction = bodyaction == null ? null : WorkflowExpression.Compile(bodyaction);
-            WorkflowExpression.Validate(__workflow_bodyaction, nameof(bodyaction), required: false);
+            var __workflow_bodyaction = WorkflowExpression.Compile(bodyaction, nameof(bodyaction), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/register/horizon";

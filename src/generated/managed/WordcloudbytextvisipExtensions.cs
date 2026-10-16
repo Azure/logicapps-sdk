@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordcloudbytextvisip")]
         public IBodyWorkflowAction<CloudCreateResponse> CloudCreate(Expression<Func<string>> bodytext, Expression<Func<double>> bodyscale, Expression<Func<int>> bodywidth, Expression<Func<int>> bodyheight, Expression<Func<string[]>> bodycolors = null, Expression<Func<string>> bodyfont = null, Expression<Func<bool>> bodyuseStopwords = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuppercase = null)
         {
-            var __workflow_bodytext = bodytext == null ? null : WorkflowExpression.Compile(bodytext);
-            WorkflowExpression.Validate(__workflow_bodytext, nameof(bodytext), required: true);
-            var __workflow_bodyscale = bodyscale == null ? null : WorkflowExpression.Compile(bodyscale);
-            WorkflowExpression.Validate(__workflow_bodyscale, nameof(bodyscale), required: true);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: true);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: true);
-            var __workflow_bodycolors = bodycolors == null ? null : WorkflowExpression.Compile(bodycolors);
-            WorkflowExpression.Validate(__workflow_bodycolors, nameof(bodycolors), required: false);
-            var __workflow_bodyfont = bodyfont == null ? null : WorkflowExpression.Compile(bodyfont);
-            WorkflowExpression.Validate(__workflow_bodyfont, nameof(bodyfont), required: false);
-            var __workflow_bodyuseStopwords = bodyuseStopwords == null ? null : WorkflowExpression.Compile(bodyuseStopwords);
-            WorkflowExpression.Validate(__workflow_bodyuseStopwords, nameof(bodyuseStopwords), required: false);
-            var __workflow_bodylanguage = bodylanguage == null ? null : WorkflowExpression.Compile(bodylanguage);
-            WorkflowExpression.Validate(__workflow_bodylanguage, nameof(bodylanguage), required: false);
-            var __workflow_bodyuppercase = bodyuppercase == null ? null : WorkflowExpression.Compile(bodyuppercase);
-            WorkflowExpression.Validate(__workflow_bodyuppercase, nameof(bodyuppercase), required: false);
+            var __workflow_bodytext = WorkflowExpression.Compile(bodytext, nameof(bodytext), required: true);
+            var __workflow_bodyscale = WorkflowExpression.Compile(bodyscale, nameof(bodyscale), required: true);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: true);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: true);
+            var __workflow_bodycolors = WorkflowExpression.Compile(bodycolors, nameof(bodycolors), required: false);
+            var __workflow_bodyfont = WorkflowExpression.Compile(bodyfont, nameof(bodyfont), required: false);
+            var __workflow_bodyuseStopwords = WorkflowExpression.Compile(bodyuseStopwords, nameof(bodyuseStopwords), required: false);
+            var __workflow_bodylanguage = WorkflowExpression.Compile(bodylanguage, nameof(bodylanguage), required: false);
+            var __workflow_bodyuppercase = WorkflowExpression.Compile(bodyuppercase, nameof(bodyuppercase), required: false);
             return new DeferredBodyAction<CloudCreateResponse>(() =>
             {
                 var apiCallPath = "/";

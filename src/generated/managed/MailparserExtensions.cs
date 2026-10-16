@@ -24,10 +24,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
     {
         public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_inboxId = inboxId == null ? null : WorkflowExpression.Compile(inboxId);
-            WorkflowExpression.Validate(__workflow_inboxId, nameof(inboxId), required: true);
-            var __workflow_requestBodyOfWebhooklabel = requestBodyOfWebhooklabel == null ? null : WorkflowExpression.Compile(requestBodyOfWebhooklabel);
-            WorkflowExpression.Validate(__workflow_requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
+            var __workflow_inboxId = WorkflowExpression.Compile(inboxId, nameof(inboxId), required: true);
+            var __workflow_requestBodyOfWebhooklabel = WorkflowExpression.Compile(requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
             return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/inboxes/{0}/dispatcher", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inboxId, 1));

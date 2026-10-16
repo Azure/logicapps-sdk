@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddItemResponse> AddItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<object>> bodydata = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<AddItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
@@ -45,12 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetItemResponse> GetItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -64,12 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<DeleteItemResponse> DeleteItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<DeleteItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -83,16 +74,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<UpdateItemResponse> UpdateItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<int>> bodyrowVersion = null, Expression<Func<object>> bodydata = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyrowVersion = bodyrowVersion == null ? null : WorkflowExpression.Compile(bodyrowVersion);
-            WorkflowExpression.Validate(__workflow_bodyrowVersion, nameof(bodyrowVersion), required: false);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: false);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyrowVersion = WorkflowExpression.Compile(bodyrowVersion, nameof(bodyrowVersion), required: false);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: false);
             return new DeferredBodyAction<UpdateItemResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -125,10 +111,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetListFieldsResponse> GetListFields(Expression<Func<string>> application, Expression<Func<string>> listID)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyAction<GetListFieldsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
@@ -142,14 +126,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<StartWorkflowResponse> StartWorkflow(Expression<Func<string>> application, Expression<Func<string>> key, Expression<Func<string>> bodyapplicantID = null, Expression<Func<object>> bodyvariables = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_bodyapplicantID = bodyapplicantID == null ? null : WorkflowExpression.Compile(bodyapplicantID);
-            WorkflowExpression.Validate(__workflow_bodyapplicantID, nameof(bodyapplicantID), required: false);
-            var __workflow_bodyvariables = bodyvariables == null ? null : WorkflowExpression.Compile(bodyvariables);
-            WorkflowExpression.Validate(__workflow_bodyvariables, nameof(bodyvariables), required: false);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_bodyapplicantID = WorkflowExpression.Compile(bodyapplicantID, nameof(bodyapplicantID), required: false);
+            var __workflow_bodyvariables = WorkflowExpression.Compile(bodyvariables, nameof(bodyvariables), required: false);
             return new DeferredBodyAction<StartWorkflowResponse>(() =>
             {
                 var apiCallPath = "/workflow/forms/start";
@@ -183,10 +163,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetAgentDefinitionResponse> GetAgentDefinition(Expression<Func<string>> application, Expression<Func<string>> agentID)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_agentID = agentID == null ? null : WorkflowExpression.Compile(agentID);
-            WorkflowExpression.Validate(__workflow_agentID, nameof(agentID), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_agentID = WorkflowExpression.Compile(agentID, nameof(agentID), required: true);
             return new DeferredBodyAction<GetAgentDefinitionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentID, 1));
@@ -200,12 +178,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<RunAgentResponse> RunAgent(Expression<Func<string>> application, Expression<Func<string>> agentID, Expression<Func<object>> body = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_agentID = agentID == null ? null : WorkflowExpression.Compile(agentID);
-            WorkflowExpression.Validate(__workflow_agentID, nameof(agentID), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_agentID = WorkflowExpression.Compile(agentID, nameof(agentID), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<RunAgentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentID, 1));
@@ -220,20 +195,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<QueryItemsResponse> QueryItems(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string[]>> bodyfields = null, Expression<Func<ListDataWhereRequest[]>> bodyfilters = null, Expression<Func<bodysortsInputItem[]>> bodysorts = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: false);
-            var __workflow_bodyfilters = bodyfilters == null ? null : WorkflowExpression.Compile(bodyfilters);
-            WorkflowExpression.Validate(__workflow_bodyfilters, nameof(bodyfilters), required: false);
-            var __workflow_bodysorts = bodysorts == null ? null : WorkflowExpression.Compile(bodysorts);
-            WorkflowExpression.Validate(__workflow_bodysorts, nameof(bodysorts), required: false);
-            var __workflow_bodypageNumber = bodypageNumber == null ? null : WorkflowExpression.Compile(bodypageNumber);
-            WorkflowExpression.Validate(__workflow_bodypageNumber, nameof(bodypageNumber), required: false);
-            var __workflow_bodypageSize = bodypageSize == null ? null : WorkflowExpression.Compile(bodypageSize);
-            WorkflowExpression.Validate(__workflow_bodypageSize, nameof(bodypageSize), required: false);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: false);
+            var __workflow_bodyfilters = WorkflowExpression.Compile(bodyfilters, nameof(bodyfilters), required: false);
+            var __workflow_bodysorts = WorkflowExpression.Compile(bodysorts, nameof(bodysorts), required: false);
+            var __workflow_bodypageNumber = WorkflowExpression.Compile(bodypageNumber, nameof(bodypageNumber), required: false);
+            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: false);
             return new DeferredBodyAction<QueryItemsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/query", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
@@ -304,18 +272,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddItemFileResponse> AddItemFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<string>> fileName, Expression<Func<string>> fieldID = null, Expression<Func<string>> body = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_fieldID = fieldID == null ? null : WorkflowExpression.Compile(fieldID);
-            WorkflowExpression.Validate(__workflow_fieldID, nameof(fieldID), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_fieldID = WorkflowExpression.Compile(fieldID, nameof(fieldID), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddItemFileResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/items/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -333,10 +295,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> fileName, Expression<Func<string>> body = null)
         {
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<UploadFileResponse>(() =>
             {
                 var apiCallPath = "/files";
@@ -351,8 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<GetFilePropertyResponse> GetFileProperty(Expression<Func<string>> fieldValue = null)
         {
-            var __workflow_fieldValue = fieldValue == null ? null : WorkflowExpression.Compile(fieldValue);
-            WorkflowExpression.Validate(__workflow_fieldValue, nameof(fieldValue), required: false);
+            var __workflow_fieldValue = WorkflowExpression.Compile(fieldValue, nameof(fieldValue), required: false);
             return new DeferredBodyAction<GetFilePropertyResponse>(() =>
             {
                 var apiCallPath = "/files/properties";
@@ -366,8 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -380,16 +338,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<AddLibraryFileResponse> AddLibraryFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> fileName, Expression<Func<string>> path = null, Expression<Func<string>> body = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: false);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<AddLibraryFileResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
@@ -407,12 +360,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
         public IBodyWorkflowAction<string> GetLibraryFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/library/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -428,10 +378,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
     {
         public IBodyWorkflowTrigger<JToken> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/1", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
@@ -454,10 +402,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
         public IBodyWorkflowTrigger<JToken> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/2", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
@@ -480,10 +426,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
         public IBodyWorkflowTrigger<JToken> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/3", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));
@@ -506,10 +450,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
         public IBodyWorkflowTrigger<JToken> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listID, FlowRecurrence recurrence = null)
         {
-            var __workflow_application = application == null ? null : WorkflowExpression.Compile(application);
-            WorkflowExpression.Validate(__workflow_application, nameof(application), required: true);
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
+            var __workflow_application = WorkflowExpression.Compile(application, nameof(application), required: true);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/41/{0}/hooks/4", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listID, 1));

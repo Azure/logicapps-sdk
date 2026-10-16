@@ -26,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 
         public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel(Expression<Func<string>> channelId, FlowRecurrence recurrence = null)
         {
-            var __workflow_channelId = channelId == null ? null : WorkflowExpression.Compile(channelId);
-            WorkflowExpression.Validate(__workflow_channelId, nameof(channelId), required: true);
+            var __workflow_channelId = WorkflowExpression.Compile(channelId, nameof(channelId), required: true);
             return new DeferredBodyTrigger<VideoWithChannelId[]>(() =>
             {
                 var apiCallPath = "/trigger/channels/videos";

@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
         public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<string>> sessionId = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> countries = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null, Expression<Func<string>> lang = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: true);
-            var __workflow_sessionId = sessionId == null ? null : WorkflowExpression.Compile(sessionId);
-            WorkflowExpression.Validate(__workflow_sessionId, nameof(sessionId), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_countries = countries == null ? null : WorkflowExpression.Compile(countries);
-            WorkflowExpression.Validate(__workflow_countries, nameof(countries), required: false);
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
-            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: true);
+            var __workflow_sessionId = WorkflowExpression.Compile(sessionId, nameof(sessionId), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_countries = WorkflowExpression.Compile(countries, nameof(countries), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: false);
             return new DeferredBodyAction<SearchGetResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -56,10 +48,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
         public IBodyWorkflowAction<PIPGetResponse> PIPGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
         {
-            var __workflow_lat = lat == null ? null : WorkflowExpression.Compile(lat);
-            WorkflowExpression.Validate(__workflow_lat, nameof(lat), required: false);
-            var __workflow_lon = lon == null ? null : WorkflowExpression.Compile(lon);
-            WorkflowExpression.Validate(__workflow_lon, nameof(lon), required: false);
+            var __workflow_lat = WorkflowExpression.Compile(lat, nameof(lat), required: false);
+            var __workflow_lon = WorkflowExpression.Compile(lon, nameof(lon), required: false);
             return new DeferredBodyAction<PIPGetResponse>(() =>
             {
                 var apiCallPath = "/pip";

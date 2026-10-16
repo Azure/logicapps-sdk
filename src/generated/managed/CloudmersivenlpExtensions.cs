@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<SentimentAnalysisResponse> AnalyticsSentiment(Expression<Func<string>> inputtextToAnalyze = null)
         {
-            var __workflow_inputtextToAnalyze = inputtextToAnalyze == null ? null : WorkflowExpression.Compile(inputtextToAnalyze);
-            WorkflowExpression.Validate(__workflow_inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
+            var __workflow_inputtextToAnalyze = WorkflowExpression.Compile(inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
             return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/analytics/sentiment";
@@ -40,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<ProfanityAnalysisResponse> AnalyticsProfanity(Expression<Func<string>> inputtextToAnalyze = null)
         {
-            var __workflow_inputtextToAnalyze = inputtextToAnalyze == null ? null : WorkflowExpression.Compile(inputtextToAnalyze);
-            WorkflowExpression.Validate(__workflow_inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
+            var __workflow_inputtextToAnalyze = WorkflowExpression.Compile(inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
             return new DeferredBodyAction<ProfanityAnalysisResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/analytics/profanity";
@@ -67,8 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<SubjectivityAnalysisResponse> AnalyticsSubjectivity(Expression<Func<string>> inputtextToAnalyze = null)
         {
-            var __workflow_inputtextToAnalyze = inputtextToAnalyze == null ? null : WorkflowExpression.Compile(inputtextToAnalyze);
-            WorkflowExpression.Validate(__workflow_inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
+            var __workflow_inputtextToAnalyze = WorkflowExpression.Compile(inputtextToAnalyze, nameof(inputtextToAnalyze), required: false);
             return new DeferredBodyAction<SubjectivityAnalysisResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/analytics/subjectivity";
@@ -94,8 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<ExtractEntitiesResponse> ExtractEntities(Expression<Func<string>> valueinputString = null)
         {
-            var __workflow_valueinputString = valueinputString == null ? null : WorkflowExpression.Compile(valueinputString);
-            WorkflowExpression.Validate(__workflow_valueinputString, nameof(valueinputString), required: false);
+            var __workflow_valueinputString = WorkflowExpression.Compile(valueinputString, nameof(valueinputString), required: false);
             return new DeferredBodyAction<ExtractEntitiesResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/extract-entities";
@@ -121,8 +117,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetectionGetLanguage(Expression<Func<string>> inputtextToDetect = null)
         {
-            var __workflow_inputtextToDetect = inputtextToDetect == null ? null : WorkflowExpression.Compile(inputtextToDetect);
-            WorkflowExpression.Validate(__workflow_inputtextToDetect, nameof(inputtextToDetect), required: false);
+            var __workflow_inputtextToDetect = WorkflowExpression.Compile(inputtextToDetect, nameof(inputtextToDetect), required: false);
             return new DeferredBodyAction<LanguageDetectionResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/language/detect";
@@ -148,8 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateDeuToEng(Expression<Func<string>> inputtextToTranslate = null)
         {
-            var __workflow_inputtextToTranslate = inputtextToTranslate == null ? null : WorkflowExpression.Compile(inputtextToTranslate);
-            WorkflowExpression.Validate(__workflow_inputtextToTranslate, nameof(inputtextToTranslate), required: false);
+            var __workflow_inputtextToTranslate = WorkflowExpression.Compile(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             return new DeferredBodyAction<LanguageTranslationResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/translate/language/deu/to/eng";
@@ -175,8 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToDeu(Expression<Func<string>> inputtextToTranslate = null)
         {
-            var __workflow_inputtextToTranslate = inputtextToTranslate == null ? null : WorkflowExpression.Compile(inputtextToTranslate);
-            WorkflowExpression.Validate(__workflow_inputtextToTranslate, nameof(inputtextToTranslate), required: false);
+            var __workflow_inputtextToTranslate = WorkflowExpression.Compile(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             return new DeferredBodyAction<LanguageTranslationResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/translate/language/eng/to/deu";
@@ -202,8 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateRusToEng(Expression<Func<string>> inputtextToTranslate = null)
         {
-            var __workflow_inputtextToTranslate = inputtextToTranslate == null ? null : WorkflowExpression.Compile(inputtextToTranslate);
-            WorkflowExpression.Validate(__workflow_inputtextToTranslate, nameof(inputtextToTranslate), required: false);
+            var __workflow_inputtextToTranslate = WorkflowExpression.Compile(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             return new DeferredBodyAction<LanguageTranslationResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/translate/language/rus/to/eng";
@@ -229,8 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToRus(Expression<Func<string>> inputtextToTranslate = null)
         {
-            var __workflow_inputtextToTranslate = inputtextToTranslate == null ? null : WorkflowExpression.Compile(inputtextToTranslate);
-            WorkflowExpression.Validate(__workflow_inputtextToTranslate, nameof(inputtextToTranslate), required: false);
+            var __workflow_inputtextToTranslate = WorkflowExpression.Compile(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
             return new DeferredBodyAction<LanguageTranslationResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/translate/language/eng/to/rus";
@@ -256,8 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<ParseResponse> ParseParseString(Expression<Func<string>> inputinputString = null)
         {
-            var __workflow_inputinputString = inputinputString == null ? null : WorkflowExpression.Compile(inputinputString);
-            WorkflowExpression.Validate(__workflow_inputinputString, nameof(inputinputString), required: false);
+            var __workflow_inputinputString = WorkflowExpression.Compile(inputinputString, nameof(inputinputString), required: false);
             return new DeferredBodyAction<ParseResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/parse/tree";
@@ -283,8 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagSentence(Expression<Func<string>> requestinputText = null)
         {
-            var __workflow_requestinputText = requestinputText == null ? null : WorkflowExpression.Compile(requestinputText);
-            WorkflowExpression.Validate(__workflow_requestinputText, nameof(requestinputText), required: false);
+            var __workflow_requestinputText = WorkflowExpression.Compile(requestinputText, nameof(requestinputText), required: false);
             return new DeferredBodyAction<PosResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/pos/tag/sentence";
@@ -310,8 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagVerbs(Expression<Func<string>> requestinputText = null)
         {
-            var __workflow_requestinputText = requestinputText == null ? null : WorkflowExpression.Compile(requestinputText);
-            WorkflowExpression.Validate(__workflow_requestinputText, nameof(requestinputText), required: false);
+            var __workflow_requestinputText = WorkflowExpression.Compile(requestinputText, nameof(requestinputText), required: false);
             return new DeferredBodyAction<PosResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/pos/tag/verbs";
@@ -337,8 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagNouns(Expression<Func<string>> requestinputText = null)
         {
-            var __workflow_requestinputText = requestinputText == null ? null : WorkflowExpression.Compile(requestinputText);
-            WorkflowExpression.Validate(__workflow_requestinputText, nameof(requestinputText), required: false);
+            var __workflow_requestinputText = WorkflowExpression.Compile(requestinputText, nameof(requestinputText), required: false);
             return new DeferredBodyAction<PosResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/pos/tag/nouns";
@@ -364,8 +351,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagAdjectives(Expression<Func<string>> requestinputText = null)
         {
-            var __workflow_requestinputText = requestinputText == null ? null : WorkflowExpression.Compile(requestinputText);
-            WorkflowExpression.Validate(__workflow_requestinputText, nameof(requestinputText), required: false);
+            var __workflow_requestinputText = WorkflowExpression.Compile(requestinputText, nameof(requestinputText), required: false);
             return new DeferredBodyAction<PosResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/pos/tag/adjectives";
@@ -391,8 +377,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagAdverbs(Expression<Func<string>> requestinputText = null)
         {
-            var __workflow_requestinputText = requestinputText == null ? null : WorkflowExpression.Compile(requestinputText);
-            WorkflowExpression.Validate(__workflow_requestinputText, nameof(requestinputText), required: false);
+            var __workflow_requestinputText = WorkflowExpression.Compile(requestinputText, nameof(requestinputText), required: false);
             return new DeferredBodyAction<PosResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/pos/tag/adverbs";
@@ -418,8 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<PosResponse> PosTaggerTagPronouns(Expression<Func<string>> requestinputText = null)
         {
-            var __workflow_requestinputText = requestinputText == null ? null : WorkflowExpression.Compile(requestinputText);
-            WorkflowExpression.Validate(__workflow_requestinputText, nameof(requestinputText), required: false);
+            var __workflow_requestinputText = WorkflowExpression.Compile(requestinputText, nameof(requestinputText), required: false);
             return new DeferredBodyAction<PosResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/pos/tag/pronouns";
@@ -445,10 +429,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<RephraseResponse> RephraseEnglishRephraseSentenceBySentence(Expression<Func<string>> inputtextToTranslate = null, Expression<Func<int>> inputtargetRephrasingCount = null)
         {
-            var __workflow_inputtextToTranslate = inputtextToTranslate == null ? null : WorkflowExpression.Compile(inputtextToTranslate);
-            WorkflowExpression.Validate(__workflow_inputtextToTranslate, nameof(inputtextToTranslate), required: false);
-            var __workflow_inputtargetRephrasingCount = inputtargetRephrasingCount == null ? null : WorkflowExpression.Compile(inputtargetRephrasingCount);
-            WorkflowExpression.Validate(__workflow_inputtargetRephrasingCount, nameof(inputtargetRephrasingCount), required: false);
+            var __workflow_inputtextToTranslate = WorkflowExpression.Compile(inputtextToTranslate, nameof(inputtextToTranslate), required: false);
+            var __workflow_inputtargetRephrasingCount = WorkflowExpression.Compile(inputtargetRephrasingCount, nameof(inputtargetRephrasingCount), required: false);
             return new DeferredBodyAction<RephraseResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/rephrase/rephrase/eng/by-sentence";
@@ -480,8 +462,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<SentenceSegmentationResponse> SegmentationGetSentences(Expression<Func<string>> inputinputString = null)
         {
-            var __workflow_inputinputString = inputinputString == null ? null : WorkflowExpression.Compile(inputinputString);
-            WorkflowExpression.Validate(__workflow_inputinputString, nameof(inputinputString), required: false);
+            var __workflow_inputinputString = WorkflowExpression.Compile(inputinputString, nameof(inputinputString), required: false);
             return new DeferredBodyAction<SentenceSegmentationResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/segmentation/sentences";
@@ -507,8 +488,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<GetWordsResponse> SegmentationGetWords(Expression<Func<string>> inputinputText = null)
         {
-            var __workflow_inputinputText = inputinputText == null ? null : WorkflowExpression.Compile(inputinputText);
-            WorkflowExpression.Validate(__workflow_inputinputText, nameof(inputinputText), required: false);
+            var __workflow_inputinputText = WorkflowExpression.Compile(inputinputText, nameof(inputinputText), required: false);
             return new DeferredBodyAction<GetWordsResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/segmentation/words";
@@ -534,8 +514,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<CheckWordResponse> SpellcheckCorrectJson(Expression<Func<string>> valueword = null)
         {
-            var __workflow_valueword = valueword == null ? null : WorkflowExpression.Compile(valueword);
-            WorkflowExpression.Validate(__workflow_valueword, nameof(valueword), required: false);
+            var __workflow_valueword = WorkflowExpression.Compile(valueword, nameof(valueword), required: false);
             return new DeferredBodyAction<CheckWordResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/spellcheck/check/word";
@@ -561,8 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
         public IBodyWorkflowAction<CheckSentenceResponse> SpellcheckCheckSentence(Expression<Func<string>> valuesentence = null)
         {
-            var __workflow_valuesentence = valuesentence == null ? null : WorkflowExpression.Compile(valuesentence);
-            WorkflowExpression.Validate(__workflow_valuesentence, nameof(valuesentence), required: false);
+            var __workflow_valuesentence = WorkflowExpression.Compile(valuesentence, nameof(valuesentence), required: false);
             return new DeferredBodyAction<CheckSentenceResponse>(() =>
             {
                 var apiCallPath = "/nlp-v2/spellcheck/check/sentence";

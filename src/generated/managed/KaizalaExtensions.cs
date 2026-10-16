@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> groupId, Expression<Func<string>> requestmessage, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_requestmessage = requestmessage == null ? null : WorkflowExpression.Compile(requestmessage);
-            WorkflowExpression.Validate(__workflow_requestmessage, nameof(requestmessage), required: true);
-            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
-            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: false);
-            var __workflow_sendToAll = sendToAll == null ? null : WorkflowExpression.Compile(sendToAll);
-            WorkflowExpression.Validate(__workflow_sendToAll, nameof(sendToAll), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestmessage = WorkflowExpression.Compile(requestmessage, nameof(requestmessage), required: true);
+            var __workflow_requestsubscribers = WorkflowExpression.Compile(requestsubscribers, nameof(requestsubscribers), required: false);
+            var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -50,18 +46,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActions(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<string>> id = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
-            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_requestactionBody = requestactionBody == null ? null : WorkflowExpression.Compile(requestactionBody);
-            WorkflowExpression.Validate(__workflow_requestactionBody, nameof(requestactionBody), required: false);
-            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
-            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: false);
-            var __workflow_sendToAll = sendToAll == null ? null : WorkflowExpression.Compile(sendToAll);
-            WorkflowExpression.Validate(__workflow_sendToAll, nameof(sendToAll), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_requestactionBody = WorkflowExpression.Compile(requestactionBody, nameof(requestactionBody), required: false);
+            var __workflow_requestsubscribers = WorkflowExpression.Compile(requestsubscribers, nameof(requestsubscribers), required: false);
+            var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendActionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -99,16 +89,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendActionResponse> SendActionReminder(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType, Expression<Func<string>> requestsubscribers = null, Expression<Func<object>> requestactionId = null, Expression<Func<sendToAllInput>> sendToAll = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_actionType = actionType == null ? null : WorkflowExpression.Compile(actionType);
-            WorkflowExpression.Validate(__workflow_actionType, nameof(actionType), required: true);
-            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
-            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: false);
-            var __workflow_requestactionId = requestactionId == null ? null : WorkflowExpression.Compile(requestactionId);
-            WorkflowExpression.Validate(__workflow_requestactionId, nameof(requestactionId), required: false);
-            var __workflow_sendToAll = sendToAll == null ? null : WorkflowExpression.Compile(sendToAll);
-            WorkflowExpression.Validate(__workflow_sendToAll, nameof(sendToAll), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_actionType = WorkflowExpression.Compile(actionType, nameof(actionType), required: true);
+            var __workflow_requestsubscribers = WorkflowExpression.Compile(requestsubscribers, nameof(requestsubscribers), required: false);
+            var __workflow_requestactionId = WorkflowExpression.Compile(requestactionId, nameof(requestactionId), required: false);
+            var __workflow_sendToAll = WorkflowExpression.Compile(sendToAll, nameof(sendToAll), required: false);
             return new DeferredBodyAction<SendActionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -143,16 +128,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<PostReactionResponse> PostReaction(Expression<Func<string>> groupId, Expression<Func<string>> requestsourceGroupId = null, Expression<Func<string>> requestmessageId = null, Expression<Func<requestreactionTypeInput>> requestreactionType = null, Expression<Func<string>> requestcomment = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_requestsourceGroupId = requestsourceGroupId == null ? null : WorkflowExpression.Compile(requestsourceGroupId);
-            WorkflowExpression.Validate(__workflow_requestsourceGroupId, nameof(requestsourceGroupId), required: false);
-            var __workflow_requestmessageId = requestmessageId == null ? null : WorkflowExpression.Compile(requestmessageId);
-            WorkflowExpression.Validate(__workflow_requestmessageId, nameof(requestmessageId), required: false);
-            var __workflow_requestreactionType = requestreactionType == null ? null : WorkflowExpression.Compile(requestreactionType);
-            WorkflowExpression.Validate(__workflow_requestreactionType, nameof(requestreactionType), required: false);
-            var __workflow_requestcomment = requestcomment == null ? null : WorkflowExpression.Compile(requestcomment);
-            WorkflowExpression.Validate(__workflow_requestcomment, nameof(requestcomment), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestsourceGroupId = WorkflowExpression.Compile(requestsourceGroupId, nameof(requestsourceGroupId), required: false);
+            var __workflow_requestmessageId = WorkflowExpression.Compile(requestmessageId, nameof(requestmessageId), required: false);
+            var __workflow_requestreactionType = WorkflowExpression.Compile(requestreactionType, nameof(requestreactionType), required: false);
+            var __workflow_requestcomment = WorkflowExpression.Compile(requestcomment, nameof(requestcomment), required: false);
             return new DeferredBodyAction<PostReactionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/reaction", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -196,12 +176,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<SendMessageResponse> SendReply(Expression<Func<string>> groupId, Expression<Func<string>> requestmessageId, Expression<Func<string>> requestmessage)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_requestmessageId = requestmessageId == null ? null : WorkflowExpression.Compile(requestmessageId);
-            WorkflowExpression.Validate(__workflow_requestmessageId, nameof(requestmessageId), required: true);
-            var __workflow_requestmessage = requestmessage == null ? null : WorkflowExpression.Compile(requestmessage);
-            WorkflowExpression.Validate(__workflow_requestmessage, nameof(requestmessage), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestmessageId = WorkflowExpression.Compile(requestmessageId, nameof(requestmessageId), required: true);
+            var __workflow_requestmessage = WorkflowExpression.Compile(requestmessage, nameof(requestmessage), required: true);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -225,18 +202,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
         {
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
-            var __workflow_requestwelcomeMessage = requestwelcomeMessage == null ? null : WorkflowExpression.Compile(requestwelcomeMessage);
-            WorkflowExpression.Validate(__workflow_requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
-            var __workflow_requestmembers = requestmembers == null ? null : WorkflowExpression.Compile(requestmembers);
-            WorkflowExpression.Validate(__workflow_requestmembers, nameof(requestmembers), required: false);
-            var __workflow_requestgroupType = requestgroupType == null ? null : WorkflowExpression.Compile(requestgroupType);
-            WorkflowExpression.Validate(__workflow_requestgroupType, nameof(requestgroupType), required: false);
-            var __workflow_requestshortDescription = requestshortDescription == null ? null : WorkflowExpression.Compile(requestshortDescription);
-            WorkflowExpression.Validate(__workflow_requestshortDescription, nameof(requestshortDescription), required: false);
-            var __workflow_requestlongDescription = requestlongDescription == null ? null : WorkflowExpression.Compile(requestlongDescription);
-            WorkflowExpression.Validate(__workflow_requestlongDescription, nameof(requestlongDescription), required: false);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestwelcomeMessage = WorkflowExpression.Compile(requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
+            var __workflow_requestmembers = WorkflowExpression.Compile(requestmembers, nameof(requestmembers), required: false);
+            var __workflow_requestgroupType = WorkflowExpression.Compile(requestgroupType, nameof(requestgroupType), required: false);
+            var __workflow_requestshortDescription = WorkflowExpression.Compile(requestshortDescription, nameof(requestshortDescription), required: false);
+            var __workflow_requestlongDescription = WorkflowExpression.Compile(requestlongDescription, nameof(requestlongDescription), required: false);
             return new DeferredBodyAction<CreateGroupResponse>(() =>
             {
                 var apiCallPath = "/v1/groups";
@@ -284,10 +255,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<string[]>> requestsubGroups)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_requestsubGroups = requestsubGroups == null ? null : WorkflowExpression.Compile(requestsubGroups);
-            WorkflowExpression.Validate(__workflow_requestsubGroups, nameof(requestsubGroups), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestsubGroups = WorkflowExpression.Compile(requestsubGroups, nameof(requestsubGroups), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -309,20 +278,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction CreateSubgroup(Expression<Func<string>> groupId, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_requestgroupName = requestgroupName == null ? null : WorkflowExpression.Compile(requestgroupName);
-            WorkflowExpression.Validate(__workflow_requestgroupName, nameof(requestgroupName), required: true);
-            var __workflow_requestwelcomeMessage = requestwelcomeMessage == null ? null : WorkflowExpression.Compile(requestwelcomeMessage);
-            WorkflowExpression.Validate(__workflow_requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
-            var __workflow_requestmembers = requestmembers == null ? null : WorkflowExpression.Compile(requestmembers);
-            WorkflowExpression.Validate(__workflow_requestmembers, nameof(requestmembers), required: false);
-            var __workflow_requestgroupType = requestgroupType == null ? null : WorkflowExpression.Compile(requestgroupType);
-            WorkflowExpression.Validate(__workflow_requestgroupType, nameof(requestgroupType), required: false);
-            var __workflow_requestshortDescription = requestshortDescription == null ? null : WorkflowExpression.Compile(requestshortDescription);
-            WorkflowExpression.Validate(__workflow_requestshortDescription, nameof(requestshortDescription), required: false);
-            var __workflow_requestlongDescription = requestlongDescription == null ? null : WorkflowExpression.Compile(requestlongDescription);
-            WorkflowExpression.Validate(__workflow_requestlongDescription, nameof(requestlongDescription), required: false);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestgroupName = WorkflowExpression.Compile(requestgroupName, nameof(requestgroupName), required: true);
+            var __workflow_requestwelcomeMessage = WorkflowExpression.Compile(requestwelcomeMessage, nameof(requestwelcomeMessage), required: true);
+            var __workflow_requestmembers = WorkflowExpression.Compile(requestmembers, nameof(requestmembers), required: false);
+            var __workflow_requestgroupType = WorkflowExpression.Compile(requestgroupType, nameof(requestgroupType), required: false);
+            var __workflow_requestshortDescription = WorkflowExpression.Compile(requestshortDescription, nameof(requestshortDescription), required: false);
+            var __workflow_requestlongDescription = WorkflowExpression.Compile(requestlongDescription, nameof(requestlongDescription), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -370,10 +332,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction RemoveGroupFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> subGroupId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_subGroupId = subGroupId == null ? null : WorkflowExpression.Compile(subGroupId);
-            WorkflowExpression.Validate(__workflow_subGroupId, nameof(subGroupId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_subGroupId = WorkflowExpression.Compile(subGroupId, nameof(subGroupId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subGroupId, 1));
@@ -386,10 +346,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestmembers)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_requestmembers = requestmembers == null ? null : WorkflowExpression.Compile(requestmembers);
-            WorkflowExpression.Validate(__workflow_requestmembers, nameof(requestmembers), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestmembers = WorkflowExpression.Compile(requestmembers, nameof(requestmembers), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -411,10 +369,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction AddSubscriberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestsubscribers)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_requestsubscribers = requestsubscribers == null ? null : WorkflowExpression.Compile(requestsubscribers);
-            WorkflowExpression.Validate(__workflow_requestsubscribers, nameof(requestsubscribers), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_requestsubscribers = WorkflowExpression.Compile(requestsubscribers, nameof(requestsubscribers), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subscribers/add", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1));
@@ -436,10 +392,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction RemoveUserFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> memberId)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_memberId = memberId == null ? null : WorkflowExpression.Compile(memberId);
-            WorkflowExpression.Validate(__workflow_memberId, nameof(memberId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_memberId = WorkflowExpression.Compile(memberId, nameof(memberId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_memberId, 1));
@@ -452,8 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFileContent(Expression<Func<object>> fileContent)
         {
-            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
-            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: true);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/v1/media";
@@ -466,8 +419,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL(Expression<Func<string>> mediaUrlmediaUrl)
         {
-            var __workflow_mediaUrlmediaUrl = mediaUrlmediaUrl == null ? null : WorkflowExpression.Compile(mediaUrlmediaUrl);
-            WorkflowExpression.Validate(__workflow_mediaUrlmediaUrl, nameof(mediaUrlmediaUrl), required: true);
+            var __workflow_mediaUrlmediaUrl = WorkflowExpression.Compile(mediaUrlmediaUrl, nameof(mediaUrlmediaUrl), required: true);
             return new DeferredBodyAction<UploadMediaResponse>(() =>
             {
                 var apiCallPath = "/v1/media/url";
@@ -513,8 +465,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IWorkflowAction DeleteTrigger(Expression<Func<string>> webhookId)
         {
-            var __workflow_webhookId = webhookId == null ? null : WorkflowExpression.Compile(webhookId);
-            WorkflowExpression.Validate(__workflow_webhookId, nameof(webhookId), required: true);
+            var __workflow_webhookId = WorkflowExpression.Compile(webhookId, nameof(webhookId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_webhookId, 1));
@@ -529,10 +480,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
     {
         public IWorkflowTrigger ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
-            var __workflow_actionPackageId = actionPackageId == null ? null : WorkflowExpression.Compile(actionPackageId);
-            WorkflowExpression.Validate(__workflow_actionPackageId, nameof(actionPackageId), required: false);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
+            var __workflow_actionPackageId = WorkflowExpression.Compile(actionPackageId, nameof(actionPackageId), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/ActionCreated";
@@ -556,8 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger AnnouncementOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/Announcement";
@@ -579,8 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger GroupAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/GroupAdded";
@@ -602,8 +549,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger GroupRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/GroupRemoved";
@@ -625,8 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger MemberAddedToGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/MemberAdded";
@@ -648,8 +593,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger MemberRemovedFromGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/MemberRemoved";
@@ -671,8 +615,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger SurveyCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/SurveyCreated";
@@ -694,8 +637,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger TextMessageCreatedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
@@ -717,10 +659,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Action/SurveyResponse";
@@ -743,8 +683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger AttachmentOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
@@ -766,12 +705,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_groupId = groupId == null ? null : WorkflowExpression.Compile(groupId);
-            WorkflowExpression.Validate(__workflow_groupId, nameof(groupId), required: true);
-            var __workflow_actionPackageId = actionPackageId == null ? null : WorkflowExpression.Compile(actionPackageId);
-            WorkflowExpression.Validate(__workflow_actionPackageId, nameof(actionPackageId), required: true);
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_groupId = WorkflowExpression.Compile(groupId, nameof(groupId), required: true);
+            var __workflow_actionPackageId = WorkflowExpression.Compile(actionPackageId, nameof(actionPackageId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook";
@@ -795,8 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
 
         public IWorkflowTrigger UserJoinedOnGroup(Expression<Func<string>> objectId, FlowRecurrence recurrence = null)
         {
-            var __workflow_objectId = objectId == null ? null : WorkflowExpression.Compile(objectId);
-            WorkflowExpression.Validate(__workflow_objectId, nameof(objectId), required: true);
+            var __workflow_objectId = WorkflowExpression.Compile(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v1/webhook/Group/UserJoined";

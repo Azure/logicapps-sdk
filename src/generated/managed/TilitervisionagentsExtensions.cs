@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
         public IBodyWorkflowAction<AgentResponse> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
         {
-            var __workflow_agentName = agentName == null ? null : WorkflowExpression.Compile(agentName);
-            WorkflowExpression.Validate(__workflow_agentName, nameof(agentName), required: true);
-            var __workflow_payloadinputFileB64 = payloadinputFileB64 == null ? null : WorkflowExpression.Compile(payloadinputFileB64);
-            WorkflowExpression.Validate(__workflow_payloadinputFileB64, nameof(payloadinputFileB64), required: true);
-            var __workflow_payloadexpectedText = payloadexpectedText == null ? null : WorkflowExpression.Compile(payloadexpectedText);
-            WorkflowExpression.Validate(__workflow_payloadexpectedText, nameof(payloadexpectedText), required: false);
-            var __workflow_payloadobjectType = payloadobjectType == null ? null : WorkflowExpression.Compile(payloadobjectType);
-            WorkflowExpression.Validate(__workflow_payloadobjectType, nameof(payloadobjectType), required: false);
-            var __workflow_payloadexpectedObjects = payloadexpectedObjects == null ? null : WorkflowExpression.Compile(payloadexpectedObjects);
-            WorkflowExpression.Validate(__workflow_payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
+            var __workflow_agentName = WorkflowExpression.Compile(agentName, nameof(agentName), required: true);
+            var __workflow_payloadinputFileB64 = WorkflowExpression.Compile(payloadinputFileB64, nameof(payloadinputFileB64), required: true);
+            var __workflow_payloadexpectedText = WorkflowExpression.Compile(payloadexpectedText, nameof(payloadexpectedText), required: false);
+            var __workflow_payloadobjectType = WorkflowExpression.Compile(payloadobjectType, nameof(payloadobjectType), required: false);
+            var __workflow_payloadexpectedObjects = WorkflowExpression.Compile(payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
             return new DeferredBodyAction<AgentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentName, 1));

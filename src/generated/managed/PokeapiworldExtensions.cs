@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListMachines(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/machine/";
@@ -33,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetMachineResponse> GetMachine(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetMachineResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/machine/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -47,10 +44,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListLocations(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/location/";
@@ -67,8 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetLocationResponse> GetLocation(Expression<Func<string>> idOrName)
         {
-            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
-            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetLocationResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/location/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
@@ -81,10 +75,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListLocationAreas(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/location-area/";
@@ -101,8 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetLocationAreaResponse> GetLocationArea(Expression<Func<string>> idOrName)
         {
-            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
-            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetLocationAreaResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/location-area/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
@@ -115,10 +106,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListRegions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/region/";
@@ -135,8 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetRegionResponse> GetRegion(Expression<Func<string>> idOrName)
         {
-            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
-            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetRegionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/region/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
@@ -149,10 +137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListEncounterMethods(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/encounter-method/";
@@ -169,8 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetEncounterResponse> GetEncounter(Expression<Func<string>> idOrName)
         {
-            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
-            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetEncounterResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-method/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
@@ -183,10 +168,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListEncounterConditions(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/encounter-condition/";
@@ -203,8 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetEncounterConditionResponse> GetEncounterCondition(Expression<Func<string>> idOrName)
         {
-            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
-            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetEncounterConditionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
@@ -217,10 +199,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListEncounterConditionValues(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/encounter-condition-value/";
@@ -237,8 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetEncounterConditionValueResponse> GetEncounterConditionValue(Expression<Func<string>> idOrName)
         {
-            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
-            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetEncounterConditionValueResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/encounter-condition-value/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
@@ -251,10 +230,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListBerries(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/berry/";
@@ -271,8 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<GetBerryResponse> GetBerry(Expression<Func<string>> idOrName)
         {
-            var __workflow_idOrName = idOrName == null ? null : WorkflowExpression.Compile(idOrName);
-            WorkflowExpression.Validate(__workflow_idOrName, nameof(idOrName), required: true);
+            var __workflow_idOrName = WorkflowExpression.Compile(idOrName, nameof(idOrName), required: true);
             return new DeferredBodyAction<GetBerryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/berry/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_idOrName, 1));
@@ -285,10 +261,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pokeapiworld
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pokeapiworld")]
         public IBodyWorkflowAction<ListResults> ListItems(Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
         {
-            var __workflow_limit = limit == null ? null : WorkflowExpression.Compile(limit);
-            WorkflowExpression.Validate(__workflow_limit, nameof(limit), required: false);
-            var __workflow_offset = offset == null ? null : WorkflowExpression.Compile(offset);
-            WorkflowExpression.Validate(__workflow_offset, nameof(offset), required: false);
+            var __workflow_limit = WorkflowExpression.Compile(limit, nameof(limit), required: false);
+            var __workflow_offset = WorkflowExpression.Compile(offset, nameof(offset), required: false);
             return new DeferredBodyAction<ListResults>(() =>
             {
                 var apiCallPath = "/api/v2/item/";

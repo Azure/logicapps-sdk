@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
         public IWorkflowAction CreateTicket(Expression<Func<int>> bodytype, Expression<Func<int>> bodyserviceId, Expression<Func<string>> bodysubject, Expression<Func<string>> bodymessage, Expression<Func<string>> bodysubmitterEmail, Expression<Func<string>> bodysolverUserProviderKey = null)
         {
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodyserviceId = bodyserviceId == null ? null : WorkflowExpression.Compile(bodyserviceId);
-            WorkflowExpression.Validate(__workflow_bodyserviceId, nameof(bodyserviceId), required: true);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: true);
-            var __workflow_bodysubmitterEmail = bodysubmitterEmail == null ? null : WorkflowExpression.Compile(bodysubmitterEmail);
-            WorkflowExpression.Validate(__workflow_bodysubmitterEmail, nameof(bodysubmitterEmail), required: true);
-            var __workflow_bodysolverUserProviderKey = bodysolverUserProviderKey == null ? null : WorkflowExpression.Compile(bodysolverUserProviderKey);
-            WorkflowExpression.Validate(__workflow_bodysolverUserProviderKey, nameof(bodysolverUserProviderKey), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyserviceId = WorkflowExpression.Compile(bodyserviceId, nameof(bodyserviceId), required: true);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: true);
+            var __workflow_bodysubmitterEmail = WorkflowExpression.Compile(bodysubmitterEmail, nameof(bodysubmitterEmail), required: true);
+            var __workflow_bodysolverUserProviderKey = WorkflowExpression.Compile(bodysolverUserProviderKey, nameof(bodysolverUserProviderKey), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Tickets/NewTicket";
@@ -60,40 +54,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "requestor")]
         public IWorkflowAction CreateUser(Expression<Func<string>> bodyuserName, Expression<Func<bool>> bodychangePasswordAfterLogging, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bool>> bodyroleEndUser = null, Expression<Func<bool>> bodyroleSmartUser = null, Expression<Func<bool>> bodyroleOperator = null, Expression<Func<bool>> bodyroleSuperOperator = null, Expression<Func<bool>> bodyroleAdministrator = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyadminNote = null, Expression<Func<string>> bodyadditionalInformation = null, Expression<Func<string[]>> bodycustomerNames = null)
         {
-            var __workflow_bodyuserName = bodyuserName == null ? null : WorkflowExpression.Compile(bodyuserName);
-            WorkflowExpression.Validate(__workflow_bodyuserName, nameof(bodyuserName), required: true);
-            var __workflow_bodychangePasswordAfterLogging = bodychangePasswordAfterLogging == null ? null : WorkflowExpression.Compile(bodychangePasswordAfterLogging);
-            WorkflowExpression.Validate(__workflow_bodychangePasswordAfterLogging, nameof(bodychangePasswordAfterLogging), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: false);
-            var __workflow_bodyroleEndUser = bodyroleEndUser == null ? null : WorkflowExpression.Compile(bodyroleEndUser);
-            WorkflowExpression.Validate(__workflow_bodyroleEndUser, nameof(bodyroleEndUser), required: false);
-            var __workflow_bodyroleSmartUser = bodyroleSmartUser == null ? null : WorkflowExpression.Compile(bodyroleSmartUser);
-            WorkflowExpression.Validate(__workflow_bodyroleSmartUser, nameof(bodyroleSmartUser), required: false);
-            var __workflow_bodyroleOperator = bodyroleOperator == null ? null : WorkflowExpression.Compile(bodyroleOperator);
-            WorkflowExpression.Validate(__workflow_bodyroleOperator, nameof(bodyroleOperator), required: false);
-            var __workflow_bodyroleSuperOperator = bodyroleSuperOperator == null ? null : WorkflowExpression.Compile(bodyroleSuperOperator);
-            WorkflowExpression.Validate(__workflow_bodyroleSuperOperator, nameof(bodyroleSuperOperator), required: false);
-            var __workflow_bodyroleAdministrator = bodyroleAdministrator == null ? null : WorkflowExpression.Compile(bodyroleAdministrator);
-            WorkflowExpression.Validate(__workflow_bodyroleAdministrator, nameof(bodyroleAdministrator), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodylastName = bodylastName == null ? null : WorkflowExpression.Compile(bodylastName);
-            WorkflowExpression.Validate(__workflow_bodylastName, nameof(bodylastName), required: false);
-            var __workflow_bodymiddleName = bodymiddleName == null ? null : WorkflowExpression.Compile(bodymiddleName);
-            WorkflowExpression.Validate(__workflow_bodymiddleName, nameof(bodymiddleName), required: false);
-            var __workflow_bodydisplayName = bodydisplayName == null ? null : WorkflowExpression.Compile(bodydisplayName);
-            WorkflowExpression.Validate(__workflow_bodydisplayName, nameof(bodydisplayName), required: false);
-            var __workflow_bodyphone = bodyphone == null ? null : WorkflowExpression.Compile(bodyphone);
-            WorkflowExpression.Validate(__workflow_bodyphone, nameof(bodyphone), required: false);
-            var __workflow_bodyadminNote = bodyadminNote == null ? null : WorkflowExpression.Compile(bodyadminNote);
-            WorkflowExpression.Validate(__workflow_bodyadminNote, nameof(bodyadminNote), required: false);
-            var __workflow_bodyadditionalInformation = bodyadditionalInformation == null ? null : WorkflowExpression.Compile(bodyadditionalInformation);
-            WorkflowExpression.Validate(__workflow_bodyadditionalInformation, nameof(bodyadditionalInformation), required: false);
-            var __workflow_bodycustomerNames = bodycustomerNames == null ? null : WorkflowExpression.Compile(bodycustomerNames);
-            WorkflowExpression.Validate(__workflow_bodycustomerNames, nameof(bodycustomerNames), required: false);
+            var __workflow_bodyuserName = WorkflowExpression.Compile(bodyuserName, nameof(bodyuserName), required: true);
+            var __workflow_bodychangePasswordAfterLogging = WorkflowExpression.Compile(bodychangePasswordAfterLogging, nameof(bodychangePasswordAfterLogging), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: false);
+            var __workflow_bodyroleEndUser = WorkflowExpression.Compile(bodyroleEndUser, nameof(bodyroleEndUser), required: false);
+            var __workflow_bodyroleSmartUser = WorkflowExpression.Compile(bodyroleSmartUser, nameof(bodyroleSmartUser), required: false);
+            var __workflow_bodyroleOperator = WorkflowExpression.Compile(bodyroleOperator, nameof(bodyroleOperator), required: false);
+            var __workflow_bodyroleSuperOperator = WorkflowExpression.Compile(bodyroleSuperOperator, nameof(bodyroleSuperOperator), required: false);
+            var __workflow_bodyroleAdministrator = WorkflowExpression.Compile(bodyroleAdministrator, nameof(bodyroleAdministrator), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodylastName = WorkflowExpression.Compile(bodylastName, nameof(bodylastName), required: false);
+            var __workflow_bodymiddleName = WorkflowExpression.Compile(bodymiddleName, nameof(bodymiddleName), required: false);
+            var __workflow_bodydisplayName = WorkflowExpression.Compile(bodydisplayName, nameof(bodydisplayName), required: false);
+            var __workflow_bodyphone = WorkflowExpression.Compile(bodyphone, nameof(bodyphone), required: false);
+            var __workflow_bodyadminNote = WorkflowExpression.Compile(bodyadminNote, nameof(bodyadminNote), required: false);
+            var __workflow_bodyadditionalInformation = WorkflowExpression.Compile(bodyadditionalInformation, nameof(bodyadditionalInformation), required: false);
+            var __workflow_bodycustomerNames = WorkflowExpression.Compile(bodycustomerNames, nameof(bodycustomerNames), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/api/Account/CreateRequestorUser";

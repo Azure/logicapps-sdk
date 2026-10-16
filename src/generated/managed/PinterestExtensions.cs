@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponse> ListPinsFromBoard(Expression<Func<string>> board)
         {
-            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
-            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             return new DeferredBodyAction<PinResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<BoardResponseData> CreateBoard(Expression<Func<string>> name, Expression<Func<string>> description = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
             return new DeferredBodyAction<BoardResponseData>(() =>
             {
                 var apiCallPath = "/boards";
@@ -46,14 +43,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponseData> CreatePin(Expression<Func<string>> boardId, Expression<Func<string>> description, Expression<Func<string>> imageUrl, Expression<Func<string>> sourceUrl = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: true);
-            var __workflow_imageUrl = imageUrl == null ? null : WorkflowExpression.Compile(imageUrl);
-            WorkflowExpression.Validate(__workflow_imageUrl, nameof(imageUrl), required: true);
-            var __workflow_sourceUrl = sourceUrl == null ? null : WorkflowExpression.Compile(sourceUrl);
-            WorkflowExpression.Validate(__workflow_sourceUrl, nameof(sourceUrl), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: true);
+            var __workflow_imageUrl = WorkflowExpression.Compile(imageUrl, nameof(imageUrl), required: true);
+            var __workflow_sourceUrl = WorkflowExpression.Compile(sourceUrl, nameof(sourceUrl), required: false);
             return new DeferredBodyAction<PinResponseData>(() =>
             {
                 var apiCallPath = "/pins";
@@ -71,16 +64,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponseData> EditPin(Expression<Func<string>> boardId, Expression<Func<string>> pin, Expression<Func<string>> description, Expression<Func<string>> link = null, Expression<Func<string>> secondBoard = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_pin = pin == null ? null : WorkflowExpression.Compile(pin);
-            WorkflowExpression.Validate(__workflow_pin, nameof(pin), required: true);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: true);
-            var __workflow_link = link == null ? null : WorkflowExpression.Compile(link);
-            WorkflowExpression.Validate(__workflow_link, nameof(link), required: false);
-            var __workflow_secondBoard = secondBoard == null ? null : WorkflowExpression.Compile(secondBoard);
-            WorkflowExpression.Validate(__workflow_secondBoard, nameof(secondBoard), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_pin = WorkflowExpression.Compile(pin, nameof(pin), required: true);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: true);
+            var __workflow_link = WorkflowExpression.Compile(link, nameof(link), required: false);
+            var __workflow_secondBoard = WorkflowExpression.Compile(secondBoard, nameof(secondBoard), required: false);
             return new DeferredBodyAction<PinResponseData>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pin, 1));
@@ -155,8 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
     {
         public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
         {
-            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
-            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));
@@ -168,8 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
 
         public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, FlowRecurrence recurrence = null)
         {
-            var __workflow_board = board == null ? null : WorkflowExpression.Compile(board);
-            WorkflowExpression.Validate(__workflow_board, nameof(board), required: true);
+            var __workflow_board = WorkflowExpression.Compile(board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(__workflow_board, 1));

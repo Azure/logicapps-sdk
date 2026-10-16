@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Africastalkingvoice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "africastalkingvoice")]
         public IBodyWorkflowAction<CallResponse> Call(Expression<Func<string>> bodyusername, Expression<Func<string>> bodyfrom, Expression<Func<string[]>> bodyto, Expression<Func<bodyactionsInputItem[]>> bodyactions)
         {
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodyfrom = bodyfrom == null ? null : WorkflowExpression.Compile(bodyfrom);
-            WorkflowExpression.Validate(__workflow_bodyfrom, nameof(bodyfrom), required: true);
-            var __workflow_bodyto = bodyto == null ? null : WorkflowExpression.Compile(bodyto);
-            WorkflowExpression.Validate(__workflow_bodyto, nameof(bodyto), required: true);
-            var __workflow_bodyactions = bodyactions == null ? null : WorkflowExpression.Compile(bodyactions);
-            WorkflowExpression.Validate(__workflow_bodyactions, nameof(bodyactions), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodyfrom = WorkflowExpression.Compile(bodyfrom, nameof(bodyfrom), required: true);
+            var __workflow_bodyto = WorkflowExpression.Compile(bodyto, nameof(bodyto), required: true);
+            var __workflow_bodyactions = WorkflowExpression.Compile(bodyactions, nameof(bodyactions), required: true);
             return new DeferredBodyAction<CallResponse>(() =>
             {
                 var apiCallPath = "/call";

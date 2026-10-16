@@ -22,22 +22,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<GetInvoicesResponse> GetInvoices(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> statuses = null, Expression<Func<string>> iDs = null, Expression<Func<string>> invoiceNumbers = null, Expression<Func<string>> contactIDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null)
         {
-            var __workflow_xeroTenantId = xeroTenantId == null ? null : WorkflowExpression.Compile(xeroTenantId);
-            WorkflowExpression.Validate(__workflow_xeroTenantId, nameof(xeroTenantId), required: true);
-            var __workflow_where = where == null ? null : WorkflowExpression.Compile(where);
-            WorkflowExpression.Validate(__workflow_where, nameof(where), required: false);
-            var __workflow_statuses = statuses == null ? null : WorkflowExpression.Compile(statuses);
-            WorkflowExpression.Validate(__workflow_statuses, nameof(statuses), required: false);
-            var __workflow_iDs = iDs == null ? null : WorkflowExpression.Compile(iDs);
-            WorkflowExpression.Validate(__workflow_iDs, nameof(iDs), required: false);
-            var __workflow_invoiceNumbers = invoiceNumbers == null ? null : WorkflowExpression.Compile(invoiceNumbers);
-            WorkflowExpression.Validate(__workflow_invoiceNumbers, nameof(invoiceNumbers), required: false);
-            var __workflow_contactIDs = contactIDs == null ? null : WorkflowExpression.Compile(contactIDs);
-            WorkflowExpression.Validate(__workflow_contactIDs, nameof(contactIDs), required: false);
-            var __workflow_summaryOnly = summaryOnly == null ? null : WorkflowExpression.Compile(summaryOnly);
-            WorkflowExpression.Validate(__workflow_summaryOnly, nameof(summaryOnly), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
+            var __workflow_where = WorkflowExpression.Compile(where, nameof(where), required: false);
+            var __workflow_statuses = WorkflowExpression.Compile(statuses, nameof(statuses), required: false);
+            var __workflow_iDs = WorkflowExpression.Compile(iDs, nameof(iDs), required: false);
+            var __workflow_invoiceNumbers = WorkflowExpression.Compile(invoiceNumbers, nameof(invoiceNumbers), required: false);
+            var __workflow_contactIDs = WorkflowExpression.Compile(contactIDs, nameof(contactIDs), required: false);
+            var __workflow_summaryOnly = WorkflowExpression.Compile(summaryOnly, nameof(summaryOnly), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<GetInvoicesResponse>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Invoices";
@@ -67,32 +59,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice(Expression<Func<string>> xeroTenantId, Expression<Func<string>> bodytype, Expression<Func<bodylineItemsInputItem[]>> bodylineItems, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycontactcontactID = null, Expression<Func<string>> bodylineAmountTypes = null, Expression<Func<string>> bodyinvoiceNumber = null, Expression<Func<string>> bodycurrencyCode = null, Expression<Func<double>> bodycurrencyRate = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyexpectedPaymentDate = null)
         {
-            var __workflow_xeroTenantId = xeroTenantId == null ? null : WorkflowExpression.Compile(xeroTenantId);
-            WorkflowExpression.Validate(__workflow_xeroTenantId, nameof(xeroTenantId), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
-            var __workflow_bodylineItems = bodylineItems == null ? null : WorkflowExpression.Compile(bodylineItems);
-            WorkflowExpression.Validate(__workflow_bodylineItems, nameof(bodylineItems), required: true);
-            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
-            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodyreference = bodyreference == null ? null : WorkflowExpression.Compile(bodyreference);
-            WorkflowExpression.Validate(__workflow_bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodycontactcontactID = bodycontactcontactID == null ? null : WorkflowExpression.Compile(bodycontactcontactID);
-            WorkflowExpression.Validate(__workflow_bodycontactcontactID, nameof(bodycontactcontactID), required: false);
-            var __workflow_bodylineAmountTypes = bodylineAmountTypes == null ? null : WorkflowExpression.Compile(bodylineAmountTypes);
-            WorkflowExpression.Validate(__workflow_bodylineAmountTypes, nameof(bodylineAmountTypes), required: false);
-            var __workflow_bodyinvoiceNumber = bodyinvoiceNumber == null ? null : WorkflowExpression.Compile(bodyinvoiceNumber);
-            WorkflowExpression.Validate(__workflow_bodyinvoiceNumber, nameof(bodyinvoiceNumber), required: false);
-            var __workflow_bodycurrencyCode = bodycurrencyCode == null ? null : WorkflowExpression.Compile(bodycurrencyCode);
-            WorkflowExpression.Validate(__workflow_bodycurrencyCode, nameof(bodycurrencyCode), required: false);
-            var __workflow_bodycurrencyRate = bodycurrencyRate == null ? null : WorkflowExpression.Compile(bodycurrencyRate);
-            WorkflowExpression.Validate(__workflow_bodycurrencyRate, nameof(bodycurrencyRate), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyexpectedPaymentDate = bodyexpectedPaymentDate == null ? null : WorkflowExpression.Compile(bodyexpectedPaymentDate);
-            WorkflowExpression.Validate(__workflow_bodyexpectedPaymentDate, nameof(bodyexpectedPaymentDate), required: false);
+            var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
+            var __workflow_bodylineItems = WorkflowExpression.Compile(bodylineItems, nameof(bodylineItems), required: true);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
+            var __workflow_bodycontactcontactID = WorkflowExpression.Compile(bodycontactcontactID, nameof(bodycontactcontactID), required: false);
+            var __workflow_bodylineAmountTypes = WorkflowExpression.Compile(bodylineAmountTypes, nameof(bodylineAmountTypes), required: false);
+            var __workflow_bodyinvoiceNumber = WorkflowExpression.Compile(bodyinvoiceNumber, nameof(bodyinvoiceNumber), required: false);
+            var __workflow_bodycurrencyCode = WorkflowExpression.Compile(bodycurrencyCode, nameof(bodycurrencyCode), required: false);
+            var __workflow_bodycurrencyRate = WorkflowExpression.Compile(bodycurrencyRate, nameof(bodycurrencyRate), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyexpectedPaymentDate = WorkflowExpression.Compile(bodyexpectedPaymentDate, nameof(bodyexpectedPaymentDate), required: false);
             return new DeferredBodyAction<PostInvoiceResponse>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Invoices";
@@ -187,20 +166,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> iDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null, Expression<Func<bool>> includeArchived = null, Expression<Func<string>> searchTerm = null)
         {
-            var __workflow_xeroTenantId = xeroTenantId == null ? null : WorkflowExpression.Compile(xeroTenantId);
-            WorkflowExpression.Validate(__workflow_xeroTenantId, nameof(xeroTenantId), required: true);
-            var __workflow_where = where == null ? null : WorkflowExpression.Compile(where);
-            WorkflowExpression.Validate(__workflow_where, nameof(where), required: false);
-            var __workflow_iDs = iDs == null ? null : WorkflowExpression.Compile(iDs);
-            WorkflowExpression.Validate(__workflow_iDs, nameof(iDs), required: false);
-            var __workflow_summaryOnly = summaryOnly == null ? null : WorkflowExpression.Compile(summaryOnly);
-            WorkflowExpression.Validate(__workflow_summaryOnly, nameof(summaryOnly), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_includeArchived = includeArchived == null ? null : WorkflowExpression.Compile(includeArchived);
-            WorkflowExpression.Validate(__workflow_includeArchived, nameof(includeArchived), required: false);
-            var __workflow_searchTerm = searchTerm == null ? null : WorkflowExpression.Compile(searchTerm);
-            WorkflowExpression.Validate(__workflow_searchTerm, nameof(searchTerm), required: false);
+            var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
+            var __workflow_where = WorkflowExpression.Compile(where, nameof(where), required: false);
+            var __workflow_iDs = WorkflowExpression.Compile(iDs, nameof(iDs), required: false);
+            var __workflow_summaryOnly = WorkflowExpression.Compile(summaryOnly, nameof(summaryOnly), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_includeArchived = WorkflowExpression.Compile(includeArchived, nameof(includeArchived), required: false);
+            var __workflow_searchTerm = WorkflowExpression.Compile(searchTerm, nameof(searchTerm), required: false);
             return new DeferredBodyAction<GetContactsResponse>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Contacts";
@@ -227,10 +199,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<PostContactsResponse> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<bodycontactsInputItem[]>> bodycontacts)
         {
-            var __workflow_xeroTenantId = xeroTenantId == null ? null : WorkflowExpression.Compile(xeroTenantId);
-            WorkflowExpression.Validate(__workflow_xeroTenantId, nameof(xeroTenantId), required: true);
-            var __workflow_bodycontacts = bodycontacts == null ? null : WorkflowExpression.Compile(bodycontacts);
-            WorkflowExpression.Validate(__workflow_bodycontacts, nameof(bodycontacts), required: true);
+            var __workflow_xeroTenantId = WorkflowExpression.Compile(xeroTenantId, nameof(xeroTenantId), required: true);
+            var __workflow_bodycontacts = WorkflowExpression.Compile(bodycontacts, nameof(bodycontacts), required: true);
             return new DeferredBodyAction<PostContactsResponse>(() =>
             {
                 var apiCallPath = "/api.xro/2.0/Contacts";

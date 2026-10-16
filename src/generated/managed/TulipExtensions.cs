@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> CreateRecord(Expression<Func<string>> tableId, Expression<Func<object>> dynamicTableSchema = null)
         {
-            var __workflow_tableId = tableId == null ? null : WorkflowExpression.Compile(tableId);
-            WorkflowExpression.Validate(__workflow_tableId, nameof(tableId), required: true);
-            var __workflow_dynamicTableSchema = dynamicTableSchema == null ? null : WorkflowExpression.Compile(dynamicTableSchema);
-            WorkflowExpression.Validate(__workflow_dynamicTableSchema, nameof(dynamicTableSchema), required: false);
+            var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
+            var __workflow_dynamicTableSchema = WorkflowExpression.Compile(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableId, 1));
@@ -30,10 +28,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> GetRecord(Expression<Func<string>> tableId, Expression<Func<string>> recordId)
         {
-            var __workflow_tableId = tableId == null ? null : WorkflowExpression.Compile(tableId);
-            WorkflowExpression.Validate(__workflow_tableId, nameof(tableId), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
+            var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));
@@ -46,12 +42,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tulip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tulip")]
         public IBodyWorkflowAction<JToken> UpdateRecord(Expression<Func<string>> tableId, Expression<Func<string>> recordId, Expression<Func<object>> dynamicTableSchema = null)
         {
-            var __workflow_tableId = tableId == null ? null : WorkflowExpression.Compile(tableId);
-            WorkflowExpression.Validate(__workflow_tableId, nameof(tableId), required: true);
-            var __workflow_recordId = recordId == null ? null : WorkflowExpression.Compile(recordId);
-            WorkflowExpression.Validate(__workflow_recordId, nameof(recordId), required: true);
-            var __workflow_dynamicTableSchema = dynamicTableSchema == null ? null : WorkflowExpression.Compile(dynamicTableSchema);
-            WorkflowExpression.Validate(__workflow_dynamicTableSchema, nameof(dynamicTableSchema), required: false);
+            var __workflow_tableId = WorkflowExpression.Compile(tableId, nameof(tableId), required: true);
+            var __workflow_recordId = WorkflowExpression.Compile(recordId, nameof(recordId), required: true);
+            var __workflow_dynamicTableSchema = WorkflowExpression.Compile(dynamicTableSchema, nameof(dynamicTableSchema), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tables/{0}/records/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tableId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_recordId, 1));

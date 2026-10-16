@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetBoardResponse> GetBoard(Expression<Func<string>> boardId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<GetBoardResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -36,8 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetTaskResponse[]> GetTasks(Expression<Func<string>> boardId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<GetTaskResponse[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -50,20 +48,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskname, Expression<Func<string>> taskdescription = null, Expression<Func<string>> taskswimlaneId = null, Expression<Func<string>> taskworkflowStageId = null, Expression<Func<string>> taskcardTypeId = null, Expression<Func<string>> taskassignedUserId = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskname = taskname == null ? null : WorkflowExpression.Compile(taskname);
-            WorkflowExpression.Validate(__workflow_taskname, nameof(taskname), required: true);
-            var __workflow_taskdescription = taskdescription == null ? null : WorkflowExpression.Compile(taskdescription);
-            WorkflowExpression.Validate(__workflow_taskdescription, nameof(taskdescription), required: false);
-            var __workflow_taskswimlaneId = taskswimlaneId == null ? null : WorkflowExpression.Compile(taskswimlaneId);
-            WorkflowExpression.Validate(__workflow_taskswimlaneId, nameof(taskswimlaneId), required: false);
-            var __workflow_taskworkflowStageId = taskworkflowStageId == null ? null : WorkflowExpression.Compile(taskworkflowStageId);
-            WorkflowExpression.Validate(__workflow_taskworkflowStageId, nameof(taskworkflowStageId), required: false);
-            var __workflow_taskcardTypeId = taskcardTypeId == null ? null : WorkflowExpression.Compile(taskcardTypeId);
-            WorkflowExpression.Validate(__workflow_taskcardTypeId, nameof(taskcardTypeId), required: false);
-            var __workflow_taskassignedUserId = taskassignedUserId == null ? null : WorkflowExpression.Compile(taskassignedUserId);
-            WorkflowExpression.Validate(__workflow_taskassignedUserId, nameof(taskassignedUserId), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskname = WorkflowExpression.Compile(taskname, nameof(taskname), required: true);
+            var __workflow_taskdescription = WorkflowExpression.Compile(taskdescription, nameof(taskdescription), required: false);
+            var __workflow_taskswimlaneId = WorkflowExpression.Compile(taskswimlaneId, nameof(taskswimlaneId), required: false);
+            var __workflow_taskworkflowStageId = WorkflowExpression.Compile(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
+            var __workflow_taskcardTypeId = WorkflowExpression.Compile(taskcardTypeId, nameof(taskcardTypeId), required: false);
+            var __workflow_taskassignedUserId = WorkflowExpression.Compile(taskassignedUserId, nameof(taskassignedUserId), required: false);
             return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -115,10 +106,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetTaskResponse2> GetTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetTaskResponse2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -131,10 +120,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<DeleteTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -147,18 +134,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> taskname = null, Expression<Func<string>> taskdescription = null, Expression<Func<string>> taskcardTypeId = null, Expression<Func<string>> taskassignedUserId = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_taskname = taskname == null ? null : WorkflowExpression.Compile(taskname);
-            WorkflowExpression.Validate(__workflow_taskname, nameof(taskname), required: false);
-            var __workflow_taskdescription = taskdescription == null ? null : WorkflowExpression.Compile(taskdescription);
-            WorkflowExpression.Validate(__workflow_taskdescription, nameof(taskdescription), required: false);
-            var __workflow_taskcardTypeId = taskcardTypeId == null ? null : WorkflowExpression.Compile(taskcardTypeId);
-            WorkflowExpression.Validate(__workflow_taskcardTypeId, nameof(taskcardTypeId), required: false);
-            var __workflow_taskassignedUserId = taskassignedUserId == null ? null : WorkflowExpression.Compile(taskassignedUserId);
-            WorkflowExpression.Validate(__workflow_taskassignedUserId, nameof(taskassignedUserId), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_taskname = WorkflowExpression.Compile(taskname, nameof(taskname), required: false);
+            var __workflow_taskdescription = WorkflowExpression.Compile(taskdescription, nameof(taskdescription), required: false);
+            var __workflow_taskcardTypeId = WorkflowExpression.Compile(taskcardTypeId, nameof(taskcardTypeId), required: false);
+            var __workflow_taskassignedUserId = WorkflowExpression.Compile(taskassignedUserId, nameof(taskassignedUserId), required: false);
             return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -202,16 +183,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<MoveTaskResponse> MoveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<taskdirectionInput>> taskdirection = null, Expression<Func<string>> taskswimlaneId = null, Expression<Func<string>> taskworkflowStageId = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_taskdirection = taskdirection == null ? null : WorkflowExpression.Compile(taskdirection);
-            WorkflowExpression.Validate(__workflow_taskdirection, nameof(taskdirection), required: false);
-            var __workflow_taskswimlaneId = taskswimlaneId == null ? null : WorkflowExpression.Compile(taskswimlaneId);
-            WorkflowExpression.Validate(__workflow_taskswimlaneId, nameof(taskswimlaneId), required: false);
-            var __workflow_taskworkflowStageId = taskworkflowStageId == null ? null : WorkflowExpression.Compile(taskworkflowStageId);
-            WorkflowExpression.Validate(__workflow_taskworkflowStageId, nameof(taskworkflowStageId), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_taskdirection = WorkflowExpression.Compile(taskdirection, nameof(taskdirection), required: false);
+            var __workflow_taskswimlaneId = WorkflowExpression.Compile(taskswimlaneId, nameof(taskswimlaneId), required: false);
+            var __workflow_taskworkflowStageId = WorkflowExpression.Compile(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
             return new DeferredBodyAction<MoveTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/move.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -249,10 +225,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<ArchiveTaskResponse> ArchiveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<ArchiveTaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/archive.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -265,8 +239,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetActivitiesResponseItem[]> BoardActivities(Expression<Func<string>> boardId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
             return new DeferredBodyAction<GetActivitiesResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/changelog.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1));
@@ -279,10 +252,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetCommentResponse[]> GetComments(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetCommentResponse[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -295,12 +266,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetCommentResponse> CreateComment(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> commentcontent)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_commentcontent = commentcontent == null ? null : WorkflowExpression.Compile(commentcontent);
-            WorkflowExpression.Validate(__workflow_commentcontent, nameof(commentcontent), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_commentcontent = WorkflowExpression.Compile(commentcontent, nameof(commentcontent), required: true);
             return new DeferredBodyAction<GetCommentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -322,10 +290,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse[]> GetSubtasks(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<GetSubtaskResponse[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -338,14 +304,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse> CreateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskname, Expression<Func<string>> subtaskassignedUserId = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_subtaskname = subtaskname == null ? null : WorkflowExpression.Compile(subtaskname);
-            WorkflowExpression.Validate(__workflow_subtaskname, nameof(subtaskname), required: true);
-            var __workflow_subtaskassignedUserId = subtaskassignedUserId == null ? null : WorkflowExpression.Compile(subtaskassignedUserId);
-            WorkflowExpression.Validate(__workflow_subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_subtaskname = WorkflowExpression.Compile(subtaskname, nameof(subtaskname), required: true);
+            var __workflow_subtaskassignedUserId = WorkflowExpression.Compile(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
             return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -373,12 +335,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse> DeleteSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_subtaskId = subtaskId == null ? null : WorkflowExpression.Compile(subtaskId);
-            WorkflowExpression.Validate(__workflow_subtaskId, nameof(subtaskId), required: true);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_subtaskId = WorkflowExpression.Compile(subtaskId, nameof(subtaskId), required: true);
             return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subtaskId, 1));
@@ -391,18 +350,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetSubtaskResponse> UpdateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId, Expression<Func<string>> subtaskname = null, Expression<Func<bool>> subtaskisCompleted = null, Expression<Func<string>> subtaskassignedUserId = null)
         {
-            var __workflow_boardId = boardId == null ? null : WorkflowExpression.Compile(boardId);
-            WorkflowExpression.Validate(__workflow_boardId, nameof(boardId), required: true);
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_subtaskId = subtaskId == null ? null : WorkflowExpression.Compile(subtaskId);
-            WorkflowExpression.Validate(__workflow_subtaskId, nameof(subtaskId), required: true);
-            var __workflow_subtaskname = subtaskname == null ? null : WorkflowExpression.Compile(subtaskname);
-            WorkflowExpression.Validate(__workflow_subtaskname, nameof(subtaskname), required: false);
-            var __workflow_subtaskisCompleted = subtaskisCompleted == null ? null : WorkflowExpression.Compile(subtaskisCompleted);
-            WorkflowExpression.Validate(__workflow_subtaskisCompleted, nameof(subtaskisCompleted), required: false);
-            var __workflow_subtaskassignedUserId = subtaskassignedUserId == null ? null : WorkflowExpression.Compile(subtaskassignedUserId);
-            WorkflowExpression.Validate(__workflow_subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
+            var __workflow_boardId = WorkflowExpression.Compile(boardId, nameof(boardId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_subtaskId = WorkflowExpression.Compile(subtaskId, nameof(subtaskId), required: true);
+            var __workflow_subtaskname = WorkflowExpression.Compile(subtaskname, nameof(subtaskname), required: false);
+            var __workflow_subtaskisCompleted = WorkflowExpression.Compile(subtaskisCompleted, nameof(subtaskisCompleted), required: false);
+            var __workflow_subtaskassignedUserId = WorkflowExpression.Compile(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
             return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(__workflow_boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_subtaskId, 1));

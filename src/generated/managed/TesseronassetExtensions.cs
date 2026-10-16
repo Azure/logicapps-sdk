@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<AddAssetResponse> AddAsset(Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<string>> bodyliveCycleName = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
-            var __workflow_bodyassetTemplateId = bodyassetTemplateId == null ? null : WorkflowExpression.Compile(bodyassetTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyreferenceNumber = bodyreferenceNumber == null ? null : WorkflowExpression.Compile(bodyreferenceNumber);
-            WorkflowExpression.Validate(__workflow_bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            var __workflow_bodydocumentationId = bodydocumentationId == null ? null : WorkflowExpression.Compile(bodydocumentationId);
-            WorkflowExpression.Validate(__workflow_bodydocumentationId, nameof(bodydocumentationId), required: false);
-            var __workflow_bodydocumentationName = bodydocumentationName == null ? null : WorkflowExpression.Compile(bodydocumentationName);
-            WorkflowExpression.Validate(__workflow_bodydocumentationName, nameof(bodydocumentationName), required: false);
-            var __workflow_bodyliveCycleName = bodyliveCycleName == null ? null : WorkflowExpression.Compile(bodyliveCycleName);
-            WorkflowExpression.Validate(__workflow_bodyliveCycleName, nameof(bodyliveCycleName), required: false);
-            var __workflow_bodyattachments = bodyattachments == null ? null : WorkflowExpression.Compile(bodyattachments);
-            WorkflowExpression.Validate(__workflow_bodyattachments, nameof(bodyattachments), required: false);
+            var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyreferenceNumber = WorkflowExpression.Compile(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
+            var __workflow_bodydocumentationId = WorkflowExpression.Compile(bodydocumentationId, nameof(bodydocumentationId), required: false);
+            var __workflow_bodydocumentationName = WorkflowExpression.Compile(bodydocumentationName, nameof(bodydocumentationName), required: false);
+            var __workflow_bodyliveCycleName = WorkflowExpression.Compile(bodyliveCycleName, nameof(bodyliveCycleName), required: false);
+            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
             return new DeferredBodyAction<AddAssetResponse>(() =>
             {
                 var apiCallPath = "/AddAsset";
@@ -96,26 +87,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset(Expression<Func<int>> bodyassetId, Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyliveCycleState = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
         {
-            var __workflow_bodyassetId = bodyassetId == null ? null : WorkflowExpression.Compile(bodyassetId);
-            WorkflowExpression.Validate(__workflow_bodyassetId, nameof(bodyassetId), required: true);
-            var __workflow_bodyassetTemplateId = bodyassetTemplateId == null ? null : WorkflowExpression.Compile(bodyassetTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            var __workflow_bodyfields = bodyfields == null ? null : WorkflowExpression.Compile(bodyfields);
-            WorkflowExpression.Validate(__workflow_bodyfields, nameof(bodyfields), required: true);
-            var __workflow_bodyreferenceNumber = bodyreferenceNumber == null ? null : WorkflowExpression.Compile(bodyreferenceNumber);
-            WorkflowExpression.Validate(__workflow_bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            var __workflow_bodydocumentationId = bodydocumentationId == null ? null : WorkflowExpression.Compile(bodydocumentationId);
-            WorkflowExpression.Validate(__workflow_bodydocumentationId, nameof(bodydocumentationId), required: false);
-            var __workflow_bodydocumentationName = bodydocumentationName == null ? null : WorkflowExpression.Compile(bodydocumentationName);
-            WorkflowExpression.Validate(__workflow_bodydocumentationName, nameof(bodydocumentationName), required: false);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: false);
-            var __workflow_bodyliveCycleState = bodyliveCycleState == null ? null : WorkflowExpression.Compile(bodyliveCycleState);
-            WorkflowExpression.Validate(__workflow_bodyliveCycleState, nameof(bodyliveCycleState), required: false);
-            var __workflow_bodyattachments = bodyattachments == null ? null : WorkflowExpression.Compile(bodyattachments);
-            WorkflowExpression.Validate(__workflow_bodyattachments, nameof(bodyattachments), required: false);
+            var __workflow_bodyassetId = WorkflowExpression.Compile(bodyassetId, nameof(bodyassetId), required: true);
+            var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            var __workflow_bodyfields = WorkflowExpression.Compile(bodyfields, nameof(bodyfields), required: true);
+            var __workflow_bodyreferenceNumber = WorkflowExpression.Compile(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodydocumentationId = WorkflowExpression.Compile(bodydocumentationId, nameof(bodydocumentationId), required: false);
+            var __workflow_bodydocumentationName = WorkflowExpression.Compile(bodydocumentationName, nameof(bodydocumentationName), required: false);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: false);
+            var __workflow_bodyliveCycleState = WorkflowExpression.Compile(bodyliveCycleState, nameof(bodyliveCycleState), required: false);
+            var __workflow_bodyattachments = WorkflowExpression.Compile(bodyattachments, nameof(bodyattachments), required: false);
             return new DeferredBodyAction<UpdateAssetResponse>(() =>
             {
                 var apiCallPath = "/UpdateAsset";
@@ -183,30 +164,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<GetAssetSearchResponse> GetAssetSearch(Expression<Func<int>> bodyskip, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyassetTemplateId, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<int>> bodyassetStatus = null, Expression<Func<bool>> bodyisDeprecated = null, Expression<Func<string>> bodylastUpdateDateStart = null, Expression<Func<string>> bodylastUpdateDateEnd = null, Expression<Func<int>> bodyresponseType = null, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null)
         {
-            var __workflow_bodyskip = bodyskip == null ? null : WorkflowExpression.Compile(bodyskip);
-            WorkflowExpression.Validate(__workflow_bodyskip, nameof(bodyskip), required: true);
-            var __workflow_bodypageSize = bodypageSize == null ? null : WorkflowExpression.Compile(bodypageSize);
-            WorkflowExpression.Validate(__workflow_bodypageSize, nameof(bodypageSize), required: true);
-            var __workflow_bodyassetTemplateId = bodyassetTemplateId == null ? null : WorkflowExpression.Compile(bodyassetTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            var __workflow_bodysearch = bodysearch == null ? null : WorkflowExpression.Compile(bodysearch);
-            WorkflowExpression.Validate(__workflow_bodysearch, nameof(bodysearch), required: false);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
-            var __workflow_bodydocumentationId = bodydocumentationId == null ? null : WorkflowExpression.Compile(bodydocumentationId);
-            WorkflowExpression.Validate(__workflow_bodydocumentationId, nameof(bodydocumentationId), required: false);
-            var __workflow_bodyassetStatus = bodyassetStatus == null ? null : WorkflowExpression.Compile(bodyassetStatus);
-            WorkflowExpression.Validate(__workflow_bodyassetStatus, nameof(bodyassetStatus), required: false);
-            var __workflow_bodyisDeprecated = bodyisDeprecated == null ? null : WorkflowExpression.Compile(bodyisDeprecated);
-            WorkflowExpression.Validate(__workflow_bodyisDeprecated, nameof(bodyisDeprecated), required: false);
-            var __workflow_bodylastUpdateDateStart = bodylastUpdateDateStart == null ? null : WorkflowExpression.Compile(bodylastUpdateDateStart);
-            WorkflowExpression.Validate(__workflow_bodylastUpdateDateStart, nameof(bodylastUpdateDateStart), required: false);
-            var __workflow_bodylastUpdateDateEnd = bodylastUpdateDateEnd == null ? null : WorkflowExpression.Compile(bodylastUpdateDateEnd);
-            WorkflowExpression.Validate(__workflow_bodylastUpdateDateEnd, nameof(bodylastUpdateDateEnd), required: false);
-            var __workflow_bodyresponseType = bodyresponseType == null ? null : WorkflowExpression.Compile(bodyresponseType);
-            WorkflowExpression.Validate(__workflow_bodyresponseType, nameof(bodyresponseType), required: false);
-            var __workflow_bodyincludeAccessAuditedFieldValues = bodyincludeAccessAuditedFieldValues == null ? null : WorkflowExpression.Compile(bodyincludeAccessAuditedFieldValues);
-            WorkflowExpression.Validate(__workflow_bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
+            var __workflow_bodyskip = WorkflowExpression.Compile(bodyskip, nameof(bodyskip), required: true);
+            var __workflow_bodypageSize = WorkflowExpression.Compile(bodypageSize, nameof(bodypageSize), required: true);
+            var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            var __workflow_bodysearch = WorkflowExpression.Compile(bodysearch, nameof(bodysearch), required: false);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodydocumentationId = WorkflowExpression.Compile(bodydocumentationId, nameof(bodydocumentationId), required: false);
+            var __workflow_bodyassetStatus = WorkflowExpression.Compile(bodyassetStatus, nameof(bodyassetStatus), required: false);
+            var __workflow_bodyisDeprecated = WorkflowExpression.Compile(bodyisDeprecated, nameof(bodyisDeprecated), required: false);
+            var __workflow_bodylastUpdateDateStart = WorkflowExpression.Compile(bodylastUpdateDateStart, nameof(bodylastUpdateDateStart), required: false);
+            var __workflow_bodylastUpdateDateEnd = WorkflowExpression.Compile(bodylastUpdateDateEnd, nameof(bodylastUpdateDateEnd), required: false);
+            var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: false);
+            var __workflow_bodyincludeAccessAuditedFieldValues = WorkflowExpression.Compile(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
             return new DeferredBodyAction<GetAssetSearchResponse>(() =>
             {
                 var apiCallPath = "/GetAssetSearch";
@@ -286,12 +255,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<GetAssetInfoResponse> GetAssetInfo(Expression<Func<int>> bodyassetId, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null, Expression<Func<int>> bodyresponseType = null)
         {
-            var __workflow_bodyassetId = bodyassetId == null ? null : WorkflowExpression.Compile(bodyassetId);
-            WorkflowExpression.Validate(__workflow_bodyassetId, nameof(bodyassetId), required: true);
-            var __workflow_bodyincludeAccessAuditedFieldValues = bodyincludeAccessAuditedFieldValues == null ? null : WorkflowExpression.Compile(bodyincludeAccessAuditedFieldValues);
-            WorkflowExpression.Validate(__workflow_bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
-            var __workflow_bodyresponseType = bodyresponseType == null ? null : WorkflowExpression.Compile(bodyresponseType);
-            WorkflowExpression.Validate(__workflow_bodyresponseType, nameof(bodyresponseType), required: false);
+            var __workflow_bodyassetId = WorkflowExpression.Compile(bodyassetId, nameof(bodyassetId), required: true);
+            var __workflow_bodyincludeAccessAuditedFieldValues = WorkflowExpression.Compile(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
+            var __workflow_bodyresponseType = WorkflowExpression.Compile(bodyresponseType, nameof(bodyresponseType), required: false);
             return new DeferredBodyAction<GetAssetInfoResponse>(() =>
             {
                 var apiCallPath = "/GetAssetInfo";
@@ -325,10 +291,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
         public IBodyWorkflowAction<GetConfigResponse> GetConfig(Expression<Func<int>> bodyassetTemplateId, Expression<Func<int>> bodyenterpriseId = null)
         {
-            var __workflow_bodyassetTemplateId = bodyassetTemplateId == null ? null : WorkflowExpression.Compile(bodyassetTemplateId);
-            WorkflowExpression.Validate(__workflow_bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
-            var __workflow_bodyenterpriseId = bodyenterpriseId == null ? null : WorkflowExpression.Compile(bodyenterpriseId);
-            WorkflowExpression.Validate(__workflow_bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            var __workflow_bodyassetTemplateId = WorkflowExpression.Compile(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            var __workflow_bodyenterpriseId = WorkflowExpression.Compile(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
             return new DeferredBodyAction<GetConfigResponse>(() =>
             {
                 var apiCallPath = "/GetConfig";

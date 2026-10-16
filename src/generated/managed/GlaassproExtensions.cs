@@ -31,12 +31,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<SearchResponse[]> SearchGet(Expression<Func<string>> query, Expression<Func<filterInput>> filter = null, Expression<Func<int>> take = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: false);
-            var __workflow_take = take == null ? null : WorkflowExpression.Compile(take);
-            WorkflowExpression.Validate(__workflow_take, nameof(take), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: false);
+            var __workflow_take = WorkflowExpression.Compile(take, nameof(take), required: false);
             return new DeferredBodyAction<SearchResponse[]>(() =>
             {
                 var apiCallPath = "/api/q";
@@ -54,8 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseResponse> CaseGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CaseResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -68,8 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseFieldsResponse> CaseFieldGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CaseFieldsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -82,16 +77,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<object> CasePrint(Expression<Func<string>> id, Expression<Func<bool>> bodyasynchronous = null, Expression<Func<bool>> bodyuseCustom = null, Expression<Func<bodydisplayGalleryInput>> bodydisplayGallery = null, Expression<Func<bodydisplayTextInput>> bodydisplayText = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyasynchronous = bodyasynchronous == null ? null : WorkflowExpression.Compile(bodyasynchronous);
-            WorkflowExpression.Validate(__workflow_bodyasynchronous, nameof(bodyasynchronous), required: false);
-            var __workflow_bodyuseCustom = bodyuseCustom == null ? null : WorkflowExpression.Compile(bodyuseCustom);
-            WorkflowExpression.Validate(__workflow_bodyuseCustom, nameof(bodyuseCustom), required: false);
-            var __workflow_bodydisplayGallery = bodydisplayGallery == null ? null : WorkflowExpression.Compile(bodydisplayGallery);
-            WorkflowExpression.Validate(__workflow_bodydisplayGallery, nameof(bodydisplayGallery), required: false);
-            var __workflow_bodydisplayText = bodydisplayText == null ? null : WorkflowExpression.Compile(bodydisplayText);
-            WorkflowExpression.Validate(__workflow_bodydisplayText, nameof(bodydisplayText), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyasynchronous = WorkflowExpression.Compile(bodyasynchronous, nameof(bodyasynchronous), required: false);
+            var __workflow_bodyuseCustom = WorkflowExpression.Compile(bodyuseCustom, nameof(bodyuseCustom), required: false);
+            var __workflow_bodydisplayGallery = WorkflowExpression.Compile(bodydisplayGallery, nameof(bodydisplayGallery), required: false);
+            var __workflow_bodydisplayText = WorkflowExpression.Compile(bodydisplayText, nameof(bodydisplayText), required: false);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -135,10 +125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<object> CasePrintGet(Expression<Func<string>> id, Expression<Func<string>> requestId)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_requestId = requestId == null ? null : WorkflowExpression.Compile(requestId);
-            WorkflowExpression.Validate(__workflow_requestId, nameof(requestId), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_requestId = WorkflowExpression.Compile(requestId, nameof(requestId), required: true);
             return new DeferredBodyAction<object>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/print/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_requestId, 1));
@@ -151,8 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReplyGet(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<CaseReplyResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -165,12 +152,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "glaasspro")]
         public IBodyWorkflowAction<CaseReplyResponse> CaseReply(Expression<Func<string>> id, Expression<Func<bool>> bodywithoutNotification, Expression<Func<string>> bodymessage = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodywithoutNotification = bodywithoutNotification == null ? null : WorkflowExpression.Compile(bodywithoutNotification);
-            WorkflowExpression.Validate(__workflow_bodywithoutNotification, nameof(bodywithoutNotification), required: true);
-            var __workflow_bodymessage = bodymessage == null ? null : WorkflowExpression.Compile(bodymessage);
-            WorkflowExpression.Validate(__workflow_bodymessage, nameof(bodymessage), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodywithoutNotification = WorkflowExpression.Compile(bodywithoutNotification, nameof(bodywithoutNotification), required: true);
+            var __workflow_bodymessage = WorkflowExpression.Compile(bodymessage, nameof(bodymessage), required: false);
             return new DeferredBodyAction<CaseReplyResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/c/{0}/reply", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -200,10 +184,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
     {
         public IWorkflowTrigger CaseCreatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
-            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
-            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/t/casecreated";
@@ -236,10 +218,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
         public IWorkflowTrigger CaseUpdatedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
-            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
-            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/t/caseupdated";
@@ -272,10 +252,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
 
         public IWorkflowTrigger CaseClosedTrigger(Expression<Func<string>> bodytemplateId = null, Expression<Func<bodyscopeInput>> bodyscope = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodytemplateId = bodytemplateId == null ? null : WorkflowExpression.Compile(bodytemplateId);
-            WorkflowExpression.Validate(__workflow_bodytemplateId, nameof(bodytemplateId), required: false);
-            var __workflow_bodyscope = bodyscope == null ? null : WorkflowExpression.Compile(bodyscope);
-            WorkflowExpression.Validate(__workflow_bodyscope, nameof(bodyscope), required: false);
+            var __workflow_bodytemplateId = WorkflowExpression.Compile(bodytemplateId, nameof(bodytemplateId), required: false);
+            var __workflow_bodyscope = WorkflowExpression.Compile(bodyscope, nameof(bodyscope), required: false);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/api/t/caseclosed";

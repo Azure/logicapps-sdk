@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<CreatedAssetDetails> CreateAsset(Expression<Func<string>> path, Expression<Func<string>> name, Expression<Func<string>> body = null)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CreatedAssetDetails>(() =>
             {
                 var apiCallPath = "/storage/cc/asset";
@@ -34,8 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<string> GetContentById(Expression<Func<string>> assetId)
         {
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/id/content";
@@ -49,8 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<AssetMetadata> GetMetadataById(Expression<Func<string>> assetId)
         {
-            var __workflow_assetId = assetId == null ? null : WorkflowExpression.Compile(assetId);
-            WorkflowExpression.Validate(__workflow_assetId, nameof(assetId), required: true);
+            var __workflow_assetId = WorkflowExpression.Compile(assetId, nameof(assetId), required: true);
             return new DeferredBodyAction<AssetMetadata>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/id/metadata";
@@ -64,8 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IWorkflowAction DeleteAssetByPath(Expression<Func<string>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/storage/cc/asset/path";
@@ -80,8 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<string> GetContentByPath(Expression<Func<string>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/path/content";
@@ -95,8 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<AssetMetadata> GetMetadataByPath(Expression<Func<string>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<AssetMetadata>(() =>
             {
                 var apiCallPath = "/storage/cc/asset/path/metadata";
@@ -110,8 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<DirectoryListing> ListFilesInDirectory(Expression<Func<string>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<DirectoryListing>(() =>
             {
                 var apiCallPath = "/storage/cc/directory/path/assets";
@@ -125,10 +116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
         public IBodyWorkflowAction<CreatedAssetDetails> CopyAsset(Expression<Func<string>> bodysourceAssetPath, Expression<Func<string>> bodydestinationAssetPath)
         {
-            var __workflow_bodysourceAssetPath = bodysourceAssetPath == null ? null : WorkflowExpression.Compile(bodysourceAssetPath);
-            WorkflowExpression.Validate(__workflow_bodysourceAssetPath, nameof(bodysourceAssetPath), required: true);
-            var __workflow_bodydestinationAssetPath = bodydestinationAssetPath == null ? null : WorkflowExpression.Compile(bodydestinationAssetPath);
-            WorkflowExpression.Validate(__workflow_bodydestinationAssetPath, nameof(bodydestinationAssetPath), required: true);
+            var __workflow_bodysourceAssetPath = WorkflowExpression.Compile(bodysourceAssetPath, nameof(bodysourceAssetPath), required: true);
+            var __workflow_bodydestinationAssetPath = WorkflowExpression.Compile(bodydestinationAssetPath, nameof(bodydestinationAssetPath), required: true);
             return new DeferredBodyAction<CreatedAssetDetails>(() =>
             {
                 var apiCallPath = "/storage/cc/op/copy";

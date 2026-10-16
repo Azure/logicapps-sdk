@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<string> DeleteSemantikWebhook(Expression<Func<string>> configurationId)
         {
-            var __workflow_configurationId = configurationId == null ? null : WorkflowExpression.Compile(configurationId);
-            WorkflowExpression.Validate(__workflow_configurationId, nameof(configurationId), required: true);
+            var __workflow_configurationId = WorkflowExpression.Compile(configurationId, nameof(configurationId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/settings/integrations/configurations/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_configurationId, 1));
@@ -27,10 +26,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<CreateDocumentUploadResponse> CreateDocumentUpload(Expression<Func<string>> bodyfileName, Expression<Func<bodytypeInput>> bodytype)
         {
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: true);
             return new DeferredBodyAction<CreateDocumentUploadResponse>(() =>
             {
                 var apiCallPath = "/v1/documents/uploads";
@@ -54,10 +51,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<UpdateDocumentUploadResponse> UpdateDocumentUpload(Expression<Func<string>> uploadId, Expression<Func<bodystatusInput>> bodystatus)
         {
-            var __workflow_uploadId = uploadId == null ? null : WorkflowExpression.Compile(uploadId);
-            WorkflowExpression.Validate(__workflow_uploadId, nameof(uploadId), required: true);
-            var __workflow_bodystatus = bodystatus == null ? null : WorkflowExpression.Compile(bodystatus);
-            WorkflowExpression.Validate(__workflow_bodystatus, nameof(bodystatus), required: true);
+            var __workflow_uploadId = WorkflowExpression.Compile(uploadId, nameof(uploadId), required: true);
+            var __workflow_bodystatus = WorkflowExpression.Compile(bodystatus, nameof(bodystatus), required: true);
             return new DeferredBodyAction<UpdateDocumentUploadResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/documents/uploads/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uploadId, 1));
@@ -79,8 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ephesoftsemantikforinvoices")]
         public IBodyWorkflowAction<UploadCreatedResponse> CreateVendorUpload(Expression<Func<string>> bodyfileName)
         {
-            var __workflow_bodyfileName = bodyfileName == null ? null : WorkflowExpression.Compile(bodyfileName);
-            WorkflowExpression.Validate(__workflow_bodyfileName, nameof(bodyfileName), required: true);
+            var __workflow_bodyfileName = WorkflowExpression.Compile(bodyfileName, nameof(bodyfileName), required: true);
             return new DeferredBodyAction<UploadCreatedResponse>(() =>
             {
                 var apiCallPath = "/v1/vendors/uploads";
@@ -104,8 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
     {
         public IBodyWorkflowTrigger<UploadCreatedResponse> TrigSemantikInvoiceCompleted(Expression<Func<string>> bodyintegrationName, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyintegrationName = bodyintegrationName == null ? null : WorkflowExpression.Compile(bodyintegrationName);
-            WorkflowExpression.Validate(__workflow_bodyintegrationName, nameof(bodyintegrationName), required: true);
+            var __workflow_bodyintegrationName = WorkflowExpression.Compile(bodyintegrationName, nameof(bodyintegrationName), required: true);
             return new DeferredBodyTrigger<UploadCreatedResponse>(() =>
             {
                 var apiCallPath = "/v1/settings/integrations/configurations";

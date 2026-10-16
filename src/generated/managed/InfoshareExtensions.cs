@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<LogonResponse> Logon(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodytenantname = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyusername = bodyusername == null ? null : WorkflowExpression.Compile(bodyusername);
-            WorkflowExpression.Validate(__workflow_bodyusername, nameof(bodyusername), required: true);
-            var __workflow_bodypassword = bodypassword == null ? null : WorkflowExpression.Compile(bodypassword);
-            WorkflowExpression.Validate(__workflow_bodypassword, nameof(bodypassword), required: true);
-            var __workflow_bodytenantname = bodytenantname == null ? null : WorkflowExpression.Compile(bodytenantname);
-            WorkflowExpression.Validate(__workflow_bodytenantname, nameof(bodytenantname), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyusername = WorkflowExpression.Compile(bodyusername, nameof(bodyusername), required: true);
+            var __workflow_bodypassword = WorkflowExpression.Compile(bodypassword, nameof(bodypassword), required: true);
+            var __workflow_bodytenantname = WorkflowExpression.Compile(bodytenantname, nameof(bodytenantname), required: false);
             return new DeferredBodyAction<LogonResponse>(() =>
             {
                 var apiCallPath = "/api/Logon";
@@ -52,18 +48,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyassignUserLoginNames, Expression<Func<string>> bodytaskId = null, Expression<Func<string>> bodycomment = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
-            var __workflow_bodyassignUserLoginNames = bodyassignUserLoginNames == null ? null : WorkflowExpression.Compile(bodyassignUserLoginNames);
-            WorkflowExpression.Validate(__workflow_bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: true);
-            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
-            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyassignUserLoginNames = WorkflowExpression.Compile(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: true);
+            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredBodyAction<CloseTaskAndAssignToUsersResponse>(() =>
             {
                 var apiCallPath = "/api/CloseTaskAndAssignToUsers";
@@ -103,10 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<LogoffResponse> Logoff(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
             return new DeferredBodyAction<LogoffResponse>(() =>
             {
                 var apiCallPath = "/api/Logoff";
@@ -130,14 +118,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyculture = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
             return new DeferredBodyAction<GetDocumentPropertiesResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/GetDocumentProperties";
@@ -169,14 +153,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyculture = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
             return new DeferredBodyAction<GetProcessPropertiesResponseItem[]>(() =>
             {
                 var apiCallPath = "/api/GetProcessProperties";
@@ -208,20 +188,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyignoreHashValidation = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodyversionId = bodyversionId == null ? null : WorkflowExpression.Compile(bodyversionId);
-            WorkflowExpression.Validate(__workflow_bodyversionId, nameof(bodyversionId), required: false);
-            var __workflow_bodydocumentDataId = bodydocumentDataId == null ? null : WorkflowExpression.Compile(bodydocumentDataId);
-            WorkflowExpression.Validate(__workflow_bodydocumentDataId, nameof(bodydocumentDataId), required: false);
-            var __workflow_bodyrenditionId = bodyrenditionId == null ? null : WorkflowExpression.Compile(bodyrenditionId);
-            WorkflowExpression.Validate(__workflow_bodyrenditionId, nameof(bodyrenditionId), required: false);
-            var __workflow_bodyignoreHashValidation = bodyignoreHashValidation == null ? null : WorkflowExpression.Compile(bodyignoreHashValidation);
-            WorkflowExpression.Validate(__workflow_bodyignoreHashValidation, nameof(bodyignoreHashValidation), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodyversionId = WorkflowExpression.Compile(bodyversionId, nameof(bodyversionId), required: false);
+            var __workflow_bodydocumentDataId = WorkflowExpression.Compile(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
+            var __workflow_bodyrenditionId = WorkflowExpression.Compile(bodyrenditionId, nameof(bodyrenditionId), required: false);
+            var __workflow_bodyignoreHashValidation = WorkflowExpression.Compile(bodyignoreHashValidation, nameof(bodyignoreHashValidation), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/GetFileContent";
@@ -281,14 +254,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CloseProcessResponse> CloseProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodycomment = null)
         {
-            var __workflow_archiveUrl = archiveUrl == null ? null : WorkflowExpression.Compile(archiveUrl);
-            WorkflowExpression.Validate(__workflow_archiveUrl, nameof(archiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
+            var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
             return new DeferredBodyAction<CloseProcessResponse>(() =>
             {
                 var apiCallPath = "/Process/CloseProcess";
@@ -319,14 +288,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<LogonWithHashedPasswordResponse> LogonWithHashedPassword(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyuserName, Expression<Func<string>> bodypasswordHashed, Expression<Func<string>> bodytenantName = null)
         {
-            var __workflow_archiveUrl = archiveUrl == null ? null : WorkflowExpression.Compile(archiveUrl);
-            WorkflowExpression.Validate(__workflow_archiveUrl, nameof(archiveUrl), required: true);
-            var __workflow_bodyuserName = bodyuserName == null ? null : WorkflowExpression.Compile(bodyuserName);
-            WorkflowExpression.Validate(__workflow_bodyuserName, nameof(bodyuserName), required: true);
-            var __workflow_bodypasswordHashed = bodypasswordHashed == null ? null : WorkflowExpression.Compile(bodypasswordHashed);
-            WorkflowExpression.Validate(__workflow_bodypasswordHashed, nameof(bodypasswordHashed), required: true);
-            var __workflow_bodytenantName = bodytenantName == null ? null : WorkflowExpression.Compile(bodytenantName);
-            WorkflowExpression.Validate(__workflow_bodytenantName, nameof(bodytenantName), required: false);
+            var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
+            var __workflow_bodyuserName = WorkflowExpression.Compile(bodyuserName, nameof(bodyuserName), required: true);
+            var __workflow_bodypasswordHashed = WorkflowExpression.Compile(bodypasswordHashed, nameof(bodypasswordHashed), required: true);
+            var __workflow_bodytenantName = WorkflowExpression.Compile(bodytenantName, nameof(bodytenantName), required: false);
             return new DeferredBodyAction<LogonWithHashedPasswordResponse>(() =>
             {
                 var apiCallPath = "/Authentication/Logon";
@@ -357,18 +322,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CloseTaskResponse> CloseTask(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<bool>> bodyassignUsers, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodytaskId = null)
         {
-            var __workflow_archiveUrl = archiveUrl == null ? null : WorkflowExpression.Compile(archiveUrl);
-            WorkflowExpression.Validate(__workflow_archiveUrl, nameof(archiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
-            var __workflow_bodyassignUsers = bodyassignUsers == null ? null : WorkflowExpression.Compile(bodyassignUsers);
-            WorkflowExpression.Validate(__workflow_bodyassignUsers, nameof(bodyassignUsers), required: true);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
-            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: false);
+            var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyassignUsers = WorkflowExpression.Compile(bodyassignUsers, nameof(bodyassignUsers), required: true);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: false);
             return new DeferredBodyAction<CloseTaskResponse>(() =>
             {
                 var apiCallPath = "/Process/CloseTask";
@@ -407,12 +366,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId)
         {
-            var __workflow_archiveUrl = archiveUrl == null ? null : WorkflowExpression.Compile(archiveUrl);
-            WorkflowExpression.Validate(__workflow_archiveUrl, nameof(archiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyAction<GetDocumentResponse>(() =>
             {
                 var apiCallPath = "/Document/GetDocument";
@@ -437,12 +393,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetProcessResponse> GetProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId)
         {
-            var __workflow_archiveUrl = archiveUrl == null ? null : WorkflowExpression.Compile(archiveUrl);
-            WorkflowExpression.Validate(__workflow_archiveUrl, nameof(archiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_archiveUrl = WorkflowExpression.Compile(archiveUrl, nameof(archiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
             return new DeferredBodyAction<GetProcessResponse>(() =>
             {
                 var apiCallPath = "/Process/GetProcess";
@@ -467,24 +420,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<JToken> GetFileContentConverted(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodytargetFormat, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyaddAnnotatins = null, Expression<Func<bool>> bodyaddOverlay = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodytargetFormat = bodytargetFormat == null ? null : WorkflowExpression.Compile(bodytargetFormat);
-            WorkflowExpression.Validate(__workflow_bodytargetFormat, nameof(bodytargetFormat), required: true);
-            var __workflow_bodyversionId = bodyversionId == null ? null : WorkflowExpression.Compile(bodyversionId);
-            WorkflowExpression.Validate(__workflow_bodyversionId, nameof(bodyversionId), required: false);
-            var __workflow_bodydocumentDataId = bodydocumentDataId == null ? null : WorkflowExpression.Compile(bodydocumentDataId);
-            WorkflowExpression.Validate(__workflow_bodydocumentDataId, nameof(bodydocumentDataId), required: false);
-            var __workflow_bodyrenditionId = bodyrenditionId == null ? null : WorkflowExpression.Compile(bodyrenditionId);
-            WorkflowExpression.Validate(__workflow_bodyrenditionId, nameof(bodyrenditionId), required: false);
-            var __workflow_bodyaddAnnotatins = bodyaddAnnotatins == null ? null : WorkflowExpression.Compile(bodyaddAnnotatins);
-            WorkflowExpression.Validate(__workflow_bodyaddAnnotatins, nameof(bodyaddAnnotatins), required: false);
-            var __workflow_bodyaddOverlay = bodyaddOverlay == null ? null : WorkflowExpression.Compile(bodyaddOverlay);
-            WorkflowExpression.Validate(__workflow_bodyaddOverlay, nameof(bodyaddOverlay), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodytargetFormat = WorkflowExpression.Compile(bodytargetFormat, nameof(bodytargetFormat), required: true);
+            var __workflow_bodyversionId = WorkflowExpression.Compile(bodyversionId, nameof(bodyversionId), required: false);
+            var __workflow_bodydocumentDataId = WorkflowExpression.Compile(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
+            var __workflow_bodyrenditionId = WorkflowExpression.Compile(bodyrenditionId, nameof(bodyrenditionId), required: false);
+            var __workflow_bodyaddAnnotatins = WorkflowExpression.Compile(bodyaddAnnotatins, nameof(bodyaddAnnotatins), required: false);
+            var __workflow_bodyaddOverlay = WorkflowExpression.Compile(bodyaddOverlay, nameof(bodyaddOverlay), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/api/GetFileContentConverted";
@@ -562,26 +506,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CreateProcessResponse> CreateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessTemplateName, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodydocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyculture = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyprocessTemplateName = bodyprocessTemplateName == null ? null : WorkflowExpression.Compile(bodyprocessTemplateName);
-            WorkflowExpression.Validate(__workflow_bodyprocessTemplateName, nameof(bodyprocessTemplateName), required: true);
-            var __workflow_bodyprocessProperties = bodyprocessProperties == null ? null : WorkflowExpression.Compile(bodyprocessProperties);
-            WorkflowExpression.Validate(__workflow_bodyprocessProperties, nameof(bodyprocessProperties), required: false);
-            var __workflow_bodycustomProperties = bodycustomProperties == null ? null : WorkflowExpression.Compile(bodycustomProperties);
-            WorkflowExpression.Validate(__workflow_bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodydocumentIds = bodydocumentIds == null ? null : WorkflowExpression.Compile(bodydocumentIds);
-            WorkflowExpression.Validate(__workflow_bodydocumentIds, nameof(bodydocumentIds), required: false);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyprocessTemplateName = WorkflowExpression.Compile(bodyprocessTemplateName, nameof(bodyprocessTemplateName), required: true);
+            var __workflow_bodyprocessProperties = WorkflowExpression.Compile(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
+            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
+            var __workflow_bodydocumentIds = WorkflowExpression.Compile(bodydocumentIds, nameof(bodydocumentIds), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
             return new DeferredBodyAction<CreateProcessResponse>(() =>
             {
                 var apiCallPath = "/api/CreateProcess";
@@ -649,18 +583,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null, Expression<Func<string>> bodyorderByClause = null, Expression<Func<bool>> bodyaddColumnHeaders = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyuserTable = bodyuserTable == null ? null : WorkflowExpression.Compile(bodyuserTable);
-            WorkflowExpression.Validate(__workflow_bodyuserTable, nameof(bodyuserTable), required: true);
-            var __workflow_bodywhereClause = bodywhereClause == null ? null : WorkflowExpression.Compile(bodywhereClause);
-            WorkflowExpression.Validate(__workflow_bodywhereClause, nameof(bodywhereClause), required: false);
-            var __workflow_bodyorderByClause = bodyorderByClause == null ? null : WorkflowExpression.Compile(bodyorderByClause);
-            WorkflowExpression.Validate(__workflow_bodyorderByClause, nameof(bodyorderByClause), required: false);
-            var __workflow_bodyaddColumnHeaders = bodyaddColumnHeaders == null ? null : WorkflowExpression.Compile(bodyaddColumnHeaders);
-            WorkflowExpression.Validate(__workflow_bodyaddColumnHeaders, nameof(bodyaddColumnHeaders), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
+            var __workflow_bodywhereClause = WorkflowExpression.Compile(bodywhereClause, nameof(bodywhereClause), required: false);
+            var __workflow_bodyorderByClause = WorkflowExpression.Compile(bodyorderByClause, nameof(bodyorderByClause), required: false);
+            var __workflow_bodyaddColumnHeaders = WorkflowExpression.Compile(bodyaddColumnHeaders, nameof(bodyaddColumnHeaders), required: false);
             return new DeferredBodyAction<UserTableGetRecordsResponse>(() =>
             {
                 var apiCallPath = "/api/UserTableGetRecords";
@@ -704,18 +632,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyvalues, Expression<Func<bool>> bodydeleteAllValues = null, Expression<Func<bool>> bodyfirstRowContainsColumnHeaders = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyuserTable = bodyuserTable == null ? null : WorkflowExpression.Compile(bodyuserTable);
-            WorkflowExpression.Validate(__workflow_bodyuserTable, nameof(bodyuserTable), required: true);
-            var __workflow_bodyvalues = bodyvalues == null ? null : WorkflowExpression.Compile(bodyvalues);
-            WorkflowExpression.Validate(__workflow_bodyvalues, nameof(bodyvalues), required: true);
-            var __workflow_bodydeleteAllValues = bodydeleteAllValues == null ? null : WorkflowExpression.Compile(bodydeleteAllValues);
-            WorkflowExpression.Validate(__workflow_bodydeleteAllValues, nameof(bodydeleteAllValues), required: false);
-            var __workflow_bodyfirstRowContainsColumnHeaders = bodyfirstRowContainsColumnHeaders == null ? null : WorkflowExpression.Compile(bodyfirstRowContainsColumnHeaders);
-            WorkflowExpression.Validate(__workflow_bodyfirstRowContainsColumnHeaders, nameof(bodyfirstRowContainsColumnHeaders), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
+            var __workflow_bodyvalues = WorkflowExpression.Compile(bodyvalues, nameof(bodyvalues), required: true);
+            var __workflow_bodydeleteAllValues = WorkflowExpression.Compile(bodydeleteAllValues, nameof(bodydeleteAllValues), required: false);
+            var __workflow_bodyfirstRowContainsColumnHeaders = WorkflowExpression.Compile(bodyfirstRowContainsColumnHeaders, nameof(bodyfirstRowContainsColumnHeaders), required: false);
             return new DeferredBodyAction<UserTableImportDataResponse>(() =>
             {
                 var apiCallPath = "/api/UserTableImportData";
@@ -775,14 +697,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodycolumnHeaders)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyuserTable = bodyuserTable == null ? null : WorkflowExpression.Compile(bodyuserTable);
-            WorkflowExpression.Validate(__workflow_bodyuserTable, nameof(bodyuserTable), required: true);
-            var __workflow_bodycolumnHeaders = bodycolumnHeaders == null ? null : WorkflowExpression.Compile(bodycolumnHeaders);
-            WorkflowExpression.Validate(__workflow_bodycolumnHeaders, nameof(bodycolumnHeaders), required: true);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
+            var __workflow_bodycolumnHeaders = WorkflowExpression.Compile(bodycolumnHeaders, nameof(bodycolumnHeaders), required: true);
             return new DeferredBodyAction<UserTableCreateTableResponse>(() =>
             {
                 var apiCallPath = "/api/UserTableCreateTable";
@@ -810,14 +728,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyuserTable = bodyuserTable == null ? null : WorkflowExpression.Compile(bodyuserTable);
-            WorkflowExpression.Validate(__workflow_bodyuserTable, nameof(bodyuserTable), required: true);
-            var __workflow_bodywhereClause = bodywhereClause == null ? null : WorkflowExpression.Compile(bodywhereClause);
-            WorkflowExpression.Validate(__workflow_bodywhereClause, nameof(bodywhereClause), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
+            var __workflow_bodywhereClause = WorkflowExpression.Compile(bodywhereClause, nameof(bodywhereClause), required: false);
             return new DeferredBodyAction<UserTableDeleteRecordsResponse>(() =>
             {
                 var apiCallPath = "/api/UserTableDeleteRecords";
@@ -849,16 +763,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentIdToAppend, Expression<Func<bool>> bodyforceUndoCheckout = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodydocumentIdToAppend = bodydocumentIdToAppend == null ? null : WorkflowExpression.Compile(bodydocumentIdToAppend);
-            WorkflowExpression.Validate(__workflow_bodydocumentIdToAppend, nameof(bodydocumentIdToAppend), required: true);
-            var __workflow_bodyforceUndoCheckout = bodyforceUndoCheckout == null ? null : WorkflowExpression.Compile(bodyforceUndoCheckout);
-            WorkflowExpression.Validate(__workflow_bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentIdToAppend = WorkflowExpression.Compile(bodydocumentIdToAppend, nameof(bodydocumentIdToAppend), required: true);
+            var __workflow_bodyforceUndoCheckout = WorkflowExpression.Compile(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
             return new DeferredBodyAction<MergePDFDocumentsToVersionResponse>(() =>
             {
                 var apiCallPath = "/api/MergePDFDocumentsToVersion";
@@ -892,18 +801,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyculture = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
-            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
-            var __workflow_bodyresultProperties = bodyresultProperties == null ? null : WorkflowExpression.Compile(bodyresultProperties);
-            WorkflowExpression.Validate(__workflow_bodyresultProperties, nameof(bodyresultProperties), required: false);
-            var __workflow_bodymaxSerchResults = bodymaxSerchResults == null ? null : WorkflowExpression.Compile(bodymaxSerchResults);
-            WorkflowExpression.Validate(__workflow_bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodyresultProperties = WorkflowExpression.Compile(bodyresultProperties, nameof(bodyresultProperties), required: false);
+            var __workflow_bodymaxSerchResults = WorkflowExpression.Compile(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
             return new DeferredBodyAction<ProcessSearchResponse>(() =>
             {
                 var apiCallPath = "/api/ProcessSearch";
@@ -961,14 +864,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyuserTable = bodyuserTable == null ? null : WorkflowExpression.Compile(bodyuserTable);
-            WorkflowExpression.Validate(__workflow_bodyuserTable, nameof(bodyuserTable), required: true);
-            var __workflow_bodyrowData = bodyrowData == null ? null : WorkflowExpression.Compile(bodyrowData);
-            WorkflowExpression.Validate(__workflow_bodyrowData, nameof(bodyrowData), required: true);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyuserTable = WorkflowExpression.Compile(bodyuserTable, nameof(bodyuserTable), required: true);
+            var __workflow_bodyrowData = WorkflowExpression.Compile(bodyrowData, nameof(bodyrowData), required: true);
             return new DeferredBodyAction<UserTableUpdateRowResponse>(() =>
             {
                 var apiCallPath = "/api/UserTableUpdateRow";
@@ -996,12 +895,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyselectionId = bodyselectionId == null ? null : WorkflowExpression.Compile(bodyselectionId);
-            WorkflowExpression.Validate(__workflow_bodyselectionId, nameof(bodyselectionId), required: true);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyselectionId = WorkflowExpression.Compile(bodyselectionId, nameof(bodyselectionId), required: true);
             return new DeferredBodyAction<GetSelectionResponse>(() =>
             {
                 var apiCallPath = "/api/GetSelection";
@@ -1027,34 +923,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
-            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: true);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: true);
-            var __workflow_bodyimportTemplate = bodyimportTemplate == null ? null : WorkflowExpression.Compile(bodyimportTemplate);
-            WorkflowExpression.Validate(__workflow_bodyimportTemplate, nameof(bodyimportTemplate), required: false);
-            var __workflow_bodydocumentProperties = bodydocumentProperties == null ? null : WorkflowExpression.Compile(bodydocumentProperties);
-            WorkflowExpression.Validate(__workflow_bodydocumentProperties, nameof(bodydocumentProperties), required: false);
-            var __workflow_bodyblog = bodyblog == null ? null : WorkflowExpression.Compile(bodyblog);
-            WorkflowExpression.Validate(__workflow_bodyblog, nameof(bodyblog), required: false);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
-            var __workflow_bodyinfoStore = bodyinfoStore == null ? null : WorkflowExpression.Compile(bodyinfoStore);
-            WorkflowExpression.Validate(__workflow_bodyinfoStore, nameof(bodyinfoStore), required: false);
-            var __workflow_bodylifeCycle = bodylifeCycle == null ? null : WorkflowExpression.Compile(bodylifeCycle);
-            WorkflowExpression.Validate(__workflow_bodylifeCycle, nameof(bodylifeCycle), required: false);
-            var __workflow_bodyprotectionDomain = bodyprotectionDomain == null ? null : WorkflowExpression.Compile(bodyprotectionDomain);
-            WorkflowExpression.Validate(__workflow_bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
-            var __workflow_bodyuploadMethod = bodyuploadMethod == null ? null : WorkflowExpression.Compile(bodyuploadMethod);
-            WorkflowExpression.Validate(__workflow_bodyuploadMethod, nameof(bodyuploadMethod), required: false);
-            var __workflow_bodyoriginalFileFormat = bodyoriginalFileFormat == null ? null : WorkflowExpression.Compile(bodyoriginalFileFormat);
-            WorkflowExpression.Validate(__workflow_bodyoriginalFileFormat, nameof(bodyoriginalFileFormat), required: false);
-            var __workflow_bodychunkSize = bodychunkSize == null ? null : WorkflowExpression.Compile(bodychunkSize);
-            WorkflowExpression.Validate(__workflow_bodychunkSize, nameof(bodychunkSize), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: true);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: true);
+            var __workflow_bodyimportTemplate = WorkflowExpression.Compile(bodyimportTemplate, nameof(bodyimportTemplate), required: false);
+            var __workflow_bodydocumentProperties = WorkflowExpression.Compile(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
+            var __workflow_bodyblog = WorkflowExpression.Compile(bodyblog, nameof(bodyblog), required: false);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodyinfoStore = WorkflowExpression.Compile(bodyinfoStore, nameof(bodyinfoStore), required: false);
+            var __workflow_bodylifeCycle = WorkflowExpression.Compile(bodylifeCycle, nameof(bodylifeCycle), required: false);
+            var __workflow_bodyprotectionDomain = WorkflowExpression.Compile(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            var __workflow_bodyuploadMethod = WorkflowExpression.Compile(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
+            var __workflow_bodyoriginalFileFormat = WorkflowExpression.Compile(bodyoriginalFileFormat, nameof(bodyoriginalFileFormat), required: false);
+            var __workflow_bodychunkSize = WorkflowExpression.Compile(bodychunkSize, nameof(bodychunkSize), required: false);
             return new DeferredBodyAction<CreateDocumentV2Response>(() =>
             {
                 var apiCallPath = "/api/CreateDocumentV2";
@@ -1172,20 +1054,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyconditions = bodyconditions == null ? null : WorkflowExpression.Compile(bodyconditions);
-            WorkflowExpression.Validate(__workflow_bodyconditions, nameof(bodyconditions), required: false);
-            var __workflow_bodymaxSerchResults = bodymaxSerchResults == null ? null : WorkflowExpression.Compile(bodymaxSerchResults);
-            WorkflowExpression.Validate(__workflow_bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
-            var __workflow_bodyresultProperties = bodyresultProperties == null ? null : WorkflowExpression.Compile(bodyresultProperties);
-            WorkflowExpression.Validate(__workflow_bodyresultProperties, nameof(bodyresultProperties), required: false);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
-            var __workflow_bodystores = bodystores == null ? null : WorkflowExpression.Compile(bodystores);
-            WorkflowExpression.Validate(__workflow_bodystores, nameof(bodystores), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyconditions = WorkflowExpression.Compile(bodyconditions, nameof(bodyconditions), required: false);
+            var __workflow_bodymaxSerchResults = WorkflowExpression.Compile(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
+            var __workflow_bodyresultProperties = WorkflowExpression.Compile(bodyresultProperties, nameof(bodyresultProperties), required: false);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodystores = WorkflowExpression.Compile(bodystores, nameof(bodystores), required: false);
             return new DeferredBodyAction<DocumentSearchV2Response>(() =>
             {
                 var apiCallPath = "/api/DocumentSearchV2";
@@ -1249,32 +1124,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodydocumentId = bodydocumentId == null ? null : WorkflowExpression.Compile(bodydocumentId);
-            WorkflowExpression.Validate(__workflow_bodydocumentId, nameof(bodydocumentId), required: true);
-            var __workflow_bodydocumentTitle = bodydocumentTitle == null ? null : WorkflowExpression.Compile(bodydocumentTitle);
-            WorkflowExpression.Validate(__workflow_bodydocumentTitle, nameof(bodydocumentTitle), required: false);
-            var __workflow_bodydocumentProperties = bodydocumentProperties == null ? null : WorkflowExpression.Compile(bodydocumentProperties);
-            WorkflowExpression.Validate(__workflow_bodydocumentProperties, nameof(bodydocumentProperties), required: false);
-            var __workflow_bodyremoveDocumentProperties = bodyremoveDocumentProperties == null ? null : WorkflowExpression.Compile(bodyremoveDocumentProperties);
-            WorkflowExpression.Validate(__workflow_bodyremoveDocumentProperties, nameof(bodyremoveDocumentProperties), required: false);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
-            var __workflow_bodyprotectionDomain = bodyprotectionDomain == null ? null : WorkflowExpression.Compile(bodyprotectionDomain);
-            WorkflowExpression.Validate(__workflow_bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
-            var __workflow_bodyblog = bodyblog == null ? null : WorkflowExpression.Compile(bodyblog);
-            WorkflowExpression.Validate(__workflow_bodyblog, nameof(bodyblog), required: false);
-            var __workflow_bodyuploadMethod = bodyuploadMethod == null ? null : WorkflowExpression.Compile(bodyuploadMethod);
-            WorkflowExpression.Validate(__workflow_bodyuploadMethod, nameof(bodyuploadMethod), required: false);
-            var __workflow_bodyfileContent = bodyfileContent == null ? null : WorkflowExpression.Compile(bodyfileContent);
-            WorkflowExpression.Validate(__workflow_bodyfileContent, nameof(bodyfileContent), required: false);
-            var __workflow_bodyforceUndoCheckout = bodyforceUndoCheckout == null ? null : WorkflowExpression.Compile(bodyforceUndoCheckout);
-            WorkflowExpression.Validate(__workflow_bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
-            var __workflow_bodychunkSize = bodychunkSize == null ? null : WorkflowExpression.Compile(bodychunkSize);
-            WorkflowExpression.Validate(__workflow_bodychunkSize, nameof(bodychunkSize), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodydocumentId = WorkflowExpression.Compile(bodydocumentId, nameof(bodydocumentId), required: true);
+            var __workflow_bodydocumentTitle = WorkflowExpression.Compile(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            var __workflow_bodydocumentProperties = WorkflowExpression.Compile(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
+            var __workflow_bodyremoveDocumentProperties = WorkflowExpression.Compile(bodyremoveDocumentProperties, nameof(bodyremoveDocumentProperties), required: false);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodyprotectionDomain = WorkflowExpression.Compile(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            var __workflow_bodyblog = WorkflowExpression.Compile(bodyblog, nameof(bodyblog), required: false);
+            var __workflow_bodyuploadMethod = WorkflowExpression.Compile(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
+            var __workflow_bodyfileContent = WorkflowExpression.Compile(bodyfileContent, nameof(bodyfileContent), required: false);
+            var __workflow_bodyforceUndoCheckout = WorkflowExpression.Compile(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            var __workflow_bodychunkSize = WorkflowExpression.Compile(bodychunkSize, nameof(bodychunkSize), required: false);
             return new DeferredBodyAction<UpdateDocumentV2Response>(() =>
             {
                 var apiCallPath = "/api/UpdateDocumentV2";
@@ -1390,36 +1252,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
         public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
         {
-            var __workflow_bodyarchiveUrl = bodyarchiveUrl == null ? null : WorkflowExpression.Compile(bodyarchiveUrl);
-            WorkflowExpression.Validate(__workflow_bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
-            var __workflow_bodyconnectionId = bodyconnectionId == null ? null : WorkflowExpression.Compile(bodyconnectionId);
-            WorkflowExpression.Validate(__workflow_bodyconnectionId, nameof(bodyconnectionId), required: true);
-            var __workflow_bodyprocessId = bodyprocessId == null ? null : WorkflowExpression.Compile(bodyprocessId);
-            WorkflowExpression.Validate(__workflow_bodyprocessId, nameof(bodyprocessId), required: true);
-            var __workflow_bodyprocessProperties = bodyprocessProperties == null ? null : WorkflowExpression.Compile(bodyprocessProperties);
-            WorkflowExpression.Validate(__workflow_bodyprocessProperties, nameof(bodyprocessProperties), required: false);
-            var __workflow_bodyremoveProcessProperties = bodyremoveProcessProperties == null ? null : WorkflowExpression.Compile(bodyremoveProcessProperties);
-            WorkflowExpression.Validate(__workflow_bodyremoveProcessProperties, nameof(bodyremoveProcessProperties), required: false);
-            var __workflow_bodycustomProperties = bodycustomProperties == null ? null : WorkflowExpression.Compile(bodycustomProperties);
-            WorkflowExpression.Validate(__workflow_bodycustomProperties, nameof(bodycustomProperties), required: false);
-            var __workflow_bodycomment = bodycomment == null ? null : WorkflowExpression.Compile(bodycomment);
-            WorkflowExpression.Validate(__workflow_bodycomment, nameof(bodycomment), required: false);
-            var __workflow_bodyassignUserLoginNames = bodyassignUserLoginNames == null ? null : WorkflowExpression.Compile(bodyassignUserLoginNames);
-            WorkflowExpression.Validate(__workflow_bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: false);
-            var __workflow_bodyaddDocumentIds = bodyaddDocumentIds == null ? null : WorkflowExpression.Compile(bodyaddDocumentIds);
-            WorkflowExpression.Validate(__workflow_bodyaddDocumentIds, nameof(bodyaddDocumentIds), required: false);
-            var __workflow_bodyremoveDocumentIds = bodyremoveDocumentIds == null ? null : WorkflowExpression.Compile(bodyremoveDocumentIds);
-            WorkflowExpression.Validate(__workflow_bodyremoveDocumentIds, nameof(bodyremoveDocumentIds), required: false);
-            var __workflow_bodydueDate = bodydueDate == null ? null : WorkflowExpression.Compile(bodydueDate);
-            WorkflowExpression.Validate(__workflow_bodydueDate, nameof(bodydueDate), required: false);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: false);
-            var __workflow_bodyculture = bodyculture == null ? null : WorkflowExpression.Compile(bodyculture);
-            WorkflowExpression.Validate(__workflow_bodyculture, nameof(bodyculture), required: false);
-            var __workflow_bodyforceUndoCheckout = bodyforceUndoCheckout == null ? null : WorkflowExpression.Compile(bodyforceUndoCheckout);
-            WorkflowExpression.Validate(__workflow_bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
-            var __workflow_bodyprotectionDomain = bodyprotectionDomain == null ? null : WorkflowExpression.Compile(bodyprotectionDomain);
-            WorkflowExpression.Validate(__workflow_bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            var __workflow_bodyarchiveUrl = WorkflowExpression.Compile(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            var __workflow_bodyconnectionId = WorkflowExpression.Compile(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            var __workflow_bodyprocessId = WorkflowExpression.Compile(bodyprocessId, nameof(bodyprocessId), required: true);
+            var __workflow_bodyprocessProperties = WorkflowExpression.Compile(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
+            var __workflow_bodyremoveProcessProperties = WorkflowExpression.Compile(bodyremoveProcessProperties, nameof(bodyremoveProcessProperties), required: false);
+            var __workflow_bodycustomProperties = WorkflowExpression.Compile(bodycustomProperties, nameof(bodycustomProperties), required: false);
+            var __workflow_bodycomment = WorkflowExpression.Compile(bodycomment, nameof(bodycomment), required: false);
+            var __workflow_bodyassignUserLoginNames = WorkflowExpression.Compile(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: false);
+            var __workflow_bodyaddDocumentIds = WorkflowExpression.Compile(bodyaddDocumentIds, nameof(bodyaddDocumentIds), required: false);
+            var __workflow_bodyremoveDocumentIds = WorkflowExpression.Compile(bodyremoveDocumentIds, nameof(bodyremoveDocumentIds), required: false);
+            var __workflow_bodydueDate = WorkflowExpression.Compile(bodydueDate, nameof(bodydueDate), required: false);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: false);
+            var __workflow_bodyculture = WorkflowExpression.Compile(bodyculture, nameof(bodyculture), required: false);
+            var __workflow_bodyforceUndoCheckout = WorkflowExpression.Compile(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            var __workflow_bodyprotectionDomain = WorkflowExpression.Compile(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
             return new DeferredBodyAction<UpdateProcessV2Response>(() =>
             {
                 var apiCallPath = "/api/UpdateProcessV2";

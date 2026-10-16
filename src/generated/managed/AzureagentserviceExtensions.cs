@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<ListAgentsResponse> ListAgents(Expression<Func<apiVersionInput>> apiVersion)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
             return new DeferredBodyAction<ListAgentsResponse>(() =>
             {
                 var apiCallPath = "/assistants";
@@ -28,10 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<CreateThreadResponse> CreateThread(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<Messages[]>> requestBodymessages = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_requestBodymessages = requestBodymessages == null ? null : WorkflowExpression.Compile(requestBodymessages);
-            WorkflowExpression.Validate(__workflow_requestBodymessages, nameof(requestBodymessages), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_requestBodymessages = WorkflowExpression.Compile(requestBodymessages, nameof(requestBodymessages), required: false);
             return new DeferredBodyAction<CreateThreadResponse>(() =>
             {
                 var apiCallPath = "/threads";
@@ -74,32 +71,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> requestBodyassistantId, Expression<Func<string>> requestBodymodel = null, Expression<Func<string>> requestBodyinstructions = null, Expression<Func<string>> requestBodyadditionalInstructions = null, Expression<Func<Messages[]>> requestBodyadditionalMessages = null, Expression<Func<Tools[]>> requestBodytools = null, Expression<Func<double>> requestBodytemperature = null, Expression<Func<double>> requestBodytopP = null, Expression<Func<bool>> requestBodystream = null, Expression<Func<int>> requestBodymaxPromptTokens = null, Expression<Func<int>> requestBodymaxCompletionTokens = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_requestBodyassistantId = requestBodyassistantId == null ? null : WorkflowExpression.Compile(requestBodyassistantId);
-            WorkflowExpression.Validate(__workflow_requestBodyassistantId, nameof(requestBodyassistantId), required: true);
-            var __workflow_requestBodymodel = requestBodymodel == null ? null : WorkflowExpression.Compile(requestBodymodel);
-            WorkflowExpression.Validate(__workflow_requestBodymodel, nameof(requestBodymodel), required: false);
-            var __workflow_requestBodyinstructions = requestBodyinstructions == null ? null : WorkflowExpression.Compile(requestBodyinstructions);
-            WorkflowExpression.Validate(__workflow_requestBodyinstructions, nameof(requestBodyinstructions), required: false);
-            var __workflow_requestBodyadditionalInstructions = requestBodyadditionalInstructions == null ? null : WorkflowExpression.Compile(requestBodyadditionalInstructions);
-            WorkflowExpression.Validate(__workflow_requestBodyadditionalInstructions, nameof(requestBodyadditionalInstructions), required: false);
-            var __workflow_requestBodyadditionalMessages = requestBodyadditionalMessages == null ? null : WorkflowExpression.Compile(requestBodyadditionalMessages);
-            WorkflowExpression.Validate(__workflow_requestBodyadditionalMessages, nameof(requestBodyadditionalMessages), required: false);
-            var __workflow_requestBodytools = requestBodytools == null ? null : WorkflowExpression.Compile(requestBodytools);
-            WorkflowExpression.Validate(__workflow_requestBodytools, nameof(requestBodytools), required: false);
-            var __workflow_requestBodytemperature = requestBodytemperature == null ? null : WorkflowExpression.Compile(requestBodytemperature);
-            WorkflowExpression.Validate(__workflow_requestBodytemperature, nameof(requestBodytemperature), required: false);
-            var __workflow_requestBodytopP = requestBodytopP == null ? null : WorkflowExpression.Compile(requestBodytopP);
-            WorkflowExpression.Validate(__workflow_requestBodytopP, nameof(requestBodytopP), required: false);
-            var __workflow_requestBodystream = requestBodystream == null ? null : WorkflowExpression.Compile(requestBodystream);
-            WorkflowExpression.Validate(__workflow_requestBodystream, nameof(requestBodystream), required: false);
-            var __workflow_requestBodymaxPromptTokens = requestBodymaxPromptTokens == null ? null : WorkflowExpression.Compile(requestBodymaxPromptTokens);
-            WorkflowExpression.Validate(__workflow_requestBodymaxPromptTokens, nameof(requestBodymaxPromptTokens), required: false);
-            var __workflow_requestBodymaxCompletionTokens = requestBodymaxCompletionTokens == null ? null : WorkflowExpression.Compile(requestBodymaxCompletionTokens);
-            WorkflowExpression.Validate(__workflow_requestBodymaxCompletionTokens, nameof(requestBodymaxCompletionTokens), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_requestBodyassistantId = WorkflowExpression.Compile(requestBodyassistantId, nameof(requestBodyassistantId), required: true);
+            var __workflow_requestBodymodel = WorkflowExpression.Compile(requestBodymodel, nameof(requestBodymodel), required: false);
+            var __workflow_requestBodyinstructions = WorkflowExpression.Compile(requestBodyinstructions, nameof(requestBodyinstructions), required: false);
+            var __workflow_requestBodyadditionalInstructions = WorkflowExpression.Compile(requestBodyadditionalInstructions, nameof(requestBodyadditionalInstructions), required: false);
+            var __workflow_requestBodyadditionalMessages = WorkflowExpression.Compile(requestBodyadditionalMessages, nameof(requestBodyadditionalMessages), required: false);
+            var __workflow_requestBodytools = WorkflowExpression.Compile(requestBodytools, nameof(requestBodytools), required: false);
+            var __workflow_requestBodytemperature = WorkflowExpression.Compile(requestBodytemperature, nameof(requestBodytemperature), required: false);
+            var __workflow_requestBodytopP = WorkflowExpression.Compile(requestBodytopP, nameof(requestBodytopP), required: false);
+            var __workflow_requestBodystream = WorkflowExpression.Compile(requestBodystream, nameof(requestBodystream), required: false);
+            var __workflow_requestBodymaxPromptTokens = WorkflowExpression.Compile(requestBodymaxPromptTokens, nameof(requestBodymaxPromptTokens), required: false);
+            var __workflow_requestBodymaxCompletionTokens = WorkflowExpression.Compile(requestBodymaxCompletionTokens, nameof(requestBodymaxCompletionTokens), required: false);
             return new DeferredBodyAction<CreateRunResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -234,12 +218,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<GetRunResponse> GetRun(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId, Expression<Func<string>> runId)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
-            var __workflow_runId = runId == null ? null : WorkflowExpression.Compile(runId);
-            WorkflowExpression.Validate(__workflow_runId, nameof(runId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
+            var __workflow_runId = WorkflowExpression.Compile(runId, nameof(runId), required: true);
             return new DeferredBodyAction<GetRunResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/runs/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_runId, 1));
@@ -253,10 +234,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<ListMessageResponse> ListMessages(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> threadId)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_threadId = threadId == null ? null : WorkflowExpression.Compile(threadId);
-            WorkflowExpression.Validate(__workflow_threadId, nameof(threadId), required: true);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_threadId = WorkflowExpression.Compile(threadId, nameof(threadId), required: true);
             return new DeferredBodyAction<ListMessageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/threads/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(__workflow_threadId, 1));
@@ -270,48 +249,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<OpenAIResponse> InvokeAgent(Expression<Func<apiVersionInput>> apiVersion, Expression<Func<string>> bodypromptid, Expression<Func<bodyagenttypeInput>> bodyagenttype, Expression<Func<string>> bodyagentname, Expression<Func<string>> bodyagentversion, Expression<Func<string>> bodyuser = null, Expression<Func<int>> bodytopLogprobs = null, Expression<Func<string>> bodypreviousResponseId = null, Expression<Func<bool>> bodybackground = null, Expression<Func<int>> bodymaxOutputTokens = null, Expression<Func<int>> bodymaxToolCalls = null, Expression<Func<bodytextformattypeInput>> bodytextformattype = null, Expression<Func<OpenAITool[]>> bodytools = null, Expression<Func<object>> bodytoolChoice = null, Expression<Func<string>> bodypromptversion = null, Expression<Func<bodytruncationInput>> bodytruncation = null, Expression<Func<object>> bodyinput = null, Expression<Func<OpenAIIncludable[]>> bodyinclude = null, Expression<Func<bool>> bodyparallelToolCalls = null, Expression<Func<bool>> bodystore = null, Expression<Func<string>> bodyinstructions = null)
         {
-            var __workflow_apiVersion = apiVersion == null ? null : WorkflowExpression.Compile(apiVersion);
-            WorkflowExpression.Validate(__workflow_apiVersion, nameof(apiVersion), required: true);
-            var __workflow_bodypromptid = bodypromptid == null ? null : WorkflowExpression.Compile(bodypromptid);
-            WorkflowExpression.Validate(__workflow_bodypromptid, nameof(bodypromptid), required: true);
-            var __workflow_bodyagenttype = bodyagenttype == null ? null : WorkflowExpression.Compile(bodyagenttype);
-            WorkflowExpression.Validate(__workflow_bodyagenttype, nameof(bodyagenttype), required: true);
-            var __workflow_bodyagentname = bodyagentname == null ? null : WorkflowExpression.Compile(bodyagentname);
-            WorkflowExpression.Validate(__workflow_bodyagentname, nameof(bodyagentname), required: true);
-            var __workflow_bodyagentversion = bodyagentversion == null ? null : WorkflowExpression.Compile(bodyagentversion);
-            WorkflowExpression.Validate(__workflow_bodyagentversion, nameof(bodyagentversion), required: true);
-            var __workflow_bodyuser = bodyuser == null ? null : WorkflowExpression.Compile(bodyuser);
-            WorkflowExpression.Validate(__workflow_bodyuser, nameof(bodyuser), required: false);
-            var __workflow_bodytopLogprobs = bodytopLogprobs == null ? null : WorkflowExpression.Compile(bodytopLogprobs);
-            WorkflowExpression.Validate(__workflow_bodytopLogprobs, nameof(bodytopLogprobs), required: false);
-            var __workflow_bodypreviousResponseId = bodypreviousResponseId == null ? null : WorkflowExpression.Compile(bodypreviousResponseId);
-            WorkflowExpression.Validate(__workflow_bodypreviousResponseId, nameof(bodypreviousResponseId), required: false);
-            var __workflow_bodybackground = bodybackground == null ? null : WorkflowExpression.Compile(bodybackground);
-            WorkflowExpression.Validate(__workflow_bodybackground, nameof(bodybackground), required: false);
-            var __workflow_bodymaxOutputTokens = bodymaxOutputTokens == null ? null : WorkflowExpression.Compile(bodymaxOutputTokens);
-            WorkflowExpression.Validate(__workflow_bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
-            var __workflow_bodymaxToolCalls = bodymaxToolCalls == null ? null : WorkflowExpression.Compile(bodymaxToolCalls);
-            WorkflowExpression.Validate(__workflow_bodymaxToolCalls, nameof(bodymaxToolCalls), required: false);
-            var __workflow_bodytextformattype = bodytextformattype == null ? null : WorkflowExpression.Compile(bodytextformattype);
-            WorkflowExpression.Validate(__workflow_bodytextformattype, nameof(bodytextformattype), required: false);
-            var __workflow_bodytools = bodytools == null ? null : WorkflowExpression.Compile(bodytools);
-            WorkflowExpression.Validate(__workflow_bodytools, nameof(bodytools), required: false);
-            var __workflow_bodytoolChoice = bodytoolChoice == null ? null : WorkflowExpression.Compile(bodytoolChoice);
-            WorkflowExpression.Validate(__workflow_bodytoolChoice, nameof(bodytoolChoice), required: false);
-            var __workflow_bodypromptversion = bodypromptversion == null ? null : WorkflowExpression.Compile(bodypromptversion);
-            WorkflowExpression.Validate(__workflow_bodypromptversion, nameof(bodypromptversion), required: false);
-            var __workflow_bodytruncation = bodytruncation == null ? null : WorkflowExpression.Compile(bodytruncation);
-            WorkflowExpression.Validate(__workflow_bodytruncation, nameof(bodytruncation), required: false);
-            var __workflow_bodyinput = bodyinput == null ? null : WorkflowExpression.Compile(bodyinput);
-            WorkflowExpression.Validate(__workflow_bodyinput, nameof(bodyinput), required: false);
-            var __workflow_bodyinclude = bodyinclude == null ? null : WorkflowExpression.Compile(bodyinclude);
-            WorkflowExpression.Validate(__workflow_bodyinclude, nameof(bodyinclude), required: false);
-            var __workflow_bodyparallelToolCalls = bodyparallelToolCalls == null ? null : WorkflowExpression.Compile(bodyparallelToolCalls);
-            WorkflowExpression.Validate(__workflow_bodyparallelToolCalls, nameof(bodyparallelToolCalls), required: false);
-            var __workflow_bodystore = bodystore == null ? null : WorkflowExpression.Compile(bodystore);
-            WorkflowExpression.Validate(__workflow_bodystore, nameof(bodystore), required: false);
-            var __workflow_bodyinstructions = bodyinstructions == null ? null : WorkflowExpression.Compile(bodyinstructions);
-            WorkflowExpression.Validate(__workflow_bodyinstructions, nameof(bodyinstructions), required: false);
+            var __workflow_apiVersion = WorkflowExpression.Compile(apiVersion, nameof(apiVersion), required: true);
+            var __workflow_bodypromptid = WorkflowExpression.Compile(bodypromptid, nameof(bodypromptid), required: true);
+            var __workflow_bodyagenttype = WorkflowExpression.Compile(bodyagenttype, nameof(bodyagenttype), required: true);
+            var __workflow_bodyagentname = WorkflowExpression.Compile(bodyagentname, nameof(bodyagentname), required: true);
+            var __workflow_bodyagentversion = WorkflowExpression.Compile(bodyagentversion, nameof(bodyagentversion), required: true);
+            var __workflow_bodyuser = WorkflowExpression.Compile(bodyuser, nameof(bodyuser), required: false);
+            var __workflow_bodytopLogprobs = WorkflowExpression.Compile(bodytopLogprobs, nameof(bodytopLogprobs), required: false);
+            var __workflow_bodypreviousResponseId = WorkflowExpression.Compile(bodypreviousResponseId, nameof(bodypreviousResponseId), required: false);
+            var __workflow_bodybackground = WorkflowExpression.Compile(bodybackground, nameof(bodybackground), required: false);
+            var __workflow_bodymaxOutputTokens = WorkflowExpression.Compile(bodymaxOutputTokens, nameof(bodymaxOutputTokens), required: false);
+            var __workflow_bodymaxToolCalls = WorkflowExpression.Compile(bodymaxToolCalls, nameof(bodymaxToolCalls), required: false);
+            var __workflow_bodytextformattype = WorkflowExpression.Compile(bodytextformattype, nameof(bodytextformattype), required: false);
+            var __workflow_bodytools = WorkflowExpression.Compile(bodytools, nameof(bodytools), required: false);
+            var __workflow_bodytoolChoice = WorkflowExpression.Compile(bodytoolChoice, nameof(bodytoolChoice), required: false);
+            var __workflow_bodypromptversion = WorkflowExpression.Compile(bodypromptversion, nameof(bodypromptversion), required: false);
+            var __workflow_bodytruncation = WorkflowExpression.Compile(bodytruncation, nameof(bodytruncation), required: false);
+            var __workflow_bodyinput = WorkflowExpression.Compile(bodyinput, nameof(bodyinput), required: false);
+            var __workflow_bodyinclude = WorkflowExpression.Compile(bodyinclude, nameof(bodyinclude), required: false);
+            var __workflow_bodyparallelToolCalls = WorkflowExpression.Compile(bodyparallelToolCalls, nameof(bodyparallelToolCalls), required: false);
+            var __workflow_bodystore = WorkflowExpression.Compile(bodystore, nameof(bodystore), required: false);
+            var __workflow_bodyinstructions = WorkflowExpression.Compile(bodyinstructions, nameof(bodyinstructions), required: false);
             return new DeferredBodyAction<OpenAIResponse>(() =>
             {
                 var apiCallPath = "/openai/responses";
@@ -524,8 +482,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<JToken> SendActivity(Expression<Func<string>> agentId)
         {
-            var __workflow_agentId = agentId == null ? null : WorkflowExpression.Compile(agentId);
-            WorkflowExpression.Validate(__workflow_agentId, nameof(agentId), required: true);
+            var __workflow_agentId = WorkflowExpression.Compile(agentId, nameof(agentId), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/agents/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(__workflow_agentId, 1));
@@ -546,8 +503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureagentservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureagentservice")]
         public IBodyWorkflowAction<JToken> SendActivityApplication(Expression<Func<string>> myApplication)
         {
-            var __workflow_myApplication = myApplication == null ? null : WorkflowExpression.Compile(myApplication);
-            WorkflowExpression.Validate(__workflow_myApplication, nameof(myApplication), required: true);
+            var __workflow_myApplication = WorkflowExpression.Compile(myApplication, nameof(myApplication), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/applications/{0}/protocols/activityprotocol", ExpressionConverter.ConvertWithUrlEncoding(__workflow_myApplication, 1));

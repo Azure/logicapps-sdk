@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<ofInput>> of = null, Expression<Func<txtfInput>> txtf = null, Expression<Func<string>> model = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<uwInput>> uw = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
-            var __workflow_of = of == null ? null : WorkflowExpression.Compile(of);
-            WorkflowExpression.Validate(__workflow_of, nameof(of), required: false);
-            var __workflow_txtf = txtf == null ? null : WorkflowExpression.Compile(txtf);
-            WorkflowExpression.Validate(__workflow_txtf, nameof(txtf), required: false);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
-            var __workflow_verbose = verbose == null ? null : WorkflowExpression.Compile(verbose);
-            WorkflowExpression.Validate(__workflow_verbose, nameof(verbose), required: false);
-            var __workflow_uw = uw == null ? null : WorkflowExpression.Compile(uw);
-            WorkflowExpression.Validate(__workflow_uw, nameof(uw), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            var __workflow_txtf = WorkflowExpression.Compile(txtf, nameof(txtf), required: false);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
+            var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
+            var __workflow_uw = WorkflowExpression.Compile(uw, nameof(uw), required: false);
             return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
             {
                 var apiCallPath = "/sentiment-2.1";
@@ -41,20 +33,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<TextClassificationResponse> TextClassification(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<expandHierarchyInput>> expandHierarchy = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_debug = debug == null ? null : WorkflowExpression.Compile(debug);
-            WorkflowExpression.Validate(__workflow_debug, nameof(debug), required: false);
-            var __workflow_verbose = verbose == null ? null : WorkflowExpression.Compile(verbose);
-            WorkflowExpression.Validate(__workflow_verbose, nameof(verbose), required: false);
-            var __workflow_expandHierarchy = expandHierarchy == null ? null : WorkflowExpression.Compile(expandHierarchy);
-            WorkflowExpression.Validate(__workflow_expandHierarchy, nameof(expandHierarchy), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_debug = WorkflowExpression.Compile(debug, nameof(debug), required: false);
+            var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
+            var __workflow_expandHierarchy = WorkflowExpression.Compile(expandHierarchy, nameof(expandHierarchy), required: false);
             return new DeferredBodyAction<TextClassificationResponse>(() =>
             {
                 var apiCallPath = "/class-2.0";
@@ -67,14 +52,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<string>> model = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: false);
             return new DeferredBodyAction<CorporateReputationResponse>(() =>
             {
                 var apiCallPath = "/reputation-2.0";
@@ -87,16 +68,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<int>> sentences = null, Expression<Func<ofInput>> of = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
-            var __workflow_sentences = sentences == null ? null : WorkflowExpression.Compile(sentences);
-            WorkflowExpression.Validate(__workflow_sentences, nameof(sentences), required: false);
-            var __workflow_of = of == null ? null : WorkflowExpression.Compile(of);
-            WorkflowExpression.Validate(__workflow_of, nameof(of), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_sentences = WorkflowExpression.Compile(sentences, nameof(sentences), required: false);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
             return new DeferredBodyAction<SummarizationResponse>(() =>
             {
                 var apiCallPath = "/summarization-1.0";
@@ -109,22 +85,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<ofInput>> of = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<polarityInput>> polarity = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
-            var __workflow_model = model == null ? null : WorkflowExpression.Compile(model);
-            WorkflowExpression.Validate(__workflow_model, nameof(model), required: true);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_of = of == null ? null : WorkflowExpression.Compile(of);
-            WorkflowExpression.Validate(__workflow_of, nameof(of), required: false);
-            var __workflow_debug = debug == null ? null : WorkflowExpression.Compile(debug);
-            WorkflowExpression.Validate(__workflow_debug, nameof(debug), required: false);
-            var __workflow_verbose = verbose == null ? null : WorkflowExpression.Compile(verbose);
-            WorkflowExpression.Validate(__workflow_verbose, nameof(verbose), required: false);
-            var __workflow_polarity = polarity == null ? null : WorkflowExpression.Compile(polarity);
-            WorkflowExpression.Validate(__workflow_polarity, nameof(polarity), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_model = WorkflowExpression.Compile(model, nameof(model), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            var __workflow_debug = WorkflowExpression.Compile(debug, nameof(debug), required: false);
+            var __workflow_verbose = WorkflowExpression.Compile(verbose, nameof(verbose), required: false);
+            var __workflow_polarity = WorkflowExpression.Compile(polarity, nameof(polarity), required: false);
             return new DeferredBodyAction<DeepCategorizationResponse>(() =>
             {
                 var apiCallPath = "/deepcategorization-1.0";
@@ -137,10 +105,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification(Expression<Func<string>> key, Expression<Func<string>> txt)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
             return new DeferredBodyAction<LanguageIdentificationResponse>(() =>
             {
                 var apiCallPath = "/lang-4.0/identification";
@@ -153,18 +119,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<TextClusteringResponse> TextClustering(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<langInput>> lang, Expression<Func<ofInput>> of = null, Expression<Func<modeInput>> mode = null, Expression<Func<swInput>> sw = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
-            var __workflow_lang = lang == null ? null : WorkflowExpression.Compile(lang);
-            WorkflowExpression.Validate(__workflow_lang, nameof(lang), required: true);
-            var __workflow_of = of == null ? null : WorkflowExpression.Compile(of);
-            WorkflowExpression.Validate(__workflow_of, nameof(of), required: false);
-            var __workflow_mode = mode == null ? null : WorkflowExpression.Compile(mode);
-            WorkflowExpression.Validate(__workflow_mode, nameof(mode), required: false);
-            var __workflow_sw = sw == null ? null : WorkflowExpression.Compile(sw);
-            WorkflowExpression.Validate(__workflow_sw, nameof(sw), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_lang = WorkflowExpression.Compile(lang, nameof(lang), required: true);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
+            var __workflow_mode = WorkflowExpression.Compile(mode, nameof(mode), required: false);
+            var __workflow_sw = WorkflowExpression.Compile(sw, nameof(sw), required: false);
             return new DeferredBodyAction<TextClusteringResponse>(() =>
             {
                 var apiCallPath = "/clustering-1.1";
@@ -177,12 +137,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
         public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<ofInput>> of = null)
         {
-            var __workflow_key = key == null ? null : WorkflowExpression.Compile(key);
-            WorkflowExpression.Validate(__workflow_key, nameof(key), required: true);
-            var __workflow_txt = txt == null ? null : WorkflowExpression.Compile(txt);
-            WorkflowExpression.Validate(__workflow_txt, nameof(txt), required: true);
-            var __workflow_of = of == null ? null : WorkflowExpression.Compile(of);
-            WorkflowExpression.Validate(__workflow_of, nameof(of), required: false);
+            var __workflow_key = WorkflowExpression.Compile(key, nameof(key), required: true);
+            var __workflow_txt = WorkflowExpression.Compile(txt, nameof(txt), required: true);
+            var __workflow_of = WorkflowExpression.Compile(of, nameof(of), required: false);
             return new DeferredBodyAction<DocumentStructureResponse>(() =>
             {
                 var apiCallPath = "/documentstructure-1.0";

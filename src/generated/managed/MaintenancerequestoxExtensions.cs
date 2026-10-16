@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maintenancerequestox
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maintenancerequestox")]
         public IWorkflowAction MaintenanceRequestOxmaint(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodypriority, Expression<Func<string>> bodyrequestedBy, Expression<Func<string>> bodydate, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodyapiKey)
         {
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodypriority = bodypriority == null ? null : WorkflowExpression.Compile(bodypriority);
-            WorkflowExpression.Validate(__workflow_bodypriority, nameof(bodypriority), required: true);
-            var __workflow_bodyrequestedBy = bodyrequestedBy == null ? null : WorkflowExpression.Compile(bodyrequestedBy);
-            WorkflowExpression.Validate(__workflow_bodyrequestedBy, nameof(bodyrequestedBy), required: true);
-            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
-            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: true);
-            var __workflow_bodymasterEmail = bodymasterEmail == null ? null : WorkflowExpression.Compile(bodymasterEmail);
-            WorkflowExpression.Validate(__workflow_bodymasterEmail, nameof(bodymasterEmail), required: true);
-            var __workflow_bodyapiKey = bodyapiKey == null ? null : WorkflowExpression.Compile(bodyapiKey);
-            WorkflowExpression.Validate(__workflow_bodyapiKey, nameof(bodyapiKey), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodypriority = WorkflowExpression.Compile(bodypriority, nameof(bodypriority), required: true);
+            var __workflow_bodyrequestedBy = WorkflowExpression.Compile(bodyrequestedBy, nameof(bodyrequestedBy), required: true);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: true);
+            var __workflow_bodymasterEmail = WorkflowExpression.Compile(bodymasterEmail, nameof(bodymasterEmail), required: true);
+            var __workflow_bodyapiKey = WorkflowExpression.Compile(bodyapiKey, nameof(bodyapiKey), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/workflows/81fb7bc062f3419a8c0ba8ac0132d631/triggers/manual/paths/invoke";

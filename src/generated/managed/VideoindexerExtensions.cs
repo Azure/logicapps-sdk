@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> UploadVideo(Expression<Func<string>> videoUrl, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
         {
-            var __workflow_videoUrl = videoUrl == null ? null : WorkflowExpression.Compile(videoUrl);
-            WorkflowExpression.Validate(__workflow_videoUrl, nameof(videoUrl), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_privacy = privacy == null ? null : WorkflowExpression.Compile(privacy);
-            WorkflowExpression.Validate(__workflow_privacy, nameof(privacy), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
-            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: false);
-            var __workflow_metadata = metadata == null ? null : WorkflowExpression.Compile(metadata);
-            WorkflowExpression.Validate(__workflow_metadata, nameof(metadata), required: false);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
-            var __workflow_partition = partition == null ? null : WorkflowExpression.Compile(partition);
-            WorkflowExpression.Validate(__workflow_partition, nameof(partition), required: false);
-            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
-            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_videoUrl = WorkflowExpression.Compile(videoUrl, nameof(videoUrl), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_privacy = WorkflowExpression.Compile(privacy, nameof(privacy), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: false);
+            var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_partition = WorkflowExpression.Compile(partition, nameof(partition), required: false);
+            var __workflow_callbackUrl = WorkflowExpression.Compile(callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns";
@@ -58,24 +49,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> UploadVideoFileContent(Expression<Func<string>> fileContent, Expression<Func<string>> name, Expression<Func<privacyInput>> privacy, Expression<Func<languageInput>> language = null, Expression<Func<string>> externalId = null, Expression<Func<string>> metadata = null, Expression<Func<string>> description = null, Expression<Func<string>> partition = null, Expression<Func<string>> callbackUrl = null)
         {
-            var __workflow_fileContent = fileContent == null ? null : WorkflowExpression.Compile(fileContent);
-            WorkflowExpression.Validate(__workflow_fileContent, nameof(fileContent), required: true);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
-            var __workflow_privacy = privacy == null ? null : WorkflowExpression.Compile(privacy);
-            WorkflowExpression.Validate(__workflow_privacy, nameof(privacy), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
-            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: false);
-            var __workflow_metadata = metadata == null ? null : WorkflowExpression.Compile(metadata);
-            WorkflowExpression.Validate(__workflow_metadata, nameof(metadata), required: false);
-            var __workflow_description = description == null ? null : WorkflowExpression.Compile(description);
-            WorkflowExpression.Validate(__workflow_description, nameof(description), required: false);
-            var __workflow_partition = partition == null ? null : WorkflowExpression.Compile(partition);
-            WorkflowExpression.Validate(__workflow_partition, nameof(partition), required: false);
-            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
-            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_fileContent = WorkflowExpression.Compile(fileContent, nameof(fileContent), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
+            var __workflow_privacy = WorkflowExpression.Compile(privacy, nameof(privacy), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: false);
+            var __workflow_metadata = WorkflowExpression.Compile(metadata, nameof(metadata), required: false);
+            var __workflow_description = WorkflowExpression.Compile(description, nameof(description), required: false);
+            var __workflow_partition = WorkflowExpression.Compile(partition, nameof(partition), required: false);
+            var __workflow_callbackUrl = WorkflowExpression.Compile(callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/FileContent";
@@ -102,8 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetProcessingStateResponse> GetProcessingState(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<GetProcessingStateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/State", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -116,30 +97,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> face = null, Expression<Func<string>> query = null, Expression<Func<string>> searchInPublicAccount = null, Expression<Func<privacyInput>> privacy = null, Expression<Func<textScopeInput>> textScope = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> id = null, Expression<Func<string>> partition = null, Expression<Func<string>> owner = null, Expression<Func<double>> pageSize = null, Expression<Func<double>> skip = null, Expression<Func<string>> externalId = null)
         {
-            var __workflow_face = face == null ? null : WorkflowExpression.Compile(face);
-            WorkflowExpression.Validate(__workflow_face, nameof(face), required: false);
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_searchInPublicAccount = searchInPublicAccount == null ? null : WorkflowExpression.Compile(searchInPublicAccount);
-            WorkflowExpression.Validate(__workflow_searchInPublicAccount, nameof(searchInPublicAccount), required: false);
-            var __workflow_privacy = privacy == null ? null : WorkflowExpression.Compile(privacy);
-            WorkflowExpression.Validate(__workflow_privacy, nameof(privacy), required: false);
-            var __workflow_textScope = textScope == null ? null : WorkflowExpression.Compile(textScope);
-            WorkflowExpression.Validate(__workflow_textScope, nameof(textScope), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_partition = partition == null ? null : WorkflowExpression.Compile(partition);
-            WorkflowExpression.Validate(__workflow_partition, nameof(partition), required: false);
-            var __workflow_owner = owner == null ? null : WorkflowExpression.Compile(owner);
-            WorkflowExpression.Validate(__workflow_owner, nameof(owner), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
-            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: false);
+            var __workflow_face = WorkflowExpression.Compile(face, nameof(face), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_searchInPublicAccount = WorkflowExpression.Compile(searchInPublicAccount, nameof(searchInPublicAccount), required: false);
+            var __workflow_privacy = WorkflowExpression.Compile(privacy, nameof(privacy), required: false);
+            var __workflow_textScope = WorkflowExpression.Compile(textScope, nameof(textScope), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_partition = WorkflowExpression.Compile(partition, nameof(partition), required: false);
+            var __workflow_owner = WorkflowExpression.Compile(owner, nameof(owner), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: false);
             return new DeferredBodyAction<SearchResponse>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/Search";
@@ -176,10 +145,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<GetBreakdownResponse> GetBreakdown(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             return new DeferredBodyAction<GetBreakdownResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -194,10 +161,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> DeleteBreakdown(Expression<Func<string>> id, Expression<Func<bool>> deleteInsights = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_deleteInsights = deleteInsights == null ? null : WorkflowExpression.Compile(deleteInsights);
-            WorkflowExpression.Validate(__workflow_deleteInsights, nameof(deleteInsights), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_deleteInsights = WorkflowExpression.Compile(deleteInsights, nameof(deleteInsights), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -212,10 +177,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetInsightsWidgetUrl(Expression<Func<string>> id, Expression<Func<widgetTypeInput>> widgetType = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_widgetType = widgetType == null ? null : WorkflowExpression.Compile(widgetType);
-            WorkflowExpression.Validate(__workflow_widgetType, nameof(widgetType), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_widgetType = WorkflowExpression.Compile(widgetType, nameof(widgetType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/InsightsWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -230,8 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetPlayerWidgetUrl(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/PlayerWidgetUrl", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -244,10 +206,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetVttUrl(Expression<Func<string>> id, Expression<Func<languageInput>> language = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/{0}/VttUrl", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -262,10 +222,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<string> GetInsightsWidgetUrlByExternalId(Expression<Func<string>> externalId, Expression<Func<widgetTypeInput>> widgetType = null)
         {
-            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
-            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: true);
-            var __workflow_widgetType = widgetType == null ? null : WorkflowExpression.Compile(widgetType);
-            WorkflowExpression.Validate(__workflow_widgetType, nameof(widgetType), required: false);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: true);
+            var __workflow_widgetType = WorkflowExpression.Compile(widgetType, nameof(widgetType), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/Api/Partner/Breakdowns/GetInsightsWidgetUrlByExternalId";
@@ -290,10 +248,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> ReIndexBreakdown(Expression<Func<string>> id, Expression<Func<string>> callbackUrl = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
-            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_callbackUrl = WorkflowExpression.Compile(callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindex/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -308,10 +264,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> ReIndexBreakdownByExternalId(Expression<Func<string>> externalId, Expression<Func<string>> callbackUrl = null)
         {
-            var __workflow_externalId = externalId == null ? null : WorkflowExpression.Compile(externalId);
-            WorkflowExpression.Validate(__workflow_externalId, nameof(externalId), required: true);
-            var __workflow_callbackUrl = callbackUrl == null ? null : WorkflowExpression.Compile(callbackUrl);
-            WorkflowExpression.Validate(__workflow_callbackUrl, nameof(callbackUrl), required: false);
+            var __workflow_externalId = WorkflowExpression.Compile(externalId, nameof(externalId), required: true);
+            var __workflow_callbackUrl = WorkflowExpression.Compile(callbackUrl, nameof(callbackUrl), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/reindexbyexternalid/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_externalId, 1));
@@ -326,12 +280,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Videoindexer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "videoindexer")]
         public IBodyWorkflowAction<JToken> UpdateFaceName(Expression<Func<string>> id, Expression<Func<double>> faceId, Expression<Func<string>> newName)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_faceId = faceId == null ? null : WorkflowExpression.Compile(faceId);
-            WorkflowExpression.Validate(__workflow_faceId, nameof(faceId), required: true);
-            var __workflow_newName = newName == null ? null : WorkflowExpression.Compile(newName);
-            WorkflowExpression.Validate(__workflow_newName, nameof(newName), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_faceId = WorkflowExpression.Compile(faceId, nameof(faceId), required: true);
+            var __workflow_newName = WorkflowExpression.Compile(newName, nameof(newName), required: true);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/Api/Partner/Breakdowns/UpdateFaceName/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));

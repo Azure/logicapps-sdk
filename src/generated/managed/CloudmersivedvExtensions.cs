@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<ParseAddressResponse> AddressParseString(Expression<Func<string>> inputaddressString = null, Expression<Func<string>> inputcapitalizationMode = null)
         {
-            var __workflow_inputaddressString = inputaddressString == null ? null : WorkflowExpression.Compile(inputaddressString);
-            WorkflowExpression.Validate(__workflow_inputaddressString, nameof(inputaddressString), required: false);
-            var __workflow_inputcapitalizationMode = inputcapitalizationMode == null ? null : WorkflowExpression.Compile(inputcapitalizationMode);
-            WorkflowExpression.Validate(__workflow_inputcapitalizationMode, nameof(inputcapitalizationMode), required: false);
+            var __workflow_inputaddressString = WorkflowExpression.Compile(inputaddressString, nameof(inputaddressString), required: false);
+            var __workflow_inputcapitalizationMode = WorkflowExpression.Compile(inputcapitalizationMode, nameof(inputcapitalizationMode), required: false);
             return new DeferredBodyAction<ParseAddressResponse>(() =>
             {
                 var apiCallPath = "/validate/address/parse";
@@ -48,8 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<CheckResponse> DomainCheck(Expression<Func<string>> domain = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             return new DeferredBodyAction<CheckResponse>(() =>
             {
                 var apiCallPath = "/validate/domain/check";
@@ -63,8 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<ValidateUrlResponseFull> DomainUrlFull(Expression<Func<string>> requestuRL = null)
         {
-            var __workflow_requestuRL = requestuRL == null ? null : WorkflowExpression.Compile(requestuRL);
-            WorkflowExpression.Validate(__workflow_requestuRL, nameof(requestuRL), required: false);
+            var __workflow_requestuRL = WorkflowExpression.Compile(requestuRL, nameof(requestuRL), required: false);
             return new DeferredBodyAction<ValidateUrlResponseFull>(() =>
             {
                 var apiCallPath = "/validate/domain/url/full";
@@ -90,8 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<ValidateUrlResponseSyntaxOnly> DomainUrlSyntaxOnly(Expression<Func<string>> requestuRL = null)
         {
-            var __workflow_requestuRL = requestuRL == null ? null : WorkflowExpression.Compile(requestuRL);
-            WorkflowExpression.Validate(__workflow_requestuRL, nameof(requestuRL), required: false);
+            var __workflow_requestuRL = WorkflowExpression.Compile(requestuRL, nameof(requestuRL), required: false);
             return new DeferredBodyAction<ValidateUrlResponseSyntaxOnly>(() =>
             {
                 var apiCallPath = "/validate/domain/url/syntax-only";
@@ -117,8 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<WhoisResponse> Domain(Expression<Func<string>> domain = null)
         {
-            var __workflow_domain = domain == null ? null : WorkflowExpression.Compile(domain);
-            WorkflowExpression.Validate(__workflow_domain, nameof(domain), required: false);
+            var __workflow_domain = WorkflowExpression.Compile(domain, nameof(domain), required: false);
             return new DeferredBodyAction<WhoisResponse>(() =>
             {
                 var apiCallPath = "/validate/domain/whois";
@@ -132,8 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<FullEmailValidationResponse> EmailFullValidation(Expression<Func<string>> email = null)
         {
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: false);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: false);
             return new DeferredBodyAction<FullEmailValidationResponse>(() =>
             {
                 var apiCallPath = "/validate/email/address/full";
@@ -147,8 +140,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<GeolocateResponse> IPAddress(Expression<Func<string>> value = null)
         {
-            var __workflow_value = value == null ? null : WorkflowExpression.Compile(value);
-            WorkflowExpression.Validate(__workflow_value, nameof(value), required: false);
+            var __workflow_value = WorkflowExpression.Compile(value, nameof(value), required: false);
             return new DeferredBodyAction<GeolocateResponse>(() =>
             {
                 var apiCallPath = "/validate/ip/geolocate";
@@ -162,8 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<FirstNameValidationResponse> NameValidateFirstName(Expression<Func<string>> inputfirstName = null)
         {
-            var __workflow_inputfirstName = inputfirstName == null ? null : WorkflowExpression.Compile(inputfirstName);
-            WorkflowExpression.Validate(__workflow_inputfirstName, nameof(inputfirstName), required: false);
+            var __workflow_inputfirstName = WorkflowExpression.Compile(inputfirstName, nameof(inputfirstName), required: false);
             return new DeferredBodyAction<FirstNameValidationResponse>(() =>
             {
                 var apiCallPath = "/validate/name/first";
@@ -189,8 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<FullNameValidationResponse> NameValidateFullName(Expression<Func<string>> inputfullNameString = null)
         {
-            var __workflow_inputfullNameString = inputfullNameString == null ? null : WorkflowExpression.Compile(inputfullNameString);
-            WorkflowExpression.Validate(__workflow_inputfullNameString, nameof(inputfullNameString), required: false);
+            var __workflow_inputfullNameString = WorkflowExpression.Compile(inputfullNameString, nameof(inputfullNameString), required: false);
             return new DeferredBodyAction<FullNameValidationResponse>(() =>
             {
                 var apiCallPath = "/validate/name/full-name";
@@ -216,10 +206,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<GetGenderResponse> NameGetGender(Expression<Func<string>> inputcountryCode = null, Expression<Func<string>> inputfirstName = null)
         {
-            var __workflow_inputcountryCode = inputcountryCode == null ? null : WorkflowExpression.Compile(inputcountryCode);
-            WorkflowExpression.Validate(__workflow_inputcountryCode, nameof(inputcountryCode), required: false);
-            var __workflow_inputfirstName = inputfirstName == null ? null : WorkflowExpression.Compile(inputfirstName);
-            WorkflowExpression.Validate(__workflow_inputfirstName, nameof(inputfirstName), required: false);
+            var __workflow_inputcountryCode = WorkflowExpression.Compile(inputcountryCode, nameof(inputcountryCode), required: false);
+            var __workflow_inputfirstName = WorkflowExpression.Compile(inputfirstName, nameof(inputfirstName), required: false);
             return new DeferredBodyAction<GetGenderResponse>(() =>
             {
                 var apiCallPath = "/validate/name/get-gender";
@@ -251,22 +239,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<ValidateIdentifierResponse> NameIdentifier(Expression<Func<bool>> inputallowHyphens = null, Expression<Func<bool>> inputallowNumbers = null, Expression<Func<bool>> inputallowPeriods = null, Expression<Func<bool>> inputallowUnderscore = null, Expression<Func<bool>> inputallowWhitespace = null, Expression<Func<string>> inputinput = null, Expression<Func<int>> inputmaxLength = null, Expression<Func<int>> inputminLength = null)
         {
-            var __workflow_inputallowHyphens = inputallowHyphens == null ? null : WorkflowExpression.Compile(inputallowHyphens);
-            WorkflowExpression.Validate(__workflow_inputallowHyphens, nameof(inputallowHyphens), required: false);
-            var __workflow_inputallowNumbers = inputallowNumbers == null ? null : WorkflowExpression.Compile(inputallowNumbers);
-            WorkflowExpression.Validate(__workflow_inputallowNumbers, nameof(inputallowNumbers), required: false);
-            var __workflow_inputallowPeriods = inputallowPeriods == null ? null : WorkflowExpression.Compile(inputallowPeriods);
-            WorkflowExpression.Validate(__workflow_inputallowPeriods, nameof(inputallowPeriods), required: false);
-            var __workflow_inputallowUnderscore = inputallowUnderscore == null ? null : WorkflowExpression.Compile(inputallowUnderscore);
-            WorkflowExpression.Validate(__workflow_inputallowUnderscore, nameof(inputallowUnderscore), required: false);
-            var __workflow_inputallowWhitespace = inputallowWhitespace == null ? null : WorkflowExpression.Compile(inputallowWhitespace);
-            WorkflowExpression.Validate(__workflow_inputallowWhitespace, nameof(inputallowWhitespace), required: false);
-            var __workflow_inputinput = inputinput == null ? null : WorkflowExpression.Compile(inputinput);
-            WorkflowExpression.Validate(__workflow_inputinput, nameof(inputinput), required: false);
-            var __workflow_inputmaxLength = inputmaxLength == null ? null : WorkflowExpression.Compile(inputmaxLength);
-            WorkflowExpression.Validate(__workflow_inputmaxLength, nameof(inputmaxLength), required: false);
-            var __workflow_inputminLength = inputminLength == null ? null : WorkflowExpression.Compile(inputminLength);
-            WorkflowExpression.Validate(__workflow_inputminLength, nameof(inputminLength), required: false);
+            var __workflow_inputallowHyphens = WorkflowExpression.Compile(inputallowHyphens, nameof(inputallowHyphens), required: false);
+            var __workflow_inputallowNumbers = WorkflowExpression.Compile(inputallowNumbers, nameof(inputallowNumbers), required: false);
+            var __workflow_inputallowPeriods = WorkflowExpression.Compile(inputallowPeriods, nameof(inputallowPeriods), required: false);
+            var __workflow_inputallowUnderscore = WorkflowExpression.Compile(inputallowUnderscore, nameof(inputallowUnderscore), required: false);
+            var __workflow_inputallowWhitespace = WorkflowExpression.Compile(inputallowWhitespace, nameof(inputallowWhitespace), required: false);
+            var __workflow_inputinput = WorkflowExpression.Compile(inputinput, nameof(inputinput), required: false);
+            var __workflow_inputmaxLength = WorkflowExpression.Compile(inputmaxLength, nameof(inputmaxLength), required: false);
+            var __workflow_inputminLength = WorkflowExpression.Compile(inputminLength, nameof(inputminLength), required: false);
             return new DeferredBodyAction<ValidateIdentifierResponse>(() =>
             {
                 var apiCallPath = "/validate/name/identifier";
@@ -334,8 +314,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<LastNameValidationResponse> NameValidateLastName(Expression<Func<string>> inputlastName = null)
         {
-            var __workflow_inputlastName = inputlastName == null ? null : WorkflowExpression.Compile(inputlastName);
-            WorkflowExpression.Validate(__workflow_inputlastName, nameof(inputlastName), required: false);
+            var __workflow_inputlastName = WorkflowExpression.Compile(inputlastName, nameof(inputlastName), required: false);
             return new DeferredBodyAction<LastNameValidationResponse>(() =>
             {
                 var apiCallPath = "/validate/name/last";
@@ -361,10 +340,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<PhoneNumberValidationResponse> PhoneNumberSyntaxOnly(Expression<Func<string>> valuedefaultCountryCode = null, Expression<Func<string>> valuephoneNumber = null)
         {
-            var __workflow_valuedefaultCountryCode = valuedefaultCountryCode == null ? null : WorkflowExpression.Compile(valuedefaultCountryCode);
-            WorkflowExpression.Validate(__workflow_valuedefaultCountryCode, nameof(valuedefaultCountryCode), required: false);
-            var __workflow_valuephoneNumber = valuephoneNumber == null ? null : WorkflowExpression.Compile(valuephoneNumber);
-            WorkflowExpression.Validate(__workflow_valuephoneNumber, nameof(valuephoneNumber), required: false);
+            var __workflow_valuedefaultCountryCode = WorkflowExpression.Compile(valuedefaultCountryCode, nameof(valuedefaultCountryCode), required: false);
+            var __workflow_valuephoneNumber = WorkflowExpression.Compile(valuephoneNumber, nameof(valuephoneNumber), required: false);
             return new DeferredBodyAction<PhoneNumberValidationResponse>(() =>
             {
                 var apiCallPath = "/validate/phonenumber/basic";
@@ -396,8 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<UserAgentValidateResponse> UserAgentParse(Expression<Func<string>> requestuserAgentString = null)
         {
-            var __workflow_requestuserAgentString = requestuserAgentString == null ? null : WorkflowExpression.Compile(requestuserAgentString);
-            WorkflowExpression.Validate(__workflow_requestuserAgentString, nameof(requestuserAgentString), required: false);
+            var __workflow_requestuserAgentString = WorkflowExpression.Compile(requestuserAgentString, nameof(requestuserAgentString), required: false);
             return new DeferredBodyAction<UserAgentValidateResponse>(() =>
             {
                 var apiCallPath = "/validate/useragent/parse";
@@ -423,8 +399,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivedv
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivedv")]
         public IBodyWorkflowAction<VatLookupResponse> VatVatLookup(Expression<Func<string>> inputvatCode = null)
         {
-            var __workflow_inputvatCode = inputvatCode == null ? null : WorkflowExpression.Compile(inputvatCode);
-            WorkflowExpression.Validate(__workflow_inputvatCode, nameof(inputvatCode), required: false);
+            var __workflow_inputvatCode = WorkflowExpression.Compile(inputvatCode, nameof(inputvatCode), required: false);
             return new DeferredBodyAction<VatLookupResponse>(() =>
             {
                 var apiCallPath = "/validate/vat/lookup";

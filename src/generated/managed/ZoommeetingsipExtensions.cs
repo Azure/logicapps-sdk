@@ -22,28 +22,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
         public IBodyWorkflowAction<CreateMeetingResponse> CreateMeeting(Expression<Func<string>> bodytopic = null, Expression<Func<int>> bodytype = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyduration = null, Expression<Func<bool>> bodysettingshostVideo = null, Expression<Func<bool>> bodysettingsparticipantVideo = null, Expression<Func<bool>> bodysettingsjoinBeforeHost = null, Expression<Func<string>> bodysettingsmuteUponEntry = null, Expression<Func<string>> bodysettingswatermark = null, Expression<Func<string>> bodysettingsaudio = null, Expression<Func<string>> bodysettingsautoRecording = null)
         {
-            var __workflow_bodytopic = bodytopic == null ? null : WorkflowExpression.Compile(bodytopic);
-            WorkflowExpression.Validate(__workflow_bodytopic, nameof(bodytopic), required: false);
-            var __workflow_bodytype = bodytype == null ? null : WorkflowExpression.Compile(bodytype);
-            WorkflowExpression.Validate(__workflow_bodytype, nameof(bodytype), required: false);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: false);
-            var __workflow_bodysettingshostVideo = bodysettingshostVideo == null ? null : WorkflowExpression.Compile(bodysettingshostVideo);
-            WorkflowExpression.Validate(__workflow_bodysettingshostVideo, nameof(bodysettingshostVideo), required: false);
-            var __workflow_bodysettingsparticipantVideo = bodysettingsparticipantVideo == null ? null : WorkflowExpression.Compile(bodysettingsparticipantVideo);
-            WorkflowExpression.Validate(__workflow_bodysettingsparticipantVideo, nameof(bodysettingsparticipantVideo), required: false);
-            var __workflow_bodysettingsjoinBeforeHost = bodysettingsjoinBeforeHost == null ? null : WorkflowExpression.Compile(bodysettingsjoinBeforeHost);
-            WorkflowExpression.Validate(__workflow_bodysettingsjoinBeforeHost, nameof(bodysettingsjoinBeforeHost), required: false);
-            var __workflow_bodysettingsmuteUponEntry = bodysettingsmuteUponEntry == null ? null : WorkflowExpression.Compile(bodysettingsmuteUponEntry);
-            WorkflowExpression.Validate(__workflow_bodysettingsmuteUponEntry, nameof(bodysettingsmuteUponEntry), required: false);
-            var __workflow_bodysettingswatermark = bodysettingswatermark == null ? null : WorkflowExpression.Compile(bodysettingswatermark);
-            WorkflowExpression.Validate(__workflow_bodysettingswatermark, nameof(bodysettingswatermark), required: false);
-            var __workflow_bodysettingsaudio = bodysettingsaudio == null ? null : WorkflowExpression.Compile(bodysettingsaudio);
-            WorkflowExpression.Validate(__workflow_bodysettingsaudio, nameof(bodysettingsaudio), required: false);
-            var __workflow_bodysettingsautoRecording = bodysettingsautoRecording == null ? null : WorkflowExpression.Compile(bodysettingsautoRecording);
-            WorkflowExpression.Validate(__workflow_bodysettingsautoRecording, nameof(bodysettingsautoRecording), required: false);
+            var __workflow_bodytopic = WorkflowExpression.Compile(bodytopic, nameof(bodytopic), required: false);
+            var __workflow_bodytype = WorkflowExpression.Compile(bodytype, nameof(bodytype), required: false);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: false);
+            var __workflow_bodysettingshostVideo = WorkflowExpression.Compile(bodysettingshostVideo, nameof(bodysettingshostVideo), required: false);
+            var __workflow_bodysettingsparticipantVideo = WorkflowExpression.Compile(bodysettingsparticipantVideo, nameof(bodysettingsparticipantVideo), required: false);
+            var __workflow_bodysettingsjoinBeforeHost = WorkflowExpression.Compile(bodysettingsjoinBeforeHost, nameof(bodysettingsjoinBeforeHost), required: false);
+            var __workflow_bodysettingsmuteUponEntry = WorkflowExpression.Compile(bodysettingsmuteUponEntry, nameof(bodysettingsmuteUponEntry), required: false);
+            var __workflow_bodysettingswatermark = WorkflowExpression.Compile(bodysettingswatermark, nameof(bodysettingswatermark), required: false);
+            var __workflow_bodysettingsaudio = WorkflowExpression.Compile(bodysettingsaudio, nameof(bodysettingsaudio), required: false);
+            var __workflow_bodysettingsautoRecording = WorkflowExpression.Compile(bodysettingsautoRecording, nameof(bodysettingsautoRecording), required: false);
             return new DeferredBodyAction<CreateMeetingResponse>(() =>
             {
                 var apiCallPath = "/v2/users/me/meetings";
@@ -137,8 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
         public IBodyWorkflowAction<MeetingDetailsResponse> MeetingDetails(Expression<Func<string>> meetingid)
         {
-            var __workflow_meetingid = meetingid == null ? null : WorkflowExpression.Compile(meetingid);
-            WorkflowExpression.Validate(__workflow_meetingid, nameof(meetingid), required: true);
+            var __workflow_meetingid = WorkflowExpression.Compile(meetingid, nameof(meetingid), required: true);
             return new DeferredBodyAction<MeetingDetailsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_meetingid, 1));

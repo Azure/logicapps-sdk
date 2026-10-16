@@ -22,30 +22,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionPostResponse> Prediction(Expression<Func<string>> bodyversion, Expression<Func<string>> bodyinputtext = null, Expression<Func<string>> bodyinputprompt = null, Expression<Func<string>> bodyinputpromptStrength = null, Expression<Func<int>> bodyinputwidth = null, Expression<Func<int>> bodyinputheight = null, Expression<Func<string>> bodyinputscale = null, Expression<Func<int>> bodyinputnumOutputs = null, Expression<Func<int>> bodyinputnumInferenceSteps = null, Expression<Func<string>> bodyinputguidanceScale = null, Expression<Func<int>> bodyinputseed = null, Expression<Func<string>> bodywebhookCompleted = null)
         {
-            var __workflow_bodyversion = bodyversion == null ? null : WorkflowExpression.Compile(bodyversion);
-            WorkflowExpression.Validate(__workflow_bodyversion, nameof(bodyversion), required: true);
-            var __workflow_bodyinputtext = bodyinputtext == null ? null : WorkflowExpression.Compile(bodyinputtext);
-            WorkflowExpression.Validate(__workflow_bodyinputtext, nameof(bodyinputtext), required: false);
-            var __workflow_bodyinputprompt = bodyinputprompt == null ? null : WorkflowExpression.Compile(bodyinputprompt);
-            WorkflowExpression.Validate(__workflow_bodyinputprompt, nameof(bodyinputprompt), required: false);
-            var __workflow_bodyinputpromptStrength = bodyinputpromptStrength == null ? null : WorkflowExpression.Compile(bodyinputpromptStrength);
-            WorkflowExpression.Validate(__workflow_bodyinputpromptStrength, nameof(bodyinputpromptStrength), required: false);
-            var __workflow_bodyinputwidth = bodyinputwidth == null ? null : WorkflowExpression.Compile(bodyinputwidth);
-            WorkflowExpression.Validate(__workflow_bodyinputwidth, nameof(bodyinputwidth), required: false);
-            var __workflow_bodyinputheight = bodyinputheight == null ? null : WorkflowExpression.Compile(bodyinputheight);
-            WorkflowExpression.Validate(__workflow_bodyinputheight, nameof(bodyinputheight), required: false);
-            var __workflow_bodyinputscale = bodyinputscale == null ? null : WorkflowExpression.Compile(bodyinputscale);
-            WorkflowExpression.Validate(__workflow_bodyinputscale, nameof(bodyinputscale), required: false);
-            var __workflow_bodyinputnumOutputs = bodyinputnumOutputs == null ? null : WorkflowExpression.Compile(bodyinputnumOutputs);
-            WorkflowExpression.Validate(__workflow_bodyinputnumOutputs, nameof(bodyinputnumOutputs), required: false);
-            var __workflow_bodyinputnumInferenceSteps = bodyinputnumInferenceSteps == null ? null : WorkflowExpression.Compile(bodyinputnumInferenceSteps);
-            WorkflowExpression.Validate(__workflow_bodyinputnumInferenceSteps, nameof(bodyinputnumInferenceSteps), required: false);
-            var __workflow_bodyinputguidanceScale = bodyinputguidanceScale == null ? null : WorkflowExpression.Compile(bodyinputguidanceScale);
-            WorkflowExpression.Validate(__workflow_bodyinputguidanceScale, nameof(bodyinputguidanceScale), required: false);
-            var __workflow_bodyinputseed = bodyinputseed == null ? null : WorkflowExpression.Compile(bodyinputseed);
-            WorkflowExpression.Validate(__workflow_bodyinputseed, nameof(bodyinputseed), required: false);
-            var __workflow_bodywebhookCompleted = bodywebhookCompleted == null ? null : WorkflowExpression.Compile(bodywebhookCompleted);
-            WorkflowExpression.Validate(__workflow_bodywebhookCompleted, nameof(bodywebhookCompleted), required: false);
+            var __workflow_bodyversion = WorkflowExpression.Compile(bodyversion, nameof(bodyversion), required: true);
+            var __workflow_bodyinputtext = WorkflowExpression.Compile(bodyinputtext, nameof(bodyinputtext), required: false);
+            var __workflow_bodyinputprompt = WorkflowExpression.Compile(bodyinputprompt, nameof(bodyinputprompt), required: false);
+            var __workflow_bodyinputpromptStrength = WorkflowExpression.Compile(bodyinputpromptStrength, nameof(bodyinputpromptStrength), required: false);
+            var __workflow_bodyinputwidth = WorkflowExpression.Compile(bodyinputwidth, nameof(bodyinputwidth), required: false);
+            var __workflow_bodyinputheight = WorkflowExpression.Compile(bodyinputheight, nameof(bodyinputheight), required: false);
+            var __workflow_bodyinputscale = WorkflowExpression.Compile(bodyinputscale, nameof(bodyinputscale), required: false);
+            var __workflow_bodyinputnumOutputs = WorkflowExpression.Compile(bodyinputnumOutputs, nameof(bodyinputnumOutputs), required: false);
+            var __workflow_bodyinputnumInferenceSteps = WorkflowExpression.Compile(bodyinputnumInferenceSteps, nameof(bodyinputnumInferenceSteps), required: false);
+            var __workflow_bodyinputguidanceScale = WorkflowExpression.Compile(bodyinputguidanceScale, nameof(bodyinputguidanceScale), required: false);
+            var __workflow_bodyinputseed = WorkflowExpression.Compile(bodyinputseed, nameof(bodyinputseed), required: false);
+            var __workflow_bodywebhookCompleted = WorkflowExpression.Compile(bodywebhookCompleted, nameof(bodywebhookCompleted), required: false);
             return new DeferredBodyAction<PredictionPostResponse>(() =>
             {
                 var apiCallPath = "/predictions";
@@ -141,8 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionGetResponse> PredictionGet(Expression<Func<string>> predictionId)
         {
-            var __workflow_predictionId = predictionId == null ? null : WorkflowExpression.Compile(predictionId);
-            WorkflowExpression.Validate(__workflow_predictionId, nameof(predictionId), required: true);
+            var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
             return new DeferredBodyAction<PredictionGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictions/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictionId, 1));
@@ -155,8 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<PredictionCancelResponse> PredictionCancel(Expression<Func<string>> predictionId)
         {
-            var __workflow_predictionId = predictionId == null ? null : WorkflowExpression.Compile(predictionId);
-            WorkflowExpression.Validate(__workflow_predictionId, nameof(predictionId), required: true);
+            var __workflow_predictionId = WorkflowExpression.Compile(predictionId, nameof(predictionId), required: true);
             return new DeferredBodyAction<PredictionCancelResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictions/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(__workflow_predictionId, 1));
@@ -169,10 +155,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<string>> modelOwner, Expression<Func<string>> modelName)
         {
-            var __workflow_modelOwner = modelOwner == null ? null : WorkflowExpression.Compile(modelOwner);
-            WorkflowExpression.Validate(__workflow_modelOwner, nameof(modelOwner), required: true);
-            var __workflow_modelName = modelName == null ? null : WorkflowExpression.Compile(modelName);
-            WorkflowExpression.Validate(__workflow_modelName, nameof(modelName), required: true);
+            var __workflow_modelOwner = WorkflowExpression.Compile(modelOwner, nameof(modelOwner), required: true);
+            var __workflow_modelName = WorkflowExpression.Compile(modelName, nameof(modelName), required: true);
             return new DeferredBodyAction<ModelGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/models/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelOwner, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelName, 1));
@@ -185,8 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Replicateip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "replicateip")]
         public IBodyWorkflowAction<ModelListResponse> ModelList(Expression<Func<string>> collectionSlug)
         {
-            var __workflow_collectionSlug = collectionSlug == null ? null : WorkflowExpression.Compile(collectionSlug);
-            WorkflowExpression.Validate(__workflow_collectionSlug, nameof(collectionSlug), required: true);
+            var __workflow_collectionSlug = WorkflowExpression.Compile(collectionSlug, nameof(collectionSlug), required: true);
             return new DeferredBodyAction<ModelListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_collectionSlug, 1));

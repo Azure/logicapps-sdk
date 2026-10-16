@@ -31,14 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd(Expression<Func<string>> formId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredBodyAction<FormSubAddResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
@@ -80,14 +76,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<FormSubListResponse> FormSubList(Expression<Func<string>> formId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
         {
-            var __workflow_formId = formId == null ? null : WorkflowExpression.Compile(formId);
-            WorkflowExpression.Validate(__workflow_formId, nameof(formId), required: true);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_subscriberState = subscriberState == null ? null : WorkflowExpression.Compile(subscriberState);
-            WorkflowExpression.Validate(__workflow_subscriberState, nameof(subscriberState), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_formId = WorkflowExpression.Compile(formId, nameof(formId), required: true);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_subscriberState = WorkflowExpression.Compile(subscriberState, nameof(subscriberState), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<FormSubListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_formId, 1));
@@ -117,14 +109,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd(Expression<Func<string>> sequenceId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
         {
-            var __workflow_sequenceId = sequenceId == null ? null : WorkflowExpression.Compile(sequenceId);
-            WorkflowExpression.Validate(__workflow_sequenceId, nameof(sequenceId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_sequenceId = WorkflowExpression.Compile(sequenceId, nameof(sequenceId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredBodyAction<SequenceSubAddResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sequenceId, 1));
@@ -166,14 +154,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList(Expression<Func<string>> sequenceId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
         {
-            var __workflow_sequenceId = sequenceId == null ? null : WorkflowExpression.Compile(sequenceId);
-            WorkflowExpression.Validate(__workflow_sequenceId, nameof(sequenceId), required: true);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_subscriberState = subscriberState == null ? null : WorkflowExpression.Compile(subscriberState);
-            WorkflowExpression.Validate(__workflow_subscriberState, nameof(subscriberState), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_sequenceId = WorkflowExpression.Compile(sequenceId, nameof(sequenceId), required: true);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_subscriberState = WorkflowExpression.Compile(subscriberState, nameof(subscriberState), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<SequenceSubListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_sequenceId, 1));
@@ -203,8 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagAddResponse> TagAdd(Expression<Func<string>> bodytagname = null)
         {
-            var __workflow_bodytagname = bodytagname == null ? null : WorkflowExpression.Compile(bodytagname);
-            WorkflowExpression.Validate(__workflow_bodytagname, nameof(bodytagname), required: false);
+            var __workflow_bodytagname = WorkflowExpression.Compile(bodytagname, nameof(bodytagname), required: false);
             return new DeferredBodyAction<TagAddResponse>(() =>
             {
                 var apiCallPath = "/tags";
@@ -238,14 +221,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubResponse> TagSub(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
         {
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: false);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: false);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
             return new DeferredBodyAction<TagSubResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
@@ -291,10 +270,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove(Expression<Func<string>> subscriberId, Expression<Func<string>> tagId)
         {
-            var __workflow_subscriberId = subscriberId == null ? null : WorkflowExpression.Compile(subscriberId);
-            WorkflowExpression.Validate(__workflow_subscriberId, nameof(subscriberId), required: true);
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
+            var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
             return new DeferredBodyAction<TagSubRemoveResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriberId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
@@ -307,10 +284,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail)
         {
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<TagSubRemoveEmailResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tags/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
@@ -332,14 +307,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagSubListResponse> TagSubList(Expression<Func<string>> tagId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
         {
-            var __workflow_tagId = tagId == null ? null : WorkflowExpression.Compile(tagId);
-            WorkflowExpression.Validate(__workflow_tagId, nameof(tagId), required: true);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_subscriberState = subscriberState == null ? null : WorkflowExpression.Compile(subscriberState);
-            WorkflowExpression.Validate(__workflow_subscriberState, nameof(subscriberState), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_tagId = WorkflowExpression.Compile(tagId, nameof(tagId), required: true);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_subscriberState = WorkflowExpression.Compile(subscriberState, nameof(subscriberState), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<TagSubListResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(__workflow_tagId, 1));
@@ -360,22 +331,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberListResponse> SubscriberList(Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> updatedFrom = null, Expression<Func<string>> updatedTo = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<string>> emailAddress = null, Expression<Func<int>> page = null)
         {
-            var __workflow_from = from == null ? null : WorkflowExpression.Compile(from);
-            WorkflowExpression.Validate(__workflow_from, nameof(from), required: false);
-            var __workflow_to = to == null ? null : WorkflowExpression.Compile(to);
-            WorkflowExpression.Validate(__workflow_to, nameof(to), required: false);
-            var __workflow_updatedFrom = updatedFrom == null ? null : WorkflowExpression.Compile(updatedFrom);
-            WorkflowExpression.Validate(__workflow_updatedFrom, nameof(updatedFrom), required: false);
-            var __workflow_updatedTo = updatedTo == null ? null : WorkflowExpression.Compile(updatedTo);
-            WorkflowExpression.Validate(__workflow_updatedTo, nameof(updatedTo), required: false);
-            var __workflow_sortOrder = sortOrder == null ? null : WorkflowExpression.Compile(sortOrder);
-            WorkflowExpression.Validate(__workflow_sortOrder, nameof(sortOrder), required: false);
-            var __workflow_sortField = sortField == null ? null : WorkflowExpression.Compile(sortField);
-            WorkflowExpression.Validate(__workflow_sortField, nameof(sortField), required: false);
-            var __workflow_emailAddress = emailAddress == null ? null : WorkflowExpression.Compile(emailAddress);
-            WorkflowExpression.Validate(__workflow_emailAddress, nameof(emailAddress), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_from = WorkflowExpression.Compile(from, nameof(from), required: false);
+            var __workflow_to = WorkflowExpression.Compile(to, nameof(to), required: false);
+            var __workflow_updatedFrom = WorkflowExpression.Compile(updatedFrom, nameof(updatedFrom), required: false);
+            var __workflow_updatedTo = WorkflowExpression.Compile(updatedTo, nameof(updatedTo), required: false);
+            var __workflow_sortOrder = WorkflowExpression.Compile(sortOrder, nameof(sortOrder), required: false);
+            var __workflow_sortField = WorkflowExpression.Compile(sortField, nameof(sortField), required: false);
+            var __workflow_emailAddress = WorkflowExpression.Compile(emailAddress, nameof(emailAddress), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<SubscriberListResponse>(() =>
             {
                 var apiCallPath = "/subscribers";
@@ -406,8 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet(Expression<Func<string>> subscriberId)
         {
-            var __workflow_subscriberId = subscriberId == null ? null : WorkflowExpression.Compile(subscriberId);
-            WorkflowExpression.Validate(__workflow_subscriberId, nameof(subscriberId), required: true);
+            var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
             return new DeferredBodyAction<SubscriberGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriberId, 1));
@@ -420,12 +382,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate(Expression<Func<string>> subscriberId, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodyemailAddress = null)
         {
-            var __workflow_subscriberId = subscriberId == null ? null : WorkflowExpression.Compile(subscriberId);
-            WorkflowExpression.Validate(__workflow_subscriberId, nameof(subscriberId), required: true);
-            var __workflow_bodyfirstName = bodyfirstName == null ? null : WorkflowExpression.Compile(bodyfirstName);
-            WorkflowExpression.Validate(__workflow_bodyfirstName, nameof(bodyfirstName), required: false);
-            var __workflow_bodyemailAddress = bodyemailAddress == null ? null : WorkflowExpression.Compile(bodyemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyemailAddress, nameof(bodyemailAddress), required: false);
+            var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
+            var __workflow_bodyfirstName = WorkflowExpression.Compile(bodyfirstName, nameof(bodyfirstName), required: false);
+            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: false);
             return new DeferredBodyAction<SubscriberUpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriberId, 1));
@@ -465,8 +424,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub(Expression<Func<string>> bodyemail)
         {
-            var __workflow_bodyemail = bodyemail == null ? null : WorkflowExpression.Compile(bodyemail);
-            WorkflowExpression.Validate(__workflow_bodyemail, nameof(bodyemail), required: true);
+            var __workflow_bodyemail = WorkflowExpression.Compile(bodyemail, nameof(bodyemail), required: true);
             return new DeferredBodyAction<SubscriberUnsubResponse>(() =>
             {
                 var apiCallPath = "/unsubscribe";
@@ -488,8 +446,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags(Expression<Func<string>> subscriberId)
         {
-            var __workflow_subscriberId = subscriberId == null ? null : WorkflowExpression.Compile(subscriberId);
-            WorkflowExpression.Validate(__workflow_subscriberId, nameof(subscriberId), required: true);
+            var __workflow_subscriberId = WorkflowExpression.Compile(subscriberId, nameof(subscriberId), required: true);
             return new DeferredBodyAction<SubscriberTagsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_subscriberId, 1));
@@ -511,26 +468,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
         {
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyemailAddress = bodyemailAddress == null ? null : WorkflowExpression.Compile(bodyemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyemailAddress, nameof(bodyemailAddress), required: false);
-            var __workflow_bodyemailLayoutTemplate = bodyemailLayoutTemplate == null ? null : WorkflowExpression.Compile(bodyemailLayoutTemplate);
-            WorkflowExpression.Validate(__workflow_bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
-            var __workflow_bodyPublic = bodyPublic == null ? null : WorkflowExpression.Compile(bodyPublic);
-            WorkflowExpression.Validate(__workflow_bodyPublic, nameof(bodyPublic), required: false);
-            var __workflow_bodypublishedAt = bodypublishedAt == null ? null : WorkflowExpression.Compile(bodypublishedAt);
-            WorkflowExpression.Validate(__workflow_bodypublishedAt, nameof(bodypublishedAt), required: false);
-            var __workflow_bodysendAt = bodysendAt == null ? null : WorkflowExpression.Compile(bodysendAt);
-            WorkflowExpression.Validate(__workflow_bodysendAt, nameof(bodysendAt), required: false);
-            var __workflow_bodythumbnailAlt = bodythumbnailAlt == null ? null : WorkflowExpression.Compile(bodythumbnailAlt);
-            WorkflowExpression.Validate(__workflow_bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
-            var __workflow_bodythumbnailUrl = bodythumbnailUrl == null ? null : WorkflowExpression.Compile(bodythumbnailUrl);
-            WorkflowExpression.Validate(__workflow_bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: false);
+            var __workflow_bodyemailLayoutTemplate = WorkflowExpression.Compile(bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
+            var __workflow_bodyPublic = WorkflowExpression.Compile(bodyPublic, nameof(bodyPublic), required: false);
+            var __workflow_bodypublishedAt = WorkflowExpression.Compile(bodypublishedAt, nameof(bodypublishedAt), required: false);
+            var __workflow_bodysendAt = WorkflowExpression.Compile(bodysendAt, nameof(bodysendAt), required: false);
+            var __workflow_bodythumbnailAlt = WorkflowExpression.Compile(bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
+            var __workflow_bodythumbnailUrl = WorkflowExpression.Compile(bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
             return new DeferredBodyAction<BroadcastAddResponse>(() =>
             {
                 var apiCallPath = "/broadcasts";
@@ -610,8 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet(Expression<Func<string>> broadcastId)
         {
-            var __workflow_broadcastId = broadcastId == null ? null : WorkflowExpression.Compile(broadcastId);
-            WorkflowExpression.Validate(__workflow_broadcastId, nameof(broadcastId), required: true);
+            var __workflow_broadcastId = WorkflowExpression.Compile(broadcastId, nameof(broadcastId), required: true);
             return new DeferredBodyAction<BroadcastGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_broadcastId, 1));
@@ -624,28 +570,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
         {
-            var __workflow_broadcastId = broadcastId == null ? null : WorkflowExpression.Compile(broadcastId);
-            WorkflowExpression.Validate(__workflow_broadcastId, nameof(broadcastId), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodysubject = bodysubject == null ? null : WorkflowExpression.Compile(bodysubject);
-            WorkflowExpression.Validate(__workflow_bodysubject, nameof(bodysubject), required: false);
-            var __workflow_bodycontent = bodycontent == null ? null : WorkflowExpression.Compile(bodycontent);
-            WorkflowExpression.Validate(__workflow_bodycontent, nameof(bodycontent), required: false);
-            var __workflow_bodyemailAddress = bodyemailAddress == null ? null : WorkflowExpression.Compile(bodyemailAddress);
-            WorkflowExpression.Validate(__workflow_bodyemailAddress, nameof(bodyemailAddress), required: false);
-            var __workflow_bodyemailLayoutTemplate = bodyemailLayoutTemplate == null ? null : WorkflowExpression.Compile(bodyemailLayoutTemplate);
-            WorkflowExpression.Validate(__workflow_bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
-            var __workflow_bodyPublic = bodyPublic == null ? null : WorkflowExpression.Compile(bodyPublic);
-            WorkflowExpression.Validate(__workflow_bodyPublic, nameof(bodyPublic), required: false);
-            var __workflow_bodypublishedAt = bodypublishedAt == null ? null : WorkflowExpression.Compile(bodypublishedAt);
-            WorkflowExpression.Validate(__workflow_bodypublishedAt, nameof(bodypublishedAt), required: false);
-            var __workflow_bodysendAt = bodysendAt == null ? null : WorkflowExpression.Compile(bodysendAt);
-            WorkflowExpression.Validate(__workflow_bodysendAt, nameof(bodysendAt), required: false);
-            var __workflow_bodythumbnailAlt = bodythumbnailAlt == null ? null : WorkflowExpression.Compile(bodythumbnailAlt);
-            WorkflowExpression.Validate(__workflow_bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
-            var __workflow_bodythumbnailUrl = bodythumbnailUrl == null ? null : WorkflowExpression.Compile(bodythumbnailUrl);
-            WorkflowExpression.Validate(__workflow_bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
+            var __workflow_broadcastId = WorkflowExpression.Compile(broadcastId, nameof(broadcastId), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodysubject = WorkflowExpression.Compile(bodysubject, nameof(bodysubject), required: false);
+            var __workflow_bodycontent = WorkflowExpression.Compile(bodycontent, nameof(bodycontent), required: false);
+            var __workflow_bodyemailAddress = WorkflowExpression.Compile(bodyemailAddress, nameof(bodyemailAddress), required: false);
+            var __workflow_bodyemailLayoutTemplate = WorkflowExpression.Compile(bodyemailLayoutTemplate, nameof(bodyemailLayoutTemplate), required: false);
+            var __workflow_bodyPublic = WorkflowExpression.Compile(bodyPublic, nameof(bodyPublic), required: false);
+            var __workflow_bodypublishedAt = WorkflowExpression.Compile(bodypublishedAt, nameof(bodypublishedAt), required: false);
+            var __workflow_bodysendAt = WorkflowExpression.Compile(bodysendAt, nameof(bodysendAt), required: false);
+            var __workflow_bodythumbnailAlt = WorkflowExpression.Compile(bodythumbnailAlt, nameof(bodythumbnailAlt), required: false);
+            var __workflow_bodythumbnailUrl = WorkflowExpression.Compile(bodythumbnailUrl, nameof(bodythumbnailUrl), required: false);
             return new DeferredBodyAction<BroadcastUpdateResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_broadcastId, 1));
@@ -725,8 +660,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<string> BroadcastDelete(Expression<Func<string>> broadcastId)
         {
-            var __workflow_broadcastId = broadcastId == null ? null : WorkflowExpression.Compile(broadcastId);
-            WorkflowExpression.Validate(__workflow_broadcastId, nameof(broadcastId), required: true);
+            var __workflow_broadcastId = WorkflowExpression.Compile(broadcastId, nameof(broadcastId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_broadcastId, 1));
@@ -739,8 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat(Expression<Func<string>> broadcastId)
         {
-            var __workflow_broadcastId = broadcastId == null ? null : WorkflowExpression.Compile(broadcastId);
-            WorkflowExpression.Validate(__workflow_broadcastId, nameof(broadcastId), required: true);
+            var __workflow_broadcastId = WorkflowExpression.Compile(broadcastId, nameof(broadcastId), required: true);
             return new DeferredBodyAction<BroadcastGetStatResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(__workflow_broadcastId, 1));
@@ -753,8 +686,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<PurchaseListResponse> PurchaseList(Expression<Func<int>> page = null)
         {
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
             return new DeferredBodyAction<PurchaseListResponse>(() =>
             {
                 var apiCallPath = "/purchases";
@@ -769,30 +701,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd(Expression<Func<string>> bodypurchasetransactionId = null, Expression<Func<string>> bodypurchaseemailAddress = null, Expression<Func<string>> bodypurchasefirstName = null, Expression<Func<string>> bodypurchasecurrency = null, Expression<Func<string>> bodypurchasetransactionTime = null, Expression<Func<int>> bodypurchasesubtotal = null, Expression<Func<int>> bodypurchasetax = null, Expression<Func<int>> bodypurchaseshipping = null, Expression<Func<int>> bodypurchasediscount = null, Expression<Func<int>> bodypurchasetotal = null, Expression<Func<string>> bodypurchasestatus = null, Expression<Func<bodypurchaseproductsInputItem[]>> bodypurchaseproducts = null)
         {
-            var __workflow_bodypurchasetransactionId = bodypurchasetransactionId == null ? null : WorkflowExpression.Compile(bodypurchasetransactionId);
-            WorkflowExpression.Validate(__workflow_bodypurchasetransactionId, nameof(bodypurchasetransactionId), required: false);
-            var __workflow_bodypurchaseemailAddress = bodypurchaseemailAddress == null ? null : WorkflowExpression.Compile(bodypurchaseemailAddress);
-            WorkflowExpression.Validate(__workflow_bodypurchaseemailAddress, nameof(bodypurchaseemailAddress), required: false);
-            var __workflow_bodypurchasefirstName = bodypurchasefirstName == null ? null : WorkflowExpression.Compile(bodypurchasefirstName);
-            WorkflowExpression.Validate(__workflow_bodypurchasefirstName, nameof(bodypurchasefirstName), required: false);
-            var __workflow_bodypurchasecurrency = bodypurchasecurrency == null ? null : WorkflowExpression.Compile(bodypurchasecurrency);
-            WorkflowExpression.Validate(__workflow_bodypurchasecurrency, nameof(bodypurchasecurrency), required: false);
-            var __workflow_bodypurchasetransactionTime = bodypurchasetransactionTime == null ? null : WorkflowExpression.Compile(bodypurchasetransactionTime);
-            WorkflowExpression.Validate(__workflow_bodypurchasetransactionTime, nameof(bodypurchasetransactionTime), required: false);
-            var __workflow_bodypurchasesubtotal = bodypurchasesubtotal == null ? null : WorkflowExpression.Compile(bodypurchasesubtotal);
-            WorkflowExpression.Validate(__workflow_bodypurchasesubtotal, nameof(bodypurchasesubtotal), required: false);
-            var __workflow_bodypurchasetax = bodypurchasetax == null ? null : WorkflowExpression.Compile(bodypurchasetax);
-            WorkflowExpression.Validate(__workflow_bodypurchasetax, nameof(bodypurchasetax), required: false);
-            var __workflow_bodypurchaseshipping = bodypurchaseshipping == null ? null : WorkflowExpression.Compile(bodypurchaseshipping);
-            WorkflowExpression.Validate(__workflow_bodypurchaseshipping, nameof(bodypurchaseshipping), required: false);
-            var __workflow_bodypurchasediscount = bodypurchasediscount == null ? null : WorkflowExpression.Compile(bodypurchasediscount);
-            WorkflowExpression.Validate(__workflow_bodypurchasediscount, nameof(bodypurchasediscount), required: false);
-            var __workflow_bodypurchasetotal = bodypurchasetotal == null ? null : WorkflowExpression.Compile(bodypurchasetotal);
-            WorkflowExpression.Validate(__workflow_bodypurchasetotal, nameof(bodypurchasetotal), required: false);
-            var __workflow_bodypurchasestatus = bodypurchasestatus == null ? null : WorkflowExpression.Compile(bodypurchasestatus);
-            WorkflowExpression.Validate(__workflow_bodypurchasestatus, nameof(bodypurchasestatus), required: false);
-            var __workflow_bodypurchaseproducts = bodypurchaseproducts == null ? null : WorkflowExpression.Compile(bodypurchaseproducts);
-            WorkflowExpression.Validate(__workflow_bodypurchaseproducts, nameof(bodypurchaseproducts), required: false);
+            var __workflow_bodypurchasetransactionId = WorkflowExpression.Compile(bodypurchasetransactionId, nameof(bodypurchasetransactionId), required: false);
+            var __workflow_bodypurchaseemailAddress = WorkflowExpression.Compile(bodypurchaseemailAddress, nameof(bodypurchaseemailAddress), required: false);
+            var __workflow_bodypurchasefirstName = WorkflowExpression.Compile(bodypurchasefirstName, nameof(bodypurchasefirstName), required: false);
+            var __workflow_bodypurchasecurrency = WorkflowExpression.Compile(bodypurchasecurrency, nameof(bodypurchasecurrency), required: false);
+            var __workflow_bodypurchasetransactionTime = WorkflowExpression.Compile(bodypurchasetransactionTime, nameof(bodypurchasetransactionTime), required: false);
+            var __workflow_bodypurchasesubtotal = WorkflowExpression.Compile(bodypurchasesubtotal, nameof(bodypurchasesubtotal), required: false);
+            var __workflow_bodypurchasetax = WorkflowExpression.Compile(bodypurchasetax, nameof(bodypurchasetax), required: false);
+            var __workflow_bodypurchaseshipping = WorkflowExpression.Compile(bodypurchaseshipping, nameof(bodypurchaseshipping), required: false);
+            var __workflow_bodypurchasediscount = WorkflowExpression.Compile(bodypurchasediscount, nameof(bodypurchasediscount), required: false);
+            var __workflow_bodypurchasetotal = WorkflowExpression.Compile(bodypurchasetotal, nameof(bodypurchasetotal), required: false);
+            var __workflow_bodypurchasestatus = WorkflowExpression.Compile(bodypurchasestatus, nameof(bodypurchasestatus), required: false);
+            var __workflow_bodypurchaseproducts = WorkflowExpression.Compile(bodypurchaseproducts, nameof(bodypurchaseproducts), required: false);
             return new DeferredBodyAction<PurchaseAddResponse>(() =>
             {
                 var apiCallPath = "/purchases";
@@ -892,8 +812,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet(Expression<Func<string>> purchaseId)
         {
-            var __workflow_purchaseId = purchaseId == null ? null : WorkflowExpression.Compile(purchaseId);
-            WorkflowExpression.Validate(__workflow_purchaseId, nameof(purchaseId), required: true);
+            var __workflow_purchaseId = WorkflowExpression.Compile(purchaseId, nameof(purchaseId), required: true);
             return new DeferredBodyAction<PurchaseGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/purchases/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_purchaseId, 1));

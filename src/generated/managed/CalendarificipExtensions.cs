@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
         public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year, Expression<Func<string>> day = null, Expression<Func<string>> month = null, Expression<Func<string>> location = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> language = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
-            var __workflow_day = day == null ? null : WorkflowExpression.Compile(day);
-            WorkflowExpression.Validate(__workflow_day, nameof(day), required: false);
-            var __workflow_month = month == null ? null : WorkflowExpression.Compile(month);
-            WorkflowExpression.Validate(__workflow_month, nameof(month), required: false);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
-            var __workflow_type = type == null ? null : WorkflowExpression.Compile(type);
-            WorkflowExpression.Validate(__workflow_type, nameof(type), required: false);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
+            var __workflow_day = WorkflowExpression.Compile(day, nameof(day), required: false);
+            var __workflow_month = WorkflowExpression.Compile(month, nameof(month), required: false);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
+            var __workflow_type = WorkflowExpression.Compile(type, nameof(type), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             return new DeferredBodyAction<ListHolidaysResponse>(() =>
             {
                 var apiCallPath = "/api/v2/holidays";

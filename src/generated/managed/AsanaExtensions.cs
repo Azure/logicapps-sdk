@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<AddCommentResponseV2> AddComment(Expression<Func<string>> taskId, Expression<Func<string>> bodydatacomment = null)
         {
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
-            var __workflow_bodydatacomment = bodydatacomment == null ? null : WorkflowExpression.Compile(bodydatacomment);
-            WorkflowExpression.Validate(__workflow_bodydatacomment, nameof(bodydatacomment), required: false);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
+            var __workflow_bodydatacomment = WorkflowExpression.Compile(bodydatacomment, nameof(bodydatacomment), required: false);
             return new DeferredBodyAction<AddCommentResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}/stories", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -50,8 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> CompleteTask(Expression<Func<string>> taskId)
         {
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -64,24 +61,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> CreateProject(Expression<Func<string>> workspace, Expression<Func<string>> team = null, Expression<Func<string>> projectdataprojectName = null, Expression<Func<string>> projectdatadueDate = null, Expression<Func<bool>> projectdatapublic = null, Expression<Func<projectdataprojectColorInput>> projectdataprojectColor = null, Expression<Func<string>> projectdataprojectNotes = null, Expression<Func<string>> projectdataowner = null, Expression<Func<bool>> projectdataarchive = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: true);
-            var __workflow_team = team == null ? null : WorkflowExpression.Compile(team);
-            WorkflowExpression.Validate(__workflow_team, nameof(team), required: false);
-            var __workflow_projectdataprojectName = projectdataprojectName == null ? null : WorkflowExpression.Compile(projectdataprojectName);
-            WorkflowExpression.Validate(__workflow_projectdataprojectName, nameof(projectdataprojectName), required: false);
-            var __workflow_projectdatadueDate = projectdatadueDate == null ? null : WorkflowExpression.Compile(projectdatadueDate);
-            WorkflowExpression.Validate(__workflow_projectdatadueDate, nameof(projectdatadueDate), required: false);
-            var __workflow_projectdatapublic = projectdatapublic == null ? null : WorkflowExpression.Compile(projectdatapublic);
-            WorkflowExpression.Validate(__workflow_projectdatapublic, nameof(projectdatapublic), required: false);
-            var __workflow_projectdataprojectColor = projectdataprojectColor == null ? null : WorkflowExpression.Compile(projectdataprojectColor);
-            WorkflowExpression.Validate(__workflow_projectdataprojectColor, nameof(projectdataprojectColor), required: false);
-            var __workflow_projectdataprojectNotes = projectdataprojectNotes == null ? null : WorkflowExpression.Compile(projectdataprojectNotes);
-            WorkflowExpression.Validate(__workflow_projectdataprojectNotes, nameof(projectdataprojectNotes), required: false);
-            var __workflow_projectdataowner = projectdataowner == null ? null : WorkflowExpression.Compile(projectdataowner);
-            WorkflowExpression.Validate(__workflow_projectdataowner, nameof(projectdataowner), required: false);
-            var __workflow_projectdataarchive = projectdataarchive == null ? null : WorkflowExpression.Compile(projectdataarchive);
-            WorkflowExpression.Validate(__workflow_projectdataarchive, nameof(projectdataarchive), required: false);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_team = WorkflowExpression.Compile(team, nameof(team), required: false);
+            var __workflow_projectdataprojectName = WorkflowExpression.Compile(projectdataprojectName, nameof(projectdataprojectName), required: false);
+            var __workflow_projectdatadueDate = WorkflowExpression.Compile(projectdatadueDate, nameof(projectdatadueDate), required: false);
+            var __workflow_projectdatapublic = WorkflowExpression.Compile(projectdatapublic, nameof(projectdatapublic), required: false);
+            var __workflow_projectdataprojectColor = WorkflowExpression.Compile(projectdataprojectColor, nameof(projectdataprojectColor), required: false);
+            var __workflow_projectdataprojectNotes = WorkflowExpression.Compile(projectdataprojectNotes, nameof(projectdataprojectNotes), required: false);
+            var __workflow_projectdataowner = WorkflowExpression.Compile(projectdataowner, nameof(projectdataowner), required: false);
+            var __workflow_projectdataarchive = WorkflowExpression.Compile(projectdataarchive, nameof(projectdataarchive), required: false);
             return new DeferredBodyAction<ProjectResponseV2>(() =>
             {
                 var apiCallPath = "/v2/projects";
@@ -174,22 +162,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> CreateTask(Expression<Func<string>> workspace, Expression<Func<string>> projects, Expression<Func<string>> taskdatataskName = null, Expression<Func<string>> taskdataassignee = null, Expression<Func<string>> taskdatadescription = null, Expression<Func<taskdataassigneeStatusInput>> taskdataassigneeStatus = null, Expression<Func<bool>> taskdatacompleted = null, Expression<Func<string>> taskdatadueDate = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: true);
-            var __workflow_projects = projects == null ? null : WorkflowExpression.Compile(projects);
-            WorkflowExpression.Validate(__workflow_projects, nameof(projects), required: true);
-            var __workflow_taskdatataskName = taskdatataskName == null ? null : WorkflowExpression.Compile(taskdatataskName);
-            WorkflowExpression.Validate(__workflow_taskdatataskName, nameof(taskdatataskName), required: false);
-            var __workflow_taskdataassignee = taskdataassignee == null ? null : WorkflowExpression.Compile(taskdataassignee);
-            WorkflowExpression.Validate(__workflow_taskdataassignee, nameof(taskdataassignee), required: false);
-            var __workflow_taskdatadescription = taskdatadescription == null ? null : WorkflowExpression.Compile(taskdatadescription);
-            WorkflowExpression.Validate(__workflow_taskdatadescription, nameof(taskdatadescription), required: false);
-            var __workflow_taskdataassigneeStatus = taskdataassigneeStatus == null ? null : WorkflowExpression.Compile(taskdataassigneeStatus);
-            WorkflowExpression.Validate(__workflow_taskdataassigneeStatus, nameof(taskdataassigneeStatus), required: false);
-            var __workflow_taskdatacompleted = taskdatacompleted == null ? null : WorkflowExpression.Compile(taskdatacompleted);
-            WorkflowExpression.Validate(__workflow_taskdatacompleted, nameof(taskdatacompleted), required: false);
-            var __workflow_taskdatadueDate = taskdatadueDate == null ? null : WorkflowExpression.Compile(taskdatadueDate);
-            WorkflowExpression.Validate(__workflow_taskdatadueDate, nameof(taskdatadueDate), required: false);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_projects = WorkflowExpression.Compile(projects, nameof(projects), required: true);
+            var __workflow_taskdatataskName = WorkflowExpression.Compile(taskdatataskName, nameof(taskdatataskName), required: false);
+            var __workflow_taskdataassignee = WorkflowExpression.Compile(taskdataassignee, nameof(taskdataassignee), required: false);
+            var __workflow_taskdatadescription = WorkflowExpression.Compile(taskdatadescription, nameof(taskdatadescription), required: false);
+            var __workflow_taskdataassigneeStatus = WorkflowExpression.Compile(taskdataassigneeStatus, nameof(taskdataassigneeStatus), required: false);
+            var __workflow_taskdatacompleted = WorkflowExpression.Compile(taskdatacompleted, nameof(taskdatacompleted), required: false);
+            var __workflow_taskdatadueDate = WorkflowExpression.Compile(taskdatadueDate, nameof(taskdatadueDate), required: false);
             return new DeferredBodyAction<TaskResponseV2>(() =>
             {
                 var apiCallPath = "/v2/tasks";
@@ -265,8 +245,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ProjectResponseV2> GetProject(Expression<Func<string>> projectId)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
             return new DeferredBodyAction<ProjectResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -279,8 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<TaskResponseV2> GetTask(Expression<Func<string>> taskId)
         {
-            var __workflow_taskId = taskId == null ? null : WorkflowExpression.Compile(taskId);
-            WorkflowExpression.Validate(__workflow_taskId, nameof(taskId), required: true);
+            var __workflow_taskId = WorkflowExpression.Compile(taskId, nameof(taskId), required: true);
             return new DeferredBodyAction<TaskResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/tasks/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_taskId, 1));
@@ -293,8 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<UserResponseV2> GetUser(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<UserResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -307,8 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListUsersResponseV2> ListUsers(Expression<Func<string>> workspaceId)
         {
-            var __workflow_workspaceId = workspaceId == null ? null : WorkflowExpression.Compile(workspaceId);
-            WorkflowExpression.Validate(__workflow_workspaceId, nameof(workspaceId), required: true);
+            var __workflow_workspaceId = WorkflowExpression.Compile(workspaceId, nameof(workspaceId), required: true);
             return new DeferredBodyAction<ListUsersResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workspaces/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspaceId, 1));
@@ -321,8 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "asana")]
         public IBodyWorkflowAction<ListTeamsResponseV2> ListWorkspaceTeams(Expression<Func<string>> workspace)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             return new DeferredBodyAction<ListTeamsResponseV2>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/organizations/{0}/teams", ExpressionConverter.ConvertWithUrlEncoding(__workflow_workspace, 1));
@@ -337,8 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     {
         public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated(Expression<Func<string>> workspace, FlowRecurrence recurrence = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
             return new DeferredBodyTrigger<ListProjectsResponseV2>(() =>
             {
                 var apiCallPath = "/v2/new_project_trigger/projects";
@@ -351,10 +325,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
             {
                 var apiCallPath = "/v2/complete_task_trigger/tasks";
@@ -368,10 +340,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
 
         public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated(Expression<Func<string>> workspace, Expression<Func<string>> project, FlowRecurrence recurrence = null)
         {
-            var __workflow_workspace = workspace == null ? null : WorkflowExpression.Compile(workspace);
-            WorkflowExpression.Validate(__workflow_workspace, nameof(workspace), required: true);
-            var __workflow_project = project == null ? null : WorkflowExpression.Compile(project);
-            WorkflowExpression.Validate(__workflow_project, nameof(project), required: true);
+            var __workflow_workspace = WorkflowExpression.Compile(workspace, nameof(workspace), required: true);
+            var __workflow_project = WorkflowExpression.Compile(project, nameof(project), required: true);
             return new DeferredBodyTrigger<ListTasksResponseV2>(() =>
             {
                 var apiCallPath = "/v2/new_task_trigger/tasks";

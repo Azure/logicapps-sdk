@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
         public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
         {
-            var __workflow_bodyorganisationId = bodyorganisationId == null ? null : WorkflowExpression.Compile(bodyorganisationId);
-            WorkflowExpression.Validate(__workflow_bodyorganisationId, nameof(bodyorganisationId), required: true);
-            var __workflow_bodyeventId = bodyeventId == null ? null : WorkflowExpression.Compile(bodyeventId);
-            WorkflowExpression.Validate(__workflow_bodyeventId, nameof(bodyeventId), required: true);
-            var __workflow_bodycategoryId = bodycategoryId == null ? null : WorkflowExpression.Compile(bodycategoryId);
-            WorkflowExpression.Validate(__workflow_bodycategoryId, nameof(bodycategoryId), required: true);
-            var __workflow_bodygenerate = bodygenerate == null ? null : WorkflowExpression.Compile(bodygenerate);
-            WorkflowExpression.Validate(__workflow_bodygenerate, nameof(bodygenerate), required: false);
-            var __workflow_bodypublish = bodypublish == null ? null : WorkflowExpression.Compile(bodypublish);
-            WorkflowExpression.Validate(__workflow_bodypublish, nameof(bodypublish), required: false);
-            var __workflow_bodyrecipients = bodyrecipients == null ? null : WorkflowExpression.Compile(bodyrecipients);
-            WorkflowExpression.Validate(__workflow_bodyrecipients, nameof(bodyrecipients), required: false);
+            var __workflow_bodyorganisationId = WorkflowExpression.Compile(bodyorganisationId, nameof(bodyorganisationId), required: true);
+            var __workflow_bodyeventId = WorkflowExpression.Compile(bodyeventId, nameof(bodyeventId), required: true);
+            var __workflow_bodycategoryId = WorkflowExpression.Compile(bodycategoryId, nameof(bodycategoryId), required: true);
+            var __workflow_bodygenerate = WorkflowExpression.Compile(bodygenerate, nameof(bodygenerate), required: false);
+            var __workflow_bodypublish = WorkflowExpression.Compile(bodypublish, nameof(bodypublish), required: false);
+            var __workflow_bodyrecipients = WorkflowExpression.Compile(bodyrecipients, nameof(bodyrecipients), required: false);
             return new DeferredBodyAction<CreateCredentialResponse>(() =>
             {
                 var apiCallPath = "/certificates";

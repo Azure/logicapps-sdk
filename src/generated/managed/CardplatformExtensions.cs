@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IBodyWorkflowAction<string> SendMessage(Expression<Func<string[]>> cardbodyrecipients, Expression<Func<string>> cardbodyheading, Expression<Func<string>> cardbodyadaptiveCard)
         {
-            var __workflow_cardbodyrecipients = cardbodyrecipients == null ? null : WorkflowExpression.Compile(cardbodyrecipients);
-            WorkflowExpression.Validate(__workflow_cardbodyrecipients, nameof(cardbodyrecipients), required: true);
-            var __workflow_cardbodyheading = cardbodyheading == null ? null : WorkflowExpression.Compile(cardbodyheading);
-            WorkflowExpression.Validate(__workflow_cardbodyheading, nameof(cardbodyheading), required: true);
-            var __workflow_cardbodyadaptiveCard = cardbodyadaptiveCard == null ? null : WorkflowExpression.Compile(cardbodyadaptiveCard);
-            WorkflowExpression.Validate(__workflow_cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
+            var __workflow_cardbodyrecipients = WorkflowExpression.Compile(cardbodyrecipients, nameof(cardbodyrecipients), required: true);
+            var __workflow_cardbodyheading = WorkflowExpression.Compile(cardbodyheading, nameof(cardbodyheading), required: true);
+            var __workflow_cardbodyadaptiveCard = WorkflowExpression.Compile(cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/sendmessage";
@@ -44,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IWorkflowAction PrivateTemplatesDelete(Expression<Func<string>> name)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/PrivateTemplates";
@@ -59,8 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
         public IWorkflowAction PrivateTemplatesUpdate(Expression<Func<string>> name)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: true);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/PrivateTemplates";

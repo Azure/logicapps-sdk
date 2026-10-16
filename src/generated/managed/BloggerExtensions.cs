@@ -22,10 +22,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<PostList> ListPosts(Expression<Func<string>> blogId, Expression<Func<string>> status = null)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: false);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: false);
             return new DeferredBodyAction<PostList>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1));
@@ -41,16 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Create(Expression<Func<string>> blogId, Expression<Func<string>> posttitle, Expression<Func<string>> postcontent, Expression<Func<string[]>> postlabels = null, Expression<Func<bool>> isDraft = null)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_posttitle = posttitle == null ? null : WorkflowExpression.Compile(posttitle);
-            WorkflowExpression.Validate(__workflow_posttitle, nameof(posttitle), required: true);
-            var __workflow_postcontent = postcontent == null ? null : WorkflowExpression.Compile(postcontent);
-            WorkflowExpression.Validate(__workflow_postcontent, nameof(postcontent), required: true);
-            var __workflow_postlabels = postlabels == null ? null : WorkflowExpression.Compile(postlabels);
-            WorkflowExpression.Validate(__workflow_postlabels, nameof(postlabels), required: false);
-            var __workflow_isDraft = isDraft == null ? null : WorkflowExpression.Compile(isDraft);
-            WorkflowExpression.Validate(__workflow_isDraft, nameof(isDraft), required: false);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_posttitle = WorkflowExpression.Compile(posttitle, nameof(posttitle), required: true);
+            var __workflow_postcontent = WorkflowExpression.Compile(postcontent, nameof(postcontent), required: true);
+            var __workflow_postlabels = WorkflowExpression.Compile(postlabels, nameof(postlabels), required: false);
+            var __workflow_isDraft = WorkflowExpression.Compile(isDraft, nameof(isDraft), required: false);
             return new DeferredBodyAction<Post>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1));
@@ -83,10 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Get(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
-            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredBodyAction<Post>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
@@ -99,16 +90,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Edit(Expression<Func<string>> blogId, Expression<Func<string>> postId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<string[]>> postlabels = null)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
-            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
-            var __workflow_posttitle = posttitle == null ? null : WorkflowExpression.Compile(posttitle);
-            WorkflowExpression.Validate(__workflow_posttitle, nameof(posttitle), required: false);
-            var __workflow_postcontent = postcontent == null ? null : WorkflowExpression.Compile(postcontent);
-            WorkflowExpression.Validate(__workflow_postcontent, nameof(postcontent), required: false);
-            var __workflow_postlabels = postlabels == null ? null : WorkflowExpression.Compile(postlabels);
-            WorkflowExpression.Validate(__workflow_postlabels, nameof(postlabels), required: false);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
+            var __workflow_posttitle = WorkflowExpression.Compile(posttitle, nameof(posttitle), required: false);
+            var __workflow_postcontent = WorkflowExpression.Compile(postcontent, nameof(postcontent), required: false);
+            var __workflow_postlabels = WorkflowExpression.Compile(postlabels, nameof(postlabels), required: false);
             return new DeferredBodyAction<Post>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
@@ -146,10 +132,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IWorkflowAction Delete(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
-            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
@@ -162,10 +146,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Publish(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
-            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredBodyAction<Post>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/publish", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
@@ -178,10 +160,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blogger")]
         public IBodyWorkflowAction<Post> Revert(Expression<Func<string>> blogId, Expression<Func<string>> postId)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_postId = postId == null ? null : WorkflowExpression.Compile(postId);
-            WorkflowExpression.Validate(__workflow_postId, nameof(postId), required: true);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_postId = WorkflowExpression.Compile(postId, nameof(postId), required: true);
             return new DeferredBodyAction<Post>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/blogs/{0}/posts/{1}/revert", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_postId, 1));
@@ -196,10 +176,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
     {
         public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> blogId, Expression<Func<statusInput>> status, FlowRecurrence recurrence = null)
         {
-            var __workflow_blogId = blogId == null ? null : WorkflowExpression.Compile(blogId);
-            WorkflowExpression.Validate(__workflow_blogId, nameof(blogId), required: true);
-            var __workflow_status = status == null ? null : WorkflowExpression.Compile(status);
-            WorkflowExpression.Validate(__workflow_status, nameof(status), required: true);
+            var __workflow_blogId = WorkflowExpression.Compile(blogId, nameof(blogId), required: true);
+            var __workflow_status = WorkflowExpression.Compile(status, nameof(status), required: true);
             return new DeferredBodyTrigger<Post[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/blogs/{0}/posts", ExpressionConverter.ConvertWithUrlEncoding(__workflow_blogId, 1));

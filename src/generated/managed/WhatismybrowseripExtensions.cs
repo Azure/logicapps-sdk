@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
         public IBodyWorkflowAction<DetectPostResponse> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
         {
-            var __workflow_bodyheaders = bodyheaders == null ? null : WorkflowExpression.Compile(bodyheaders);
-            WorkflowExpression.Validate(__workflow_bodyheaders, nameof(bodyheaders), required: false);
+            var __workflow_bodyheaders = WorkflowExpression.Compile(bodyheaders, nameof(bodyheaders), required: false);
             return new DeferredBodyAction<DetectPostResponse>(() =>
             {
                 var apiCallPath = "/detect";

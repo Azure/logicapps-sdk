@@ -13,56 +13,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         public IBodyWorkflowAction<string> CreateSwissQrBill(Expression<Func<bodycrAddressTypeInput>> bodycrAddressType, Expression<Func<string>> bodycrName, Expression<Func<string>> bodydocContent, Expression<Func<string>> bodyiban, Expression<Func<string>> bodyamount = null, Expression<Func<string>> bodyav1Parameters = null, Expression<Func<string>> bodyav2Parameters = null, Expression<Func<string>> bodybillingInfo = null, Expression<Func<string>> bodycrCity = null, Expression<Func<string>> bodycrPostalCode = null, Expression<Func<string>> bodycrStreetOrAddressLine1 = null, Expression<Func<string>> bodycrStreetOrAddressLine2 = null, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<string>> bodydocumentname = null, Expression<Func<bodylanguageTypeInput>> bodylanguageType = null, Expression<Func<string>> bodyreference = null, Expression<Func<bodyreferenceTypeInput>> bodyreferenceType = null, Expression<Func<bodyseperatorLineInput>> bodyseperatorLine = null, Expression<Func<bodyudAddressTypeInput>> bodyudAddressType = null, Expression<Func<string>> bodyudCity = null, Expression<Func<string>> bodyudName = null, Expression<Func<string>> bodyudPostalCode = null, Expression<Func<string>> bodyudStreetOrAddressLine1 = null, Expression<Func<string>> bodyudStreetOrAddressLine2 = null, Expression<Func<string>> bodyunstructuredMessage = null)
         {
-            var __workflow_bodycrAddressType = bodycrAddressType == null ? null : WorkflowExpression.Compile(bodycrAddressType);
-            WorkflowExpression.Validate(__workflow_bodycrAddressType, nameof(bodycrAddressType), required: true);
-            var __workflow_bodycrName = bodycrName == null ? null : WorkflowExpression.Compile(bodycrName);
-            WorkflowExpression.Validate(__workflow_bodycrName, nameof(bodycrName), required: true);
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodyiban = bodyiban == null ? null : WorkflowExpression.Compile(bodyiban);
-            WorkflowExpression.Validate(__workflow_bodyiban, nameof(bodyiban), required: true);
-            var __workflow_bodyamount = bodyamount == null ? null : WorkflowExpression.Compile(bodyamount);
-            WorkflowExpression.Validate(__workflow_bodyamount, nameof(bodyamount), required: false);
-            var __workflow_bodyav1Parameters = bodyav1Parameters == null ? null : WorkflowExpression.Compile(bodyav1Parameters);
-            WorkflowExpression.Validate(__workflow_bodyav1Parameters, nameof(bodyav1Parameters), required: false);
-            var __workflow_bodyav2Parameters = bodyav2Parameters == null ? null : WorkflowExpression.Compile(bodyav2Parameters);
-            WorkflowExpression.Validate(__workflow_bodyav2Parameters, nameof(bodyav2Parameters), required: false);
-            var __workflow_bodybillingInfo = bodybillingInfo == null ? null : WorkflowExpression.Compile(bodybillingInfo);
-            WorkflowExpression.Validate(__workflow_bodybillingInfo, nameof(bodybillingInfo), required: false);
-            var __workflow_bodycrCity = bodycrCity == null ? null : WorkflowExpression.Compile(bodycrCity);
-            WorkflowExpression.Validate(__workflow_bodycrCity, nameof(bodycrCity), required: false);
-            var __workflow_bodycrPostalCode = bodycrPostalCode == null ? null : WorkflowExpression.Compile(bodycrPostalCode);
-            WorkflowExpression.Validate(__workflow_bodycrPostalCode, nameof(bodycrPostalCode), required: false);
-            var __workflow_bodycrStreetOrAddressLine1 = bodycrStreetOrAddressLine1 == null ? null : WorkflowExpression.Compile(bodycrStreetOrAddressLine1);
-            WorkflowExpression.Validate(__workflow_bodycrStreetOrAddressLine1, nameof(bodycrStreetOrAddressLine1), required: false);
-            var __workflow_bodycrStreetOrAddressLine2 = bodycrStreetOrAddressLine2 == null ? null : WorkflowExpression.Compile(bodycrStreetOrAddressLine2);
-            WorkflowExpression.Validate(__workflow_bodycrStreetOrAddressLine2, nameof(bodycrStreetOrAddressLine2), required: false);
-            var __workflow_bodycurrency = bodycurrency == null ? null : WorkflowExpression.Compile(bodycurrency);
-            WorkflowExpression.Validate(__workflow_bodycurrency, nameof(bodycurrency), required: false);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodylanguageType = bodylanguageType == null ? null : WorkflowExpression.Compile(bodylanguageType);
-            WorkflowExpression.Validate(__workflow_bodylanguageType, nameof(bodylanguageType), required: false);
-            var __workflow_bodyreference = bodyreference == null ? null : WorkflowExpression.Compile(bodyreference);
-            WorkflowExpression.Validate(__workflow_bodyreference, nameof(bodyreference), required: false);
-            var __workflow_bodyreferenceType = bodyreferenceType == null ? null : WorkflowExpression.Compile(bodyreferenceType);
-            WorkflowExpression.Validate(__workflow_bodyreferenceType, nameof(bodyreferenceType), required: false);
-            var __workflow_bodyseperatorLine = bodyseperatorLine == null ? null : WorkflowExpression.Compile(bodyseperatorLine);
-            WorkflowExpression.Validate(__workflow_bodyseperatorLine, nameof(bodyseperatorLine), required: false);
-            var __workflow_bodyudAddressType = bodyudAddressType == null ? null : WorkflowExpression.Compile(bodyudAddressType);
-            WorkflowExpression.Validate(__workflow_bodyudAddressType, nameof(bodyudAddressType), required: false);
-            var __workflow_bodyudCity = bodyudCity == null ? null : WorkflowExpression.Compile(bodyudCity);
-            WorkflowExpression.Validate(__workflow_bodyudCity, nameof(bodyudCity), required: false);
-            var __workflow_bodyudName = bodyudName == null ? null : WorkflowExpression.Compile(bodyudName);
-            WorkflowExpression.Validate(__workflow_bodyudName, nameof(bodyudName), required: false);
-            var __workflow_bodyudPostalCode = bodyudPostalCode == null ? null : WorkflowExpression.Compile(bodyudPostalCode);
-            WorkflowExpression.Validate(__workflow_bodyudPostalCode, nameof(bodyudPostalCode), required: false);
-            var __workflow_bodyudStreetOrAddressLine1 = bodyudStreetOrAddressLine1 == null ? null : WorkflowExpression.Compile(bodyudStreetOrAddressLine1);
-            WorkflowExpression.Validate(__workflow_bodyudStreetOrAddressLine1, nameof(bodyudStreetOrAddressLine1), required: false);
-            var __workflow_bodyudStreetOrAddressLine2 = bodyudStreetOrAddressLine2 == null ? null : WorkflowExpression.Compile(bodyudStreetOrAddressLine2);
-            WorkflowExpression.Validate(__workflow_bodyudStreetOrAddressLine2, nameof(bodyudStreetOrAddressLine2), required: false);
-            var __workflow_bodyunstructuredMessage = bodyunstructuredMessage == null ? null : WorkflowExpression.Compile(bodyunstructuredMessage);
-            WorkflowExpression.Validate(__workflow_bodyunstructuredMessage, nameof(bodyunstructuredMessage), required: false);
+            var __workflow_bodycrAddressType = WorkflowExpression.Compile(bodycrAddressType, nameof(bodycrAddressType), required: true);
+            var __workflow_bodycrName = WorkflowExpression.Compile(bodycrName, nameof(bodycrName), required: true);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodyiban = WorkflowExpression.Compile(bodyiban, nameof(bodyiban), required: true);
+            var __workflow_bodyamount = WorkflowExpression.Compile(bodyamount, nameof(bodyamount), required: false);
+            var __workflow_bodyav1Parameters = WorkflowExpression.Compile(bodyav1Parameters, nameof(bodyav1Parameters), required: false);
+            var __workflow_bodyav2Parameters = WorkflowExpression.Compile(bodyav2Parameters, nameof(bodyav2Parameters), required: false);
+            var __workflow_bodybillingInfo = WorkflowExpression.Compile(bodybillingInfo, nameof(bodybillingInfo), required: false);
+            var __workflow_bodycrCity = WorkflowExpression.Compile(bodycrCity, nameof(bodycrCity), required: false);
+            var __workflow_bodycrPostalCode = WorkflowExpression.Compile(bodycrPostalCode, nameof(bodycrPostalCode), required: false);
+            var __workflow_bodycrStreetOrAddressLine1 = WorkflowExpression.Compile(bodycrStreetOrAddressLine1, nameof(bodycrStreetOrAddressLine1), required: false);
+            var __workflow_bodycrStreetOrAddressLine2 = WorkflowExpression.Compile(bodycrStreetOrAddressLine2, nameof(bodycrStreetOrAddressLine2), required: false);
+            var __workflow_bodycurrency = WorkflowExpression.Compile(bodycurrency, nameof(bodycurrency), required: false);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodylanguageType = WorkflowExpression.Compile(bodylanguageType, nameof(bodylanguageType), required: false);
+            var __workflow_bodyreference = WorkflowExpression.Compile(bodyreference, nameof(bodyreference), required: false);
+            var __workflow_bodyreferenceType = WorkflowExpression.Compile(bodyreferenceType, nameof(bodyreferenceType), required: false);
+            var __workflow_bodyseperatorLine = WorkflowExpression.Compile(bodyseperatorLine, nameof(bodyseperatorLine), required: false);
+            var __workflow_bodyudAddressType = WorkflowExpression.Compile(bodyudAddressType, nameof(bodyudAddressType), required: false);
+            var __workflow_bodyudCity = WorkflowExpression.Compile(bodyudCity, nameof(bodyudCity), required: false);
+            var __workflow_bodyudName = WorkflowExpression.Compile(bodyudName, nameof(bodyudName), required: false);
+            var __workflow_bodyudPostalCode = WorkflowExpression.Compile(bodyudPostalCode, nameof(bodyudPostalCode), required: false);
+            var __workflow_bodyudStreetOrAddressLine1 = WorkflowExpression.Compile(bodyudStreetOrAddressLine1, nameof(bodyudStreetOrAddressLine1), required: false);
+            var __workflow_bodyudStreetOrAddressLine2 = WorkflowExpression.Compile(bodyudStreetOrAddressLine2, nameof(bodyudStreetOrAddressLine2), required: false);
+            var __workflow_bodyunstructuredMessage = WorkflowExpression.Compile(bodyunstructuredMessage, nameof(bodyunstructuredMessage), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/CreateSwissQrBill";
@@ -274,10 +249,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         public IBodyWorkflowAction<string> ReadSwissQrBill(Expression<Func<string>> bodydocContent, Expression<Func<string>> bodydocumentname = null)
         {
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/ReadSwissQrBill";
@@ -313,16 +286,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdf4meswissqr
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdf4meswissqr")]
         public IBodyWorkflowAction<SplitDocBySwissQrCodeV1Response> SplitDocBySwissQrCode(Expression<Func<string>> bodydocContent, Expression<Func<bodysplitBarcodePageInput>> bodysplitBarcodePage, Expression<Func<string>> bodydocumentname = null, Expression<Func<bool>> bodycombinePagesWithSameConsecutiveBarcodes = null, Expression<Func<string>> bodypdfRenderDpi = null)
         {
-            var __workflow_bodydocContent = bodydocContent == null ? null : WorkflowExpression.Compile(bodydocContent);
-            WorkflowExpression.Validate(__workflow_bodydocContent, nameof(bodydocContent), required: true);
-            var __workflow_bodysplitBarcodePage = bodysplitBarcodePage == null ? null : WorkflowExpression.Compile(bodysplitBarcodePage);
-            WorkflowExpression.Validate(__workflow_bodysplitBarcodePage, nameof(bodysplitBarcodePage), required: true);
-            var __workflow_bodydocumentname = bodydocumentname == null ? null : WorkflowExpression.Compile(bodydocumentname);
-            WorkflowExpression.Validate(__workflow_bodydocumentname, nameof(bodydocumentname), required: false);
-            var __workflow_bodycombinePagesWithSameConsecutiveBarcodes = bodycombinePagesWithSameConsecutiveBarcodes == null ? null : WorkflowExpression.Compile(bodycombinePagesWithSameConsecutiveBarcodes);
-            WorkflowExpression.Validate(__workflow_bodycombinePagesWithSameConsecutiveBarcodes, nameof(bodycombinePagesWithSameConsecutiveBarcodes), required: false);
-            var __workflow_bodypdfRenderDpi = bodypdfRenderDpi == null ? null : WorkflowExpression.Compile(bodypdfRenderDpi);
-            WorkflowExpression.Validate(__workflow_bodypdfRenderDpi, nameof(bodypdfRenderDpi), required: false);
+            var __workflow_bodydocContent = WorkflowExpression.Compile(bodydocContent, nameof(bodydocContent), required: true);
+            var __workflow_bodysplitBarcodePage = WorkflowExpression.Compile(bodysplitBarcodePage, nameof(bodysplitBarcodePage), required: true);
+            var __workflow_bodydocumentname = WorkflowExpression.Compile(bodydocumentname, nameof(bodydocumentname), required: false);
+            var __workflow_bodycombinePagesWithSameConsecutiveBarcodes = WorkflowExpression.Compile(bodycombinePagesWithSameConsecutiveBarcodes, nameof(bodycombinePagesWithSameConsecutiveBarcodes), required: false);
+            var __workflow_bodypdfRenderDpi = WorkflowExpression.Compile(bodypdfRenderDpi, nameof(bodypdfRenderDpi), required: false);
             return new DeferredBodyAction<SplitDocBySwissQrCodeV1Response>(() =>
             {
                 var apiCallPath = "/v2/FlowV2/SplitPdfByBarcode";

@@ -13,32 +13,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
         public IBodyWorkflowAction<string> File(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
         {
-            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
-            WorkflowExpression.Validate(__workflow_output, nameof(output), required: false);
-            var __workflow_bodysummary = bodysummary == null ? null : WorkflowExpression.Compile(bodysummary);
-            WorkflowExpression.Validate(__workflow_bodysummary, nameof(bodysummary), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyorganizerEmail = bodyorganizerEmail == null ? null : WorkflowExpression.Compile(bodyorganizerEmail);
-            WorkflowExpression.Validate(__workflow_bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
-            var __workflow_bodyattendeesEmails = bodyattendeesEmails == null ? null : WorkflowExpression.Compile(bodyattendeesEmails);
-            WorkflowExpression.Validate(__workflow_bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
-            var __workflow_bodylocation = bodylocation == null ? null : WorkflowExpression.Compile(bodylocation);
-            WorkflowExpression.Validate(__workflow_bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
-            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: false);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
-            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodymeetingDate = bodymeetingDate == null ? null : WorkflowExpression.Compile(bodymeetingDate);
-            WorkflowExpression.Validate(__workflow_bodymeetingDate, nameof(bodymeetingDate), required: false);
-            var __workflow_bodyrecurring = bodyrecurring == null ? null : WorkflowExpression.Compile(bodyrecurring);
-            WorkflowExpression.Validate(__workflow_bodyrecurring, nameof(bodyrecurring), required: false);
-            var __workflow_bodyrecurrencefrequency = bodyrecurrencefrequency == null ? null : WorkflowExpression.Compile(bodyrecurrencefrequency);
-            WorkflowExpression.Validate(__workflow_bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
-            var __workflow_bodyrecurrencecount = bodyrecurrencecount == null ? null : WorkflowExpression.Compile(bodyrecurrencecount);
-            WorkflowExpression.Validate(__workflow_bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
+            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyorganizerEmail = WorkflowExpression.Compile(bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
+            var __workflow_bodyattendeesEmails = WorkflowExpression.Compile(bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
+            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
+            var __workflow_bodymeetingDate = WorkflowExpression.Compile(bodymeetingDate, nameof(bodymeetingDate), required: false);
+            var __workflow_bodyrecurring = WorkflowExpression.Compile(bodyrecurring, nameof(bodyrecurring), required: false);
+            var __workflow_bodyrecurrencefrequency = WorkflowExpression.Compile(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
+            var __workflow_bodyrecurrencecount = WorkflowExpression.Compile(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/file";
@@ -140,32 +127,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
         public IBodyWorkflowAction<URLPostResponse> URL(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
         {
-            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
-            WorkflowExpression.Validate(__workflow_output, nameof(output), required: false);
-            var __workflow_bodysummary = bodysummary == null ? null : WorkflowExpression.Compile(bodysummary);
-            WorkflowExpression.Validate(__workflow_bodysummary, nameof(bodysummary), required: false);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: false);
-            var __workflow_bodyorganizerEmail = bodyorganizerEmail == null ? null : WorkflowExpression.Compile(bodyorganizerEmail);
-            WorkflowExpression.Validate(__workflow_bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
-            var __workflow_bodyattendeesEmails = bodyattendeesEmails == null ? null : WorkflowExpression.Compile(bodyattendeesEmails);
-            WorkflowExpression.Validate(__workflow_bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
-            var __workflow_bodylocation = bodylocation == null ? null : WorkflowExpression.Compile(bodylocation);
-            WorkflowExpression.Validate(__workflow_bodylocation, nameof(bodylocation), required: false);
-            var __workflow_bodytimeZone = bodytimeZone == null ? null : WorkflowExpression.Compile(bodytimeZone);
-            WorkflowExpression.Validate(__workflow_bodytimeZone, nameof(bodytimeZone), required: false);
-            var __workflow_bodystartTime = bodystartTime == null ? null : WorkflowExpression.Compile(bodystartTime);
-            WorkflowExpression.Validate(__workflow_bodystartTime, nameof(bodystartTime), required: false);
-            var __workflow_bodyendTime = bodyendTime == null ? null : WorkflowExpression.Compile(bodyendTime);
-            WorkflowExpression.Validate(__workflow_bodyendTime, nameof(bodyendTime), required: false);
-            var __workflow_bodymeetingDate = bodymeetingDate == null ? null : WorkflowExpression.Compile(bodymeetingDate);
-            WorkflowExpression.Validate(__workflow_bodymeetingDate, nameof(bodymeetingDate), required: false);
-            var __workflow_bodyrecurring = bodyrecurring == null ? null : WorkflowExpression.Compile(bodyrecurring);
-            WorkflowExpression.Validate(__workflow_bodyrecurring, nameof(bodyrecurring), required: false);
-            var __workflow_bodyrecurrencefrequency = bodyrecurrencefrequency == null ? null : WorkflowExpression.Compile(bodyrecurrencefrequency);
-            WorkflowExpression.Validate(__workflow_bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
-            var __workflow_bodyrecurrencecount = bodyrecurrencecount == null ? null : WorkflowExpression.Compile(bodyrecurrencecount);
-            WorkflowExpression.Validate(__workflow_bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: false);
+            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: false);
+            var __workflow_bodyorganizerEmail = WorkflowExpression.Compile(bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
+            var __workflow_bodyattendeesEmails = WorkflowExpression.Compile(bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
+            var __workflow_bodylocation = WorkflowExpression.Compile(bodylocation, nameof(bodylocation), required: false);
+            var __workflow_bodytimeZone = WorkflowExpression.Compile(bodytimeZone, nameof(bodytimeZone), required: false);
+            var __workflow_bodystartTime = WorkflowExpression.Compile(bodystartTime, nameof(bodystartTime), required: false);
+            var __workflow_bodyendTime = WorkflowExpression.Compile(bodyendTime, nameof(bodyendTime), required: false);
+            var __workflow_bodymeetingDate = WorkflowExpression.Compile(bodymeetingDate, nameof(bodymeetingDate), required: false);
+            var __workflow_bodyrecurring = WorkflowExpression.Compile(bodyrecurring, nameof(bodyrecurring), required: false);
+            var __workflow_bodyrecurrencefrequency = WorkflowExpression.Compile(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
+            var __workflow_bodyrecurrencecount = WorkflowExpression.Compile(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
             return new DeferredBodyAction<URLPostResponse>(() =>
             {
                 var apiCallPath = "/url";

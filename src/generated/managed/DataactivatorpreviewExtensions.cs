@@ -16,8 +16,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
     {
         public IWorkflowTrigger CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString, FlowRecurrence recurrence = null)
         {
-            var __workflow_connectionString = connectionString == null ? null : WorkflowExpression.Compile(connectionString);
-            WorkflowExpression.Validate(__workflow_connectionString, nameof(connectionString), required: true);
+            var __workflow_connectionString = WorkflowExpression.Compile(connectionString, nameof(connectionString), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/powerAutomateFlow";

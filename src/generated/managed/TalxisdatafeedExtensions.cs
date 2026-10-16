@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IWorkflowAction CompanyLogo(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
         {
-            var __workflow_jurisdictionCode = jurisdictionCode == null ? null : WorkflowExpression.Compile(jurisdictionCode);
-            WorkflowExpression.Validate(__workflow_jurisdictionCode, nameof(jurisdictionCode), required: true);
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/logo", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -29,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyDetail> GetCompany(Expression<Func<string>> jurisdictionCode, Expression<Func<string>> companyNumber, Expression<Func<string>> language = null)
         {
-            var __workflow_jurisdictionCode = jurisdictionCode == null ? null : WorkflowExpression.Compile(jurisdictionCode);
-            WorkflowExpression.Validate(__workflow_jurisdictionCode, nameof(jurisdictionCode), required: true);
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
+            var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
             return new DeferredBodyAction<DataFeedModelEntitiesCompanyCompanyDetail>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -49,10 +44,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesCompanyCompanyFinance> GetCompanyFinace(Expression<Func<jurisdictionCodeInput>> jurisdictionCode, Expression<Func<string>> companyNumber)
         {
-            var __workflow_jurisdictionCode = jurisdictionCode == null ? null : WorkflowExpression.Compile(jurisdictionCode);
-            WorkflowExpression.Validate(__workflow_jurisdictionCode, nameof(jurisdictionCode), required: true);
-            var __workflow_companyNumber = companyNumber == null ? null : WorkflowExpression.Compile(companyNumber);
-            WorkflowExpression.Validate(__workflow_companyNumber, nameof(companyNumber), required: true);
+            var __workflow_jurisdictionCode = WorkflowExpression.Compile(jurisdictionCode, nameof(jurisdictionCode), required: true);
+            var __workflow_companyNumber = WorkflowExpression.Compile(companyNumber, nameof(companyNumber), required: true);
             return new DeferredBodyAction<DataFeedModelEntitiesCompanyCompanyFinance>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Companies/{0}/{1}/finance", ExpressionConverter.ConvertWithUrlEncoding(__workflow_jurisdictionCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_companyNumber, 1));
@@ -65,12 +58,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<GetWeekOfYearResponse> GetWeekOfYear(Expression<Func<string>> time, Expression<Func<ruleInput>> rule, Expression<Func<firstDayOfWeekInput>> firstDayOfWeek)
         {
-            var __workflow_time = time == null ? null : WorkflowExpression.Compile(time);
-            WorkflowExpression.Validate(__workflow_time, nameof(time), required: true);
-            var __workflow_rule = rule == null ? null : WorkflowExpression.Compile(rule);
-            WorkflowExpression.Validate(__workflow_rule, nameof(rule), required: true);
-            var __workflow_firstDayOfWeek = firstDayOfWeek == null ? null : WorkflowExpression.Compile(firstDayOfWeek);
-            WorkflowExpression.Validate(__workflow_firstDayOfWeek, nameof(firstDayOfWeek), required: true);
+            var __workflow_time = WorkflowExpression.Compile(time, nameof(time), required: true);
+            var __workflow_rule = WorkflowExpression.Compile(rule, nameof(rule), required: true);
+            var __workflow_firstDayOfWeek = WorkflowExpression.Compile(firstDayOfWeek, nameof(firstDayOfWeek), required: true);
             return new DeferredBodyAction<GetWeekOfYearResponse>(() =>
             {
                 var apiCallPath = "/v1.0/DateTime/GetWeekOfYear";
@@ -86,12 +76,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesAddress[]> AddressGeocode(Expression<Func<string>> query, Expression<Func<string>> language = null, Expression<Func<string>> region = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: true);
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: true);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
             return new DeferredBodyAction<DataFeedModelEntitiesAddress[]>(() =>
             {
                 var apiCallPath = "/v1.0/Geospatial/address/geocode";
@@ -118,16 +105,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<string> GetSalutation(Expression<Func<languageInput>> language, Expression<Func<string>> surname, Expression<Func<genderInput>> gender, Expression<Func<string>> title = null, Expression<Func<string>> suffix = null)
         {
-            var __workflow_language = language == null ? null : WorkflowExpression.Compile(language);
-            WorkflowExpression.Validate(__workflow_language, nameof(language), required: true);
-            var __workflow_surname = surname == null ? null : WorkflowExpression.Compile(surname);
-            WorkflowExpression.Validate(__workflow_surname, nameof(surname), required: true);
-            var __workflow_gender = gender == null ? null : WorkflowExpression.Compile(gender);
-            WorkflowExpression.Validate(__workflow_gender, nameof(gender), required: true);
-            var __workflow_title = title == null ? null : WorkflowExpression.Compile(title);
-            WorkflowExpression.Validate(__workflow_title, nameof(title), required: false);
-            var __workflow_suffix = suffix == null ? null : WorkflowExpression.Compile(suffix);
-            WorkflowExpression.Validate(__workflow_suffix, nameof(suffix), required: false);
+            var __workflow_language = WorkflowExpression.Compile(language, nameof(language), required: true);
+            var __workflow_surname = WorkflowExpression.Compile(surname, nameof(surname), required: true);
+            var __workflow_gender = WorkflowExpression.Compile(gender, nameof(gender), required: true);
+            var __workflow_title = WorkflowExpression.Compile(title, nameof(title), required: false);
+            var __workflow_suffix = WorkflowExpression.Compile(suffix, nameof(suffix), required: false);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Salutations/{0}/", ExpressionConverter.ConvertWithUrlEncoding(__workflow_language, 1));
@@ -146,10 +128,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talxisdatafeed
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "talxisdatafeed")]
         public IBodyWorkflowAction<DataFeedModelEntitiesHolidays[]> GetHolidays(Expression<Func<string>> countryIsoCode, Expression<Func<string>> year)
         {
-            var __workflow_countryIsoCode = countryIsoCode == null ? null : WorkflowExpression.Compile(countryIsoCode);
-            WorkflowExpression.Validate(__workflow_countryIsoCode, nameof(countryIsoCode), required: true);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: true);
+            var __workflow_countryIsoCode = WorkflowExpression.Compile(countryIsoCode, nameof(countryIsoCode), required: true);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: true);
             return new DeferredBodyAction<DataFeedModelEntitiesHolidays[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/Holidays/countries/{0}/publicHolidays/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryIsoCode, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_year, 1));

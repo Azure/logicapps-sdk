@@ -22,12 +22,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
-            var __workflow_sourcePrice = sourcePrice == null ? null : WorkflowExpression.Compile(sourcePrice);
-            WorkflowExpression.Validate(__workflow_sourcePrice, nameof(sourcePrice), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
+            var __workflow_sourcePrice = WorkflowExpression.Compile(sourcePrice, nameof(sourcePrice), required: false);
             return new DeferredBodyAction<ConvertedCurrencyResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_destination, 1));
@@ -41,10 +38,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate(Expression<Func<string>> source, Expression<Func<string>> destination)
         {
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: true);
-            var __workflow_destination = destination == null ? null : WorkflowExpression.Compile(destination);
-            WorkflowExpression.Validate(__workflow_destination, nameof(destination), required: true);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: true);
+            var __workflow_destination = WorkflowExpression.Compile(destination, nameof(destination), required: true);
             return new DeferredBodyAction<ExchangeRateResult>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_source, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_destination, 1));

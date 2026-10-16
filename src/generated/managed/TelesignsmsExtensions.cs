@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodymessageType = null, Expression<Func<string>> bodysenderId = null)
         {
-            var __workflow_bodyphoneNumber = bodyphoneNumber == null ? null : WorkflowExpression.Compile(bodyphoneNumber);
-            WorkflowExpression.Validate(__workflow_bodyphoneNumber, nameof(bodyphoneNumber), required: true);
-            var __workflow_bodymessageText = bodymessageText == null ? null : WorkflowExpression.Compile(bodymessageText);
-            WorkflowExpression.Validate(__workflow_bodymessageText, nameof(bodymessageText), required: true);
-            var __workflow_bodyexternalId = bodyexternalId == null ? null : WorkflowExpression.Compile(bodyexternalId);
-            WorkflowExpression.Validate(__workflow_bodyexternalId, nameof(bodyexternalId), required: false);
-            var __workflow_bodymessageType = bodymessageType == null ? null : WorkflowExpression.Compile(bodymessageType);
-            WorkflowExpression.Validate(__workflow_bodymessageType, nameof(bodymessageType), required: false);
-            var __workflow_bodysenderId = bodysenderId == null ? null : WorkflowExpression.Compile(bodysenderId);
-            WorkflowExpression.Validate(__workflow_bodysenderId, nameof(bodysenderId), required: false);
+            var __workflow_bodyphoneNumber = WorkflowExpression.Compile(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
+            var __workflow_bodymessageText = WorkflowExpression.Compile(bodymessageText, nameof(bodymessageText), required: true);
+            var __workflow_bodyexternalId = WorkflowExpression.Compile(bodyexternalId, nameof(bodyexternalId), required: false);
+            var __workflow_bodymessageType = WorkflowExpression.Compile(bodymessageType, nameof(bodymessageType), required: false);
+            var __workflow_bodysenderId = WorkflowExpression.Compile(bodysenderId, nameof(bodysenderId), required: false);
             return new DeferredBodyAction<SendSMSResponse>(() =>
             {
                 var apiCallPath = "/api/SMS";

@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockarooip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockarooip")]
         public IBodyWorkflowAction<JToken[]> GenerateDataFromExistingSchema(Expression<Func<string>> bodyschemaName = null, Expression<Func<string>> bodyschemaJSON = null, Expression<Func<int>> bodyrecordCount = null)
         {
-            var __workflow_bodyschemaName = bodyschemaName == null ? null : WorkflowExpression.Compile(bodyschemaName);
-            WorkflowExpression.Validate(__workflow_bodyschemaName, nameof(bodyschemaName), required: false);
-            var __workflow_bodyschemaJSON = bodyschemaJSON == null ? null : WorkflowExpression.Compile(bodyschemaJSON);
-            WorkflowExpression.Validate(__workflow_bodyschemaJSON, nameof(bodyschemaJSON), required: false);
-            var __workflow_bodyrecordCount = bodyrecordCount == null ? null : WorkflowExpression.Compile(bodyrecordCount);
-            WorkflowExpression.Validate(__workflow_bodyrecordCount, nameof(bodyrecordCount), required: false);
+            var __workflow_bodyschemaName = WorkflowExpression.Compile(bodyschemaName, nameof(bodyschemaName), required: false);
+            var __workflow_bodyschemaJSON = WorkflowExpression.Compile(bodyschemaJSON, nameof(bodyschemaJSON), required: false);
+            var __workflow_bodyrecordCount = WorkflowExpression.Compile(bodyrecordCount, nameof(bodyrecordCount), required: false);
             return new DeferredBodyAction<JToken[]>(() =>
             {
                 var apiCallPath = "/api/generate.json";

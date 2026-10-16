@@ -13,28 +13,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connpassip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connpassip")]
         public IBodyWorkflowAction<SearchEventResponse> SearchEvent(Expression<Func<string>> keyword = null, Expression<Func<string>> eventId = null, Expression<Func<string>> keywordOr = null, Expression<Func<string>> ym = null, Expression<Func<string>> ymd = null, Expression<Func<string>> nickname = null, Expression<Func<string>> ownerNickname = null, Expression<Func<string>> seriesId = null, Expression<Func<string>> start = null, Expression<Func<string>> order = null, Expression<Func<string>> count = null)
         {
-            var __workflow_keyword = keyword == null ? null : WorkflowExpression.Compile(keyword);
-            WorkflowExpression.Validate(__workflow_keyword, nameof(keyword), required: false);
-            var __workflow_eventId = eventId == null ? null : WorkflowExpression.Compile(eventId);
-            WorkflowExpression.Validate(__workflow_eventId, nameof(eventId), required: false);
-            var __workflow_keywordOr = keywordOr == null ? null : WorkflowExpression.Compile(keywordOr);
-            WorkflowExpression.Validate(__workflow_keywordOr, nameof(keywordOr), required: false);
-            var __workflow_ym = ym == null ? null : WorkflowExpression.Compile(ym);
-            WorkflowExpression.Validate(__workflow_ym, nameof(ym), required: false);
-            var __workflow_ymd = ymd == null ? null : WorkflowExpression.Compile(ymd);
-            WorkflowExpression.Validate(__workflow_ymd, nameof(ymd), required: false);
-            var __workflow_nickname = nickname == null ? null : WorkflowExpression.Compile(nickname);
-            WorkflowExpression.Validate(__workflow_nickname, nameof(nickname), required: false);
-            var __workflow_ownerNickname = ownerNickname == null ? null : WorkflowExpression.Compile(ownerNickname);
-            WorkflowExpression.Validate(__workflow_ownerNickname, nameof(ownerNickname), required: false);
-            var __workflow_seriesId = seriesId == null ? null : WorkflowExpression.Compile(seriesId);
-            WorkflowExpression.Validate(__workflow_seriesId, nameof(seriesId), required: false);
-            var __workflow_start = start == null ? null : WorkflowExpression.Compile(start);
-            WorkflowExpression.Validate(__workflow_start, nameof(start), required: false);
-            var __workflow_order = order == null ? null : WorkflowExpression.Compile(order);
-            WorkflowExpression.Validate(__workflow_order, nameof(order), required: false);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
+            var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
+            var __workflow_eventId = WorkflowExpression.Compile(eventId, nameof(eventId), required: false);
+            var __workflow_keywordOr = WorkflowExpression.Compile(keywordOr, nameof(keywordOr), required: false);
+            var __workflow_ym = WorkflowExpression.Compile(ym, nameof(ym), required: false);
+            var __workflow_ymd = WorkflowExpression.Compile(ymd, nameof(ymd), required: false);
+            var __workflow_nickname = WorkflowExpression.Compile(nickname, nameof(nickname), required: false);
+            var __workflow_ownerNickname = WorkflowExpression.Compile(ownerNickname, nameof(ownerNickname), required: false);
+            var __workflow_seriesId = WorkflowExpression.Compile(seriesId, nameof(seriesId), required: false);
+            var __workflow_start = WorkflowExpression.Compile(start, nameof(start), required: false);
+            var __workflow_order = WorkflowExpression.Compile(order, nameof(order), required: false);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
             return new DeferredBodyAction<SearchEventResponse>(() =>
             {
                 var apiCallPath = "/api/v1/event/";

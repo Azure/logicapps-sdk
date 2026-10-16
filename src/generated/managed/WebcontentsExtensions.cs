@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
         public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> path)
         {
-            var __workflow_path = path == null ? null : WorkflowExpression.Compile(path);
-            WorkflowExpression.Validate(__workflow_path, nameof(path), required: true);
+            var __workflow_path = WorkflowExpression.Compile(path, nameof(path), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/GetFileContent";
@@ -28,12 +27,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
         public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
         {
-            var __workflow_requestmethod = requestmethod == null ? null : WorkflowExpression.Compile(requestmethod);
-            WorkflowExpression.Validate(__workflow_requestmethod, nameof(requestmethod), required: true);
-            var __workflow_requesturlOfTheRequest = requesturlOfTheRequest == null ? null : WorkflowExpression.Compile(requesturlOfTheRequest);
-            WorkflowExpression.Validate(__workflow_requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
-            var __workflow_requestbodyOfTheRequest = requestbodyOfTheRequest == null ? null : WorkflowExpression.Compile(requestbodyOfTheRequest);
-            WorkflowExpression.Validate(__workflow_requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
+            var __workflow_requestmethod = WorkflowExpression.Compile(requestmethod, nameof(requestmethod), required: true);
+            var __workflow_requesturlOfTheRequest = WorkflowExpression.Compile(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
+            var __workflow_requestbodyOfTheRequest = WorkflowExpression.Compile(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/codeless/InvokeHttp";

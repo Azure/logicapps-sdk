@@ -76,8 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetCountryV2CountryCountryNameGetResponse> GetCountryV2CountryCountryNameGet(Expression<Func<string>> countryName)
         {
-            var __workflow_countryName = countryName == null ? null : WorkflowExpression.Compile(countryName);
-            WorkflowExpression.Validate(__workflow_countryName, nameof(countryName), required: true);
+            var __workflow_countryName = WorkflowExpression.Compile(countryName, nameof(countryName), required: true);
             return new DeferredBodyAction<GetCountryV2CountryCountryNameGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_countryName, 1));
@@ -90,8 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Covid19jhucsseip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "covid19jhucsseip")]
         public IBodyWorkflowAction<GetTimeSeriesV2TimeseriesCaseGetResponse> GetTimeSeriesV2TimeseriesCaseGet(Expression<Func<string>> @case)
         {
-            var __workflow_case = @case == null ? null : WorkflowExpression.Compile(@case);
-            WorkflowExpression.Validate(__workflow_case, nameof(@case), required: true);
+            var __workflow_case = WorkflowExpression.Compile(@case, nameof(@case), required: true);
             return new DeferredBodyAction<GetTimeSeriesV2TimeseriesCaseGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/timeseries/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_case, 1));

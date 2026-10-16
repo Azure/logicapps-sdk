@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution(Expression<Func<string>> executionId, Expression<Func<bool>> output, Expression<Func<bool>> html, Expression<Func<bool>> report = null)
         {
-            var __workflow_executionId = executionId == null ? null : WorkflowExpression.Compile(executionId);
-            WorkflowExpression.Validate(__workflow_executionId, nameof(executionId), required: true);
-            var __workflow_output = output == null ? null : WorkflowExpression.Compile(output);
-            WorkflowExpression.Validate(__workflow_output, nameof(output), required: true);
-            var __workflow_html = html == null ? null : WorkflowExpression.Compile(html);
-            WorkflowExpression.Validate(__workflow_html, nameof(html), required: true);
-            var __workflow_report = report == null ? null : WorkflowExpression.Compile(report);
-            WorkflowExpression.Validate(__workflow_report, nameof(report), required: false);
+            var __workflow_executionId = WorkflowExpression.Compile(executionId, nameof(executionId), required: true);
+            var __workflow_output = WorkflowExpression.Compile(output, nameof(output), required: true);
+            var __workflow_html = WorkflowExpression.Compile(html, nameof(html), required: true);
+            var __workflow_report = WorkflowExpression.Compile(report, nameof(report), required: false);
             return new DeferredBodyAction<NotebookResponse>(() =>
             {
                 var apiCallPath = "/NotebookExecutions";
@@ -40,12 +36,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         public IBodyWorkflowAction<NotebookResponse> NotebookExecution(Expression<Func<bool>> report = null, Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
         {
-            var __workflow_report = report == null ? null : WorkflowExpression.Compile(report);
-            WorkflowExpression.Validate(__workflow_report, nameof(report), required: false);
-            var __workflow_parametersnotebook = parametersnotebook == null ? null : WorkflowExpression.Compile(parametersnotebook);
-            WorkflowExpression.Validate(__workflow_parametersnotebook, nameof(parametersnotebook), required: false);
-            var __workflow_parametersparameters = parametersparameters == null ? null : WorkflowExpression.Compile(parametersparameters);
-            WorkflowExpression.Validate(__workflow_parametersparameters, nameof(parametersparameters), required: false);
+            var __workflow_report = WorkflowExpression.Compile(report, nameof(report), required: false);
+            var __workflow_parametersnotebook = WorkflowExpression.Compile(parametersnotebook, nameof(parametersnotebook), required: false);
+            var __workflow_parametersparameters = WorkflowExpression.Compile(parametersparameters, nameof(parametersparameters), required: false);
             return new DeferredBodyAction<NotebookResponse>(() =>
             {
                 var apiCallPath = "/NotebookExecutions";
@@ -83,10 +76,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
         public IBodyWorkflowAction<SynapseResponse> UploadToSynapse(Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
         {
-            var __workflow_parametersnotebook = parametersnotebook == null ? null : WorkflowExpression.Compile(parametersnotebook);
-            WorkflowExpression.Validate(__workflow_parametersnotebook, nameof(parametersnotebook), required: false);
-            var __workflow_parametersparameters = parametersparameters == null ? null : WorkflowExpression.Compile(parametersparameters);
-            WorkflowExpression.Validate(__workflow_parametersparameters, nameof(parametersparameters), required: false);
+            var __workflow_parametersnotebook = WorkflowExpression.Compile(parametersnotebook, nameof(parametersnotebook), required: false);
+            var __workflow_parametersparameters = WorkflowExpression.Compile(parametersparameters, nameof(parametersparameters), required: false);
             return new DeferredBodyAction<SynapseResponse>(() =>
             {
                 var apiCallPath = "/Synapse";

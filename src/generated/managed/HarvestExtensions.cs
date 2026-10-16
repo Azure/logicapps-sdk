@@ -22,22 +22,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction AddNewContact(Expression<Func<int>> bodycontactclientId = null, Expression<Func<string>> bodycontactfirstName = null, Expression<Func<string>> bodycontactlastName = null, Expression<Func<string>> bodycontactemail = null, Expression<Func<string>> bodycontactofficePhone = null, Expression<Func<string>> bodycontactmobilePhone = null, Expression<Func<string>> bodycontactfax = null, Expression<Func<string>> bodycontacttitle = null)
         {
-            var __workflow_bodycontactclientId = bodycontactclientId == null ? null : WorkflowExpression.Compile(bodycontactclientId);
-            WorkflowExpression.Validate(__workflow_bodycontactclientId, nameof(bodycontactclientId), required: false);
-            var __workflow_bodycontactfirstName = bodycontactfirstName == null ? null : WorkflowExpression.Compile(bodycontactfirstName);
-            WorkflowExpression.Validate(__workflow_bodycontactfirstName, nameof(bodycontactfirstName), required: false);
-            var __workflow_bodycontactlastName = bodycontactlastName == null ? null : WorkflowExpression.Compile(bodycontactlastName);
-            WorkflowExpression.Validate(__workflow_bodycontactlastName, nameof(bodycontactlastName), required: false);
-            var __workflow_bodycontactemail = bodycontactemail == null ? null : WorkflowExpression.Compile(bodycontactemail);
-            WorkflowExpression.Validate(__workflow_bodycontactemail, nameof(bodycontactemail), required: false);
-            var __workflow_bodycontactofficePhone = bodycontactofficePhone == null ? null : WorkflowExpression.Compile(bodycontactofficePhone);
-            WorkflowExpression.Validate(__workflow_bodycontactofficePhone, nameof(bodycontactofficePhone), required: false);
-            var __workflow_bodycontactmobilePhone = bodycontactmobilePhone == null ? null : WorkflowExpression.Compile(bodycontactmobilePhone);
-            WorkflowExpression.Validate(__workflow_bodycontactmobilePhone, nameof(bodycontactmobilePhone), required: false);
-            var __workflow_bodycontactfax = bodycontactfax == null ? null : WorkflowExpression.Compile(bodycontactfax);
-            WorkflowExpression.Validate(__workflow_bodycontactfax, nameof(bodycontactfax), required: false);
-            var __workflow_bodycontacttitle = bodycontacttitle == null ? null : WorkflowExpression.Compile(bodycontacttitle);
-            WorkflowExpression.Validate(__workflow_bodycontacttitle, nameof(bodycontacttitle), required: false);
+            var __workflow_bodycontactclientId = WorkflowExpression.Compile(bodycontactclientId, nameof(bodycontactclientId), required: false);
+            var __workflow_bodycontactfirstName = WorkflowExpression.Compile(bodycontactfirstName, nameof(bodycontactfirstName), required: false);
+            var __workflow_bodycontactlastName = WorkflowExpression.Compile(bodycontactlastName, nameof(bodycontactlastName), required: false);
+            var __workflow_bodycontactemail = WorkflowExpression.Compile(bodycontactemail, nameof(bodycontactemail), required: false);
+            var __workflow_bodycontactofficePhone = WorkflowExpression.Compile(bodycontactofficePhone, nameof(bodycontactofficePhone), required: false);
+            var __workflow_bodycontactmobilePhone = WorkflowExpression.Compile(bodycontactmobilePhone, nameof(bodycontactmobilePhone), required: false);
+            var __workflow_bodycontactfax = WorkflowExpression.Compile(bodycontactfax, nameof(bodycontactfax), required: false);
+            var __workflow_bodycontacttitle = WorkflowExpression.Compile(bodycontacttitle, nameof(bodycontacttitle), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/contacts";
@@ -122,14 +114,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction AddNewClient(Expression<Func<string>> bodyclientname = null, Expression<Func<string>> bodyclientcurrency = null, Expression<Func<string>> bodyclientcurrencySymbol = null, Expression<Func<string>> bodyclientdetails = null)
         {
-            var __workflow_bodyclientname = bodyclientname == null ? null : WorkflowExpression.Compile(bodyclientname);
-            WorkflowExpression.Validate(__workflow_bodyclientname, nameof(bodyclientname), required: false);
-            var __workflow_bodyclientcurrency = bodyclientcurrency == null ? null : WorkflowExpression.Compile(bodyclientcurrency);
-            WorkflowExpression.Validate(__workflow_bodyclientcurrency, nameof(bodyclientcurrency), required: false);
-            var __workflow_bodyclientcurrencySymbol = bodyclientcurrencySymbol == null ? null : WorkflowExpression.Compile(bodyclientcurrencySymbol);
-            WorkflowExpression.Validate(__workflow_bodyclientcurrencySymbol, nameof(bodyclientcurrencySymbol), required: false);
-            var __workflow_bodyclientdetails = bodyclientdetails == null ? null : WorkflowExpression.Compile(bodyclientdetails);
-            WorkflowExpression.Validate(__workflow_bodyclientdetails, nameof(bodyclientdetails), required: false);
+            var __workflow_bodyclientname = WorkflowExpression.Compile(bodyclientname, nameof(bodyclientname), required: false);
+            var __workflow_bodyclientcurrency = WorkflowExpression.Compile(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
+            var __workflow_bodyclientcurrencySymbol = WorkflowExpression.Compile(bodyclientcurrencySymbol, nameof(bodyclientcurrencySymbol), required: false);
+            var __workflow_bodyclientdetails = WorkflowExpression.Compile(bodyclientdetails, nameof(bodyclientdetails), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/clients";
@@ -181,24 +169,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction CreateUser(Expression<Func<string>> bodyuseremail = null, Expression<Func<bool>> bodyuserisAdmin = null, Expression<Func<string>> bodyuserfirstName = null, Expression<Func<string>> bodyuserlastName = null, Expression<Func<bool>> bodyuserisContractor = null, Expression<Func<string>> bodyuserphone = null, Expression<Func<double>> bodyuserhourlyRate = null, Expression<Func<string>> bodyuserdepartment = null, Expression<Func<double>> bodyusercostRate = null)
         {
-            var __workflow_bodyuseremail = bodyuseremail == null ? null : WorkflowExpression.Compile(bodyuseremail);
-            WorkflowExpression.Validate(__workflow_bodyuseremail, nameof(bodyuseremail), required: false);
-            var __workflow_bodyuserisAdmin = bodyuserisAdmin == null ? null : WorkflowExpression.Compile(bodyuserisAdmin);
-            WorkflowExpression.Validate(__workflow_bodyuserisAdmin, nameof(bodyuserisAdmin), required: false);
-            var __workflow_bodyuserfirstName = bodyuserfirstName == null ? null : WorkflowExpression.Compile(bodyuserfirstName);
-            WorkflowExpression.Validate(__workflow_bodyuserfirstName, nameof(bodyuserfirstName), required: false);
-            var __workflow_bodyuserlastName = bodyuserlastName == null ? null : WorkflowExpression.Compile(bodyuserlastName);
-            WorkflowExpression.Validate(__workflow_bodyuserlastName, nameof(bodyuserlastName), required: false);
-            var __workflow_bodyuserisContractor = bodyuserisContractor == null ? null : WorkflowExpression.Compile(bodyuserisContractor);
-            WorkflowExpression.Validate(__workflow_bodyuserisContractor, nameof(bodyuserisContractor), required: false);
-            var __workflow_bodyuserphone = bodyuserphone == null ? null : WorkflowExpression.Compile(bodyuserphone);
-            WorkflowExpression.Validate(__workflow_bodyuserphone, nameof(bodyuserphone), required: false);
-            var __workflow_bodyuserhourlyRate = bodyuserhourlyRate == null ? null : WorkflowExpression.Compile(bodyuserhourlyRate);
-            WorkflowExpression.Validate(__workflow_bodyuserhourlyRate, nameof(bodyuserhourlyRate), required: false);
-            var __workflow_bodyuserdepartment = bodyuserdepartment == null ? null : WorkflowExpression.Compile(bodyuserdepartment);
-            WorkflowExpression.Validate(__workflow_bodyuserdepartment, nameof(bodyuserdepartment), required: false);
-            var __workflow_bodyusercostRate = bodyusercostRate == null ? null : WorkflowExpression.Compile(bodyusercostRate);
-            WorkflowExpression.Validate(__workflow_bodyusercostRate, nameof(bodyusercostRate), required: false);
+            var __workflow_bodyuseremail = WorkflowExpression.Compile(bodyuseremail, nameof(bodyuseremail), required: false);
+            var __workflow_bodyuserisAdmin = WorkflowExpression.Compile(bodyuserisAdmin, nameof(bodyuserisAdmin), required: false);
+            var __workflow_bodyuserfirstName = WorkflowExpression.Compile(bodyuserfirstName, nameof(bodyuserfirstName), required: false);
+            var __workflow_bodyuserlastName = WorkflowExpression.Compile(bodyuserlastName, nameof(bodyuserlastName), required: false);
+            var __workflow_bodyuserisContractor = WorkflowExpression.Compile(bodyuserisContractor, nameof(bodyuserisContractor), required: false);
+            var __workflow_bodyuserphone = WorkflowExpression.Compile(bodyuserphone, nameof(bodyuserphone), required: false);
+            var __workflow_bodyuserhourlyRate = WorkflowExpression.Compile(bodyuserhourlyRate, nameof(bodyuserhourlyRate), required: false);
+            var __workflow_bodyuserdepartment = WorkflowExpression.Compile(bodyuserdepartment, nameof(bodyuserdepartment), required: false);
+            var __workflow_bodyusercostRate = WorkflowExpression.Compile(bodyusercostRate, nameof(bodyusercostRate), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/people";
@@ -282,20 +261,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> UpdateTimeEntry(Expression<Func<string>> dAYENTRYID, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodystartedDateTime = null, Expression<Func<string>> bodyendedDateTime = null, Expression<Func<string>> bodydate = null)
         {
-            var __workflow_dAYENTRYID = dAYENTRYID == null ? null : WorkflowExpression.Compile(dAYENTRYID);
-            WorkflowExpression.Validate(__workflow_dAYENTRYID, nameof(dAYENTRYID), required: true);
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
-            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
-            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
-            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodystartedDateTime = bodystartedDateTime == null ? null : WorkflowExpression.Compile(bodystartedDateTime);
-            WorkflowExpression.Validate(__workflow_bodystartedDateTime, nameof(bodystartedDateTime), required: false);
-            var __workflow_bodyendedDateTime = bodyendedDateTime == null ? null : WorkflowExpression.Compile(bodyendedDateTime);
-            WorkflowExpression.Validate(__workflow_bodyendedDateTime, nameof(bodyendedDateTime), required: false);
-            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
-            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
+            var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
+            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodystartedDateTime = WorkflowExpression.Compile(bodystartedDateTime, nameof(bodystartedDateTime), required: false);
+            var __workflow_bodyendedDateTime = WorkflowExpression.Compile(bodyendedDateTime, nameof(bodyendedDateTime), required: false);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/update/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
@@ -343,16 +315,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> CreateTimeEntry(Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodynotes = null, Expression<Func<int>> bodyhours = null, Expression<Func<string>> bodydate = null)
         {
-            var __workflow_bodyprojectId = bodyprojectId == null ? null : WorkflowExpression.Compile(bodyprojectId);
-            WorkflowExpression.Validate(__workflow_bodyprojectId, nameof(bodyprojectId), required: true);
-            var __workflow_bodytaskId = bodytaskId == null ? null : WorkflowExpression.Compile(bodytaskId);
-            WorkflowExpression.Validate(__workflow_bodytaskId, nameof(bodytaskId), required: true);
-            var __workflow_bodynotes = bodynotes == null ? null : WorkflowExpression.Compile(bodynotes);
-            WorkflowExpression.Validate(__workflow_bodynotes, nameof(bodynotes), required: false);
-            var __workflow_bodyhours = bodyhours == null ? null : WorkflowExpression.Compile(bodyhours);
-            WorkflowExpression.Validate(__workflow_bodyhours, nameof(bodyhours), required: false);
-            var __workflow_bodydate = bodydate == null ? null : WorkflowExpression.Compile(bodydate);
-            WorkflowExpression.Validate(__workflow_bodydate, nameof(bodydate), required: false);
+            var __workflow_bodyprojectId = WorkflowExpression.Compile(bodyprojectId, nameof(bodyprojectId), required: true);
+            var __workflow_bodytaskId = WorkflowExpression.Compile(bodytaskId, nameof(bodytaskId), required: true);
+            var __workflow_bodynotes = WorkflowExpression.Compile(bodynotes, nameof(bodynotes), required: false);
+            var __workflow_bodyhours = WorkflowExpression.Compile(bodyhours, nameof(bodyhours), required: false);
+            var __workflow_bodydate = WorkflowExpression.Compile(bodydate, nameof(bodydate), required: false);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
                 var apiCallPath = "/daily/add";
@@ -403,8 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction DeleteTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
-            var __workflow_dAYENTRYID = dAYENTRYID == null ? null : WorkflowExpression.Compile(dAYENTRYID);
-            WorkflowExpression.Validate(__workflow_dAYENTRYID, nameof(dAYENTRYID), required: true);
+            var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/delete/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
@@ -417,10 +383,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IWorkflowAction AddUserToProject(Expression<Func<string>> projectId, Expression<Func<int>> bodyuseruserId = null)
         {
-            var __workflow_projectId = projectId == null ? null : WorkflowExpression.Compile(projectId);
-            WorkflowExpression.Validate(__workflow_projectId, nameof(projectId), required: true);
-            var __workflow_bodyuseruserId = bodyuseruserId == null ? null : WorkflowExpression.Compile(bodyuseruserId);
-            WorkflowExpression.Validate(__workflow_bodyuseruserId, nameof(bodyuseruserId), required: false);
+            var __workflow_projectId = WorkflowExpression.Compile(projectId, nameof(projectId), required: true);
+            var __workflow_bodyuseruserId = WorkflowExpression.Compile(bodyuseruserId, nameof(bodyuseruserId), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/user_assignments", ExpressionConverter.ConvertWithUrlEncoding(__workflow_projectId, 1));
@@ -454,8 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<UpdateTimeEntryResponse> GetTimeEntry(Expression<Func<string>> dAYENTRYID)
         {
-            var __workflow_dAYENTRYID = dAYENTRYID == null ? null : WorkflowExpression.Compile(dAYENTRYID);
-            WorkflowExpression.Validate(__workflow_dAYENTRYID, nameof(dAYENTRYID), required: true);
+            var __workflow_dAYENTRYID = WorkflowExpression.Compile(dAYENTRYID, nameof(dAYENTRYID), required: true);
             return new DeferredBodyAction<UpdateTimeEntryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/daily/show/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_dAYENTRYID, 1));
@@ -477,8 +440,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harvest")]
         public IBodyWorkflowAction<GetUserByIDResponse> GetUser(Expression<Func<string>> uSERID)
         {
-            var __workflow_uSERID = uSERID == null ? null : WorkflowExpression.Compile(uSERID);
-            WorkflowExpression.Validate(__workflow_uSERID, nameof(uSERID), required: true);
+            var __workflow_uSERID = WorkflowExpression.Compile(uSERID, nameof(uSERID), required: true);
             return new DeferredBodyAction<GetUserByIDResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/people/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_uSERID, 1));
@@ -525,8 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
         public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday(Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_ofUser = ofUser == null ? null : WorkflowExpression.Compile(ofUser);
-            WorkflowExpression.Validate(__workflow_ofUser, nameof(ofUser), required: false);
+            var __workflow_ofUser = WorkflowExpression.Compile(ofUser, nameof(ofUser), required: false);
             return new DeferredBodyTrigger<GetTimeEntriesForDayResponse>(() =>
             {
                 var apiCallPath = "/trigger/daily";
@@ -540,10 +501,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
         public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry(Expression<Func<string>> date, Expression<Func<string>> ofUser = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: true);
-            var __workflow_ofUser = ofUser == null ? null : WorkflowExpression.Compile(ofUser);
-            WorkflowExpression.Validate(__workflow_ofUser, nameof(ofUser), required: false);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: true);
+            var __workflow_ofUser = WorkflowExpression.Compile(ofUser, nameof(ofUser), required: false);
             return new DeferredBodyTrigger<GetTimeEntriesForDayResponse>(() =>
             {
                 var apiCallPath = "/trigger/daily/day/year";

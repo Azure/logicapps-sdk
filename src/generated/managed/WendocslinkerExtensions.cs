@@ -13,20 +13,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishDocxResponse> PublishDocx(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
-            var __workflow_requestBodydocName = requestBodydocName == null ? null : WorkflowExpression.Compile(requestBodydocName);
-            WorkflowExpression.Validate(__workflow_requestBodydocName, nameof(requestBodydocName), required: false);
-            var __workflow_requestBodydocumentTemplateData = requestBodydocumentTemplateData == null ? null : WorkflowExpression.Compile(requestBodydocumentTemplateData);
-            WorkflowExpression.Validate(__workflow_requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
-            var __workflow_requestBodyjsonData = requestBodyjsonData == null ? null : WorkflowExpression.Compile(requestBodyjsonData);
-            WorkflowExpression.Validate(__workflow_requestBodyjsonData, nameof(requestBodyjsonData), required: false);
-            var __workflow_requestBodylogLevel = requestBodylogLevel == null ? null : WorkflowExpression.Compile(requestBodylogLevel);
-            WorkflowExpression.Validate(__workflow_requestBodylogLevel, nameof(requestBodylogLevel), required: false);
-            var __workflow_requestBodylanguage = requestBodylanguage == null ? null : WorkflowExpression.Compile(requestBodylanguage);
-            WorkflowExpression.Validate(__workflow_requestBodylanguage, nameof(requestBodylanguage), required: false);
-            var __workflow_requestBodycountry = requestBodycountry == null ? null : WorkflowExpression.Compile(requestBodycountry);
-            WorkflowExpression.Validate(__workflow_requestBodycountry, nameof(requestBodycountry), required: false);
-            var __workflow_requestBodyclientType = requestBodyclientType == null ? null : WorkflowExpression.Compile(requestBodyclientType);
-            WorkflowExpression.Validate(__workflow_requestBodyclientType, nameof(requestBodyclientType), required: false);
+            var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
+            var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
+            var __workflow_requestBodyjsonData = WorkflowExpression.Compile(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
+            var __workflow_requestBodylogLevel = WorkflowExpression.Compile(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
+            var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
+            var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
             return new DeferredBodyAction<PublishDocxResponse>(() =>
             {
                 var apiCallPath = "/api/dynamicdoc/docx";
@@ -88,20 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishPDFResponse> PublishPDF(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
-            var __workflow_requestBodydocName = requestBodydocName == null ? null : WorkflowExpression.Compile(requestBodydocName);
-            WorkflowExpression.Validate(__workflow_requestBodydocName, nameof(requestBodydocName), required: false);
-            var __workflow_requestBodydocumentTemplateData = requestBodydocumentTemplateData == null ? null : WorkflowExpression.Compile(requestBodydocumentTemplateData);
-            WorkflowExpression.Validate(__workflow_requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
-            var __workflow_requestBodyjsonData = requestBodyjsonData == null ? null : WorkflowExpression.Compile(requestBodyjsonData);
-            WorkflowExpression.Validate(__workflow_requestBodyjsonData, nameof(requestBodyjsonData), required: false);
-            var __workflow_requestBodylogLevel = requestBodylogLevel == null ? null : WorkflowExpression.Compile(requestBodylogLevel);
-            WorkflowExpression.Validate(__workflow_requestBodylogLevel, nameof(requestBodylogLevel), required: false);
-            var __workflow_requestBodylanguage = requestBodylanguage == null ? null : WorkflowExpression.Compile(requestBodylanguage);
-            WorkflowExpression.Validate(__workflow_requestBodylanguage, nameof(requestBodylanguage), required: false);
-            var __workflow_requestBodycountry = requestBodycountry == null ? null : WorkflowExpression.Compile(requestBodycountry);
-            WorkflowExpression.Validate(__workflow_requestBodycountry, nameof(requestBodycountry), required: false);
-            var __workflow_requestBodyclientType = requestBodyclientType == null ? null : WorkflowExpression.Compile(requestBodyclientType);
-            WorkflowExpression.Validate(__workflow_requestBodyclientType, nameof(requestBodyclientType), required: false);
+            var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
+            var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
+            var __workflow_requestBodyjsonData = WorkflowExpression.Compile(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
+            var __workflow_requestBodylogLevel = WorkflowExpression.Compile(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
+            var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
+            var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
             return new DeferredBodyAction<PublishPDFResponse>(() =>
             {
                 var apiCallPath = "/api/dynamicdoc/pdf";
@@ -163,20 +149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wendocslinker
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wendocslinker")]
         public IBodyWorkflowAction<PublishHtmlResponse> PublishHtml(Expression<Func<string>> requestBodydocName = null, Expression<Func<string>> requestBodydocumentTemplateData = null, Expression<Func<string>> requestBodyjsonData = null, Expression<Func<string>> requestBodylogLevel = null, Expression<Func<string>> requestBodylanguage = null, Expression<Func<string>> requestBodycountry = null, Expression<Func<string>> requestBodyclientType = null)
         {
-            var __workflow_requestBodydocName = requestBodydocName == null ? null : WorkflowExpression.Compile(requestBodydocName);
-            WorkflowExpression.Validate(__workflow_requestBodydocName, nameof(requestBodydocName), required: false);
-            var __workflow_requestBodydocumentTemplateData = requestBodydocumentTemplateData == null ? null : WorkflowExpression.Compile(requestBodydocumentTemplateData);
-            WorkflowExpression.Validate(__workflow_requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
-            var __workflow_requestBodyjsonData = requestBodyjsonData == null ? null : WorkflowExpression.Compile(requestBodyjsonData);
-            WorkflowExpression.Validate(__workflow_requestBodyjsonData, nameof(requestBodyjsonData), required: false);
-            var __workflow_requestBodylogLevel = requestBodylogLevel == null ? null : WorkflowExpression.Compile(requestBodylogLevel);
-            WorkflowExpression.Validate(__workflow_requestBodylogLevel, nameof(requestBodylogLevel), required: false);
-            var __workflow_requestBodylanguage = requestBodylanguage == null ? null : WorkflowExpression.Compile(requestBodylanguage);
-            WorkflowExpression.Validate(__workflow_requestBodylanguage, nameof(requestBodylanguage), required: false);
-            var __workflow_requestBodycountry = requestBodycountry == null ? null : WorkflowExpression.Compile(requestBodycountry);
-            WorkflowExpression.Validate(__workflow_requestBodycountry, nameof(requestBodycountry), required: false);
-            var __workflow_requestBodyclientType = requestBodyclientType == null ? null : WorkflowExpression.Compile(requestBodyclientType);
-            WorkflowExpression.Validate(__workflow_requestBodyclientType, nameof(requestBodyclientType), required: false);
+            var __workflow_requestBodydocName = WorkflowExpression.Compile(requestBodydocName, nameof(requestBodydocName), required: false);
+            var __workflow_requestBodydocumentTemplateData = WorkflowExpression.Compile(requestBodydocumentTemplateData, nameof(requestBodydocumentTemplateData), required: false);
+            var __workflow_requestBodyjsonData = WorkflowExpression.Compile(requestBodyjsonData, nameof(requestBodyjsonData), required: false);
+            var __workflow_requestBodylogLevel = WorkflowExpression.Compile(requestBodylogLevel, nameof(requestBodylogLevel), required: false);
+            var __workflow_requestBodylanguage = WorkflowExpression.Compile(requestBodylanguage, nameof(requestBodylanguage), required: false);
+            var __workflow_requestBodycountry = WorkflowExpression.Compile(requestBodycountry, nameof(requestBodycountry), required: false);
+            var __workflow_requestBodyclientType = WorkflowExpression.Compile(requestBodyclientType, nameof(requestBodyclientType), required: false);
             return new DeferredBodyAction<PublishHtmlResponse>(() =>
             {
                 var apiCallPath = "/api/dynamicdoc/html";

@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
         public IBodyWorkflowAction<PlantPostResponse> Plant(Expression<Func<int>> bodycount = null)
         {
-            var __workflow_bodycount = bodycount == null ? null : WorkflowExpression.Compile(bodycount);
-            WorkflowExpression.Validate(__workflow_bodycount, nameof(bodycount), required: false);
+            var __workflow_bodycount = WorkflowExpression.Compile(bodycount, nameof(bodycount), required: false);
             return new DeferredBodyAction<PlantPostResponse>(() =>
             {
                 var apiCallPath = "/plant/trees";

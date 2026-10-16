@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
         public IBodyWorkflowAction<UploadFileToPathResponse> UploadFileToPath(Expression<Func<string>> aPIKey, Expression<Func<object>> filedata, Expression<Func<string>> pathToAFile, Expression<Func<int>> destinationMap = null)
         {
-            var __workflow_aPIKey = aPIKey == null ? null : WorkflowExpression.Compile(aPIKey);
-            WorkflowExpression.Validate(__workflow_aPIKey, nameof(aPIKey), required: true);
-            var __workflow_filedata = filedata == null ? null : WorkflowExpression.Compile(filedata);
-            WorkflowExpression.Validate(__workflow_filedata, nameof(filedata), required: true);
-            var __workflow_pathToAFile = pathToAFile == null ? null : WorkflowExpression.Compile(pathToAFile);
-            WorkflowExpression.Validate(__workflow_pathToAFile, nameof(pathToAFile), required: true);
-            var __workflow_destinationMap = destinationMap == null ? null : WorkflowExpression.Compile(destinationMap);
-            WorkflowExpression.Validate(__workflow_destinationMap, nameof(destinationMap), required: false);
+            var __workflow_aPIKey = WorkflowExpression.Compile(aPIKey, nameof(aPIKey), required: true);
+            var __workflow_filedata = WorkflowExpression.Compile(filedata, nameof(filedata), required: true);
+            var __workflow_pathToAFile = WorkflowExpression.Compile(pathToAFile, nameof(pathToAFile), required: true);
+            var __workflow_destinationMap = WorkflowExpression.Compile(destinationMap, nameof(destinationMap), required: false);
             return new DeferredBodyAction<UploadFileToPathResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pathToAFile, 1));
@@ -36,12 +32,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giscloud
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giscloud")]
         public IBodyWorkflowAction<Error> DeleteFileAtPath(Expression<Func<string>> aPIKey, Expression<Func<string>> fileName, Expression<Func<string>> pathToAFile)
         {
-            var __workflow_aPIKey = aPIKey == null ? null : WorkflowExpression.Compile(aPIKey);
-            WorkflowExpression.Validate(__workflow_aPIKey, nameof(aPIKey), required: true);
-            var __workflow_fileName = fileName == null ? null : WorkflowExpression.Compile(fileName);
-            WorkflowExpression.Validate(__workflow_fileName, nameof(fileName), required: true);
-            var __workflow_pathToAFile = pathToAFile == null ? null : WorkflowExpression.Compile(pathToAFile);
-            WorkflowExpression.Validate(__workflow_pathToAFile, nameof(pathToAFile), required: true);
+            var __workflow_aPIKey = WorkflowExpression.Compile(aPIKey, nameof(aPIKey), required: true);
+            var __workflow_fileName = WorkflowExpression.Compile(fileName, nameof(fileName), required: true);
+            var __workflow_pathToAFile = WorkflowExpression.Compile(pathToAFile, nameof(pathToAFile), required: true);
             return new DeferredBodyAction<Error>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/storage/fs/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_pathToAFile, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_fileName, 1));

@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
         public IBodyWorkflowAction<string> CreateContactList(Expression<Func<string>> listName)
         {
-            var __workflow_listName = listName == null ? null : WorkflowExpression.Compile(listName);
-            WorkflowExpression.Validate(__workflow_listName, nameof(listName), required: true);
+            var __workflow_listName = WorkflowExpression.Compile(listName, nameof(listName), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = "/listCreate/";
@@ -30,22 +29,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Benchmarkemail
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "benchmarkemail")]
         public IBodyWorkflowAction<int> CreateContact(Expression<Func<string>> listID, Expression<Func<string>> email, Expression<Func<string>> firstName = null, Expression<Func<string>> middleName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> jobTitle = null, Expression<Func<string>> phone = null, Expression<Func<string>> notes = null)
         {
-            var __workflow_listID = listID == null ? null : WorkflowExpression.Compile(listID);
-            WorkflowExpression.Validate(__workflow_listID, nameof(listID), required: true);
-            var __workflow_email = email == null ? null : WorkflowExpression.Compile(email);
-            WorkflowExpression.Validate(__workflow_email, nameof(email), required: true);
-            var __workflow_firstName = firstName == null ? null : WorkflowExpression.Compile(firstName);
-            WorkflowExpression.Validate(__workflow_firstName, nameof(firstName), required: false);
-            var __workflow_middleName = middleName == null ? null : WorkflowExpression.Compile(middleName);
-            WorkflowExpression.Validate(__workflow_middleName, nameof(middleName), required: false);
-            var __workflow_lastName = lastName == null ? null : WorkflowExpression.Compile(lastName);
-            WorkflowExpression.Validate(__workflow_lastName, nameof(lastName), required: false);
-            var __workflow_jobTitle = jobTitle == null ? null : WorkflowExpression.Compile(jobTitle);
-            WorkflowExpression.Validate(__workflow_jobTitle, nameof(jobTitle), required: false);
-            var __workflow_phone = phone == null ? null : WorkflowExpression.Compile(phone);
-            WorkflowExpression.Validate(__workflow_phone, nameof(phone), required: false);
-            var __workflow_notes = notes == null ? null : WorkflowExpression.Compile(notes);
-            WorkflowExpression.Validate(__workflow_notes, nameof(notes), required: false);
+            var __workflow_listID = WorkflowExpression.Compile(listID, nameof(listID), required: true);
+            var __workflow_email = WorkflowExpression.Compile(email, nameof(email), required: true);
+            var __workflow_firstName = WorkflowExpression.Compile(firstName, nameof(firstName), required: false);
+            var __workflow_middleName = WorkflowExpression.Compile(middleName, nameof(middleName), required: false);
+            var __workflow_lastName = WorkflowExpression.Compile(lastName, nameof(lastName), required: false);
+            var __workflow_jobTitle = WorkflowExpression.Compile(jobTitle, nameof(jobTitle), required: false);
+            var __workflow_phone = WorkflowExpression.Compile(phone, nameof(phone), required: false);
+            var __workflow_notes = WorkflowExpression.Compile(notes, nameof(notes), required: false);
             return new DeferredBodyAction<int>(() =>
             {
                 var apiCallPath = "/listAddContacts/";

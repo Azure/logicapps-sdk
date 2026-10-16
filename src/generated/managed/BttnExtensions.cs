@@ -24,10 +24,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IWorkflowAction ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<callbackBodyflowResultInput>> callbackBodyflowResult = null)
         {
-            var __workflow_callbackId = callbackId == null ? null : WorkflowExpression.Compile(callbackId);
-            WorkflowExpression.Validate(__workflow_callbackId, nameof(callbackId), required: true);
-            var __workflow_callbackBodyflowResult = callbackBodyflowResult == null ? null : WorkflowExpression.Compile(callbackBodyflowResult);
-            WorkflowExpression.Validate(__workflow_callbackBodyflowResult, nameof(callbackBodyflowResult), required: false);
+            var __workflow_callbackId = WorkflowExpression.Compile(callbackId, nameof(callbackId), required: true);
+            var __workflow_callbackBodyflowResult = WorkflowExpression.Compile(callbackBodyflowResult, nameof(callbackBodyflowResult), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/callback/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_callbackId, 1));
@@ -53,8 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnApiInfo> GetBttnInfo(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BttnApiInfo>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -67,8 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnApiCounter> GetBttnCounter(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<BttnApiCounter>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/counter", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -83,8 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
     {
         public IWorkflowTrigger RegisterWebhook(Expression<Func<string>> id, FlowRecurrence recurrence = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/hook";

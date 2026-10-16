@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IWorkflowAction ImportAssemblyFromLocalFile(Expression<Func<string>> importAssemblyFromLocalFilelocalAssemblyFilePath, Expression<Func<string>> importAssemblyFromLocalFileassemblyName, Expression<Func<string>> importAssemblyFromLocalFileworkflow, Expression<Func<bool>> importAssemblyFromLocalFilecompress = null)
         {
-            var __workflow_importAssemblyFromLocalFilelocalAssemblyFilePath = importAssemblyFromLocalFilelocalAssemblyFilePath == null ? null : WorkflowExpression.Compile(importAssemblyFromLocalFilelocalAssemblyFilePath);
-            WorkflowExpression.Validate(__workflow_importAssemblyFromLocalFilelocalAssemblyFilePath, nameof(importAssemblyFromLocalFilelocalAssemblyFilePath), required: true);
-            var __workflow_importAssemblyFromLocalFileassemblyName = importAssemblyFromLocalFileassemblyName == null ? null : WorkflowExpression.Compile(importAssemblyFromLocalFileassemblyName);
-            WorkflowExpression.Validate(__workflow_importAssemblyFromLocalFileassemblyName, nameof(importAssemblyFromLocalFileassemblyName), required: true);
-            var __workflow_importAssemblyFromLocalFileworkflow = importAssemblyFromLocalFileworkflow == null ? null : WorkflowExpression.Compile(importAssemblyFromLocalFileworkflow);
-            WorkflowExpression.Validate(__workflow_importAssemblyFromLocalFileworkflow, nameof(importAssemblyFromLocalFileworkflow), required: true);
-            var __workflow_importAssemblyFromLocalFilecompress = importAssemblyFromLocalFilecompress == null ? null : WorkflowExpression.Compile(importAssemblyFromLocalFilecompress);
-            WorkflowExpression.Validate(__workflow_importAssemblyFromLocalFilecompress, nameof(importAssemblyFromLocalFilecompress), required: false);
+            var __workflow_importAssemblyFromLocalFilelocalAssemblyFilePath = WorkflowExpression.Compile(importAssemblyFromLocalFilelocalAssemblyFilePath, nameof(importAssemblyFromLocalFilelocalAssemblyFilePath), required: true);
+            var __workflow_importAssemblyFromLocalFileassemblyName = WorkflowExpression.Compile(importAssemblyFromLocalFileassemblyName, nameof(importAssemblyFromLocalFileassemblyName), required: true);
+            var __workflow_importAssemblyFromLocalFileworkflow = WorkflowExpression.Compile(importAssemblyFromLocalFileworkflow, nameof(importAssemblyFromLocalFileworkflow), required: true);
+            var __workflow_importAssemblyFromLocalFilecompress = WorkflowExpression.Compile(importAssemblyFromLocalFilecompress, nameof(importAssemblyFromLocalFilecompress), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DynamicCode/ImportAssemblyFromLocalFile";
@@ -62,10 +58,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IWorkflowAction AddAssemblySearchFolder(Expression<Func<string>> addAssemblySearchFolderfolderPath, Expression<Func<string>> addAssemblySearchFolderworkflow)
         {
-            var __workflow_addAssemblySearchFolderfolderPath = addAssemblySearchFolderfolderPath == null ? null : WorkflowExpression.Compile(addAssemblySearchFolderfolderPath);
-            WorkflowExpression.Validate(__workflow_addAssemblySearchFolderfolderPath, nameof(addAssemblySearchFolderfolderPath), required: true);
-            var __workflow_addAssemblySearchFolderworkflow = addAssemblySearchFolderworkflow == null ? null : WorkflowExpression.Compile(addAssemblySearchFolderworkflow);
-            WorkflowExpression.Validate(__workflow_addAssemblySearchFolderworkflow, nameof(addAssemblySearchFolderworkflow), required: true);
+            var __workflow_addAssemblySearchFolderfolderPath = WorkflowExpression.Compile(addAssemblySearchFolderfolderPath, nameof(addAssemblySearchFolderfolderPath), required: true);
+            var __workflow_addAssemblySearchFolderworkflow = WorkflowExpression.Compile(addAssemblySearchFolderworkflow, nameof(addAssemblySearchFolderworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DynamicCode/AddAssemblySearchFolder";
@@ -89,8 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IWorkflowAction ClearAssemblySearchFolders(Expression<Func<string>> clearAssemblySearchFoldersworkflow)
         {
-            var __workflow_clearAssemblySearchFoldersworkflow = clearAssemblySearchFoldersworkflow == null ? null : WorkflowExpression.Compile(clearAssemblySearchFoldersworkflow);
-            WorkflowExpression.Validate(__workflow_clearAssemblySearchFoldersworkflow, nameof(clearAssemblySearchFoldersworkflow), required: true);
+            var __workflow_clearAssemblySearchFoldersworkflow = WorkflowExpression.Compile(clearAssemblySearchFoldersworkflow, nameof(clearAssemblySearchFoldersworkflow), required: true);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = "/DynamicCode/ClearAssemblySearchFolders";
@@ -112,8 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<IsPowerShellAutomationInstalledResponse> IsPowerShellAutomationInstalled(Expression<Func<string>> isPowerShellAutomationInstalledworkflow)
         {
-            var __workflow_isPowerShellAutomationInstalledworkflow = isPowerShellAutomationInstalledworkflow == null ? null : WorkflowExpression.Compile(isPowerShellAutomationInstalledworkflow);
-            WorkflowExpression.Validate(__workflow_isPowerShellAutomationInstalledworkflow, nameof(isPowerShellAutomationInstalledworkflow), required: true);
+            var __workflow_isPowerShellAutomationInstalledworkflow = WorkflowExpression.Compile(isPowerShellAutomationInstalledworkflow, nameof(isPowerShellAutomationInstalledworkflow), required: true);
             return new DeferredBodyAction<IsPowerShellAutomationInstalledResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/isPowerShellAutomationInstalled";
@@ -135,10 +127,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<IsPowerShellModuleInstalledResponse> IsPowerShellModuleInstalled(Expression<Func<string>> isPowerShellModuleInstalledpowerShellModuleName, Expression<Func<string>> isPowerShellModuleInstalledworkflow)
         {
-            var __workflow_isPowerShellModuleInstalledpowerShellModuleName = isPowerShellModuleInstalledpowerShellModuleName == null ? null : WorkflowExpression.Compile(isPowerShellModuleInstalledpowerShellModuleName);
-            WorkflowExpression.Validate(__workflow_isPowerShellModuleInstalledpowerShellModuleName, nameof(isPowerShellModuleInstalledpowerShellModuleName), required: true);
-            var __workflow_isPowerShellModuleInstalledworkflow = isPowerShellModuleInstalledworkflow == null ? null : WorkflowExpression.Compile(isPowerShellModuleInstalledworkflow);
-            WorkflowExpression.Validate(__workflow_isPowerShellModuleInstalledworkflow, nameof(isPowerShellModuleInstalledworkflow), required: true);
+            var __workflow_isPowerShellModuleInstalledpowerShellModuleName = WorkflowExpression.Compile(isPowerShellModuleInstalledpowerShellModuleName, nameof(isPowerShellModuleInstalledpowerShellModuleName), required: true);
+            var __workflow_isPowerShellModuleInstalledworkflow = WorkflowExpression.Compile(isPowerShellModuleInstalledworkflow, nameof(isPowerShellModuleInstalledworkflow), required: true);
             return new DeferredBodyAction<IsPowerShellModuleInstalledResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/isPowerShellModuleInstalled";
@@ -162,50 +152,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<RunPowerShellAutomationScriptResponse> RunPowerShellAutomationScript(Expression<Func<string>> runPowerShellAutomationScriptworkflow, Expression<Func<string>> runPowerShellAutomationScriptpowerShellScriptContents = null, Expression<Func<string>> runPowerShellAutomationScriptcomputerName = null, Expression<Func<bool>> runPowerShellAutomationScriptisNoResultAnError = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnComplexTypes = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnBooleanAsBoolean = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnNumericAsDecimal = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnDateAsDate = null, Expression<Func<string>> runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = null, Expression<Func<runPowerShellAutomationScriptauthenticationMechanismInput>> runPowerShellAutomationScriptauthenticationMechanism = null, Expression<Func<int>> runPowerShellAutomationScriptconnectionAttempts = null, Expression<Func<string>> runPowerShellAutomationScriptusername = null, Expression<Func<string>> runPowerShellAutomationScriptpassword = null, Expression<Func<bool>> runPowerShellAutomationScriptrunScriptAsThread = null, Expression<Func<int>> runPowerShellAutomationScriptretrieveOutputDataFromThreadId = null, Expression<Func<int>> runPowerShellAutomationScriptsecondsToWaitForThread = null, Expression<Func<bool>> runPowerShellAutomationScriptscriptContainsStoredPassword = null, Expression<Func<bool>> runPowerShellAutomationScriptlogVerboseOutput = null, Expression<Func<bool>> runPowerShellAutomationScriptreturnSecureStrings = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyNamesToSerializeJSON = null, Expression<Func<string>> runPowerShellAutomationScriptpropertyTypesToSerializeJSON = null, Expression<Func<runPowerShellAutomationScriptpowerShellCommandParametersInputItem[]>> runPowerShellAutomationScriptpowerShellCommandParameters = null)
         {
-            var __workflow_runPowerShellAutomationScriptworkflow = runPowerShellAutomationScriptworkflow == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptworkflow);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptworkflow, nameof(runPowerShellAutomationScriptworkflow), required: true);
-            var __workflow_runPowerShellAutomationScriptpowerShellScriptContents = runPowerShellAutomationScriptpowerShellScriptContents == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptpowerShellScriptContents);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptpowerShellScriptContents, nameof(runPowerShellAutomationScriptpowerShellScriptContents), required: false);
-            var __workflow_runPowerShellAutomationScriptcomputerName = runPowerShellAutomationScriptcomputerName == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptcomputerName);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptcomputerName, nameof(runPowerShellAutomationScriptcomputerName), required: false);
-            var __workflow_runPowerShellAutomationScriptisNoResultAnError = runPowerShellAutomationScriptisNoResultAnError == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptisNoResultAnError);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptisNoResultAnError, nameof(runPowerShellAutomationScriptisNoResultAnError), required: false);
-            var __workflow_runPowerShellAutomationScriptreturnComplexTypes = runPowerShellAutomationScriptreturnComplexTypes == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptreturnComplexTypes);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptreturnComplexTypes, nameof(runPowerShellAutomationScriptreturnComplexTypes), required: false);
-            var __workflow_runPowerShellAutomationScriptreturnBooleanAsBoolean = runPowerShellAutomationScriptreturnBooleanAsBoolean == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptreturnBooleanAsBoolean);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runPowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
-            var __workflow_runPowerShellAutomationScriptreturnNumericAsDecimal = runPowerShellAutomationScriptreturnNumericAsDecimal == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptreturnNumericAsDecimal);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptreturnNumericAsDecimal, nameof(runPowerShellAutomationScriptreturnNumericAsDecimal), required: false);
-            var __workflow_runPowerShellAutomationScriptreturnDateAsDate = runPowerShellAutomationScriptreturnDateAsDate == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptreturnDateAsDate);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptreturnDateAsDate, nameof(runPowerShellAutomationScriptreturnDateAsDate), required: false);
-            var __workflow_runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
-            var __workflow_runPowerShellAutomationScriptauthenticationMechanism = runPowerShellAutomationScriptauthenticationMechanism == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptauthenticationMechanism);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptauthenticationMechanism, nameof(runPowerShellAutomationScriptauthenticationMechanism), required: false);
-            var __workflow_runPowerShellAutomationScriptconnectionAttempts = runPowerShellAutomationScriptconnectionAttempts == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptconnectionAttempts);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptconnectionAttempts, nameof(runPowerShellAutomationScriptconnectionAttempts), required: false);
-            var __workflow_runPowerShellAutomationScriptusername = runPowerShellAutomationScriptusername == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptusername);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptusername, nameof(runPowerShellAutomationScriptusername), required: false);
-            var __workflow_runPowerShellAutomationScriptpassword = runPowerShellAutomationScriptpassword == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptpassword);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptpassword, nameof(runPowerShellAutomationScriptpassword), required: false);
-            var __workflow_runPowerShellAutomationScriptrunScriptAsThread = runPowerShellAutomationScriptrunScriptAsThread == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptrunScriptAsThread);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptrunScriptAsThread, nameof(runPowerShellAutomationScriptrunScriptAsThread), required: false);
-            var __workflow_runPowerShellAutomationScriptretrieveOutputDataFromThreadId = runPowerShellAutomationScriptretrieveOutputDataFromThreadId == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptretrieveOutputDataFromThreadId);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runPowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
-            var __workflow_runPowerShellAutomationScriptsecondsToWaitForThread = runPowerShellAutomationScriptsecondsToWaitForThread == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptsecondsToWaitForThread);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptsecondsToWaitForThread, nameof(runPowerShellAutomationScriptsecondsToWaitForThread), required: false);
-            var __workflow_runPowerShellAutomationScriptscriptContainsStoredPassword = runPowerShellAutomationScriptscriptContainsStoredPassword == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptscriptContainsStoredPassword);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptscriptContainsStoredPassword, nameof(runPowerShellAutomationScriptscriptContainsStoredPassword), required: false);
-            var __workflow_runPowerShellAutomationScriptlogVerboseOutput = runPowerShellAutomationScriptlogVerboseOutput == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptlogVerboseOutput);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptlogVerboseOutput, nameof(runPowerShellAutomationScriptlogVerboseOutput), required: false);
-            var __workflow_runPowerShellAutomationScriptreturnSecureStrings = runPowerShellAutomationScriptreturnSecureStrings == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptreturnSecureStrings);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptreturnSecureStrings, nameof(runPowerShellAutomationScriptreturnSecureStrings), required: false);
-            var __workflow_runPowerShellAutomationScriptpropertyNamesToSerializeJSON = runPowerShellAutomationScriptpropertyNamesToSerializeJSON == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptpropertyNamesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runPowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
-            var __workflow_runPowerShellAutomationScriptpropertyTypesToSerializeJSON = runPowerShellAutomationScriptpropertyTypesToSerializeJSON == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptpropertyTypesToSerializeJSON);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runPowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
-            var __workflow_runPowerShellAutomationScriptpowerShellCommandParameters = runPowerShellAutomationScriptpowerShellCommandParameters == null ? null : WorkflowExpression.Compile(runPowerShellAutomationScriptpowerShellCommandParameters);
-            WorkflowExpression.Validate(__workflow_runPowerShellAutomationScriptpowerShellCommandParameters, nameof(runPowerShellAutomationScriptpowerShellCommandParameters), required: false);
+            var __workflow_runPowerShellAutomationScriptworkflow = WorkflowExpression.Compile(runPowerShellAutomationScriptworkflow, nameof(runPowerShellAutomationScriptworkflow), required: true);
+            var __workflow_runPowerShellAutomationScriptpowerShellScriptContents = WorkflowExpression.Compile(runPowerShellAutomationScriptpowerShellScriptContents, nameof(runPowerShellAutomationScriptpowerShellScriptContents), required: false);
+            var __workflow_runPowerShellAutomationScriptcomputerName = WorkflowExpression.Compile(runPowerShellAutomationScriptcomputerName, nameof(runPowerShellAutomationScriptcomputerName), required: false);
+            var __workflow_runPowerShellAutomationScriptisNoResultAnError = WorkflowExpression.Compile(runPowerShellAutomationScriptisNoResultAnError, nameof(runPowerShellAutomationScriptisNoResultAnError), required: false);
+            var __workflow_runPowerShellAutomationScriptreturnComplexTypes = WorkflowExpression.Compile(runPowerShellAutomationScriptreturnComplexTypes, nameof(runPowerShellAutomationScriptreturnComplexTypes), required: false);
+            var __workflow_runPowerShellAutomationScriptreturnBooleanAsBoolean = WorkflowExpression.Compile(runPowerShellAutomationScriptreturnBooleanAsBoolean, nameof(runPowerShellAutomationScriptreturnBooleanAsBoolean), required: false);
+            var __workflow_runPowerShellAutomationScriptreturnNumericAsDecimal = WorkflowExpression.Compile(runPowerShellAutomationScriptreturnNumericAsDecimal, nameof(runPowerShellAutomationScriptreturnNumericAsDecimal), required: false);
+            var __workflow_runPowerShellAutomationScriptreturnDateAsDate = WorkflowExpression.Compile(runPowerShellAutomationScriptreturnDateAsDate, nameof(runPowerShellAutomationScriptreturnDateAsDate), required: false);
+            var __workflow_runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON = WorkflowExpression.Compile(runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON, nameof(runPowerShellAutomationScriptpropertiesToReturnAsCollectionJSON), required: false);
+            var __workflow_runPowerShellAutomationScriptauthenticationMechanism = WorkflowExpression.Compile(runPowerShellAutomationScriptauthenticationMechanism, nameof(runPowerShellAutomationScriptauthenticationMechanism), required: false);
+            var __workflow_runPowerShellAutomationScriptconnectionAttempts = WorkflowExpression.Compile(runPowerShellAutomationScriptconnectionAttempts, nameof(runPowerShellAutomationScriptconnectionAttempts), required: false);
+            var __workflow_runPowerShellAutomationScriptusername = WorkflowExpression.Compile(runPowerShellAutomationScriptusername, nameof(runPowerShellAutomationScriptusername), required: false);
+            var __workflow_runPowerShellAutomationScriptpassword = WorkflowExpression.Compile(runPowerShellAutomationScriptpassword, nameof(runPowerShellAutomationScriptpassword), required: false);
+            var __workflow_runPowerShellAutomationScriptrunScriptAsThread = WorkflowExpression.Compile(runPowerShellAutomationScriptrunScriptAsThread, nameof(runPowerShellAutomationScriptrunScriptAsThread), required: false);
+            var __workflow_runPowerShellAutomationScriptretrieveOutputDataFromThreadId = WorkflowExpression.Compile(runPowerShellAutomationScriptretrieveOutputDataFromThreadId, nameof(runPowerShellAutomationScriptretrieveOutputDataFromThreadId), required: false);
+            var __workflow_runPowerShellAutomationScriptsecondsToWaitForThread = WorkflowExpression.Compile(runPowerShellAutomationScriptsecondsToWaitForThread, nameof(runPowerShellAutomationScriptsecondsToWaitForThread), required: false);
+            var __workflow_runPowerShellAutomationScriptscriptContainsStoredPassword = WorkflowExpression.Compile(runPowerShellAutomationScriptscriptContainsStoredPassword, nameof(runPowerShellAutomationScriptscriptContainsStoredPassword), required: false);
+            var __workflow_runPowerShellAutomationScriptlogVerboseOutput = WorkflowExpression.Compile(runPowerShellAutomationScriptlogVerboseOutput, nameof(runPowerShellAutomationScriptlogVerboseOutput), required: false);
+            var __workflow_runPowerShellAutomationScriptreturnSecureStrings = WorkflowExpression.Compile(runPowerShellAutomationScriptreturnSecureStrings, nameof(runPowerShellAutomationScriptreturnSecureStrings), required: false);
+            var __workflow_runPowerShellAutomationScriptpropertyNamesToSerializeJSON = WorkflowExpression.Compile(runPowerShellAutomationScriptpropertyNamesToSerializeJSON, nameof(runPowerShellAutomationScriptpropertyNamesToSerializeJSON), required: false);
+            var __workflow_runPowerShellAutomationScriptpropertyTypesToSerializeJSON = WorkflowExpression.Compile(runPowerShellAutomationScriptpropertyTypesToSerializeJSON, nameof(runPowerShellAutomationScriptpropertyTypesToSerializeJSON), required: false);
+            var __workflow_runPowerShellAutomationScriptpowerShellCommandParameters = WorkflowExpression.Compile(runPowerShellAutomationScriptpowerShellCommandParameters, nameof(runPowerShellAutomationScriptpowerShellCommandParameters), required: false);
             return new DeferredBodyAction<RunPowerShellAutomationScriptResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/RunPowerShellScript";
@@ -463,14 +431,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetPowerShellVersionResponse> GetPowerShellVersion(Expression<Func<string>> getPowerShellVersionworkflow, Expression<Func<string>> getPowerShellVersioncomputerName = null, Expression<Func<getPowerShellVersionauthenticationMechanismInput>> getPowerShellVersionauthenticationMechanism = null, Expression<Func<int>> getPowerShellVersionconnectionAttempts = null)
         {
-            var __workflow_getPowerShellVersionworkflow = getPowerShellVersionworkflow == null ? null : WorkflowExpression.Compile(getPowerShellVersionworkflow);
-            WorkflowExpression.Validate(__workflow_getPowerShellVersionworkflow, nameof(getPowerShellVersionworkflow), required: true);
-            var __workflow_getPowerShellVersioncomputerName = getPowerShellVersioncomputerName == null ? null : WorkflowExpression.Compile(getPowerShellVersioncomputerName);
-            WorkflowExpression.Validate(__workflow_getPowerShellVersioncomputerName, nameof(getPowerShellVersioncomputerName), required: false);
-            var __workflow_getPowerShellVersionauthenticationMechanism = getPowerShellVersionauthenticationMechanism == null ? null : WorkflowExpression.Compile(getPowerShellVersionauthenticationMechanism);
-            WorkflowExpression.Validate(__workflow_getPowerShellVersionauthenticationMechanism, nameof(getPowerShellVersionauthenticationMechanism), required: false);
-            var __workflow_getPowerShellVersionconnectionAttempts = getPowerShellVersionconnectionAttempts == null ? null : WorkflowExpression.Compile(getPowerShellVersionconnectionAttempts);
-            WorkflowExpression.Validate(__workflow_getPowerShellVersionconnectionAttempts, nameof(getPowerShellVersionconnectionAttempts), required: false);
+            var __workflow_getPowerShellVersionworkflow = WorkflowExpression.Compile(getPowerShellVersionworkflow, nameof(getPowerShellVersionworkflow), required: true);
+            var __workflow_getPowerShellVersioncomputerName = WorkflowExpression.Compile(getPowerShellVersioncomputerName, nameof(getPowerShellVersioncomputerName), required: false);
+            var __workflow_getPowerShellVersionauthenticationMechanism = WorkflowExpression.Compile(getPowerShellVersionauthenticationMechanism, nameof(getPowerShellVersionauthenticationMechanism), required: false);
+            var __workflow_getPowerShellVersionconnectionAttempts = WorkflowExpression.Compile(getPowerShellVersionconnectionAttempts, nameof(getPowerShellVersionconnectionAttempts), required: false);
             return new DeferredBodyAction<GetPowerShellVersionResponse>(() =>
             {
                 var apiCallPath = "/PowerShellAutomation/GetPowerShellVersion";
@@ -520,16 +484,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetRegexMatchResponse> GetRegexMatch(Expression<Func<string>> getRegexMatchtextToMatch, Expression<Func<string>> getRegexMatchregex, Expression<Func<int>> getRegexMatchsearchIndex = null, Expression<Func<bool>> getRegexMatchcaseSensitive = null, Expression<Func<int>> getRegexMatchregexTimeoutInSeconds = null)
         {
-            var __workflow_getRegexMatchtextToMatch = getRegexMatchtextToMatch == null ? null : WorkflowExpression.Compile(getRegexMatchtextToMatch);
-            WorkflowExpression.Validate(__workflow_getRegexMatchtextToMatch, nameof(getRegexMatchtextToMatch), required: true);
-            var __workflow_getRegexMatchregex = getRegexMatchregex == null ? null : WorkflowExpression.Compile(getRegexMatchregex);
-            WorkflowExpression.Validate(__workflow_getRegexMatchregex, nameof(getRegexMatchregex), required: true);
-            var __workflow_getRegexMatchsearchIndex = getRegexMatchsearchIndex == null ? null : WorkflowExpression.Compile(getRegexMatchsearchIndex);
-            WorkflowExpression.Validate(__workflow_getRegexMatchsearchIndex, nameof(getRegexMatchsearchIndex), required: false);
-            var __workflow_getRegexMatchcaseSensitive = getRegexMatchcaseSensitive == null ? null : WorkflowExpression.Compile(getRegexMatchcaseSensitive);
-            WorkflowExpression.Validate(__workflow_getRegexMatchcaseSensitive, nameof(getRegexMatchcaseSensitive), required: false);
-            var __workflow_getRegexMatchregexTimeoutInSeconds = getRegexMatchregexTimeoutInSeconds == null ? null : WorkflowExpression.Compile(getRegexMatchregexTimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_getRegexMatchregexTimeoutInSeconds, nameof(getRegexMatchregexTimeoutInSeconds), required: false);
+            var __workflow_getRegexMatchtextToMatch = WorkflowExpression.Compile(getRegexMatchtextToMatch, nameof(getRegexMatchtextToMatch), required: true);
+            var __workflow_getRegexMatchregex = WorkflowExpression.Compile(getRegexMatchregex, nameof(getRegexMatchregex), required: true);
+            var __workflow_getRegexMatchsearchIndex = WorkflowExpression.Compile(getRegexMatchsearchIndex, nameof(getRegexMatchsearchIndex), required: false);
+            var __workflow_getRegexMatchcaseSensitive = WorkflowExpression.Compile(getRegexMatchcaseSensitive, nameof(getRegexMatchcaseSensitive), required: false);
+            var __workflow_getRegexMatchregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexMatchregexTimeoutInSeconds, nameof(getRegexMatchregexTimeoutInSeconds), required: false);
             return new DeferredBodyAction<GetRegexMatchResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexMatch";
@@ -601,20 +560,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetRegexMatchesResponse> GetRegexMatches(Expression<Func<string>> getRegexMatchestextToMatch, Expression<Func<string>> getRegexMatchesregex, Expression<Func<int>> getRegexMatchesmaximumMatches = null, Expression<Func<bool>> getRegexMatchescaseSensitive = null, Expression<Func<bool>> getRegexMatchestrimResults = null, Expression<Func<bool>> getRegexMatchesremoveEmptyResults = null, Expression<Func<int>> getRegexMatchesregexTimeoutInSeconds = null)
         {
-            var __workflow_getRegexMatchestextToMatch = getRegexMatchestextToMatch == null ? null : WorkflowExpression.Compile(getRegexMatchestextToMatch);
-            WorkflowExpression.Validate(__workflow_getRegexMatchestextToMatch, nameof(getRegexMatchestextToMatch), required: true);
-            var __workflow_getRegexMatchesregex = getRegexMatchesregex == null ? null : WorkflowExpression.Compile(getRegexMatchesregex);
-            WorkflowExpression.Validate(__workflow_getRegexMatchesregex, nameof(getRegexMatchesregex), required: true);
-            var __workflow_getRegexMatchesmaximumMatches = getRegexMatchesmaximumMatches == null ? null : WorkflowExpression.Compile(getRegexMatchesmaximumMatches);
-            WorkflowExpression.Validate(__workflow_getRegexMatchesmaximumMatches, nameof(getRegexMatchesmaximumMatches), required: false);
-            var __workflow_getRegexMatchescaseSensitive = getRegexMatchescaseSensitive == null ? null : WorkflowExpression.Compile(getRegexMatchescaseSensitive);
-            WorkflowExpression.Validate(__workflow_getRegexMatchescaseSensitive, nameof(getRegexMatchescaseSensitive), required: false);
-            var __workflow_getRegexMatchestrimResults = getRegexMatchestrimResults == null ? null : WorkflowExpression.Compile(getRegexMatchestrimResults);
-            WorkflowExpression.Validate(__workflow_getRegexMatchestrimResults, nameof(getRegexMatchestrimResults), required: false);
-            var __workflow_getRegexMatchesremoveEmptyResults = getRegexMatchesremoveEmptyResults == null ? null : WorkflowExpression.Compile(getRegexMatchesremoveEmptyResults);
-            WorkflowExpression.Validate(__workflow_getRegexMatchesremoveEmptyResults, nameof(getRegexMatchesremoveEmptyResults), required: false);
-            var __workflow_getRegexMatchesregexTimeoutInSeconds = getRegexMatchesregexTimeoutInSeconds == null ? null : WorkflowExpression.Compile(getRegexMatchesregexTimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_getRegexMatchesregexTimeoutInSeconds, nameof(getRegexMatchesregexTimeoutInSeconds), required: false);
+            var __workflow_getRegexMatchestextToMatch = WorkflowExpression.Compile(getRegexMatchestextToMatch, nameof(getRegexMatchestextToMatch), required: true);
+            var __workflow_getRegexMatchesregex = WorkflowExpression.Compile(getRegexMatchesregex, nameof(getRegexMatchesregex), required: true);
+            var __workflow_getRegexMatchesmaximumMatches = WorkflowExpression.Compile(getRegexMatchesmaximumMatches, nameof(getRegexMatchesmaximumMatches), required: false);
+            var __workflow_getRegexMatchescaseSensitive = WorkflowExpression.Compile(getRegexMatchescaseSensitive, nameof(getRegexMatchescaseSensitive), required: false);
+            var __workflow_getRegexMatchestrimResults = WorkflowExpression.Compile(getRegexMatchestrimResults, nameof(getRegexMatchestrimResults), required: false);
+            var __workflow_getRegexMatchesremoveEmptyResults = WorkflowExpression.Compile(getRegexMatchesremoveEmptyResults, nameof(getRegexMatchesremoveEmptyResults), required: false);
+            var __workflow_getRegexMatchesregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexMatchesregexTimeoutInSeconds, nameof(getRegexMatchesregexTimeoutInSeconds), required: false);
             return new DeferredBodyAction<GetRegexMatchesResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexMatches";
@@ -718,18 +670,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetRegexSplitResponse> GetRegexSplit(Expression<Func<string>> getRegexSplittextToSplit, Expression<Func<string>> getRegexSplitregex, Expression<Func<bool>> getRegexSplitcaseSensitive = null, Expression<Func<bool>> getRegexSplittrimResults = null, Expression<Func<bool>> getRegexSplitremoveEmptyResults = null, Expression<Func<int>> getRegexSplitregexTimeoutInSeconds = null)
         {
-            var __workflow_getRegexSplittextToSplit = getRegexSplittextToSplit == null ? null : WorkflowExpression.Compile(getRegexSplittextToSplit);
-            WorkflowExpression.Validate(__workflow_getRegexSplittextToSplit, nameof(getRegexSplittextToSplit), required: true);
-            var __workflow_getRegexSplitregex = getRegexSplitregex == null ? null : WorkflowExpression.Compile(getRegexSplitregex);
-            WorkflowExpression.Validate(__workflow_getRegexSplitregex, nameof(getRegexSplitregex), required: true);
-            var __workflow_getRegexSplitcaseSensitive = getRegexSplitcaseSensitive == null ? null : WorkflowExpression.Compile(getRegexSplitcaseSensitive);
-            WorkflowExpression.Validate(__workflow_getRegexSplitcaseSensitive, nameof(getRegexSplitcaseSensitive), required: false);
-            var __workflow_getRegexSplittrimResults = getRegexSplittrimResults == null ? null : WorkflowExpression.Compile(getRegexSplittrimResults);
-            WorkflowExpression.Validate(__workflow_getRegexSplittrimResults, nameof(getRegexSplittrimResults), required: false);
-            var __workflow_getRegexSplitremoveEmptyResults = getRegexSplitremoveEmptyResults == null ? null : WorkflowExpression.Compile(getRegexSplitremoveEmptyResults);
-            WorkflowExpression.Validate(__workflow_getRegexSplitremoveEmptyResults, nameof(getRegexSplitremoveEmptyResults), required: false);
-            var __workflow_getRegexSplitregexTimeoutInSeconds = getRegexSplitregexTimeoutInSeconds == null ? null : WorkflowExpression.Compile(getRegexSplitregexTimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_getRegexSplitregexTimeoutInSeconds, nameof(getRegexSplitregexTimeoutInSeconds), required: false);
+            var __workflow_getRegexSplittextToSplit = WorkflowExpression.Compile(getRegexSplittextToSplit, nameof(getRegexSplittextToSplit), required: true);
+            var __workflow_getRegexSplitregex = WorkflowExpression.Compile(getRegexSplitregex, nameof(getRegexSplitregex), required: true);
+            var __workflow_getRegexSplitcaseSensitive = WorkflowExpression.Compile(getRegexSplitcaseSensitive, nameof(getRegexSplitcaseSensitive), required: false);
+            var __workflow_getRegexSplittrimResults = WorkflowExpression.Compile(getRegexSplittrimResults, nameof(getRegexSplittrimResults), required: false);
+            var __workflow_getRegexSplitremoveEmptyResults = WorkflowExpression.Compile(getRegexSplitremoveEmptyResults, nameof(getRegexSplitremoveEmptyResults), required: false);
+            var __workflow_getRegexSplitregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexSplitregexTimeoutInSeconds, nameof(getRegexSplitregexTimeoutInSeconds), required: false);
             return new DeferredBodyAction<GetRegexSplitResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexSplit";
@@ -817,18 +763,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetRegexGroupMatchesResponse> GetRegexGroupMatches(Expression<Func<string>> getRegexGroupMatchestextToMatch, Expression<Func<string>> getRegexGroupMatchesregex, Expression<Func<string[]>> getRegexGroupMatchesgroupsToRetrieve = null, Expression<Func<int>> getRegexGroupMatchessearchIndex = null, Expression<Func<bool>> getRegexGroupMatchescaseSensitive = null, Expression<Func<int>> getRegexGroupMatchesregexTimeoutInSeconds = null)
         {
-            var __workflow_getRegexGroupMatchestextToMatch = getRegexGroupMatchestextToMatch == null ? null : WorkflowExpression.Compile(getRegexGroupMatchestextToMatch);
-            WorkflowExpression.Validate(__workflow_getRegexGroupMatchestextToMatch, nameof(getRegexGroupMatchestextToMatch), required: true);
-            var __workflow_getRegexGroupMatchesregex = getRegexGroupMatchesregex == null ? null : WorkflowExpression.Compile(getRegexGroupMatchesregex);
-            WorkflowExpression.Validate(__workflow_getRegexGroupMatchesregex, nameof(getRegexGroupMatchesregex), required: true);
-            var __workflow_getRegexGroupMatchesgroupsToRetrieve = getRegexGroupMatchesgroupsToRetrieve == null ? null : WorkflowExpression.Compile(getRegexGroupMatchesgroupsToRetrieve);
-            WorkflowExpression.Validate(__workflow_getRegexGroupMatchesgroupsToRetrieve, nameof(getRegexGroupMatchesgroupsToRetrieve), required: false);
-            var __workflow_getRegexGroupMatchessearchIndex = getRegexGroupMatchessearchIndex == null ? null : WorkflowExpression.Compile(getRegexGroupMatchessearchIndex);
-            WorkflowExpression.Validate(__workflow_getRegexGroupMatchessearchIndex, nameof(getRegexGroupMatchessearchIndex), required: false);
-            var __workflow_getRegexGroupMatchescaseSensitive = getRegexGroupMatchescaseSensitive == null ? null : WorkflowExpression.Compile(getRegexGroupMatchescaseSensitive);
-            WorkflowExpression.Validate(__workflow_getRegexGroupMatchescaseSensitive, nameof(getRegexGroupMatchescaseSensitive), required: false);
-            var __workflow_getRegexGroupMatchesregexTimeoutInSeconds = getRegexGroupMatchesregexTimeoutInSeconds == null ? null : WorkflowExpression.Compile(getRegexGroupMatchesregexTimeoutInSeconds);
-            WorkflowExpression.Validate(__workflow_getRegexGroupMatchesregexTimeoutInSeconds, nameof(getRegexGroupMatchesregexTimeoutInSeconds), required: false);
+            var __workflow_getRegexGroupMatchestextToMatch = WorkflowExpression.Compile(getRegexGroupMatchestextToMatch, nameof(getRegexGroupMatchestextToMatch), required: true);
+            var __workflow_getRegexGroupMatchesregex = WorkflowExpression.Compile(getRegexGroupMatchesregex, nameof(getRegexGroupMatchesregex), required: true);
+            var __workflow_getRegexGroupMatchesgroupsToRetrieve = WorkflowExpression.Compile(getRegexGroupMatchesgroupsToRetrieve, nameof(getRegexGroupMatchesgroupsToRetrieve), required: false);
+            var __workflow_getRegexGroupMatchessearchIndex = WorkflowExpression.Compile(getRegexGroupMatchessearchIndex, nameof(getRegexGroupMatchessearchIndex), required: false);
+            var __workflow_getRegexGroupMatchescaseSensitive = WorkflowExpression.Compile(getRegexGroupMatchescaseSensitive, nameof(getRegexGroupMatchescaseSensitive), required: false);
+            var __workflow_getRegexGroupMatchesregexTimeoutInSeconds = WorkflowExpression.Compile(getRegexGroupMatchesregexTimeoutInSeconds, nameof(getRegexGroupMatchesregexTimeoutInSeconds), required: false);
             return new DeferredBodyAction<GetRegexGroupMatchesResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetRegexGroupMatches";
@@ -906,10 +846,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<CreateJSONFromInputVariablesResponse> CreateJSONFromInputVariables(Expression<Func<createJSONFromInputVariablesinputVariablesInputItem[]>> createJSONFromInputVariablesinputVariables, Expression<Func<bool>> createJSONFromInputVariablesreturnAsJSONTable)
         {
-            var __workflow_createJSONFromInputVariablesinputVariables = createJSONFromInputVariablesinputVariables == null ? null : WorkflowExpression.Compile(createJSONFromInputVariablesinputVariables);
-            WorkflowExpression.Validate(__workflow_createJSONFromInputVariablesinputVariables, nameof(createJSONFromInputVariablesinputVariables), required: true);
-            var __workflow_createJSONFromInputVariablesreturnAsJSONTable = createJSONFromInputVariablesreturnAsJSONTable == null ? null : WorkflowExpression.Compile(createJSONFromInputVariablesreturnAsJSONTable);
-            WorkflowExpression.Validate(__workflow_createJSONFromInputVariablesreturnAsJSONTable, nameof(createJSONFromInputVariablesreturnAsJSONTable), required: true);
+            var __workflow_createJSONFromInputVariablesinputVariables = WorkflowExpression.Compile(createJSONFromInputVariablesinputVariables, nameof(createJSONFromInputVariablesinputVariables), required: true);
+            var __workflow_createJSONFromInputVariablesreturnAsJSONTable = WorkflowExpression.Compile(createJSONFromInputVariablesreturnAsJSONTable, nameof(createJSONFromInputVariablesreturnAsJSONTable), required: true);
             return new DeferredBodyAction<CreateJSONFromInputVariablesResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/CreateJSONFromInputVariables";
@@ -933,12 +871,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetJSONTableFromStringArrayResponse> GetJSONTableFromStringArray(Expression<Func<string[]>> getJSONTableFromStringArrayinputArray, Expression<Func<string>> getJSONTableFromStringArraycolumnName, Expression<Func<bool>> getJSONTableFromStringArraydropEmptyItems = null)
         {
-            var __workflow_getJSONTableFromStringArrayinputArray = getJSONTableFromStringArrayinputArray == null ? null : WorkflowExpression.Compile(getJSONTableFromStringArrayinputArray);
-            WorkflowExpression.Validate(__workflow_getJSONTableFromStringArrayinputArray, nameof(getJSONTableFromStringArrayinputArray), required: true);
-            var __workflow_getJSONTableFromStringArraycolumnName = getJSONTableFromStringArraycolumnName == null ? null : WorkflowExpression.Compile(getJSONTableFromStringArraycolumnName);
-            WorkflowExpression.Validate(__workflow_getJSONTableFromStringArraycolumnName, nameof(getJSONTableFromStringArraycolumnName), required: true);
-            var __workflow_getJSONTableFromStringArraydropEmptyItems = getJSONTableFromStringArraydropEmptyItems == null ? null : WorkflowExpression.Compile(getJSONTableFromStringArraydropEmptyItems);
-            WorkflowExpression.Validate(__workflow_getJSONTableFromStringArraydropEmptyItems, nameof(getJSONTableFromStringArraydropEmptyItems), required: false);
+            var __workflow_getJSONTableFromStringArrayinputArray = WorkflowExpression.Compile(getJSONTableFromStringArrayinputArray, nameof(getJSONTableFromStringArrayinputArray), required: true);
+            var __workflow_getJSONTableFromStringArraycolumnName = WorkflowExpression.Compile(getJSONTableFromStringArraycolumnName, nameof(getJSONTableFromStringArraycolumnName), required: true);
+            var __workflow_getJSONTableFromStringArraydropEmptyItems = WorkflowExpression.Compile(getJSONTableFromStringArraydropEmptyItems, nameof(getJSONTableFromStringArraydropEmptyItems), required: false);
             return new DeferredBodyAction<GetJSONTableFromStringArrayResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetJSONTableFromStringArray";
@@ -978,22 +913,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<FilterJSONTableResponse> FilterJSONTable(Expression<Func<string>> filterJSONTablejSONTable, Expression<Func<string>> filterJSONTablefilter, Expression<Func<string>> filterJSONTablesortColumnName = null, Expression<Func<bool>> filterJSONTableascending = null, Expression<Func<string>> filterJSONTablesortColumnName2 = null, Expression<Func<bool>> filterJSONTableascending2 = null, Expression<Func<string>> filterJSONTablesortColumnName3 = null, Expression<Func<bool>> filterJSONTableascending3 = null)
         {
-            var __workflow_filterJSONTablejSONTable = filterJSONTablejSONTable == null ? null : WorkflowExpression.Compile(filterJSONTablejSONTable);
-            WorkflowExpression.Validate(__workflow_filterJSONTablejSONTable, nameof(filterJSONTablejSONTable), required: true);
-            var __workflow_filterJSONTablefilter = filterJSONTablefilter == null ? null : WorkflowExpression.Compile(filterJSONTablefilter);
-            WorkflowExpression.Validate(__workflow_filterJSONTablefilter, nameof(filterJSONTablefilter), required: true);
-            var __workflow_filterJSONTablesortColumnName = filterJSONTablesortColumnName == null ? null : WorkflowExpression.Compile(filterJSONTablesortColumnName);
-            WorkflowExpression.Validate(__workflow_filterJSONTablesortColumnName, nameof(filterJSONTablesortColumnName), required: false);
-            var __workflow_filterJSONTableascending = filterJSONTableascending == null ? null : WorkflowExpression.Compile(filterJSONTableascending);
-            WorkflowExpression.Validate(__workflow_filterJSONTableascending, nameof(filterJSONTableascending), required: false);
-            var __workflow_filterJSONTablesortColumnName2 = filterJSONTablesortColumnName2 == null ? null : WorkflowExpression.Compile(filterJSONTablesortColumnName2);
-            WorkflowExpression.Validate(__workflow_filterJSONTablesortColumnName2, nameof(filterJSONTablesortColumnName2), required: false);
-            var __workflow_filterJSONTableascending2 = filterJSONTableascending2 == null ? null : WorkflowExpression.Compile(filterJSONTableascending2);
-            WorkflowExpression.Validate(__workflow_filterJSONTableascending2, nameof(filterJSONTableascending2), required: false);
-            var __workflow_filterJSONTablesortColumnName3 = filterJSONTablesortColumnName3 == null ? null : WorkflowExpression.Compile(filterJSONTablesortColumnName3);
-            WorkflowExpression.Validate(__workflow_filterJSONTablesortColumnName3, nameof(filterJSONTablesortColumnName3), required: false);
-            var __workflow_filterJSONTableascending3 = filterJSONTableascending3 == null ? null : WorkflowExpression.Compile(filterJSONTableascending3);
-            WorkflowExpression.Validate(__workflow_filterJSONTableascending3, nameof(filterJSONTableascending3), required: false);
+            var __workflow_filterJSONTablejSONTable = WorkflowExpression.Compile(filterJSONTablejSONTable, nameof(filterJSONTablejSONTable), required: true);
+            var __workflow_filterJSONTablefilter = WorkflowExpression.Compile(filterJSONTablefilter, nameof(filterJSONTablefilter), required: true);
+            var __workflow_filterJSONTablesortColumnName = WorkflowExpression.Compile(filterJSONTablesortColumnName, nameof(filterJSONTablesortColumnName), required: false);
+            var __workflow_filterJSONTableascending = WorkflowExpression.Compile(filterJSONTableascending, nameof(filterJSONTableascending), required: false);
+            var __workflow_filterJSONTablesortColumnName2 = WorkflowExpression.Compile(filterJSONTablesortColumnName2, nameof(filterJSONTablesortColumnName2), required: false);
+            var __workflow_filterJSONTableascending2 = WorkflowExpression.Compile(filterJSONTableascending2, nameof(filterJSONTableascending2), required: false);
+            var __workflow_filterJSONTablesortColumnName3 = WorkflowExpression.Compile(filterJSONTablesortColumnName3, nameof(filterJSONTablesortColumnName3), required: false);
+            var __workflow_filterJSONTableascending3 = WorkflowExpression.Compile(filterJSONTableascending3, nameof(filterJSONTableascending3), required: false);
             return new DeferredBodyAction<FilterJSONTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/FilterJSONTable";
@@ -1083,22 +1010,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<FilterTableResponse> FilterTable(Expression<Func<JToken[]>> filterTableinputTable, Expression<Func<string>> filterTablefilter, Expression<Func<string>> filterTablesortColumnName = null, Expression<Func<bool>> filterTableascending = null, Expression<Func<string>> filterTablesortColumnName2 = null, Expression<Func<bool>> filterTableascending2 = null, Expression<Func<string>> filterTablesortColumnName3 = null, Expression<Func<bool>> filterTableascending3 = null)
         {
-            var __workflow_filterTableinputTable = filterTableinputTable == null ? null : WorkflowExpression.Compile(filterTableinputTable);
-            WorkflowExpression.Validate(__workflow_filterTableinputTable, nameof(filterTableinputTable), required: true);
-            var __workflow_filterTablefilter = filterTablefilter == null ? null : WorkflowExpression.Compile(filterTablefilter);
-            WorkflowExpression.Validate(__workflow_filterTablefilter, nameof(filterTablefilter), required: true);
-            var __workflow_filterTablesortColumnName = filterTablesortColumnName == null ? null : WorkflowExpression.Compile(filterTablesortColumnName);
-            WorkflowExpression.Validate(__workflow_filterTablesortColumnName, nameof(filterTablesortColumnName), required: false);
-            var __workflow_filterTableascending = filterTableascending == null ? null : WorkflowExpression.Compile(filterTableascending);
-            WorkflowExpression.Validate(__workflow_filterTableascending, nameof(filterTableascending), required: false);
-            var __workflow_filterTablesortColumnName2 = filterTablesortColumnName2 == null ? null : WorkflowExpression.Compile(filterTablesortColumnName2);
-            WorkflowExpression.Validate(__workflow_filterTablesortColumnName2, nameof(filterTablesortColumnName2), required: false);
-            var __workflow_filterTableascending2 = filterTableascending2 == null ? null : WorkflowExpression.Compile(filterTableascending2);
-            WorkflowExpression.Validate(__workflow_filterTableascending2, nameof(filterTableascending2), required: false);
-            var __workflow_filterTablesortColumnName3 = filterTablesortColumnName3 == null ? null : WorkflowExpression.Compile(filterTablesortColumnName3);
-            WorkflowExpression.Validate(__workflow_filterTablesortColumnName3, nameof(filterTablesortColumnName3), required: false);
-            var __workflow_filterTableascending3 = filterTableascending3 == null ? null : WorkflowExpression.Compile(filterTableascending3);
-            WorkflowExpression.Validate(__workflow_filterTableascending3, nameof(filterTableascending3), required: false);
+            var __workflow_filterTableinputTable = WorkflowExpression.Compile(filterTableinputTable, nameof(filterTableinputTable), required: true);
+            var __workflow_filterTablefilter = WorkflowExpression.Compile(filterTablefilter, nameof(filterTablefilter), required: true);
+            var __workflow_filterTablesortColumnName = WorkflowExpression.Compile(filterTablesortColumnName, nameof(filterTablesortColumnName), required: false);
+            var __workflow_filterTableascending = WorkflowExpression.Compile(filterTableascending, nameof(filterTableascending), required: false);
+            var __workflow_filterTablesortColumnName2 = WorkflowExpression.Compile(filterTablesortColumnName2, nameof(filterTablesortColumnName2), required: false);
+            var __workflow_filterTableascending2 = WorkflowExpression.Compile(filterTableascending2, nameof(filterTableascending2), required: false);
+            var __workflow_filterTablesortColumnName3 = WorkflowExpression.Compile(filterTablesortColumnName3, nameof(filterTablesortColumnName3), required: false);
+            var __workflow_filterTableascending3 = WorkflowExpression.Compile(filterTableascending3, nameof(filterTableascending3), required: false);
             return new DeferredBodyAction<FilterTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/FilterTable";
@@ -1188,20 +1107,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<SortTableResponse> SortTable(Expression<Func<JToken[]>> sortTableinputTable, Expression<Func<string>> sortTablesortColumnName, Expression<Func<bool>> sortTableascending, Expression<Func<string>> sortTablesortColumnName2 = null, Expression<Func<bool>> sortTableascending2 = null, Expression<Func<string>> sortTablesortColumnName3 = null, Expression<Func<bool>> sortTableascending3 = null)
         {
-            var __workflow_sortTableinputTable = sortTableinputTable == null ? null : WorkflowExpression.Compile(sortTableinputTable);
-            WorkflowExpression.Validate(__workflow_sortTableinputTable, nameof(sortTableinputTable), required: true);
-            var __workflow_sortTablesortColumnName = sortTablesortColumnName == null ? null : WorkflowExpression.Compile(sortTablesortColumnName);
-            WorkflowExpression.Validate(__workflow_sortTablesortColumnName, nameof(sortTablesortColumnName), required: true);
-            var __workflow_sortTableascending = sortTableascending == null ? null : WorkflowExpression.Compile(sortTableascending);
-            WorkflowExpression.Validate(__workflow_sortTableascending, nameof(sortTableascending), required: true);
-            var __workflow_sortTablesortColumnName2 = sortTablesortColumnName2 == null ? null : WorkflowExpression.Compile(sortTablesortColumnName2);
-            WorkflowExpression.Validate(__workflow_sortTablesortColumnName2, nameof(sortTablesortColumnName2), required: false);
-            var __workflow_sortTableascending2 = sortTableascending2 == null ? null : WorkflowExpression.Compile(sortTableascending2);
-            WorkflowExpression.Validate(__workflow_sortTableascending2, nameof(sortTableascending2), required: false);
-            var __workflow_sortTablesortColumnName3 = sortTablesortColumnName3 == null ? null : WorkflowExpression.Compile(sortTablesortColumnName3);
-            WorkflowExpression.Validate(__workflow_sortTablesortColumnName3, nameof(sortTablesortColumnName3), required: false);
-            var __workflow_sortTableascending3 = sortTableascending3 == null ? null : WorkflowExpression.Compile(sortTableascending3);
-            WorkflowExpression.Validate(__workflow_sortTableascending3, nameof(sortTableascending3), required: false);
+            var __workflow_sortTableinputTable = WorkflowExpression.Compile(sortTableinputTable, nameof(sortTableinputTable), required: true);
+            var __workflow_sortTablesortColumnName = WorkflowExpression.Compile(sortTablesortColumnName, nameof(sortTablesortColumnName), required: true);
+            var __workflow_sortTableascending = WorkflowExpression.Compile(sortTableascending, nameof(sortTableascending), required: true);
+            var __workflow_sortTablesortColumnName2 = WorkflowExpression.Compile(sortTablesortColumnName2, nameof(sortTablesortColumnName2), required: false);
+            var __workflow_sortTableascending2 = WorkflowExpression.Compile(sortTableascending2, nameof(sortTableascending2), required: false);
+            var __workflow_sortTablesortColumnName3 = WorkflowExpression.Compile(sortTablesortColumnName3, nameof(sortTablesortColumnName3), required: false);
+            var __workflow_sortTableascending3 = WorkflowExpression.Compile(sortTableascending3, nameof(sortTableascending3), required: false);
             return new DeferredBodyAction<SortTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/SortTable";
@@ -1271,20 +1183,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<SortJSONTableResponse> SortJSONTable(Expression<Func<string>> sortJSONTablejSONTable, Expression<Func<string>> sortJSONTablesortColumnName, Expression<Func<bool>> sortJSONTableascending = null, Expression<Func<string>> sortJSONTablesortColumnName2 = null, Expression<Func<bool>> sortJSONTableascending2 = null, Expression<Func<string>> sortJSONTablesortColumnName3 = null, Expression<Func<bool>> sortJSONTableascending3 = null)
         {
-            var __workflow_sortJSONTablejSONTable = sortJSONTablejSONTable == null ? null : WorkflowExpression.Compile(sortJSONTablejSONTable);
-            WorkflowExpression.Validate(__workflow_sortJSONTablejSONTable, nameof(sortJSONTablejSONTable), required: true);
-            var __workflow_sortJSONTablesortColumnName = sortJSONTablesortColumnName == null ? null : WorkflowExpression.Compile(sortJSONTablesortColumnName);
-            WorkflowExpression.Validate(__workflow_sortJSONTablesortColumnName, nameof(sortJSONTablesortColumnName), required: true);
-            var __workflow_sortJSONTableascending = sortJSONTableascending == null ? null : WorkflowExpression.Compile(sortJSONTableascending);
-            WorkflowExpression.Validate(__workflow_sortJSONTableascending, nameof(sortJSONTableascending), required: false);
-            var __workflow_sortJSONTablesortColumnName2 = sortJSONTablesortColumnName2 == null ? null : WorkflowExpression.Compile(sortJSONTablesortColumnName2);
-            WorkflowExpression.Validate(__workflow_sortJSONTablesortColumnName2, nameof(sortJSONTablesortColumnName2), required: false);
-            var __workflow_sortJSONTableascending2 = sortJSONTableascending2 == null ? null : WorkflowExpression.Compile(sortJSONTableascending2);
-            WorkflowExpression.Validate(__workflow_sortJSONTableascending2, nameof(sortJSONTableascending2), required: false);
-            var __workflow_sortJSONTablesortColumnName3 = sortJSONTablesortColumnName3 == null ? null : WorkflowExpression.Compile(sortJSONTablesortColumnName3);
-            WorkflowExpression.Validate(__workflow_sortJSONTablesortColumnName3, nameof(sortJSONTablesortColumnName3), required: false);
-            var __workflow_sortJSONTableascending3 = sortJSONTableascending3 == null ? null : WorkflowExpression.Compile(sortJSONTableascending3);
-            WorkflowExpression.Validate(__workflow_sortJSONTableascending3, nameof(sortJSONTableascending3), required: false);
+            var __workflow_sortJSONTablejSONTable = WorkflowExpression.Compile(sortJSONTablejSONTable, nameof(sortJSONTablejSONTable), required: true);
+            var __workflow_sortJSONTablesortColumnName = WorkflowExpression.Compile(sortJSONTablesortColumnName, nameof(sortJSONTablesortColumnName), required: true);
+            var __workflow_sortJSONTableascending = WorkflowExpression.Compile(sortJSONTableascending, nameof(sortJSONTableascending), required: false);
+            var __workflow_sortJSONTablesortColumnName2 = WorkflowExpression.Compile(sortJSONTablesortColumnName2, nameof(sortJSONTablesortColumnName2), required: false);
+            var __workflow_sortJSONTableascending2 = WorkflowExpression.Compile(sortJSONTableascending2, nameof(sortJSONTableascending2), required: false);
+            var __workflow_sortJSONTablesortColumnName3 = WorkflowExpression.Compile(sortJSONTablesortColumnName3, nameof(sortJSONTablesortColumnName3), required: false);
+            var __workflow_sortJSONTableascending3 = WorkflowExpression.Compile(sortJSONTableascending3, nameof(sortJSONTableascending3), required: false);
             return new DeferredBodyAction<SortJSONTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/SortJSONTable";
@@ -1368,12 +1273,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetTableFromStringArrayResponse> GetTableFromStringArray(Expression<Func<string[]>> getTableFromStringArrayinputArray, Expression<Func<string>> getTableFromStringArraycolumnName, Expression<Func<bool>> getTableFromStringArraydropEmptyItems = null)
         {
-            var __workflow_getTableFromStringArrayinputArray = getTableFromStringArrayinputArray == null ? null : WorkflowExpression.Compile(getTableFromStringArrayinputArray);
-            WorkflowExpression.Validate(__workflow_getTableFromStringArrayinputArray, nameof(getTableFromStringArrayinputArray), required: true);
-            var __workflow_getTableFromStringArraycolumnName = getTableFromStringArraycolumnName == null ? null : WorkflowExpression.Compile(getTableFromStringArraycolumnName);
-            WorkflowExpression.Validate(__workflow_getTableFromStringArraycolumnName, nameof(getTableFromStringArraycolumnName), required: true);
-            var __workflow_getTableFromStringArraydropEmptyItems = getTableFromStringArraydropEmptyItems == null ? null : WorkflowExpression.Compile(getTableFromStringArraydropEmptyItems);
-            WorkflowExpression.Validate(__workflow_getTableFromStringArraydropEmptyItems, nameof(getTableFromStringArraydropEmptyItems), required: false);
+            var __workflow_getTableFromStringArrayinputArray = WorkflowExpression.Compile(getTableFromStringArrayinputArray, nameof(getTableFromStringArrayinputArray), required: true);
+            var __workflow_getTableFromStringArraycolumnName = WorkflowExpression.Compile(getTableFromStringArraycolumnName, nameof(getTableFromStringArraycolumnName), required: true);
+            var __workflow_getTableFromStringArraydropEmptyItems = WorkflowExpression.Compile(getTableFromStringArraydropEmptyItems, nameof(getTableFromStringArraydropEmptyItems), required: false);
             return new DeferredBodyAction<GetTableFromStringArrayResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetTableFromStringArray";
@@ -1413,18 +1315,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetTableFromJSONResponse> GetTableFromJSON(Expression<Func<string>> getTableFromJSONjSONTable, Expression<Func<int>> getTableFromJSONstartRowIndex, Expression<Func<int>> getTableFromJSONnumberOfRowsToRetrieve = null, Expression<Func<int>> getTableFromJSONstartColumnIndex = null, Expression<Func<string>> getTableFromJSONstartColumnName = null, Expression<Func<int>> getTableFromJSONnumberOfColumnsToRetrieve = null)
         {
-            var __workflow_getTableFromJSONjSONTable = getTableFromJSONjSONTable == null ? null : WorkflowExpression.Compile(getTableFromJSONjSONTable);
-            WorkflowExpression.Validate(__workflow_getTableFromJSONjSONTable, nameof(getTableFromJSONjSONTable), required: true);
-            var __workflow_getTableFromJSONstartRowIndex = getTableFromJSONstartRowIndex == null ? null : WorkflowExpression.Compile(getTableFromJSONstartRowIndex);
-            WorkflowExpression.Validate(__workflow_getTableFromJSONstartRowIndex, nameof(getTableFromJSONstartRowIndex), required: true);
-            var __workflow_getTableFromJSONnumberOfRowsToRetrieve = getTableFromJSONnumberOfRowsToRetrieve == null ? null : WorkflowExpression.Compile(getTableFromJSONnumberOfRowsToRetrieve);
-            WorkflowExpression.Validate(__workflow_getTableFromJSONnumberOfRowsToRetrieve, nameof(getTableFromJSONnumberOfRowsToRetrieve), required: false);
-            var __workflow_getTableFromJSONstartColumnIndex = getTableFromJSONstartColumnIndex == null ? null : WorkflowExpression.Compile(getTableFromJSONstartColumnIndex);
-            WorkflowExpression.Validate(__workflow_getTableFromJSONstartColumnIndex, nameof(getTableFromJSONstartColumnIndex), required: false);
-            var __workflow_getTableFromJSONstartColumnName = getTableFromJSONstartColumnName == null ? null : WorkflowExpression.Compile(getTableFromJSONstartColumnName);
-            WorkflowExpression.Validate(__workflow_getTableFromJSONstartColumnName, nameof(getTableFromJSONstartColumnName), required: false);
-            var __workflow_getTableFromJSONnumberOfColumnsToRetrieve = getTableFromJSONnumberOfColumnsToRetrieve == null ? null : WorkflowExpression.Compile(getTableFromJSONnumberOfColumnsToRetrieve);
-            WorkflowExpression.Validate(__workflow_getTableFromJSONnumberOfColumnsToRetrieve, nameof(getTableFromJSONnumberOfColumnsToRetrieve), required: false);
+            var __workflow_getTableFromJSONjSONTable = WorkflowExpression.Compile(getTableFromJSONjSONTable, nameof(getTableFromJSONjSONTable), required: true);
+            var __workflow_getTableFromJSONstartRowIndex = WorkflowExpression.Compile(getTableFromJSONstartRowIndex, nameof(getTableFromJSONstartRowIndex), required: true);
+            var __workflow_getTableFromJSONnumberOfRowsToRetrieve = WorkflowExpression.Compile(getTableFromJSONnumberOfRowsToRetrieve, nameof(getTableFromJSONnumberOfRowsToRetrieve), required: false);
+            var __workflow_getTableFromJSONstartColumnIndex = WorkflowExpression.Compile(getTableFromJSONstartColumnIndex, nameof(getTableFromJSONstartColumnIndex), required: false);
+            var __workflow_getTableFromJSONstartColumnName = WorkflowExpression.Compile(getTableFromJSONstartColumnName, nameof(getTableFromJSONstartColumnName), required: false);
+            var __workflow_getTableFromJSONnumberOfColumnsToRetrieve = WorkflowExpression.Compile(getTableFromJSONnumberOfColumnsToRetrieve, nameof(getTableFromJSONnumberOfColumnsToRetrieve), required: false);
             return new DeferredBodyAction<GetTableFromJSONResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetTableFromJSON";
@@ -1482,12 +1378,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<SortStringArrayResponse> SortStringArray(Expression<Func<string[]>> sortStringArrayinputArray, Expression<Func<bool>> sortStringArrayascending = null, Expression<Func<bool>> sortStringArraycaseSensitive = null)
         {
-            var __workflow_sortStringArrayinputArray = sortStringArrayinputArray == null ? null : WorkflowExpression.Compile(sortStringArrayinputArray);
-            WorkflowExpression.Validate(__workflow_sortStringArrayinputArray, nameof(sortStringArrayinputArray), required: true);
-            var __workflow_sortStringArrayascending = sortStringArrayascending == null ? null : WorkflowExpression.Compile(sortStringArrayascending);
-            WorkflowExpression.Validate(__workflow_sortStringArrayascending, nameof(sortStringArrayascending), required: false);
-            var __workflow_sortStringArraycaseSensitive = sortStringArraycaseSensitive == null ? null : WorkflowExpression.Compile(sortStringArraycaseSensitive);
-            WorkflowExpression.Validate(__workflow_sortStringArraycaseSensitive, nameof(sortStringArraycaseSensitive), required: false);
+            var __workflow_sortStringArrayinputArray = WorkflowExpression.Compile(sortStringArrayinputArray, nameof(sortStringArrayinputArray), required: true);
+            var __workflow_sortStringArrayascending = WorkflowExpression.Compile(sortStringArrayascending, nameof(sortStringArrayascending), required: false);
+            var __workflow_sortStringArraycaseSensitive = WorkflowExpression.Compile(sortStringArraycaseSensitive, nameof(sortStringArraycaseSensitive), required: false);
             return new DeferredBodyAction<SortStringArrayResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/SortStringArray";
@@ -1541,12 +1434,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<FilterStringArrayResponse> FilterStringArray(Expression<Func<string[]>> filterStringArrayinputArray, Expression<Func<string>> filterStringArraycolumnName, Expression<Func<string>> filterStringArrayfilter)
         {
-            var __workflow_filterStringArrayinputArray = filterStringArrayinputArray == null ? null : WorkflowExpression.Compile(filterStringArrayinputArray);
-            WorkflowExpression.Validate(__workflow_filterStringArrayinputArray, nameof(filterStringArrayinputArray), required: true);
-            var __workflow_filterStringArraycolumnName = filterStringArraycolumnName == null ? null : WorkflowExpression.Compile(filterStringArraycolumnName);
-            WorkflowExpression.Validate(__workflow_filterStringArraycolumnName, nameof(filterStringArraycolumnName), required: true);
-            var __workflow_filterStringArrayfilter = filterStringArrayfilter == null ? null : WorkflowExpression.Compile(filterStringArrayfilter);
-            WorkflowExpression.Validate(__workflow_filterStringArrayfilter, nameof(filterStringArrayfilter), required: true);
+            var __workflow_filterStringArrayinputArray = WorkflowExpression.Compile(filterStringArrayinputArray, nameof(filterStringArrayinputArray), required: true);
+            var __workflow_filterStringArraycolumnName = WorkflowExpression.Compile(filterStringArraycolumnName, nameof(filterStringArraycolumnName), required: true);
+            var __workflow_filterStringArrayfilter = WorkflowExpression.Compile(filterStringArrayfilter, nameof(filterStringArrayfilter), required: true);
             return new DeferredBodyAction<FilterStringArrayResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/FilterStringArray";
@@ -1572,12 +1462,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<InsertRowInStringArrayResponse> InsertRowInStringArray(Expression<Func<string[]>> insertRowInStringArrayinputArray, Expression<Func<int>> insertRowInStringArrayrowIndex, Expression<Func<string>> insertRowInStringArrayvalueToInsert = null)
         {
-            var __workflow_insertRowInStringArrayinputArray = insertRowInStringArrayinputArray == null ? null : WorkflowExpression.Compile(insertRowInStringArrayinputArray);
-            WorkflowExpression.Validate(__workflow_insertRowInStringArrayinputArray, nameof(insertRowInStringArrayinputArray), required: true);
-            var __workflow_insertRowInStringArrayrowIndex = insertRowInStringArrayrowIndex == null ? null : WorkflowExpression.Compile(insertRowInStringArrayrowIndex);
-            WorkflowExpression.Validate(__workflow_insertRowInStringArrayrowIndex, nameof(insertRowInStringArrayrowIndex), required: true);
-            var __workflow_insertRowInStringArrayvalueToInsert = insertRowInStringArrayvalueToInsert == null ? null : WorkflowExpression.Compile(insertRowInStringArrayvalueToInsert);
-            WorkflowExpression.Validate(__workflow_insertRowInStringArrayvalueToInsert, nameof(insertRowInStringArrayvalueToInsert), required: false);
+            var __workflow_insertRowInStringArrayinputArray = WorkflowExpression.Compile(insertRowInStringArrayinputArray, nameof(insertRowInStringArrayinputArray), required: true);
+            var __workflow_insertRowInStringArrayrowIndex = WorkflowExpression.Compile(insertRowInStringArrayrowIndex, nameof(insertRowInStringArrayrowIndex), required: true);
+            var __workflow_insertRowInStringArrayvalueToInsert = WorkflowExpression.Compile(insertRowInStringArrayvalueToInsert, nameof(insertRowInStringArrayvalueToInsert), required: false);
             return new DeferredBodyAction<InsertRowInStringArrayResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInStringArray";
@@ -1607,12 +1494,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<InsertRowInTableResponse> InsertRowInTable(Expression<Func<JToken[]>> insertRowInTableinputTable, Expression<Func<int>> insertRowInTablerowIndex, Expression<Func<string>> insertRowInTablerowToInsertJSON = null)
         {
-            var __workflow_insertRowInTableinputTable = insertRowInTableinputTable == null ? null : WorkflowExpression.Compile(insertRowInTableinputTable);
-            WorkflowExpression.Validate(__workflow_insertRowInTableinputTable, nameof(insertRowInTableinputTable), required: true);
-            var __workflow_insertRowInTablerowIndex = insertRowInTablerowIndex == null ? null : WorkflowExpression.Compile(insertRowInTablerowIndex);
-            WorkflowExpression.Validate(__workflow_insertRowInTablerowIndex, nameof(insertRowInTablerowIndex), required: true);
-            var __workflow_insertRowInTablerowToInsertJSON = insertRowInTablerowToInsertJSON == null ? null : WorkflowExpression.Compile(insertRowInTablerowToInsertJSON);
-            WorkflowExpression.Validate(__workflow_insertRowInTablerowToInsertJSON, nameof(insertRowInTablerowToInsertJSON), required: false);
+            var __workflow_insertRowInTableinputTable = WorkflowExpression.Compile(insertRowInTableinputTable, nameof(insertRowInTableinputTable), required: true);
+            var __workflow_insertRowInTablerowIndex = WorkflowExpression.Compile(insertRowInTablerowIndex, nameof(insertRowInTablerowIndex), required: true);
+            var __workflow_insertRowInTablerowToInsertJSON = WorkflowExpression.Compile(insertRowInTablerowToInsertJSON, nameof(insertRowInTablerowToInsertJSON), required: false);
             return new DeferredBodyAction<InsertRowInTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInTable";
@@ -1642,12 +1526,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<InsertRowInJSONTableResponse> InsertRowInJSONTable(Expression<Func<string>> insertRowInJSONTablejSONTable, Expression<Func<int>> insertRowInJSONTablerowIndex, Expression<Func<string>> insertRowInJSONTablerowToInsertJSON = null)
         {
-            var __workflow_insertRowInJSONTablejSONTable = insertRowInJSONTablejSONTable == null ? null : WorkflowExpression.Compile(insertRowInJSONTablejSONTable);
-            WorkflowExpression.Validate(__workflow_insertRowInJSONTablejSONTable, nameof(insertRowInJSONTablejSONTable), required: true);
-            var __workflow_insertRowInJSONTablerowIndex = insertRowInJSONTablerowIndex == null ? null : WorkflowExpression.Compile(insertRowInJSONTablerowIndex);
-            WorkflowExpression.Validate(__workflow_insertRowInJSONTablerowIndex, nameof(insertRowInJSONTablerowIndex), required: true);
-            var __workflow_insertRowInJSONTablerowToInsertJSON = insertRowInJSONTablerowToInsertJSON == null ? null : WorkflowExpression.Compile(insertRowInJSONTablerowToInsertJSON);
-            WorkflowExpression.Validate(__workflow_insertRowInJSONTablerowToInsertJSON, nameof(insertRowInJSONTablerowToInsertJSON), required: false);
+            var __workflow_insertRowInJSONTablejSONTable = WorkflowExpression.Compile(insertRowInJSONTablejSONTable, nameof(insertRowInJSONTablejSONTable), required: true);
+            var __workflow_insertRowInJSONTablerowIndex = WorkflowExpression.Compile(insertRowInJSONTablerowIndex, nameof(insertRowInJSONTablerowIndex), required: true);
+            var __workflow_insertRowInJSONTablerowToInsertJSON = WorkflowExpression.Compile(insertRowInJSONTablerowToInsertJSON, nameof(insertRowInJSONTablerowToInsertJSON), required: false);
             return new DeferredBodyAction<InsertRowInJSONTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInJSONTable";
@@ -1677,12 +1558,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<InsertRowInJSONTableFromInputVariablesResponse> InsertRowInJSONTableFromInputVariables(Expression<Func<string>> insertRowInJSONTableFromInputVariablesjSONTable, Expression<Func<int>> insertRowInJSONTableFromInputVariablesrowIndex, Expression<Func<insertRowInJSONTableFromInputVariablesrowToInsertInputVariablesInputItem[]>> insertRowInJSONTableFromInputVariablesrowToInsertInputVariables)
         {
-            var __workflow_insertRowInJSONTableFromInputVariablesjSONTable = insertRowInJSONTableFromInputVariablesjSONTable == null ? null : WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesjSONTable);
-            WorkflowExpression.Validate(__workflow_insertRowInJSONTableFromInputVariablesjSONTable, nameof(insertRowInJSONTableFromInputVariablesjSONTable), required: true);
-            var __workflow_insertRowInJSONTableFromInputVariablesrowIndex = insertRowInJSONTableFromInputVariablesrowIndex == null ? null : WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesrowIndex);
-            WorkflowExpression.Validate(__workflow_insertRowInJSONTableFromInputVariablesrowIndex, nameof(insertRowInJSONTableFromInputVariablesrowIndex), required: true);
-            var __workflow_insertRowInJSONTableFromInputVariablesrowToInsertInputVariables = insertRowInJSONTableFromInputVariablesrowToInsertInputVariables == null ? null : WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables);
-            WorkflowExpression.Validate(__workflow_insertRowInJSONTableFromInputVariablesrowToInsertInputVariables, nameof(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables), required: true);
+            var __workflow_insertRowInJSONTableFromInputVariablesjSONTable = WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesjSONTable, nameof(insertRowInJSONTableFromInputVariablesjSONTable), required: true);
+            var __workflow_insertRowInJSONTableFromInputVariablesrowIndex = WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesrowIndex, nameof(insertRowInJSONTableFromInputVariablesrowIndex), required: true);
+            var __workflow_insertRowInJSONTableFromInputVariablesrowToInsertInputVariables = WorkflowExpression.Compile(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables, nameof(insertRowInJSONTableFromInputVariablesrowToInsertInputVariables), required: true);
             return new DeferredBodyAction<InsertRowInJSONTableFromInputVariablesResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/InsertRowInJSONTableFromInputVariables";
@@ -1708,12 +1586,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<DeleteItemsInStringArrayResponse> DeleteItemsInStringArray(Expression<Func<string[]>> deleteItemsInStringArrayinputArray, Expression<Func<int>> deleteItemsInStringArraystartItemIndex, Expression<Func<int>> deleteItemsInStringArraynumberOfItemsToDelete)
         {
-            var __workflow_deleteItemsInStringArrayinputArray = deleteItemsInStringArrayinputArray == null ? null : WorkflowExpression.Compile(deleteItemsInStringArrayinputArray);
-            WorkflowExpression.Validate(__workflow_deleteItemsInStringArrayinputArray, nameof(deleteItemsInStringArrayinputArray), required: true);
-            var __workflow_deleteItemsInStringArraystartItemIndex = deleteItemsInStringArraystartItemIndex == null ? null : WorkflowExpression.Compile(deleteItemsInStringArraystartItemIndex);
-            WorkflowExpression.Validate(__workflow_deleteItemsInStringArraystartItemIndex, nameof(deleteItemsInStringArraystartItemIndex), required: true);
-            var __workflow_deleteItemsInStringArraynumberOfItemsToDelete = deleteItemsInStringArraynumberOfItemsToDelete == null ? null : WorkflowExpression.Compile(deleteItemsInStringArraynumberOfItemsToDelete);
-            WorkflowExpression.Validate(__workflow_deleteItemsInStringArraynumberOfItemsToDelete, nameof(deleteItemsInStringArraynumberOfItemsToDelete), required: true);
+            var __workflow_deleteItemsInStringArrayinputArray = WorkflowExpression.Compile(deleteItemsInStringArrayinputArray, nameof(deleteItemsInStringArrayinputArray), required: true);
+            var __workflow_deleteItemsInStringArraystartItemIndex = WorkflowExpression.Compile(deleteItemsInStringArraystartItemIndex, nameof(deleteItemsInStringArraystartItemIndex), required: true);
+            var __workflow_deleteItemsInStringArraynumberOfItemsToDelete = WorkflowExpression.Compile(deleteItemsInStringArraynumberOfItemsToDelete, nameof(deleteItemsInStringArraynumberOfItemsToDelete), required: true);
             return new DeferredBodyAction<DeleteItemsInStringArrayResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteItemsInStringArray";
@@ -1739,12 +1614,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<DeleteRowsInTableResponse> DeleteRowsInTable(Expression<Func<JToken[]>> deleteRowsInTableinputTable, Expression<Func<int>> deleteRowsInTablestartRowIndex, Expression<Func<int>> deleteRowsInTablenumberOfRowsToDelete)
         {
-            var __workflow_deleteRowsInTableinputTable = deleteRowsInTableinputTable == null ? null : WorkflowExpression.Compile(deleteRowsInTableinputTable);
-            WorkflowExpression.Validate(__workflow_deleteRowsInTableinputTable, nameof(deleteRowsInTableinputTable), required: true);
-            var __workflow_deleteRowsInTablestartRowIndex = deleteRowsInTablestartRowIndex == null ? null : WorkflowExpression.Compile(deleteRowsInTablestartRowIndex);
-            WorkflowExpression.Validate(__workflow_deleteRowsInTablestartRowIndex, nameof(deleteRowsInTablestartRowIndex), required: true);
-            var __workflow_deleteRowsInTablenumberOfRowsToDelete = deleteRowsInTablenumberOfRowsToDelete == null ? null : WorkflowExpression.Compile(deleteRowsInTablenumberOfRowsToDelete);
-            WorkflowExpression.Validate(__workflow_deleteRowsInTablenumberOfRowsToDelete, nameof(deleteRowsInTablenumberOfRowsToDelete), required: true);
+            var __workflow_deleteRowsInTableinputTable = WorkflowExpression.Compile(deleteRowsInTableinputTable, nameof(deleteRowsInTableinputTable), required: true);
+            var __workflow_deleteRowsInTablestartRowIndex = WorkflowExpression.Compile(deleteRowsInTablestartRowIndex, nameof(deleteRowsInTablestartRowIndex), required: true);
+            var __workflow_deleteRowsInTablenumberOfRowsToDelete = WorkflowExpression.Compile(deleteRowsInTablenumberOfRowsToDelete, nameof(deleteRowsInTablenumberOfRowsToDelete), required: true);
             return new DeferredBodyAction<DeleteRowsInTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteRowsInTable";
@@ -1770,12 +1642,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<DeleteRowsInJSONTableResponse> DeleteRowsInJSONTable(Expression<Func<string>> deleteRowsInJSONTablejSONTable, Expression<Func<int>> deleteRowsInJSONTablestartRowIndex, Expression<Func<int>> deleteRowsInJSONTablenumberOfRowsToDelete)
         {
-            var __workflow_deleteRowsInJSONTablejSONTable = deleteRowsInJSONTablejSONTable == null ? null : WorkflowExpression.Compile(deleteRowsInJSONTablejSONTable);
-            WorkflowExpression.Validate(__workflow_deleteRowsInJSONTablejSONTable, nameof(deleteRowsInJSONTablejSONTable), required: true);
-            var __workflow_deleteRowsInJSONTablestartRowIndex = deleteRowsInJSONTablestartRowIndex == null ? null : WorkflowExpression.Compile(deleteRowsInJSONTablestartRowIndex);
-            WorkflowExpression.Validate(__workflow_deleteRowsInJSONTablestartRowIndex, nameof(deleteRowsInJSONTablestartRowIndex), required: true);
-            var __workflow_deleteRowsInJSONTablenumberOfRowsToDelete = deleteRowsInJSONTablenumberOfRowsToDelete == null ? null : WorkflowExpression.Compile(deleteRowsInJSONTablenumberOfRowsToDelete);
-            WorkflowExpression.Validate(__workflow_deleteRowsInJSONTablenumberOfRowsToDelete, nameof(deleteRowsInJSONTablenumberOfRowsToDelete), required: true);
+            var __workflow_deleteRowsInJSONTablejSONTable = WorkflowExpression.Compile(deleteRowsInJSONTablejSONTable, nameof(deleteRowsInJSONTablejSONTable), required: true);
+            var __workflow_deleteRowsInJSONTablestartRowIndex = WorkflowExpression.Compile(deleteRowsInJSONTablestartRowIndex, nameof(deleteRowsInJSONTablestartRowIndex), required: true);
+            var __workflow_deleteRowsInJSONTablenumberOfRowsToDelete = WorkflowExpression.Compile(deleteRowsInJSONTablenumberOfRowsToDelete, nameof(deleteRowsInJSONTablenumberOfRowsToDelete), required: true);
             return new DeferredBodyAction<DeleteRowsInJSONTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteRowsInJSONTable";
@@ -1801,12 +1670,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<RenameColumnInTableResponse> RenameColumnInTable(Expression<Func<JToken[]>> renameColumnInTableinputTable, Expression<Func<string>> renameColumnInTablesourceColumnName, Expression<Func<string>> renameColumnInTablenewColumnName)
         {
-            var __workflow_renameColumnInTableinputTable = renameColumnInTableinputTable == null ? null : WorkflowExpression.Compile(renameColumnInTableinputTable);
-            WorkflowExpression.Validate(__workflow_renameColumnInTableinputTable, nameof(renameColumnInTableinputTable), required: true);
-            var __workflow_renameColumnInTablesourceColumnName = renameColumnInTablesourceColumnName == null ? null : WorkflowExpression.Compile(renameColumnInTablesourceColumnName);
-            WorkflowExpression.Validate(__workflow_renameColumnInTablesourceColumnName, nameof(renameColumnInTablesourceColumnName), required: true);
-            var __workflow_renameColumnInTablenewColumnName = renameColumnInTablenewColumnName == null ? null : WorkflowExpression.Compile(renameColumnInTablenewColumnName);
-            WorkflowExpression.Validate(__workflow_renameColumnInTablenewColumnName, nameof(renameColumnInTablenewColumnName), required: true);
+            var __workflow_renameColumnInTableinputTable = WorkflowExpression.Compile(renameColumnInTableinputTable, nameof(renameColumnInTableinputTable), required: true);
+            var __workflow_renameColumnInTablesourceColumnName = WorkflowExpression.Compile(renameColumnInTablesourceColumnName, nameof(renameColumnInTablesourceColumnName), required: true);
+            var __workflow_renameColumnInTablenewColumnName = WorkflowExpression.Compile(renameColumnInTablenewColumnName, nameof(renameColumnInTablenewColumnName), required: true);
             return new DeferredBodyAction<RenameColumnInTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/RenameColumnInTable";
@@ -1832,12 +1698,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<RenameColumnInJSONTableResponse> RenameColumnInJSONTable(Expression<Func<string>> renameColumnInJSONTablejSONTable, Expression<Func<string>> renameColumnInJSONTablesourceColumnName, Expression<Func<string>> renameColumnInJSONTablenewColumnName)
         {
-            var __workflow_renameColumnInJSONTablejSONTable = renameColumnInJSONTablejSONTable == null ? null : WorkflowExpression.Compile(renameColumnInJSONTablejSONTable);
-            WorkflowExpression.Validate(__workflow_renameColumnInJSONTablejSONTable, nameof(renameColumnInJSONTablejSONTable), required: true);
-            var __workflow_renameColumnInJSONTablesourceColumnName = renameColumnInJSONTablesourceColumnName == null ? null : WorkflowExpression.Compile(renameColumnInJSONTablesourceColumnName);
-            WorkflowExpression.Validate(__workflow_renameColumnInJSONTablesourceColumnName, nameof(renameColumnInJSONTablesourceColumnName), required: true);
-            var __workflow_renameColumnInJSONTablenewColumnName = renameColumnInJSONTablenewColumnName == null ? null : WorkflowExpression.Compile(renameColumnInJSONTablenewColumnName);
-            WorkflowExpression.Validate(__workflow_renameColumnInJSONTablenewColumnName, nameof(renameColumnInJSONTablenewColumnName), required: true);
+            var __workflow_renameColumnInJSONTablejSONTable = WorkflowExpression.Compile(renameColumnInJSONTablejSONTable, nameof(renameColumnInJSONTablejSONTable), required: true);
+            var __workflow_renameColumnInJSONTablesourceColumnName = WorkflowExpression.Compile(renameColumnInJSONTablesourceColumnName, nameof(renameColumnInJSONTablesourceColumnName), required: true);
+            var __workflow_renameColumnInJSONTablenewColumnName = WorkflowExpression.Compile(renameColumnInJSONTablenewColumnName, nameof(renameColumnInJSONTablenewColumnName), required: true);
             return new DeferredBodyAction<RenameColumnInJSONTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/RenameColumnInJSONTable";
@@ -1863,14 +1726,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<DeleteColumnsInTableResponse> DeleteColumnsInTable(Expression<Func<JToken[]>> deleteColumnsInTableinputTable, Expression<Func<int>> deleteColumnsInTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInTablecolumnNameToDelete = null)
         {
-            var __workflow_deleteColumnsInTableinputTable = deleteColumnsInTableinputTable == null ? null : WorkflowExpression.Compile(deleteColumnsInTableinputTable);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInTableinputTable, nameof(deleteColumnsInTableinputTable), required: true);
-            var __workflow_deleteColumnsInTablenumberOfColumnsToDelete = deleteColumnsInTablenumberOfColumnsToDelete == null ? null : WorkflowExpression.Compile(deleteColumnsInTablenumberOfColumnsToDelete);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInTablenumberOfColumnsToDelete, nameof(deleteColumnsInTablenumberOfColumnsToDelete), required: true);
-            var __workflow_deleteColumnsInTablestartColumnIndex = deleteColumnsInTablestartColumnIndex == null ? null : WorkflowExpression.Compile(deleteColumnsInTablestartColumnIndex);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInTablestartColumnIndex, nameof(deleteColumnsInTablestartColumnIndex), required: false);
-            var __workflow_deleteColumnsInTablecolumnNameToDelete = deleteColumnsInTablecolumnNameToDelete == null ? null : WorkflowExpression.Compile(deleteColumnsInTablecolumnNameToDelete);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInTablecolumnNameToDelete, nameof(deleteColumnsInTablecolumnNameToDelete), required: false);
+            var __workflow_deleteColumnsInTableinputTable = WorkflowExpression.Compile(deleteColumnsInTableinputTable, nameof(deleteColumnsInTableinputTable), required: true);
+            var __workflow_deleteColumnsInTablenumberOfColumnsToDelete = WorkflowExpression.Compile(deleteColumnsInTablenumberOfColumnsToDelete, nameof(deleteColumnsInTablenumberOfColumnsToDelete), required: true);
+            var __workflow_deleteColumnsInTablestartColumnIndex = WorkflowExpression.Compile(deleteColumnsInTablestartColumnIndex, nameof(deleteColumnsInTablestartColumnIndex), required: false);
+            var __workflow_deleteColumnsInTablecolumnNameToDelete = WorkflowExpression.Compile(deleteColumnsInTablecolumnNameToDelete, nameof(deleteColumnsInTablecolumnNameToDelete), required: false);
             return new DeferredBodyAction<DeleteColumnsInTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteColumnsInTable";
@@ -1906,14 +1765,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<DeleteColumnsInJSONTableResponse> DeleteColumnsInJSONTable(Expression<Func<string>> deleteColumnsInJSONTablejSONTable, Expression<Func<int>> deleteColumnsInJSONTablenumberOfColumnsToDelete, Expression<Func<int>> deleteColumnsInJSONTablestartColumnIndex = null, Expression<Func<string>> deleteColumnsInJSONTablecolumnNameToDelete = null)
         {
-            var __workflow_deleteColumnsInJSONTablejSONTable = deleteColumnsInJSONTablejSONTable == null ? null : WorkflowExpression.Compile(deleteColumnsInJSONTablejSONTable);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInJSONTablejSONTable, nameof(deleteColumnsInJSONTablejSONTable), required: true);
-            var __workflow_deleteColumnsInJSONTablenumberOfColumnsToDelete = deleteColumnsInJSONTablenumberOfColumnsToDelete == null ? null : WorkflowExpression.Compile(deleteColumnsInJSONTablenumberOfColumnsToDelete);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInJSONTablenumberOfColumnsToDelete, nameof(deleteColumnsInJSONTablenumberOfColumnsToDelete), required: true);
-            var __workflow_deleteColumnsInJSONTablestartColumnIndex = deleteColumnsInJSONTablestartColumnIndex == null ? null : WorkflowExpression.Compile(deleteColumnsInJSONTablestartColumnIndex);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInJSONTablestartColumnIndex, nameof(deleteColumnsInJSONTablestartColumnIndex), required: false);
-            var __workflow_deleteColumnsInJSONTablecolumnNameToDelete = deleteColumnsInJSONTablecolumnNameToDelete == null ? null : WorkflowExpression.Compile(deleteColumnsInJSONTablecolumnNameToDelete);
-            WorkflowExpression.Validate(__workflow_deleteColumnsInJSONTablecolumnNameToDelete, nameof(deleteColumnsInJSONTablecolumnNameToDelete), required: false);
+            var __workflow_deleteColumnsInJSONTablejSONTable = WorkflowExpression.Compile(deleteColumnsInJSONTablejSONTable, nameof(deleteColumnsInJSONTablejSONTable), required: true);
+            var __workflow_deleteColumnsInJSONTablenumberOfColumnsToDelete = WorkflowExpression.Compile(deleteColumnsInJSONTablenumberOfColumnsToDelete, nameof(deleteColumnsInJSONTablenumberOfColumnsToDelete), required: true);
+            var __workflow_deleteColumnsInJSONTablestartColumnIndex = WorkflowExpression.Compile(deleteColumnsInJSONTablestartColumnIndex, nameof(deleteColumnsInJSONTablestartColumnIndex), required: false);
+            var __workflow_deleteColumnsInJSONTablecolumnNameToDelete = WorkflowExpression.Compile(deleteColumnsInJSONTablecolumnNameToDelete, nameof(deleteColumnsInJSONTablecolumnNameToDelete), required: false);
             return new DeferredBodyAction<DeleteColumnsInJSONTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/DeleteColumnsInJSONTable";
@@ -1949,12 +1804,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetStringArrayFromTableColumnResponse> GetStringArrayFromTableColumn(Expression<Func<JToken[]>> getStringArrayFromTableColumninputTable, Expression<Func<int>> getStringArrayFromTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromTableColumncolumnName = null)
         {
-            var __workflow_getStringArrayFromTableColumninputTable = getStringArrayFromTableColumninputTable == null ? null : WorkflowExpression.Compile(getStringArrayFromTableColumninputTable);
-            WorkflowExpression.Validate(__workflow_getStringArrayFromTableColumninputTable, nameof(getStringArrayFromTableColumninputTable), required: true);
-            var __workflow_getStringArrayFromTableColumncolumnIndex = getStringArrayFromTableColumncolumnIndex == null ? null : WorkflowExpression.Compile(getStringArrayFromTableColumncolumnIndex);
-            WorkflowExpression.Validate(__workflow_getStringArrayFromTableColumncolumnIndex, nameof(getStringArrayFromTableColumncolumnIndex), required: false);
-            var __workflow_getStringArrayFromTableColumncolumnName = getStringArrayFromTableColumncolumnName == null ? null : WorkflowExpression.Compile(getStringArrayFromTableColumncolumnName);
-            WorkflowExpression.Validate(__workflow_getStringArrayFromTableColumncolumnName, nameof(getStringArrayFromTableColumncolumnName), required: false);
+            var __workflow_getStringArrayFromTableColumninputTable = WorkflowExpression.Compile(getStringArrayFromTableColumninputTable, nameof(getStringArrayFromTableColumninputTable), required: true);
+            var __workflow_getStringArrayFromTableColumncolumnIndex = WorkflowExpression.Compile(getStringArrayFromTableColumncolumnIndex, nameof(getStringArrayFromTableColumncolumnIndex), required: false);
+            var __workflow_getStringArrayFromTableColumncolumnName = WorkflowExpression.Compile(getStringArrayFromTableColumncolumnName, nameof(getStringArrayFromTableColumncolumnName), required: false);
             return new DeferredBodyAction<GetStringArrayFromTableColumnResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringArrayFromTableColumn";
@@ -1988,12 +1840,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetStringArrayFromJSONTableColumnResponse> GetStringArrayFromJSONTableColumn(Expression<Func<string>> getStringArrayFromJSONTableColumnjSONTable, Expression<Func<int>> getStringArrayFromJSONTableColumncolumnIndex = null, Expression<Func<string>> getStringArrayFromJSONTableColumncolumnName = null)
         {
-            var __workflow_getStringArrayFromJSONTableColumnjSONTable = getStringArrayFromJSONTableColumnjSONTable == null ? null : WorkflowExpression.Compile(getStringArrayFromJSONTableColumnjSONTable);
-            WorkflowExpression.Validate(__workflow_getStringArrayFromJSONTableColumnjSONTable, nameof(getStringArrayFromJSONTableColumnjSONTable), required: true);
-            var __workflow_getStringArrayFromJSONTableColumncolumnIndex = getStringArrayFromJSONTableColumncolumnIndex == null ? null : WorkflowExpression.Compile(getStringArrayFromJSONTableColumncolumnIndex);
-            WorkflowExpression.Validate(__workflow_getStringArrayFromJSONTableColumncolumnIndex, nameof(getStringArrayFromJSONTableColumncolumnIndex), required: false);
-            var __workflow_getStringArrayFromJSONTableColumncolumnName = getStringArrayFromJSONTableColumncolumnName == null ? null : WorkflowExpression.Compile(getStringArrayFromJSONTableColumncolumnName);
-            WorkflowExpression.Validate(__workflow_getStringArrayFromJSONTableColumncolumnName, nameof(getStringArrayFromJSONTableColumncolumnName), required: false);
+            var __workflow_getStringArrayFromJSONTableColumnjSONTable = WorkflowExpression.Compile(getStringArrayFromJSONTableColumnjSONTable, nameof(getStringArrayFromJSONTableColumnjSONTable), required: true);
+            var __workflow_getStringArrayFromJSONTableColumncolumnIndex = WorkflowExpression.Compile(getStringArrayFromJSONTableColumncolumnIndex, nameof(getStringArrayFromJSONTableColumncolumnIndex), required: false);
+            var __workflow_getStringArrayFromJSONTableColumncolumnName = WorkflowExpression.Compile(getStringArrayFromJSONTableColumncolumnName, nameof(getStringArrayFromJSONTableColumncolumnName), required: false);
             return new DeferredBodyAction<GetStringArrayFromJSONTableColumnResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringArrayFromJSONTableColumn";
@@ -2027,18 +1876,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetStringFromJSONTableCellResponse> GetStringFromJSONTableCell(Expression<Func<string>> getStringFromJSONTableCelljSONTable, Expression<Func<int>> getStringFromJSONTableCellrowIndex = null, Expression<Func<int>> getStringFromJSONTableCellcolumnIndex = null, Expression<Func<string>> getStringFromJSONTableCellcolumnName = null, Expression<Func<bool>> getStringFromJSONTableCellfallBackIfCellDoesNotExist = null, Expression<Func<string>> getStringFromJSONTableCellfallbackValue = null)
         {
-            var __workflow_getStringFromJSONTableCelljSONTable = getStringFromJSONTableCelljSONTable == null ? null : WorkflowExpression.Compile(getStringFromJSONTableCelljSONTable);
-            WorkflowExpression.Validate(__workflow_getStringFromJSONTableCelljSONTable, nameof(getStringFromJSONTableCelljSONTable), required: true);
-            var __workflow_getStringFromJSONTableCellrowIndex = getStringFromJSONTableCellrowIndex == null ? null : WorkflowExpression.Compile(getStringFromJSONTableCellrowIndex);
-            WorkflowExpression.Validate(__workflow_getStringFromJSONTableCellrowIndex, nameof(getStringFromJSONTableCellrowIndex), required: false);
-            var __workflow_getStringFromJSONTableCellcolumnIndex = getStringFromJSONTableCellcolumnIndex == null ? null : WorkflowExpression.Compile(getStringFromJSONTableCellcolumnIndex);
-            WorkflowExpression.Validate(__workflow_getStringFromJSONTableCellcolumnIndex, nameof(getStringFromJSONTableCellcolumnIndex), required: false);
-            var __workflow_getStringFromJSONTableCellcolumnName = getStringFromJSONTableCellcolumnName == null ? null : WorkflowExpression.Compile(getStringFromJSONTableCellcolumnName);
-            WorkflowExpression.Validate(__workflow_getStringFromJSONTableCellcolumnName, nameof(getStringFromJSONTableCellcolumnName), required: false);
-            var __workflow_getStringFromJSONTableCellfallBackIfCellDoesNotExist = getStringFromJSONTableCellfallBackIfCellDoesNotExist == null ? null : WorkflowExpression.Compile(getStringFromJSONTableCellfallBackIfCellDoesNotExist);
-            WorkflowExpression.Validate(__workflow_getStringFromJSONTableCellfallBackIfCellDoesNotExist, nameof(getStringFromJSONTableCellfallBackIfCellDoesNotExist), required: false);
-            var __workflow_getStringFromJSONTableCellfallbackValue = getStringFromJSONTableCellfallbackValue == null ? null : WorkflowExpression.Compile(getStringFromJSONTableCellfallbackValue);
-            WorkflowExpression.Validate(__workflow_getStringFromJSONTableCellfallbackValue, nameof(getStringFromJSONTableCellfallbackValue), required: false);
+            var __workflow_getStringFromJSONTableCelljSONTable = WorkflowExpression.Compile(getStringFromJSONTableCelljSONTable, nameof(getStringFromJSONTableCelljSONTable), required: true);
+            var __workflow_getStringFromJSONTableCellrowIndex = WorkflowExpression.Compile(getStringFromJSONTableCellrowIndex, nameof(getStringFromJSONTableCellrowIndex), required: false);
+            var __workflow_getStringFromJSONTableCellcolumnIndex = WorkflowExpression.Compile(getStringFromJSONTableCellcolumnIndex, nameof(getStringFromJSONTableCellcolumnIndex), required: false);
+            var __workflow_getStringFromJSONTableCellcolumnName = WorkflowExpression.Compile(getStringFromJSONTableCellcolumnName, nameof(getStringFromJSONTableCellcolumnName), required: false);
+            var __workflow_getStringFromJSONTableCellfallBackIfCellDoesNotExist = WorkflowExpression.Compile(getStringFromJSONTableCellfallBackIfCellDoesNotExist, nameof(getStringFromJSONTableCellfallBackIfCellDoesNotExist), required: false);
+            var __workflow_getStringFromJSONTableCellfallbackValue = WorkflowExpression.Compile(getStringFromJSONTableCellfallbackValue, nameof(getStringFromJSONTableCellfallbackValue), required: false);
             return new DeferredBodyAction<GetStringFromJSONTableCellResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringFromJSONTableCell";
@@ -2100,22 +1943,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetStringBetweenResponse> GetStringBetween(Expression<Func<string>> getStringBetweeninputString = null, Expression<Func<string>> getStringBetweenstartSearchString = null, Expression<Func<string>> getStringBetweenendSearchString = null, Expression<Func<bool>> getStringBetweensearchLineByLine = null, Expression<Func<bool>> getStringBetweenthrowExceptionIfNotFound = null, Expression<Func<bool>> getStringBetweentrimResult = null, Expression<Func<bool>> getStringBetweensearchIsRegularExpression = null, Expression<Func<bool>> getStringBetweencaseSensitiveSearch = null)
         {
-            var __workflow_getStringBetweeninputString = getStringBetweeninputString == null ? null : WorkflowExpression.Compile(getStringBetweeninputString);
-            WorkflowExpression.Validate(__workflow_getStringBetweeninputString, nameof(getStringBetweeninputString), required: false);
-            var __workflow_getStringBetweenstartSearchString = getStringBetweenstartSearchString == null ? null : WorkflowExpression.Compile(getStringBetweenstartSearchString);
-            WorkflowExpression.Validate(__workflow_getStringBetweenstartSearchString, nameof(getStringBetweenstartSearchString), required: false);
-            var __workflow_getStringBetweenendSearchString = getStringBetweenendSearchString == null ? null : WorkflowExpression.Compile(getStringBetweenendSearchString);
-            WorkflowExpression.Validate(__workflow_getStringBetweenendSearchString, nameof(getStringBetweenendSearchString), required: false);
-            var __workflow_getStringBetweensearchLineByLine = getStringBetweensearchLineByLine == null ? null : WorkflowExpression.Compile(getStringBetweensearchLineByLine);
-            WorkflowExpression.Validate(__workflow_getStringBetweensearchLineByLine, nameof(getStringBetweensearchLineByLine), required: false);
-            var __workflow_getStringBetweenthrowExceptionIfNotFound = getStringBetweenthrowExceptionIfNotFound == null ? null : WorkflowExpression.Compile(getStringBetweenthrowExceptionIfNotFound);
-            WorkflowExpression.Validate(__workflow_getStringBetweenthrowExceptionIfNotFound, nameof(getStringBetweenthrowExceptionIfNotFound), required: false);
-            var __workflow_getStringBetweentrimResult = getStringBetweentrimResult == null ? null : WorkflowExpression.Compile(getStringBetweentrimResult);
-            WorkflowExpression.Validate(__workflow_getStringBetweentrimResult, nameof(getStringBetweentrimResult), required: false);
-            var __workflow_getStringBetweensearchIsRegularExpression = getStringBetweensearchIsRegularExpression == null ? null : WorkflowExpression.Compile(getStringBetweensearchIsRegularExpression);
-            WorkflowExpression.Validate(__workflow_getStringBetweensearchIsRegularExpression, nameof(getStringBetweensearchIsRegularExpression), required: false);
-            var __workflow_getStringBetweencaseSensitiveSearch = getStringBetweencaseSensitiveSearch == null ? null : WorkflowExpression.Compile(getStringBetweencaseSensitiveSearch);
-            WorkflowExpression.Validate(__workflow_getStringBetweencaseSensitiveSearch, nameof(getStringBetweencaseSensitiveSearch), required: false);
+            var __workflow_getStringBetweeninputString = WorkflowExpression.Compile(getStringBetweeninputString, nameof(getStringBetweeninputString), required: false);
+            var __workflow_getStringBetweenstartSearchString = WorkflowExpression.Compile(getStringBetweenstartSearchString, nameof(getStringBetweenstartSearchString), required: false);
+            var __workflow_getStringBetweenendSearchString = WorkflowExpression.Compile(getStringBetweenendSearchString, nameof(getStringBetweenendSearchString), required: false);
+            var __workflow_getStringBetweensearchLineByLine = WorkflowExpression.Compile(getStringBetweensearchLineByLine, nameof(getStringBetweensearchLineByLine), required: false);
+            var __workflow_getStringBetweenthrowExceptionIfNotFound = WorkflowExpression.Compile(getStringBetweenthrowExceptionIfNotFound, nameof(getStringBetweenthrowExceptionIfNotFound), required: false);
+            var __workflow_getStringBetweentrimResult = WorkflowExpression.Compile(getStringBetweentrimResult, nameof(getStringBetweentrimResult), required: false);
+            var __workflow_getStringBetweensearchIsRegularExpression = WorkflowExpression.Compile(getStringBetweensearchIsRegularExpression, nameof(getStringBetweensearchIsRegularExpression), required: false);
+            var __workflow_getStringBetweencaseSensitiveSearch = WorkflowExpression.Compile(getStringBetweencaseSensitiveSearch, nameof(getStringBetweencaseSensitiveSearch), required: false);
             return new DeferredBodyAction<GetStringBetweenResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetStringBetween";
@@ -2233,12 +2068,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<LoadIAConnectLookupTableResponse> LoadIAConnectLookupTable(Expression<Func<string>> loadIAConnectLookupTablepath, Expression<Func<bool>> loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, Expression<Func<string>> loadIAConnectLookupTableworkflow)
         {
-            var __workflow_loadIAConnectLookupTablepath = loadIAConnectLookupTablepath == null ? null : WorkflowExpression.Compile(loadIAConnectLookupTablepath);
-            WorkflowExpression.Validate(__workflow_loadIAConnectLookupTablepath, nameof(loadIAConnectLookupTablepath), required: true);
-            var __workflow_loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad = loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad == null ? null : WorkflowExpression.Compile(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad);
-            WorkflowExpression.Validate(__workflow_loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, nameof(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad), required: true);
-            var __workflow_loadIAConnectLookupTableworkflow = loadIAConnectLookupTableworkflow == null ? null : WorkflowExpression.Compile(loadIAConnectLookupTableworkflow);
-            WorkflowExpression.Validate(__workflow_loadIAConnectLookupTableworkflow, nameof(loadIAConnectLookupTableworkflow), required: true);
+            var __workflow_loadIAConnectLookupTablepath = WorkflowExpression.Compile(loadIAConnectLookupTablepath, nameof(loadIAConnectLookupTablepath), required: true);
+            var __workflow_loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad = WorkflowExpression.Compile(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad, nameof(loadIAConnectLookupTableraiseExceptionIfAnyTableFailsToLoad), required: true);
+            var __workflow_loadIAConnectLookupTableworkflow = WorkflowExpression.Compile(loadIAConnectLookupTableworkflow, nameof(loadIAConnectLookupTableworkflow), required: true);
             return new DeferredBodyAction<LoadIAConnectLookupTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/LoadIAConnectLookupTable";
@@ -2264,8 +2096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetIAConnectLookupTableSummaryResponse> GetIAConnectLookupTableSummary(Expression<Func<string>> getIAConnectLookupTableSummaryworkflow)
         {
-            var __workflow_getIAConnectLookupTableSummaryworkflow = getIAConnectLookupTableSummaryworkflow == null ? null : WorkflowExpression.Compile(getIAConnectLookupTableSummaryworkflow);
-            WorkflowExpression.Validate(__workflow_getIAConnectLookupTableSummaryworkflow, nameof(getIAConnectLookupTableSummaryworkflow), required: true);
+            var __workflow_getIAConnectLookupTableSummaryworkflow = WorkflowExpression.Compile(getIAConnectLookupTableSummaryworkflow, nameof(getIAConnectLookupTableSummaryworkflow), required: true);
             return new DeferredBodyAction<GetIAConnectLookupTableSummaryResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetIAConnectLookupTableSummary";
@@ -2287,10 +2118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<RemoveIAConnectLookupTableResponse> RemoveIAConnectLookupTable(Expression<Func<string>> removeIAConnectLookupTablelookupTableName, Expression<Func<string>> removeIAConnectLookupTableworkflow)
         {
-            var __workflow_removeIAConnectLookupTablelookupTableName = removeIAConnectLookupTablelookupTableName == null ? null : WorkflowExpression.Compile(removeIAConnectLookupTablelookupTableName);
-            WorkflowExpression.Validate(__workflow_removeIAConnectLookupTablelookupTableName, nameof(removeIAConnectLookupTablelookupTableName), required: true);
-            var __workflow_removeIAConnectLookupTableworkflow = removeIAConnectLookupTableworkflow == null ? null : WorkflowExpression.Compile(removeIAConnectLookupTableworkflow);
-            WorkflowExpression.Validate(__workflow_removeIAConnectLookupTableworkflow, nameof(removeIAConnectLookupTableworkflow), required: true);
+            var __workflow_removeIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(removeIAConnectLookupTablelookupTableName, nameof(removeIAConnectLookupTablelookupTableName), required: true);
+            var __workflow_removeIAConnectLookupTableworkflow = WorkflowExpression.Compile(removeIAConnectLookupTableworkflow, nameof(removeIAConnectLookupTableworkflow), required: true);
             return new DeferredBodyAction<RemoveIAConnectLookupTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/RemoveIAConnectLookupTable";
@@ -2314,8 +2143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<RemoveAllIAConnectLookupTablesResponse> RemoveAllIAConnectLookupTables(Expression<Func<string>> removeAllIAConnectLookupTablesworkflow)
         {
-            var __workflow_removeAllIAConnectLookupTablesworkflow = removeAllIAConnectLookupTablesworkflow == null ? null : WorkflowExpression.Compile(removeAllIAConnectLookupTablesworkflow);
-            WorkflowExpression.Validate(__workflow_removeAllIAConnectLookupTablesworkflow, nameof(removeAllIAConnectLookupTablesworkflow), required: true);
+            var __workflow_removeAllIAConnectLookupTablesworkflow = WorkflowExpression.Compile(removeAllIAConnectLookupTablesworkflow, nameof(removeAllIAConnectLookupTablesworkflow), required: true);
             return new DeferredBodyAction<RemoveAllIAConnectLookupTablesResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/RemoveAllIAConnectLookupTables";
@@ -2337,18 +2165,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<LookupValueFromIAConnectLookupTableResponse> LookupValueFromIAConnectLookupTable(Expression<Func<string>> lookupValueFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupValueFromIAConnectLookupTablesearchResultValueColumnName, Expression<Func<string>> lookupValueFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupValueFromIAConnectLookupTableinputDataJSON = null, Expression<Func<int>> lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = null, Expression<Func<bool>> lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = null)
         {
-            var __workflow_lookupValueFromIAConnectLookupTablelookupTableName = lookupValueFromIAConnectLookupTablelookupTableName == null ? null : WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablelookupTableName);
-            WorkflowExpression.Validate(__workflow_lookupValueFromIAConnectLookupTablelookupTableName, nameof(lookupValueFromIAConnectLookupTablelookupTableName), required: true);
-            var __workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnName = lookupValueFromIAConnectLookupTablesearchResultValueColumnName == null ? null : WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablesearchResultValueColumnName);
-            WorkflowExpression.Validate(__workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnName, nameof(lookupValueFromIAConnectLookupTablesearchResultValueColumnName), required: true);
-            var __workflow_lookupValueFromIAConnectLookupTableworkflow = lookupValueFromIAConnectLookupTableworkflow == null ? null : WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableworkflow);
-            WorkflowExpression.Validate(__workflow_lookupValueFromIAConnectLookupTableworkflow, nameof(lookupValueFromIAConnectLookupTableworkflow), required: true);
-            var __workflow_lookupValueFromIAConnectLookupTableinputDataJSON = lookupValueFromIAConnectLookupTableinputDataJSON == null ? null : WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableinputDataJSON);
-            WorkflowExpression.Validate(__workflow_lookupValueFromIAConnectLookupTableinputDataJSON, nameof(lookupValueFromIAConnectLookupTableinputDataJSON), required: false);
-            var __workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex == null ? null : WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex);
-            WorkflowExpression.Validate(__workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex, nameof(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex), required: false);
-            var __workflow_lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch == null ? null : WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch);
-            WorkflowExpression.Validate(__workflow_lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
+            var __workflow_lookupValueFromIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablelookupTableName, nameof(lookupValueFromIAConnectLookupTablelookupTableName), required: true);
+            var __workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnName = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablesearchResultValueColumnName, nameof(lookupValueFromIAConnectLookupTablesearchResultValueColumnName), required: true);
+            var __workflow_lookupValueFromIAConnectLookupTableworkflow = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableworkflow, nameof(lookupValueFromIAConnectLookupTableworkflow), required: true);
+            var __workflow_lookupValueFromIAConnectLookupTableinputDataJSON = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableinputDataJSON, nameof(lookupValueFromIAConnectLookupTableinputDataJSON), required: false);
+            var __workflow_lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex, nameof(lookupValueFromIAConnectLookupTablesearchResultValueColumnIndex), required: false);
+            var __workflow_lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch = WorkflowExpression.Compile(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupValueFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
             return new DeferredBodyAction<LookupValueFromIAConnectLookupTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/LookupValueFromIAConnectLookupTable";
@@ -2412,20 +2234,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<LookupColumnsFromIAConnectLookupTableResponse> LookupColumnsFromIAConnectLookupTable(Expression<Func<string>> lookupColumnsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableworkflow, Expression<Func<string>> lookupColumnsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupColumnsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupColumnsFromIAConnectLookupTablereturnFormatInput>> lookupColumnsFromIAConnectLookupTablereturnFormat = null)
         {
-            var __workflow_lookupColumnsFromIAConnectLookupTablelookupTableName = lookupColumnsFromIAConnectLookupTablelookupTableName == null ? null : WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablelookupTableName);
-            WorkflowExpression.Validate(__workflow_lookupColumnsFromIAConnectLookupTablelookupTableName, nameof(lookupColumnsFromIAConnectLookupTablelookupTableName), required: true);
-            var __workflow_lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName = lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName == null ? null : WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName);
-            WorkflowExpression.Validate(__workflow_lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, nameof(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName), required: true);
-            var __workflow_lookupColumnsFromIAConnectLookupTableworkflow = lookupColumnsFromIAConnectLookupTableworkflow == null ? null : WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTableworkflow);
-            WorkflowExpression.Validate(__workflow_lookupColumnsFromIAConnectLookupTableworkflow, nameof(lookupColumnsFromIAConnectLookupTableworkflow), required: true);
-            var __workflow_lookupColumnsFromIAConnectLookupTableinputDataJSON = lookupColumnsFromIAConnectLookupTableinputDataJSON == null ? null : WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTableinputDataJSON);
-            WorkflowExpression.Validate(__workflow_lookupColumnsFromIAConnectLookupTableinputDataJSON, nameof(lookupColumnsFromIAConnectLookupTableinputDataJSON), required: false);
-            var __workflow_lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch == null ? null : WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch);
-            WorkflowExpression.Validate(__workflow_lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
-            var __workflow_lookupColumnsFromIAConnectLookupTablereturnBlankCells = lookupColumnsFromIAConnectLookupTablereturnBlankCells == null ? null : WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablereturnBlankCells);
-            WorkflowExpression.Validate(__workflow_lookupColumnsFromIAConnectLookupTablereturnBlankCells, nameof(lookupColumnsFromIAConnectLookupTablereturnBlankCells), required: false);
-            var __workflow_lookupColumnsFromIAConnectLookupTablereturnFormat = lookupColumnsFromIAConnectLookupTablereturnFormat == null ? null : WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablereturnFormat);
-            WorkflowExpression.Validate(__workflow_lookupColumnsFromIAConnectLookupTablereturnFormat, nameof(lookupColumnsFromIAConnectLookupTablereturnFormat), required: false);
+            var __workflow_lookupColumnsFromIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablelookupTableName, nameof(lookupColumnsFromIAConnectLookupTablelookupTableName), required: true);
+            var __workflow_lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName, nameof(lookupColumnsFromIAConnectLookupTablesearchResultTableColumnName), required: true);
+            var __workflow_lookupColumnsFromIAConnectLookupTableworkflow = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTableworkflow, nameof(lookupColumnsFromIAConnectLookupTableworkflow), required: true);
+            var __workflow_lookupColumnsFromIAConnectLookupTableinputDataJSON = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTableinputDataJSON, nameof(lookupColumnsFromIAConnectLookupTableinputDataJSON), required: false);
+            var __workflow_lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupColumnsFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
+            var __workflow_lookupColumnsFromIAConnectLookupTablereturnBlankCells = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablereturnBlankCells, nameof(lookupColumnsFromIAConnectLookupTablereturnBlankCells), required: false);
+            var __workflow_lookupColumnsFromIAConnectLookupTablereturnFormat = WorkflowExpression.Compile(lookupColumnsFromIAConnectLookupTablereturnFormat, nameof(lookupColumnsFromIAConnectLookupTablereturnFormat), required: false);
             return new DeferredBodyAction<LookupColumnsFromIAConnectLookupTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/LookupColumnsFromIAConnectLookupTable";
@@ -2505,20 +2320,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<RemoveCharactersFromStringResponse> RemoveCharactersFromString(Expression<Func<string>> removeCharactersFromStringinputString = null, Expression<Func<string>> removeCharactersFromStringcharactersToRemoveFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveDiacriticsFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNonAlphaNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveNumericFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveLowercaseCharactersFromInputString = null, Expression<Func<bool>> removeCharactersFromStringremoveUppercaseCharactersFromInputString = null)
         {
-            var __workflow_removeCharactersFromStringinputString = removeCharactersFromStringinputString == null ? null : WorkflowExpression.Compile(removeCharactersFromStringinputString);
-            WorkflowExpression.Validate(__workflow_removeCharactersFromStringinputString, nameof(removeCharactersFromStringinputString), required: false);
-            var __workflow_removeCharactersFromStringcharactersToRemoveFromInputString = removeCharactersFromStringcharactersToRemoveFromInputString == null ? null : WorkflowExpression.Compile(removeCharactersFromStringcharactersToRemoveFromInputString);
-            WorkflowExpression.Validate(__workflow_removeCharactersFromStringcharactersToRemoveFromInputString, nameof(removeCharactersFromStringcharactersToRemoveFromInputString), required: false);
-            var __workflow_removeCharactersFromStringremoveDiacriticsFromInputString = removeCharactersFromStringremoveDiacriticsFromInputString == null ? null : WorkflowExpression.Compile(removeCharactersFromStringremoveDiacriticsFromInputString);
-            WorkflowExpression.Validate(__workflow_removeCharactersFromStringremoveDiacriticsFromInputString, nameof(removeCharactersFromStringremoveDiacriticsFromInputString), required: false);
-            var __workflow_removeCharactersFromStringremoveNonAlphaNumericFromInputString = removeCharactersFromStringremoveNonAlphaNumericFromInputString == null ? null : WorkflowExpression.Compile(removeCharactersFromStringremoveNonAlphaNumericFromInputString);
-            WorkflowExpression.Validate(__workflow_removeCharactersFromStringremoveNonAlphaNumericFromInputString, nameof(removeCharactersFromStringremoveNonAlphaNumericFromInputString), required: false);
-            var __workflow_removeCharactersFromStringremoveNumericFromInputString = removeCharactersFromStringremoveNumericFromInputString == null ? null : WorkflowExpression.Compile(removeCharactersFromStringremoveNumericFromInputString);
-            WorkflowExpression.Validate(__workflow_removeCharactersFromStringremoveNumericFromInputString, nameof(removeCharactersFromStringremoveNumericFromInputString), required: false);
-            var __workflow_removeCharactersFromStringremoveLowercaseCharactersFromInputString = removeCharactersFromStringremoveLowercaseCharactersFromInputString == null ? null : WorkflowExpression.Compile(removeCharactersFromStringremoveLowercaseCharactersFromInputString);
-            WorkflowExpression.Validate(__workflow_removeCharactersFromStringremoveLowercaseCharactersFromInputString, nameof(removeCharactersFromStringremoveLowercaseCharactersFromInputString), required: false);
-            var __workflow_removeCharactersFromStringremoveUppercaseCharactersFromInputString = removeCharactersFromStringremoveUppercaseCharactersFromInputString == null ? null : WorkflowExpression.Compile(removeCharactersFromStringremoveUppercaseCharactersFromInputString);
-            WorkflowExpression.Validate(__workflow_removeCharactersFromStringremoveUppercaseCharactersFromInputString, nameof(removeCharactersFromStringremoveUppercaseCharactersFromInputString), required: false);
+            var __workflow_removeCharactersFromStringinputString = WorkflowExpression.Compile(removeCharactersFromStringinputString, nameof(removeCharactersFromStringinputString), required: false);
+            var __workflow_removeCharactersFromStringcharactersToRemoveFromInputString = WorkflowExpression.Compile(removeCharactersFromStringcharactersToRemoveFromInputString, nameof(removeCharactersFromStringcharactersToRemoveFromInputString), required: false);
+            var __workflow_removeCharactersFromStringremoveDiacriticsFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveDiacriticsFromInputString, nameof(removeCharactersFromStringremoveDiacriticsFromInputString), required: false);
+            var __workflow_removeCharactersFromStringremoveNonAlphaNumericFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveNonAlphaNumericFromInputString, nameof(removeCharactersFromStringremoveNonAlphaNumericFromInputString), required: false);
+            var __workflow_removeCharactersFromStringremoveNumericFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveNumericFromInputString, nameof(removeCharactersFromStringremoveNumericFromInputString), required: false);
+            var __workflow_removeCharactersFromStringremoveLowercaseCharactersFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveLowercaseCharactersFromInputString, nameof(removeCharactersFromStringremoveLowercaseCharactersFromInputString), required: false);
+            var __workflow_removeCharactersFromStringremoveUppercaseCharactersFromInputString = WorkflowExpression.Compile(removeCharactersFromStringremoveUppercaseCharactersFromInputString, nameof(removeCharactersFromStringremoveUppercaseCharactersFromInputString), required: false);
             return new DeferredBodyAction<RemoveCharactersFromStringResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/RemoveCharactersFromString";
@@ -2630,20 +2438,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetColumnFromIAConnectListResponse> GetColumnFromIAConnectList(Expression<Func<string>> getColumnFromIAConnectListlistName, Expression<Func<int>> getColumnFromIAConnectListsearchColumnIndex = null, Expression<Func<string>> getColumnFromIAConnectListsearchColumnName = null, Expression<Func<bool>> getColumnFromIAConnectListreturnBlankCells = null, Expression<Func<bool>> getColumnFromIAConnectListfallBackIfListDoesNotExist = null, Expression<Func<string>> getColumnFromIAConnectListfallbackValue = null, Expression<Func<getColumnFromIAConnectListreturnFormatInput>> getColumnFromIAConnectListreturnFormat = null)
         {
-            var __workflow_getColumnFromIAConnectListlistName = getColumnFromIAConnectListlistName == null ? null : WorkflowExpression.Compile(getColumnFromIAConnectListlistName);
-            WorkflowExpression.Validate(__workflow_getColumnFromIAConnectListlistName, nameof(getColumnFromIAConnectListlistName), required: true);
-            var __workflow_getColumnFromIAConnectListsearchColumnIndex = getColumnFromIAConnectListsearchColumnIndex == null ? null : WorkflowExpression.Compile(getColumnFromIAConnectListsearchColumnIndex);
-            WorkflowExpression.Validate(__workflow_getColumnFromIAConnectListsearchColumnIndex, nameof(getColumnFromIAConnectListsearchColumnIndex), required: false);
-            var __workflow_getColumnFromIAConnectListsearchColumnName = getColumnFromIAConnectListsearchColumnName == null ? null : WorkflowExpression.Compile(getColumnFromIAConnectListsearchColumnName);
-            WorkflowExpression.Validate(__workflow_getColumnFromIAConnectListsearchColumnName, nameof(getColumnFromIAConnectListsearchColumnName), required: false);
-            var __workflow_getColumnFromIAConnectListreturnBlankCells = getColumnFromIAConnectListreturnBlankCells == null ? null : WorkflowExpression.Compile(getColumnFromIAConnectListreturnBlankCells);
-            WorkflowExpression.Validate(__workflow_getColumnFromIAConnectListreturnBlankCells, nameof(getColumnFromIAConnectListreturnBlankCells), required: false);
-            var __workflow_getColumnFromIAConnectListfallBackIfListDoesNotExist = getColumnFromIAConnectListfallBackIfListDoesNotExist == null ? null : WorkflowExpression.Compile(getColumnFromIAConnectListfallBackIfListDoesNotExist);
-            WorkflowExpression.Validate(__workflow_getColumnFromIAConnectListfallBackIfListDoesNotExist, nameof(getColumnFromIAConnectListfallBackIfListDoesNotExist), required: false);
-            var __workflow_getColumnFromIAConnectListfallbackValue = getColumnFromIAConnectListfallbackValue == null ? null : WorkflowExpression.Compile(getColumnFromIAConnectListfallbackValue);
-            WorkflowExpression.Validate(__workflow_getColumnFromIAConnectListfallbackValue, nameof(getColumnFromIAConnectListfallbackValue), required: false);
-            var __workflow_getColumnFromIAConnectListreturnFormat = getColumnFromIAConnectListreturnFormat == null ? null : WorkflowExpression.Compile(getColumnFromIAConnectListreturnFormat);
-            WorkflowExpression.Validate(__workflow_getColumnFromIAConnectListreturnFormat, nameof(getColumnFromIAConnectListreturnFormat), required: false);
+            var __workflow_getColumnFromIAConnectListlistName = WorkflowExpression.Compile(getColumnFromIAConnectListlistName, nameof(getColumnFromIAConnectListlistName), required: true);
+            var __workflow_getColumnFromIAConnectListsearchColumnIndex = WorkflowExpression.Compile(getColumnFromIAConnectListsearchColumnIndex, nameof(getColumnFromIAConnectListsearchColumnIndex), required: false);
+            var __workflow_getColumnFromIAConnectListsearchColumnName = WorkflowExpression.Compile(getColumnFromIAConnectListsearchColumnName, nameof(getColumnFromIAConnectListsearchColumnName), required: false);
+            var __workflow_getColumnFromIAConnectListreturnBlankCells = WorkflowExpression.Compile(getColumnFromIAConnectListreturnBlankCells, nameof(getColumnFromIAConnectListreturnBlankCells), required: false);
+            var __workflow_getColumnFromIAConnectListfallBackIfListDoesNotExist = WorkflowExpression.Compile(getColumnFromIAConnectListfallBackIfListDoesNotExist, nameof(getColumnFromIAConnectListfallBackIfListDoesNotExist), required: false);
+            var __workflow_getColumnFromIAConnectListfallbackValue = WorkflowExpression.Compile(getColumnFromIAConnectListfallbackValue, nameof(getColumnFromIAConnectListfallbackValue), required: false);
+            var __workflow_getColumnFromIAConnectListreturnFormat = WorkflowExpression.Compile(getColumnFromIAConnectListreturnFormat, nameof(getColumnFromIAConnectListreturnFormat), required: false);
             return new DeferredBodyAction<GetColumnFromIAConnectListResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetColumnFromIAConnectList";
@@ -2741,10 +2542,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetIAConnectListContentsResponse> GetIAConnectListContents(Expression<Func<string>> getIAConnectListContentslistName, Expression<Func<getIAConnectListContentsreturnFormatInput>> getIAConnectListContentsreturnFormat = null)
         {
-            var __workflow_getIAConnectListContentslistName = getIAConnectListContentslistName == null ? null : WorkflowExpression.Compile(getIAConnectListContentslistName);
-            WorkflowExpression.Validate(__workflow_getIAConnectListContentslistName, nameof(getIAConnectListContentslistName), required: true);
-            var __workflow_getIAConnectListContentsreturnFormat = getIAConnectListContentsreturnFormat == null ? null : WorkflowExpression.Compile(getIAConnectListContentsreturnFormat);
-            WorkflowExpression.Validate(__workflow_getIAConnectListContentsreturnFormat, nameof(getIAConnectListContentsreturnFormat), required: false);
+            var __workflow_getIAConnectListContentslistName = WorkflowExpression.Compile(getIAConnectListContentslistName, nameof(getIAConnectListContentslistName), required: true);
+            var __workflow_getIAConnectListContentsreturnFormat = WorkflowExpression.Compile(getIAConnectListContentsreturnFormat, nameof(getIAConnectListContentsreturnFormat), required: false);
             return new DeferredBodyAction<GetIAConnectListContentsResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetIAConnectListContents";
@@ -2782,16 +2581,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<LookupDataCellsFromIAConnectLookupTableResponse> LookupDataCellsFromIAConnectLookupTable(Expression<Func<string>> lookupDataCellsFromIAConnectLookupTablelookupTableName, Expression<Func<string>> lookupDataCellsFromIAConnectLookupTableinputDataJSON = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = null, Expression<Func<bool>> lookupDataCellsFromIAConnectLookupTablereturnBlankCells = null, Expression<Func<lookupDataCellsFromIAConnectLookupTablereturnFormatInput>> lookupDataCellsFromIAConnectLookupTablereturnFormat = null)
         {
-            var __workflow_lookupDataCellsFromIAConnectLookupTablelookupTableName = lookupDataCellsFromIAConnectLookupTablelookupTableName == null ? null : WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablelookupTableName);
-            WorkflowExpression.Validate(__workflow_lookupDataCellsFromIAConnectLookupTablelookupTableName, nameof(lookupDataCellsFromIAConnectLookupTablelookupTableName), required: true);
-            var __workflow_lookupDataCellsFromIAConnectLookupTableinputDataJSON = lookupDataCellsFromIAConnectLookupTableinputDataJSON == null ? null : WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTableinputDataJSON);
-            WorkflowExpression.Validate(__workflow_lookupDataCellsFromIAConnectLookupTableinputDataJSON, nameof(lookupDataCellsFromIAConnectLookupTableinputDataJSON), required: false);
-            var __workflow_lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch == null ? null : WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch);
-            WorkflowExpression.Validate(__workflow_lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
-            var __workflow_lookupDataCellsFromIAConnectLookupTablereturnBlankCells = lookupDataCellsFromIAConnectLookupTablereturnBlankCells == null ? null : WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablereturnBlankCells);
-            WorkflowExpression.Validate(__workflow_lookupDataCellsFromIAConnectLookupTablereturnBlankCells, nameof(lookupDataCellsFromIAConnectLookupTablereturnBlankCells), required: false);
-            var __workflow_lookupDataCellsFromIAConnectLookupTablereturnFormat = lookupDataCellsFromIAConnectLookupTablereturnFormat == null ? null : WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablereturnFormat);
-            WorkflowExpression.Validate(__workflow_lookupDataCellsFromIAConnectLookupTablereturnFormat, nameof(lookupDataCellsFromIAConnectLookupTablereturnFormat), required: false);
+            var __workflow_lookupDataCellsFromIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablelookupTableName, nameof(lookupDataCellsFromIAConnectLookupTablelookupTableName), required: true);
+            var __workflow_lookupDataCellsFromIAConnectLookupTableinputDataJSON = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTableinputDataJSON, nameof(lookupDataCellsFromIAConnectLookupTableinputDataJSON), required: false);
+            var __workflow_lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch, nameof(lookupDataCellsFromIAConnectLookupTableraiseExceptionIfNoMatch), required: false);
+            var __workflow_lookupDataCellsFromIAConnectLookupTablereturnBlankCells = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablereturnBlankCells, nameof(lookupDataCellsFromIAConnectLookupTablereturnBlankCells), required: false);
+            var __workflow_lookupDataCellsFromIAConnectLookupTablereturnFormat = WorkflowExpression.Compile(lookupDataCellsFromIAConnectLookupTablereturnFormat, nameof(lookupDataCellsFromIAConnectLookupTablereturnFormat), required: false);
             return new DeferredBodyAction<LookupDataCellsFromIAConnectLookupTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/LookupDataCellsFromIAConnectLookupTable";
@@ -2867,10 +2661,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<GetIAConnectLookupTableContentsResponse> GetIAConnectLookupTableContents(Expression<Func<string>> getIAConnectLookupTableContentslookupTableName, Expression<Func<getIAConnectLookupTableContentsreturnFormatInput>> getIAConnectLookupTableContentsreturnFormat = null)
         {
-            var __workflow_getIAConnectLookupTableContentslookupTableName = getIAConnectLookupTableContentslookupTableName == null ? null : WorkflowExpression.Compile(getIAConnectLookupTableContentslookupTableName);
-            WorkflowExpression.Validate(__workflow_getIAConnectLookupTableContentslookupTableName, nameof(getIAConnectLookupTableContentslookupTableName), required: true);
-            var __workflow_getIAConnectLookupTableContentsreturnFormat = getIAConnectLookupTableContentsreturnFormat == null ? null : WorkflowExpression.Compile(getIAConnectLookupTableContentsreturnFormat);
-            WorkflowExpression.Validate(__workflow_getIAConnectLookupTableContentsreturnFormat, nameof(getIAConnectLookupTableContentsreturnFormat), required: false);
+            var __workflow_getIAConnectLookupTableContentslookupTableName = WorkflowExpression.Compile(getIAConnectLookupTableContentslookupTableName, nameof(getIAConnectLookupTableContentslookupTableName), required: true);
+            var __workflow_getIAConnectLookupTableContentsreturnFormat = WorkflowExpression.Compile(getIAConnectLookupTableContentsreturnFormat, nameof(getIAConnectLookupTableContentsreturnFormat), required: false);
             return new DeferredBodyAction<GetIAConnectLookupTableContentsResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/GetIAConnectLookupTableContents";
@@ -2908,12 +2700,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<UploadCSVToIAConnectLookupTableResponse> UploadCSVToIAConnectLookupTable(Expression<Func<string>> uploadCSVToIAConnectLookupTablelookupTableName, Expression<Func<string>> uploadCSVToIAConnectLookupTablecSVData, Expression<Func<bool>> uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = null)
         {
-            var __workflow_uploadCSVToIAConnectLookupTablelookupTableName = uploadCSVToIAConnectLookupTablelookupTableName == null ? null : WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablelookupTableName);
-            WorkflowExpression.Validate(__workflow_uploadCSVToIAConnectLookupTablelookupTableName, nameof(uploadCSVToIAConnectLookupTablelookupTableName), required: true);
-            var __workflow_uploadCSVToIAConnectLookupTablecSVData = uploadCSVToIAConnectLookupTablecSVData == null ? null : WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablecSVData);
-            WorkflowExpression.Validate(__workflow_uploadCSVToIAConnectLookupTablecSVData, nameof(uploadCSVToIAConnectLookupTablecSVData), required: true);
-            var __workflow_uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist == null ? null : WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist);
-            WorkflowExpression.Validate(__workflow_uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist, nameof(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist), required: false);
+            var __workflow_uploadCSVToIAConnectLookupTablelookupTableName = WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablelookupTableName, nameof(uploadCSVToIAConnectLookupTablelookupTableName), required: true);
+            var __workflow_uploadCSVToIAConnectLookupTablecSVData = WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablecSVData, nameof(uploadCSVToIAConnectLookupTablecSVData), required: true);
+            var __workflow_uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist = WorkflowExpression.Compile(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist, nameof(uploadCSVToIAConnectLookupTablecreateLookupTableIfNotExist), required: false);
             return new DeferredBodyAction<UploadCSVToIAConnectLookupTableResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/UploadCSVToIAConnectLookupTable";
@@ -2953,12 +2742,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<UploadCSVToIAConnectListResponse> UploadCSVToIAConnectList(Expression<Func<string>> uploadCSVToIAConnectListlistName, Expression<Func<string>> uploadCSVToIAConnectListcSVData, Expression<Func<bool>> uploadCSVToIAConnectListcreateListIfNotExist = null)
         {
-            var __workflow_uploadCSVToIAConnectListlistName = uploadCSVToIAConnectListlistName == null ? null : WorkflowExpression.Compile(uploadCSVToIAConnectListlistName);
-            WorkflowExpression.Validate(__workflow_uploadCSVToIAConnectListlistName, nameof(uploadCSVToIAConnectListlistName), required: true);
-            var __workflow_uploadCSVToIAConnectListcSVData = uploadCSVToIAConnectListcSVData == null ? null : WorkflowExpression.Compile(uploadCSVToIAConnectListcSVData);
-            WorkflowExpression.Validate(__workflow_uploadCSVToIAConnectListcSVData, nameof(uploadCSVToIAConnectListcSVData), required: true);
-            var __workflow_uploadCSVToIAConnectListcreateListIfNotExist = uploadCSVToIAConnectListcreateListIfNotExist == null ? null : WorkflowExpression.Compile(uploadCSVToIAConnectListcreateListIfNotExist);
-            WorkflowExpression.Validate(__workflow_uploadCSVToIAConnectListcreateListIfNotExist, nameof(uploadCSVToIAConnectListcreateListIfNotExist), required: false);
+            var __workflow_uploadCSVToIAConnectListlistName = WorkflowExpression.Compile(uploadCSVToIAConnectListlistName, nameof(uploadCSVToIAConnectListlistName), required: true);
+            var __workflow_uploadCSVToIAConnectListcSVData = WorkflowExpression.Compile(uploadCSVToIAConnectListcSVData, nameof(uploadCSVToIAConnectListcSVData), required: true);
+            var __workflow_uploadCSVToIAConnectListcreateListIfNotExist = WorkflowExpression.Compile(uploadCSVToIAConnectListcreateListIfNotExist, nameof(uploadCSVToIAConnectListcreateListIfNotExist), required: false);
             return new DeferredBodyAction<UploadCSVToIAConnectListResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/UploadCSVToIAConnectList";
@@ -2998,8 +2784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectdynamiccode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectdynamiccode")]
         public IBodyWorkflowAction<ConvertArrayToJSONResponse> ConvertArrayToJSON(Expression<Func<JToken[]>> convertArrayToJSONinputObject)
         {
-            var __workflow_convertArrayToJSONinputObject = convertArrayToJSONinputObject == null ? null : WorkflowExpression.Compile(convertArrayToJSONinputObject);
-            WorkflowExpression.Validate(__workflow_convertArrayToJSONinputObject, nameof(convertArrayToJSONinputObject), required: true);
+            var __workflow_convertArrayToJSONinputObject = WorkflowExpression.Compile(convertArrayToJSONinputObject, nameof(convertArrayToJSONinputObject), required: true);
             return new DeferredBodyAction<ConvertArrayToJSONResponse>(() =>
             {
                 var apiCallPath = "/DynamicCode/ConvertArrayToJSON";

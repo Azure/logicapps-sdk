@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagesGetResponseItem[]> ImagesGet(Expression<Func<modelIdInput>> modelId, Expression<Func<bool>> onlyFinished = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
-            var __workflow_onlyFinished = onlyFinished == null ? null : WorkflowExpression.Compile(onlyFinished);
-            WorkflowExpression.Validate(__workflow_onlyFinished, nameof(onlyFinished), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_pageSize = pageSize == null ? null : WorkflowExpression.Compile(pageSize);
-            WorkflowExpression.Validate(__workflow_pageSize, nameof(pageSize), required: false);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_onlyFinished = WorkflowExpression.Compile(onlyFinished, nameof(onlyFinished), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_pageSize = WorkflowExpression.Compile(pageSize, nameof(pageSize), required: false);
             return new DeferredBodyAction<ImagesGetResponseItem[]>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
@@ -39,26 +35,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImagePostResponse> Image(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> bodyprompt, Expression<Func<string>> bodynegativePrompt = null, Expression<Func<int>> bodysteps = null, Expression<Func<int>> bodywidth = null, Expression<Func<int>> bodyheight = null, Expression<Func<int>> bodynumberOfImages = null, Expression<Func<int>> bodypromptStrength = null, Expression<Func<int>> bodyseed = null, Expression<Func<string>> bodywebhookUrl = null)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodynegativePrompt = bodynegativePrompt == null ? null : WorkflowExpression.Compile(bodynegativePrompt);
-            WorkflowExpression.Validate(__workflow_bodynegativePrompt, nameof(bodynegativePrompt), required: false);
-            var __workflow_bodysteps = bodysteps == null ? null : WorkflowExpression.Compile(bodysteps);
-            WorkflowExpression.Validate(__workflow_bodysteps, nameof(bodysteps), required: false);
-            var __workflow_bodywidth = bodywidth == null ? null : WorkflowExpression.Compile(bodywidth);
-            WorkflowExpression.Validate(__workflow_bodywidth, nameof(bodywidth), required: false);
-            var __workflow_bodyheight = bodyheight == null ? null : WorkflowExpression.Compile(bodyheight);
-            WorkflowExpression.Validate(__workflow_bodyheight, nameof(bodyheight), required: false);
-            var __workflow_bodynumberOfImages = bodynumberOfImages == null ? null : WorkflowExpression.Compile(bodynumberOfImages);
-            WorkflowExpression.Validate(__workflow_bodynumberOfImages, nameof(bodynumberOfImages), required: false);
-            var __workflow_bodypromptStrength = bodypromptStrength == null ? null : WorkflowExpression.Compile(bodypromptStrength);
-            WorkflowExpression.Validate(__workflow_bodypromptStrength, nameof(bodypromptStrength), required: false);
-            var __workflow_bodyseed = bodyseed == null ? null : WorkflowExpression.Compile(bodyseed);
-            WorkflowExpression.Validate(__workflow_bodyseed, nameof(bodyseed), required: false);
-            var __workflow_bodywebhookUrl = bodywebhookUrl == null ? null : WorkflowExpression.Compile(bodywebhookUrl);
-            WorkflowExpression.Validate(__workflow_bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodynegativePrompt = WorkflowExpression.Compile(bodynegativePrompt, nameof(bodynegativePrompt), required: false);
+            var __workflow_bodysteps = WorkflowExpression.Compile(bodysteps, nameof(bodysteps), required: false);
+            var __workflow_bodywidth = WorkflowExpression.Compile(bodywidth, nameof(bodywidth), required: false);
+            var __workflow_bodyheight = WorkflowExpression.Compile(bodyheight, nameof(bodyheight), required: false);
+            var __workflow_bodynumberOfImages = WorkflowExpression.Compile(bodynumberOfImages, nameof(bodynumberOfImages), required: false);
+            var __workflow_bodypromptStrength = WorkflowExpression.Compile(bodypromptStrength, nameof(bodypromptStrength), required: false);
+            var __workflow_bodyseed = WorkflowExpression.Compile(bodyseed, nameof(bodyseed), required: false);
+            var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
             return new DeferredBodyAction<ImagePostResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
@@ -128,10 +114,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
-            var __workflow_inferenceId = inferenceId == null ? null : WorkflowExpression.Compile(inferenceId);
-            WorkflowExpression.Validate(__workflow_inferenceId, nameof(inferenceId), required: true);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<ImageGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
@@ -144,10 +128,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<string> ImageDelete(Expression<Func<modelIdInput>> modelId, Expression<Func<string>> inferenceId)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
-            var __workflow_inferenceId = inferenceId == null ? null : WorkflowExpression.Compile(inferenceId);
-            WorkflowExpression.Validate(__workflow_inferenceId, nameof(inferenceId), required: true);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
+            var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<string>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/images/models/{0}/inferences/{1}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1), ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));
@@ -160,16 +142,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelPostResponse> Model(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysubjectKeyword = null, Expression<Func<string>> bodysubjectType = null, Expression<Func<string>> bodywebhookUrl = null, Expression<Func<string[]>> bodyimageSampleUrls = null)
         {
-            var __workflow_bodyname = bodyname == null ? null : WorkflowExpression.Compile(bodyname);
-            WorkflowExpression.Validate(__workflow_bodyname, nameof(bodyname), required: false);
-            var __workflow_bodysubjectKeyword = bodysubjectKeyword == null ? null : WorkflowExpression.Compile(bodysubjectKeyword);
-            WorkflowExpression.Validate(__workflow_bodysubjectKeyword, nameof(bodysubjectKeyword), required: false);
-            var __workflow_bodysubjectType = bodysubjectType == null ? null : WorkflowExpression.Compile(bodysubjectType);
-            WorkflowExpression.Validate(__workflow_bodysubjectType, nameof(bodysubjectType), required: false);
-            var __workflow_bodywebhookUrl = bodywebhookUrl == null ? null : WorkflowExpression.Compile(bodywebhookUrl);
-            WorkflowExpression.Validate(__workflow_bodywebhookUrl, nameof(bodywebhookUrl), required: false);
-            var __workflow_bodyimageSampleUrls = bodyimageSampleUrls == null ? null : WorkflowExpression.Compile(bodyimageSampleUrls);
-            WorkflowExpression.Validate(__workflow_bodyimageSampleUrls, nameof(bodyimageSampleUrls), required: false);
+            var __workflow_bodyname = WorkflowExpression.Compile(bodyname, nameof(bodyname), required: false);
+            var __workflow_bodysubjectKeyword = WorkflowExpression.Compile(bodysubjectKeyword, nameof(bodysubjectKeyword), required: false);
+            var __workflow_bodysubjectType = WorkflowExpression.Compile(bodysubjectType, nameof(bodysubjectType), required: false);
+            var __workflow_bodywebhookUrl = WorkflowExpression.Compile(bodywebhookUrl, nameof(bodywebhookUrl), required: false);
+            var __workflow_bodyimageSampleUrls = WorkflowExpression.Compile(bodyimageSampleUrls, nameof(bodyimageSampleUrls), required: false);
             return new DeferredBodyAction<ModelPostResponse>(() =>
             {
                 var apiCallPath = "/v2/images/models/new";
@@ -228,8 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelGetResponse> ModelGet(Expression<Func<modelIdInput>> modelId)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
@@ -242,8 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<ModelDeleteResponse> ModelDelete(Expression<Func<modelIdInput>> modelId)
         {
-            var __workflow_modelId = modelId == null ? null : WorkflowExpression.Compile(modelId);
-            WorkflowExpression.Validate(__workflow_modelId, nameof(modelId), required: true);
+            var __workflow_modelId = WorkflowExpression.Compile(modelId, nameof(modelId), required: true);
             return new DeferredBodyAction<ModelDeleteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/images/models/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_modelId, 1));
@@ -265,12 +240,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicPostResponse> Music(Expression<Func<string>> bodyprompt, Expression<Func<bodymodeInput>> bodymode, Expression<Func<int>> bodyduration)
         {
-            var __workflow_bodyprompt = bodyprompt == null ? null : WorkflowExpression.Compile(bodyprompt);
-            WorkflowExpression.Validate(__workflow_bodyprompt, nameof(bodyprompt), required: true);
-            var __workflow_bodymode = bodymode == null ? null : WorkflowExpression.Compile(bodymode);
-            WorkflowExpression.Validate(__workflow_bodymode, nameof(bodymode), required: true);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: true);
+            var __workflow_bodyprompt = WorkflowExpression.Compile(bodyprompt, nameof(bodyprompt), required: true);
+            var __workflow_bodymode = WorkflowExpression.Compile(bodymode, nameof(bodymode), required: true);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
             return new DeferredBodyAction<MusicPostResponse>(() =>
             {
                 var apiCallPath = "/v1/music";
@@ -296,8 +268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leapaiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leapaiip")]
         public IBodyWorkflowAction<MusicGetResponse> MusicGet(Expression<Func<string>> inferenceId)
         {
-            var __workflow_inferenceId = inferenceId == null ? null : WorkflowExpression.Compile(inferenceId);
-            WorkflowExpression.Validate(__workflow_inferenceId, nameof(inferenceId), required: true);
+            var __workflow_inferenceId = WorkflowExpression.Compile(inferenceId, nameof(inferenceId), required: true);
             return new DeferredBodyAction<MusicGetResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/music/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_inferenceId, 1));

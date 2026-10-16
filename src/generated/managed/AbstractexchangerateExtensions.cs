@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
         public IBodyWorkflowAction<LiveRatesResponse> LiveRates(Expression<Func<string>> @base, Expression<Func<string>> target = null)
         {
-            var __workflow_base = @base == null ? null : WorkflowExpression.Compile(@base);
-            WorkflowExpression.Validate(__workflow_base, nameof(@base), required: true);
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: false);
+            var __workflow_base = WorkflowExpression.Compile(@base, nameof(@base), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: false);
             return new DeferredBodyAction<LiveRatesResponse>(() =>
             {
                 var apiCallPath = "/v1/live/";
@@ -32,14 +30,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
         public IBodyWorkflowAction<ConvertResponse> Convert(Expression<Func<string>> @base, Expression<Func<string>> target, Expression<Func<string>> date = null, Expression<Func<double>> baseAmount = null)
         {
-            var __workflow_base = @base == null ? null : WorkflowExpression.Compile(@base);
-            WorkflowExpression.Validate(__workflow_base, nameof(@base), required: true);
-            var __workflow_target = target == null ? null : WorkflowExpression.Compile(target);
-            WorkflowExpression.Validate(__workflow_target, nameof(target), required: true);
-            var __workflow_date = date == null ? null : WorkflowExpression.Compile(date);
-            WorkflowExpression.Validate(__workflow_date, nameof(date), required: false);
-            var __workflow_baseAmount = baseAmount == null ? null : WorkflowExpression.Compile(baseAmount);
-            WorkflowExpression.Validate(__workflow_baseAmount, nameof(baseAmount), required: false);
+            var __workflow_base = WorkflowExpression.Compile(@base, nameof(@base), required: true);
+            var __workflow_target = WorkflowExpression.Compile(target, nameof(target), required: true);
+            var __workflow_date = WorkflowExpression.Compile(date, nameof(date), required: false);
+            var __workflow_baseAmount = WorkflowExpression.Compile(baseAmount, nameof(baseAmount), required: false);
             return new DeferredBodyAction<ConvertResponse>(() =>
             {
                 var apiCallPath = "/v1/convert/";

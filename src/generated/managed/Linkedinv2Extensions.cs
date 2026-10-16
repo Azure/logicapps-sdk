@@ -13,22 +13,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         public IBodyWorkflowAction<ShareResponseV2> PostCompanyUpdate(Expression<Func<string>> bodycompany, Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
         {
-            var __workflow_bodycompany = bodycompany == null ? null : WorkflowExpression.Compile(bodycompany);
-            WorkflowExpression.Validate(__workflow_bodycompany, nameof(bodycompany), required: true);
-            var __workflow_bodycommentary = bodycommentary == null ? null : WorkflowExpression.Compile(bodycommentary);
-            WorkflowExpression.Validate(__workflow_bodycommentary, nameof(bodycommentary), required: true);
-            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
-            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: true);
-            var __workflow_bodycontentarticleuRLOfTheArticle = bodycontentarticleuRLOfTheArticle == null ? null : WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle);
-            WorkflowExpression.Validate(__workflow_bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            var __workflow_bodycontentarticletitle = bodycontentarticletitle == null ? null : WorkflowExpression.Compile(bodycontentarticletitle);
-            WorkflowExpression.Validate(__workflow_bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            var __workflow_bodyisReshareDisabledByAuthor = bodyisReshareDisabledByAuthor == null ? null : WorkflowExpression.Compile(bodyisReshareDisabledByAuthor);
-            WorkflowExpression.Validate(__workflow_bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            var __workflow_bodycontentarticledescription = bodycontentarticledescription == null ? null : WorkflowExpression.Compile(bodycontentarticledescription);
-            WorkflowExpression.Validate(__workflow_bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            var __workflow_bodycontentarticlethumbnailURL = bodycontentarticlethumbnailURL == null ? null : WorkflowExpression.Compile(bodycontentarticlethumbnailURL);
-            WorkflowExpression.Validate(__workflow_bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
+            var __workflow_bodycompany = WorkflowExpression.Compile(bodycompany, nameof(bodycompany), required: true);
+            var __workflow_bodycommentary = WorkflowExpression.Compile(bodycommentary, nameof(bodycommentary), required: true);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: true);
+            var __workflow_bodycontentarticleuRLOfTheArticle = WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
+            var __workflow_bodycontentarticletitle = WorkflowExpression.Compile(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
+            var __workflow_bodyisReshareDisabledByAuthor = WorkflowExpression.Compile(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
+            var __workflow_bodycontentarticledescription = WorkflowExpression.Compile(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
+            var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             return new DeferredBodyAction<ShareResponseV2>(() =>
             {
                 var apiCallPath = "/company/rest/posts";
@@ -124,20 +116,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linkedinv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linkedinv2")]
         public IBodyWorkflowAction<ShareResponseV2> PostUpdate(Expression<Func<string>> bodycommentary, Expression<Func<bodyvisibilityInput>> bodyvisibility, Expression<Func<string>> bodycontentarticleuRLOfTheArticle, Expression<Func<string>> bodycontentarticletitle, Expression<Func<bool>> bodyisReshareDisabledByAuthor = null, Expression<Func<string>> bodycontentarticledescription = null, Expression<Func<string>> bodycontentarticlethumbnailURL = null)
         {
-            var __workflow_bodycommentary = bodycommentary == null ? null : WorkflowExpression.Compile(bodycommentary);
-            WorkflowExpression.Validate(__workflow_bodycommentary, nameof(bodycommentary), required: true);
-            var __workflow_bodyvisibility = bodyvisibility == null ? null : WorkflowExpression.Compile(bodyvisibility);
-            WorkflowExpression.Validate(__workflow_bodyvisibility, nameof(bodyvisibility), required: true);
-            var __workflow_bodycontentarticleuRLOfTheArticle = bodycontentarticleuRLOfTheArticle == null ? null : WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle);
-            WorkflowExpression.Validate(__workflow_bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
-            var __workflow_bodycontentarticletitle = bodycontentarticletitle == null ? null : WorkflowExpression.Compile(bodycontentarticletitle);
-            WorkflowExpression.Validate(__workflow_bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
-            var __workflow_bodyisReshareDisabledByAuthor = bodyisReshareDisabledByAuthor == null ? null : WorkflowExpression.Compile(bodyisReshareDisabledByAuthor);
-            WorkflowExpression.Validate(__workflow_bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
-            var __workflow_bodycontentarticledescription = bodycontentarticledescription == null ? null : WorkflowExpression.Compile(bodycontentarticledescription);
-            WorkflowExpression.Validate(__workflow_bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
-            var __workflow_bodycontentarticlethumbnailURL = bodycontentarticlethumbnailURL == null ? null : WorkflowExpression.Compile(bodycontentarticlethumbnailURL);
-            WorkflowExpression.Validate(__workflow_bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
+            var __workflow_bodycommentary = WorkflowExpression.Compile(bodycommentary, nameof(bodycommentary), required: true);
+            var __workflow_bodyvisibility = WorkflowExpression.Compile(bodyvisibility, nameof(bodyvisibility), required: true);
+            var __workflow_bodycontentarticleuRLOfTheArticle = WorkflowExpression.Compile(bodycontentarticleuRLOfTheArticle, nameof(bodycontentarticleuRLOfTheArticle), required: true);
+            var __workflow_bodycontentarticletitle = WorkflowExpression.Compile(bodycontentarticletitle, nameof(bodycontentarticletitle), required: true);
+            var __workflow_bodyisReshareDisabledByAuthor = WorkflowExpression.Compile(bodyisReshareDisabledByAuthor, nameof(bodyisReshareDisabledByAuthor), required: false);
+            var __workflow_bodycontentarticledescription = WorkflowExpression.Compile(bodycontentarticledescription, nameof(bodycontentarticledescription), required: false);
+            var __workflow_bodycontentarticlethumbnailURL = WorkflowExpression.Compile(bodycontentarticlethumbnailURL, nameof(bodycontentarticlethumbnailURL), required: false);
             return new DeferredBodyAction<ShareResponseV2>(() =>
             {
                 var apiCallPath = "/people/rest/posts";

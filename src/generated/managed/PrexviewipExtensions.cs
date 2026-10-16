@@ -13,18 +13,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prexviewip")]
         public IBodyWorkflowAction<TransformPostResponse> Transform(Expression<Func<bodyoutputInput>> bodyoutput, Expression<Func<string>> bodytemplate, Expression<Func<string>> bodyxml = null, Expression<Func<string>> bodyjson = null, Expression<Func<string>> bodytemplateBackup = null, Expression<Func<string>> bodynote = null)
         {
-            var __workflow_bodyoutput = bodyoutput == null ? null : WorkflowExpression.Compile(bodyoutput);
-            WorkflowExpression.Validate(__workflow_bodyoutput, nameof(bodyoutput), required: true);
-            var __workflow_bodytemplate = bodytemplate == null ? null : WorkflowExpression.Compile(bodytemplate);
-            WorkflowExpression.Validate(__workflow_bodytemplate, nameof(bodytemplate), required: true);
-            var __workflow_bodyxml = bodyxml == null ? null : WorkflowExpression.Compile(bodyxml);
-            WorkflowExpression.Validate(__workflow_bodyxml, nameof(bodyxml), required: false);
-            var __workflow_bodyjson = bodyjson == null ? null : WorkflowExpression.Compile(bodyjson);
-            WorkflowExpression.Validate(__workflow_bodyjson, nameof(bodyjson), required: false);
-            var __workflow_bodytemplateBackup = bodytemplateBackup == null ? null : WorkflowExpression.Compile(bodytemplateBackup);
-            WorkflowExpression.Validate(__workflow_bodytemplateBackup, nameof(bodytemplateBackup), required: false);
-            var __workflow_bodynote = bodynote == null ? null : WorkflowExpression.Compile(bodynote);
-            WorkflowExpression.Validate(__workflow_bodynote, nameof(bodynote), required: false);
+            var __workflow_bodyoutput = WorkflowExpression.Compile(bodyoutput, nameof(bodyoutput), required: true);
+            var __workflow_bodytemplate = WorkflowExpression.Compile(bodytemplate, nameof(bodytemplate), required: true);
+            var __workflow_bodyxml = WorkflowExpression.Compile(bodyxml, nameof(bodyxml), required: false);
+            var __workflow_bodyjson = WorkflowExpression.Compile(bodyjson, nameof(bodyjson), required: false);
+            var __workflow_bodytemplateBackup = WorkflowExpression.Compile(bodytemplateBackup, nameof(bodytemplateBackup), required: false);
+            var __workflow_bodynote = WorkflowExpression.Compile(bodynote, nameof(bodynote), required: false);
             return new DeferredBodyAction<TransformPostResponse>(() =>
             {
                 var apiCallPath = "/transform";

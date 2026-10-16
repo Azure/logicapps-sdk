@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
         public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode(Expression<Func<string>> businessId)
         {
-            var __workflow_businessId = businessId == null ? null : WorkflowExpression.Compile(businessId);
-            WorkflowExpression.Validate(__workflow_businessId, nameof(businessId), required: true);
+            var __workflow_businessId = WorkflowExpression.Compile(businessId, nameof(businessId), required: true);
             return new DeferredBodyAction<CompanyByBISCodeResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bis/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_businessId, 1));
@@ -27,12 +26,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
         public IBodyWorkflowAction<CompanySearchResponse> CompanySearch(Expression<Func<string>> name = null, Expression<Func<int>> maxResults = null, Expression<Func<bool>> totalResults = null)
         {
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_maxResults = maxResults == null ? null : WorkflowExpression.Compile(maxResults);
-            WorkflowExpression.Validate(__workflow_maxResults, nameof(maxResults), required: false);
-            var __workflow_totalResults = totalResults == null ? null : WorkflowExpression.Compile(totalResults);
-            WorkflowExpression.Validate(__workflow_totalResults, nameof(totalResults), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_maxResults = WorkflowExpression.Compile(maxResults, nameof(maxResults), required: false);
+            var __workflow_totalResults = WorkflowExpression.Compile(totalResults, nameof(totalResults), required: false);
             return new DeferredBodyAction<CompanySearchResponse>(() =>
             {
                 var apiCallPath = "/bis/v1";

@@ -22,8 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         public IBodyWorkflowAction<ListScheduledInfo[]> ScheduledMessageInfo(Expression<Func<string>> listScheduledRequestto = null)
         {
-            var __workflow_listScheduledRequestto = listScheduledRequestto == null ? null : WorkflowExpression.Compile(listScheduledRequestto);
-            WorkflowExpression.Validate(__workflow_listScheduledRequestto, nameof(listScheduledRequestto), required: false);
+            var __workflow_listScheduledRequestto = WorkflowExpression.Compile(listScheduledRequestto, nameof(listScheduledRequestto), required: false);
             return new DeferredBodyAction<ListScheduledInfo[]>(() =>
             {
                 var apiCallPath = "/messages/list-scheduled.json";
@@ -49,48 +48,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mandrill
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mandrill")]
         public IBodyWorkflowAction<SendMessageResponse[]> SendMessage(Expression<Func<string>> sendMessageRequestmessagesubject, Expression<Func<string>> sendMessageRequestmessagefromEmail, Expression<Func<RecipientInfo[]>> sendMessageRequestmessagesendTo, Expression<Func<string>> sendMessageRequestmessagecontentOfTheMessage = null, Expression<Func<string>> sendMessageRequestmessagefromName = null, Expression<Func<string>> sendMessageRequestmessageextraHeaders = null, Expression<Func<bool>> sendMessageRequestmessageisThisMessageImportantTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = null, Expression<Func<bool>> sendMessageRequestmessageremoveContentLoggingTrueFalse = null, Expression<Func<string>> sendMessageRequestmessageoptionalBCCAddress = null, Expression<Func<string>> sendMessageRequestmessagecustomDomaingForTracking = null, Expression<Func<string[]>> sendMessageRequestmessagetags = null, Expression<Func<AttachmentInfo[]>> sendMessageRequestmessageattachments = null, Expression<Func<string>> sendMessageRequestsendAt = null, Expression<Func<bool>> sendMessageRequestenableAsyncTrueFalse = null, Expression<Func<string>> sendMessageRequestdedicatedIpPoolName = null)
         {
-            var __workflow_sendMessageRequestmessagesubject = sendMessageRequestmessagesubject == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagesubject);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagesubject, nameof(sendMessageRequestmessagesubject), required: true);
-            var __workflow_sendMessageRequestmessagefromEmail = sendMessageRequestmessagefromEmail == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagefromEmail);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagefromEmail, nameof(sendMessageRequestmessagefromEmail), required: true);
-            var __workflow_sendMessageRequestmessagesendTo = sendMessageRequestmessagesendTo == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagesendTo);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagesendTo, nameof(sendMessageRequestmessagesendTo), required: true);
-            var __workflow_sendMessageRequestmessagecontentOfTheMessage = sendMessageRequestmessagecontentOfTheMessage == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagecontentOfTheMessage);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagecontentOfTheMessage, nameof(sendMessageRequestmessagecontentOfTheMessage), required: false);
-            var __workflow_sendMessageRequestmessagefromName = sendMessageRequestmessagefromName == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagefromName);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagefromName, nameof(sendMessageRequestmessagefromName), required: false);
-            var __workflow_sendMessageRequestmessageextraHeaders = sendMessageRequestmessageextraHeaders == null ? null : WorkflowExpression.Compile(sendMessageRequestmessageextraHeaders);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessageextraHeaders, nameof(sendMessageRequestmessageextraHeaders), required: false);
-            var __workflow_sendMessageRequestmessageisThisMessageImportantTrueFalse = sendMessageRequestmessageisThisMessageImportantTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessageisThisMessageImportantTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessageisThisMessageImportantTrueFalse, nameof(sendMessageRequestmessageisThisMessageImportantTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = sendMessageRequestmessagetrackWhenMessageOpensTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagetrackWhenMessageOpensTrueFalse, nameof(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = sendMessageRequestmessagetrackClicksForThisMessageTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagetrackClicksForThisMessageTrueFalse, nameof(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse, nameof(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse, nameof(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse, nameof(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse, nameof(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessageremoveContentLoggingTrueFalse = sendMessageRequestmessageremoveContentLoggingTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestmessageremoveContentLoggingTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessageremoveContentLoggingTrueFalse, nameof(sendMessageRequestmessageremoveContentLoggingTrueFalse), required: false);
-            var __workflow_sendMessageRequestmessageoptionalBCCAddress = sendMessageRequestmessageoptionalBCCAddress == null ? null : WorkflowExpression.Compile(sendMessageRequestmessageoptionalBCCAddress);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessageoptionalBCCAddress, nameof(sendMessageRequestmessageoptionalBCCAddress), required: false);
-            var __workflow_sendMessageRequestmessagecustomDomaingForTracking = sendMessageRequestmessagecustomDomaingForTracking == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagecustomDomaingForTracking);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagecustomDomaingForTracking, nameof(sendMessageRequestmessagecustomDomaingForTracking), required: false);
-            var __workflow_sendMessageRequestmessagetags = sendMessageRequestmessagetags == null ? null : WorkflowExpression.Compile(sendMessageRequestmessagetags);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessagetags, nameof(sendMessageRequestmessagetags), required: false);
-            var __workflow_sendMessageRequestmessageattachments = sendMessageRequestmessageattachments == null ? null : WorkflowExpression.Compile(sendMessageRequestmessageattachments);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestmessageattachments, nameof(sendMessageRequestmessageattachments), required: false);
-            var __workflow_sendMessageRequestsendAt = sendMessageRequestsendAt == null ? null : WorkflowExpression.Compile(sendMessageRequestsendAt);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestsendAt, nameof(sendMessageRequestsendAt), required: false);
-            var __workflow_sendMessageRequestenableAsyncTrueFalse = sendMessageRequestenableAsyncTrueFalse == null ? null : WorkflowExpression.Compile(sendMessageRequestenableAsyncTrueFalse);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestenableAsyncTrueFalse, nameof(sendMessageRequestenableAsyncTrueFalse), required: false);
-            var __workflow_sendMessageRequestdedicatedIpPoolName = sendMessageRequestdedicatedIpPoolName == null ? null : WorkflowExpression.Compile(sendMessageRequestdedicatedIpPoolName);
-            WorkflowExpression.Validate(__workflow_sendMessageRequestdedicatedIpPoolName, nameof(sendMessageRequestdedicatedIpPoolName), required: false);
+            var __workflow_sendMessageRequestmessagesubject = WorkflowExpression.Compile(sendMessageRequestmessagesubject, nameof(sendMessageRequestmessagesubject), required: true);
+            var __workflow_sendMessageRequestmessagefromEmail = WorkflowExpression.Compile(sendMessageRequestmessagefromEmail, nameof(sendMessageRequestmessagefromEmail), required: true);
+            var __workflow_sendMessageRequestmessagesendTo = WorkflowExpression.Compile(sendMessageRequestmessagesendTo, nameof(sendMessageRequestmessagesendTo), required: true);
+            var __workflow_sendMessageRequestmessagecontentOfTheMessage = WorkflowExpression.Compile(sendMessageRequestmessagecontentOfTheMessage, nameof(sendMessageRequestmessagecontentOfTheMessage), required: false);
+            var __workflow_sendMessageRequestmessagefromName = WorkflowExpression.Compile(sendMessageRequestmessagefromName, nameof(sendMessageRequestmessagefromName), required: false);
+            var __workflow_sendMessageRequestmessageextraHeaders = WorkflowExpression.Compile(sendMessageRequestmessageextraHeaders, nameof(sendMessageRequestmessageextraHeaders), required: false);
+            var __workflow_sendMessageRequestmessageisThisMessageImportantTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageisThisMessageImportantTrueFalse, nameof(sendMessageRequestmessageisThisMessageImportantTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagetrackWhenMessageOpensTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse, nameof(sendMessageRequestmessagetrackWhenMessageOpensTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagetrackClicksForThisMessageTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse, nameof(sendMessageRequestmessagetrackClicksForThisMessageTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse, nameof(sendMessageRequestmessagefillTextMessageIfNotPresentTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse, nameof(sendMessageRequestmessageinlineCSSStylesInHtmlMessageTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse, nameof(sendMessageRequestmessagestripQueryStringFromURLInAggregatedDataTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse, nameof(sendMessageRequestmessageshowAllRecipientsInToLineTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageremoveContentLoggingTrueFalse = WorkflowExpression.Compile(sendMessageRequestmessageremoveContentLoggingTrueFalse, nameof(sendMessageRequestmessageremoveContentLoggingTrueFalse), required: false);
+            var __workflow_sendMessageRequestmessageoptionalBCCAddress = WorkflowExpression.Compile(sendMessageRequestmessageoptionalBCCAddress, nameof(sendMessageRequestmessageoptionalBCCAddress), required: false);
+            var __workflow_sendMessageRequestmessagecustomDomaingForTracking = WorkflowExpression.Compile(sendMessageRequestmessagecustomDomaingForTracking, nameof(sendMessageRequestmessagecustomDomaingForTracking), required: false);
+            var __workflow_sendMessageRequestmessagetags = WorkflowExpression.Compile(sendMessageRequestmessagetags, nameof(sendMessageRequestmessagetags), required: false);
+            var __workflow_sendMessageRequestmessageattachments = WorkflowExpression.Compile(sendMessageRequestmessageattachments, nameof(sendMessageRequestmessageattachments), required: false);
+            var __workflow_sendMessageRequestsendAt = WorkflowExpression.Compile(sendMessageRequestsendAt, nameof(sendMessageRequestsendAt), required: false);
+            var __workflow_sendMessageRequestenableAsyncTrueFalse = WorkflowExpression.Compile(sendMessageRequestenableAsyncTrueFalse, nameof(sendMessageRequestenableAsyncTrueFalse), required: false);
+            var __workflow_sendMessageRequestdedicatedIpPoolName = WorkflowExpression.Compile(sendMessageRequestdedicatedIpPoolName, nameof(sendMessageRequestdedicatedIpPoolName), required: false);
             return new DeferredBodyAction<SendMessageResponse[]>(() =>
             {
                 var apiCallPath = "/v2/messages/send.json";

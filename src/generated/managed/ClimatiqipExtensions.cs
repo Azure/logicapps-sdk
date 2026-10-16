@@ -13,54 +13,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<EmissionEstimateResponse> EmissionEstimate(Expression<Func<string>> bodyemissionFactoruuid = null, Expression<Func<string>> bodyemissionFactoractivityId = null, Expression<Func<string>> bodyemissionFactorsource = null, Expression<Func<string>> bodyemissionFactorregion = null, Expression<Func<bool>> bodyemissionFactorregionFallback = null, Expression<Func<string>> bodyemissionFactoryear = null, Expression<Func<string>> bodyemissionFactorlcaActivity = null, Expression<Func<string>> bodyemissionFactorcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
         {
-            var __workflow_bodyemissionFactoruuid = bodyemissionFactoruuid == null ? null : WorkflowExpression.Compile(bodyemissionFactoruuid);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactoruuid, nameof(bodyemissionFactoruuid), required: false);
-            var __workflow_bodyemissionFactoractivityId = bodyemissionFactoractivityId == null ? null : WorkflowExpression.Compile(bodyemissionFactoractivityId);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactoractivityId, nameof(bodyemissionFactoractivityId), required: false);
-            var __workflow_bodyemissionFactorsource = bodyemissionFactorsource == null ? null : WorkflowExpression.Compile(bodyemissionFactorsource);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactorsource, nameof(bodyemissionFactorsource), required: false);
-            var __workflow_bodyemissionFactorregion = bodyemissionFactorregion == null ? null : WorkflowExpression.Compile(bodyemissionFactorregion);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactorregion, nameof(bodyemissionFactorregion), required: false);
-            var __workflow_bodyemissionFactorregionFallback = bodyemissionFactorregionFallback == null ? null : WorkflowExpression.Compile(bodyemissionFactorregionFallback);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactorregionFallback, nameof(bodyemissionFactorregionFallback), required: false);
-            var __workflow_bodyemissionFactoryear = bodyemissionFactoryear == null ? null : WorkflowExpression.Compile(bodyemissionFactoryear);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactoryear, nameof(bodyemissionFactoryear), required: false);
-            var __workflow_bodyemissionFactorlcaActivity = bodyemissionFactorlcaActivity == null ? null : WorkflowExpression.Compile(bodyemissionFactorlcaActivity);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactorlcaActivity, nameof(bodyemissionFactorlcaActivity), required: false);
-            var __workflow_bodyemissionFactorcalculationMethod = bodyemissionFactorcalculationMethod == null ? null : WorkflowExpression.Compile(bodyemissionFactorcalculationMethod);
-            WorkflowExpression.Validate(__workflow_bodyemissionFactorcalculationMethod, nameof(bodyemissionFactorcalculationMethod), required: false);
-            var __workflow_bodyparametersenergy = bodyparametersenergy == null ? null : WorkflowExpression.Compile(bodyparametersenergy);
-            WorkflowExpression.Validate(__workflow_bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            var __workflow_bodyparametersenergyUnit = bodyparametersenergyUnit == null ? null : WorkflowExpression.Compile(bodyparametersenergyUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            var __workflow_bodyparametersdata = bodyparametersdata == null ? null : WorkflowExpression.Compile(bodyparametersdata);
-            WorkflowExpression.Validate(__workflow_bodyparametersdata, nameof(bodyparametersdata), required: false);
-            var __workflow_bodyparametersdataUnit = bodyparametersdataUnit == null ? null : WorkflowExpression.Compile(bodyparametersdataUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            var __workflow_bodyparametersdistance = bodyparametersdistance == null ? null : WorkflowExpression.Compile(bodyparametersdistance);
-            WorkflowExpression.Validate(__workflow_bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            var __workflow_bodyparametersdistanceUnit = bodyparametersdistanceUnit == null ? null : WorkflowExpression.Compile(bodyparametersdistanceUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            var __workflow_bodyparametersmoney = bodyparametersmoney == null ? null : WorkflowExpression.Compile(bodyparametersmoney);
-            WorkflowExpression.Validate(__workflow_bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            var __workflow_bodyparametersmoneyUnit = bodyparametersmoneyUnit == null ? null : WorkflowExpression.Compile(bodyparametersmoneyUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            var __workflow_bodyparametersnumber = bodyparametersnumber == null ? null : WorkflowExpression.Compile(bodyparametersnumber);
-            WorkflowExpression.Validate(__workflow_bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            var __workflow_bodyparameterstime = bodyparameterstime == null ? null : WorkflowExpression.Compile(bodyparameterstime);
-            WorkflowExpression.Validate(__workflow_bodyparameterstime, nameof(bodyparameterstime), required: false);
-            var __workflow_bodyparameterstimeUnit = bodyparameterstimeUnit == null ? null : WorkflowExpression.Compile(bodyparameterstimeUnit);
-            WorkflowExpression.Validate(__workflow_bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            var __workflow_bodyparameterspassengers = bodyparameterspassengers == null ? null : WorkflowExpression.Compile(bodyparameterspassengers);
-            WorkflowExpression.Validate(__workflow_bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            var __workflow_bodyparametersvolume = bodyparametersvolume == null ? null : WorkflowExpression.Compile(bodyparametersvolume);
-            WorkflowExpression.Validate(__workflow_bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            var __workflow_bodyparametersvolumeUnit = bodyparametersvolumeUnit == null ? null : WorkflowExpression.Compile(bodyparametersvolumeUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            var __workflow_bodyparametersweight = bodyparametersweight == null ? null : WorkflowExpression.Compile(bodyparametersweight);
-            WorkflowExpression.Validate(__workflow_bodyparametersweight, nameof(bodyparametersweight), required: false);
-            var __workflow_bodyparametersweightUnit = bodyparametersweightUnit == null ? null : WorkflowExpression.Compile(bodyparametersweightUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            var __workflow_bodyemissionFactoruuid = WorkflowExpression.Compile(bodyemissionFactoruuid, nameof(bodyemissionFactoruuid), required: false);
+            var __workflow_bodyemissionFactoractivityId = WorkflowExpression.Compile(bodyemissionFactoractivityId, nameof(bodyemissionFactoractivityId), required: false);
+            var __workflow_bodyemissionFactorsource = WorkflowExpression.Compile(bodyemissionFactorsource, nameof(bodyemissionFactorsource), required: false);
+            var __workflow_bodyemissionFactorregion = WorkflowExpression.Compile(bodyemissionFactorregion, nameof(bodyemissionFactorregion), required: false);
+            var __workflow_bodyemissionFactorregionFallback = WorkflowExpression.Compile(bodyemissionFactorregionFallback, nameof(bodyemissionFactorregionFallback), required: false);
+            var __workflow_bodyemissionFactoryear = WorkflowExpression.Compile(bodyemissionFactoryear, nameof(bodyemissionFactoryear), required: false);
+            var __workflow_bodyemissionFactorlcaActivity = WorkflowExpression.Compile(bodyemissionFactorlcaActivity, nameof(bodyemissionFactorlcaActivity), required: false);
+            var __workflow_bodyemissionFactorcalculationMethod = WorkflowExpression.Compile(bodyemissionFactorcalculationMethod, nameof(bodyemissionFactorcalculationMethod), required: false);
+            var __workflow_bodyparametersenergy = WorkflowExpression.Compile(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
+            var __workflow_bodyparametersenergyUnit = WorkflowExpression.Compile(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
+            var __workflow_bodyparametersdata = WorkflowExpression.Compile(bodyparametersdata, nameof(bodyparametersdata), required: false);
+            var __workflow_bodyparametersdataUnit = WorkflowExpression.Compile(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
+            var __workflow_bodyparametersdistance = WorkflowExpression.Compile(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
+            var __workflow_bodyparametersdistanceUnit = WorkflowExpression.Compile(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
+            var __workflow_bodyparametersmoney = WorkflowExpression.Compile(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
+            var __workflow_bodyparametersmoneyUnit = WorkflowExpression.Compile(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
+            var __workflow_bodyparametersnumber = WorkflowExpression.Compile(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
+            var __workflow_bodyparameterstime = WorkflowExpression.Compile(bodyparameterstime, nameof(bodyparameterstime), required: false);
+            var __workflow_bodyparameterstimeUnit = WorkflowExpression.Compile(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
+            var __workflow_bodyparameterspassengers = WorkflowExpression.Compile(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
+            var __workflow_bodyparametersvolume = WorkflowExpression.Compile(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
+            var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
+            var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
+            var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
             return new DeferredBodyAction<EmissionEstimateResponse>(() =>
             {
                 var apiCallPath = "/estimate";
@@ -240,8 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<EmissionEstimateBulkResponse> EmissionEstimateBulk(Expression<Func<bodyInputItem[]>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<EmissionEstimateBulkResponse>(() =>
             {
                 var apiCallPath = "/batch";
@@ -255,8 +230,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<TravelFlightResponse> TravelFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
         {
-            var __workflow_bodylegs = bodylegs == null ? null : WorkflowExpression.Compile(bodylegs);
-            WorkflowExpression.Validate(__workflow_bodylegs, nameof(bodylegs), required: true);
+            var __workflow_bodylegs = WorkflowExpression.Compile(bodylegs, nameof(bodylegs), required: true);
             return new DeferredBodyAction<TravelFlightResponse>(() =>
             {
                 var apiCallPath = "/travel/flights";
@@ -278,8 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<FreightFlightResponse> FreightFlight(Expression<Func<bodylegsInputItem[]>> bodylegs)
         {
-            var __workflow_bodylegs = bodylegs == null ? null : WorkflowExpression.Compile(bodylegs);
-            WorkflowExpression.Validate(__workflow_bodylegs, nameof(bodylegs), required: true);
+            var __workflow_bodylegs = WorkflowExpression.Compile(bodylegs, nameof(bodylegs), required: true);
             return new DeferredBodyAction<FreightFlightResponse>(() =>
             {
                 var apiCallPath = "/freight/flights";
@@ -310,18 +283,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeCPUResponse> ComputeCPU(Expression<Func<string>> provider, Expression<Func<int>> bodycpuCount, Expression<Func<string>> bodyregion, Expression<Func<int>> bodycpuLoad, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydurationUnit = null)
         {
-            var __workflow_provider = provider == null ? null : WorkflowExpression.Compile(provider);
-            WorkflowExpression.Validate(__workflow_provider, nameof(provider), required: true);
-            var __workflow_bodycpuCount = bodycpuCount == null ? null : WorkflowExpression.Compile(bodycpuCount);
-            WorkflowExpression.Validate(__workflow_bodycpuCount, nameof(bodycpuCount), required: true);
-            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
-            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: true);
-            var __workflow_bodycpuLoad = bodycpuLoad == null ? null : WorkflowExpression.Compile(bodycpuLoad);
-            WorkflowExpression.Validate(__workflow_bodycpuLoad, nameof(bodycpuLoad), required: true);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: true);
-            var __workflow_bodydurationUnit = bodydurationUnit == null ? null : WorkflowExpression.Compile(bodydurationUnit);
-            WorkflowExpression.Validate(__workflow_bodydurationUnit, nameof(bodydurationUnit), required: false);
+            var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
+            var __workflow_bodycpuCount = WorkflowExpression.Compile(bodycpuCount, nameof(bodycpuCount), required: true);
+            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
+            var __workflow_bodycpuLoad = WorkflowExpression.Compile(bodycpuLoad, nameof(bodycpuLoad), required: true);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
+            var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
             return new DeferredBodyAction<ComputeCPUResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/cpu", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
@@ -355,20 +322,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeStorageResponse> ComputeStorage(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<bodystorageTypeInput>> bodystorageType, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
         {
-            var __workflow_provider = provider == null ? null : WorkflowExpression.Compile(provider);
-            WorkflowExpression.Validate(__workflow_provider, nameof(provider), required: true);
-            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
-            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: true);
-            var __workflow_bodystorageType = bodystorageType == null ? null : WorkflowExpression.Compile(bodystorageType);
-            WorkflowExpression.Validate(__workflow_bodystorageType, nameof(bodystorageType), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: true);
-            var __workflow_bodydataUnit = bodydataUnit == null ? null : WorkflowExpression.Compile(bodydataUnit);
-            WorkflowExpression.Validate(__workflow_bodydataUnit, nameof(bodydataUnit), required: false);
-            var __workflow_bodydurationUnit = bodydurationUnit == null ? null : WorkflowExpression.Compile(bodydurationUnit);
-            WorkflowExpression.Validate(__workflow_bodydurationUnit, nameof(bodydurationUnit), required: false);
+            var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
+            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
+            var __workflow_bodystorageType = WorkflowExpression.Compile(bodystorageType, nameof(bodystorageType), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
+            var __workflow_bodydataUnit = WorkflowExpression.Compile(bodydataUnit, nameof(bodydataUnit), required: false);
+            var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
             return new DeferredBodyAction<ComputeStorageResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/storage", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
@@ -408,18 +368,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ComputeMemoryResponse> ComputeMemory(Expression<Func<string>> provider, Expression<Func<string>> bodyregion, Expression<Func<int>> bodydata, Expression<Func<int>> bodyduration, Expression<Func<string>> bodydataUnit = null, Expression<Func<string>> bodydurationUnit = null)
         {
-            var __workflow_provider = provider == null ? null : WorkflowExpression.Compile(provider);
-            WorkflowExpression.Validate(__workflow_provider, nameof(provider), required: true);
-            var __workflow_bodyregion = bodyregion == null ? null : WorkflowExpression.Compile(bodyregion);
-            WorkflowExpression.Validate(__workflow_bodyregion, nameof(bodyregion), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_bodyduration = bodyduration == null ? null : WorkflowExpression.Compile(bodyduration);
-            WorkflowExpression.Validate(__workflow_bodyduration, nameof(bodyduration), required: true);
-            var __workflow_bodydataUnit = bodydataUnit == null ? null : WorkflowExpression.Compile(bodydataUnit);
-            WorkflowExpression.Validate(__workflow_bodydataUnit, nameof(bodydataUnit), required: false);
-            var __workflow_bodydurationUnit = bodydurationUnit == null ? null : WorkflowExpression.Compile(bodydurationUnit);
-            WorkflowExpression.Validate(__workflow_bodydurationUnit, nameof(bodydurationUnit), required: false);
+            var __workflow_provider = WorkflowExpression.Compile(provider, nameof(provider), required: true);
+            var __workflow_bodyregion = WorkflowExpression.Compile(bodyregion, nameof(bodyregion), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_bodyduration = WorkflowExpression.Compile(bodyduration, nameof(bodyduration), required: true);
+            var __workflow_bodydataUnit = WorkflowExpression.Compile(bodydataUnit, nameof(bodydataUnit), required: false);
+            var __workflow_bodydurationUnit = WorkflowExpression.Compile(bodydurationUnit, nameof(bodydurationUnit), required: false);
             return new DeferredBodyAction<ComputeMemoryResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/compute/{0}/memory", ExpressionConverter.ConvertWithUrlEncoding(__workflow_provider, 1));
@@ -457,54 +411,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<ClassificationResponse> Classification(Expression<Func<string>> bodyclassificationclassificationType = null, Expression<Func<string>> bodyclassificationclassificationCode = null, Expression<Func<string>> bodyclassificationsource = null, Expression<Func<string>> bodyclassificationregion = null, Expression<Func<bool>> bodyclassificationregionFallback = null, Expression<Func<string>> bodyclassificationyear = null, Expression<Func<string>> bodyclassificationlcaActivity = null, Expression<Func<string>> bodyclassificationcalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
         {
-            var __workflow_bodyclassificationclassificationType = bodyclassificationclassificationType == null ? null : WorkflowExpression.Compile(bodyclassificationclassificationType);
-            WorkflowExpression.Validate(__workflow_bodyclassificationclassificationType, nameof(bodyclassificationclassificationType), required: false);
-            var __workflow_bodyclassificationclassificationCode = bodyclassificationclassificationCode == null ? null : WorkflowExpression.Compile(bodyclassificationclassificationCode);
-            WorkflowExpression.Validate(__workflow_bodyclassificationclassificationCode, nameof(bodyclassificationclassificationCode), required: false);
-            var __workflow_bodyclassificationsource = bodyclassificationsource == null ? null : WorkflowExpression.Compile(bodyclassificationsource);
-            WorkflowExpression.Validate(__workflow_bodyclassificationsource, nameof(bodyclassificationsource), required: false);
-            var __workflow_bodyclassificationregion = bodyclassificationregion == null ? null : WorkflowExpression.Compile(bodyclassificationregion);
-            WorkflowExpression.Validate(__workflow_bodyclassificationregion, nameof(bodyclassificationregion), required: false);
-            var __workflow_bodyclassificationregionFallback = bodyclassificationregionFallback == null ? null : WorkflowExpression.Compile(bodyclassificationregionFallback);
-            WorkflowExpression.Validate(__workflow_bodyclassificationregionFallback, nameof(bodyclassificationregionFallback), required: false);
-            var __workflow_bodyclassificationyear = bodyclassificationyear == null ? null : WorkflowExpression.Compile(bodyclassificationyear);
-            WorkflowExpression.Validate(__workflow_bodyclassificationyear, nameof(bodyclassificationyear), required: false);
-            var __workflow_bodyclassificationlcaActivity = bodyclassificationlcaActivity == null ? null : WorkflowExpression.Compile(bodyclassificationlcaActivity);
-            WorkflowExpression.Validate(__workflow_bodyclassificationlcaActivity, nameof(bodyclassificationlcaActivity), required: false);
-            var __workflow_bodyclassificationcalculationMethod = bodyclassificationcalculationMethod == null ? null : WorkflowExpression.Compile(bodyclassificationcalculationMethod);
-            WorkflowExpression.Validate(__workflow_bodyclassificationcalculationMethod, nameof(bodyclassificationcalculationMethod), required: false);
-            var __workflow_bodyparametersenergy = bodyparametersenergy == null ? null : WorkflowExpression.Compile(bodyparametersenergy);
-            WorkflowExpression.Validate(__workflow_bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            var __workflow_bodyparametersenergyUnit = bodyparametersenergyUnit == null ? null : WorkflowExpression.Compile(bodyparametersenergyUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            var __workflow_bodyparametersdata = bodyparametersdata == null ? null : WorkflowExpression.Compile(bodyparametersdata);
-            WorkflowExpression.Validate(__workflow_bodyparametersdata, nameof(bodyparametersdata), required: false);
-            var __workflow_bodyparametersdataUnit = bodyparametersdataUnit == null ? null : WorkflowExpression.Compile(bodyparametersdataUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            var __workflow_bodyparametersdistance = bodyparametersdistance == null ? null : WorkflowExpression.Compile(bodyparametersdistance);
-            WorkflowExpression.Validate(__workflow_bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            var __workflow_bodyparametersdistanceUnit = bodyparametersdistanceUnit == null ? null : WorkflowExpression.Compile(bodyparametersdistanceUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            var __workflow_bodyparametersmoney = bodyparametersmoney == null ? null : WorkflowExpression.Compile(bodyparametersmoney);
-            WorkflowExpression.Validate(__workflow_bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            var __workflow_bodyparametersmoneyUnit = bodyparametersmoneyUnit == null ? null : WorkflowExpression.Compile(bodyparametersmoneyUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            var __workflow_bodyparametersnumber = bodyparametersnumber == null ? null : WorkflowExpression.Compile(bodyparametersnumber);
-            WorkflowExpression.Validate(__workflow_bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            var __workflow_bodyparameterstime = bodyparameterstime == null ? null : WorkflowExpression.Compile(bodyparameterstime);
-            WorkflowExpression.Validate(__workflow_bodyparameterstime, nameof(bodyparameterstime), required: false);
-            var __workflow_bodyparameterstimeUnit = bodyparameterstimeUnit == null ? null : WorkflowExpression.Compile(bodyparameterstimeUnit);
-            WorkflowExpression.Validate(__workflow_bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            var __workflow_bodyparameterspassengers = bodyparameterspassengers == null ? null : WorkflowExpression.Compile(bodyparameterspassengers);
-            WorkflowExpression.Validate(__workflow_bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            var __workflow_bodyparametersvolume = bodyparametersvolume == null ? null : WorkflowExpression.Compile(bodyparametersvolume);
-            WorkflowExpression.Validate(__workflow_bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            var __workflow_bodyparametersvolumeUnit = bodyparametersvolumeUnit == null ? null : WorkflowExpression.Compile(bodyparametersvolumeUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            var __workflow_bodyparametersweight = bodyparametersweight == null ? null : WorkflowExpression.Compile(bodyparametersweight);
-            WorkflowExpression.Validate(__workflow_bodyparametersweight, nameof(bodyparametersweight), required: false);
-            var __workflow_bodyparametersweightUnit = bodyparametersweightUnit == null ? null : WorkflowExpression.Compile(bodyparametersweightUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            var __workflow_bodyclassificationclassificationType = WorkflowExpression.Compile(bodyclassificationclassificationType, nameof(bodyclassificationclassificationType), required: false);
+            var __workflow_bodyclassificationclassificationCode = WorkflowExpression.Compile(bodyclassificationclassificationCode, nameof(bodyclassificationclassificationCode), required: false);
+            var __workflow_bodyclassificationsource = WorkflowExpression.Compile(bodyclassificationsource, nameof(bodyclassificationsource), required: false);
+            var __workflow_bodyclassificationregion = WorkflowExpression.Compile(bodyclassificationregion, nameof(bodyclassificationregion), required: false);
+            var __workflow_bodyclassificationregionFallback = WorkflowExpression.Compile(bodyclassificationregionFallback, nameof(bodyclassificationregionFallback), required: false);
+            var __workflow_bodyclassificationyear = WorkflowExpression.Compile(bodyclassificationyear, nameof(bodyclassificationyear), required: false);
+            var __workflow_bodyclassificationlcaActivity = WorkflowExpression.Compile(bodyclassificationlcaActivity, nameof(bodyclassificationlcaActivity), required: false);
+            var __workflow_bodyclassificationcalculationMethod = WorkflowExpression.Compile(bodyclassificationcalculationMethod, nameof(bodyclassificationcalculationMethod), required: false);
+            var __workflow_bodyparametersenergy = WorkflowExpression.Compile(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
+            var __workflow_bodyparametersenergyUnit = WorkflowExpression.Compile(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
+            var __workflow_bodyparametersdata = WorkflowExpression.Compile(bodyparametersdata, nameof(bodyparametersdata), required: false);
+            var __workflow_bodyparametersdataUnit = WorkflowExpression.Compile(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
+            var __workflow_bodyparametersdistance = WorkflowExpression.Compile(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
+            var __workflow_bodyparametersdistanceUnit = WorkflowExpression.Compile(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
+            var __workflow_bodyparametersmoney = WorkflowExpression.Compile(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
+            var __workflow_bodyparametersmoneyUnit = WorkflowExpression.Compile(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
+            var __workflow_bodyparametersnumber = WorkflowExpression.Compile(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
+            var __workflow_bodyparameterstime = WorkflowExpression.Compile(bodyparameterstime, nameof(bodyparameterstime), required: false);
+            var __workflow_bodyparameterstimeUnit = WorkflowExpression.Compile(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
+            var __workflow_bodyparameterspassengers = WorkflowExpression.Compile(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
+            var __workflow_bodyparametersvolume = WorkflowExpression.Compile(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
+            var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
+            var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
+            var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
             return new DeferredBodyAction<ClassificationResponse>(() =>
             {
                 var apiCallPath = "/classifications/estimate";
@@ -684,52 +614,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<CustomResponse> Custom(Expression<Func<string>> bodycustomActivitylabel = null, Expression<Func<string>> bodycustomActivitysource = null, Expression<Func<string>> bodycustomActivityregion = null, Expression<Func<bool>> bodycustomActivityregionFallback = null, Expression<Func<string>> bodycustomActivityyear = null, Expression<Func<string>> bodycustomActivitylcaActivity = null, Expression<Func<string>> bodycustomActivitycalculationMethod = null, Expression<Func<int>> bodyparametersenergy = null, Expression<Func<string>> bodyparametersenergyUnit = null, Expression<Func<int>> bodyparametersdata = null, Expression<Func<string>> bodyparametersdataUnit = null, Expression<Func<int>> bodyparametersdistance = null, Expression<Func<string>> bodyparametersdistanceUnit = null, Expression<Func<int>> bodyparametersmoney = null, Expression<Func<string>> bodyparametersmoneyUnit = null, Expression<Func<int>> bodyparametersnumber = null, Expression<Func<int>> bodyparameterstime = null, Expression<Func<string>> bodyparameterstimeUnit = null, Expression<Func<int>> bodyparameterspassengers = null, Expression<Func<int>> bodyparametersvolume = null, Expression<Func<string>> bodyparametersvolumeUnit = null, Expression<Func<int>> bodyparametersweight = null, Expression<Func<string>> bodyparametersweightUnit = null)
         {
-            var __workflow_bodycustomActivitylabel = bodycustomActivitylabel == null ? null : WorkflowExpression.Compile(bodycustomActivitylabel);
-            WorkflowExpression.Validate(__workflow_bodycustomActivitylabel, nameof(bodycustomActivitylabel), required: false);
-            var __workflow_bodycustomActivitysource = bodycustomActivitysource == null ? null : WorkflowExpression.Compile(bodycustomActivitysource);
-            WorkflowExpression.Validate(__workflow_bodycustomActivitysource, nameof(bodycustomActivitysource), required: false);
-            var __workflow_bodycustomActivityregion = bodycustomActivityregion == null ? null : WorkflowExpression.Compile(bodycustomActivityregion);
-            WorkflowExpression.Validate(__workflow_bodycustomActivityregion, nameof(bodycustomActivityregion), required: false);
-            var __workflow_bodycustomActivityregionFallback = bodycustomActivityregionFallback == null ? null : WorkflowExpression.Compile(bodycustomActivityregionFallback);
-            WorkflowExpression.Validate(__workflow_bodycustomActivityregionFallback, nameof(bodycustomActivityregionFallback), required: false);
-            var __workflow_bodycustomActivityyear = bodycustomActivityyear == null ? null : WorkflowExpression.Compile(bodycustomActivityyear);
-            WorkflowExpression.Validate(__workflow_bodycustomActivityyear, nameof(bodycustomActivityyear), required: false);
-            var __workflow_bodycustomActivitylcaActivity = bodycustomActivitylcaActivity == null ? null : WorkflowExpression.Compile(bodycustomActivitylcaActivity);
-            WorkflowExpression.Validate(__workflow_bodycustomActivitylcaActivity, nameof(bodycustomActivitylcaActivity), required: false);
-            var __workflow_bodycustomActivitycalculationMethod = bodycustomActivitycalculationMethod == null ? null : WorkflowExpression.Compile(bodycustomActivitycalculationMethod);
-            WorkflowExpression.Validate(__workflow_bodycustomActivitycalculationMethod, nameof(bodycustomActivitycalculationMethod), required: false);
-            var __workflow_bodyparametersenergy = bodyparametersenergy == null ? null : WorkflowExpression.Compile(bodyparametersenergy);
-            WorkflowExpression.Validate(__workflow_bodyparametersenergy, nameof(bodyparametersenergy), required: false);
-            var __workflow_bodyparametersenergyUnit = bodyparametersenergyUnit == null ? null : WorkflowExpression.Compile(bodyparametersenergyUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
-            var __workflow_bodyparametersdata = bodyparametersdata == null ? null : WorkflowExpression.Compile(bodyparametersdata);
-            WorkflowExpression.Validate(__workflow_bodyparametersdata, nameof(bodyparametersdata), required: false);
-            var __workflow_bodyparametersdataUnit = bodyparametersdataUnit == null ? null : WorkflowExpression.Compile(bodyparametersdataUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
-            var __workflow_bodyparametersdistance = bodyparametersdistance == null ? null : WorkflowExpression.Compile(bodyparametersdistance);
-            WorkflowExpression.Validate(__workflow_bodyparametersdistance, nameof(bodyparametersdistance), required: false);
-            var __workflow_bodyparametersdistanceUnit = bodyparametersdistanceUnit == null ? null : WorkflowExpression.Compile(bodyparametersdistanceUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
-            var __workflow_bodyparametersmoney = bodyparametersmoney == null ? null : WorkflowExpression.Compile(bodyparametersmoney);
-            WorkflowExpression.Validate(__workflow_bodyparametersmoney, nameof(bodyparametersmoney), required: false);
-            var __workflow_bodyparametersmoneyUnit = bodyparametersmoneyUnit == null ? null : WorkflowExpression.Compile(bodyparametersmoneyUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
-            var __workflow_bodyparametersnumber = bodyparametersnumber == null ? null : WorkflowExpression.Compile(bodyparametersnumber);
-            WorkflowExpression.Validate(__workflow_bodyparametersnumber, nameof(bodyparametersnumber), required: false);
-            var __workflow_bodyparameterstime = bodyparameterstime == null ? null : WorkflowExpression.Compile(bodyparameterstime);
-            WorkflowExpression.Validate(__workflow_bodyparameterstime, nameof(bodyparameterstime), required: false);
-            var __workflow_bodyparameterstimeUnit = bodyparameterstimeUnit == null ? null : WorkflowExpression.Compile(bodyparameterstimeUnit);
-            WorkflowExpression.Validate(__workflow_bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
-            var __workflow_bodyparameterspassengers = bodyparameterspassengers == null ? null : WorkflowExpression.Compile(bodyparameterspassengers);
-            WorkflowExpression.Validate(__workflow_bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
-            var __workflow_bodyparametersvolume = bodyparametersvolume == null ? null : WorkflowExpression.Compile(bodyparametersvolume);
-            WorkflowExpression.Validate(__workflow_bodyparametersvolume, nameof(bodyparametersvolume), required: false);
-            var __workflow_bodyparametersvolumeUnit = bodyparametersvolumeUnit == null ? null : WorkflowExpression.Compile(bodyparametersvolumeUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
-            var __workflow_bodyparametersweight = bodyparametersweight == null ? null : WorkflowExpression.Compile(bodyparametersweight);
-            WorkflowExpression.Validate(__workflow_bodyparametersweight, nameof(bodyparametersweight), required: false);
-            var __workflow_bodyparametersweightUnit = bodyparametersweightUnit == null ? null : WorkflowExpression.Compile(bodyparametersweightUnit);
-            WorkflowExpression.Validate(__workflow_bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
+            var __workflow_bodycustomActivitylabel = WorkflowExpression.Compile(bodycustomActivitylabel, nameof(bodycustomActivitylabel), required: false);
+            var __workflow_bodycustomActivitysource = WorkflowExpression.Compile(bodycustomActivitysource, nameof(bodycustomActivitysource), required: false);
+            var __workflow_bodycustomActivityregion = WorkflowExpression.Compile(bodycustomActivityregion, nameof(bodycustomActivityregion), required: false);
+            var __workflow_bodycustomActivityregionFallback = WorkflowExpression.Compile(bodycustomActivityregionFallback, nameof(bodycustomActivityregionFallback), required: false);
+            var __workflow_bodycustomActivityyear = WorkflowExpression.Compile(bodycustomActivityyear, nameof(bodycustomActivityyear), required: false);
+            var __workflow_bodycustomActivitylcaActivity = WorkflowExpression.Compile(bodycustomActivitylcaActivity, nameof(bodycustomActivitylcaActivity), required: false);
+            var __workflow_bodycustomActivitycalculationMethod = WorkflowExpression.Compile(bodycustomActivitycalculationMethod, nameof(bodycustomActivitycalculationMethod), required: false);
+            var __workflow_bodyparametersenergy = WorkflowExpression.Compile(bodyparametersenergy, nameof(bodyparametersenergy), required: false);
+            var __workflow_bodyparametersenergyUnit = WorkflowExpression.Compile(bodyparametersenergyUnit, nameof(bodyparametersenergyUnit), required: false);
+            var __workflow_bodyparametersdata = WorkflowExpression.Compile(bodyparametersdata, nameof(bodyparametersdata), required: false);
+            var __workflow_bodyparametersdataUnit = WorkflowExpression.Compile(bodyparametersdataUnit, nameof(bodyparametersdataUnit), required: false);
+            var __workflow_bodyparametersdistance = WorkflowExpression.Compile(bodyparametersdistance, nameof(bodyparametersdistance), required: false);
+            var __workflow_bodyparametersdistanceUnit = WorkflowExpression.Compile(bodyparametersdistanceUnit, nameof(bodyparametersdistanceUnit), required: false);
+            var __workflow_bodyparametersmoney = WorkflowExpression.Compile(bodyparametersmoney, nameof(bodyparametersmoney), required: false);
+            var __workflow_bodyparametersmoneyUnit = WorkflowExpression.Compile(bodyparametersmoneyUnit, nameof(bodyparametersmoneyUnit), required: false);
+            var __workflow_bodyparametersnumber = WorkflowExpression.Compile(bodyparametersnumber, nameof(bodyparametersnumber), required: false);
+            var __workflow_bodyparameterstime = WorkflowExpression.Compile(bodyparameterstime, nameof(bodyparameterstime), required: false);
+            var __workflow_bodyparameterstimeUnit = WorkflowExpression.Compile(bodyparameterstimeUnit, nameof(bodyparameterstimeUnit), required: false);
+            var __workflow_bodyparameterspassengers = WorkflowExpression.Compile(bodyparameterspassengers, nameof(bodyparameterspassengers), required: false);
+            var __workflow_bodyparametersvolume = WorkflowExpression.Compile(bodyparametersvolume, nameof(bodyparametersvolume), required: false);
+            var __workflow_bodyparametersvolumeUnit = WorkflowExpression.Compile(bodyparametersvolumeUnit, nameof(bodyparametersvolumeUnit), required: false);
+            var __workflow_bodyparametersweight = WorkflowExpression.Compile(bodyparametersweight, nameof(bodyparametersweight), required: false);
+            var __workflow_bodyparametersweightUnit = WorkflowExpression.Compile(bodyparametersweightUnit, nameof(bodyparametersweightUnit), required: false);
             return new DeferredBodyAction<CustomResponse>(() =>
             {
                 var apiCallPath = "/custom-activities/estimate";
@@ -903,8 +810,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<CustomBatchResponse> CustomBatch(Expression<Func<bodyInputItem2[]>> body = null)
         {
-            var __workflow_body = body == null ? null : WorkflowExpression.Compile(body);
-            WorkflowExpression.Validate(__workflow_body, nameof(body), required: false);
+            var __workflow_body = WorkflowExpression.Compile(body, nameof(body), required: false);
             return new DeferredBodyAction<CustomBatchResponse>(() =>
             {
                 var apiCallPath = "/custom-activities/batch";
@@ -918,34 +824,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<FactorsSearchResponse> FactorsSearch(Expression<Func<string>> query = null, Expression<Func<string>> uuid = null, Expression<Func<string>> activityId = null, Expression<Func<string>> id = null, Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null, Expression<Func<string>> unitType = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
         {
-            var __workflow_query = query == null ? null : WorkflowExpression.Compile(query);
-            WorkflowExpression.Validate(__workflow_query, nameof(query), required: false);
-            var __workflow_uuid = uuid == null ? null : WorkflowExpression.Compile(uuid);
-            WorkflowExpression.Validate(__workflow_uuid, nameof(uuid), required: false);
-            var __workflow_activityId = activityId == null ? null : WorkflowExpression.Compile(activityId);
-            WorkflowExpression.Validate(__workflow_activityId, nameof(activityId), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
-            var __workflow_unitType = unitType == null ? null : WorkflowExpression.Compile(unitType);
-            WorkflowExpression.Validate(__workflow_unitType, nameof(unitType), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_resultsPerPage = resultsPerPage == null ? null : WorkflowExpression.Compile(resultsPerPage);
-            WorkflowExpression.Validate(__workflow_resultsPerPage, nameof(resultsPerPage), required: false);
+            var __workflow_query = WorkflowExpression.Compile(query, nameof(query), required: false);
+            var __workflow_uuid = WorkflowExpression.Compile(uuid, nameof(uuid), required: false);
+            var __workflow_activityId = WorkflowExpression.Compile(activityId, nameof(activityId), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_unitType = WorkflowExpression.Compile(unitType, nameof(unitType), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
             return new DeferredBodyAction<FactorsSearchResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -986,22 +878,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<SourcesResponse> Sources(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
             return new DeferredBodyAction<SourcesResponse>(() =>
             {
                 var apiCallPath = "/emission-factors/sources";
@@ -1030,22 +914,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<YearsResponse> Years(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
             return new DeferredBodyAction<YearsResponse>(() =>
             {
                 var apiCallPath = "/emission-factors/years";
@@ -1074,22 +950,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<RegionsResponse> Regions(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
             return new DeferredBodyAction<RegionsResponse>(() =>
             {
                 var apiCallPath = "/emission-factors/regions";
@@ -1118,22 +986,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<CategoriesResponse> Categories(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
             return new DeferredBodyAction<CategoriesResponse>(() =>
             {
                 var apiCallPath = "/emission-factors/categories";
@@ -1162,22 +1022,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<SectorsResponse> Sectors(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
             return new DeferredBodyAction<SectorsResponse>(() =>
             {
                 var apiCallPath = "/emission-factors/sectors";
@@ -1206,22 +1058,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<LifeCycleActivitiesResponse> LifeCycleActivities(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
             return new DeferredBodyAction<LifeCycleActivitiesResponse>(() =>
             {
                 var apiCallPath = "/emission-factors/lca-activities";
@@ -1250,22 +1094,14 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Climatiqip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "climatiqip")]
         public IBodyWorkflowAction<UnitTypesResponse> UnitTypes(Expression<Func<string>> sector = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<string>> region = null, Expression<Func<string>> year = null, Expression<Func<string>> id = null, Expression<Func<string>> lcaActivity = null, Expression<Func<string>> calculationMethod = null)
         {
-            var __workflow_sector = sector == null ? null : WorkflowExpression.Compile(sector);
-            WorkflowExpression.Validate(__workflow_sector, nameof(sector), required: false);
-            var __workflow_category = category == null ? null : WorkflowExpression.Compile(category);
-            WorkflowExpression.Validate(__workflow_category, nameof(category), required: false);
-            var __workflow_source = source == null ? null : WorkflowExpression.Compile(source);
-            WorkflowExpression.Validate(__workflow_source, nameof(source), required: false);
-            var __workflow_region = region == null ? null : WorkflowExpression.Compile(region);
-            WorkflowExpression.Validate(__workflow_region, nameof(region), required: false);
-            var __workflow_year = year == null ? null : WorkflowExpression.Compile(year);
-            WorkflowExpression.Validate(__workflow_year, nameof(year), required: false);
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: false);
-            var __workflow_lcaActivity = lcaActivity == null ? null : WorkflowExpression.Compile(lcaActivity);
-            WorkflowExpression.Validate(__workflow_lcaActivity, nameof(lcaActivity), required: false);
-            var __workflow_calculationMethod = calculationMethod == null ? null : WorkflowExpression.Compile(calculationMethod);
-            WorkflowExpression.Validate(__workflow_calculationMethod, nameof(calculationMethod), required: false);
+            var __workflow_sector = WorkflowExpression.Compile(sector, nameof(sector), required: false);
+            var __workflow_category = WorkflowExpression.Compile(category, nameof(category), required: false);
+            var __workflow_source = WorkflowExpression.Compile(source, nameof(source), required: false);
+            var __workflow_region = WorkflowExpression.Compile(region, nameof(region), required: false);
+            var __workflow_year = WorkflowExpression.Compile(year, nameof(year), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: false);
+            var __workflow_lcaActivity = WorkflowExpression.Compile(lcaActivity, nameof(lcaActivity), required: false);
+            var __workflow_calculationMethod = WorkflowExpression.Compile(calculationMethod, nameof(calculationMethod), required: false);
             return new DeferredBodyAction<UnitTypesResponse>(() =>
             {
                 var apiCallPath = "/emission-factors/unit-types";

@@ -13,16 +13,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> messagemessagetext, Expression<Func<string[]>> messagerecipients, Expression<Func<string>> contentType = null, Expression<Func<string>> messagesenderid = null, Expression<Func<string>> messagecustomerid = null)
         {
-            var __workflow_messagemessagetext = messagemessagetext == null ? null : WorkflowExpression.Compile(messagemessagetext);
-            WorkflowExpression.Validate(__workflow_messagemessagetext, nameof(messagemessagetext), required: true);
-            var __workflow_messagerecipients = messagerecipients == null ? null : WorkflowExpression.Compile(messagerecipients);
-            WorkflowExpression.Validate(__workflow_messagerecipients, nameof(messagerecipients), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_messagesenderid = messagesenderid == null ? null : WorkflowExpression.Compile(messagesenderid);
-            WorkflowExpression.Validate(__workflow_messagesenderid, nameof(messagesenderid), required: false);
-            var __workflow_messagecustomerid = messagecustomerid == null ? null : WorkflowExpression.Compile(messagecustomerid);
-            WorkflowExpression.Validate(__workflow_messagecustomerid, nameof(messagecustomerid), required: false);
+            var __workflow_messagemessagetext = WorkflowExpression.Compile(messagemessagetext, nameof(messagemessagetext), required: true);
+            var __workflow_messagerecipients = WorkflowExpression.Compile(messagerecipients, nameof(messagerecipients), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_messagesenderid = WorkflowExpression.Compile(messagesenderid, nameof(messagesenderid), required: false);
+            var __workflow_messagecustomerid = WorkflowExpression.Compile(messagecustomerid, nameof(messagecustomerid), required: false);
             return new DeferredBodyAction<SendSMSResponse>(() =>
             {
                 var apiCallPath = "/v2/send";
@@ -61,14 +56,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<OptoutCustomerResponse> OptoutCustomer(Expression<Func<string>> contentType, Expression<Func<string>> messagemobilenumber, Expression<Func<string>> messageoptoutresponse = null, Expression<Func<string>> messagereturnedresponse = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: true);
-            var __workflow_messagemobilenumber = messagemobilenumber == null ? null : WorkflowExpression.Compile(messagemobilenumber);
-            WorkflowExpression.Validate(__workflow_messagemobilenumber, nameof(messagemobilenumber), required: true);
-            var __workflow_messageoptoutresponse = messageoptoutresponse == null ? null : WorkflowExpression.Compile(messageoptoutresponse);
-            WorkflowExpression.Validate(__workflow_messageoptoutresponse, nameof(messageoptoutresponse), required: false);
-            var __workflow_messagereturnedresponse = messagereturnedresponse == null ? null : WorkflowExpression.Compile(messagereturnedresponse);
-            WorkflowExpression.Validate(__workflow_messagereturnedresponse, nameof(messagereturnedresponse), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: true);
+            var __workflow_messagemobilenumber = WorkflowExpression.Compile(messagemobilenumber, nameof(messagemobilenumber), required: true);
+            var __workflow_messageoptoutresponse = WorkflowExpression.Compile(messageoptoutresponse, nameof(messageoptoutresponse), required: false);
+            var __workflow_messagereturnedresponse = WorkflowExpression.Compile(messagereturnedresponse, nameof(messagereturnedresponse), required: false);
             return new DeferredBodyAction<OptoutCustomerResponse>(() =>
             {
                 var apiCallPath = "/v2/optout";
@@ -103,32 +94,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<ImportCustomerResponse> ImportCustomer(Expression<Func<string>> importdatagroup, Expression<Func<string>> importdatamobilenumber, Expression<Func<string>> contentType = null, Expression<Func<string>> importdatafirstname = null, Expression<Func<string>> importdatasurname = null, Expression<Func<string>> importdataaddress = null, Expression<Func<string>> importdatatown = null, Expression<Func<string>> importdatacounty = null, Expression<Func<string>> importdataemail = null, Expression<Func<string>> importdatacustom1 = null, Expression<Func<string>> importdatacustom2 = null, Expression<Func<string>> importdatabusinessname = null, Expression<Func<string>> importdatadateofbirth = null)
         {
-            var __workflow_importdatagroup = importdatagroup == null ? null : WorkflowExpression.Compile(importdatagroup);
-            WorkflowExpression.Validate(__workflow_importdatagroup, nameof(importdatagroup), required: true);
-            var __workflow_importdatamobilenumber = importdatamobilenumber == null ? null : WorkflowExpression.Compile(importdatamobilenumber);
-            WorkflowExpression.Validate(__workflow_importdatamobilenumber, nameof(importdatamobilenumber), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
-            var __workflow_importdatafirstname = importdatafirstname == null ? null : WorkflowExpression.Compile(importdatafirstname);
-            WorkflowExpression.Validate(__workflow_importdatafirstname, nameof(importdatafirstname), required: false);
-            var __workflow_importdatasurname = importdatasurname == null ? null : WorkflowExpression.Compile(importdatasurname);
-            WorkflowExpression.Validate(__workflow_importdatasurname, nameof(importdatasurname), required: false);
-            var __workflow_importdataaddress = importdataaddress == null ? null : WorkflowExpression.Compile(importdataaddress);
-            WorkflowExpression.Validate(__workflow_importdataaddress, nameof(importdataaddress), required: false);
-            var __workflow_importdatatown = importdatatown == null ? null : WorkflowExpression.Compile(importdatatown);
-            WorkflowExpression.Validate(__workflow_importdatatown, nameof(importdatatown), required: false);
-            var __workflow_importdatacounty = importdatacounty == null ? null : WorkflowExpression.Compile(importdatacounty);
-            WorkflowExpression.Validate(__workflow_importdatacounty, nameof(importdatacounty), required: false);
-            var __workflow_importdataemail = importdataemail == null ? null : WorkflowExpression.Compile(importdataemail);
-            WorkflowExpression.Validate(__workflow_importdataemail, nameof(importdataemail), required: false);
-            var __workflow_importdatacustom1 = importdatacustom1 == null ? null : WorkflowExpression.Compile(importdatacustom1);
-            WorkflowExpression.Validate(__workflow_importdatacustom1, nameof(importdatacustom1), required: false);
-            var __workflow_importdatacustom2 = importdatacustom2 == null ? null : WorkflowExpression.Compile(importdatacustom2);
-            WorkflowExpression.Validate(__workflow_importdatacustom2, nameof(importdatacustom2), required: false);
-            var __workflow_importdatabusinessname = importdatabusinessname == null ? null : WorkflowExpression.Compile(importdatabusinessname);
-            WorkflowExpression.Validate(__workflow_importdatabusinessname, nameof(importdatabusinessname), required: false);
-            var __workflow_importdatadateofbirth = importdatadateofbirth == null ? null : WorkflowExpression.Compile(importdatadateofbirth);
-            WorkflowExpression.Validate(__workflow_importdatadateofbirth, nameof(importdatadateofbirth), required: false);
+            var __workflow_importdatagroup = WorkflowExpression.Compile(importdatagroup, nameof(importdatagroup), required: true);
+            var __workflow_importdatamobilenumber = WorkflowExpression.Compile(importdatamobilenumber, nameof(importdatamobilenumber), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
+            var __workflow_importdatafirstname = WorkflowExpression.Compile(importdatafirstname, nameof(importdatafirstname), required: false);
+            var __workflow_importdatasurname = WorkflowExpression.Compile(importdatasurname, nameof(importdatasurname), required: false);
+            var __workflow_importdataaddress = WorkflowExpression.Compile(importdataaddress, nameof(importdataaddress), required: false);
+            var __workflow_importdatatown = WorkflowExpression.Compile(importdatatown, nameof(importdatatown), required: false);
+            var __workflow_importdatacounty = WorkflowExpression.Compile(importdatacounty, nameof(importdatacounty), required: false);
+            var __workflow_importdataemail = WorkflowExpression.Compile(importdataemail, nameof(importdataemail), required: false);
+            var __workflow_importdatacustom1 = WorkflowExpression.Compile(importdatacustom1, nameof(importdatacustom1), required: false);
+            var __workflow_importdatacustom2 = WorkflowExpression.Compile(importdatacustom2, nameof(importdatacustom2), required: false);
+            var __workflow_importdatabusinessname = WorkflowExpression.Compile(importdatabusinessname, nameof(importdatabusinessname), required: false);
+            var __workflow_importdatadateofbirth = WorkflowExpression.Compile(importdatadateofbirth, nameof(importdatadateofbirth), required: false);
             return new DeferredBodyAction<ImportCustomerResponse>(() =>
             {
                 var apiCallPath = "/v2/import";
@@ -215,8 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendmode
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendmode")]
         public IBodyWorkflowAction<CheckCreditsResponse> CheckCredits(Expression<Func<string>> contentType = null)
         {
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<CheckCreditsResponse>(() =>
             {
                 var apiCallPath = "/v2/credits";

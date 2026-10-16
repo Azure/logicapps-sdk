@@ -13,68 +13,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<SearchJobsResponse> SearchJobs(Expression<Func<string>> keyword = null, Expression<Func<string>> positionTitle = null, Expression<Func<int>> remunerationMinimumAmount = null, Expression<Func<int>> remunerationMaximumAmount = null, Expression<Func<string>> payGradeHigh = null, Expression<Func<string>> payGradeLow = null, Expression<Func<string>> jobCategoryCode = null, Expression<Func<bool>> remoteIndicator = null, Expression<Func<string>> locationName = null, Expression<Func<int>> radius = null, Expression<Func<bool>> relocationIndicator = null, Expression<Func<string>> travelPercentage = null, Expression<Func<string>> organization = null, Expression<Func<string>> positionOfferingTypeCode = null, Expression<Func<string>> positionScheduleTypeCode = null, Expression<Func<string>> securityClearanceRequired = null, Expression<Func<positionSensitivityInput>> positionSensitivity = null, Expression<Func<bool>> supervisoryStatus = null, Expression<Func<int>> datePosted = null, Expression<Func<string>> jobGradeCode = null, Expression<Func<string>> whoMayApply = null, Expression<Func<string>> salaryBucket = null, Expression<Func<string>> gradeBucket = null, Expression<Func<string>> hiringPath = null, Expression<Func<string>> missionCriticalTags = null, Expression<Func<string>> postingChannel = null, Expression<Func<fieldsInput>> fields = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
         {
-            var __workflow_keyword = keyword == null ? null : WorkflowExpression.Compile(keyword);
-            WorkflowExpression.Validate(__workflow_keyword, nameof(keyword), required: false);
-            var __workflow_positionTitle = positionTitle == null ? null : WorkflowExpression.Compile(positionTitle);
-            WorkflowExpression.Validate(__workflow_positionTitle, nameof(positionTitle), required: false);
-            var __workflow_remunerationMinimumAmount = remunerationMinimumAmount == null ? null : WorkflowExpression.Compile(remunerationMinimumAmount);
-            WorkflowExpression.Validate(__workflow_remunerationMinimumAmount, nameof(remunerationMinimumAmount), required: false);
-            var __workflow_remunerationMaximumAmount = remunerationMaximumAmount == null ? null : WorkflowExpression.Compile(remunerationMaximumAmount);
-            WorkflowExpression.Validate(__workflow_remunerationMaximumAmount, nameof(remunerationMaximumAmount), required: false);
-            var __workflow_payGradeHigh = payGradeHigh == null ? null : WorkflowExpression.Compile(payGradeHigh);
-            WorkflowExpression.Validate(__workflow_payGradeHigh, nameof(payGradeHigh), required: false);
-            var __workflow_payGradeLow = payGradeLow == null ? null : WorkflowExpression.Compile(payGradeLow);
-            WorkflowExpression.Validate(__workflow_payGradeLow, nameof(payGradeLow), required: false);
-            var __workflow_jobCategoryCode = jobCategoryCode == null ? null : WorkflowExpression.Compile(jobCategoryCode);
-            WorkflowExpression.Validate(__workflow_jobCategoryCode, nameof(jobCategoryCode), required: false);
-            var __workflow_remoteIndicator = remoteIndicator == null ? null : WorkflowExpression.Compile(remoteIndicator);
-            WorkflowExpression.Validate(__workflow_remoteIndicator, nameof(remoteIndicator), required: false);
-            var __workflow_locationName = locationName == null ? null : WorkflowExpression.Compile(locationName);
-            WorkflowExpression.Validate(__workflow_locationName, nameof(locationName), required: false);
-            var __workflow_radius = radius == null ? null : WorkflowExpression.Compile(radius);
-            WorkflowExpression.Validate(__workflow_radius, nameof(radius), required: false);
-            var __workflow_relocationIndicator = relocationIndicator == null ? null : WorkflowExpression.Compile(relocationIndicator);
-            WorkflowExpression.Validate(__workflow_relocationIndicator, nameof(relocationIndicator), required: false);
-            var __workflow_travelPercentage = travelPercentage == null ? null : WorkflowExpression.Compile(travelPercentage);
-            WorkflowExpression.Validate(__workflow_travelPercentage, nameof(travelPercentage), required: false);
-            var __workflow_organization = organization == null ? null : WorkflowExpression.Compile(organization);
-            WorkflowExpression.Validate(__workflow_organization, nameof(organization), required: false);
-            var __workflow_positionOfferingTypeCode = positionOfferingTypeCode == null ? null : WorkflowExpression.Compile(positionOfferingTypeCode);
-            WorkflowExpression.Validate(__workflow_positionOfferingTypeCode, nameof(positionOfferingTypeCode), required: false);
-            var __workflow_positionScheduleTypeCode = positionScheduleTypeCode == null ? null : WorkflowExpression.Compile(positionScheduleTypeCode);
-            WorkflowExpression.Validate(__workflow_positionScheduleTypeCode, nameof(positionScheduleTypeCode), required: false);
-            var __workflow_securityClearanceRequired = securityClearanceRequired == null ? null : WorkflowExpression.Compile(securityClearanceRequired);
-            WorkflowExpression.Validate(__workflow_securityClearanceRequired, nameof(securityClearanceRequired), required: false);
-            var __workflow_positionSensitivity = positionSensitivity == null ? null : WorkflowExpression.Compile(positionSensitivity);
-            WorkflowExpression.Validate(__workflow_positionSensitivity, nameof(positionSensitivity), required: false);
-            var __workflow_supervisoryStatus = supervisoryStatus == null ? null : WorkflowExpression.Compile(supervisoryStatus);
-            WorkflowExpression.Validate(__workflow_supervisoryStatus, nameof(supervisoryStatus), required: false);
-            var __workflow_datePosted = datePosted == null ? null : WorkflowExpression.Compile(datePosted);
-            WorkflowExpression.Validate(__workflow_datePosted, nameof(datePosted), required: false);
-            var __workflow_jobGradeCode = jobGradeCode == null ? null : WorkflowExpression.Compile(jobGradeCode);
-            WorkflowExpression.Validate(__workflow_jobGradeCode, nameof(jobGradeCode), required: false);
-            var __workflow_whoMayApply = whoMayApply == null ? null : WorkflowExpression.Compile(whoMayApply);
-            WorkflowExpression.Validate(__workflow_whoMayApply, nameof(whoMayApply), required: false);
-            var __workflow_salaryBucket = salaryBucket == null ? null : WorkflowExpression.Compile(salaryBucket);
-            WorkflowExpression.Validate(__workflow_salaryBucket, nameof(salaryBucket), required: false);
-            var __workflow_gradeBucket = gradeBucket == null ? null : WorkflowExpression.Compile(gradeBucket);
-            WorkflowExpression.Validate(__workflow_gradeBucket, nameof(gradeBucket), required: false);
-            var __workflow_hiringPath = hiringPath == null ? null : WorkflowExpression.Compile(hiringPath);
-            WorkflowExpression.Validate(__workflow_hiringPath, nameof(hiringPath), required: false);
-            var __workflow_missionCriticalTags = missionCriticalTags == null ? null : WorkflowExpression.Compile(missionCriticalTags);
-            WorkflowExpression.Validate(__workflow_missionCriticalTags, nameof(missionCriticalTags), required: false);
-            var __workflow_postingChannel = postingChannel == null ? null : WorkflowExpression.Compile(postingChannel);
-            WorkflowExpression.Validate(__workflow_postingChannel, nameof(postingChannel), required: false);
-            var __workflow_fields = fields == null ? null : WorkflowExpression.Compile(fields);
-            WorkflowExpression.Validate(__workflow_fields, nameof(fields), required: false);
-            var __workflow_sortField = sortField == null ? null : WorkflowExpression.Compile(sortField);
-            WorkflowExpression.Validate(__workflow_sortField, nameof(sortField), required: false);
-            var __workflow_sortDirection = sortDirection == null ? null : WorkflowExpression.Compile(sortDirection);
-            WorkflowExpression.Validate(__workflow_sortDirection, nameof(sortDirection), required: false);
-            var __workflow_page = page == null ? null : WorkflowExpression.Compile(page);
-            WorkflowExpression.Validate(__workflow_page, nameof(page), required: false);
-            var __workflow_resultsPerPage = resultsPerPage == null ? null : WorkflowExpression.Compile(resultsPerPage);
-            WorkflowExpression.Validate(__workflow_resultsPerPage, nameof(resultsPerPage), required: false);
+            var __workflow_keyword = WorkflowExpression.Compile(keyword, nameof(keyword), required: false);
+            var __workflow_positionTitle = WorkflowExpression.Compile(positionTitle, nameof(positionTitle), required: false);
+            var __workflow_remunerationMinimumAmount = WorkflowExpression.Compile(remunerationMinimumAmount, nameof(remunerationMinimumAmount), required: false);
+            var __workflow_remunerationMaximumAmount = WorkflowExpression.Compile(remunerationMaximumAmount, nameof(remunerationMaximumAmount), required: false);
+            var __workflow_payGradeHigh = WorkflowExpression.Compile(payGradeHigh, nameof(payGradeHigh), required: false);
+            var __workflow_payGradeLow = WorkflowExpression.Compile(payGradeLow, nameof(payGradeLow), required: false);
+            var __workflow_jobCategoryCode = WorkflowExpression.Compile(jobCategoryCode, nameof(jobCategoryCode), required: false);
+            var __workflow_remoteIndicator = WorkflowExpression.Compile(remoteIndicator, nameof(remoteIndicator), required: false);
+            var __workflow_locationName = WorkflowExpression.Compile(locationName, nameof(locationName), required: false);
+            var __workflow_radius = WorkflowExpression.Compile(radius, nameof(radius), required: false);
+            var __workflow_relocationIndicator = WorkflowExpression.Compile(relocationIndicator, nameof(relocationIndicator), required: false);
+            var __workflow_travelPercentage = WorkflowExpression.Compile(travelPercentage, nameof(travelPercentage), required: false);
+            var __workflow_organization = WorkflowExpression.Compile(organization, nameof(organization), required: false);
+            var __workflow_positionOfferingTypeCode = WorkflowExpression.Compile(positionOfferingTypeCode, nameof(positionOfferingTypeCode), required: false);
+            var __workflow_positionScheduleTypeCode = WorkflowExpression.Compile(positionScheduleTypeCode, nameof(positionScheduleTypeCode), required: false);
+            var __workflow_securityClearanceRequired = WorkflowExpression.Compile(securityClearanceRequired, nameof(securityClearanceRequired), required: false);
+            var __workflow_positionSensitivity = WorkflowExpression.Compile(positionSensitivity, nameof(positionSensitivity), required: false);
+            var __workflow_supervisoryStatus = WorkflowExpression.Compile(supervisoryStatus, nameof(supervisoryStatus), required: false);
+            var __workflow_datePosted = WorkflowExpression.Compile(datePosted, nameof(datePosted), required: false);
+            var __workflow_jobGradeCode = WorkflowExpression.Compile(jobGradeCode, nameof(jobGradeCode), required: false);
+            var __workflow_whoMayApply = WorkflowExpression.Compile(whoMayApply, nameof(whoMayApply), required: false);
+            var __workflow_salaryBucket = WorkflowExpression.Compile(salaryBucket, nameof(salaryBucket), required: false);
+            var __workflow_gradeBucket = WorkflowExpression.Compile(gradeBucket, nameof(gradeBucket), required: false);
+            var __workflow_hiringPath = WorkflowExpression.Compile(hiringPath, nameof(hiringPath), required: false);
+            var __workflow_missionCriticalTags = WorkflowExpression.Compile(missionCriticalTags, nameof(missionCriticalTags), required: false);
+            var __workflow_postingChannel = WorkflowExpression.Compile(postingChannel, nameof(postingChannel), required: false);
+            var __workflow_fields = WorkflowExpression.Compile(fields, nameof(fields), required: false);
+            var __workflow_sortField = WorkflowExpression.Compile(sortField, nameof(sortField), required: false);
+            var __workflow_sortDirection = WorkflowExpression.Compile(sortDirection, nameof(sortDirection), required: false);
+            var __workflow_page = WorkflowExpression.Compile(page, nameof(page), required: false);
+            var __workflow_resultsPerPage = WorkflowExpression.Compile(resultsPerPage, nameof(resultsPerPage), required: false);
             return new DeferredBodyAction<SearchJobsResponse>(() =>
             {
                 var apiCallPath = "/search";
@@ -149,8 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAcademicHonorsResponse>(() =>
             {
                 var apiCallPath = "/codelist/academichonors";
@@ -165,8 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAcademicLevelsResponse>(() =>
             {
                 var apiCallPath = "/codelist/academiclevels";
@@ -181,8 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListActionCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/actioncodes";
@@ -197,8 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAgencySubelementsResponse>(() =>
             {
                 var apiCallPath = "/codelist/agencysubelements";
@@ -213,8 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListAnnouncementClosingTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/announcementclosingtypes";
@@ -229,8 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListApplicantSuppliersResponse>(() =>
             {
                 var apiCallPath = "/codelist/applicantsuppliers";
@@ -245,8 +208,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListApplicationStatusesResponse>(() =>
             {
                 var apiCallPath = "/codelist/applicationstatuses";
@@ -261,8 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCountriesResponse>(() =>
             {
                 var apiCallPath = "/codelist/countries";
@@ -277,10 +238,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions(Expression<Func<string>> country = null, Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_country = country == null ? null : WorkflowExpression.Compile(country);
-            WorkflowExpression.Validate(__workflow_country, nameof(country), required: false);
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_country = WorkflowExpression.Compile(country, nameof(country), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCountrySubdivisionsResponse>(() =>
             {
                 var apiCallPath = "/codelist/countrysubdivisions";
@@ -297,8 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCyberWorkGroupingsResponse>(() =>
             {
                 var apiCallPath = "/codelist/cyberworkgroupings";
@@ -313,8 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListCyberWorkRolesResponse>(() =>
             {
                 var apiCallPath = "/codelist/cyberworkroles";
@@ -329,8 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDegreeTypeCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/degreetypecodes";
@@ -345,8 +301,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDisabilitiesResponse>(() =>
             {
                 var apiCallPath = "/codelist/disabilities";
@@ -361,8 +316,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDocumentationsResponse>(() =>
             {
                 var apiCallPath = "/codelist/documentations";
@@ -377,8 +331,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListDocumentFormatsResponse>(() =>
             {
                 var apiCallPath = "/codelist/documentformats";
@@ -393,8 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListEthnicitiesResponse>(() =>
             {
                 var apiCallPath = "/codelist/ethnicities";
@@ -409,8 +361,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListFederalEmploymentStatusesResponse>(() =>
             {
                 var apiCallPath = "/codelist/federalemploymentstatuses";
@@ -425,8 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListGeolocCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/geoloccodes";
@@ -441,8 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListGsaGeolocCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/gsageoloccodes";
@@ -457,8 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListHiringPathsResponse>(() =>
             {
                 var apiCallPath = "/codelist/hiringpaths";
@@ -473,8 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListKeyStandardRequirementsResponse>(() =>
             {
                 var apiCallPath = "/codelist/keystandardrequirements";
@@ -489,8 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListLanguageCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/languagecodes";
@@ -505,8 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListLanguageProficienciesResponse>(() =>
             {
                 var apiCallPath = "/codelist/languageproficiencies";
@@ -521,8 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListLocationExpansionsResponse>(() =>
             {
                 var apiCallPath = "/codelist/locationexpansions";
@@ -537,8 +481,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListMilitaryStatusCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/militarystatuscodes";
@@ -553,8 +496,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListMissionCriticalCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/missioncriticalcodes";
@@ -569,8 +511,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListOccupationalSeriesResponse>(() =>
             {
                 var apiCallPath = "/codelist/occupationalseries";
@@ -585,8 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPayPlansResponse>(() =>
             {
                 var apiCallPath = "/codelist/payplans";
@@ -601,8 +541,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPositionOfferingTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/positionofferingtypes";
@@ -617,8 +556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPositionOpeningStatusesResponse>(() =>
             {
                 var apiCallPath = "/codelist/positionopeningstatuses";
@@ -633,8 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPositionScheduleTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/positionscheduletypes";
@@ -649,8 +586,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListPostalCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/postalcodes";
@@ -665,8 +601,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRaceCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/racecodes";
@@ -681,8 +616,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRefereeTypeCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/refereetypecodes";
@@ -697,8 +631,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRemunerationRateIntervalCodesResponse>(() =>
             {
                 var apiCallPath = "/codelist/remunerationrateintervalcodes";
@@ -713,8 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListRequiredStandardDocumentsResponse>(() =>
             {
                 var apiCallPath = "/codelist/requiredstandarddocuments";
@@ -729,8 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListSecurityClearancesResponse>(() =>
             {
                 var apiCallPath = "/codelist/securityclearances";
@@ -745,8 +676,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListServiceTypesResponse>(() =>
             {
                 var apiCallPath = "/codelist/servicetypes";
@@ -761,8 +691,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListSpecialHiringsResponse>(() =>
             {
                 var apiCallPath = "/codelist/specialhirings";
@@ -777,8 +706,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListTravelPercentagesResponse>(() =>
             {
                 var apiCallPath = "/codelist/travelpercentages";
@@ -793,8 +721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
         public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply(Expression<Func<string>> lastmodified = null)
         {
-            var __workflow_lastmodified = lastmodified == null ? null : WorkflowExpression.Compile(lastmodified);
-            WorkflowExpression.Validate(__workflow_lastmodified, nameof(lastmodified), required: false);
+            var __workflow_lastmodified = WorkflowExpression.Compile(lastmodified, nameof(lastmodified), required: false);
             return new DeferredBodyAction<ListWhoMayApplyResponse>(() =>
             {
                 var apiCallPath = "/codelist/whomayapply";

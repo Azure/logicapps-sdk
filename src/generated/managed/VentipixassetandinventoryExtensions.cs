@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
         public IBodyWorkflowAction<JToken> GetListItems(Expression<Func<string>> listIDDynamic, Expression<Func<string>> barcodeValue, Expression<Func<string>> location = null)
         {
-            var __workflow_listIDDynamic = listIDDynamic == null ? null : WorkflowExpression.Compile(listIDDynamic);
-            WorkflowExpression.Validate(__workflow_listIDDynamic, nameof(listIDDynamic), required: true);
-            var __workflow_barcodeValue = barcodeValue == null ? null : WorkflowExpression.Compile(barcodeValue);
-            WorkflowExpression.Validate(__workflow_barcodeValue, nameof(barcodeValue), required: true);
-            var __workflow_location = location == null ? null : WorkflowExpression.Compile(location);
-            WorkflowExpression.Validate(__workflow_location, nameof(location), required: false);
+            var __workflow_listIDDynamic = WorkflowExpression.Compile(listIDDynamic, nameof(listIDDynamic), required: true);
+            var __workflow_barcodeValue = WorkflowExpression.Compile(barcodeValue, nameof(barcodeValue), required: true);
+            var __workflow_location = WorkflowExpression.Compile(location, nameof(location), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listIDDynamic, 1));
@@ -34,10 +31,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ventipixassetandinventory
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ventipixassetandinventory")]
         public IWorkflowAction CreateListItem(Expression<Func<string>> listIDDynamic, Expression<Func<object>> dynamicListSchema = null)
         {
-            var __workflow_listIDDynamic = listIDDynamic == null ? null : WorkflowExpression.Compile(listIDDynamic);
-            WorkflowExpression.Validate(__workflow_listIDDynamic, nameof(listIDDynamic), required: true);
-            var __workflow_dynamicListSchema = dynamicListSchema == null ? null : WorkflowExpression.Compile(dynamicListSchema);
-            WorkflowExpression.Validate(__workflow_dynamicListSchema, nameof(dynamicListSchema), required: false);
+            var __workflow_listIDDynamic = WorkflowExpression.Compile(listIDDynamic, nameof(listIDDynamic), required: true);
+            var __workflow_dynamicListSchema = WorkflowExpression.Compile(dynamicListSchema, nameof(dynamicListSchema), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/app/flow/fetchsert/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_listIDDynamic, 1));

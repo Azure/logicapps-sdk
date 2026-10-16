@@ -13,10 +13,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weatherforecastip")]
         public IBodyWorkflowAction<CityResponse> City(Expression<Func<string>> q = null, Expression<Func<string>> appid = null)
         {
-            var __workflow_q = q == null ? null : WorkflowExpression.Compile(q);
-            WorkflowExpression.Validate(__workflow_q, nameof(q), required: false);
-            var __workflow_appid = appid == null ? null : WorkflowExpression.Compile(appid);
-            WorkflowExpression.Validate(__workflow_appid, nameof(appid), required: false);
+            var __workflow_q = WorkflowExpression.Compile(q, nameof(q), required: false);
+            var __workflow_appid = WorkflowExpression.Compile(appid, nameof(appid), required: false);
             return new DeferredBodyAction<CityResponse>(() =>
             {
                 var apiCallPath = "/data/2.5/weather";

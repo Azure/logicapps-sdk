@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmIncidentResponse> GetIncident(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<IcmIncidentResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -27,8 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> GetRetrospectiveById(Expression<Func<string>> retrospectiveId)
         {
-            var __workflow_retrospectiveId = retrospectiveId == null ? null : WorkflowExpression.Compile(retrospectiveId);
-            WorkflowExpression.Validate(__workflow_retrospectiveId, nameof(retrospectiveId), required: true);
+            var __workflow_retrospectiveId = WorkflowExpression.Compile(retrospectiveId, nameof(retrospectiveId), required: true);
             return new DeferredBodyAction<IcmRetrospectiveResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/retrospectives/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_retrospectiveId, 1));
@@ -41,8 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmRetrospectiveResponse> GetRetrospectiveByIncidentId(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<IcmRetrospectiveResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/retrospective", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -55,8 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmBridgesResponse> GetBridgesForAnIncident(Expression<Func<string>> id)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
             return new DeferredBodyAction<IcmBridgesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/bridges", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -69,12 +65,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction AddNewIcMDiscussionEntry(Expression<Func<string>> id, Expression<Func<string>> bodydiscussionText = null, Expression<Func<bodyrenderTypeInput>> bodyrenderType = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodydiscussionText = bodydiscussionText == null ? null : WorkflowExpression.Compile(bodydiscussionText);
-            WorkflowExpression.Validate(__workflow_bodydiscussionText, nameof(bodydiscussionText), required: false);
-            var __workflow_bodyrenderType = bodyrenderType == null ? null : WorkflowExpression.Compile(bodyrenderType);
-            WorkflowExpression.Validate(__workflow_bodyrenderType, nameof(bodyrenderType), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydiscussionText = WorkflowExpression.Compile(bodydiscussionText, nameof(bodydiscussionText), required: false);
+            var __workflow_bodyrenderType = WorkflowExpression.Compile(bodyrenderType, nameof(bodyrenderType), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/addDiscussionEntry", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -106,12 +99,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmDescriptionEntriesResponse> GetDescriptionEntries(Expression<Func<string>> id, Expression<Func<int>> count = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_count = count == null ? null : WorkflowExpression.Compile(count);
-            WorkflowExpression.Validate(__workflow_count, nameof(count), required: false);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_count = WorkflowExpression.Compile(count, nameof(count), required: false);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredBodyAction<IcmDescriptionEntriesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/descriptionEntries", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -130,14 +120,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentSeverity(Expression<Func<string>> id, Expression<Func<bodyseverityInput>> bodyseverity, Expression<Func<string>> bodydescriptionEntry = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyseverity = bodyseverity == null ? null : WorkflowExpression.Compile(bodyseverity);
-            WorkflowExpression.Validate(__workflow_bodyseverity, nameof(bodyseverity), required: true);
-            var __workflow_bodydescriptionEntry = bodydescriptionEntry == null ? null : WorkflowExpression.Compile(bodydescriptionEntry);
-            WorkflowExpression.Validate(__workflow_bodydescriptionEntry, nameof(bodydescriptionEntry), required: false);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyseverity = WorkflowExpression.Compile(bodyseverity, nameof(bodyseverity), required: true);
+            var __workflow_bodydescriptionEntry = WorkflowExpression.Compile(bodydescriptionEntry, nameof(bodydescriptionEntry), required: false);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateSeverity", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -168,12 +154,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentTitle(Expression<Func<string>> id, Expression<Func<string>> bodytitle, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateTitle", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -198,12 +181,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentOwner(Expression<Func<string>> id, Expression<Func<string>> bodyowningContactAlias, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyowningContactAlias = bodyowningContactAlias == null ? null : WorkflowExpression.Compile(bodyowningContactAlias);
-            WorkflowExpression.Validate(__workflow_bodyowningContactAlias, nameof(bodyowningContactAlias), required: true);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyowningContactAlias = WorkflowExpression.Compile(bodyowningContactAlias, nameof(bodyowningContactAlias), required: true);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateOwner", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -228,18 +208,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentCustomFields(Expression<Func<string>> id, Expression<Func<string>> bodygroupType, Expression<Func<bodycustomFieldsInputItem[]>> bodycustomFields, Expression<Func<string>> bodypublicID = null, Expression<Func<string>> bodycontainerID = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodygroupType = bodygroupType == null ? null : WorkflowExpression.Compile(bodygroupType);
-            WorkflowExpression.Validate(__workflow_bodygroupType, nameof(bodygroupType), required: true);
-            var __workflow_bodycustomFields = bodycustomFields == null ? null : WorkflowExpression.Compile(bodycustomFields);
-            WorkflowExpression.Validate(__workflow_bodycustomFields, nameof(bodycustomFields), required: true);
-            var __workflow_bodypublicID = bodypublicID == null ? null : WorkflowExpression.Compile(bodypublicID);
-            WorkflowExpression.Validate(__workflow_bodypublicID, nameof(bodypublicID), required: false);
-            var __workflow_bodycontainerID = bodycontainerID == null ? null : WorkflowExpression.Compile(bodycontainerID);
-            WorkflowExpression.Validate(__workflow_bodycontainerID, nameof(bodycontainerID), required: false);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodygroupType = WorkflowExpression.Compile(bodygroupType, nameof(bodygroupType), required: true);
+            var __workflow_bodycustomFields = WorkflowExpression.Compile(bodycustomFields, nameof(bodycustomFields), required: true);
+            var __workflow_bodypublicID = WorkflowExpression.Compile(bodypublicID, nameof(bodypublicID), required: false);
+            var __workflow_bodycontainerID = WorkflowExpression.Compile(bodycontainerID, nameof(bodycontainerID), required: false);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateCustomFields", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -278,14 +252,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentSingleCustomField(Expression<Func<string>> id, Expression<Func<string>> bodycustomField, Expression<Func<string>> bodyvalue, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodycustomField = bodycustomField == null ? null : WorkflowExpression.Compile(bodycustomField);
-            WorkflowExpression.Validate(__workflow_bodycustomField, nameof(bodycustomField), required: true);
-            var __workflow_bodyvalue = bodyvalue == null ? null : WorkflowExpression.Compile(bodyvalue);
-            WorkflowExpression.Validate(__workflow_bodyvalue, nameof(bodyvalue), required: true);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodycustomField = WorkflowExpression.Compile(bodycustomField, nameof(bodycustomField), required: true);
+            var __workflow_bodyvalue = WorkflowExpression.Compile(bodyvalue, nameof(bodyvalue), required: true);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateSingleCustomField", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -312,12 +282,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction UpdateIncidentTags(Expression<Func<string>> id, Expression<Func<string[]>> bodytags, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: true);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: true);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/updateTags", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -342,20 +309,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<TagUserInDiscussionResponse> TagUserInDiscussion(Expression<Func<string>> id, Expression<Func<string>> bodyrecipientEmail, Expression<Func<string>> bodydiscussionText, Expression<Func<string>> bodyrecipientDisplayName = null, Expression<Func<string>> bodymentionerDisplayName = null, Expression<Func<string>> bodymentionerAlias = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyrecipientEmail = bodyrecipientEmail == null ? null : WorkflowExpression.Compile(bodyrecipientEmail);
-            WorkflowExpression.Validate(__workflow_bodyrecipientEmail, nameof(bodyrecipientEmail), required: true);
-            var __workflow_bodydiscussionText = bodydiscussionText == null ? null : WorkflowExpression.Compile(bodydiscussionText);
-            WorkflowExpression.Validate(__workflow_bodydiscussionText, nameof(bodydiscussionText), required: true);
-            var __workflow_bodyrecipientDisplayName = bodyrecipientDisplayName == null ? null : WorkflowExpression.Compile(bodyrecipientDisplayName);
-            WorkflowExpression.Validate(__workflow_bodyrecipientDisplayName, nameof(bodyrecipientDisplayName), required: false);
-            var __workflow_bodymentionerDisplayName = bodymentionerDisplayName == null ? null : WorkflowExpression.Compile(bodymentionerDisplayName);
-            WorkflowExpression.Validate(__workflow_bodymentionerDisplayName, nameof(bodymentionerDisplayName), required: false);
-            var __workflow_bodymentionerAlias = bodymentionerAlias == null ? null : WorkflowExpression.Compile(bodymentionerAlias);
-            WorkflowExpression.Validate(__workflow_bodymentionerAlias, nameof(bodymentionerAlias), required: false);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyrecipientEmail = WorkflowExpression.Compile(bodyrecipientEmail, nameof(bodyrecipientEmail), required: true);
+            var __workflow_bodydiscussionText = WorkflowExpression.Compile(bodydiscussionText, nameof(bodydiscussionText), required: true);
+            var __workflow_bodyrecipientDisplayName = WorkflowExpression.Compile(bodyrecipientDisplayName, nameof(bodyrecipientDisplayName), required: false);
+            var __workflow_bodymentionerDisplayName = WorkflowExpression.Compile(bodymentionerDisplayName, nameof(bodymentionerDisplayName), required: false);
+            var __workflow_bodymentionerAlias = WorkflowExpression.Compile(bodymentionerAlias, nameof(bodymentionerAlias), required: false);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredBodyAction<TagUserInDiscussionResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/tagUser", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -400,46 +360,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IncidentAddUpdateResult> CreateIcMIncident(Expression<Func<string>> bodyconnectorId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodyowningTeam = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodyroutingId = null, Expression<Func<bodyhowFoundInput>> bodyhowFound = null, Expression<Func<bodyseverityInput>> bodyseverity = null, Expression<Func<string>> bodydiscussionEntrydiscussionText = null, Expression<Func<bodydiscussionEntryrenderTypeInput>> bodydiscussionEntryrenderType = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodytags = null, Expression<Func<bodycloudInstanceInput>> bodycloudInstance = null, Expression<Func<string>> bodyoccurringLocationenvironment = null, Expression<Func<string>> bodyoccurringLocationdcRegion = null, Expression<Func<string>> bodyoccurringLocationinstanceCluster = null, Expression<Func<string>> bodyoccurringLocationrole = null, Expression<Func<string>> bodyoccurringLocationslice = null, Expression<Func<bool>> bodyisRestrictedIncident = null, Expression<Func<bool>> bodyisSecurityRisk = null, Expression<Func<IcmAccessClaim[]>> bodyaccessRestrictedToClaims = null)
         {
-            var __workflow_bodyconnectorId = bodyconnectorId == null ? null : WorkflowExpression.Compile(bodyconnectorId);
-            WorkflowExpression.Validate(__workflow_bodyconnectorId, nameof(bodyconnectorId), required: true);
-            var __workflow_bodytitle = bodytitle == null ? null : WorkflowExpression.Compile(bodytitle);
-            WorkflowExpression.Validate(__workflow_bodytitle, nameof(bodytitle), required: true);
-            var __workflow_bodyowningTeam = bodyowningTeam == null ? null : WorkflowExpression.Compile(bodyowningTeam);
-            WorkflowExpression.Validate(__workflow_bodyowningTeam, nameof(bodyowningTeam), required: false);
-            var __workflow_bodycorrelationId = bodycorrelationId == null ? null : WorkflowExpression.Compile(bodycorrelationId);
-            WorkflowExpression.Validate(__workflow_bodycorrelationId, nameof(bodycorrelationId), required: false);
-            var __workflow_bodyroutingId = bodyroutingId == null ? null : WorkflowExpression.Compile(bodyroutingId);
-            WorkflowExpression.Validate(__workflow_bodyroutingId, nameof(bodyroutingId), required: false);
-            var __workflow_bodyhowFound = bodyhowFound == null ? null : WorkflowExpression.Compile(bodyhowFound);
-            WorkflowExpression.Validate(__workflow_bodyhowFound, nameof(bodyhowFound), required: false);
-            var __workflow_bodyseverity = bodyseverity == null ? null : WorkflowExpression.Compile(bodyseverity);
-            WorkflowExpression.Validate(__workflow_bodyseverity, nameof(bodyseverity), required: false);
-            var __workflow_bodydiscussionEntrydiscussionText = bodydiscussionEntrydiscussionText == null ? null : WorkflowExpression.Compile(bodydiscussionEntrydiscussionText);
-            WorkflowExpression.Validate(__workflow_bodydiscussionEntrydiscussionText, nameof(bodydiscussionEntrydiscussionText), required: false);
-            var __workflow_bodydiscussionEntryrenderType = bodydiscussionEntryrenderType == null ? null : WorkflowExpression.Compile(bodydiscussionEntryrenderType);
-            WorkflowExpression.Validate(__workflow_bodydiscussionEntryrenderType, nameof(bodydiscussionEntryrenderType), required: false);
-            var __workflow_bodysummary = bodysummary == null ? null : WorkflowExpression.Compile(bodysummary);
-            WorkflowExpression.Validate(__workflow_bodysummary, nameof(bodysummary), required: false);
-            var __workflow_bodytags = bodytags == null ? null : WorkflowExpression.Compile(bodytags);
-            WorkflowExpression.Validate(__workflow_bodytags, nameof(bodytags), required: false);
-            var __workflow_bodycloudInstance = bodycloudInstance == null ? null : WorkflowExpression.Compile(bodycloudInstance);
-            WorkflowExpression.Validate(__workflow_bodycloudInstance, nameof(bodycloudInstance), required: false);
-            var __workflow_bodyoccurringLocationenvironment = bodyoccurringLocationenvironment == null ? null : WorkflowExpression.Compile(bodyoccurringLocationenvironment);
-            WorkflowExpression.Validate(__workflow_bodyoccurringLocationenvironment, nameof(bodyoccurringLocationenvironment), required: false);
-            var __workflow_bodyoccurringLocationdcRegion = bodyoccurringLocationdcRegion == null ? null : WorkflowExpression.Compile(bodyoccurringLocationdcRegion);
-            WorkflowExpression.Validate(__workflow_bodyoccurringLocationdcRegion, nameof(bodyoccurringLocationdcRegion), required: false);
-            var __workflow_bodyoccurringLocationinstanceCluster = bodyoccurringLocationinstanceCluster == null ? null : WorkflowExpression.Compile(bodyoccurringLocationinstanceCluster);
-            WorkflowExpression.Validate(__workflow_bodyoccurringLocationinstanceCluster, nameof(bodyoccurringLocationinstanceCluster), required: false);
-            var __workflow_bodyoccurringLocationrole = bodyoccurringLocationrole == null ? null : WorkflowExpression.Compile(bodyoccurringLocationrole);
-            WorkflowExpression.Validate(__workflow_bodyoccurringLocationrole, nameof(bodyoccurringLocationrole), required: false);
-            var __workflow_bodyoccurringLocationslice = bodyoccurringLocationslice == null ? null : WorkflowExpression.Compile(bodyoccurringLocationslice);
-            WorkflowExpression.Validate(__workflow_bodyoccurringLocationslice, nameof(bodyoccurringLocationslice), required: false);
-            var __workflow_bodyisRestrictedIncident = bodyisRestrictedIncident == null ? null : WorkflowExpression.Compile(bodyisRestrictedIncident);
-            WorkflowExpression.Validate(__workflow_bodyisRestrictedIncident, nameof(bodyisRestrictedIncident), required: false);
-            var __workflow_bodyisSecurityRisk = bodyisSecurityRisk == null ? null : WorkflowExpression.Compile(bodyisSecurityRisk);
-            WorkflowExpression.Validate(__workflow_bodyisSecurityRisk, nameof(bodyisSecurityRisk), required: false);
-            var __workflow_bodyaccessRestrictedToClaims = bodyaccessRestrictedToClaims == null ? null : WorkflowExpression.Compile(bodyaccessRestrictedToClaims);
-            WorkflowExpression.Validate(__workflow_bodyaccessRestrictedToClaims, nameof(bodyaccessRestrictedToClaims), required: false);
+            var __workflow_bodyconnectorId = WorkflowExpression.Compile(bodyconnectorId, nameof(bodyconnectorId), required: true);
+            var __workflow_bodytitle = WorkflowExpression.Compile(bodytitle, nameof(bodytitle), required: true);
+            var __workflow_bodyowningTeam = WorkflowExpression.Compile(bodyowningTeam, nameof(bodyowningTeam), required: false);
+            var __workflow_bodycorrelationId = WorkflowExpression.Compile(bodycorrelationId, nameof(bodycorrelationId), required: false);
+            var __workflow_bodyroutingId = WorkflowExpression.Compile(bodyroutingId, nameof(bodyroutingId), required: false);
+            var __workflow_bodyhowFound = WorkflowExpression.Compile(bodyhowFound, nameof(bodyhowFound), required: false);
+            var __workflow_bodyseverity = WorkflowExpression.Compile(bodyseverity, nameof(bodyseverity), required: false);
+            var __workflow_bodydiscussionEntrydiscussionText = WorkflowExpression.Compile(bodydiscussionEntrydiscussionText, nameof(bodydiscussionEntrydiscussionText), required: false);
+            var __workflow_bodydiscussionEntryrenderType = WorkflowExpression.Compile(bodydiscussionEntryrenderType, nameof(bodydiscussionEntryrenderType), required: false);
+            var __workflow_bodysummary = WorkflowExpression.Compile(bodysummary, nameof(bodysummary), required: false);
+            var __workflow_bodytags = WorkflowExpression.Compile(bodytags, nameof(bodytags), required: false);
+            var __workflow_bodycloudInstance = WorkflowExpression.Compile(bodycloudInstance, nameof(bodycloudInstance), required: false);
+            var __workflow_bodyoccurringLocationenvironment = WorkflowExpression.Compile(bodyoccurringLocationenvironment, nameof(bodyoccurringLocationenvironment), required: false);
+            var __workflow_bodyoccurringLocationdcRegion = WorkflowExpression.Compile(bodyoccurringLocationdcRegion, nameof(bodyoccurringLocationdcRegion), required: false);
+            var __workflow_bodyoccurringLocationinstanceCluster = WorkflowExpression.Compile(bodyoccurringLocationinstanceCluster, nameof(bodyoccurringLocationinstanceCluster), required: false);
+            var __workflow_bodyoccurringLocationrole = WorkflowExpression.Compile(bodyoccurringLocationrole, nameof(bodyoccurringLocationrole), required: false);
+            var __workflow_bodyoccurringLocationslice = WorkflowExpression.Compile(bodyoccurringLocationslice, nameof(bodyoccurringLocationslice), required: false);
+            var __workflow_bodyisRestrictedIncident = WorkflowExpression.Compile(bodyisRestrictedIncident, nameof(bodyisRestrictedIncident), required: false);
+            var __workflow_bodyisSecurityRisk = WorkflowExpression.Compile(bodyisSecurityRisk, nameof(bodyisSecurityRisk), required: false);
+            var __workflow_bodyaccessRestrictedToClaims = WorkflowExpression.Compile(bodyaccessRestrictedToClaims, nameof(bodyaccessRestrictedToClaims), required: false);
             return new DeferredBodyAction<IncidentAddUpdateResult>(() =>
             {
                 var apiCallPath = "/icm/incidents";
@@ -587,16 +527,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmIncidentSearchResponse> SearchIncidents(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<searchEndpointInput>> searchEndpoint = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_top = top == null ? null : WorkflowExpression.Compile(top);
-            WorkflowExpression.Validate(__workflow_top, nameof(top), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
-            var __workflow_searchEndpoint = searchEndpoint == null ? null : WorkflowExpression.Compile(searchEndpoint);
-            WorkflowExpression.Validate(__workflow_searchEndpoint, nameof(searchEndpoint), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_top = WorkflowExpression.Compile(top, nameof(top), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
+            var __workflow_searchEndpoint = WorkflowExpression.Compile(searchEndpoint, nameof(searchEndpoint), required: false);
             return new DeferredBodyAction<IcmIncidentSearchResponse>(() =>
             {
                 var apiCallPath = "/icm/incidents/search";
@@ -619,14 +554,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmTeamSearchResponse> SearchIcMTeams(Expression<Func<string>> publicId = null, Expression<Func<string>> name = null, Expression<Func<bool>> includeMembers = null, Expression<Func<int>> skip = null)
         {
-            var __workflow_publicId = publicId == null ? null : WorkflowExpression.Compile(publicId);
-            WorkflowExpression.Validate(__workflow_publicId, nameof(publicId), required: false);
-            var __workflow_name = name == null ? null : WorkflowExpression.Compile(name);
-            WorkflowExpression.Validate(__workflow_name, nameof(name), required: false);
-            var __workflow_includeMembers = includeMembers == null ? null : WorkflowExpression.Compile(includeMembers);
-            WorkflowExpression.Validate(__workflow_includeMembers, nameof(includeMembers), required: false);
-            var __workflow_skip = skip == null ? null : WorkflowExpression.Compile(skip);
-            WorkflowExpression.Validate(__workflow_skip, nameof(skip), required: false);
+            var __workflow_publicId = WorkflowExpression.Compile(publicId, nameof(publicId), required: false);
+            var __workflow_name = WorkflowExpression.Compile(name, nameof(name), required: false);
+            var __workflow_includeMembers = WorkflowExpression.Compile(includeMembers, nameof(includeMembers), required: false);
+            var __workflow_skip = WorkflowExpression.Compile(skip, nameof(skip), required: false);
             return new DeferredBodyAction<IcmTeamSearchResponse>(() =>
             {
                 var apiCallPath = "/icm/teams/search";
@@ -648,8 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<IcmCurrentOnCallResponse> GetCurrentOncallContactList(Expression<Func<string>> teamId = null)
         {
-            var __workflow_teamId = teamId == null ? null : WorkflowExpression.Compile(teamId);
-            WorkflowExpression.Validate(__workflow_teamId, nameof(teamId), required: false);
+            var __workflow_teamId = WorkflowExpression.Compile(teamId, nameof(teamId), required: false);
             return new DeferredBodyAction<IcmCurrentOnCallResponse>(() =>
             {
                 var apiCallPath = "/icm/currentOnCall";
@@ -664,16 +594,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction TransferIncident(Expression<Func<string>> id, Expression<Func<string>> bodyowningTenantPublicId, Expression<Func<string>> bodyowningTeamPublicId, Expression<Func<string>> bodydescription, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodyowningTenantPublicId = bodyowningTenantPublicId == null ? null : WorkflowExpression.Compile(bodyowningTenantPublicId);
-            WorkflowExpression.Validate(__workflow_bodyowningTenantPublicId, nameof(bodyowningTenantPublicId), required: true);
-            var __workflow_bodyowningTeamPublicId = bodyowningTeamPublicId == null ? null : WorkflowExpression.Compile(bodyowningTeamPublicId);
-            WorkflowExpression.Validate(__workflow_bodyowningTeamPublicId, nameof(bodyowningTeamPublicId), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodyowningTenantPublicId = WorkflowExpression.Compile(bodyowningTenantPublicId, nameof(bodyowningTenantPublicId), required: true);
+            var __workflow_bodyowningTeamPublicId = WorkflowExpression.Compile(bodyowningTeamPublicId, nameof(bodyowningTeamPublicId), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/transfer", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -702,18 +627,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction MitigateIncident(Expression<Func<string>> id, Expression<Func<string>> bodymitigation, Expression<Func<bool>> bodyisCustomerImpacting = null, Expression<Func<bool>> bodyisNoise = null, Expression<Func<string>> bodyhowFixed = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodymitigation = bodymitigation == null ? null : WorkflowExpression.Compile(bodymitigation);
-            WorkflowExpression.Validate(__workflow_bodymitigation, nameof(bodymitigation), required: true);
-            var __workflow_bodyisCustomerImpacting = bodyisCustomerImpacting == null ? null : WorkflowExpression.Compile(bodyisCustomerImpacting);
-            WorkflowExpression.Validate(__workflow_bodyisCustomerImpacting, nameof(bodyisCustomerImpacting), required: false);
-            var __workflow_bodyisNoise = bodyisNoise == null ? null : WorkflowExpression.Compile(bodyisNoise);
-            WorkflowExpression.Validate(__workflow_bodyisNoise, nameof(bodyisNoise), required: false);
-            var __workflow_bodyhowFixed = bodyhowFixed == null ? null : WorkflowExpression.Compile(bodyhowFixed);
-            WorkflowExpression.Validate(__workflow_bodyhowFixed, nameof(bodyhowFixed), required: false);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodymitigation = WorkflowExpression.Compile(bodymitigation, nameof(bodymitigation), required: true);
+            var __workflow_bodyisCustomerImpacting = WorkflowExpression.Compile(bodyisCustomerImpacting, nameof(bodyisCustomerImpacting), required: false);
+            var __workflow_bodyisNoise = WorkflowExpression.Compile(bodyisNoise, nameof(bodyisNoise), required: false);
+            var __workflow_bodyhowFixed = WorkflowExpression.Compile(bodyhowFixed, nameof(bodyhowFixed), required: false);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/mitigate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -756,14 +675,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction ReactivateIncident(Expression<Func<string>> id, Expression<Func<string>> bodydescription, Expression<Func<bool>> bodydisableVoiceNotifications = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodydisableVoiceNotifications = bodydisableVoiceNotifications == null ? null : WorkflowExpression.Compile(bodydisableVoiceNotifications);
-            WorkflowExpression.Validate(__workflow_bodydisableVoiceNotifications, nameof(bodydisableVoiceNotifications), required: false);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodydisableVoiceNotifications = WorkflowExpression.Compile(bodydisableVoiceNotifications, nameof(bodydisableVoiceNotifications), required: false);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/activate", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -794,16 +709,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IWorkflowAction ResolveIncident(Expression<Func<string>> id, Expression<Func<string>> bodydescription, Expression<Func<bool>> bodyisCustomerImpacting = null, Expression<Func<bool>> bodyisNoise = null, Expression<Func<icmEndpointInput>> icmEndpoint = null)
         {
-            var __workflow_id = id == null ? null : WorkflowExpression.Compile(id);
-            WorkflowExpression.Validate(__workflow_id, nameof(id), required: true);
-            var __workflow_bodydescription = bodydescription == null ? null : WorkflowExpression.Compile(bodydescription);
-            WorkflowExpression.Validate(__workflow_bodydescription, nameof(bodydescription), required: true);
-            var __workflow_bodyisCustomerImpacting = bodyisCustomerImpacting == null ? null : WorkflowExpression.Compile(bodyisCustomerImpacting);
-            WorkflowExpression.Validate(__workflow_bodyisCustomerImpacting, nameof(bodyisCustomerImpacting), required: false);
-            var __workflow_bodyisNoise = bodyisNoise == null ? null : WorkflowExpression.Compile(bodyisNoise);
-            WorkflowExpression.Validate(__workflow_bodyisNoise, nameof(bodyisNoise), required: false);
-            var __workflow_icmEndpoint = icmEndpoint == null ? null : WorkflowExpression.Compile(icmEndpoint);
-            WorkflowExpression.Validate(__workflow_icmEndpoint, nameof(icmEndpoint), required: false);
+            var __workflow_id = WorkflowExpression.Compile(id, nameof(id), required: true);
+            var __workflow_bodydescription = WorkflowExpression.Compile(bodydescription, nameof(bodydescription), required: true);
+            var __workflow_bodyisCustomerImpacting = WorkflowExpression.Compile(bodyisCustomerImpacting, nameof(bodyisCustomerImpacting), required: false);
+            var __workflow_bodyisNoise = WorkflowExpression.Compile(bodyisNoise, nameof(bodyisNoise), required: false);
+            var __workflow_icmEndpoint = WorkflowExpression.Compile(icmEndpoint, nameof(icmEndpoint), required: false);
             return new DeferredWorkflowAction(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icm/incidents/{0}/resolve", ExpressionConverter.ConvertWithUrlEncoding(__workflow_id, 1));
@@ -840,12 +750,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icm")]
         public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> contentType = null)
         {
-            var __workflow_uri = uri == null ? null : WorkflowExpression.Compile(uri);
-            WorkflowExpression.Validate(__workflow_uri, nameof(uri), required: true);
-            var __workflow_method = method == null ? null : WorkflowExpression.Compile(method);
-            WorkflowExpression.Validate(__workflow_method, nameof(method), required: true);
-            var __workflow_contentType = contentType == null ? null : WorkflowExpression.Compile(contentType);
-            WorkflowExpression.Validate(__workflow_contentType, nameof(contentType), required: false);
+            var __workflow_uri = WorkflowExpression.Compile(uri, nameof(uri), required: true);
+            var __workflow_method = WorkflowExpression.Compile(method, nameof(method), required: true);
+            var __workflow_contentType = WorkflowExpression.Compile(contentType, nameof(contentType), required: false);
             return new DeferredBodyAction<JToken>(() =>
             {
                 var apiCallPath = "/httprequest";
@@ -872,12 +779,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     {
         public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> WhenAnIcMIncidentIsCreated(Expression<Func<string>> filter, Expression<Func<string>> select = null, Expression<Func<searchEndpointInput>> searchEndpoint = null, FlowRecurrence recurrence = null)
         {
-            var __workflow_filter = filter == null ? null : WorkflowExpression.Compile(filter);
-            WorkflowExpression.Validate(__workflow_filter, nameof(filter), required: true);
-            var __workflow_select = select == null ? null : WorkflowExpression.Compile(select);
-            WorkflowExpression.Validate(__workflow_select, nameof(select), required: false);
-            var __workflow_searchEndpoint = searchEndpoint == null ? null : WorkflowExpression.Compile(searchEndpoint);
-            WorkflowExpression.Validate(__workflow_searchEndpoint, nameof(searchEndpoint), required: false);
+            var __workflow_filter = WorkflowExpression.Compile(filter, nameof(filter), required: true);
+            var __workflow_select = WorkflowExpression.Compile(select, nameof(select), required: false);
+            var __workflow_searchEndpoint = WorkflowExpression.Compile(searchEndpoint, nameof(searchEndpoint), required: false);
             return new DeferredBodyTrigger<IcmIncidentResponseTriggerBatchResponse>(() =>
             {
                 var apiCallPath = "/icm/triggers/onIncidentCreated";

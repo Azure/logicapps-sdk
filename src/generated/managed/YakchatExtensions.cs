@@ -13,12 +13,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
         public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
         {
-            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
-            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
-            var __workflow_bodymessageText = bodymessageText == null ? null : WorkflowExpression.Compile(bodymessageText);
-            WorkflowExpression.Validate(__workflow_bodymessageText, nameof(bodymessageText), required: true);
-            var __workflow_bodymessageTo = bodymessageTo == null ? null : WorkflowExpression.Compile(bodymessageTo);
-            WorkflowExpression.Validate(__workflow_bodymessageTo, nameof(bodymessageTo), required: true);
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodymessageText = WorkflowExpression.Compile(bodymessageText, nameof(bodymessageText), required: true);
+            var __workflow_bodymessageTo = WorkflowExpression.Compile(bodymessageTo, nameof(bodymessageTo), required: true);
             return new DeferredBodyAction<SendMessageResponse>(() =>
             {
                 var apiCallPath = "/Automation/SendMessage";
@@ -46,8 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
     {
         public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
-            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/Automation/InboundMessageNotification";
@@ -70,8 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
         public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
-            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/Automation/OutboundMessageNotification";
@@ -94,8 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
 
         public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyinboxEmail, FlowRecurrence recurrence = null)
         {
-            var __workflow_bodyinboxEmail = bodyinboxEmail == null ? null : WorkflowExpression.Compile(bodyinboxEmail);
-            WorkflowExpression.Validate(__workflow_bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            var __workflow_bodyinboxEmail = WorkflowExpression.Compile(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
             {
                 var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";

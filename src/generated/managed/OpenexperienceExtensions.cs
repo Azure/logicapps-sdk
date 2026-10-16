@@ -13,24 +13,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openexperience")]
         public IBodyWorkflowAction<CreateNewProjectResponse> CreateNewProject(Expression<Func<string>> projectSettingscustomerId, Expression<Func<string>> projectSettingsid, Expression<Func<string>> projectSettingsname, Expression<Func<int>> projectSettingscontactPhone, Expression<Func<string>> projectSettingscontactEmail, Expression<Func<string>> projectSettingsresponsible, Expression<Func<string[]>> projectSettingsservices, Expression<Func<string>> projectSettingsaddress = null, Expression<Func<bool>> projectSettingssettingsprojectAdminMembersAccess = null)
         {
-            var __workflow_projectSettingscustomerId = projectSettingscustomerId == null ? null : WorkflowExpression.Compile(projectSettingscustomerId);
-            WorkflowExpression.Validate(__workflow_projectSettingscustomerId, nameof(projectSettingscustomerId), required: true);
-            var __workflow_projectSettingsid = projectSettingsid == null ? null : WorkflowExpression.Compile(projectSettingsid);
-            WorkflowExpression.Validate(__workflow_projectSettingsid, nameof(projectSettingsid), required: true);
-            var __workflow_projectSettingsname = projectSettingsname == null ? null : WorkflowExpression.Compile(projectSettingsname);
-            WorkflowExpression.Validate(__workflow_projectSettingsname, nameof(projectSettingsname), required: true);
-            var __workflow_projectSettingscontactPhone = projectSettingscontactPhone == null ? null : WorkflowExpression.Compile(projectSettingscontactPhone);
-            WorkflowExpression.Validate(__workflow_projectSettingscontactPhone, nameof(projectSettingscontactPhone), required: true);
-            var __workflow_projectSettingscontactEmail = projectSettingscontactEmail == null ? null : WorkflowExpression.Compile(projectSettingscontactEmail);
-            WorkflowExpression.Validate(__workflow_projectSettingscontactEmail, nameof(projectSettingscontactEmail), required: true);
-            var __workflow_projectSettingsresponsible = projectSettingsresponsible == null ? null : WorkflowExpression.Compile(projectSettingsresponsible);
-            WorkflowExpression.Validate(__workflow_projectSettingsresponsible, nameof(projectSettingsresponsible), required: true);
-            var __workflow_projectSettingsservices = projectSettingsservices == null ? null : WorkflowExpression.Compile(projectSettingsservices);
-            WorkflowExpression.Validate(__workflow_projectSettingsservices, nameof(projectSettingsservices), required: true);
-            var __workflow_projectSettingsaddress = projectSettingsaddress == null ? null : WorkflowExpression.Compile(projectSettingsaddress);
-            WorkflowExpression.Validate(__workflow_projectSettingsaddress, nameof(projectSettingsaddress), required: false);
-            var __workflow_projectSettingssettingsprojectAdminMembersAccess = projectSettingssettingsprojectAdminMembersAccess == null ? null : WorkflowExpression.Compile(projectSettingssettingsprojectAdminMembersAccess);
-            WorkflowExpression.Validate(__workflow_projectSettingssettingsprojectAdminMembersAccess, nameof(projectSettingssettingsprojectAdminMembersAccess), required: false);
+            var __workflow_projectSettingscustomerId = WorkflowExpression.Compile(projectSettingscustomerId, nameof(projectSettingscustomerId), required: true);
+            var __workflow_projectSettingsid = WorkflowExpression.Compile(projectSettingsid, nameof(projectSettingsid), required: true);
+            var __workflow_projectSettingsname = WorkflowExpression.Compile(projectSettingsname, nameof(projectSettingsname), required: true);
+            var __workflow_projectSettingscontactPhone = WorkflowExpression.Compile(projectSettingscontactPhone, nameof(projectSettingscontactPhone), required: true);
+            var __workflow_projectSettingscontactEmail = WorkflowExpression.Compile(projectSettingscontactEmail, nameof(projectSettingscontactEmail), required: true);
+            var __workflow_projectSettingsresponsible = WorkflowExpression.Compile(projectSettingsresponsible, nameof(projectSettingsresponsible), required: true);
+            var __workflow_projectSettingsservices = WorkflowExpression.Compile(projectSettingsservices, nameof(projectSettingsservices), required: true);
+            var __workflow_projectSettingsaddress = WorkflowExpression.Compile(projectSettingsaddress, nameof(projectSettingsaddress), required: false);
+            var __workflow_projectSettingssettingsprojectAdminMembersAccess = WorkflowExpression.Compile(projectSettingssettingsprojectAdminMembersAccess, nameof(projectSettingssettingsprojectAdminMembersAccess), required: false);
             return new DeferredBodyAction<CreateNewProjectResponse>(() =>
             {
                 var apiCallPath = "/connector/createProject";

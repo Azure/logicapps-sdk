@@ -13,8 +13,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<Incident> GetIncidentByKey(Expression<Func<string>> incidentKey)
         {
-            var __workflow_incidentKey = incidentKey == null ? null : WorkflowExpression.Compile(incidentKey);
-            WorkflowExpression.Validate(__workflow_incidentKey, nameof(incidentKey), required: true);
+            var __workflow_incidentKey = WorkflowExpression.Compile(incidentKey, nameof(incidentKey), required: true);
             return new DeferredBodyAction<Incident>(() =>
             {
                 var apiCallPath = "/action8/incidents";
@@ -28,8 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyAction<User>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));
@@ -42,12 +40,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<AddNoteResponse> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestaddedBy, Expression<Func<string>> requestnote)
         {
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_requestaddedBy = requestaddedBy == null ? null : WorkflowExpression.Compile(requestaddedBy);
-            WorkflowExpression.Validate(__workflow_requestaddedBy, nameof(requestaddedBy), required: true);
-            var __workflow_requestnote = requestnote == null ? null : WorkflowExpression.Compile(requestnote);
-            WorkflowExpression.Validate(__workflow_requestnote, nameof(requestnote), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_requestaddedBy = WorkflowExpression.Compile(requestaddedBy, nameof(requestaddedBy), required: true);
+            var __workflow_requestnote = WorkflowExpression.Compile(requestnote, nameof(requestnote), required: true);
             return new DeferredBodyAction<AddNoteResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -71,10 +66,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestacknowledgedBy)
         {
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_requestacknowledgedBy = requestacknowledgedBy == null ? null : WorkflowExpression.Compile(requestacknowledgedBy);
-            WorkflowExpression.Validate(__workflow_requestacknowledgedBy, nameof(requestacknowledgedBy), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_requestacknowledgedBy = WorkflowExpression.Compile(requestacknowledgedBy, nameof(requestacknowledgedBy), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action1/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -96,10 +89,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestresolvedBy)
         {
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_requestresolvedBy = requestresolvedBy == null ? null : WorkflowExpression.Compile(requestresolvedBy);
-            WorkflowExpression.Validate(__workflow_requestresolvedBy, nameof(requestresolvedBy), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_requestresolvedBy = WorkflowExpression.Compile(requestresolvedBy, nameof(requestresolvedBy), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action2/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -121,12 +112,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestfromUser, Expression<Func<string>> requesttoUser)
         {
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_requestfromUser = requestfromUser == null ? null : WorkflowExpression.Compile(requestfromUser);
-            WorkflowExpression.Validate(__workflow_requestfromUser, nameof(requestfromUser), required: true);
-            var __workflow_requesttoUser = requesttoUser == null ? null : WorkflowExpression.Compile(requesttoUser);
-            WorkflowExpression.Validate(__workflow_requesttoUser, nameof(requesttoUser), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_requestfromUser = WorkflowExpression.Compile(requestfromUser, nameof(requestfromUser), required: true);
+            var __workflow_requesttoUser = WorkflowExpression.Compile(requesttoUser, nameof(requesttoUser), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -150,12 +138,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestsnoozedBy, Expression<Func<int>> requestsnooze)
         {
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_requestsnoozedBy = requestsnoozedBy == null ? null : WorkflowExpression.Compile(requestsnoozedBy);
-            WorkflowExpression.Validate(__workflow_requestsnoozedBy, nameof(requestsnoozedBy), required: true);
-            var __workflow_requestsnooze = requestsnooze == null ? null : WorkflowExpression.Compile(requestsnooze);
-            WorkflowExpression.Validate(__workflow_requestsnooze, nameof(requestsnooze), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_requestsnoozedBy = WorkflowExpression.Compile(requestsnoozedBy, nameof(requestsnoozedBy), required: true);
+            var __workflow_requestsnooze = WorkflowExpression.Compile(requestsnooze, nameof(requestsnooze), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action4/incidents/{0}/snooze", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -179,12 +164,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<SingleIncident> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestescalatedBy, Expression<Func<string>> requestescalationPolicy)
         {
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
-            var __workflow_requestescalatedBy = requestescalatedBy == null ? null : WorkflowExpression.Compile(requestescalatedBy);
-            WorkflowExpression.Validate(__workflow_requestescalatedBy, nameof(requestescalatedBy), required: true);
-            var __workflow_requestescalationPolicy = requestescalationPolicy == null ? null : WorkflowExpression.Compile(requestescalationPolicy);
-            WorkflowExpression.Validate(__workflow_requestescalationPolicy, nameof(requestescalationPolicy), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
+            var __workflow_requestescalatedBy = WorkflowExpression.Compile(requestescalatedBy, nameof(requestescalatedBy), required: true);
+            var __workflow_requestescalationPolicy = WorkflowExpression.Compile(requestescalationPolicy, nameof(requestescalationPolicy), required: true);
             return new DeferredBodyAction<SingleIncident>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action5/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -208,10 +190,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
         public IBodyWorkflowAction<NewIncident> CreateIncident(Expression<Func<string>> requestserviceKey, Expression<Func<string>> requestdescription)
         {
-            var __workflow_requestserviceKey = requestserviceKey == null ? null : WorkflowExpression.Compile(requestserviceKey);
-            WorkflowExpression.Validate(__workflow_requestserviceKey, nameof(requestserviceKey), required: true);
-            var __workflow_requestdescription = requestdescription == null ? null : WorkflowExpression.Compile(requestdescription);
-            WorkflowExpression.Validate(__workflow_requestdescription, nameof(requestdescription), required: true);
+            var __workflow_requestserviceKey = WorkflowExpression.Compile(requestserviceKey, nameof(requestserviceKey), required: true);
+            var __workflow_requestdescription = WorkflowExpression.Compile(requestdescription, nameof(requestdescription), required: true);
             return new DeferredBodyAction<NewIncident>(() =>
             {
                 var apiCallPath = "/incidents/create";
@@ -237,8 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
     {
         public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote(Expression<Func<string>> incidentId, FlowRecurrence recurrence = null)
         {
-            var __workflow_incidentId = incidentId == null ? null : WorkflowExpression.Compile(incidentId);
-            WorkflowExpression.Validate(__workflow_incidentId, nameof(incidentId), required: true);
+            var __workflow_incidentId = WorkflowExpression.Compile(incidentId, nameof(incidentId), required: true);
             return new DeferredBodyTrigger<NotesResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(__workflow_incidentId, 1));
@@ -258,8 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 
         public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned(Expression<Func<string>> userId, FlowRecurrence recurrence = null)
         {
-            var __workflow_userId = userId == null ? null : WorkflowExpression.Compile(userId);
-            WorkflowExpression.Validate(__workflow_userId, nameof(userId), required: true);
+            var __workflow_userId = WorkflowExpression.Compile(userId, nameof(userId), required: true);
             return new DeferredBodyTrigger<IncidentsResponse>(() =>
             {
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(__workflow_userId, 1));

@@ -13,14 +13,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
         public IBodyWorkflowAction<FilescanResponse> Filescan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
         {
-            var __workflow_bodyfilename = bodyfilename == null ? null : WorkflowExpression.Compile(bodyfilename);
-            WorkflowExpression.Validate(__workflow_bodyfilename, nameof(bodyfilename), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: false);
-            var __workflow_xClientId = xClientId == null ? null : WorkflowExpression.Compile(xClientId);
-            WorkflowExpression.Validate(__workflow_xClientId, nameof(xClientId), required: false);
+            var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: false);
+            var __workflow_xClientId = WorkflowExpression.Compile(xClientId, nameof(xClientId), required: false);
             return new DeferredBodyAction<FilescanResponse>(() =>
             {
                 var apiCallPath = "/file/jsonupload";
@@ -54,14 +50,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
         public IBodyWorkflowAction<EmailScanResponse> EmailScan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
         {
-            var __workflow_bodyfilename = bodyfilename == null ? null : WorkflowExpression.Compile(bodyfilename);
-            WorkflowExpression.Validate(__workflow_bodyfilename, nameof(bodyfilename), required: true);
-            var __workflow_bodydata = bodydata == null ? null : WorkflowExpression.Compile(bodydata);
-            WorkflowExpression.Validate(__workflow_bodydata, nameof(bodydata), required: true);
-            var __workflow_xApiKey = xApiKey == null ? null : WorkflowExpression.Compile(xApiKey);
-            WorkflowExpression.Validate(__workflow_xApiKey, nameof(xApiKey), required: false);
-            var __workflow_xClientId = xClientId == null ? null : WorkflowExpression.Compile(xClientId);
-            WorkflowExpression.Validate(__workflow_xClientId, nameof(xClientId), required: false);
+            var __workflow_bodyfilename = WorkflowExpression.Compile(bodyfilename, nameof(bodyfilename), required: true);
+            var __workflow_bodydata = WorkflowExpression.Compile(bodydata, nameof(bodydata), required: true);
+            var __workflow_xApiKey = WorkflowExpression.Compile(xApiKey, nameof(xApiKey), required: false);
+            var __workflow_xClientId = WorkflowExpression.Compile(xClientId, nameof(xClientId), required: false);
             return new DeferredBodyAction<EmailScanResponse>(() =>
             {
                 var apiCallPath = "/email/jsonupload";
